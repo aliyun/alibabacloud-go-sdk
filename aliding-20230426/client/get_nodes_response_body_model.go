@@ -17,8 +17,6 @@ type iGetNodesResponseBody interface {
 
 type GetNodesResponseBody struct {
 	Nodes []*GetNodesResponseBodyNodes `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

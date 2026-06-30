@@ -16,9 +16,6 @@ type iSearchInnerGroupsRequest interface {
 }
 
 type SearchInnerGroupsRequest struct {
-	// example:
-	//
-	// 100
 	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	SearchKey  *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 }

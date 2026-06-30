@@ -34,43 +34,22 @@ type iGrantHonorRequest interface {
 }
 
 type GrantHonorRequest struct {
-	TenantContext *GrantHonorRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	// example:
-	//
-	// null
-	ExpirationTime *int64 `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
+	TenantContext  *GrantHonorRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	ExpirationTime *int64                          `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
 	// This parameter is required.
 	GrantReason *string `json:"grantReason,omitempty" xml:"grantReason,omitempty"`
 	// This parameter is required.
 	GranterName *string `json:"granterName,omitempty" xml:"granterName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 21659398
-	HonorId *string `json:"honorId,omitempty" xml:"honorId,omitempty"`
-	// example:
-	//
-	// false
-	NoticeAnnouncer *bool `json:"noticeAnnouncer,omitempty" xml:"noticeAnnouncer,omitempty"`
-	// example:
-	//
-	// false
+	HonorId             *string   `json:"honorId,omitempty" xml:"honorId,omitempty"`
+	NoticeAnnouncer     *bool     `json:"noticeAnnouncer,omitempty" xml:"noticeAnnouncer,omitempty"`
 	NoticeSingle        *bool     `json:"noticeSingle,omitempty" xml:"noticeSingle,omitempty"`
 	OpenConversationIds []*string `json:"openConversationIds,omitempty" xml:"openConversationIds,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 345391052
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
 	// This parameter is required.
 	ReceiverUserIds []*string `json:"receiverUserIds,omitempty" xml:"receiverUserIds,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 363784
 	SenderUserId *string `json:"senderUserId,omitempty" xml:"senderUserId,omitempty"`
 }
 
@@ -191,9 +170,6 @@ func (s *GrantHonorRequest) Validate() error {
 }
 
 type GrantHonorRequestTenantContext struct {
-	// example:
-	//
-	// null
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

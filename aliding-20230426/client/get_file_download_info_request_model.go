@@ -20,14 +20,8 @@ type iGetFileDownloadInfoRequest interface {
 }
 
 type GetFileDownloadInfoRequest struct {
-	// example:
-	//
-	// 798xxxxx
-	DentryId *string                           `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
-	Option   *GetFileDownloadInfoRequestOption `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
-	// example:
-	//
-	// 854xxxx
+	DentryId      *string                                  `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
+	Option        *GetFileDownloadInfoRequestOption        `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
 	SpaceId       *string                                  `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	TenantContext *GetFileDownloadInfoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
@@ -91,14 +85,8 @@ func (s *GetFileDownloadInfoRequest) Validate() error {
 }
 
 type GetFileDownloadInfoRequestOption struct {
-	// example:
-	//
-	// true
-	PreferIntranet *bool `json:"PreferIntranet,omitempty" xml:"PreferIntranet,omitempty"`
-	// example:
-	//
-	// 1
-	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+	PreferIntranet *bool  `json:"PreferIntranet,omitempty" xml:"PreferIntranet,omitempty"`
+	Version        *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetFileDownloadInfoRequestOption) String() string {

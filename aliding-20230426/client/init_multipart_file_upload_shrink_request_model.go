@@ -18,10 +18,7 @@ type iInitMultipartFileUploadShrinkRequest interface {
 }
 
 type InitMultipartFileUploadShrinkRequest struct {
-	OptionShrink *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// example:
-	//
-	// dentryUuid
+	OptionShrink        *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	ParentDentryUuid    *string `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

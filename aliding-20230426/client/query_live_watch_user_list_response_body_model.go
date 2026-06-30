@@ -20,8 +20,6 @@ type iQueryLiveWatchUserListResponseBody interface {
 type QueryLiveWatchUserListResponseBody struct {
 	OrgUsesList    []*QueryLiveWatchUserListResponseBodyOrgUsesList    `json:"orgUsesList,omitempty" xml:"orgUsesList,omitempty" type:"Repeated"`
 	OutOrgUserList []*QueryLiveWatchUserListResponseBodyOutOrgUserList `json:"outOrgUserList,omitempty" xml:"outOrgUserList,omitempty" type:"Repeated"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -86,24 +84,12 @@ func (s *QueryLiveWatchUserListResponseBody) Validate() error {
 }
 
 type QueryLiveWatchUserListResponseBodyOrgUsesList struct {
-	DeptName *string `json:"DeptName,omitempty" xml:"DeptName,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 1234
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// example:
-	//
-	// 19999
-	WatchLiveTime *int64 `json:"WatchLiveTime,omitempty" xml:"WatchLiveTime,omitempty"`
-	// example:
-	//
-	// 131312312
-	WatchPlaybackTime *int64 `json:"WatchPlaybackTime,omitempty" xml:"WatchPlaybackTime,omitempty"`
-	// example:
-	//
-	// 1323132
-	WatchProgressMs *int64 `json:"WatchProgressMs,omitempty" xml:"WatchProgressMs,omitempty"`
+	DeptName          *string `json:"DeptName,omitempty" xml:"DeptName,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WatchLiveTime     *int64  `json:"WatchLiveTime,omitempty" xml:"WatchLiveTime,omitempty"`
+	WatchPlaybackTime *int64  `json:"WatchPlaybackTime,omitempty" xml:"WatchPlaybackTime,omitempty"`
+	WatchProgressMs   *int64  `json:"WatchProgressMs,omitempty" xml:"WatchProgressMs,omitempty"`
 }
 
 func (s QueryLiveWatchUserListResponseBodyOrgUsesList) String() string {
@@ -173,19 +159,10 @@ func (s *QueryLiveWatchUserListResponseBodyOrgUsesList) Validate() error {
 }
 
 type QueryLiveWatchUserListResponseBodyOutOrgUserList struct {
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 12312312
-	WatchLiveTime *int64 `json:"WatchLiveTime,omitempty" xml:"WatchLiveTime,omitempty"`
-	// example:
-	//
-	// 21313131
-	WatchPlaybackTime *int64 `json:"WatchPlaybackTime,omitempty" xml:"WatchPlaybackTime,omitempty"`
-	// example:
-	//
-	// 123131
-	WatchProgressMs *int64 `json:"WatchProgressMs,omitempty" xml:"WatchProgressMs,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	WatchLiveTime     *int64  `json:"WatchLiveTime,omitempty" xml:"WatchLiveTime,omitempty"`
+	WatchPlaybackTime *int64  `json:"WatchPlaybackTime,omitempty" xml:"WatchPlaybackTime,omitempty"`
+	WatchProgressMs   *int64  `json:"WatchProgressMs,omitempty" xml:"WatchProgressMs,omitempty"`
 }
 
 func (s QueryLiveWatchUserListResponseBodyOutOrgUserList) String() string {

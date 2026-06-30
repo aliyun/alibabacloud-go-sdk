@@ -20,14 +20,8 @@ type iGetFileUploadInfoShrinkRequest interface {
 }
 
 type GetFileUploadInfoShrinkRequest struct {
-	OptionShrink *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// example:
-	//
-	// dentryUuid
-	ParentDentryUuid *string `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
-	// example:
-	//
-	// HEADER_SIGNATURE
+	OptionShrink        *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	ParentDentryUuid    *string `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
 	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

@@ -26,33 +26,13 @@ type iCreateVideoConferenceResponseBody interface {
 }
 
 type CreateVideoConferenceResponseBody struct {
-	// example:
-	//
-	// 607452e01401526ee39609e1
-	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
-	// example:
-	//
-	// 1151302294
-	ConferencePassword *string `json:"conferencePassword,omitempty" xml:"conferencePassword,omitempty"`
-	// example:
-	//
-	// https://pre-meeting.dingtalk.com/app?roomCode=68550708396&token=1_59209c43-431c-4e57-a0f8-11bebdb3db7f
-	ExternalLinkUrl *string `json:"externalLinkUrl,omitempty" xml:"externalLinkUrl,omitempty"`
-	// example:
-	//
-	// 2142817614
-	HostPassword *string   `json:"hostPassword,omitempty" xml:"hostPassword,omitempty"`
-	PhoneNumbers []*string `json:"phoneNumbers,omitempty" xml:"phoneNumbers,omitempty" type:"Repeated"`
-	// requestId
-	//
-	// example:
-	//
-	// 3032809F-8C14-57E2-9B76-7AC2134FE3C8
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 123
-	RoomCode *string `json:"roomCode,omitempty" xml:"roomCode,omitempty"`
+	ConferenceId       *string   `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+	ConferencePassword *string   `json:"conferencePassword,omitempty" xml:"conferencePassword,omitempty"`
+	ExternalLinkUrl    *string   `json:"externalLinkUrl,omitempty" xml:"externalLinkUrl,omitempty"`
+	HostPassword       *string   `json:"hostPassword,omitempty" xml:"hostPassword,omitempty"`
+	PhoneNumbers       []*string `json:"phoneNumbers,omitempty" xml:"phoneNumbers,omitempty" type:"Repeated"`
+	RequestId          *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RoomCode           *string   `json:"roomCode,omitempty" xml:"roomCode,omitempty"`
 }
 
 func (s CreateVideoConferenceResponseBody) String() string {

@@ -18,12 +18,7 @@ type iGrantHonorResponseBody interface {
 }
 
 type GrantHonorResponseBody struct {
-	FailedUserIds []*string `json:"failedUserIds,omitempty" xml:"failedUserIds,omitempty" type:"Repeated"`
-	// requestId
-	//
-	// example:
-	//
-	// 45b4d029-ab94-4672-aa0f-bd79590374cb
+	FailedUserIds  []*string `json:"failedUserIds,omitempty" xml:"failedUserIds,omitempty" type:"Repeated"`
 	RequestId      *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	SuccessUserIds []*string `json:"successUserIds,omitempty" xml:"successUserIds,omitempty" type:"Repeated"`
 }

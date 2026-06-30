@@ -402,19 +402,9 @@ func (s *GetTicketResponseBodyTakers) Validate() error {
 }
 
 type GetTicketResponseBodyTemplate struct {
-	// OpenTemplateBizId
-	//
-	// example:
-	//
-	// OpenTemplateBizId
 	OpenTemplateBizId *string `json:"OpenTemplateBizId,omitempty" xml:"OpenTemplateBizId,omitempty"`
-	// OpenTemplateBizId
-	//
-	// example:
-	//
-	// OpenTemplateBizId
-	OpenTemplateId *string `json:"OpenTemplateId,omitempty" xml:"OpenTemplateId,omitempty"`
-	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	OpenTemplateId    *string `json:"OpenTemplateId,omitempty" xml:"OpenTemplateId,omitempty"`
+	TemplateName      *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s GetTicketResponseBodyTemplate) String() string {

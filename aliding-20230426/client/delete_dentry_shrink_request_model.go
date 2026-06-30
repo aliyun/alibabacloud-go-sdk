@@ -21,16 +21,8 @@ type iDeleteDentryShrinkRequest interface {
 
 type DeleteDentryShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// b9XJlZ44W3NeDGyA
 	DentryId *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// nb9XJx4EPx16QGyA
 	SpaceId             *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	ToRecycleBin        *bool   `json:"ToRecycleBin,omitempty" xml:"ToRecycleBin,omitempty"`

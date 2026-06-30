@@ -14,9 +14,6 @@ type iListSkillRequest interface {
 }
 
 type ListSkillRequest struct {
-	// example:
-	//
-	// qweq-1231-jbarr-9940-asdf
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
 }
 

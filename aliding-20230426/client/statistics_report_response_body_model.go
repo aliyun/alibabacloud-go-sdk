@@ -22,24 +22,10 @@ type iStatisticsReportResponseBody interface {
 }
 
 type StatisticsReportResponseBody struct {
-	// example:
-	//
-	// 1
-	CommentNum *int64 `json:"commentNum,omitempty" xml:"commentNum,omitempty"`
-	// example:
-	//
-	// 1
+	CommentNum     *int64 `json:"commentNum,omitempty" xml:"commentNum,omitempty"`
 	CommentUserNum *int64 `json:"commentUserNum,omitempty" xml:"commentUserNum,omitempty"`
-	// example:
-	//
-	// 2
-	LikeNum *int64 `json:"likeNum,omitempty" xml:"likeNum,omitempty"`
-	// example:
-	//
-	// 3
-	ReadNum *int64 `json:"readNum,omitempty" xml:"readNum,omitempty"`
-	// requestId
-	//
+	LikeNum        *int64 `json:"likeNum,omitempty" xml:"likeNum,omitempty"`
+	ReadNum        *int64 `json:"readNum,omitempty" xml:"readNum,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

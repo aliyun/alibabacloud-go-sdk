@@ -26,27 +26,13 @@ type iRecallHonorResponseBody interface {
 }
 
 type RecallHonorResponseBody struct {
-	Content *RecallHonorResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
-	// example:
-	//
-	// 040008
-	ErrorCode *string                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorCtx  map[string]interface{} `json:"errorCtx,omitempty" xml:"errorCtx,omitempty"`
-	ErrorMsg  *string                `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// requestId
-	//
-	// example:
-	//
-	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Content        *RecallHonorResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	ErrorCode      *string                         `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorCtx       map[string]interface{}          `json:"errorCtx,omitempty" xml:"errorCtx,omitempty"`
+	ErrorMsg       *string                         `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpStatusCode *int32                          `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	RequestId      *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                           `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s RecallHonorResponseBody) String() string {
@@ -130,9 +116,6 @@ func (s *RecallHonorResponseBody) Validate() error {
 }
 
 type RecallHonorResponseBodyContent struct {
-	// example:
-	//
-	// success
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
 }
 

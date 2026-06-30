@@ -16,13 +16,8 @@ type iQueryConferenceInfoResponseBody interface {
 }
 
 type QueryConferenceInfoResponseBody struct {
-	ConfInfo *QueryConferenceInfoResponseBodyConfInfo `json:"confInfo,omitempty" xml:"confInfo,omitempty" type:"Struct"`
-	// requestId
-	//
-	// example:
-	//
-	// 4248DCC9-785F-5A14-8BE0-830FD52E1261
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ConfInfo  *QueryConferenceInfoResponseBodyConfInfo `json:"confInfo,omitempty" xml:"confInfo,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s QueryConferenceInfoResponseBody) String() string {
@@ -61,52 +56,19 @@ func (s *QueryConferenceInfoResponseBody) Validate() error {
 }
 
 type QueryConferenceInfoResponseBodyConfInfo struct {
-	// example:
-	//
-	// 2
-	ActiveNum *int32 `json:"ActiveNum,omitempty" xml:"ActiveNum,omitempty"`
-	// example:
-	//
-	// 2
-	AttendNum *int32 `json:"AttendNum,omitempty" xml:"AttendNum,omitempty"`
-	// example:
-	//
-	// 1000000
-	ConfDuration *int64 `json:"ConfDuration,omitempty" xml:"ConfDuration,omitempty"`
-	// example:
-	//
-	// 607452e01401526ee39609e1
-	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
-	// example:
-	//
-	// 208579
-	CreatorId   *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	CreatorNick *string `json:"CreatorNick,omitempty" xml:"CreatorNick,omitempty"`
-	// example:
-	//
-	// 1663294270000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// https://meeting.dingtalk.com/app?roomCode=42726xxx&token=1_7ac9xxx
+	ActiveNum       *int32  `json:"ActiveNum,omitempty" xml:"ActiveNum,omitempty"`
+	AttendNum       *int32  `json:"AttendNum,omitempty" xml:"AttendNum,omitempty"`
+	ConfDuration    *int64  `json:"ConfDuration,omitempty" xml:"ConfDuration,omitempty"`
+	ConferenceId    *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	CreatorId       *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorNick     *string `json:"CreatorNick,omitempty" xml:"CreatorNick,omitempty"`
+	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExternalLinkUrl *string `json:"ExternalLinkUrl,omitempty" xml:"ExternalLinkUrl,omitempty"`
-	// example:
-	//
-	// 2
-	InvitedNum *int32 `json:"InvitedNum,omitempty" xml:"InvitedNum,omitempty"`
-	// example:
-	//
-	// 4272xxxxx
-	RoomCode *string `json:"RoomCode,omitempty" xml:"RoomCode,omitempty"`
-	// example:
-	//
-	// 1663293270000
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// example:
-	//
-	// 0
-	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	InvitedNum      *int32  `json:"InvitedNum,omitempty" xml:"InvitedNum,omitempty"`
+	RoomCode        *string `json:"RoomCode,omitempty" xml:"RoomCode,omitempty"`
+	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s QueryConferenceInfoResponseBodyConfInfo) String() string {

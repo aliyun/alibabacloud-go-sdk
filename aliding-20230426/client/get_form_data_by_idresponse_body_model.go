@@ -138,12 +138,9 @@ type GetFormDataByIDResponseBodyOriginator struct {
 	// example:
 	//
 	// abc@alimail.com
-	Email *string                                    `json:"Email,omitempty" xml:"Email,omitempty"`
-	Name  *GetFormDataByIDResponseBodyOriginatorName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Email  *string                                    `json:"Email,omitempty" xml:"Email,omitempty"`
+	Name   *GetFormDataByIDResponseBodyOriginatorName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
+	UserId *string                                    `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetFormDataByIDResponseBodyOriginator) String() string {

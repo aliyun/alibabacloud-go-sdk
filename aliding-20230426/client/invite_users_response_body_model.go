@@ -20,15 +20,10 @@ type iInviteUsersResponseBody interface {
 }
 
 type InviteUsersResponseBody struct {
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Success         *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
 	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`

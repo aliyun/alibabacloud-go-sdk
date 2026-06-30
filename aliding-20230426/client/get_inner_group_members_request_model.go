@@ -18,17 +18,8 @@ type iGetInnerGroupMembersRequest interface {
 }
 
 type GetInnerGroupMembersRequest struct {
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// UZr*****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// cidB8Pzg****FIWPv2PMA==
+	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OpenConversationId *string `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
 }
 

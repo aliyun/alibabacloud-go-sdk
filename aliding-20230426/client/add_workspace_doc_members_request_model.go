@@ -23,17 +23,9 @@ type AddWorkspaceDocMembersRequest struct {
 	// This parameter is required.
 	Members []*AddWorkspaceDocMembersRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xxx
 	NodeId        *string                                     `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	TenantContext *AddWorkspaceDocMembersRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xxx
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -101,22 +93,10 @@ func (s *AddWorkspaceDocMembersRequest) Validate() error {
 
 type AddWorkspaceDocMembersRequestMembers struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 012345
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// USER
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// EDITOR
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 

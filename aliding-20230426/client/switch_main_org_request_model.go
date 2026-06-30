@@ -16,9 +16,6 @@ type iSwitchMainOrgRequest interface {
 }
 
 type SwitchMainOrgRequest struct {
-	// example:
-	//
-	// 21001
 	TargetOrgId   *int64                             `json:"TargetOrgId,omitempty" xml:"TargetOrgId,omitempty"`
 	TenantContext *SwitchMainOrgRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

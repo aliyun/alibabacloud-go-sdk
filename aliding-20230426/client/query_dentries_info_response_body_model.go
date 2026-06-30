@@ -89,68 +89,26 @@ func (s *QueryDentriesInfoResponseBody) Validate() error {
 }
 
 type QueryDentriesInfoResponseBodyDentry struct {
-	AppProperties map[string][]*DentryAppPropertiesValue `json:"AppProperties,omitempty" xml:"AppProperties,omitempty"`
-	// example:
-	//
-	// 2025-03-26T02:19:35Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// qt8bGiSa7WnHKeRPtMuoiSJwiE
-	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// example:
-	//
-	// txt
-	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// example:
-	//
-	// 140901622636
-	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// example:
-	//
-	// qt8bGiSa7WnHKeRPtMuoiSJwiE
-	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 0
-	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// example:
-	//
-	// PUBLIC_OSS_PARTITION
+	AppProperties map[string][]*DentryAppPropertiesValue         `json:"AppProperties,omitempty" xml:"AppProperties,omitempty"`
+	CreateTime    *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatorId     *string                                        `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Extension     *string                                        `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	Id            *string                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifiedTime  *string                                        `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ModifierId    *string                                        `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	Name          *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParentId      *string                                        `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	PartitionType *string                                        `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
 	Path          *string                                        `json:"Path,omitempty" xml:"Path,omitempty"`
 	Properties    *QueryDentriesInfoResponseBodyDentryProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	// example:
-	//
-	// 512
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// example:
-	//
-	// 22443475065
-	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
-	// example:
-	//
-	// NORMAL
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// DINGTALK
-	StorageDriver *string                                       `json:"StorageDriver,omitempty" xml:"StorageDriver,omitempty"`
-	Thumbnail     *QueryDentriesInfoResponseBodyDentryThumbnail `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty" type:"Struct"`
-	// example:
-	//
-	// FILE
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// 1716258459684
-	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// example:
-	//
-	// 1
-	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+	Size          *int64                                         `json:"Size,omitempty" xml:"Size,omitempty"`
+	SpaceId       *string                                        `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	Status        *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageDriver *string                                        `json:"StorageDriver,omitempty" xml:"StorageDriver,omitempty"`
+	Thumbnail     *QueryDentriesInfoResponseBodyDentryThumbnail  `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty" type:"Struct"`
+	Type          *string                                        `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uuid          *string                                        `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Version       *int64                                         `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s QueryDentriesInfoResponseBodyDentry) String() string {
@@ -356,9 +314,6 @@ func (s *QueryDentriesInfoResponseBodyDentry) Validate() error {
 }
 
 type QueryDentriesInfoResponseBodyDentryProperties struct {
-	// example:
-	//
-	// True
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
 }
 
@@ -384,18 +339,9 @@ func (s *QueryDentriesInfoResponseBodyDentryProperties) Validate() error {
 }
 
 type QueryDentriesInfoResponseBodyDentryThumbnail struct {
-	// example:
-	//
-	// 720
-	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// example:
-	//
-	// xxx
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// example:
-	//
-	// 1920
-	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	Height *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Width  *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s QueryDentriesInfoResponseBodyDentryThumbnail) String() string {

@@ -17,10 +17,6 @@ type iDeleteAlidingAssistantShrinkRequest interface {
 
 type DeleteAlidingAssistantShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234
 	AssistantId         *string `json:"AssistantId,omitempty" xml:"AssistantId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

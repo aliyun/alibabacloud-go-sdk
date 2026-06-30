@@ -56,9 +56,6 @@ func (s *GrantHonorHeaders) Validate() error {
 }
 
 type GrantHonorHeadersAccountContext struct {
-	// example:
-	//
-	// null
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 

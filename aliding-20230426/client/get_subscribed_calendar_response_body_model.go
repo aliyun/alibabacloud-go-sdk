@@ -43,8 +43,6 @@ type GetSubscribedCalendarResponseBody struct {
 	//
 	// 中国传统日历
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

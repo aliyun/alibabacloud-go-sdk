@@ -22,14 +22,8 @@ type iCloseVideoConferenceResponseBody interface {
 }
 
 type CloseVideoConferenceResponseBody struct {
-	// example:
-	//
-	// success
 	Cause *string `json:"cause,omitempty" xml:"cause,omitempty"`
-	// example:
-	//
-	// 200
-	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	Code  *int64  `json:"code,omitempty" xml:"code,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

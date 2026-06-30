@@ -31,22 +31,14 @@ type GetReportTemplateByNameResponseBody struct {
 	DefaultReceivedConvs []*GetReportTemplateByNameResponseBodyDefaultReceivedConvs `json:"defaultReceivedConvs,omitempty" xml:"defaultReceivedConvs,omitempty" type:"Repeated"`
 	DefaultReceivers     []*GetReportTemplateByNameResponseBodyDefaultReceivers     `json:"defaultReceivers,omitempty" xml:"defaultReceivers,omitempty" type:"Repeated"`
 	Fields               []*GetReportTemplateByNameResponseBodyFields               `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 11111
-	Id   *string `json:"id,omitempty" xml:"id,omitempty"`
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// requestId
-	//
+	Id                   *string                                                    `json:"id,omitempty" xml:"id,omitempty"`
+	Name                 *string                                                    `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	UserName  *string `json:"userName,omitempty" xml:"userName,omitempty"`
-	// example:
-	//
-	// 1234
-	Userid *string `json:"userid,omitempty" xml:"userid,omitempty"`
+	Userid    *string `json:"userid,omitempty" xml:"userid,omitempty"`
 }
 
 func (s GetReportTemplateByNameResponseBody) String() string {
@@ -161,9 +153,6 @@ func (s *GetReportTemplateByNameResponseBody) Validate() error {
 }
 
 type GetReportTemplateByNameResponseBodyDefaultReceivedConvs struct {
-	// example:
-	//
-	// cid12334##2341
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
 	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -200,10 +189,7 @@ func (s *GetReportTemplateByNameResponseBodyDefaultReceivedConvs) Validate() err
 
 type GetReportTemplateByNameResponseBodyDefaultReceivers struct {
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// example:
-	//
-	// 1234
-	Userid *string `json:"Userid,omitempty" xml:"Userid,omitempty"`
+	Userid   *string `json:"Userid,omitempty" xml:"Userid,omitempty"`
 }
 
 func (s GetReportTemplateByNameResponseBodyDefaultReceivers) String() string {
@@ -237,18 +223,9 @@ func (s *GetReportTemplateByNameResponseBodyDefaultReceivers) Validate() error {
 }
 
 type GetReportTemplateByNameResponseBodyFields struct {
-	// example:
-	//
-	// key1
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// example:
-	//
-	// 0
-	Sort *int64 `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Sort      *int64  `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Type      *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetReportTemplateByNameResponseBodyFields) String() string {

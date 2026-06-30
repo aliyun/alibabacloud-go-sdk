@@ -22,25 +22,14 @@ type iSimpleListReportResponseBody interface {
 }
 
 type SimpleListReportResponseBody struct {
-	DataList []*SimpleListReportResponseBodyDataList `json:"dataList,omitempty" xml:"dataList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// false
-	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	// example:
-	//
-	// 12312131231
-	NextCursor *int64 `json:"nextCursor,omitempty" xml:"nextCursor,omitempty"`
-	// requestId
-	//
+	DataList   []*SimpleListReportResponseBodyDataList `json:"dataList,omitempty" xml:"dataList,omitempty" type:"Repeated"`
+	HasMore    *bool                                   `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
+	NextCursor *int64                                  `json:"nextCursor,omitempty" xml:"nextCursor,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 20
-	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	Size      *int64  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s SimpleListReportResponseBody) String() string {
@@ -110,30 +99,12 @@ func (s *SimpleListReportResponseBody) Validate() error {
 }
 
 type SimpleListReportResponseBodyDataList struct {
-	// example:
-	//
-	// 1567034772000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1701038
-	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// example:
-	//
-	// xinmu
-	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	DeptName    *string `json:"DeptName,omitempty" xml:"DeptName,omitempty"`
-	// example:
-	//
-	// ops
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// example:
-	//
-	// d64994d09916c76276dd9bfa23637644
-	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// example:
-	//
-	// WG-Template
+	CreateTime   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatorId    *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorName  *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	DeptName     *string `json:"DeptName,omitempty" xml:"DeptName,omitempty"`
+	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ReportId     *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

@@ -50,24 +50,13 @@ type iPatchEventShrinkRequest interface {
 type PatchEventShrinkRequest struct {
 	AttendeesShrink *string `json:"Attendees,omitempty" xml:"Attendees,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// primary
 	CalendarId          *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
 	CardInstancesShrink *string `json:"CardInstances,omitempty" xml:"CardInstances,omitempty"`
 	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EndShrink           *string `json:"End,omitempty" xml:"End,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// iiiP35sJadba8aBSgjrwPRKgiEiF
-	EventId     *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	ExtraShrink *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// example:
-	//
-	// true
+	EventId                   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	ExtraShrink               *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	IsAllDay                  *bool   `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
 	LocationShrink            *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	RecurrenceShrink          *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`

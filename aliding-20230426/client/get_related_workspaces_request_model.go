@@ -16,9 +16,6 @@ type iGetRelatedWorkspacesRequest interface {
 }
 
 type GetRelatedWorkspacesRequest struct {
-	// example:
-	//
-	// true
 	IncludeRecent *bool                                     `json:"IncludeRecent,omitempty" xml:"IncludeRecent,omitempty"`
 	TenantContext *GetRelatedWorkspacesRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

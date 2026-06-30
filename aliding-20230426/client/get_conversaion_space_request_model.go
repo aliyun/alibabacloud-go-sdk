@@ -17,10 +17,6 @@ type iGetConversaionSpaceRequest interface {
 
 type GetConversaionSpaceRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cidB8Pzg****FIWPv2PMA==
 	OpenConversationId *string                                  `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
 	TenantContext      *GetConversaionSpaceRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

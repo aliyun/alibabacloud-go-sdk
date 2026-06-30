@@ -38,51 +38,22 @@ type iQueryLiveInfoResponseBody interface {
 }
 
 type QueryLiveInfoResponseBody struct {
-	// example:
-	//
-	// http://xxx/kk.jpg
-	CoverUrl *string `json:"coverUrl,omitempty" xml:"coverUrl,omitempty"`
-	// example:
-	//
-	// 59886
-	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// example:
-	//
-	// 1662447951960
-	EndTime      *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	Introduction *string `json:"introduction,omitempty" xml:"introduction,omitempty"`
-	// example:
-	//
-	// 1211-3442-122
-	LiveId *string `json:"liveId,omitempty" xml:"liveId,omitempty"`
-	// example:
-	//
-	// http://ssssss
-	LivePlayUrl *string `json:"livePlayUrl,omitempty" xml:"livePlayUrl,omitempty"`
-	LiveStatus  *int32  `json:"liveStatus,omitempty" xml:"liveStatus,omitempty"`
-	// example:
-	//
-	// 13414
-	PlaybackDuration *int64 `json:"playbackDuration,omitempty" xml:"playbackDuration,omitempty"`
-	// requestId
-	//
+	CoverUrl         *string `json:"coverUrl,omitempty" xml:"coverUrl,omitempty"`
+	Duration         *int64  `json:"duration,omitempty" xml:"duration,omitempty"`
+	EndTime          *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Introduction     *string `json:"introduction,omitempty" xml:"introduction,omitempty"`
+	LiveId           *string `json:"liveId,omitempty" xml:"liveId,omitempty"`
+	LivePlayUrl      *string `json:"livePlayUrl,omitempty" xml:"livePlayUrl,omitempty"`
+	LiveStatus       *int32  `json:"liveStatus,omitempty" xml:"liveStatus,omitempty"`
+	PlaybackDuration *int64  `json:"playbackDuration,omitempty" xml:"playbackDuration,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 1627353123000
-	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// example:
-	//
-	// 111
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	StartTime      *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	SubscribeCount *int32  `json:"subscribeCount,omitempty" xml:"subscribeCount,omitempty"`
 	Title          *string `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// 10
-	Uv *int32 `json:"uv,omitempty" xml:"uv,omitempty"`
+	Uv             *int32  `json:"uv,omitempty" xml:"uv,omitempty"`
 }
 
 func (s QueryLiveInfoResponseBody) String() string {

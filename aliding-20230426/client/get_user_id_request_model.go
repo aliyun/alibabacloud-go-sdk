@@ -17,12 +17,7 @@ type iGetUserIdRequest interface {
 
 type GetUserIdRequest struct {
 	TenantContext *GetUserIdRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	// unionId
-	//
-	// example:
-	//
-	// ****iE
-	UnionId *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
+	UnionId       *string                        `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
 }
 
 func (s GetUserIdRequest) String() string {

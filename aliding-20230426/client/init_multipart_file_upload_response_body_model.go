@@ -25,15 +25,9 @@ type InitMultipartFileUploadResponseBody struct {
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// DINGTALK
+	RequestId     *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	StorageDriver *string `json:"storageDriver,omitempty" xml:"storageDriver,omitempty"`
-	// example:
-	//
-	// xhy89xxxxx
-	UploadKey *string `json:"uploadKey,omitempty" xml:"uploadKey,omitempty"`
+	UploadKey     *string `json:"uploadKey,omitempty" xml:"uploadKey,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

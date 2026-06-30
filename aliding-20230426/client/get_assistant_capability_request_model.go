@@ -41,12 +41,9 @@ type GetAssistantCapabilityRequest struct {
 	Messages []*GetAssistantCapabilityRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
 	//
-	// originalAssistantId1
+	// assistantId2
 	OriginalAssistantId *string `json:"originalAssistantId,omitempty" xml:"originalAssistantId,omitempty"`
-	// example:
-	//
-	// cfp
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	Protocol            *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// example:
 	//
 	// agentKey1

@@ -20,14 +20,8 @@ type iSendBannerShrinkRequest interface {
 }
 
 type SendBannerShrinkRequest struct {
-	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// example:
-	//
-	// 1693881641000L
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// 1693881641000L
+	ContentShrink       *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

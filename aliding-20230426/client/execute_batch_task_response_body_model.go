@@ -24,21 +24,12 @@ type iExecuteBatchTaskResponseBody interface {
 }
 
 type ExecuteBatchTaskResponseBody struct {
-  // example:
-  // 
-  // 1
   FailNumber *int32 `json:"failNumber,omitempty" xml:"failNumber,omitempty"`
   // example:
   // 
   // 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // example:
-  // 
-  // 2
   SuccessNumber *int32 `json:"successNumber,omitempty" xml:"successNumber,omitempty"`
-  // example:
-  // 
-  // 3
   Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
   // example:
   // 

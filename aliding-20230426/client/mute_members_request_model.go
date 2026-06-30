@@ -28,10 +28,6 @@ type MuteMembersRequest struct {
 	// ["012345"]
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 607452e01401526ee39609e1
 	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
 	// This parameter is required.
 	//

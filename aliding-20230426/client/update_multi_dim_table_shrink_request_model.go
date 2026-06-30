@@ -21,10 +21,6 @@ type iUpdateMultiDimTableShrinkRequest interface {
 
 type UpdateMultiDimTableShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// r1R7q3QmWew5lo02fxB7noNyJxxxxxx
 	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`

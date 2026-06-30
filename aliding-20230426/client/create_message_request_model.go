@@ -39,7 +39,7 @@ type CreateMessageRequest struct {
 	Messages []*CreateMessageRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
 	//
-	// assistantId
+	// assistantId2
 	OriginalAssistantId *string `json:"originalAssistantId,omitempty" xml:"originalAssistantId,omitempty"`
 	// example:
 	//

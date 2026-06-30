@@ -28,39 +28,16 @@ type iListDentriesShrinkRequest interface {
 }
 
 type ListDentriesShrinkRequest struct {
-	// example:
-	//
-	// 50
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// next_token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// ASC
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// example:
-	//
-	// MODIFIED_TIME
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 854xxxxx
 	SpaceId             *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
-	// example:
-	//
-	// true
-	WithThumbnail *bool `json:"WithThumbnail,omitempty" xml:"WithThumbnail,omitempty"`
+	WithThumbnail       *bool   `json:"WithThumbnail,omitempty" xml:"WithThumbnail,omitempty"`
 }
 
 func (s ListDentriesShrinkRequest) String() string {

@@ -23,8 +23,6 @@ type QueryCloudRecordTextResponseBody struct {
 	// true
 	HasMore       *bool                                            `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
 	ParagraphList []*QueryCloudRecordTextResponseBodyParagraphList `json:"paragraphList,omitempty" xml:"paragraphList,omitempty" type:"Repeated"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

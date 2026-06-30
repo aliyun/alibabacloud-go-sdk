@@ -34,11 +34,8 @@ type GetAssistantCapabilityResponseBody struct {
 	//
 	// {}
 	CapabilityAssessment *GetAssistantCapabilityResponseBodyCapabilityAssessment `json:"capabilityAssessment,omitempty" xml:"capabilityAssessment,omitempty" type:"Struct"`
-	// example:
-	//
-	// requestId
-	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Thread    *GetAssistantCapabilityResponseBodyThread `json:"thread,omitempty" xml:"thread,omitempty" type:"Struct"`
+	RequestId            *string                                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Thread               *GetAssistantCapabilityResponseBodyThread               `json:"thread,omitempty" xml:"thread,omitempty" type:"Struct"`
 }
 
 func (s GetAssistantCapabilityResponseBody) String() string {

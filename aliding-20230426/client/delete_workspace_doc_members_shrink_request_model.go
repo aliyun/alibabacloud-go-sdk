@@ -23,17 +23,9 @@ type DeleteWorkspaceDocMembersShrinkRequest struct {
 	// This parameter is required.
 	MembersShrink *string `json:"Members,omitempty" xml:"Members,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// YRBGv0xxx
 	NodeId              *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// YRBGvyxxx
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

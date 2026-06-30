@@ -20,16 +20,8 @@ type iReceiverListReportResponseBody interface {
 }
 
 type ReceiverListReportResponseBody struct {
-	// example:
-	//
-	// true
-	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	// example:
-	//
-	// 132131312312
+	HasMore    *bool  `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
 	NextCursor *int64 `json:"nextCursor,omitempty" xml:"nextCursor,omitempty"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

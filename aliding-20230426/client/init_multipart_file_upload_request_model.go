@@ -18,10 +18,7 @@ type iInitMultipartFileUploadRequest interface {
 }
 
 type InitMultipartFileUploadRequest struct {
-	Option *InitMultipartFileUploadRequestOption `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
-	// example:
-	//
-	// dentryUuid
+	Option           *InitMultipartFileUploadRequestOption        `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
 	ParentDentryUuid *string                                      `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
 	TenantContext    *InitMultipartFileUploadRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
@@ -77,14 +74,8 @@ func (s *InitMultipartFileUploadRequest) Validate() error {
 
 type InitMultipartFileUploadRequestOption struct {
 	PreCheckParam *InitMultipartFileUploadRequestOptionPreCheckParam `json:"PreCheckParam,omitempty" xml:"PreCheckParam,omitempty" type:"Struct"`
-	// example:
-	//
-	// ZHANGJIAKOU
-	PreferRegion *string `json:"PreferRegion,omitempty" xml:"PreferRegion,omitempty"`
-	// example:
-	//
-	// DINGTALK
-	StorageDriver *string `json:"StorageDriver,omitempty" xml:"StorageDriver,omitempty"`
+	PreferRegion  *string                                            `json:"PreferRegion,omitempty" xml:"PreferRegion,omitempty"`
+	StorageDriver *string                                            `json:"StorageDriver,omitempty" xml:"StorageDriver,omitempty"`
 }
 
 func (s InitMultipartFileUploadRequestOption) String() string {
@@ -132,22 +123,10 @@ func (s *InitMultipartFileUploadRequestOption) Validate() error {
 }
 
 type InitMultipartFileUploadRequestOptionPreCheckParam struct {
-	// example:
-	//
-	// md5
-	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// example:
-	//
-	// name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 0
+	Md5      *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// example:
-	//
-	// 100
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size     *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s InitMultipartFileUploadRequestOptionPreCheckParam) String() string {

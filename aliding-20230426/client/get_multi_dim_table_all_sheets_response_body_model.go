@@ -96,13 +96,7 @@ func (s *GetMultiDimTableAllSheetsResponseBody) Validate() error {
 }
 
 type GetMultiDimTableAllSheetsResponseBodyValue struct {
-	// example:
-	//
-	// xxx
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// xxx
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

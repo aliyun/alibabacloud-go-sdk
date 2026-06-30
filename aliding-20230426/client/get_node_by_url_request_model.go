@@ -21,10 +21,6 @@ type GetNodeByUrlRequest struct {
 	Option        *GetNodeByUrlRequestOption        `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
 	TenantContext *GetNodeByUrlRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// https://alidocs.dingtalk.com/i/nodes/EpGBa2L*********gN7R35y
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -78,13 +74,7 @@ func (s *GetNodeByUrlRequest) Validate() error {
 }
 
 type GetNodeByUrlRequestOption struct {
-	// example:
-	//
-	// false
-	WithPermissionRole *bool `json:"WithPermissionRole,omitempty" xml:"WithPermissionRole,omitempty"`
-	// example:
-	//
-	// false
+	WithPermissionRole  *bool `json:"WithPermissionRole,omitempty" xml:"WithPermissionRole,omitempty"`
 	WithStatisticalInfo *bool `json:"WithStatisticalInfo,omitempty" xml:"WithStatisticalInfo,omitempty"`
 }
 

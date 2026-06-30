@@ -78,9 +78,6 @@ func (s *GetWorkspacesRequest) Validate() error {
 }
 
 type GetWorkspacesRequestOption struct {
-	// example:
-	//
-	// true
 	WithPermissionRole *bool `json:"WithPermissionRole,omitempty" xml:"WithPermissionRole,omitempty"`
 }
 

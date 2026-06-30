@@ -64,10 +64,7 @@ type SearchFormDataSecondGenerationRequest struct {
 	//
 	// yyyy-MM-dd
 	ModifiedToTimeGMT *string `json:"ModifiedToTimeGMT,omitempty" xml:"ModifiedToTimeGMT,omitempty"`
-	// example:
-	//
-	// {}
-	OrderConfigJson *string `json:"OrderConfigJson,omitempty" xml:"OrderConfigJson,omitempty"`
+	OrderConfigJson   *string `json:"OrderConfigJson,omitempty" xml:"OrderConfigJson,omitempty"`
 	// example:
 	//
 	// 012345
@@ -79,10 +76,7 @@ type SearchFormDataSecondGenerationRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// {}
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SearchCondition *string `json:"SearchCondition,omitempty" xml:"SearchCondition,omitempty"`
 	// This parameter is required.
 	//

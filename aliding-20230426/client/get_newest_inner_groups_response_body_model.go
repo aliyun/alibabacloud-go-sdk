@@ -93,17 +93,8 @@ func (s *GetNewestInnerGroupsResponseBody) Validate() error {
 }
 
 type GetNewestInnerGroupsResponseBodyGroupInfos struct {
-	// example:
-	//
-	// @lADOADma*****QKA
-	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// example:
-	//
-	// 10
-	MemberAmount *string `json:"MemberAmount,omitempty" xml:"MemberAmount,omitempty"`
-	// example:
-	//
-	// cid1e******==
+	Icon               *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	MemberAmount       *string `json:"MemberAmount,omitempty" xml:"MemberAmount,omitempty"`
 	OpenConversationId *string `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
 	Title              *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }

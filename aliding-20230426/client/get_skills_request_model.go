@@ -18,12 +18,9 @@ type iGetSkillsRequest interface {
 }
 
 type GetSkillsRequest struct {
-	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	SkillIds []*string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty" type:"Repeated"`
-	// example:
-	//
-	// xxx
-	SourceIdOfAssistantId *string `json:"SourceIdOfAssistantId,omitempty" xml:"SourceIdOfAssistantId,omitempty"`
+	GroupIds              []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
+	SkillIds              []*string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty" type:"Repeated"`
+	SourceIdOfAssistantId *string   `json:"SourceIdOfAssistantId,omitempty" xml:"SourceIdOfAssistantId,omitempty"`
 }
 
 func (s GetSkillsRequest) String() string {

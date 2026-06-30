@@ -28,29 +28,11 @@ type iUpdateVideoConferenceSettingShrinkRequest interface {
 }
 
 type UpdateVideoConferenceSettingShrinkRequest struct {
-	// example:
-	//
-	// true
-	AllowUnmuteSelf *bool `json:"AllowUnmuteSelf,omitempty" xml:"AllowUnmuteSelf,omitempty"`
-	// example:
-	//
-	// true
-	AutoTransferHost *bool `json:"AutoTransferHost,omitempty" xml:"AutoTransferHost,omitempty"`
-	// example:
-	//
-	// true
-	ForbiddenShareScreen *bool `json:"ForbiddenShareScreen,omitempty" xml:"ForbiddenShareScreen,omitempty"`
-	// example:
-	//
-	// true
-	LockConference *bool `json:"LockConference,omitempty" xml:"LockConference,omitempty"`
-	// example:
-	//
-	// true
-	MuteAll *bool `json:"MuteAll,omitempty" xml:"MuteAll,omitempty"`
-	// example:
-	//
-	// true
+	AllowUnmuteSelf           *bool   `json:"AllowUnmuteSelf,omitempty" xml:"AllowUnmuteSelf,omitempty"`
+	AutoTransferHost          *bool   `json:"AutoTransferHost,omitempty" xml:"AutoTransferHost,omitempty"`
+	ForbiddenShareScreen      *bool   `json:"ForbiddenShareScreen,omitempty" xml:"ForbiddenShareScreen,omitempty"`
+	LockConference            *bool   `json:"LockConference,omitempty" xml:"LockConference,omitempty"`
+	MuteAll                   *bool   `json:"MuteAll,omitempty" xml:"MuteAll,omitempty"`
 	OnlyInternalEmployeesJoin *bool   `json:"OnlyInternalEmployeesJoin,omitempty" xml:"OnlyInternalEmployeesJoin,omitempty"`
 	TenantContextShrink       *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.

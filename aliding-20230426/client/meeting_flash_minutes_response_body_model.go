@@ -26,15 +26,9 @@ type iMeetingFlashMinutesResponseBody interface {
 }
 
 type MeetingFlashMinutesResponseBody struct {
-	BasicInfo *MeetingFlashMinutesResponseBodyBasicInfo `json:"basicInfo,omitempty" xml:"basicInfo,omitempty" type:"Struct"`
-	// example:
-	//
-	// https://shanji.dingtalk.com/app/transcribes/76XXX
-	FlashMinutesUrl *string `json:"flashMinutesUrl,omitempty" xml:"flashMinutesUrl,omitempty"`
-	// example:
-	//
-	// XXX
-	FullSummary *string `json:"fullSummary,omitempty" xml:"fullSummary,omitempty"`
+	BasicInfo       *MeetingFlashMinutesResponseBodyBasicInfo `json:"basicInfo,omitempty" xml:"basicInfo,omitempty" type:"Struct"`
+	FlashMinutesUrl *string                                   `json:"flashMinutesUrl,omitempty" xml:"flashMinutesUrl,omitempty"`
+	FullSummary     *string                                   `json:"fullSummary,omitempty" xml:"fullSummary,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -136,30 +130,12 @@ func (s *MeetingFlashMinutesResponseBody) Validate() error {
 }
 
 type MeetingFlashMinutesResponseBodyBasicInfo struct {
-	// example:
-	//
-	// 500529
-	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// example:
-	//
-	// 1778490089000
-	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// example:
-	//
-	// 1778490089000
-	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// example:
-	//
-	// u0VGeOiPUBSVMypV3Hylp7wXXX
+	Duration    *int64  `json:"duration,omitempty" xml:"duration,omitempty"`
+	EndTime     *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	StartTime   *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	TaskCreator *string `json:"taskCreator,omitempty" xml:"taskCreator,omitempty"`
-	// example:
-	//
-	// XXX
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// https://shanji.dingtalk.com/app/transcribes/76XXX
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+	Url         *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s MeetingFlashMinutesResponseBodyBasicInfo) String() string {
@@ -273,35 +249,14 @@ func (s *MeetingFlashMinutesResponseBodyTodos) Validate() error {
 }
 
 type MeetingFlashMinutesResponseBodyTodosDingtalkTodoList struct {
-	// example:
-	//
-	// 1778490089000
-	CreatedTime *int64 `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// example:
-	//
-	// u0VGeOiPUBSVMypV3Hylp7wXXX
-	CreatorUnionId *string `json:"creatorUnionId,omitempty" xml:"creatorUnionId,omitempty"`
-	// example:
-	//
-	// deadline
-	Deadline *string `json:"deadline,omitempty" xml:"deadline,omitempty"`
-	// example:
-	//
-	// dingtalkTodoId
+	CreatedTime    *int64                                                              `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CreatorUnionId *string                                                             `json:"creatorUnionId,omitempty" xml:"creatorUnionId,omitempty"`
+	Deadline       *string                                                             `json:"deadline,omitempty" xml:"deadline,omitempty"`
 	DingtalkTodoId *string                                                             `json:"dingtalkTodoId,omitempty" xml:"dingtalkTodoId,omitempty"`
 	ExecutorList   []*MeetingFlashMinutesResponseBodyTodosDingtalkTodoListExecutorList `json:"executorList,omitempty" xml:"executorList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// false
-	IsDone *bool `json:"isDone,omitempty" xml:"isDone,omitempty"`
-	// example:
-	//
-	// minutesTodoId
-	MinutesTodoId *string `json:"minutesTodoId,omitempty" xml:"minutesTodoId,omitempty"`
-	// example:
-	//
-	// XXX
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	IsDone         *bool                                                               `json:"isDone,omitempty" xml:"isDone,omitempty"`
+	MinutesTodoId  *string                                                             `json:"minutesTodoId,omitempty" xml:"minutesTodoId,omitempty"`
+	Title          *string                                                             `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s MeetingFlashMinutesResponseBodyTodosDingtalkTodoList) String() string {
@@ -398,17 +353,8 @@ func (s *MeetingFlashMinutesResponseBodyTodosDingtalkTodoList) Validate() error 
 }
 
 type MeetingFlashMinutesResponseBodyTodosDingtalkTodoListExecutorList struct {
-	// example:
-	//
-	// https://XXX221rNAbjNAbg_440_440.png
-	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	// example:
-	//
-	// XXX
-	Nick *string `json:"nick,omitempty" xml:"nick,omitempty"`
-	// example:
-	//
-	// u0VGeOiPUBSVMypV3Hylp7wXXX
+	Avatar  *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	Nick    *string `json:"nick,omitempty" xml:"nick,omitempty"`
 	UnionId *string `json:"unionId,omitempty" xml:"unionId,omitempty"`
 }
 

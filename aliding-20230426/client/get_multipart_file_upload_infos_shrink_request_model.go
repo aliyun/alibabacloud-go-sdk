@@ -23,10 +23,7 @@ type GetMultipartFileUploadInfosShrinkRequest struct {
 	OptionShrink        *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	PartNumbersShrink   *string `json:"PartNumbers,omitempty" xml:"PartNumbers,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
-	// example:
-	//
-	// hwHPAAAAAipHxxxxx
-	UploadKey *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
+	UploadKey           *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
 }
 
 func (s GetMultipartFileUploadInfosShrinkRequest) String() string {

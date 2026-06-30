@@ -19,10 +19,6 @@ type iListPermissionsRequest interface {
 
 type ListPermissionsRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// KGZLxjv9VGkoG9YwHE5wx7k2V6EDybno
 	DentryUuid    *string                              `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
 	Option        *ListPermissionsRequestOption        `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
 	TenantContext *ListPermissionsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
@@ -79,14 +75,8 @@ func (s *ListPermissionsRequest) Validate() error {
 
 type ListPermissionsRequestOption struct {
 	FilterRoleIds []*string `json:"FilterRoleIds,omitempty" xml:"FilterRoleIds,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// 2
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults    *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListPermissionsRequestOption) String() string {

@@ -56,57 +56,31 @@ type iGetEventResponseBody interface {
 }
 
 type GetEventResponseBody struct {
-	Attendees  []*GetEventResponseBodyAttendees  `json:"attendees,omitempty" xml:"attendees,omitempty" type:"Repeated"`
-	Categories []*GetEventResponseBodyCategories `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
+	Attendees          []*GetEventResponseBodyAttendees        `json:"attendees,omitempty" xml:"attendees,omitempty" type:"Repeated"`
+	Categories         []*GetEventResponseBodyCategories       `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	CreateTime         *string                                 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	Description        *string                                 `json:"description,omitempty" xml:"description,omitempty"`
 	End                *GetEventResponseBodyEnd                `json:"end,omitempty" xml:"end,omitempty" type:"Struct"`
 	ExtendedProperties *GetEventResponseBodyExtendedProperties `json:"extendedProperties,omitempty" xml:"extendedProperties,omitempty" type:"Struct"`
+	Id                 *string                                 `json:"id,omitempty" xml:"id,omitempty"`
+	IsAllDay           *bool                                   `json:"isAllDay,omitempty" xml:"isAllDay,omitempty"`
+	Location           *GetEventResponseBodyLocation           `json:"location,omitempty" xml:"location,omitempty" type:"Struct"`
+	MeetingRooms       []*GetEventResponseBodyMeetingRooms     `json:"meetingRooms,omitempty" xml:"meetingRooms,omitempty" type:"Repeated"`
+	OnlineMeetingInfo  *GetEventResponseBodyOnlineMeetingInfo  `json:"onlineMeetingInfo,omitempty" xml:"onlineMeetingInfo,omitempty" type:"Struct"`
+	Organizer          *GetEventResponseBodyOrganizer          `json:"organizer,omitempty" xml:"organizer,omitempty" type:"Struct"`
+	OriginStart        *GetEventResponseBodyOriginStart        `json:"originStart,omitempty" xml:"originStart,omitempty" type:"Struct"`
+	Recurrence         *GetEventResponseBodyRecurrence         `json:"recurrence,omitempty" xml:"recurrence,omitempty" type:"Struct"`
+	Reminders          []*GetEventResponseBodyReminders        `json:"reminders,omitempty" xml:"reminders,omitempty" type:"Repeated"`
 	// example:
 	//
-	// iiiP35sJxxxxPRKgiEiF
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// true
-	IsAllDay          *bool                                  `json:"isAllDay,omitempty" xml:"isAllDay,omitempty"`
-	Location          *GetEventResponseBodyLocation          `json:"location,omitempty" xml:"location,omitempty" type:"Struct"`
-	MeetingRooms      []*GetEventResponseBodyMeetingRooms    `json:"meetingRooms,omitempty" xml:"meetingRooms,omitempty" type:"Repeated"`
-	OnlineMeetingInfo *GetEventResponseBodyOnlineMeetingInfo `json:"onlineMeetingInfo,omitempty" xml:"onlineMeetingInfo,omitempty" type:"Struct"`
-	Organizer         *GetEventResponseBodyOrganizer         `json:"organizer,omitempty" xml:"organizer,omitempty" type:"Struct"`
-	OriginStart       *GetEventResponseBodyOriginStart       `json:"originStart,omitempty" xml:"originStart,omitempty" type:"Struct"`
-	Recurrence        *GetEventResponseBodyRecurrence        `json:"recurrence,omitempty" xml:"recurrence,omitempty" type:"Struct"`
-	Reminders         []*GetEventResponseBodyReminders       `json:"reminders,omitempty" xml:"reminders,omitempty" type:"Repeated"`
-	// requestId
-	//
-	// example:
-	//
-	// requestId
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	RequestId           *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	RichTextDescription *GetEventResponseBodyRichTextDescription `json:"richTextDescription,omitempty" xml:"richTextDescription,omitempty" type:"Struct"`
-	// example:
-	//
-	// cnNTbW1YbxxxxvdlQrQT09
-	SeriesMasterId *string                    `json:"seriesMasterId,omitempty" xml:"seriesMasterId,omitempty"`
-	Start          *GetEventResponseBodyStart `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
-	// example:
-	//
-	// confirmed
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// test event
-	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	SeriesMasterId      *string                                  `json:"seriesMasterId,omitempty" xml:"seriesMasterId,omitempty"`
+	Start               *GetEventResponseBodyStart               `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
+	Status              *string                                  `json:"status,omitempty" xml:"status,omitempty"`
+	Summary             *string                                  `json:"summary,omitempty" xml:"summary,omitempty"`
+	UpdateTime          *string                                  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetEventResponseBody) String() string {
@@ -401,26 +375,11 @@ func (s *GetEventResponseBody) Validate() error {
 }
 
 type GetEventResponseBodyAttendees struct {
-	// example:
-	//
-	// jack
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// example:
-	//
-	// 123456
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// true
-	IsOptional *bool `json:"IsOptional,omitempty" xml:"IsOptional,omitempty"`
-	// example:
-	//
-	// accepted
+	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsOptional     *bool   `json:"IsOptional,omitempty" xml:"IsOptional,omitempty"`
 	ResponseStatus *string `json:"ResponseStatus,omitempty" xml:"ResponseStatus,omitempty"`
-	// example:
-	//
-	// true
-	Self *bool `json:"Self,omitempty" xml:"Self,omitempty"`
+	Self           *bool   `json:"Self,omitempty" xml:"Self,omitempty"`
 }
 
 func (s GetEventResponseBodyAttendees) String() string {
@@ -506,17 +465,8 @@ func (s *GetEventResponseBodyCategories) Validate() error {
 }
 
 type GetEventResponseBodyEnd struct {
-	// example:
-	//
-	// 2020-01-01
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
+	Date     *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// example:
-	//
-	// Asia/Shanghai
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
@@ -590,13 +540,7 @@ func (s *GetEventResponseBodyExtendedProperties) Validate() error {
 }
 
 type GetEventResponseBodyExtendedPropertiesSharedProperties struct {
-	// example:
-	//
-	// dingd*****1231231
-	BelongCorpId *string `json:"BelongCorpId,omitempty" xml:"BelongCorpId,omitempty"`
-	// example:
-	//
-	// zxcvasdfvb123====
+	BelongCorpId  *string `json:"BelongCorpId,omitempty" xml:"BelongCorpId,omitempty"`
 	SourceOpenCid *string `json:"SourceOpenCid,omitempty" xml:"SourceOpenCid,omitempty"`
 }
 
@@ -631,8 +575,7 @@ func (s *GetEventResponseBodyExtendedPropertiesSharedProperties) Validate() erro
 }
 
 type GetEventResponseBodyLocation struct {
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// --
+	DisplayName  *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	MeetingRooms []*string `json:"MeetingRooms,omitempty" xml:"MeetingRooms,omitempty" type:"Repeated"`
 }
 
@@ -667,18 +610,9 @@ func (s *GetEventResponseBodyLocation) Validate() error {
 }
 
 type GetEventResponseBodyMeetingRooms struct {
-	// example:
-	//
-	// room 1-2-3
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// example:
-	//
-	// accepted
+	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	ResponseStatus *string `json:"ResponseStatus,omitempty" xml:"ResponseStatus,omitempty"`
-	// example:
-	//
-	// c10315a8b4e740a317813ab6fxxxxxx
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	RoomId         *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 }
 
 func (s GetEventResponseBodyMeetingRooms) String() string {
@@ -721,19 +655,10 @@ func (s *GetEventResponseBodyMeetingRooms) Validate() error {
 }
 
 type GetEventResponseBodyOnlineMeetingInfo struct {
-	// example:
-	//
-	// 5c4df21d-xxxx-a6db402b9f3a
 	ConferenceId *string                `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
 	ExtraInfo    map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	// example:
-	//
-	// dingtalk
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// dingtalk://dingtalkclient/page/videoxxxxalendar?confId=5c4df21d-xxxx9f3f&calendarId=127xxxx124
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Type         *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url          *string                `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetEventResponseBodyOnlineMeetingInfo) String() string {
@@ -785,22 +710,10 @@ func (s *GetEventResponseBodyOnlineMeetingInfo) Validate() error {
 }
 
 type GetEventResponseBodyOrganizer struct {
-	// example:
-	//
-	// tony
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// example:
-	//
-	// 123456
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// accepted
+	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	ResponseStatus *string `json:"ResponseStatus,omitempty" xml:"ResponseStatus,omitempty"`
-	// example:
-	//
-	// true
-	Self *bool `json:"Self,omitempty" xml:"Self,omitempty"`
+	Self           *bool   `json:"Self,omitempty" xml:"Self,omitempty"`
 }
 
 func (s GetEventResponseBodyOrganizer) String() string {
@@ -852,9 +765,6 @@ func (s *GetEventResponseBodyOrganizer) Validate() error {
 }
 
 type GetEventResponseBodyOriginStart struct {
-	// example:
-	//
-	// 2023-01-01T00:00:00Z
 	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
 }
 
@@ -925,26 +835,11 @@ func (s *GetEventResponseBodyRecurrence) Validate() error {
 }
 
 type GetEventResponseBodyRecurrencePattern struct {
-	// example:
-	//
-	// 14
-	DayOfMonth *int32 `json:"DayOfMonth,omitempty" xml:"DayOfMonth,omitempty"`
-	// example:
-	//
-	// monday
+	DayOfMonth *int32  `json:"DayOfMonth,omitempty" xml:"DayOfMonth,omitempty"`
 	DaysOfWeek *string `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty"`
-	// example:
-	//
-	// first
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// example:
-	//
-	// 1
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// example:
-	//
-	// daily
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Index      *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Interval   *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetEventResponseBodyRecurrencePattern) String() string {
@@ -1005,18 +900,9 @@ func (s *GetEventResponseBodyRecurrencePattern) Validate() error {
 }
 
 type GetEventResponseBodyRecurrenceRange struct {
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// example:
-	//
-	// 5
-	NumberOfOccurrences *int32 `json:"NumberOfOccurrences,omitempty" xml:"NumberOfOccurrences,omitempty"`
-	// example:
-	//
-	// noEnd
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	EndDate             *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	NumberOfOccurrences *int32  `json:"NumberOfOccurrences,omitempty" xml:"NumberOfOccurrences,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetEventResponseBodyRecurrenceRange) String() string {
@@ -1059,13 +945,7 @@ func (s *GetEventResponseBodyRecurrenceRange) Validate() error {
 }
 
 type GetEventResponseBodyReminders struct {
-	// example:
-	//
-	// dingtalk
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// example:
-	//
-	// 15
+	Method  *string `json:"Method,omitempty" xml:"Method,omitempty"`
 	Minutes *string `json:"Minutes,omitempty" xml:"Minutes,omitempty"`
 }
 
@@ -1125,17 +1005,8 @@ func (s *GetEventResponseBodyRichTextDescription) Validate() error {
 }
 
 type GetEventResponseBodyStart struct {
-	// example:
-	//
-	// 2020-01-01
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
+	Date     *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// example:
-	//
-	// Asia/Shanghai
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 

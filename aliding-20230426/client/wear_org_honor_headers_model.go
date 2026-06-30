@@ -56,9 +56,6 @@ func (s *WearOrgHonorHeaders) Validate() error {
 }
 
 type WearOrgHonorHeadersAccountContext struct {
-	// example:
-	//
-	// 1915607600538524
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 

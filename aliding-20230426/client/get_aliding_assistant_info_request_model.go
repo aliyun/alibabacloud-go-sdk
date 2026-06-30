@@ -17,10 +17,6 @@ type iGetAlidingAssistantInfoRequest interface {
 
 type GetAlidingAssistantInfoRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	AssistantId   *string                                      `json:"AssistantId,omitempty" xml:"AssistantId,omitempty"`
 	TenantContext *GetAlidingAssistantInfoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

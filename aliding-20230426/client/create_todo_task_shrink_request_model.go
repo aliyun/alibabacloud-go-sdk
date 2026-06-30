@@ -66,11 +66,8 @@ type CreateTodoTaskShrinkRequest struct {
 	// example:
 	//
 	// true
-	IsOnlyShowExecutor  *bool   `json:"isOnlyShowExecutor,omitempty" xml:"isOnlyShowExecutor,omitempty"`
-	NotifyConfigsShrink *string `json:"notifyConfigs,omitempty" xml:"notifyConfigs,omitempty"`
-	// example:
-	//
-	// 12345
+	IsOnlyShowExecutor   *bool   `json:"isOnlyShowExecutor,omitempty" xml:"isOnlyShowExecutor,omitempty"`
+	NotifyConfigsShrink  *string `json:"notifyConfigs,omitempty" xml:"notifyConfigs,omitempty"`
 	OperatorId           *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
 	ParticipantIdsShrink *string `json:"participantIds,omitempty" xml:"participantIds,omitempty"`
 	// example:

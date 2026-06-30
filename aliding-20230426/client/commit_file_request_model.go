@@ -22,20 +22,11 @@ type iCommitFileRequest interface {
 }
 
 type CommitFileRequest struct {
-	// example:
-	//
-	// None
-	Name   *string                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Option *CommitFileRequestOption `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
-	// example:
-	//
-	// dentryUuid
+	Name             *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Option           *CommitFileRequestOption        `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
 	ParentDentryUuid *string                         `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
 	TenantContext    *CommitFileRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	// example:
-	//
-	// upload_key
-	UploadKey *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
+	UploadKey        *string                         `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
 }
 
 func (s CommitFileRequest) String() string {
@@ -106,23 +97,11 @@ func (s *CommitFileRequest) Validate() error {
 }
 
 type CommitFileRequestOption struct {
-	AppProperties []*CommitFileRequestOptionAppProperties `json:"AppProperties,omitempty" xml:"AppProperties,omitempty" type:"Repeated"`
-	// example:
-	//
-	// AUTO_RENAME
-	ConflictStrategy *string `json:"ConflictStrategy,omitempty" xml:"ConflictStrategy,omitempty"`
-	// example:
-	//
-	// false
-	ConvertToOnlineDoc *bool `json:"ConvertToOnlineDoc,omitempty" xml:"ConvertToOnlineDoc,omitempty"`
-	// example:
-	//
-	// DOC
-	ConvertToOnlineDocTargetDocumentType *string `json:"ConvertToOnlineDocTargetDocumentType,omitempty" xml:"ConvertToOnlineDocTargetDocumentType,omitempty"`
-	// example:
-	//
-	// 512
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	AppProperties                        []*CommitFileRequestOptionAppProperties `json:"AppProperties,omitempty" xml:"AppProperties,omitempty" type:"Repeated"`
+	ConflictStrategy                     *string                                 `json:"ConflictStrategy,omitempty" xml:"ConflictStrategy,omitempty"`
+	ConvertToOnlineDoc                   *bool                                   `json:"ConvertToOnlineDoc,omitempty" xml:"ConvertToOnlineDoc,omitempty"`
+	ConvertToOnlineDocTargetDocumentType *string                                 `json:"ConvertToOnlineDocTargetDocumentType,omitempty" xml:"ConvertToOnlineDocTargetDocumentType,omitempty"`
+	Size                                 *int64                                  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s CommitFileRequestOption) String() string {
@@ -192,17 +171,8 @@ func (s *CommitFileRequestOption) Validate() error {
 }
 
 type CommitFileRequestOptionAppProperties struct {
-	// example:
-	//
-	// property_name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// property_value
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// example:
-	//
-	// PUBLIC
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 

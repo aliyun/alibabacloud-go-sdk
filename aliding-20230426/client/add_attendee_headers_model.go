@@ -57,10 +57,6 @@ func (s *AddAttendeeHeaders) Validate() error {
 
 type AddAttendeeHeadersAccountContext struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 

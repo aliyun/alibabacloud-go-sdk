@@ -22,23 +22,12 @@ type iQueryRobotUnsubscriptionResponseBody interface {
 }
 
 type QueryRobotUnsubscriptionResponseBody struct {
-	// example:
-	//
-	// 1
-	PageNo *int32 `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
-	// example:
-	//
-	// 50
+	PageNo   *int32 `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 500
+	RequestId            *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	TotalCount           *int32    `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 	UnsubscribedStaffIds []*string `json:"unsubscribedStaffIds,omitempty" xml:"unsubscribedStaffIds,omitempty" type:"Repeated"`
 }

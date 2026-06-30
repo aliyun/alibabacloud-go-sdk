@@ -22,16 +22,10 @@ type iUpdatePermissionShrinkRequest interface {
 }
 
 type UpdatePermissionShrinkRequest struct {
-	// example:
-	//
-	// kDnRL6jAJMLgNkw7tBnw5aY4VyMoPYe1
 	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
 	// This parameter is required.
-	MembersShrink *string `json:"Members,omitempty" xml:"Members,omitempty"`
-	OptionShrink  *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// example:
-	//
-	// READER
+	MembersShrink       *string `json:"Members,omitempty" xml:"Members,omitempty"`
+	OptionShrink        *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	RoleId              *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

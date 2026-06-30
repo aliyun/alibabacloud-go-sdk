@@ -56,9 +56,6 @@ func (s *CreateOrgHonorTemplateHeaders) Validate() error {
 }
 
 type CreateOrgHonorTemplateHeadersAccountContext struct {
-	// example:
-	//
-	// 208579
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 

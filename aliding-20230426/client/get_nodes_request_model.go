@@ -74,13 +74,7 @@ func (s *GetNodesRequest) Validate() error {
 }
 
 type GetNodesRequestOption struct {
-	// example:
-	//
-	// false
-	WithPermissionRole *bool `json:"WithPermissionRole,omitempty" xml:"WithPermissionRole,omitempty"`
-	// example:
-	//
-	// false
+	WithPermissionRole  *bool `json:"WithPermissionRole,omitempty" xml:"WithPermissionRole,omitempty"`
 	WithStatisticalInfo *bool `json:"WithStatisticalInfo,omitempty" xml:"WithStatisticalInfo,omitempty"`
 }
 

@@ -24,19 +24,13 @@ type iSearchFormDatasResponseBody interface {
 }
 
 type SearchFormDatasResponseBody struct {
-	// example:
-	//
-	// 1
 	CurrentPage *int32                             `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
 	Data        []*SearchFormDatasResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 20
-	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int32  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -123,58 +117,22 @@ func (s *SearchFormDatasResponseBody) Validate() error {
 }
 
 type SearchFormDatasResponseBodyData struct {
-	// example:
-	//
-	// 2018-01-24 11:22:01
-	CreatedTimeGMT *string `json:"CreatedTimeGMT,omitempty" xml:"CreatedTimeGMT,omitempty"`
-	// example:
-	//
-	// 012345
-	CreatorUserId *string `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
-	// example:
-	//
-	// 1002
-	DataId   *int64                 `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	FormData map[string]interface{} `json:"FormData,omitempty" xml:"FormData,omitempty"`
-	// example:
-	//
-	// FINST-BNKJDRF
-	FormInstanceId *string `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
-	// example:
-	//
-	// FORM-EF6Y93URN24F1SCX15VA2P918LPEIJ2H3UFORCJ1
-	FormUuid *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
-	// example:
-	//
-	// {}
-	InstanceValue *string `json:"InstanceValue,omitempty" xml:"InstanceValue,omitempty"`
-	// example:
-	//
-	// FORM-EF6Y93URN24F1SCX15VA2P918LPEIJ2H3UFORCJ1
-	ModelUuid *string `json:"ModelUuid,omitempty" xml:"ModelUuid,omitempty"`
-	// example:
-	//
-	// 2018-01-24 11:22:01
-	ModifiedTimeGMT *string `json:"ModifiedTimeGMT,omitempty" xml:"ModifiedTimeGMT,omitempty"`
-	// example:
-	//
-	// 012345
-	ModifierUserId *string                                    `json:"ModifierUserId,omitempty" xml:"ModifierUserId,omitempty"`
-	ModifyUser     *SearchFormDatasResponseBodyDataModifyUser `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty" type:"Struct"`
-	Originator     *SearchFormDatasResponseBodyDataOriginator `json:"Originator,omitempty" xml:"Originator,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// example:
-	//
-	// 231008101012015353
-	SerialNo *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
-	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// example:
-	//
-	// 3
-	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+	CreatedTimeGMT  *string                                    `json:"CreatedTimeGMT,omitempty" xml:"CreatedTimeGMT,omitempty"`
+	CreatorUserId   *string                                    `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	DataId          *int64                                     `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	FormData        map[string]interface{}                     `json:"FormData,omitempty" xml:"FormData,omitempty"`
+	FormInstanceId  *string                                    `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
+	FormUuid        *string                                    `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	InstanceValue   *string                                    `json:"InstanceValue,omitempty" xml:"InstanceValue,omitempty"`
+	ModelUuid       *string                                    `json:"ModelUuid,omitempty" xml:"ModelUuid,omitempty"`
+	ModifiedTimeGMT *string                                    `json:"ModifiedTimeGMT,omitempty" xml:"ModifiedTimeGMT,omitempty"`
+	ModifierUserId  *string                                    `json:"ModifierUserId,omitempty" xml:"ModifierUserId,omitempty"`
+	ModifyUser      *SearchFormDatasResponseBodyDataModifyUser `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty" type:"Struct"`
+	Originator      *SearchFormDatasResponseBodyDataOriginator `json:"Originator,omitempty" xml:"Originator,omitempty" type:"Struct"`
+	Sequence        *string                                    `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SerialNo        *string                                    `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	Title           *string                                    `json:"Title,omitempty" xml:"Title,omitempty"`
+	Version         *int64                                     `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s SearchFormDatasResponseBodyData) String() string {
@@ -344,9 +302,6 @@ func (s *SearchFormDatasResponseBodyData) Validate() error {
 }
 
 type SearchFormDatasResponseBodyDataModifyUser struct {
-	// example:
-	//
-	// 012345
 	UserId   *string                                            `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserName *SearchFormDatasResponseBodyDataModifyUserUserName `json:"UserName,omitempty" xml:"UserName,omitempty" type:"Struct"`
 }
@@ -388,14 +343,8 @@ func (s *SearchFormDatasResponseBodyDataModifyUser) Validate() error {
 
 type SearchFormDatasResponseBodyDataModifyUserUserName struct {
 	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
-	// example:
-	//
-	// EngilishName
 	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
-	// example:
-	//
-	// ZH-CN
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SearchFormDatasResponseBodyDataModifyUserUserName) String() string {
@@ -438,9 +387,6 @@ func (s *SearchFormDatasResponseBodyDataModifyUserUserName) Validate() error {
 }
 
 type SearchFormDatasResponseBodyDataOriginator struct {
-	// example:
-	//
-	// 012345
 	UserId   *string                                            `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	UserName *SearchFormDatasResponseBodyDataOriginatorUserName `json:"UserName,omitempty" xml:"UserName,omitempty" type:"Struct"`
 }
@@ -482,14 +428,8 @@ func (s *SearchFormDatasResponseBodyDataOriginator) Validate() error {
 
 type SearchFormDatasResponseBodyDataOriginatorUserName struct {
 	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
-	// example:
-	//
-	// EngilishName
 	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
-	// example:
-	//
-	// ZH-CN
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SearchFormDatasResponseBodyDataOriginatorUserName) String() string {

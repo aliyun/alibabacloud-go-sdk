@@ -35,42 +35,21 @@ type iGrantHonorShrinkRequest interface {
 
 type GrantHonorShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
-	// example:
-	//
-	// null
-	ExpirationTime *int64 `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
+	ExpirationTime      *int64  `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
 	// This parameter is required.
 	GrantReason *string `json:"grantReason,omitempty" xml:"grantReason,omitempty"`
 	// This parameter is required.
 	GranterName *string `json:"granterName,omitempty" xml:"granterName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 21659398
-	HonorId *string `json:"honorId,omitempty" xml:"honorId,omitempty"`
-	// example:
-	//
-	// false
-	NoticeAnnouncer *bool `json:"noticeAnnouncer,omitempty" xml:"noticeAnnouncer,omitempty"`
-	// example:
-	//
-	// false
+	HonorId                   *string `json:"honorId,omitempty" xml:"honorId,omitempty"`
+	NoticeAnnouncer           *bool   `json:"noticeAnnouncer,omitempty" xml:"noticeAnnouncer,omitempty"`
 	NoticeSingle              *bool   `json:"noticeSingle,omitempty" xml:"noticeSingle,omitempty"`
 	OpenConversationIdsShrink *string `json:"openConversationIds,omitempty" xml:"openConversationIds,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 345391052
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
 	// This parameter is required.
 	ReceiverUserIdsShrink *string `json:"receiverUserIds,omitempty" xml:"receiverUserIds,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 363784
 	SenderUserId *string `json:"senderUserId,omitempty" xml:"senderUserId,omitempty"`
 }
 

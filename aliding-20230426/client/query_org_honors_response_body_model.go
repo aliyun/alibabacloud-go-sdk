@@ -18,17 +18,9 @@ type iQueryOrgHonorsResponseBody interface {
 }
 
 type QueryOrgHonorsResponseBody struct {
-	// example:
-	//
-	// 15
 	NextToken  *string                                 `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	OpenHonors []*QueryOrgHonorsResponseBodyOpenHonors `json:"openHonors,omitempty" xml:"openHonors,omitempty" type:"Repeated"`
-	// requestId
-	//
-	// example:
-	//
-	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId  *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s QueryOrgHonorsResponseBody) String() string {
@@ -80,19 +72,10 @@ func (s *QueryOrgHonorsResponseBody) Validate() error {
 }
 
 type QueryOrgHonorsResponseBodyOpenHonors struct {
-	HonorDesc *string `json:"honorDesc,omitempty" xml:"honorDesc,omitempty"`
-	// example:
-	//
-	// 21658579
-	HonorId *int64 `json:"honorId,omitempty" xml:"honorId,omitempty"`
-	// example:
-	//
-	// https://xxxx.ali-cdn.com/jfejfi.jpg
-	HonorImgUrl *string `json:"honorImgUrl,omitempty" xml:"honorImgUrl,omitempty"`
-	HonorName   *string `json:"honorName,omitempty" xml:"honorName,omitempty"`
-	// example:
-	//
-	// https://xxxx.ali-cdn.com/jfejfi.jpg
+	HonorDesc          *string `json:"honorDesc,omitempty" xml:"honorDesc,omitempty"`
+	HonorId            *int64  `json:"honorId,omitempty" xml:"honorId,omitempty"`
+	HonorImgUrl        *string `json:"honorImgUrl,omitempty" xml:"honorImgUrl,omitempty"`
+	HonorName          *string `json:"honorName,omitempty" xml:"honorName,omitempty"`
 	HonorPendantImgUrl *string `json:"honorPendantImgUrl,omitempty" xml:"honorPendantImgUrl,omitempty"`
 }
 

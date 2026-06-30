@@ -20,9 +20,6 @@ type iInsertDropDownListResponseBody interface {
 }
 
 type InsertDropDownListResponseBody struct {
-	// example:
-	//
-	// A3:C3
 	A1Notation *string `json:"a1Notation,omitempty" xml:"a1Notation,omitempty"`
 	// example:
 	//

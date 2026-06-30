@@ -22,18 +22,9 @@ type iUpdateConvExtensionRequest interface {
 }
 
 type UpdateConvExtensionRequest struct {
-	// example:
-	//
-	// https://xxx
-	MobileUrl *string `json:"MobileUrl,omitempty" xml:"MobileUrl,omitempty"`
-	// example:
-	//
-	// https://xxx
-	PcUrl       *string   `json:"PcUrl,omitempty" xml:"PcUrl,omitempty"`
-	StaffIdList []*string `json:"StaffIdList,omitempty" xml:"StaffIdList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 546374856
+	MobileUrl     *string                                  `json:"MobileUrl,omitempty" xml:"MobileUrl,omitempty"`
+	PcUrl         *string                                  `json:"PcUrl,omitempty" xml:"PcUrl,omitempty"`
+	StaffIdList   []*string                                `json:"StaffIdList,omitempty" xml:"StaffIdList,omitempty" type:"Repeated"`
 	SystemUid     *string                                  `json:"SystemUid,omitempty" xml:"SystemUid,omitempty"`
 	TenantContext *UpdateConvExtensionRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

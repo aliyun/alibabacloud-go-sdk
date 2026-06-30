@@ -14,9 +14,6 @@ type iGetNewestInnerGroupsRequest interface {
 }
 
 type GetNewestInnerGroupsRequest struct {
-	// example:
-	//
-	// {}
 	Request map[string]interface{} `json:"Request,omitempty" xml:"Request,omitempty"`
 }
 

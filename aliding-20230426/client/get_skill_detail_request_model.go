@@ -18,17 +18,8 @@ type iGetSkillDetailRequest interface {
 }
 
 type GetSkillDetailRequest struct {
-	// example:
-	//
-	// xxx
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// example:
-	//
-	// 8f6a2111-3828-4a9f-a3ce-51ce73c6ec9b
-	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	// example:
-	//
-	// xxx
+	GroupId               *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SkillId               *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
 	SourceIdOfAssistantId *string `json:"SourceIdOfAssistantId,omitempty" xml:"SourceIdOfAssistantId,omitempty"`
 }
 

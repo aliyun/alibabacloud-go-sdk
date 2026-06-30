@@ -20,13 +20,7 @@ type iStartCloudRecordShrinkRequest interface {
 }
 
 type StartCloudRecordShrinkRequest struct {
-	// example:
-	//
-	// speech
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// example:
-	//
-	// relative_right
+	Mode                *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	SmallWindowPosition *string `json:"SmallWindowPosition,omitempty" xml:"SmallWindowPosition,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.

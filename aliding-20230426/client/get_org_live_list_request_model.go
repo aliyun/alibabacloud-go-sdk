@@ -31,32 +31,15 @@ type GetOrgLiveListRequest struct {
 	// example:
 	//
 	// db4d318xxxxx
-	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
-	// example:
-	//
-	// 1720211800000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	CorpId  *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	EndTime *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// 1719211800000
+	PageSize      *int64                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartTime     *int64                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TenantContext *GetOrgLiveListRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId        *string                             `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetOrgLiveListRequest) String() string {

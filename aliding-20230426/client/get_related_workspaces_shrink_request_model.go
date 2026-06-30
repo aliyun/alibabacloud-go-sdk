@@ -16,9 +16,6 @@ type iGetRelatedWorkspacesShrinkRequest interface {
 }
 
 type GetRelatedWorkspacesShrinkRequest struct {
-	// example:
-	//
-	// true
 	IncludeRecent       *bool   `json:"IncludeRecent,omitempty" xml:"IncludeRecent,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

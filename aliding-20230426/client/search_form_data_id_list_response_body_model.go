@@ -24,19 +24,13 @@ type iSearchFormDataIdListResponseBody interface {
 }
 
 type SearchFormDataIdListResponseBody struct {
-	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	Data       []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber *int64    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 20
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int64  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

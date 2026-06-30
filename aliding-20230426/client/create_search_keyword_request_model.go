@@ -24,21 +24,9 @@ type iCreateSearchKeywordRequest interface {
 }
 
 type CreateSearchKeywordRequest struct {
-	// example:
-	//
-	// {}
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// example:
-	//
-	// 1699265024987
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// 1028
-	ResId *string `json:"ResId,omitempty" xml:"ResId,omitempty"`
-	// example:
-	//
-	// 1699265024987
+	Content       *string                                  `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime       *int64                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ResId         *string                                  `json:"ResId,omitempty" xml:"ResId,omitempty"`
 	StartTime     *int64                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TenantContext *CreateSearchKeywordRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	UserIdList    []*string                                `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`

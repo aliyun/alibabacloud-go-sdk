@@ -75,10 +75,7 @@ func (s *AddWorkspaceRequest) Validate() error {
 
 type AddWorkspaceRequestOption struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// lHiicjNFM2iSFYSdz2iPuI8ZwiEiE
-	TeamId *string `json:"TeamId,omitempty" xml:"TeamId,omitempty"`
+	TeamId      *string `json:"TeamId,omitempty" xml:"TeamId,omitempty"`
 }
 
 func (s AddWorkspaceRequestOption) String() string {

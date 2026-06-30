@@ -32,42 +32,15 @@ type iExecuteTaskRequest interface {
 }
 
 type ExecuteTaskRequest struct {
-  // example:
-  // 
-  // APP_PBKT0MFBEBTDO8T7SLVP
   AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-  // example:
-  // 
-  // http://
   DigitalSignUrl *string `json:"DigitalSignUrl,omitempty" xml:"DigitalSignUrl,omitempty"`
-  // example:
-  // 
-  // {}
   FormDataJson *string `json:"FormDataJson,omitempty" xml:"FormDataJson,omitempty"`
-  // example:
-  // 
-  // zh_CN
   Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-  // example:
-  // 
-  // y
   NoExecuteExpressions *string `json:"NoExecuteExpressions,omitempty" xml:"NoExecuteExpressions,omitempty"`
-  // example:
-  // 
-  // AGREE
   OutResult *string `json:"OutResult,omitempty" xml:"OutResult,omitempty"`
-  // example:
-  // 
-  // f30233fb-72e1-4af4-8cb8-c7e0ea9ee530
   ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
   Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-  // example:
-  // 
-  // hexxyy
   SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
-  // example:
-  // 
-  // 12002575L
   TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

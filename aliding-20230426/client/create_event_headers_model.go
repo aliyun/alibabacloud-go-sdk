@@ -57,10 +57,6 @@ func (s *CreateEventHeaders) Validate() error {
 
 type CreateEventHeadersAccountContext struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 208579
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 

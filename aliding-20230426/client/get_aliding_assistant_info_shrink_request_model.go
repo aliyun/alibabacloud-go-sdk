@@ -17,10 +17,6 @@ type iGetAlidingAssistantInfoShrinkRequest interface {
 
 type GetAlidingAssistantInfoShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	AssistantId         *string `json:"AssistantId,omitempty" xml:"AssistantId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

@@ -20,8 +20,6 @@ type InsertRowsBeforeResponseBody struct {
 	//
 	// stxxxx
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

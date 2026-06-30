@@ -17,10 +17,6 @@ type iGetConversaionSpaceShrinkRequest interface {
 
 type GetConversaionSpaceShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cidB8Pzg****FIWPv2PMA==
 	OpenConversationId  *string `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

@@ -20,22 +20,10 @@ type iGetInstancesByIdListRequest interface {
 }
 
 type GetInstancesByIdListRequest struct {
-	// example:
-	//
-	// APP_PBxxx
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// example:
-	//
-	// zh_CN
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// example:
-	//
-	// inst-123,inst-223
+	AppType            *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	Language           *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	ProcessInstanceIds *string `json:"ProcessInstanceIds,omitempty" xml:"ProcessInstanceIds,omitempty"`
-	// example:
-	//
-	// hexxxx
-	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	SystemToken        *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
 }
 
 func (s GetInstancesByIdListRequest) String() string {

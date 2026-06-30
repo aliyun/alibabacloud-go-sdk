@@ -40,8 +40,6 @@ type GetRangeResponseBody struct {
 	//
 	// []
 	Hyperlinks [][]*GetRangeResponseBodyHyperlinks `json:"hyperlinks,omitempty" xml:"hyperlinks,omitempty" type:"Repeated"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -119,26 +117,18 @@ func (s *GetRangeResponseBody) Validate() error {
 }
 
 type GetRangeResponseBodyBackgroundColors struct {
-	// red
-	//
 	// example:
 	//
 	// 0
 	Red *int32 `json:"Red,omitempty" xml:"Red,omitempty"`
-	// green
-	//
 	// example:
 	//
 	// 0
 	Green *int32 `json:"Green,omitempty" xml:"Green,omitempty"`
-	// blue
-	//
 	// example:
 	//
 	// 0
 	Blue *int32 `json:"Blue,omitempty" xml:"Blue,omitempty"`
-	// hexString
-	//
 	// example:
 	//
 	// #000000

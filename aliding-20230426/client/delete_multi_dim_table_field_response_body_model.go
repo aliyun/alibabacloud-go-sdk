@@ -20,9 +20,6 @@ type iDeleteMultiDimTableFieldResponseBody interface {
 }
 
 type DeleteMultiDimTableFieldResponseBody struct {
-	// example:
-	//
-	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// example:
 	//

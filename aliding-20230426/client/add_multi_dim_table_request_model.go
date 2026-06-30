@@ -21,10 +21,6 @@ type iAddMultiDimTableRequest interface {
 
 type AddMultiDimTableRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
 	BaseId        *string                               `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
 	Fields        []*AddMultiDimTableRequestFields      `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
 	Name          *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -98,10 +94,6 @@ type AddMultiDimTableRequestFields struct {
 	Name     *string                `json:"Name,omitempty" xml:"Name,omitempty"`
 	Property map[string]interface{} `json:"Property,omitempty" xml:"Property,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

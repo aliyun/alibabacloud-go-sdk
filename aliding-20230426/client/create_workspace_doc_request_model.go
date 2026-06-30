@@ -142,7 +142,7 @@ func (s *CreateWorkspaceDocRequest) Validate() error {
 type CreateWorkspaceDocRequestTenantContext struct {
 	// example:
 	//
-	// 1
+	// xxxxxx
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

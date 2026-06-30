@@ -60,7 +60,7 @@ type GetEventHeadersAccountContext struct {
 	//
 	// example:
 	//
-	// 123456
+	// 012345
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 

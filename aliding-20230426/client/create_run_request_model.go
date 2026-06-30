@@ -40,7 +40,7 @@ type CreateRunRequest struct {
 	ExtLoginUser *CreateRunRequestExtLoginUser `json:"extLoginUser,omitempty" xml:"extLoginUser,omitempty" type:"Struct"`
 	// example:
 	//
-	// assistantId
+	// assistantId2
 	OriginalAssistantId *string `json:"originalAssistantId,omitempty" xml:"originalAssistantId,omitempty"`
 	// example:
 	//

@@ -20,22 +20,10 @@ type iDeleteInstanceRequest interface {
 }
 
 type DeleteInstanceRequest struct {
-	// example:
-	//
-	// APP_PBKTxxx
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// example:
-	//
-	// zh_CN
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// example:
-	//
-	// f30233fb-72xxx
+	AppType           *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	Language          *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
-	// example:
-	//
-	// hexxxx
-	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	SystemToken       *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
 }
 
 func (s DeleteInstanceRequest) String() string {

@@ -96,22 +96,10 @@ func (s *GetMultiDimTableAllFieldsResponseBody) Validate() error {
 }
 
 type GetMultiDimTableAllFieldsResponseBodyValue struct {
-	// example:
-	//
-	// stxxxx
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// Sheet1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// xxx
+	Id       *string                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name     *string                `json:"Name,omitempty" xml:"Name,omitempty"`
 	Property map[string]interface{} `json:"Property,omitempty" xml:"Property,omitempty"`
-	// example:
-	//
-	// xxx
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type     *string                `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetMultiDimTableAllFieldsResponseBodyValue) String() string {

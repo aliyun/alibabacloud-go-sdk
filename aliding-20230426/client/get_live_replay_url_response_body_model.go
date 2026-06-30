@@ -20,9 +20,6 @@ type iGetLiveReplayUrlResponseBody interface {
 }
 
 type GetLiveReplayUrlResponseBody struct {
-	// example:
-	//
-	// https://xxxxxxxx
 	ReplayUrl *string `json:"replayUrl,omitempty" xml:"replayUrl,omitempty"`
 	// example:
 	//

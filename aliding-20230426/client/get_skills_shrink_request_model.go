@@ -18,11 +18,8 @@ type iGetSkillsShrinkRequest interface {
 }
 
 type GetSkillsShrinkRequest struct {
-	GroupIdsShrink *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	SkillIdsShrink *string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty"`
-	// example:
-	//
-	// xxx
+	GroupIdsShrink        *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
+	SkillIdsShrink        *string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty"`
 	SourceIdOfAssistantId *string `json:"SourceIdOfAssistantId,omitempty" xml:"SourceIdOfAssistantId,omitempty"`
 }
 

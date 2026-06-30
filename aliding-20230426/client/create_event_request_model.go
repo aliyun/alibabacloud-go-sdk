@@ -42,14 +42,11 @@ type iCreateEventRequest interface {
 }
 
 type CreateEventRequest struct {
-	Attendees     []*CreateEventRequestAttendees     `json:"Attendees,omitempty" xml:"Attendees,omitempty" type:"Repeated"`
-	CardInstances []*CreateEventRequestCardInstances `json:"CardInstances,omitempty" xml:"CardInstances,omitempty" type:"Repeated"`
-	Description   *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	End           *CreateEventRequestEnd             `json:"End,omitempty" xml:"End,omitempty" type:"Struct"`
-	Extra         map[string]*string                 `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// example:
-	//
-	// true
+	Attendees         []*CreateEventRequestAttendees       `json:"Attendees,omitempty" xml:"Attendees,omitempty" type:"Repeated"`
+	CardInstances     []*CreateEventRequestCardInstances   `json:"CardInstances,omitempty" xml:"CardInstances,omitempty" type:"Repeated"`
+	Description       *string                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	End               *CreateEventRequestEnd               `json:"End,omitempty" xml:"End,omitempty" type:"Struct"`
+	Extra             map[string]*string                   `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	IsAllDay          *bool                                `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
 	Location          *CreateEventRequestLocation          `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
 	OnlineMeetingInfo *CreateEventRequestOnlineMeetingInfo `json:"OnlineMeetingInfo,omitempty" xml:"OnlineMeetingInfo,omitempty" type:"Struct"`
@@ -62,10 +59,6 @@ type CreateEventRequest struct {
 	Summary   *string                        `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	UiConfigs []*CreateEventRequestUiConfigs `json:"UiConfigs,omitempty" xml:"UiConfigs,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// primary
 	CalendarId *string `json:"calendarId,omitempty" xml:"calendarId,omitempty"`
 	// This parameter is required.
 	Start *CreateEventRequestStart `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
@@ -285,14 +278,8 @@ func (s *CreateEventRequest) Validate() error {
 }
 
 type CreateEventRequestAttendees struct {
-	// example:
-	//
-	// 7845
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// true
-	IsOptional *bool `json:"isOptional,omitempty" xml:"isOptional,omitempty"`
+	Id         *string `json:"id,omitempty" xml:"id,omitempty"`
+	IsOptional *bool   `json:"isOptional,omitempty" xml:"isOptional,omitempty"`
 }
 
 func (s CreateEventRequestAttendees) String() string {
@@ -361,17 +348,8 @@ func (s *CreateEventRequestCardInstances) Validate() error {
 }
 
 type CreateEventRequestEnd struct {
-	// example:
-	//
-	// "2020-09-21"
-	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// example:
-	//
-	// "2021-09-20T10:15:30+08:00"
+	Date     *string `json:"date,omitempty" xml:"date,omitempty"`
 	DateTime *string `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
-	// example:
-	//
-	// "Asia/Shanghai"
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
@@ -440,9 +418,6 @@ func (s *CreateEventRequestLocation) Validate() error {
 }
 
 type CreateEventRequestOnlineMeetingInfo struct {
-	// example:
-	//
-	// dingtalk
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -513,26 +488,11 @@ func (s *CreateEventRequestRecurrence) Validate() error {
 }
 
 type CreateEventRequestRecurrencePattern struct {
-	// example:
-	//
-	// 1
-	DayOfMonth *int32 `json:"dayOfMonth,omitempty" xml:"dayOfMonth,omitempty"`
-	// example:
-	//
-	// "monday"
+	DayOfMonth *int32  `json:"dayOfMonth,omitempty" xml:"dayOfMonth,omitempty"`
 	DaysOfWeek *string `json:"daysOfWeek,omitempty" xml:"daysOfWeek,omitempty"`
-	// example:
-	//
-	// "last"
-	Index *string `json:"index,omitempty" xml:"index,omitempty"`
-	// example:
-	//
-	// 1
-	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
-	// example:
-	//
-	// "daily"
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Index      *string `json:"index,omitempty" xml:"index,omitempty"`
+	Interval   *int32  `json:"interval,omitempty" xml:"interval,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateEventRequestRecurrencePattern) String() string {
@@ -593,18 +553,9 @@ func (s *CreateEventRequestRecurrencePattern) Validate() error {
 }
 
 type CreateEventRequestRecurrenceRange struct {
-	// example:
-	//
-	// "2021-12-31T10:15:30+08:00"
-	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// example:
-	//
-	// 5
-	NumberOfOccurrences *int32 `json:"numberOfOccurrences,omitempty" xml:"numberOfOccurrences,omitempty"`
-	// example:
-	//
-	// "endDate"
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	EndDate             *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	NumberOfOccurrences *int32  `json:"numberOfOccurrences,omitempty" xml:"numberOfOccurrences,omitempty"`
+	Type                *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateEventRequestRecurrenceRange) String() string {
@@ -647,14 +598,8 @@ func (s *CreateEventRequestRecurrenceRange) Validate() error {
 }
 
 type CreateEventRequestReminders struct {
-	// example:
-	//
-	// dingtalk
-	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// example:
-	//
-	// 15
-	Minutes *int32 `json:"minutes,omitempty" xml:"minutes,omitempty"`
+	Method  *string `json:"method,omitempty" xml:"method,omitempty"`
+	Minutes *int32  `json:"minutes,omitempty" xml:"minutes,omitempty"`
 }
 
 func (s CreateEventRequestReminders) String() string {
@@ -713,13 +658,7 @@ func (s *CreateEventRequestRichTextDescription) Validate() error {
 }
 
 type CreateEventRequestUiConfigs struct {
-	// example:
-	//
-	// "updateEventButton"
-	UiName *string `json:"uiName,omitempty" xml:"uiName,omitempty"`
-	// example:
-	//
-	// "hide"
+	UiName   *string `json:"uiName,omitempty" xml:"uiName,omitempty"`
 	UiStatus *string `json:"uiStatus,omitempty" xml:"uiStatus,omitempty"`
 }
 
@@ -754,17 +693,8 @@ func (s *CreateEventRequestUiConfigs) Validate() error {
 }
 
 type CreateEventRequestStart struct {
-	// example:
-	//
-	// "2021-09-20"
-	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// example:
-	//
-	// "2021-09-20T10:15:30+08:00"
+	Date     *string `json:"date,omitempty" xml:"date,omitempty"`
 	DateTime *string `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
-	// example:
-	//
-	// "Asia/Shanghai"
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 

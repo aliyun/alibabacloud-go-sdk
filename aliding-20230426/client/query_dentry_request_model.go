@@ -21,20 +21,9 @@ type iQueryDentryRequest interface {
 
 type QueryDentryRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xxx
-	DentryId *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
-	// example:
-	//
-	// true
-	IncludeSpace *bool `json:"IncludeSpace,omitempty" xml:"IncludeSpace,omitempty"`
+	DentryId     *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
+	IncludeSpace *bool   `json:"IncludeSpace,omitempty" xml:"IncludeSpace,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// space-fxhb96vuddz8htqt
 	SpaceId       *string                          `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	TenantContext *QueryDentryRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

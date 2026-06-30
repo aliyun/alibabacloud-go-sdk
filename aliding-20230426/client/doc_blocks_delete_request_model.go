@@ -22,7 +22,7 @@ type DocBlocksDeleteRequest struct {
 	//
 	// example:
 	//
-	// mgokkwiovcq5eu02le8
+	// 1
 	BlockId *string `json:"BlockId,omitempty" xml:"BlockId,omitempty"`
 	// This parameter is required.
 	//

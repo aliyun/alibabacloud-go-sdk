@@ -19,16 +19,8 @@ type iGetMultiDimTableAllFieldsRequest interface {
 
 type GetMultiDimTableAllFieldsRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 338534
 	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xxx
 	SheetIdOrName *string                                        `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
 	TenantContext *GetMultiDimTableAllFieldsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

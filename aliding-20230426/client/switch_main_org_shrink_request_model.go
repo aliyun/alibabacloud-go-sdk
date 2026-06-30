@@ -16,9 +16,6 @@ type iSwitchMainOrgShrinkRequest interface {
 }
 
 type SwitchMainOrgShrinkRequest struct {
-	// example:
-	//
-	// 21001
 	TargetOrgId         *int64  `json:"TargetOrgId,omitempty" xml:"TargetOrgId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

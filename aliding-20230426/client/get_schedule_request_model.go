@@ -20,13 +20,7 @@ type iGetScheduleRequest interface {
 }
 
 type GetScheduleRequest struct {
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
+	EndTime       *string                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	StartTime     *string                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TenantContext *GetScheduleRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	UserIds       []*string                        `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`

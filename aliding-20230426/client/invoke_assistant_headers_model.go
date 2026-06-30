@@ -20,13 +20,10 @@ type iInvokeAssistantHeaders interface {
 }
 
 type InvokeAssistantHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// example:
-	//
-	// 123456
-	AccountId        *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	AiLogContextJson *string `json:"aiLogContextJson,omitempty" xml:"aiLogContextJson,omitempty"`
-	AlidingSsoTicket *string `json:"alidingSsoTicket,omitempty" xml:"alidingSsoTicket,omitempty"`
+	CommonHeaders    map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountId        *string            `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	AiLogContextJson *string            `json:"aiLogContextJson,omitempty" xml:"aiLogContextJson,omitempty"`
+	AlidingSsoTicket *string            `json:"alidingSsoTicket,omitempty" xml:"alidingSsoTicket,omitempty"`
 }
 
 func (s InvokeAssistantHeaders) String() string {

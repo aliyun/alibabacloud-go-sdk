@@ -25,26 +25,13 @@ type iCopyDentryByNodeIdRequest interface {
 
 type CopyDentryByNodeIdRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// P7QG4Yx2Jpx4OolYC1QPg5BaJ9dEq3XD
 	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
 	// This parameter is required.
-	Name          *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	TenantContext *CopyDentryByNodeIdRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	// example:
-	//
-	// P7QG4Yx2Jpx4OolYC1QPg5BaJ9dEq3XD
-	ToNextNodeId *string `json:"ToNextNodeId,omitempty" xml:"ToNextNodeId,omitempty"`
-	// example:
-	//
-	// P7QG4Yx2Jpx4OolYC1QPg5BaJ9dEq3XD
-	ToParentNodeId *string `json:"ToParentNodeId,omitempty" xml:"ToParentNodeId,omitempty"`
-	// example:
-	//
-	// P7QG4Yx2Jpx4OolYC1QPg5BaJ9dEq3XD
-	ToPrevNodeId *string `json:"ToPrevNodeId,omitempty" xml:"ToPrevNodeId,omitempty"`
+	Name           *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	TenantContext  *CopyDentryByNodeIdRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	ToNextNodeId   *string                                 `json:"ToNextNodeId,omitempty" xml:"ToNextNodeId,omitempty"`
+	ToParentNodeId *string                                 `json:"ToParentNodeId,omitempty" xml:"ToParentNodeId,omitempty"`
+	ToPrevNodeId   *string                                 `json:"ToPrevNodeId,omitempty" xml:"ToPrevNodeId,omitempty"`
 }
 
 func (s CopyDentryByNodeIdRequest) String() string {

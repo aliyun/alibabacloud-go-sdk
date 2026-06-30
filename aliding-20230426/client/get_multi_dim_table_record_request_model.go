@@ -21,22 +21,10 @@ type iGetMultiDimTableRecordRequest interface {
 
 type GetMultiDimTableRecordRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 101114
 	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xxx
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xxx
 	SheetIdOrName *string                                     `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
 	TenantContext *GetMultiDimTableRecordRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

@@ -16,12 +16,7 @@ type iCreateLiveResponseBody interface {
 }
 
 type CreateLiveResponseBody struct {
-	// example:
-	//
-	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	LiveId *string `json:"liveId,omitempty" xml:"liveId,omitempty"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

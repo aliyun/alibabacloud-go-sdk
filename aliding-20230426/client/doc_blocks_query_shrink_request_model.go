@@ -22,9 +22,6 @@ type iDocBlocksQueryShrinkRequest interface {
 }
 
 type DocBlocksQueryShrinkRequest struct {
-	// example:
-	//
-	// heading
 	BlockType *string `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
 	// This parameter is required.
 	//

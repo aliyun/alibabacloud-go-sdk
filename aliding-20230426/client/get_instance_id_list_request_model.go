@@ -42,66 +42,21 @@ type iGetInstanceIdListRequest interface {
 }
 
 type GetInstanceIdListRequest struct {
-	// example:
-	//
-	// APP_PBxxx
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// example:
-	//
-	// agree
-	ApprovedResult *string `json:"ApprovedResult,omitempty" xml:"ApprovedResult,omitempty"`
-	// example:
-	//
-	// 2021-05-01
-	CreateFromTimeGMT *string `json:"CreateFromTimeGMT,omitempty" xml:"CreateFromTimeGMT,omitempty"`
-	// example:
-	//
-	// 2021-05-01
-	CreateToTimeGMT *string `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
-	// example:
-	//
-	// FORM-EF6Yxxx
-	FormUuid *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
-	// example:
-	//
-	// RUNNING
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// example:
-	//
-	// zh_CN
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// example:
-	//
-	// 2021-05-01
+	AppType             *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	ApprovedResult      *string `json:"ApprovedResult,omitempty" xml:"ApprovedResult,omitempty"`
+	CreateFromTimeGMT   *string `json:"CreateFromTimeGMT,omitempty" xml:"CreateFromTimeGMT,omitempty"`
+	CreateToTimeGMT     *string `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	FormUuid            *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	InstanceStatus      *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	Language            *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	ModifiedFromTimeGMT *string `json:"ModifiedFromTimeGMT,omitempty" xml:"ModifiedFromTimeGMT,omitempty"`
-	// example:
-	//
-	// 2021-09-10
-	ModifiedToTimeGMT *string `json:"ModifiedToTimeGMT,omitempty" xml:"ModifiedToTimeGMT,omitempty"`
-	// example:
-	//
-	// 012345
-	OriginatorId *string `json:"OriginatorId,omitempty" xml:"OriginatorId,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// {\\"textField\\":\\"123\\"}
-	SearchFieldJson *string `json:"SearchFieldJson,omitempty" xml:"SearchFieldJson,omitempty"`
-	// example:
-	//
-	// hexxxx
-	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
-	// example:
-	//
-	// 1045001
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	ModifiedToTimeGMT   *string `json:"ModifiedToTimeGMT,omitempty" xml:"ModifiedToTimeGMT,omitempty"`
+	OriginatorId        *string `json:"OriginatorId,omitempty" xml:"OriginatorId,omitempty"`
+	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchFieldJson     *string `json:"SearchFieldJson,omitempty" xml:"SearchFieldJson,omitempty"`
+	SystemToken         *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	TaskId              *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetInstanceIdListRequest) String() string {

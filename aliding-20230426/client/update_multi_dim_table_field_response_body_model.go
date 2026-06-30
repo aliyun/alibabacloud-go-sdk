@@ -20,9 +20,6 @@ type iUpdateMultiDimTableFieldResponseBody interface {
 }
 
 type UpdateMultiDimTableFieldResponseBody struct {
-	// example:
-	//
-	// r1R7q3QmWew5lo02fxB7xxxxxxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// example:
 	//

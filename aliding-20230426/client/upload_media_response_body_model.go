@@ -16,15 +16,7 @@ type iUploadMediaResponseBody interface {
 }
 
 type UploadMediaResponseBody struct {
-	// example:
-	//
-	// abcd1234
-	MediaId *string `json:"mediaId,omitempty" xml:"mediaId,omitempty"`
-	// requestId
-	//
-	// example:
-	//
-	// abcd-1234-wxyz-9876
+	MediaId   *string `json:"mediaId,omitempty" xml:"mediaId,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

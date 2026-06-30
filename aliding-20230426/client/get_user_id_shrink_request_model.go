@@ -17,12 +17,7 @@ type iGetUserIdShrinkRequest interface {
 
 type GetUserIdShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
-	// unionId
-	//
-	// example:
-	//
-	// ****iE
-	UnionId *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
+	UnionId             *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
 }
 
 func (s GetUserIdShrinkRequest) String() string {

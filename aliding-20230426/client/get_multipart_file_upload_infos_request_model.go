@@ -23,10 +23,7 @@ type GetMultipartFileUploadInfosRequest struct {
 	Option        *GetMultipartFileUploadInfosRequestOption        `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
 	PartNumbers   []*int32                                         `json:"PartNumbers,omitempty" xml:"PartNumbers,omitempty" type:"Repeated"`
 	TenantContext *GetMultipartFileUploadInfosRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	// example:
-	//
-	// hwHPAAAAAipHxxxxx
-	UploadKey *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
+	UploadKey     *string                                          `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
 }
 
 func (s GetMultipartFileUploadInfosRequest) String() string {
@@ -88,9 +85,6 @@ func (s *GetMultipartFileUploadInfosRequest) Validate() error {
 }
 
 type GetMultipartFileUploadInfosRequestOption struct {
-	// example:
-	//
-	// true
 	PreferIntranet *bool `json:"PreferIntranet,omitempty" xml:"PreferIntranet,omitempty"`
 }
 

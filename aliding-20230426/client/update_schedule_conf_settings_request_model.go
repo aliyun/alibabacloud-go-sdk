@@ -19,11 +19,8 @@ type iUpdateScheduleConfSettingsRequest interface {
 
 type UpdateScheduleConfSettingsRequest struct {
 	ScheduleConfSettingModel *UpdateScheduleConfSettingsRequestScheduleConfSettingModel `json:"ScheduleConfSettingModel,omitempty" xml:"ScheduleConfSettingModel,omitempty" type:"Struct"`
-	// example:
-	//
-	// f6fb627e-a7e8-403e-b1f8-26e85450f4a9
-	ScheduleConferenceId *string                                         `json:"ScheduleConferenceId,omitempty" xml:"ScheduleConferenceId,omitempty"`
-	TenantContext        *UpdateScheduleConfSettingsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	ScheduleConferenceId     *string                                                    `json:"ScheduleConferenceId,omitempty" xml:"ScheduleConferenceId,omitempty"`
+	TenantContext            *UpdateScheduleConfSettingsRequestTenantContext            `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
 
 func (s UpdateScheduleConfSettingsRequest) String() string {
@@ -76,29 +73,14 @@ func (s *UpdateScheduleConfSettingsRequest) Validate() error {
 }
 
 type UpdateScheduleConfSettingsRequestScheduleConfSettingModel struct {
-	CohostUserIds []*string `json:"CohostUserIds,omitempty" xml:"CohostUserIds,omitempty" type:"Repeated"`
-	// example:
-	//
-	// ding********
-	ConfAllowedCorpId *string `json:"ConfAllowedCorpId,omitempty" xml:"ConfAllowedCorpId,omitempty"`
-	// example:
-	//
-	// 012345
-	HostUserId *string `json:"HostUserId,omitempty" xml:"HostUserId,omitempty"`
-	// example:
-	//
-	// 1
+	CohostUserIds               []*string                                                                             `json:"CohostUserIds,omitempty" xml:"CohostUserIds,omitempty" type:"Repeated"`
+	ConfAllowedCorpId           *string                                                                               `json:"ConfAllowedCorpId,omitempty" xml:"ConfAllowedCorpId,omitempty"`
+	HostUserId                  *string                                                                               `json:"HostUserId,omitempty" xml:"HostUserId,omitempty"`
 	LockRoom                    *int32                                                                                `json:"LockRoom,omitempty" xml:"LockRoom,omitempty"`
 	MoziConfOpenRecordSetting   *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting   `json:"MoziConfOpenRecordSetting,omitempty" xml:"MoziConfOpenRecordSetting,omitempty" type:"Struct"`
 	MoziConfVirtualExtraSetting *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting `json:"MoziConfVirtualExtraSetting,omitempty" xml:"MoziConfVirtualExtraSetting,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	MuteOnJoin *int32 `json:"MuteOnJoin,omitempty" xml:"MuteOnJoin,omitempty"`
-	// example:
-	//
-	// 1
-	ScreenShareForbidden *int32 `json:"ScreenShareForbidden,omitempty" xml:"ScreenShareForbidden,omitempty"`
+	MuteOnJoin                  *int32                                                                                `json:"MuteOnJoin,omitempty" xml:"MuteOnJoin,omitempty"`
+	ScreenShareForbidden        *int32                                                                                `json:"ScreenShareForbidden,omitempty" xml:"ScreenShareForbidden,omitempty"`
 }
 
 func (s UpdateScheduleConfSettingsRequestScheduleConfSettingModel) String() string {
@@ -260,33 +242,18 @@ func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRe
 }
 
 type UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting struct {
-	CloudRecordOwnerUserId *string `json:"CloudRecordOwnerUserId,omitempty" xml:"CloudRecordOwnerUserId,omitempty"`
-	// example:
-	//
-	// 1
-	EnableChat             *int32 `json:"EnableChat,omitempty" xml:"EnableChat,omitempty"`
-	EnableWebAnonymousJoin *bool  `json:"EnableWebAnonymousJoin,omitempty" xml:"EnableWebAnonymousJoin,omitempty"`
-	// example:
-	//
-	// 1
-	JoinBeforeHost *int32 `json:"JoinBeforeHost,omitempty" xml:"JoinBeforeHost,omitempty"`
-	// example:
-	//
-	// 1
-	LockMediaStatusMicMute *int32 `json:"LockMediaStatusMicMute,omitempty" xml:"LockMediaStatusMicMute,omitempty"`
-	// example:
-	//
-	// 1
+	CloudRecordOwnerUserId       *string                                                                                                             `json:"CloudRecordOwnerUserId,omitempty" xml:"CloudRecordOwnerUserId,omitempty"`
+	EnableChat                   *int32                                                                                                              `json:"EnableChat,omitempty" xml:"EnableChat,omitempty"`
+	EnableWebAnonymousJoin       *bool                                                                                                               `json:"EnableWebAnonymousJoin,omitempty" xml:"EnableWebAnonymousJoin,omitempty"`
+	JoinBeforeHost               *int32                                                                                                              `json:"JoinBeforeHost,omitempty" xml:"JoinBeforeHost,omitempty"`
+	LockMediaStatusMicMute       *int32                                                                                                              `json:"LockMediaStatusMicMute,omitempty" xml:"LockMediaStatusMicMute,omitempty"`
 	LockNick                     *int32                                                                                                              `json:"LockNick,omitempty" xml:"LockNick,omitempty"`
 	MinutesOwnerUserId           *string                                                                                                             `json:"MinutesOwnerUserId,omitempty" xml:"MinutesOwnerUserId,omitempty"`
 	MoziConfExtensionAppSettings []*UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings `json:"MoziConfExtensionAppSettings,omitempty" xml:"MoziConfExtensionAppSettings,omitempty" type:"Repeated"`
 	PushAllMeetingRecords        *bool                                                                                                               `json:"PushAllMeetingRecords,omitempty" xml:"PushAllMeetingRecords,omitempty"`
 	PushCloudRecordCard          *bool                                                                                                               `json:"PushCloudRecordCard,omitempty" xml:"PushCloudRecordCard,omitempty"`
 	PushMinutesCard              *bool                                                                                                               `json:"PushMinutesCard,omitempty" xml:"PushMinutesCard,omitempty"`
-	// example:
-	//
-	// 1
-	WaitingRoom *int32 `json:"WaitingRoom,omitempty" xml:"WaitingRoom,omitempty"`
+	WaitingRoom                  *int32                                                                                                              `json:"WaitingRoom,omitempty" xml:"WaitingRoom,omitempty"`
 }
 
 func (s UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) String() string {

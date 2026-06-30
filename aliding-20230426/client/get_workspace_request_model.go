@@ -18,16 +18,9 @@ type iGetWorkspaceRequest interface {
 }
 
 type GetWorkspaceRequest struct {
-	TenantContext *GetWorkspaceRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	// example:
-	//
-	// false
-	WithPermissionRole *bool `json:"WithPermissionRole,omitempty" xml:"WithPermissionRole,omitempty"`
+	TenantContext      *GetWorkspaceRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	WithPermissionRole *bool                             `json:"WithPermissionRole,omitempty" xml:"WithPermissionRole,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// MJ0pDSKMV9dO20E4
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

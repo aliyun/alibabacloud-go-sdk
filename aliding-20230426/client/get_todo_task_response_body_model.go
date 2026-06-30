@@ -76,7 +76,7 @@ type GetTodoTaskResponseBody struct {
 	CreatedTime *int64 `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// example:
 	//
-	// 012345
+	// PUoiinWIpxxx
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
 	// example:
 	//
@@ -110,7 +110,7 @@ type GetTodoTaskResponseBody struct {
 	ModifiedTime *int64 `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
 	// example:
 	//
-	// 012345
+	// PUoiinWxxx
 	ModifierId     *string   `json:"modifierId,omitempty" xml:"modifierId,omitempty"`
 	ParticipantIds []*string `json:"participantIds,omitempty" xml:"participantIds,omitempty" type:"Repeated"`
 	// example:

@@ -18,10 +18,6 @@ type iGetDeptNoShrinkRequest interface {
 type GetDeptNoShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 012345
 	DeptId *string `json:"deptId,omitempty" xml:"deptId,omitempty"`
 }
 

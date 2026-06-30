@@ -20,22 +20,10 @@ type iTerminateInstanceRequest interface {
 }
 
 type TerminateInstanceRequest struct {
-	// example:
-	//
-	// APP_PBxxx
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// example:
-	//
-	// zh_CN
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// example:
-	//
-	// f30233fb-72e1-4af4-8cb8-c7e0ea9ee530
+	AppType           *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	Language          *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
-	// example:
-	//
-	// hexxyy
-	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	SystemToken       *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
 }
 
 func (s TerminateInstanceRequest) String() string {

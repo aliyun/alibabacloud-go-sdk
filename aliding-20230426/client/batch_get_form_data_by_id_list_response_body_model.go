@@ -96,51 +96,21 @@ func (s *BatchGetFormDataByIdListResponseBody) Validate() error {
 }
 
 type BatchGetFormDataByIdListResponseBodyResult struct {
-	// example:
-	//
-	// 2021-05-01 10:10:10
-	CreateTimeGMT *string `json:"CreateTimeGMT,omitempty" xml:"CreateTimeGMT,omitempty"`
-	// example:
-	//
-	// 012345
-	CreatorUserId *string                `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
-	FormData      map[string]interface{} `json:"FormData,omitempty" xml:"FormData,omitempty"`
-	// example:
-	//
-	// FINST-xxxx
-	FormInstanceId *string `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
-	// example:
-	//
-	// FORM-xxxx
-	FormUuid *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
-	// example:
-	//
-	// 21044829126
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// {}
-	InstanceValue *string `json:"InstanceValue,omitempty" xml:"InstanceValue,omitempty"`
-	// example:
-	//
-	// 2021-05-01 10:10:10
+	CreateTimeGMT   *string                                               `json:"CreateTimeGMT,omitempty" xml:"CreateTimeGMT,omitempty"`
+	CreatorUserId   *string                                               `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	FormData        map[string]interface{}                                `json:"FormData,omitempty" xml:"FormData,omitempty"`
+	FormInstanceId  *string                                               `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
+	FormUuid        *string                                               `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	Id              *int64                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceValue   *string                                               `json:"InstanceValue,omitempty" xml:"InstanceValue,omitempty"`
 	ModifiedTimeGMT *string                                               `json:"ModifiedTimeGMT,omitempty" xml:"ModifiedTimeGMT,omitempty"`
 	Modifier        *string                                               `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
 	ModifyUser      *BatchGetFormDataByIdListResponseBodyResultModifyUser `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty" type:"Struct"`
 	Originator      *BatchGetFormDataByIdListResponseBodyResultOriginator `json:"Originator,omitempty" xml:"Originator,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// example:
-	//
-	// SA65776
-	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// example:
-	//
-	// 2
-	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+	Sequence        *string                                               `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SerialNumber    *string                                               `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	Title           *string                                               `json:"Title,omitempty" xml:"Title,omitempty"`
+	Version         *int64                                                `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s BatchGetFormDataByIdListResponseBodyResult) String() string {
@@ -301,11 +271,8 @@ func (s *BatchGetFormDataByIdListResponseBodyResult) Validate() error {
 }
 
 type BatchGetFormDataByIdListResponseBodyResultModifyUser struct {
-	Name *BatchGetFormDataByIdListResponseBodyResultModifyUserName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Name   *BatchGetFormDataByIdListResponseBodyResultModifyUserName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
+	UserId *string                                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s BatchGetFormDataByIdListResponseBodyResultModifyUser) String() string {
@@ -345,9 +312,6 @@ func (s *BatchGetFormDataByIdListResponseBodyResultModifyUser) Validate() error 
 
 type BatchGetFormDataByIdListResponseBodyResultModifyUserName struct {
 	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
-	// example:
-	//
-	// EnglishName
 	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
 }
 
@@ -382,11 +346,8 @@ func (s *BatchGetFormDataByIdListResponseBodyResultModifyUserName) Validate() er
 }
 
 type BatchGetFormDataByIdListResponseBodyResultOriginator struct {
-	Name *BatchGetFormDataByIdListResponseBodyResultOriginatorName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Name   *BatchGetFormDataByIdListResponseBodyResultOriginatorName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
+	UserId *string                                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s BatchGetFormDataByIdListResponseBodyResultOriginator) String() string {
@@ -426,9 +387,6 @@ func (s *BatchGetFormDataByIdListResponseBodyResultOriginator) Validate() error 
 
 type BatchGetFormDataByIdListResponseBodyResultOriginatorName struct {
 	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
-	// example:
-	//
-	// EnglishName
 	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
 }
 

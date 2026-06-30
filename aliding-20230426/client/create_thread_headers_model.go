@@ -17,10 +17,7 @@ type iCreateThreadHeaders interface {
 
 type CreateThreadHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// example:
-	//
-	// 123456
-	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	AccountId     *string            `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 
 func (s CreateThreadHeaders) String() string {

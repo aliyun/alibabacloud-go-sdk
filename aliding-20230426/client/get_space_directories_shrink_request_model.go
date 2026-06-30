@@ -22,25 +22,11 @@ type iGetSpaceDirectoriesShrinkRequest interface {
 }
 
 type GetSpaceDirectoriesShrinkRequest struct {
-	// example:
-	//
-	// asdasd
 	DentryId *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 30
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// 123123
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// qweqwe
 	SpaceId             *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

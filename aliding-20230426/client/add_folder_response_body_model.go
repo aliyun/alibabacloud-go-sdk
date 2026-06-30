@@ -98,30 +98,15 @@ type AddFolderResponseBodyDentry struct {
 	//
 	// creator_id
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// example:
-	//
-	// txt
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// example:
-	//
-	// dentry_id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// example:
 	//
 	// 2022-01-01T10:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// example:
-	//
-	// modifier_id
-	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	// example:
-	//
-	// dentry_name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 163201723391
-	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	ModifierId   *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParentId     *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// example:
 	//
 	// PUBLIC_OSS_PARTITION
@@ -131,14 +116,8 @@ type AddFolderResponseBodyDentry struct {
 	// ./test.txt
 	Path       *string                                `json:"Path,omitempty" xml:"Path,omitempty"`
 	Properties *AddFolderResponseBodyDentryProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	// example:
-	//
-	// 6020771
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// example:
-	//
-	// Ao01nSzzBxZQ68JW
-	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	Size       *int64                                 `json:"Size,omitempty" xml:"Size,omitempty"`
+	SpaceId    *string                                `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	// example:
 	//
 	// NORMAL
@@ -150,15 +129,9 @@ type AddFolderResponseBodyDentry struct {
 	// example:
 	//
 	// FOLDER
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// 80a7201602b34450a7a97d8d4e255421
-	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// example:
-	//
-	// 1
-	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uuid    *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Version *int64  `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s AddFolderResponseBodyDentry) String() string {
@@ -350,9 +323,6 @@ func (s *AddFolderResponseBodyDentry) Validate() error {
 }
 
 type AddFolderResponseBodyDentryProperties struct {
-	// example:
-	//
-	// true
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
 }
 

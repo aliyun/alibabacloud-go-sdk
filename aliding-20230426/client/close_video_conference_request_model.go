@@ -18,10 +18,6 @@ type iCloseVideoConferenceRequest interface {
 type CloseVideoConferenceRequest struct {
 	TenantContext *CloseVideoConferenceRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 607452e01401526ee39609e1
 	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
 }
 

@@ -20,13 +20,7 @@ type iQueryConferenceMembersShrinkRequest interface {
 }
 
 type QueryConferenceMembersShrinkRequest struct {
-	// example:
-	//
-	// 300
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// 123000000
+	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.

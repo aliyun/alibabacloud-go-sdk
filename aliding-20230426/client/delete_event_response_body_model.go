@@ -26,30 +26,13 @@ type iDeleteEventResponseBody interface {
 }
 
 type DeleteEventResponseBody struct {
-	Content *DeleteEventResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	ErrorCode *string                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorCtx  map[string]interface{} `json:"errorCtx,omitempty" xml:"errorCtx,omitempty"`
-	// example:
-	//
-	// ""
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// requestId
-	//
-	// example:
-	//
-	// 4248DCC9-785F-5A14-8BE0-830FD52E1261
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Content        *DeleteEventResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	ErrorCode      *string                         `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorCtx       map[string]interface{}          `json:"errorCtx,omitempty" xml:"errorCtx,omitempty"`
+	ErrorMsg       *string                         `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpStatusCode *int32                          `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	RequestId      *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                           `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteEventResponseBody) String() string {
@@ -133,9 +116,6 @@ func (s *DeleteEventResponseBody) Validate() error {
 }
 
 type DeleteEventResponseBodyContent struct {
-	// example:
-	//
-	// []
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
 }
 

@@ -184,10 +184,7 @@ type GetMeCorpSubmissionResponseBodyData struct {
 	//
 	// TPROC--X1Gxxx
 	ProcessCode *string `json:"ProcessCode,omitempty" xml:"ProcessCode,omitempty"`
-	// example:
-	//
-	// 52330
-	ProcessId *int64 `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessId   *int64  `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
 	// example:
 	//
 	// f30233fb-72e1-xxx

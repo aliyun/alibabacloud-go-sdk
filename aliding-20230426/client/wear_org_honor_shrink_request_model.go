@@ -24,28 +24,12 @@ type iWearOrgHonorShrinkRequest interface {
 type WearOrgHonorShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 21659595
 	HonorId *string `json:"honorId,omitempty" xml:"honorId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 363784
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// false
 	Wear *bool `json:"wear,omitempty" xml:"wear,omitempty"`
 }
 

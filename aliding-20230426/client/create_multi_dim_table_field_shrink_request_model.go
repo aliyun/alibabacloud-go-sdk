@@ -25,10 +25,6 @@ type iCreateMultiDimTableFieldShrinkRequest interface {
 
 type CreateMultiDimTableFieldShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// r1R7q3QmWew5lo02fxB7noNyJxxxxxx
 	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
 	// This parameter is required.
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -37,10 +33,6 @@ type CreateMultiDimTableFieldShrinkRequest struct {
 	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// text
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

@@ -23,8 +23,6 @@ type ListNodesResponseBody struct {
 	// next_token
 	NextToken *string                       `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	Nodes     []*ListNodesResponseBodyNodes `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -95,11 +93,8 @@ type ListNodesResponseBodyNodes struct {
 	// example:
 	//
 	// adoc
-	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// example:
-	//
-	// true
-	HasChildren *bool `json:"HasChildren,omitempty" xml:"HasChildren,omitempty"`
+	Extension   *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	HasChildren *bool   `json:"HasChildren,omitempty" xml:"HasChildren,omitempty"`
 	// example:
 	//
 	// 2023-05-15T11:29Z

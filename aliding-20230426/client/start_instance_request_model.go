@@ -28,35 +28,14 @@ type iStartInstanceRequest interface {
 }
 
 type StartInstanceRequest struct {
-	// example:
-	//
-	// APP_PBxxx
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// example:
-	//
-	// 18295
+	AppType      *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	// example:
-	//
-	// {}
 	FormDataJson *string `json:"FormDataJson,omitempty" xml:"FormDataJson,omitempty"`
-	// example:
-	//
-	// FORM-EF6Yxxx
-	FormUuid *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
-	// example:
-	//
-	// zh_CN
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// example:
-	//
-	// TPROC--EF6Y4xxx
-	ProcessCode *string `json:"ProcessCode,omitempty" xml:"ProcessCode,omitempty"`
-	ProcessData *string `json:"ProcessData,omitempty" xml:"ProcessData,omitempty"`
-	// example:
-	//
-	// hexxyy
-	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	FormUuid     *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	Language     *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	ProcessCode  *string `json:"ProcessCode,omitempty" xml:"ProcessCode,omitempty"`
+	ProcessData  *string `json:"ProcessData,omitempty" xml:"ProcessData,omitempty"`
+	SystemToken  *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
 }
 
 func (s StartInstanceRequest) String() string {

@@ -27,10 +27,6 @@ type UpdateTodoTaskExecutorStatusShrinkRequest struct {
 	// xxxx
 	OperatorId *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 15002141
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 

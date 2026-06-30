@@ -452,7 +452,7 @@ type GetOrgLiveListResponseBodyResultUpdateLiveLiveList struct {
 	AnchorUnionIdInAlibaba *string `json:"AnchorUnionIdInAlibaba,omitempty" xml:"AnchorUnionIdInAlibaba,omitempty"`
 	// example:
 	//
-	// 012345
+	// ersqqdddf
 	AnchorUserId *string `json:"AnchorUserId,omitempty" xml:"AnchorUserId,omitempty"`
 	// example:
 	//

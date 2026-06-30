@@ -20,17 +20,8 @@ type iQueryScheduleConferenceInfoShrinkRequest interface {
 }
 
 type QueryScheduleConferenceInfoShrinkRequest struct {
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// 19
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// 636cf59f2b032f014ae32902
+	MaxResults           *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	ScheduleConferenceId *string `json:"ScheduleConferenceId,omitempty" xml:"ScheduleConferenceId,omitempty"`
 	TenantContextShrink  *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

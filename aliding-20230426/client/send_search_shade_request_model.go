@@ -20,14 +20,8 @@ type iSendSearchShadeRequest interface {
 }
 
 type SendSearchShadeRequest struct {
-	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	// example:
-	//
-	// 1693881641000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// 1693881641000
+	Content       map[string]interface{}               `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime       *int64                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	StartTime     *int64                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TenantContext *SendSearchShadeRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

@@ -93,22 +93,10 @@ func (s *GetFormComponentDefinitionListResponseBody) Validate() error {
 }
 
 type GetFormComponentDefinitionListResponseBodyResult struct {
-	// example:
-	//
-	// FooterYida
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// example:
-	//
-	// formContainer_kksjiuk
-	FieldId *string `json:"FieldId,omitempty" xml:"FieldId,omitempty"`
-	// example:
-	//
-	// {"en_US":""}
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// example:
-	//
-	// formContainer_kksjiuk
-	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	FieldId       *string `json:"FieldId,omitempty" xml:"FieldId,omitempty"`
+	Label         *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	ParentId      *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 }
 
 func (s GetFormComponentDefinitionListResponseBodyResult) String() string {

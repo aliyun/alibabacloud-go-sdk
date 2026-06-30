@@ -34,18 +34,11 @@ type iCreateAlidingAssistantShrinkRequest interface {
 }
 
 type CreateAlidingAssistantShrinkRequest struct {
-	// example:
-	//
-	// f5cb37a0fb44441ab7b74c6f4a679dd3
 	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
 	// This parameter is required.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExtShrink   *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// @lADPDetfgMsFFUvNAkjNAkg
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
 	// This parameter is required.
 	Instructions *string `json:"Instructions,omitempty" xml:"Instructions,omitempty"`
@@ -53,14 +46,7 @@ type CreateAlidingAssistantShrinkRequest struct {
 	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RecommendPromptsShrink *string `json:"RecommendPrompts,omitempty" xml:"RecommendPrompts,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 11
-	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// example:
-	//
-	// chatBot-123
+	Source              *int32  `json:"Source,omitempty" xml:"Source,omitempty"`
 	SourceIdentityId    *string `json:"SourceIdentityId,omitempty" xml:"SourceIdentityId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.

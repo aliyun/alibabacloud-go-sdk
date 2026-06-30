@@ -21,10 +21,6 @@ type GetNodeByUrlShrinkRequest struct {
 	OptionShrink        *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// https://alidocs.dingtalk.com/i/nodes/EpGBa2L*********gN7R35y
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 

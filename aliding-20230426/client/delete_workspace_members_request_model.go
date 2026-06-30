@@ -84,16 +84,8 @@ func (s *DeleteWorkspaceMembersRequest) Validate() error {
 
 type DeleteWorkspaceMembersRequestMembers struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 012345
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// USER
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
 }
 

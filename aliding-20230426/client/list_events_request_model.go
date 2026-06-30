@@ -31,43 +31,15 @@ type iListEventsRequest interface {
 
 type ListEventsRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// primary
-	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
-	// example:
-	//
-	// 100
-	MaxAttendees *int32 `json:"MaxAttendees,omitempty" xml:"MaxAttendees,omitempty"`
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// cnNTbW1YbxxxxdlQrQT09
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// cnNTbWxxxxaFJZdEgvdlQrQT09
+	CalendarId     *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
+	MaxAttendees   *int32  `json:"MaxAttendees,omitempty" xml:"MaxAttendees,omitempty"`
+	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	SeriesMasterId *string `json:"SeriesMasterId,omitempty" xml:"SeriesMasterId,omitempty"`
-	// example:
-	//
-	// true
-	ShowDeleted *bool `json:"ShowDeleted,omitempty" xml:"ShowDeleted,omitempty"`
-	// example:
-	//
-	// zxcasdfvc000009
-	SyncToken *string `json:"SyncToken,omitempty" xml:"SyncToken,omitempty"`
-	// example:
-	//
-	// 2023-06-21T00:00:00+08:00
-	TimeMax *string `json:"TimeMax,omitempty" xml:"TimeMax,omitempty"`
-	// example:
-	//
-	// 2023-06-20T00:00:00+08:00
-	TimeMin *string `json:"TimeMin,omitempty" xml:"TimeMin,omitempty"`
+	ShowDeleted    *bool   `json:"ShowDeleted,omitempty" xml:"ShowDeleted,omitempty"`
+	SyncToken      *string `json:"SyncToken,omitempty" xml:"SyncToken,omitempty"`
+	TimeMax        *string `json:"TimeMax,omitempty" xml:"TimeMax,omitempty"`
+	TimeMin        *string `json:"TimeMin,omitempty" xml:"TimeMin,omitempty"`
 }
 
 func (s ListEventsRequest) String() string {

@@ -18,10 +18,6 @@ type iGetDeptNoRequest interface {
 type GetDeptNoRequest struct {
 	TenantContext *GetDeptNoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 012345
 	DeptId *string `json:"deptId,omitempty" xml:"deptId,omitempty"`
 }
 

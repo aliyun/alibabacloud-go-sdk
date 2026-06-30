@@ -18,11 +18,8 @@ type iDentriesAppPropertiesValue interface {
 }
 
 type DentriesAppPropertiesValue struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// example:
-	//
-	// PRIVATE
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 

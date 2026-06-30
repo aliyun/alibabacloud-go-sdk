@@ -8285,6 +8285,101 @@ func (client *Client) DeleteWorkspaceMembers(request *DeleteWorkspaceMembersRequ
 
 // Summary:
 //
+// 停用群模版（场景群降级为普通群）
+//
+// @param tmpReq - DisableSceneGroupTemplateRequest
+//
+// @param tmpHeader - DisableSceneGroupTemplateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableSceneGroupTemplateResponse
+func (client *Client) DisableSceneGroupTemplateWithOptions(tmpReq *DisableSceneGroupTemplateRequest, tmpHeader *DisableSceneGroupTemplateHeaders, runtime *dara.RuntimeOptions) (_result *DisableSceneGroupTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DisableSceneGroupTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &DisableSceneGroupTemplateShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OpenConversationId) {
+		body["OpenConversationId"] = request.OpenConversationId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableSceneGroupTemplate"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/im/disableSceneGroupTemplate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableSceneGroupTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停用群模版（场景群降级为普通群）
+//
+// @param request - DisableSceneGroupTemplateRequest
+//
+// @return DisableSceneGroupTemplateResponse
+func (client *Client) DisableSceneGroupTemplate(request *DisableSceneGroupTemplateRequest) (_result *DisableSceneGroupTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &DisableSceneGroupTemplateHeaders{}
+	_result = &DisableSceneGroupTemplateResponse{}
+	_body, _err := client.DisableSceneGroupTemplateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除块元素
 //
 // @param tmpReq - DocBlocksDeleteRequest

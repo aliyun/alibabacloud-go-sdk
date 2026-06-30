@@ -25,25 +25,11 @@ type iListMultiDimTableRecordsShrinkRequest interface {
 
 type ListMultiDimTableRecordsShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 101114
 	BaseId       *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// AAAAAUUg5QSTWwHyeElt8z5z4Qo=
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xxx
 	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

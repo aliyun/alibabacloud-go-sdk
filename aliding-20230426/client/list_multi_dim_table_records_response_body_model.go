@@ -126,24 +126,12 @@ func (s *ListMultiDimTableRecordsResponseBody) Validate() error {
 }
 
 type ListMultiDimTableRecordsResponseBodyRecords struct {
-	CreatedBy *ListMultiDimTableRecordsResponseBodyRecordsCreatedBy `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty" type:"Struct"`
-	// example:
-	//
-	// xxx
-	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// example:
-	//
-	// title,shortTitle
-	Fields map[string]interface{} `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	// example:
-	//
-	// 123
-	Id             *string                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	LastModifiedBy *ListMultiDimTableRecordsResponseBodyRecordsLastModifiedBy `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty" type:"Struct"`
-	// example:
-	//
-	// xxx
-	LastModifiedTime *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	CreatedBy        *ListMultiDimTableRecordsResponseBodyRecordsCreatedBy      `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty" type:"Struct"`
+	CreatedTime      *int64                                                     `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Fields           map[string]interface{}                                     `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	Id               *string                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	LastModifiedBy   *ListMultiDimTableRecordsResponseBodyRecordsLastModifiedBy `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty" type:"Struct"`
+	LastModifiedTime *int64                                                     `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 }
 
 func (s ListMultiDimTableRecordsResponseBodyRecords) String() string {
@@ -223,9 +211,6 @@ func (s *ListMultiDimTableRecordsResponseBodyRecords) Validate() error {
 }
 
 type ListMultiDimTableRecordsResponseBodyRecordsCreatedBy struct {
-	// example:
-	//
-	// 012345
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -251,9 +236,6 @@ func (s *ListMultiDimTableRecordsResponseBodyRecordsCreatedBy) Validate() error 
 }
 
 type ListMultiDimTableRecordsResponseBodyRecordsLastModifiedBy struct {
-	// example:
-	//
-	// 012345
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

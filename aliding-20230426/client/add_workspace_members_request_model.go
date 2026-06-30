@@ -82,18 +82,9 @@ func (s *AddWorkspaceMembersRequest) Validate() error {
 }
 
 type AddWorkspaceMembersRequestMembers struct {
-	// example:
-	//
-	// 012345
-	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// example:
-	//
-	// USER
+	MemberId   *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
-	// example:
-	//
-	// EDITOR
-	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	RoleType   *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s AddWorkspaceMembersRequestMembers) String() string {

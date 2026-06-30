@@ -23,27 +23,12 @@ type iQueryUserHonorsRequest interface {
 
 type QueryUserHonorsRequest struct {
 	TenantContext *QueryUserHonorsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MaxResults    *int32                               `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 15
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123123
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -110,9 +95,6 @@ func (s *QueryUserHonorsRequest) Validate() error {
 }
 
 type QueryUserHonorsRequestTenantContext struct {
-	// example:
-	//
-	// 189477710813728
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

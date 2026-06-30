@@ -52,43 +52,26 @@ type iPatchEventResponseBody interface {
 }
 
 type PatchEventResponseBody struct {
-	Attendees     []*PatchEventResponseBodyAttendees     `json:"attendees,omitempty" xml:"attendees,omitempty" type:"Repeated"`
-	CardInstances []*PatchEventResponseBodyCardInstances `json:"cardInstances,omitempty" xml:"cardInstances,omitempty" type:"Repeated"`
-	Categories    []*PatchEventResponseBodyCategories    `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2022-10-25T02:26:14Z
-	CreateTime     *string                    `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description    *string                    `json:"description,omitempty" xml:"description,omitempty"`
-	End            *PatchEventResponseBodyEnd `json:"end,omitempty" xml:"end,omitempty" type:"Struct"`
-	FreeBusyStatus *string                    `json:"freeBusyStatus,omitempty" xml:"freeBusyStatus,omitempty"`
-	// example:
-	//
-	// 123456
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// true
-	IsAllDay          *bool                                    `json:"isAllDay,omitempty" xml:"isAllDay,omitempty"`
-	Location          *PatchEventResponseBodyLocation          `json:"location,omitempty" xml:"location,omitempty" type:"Struct"`
-	OnlineMeetingInfo *PatchEventResponseBodyOnlineMeetingInfo `json:"onlineMeetingInfo,omitempty" xml:"onlineMeetingInfo,omitempty" type:"Struct"`
-	Organizer         *PatchEventResponseBodyOrganizer         `json:"organizer,omitempty" xml:"organizer,omitempty" type:"Struct"`
-	Recurrence        *PatchEventResponseBodyRecurrence        `json:"recurrence,omitempty" xml:"recurrence,omitempty" type:"Struct"`
-	Reminders         []*PatchEventResponseBodyReminders       `json:"reminders,omitempty" xml:"reminders,omitempty" type:"Repeated"`
-	// requestId
-	//
-	// example:
-	//
-	// 4248DCC9-785F-5A14-8BE0-830FD52E1261
+	Attendees           []*PatchEventResponseBodyAttendees         `json:"attendees,omitempty" xml:"attendees,omitempty" type:"Repeated"`
+	CardInstances       []*PatchEventResponseBodyCardInstances     `json:"cardInstances,omitempty" xml:"cardInstances,omitempty" type:"Repeated"`
+	Categories          []*PatchEventResponseBodyCategories        `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	CreateTime          *string                                    `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description         *string                                    `json:"description,omitempty" xml:"description,omitempty"`
+	End                 *PatchEventResponseBodyEnd                 `json:"end,omitempty" xml:"end,omitempty" type:"Struct"`
+	FreeBusyStatus      *string                                    `json:"freeBusyStatus,omitempty" xml:"freeBusyStatus,omitempty"`
+	Id                  *string                                    `json:"id,omitempty" xml:"id,omitempty"`
+	IsAllDay            *bool                                      `json:"isAllDay,omitempty" xml:"isAllDay,omitempty"`
+	Location            *PatchEventResponseBodyLocation            `json:"location,omitempty" xml:"location,omitempty" type:"Struct"`
+	OnlineMeetingInfo   *PatchEventResponseBodyOnlineMeetingInfo   `json:"onlineMeetingInfo,omitempty" xml:"onlineMeetingInfo,omitempty" type:"Struct"`
+	Organizer           *PatchEventResponseBodyOrganizer           `json:"organizer,omitempty" xml:"organizer,omitempty" type:"Struct"`
+	Recurrence          *PatchEventResponseBodyRecurrence          `json:"recurrence,omitempty" xml:"recurrence,omitempty" type:"Struct"`
+	Reminders           []*PatchEventResponseBodyReminders         `json:"reminders,omitempty" xml:"reminders,omitempty" type:"Repeated"`
 	RequestId           *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	RichTextDescription *PatchEventResponseBodyRichTextDescription `json:"richTextDescription,omitempty" xml:"richTextDescription,omitempty" type:"Struct"`
 	Start               *PatchEventResponseBodyStart               `json:"start,omitempty" xml:"start,omitempty" type:"Struct"`
 	Summary             *string                                    `json:"summary,omitempty" xml:"summary,omitempty"`
 	UiConfigs           []*PatchEventResponseBodyUiConfigs         `json:"uiConfigs,omitempty" xml:"uiConfigs,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UpdateTime          *string                                    `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s PatchEventResponseBody) String() string {
@@ -364,26 +347,11 @@ func (s *PatchEventResponseBody) Validate() error {
 }
 
 type PatchEventResponseBodyAttendees struct {
-	// example:
-	//
-	// tony
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// example:
-	//
-	// 123456
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// true
-	IsOptional *bool `json:"IsOptional,omitempty" xml:"IsOptional,omitempty"`
-	// example:
-	//
-	// accepted
+	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsOptional     *bool   `json:"IsOptional,omitempty" xml:"IsOptional,omitempty"`
 	ResponseStatus *string `json:"ResponseStatus,omitempty" xml:"ResponseStatus,omitempty"`
-	// example:
-	//
-	// true
-	Self *bool `json:"Self,omitempty" xml:"Self,omitempty"`
+	Self           *bool   `json:"Self,omitempty" xml:"Self,omitempty"`
 }
 
 func (s PatchEventResponseBodyAttendees) String() string {
@@ -514,17 +482,8 @@ func (s *PatchEventResponseBodyCategories) Validate() error {
 }
 
 type PatchEventResponseBodyEnd struct {
-	// example:
-	//
-	// 2020-01-01
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
+	Date     *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// example:
-	//
-	// Asia/Shanghai
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
@@ -568,9 +527,6 @@ func (s *PatchEventResponseBodyEnd) Validate() error {
 }
 
 type PatchEventResponseBodyLocation struct {
-	// example:
-	//
-	// true
 	DisplayName  *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	MeetingRooms []*string `json:"MeetingRooms,omitempty" xml:"MeetingRooms,omitempty" type:"Repeated"`
 }
@@ -651,22 +607,10 @@ func (s *PatchEventResponseBodyOnlineMeetingInfo) Validate() error {
 }
 
 type PatchEventResponseBodyOrganizer struct {
-	// example:
-	//
-	// tony
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// example:
-	//
-	// 123456
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// accepted
+	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	ResponseStatus *string `json:"ResponseStatus,omitempty" xml:"ResponseStatus,omitempty"`
-	// example:
-	//
-	// true
-	Self *bool `json:"Self,omitempty" xml:"Self,omitempty"`
+	Self           *bool   `json:"Self,omitempty" xml:"Self,omitempty"`
 }
 
 func (s PatchEventResponseBodyOrganizer) String() string {
@@ -763,26 +707,11 @@ func (s *PatchEventResponseBodyRecurrence) Validate() error {
 }
 
 type PatchEventResponseBodyRecurrencePattern struct {
-	// example:
-	//
-	// 14
-	DayOfMonth *int32 `json:"DayOfMonth,omitempty" xml:"DayOfMonth,omitempty"`
-	// example:
-	//
-	// sunday
+	DayOfMonth *int32  `json:"DayOfMonth,omitempty" xml:"DayOfMonth,omitempty"`
 	DaysOfWeek *string `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty"`
-	// example:
-	//
-	// first
-	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	// example:
-	//
-	// 1
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// example:
-	//
-	// daily
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Index      *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Interval   *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s PatchEventResponseBodyRecurrencePattern) String() string {
@@ -843,18 +772,9 @@ func (s *PatchEventResponseBodyRecurrencePattern) Validate() error {
 }
 
 type PatchEventResponseBodyRecurrenceRange struct {
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// example:
-	//
-	// 5
-	NumberOfOccurrences *int32 `json:"NumberOfOccurrences,omitempty" xml:"NumberOfOccurrences,omitempty"`
-	// example:
-	//
-	// noEnd
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	EndDate             *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	NumberOfOccurrences *int32  `json:"NumberOfOccurrences,omitempty" xml:"NumberOfOccurrences,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s PatchEventResponseBodyRecurrenceRange) String() string {
@@ -897,13 +817,7 @@ func (s *PatchEventResponseBodyRecurrenceRange) Validate() error {
 }
 
 type PatchEventResponseBodyReminders struct {
-	// example:
-	//
-	// dingtalk
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// example:
-	//
-	// 15
+	Method  *string `json:"Method,omitempty" xml:"Method,omitempty"`
 	Minutes *string `json:"Minutes,omitempty" xml:"Minutes,omitempty"`
 }
 
@@ -963,17 +877,8 @@ func (s *PatchEventResponseBodyRichTextDescription) Validate() error {
 }
 
 type PatchEventResponseBodyStart struct {
-	// example:
-	//
-	// 2020-01-01
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
+	Date     *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// example:
-	//
-	// Asia/Shanghai
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 

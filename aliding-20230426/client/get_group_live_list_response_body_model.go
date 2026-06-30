@@ -130,10 +130,7 @@ type GetGroupLiveListResponseBodyResultGroupLiveList struct {
 	//
 	// nickName
 	AnchorNickname *string `json:"AnchorNickname,omitempty" xml:"AnchorNickname,omitempty"`
-	// example:
-	//
-	// Eijxx
-	AnchorUnionId *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
+	AnchorUnionId  *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
 	// example:
 	//
 	// 1398324600000

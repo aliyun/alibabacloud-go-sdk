@@ -17,10 +17,6 @@ type iGetTodoTaskRequest interface {
 
 type GetTodoTaskRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// OPJpwtxxxx
 	TaskId        *string                          `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	TenantContext *GetTodoTaskRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

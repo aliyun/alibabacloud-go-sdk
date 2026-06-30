@@ -21,22 +21,10 @@ type iQueryCloudRecordVideoPlayInfoShrinkRequest interface {
 
 type QueryCloudRecordVideoPlayInfoShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 6139b4xxx
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 44444444
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-shenzhen
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

@@ -26,25 +26,13 @@ type iSwitchMainOrgResponseBody interface {
 }
 
 type SwitchMainOrgResponseBody struct {
-	Content *SwitchMainOrgResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
-	// example:
-	//
-	// 0
-	ErrorCode *string                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorCtx  map[string]interface{} `json:"errorCtx,omitempty" xml:"errorCtx,omitempty"`
-	ErrorMsg  *string                `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// example:
-	//
-	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Content        *SwitchMainOrgResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	ErrorCode      *string                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorCtx       map[string]interface{}            `json:"errorCtx,omitempty" xml:"errorCtx,omitempty"`
+	ErrorMsg       *string                           `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpStatusCode *int32                            `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	RequestId      *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                             `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s SwitchMainOrgResponseBody) String() string {
@@ -128,9 +116,6 @@ func (s *SwitchMainOrgResponseBody) Validate() error {
 }
 
 type SwitchMainOrgResponseBodyContent struct {
-	// example:
-	//
-	// null
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
 }
 

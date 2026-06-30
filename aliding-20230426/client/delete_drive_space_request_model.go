@@ -17,10 +17,6 @@ type iDeleteDriveSpaceRequest interface {
 
 type DeleteDriveSpaceRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123
 	SpaceId       *string                               `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	TenantContext *DeleteDriveSpaceRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

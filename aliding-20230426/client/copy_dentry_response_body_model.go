@@ -108,11 +108,8 @@ type CopyDentryResponseBody struct {
 	// example:
 	//
 	// 12345678
-	UpdatedTime *int64 `json:"updatedTime,omitempty" xml:"updatedTime,omitempty"`
-	// example:
-	//
-	// {\\"UserId\\": \\"353851\\", \\"Name\\": u\\"\\u848b\\u7fbd\\u4e2d\\"}
-	Updater map[string]interface{} `json:"updater,omitempty" xml:"updater,omitempty"`
+	UpdatedTime *int64                 `json:"updatedTime,omitempty" xml:"updatedTime,omitempty"`
+	Updater     map[string]interface{} `json:"updater,omitempty" xml:"updater,omitempty"`
 	// example:
 	//
 	// https://xxx.yy
@@ -635,13 +632,7 @@ func (s *CopyDentryResponseBodySpace) Validate() error {
 }
 
 type CopyDentryResponseBodySpaceHdIconVO struct {
-	// example:
-	//
-	// http://
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// example:
-	//
-	// type
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -676,13 +667,7 @@ func (s *CopyDentryResponseBodySpaceHdIconVO) Validate() error {
 }
 
 type CopyDentryResponseBodySpaceIconVO struct {
-	// example:
-	//
-	// http://
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// example:
-	//
-	// type
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1219,10 +1204,7 @@ type CopyDentryResponseBodySpaceRecentListUpdater struct {
 	// example:
 	//
 	// hello
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 012345
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -1258,11 +1240,8 @@ func (s *CopyDentryResponseBodySpaceRecentListUpdater) Validate() error {
 
 type CopyDentryResponseBodySpaceRecentListVisitorInfo struct {
 	DentryActions []*string `json:"DentryActions,omitempty" xml:"DentryActions,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	RoleCode     *string   `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
-	SpaceActions []*string `json:"SpaceActions,omitempty" xml:"SpaceActions,omitempty" type:"Repeated"`
+	RoleCode      *string   `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
+	SpaceActions  []*string `json:"SpaceActions,omitempty" xml:"SpaceActions,omitempty" type:"Repeated"`
 }
 
 func (s CopyDentryResponseBodySpaceRecentListVisitorInfo) String() string {

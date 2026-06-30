@@ -24,13 +24,7 @@ type iListPermissionsResponseBody interface {
 }
 
 type ListPermissionsResponseBody struct {
-	// example:
-	//
-	// 59886
-	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// example:
-	//
-	// 1
+	Duration    *int64                                    `json:"duration,omitempty" xml:"duration,omitempty"`
 	NextToken   *string                                   `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	Permissions []*ListPermissionsResponseBodyPermissions `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
 	// example:

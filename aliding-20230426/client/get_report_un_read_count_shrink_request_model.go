@@ -16,9 +16,6 @@ type iGetReportUnReadCountShrinkRequest interface {
 }
 
 type GetReportUnReadCountShrinkRequest struct {
-	// example:
-	//
-	// null
 	RequestShrink       *string `json:"Request,omitempty" xml:"Request,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

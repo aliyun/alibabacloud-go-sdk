@@ -21,16 +21,8 @@ type iAddTicketMemoRequest interface {
 
 type AddTicketMemoRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// eKWh3xxxxiE
 	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// Dq9hP8Sk2v6vQxxxxiE
 	OpenTicketId  *string                            `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
 	TenantContext *AddTicketMemoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	TicketMemo    *AddTicketMemoRequestTicketMemo    `json:"TicketMemo,omitempty" xml:"TicketMemo,omitempty" type:"Struct"`
@@ -167,14 +159,8 @@ func (s *AddTicketMemoRequestTicketMemo) Validate() error {
 }
 
 type AddTicketMemoRequestTicketMemoAttachments struct {
-	// example:
-	//
-	// "ticket/image/44xxxx9/43003/e27204b38xxxx1640499.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// wahaha.txt
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
 func (s AddTicketMemoRequestTicketMemoAttachments) String() string {

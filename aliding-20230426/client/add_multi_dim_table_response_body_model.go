@@ -22,9 +22,6 @@ type iAddMultiDimTableResponseBody interface {
 }
 
 type AddMultiDimTableResponseBody struct {
-	// example:
-	//
-	// r1R7q3QmWew5lo02fxB7xxxxxxx
 	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:

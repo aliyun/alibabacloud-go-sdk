@@ -28,35 +28,14 @@ type iBatchUpdateFormDataByInstanceMapShrinkRequest interface {
 }
 
 type BatchUpdateFormDataByInstanceMapShrinkRequest struct {
-	// example:
-	//
-	// String
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// example:
-	//
-	// false
-	AsynchronousExecution *bool `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
-	// example:
-	//
-	// FORM-GX866MC1NC1VOFF6WVQW33FD16E23L3CPMKVKA
-	FormUuid *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
-	// example:
-	//
-	// false
-	IgnoreEmpty *bool `json:"IgnoreEmpty,omitempty" xml:"IgnoreEmpty,omitempty"`
-	// example:
-	//
-	// false
-	NoExecuteExpression *bool `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
-	// example:
-	//
-	// 09866181UTZVVD4R3DC955FNKIM52HVPU5WWK7
+	AppType                     *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AsynchronousExecution       *bool   `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
+	FormUuid                    *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	IgnoreEmpty                 *bool   `json:"IgnoreEmpty,omitempty" xml:"IgnoreEmpty,omitempty"`
+	NoExecuteExpression         *bool   `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
 	SystemToken                 *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
 	UpdateFormDataJsonMapShrink *string `json:"UpdateFormDataJsonMap,omitempty" xml:"UpdateFormDataJsonMap,omitempty"`
-	// example:
-	//
-	// false
-	UseLatestFormSchemaVersion *bool `json:"UseLatestFormSchemaVersion,omitempty" xml:"UseLatestFormSchemaVersion,omitempty"`
+	UseLatestFormSchemaVersion  *bool   `json:"UseLatestFormSchemaVersion,omitempty" xml:"UseLatestFormSchemaVersion,omitempty"`
 }
 
 func (s BatchUpdateFormDataByInstanceMapShrinkRequest) String() string {

@@ -22,18 +22,9 @@ type iUpdateConvExtensionShrinkRequest interface {
 }
 
 type UpdateConvExtensionShrinkRequest struct {
-	// example:
-	//
-	// https://xxx
-	MobileUrl *string `json:"MobileUrl,omitempty" xml:"MobileUrl,omitempty"`
-	// example:
-	//
-	// https://xxx
-	PcUrl             *string `json:"PcUrl,omitempty" xml:"PcUrl,omitempty"`
-	StaffIdListShrink *string `json:"StaffIdList,omitempty" xml:"StaffIdList,omitempty"`
-	// example:
-	//
-	// 546374856
+	MobileUrl           *string `json:"MobileUrl,omitempty" xml:"MobileUrl,omitempty"`
+	PcUrl               *string `json:"PcUrl,omitempty" xml:"PcUrl,omitempty"`
+	StaffIdListShrink   *string `json:"StaffIdList,omitempty" xml:"StaffIdList,omitempty"`
 	SystemUid           *string `json:"SystemUid,omitempty" xml:"SystemUid,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

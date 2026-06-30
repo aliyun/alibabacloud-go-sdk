@@ -30,8 +30,6 @@ type CreateScheduleConferenceResponseBody struct {
 	//
 	// +861234567
 	Phones []*string `json:"phones,omitempty" xml:"phones,omitempty" type:"Repeated"`
-	// requestId
-	//
 	// example:
 	//
 	// 1234567

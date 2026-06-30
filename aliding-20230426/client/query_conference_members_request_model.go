@@ -20,13 +20,7 @@ type iQueryConferenceMembersRequest interface {
 }
 
 type QueryConferenceMembersRequest struct {
-	// example:
-	//
-	// 300
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// 123000000
+	MaxResults    *int32                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken     *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	TenantContext *QueryConferenceMembersRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	// This parameter is required.

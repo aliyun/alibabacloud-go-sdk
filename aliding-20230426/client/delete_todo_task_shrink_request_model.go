@@ -19,15 +19,8 @@ type iDeleteTodoTaskShrinkRequest interface {
 
 type DeleteTodoTaskShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
-	// example:
-	//
-	// 12345
-	OperatorId *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	OperatorId          *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 63edc8da7e917d6ecdaab11b
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 

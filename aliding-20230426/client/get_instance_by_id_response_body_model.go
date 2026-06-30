@@ -89,10 +89,7 @@ type GetInstanceByIdResponseBody struct {
 	//
 	// dingtalk
 	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
-	// example:
-	//
-	// 1
-	Version *int64 `json:"version,omitempty" xml:"version,omitempty"`
+	Version    *int64  `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetInstanceByIdResponseBody) String() string {

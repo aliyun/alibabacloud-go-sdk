@@ -21,22 +21,10 @@ type iQueryCloudRecordVideoPlayInfoRequest interface {
 
 type QueryCloudRecordVideoPlayInfoRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 6139b4xxx
 	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 44444444
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-shenzhen
 	RegionId      *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TenantContext *QueryCloudRecordVideoPlayInfoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

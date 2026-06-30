@@ -16,15 +16,7 @@ type iCreateOrgHonorTemplateResponseBody interface {
 }
 
 type CreateOrgHonorTemplateResponseBody struct {
-	// example:
-	//
-	// 21660610
-	HonorId *string `json:"honorId,omitempty" xml:"honorId,omitempty"`
-	// requestId
-	//
-	// example:
-	//
-	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	HonorId   *string `json:"honorId,omitempty" xml:"honorId,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

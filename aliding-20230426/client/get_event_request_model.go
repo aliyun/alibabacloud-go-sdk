@@ -19,21 +19,10 @@ type iGetEventRequest interface {
 
 type GetEventRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 311525211
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// example:
-	//
-	// 100
-	MaxAttendees *int64 `json:"MaxAttendees,omitempty" xml:"MaxAttendees,omitempty"`
+	EventId      *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	MaxAttendees *int64  `json:"MaxAttendees,omitempty" xml:"MaxAttendees,omitempty"`
 }
 
 func (s GetEventRequest) String() string {

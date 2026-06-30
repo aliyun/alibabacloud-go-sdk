@@ -17,10 +17,6 @@ type iGetTodoTaskShrinkRequest interface {
 
 type GetTodoTaskShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// OPJpwtxxxx
 	TaskId              *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

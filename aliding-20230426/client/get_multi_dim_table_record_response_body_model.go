@@ -30,24 +30,12 @@ type iGetMultiDimTableRecordResponseBody interface {
 }
 
 type GetMultiDimTableRecordResponseBody struct {
-	CreatedBy *GetMultiDimTableRecordResponseBodyCreatedBy `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty" type:"Struct"`
-	// example:
-	//
-	// xxx
-	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// example:
-	//
-	// xxx
-	Fields map[string]interface{} `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	// example:
-	//
-	// xxx
-	Id             *string                                           `json:"Id,omitempty" xml:"Id,omitempty"`
-	LastModifiedBy *GetMultiDimTableRecordResponseBodyLastModifiedBy `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty" type:"Struct"`
-	// example:
-	//
-	// xxx
-	LastModifiedTime *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	CreatedBy        *GetMultiDimTableRecordResponseBodyCreatedBy      `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty" type:"Struct"`
+	CreatedTime      *int64                                            `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Fields           map[string]interface{}                            `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	Id               *string                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	LastModifiedBy   *GetMultiDimTableRecordResponseBodyLastModifiedBy `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty" type:"Struct"`
+	LastModifiedTime *int64                                            `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -166,9 +154,6 @@ func (s *GetMultiDimTableRecordResponseBody) Validate() error {
 }
 
 type GetMultiDimTableRecordResponseBodyCreatedBy struct {
-	// example:
-	//
-	// 012345
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -194,9 +179,6 @@ func (s *GetMultiDimTableRecordResponseBodyCreatedBy) Validate() error {
 }
 
 type GetMultiDimTableRecordResponseBodyLastModifiedBy struct {
-	// example:
-	//
-	// 012345
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

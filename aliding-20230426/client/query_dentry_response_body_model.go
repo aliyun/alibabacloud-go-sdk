@@ -92,8 +92,6 @@ type QueryDentryResponseBody struct {
 	//
 	// 测试组织/测试知识库/abc
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -327,10 +325,7 @@ type QueryDentryResponseBodyCreator struct {
 	// example:
 	//
 	// hello
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 012345
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -660,13 +655,7 @@ func (s *QueryDentryResponseBodySpace) Validate() error {
 }
 
 type QueryDentryResponseBodySpaceHdIconVO struct {
-	// example:
-	//
-	// http://
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// example:
-	//
-	// type
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -701,13 +690,7 @@ func (s *QueryDentryResponseBodySpaceHdIconVO) Validate() error {
 }
 
 type QueryDentryResponseBodySpaceIconVO struct {
-	// example:
-	//
-	// http://
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// example:
-	//
-	// type
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1244,10 +1227,7 @@ type QueryDentryResponseBodySpaceRecentListUpdater struct {
 	// example:
 	//
 	// hello
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 012345
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -1283,11 +1263,8 @@ func (s *QueryDentryResponseBodySpaceRecentListUpdater) Validate() error {
 
 type QueryDentryResponseBodySpaceRecentListVisitorInfo struct {
 	DentryActions []*string `json:"DentryActions,omitempty" xml:"DentryActions,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	RoleCode     *string   `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
-	SpaceActions []*string `json:"SpaceActions,omitempty" xml:"SpaceActions,omitempty" type:"Repeated"`
+	RoleCode      *string   `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
+	SpaceActions  []*string `json:"SpaceActions,omitempty" xml:"SpaceActions,omitempty" type:"Repeated"`
 }
 
 func (s QueryDentryResponseBodySpaceRecentListVisitorInfo) String() string {
@@ -1387,10 +1364,7 @@ type QueryDentryResponseBodyUpdater struct {
 	// example:
 	//
 	// hello
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 012345
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -1426,11 +1400,8 @@ func (s *QueryDentryResponseBodyUpdater) Validate() error {
 
 type QueryDentryResponseBodyVisitorInfo struct {
 	DentryActions []*string `json:"DentryActions,omitempty" xml:"DentryActions,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	RoleCode     *string   `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
-	SpaceActions []*string `json:"SpaceActions,omitempty" xml:"SpaceActions,omitempty" type:"Repeated"`
+	RoleCode      *string   `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
+	SpaceActions  []*string `json:"SpaceActions,omitempty" xml:"SpaceActions,omitempty" type:"Repeated"`
 }
 
 func (s QueryDentryResponseBodyVisitorInfo) String() string {

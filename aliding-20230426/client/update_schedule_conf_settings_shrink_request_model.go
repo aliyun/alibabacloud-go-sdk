@@ -19,11 +19,8 @@ type iUpdateScheduleConfSettingsShrinkRequest interface {
 
 type UpdateScheduleConfSettingsShrinkRequest struct {
 	ScheduleConfSettingModelShrink *string `json:"ScheduleConfSettingModel,omitempty" xml:"ScheduleConfSettingModel,omitempty"`
-	// example:
-	//
-	// f6fb627e-a7e8-403e-b1f8-26e85450f4a9
-	ScheduleConferenceId *string `json:"ScheduleConferenceId,omitempty" xml:"ScheduleConferenceId,omitempty"`
-	TenantContextShrink  *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	ScheduleConferenceId           *string `json:"ScheduleConferenceId,omitempty" xml:"ScheduleConferenceId,omitempty"`
+	TenantContextShrink            *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }
 
 func (s UpdateScheduleConfSettingsShrinkRequest) String() string {

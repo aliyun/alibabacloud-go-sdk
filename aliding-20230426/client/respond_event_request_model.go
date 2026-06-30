@@ -21,22 +21,10 @@ type iRespondEventRequest interface {
 
 type RespondEventRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// RHN2REJFc2w4VHNiUUlvcVB0ejFydz09
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// accepted
 	ResponseStatus *string                           `json:"ResponseStatus,omitempty" xml:"ResponseStatus,omitempty"`
 	TenantContext  *RespondEventRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

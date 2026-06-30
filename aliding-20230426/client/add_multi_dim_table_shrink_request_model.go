@@ -21,10 +21,6 @@ type iAddMultiDimTableShrinkRequest interface {
 
 type AddMultiDimTableShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
 	BaseId              *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
 	FieldsShrink        *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
 	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`

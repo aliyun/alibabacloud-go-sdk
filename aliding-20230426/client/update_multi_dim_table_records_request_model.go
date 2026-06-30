@@ -21,10 +21,6 @@ type iUpdateMultiDimTableRecordsRequest interface {
 
 type UpdateMultiDimTableRecordsRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
 	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
 	// This parameter is required.
 	RecordIds []*UpdateMultiDimTableRecordsRequestRecordIds `json:"RecordIds,omitempty" xml:"RecordIds,omitempty" type:"Repeated"`
@@ -99,10 +95,6 @@ type UpdateMultiDimTableRecordsRequestRecordIds struct {
 	// This parameter is required.
 	Fields map[string]interface{} `json:"Fields,omitempty" xml:"Fields,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// HyDGtSj
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

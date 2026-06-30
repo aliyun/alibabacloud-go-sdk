@@ -16,12 +16,7 @@ type iCreateScenegroupResponseBody interface {
 }
 
 type CreateScenegroupResponseBody struct {
-	// example:
-	//
-	// cid1324wwwerxxx
 	OpenConversationId *string `json:"openConversationId,omitempty" xml:"openConversationId,omitempty"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

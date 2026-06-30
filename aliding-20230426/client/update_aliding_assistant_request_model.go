@@ -35,21 +35,11 @@ type iUpdateAlidingAssistantRequest interface {
 
 type UpdateAlidingAssistantRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234
-	AssistantId *string            `json:"AssistantId,omitempty" xml:"AssistantId,omitempty"`
-	Description *string            `json:"Description,omitempty" xml:"Description,omitempty"`
-	Ext         map[string]*string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// example:
-	//
-	// fallbackContent
-	FallbackContent *string            `json:"FallbackContent,omitempty" xml:"FallbackContent,omitempty"`
-	Feature         map[string]*string `json:"Feature,omitempty" xml:"Feature,omitempty"`
-	// example:
-	//
-	// @lADPDetfgMsFFUvNAkjNAkg
+	AssistantId      *string                                     `json:"AssistantId,omitempty" xml:"AssistantId,omitempty"`
+	Description      *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	Ext              map[string]*string                          `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	FallbackContent  *string                                     `json:"FallbackContent,omitempty" xml:"FallbackContent,omitempty"`
+	Feature          map[string]*string                          `json:"Feature,omitempty" xml:"Feature,omitempty"`
 	Icon             *string                                     `json:"Icon,omitempty" xml:"Icon,omitempty"`
 	Instructions     *string                                     `json:"Instructions,omitempty" xml:"Instructions,omitempty"`
 	Name             *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`

@@ -39,19 +39,13 @@ type QueryConferenceInfoByRoomCodeResponseBody struct {
 	// example:
 	//
 	// true
-	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	// example:
-	//
-	// 1296
+	HasMore   *bool   `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 20
-	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *int32  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -156,48 +150,18 @@ func (s *QueryConferenceInfoByRoomCodeResponseBody) Validate() error {
 }
 
 type QueryConferenceInfoByRoomCodeResponseBodyConferenceList struct {
-	// example:
-	//
-	// 3
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// example:
-	//
-	// 1000
-	ConfDuration *int64 `json:"ConfDuration,omitempty" xml:"ConfDuration,omitempty"`
-	// example:
-	//
-	// 636cf59f2b032f014ae32902
-	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
-	// example:
-	//
-	// 527079
-	CreatorId   *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	CreatorNick *string `json:"CreatorNick,omitempty" xml:"CreatorNick,omitempty"`
-	// example:
-	//
-	// 1668087732000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// https//:xxx
-	ExternalLinkUrl *string `json:"ExternalLinkUrl,omitempty" xml:"ExternalLinkUrl,omitempty"`
-	// example:
-	//
-	// 123456789
-	RoomCode *string `json:"RoomCode,omitempty" xml:"RoomCode,omitempty"`
-	// example:
-	//
-	// 2d79cbde-b9d8-4256-9788-78b05834944e
+	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	ConfDuration         *int64  `json:"ConfDuration,omitempty" xml:"ConfDuration,omitempty"`
+	ConferenceId         *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorNick          *string `json:"CreatorNick,omitempty" xml:"CreatorNick,omitempty"`
+	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExternalLinkUrl      *string `json:"ExternalLinkUrl,omitempty" xml:"ExternalLinkUrl,omitempty"`
+	RoomCode             *string `json:"RoomCode,omitempty" xml:"RoomCode,omitempty"`
 	ScheduleConferenceId *string `json:"ScheduleConferenceId,omitempty" xml:"ScheduleConferenceId,omitempty"`
-	// example:
-	//
-	// 1668087731000
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// example:
-	//
-	// 2
-	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	StartTime            *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title                *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s QueryConferenceInfoByRoomCodeResponseBodyConferenceList) String() string {

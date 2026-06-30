@@ -126,37 +126,16 @@ func (s *GetDingtalkProjectionListResponseBody) Validate() error {
 }
 
 type GetDingtalkProjectionListResponseBodyData struct {
-	// example:
-	//
-	// IN
 	CallStatus *string `json:"callStatus,omitempty" xml:"callStatus,omitempty"`
-	// example:
-	//
-	// ABCD
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// 3424242
-	DevUid *int64 `json:"devUid,omitempty" xml:"devUid,omitempty"`
-	// example:
-	//
-	// 517169
-	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
-	// example:
-	//
-	// 1757729705000
-	EndTs *int64 `json:"endTs,omitempty" xml:"endTs,omitempty"`
-	// example:
-	//
-	// 342456
-	NickCode *string `json:"nickCode,omitempty" xml:"nickCode,omitempty"`
+	Code       *string `json:"code,omitempty" xml:"code,omitempty"`
+	DevUid     *int64  `json:"devUid,omitempty" xml:"devUid,omitempty"`
+	Duration   *string `json:"duration,omitempty" xml:"duration,omitempty"`
+	EndTs      *int64  `json:"endTs,omitempty" xml:"endTs,omitempty"`
+	NickCode   *string `json:"nickCode,omitempty" xml:"nickCode,omitempty"`
 	// example:
 	//
 	// 123456789
-	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
-	// example:
-	//
-	// 4234242
+	OrgId        *int64  `json:"orgId,omitempty" xml:"orgId,omitempty"`
 	RecvClientId *string `json:"recvClientId,omitempty" xml:"recvClientId,omitempty"`
 	// example:
 	//
@@ -169,19 +148,10 @@ type GetDingtalkProjectionListResponseBodyData struct {
 	// example:
 	//
 	// active
-	SendClientName *string `json:"sendClientName,omitempty" xml:"sendClientName,omitempty"`
-	// example:
-	//
-	// 24324
+	SendClientName   *string `json:"sendClientName,omitempty" xml:"sendClientName,omitempty"`
 	SendClientWorkNo *string `json:"sendClientWorkNo,omitempty" xml:"sendClientWorkNo,omitempty"`
-	// example:
-	//
-	// 1765502676356
-	StartTs *int64 `json:"startTs,omitempty" xml:"startTs,omitempty"`
-	// example:
-	//
-	// 2432424
-	TimeStr *string `json:"timeStr,omitempty" xml:"timeStr,omitempty"`
+	StartTs          *int64  `json:"startTs,omitempty" xml:"startTs,omitempty"`
+	TimeStr          *string `json:"timeStr,omitempty" xml:"timeStr,omitempty"`
 }
 
 func (s GetDingtalkProjectionListResponseBodyData) String() string {

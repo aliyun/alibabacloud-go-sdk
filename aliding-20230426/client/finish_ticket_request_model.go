@@ -24,16 +24,8 @@ type iFinishTicketRequest interface {
 type FinishTicketRequest struct {
 	Notify *FinishTicketRequestNotify `json:"Notify,omitempty" xml:"Notify,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// eKWh3xxxxiE
 	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// Dq9hP8Sk2v6vQxxxxiE
 	OpenTicketId  *string                           `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
 	TenantContext *FinishTicketRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	TicketMemo    *FinishTicketRequestTicketMemo    `json:"TicketMemo,omitempty" xml:"TicketMemo,omitempty" type:"Struct"`
@@ -113,11 +105,8 @@ func (s *FinishTicketRequest) Validate() error {
 
 type FinishTicketRequestNotify struct {
 	GroupNoticeReceiverUserIds []*string `json:"GroupNoticeReceiverUserIds,omitempty" xml:"GroupNoticeReceiverUserIds,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	NoticeAllGroupMember      *bool     `json:"NoticeAllGroupMember,omitempty" xml:"NoticeAllGroupMember,omitempty"`
-	WorkNoticeReceiverUserIds []*string `json:"WorkNoticeReceiverUserIds,omitempty" xml:"WorkNoticeReceiverUserIds,omitempty" type:"Repeated"`
+	NoticeAllGroupMember       *bool     `json:"NoticeAllGroupMember,omitempty" xml:"NoticeAllGroupMember,omitempty"`
+	WorkNoticeReceiverUserIds  []*string `json:"WorkNoticeReceiverUserIds,omitempty" xml:"WorkNoticeReceiverUserIds,omitempty" type:"Repeated"`
 }
 
 func (s FinishTicketRequestNotify) String() string {
@@ -232,14 +221,8 @@ func (s *FinishTicketRequestTicketMemo) Validate() error {
 }
 
 type FinishTicketRequestTicketMemoAttachments struct {
-	// example:
-	//
-	// wahaha.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// ticket/image/44xxxx9/43003/e27xxxx1640499.txt
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
 func (s FinishTicketRequestTicketMemoAttachments) String() string {

@@ -26,16 +26,10 @@ type iCreateMultiDimTableFieldResponseBody interface {
 }
 
 type CreateMultiDimTableFieldResponseBody struct {
-	// example:
-	//
-	// UhfysgH
 	Id       *string                `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name     *string                `json:"Name,omitempty" xml:"Name,omitempty"`
 	Property map[string]interface{} `json:"Property,omitempty" xml:"Property,omitempty"`
-	// example:
-	//
-	// text
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type     *string                `json:"Type,omitempty" xml:"Type,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

@@ -26,30 +26,13 @@ type iAddAttendeeResponseBody interface {
 }
 
 type AddAttendeeResponseBody struct {
-	Content *AddAttendeeResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	ErrorCode *string                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorCtx  map[string]interface{} `json:"ErrorCtx,omitempty" xml:"ErrorCtx,omitempty"`
-	// example:
-	//
-	// error check permissions
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// RequestId
-	//
-	// example:
-	//
-	// 9BCC17ED-0187-54A0-BD31-56FDBE865447
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Content        *AddAttendeeResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	ErrorCode      *string                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorCtx       map[string]interface{}          `json:"ErrorCtx,omitempty" xml:"ErrorCtx,omitempty"`
+	ErrorMsg       *string                         `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddAttendeeResponseBody) String() string {
@@ -133,9 +116,6 @@ func (s *AddAttendeeResponseBody) Validate() error {
 }
 
 type AddAttendeeResponseBodyContent struct {
-	// example:
-	//
-	// []
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 }
 

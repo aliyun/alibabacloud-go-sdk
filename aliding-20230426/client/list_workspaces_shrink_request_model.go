@@ -24,27 +24,12 @@ type iListWorkspacesShrinkRequest interface {
 }
 
 type ListWorkspacesShrinkRequest struct {
-	// example:
-	//
-	// 30
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// 123123
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// VIEW_TIME_DESC
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// example:
-	//
-	// qweqwe
+	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderBy             *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	TeamId              *string `json:"TeamId,omitempty" xml:"TeamId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
-	// example:
-	//
-	// true
-	WithPermissionRole *bool `json:"WithPermissionRole,omitempty" xml:"WithPermissionRole,omitempty"`
+	WithPermissionRole  *bool   `json:"WithPermissionRole,omitempty" xml:"WithPermissionRole,omitempty"`
 }
 
 func (s ListWorkspacesShrinkRequest) String() string {

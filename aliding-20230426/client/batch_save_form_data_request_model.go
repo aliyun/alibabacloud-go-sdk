@@ -26,31 +26,13 @@ type iBatchSaveFormDataRequest interface {
 }
 
 type BatchSaveFormDataRequest struct {
-	// example:
-	//
-	// APP_XCE0EVXS6DYG3YDYC5RD
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// example:
-	//
-	// false
-	AsynchronousExecution *bool     `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
-	FormDataJsonList      []*string `json:"FormDataJsonList,omitempty" xml:"FormDataJsonList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// FORM-GX866MC1NC1VOFF6WVQW33FD16E23L3CPMKVKA
-	FormUuid *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
-	// example:
-	//
-	// false
-	KeepRunningAfterException *bool `json:"KeepRunningAfterException,omitempty" xml:"KeepRunningAfterException,omitempty"`
-	// example:
-	//
-	// false
-	NoExecuteExpression *bool `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
-	// example:
-	//
-	// 09866181UTZVVD4R3DC955FNKIM52HVPU5WWK7
-	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	AppType                   *string   `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AsynchronousExecution     *bool     `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
+	FormDataJsonList          []*string `json:"FormDataJsonList,omitempty" xml:"FormDataJsonList,omitempty" type:"Repeated"`
+	FormUuid                  *string   `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	KeepRunningAfterException *bool     `json:"KeepRunningAfterException,omitempty" xml:"KeepRunningAfterException,omitempty"`
+	NoExecuteExpression       *bool     `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
+	SystemToken               *string   `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
 }
 
 func (s BatchSaveFormDataRequest) String() string {

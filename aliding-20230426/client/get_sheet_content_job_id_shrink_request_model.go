@@ -18,13 +18,7 @@ type iGetSheetContentJobIdShrinkRequest interface {
 }
 
 type GetSheetContentJobIdShrinkRequest struct {
-	// example:
-	//
-	// MNDoBb60VLYDGNPytQe7Gzp4JlemrZQ3
-	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
-	// example:
-	//
-	// dingTalksheetToxlsx
+	DentryUuid          *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
 	ExportType          *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

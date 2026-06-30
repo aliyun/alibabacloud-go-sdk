@@ -84,22 +84,10 @@ func (s *UpdateWorkspaceMembersRequest) Validate() error {
 
 type UpdateWorkspaceMembersRequestMembers struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 012345
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// USER
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ONLY_VIEWER
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 

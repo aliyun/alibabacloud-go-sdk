@@ -20,13 +20,7 @@ type iStartCloudRecordRequest interface {
 }
 
 type StartCloudRecordRequest struct {
-	// example:
-	//
-	// speech
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// example:
-	//
-	// relative_right
+	Mode                *string                               `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	SmallWindowPosition *string                               `json:"SmallWindowPosition,omitempty" xml:"SmallWindowPosition,omitempty"`
 	TenantContext       *StartCloudRecordRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	// This parameter is required.

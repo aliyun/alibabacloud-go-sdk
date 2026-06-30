@@ -21,7 +21,7 @@ type GetUserIdByOpenDingtalkIdShrinkRequest struct {
 	//
 	// example:
 	//
-	// DTOJdYJ2IQC4HuexhtjsSXXXX
+	// DTOJdYJ2IQC4HuexhtjsS8QiEiE
 	OpenDingtalkId *string `json:"openDingtalkId,omitempty" xml:"openDingtalkId,omitempty"`
 }
 

@@ -25,25 +25,11 @@ type iListMultiDimTableRecordsRequest interface {
 
 type ListMultiDimTableRecordsRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 101114
-	BaseId *string                                `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
-	Filter *ListMultiDimTableRecordsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// example:
-	//
-	// 100
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// AAAAAUUg5QSTWwHyeElt8z5z4Qo=
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	BaseId     *string                                `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	Filter     *ListMultiDimTableRecordsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	MaxResults *int32                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xxx
 	SheetIdOrName *string                                       `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
 	TenantContext *ListMultiDimTableRecordsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
@@ -125,9 +111,6 @@ func (s *ListMultiDimTableRecordsRequest) Validate() error {
 }
 
 type ListMultiDimTableRecordsRequestFilter struct {
-	// example:
-	//
-	// and
 	Combination *string                                            `json:"Combination,omitempty" xml:"Combination,omitempty"`
 	Conditions  []*ListMultiDimTableRecordsRequestFilterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
 }
@@ -172,13 +155,7 @@ func (s *ListMultiDimTableRecordsRequestFilter) Validate() error {
 }
 
 type ListMultiDimTableRecordsRequestFilterConditions struct {
-	// example:
-	//
-	// Sandbox
-	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// example:
-	//
-	// equal
+	Field    *string       `json:"Field,omitempty" xml:"Field,omitempty"`
 	Operator *string       `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	Value    []interface{} `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }

@@ -20,9 +20,6 @@ type iGetScencegroupFileDownloadurlResponseBody interface {
 }
 
 type GetScencegroupFileDownloadurlResponseBody struct {
-	// example:
-	//
-	// An https download connection
 	DownloadUrl *string `json:"downloadUrl,omitempty" xml:"downloadUrl,omitempty"`
 	// example:
 	//

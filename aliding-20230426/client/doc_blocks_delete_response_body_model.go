@@ -20,9 +20,6 @@ type iDocBlocksDeleteResponseBody interface {
 }
 
 type DocBlocksDeleteResponseBody struct {
-	// example:
-	//
-	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// example:
 	//

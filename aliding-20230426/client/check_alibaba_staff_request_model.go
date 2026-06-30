@@ -16,9 +16,6 @@ type iCheckAlibabaStaffRequest interface {
 }
 
 type CheckAlibabaStaffRequest struct {
-	// example:
-	//
-	// 156****9665
 	Mobile        *string                                `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	TenantContext *CheckAlibabaStaffRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

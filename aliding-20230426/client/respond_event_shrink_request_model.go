@@ -21,22 +21,10 @@ type iRespondEventShrinkRequest interface {
 
 type RespondEventShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// RHN2REJFc2w4VHNiUUlvcVB0ejFydz09
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// accepted
 	ResponseStatus      *string `json:"ResponseStatus,omitempty" xml:"ResponseStatus,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

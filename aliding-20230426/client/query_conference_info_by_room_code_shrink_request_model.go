@@ -21,21 +21,10 @@ type iQueryConferenceInfoByRoomCodeShrinkRequest interface {
 
 type QueryConferenceInfoByRoomCodeShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MaxResults          *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 583 480 813
 	RoomCode *string `json:"roomCode,omitempty" xml:"roomCode,omitempty"`
 }
 

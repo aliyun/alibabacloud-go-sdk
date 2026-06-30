@@ -25,16 +25,8 @@ type AddAttendeeRequest struct {
 	// This parameter is required.
 	AttendeesToAdd []*AddAttendeeRequestAttendeesToAdd `json:"AttendeesToAdd,omitempty" xml:"AttendeesToAdd,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cnNTbW1YbU9sL2p6aFJZdEgvdlQrQT08
 	EventId          *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	ChatNotification *bool   `json:"chatNotification,omitempty" xml:"chatNotification,omitempty"`
 	PushNotification *bool   `json:"pushNotification,omitempty" xml:"pushNotification,omitempty"`
@@ -107,14 +99,8 @@ func (s *AddAttendeeRequest) Validate() error {
 }
 
 type AddAttendeeRequestAttendeesToAdd struct {
-	// example:
-	//
-	// 123456
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// true
-	IsOptional *bool `json:"isOptional,omitempty" xml:"isOptional,omitempty"`
+	Id         *string `json:"id,omitempty" xml:"id,omitempty"`
+	IsOptional *bool   `json:"isOptional,omitempty" xml:"isOptional,omitempty"`
 }
 
 func (s AddAttendeeRequestAttendeesToAdd) String() string {

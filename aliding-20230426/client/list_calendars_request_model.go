@@ -14,9 +14,6 @@ type iListCalendarsRequest interface {
 }
 
 type ListCalendarsRequest struct {
-	// example:
-	//
-	// {}
 	Request map[string]interface{} `json:"Request,omitempty" xml:"Request,omitempty"`
 }
 

@@ -57,10 +57,6 @@ func (s *RemoveAttendeeHeaders) Validate() error {
 
 type RemoveAttendeeHeadersAccountContext struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 

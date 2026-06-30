@@ -19,10 +19,6 @@ type iListPermissionsShrinkRequest interface {
 
 type ListPermissionsShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// KGZLxjv9VGkoG9YwHE5wx7k2V6EDybno
 	DentryUuid          *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
 	OptionShrink        *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`

@@ -17,10 +17,6 @@ type iGetMultiDimTableAllSheetsShrinkRequest interface {
 
 type GetMultiDimTableAllSheetsShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 144972
 	BaseId              *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

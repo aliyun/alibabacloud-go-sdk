@@ -36,26 +36,14 @@ type iQueryReportDetailResponseBody interface {
 }
 
 type QueryReportDetailResponseBody struct {
-	Content []*QueryReportDetailResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1691980997000
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// example:
-	//
-	// 012345
-	CreatorId   *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	DeptName    *string `json:"deptName,omitempty" xml:"deptName,omitempty"`
-	// example:
-	//
-	// 1691980997000
-	ModifiedTime *int64  `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
-	Remark       *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// example:
-	//
-	// 1231232134
-	ReportId *string `json:"reportId,omitempty" xml:"reportId,omitempty"`
+	Content      []*QueryReportDetailResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+	CreateTime   *int64                                  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreatorId    *string                                 `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	CreatorName  *string                                 `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	DeptName     *string                                 `json:"deptName,omitempty" xml:"deptName,omitempty"`
+	ModifiedTime *int64                                  `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
+	Remark       *string                                 `json:"remark,omitempty" xml:"remark,omitempty"`
+	ReportId     *string                                 `json:"reportId,omitempty" xml:"reportId,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -203,15 +191,9 @@ func (s *QueryReportDetailResponseBody) Validate() error {
 type QueryReportDetailResponseBodyContent struct {
 	Images []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// 0
-	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// example:
-	//
-	// 1
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Sort   *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Type   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value  *string   `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s QueryReportDetailResponseBodyContent) String() string {

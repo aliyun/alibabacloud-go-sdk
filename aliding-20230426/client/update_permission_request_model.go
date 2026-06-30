@@ -22,16 +22,10 @@ type iUpdatePermissionRequest interface {
 }
 
 type UpdatePermissionRequest struct {
-	// example:
-	//
-	// kDnRL6jAJMLgNkw7tBnw5aY4VyMoPYe1
 	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
 	// This parameter is required.
-	Members []*UpdatePermissionRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
-	Option  *UpdatePermissionRequestOption    `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
-	// example:
-	//
-	// READER
+	Members       []*UpdatePermissionRequestMembers     `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	Option        *UpdatePermissionRequestOption        `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
 	RoleId        *string                               `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 	TenantContext *UpdatePermissionRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
@@ -167,9 +161,6 @@ func (s *UpdatePermissionRequestMembers) Validate() error {
 }
 
 type UpdatePermissionRequestOption struct {
-	// example:
-	//
-	// 10
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 

@@ -36,14 +36,8 @@ type GetDingtalkProjectionInfoShrinkRequest struct {
 	// example:
 	//
 	// 1640998800000
-	EndTs *int64 `json:"endTs,omitempty" xml:"endTs,omitempty"`
-	// example:
-	//
-	// 21001
-	OrgId *string `json:"orgId,omitempty" xml:"orgId,omitempty"`
-	// example:
-	//
-	// 342342
+	EndTs     *int64  `json:"endTs,omitempty" xml:"endTs,omitempty"`
+	OrgId     *string `json:"orgId,omitempty" xml:"orgId,omitempty"`
 	PubWorkNo *string `json:"pubWorkNo,omitempty" xml:"pubWorkNo,omitempty"`
 	// example:
 	//

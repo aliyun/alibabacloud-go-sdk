@@ -24,10 +24,7 @@ type iMeetingFlashMinutesTextResponseBody interface {
 }
 
 type MeetingFlashMinutesTextResponseBody struct {
-	HasNext *bool `json:"hasNext,omitempty" xml:"hasNext,omitempty"`
-	// example:
-	//
-	// 1778490366045000_62XXX
+	HasNext       *bool                                               `json:"hasNext,omitempty" xml:"hasNext,omitempty"`
 	NextToken     *string                                             `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	ParagraphList []*MeetingFlashMinutesTextResponseBodyParagraphList `json:"paragraphList,omitempty" xml:"paragraphList,omitempty" type:"Repeated"`
 	// example:

@@ -17,16 +17,8 @@ type iDeleteScenegroupMemberRequest interface {
 
 type DeleteScenegroupMemberRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cidvkLfbOyIiSYqjgvAiWwFow==
 	OpenConversationId *string `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123xxx,223xxx
 	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
 }
 

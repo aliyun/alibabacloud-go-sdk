@@ -141,10 +141,7 @@ type GetDingtalkMeetingListResponseBodyData struct {
 	// example:
 	//
 	// 张三
-	CreatorNick *string `json:"creatorNick,omitempty" xml:"creatorNick,omitempty"`
-	// example:
-	//
-	// 3423423
+	CreatorNick   *string `json:"creatorNick,omitempty" xml:"creatorNick,omitempty"`
 	CreatorWorkNo *string `json:"creatorWorkNo,omitempty" xml:"creatorWorkNo,omitempty"`
 	// example:
 	//

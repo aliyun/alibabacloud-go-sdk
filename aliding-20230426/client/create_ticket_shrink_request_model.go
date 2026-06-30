@@ -30,38 +30,19 @@ type iCreateTicketShrinkRequest interface {
 }
 
 type CreateTicketShrinkRequest struct {
-	// example:
-	//
-	// []
 	CustomFields *string `json:"CustomFields,omitempty" xml:"CustomFields,omitempty"`
 	NotifyShrink *string `json:"Notify,omitempty" xml:"Notify,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// G3IOe205RLciE
 	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xxxx
 	OpenTemplateBizId *string `json:"OpenTemplateBizId,omitempty" xml:"OpenTemplateBizId,omitempty"`
 	// This parameter is required.
 	ProcessorUserIdsShrink *string `json:"ProcessorUserIds,omitempty" xml:"ProcessorUserIds,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// SG
 	Scene               *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	SceneContextShrink  *string `json:"SceneContext,omitempty" xml:"SceneContext,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// Killer Ball Wo Mouichido
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

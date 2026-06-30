@@ -21,10 +21,6 @@ type iDeletePermissionRequest interface {
 
 type DeletePermissionRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// a9E05BDRVQRkezKGCE3nlwPDJ63zgkYA
 	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
 	// This parameter is required.
 	Members []*DeletePermissionRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`

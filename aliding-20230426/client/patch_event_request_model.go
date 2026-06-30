@@ -50,24 +50,13 @@ type iPatchEventRequest interface {
 type PatchEventRequest struct {
 	Attendees []*PatchEventRequestAttendees `json:"Attendees,omitempty" xml:"Attendees,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// primary
 	CalendarId    *string                           `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
 	CardInstances []*PatchEventRequestCardInstances `json:"CardInstances,omitempty" xml:"CardInstances,omitempty" type:"Repeated"`
 	Description   *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
 	End           *PatchEventRequestEnd             `json:"End,omitempty" xml:"End,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// iiiP35sJadba8aBSgjrwPRKgiEiF
-	EventId *string            `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	Extra   map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// example:
-	//
-	// true
+	EventId             *string                               `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	Extra               map[string]*string                    `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	IsAllDay            *bool                                 `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
 	Location            *PatchEventRequestLocation            `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
 	Recurrence          *PatchEventRequestRecurrence          `json:"Recurrence,omitempty" xml:"Recurrence,omitempty" type:"Struct"`
@@ -331,14 +320,8 @@ func (s *PatchEventRequest) Validate() error {
 }
 
 type PatchEventRequestAttendees struct {
-	// example:
-	//
-	// 123456
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// false
-	IsOptional *bool `json:"isOptional,omitempty" xml:"isOptional,omitempty"`
+	Id         *string `json:"id,omitempty" xml:"id,omitempty"`
+	IsOptional *bool   `json:"isOptional,omitempty" xml:"isOptional,omitempty"`
 }
 
 func (s PatchEventRequestAttendees) String() string {
@@ -407,17 +390,8 @@ func (s *PatchEventRequestCardInstances) Validate() error {
 }
 
 type PatchEventRequestEnd struct {
-	// example:
-	//
-	// 2020-01-01
-	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
+	Date     *string `json:"date,omitempty" xml:"date,omitempty"`
 	DateTime *string `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
-	// example:
-	//
-	// Asia/Shanghai
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 
@@ -461,9 +435,6 @@ func (s *PatchEventRequestEnd) Validate() error {
 }
 
 type PatchEventRequestLocation struct {
-	// example:
-	//
-	// room 1-2-3
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 }
 
@@ -534,26 +505,11 @@ func (s *PatchEventRequestRecurrence) Validate() error {
 }
 
 type PatchEventRequestRecurrencePattern struct {
-	// example:
-	//
-	// 1
-	DayOfMonth *int32 `json:"dayOfMonth,omitempty" xml:"dayOfMonth,omitempty"`
-	// example:
-	//
-	// sunday
+	DayOfMonth *int32  `json:"dayOfMonth,omitempty" xml:"dayOfMonth,omitempty"`
 	DaysOfWeek *string `json:"daysOfWeek,omitempty" xml:"daysOfWeek,omitempty"`
-	// example:
-	//
-	// last
-	Index *string `json:"index,omitempty" xml:"index,omitempty"`
-	// example:
-	//
-	// 1
-	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
-	// example:
-	//
-	// daily
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Index      *string `json:"index,omitempty" xml:"index,omitempty"`
+	Interval   *int32  `json:"interval,omitempty" xml:"interval,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s PatchEventRequestRecurrencePattern) String() string {
@@ -614,18 +570,9 @@ func (s *PatchEventRequestRecurrencePattern) Validate() error {
 }
 
 type PatchEventRequestRecurrenceRange struct {
-	// example:
-	//
-	// 2021-12-31T10:15:30+08:00
-	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// example:
-	//
-	// 1
-	NumberOfOccurrences *int32 `json:"numberOfOccurrences,omitempty" xml:"numberOfOccurrences,omitempty"`
-	// example:
-	//
-	// endDate
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	EndDate             *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	NumberOfOccurrences *int32  `json:"numberOfOccurrences,omitempty" xml:"numberOfOccurrences,omitempty"`
+	Type                *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s PatchEventRequestRecurrenceRange) String() string {
@@ -668,14 +615,8 @@ func (s *PatchEventRequestRecurrenceRange) Validate() error {
 }
 
 type PatchEventRequestReminders struct {
-	// example:
-	//
-	// dingtalk
-	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// example:
-	//
-	// 15
-	Minutes *int32 `json:"minutes,omitempty" xml:"minutes,omitempty"`
+	Method  *string `json:"method,omitempty" xml:"method,omitempty"`
+	Minutes *int32  `json:"minutes,omitempty" xml:"minutes,omitempty"`
 }
 
 func (s PatchEventRequestReminders) String() string {
@@ -709,17 +650,8 @@ func (s *PatchEventRequestReminders) Validate() error {
 }
 
 type PatchEventRequestStart struct {
-	// example:
-	//
-	// 2020-01-01
-	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
+	Date     *string `json:"date,omitempty" xml:"date,omitempty"`
 	DateTime *string `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
-	// example:
-	//
-	// Asia/Shanghai
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 

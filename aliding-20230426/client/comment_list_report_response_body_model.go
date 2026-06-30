@@ -20,17 +20,9 @@ type iCommentListReportResponseBody interface {
 }
 
 type CommentListReportResponseBody struct {
-	Comments []*CommentListReportResponseBodyComments `json:"comments,omitempty" xml:"comments,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	// example:
-	//
-	// 1568442466000
-	NextCursor *int64 `json:"nextCursor,omitempty" xml:"nextCursor,omitempty"`
-	// requestId
-	//
+	Comments   []*CommentListReportResponseBodyComments `json:"comments,omitempty" xml:"comments,omitempty" type:"Repeated"`
+	HasMore    *bool                                    `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
+	NextCursor *int64                                   `json:"nextCursor,omitempty" xml:"nextCursor,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -95,15 +87,9 @@ func (s *CommentListReportResponseBody) Validate() error {
 }
 
 type CommentListReportResponseBodyComments struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// example:
-	//
-	// 1678442466000
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 012345
-	Userid *string `json:"Userid,omitempty" xml:"Userid,omitempty"`
+	Userid     *string `json:"Userid,omitempty" xml:"Userid,omitempty"`
 }
 
 func (s CommentListReportResponseBodyComments) String() string {

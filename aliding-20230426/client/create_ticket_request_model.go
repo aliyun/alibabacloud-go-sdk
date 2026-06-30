@@ -30,38 +30,19 @@ type iCreateTicketRequest interface {
 }
 
 type CreateTicketRequest struct {
-	// example:
-	//
-	// []
 	CustomFields *string                    `json:"CustomFields,omitempty" xml:"CustomFields,omitempty"`
 	Notify       *CreateTicketRequestNotify `json:"Notify,omitempty" xml:"Notify,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// G3IOe205RLciE
 	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xxxx
 	OpenTemplateBizId *string `json:"OpenTemplateBizId,omitempty" xml:"OpenTemplateBizId,omitempty"`
 	// This parameter is required.
 	ProcessorUserIds []*string `json:"ProcessorUserIds,omitempty" xml:"ProcessorUserIds,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// SG
 	Scene         *string                           `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	SceneContext  *CreateTicketRequestSceneContext  `json:"SceneContext,omitempty" xml:"SceneContext,omitempty" type:"Struct"`
 	TenantContext *CreateTicketRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// Killer Ball Wo Mouichido
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -175,11 +156,8 @@ func (s *CreateTicketRequest) Validate() error {
 
 type CreateTicketRequestNotify struct {
 	GroupNoticeReceiverUserIds []*string `json:"GroupNoticeReceiverUserIds,omitempty" xml:"GroupNoticeReceiverUserIds,omitempty" type:"Repeated"`
-	// example:
-	//
-	// false
-	NoticeAllGroupMember      *bool     `json:"NoticeAllGroupMember,omitempty" xml:"NoticeAllGroupMember,omitempty"`
-	WorkNoticeReceiverUserIds []*string `json:"WorkNoticeReceiverUserIds,omitempty" xml:"WorkNoticeReceiverUserIds,omitempty" type:"Repeated"`
+	NoticeAllGroupMember       *bool     `json:"NoticeAllGroupMember,omitempty" xml:"NoticeAllGroupMember,omitempty"`
+	WorkNoticeReceiverUserIds  []*string `json:"WorkNoticeReceiverUserIds,omitempty" xml:"WorkNoticeReceiverUserIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateTicketRequestNotify) String() string {
@@ -222,16 +200,10 @@ func (s *CreateTicketRequestNotify) Validate() error {
 }
 
 type CreateTicketRequestSceneContext struct {
-	GroupMsgs []*CreateTicketRequestSceneContextGroupMsgs `json:"GroupMsgs,omitempty" xml:"GroupMsgs,omitempty" type:"Repeated"`
-	// example:
-	//
-	// cidDKVAOW8yVWPEN+WZfwSSAQ==
-	OpenConversationId *string   `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
-	RelevantorUserIds  []*string `json:"RelevantorUserIds,omitempty" xml:"RelevantorUserIds,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 42674892
-	TopicId *string `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+	GroupMsgs          []*CreateTicketRequestSceneContextGroupMsgs `json:"GroupMsgs,omitempty" xml:"GroupMsgs,omitempty" type:"Repeated"`
+	OpenConversationId *string                                     `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
+	RelevantorUserIds  []*string                                   `json:"RelevantorUserIds,omitempty" xml:"RelevantorUserIds,omitempty" type:"Repeated"`
+	TopicId            *string                                     `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
 }
 
 func (s CreateTicketRequestSceneContext) String() string {
@@ -292,13 +264,7 @@ func (s *CreateTicketRequestSceneContext) Validate() error {
 }
 
 type CreateTicketRequestSceneContextGroupMsgs struct {
-	// example:
-	//
-	// true
-	Anchor *bool `json:"Anchor,omitempty" xml:"Anchor,omitempty"`
-	// example:
-	//
-	// 1234567
+	Anchor    *bool   `json:"Anchor,omitempty" xml:"Anchor,omitempty"`
 	OpenMsgId *string `json:"OpenMsgId,omitempty" xml:"OpenMsgId,omitempty"`
 }
 

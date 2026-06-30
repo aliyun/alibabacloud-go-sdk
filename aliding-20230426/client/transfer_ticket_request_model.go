@@ -26,16 +26,8 @@ type iTransferTicketRequest interface {
 type TransferTicketRequest struct {
 	Notify *TransferTicketRequestNotify `json:"Notify,omitempty" xml:"Notify,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// eKWh3xxxxiE
 	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// Dq9hP8Sk2v6vQxxxxiE
 	OpenTicketId     *string                             `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
 	ProcessorUserIds []*string                           `json:"ProcessorUserIds,omitempty" xml:"ProcessorUserIds,omitempty" type:"Repeated"`
 	TenantContext    *TransferTicketRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
@@ -125,11 +117,8 @@ func (s *TransferTicketRequest) Validate() error {
 
 type TransferTicketRequestNotify struct {
 	GroupNoticeReceiverUserIds []*string `json:"GroupNoticeReceiverUserIds,omitempty" xml:"GroupNoticeReceiverUserIds,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	NoticeAllGroupMember      *bool     `json:"NoticeAllGroupMember,omitempty" xml:"NoticeAllGroupMember,omitempty"`
-	WorkNoticeReceiverUserIds []*string `json:"WorkNoticeReceiverUserIds,omitempty" xml:"WorkNoticeReceiverUserIds,omitempty" type:"Repeated"`
+	NoticeAllGroupMember       *bool     `json:"NoticeAllGroupMember,omitempty" xml:"NoticeAllGroupMember,omitempty"`
+	WorkNoticeReceiverUserIds  []*string `json:"WorkNoticeReceiverUserIds,omitempty" xml:"WorkNoticeReceiverUserIds,omitempty" type:"Repeated"`
 }
 
 func (s TransferTicketRequestNotify) String() string {
@@ -244,14 +233,8 @@ func (s *TransferTicketRequestTicketMemo) Validate() error {
 }
 
 type TransferTicketRequestTicketMemoAttachments struct {
-	// example:
-	//
-	// auto-test-1727143229007.pdf
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// key1
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
 func (s TransferTicketRequestTicketMemoAttachments) String() string {

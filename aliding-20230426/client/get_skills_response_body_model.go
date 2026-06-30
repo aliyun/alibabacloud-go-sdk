@@ -16,16 +16,8 @@ type iGetSkillsResponseBody interface {
 }
 
 type GetSkillsResponseBody struct {
-	// example:
-	//
-	// {}
-	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// RequestId
-	//
-	// example:
-	//
-	// A348BA5D-FFD4-57E4-9450-23A14D72F331
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetSkillsResponseBody) String() string {

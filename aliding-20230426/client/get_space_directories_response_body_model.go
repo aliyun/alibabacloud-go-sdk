@@ -20,17 +20,9 @@ type iGetSpaceDirectoriesResponseBody interface {
 }
 
 type GetSpaceDirectoriesResponseBody struct {
-	Children []*GetSpaceDirectoriesResponseBodyChildren `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	// example:
-	//
-	// 1296
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// requestId
-	//
+	Children  []*GetSpaceDirectoriesResponseBodyChildren `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
+	HasMore   *bool                                      `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
+	NextToken *string                                    `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -696,13 +688,7 @@ func (s *GetSpaceDirectoriesResponseBodyChildrenSpace) Validate() error {
 }
 
 type GetSpaceDirectoriesResponseBodyChildrenSpaceHdIconVO struct {
-	// example:
-	//
-	// https://img.alicdn.com/imgextra/i1/xxxxx.png
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// example:
-	//
-	// 1
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -737,13 +723,7 @@ func (s *GetSpaceDirectoriesResponseBodyChildrenSpaceHdIconVO) Validate() error 
 }
 
 type GetSpaceDirectoriesResponseBodyChildrenSpaceIconVO struct {
-	// example:
-	//
-	// https://img.alicdn.com/imgextra/i1/xxxxx.png
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// example:
-	//
-	// 1
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -873,11 +853,6 @@ func (s *GetSpaceDirectoriesResponseBodyChildrenSpaceVisitorInfo) Validate() err
 }
 
 type GetSpaceDirectoriesResponseBodyChildrenStatisticalInfo struct {
-	// WordCount
-	//
-	// example:
-	//
-	// 10
 	WordCount *int64 `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
 }
 
@@ -906,10 +881,7 @@ type GetSpaceDirectoriesResponseBodyChildrenUpdater struct {
 	// example:
 	//
 	// hello
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 012345
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -945,11 +917,8 @@ func (s *GetSpaceDirectoriesResponseBodyChildrenUpdater) Validate() error {
 
 type GetSpaceDirectoriesResponseBodyChildrenVisitorInfo struct {
 	DentryActions []*string `json:"DentryActions,omitempty" xml:"DentryActions,omitempty" type:"Repeated"`
-	// example:
-	//
-	// OWNER
-	RoleCode     *string   `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
-	SpaceActions []*string `json:"SpaceActions,omitempty" xml:"SpaceActions,omitempty" type:"Repeated"`
+	RoleCode      *string   `json:"RoleCode,omitempty" xml:"RoleCode,omitempty"`
+	SpaceActions  []*string `json:"SpaceActions,omitempty" xml:"SpaceActions,omitempty" type:"Repeated"`
 }
 
 func (s GetSpaceDirectoriesResponseBodyChildrenVisitorInfo) String() string {

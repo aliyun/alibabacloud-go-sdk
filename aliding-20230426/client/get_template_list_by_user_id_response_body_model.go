@@ -18,12 +18,7 @@ type iGetTemplateListByUserIdResponseBody interface {
 }
 
 type GetTemplateListByUserIdResponseBody struct {
-	// example:
-	//
-	// 12312131231
 	NextCursor *int64 `json:"nextCursor,omitempty" xml:"nextCursor,omitempty"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -80,16 +75,10 @@ func (s *GetTemplateListByUserIdResponseBody) Validate() error {
 }
 
 type GetTemplateListByUserIdResponseBodyTemplateList struct {
-	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 11111
+	IconUrl    *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ReportCode *string `json:"ReportCode,omitempty" xml:"ReportCode,omitempty"`
-	// example:
-	//
-	// https://scsss/sss
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetTemplateListByUserIdResponseBodyTemplateList) String() string {

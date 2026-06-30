@@ -18,13 +18,7 @@ type iGetSheetContentJobIdRequest interface {
 }
 
 type GetSheetContentJobIdRequest struct {
-	// example:
-	//
-	// MNDoBb60VLYDGNPytQe7Gzp4JlemrZQ3
-	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
-	// example:
-	//
-	// dingTalksheetToxlsx
+	DentryUuid    *string                                   `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
 	ExportType    *string                                   `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
 	TenantContext *GetSheetContentJobIdRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

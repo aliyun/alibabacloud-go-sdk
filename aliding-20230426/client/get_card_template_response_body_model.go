@@ -130,8 +130,6 @@ type GetCardTemplateResponseBodyCommonVariableList struct {
 	//
 	// 卡片摘要
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Id
-	//
 	// example:
 	//
 	// lastMessage

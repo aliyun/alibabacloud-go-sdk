@@ -157,11 +157,8 @@ type GetInstancesResponseBodyData struct {
 	// example:
 	//
 	// 小红发起的请购单
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// example:
-	//
-	// 1.0
-	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Version *int64  `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetInstancesResponseBodyData) String() string {

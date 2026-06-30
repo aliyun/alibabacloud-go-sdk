@@ -25,16 +25,8 @@ type AddAttendeeShrinkRequest struct {
 	// This parameter is required.
 	AttendeesToAddShrink *string `json:"AttendeesToAdd,omitempty" xml:"AttendeesToAdd,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cnNTbW1YbU9sL2p6aFJZdEgvdlQrQT08
 	EventId          *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	ChatNotification *bool   `json:"chatNotification,omitempty" xml:"chatNotification,omitempty"`
 	PushNotification *bool   `json:"pushNotification,omitempty" xml:"pushNotification,omitempty"`

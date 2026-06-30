@@ -20,10 +20,6 @@ type iQueryMinutesSummaryShrinkRequest interface {
 type QueryMinutesSummaryShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 607452e01401526ee39609e1
 	ConferenceId          *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
 	SummaryTypeListShrink *string `json:"summaryTypeList,omitempty" xml:"summaryTypeList,omitempty"`
 }

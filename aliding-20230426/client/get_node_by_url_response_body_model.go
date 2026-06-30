@@ -17,8 +17,6 @@ type iGetNodeByUrlResponseBody interface {
 
 type GetNodeByUrlResponseBody struct {
 	Node *GetNodeByUrlResponseBodyNode `json:"node,omitempty" xml:"node,omitempty" type:"Struct"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

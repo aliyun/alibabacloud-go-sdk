@@ -1,3 +1,7 @@
+2026-06-30 Version: v2.55.0
+- Support API DisableSceneGroupTemplate.
+
+
 2026-06-04 Version: v2.54.2
 - Generated golang 2023-04-26 for aliding.
 

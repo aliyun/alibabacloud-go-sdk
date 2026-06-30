@@ -21,15 +21,8 @@ type iGetDocContentTakIdShrinkRequest interface {
 
 type GetDocContentTakIdShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// qnYMoO1rWxrkmoj2I5L2PYkoJ47Z3je9
-	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
-	GenerateCp *bool   `json:"GenerateCp,omitempty" xml:"GenerateCp,omitempty"`
-	// example:
-	//
-	// markdown
+	DentryUuid          *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
+	GenerateCp          *bool   `json:"GenerateCp,omitempty" xml:"GenerateCp,omitempty"`
 	TargetFormat        *string `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

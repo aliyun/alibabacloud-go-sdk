@@ -21,20 +21,9 @@ type iListDriveSpacesRequest interface {
 
 type ListDriveSpacesRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// fekaf
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// org
 	SpaceType     *string                              `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
 	TenantContext *ListDriveSpacesRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

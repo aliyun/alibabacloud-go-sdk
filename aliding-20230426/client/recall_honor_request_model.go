@@ -22,22 +22,10 @@ type iRecallHonorRequest interface {
 type RecallHonorRequest struct {
 	TenantContext *RecallHonorRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 21660610
 	HonorId *string `json:"honorId,omitempty" xml:"honorId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 345391052
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 363784
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -95,9 +83,6 @@ func (s *RecallHonorRequest) Validate() error {
 }
 
 type RecallHonorRequestTenantContext struct {
-	// example:
-	//
-	// 4
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

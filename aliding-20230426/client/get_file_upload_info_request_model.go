@@ -20,16 +20,10 @@ type iGetFileUploadInfoRequest interface {
 }
 
 type GetFileUploadInfoRequest struct {
-	Option *GetFileUploadInfoRequestOption `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
-	// example:
-	//
-	// dentryUuid
-	ParentDentryUuid *string `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
-	// example:
-	//
-	// HEADER_SIGNATURE
-	Protocol      *string                                `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	TenantContext *GetFileUploadInfoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	Option           *GetFileUploadInfoRequestOption        `json:"Option,omitempty" xml:"Option,omitempty" type:"Struct"`
+	ParentDentryUuid *string                                `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
+	Protocol         *string                                `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	TenantContext    *GetFileUploadInfoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
 
 func (s GetFileUploadInfoRequest) String() string {
@@ -91,19 +85,10 @@ func (s *GetFileUploadInfoRequest) Validate() error {
 }
 
 type GetFileUploadInfoRequestOption struct {
-	PreCheckParam *GetFileUploadInfoRequestOptionPreCheckParam `json:"PreCheckParam,omitempty" xml:"PreCheckParam,omitempty" type:"Struct"`
-	// example:
-	//
-	// true
-	PreferIntranet *bool `json:"PreferIntranet,omitempty" xml:"PreferIntranet,omitempty"`
-	// example:
-	//
-	// ZHANGJIAKOU
-	PreferRegion *string `json:"PreferRegion,omitempty" xml:"PreferRegion,omitempty"`
-	// example:
-	//
-	// DINGTALK
-	StorageDriver *string `json:"StorageDriver,omitempty" xml:"StorageDriver,omitempty"`
+	PreCheckParam  *GetFileUploadInfoRequestOptionPreCheckParam `json:"PreCheckParam,omitempty" xml:"PreCheckParam,omitempty" type:"Struct"`
+	PreferIntranet *bool                                        `json:"PreferIntranet,omitempty" xml:"PreferIntranet,omitempty"`
+	PreferRegion   *string                                      `json:"PreferRegion,omitempty" xml:"PreferRegion,omitempty"`
+	StorageDriver  *string                                      `json:"StorageDriver,omitempty" xml:"StorageDriver,omitempty"`
 }
 
 func (s GetFileUploadInfoRequestOption) String() string {
@@ -160,14 +145,8 @@ func (s *GetFileUploadInfoRequestOption) Validate() error {
 }
 
 type GetFileUploadInfoRequestOptionPreCheckParam struct {
-	// example:
-	//
-	// None
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// None
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s GetFileUploadInfoRequestOptionPreCheckParam) String() string {

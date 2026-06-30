@@ -30,38 +30,18 @@ type iCreateOrgHonorTemplateShrinkRequest interface {
 type CreateOrgHonorTemplateShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// fsdfasdjf132342d
 	AvatarFrameMediaId *string `json:"avatarFrameMediaId,omitempty" xml:"avatarFrameMediaId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// #FFFBB4
 	DefaultBgColor *string `json:"defaultBgColor,omitempty" xml:"defaultBgColor,omitempty"`
 	// This parameter is required.
 	MedalDesc *string `json:"medalDesc,omitempty" xml:"medalDesc,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1273adf23
 	MedalMediaId *string `json:"medalMediaId,omitempty" xml:"medalMediaId,omitempty"`
 	// This parameter is required.
 	MedalName *string `json:"medalName,omitempty" xml:"medalName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 363784
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 

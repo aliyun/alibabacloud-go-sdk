@@ -14,9 +14,6 @@ type iListCalendarsShrinkRequest interface {
 }
 
 type ListCalendarsShrinkRequest struct {
-	// example:
-	//
-	// {}
 	RequestShrink *string `json:"Request,omitempty" xml:"Request,omitempty"`
 }
 

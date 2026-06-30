@@ -109,8 +109,6 @@ type CreateTodoTaskResponseBody struct {
 	//
 	// 20
 	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -363,14 +361,10 @@ func (s *CreateTodoTaskResponseBody) Validate() error {
 }
 
 type CreateTodoTaskResponseBodyContentFieldList struct {
-	// fieldKey
-	//
 	// example:
 	//
 	// fieldKey
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-	// fieldValue
-	//
 	// example:
 	//
 	// fieldValue

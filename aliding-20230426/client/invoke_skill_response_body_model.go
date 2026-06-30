@@ -31,15 +31,10 @@ type InvokeSkillResponseBody struct {
 	ErrorMsg  *string     `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// if can be null:
 	// false
-	Finished *bool       `json:"Finished,omitempty" xml:"Finished,omitempty"`
-	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// RequestId
-	//
-	// example:
-	//
-	// 2715B4D3-A3FB-5FC7-AFA0-4471687B1EC6
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Finished  *bool       `json:"Finished,omitempty" xml:"Finished,omitempty"`
+	Metadata  interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InvokeSkillResponseBody) String() string {

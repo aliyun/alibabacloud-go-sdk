@@ -28,9 +28,6 @@ type QueryCloudRecordVideoPlayInfoResponseBody struct {
 	//
 	// 59886
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// example:
-	//
-	// 1127942
 	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
 	// example:
 	//
@@ -40,8 +37,6 @@ type QueryCloudRecordVideoPlayInfoResponseBody struct {
 	//
 	// https://vod.mcs.dingtalk.com/faa1566c5bc24f21821ae2394f82db2e/8bbd1612e686462ab4717919f67bb721-ab85cc044a163568c9485xxxxxxxx76d-sd.m3u8
 	PlayUrl *string `json:"playUrl,omitempty" xml:"playUrl,omitempty"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

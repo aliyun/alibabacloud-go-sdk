@@ -22,25 +22,14 @@ type iListReportResponseBody interface {
 }
 
 type ListReportResponseBody struct {
-	DataList []*ListReportResponseBodyDataList `json:"dataList,omitempty" xml:"dataList,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	// example:
-	//
-	// 12312131231
-	NextCursor *int64 `json:"nextCursor,omitempty" xml:"nextCursor,omitempty"`
-	// requestId
-	//
+	DataList   []*ListReportResponseBodyDataList `json:"dataList,omitempty" xml:"dataList,omitempty" type:"Repeated"`
+	HasMore    *bool                             `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
+	NextCursor *int64                            `json:"nextCursor,omitempty" xml:"nextCursor,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 20
-	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	Size      *int64  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListReportResponseBody) String() string {
@@ -110,39 +99,18 @@ func (s *ListReportResponseBody) Validate() error {
 }
 
 type ListReportResponseBodyDataList struct {
-	Contents []*ListReportResponseBodyDataListContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1678416166000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1127123
-	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// example:
-	//
-	// admin
-	CreatorName *string   `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	DeptName    *string   `json:"DeptName,omitempty" xml:"DeptName,omitempty"`
-	Images      []*string `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 31.1264
-	Latitude *string `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
-	// example:
-	//
-	// 108.938036
-	Longitude *string `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	// example:
-	//
-	// 1653543540000
-	ModifiedTime *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// example:
-	//
-	// d64994d09916c76276dd9bfa23637644
-	ReportId     *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Contents     []*ListReportResponseBodyDataListContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	CreateTime   *int64                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatorId    *string                                   `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorName  *string                                   `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	DeptName     *string                                   `json:"DeptName,omitempty" xml:"DeptName,omitempty"`
+	Images       []*string                                 `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Latitude     *string                                   `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	Longitude    *string                                   `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	ModifiedTime *int64                                    `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Remark       *string                                   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ReportId     *string                                   `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	TemplateName *string                                   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s ListReportResponseBodyDataList) String() string {
@@ -275,21 +243,9 @@ func (s *ListReportResponseBodyDataList) Validate() error {
 }
 
 type ListReportResponseBodyDataListContents struct {
-	// example:
-	//
-	// env
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// 0
-	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// example:
-	//
-	// 1
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// ce9ab5d4a80a9401f97c7077e6a9634bd
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Sort  *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

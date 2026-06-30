@@ -782,10 +782,7 @@ type GetProcessDefinitionResponseBodyTasks struct {
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 792
-	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetProcessDefinitionResponseBodyTasks) String() string {

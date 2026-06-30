@@ -17,10 +17,6 @@ type iDeleteAlidingAssistantRequest interface {
 
 type DeleteAlidingAssistantRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234
 	AssistantId   *string                                     `json:"AssistantId,omitempty" xml:"AssistantId,omitempty"`
 	TenantContext *DeleteAlidingAssistantRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

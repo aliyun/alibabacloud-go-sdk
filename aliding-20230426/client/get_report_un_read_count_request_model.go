@@ -16,9 +16,6 @@ type iGetReportUnReadCountRequest interface {
 }
 
 type GetReportUnReadCountRequest struct {
-	// example:
-	//
-	// null
 	Request       map[string]interface{}                    `json:"Request,omitempty" xml:"Request,omitempty"`
 	TenantContext *GetReportUnReadCountRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

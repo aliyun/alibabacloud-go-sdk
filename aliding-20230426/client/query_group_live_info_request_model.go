@@ -22,13 +22,13 @@ type QueryGroupLiveInfoRequest struct {
 	//
 	// example:
 	//
-	// Eijxxx
+	// 333d
 	AnchorUnionId *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 123456
+	// 4d38xxxxx
 	LiveUuid      *string                                 `json:"LiveUuid,omitempty" xml:"LiveUuid,omitempty"`
 	TenantContext *QueryGroupLiveInfoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
@@ -80,7 +80,7 @@ func (s *QueryGroupLiveInfoRequest) Validate() error {
 type QueryGroupLiveInfoRequestTenantContext struct {
 	// example:
 	//
-	// 1
+	// xxxxxx
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

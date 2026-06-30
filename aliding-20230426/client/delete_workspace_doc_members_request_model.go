@@ -23,17 +23,9 @@ type DeleteWorkspaceDocMembersRequest struct {
 	// This parameter is required.
 	Members []*DeleteWorkspaceDocMembersRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// YRBGv0xxx
 	NodeId        *string                                        `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	TenantContext *DeleteWorkspaceDocMembersRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// YRBGvyxxx
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -101,16 +93,8 @@ func (s *DeleteWorkspaceDocMembersRequest) Validate() error {
 
 type DeleteWorkspaceDocMembersRequestMembers struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 012345
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// USER
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
 }
 

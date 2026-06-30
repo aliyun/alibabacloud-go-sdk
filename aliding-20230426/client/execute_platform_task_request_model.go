@@ -28,34 +28,13 @@ type iExecutePlatformTaskRequest interface {
 }
 
 type ExecutePlatformTaskRequest struct {
-  // example:
-  // 
-  // APP_PBxxx
   AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-  // example:
-  // 
-  // []
   FormDataJson *string `json:"FormDataJson,omitempty" xml:"FormDataJson,omitempty"`
-  // example:
-  // 
-  // zh_CN
   Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-  // example:
-  // 
-  // y
   NoExecuteExpressions *string `json:"NoExecuteExpressions,omitempty" xml:"NoExecuteExpressions,omitempty"`
-  // example:
-  // 
-  // Agree
   OutResult *string `json:"OutResult,omitempty" xml:"OutResult,omitempty"`
-  // example:
-  // 
-  // f30233fb-72e1-4af4-8cb8-c7e0ea9ee530
   ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
   Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-  // example:
-  // 
-  // hexxyy
   SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
 }
 

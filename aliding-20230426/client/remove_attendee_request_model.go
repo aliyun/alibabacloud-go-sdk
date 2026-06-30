@@ -20,16 +20,8 @@ type iRemoveAttendeeRequest interface {
 type RemoveAttendeeRequest struct {
 	AttendeesToRemove []*string `json:"AttendeesToRemove,omitempty" xml:"AttendeesToRemove,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// primary
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// iiiP35sJadba8aBSgjrwPRKgiEiF
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 }
 

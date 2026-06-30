@@ -18,17 +18,9 @@ type iQueryUserHonorsResponseBody interface {
 }
 
 type QueryUserHonorsResponseBody struct {
-	Honors []*QueryUserHonorsResponseBodyHonors `json:"honors,omitempty" xml:"honors,omitempty" type:"Repeated"`
-	// example:
-	//
-	// http-trigger-nodejs10.luoni-old.1431999136518149.cn-hangzhou.fc.devsapp.net
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// requestId
-	//
-	// example:
-	//
-	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Honors    []*QueryUserHonorsResponseBodyHonors `json:"honors,omitempty" xml:"honors,omitempty" type:"Repeated"`
+	NextToken *string                              `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s QueryUserHonorsResponseBody) String() string {
@@ -80,17 +72,11 @@ func (s *QueryUserHonorsResponseBody) Validate() error {
 }
 
 type QueryUserHonorsResponseBodyHonors struct {
-	// example:
-	//
-	// null
 	ExpirationTime *int64                                           `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
 	GrantHistory   []*QueryUserHonorsResponseBodyHonorsGrantHistory `json:"grantHistory,omitempty" xml:"grantHistory,omitempty" type:"Repeated"`
 	HonorDesc      *string                                          `json:"honorDesc,omitempty" xml:"honorDesc,omitempty"`
-	// example:
-	//
-	// 21659398
-	HonorId   *string `json:"honorId,omitempty" xml:"honorId,omitempty"`
-	HonorName *string `json:"honorName,omitempty" xml:"honorName,omitempty"`
+	HonorId        *string                                          `json:"honorId,omitempty" xml:"honorId,omitempty"`
+	HonorName      *string                                          `json:"honorName,omitempty" xml:"honorName,omitempty"`
 }
 
 func (s QueryUserHonorsResponseBodyHonors) String() string {
@@ -160,13 +146,7 @@ func (s *QueryUserHonorsResponseBodyHonors) Validate() error {
 }
 
 type QueryUserHonorsResponseBodyHonorsGrantHistory struct {
-	// example:
-	//
-	// 12312312312312312
-	GrantTime *int64 `json:"grantTime,omitempty" xml:"grantTime,omitempty"`
-	// example:
-	//
-	// 363784
+	GrantTime    *int64  `json:"grantTime,omitempty" xml:"grantTime,omitempty"`
 	SenderUserid *string `json:"senderUserid,omitempty" xml:"senderUserid,omitempty"`
 }
 

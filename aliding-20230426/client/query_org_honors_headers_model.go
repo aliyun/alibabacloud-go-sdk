@@ -56,9 +56,6 @@ func (s *QueryOrgHonorsHeaders) Validate() error {
 }
 
 type QueryOrgHonorsHeadersAccountContext struct {
-	// example:
-	//
-	// 243331014234180628
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 

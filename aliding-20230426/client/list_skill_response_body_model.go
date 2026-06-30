@@ -16,14 +16,8 @@ type iListSkillResponseBody interface {
 }
 
 type ListSkillResponseBody struct {
-	// example:
-	//
-	// {}
-	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// 2715B4D3-A3FB-5FC7-AFA0-4471687B1EC6
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListSkillResponseBody) String() string {

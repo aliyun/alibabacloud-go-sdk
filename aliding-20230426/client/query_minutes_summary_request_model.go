@@ -20,10 +20,6 @@ type iQueryMinutesSummaryRequest interface {
 type QueryMinutesSummaryRequest struct {
 	TenantContext *QueryMinutesSummaryRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 607452e01401526ee39609e1
 	ConferenceId    *string   `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
 	SummaryTypeList []*string `json:"summaryTypeList,omitempty" xml:"summaryTypeList,omitempty" type:"Repeated"`
 }

@@ -14,9 +14,6 @@ type iCheckUserIsGroupMemberRequest interface {
 }
 
 type CheckUserIsGroupMemberRequest struct {
-	// example:
-	//
-	// cidB8Pz*******FIWPv2PMA==
 	OpenConversationId *string `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
 }
 

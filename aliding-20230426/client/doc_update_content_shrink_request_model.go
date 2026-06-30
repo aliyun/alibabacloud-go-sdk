@@ -21,20 +21,12 @@ type iDocUpdateContentShrinkRequest interface {
 
 type DocUpdateContentShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// []
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// example:
 	//
 	// markdown
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 4j6OJzVEG4jJO3p8
 	DocKey              *string `json:"DocKey,omitempty" xml:"DocKey,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

@@ -21,21 +21,10 @@ type iQueryOrgHonorsShrinkRequest interface {
 
 type QueryOrgHonorsShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
-	// example:
-	//
-	// 48
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MaxResults          *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 15
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
 }
 

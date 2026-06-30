@@ -22,17 +22,9 @@ type iUpdateWorkspaceDocMembersShrinkRequest interface {
 type UpdateWorkspaceDocMembersShrinkRequest struct {
 	MembersShrink *string `json:"Members,omitempty" xml:"Members,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// node_feb8fea0
 	NodeId              *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xb8bkxxxxxrXJNaL
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

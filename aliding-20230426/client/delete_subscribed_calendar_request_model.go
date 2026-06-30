@@ -15,10 +15,6 @@ type iDeleteSubscribedCalendarRequest interface {
 
 type DeleteSubscribedCalendarRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// MzM5Mxxx
 	CalendarId *string `json:"CalendarId,omitempty" xml:"CalendarId,omitempty"`
 }
 

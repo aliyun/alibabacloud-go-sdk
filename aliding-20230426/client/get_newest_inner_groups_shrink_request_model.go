@@ -14,9 +14,6 @@ type iGetNewestInnerGroupsShrinkRequest interface {
 }
 
 type GetNewestInnerGroupsShrinkRequest struct {
-	// example:
-	//
-	// {}
 	RequestShrink *string `json:"Request,omitempty" xml:"Request,omitempty"`
 }
 

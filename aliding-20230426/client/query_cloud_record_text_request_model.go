@@ -24,21 +24,9 @@ type iQueryCloudRecordTextRequest interface {
 }
 
 type QueryCloudRecordTextRequest struct {
-	// example:
-	//
-	// 0
-	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// example:
-	//
-	// 20000
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// 1631172045153000
-	NextToken *int64 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// 7940
+	Direction     *string                                   `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	MaxResults    *int64                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *int64                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	StartTime     *int64                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TenantContext *QueryCloudRecordTextRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	// This parameter is required.

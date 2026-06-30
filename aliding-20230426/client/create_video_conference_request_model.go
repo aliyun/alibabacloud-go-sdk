@@ -19,10 +19,7 @@ type iCreateVideoConferenceRequest interface {
 
 type CreateVideoConferenceRequest struct {
 	// This parameter is required.
-	ConfTitle *string `json:"ConfTitle,omitempty" xml:"ConfTitle,omitempty"`
-	// example:
-	//
-	// true
+	ConfTitle     *string   `json:"ConfTitle,omitempty" xml:"ConfTitle,omitempty"`
 	InviteCaller  *bool     `json:"InviteCaller,omitempty" xml:"InviteCaller,omitempty"`
 	InviteUserIds []*string `json:"InviteUserIds,omitempty" xml:"InviteUserIds,omitempty" type:"Repeated"`
 }

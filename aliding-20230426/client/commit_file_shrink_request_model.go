@@ -22,20 +22,11 @@ type iCommitFileShrinkRequest interface {
 }
 
 type CommitFileShrinkRequest struct {
-	// example:
-	//
-	// None
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OptionShrink *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// example:
-	//
-	// dentryUuid
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OptionShrink        *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	ParentDentryUuid    *string `json:"ParentDentryUuid,omitempty" xml:"ParentDentryUuid,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
-	// example:
-	//
-	// upload_key
-	UploadKey *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
+	UploadKey           *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
 }
 
 func (s CommitFileShrinkRequest) String() string {

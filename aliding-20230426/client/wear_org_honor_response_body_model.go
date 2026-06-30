@@ -26,25 +26,13 @@ type iWearOrgHonorResponseBody interface {
 }
 
 type WearOrgHonorResponseBody struct {
-	Content *WearOrgHonorResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
-	// example:
-	//
-	// 0
-	ErrorCode *string                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorCtx  map[string]interface{} `json:"errorCtx,omitempty" xml:"errorCtx,omitempty"`
-	ErrorMsg  *string                `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// example:
-	//
-	// 32FFC91D-0A9F-585A-B84F-8A54C5187035
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Content        *WearOrgHonorResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	ErrorCode      *string                          `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorCtx       map[string]interface{}           `json:"errorCtx,omitempty" xml:"errorCtx,omitempty"`
+	ErrorMsg       *string                          `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpStatusCode *int32                           `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	RequestId      *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                            `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s WearOrgHonorResponseBody) String() string {
@@ -128,9 +116,6 @@ func (s *WearOrgHonorResponseBody) Validate() error {
 }
 
 type WearOrgHonorResponseBodyContent struct {
-	// example:
-	//
-	// null
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
 }
 

@@ -26,16 +26,8 @@ type AddFolderShrinkRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OptionShrink *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 140822073803
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xPar2SZ63KodG3aV
 	SpaceId             *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

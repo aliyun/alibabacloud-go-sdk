@@ -29,38 +29,17 @@ type iCopyDentryShrinkRequest interface {
 
 type CopyDentryShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// b9XJljElJv6RPGyA
 	DentryId *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 24458420428
 	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// b9XJljElJv6RPG
 	TargetSpaceId       *string `json:"TargetSpaceId,omitempty" xml:"TargetSpaceId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
-	// example:
-	//
-	// b9XJljElJv6RPGyA2
-	ToNextDentryId *string `json:"ToNextDentryId,omitempty" xml:"ToNextDentryId,omitempty"`
-	// example:
-	//
-	// b9XJljElJv6RPGyA4
-	ToParentDentryId *string `json:"ToParentDentryId,omitempty" xml:"ToParentDentryId,omitempty"`
-	// example:
-	//
-	// b9XJljElJv6RPGyA3
-	ToPrevDentryId *string `json:"ToPrevDentryId,omitempty" xml:"ToPrevDentryId,omitempty"`
+	ToNextDentryId      *string `json:"ToNextDentryId,omitempty" xml:"ToNextDentryId,omitempty"`
+	ToParentDentryId    *string `json:"ToParentDentryId,omitempty" xml:"ToParentDentryId,omitempty"`
+	ToPrevDentryId      *string `json:"ToPrevDentryId,omitempty" xml:"ToPrevDentryId,omitempty"`
 }
 
 func (s CopyDentryShrinkRequest) String() string {

@@ -68,7 +68,7 @@ type SearchEmployeeFieldValuesRequest struct {
 	OriginatorId *string `json:"OriginatorId,omitempty" xml:"OriginatorId,omitempty"`
 	// example:
 	//
-	// {\\"textField_annandfa\\":\\"1212\\"}
+	// {\"textField_annandfa\":\"1212\"}
 	SearchFieldJson *string `json:"SearchFieldJson,omitempty" xml:"SearchFieldJson,omitempty"`
 	// example:
 	//
@@ -76,7 +76,7 @@ type SearchEmployeeFieldValuesRequest struct {
 	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
 	// example:
 	//
-	// [\\"textField_xahdfna\\"]
+	// [\"textField_xahdfna\"]
 	TargetFieldJson *string `json:"TargetFieldJson,omitempty" xml:"TargetFieldJson,omitempty"`
 }
 

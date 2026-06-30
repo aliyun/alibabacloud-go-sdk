@@ -24,25 +24,11 @@ type iQueryMinutesTextShrinkRequest interface {
 type QueryMinutesTextShrinkRequest struct {
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 607452e01401526ee39609e1
 	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
-	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
-	// example:
-	//
-	// 20
-	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// example:
-	//
-	// 0
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Direction  *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	MaxResults *int64  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s QueryMinutesTextShrinkRequest) String() string {

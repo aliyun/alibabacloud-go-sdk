@@ -26,31 +26,13 @@ type iCreateOrUpdateFormDataRequest interface {
 }
 
 type CreateOrUpdateFormDataRequest struct {
-	// example:
-	//
-	// APP_XCE0EVXS6DYG3YDYC5RD
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// example:
-	//
-	// {\\"countrySelectField_l0c1cwiu\\":[{\\"value\\":\\"US\\"}]}
-	FormDataJson *string `json:"FormDataJson,omitempty" xml:"FormDataJson,omitempty"`
-	// example:
-	//
-	// FORM-GX866MC1NC1VOFF6WVQW33FD16E23L3CPMKVKA
-	FormUuid *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
-	// example:
-	//
-	// false
+	AppType             *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormDataJson        *string `json:"FormDataJson,omitempty" xml:"FormDataJson,omitempty"`
+	FormUuid            *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
 	NoExecuteExpression *bool   `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
 	SearchCondition     *string `json:"SearchCondition,omitempty" xml:"SearchCondition,omitempty"`
-	// example:
-	//
-	// 09866181UTZVVD4R3DC955FNKIM52HVPU5WWK7
-	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
-	// example:
-	//
-	// 012345
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	SystemToken         *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateOrUpdateFormDataRequest) String() string {

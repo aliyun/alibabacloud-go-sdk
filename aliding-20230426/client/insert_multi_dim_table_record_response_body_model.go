@@ -93,9 +93,6 @@ func (s *InsertMultiDimTableRecordResponseBody) Validate() error {
 }
 
 type InsertMultiDimTableRecordResponseBodyValue struct {
-	// example:
-	//
-	// hfauVBFJIo
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

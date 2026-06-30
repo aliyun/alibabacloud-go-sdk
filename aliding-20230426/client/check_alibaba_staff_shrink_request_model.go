@@ -16,9 +16,6 @@ type iCheckAlibabaStaffShrinkRequest interface {
 }
 
 type CheckAlibabaStaffShrinkRequest struct {
-	// example:
-	//
-	// 156****9665
 	Mobile              *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

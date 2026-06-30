@@ -17,8 +17,6 @@ type iGetNodeResponseBody interface {
 
 type GetNodeResponseBody struct {
 	Node *GetNodeResponseBodyNode `json:"node,omitempty" xml:"node,omitempty" type:"Struct"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -100,10 +98,7 @@ type GetNodeResponseBodyNode struct {
 	// example:
 	//
 	// READER
-	PermissionRole *string `json:"PermissionRole,omitempty" xml:"PermissionRole,omitempty"`
-	// example:
-	//
-	// 123123
+	PermissionRole  *string                                 `json:"PermissionRole,omitempty" xml:"PermissionRole,omitempty"`
 	Size            *int64                                  `json:"Size,omitempty" xml:"Size,omitempty"`
 	StatisticalInfo *GetNodeResponseBodyNodeStatisticalInfo `json:"StatisticalInfo,omitempty" xml:"StatisticalInfo,omitempty" type:"Struct"`
 	// example:
@@ -273,9 +268,6 @@ func (s *GetNodeResponseBodyNode) Validate() error {
 }
 
 type GetNodeResponseBodyNodeStatisticalInfo struct {
-	// example:
-	//
-	// 200
 	WordCount *int64 `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
 }
 

@@ -79,10 +79,7 @@ type SearchFormDataIdListRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// {}
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SearchFieldJson *string `json:"SearchFieldJson,omitempty" xml:"SearchFieldJson,omitempty"`
 	// This parameter is required.
 	//

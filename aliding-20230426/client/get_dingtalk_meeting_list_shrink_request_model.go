@@ -58,11 +58,8 @@ type GetDingtalkMeetingListShrinkRequest struct {
 	// example:
 	//
 	// 1732867200000
-	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// example:
-	//
-	// 34343
-	WorkNo *string `json:"workNo,omitempty" xml:"workNo,omitempty"`
+	StartTime *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	WorkNo    *string `json:"workNo,omitempty" xml:"workNo,omitempty"`
 }
 
 func (s GetDingtalkMeetingListShrinkRequest) String() string {

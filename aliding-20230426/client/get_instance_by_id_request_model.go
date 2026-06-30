@@ -20,21 +20,9 @@ type iGetInstanceByIdRequest interface {
 }
 
 type GetInstanceByIdRequest struct {
-	// example:
-	//
-	// APP_PBxxx
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// example:
-	//
-	// f30233fb-72e1-xxx
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// zh_CN
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// example:
-	//
-	// hexxxx
+	AppType     *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
 }
 

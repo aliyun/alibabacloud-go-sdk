@@ -16,9 +16,6 @@ type iGetUserIdByOrgIdAndStaffIdShrinkRequest interface {
 }
 
 type GetUserIdByOrgIdAndStaffIdShrinkRequest struct {
-	// example:
-	//
-	// 123456
 	OrgId               *int64  `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

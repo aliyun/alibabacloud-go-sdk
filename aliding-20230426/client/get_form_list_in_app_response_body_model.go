@@ -26,23 +26,14 @@ type iGetFormListInAppResponseBody interface {
 }
 
 type GetFormListInAppResponseBody struct {
-	// example:
-	//
-	// 1
 	CurrentPage *int32                              `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
 	Data        []*GetFormListInAppResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 20
-	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success    *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount *int32  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -138,21 +129,9 @@ func (s *GetFormListInAppResponseBody) Validate() error {
 }
 
 type GetFormListInAppResponseBodyData struct {
-	// example:
-	//
-	// 012345
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// example:
-	//
-	// receipt
-	FormType *string `json:"FormType,omitempty" xml:"FormType,omitempty"`
-	// example:
-	//
-	// FORM-BAxxxxx
-	FormUuid *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
-	// example:
-	//
-	// 2023-02-22 15:27:07
+	Creator   *string                                `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	FormType  *string                                `json:"FormType,omitempty" xml:"FormType,omitempty"`
+	FormUuid  *string                                `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
 	GmtCreate *string                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	Title     *GetFormListInAppResponseBodyDataTitle `json:"Title,omitempty" xml:"Title,omitempty" type:"Struct"`
 }
@@ -220,9 +199,6 @@ func (s *GetFormListInAppResponseBodyData) Validate() error {
 }
 
 type GetFormListInAppResponseBodyDataTitle struct {
-	// example:
-	//
-	// form
 	EnUS *string `json:"EnUS,omitempty" xml:"EnUS,omitempty"`
 	ZhCN *string `json:"ZhCN,omitempty" xml:"ZhCN,omitempty"`
 }

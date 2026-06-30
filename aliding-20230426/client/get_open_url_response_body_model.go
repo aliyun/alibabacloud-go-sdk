@@ -16,16 +16,11 @@ type iGetOpenUrlResponseBody interface {
 }
 
 type GetOpenUrlResponseBody struct {
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// https/www.aliwork.com
-	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+	Result    *string `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s GetOpenUrlResponseBody) String() string {

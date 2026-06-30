@@ -20,9 +20,6 @@ type iStopMinutesResponseBody interface {
 }
 
 type StopMinutesResponseBody struct {
-	// example:
-	//
-	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// example:
 	//

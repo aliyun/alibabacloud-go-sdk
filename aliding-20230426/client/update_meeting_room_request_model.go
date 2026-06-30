@@ -36,36 +36,18 @@ type iUpdateMeetingRoomRequest interface {
 }
 
 type UpdateMeetingRoomRequest struct {
-	EnableCycleReservation *bool `json:"EnableCycleReservation,omitempty" xml:"EnableCycleReservation,omitempty"`
-	// example:
-	//
-	// 0
-	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// example:
-	//
-	// xxxIsvRoomId
-	IsvRoomId            *string                                       `json:"IsvRoomId,omitempty" xml:"IsvRoomId,omitempty"`
-	ReservationAuthority *UpdateMeetingRoomRequestReservationAuthority `json:"ReservationAuthority,omitempty" xml:"ReservationAuthority,omitempty" type:"Struct"`
-	// example:
-	//
-	// 100
-	RoomCapacity *int32 `json:"RoomCapacity,omitempty" xml:"RoomCapacity,omitempty"`
-	// example:
-	//
-	// 0ffbxxxxx
-	RoomId       *string                               `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
-	RoomLabelIds []*int64                              `json:"RoomLabelIds,omitempty" xml:"RoomLabelIds,omitempty" type:"Repeated"`
-	RoomLocation *UpdateMeetingRoomRequestRoomLocation `json:"RoomLocation,omitempty" xml:"RoomLocation,omitempty" type:"Struct"`
-	RoomName     *string                               `json:"RoomName,omitempty" xml:"RoomName,omitempty"`
-	// example:
-	//
-	// https://static.dingtalk.com/media/lADPxxxxx.jpg
-	RoomPicture *string `json:"RoomPicture,omitempty" xml:"RoomPicture,omitempty"`
-	// example:
-	//
-	// 1
-	RoomStatus    *int32                                 `json:"RoomStatus,omitempty" xml:"RoomStatus,omitempty"`
-	TenantContext *UpdateMeetingRoomRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	EnableCycleReservation *bool                                         `json:"EnableCycleReservation,omitempty" xml:"EnableCycleReservation,omitempty"`
+	GroupId                *int64                                        `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IsvRoomId              *string                                       `json:"IsvRoomId,omitempty" xml:"IsvRoomId,omitempty"`
+	ReservationAuthority   *UpdateMeetingRoomRequestReservationAuthority `json:"ReservationAuthority,omitempty" xml:"ReservationAuthority,omitempty" type:"Struct"`
+	RoomCapacity           *int32                                        `json:"RoomCapacity,omitempty" xml:"RoomCapacity,omitempty"`
+	RoomId                 *string                                       `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	RoomLabelIds           []*int64                                      `json:"RoomLabelIds,omitempty" xml:"RoomLabelIds,omitempty" type:"Repeated"`
+	RoomLocation           *UpdateMeetingRoomRequestRoomLocation         `json:"RoomLocation,omitempty" xml:"RoomLocation,omitempty" type:"Struct"`
+	RoomName               *string                                       `json:"RoomName,omitempty" xml:"RoomName,omitempty"`
+	RoomPicture            *string                                       `json:"RoomPicture,omitempty" xml:"RoomPicture,omitempty"`
+	RoomStatus             *int32                                        `json:"RoomStatus,omitempty" xml:"RoomStatus,omitempty"`
+	TenantContext          *UpdateMeetingRoomRequestTenantContext        `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
 
 func (s UpdateMeetingRoomRequest) String() string {

@@ -22,18 +22,12 @@ type iGetSheetContentJobIdResponseBody interface {
 }
 
 type GetSheetContentJobIdResponseBody struct {
-	// example:
-	//
-	// 14640056080
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// init
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

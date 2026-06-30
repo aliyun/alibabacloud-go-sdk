@@ -24,10 +24,7 @@ type StartInstanceResponseBody struct {
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// f30233fb-72e1-xxx-xxx
-	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+	Result    *string `json:"result,omitempty" xml:"result,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX

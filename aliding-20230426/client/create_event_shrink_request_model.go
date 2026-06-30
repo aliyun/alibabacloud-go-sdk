@@ -42,14 +42,11 @@ type iCreateEventShrinkRequest interface {
 }
 
 type CreateEventShrinkRequest struct {
-	AttendeesShrink     *string `json:"Attendees,omitempty" xml:"Attendees,omitempty"`
-	CardInstancesShrink *string `json:"CardInstances,omitempty" xml:"CardInstances,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndShrink           *string `json:"End,omitempty" xml:"End,omitempty"`
-	ExtraShrink         *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// example:
-	//
-	// true
+	AttendeesShrink         *string `json:"Attendees,omitempty" xml:"Attendees,omitempty"`
+	CardInstancesShrink     *string `json:"CardInstances,omitempty" xml:"CardInstances,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndShrink               *string `json:"End,omitempty" xml:"End,omitempty"`
+	ExtraShrink             *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	IsAllDay                *bool   `json:"IsAllDay,omitempty" xml:"IsAllDay,omitempty"`
 	LocationShrink          *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	OnlineMeetingInfoShrink *string `json:"OnlineMeetingInfo,omitempty" xml:"OnlineMeetingInfo,omitempty"`
@@ -62,10 +59,6 @@ type CreateEventShrinkRequest struct {
 	Summary         *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	UiConfigsShrink *string `json:"UiConfigs,omitempty" xml:"UiConfigs,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// primary
 	CalendarId *string `json:"calendarId,omitempty" xml:"calendarId,omitempty"`
 	// This parameter is required.
 	StartShrink *string `json:"start,omitempty" xml:"start,omitempty"`

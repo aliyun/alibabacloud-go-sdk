@@ -19,16 +19,8 @@ type iGetTicketShrinkRequest interface {
 
 type GetTicketShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// eKWh3xxxxiE
 	OpenTeamId *string `json:"OpenTeamId,omitempty" xml:"OpenTeamId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// Dq9hP8Sk2v6vQxxxxiE
 	OpenTicketId        *string `json:"OpenTicketId,omitempty" xml:"OpenTicketId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

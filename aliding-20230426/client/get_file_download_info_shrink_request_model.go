@@ -20,14 +20,8 @@ type iGetFileDownloadInfoShrinkRequest interface {
 }
 
 type GetFileDownloadInfoShrinkRequest struct {
-	// example:
-	//
-	// 798xxxxx
-	DentryId     *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
-	OptionShrink *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// example:
-	//
-	// 854xxxx
+	DentryId            *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
+	OptionShrink        *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	SpaceId             *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }

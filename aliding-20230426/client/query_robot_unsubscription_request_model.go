@@ -20,21 +20,9 @@ type iQueryRobotUnsubscriptionRequest interface {
 }
 
 type QueryRobotUnsubscriptionRequest struct {
-	// example:
-	//
-	// 1
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// example:
-	//
-	// 50
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// dingxxxxxxxxxxxxxxxxxx
+	PageNo    *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RobotCode *string `json:"RobotCode,omitempty" xml:"RobotCode,omitempty"`
-	// example:
-	//
-	// wb62cz0x
 	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
 }
 

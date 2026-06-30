@@ -173,10 +173,7 @@ type GetOperationRecordsResponseBodyResult struct {
 	//
 	// 同步
 	TaskExecuteType *string `json:"TaskExecuteType,omitempty" xml:"TaskExecuteType,omitempty"`
-	// example:
-	//
-	// 2021-01-01
-	TaskHoldTimeGMT *int64 `json:"TaskHoldTimeGMT,omitempty" xml:"TaskHoldTimeGMT,omitempty"`
+	TaskHoldTimeGMT *int64  `json:"TaskHoldTimeGMT,omitempty" xml:"TaskHoldTimeGMT,omitempty"`
 	// example:
 	//
 	// task-123

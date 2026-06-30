@@ -20,15 +20,8 @@ type iInvokeSkillRequest interface {
 }
 
 type InvokeSkillRequest struct {
-	// example:
-	//
-	// {}
 	Params map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// a1d033dd-xxxx-49cf-b49b-2068081bb551
 	SkillId               *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
 	Stream                *bool   `json:"Stream,omitempty" xml:"Stream,omitempty"`
 	SourceIdOfAssistantId *string `json:"sourceIdOfAssistantId,omitempty" xml:"sourceIdOfAssistantId,omitempty"`

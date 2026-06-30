@@ -22,9 +22,6 @@ type iUpdateUserAvatarResponseBody interface {
 }
 
 type UpdateUserAvatarResponseBody struct {
-	// example:
-	//
-	// 0
 	Errcode *string `json:"errcode,omitempty" xml:"errcode,omitempty"`
 	Errmsg  *string `json:"errmsg,omitempty" xml:"errmsg,omitempty"`
 	// example:

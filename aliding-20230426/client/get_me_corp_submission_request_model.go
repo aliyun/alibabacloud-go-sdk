@@ -32,46 +32,16 @@ type iGetMeCorpSubmissionRequest interface {
 }
 
 type GetMeCorpSubmissionRequest struct {
-	// example:
-	//
-	// [\\"APP_xxx\\",\\"APP_xxx\\"]
-	AppTypes *string `json:"AppTypes,omitempty" xml:"AppTypes,omitempty"`
-	// example:
-	//
-	// ding123
-	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
-	// example:
-	//
-	// 2021-05-01
-	CreateFromTimeGMT *int64 `json:"CreateFromTimeGMT,omitempty" xml:"CreateFromTimeGMT,omitempty"`
-	// example:
-	//
-	// 2021-05-01
-	CreateToTimeGMT *int64 `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
-	// example:
-	//
-	// {}
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// example:
-	//
-	// zh_CN
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// [\\"xx\\",\\"xxx\\"]
-	ProcessCodes *string `json:"ProcessCodes,omitempty" xml:"ProcessCodes,omitempty"`
-	// example:
-	//
-	// JHASD123HAXXX
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	AppTypes          *string `json:"AppTypes,omitempty" xml:"AppTypes,omitempty"`
+	CorpId            *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	CreateFromTimeGMT *int64  `json:"CreateFromTimeGMT,omitempty" xml:"CreateFromTimeGMT,omitempty"`
+	CreateToTimeGMT   *int64  `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Language          *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProcessCodes      *string `json:"ProcessCodes,omitempty" xml:"ProcessCodes,omitempty"`
+	Token             *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetMeCorpSubmissionRequest) String() string {

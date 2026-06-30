@@ -93,17 +93,8 @@ func (s *SearchInnerGroupsResponseBody) Validate() error {
 }
 
 type SearchInnerGroupsResponseBodyGroupInfos struct {
-	// example:
-	//
-	// @lAD*****
-	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// example:
-	//
-	// 10
-	MemberAmount *string `json:"MemberAmount,omitempty" xml:"MemberAmount,omitempty"`
-	// example:
-	//
-	// cid13*****==
+	Icon               *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	MemberAmount       *string `json:"MemberAmount,omitempty" xml:"MemberAmount,omitempty"`
 	OpenConversationId *string `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
 	Title              *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }

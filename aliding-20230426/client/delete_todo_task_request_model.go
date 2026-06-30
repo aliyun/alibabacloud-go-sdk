@@ -19,15 +19,8 @@ type iDeleteTodoTaskRequest interface {
 
 type DeleteTodoTaskRequest struct {
 	TenantContext *DeleteTodoTaskRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	// example:
-	//
-	// 12345
-	OperatorId *string `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	OperatorId    *string                             `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 63edc8da7e917d6ecdaab11b
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 

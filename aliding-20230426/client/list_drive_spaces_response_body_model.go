@@ -22,9 +22,6 @@ type iListDriveSpacesResponseBody interface {
 }
 
 type ListDriveSpacesResponseBody struct {
-	// example:
-	//
-	// fekaf
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// example:
 	//
@@ -108,35 +105,14 @@ func (s *ListDriveSpacesResponseBody) Validate() error {
 }
 
 type ListDriveSpacesResponseBodySpaces struct {
-	// example:
-	//
-	// 2016-02-28T10:47:08Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 2016-02-28T10:47:08Z
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// example:
-	//
-	// acl
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifyTime     *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	PermissionMode *string `json:"PermissionMode,omitempty" xml:"PermissionMode,omitempty"`
-	// example:
-	//
-	// 2147483648
-	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// example:
-	//
-	// 123456789
-	SpaceId   *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
-	SpaceName *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
-	// example:
-	//
-	// org
-	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
-	// example:
-	//
-	// 640445953
-	UsedQuota *int64 `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
+	Quota          *int64  `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	SpaceId        *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	SpaceName      *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
+	SpaceType      *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+	UsedQuota      *int64  `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
 }
 
 func (s ListDriveSpacesResponseBodySpaces) String() string {

@@ -23,27 +23,12 @@ type iUploadMediaRequest interface {
 
 type UploadMediaRequest struct {
 	TenantContext *UploadMediaRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	// example:
-	//
-	// test.jpg
-	MediaName *string `json:"mediaName,omitempty" xml:"mediaName,omitempty"`
+	MediaName     *string                          `json:"mediaName,omitempty" xml:"mediaName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// image
 	MediaType *string `json:"mediaType,omitempty" xml:"mediaType,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567
 	OrgId *int64 `json:"orgId,omitempty" xml:"orgId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// https://alicdn.com/xxx.jpg
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
@@ -110,9 +95,6 @@ func (s *UploadMediaRequest) Validate() error {
 }
 
 type UploadMediaRequestTenantContext struct {
-	// example:
-	//
-	// 1
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

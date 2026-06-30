@@ -23,19 +23,12 @@ type iGetOrgOrWebOpenDocContentTaskIdRequest interface {
 
 type GetOrgOrWebOpenDocContentTaskIdRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 20eMKjyp810mMdK4Hz4B5BA6JxAZB1Gv
 	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
 	GenerateCp *bool   `json:"GenerateCp,omitempty" xml:"GenerateCp,omitempty"`
 	// example:
 	//
 	// 0
-	ScopeType *int32 `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
-	// example:
-	//
-	// markdown
+	ScopeType     *int32                                               `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 	TargetFormat  *string                                              `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
 	TenantContext *GetOrgOrWebOpenDocContentTaskIdRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

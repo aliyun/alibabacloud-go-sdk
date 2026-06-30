@@ -56,9 +56,6 @@ func (s *RecallHonorHeaders) Validate() error {
 }
 
 type RecallHonorHeadersAccountContext struct {
-	// example:
-	//
-	// 1323845308033417
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 

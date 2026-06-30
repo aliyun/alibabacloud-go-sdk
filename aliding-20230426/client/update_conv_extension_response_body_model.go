@@ -20,9 +20,6 @@ type iUpdateConvExtensionResponseBody interface {
 }
 
 type UpdateConvExtensionResponseBody struct {
-	// example:
-	//
-	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// example:
 	//

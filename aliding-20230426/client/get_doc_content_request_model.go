@@ -21,14 +21,7 @@ type iGetDocContentRequest interface {
 
 type GetDocContentRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dentry_uuid
-	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
-	// example:
-	//
-	// markdown
+	DentryUuid    *string                            `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
 	TargetFormat  *string                            `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
 	TenantContext *GetDocContentRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	// This parameter is required.

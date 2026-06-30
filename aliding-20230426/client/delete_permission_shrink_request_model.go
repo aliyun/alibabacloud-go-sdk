@@ -21,10 +21,6 @@ type iDeletePermissionShrinkRequest interface {
 
 type DeletePermissionShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// a9E05BDRVQRkezKGCE3nlwPDJ63zgkYA
 	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
 	// This parameter is required.
 	MembersShrink *string `json:"Members,omitempty" xml:"Members,omitempty"`

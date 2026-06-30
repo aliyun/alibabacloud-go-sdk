@@ -56,9 +56,6 @@ func (s *QueryConferenceInfoHeaders) Validate() error {
 }
 
 type QueryConferenceInfoHeadersAccountContext struct {
-	// example:
-	//
-	// 208579
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 }
 

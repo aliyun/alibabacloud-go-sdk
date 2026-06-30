@@ -20,13 +20,7 @@ type iGetScheduleShrinkRequest interface {
 }
 
 type GetScheduleShrinkRequest struct {
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// 2020-01-01T10:15:30+08:00
+	EndTime             *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 	UserIdsShrink       *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`

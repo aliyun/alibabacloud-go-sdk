@@ -40,10 +40,7 @@ type GetDingtalkProjectionListShrinkRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// example:
-	//
-	// 343242
+	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	ProjectorWorkNo *string `json:"projectorWorkNo,omitempty" xml:"projectorWorkNo,omitempty"`
 }
 

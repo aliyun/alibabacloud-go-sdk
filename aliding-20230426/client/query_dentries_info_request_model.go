@@ -24,22 +24,11 @@ type iQueryDentriesInfoRequest interface {
 type QueryDentriesInfoRequest struct {
 	AppIdsForAppProperties []*string `json:"AppIdsForAppProperties,omitempty" xml:"AppIdsForAppProperties,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 140901622636
 	DentryId *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 22443475065
 	SpaceId       *string                                `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	TenantContext *QueryDentriesInfoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	// example:
-	//
-	// false
-	WithThumbnail *bool `json:"WithThumbnail,omitempty" xml:"WithThumbnail,omitempty"`
+	WithThumbnail *bool                                  `json:"WithThumbnail,omitempty" xml:"WithThumbnail,omitempty"`
 }
 
 func (s QueryDentriesInfoRequest) String() string {

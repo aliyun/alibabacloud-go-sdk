@@ -24,13 +24,7 @@ type iQueryMinutesTextResponseBody interface {
 }
 
 type QueryMinutesTextResponseBody struct {
-	// example:
-	//
-	// true
-	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	// example:
-	//
-	// 0
+	HasMore       *bool                                        `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
 	NextToken     *string                                      `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	ParagraphList []*QueryMinutesTextResponseBodyParagraphList `json:"paragraphList,omitempty" xml:"paragraphList,omitempty" type:"Repeated"`
 	// example:

@@ -22,25 +22,12 @@ type iListNodesRequest interface {
 }
 
 type ListNodesRequest struct {
-	// example:
-	//
-	// 50
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// next_token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// MNDoBb60VLBPraakI1Ywxyyn8lemrZQ3
-	ParentNodeId  *string                        `json:"ParentNodeId,omitempty" xml:"ParentNodeId,omitempty"`
-	TenantContext *ListNodesRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
-	// example:
-	//
-	// false
-	WithPermissionRole *bool `json:"WithPermissionRole,omitempty" xml:"WithPermissionRole,omitempty"`
+	ParentNodeId       *string                        `json:"ParentNodeId,omitempty" xml:"ParentNodeId,omitempty"`
+	TenantContext      *ListNodesRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	WithPermissionRole *bool                          `json:"WithPermissionRole,omitempty" xml:"WithPermissionRole,omitempty"`
 }
 
 func (s ListNodesRequest) String() string {

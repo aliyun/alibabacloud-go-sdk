@@ -22,17 +22,9 @@ type iUpdateWorkspaceDocMembersRequest interface {
 type UpdateWorkspaceDocMembersRequest struct {
 	Members []*UpdateWorkspaceDocMembersRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// node_feb8fea0
 	NodeId        *string                                        `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	TenantContext *UpdateWorkspaceDocMembersRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xb8bkxxxxxrXJNaL
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -99,18 +91,9 @@ func (s *UpdateWorkspaceDocMembersRequest) Validate() error {
 }
 
 type UpdateWorkspaceDocMembersRequestMembers struct {
-	// example:
-	//
-	// 012345
-	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// example:
-	//
-	// USER
+	MemberId   *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
-	// example:
-	//
-	// ONLY_VIEWER
-	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	RoleType   *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s UpdateWorkspaceDocMembersRequestMembers) String() string {

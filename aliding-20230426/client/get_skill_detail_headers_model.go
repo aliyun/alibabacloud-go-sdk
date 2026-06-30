@@ -56,11 +56,6 @@ func (s *GetSkillDetailHeaders) Validate() error {
 }
 
 type GetSkillDetailHeadersAccountContext struct {
-	// Buc SsoTicket
-	//
-	// example:
-	//
-	// bucxxx
 	SsoTicket *string `json:"SsoTicket,omitempty" xml:"SsoTicket,omitempty"`
 	// This parameter is required.
 	//

@@ -30,42 +30,15 @@ type iGetProcessDefinitionRequest interface {
 }
 
 type GetProcessDefinitionRequest struct {
-	// example:
-	//
-	// APP_PBxxx
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// example:
-	//
-	// ding123
-	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
-	// example:
-	//
-	// c-xxafafaf
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// example:
-	//
-	// zh_CN
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// example:
-	//
-	// dingtalk
-	NameSpace *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
-	// example:
-	//
-	// o-YDJKIxxx
-	OrderNumber *string `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	// example:
-	//
-	// f30233fb-72e1-4af4-8cb8-c7e0ea9ee530
+	AppType           *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CorpId            *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Language          *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	NameSpace         *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
+	OrderNumber       *string `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
 	ProcessInstanceId *string `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
-	// example:
-	//
-	// hexxyy
-	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
-	// example:
-	//
-	// hexabc1234
-	SystemType *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
+	SystemToken       *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	SystemType        *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
 }
 
 func (s GetProcessDefinitionRequest) String() string {

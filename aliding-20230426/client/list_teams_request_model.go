@@ -18,13 +18,7 @@ type iListTeamsRequest interface {
 }
 
 type ListTeamsRequest struct {
-	// example:
-	//
-	// 30
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// example:
-	//
-	// 2023-05-15T11:29Z
+	MaxResults    *int32                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken     *string                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	TenantContext *ListTeamsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }

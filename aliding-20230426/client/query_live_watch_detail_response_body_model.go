@@ -30,44 +30,18 @@ type iQueryLiveWatchDetailResponseBody interface {
 }
 
 type QueryLiveWatchDetailResponseBody struct {
-	// example:
-	//
-	// 84600
 	AvgWatchTime *int64 `json:"avgWatchTime,omitempty" xml:"avgWatchTime,omitempty"`
-	// example:
-	//
-	// 100
-	LiveUv *int32 `json:"liveUv,omitempty" xml:"liveUv,omitempty"`
-	// example:
-	//
-	// 10000
-	MsgCount *int32 `json:"msgCount,omitempty" xml:"msgCount,omitempty"`
-	// example:
-	//
-	// 20
-	PlaybackUv *int32 `json:"playbackUv,omitempty" xml:"playbackUv,omitempty"`
-	// example:
-	//
-	// 30
-	PraiseCount *int32 `json:"praiseCount,omitempty" xml:"praiseCount,omitempty"`
-	// example:
-	//
-	// 1000
-	Pv *int32 `json:"pv,omitempty" xml:"pv,omitempty"`
-	// requestId
-	//
+	LiveUv       *int32 `json:"liveUv,omitempty" xml:"liveUv,omitempty"`
+	MsgCount     *int32 `json:"msgCount,omitempty" xml:"msgCount,omitempty"`
+	PlaybackUv   *int32 `json:"playbackUv,omitempty" xml:"playbackUv,omitempty"`
+	PraiseCount  *int32 `json:"praiseCount,omitempty" xml:"praiseCount,omitempty"`
+	Pv           *int32 `json:"pv,omitempty" xml:"pv,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 1222000
-	TotalWatchTime *int64 `json:"totalWatchTime,omitempty" xml:"totalWatchTime,omitempty"`
-	// example:
-	//
-	// 10
-	Uv *int32 `json:"uv,omitempty" xml:"uv,omitempty"`
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalWatchTime *int64  `json:"totalWatchTime,omitempty" xml:"totalWatchTime,omitempty"`
+	Uv             *int32  `json:"uv,omitempty" xml:"uv,omitempty"`
 }
 
 func (s QueryLiveWatchDetailResponseBody) String() string {

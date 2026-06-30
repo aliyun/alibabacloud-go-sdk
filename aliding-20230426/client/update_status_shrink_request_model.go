@@ -24,27 +24,12 @@ type iUpdateStatusShrinkRequest interface {
 }
 
 type UpdateStatusShrinkRequest struct {
-	// example:
-	//
-	// APP_PBKT0MFBEBTDO8T7SLVP
 	AppType          *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	ErrorLinesShrink *string `json:"ErrorLines,omitempty" xml:"ErrorLines,omitempty"`
-	// example:
-	//
-	// seq-123
-	ImportSequence *string `json:"ImportSequence,omitempty" xml:"ImportSequence,omitempty"`
-	// example:
-	//
-	// zh_CN
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// example:
-	//
-	// running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// hexxxx
-	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	ImportSequence   *string `json:"ImportSequence,omitempty" xml:"ImportSequence,omitempty"`
+	Language         *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SystemToken      *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
 }
 
 func (s UpdateStatusShrinkRequest) String() string {

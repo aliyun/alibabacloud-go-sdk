@@ -27,10 +27,7 @@ type GetFieldDefByUuidResponseBody struct {
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
 	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	Result    []*GetFieldDefByUuidResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -108,31 +105,13 @@ func (s *GetFieldDefByUuidResponseBody) Validate() error {
 }
 
 type GetFieldDefByUuidResponseBodyResult struct {
-	// example:
-	//
-	// NORMAL
-	Behavior *string `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
-	Children *string `json:"Children,omitempty" xml:"Children,omitempty"`
-	// example:
-	//
-	// TextareaField
-	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// example:
-	//
-	// textField_laq7xxx
-	FieldId *string `json:"FieldId,omitempty" xml:"FieldId,omitempty"`
-	// example:
-	//
-	// {}
-	Label interface{} `json:"Label,omitempty" xml:"Label,omitempty"`
-	// example:
-	//
-	// {}
-	Props interface{} `json:"Props,omitempty" xml:"Props,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Behavior      *string     `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
+	Children      *string     `json:"Children,omitempty" xml:"Children,omitempty"`
+	ComponentName *string     `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	FieldId       *string     `json:"FieldId,omitempty" xml:"FieldId,omitempty"`
+	Label         interface{} `json:"Label,omitempty" xml:"Label,omitempty"`
+	Props         interface{} `json:"Props,omitempty" xml:"Props,omitempty"`
+	Success       *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetFieldDefByUuidResponseBodyResult) String() string {

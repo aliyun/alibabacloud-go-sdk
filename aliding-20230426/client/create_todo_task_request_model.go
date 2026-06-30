@@ -68,11 +68,8 @@ type CreateTodoTaskRequest struct {
 	// true
 	IsOnlyShowExecutor *bool                               `json:"isOnlyShowExecutor,omitempty" xml:"isOnlyShowExecutor,omitempty"`
 	NotifyConfigs      *CreateTodoTaskRequestNotifyConfigs `json:"notifyConfigs,omitempty" xml:"notifyConfigs,omitempty" type:"Struct"`
-	// example:
-	//
-	// 12345
-	OperatorId     *string   `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
-	ParticipantIds []*string `json:"participantIds,omitempty" xml:"participantIds,omitempty" type:"Repeated"`
+	OperatorId         *string                             `json:"operatorId,omitempty" xml:"operatorId,omitempty"`
+	ParticipantIds     []*string                           `json:"participantIds,omitempty" xml:"participantIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 20
@@ -451,14 +448,10 @@ func (s *CreateTodoTaskRequestActionListParam) Validate() error {
 }
 
 type CreateTodoTaskRequestContentFieldList struct {
-	// fieldKey
-	//
 	// example:
 	//
 	// fieldKey
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-	// fieldValue
-	//
 	// example:
 	//
 	// fieldValue

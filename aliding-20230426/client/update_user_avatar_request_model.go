@@ -14,9 +14,6 @@ type iUpdateUserAvatarRequest interface {
 }
 
 type UpdateUserAvatarRequest struct {
-	// example:
-	//
-	// @lADPDfYH3A-xxxx
 	AvatarMediaId *string `json:"AvatarMediaId,omitempty" xml:"AvatarMediaId,omitempty"`
 }
 

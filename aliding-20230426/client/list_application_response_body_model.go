@@ -128,7 +128,7 @@ func (s *ListApplicationResponseBody) Validate() error {
 type ListApplicationResponseBodyData struct {
 	// example:
 	//
-	// {\\"ODIN_TOPIC_ID\\":\\"256\\"}
+	// {\"ODIN_TOPIC_ID\":\"256\"}
 	AppConfig *string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
 	// example:
 	//

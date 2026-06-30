@@ -23,10 +23,6 @@ type AddScenegroupMemberRequest struct {
 	// cidt*****Xa4K10w==
 	OpenConversationId *string `json:"OpenConversationId,omitempty" xml:"OpenConversationId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123xx,224xx
 	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
 }
 

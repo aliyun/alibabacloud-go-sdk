@@ -23,8 +23,6 @@ type ListEventsViewResponseBody struct {
 	//
 	// cnNTbWxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// requestId
-	//
 	// example:
 	//
 	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
@@ -670,10 +668,7 @@ type ListEventsViewResponseBodyEventsMeetingRooms struct {
 	//
 	// accepted
 	ResponseStatus *string `json:"ResponseStatus,omitempty" xml:"ResponseStatus,omitempty"`
-	// example:
-	//
-	// c10315a8b4e740a317813ab6fxxxxxx
-	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	RoomId         *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 }
 
 func (s ListEventsViewResponseBodyEventsMeetingRooms) String() string {

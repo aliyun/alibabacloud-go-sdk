@@ -21,10 +21,6 @@ type iDeleteMultiDimTableRecordsShrinkRequest interface {
 
 type DeleteMultiDimTableRecordsShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
 	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
 	// This parameter is required.
 	RecordIdsShrink *string `json:"RecordIds,omitempty" xml:"RecordIds,omitempty"`
