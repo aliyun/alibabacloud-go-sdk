@@ -65,59 +65,59 @@ type DescribeSnapshotsRequest struct {
 	Filter []*DescribeSnapshotsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The category of the snapshot. Valid values:
 	//
-	// - `Standard`: A standard snapshot.
+	// - Standard: standard snapshot.
 	//
-	// - `Flash`: A local snapshot. This value is deprecated because the local snapshot feature has been replaced by the instant access feature.
+	// - Flash: local snapshot. This value is about to be deprecated. Local snapshots have been replaced by the snapshot instant access feature. The metric description is as follows:
 	//
-	//   - If you have used local snapshots before December 14, 2020, you can continue to use this value.
+	//   - If you used local snapshots before December 14, 2020, you can use this parameter. The parameter is active.
 	//
-	//   - If you have not used local snapshots before December 14, 2020, you cannot use this value.
+	//   - If you did not use local snapshots before December 14, 2020, you cannot use this parameter.
 	//
-	// - `archive`: An archive snapshot.
+	// - archive: archive snapshot.
 	//
-	// <props="china">
 	//
-	// For more information, see [December 14: Alibaba Cloud snapshot service upgrade and new billing items notice](https://help.aliyun.com/noticelist/articleid/1060755542.html).
+	//
+	// <props="china">For more information, see [Chinese site notice on snapshot service upgrade and new billing items on December 14](https://help.aliyun.com/noticelist/articleid/1060755542.html).
 	//
 	// example:
 	//
 	// Standard
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The ID of the cloud disk.
+	// The ID of the disk.
 	//
 	// example:
 	//
 	// d-bp67acfmxazb4p****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// Specifies whether to perform a dry run.
+	// Specifies whether to perform only a dry run, without performing the actual request.
 	//
-	// - `true`: Performs a dry run but does not query resources. The system checks the request for potential issues, including missing required parameters, invalid parameter values, and insufficient permissions. If the request is invalid, an error is returned. If the request is valid, the `DryRunOperation` error code is returned.
+	// - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
 	//
-	// - `false` (Default): Sends a normal request. If the request is valid, the system returns a 2xx HTTP status code and the query results.
+	// - false (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to return only encrypted snapshots. Default value: false.
+	// Specifies whether to filter encrypted snapshots. Default value: false.
 	//
 	// example:
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the instance. When you specify this ID, the operation returns snapshots of cloud disks attached to the instance.
+	// The instance ID. Specify this parameter to query snapshot information of disks attached to the instance.
 	//
 	// example:
 	//
 	// i-bp67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the KMS key used to encrypt the snapshot.
+	// The ID of the Key Management Service (KMS) key used by the data disk.
 	//
 	// example:
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100.
+	// The maximum number of entries per page for paging. Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -125,7 +125,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to start the next page of results. You can obtain this token from the response to a previous query.
+	// The pagination token. Obtained from the response of the previous request.
 	//
 	// example:
 	//
@@ -133,19 +133,19 @@ type DescribeSnapshotsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter is deprecated. We recommend that you use the `NextToken` and `MaxResults` parameters for paged queries.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults for paging instead.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is deprecated. We recommend that you use the `NextToken` and `MaxResults` parameters for paged queries.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults for paging instead.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
+	// The region ID of the disk. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -153,9 +153,9 @@ type DescribeSnapshotsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the snapshot belongs. When you filter by this parameter, the query can return a maximum of 1,000 snapshots.
+	// The ID of the resource group. When you use this parameter to filter resources, the resource count cannot exceed 1000.
 	//
-	// > You cannot filter resources that are in the default resource group.
+	// > Filtering by default resource group is not supported.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type DescribeSnapshotsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// A JSON array that contains the IDs of up to 100 snapshots to query.
+	// The IDs of snapshots. The value is a JSON array that consists of up to 100 snapshot IDs. Separate the IDs with commas (,).
 	//
 	// example:
 	//
@@ -175,29 +175,33 @@ type DescribeSnapshotsRequest struct {
 	//
 	// sl-bp1grgphbcc9brb5****
 	SnapshotLinkId *string `json:"SnapshotLinkId,omitempty" xml:"SnapshotLinkId,omitempty"`
-	// The snapshot name.
+	// The name of the snapshot.
 	//
 	// example:
 	//
 	// testSnapshotName
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	// The snapshot creation type. Valid values:
+	// The type of automatic creation. Valid values:
 	//
-	// - `auto`: An automatically created snapshot.
 	//
-	// - `user`: A manually created snapshot.
 	//
-	// - `all` (Default): All snapshot creation types.
+	// - auto: automatic snapshot.
+	//
+	// - user: manual snapshot.
+	//
+	// - all (default): All automatic creation types.
 	//
 	// example:
 	//
 	// all
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	// The type of the source disk of the snapshot. Valid values:
+	// The type of the source disk. Valid values:
 	//
-	// - `system`: The snapshot was created from a system disk.
 	//
-	// - `data`: The snapshot was created from a data disk.
+	//
+	// - system: system disk.
+	//
+	// - data: data disk.
 	//
 	// > The value is case-insensitive.
 	//
@@ -207,29 +211,31 @@ type DescribeSnapshotsRequest struct {
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
 	// The status of the snapshot. Valid values:
 	//
-	// - `progressing`: The snapshot is being created.
 	//
-	// - `accomplished`: The snapshot is complete.
 	//
-	// - `failed`: Snapshot creation failed.
+	// - progressing: The snapshot is being created.
 	//
-	// - `all` (Default): All snapshot statuses.
+	// - accomplished: The snapshot is created.
+	//
+	// - failed: The snapshot failed to be created.
+	//
+	// - all (default): All snapshot statuses.
 	//
 	// example:
 	//
 	// all
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags by which to filter snapshots.
+	// The tags.
 	Tag []*DescribeSnapshotsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The usage of the snapshot. Valid values:
+	// Specifies whether the snapshot has been used to create images or disks. Valid values:
 	//
-	// - `image`: The snapshot is used to create a custom image.
+	// - image: The snapshot has been used to create custom images.
 	//
-	// - `disk`: The snapshot is used to create a cloud disk.
+	// - disk: The snapshot has been used to create disks.
 	//
-	// - `image_disk`: The snapshot is used to create a custom image and a data disk.
+	// - image_disk: The snapshot has been used to create both data disks and custom images.
 	//
-	// - `none`: The snapshot is not used.
+	// - none: The snapshot has not been used.
 	//
 	// example:
 	//
@@ -493,13 +499,13 @@ func (s *DescribeSnapshotsRequest) Validate() error {
 }
 
 type DescribeSnapshotsRequestFilter struct {
-	// The filter key for querying resources. The value must be `CreationStartTime`. If you specify `Filter.1.Key` and `Filter.1.Value`, you can query for resources that were created after the specified point in time.
+	// The filter key used to query resources. Set the value to `CreationStartTime`. When you specify both `Filter.1.Key` and `Filter.1.Value`, you can query resources created after the specified point in time.
 	//
 	// example:
 	//
 	// CreationStartTime
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter value. If you specify this parameter, you must also specify `Filter.1.Key`. The value must be in the `yyyy-MM-ddTHH:mmZ` format and in UTC.
+	// The filter value used to query resources. When you specify this parameter, you must also specify `Filter.1.Key`. Specify the time in the `yyyy-MM-ddTHH:mmZ` format in UTC.
 	//
 	// example:
 	//
@@ -538,15 +544,15 @@ func (s *DescribeSnapshotsRequestFilter) Validate() error {
 }
 
 type DescribeSnapshotsRequestTag struct {
-	// The tag key.
+	// The tag key of the snapshot. Valid values of N: 1 to 20.
 	//
-	// > For better compatibility, use the `Tag.N.Key` parameter.
+	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the snapshot. Valid values of N: 1 to 20.
 	//
 	// example:
 	//

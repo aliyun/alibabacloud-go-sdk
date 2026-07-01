@@ -38,7 +38,7 @@ type StartTerminalSessionResponseBody struct {
 	//
 	// s-hz023od0x9****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The URL of the WebSocket session for the remote connection to the ECS instance. The URL contains the session ID (SessionId) and the SecurityToken used for system verification.
+	// The URL of the WebSocket session for the remote connection to the ECS instance. The URL contains the session ID (`SessionId`) and the `SecurityToken` for system verification.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateImageComponentResponseBody interface {
 }
 
 type CreateImageComponentResponseBody struct {
-	// The ID of the image component.
+	// The image component ID.
 	//
 	// example:
 	//

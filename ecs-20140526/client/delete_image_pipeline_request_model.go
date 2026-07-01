@@ -24,7 +24,7 @@ type iDeleteImagePipelineRequest interface {
 }
 
 type DeleteImagePipelineRequest struct {
-	// The ID of the image template.
+	// The image template ID.
 	//
 	// This parameter is required.
 	//

@@ -38,9 +38,9 @@ type DescribeAutoProvisioningGroupInstancesRequest struct {
 	AutoProvisioningGroupId *string `json:"AutoProvisioningGroupId,omitempty" xml:"AutoProvisioningGroupId,omitempty"`
 	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The page number for the paging query.
 	//
-	// Pages start from page 1.
+	// Minimum value: 1.
 	//
 	// Default value: 1.
 	//
@@ -48,9 +48,9 @@ type DescribeAutoProvisioningGroupInstancesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in the paging query. You can use this parameter to configure paging settings.
 	//
-	// Valid values: 1 to 100.
+	// Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -58,7 +58,7 @@ type DescribeAutoProvisioningGroupInstancesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the auto provisioning group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The ID of the region where the auto provisioning group resides. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

@@ -40,17 +40,15 @@ type iDescribeSpotPriceHistoryRequest interface {
 }
 
 type DescribeSpotPriceHistoryRequest struct {
-	// The end of the time range to query. Specify the time in the [ISO 8601 standard](https://help.aliyun.com/document_detail/25696.html) in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	// The end of the time range to query the historical prices of spot instances. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
 	//
-	// This parameter is empty by default. If this parameter is empty, the current time is used.
+	// Default value: null, which indicates the current time.
 	//
 	// example:
 	//
 	// 2017-08-22T08:45:08Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. The specified time can be up to 30 days earlier than the specified EndTime value.
-	//
-	// This parameter is empty by default. If this parameter is empty, the time that is 3 hours earlier than the specified EndTime value is used.
+	// The instance type.
 	//
 	// This parameter is required.
 	//
@@ -58,15 +56,15 @@ type DescribeSpotPriceHistoryRequest struct {
 	//
 	// ecs.t1.xsmall
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Specifies whether the instance is I/O optimized. Valid values:
+	// Specifies whether the spot instance is I/O optimized. Valid values:
 	//
-	// - optimized: The instance is I/O optimized.
+	// - optimized: The spot instance is an I/O optimization instance.
 	//
-	// - none: The instance is not I/O optimized.
+	// - none: The spot instance is not an I/O optimization instance.
 	//
-	// For instances of generation I instance families, the default value is none.
+	// Default value for Generation I instance families: none.
 	//
-	// For instances of other instance families, the default value is optimized.
+	// Default value for other instance families: optimized.
 	//
 	// example:
 	//
@@ -74,9 +72,9 @@ type DescribeSpotPriceHistoryRequest struct {
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
 	// The network type of the spot instance. Valid values:
 	//
-	// - classic: classic network
+	// - vpc: virtual private cloud (VPC).
 	//
-	// - vpc: Virtual Private Cloud (VPC)
+	// - classic: classic network. This feature has been retired. For more information, see [Retirement notice](https://help.aliyun.com/document_detail/2833134.html).
 	//
 	// This parameter is required.
 	//
@@ -86,17 +84,17 @@ type DescribeSpotPriceHistoryRequest struct {
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The type of the operating system platform. Valid values:
 	//
-	// - linux
+	// - linux.
 	//
-	// - windows
+	// - windows.
 	//
 	// example:
 	//
 	// linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The line from which the query starts.
+	// The row from which the query starts.
 	//
-	// Default value: 0
+	// Default value: 0.
 	//
 	// example:
 	//
@@ -104,7 +102,7 @@ type DescribeSpotPriceHistoryRequest struct {
 	Offset       *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The zone ID of the spot instance.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -116,27 +114,27 @@ type DescribeSpotPriceHistoryRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
 	//
-	// - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+	// - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After 1 hour, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain automatic release the instance.
 	//
-	// - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+	// - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain automatic release the instance.
 	//
-	// Alibaba Cloud sends an ECS system event to notify you 5 minutes before the instance is released. Spot instances are billed by second. We recommend that you specify a protection period based on your business requirements.
+	// Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released. Spot instances are billed by second. Specify an appropriate protection period based on the expected task execution duration.
 	//
-	// > This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit or SpotAsPriceGo.
+	// > This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit or SpotAsPriceGo.
 	//
 	// example:
 	//
 	// 1
 	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	// The beginning of the time range to query. The value of this parameter and the value of EndTime can be up to 30 days apart. Specify the time in the [ISO 8601 standard](https://help.aliyun.com/document_detail/25696.html) in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	// The beginning of the time range to query the historical prices of spot instances. The maximum time range between the start time and end time is 30 days. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
 	//
-	// This parameter is left empty by default. If this parameter is empty, the time that is 3 hours earlier than the value of EndTime is used.
+	// Default value: null, which indicates 3 hours before the end time.
 	//
 	// example:
 	//
 	// 2017-08-22T08:45:08Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The spot price (market price) of the spot instance.
+	// The zone ID.
 	//
 	// example:
 	//

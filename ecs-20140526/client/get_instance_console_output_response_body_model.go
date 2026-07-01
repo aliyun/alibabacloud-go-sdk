@@ -20,7 +20,7 @@ type iGetInstanceConsoleOutputResponseBody interface {
 }
 
 type GetInstanceConsoleOutputResponseBody struct {
-	// The system command line output of the instance, encoded in Base64.
+	// The Base64-encoded system command-line output of the instance.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type GetInstanceConsoleOutputResponseBody struct {
 	//
 	// i-bp1c1xhsrac2coiw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The UTC+8 time recorded when the last entry of the Linux kernel logs was printed. Format: yyyy-MM-dd HH:mm:ss.
+	// The record of the time when the last line of the Linux kernel logs was printed, in UTC+8. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//

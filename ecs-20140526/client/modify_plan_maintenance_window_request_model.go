@@ -170,7 +170,7 @@ type ModifyPlanMaintenanceWindowRequestTargetResource struct {
 	//
 	// rg-acfmy4cc27vsvia
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource type for the O&M window.
+	// The resource type for the O&M window configuration.
 	//
 	// example:
 	//
@@ -280,7 +280,7 @@ type ModifyPlanMaintenanceWindowRequestTimePeriod struct {
 	//
 	// Year
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The time ranges of the recurring O&M window cycle (UTC time zone).
+	// The time ranges of the O&M window recurring cycle (UTC time zone).
 	RangeList []*ModifyPlanMaintenanceWindowRequestTimePeriodRangeList `json:"RangeList,omitempty" xml:"RangeList,omitempty" type:"Repeated"`
 }
 
@@ -330,7 +330,7 @@ type ModifyPlanMaintenanceWindowRequestTimePeriodRangeList struct {
 	//
 	// - If PeriodUnit is set to Daily, the format is 22:00.
 	//
-	// - The comma delimiter separates two parts. The first part represents the hour, with valid values from 00 to 23. The second part represents the minutes, which currently supports only 00.
+	// - The comma delimiter separates two parts. The first part represents the hour, with valid values from 00 to 23. The second part represents the minute, which currently supports only 00.
 	//
 	// example:
 	//
@@ -342,7 +342,7 @@ type ModifyPlanMaintenanceWindowRequestTimePeriodRangeList struct {
 	//
 	// - If PeriodUnit is set to Daily, the format is 22:00.
 	//
-	// - The comma delimiter separates two parts. The first part represents the hour, with valid values from 00 to 23. The second part represents the minutes, which currently supports only 00.
+	// - The comma delimiter separates two parts. The first part represents the hour, with valid values from 00 to 23. The second part represents the minute, which currently supports only 00.
 	//
 	// example:
 	//

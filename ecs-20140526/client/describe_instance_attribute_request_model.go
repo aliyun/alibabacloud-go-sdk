@@ -22,7 +22,7 @@ type iDescribeInstanceAttributeRequest interface {
 }
 
 type DescribeInstanceAttributeRequest struct {
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

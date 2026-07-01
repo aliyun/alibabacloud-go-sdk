@@ -40,7 +40,7 @@ type DescribeAutoSnapshotPolicyExRequest struct {
 	//
 	// sp-bp67acfmxazb4ph****
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	// The name of the automatic snapshot policy.
+	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must support characters in the Unicode letter category, which includes characters from various languages such as English and Chinese.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeAutoSnapshotPolicyExRequest struct {
 	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" xml:"AutoSnapshotPolicyName,omitempty"`
 	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The page number of the automatic snapshot policy list.
 	//
-	// Pages start from page 1.
+	// Minimum value: 1.
 	//
 	// Default value: 1.
 	//
@@ -58,9 +58,9 @@ type DescribeAutoSnapshotPolicyExRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page when automatic snapshot policies are displayed in paging mode.
 	//
-	// Valid values: 1 to 100.
+	// Maximum value: 100.
 	//
 	// Default value: 10.
 	//
@@ -68,7 +68,7 @@ type DescribeAutoSnapshotPolicyExRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the automatic snapshot policy. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the automatic snapshot policies that you want to query. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -76,9 +76,9 @@ type DescribeAutoSnapshotPolicyExRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+	// The ID of the resource group. When you use this parameter to filter resources, the resource count cannot exceed 1000.
 	//
-	// > Resources in the default resource group are displayed in the response regardless of how this parameter is set.
+	// > Filtering by the default resource group is not supported.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DescribeAutoSnapshotPolicyExRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags of the automatic snapshot policy.
+	// The tags.
 	Tag []*DescribeAutoSnapshotPolicyExRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -211,13 +211,13 @@ func (s *DescribeAutoSnapshotPolicyExRequest) Validate() error {
 }
 
 type DescribeAutoSnapshotPolicyExRequestTag struct {
-	// The key of tag N of the automatic snapshot policy. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http\\:// or https\\://. The tag key cannot start with acs: or aliyun.
+	// The tag key of the automatic snapshot policy. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the automatic snapshot policy. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http\\:// or https\\://. The tag value cannot start with acs:.
+	// The tag value of the automatic snapshot policy. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
 	//
 	// example:
 	//

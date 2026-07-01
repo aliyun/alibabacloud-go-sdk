@@ -23,13 +23,13 @@ type iDescribeAutoSnapshotPolicyExResponseBody interface {
 
 type DescribeAutoSnapshotPolicyExResponseBody struct {
 	AutoSnapshotPolicies *DescribeAutoSnapshotPolicyExResponseBodyAutoSnapshotPolicies `json:"AutoSnapshotPolicies,omitempty" xml:"AutoSnapshotPolicies,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the automatic snapshot policy list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page when automatic snapshot policies are displayed in paging mode.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeAutoSnapshotPolicyExResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of automatic snapshot policies
+	// The total number of automatic snapshot policies.
 	//
 	// example:
 	//

@@ -54,7 +54,7 @@ type DescribeImageComponentsRequest struct {
 	//
 	// Build
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The component version number in the format of major.minor.patch. All values are non-negative integers. You can also use the wildcard character (*) to replace one of the values for fuzzy matching.
+	// The component version number in the major.minor.patch format. Each part must be a non-negative integer. You can also use the wildcard character (*) to replace one part for fuzzy matching.
 	//
 	// >This parameter takes effect only when Name is specified.
 	//
@@ -82,7 +82,7 @@ type DescribeImageComponentsRequest struct {
 	//
 	// testComponent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The pagination token. Set this parameter to the value of `NextToken` returned in the previous call. You do not need to set this parameter for the first request.
+	// The pagination token. Set this parameter to the value of NextToken returned by the previous call. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type DescribeImageComponentsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. If you use this parameter to filter resources, the resource count cannot exceed 1000.
+	// The resource group ID. If you use this parameter to filter resources, the resource count cannot exceed 1,000.
 	//
 	// >Filtering by the default resource group is not supported.
 	//

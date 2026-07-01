@@ -20,13 +20,13 @@ type iCreateLaunchTemplateVersionResponseBody interface {
 type CreateLaunchTemplateVersionResponseBody struct {
 	// The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html).
 	//
-	// You must specify `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template.
+	// When you use a launch template to create an instance, you must specify `LaunchTemplateId` or `LaunchTemplateName` to determine the launch template.
 	//
 	// example:
 	//
 	// lt-bp1apo0bbbkuy0rj****
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
-	// The number of the created version of the launch template.
+	// The version number of the launch template that is created.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iModifyPrepayInstanceSpecResponseBody interface {
 }
 
 type ModifyPrepayInstanceSpecResponseBody struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 1234567890
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

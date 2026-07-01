@@ -31,13 +31,13 @@ type DescribeDisksResponseBody struct {
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults for paging operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults for paging operations.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeDisksResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	//
-	// > When you use MaxResults and NextToken parameters for paging query, the returned TotalCount parameter value is invalid.
+	// > When you use MaxResults and NextToken parameters for paging, the returned TotalCount parameter value is invalid.
 	//
 	// example:
 	//

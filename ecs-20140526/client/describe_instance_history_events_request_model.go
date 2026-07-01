@@ -58,21 +58,21 @@ type iDescribeInstanceHistoryEventsRequest interface {
 type DescribeInstanceHistoryEventsRequest struct {
 	EventPublishTime *DescribeInstanceHistoryEventsRequestEventPublishTime `json:"EventPublishTime,omitempty" xml:"EventPublishTime,omitempty" type:"Struct"`
 	NotBefore        *DescribeInstanceHistoryEventsRequestNotBefore        `json:"NotBefore,omitempty" xml:"NotBefore,omitempty" type:"Struct"`
-	// The lifecycle status of the system event. EventCycleStatus takes effect only when the InstanceEventCycleStatus.N parameter is not specified. Valid values:
+	// The lifecycle status of the system event. EventCycleStatus takes effect only when InstanceEventCycleStatus.N is not specified. Valid values:
 	//
-	// - Scheduled: the event is waiting to be executed.
+	// - Scheduled: The event is waiting to be executed.
 	//
-	// - Avoided: the event has been avoided.
+	// - Avoided: The event has been avoided.
 	//
-	// - Executing: the event is being executed.
+	// - Executing: The event is being executed.
 	//
-	// - Executed: the event has been executed.
+	// - Executed: The event has been executed.
 	//
-	// - Canceled: the event has been canceled.
+	// - Canceled: The event has been canceled.
 	//
-	// - Failed: the event execution failed.
+	// - Failed: The event execution failed.
 	//
-	// - Inquiring: the event is being inquired.
+	// - Inquiring: The event is being inquired.
 	//
 	// example:
 	//
@@ -84,35 +84,35 @@ type DescribeInstanceHistoryEventsRequest struct {
 	//
 	// e-uf64yvznlao4jl2c****
 	EventId []*string `json:"EventId,omitempty" xml:"EventId,omitempty" type:"Repeated"`
-	// The type of the system event. EventType takes effect only when the InstanceEventType.N parameter is not specified. Valid values:
+	// The type of the system event. EventType takes effect only when InstanceEventType.N is not specified. Valid values:
 	//
-	// - SystemMaintenance.Reboot: the instance is restarted due to system maintenance.
+	// - SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
 	//
-	// - SystemMaintenance.Redeploy: the instance is redeployed due to system maintenance.
+	// - SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
 	//
-	// - SystemFailure.Reboot: the instance is restarted due to a system error.
+	// - SystemFailure.Reboot: The instance is restarted due to a system error.
 	//
-	// - SystemFailure.Redeploy: the instance is redeployed due to a system error.
+	// - SystemFailure.Redeploy: The instance is redeployed due to a system error.
 	//
-	// - SystemFailure.Delete: the instance is released due to an instance creation failure.
+	// - SystemFailure.Delete: The instance is released due to an instance creation failure.
 	//
-	// - InstanceFailure.Reboot: the instance is restarted due to an instance error.
+	// - InstanceFailure.Reboot: The instance is restarted due to an instance error.
 	//
-	// - InstanceExpiration.Stop: the instance is stopped because the subscription has expired.
+	// - InstanceExpiration.Stop: The instance is stopped due to subscription expiration.
 	//
-	// - InstanceExpiration.Delete: the instance is released because the subscription has expired.
+	// - InstanceExpiration.Delete: The instance is released due to subscription expiration.
 	//
-	// - AccountUnbalanced.Stop: the pay-as-you-go instance is stopped due to an overdue payment.
+	// - AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to an overdue payment.
 	//
-	// - AccountUnbalanced.Delete: the pay-as-you-go instance is released due to an overdue payment.
+	// - AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment.
 	//
-	// > For more information about event types, see [System event overview](https://help.aliyun.com/document_detail/66574.html). The value of this parameter can only be an instance system event, not a disk system event.
+	// > For more information about event types, see [System event overview](https://help.aliyun.com/document_detail/66574.html). The value of this parameter must be an instance system event, not a disk system event.
 	//
 	// example:
 	//
 	// SystemMaintenance.Reboot
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// > This parameter is not yet available for use.
+	// > This parameter is not yet available.
 	//
 	// example:
 	//
@@ -120,19 +120,19 @@ type DescribeInstanceHistoryEventsRequest struct {
 	ImpactLevel *string `json:"ImpactLevel,omitempty" xml:"ImpactLevel,omitempty"`
 	// One or more lifecycle statuses of the system event. Valid values of N: 1 to 7. Specify multiple values in a repeated list format. Valid values:
 	//
-	// - Scheduled: the event is waiting to be executed.
+	// - Scheduled: The event is waiting to be executed.
 	//
-	// - Avoided: the event has been avoided.
+	// - Avoided: The event has been avoided.
 	//
-	// - Executing: the event is being executed.
+	// - Executing: The event is being executed.
 	//
-	// - Executed: the event has been executed.
+	// - Executed: The event has been executed.
 	//
-	// - Canceled: the event has been canceled.
+	// - Canceled: The event has been canceled.
 	//
-	// - Failed: the event execution failed.
+	// - Failed: The event execution failed.
 	//
-	// - Inquiring: the event is being inquired.
+	// - Inquiring: The event is being inquired.
 	//
 	// example:
 	//
@@ -140,51 +140,51 @@ type DescribeInstanceHistoryEventsRequest struct {
 	InstanceEventCycleStatus []*string `json:"InstanceEventCycleStatus,omitempty" xml:"InstanceEventCycleStatus,omitempty" type:"Repeated"`
 	// One or more types of the system event. Valid values of N: 1 to 30. Specify multiple values in a repeated list format. Valid values:
 	//
-	// - SystemMaintenance.Reboot: the instance is restarted due to system maintenance.
+	// - SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
 	//
-	// - SystemMaintenance.Redeploy: the instance is redeployed due to system maintenance.
+	// - SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
 	//
-	// - SystemFailure.Reboot: the instance is restarted due to a system error.
+	// - SystemFailure.Reboot: The instance is restarted due to a system error.
 	//
-	// - SystemFailure.Redeploy: the instance is redeployed due to a system error.
+	// - SystemFailure.Redeploy: The instance is redeployed due to a system error.
 	//
-	// - SystemFailure.Delete: the instance is released due to an instance creation failure.
+	// - SystemFailure.Delete: The instance is released due to an instance creation failure.
 	//
-	// - InstanceFailure.Reboot: the instance is restarted due to an instance error.
+	// - InstanceFailure.Reboot: The instance is restarted due to an instance error.
 	//
-	// - InstanceExpiration.Stop: the instance is stopped because the subscription has expired.
+	// - InstanceExpiration.Stop: The instance is stopped due to subscription expiration.
 	//
-	// - InstanceExpiration.Delete: the instance is released because the subscription has expired.
+	// - InstanceExpiration.Delete: The instance is released due to subscription expiration.
 	//
-	// - AccountUnbalanced.Stop: the pay-as-you-go instance is stopped due to an overdue payment.
+	// - AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to an overdue payment.
 	//
-	// - AccountUnbalanced.Delete: the pay-as-you-go instance is released due to an overdue payment.
+	// - AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment.
 	//
-	// > For more information about event types, see [System event overview](https://help.aliyun.com/document_detail/66574.html). The value of this parameter can only be an instance system event, not a disk system event.
+	// > For more information about event types, see [System event overview](https://help.aliyun.com/document_detail/66574.html). The value of this parameter must be an instance system event, not a disk system event.
 	//
 	// example:
 	//
 	// SystemMaintenance.Reboot
 	InstanceEventType []*string `json:"InstanceEventType,omitempty" xml:"InstanceEventType,omitempty" type:"Repeated"`
-	// The instance ID. If this parameter is not specified, the system events of all instances in the specified region are queried.
+	// The instance ID. If you do not specify an instance ID, the system events of all instances in the specified region are queried.
 	//
 	// example:
 	//
 	// i-uf678mass4zvr9n1****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries per page for paging. Valid values: 10 to 100.
+	// The maximum number of entries per page for a paging query. Valid values: 10 to 100.
 	//
 	// Default value:
 	//
-	// 	- When the specified value is greater than 0 but less than 10, the default value is 10.
+	// 	- When the settings value is greater than 0 but less than 10, the default value is 10.
 	//
-	// 	- When the specified value is greater than 100, the default value is 100.
+	// 	- When the settings value is greater than 100, the default value is 100.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+	// The query token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -192,13 +192,13 @@ type DescribeInstanceHistoryEventsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter will be deprecated. Use MaxResults and NextToken for pagination instead.
+	// > This parameter will be deprecated. Use MaxResults or NextToken for paginated queries instead.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter will be deprecated. Use MaxResults and NextToken for pagination instead.
+	// > This parameter will be deprecated. Use MaxResults or NextToken for paginated queries instead.
 	//
 	// example:
 	//
@@ -220,15 +220,15 @@ type DescribeInstanceHistoryEventsRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// One or more resource IDs. Valid values of N: 1 to 100. Specify multiple values in a repeated list format. Valid values:
 	//
-	// - When `ResourceType=instance`, the resource ID indicates the ECS instance ID.
+	// - When `ResourceType=instance`, the resource ID is the ECS instance ID.
 	//
-	// - When `ResourceType=ddh`, the resource ID indicates the dedicated host ID.
+	// - When `ResourceType=ddh`, the resource ID is the dedicated host ID.
 	//
-	// - When `ResourceType=managedhost`, the resource ID indicates the physical machine ID in an intelligent fully managed resource pool.
+	// - When `ResourceType=managedhost`, the resource ID is the physical machine ID in an intelligent fully managed resource pool.
 	//
-	// If this parameter is not specified, the system events of all resources in the specified region (`RegionId`) and of the specified resource type (`ResourceType`) are queried.
+	// If you do not specify this parameter, the system events of all resources of the specified resource type (`ResourceType`) in the specified region (`RegionId`) are queried.
 	//
-	// > We recommend that you use the `ResourceId.N` parameter to specify one or more resource IDs. If you specify both `ResourceId.N` and `InstanceId`, the `ResourceId.N` parameter takes precedence by default.
+	// > Use `ResourceId.N` to specify one or more resource IDs. If you specify both `ResourceId.N` and `InstanceId`, `ResourceId.N` takes precedence by default.
 	//
 	// example:
 	//
@@ -484,13 +484,13 @@ func (s *DescribeInstanceHistoryEventsRequest) Validate() error {
 }
 
 type DescribeInstanceHistoryEventsRequestEventPublishTime struct {
-	// 查询系统事件发布时间的结束时间。按照[ISO 8601](https://help.aliyun.com/document_detail/25696.html)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
+	// The end of the time range during which the system event is published. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2017-12-01T06:32:31Z
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// 查询系统事件发布时间的开始时间。按照[ISO 8601](https://help.aliyun.com/document_detail/25696.html)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
+	// The start of the time range during which the system event is published. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -529,13 +529,13 @@ func (s *DescribeInstanceHistoryEventsRequestEventPublishTime) Validate() error 
 }
 
 type DescribeInstanceHistoryEventsRequestNotBefore struct {
-	// 查询系统事件计划执行时间的结束时间。按照[ISO 8601](https://help.aliyun.com/document_detail/25696.html)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
+	// The end of the time range during which the system event is scheduled to execute. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2017-12-01T06:32:31Z
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// 查询系统事件计划执行时间的开始时间。按照[ISO 8601](https://help.aliyun.com/document_detail/25696.html)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
+	// The start of the time range during which the system event is scheduled to execute. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

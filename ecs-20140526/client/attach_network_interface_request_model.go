@@ -40,15 +40,15 @@ type AttachNetworkInterfaceRequest struct {
 	//
 	// i-bp16qstyvxj9gpqw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The index of the network interface controller (NIC).
+	// The index of the network card specified for the ENI.
 	//
-	// > The value of this parameter varies based on the instance family of the specified instance. If the instance type of the specified instance does not support NICs, leave this parameter empty. If the instance type of the specified instance supports NICs, set this parameter to a valid value. For information about the valid values of this parameter, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// >Valid values of NetworkCardIndex depend on the instance family. If the instance type does not support network cards, you cannot specify this parameter. If the instance type supports network cards, see [Instance families](https://help.aliyun.com/document_detail/25378.html) for valid values.
 	//
 	// example:
 	//
 	// 0
 	NetworkCardIndex *int32 `json:"NetworkCardIndex,omitempty" xml:"NetworkCardIndex,omitempty"`
-	// The ID of the ENI.
+	// The network interface controller (NIC) ID.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type AttachNetworkInterfaceRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -70,13 +70,13 @@ type AttachNetworkInterfaceRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the trunk ENI.
 	//
-	// > This parameter is unavailable.
+	// >This parameter is not yet available.
 	//
 	// example:
 	//
 	// eni-f8zapqwj1v1j4ia3****
 	TrunkNetworkInstanceId *string `json:"TrunkNetworkInstanceId,omitempty" xml:"TrunkNetworkInstanceId,omitempty"`
-	// > This parameter is no longer supported.
+	// >This parameter is deprecated.
 	//
 	// example:
 	//

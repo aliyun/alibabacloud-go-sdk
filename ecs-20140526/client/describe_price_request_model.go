@@ -81,7 +81,7 @@ type DescribePriceRequest struct {
 	DataDisk         []*DescribePriceRequestDataDisk       `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 	SchedulerOptions *DescribePriceRequestSchedulerOptions `json:"SchedulerOptions,omitempty" xml:"SchedulerOptions,omitempty" type:"Struct"`
 	SystemDisk       *DescribePriceRequestSystemDisk       `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// The number of resources for which to query prices. Valid values: 1–1000.
+	// The number of Elastic Compute Service (ECS) instances that you want to purchase in batch. You can use this parameter to query the price of batch purchasing instances of a specific configuration. Valid values: 1 to 1000.
 	//
 	// Default value: 1.
 	//
@@ -89,45 +89,45 @@ type DescribePriceRequest struct {
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The number of times the elasticity assurance can be used. Set this to `Unlimited`, which allows the assurance to be used any number of times during its effective period.
+	// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. Only the unlimited mode within the service effective period is supported.
 	//
-	// Default value: `Unlimited`.
+	// Default value: Unlimited.
 	//
 	// example:
 	//
 	// Unlimited
 	AssuranceTimes *string `json:"AssuranceTimes,omitempty" xml:"AssuranceTimes,omitempty"`
-	// The memory capacity for the elasticity assurance. Unit: GiB.
+	// The capacity, in GiB.
 	//
 	// example:
 	//
 	// 1024
 	Capacity *int32 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The dedicated host type. You can call the [DescribeDedicatedHostTypes](https://help.aliyun.com/document_detail/134240.html) operation to query dedicated host types.
+	// The dedicated host type. You can call [DescribeDedicatedHostTypes](https://help.aliyun.com/document_detail/134240.html) to query the most recent list of dedicated host types.
 	//
 	// example:
 	//
 	// ddh.c5
 	DedicatedHostType *string `json:"DedicatedHostType,omitempty" xml:"DedicatedHostType,omitempty"`
-	// This parameter is valid only when `ResourceType` is set to `instance`.
+	// This parameter takes effect only when ResourceType is set to instance.
 	//
-	// The ID of the image. The image provides the runtime environment for the instance. You can call the [DescribeImages](https://help.aliyun.com/document_detail/25534.html) operation to query available images. If you do not specify this parameter, the system queries prices for Linux instances by default.
+	// The image ID, which specifies the runtime environment to load when the instance starts. You can call [DescribeImages](https://help.aliyun.com/document_detail/25534.html) to query available image resources. If you do not specify this parameter, the price of a Linux image is queried by default.
 	//
 	// example:
 	//
 	// centos_7_05_64_20G_alibase_20181212.vhd
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The number of instances to include in the reserved instance offering.
+	// The total number of instances to reserve within an instance type.
 	//
-	// Valid values: 1–1000.
+	// Valid values: 1 to 1000.
 	//
 	// example:
 	//
 	// 100
 	InstanceAmount *int32 `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
-	// The total number of vCPUs for instances that are covered by the elasticity assurance. When you call this operation, the system calculates the number of supported instances based on the specified `InstanceType` and rounds the value up to the nearest integer.
+	// The total number of vCPUs supported by the elasticity assurance. When you call this operation, the system calculates the number of instances required by the elasticity assurance based on the specified InstanceType (rounded up).
 	//
-	// > When you query the price of an elasticity assurance, you can specify only one of the `InstanceCpuCoreCount` and `InstanceAmount` parameters.
+	// > When you call this operation to query the price of an elasticity assurance, you can specify only one of InstanceCoreCpuCount and InstanceAmount.
 	//
 	// example:
 	//
@@ -135,41 +135,41 @@ type DescribePriceRequest struct {
 	InstanceCpuCoreCount *int32 `json:"InstanceCpuCoreCount,omitempty" xml:"InstanceCpuCoreCount,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// - `classic`: classic network
+	// - vpc: Virtual Private Cloud (VPC).
 	//
-	// - `vpc`: VPC
+	// - classic: classic network. The classic network is no longer available. For more information, see [Retirement notice](https://help.aliyun.com/document_detail/2833134.html).
 	//
-	// Default value: `vpc`.
+	// Default value: vpc.
 	//
 	// example:
 	//
 	// vpc
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// The instance type. This parameter is required when `ResourceType` is set to `instance`. For more information, see [Instance type families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the instance types.
+	// The instance type. You must specify this parameter when `ResourceType` is set to `instance`. For more details, see [Instance family](https://help.aliyun.com/document_detail/25378.html). You can also invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the most recent instance type list.
 	//
 	// example:
 	//
 	// ecs.g6.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The instance type. You can specify only one instance type for an elasticity assurance of the `Unlimited` type.
+	// The instance type. Only a single instance type can be specified for the unlimited elasticity assurance service.
 	//
 	// example:
 	//
 	// ecs.g6.xlarge
 	InstanceTypeList []*string `json:"InstanceTypeList,omitempty" xml:"InstanceTypeList,omitempty" type:"Repeated"`
-	// The billing method for network usage. Valid values:
+	// The billing method for network bandwidth. Valid values:
 	//
-	// - `PayByBandwidth`: pay-by-bandwidth
+	// - PayByBandwidth: pay-by-bandwidth.
 	//
-	// - `PayByTraffic`: pay-by-traffic
+	// - PayByTraffic: pay-by-traffic.
 	//
-	// Default value: `PayByTraffic`.
+	// Default value: PayByTraffic.
 	//
 	// example:
 	//
 	// PayByTraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0–100.
+	// The maximum outbound public bandwidth, in Mbit/s. Valid values: 0 to 100.
 	//
 	// Default value: 0.
 	//
@@ -177,41 +177,41 @@ type DescribePriceRequest struct {
 	//
 	// 5
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// Specifies whether the instance is I/O optimized. Valid values:
+	// Specifies whether the queried instance is an I/O optimized instance. Valid values:
 	//
-	// - `none`: non-I/O-optimized.
+	// - none: non-I/O optimization.
 	//
-	// - `optimized`: I/O-optimized.
+	// - optimized: I/O optimized.
 	//
-	// For [generation I](https://help.aliyun.com/document_detail/55263.html) instances, the default value is `none`.
+	// If InstanceType is a [Series I](https://help.aliyun.com/document_detail/55263.html) instance type, the default value is none.
 	//
-	// For other instance types, the default value is `optimized`.
+	// If InstanceType is not a [Series I](https://help.aliyun.com/document_detail/55263.html) instance type, the default value is optimized.
 	//
 	// example:
 	//
 	// optimized
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	// The Internet service provider (ISP). Valid values:
+	// The Internet Service Provider (ISP). Valid values:
 	//
-	// - `cmcc`: China Mobile
+	// - cmcc: China Mobile.
 	//
-	// - `telecom`: China Telecom
+	// - telecom: China Telecom.
 	//
-	// - `unicom`: China Unicom
+	// - unicom: China Unicom.
 	//
-	// - `multiCarrier`: BGP (Multi-ISP)
+	// - multiCarrier: multi-ISP.
 	//
 	// example:
 	//
 	// cmcc
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The payment option for the reserved instance. Valid values:
+	// The payment option of the reserved instance. Valid values:
 	//
-	// - `No Upfront`
+	// - No Upfront: no upfront.
 	//
-	// - `Partial Upfront`
+	// - Partial Upfront: partial upfront.
 	//
-	// - `All Upfront`
+	// - All Upfront: all upfront.
 	//
 	// example:
 	//
@@ -219,27 +219,27 @@ type DescribePriceRequest struct {
 	OfferingType *string `json:"OfferingType,omitempty" xml:"OfferingType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The billing duration of the resource. This parameter is used with `PriceUnit`. Valid values:
+	// The billing duration of Elastic Compute Service (ECS). Valid values:
 	//
 	// <props="china">
 	//
-	// - If `PriceUnit` is set to `Month`: 1–9.
+	// - If the PriceUnit parameter is set to Month: 1 to 9.
 	//
-	// - If `PriceUnit` is set to `Year`: 1–5.
+	// - If the PriceUnit parameter is set to Year: 1 to 5.
 	//
-	// - If `PriceUnit` is set to `Hour`: 1.
+	// - If the PriceUnit parameter is set to Hour: 1.
 	//
-	// - If `PriceUnit` is set to `Week`: 1–4.
+	// - If the PriceUnit parameter is set to Week: 1 to 4.
 	//
 	//
 	//
 	// <props="intl">
 	//
-	// - If `PriceUnit` is set to `Month`: 1–9.
+	// - If the PriceUnit parameter is set to Month: 1 to 9.
 	//
-	// - If `PriceUnit` is set to `Year`: 1–5.
+	// - If the PriceUnit parameter is set to Year: 1 to 5.
 	//
-	// - If `PriceUnit` is set to `Hour`: 1.
+	// - If the PriceUnit parameter is set to Hour: 1.
 	//
 	//
 	//
@@ -249,55 +249,55 @@ type DescribePriceRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The operating system of the instance. Valid values:
+	// The operating system type of the image used by the instance. Valid values:
 	//
-	// - `Windows`: Windows Server
+	// - Windows: Windows Server operating system.
 	//
-	// - `Linux`: Linux
+	// - Linux: Linux and Unix-like operating systems.
 	//
 	// example:
 	//
 	// Linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The billing cycle of the resource. Valid values:
+	// The pricing unit for querying Elastic Compute Service (ECS) prices across different billing cycles. Valid values:
 	//
 	// <props="china">
 	//
-	// - `Month`: For monthly pricing.
+	// - Month: monthly pricing unit.
 	//
-	// - `Year`: For yearly pricing.
+	// - Year: yearly pricing unit.
 	//
-	// - `Hour` (Default): For hourly pricing.
+	// - Hour (default): hourly pricing unit.
 	//
-	// - `Week`: For weekly pricing.
+	// - Week: weekly pricing unit.
 	//
 	//
 	//
 	// <props="intl">
 	//
-	// - `Month`: For monthly pricing.
+	// - Month: monthly pricing unit.
 	//
-	// - `Year`: For yearly pricing.
+	// - Year: yearly pricing unit.
 	//
-	// - `Hour` (Default): For hourly pricing.
+	// - Hour (default): hourly pricing unit.
 	//
 	// example:
 	//
 	// Year
 	PriceUnit *string `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
-	// The list of recurrence rules for the time-based elasticity assurance.
+	// The list of recurrence rules for the time-sharing elasticity assurance.
 	//
 	// <props="china">
 	//
-	// > The time-based elasticity assurance feature is available only in specific regions and to specific users. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+	// > The time-sharing elasticity assurance feature is available only in specific regions and for specific users. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
 	//
 	//
 	//
 	// <props="intl">
 	//
-	// > The time-based elasticity assurance feature is available only in specific regions and to specific users. To use this feature, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
+	// > The time-sharing elasticity assurance feature is available only in specific regions and for specific users. To use this feature, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
 	RecurrenceRules []*DescribePriceRequestRecurrenceRules `json:"RecurrenceRules,omitempty" xml:"RecurrenceRules,omitempty" type:"Repeated"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the list of Alibaba Cloud regions.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -307,23 +307,23 @@ type DescribePriceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource for which you want to query the price. Valid values:
+	// The type of the resource. Valid values:
 	//
-	// - `instance`: Query the prices of ECS instances. If you set this parameter to `instance`, you must also specify the `InstanceType` parameter.
+	// - instance: queries the latest price list of ECS instances. When this parameter is set to `instance`, you must also specify `InstanceType`.
 	//
-	// - `disk`: Query the prices of cloud disks. If you set this parameter to `disk`, you must also specify the `DataDisk.1.Category` and `DataDisk.1.Size` parameters.
+	// - disk: queries the latest price list of disks. When this parameter is set to `disk`, you must also specify `DataDisk.1.Category` and `DataDisk.1.Size`.
 	//
-	// - `diskperformance`: Query the prices of the provisioned performance of an ESSD AutoPL cloud disk. You must also specify the `DataDisk.1.Category` and `DataDisk.1.ProvisionedIops` parameters.
+	// - diskperformance: queries the latest price list of provisioned performance for ESSD AutoPL disks. You must also specify `DataDisk.1.Category` and `DataDisk.1.ProvisionedIops`.
 	//
-	// - `bandwidth`: Query the prices of network bandwidth.
+	// - bandwidth: queries the latest price list of bandwidth.
 	//
-	// - `ddh`: Query the prices of dedicated hosts.
+	// - ddh: queries the latest price list of dedicated hosts.
 	//
-	// - `ElasticityAssurance`: Query the prices of Elasticity Assurance. If you set this parameter to `ElasticityAssurance`, you must also specify the `InstanceType` parameter.
+	// - ElasticityAssurance: queries the price of the elasticity assurance service. When this parameter is set to `ElasticityAssurance`, you must also specify `InstanceType`.
 	//
-	// - `CapacityReservation`: Query the prices of Capacity Reservation. If you set this parameter to `CapacityReservation`, you must also specify the `InstanceType` parameter.
+	// - CapacityReservation: queries the price of the capacity reservation service. When this parameter is set to `CapacityReservation`, you must also specify `InstanceType`.
 	//
-	// Default value: `instance`.
+	// Default value: instance.
 	//
 	// example:
 	//
@@ -331,55 +331,57 @@ type DescribePriceRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The scope of the reserved instance. Valid values:
 	//
-	// - `Region`: region-scoped
 	//
-	// - `Zone`: zone-scoped
 	//
-	// Default value: `Region`.
+	// - Region: regional.
+	//
+	// - Zone: zonal.
+	//
+	// Default value: Region.
 	//
 	// example:
 	//
 	// Zone
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
+	// The protection period of the spot instance, in hours. Default value: 1. Valid values:
 	//
-	// - `1`: Alibaba Cloud does not automatically release the instance within 1 hour. After the 1-hour protection period ends, the system checks the market price and resource inventory to determine whether to retain or release the instance.
+	// - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released for 1 hour. After 1 hour, the system automatically compares the bid price with the market price and checks resource availability to determine whether to retain automatic release the instance.
 	//
-	// - `0`: The instance has no protection period. The system checks the market price and resource inventory to determine whether to retain or release the instance.
+	// - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system automatically compares the bid price with the market price and checks resource availability to determine whether to retain automatic release the instance.
 	//
-	// Alibaba Cloud sends you an ECS system event five minutes before the instance is released. Spot instances are billed by the second. Select a protection period based on the time required to complete your task.
+	// Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released. Spot instances are billed by second. Select an appropriate protection period based on the expected task execution duration.
 	//
-	// > This parameter is valid only when `SpotStrategy` is set to `SpotWithPriceLimit` or `SpotAsPriceGo`.
+	// > This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit or SpotAsPriceGo.
 	//
 	// example:
 	//
 	// 1
 	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	// The preemption policy for the pay-as-you-go instance. Valid values:
+	// The bidding policy for pay-as-you-go instances. Valid values:
 	//
-	// - `NoSpot`: A regular pay-as-you-go instance.
+	// - NoSpot: a regular pay-as-you-go instance.
 	//
-	// - `SpotWithPriceLimit`: A spot instance for which you specify a maximum hourly price.
+	// - SpotWithPriceLimit: a spot instance with a maximum price limit.
 	//
-	// - `SpotAsPriceGo`: A spot instance where the system automatically bids up to the pay-as-you-go price.
+	// - SpotAsPriceGo: a spot instance priced at the market price with the pay-as-you-go price as the upper limit.
 	//
-	// Default value: `NoSpot`.
+	// Default value: NoSpot.
 	//
-	// > This parameter applies only when you query hourly prices, where `PriceUnit` is `Hour` and `Period` is `1`. Because these are the default values, you do not need to set them when you use `SpotStrategy`.
+	// > This parameter takes effect only when `PriceUnit=Hour` and `Period=1`. Because the default value of `PriceUnit` is `Hour` and the default value of `Period` is `1`, you do not need to set `PriceUnit` or `Period` when you specify this parameter.
 	//
 	// example:
 	//
 	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The time when the time-based elasticity assurance takes effect. The time must be specified in UTC and formatted as `yyyy-MM-ddTHH:mm:ssZ` in accordance with the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard.
+	// The effective period when the time-sharing elasticity assurance takes effect. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
 	//
 	// example:
 	//
 	// 2020-10-30T06:32:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the availability zone.
+	// The zone ID.
 	//
-	// > The prices of spot instances may vary by availability zone. When you query the price of a spot instance, specify `ZoneId` to query the price for a specific availability zone.
+	// > Spot instance prices may vary across zones. When you query spot instance prices, specify ZoneId to query the price in a specific zone.
 	//
 	// example:
 	//
@@ -727,87 +729,82 @@ func (s *DescribePriceRequest) Validate() error {
 type DescribePriceRequestDataDisk struct {
 	// The category of data disk N. Valid values:
 	//
-	// - `cloud`: basic cloud disk
+	// - cloud: basic disk.
 	//
-	// - `cloud_efficiency`: efficiency cloud disk
+	// - cloud_efficiency: ultra disk.
 	//
-	// - `cloud_ssd`: SSD cloud disk
+	// - cloud_ssd: standard SSD.
 	//
-	// - `ephemeral_ssd`: local SSD
+	// - ephemeral_ssd: local SSD.
 	//
-	// - `cloud_essd`: ESSD
+	// - cloud_essd: enterprise SSD (ESSD).
 	//
-	// - `cloud_auto`: ESSD AutoPL
+	// - cloud_auto: ESSD AutoPL disk.
 	//
 	// <props="china">
 	//
-	// - `cloud_essd_entry`: ESSD Entry
+	// - cloud_essd_entry: ESSD Entry disk.
 	//
 	//
-	//
-	//
-	// The value of N can be 1–16.
+	// Valid values of N: 1 to 16.
 	//
 	// example:
 	//
 	// cloud_ssd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The performance level of data disk N when it is an ESSD. This parameter is valid only when `DataDisk.N.Category` is set to `cloud_essd`. Valid values:
+	// The performance level of data disk N when the disk type is ESSD. This parameter is valid only when `DataDisk.N.Category=cloud_essd`. Valid values:
 	//
-	// - `PL0`
+	// - PL0.
 	//
-	// - `PL1` (Default)
+	// - PL1 (default).
 	//
-	// - `PL2`
+	// - PL2.
 	//
-	// - `PL3`
+	// - PL3.
 	//
-	// The value of N can be 1–16.
+	// Valid values of N: 1 to 16.
 	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of data disk N. Unit: GiB. Valid values:
+	// The size of data disk N, in GiB. Valid values:
 	//
-	// - `cloud`: 5–2000
+	// - cloud: 5 to 2000.
 	//
-	// - `cloud_efficiency`: 20–32768
+	// - cloud_efficiency: 20 to 32768.
 	//
-	// - `cloud_ssd`: 20–32768
+	// - cloud_ssd: 20 to 32768.
 	//
-	// - `cloud_auto`: 1–32768
+	// - cloud_auto: 1 to 32768.
 	//
 	// <props="china">
 	//
-	// - `cloud_essd_entry`: 10–32768
+	// - cloud_essd_entry: 10 to 32768.
 	//
+	// - cloud_essd: The valid values depend on the value of `DataDisk.N.PerformanceLevel`.
 	//
+	//     - PL0: 1 to 32768.
 	//
+	//     - PL1: 20 to 32768.
 	//
-	// - `cloud_essd`: The value range depends on the `DataDisk.N.PerformanceLevel`.
+	//     - PL2: 461 to 32768.
 	//
-	//   - PL0: 1–32768
+	//     - PL3: 1261 to 32768.
 	//
-	//   - PL1: 20–32768
+	// - ephemeral_ssd: 5 to 800.
 	//
-	//   - PL2: 461–32768
-	//
-	//   - PL3: 1261–32768
-	//
-	// - `ephemeral_ssd`: 5–800
-	//
-	// The value of N can be 1–16.
+	// Valid values of N: 1 to 16.
 	//
 	// example:
 	//
 	// 2000
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The provisioned read/write IOPS for the ESSD AutoPL cloud disk. Valid values: 0–`min{50000, 1000 	- Capacity - Baseline IOPS}`.
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1000 × capacity - baseline performance}.
 	//
-	// `Baseline IOPS = min{1800 + 50 	- Capacity, 50000}`.
+	// Baseline performance = min{1,800 + 50 × capacity, 50000}.
 	//
-	// > This parameter is valid only when `DataDisk.N.Category` is set to `cloud_auto`. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
+	// > This parameter is supported only when `DiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disk](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
@@ -864,9 +861,9 @@ func (s *DescribePriceRequestDataDisk) Validate() error {
 }
 
 type DescribePriceRequestSchedulerOptions struct {
-	// This parameter is valid only when `ResourceType` is set to `instance`.
+	// This parameter takes effect only when ResourceType is set to instance.
 	//
-	// The ID of the dedicated host. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query dedicated host IDs.
+	// The dedicated host ID. You can call [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) to query the list of dedicated host IDs.
 	//
 	// example:
 	//
@@ -874,15 +871,15 @@ type DescribePriceRequestSchedulerOptions struct {
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
 	// The deployment set strategy. Valid values:
 	//
-	// - `Availability`: high availability
+	// - Availability: high availability.
 	//
-	// - `AvailabilityGroup`: high availability for deployment set groups
+	// - AvailabilityGroup: deployment set group high availability.
 	//
-	// - `LowLatency`: low latency
+	// - LowLatency: low network latency.
 	//
-	// - `ProximityLooseDispersion`: proximity loose dispersion
+	// - ProximityLooseDispersion: proximity loose dispersion.
 	//
-	// > Only the `ProximityLooseDispersion` strategy incurs a fee. The API response includes price details for the deployment set (where `Resource` is `deploymentSet`) only when this strategy is used. Other deployment set strategies are free of charge.
+	// > Only when the strategy is set to ProximityLooseDispersion does the API response include the price details for "Resource": "deploymentSet". Other deployment set strategies are free of charge, so the API response does not include price information for "Resource": "deploymentSet".
 	//
 	// example:
 	//
@@ -921,62 +918,68 @@ func (s *DescribePriceRequestSchedulerOptions) Validate() error {
 }
 
 type DescribePriceRequestSystemDisk struct {
-	// The category of the system disk. You must specify `ImageId` when you query the price of a system disk. Valid values:
+	// The category of the system disk. You must also specify `ImageId` when querying the system disk price. Valid values:
 	//
-	// - `cloud`: basic cloud disk
+	// - cloud: basic disk.
 	//
-	// - `cloud_efficiency`: efficiency cloud disk
+	// - cloud_efficiency: ultra disk.
 	//
-	// - `cloud_ssd`: SSD cloud disk
+	// - cloud_ssd: standard SSD.
 	//
-	// - `ephemeral_ssd`: local SSD
+	// - ephemeral_ssd: local SSD.
 	//
-	// - `cloud_essd`: ESSD
+	// - cloud_essd: enterprise SSD (ESSD).
 	//
-	// - `cloud_auto`: ESSD AutoPL
+	// - cloud_auto: ESSD AutoPL disk.
 	//
 	// <props="china">
 	//
-	// - `cloud_essd_entry`: ESSD Entry
+	// - cloud_essd_entry: ESSD Entry disk.
 	//
 	//
+	// Default value description:
 	//
+	// - If InstanceType is a retired instance type and `IoOptimized` is set to `none`, the default value is `cloud`.
 	//
-	// 	- For retired instance types where `IoOptimized` is `none`, the default value is `cloud`.
-	//
-	// 	- In other cases, the default value is `cloud_efficiency`.<props="china">After January 30, 2026, for instance types that support only ESSDs, the default value will be changed from `cloud_efficiency` to `cloud_essd` at PL0. For more information, see the [change announcement](https://www.aliyun.com/notice/117844).
+	// - In other cases, the default value is `cloud_efficiency`.<props="china">After January 30, 2026, for instance types that support only cloud_essd, the default value is changed from cloud_efficiency to cloud_essd PL0. For more information, see [Change notice](https://www.aliyun.com/notice/117844).
 	//
 	// example:
 	//
 	// cloud_ssd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The performance level of the ESSD when used as a system disk. This parameter is valid only when `SystemDisk.Category` is set to `cloud_essd`. Valid values:
+	// The performance level of the system disk when the disk type is ESSD. This parameter is valid only when `SystemDiskCategory=cloud_essd`. Valid values:
 	//
-	// `PL0`<br>`PL1` (Default)<br>`PL2`<br>`PL3`<br><br><br>
+	// PL0.
+	//
+	// PL1 (default).
+	//
+	// PL2.
+	//
+	// PL3.
 	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of the system disk. Unit: GiB. Valid values:
+	// The size of the system disk, in GiB. Valid values:
 	//
-	// - Basic cloud disk: 20–500.
+	// - Basic disk: 20 to 500.
 	//
-	// - ESSD cloud disk:
+	// - ESSD:
 	//
-	//   - PL0: 1–2048.
+	//   - PL0: 1 to 2048.
 	//
-	//   - PL1: 20–2048.
+	//   - PL1: 20 to 2048.
 	//
-	//   - PL2: 461–2048.
+	//   - PL2: 461 to 2048.
 	//
-	//   - PL3: 1261–2048.
+	//   - PL3: 1261 to 2048.
 	//
-	// - ESSD AutoPL cloud disk: 1–2048.
+	// - ESSD AutoPL disk: 1 to 2048.
 	//
-	// - Other cloud disk categories: 20–2048.
+	// - Other disk categories: 20 to 2048.
 	//
-	// Default value: `max{20, ImageSize}`, which is the greater of 20 and the size of the specified image (`ImageId`).
+	// Default value: max{20, image size of the specified ImageId parameter}.
 	//
 	// example:
 	//
@@ -1024,19 +1027,19 @@ func (s *DescribePriceRequestSystemDisk) Validate() error {
 }
 
 type DescribePriceRequestRecurrenceRules struct {
-	// The end time of the time-based assurance. The value must be on the hour.
+	// The end hour of the time-sharing assurance. The value must be a whole hour.
 	//
 	// example:
 	//
 	// 10
 	EndHour *int32 `json:"EndHour,omitempty" xml:"EndHour,omitempty"`
-	// The recurrence type of the rule. Valid values:
+	// The type of the recurrence rule. Valid values:
 	//
-	// - `Daily`: repeats on a daily basis.
+	// - Daily: daily recurrence.
 	//
-	// - `Weekly`: repeats on a weekly basis.
+	// - Weekly: weekly recurrence.
 	//
-	// - `Monthly`: repeats on a monthly basis.
+	// - Monthly: monthly recurrence.
 	//
 	// > You must specify both `RecurrenceType` and `RecurrenceValue`.
 	//
@@ -1044,13 +1047,13 @@ type DescribePriceRequestRecurrenceRules struct {
 	//
 	// Daily
 	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	// The recurrence value.
+	// The value of the recurrence rule.
 	//
-	// - If `RecurrenceType` is set to `Daily`, this parameter takes a single value that specifies the recurrence interval in days. Valid values: 1–31.
+	// - If `RecurrenceType` is set to `Daily`, you can specify only one value. Valid values: 1 to 31. This value indicates the interval in days between recurrences.
 	//
-	// - If `RecurrenceType` is set to `Weekly`, this parameter can have multiple values separated by commas (,). The values 0, 1, 2, 3, 4, 5, and 6 correspond to Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday. For example, `1,2` specifies Monday and Tuesday.
+	// - If `RecurrenceType` is set to `Weekly`, you can specify multiple values separated by commas (,). The values for Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6. For example, `1,2` indicates Monday and Tuesday.
 	//
-	// - If `RecurrenceType` is set to `Monthly`, the value must be in the `A–B` format. The values of A and B must be between 1 and 31, and B must be greater than or equal to A. For example, `1–5` specifies the first to the fifth day of each month.
+	// - If `RecurrenceType` is set to `Monthly`, the format is `A-B`. Valid values of A and B: 1 to 31. B must be greater than or equal to A. For example, `1-5` indicates the 1st through 5th day of each month.
 	//
 	// > You must specify both `RecurrenceType` and `RecurrenceValue`.
 	//
@@ -1058,9 +1061,9 @@ type DescribePriceRequestRecurrenceRules struct {
 	//
 	// 5
 	RecurrenceValue *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
-	// The start time of the time-based assurance. The value must be on the hour.
+	// The effective period start hour of the time-sharing assurance. The value must be a whole hour.
 	//
-	// > Both `StartHour` and `EndHour` are required. The interval between them must be at least 4 hours.
+	// > You must specify both StartHour and EndHour, and the difference between them must be at least 4 hours.
 	//
 	// example:
 	//

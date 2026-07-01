@@ -52,9 +52,9 @@ type iDescribeAvailableResourceRequest interface {
 }
 
 type DescribeAvailableResourceRequest struct {
-	// The number of vCPU cores for the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The number of vCPU cores of the instance type. For valid values, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// This parameter applies only when `DestinationResource` is set to `InstanceType`.
+	// This parameter takes effect only when DestinationResource is set to InstanceType.
 	//
 	// example:
 	//
@@ -62,21 +62,23 @@ type DescribeAvailableResourceRequest struct {
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
 	// The category of the data disk. Valid values:
 	//
-	// - cloud: basic cloud disk.
 	//
-	// - cloud_efficiency: ultra cloud disk.
 	//
-	// - cloud_ssd: SSD cloud disk.
+	// - cloud: basic disk.
 	//
-	// - ephemeral_ssd: local SSD disk.
+	// - cloud_efficiency: ultra disk.
 	//
-	// - cloud_essd: ESSD cloud disk.
+	// - cloud_ssd: standard SSD.
 	//
-	// - cloud_auto: ESSD AutoPL cloud disk.
+	// - ephemeral_ssd: local SSD.
+	//
+	// - cloud_essd: enterprise SSD (ESSD).
+	//
+	// - cloud_auto: ESSD AutoPL disk.
 	//
 	// <props="china">
 	//
-	// - cloud_essd_entry: ESSD Entry cloud disk.
+	// - cloud_essd_entry: ESSD Entry disk.
 	//
 	// example:
 	//
@@ -90,7 +92,9 @@ type DescribeAvailableResourceRequest struct {
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
 	// The type of resource to query. Valid values:
 	//
-	// - Zone: availability zone.
+	//
+	//
+	// - Zone: zone.
 	//
 	// - IoOptimized: I/O optimized.
 	//
@@ -104,9 +108,9 @@ type DescribeAvailableResourceRequest struct {
 	//
 	// - DataDisk: data disk.
 	//
-	// > When `DestinationResource` is set to `SystemDisk`, you must specify `InstanceType` because available system disks depend on the instance type.
+	// > When DestinationResource is set to `SystemDisk`, you must specify InstanceType because system disks are restricted by instance types.
 	//
-	// For details on how to specify this parameter, see the **API description*	- section.
+	// For more information about how to set the DestinationResource parameter, see the **operation description*	- section of this topic.
 	//
 	// This parameter is required.
 	//
@@ -116,9 +120,11 @@ type DescribeAvailableResourceRequest struct {
 	DestinationResource *string `json:"DestinationResource,omitempty" xml:"DestinationResource,omitempty"`
 	// The billing method of the resource. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html). Valid values:
 	//
-	// - PrePaid: The subscription billing method.
 	//
-	// - PostPaid: The pay-as-you-go billing method.
+	//
+	// - PrePaid: subscription.
+	//
+	// - PostPaid: pay-as-you-go.
 	//
 	// Default value: PostPaid.
 	//
@@ -126,19 +132,19 @@ type DescribeAvailableResourceRequest struct {
 	//
 	// PrePaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html). You can also call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to get the latest list of instance types.
+	// The instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html). You can also invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the most recent instance type list.
 	//
-	// For details on how to specify this parameter, see the **API description*	- section.
+	// For more information about how to set the InstanceType parameter, see the **operation description*	- section at the beginning of this topic.
 	//
 	// example:
 	//
 	// ecs.g5.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Specifies whether the instance is I/O optimized. Valid values:
+	// Specifies whether the instance is an I/O optimized instance. Valid values:
 	//
-	// - none: The instance is not I/O optimized.
+	// - none: non-I/O optimized instance.
 	//
-	// - optimized: The instance is I/O optimized.
+	// - optimized: I/O optimized instance.
 	//
 	// Default value: optimized.
 	//
@@ -146,9 +152,9 @@ type DescribeAvailableResourceRequest struct {
 	//
 	// optimized
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	// The memory size for the instance type, in GiB. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The memory size of the instance type. Unit: GiB. For valid values, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// This parameter applies only when `DestinationResource` is set to `InstanceType`.
+	// This parameter takes effect only when DestinationResource is set to InstanceType.
 	//
 	// example:
 	//
@@ -156,9 +162,11 @@ type DescribeAvailableResourceRequest struct {
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The network type. Valid values:
 	//
-	// - vpc: VPC.
 	//
-	// - classic: classic network.
+	//
+	// - vpc: virtual private cloud (VPC).
+	//
+	// - classic: classic network. The classic network is deprecated. For more information, see [Deprecation notice](https://help.aliyun.com/document_detail/2833134.html).
 	//
 	// example:
 	//
@@ -166,7 +174,7 @@ type DescribeAvailableResourceRequest struct {
 	NetworkCategory *string `json:"NetworkCategory,omitempty" xml:"NetworkCategory,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to get the latest list of Alibaba Cloud regions.
+	// The ID of the destination region. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -176,7 +184,7 @@ type DescribeAvailableResourceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The resource type. Valid values:
+	// The type of the resource. Valid values:
 	//
 	// - instance: ECS instance.
 	//
@@ -192,39 +200,43 @@ type DescribeAvailableResourceRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The scope of the reserved instance. Valid values:
 	//
-	// - Region: The reserved instance is scoped to a region.
 	//
-	// - Zone: The reserved instance is scoped to an availability zone.
+	//
+	// - Region: regional.
+	//
+	// - Zone: zonal.
 	//
 	// example:
 	//
 	// Region
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The protection period for the spot instance. Unit: hours. Default value: 1. Valid values:
+	// The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
 	//
-	// - 1: Alibaba Cloud guarantees that the instance will not be automatically reclaimed within 1 hour of creation. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or reclaim the instance.
+	// - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After 1 hour, the system compares the bid price with the market price and checks the inventory to determine whether to retain automatic release the instance.
 	//
-	// - 0: Alibaba Cloud does not guarantee that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or reclaim the instance.
+	// - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the inventory to determine whether to retain automatic release the instance.
 	//
-	// Alibaba Cloud sends a notification through ECS system events 5 minutes before reclaiming an instance. Spot instances are billed by the second. We recommend that you select a protection period based on the expected runtime of your tasks.
+	// Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released. Spot instances are billed by second. Select an appropriate protection period based on the expected task execution duration.
 	//
-	// > This parameter applies only when `InstanceChargeType` is set to `PostPaid` and `SpotStrategy` is set to `SpotWithPriceLimit` or `SpotAsPriceGo`.
+	// > This parameter takes effect only when `InstanceChargeType` is set to `PostPaid` and `SpotStrategy` is set to `SpotWithPriceLimit` or `SpotAsPriceGo`.
 	//
 	// example:
 	//
 	// 1
 	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	// The bidding strategy for pay-as-you-go instances. Valid values:
+	// The bidding policy for pay-as-you-go instances. Valid values:
 	//
-	// - NoSpot: A standard pay-as-you-go instance.
 	//
-	// - SpotWithPriceLimit: A spot instance for which you specify a maximum hourly price.
 	//
-	// - SpotAsPriceGo: A spot instance for which the system automatically bids based on the current market price, up to the pay-as-you-go price.
+	// - NoSpot: a regular pay-as-you-go instance.
+	//
+	// - SpotWithPriceLimit: a spot instance with a maximum price limit.
+	//
+	// - SpotAsPriceGo: a spot instance priced at the market price with the pay-as-you-go price as the upper limit.
 	//
 	// Default value: NoSpot.
 	//
-	// This parameter applies only when `InstanceChargeType` is set to `PostPaid`.
+	// This parameter takes effect only when InstanceChargeType is set to `PostPaid`.
 	//
 	// example:
 	//
@@ -232,40 +244,40 @@ type DescribeAvailableResourceRequest struct {
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The category of the system disk. Valid values:
 	//
-	// - cloud: basic cloud disk.
 	//
-	// - cloud_efficiency: ultra cloud disk.
 	//
-	// - cloud_ssd: SSD cloud disk.
+	// - cloud: basic disk.
 	//
-	// - ephemeral_ssd: local SSD disk.
+	// - cloud_efficiency: ultra disk.
 	//
-	// - cloud_essd: ESSD cloud disk.
+	// - cloud_ssd: standard SSD.
 	//
-	// - cloud_auto: ESSD AutoPL cloud disk.
+	// - ephemeral_ssd: local SSD.
+	//
+	// - cloud_essd: enterprise SSD (ESSD).
+	//
+	// - cloud_auto: ESSD AutoPL disk.
 	//
 	// <props="china">
 	//
-	// - cloud_essd_entry: ESSD Entry cloud disk.
+	// - cloud_essd_entry: ESSD Entry disk.
 	//
 	//
+	// Default value description:
 	//
+	// - If InstanceType is set to a retired instance type, the default value is `cloud`.
 	//
-	// About the default value:
+	// - In other cases, the default value is `cloud_efficiency`.<props="china">After January 30, 2026, for instance types that support only cloud_essd, the default value is changed from cloud_efficiency to cloud_essd PL0. For more information, see [Change notice](https://www.aliyun.com/notice/117844).
 	//
-	// - If `InstanceType` specifies a discontinued instance type, the default value is `cloud`.
-	//
-	// - Otherwise, the default value is `cloud_efficiency`. <props="china">After January 30, 2026, for instance types that support only ESSD cloud disks, the default value changes from cloud_efficiency to cloud_essd PL0. For more information, see the [official announcement](https://www.aliyun.com/notice/117844).
-	//
-	// > When `ResourceType` is set to `instance` and `DestinationResource` is set to `DataDisk`, this parameter is required.
+	// > When ResourceType is set to instance and DestinationResource is set to DataDisk, the SystemDiskCategory parameter is required. If you do not specify this parameter, the default value takes effect.
 	//
 	// example:
 	//
 	// cloud_ssd
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// The ID of the availability zone.
+	// The zone ID.
 	//
-	// This parameter has no default value. If you do not specify this parameter, the operation returns resources that meet the query conditions in all availability zones within the specified region.
+	// Default value: null. The operation returns resources that match the query conditions across all zones in the specified region (RegionId).
 	//
 	// example:
 	//

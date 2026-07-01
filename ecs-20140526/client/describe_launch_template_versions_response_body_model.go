@@ -23,19 +23,19 @@ type iDescribeLaunchTemplateVersionsResponseBody interface {
 
 type DescribeLaunchTemplateVersionsResponseBody struct {
 	LaunchTemplateVersionSets *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSets `json:"LaunchTemplateVersionSets,omitempty" xml:"LaunchTemplateVersionSets,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page in a paged query. Settings this parameter for paging.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

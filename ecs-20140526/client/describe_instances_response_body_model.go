@@ -51,7 +51,7 @@ type DescribeInstancesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of queried instances.
 	//
-	// > When you use the MaxResults and NextToken parameters for paging query, the returned TotalCount parameter value is meaningless.
+	// > When you use `MaxResults` and `NextToken` parameters for paging query, the returned `TotalCount` parameter value is meaningless.
 	//
 	// example:
 	//

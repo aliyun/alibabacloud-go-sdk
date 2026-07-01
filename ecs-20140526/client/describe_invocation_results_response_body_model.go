@@ -75,7 +75,7 @@ type DescribeInvocationResultsResponseBodyInvocation struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in the paging query.
+	// The number of entries per page. This value is the PageSize value specified in the paging query settings.
 	//
 	// example:
 	//

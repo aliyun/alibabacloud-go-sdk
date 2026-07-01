@@ -27,7 +27,7 @@ type DescribeInstanceHistoryEventsResponseBody struct {
 	InstanceSystemEventSet *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSet `json:"InstanceSystemEventSet,omitempty" xml:"InstanceSystemEventSet,omitempty" type:"Struct"`
 	// The query token returned in this invocation.
 	//
-	// > When you use MaxResults and NextToken for paging and no NextToken is returned, no more data is available.
+	// > When you use MaxResults and NextToken parameters for paging query and no NextToken is returned, no more data is available.
 	//
 	// example:
 	//
@@ -35,9 +35,9 @@ type DescribeInstanceHistoryEventsResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The page number of the instance event list.
 	//
-	// > 	- When you use MaxResults and NextToken for paging, the returned PageNumber parameter value is meaningless.
+	// > 	- When you use MaxResults and NextToken parameters for paging query, the returned PageNumber parameter value is meaningless.
 	//
-	// > 	- This parameter will be deprecated. Use NextToken and MaxResults for paging instead.
+	// > 	- This parameter will be deprecated. Use NextToken and MaxResults for paging query instead.
 	//
 	// example:
 	//
@@ -45,9 +45,9 @@ type DescribeInstanceHistoryEventsResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page as specified in the request.
 	//
-	// > 	- When you use MaxResults and NextToken for paging, the returned PageSize parameter value is meaningless.
+	// > 	- When you use MaxResults and NextToken parameters for paging query, the returned PageSize parameter value is meaningless.
 	//
-	// > 	- This parameter will be deprecated. Use NextToken and MaxResults for paging instead.
+	// > 	- This parameter will be deprecated. Use NextToken and MaxResults for paging query instead.
 	//
 	// example:
 	//
@@ -61,7 +61,7 @@ type DescribeInstanceHistoryEventsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of instance events.
 	//
-	// > When you use MaxResults and NextToken for paging, the returned TotalCount parameter value is meaningless.
+	// > When you use MaxResults and NextToken parameters for paging query, the returned TotalCount parameter value is meaningless.
 	//
 	// example:
 	//

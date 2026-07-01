@@ -29,7 +29,7 @@ type DescribeImageComponentsResponseBody struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned in this call. For more information about how to use it, refer to the operation description.
+	// The pagination token returned in this call. For more information about how to use this token, refer to the operation description.
 	//
 	// example:
 	//

@@ -41,7 +41,7 @@ type DescribeAutoProvisioningGroupInstancesResponseBody struct {
 	//
 	// B48A12CD-1295-4A38-A8F0-0E92C937****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of queried instances in the auto provisioning group.
+	// The total number of instances in the auto provisioning group.
 	//
 	// example:
 	//

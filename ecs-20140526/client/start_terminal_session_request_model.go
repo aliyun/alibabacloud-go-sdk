@@ -40,7 +40,7 @@ type iStartTerminalSessionRequest interface {
 }
 
 type StartTerminalSessionRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The value of **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type StartTerminalSessionRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The command to run after the session is initiated. The command can be up to 512 characters in length.
 	//
-	// > After you specify CommandLine, you cannot specify PortNumber or TargetServer.
+	// > After you specify `CommandLine`, you cannot specify `PortNumber` or `TargetServer`.
 	//
 	// example:
 	//
 	// ssh root@192.168.0.246
 	CommandLine *string `json:"CommandLine,omitempty" xml:"CommandLine,omitempty"`
-	// The network type of the WebSocket URL for the remote connection to the instance. Valid values:
+	// The network type of the WebSocket URL required for the remote connection to the instance. Valid values:
 	//
-	// - Internet: public network. This is the default value.
+	// - Internet: the Internet. This is the default value.
 	//
-	// - Intranet: internal network.
+	// - Intranet: the internal network.
 	//
 	// example:
 	//
@@ -72,23 +72,23 @@ type StartTerminalSessionRequest struct {
 	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the password used by the user when using Session Manager on a Windows instance. The name can be up to 255 characters in length.
+	// The name of the password for the user when you use Session Manager on a Windows instance. The name can be up to 255 characters in length.
 	//
-	// When you want to use Session Manager on a Windows instance as a non-default user (System), you must specify both Username and this parameter. To reduce the risk of password leaks, store the plaintext password in the parameter repository of operations management and specify only the password name here. For more information, see [Encryption parameters](https://help.aliyun.com/document_detail/186828.html).
+	// When you want to use Session Manager on a Windows instance as a non-default user (System), specify both Username and this parameter. To reduce the risk of password leaks, store the plaintext password in the parameter repository of operations management and specify only the password name here. For more information, see [Encryption parameters](https://help.aliyun.com/document_detail/186828.html).
 	//
 	// example:
 	//
 	// axtSecretPassword
 	PasswordName *string `json:"PasswordName,omitempty" xml:"PasswordName,omitempty"`
-	// The port number of the ECS instance for data forwarding. After this parameter is set, Cloud Assistant Agent forwards data to the specified port for port forwarding. For example, SSH uses port 22.
+	// The port number of the ECS instance for data forwarding. After this parameter is specified, Cloud Assistant Agent forwards data to the specified port for port forwarding. For example, SSH uses port 22.
 	//
-	// Default value: empty, which indicates that no port number is set for data forwarding.
+	// Default value: empty, which indicates that no port number is specified for data forwarding.
 	//
 	// example:
 	//
 	// 22
 	PortNumber *int32 `json:"PortNumber,omitempty" xml:"PortNumber,omitempty"`
-	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of regions.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +100,7 @@ type StartTerminalSessionRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The address of the destination server in the VPC that you want to access through the instance.
 	//
-	// > When this parameter is not empty, PortNumber specifies the port number of the destination server in the VPC that you want to access through the managed instance.
+	// > If this parameter is not empty, `PortNumber` specifies the port number of the destination server in the VPC that you want to access through the managed instance.
 	//
 	// example:
 	//
@@ -270,23 +270,23 @@ type StartTerminalSessionRequestEncryptionOptions struct {
 	//
 	// - Only KMS symmetric keys are supported.
 	//
-	// - This parameter is supported only when the encryption mode is set to Kms.
+	// - This parameter can be specified only when the encryption mode is set to Kms.
 	//
 	// example:
 	//
 	// xxx
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// The encryption pattern. Valid values:
+	// The secret key encryption pattern. Valid values:
 	//
-	// - Auto: uses an automatically negotiated secret key encryption for the session.
+	// - Auto: uses an automatically negotiated key to encrypt the session.
 	//
-	// - Kms: uses a KMS secret key encryption for the session.
+	// - Kms: uses a KMS key to encrypt the session.
 	//
 	// - Default value: Auto.
 	//
 	// Note:
 	//
-	// - This parameter is supported only when session encryption is enabled.
+	// - This parameter can be specified only when session encryption is enabled.
 	//
 	// example:
 	//

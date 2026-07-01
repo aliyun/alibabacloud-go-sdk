@@ -16,7 +16,7 @@ type iDescribePriceResponseBody interface {
 }
 
 type DescribePriceResponseBody struct {
-	// Details about the price and promotional rules.
+	// The price information, including the price and promotion rules.
 	PriceInfo *DescribePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,9 +62,9 @@ func (s *DescribePriceResponseBody) Validate() error {
 }
 
 type DescribePriceResponseBodyPriceInfo struct {
-	// The price details.
+	// The price.
 	Price *DescribePriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-	// The related prices.
+	// The related price.
 	RelatedPrice *DescribePriceResponseBodyPriceInfoRelatedPrice `json:"RelatedPrice,omitempty" xml:"RelatedPrice,omitempty" type:"Struct"`
 	Rules        *DescribePriceResponseBodyPriceInfoRules        `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
@@ -124,18 +124,18 @@ func (s *DescribePriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribePriceResponseBodyPriceInfoPrice struct {
-	// The currency.
+	// The currency unit.
 	//
-	// CNY for sites in the Chinese mainland.
+	// China site: CNY.
 	//
-	// USD for international sites.
+	// International site: USD.
 	//
 	// example:
 	//
 	// CNY
 	Currency    *string                                             `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	DetailInfos *DescribePriceResponseBodyPriceInfoPriceDetailInfos `json:"DetailInfos,omitempty" xml:"DetailInfos,omitempty" type:"Struct"`
-	// The discount amount.
+	// The discount.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ type DescribePriceResponseBodyPriceInfoPrice struct {
 	//
 	// 4368
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The hourly price of a No Upfront or Partial Upfront Reserved Instance Voucher.
+	// The hourly price of a reserved instance with the no upfront or partial upfront payment option.
 	//
 	// example:
 	//
 	// 1
 	ReservedInstanceHourPrice *float32 `json:"ReservedInstanceHourPrice,omitempty" xml:"ReservedInstanceHourPrice,omitempty"`
-	// The trade price, calculated as `OriginalPrice` - `DiscountPrice`.
+	// The transaction price, which is the original price minus the discount.
 	//
 	// example:
 	//
@@ -406,7 +406,7 @@ func (s *DescribePriceResponseBodyPriceInfoPriceDetailInfosDetailInfoSubRulesRul
 }
 
 type DescribePriceResponseBodyPriceInfoRelatedPrice struct {
-	// The price of the marketplace image.
+	// The Alibaba Cloud Marketplace image price.
 	MarketplaceImagePrice *DescribePriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice `json:"MarketplaceImagePrice,omitempty" xml:"MarketplaceImagePrice,omitempty" type:"Struct"`
 }
 
@@ -437,17 +437,17 @@ func (s *DescribePriceResponseBodyPriceInfoRelatedPrice) Validate() error {
 }
 
 type DescribePriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice struct {
-	// The currency.
+	// The currency unit.
 	//
-	// CNY for sites in the Chinese mainland.
+	// China site: CNY.
 	//
-	// USD for international sites.
+	// International site: USD.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount amount.
+	// The discount.
 	//
 	// example:
 	//
@@ -459,7 +459,7 @@ type DescribePriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice struct 
 	//
 	// 100
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The trade price, calculated as `OriginalPrice` - `DiscountPrice`.
+	// The transaction price, which is the original price minus the discount.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iCreateHpcClusterResponseBody interface {
 }
 
 type CreateHpcClusterResponseBody struct {
-	// The ID of cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// hpc-pnlg1ds9rky4****
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

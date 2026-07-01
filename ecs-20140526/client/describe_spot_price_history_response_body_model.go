@@ -20,19 +20,23 @@ type iDescribeSpotPriceHistoryResponseBody interface {
 }
 
 type DescribeSpotPriceHistoryResponseBody struct {
-	// The instance type of the spot instance.
+	// The currency unit of the price.
+	//
+	// China site: CNY.
+	//
+	// International site: USD.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The network type of the spot instance.
+	// The start row of the next page. Set the `Offset` parameter to this value to query the next page of data.
 	//
 	// example:
 	//
 	// 1000
 	NextOffset *int32 `json:"NextOffset,omitempty" xml:"NextOffset,omitempty"`
-	// The instance type of the spot instance.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iCreateCommandResponseBody interface {
 }
 
 type CreateCommandResponseBody struct {
-	// The ID of the command.
+	// The command ID.
 	//
 	// example:
 	//
 	// c-7d2a745b412b4601b2d47f6a768d****
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

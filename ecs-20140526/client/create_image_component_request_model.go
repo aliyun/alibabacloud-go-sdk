@@ -40,7 +40,7 @@ type iCreateImageComponentRequest interface {
 }
 
 type CreateImageComponentRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The value of **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type CreateImageComponentRequest struct {
 	//
 	// Default value: Build.
 	//
-	// > Build components can be used only in build templates. Test components can be used only in test templates.
+	// > Build components can be used only in build templates, and test components can be used only in test templates.
 	//
 	// example:
 	//
 	// Build
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The version number of the component, which is used together with the component name. The format is major.minor.patch, and all values are non-negative integers.
+	// The component version number. This parameter is used together with the component name. The format is major.minor.patch, where all values are non-negative integers.
 	//
 	// Default value: (x+1).0.0, where x is the current maximum major version number of the component.
 	//
@@ -70,7 +70,7 @@ type CreateImageComponentRequest struct {
 	//
 	// 1.0.0
 	ComponentVersion *string `json:"ComponentVersion,omitempty" xml:"ComponentVersion,omitempty"`
-	// The component content, which consists of multiple commands. The content cannot exceed 16 KB. For more information about supported commands and command formats, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
+	// The component content. The content consists of multiple commands and cannot exceed 16 KB. For more information about supported commands and command formats, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
 	//
 	// example:
 	//
@@ -90,9 +90,9 @@ type CreateImageComponentRequest struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The component name. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with http:// or https://. The name can contain letters, Chinese characters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The component name. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with http:// or https://. The name can contain letters, Chinese characters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
 	//
-	// > If you do not specify Name, the ImageComponentId return value is used by default.
+	// > If you do not specify `Name`, the `ImageComponentId` return value is used by default.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type CreateImageComponentRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of Alibaba Cloud regions.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//

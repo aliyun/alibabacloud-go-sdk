@@ -18,7 +18,7 @@ type iRenewElasticityAssurancesResponseBody interface {
 }
 
 type RenewElasticityAssurancesResponseBody struct {
-	// The ID of the renewal order.
+	// The renewal order ID.
 	//
 	// example:
 	//

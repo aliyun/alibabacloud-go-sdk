@@ -14,7 +14,7 @@ type iAuthorizeSecurityGroupResponseBody interface {
 }
 
 type AuthorizeSecurityGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

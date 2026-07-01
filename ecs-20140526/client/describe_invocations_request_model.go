@@ -60,7 +60,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// c-hz0jdfwcsr****
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	// The command name. This parameter does not take effect if you also specify `InstanceId`.
+	// The command name. This parameter does not take effect if you also specify InstanceId.
 	//
 	// example:
 	//
@@ -78,11 +78,11 @@ type DescribeInvocationsRequest struct {
 	//
 	// RunShellScript
 	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
-	// The encoding mode of the `CommandContent` and `Output` fields in the response. Valid values:
+	// The encoding mode of the CommandContent and Output fields in the response. Valid values:
 	//
 	// - PlainText: Returns the original command content and output.
 	//
-	// - Base64: Returns the Base64-encoded command content and output.
+	// - Base64: Returns Base64-encoded command content and output.
 	//
 	// Default value: Base64.
 	//
@@ -92,7 +92,7 @@ type DescribeInvocationsRequest struct {
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
 	// Specifies whether to return the command output in the results.
 	//
-	// - true: The command output is returned. You must specify at least `InvokeId` or `InstanceId`.
+	// - true: The command output is returned. You must specify at least InvokeId or InstanceId.
 	//
 	// - false: The command output is not returned.
 	//
@@ -114,7 +114,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// t-hz0jdfwd9f****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// The overall execution status of the command. The overall execution status depends on the common execution status across one or more instances in the execution. Valid values:
+	// The overall execution status of the command. The overall execution status is determined by the combined execution status across one or more instances. Valid values:
 	//
 	//
 	//
@@ -122,41 +122,41 @@ type DescribeInvocationsRequest struct {
 	//
 	//     - Scheduled execution: The execution status remains Running until you manually stop the scheduled command.
 	//
-	//     - One-time execution: The overall execution status is Running as long as the command process is running on any instance.
+	//     - One-time execution: The overall status is Running if any command process is in progress.
 	//
 	// - Finished:
 	//
-	//     - Scheduled execution: The command process never reaches the Finished state.
+	//     - Scheduled execution: The status can never be Finished.
 	//
-	//     - One-time execution: All instances have completed execution, or the command process on some instances was manually stopped while the remaining instances completed execution.
+	//     - One-time execution: All instances have completed execution, or you manually stopped the command process on some instances while the remaining instances completed execution.
 	//
-	// - Success: The command execution status on each instance is Stopped or Success, and the command execution status on at least one instance is Success.
+	// - Success: The command execution status on each instance is Stopped or Success, and at least one instance has a status of Success. The overall status is then Success.
 	//
 	//     - Immediate task: The command execution is complete and the exit code is 0.
 	//
-	//     - Scheduled task: The last execution was successful with an exit code of 0, and all specified execution times have elapsed.
+	//     - Scheduled task: The most recent execution succeeded with an exit code of 0, and all specified execution times have elapsed.
 	//
 	// - Failed:
 	//
-	//     - Scheduled execution: The command process never reaches the Failed state.
+	//     - Scheduled execution: The status can never be Failed.
 	//
 	//     - One-time execution: All instances failed to run the command.
 	//
-	// - Stopped: The command was stopped.
+	// - Stopped: The command has been stopped.
 	//
 	// - Stopping: The command is being stopped.
 	//
-	// - PartialFailed: The command partially failed. This value does not take effect if you also specify `InstanceId`.
+	// - PartialFailed: Some instances succeeded while others failed. This value does not take effect if you also specify InstanceId.
 	//
-	// - Pending: The system is verifying or sending the command. The overall execution status is Pending if the command execution status on at least one instance is Pending.
+	// - Pending: The system is validating or sending the command. The overall status is Pending if at least one instance has a status of Pending.
 	//
-	// - Scheduled: The scheduled command has been sent and is waiting to run. The overall execution status is Scheduled if the command execution status on at least one instance is Scheduled.
+	// - Scheduled: The scheduled command has been sent and is waiting to run. The overall status is Scheduled if at least one instance has a status of Scheduled.
 	//
 	// example:
 	//
 	// Finished
 	InvokeStatus *string `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
-	// The maximum number of entries per page for a paged query.
+	// The maximum number of entries per page for paging.
 	//
 	// Maximum value: 50.
 	//
@@ -174,13 +174,13 @@ type DescribeInvocationsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging queries.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging queries.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging operations.
 	//
 	// example:
 	//
@@ -194,15 +194,15 @@ type DescribeInvocationsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The execution mode of the command. This parameter does not take effect if you also specify `InstanceId`. Valid values:
+	// The execution mode of the command. This parameter does not take effect if you also specify InstanceId. Valid values:
 	//
-	// - Once: The command is immediately run.
+	// - Once: immediately runs the command.
 	//
-	// - Period: The command is run on a schedule.
+	// - Period: runs the command on a schedule.
 	//
-	// - NextRebootOnly: The command is automatically run the next time the instance starts.
+	// - NextRebootOnly: automatically runs the command the next time the instance starts.
 	//
-	// - EveryReboot: The command is automatically run every time the instance starts.
+	// - EveryReboot: automatically runs the command every time the instance starts.
 	//
 	// Default value: empty, which indicates that all execution modes are queried.
 	//
@@ -210,7 +210,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// Once
 	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
-	// The resource group ID for command execution. After you specify this parameter, you must also specify ResourceGroupId when running the command. This parameter filters the corresponding command execution results.
+	// The resource group ID for command execution. After you specify this parameter, the resource group ID must also be specified when you run the command. This parameter filters the corresponding command execution results.
 	//
 	// example:
 	//
@@ -220,13 +220,13 @@ type DescribeInvocationsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tags.
 	Tag []*DescribeInvocationsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Specifies whether the command will be automatically run in the future. Valid values:
+	// Specifies whether the queried commands will be automatically run in the future. Valid values:
 	//
-	// - true: Queries commands for which the `RepeatMode` parameter is set to `Period`, `NextRebootOnly`, or `EveryReboot` when `RunCommand` or `InvokeCommand` is called.
+	// - true: queries commands whose RepeatMode parameter is set to Period, NextRebootOnly, or EveryReboot when RunCommand or InvokeCommand is called.
 	//
-	// - false: Queries commands in the following two states:
+	// - false: queries commands in the following states:
 	//
-	//     - Commands for which the `RepeatMode` parameter is set to `Once` when `RunCommand` or `InvokeCommand` is called.
+	//     - Commands whose RepeatMode parameter is set to Once when RunCommand or InvokeCommand is called.
 	//
 	//     - Commands that have been canceled, stopped, or completed.
 	//
@@ -451,9 +451,9 @@ func (s *DescribeInvocationsRequest) Validate() error {
 type DescribeInvocationsRequestTag struct {
 	// The tag key of the command execution. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the number of resources with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources with all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call [ListTagResources](https://help.aliyun.com/document_detail/110425.html) to execute the query.
+	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call [ListTagResources](https://help.aliyun.com/document_detail/110425.html) to execute the query.
 	//
-	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

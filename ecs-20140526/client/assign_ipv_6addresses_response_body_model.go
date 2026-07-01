@@ -22,7 +22,7 @@ type iAssignIpv6AddressesResponseBody interface {
 type AssignIpv6AddressesResponseBody struct {
 	Ipv6PrefixSets *AssignIpv6AddressesResponseBodyIpv6PrefixSets `json:"Ipv6PrefixSets,omitempty" xml:"Ipv6PrefixSets,omitempty" type:"Struct"`
 	Ipv6Sets       *AssignIpv6AddressesResponseBodyIpv6Sets       `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
-	// The ID of the ENI.
+	// The network interface controller (NIC) ID.
 	//
 	// example:
 	//

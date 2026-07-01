@@ -46,15 +46,15 @@ type iModifyInstanceSpecRequest interface {
 type ModifyInstanceSpecRequest struct {
 	SystemDisk *ModifyInstanceSpecRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	Temporary  *ModifyInstanceSpecRequestTemporary  `json:"Temporary,omitempty" xml:"Temporary,omitempty" type:"Struct"`
-	// Specifies whether to support cross-cluster instance type upgrade. Valid values:
+	// Specifies whether cross-cluster upgrade of instance types is supported.
 	//
-	// - true: Cross-cluster instance type upgrade is supported.
+	// - true: supported.
 	//
-	// - false: Cross-cluster instance type upgrade is not supported.
+	// - false: not supported.
 	//
 	// Default value: false.
 	//
-	// If you set the parameter `AllowMigrateAcrossZone` to true and upgrade the Elastic Compute Service instance based on the response, take note of the following items:
+	// If you set the `AllowMigrateAcrossZone` parameter to true and upgrade the Elastic Compute Service instance based on the response, note the following:
 	//
 	// Classic network type instances:
 	//
@@ -94,9 +94,9 @@ type ModifyInstanceSpecRequest struct {
 	Disk []*ModifyInstanceSpecRequestDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
 	// Specifies whether to perform only a dry run. Valid values:
 	//
-	// - true: performs only a dry run. The instance type and public bandwidth are not changed. The system checks whether the required parameters are specified, whether the request format is valid, whether business restrictions are met, and whether ECS resources are sufficient. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+	// - true: performs only a dry run. The instance type and public bandwidth are not modified. The system checks whether the required parameters are specified, whether the request format is valid, whether business restrictions are met, and whether ECS resources are sufficient. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - false (default): performs a dry run and sends the request. If the check succeeds, the instance type and public bandwidth are changed.
+	// - false (default): performs a dry run and sends the request. If the check succeeds, the instance type and public bandwidth are modified.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type ModifyInstanceSpecRequest struct {
 	//
 	// i-bp67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The target instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html). You can also call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the most recent instance type list.
+	// The target instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html). You can also invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the most recent instance type list.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type ModifyInstanceSpecRequest struct {
 	//
 	// - If the purchased outbound public bandwidth is greater than 10 Mbit/s: 1 to the value of `InternetMaxBandwidthOut`. Default value: the value of `InternetMaxBandwidthOut`.
 	//
-	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are used as upper limits of bandwidths instead of guaranteed performance. When resource contention occurs, the peak bandwidths may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
+	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are upper limits and are not guaranteed. When resource contention occurs, the peak bandwidths may be throttled. If your workloads require guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type ModifyInstanceSpecRequest struct {
 	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
 	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
 	//
-	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are used as upper limits of bandwidths instead of guaranteed performance. When resource contention occurs, the peak bandwidths may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
+	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are upper limits and are not guaranteed. When resource contention occurs, the peak bandwidths may be throttled. If your workloads require guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
 	//
 	// example:
 	//
@@ -324,13 +324,13 @@ func (s *ModifyInstanceSpecRequest) Validate() error {
 }
 
 type ModifyInstanceSpecRequestSystemDisk struct {
-	// 更换系统盘类型。取值范围：
+	// The new system disk category. Valid values:
 	//
-	// - cloud_efficiency：高效云盘
+	// - cloud_efficiency: ultra disk
 	//
-	// - cloud_ssd：SSD云盘
+	// - cloud_ssd: standard SSD
 	//
-	// >该参数只有在从[已停售的实例规格](https://help.aliyun.com/document_detail/55263.html)升级到[正常售卖的实例规格族](https://help.aliyun.com/document_detail/25378.html)，并将非I/O优化实例规格升级为I/O优化实例规格时有效。
+	// > This parameter is valid only when you upgrade from a [retired instance type](https://help.aliyun.com/document_detail/55263.html) to an [instance family that is available for purchase](https://help.aliyun.com/document_detail/25378.html) and change a non-I/O optimized instance to an I/O optimized instance.
 	//
 	// example:
 	//
@@ -360,19 +360,19 @@ func (s *ModifyInstanceSpecRequestSystemDisk) Validate() error {
 }
 
 type ModifyInstanceSpecRequestTemporary struct {
-	// >该参数正在邀测中，暂未开放使用。
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
 	// null
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// >该参数正在邀测中，暂未开放使用。
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
 	// null
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// >该参数正在邀测中，暂未开放使用。
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
