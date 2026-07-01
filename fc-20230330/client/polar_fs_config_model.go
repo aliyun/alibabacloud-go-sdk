@@ -18,9 +18,20 @@ type iPolarFsConfig interface {
 }
 
 type PolarFsConfig struct {
-	GroupId     *int32                `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The group ID.
+	//
+	// example:
+	//
+	// 0
+	GroupId *int32 `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The mount points.
 	MountPoints []*PolarFsMountConfig `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
-	UserId      *int32                `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The account ID.
+	//
+	// example:
+	//
+	// 0
+	UserId *int32 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s PolarFsConfig) String() string {

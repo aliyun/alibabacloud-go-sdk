@@ -22,31 +22,31 @@ type iListSessionsRequest interface {
 }
 
 type ListSessionsRequest struct {
-	// The number of sessions to be returned. If this parameter is not specified, 20 sessions are returned by default.
+	// The number of sessions to return. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token for the next page.
+	// The pagination token.
 	//
 	// example:
 	//
 	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The function alias or version.
+	// The function alias or version information.
 	//
 	// example:
 	//
 	// aliasName1
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// The SessionId value to filter. If specified, all session information associated with this session ID in Active or Expired states is returned.
+	// The session ID to filter by. If specified, all Active or Expired status information associated with this session is returned.
 	//
 	// example:
 	//
 	// test-session-id-1
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The session status to filter. By default, information for all sessions in the Active and Expired states is returned. You can specify Active to retrieve only active sessions, or Expired to retrieve only expired sessions.
+	// The session status to filter by. By default, all session information in Active or Expired status is returned. Set this parameter to Active to retrieve only active session information, or to Expired to retrieve only expired session information.
 	//
 	// example:
 	//

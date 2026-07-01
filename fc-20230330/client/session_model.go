@@ -15,6 +15,10 @@ type iSession interface {
 	GetCreatedTime() *string
 	SetDisableSessionIdReuse(v bool) *Session
 	GetDisableSessionIdReuse() *bool
+	SetEnableAutoPause(v bool) *Session
+	GetEnableAutoPause() *bool
+	SetEnableAutoResume(v bool) *Session
+	GetEnableAutoResume() *bool
 	SetFunctionName(v string) *Session
 	GetFunctionName() *string
 	SetJuiceFsConfig(v *JuiceFsConfig) *Session
@@ -42,7 +46,7 @@ type iSession interface {
 }
 
 type Session struct {
-	// The ID of the function instance associated with the session.
+	// The instance ID of the function instance associated with the session.
 	//
 	// example:
 	//
@@ -54,19 +58,20 @@ type Session struct {
 	//
 	// 2025-04-01T08:15:27Z
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// Specifies whether an expired session ID can be reused. If `true`, an expired session ID cannot be reused. If `false` (the default), sending a request with an expired session ID creates a new session bound to a new instance.
+	// Specifies whether to disable session ID reuse. Default value: False, which indicates that after the session expires, you can use the same session ID to initiate requests. The system treats the request as a new session and binds it to a new instance. If you set this parameter to True, the session ID cannot be reused after the session expires.
 	//
 	// example:
 	//
 	// false
 	DisableSessionIdReuse *bool `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
-	// The name of the function associated with the session.
+	EnableAutoPause       *bool `json:"enableAutoPause,omitempty" xml:"enableAutoPause,omitempty"`
+	EnableAutoResume      *bool `json:"enableAutoResume,omitempty" xml:"enableAutoResume,omitempty"`
+	// The name of the function to which the session belongs.
 	//
 	// example:
 	//
 	// functionName1
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// The JuiceFS mount configuration, enabling the associated function instance to access specified JuiceFS resources.
+	FunctionName  *string        `json:"functionName,omitempty" xml:"functionName,omitempty"`
 	JuiceFsConfig *JuiceFsConfig `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
 	// The time when the session was last updated.
 	//
@@ -74,43 +79,45 @@ type Session struct {
 	//
 	// 2025-04-01T18:15:27Z
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The NAS configuration, enabling the associated function instance to access specified NAS resources.
-	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	// The OSS mount configuration, enabling the associated function instance to access specified OSS resources.
+	// The NAS configuration. After configuration, the instance associated with the session can access the specified NAS resource.
+	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	// The PolarFS mount configuration, enabling the associated function instance to access specified PolarFS resources.
-	PolarFsConfig *PolarFsConfig `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
-	// The qualifier, which specifies a function version or alias. Defaults to `LATEST` if unspecified.
+	PolarFsConfig  *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
+	// The qualifier passed in when the customer created the session. If not specified, the default value is LATEST.
 	//
 	// example:
 	//
 	// AliasName1
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// The type of session affinity.
+	// The session affinity type.
 	//
 	// example:
 	//
 	// HEADER_FIELD
 	SessionAffinityType *string `json:"sessionAffinityType,omitempty" xml:"sessionAffinityType,omitempty"`
-	// The unique identifier for the function session.
+	// The unique identifier of the function session.
 	//
 	// example:
 	//
 	// 81f70ae156904eb9b7d43e12f511fe58
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The maximum duration, in seconds, that the session can be idle before it expires.
+	// The idle timeout period of the session.
 	//
 	// example:
 	//
 	// 1800
 	SessionIdleTimeoutInSeconds *int64 `json:"sessionIdleTimeoutInSeconds,omitempty" xml:"sessionIdleTimeoutInSeconds,omitempty"`
-	// The status of the session. `Active` indicates the session is valid, and `Expired` indicates it is no longer valid.
+	// The session status. Valid values:
+	//
+	// - Active: The session is valid.
+	//
+	// - Expired: The session has expired.
 	//
 	// example:
 	//
 	// Active
 	SessionStatus *string `json:"sessionStatus,omitempty" xml:"sessionStatus,omitempty"`
-	// The maximum lifespan of the session, in seconds.
+	// The maximum lifetime of the session.
 	//
 	// example:
 	//
@@ -136,6 +143,14 @@ func (s *Session) GetCreatedTime() *string {
 
 func (s *Session) GetDisableSessionIdReuse() *bool {
 	return s.DisableSessionIdReuse
+}
+
+func (s *Session) GetEnableAutoPause() *bool {
+	return s.EnableAutoPause
+}
+
+func (s *Session) GetEnableAutoResume() *bool {
+	return s.EnableAutoResume
 }
 
 func (s *Session) GetFunctionName() *string {
@@ -198,6 +213,16 @@ func (s *Session) SetCreatedTime(v string) *Session {
 
 func (s *Session) SetDisableSessionIdReuse(v bool) *Session {
 	s.DisableSessionIdReuse = &v
+	return s
+}
+
+func (s *Session) SetEnableAutoPause(v bool) *Session {
+	s.EnableAutoPause = &v
+	return s
+}
+
+func (s *Session) SetEnableAutoResume(v bool) *Session {
+	s.EnableAutoResume = &v
 	return s
 }
 

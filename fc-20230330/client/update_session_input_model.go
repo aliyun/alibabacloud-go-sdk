@@ -11,6 +11,10 @@ type iUpdateSessionInput interface {
 	GoString() string
 	SetDisableSessionIdReuse(v bool) *UpdateSessionInput
 	GetDisableSessionIdReuse() *bool
+	SetEnableAutoPause(v bool) *UpdateSessionInput
+	GetEnableAutoPause() *bool
+	SetEnableAutoResume(v bool) *UpdateSessionInput
+	GetEnableAutoResume() *bool
 	SetJuiceFsConfig(v *JuiceFsConfig) *UpdateSessionInput
 	GetJuiceFsConfig() *JuiceFsConfig
 	SetNasConfig(v *NASConfig) *UpdateSessionInput
@@ -26,27 +30,31 @@ type iUpdateSessionInput interface {
 }
 
 type UpdateSessionInput struct {
-	// Defaults to `false`. If set to `false`, you can reuse a `SessionID` to start a new session on a new instance after the original session expires. If set to `true`, you cannot reuse a `SessionID` after its session expires.
+	// Specifies whether to disable session ID reuse after the session expires. Valid values:
+	//
+	// - False: After the session associated with a SessionID expires, you can use the same SessionID to initiate requests. The system treats this as a new session and binds it to a new instance.
+	//
+	// - True: After the session associated with a SessionID expires, the SessionID cannot be reused.
+	//
+	// Default value: False.
 	//
 	// example:
 	//
 	// false
-	DisableSessionIdReuse *bool `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
-	// The JuiceFS configuration.
-	JuiceFsConfig *JuiceFsConfig `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
-	// The NAS configuration.
-	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	// The OSS mount configuration.
-	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	// The PolarFS configuration.
-	PolarFsConfig *PolarFsConfig `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
-	// The session idle timeout, in seconds.
+	DisableSessionIdReuse *bool           `json:"disableSessionIdReuse,omitempty" xml:"disableSessionIdReuse,omitempty"`
+	EnableAutoPause       *bool           `json:"enableAutoPause,omitempty" xml:"enableAutoPause,omitempty"`
+	EnableAutoResume      *bool           `json:"enableAutoResume,omitempty" xml:"enableAutoResume,omitempty"`
+	JuiceFsConfig         *JuiceFsConfig  `json:"juiceFsConfig,omitempty" xml:"juiceFsConfig,omitempty"`
+	NasConfig             *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig        *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	PolarFsConfig         *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
+	// The session idle timeout period.
 	//
 	// example:
 	//
 	// 1800
 	SessionIdleTimeoutInSeconds *int64 `json:"sessionIdleTimeoutInSeconds,omitempty" xml:"sessionIdleTimeoutInSeconds,omitempty"`
-	// The session duration, in seconds.
+	// The session lifetime.
 	//
 	// example:
 	//
@@ -64,6 +72,14 @@ func (s UpdateSessionInput) GoString() string {
 
 func (s *UpdateSessionInput) GetDisableSessionIdReuse() *bool {
 	return s.DisableSessionIdReuse
+}
+
+func (s *UpdateSessionInput) GetEnableAutoPause() *bool {
+	return s.EnableAutoPause
+}
+
+func (s *UpdateSessionInput) GetEnableAutoResume() *bool {
+	return s.EnableAutoResume
 }
 
 func (s *UpdateSessionInput) GetJuiceFsConfig() *JuiceFsConfig {
@@ -92,6 +108,16 @@ func (s *UpdateSessionInput) GetSessionTTLInSeconds() *int64 {
 
 func (s *UpdateSessionInput) SetDisableSessionIdReuse(v bool) *UpdateSessionInput {
 	s.DisableSessionIdReuse = &v
+	return s
+}
+
+func (s *UpdateSessionInput) SetEnableAutoPause(v bool) *UpdateSessionInput {
+	s.EnableAutoPause = &v
+	return s
+}
+
+func (s *UpdateSessionInput) SetEnableAutoResume(v bool) *UpdateSessionInput {
+	s.EnableAutoResume = &v
 	return s
 }
 
