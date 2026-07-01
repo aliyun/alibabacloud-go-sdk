@@ -26,17 +26,17 @@ type iListCustomConnectorsResponseBody interface {
 type ListCustomConnectorsResponseBody struct {
 	// If the value of success was true, the list of custom connectors in the namespace was returned. If the value of success was false, a null value was returned.
 	Data []*Connector `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 	- If the value of success was false, an error code was returned.
+	// - If the value of success was false, an error code was returned.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - If the value of success was true, a null value was returned.
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 	- If the value of success was false, an error message was returned.
+	// - If the value of success was false, an error message was returned.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - If the value of success was true, a null value was returned.
 	//
 	// example:
 	//

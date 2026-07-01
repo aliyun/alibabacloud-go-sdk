@@ -24,23 +24,34 @@ type iGetSessionClusterResponseBody interface {
 }
 
 type GetSessionClusterResponseBody struct {
+	// This data structure represents the retrieved session cluster.
 	Data *SessionCluster `json:"data,omitempty" xml:"data,omitempty"`
+	// The error code. This parameter is returned when \\`success\\` is \\`false\\`. If \\`success\\` is \\`true\\`, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message. This parameter is returned when \\`success\\` is \\`false\\`. If \\`success\\` is \\`true\\`, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code. This parameter is always 200. Use the success parameter to determine whether the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

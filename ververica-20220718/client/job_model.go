@@ -64,93 +64,93 @@ type iJob interface {
 }
 
 type Job struct {
-	// The content template of the job.
+	// Job instance content template.
 	Artifact *Artifact `json:"artifact,omitempty" xml:"artifact,omitempty"`
-	// The resource configuration of the job in batch mode.
+	// Batch mode resource settings.
 	BatchResourceSetting *BatchResourceSetting `json:"batchResourceSetting,omitempty" xml:"batchResourceSetting,omitempty"`
-	// The time when the job was created.
+	// Creation time.
 	//
 	// example:
 	//
 	// 1714058507
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The ID of the account that is used to create the job.
+	// Creator.
 	//
 	// example:
 	//
 	// 27846363877456****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The name of the account that is used to create the job.
+	// Creator name.
 	//
 	// example:
 	//
 	// ****@streamcompute.onaliyun.com
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	// The deployment ID.
+	// Deployment ID.
 	//
 	// example:
 	//
 	// 354dde66-a3ae-463e-967a-0b4107fd****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	// The name of the deployment.
+	// Deployment name.
 	//
 	// example:
 	//
 	// flinktest
 	DeploymentName *string `json:"deploymentName,omitempty" xml:"deploymentName,omitempty"`
-	// The end time of the job.
+	// Job instance end time.
 	//
 	// example:
 	//
 	// 1660277235
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The engine version of the deployment.
+	// Job engine version.
 	//
 	// example:
 	//
 	// vvr-4.0.14-flink-1.13
 	EngineVersion *string `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
-	// The execution mode of the job. Valid values:
+	// Job instance execution mode.
 	//
-	// 	- STREAM
+	// - STREAM: Stream mode.
 	//
-	// 	- BATCH
+	// - BATCH: Batch mode.
 	//
 	// example:
 	//
 	// BATCH
 	ExecutionMode *string `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
-	// The configuration of the job.
+	// Full parameter settings for the job instance.
 	//
 	// example:
 	//
 	// {execution.checkpointing.unaligned: false}
 	FlinkConf map[string]interface{} `json:"flinkConf,omitempty" xml:"flinkConf,omitempty"`
-	// The job ID.
+	// Job instance ID.
 	//
 	// example:
 	//
 	// 354dde66-a3ae-463e-967a-0b4107fd****
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
-	// The variables.
+	// Job variables.
 	LocalVariables []*LocalVariable `json:"localVariables,omitempty" xml:"localVariables,omitempty" type:"Repeated"`
-	// The logging configuration of the job.
+	// Job instance log configuration.
 	Logging *Logging `json:"logging,omitempty" xml:"logging,omitempty"`
-	// The resource information of the job.
+	// Job instance resource information.
 	Metric *JobMetric `json:"metric,omitempty" xml:"metric,omitempty"`
-	// The time when the job was modified.
+	// Modification time.
 	//
 	// example:
 	//
 	// 1714058800
 	ModifiedAt *string `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
-	// The ID of the account that is used to modify the job.
+	// Modifier.
 	//
 	// example:
 	//
 	// 27846363877456****
 	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// The name of the account that is used to modify the job.
+	// Modifier name.
 	//
 	// example:
 	//
@@ -162,27 +162,27 @@ type Job struct {
 	//
 	// namespacetest
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The startup strategy of the job.
+	// Job instance startup policy.
 	RestoreStrategy *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
-	// If the job runs in a session cluster, the value of this parameter is the name of the session cluster. Otherwise, the value of this parameter is null.
+	// If the job instance runs on a Session cluster, this shows the Session cluster name; otherwise, it is null.
 	//
 	// example:
 	//
-	// preview
+	// null
 	SessionClusterName *string `json:"sessionClusterName,omitempty" xml:"sessionClusterName,omitempty"`
-	// The start time of the job.
+	// Job instance start time.
 	//
 	// example:
 	//
 	// 1660190835
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The status of the job.
+	// Job instance status.
 	Status *JobStatus `json:"status,omitempty" xml:"status,omitempty"`
-	// The resource configuration of the job in streaming mode.
+	// Stream mode resource settings.
 	StreamingResourceSetting *StreamingResourceSetting `json:"streamingResourceSetting,omitempty" xml:"streamingResourceSetting,omitempty"`
-	// The Flink configuration.
+	// User job parameter settings.
 	UserFlinkConf map[string]interface{} `json:"userFlinkConf,omitempty" xml:"userFlinkConf,omitempty"`
-	// The workspace.
+	// Workspace.
 	//
 	// example:
 	//

@@ -18,14 +18,20 @@ type iRelation interface {
 }
 
 type Relation struct {
+	// The destination table information.
+	//
 	// example:
 	//
 	// TableB
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
+	// The job instance ID.
+	//
 	// example:
 	//
 	// 664cc64d-5dea-4ad3-9ee4-8432a874****
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The source table information.
+	//
 	// example:
 	//
 	// TableA

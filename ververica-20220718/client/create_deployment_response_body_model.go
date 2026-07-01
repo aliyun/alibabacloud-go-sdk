@@ -24,21 +24,21 @@ type iCreateDeploymentResponseBody interface {
 }
 
 type CreateDeploymentResponseBody struct {
-	// 	- If the value of success was true, the deployment that you created was returned.
+	// - If the value of success was true, the deployment that you created was returned.
 	//
-	// 	- If the value of success was false, a null value was returned.
+	// - If the value of success was false, a null value was returned.
 	Data *Deployment `json:"data,omitempty" xml:"data,omitempty"`
-	// 	- If the value of success was false, an error code was returned.
+	// - If the value of success was false, an error code was returned.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - If the value of success was true, a null value was returned.
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 	- If the value of success was false, an error message was returned.
+	// - If the value of success was false, an error message was returned.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - If the value of success was true, a null value was returned.
 	//
 	// example:
 	//

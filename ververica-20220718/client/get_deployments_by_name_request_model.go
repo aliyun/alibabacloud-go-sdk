@@ -16,10 +16,14 @@ type iGetDeploymentsByNameRequest interface {
 }
 
 type GetDeploymentsByNameRequest struct {
+	// Specifies whether to exclude job summary information, such as jobName and status, from the response. Set this to true to return only the JobId and improve performance.
+	//
 	// example:
 	//
 	// true
 	IgnoreJobSummary *bool `json:"ignoreJobSummary,omitempty" xml:"ignoreJobSummary,omitempty"`
+	// Specifies whether to exclude resource configuration information, such as parallelism and the number of CUs, to reduce the response size.
+	//
 	// example:
 	//
 	// true

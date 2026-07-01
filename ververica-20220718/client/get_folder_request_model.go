@@ -16,10 +16,14 @@ type iGetFolderRequest interface {
 }
 
 type GetFolderRequest struct {
+	// Folder ID. If empty, the root folder is returned.
+	//
 	// example:
 	//
 	// 89097
 	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// The type of the root folder.
+	//
 	// example:
 	//
 	// DEVELOPMENT

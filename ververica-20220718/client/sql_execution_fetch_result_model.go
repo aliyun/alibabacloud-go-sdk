@@ -16,7 +16,9 @@ type iSqlExecutionFetchResult interface {
 }
 
 type SqlExecutionFetchResult struct {
-	DqlResult    *DqlResult    `json:"dqlResult,omitempty" xml:"dqlResult,omitempty"`
+	// The result of the data query language (DQL) statement.
+	DqlResult *DqlResult `json:"dqlResult,omitempty" xml:"dqlResult,omitempty"`
+	// The information about the SQL execution.
 	SqlExecution *SqlExecution `json:"sqlExecution,omitempty" xml:"sqlExecution,omitempty"`
 }
 

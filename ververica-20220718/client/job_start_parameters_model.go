@@ -22,22 +22,23 @@ type iJobStartParameters interface {
 }
 
 type JobStartParameters struct {
-	// The deployment ID.
+	// Job ID
 	//
 	// example:
 	//
 	// 737d0921-c5ac-47fc-9ba9-07a1e0b4****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	JobId        *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
-	// The variables.
+	// Job instance ID
+	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// Job variables
 	LocalVariables []*LocalVariable `json:"localVariables,omitempty" xml:"localVariables,omitempty" type:"Repeated"`
-	// The queue in which the deployment is running.
+	// Resource queue for job execution
 	//
 	// example:
 	//
 	// default-queue
 	ResourceQueueName *string `json:"resourceQueueName,omitempty" xml:"resourceQueueName,omitempty"`
-	// The configuration of the start offset of the deployment.
+	// Job start offset settings
 	RestoreStrategy *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
 }
 

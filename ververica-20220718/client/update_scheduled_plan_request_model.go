@@ -14,6 +14,7 @@ type iUpdateScheduledPlanRequest interface {
 }
 
 type UpdateScheduledPlanRequest struct {
+	// The data structure of the scheduled plan to be updated.
 	Body *ScheduledPlan `json:"body,omitempty" xml:"body,omitempty"`
 }
 

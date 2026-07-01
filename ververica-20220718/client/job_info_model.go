@@ -16,10 +16,14 @@ type iJobInfo interface {
 }
 
 type JobInfo struct {
+	// The job instance ID.
+	//
 	// example:
 	//
 	// 664cc64d-5dea-4ad3-9ee4-8432a874****
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The job details.
+	//
 	// example:
 	//
 	// {"id:xxx","createTime:v"}

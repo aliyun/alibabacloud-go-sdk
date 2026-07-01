@@ -16,12 +16,16 @@ type iListScheduledPlanExecutedHistoryRequest interface {
 }
 
 type ListScheduledPlanExecutedHistoryRequest struct {
+	// The ID of the deployed job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 58718c99-3b29-4c5e-93bb-c9fc4ec6****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// The execution source.
+	//
 	// example:
 	//
 	// SCHEDULED_PLAN

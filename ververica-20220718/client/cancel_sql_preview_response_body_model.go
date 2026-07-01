@@ -22,26 +22,11 @@ type iCancelSqlPreviewResponseBody interface {
 }
 
 type CancelSqlPreviewResponseBody struct {
-	// example:
-	//
-	// ""
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// example:
-	//
-	// ""
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// example:
-	//
-	// 200
-	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// example:
-	//
-	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CancelSqlPreviewResponseBody) String() string {

@@ -18,15 +18,20 @@ type iDeploymentTarget interface {
 }
 
 type DeploymentTarget struct {
+	// The name of the perjob deployment target.
+	//
 	// example:
 	//
 	// deployment target
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The namespace name.
+	//
 	// example:
 	//
 	// namespace
-	Namespace *string        `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Quota     *ResourceQuota `json:"quota,omitempty" xml:"quota,omitempty"`
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The resource quota.
+	Quota *ResourceQuota `json:"quota,omitempty" xml:"quota,omitempty"`
 }
 
 func (s DeploymentTarget) String() string {

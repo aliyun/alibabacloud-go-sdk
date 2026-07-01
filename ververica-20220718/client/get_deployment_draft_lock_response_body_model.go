@@ -24,23 +24,38 @@ type iGetDeploymentDraftLockResponseBody interface {
 }
 
 type GetDeploymentDraftLockResponseBody struct {
+	// The details of the edit lock.
 	Data *Lock `json:"data,omitempty" xml:"data,omitempty"`
+	// - An error code is returned if the request fails.
+	//
+	// - This parameter is empty if the request succeeds.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// - An error message is returned if the request fails.
+	//
+	// - This parameter is empty if the request succeeds.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code. A value other than 200 indicates that the request failed.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

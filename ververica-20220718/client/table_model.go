@@ -27,6 +27,10 @@ type iTable interface {
 
 type Table struct {
 	// The comment.
+	//
+	// example:
+	//
+	// 测试订单表
 	Comment  *string            `json:"comment,omitempty" xml:"comment,omitempty"`
 	Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The name of the table.
@@ -43,12 +47,6 @@ type Table struct {
 	Properties map[string]interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
 	// The schema information about the table.
 	Schema *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
-	// TABLE;
-	//
-	//   MATERIALIZED_TABLE;
-	//
-	//   VIEW;
-	//
 	// This parameter is required.
 	TableType *string `json:"tableType,omitempty" xml:"tableType,omitempty"`
 }

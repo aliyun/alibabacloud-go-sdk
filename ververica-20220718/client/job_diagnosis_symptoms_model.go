@@ -24,11 +24,17 @@ type iJobDiagnosisSymptoms interface {
 }
 
 type JobDiagnosisSymptoms struct {
-	Autopilot       *JobDiagnosisSymptom   `json:"autopilot,omitempty" xml:"autopilot,omitempty"`
-	Others          []*JobDiagnosisSymptom `json:"others,omitempty" xml:"others,omitempty" type:"Repeated"`
-	Runtime         []*JobDiagnosisSymptom `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Repeated"`
-	Startup         []*JobDiagnosisSymptom `json:"startup,omitempty" xml:"startup,omitempty" type:"Repeated"`
-	State           []*JobDiagnosisSymptom `json:"state,omitempty" xml:"state,omitempty" type:"Repeated"`
+	// Job resource diagnosis.
+	Autopilot *JobDiagnosisSymptom `json:"autopilot,omitempty" xml:"autopilot,omitempty"`
+	// Other namespace diagnosis.
+	Others []*JobDiagnosisSymptom `json:"others,omitempty" xml:"others,omitempty" type:"Repeated"`
+	// Run diagnosis.
+	Runtime []*JobDiagnosisSymptom `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Repeated"`
+	// Startup procedure diagnosis.
+	Startup []*JobDiagnosisSymptom `json:"startup,omitempty" xml:"startup,omitempty" type:"Repeated"`
+	// Job status diagnosis.
+	State []*JobDiagnosisSymptom `json:"state,omitempty" xml:"state,omitempty" type:"Repeated"`
+	// Underlying abnormal diagnosis.
 	Troubleshooting []*JobDiagnosisSymptom `json:"troubleshooting,omitempty" xml:"troubleshooting,omitempty" type:"Repeated"`
 }
 

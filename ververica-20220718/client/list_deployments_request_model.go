@@ -32,74 +32,61 @@ type iListDeploymentsRequest interface {
 }
 
 type ListDeploymentsRequest struct {
-	// The ID of the user who creates the deployment.
+	// Creator UID.
 	//
 	// example:
 	//
 	// 183899668*******
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The execution mode of the deployment.
-	//
-	// Valid values:
-	//
-	// 	- BATCH
-	//
-	// 	- STREAMING
+	// Deployment execution mode.
 	//
 	// example:
 	//
 	// STREAMING
 	ExecutionMode *string `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
-	// The tag key.
+	// Label name.
 	//
 	// example:
 	//
 	// key
 	LabelKey *string `json:"labelKey,omitempty" xml:"labelKey,omitempty"`
-	// The tag value. Separate multiple values with semicolon (;).
+	// Tag values. Multiple values are separated by semicolons.
 	//
 	// example:
 	//
 	// value1,value2
 	LabelValueArray *string `json:"labelValueArray,omitempty" xml:"labelValueArray,omitempty"`
-	// The ID of the user who modifies the deployment.
+	// Modifier UID.
 	//
 	// example:
 	//
 	// 183899668*******
 	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// The name of the deployment.
+	// Deployment name.
 	//
 	// example:
 	//
 	// vvp_ds_0522
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The page number. Minimum value: 1. Default value: 1.
+	// Pagination parameter. Page index indicating the requested page number. Minimum value is 1. Default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// Pagination parameter. Number of elements on the requested page. Maximum value is 100, minimum value is 1, and default value is 10.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Sorting method. Supports returning data in descending order by creation time or updated time.
+	//
+	// example:
+	//
+	// gmt_create
 	SortName *string `json:"sortName,omitempty" xml:"sortName,omitempty"`
-	// The latest status of the deployment.
-	//
-	// Valid values:
-	//
-	// 	- CANCELLED
-	//
-	// 	- FAILED
-	//
-	// 	- RUNNING
-	//
-	// 	- TRANSITIONING
-	//
-	// 	- FINISHED
+	// The status of the latest job for the deployment.
 	//
 	// example:
 	//

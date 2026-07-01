@@ -18,14 +18,20 @@ type iTableMeta interface {
 }
 
 type TableMeta struct {
+	// The catalog name.
+	//
 	// example:
 	//
 	// paimon
 	CatalogName *string `json:"catalogName,omitempty" xml:"catalogName,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// paimon-ods
 	DatabaseName *string `json:"databaseName,omitempty" xml:"databaseName,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// order-table

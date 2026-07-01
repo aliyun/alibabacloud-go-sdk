@@ -48,33 +48,33 @@ type iDeploymentDraft interface {
 }
 
 type DeploymentDraft struct {
-	// The script of the SQL deployment.
+	// The artifact. Supported types include SQLSCRIPT and CDCYAML.
 	Artifact *Artifact `json:"artifact,omitempty" xml:"artifact,omitempty"`
-	// The time when the draft was created.
+	// Output only. The creation time, represented as a Unix timestamp.
 	//
 	// example:
 	//
 	// 1723537978
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The ID of the account that is used to create the draft.
+	// Output only. The ID of the creator.
 	//
 	// example:
 	//
 	// 27846363877456****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The name of the account that is used to create the draft.
+	// Output only. The name of the creator.
 	//
 	// example:
 	//
 	// ****@streamcompute.onaliyun.com
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	// The draft ID.
+	// The deployment draft ID.
 	//
 	// example:
 	//
 	// 00000000-0000-0000-0000-00000012****
 	DeploymentDraftId *string `json:"deploymentDraftId,omitempty" xml:"deploymentDraftId,omitempty"`
-	// The engine version of the deployment.
+	// The engine version.
 	//
 	// example:
 	//
@@ -86,49 +86,49 @@ type DeploymentDraft struct {
 	//
 	// STREAMING
 	ExecutionMode *string `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
-	// The labels of the deployment.
+	// Key-value pairs to apply as labels.
 	Labels map[string]interface{} `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The variables.
+	// The local variables.
 	LocalVariables []*LocalVariable `json:"localVariables,omitempty" xml:"localVariables,omitempty" type:"Repeated"`
-	// The lock of the draft.
+	// The deployment draft lock.
 	Lock *Lock `json:"lock,omitempty" xml:"lock,omitempty"`
-	// The time when the draft was modified.
+	// Output only. The modification time, represented as a Unix timestamp.
 	//
 	// example:
 	//
 	// 1723537978
 	ModifiedAt *int64 `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
-	// The ID of the account that is used to modify the draft.
+	// Output only. The ID of the modifier.
 	//
 	// example:
 	//
 	// 27846363877456****
 	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// The name of the account that is used to modify the draft.
+	// Output only. The name of the modifier.
 	//
 	// example:
 	//
 	// ****@streamcompute.onaliyun.com
 	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
-	// The name of the draft.
+	// The deployment draft name.
 	//
 	// example:
 	//
 	// test-draft
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the namespace.
+	// The namespace.
 	//
 	// example:
 	//
 	// default-namespace
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The ID of the parent folder.
+	// The parent ID.
 	//
 	// example:
 	//
 	// 00000000-0000-0000-0000-00000013****
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// The ID of the associated deployment.
+	// The referenced deployment ID.
 	//
 	// example:
 	//

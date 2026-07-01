@@ -14,6 +14,7 @@ type iCreateScheduledPlanRequest interface {
 }
 
 type CreateScheduledPlanRequest struct {
+	// This data structure represents the scheduled plan to be created.
 	Body *ScheduledPlan `json:"body,omitempty" xml:"body,omitempty"`
 }
 

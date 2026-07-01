@@ -30,35 +30,56 @@ type iListDeploymentDraftsResponseBody interface {
 }
 
 type ListDeploymentDraftsResponseBody struct {
+	// A list of job drafts that match the query. This parameter is returned if the request is successful. If the request fails, this parameter is empty.
 	Data []*DeploymentDraft `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// - If the request fails, the error code is returned.
+	//
+	// - If the request is successful, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// - If the request fails, the error message is returned.
+	//
+	// - If the request is successful, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code. If this parameter is not empty and its value is not 200, the request failed.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries on the returned page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of entries that match the query.
+	//
 	// example:
 	//
 	// 69

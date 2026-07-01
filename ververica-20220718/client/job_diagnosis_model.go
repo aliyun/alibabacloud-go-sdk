@@ -13,6 +13,8 @@ type iJobDiagnosis interface {
 	GetDiagnoseId() *string
 	SetDiagnoseTime(v int64) *JobDiagnosis
 	GetDiagnoseTime() *int64
+	SetHealthScore(v int32) *JobDiagnosis
+	GetHealthScore() *int32
 	SetNamespace(v string) *JobDiagnosis
 	GetNamespace() *string
 	SetRiskLevel(v string) *JobDiagnosis
@@ -24,33 +26,26 @@ type iJobDiagnosis interface {
 }
 
 type JobDiagnosis struct {
-	// The diagnostic task ID.
+	// The diagnostic ID.
 	//
 	// example:
 	//
 	// ba30cd99-37a5-4a20-8cd9-ed4b*****
 	DiagnoseId *string `json:"diagnoseId,omitempty" xml:"diagnoseId,omitempty"`
-	// The time when the deployment is diagnosed.
+	// The diagnostic time.
 	//
 	// example:
 	//
 	// 1740389560871
 	DiagnoseTime *int64 `json:"diagnoseTime,omitempty" xml:"diagnoseTime,omitempty"`
+	HealthScore  *int32 `json:"healthScore,omitempty" xml:"healthScore,omitempty"`
 	// The namespace.
 	//
 	// example:
 	//
 	// default-namespace-*****
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The severity level of the risk.
-	//
-	// Valid values:
-	//
-	// 	- RISK_LEVEL_HIGH
-	//
-	// 	- RISK_LEVEL_MID
-	//
-	// 	- RISK_LEVEL_LOW
+	// The risk level.
 	//
 	// example:
 	//
@@ -58,7 +53,7 @@ type JobDiagnosis struct {
 	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
 	// The diagnostic details.
 	Symptoms *JobDiagnosisSymptoms `json:"symptoms,omitempty" xml:"symptoms,omitempty"`
-	// The workspace to which the deployment belongs.
+	// The workspace.
 	//
 	// example:
 	//
@@ -80,6 +75,10 @@ func (s *JobDiagnosis) GetDiagnoseId() *string {
 
 func (s *JobDiagnosis) GetDiagnoseTime() *int64 {
 	return s.DiagnoseTime
+}
+
+func (s *JobDiagnosis) GetHealthScore() *int32 {
+	return s.HealthScore
 }
 
 func (s *JobDiagnosis) GetNamespace() *string {
@@ -105,6 +104,11 @@ func (s *JobDiagnosis) SetDiagnoseId(v string) *JobDiagnosis {
 
 func (s *JobDiagnosis) SetDiagnoseTime(v int64) *JobDiagnosis {
 	s.DiagnoseTime = &v
+	return s
+}
+
+func (s *JobDiagnosis) SetHealthScore(v int32) *JobDiagnosis {
+	s.HealthScore = &v
 	return s
 }
 

@@ -24,23 +24,38 @@ type iGetHotUpdateJobResultResponseBody interface {
 }
 
 type GetHotUpdateJobResultResponseBody struct {
+	// The result of the dynamic update.
 	Data *HotUpdateJobResult `json:"data,omitempty" xml:"data,omitempty"`
+	// - If the success parameter is false, an error code is returned.
+	//
+	// - If the success parameter is true, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// - If the success parameter is false, an error message is returned.
+	//
+	// - If the success parameter is true, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code. A value of 200 is always returned. The success parameter indicates whether the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-ABCF-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

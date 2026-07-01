@@ -14,6 +14,7 @@ type iCreateSessionClusterRequest interface {
 }
 
 type CreateSessionClusterRequest struct {
+	// The data structure of the session cluster to create.
 	Body *SessionCluster `json:"body,omitempty" xml:"body,omitempty"`
 }
 

@@ -24,26 +24,38 @@ type iCreateDeploymentTargetV2ResponseBody interface {
 }
 
 type CreateDeploymentTargetV2ResponseBody struct {
+	// The details of the deployment target.
+	//
 	// example:
 	//
 	// { "jobs": [ { "jid": "4df35f8e54554b23bf7dcd38a151****", "name": "69d001d5-419a-4bfc-9c2e-849cacd3****", "state": "RUNNING", "start-time": 1659154942068, "end-time": -1, "duration": 188161756, "last-modification": 1659154968305, "tasks": { "total": 2, "created": 0, "scheduled": 0, "deploying": 0, "running": 2, "finished": 0, "canceling": 0, "canceled": 0, "failed": 0, "reconciling": 0, "initializing": 0 } } ] }
 	Data *DeploymentTarget `json:"data,omitempty" xml:"data,omitempty"`
+	// If success is false, this parameter is not empty and indicates the error code. If success is true, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// If success is false, this parameter is not empty and indicates the error message. If success is true, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code. A value of 200 is returned. Use the success parameter to determine whether the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

@@ -17,6 +17,8 @@ type iUpdateDeploymentTargetV2Headers interface {
 
 type UpdateDeploymentTargetV2Headers struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

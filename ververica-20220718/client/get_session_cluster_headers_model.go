@@ -17,6 +17,8 @@ type iGetSessionClusterHeaders interface {
 
 type GetSessionClusterHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,7 +14,7 @@ type iStopJobRequest interface {
 }
 
 type StopJobRequest struct {
-	// The parameter that is used to stop the job.
+	// The parameters to stop the job instance.
 	//
 	// This parameter is required.
 	Body *StopJobRequestBody `json:"body,omitempty" xml:"body,omitempty"`

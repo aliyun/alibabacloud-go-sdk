@@ -24,23 +24,38 @@ type iUpdateDeploymentDraftResponseBody interface {
 }
 
 type UpdateDeploymentDraftResponseBody struct {
+	// The resulting job draft.
 	Data *DeploymentDraft `json:"data,omitempty" xml:"data,omitempty"`
+	// - If the request fails, an error code is returned.
+	//
+	// - If the request is successful, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// - If the request fails, an error message is returned.
+	//
+	// - If the request is successful, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code. A value other than 200 indicates that the request failed.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True

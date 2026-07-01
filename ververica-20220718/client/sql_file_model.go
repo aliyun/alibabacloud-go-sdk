@@ -30,15 +30,24 @@ type iSqlFile interface {
 }
 
 type SqlFile struct {
-	BatchMode          *string `json:"batchMode,omitempty" xml:"batchMode,omitempty"`
-	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
-	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
-	Namespace          *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	ParentId           *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The batch mode.
+	BatchMode *string `json:"batchMode,omitempty" xml:"batchMode,omitempty"`
+	// The description of the SQL file.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the SQL file.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The namespace.
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The ID of the parent SQL file.
+	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The name of the session cluster.
 	SessionClusterName *string `json:"sessionClusterName,omitempty" xml:"sessionClusterName,omitempty"`
-	SqlFileId          *string `json:"sqlFileId,omitempty" xml:"sqlFileId,omitempty"`
-	SqlScript          *string `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
-	Workspace          *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// The SQL file ID.
+	SqlFileId *string `json:"sqlFileId,omitempty" xml:"sqlFileId,omitempty"`
+	// The SQL script content.
+	SqlScript *string `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
+	// The workspace ID.
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s SqlFile) String() string {

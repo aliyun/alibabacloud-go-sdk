@@ -27,27 +27,27 @@ type iStartJobWithParamsResponseBody interface {
 
 type StartJobWithParamsResponseBody struct {
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// The details of the job of the deployment returned.
+	// Details of the job instance created from the deployment.
 	Data *Job `json:"data,omitempty" xml:"data,omitempty"`
-	// If the value of success was false, an error code was returned. If the value of success was true, a null value was returned.
+	// The error code. This field is populated only when `success` is `false` and is empty otherwise.
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// If the value of success was false, an error message was returned. If the value of success was true, a null value was returned.
+	// The error message. This field is populated only when `success` is `false` and is empty otherwise.
 	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	// The HTTP status code. This value is always 200. Use the `success` field to determine whether the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

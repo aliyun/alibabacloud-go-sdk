@@ -14,6 +14,8 @@ type iGetDeploymentDraftLockRequest interface {
 }
 
 type GetDeploymentDraftLockRequest struct {
+	// The ID of the job draft. You can get this ID by calling the ListDeploymentDrafts operation.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -19,6 +19,10 @@ type iDatabase interface {
 
 type Database struct {
 	// The comment.
+	//
+	// example:
+	//
+	// 测试数据库。
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// The name of the database.
 	//

@@ -14,6 +14,7 @@ type iValidateDeploymentDraftAsyncRequest interface {
 }
 
 type ValidateDeploymentDraftAsyncRequest struct {
+	// The parameter object for the job draft.
 	Body *DraftValidateParams `json:"body,omitempty" xml:"body,omitempty"`
 }
 

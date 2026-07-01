@@ -60,96 +60,97 @@ type iDeployment interface {
 }
 
 type Deployment struct {
-	// The parameters that are required for starting a deployment.
+	// The data structure required to start the deployed job.
 	Artifact *Artifact `json:"artifact,omitempty" xml:"artifact,omitempty"`
-	// The resource configuration of the batch deployment.
+	// Resource settings for a batch job.
 	BatchResourceSetting *BatchResourceSetting `json:"batchResourceSetting,omitempty" xml:"batchResourceSetting,omitempty"`
-	// The time at which the deployment was created.
+	// Creation time.
 	//
 	// example:
 	//
 	// 1714058507
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The ID of the account that is used to create the deployment.
+	// Creator.
 	//
 	// example:
 	//
 	// 27846363877456****
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The name of the account that is used to create the deployment.
+	// Name of the creator.
 	//
 	// example:
 	//
 	// ****@streamcompute.onaliyun.com
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	// Specifies whether the deployment is modified after the deployment is started.
+	// Indicates whether the deployed job has been modified after it was started.
 	//
 	// example:
 	//
 	// true
 	DeploymentHasChanged *bool `json:"deploymentHasChanged,omitempty" xml:"deploymentHasChanged,omitempty"`
-	// The ID of the deployment.
+	// Deployed job ID.
 	//
 	// example:
 	//
 	// 00000000-0000-0000-0000-0000012312****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	// The cluster on which the deployment is deployed.
+	// Deployment target.
 	DeploymentTarget *BriefDeploymentTarget `json:"deploymentTarget,omitempty" xml:"deploymentTarget,omitempty"`
-	// The description of the deployment.
+	// Description.
 	//
 	// example:
 	//
 	// this is a deployment description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The engine version of the deployment.
+	// Engine version.
 	//
 	// example:
 	//
 	// vvr-6.0.0-flink-1.15
 	EngineVersion *string `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
-	// The execution mode of the deployment. Valid values:
+	// Execution mode.
 	//
-	// 	- STREAMING
+	// - STREAMING: stream mode.
 	//
-	// 	- BATCH
+	// - BATCH: batch mode.
 	//
 	// example:
 	//
 	// STREAMING
 	ExecutionMode *string `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
-	// The Realtime Compute for Apache Flink configuration.
+	// Flink configuration.
 	//
 	// example:
 	//
 	// {"taskmanager.numberOfTaskSlots":"1"}
 	FlinkConf map[string]interface{} `json:"flinkConf,omitempty" xml:"flinkConf,omitempty"`
-	// The summary of jobs in the deployment.
-	JobSummary *JobSummary            `json:"jobSummary,omitempty" xml:"jobSummary,omitempty"`
-	Labels     map[string]interface{} `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The variables of the deployment.
+	// A summary of information about the job instances under the deployed job.
+	JobSummary *JobSummary `json:"jobSummary,omitempty" xml:"jobSummary,omitempty"`
+	// Job labels.
+	Labels map[string]interface{} `json:"labels,omitempty" xml:"labels,omitempty"`
+	// Job variables.
 	LocalVariables []*LocalVariable `json:"localVariables,omitempty" xml:"localVariables,omitempty" type:"Repeated"`
-	// The logging configuration.
+	// Log configuration.
 	Logging *Logging `json:"logging,omitempty" xml:"logging,omitempty"`
-	// The time at which the deployment was modified.
+	// Modification time.
 	//
 	// example:
 	//
 	// 1714058843
 	ModifiedAt *string `json:"modifiedAt,omitempty" xml:"modifiedAt,omitempty"`
-	// The ID of the account that is used to modify the deployment.
+	// Modifier.
 	//
 	// example:
 	//
 	// 27846363877456****
 	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	// The name of the account that is used to modify the deployment.
+	// Name of the modifier.
 	//
 	// example:
 	//
 	// ****@streamcompute.onaliyun.com
 	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
-	// The name of the deployment.
+	// Deployed job name.
 	//
 	// example:
 	//
@@ -161,13 +162,15 @@ type Deployment struct {
 	//
 	// default-namespace
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// Associated job draft ID.
+	//
 	// example:
 	//
 	// 00000000-0000-0000-0000-000000000003
 	ReferencedDeploymentDraftId *string `json:"referencedDeploymentDraftId,omitempty" xml:"referencedDeploymentDraftId,omitempty"`
-	// The resource configuration of the streaming deployment.
+	// Resource settings for a stream job.
 	StreamingResourceSetting *StreamingResourceSetting `json:"streamingResourceSetting,omitempty" xml:"streamingResourceSetting,omitempty"`
-	// The workspace to which the deployment belongs.
+	// Workspace.
 	//
 	// example:
 	//

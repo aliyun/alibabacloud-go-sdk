@@ -14,6 +14,8 @@ type iGetAppliedScheduledPlanRequest interface {
 }
 
 type GetAppliedScheduledPlanRequest struct {
+	// The ID of the deployed job.
+	//
 	// This parameter is required.
 	//
 	// example:

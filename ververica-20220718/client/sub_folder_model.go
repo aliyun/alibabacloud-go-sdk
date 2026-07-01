@@ -18,14 +18,20 @@ type iSubFolder interface {
 }
 
 type SubFolder struct {
+	// The folder ID.
+	//
 	// example:
 	//
 	// a579aec9-1d5e-3382-9d65-9887ff6cfaff
 	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// The folder name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The parent folder ID.
+	//
 	// example:
 	//
 	// 95c0787c-408f-4e1f-88ba-ef0a84a2c2ee

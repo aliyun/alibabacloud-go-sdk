@@ -63,6 +63,10 @@ type LineageColumn struct {
 	// userA
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// 订单用户名称
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The field ID.
 	//

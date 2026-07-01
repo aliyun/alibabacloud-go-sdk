@@ -17,6 +17,8 @@ type iDeployDeploymentDraftAsyncHeaders interface {
 
 type DeployDeploymentDraftAsyncHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

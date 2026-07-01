@@ -17,7 +17,7 @@ type iStartJobHeaders interface {
 
 type StartJobHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The workspace ID.
+	// Workspace ID.
 	//
 	// This parameter is required.
 	//

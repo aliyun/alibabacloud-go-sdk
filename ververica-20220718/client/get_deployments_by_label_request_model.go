@@ -20,20 +20,28 @@ type iGetDeploymentsByLabelRequest interface {
 }
 
 type GetDeploymentsByLabelRequest struct {
+	// Specifies whether to exclude job summary information, such as jobName and status, from the response. If set to true, the response includes only the JobId. This improves performance.
+	//
 	// example:
 	//
 	// true
 	IgnoreJobSummary *bool `json:"ignoreJobSummary,omitempty" xml:"ignoreJobSummary,omitempty"`
+	// Specifies whether to exclude resource configuration information, such as parallelism and the number of CUs, from the response. This reduces the size of the returned data.
+	//
 	// example:
 	//
 	// true
 	IgnoreResourceSetting *bool `json:"ignoreResourceSetting,omitempty" xml:"ignoreResourceSetting,omitempty"`
+	// The label key used for filtering.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// key
 	LabelKey *string `json:"labelKey,omitempty" xml:"labelKey,omitempty"`
+	// The label value. You can specify multiple values separated by commas (,) to create an OR condition.
+	//
 	// This parameter is required.
 	//
 	// example:

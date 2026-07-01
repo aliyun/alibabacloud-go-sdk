@@ -18,14 +18,20 @@ type iHotUpdateJobFailureInfo interface {
 }
 
 type HotUpdateJobFailureInfo struct {
+	// The error level.
+	//
 	// example:
 	//
 	// LOW
 	FailureSeverity *string `json:"failureSeverity,omitempty" xml:"failureSeverity,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// “”
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The error cause.
+	//
 	// example:
 	//
 	// “”

@@ -16,8 +16,10 @@ type iCdcYamlArtifact interface {
 }
 
 type CdcYamlArtifact struct {
+	// Full URL paths to the additional dependencies.
 	AdditionalDependencies []*string `json:"additionalDependencies,omitempty" xml:"additionalDependencies,omitempty" type:"Repeated"`
-	CdcYaml                *string   `json:"cdcYaml,omitempty" xml:"cdcYaml,omitempty"`
+	// Code for the data ingestion job.
+	CdcYaml *string `json:"cdcYaml,omitempty" xml:"cdcYaml,omitempty"`
 }
 
 func (s CdcYamlArtifact) String() string {

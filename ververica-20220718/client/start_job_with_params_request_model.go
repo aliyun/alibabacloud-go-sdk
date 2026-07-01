@@ -14,7 +14,7 @@ type iStartJobWithParamsRequest interface {
 }
 
 type StartJobWithParamsRequest struct {
-	// The parameter that is used to start the job.
+	// Parameters to start the job instance.
 	Body *JobStartParameters `json:"body,omitempty" xml:"body,omitempty"`
 }
 

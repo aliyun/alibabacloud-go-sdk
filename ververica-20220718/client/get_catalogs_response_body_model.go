@@ -24,24 +24,38 @@ type iGetCatalogsResponseBody interface {
 }
 
 type GetCatalogsResponseBody struct {
-	// If the value of success was true, the list of catalogs that meet the specified condition was returned. If the value of success was false, a null value was returned.
+	// If \\`success\\` is \\`true\\`, a list of catalogs that meet the criteria is returned. If \\`success\\` is \\`false\\`, this parameter is empty.
 	Data []*Catalog `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// - If \\`success\\` is \\`false\\`, an error code is returned.
+	//
+	// - If \\`success\\` is \\`true\\`, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// - If \\`success\\` is \\`false\\`, an error message is returned.
+	//
+	// - If \\`success\\` is \\`true\\`, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The business status code. This is always 200. Use the \\`success\\` parameter to determine whether the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-ABCD-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True

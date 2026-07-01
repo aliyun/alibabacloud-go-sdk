@@ -30,35 +30,52 @@ type iListScheduledPlanResponseBody interface {
 }
 
 type ListScheduledPlanResponseBody struct {
+	// The list of scheduled plans that meet the filter criteria. This parameter is returned only if the request is successful. If the request fails, this parameter is empty.
 	Data []*ScheduledPlan `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The error code returned if the request fails. This parameter is empty if the request is successful.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message returned if the request fails. This parameter is empty if the request is successful.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code. The value is always 200. Use the \\`success\\` parameter to determine if the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// A paging parameter that specifies the page index to return.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries on the returned page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of entries that match the query.
+	//
 	// example:
 	//
 	// 4

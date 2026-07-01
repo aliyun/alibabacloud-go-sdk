@@ -34,13 +34,13 @@ type DeploymentRestoreStrategy struct {
 	JobStartTimeInMs *int64 `json:"jobStartTimeInMs,omitempty" xml:"jobStartTimeInMs,omitempty"`
 	// The type of the start offset. Valid values:
 	//
-	// 	- NONE: The deployment is started without states.
+	// - NONE: The deployment is started without states.
 	//
-	// 	- LATEST_SAVEPOINT: The deployment is started from the latest savepoint.
+	// - LATEST_SAVEPOINT: The deployment is started from the latest savepoint.
 	//
-	// 	- FROM_SAVEPOINT: The deployment is started from the specified savepoint.
+	// - FROM_SAVEPOINT: The deployment is started from the specified savepoint.
 	//
-	// 	- LATEST_STATE: The deployment is started from the latest state of the deployment.
+	// - LATEST_STATE: The deployment is started from the latest state of the deployment.
 	//
 	// example:
 	//

@@ -24,24 +24,38 @@ type iGetDatabasesResponseBody interface {
 }
 
 type GetDatabasesResponseBody struct {
-	// If the value of success was true, the list of databases that meet the specified condition was returned. If the value of success was false, a null value was returned.
+	// The list of databases. This parameter is returned only if the request is successful. If the request fails, this parameter is empty.
 	Data []*Database `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// - If \\`success\\` is \\`false\\`, an error code is returned.
+	//
+	// - If \\`success\\` is \\`true\\`, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// - If \\`success\\` is \\`false\\`, an error message is returned.
+	//
+	// - If \\`success\\` is \\`true\\`, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code. A value of 200 is always returned. To determine whether the request was successful, check the value of the \\`success\\` parameter.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

@@ -26,40 +26,41 @@ type iStartJobResponseBody interface {
 }
 
 type StartJobResponseBody struct {
+	// The detailed information about the access denial.
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// 	- If the value of success was true, the job that you created was returned.
+	// - When \\`success\\` is \\`true\\`, the created instance information is returned.
 	//
-	// 	- If the value of success was false, a null value was returned.
+	// - Returns an empty value if \\`success\\` is false.
 	Data *Job `json:"data,omitempty" xml:"data,omitempty"`
-	// 	- If the value of success was false, an error code was returned.
+	// - If success is false, the call returns a business error code.If success is true, the call returns business data. The following table describes the data format.If success is true, the call returns business data. The following table describes the data format.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - When success is true, an empty value is returned.
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 	- If the value of success was false, an error message was returned.
+	// - If success is false, a business error message is returned.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - When \\`success\\` is true, an empty value is returned.
 	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The value was fixed to 200.
+	// Fixed value: 200.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the service request was successful.
 	//
 	// example:
 	//

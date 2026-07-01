@@ -14,6 +14,8 @@ type iRescaleJobParam interface {
 }
 
 type RescaleJobParam struct {
+	// The parallelism.
+	//
 	// example:
 	//
 	// 10

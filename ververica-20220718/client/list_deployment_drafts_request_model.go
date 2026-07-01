@@ -16,10 +16,14 @@ type iListDeploymentDraftsRequest interface {
 }
 
 type ListDeploymentDraftsRequest struct {
+	// The page number to return. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries to return on each page. The default value is 10. The maximum value is 100.
+	//
 	// example:
 	//
 	// 10

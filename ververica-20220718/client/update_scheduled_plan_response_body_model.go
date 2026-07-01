@@ -24,23 +24,34 @@ type iUpdateScheduledPlanResponseBody interface {
 }
 
 type UpdateScheduledPlanResponseBody struct {
+	// The data structure of the updated scheduled plan.
 	Data *ScheduledPlan `json:"data,omitempty" xml:"data,omitempty"`
+	// The business error code. This parameter is not empty when the success parameter is false. This parameter is empty when the success parameter is true.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The business error message. This parameter is not empty when the success parameter is false. This parameter is empty when the success parameter is true.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The business status code. This is always 200. Use the success parameter to determine if the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

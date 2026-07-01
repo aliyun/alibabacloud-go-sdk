@@ -24,23 +24,34 @@ type iValidateDeploymentDraftAsyncResponseBody interface {
 }
 
 type ValidateDeploymentDraftAsyncResponseBody struct {
+	// The response data.
 	Data *ValidateDeploymentDraftAsyncResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code. This parameter is returned when the request fails. If the request is successful, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message. This parameter is returned when the request fails. If the request is successful, this parameter is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code. This is always 200. Use the success parameter to determine if the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,6 +130,8 @@ func (s *ValidateDeploymentDraftAsyncResponseBody) Validate() error {
 }
 
 type ValidateDeploymentDraftAsyncResponseBodyData struct {
+	// The ID of the asynchronous ticket. Use this ID to query the result of the asynchronous operation.
+	//
 	// example:
 	//
 	// b3dcdb25-bf36-457d-92ba-a36077e8****

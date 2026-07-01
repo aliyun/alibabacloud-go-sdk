@@ -21,7 +21,7 @@ type SubmitSqlPreviewHeaders struct {
 	//
 	// example:
 	//
-	// a14bd5d90a****
+	// aaych***uijn
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

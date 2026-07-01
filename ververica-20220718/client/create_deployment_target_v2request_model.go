@@ -16,7 +16,10 @@ type iCreateDeploymentTargetV2Request interface {
 }
 
 type CreateDeploymentTargetV2Request struct {
+	// The resources for the deployment target.
 	Body *Resource `json:"body,omitempty" xml:"body,omitempty"`
+	// The name of the deployment target.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -19,10 +19,22 @@ type iJobDiagnosisSymptom interface {
 
 type JobDiagnosisSymptom struct {
 	// The diagnostic result.
+	//
+	// example:
+	//
+	// JM资源配置过低导致作业启动慢
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The diagnostic task name.
+	//
+	// example:
+	//
+	// 启动速度分析
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The fixing suggestions.
+	//
+	// example:
+	//
+	// 将 JOBManager 内存从 1Gi 改为 4Gi
 	Recommendation *string `json:"recommendation,omitempty" xml:"recommendation,omitempty"`
 }
 

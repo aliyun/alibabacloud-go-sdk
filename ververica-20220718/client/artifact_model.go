@@ -22,24 +22,27 @@ type iArtifact interface {
 }
 
 type Artifact struct {
+	// Required for a data ingestion job.
 	CdcYamlArtifact *CdcYamlArtifact `json:"cdcYamlArtifact,omitempty" xml:"cdcYamlArtifact,omitempty"`
-	// The information required for the SQL deployment.
+	// Required for a JAR job.
 	JarArtifact *JarArtifact `json:"jarArtifact,omitempty" xml:"jarArtifact,omitempty"`
-	// The type of the deployment. This parameter is required and cannot be modified after the deployment is created.
+	// Specifies the kind of job. This field is required and cannot be changed after creation.
 	//
-	// 	- SQLSCRIPT
+	// - SQLSCRIPT: An SQL job.
 	//
-	// 	- JAR
+	// - JAR: A JAR job.
 	//
-	// 	- PYTHON
+	// - PYTHON: A Python job.
+	//
+	// - CDCYAML: A CDC data ingestion job.
 	//
 	// example:
 	//
 	// SQLSCRIPT
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The information required for the Python deployment.
+	// Required for a Python job.
 	PythonArtifact *PythonArtifact `json:"pythonArtifact,omitempty" xml:"pythonArtifact,omitempty"`
-	// The information required for the JAR deployment.
+	// Required for an SQL job.
 	SqlArtifact *SqlArtifact `json:"sqlArtifact,omitempty" xml:"sqlArtifact,omitempty"`
 }
 

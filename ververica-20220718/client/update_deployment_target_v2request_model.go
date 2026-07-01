@@ -14,6 +14,7 @@ type iUpdateDeploymentTargetV2Request interface {
 }
 
 type UpdateDeploymentTargetV2Request struct {
+	// The deployment target resource.
 	Body *Resource `json:"body,omitempty" xml:"body,omitempty"`
 }
 

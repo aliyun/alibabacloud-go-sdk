@@ -20,15 +20,21 @@ type iGetEventsRequest interface {
 }
 
 type GetEventsRequest struct {
+	// The ID of the deployed job. If you specify this parameter, the operation returns events only for this job.
+	//
 	// example:
 	//
 	// 58718c99-3b29-4c5e-93bb-c9fc4ec6****
 	DeploymentId   *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
 	DeploymentName *string `json:"deploymentName,omitempty" xml:"deploymentName,omitempty"`
+	// The page number to retrieve. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10

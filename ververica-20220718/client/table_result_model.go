@@ -18,9 +18,11 @@ type iTableResult interface {
 }
 
 type TableResult struct {
+	// The ID of the collect sink operator.
 	CollectSinkOperatorId *string      `json:"collectSinkOperatorId,omitempty" xml:"collectSinkOperatorId,omitempty"`
 	RowUpdates            []*RowUpdate `json:"rowUpdates,omitempty" xml:"rowUpdates,omitempty" type:"Repeated"`
-	TableName             *string      `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	// The name of the table.
+	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 }
 
 func (s TableResult) String() string {

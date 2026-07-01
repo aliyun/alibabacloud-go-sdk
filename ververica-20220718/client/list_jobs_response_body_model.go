@@ -33,45 +33,45 @@ type iListJobsResponseBody interface {
 
 type ListJobsResponseBody struct {
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// 	- If the value of success was true, all jobs that meet the condition were returned.
+	// - An array of job instances for a successful request (when `success` is `true`).
 	//
-	// 	- If the value of success was false, a null value was returned.
+	// - An empty array for a failed request (when `success` is `false`).
 	Data []*Job `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 	- If the value of success was false, an error code was returned.
+	// - The error code for a failed request (when `success` is `false`).
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - An empty string if the request is successful (when `success` is `true`).
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 	- If the value of success was false, an error message was returned.
+	// - The error message for a failed request (when `success` is `false`).
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - An empty string if the request is successful (when `success` is `true`).
 	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The value was fixed to 200.
+	// A fixed value of 200.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The page number.
+	// The page number of the returned results.
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ type ListJobsResponseBody struct {
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that match the query.
 	//
 	// example:
 	//

@@ -24,23 +24,34 @@ type iDeleteSessionClusterResponseBody interface {
 }
 
 type DeleteSessionClusterResponseBody struct {
+	// The data structure of the deleted session cluster.
 	Data *SessionCluster `json:"data,omitempty" xml:"data,omitempty"`
+	// This parameter is not empty and indicates the error code if \\`success\\` is \\`false\\`. This parameter is empty if \\`success\\` is \\`true\\`.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// This parameter is not empty and indicates the error message if \\`success\\` is \\`false\\`. This parameter is empty if \\`success\\` is \\`true\\`.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code. A value of 200 is returned. The \\`success\\` parameter indicates whether the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-ABCD-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

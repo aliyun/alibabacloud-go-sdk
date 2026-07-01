@@ -24,23 +24,34 @@ type iUpdateSessionClusterResponseBody interface {
 }
 
 type UpdateSessionClusterResponseBody struct {
+	// The data structure of the updated session cluster.
 	Data *SessionCluster `json:"data,omitempty" xml:"data,omitempty"`
+	// The error code returned if the request fails. This parameter is empty if the request is successful.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message returned if the request fails. This parameter is empty if the request is successful.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code. The value is always 200. Use the \\`success\\` parameter to determine if the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1EF03B0C-F44F-47AD-BB48-D002D0F7B8C9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

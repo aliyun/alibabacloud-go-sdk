@@ -26,27 +26,44 @@ type iGetJobDiagnosisResponseBody interface {
 }
 
 type GetJobDiagnosisResponseBody struct {
+	// The details of the abnormal diagnostic items.
+	//
 	// example:
 	//
 	// “”
-	AccessDeniedDetail *string       `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Data               *JobDiagnosis `json:"data,omitempty" xml:"data,omitempty"`
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// The diagnostics result.
+	//
+	// example:
+	//
+	// As shown in the response example.
+	Data *JobDiagnosis `json:"data,omitempty" xml:"data,omitempty"`
+	// The error code. This parameter is not empty when success is false, indicating a business error code. This parameter is empty when success is true.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message. This parameter is not empty when success is false, indicating a business error message. This parameter is empty when success is true.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code, which is always 200. Use the success parameter to determine whether the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

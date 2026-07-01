@@ -86,7 +86,7 @@ type Connector struct {
 	//
 	// example:
 	//
-	// flase
+	// false
 	Source *bool `json:"source,omitempty" xml:"source,omitempty"`
 	// The array of formats that are supported by the connector.
 	SupportedFormats []*string `json:"supportedFormats,omitempty" xml:"supportedFormats,omitempty" type:"Repeated"`

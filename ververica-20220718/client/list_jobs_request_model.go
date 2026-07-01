@@ -22,7 +22,7 @@ type iListJobsRequest interface {
 }
 
 type ListJobsRequest struct {
-	// The deployment ID.
+	// The ID of the deployment.
 	//
 	// This parameter is required.
 	//
@@ -30,27 +30,19 @@ type ListJobsRequest struct {
 	//
 	// 58718c99-3b29-4c5e-93bb-c9fc4ec6****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	// The page number. Minimum value: 1. Default value: 1.
+	// The page number to return. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The number of entries per page. Maximum value: 100. Minimum value: 1. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The collation.
-	//
-	// Valid values:
-	//
-	// 	- gmt_create
-	//
-	// 	- job_id
-	//
-	// 	- status
+	// The field to sort the results by.
 	//
 	// example:
 	//

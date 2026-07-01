@@ -14,6 +14,7 @@ type iUpdateSessionClusterRequest interface {
 }
 
 type UpdateSessionClusterRequest struct {
+	// The data structure of the session cluster to be updated.
 	Body *SessionCluster `json:"body,omitempty" xml:"body,omitempty"`
 }
 

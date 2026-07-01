@@ -14,6 +14,8 @@ type iCreateDeploymentDraftRequest interface {
 }
 
 type CreateDeploymentDraftRequest struct {
+	// The data structure of the job draft.
+	//
 	// This parameter is required.
 	Body *DeploymentDraft `json:"body,omitempty" xml:"body,omitempty"`
 }

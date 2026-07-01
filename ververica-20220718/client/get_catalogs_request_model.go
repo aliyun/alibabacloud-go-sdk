@@ -14,6 +14,8 @@ type iGetCatalogsRequest interface {
 }
 
 type GetCatalogsRequest struct {
+	// The name of the catalog. If this parameter is left empty, all catalogs are listed.
+	//
 	// example:
 	//
 	// paimon

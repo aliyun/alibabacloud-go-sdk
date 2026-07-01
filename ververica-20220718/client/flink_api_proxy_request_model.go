@@ -23,10 +23,6 @@ type FlinkApiProxyRequest struct {
 	// The path of the Flink UI.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// /jobs/4df35f8e54554b23bf7dcd38a151****
 	FlinkApiPath *string `json:"flinkApiPath,omitempty" xml:"flinkApiPath,omitempty"`
 	// The name of the namespace.
 	//
@@ -46,9 +42,9 @@ type FlinkApiProxyRequest struct {
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// 	- jobs
+	// - jobs
 	//
-	// 	- sessionclusters
+	// - sessionclusters
 	//
 	// This parameter is required.
 	//

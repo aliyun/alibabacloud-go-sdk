@@ -37,6 +37,10 @@ type Property struct {
 	// flase
 	DefinesFormat *bool `json:"definesFormat,omitempty" xml:"definesFormat,omitempty"`
 	// The description of the parameter.
+	//
+	// example:
+	//
+	// 用户名
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name of the parameter key.
 	//

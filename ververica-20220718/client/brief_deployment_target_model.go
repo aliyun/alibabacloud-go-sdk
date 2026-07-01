@@ -26,7 +26,7 @@ type BriefDeploymentTarget struct {
 	//
 	// example:
 	//
-	// vvp-workload
+	// default-queue
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

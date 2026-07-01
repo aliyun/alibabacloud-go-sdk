@@ -18,14 +18,20 @@ type iListScheduledPlanRequest interface {
 }
 
 type ListScheduledPlanRequest struct {
+	// The ID of the job.
+	//
 	// example:
 	//
 	// 737d0921-c5ac-47fc-9ba9-07a1e0b4****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// The page number to return. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries to return on each page. The default value is 10. The maximum value is 100.
+	//
 	// example:
 	//
 	// 10

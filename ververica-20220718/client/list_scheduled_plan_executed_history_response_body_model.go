@@ -30,35 +30,55 @@ type iListScheduledPlanExecutedHistoryResponseBody interface {
 }
 
 type ListScheduledPlanExecutedHistoryResponseBody struct {
+	// The list of jobs that meet the filter criteria. This parameter is returned only when the request is successful.
 	Data []*ScheduledPlanExecutedInfo `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The error code that is returned if the request fails.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message that is returned if the request fails.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code. The value is always 200. Use the \\`success\\` parameter to determine whether the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries on the returned page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
-	Success   *bool  `json:"success,omitempty" xml:"success,omitempty"`
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of entries that meet the filter criteria.
+	//
+	// example:
+	//
+	// 4
 	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 

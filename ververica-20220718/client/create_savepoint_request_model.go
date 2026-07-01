@@ -27,12 +27,16 @@ type CreateSavepointRequest struct {
 	// 58718c99-3b29-4c5e-93bb-c9fc4ec6****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
 	// The description of the savepoint.
+	//
+	// example:
+	//
+	// Job snapshot description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to use the native format mode. Valid values:
 	//
-	// 	- true: The native format mode is used.
+	// - true: The native format mode is used.
 	//
-	// 	- false: The native format mode is not used.
+	// - false: The native format mode is not used.
 	//
 	// example:
 	//

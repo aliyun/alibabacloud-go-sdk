@@ -24,25 +24,25 @@ type iFlinkApiProxyResponseBody interface {
 }
 
 type FlinkApiProxyResponseBody struct {
-	// 	- If the value of success was true, the result of the proxy request was returned.
+	// - If the value of success was true, the result of the proxy request was returned.
 	//
-	// 	- If the value of success was false, a null value was returned.
+	// - If the value of success was false, a null value was returned.
 	//
 	// example:
 	//
 	// { "jobs": [ { "jid": "4df35f8e54554b23bf7dcd38a151****", "name": "69d001d5-419a-4bfc-9c2e-849cacd3****", "state": "RUNNING", "start-time": 1659154942068, "end-time": -1, "duration": 188161756, "last-modification": 1659154968305, "tasks": { "total": 2, "created": 0, "scheduled": 0, "deploying": 0, "running": 2, "finished": 0, "canceling": 0, "canceled": 0, "failed": 0, "reconciling": 0, "initializing": 0 } } ] }
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// 	- If the value of success was false, an error code was returned.
+	// - If the value of success was false, an error code was returned.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - If the value of success was true, a null value was returned.
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 	- If the value of success was false, an error message was returned.
+	// - If the value of success was false, an error message was returned.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - If the value of success was true, a null value was returned.
 	//
 	// example:
 	//

@@ -18,10 +18,14 @@ type iWatermarkSpec interface {
 }
 
 type WatermarkSpec struct {
+	// The column of the event time attribute.
+	//
 	// example:
 	//
 	// time
 	Column *string `json:"column,omitempty" xml:"column,omitempty"`
+	// The watermark expression.
+	//
 	// example:
 	//
 	// INTERVAL \\"5\\" SECOND

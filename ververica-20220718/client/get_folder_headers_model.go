@@ -17,6 +17,8 @@ type iGetFolderHeaders interface {
 
 type GetFolderHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// Workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

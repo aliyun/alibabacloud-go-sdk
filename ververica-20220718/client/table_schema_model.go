@@ -18,9 +18,12 @@ type iTableSchema interface {
 }
 
 type TableSchema struct {
+	// The ID of the collect sink operator.
 	CollectSinkOperatorId *string `json:"collectSinkOperatorId,omitempty" xml:"collectSinkOperatorId,omitempty"`
-	Schema                *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
-	TableName             *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	// The schema of the table.
+	Schema *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
+	// The name of the table.
+	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 }
 
 func (s TableSchema) String() string {

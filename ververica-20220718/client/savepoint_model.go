@@ -49,6 +49,10 @@ type Savepoint struct {
 	// 1d716b22-6aad-4be2-85c2-50cfc757****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
 	// The description of the savepoint.
+	//
+	// example:
+	//
+	// 作业快照1
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The job ID.
 	//
@@ -88,11 +92,11 @@ type Savepoint struct {
 	SavepointLocation *string `json:"savepointLocation,omitempty" xml:"savepointLocation,omitempty"`
 	// The method that is used to create a savepoint.
 	//
-	// 	- `USER_REQUEST`: The savepoint is manually created.
+	// - `USER_REQUEST`: The savepoint is manually created.
 	//
-	// 	- `STOP_WITH_SAVEPOINT`: The savepoint is created when you cancel the deployment.
+	// - `STOP_WITH_SAVEPOINT`: The savepoint is created when you cancel the deployment.
 	//
-	// 	- `RETAINED_CHECKPOINT`: The savepoint is created based on the returned checkpoint.
+	// - `RETAINED_CHECKPOINT`: The savepoint is created based on the returned checkpoint.
 	//
 	// example:
 	//

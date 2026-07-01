@@ -26,17 +26,17 @@ type iGetUdfArtifactsResponseBody interface {
 type GetUdfArtifactsResponseBody struct {
 	// If the value of success was true, the details of the JAR or Python file that corresponds to the UDF were returned. If the value of success was false, a null value was returned.
 	Data []*UdfArtifact `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 	- If the value of success was false, an error code was returned.
+	// - If the value of success was false, an error code was returned.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - If the value of success was true, a null value was returned.
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 	- If the value of success was false, an error message was returned.
+	// - If the value of success was false, an error message was returned.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - If the value of success was true, a null value was returned.
 	//
 	// example:
 	//

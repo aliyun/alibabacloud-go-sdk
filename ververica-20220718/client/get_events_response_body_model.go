@@ -30,35 +30,52 @@ type iGetEventsResponseBody interface {
 }
 
 type GetEventsResponseBody struct {
+	// A list of runtime events matching the filter criteria. Returned only when the request is successful (`success` is `true`).
 	Data []*Event `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The business error code. Returned only when the request fails (that is, `success` is `false`).
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The business error message. Returned only when the request fails (that is, `success` is `false`).
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The business status code. This field always returns `200`. To confirm the request\\"s success, check the `success` parameter.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries on this page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the business request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of entries that match the query.
+	//
 	// example:
 	//
 	// 4

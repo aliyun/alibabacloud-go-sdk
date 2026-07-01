@@ -18,10 +18,6 @@ type iCancelSqlPreviewHeaders interface {
 type CancelSqlPreviewHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// a14bd5d90a****
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

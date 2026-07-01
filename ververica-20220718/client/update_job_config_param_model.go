@@ -14,6 +14,8 @@ type iUpdateJobConfigParam interface {
 }
 
 type UpdateJobConfigParam struct {
+	// The job parameter configuration.
+	//
 	// example:
 	//
 	// {"table.exec.parallelism：4"}

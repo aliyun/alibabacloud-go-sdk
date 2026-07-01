@@ -22,19 +22,19 @@ type FetchSqlPreviewResultsRequest struct {
 	//
 	// example:
 	//
-	// 19426537348647121698828223472
+	// 00000000-0000-0000-0000-00000022****
 	QueryId *string `json:"queryId,omitempty" xml:"queryId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test-session
+	// session-test
 	SessionClusterName *string `json:"sessionClusterName,omitempty" xml:"sessionClusterName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 5f581795-4c5b-43f1-bdae-d7b0871080a1
+	// 00000000-0000-0000-0000-00000033****
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 }
 

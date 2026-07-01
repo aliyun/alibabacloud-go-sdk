@@ -32,11 +32,11 @@ type AsyncResourcePlanOperationResult struct {
 	Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
 	// The status of the ticket that applies for an asynchronous operation. Valid values:
 	//
-	// 	- EXECUTING
+	// - EXECUTING
 	//
-	// 	- FINISHED
+	// - FINISHED
 	//
-	// 	- FAILED
+	// - FAILED
 	//
 	// example:
 	//

@@ -24,26 +24,38 @@ type iGetDeploymentsByIpRequest interface {
 }
 
 type GetDeploymentsByIpRequest struct {
+	// The destination IP address. This parameter is used to match the destination sink address of a job.
+	//
 	// example:
 	//
 	// 10.100.2.200
 	DstIp *string `json:"dstIp,omitempty" xml:"dstIp,omitempty"`
+	// The destination port. Use this parameter with dstIp.
+	//
 	// example:
 	//
 	// 9092
 	DstPort *string `json:"dstPort,omitempty" xml:"dstPort,omitempty"`
+	// Specifies whether to exclude the job summary from the response. If you exclude the summary, only deployment information is returned. This improves performance.
+	//
 	// example:
 	//
 	// false
 	IgnoreJobSummary *bool `json:"ignoreJobSummary,omitempty" xml:"ignoreJobSummary,omitempty"`
+	// Specifies whether to exclude resource configuration information. This reduces the size of the returned data.
+	//
 	// example:
 	//
 	// false
 	IgnoreResourceSetting *bool `json:"ignoreResourceSetting,omitempty" xml:"ignoreResourceSetting,omitempty"`
+	// The source IP address. This parameter is used to match the input source address of a job.
+	//
 	// example:
 	//
 	// 192.168.1.100
 	SrcIp *string `json:"srcIp,omitempty" xml:"srcIp,omitempty"`
+	// The source port. Use this parameter with srcIp for an exact match of the connection.
+	//
 	// example:
 	//
 	// 54321

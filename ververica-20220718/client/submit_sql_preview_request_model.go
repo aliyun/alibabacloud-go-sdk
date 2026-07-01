@@ -21,7 +21,7 @@ type SubmitSqlPreviewRequest struct {
 	//
 	// example:
 	//
-	// test-session
+	// sessioncluster-test
 	SessionClusterName *string `json:"sessionClusterName,omitempty" xml:"sessionClusterName,omitempty"`
 }
 

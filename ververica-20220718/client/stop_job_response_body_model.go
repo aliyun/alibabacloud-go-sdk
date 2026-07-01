@@ -27,27 +27,27 @@ type iStopJobResponseBody interface {
 
 type StopJobResponseBody struct {
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// 	- If the value of success was true, the job that you stopped was returned.
+	// - The details of the stopped job instance, returned if the request succeeds.
 	//
-	// 	- If the value of success was false, a null value was returned.
+	// - Empty if the request fails.
 	Data *Job `json:"data,omitempty" xml:"data,omitempty"`
-	// 	- If the value of success was false, an error code was returned.
+	// - The error code that is returned if the request fails.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - Empty if the request succeeds.
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 	- If the value of success was false, an error message was returned.
+	// - The error message that is returned if the request fails.
 	//
-	// 	- If the value of success was true, a null value was returned.
+	// - Empty if the request succeeds.
 	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The value was fixed to 200.
+	// The value is fixed at 200.
 	//
 	// example:
 	//
@@ -59,7 +59,7 @@ type StopJobResponseBody struct {
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request succeeded.
 	//
 	// example:
 	//

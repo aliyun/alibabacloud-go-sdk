@@ -19,22 +19,10 @@ type iCancelSqlPreviewRequest interface {
 
 type CancelSqlPreviewRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 19426537348647121698828223472
 	QueryId *string `json:"queryId,omitempty" xml:"queryId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test-session
 	SessionClusterName *string `json:"sessionClusterName,omitempty" xml:"sessionClusterName,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// a737f33bbdb7419db9ee8037bb51e73a
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 }
 

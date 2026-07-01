@@ -14,6 +14,8 @@ type iUpdateDeploymentDraftRequest interface {
 }
 
 type UpdateDeploymentDraftRequest struct {
+	// The information to update the job draft.
+	//
 	// This parameter is required.
 	Body *DeploymentDraft `json:"body,omitempty" xml:"body,omitempty"`
 }

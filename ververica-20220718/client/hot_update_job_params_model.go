@@ -16,7 +16,9 @@ type iHotUpdateJobParams interface {
 }
 
 type HotUpdateJobParams struct {
-	RescaleJobParam      *RescaleJobParam      `json:"rescaleJobParam,omitempty" xml:"rescaleJobParam,omitempty"`
+	// 资源动态更新。
+	RescaleJobParam *RescaleJobParam `json:"rescaleJobParam,omitempty" xml:"rescaleJobParam,omitempty"`
+	// 运行参数动态更新。
 	UpdateJobConfigParam *UpdateJobConfigParam `json:"updateJobConfigParam,omitempty" xml:"updateJobConfigParam,omitempty"`
 }
 

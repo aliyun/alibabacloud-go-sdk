@@ -24,23 +24,34 @@ type iUpdateDeploymentTargetResponseBody interface {
 }
 
 type UpdateDeploymentTargetResponseBody struct {
+	// The updated deployment target.
 	Data *DeploymentTarget `json:"data,omitempty" xml:"data,omitempty"`
+	// The error code returned if the request fails. This parameter is empty if the request is successful.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message returned if the request fails. This parameter is empty if the request is successful.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The HTTP status code. A value of 200 is always returned. Use the \\`success\\` parameter to determine whether the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

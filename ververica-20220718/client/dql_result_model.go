@@ -18,9 +18,12 @@ type iDqlResult interface {
 }
 
 type DqlResult struct {
-	StatementIndex      *int32               `json:"statementIndex,omitempty" xml:"statementIndex,omitempty"`
+	// The statement index.
+	StatementIndex *int32 `json:"statementIndex,omitempty" xml:"statementIndex,omitempty"`
+	// The submit preview results.
 	SubmitPreviewResult *SubmitPreviewResult `json:"submitPreviewResult,omitempty" xml:"submitPreviewResult,omitempty"`
-	TableResults        []*TableResult       `json:"tableResults,omitempty" xml:"tableResults,omitempty" type:"Repeated"`
+	// The table results.
+	TableResults []*TableResult `json:"tableResults,omitempty" xml:"tableResults,omitempty" type:"Repeated"`
 }
 
 func (s DqlResult) String() string {

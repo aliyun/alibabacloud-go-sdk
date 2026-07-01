@@ -24,9 +24,6 @@ type iSubmitSqlPreviewResponseBody interface {
 }
 
 type SubmitSqlPreviewResponseBody struct {
-	// example:
-	//
-	// "[main] INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] - --------------------------------------------------------------------------------\\n2024-05-22 11:46:39,871 [main] INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint"
 	Data *SubmitPreviewResult `json:"data,omitempty" xml:"data,omitempty"`
 	// example:
 	//
@@ -44,10 +41,7 @@ type SubmitSqlPreviewResponseBody struct {
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s SubmitSqlPreviewResponseBody) String() string {

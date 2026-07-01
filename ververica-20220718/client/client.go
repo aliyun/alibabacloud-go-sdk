@@ -25,6 +25,26 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":             dara.String("ververica.us-west-1.aliyuncs.com"),
+		"us-east-1":             dara.String("ververica.us-east-1.aliyuncs.com"),
+		"eu-west-1":             dara.String("ververica.eu-west-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("ververica.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("ververica.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("ververica.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("ververica.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("ververica.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai":           dara.String("ververica.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":            dara.String("ververica.cn-qingdao.aliyuncs.com"),
+		"cn-hongkong":           dara.String("ververica.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("ververica.cn-hangzhou.aliyuncs.com"),
+		"cn-chengdu":            dara.String("ververica.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":            dara.String("ververica.cn-beijing.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("ververica.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("ververica.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("ververica.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("ververica.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +78,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Executes a scheduled plan.
+// This operation applies a scheduled plan.
 //
 // @param headers - ApplyScheduledPlanHeaders
 //
@@ -100,7 +120,7 @@ func (client *Client) ApplyScheduledPlanWithOptions(namespace *string, scheduled
 
 // Summary:
 //
-// Executes a scheduled plan.
+// This operation applies a scheduled plan.
 //
 // @return ApplyScheduledPlanResponse
 func (client *Client) ApplyScheduledPlan(namespace *string, scheduledPlanId *string) (_result *ApplyScheduledPlanResponse, _err error) {
@@ -270,7 +290,7 @@ func (client *Client) CreateDeployment(namespace *string, request *CreateDeploym
 
 // Summary:
 //
-// Creates an SQL draft.
+// Creates a draft for an SQL or data ingestion job.
 //
 // @param request - CreateDeploymentDraftRequest
 //
@@ -321,7 +341,7 @@ func (client *Client) CreateDeploymentDraftWithOptions(namespace *string, reques
 
 // Summary:
 //
-// Creates an SQL draft.
+// Creates a draft for an SQL or data ingestion job.
 //
 // @param request - CreateDeploymentDraftRequest
 //
@@ -416,7 +436,11 @@ func (client *Client) CreateDeploymentTarget(namespace *string, request *CreateD
 
 // Summary:
 //
-// 创建部署目标V2
+// Creates a deployment target.
+//
+// Description:
+//
+// The previous API for creating deployment targets supported only fixed or elastic resources. This new API supports fixed resources, elastic resources, and mixed mode.
 //
 // @param request - CreateDeploymentTargetV2Request
 //
@@ -473,7 +497,11 @@ func (client *Client) CreateDeploymentTargetV2WithOptions(namespace *string, req
 
 // Summary:
 //
-// 创建部署目标V2
+// Creates a deployment target.
+//
+// Description:
+//
+// The previous API for creating deployment targets supported only fixed or elastic resources. This new API supports fixed resources, elastic resources, and mixed mode.
 //
 // @param request - CreateDeploymentTargetV2Request
 //
@@ -715,7 +743,7 @@ func (client *Client) CreateSavepoint(namespace *string, request *CreateSavepoin
 
 // Summary:
 //
-// Creates a scheduled tuning plan.
+// Creates a scheduled plan.
 //
 // @param request - CreateScheduledPlanRequest
 //
@@ -766,7 +794,7 @@ func (client *Client) CreateScheduledPlanWithOptions(namespace *string, request 
 
 // Summary:
 //
-// Creates a scheduled tuning plan.
+// Creates a scheduled plan.
 //
 // @param request - CreateScheduledPlanRequest
 //
@@ -785,7 +813,7 @@ func (client *Client) CreateScheduledPlan(namespace *string, request *CreateSche
 
 // Summary:
 //
-// # Create a session cluster
+// Creates a session cluster.
 //
 // @param request - CreateSessionClusterRequest
 //
@@ -836,7 +864,7 @@ func (client *Client) CreateSessionClusterWithOptions(namespace *string, request
 
 // Summary:
 //
-// # Create a session cluster
+// Creates a session cluster.
 //
 // @param request - CreateSessionClusterRequest
 //
@@ -1113,7 +1141,7 @@ func (client *Client) DeleteDeployment(namespace *string, deploymentId *string) 
 
 // Summary:
 //
-// Deletes an SQL draft. If the draft is deployed as a deployment and the deployment is published or the deployment status is RUNNING, the deployment for the draft cannot be deleted.
+// Deletes a draft of an SQL or data ingestion job. The draft cannot be deleted if it has any published or running deployment.
 //
 // @param headers - DeleteDeploymentDraftHeaders
 //
@@ -1155,7 +1183,7 @@ func (client *Client) DeleteDeploymentDraftWithOptions(namespace *string, deploy
 
 // Summary:
 //
-// Deletes an SQL draft. If the draft is deployed as a deployment and the deployment is published or the deployment status is RUNNING, the deployment for the draft cannot be deleted.
+// Deletes a draft of an SQL or data ingestion job. The draft cannot be deleted if it has any published or running deployment.
 //
 // @return DeleteDeploymentDraftResponse
 func (client *Client) DeleteDeploymentDraft(namespace *string, deploymentDraftId *string) (_result *DeleteDeploymentDraftResponse, _err error) {
@@ -1467,7 +1495,7 @@ func (client *Client) DeleteSavepoint(namespace *string, savepointId *string) (_
 
 // Summary:
 //
-// Deletes a scheduled tuning plan.
+// Deletes a scheduled plan.
 //
 // @param headers - DeleteScheduledPlanHeaders
 //
@@ -1509,7 +1537,7 @@ func (client *Client) DeleteScheduledPlanWithOptions(namespace *string, schedule
 
 // Summary:
 //
-// Deletes a scheduled tuning plan.
+// Deletes a scheduled plan.
 //
 // @return DeleteScheduledPlanResponse
 func (client *Client) DeleteScheduledPlan(namespace *string, scheduledPlanId *string) (_result *DeleteScheduledPlanResponse, _err error) {
@@ -1585,7 +1613,7 @@ func (client *Client) DeleteSessionCluster(namespace *string, sessionClusterName
 
 // Summary:
 //
-// Deletes resources of a user-defined function (UDF) from a namespace. Before you delete the resources of a UDF, you must delete the UDF.
+// Deletes a user-defined function (UDF) resource. You must delete all UDFs registered with the resource before you can delete the resource.
 //
 // @param headers - DeleteUdfArtifactHeaders
 //
@@ -1627,7 +1655,7 @@ func (client *Client) DeleteUdfArtifactWithOptions(namespace *string, udfArtifac
 
 // Summary:
 //
-// Deletes resources of a user-defined function (UDF) from a namespace. Before you delete the resources of a UDF, you must delete the UDF.
+// Deletes a user-defined function (UDF) resource. You must delete all UDFs registered with the resource before you can delete the resource.
 //
 // @return DeleteUdfArtifactResponse
 func (client *Client) DeleteUdfArtifact(namespace *string, udfArtifactName *string) (_result *DeleteUdfArtifactResponse, _err error) {
@@ -1782,7 +1810,7 @@ func (client *Client) DeleteVariable(namespace *string, name *string) (_result *
 
 // Summary:
 //
-// Deploys an SQL draft.
+// Deploys a draft of an SQL job.
 //
 // @param request - DeployDeploymentDraftAsyncRequest
 //
@@ -1833,7 +1861,7 @@ func (client *Client) DeployDeploymentDraftAsyncWithOptions(namespace *string, r
 
 // Summary:
 //
-// Deploys an SQL draft.
+// Deploys a draft of an SQL job.
 //
 // @param request - DeployDeploymentDraftAsyncRequest
 //
@@ -1852,7 +1880,7 @@ func (client *Client) DeployDeploymentDraftAsync(namespace *string, request *Dep
 
 // Summary:
 //
-// Executes SQL statements to query the metadata. Only DDL and DML statements are supported. DQL statements are not supported.
+// Executes Data Definition Language (DDL) and Data Manipulation Language (DML) statements on metadata. Data Query Language (DQL) is not supported.
 //
 // @param request - ExecuteSqlStatementRequest
 //
@@ -1903,7 +1931,7 @@ func (client *Client) ExecuteSqlStatementWithOptions(namespace *string, request 
 
 // Summary:
 //
-// Executes SQL statements to query the metadata. Only DDL and DML statements are supported. DQL statements are not supported.
+// Executes Data Definition Language (DDL) and Data Manipulation Language (DML) statements on metadata. Data Query Language (DQL) is not supported.
 //
 // @param request - ExecuteSqlStatementRequest
 //
@@ -2162,7 +2190,7 @@ func (client *Client) GenerateResourcePlanWithFlinkConfAsync(namespace *string, 
 
 // Summary:
 //
-// Queries the scheduled plan of an application.
+// Retrieves the execution plan for an application.
 //
 // @param request - GetAppliedScheduledPlanRequest
 //
@@ -2218,7 +2246,7 @@ func (client *Client) GetAppliedScheduledPlanWithOptions(namespace *string, requ
 
 // Summary:
 //
-// Queries the scheduled plan of an application.
+// Retrieves the execution plan for an application.
 //
 // @param request - GetAppliedScheduledPlanRequest
 //
@@ -2237,7 +2265,7 @@ func (client *Client) GetAppliedScheduledPlan(namespace *string, request *GetApp
 
 // Summary:
 //
-// Obtains details of the specified catalog or all catalogs.
+// Retrieves the details of a specified catalog or all catalogs.
 //
 // @param request - GetCatalogsRequest
 //
@@ -2293,7 +2321,7 @@ func (client *Client) GetCatalogsWithOptions(namespace *string, request *GetCata
 
 // Summary:
 //
-// Obtains details of the specified catalog or all catalogs.
+// Retrieves the details of a specified catalog or all catalogs.
 //
 // @param request - GetCatalogsRequest
 //
@@ -2312,7 +2340,7 @@ func (client *Client) GetCatalogs(namespace *string, request *GetCatalogsRequest
 
 // Summary:
 //
-// Obtains the information about a database in a specified catalog or lists all databases in a specified catalog.
+// Retrieves information about one or more databases in a specified catalog.
 //
 // @param request - GetDatabasesRequest
 //
@@ -2368,7 +2396,7 @@ func (client *Client) GetDatabasesWithOptions(namespace *string, catalogName *st
 
 // Summary:
 //
-// Obtains the information about a database in a specified catalog or lists all databases in a specified catalog.
+// Retrieves information about one or more databases in a specified catalog.
 //
 // @param request - GetDatabasesRequest
 //
@@ -2387,7 +2415,7 @@ func (client *Client) GetDatabases(namespace *string, catalogName *string, reque
 
 // Summary:
 //
-// Obtains the deployment result based on the ID of the asynchronous ticket.
+// Checks the deployment result of a job draft.
 //
 // @param headers - GetDeployDeploymentDraftResultHeaders
 //
@@ -2429,7 +2457,7 @@ func (client *Client) GetDeployDeploymentDraftResultWithOptions(namespace *strin
 
 // Summary:
 //
-// Obtains the deployment result based on the ID of the asynchronous ticket.
+// Checks the deployment result of a job draft.
 //
 // @return GetDeployDeploymentDraftResultResponse
 func (client *Client) GetDeployDeploymentDraftResult(namespace *string, ticketId *string) (_result *GetDeployDeploymentDraftResultResponse, _err error) {
@@ -2505,7 +2533,7 @@ func (client *Client) GetDeployment(namespace *string, deploymentId *string) (_r
 
 // Summary:
 //
-// Obtains the details of an SQL draft.
+// Retrieves the details of an SQL or data ingestion job draft.
 //
 // @param headers - GetDeploymentDraftHeaders
 //
@@ -2547,7 +2575,7 @@ func (client *Client) GetDeploymentDraftWithOptions(namespace *string, deploymen
 
 // Summary:
 //
-// Obtains the details of an SQL draft.
+// Retrieves the details of an SQL or data ingestion job draft.
 //
 // @return GetDeploymentDraftResponse
 func (client *Client) GetDeploymentDraft(namespace *string, deploymentDraftId *string) (_result *GetDeploymentDraftResponse, _err error) {
@@ -2564,7 +2592,7 @@ func (client *Client) GetDeploymentDraft(namespace *string, deploymentDraftId *s
 
 // Summary:
 //
-// Obtains the lock that is used to edit a draft. This can prevent operations performed on the page and API operations from affecting each other.
+// Before using an API to edit, validate, or deploy a job draft, you must acquire an edit lock to prevent conflicts between user interface (UI) and API operations. Acquiring this lock requires either the "Develop SQL/YAML Job (Create, Edit)" or "Unlock SQL/YAML Job Draft" permission.
 //
 // @param request - GetDeploymentDraftLockRequest
 //
@@ -2620,7 +2648,7 @@ func (client *Client) GetDeploymentDraftLockWithOptions(namespace *string, reque
 
 // Summary:
 //
-// Obtains the lock that is used to edit a draft. This can prevent operations performed on the page and API operations from affecting each other.
+// Before using an API to edit, validate, or deploy a job draft, you must acquire an edit lock to prevent conflicts between user interface (UI) and API operations. Acquiring this lock requires either the "Develop SQL/YAML Job (Create, Edit)" or "Unlock SQL/YAML Job Draft" permission.
 //
 // @param request - GetDeploymentDraftLockRequest
 //
@@ -2639,7 +2667,11 @@ func (client *Client) GetDeploymentDraftLock(namespace *string, request *GetDepl
 
 // Summary:
 //
-// 通过Ip获取已部署作业
+// Gets a list of deployed jobs and their information on a node by a specified IP address.
+//
+// Description:
+//
+// Use this operation to query for associated Flink deployments based on the source or destination IP address and port of a network connection.
 //
 // @param request - GetDeploymentsByIpRequest
 //
@@ -2715,7 +2747,11 @@ func (client *Client) GetDeploymentsByIpWithOptions(namespace *string, request *
 
 // Summary:
 //
-// 通过Ip获取已部署作业
+// Gets a list of deployed jobs and their information on a node by a specified IP address.
+//
+// Description:
+//
+// Use this operation to query for associated Flink deployments based on the source or destination IP address and port of a network connection.
 //
 // @param request - GetDeploymentsByIpRequest
 //
@@ -2734,7 +2770,11 @@ func (client *Client) GetDeploymentsByIp(namespace *string, request *GetDeployme
 
 // Summary:
 //
-// 通过标签获取已部署作业
+// Queries a list of deployed jobs and their information by a specified label.
+//
+// Description:
+//
+// Queries a list of deployed jobs and their details by a specified job label. The query performs an exact match on the `labelKey` and `labelValue`.
 //
 // @param request - GetDeploymentsByLabelRequest
 //
@@ -2802,7 +2842,11 @@ func (client *Client) GetDeploymentsByLabelWithOptions(namespace *string, reques
 
 // Summary:
 //
-// 通过标签获取已部署作业
+// Queries a list of deployed jobs and their information by a specified label.
+//
+// Description:
+//
+// Queries a list of deployed jobs and their details by a specified job label. The query performs an exact match on the `labelKey` and `labelValue`.
 //
 // @param request - GetDeploymentsByLabelRequest
 //
@@ -2821,7 +2865,7 @@ func (client *Client) GetDeploymentsByLabel(namespace *string, request *GetDeplo
 
 // Summary:
 //
-// 通过名称获取已部署作业
+// Retrieves deployed job instances by name from a specified workspace and namespace.
 //
 // @param request - GetDeploymentsByNameRequest
 //
@@ -2881,7 +2925,7 @@ func (client *Client) GetDeploymentsByNameWithOptions(namespace *string, deploym
 
 // Summary:
 //
-// 通过名称获取已部署作业
+// Retrieves deployed job instances by name from a specified workspace and namespace.
 //
 // @param request - GetDeploymentsByNameRequest
 //
@@ -2900,7 +2944,7 @@ func (client *Client) GetDeploymentsByName(namespace *string, deploymentName *st
 
 // Summary:
 //
-// Queries events.
+// Retrieves runtime events.
 //
 // @param request - GetEventsRequest
 //
@@ -2968,7 +3012,7 @@ func (client *Client) GetEventsWithOptions(namespace *string, request *GetEvents
 
 // Summary:
 //
-// Queries events.
+// Retrieves runtime events.
 //
 // @param request - GetEventsRequest
 //
@@ -2987,7 +3031,7 @@ func (client *Client) GetEvents(namespace *string, request *GetEventsRequest) (_
 
 // Summary:
 //
-// Obtains the details of a folder.
+// Retrieves specific folder information.
 //
 // @param request - GetFolderRequest
 //
@@ -3047,7 +3091,7 @@ func (client *Client) GetFolderWithOptions(namespace *string, request *GetFolder
 
 // Summary:
 //
-// Obtains the details of a folder.
+// Retrieves specific folder information.
 //
 // @param request - GetFolderRequest
 //
@@ -3125,7 +3169,7 @@ func (client *Client) GetGenerateResourcePlanResult(namespace *string, ticketId 
 
 // Summary:
 //
-// Obtains the dynamic update result of a deployment when you dynamically update the deployment.
+// Retrieves the result of a hot update for a job.
 //
 // @param headers - GetHotUpdateJobResultHeaders
 //
@@ -3167,7 +3211,7 @@ func (client *Client) GetHotUpdateJobResultWithOptions(namespace *string, jobHot
 
 // Summary:
 //
-// Obtains the dynamic update result of a deployment when you dynamically update the deployment.
+// Retrieves the result of a hot update for a job.
 //
 // @return GetHotUpdateJobResultResponse
 func (client *Client) GetHotUpdateJobResult(namespace *string, jobHotUpdateId *string) (_result *GetHotUpdateJobResultResponse, _err error) {
@@ -3184,7 +3228,7 @@ func (client *Client) GetHotUpdateJobResult(namespace *string, jobHotUpdateId *s
 
 // Summary:
 //
-// Obtains the details of a job.
+// Retrieves detailed information about a job instance.
 //
 // @param headers - GetJobHeaders
 //
@@ -3226,7 +3270,7 @@ func (client *Client) GetJobWithOptions(namespace *string, jobId *string, header
 
 // Summary:
 //
-// Obtains the details of a job.
+// Retrieves detailed information about a job instance.
 //
 // @return GetJobResponse
 func (client *Client) GetJob(namespace *string, jobId *string) (_result *GetJobResponse, _err error) {
@@ -3243,7 +3287,7 @@ func (client *Client) GetJob(namespace *string, jobId *string) (_result *GetJobR
 
 // Summary:
 //
-// Queries information about abnormal diagnostic items based on the intelligent deployment diagnostics feature.
+// Performs intelligent diagnostics on a job and retrieves information about abnormal diagnostic items.
 //
 // @param headers - GetJobDiagnosisHeaders
 //
@@ -3285,7 +3329,7 @@ func (client *Client) GetJobDiagnosisWithOptions(namespace *string, deploymentId
 
 // Summary:
 //
-// Queries information about abnormal diagnostic items based on the intelligent deployment diagnostics feature.
+// Performs intelligent diagnostics on a job and retrieves information about abnormal diagnostic items.
 //
 // @return GetJobDiagnosisResponse
 func (client *Client) GetJobDiagnosis(namespace *string, deploymentId *string, jobId *string) (_result *GetJobDiagnosisResponse, _err error) {
@@ -3624,7 +3668,7 @@ func (client *Client) GetSavepoint(namespace *string, savepointId *string) (_res
 
 // Summary:
 //
-// Queries the information about a session cluster.
+// Retrieves a session cluster.
 //
 // @param headers - GetSessionClusterHeaders
 //
@@ -3666,7 +3710,7 @@ func (client *Client) GetSessionClusterWithOptions(namespace *string, sessionClu
 
 // Summary:
 //
-// Queries the information about a session cluster.
+// Retrieves a session cluster.
 //
 // @return GetSessionClusterResponse
 func (client *Client) GetSessionCluster(namespace *string, sessionClusterName *string) (_result *GetSessionClusterResponse, _err error) {
@@ -3683,7 +3727,7 @@ func (client *Client) GetSessionCluster(namespace *string, sessionClusterName *s
 
 // Summary:
 //
-// Obtains the details of a specific table in a database of a specific catalog or the information about all tables in a database.
+// Retrieves the details of a specific table or all tables in a database within a specified catalog.
 //
 // @param request - GetTablesRequest
 //
@@ -3739,7 +3783,7 @@ func (client *Client) GetTablesWithOptions(namespace *string, catalogName *strin
 
 // Summary:
 //
-// Obtains the details of a specific table in a database of a specific catalog or the information about all tables in a database.
+// Retrieves the details of a specific table or all tables in a database within a specified catalog.
 //
 // @param request - GetTablesRequest
 //
@@ -3833,7 +3877,7 @@ func (client *Client) GetUdfArtifacts(namespace *string, request *GetUdfArtifact
 
 // Summary:
 //
-// # Get validate DeploymentDraft result
+// Queries the depth validation result of a job draft by ticket ID.
 //
 // @param headers - GetValidateDeploymentDraftResultHeaders
 //
@@ -3875,7 +3919,7 @@ func (client *Client) GetValidateDeploymentDraftResultWithOptions(namespace *str
 
 // Summary:
 //
-// # Get validate DeploymentDraft result
+// Queries the depth validation result of a job draft by ticket ID.
 //
 // @return GetValidateDeploymentDraftResultResponse
 func (client *Client) GetValidateDeploymentDraftResult(namespace *string, ticketId *string) (_result *GetValidateDeploymentDraftResultResponse, _err error) {
@@ -4010,7 +4054,7 @@ func (client *Client) ListCustomConnectors(namespace *string) (_result *ListCust
 
 // Summary:
 //
-// Queries a list of SQL drafts.
+// Retrieves a list of SQL or data ingestion job drafts.
 //
 // @param request - ListDeploymentDraftsRequest
 //
@@ -4070,7 +4114,7 @@ func (client *Client) ListDeploymentDraftsWithOptions(namespace *string, request
 
 // Summary:
 //
-// Queries a list of SQL drafts.
+// Retrieves a list of SQL or data ingestion job drafts.
 //
 // @param request - ListDeploymentDraftsRequest
 //
@@ -4168,7 +4212,7 @@ func (client *Client) ListDeploymentTargets(namespace *string, request *ListDepl
 
 // Summary:
 //
-// Obtains information about all deployments.
+// Retrieve information about all deployed jobs.
 //
 // @param request - ListDeploymentsRequest
 //
@@ -4260,7 +4304,7 @@ func (client *Client) ListDeploymentsWithOptions(namespace *string, request *Lis
 
 // Summary:
 //
-// Obtains information about all deployments.
+// Retrieve information about all deployed jobs.
 //
 // @param request - ListDeploymentsRequest
 //
@@ -4420,7 +4464,7 @@ func (client *Client) ListEngineVersionMetadata() (_result *ListEngineVersionMet
 
 // Summary:
 //
-// Queries the information about all jobs in a deployment.
+// Retrieves information about all job instances for a specified deployment.
 //
 // @param request - ListJobsRequest
 //
@@ -4492,7 +4536,7 @@ func (client *Client) ListJobsWithOptions(namespace *string, request *ListJobsRe
 
 // Summary:
 //
-// Queries the information about all jobs in a deployment.
+// Retrieves information about all job instances for a specified deployment.
 //
 // @param request - ListJobsRequest
 //
@@ -4677,7 +4721,7 @@ func (client *Client) ListSavepoints(namespace *string, request *ListSavepointsR
 
 // Summary:
 //
-// Obtains a list of scheduled tuning plans.
+// Lists scheduled plans.
 //
 // @param request - ListScheduledPlanRequest
 //
@@ -4741,7 +4785,7 @@ func (client *Client) ListScheduledPlanWithOptions(namespace *string, request *L
 
 // Summary:
 //
-// Obtains a list of scheduled tuning plans.
+// Lists scheduled plans.
 //
 // @param request - ListScheduledPlanRequest
 //
@@ -4760,7 +4804,7 @@ func (client *Client) ListScheduledPlan(namespace *string, request *ListSchedule
 
 // Summary:
 //
-// Queries the execution history of a scheduled plan.
+// Retrieves the execution history of a scheduled plan.
 //
 // @param request - ListScheduledPlanExecutedHistoryRequest
 //
@@ -4820,7 +4864,7 @@ func (client *Client) ListScheduledPlanExecutedHistoryWithOptions(namespace *str
 
 // Summary:
 //
-// Queries the execution history of a scheduled plan.
+// Retrieves the execution history of a scheduled plan.
 //
 // @param request - ListScheduledPlanExecutedHistoryRequest
 //
@@ -4839,7 +4883,7 @@ func (client *Client) ListScheduledPlanExecutedHistory(namespace *string, reques
 
 // Summary:
 //
-// Queries a list of session clusters.
+// This operation lists session clusters.
 //
 // @param headers - ListSessionClustersHeaders
 //
@@ -4881,7 +4925,7 @@ func (client *Client) ListSessionClustersWithOptions(namespace *string, headers 
 
 // Summary:
 //
-// Queries a list of session clusters.
+// This operation lists session clusters.
 //
 // @return ListSessionClustersResponse
 func (client *Client) ListSessionClusters(namespace *string) (_result *ListSessionClustersResponse, _err error) {
@@ -5137,7 +5181,7 @@ func (client *Client) RegisterUdfFunction(namespace *string, request *RegisterUd
 //
 // Summary:
 //
-// Creates and starts a job.
+// Create and start a job instance.
 //
 // @param request - StartJobRequest
 //
@@ -5190,7 +5234,7 @@ func (client *Client) StartJobWithOptions(namespace *string, request *StartJobRe
 //
 // Summary:
 //
-// Creates and starts a job.
+// Create and start a job instance.
 //
 // @param request - StartJobRequest
 //
@@ -5210,7 +5254,7 @@ func (client *Client) StartJob(namespace *string, request *StartJobRequest) (_re
 
 // Summary:
 //
-// Starts a job.
+// Starts a job instance.
 //
 // @param request - StartJobWithParamsRequest
 //
@@ -5261,7 +5305,7 @@ func (client *Client) StartJobWithParamsWithOptions(namespace *string, request *
 
 // Summary:
 //
-// Starts a job.
+// Starts a job instance.
 //
 // @param request - StartJobWithParamsRequest
 //
@@ -5339,7 +5383,7 @@ func (client *Client) StartSessionCluster(namespace *string, sessionClusterName 
 
 // Summary:
 //
-// Stops the scheduled plan of an application.
+// Stops the application of a scheduled plan.
 //
 // @param headers - StopApplyScheduledPlanHeaders
 //
@@ -5381,7 +5425,7 @@ func (client *Client) StopApplyScheduledPlanWithOptions(namespace *string, sched
 
 // Summary:
 //
-// Stops the scheduled plan of an application.
+// Stops the application of a scheduled plan.
 //
 // @return StopApplyScheduledPlanResponse
 func (client *Client) StopApplyScheduledPlan(namespace *string, scheduledPlanId *string) (_result *StopApplyScheduledPlanResponse, _err error) {
@@ -5398,7 +5442,7 @@ func (client *Client) StopApplyScheduledPlan(namespace *string, scheduledPlanId 
 
 // Summary:
 //
-// Stops a job.
+// Stops a job instance.
 //
 // @param request - StopJobRequest
 //
@@ -5449,7 +5493,7 @@ func (client *Client) StopJobWithOptions(namespace *string, jobId *string, reque
 
 // Summary:
 //
-// Stops a job.
+// Stops a job instance.
 //
 // @param request - StopJobRequest
 //
@@ -5673,7 +5717,7 @@ func (client *Client) UpdateDeployment(namespace *string, deploymentId *string, 
 
 // Summary:
 //
-// Updates an SQL draft.
+// Updates the draft of an SQL or data ingestion job.
 //
 // @param request - UpdateDeploymentDraftRequest
 //
@@ -5724,7 +5768,7 @@ func (client *Client) UpdateDeploymentDraftWithOptions(namespace *string, deploy
 
 // Summary:
 //
-// Updates an SQL draft.
+// Updates the draft of an SQL or data ingestion job.
 //
 // @param request - UpdateDeploymentDraftRequest
 //
@@ -5743,7 +5787,7 @@ func (client *Client) UpdateDeploymentDraft(namespace *string, deploymentDraftId
 
 // Summary:
 //
-// Updates a cluster on which the deployment is deployed.
+// Updates a deployment target.
 //
 // @param request - UpdateDeploymentTargetRequest
 //
@@ -5794,7 +5838,7 @@ func (client *Client) UpdateDeploymentTargetWithOptions(namespace *string, deplo
 
 // Summary:
 //
-// Updates a cluster on which the deployment is deployed.
+// Updates a deployment target.
 //
 // @param request - UpdateDeploymentTargetRequest
 //
@@ -5813,7 +5857,11 @@ func (client *Client) UpdateDeploymentTarget(namespace *string, deploymentTarget
 
 // Summary:
 //
-// 更新部署目标
+// Updates a deployment target.
+//
+// Description:
+//
+// This new API operation updates deployment targets that use fixed resources, elastic resources, or mixed mode. The previous operation supported only fixed and elastic resources.
 //
 // @param request - UpdateDeploymentTargetV2Request
 //
@@ -5864,7 +5912,11 @@ func (client *Client) UpdateDeploymentTargetV2WithOptions(namespace *string, dep
 
 // Summary:
 //
-// 更新部署目标
+// Updates a deployment target.
+//
+// Description:
+//
+// This new API operation updates deployment targets that use fixed resources, elastic resources, or mixed mode. The previous operation supported only fixed and elastic resources.
 //
 // @param request - UpdateDeploymentTargetV2Request
 //
@@ -6023,7 +6075,7 @@ func (client *Client) UpdateMember(namespace *string, request *UpdateMemberReque
 
 // Summary:
 //
-// Update a scheduled tuning plan.
+// Updates a scheduled plan.
 //
 // @param request - UpdateScheduledPlanRequest
 //
@@ -6074,7 +6126,7 @@ func (client *Client) UpdateScheduledPlanWithOptions(namespace *string, schedule
 
 // Summary:
 //
-// Update a scheduled tuning plan.
+// Updates a scheduled plan.
 //
 // @param request - UpdateScheduledPlanRequest
 //
@@ -6303,7 +6355,11 @@ func (client *Client) UpdateVariable(namespace *string, name *string, request *U
 
 // Summary:
 //
-// validate DeploymentDraft async
+// Asynchronously performs an in-depth check of a Flink job draft to validate its syntax and resource configuration.
+//
+// Description:
+//
+// This API asynchronously validates a job draft. It conducts end-to-end compliance and compatibility checks on the draft\\"s configuration before it is submitted for deployment.
 //
 // @param request - ValidateDeploymentDraftAsyncRequest
 //
@@ -6354,7 +6410,11 @@ func (client *Client) ValidateDeploymentDraftAsyncWithOptions(namespace *string,
 
 // Summary:
 //
-// validate DeploymentDraft async
+// Asynchronously performs an in-depth check of a Flink job draft to validate its syntax and resource configuration.
+//
+// Description:
+//
+// This API asynchronously validates a job draft. It conducts end-to-end compliance and compatibility checks on the draft\\"s configuration before it is submitted for deployment.
 //
 // @param request - ValidateDeploymentDraftAsyncRequest
 //

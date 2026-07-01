@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Executes a scheduled plan.
+// This operation applies a scheduled plan.
 //
 // @param headers - ApplyScheduledPlanHeaders
 //
@@ -166,7 +166,7 @@ func (client *Client) CreateDeploymentWithContext(ctx context.Context, namespace
 
 // Summary:
 //
-// Creates an SQL draft.
+// Creates a draft for an SQL or data ingestion job.
 //
 // @param request - CreateDeploymentDraftRequest
 //
@@ -274,7 +274,11 @@ func (client *Client) CreateDeploymentTargetWithContext(ctx context.Context, nam
 
 // Summary:
 //
-// 创建部署目标V2
+// Creates a deployment target.
+//
+// Description:
+//
+// The previous API for creating deployment targets supported only fixed or elastic resources. This new API supports fixed resources, elastic resources, and mixed mode.
 //
 // @param request - CreateDeploymentTargetV2Request
 //
@@ -497,7 +501,7 @@ func (client *Client) CreateSavepointWithContext(ctx context.Context, namespace 
 
 // Summary:
 //
-// Creates a scheduled tuning plan.
+// Creates a scheduled plan.
 //
 // @param request - CreateScheduledPlanRequest
 //
@@ -548,7 +552,7 @@ func (client *Client) CreateScheduledPlanWithContext(ctx context.Context, namesp
 
 // Summary:
 //
-// # Create a session cluster
+// Creates a session cluster.
 //
 // @param request - CreateSessionClusterRequest
 //
@@ -785,7 +789,7 @@ func (client *Client) DeleteDeploymentWithContext(ctx context.Context, namespace
 
 // Summary:
 //
-// Deletes an SQL draft. If the draft is deployed as a deployment and the deployment is published or the deployment status is RUNNING, the deployment for the draft cannot be deleted.
+// Deletes a draft of an SQL or data ingestion job. The draft cannot be deleted if it has any published or running deployment.
 //
 // @param headers - DeleteDeploymentDraftHeaders
 //
@@ -1037,7 +1041,7 @@ func (client *Client) DeleteSavepointWithContext(ctx context.Context, namespace 
 
 // Summary:
 //
-// Deletes a scheduled tuning plan.
+// Deletes a scheduled plan.
 //
 // @param headers - DeleteScheduledPlanHeaders
 //
@@ -1121,7 +1125,7 @@ func (client *Client) DeleteSessionClusterWithContext(ctx context.Context, names
 
 // Summary:
 //
-// Deletes resources of a user-defined function (UDF) from a namespace. Before you delete the resources of a UDF, you must delete the UDF.
+// Deletes a user-defined function (UDF) resource. You must delete all UDFs registered with the resource before you can delete the resource.
 //
 // @param headers - DeleteUdfArtifactHeaders
 //
@@ -1265,7 +1269,7 @@ func (client *Client) DeleteVariableWithContext(ctx context.Context, namespace *
 
 // Summary:
 //
-// Deploys an SQL draft.
+// Deploys a draft of an SQL job.
 //
 // @param request - DeployDeploymentDraftAsyncRequest
 //
@@ -1316,7 +1320,7 @@ func (client *Client) DeployDeploymentDraftAsyncWithContext(ctx context.Context,
 
 // Summary:
 //
-// Executes SQL statements to query the metadata. Only DDL and DML statements are supported. DQL statements are not supported.
+// Executes Data Definition Language (DDL) and Data Manipulation Language (DML) statements on metadata. Data Query Language (DQL) is not supported.
 //
 // @param request - ExecuteSqlStatementRequest
 //
@@ -1550,7 +1554,7 @@ func (client *Client) GenerateResourcePlanWithFlinkConfAsyncWithContext(ctx cont
 
 // Summary:
 //
-// Queries the scheduled plan of an application.
+// Retrieves the execution plan for an application.
 //
 // @param request - GetAppliedScheduledPlanRequest
 //
@@ -1606,7 +1610,7 @@ func (client *Client) GetAppliedScheduledPlanWithContext(ctx context.Context, na
 
 // Summary:
 //
-// Obtains details of the specified catalog or all catalogs.
+// Retrieves the details of a specified catalog or all catalogs.
 //
 // @param request - GetCatalogsRequest
 //
@@ -1662,7 +1666,7 @@ func (client *Client) GetCatalogsWithContext(ctx context.Context, namespace *str
 
 // Summary:
 //
-// Obtains the information about a database in a specified catalog or lists all databases in a specified catalog.
+// Retrieves information about one or more databases in a specified catalog.
 //
 // @param request - GetDatabasesRequest
 //
@@ -1718,7 +1722,7 @@ func (client *Client) GetDatabasesWithContext(ctx context.Context, namespace *st
 
 // Summary:
 //
-// Obtains the deployment result based on the ID of the asynchronous ticket.
+// Checks the deployment result of a job draft.
 //
 // @param headers - GetDeployDeploymentDraftResultHeaders
 //
@@ -1802,7 +1806,7 @@ func (client *Client) GetDeploymentWithContext(ctx context.Context, namespace *s
 
 // Summary:
 //
-// Obtains the details of an SQL draft.
+// Retrieves the details of an SQL or data ingestion job draft.
 //
 // @param headers - GetDeploymentDraftHeaders
 //
@@ -1844,7 +1848,7 @@ func (client *Client) GetDeploymentDraftWithContext(ctx context.Context, namespa
 
 // Summary:
 //
-// Obtains the lock that is used to edit a draft. This can prevent operations performed on the page and API operations from affecting each other.
+// Before using an API to edit, validate, or deploy a job draft, you must acquire an edit lock to prevent conflicts between user interface (UI) and API operations. Acquiring this lock requires either the "Develop SQL/YAML Job (Create, Edit)" or "Unlock SQL/YAML Job Draft" permission.
 //
 // @param request - GetDeploymentDraftLockRequest
 //
@@ -1900,7 +1904,11 @@ func (client *Client) GetDeploymentDraftLockWithContext(ctx context.Context, nam
 
 // Summary:
 //
-// 通过Ip获取已部署作业
+// Gets a list of deployed jobs and their information on a node by a specified IP address.
+//
+// Description:
+//
+// Use this operation to query for associated Flink deployments based on the source or destination IP address and port of a network connection.
 //
 // @param request - GetDeploymentsByIpRequest
 //
@@ -1976,7 +1984,11 @@ func (client *Client) GetDeploymentsByIpWithContext(ctx context.Context, namespa
 
 // Summary:
 //
-// 通过标签获取已部署作业
+// Queries a list of deployed jobs and their information by a specified label.
+//
+// Description:
+//
+// Queries a list of deployed jobs and their details by a specified job label. The query performs an exact match on the `labelKey` and `labelValue`.
 //
 // @param request - GetDeploymentsByLabelRequest
 //
@@ -2044,7 +2056,7 @@ func (client *Client) GetDeploymentsByLabelWithContext(ctx context.Context, name
 
 // Summary:
 //
-// 通过名称获取已部署作业
+// Retrieves deployed job instances by name from a specified workspace and namespace.
 //
 // @param request - GetDeploymentsByNameRequest
 //
@@ -2104,7 +2116,7 @@ func (client *Client) GetDeploymentsByNameWithContext(ctx context.Context, names
 
 // Summary:
 //
-// Queries events.
+// Retrieves runtime events.
 //
 // @param request - GetEventsRequest
 //
@@ -2172,7 +2184,7 @@ func (client *Client) GetEventsWithContext(ctx context.Context, namespace *strin
 
 // Summary:
 //
-// Obtains the details of a folder.
+// Retrieves specific folder information.
 //
 // @param request - GetFolderRequest
 //
@@ -2274,7 +2286,7 @@ func (client *Client) GetGenerateResourcePlanResultWithContext(ctx context.Conte
 
 // Summary:
 //
-// Obtains the dynamic update result of a deployment when you dynamically update the deployment.
+// Retrieves the result of a hot update for a job.
 //
 // @param headers - GetHotUpdateJobResultHeaders
 //
@@ -2316,7 +2328,7 @@ func (client *Client) GetHotUpdateJobResultWithContext(ctx context.Context, name
 
 // Summary:
 //
-// Obtains the details of a job.
+// Retrieves detailed information about a job instance.
 //
 // @param headers - GetJobHeaders
 //
@@ -2358,7 +2370,7 @@ func (client *Client) GetJobWithContext(ctx context.Context, namespace *string, 
 
 // Summary:
 //
-// Queries information about abnormal diagnostic items based on the intelligent deployment diagnostics feature.
+// Performs intelligent diagnostics on a job and retrieves information about abnormal diagnostic items.
 //
 // @param headers - GetJobDiagnosisHeaders
 //
@@ -2633,7 +2645,7 @@ func (client *Client) GetSavepointWithContext(ctx context.Context, namespace *st
 
 // Summary:
 //
-// Queries the information about a session cluster.
+// Retrieves a session cluster.
 //
 // @param headers - GetSessionClusterHeaders
 //
@@ -2675,7 +2687,7 @@ func (client *Client) GetSessionClusterWithContext(ctx context.Context, namespac
 
 // Summary:
 //
-// Obtains the details of a specific table in a database of a specific catalog or the information about all tables in a database.
+// Retrieves the details of a specific table or all tables in a database within a specified catalog.
 //
 // @param request - GetTablesRequest
 //
@@ -2787,7 +2799,7 @@ func (client *Client) GetUdfArtifactsWithContext(ctx context.Context, namespace 
 
 // Summary:
 //
-// # Get validate DeploymentDraft result
+// Queries the depth validation result of a job draft by ticket ID.
 //
 // @param headers - GetValidateDeploymentDraftResultHeaders
 //
@@ -2913,7 +2925,7 @@ func (client *Client) ListCustomConnectorsWithContext(ctx context.Context, names
 
 // Summary:
 //
-// Queries a list of SQL drafts.
+// Retrieves a list of SQL or data ingestion job drafts.
 //
 // @param request - ListDeploymentDraftsRequest
 //
@@ -3033,7 +3045,7 @@ func (client *Client) ListDeploymentTargetsWithContext(ctx context.Context, name
 
 // Summary:
 //
-// Obtains information about all deployments.
+// Retrieve information about all deployed jobs.
 //
 // @param request - ListDeploymentsRequest
 //
@@ -3230,7 +3242,7 @@ func (client *Client) ListEngineVersionMetadataWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the information about all jobs in a deployment.
+// Retrieves information about all job instances for a specified deployment.
 //
 // @param request - ListJobsRequest
 //
@@ -3430,7 +3442,7 @@ func (client *Client) ListSavepointsWithContext(ctx context.Context, namespace *
 
 // Summary:
 //
-// Obtains a list of scheduled tuning plans.
+// Lists scheduled plans.
 //
 // @param request - ListScheduledPlanRequest
 //
@@ -3494,7 +3506,7 @@ func (client *Client) ListScheduledPlanWithContext(ctx context.Context, namespac
 
 // Summary:
 //
-// Queries the execution history of a scheduled plan.
+// Retrieves the execution history of a scheduled plan.
 //
 // @param request - ListScheduledPlanExecutedHistoryRequest
 //
@@ -3554,7 +3566,7 @@ func (client *Client) ListScheduledPlanExecutedHistoryWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries a list of session clusters.
+// This operation lists session clusters.
 //
 // @param headers - ListSessionClustersHeaders
 //
@@ -3778,7 +3790,7 @@ func (client *Client) RegisterUdfFunctionWithContext(ctx context.Context, namesp
 //
 // Summary:
 //
-// Creates and starts a job.
+// Create and start a job instance.
 //
 // @param request - StartJobRequest
 //
@@ -3829,7 +3841,7 @@ func (client *Client) StartJobWithContext(ctx context.Context, namespace *string
 
 // Summary:
 //
-// Starts a job.
+// Starts a job instance.
 //
 // @param request - StartJobWithParamsRequest
 //
@@ -3922,7 +3934,7 @@ func (client *Client) StartSessionClusterWithContext(ctx context.Context, namesp
 
 // Summary:
 //
-// Stops the scheduled plan of an application.
+// Stops the application of a scheduled plan.
 //
 // @param headers - StopApplyScheduledPlanHeaders
 //
@@ -3964,7 +3976,7 @@ func (client *Client) StopApplyScheduledPlanWithContext(ctx context.Context, nam
 
 // Summary:
 //
-// Stops a job.
+// Stops a job instance.
 //
 // @param request - StopJobRequest
 //
@@ -4165,7 +4177,7 @@ func (client *Client) UpdateDeploymentWithContext(ctx context.Context, namespace
 
 // Summary:
 //
-// Updates an SQL draft.
+// Updates the draft of an SQL or data ingestion job.
 //
 // @param request - UpdateDeploymentDraftRequest
 //
@@ -4216,7 +4228,7 @@ func (client *Client) UpdateDeploymentDraftWithContext(ctx context.Context, name
 
 // Summary:
 //
-// Updates a cluster on which the deployment is deployed.
+// Updates a deployment target.
 //
 // @param request - UpdateDeploymentTargetRequest
 //
@@ -4267,7 +4279,11 @@ func (client *Client) UpdateDeploymentTargetWithContext(ctx context.Context, nam
 
 // Summary:
 //
-// 更新部署目标
+// Updates a deployment target.
+//
+// Description:
+//
+// This new API operation updates deployment targets that use fixed resources, elastic resources, or mixed mode. The previous operation supported only fixed and elastic resources.
 //
 // @param request - UpdateDeploymentTargetV2Request
 //
@@ -4420,7 +4436,7 @@ func (client *Client) UpdateMemberWithContext(ctx context.Context, namespace *st
 
 // Summary:
 //
-// Update a scheduled tuning plan.
+// Updates a scheduled plan.
 //
 // @param request - UpdateScheduledPlanRequest
 //
@@ -4624,7 +4640,11 @@ func (client *Client) UpdateVariableWithContext(ctx context.Context, namespace *
 
 // Summary:
 //
-// validate DeploymentDraft async
+// Asynchronously performs an in-depth check of a Flink job draft to validate its syntax and resource configuration.
+//
+// Description:
+//
+// This API asynchronously validates a job draft. It conducts end-to-end compliance and compatibility checks on the draft\\"s configuration before it is submitted for deployment.
 //
 // @param request - ValidateDeploymentDraftAsyncRequest
 //

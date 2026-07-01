@@ -20,8 +20,12 @@ type iPrimaryKey interface {
 }
 
 type PrimaryKey struct {
+	// The primary key column group.
+	//
 	// This parameter is required.
 	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// The constraint name.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,8 @@ type iDeployDeploymentDraftAsyncRequest interface {
 }
 
 type DeployDeploymentDraftAsyncRequest struct {
+	// The job draft and deployment information.
+	//
 	// This parameter is required.
 	Body *DraftDeployParams `json:"body,omitempty" xml:"body,omitempty"`
 }

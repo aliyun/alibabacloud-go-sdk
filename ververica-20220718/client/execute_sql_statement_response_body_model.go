@@ -24,24 +24,38 @@ type iExecuteSqlStatementResponseBody interface {
 }
 
 type ExecuteSqlStatementResponseBody struct {
-  // The result of executing the SQL statement to query the metadata.
+  // The result of the SQL statement execution for metadata.
   Data *SqlStatementExecuteResult `json:"data,omitempty" xml:"data,omitempty"`
+  // - If \\`success\\` is \\`false\\`, an error code is returned.
+  // 
+  // - If \\`success\\` is \\`true\\`, this parameter is empty.
+  // 
   // example:
   // 
   // ""
   ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+  // - If \\`success\\` is \\`false\\`, an error message is returned.
+  // 
+  // - If \\`success\\` is \\`true\\`, this parameter is empty.
+  // 
   // example:
   // 
   // ""
   ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+  // The status code. The value is always 200. Use the \\`success\\` parameter to determine whether the request was successful.
+  // 
   // example:
   // 
   // 200
   HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // CBC799F0-AS7S-1D30-8A4F-882ED4DD****
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true
