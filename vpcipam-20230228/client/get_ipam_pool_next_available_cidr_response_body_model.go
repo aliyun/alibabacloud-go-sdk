@@ -16,7 +16,7 @@ type iGetIpamPoolNextAvailableCidrResponseBody interface {
 }
 
 type GetIpamPoolNextAvailableCidrResponseBody struct {
-	// Available CIDR.
+	// The available CIDR block.
 	//
 	// example:
 	//

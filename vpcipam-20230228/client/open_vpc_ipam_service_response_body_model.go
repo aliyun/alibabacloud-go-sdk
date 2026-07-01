@@ -18,19 +18,19 @@ type iOpenVpcIpamServiceResponseBody interface {
 }
 
 type OpenVpcIpamServiceResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Information returned upon successful IPAM activation.
+	// The returned message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

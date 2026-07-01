@@ -36,35 +36,35 @@ type iUpdateIpamRequest interface {
 }
 
 type UpdateIpamRequest struct {
-	// The effective region that you want to add.
+	// The list of operating regions to add to the IPAM.
 	AddOperatingRegion []*string `json:"AddOperatingRegion,omitempty" xml:"AddOperatingRegion,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. ClientToken can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID for each request is unique.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **true**: Performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): Sends the request. If the request passes the check, a 2xx HTTP status code is returned and the IPAM instance is modified.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The description of the IPAM.
+	// The description of the IPAM. The description must be 1 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. If you do not specify this parameter, the description is empty.
 	//
-	// It must be 2 to 256 characters in length and must start with a letter. It cannot start with `http://` or `https://`. The default value is empty.
+	// It must be 1 to 256 characters in length and start with a letter or a Chinese character, but cannot start with `http://` or `https://`. The default value is empty.
 	//
 	// example:
 	//
 	// test description
 	IpamDescription *string `json:"IpamDescription,omitempty" xml:"IpamDescription,omitempty"`
-	// The ID of the IPAM.
+	// The instance ID of the IPAM.
 	//
 	// This parameter is required.
 	//
@@ -72,9 +72,9 @@ type UpdateIpamRequest struct {
 	//
 	// ipam-ccxbnsbhew0d6t****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
-	// The name of the IPAM.
+	// The name of the IPAM. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
-	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The value must be 1 to 128 characters long and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type UpdateIpamRequest struct {
 	IpamName     *string `json:"IpamName,omitempty" xml:"IpamName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The ID of the hosted region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to get the region ID.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type UpdateIpamRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The effective region that you want to remove.
+	// The list of operating regions to remove from the IPAM.
 	RemoveOperatingRegion []*string `json:"RemoveOperatingRegion,omitempty" xml:"RemoveOperatingRegion,omitempty" type:"Repeated"`
 	ResourceOwnerAccount  *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

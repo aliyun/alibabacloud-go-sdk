@@ -24,25 +24,25 @@ type iListIpamPoolsResponseBody interface {
 }
 
 type ListIpamPoolsResponseBody struct {
-	// The number of entries returned.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
 	// 10
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The IPAM pools.
+	// A list of IPAM pools.
 	IpamPools []*ListIpamPoolsResponseBodyIpamPools `json:"IpamPools,omitempty" xml:"IpamPools,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries returned on each page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no next page exists.
 	//
-	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If a value is returned for **NextToken**, the value is the token that is used for the next query.
 	//
 	// example:
 	//
@@ -138,60 +138,55 @@ func (s *ListIpamPoolsResponseBody) Validate() error {
 }
 
 type ListIpamPoolsResponseBodyIpamPools struct {
-	// The default network mask assigned to the IPAM pool.
-	//
-	// An IPv4 mask must be **0 to 32*	- bits in length.
+	// The default subnet mask for the IPAM pool.
 	//
 	// example:
 	//
 	// 28
 	AllocationDefaultCidrMask *int32 `json:"AllocationDefaultCidrMask,omitempty" xml:"AllocationDefaultCidrMask,omitempty"`
-	// The maximum network mask assigned to the IPAM pool.
-	//
-	// An IPv4 mask must be **0 to 32*	- bits in length.
+	// The maximum subnet mask for the IPAM pool.
 	//
 	// example:
 	//
 	// 32
 	AllocationMaxCidrMask *int32 `json:"AllocationMaxCidrMask,omitempty" xml:"AllocationMaxCidrMask,omitempty"`
-	// The minimum network mask assigned to the IPAM pool.
-	//
-	// An IPv4 mask must be **0 to 32*	- bits in length.
+	// The minimum subnet mask for the IPAM pool.
 	//
 	// example:
 	//
 	// 8
 	AllocationMinCidrMask *int32 `json:"AllocationMinCidrMask,omitempty" xml:"AllocationMinCidrMask,omitempty"`
-	// Whether the pool has the auto-import feature enabled.
+	// Indicates whether auto import is enabled for the address pool.
 	//
 	// example:
 	//
 	// true
-	AutoImport *bool     `json:"AutoImport,omitempty" xml:"AutoImport,omitempty"`
-	Cidrs      []*string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty" type:"Repeated"`
+	AutoImport *bool `json:"AutoImport,omitempty" xml:"AutoImport,omitempty"`
+	// The CIDR blocks that are provisioned for the address pool.
+	Cidrs []*string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty" type:"Repeated"`
 	// The time when the IPAM pool was created.
 	//
 	// example:
 	//
 	// 2023-04-19T16:49:01Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the pool is a subpool. Valid values:
+	// Indicates whether the IPAM pool has sub-pools. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
 	// true
 	HasSubPool *bool `json:"HasSubPool,omitempty" xml:"HasSubPool,omitempty"`
-	// The IP version. Only **IPv4*	- may be returned.
+	// The IP version.
 	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The ID of the IPAM.
+	// The ID of the IPAM instance.
 	//
 	// example:
 	//
@@ -215,7 +210,7 @@ type ListIpamPoolsResponseBodyIpamPools struct {
 	//
 	// test
 	IpamPoolName *string `json:"IpamPoolName,omitempty" xml:"IpamPoolName,omitempty"`
-	// The ID of the region where the IPAM to which the IPAM pool belongs is hosted.
+	// The managed region of the IPAM instance to which the IPAM pool belongs.
 	//
 	// example:
 	//
@@ -229,46 +224,51 @@ type ListIpamPoolsResponseBodyIpamPools struct {
 	IpamScopeId *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
 	// The type of the IPAM scope. Valid values:
 	//
-	// 	- **public**
+	// - **public**: the public network.
 	//
-	// 	- **private**
+	// - **private**: the private network.
 	//
 	// example:
 	//
 	// private
 	IpamScopeType *string `json:"IpamScopeType,omitempty" xml:"IpamScopeType,omitempty"`
-	Ipv6Isp       *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
-	// Whether it is a shared pool.
+	// The line type of the IPv6 CIDR block.
+	//
+	// example:
+	//
+	// BGP
+	Ipv6Isp *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
+	// Indicates whether the address pool is a shared pool.
 	//
 	// example:
 	//
 	// true
 	IsShared *bool `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
-	// The Alibaba Cloud account of the owner for the IPAM pool.
+	// The Alibaba Cloud account ID of the owner of the IPAM pool.
 	//
 	// example:
 	//
 	// 1210123456******
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The depth of the IPAM pool. Valid values: **0 to 10**.
+	// The depth of the IPAM pool. Valid values: 0 to **10**.
 	//
 	// example:
 	//
 	// 2
 	PoolDepth *int32 `json:"PoolDepth,omitempty" xml:"PoolDepth,omitempty"`
-	// The effective region of the IPAM pool. The ID of the effective region for the IPAM pool.
+	// The ID of the region where the IPAM pool is available.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	PoolRegionId *string `json:"PoolRegionId,omitempty" xml:"PoolRegionId,omitempty"`
-	// The ID of the region where the operation is called.
+	// The ID of the region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group to which the IPAM pool belongs.
 	//
 	// example:
 	//
@@ -282,21 +282,21 @@ type ListIpamPoolsResponseBodyIpamPools struct {
 	SourceIpamPoolId *string `json:"SourceIpamPoolId,omitempty" xml:"SourceIpamPoolId,omitempty"`
 	// The status of the IPAM pool. Valid values:
 	//
-	// 	- **Creating**
+	// - **Creating**
 	//
-	// 	- **Created**: indicates that the creation is complete.
+	// - **Created**
 	//
-	// 	- **Modifying**
+	// - **Modifying**
 	//
-	// 	- **Deleting**
+	// - **Deleting**
 	//
-	// 	- **Deleted**
+	// - **Deleted**
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag list.
+	// The tags.
 	Tags []*ListIpamPoolsResponseBodyIpamPoolsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

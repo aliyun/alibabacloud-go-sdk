@@ -14,6 +14,8 @@ type iAddIpamMembersResponseBody interface {
 }
 
 type AddIpamMembersResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BB2C39DE-CEB8-595A-981A-F2EFCBE7324E

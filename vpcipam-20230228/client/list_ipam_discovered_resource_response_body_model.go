@@ -24,25 +24,25 @@ type iListIpamDiscoveredResourceResponseBody interface {
 }
 
 type ListIpamDiscoveredResourceResponseBody struct {
-	// The maximum number of entries on each page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The list of resources.
+	// The resources.
 	IpamDiscoveredResources []*ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources `json:"IpamDiscoveredResources,omitempty" xml:"IpamDiscoveredResources,omitempty" type:"Repeated"`
-	// The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, there is no next page.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// 	- If a value of **NextToken*	- is returned, it indicates the token that is used for the next query.
+	// - If **NextToken*	- has a return value, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListIpamDiscoveredResourceResponseBody struct {
 	//
 	// 3748DEFF-68BE-5EED-9937-7C1D0C21BAB4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that match the query conditions.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ func (s *ListIpamDiscoveredResourceResponseBody) Validate() error {
 }
 
 type ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -152,38 +152,41 @@ type ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources struct {
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
 	// The time when the resource was discovered.
 	//
-	// >  If the resource has not been modified since it was created, the discovery time remains unchanged.
+	// > If the resource has not been modified since it was created, the discovery time remains unchanged.
 	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
-	DiscoveryTime *string                                                                     `json:"DiscoveryTime,omitempty" xml:"DiscoveryTime,omitempty"`
+	DiscoveryTime *string `json:"DiscoveryTime,omitempty" xml:"DiscoveryTime,omitempty"`
+	// The details of the resource IP address count.
 	IpCountDetail *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail `json:"IpCountDetail,omitempty" xml:"IpCountDetail,omitempty" type:"Struct"`
-	// The IP usage in decimal form.
+	// The IP utilization rate, in decimal format.
 	//
 	// example:
 	//
 	// 0
 	IpUsage *string `json:"IpUsage,omitempty" xml:"IpUsage,omitempty"`
-	// The ID of resource discovery instance.
+	// The resource discovery instance ID.
 	//
 	// example:
 	//
 	// ipam-res-disco-jt5f2af2u6nk2z321****
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
 	// vpc-uf611fp465c7dyb4z****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resource belongs.
+	// The resource name.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The Alibaba Cloud account ID of the resource ownership.
 	//
 	// example:
 	//
 	// 132193271328****
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the region to which the resource belongs.
+	// The region ID of the resource ownership.
 	//
 	// example:
 	//
@@ -191,9 +194,9 @@ type ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources struct {
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**: VPC.
 	//
-	// 	- **VSwitch**
+	// - **VSwitch**: vSwitch.
 	//
 	// example:
 	//
@@ -205,7 +208,7 @@ type ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources struct {
 	//
 	// 192.168.1.0/24
 	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
-	// The ID of the VPC to which the resource belongs.
+	// The instance ID of the VPC-connected instance to which the resource belongs.
 	//
 	// example:
 	//
@@ -247,6 +250,10 @@ func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) GetIpamR
 
 func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) GetResourceId() *string {
 	return s.ResourceId
+}
+
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) GetResourceName() *string {
+	return s.ResourceName
 }
 
 func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) GetResourceOwnerId() *int64 {
@@ -304,6 +311,11 @@ func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetResou
 	return s
 }
 
+func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetResourceName(v string) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
+	s.ResourceName = &v
+	return s
+}
+
 func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) SetResourceOwnerId(v int64) *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources {
 	s.ResourceOwnerId = &v
 	return s
@@ -339,9 +351,12 @@ func (s *ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources) Validate
 }
 
 type ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail struct {
-	FreeIpCount  *string `json:"FreeIpCount,omitempty" xml:"FreeIpCount,omitempty"`
+	// The number of available IP addresses.
+	FreeIpCount *string `json:"FreeIpCount,omitempty" xml:"FreeIpCount,omitempty"`
+	// The total number of IP addresses.
 	TotalIpCount *string `json:"TotalIpCount,omitempty" xml:"TotalIpCount,omitempty"`
-	UsedIpCount  *string `json:"UsedIpCount,omitempty" xml:"UsedIpCount,omitempty"`
+	// The number of allocated IP addresses.
+	UsedIpCount *string `json:"UsedIpCount,omitempty" xml:"UsedIpCount,omitempty"`
 }
 
 func (s ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail) String() string {

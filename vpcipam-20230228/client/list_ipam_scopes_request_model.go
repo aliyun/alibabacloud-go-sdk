@@ -38,17 +38,17 @@ type iListIpamScopesRequest interface {
 }
 
 type ListIpamScopesRequest struct {
-	// The ID of the IPAM.
+	// The instance ID of the IPAM.
 	//
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
-	// The IDs of IPAM scopes.
+	// The instance IDs of the IPAM scopes.
 	IpamScopeIds []*string `json:"IpamScopeIds,omitempty" xml:"IpamScopeIds,omitempty" type:"Repeated"`
 	// The name of the IPAM scope.
 	//
-	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -56,25 +56,25 @@ type ListIpamScopesRequest struct {
 	IpamScopeName *string `json:"IpamScopeName,omitempty" xml:"IpamScopeName,omitempty"`
 	// The type of the IPAM scope. Valid values:
 	//
-	// 	- **public**
+	// - **public**: the public scope.
 	//
-	// 	- **private**
+	// - **private**: the private scope.
 	//
 	// example:
 	//
 	// private
 	IpamScopeType *string `json:"IpamScopeType,omitempty" xml:"IpamScopeType,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **10**.
+	// The maximum number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - You do not need to specify this parameter for the first query.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	// - For a subsequent query, set this parameter to the NextToken value returned from the last query.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type ListIpamScopesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The ID of the region where the IPAM instance is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type ListIpamScopesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID of the IPAM scope.
+	// The ID of the resource group to which the IPAM scope belongs.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type ListIpamScopesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tag list.
+	// The tags.
 	Tags []*ListIpamScopesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -241,17 +241,17 @@ func (s *ListIpamScopesRequest) Validate() error {
 }
 
 type ListIpamScopesRequestTags struct {
-	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length. It must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-). The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

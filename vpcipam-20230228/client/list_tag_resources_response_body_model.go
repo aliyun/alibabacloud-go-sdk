@@ -18,11 +18,11 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token that is used for the next query. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no more results are returned.
 	//
-	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If a value is returned for **NextToken**, the value is the token that is used for the next query.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 672053AB-90C9-5693-AB96-458F137A5ED6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources to which the tags are added.
+	// The details of the resources and their tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -95,11 +95,11 @@ type ListTagResourcesResponseBodyTagResources struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// 	- **IPAM**
+	// - **IPAM**: IPAM
 	//
-	// 	- **IPAMSCOPE**
+	// - **IPAMSCOPE**: IPAM scope
 	//
-	// 	- **IPAMPOOL**
+	// - **IPAMPOOL**: IPAM address pool
 	//
 	// example:
 	//

@@ -14,6 +14,8 @@ type iRemoveIpamMembersResponseBody interface {
 }
 
 type RemoveIpamMembersResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3F814C37-B032-5477-AF5A-2925D0593CD4

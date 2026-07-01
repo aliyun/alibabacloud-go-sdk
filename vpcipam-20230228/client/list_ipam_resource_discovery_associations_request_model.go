@@ -30,29 +30,29 @@ type iListIpamResourceDiscoveryAssociationsRequest interface {
 }
 
 type ListIpamResourceDiscoveryAssociationsRequest struct {
-	// The ID of the IPAM.
+	// The ID of the IPAM instance.
 	//
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
-	// The ID of resource discovery instance.
+	// The ID of the resource discovery instance.
 	//
 	// example:
 	//
 	// ipam-res-disco-jt5f2af2u6nk2z321****
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
-	// The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token that is used to retrieve the next page of results.
 	//
-	// 	- If this is your first or only query, this parameter is left empty.
+	// - For the first query, leave this parameter empty.
 	//
-	// 	- If a next query is to be sent, the returned value is the value of NextToken that was returned last time this operation was called.
+	// - For a subsequent query, set this parameter to the NextToken value returned from the previous response.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListIpamResourceDiscoveryAssociationsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The request region.
+	// The ID of the region.
 	//
 	// This parameter is required.
 	//

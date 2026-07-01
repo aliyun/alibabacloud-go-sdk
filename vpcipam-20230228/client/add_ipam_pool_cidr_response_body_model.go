@@ -16,7 +16,7 @@ type iAddIpamPoolCidrResponseBody interface {
 }
 
 type AddIpamPoolCidrResponseBody struct {
-	// The successfully provisioned CIDR block.
+	// The CIDR block that is successfully provisioned for the IPAM pool.
 	//
 	// example:
 	//

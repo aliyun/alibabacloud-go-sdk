@@ -16,11 +16,11 @@ type iGetVpcIpamServiceStatusResponseBody interface {
 }
 
 type GetVpcIpamServiceStatusResponseBody struct {
-	// Indicates whether IPAM is activated.
+	// Indicates whether the IPAM service is enabled.
 	//
-	// 	- **true**
+	// - **true**: The service is enabled.
 	//
-	// 	- **false**
+	// - **false**: The service is not enabled.
 	//
 	// example:
 	//

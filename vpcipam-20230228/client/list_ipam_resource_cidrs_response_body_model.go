@@ -24,25 +24,25 @@ type iListIpamResourceCidrsResponseBody interface {
 }
 
 type ListIpamResourceCidrsResponseBody struct {
-	// The number of entries returned.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The list of resources in the IPAM pool.
+	// The list of resource information.
 	IpamResourceCidrs []*ListIpamResourceCidrsResponseBodyIpamResourceCidrs `json:"IpamResourceCidrs,omitempty" xml:"IpamResourceCidrs,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no more results exist.
 	//
-	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListIpamResourceCidrsResponseBody struct {
 	//
 	// 49A9DE56-B68C-5FFC-BC06-509D086F287C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries returned under the current query conditions.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ func (s *ListIpamResourceCidrsResponseBody) Validate() error {
 }
 
 type ListIpamResourceCidrsResponseBodyIpamResourceCidrs struct {
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -148,48 +148,49 @@ type ListIpamResourceCidrsResponseBodyIpamResourceCidrs struct {
 	//
 	// example:
 	//
-	// 192.168.1.0/32
+	// 192.168.1.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
 	// The compliance status of the resource.
 	//
-	// 	- **Compliant**
+	// - **Compliant**: The CIDR block of the managed resource complies with the allocation rules of the IPAM pool.
 	//
-	// 	- **Noncompliant**
+	// - **Noncompliant**: The CIDR block of the managed resource does not comply with one or more allocation rules of the IPAM pool.
 	//
-	// 	- **Ignored*	- Ignored resources are not monitored.
+	// - **Ignored**: The resource has been excluded from monitoring. Ignored resources are not evaluated for overlap or allocation rule compliance.
 	//
-	// 	- **Unmanaged**: The resource does not have a CIDR block allocated from the IPAM pool. IPAM does not monitor whether the CIDR block of the resource meets the allocation rules of the IP address pool.
+	// - **Unmanaged**: The resource does not have a CIDR block allocated from an IPAM pool. IPAM does not monitor whether the CIDR block of the resource complies with the allocation rules of the pool, but monitors the CIDR block for overlap.
 	//
 	// example:
 	//
 	// Compliant
-	ComplianceStatus *string                                                          `json:"ComplianceStatus,omitempty" xml:"ComplianceStatus,omitempty"`
-	IpCountDetail    *ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail `json:"IpCountDetail,omitempty" xml:"IpCountDetail,omitempty" type:"Struct"`
-	// The IP usage that is displayed in decimal form.
+	ComplianceStatus *string `json:"ComplianceStatus,omitempty" xml:"ComplianceStatus,omitempty"`
+	// The details of the resource IP address count.
+	IpCountDetail *ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail `json:"IpCountDetail,omitempty" xml:"IpCountDetail,omitempty" type:"Struct"`
+	// The IP utilization rate, expressed as a decimal.
 	//
 	// example:
 	//
 	// 0
 	IpUsage *string `json:"IpUsage,omitempty" xml:"IpUsage,omitempty"`
-	// The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+	// The instance ID of the IPAM pool CIDR allocation.
 	//
 	// example:
 	//
 	// ipam-pool-alloc-112za33e4****
 	IpamAllocationId *string `json:"IpamAllocationId,omitempty" xml:"IpamAllocationId,omitempty"`
-	// The ID of the IPAM.
+	// The instance ID of the IPAM.
 	//
 	// example:
 	//
 	// ipam-uq5dcfc2eqhpf4****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
-	// The ID of the IPAM pool.
+	// The instance ID of the IPAM pool.
 	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t***
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
-	// The ID of the IPAM scope.
+	// The instance ID of the IPAM scope.
 	//
 	// example:
 	//
@@ -197,25 +198,25 @@ type ListIpamResourceCidrsResponseBodyIpamResourceCidrs struct {
 	IpamScopeId *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
 	// The management status of the resource.
 	//
-	// 	- **Managed**: The resource has a CIDR block allocated from an IPAM pool. IPAM is monitoring whether the allocated CIDR block overlaps with other CIDR blocks and whether the allocated CIDR block meets the allocation rules.
+	// - **Managed**: The resource has a CIDR block allocated from an IPAM pool. IPAM monitors the resource for potential CIDR overlap and compliance with pool allocation rules.
 	//
-	// 	- **Unmanaged**: The resource does not have a CIDR block allocated from the IPAM pool. IPAM is monitoring whether the resource has CIDR blocks that meet the allocation rules. Monitor whether CIDR blocks overlap with each other.
+	// - **Unmanaged**: The resource does not have a CIDR block allocated from an IPAM pool. IPAM monitors the resource for potential CIDRs that comply with pool allocation rules and monitors CIDRs for overlap.
 	//
-	// 	- **Ignored**: The resource is not monitored. Ignored resources are not monitored. If you ignore a resource, CIDR blocks allocated to the resource are returned to the IPAM pool and will not be automatically allocated to the resource (if automatic allocation rules are specified).
+	// - **Ignored**: The resource has been excluded from monitoring. Ignored resources are not evaluated for overlap or allocation rule compliance. When a resource is ignored, any space allocated to it from an IPAM pool is returned to the pool, and the resource is not re-imported through automatic import (if an automatic import allocation rule is configured for the pool).
 	//
 	// example:
 	//
 	// Managed
 	ManagementStatus *string `json:"ManagementStatus,omitempty" xml:"ManagementStatus,omitempty"`
-	// List of resources that overlap with the current resource.
+	// The list of resources that overlap with the current resource.
 	OverlapDetail []*ListIpamResourceCidrsResponseBodyIpamResourceCidrsOverlapDetail `json:"OverlapDetail,omitempty" xml:"OverlapDetail,omitempty" type:"Repeated"`
-	// The overlapping status of the resource.
+	// The overlap status of the resource.
 	//
-	// 	- **Nonoverlapping**
+	// - **Nonoverlapping**: The CIDR block of the resource does not overlap with other CIDR blocks within the same scope.
 	//
-	// 	- **Overlapping**
+	// - **Overlapping**: The CIDR block of the resource overlaps with another CIDR block within the same scope.
 	//
-	// 	- **Ignored*	- Ignored resources are not monitored.
+	// - **Ignored**: The resource has been excluded from monitoring. Ignored resources are not evaluated for overlap or allocation rule compliance.
 	//
 	// example:
 	//
@@ -227,23 +228,25 @@ type ListIpamResourceCidrsResponseBodyIpamResourceCidrs struct {
 	//
 	// vpc-bp16qjewdsunr41m1****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resource belongs.
+	// The resource name.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The Alibaba Cloud account ID of the resource ownership.
 	//
 	// example:
 	//
 	// 132193271328****
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The effective region ID of the resource.
+	// The ID of the region where the resource takes effect.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	// The type of resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**: The resource type is VPC.
 	//
-	// 	- **VSwitch**
+	// - **VSwitch**: The resource type is vSwitch.
 	//
 	// example:
 	//
@@ -257,15 +260,15 @@ type ListIpamResourceCidrsResponseBodyIpamResourceCidrs struct {
 	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
 	// The status of the resource in the IPAM pool. Valid values:
 	//
-	// 	- **Created**
+	// - **Created**: created.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: deleted.
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The VPC ID.
+	// The instance ID of the VPC-connected instance to which the resource belongs.
 	//
 	// example:
 	//
@@ -331,6 +334,10 @@ func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) GetOverlapStatus() 
 
 func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) GetResourceId() *string {
 	return s.ResourceId
+}
+
+func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) GetResourceName() *string {
+	return s.ResourceName
 }
 
 func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) GetResourceOwnerId() *int64 {
@@ -422,6 +429,11 @@ func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) SetResourceId(v str
 	return s
 }
 
+func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) SetResourceName(v string) *ListIpamResourceCidrsResponseBodyIpamResourceCidrs {
+	s.ResourceName = &v
+	return s
+}
+
 func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) SetResourceOwnerId(v int64) *ListIpamResourceCidrsResponseBodyIpamResourceCidrs {
 	s.ResourceOwnerId = &v
 	return s
@@ -471,9 +483,24 @@ func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrs) Validate() error {
 }
 
 type ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail struct {
-	FreeIpCount  *string `json:"FreeIpCount,omitempty" xml:"FreeIpCount,omitempty"`
+	// The number of available IP addresses.
+	//
+	// example:
+	//
+	// 252
+	FreeIpCount *string `json:"FreeIpCount,omitempty" xml:"FreeIpCount,omitempty"`
+	// The total number of IP addresses.
+	//
+	// example:
+	//
+	// 256
 	TotalIpCount *string `json:"TotalIpCount,omitempty" xml:"TotalIpCount,omitempty"`
-	UsedIpCount  *string `json:"UsedIpCount,omitempty" xml:"UsedIpCount,omitempty"`
+	// The number of allocated IP addresses.
+	//
+	// example:
+	//
+	// 4
+	UsedIpCount *string `json:"UsedIpCount,omitempty" xml:"UsedIpCount,omitempty"`
 }
 
 func (s ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail) String() string {
@@ -516,19 +543,19 @@ func (s *ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail) Valida
 }
 
 type ListIpamResourceCidrsResponseBodyIpamResourceCidrsOverlapDetail struct {
-	// The CIDR that overlaps with the current resource.
+	// The CIDR block of the resource that overlaps with the current resource.
 	//
 	// example:
 	//
 	// 192.168.1.0/24
 	OverlapResourceCidr *string `json:"OverlapResourceCidr,omitempty" xml:"OverlapResourceCidr,omitempty"`
-	// Instance ID that overlaps with the current resource.
+	// The instance ID of the resource that overlaps with the current resource.
 	//
 	// example:
 	//
 	// vpc-aq3fjgnig5av6jb8d****
 	OverlapResourceId *string `json:"OverlapResourceId,omitempty" xml:"OverlapResourceId,omitempty"`
-	// The region of instance that overlaps with the current resource.
+	// The region of the instance that overlaps with the current resource.
 	//
 	// example:
 	//

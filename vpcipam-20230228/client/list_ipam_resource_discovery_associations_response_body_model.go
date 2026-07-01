@@ -24,25 +24,25 @@ type iListIpamResourceDiscoveryAssociationsResponseBody interface {
 }
 
 type ListIpamResourceDiscoveryAssociationsResponseBody struct {
-	// The number of entries on each page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The list of associations.
+	// A list of association details.
 	IpamResourceDiscoveryAssociations []*ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations `json:"IpamResourceDiscoveryAssociations,omitempty" xml:"IpamResourceDiscoveryAssociations,omitempty" type:"Repeated"`
-	// The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries returned per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token to use to retrieve the next page of results. This value is empty when there are no more results to return.
 	//
-	// 	- If **NextToken*	- is empty, there is no next page.
+	// - If **NextToken*	- is empty, no subsequent query is needed.
 	//
-	// 	- If a value of **NextToken*	- is returned, it indicates the token that is used for the next query.
+	// - If **NextToken*	- is not empty, its value is the token to start the next query.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListIpamResourceDiscoveryAssociationsResponseBody struct {
 	//
 	// F28A239E-F88D-500E-ADE7-FA5E8CA3A170
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that match the query criteria.
 	//
 	// example:
 	//
@@ -138,19 +138,19 @@ func (s *ListIpamResourceDiscoveryAssociationsResponseBody) Validate() error {
 }
 
 type ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations struct {
-	// The ID of the IPAM.
+	// The ID of the IPAM instance.
 	//
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
-	// The ID of resource discovery instance.
+	// The ID of the resource discovery instance.
 	//
 	// example:
 	//
 	// ipam-res-disco-jt5f2af2u6nk2z321****
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resource discovery belongs.
+	// The ID of the Alibaba Cloud account that owns the resource discovery instance.
 	//
 	// example:
 	//
@@ -158,35 +158,35 @@ type ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssoc
 	IpamResourceDiscoveryOwnerId *string `json:"IpamResourceDiscoveryOwnerId,omitempty" xml:"IpamResourceDiscoveryOwnerId,omitempty"`
 	// The status of the resource discovery instance. Valid values:
 	//
-	// 	- **Creating**
+	// - **Creating**
 	//
-	// 	- **Created**
+	// - **Created**
 	//
-	// 	- **Modifying**
+	// - **Modifying**
 	//
-	// 	- **Deleting**
+	// - **Deleting**
 	//
-	// 	- **Deleted**
+	// - **Deleted**
 	//
 	// example:
 	//
 	// Created
 	IpamResourceDiscoveryStatus *string `json:"IpamResourceDiscoveryStatus,omitempty" xml:"IpamResourceDiscoveryStatus,omitempty"`
-	// The type of resource discovery. Valid values:
+	// The type of the resource discovery. Valid values:
 	//
-	// 	- **system**: default resource discovery created by the system.
+	// - **system**: a default resource discovery that is automatically created by the system.
 	//
-	// 	- **custom**: custom resource discovery created by users.
+	// - **custom**: a custom resource discovery that is created by a user.
 	//
 	// example:
 	//
 	// custom
 	IpamResourceDiscoveryType *string `json:"IpamResourceDiscoveryType,omitempty" xml:"IpamResourceDiscoveryType,omitempty"`
-	// The status of the associations. Valid values:
+	// The association status. Valid values:
 	//
-	// 	- **Created**
+	// - **Created**
 	//
-	// 	- **Deleted**
+	// - **Deleted**
 	//
 	// example:
 	//

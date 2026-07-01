@@ -24,7 +24,7 @@ type iListIpamResourceDiscoveriesResponseBody interface {
 }
 
 type ListIpamResourceDiscoveriesResponseBody struct {
-	// The maximum number of entries on each page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -32,17 +32,17 @@ type ListIpamResourceDiscoveriesResponseBody struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The list of resource discovery instances.
 	IpamResourceDiscoveries []*ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries `json:"IpamResourceDiscoveries,omitempty" xml:"IpamResourceDiscoveries,omitempty" type:"Repeated"`
-	// The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries returned on each page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next page of results. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, there is no next page.
+	// - If **NextToken*	- is empty, no more results are available.
 	//
-	// 	- If a value of **NextToken*	- is returned, it indicates the token that is used for the next query.
+	// - If a value is returned for **NextToken**, the value is the token that is used for the next query.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListIpamResourceDiscoveriesResponseBody struct {
 	//
 	// 86137597-443F-5B66-B9B6-8514E0C50B8F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that match the query conditions.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ func (s *ListIpamResourceDiscoveriesResponseBody) Validate() error {
 }
 
 type ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries struct {
-	// The time when the resource was discovered.
+	// The time when the resource discovery was created.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries struct {
 	//
 	// test description
 	IpamResourceDiscoveryDescription *string `json:"IpamResourceDiscoveryDescription,omitempty" xml:"IpamResourceDiscoveryDescription,omitempty"`
-	// The ID of resource discovery instance.
+	// The ID of the resource discovery instance.
 	//
 	// example:
 	//
@@ -164,35 +164,35 @@ type ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries struct {
 	IpamResourceDiscoveryName *string `json:"IpamResourceDiscoveryName,omitempty" xml:"IpamResourceDiscoveryName,omitempty"`
 	// The status of the resource discovery instance. Valid values:
 	//
-	// 	- **Creating**
+	// - **Creating**: The instance is being created.
 	//
-	// 	- **Created**
+	// - **Created**: The instance is created.
 	//
-	// 	- **Modifying**
+	// - **Modifying**: The instance is being modified.
 	//
-	// 	- **Deleting**
+	// - **Deleting**: The instance is being deleted.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: The instance is deleted.
 	//
 	// example:
 	//
 	// Created
 	IpamResourceDiscoveryStatus *string `json:"IpamResourceDiscoveryStatus,omitempty" xml:"IpamResourceDiscoveryStatus,omitempty"`
-	// The list of resource discovery regions.
+	// The list of operating regions of the resource discovery.
 	OperatingRegionList []*string `json:"OperatingRegionList,omitempty" xml:"OperatingRegionList,omitempty" type:"Repeated"`
-	// The Alibaba Cloud account that owns the resource discovery.
+	// The Alibaba Cloud account of the owner of the resource discovery instance.
 	//
 	// example:
 	//
 	// 1210123456******
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the queried resource discovery instance.
+	// The ID of the region where the resource discovery instance is located.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group that resource discovery belongs.
+	// The ID of the resource group to which the resource discovery belongs.
 	//
 	// example:
 	//
@@ -200,19 +200,19 @@ type ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The sharing status of the resource.
 	//
-	// 	- If the value is empty, the resource is as an average instance.
+	// - If this parameter is empty, the resource discovery is a regular instance.
 	//
-	// 	- If the value is Shared, the resource discovery comes from a shared source.
+	// - If this parameter is set to Shared, the resource discovery is a shared resource.
 	//
-	// 	- If the value is Sharing, the resource discovery is being shared.
+	// - If this parameter is set to Sharing, the resource discovery is being shared.
 	//
 	// example:
 	//
 	// Shared
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The tag list.
+	// The list of tags.
 	Tags []*ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The type of resource discovery.
+	// The type of the resource discovery.
 	//
 	// example:
 	//

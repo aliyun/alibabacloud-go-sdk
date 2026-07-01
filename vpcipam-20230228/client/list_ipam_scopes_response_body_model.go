@@ -24,25 +24,25 @@ type iListIpamScopesResponseBody interface {
 }
 
 type ListIpamScopesResponseBody struct {
-	// The number of entries returned.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
 	// 10
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The IPAM scopes.
+	// A list of IPAM scopes.
 	IpamScopes []*ListIpamScopesResponseBodyIpamScopes `json:"IpamScopes,omitempty" xml:"IpamScopes,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The maximum number of entries returned per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token that is used for the next page of results. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no next page exists.
 	//
-	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If a value is returned for **NextToken**, the value is the token that is used for the next query.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListIpamScopesResponseBodyIpamScopes struct {
 	//
 	// 2022-04-18T03:12:37Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the IPAM.
+	// The instance ID of the IPAM.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type ListIpamScopesResponseBodyIpamScopes struct {
 	//
 	// test description
 	IpamScopeDescription *string `json:"IpamScopeDescription,omitempty" xml:"IpamScopeDescription,omitempty"`
-	// The ID of the IPAM scope.
+	// The instance ID of the IPAM scope.
 	//
 	// example:
 	//
@@ -170,9 +170,9 @@ type ListIpamScopesResponseBodyIpamScopes struct {
 	IpamScopeName *string `json:"IpamScopeName,omitempty" xml:"IpamScopeName,omitempty"`
 	// The type of the IPAM scope. Valid values:
 	//
-	// 	- **public**
+	// - **public**: the public scope.
 	//
-	// 	- **private**
+	// - **private**: the private scope.
 	//
 	// example:
 	//
@@ -180,33 +180,33 @@ type ListIpamScopesResponseBodyIpamScopes struct {
 	IpamScopeType *string `json:"IpamScopeType,omitempty" xml:"IpamScopeType,omitempty"`
 	// Indicates whether the scope is the default scope. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The scope is the default scope.
 	//
-	// 	- **false**
+	// - **false**: The scope is not the default scope.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The Alibaba Cloud account that owns the IPAM scope.
+	// The ID of the Alibaba Cloud account to which the IPAM scope belongs.
 	//
 	// example:
 	//
 	// 1210123456******
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of pools in the IPAM scope.
+	// The number of IPAM pools in the IPAM scope.
 	//
 	// example:
 	//
 	// 2
 	PoolCount *int32 `json:"PoolCount,omitempty" xml:"PoolCount,omitempty"`
-	// The region ID of the IPAM.
+	// The region ID of the IPAM scope.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group to which the IPAM scope belongs.
 	//
 	// example:
 	//
@@ -214,19 +214,19 @@ type ListIpamScopesResponseBodyIpamScopes struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the IPAM scope. Valid values:
 	//
-	// 	- **Creating**
+	// - **Creating**: The IPAM scope is being created.
 	//
-	// 	- **Created**
+	// - **Created**: The IPAM scope is created.
 	//
-	// 	- **Deleting**
+	// - **Deleting**: The IPAM scope is being deleted.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: The IPAM scope is deleted.
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag list.
+	// The tags.
 	Tags []*ListIpamScopesResponseBodyIpamScopesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

@@ -36,25 +36,25 @@ type iCreateIpamResourceDiscoveryRequest interface {
 }
 
 type CreateIpamResourceDiscoveryRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. Generate a unique parameter value from your client. The client token supports only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without sending the actual request. Valid value:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: Performs the dry run without creating a custom resource discovery instance. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **true**: Sends a check request without creating the resource discovery instance. The system checks for required parameters, request format, and service limits. If the check fails, an error is returned. If the check passes, the DryRunOperation error code is returned.
 	//
-	// 	- **false*	- (default): Performs a dry run and the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and a custom resource discovery instance is created.
+	// - **false*	- (default): Sends a normal request. After the request passes the check, an HTTP 2xx status code is returned and the resource discovery instance is created.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The description of resource discovery.
+	// The description of the resource discovery.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreateIpamResourceDiscoveryRequest struct {
 	//
 	// name
 	IpamResourceDiscoveryName *string `json:"IpamResourceDiscoveryName,omitempty" xml:"IpamResourceDiscoveryName,omitempty"`
-	// The list of effective regions.
+	// The list of regions where the resource discovery is effective.
 	//
 	// This parameter is required.
 	OperatingRegionList []*string `json:"OperatingRegionList,omitempty" xml:"OperatingRegionList,omitempty" type:"Repeated"`
@@ -74,7 +74,7 @@ type CreateIpamResourceDiscoveryRequest struct {
 	OwnerId             *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The request region.
 	//
-	// >  The request region is the hosted region of the resource discovery instance.
+	// > The request region is the hosted region of the resource discovery instance.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type CreateIpamResourceDiscoveryRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tag information.
+	// The list of tags.
 	Tag []*CreateIpamResourceDiscoveryRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -224,17 +224,17 @@ func (s *CreateIpamResourceDiscoveryRequest) Validate() error {
 }
 
 type CreateIpamResourceDiscoveryRequestTag struct {
-	// The tag keys. You can specify at most 20 tag keys. It cannot be an empty string.
+	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length. It must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and it cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. You can specify empty strings as tag values.
+	// The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

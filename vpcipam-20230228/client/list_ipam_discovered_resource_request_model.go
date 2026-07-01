@@ -24,7 +24,7 @@ type iListIpamDiscoveredResourceRequest interface {
 }
 
 type ListIpamDiscoveredResourceRequest struct {
-	// The ID of the resource discovery instance.
+	// The resource discovery instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,25 +32,25 @@ type ListIpamDiscoveredResourceRequest struct {
 	//
 	// ipam-res-disco-jt5f2af2u6nk2z321****
 	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
-	// The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - If this is the first query or no subsequent query exists, leave this parameter empty.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// - If a subsequent query exists, set this parameter to the **NextToken*	- value returned in the previous API call.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the hosted region of the IPAM pool.
+	// The hosted region ID of the resource discovery instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type ListIpamDiscoveredResourceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The region where resource discovery is performed.
+	// The operating region of the resource discovery.
 	//
 	// This parameter is required.
 	//
@@ -68,9 +68,9 @@ type ListIpamDiscoveredResourceRequest struct {
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**: VPC.
 	//
-	// 	- **VSwitch**
+	// - **VSwitch**: vSwitch.
 	//
 	// example:
 	//

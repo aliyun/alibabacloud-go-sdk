@@ -24,15 +24,15 @@ type iListIpamPoolAllocationsResponseBody interface {
 }
 
 type ListIpamPoolAllocationsResponseBody struct {
-	// The number of entries returned.
+	// The number of entries returned for the current query.
 	//
 	// example:
 	//
 	// 10
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The IDs of the instances to which CIDR blocks are allocated from the IPAM pool.
+	// A list of IPAM pool CIDR block allocations.
 	IpamPoolAllocations []*ListIpamPoolAllocationsResponseBodyIpamPoolAllocations `json:"IpamPoolAllocations,omitempty" xml:"IpamPoolAllocations,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The maximum number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListIpamPoolAllocationsResponseBody struct {
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no next page exists.
 	//
-	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListIpamPoolAllocationsResponseBody struct {
 	//
 	// 3748DEFF-68BE-5EED-9937-7C1D0C21BAB4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the query conditions.
 	//
 	// example:
 	//
@@ -150,31 +150,33 @@ type ListIpamPoolAllocationsResponseBodyIpamPoolAllocations struct {
 	//
 	// 2023-05-19T08:59:18Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the allocation.
+	// The description of the IPAM pool CIDR block allocation.
 	//
 	// example:
 	//
 	// test description
 	IpamPoolAllocationDescription *string `json:"IpamPoolAllocationDescription,omitempty" xml:"IpamPoolAllocationDescription,omitempty"`
-	// The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+	// The instance ID of the IPAM pool CIDR block allocation.
 	//
 	// example:
 	//
 	// ipam-pool-alloc-112za33e4****
 	IpamPoolAllocationId *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
-	// The name of the allocation.
+	// The name of the IPAM pool CIDR block allocation.
 	//
 	// example:
 	//
 	// test name
 	IpamPoolAllocationName *string `json:"IpamPoolAllocationName,omitempty" xml:"IpamPoolAllocationName,omitempty"`
-	// The ID of the IPAM pool.
+	// The instance ID of the IPAM pool.
 	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
-	// The region ID of the resource.
+	// The region of the IPAM pool that contains the CIDR block allocation.
+	//
+	// > If the IPAM pool has a specific region, this parameter specifies that region. If the IPAM pool does not have a specific region, this parameter specifies the managed region of IPAM.
 	//
 	// example:
 	//
@@ -192,7 +194,7 @@ type ListIpamPoolAllocationsResponseBodyIpamPoolAllocations struct {
 	//
 	// 132193271328****
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The effective region ID of the resource.
+	// The ID of the region where the resource is deployed.
 	//
 	// example:
 	//
@@ -200,11 +202,11 @@ type ListIpamPoolAllocationsResponseBodyIpamPoolAllocations struct {
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// The type of the resource to which the CIDR block is allocated. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**: The resource is a VPC.
 	//
-	// 	- **IpamPool**
+	// - **IpamPool**: The resource is a child IPAM pool.
 	//
-	// 	- **Custom**
+	// - **Custom**: The resource is a custom reserved CIDR block.
 	//
 	// example:
 	//
@@ -218,9 +220,9 @@ type ListIpamPoolAllocationsResponseBodyIpamPoolAllocations struct {
 	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// 	- **Created**
+	// - **Created**: The instance is created.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: The instance is deleted.
 	//
 	// example:
 	//

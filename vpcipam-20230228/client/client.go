@@ -24,7 +24,42 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":             dara.String("vpcipam.us-west-1.aliyuncs.com"),
+		"us-east-1":             dara.String("vpcipam.us-east-1.aliyuncs.com"),
+		"me-east-1":             dara.String("vpcipam.me-east-1.aliyuncs.com"),
+		"me-central-1":          dara.String("vpcipam.me-central-1.aliyuncs.com"),
+		"eu-west-1":             dara.String("vpcipam.eu-west-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("vpcipam.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("vpcipam.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("vpcipam.cn-wulanchabu.aliyuncs.com"),
+		"cn-wuhan-lr":           dara.String("vpcipam.cn-wuhan-lr.aliyuncs.com"),
+		"cn-shenzhen-finance-1": dara.String("vpcipam.cn-shenzhen-finance-1.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("vpcipam.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("vpcipam.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai":           dara.String("vpcipam.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":            dara.String("vpcipam.cn-qingdao.aliyuncs.com"),
+		"cn-nanjing":            dara.String("vpcipam.cn-nanjing.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("vpcipam.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":           dara.String("vpcipam.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan":             dara.String("vpcipam.cn-heyuan.aliyuncs.com"),
+		"cn-hangzhou-finance":   dara.String("vpcipam.cn-hangzhou-finance.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("vpcipam.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("vpcipam.cn-guangzhou.aliyuncs.com"),
+		"cn-fuzhou":             dara.String("vpcipam.cn-fuzhou.aliyuncs.com"),
+		"cn-chengdu":            dara.String("vpcipam.cn-chengdu.aliyuncs.com"),
+		"cn-beijing-finance-1":  dara.String("vpcipam.cn-beijing-finance-1.aliyuncs.com"),
+		"cn-beijing":            dara.String("vpcipam.cn-beijing.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("vpcipam.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-6":        dara.String("vpcipam.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("vpcipam.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("vpcipam.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-2":        dara.String("vpcipam.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("vpcipam.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-2":        dara.String("vpcipam.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("vpcipam.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +93,27 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 添加ipam可信服务纳管成员
+// Adds members to an IP Address Manager (IPAM).
+//
+// Description:
+//
+// - Only the delegated administrator of an IPAM instance in a resource directory can perform multi-account management.
+//
+// - An IPAM delegated administrator can use an IPAM instance in only one region for multi-account management. A maximum of 1,000 member accounts can be added.
+//
+//		Notice:
+//
+//	If you add a folder as a member, the system counts all member accounts of the resource directory that are in the folder.
+//
+// - Members can be of the Folder or Account type.
+//
+//   - Folder: The delegated IPAM administrator can view IP usage in the IPAM effective region for all resource directory member accounts in the folder.
+//
+//   - Account: The delegated IPAM administrator can view IP usage in the IPAM effective region for the specified resource directory member account.
+//
+// - A managed member cannot share its resource discovery with the IPAM delegated administrator. The IPAM delegated administrator cannot add a member if that member has already shared its resource discovery.
+//
+// - Adding the first member enables the IPAM trusted service for the resource directory.
 //
 // @param request - AddIpamMembersRequest
 //
@@ -130,7 +185,27 @@ func (client *Client) AddIpamMembersWithOptions(request *AddIpamMembersRequest, 
 
 // Summary:
 //
-// 添加ipam可信服务纳管成员
+// Adds members to an IP Address Manager (IPAM).
+//
+// Description:
+//
+// - Only the delegated administrator of an IPAM instance in a resource directory can perform multi-account management.
+//
+// - An IPAM delegated administrator can use an IPAM instance in only one region for multi-account management. A maximum of 1,000 member accounts can be added.
+//
+//		Notice:
+//
+//	If you add a folder as a member, the system counts all member accounts of the resource directory that are in the folder.
+//
+// - Members can be of the Folder or Account type.
+//
+//   - Folder: The delegated IPAM administrator can view IP usage in the IPAM effective region for all resource directory member accounts in the folder.
+//
+//   - Account: The delegated IPAM administrator can view IP usage in the IPAM effective region for the specified resource directory member account.
+//
+// - A managed member cannot share its resource discovery with the IPAM delegated administrator. The IPAM delegated administrator cannot add a member if that member has already shared its resource discovery.
+//
+// - Adding the first member enables the IPAM trusted service for the resource directory.
 //
 // @param request - AddIpamMembersRequest
 //
@@ -148,23 +223,23 @@ func (client *Client) AddIpamMembers(request *AddIpamMembersRequest) (_result *A
 
 // Summary:
 //
-// Provisions a CIDR block to an IP Address Manager (IPAM) pool.
+// Provisions a CIDR block for an IPAM pool.
 //
 // Description:
 //
-//	  Before you provision a CIDR block, make sure that an IPAM pool is created. You can call the **CreateIpamPool*	- operation to create an IPAM pool.
+// - Before provisioning a CIDR block, make sure that you have created an IPAM pool. You can call **CreateIpamPool*	- to create an IPAM pool.
 //
-//		- If no CIDR block is provisioned to a parent pool, you cannot provision CIDR blocks to its subpools.
+// - If the parent pool does not have a provisioned CIDR block, the subpool does not support CIDR block provisioning.
 //
-//		- If a CIDR block is provisioned to a parent pool, you can provision CIDR blocks to its subpools and the CIDR blocks must be subsets of the CIDR block provisioned to the parent pool.
+// - If the parent pool has a provisioned CIDR block, the subpool can have a provisioned CIDR block, and the provisioned CIDR block must be a subset of the parent pool\\"s provisioned CIDR block.
 //
-//		- If a CIDR block is provisioned to a parent pool and allocations are created, CIDR blocks provisioned to its subpools cannot overlap with existing allocated CIDR blocks.
+// - If the parent pool has a provisioned CIDR block and also has CIDR allocations, the CIDR block provisioned for the subpool must not conflict with the existing CIDR allocations.
 //
-//		- You can provision CIDR blocks to a pool only in the region where the IPAM is hosted.
+// - The request to provision a CIDR block for an IPAM pool must be initiated from the IPAM hosted region.
 //
-//		- CIDR blocks provisioned to an IPAM pool cannot overlap with the CIDR blocks provisioned to other pools in the same scope.
+// - The CIDR block provisioned for an IPAM pool must not conflict with CIDR blocks provisioned for other pools within the same scope.
 //
-//		- A maximum of 1 CIDR block can be provisioned to a public IPv6 top-level pool, while up to 50 CIDR blocks can be provisioned to other types of address pools.
+// - The number of CIDR blocks that can be provisioned for a pool is limited. The default maximum for a public IPv6 top-level pool is 1. The default maximum for other types of pools is 50.
 //
 // @param request - AddIpamPoolCidrRequest
 //
@@ -228,23 +303,23 @@ func (client *Client) AddIpamPoolCidrWithOptions(request *AddIpamPoolCidrRequest
 
 // Summary:
 //
-// Provisions a CIDR block to an IP Address Manager (IPAM) pool.
+// Provisions a CIDR block for an IPAM pool.
 //
 // Description:
 //
-//	  Before you provision a CIDR block, make sure that an IPAM pool is created. You can call the **CreateIpamPool*	- operation to create an IPAM pool.
+// - Before provisioning a CIDR block, make sure that you have created an IPAM pool. You can call **CreateIpamPool*	- to create an IPAM pool.
 //
-//		- If no CIDR block is provisioned to a parent pool, you cannot provision CIDR blocks to its subpools.
+// - If the parent pool does not have a provisioned CIDR block, the subpool does not support CIDR block provisioning.
 //
-//		- If a CIDR block is provisioned to a parent pool, you can provision CIDR blocks to its subpools and the CIDR blocks must be subsets of the CIDR block provisioned to the parent pool.
+// - If the parent pool has a provisioned CIDR block, the subpool can have a provisioned CIDR block, and the provisioned CIDR block must be a subset of the parent pool\\"s provisioned CIDR block.
 //
-//		- If a CIDR block is provisioned to a parent pool and allocations are created, CIDR blocks provisioned to its subpools cannot overlap with existing allocated CIDR blocks.
+// - If the parent pool has a provisioned CIDR block and also has CIDR allocations, the CIDR block provisioned for the subpool must not conflict with the existing CIDR allocations.
 //
-//		- You can provision CIDR blocks to a pool only in the region where the IPAM is hosted.
+// - The request to provision a CIDR block for an IPAM pool must be initiated from the IPAM hosted region.
 //
-//		- CIDR blocks provisioned to an IPAM pool cannot overlap with the CIDR blocks provisioned to other pools in the same scope.
+// - The CIDR block provisioned for an IPAM pool must not conflict with CIDR blocks provisioned for other pools within the same scope.
 //
-//		- A maximum of 1 CIDR block can be provisioned to a public IPv6 top-level pool, while up to 50 CIDR blocks can be provisioned to other types of address pools.
+// - The number of CIDR blocks that can be provisioned for a pool is limited. The default maximum for a public IPv6 top-level pool is 1. The default maximum for other types of pools is 50.
 //
 // @param request - AddIpamPoolCidrRequest
 //
@@ -262,11 +337,11 @@ func (client *Client) AddIpamPoolCidr(request *AddIpamPoolCidrRequest) (_result 
 
 // Summary:
 //
-// Associates resource discovery with an IPAM instance.
+// Associates a resource discovery with an IPAM instance.
 //
 // Description:
 //
-//	The specified resource discovery instance can only be associated with one IPAM instance and associations cannot be duplicated.
+// - You can associate a resource discovery instance with an IPAM instance only once.
 //
 // @param request - AssociateIpamResourceDiscoveryRequest
 //
@@ -342,11 +417,11 @@ func (client *Client) AssociateIpamResourceDiscoveryWithOptions(request *Associa
 
 // Summary:
 //
-// Associates resource discovery with an IPAM instance.
+// Associates a resource discovery with an IPAM instance.
 //
 // Description:
 //
-//	The specified resource discovery instance can only be associated with one IPAM instance and associations cannot be duplicated.
+// - You can associate a resource discovery instance with an IPAM instance only once.
 //
 // @param request - AssociateIpamResourceDiscoveryRequest
 //
@@ -584,11 +659,11 @@ func (client *Client) CreateIpam(request *CreateIpamRequest) (_result *CreateIpa
 
 // Summary:
 //
-// Creates an IP Address Manager (IPAM) pool.
+// Create an IPAM address pool.
 //
 // Description:
 //
-// The number of public IPv6 IPAM top pool for a specific ISP that a user is allowed to create per region is limited to 1.
+// - The default maximum number of public IPv6 top-level pools per ISP type per region is 1.
 //
 // @param request - CreateIpamPoolRequest
 //
@@ -708,11 +783,11 @@ func (client *Client) CreateIpamPoolWithOptions(request *CreateIpamPoolRequest, 
 
 // Summary:
 //
-// Creates an IP Address Manager (IPAM) pool.
+// Create an IPAM address pool.
 //
 // Description:
 //
-// The number of public IPv6 IPAM top pool for a specific ISP that a user is allowed to create per region is limited to 1.
+// - The default maximum number of public IPv6 top-level pools per ISP type per region is 1.
 //
 // @param request - CreateIpamPoolRequest
 //
@@ -730,17 +805,17 @@ func (client *Client) CreateIpamPool(request *CreateIpamPoolRequest) (_result *C
 
 // Summary:
 //
-// Reserves a custom CIDR block from an IP Address Manager (IPAM) pool.
+// Creates a custom reserved CIDR block from an IPAM pool.
 //
 // Description:
 //
-//	  Before you reserve a custom CIDR block, make sure that an IPAM pool is created and CIDR blocks are added to the pool. You can call **CreateIpamPool*	- to create an IPAM pool and call **AddIpamPoolCidr*	- to add CIDR blocks to the pool.
+// - Before you create a custom reserved CIDR block, ensure that you have created an IPAM pool and added a CIDR block to it. You can call the **CreateIpamPool*	- operation to create an IPAM pool and the **AddIpamPoolCidr*	- operation to add a CIDR block to the pool.
 //
-//		- When you specify Cidr or CidrMask to reserve a custom CIDR block, the mask must fall within the range specified by the IPAM pool.
+// - When you specify the Cidr or CidrMask parameter to create a custom reserved CIDR block, the mask must be within the range specified for the IPAM pool.
 //
-//		- If the IPAM pool has the region attribute, you must reserve a custom CIDR block in the region to which the IPAM pool belongs.
+// - If an IPAM pool has a region attribute, the request to create a custom reserved CIDR block must be initiated from the region where the pool is located.
 //
-//		- The custom CIDR block that you want to reserve cannot overlap with existing CIDR blocks created from the IPAM pool.
+// - The custom reserved CIDR block must not conflict with existing CIDR block allocations in the IPAM pool.
 //
 // @param request - CreateIpamPoolAllocationRequest
 //
@@ -812,17 +887,17 @@ func (client *Client) CreateIpamPoolAllocationWithOptions(request *CreateIpamPoo
 
 // Summary:
 //
-// Reserves a custom CIDR block from an IP Address Manager (IPAM) pool.
+// Creates a custom reserved CIDR block from an IPAM pool.
 //
 // Description:
 //
-//	  Before you reserve a custom CIDR block, make sure that an IPAM pool is created and CIDR blocks are added to the pool. You can call **CreateIpamPool*	- to create an IPAM pool and call **AddIpamPoolCidr*	- to add CIDR blocks to the pool.
+// - Before you create a custom reserved CIDR block, ensure that you have created an IPAM pool and added a CIDR block to it. You can call the **CreateIpamPool*	- operation to create an IPAM pool and the **AddIpamPoolCidr*	- operation to add a CIDR block to the pool.
 //
-//		- When you specify Cidr or CidrMask to reserve a custom CIDR block, the mask must fall within the range specified by the IPAM pool.
+// - When you specify the Cidr or CidrMask parameter to create a custom reserved CIDR block, the mask must be within the range specified for the IPAM pool.
 //
-//		- If the IPAM pool has the region attribute, you must reserve a custom CIDR block in the region to which the IPAM pool belongs.
+// - If an IPAM pool has a region attribute, the request to create a custom reserved CIDR block must be initiated from the region where the pool is located.
 //
-//		- The custom CIDR block that you want to reserve cannot overlap with existing CIDR blocks created from the IPAM pool.
+// - The custom reserved CIDR block must not conflict with existing CIDR block allocations in the IPAM pool.
 //
 // @param request - CreateIpamPoolAllocationRequest
 //
@@ -840,13 +915,13 @@ func (client *Client) CreateIpamPoolAllocation(request *CreateIpamPoolAllocation
 
 // Summary:
 //
-// Creates a custom resource discovery instance.
+// Creates a resource discovery instance of a custom type.
 //
 // Description:
 //
-//	  Each Alibaba Cloud account can create only one resource discovery instance in each region.
+// - Each Alibaba Cloud account can have only one resource discovery instance in each region.
 //
-//		- You can create only custom resource discovery instances.
+// - This operation creates only resource discovery instances of a custom type.
 //
 // @param request - CreateIpamResourceDiscoveryRequest
 //
@@ -934,13 +1009,13 @@ func (client *Client) CreateIpamResourceDiscoveryWithOptions(request *CreateIpam
 
 // Summary:
 //
-// Creates a custom resource discovery instance.
+// Creates a resource discovery instance of a custom type.
 //
 // Description:
 //
-//	  Each Alibaba Cloud account can create only one resource discovery instance in each region.
+// - Each Alibaba Cloud account can have only one resource discovery instance in each region.
 //
-//		- You can create only custom resource discovery instances.
+// - This operation creates only resource discovery instances of a custom type.
 //
 // @param request - CreateIpamResourceDiscoveryRequest
 //
@@ -958,7 +1033,7 @@ func (client *Client) CreateIpamResourceDiscovery(request *CreateIpamResourceDis
 
 // Summary:
 //
-// Creates a public scope and private scope to respectively manage public and private IP addresses.
+// Creates scopes for IPAM to manage private and public IP addresses.
 //
 // @param request - CreateIpamScopeRequest
 //
@@ -1050,7 +1125,7 @@ func (client *Client) CreateIpamScopeWithOptions(request *CreateIpamScopeRequest
 
 // Summary:
 //
-// Creates a public scope and private scope to respectively manage public and private IP addresses.
+// Creates scopes for IPAM to manage private and public IP addresses.
 //
 // @param request - CreateIpamScopeRequest
 //
@@ -1068,15 +1143,19 @@ func (client *Client) CreateIpamScope(request *CreateIpamScopeRequest) (_result 
 
 // Summary:
 //
-// Deletes an IP Address Manager (IPAM).
+// Deletes an IPAM instance.
 //
 // Description:
 //
-// ## [](#)Prerequisites
+// ## Prerequisites
 //
-//   - Before you delete an IPAM, make sure that all IPAM pools of the IPAM are deleted. You can call **DeleteIpamPool*	- to delete IPAM pools.
+// - Before you delete an IPAM instance, ensure that all IPAM pools in the instance are deleted. You can call the **DeleteIpamPool*	- operation to delete the IPAM pools.
 //
-//   - Before you delete an IPAM, make sure that all IPAM scopes of the IPAM are deleted. You can call **DeleteIpamScope*	- to delete IPAM scopes.
+// - Before you delete an IPAM instance, ensure that all custom IPAM scopes in the instance are deleted. You can call the **DeleteIpamScope*	- operation to delete the IPAM scopes.
+//
+// - Before you delete an IPAM instance, ensure that the default resource discovery instance is not shared.
+//
+// - Before you delete an IPAM instance, ensure that no shared resource discovery instances are associated with the IPAM instance.
 //
 // @param request - DeleteIpamRequest
 //
@@ -1148,15 +1227,19 @@ func (client *Client) DeleteIpamWithOptions(request *DeleteIpamRequest, runtime 
 
 // Summary:
 //
-// Deletes an IP Address Manager (IPAM).
+// Deletes an IPAM instance.
 //
 // Description:
 //
-// ## [](#)Prerequisites
+// ## Prerequisites
 //
-//   - Before you delete an IPAM, make sure that all IPAM pools of the IPAM are deleted. You can call **DeleteIpamPool*	- to delete IPAM pools.
+// - Before you delete an IPAM instance, ensure that all IPAM pools in the instance are deleted. You can call the **DeleteIpamPool*	- operation to delete the IPAM pools.
 //
-//   - Before you delete an IPAM, make sure that all IPAM scopes of the IPAM are deleted. You can call **DeleteIpamScope*	- to delete IPAM scopes.
+// - Before you delete an IPAM instance, ensure that all custom IPAM scopes in the instance are deleted. You can call the **DeleteIpamScope*	- operation to delete the IPAM scopes.
+//
+// - Before you delete an IPAM instance, ensure that the default resource discovery instance is not shared.
+//
+// - Before you delete an IPAM instance, ensure that no shared resource discovery instances are associated with the IPAM instance.
 //
 // @param request - DeleteIpamRequest
 //
@@ -1174,17 +1257,19 @@ func (client *Client) DeleteIpam(request *DeleteIpamRequest) (_result *DeleteIpa
 
 // Summary:
 //
-// Deletes an IP Address Manager (IPAM) scope.
+// Deletes an IPAM pool instance.
 //
 // Description:
 //
-// ### [](#)Usage notes
+// ### Usage notes
 //
-//   - Before you delete a parent pool, make sure that all subpools of the parent pool are deleted.
+// - Before deleting a parent pool, make sure that all subpools under the parent pool have been deleted.
 //
-//   - If an effective region is specified for a parent pool and IP addresses are allocated from the parent pool, you cannot delete the parent pool.
+// - When a parent pool has an effective region configured and has addresses that have already been allocated, the parent pool cannot be deleted.
 //
-//   - If an effective region is specified for a subpool and IP addresses are allocated from the subpool, you cannot delete the subpool.
+// - When a subpool has an effective region configured and has addresses that have already been allocated, the subpool cannot be deleted.
+//
+// - When a pool has a sharing relationship, the pool cannot be deleted.
 //
 // @param request - DeleteIpamPoolRequest
 //
@@ -1256,17 +1341,19 @@ func (client *Client) DeleteIpamPoolWithOptions(request *DeleteIpamPoolRequest, 
 
 // Summary:
 //
-// Deletes an IP Address Manager (IPAM) scope.
+// Deletes an IPAM pool instance.
 //
 // Description:
 //
-// ### [](#)Usage notes
+// ### Usage notes
 //
-//   - Before you delete a parent pool, make sure that all subpools of the parent pool are deleted.
+// - Before deleting a parent pool, make sure that all subpools under the parent pool have been deleted.
 //
-//   - If an effective region is specified for a parent pool and IP addresses are allocated from the parent pool, you cannot delete the parent pool.
+// - When a parent pool has an effective region configured and has addresses that have already been allocated, the parent pool cannot be deleted.
 //
-//   - If an effective region is specified for a subpool and IP addresses are allocated from the subpool, you cannot delete the subpool.
+// - When a subpool has an effective region configured and has addresses that have already been allocated, the subpool cannot be deleted.
+//
+// - When a pool has a sharing relationship, the pool cannot be deleted.
 //
 // @param request - DeleteIpamPoolRequest
 //
@@ -1284,7 +1371,7 @@ func (client *Client) DeleteIpamPool(request *DeleteIpamPoolRequest) (_result *D
 
 // Summary:
 //
-// Deletes a custom reserved CIDR block from an IP Address Manager (IPAM) pool.
+// Releases a CIDR allocation from an IP Address Management (IPAM) address pool. Supported allocation types include virtual private cloud (VPC) and custom allocation.
 //
 // @param request - DeleteIpamPoolAllocationRequest
 //
@@ -1340,7 +1427,7 @@ func (client *Client) DeleteIpamPoolAllocationWithOptions(request *DeleteIpamPoo
 
 // Summary:
 //
-// Deletes a custom reserved CIDR block from an IP Address Manager (IPAM) pool.
+// Releases a CIDR allocation from an IP Address Management (IPAM) address pool. Supported allocation types include virtual private cloud (VPC) and custom allocation.
 //
 // @param request - DeleteIpamPoolAllocationRequest
 //
@@ -1358,17 +1445,17 @@ func (client *Client) DeleteIpamPoolAllocation(request *DeleteIpamPoolAllocation
 
 // Summary:
 //
-// Deletes a CIDR block provisioned to an IP Address Manager (IPAM) pool.
+// Deletes a provisioned CIDR block from an IP Address Manager (IPAM) pool.
 //
 // Description:
 //
-//	  If CIDR blocks are provisioned to a parent pool and its subpools, you must first delete the CIDR blocks provisioned to the subpools before you delete the ones provisioned to the parent pool.
+// - If CIDR blocks are provisioned in both a parent pool and its sub-pools, delete the CIDR blocks from the sub-pools before you delete the CIDR block from the parent pool.
 //
-//		- If CIDR blocks are provisioned only to the parent pool, directly delete them.
+// - If a CIDR block is provisioned only in a parent pool, you can delete the CIDR block directly from the parent pool.
 //
-//		- If CIDR blocks are allocated from provisioned ones, you must first delete the allocated CIDR blocks before you delete the provisioned ones.
+// - If allocations exist from the provisioned CIDR block, delete the allocations before you delete the CIDR block.
 //
-//		- You can delete CIDR blocks provisioned to an IPAM pool only in the region where the IPAM is hosted.
+// - Requests to delete a provisioned CIDR block from an IPAM pool must be sent from the region where the IPAM is deployed.
 //
 // @param request - DeleteIpamPoolCidrRequest
 //
@@ -1428,17 +1515,17 @@ func (client *Client) DeleteIpamPoolCidrWithOptions(request *DeleteIpamPoolCidrR
 
 // Summary:
 //
-// Deletes a CIDR block provisioned to an IP Address Manager (IPAM) pool.
+// Deletes a provisioned CIDR block from an IP Address Manager (IPAM) pool.
 //
 // Description:
 //
-//	  If CIDR blocks are provisioned to a parent pool and its subpools, you must first delete the CIDR blocks provisioned to the subpools before you delete the ones provisioned to the parent pool.
+// - If CIDR blocks are provisioned in both a parent pool and its sub-pools, delete the CIDR blocks from the sub-pools before you delete the CIDR block from the parent pool.
 //
-//		- If CIDR blocks are provisioned only to the parent pool, directly delete them.
+// - If a CIDR block is provisioned only in a parent pool, you can delete the CIDR block directly from the parent pool.
 //
-//		- If CIDR blocks are allocated from provisioned ones, you must first delete the allocated CIDR blocks before you delete the provisioned ones.
+// - If allocations exist from the provisioned CIDR block, delete the allocations before you delete the CIDR block.
 //
-//		- You can delete CIDR blocks provisioned to an IPAM pool only in the region where the IPAM is hosted.
+// - Requests to delete a provisioned CIDR block from an IPAM pool must be sent from the region where the IPAM is deployed.
 //
 // @param request - DeleteIpamPoolCidrRequest
 //
@@ -1456,11 +1543,11 @@ func (client *Client) DeleteIpamPoolCidr(request *DeleteIpamPoolCidrRequest) (_r
 
 // Summary:
 //
-// Deletes a custom resource discovery instance.
+// Deletes a resource discovery instance.
 //
 // Description:
 //
-//	If a resource discovery instance is shared, it cannot be deleted.
+// - A resource discovery instance cannot be deleted if it is shared.
 //
 // @param request - DeleteIpamResourceDiscoveryRequest
 //
@@ -1532,11 +1619,11 @@ func (client *Client) DeleteIpamResourceDiscoveryWithOptions(request *DeleteIpam
 
 // Summary:
 //
-// Deletes a custom resource discovery instance.
+// Deletes a resource discovery instance.
 //
 // Description:
 //
-//	If a resource discovery instance is shared, it cannot be deleted.
+// - A resource discovery instance cannot be deleted if it is shared.
 //
 // @param request - DeleteIpamResourceDiscoveryRequest
 //
@@ -1554,15 +1641,15 @@ func (client *Client) DeleteIpamResourceDiscovery(request *DeleteIpamResourceDis
 
 // Summary:
 //
-// Deletes an IP Address Manager (IPAM) scope.
+// Deletes an IPAM scope.
 //
 // Description:
 //
-// ### [](#)Usage notes
+// ### Usage notes
 //
-//   - You cannot delete the private scope and public scope created by the system.
+// - You cannot delete the two default IPAM scopes that the system automatically creates.
 //
-//   - Before you delete an IPAM scope, make sure that all pools within the scope are deleted. You can call **DeleteIpamPool*	- to delete IPAM pools.
+// - Before you delete a custom IPAM scope, ensure that all IPAM pools in the scope are deleted. You can call the **DeleteIpamPool*	- operation to delete an IPAM pool.
 //
 // @param request - DeleteIpamScopeRequest
 //
@@ -1634,15 +1721,15 @@ func (client *Client) DeleteIpamScopeWithOptions(request *DeleteIpamScopeRequest
 
 // Summary:
 //
-// Deletes an IP Address Manager (IPAM) scope.
+// Deletes an IPAM scope.
 //
 // Description:
 //
-// ### [](#)Usage notes
+// ### Usage notes
 //
-//   - You cannot delete the private scope and public scope created by the system.
+// - You cannot delete the two default IPAM scopes that the system automatically creates.
 //
-//   - Before you delete an IPAM scope, make sure that all pools within the scope are deleted. You can call **DeleteIpamPool*	- to delete IPAM pools.
+// - Before you delete a custom IPAM scope, ensure that all IPAM pools in the scope are deleted. You can call the **DeleteIpamPool*	- operation to delete an IPAM pool.
 //
 // @param request - DeleteIpamScopeRequest
 //
@@ -1660,7 +1747,7 @@ func (client *Client) DeleteIpamScope(request *DeleteIpamScopeRequest) (_result 
 
 // Summary:
 //
-// Disassociates resource discovery and IPAM instances.
+// Disassociates a resource discovery from an IP Address Manager (IPAM) instance.
 //
 // @param request - DissociateIpamResourceDiscoveryRequest
 //
@@ -1736,7 +1823,7 @@ func (client *Client) DissociateIpamResourceDiscoveryWithOptions(request *Dissoc
 
 // Summary:
 //
-// Disassociates resource discovery and IPAM instances.
+// Disassociates a resource discovery from an IP Address Manager (IPAM) instance.
 //
 // @param request - DissociateIpamResourceDiscoveryRequest
 //
@@ -1754,7 +1841,7 @@ func (client *Client) DissociateIpamResourceDiscovery(request *DissociateIpamRes
 
 // Summary:
 //
-// Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
+// Queries a specified CIDR block allocation in an IPAM pool.
 //
 // @param request - GetIpamPoolAllocationRequest
 //
@@ -1794,7 +1881,7 @@ func (client *Client) GetIpamPoolAllocationWithOptions(request *GetIpamPoolAlloc
 
 // Summary:
 //
-// Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
+// Queries a specified CIDR block allocation in an IPAM pool.
 //
 // @param request - GetIpamPoolAllocationRequest
 //
@@ -1812,7 +1899,7 @@ func (client *Client) GetIpamPoolAllocation(request *GetIpamPoolAllocationReques
 
 // Summary:
 //
-// Gets the available CIDR blocks of the IPAM pool.
+// Retrieves an available CIDR block from an IPAM pool.
 //
 // @param request - GetIpamPoolNextAvailableCidrRequest
 //
@@ -1852,7 +1939,7 @@ func (client *Client) GetIpamPoolNextAvailableCidrWithOptions(request *GetIpamPo
 
 // Summary:
 //
-// Gets the available CIDR blocks of the IPAM pool.
+// Retrieves an available CIDR block from an IPAM pool.
 //
 // @param request - GetIpamPoolNextAvailableCidrRequest
 //
@@ -1870,7 +1957,7 @@ func (client *Client) GetIpamPoolNextAvailableCidr(request *GetIpamPoolNextAvail
 
 // Summary:
 //
-// Queries whether IP Address Manager (IPAM) is activated.
+// Retrieves the status of the IPAM service.
 //
 // @param request - GetVpcIpamServiceStatusRequest
 //
@@ -1934,7 +2021,7 @@ func (client *Client) GetVpcIpamServiceStatusWithOptions(request *GetVpcIpamServ
 
 // Summary:
 //
-// Queries whether IP Address Manager (IPAM) is activated.
+// Retrieves the status of the IPAM service.
 //
 // @param request - GetVpcIpamServiceStatusRequest
 //
@@ -1952,7 +2039,23 @@ func (client *Client) GetVpcIpamServiceStatus(request *GetVpcIpamServiceStatusRe
 
 // Summary:
 //
-// 查询VPC或VSwitch下已使用IP信息。
+// Lists the IP addresses used by discovered resources in a VPC or vSwitch.
+//
+// Description:
+//
+// Supported query combinations:
+//
+// - `VpcId` only
+//
+// - `VSwitchId` only
+//
+// - `VpcId` + `VSwitchId`
+//
+// - `VpcId` + `CidrBlock`
+//
+// - `VSwitchId` + `CidrBlock`
+//
+// - `VpcId` + `VSwitchId` + `CidrBlock`
 //
 // @param request - ListIpamDiscoveredIpAddressesRequest
 //
@@ -2024,7 +2127,23 @@ func (client *Client) ListIpamDiscoveredIpAddressesWithOptions(request *ListIpam
 
 // Summary:
 //
-// 查询VPC或VSwitch下已使用IP信息。
+// Lists the IP addresses used by discovered resources in a VPC or vSwitch.
+//
+// Description:
+//
+// Supported query combinations:
+//
+// - `VpcId` only
+//
+// - `VSwitchId` only
+//
+// - `VpcId` + `VSwitchId`
+//
+// - `VpcId` + `CidrBlock`
+//
+// - `VSwitchId` + `CidrBlock`
+//
+// - `VpcId` + `VSwitchId` + `CidrBlock`
 //
 // @param request - ListIpamDiscoveredIpAddressesRequest
 //
@@ -2042,7 +2161,7 @@ func (client *Client) ListIpamDiscoveredIpAddresses(request *ListIpamDiscoveredI
 
 // Summary:
 //
-// Queries discovered resources.
+// Queries resource information under a resource discovery.
 //
 // @param request - ListIpamDiscoveredResourceRequest
 //
@@ -2106,7 +2225,7 @@ func (client *Client) ListIpamDiscoveredResourceWithOptions(request *ListIpamDis
 
 // Summary:
 //
-// Queries discovered resources.
+// Queries resource information under a resource discovery.
 //
 // @param request - ListIpamDiscoveredResourceRequest
 //
@@ -2124,7 +2243,7 @@ func (client *Client) ListIpamDiscoveredResource(request *ListIpamDiscoveredReso
 
 // Summary:
 //
-// 查询ipam可信服务纳管成员
+// Lists the members managed by the IPAM trusted service.
 //
 // @param request - ListIpamMembersRequest
 //
@@ -2196,7 +2315,7 @@ func (client *Client) ListIpamMembersWithOptions(request *ListIpamMembersRequest
 
 // Summary:
 //
-// 查询ipam可信服务纳管成员
+// Lists the members managed by the IPAM trusted service.
 //
 // @param request - ListIpamMembersRequest
 //
@@ -2214,7 +2333,7 @@ func (client *Client) ListIpamMembers(request *ListIpamMembersRequest) (_result 
 
 // Summary:
 //
-// Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
+// Queries CIDR block allocations in an IPAM pool.
 //
 // @param request - ListIpamPoolAllocationsRequest
 //
@@ -2282,7 +2401,7 @@ func (client *Client) ListIpamPoolAllocationsWithOptions(request *ListIpamPoolAl
 
 // Summary:
 //
-// Queries CIDR block allocations of an IP Address Manager (IPAM) pool.
+// Queries CIDR block allocations in an IPAM pool.
 //
 // @param request - ListIpamPoolAllocationsRequest
 //
@@ -2300,7 +2419,7 @@ func (client *Client) ListIpamPoolAllocations(request *ListIpamPoolAllocationsRe
 
 // Summary:
 //
-// Queries CIDR blocks provisioned to an IP Address Manager (IPAM) pool.
+// Queries the provisioned CIDR blocks of an IPAM pool.
 //
 // @param request - ListIpamPoolCidrsRequest
 //
@@ -2360,7 +2479,7 @@ func (client *Client) ListIpamPoolCidrsWithOptions(request *ListIpamPoolCidrsReq
 
 // Summary:
 //
-// Queries CIDR blocks provisioned to an IP Address Manager (IPAM) pool.
+// Queries the provisioned CIDR blocks of an IPAM pool.
 //
 // @param request - ListIpamPoolCidrsRequest
 //
@@ -2378,7 +2497,7 @@ func (client *Client) ListIpamPoolCidrs(request *ListIpamPoolCidrsRequest) (_res
 
 // Summary:
 //
-// Queries IP Address Manager (IPAM) pools.
+// Queries IPAM pools.
 //
 // @param request - ListIpamPoolsRequest
 //
@@ -2486,7 +2605,7 @@ func (client *Client) ListIpamPoolsWithOptions(request *ListIpamPoolsRequest, ru
 
 // Summary:
 //
-// Queries IP Address Manager (IPAM) pools.
+// Queries IPAM pools.
 //
 // @param request - ListIpamPoolsRequest
 //
@@ -2504,7 +2623,7 @@ func (client *Client) ListIpamPools(request *ListIpamPoolsRequest) (_result *Lis
 
 // Summary:
 //
-// Queries resources in an IP Address Manager (IPAM) pool.
+// Queries resources within an IPAM scope.
 //
 // @param request - ListIpamResourceCidrsRequest
 //
@@ -2580,7 +2699,7 @@ func (client *Client) ListIpamResourceCidrsWithOptions(request *ListIpamResource
 
 // Summary:
 //
-// Queries resources in an IP Address Manager (IPAM) pool.
+// Queries resources within an IPAM scope.
 //
 // @param request - ListIpamResourceCidrsRequest
 //
@@ -2598,7 +2717,7 @@ func (client *Client) ListIpamResourceCidrs(request *ListIpamResourceCidrsReques
 
 // Summary:
 //
-// Queries IPAM resource discovery instances.
+// Retrieves a list of IPAM resource discovery instances.
 //
 // @param request - ListIpamResourceDiscoveriesRequest
 //
@@ -2690,7 +2809,7 @@ func (client *Client) ListIpamResourceDiscoveriesWithOptions(request *ListIpamRe
 
 // Summary:
 //
-// Queries IPAM resource discovery instances.
+// Retrieves a list of IPAM resource discovery instances.
 //
 // @param request - ListIpamResourceDiscoveriesRequest
 //
@@ -2708,7 +2827,7 @@ func (client *Client) ListIpamResourceDiscoveries(request *ListIpamResourceDisco
 
 // Summary:
 //
-// Queries the association between resource discovery and IPAM.
+// Lists the associations between resource discoveries and IP Address Managers (IPAMs).
 //
 // @param request - ListIpamResourceDiscoveryAssociationsRequest
 //
@@ -2784,7 +2903,7 @@ func (client *Client) ListIpamResourceDiscoveryAssociationsWithOptions(request *
 
 // Summary:
 //
-// Queries the association between resource discovery and IPAM.
+// Lists the associations between resource discoveries and IP Address Managers (IPAMs).
 //
 // @param request - ListIpamResourceDiscoveryAssociationsRequest
 //
@@ -2802,7 +2921,7 @@ func (client *Client) ListIpamResourceDiscoveryAssociations(request *ListIpamRes
 
 // Summary:
 //
-// Queries IP Address Manager (IPAM) scopes.
+// Queries IPAM scopes.
 //
 // @param request - ListIpamScopesRequest
 //
@@ -2894,7 +3013,7 @@ func (client *Client) ListIpamScopesWithOptions(request *ListIpamScopesRequest, 
 
 // Summary:
 //
-// Queries IP Address Manager (IPAM) scopes.
+// Queries IPAM scopes.
 //
 // @param request - ListIpamScopesRequest
 //
@@ -2912,7 +3031,7 @@ func (client *Client) ListIpamScopes(request *ListIpamScopesRequest) (_result *L
 
 // Summary:
 //
-// Queries IP Address Managers (IPAMs).
+// Queries one or more IPAMs.
 //
 // @param request - ListIpamsRequest
 //
@@ -2996,7 +3115,7 @@ func (client *Client) ListIpamsWithOptions(request *ListIpamsRequest, runtime *d
 
 // Summary:
 //
-// Queries IP Address Managers (IPAMs).
+// Queries one or more IPAMs.
 //
 // @param request - ListIpamsRequest
 //
@@ -3014,19 +3133,19 @@ func (client *Client) ListIpams(request *ListIpamsRequest) (_result *ListIpamsRe
 
 // Summary:
 //
-// Queries a list of resource tags.
+// Queries the tags that are associated with resources.
 //
 // Description:
 //
-// ### [](#)Usage notes
+// ### Usage notes
 //
-//   - You must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value*	- in the request to specify the object that you want to query.
+// - You must specify at least **ResourceId.N*	- or **Tag.N*	- (**Tag.N.Key*	- and **Tag.N.Value**) in a request to identify the resources to query.
 //
-//   - **Tag.N*	- is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+// - **Tag.N*	- is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values associated with the tag key are returned. An error is returned if you specify only **Tag.N.Value**.
 //
-//   - If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
+// - If you specify both **Tag.N*	- and **ResourceId.N**, the query returns only the resources that are specified by **ResourceId.N*	- and are associated with all the specified tag key-value pairs.
 //
-//   - If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+// - If you specify multiple tag key-value pairs, the query returns only resources that are associated with all the specified key-value pairs.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -3106,19 +3225,19 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries a list of resource tags.
+// Queries the tags that are associated with resources.
 //
 // Description:
 //
-// ### [](#)Usage notes
+// ### Usage notes
 //
-//   - You must specify **ResourceId.N*	- or **Tag.N*	- that consists of **Tag.N.Key*	- and **Tag.N.Value*	- in the request to specify the object that you want to query.
+// - You must specify at least **ResourceId.N*	- or **Tag.N*	- (**Tag.N.Key*	- and **Tag.N.Value**) in a request to identify the resources to query.
 //
-//   - **Tag.N*	- is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+// - **Tag.N*	- is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values associated with the tag key are returned. An error is returned if you specify only **Tag.N.Value**.
 //
-//   - If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
+// - If you specify both **Tag.N*	- and **ResourceId.N**, the query returns only the resources that are specified by **ResourceId.N*	- and are associated with all the specified tag key-value pairs.
 //
-//   - If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+// - If you specify multiple tag key-value pairs, the query returns only resources that are associated with all the specified key-value pairs.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -3136,7 +3255,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Activates IP Address Manager (IPAM).
+// Activates the IP Address Management (IPAM) service.
 //
 // @param request - OpenVpcIpamServiceRequest
 //
@@ -3200,7 +3319,7 @@ func (client *Client) OpenVpcIpamServiceWithOptions(request *OpenVpcIpamServiceR
 
 // Summary:
 //
-// Activates IP Address Manager (IPAM).
+// Activates the IP Address Management (IPAM) service.
 //
 // @param request - OpenVpcIpamServiceRequest
 //
@@ -3218,7 +3337,11 @@ func (client *Client) OpenVpcIpamService(request *OpenVpcIpamServiceRequest) (_r
 
 // Summary:
 //
-// 移除ipam可信服务纳管成员
+// Removes members from the IPAM trusted service.
+//
+// Description:
+//
+// - If the delegated IPAM administrator removes the last member, the IPAM trusted service is disabled for the resource directory.
 //
 // @param request - RemoveIpamMembersRequest
 //
@@ -3290,7 +3413,11 @@ func (client *Client) RemoveIpamMembersWithOptions(request *RemoveIpamMembersReq
 
 // Summary:
 //
-// 移除ipam可信服务纳管成员
+// Removes members from the IPAM trusted service.
+//
+// Description:
+//
+// - If the delegated IPAM administrator removes the last member, the IPAM trusted service is disabled for the resource directory.
 //
 // @param request - RemoveIpamMembersRequest
 //
@@ -3516,7 +3643,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Modifies an IPAM instance.
+// Modifies an IP Address Management (IPAM) instance.
+//
+// Description:
+//
+// - The managed region of an IPAM instance cannot be removed.
 //
 // @param request - UpdateIpamRequest
 //
@@ -3604,7 +3735,11 @@ func (client *Client) UpdateIpamWithOptions(request *UpdateIpamRequest, runtime 
 
 // Summary:
 //
-// Modifies an IPAM instance.
+// Modifies an IP Address Management (IPAM) instance.
+//
+// Description:
+//
+// - The managed region of an IPAM instance cannot be removed.
 //
 // @param request - UpdateIpamRequest
 //
@@ -3622,7 +3757,7 @@ func (client *Client) UpdateIpam(request *UpdateIpamRequest) (_result *UpdateIpa
 
 // Summary:
 //
-// Modifies the basic information about an IP Address Manager (IPAM) pool.
+// Updates the basic information of an IPAM pool.
 //
 // @param request - UpdateIpamPoolRequest
 //
@@ -3722,7 +3857,7 @@ func (client *Client) UpdateIpamPoolWithOptions(request *UpdateIpamPoolRequest, 
 
 // Summary:
 //
-// Modifies the basic information about an IP Address Manager (IPAM) pool.
+// Updates the basic information of an IPAM pool.
 //
 // @param request - UpdateIpamPoolRequest
 //
@@ -3740,7 +3875,7 @@ func (client *Client) UpdateIpamPool(request *UpdateIpamPoolRequest) (_result *U
 
 // Summary:
 //
-// Modifies CIDR block allocations of an IP Address Manager (IPAM) pool.
+// Updates a CIDR allocation from an IPAM address pool.
 //
 // @param request - UpdateIpamPoolAllocationRequest
 //
@@ -3804,7 +3939,7 @@ func (client *Client) UpdateIpamPoolAllocationWithOptions(request *UpdateIpamPoo
 
 // Summary:
 //
-// Modifies CIDR block allocations of an IP Address Manager (IPAM) pool.
+// Updates a CIDR allocation from an IPAM address pool.
 //
 // @param request - UpdateIpamPoolAllocationRequest
 //
@@ -3826,9 +3961,9 @@ func (client *Client) UpdateIpamPoolAllocation(request *UpdateIpamPoolAllocation
 //
 // Description:
 //
-//	  You can add or remove effective regions only for custom resource discovery instances.
+// - You can add or remove operating regions only for custom resource discovery instances.
 //
-//		- When removing effective regions from a resource discovery instance, the hosted region cannot be included.
+// - When you remove an operating region from a resource discovery instance, you cannot remove the managed region of the resource discovery instance.
 //
 // @param request - UpdateIpamResourceDiscoveryRequest
 //
@@ -3920,9 +4055,9 @@ func (client *Client) UpdateIpamResourceDiscoveryWithOptions(request *UpdateIpam
 //
 // Description:
 //
-//	  You can add or remove effective regions only for custom resource discovery instances.
+// - You can add or remove operating regions only for custom resource discovery instances.
 //
-//		- When removing effective regions from a resource discovery instance, the hosted region cannot be included.
+// - When you remove an operating region from a resource discovery instance, you cannot remove the managed region of the resource discovery instance.
 //
 // @param request - UpdateIpamResourceDiscoveryRequest
 //
@@ -3940,7 +4075,7 @@ func (client *Client) UpdateIpamResourceDiscovery(request *UpdateIpamResourceDis
 
 // Summary:
 //
-// Modifies the basic information about an IP Address Manager (IPAM) scope.
+// Updates the basic information of an IPAM scope.
 //
 // @param request - UpdateIpamScopeRequest
 //
@@ -4020,7 +4155,7 @@ func (client *Client) UpdateIpamScopeWithOptions(request *UpdateIpamScopeRequest
 
 // Summary:
 //
-// Modifies the basic information about an IP Address Manager (IPAM) scope.
+// Updates the basic information of an IPAM scope.
 //
 // @param request - UpdateIpamScopeRequest
 //

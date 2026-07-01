@@ -24,23 +24,38 @@ type iListIpamDiscoveredIpAddressesResponseBody interface {
 }
 
 type ListIpamDiscoveredIpAddressesResponseBody struct {
+	// The number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 10
-	Count                     *int32                                                                `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Details of the used IP addresses.
 	IpamDiscoveredIpAddresses []*ListIpamDiscoveredIpAddressesResponseBodyIpamDiscoveredIpAddresses `json:"IpamDiscoveredIpAddresses,omitempty" xml:"IpamDiscoveredIpAddresses,omitempty" type:"Repeated"`
+	// The maximum number of entries to return per page. Valid values: 1 to 200. Default value: 100.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token. Use this token in a subsequent request to retrieve the next page of results. Valid values:
+	//
+	// - Empty: All results have been returned.
+	//
+	// - If **NextToken*	- has a value, it is the token for the next page of results.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9F8315CB-560E-5F1E-B069-6E44B440CAF8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries that match the query.
+	//
 	// example:
 	//
 	// 1000
@@ -123,30 +138,46 @@ func (s *ListIpamDiscoveredIpAddressesResponseBody) Validate() error {
 }
 
 type ListIpamDiscoveredIpAddressesResponseBodyIpamDiscoveredIpAddresses struct {
+	// The IP address in use.
+	//
 	// example:
 	//
 	// 192.168.10.40/32
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The IP version. Valid value:
+	//
+	// - **IPv4**: Indicates the IPv4 protocol.
+	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// eni-bp1001jpjhzmgc5m****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the region in which the resource resides.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The cloud service to which the resource belongs.
+	//
 	// example:
 	//
 	// ENI
 	ResourceServiceType *string `json:"ResourceServiceType,omitempty" xml:"ResourceServiceType,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-bp1bmwg5u07e1l3q0is4w
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-bp1fjfnrg3av6zb9e****

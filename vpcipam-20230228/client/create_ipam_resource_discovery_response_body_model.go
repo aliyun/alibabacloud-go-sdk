@@ -16,7 +16,7 @@ type iCreateIpamResourceDiscoveryResponseBody interface {
 }
 
 type CreateIpamResourceDiscoveryResponseBody struct {
-	// The ID of the instance for resource discovery.
+	// The ID of the resource discovery instance.
 	//
 	// example:
 	//

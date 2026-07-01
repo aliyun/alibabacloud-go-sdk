@@ -16,7 +16,7 @@ type iCreateIpamPoolResponseBody interface {
 }
 
 type CreateIpamPoolResponseBody struct {
-	// The ID of the IPAM pool.
+	// The instance ID of the IPAM address pool.
 	//
 	// example:
 	//

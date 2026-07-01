@@ -46,29 +46,29 @@ type GetIpamPoolAllocationResponseBody struct {
 	//
 	// 192.168.1.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The time when the instance was created.
+	// The time when the allocation was created.
 	//
 	// example:
 	//
 	// 2024-10-15T10:24:19+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the CIDR allocation of the IPAM pool.
+	// The description of the IPAM pool allocation.
 	//
-	// The description must be 1 to 256 characters in length and start with a letter, but cannot start with a `http://` or `https://`. This parameter is empty by default.
+	// The description must be 1 to 256 characters long. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. If you do not specify this parameter, the description is empty.
 	//
 	// example:
 	//
 	// ipam pool allocation description
 	IpamPoolAllocationDescription *string `json:"IpamPoolAllocationDescription,omitempty" xml:"IpamPoolAllocationDescription,omitempty"`
-	// The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+	// The ID of the IPAM pool allocation.
 	//
 	// example:
 	//
 	// ipam-pool-alloc-112za33e4****
 	IpamPoolAllocationId *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
-	// The name of the CIDR allocation of the IPAM pool.
+	// The name of the IPAM pool allocation.
 	//
-	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name must be 1 to 128 characters long and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type GetIpamPoolAllocationResponseBody struct {
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
-	// The region of the IPAM pool.
+	// The region of the IPAM pool to which the CIDR block allocation belongs.
 	//
-	// >  If the IPAM pool to which the CIDR block allocation belongs has the region attribute, this parameter is the region of the IPAM pool. If not, this parameter is the IPAM hosted region.
+	// > If the IPAM pool has a region attribute, this parameter specifies the region of the IPAM pool. If the IPAM pool does not have a region attribute, this parameter specifies the managed region of IPAM.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type GetIpamPoolAllocationResponseBody struct {
 	//
 	// 1616080591216318
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The effective region ID of the resource.
+	// The ID of the region where the resource is deployed.
 	//
 	// example:
 	//
@@ -114,11 +114,11 @@ type GetIpamPoolAllocationResponseBody struct {
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// The type of the resource to which the CIDR block is allocated. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**: The resource is a VPC.
 	//
-	// 	- **IpamPool**
+	// - **IpamPool**: The resource is a sub-pool.
 	//
-	// 	- **Custom**
+	// - **Custom**: The resource is a custom reserved CIDR block.
 	//
 	// example:
 	//
@@ -130,11 +130,11 @@ type GetIpamPoolAllocationResponseBody struct {
 	//
 	// 192.168.0.0/16
 	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
-	// The instance state. Valid values:
+	// The status of the allocation. Valid values:
 	//
-	// 	- **Created**
+	// - **Created**
 	//
-	// 	- **Deleted**
+	// - **Deleted**
 	//
 	// example:
 	//

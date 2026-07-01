@@ -38,33 +38,33 @@ type iListIpamResourceDiscoveriesRequest interface {
 }
 
 type ListIpamResourceDiscoveriesRequest struct {
-	// The IDs of resource discovery instances. Valid values of N: 1 to 100. A maximum of 100 resource discoveries can be queried at a time.
+	// The IDs of the resource discovery instances. You can query up to 100 instances at a time.
 	IpamResourceDiscoveryIds []*string `json:"IpamResourceDiscoveryIds,omitempty" xml:"IpamResourceDiscoveryIds,omitempty" type:"Repeated"`
 	// The name of the resource discovery.
 	//
-	// The name must be 1 to 128 characters in length and cannot start with http:// or https://.
+	// The name must be 1 to 128 characters in length and cannot start with http\\:// or https\\://.
 	//
 	// example:
 	//
 	// test
 	IpamResourceDiscoveryName *string `json:"IpamResourceDiscoveryName,omitempty" xml:"IpamResourceDiscoveryName,omitempty"`
-	// Whether it is a shared resource discovery.
+	// Specifies whether the resource discovery is shared.
 	//
 	// example:
 	//
 	// true
 	IsShared *bool `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
-	// The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next page of results. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, there is no next page.
+	// - If **NextToken*	- is empty, no more results are available.
 	//
-	// 	- If a value of **NextToken*	- is returned, it indicates the token that is used for the next query.
+	// - If a value is returned for **NextToken**, the value is the token that is used for the next query.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ListIpamResourceDiscoveriesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where you want to query resource discovery. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
+	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to get the region ID.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type ListIpamResourceDiscoveriesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group that resource discovery belongs.
+	// The ID of the resource group to which the resource discovery belongs.
 	//
 	// example:
 	//
@@ -88,15 +88,19 @@ type ListIpamResourceDiscoveriesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tag.
+	// The list of tags.
 	Tags []*ListIpamResourceDiscoveriesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The type of resource discovery.
+	// The type of the resource discovery.
 	//
-	// > Supported types:
+	// > The following types are supported:
 	//
-	// > - system: default resource discovery created by the system.
+	// >
 	//
-	// > - custom: custom resource discovery created by users.
+	// > - system: a default resource discovery created by the system.
+	//
+	// >
+	//
+	// > - custom: a custom resource discovery created by a user.
 	//
 	// example:
 	//
@@ -243,15 +247,15 @@ func (s *ListIpamResourceDiscoveriesRequest) Validate() error {
 }
 
 type ListIpamResourceDiscoveriesRequestTags struct {
-	// The key of the tag. You can specify at most 20 tag keys. It cannot be an empty string.
+	// The tag key. You can specify up to 20 tag keys. The key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	// A tag key can be up to 64 characters in length. It must start with a letter or a Chinese character and can contain digits, periods (.), underscores (_), and hyphens (-). The key cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify at most 20 tag values. The tag value cannot be an empty string.
+	// The tag value. You can specify up to 20 tag values. The value can be an empty string.
 	//
 	// A tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//

@@ -20,7 +20,7 @@ type iCreateIpamPoolAllocationResponseBody interface {
 }
 
 type CreateIpamPoolAllocationResponseBody struct {
-	// The custom reserved CIDR block.
+	// The allocated CIDR block.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type ChangeResourceGroupRequest struct {
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// The ID of the hosted region. Call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to get the region ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the IPAM resource.
+	// The ID of the resource whose resource group you want to change.
 	//
 	// This parameter is required.
 	//
@@ -56,21 +56,21 @@ type ChangeResourceGroupRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Resource type, with values:
+	// The resource type. Valid values:
 	//
-	// - Ipam:IPAM instance
+	// - Ipam: an IPAM instance
 	//
-	// - IpamScope:IPAM scope
+	// - IpamScope: an IPAM scope
 	//
-	// - IpamPool:IPAM address pool
+	// - IpamPool: an IPAM pool
 	//
-	// - IpamResourceDiscovery:IPAM resource discovery
+	// - IpamResourceDiscovery: an IPAM resource discovery
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ipam
+	// Ipam
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 

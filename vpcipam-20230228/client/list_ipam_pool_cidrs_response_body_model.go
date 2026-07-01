@@ -24,25 +24,25 @@ type iListIpamPoolCidrsResponseBody interface {
 }
 
 type ListIpamPoolCidrsResponseBody struct {
-	// The number of entries returned.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
 	// 10
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The IDs of IPAM pools.
+	// A list of provisioned CIDR blocks of the IPAM pool.
 	IpamPoolCidrs []*ListIpamPoolCidrsResponseBodyIpamPoolCidrs `json:"IpamPoolCidrs,omitempty" xml:"IpamPoolCidrs,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token that is used to retrieve the next page of results.
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If this parameter is empty, no more results are to be returned.
 	//
-	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If a value is returned, the value is the token that is used for the next query.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListIpamPoolCidrsResponseBody struct {
 	//
 	// 9E7CCB95-62E0-534D-9B9A-71F27E8B71B1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that match the query.
 	//
 	// example:
 	//
@@ -144,17 +144,17 @@ type ListIpamPoolCidrsResponseBodyIpamPoolCidrs struct {
 	//
 	// 192.168.1.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The ID of the IPAM pool.
+	// The instance ID of the IPAM pool.
 	//
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
-	// The status of the CIDR block provisioned to the IPAM pool. Valid values:
+	// The instance status of the provisioned CIDR block of the IPAM pool. Valid values:
 	//
-	// 	- **Created**
+	// - **Created**: The CIDR block is created.
 	//
-	// 	- **Deleted**
+	// - **Deleted**: The CIDR block is deleted.
 	//
 	// example:
 	//
