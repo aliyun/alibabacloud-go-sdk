@@ -50,7 +50,7 @@ type GetApiKeyResponseBody struct {
 	//
 	// DFD55E7B-0615-5343-BDA0-FBEE86F29935
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request was successful.
 	//
 	// - true: The request was successful.
 	//
@@ -160,7 +160,7 @@ type GetApiKeyResponseBodyApiKey struct {
 	//
 	// v7
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the API key is disabled. Valid values:
+	// Indicates whether the API key is disabled.
 	//
 	// - **0**: Active.
 	//
@@ -170,7 +170,7 @@ type GetApiKeyResponseBodyApiKey struct {
 	//
 	// 0
 	Disabled *int32 `json:"disabled,omitempty" xml:"disabled,omitempty"`
-	// The creation time.
+	// The time when the API key was created.
 	//
 	// example:
 	//
@@ -274,10 +274,11 @@ func (s *GetApiKeyResponseBodyApiKey) Validate() error {
 }
 
 type GetApiKeyResponseBodyApiKeyAuth struct {
-	// The IP address whitelist.
-	AccessIps        []*string                                        `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	// The IP access whitelist.
+	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	// The model access scope.
 	ModelAccessScope *GetApiKeyResponseBodyApiKeyAuthModelAccessScope `json:"modelAccessScope,omitempty" xml:"modelAccessScope,omitempty" type:"Struct"`
-	// The permission type. Valid values: All: all permissions. Custom: custom permissions.
+	// All: all permissions. Custom: custom permissions.
 	//
 	// example:
 	//
@@ -330,8 +331,18 @@ func (s *GetApiKeyResponseBodyApiKeyAuth) Validate() error {
 }
 
 type GetApiKeyResponseBodyApiKeyAuthModelAccessScope struct {
+	// The list of accessible models.
 	AccessibleModels []*string `json:"accessibleModels,omitempty" xml:"accessibleModels,omitempty" type:"Repeated"`
-	AllowAllModels   *bool     `json:"allowAllModels,omitempty" xml:"allowAllModels,omitempty"`
+	// Indicates whether all models with granted inference permissions in the workspace can be accessed. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// example:
+	//
+	// false
+	AllowAllModels *bool `json:"allowAllModels,omitempty" xml:"allowAllModels,omitempty"`
 }
 
 func (s GetApiKeyResponseBodyApiKeyAuthModelAccessScope) String() string {

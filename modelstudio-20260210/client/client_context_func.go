@@ -490,7 +490,7 @@ func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, workspaceI
 //
 // Description:
 //
-// An API key cannot be disabled if it is already disabled.
+// An API key that is already disabled cannot be disabled again.
 //
 // @param request - DisableApiKeyRequest
 //
@@ -576,7 +576,7 @@ func (client *Client) EnableApiKeyWithContext(ctx context.Context, apiKeyId *str
 
 // Summary:
 //
-// Retrieves the information of a specified authentication credential API key.
+// Retrieves the information about a specified API key.
 //
 // @param headers - map
 //
@@ -938,7 +938,7 @@ func (client *Client) GetTokenPlanOrgInviteConfigWithContext(ctx context.Context
 
 // Summary:
 //
-// Retrieves a list of API key authentication credentials.
+// Retrieves a list of API key information for authentication credentials.
 //
 // @param request - ListApiKeysRequest
 //

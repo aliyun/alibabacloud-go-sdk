@@ -48,9 +48,9 @@ type UpdateApiKeyResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the API call is successful. Valid values:
 	//
-	// - true: The call succeeded.
+	// - true: Successful.
 	//
-	// - false: The call failed.
+	// - false: Failed.
 	//
 	// example:
 	//

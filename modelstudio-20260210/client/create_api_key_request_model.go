@@ -30,7 +30,7 @@ type CreateApiKeyRequest struct {
 	//
 	// >
 	//
-	// > - If you leave this parameter empty, the created API key is automatically assigned to the default workspace.
+	// > - If you leave this parameter empty, the API key is automatically assigned to the default workspace.
 	//
 	// example:
 	//
@@ -83,12 +83,13 @@ func (s *CreateApiKeyRequest) Validate() error {
 }
 
 type CreateApiKeyRequestAuth struct {
-	// The IP address whitelist.
+	// The IP access whitelist.
 	//
 	// >
 	//
-	// > - When you use custom permissions, if you do not specify the IP address whitelist, the server sets it to IPv4 (0.0.0.0/0) and IPv6 (::/0) by default, which allows all traffic.
-	AccessIps        []*string                                `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	// > - When you set custom permissions and leave the IP access whitelist empty, the server sets the default values to IPv4 (0.0.0.0/0) and IPv6 (::/0), which allows all traffic.
+	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	// The model access scope.
 	ModelAccessScope *CreateApiKeyRequestAuthModelAccessScope `json:"modelAccessScope,omitempty" xml:"modelAccessScope,omitempty" type:"Struct"`
 	// Valid values:
 	//
@@ -147,8 +148,20 @@ func (s *CreateApiKeyRequestAuth) Validate() error {
 }
 
 type CreateApiKeyRequestAuthModelAccessScope struct {
+	// The list of accessible models.
+	//
+	// 	Notice: This parameter takes effect only when allowAllModels is set to false.
 	AccessibleModels []*string `json:"accessibleModels,omitempty" xml:"accessibleModels,omitempty" type:"Repeated"`
-	AllowAllModels   *bool     `json:"allowAllModels,omitempty" xml:"allowAllModels,omitempty"`
+	// Specifies whether all models with granted inference permissions in the workspace are accessible. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// example:
+	//
+	// false
+	AllowAllModels *bool `json:"allowAllModels,omitempty" xml:"allowAllModels,omitempty"`
 }
 
 func (s CreateApiKeyRequestAuthModelAccessScope) String() string {

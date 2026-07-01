@@ -740,7 +740,7 @@ func (client *Client) DeleteWorkspace(workspaceId *string, request *DeleteWorksp
 //
 // Description:
 //
-// An API key cannot be disabled if it is already disabled.
+// An API key that is already disabled cannot be disabled again.
 //
 // @param request - DisableApiKeyRequest
 //
@@ -785,7 +785,7 @@ func (client *Client) DisableApiKeyWithOptions(apiKeyId *string, request *Disabl
 //
 // Description:
 //
-// An API key cannot be disabled if it is already disabled.
+// An API key that is already disabled cannot be disabled again.
 //
 // @param request - DisableApiKeyRequest
 //
@@ -872,7 +872,7 @@ func (client *Client) EnableApiKey(apiKeyId *string, request *EnableApiKeyReques
 
 // Summary:
 //
-// Retrieves the information of a specified authentication credential API key.
+// Retrieves the information about a specified API key.
 //
 // @param headers - map
 //
@@ -905,7 +905,7 @@ func (client *Client) GetApiKeyWithOptions(apiKeyId *string, headers map[string]
 
 // Summary:
 //
-// Retrieves the information of a specified authentication credential API key.
+// Retrieves the information about a specified API key.
 //
 // @return GetApiKeyResponse
 func (client *Client) GetApiKey(apiKeyId *string) (_result *GetApiKeyResponse, _err error) {
@@ -1400,7 +1400,7 @@ func (client *Client) GetTokenPlanOrgInviteConfig(request *GetTokenPlanOrgInvite
 
 // Summary:
 //
-// Retrieves a list of API key authentication credentials.
+// Retrieves a list of API key information for authentication credentials.
 //
 // @param request - ListApiKeysRequest
 //
@@ -1471,7 +1471,7 @@ func (client *Client) ListApiKeysWithOptions(request *ListApiKeysRequest, header
 
 // Summary:
 //
-// Retrieves a list of API key authentication credentials.
+// Retrieves a list of API key information for authentication credentials.
 //
 // @param request - ListApiKeysRequest
 //

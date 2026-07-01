@@ -52,7 +52,7 @@ type CreateApiKeyResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: Successful.
+	// - true: Succeeded.
 	//
 	// - false: Failed.
 	//
@@ -142,7 +142,7 @@ type CreateApiKeyResponseBodyApiKey struct {
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
 	// The value of the API key.
 	//
-	// 	Notice: Copy your API key immediately. Keep it secure. Anyone who obtains this key can initiate service requests on your behalf and incur charges. If you lose the key, you can reset it or create a new one..
+	// 	Notice: Copy your API key immediately. Store it securely. Anyone who obtains this key can initiate service requests on your behalf and incur charges. If you lose the key, you can reset it or create a new one.
 	//
 	// example:
 	//

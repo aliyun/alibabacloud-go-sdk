@@ -17,6 +17,8 @@ type iUpdateApiKeyRequest interface {
 
 type UpdateApiKeyRequest struct {
 	// The API key permission settings.
+	//
+	// > Do not fill in this section or fill it in completely for each UpdateApiKey operation. Otherwise, the configuration may not match your expectations.
 	Auth *UpdateApiKeyRequestAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
 	// The description.
 	//
@@ -66,8 +68,9 @@ type UpdateApiKeyRequestAuth struct {
 	//
 	// >
 	//
-	// > - When you set custom permissions and do not specify the IP access whitelist, the server sets the whitelist to IPv4 (0.0.0.0/0) and IPv6 (::/0) by default, which allows all traffic.
-	AccessIps        []*string                                `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	// > - When you customize the permission scope, if the IP access whitelist is not specified, the server sets it to IPv4 (0.0.0.0/0) and IPv6 (::/0) by default, which allows all traffic.
+	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	// The model access scope.
 	ModelAccessScope *UpdateApiKeyRequestAuthModelAccessScope `json:"modelAccessScope,omitempty" xml:"modelAccessScope,omitempty" type:"Struct"`
 	// Valid values:
 	//
@@ -126,8 +129,16 @@ func (s *UpdateApiKeyRequestAuth) Validate() error {
 }
 
 type UpdateApiKeyRequestAuthModelAccessScope struct {
+	// The list of accessible models.
+	//
+	// 	Notice: The content takes effect only when allowAllModels is set to false.
 	AccessibleModels []*string `json:"accessibleModels,omitempty" xml:"accessibleModels,omitempty" type:"Repeated"`
-	AllowAllModels   *bool     `json:"allowAllModels,omitempty" xml:"allowAllModels,omitempty"`
+	// Specifies whether to allow access to all models with granted inference permissions in the workspace. Valid values:
+	//
+	// - true
+	//
+	// - false
+	AllowAllModels *bool `json:"allowAllModels,omitempty" xml:"allowAllModels,omitempty"`
 }
 
 func (s UpdateApiKeyRequestAuthModelAccessScope) String() string {

@@ -32,19 +32,19 @@ type ListApiKeysRequest struct {
 	//
 	// 3076140
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
-	// The keyword for fuzzy match against the description.
+	// The keyword for fuzzy match by description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token used to retrieve more results. You do not need to provide this parameter for the first query. For subsequent queries, use the token obtained from the previous response.
+	// The token used to retrieve more results. This parameter is not required for the first query. For subsequent queries, use the token obtained from the previous response.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListApiKeysRequest struct {
 	//
 	// - DESC (default)
 	//
-	// - ASC.
+	// - ASC
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListApiKeysRequest struct {
 	//
 	// - apiKeyId (default)
 	//
-	// - gmtCreate.
+	// - gmtCreate
 	//
 	// example:
 	//

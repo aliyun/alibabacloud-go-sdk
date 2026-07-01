@@ -44,7 +44,7 @@ type ListApiKeysResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListApiKeysResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The token used to retrieve more results. You do not need to provide this parameter for the first query. For subsequent queries, use the token obtained from the previous response.
+	// The token used to retrieve more results. This parameter is not required for the first query. For subsequent queries, use the token obtained from the previous response.
 	//
 	// example:
 	//
@@ -329,8 +329,9 @@ func (s *ListApiKeysResponseBodyApiKeys) Validate() error {
 }
 
 type ListApiKeysResponseBodyApiKeysAuth struct {
-	// The IP address whitelist.
-	AccessIps        []*string                                           `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	// The IP access whitelist.
+	AccessIps []*string `json:"accessIps,omitempty" xml:"accessIps,omitempty" type:"Repeated"`
+	// The model access scope.
 	ModelAccessScope *ListApiKeysResponseBodyApiKeysAuthModelAccessScope `json:"modelAccessScope,omitempty" xml:"modelAccessScope,omitempty" type:"Struct"`
 	// All: all permissions. Custom: custom permissions.
 	//
@@ -385,8 +386,10 @@ func (s *ListApiKeysResponseBodyApiKeysAuth) Validate() error {
 }
 
 type ListApiKeysResponseBodyApiKeysAuthModelAccessScope struct {
+	// The list of accessible models.
 	AccessibleModels []*string `json:"accessibleModels,omitempty" xml:"accessibleModels,omitempty" type:"Repeated"`
-	AllowAllModels   *bool     `json:"allowAllModels,omitempty" xml:"allowAllModels,omitempty"`
+	// Indicates whether access to all models with inference permissions in the workspace is allowed.
+	AllowAllModels *bool `json:"allowAllModels,omitempty" xml:"allowAllModels,omitempty"`
 }
 
 func (s ListApiKeysResponseBodyApiKeysAuthModelAccessScope) String() string {
