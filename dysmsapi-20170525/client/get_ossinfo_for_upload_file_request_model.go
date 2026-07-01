@@ -20,9 +20,9 @@ type iGetOSSInfoForUploadFileRequest interface {
 }
 
 type GetOSSInfoForUploadFileRequest struct {
-	// Business type, default value is **fcMediaSms**.
+	// The business type. Default value: **fcMediaSms**.
 	//
-	// When creating signatures and templates, and uploading **additional materials**, this value is **fcMediaSms**.
+	// When you create a signature or template and upload **More Materials**, the value is **fcMediaSms**.
 	//
 	// example:
 	//

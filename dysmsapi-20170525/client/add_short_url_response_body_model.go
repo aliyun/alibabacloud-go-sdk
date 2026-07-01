@@ -20,11 +20,11 @@ type iAddShortUrlResponseBody interface {
 }
 
 type AddShortUrlResponseBody struct {
-	// The response code.
+	// The status code of the request.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - A value of `OK` indicates that the request was successful.
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - For other error codes, see [Error Code List](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type AddShortUrlResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the short URL.
 	Data *AddShortUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message that describes the status.
 	//
 	// example:
 	//
@@ -100,21 +100,21 @@ func (s *AddShortUrlResponseBody) Validate() error {
 }
 
 type AddShortUrlResponseBodyData struct {
-	// The time when the short URL expires.
+	// The expiration time of the short URL.
 	//
-	// > The value of **ExpireDate*	- is on the hour.
+	// > The value of **ExpireDate*	- is always on the hour.
 	//
 	// example:
 	//
 	// 2021-09-19 00:00:00
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The short URL.
+	// The generated short URL.
 	//
 	// example:
 	//
 	// http://****.cn/6y8uy7
 	ShortUrl *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
-	// The source URL.
+	// The source URL that was shortened.
 	//
 	// example:
 	//

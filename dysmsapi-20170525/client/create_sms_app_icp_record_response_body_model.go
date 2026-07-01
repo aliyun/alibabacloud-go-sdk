@@ -24,23 +24,46 @@ type iCreateSmsAppIcpRecordResponseBody interface {
 }
 
 type CreateSmsAppIcpRecordResponseBody struct {
+	// Details about the access denial.
+	//
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - A value of `OK` indicates that the request was successful.
+	//
+	// - For other error codes, see the [error code list](https://help.aliyun.com/document_detail/101346.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the app\\"s ICP filing record.
+	//
 	// example:
 	//
 	// 10000*******
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message returned with the request status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. Alibaba Cloud generates this unique identifier for each request. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call was successful. Valid values:
+	//
+	// - **`true`**
+	//
+	// - **`false`**
+	//
 	// example:
 	//
 	// true

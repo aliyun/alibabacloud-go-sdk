@@ -22,7 +22,7 @@ type iValidPhoneCodeRequest interface {
 }
 
 type ValidPhoneCodeRequest struct {
-	// 验证码
+	// The verification code.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type ValidPhoneCodeRequest struct {
 	// 1234
 	CertifyCode *string `json:"CertifyCode,omitempty" xml:"CertifyCode,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 手机号
+	// The phone number.
 	//
 	// This parameter is required.
 	//

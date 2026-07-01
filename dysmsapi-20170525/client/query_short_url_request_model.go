@@ -23,7 +23,11 @@ type QueryShortUrlRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The short URL. You can query the short URL by calling the [AddShortUrl](https://help.aliyun.com/document_detail/186774.html) operation.
+	// The short link to query. Obtain this URL by calling the [AddShortUrl](https://help.aliyun.com/document_detail/186774.html) API.
+	//
+	// 	Notice:
+	//
+	// This API is not currently supported by Short Message Service.
 	//
 	// This parameter is required.
 	//

@@ -18,21 +18,21 @@ type iTagResourcesResponseBody interface {
 }
 
 type TagResourcesResponseBody struct {
-	// The response code.
+	// The request status code. Valid values:
 	//
-	// 	- If OK is returned, the request is successful.
+	// - OK: The request was successful.
 	//
-	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether tags were attached. Valid values:
+	// The result of adding the tags. Valid values:
 	//
-	// 	- **true**
+	// - **true**: success.
 	//
-	// 	- **false**
+	// - **false**: failure.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type TagResourcesResponseBody struct {
 	//
 	// example:
 	//
-	// A90E4451-FED7-49D2-87C8-00700A8C****
+	// 819BE656-D2E0-4858-8B21-B2E477085AAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

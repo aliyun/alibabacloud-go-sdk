@@ -20,29 +20,29 @@ type iQueryCardSmsTemplateReportResponseBody interface {
 }
 
 type QueryCardSmsTemplateReportResponseBody struct {
-	// The HTTP status code.
+	// The request status code.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - The value OK indicates that the request was successful.
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - For information about other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *QueryCardSmsTemplateReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
 	//
-	// CC89A90C-978F-46AC-B80D-54738371E7CA
+	// B71F06CA-7735-183A-B52E-234EF8AFE14B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ func (s *QueryCardSmsTemplateReportResponseBody) Validate() error {
 }
 
 type QueryCardSmsTemplateReportResponseBodyData struct {
-	// The details of the data returned.
+	// The list of returned data.
 	Model []map[string]interface{} `json:"model,omitempty" xml:"model,omitempty" type:"Repeated"`
 }
 

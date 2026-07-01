@@ -20,11 +20,11 @@ type iQuerySendStatisticsResponseBody interface {
 }
 
 type QuerySendStatisticsResponseBody struct {
-	// The response code.
+	// The response code. Valid values:
 	//
-	// 	- If OK is returned, the request is successful.
+	// - OK: The request was successful.
 	//
-	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - For other values, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type QuerySendStatisticsResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QuerySendStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type QuerySendStatisticsResponseBody struct {
 	//
 	// example:
 	//
-	// 819BE656-D2E0-4858-8B21-B2E47708****
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -100,7 +100,7 @@ func (s *QuerySendStatisticsResponseBody) Validate() error {
 }
 
 type QuerySendStatisticsResponseBodyData struct {
-	// The details of the data returned.
+	// A list of delivery statistics.
 	TargetList []*QuerySendStatisticsResponseBodyDataTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -150,31 +150,31 @@ func (s *QuerySendStatisticsResponseBodyData) Validate() error {
 }
 
 type QuerySendStatisticsResponseBodyDataTargetList struct {
-	// The number of messages without a delivery receipt.
+	// The number of messages with no delivery receipts.
 	//
 	// example:
 	//
 	// 1
 	NoRespondedCount *int64 `json:"NoRespondedCount,omitempty" xml:"NoRespondedCount,omitempty"`
-	// The number of messages with a delivery receipt that indicates a failure.
+	// The number of messages with failed delivery receipts.
 	//
 	// example:
 	//
 	// 2
 	RespondedFailCount *int64 `json:"RespondedFailCount,omitempty" xml:"RespondedFailCount,omitempty"`
-	// The number of messages with a delivery receipt that indicates a success.
+	// The number of messages with successful delivery receipts.
 	//
 	// example:
 	//
 	// 17
 	RespondedSuccessCount *int64 `json:"RespondedSuccessCount,omitempty" xml:"RespondedSuccessCount,omitempty"`
-	// The date when the message is sent. Format: yyyyMMdd. Example: 20181225.
+	// The date the messages were sent. Format: yyyyMMdd.
 	//
 	// example:
 	//
 	// 20201010
 	SendDate *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
-	// The number of delivered messages.
+	// The number of successfully sent messages (billable message count).
 	//
 	// example:
 	//

@@ -18,21 +18,21 @@ type iUntagResourcesResponseBody interface {
 }
 
 type UntagResourcesResponseBody struct {
-	// The HTTP status code.
+	// The request status code. Valid values:
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - OK: The request was successful.
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - For other error codes, see [Error code list](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// The execution result of deleting the tag. Valid values:
 	//
-	// 	- **true**
+	// - **true**: success.
 	//
-	// 	- **false**
+	// - **false**: failure.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UntagResourcesResponseBody struct {
 	//
 	// example:
 	//
-	// A90E4451-FED7-49D2-87C8-00700A8C****
+	// 819BE656-D2E0-4858-8B21-B2E477085AAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

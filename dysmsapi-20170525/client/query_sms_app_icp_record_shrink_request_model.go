@@ -20,7 +20,7 @@ type iQuerySmsAppIcpRecordShrinkRequest interface {
 }
 
 type QuerySmsAppIcpRecordShrinkRequest struct {
-	// app-icp备案实体id列表
+	// A list of icp record entity IDs.
 	//
 	// This parameter is required.
 	AppIcpRecordIdListShrink *string `json:"AppIcpRecordIdList,omitempty" xml:"AppIcpRecordIdList,omitempty"`

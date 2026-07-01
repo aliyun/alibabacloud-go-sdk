@@ -26,37 +26,37 @@ type iQuerySmsSignResponseBody interface {
 }
 
 type QuerySmsSignResponseBody struct {
-	// The response code.
+	// The status code of the request.
 	//
-	// 	- If OK is returned, the request is successful.
+	// - `OK` indicates that the request was successful.
 	//
-	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The date and time when the signature was created.
+	// The date and time when the SMS signature was created.
 	//
 	// example:
 	//
 	// 2019-01-08 16:44:13
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The remarks of the review. Valid values:
+	// The review reason.
 	//
-	// 	- If the signature is in the **Approved*	- or **Pending Approval*	- state, No Remarks is returned.
+	// - If the review status is **Approved*	- or **Pending Review**, this parameter is empty.
 	//
-	// 	- If the signature is in the **Not Approved*	- state, the reason why the signature is rejected is returned.
+	// - If the review status is **Rejected**, this parameter provides the reason for the rejection.
 	//
 	// example:
 	//
-	// The document cannot verify the authenticity of the information. Please upload it again.
+	// 文件不能证明信息真实性，请重新上传
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The request ID.
 	//
@@ -64,21 +64,21 @@ type QuerySmsSignResponseBody struct {
 	//
 	// CC89A90C-978F-46AC-B80D-54738371E7CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The signature.
+	// The SMS signature.
 	//
 	// example:
 	//
-	// Aliyun
+	// 阿里云
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	// The status of the signature. Valid values:
+	// The review status of the SMS signature. Valid values:
 	//
-	// 	- **0**: The signature is pending approval.
+	// - **0**: Pending Review.
 	//
-	// 	- **1**: The signature is approved.
+	// - **1**: Approved.
 	//
-	// 	- **2**: The signature is rejected. The Reason parameter indicates the reason why the signature is rejected.
+	// - **2**: Rejected. For details, see the `Reason` parameter.
 	//
-	// 	- **10**: The signature is cancelled.
+	// - **10**: Canceled.
 	//
 	// example:
 	//

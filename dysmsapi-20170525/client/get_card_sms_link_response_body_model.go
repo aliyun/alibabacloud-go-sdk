@@ -20,29 +20,29 @@ type iGetCardSmsLinkResponseBody interface {
 }
 
 type GetCardSmsLinkResponseBody struct {
-	// The HTTP status code.
+	// 请求状态码。取值：
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - OK：代表请求成功。
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - 其他错误码，请参见[错误码列表](https://help.aliyun.com/document_detail/101346.html)。
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// 返回数据。
 	Data *GetCardSmsLinkResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// 请求ID。
 	//
 	// example:
 	//
 	// CC89A90C-978F-46AC-B80D-54738371E7CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// 接口调用是否成功。取值：
 	//
-	// 	- **true**
+	// - **true**：调用成功。
 	//
-	// 	- **false**
+	// - **false**：调用失败。
 	//
 	// example:
 	//
@@ -104,39 +104,39 @@ func (s *GetCardSmsLinkResponseBody) Validate() error {
 }
 
 type GetCardSmsLinkResponseBodyData struct {
-	// The mobile phone numbers that support card messages.
+	// 支持卡片短信的手机号码。
 	//
 	// example:
 	//
 	// [\\"1390000****\\",\\"1370000****\\"]
 	CardPhoneNumbers *string `json:"CardPhoneNumbers,omitempty" xml:"CardPhoneNumbers,omitempty"`
-	// The signatures must correspond to the mobile numbers and short URLs in sequence.
+	// 用于申请卡片短信短链的短信签名，在发送时签名、接收号码、卡片短信短链要一一对应。
 	//
 	// example:
 	//
-	// ["aliyun","aliyun2"]
+	// ["阿里云","阿里云2"]
 	CardSignNames *string `json:"CardSignNames,omitempty" xml:"CardSignNames,omitempty"`
-	// The short URLs.
+	// 卡片短信短链。
 	//
 	// example:
 	//
 	// [\\"mw2m.cn/LAaGGa\\",\\"mw2m.cn/LAAaes\\"]
 	CardSmsLinks *string `json:"CardSmsLinks,omitempty" xml:"CardSmsLinks,omitempty"`
-	// The review status of the card message template.
+	// 卡片短信模板审核状态。取值：
 	//
-	// 	- **0**: pending approval
+	// - **0**：审核中。
 	//
-	// 	- **1**: approved
+	// - **1**：审核通过。
 	//
-	// 	- **2**: rejected
+	// - **2**：审核不通过。
 	//
-	// > Unapproved card messages are rolled back.
+	// > 未审核通过的短信走回落流程。
 	//
 	// example:
 	//
 	// 0
 	CardTmpState *int32 `json:"CardTmpState,omitempty" xml:"CardTmpState,omitempty"`
-	// The mobile phone numbers that do not support card messages.
+	// 不支持卡片短信的手机号。
 	//
 	// example:
 	//

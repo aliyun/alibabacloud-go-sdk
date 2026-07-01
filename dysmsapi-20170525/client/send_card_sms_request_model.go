@@ -36,13 +36,15 @@ type iSendCardSmsRequest interface {
 }
 
 type SendCardSmsRequest struct {
-	// The objects of the message template.
+	// The card message objects.
 	//
 	// This parameter is required.
-	CardObjects []*SendCardSmsRequestCardObjects `json:"CardObjects,omitempty" xml:"CardObjects,omitempty" type:"Repeated"`
-	// The code of the message template. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
 	//
-	// > Make sure that the message template has been approved.
+	// example:
+	//
+	// SendCardSms
+	CardObjects []*SendCardSmsRequestCardObjects `json:"CardObjects,omitempty" xml:"CardObjects,omitempty" type:"Repeated"`
+	// The code of the card message template. On the [Template Management](https://dysms.console.aliyun.com/domestic/card) page of the **Card Messages*	- module in the console, select the code of an approved card message template.
 	//
 	// This parameter is required.
 	//
@@ -50,29 +52,31 @@ type SendCardSmsRequest struct {
 	//
 	// CARD_SMS_70
 	CardTemplateCode *string `json:"CardTemplateCode,omitempty" xml:"CardTemplateCode,omitempty"`
-	// The code of the digital message template that applies when the card message is rolled back. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	// The code of the fallback digital message template. This parameter is required if you set **FallbackType*	- to **DIGITALSMS**.
 	//
-	// > Make sure that the message template has been approved.
+	// You can view the digital message template list on the [Template Management](https://dysms.console.aliyun.com/domestic/digit) page of the **Digital Messages*	- module in the console.
+	//
+	// > The template must be added and approved.
 	//
 	// example:
 	//
-	// SMS_003
+	// DIGITAL_SMS_31359****
 	DigitalTemplateCode *string `json:"DigitalTemplateCode,omitempty" xml:"DigitalTemplateCode,omitempty"`
-	// The variables of the digital message template.
+	// The actual values of the variables in the fallback digital message template. This parameter is required if the digital message template specified by **DigitalTemplateCode*	- contains variables.
 	//
-	// > If you need to add line breaks to the JSON template, make sure that the format is valid.
+	// > If the JSON value contains line breaks, follow the standard JSON protocol.
 	//
 	// example:
 	//
-	// {\\"msg\\",\\"xxxd\\"}
+	// {"msg","xxxd"}
 	DigitalTemplateParam *string `json:"DigitalTemplateParam,omitempty" xml:"DigitalTemplateParam,omitempty"`
-	// The rollback type. Valid values:
+	// The fallback type. Valid values:
 	//
-	// 	- **SMS**: text message
+	// - **SMS**: Falls back to a text message for phone numbers that do not support card messages.
 	//
-	// 	- **DIGITALSMS**: digital message
+	// - **DIGITALSMS**: Falls back to a digital message for phone numbers that do not support card messages.
 	//
-	// 	- **NONE**: none
+	// - **NONE**: No fallback is required.
 	//
 	// This parameter is required.
 	//
@@ -80,13 +84,13 @@ type SendCardSmsRequest struct {
 	//
 	// SMS
 	FallbackType *string `json:"FallbackType,omitempty" xml:"FallbackType,omitempty"`
-	// The ID that is reserved for the caller of the operation.
+	// The ID reserved for the caller.
 	//
 	// example:
 	//
 	// 38d76c9b-4a9a-4c89-afae-61fd8e0e****
 	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	// The signature. You can view the template code in the **Signature*	- column on the **Signaturess*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	// The signature name. You can call the [QuerySmsSignList](https://help.aliyun.com/document_detail/419282.html) operation to query the signatures applied for under the current account or view the signature list in the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/domestic/text/sign).
 	//
 	// > The signature must be approved.
 	//
@@ -94,51 +98,55 @@ type SendCardSmsRequest struct {
 	//
 	// example:
 	//
-	// aliyun
+	// 阿里云
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	// The code of the text message template that applies when the card message is rolled back. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	// The code of the fallback text message template. This parameter is required if you set **FallbackType*	- to **SMS**.
 	//
-	// > Make sure that the message template has been approved. If you set the **FallbackType*	- parameter to **SMS**, this parameter is required.
+	// You can call the [QuerySmsTemplateList](https://help.aliyun.com/document_detail/419288.html) operation to query the templates applied for under the current account or view the template list in the [SMS console](https://dysms.console.aliyun.com/domestic/text/template).
+	//
+	// > The template must be added and approved.
 	//
 	// example:
 	//
-	// SIER_TEST_01
+	// SMS_48068****
 	SmsTemplateCode *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
-	// The variables of the text message template.
+	// The actual values of the variables in the fallback text message template. This parameter is required if the text message template specified by **SmsTemplateCode*	- contains variables.
 	//
-	// > If you need to add line breaks to the JSON template, make sure that the format is valid.
+	// > If the JSON value contains line breaks, follow the standard JSON protocol.
 	//
 	// example:
 	//
-	// {\\"uri\\":\\"Zg11tZ\\"}
+	// {"jifen":"积分"}
 	SmsTemplateParam *string `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
-	// The extension code of the upstream message. Upstream messages are messages sent to the communication service provider. Upstream messages are used to customize a service, complete an inquiry, or send a request. You are charged for sending upstream messages based on the billing standards of the service provider.
+	// The extension code of the MO message. An MO message is a message sent to the communications service provider to customize a service, perform a query, or handle other business. The message is charged at the standard rate of the carrier.
 	//
-	// > If you do not need upstream messages, ignore this parameter.
+	// > If you do not have such requirements, ignore this parameter.
 	//
 	// example:
 	//
 	// 1
 	SmsUpExtendCode *string `json:"SmsUpExtendCode,omitempty" xml:"SmsUpExtendCode,omitempty"`
-	// The code of the text message template.
+	// The code of the custom content template.
 	//
-	// Log on to the Alibaba Cloud SMS console. In the left-side navigation pane, click **Go Globe*	- or **Go China**. You can view the message template in the **Template Code*	- column on the **Message Templates*	- tab.
+	// The custom content is sent to the recipient as a text message template combined with a card parsing link. Log on to the [SMS console](https://dysms.console.aliyun.com/overview), choose **Domestic Messages*	- or **International/HK/MO/TW Messages**, and view the **Template Code*	- on the **Template Management*	- tab.
 	//
-	// > The message templates must be created on the Go Globe page and approved.
+	// > - The template code must be added and approved. To send international or Hong Kong, Macao, or Taiwan messages, use an international or Hong Kong, Macao, or Taiwan message template.
+	//
+	// > - For example, if the selected text message template is "You have a new message" and the card parsing link is `1*.cn/2**d`, the final content is `You have a new message 1*.cn/2**d`. Test the message and control the word count before sending.
 	//
 	// example:
 	//
 	// SMS_2322****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// The variables of the message template. Format: JSON.
+	// The actual values of the variables in the custom content template. This parameter is required if the message template specified by **TemplateCode*	- contains variables.
 	//
-	// > If you need to add line breaks to the JSON template, make sure that the format is valid.
+	// > If the JSON value contains line breaks, follow the standard JSON protocol.
 	//
 	// example:
 	//
 	// {
 	//
-	//       \\"code\\": \\"1111\\"
+	//       "code": "1111"
 	//
 	// }
 	TemplateParam *string `json:"TemplateParam,omitempty" xml:"TemplateParam,omitempty"`
@@ -274,19 +282,19 @@ func (s *SendCardSmsRequest) Validate() error {
 }
 
 type SendCardSmsRequestCardObjects struct {
-	// The URL to which the message is redirected if the message fails to be rendered.
+	// 渲染失败后跳转链接。
 	//
 	// example:
 	//
 	// https://alibaba.com
 	CustomUrl *string `json:"customUrl,omitempty" xml:"customUrl,omitempty"`
-	// The variables. Special characters, such as $ and {}, do not need to be entered.
+	// 动态参数。动参变量不需要${}
 	//
 	// example:
 	//
-	// {\\"param3\\":\\"three\\",\\"param1\\":\\"one\\",\\"param2\\":\\"two\\"}
+	// {"param3":"李四3","param1":"李四","param2":"李四2"}
 	DyncParams *string `json:"dyncParams,omitempty" xml:"dyncParams,omitempty"`
-	// The mobile phone number.
+	// 接收卡片短信的手机号码。
 	//
 	// example:
 	//

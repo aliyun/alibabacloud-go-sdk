@@ -23,9 +23,11 @@ type QueryDigitalSignByNameRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The name of the digital SMS signature. The signature must belong to your Alibaba Cloud account.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 阿里云数字商城
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 

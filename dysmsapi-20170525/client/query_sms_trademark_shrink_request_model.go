@@ -23,7 +23,7 @@ type QuerySmsTrademarkShrinkRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 商标实体id列表
+	// A list of trademark IDs.
 	//
 	// This parameter is required.
 	TrademarkIdListShrink *string `json:"TrademarkIdList,omitempty" xml:"TrademarkIdList,omitempty"`

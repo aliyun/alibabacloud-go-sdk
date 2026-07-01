@@ -20,7 +20,7 @@ type iGetQualificationOssInfoRequest interface {
 }
 
 type GetQualificationOssInfoRequest struct {
-	// 业务，非空
+	// The business type. When applying for a qualification or creating an authorization letter file, enter **dysms**.
 	//
 	// This parameter is required.
 	//

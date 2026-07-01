@@ -20,17 +20,17 @@ type iDeleteSmsSignResponseBody interface {
 }
 
 type DeleteSmsSignResponseBody struct {
-	// The response code.
+	// The HTTP status code.
 	//
-	// 	- If OK is returned, the request is successful.
+	// 	- The value OK indicates that the request was successful.
 	//
-	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// 	- For information about other return values, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type DeleteSmsSignResponseBody struct {
 	//
 	// F655A8D5-B967-440B-8683-DAD6FF8D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The signature.
+	// The name of the deleted signature.
 	//
 	// example:
 	//
-	// Aliyun
+	// 阿里云
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 

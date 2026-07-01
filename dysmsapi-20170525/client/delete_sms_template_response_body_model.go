@@ -20,33 +20,33 @@ type iDeleteSmsTemplateResponseBody interface {
 }
 
 type DeleteSmsTemplateResponseBody struct {
-	// The response code.
+	// 请求状态码。
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - 返回OK代表请求成功。
 	//
-	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - 其他错误码，请参见[API错误码](https://help.aliyun.com/document_detail/101346.html)。
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// 状态码的描述。
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// 请求ID。
 	//
 	// example:
 	//
 	// CCA2BCFF-2BA7-427C-90EE-AC6994748607
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The code of the message template.
+	// 已删除的模板Code。
 	//
 	// example:
 	//
-	// SMS_20375****
+	// SMS_152550****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 

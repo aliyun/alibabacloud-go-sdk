@@ -20,29 +20,29 @@ type iModifySmsTemplateResponseBody interface {
 }
 
 type ModifySmsTemplateResponseBody struct {
-	// The response code.
+	// 请求状态码。
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - 返回OK代表请求成功。
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - 其他错误码，请参见[错误码列表](https://help.aliyun.com/document_detail/101346.html)。
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// 状态码的描述。
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// 请求ID。
 	//
 	// example:
 	//
 	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The code of the message template.
+	// 已修改的模板Code。
 	//
 	// example:
 	//

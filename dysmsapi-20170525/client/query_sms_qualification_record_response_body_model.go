@@ -24,20 +24,42 @@ type iQuerySmsQualificationRecordResponseBody interface {
 }
 
 type QuerySmsQualificationRecordResponseBody struct {
+	// 访问被拒绝详细信息。
+	//
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 请求状态码。
+	//
+	// 	- 返回OK代表请求成功。
+	//
+	// 	- 其他错误码，请参见本章节的错误码列表或产品[API错误码](https://help.aliyun.com/document_detail/101346.html)。
+	//
 	// example:
 	//
 	// OK
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 资质审核列表
 	Data *QuerySmsQualificationRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 状态码的描述。
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求ID。
+	//
 	// example:
 	//
 	// 25D5AFDE-8EBC-132E-8909-1FDC071DA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 调用接口是否成功。取值：
+	//
+	// - **true**：调用成功。
+	//
+	// - **false**：调用失败。
+	//
 	// example:
 	//
 	// true
@@ -116,15 +138,22 @@ func (s *QuerySmsQualificationRecordResponseBody) Validate() error {
 }
 
 type QuerySmsQualificationRecordResponseBodyData struct {
+	// 满足过滤条件的数据列表。
 	List []*QuerySmsQualificationRecordResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// 当前页码。
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// 每页数据条数。
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 总条数。
+	//
 	// example:
 	//
 	// 25
@@ -189,61 +218,75 @@ func (s *QuerySmsQualificationRecordResponseBodyData) Validate() error {
 }
 
 type QuerySmsQualificationRecordResponseBodyDataList struct {
-	// 审核备注
+	// 审核备注。
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 无
 	AuditRemark *string `json:"AuditRemark,omitempty" xml:"AuditRemark,omitempty"`
-	// 审核时间
+	// 审核时间。
 	//
 	// example:
 	//
 	// 2024-12-26 17:29:04
 	AuditTime *string `json:"AuditTime,omitempty" xml:"AuditTime,omitempty"`
-	// 公司名称或实人认证姓名
+	// 企业名称。
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 阿里云云通信有限公司
 	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
-	// 创建时间
+	// 资质创建时间。
 	//
 	// example:
 	//
 	// 2025-02-20 11:59:30
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// 资质组ID
+	// 资质ID。
 	//
 	// example:
 	//
 	// 10000****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// 法人名称
+	// 法人姓名。
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 李华
 	LegalPersonName *string `json:"LegalPersonName,omitempty" xml:"LegalPersonName,omitempty"`
-	// 资质组名称
+	// 资质名称。
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 阿里云云通信有限公司李华
 	QualificationGroupName *string `json:"QualificationGroupName,omitempty" xml:"QualificationGroupName,omitempty"`
-	// 审核状态名
+	// 审核状态。取值：
+	//
+	// - INIT：审核中。
+	//
+	// - NOT_PASS：审核不通过。
+	//
+	// - PASS：审核通过。
+	//
+	// - NOT_FINISH：资料待补充。
+	//
+	// - CANCEL：已撤回。
 	//
 	// example:
 	//
-	// INT
+	// INIT
 	StateName *string `json:"StateName,omitempty" xml:"StateName,omitempty"`
-	// 是否自用
+	// 资质申请用途，取值：
+	//
+	// - **true**：自用。
+	//
+	// - **false**：他用。
 	//
 	// example:
 	//
 	// true
 	UseBySelf *string `json:"UseBySelf,omitempty" xml:"UseBySelf,omitempty"`
-	// 工单ID
+	// 审核工单ID。
 	//
 	// example:
 	//

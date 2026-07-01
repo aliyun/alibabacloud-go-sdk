@@ -20,17 +20,17 @@ type iCreateCardSmsTemplateResponseBody interface {
 }
 
 type CreateCardSmsTemplateResponseBody struct {
-	// The response code.
+	// The request status code. Valid values:
 	//
-	// 	- If OK is returned, the request is successful.
+	// - OK: The request was successful.
 	//
-	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - For a list of other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The data returned by the operation.
 	Data *CreateCardSmsTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -40,9 +40,9 @@ type CreateCardSmsTemplateResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -104,15 +104,13 @@ func (s *CreateCardSmsTemplateResponseBody) Validate() error {
 }
 
 type CreateCardSmsTemplateResponseBodyData struct {
-	// The code of the message template.
+	// The code for the card SMS template. You can view the **Template Code*	- on the **Card SMS*	- > [template management](https://dysms.console.aliyun.com/domestic/card) page in the console.
 	//
-	// You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm?spm=5176.12818093.categories-n-products.ddysms.3b2816d0xml2NA#/overview).
-	//
-	// > Make sure that the message template has been approved.
+	// > The card SMS template must be approved before it can be used.
 	//
 	// example:
 	//
-	// CARD_SMS_60000****
+	// CARD_SMS_2****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 

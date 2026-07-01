@@ -32,37 +32,37 @@ type iQuerySmsTemplateResponseBody interface {
 }
 
 type QuerySmsTemplateResponseBody struct {
-	// The HTTP status code.
+	// The status code of the request.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - OK indicates that the request was successful.
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - For a list of other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the message template was created.
+	// The time when the template was created.
 	//
 	// example:
 	//
-	// 2019-06-04 11:42:17
+	// 2024-06-03 10:02:34
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The approval remarks.
+	// The review notes for the template.
 	//
-	// 	- If the value of AuditStatus is **AUDIT_STATE_PASS*	- or **AUDIT_STATE_INIT**, the value of Reason is No Approval Remarks.
+	// - If the review status is **Approved*	- or **Reviewing**, the message "No review remarks" is returned.
 	//
-	// 	- If the value of AuditStatus is **AUDIT_STATE_NOT_PASS**, the reason why the message template is rejected is returned.
+	// - If the review status is **Rejected**, the reason for the rejection is returned.
 	//
 	// example:
 	//
-	// The document cannot verify the authenticity of the information. Please upload it again.
+	// 无审批备注
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The request ID.
 	//
@@ -70,47 +70,47 @@ type QuerySmsTemplateResponseBody struct {
 	//
 	// 0A974B78-02BF-4C79-ADF3-90CFBA1B55B1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The code of the message template.
+	// The template code.
 	//
 	// example:
 	//
-	// SMS_16703****
+	// SMS_1525****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// The content of the message template.
+	// The template content.
 	//
 	// example:
 	//
-	// You are applying for mobile registration. The verification code is: ${code}, valid for 5 minutes!
+	// 亲爱的会员！阿里云短信服务祝您新年快乐！
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
-	// The name of the message template.
+	// The template name.
 	//
 	// example:
 	//
-	// aliyun verification code
+	// 通知短信
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The approval status of the message template. Valid values:
+	// The review status of the template. Valid values:
 	//
-	// 	- **0**: The message template is pending approval.
+	// - **0**: Reviewing.
 	//
-	// 	- **1**: The message template is approved.
+	// - **1**: Approved.
 	//
-	// 	- **AUDIT_STATE_NOT_PASS**: The message template is rejected. You can view the reason in the Reason response parameter.
+	// - **2**: Rejected. The reason for the rejection is returned in the response. For more information, see [Suggestions for handling a failed review](https://help.aliyun.com/document_detail/65990.html). You can then call the [ModifySmsTemplate](https://help.aliyun.com/document_detail/419287.html) API or modify the template on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
 	//
-	// 	- **10**: The approval is canceled.
+	// - **10**: Canceled.
 	//
 	// example:
 	//
-	// 1
+	// 0
 	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
-	// The type of the message. Valid values:
+	// The message type. Valid values:
 	//
-	// 	- **0**: verification code
+	// - **0**: Verification code.
 	//
-	// 	- **1**: notification message
+	// - **1**: Message notification.
 	//
-	// 	- **2**: promotional message
+	// - **2**: Promotional message.
 	//
-	// 	- **3**: message sent to countries or regions outside the Chinese mainland
+	// - **3**: International message.
 	//
 	// example:
 	//

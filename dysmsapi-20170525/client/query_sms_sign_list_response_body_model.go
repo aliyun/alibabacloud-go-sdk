@@ -26,11 +26,13 @@ type iQuerySmsSignListResponseBody interface {
 }
 
 type QuerySmsSignListResponseBody struct {
-	// The HTTP status code.
+	// The HTTP status code. Valid values:
 	//
-	// 	- The value OK indicates that the request was successful.
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// - OK: The request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
@@ -42,13 +44,13 @@ type QuerySmsSignListResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of signatures per page. Valid values: **1 to 50**.
+	// The number of signatures to return on each page. Default value: **10**. Valid values: **1 to 50**.
 	//
 	// example:
 	//
@@ -58,9 +60,9 @@ type QuerySmsSignListResponseBody struct {
 	//
 	// example:
 	//
-	// 819BE656-D2E0-4858-8B21-B2E47708****
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried message signatures.
+	// The list of returned results.
 	SmsSignList []*QuerySmsSignListResponseBodySmsSignList `json:"SmsSignList,omitempty" xml:"SmsSignList,omitempty" type:"Repeated"`
 	// The total number of signatures.
 	//
@@ -155,58 +157,84 @@ func (s *QuerySmsSignListResponseBody) Validate() error {
 }
 
 type QuerySmsSignListResponseBodySmsSignList struct {
+	// The APP-ICP filing entity ID.
+	//
+	// example:
+	//
+	// 1000001***123
 	AppIcpRecordId *int64 `json:"AppIcpRecordId,omitempty" xml:"AppIcpRecordId,omitempty"`
-	// The approval status of the signature. Valid values:
+	// The audit status of the signature. Valid values:
 	//
-	// 	- **AUDIT_STATE_INIT**: The signature is pending approval.
+	// - **AUDIT_STATE_INIT**: under review.
 	//
-	// 	- **AUDIT_STATE_PASS**: The signature is approved.
+	// - **AUDIT_STATE_PASS**: approved.
 	//
-	// 	- **AUDIT_STATE_NOT_PASS**: The signature is rejected. You can view the reason in the Reason response parameter.
+	// - **AUDIT_STATE_NOT_PASS**: rejected. You can view the rejection reason in the Reason response parameter.
 	//
-	// 	- **AUDIT_STATE_CANCEL**: The approval is canceled.
+	// - **AUDIT_STATE_CANCEL**: review canceled.
 	//
 	// example:
 	//
 	// AUDIT_STATE_NOT_PASS
-	AuditStatus           *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	AuthorizationLetterId *int64  `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
-	// The type of the signature scenario. The return value ends with "type". Valid values:
-	//
-	// 	- Verification code type
-	//
-	// 	- General-purpose type
+	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// The ID of the letter of authorization.
 	//
 	// example:
 	//
-	// Verification code type
+	// 1000********1234
+	AuthorizationLetterId *int64 `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
+	// The scenario type of the signature. Valid values:
+	//
+	// - Verification code.
+	//
+	// - General-purpose.
+	//
+	// example:
+	//
+	// 验证码类型
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The time when the signature was created. Format: yyyy-MM-dd HH:mm:ss.
+	// The time when the SMS signature was created. The format is yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
-	// 2020-01-08 16:44:13
+	// 2020-06-04 11:42:17
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The ticket ID.
+	// The order ID.
+	//
+	// This parameter is used by auditors when querying the audit. You must provide this order ID if you need to expedite the audit.
 	//
 	// example:
 	//
-	// 236****5
+	// 2005098****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The approval remarks.
+	// The audit remarks.
 	//
-	// 	- If the value of AuditStatus is **AUDIT_STATE_PASS*	- or **AUDIT_STATE_INIT**, the value of Reason is No Approval Remarks.
+	// - If the audit status is **approved*	- or **under review**, the Reason parameter is displayed as "No audit remarks".
 	//
-	// 	- If the value of AuditStatus is **AUDIT_STATE_NOT_PASS**, the reason why the signature is rejected is returned.
+	// - If the audit status is **rejected**, the Reason parameter displays the specific reason for the rejection.
 	Reason *QuerySmsSignListResponseBodySmsSignListReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
-	// The name of the signature.
+	// The signature name.
 	//
 	// example:
 	//
-	// Aliyun
-	SignName                     *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	TrademarkId                  *int64  `json:"TrademarkId,omitempty" xml:"TrademarkId,omitempty"`
-	AuthorizationLetterAuditPass *bool   `json:"authorizationLetterAuditPass,omitempty" xml:"authorizationLetterAuditPass,omitempty"`
+	// 阿里云
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The trademark entity ID.
+	//
+	// example:
+	//
+	// 1000009081***
+	TrademarkId *int64 `json:"TrademarkId,omitempty" xml:"TrademarkId,omitempty"`
+	// The audit status of the letter of authorization. Valid values:
+	//
+	// - true: approved.
+	//
+	// - false: not approved (includes all statuses other than approved).
+	//
+	// example:
+	//
+	// true
+	AuthorizationLetterAuditPass *bool `json:"authorizationLetterAuditPass,omitempty" xml:"authorizationLetterAuditPass,omitempty"`
 }
 
 func (s QuerySmsSignListResponseBodySmsSignList) String() string {
@@ -317,23 +345,23 @@ func (s *QuerySmsSignListResponseBodySmsSignList) Validate() error {
 }
 
 type QuerySmsSignListResponseBodySmsSignListReason struct {
-	// The time when the signature was rejected. Format: yyyy-MM-dd HH:mm:ss.
+	// The time when the signature was rejected. The format is yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
-	// 2020-01-08 19:02:13
+	// 2020-06-04 13:35:10
 	RejectDate *string `json:"RejectDate,omitempty" xml:"RejectDate,omitempty"`
-	// The reason why the signature was rejected.
+	// The reason for the rejection.
 	//
 	// example:
 	//
-	// The document cannot verify the authenticity of the information. Please upload it again.
+	// 文件不能证明信息真实性，请重新上传。
 	RejectInfo *string `json:"RejectInfo,omitempty" xml:"RejectInfo,omitempty"`
-	// The remarks about the rejection.
+	// The remarks for the rejection.
 	//
 	// example:
 	//
-	// The document cannot verify the authenticity of the information. Please upload it again.
+	// 文件不能证明信息真实性，请重新上传。
 	RejectSubInfo *string `json:"RejectSubInfo,omitempty" xml:"RejectSubInfo,omitempty"`
 }
 

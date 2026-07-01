@@ -27,14 +27,33 @@ type iCreateDigitalSmsTemplateRequest interface {
 
 type CreateDigitalSmsTemplateRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The application description. Describe your business use case for the template.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ***业务需要
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SignName             *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The signature.
+	//
+	// example:
+	//
+	// 签名
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// An array of objects that define the template content.
+	//
 	// This parameter is required.
 	TemplateContents []*CreateDigitalSmsTemplateRequestTemplateContents `json:"TemplateContents,omitempty" xml:"TemplateContents,omitempty" type:"Repeated"`
+	// The template name. The name can contain up to 20 characters.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ****模板
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -123,15 +142,26 @@ func (s *CreateDigitalSmsTemplateRequest) Validate() error {
 }
 
 type CreateDigitalSmsTemplateRequestTemplateContents struct {
+	// The file content, converted to a Base64 string. The file must be UTF-8 encoded before the Base64 conversion.
+	//
+	// example:
+	//
+	// 字符
 	FileContents *string `json:"FileContents,omitempty" xml:"FileContents,omitempty"`
+	// The file name without the extension.
+	//
 	// example:
 	//
 	// file-1
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size, in bytes.
+	//
 	// example:
 	//
 	// 1840901
 	FileSize *int32 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The file suffix. Supported formats are `txt` for text; `gif`, `jpg`, and `png` for images; `mp3` for audio; and `mp4` for video. You can upload only one video file per template.
+	//
 	// example:
 	//
 	// txt

@@ -29,13 +29,13 @@ type iTagResourcesRequest interface {
 
 type TagResourcesRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the cloud service. Set the value to **dysms**.
+	// The product name. Default value: **dysms**.
 	//
 	// example:
 	//
 	// dysms
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	// The region ID. Set the value to **cn-hangzhou**.
+	// The region ID. Default value: **cn-hangzhou**. For more region IDs, see [Endpoints](https://help.aliyun.com/document_detail/419270.html).
 	//
 	// This parameter is required.
 	//
@@ -43,7 +43,7 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The code of the message template.
+	// The SMS template codes. The number of codes cannot exceed 20.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type TagResourcesRequest struct {
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Set the value to **TEMPLATE**.
+	// The resource type. Default value: **TEMPLATE**.
 	//
 	// This parameter is required.
 	//
@@ -59,7 +59,7 @@ type TagResourcesRequest struct {
 	//
 	// TEMPLATE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag.
+	// The tags. You can add up to 20 tags at a time.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -159,13 +159,13 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The array of tag keys. Valid values of N: 1 to 20.
+	// The tag key.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The array of tag values. Valid values of N: 1 to 20.
+	// The tag value.
 	//
 	// example:
 	//

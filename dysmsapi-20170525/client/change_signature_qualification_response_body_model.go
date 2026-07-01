@@ -24,20 +24,42 @@ type iChangeSignatureQualificationResponseBody interface {
 }
 
 type ChangeSignatureQualificationResponseBody struct {
+	// Details of the access denial. This field is returned only if RAM authentication fails.
+	//
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code of the request.
+	//
+	// - A value of `OK` indicates that the request was successful.
+	//
+	// - For other error codes, see the error code list in this topic or the [API Error Codes](https://help.aliyun.com/document_detail/101346.html) topic.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data structure.
 	Data *ChangeSignatureQualificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. Alibaba Cloud generates this unique identifier to help you troubleshoot issues.
+	//
 	// example:
 	//
 	// 0A974B78-02BF-4C79-ADF3-90CFBA1B55B1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -116,15 +138,22 @@ func (s *ChangeSignatureQualificationResponseBody) Validate() error {
 }
 
 type ChangeSignatureQualificationResponseBodyData struct {
+	// This field is not used. You can ignore it.
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The status code of the request.
+	//
 	// example:
 	//
-	// 示例值
+	// OK
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The description of the status code.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// OK
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true

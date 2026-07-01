@@ -33,7 +33,7 @@ type CreateSmartShortUrlRequest struct {
 	//
 	// example:
 	//
-	// 15900195***
+	// 示例值示例值
 	PhoneNumbers         *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

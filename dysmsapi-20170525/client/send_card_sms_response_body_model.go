@@ -20,29 +20,29 @@ type iSendCardSmsResponseBody interface {
 }
 
 type SendCardSmsResponseBody struct {
-	// The response code.
+	// 请求状态码。
 	//
-	// 	- If OK is returned, the request is successful.
+	// 	- 返回OK代表请求成功。
 	//
-	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// 	- 其他错误码，请参见[错误码列表](https://help.aliyun.com/document_detail/101346.html)。
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// 返回数据。
 	Data *SendCardSmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// 请求ID。
 	//
 	// example:
 	//
 	// F655A8D5-B967-440B-8683-DAD6FF8D28D0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// 调用接口是否成功。取值：
 	//
-	// 	- **true**
+	// - **true**：调用成功。
 	//
-	// 	- **false**
+	// - **false**：调用失败。
 	//
 	// example:
 	//
@@ -104,45 +104,45 @@ func (s *SendCardSmsResponseBody) Validate() error {
 }
 
 type SendCardSmsResponseBodyData struct {
-	// The ID of the card message.
+	// 卡片短信发送ID。
 	//
 	// example:
 	//
 	// 123
 	BizCardId *string `json:"BizCardId,omitempty" xml:"BizCardId,omitempty"`
-	// The ID of the digital message.
+	// 数字短信发送ID。
 	//
 	// example:
 	//
 	// 232
 	BizDigitalId *string `json:"BizDigitalId,omitempty" xml:"BizDigitalId,omitempty"`
-	// The ID of the text message.
+	// 文本短信发送ID。
 	//
 	// example:
 	//
 	// 524
 	BizSmsId *string `json:"BizSmsId,omitempty" xml:"BizSmsId,omitempty"`
-	// The review status of the card message template.
+	// 卡片短信模板审核状态。取值：
 	//
-	// 	- **0**: pending approval
+	// - **0**：审核中。
 	//
-	// 	- **1**: approved
+	// - **1**：审核通过。
 	//
-	// 	- **2**: rejected
+	// - **2**：审核不通过。
 	//
-	// > Unapproved card messages are rolled back.
+	// >  审核不通过的短信可通过**FallbackType**字段设置回落流程。
 	//
 	// example:
 	//
 	// 0
 	CardTmpState *int32 `json:"CardTmpState,omitempty" xml:"CardTmpState,omitempty"`
-	// The mobile phone number from which the card message is sent.
+	// 接收卡片短信的手机号。
 	//
 	// example:
 	//
 	// 1390000****
 	MediaMobiles *string `json:"MediaMobiles,omitempty" xml:"MediaMobiles,omitempty"`
-	// The mobile phone number whose card message is rolled back.
+	// 回落的手机号。
 	//
 	// example:
 	//

@@ -24,20 +24,42 @@ type iQuerySmsAppIcpRecordResponseBody interface {
 }
 
 type QuerySmsAppIcpRecordResponseBody struct {
+	// The access denial details.
+	//
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code of the request.
+	//
+	// - OK indicates a successful request.
+	//
+	// - For other error codes, see the [error code list](https://help.aliyun.com/document_detail/101346.htm).
+	//
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A list of APP-ICP record entity details.
 	Data []*QuerySmsAppIcpRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C9955E63-8BFF-101D-80A1-E6998DFEFF1A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Specifies whether the API call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -120,53 +142,77 @@ func (s *QuerySmsAppIcpRecordResponseBody) Validate() error {
 }
 
 type QuerySmsAppIcpRecordResponseBodyData struct {
-	// 审核通过日期，示例2025-09-01
+	// The approval date.
 	//
 	// example:
 	//
 	// 2020-01-01
 	AppApprovalDate *string `json:"AppApprovalDate,omitempty" xml:"AppApprovalDate,omitempty"`
-	// ICP备案/许可证号
+	// The icp filing/license number.
 	//
 	// example:
 	//
 	// 123
 	AppIcpLicenseNumber *string `json:"AppIcpLicenseNumber,omitempty" xml:"AppIcpLicenseNumber,omitempty"`
-	// app-icp备案材料id
+	// The ID of the APP-ICP record material.
 	//
 	// example:
 	//
 	// 51
 	AppIcpRecordId *int64 `json:"AppIcpRecordId,omitempty" xml:"AppIcpRecordId,omitempty"`
-	// app-icp备案截图图片Osskey（给签名传工单用）
+	// The OSS fileKey for the APP-ICP record screenshot.
 	//
 	// example:
 	//
 	// 10000025*****02/ac181696-****-49c6-90dc-50689267aa00_mhsjd8b8_17*****662348.jpeg
 	AppIcpRecordPic *string `json:"AppIcpRecordPic,omitempty" xml:"AppIcpRecordPic,omitempty"`
-	// app-icp备案截图url地址
+	// The URL of the APP-ICP record screenshot.
 	//
 	// example:
 	//
 	// https://alicom-fc-media.oss-cn-zhangjiakou.aliyuncs.com/100000****50802/afde****-496d-46e4-899d-b43758****8_mhk9oz0p_176224****542.png?Expires=1762****6&OSSAccessKeyId=bypFN****73PsLI&Signature=BygI9X****h7%2FXmFIo****FB2c%3D
 	AppIcpRecordPicUrl *string `json:"AppIcpRecordPicUrl,omitempty" xml:"AppIcpRecordPicUrl,omitempty"`
-	// 主办单位名称
+	// The hosting unit name.
+	//
+	// example:
+	//
+	// 阿里云
+	AppPrincipalUnitName *string `json:"AppPrincipalUnitName,omitempty" xml:"AppPrincipalUnitName,omitempty"`
+	// APP实际运行截图Osskey
 	//
 	// example:
 	//
 	// 示例值示例值
-	AppPrincipalUnitName *string `json:"AppPrincipalUnitName,omitempty" xml:"AppPrincipalUnitName,omitempty"`
-	// app服务名称
+	AppRuntimePic *string `json:"AppRuntimePic,omitempty" xml:"AppRuntimePic,omitempty"`
+	// APP实际运行截图url地址
 	//
 	// example:
 	//
-	// 示例值
+	// 示例值示例值示例值
+	AppRuntimePicUrl *string `json:"AppRuntimePicUrl,omitempty" xml:"AppRuntimePicUrl,omitempty"`
+	// The app service name.
+	//
+	// example:
+	//
+	// 测试
 	AppServiceName *string `json:"AppServiceName,omitempty" xml:"AppServiceName,omitempty"`
-	// APP应用商店链接
+	// APP应用商店下载截图Osskey
 	//
 	// example:
 	//
-	// https://test
+	// 示例值示例值
+	AppStoreDownloadPic *string `json:"AppStoreDownloadPic,omitempty" xml:"AppStoreDownloadPic,omitempty"`
+	// APP应用商店下载截图url地址
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	AppStoreDownloadPicUrl *string `json:"AppStoreDownloadPicUrl,omitempty" xml:"AppStoreDownloadPicUrl,omitempty"`
+	// The app store link.
+	//
+	// example:
+	//
+	// https://apps.apple.com/cn/app/阿里云/id981011420
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
@@ -202,8 +248,24 @@ func (s *QuerySmsAppIcpRecordResponseBodyData) GetAppPrincipalUnitName() *string
 	return s.AppPrincipalUnitName
 }
 
+func (s *QuerySmsAppIcpRecordResponseBodyData) GetAppRuntimePic() *string {
+	return s.AppRuntimePic
+}
+
+func (s *QuerySmsAppIcpRecordResponseBodyData) GetAppRuntimePicUrl() *string {
+	return s.AppRuntimePicUrl
+}
+
 func (s *QuerySmsAppIcpRecordResponseBodyData) GetAppServiceName() *string {
 	return s.AppServiceName
+}
+
+func (s *QuerySmsAppIcpRecordResponseBodyData) GetAppStoreDownloadPic() *string {
+	return s.AppStoreDownloadPic
+}
+
+func (s *QuerySmsAppIcpRecordResponseBodyData) GetAppStoreDownloadPicUrl() *string {
+	return s.AppStoreDownloadPicUrl
 }
 
 func (s *QuerySmsAppIcpRecordResponseBodyData) GetDomain() *string {
@@ -240,8 +302,28 @@ func (s *QuerySmsAppIcpRecordResponseBodyData) SetAppPrincipalUnitName(v string)
 	return s
 }
 
+func (s *QuerySmsAppIcpRecordResponseBodyData) SetAppRuntimePic(v string) *QuerySmsAppIcpRecordResponseBodyData {
+	s.AppRuntimePic = &v
+	return s
+}
+
+func (s *QuerySmsAppIcpRecordResponseBodyData) SetAppRuntimePicUrl(v string) *QuerySmsAppIcpRecordResponseBodyData {
+	s.AppRuntimePicUrl = &v
+	return s
+}
+
 func (s *QuerySmsAppIcpRecordResponseBodyData) SetAppServiceName(v string) *QuerySmsAppIcpRecordResponseBodyData {
 	s.AppServiceName = &v
+	return s
+}
+
+func (s *QuerySmsAppIcpRecordResponseBodyData) SetAppStoreDownloadPic(v string) *QuerySmsAppIcpRecordResponseBodyData {
+	s.AppStoreDownloadPic = &v
+	return s
+}
+
+func (s *QuerySmsAppIcpRecordResponseBodyData) SetAppStoreDownloadPicUrl(v string) *QuerySmsAppIcpRecordResponseBodyData {
+	s.AppStoreDownloadPicUrl = &v
 	return s
 }
 

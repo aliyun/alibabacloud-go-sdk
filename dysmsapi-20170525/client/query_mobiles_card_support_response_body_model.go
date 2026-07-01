@@ -20,29 +20,29 @@ type iQueryMobilesCardSupportResponseBody interface {
 }
 
 type QueryMobilesCardSupportResponseBody struct {
-	// The HTTP status code.
+	// 请求状态码。
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - 返回OK代表请求成功。
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - 其他错误码，请参见[错误码列表](https://help.aliyun.com/document_detail/101346.html)。
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// 返回数据。
 	Data *QueryMobilesCardSupportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// 阿里云为该请求生成的唯一标识符。
 	//
 	// example:
 	//
 	// 08C17DFE-2E10-54F4-BAFB-7180039CC217
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// 调用接口是否成功。取值：
 	//
-	// 	- **true**
+	// - **true**：调用成功。
 	//
-	// 	- **false**
+	// - **false**：调用失败。
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ func (s *QueryMobilesCardSupportResponseBody) Validate() error {
 }
 
 type QueryMobilesCardSupportResponseBodyData struct {
-	// The list of returned results.
+	// 查询值。
 	QueryResult []*QueryMobilesCardSupportResponseBodyDataQueryResult `json:"QueryResult,omitempty" xml:"QueryResult,omitempty" type:"Repeated"`
 }
 
@@ -139,17 +139,17 @@ func (s *QueryMobilesCardSupportResponseBodyData) Validate() error {
 }
 
 type QueryMobilesCardSupportResponseBodyDataQueryResult struct {
-	// The mobile phone number.
+	// 查询的手机号码。
 	//
 	// example:
 	//
 	// 1380000****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// Indicates whether the mobile phone number supports card messages. Valid values:
+	// 是否支持卡片短信。取值：
 	//
-	// 	- **true**
+	// - **true**：支持。
 	//
-	// 	- **false**
+	// - **false**：不支持。
 	//
 	// example:
 	//

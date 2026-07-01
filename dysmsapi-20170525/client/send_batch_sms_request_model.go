@@ -30,22 +30,22 @@ type iSendBatchSmsRequest interface {
 }
 
 type SendBatchSmsRequest struct {
-	// The extension field of the external record. The value is a string that contains no more than 256 characters.
+	// An external business ID. It must be a string of fewer than 256 characters.
 	//
-	// > The parameter is optional.
+	// > You can leave this parameter empty if you have no special requirements.
 	//
 	// example:
 	//
 	// abcdefg
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The mobile number of the recipient. Format:
+	// The recipient phone numbers. Format:
 	//
-	// 	- Message delivery to the Chinese mainland: +/+86/0086/86 or an 11-digit mobile number without a prefix. Example: 1590000\\*\\*\\*\\*.
+	// - For domestic SMS: Phone numbers with or without a country code such as `+`, `+86`, `0086`, or `86`. Example: `1590000****`.
 	//
-	// 	- Message delivery to countries or regions outside the Chinese mainland: Dialing code + Mobile number. Example: 852000012\\*\\*\\*\\*.
+	// - For international SMS: The country code followed by the phone number. Example: `852000012****`.
 	//
-	// > We recommend that you call the SendSms operation to send verification codes.
+	// > For time-sensitive messages like verification codes, use the [SendSms](https://help.aliyun.com/document_detail/419273.html) operation to send messages individually.
 	//
 	// This parameter is required.
 	//
@@ -55,31 +55,29 @@ type SendBatchSmsRequest struct {
 	PhoneNumberJson      *string `json:"PhoneNumberJson,omitempty" xml:"PhoneNumberJson,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The signature.
+	// The signature names. The number of signatures must match the number of phone numbers.
 	//
-	// Log on to the Alibaba Cloud SMS console. In the left-side navigation pane, click **Go Globe*	- or **Go China**. You can view the signature in the **Signature*	- column on the **Signatures*	- tab.
+	// You can call the [QuerySmsSignList](https://help.aliyun.com/document_detail/419282.html) operation or check the [Short Message Service console](https://dysms.console.aliyun.com/domestic/text/sign) to find approved signatures. You must use an approved signature.
 	//
-	// > The signatures must be approved and correspond to the mobile numbers in sequence.
+	// > - The system uses the selected signature to send SMS messages.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ["Aliyun","Alibaba"]
+	// ["阿里云","阿里巴巴"]
 	SignNameJson *string `json:"SignNameJson,omitempty" xml:"SignNameJson,omitempty"`
-	// The extension code of the MO message. Format: JSON array.
+	// A JSON array of MO SMS extension codes.
 	//
-	// > The parameter is optional.
+	// > You can leave this parameter empty if you have no special requirements.
 	//
 	// example:
 	//
 	// ["90999","90998"]
 	SmsUpExtendCodeJson *string `json:"SmsUpExtendCodeJson,omitempty" xml:"SmsUpExtendCodeJson,omitempty"`
-	// The code of the message template.
+	// The message template code. You cannot use templates for domestic SMS and international SMS interchangeably.
 	//
-	// Log on to the Alibaba Cloud SMS console. In the left-side navigation pane, click **Go Globe*	- or **Go China**. You can view the message template in the **Template Code*	- column on the **Message Templates*	- tab.
-	//
-	// > The message templates must be created on the Go Globe page and approved.
+	// You can call the [QuerySmsTemplateList](https://help.aliyun.com/document_detail/419288.html) operation or check the [Short Message Service console](https://dysms.console.aliyun.com/domestic/text/template) to find approved template codes. You must use an approved template code.
 	//
 	// This parameter is required.
 	//
@@ -87,9 +85,13 @@ type SendBatchSmsRequest struct {
 	//
 	// SMS_15255****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// The value of the variable in the message template.
+	// The actual values for the template variables. This parameter is required if the template contains variables.
 	//
-	// > If you need to add line breaks to the JSON template, make sure that the format is valid. In addition, the sequence of variable values must be the same as that of the mobile numbers and signatures.
+	// > - The number of template variable sets must match the number of phone numbers and signatures. The elements in the PhoneNumberJson, SignNameJson, and TemplateParamJson arrays must correspond by index to ensure each message is sent with the correct signature and variable values.
+	//
+	// >
+	//
+	// > - If you need to include a line break in the JSON string, follow the standard JSON format.
 	//
 	// example:
 	//

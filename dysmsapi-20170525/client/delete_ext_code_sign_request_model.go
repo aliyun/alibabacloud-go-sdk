@@ -28,7 +28,7 @@ type DeleteExtCodeSignRequest struct {
 	//
 	// example:
 	//
-	// 01
+	// 示例值
 	ExtCode              *string `json:"ExtCode,omitempty" xml:"ExtCode,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

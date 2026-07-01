@@ -29,7 +29,7 @@ type QuerySmsSignListRequest struct {
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of signatures per page. Valid values: **1 to 50**.
+	// The number of signatures to return on each page. Default value: **10**. Valid values: **1 to 50**.
 	//
 	// example:
 	//

@@ -23,13 +23,13 @@ type iQuerySmsTemplateListRequest interface {
 
 type QuerySmsTemplateListRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The current page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of templates per page. Valid values: **1 to 50**.
+	// The number of templates displayed per page. Valid values: **1 to 50**. Default value: **10**.
 	//
 	// example:
 	//

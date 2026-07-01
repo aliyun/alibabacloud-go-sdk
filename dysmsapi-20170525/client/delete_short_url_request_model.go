@@ -23,7 +23,11 @@ type DeleteShortUrlRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source address. The address can be up to 1,000 characters in length.
+	// The source URL. The URL must not exceed 1,000 characters.
+	//
+	// 	Notice:
+	//
+	// Short Message Service does not currently support this API operation.
 	//
 	// This parameter is required.
 	//

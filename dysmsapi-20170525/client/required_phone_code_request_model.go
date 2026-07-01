@@ -21,6 +21,12 @@ type iRequiredPhoneCodeRequest interface {
 
 type RequiredPhoneCodeRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The administrator\\"s phone number that receives the verification code.
+	//
+	// - The account that **calls this operation to send the verification code must be the same account that submits the qualification**. Otherwise, the call fails.
+	//
+	// - Phone number format: +/+86/0086/86 or a mobile phone number without any prefix, for example 1390000****.
+	//
 	// This parameter is required.
 	//
 	// example:

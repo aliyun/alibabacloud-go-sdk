@@ -20,29 +20,29 @@ type iGetMediaResourceIdResponseBody interface {
 }
 
 type GetMediaResourceIdResponseBody struct {
-	// The response code.
+	// 请求状态码。
 	//
-	// 	- If OK is returned, the request is successful.
+	// - 返回OK代表请求成功。
 	//
-	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - 其他错误码，请参见[错误码列表](https://help.aliyun.com/document_detail/101346.html)。
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// 返回数据。
 	Data *GetMediaResourceIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// 请求ID。
 	//
 	// example:
 	//
 	// F07CF237-F6E3-5F77-B91B-F9B7C5DE84AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// 调用接口是否成功。取值：
 	//
-	// 	- **true**
+	// - **true**：调用成功。
 	//
-	// 	- **false**
+	// - **false**：调用失败。
 	//
 	// example:
 	//
@@ -104,17 +104,17 @@ func (s *GetMediaResourceIdResponseBody) Validate() error {
 }
 
 type GetMediaResourceIdResponseBodyData struct {
-	// The download URL of the resource.
+	// 资源下载地址。
 	//
 	// example:
 	//
 	// http://test-example.com/download.jpg
 	ResUrlDownload *string `json:"ResUrlDownload,omitempty" xml:"ResUrlDownload,omitempty"`
-	// The resource ID.
+	// 资源ID。
 	//
 	// example:
 	//
-	// SMS_14571****
+	// 0
 	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 

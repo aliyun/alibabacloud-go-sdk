@@ -34,48 +34,66 @@ type iQuerySmsQualificationRecordRequest interface {
 }
 
 type QuerySmsQualificationRecordRequest struct {
-	// 公司名
+	// The company name.
 	//
 	// example:
 	//
-	// 示例值
+	// 阿里云云通信有限公司
 	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
-	// 法人姓名
+	// The name of the legal representative.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 李华
 	LegalPersonName *string `json:"LegalPersonName,omitempty" xml:"LegalPersonName,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: **1 to 50**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 资质组名称
+	// The qualification name.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 阿里云云通信有限公司李华
 	QualificationGroupName *string `json:"QualificationGroupName,omitempty" xml:"QualificationGroupName,omitempty"`
 	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 审核状态。INT:审核中FAILED:审核失败,PASSED:审核通过,NOT_FINISH:资料待补充,CANCELED:已撤回
+	// The review status. Valid values:
+	//
+	// - INIT: Under review.
+	//
+	// - NOT_PASS: Review rejected.
+	//
+	// - PASS: Review approved.
+	//
+	// - NOT_FINISH: Additional information required.
+	//
+	// - CANCEL: Withdrawn.
 	//
 	// example:
 	//
-	// PASSED
+	// PASS
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// 是否自用
+	// The purpose of the qualification application. Valid values:
+	//
+	// - **true**: For self-use.
+	//
+	// - **false**: For use by others.
 	//
 	// example:
 	//
 	// true
 	UseBySelf *bool `json:"UseBySelf,omitempty" xml:"UseBySelf,omitempty"`
-	// 工单ID
+	// The review ticket ID.
 	//
 	// example:
 	//

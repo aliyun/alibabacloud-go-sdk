@@ -40,30 +40,36 @@ type iCreateSmsSignRequest interface {
 }
 
 type CreateSmsSignRequest struct {
+	// The APP-ICP filing entity ID.
+	//
+	// > - This parameter is required when SignSource is set to 2.
+	//
+	// > - You can obtain the filing entity ID by calling the [CreateSmsAppIcpRecord](~~CreateSmsAppIcpRecord~~) operation.
+	//
+	// example:
+	//
+	// 10000****029
 	AppIcpRecordId *int64 `json:"AppIcpRecordId,omitempty" xml:"AppIcpRecordId,omitempty"`
-	// Application scenarios, instructions as follows:
+	// 	Notice:  The signature source of launched apps is no longer supported.
 	//
-	// - For registered websites, enter the domain name with HTTP or HTTPS that has been registered with the MIIT.
-	//
-	// - For launched apps, provide a display link from the app store with HTTP or HTTPS, ensuring the app is online.
-	//
-	// - For public accounts or mini-programs, input the full name, ensuring they are online.
-	//
-	// - For e-commerce platform store names, applicable only to enterprise users, provide a display link with HTTP or HTTPS for the store.
+	// The app store link. If the signature source is a launched app, that is, SignSource is set to 2, specify a link that starts with http:// or https:// and make sure the app is already launched.
 	//
 	// example:
 	//
 	// http://www.aliyun.com/
-	ApplySceneContent     *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
-	AuthorizationLetterId *int64  `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
-	// Additional information to supplement uploaded business proof documents or screenshots, which helps reviewers understand your business details.
+	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	// The ID of the power of attorney. When the signature is for third-party use, this parameter is required. Otherwise, the signature review will not pass. The unified social credit code in the power of attorney must match the unified social credit code in the qualification information bound to the signature. Otherwise, the signature creation fails.
 	//
-	// This parameter is optional; please fill it out based on your actual needs.
+	// example:
+	//
+	// 1000********1234
+	AuthorizationLetterId *int64 `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
+	// The supplementary materials. Upload business proof files or business screenshots to help reviewers understand your business details. See [Signature application materials](~~108076#section-xup-k46-yi4~~) and upload the relevant materials.
 	MoreData []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
 	OwnerId  *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Approved or under-review qualification ID.
+	// The ID of the approved qualification.
 	//
-	// > - Before applying for an SMS signature, please first [Apply for Qualification](https://help.aliyun.com/zh/sms/user-guide/new-qualification?spm=a2c4g.11186623.0.0.718d187bbkpMRK).
+	// > - Before applying for an SMS signature, [apply for a qualification](https://help.aliyun.com/document_detail/2539801.html).
 	//
 	// > - You can view the qualification ID on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page.
 	//
@@ -73,76 +79,91 @@ type CreateSmsSignRequest struct {
 	//
 	// 8563**
 	QualificationId *int64 `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
-	// Explanation of the SMS signature scenario, with a maximum length of 200 characters.
+	// The description of the SMS signature scenario. This is one of the reference materials for signature review. The description can be up to 200 characters in length.
 	//
-	// > The scenario explanation is one of the reference materials for signature review. Please provide a detailed description of the usage scenarios for your live services, along with links to verify these services such as website URLs with MIIT备案, app store display links, full names of public accounts or mini-programs, etc. For login scenarios, test account credentials are also required. A comprehensive application explanation enhances the efficiency of signature and template reviews. Refer to the **Application Scenario*	- column in the [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.i2#section-xup-k46-yi4) table for filling in SMS scenarios.
+	// >  - You can describe the scenarios of your online service and provide links to the actual business website or marketplace download page.
+	//
+	// >  - You can provide a complete SMS example that reflects your business scenario.
+	//
+	// >  - You can provide the pass parameter content of variables and describe in detail the business scenario and the reason for selecting the variable property.
+	//
+	// >  - If the signature involves a government or public institution, specify the landline phone number of the institution.
+	//
+	// A well-documented application description improves the review efficiency for signatures and templates. Failure to follow the specifications or leaving this field empty may affect the approval of your signature.
 	//
 	// example:
 	//
-	// SMS signature for the login scenario using verification code.
+	// 登录场景使用验证码
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Signature name. Please adhere to the [Signature Specifications](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.0.4f9710fder2gR7#section-0p8-qn8-mmy).
+	// The signature name. The signature name must comply with the [signature specifications](~~108076#section-0p8-qn8-mmy~~):
 	//
-	// > - Signature names are case-insensitive; e.g., 【Aliyun Communication】 and 【aliyun communication】 are considered identical.
+	// - The name must be 2 to 12 characters in length and cannot contain words such as "test".
 	//
-	// > - If your verification code signature and general signature names are the same, the system defaults to using the general signature for sending SMS messages.
+	// - The name cannot contain symbols such as 【】, (), or []. Special characters such as commas, periods, and spaces are not supported.
+	//
+	// > - Signature names are case-sensitive. For example, 【Aliyun通信】 and 【aliyun通信】 are treated as two different signatures.
+	//
+	// > - If your verification code signature and general-purpose signature have the same name, the system uses the general-purpose signature to send SMS messages by default.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Aliyun
+	// 阿里云验证码
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	// Signature source. Values:
+	// The signature source. Valid values:
 	//
-	// - **0**: Full name or abbreviation of an enterprise or institution.
+	// -  **0**: full name or abbreviation of an enterprise or public institution. **(Recommended)**
 	//
-	// - **1**: Full name or abbreviation of a MIIT-registered website.
+	// -  **5**: full name or abbreviation of a trademark.
 	//
-	// - **2**: Full name or abbreviation of an App.
+	// -  **2**: full name or abbreviation of an app. **(Not recommended)**
 	//
-	// - **3**: Full name or abbreviation of an official account or mini-program.
-	//
-	// - **4**: Full name or abbreviation of an e-commerce platform store.
-	//
-	// - **5**: Full name or abbreviation of a trademark.
-	//
-	// For detailed information on signature sources, refer to [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.0.4f9710fder2gR7#section-xup-k46-yi4).
-	//
-	// > This interface does not support applying for signatures with sources as **Test or Learning*	- and **Trial Use**. If you need to apply for signatures with these sources, please go to the [SMS Service Console](https://dysms.console.aliyun.com/domestic/text/sign/add/qualification).
+	// For more information about signature sources, see [Signature sources](~~108076#section-fow-bfu-wo9~~).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1
+	// 0
 	SignSource *int32 `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
-	// Signature type. Values:
+	// The signature type. Valid values:
 	//
-	// - **0**: Verification Code
+	// - **0**: verification code.
 	//
-	// - **1**: General (Default)
+	// - **1**: general-purpose (default).
 	//
-	// > It is recommended to use the default value: **General**.
+	// We recommend that you use the default value: **general-purpose**.
 	//
 	// example:
 	//
 	// 1
 	SignType *int32 `json:"SignType,omitempty" xml:"SignType,omitempty"`
-	// Choose whether the applied signature is for self-use or third-party use.
+	// The signature purpose. Valid values:
 	//
-	// - false: Self-use (default)
+	// - false: for personal use (default). The signature is the enterprise name, website, or product name verified under this account.
 	//
-	// - true: Third-party use
+	// - true: for third-party use. The signature is the enterprise name, website, or product name not verified under this account.
 	//
-	// 	Notice: Please select self-use qualification ID when the signature is for self-use; choose third-party use qualification ID when it\\"s for third-party use.
+	// 	Notice: If the signature is for personal use, select a qualification ID for personal use. If the signature is for third-party use, select a qualification ID for third-party use..
 	//
 	// example:
 	//
 	// false
-	ThirdParty  *bool  `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+	ThirdParty *bool `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+	// The trademark entity ID.
+	//
+	// > - 1. This parameter is required when SignSource is set to 5.
+	//
+	// > - 2. You can obtain the trademark entity ID by calling the [CreateSmsTrademark](~~CreateSmsTrademark~~) operation.
+	//
+	// > - 3. Based on carrier real-name registration requirements, provide the relevant field information. Otherwise, the probability of review rejection or carrier registration failure increases significantly.
+	//
+	// example:
+	//
+	// 1000009081***
 	TrademarkId *int64 `json:"TrademarkId,omitempty" xml:"TrademarkId,omitempty"`
 }
 

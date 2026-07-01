@@ -28,13 +28,15 @@ type iQuerySendDetailsRequest interface {
 }
 
 type QuerySendDetailsRequest struct {
-	// The ID of the delivery receipt. The delivery receipt ID is the value of the BizId parameter that is returned when you call the SendSms or SendBatchSms operation.
+	// The delivery receipt ID. This is the `BizId` returned in the response when you call the [SendSms](https://help.aliyun.com/document_detail/419273.html) or [SendBatchSms](https://help.aliyun.com/document_detail/419274.html) operation.
+	//
+	// > You can specify only one `BizId`.
 	//
 	// example:
 	//
 	// 134523^435****
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The page number of the first page.
+	// The current page number for paginated results.
 	//
 	// This parameter is required.
 	//
@@ -43,7 +45,7 @@ type QuerySendDetailsRequest struct {
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of items displayed per page.
+	// The number of delivery records to return on each page.
 	//
 	// Valid values: 1 to 50.
 	//
@@ -51,13 +53,15 @@ type QuerySendDetailsRequest struct {
 	//
 	// example:
 	//
-	// 10
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The mobile numbers of the recipients. Format:
+	// The phone number to query. The format is as follows:
 	//
-	// 	- If you send messages in the Chinese mainland, specify an 11-digit mobile number, for example, 1390000\\*\\*\\*\\*.
+	// - For messages to the Chinese mainland, use an 11-digit phone number, such as 1390000\\*\\*\\*\\*.
 	//
-	// 	- If you send messages to countries or regions outside the Chinese mainland, specify this parameter in the \\<Area code>\\<Mobile number> format. Example: 8520000\\*\\*\\*\\*.
+	// - For international SMS, use the format: country/region code + phone number, such as 8520000\\*\\*\\*\\*.
+	//
+	// > You can specify only one phone number.
 	//
 	// This parameter is required.
 	//
@@ -67,15 +71,15 @@ type QuerySendDetailsRequest struct {
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The date when the message was sent. You can query messages that were sent within the last 30 days.
+	// The date when the SMS message was sent. You can query records from the past 30 days.
 	//
-	// Format: yyyyMMdd. Example: 20181225.
+	// Format: **yyyyMMdd**, for example, 20250601.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 20181228
+	// 20250601
 	SendDate *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
 }
 

@@ -29,15 +29,25 @@ type iModifySmsSignRequest interface {
 
 type ModifySmsSignRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The scenario description of your released services. Provide the information of your services, such as a website URL, a domain name with an ICP filing, an app download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+	// The description of the SMS signature application. The description cannot exceed 200 characters in length.
 	//
-	// > The description can be up to 200 characters in length.
+	// The description is used as a reference for signature review. A complete description helps reviewers understand your business scenario and improves review efficiency. Guidelines:
+	//
+	// - Provide the use case of a service that is already online.
+	//
+	// - Provide an SMS example from a real scenario to illustrate your business scenario.
+	//
+	// - Provide the values passed for variables, and describe the business scenario in detail and the reason for choosing the variable attributes.
+	//
+	// - Provide the website URL of the actual service, a filed domain name, or an app store download link.
+	//
+	// - For logon scenarios, provide a test account and password.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// This is the abbreviation of our company.
+	// 当前的短信签名应用于双11大促推广营销
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -45,27 +55,29 @@ type ModifySmsSignRequest struct {
 	//
 	// This parameter is required.
 	SignFileList []*ModifySmsSignRequestSignFileList `json:"SignFileList,omitempty" xml:"SignFileList,omitempty" type:"Repeated"`
-	// The signature.
+	// The signature name.
+	//
+	// > You can modify a signature that has been approved, but you cannot change its name. The modified signature must be reviewed and approved before it can be used. The original signature cannot be used until the review is complete.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Aliyun
+	// 阿里云
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	// The source of the signature. Valid values:
+	// The signature source. Valid values:
 	//
-	// 	- **0**: full name or abbreviation of an enterprise or institution.
+	// - **0**: full name or abbreviation of an enterprise or public institution.
 	//
-	// 	- **1**: full name or abbreviation of a website with Ministry of Industry and Information Technology (MIIT) filing.
+	// - **1**: full name or abbreviation of a website filed with the Ministry of Industry and Information Technology (MIIT).
 	//
-	// 	- **2**: full name or abbreviation of an app.
+	// - **2**: full name or abbreviation of an app.
 	//
-	// 	- **3**: full name or abbreviation of a WeChat official account or applet.
+	// - **3**: full name or abbreviation of an official account or mini program.
 	//
-	// 	- **4**: full name or abbreviation of an e-commerce store.
+	// - **4**: full name or abbreviation of a store on an e-commerce platform.
 	//
-	// 	- **5**: full name or abbreviation of a trademark.
+	// - **5**: full name or abbreviation of a trademark.
 	//
 	// This parameter is required.
 	//
@@ -73,11 +85,11 @@ type ModifySmsSignRequest struct {
 	//
 	// 1
 	SignSource *int32 `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
-	// The type of the signature. Valid values:
+	// The signature type. Valid values:
 	//
-	// 	- **0**: verification-code signature
+	// - **0**: verification code.
 	//
-	// 	- **1**: general-purpose signature
+	// - **1**: general.
 	//
 	// example:
 	//
@@ -179,9 +191,9 @@ func (s *ModifySmsSignRequest) Validate() error {
 }
 
 type ModifySmsSignRequestSignFileList struct {
-	// The base64-encoded string of the signed files. The size of the image cannot exceed 2 MB.
+	// 签名的纸质证明文件经base64编码后的字符串。图片不超过2 MB。
 	//
-	// In some scenarios, documents are required to prove your identity. For more information, see [Signature specifications](https://help.aliyun.com/document_detail/108076.html).
+	// 个别场景下，申请签名需要上传证明文件。详细说明，请参见[短信签名规范](https://help.aliyun.com/document_detail/108076.html)。
 	//
 	// This parameter is required.
 	//
@@ -189,11 +201,11 @@ type ModifySmsSignRequestSignFileList struct {
 	//
 	// R0lGODlhHAAmAKIHAKqqqsvLy0hISObm5vf394uLiwAA
 	FileContents *string `json:"FileContents,omitempty" xml:"FileContents,omitempty"`
-	// The format of the documents. You can upload multiple images. JPG, PNG, GIF, and JPEG are supported.
+	// 签名的证明文件格式，支持上传多张图片。当前支持JPG、PNG、GIF或JPEG格式的图片。
 	//
-	// In some scenarios, documents are required to prove your identity. For more information, see [Signature specifications](https://help.aliyun.com/document_detail/108076.html).
+	// 个别场景下，申请签名需要上传证明文件。详细说明，请参见[短信签名规范](https://help.aliyun.com/document_detail/108076.html)。
 	//
-	// > If the signature is used for other purposes or the signature source is an enterprise or public institution, you must upload some documents and an authorization letter. For more information, see [Documents](https://help.aliyun.com/document_detail/108076.html) and [Letter of authorization](https://help.aliyun.com/document_detail/56741.html).
+	// > 如果签名用途为他用或个人认证用户的自用签名来源为企事业单位名时，还需上传证明文件和委托授权书，详情请参见[证明文件](https://help.aliyun.com/document_detail/108076.html)和[授权委托书](https://help.aliyun.com/document_detail/56741.html)。
 	//
 	// This parameter is required.
 	//

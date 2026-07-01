@@ -20,37 +20,39 @@ type iCreateCardSmsTemplateShrinkRequest interface {
 }
 
 type CreateCardSmsTemplateShrinkRequest struct {
-	// The mobile phone manufacturer. Valid values:
+	// The vendors to which the template will be submitted. Valid values:
 	//
-	// 	- **HuaWei**: HUAWEI
+	// - **HuaWei**: Huawei
 	//
-	// 	- **XiaoMi**: Xiaomi
+	// - **XiaoMi**: Xiaomi
 	//
-	// 	- **OPPO**: OPPO
+	// - **OPPO**: OPPO
 	//
-	// 	- **VIVO**: vivo
+	// - **VIVO**: VIVO
 	//
-	// 	- **MEIZU**: MEIZU
+	// - **MEIZU**: MEIZU
 	//
-	// > If this parameter is not specified, the system automatically specifies a supported mobile phone manufacturer.
+	// - **HONOR**: HONOR
+	//
+	// > If you do not specify this parameter, the system automatically submits the template to all supported mobile phone vendors.
 	//
 	// example:
 	//
-	// XiaoMi
+	// ["HuaWei","XiaoMi"]
 	Factorys *string `json:"Factorys,omitempty" xml:"Factorys,omitempty"`
-	// The description of the message template.
+	// A description of the template.
 	//
 	// example:
 	//
-	// Image and Text Template
+	// 图文类模板
 	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	// The content of the card message template.
+	// The content of the card SMS template.
+	//
+	// > - For more information about the `Template`, `ExtendInfo`, `TemplateContent`, `TmpCard`, and `Action` fields, see [Card SMS template parameters](https://help.aliyun.com/document_detail/434929.html).
 	//
 	// >
 	//
-	// 	- For information about fields such as Template, ExtendInfo, TemplateContent, TmpCard, and Action, see [Parameters of card message templates](https://help.aliyun.com/document_detail/434929.html).
-	//
-	// 	- Message template content varies based on the template type. For more information, see [Sample message templates](https://help.aliyun.com/document_detail/435361.html).
+	// > - The content structure varies based on the type of card SMS template. For more information, see [Card SMS template examples](https://help.aliyun.com/document_detail/435361.html).
 	//
 	// This parameter is required.
 	//
@@ -60,7 +62,7 @@ type CreateCardSmsTemplateShrinkRequest struct {
 	//
 	//        "extendInfo":{
 	//
-	//               "scene":"HMOVM",
+	//               "scene":"HMOVM图文",
 	//
 	//               "purpose":"2",
 	//
@@ -94,7 +96,7 @@ type CreateCardSmsTemplateShrinkRequest struct {
 	//
 	//                                                  "target":"https://s.tb.cn/c.KxzZ",
 	//
-	//                                                  "merchantName":"test-template",
+	//                                                  "merchantName":"测试-图文模板",
 	//
 	//                                                  "packageName":[
 	//
@@ -112,7 +114,7 @@ type CreateCardSmsTemplateShrinkRequest struct {
 	//
 	//                                           "type":"TEXT",
 	//
-	//                                           "content":"this is a test msg.",
+	//                                           "content":"测试- BENZ AMG 2020 试驾邀请",
 	//
 	//                                           "isTextTitle":true,
 	//
@@ -124,7 +126,7 @@ type CreateCardSmsTemplateShrinkRequest struct {
 	//
 	//                                           "type":"TEXT",
 	//
-	//                                           "content":"Promotional information",
+	//                                           "content":"测试-梅赛德斯-奔驰，创新激情永不灭。作为汽车 XXXX",
 	//
 	//                                           "isTextTitle":false,
 	//
@@ -136,15 +138,15 @@ type CreateCardSmsTemplateShrinkRequest struct {
 	//
 	//                                           "type":"BUTTON",
 	//
-	//                                           "content":"Promotional information,",
+	//                                           "content":"预约试驾",
 	//
 	//                                           "actionType":"OPEN_BROWSER",
 	//
 	//                                           "action":{
 	//
-	//                                                  "target":"https://www.aliyun.com",
+	//                                                  "target":"https://www.mercedes-benz.com.cn",
 	//
-	//                                                  "merchantName":"Currently on the Alibaba Cloud official website."
+	//                                                  "merchantName":"测试-正在跳转梅赛德斯-奔驰"
 	//
 	// },
 	//
@@ -156,19 +158,21 @@ type CreateCardSmsTemplateShrinkRequest struct {
 	//
 	//        },
 	//
-	//        "cardSignName":"aliyun",
+	//        "cardSignName":"阿里云",
 	//
-	//        "cardType":5
+	//        "cardType":5,
+	//
+	//        "companyName": "投放企业名称"
 	//
 	// }
 	TemplateShrink *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the card message template.
+	// The name of the card SMS template.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Aliyun Image and Text Template
+	// 阿里云图文类模板
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

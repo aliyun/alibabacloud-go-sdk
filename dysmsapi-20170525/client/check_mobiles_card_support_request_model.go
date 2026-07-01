@@ -16,13 +16,15 @@ type iCheckMobilesCardSupportRequest interface {
 }
 
 type CheckMobilesCardSupportRequest struct {
-	// The list of mobile phone numbers that receive messages.
+	// The list of phone numbers to be queried.
 	//
 	// This parameter is required.
 	Mobiles []map[string]interface{} `json:"Mobiles,omitempty" xml:"Mobiles,omitempty" type:"Repeated"`
-	// The code of the message template. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	// The code of the card SMS template.
 	//
-	// > Make sure that the message template has been approved.
+	// Log on to the SMS Service console and go to the [Domestic Card SMS](https://dysms.console.aliyun.com/domestic/card) page. On the **Template Management*	- tab, you can view the list of card SMS templates.
+	//
+	// >The template must be added and approved.
 	//
 	// This parameter is required.
 	//

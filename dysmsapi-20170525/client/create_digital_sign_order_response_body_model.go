@@ -24,26 +24,54 @@ type iCreateDigitalSignOrderResponseBody interface {
 }
 
 type CreateDigitalSignOrderResponseBody struct {
+	// The details about the access denial. This parameter is returned only if the RAM user is not authorized.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
+	// - If the request is successful, `OK` is returned.
+	//
+	// - For more information about other error codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
+	// - `signName`: The name of the signature.
+	//
+	// - `signOrderId`: The ID of the signature order.
+	//
+	// - `signCode`: The code of the signature.
+	//
+	// - `signId`: The ID of the signature.
+	//
 	// example:
 	//
-	// {\\"signId\\": \\"20067468291\\", \\"signCode\\": \\"SIGN_100000184736042_1744164758835_hpMd1\\", \\"signOrderId\\": 22469795330, \\"signName\\": u\\"\\u8d5b\\u745e\\u5a05\\u808c\\u80a4\\u7ba1\\u7406\\"}
+	// {\\"signId\\": \\"2006746****\\", \\"signCode\\": \\"SIGN_100000184736042_174416475****_hpMd1\\", \\"signOrderId\\": 2246979****, \\"signName\\": u\\"\\u8d5b\\u745e\\u5a05\\u808c\\u80a4\\u7ba1\\u7406\\"}
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// example
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 2D0133B9-6C0D-0BAE-8161-1EEF9E2D4069
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

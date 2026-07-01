@@ -32,40 +32,40 @@ type iGetCardSmsDetailsRequest interface {
 }
 
 type GetCardSmsDetailsRequest struct {
-	// Card SMS sending ID, which is the BizCardId field in the response when calling SendCardSms or SendBatchCardSms.
+	// The card SMS sending ID. When you send a card SMS by calling the [SendCardSms](https://help.aliyun.com/document_detail/434120.html) or [SendBatchCardSms](https://help.aliyun.com/document_detail/434119.html) operation, obtain the BizCardId field from the response.
 	//
 	// example:
 	//
 	// 123456^0
 	BizCardId *string `json:"BizCardId,omitempty" xml:"BizCardId,omitempty"`
-	// Digital SMS sending ID, which is the BizDigitalId field in the response when calling SendCardSms or SendBatchCardSms.
+	// The digital SMS sending ID. When you send a card SMS by calling the [SendCardSms](https://help.aliyun.com/document_detail/434120.html) or [SendBatchCardSms](https://help.aliyun.com/document_detail/434119.html) operation, obtain the BizDigitalId field from the response.
 	//
 	// example:
 	//
 	// 12346^0
 	BizDigitId *string `json:"BizDigitId,omitempty" xml:"BizDigitId,omitempty"`
-	// Text SMS sending ID, which is the BizSmsId field in the response when calling SendCardSms or SendBatchCardSms.
+	// The text SMS sending ID. When you send a card SMS by calling the [SendCardSms](https://help.aliyun.com/document_detail/434120.html) or [SendBatchCardSms](https://help.aliyun.com/document_detail/434119.html) operation, obtain the BizSmsId field from the response.
 	//
 	// example:
 	//
 	// 1234576^0
 	BizSmsId *string `json:"BizSmsId,omitempty" xml:"BizSmsId,omitempty"`
-	// For paginated viewing of sending records, specify the current page number of the sending records.
+	// The current page number when you paginate sending records.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// For paginated viewing of sending records, specify the number of card SMS records to display per page.
+	// The number of card SMS records to display on each page when you paginate sending records.
 	//
-	// The value range is 1~50.
+	// Valid values: 1 to 50.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Domestic phone number that received the SMS. Format: 11-digit phone number, for example, 1390000****.
+	// The domestic mobile phone number that received the SMS. Format: an 11-digit mobile phone number. For example, 1390000****.
 	//
 	// This parameter is required.
 	//
@@ -75,9 +75,9 @@ type GetCardSmsDetailsRequest struct {
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Card SMS sending date, supports querying records from the last 30 days.
+	// The card SMS sending date. Records from the last 30 days can be queried.
 	//
-	// Format: yyyyMMdd, for example, 20240112.
+	// Format: yyyyMMdd. For example, 20240112.
 	//
 	// This parameter is required.
 	//

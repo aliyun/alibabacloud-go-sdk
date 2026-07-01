@@ -22,33 +22,35 @@ type iGetCardSmsDetailsResponseBody interface {
 }
 
 type GetCardSmsDetailsResponseBody struct {
-	// Access denied detail; this field is returned only if the RAM check fails.
+	// The access denied details. This parameter is returned only when the RAM check fails.
 	//
 	// example:
 	//
 	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Card SMS sending result
+	// The card SMS sending result.
 	CardSendDetailDTO *GetCardSmsDetailsResponseBodyCardSendDetailDTO `json:"CardSendDetailDTO,omitempty" xml:"CardSendDetailDTO,omitempty" type:"Struct"`
-	// Request status code.
+	// The request status code.
 	//
-	// 	- OK indicates a successful request.
+	// 	- OK indicates that the request was successful.
 	//
-	// 	- For other error codes, see [API Error Codes](https://help.aliyun.com/document_detail/101346.html).
+	// 	- For other error codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Description of the status code.
+	// The description of the status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the API call was successful. Values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true*	- - **false**
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -119,21 +121,21 @@ func (s *GetCardSmsDetailsResponseBody) Validate() error {
 }
 
 type GetCardSmsDetailsResponseBodyCardSendDetailDTO struct {
-	// Current page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// List of card SMS sending records
+	// The list of card SMS sending records.
 	Records []*GetCardSmsDetailsResponseBodyCardSendDetailDTORecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// Total count
+	// The total count.
 	//
 	// example:
 	//
@@ -199,67 +201,81 @@ func (s *GetCardSmsDetailsResponseBodyCardSendDetailDTO) Validate() error {
 }
 
 type GetCardSmsDetailsResponseBodyCardSendDetailDTORecords struct {
-	// Error code for sending
+	// The sending error code.
 	//
 	// example:
 	//
 	// Success
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// Customer-transmitted outId
+	// The outId passed by the customer.
 	//
 	// example:
 	//
 	// 12345678
 	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	// Phone number that received the SMS
+	// The phone number that received the SMS.
 	//
 	// example:
 	//
 	// 156****9080
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// Receive date
+	// The receive time.
 	//
 	// example:
 	//
 	// 2024-09-27 11:26:35
 	ReceiveDate *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
-	// Receive SMS type
+	// The SMS receive type.
 	//
 	// example:
 	//
 	// CARD_SMS
 	ReceiveType *string `json:"ReceiveType,omitempty" xml:"ReceiveType,omitempty"`
-	// Render date
+	// The render time.
 	//
 	// example:
 	//
 	// 2024-09-27 12:13:39
 	RenderDate *string `json:"RenderDate,omitempty" xml:"RenderDate,omitempty"`
-	// Render status. 0: Not rendered; 1: Rendered successfully; 3: Not rendered
+	// The parsing status. Valid values:
+	//
+	// - 0: not parsed.
+	//
+	// - 1: parsed successfully.
+	//
+	// - 3: not parsed.
 	//
 	// example:
 	//
 	// 1
 	RenderStatus *int64 `json:"RenderStatus,omitempty" xml:"RenderStatus,omitempty"`
-	// Time when the SMS was sent
+	// The SMS sending time.
 	//
 	// example:
 	//
 	// 2024-09-27 11:26:32
 	SendDate *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
-	// Sending status. 1: Sending; 2: Send failed; 3: Sent successfully; 4: Addressing failed
+	// The sending status. Valid values:
+	//
+	// - 1: sending.
+	//
+	// - 2: sending failed.
+	//
+	// - 3: sending succeeded.
+	//
+	// - 4: addressing failed.
 	//
 	// example:
 	//
 	// 3
 	SendStatus *int64 `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
-	// SMS content. Only applicable for text messages.
+	// The SMS content. Only text SMS has a value.
 	//
 	// example:
 	//
 	// 您收到一条短信消息
 	SmsContent *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
-	// Template code
+	// The template code.
 	//
 	// example:
 	//

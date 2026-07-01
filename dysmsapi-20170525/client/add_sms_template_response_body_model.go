@@ -20,17 +20,17 @@ type iAddSmsTemplateResponseBody interface {
 }
 
 type AddSmsTemplateResponseBody struct {
-	// The response code.
+	// The request status code.
 	//
 	// 	- The value OK indicates that the request was successful.
 	//
-	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+	// 	- For other error codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -42,11 +42,13 @@ type AddSmsTemplateResponseBody struct {
 	//
 	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The code of the message template.
+	// The SMS template code.
+	//
+	// After submitting the template application, you can use the SMS template code to query the template review details through the [QuerySmsTemplate](https://help.aliyun.com/document_detail/419289.html) operation. You can also [configure receipt messages](https://help.aliyun.com/document_detail/101508.html) and obtain the template review status messages through [TemplateSmsReport](https://help.aliyun.com/document_detail/120999.html).
 	//
 	// example:
 	//
-	// SMS_15255****
+	// SMS_46817****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 

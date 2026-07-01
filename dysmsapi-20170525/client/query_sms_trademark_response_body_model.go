@@ -24,20 +24,42 @@ type iQuerySmsTrademarkResponseBody interface {
 }
 
 type QuerySmsTrademarkResponseBody struct {
+	// The details of the access denial.
+	//
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code of the request.
+	//
+	// - `OK` indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A list of trademark details.
 	Data []*QuerySmsTrademarkResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 569E9DBD-23FF-1785-99AD-E4B23608C104
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - **true**: The request is successful.
+	//
+	// - **false**: The request fails.
+	//
 	// example:
 	//
 	// true
@@ -120,43 +142,43 @@ func (s *QuerySmsTrademarkResponseBody) Validate() error {
 }
 
 type QuerySmsTrademarkResponseBodyData struct {
-	// 申请人名称
+	// The applicant name.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 阿里云
 	TrademarkApplicantName *string `json:"TrademarkApplicantName,omitempty" xml:"TrademarkApplicantName,omitempty"`
-	// 专用权生失效日期
+	// The validity period of the trademark.
 	//
 	// example:
 	//
 	// 2025-11-01~2025-12-19
 	TrademarkEffExpDate *string `json:"TrademarkEffExpDate,omitempty" xml:"TrademarkEffExpDate,omitempty"`
-	// 商标材料id
+	// The trademark ID.
 	//
 	// example:
 	//
 	// 10000*******
 	TrademarkId *int64 `json:"TrademarkId,omitempty" xml:"TrademarkId,omitempty"`
-	// 商标名称
+	// The name of the trademark.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 示例商标
 	TrademarkName *string `json:"TrademarkName,omitempty" xml:"TrademarkName,omitempty"`
-	// 商标截图Osskey（给签名传工单用）
+	// The Object Storage Service (OSS) file key for the trademark image.
 	//
 	// example:
 	//
 	// 100000*****802/afdebd46-****-46e4-899d-b4375826c898_mhk9oz0p_1762****31542.png
 	TrademarkPic *string `json:"TrademarkPic,omitempty" xml:"TrademarkPic,omitempty"`
-	// 商标截图url地址
+	// The URL of the trademark screenshot.
 	//
 	// example:
 	//
 	// https://alicom-fc-media.oss-cn-zhangjiakou.aliyuncs.com/100000****50802/afde****-496d-46e4-899d-b43758****8_mhk9oz0p_176224****542.png?Expires=1762****6&OSSAccessKeyId=bypFN****73PsLI&Signature=BygI9X****h7%2FXmFIo****FB2c%3D
 	TrademarkPicUrl *string `json:"TrademarkPicUrl,omitempty" xml:"TrademarkPicUrl,omitempty"`
-	// 商标注册号
+	// The trademark registration number.
 	//
 	// example:
 	//

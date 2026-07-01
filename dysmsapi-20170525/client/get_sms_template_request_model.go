@@ -23,11 +23,11 @@ type GetSmsTemplateRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// SMS template code.
+	// The code of the SMS template.
 	//
-	// - Obtain the SMS template code from the return parameters of the [CreateSmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-createsmstemplate?spm) API.
+	// - Obtain the SMS template code from the response parameters of the [CreateSmsTemplate](https://help.aliyun.com/document_detail/2807431.html) operation.
 	//
-	// - View the SMS template code on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
+	// - View the SMS template code on the [Templates](https://dysms.console.aliyun.com/domestic/text/template) page.
 	//
 	// This parameter is required.
 	//

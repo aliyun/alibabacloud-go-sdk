@@ -24,23 +24,46 @@ type iCreateSmsTrademarkResponseBody interface {
 }
 
 type CreateSmsTrademarkResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// 无
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code of the request.
+	//
+	// 	- If OK is returned, the request was successful.
+	//
+	// 	- For other error codes, see the error code list in this topic or [API error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The trademark ID.
+	//
 	// example:
 	//
 	// 10000*******
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the API call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true

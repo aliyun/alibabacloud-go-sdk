@@ -22,14 +22,14 @@ type iQuerySingleSmsQualificationRequest interface {
 }
 
 type QuerySingleSmsQualificationRequest struct {
-	// 工单id
+	// The review ticket ID. You can call the [QuerySmsQualificationRecord](~~QuerySmsQualificationRecord~~) operation to obtain the qualifications and corresponding review ticket IDs under your current account.
 	//
 	// example:
 	//
 	// 2001****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 资质id
+	// The qualification ID, which is the ID returned when you [apply for a qualification](~~SubmitSmsQualification~~). You can call the [QuerySmsQualificationRecord](~~QuerySmsQualificationRecord~~) operation to obtain the qualification IDs under your current account.
 	//
 	// This parameter is required.
 	//

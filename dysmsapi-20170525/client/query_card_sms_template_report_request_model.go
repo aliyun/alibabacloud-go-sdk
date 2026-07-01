@@ -18,19 +18,19 @@ type iQueryCardSmsTemplateReportRequest interface {
 }
 
 type QueryCardSmsTemplateReportRequest struct {
-	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+	// The end time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2020-10-11 00:00:01
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+	// The start time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2020-10-10 00:00:01
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The array of message templates.
+	// The card SMS object.
 	//
 	// This parameter is required.
 	TemplateCodes []*string `json:"TemplateCodes,omitempty" xml:"TemplateCodes,omitempty" type:"Repeated"`

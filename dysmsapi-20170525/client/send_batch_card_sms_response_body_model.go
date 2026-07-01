@@ -20,17 +20,17 @@ type iSendBatchCardSmsResponseBody interface {
 }
 
 type SendBatchCardSmsResponseBody struct {
-	// The HTTP status code.
+	// The request status code.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// 	- If **OK*	- is returned, the request is successful.
 	//
-	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+	// 	- For information about other error codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *SendBatchCardSmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -38,11 +38,11 @@ type SendBatchCardSmsResponseBody struct {
 	//
 	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call is successful.
 	//
-	// 	- **false**
+	// - **false**: The call fails.
 	//
 	// example:
 	//
@@ -104,45 +104,45 @@ func (s *SendBatchCardSmsResponseBody) Validate() error {
 }
 
 type SendBatchCardSmsResponseBodyData struct {
-	// The ID of the card message.
+	// The ID of the card SMS sending task.
 	//
 	// example:
 	//
 	// 123
 	BizCardId *string `json:"BizCardId,omitempty" xml:"BizCardId,omitempty"`
-	// The ID of the digital message.
+	// The ID of the digital SMS sending task.
 	//
 	// example:
 	//
 	// 3214
 	BizDigitalId *string `json:"BizDigitalId,omitempty" xml:"BizDigitalId,omitempty"`
-	// The ID of the text message.
+	// The ID of the text SMS sending task.
 	//
 	// example:
 	//
 	// 3256
 	BizSmsId *string `json:"BizSmsId,omitempty" xml:"BizSmsId,omitempty"`
-	// The review status of the card message template.
+	// The review status of the card SMS template. Valid values:
 	//
-	// 	- **0**: pending approval
+	// - **0**: Under review.
 	//
-	// 	- **1**: approved
+	// - **1**: Approved.
 	//
-	// 	- **2**: rejected
+	// - **2**: Rejected.
 	//
-	// > Unapproved card messages are rolled back.
+	// > For SMS messages that are rejected, you can configure the fallback process by using the **FallbackType*	- parameter.
 	//
 	// example:
 	//
 	// 0
 	CardTmpState *int32 `json:"CardTmpState,omitempty" xml:"CardTmpState,omitempty"`
-	// The mobile phone number from which the card message is sent.
+	// The mobile phone numbers that receive the card SMS messages.
 	//
 	// example:
 	//
 	// 1390000****
 	MediaMobiles *string `json:"MediaMobiles,omitempty" xml:"MediaMobiles,omitempty"`
-	// The mobile phone number whose card message is rolled back.
+	// The fallback phone numbers.
 	//
 	// example:
 	//

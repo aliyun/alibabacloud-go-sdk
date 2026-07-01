@@ -22,15 +22,15 @@ type iGetMediaResourceIdRequest interface {
 }
 
 type GetMediaResourceIdRequest struct {
-	// The extended fields.
+	// The extended field.
 	//
-	// > If you set the ResourceType parameter to **2**, this parameter is required.
+	// > Required when the resource type is **image**.
 	//
 	// example:
 	//
 	// {\\"img_rate\\":\\"oneToOne\\"}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	// The size of the resource. Unit: bytes.
+	// The file size. Unit: bytes.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type GetMediaResourceIdRequest struct {
 	//
 	// 12
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The description of the resource.
+	// The description of the uploaded resource.
 	//
 	// example:
 	//
-	// remark
+	// 图片信息
 	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	// The address of the resource.
+	// The address of the resource to retrieve.
 	//
 	// This parameter is required.
 	//
@@ -52,27 +52,27 @@ type GetMediaResourceIdRequest struct {
 	//
 	// oss://alicom-fc-media/1947741454322274/alicom-fc-media/pic/202205191526575398603697152.png
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
-	// 	- **1**: text.
+	// - **1**: Text
 	//
-	// 	- **2**: image. A small image cannot exceed 100 KB in size, and a large image cannot exceed 2 MB in size. The image must be clear. Supported format: JPG, JPEG, and PNG.
+	// - **2**: Image. Small images must not exceed 100 KB. Large images must not exceed 2 MB. Images must be clear. Supported formats: JPG, JPEG, PNG.
 	//
-	// 	- **3**: audio.
+	// - **3**: Audio
 	//
-	// 	- **4**: video. Supported format: MP4.
+	// - **4**: Video. Supported format: MP4.
 	//
 	// >
 	//
-	// 	- If you set the ResourceType parameter to 2, the **img_rate*	- required is required. Valid values:
+	// > - If the resource type is image, **img_rate*	- is required.
 	//
-	// 	- 1:1
+	// > - 1:1 ratio: oneToOne
 	//
-	// 	- 16:9
+	// > - 16:9 ratio: sixteenToNine
 	//
-	// 	- 3:1
+	// > - 3:1 ratio: threeToOne
 	//
-	// 	- 48:65
+	// > - 48:65 ratio: fortyEightToSixtyFiv.
 	//
 	// This parameter is required.
 	//

@@ -24,9 +24,6 @@ type iGetSmsTemplateListResponseBody interface {
 }
 
 type GetSmsTemplateListResponseBody struct {
-	// example:
-	//
-	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//

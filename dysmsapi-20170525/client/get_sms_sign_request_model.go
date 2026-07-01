@@ -23,17 +23,17 @@ type GetSmsSignRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Signature name. Must be an SMS signature already applied for by this account.
+	// The signature name. The signature must be applied for by your account.
 	//
-	// - Obtain from the return parameters after calling the [CreateSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-createsmssign?spm) API.
+	// - After you call the [CreateSmsSign](https://help.aliyun.com/document_detail/2807427.html) operation, obtain the signature name from the response.
 	//
-	// - View the signature on the [Signature Management](https://dysms.console.aliyun.com/domestic/text/sign) page.
+	// - View the signature on the [Signatures](https://dysms.console.aliyun.com/domestic/text/sign) page.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Aliyun
+	// 阿里云
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 

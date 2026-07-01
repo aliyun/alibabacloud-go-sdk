@@ -20,19 +20,19 @@ type iQueryShortUrlResponseBody interface {
 }
 
 type QueryShortUrlResponseBody struct {
-	// The response code.
+	// The request status code.
 	//
-	// 	- If OK is returned, the request is successful.
+	// - A successful request returns `OK`.
 	//
-	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the short URL.
+	// The details of the short link.
 	Data *QueryShortUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -100,57 +100,57 @@ func (s *QueryShortUrlResponseBody) Validate() error {
 }
 
 type QueryShortUrlResponseBodyData struct {
-	// The time when the short URL was created.
+	// The creation date and time of the short link.
 	//
 	// example:
 	//
 	// 2019-01-08 16:44:13
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The time when the short URL expires.
+	// The expiration date and time of the short link.
 	//
 	// example:
 	//
 	// 2019-01-22 11:21:11
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The PV.
+	// The page view (PV) count for the short link.
 	//
 	// example:
 	//
 	// 300
 	PageViewCount *string `json:"PageViewCount,omitempty" xml:"PageViewCount,omitempty"`
-	// The short URL.
+	// The generated short link.
 	//
 	// example:
 	//
 	// http://****.cn/6y8uy7
 	ShortUrl *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
-	// The service name of the short URL.
+	// The name of the service that generated the short link.
 	//
 	// example:
 	//
-	// The Alibaba Cloud Short Link service.
+	// 阿里短链测试
 	ShortUrlName *string `json:"ShortUrlName,omitempty" xml:"ShortUrlName,omitempty"`
-	// The status of the short URL. Valid values:
+	// The short link status. Valid values:
 	//
-	// 	- **expired**
+	// - **expired**: The short link has expired.
 	//
-	// 	- **effective**
+	// - **effective**: The short link is active.
 	//
-	// 	- **audit**
+	// - **audit**: The short link is under review.
 	//
-	// 	- **reject**
+	// - **reject**: The short link was rejected.
 	//
 	// example:
 	//
 	// expired
 	ShortUrlStatus *string `json:"ShortUrlStatus,omitempty" xml:"ShortUrlStatus,omitempty"`
-	// The source address.
+	// The source URL.
 	//
 	// example:
 	//
 	// https://www.****.com/product/sms
 	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
-	// The UV.
+	// The unique visitor (UV) count for the short link.
 	//
 	// example:
 	//

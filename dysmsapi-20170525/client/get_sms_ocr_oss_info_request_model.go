@@ -23,11 +23,13 @@ type GetSmsOcrOssInfoRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// OCR任务类型
+	// The OCR task type. Valid values:
+	//
+	// - ICP_DOMAIN: ICP filing screenshot for domain-type links.
 	//
 	// example:
 	//
-	// 示例值
+	// ICP_DOMAIN
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 

@@ -20,29 +20,29 @@ type iGetOSSInfoForCardTemplateResponseBody interface {
 }
 
 type GetOSSInfoForCardTemplateResponseBody struct {
-	// The HTTP status code.
+	// 请求状态码。
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - OK：代表请求成功。
 	//
-	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - 其他错误码，请参见[API错误码](https://help.aliyun.com/document_detail/101346.html)。
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// 返回数据。
 	Data *GetOSSInfoForCardTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// 请求ID。
 	//
 	// example:
 	//
 	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// 调用接口是否成功。取值：
 	//
-	// 	- **true**
+	// - **true**：调用成功。
 	//
-	// 	- **false**
+	// - **false**：调用失败。
 	//
 	// example:
 	//
@@ -104,53 +104,53 @@ func (s *GetOSSInfoForCardTemplateResponseBody) Validate() error {
 }
 
 type GetOSSInfoForCardTemplateResponseBodyData struct {
-	// The AccessKey ID.
+	// 签名使用的AccessKey ID。
 	//
 	// example:
 	//
-	// LTAIxetqt1Dg****
+	// LTAI************
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// 阿里云账号ID。
 	//
 	// example:
 	//
-	// 599333677478****
+	// 168**********184
 	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The name of the OSS bucket.
+	// OSS文件保存桶名称。
 	//
 	// example:
 	//
 	// alicom-cardsms-resources
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The timeout period.
+	// 超时时间戳。单位：秒。
 	//
 	// example:
 	//
 	// 1634209418
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The hostname.
+	// 访问地址。
 	//
 	// example:
 	//
-	// https://alicom-cardsms-resources.oss-cn-zhangjiakou.aliyuncs.com
+	// http://***.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The signature policy.
+	// 签名策略。
 	//
 	// example:
 	//
-	// eyJxxx0=
+	// eyJleHBpcmF0aW9uIjoiMjAyNS0wMy0yNlQwMzo0NDoyMy4xNTlaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjAwMF0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCIxNDIwNjM0******************
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The signature.
+	// 短信签名。
 	//
 	// example:
 	//
-	// Aliyun
+	// 阿里云
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// The path of the policy.
+	// 策略路径。
 	//
 	// example:
 	//
-	// 1631792777
+	// 168**********184
 	StartPath *string `json:"StartPath,omitempty" xml:"StartPath,omitempty"`
 }
 

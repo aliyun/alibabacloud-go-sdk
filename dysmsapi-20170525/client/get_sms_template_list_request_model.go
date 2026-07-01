@@ -40,20 +40,20 @@ type GetSmsTemplateListRequest struct {
 	//
 	// example:
 	//
-	// 1
+	// 53
 	AuditStatus *int64 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 页码, 默认1
 	//
 	// example:
 	//
-	// 1
+	// 75
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	// 每页数量，默认10
 	//
 	// example:
 	//
-	// 10
+	// 72
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -67,7 +67,7 @@ type GetSmsTemplateListRequest struct {
 	//
 	// example:
 	//
-	// SMS_1688168
+	// 示例值示例值
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	// 模板名称
 	//
@@ -85,7 +85,7 @@ type GetSmsTemplateListRequest struct {
 	//
 	// example:
 	//
-	// 0
+	// 52
 	TemplateType *int64 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// 模板状态
 	UsableStateList []*string `json:"UsableStateList,omitempty" xml:"UsableStateList,omitempty" type:"Repeated"`

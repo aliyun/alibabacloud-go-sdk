@@ -34,36 +34,36 @@ type QueryPageSmartShortUrlLogRequest struct {
 	//
 	// example:
 	//
-	// 20181225
+	// 14
 	CreateDateEnd *int64 `json:"CreateDateEnd,omitempty" xml:"CreateDateEnd,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 20181225
+	// 31
 	CreateDateStart *int64 `json:"CreateDateStart,omitempty" xml:"CreateDateStart,omitempty"`
 	OwnerId         *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1
+	// 99
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 10
+	// 84
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// example:
 	//
-	// 1390000****
+	// 示例值示例值示例值
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// example:
 	//
-	// http://ays.cn/****
+	// 示例值示例值示例值
 	ShortUrl *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
 }
 

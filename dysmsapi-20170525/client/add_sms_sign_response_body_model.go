@@ -20,17 +20,17 @@ type iAddSmsSignResponseBody interface {
 }
 
 type AddSmsSignResponseBody struct {
-	// The response code.
+	// The HTTP status code.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// 	- OK is returned if the request is successful.
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// 	- For other error codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type AddSmsSignResponseBody struct {
 	//
 	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the signature.
+	// The signature name.
 	//
 	// example:
 	//
-	// Aliyun
+	// 阿里云
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 

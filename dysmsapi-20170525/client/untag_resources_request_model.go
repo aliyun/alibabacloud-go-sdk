@@ -30,24 +30,26 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to delete all tags from the message template. Valid values:
+	// Specifies whether to delete all tags under the template. Valid values:
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
 	//
 	// example:
 	//
 	// false
 	All     *bool  `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the cloud service. Set the value to **dysms**.
+	// The product name. Default value: **dysms**.
 	//
 	// example:
 	//
 	// dysms
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	// The region. Set the value to cn-hangzhou.
+	// The region ID. Set the value to cn-hangzhou by default.
+	//
+	// For more region IDs, see [Service endpoints](https://help.aliyun.com/document_detail/419270.html).
 	//
 	// This parameter is required.
 	//
@@ -55,7 +57,7 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The array of message template codes. You can specify 1 to 20 message templates.
+	// The SMS template code. The number of codes cannot exceed 20.
 	//
 	// example:
 	//
@@ -63,7 +65,7 @@ type UntagResourcesRequest struct {
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Set the value to TEMPLATE.
+	// The resource type. Set the value to TEMPLATE by default.
 	//
 	// This parameter is required.
 	//
@@ -71,7 +73,7 @@ type UntagResourcesRequest struct {
 	//
 	// TEMPLATE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The array of tag keys. You can specify 1 to 20 tag keys.
+	// The tag key. You can add no more than 20 tags at a time.
 	//
 	// example:
 	//

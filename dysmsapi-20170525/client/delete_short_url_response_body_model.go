@@ -18,17 +18,17 @@ type iDeleteShortUrlResponseBody interface {
 }
 
 type DeleteShortUrlResponseBody struct {
-	// The response code.
+	// The status code of the request.
 	//
-	// 	- If OK is returned, the request is successful.
+	// - `OK` indicates the request was successful.
 	//
-	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

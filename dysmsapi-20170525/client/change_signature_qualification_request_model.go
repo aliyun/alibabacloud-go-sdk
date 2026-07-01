@@ -24,14 +24,14 @@ type iChangeSignatureQualificationRequest interface {
 }
 
 type ChangeSignatureQualificationRequest struct {
-	// 授权委托书id
+	// The ID of the authorization letter.
 	//
 	// example:
 	//
 	// 1000********1234
 	AuthorizationLetterId *int64 `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
 	OwnerId               *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 资质id
+	// The ID of the qualification, which is returned when you apply for it. You can also find this ID on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page in the console for messages to the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -41,13 +41,13 @@ type ChangeSignatureQualificationRequest struct {
 	QualificationId      *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 签名
+	// The signature.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 阿里云
 	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
 }
 

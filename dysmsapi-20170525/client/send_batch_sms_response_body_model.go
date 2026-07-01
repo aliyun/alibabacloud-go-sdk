@@ -20,27 +20,27 @@ type iSendBatchSmsResponseBody interface {
 }
 
 type SendBatchSmsResponseBody struct {
-	// The ID of the delivery receipt. You can use one of the following methods to query the delivery status of a message based on the ID.
+	// The delivery receipt ID.
 	//
-	// 	- Call the [QuerySendDetails](https://help.aliyun.com/document_detail/102352.html) operation.
+	// - You can use this ID to query the delivery status by calling the [QuerySendDetails](https://help.aliyun.com/document_detail/102352.html) operation.
 	//
-	// 	- Log on to the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview). In the left-side navigation pane, choose **Analytics*	- > **Delivery Report**.
+	// - Log on to the [Short Message Service console](https://dysms.console.aliyun.com/dysms.htm#/overview) and go to **Statistics*	- > **Delivery Logs*	- to view delivery details.
 	//
 	// example:
 	//
 	// 9006197469364984400
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The response code.
+	// The request status code.
 	//
-	// 	- If OK is returned, the request is successful.
+	// - A value of `OK` indicates a successful request.
 	//
-	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	// - For a list of other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The description of the request status.
 	//
 	// example:
 	//

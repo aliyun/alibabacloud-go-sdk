@@ -18,6 +18,12 @@ type iQueryMobilesCardSupportShrinkRequest interface {
 }
 
 type QueryMobilesCardSupportShrinkRequest struct {
+	// The encryption method for the phone number. Valid values:
+	//
+	// - SHA1: SHA1 encryption.
+	//
+	// - NORMAL: no encryption. The phone number is transmitted in plaintext.
+	//
 	// if can be null:
 	// true
 	//
@@ -25,19 +31,19 @@ type QueryMobilesCardSupportShrinkRequest struct {
 	//
 	// NORMAL
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	// The list of mobile phone numbers.
+	// The list of phone numbers.
 	//
 	// This parameter is required.
 	MobilesShrink *string `json:"Mobiles,omitempty" xml:"Mobiles,omitempty"`
-	// The code of the message template. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	// The code of the card SMS template. To view the code, log on to the console and choose **Domestic Messages*	- > [Template Management](https://dysms.console.aliyun.com/domestic/text/template).
 	//
-	// > Make sure that the message template has been approved.
+	// >The template must be added and approved.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// CARD_SMS_0000
+	// CARD_SMS_2****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 

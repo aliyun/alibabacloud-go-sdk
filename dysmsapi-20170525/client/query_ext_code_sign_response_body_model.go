@@ -27,16 +27,16 @@ type QueryExtCodeSignResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// example:
 	//
-	// OK
+	// 示例值示例值示例值
 	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *QueryExtCodeSignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:
 	//
-	// OK
+	// 示例值示例值示例值
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// 90E63D28-E31D-1EB2-8939-A9486641****
+	// 示例值示例值
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
@@ -119,15 +119,15 @@ type QueryExtCodeSignResponseBodyData struct {
 	List []*QueryExtCodeSignResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// example:
 	//
-	// 1
+	// 33
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// example:
 	//
-	// 20
+	// 41
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// example:
 	//
-	// 5
+	// 90
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -193,13 +193,13 @@ type QueryExtCodeSignResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// 1
+	// 9
 	Active *int64 `json:"Active,omitempty" xml:"Active,omitempty"`
 	// 扩展码A3
 	//
 	// example:
 	//
-	// 01
+	// 示例值示例值示例值
 	ExtCode *string `json:"ExtCode,omitempty" xml:"ExtCode,omitempty"`
 	// 近1个月发送成功条数（只读）
 	//

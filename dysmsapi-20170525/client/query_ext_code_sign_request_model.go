@@ -30,16 +30,16 @@ type QueryExtCodeSignRequest struct {
 	//
 	// example:
 	//
-	// 01
+	// 示例值
 	ExtCode *string `json:"ExtCode,omitempty" xml:"ExtCode,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
 	//
-	// 1
+	// 29
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// example:
 	//
-	// 20
+	// 11
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

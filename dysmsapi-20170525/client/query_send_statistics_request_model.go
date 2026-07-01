@@ -32,7 +32,7 @@ type iQuerySendStatisticsRequest interface {
 }
 
 type QuerySendStatisticsRequest struct {
-	// The end of the time range to query. Format: yyyyMMdd. Example: 20181225.
+	// The end date. The format is yyyyMMdd.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +40,11 @@ type QuerySendStatisticsRequest struct {
 	//
 	// 20201003
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The site from where the message is sent. Valid values:
+	// The destination scope of the messages. Valid values:
 	//
-	// 	- **1**: China site
+	// - **1**: domestic messages.
 	//
-	// 	- **2**: international site
+	// - **2**: international messages.
 	//
 	// This parameter is required.
 	//
@@ -53,7 +53,7 @@ type QuerySendStatisticsRequest struct {
 	// 1
 	IsGlobe *int32 `json:"IsGlobe,omitempty" xml:"IsGlobe,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The current page number.
 	//
 	// This parameter is required.
 	//
@@ -61,7 +61,7 @@ type QuerySendStatisticsRequest struct {
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of entries to return on each page. Valid values: **1 to 50**.
+	// The page size. Valid values: **1 to 50**.
 	//
 	// This parameter is required.
 	//
@@ -75,9 +75,9 @@ type QuerySendStatisticsRequest struct {
 	//
 	// example:
 	//
-	// Aliyun
+	// 阿里云平台
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	// The beginning of the time range to query. Format: yyyyMMdd. Example: 20181225.
+	// The start date. The format is yyyyMMdd.
 	//
 	// This parameter is required.
 	//
@@ -85,17 +85,17 @@ type QuerySendStatisticsRequest struct {
 	//
 	// 20201002
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The type of the message template. Valid values: Valid values:
+	// The template type. Valid values:
 	//
-	// 	- **0**: verification code
+	// - **0**: verification code.
 	//
-	// 	- **1**: notification
+	// - **1**: notification message.
 	//
-	// 	- **2**: promotional message (Enterprise users only)
+	// - **2**: promotional message. (Enterprise customers only)
 	//
-	// 	- **3**: international purpose (Enterprise users only)
+	// - **3**: international message. (Enterprise customers only)
 	//
-	// 	- **7**: digital message
+	// - **7**: digital message.
 	//
 	// example:
 	//

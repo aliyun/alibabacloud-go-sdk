@@ -30,7 +30,7 @@ type UpdateExtCodeSignRequest struct {
 	//
 	// example:
 	//
-	// 01
+	// 示例值
 	ExistExtCode *string `json:"ExistExtCode,omitempty" xml:"ExistExtCode,omitempty"`
 	// 修改后的扩展码A3
 	//
@@ -38,7 +38,7 @@ type UpdateExtCodeSignRequest struct {
 	//
 	// example:
 	//
-	// 02
+	// 示例值示例值
 	NewExtCode           *string `json:"NewExtCode,omitempty" xml:"NewExtCode,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
