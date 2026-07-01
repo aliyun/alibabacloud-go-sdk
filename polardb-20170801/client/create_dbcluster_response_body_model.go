@@ -9,6 +9,10 @@ type iCreateDBClusterResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgenticDbClusterDescription(v string) *CreateDBClusterResponseBody
+	GetAgenticDbClusterDescription() *string
+	SetAgenticDbClusterId(v string) *CreateDBClusterResponseBody
+	GetAgenticDbClusterId() *string
 	SetDBClusterId(v string) *CreateDBClusterResponseBody
 	GetDBClusterId() *string
 	SetOrderId(v string) *CreateDBClusterResponseBody
@@ -20,6 +24,8 @@ type iCreateDBClusterResponseBody interface {
 }
 
 type CreateDBClusterResponseBody struct {
+	AgenticDbClusterDescription *string `json:"AgenticDbClusterDescription,omitempty" xml:"AgenticDbClusterDescription,omitempty"`
+	AgenticDbClusterId          *string `json:"AgenticDbClusterId,omitempty" xml:"AgenticDbClusterId,omitempty"`
 	// The cluster ID.
 	//
 	// example:
@@ -54,6 +60,14 @@ func (s CreateDBClusterResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDBClusterResponseBody) GetAgenticDbClusterDescription() *string {
+	return s.AgenticDbClusterDescription
+}
+
+func (s *CreateDBClusterResponseBody) GetAgenticDbClusterId() *string {
+	return s.AgenticDbClusterId
+}
+
 func (s *CreateDBClusterResponseBody) GetDBClusterId() *string {
 	return s.DBClusterId
 }
@@ -68,6 +82,16 @@ func (s *CreateDBClusterResponseBody) GetRequestId() *string {
 
 func (s *CreateDBClusterResponseBody) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *CreateDBClusterResponseBody) SetAgenticDbClusterDescription(v string) *CreateDBClusterResponseBody {
+	s.AgenticDbClusterDescription = &v
+	return s
+}
+
+func (s *CreateDBClusterResponseBody) SetAgenticDbClusterId(v string) *CreateDBClusterResponseBody {
+	s.AgenticDbClusterId = &v
+	return s
 }
 
 func (s *CreateDBClusterResponseBody) SetDBClusterId(v string) *CreateDBClusterResponseBody {

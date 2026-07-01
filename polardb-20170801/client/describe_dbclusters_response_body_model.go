@@ -22,7 +22,6 @@ type iDescribeDBClustersResponseBody interface {
 }
 
 type DescribeDBClustersResponseBody struct {
-	// The details of the clusters.
 	Items *DescribeDBClustersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -30,7 +29,7 @@ type DescribeDBClustersResponseBody struct {
 	//
 	// 12
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of clusters returned on the current page.
+	// The number of clusters on the current page.
 	//
 	// example:
 	//
@@ -147,42 +146,44 @@ func (s *DescribeDBClustersResponseBodyItems) Validate() error {
 }
 
 type DescribeDBClustersResponseBodyItemsDBCluster struct {
-	AiType               *string                                              `json:"AiType,omitempty" xml:"AiType,omitempty"`
-	Category             *string                                              `json:"Category,omitempty" xml:"Category,omitempty"`
-	CpuCores             *string                                              `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	CreateTime           *string                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DBClusterDescription *string                                              `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	DBClusterId          *string                                              `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DBClusterNetworkType *string                                              `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	DBClusterStatus      *string                                              `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	DBNodeClass          *string                                              `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	DBNodeNumber         *int32                                               `json:"DBNodeNumber,omitempty" xml:"DBNodeNumber,omitempty"`
-	DBNodes              *DescribeDBClustersResponseBodyItemsDBClusterDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Struct"`
-	DBType               *string                                              `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	DBVersion            *string                                              `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	DeletionLock         *int32                                               `json:"DeletionLock,omitempty" xml:"DeletionLock,omitempty"`
-	Engine               *string                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	ExpireTime           *string                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Expired              *string                                              `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	HotStandbyCluster    *string                                              `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
-	LockMode             *string                                              `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	MemorySize           *string                                              `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	PayType              *string                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId             *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RemoteMemorySize     *string                                              `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
-	ResourceGroupId      *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SearchStorageUsed    *int64                                               `json:"SearchStorageUsed,omitempty" xml:"SearchStorageUsed,omitempty"`
-	ServerlessType       *string                                              `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	StoragePayType       *string                                              `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
-	StorageSpace         *int64                                               `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	StorageType          *string                                              `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	StorageUsed          *int64                                               `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	StrictConsistency    *string                                              `json:"StrictConsistency,omitempty" xml:"StrictConsistency,omitempty"`
-	SubCategory          *string                                              `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
-	Tags                 *DescribeDBClustersResponseBodyItemsDBClusterTags    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VpcId                *string                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId            *string                                              `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId               *string                                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AiType                  *string                                              `json:"AiType,omitempty" xml:"AiType,omitempty"`
+	Category                *string                                              `json:"Category,omitempty" xml:"Category,omitempty"`
+	ConnectionResourceQuota *int64                                               `json:"ConnectionResourceQuota,omitempty" xml:"ConnectionResourceQuota,omitempty"`
+	ConnectionResourceUsed  *int64                                               `json:"ConnectionResourceUsed,omitempty" xml:"ConnectionResourceUsed,omitempty"`
+	CpuCores                *string                                              `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
+	CreateTime              *string                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBClusterDescription    *string                                              `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	DBClusterId             *string                                              `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterNetworkType    *string                                              `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
+	DBClusterStatus         *string                                              `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	DBNodeClass             *string                                              `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	DBNodeNumber            *int32                                               `json:"DBNodeNumber,omitempty" xml:"DBNodeNumber,omitempty"`
+	DBNodes                 *DescribeDBClustersResponseBodyItemsDBClusterDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Struct"`
+	DBType                  *string                                              `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion               *string                                              `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	DeletionLock            *int32                                               `json:"DeletionLock,omitempty" xml:"DeletionLock,omitempty"`
+	Engine                  *string                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ExpireTime              *string                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Expired                 *string                                              `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	HotStandbyCluster       *string                                              `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
+	LockMode                *string                                              `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	MemorySize              *string                                              `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	PayType                 *string                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RegionId                *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemoteMemorySize        *string                                              `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
+	ResourceGroupId         *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SearchStorageUsed       *int64                                               `json:"SearchStorageUsed,omitempty" xml:"SearchStorageUsed,omitempty"`
+	ServerlessType          *string                                              `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
+	StoragePayType          *string                                              `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
+	StorageSpace            *int64                                               `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
+	StorageType             *string                                              `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageUsed             *int64                                               `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	StrictConsistency       *string                                              `json:"StrictConsistency,omitempty" xml:"StrictConsistency,omitempty"`
+	SubCategory             *string                                              `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
+	Tags                    *DescribeDBClustersResponseBodyItemsDBClusterTags    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcId                   *string                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId               *string                                              `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId                  *string                                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBClustersResponseBodyItemsDBCluster) String() string {
@@ -199,6 +200,14 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) GetAiType() *string {
 
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) GetCategory() *string {
 	return s.Category
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) GetConnectionResourceQuota() *int64 {
+	return s.ConnectionResourceQuota
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) GetConnectionResourceUsed() *int64 {
+	return s.ConnectionResourceUsed
 }
 
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) GetCpuCores() *string {
@@ -344,6 +353,16 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetAiType(v string) *Desc
 
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetCategory(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
 	s.Category = &v
+	return s
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetConnectionResourceQuota(v int64) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.ConnectionResourceQuota = &v
+	return s
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetConnectionResourceUsed(v int64) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.ConnectionResourceUsed = &v
 	return s
 }
 

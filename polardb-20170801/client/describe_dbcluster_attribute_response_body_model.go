@@ -33,6 +33,10 @@ type iDescribeDBClusterAttributeResponseBody interface {
 	GetCompressStorageMode() *string
 	SetCompressStorageUsed(v int64) *DescribeDBClusterAttributeResponseBody
 	GetCompressStorageUsed() *int64
+	SetConnectionResourceQuota(v int64) *DescribeDBClusterAttributeResponseBody
+	GetConnectionResourceQuota() *int64
+	SetConnectionResourceUsed(v int64) *DescribeDBClusterAttributeResponseBody
+	GetConnectionResourceUsed() *int64
 	SetCreationTime(v string) *DescribeDBClusterAttributeResponseBody
 	GetCreationTime() *string
 	SetDBClusterDescription(v string) *DescribeDBClusterAttributeResponseBody
@@ -154,7 +158,7 @@ type iDescribeDBClusterAttributeResponseBody interface {
 }
 
 type DescribeDBClusterAttributeResponseBody struct {
-	// The start time of the free trial for the AI feature.
+	// The start time of the free AI trial.
 	//
 	// example:
 	//
@@ -162,9 +166,11 @@ type DescribeDBClusterAttributeResponseBody struct {
 	AiCreatingTime *string `json:"AiCreatingTime,omitempty" xml:"AiCreatingTime,omitempty"`
 	// The AI node type. Valid values:
 	//
-	// - **SearchNode**: a search node.
 	//
-	// - **DLNode**: an AI node.
+	//
+	// - **SearchNode**: search node.
+	//
+	// - **DLNode**: AI node.
 	//
 	// example:
 	//
@@ -180,66 +186,62 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// X86
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// The method for minor version upgrades.
+	// The minor version update method. Valid values:
 	//
-	// - Auto: automatic upgrade
+	// - Auto: automatic update.
 	//
-	// - Manual: manual upgrade
+	// - Manual: manual update.
 	//
 	// example:
 	//
 	// Manual
 	AutoUpgradeMinorVersion *string `json:"AutoUpgradeMinorVersion,omitempty" xml:"AutoUpgradeMinorVersion,omitempty"`
-	// The maximum number of blktags for the file system.
+	// The maximum number of blktags in the file system.
 	//
 	// example:
 	//
 	// 7,864,320
 	BlktagTotal *int64 `json:"BlktagTotal,omitempty" xml:"BlktagTotal,omitempty"`
-	// The number of used blktags.
+	// The current blktag usage.
 	//
 	// example:
 	//
 	// 5,242,880
 	BlktagUsed *int64                                        `json:"BlktagUsed,omitempty" xml:"BlktagUsed,omitempty"`
 	Branch     *DescribeDBClusterAttributeResponseBodyBranch `json:"Branch,omitempty" xml:"Branch,omitempty" type:"Struct"`
-	// Indicates whether the performance burst feature is enabled for the ESSD AutoPL disk. Valid values:
+	// Indicates whether I/O performance burst is enabled for the ESSD AutoPL cloud disk. Valid values:
 	//
-	// - **true**: enabled
+	// - **true**: enabled.
 	//
-	// - **false**: disabled
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// false
 	BurstingEnabled *string `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The [product edition](https://help.aliyun.com/document_detail/183258.html). Valid values:
+	// The [edition](https://help.aliyun.com/document_detail/183258.html) of the cluster. Valid values:
 	//
-	// - **Normal**: Cluster Edition
+	// 	- **Normal**: Cluster Edition
 	//
-	// - **Basic**: Single Node Edition
+	// 	- **Basic**: Single Node Edition
 	//
-	// - **Archive**: X-Engine
+	// 	- **Archive**: PolarDB X-Engine Edition
 	//
-	// - **NormalMultimaster**: Multi-master Cluster Edition
+	// 	- **NormalMultimaster**: Multi-master Cluster Edition
 	//
-	// - **SENormal**: Standard Edition
+	// 	- **SENormal**: PolarDB for MySQL Standard Edition
 	//
-	// > 	- The single node edition is not supported for PolarDB for PostgreSQL that runs PostgreSQL 11.
+	// > 	- PolarDB for PostgreSQL (PostgreSQL 11) does not support Single Node Edition.
 	//
-	// >
+	// >	- PolarDB for MySQL 8.0, PolarDB for MySQL 5.7, and PolarDB for PostgreSQL (PostgreSQL 14) support PolarDB for MySQL Standard Edition.
 	//
-	// > 	- The Standard Edition is supported on PolarDB for MySQL that runs MySQL 8.0 or 5.7 and on PolarDB for PostgreSQL that runs PostgreSQL 14.
-	//
-	// >
-	//
-	// > 	- PolarDB for MySQL that runs MySQL 8.0 supports X-Engine and the Multi-master Cluster Edition.
+	// >	- PolarDB for MySQL 8.0 supports PolarDB X-Engine Edition and Multi-master Cluster Edition.
 	//
 	// example:
 	//
 	// Normal
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Indicates whether column-oriented tables are enabled.
+	// Indicates whether column store tables are enabled.
 	//
 	// example:
 	//
@@ -255,14 +257,16 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// ON
 	CompressStorageMode *string `json:"CompressStorageMode,omitempty" xml:"CompressStorageMode,omitempty"`
-	// The size of the compressed storage data.
+	// The compressed storage data size.
 	//
-	// > This parameter is returned only when the storage compression feature is enabled for the cluster.
+	// >This parameter is returned only when the storage compression feature is enabled for the cluster.
 	//
 	// example:
 	//
 	// 15529410560
-	CompressStorageUsed *int64 `json:"CompressStorageUsed,omitempty" xml:"CompressStorageUsed,omitempty"`
+	CompressStorageUsed     *int64 `json:"CompressStorageUsed,omitempty" xml:"CompressStorageUsed,omitempty"`
+	ConnectionResourceQuota *int64 `json:"ConnectionResourceQuota,omitempty" xml:"ConnectionResourceQuota,omitempty"`
+	ConnectionResourceUsed  *int64 `json:"ConnectionResourceUsed,omitempty" xml:"ConnectionResourceUsed,omitempty"`
 	// The time when the cluster was created.
 	//
 	// example:
@@ -287,13 +291,13 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// VPC
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The cluster status. For more information about the valid values, see [Cluster states](https://help.aliyun.com/document_detail/99286.html).
+	// The cluster status. For more information, see [Cluster status table](https://help.aliyun.com/document_detail/99286.html).
 	//
 	// example:
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The details of the nodes.
+	// The details of nodes.
 	DBNodes []*DescribeDBClusterAttributeResponseBodyDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
 	// The database engine type.
 	//
@@ -307,33 +311,31 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The status of the minor engine version. Valid values:
+	// The status of the current minor engine version. Valid values:
 	//
-	// - **Stable**: The current version is stable.
+	// 	- **Stable**: The current version is stable.
 	//
-	// - **Old**: The current version is old. Upgrade the cluster to the latest version.
+	// 	- **Old**: The current version is outdated. Upgrade to the latest version.
 	//
-	// - **HighRisk**: The current version has critical defects. Immediately upgrade the cluster to the latest version.
+	// 	- **HighRisk**: The current version has critical defects. Upgrade to the latest version immediately.
 	//
-	// - **Beta**: The current version is a beta version.
+	// 	- **Beta**: The current version is a beta version.
 	//
-	// > 	- For more information about how to upgrade the minor engine version, see [Upgrade versions](https://help.aliyun.com/document_detail/158572.html).
+	// > 	- For information about how to upgrade the minor engine version, see [Version upgrade](https://help.aliyun.com/document_detail/158572.html).
 	//
-	// >
-	//
-	// > 	- This parameter is returned only when the **DBType*	- parameter is set to **MySQL**.
+	// > 	- This parameter is returned only when the database engine type (**DBType**) is **MySQL**.
 	//
 	// example:
 	//
 	// Stable
 	DBVersionStatus *string `json:"DBVersionStatus,omitempty" xml:"DBVersionStatus,omitempty"`
-	// The total size of level-1 backups (snapshots). Unit: bytes.
+	// The total size of level-1 backups (snapshots), in bytes.
 	//
 	// example:
 	//
 	// 74448896
 	DataLevel1BackupChainSize *int64 `json:"DataLevel1BackupChainSize,omitempty" xml:"DataLevel1BackupChainSize,omitempty"`
-	// The data replication mode. Valid values:
+	// The data replication relationship mode. Valid values:
 	//
 	// - **AsyncSync**: asynchronous
 	//
@@ -343,11 +345,11 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// AsyncSync
 	DataSyncMode *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
-	// The lock state of the cluster for deletion. Valid values:
+	// The lock status for cluster deletion. Valid values:
 	//
-	// - **0**: The cluster is not locked and can be deleted.
+	// 	- **0**: Unlocked. The cluster can be deleted.
 	//
-	// - **1**: The cluster is locked and cannot be deleted.
+	// 	- **1**: Locked. The cluster cannot be deleted.
 	//
 	// example:
 	//
@@ -361,7 +363,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The expiration time of the cluster.
 	//
-	// > This parameter is returned only for subscription clusters. An empty value is returned for pay-as-you-go clusters.
+	// > A specific value is returned only for clusters whose billing method is **Prepaid*	- (subscription). An empty value is returned for **Postpaid*	- (pay-as-you-go) clusters.
 	//
 	// example:
 	//
@@ -369,27 +371,27 @@ type DescribeDBClusterAttributeResponseBody struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the cluster has expired.
 	//
-	// > This parameter is returned only for subscription clusters.
+	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription).
 	//
 	// example:
 	//
 	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Indicates whether resources for the new primary database are provisioned after a cross-zone failover. Valid values:
+	// Indicates whether resources are replenished for the new primary database after a cross-zone failover. Valid values:
 	//
-	// - **true**
+	// - **true**: Resources are replenished.
 	//
-	// - **false**
+	// - **false**: Resources are not replenished.
 	//
 	// example:
 	//
 	// false
 	HasCompleteStandbyRes *bool `json:"HasCompleteStandbyRes,omitempty" xml:"HasCompleteStandbyRes,omitempty"`
-	// Indicates whether the hot standby storage cluster (and standby compute nodes) is enabled. Valid values:
+	// Indicates whether the Hot Standby Cluster (and standby compute nodes) is enabled. Valid values:
 	//
-	// - **StandbyClusterON**: The hot standby storage cluster or both the hot standby storage cluster and standby compute nodes are enabled.
+	// - **StandbyClusterON**: The Hot Standby Cluster and standby compute nodes are enabled.
 	//
-	// - **StandbyClusterOFF**: The hot standby storage cluster or both the hot standby storage cluster and standby compute nodes are disabled.
+	// - **StandbyClusterOFF**: The Hot Standby Cluster and standby compute nodes are disabled.
 	//
 	// example:
 	//
@@ -405,7 +407,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// OFF
 	ImciAutoIndex *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
-	// The imperceptible switchover feature. Valid values:
+	// The failover with hot replica feature. Valid values:
 	//
 	// - `true`: enabled.
 	//
@@ -415,23 +417,23 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// true
 	ImperceptibleSwitch *string `json:"ImperceptibleSwitch,omitempty" xml:"ImperceptibleSwitch,omitempty"`
-	// The maximum number of inodes for the file system.
+	// The maximum number of inodes in the file system.
 	//
 	// example:
 	//
 	// 6,291,456
 	InodeTotal *int64 `json:"InodeTotal,omitempty" xml:"InodeTotal,omitempty"`
-	// The number of used inodes.
+	// The current inode usage.
 	//
 	// example:
 	//
 	// 4,194,304
 	InodeUsed *int64 `json:"InodeUsed,omitempty" xml:"InodeUsed,omitempty"`
-	// Indicates whether the kernel is the latest version. Valid values:
+	// Indicates whether the cluster runs the latest Milvus version. Valid values:
 	//
-	// - **true**
+	// - **true**: The cluster runs the latest Milvus version.
 	//
-	// - **false**
+	// - **false**: The cluster does not run the latest Milvus version.
 	//
 	// example:
 	//
@@ -439,9 +441,9 @@ type DescribeDBClusterAttributeResponseBody struct {
 	IsLatestVersion *bool `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
 	// Indicates whether the database proxy is the latest version. Valid values:
 	//
-	// - **true**
+	// - **true**: The database proxy is the latest version.
 	//
-	// - **false**
+	// - **false**: The database proxy is not the latest version.
 	//
 	// example:
 	//
@@ -449,17 +451,17 @@ type DescribeDBClusterAttributeResponseBody struct {
 	IsProxyLatestVersion *bool `json:"IsProxyLatestVersion,omitempty" xml:"IsProxyLatestVersion,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - **Unlock**: The cluster is not locked.
+	// - **Unlock**: not locked.
 	//
-	// - **ManualLock**: The cluster is manually locked.
+	// - **ManualLock**: manually locked.
 	//
-	// - **LockByExpiration**: The cluster is automatically locked after it expires.
+	// - **LockByExpiration**: automatically locked due to cluster expiration.
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The maintenance window of the cluster. The time is in the `HH:mmZ-HH:mmZ` format and is in UTC. For example, `16:00Z-17:00Z` indicates that routine maintenance can be performed from 00:00 to 01:00 (UTC+8).
+	// The maintenance window of the cluster, in the `HH:mmZ-HH:mmZ` format (UTC). For example, `16:00Z-17:00Z` indicates that routine maintenance can be performed from 00:00 to 01:00 (UTC+08:00).
 	//
 	// example:
 	//
@@ -467,9 +469,9 @@ type DescribeDBClusterAttributeResponseBody struct {
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
 	// The Orca feature. Valid values:
 	//
-	// - on: enabled
+	// - on: enabled.
 	//
-	// - off: disabled
+	// - off: disabled.
 	//
 	// example:
 	//
@@ -485,21 +487,11 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// <props="china">
+	// <p id="p_wyg_t4a_glm" props="china" icmsditafragmentmagic=1>The provisioned read/write IOPS of the ESSD AutoPL cloud disk. Valid values: 0 to min{50,000, 1000 × capacity - baseline performance}.</p>
 	//
-	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}.
+	// <p id="p_6de_jxy_k2g" props="china" icmsditafragmentmagic=1>Baseline performance = min{1,800 + 50 × capacity, 50,000}.</p>
 	//
-	//
-	//
-	// <props="china">
-	//
-	// Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
-	//
-	//
-	//
-	// <props="china">
-	//
-	// > This parameter is supported only when StorageType is set to ESSDAUTOPL.
+	// <note id="note_7kj_j0o_rgs" props="china" icmsditafragmentmagic=1>This parameter is supported only when StorageType is set to ESSDAUTOPL.</note>
 	//
 	// example:
 	//
@@ -511,17 +503,17 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// 4
 	ProxyCpuCores *string `json:"ProxyCpuCores,omitempty" xml:"ProxyCpuCores,omitempty"`
-	// The Serverless type of the database proxy. Valid values:
+	// The serverless type of the database proxy. Valid values:
 	//
-	// - AgileServerless: agile, which indicates a Serverless cluster.
+	// - AgileServerless: agile serverless cluster.
 	//
-	// - SteadyServerless: steady, which indicates a cluster with defined specifications (a subscription or pay-as-you-go cluster).
+	// - SteadyServerless: steady serverless, which is a cluster with defined specifications (subscription or pay-as-you-go billing).
 	//
 	// example:
 	//
 	// SteadyServerless
 	ProxyServerlessType *string `json:"ProxyServerlessType,omitempty" xml:"ProxyServerlessType,omitempty"`
-	// The number of CPU cores of the database proxy with standard specifications.
+	// The number of CPU cores in the standard configuration of the database proxy.
 	//
 	// example:
 	//
@@ -529,27 +521,27 @@ type DescribeDBClusterAttributeResponseBody struct {
 	ProxyStandardCpuCores *string `json:"ProxyStandardCpuCores,omitempty" xml:"ProxyStandardCpuCores,omitempty"`
 	// The status of the database proxy. Valid values:
 	//
-	// - **Creating**
+	// - **Creating**: being created.
 	//
-	// - **Running**
+	// - **Running**: running.
 	//
-	// - **Deleting**: The proxy is being released.
+	// - **Deleting**: being released.
 	//
-	// - **Rebooting**
+	// - **Rebooting**: being restarted.
 	//
-	// - **DBNodeCreating**: A node is being added.
+	// - **DBNodeCreating**: adding a node.
 	//
-	// - **DBNodeDeleting**: A node is being deleted.
+	// - **DBNodeDeleting**: deleting a node.
 	//
-	// - **ClassChanging**: The node specifications are being changed.
+	// - **ClassChanging**: changing node specifications.
 	//
-	// - **NetAddressCreating**: A network connection is being created.
+	// - **NetAddressCreating**: creating network connectivity.
 	//
-	// - **NetAddressDeleting**: A network connection is being deleted.
+	// - **NetAddressDeleting**: deleting network connectivity.
 	//
-	// - **NetAddressModifying**: A network connection is being modified.
+	// - **NetAddressModifying**: modifying network connectivity.
 	//
-	// - **Deleted**: The proxy is released.
+	// - **Deleted**: released.
 	//
 	// example:
 	//
@@ -559,7 +551,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// - **Exclusive**: Dedicated Enterprise Edition
 	//
-	// - **General*	- : Standard Enterprise Edition
+	// - **General**: Standard Enterprise Edition
 	//
 	// example:
 	//
@@ -583,55 +575,55 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// rg-***************
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// - If RestoreType is set to **RestoreByTime*	- or **RestoreByTimeOss**, this parameter indicates the point in time for the restoration.
+	// 	- If RestoreType is **RestoreByTime*	- or **RestoreByTimeOss**, this value indicates the point in time to which the cluster is restored.
 	//
-	// - If RestoreType is set to **RestoreByBackupSet*	- or **RestoreByBackupSetOss**, this parameter indicates the ID of the backup set that is used for the restoration.
+	// 	- If RestoreType is **RestoreByBackupSet*	- or **RestoreByBackupSetOss**, this value indicates the backup set ID used for the restoration.
 	//
-	// > This parameter is supported only for clusters that are restored from a backup set or a point in time after June 1, 2024.
+	// <note>This parameter is supported only for clusters restored from a backup set or point in time after June 1, 2024.</note>
 	//
 	// example:
 	//
 	// 2179639137
 	RestoreDataPoint *string `json:"RestoreDataPoint,omitempty" xml:"RestoreDataPoint,omitempty"`
-	// The method that is used to restore the cluster. Valid values:
+	// The restoration method of the cluster. Valid values:
 	//
-	// - **RestoreByTime**: The cluster is restored to a point in time from a level-1 backup.
+	// 	- **RestoreByTime**: point-in-time restore based on a level-1 backup.
 	//
-	// - **RestoreByBackupSet**: The cluster is restored from a level-1 backup set.
+	// 	- **RestoreByBackupSet**: restore from a level-1 backup set.
 	//
-	// - **RestoreByTimeOss**: The cluster is restored to a point in time from a level-2 backup.
+	// 	- **RestoreByTimeOss**: point-in-time restore based on a level-2 backup.
 	//
-	// - **RestoreByBackupSetOss**: The cluster is restored from a level-2 backup set.
+	// 	- **RestoreByBackupSetOss**: restore from a level-2 backup set.
 	//
-	// - **CloneFromSourceCluster**: The cluster is cloned from a source cluster.
+	// 	- **CloneFromSourceCluster**: clone from the source cluster.
 	//
-	// > This parameter is supported only for clusters that are restored from a backup set or a point in time after June 1, 2024.
+	// <note>This parameter is supported only for clusters restored from a backup set or point in time after June 1, 2024.</note>
 	//
 	// example:
 	//
 	// RestoreByTime
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// The row compression settings.
+	// The row compression setting.
 	//
 	// example:
 	//
 	// OFF
 	RowCompression *string `json:"RowCompression,omitempty" xml:"RowCompression,omitempty"`
-	// The storage usage for SQL statements. Unit: bytes. A value of -1 indicates that no data is available.
+	// The storage size of SQL statements, in bytes. A value of -1 indicates that no data is available.
 	//
 	// example:
 	//
 	// 0
 	SQLSize *int64 `json:"SQLSize,omitempty" xml:"SQLSize,omitempty"`
-	// The running state of the search node.
+	// The running status of the search node.
 	//
 	// example:
 	//
 	// Running
 	SearchClusterStatus *string `json:"SearchClusterStatus,omitempty" xml:"SearchClusterStatus,omitempty"`
-	// The size of the compressed storage data of the search node.
+	// The compressed storage data size of the search node.
 	//
-	// > This parameter is returned only when the storage compression feature is enabled for the cluster.
+	// >This parameter is returned only when the storage compression feature is enabled for the cluster.
 	//
 	// example:
 	//
@@ -643,13 +635,13 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// 3012558848
 	SearchStorageUsed *int64 `json:"SearchStorageUsed,omitempty" xml:"SearchStorageUsed,omitempty"`
-	// The Serverless type of the cluster. Valid values:
+	// The serverless type of the cluster. Valid values:
 	//
-	// - AgileServerless: agile, which indicates a Serverless cluster.
+	// - AgileServerless: agile serverless cluster.
 	//
-	// - SteadyServerless: steady, which indicates a cluster with defined specifications for which the Serverless feature is enabled.
+	// - SteadyServerless: steady serverless, which is a cluster with defined specifications that has the serverless feature enabled.
 	//
-	// > This parameter is supported only for Serverless clusters or clusters with defined specifications for which the Serverless feature is enabled.
+	// > This parameter is supported only for serverless clusters or clusters with defined specifications that have the serverless feature enabled.
 	//
 	// example:
 	//
@@ -657,7 +649,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
 	// The source cluster ID.
 	//
-	// > This parameter is supported only for clusters that are restored from a backup set or a point in time after June 1, 2024.
+	// <note>This parameter is supported only for clusters restored from a backup set or point in time after June 1, 2024.</note>
 	//
 	// example:
 	//
@@ -665,7 +657,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	SourceDBCluster *string `json:"SourceDBCluster,omitempty" xml:"SourceDBCluster,omitempty"`
 	// The region ID of the source cluster.
 	//
-	// > This parameter is returned only when the source cluster ID exists.
+	// <note>This parameter is returned only when the source cluster ID exists.</note>
 	//
 	// example:
 	//
@@ -673,17 +665,17 @@ type DescribeDBClusterAttributeResponseBody struct {
 	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// The cross-zone disaster recovery mode. Valid values:
 	//
-	// - **ON**: The cross-zone disaster recovery mode is enabled.
+	// - **ON**: Cross-zone disaster recovery is enabled.
 	//
-	// - **OFF**: The cross-zone disaster recovery mode is disabled.
+	// - **OFF**: Cross-zone disaster recovery is disabled.
 	//
-	// - **0**: The customer drill mode.
+	// - **0**: Customer drill mode.
 	//
 	// example:
 	//
 	// OFF
 	StandbyHAMode *string `json:"StandbyHAMode,omitempty" xml:"StandbyHAMode,omitempty"`
-	// The maximum storage capacity of the current cluster specifications. Unit: bytes.
+	// The maximum storage capacity for the current cluster specifications, in bytes.
 	//
 	// example:
 	//
@@ -691,69 +683,69 @@ type DescribeDBClusterAttributeResponseBody struct {
 	StorageMax *int64 `json:"StorageMax,omitempty" xml:"StorageMax,omitempty"`
 	// The billing method for storage. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: pay-by-capacity (pay-as-you-go).
 	//
-	// - **Prepaid**: subscription.
+	// - **Prepaid**: pay-by-space (subscription).
 	//
 	// example:
 	//
 	// Prepaid
 	StoragePayType *string `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
-	// The storage space of the subscription cluster. Unit: bytes.
+	// The storage space for pay-by-space (subscription) billing. Unit: bytes.
 	//
 	// example:
 	//
 	// 50
 	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// The storage class. The value is fixed as **HighPerformance**.
+	// The storage type. The value is fixed as **HighPerformance**.
 	//
 	// example:
 	//
 	// HighPerformance
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The used storage space. Unit: bytes.
+	// The storage usage, in bytes.
 	//
 	// example:
 	//
 	// 3012558848
 	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	// Indicates whether strong consistency is enabled for the multi-zone data. Valid values:
+	// Indicates whether multi-zone strong data consistency is enabled for the cluster. Valid values:
 	//
-	// - **ON**: Strong consistency is enabled for the multi-zone data. This applies to Standard Edition clusters that are deployed across three zones.
+	// - **ON**: Multi-zone strong data consistency is enabled. This applies to PolarDB for MySQL Standard Edition with three-zone deployment.
 	//
-	// - **OFF**: Strong consistency is not enabled for the multi-zone data.
+	// - **OFF**: Multi-zone strong data consistency is not enabled.
 	//
 	// example:
 	//
 	// ON
 	StrictConsistency *string `json:"StrictConsistency,omitempty" xml:"StrictConsistency,omitempty"`
-	// The specification type of the compute node. Valid values:
+	// The specification type of compute nodes. Valid values:
 	//
-	// - **Exclusive**: Dedicated
+	// 	- **Exclusive**: Dedicated
 	//
-	// - **General**: General-purpose
+	// 	- **General**: General-purpose
 	//
-	// > This parameter is returned only for PolarDB for MySQL Cluster Edition clusters.
+	// > This parameter is returned only for PolarDB for MySQL clusters of the Cluster Edition.
 	//
 	// example:
 	//
 	// Exclusive
 	SubCategory *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
-	// Indicates whether the instant switchover feature that is compatible with IMCI is supported.
+	// Indicates whether failover with hot replica is supported with IMCI compatibility.
 	//
 	// example:
 	//
 	// ON
 	SupportInstantSwitchWithImci *string `json:"SupportInstantSwitchWithImci,omitempty" xml:"SupportInstantSwitchWithImci,omitempty"`
-	// The details of the tags.
+	// The details of tags.
 	Tags []*DescribeDBClusterAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-*******************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The virtual switch ID.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -821,6 +813,14 @@ func (s *DescribeDBClusterAttributeResponseBody) GetCompressStorageMode() *strin
 
 func (s *DescribeDBClusterAttributeResponseBody) GetCompressStorageUsed() *int64 {
 	return s.CompressStorageUsed
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) GetConnectionResourceQuota() *int64 {
+	return s.ConnectionResourceQuota
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) GetConnectionResourceUsed() *int64 {
+	return s.ConnectionResourceUsed
 }
 
 func (s *DescribeDBClusterAttributeResponseBody) GetCreationTime() *string {
@@ -1116,6 +1116,16 @@ func (s *DescribeDBClusterAttributeResponseBody) SetCompressStorageMode(v string
 
 func (s *DescribeDBClusterAttributeResponseBody) SetCompressStorageUsed(v int64) *DescribeDBClusterAttributeResponseBody {
 	s.CompressStorageUsed = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetConnectionResourceQuota(v int64) *DescribeDBClusterAttributeResponseBody {
+	s.ConnectionResourceQuota = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetConnectionResourceUsed(v int64) *DescribeDBClusterAttributeResponseBody {
+	s.ConnectionResourceUsed = &v
 	return s
 }
 
@@ -1571,7 +1581,7 @@ func (s *DescribeDBClusterAttributeResponseBodyBranchChildBranch) Validate() err
 }
 
 type DescribeDBClusterAttributeResponseBodyDBNodes struct {
-	// The number of CPU cores that are added for the elastic scaling feature within seconds.
+	// The number of CPU cores added by second-level rapid scaling.
 	//
 	// example:
 	//
@@ -1615,73 +1625,75 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The role of the node. Valid values:
 	//
-	// - **Writer**: the primary node.
+	// - **Writer**: read/write node.
 	//
-	// - **Reader**: a read-only node.
+	// - **Reader**: read-only node.
 	//
 	// example:
 	//
 	// Reader
 	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
-	// The status of the node. Valid values:
+	// The node status. Valid values:
 	//
-	// - **Creating**
+	// 	- **Creating**: being created.
 	//
-	// - **Running**
+	// 	- **Running**: running.
 	//
-	// - **Deleting**
+	// 	- **Deleting**: being deleted.
 	//
-	// - **Rebooting**
+	// 	- **Rebooting**: being restarted.
 	//
-	// - **DBNodeCreating**: A node is being added.
+	// 	- **DBNodeCreating**: adding a node.
 	//
-	// - **DBNodeDeleting**: A node is being deleted.
+	// 	- **DBNodeDeleting**: deleting a node.
 	//
-	// - **ClassChanging**: The node specifications are being changed.
+	// 	- **ClassChanging**: changing node specifications.
 	//
-	// - **NetAddressCreating**: A network connection is being created.
+	// 	- **NetAddressCreating**: creating network connectivity.
 	//
-	// - **NetAddressDeleting**: A network connection is being deleted.
+	// 	- **NetAddressDeleting**: deleting network connectivity.
 	//
-	// - **NetAddressModifying**: A network connection is being modified.
+	// 	- **NetAddressModifying**: modifying network connectivity.
 	//
-	// - **MinorVersionUpgrading**: The minor version is being upgraded.
+	// 	- **MinorVersionUpgrading**: performing a minor engine version upgrade.
 	//
-	// - **Maintaining**: The instance is being maintained.
+	// 	- **Maintaining**: instance under maintenance.
 	//
-	// - **Switching**: A switchover is in progress.
+	// 	- **Switching**: being switched.
 	//
 	// example:
 	//
 	// Running
 	DBNodeStatus *string `json:"DBNodeStatus,omitempty" xml:"DBNodeStatus,omitempty"`
-	// The failover priority. Each node has a failover priority. A larger value indicates a higher priority for the node to be promoted to the primary node during a failover. Valid values: 1 to 15.
+	// The failover priority. Each node has a failover priority that determines the probability of the node being elected as the primary node during a failover. A higher value indicates a higher priority.
+	//
+	// Valid values: 1 to 15.
 	//
 	// example:
 	//
 	// 1
 	FailoverPriority *int32 `json:"FailoverPriority,omitempty" xml:"FailoverPriority,omitempty"`
-	// Indicates whether the hot replica feature is enabled. Valid values:
+	// Indicates whether hot standby is enabled. Valid values:
 	//
-	// - **ON**: enabled
+	// - **ON**: enabled.
 	//
-	// - **OFF**: disabled
+	// - **OFF**: disabled.
 	//
 	// example:
 	//
 	// ON
 	HotReplicaMode *string `json:"HotReplicaMode,omitempty" xml:"HotReplicaMode,omitempty"`
-	// Indicates whether the In-Memory Column Index (IMCI) feature is enabled. Valid values:
+	// Indicates whether In-Memory Column Index (IMCI) is enabled. Valid values:
 	//
-	// - **ON**: enabled
+	// - **ON**: enabled.
 	//
-	// - **OFF**: disabled
+	// - **OFF**: disabled.
 	//
 	// example:
 	//
 	// ON
 	ImciSwitch *string `json:"ImciSwitch,omitempty" xml:"ImciSwitch,omitempty"`
-	// The ID of the primary node in a Multi-master Cluster Edition cluster.
+	// The primary node ID of the Multi-master Cluster Edition.
 	//
 	// example:
 	//
@@ -1693,7 +1705,7 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// 8000
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum input/output operations per second (IOPS).
+	// The maximum number of I/O requests per second (IOPS).
 	//
 	// example:
 	//
@@ -1705,19 +1717,19 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// 8192
 	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	// The name of the hot replica compute node that corresponds to the node in an architecture where both hot standby storage and hot standby compute are enabled.
+	// The name of the hot replica compute node that corresponds to the node in the Hot Standby Cluster and compute architecture.
 	//
 	// example:
 	//
 	// pi-bp18z52mirror*****
 	MirrorInsName *string `json:"MirrorInsName,omitempty" xml:"MirrorInsName,omitempty"`
-	// The local secondary node in a multi-master cluster.
+	// The multi-master local standby node.
 	//
 	// example:
 	//
 	// pi-****************
 	MultiMasterLocalStandby *string `json:"MultiMasterLocalStandby,omitempty" xml:"MultiMasterLocalStandby,omitempty"`
-	// The primary node in a multi-master cluster.
+	// The multi-master primary node.
 	//
 	// example:
 	//
@@ -1725,25 +1737,25 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	MultiMasterPrimaryNode *string `json:"MultiMasterPrimaryNode,omitempty" xml:"MultiMasterPrimaryNode,omitempty"`
 	// The Orca feature. Valid values:
 	//
-	// - on: enabled
+	// - on: enabled.
 	//
-	// - off: disabled
+	// - off: disabled.
 	//
 	// example:
 	//
 	// off
 	Orca *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
-	// The size of the remote memory. Unit: MB.
+	// The remote memory size. Unit: MB.
 	//
 	// example:
 	//
 	// 3072
 	RemoteMemorySize *string `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
-	// Indicates whether global consistency (high-performance mode) is enabled for the node. Valid values:
+	// Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
 	//
-	// - **ON**: enabled
+	// - **ON**: The feature is enabled.
 	//
-	// - **OFF**: disabled
+	// - **OFF**: The feature is disabled.
 	//
 	// This parameter is required.
 	//
@@ -1751,35 +1763,39 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// ON
 	SccMode *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
-	// The routing weight. Valid values: 1 to 100. Default value: 1.
+	// The routing weight.
+	//
+	// Valid values: 1 to 100. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	ServerWeight *string `json:"ServerWeight,omitempty" xml:"ServerWeight,omitempty"`
-	// The Serverless type of the node. Valid values:
+	// The serverless type of the node. Valid values:
 	//
-	// - AgileServerless: agile, which indicates a Serverless node.
+	// - AgileServerless: agile serverless node.
 	//
-	// - SteadyServerless: steady, which indicates that Serverless capabilities are added to a node with defined specifications.
+	// - SteadyServerless: steady serverless node, which is a node with defined specifications that has the serverless capability enabled.
 	//
-	// > 	- This parameter is supported only for Serverless clusters or clusters with defined specifications for which the Serverless feature is enabled. For more information, see [Serverless](https://help.aliyun.com/document_detail/452274.html).
+	// > This parameter is supported only for serverless clusters or clusters with defined specifications that have the serverless feature enabled. For more information, see [Serverless](https://help.aliyun.com/document_detail/452274.html).
 	//
 	// example:
 	//
 	// SteadyServerless
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	// Indicates whether the node is in the primary zone or a secondary zone. This parameter is mainly used for peer resources. Valid values:
+	// Indicates whether the node is in the primary zone or the secondary zone. This parameter is mainly used for resource-equivalent deployments.
 	//
-	// - Primary: the primary zone
+	// Valid values:
 	//
-	// - Standby: a secondary zone
+	// - Primary: primary zone.
+	//
+	// - Standby: secondary zone.
 	//
 	// example:
 	//
 	// Primary
 	SubCluster *string `json:"SubCluster,omitempty" xml:"SubCluster,omitempty"`
-	// The description of the cluster subgroup.
+	// The cluster subgroup description.
 	//
 	// example:
 	//

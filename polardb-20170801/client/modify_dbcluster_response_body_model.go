@@ -18,19 +18,19 @@ type iModifyDBClusterResponseBody interface {
 }
 
 type ModifyDBClusterResponseBody struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The generated order ID.
+	// The order ID.
 	//
 	// example:
 	//
 	// 2148126708*****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

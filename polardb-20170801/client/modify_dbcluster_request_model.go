@@ -11,6 +11,8 @@ type iModifyDBClusterRequest interface {
 	GoString() string
 	SetCompressStorage(v string) *ModifyDBClusterRequest
 	GetCompressStorage() *string
+	SetConnectionResourceQuota(v int64) *ModifyDBClusterRequest
+	GetConnectionResourceQuota() *int64
 	SetDBClusterId(v string) *ModifyDBClusterRequest
 	GetDBClusterId() *string
 	SetDBNodeCrashList(v string) *ModifyDBClusterRequest
@@ -49,10 +51,11 @@ type ModifyDBClusterRequest struct {
 	// example:
 	//
 	// ON
-	CompressStorage *string `json:"CompressStorage,omitempty" xml:"CompressStorage,omitempty"`
+	CompressStorage         *string `json:"CompressStorage,omitempty" xml:"CompressStorage,omitempty"`
+	ConnectionResourceQuota *int64  `json:"ConnectionResourceQuota,omitempty" xml:"ConnectionResourceQuota,omitempty"`
 	// The cluster ID.
 	//
-	// > You can call the DescribeDBClusters operation to query the details of all clusters in a specific region, including their cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query information about all clusters in the specified region, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -60,19 +63,19 @@ type ModifyDBClusterRequest struct {
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The names of the nodes to target in the fault simulation.
+	// The list of node instance names for the disaster recovery drill.
 	//
-	// > For a node-level simulation, you can specify only a single node. For a zone-level simulation, you can leave this parameter empty or specify all nodes.
+	// > Node-level drills support only a single node. For zone-level drills, you can leave this parameter empty or specify all nodes.
 	//
 	// example:
 	//
 	// pi-rwxxx
 	DBNodeCrashList *string `json:"DBNodeCrashList,omitempty" xml:"DBNodeCrashList,omitempty"`
-	// The cross-zone data replication method for the cluster. Valid values:
+	// The cross-zone data replication mode of the cluster. Valid values:
 	//
-	// - **AsyncSync**: asynchronous.
+	// - **AsyncSync**: asynchronous
 	//
-	// - **SemiSync**: semi-synchronous.
+	// - **SemiSync**: semi-synchronous
 	//
 	// example:
 	//
@@ -80,45 +83,41 @@ type ModifyDBClusterRequest struct {
 	DataSyncMode *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
 	// The fault injection method. Valid values:
 	//
-	// - `0`: instance-level fault injection based on Crash SQL.
+	// - 0: instance fault injection based on `Crash SQL`
 	//
 	// example:
 	//
 	// 0
 	FaultInjectionType *string `json:"FaultInjectionType,omitempty" xml:"FaultInjectionType,omitempty"`
-	// The fault simulation scope for the cluster. Valid values:
+	// The dimension of the disaster recovery drill for the cluster. Valid values:
 	//
-	// - `0` or `FaultInjection`: primary zone-level fault simulation.
+	// - `0` or `FaultInjection`: primary zone-level disaster recovery drill.
 	//
-	// - `1`: node-level fault simulation.
+	// - `1`: node-level disaster recovery drill.
 	//
-	// > 	- In a **primary zone-level fault simulation**, all compute nodes in the primary zone become unavailable. The disaster recovery failover in this scenario is lossy.
+	// > - In the **primary zone-level disaster recovery drill*	- scenario, all compute nodes in the primary zone become unavailable. The failover in this scenario causes service interruptions.
 	//
-	// >
-	//
-	// > 	- In a **node-level fault simulation**, you can simulate a fault on only a single compute node. You must specify the target compute node by using the `DBNodeCrashList` parameter.
+	// > - In the **node-level disaster recovery drill*	- scenario, only a single compute node is supported for the drill. Specify the desired compute node name by using `DBNodeCrashList`.
 	//
 	// example:
 	//
 	// 0
 	FaultSimulateMode *string `json:"FaultSimulateMode,omitempty" xml:"FaultSimulateMode,omitempty"`
-	// Controls the automatic columnar index feature. Valid values:
+	// The automatic IMCI-based query acceleration feature. Valid values:
 	//
-	// - `ON`: enables the feature.
+	// - `ON`: enabled.
 	//
-	// - `OFF`: disables the feature.
+	// - `OFF`: disabled.
 	//
-	// > 	- This feature is available only for PolarDB for MySQL clusters.
+	// > - Only PolarDB for MySQL clusters are supported.
 	//
-	// >
-	//
-	// > 	- For cluster version limits, see [Automatic indexing (AutoIndex)](https://help.aliyun.com/document_detail/2854119.html).
+	// > - For cluster version requirements, see [Automatic acceleration (AutoIndex)](https://help.aliyun.com/document_detail/2854119.html).
 	//
 	// example:
 	//
 	// OFF
 	ImciAutoIndex *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
-	// Enables or disables row-level compression.
+	// Modifies the row compression settings.
 	//
 	// example:
 	//
@@ -128,17 +127,17 @@ type ModifyDBClusterRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The automatic cross-zone failover mode for the cluster. Valid values:
+	// The cross-zone automatic switchover mode of the cluster. Valid values:
 	//
-	// - **ON**: enables automatic cross-zone failover.
+	// - **ON**: enables cross-zone automatic switchover.
 	//
-	// - **OFF**: disables automatic cross-zone failover.
+	// - **OFF**: disables cross-zone automatic switchover.
 	//
 	// example:
 	//
 	// ON
 	StandbyHAMode *string `json:"StandbyHAMode,omitempty" xml:"StandbyHAMode,omitempty"`
-	// Enables or disables automatic storage scaling for a standard cluster. Valid values:
+	// Specifies whether to enable automatic storage scaling for the Standard Edition cluster. Valid values:
 	//
 	// - Enable: enables automatic storage scaling.
 	//
@@ -148,7 +147,7 @@ type ModifyDBClusterRequest struct {
 	//
 	// Enable
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
-	// The upper limit for automatic storage scaling on a standard cluster. Unit: GB.
+	// The upper limit for automatic storage scaling of the Standard Edition cluster. Unit: GB.
 	//
 	// > The maximum value is 32000.
 	//
@@ -156,11 +155,37 @@ type ModifyDBClusterRequest struct {
 	//
 	// 800
 	StorageUpperBound *int64 `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
-	// A JSON string that specifies information about the destination databases and tables to be restored. All values in the database and table information must be strings.
+	// The JSON string that contains the information about the databases and tables to be restored. The values of the database and table information are strings.
 	//
-	// Example: `[ { "tables":[ { "name":"testtb", "type":"table", "newname":"testtb_restore" } ], "name":"testdb", "type":"db", "newname":"testdb_restore" } ]`.
+	// Example: `[
 	//
-	// > You can call the [DescribeMetaList](https://help.aliyun.com/document_detail/194770.html) operation to query for restorable databases and tables. Use the returned information to populate the fields in the example JSON.
+	//    {
+	//
+	//        "tables":[
+	//
+	//            {
+	//
+	//                "name":"testtb",
+	//
+	//                "type":"table",
+	//
+	//                "newname":"testtb_restore"
+	//
+	//            }
+	//
+	//        ],
+	//
+	//        "name":"testdb",
+	//
+	//        "type":"db",
+	//
+	//        "newname":"testdb_restore"
+	//
+	//    }
+	//
+	// ]`.
+	//
+	// > You can call the [DescribeMetaList](https://help.aliyun.com/document_detail/194770.html) operation to query the names of databases and tables that can be restored, and then specify the information in the corresponding fields in the preceding example.
 	//
 	// example:
 	//
@@ -178,6 +203,10 @@ func (s ModifyDBClusterRequest) GoString() string {
 
 func (s *ModifyDBClusterRequest) GetCompressStorage() *string {
 	return s.CompressStorage
+}
+
+func (s *ModifyDBClusterRequest) GetConnectionResourceQuota() *int64 {
+	return s.ConnectionResourceQuota
 }
 
 func (s *ModifyDBClusterRequest) GetDBClusterId() *string {
@@ -242,6 +271,11 @@ func (s *ModifyDBClusterRequest) GetTableMeta() *string {
 
 func (s *ModifyDBClusterRequest) SetCompressStorage(v string) *ModifyDBClusterRequest {
 	s.CompressStorage = &v
+	return s
+}
+
+func (s *ModifyDBClusterRequest) SetConnectionResourceQuota(v int64) *ModifyDBClusterRequest {
+	s.ConnectionResourceQuota = &v
 	return s
 }
 

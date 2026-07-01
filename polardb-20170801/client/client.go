@@ -3270,6 +3270,252 @@ func (client *Client) CreateActivationCode(request *CreateActivationCodeRequest)
 
 // Summary:
 //
+// Creates an AgenticDB branch.
+//
+// @param request - CreateAgenticDBBranchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgenticDBBranchResponse
+func (client *Client) CreateAgenticDBBranchWithOptions(request *CreateAgenticDBBranchRequest, runtime *dara.RuntimeOptions) (_result *CreateAgenticDBBranchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BranchName) {
+		query["BranchName"] = request.BranchName
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ParentBranchId) {
+		query["ParentBranchId"] = request.ParentBranchId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgenticDBBranch"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgenticDBBranchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an AgenticDB branch.
+//
+// @param request - CreateAgenticDBBranchRequest
+//
+// @return CreateAgenticDBBranchResponse
+func (client *Client) CreateAgenticDBBranch(request *CreateAgenticDBBranchRequest) (_result *CreateAgenticDBBranchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAgenticDBBranchResponse{}
+	_body, _err := client.CreateAgenticDBBranchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an AgenticDB project.
+//
+// @param request - CreateAgenticDBProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgenticDBProjectResponse
+func (client *Client) CreateAgenticDBProjectWithOptions(request *CreateAgenticDBProjectRequest, runtime *dara.RuntimeOptions) (_result *CreateAgenticDBProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DefaultBranchName) {
+		query["DefaultBranchName"] = request.DefaultBranchName
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgenticDBProject"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgenticDBProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an AgenticDB project.
+//
+// @param request - CreateAgenticDBProjectRequest
+//
+// @return CreateAgenticDBProjectResponse
+func (client *Client) CreateAgenticDBProject(request *CreateAgenticDBProjectRequest) (_result *CreateAgenticDBProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAgenticDBProjectResponse{}
+	_body, _err := client.CreateAgenticDBProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建 AgenticDB 租户 API Key
+//
+// @param request - CreateAgenticDBTenantApiKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgenticDBTenantApiKeyResponse
+func (client *Client) CreateAgenticDBTenantApiKeyWithOptions(request *CreateAgenticDBTenantApiKeyRequest, runtime *dara.RuntimeOptions) (_result *CreateAgenticDBTenantApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExpireTime) {
+		query["ExpireTime"] = request.ExpireTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantName) {
+		query["TenantName"] = request.TenantName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgenticDBTenantApiKey"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgenticDBTenantApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建 AgenticDB 租户 API Key
+//
+// @param request - CreateAgenticDBTenantApiKeyRequest
+//
+// @return CreateAgenticDBTenantApiKeyResponse
+func (client *Client) CreateAgenticDBTenantApiKey(request *CreateAgenticDBTenantApiKeyRequest) (_result *CreateAgenticDBTenantApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAgenticDBTenantApiKeyResponse{}
+	_body, _err := client.CreateAgenticDBTenantApiKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an application attached to a PolarDB instance.
 //
 // @param tmpReq - CreateApplicationRequest
@@ -4482,7 +4728,7 @@ func (client *Client) CreateCronJobPolicyServerless(request *CreateCronJobPolicy
 
 // Summary:
 //
-// Creates a db cluster.
+// Creates a PolarDB cluster.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -4497,6 +4743,18 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgenticDbClusterDescription) {
+		query["AgenticDbClusterDescription"] = request.AgenticDbClusterDescription
+	}
+
+	if !dara.IsNil(request.AgenticDbClusterId) {
+		query["AgenticDbClusterId"] = request.AgenticDbClusterId
+	}
+
+	if !dara.IsNil(request.AgenticDbType) {
+		query["AgenticDbType"] = request.AgenticDbType
+	}
+
 	if !dara.IsNil(request.AllowShutDown) {
 		query["AllowShutDown"] = request.AllowShutDown
 	}
@@ -4774,7 +5032,7 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 
 // Summary:
 //
-// Creates a db cluster.
+// Creates a PolarDB cluster.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -7839,6 +8097,302 @@ func (client *Client) DeleteAccountZonal(request *DeleteAccountZonalRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteAccountZonalResponse{}
 	_body, _err := client.DeleteAccountZonalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an AgenticDB branch.
+//
+// @param request - DeleteAgenticDBBranchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgenticDBBranchResponse
+func (client *Client) DeleteAgenticDBBranchWithOptions(request *DeleteAgenticDBBranchRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgenticDBBranchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BranchId) {
+		query["BranchId"] = request.BranchId
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgenticDBBranch"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgenticDBBranchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an AgenticDB branch.
+//
+// @param request - DeleteAgenticDBBranchRequest
+//
+// @return DeleteAgenticDBBranchResponse
+func (client *Client) DeleteAgenticDBBranch(request *DeleteAgenticDBBranchRequest) (_result *DeleteAgenticDBBranchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAgenticDBBranchResponse{}
+	_body, _err := client.DeleteAgenticDBBranchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an AgenticDB compute cluster.
+//
+// @param request - DeleteAgenticDBComputeClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgenticDBComputeClusterResponse
+func (client *Client) DeleteAgenticDBComputeClusterWithOptions(request *DeleteAgenticDBComputeClusterRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgenticDBComputeClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputeClusterId) {
+		query["ComputeClusterId"] = request.ComputeClusterId
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgenticDBComputeCluster"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgenticDBComputeClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an AgenticDB compute cluster.
+//
+// @param request - DeleteAgenticDBComputeClusterRequest
+//
+// @return DeleteAgenticDBComputeClusterResponse
+func (client *Client) DeleteAgenticDBComputeCluster(request *DeleteAgenticDBComputeClusterRequest) (_result *DeleteAgenticDBComputeClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAgenticDBComputeClusterResponse{}
+	_body, _err := client.DeleteAgenticDBComputeClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an AgenticDB project.
+//
+// @param request - DeleteAgenticDBProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgenticDBProjectResponse
+func (client *Client) DeleteAgenticDBProjectWithOptions(request *DeleteAgenticDBProjectRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgenticDBProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgenticDBProject"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgenticDBProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an AgenticDB project.
+//
+// @param request - DeleteAgenticDBProjectRequest
+//
+// @return DeleteAgenticDBProjectResponse
+func (client *Client) DeleteAgenticDBProject(request *DeleteAgenticDBProjectRequest) (_result *DeleteAgenticDBProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAgenticDBProjectResponse{}
+	_body, _err := client.DeleteAgenticDBProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an API key for an AgenticDB tenant.
+//
+// @param request - DeleteAgenticDBTenantApiKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgenticDBTenantApiKeyResponse
+func (client *Client) DeleteAgenticDBTenantApiKeyWithOptions(request *DeleteAgenticDBTenantApiKeyRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgenticDBTenantApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["ApiKeyId"] = request.ApiKeyId
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgenticDBTenantApiKey"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgenticDBTenantApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an API key for an AgenticDB tenant.
+//
+// @param request - DeleteAgenticDBTenantApiKeyRequest
+//
+// @return DeleteAgenticDBTenantApiKeyResponse
+func (client *Client) DeleteAgenticDBTenantApiKey(request *DeleteAgenticDBTenantApiKeyRequest) (_result *DeleteAgenticDBTenantApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAgenticDBTenantApiKeyResponse{}
+	_body, _err := client.DeleteAgenticDBTenantApiKeyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12208,6 +12762,776 @@ func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperat
 
 // Summary:
 //
+// Queries the details of an AgenticDB branch.
+//
+// @param request - DescribeAgenticDBBranchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAgenticDBBranchResponse
+func (client *Client) DescribeAgenticDBBranchWithOptions(request *DescribeAgenticDBBranchRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgenticDBBranchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BranchId) {
+		query["BranchId"] = request.BranchId
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAgenticDBBranch"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAgenticDBBranchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an AgenticDB branch.
+//
+// @param request - DescribeAgenticDBBranchRequest
+//
+// @return DescribeAgenticDBBranchResponse
+func (client *Client) DescribeAgenticDBBranch(request *DescribeAgenticDBBranchRequest) (_result *DescribeAgenticDBBranchResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAgenticDBBranchResponse{}
+	_body, _err := client.DescribeAgenticDBBranchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the connection information of an AgenticDB branch.
+//
+// @param request - DescribeAgenticDBBranchEndpointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAgenticDBBranchEndpointsResponse
+func (client *Client) DescribeAgenticDBBranchEndpointsWithOptions(request *DescribeAgenticDBBranchEndpointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgenticDBBranchEndpointsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BranchId) {
+		query["BranchId"] = request.BranchId
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAgenticDBBranchEndpoints"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAgenticDBBranchEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the connection information of an AgenticDB branch.
+//
+// @param request - DescribeAgenticDBBranchEndpointsRequest
+//
+// @return DescribeAgenticDBBranchEndpointsResponse
+func (client *Client) DescribeAgenticDBBranchEndpoints(request *DescribeAgenticDBBranchEndpointsRequest) (_result *DescribeAgenticDBBranchEndpointsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAgenticDBBranchEndpointsResponse{}
+	_body, _err := client.DescribeAgenticDBBranchEndpointsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the branch lineage of an AgenticDB cluster.
+//
+// @param request - DescribeAgenticDBBranchLineageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAgenticDBBranchLineageResponse
+func (client *Client) DescribeAgenticDBBranchLineageWithOptions(request *DescribeAgenticDBBranchLineageRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgenticDBBranchLineageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BranchId) {
+		query["BranchId"] = request.BranchId
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.IncludeDestroying) {
+		query["IncludeDestroying"] = request.IncludeDestroying
+	}
+
+	if !dara.IsNil(request.MaxViewDepth) {
+		query["MaxViewDepth"] = request.MaxViewDepth
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAgenticDBBranchLineage"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAgenticDBBranchLineageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the branch lineage of an AgenticDB cluster.
+//
+// @param request - DescribeAgenticDBBranchLineageRequest
+//
+// @return DescribeAgenticDBBranchLineageResponse
+func (client *Client) DescribeAgenticDBBranchLineage(request *DescribeAgenticDBBranchLineageRequest) (_result *DescribeAgenticDBBranchLineageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAgenticDBBranchLineageResponse{}
+	_body, _err := client.DescribeAgenticDBBranchLineageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of AgenticDB branches.
+//
+// @param request - DescribeAgenticDBBranchesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAgenticDBBranchesResponse
+func (client *Client) DescribeAgenticDBBranchesWithOptions(request *DescribeAgenticDBBranchesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgenticDBBranchesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BranchName) {
+		query["BranchName"] = request.BranchName
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAgenticDBBranches"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAgenticDBBranchesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of AgenticDB branches.
+//
+// @param request - DescribeAgenticDBBranchesRequest
+//
+// @return DescribeAgenticDBBranchesResponse
+func (client *Client) DescribeAgenticDBBranches(request *DescribeAgenticDBBranchesRequest) (_result *DescribeAgenticDBBranchesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAgenticDBBranchesResponse{}
+	_body, _err := client.DescribeAgenticDBBranchesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of Agentic Database clusters.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation supports filtering and returning the list of related model operators based on the `RelativeDBClusterId` and `KubeType` parameters.
+//
+// - Note: Ensure that the `RelativeDBClusterId` provided in the request matches an existing PolarDB database instance ID. Otherwise, data cannot be retrieved correctly.
+//
+// @param request - DescribeAgenticDBClustersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAgenticDBClustersResponse
+func (client *Client) DescribeAgenticDBClustersWithOptions(request *DescribeAgenticDBClustersRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgenticDBClustersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgenticDbClusterIds) {
+		query["AgenticDbClusterIds"] = request.AgenticDbClusterIds
+	}
+
+	if !dara.IsNil(request.DBClusterDescription) {
+		query["DBClusterDescription"] = request.DBClusterDescription
+	}
+
+	if !dara.IsNil(request.DBClusterIds) {
+		query["DBClusterIds"] = request.DBClusterIds
+	}
+
+	if !dara.IsNil(request.DBClusterStatus) {
+		query["DBClusterStatus"] = request.DBClusterStatus
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAgenticDBClusters"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAgenticDBClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of Agentic Database clusters.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation supports filtering and returning the list of related model operators based on the `RelativeDBClusterId` and `KubeType` parameters.
+//
+// - Note: Ensure that the `RelativeDBClusterId` provided in the request matches an existing PolarDB database instance ID. Otherwise, data cannot be retrieved correctly.
+//
+// @param request - DescribeAgenticDBClustersRequest
+//
+// @return DescribeAgenticDBClustersResponse
+func (client *Client) DescribeAgenticDBClusters(request *DescribeAgenticDBClustersRequest) (_result *DescribeAgenticDBClustersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAgenticDBClustersResponse{}
+	_body, _err := client.DescribeAgenticDBClustersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 AgenticDB 计算实例列表
+//
+// @param request - DescribeAgenticDBComputeClustersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAgenticDBComputeClustersResponse
+func (client *Client) DescribeAgenticDBComputeClustersWithOptions(request *DescribeAgenticDBComputeClustersRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgenticDBComputeClustersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputeClusterId) {
+		query["ComputeClusterId"] = request.ComputeClusterId
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAgenticDBComputeClusters"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAgenticDBComputeClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 AgenticDB 计算实例列表
+//
+// @param request - DescribeAgenticDBComputeClustersRequest
+//
+// @return DescribeAgenticDBComputeClustersResponse
+func (client *Client) DescribeAgenticDBComputeClusters(request *DescribeAgenticDBComputeClustersRequest) (_result *DescribeAgenticDBComputeClustersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAgenticDBComputeClustersResponse{}
+	_body, _err := client.DescribeAgenticDBComputeClustersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 AgenticDB 项目详情
+//
+// @param request - DescribeAgenticDBProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAgenticDBProjectResponse
+func (client *Client) DescribeAgenticDBProjectWithOptions(request *DescribeAgenticDBProjectRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgenticDBProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAgenticDBProject"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAgenticDBProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 AgenticDB 项目详情
+//
+// @param request - DescribeAgenticDBProjectRequest
+//
+// @return DescribeAgenticDBProjectResponse
+func (client *Client) DescribeAgenticDBProject(request *DescribeAgenticDBProjectRequest) (_result *DescribeAgenticDBProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAgenticDBProjectResponse{}
+	_body, _err := client.DescribeAgenticDBProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 AgenticDB 项目列表
+//
+// @param request - DescribeAgenticDBProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAgenticDBProjectsResponse
+func (client *Client) DescribeAgenticDBProjectsWithOptions(request *DescribeAgenticDBProjectsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgenticDBProjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.ProjectName) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAgenticDBProjects"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAgenticDBProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 AgenticDB 项目列表
+//
+// @param request - DescribeAgenticDBProjectsRequest
+//
+// @return DescribeAgenticDBProjectsResponse
+func (client *Client) DescribeAgenticDBProjects(request *DescribeAgenticDBProjectsRequest) (_result *DescribeAgenticDBProjectsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAgenticDBProjectsResponse{}
+	_body, _err := client.DescribeAgenticDBProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of API keys for an AgenticDB tenant.
+//
+// @param request - DescribeAgenticDBTenantApiKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAgenticDBTenantApiKeysResponse
+func (client *Client) DescribeAgenticDBTenantApiKeysWithOptions(request *DescribeAgenticDBTenantApiKeysRequest, runtime *dara.RuntimeOptions) (_result *DescribeAgenticDBTenantApiKeysResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantName) {
+		query["TenantName"] = request.TenantName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAgenticDBTenantApiKeys"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAgenticDBTenantApiKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of API keys for an AgenticDB tenant.
+//
+// @param request - DescribeAgenticDBTenantApiKeysRequest
+//
+// @return DescribeAgenticDBTenantApiKeysResponse
+func (client *Client) DescribeAgenticDBTenantApiKeys(request *DescribeAgenticDBTenantApiKeysRequest) (_result *DescribeAgenticDBTenantApiKeysResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAgenticDBTenantApiKeysResponse{}
+	_body, _err := client.DescribeAgenticDBTenantApiKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a specified API key.
 //
 // @param request - DescribeApikeyAttributeRequest
@@ -14700,7 +16024,7 @@ func (client *Client) DescribeDBClusterAccessWhitelist(request *DescribeDBCluste
 
 // Summary:
 //
-// Queries the attributes of a specified cluster.
+// Queries the attribute information of a cluster.
 //
 // @param request - DescribeDBClusterAttributeRequest
 //
@@ -14764,7 +16088,7 @@ func (client *Client) DescribeDBClusterAttributeWithOptions(request *DescribeDBC
 
 // Summary:
 //
-// Queries the attributes of a specified cluster.
+// Queries the attribute information of a cluster.
 //
 // @param request - DescribeDBClusterAttributeRequest
 //
@@ -16272,7 +17596,7 @@ func (client *Client) DescribeDBClusterVersionZonal(request *DescribeDBClusterVe
 
 // Summary:
 //
-// Queries the details of PolarDB clusters, including clusters that you are authorized to access through Resource Access Management (RAM).
+// Queries the details of PolarDB clusters or clusters authorized by RAM authorization.
 //
 // @param request - DescribeDBClustersRequest
 //
@@ -16396,7 +17720,7 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 
 // Summary:
 //
-// Queries the details of PolarDB clusters, including clusters that you are authorized to access through Resource Access Management (RAM).
+// Queries the details of PolarDB clusters or clusters authorized by RAM authorization.
 //
 // @param request - DescribeDBClustersRequest
 //
@@ -28148,7 +29472,7 @@ func (client *Client) ModifyCronJobPolicyServerless(request *ModifyCronJobPolicy
 
 // Summary:
 //
-// Modify the feature configuration of a PolarDB MySQL cluster.
+// Modifies the feature configurations of a PolarDB for MySQL cluster.
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -28165,6 +29489,10 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CompressStorage) {
 		query["CompressStorage"] = request.CompressStorage
+	}
+
+	if !dara.IsNil(request.ConnectionResourceQuota) {
+		query["ConnectionResourceQuota"] = request.ConnectionResourceQuota
 	}
 
 	if !dara.IsNil(request.DBClusterId) {
@@ -28252,7 +29580,7 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 
 // Summary:
 //
-// Modify the feature configuration of a PolarDB MySQL cluster.
+// Modifies the feature configurations of a PolarDB for MySQL cluster.
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -34040,6 +35368,80 @@ func (client *Client) ResetAccountZonal(request *ResetAccountZonalRequest) (_res
 
 // Summary:
 //
+// Resets the API key of an AgenticDB tenant.
+//
+// @param request - ResetAgenticDBTenantApiKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetAgenticDBTenantApiKeyResponse
+func (client *Client) ResetAgenticDBTenantApiKeyWithOptions(request *ResetAgenticDBTenantApiKeyRequest, runtime *dara.RuntimeOptions) (_result *ResetAgenticDBTenantApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["ApiKeyId"] = request.ApiKeyId
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetAgenticDBTenantApiKey"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetAgenticDBTenantApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Resets the API key of an AgenticDB tenant.
+//
+// @param request - ResetAgenticDBTenantApiKeyRequest
+//
+// @return ResetAgenticDBTenantApiKeyResponse
+func (client *Client) ResetAgenticDBTenantApiKey(request *ResetAgenticDBTenantApiKeyRequest) (_result *ResetAgenticDBTenantApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ResetAgenticDBTenantApiKeyResponse{}
+	_body, _err := client.ResetAgenticDBTenantApiKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Resets an api key.
 //
 // @param request - ResetConsumerApiKeyRequest
@@ -36863,6 +38265,72 @@ func (client *Client) UpgradePolarClawSkills(request *UpgradePolarClawSkillsRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpgradePolarClawSkillsResponse{}
 	_body, _err := client.UpgradePolarClawSkillsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验 AgenticDB 租户 API Key
+//
+// @param request - VerifyAgenticDBTenantApiKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyAgenticDBTenantApiKeyResponse
+func (client *Client) VerifyAgenticDBTenantApiKeyWithOptions(request *VerifyAgenticDBTenantApiKeyRequest, runtime *dara.RuntimeOptions) (_result *VerifyAgenticDBTenantApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKey) {
+		query["ApiKey"] = request.ApiKey
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyAgenticDBTenantApiKey"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyAgenticDBTenantApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验 AgenticDB 租户 API Key
+//
+// @param request - VerifyAgenticDBTenantApiKeyRequest
+//
+// @return VerifyAgenticDBTenantApiKeyResponse
+func (client *Client) VerifyAgenticDBTenantApiKey(request *VerifyAgenticDBTenantApiKeyRequest) (_result *VerifyAgenticDBTenantApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &VerifyAgenticDBTenantApiKeyResponse{}
+	_body, _err := client.VerifyAgenticDBTenantApiKeyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
