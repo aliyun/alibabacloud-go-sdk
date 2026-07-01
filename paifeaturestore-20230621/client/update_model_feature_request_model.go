@@ -26,7 +26,7 @@ type UpdateModelFeatureRequest struct {
 	//
 	// 0
 	LabelPriorityLevel *int64 `json:"LabelPriorityLevel,omitempty" xml:"LabelPriorityLevel,omitempty"`
-	// The label table ID. You can call the ListLabelTables operation to query the label table ID.
+	// The label table ID. You can call the ListLabelTables operation to obtain the label table ID.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type UpdateModelFeatureRequestFeatures struct {
 	//
 	// sex
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The feature view ID. You can call the ListFeatureViews operation to query the feature view ID.
+	// The feature view ID. You can call the ListFeatureViews operation to obtain the feature view ID.
 	//
 	// This parameter is required.
 	//

@@ -42,83 +42,83 @@ type iGetModelFeatureResponseBody interface {
 }
 
 type GetModelFeatureResponseBody struct {
-	// The script for exporting the training sample table.
+	// Script for exporting the training set table.
 	//
 	// example:
 	//
 	// from feature_store_py.fs_client import FeatureStoreClient\\nfrom feature_store_py.fs_project import FeatureStoreProject\\nfrom feature_store_py.fs_datasource import LabelInput, MaxComputeDataSource, TrainingSetOutput\\nfrom feature_store_py.fs_features import FeatureSelector\\nfrom feature_store_py.fs_config import LabelInputConfig, PartitionConfig, FeatureViewConfig\\nfrom feature_store_py.fs_config import TrainSetOutputConfig, EASDeployConfig\\nimport datetime\\nimport sys\\n\\ncur_day = args[\\"dt\\"]\\nprint(\\"cur_day = \\", cur_day)\\noffset = datetime.timedelta(days=-1)\\npre_day = (datetime.datetime.strptime(cur_day, \\"%Y%m%d\\") + offset).strftime(\\"%Y%m%d\\")\\nprint(\\"pre_day = \\", pre_day)\\n\\n\\naccess_key_id = o.account.access_id\\naccess_key_secret = o.account.secret_access_key\\nfs = FeatureStoreClient(access_key_id=access_key_id, access_key_secret=access_key_secret, region=\\"cn-beijing\\")\\ncur_project_name = \\"p1\\"\\nproject = fs.get_project(cur_project_name)\\n\\nlabel_partitions = PartitionConfig(name = \\"ds\\", value = cur_day)\\nlabel_input_config = LabelInputConfig(partition_config=label_partitions)\\n\\nfeature_view_1_partitions = PartitionConfig(name = \\"ds\\", value = pre_day)\\nfeature_view_1_config = FeatureViewConfig(name = \\"user_fea\\",\\npartition_config=feature_view_1_partitions)\\n\\nfeature_view_2_partitions = PartitionConfig(name = \\"ds\\", value = pre_day)\\nfeature_view_2_config = FeatureViewConfig(name = \\"seq_fea\\",\\npartition_config=feature_view_2_partitions)\\n\\nfeature_view_3_partitions = PartitionConfig(name = \\"ds\\", value = pre_day)\\nfeature_view_3_config = FeatureViewConfig(name = \\"item_fea\\",\\npartition_config=feature_view_3_partitions)\\n\\nfeature_view_config_list = [feature_view_1_config,feature_view_2_config,feature_view_3_config]\\ntrain_set_partitions = PartitionConfig(name = \\"ds\\", value = cur_day)\\ntrain_set_output_config = TrainSetOutputConfig(partition_config=train_set_partitions)\\n\\n\\nmodel_name = \\"rank_v1\\"\\ncur_model = project.get_model(model_name)\\ntask = cur_model.export_train_set(label_input_config, feature_view_config_list, train_set_output_config)\\ntask.wait()\\nprint(\\"task_summary = \\", task.task_summary)\\n
 	ExportTrainingSetTableScript *string `json:"ExportTrainingSetTableScript,omitempty" xml:"ExportTrainingSetTableScript,omitempty"`
-	// The feature list.
+	// Feature list.
 	Features []*GetModelFeatureResponseBodyFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	// The creation time.
+	// Creation time.
 	//
 	// example:
 	//
 	// 2023-07-04T14:46:22.227+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The update time.
+	// Update time.
 	//
 	// example:
 	//
 	// 2023-07-04T14:46:22.227+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The priority level of the label table. Default value: 0. Set to 1 to prioritize the label table. Set to 2 to prioritize the feature view.
+	// Label table priority. The default value is 0. Set to 1 to give priority to the label table, or set to 2 to give priority to the feature view.
 	//
 	// example:
 	//
 	// 0
 	LabelPriorityLevel *int64 `json:"LabelPriorityLevel,omitempty" xml:"LabelPriorityLevel,omitempty"`
-	// The label table ID.
+	// Label table ID.
 	//
 	// example:
 	//
 	// 3
 	LabelTableId *string `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
-	// The label table name.
+	// Label table name.
 	//
 	// example:
 	//
 	// label_table1
 	LabelTableName *string `json:"LabelTableName,omitempty" xml:"LabelTableName,omitempty"`
-	// The model feature name.
+	// Model feature name.
 	//
 	// example:
 	//
 	// model_feature1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The Alibaba Cloud account ID of the creator.
+	// Alibaba Cloud account ID of the creator.
 	//
 	// example:
 	//
 	// 1231243253****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The project ID.
+	// Project ID.
 	//
 	// example:
 	//
 	// 5
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The project name.
+	// Project name.
 	//
 	// example:
 	//
 	// project1
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The feature relationships.
+	// Feature relations.
 	Relations *GetModelFeatureResponseBodyRelations `json:"Relations,omitempty" xml:"Relations,omitempty" type:"Struct"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 0C89F5E1-7F24-5EEC-9F05-508A39278CC8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the exported training set FG table.
+	// Name of the exported training set FG table.
 	//
 	// example:
 	//
 	// table2
 	TrainingSetFGTable *string `json:"TrainingSetFGTable,omitempty" xml:"TrainingSetFGTable,omitempty"`
-	// The name of the exported training set table.
+	// Name of the exported training set table.
 	//
 	// example:
 	//
@@ -288,25 +288,25 @@ func (s *GetModelFeatureResponseBody) Validate() error {
 }
 
 type GetModelFeatureResponseBodyFeatures struct {
-	// The feature alias.
+	// Feature alias.
 	//
 	// example:
 	//
 	// feature2
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The feature view ID.
+	// Feature view ID.
 	//
 	// example:
 	//
 	// 3
 	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
-	// The feature view name.
+	// Feature view name.
 	//
 	// example:
 	//
 	// feature_view_1
 	FeatureViewName *string `json:"FeatureViewName,omitempty" xml:"FeatureViewName,omitempty"`
-	// The feature name.
+	// Feature name.
 	//
 	// example:
 	//
@@ -316,21 +316,21 @@ type GetModelFeatureResponseBodyFeatures struct {
 	//
 	// cand_seq__
 	PrefixName *string `json:"PrefixName,omitempty" xml:"PrefixName,omitempty"`
-	// The feature type. Valid values:
+	// Feature type.
 	//
-	// - INT32
+	// ● INT32
 	//
-	// - INT64
+	// ● INT64
 	//
-	// - FLOAT
+	// ● FLOAT
 	//
-	// - DOUBLE
+	// ● DOUBLE
 	//
-	// - STRING
+	// ● STRING
 	//
-	// - BOOLEAN
+	// ● BOOLEAN
 	//
-	// - TIMESTAMP.
+	// ● TIMESTAMP
 	//
 	// example:
 	//
@@ -405,9 +405,9 @@ func (s *GetModelFeatureResponseBodyFeatures) Validate() error {
 }
 
 type GetModelFeatureResponseBodyRelations struct {
-	// The domain list.
+	// Domain list.
 	Domains []*GetModelFeatureResponseBodyRelationsDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	// The feature relationship link list.
+	// Feature relation link information list.
 	Links []*GetModelFeatureResponseBodyRelationsLinks `json:"Links,omitempty" xml:"Links,omitempty" type:"Repeated"`
 }
 
@@ -460,25 +460,25 @@ func (s *GetModelFeatureResponseBodyRelations) Validate() error {
 }
 
 type GetModelFeatureResponseBodyRelationsDomains struct {
-	// The domain type. Valid values:
+	// Domain type.
 	//
-	// - FeatureEntity: feature entity.
+	// ● FeatureEntity - Feature entity
 	//
-	// - FeatureView: feature view.
+	// ● FeatureView - Feature view
 	//
-	// - ModelFeature: model feature.
+	// ● ModelFeature - Model feature
 	//
 	// example:
 	//
 	// FeatureEntity
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// Domain ID。
+	// Domain ID.
 	//
 	// example:
 	//
 	// 3
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The domain name.
+	// Domain name.
 	//
 	// example:
 	//
@@ -526,19 +526,19 @@ func (s *GetModelFeatureResponseBodyRelationsDomains) Validate() error {
 }
 
 type GetModelFeatureResponseBodyRelationsLinks struct {
-	// The source ID of the link.
+	// Source ID of the link.
 	//
 	// example:
 	//
 	// model_feature_2
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The dependency field of the link.
+	// Link dependency field.
 	//
 	// example:
 	//
 	// user_id
 	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
-	// The destination ID of the link.
+	// Target ID of the link.
 	//
 	// example:
 	//

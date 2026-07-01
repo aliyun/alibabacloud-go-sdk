@@ -507,7 +507,7 @@ func (client *Client) CreateLabelTableWithContext(ctx context.Context, InstanceI
 
 // Summary:
 //
-// Creates a model feature. A model feature associates a label table with a set of feature view fields. It is used to generate the training dataset table required for model training and to specify the feature set used for model inference.
+// Creates a model feature. A model feature associates a label table with a set of feature view fields to generate the training dataset table required for model training and to specify the feature set used for model inference.
 //
 // @param request - CreateModelFeatureRequest
 //
@@ -1213,7 +1213,7 @@ func (client *Client) GetLabelTableWithContext(ctx context.Context, InstanceId *
 
 // Summary:
 //
-// Retrieves detailed information about a model feature, including the selected feature list, lineage relationships, and training set export script.
+// Gets detailed information about a model feature, including the selected feature list, lineage relations, and training set export script.
 //
 // @param headers - map
 //
@@ -2962,7 +2962,7 @@ func (client *Client) UpdateLabelTableWithContext(ctx context.Context, InstanceI
 
 // Summary:
 //
-// Updates the information of a model feature, including the associated label table, selected feature fields, and conflict priority policy. The update is a full replacement. The specified Features value overwrites the existing value.
+// Updates the information of a model feature, including the associated label table, selected feature fields, and conflict priority policy. The update performs a full replacement. The specified Features overwrite the existing values.
 //
 // @param request - UpdateModelFeatureRequest
 //

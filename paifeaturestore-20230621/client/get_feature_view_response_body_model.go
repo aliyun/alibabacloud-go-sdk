@@ -489,6 +489,10 @@ type GetFeatureViewResponseBodyFields struct {
 	//
 	// ● `EventTime`: The event time.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 512
+	Dimension *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	// The field name.
 	//
 	// example:
@@ -523,6 +527,10 @@ func (s *GetFeatureViewResponseBodyFields) GetAttributes() []*string {
 	return s.Attributes
 }
 
+func (s *GetFeatureViewResponseBodyFields) GetDimension() *int32 {
+	return s.Dimension
+}
+
 func (s *GetFeatureViewResponseBodyFields) GetName() *string {
 	return s.Name
 }
@@ -537,6 +545,11 @@ func (s *GetFeatureViewResponseBodyFields) GetType() *string {
 
 func (s *GetFeatureViewResponseBodyFields) SetAttributes(v []*string) *GetFeatureViewResponseBodyFields {
 	s.Attributes = v
+	return s
+}
+
+func (s *GetFeatureViewResponseBodyFields) SetDimension(v int32) *GetFeatureViewResponseBodyFields {
+	s.Dimension = &v
 	return s
 }
 

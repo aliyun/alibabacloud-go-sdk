@@ -283,6 +283,7 @@ type CreateFeatureViewRequestFields struct {
 	//
 	// - `EventTime`: event time.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	Dimension  *int32    `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	// The name of the field.
 	//
 	// example:
@@ -325,6 +326,10 @@ func (s *CreateFeatureViewRequestFields) GetAttributes() []*string {
 	return s.Attributes
 }
 
+func (s *CreateFeatureViewRequestFields) GetDimension() *int32 {
+	return s.Dimension
+}
+
 func (s *CreateFeatureViewRequestFields) GetName() *string {
 	return s.Name
 }
@@ -339,6 +344,11 @@ func (s *CreateFeatureViewRequestFields) GetType() *string {
 
 func (s *CreateFeatureViewRequestFields) SetAttributes(v []*string) *CreateFeatureViewRequestFields {
 	s.Attributes = v
+	return s
+}
+
+func (s *CreateFeatureViewRequestFields) SetDimension(v int32) *CreateFeatureViewRequestFields {
+	s.Dimension = &v
 	return s
 }
 

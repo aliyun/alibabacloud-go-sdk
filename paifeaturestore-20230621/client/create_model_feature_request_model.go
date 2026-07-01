@@ -138,7 +138,7 @@ func (s *CreateModelFeatureRequest) Validate() error {
 }
 
 type CreateModelFeatureRequestFeatures struct {
-	// The alias of the feature.
+	// The feature alias.
 	//
 	// example:
 	//
@@ -166,19 +166,19 @@ type CreateModelFeatureRequestFeatures struct {
 	PrefixName *string `json:"PrefixName,omitempty" xml:"PrefixName,omitempty"`
 	// The feature type. Valid values:
 	//
-	// - INT32
+	// ● INT32
 	//
-	// - INT64
+	// ● INT64
 	//
-	// - FLOAT
+	// ● FLOAT
 	//
-	// - DOUBLE
+	// ● DOUBLE
 	//
-	// - STRING
+	// ● STRING
 	//
-	// - BOOLEAN
+	// ● BOOLEAN
 	//
-	// - TIMESTAMP.
+	// ● TIMESTAMP.
 	//
 	// This parameter is required.
 	//

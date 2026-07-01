@@ -24,7 +24,19 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":      dara.String("paifeaturestore.us-west-1.aliyuncs.com"),
+		"us-east-1":      dara.String("paifeaturestore.us-east-1.aliyuncs.com"),
+		"eu-central-1":   dara.String("paifeaturestore.eu-central-1.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("paifeaturestore.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":    dara.String("paifeaturestore.cn-shanghai.aliyuncs.com"),
+		"cn-hongkong":    dara.String("paifeaturestore.cn-hongkong.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("paifeaturestore.cn-hangzhou.aliyuncs.com"),
+		"cn-beijing":     dara.String("paifeaturestore.cn-beijing.aliyuncs.com"),
+		"ap-southeast-5": dara.String("paifeaturestore.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-1": dara.String("paifeaturestore.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -706,7 +718,7 @@ func (client *Client) CreateLabelTable(InstanceId *string, request *CreateLabelT
 
 // Summary:
 //
-// Creates a model feature. A model feature associates a label table with a set of feature view fields. It is used to generate the training dataset table required for model training and to specify the feature set used for model inference.
+// Creates a model feature. A model feature associates a label table with a set of feature view fields to generate the training dataset table required for model training and to specify the feature set used for model inference.
 //
 // @param request - CreateModelFeatureRequest
 //
@@ -773,7 +785,7 @@ func (client *Client) CreateModelFeatureWithOptions(InstanceId *string, request 
 
 // Summary:
 //
-// Creates a model feature. A model feature associates a label table with a set of feature view fields. It is used to generate the training dataset table required for model training and to specify the feature set used for model inference.
+// Creates a model feature. A model feature associates a label table with a set of feature view fields to generate the training dataset table required for model training and to specify the feature set used for model inference.
 //
 // @param request - CreateModelFeatureRequest
 //
@@ -1726,7 +1738,7 @@ func (client *Client) GetLabelTable(InstanceId *string, LabelTableId *string) (_
 
 // Summary:
 //
-// Retrieves detailed information about a model feature, including the selected feature list, lineage relationships, and training set export script.
+// Gets detailed information about a model feature, including the selected feature list, lineage relations, and training set export script.
 //
 // @param headers - map
 //
@@ -1759,7 +1771,7 @@ func (client *Client) GetModelFeatureWithOptions(InstanceId *string, ModelFeatur
 
 // Summary:
 //
-// Retrieves detailed information about a model feature, including the selected feature list, lineage relationships, and training set export script.
+// Gets detailed information about a model feature, including the selected feature list, lineage relations, and training set export script.
 //
 // @return GetModelFeatureResponse
 func (client *Client) GetModelFeature(InstanceId *string, ModelFeatureId *string) (_result *GetModelFeatureResponse, _err error) {
@@ -4042,7 +4054,7 @@ func (client *Client) UpdateLabelTable(InstanceId *string, LabelTableId *string,
 
 // Summary:
 //
-// Updates the information of a model feature, including the associated label table, selected feature fields, and conflict priority policy. The update is a full replacement. The specified Features value overwrites the existing value.
+// Updates the information of a model feature, including the associated label table, selected feature fields, and conflict priority policy. The update performs a full replacement. The specified Features overwrite the existing values.
 //
 // @param request - UpdateModelFeatureRequest
 //
@@ -4101,7 +4113,7 @@ func (client *Client) UpdateModelFeatureWithOptions(InstanceId *string, ModelFea
 
 // Summary:
 //
-// Updates the information of a model feature, including the associated label table, selected feature fields, and conflict priority policy. The update is a full replacement. The specified Features value overwrites the existing value.
+// Updates the information of a model feature, including the associated label table, selected feature fields, and conflict priority policy. The update performs a full replacement. The specified Features overwrite the existing values.
 //
 // @param request - UpdateModelFeatureRequest
 //
