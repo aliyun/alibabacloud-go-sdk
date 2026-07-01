@@ -16,7 +16,7 @@ type iSubmitSportsHighlightsJobResponseBody interface {
 }
 
 type SubmitSportsHighlightsJobResponseBody struct {
-	// The ID of the sports highlights job.
+	// The sports highlight job ID.
 	//
 	// example:
 	//

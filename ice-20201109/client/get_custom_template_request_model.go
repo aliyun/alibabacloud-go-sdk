@@ -24,13 +24,13 @@ type GetCustomTemplateRequest struct {
 	//
 	// 1
 	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// The template ID.
+	// The ID of the custom template.
 	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The ID of the template type that is used to query the default template. This parameter is required if TemplateId is not specified.
+	// The ID of the template type. This parameter is required if you omit `TemplateId` to get a default template.
 	//
 	// example:
 	//

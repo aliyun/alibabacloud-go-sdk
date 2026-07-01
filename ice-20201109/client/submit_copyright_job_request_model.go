@@ -30,15 +30,15 @@ type iSubmitCopyrightJobRequest interface {
 }
 
 type SubmitCopyrightJobRequest struct {
-	// The description of the watermark.
+	// A description of the watermark job.
 	//
 	// example:
 	//
-	// Description
+	// Task description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The source video file that you want to add a watermark to.
+	// The input video file to be watermarked.
 	//
-	// > The OSS object or media asset must reside in the same region as the IMS service region.
+	// > - The OSS object or media asset must be in the same region as the service call.
 	//
 	// This parameter is required.
 	//
@@ -46,23 +46,23 @@ type SubmitCopyrightJobRequest struct {
 	//
 	// {"Bucket":"example-bucket","Location":"oss-cn-shanghai","Object":"example.mp4"}
 	Input *SubmitCopyrightJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// The watermark level, which specifies the channel to embed watermarks. Valid values: 0 specifies the 0u channel, 1 specifies the 1uv channel, and 2 specifies the 2yuv channel.
+	// The watermark level, which specifies the embedding channel. Valid values are 0, 1, and 2, which correspond to the U, UV, and YUV channels, respectively.
 	//
 	// example:
 	//
 	// 0
 	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The information about the watermark to be added.
+	// The watermark content to embed.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Test
+	// Copyright watermark test
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The URL of the output file.
+	// The location of the output file.
 	//
-	// > The OSS bucket must reside in the same region as the IMS service region.
+	// > - The OSS bucket must be in the same region as the service call.
 	//
 	// This parameter is required.
 	//
@@ -70,31 +70,31 @@ type SubmitCopyrightJobRequest struct {
 	//
 	// {"Bucket":"example-bucket","Location":"oss-cn-shanghai","Object":"example_result.mp4"}
 	Output *SubmitCopyrightJobRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// The parameters related to watermark jobs. The value is a JSON string. Supported parameter:
+	// The parameters for the watermark job, specified as a JSON string. The following parameter is supported:
 	//
-	// 	- algoType: the algorithm type. Default value: v1.
+	// - `algoType`: The algorithm type. Defaults to `v1`.
 	//
-	//     	- v1: watermarking for long videos that last at least 3 minutes.
+	//   - `v1`: For videos 3 minutes or longer.
 	//
-	//     	- v2: watermarking for videos shorter than 3 minutes.
+	//   - `v2`: For short videos.
 	//
 	// example:
 	//
 	// {"algoType":"v2"}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// The start time of the watermark. Unit: seconds. If you do not specify this parameter, the default value 0 is used.
+	// The start time of the watermark in seconds. Defaults to 0.
 	//
 	// example:
 	//
 	// 0
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The end time of the watermark. Unit: seconds. If you do not specify this parameter, the default value is the video duration.
+	// The end time of the watermark in seconds. If unspecified, the watermark is applied until the video ends.
 	//
 	// example:
 	//
 	// 10
 	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
-	// The custom data, which can be up to 1,024 bytes in size.
+	// The user data. The value can be up to 1,024 bytes in length.
 	//
 	// example:
 	//
@@ -206,13 +206,13 @@ func (s *SubmitCopyrightJobRequest) Validate() error {
 }
 
 type SubmitCopyrightJobRequestInput struct {
-	// The URL of the source file. You can specify the path of an OSS object in one of the following formats:
+	// The input file, specified as either an OSS URL or a media asset ID. The following formats are supported for OSS URLs:
 	//
-	// 1\\. oss://bucket/object
+	// 1\\. `oss://bucket/object`
 	//
-	// 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
+	// 2\\. `http(s)://bucket.oss-[regionId].aliyuncs.com/object`
 	//
-	// where bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object path in OSS.
+	// In these formats, `bucket` specifies the name of an OSS bucket in the same region as the service, and `object` specifies the file path.
 	//
 	// This parameter is required.
 	//
@@ -220,11 +220,11 @@ type SubmitCopyrightJobRequestInput struct {
 	//
 	// oss://bucket/object
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The type of the source file. Valid values:
+	// The type of the input file. Valid values:
 	//
-	// 1.  OSS: an OSS object.
+	// 1. `OSS`: The URL of an OSS object.
 	//
-	// 2.  Media: a media asset.
+	// 2. `Media`: The media asset ID.
 	//
 	// This parameter is required.
 	//
@@ -265,11 +265,11 @@ func (s *SubmitCopyrightJobRequestInput) Validate() error {
 }
 
 type SubmitCopyrightJobRequestOutput struct {
-	// The OSS path where the output file is saved. You can specify the path in one of the following formats:
+	// The OSS URL for the output file. The following formats are supported:
 	//
-	// 1\\. oss://bucket/object
+	// 1\\. `oss://bucket/object`
 	//
-	// 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object where bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object path in OSS.
+	// 2\\. `http(s)://bucket.oss-[regionId].aliyuncs.com/object`<br>In these formats, `bucket` specifies the name of an OSS bucket in the same region as the service, and `object` specifies the file path.<br>
 	//
 	// This parameter is required.
 	//
@@ -279,7 +279,7 @@ type SubmitCopyrightJobRequestOutput struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the output file. Valid value:
 	//
-	// 1.  OSS: an OSS object.
+	// 1. `OSS`: The URL of an OSS object.
 	//
 	// This parameter is required.
 	//

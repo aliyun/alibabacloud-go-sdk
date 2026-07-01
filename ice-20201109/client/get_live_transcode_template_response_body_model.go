@@ -64,9 +64,9 @@ func (s *GetLiveTranscodeTemplateResponseBody) Validate() error {
 type GetLiveTranscodeTemplateResponseBodyTemplateContent struct {
 	// The category of the template. Valid values:
 	//
-	// 	- system
+	// - system
 	//
-	// 	- customized
+	// - customized
 	//
 	// example:
 	//

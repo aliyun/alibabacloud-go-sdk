@@ -14,6 +14,8 @@ type iBatchGetYikeAIAppJobRequest interface {
 }
 
 type BatchGetYikeAIAppJobRequest struct {
+	// A list of job IDs, separated by commas.
+	//
 	// example:
 	//
 	// cec2c13da767c090,ca3d3c9737f04586

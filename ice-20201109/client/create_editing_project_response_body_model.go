@@ -70,21 +70,25 @@ type CreateEditingProjectResponseBodyProject struct {
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
 	// The business status of the project. This parameter can be ignored for general editing projects. Valid values:
 	//
-	// 	- Reserving
+	// - Reserving
 	//
-	// 	- ReservationCanceled
+	// - ReservationCanceled
 	//
-	// 	- BroadCasting
+	// - BroadCasting
 	//
-	// 	- LoadingFailed
+	// - LoadingFailed
 	//
-	// 	- LiveFinished
+	// - LiveFinished
 	//
 	// example:
 	//
 	// Reserving
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 	// The template material parameters.
+	//
+	// example:
+	//
+	// See the template user guide.
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 	// The thumbnail URL of the online editing project.
 	//
@@ -206,7 +210,7 @@ type CreateEditingProjectResponseBodyProject struct {
 	//
 	// Timeline
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// The timeline of the online editing project, in the JSON format.<props="china">For more information about objects in a timeline, see [Timeline configurations](https://help.aliyun.com/document_detail/198823.htm?spm=a2c4g.11186623.2.9.90dc653dF67srN#topic-2024662).  If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
+	// The timeline of the online editing project, in the JSON format.<props="china">For more information about objects in a timeline, see [Timeline configurations](https://help.aliyun.com/document_detail/198823.htm?spm=a2c4g.11186623.2.9.90dc653dF67srN#topic-2024662). If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
 	//
 	// example:
 	//

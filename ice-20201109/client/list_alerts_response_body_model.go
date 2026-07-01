@@ -118,6 +118,14 @@ func (s *ListAlertsResponseBody) Validate() error {
 
 type ListAlertsResponseBodyAlerts struct {
 	// The alert type.
+	//
+	// example:
+	//
+	// Scheduling Error: An error occurred when building the schedule.
+	//
+	// PlayBack Warning: Address pull exception when adding source.
+	//
+	// info: Information.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The error code.
 	//

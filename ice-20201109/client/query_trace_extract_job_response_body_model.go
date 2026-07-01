@@ -97,6 +97,10 @@ func (s *QueryTraceExtractJobResponseBody) Validate() error {
 
 type QueryTraceExtractJobResponseBodyData struct {
 	// The trace watermark information.
+	//
+	// example:
+	//
+	// 测试溯源水印
 	Trace *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
 }
 

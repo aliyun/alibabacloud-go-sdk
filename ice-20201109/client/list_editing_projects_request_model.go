@@ -72,9 +72,9 @@ type ListEditingProjectsRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The type of the editing project. Valid values:
 	//
-	// 	- EditingProject: a regular editing project.
+	// - EditingProject: a regular editing project.
 	//
-	// 	- LiveEditingProject: a live stream editing project.
+	// - LiveEditingProject: a live stream editing project.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type ListEditingProjectsRequest struct {
 	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
 	// The order of sorting of the results. Valid values:
 	//
-	// 	- CreationTime:Desc (default): sorts the results in reverse chronological order.
+	// - CreationTime:Desc (default): sorts the results in reverse chronological order.
 	//
-	// 	- CreationTime:Asc: sorts the results in chronological order.
+	// - CreationTime:Asc: sorts the results in chronological order.
 	//
 	// example:
 	//
@@ -104,17 +104,17 @@ type ListEditingProjectsRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The template type. This parameter is required if you create a template-based online editing project. Default value: Timeline.
 	//
-	// *
+	// -
 	//
-	// *
+	// -
 	//
 	// Valid values:
 	//
-	// 	- Timeline: a regular template.
+	// - Timeline: a regular template.
 	//
-	// 	- VETemplate: an advanced template.
+	// - VETemplate: an advanced template.
 	//
-	// 	- None: general editing.
+	// - None: general editing.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type DeleteLiveRecordTemplateRequest struct {
 	//
 	// example:
 	//
-	// 69e1f9fe-1e97-11ed-ba64-0c42a1b73d66
+	// 69e1f9fe-1e97-11ed-ba64-0c42a1b7****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 

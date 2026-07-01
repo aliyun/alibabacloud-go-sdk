@@ -46,9 +46,9 @@ type ListVodPackagingConfigurationsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The sorting order of the packaging configurations based on the time when they were created. Valid values:
 	//
-	// 	- desc: descending order.
+	// - desc: descending order.
 	//
-	// 	- asc: ascending order.
+	// - asc: ascending order.
 	//
 	// example:
 	//

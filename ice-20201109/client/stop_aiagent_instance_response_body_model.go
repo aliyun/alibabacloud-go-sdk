@@ -14,6 +14,8 @@ type iStopAIAgentInstanceResponseBody interface {
 }
 
 type StopAIAgentInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0

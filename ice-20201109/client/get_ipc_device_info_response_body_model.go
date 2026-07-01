@@ -18,11 +18,16 @@ type iGetIpcDeviceInfoResponseBody interface {
 }
 
 type GetIpcDeviceInfoResponseBody struct {
+	// List of device identity information.
 	DeviceInfos []*GetIpcDeviceInfoResponseBodyDeviceInfos `json:"DeviceInfos,omitempty" xml:"DeviceInfos,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 78
@@ -78,14 +83,26 @@ func (s *GetIpcDeviceInfoResponseBody) Validate() error {
 }
 
 type GetIpcDeviceInfoResponseBodyDeviceInfos struct {
+	// Capability. Valid values:
+	//
+	// - understand: understanding
+	//
+	// - understand-reid: understanding with reid
+	//
+	// - search: search
+	//
 	// example:
 	//
 	// understand
 	Capability *string `json:"Capability,omitempty" xml:"Capability,omitempty"`
+	// Device ID.
+	//
 	// example:
 	//
 	// d123
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Expiration Time. UTC time in the format yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2017-02-11T12:00:00Z

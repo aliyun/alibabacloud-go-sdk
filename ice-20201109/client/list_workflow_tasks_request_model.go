@@ -33,6 +33,14 @@ type ListWorkflowTasksRequest struct {
 	// 2025-07-15T00:00:00Z
 	EndOfCreateTime *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
 	// A keyword for fuzzy matching against the TaskInput, such as a file name or Media ID. Max length: 32 characters.
+	//
+	// example:
+	//
+	// ******7aa4cc4459ada8ef35f7******
+	//
+	// or
+	//
+	// **TestVideo***.flv
 	KeyText *string `json:"KeyText,omitempty" xml:"KeyText,omitempty"`
 	// The maximum number of media workflow instances to return. Valid values: 1 to 100. Default value: 10.
 	//

@@ -18,9 +18,9 @@ type iListCustomTemplatesResponseBody interface {
 }
 
 type ListCustomTemplatesResponseBody struct {
-	// The queried templates.
+	// An array of custom template objects.
 	CustomTemplateList []*ListCustomTemplatesResponseBodyCustomTemplateList `json:"CustomTemplateList,omitempty" xml:"CustomTemplateList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The unique identifier for the request.
 	//
 	// example:
 	//
@@ -83,54 +83,44 @@ func (s *ListCustomTemplatesResponseBody) Validate() error {
 }
 
 type ListCustomTemplatesResponseBodyCustomTemplateList struct {
-	// The time when the template was created.
+	// The time when the template was created, in UTC and formatted as YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	CreateTime   *string                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	FrontendHint *ListCustomTemplatesResponseBodyCustomTemplateListFrontendHint `json:"FrontendHint,omitempty" xml:"FrontendHint,omitempty" type:"Struct"`
-	// Indicates whether the template is the default template.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Whether the template is a default template.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The time when the template was last modified.
+	// The time when the template was last modified, in UTC and formatted as YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2022-07-12T16:17:54Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The template state.
-	//
-	// Valid values:
-	//
-	// 	- Normal
+	// The template status.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The subtype ID of the template.
+	// The template subtype ID.
 	//
 	// example:
 	//
 	// 2
 	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// The subtype name of the template.
+	// The template subtype name.
 	//
 	// example:
 	//
 	// AudioTranscode
 	SubtypeName *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
-	// The template parameters.
+	// The template configuration, as a JSON string.
 	//
 	// example:
 	//
@@ -148,13 +138,13 @@ type ListCustomTemplatesResponseBodyCustomTemplateList struct {
 	//
 	// test-template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The type ID of the template.
+	// The template type ID.
 	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The type name of the template.
+	// The template type name.
 	//
 	// example:
 	//

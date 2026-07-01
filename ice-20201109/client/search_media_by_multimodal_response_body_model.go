@@ -177,7 +177,7 @@ type SearchMediaByMultimodalResponseBodyMediaListClipInfo struct {
 	//
 	// example:
 	//
-	// 1.2
+	// 0.99
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The end time of the clip.
 	//

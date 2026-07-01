@@ -289,7 +289,7 @@ func (s *UpdateAdInsertionResponseBodyConfigCdnConfig) Validate() error {
 }
 
 type UpdateAdInsertionResponseBodyConfigManifestEndpointConfig struct {
-	// DASH清单播放端点前缀
+	// The prefix of the playback endpoint for DASH manifests.
 	DashPrefix *string `json:"DashPrefix,omitempty" xml:"DashPrefix,omitempty"`
 	// The prefix of the playback endpoint for HLS manifests.
 	HlsPrefix *string `json:"HlsPrefix,omitempty" xml:"HlsPrefix,omitempty"`

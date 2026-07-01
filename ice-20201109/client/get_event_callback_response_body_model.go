@@ -34,9 +34,9 @@ type GetEventCallbackResponseBody struct {
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 	// Specifies whether callback authentication is enabled. This parameter is returned only for **HTTP*	- callbacks. Valid values:
 	//
-	// 	- **on**
+	// - **on**
 	//
-	// 	- **off**
+	// - **off**
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type GetEventCallbackResponseBody struct {
 	CallbackQueueName *string `json:"CallbackQueueName,omitempty" xml:"CallbackQueueName,omitempty"`
 	// The callback method. Valid values:
 	//
-	// 	- **HTTP**
+	// - **HTTP**
 	//
-	// 	- **MNS**
+	// - **MNS**
 	//
 	// example:
 	//

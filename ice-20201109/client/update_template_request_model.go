@@ -72,27 +72,27 @@ type UpdateTemplateRequest struct {
 	//
 	// example:
 	//
-	// 视频添加水印模板
+	// Cloud editing template 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the preview video.
 	//
 	// example:
 	//
-	// ****20b48fb04483915d4f2cd8ac****
+	// 1ae320b48fb04483915d4f2cd8ac****
 	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
 	// The IDs of the materials associated with the template for use by the regular template editor.
 	//
 	// example:
 	//
-	// {"video":["******c04f1d4a06996144cc1a******","******cb7db64841b159b4f2ea******"],"audio":["******c04f1d4a06996144cc1a******"],"image":["******c04f1d4a06996144cc1a******"]}
+	// {"video":["f64c6acc840247edb6b12f575c66****","9675dcf040ba4525bb037c29d156****"],"audio":["62a54019d9114009a5ae9bcfd70b****"],"image":["743ffbeb7e004c758cdc1fb34c04****"]}
 	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
 	// The source from which the template is modified. Default value: OpenAPI. Valid values:
 	//
-	// 	- AliyunConsole
+	// - AliyunConsole
 	//
-	// 	- OpenAPI
+	// - OpenAPI
 	//
-	// 	- WebSDK
+	// - WebSDK
 	//
 	// example:
 	//
@@ -100,19 +100,19 @@ type UpdateTemplateRequest struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The template state. Valid values:
 	//
-	// 	- Available: The template is available.
+	// - Available: The template is available.
 	//
-	// 	- Created: The template is created but not ready for use.
+	// - Created: The template is created but not ready for use.
 	//
-	// 	- Uploading: The video is being uploaded.
+	// - Uploading: The video is being uploaded.
 	//
-	// 	- Processing: The advanced template is being processed.
+	// - Processing: The advanced template is being processed.
 	//
-	// 	- UploadFailed: Failed to upload the video.
+	// - UploadFailed: Failed to upload the video.
 	//
-	// 	- ProcessFailed: Failed to process the advanced template.
+	// - ProcessFailed: Failed to process the advanced template.
 	//
-	// >  After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
+	// > After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type UpdateTemplateRequest struct {
 	//
 	// example:
 	//
-	// ****20b48fb04483915d4f2cd8ac****
+	// 23923ec3318f4c359e42e1e5b296****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 

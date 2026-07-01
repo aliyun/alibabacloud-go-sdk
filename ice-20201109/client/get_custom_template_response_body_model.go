@@ -16,7 +16,7 @@ type iGetCustomTemplateResponseBody interface {
 }
 
 type GetCustomTemplateResponseBody struct {
-	// The template information.
+	// The template details.
 	CustomTemplate *GetCustomTemplateResponseBodyCustomTemplate `json:"CustomTemplate,omitempty" xml:"CustomTemplate,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -67,9 +67,10 @@ type GetCustomTemplateResponseBodyCustomTemplate struct {
 	// example:
 	//
 	// 2022-01-01T10:00:00Z
-	CreateTime   *string                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Reserved for frontend display.
 	FrontendHint *GetCustomTemplateResponseBodyCustomTemplateFrontendHint `json:"FrontendHint,omitempty" xml:"FrontendHint,omitempty" type:"Struct"`
-	// Indicates whether the template is the default template.
+	// Indicates whether the template is a default template.
 	//
 	// example:
 	//
@@ -81,25 +82,25 @@ type GetCustomTemplateResponseBodyCustomTemplate struct {
 	//
 	// 2022-01-01T11:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The template state.
+	// The status of the template.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The subtype ID of the template.
+	// The ID of the template subtype.
 	//
 	// example:
 	//
 	// 1
 	Subtype *int32 `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// The subtype name of the template.
+	// The name of the template subtype.
 	//
 	// example:
 	//
 	// Normal
 	SubtypeName *string `json:"SubtypeName,omitempty" xml:"SubtypeName,omitempty"`
-	// The template parameters.
+	// The template configuration, in a JSON string.
 	//
 	// example:
 	//
@@ -115,15 +116,15 @@ type GetCustomTemplateResponseBodyCustomTemplate struct {
 	//
 	// example:
 	//
-	// 测试转码模板
+	// Test screenshot template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The type ID of the template.
+	// The ID of the template type.
 	//
 	// example:
 	//
 	// 2
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The type name of the template.
+	// The name of the template type.
 	//
 	// example:
 	//
@@ -257,6 +258,7 @@ func (s *GetCustomTemplateResponseBodyCustomTemplate) Validate() error {
 }
 
 type GetCustomTemplateResponseBodyCustomTemplateFrontendHint struct {
+	// Hint for transcoding templates.
 	TranscodeTemplateHint *GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint `json:"TranscodeTemplateHint,omitempty" xml:"TranscodeTemplateHint,omitempty" type:"Struct"`
 }
 
@@ -287,6 +289,7 @@ func (s *GetCustomTemplateResponseBodyCustomTemplateFrontendHint) Validate() err
 }
 
 type GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint struct {
+	// The bitrate control type.
 	BitrateControlType *string `json:"BitrateControlType,omitempty" xml:"BitrateControlType,omitempty"`
 }
 

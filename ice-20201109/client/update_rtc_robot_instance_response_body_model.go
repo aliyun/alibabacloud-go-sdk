@@ -14,7 +14,7 @@ type iUpdateRtcRobotInstanceResponseBody interface {
 }
 
 type UpdateRtcRobotInstanceResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

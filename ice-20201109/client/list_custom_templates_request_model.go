@@ -26,23 +26,23 @@ type iListCustomTemplatesRequest interface {
 }
 
 type ListCustomTemplatesRequest struct {
-	// The template name.
+	// The name of the template.
 	//
 	// example:
 	//
 	// test-template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The order in which the entries are sorted. Valid values:
+	// The sort order of the results. Valid values:
 	//
-	// 	- CreateTimeDesc: sorted by creation time in descending order.
+	// - `CreationTime:Desc`: Sorts the results by Creation Time in descending order.
 	//
-	// 	- CreateTimeAsc: sorted by creation time in ascending order.
+	// - `CreationTime:Asc`: Sorts the results by Creation Time in ascending order.
 	//
 	// example:
 	//
 	// CreateTimeDesc
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number.
+	// The page number of the results to return.
 	//
 	// example:
 	//
@@ -54,71 +54,71 @@ type ListCustomTemplatesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The subtype ID of the template.
+	// The subtype of the template. This parameter applies only when `Type` is set to 1, 2, 7, or 9.
 	//
-	// 	- Valid values for transcoding templates:
+	// - Transcoding Template subtypes:
 	//
-	//     	- 1 (Normal): regular template.
+	//   - 1: Normal (`Normal`)
 	//
-	//     	- 2 (AudioTranscode): audio transcoding template.
+	//   - 2: Audio-only (`AudioTranscode`)
 	//
-	//     	- 3 (Remux): container format conversion template.
+	//   - 3: Remuxing (`Remux`)
 	//
-	//     	- 4 (NarrowBandV1): Narrowband HD 1.0 template.
+	//   - 4: Narrowband HD 1.0 (`NarrowBandV1`)
 	//
-	//     	- 5 (NarrowBandV2): Narrowband HD 2.0 template.
+	//   - 5: Narrowband HD 2.0 (`NarrowBandV2`)
 	//
-	// 	- Valid values for snapshot templates:
+	// - Screenshot Template subtypes:
 	//
-	//     	- 1 (Normal): regular template.
+	//   - 1: Normal (`Normal`)
 	//
-	//     	- 2 (Sprite): sprite template.
+	//   - 2: Sprite Image (`Sprite`)
 	//
-	//     	- 3 (WebVtt): WebVTT template.
+	//   - 3: WebVTT (`WebVtt`)
 	//
-	// 	- Valid values for AI-assisted content moderation templates:
+	// - AI Content Moderation subtypes:
 	//
-	//     	- 1 (Video): video moderation template.
+	//   - 1: Video moderation (`Video`)
 	//
-	//     	- 2 (Audio): audio moderation template.
+	//   - 2: Audio moderation (`Audio`)
 	//
-	//     	- 3 (Image): image moderation template.
+	//   - 3: Image moderation (`Image`)
 	//
-	// 	- Valid values for AI-assisted intelligent erasure templates:
+	// - AI-powered Object Removal subtypes:
 	//
-	//     	- 1 (VideoDelogo): logo erasure template.
+	//   - 1: Logo Removal (`VideoDelogo`)
 	//
-	//     	- 2 (VideoDetext): subtitle erasure template.
+	//   - 2: Text Removal (`VideoDetext`)
 	//
 	// example:
 	//
 	// 2
 	Subtype *string `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
-	// The template ID.
+	// The ID of the template.
 	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The template type. Valid values:
+	// The type of the template. Valid values:
 	//
-	// 	- 1: transcoding template.
+	// - 1: Transcoding Template
 	//
-	// 	- 2: snapshot template.
+	// - 2: Screenshot Template
 	//
-	// 	- 3: animated image template.
+	// - 3: Animated GIF Template
 	//
-	// 	- 4\\. image watermark template.
+	// - 4: Image Watermark Template
 	//
-	// 	- 5: text watermark template.
+	// - 5: Text Watermark Template
 	//
-	// 	- 6: subtitle template.
+	// - 6: Subtitle Template
 	//
-	// 	- 7: AI-assisted content moderation template.
+	// - 7: AI Content Moderation
 	//
-	// 	- 8: AI-assisted intelligent thumbnail template.
+	// - 8: AI-powered Smart Cover
 	//
-	// 	- 9: AI-assisted intelligent erasure template.
+	// - 9: AI-powered Object Removal
 	//
 	// This parameter is required.
 	//

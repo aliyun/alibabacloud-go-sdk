@@ -16,7 +16,7 @@ type iListAIAgentDialoguesResponseBody interface {
 }
 
 type ListAIAgentDialoguesResponseBody struct {
-	// The dialog records.
+	// A list of dialogues.
 	Dialogues []*ListAIAgentDialoguesResponseBodyDialogues `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,76 +66,87 @@ func (s *ListAIAgentDialoguesResponseBody) Validate() error {
 }
 
 type ListAIAgentDialoguesResponseBodyDialogues struct {
+	// A list of file attachments referenced in the dialogue.
 	AttachedFileList []*ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList `json:"AttachedFileList,omitempty" xml:"AttachedFileList,omitempty" type:"Repeated"`
-	// The unique ID of the dialog.
+	// The unique ID of the dialogue.
 	//
 	// example:
 	//
 	// 19de81b3b3d94abda22****
 	DialogueId *string `json:"DialogueId,omitempty" xml:"DialogueId,omitempty"`
-	Extend     *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The speaker. Valid values:
+	// A JSON-formatted string for extended information. Use this field to store custom data, such as sentiment labels or intent recognition results.
 	//
-	// - user
+	// example:
 	//
-	// - agent
+	// {\\"addTransferLock\\":true}
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The ID of the workflow node that generated the dialogue entry, which you can use for tracing.
+	//
+	// example:
+	//
+	// e01-cn-to345ikn62o
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The producer of this message.
+	//
+	// - user: A message from the user.
+	//
+	// - agent: A message from the agent.
 	//
 	// example:
 	//
 	// user
 	Producer *string `json:"Producer,omitempty" xml:"Producer,omitempty"`
-	// The reasoning trace.
+	// The agent\\"s reasoning text, which can reveal its thought process.
 	//
 	// example:
 	//
-	// I\\"m thinking
+	// 我在思考
 	ReasoningText *string `json:"ReasoningText,omitempty" xml:"ReasoningText,omitempty"`
-	// The ID of the conversational turn.
+	// The ID of the dialogue round.
 	//
 	// example:
 	//
 	// f27f9b9be28642a88e18****
 	RoundId *string `json:"RoundId,omitempty" xml:"RoundId,omitempty"`
-	// The source of the message. Valid values:
+	// The source channel of the message. Valid values:
 	//
-	// chat: messaging conversations.
+	// chat: The message is from a text chat.
 	//
-	// call: voice calls.
+	// call: The message is from a voice call.
 	//
 	// example:
 	//
 	// chat
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The specific content.
+	// The text content of the dialogue entry.
 	//
 	// example:
 	//
 	// Hello
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The UNIX timestamp, measured in milliseconds, which indicates the time when the message was generated.
+	// The Unix timestamp (in milliseconds) when the dialogue entry was created.
 	//
 	// example:
 	//
 	// 1734511087000
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The message type. Valid values:
+	// The type of the message. Valid values include:
 	//
-	// Voice calls:
+	// For a call:
 	//
-	// 1.  greeting: the welcome message.
+	// 1. greeting: A welcome message.
 	//
-	// 2.  normal: the voice response.
+	// 2. normal: A standard voice response.
 	//
-	// 3.  speech: the proactive message.
+	// 3. speech: A proactive voice broadcast.
 	//
-	// Messaging conversations:
+	// For a chat:
 	//
-	// 1.  normal: the text reply.
+	// 1. normal: A standard text response.
 	//
-	// 2.  announcement: the proactive text message.
+	// 2. announcement: A proactive text push.
 	//
-	// 3.  custom: the custom message.
+	// 3. custom: A custom message.
 	//
 	// example:
 	//
@@ -264,11 +275,36 @@ func (s *ListAIAgentDialoguesResponseBodyDialogues) Validate() error {
 }
 
 type ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList struct {
+	// The format of the attachment, such as mp3, wav, or pdf.
+	//
+	// example:
+	//
+	// mp3
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type   *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The unique identifier of the attachment.
+	//
+	// example:
+	//
+	// 7B117AF5-***************
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The file name of the attachment.
+	//
+	// example:
+	//
+	// MusicDemix
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The attachment type, represented by a numeric value. The meaning of this value is defined by your business logic.
+	//
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL of the attachment.
+	//
+	// example:
+	//
+	// https://media.w3.org/2010/05/sintel/trailer.mp3
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList) String() string {

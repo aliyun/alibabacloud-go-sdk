@@ -130,6 +130,10 @@ type SearchMediaClipByFaceResponseBodyMediaClipList struct {
 	// 1031025****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The name of the entity.
+	//
+	// example:
+	//
+	// John Doe
 	LabelName *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
 	// The information about clips related to the face.
 	OccurrencesInfos []*SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos `json:"OccurrencesInfos,omitempty" xml:"OccurrencesInfos,omitempty" type:"Repeated"`
@@ -213,8 +217,13 @@ type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos struct {
 	// example:
 	//
 	// 69.06635
-	EndTime    *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Expression *string  `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	EndTime *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Expression.
+	//
+	// example:
+	//
+	// 平静
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The start time of the clip. Unit: seconds. The value is of the Float type.
 	//
 	// example:

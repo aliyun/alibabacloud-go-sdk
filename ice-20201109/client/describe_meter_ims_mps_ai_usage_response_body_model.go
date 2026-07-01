@@ -79,6 +79,12 @@ type DescribeMeterImsMpsAiUsageResponseBodyData struct {
 	// 1656950400
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The AI type. Valid values:
+	//
+	// example:
+	//
+	// Censor：审核类型
+	//
+	// Product：生产类型
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

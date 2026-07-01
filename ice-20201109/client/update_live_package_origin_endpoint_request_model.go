@@ -49,6 +49,10 @@ type UpdateLivePackageOriginEndpointRequest struct {
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
 	// The endpoint description.
+	//
+	// example:
+	//
+	// This is an origin endpoint.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The origin endpoint name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//
@@ -77,7 +81,8 @@ type UpdateLivePackageOriginEndpointRequest struct {
 	// example:
 	//
 	// 192.168.1.0/24,10.0.0.1
-	IpWhitelist         *string              `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	// Live stream encapsulation configuration
 	LivePackagingConfig *LivePackagingConfig `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
 	// The playlist name. Default value: manifest.
 	//

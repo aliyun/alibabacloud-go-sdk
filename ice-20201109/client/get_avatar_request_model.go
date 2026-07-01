@@ -14,7 +14,7 @@ type iGetAvatarRequest interface {
 }
 
 type GetAvatarRequest struct {
-	// 	- The ID of the digital human.
+	// - The ID of the digital human.
 	//
 	// This parameter is required.
 	//

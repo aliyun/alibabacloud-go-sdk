@@ -73,16 +73,20 @@ type ListDNADBResponseBodyDBList struct {
 	// 88c6ca184c0e47098a5b665e2a12****
 	DBId *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
 	// The description of the media fingerprint library.
+	//
+	// example:
+	//
+	// This is a video DNA library.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The model of the media fingerprint library. Valid values:
 	//
-	// 	- **Video**
+	// - **Video**
 	//
-	// 	- **Audio**
+	// - **Audio**
 	//
-	// 	- **Image**
+	// - **Image**
 	//
-	// 	- **Text*	- (supported only in the China (Shanghai) region)
+	// - **Text*	- (supported only in the China (Shanghai) region)
 	//
 	// example:
 	//
@@ -94,13 +98,13 @@ type ListDNADBResponseBodyDBList struct {
 	//
 	// example-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The state of the media fingerprint library. Default value: **offline**. ****Valid values:
+	// The state of the media fingerprint library. Default value: **offline**. \\*\\*\\*\\*Valid values:
 	//
-	// 	- **offline**: The media fingerprint library is offline.
+	// - **offline**: The media fingerprint library is offline.
 	//
-	// 	- **active**: The media fingerprint library is online.
+	// - **active**: The media fingerprint library is online.
 	//
-	// 	- **deleted**: The media fingerprint library is deleted.
+	// - **deleted**: The media fingerprint library is deleted.
 	//
 	// example:
 	//

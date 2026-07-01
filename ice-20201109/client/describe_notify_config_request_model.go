@@ -14,6 +14,8 @@ type iDescribeNotifyConfigRequest interface {
 }
 
 type DescribeNotifyConfigRequest struct {
+	// The ID of the AIAgent.
+	//
 	// This parameter is required.
 	//
 	// example:

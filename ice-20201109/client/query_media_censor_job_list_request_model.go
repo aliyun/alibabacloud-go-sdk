@@ -36,9 +36,9 @@ type iQueryMediaCensorJobListRequest interface {
 type QueryMediaCensorJobListRequest struct {
 	// The end of the time range to query.
 	//
-	// 	- Specify the time in the ISO 8601 standard. The time must be in UTC.
+	// - Specify the time in the ISO 8601 standard. The time must be in UTC.
 	//
-	// 	- Format: yyyy-MM-ddTHH:mm:ssZ.
+	// - Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type QueryMediaCensorJobListRequest struct {
 	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
 	// The number of entries per page.
 	//
-	// 	- Default value: **30**.
+	// - Default value: **30**.
 	//
-	// 	- Valid values: **1 to 300**.
+	// - Valid values: **1 to 300**.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type QueryMediaCensorJobListRequest struct {
 	//
 	// example:
 	//
-	// 79aff3eee82242e092899db5f669
+	// 79aff3eee82242e092899db5****
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -78,9 +78,9 @@ type QueryMediaCensorJobListRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The beginning of the time range to query.
 	//
-	// 	- Specify the time in the ISO 8601 standard. The time must be in UTC.
+	// - Specify the time in the ISO 8601 standard. The time must be in UTC.
 	//
-	// 	- Format: yyyy-MM-ddTHH:mm:ssZ.
+	// - Format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -88,15 +88,15 @@ type QueryMediaCensorJobListRequest struct {
 	StartOfJobCreatedTimeRange *string `json:"StartOfJobCreatedTimeRange,omitempty" xml:"StartOfJobCreatedTimeRange,omitempty"`
 	// The state of the jobs that you want to query. Valid values:
 	//
-	// 	- **All**: all jobs.
+	// - **All**: all jobs.
 	//
-	// 	- **Queuing**: the jobs that are waiting in the queue.
+	// - **Queuing**: the jobs that are waiting in the queue.
 	//
-	// 	- **Analysing**: the jobs that are in progress.
+	// - **Analysing**: the jobs that are in progress.
 	//
-	// 	- **Fail**: failed jobs.
+	// - **Fail**: failed jobs.
 	//
-	// 	- **Success**: successful jobs.
+	// - **Success**: successful jobs.
 	//
 	// example:
 	//

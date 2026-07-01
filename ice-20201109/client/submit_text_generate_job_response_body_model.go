@@ -16,13 +16,13 @@ type iSubmitTextGenerateJobResponseBody interface {
 }
 
 type SubmitTextGenerateJobResponseBody struct {
-	// The job ID.
+	// The smart job ID.
 	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID
+	// The request ID.
 	//
 	// example:
 	//

@@ -39,6 +39,10 @@ type ListLivePackageChannelsResponseBody struct {
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The sort order. Valid values: asc and desc (default).
 	//
@@ -143,6 +147,10 @@ type ListLivePackageChannelsResponseBodyLivePackageChannels struct {
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The channel description.
+	//
+	// example:
+	//
+	// Test channel
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The channel group name.
 	//

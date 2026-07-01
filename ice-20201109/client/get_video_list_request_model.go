@@ -52,9 +52,9 @@ type GetVideoListRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The sorting method of the results. Valid values:
 	//
-	// 	- CreationTime:Desc (default): sorts results in reverse chronological order.
+	// - CreationTime:Desc (default): sorts results in reverse chronological order.
 	//
-	// 	- CreationTime:Asc: sorts results in chronological order.
+	// - CreationTime:Asc: sorts results in chronological order.
 	//
 	// example:
 	//
@@ -70,27 +70,27 @@ type GetVideoListRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- PrepareFail: The file is abnormal.
+	// - PrepareFail: The file is abnormal.
 	//
-	// 	- UploadFail: The video failed to be uploaded.
+	// - UploadFail: The video failed to be uploaded.
 	//
-	// 	- UploadSucc: The video is uploaded.
+	// - UploadSucc: The video is uploaded.
 	//
-	// 	- Transcoding: The video is being transcoded.
+	// - Transcoding: The video is being transcoded.
 	//
-	// 	- TranscodeFail: The video failed to be transcoded.
+	// - TranscodeFail: The video failed to be transcoded.
 	//
-	// 	- ProduceFail: The video failed to be produced.
+	// - ProduceFail: The video failed to be produced.
 	//
-	// 	- Normal: The video is normal.
+	// - Normal: The video is normal.
 	//
-	// 	- Uploading: The video is being uploaded.
+	// - Uploading: The video is being uploaded.
 	//
-	// 	- Preparing: The file is being generated.
+	// - Preparing: The file is being generated.
 	//
-	// 	- Blocked: The video is blocked.
+	// - Blocked: The video is blocked.
 	//
-	// 	- checking: The video is being reviewed.
+	// - checking: The video is being reviewed.
 	//
 	// example:
 	//

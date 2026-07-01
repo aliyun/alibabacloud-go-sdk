@@ -208,11 +208,31 @@ type GetMediaLiveInputResponseBodyInputInputInfos struct {
 	// example:
 	//
 	// rtmp://domain/app/stream
-	SourceUrl     *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
-	SrtLatency    *int32  `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
-	SrtMaxBitrate *int32  `json:"SrtMaxBitrate,omitempty" xml:"SrtMaxBitrate,omitempty"`
+	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// Latency of the SRT stream, in ms.
+	//
+	// example:
+	//
+	// 1000
+	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
+	// Maximum bitrate of the SRT stream, in bps.
+	//
+	// example:
+	//
+	// 3000000
+	SrtMaxBitrate *int32 `json:"SrtMaxBitrate,omitempty" xml:"SrtMaxBitrate,omitempty"`
+	// SRT encryption configuration: the password for the SRT stream.
+	//
+	// example:
+	//
+	// srtencryption
 	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
-	SrtPbKeyLen   *int32  `json:"SrtPbKeyLen,omitempty" xml:"SrtPbKeyLen,omitempty"`
+	// SRT encryption configuration: key length for the SRT stream.
+	//
+	// example:
+	//
+	// 16
+	SrtPbKeyLen *int32 `json:"SrtPbKeyLen,omitempty" xml:"SrtPbKeyLen,omitempty"`
 	// The name of the pushed stream. This parameter is returned for PUSH inputs.
 	//
 	// example:

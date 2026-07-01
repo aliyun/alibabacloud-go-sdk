@@ -24,7 +24,7 @@ type iListLiveSnapshotTemplatesResponseBody interface {
 }
 
 type ListLiveSnapshotTemplatesResponseBody struct {
-	// The number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -36,21 +36,21 @@ type ListLiveSnapshotTemplatesResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The sorting order of the results by creation time.
+	// The sort order.
 	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The list of the templates.
+	// The list of templates.
 	TemplateList []*ListLiveSnapshotTemplatesResponseBodyTemplateList `json:"TemplateList,omitempty" xml:"TemplateList,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -134,33 +134,31 @@ func (s *ListLiveSnapshotTemplatesResponseBody) Validate() error {
 }
 
 type ListLiveSnapshotTemplatesResponseBodyTemplateList struct {
-	// The time when the job was created.
+	// The time when the template was created. The time format is UTC.
 	//
 	// example:
 	//
 	// 2022-07-20T02:48:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The template ID.
+	// The ID of the template.
 	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The template name.
+	// The name of the template.
+	//
+	// example:
+	//
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The interval between two adjacent snapshots. Unit: seconds.
+	// The snapshot interval in seconds.
 	//
 	// example:
 	//
 	// 10
 	TimeInterval *int32 `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
 	// The type of the template.
-	//
-	// Valid values:
-	//
-	// 	- system
-	//
-	// 	- custom
 	//
 	// example:
 	//

@@ -24,39 +24,37 @@ type iSubmitAvatarVideoJobRequest interface {
 }
 
 type SubmitAvatarVideoJobRequest struct {
-	// The task description. Max length: 128 bytes.
+	// The description of the job. The description can be up to 128 bytes in length.
 	//
 	// example:
 	//
-	// test
+	// Test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The avatar configurations, including the avatar ID, voice, and speech rate.
+	// The configurations for the avatar job, such as the avatar ID, voice, and speech rate.
 	//
 	// example:
 	//
 	// {"AvatarId":"yunqiao"}
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	// The input configurations of the video rendering task for an avatar. You can specify text, the Object Storage Service (OSS) URL of an audio file, or the ID of a media asset. The audio file must be in the MP3 or WAV format.
-	//
-	// 	Notice: The text must be at least five characters in length.
+	// Input can be text, an audio file from Object Storage Service (OSS), or a [media asset](). Only MP3 and WAV audio formats are supported.	Notice:  The value of the `Text` parameter must contain at least five characters.
 	//
 	// example:
 	//
-	// {"Text": "To be, or not to be, that is the question."}
+	// {"Text": "To be or not to be, that is the question."}
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
-	// The output configurations, including the destination URL for the rendered video.
+	// Specifies the output configuration, including the destination URL for the rendered video.
 	//
 	// example:
 	//
 	// {"MediaURL":"https://your-bucket.oss-cn-shanghai.aliyuncs.com/xxx.mp4"}
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	// The task name. Max length: 128 bytes.
+	// The title of the job. The title can be up to 128 bytes in length.
 	//
 	// example:
 	//
-	// test
+	// Test title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// A user-defined JSON string for passing custom business information, such as environment details or task metadata.
+	// A user-defined JSON string for passing custom business information, such as environment details or job metadata.
 	//
 	// example:
 	//

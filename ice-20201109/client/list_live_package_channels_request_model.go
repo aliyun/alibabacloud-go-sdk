@@ -52,9 +52,9 @@ type ListLivePackageChannelsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- asc
+	// - asc
 	//
-	// 	- desc
+	// - desc
 	//
 	// example:
 	//

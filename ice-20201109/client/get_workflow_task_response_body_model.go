@@ -63,6 +63,10 @@ func (s *GetWorkflowTaskResponseBody) Validate() error {
 
 type GetWorkflowTaskResponseBodyWorkflowTask struct {
 	// The results for all nodes of the workflow task.
+	//
+	// example:
+	//
+	// Json格式，内容根据工作流配置有变化。
 	ActivityResults *string `json:"ActivityResults,omitempty" xml:"ActivityResults,omitempty"`
 	// The time when the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
@@ -80,15 +84,15 @@ type GetWorkflowTaskResponseBodyWorkflowTask struct {
 	//
 	// Valid values:
 	//
-	// 	- Init: The task is being initialized.
+	// - Init: The task is being initialized.
 	//
-	// 	- Failed: The task failed.
+	// - Failed: The task failed.
 	//
-	// 	- Canceled: The task is canceled.
+	// - Canceled: The task is canceled.
 	//
-	// 	- Processing: The task is in progress.
+	// - Processing: The task is in progress.
 	//
-	// 	- Succeed: The task is successful.
+	// - Succeed: The task is successful.
 	//
 	// example:
 	//
@@ -225,14 +229,18 @@ type GetWorkflowTaskResponseBodyWorkflowTaskWorkflow struct {
 	// 2022-11-29T02:06:19Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The workflow name.
+	//
+	// example:
+	//
+	// Super-resolution transcoding workflow
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The workflow state.
 	//
 	// Valid values:
 	//
-	// 	- Active
+	// - Active
 	//
-	// 	- Inactive
+	// - Inactive
 	//
 	// example:
 	//
@@ -242,11 +250,11 @@ type GetWorkflowTaskResponseBodyWorkflowTaskWorkflow struct {
 	//
 	// Valid values:
 	//
-	// 	- Customize: custom workflow.
+	// - Customize: custom workflow.
 	//
-	// 	- System: system workflow.
+	// - System: system workflow.
 	//
-	// 	- Common: user-created workflow.
+	// - Common: user-created workflow.
 	//
 	// example:
 	//

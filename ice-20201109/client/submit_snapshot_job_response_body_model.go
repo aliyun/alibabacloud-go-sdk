@@ -16,13 +16,13 @@ type iSubmitSnapshotJobResponseBody interface {
 }
 
 type SubmitSnapshotJobResponseBody struct {
-	// The job ID.
+	// The ID of the submitted job.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID.
+	// A unique identifier for the request.
 	//
 	// example:
 	//

@@ -40,9 +40,9 @@ type CreateStreamToSearchLibResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: succeeded.
+	// - true: succeeded.
 	//
-	// 	- false: failed.
+	// - false: failed.
 	//
 	// example:
 	//

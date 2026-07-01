@@ -14,7 +14,7 @@ type iSubmitAvatarTrainingJobRequest interface {
 }
 
 type SubmitAvatarTrainingJobRequest struct {
-	// The ID of the digital human training job.
+	// The unique identifier for the avatar training job.
 	//
 	// This parameter is required.
 	//

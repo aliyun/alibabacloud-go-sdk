@@ -18,9 +18,9 @@ type iQueryVideoCognitionJobRequest interface {
 }
 
 type QueryVideoCognitionJobRequest struct {
-	// Specifies whether to include the full algorithm results in the response.
+	// A container for parameters that determine which algorithm results to include in the response.
 	IncludeResults *QueryVideoCognitionJobRequestIncludeResults `json:"IncludeResults,omitempty" xml:"IncludeResults,omitempty" type:"Struct"`
-	// The ID of the task to query. It is returned when you call the [SubmitSmarttagJob](https://help.aliyun.com/document_detail/478786.html) operation.
+	// The ID of the intelligent tagging job. You can obtain this ID from the response of the [SubmitIntelligentTaggingJob](https://help.aliyun.com/document_detail/478786.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type QueryVideoCognitionJobRequest struct {
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Additional request parameters, provided as a JSON string.
+	// Additional request parameters, specified as a JSON string.
 	//
 	// example:
 	//
@@ -81,19 +81,19 @@ func (s *QueryVideoCognitionJobRequest) Validate() error {
 }
 
 type QueryVideoCognitionJobRequestIncludeResults struct {
-	// Specifies whether to include Automatic Speech Recognition (ASR) results.
+	// Specifies whether to return the ASR results.
 	//
 	// example:
 	//
 	// true
 	NeedAsr *bool `json:"NeedAsr,omitempty" xml:"NeedAsr,omitempty"`
-	// Specifies whether to include Optical Character Recognition (OCR) results.
+	// Specifies whether to return the OCR results.
 	//
 	// example:
 	//
 	// true
 	NeedOcr *bool `json:"NeedOcr,omitempty" xml:"NeedOcr,omitempty"`
-	// Specifies whether to include the URL to the raw output of the algorithm.
+	// Specifies whether to return a link to the raw operator results.
 	//
 	// example:
 	//

@@ -20,20 +20,25 @@ type iListAIAgentVoiceprintsRequest interface {
 }
 
 type ListAIAgentVoiceprintsRequest struct {
-	// The page number.
+	// The page number to return. Must be 1 or greater.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Value values: [1,100].
+	// The number of entries per page. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 100
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The registration mode for the voiceprint. The default value is `Explicit`.
+	//
+	// example:
+	//
+	// Explicit
 	RegistrationMode *string `json:"RegistrationMode,omitempty" xml:"RegistrationMode,omitempty"`
-	// A unique identifier for the voiceprint. This parameter is optional. If provided, only the information for that ID is returned. If not specified, all voiceprints under the account are returned.
+	// The unique voiceprint ID. If specified, this operation returns the details of a single voiceprint. If omitted, it returns a paginated list of all voiceprints under your account.
 	//
 	// example:
 	//

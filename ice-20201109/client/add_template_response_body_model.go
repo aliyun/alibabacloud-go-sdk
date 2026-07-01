@@ -66,7 +66,7 @@ type AddTemplateResponseBodyTemplate struct {
 	//
 	// example:
 	//
-	// 参见Timeline模板Config文档
+	// 参见Config文档
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The URL of the template thumbnail.
 	//
@@ -78,11 +78,11 @@ type AddTemplateResponseBodyTemplate struct {
 	//
 	// Valid values:
 	//
-	// 	- AliyunConsole
+	// - AliyunConsole
 	//
-	// 	- WebSDK
+	// - WebSDK
 	//
-	// 	- OpenAPI
+	// - OpenAPI
 	//
 	// example:
 	//
@@ -92,11 +92,11 @@ type AddTemplateResponseBodyTemplate struct {
 	//
 	// Valid values:
 	//
-	// 	- AliyunConsole
+	// - AliyunConsole
 	//
-	// 	- WebSDK
+	// - WebSDK
 	//
-	// 	- OpenAPI
+	// - OpenAPI
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type AddTemplateResponseBodyTemplate struct {
 	//
 	// example:
 	//
-	// 视频添加水印模板
+	// Template name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the preview video.
 	//
@@ -118,17 +118,17 @@ type AddTemplateResponseBodyTemplate struct {
 	//
 	// Valid values:
 	//
-	// 	- UploadFailed: Failed to upload the video.
+	// - UploadFailed: Failed to upload the video.
 	//
-	// 	- ProcessFailed: Failed to process the advanced template.
+	// - ProcessFailed: Failed to process the advanced template.
 	//
-	// 	- Available: The template is available.
+	// - Available: The template is available.
 	//
-	// 	- Uploading: The video is being uploaded.
+	// - Uploading: The video is being uploaded.
 	//
-	// 	- Created: The template is created but not ready for use.
+	// - Created: The template is created but not ready for use.
 	//
-	// 	- Processing: The advanced template is being processed.
+	// - Processing: The advanced template is being processed.
 	//
 	// example:
 	//
@@ -144,9 +144,9 @@ type AddTemplateResponseBodyTemplate struct {
 	//
 	// Valid values:
 	//
-	// 	- Timeline: regular template.
+	// - Timeline: regular template.
 	//
-	// 	- VETemplate: advanced template.
+	// - VETemplate: advanced template.
 	//
 	// example:
 	//

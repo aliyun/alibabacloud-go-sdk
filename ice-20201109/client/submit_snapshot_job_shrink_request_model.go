@@ -24,27 +24,27 @@ type iSubmitSnapshotJobShrinkRequest interface {
 }
 
 type SubmitSnapshotJobShrinkRequest struct {
-	// The snapshot input.
+	// The input for the snapshot job.
 	//
 	// This parameter is required.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The name of the job.
+	// The name of the snapshot job.
 	//
 	// example:
 	//
 	// SampleJob
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The snapshot output.
+	// The output destination for the snapshot job.
 	//
 	// This parameter is required.
 	OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The scheduling settings.
+	// The scheduling configuration.
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
 	// The snapshot template configuration.
 	//
 	// This parameter is required.
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The user-defined data.
+	// Custom user data, passed as a JSON-formatted string.
 	//
 	// example:
 	//

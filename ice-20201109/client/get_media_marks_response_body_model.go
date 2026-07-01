@@ -26,7 +26,41 @@ type GetMediaMarksResponseBody struct {
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// The queried marks.
 	//
-	// 	- The value is in the JSONArray format.
+	// - The value is in the JSONArray format.
+	//
+	// example:
+	//
+	// [
+	//
+	//  {
+	//
+	//  "MarkStartTime": "12.1",
+	//
+	//  "MarkEndTime": "12.2",
+	//
+	//  "MarkTag": "tag-1",
+	//
+	//  "MarkContent": "content-1",
+	//
+	//  "MarkStatus": "a"
+	//
+	//  },
+	//
+	//  {
+	//
+	//  "MarkStartTime": "12.3",
+	//
+	//  "MarkEndTime": "12.4",
+	//
+	//  "MarkTag": "tag-2",
+	//
+	//  "MarkContent": "content-2",
+	//
+	//  "MarkStatus": "online"
+	//
+	//  }
+	//
+	// ]
 	MediaMarks *string `json:"MediaMarks,omitempty" xml:"MediaMarks,omitempty"`
 	// The request ID.
 	//

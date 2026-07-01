@@ -38,11 +38,28 @@ type iSearchMediaByAILabelRequest interface {
 }
 
 type SearchMediaByAILabelRequest struct {
+	// Custom filters. A JSON string. The following backing fields are supported: intField1 (integer type), strField1 and strField2 (string type). For the same field, only one matching method can be specified. Filters on different fields are combined with a logical AND relationship.
+	//
+	// - Exact match, for example: {"intField1":12,"strField1":"abc"}
+	//
+	// - Multi-value match, for example: {"intField1":[12,13],"strField1":["abc","cd"]}
+	//
+	// - Range match, for example: {"intField1":{"gte":12,"lte":13}}
+	//
 	// example:
 	//
-	// {}
+	// {"intField1":{"gte":12,"lte":13},"strField2":["cd","de"],"strField1":"abc"}
 	CustomFilters *string `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
-	MatchingMode  *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
+	// Matching pattern. The default value is fuzzy for Fuzzy Matching. Valid values:
+	//
+	// - fuzzy: Fuzzy Matching
+	//
+	// - precise: Precise matching. This pattern applies only to newly added media assets.
+	//
+	// example:
+	//
+	// fuzzy
+	MatchingMode *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
 	// The ID of the media asset. This parameter is required if you want to query media asset clips.
 	//
 	// example:
@@ -51,11 +68,11 @@ type SearchMediaByAILabelRequest struct {
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// The type of the media assets. Valid values:
 	//
-	// 	- image
+	// - image
 	//
-	// 	- video
+	// - video
 	//
-	// 	- audio
+	// - audio
 	//
 	// example:
 	//
@@ -63,19 +80,24 @@ type SearchMediaByAILabelRequest struct {
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// The type of query. Valid values:
 	//
-	// 	- PersonName: queries media assets based on character names.
+	// - PersonName: queries media assets based on character names.
 	//
-	// 	- Ocr: queries media assets based on subtitles.
+	// - Ocr: queries media assets based on subtitles.
 	//
-	// 	- AiCategory: queries media assets based on AI categories.
+	// - AiCategory: queries media assets based on AI categories.
 	//
-	// 	- FullSearch (default): queries all media assets.
+	// - FullSearch (default): queries all media assets.
 	//
 	// example:
 	//
 	// Ocr
 	MultimodalSearchType *string `json:"MultimodalSearchType,omitempty" xml:"MultimodalSearchType,omitempty"`
-	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Namespace.
+	//
+	// example:
+	//
+	// name-1
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -96,9 +118,9 @@ type SearchMediaByAILabelRequest struct {
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 	// The sorting method of the results. Valid values:
 	//
-	// 	- CreationTime:Desc (default): sorts results in reverse chronological order.
+	// - CreationTime:Desc (default): sorts results in reverse chronological order.
 	//
-	// 	- CreationTime:Asc: sorts results in chronological order.
+	// - CreationTime:Asc: sorts results in chronological order.
 	//
 	// example:
 	//
@@ -106,19 +128,27 @@ type SearchMediaByAILabelRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// Specifies whether to query media asset clips. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	SpecificSearch *bool `json:"SpecificSearch,omitempty" xml:"SpecificSearch,omitempty"`
 	// The content that you want to query.
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	//
 	// example:
 	//
-	// {}
+	// Kite
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Creation time, in milliseconds UNIX timestamp. Use gte for greater than or equal to, and lte for less than or equal to.
+	//
+	// - Example range: {"gte":1761205662998,"lte":1771205662998}
+	//
+	// example:
+	//
+	// {"gte":1761205662998,"lte":1771205662998}
 	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
 }
 

@@ -44,11 +44,11 @@ type CreateVodPackagingConfigurationShrinkRequest struct {
 	PackageConfigShrink *string `json:"PackageConfig,omitempty" xml:"PackageConfig,omitempty"`
 	// The package type.
 	//
-	// 	- HLS: packages content into TS segments for delivery over the HLS protocol.
+	// - HLS: packages content into TS segments for delivery over the HLS protocol.
 	//
-	// 	- HLS_CMAF: packages content into CMAF segments for delivery over the HLS protocol.
+	// - HLS_CMAF: packages content into CMAF segments for delivery over the HLS protocol.
 	//
-	// 	- DASH: packages content for delivery over the DASH protocol.
+	// - DASH: packages content for delivery over the DASH protocol.
 	//
 	// example:
 	//

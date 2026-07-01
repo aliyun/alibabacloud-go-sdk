@@ -26,7 +26,7 @@ type QueryCopyrightExtractJobResponseBody struct {
 	//
 	// example:
 	//
-	// ok
+	// Copyright watermark test
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	//
@@ -97,6 +97,10 @@ func (s *QueryCopyrightExtractJobResponseBody) Validate() error {
 
 type QueryCopyrightExtractJobResponseBodyData struct {
 	// The copyright watermark information.
+	//
+	// example:
+	//
+	// 版权水印测试
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

@@ -26,31 +26,50 @@ type iStartAIAgentOutboundCallShrinkRequest interface {
 }
 
 type StartAIAgentOutboundCallShrinkRequest struct {
+	// The AI agent ID configured in the [IMS console](https://ims.console.aliyun.com/ai/robot/list).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ***********e4f309379701645f4****
 	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// The called number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 173*****533
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The caller number. Only numbers from mainland China are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 183*****333
-	CallerNumber         *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
-	ConfigShrink         *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	CallerNumber *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	// The AI agent outbound call configuration.
+	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// xx
 	ImsAIAgentFreeObCall *string `json:"ImsAIAgentFreeObCall,omitempty" xml:"ImsAIAgentFreeObCall,omitempty"`
+	// A unique identifier for the session. You can use this ID to store, query, and synchronize chat history across multiple calls. This parameter is optional.
+	//
 	// example:
 	//
 	// f213fbc005e4f309379701645f4****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user-defined data.
+	//
+	// example:
+	//
+	// {"city":"Hangzhou"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s StartAIAgentOutboundCallShrinkRequest) String() string {

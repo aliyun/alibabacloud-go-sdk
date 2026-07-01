@@ -30,33 +30,35 @@ type iSubmitIProductionJobShrinkRequest interface {
 }
 
 type SubmitIProductionJobShrinkRequest struct {
-	// The name of the algorithm that you want to use for the job. Valid values:
+	// The name of the algorithm function. Valid values:
 	//
-	// 	- **Cover**: This algorithm intelligently generates a thumbnail image for a video.
+	// - **Cover**: Generates a smart cover.
 	//
-	// 	- **VideoClip**: This algorithm intelligently generates a summary for a video.
+	// - **VideoClip**: Creates a video summary.
 	//
-	// 	- **VideoDelogo**: This algorithm removes logos from a video.
+	// - **VideoDelogo**: Removes logos from a video.
 	//
-	// 	- **VideoDetext**: This algorithm removes captions from a video.
+	// - **VideoDetext**: Removes text from a video.
 	//
-	// 	- **CaptionExtraction**: This algorithm extracts captions from a video and generates the caption file.
+	// - **CaptionExtraction**: Extracts captions from a video.
 	//
-	// 	- **VideoGreenScreenMatting**: This algorithm performs green-screen image matting on a video and generates a new video.
+	// - **VideoGreenScreenMatting**: Performs green screen keying for a video.
 	//
-	// 	- **FaceBeauty**: This algorithm performs video retouching.
+	// - **FaceBeauty**: Applies beauty filters to faces in a video.
 	//
-	// 	- **VideoH2V**: This algorithm transforms a video from the landscape mode to the portrait mode.
+	// - **VideoH2V**: Converts a horizontal video to a vertical video.
 	//
-	// 	- **MusicSegmentDetect**: This algorithm detects the chorus of a song.
+	// - **MusicSegmentDetect**: Detects chorus segments in music.
 	//
-	// 	- **AudioBeatDetection**: This algorithm detects rhythms.
+	// - **AudioBeatDetection**: Detects the beat of an audio track.
 	//
-	// 	- **AudioQualityAssessment**: This algorithm assesses the audio quality.
+	// - **AudioQualityAssessment**: Assesses audio quality.
 	//
-	// 	- **SpeechDenoise**: This algorithm performs noise reduction.
+	// - **SpeechDenoise**: Reduces noise in speech audio.
 	//
-	// 	- **AudioMixing**: This algorithm mixes audio streams.
+	// - **AudioMixing**: Mixes audio tracks.
+	//
+	// - **MusicDemix**: Separates vocals from accompaniment in music.
 	//
 	// This parameter is required.
 	//
@@ -64,32 +66,47 @@ type SubmitIProductionJobShrinkRequest struct {
 	//
 	// Cover
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The input file. The file can be an Object Storage Service (OSS) object or a media asset.
+	// The input media asset. You can specify an OSS file or a media asset ID.
+	//
+	// The requirements for input files vary by algorithm function. For more information, see the supplementary instructions.
 	//
 	// This parameter is required.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The algorithm-specific parameters. The parameters are specified as JSON objects and vary based on the algorithm. For more information, see the "Parameters of JobParams" section of this topic.
+	// The algorithm job parameters, specified as a JSON-formatted string. The content of the JSON object varies by algorithm function. For more information, see the supplementary instructions.
 	//
 	// example:
 	//
 	// {"Model":"gif"}
 	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
-	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	// The name of the intelligent production job. The name can be up to 100 characters in length.
+	// The ID of the algorithm model. If you do not specify this parameter, the system uses the default model for the selected function. We recommend leaving this parameter empty unless you need to use a specific alternative model.
+	//
+	// The following function offers an alternative model:
+	//
+	// - `VideoDetext`
+	//
+	//   - Set `ModelId` to `algo-video-detext-new` to use an advanced subtitle removal algorithm. This model provides higher quality results but is slower and more expensive than the default model.
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The name of the job, which can be up to 100 characters long.
+	//
+	// example:
+	//
+	// Test task
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output file. The file can be an OSS object or a media asset.
+	// The output destination. You can specify an OSS file path or a media asset ID.
+	//
+	// The output files vary by algorithm function. For more information, see the supplementary instructions.
 	//
 	// This parameter is required.
 	OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The scheduling configuration.
+	// The configuration for job scheduling.
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
-	// The template ID.
+	// The ID of the template.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The user-defined data that is returned in the response. The value can be up to 1,024 bytes in length.
+	// Custom user data. The system passes this data through and returns it as-is in the callback or response. The length cannot exceed 256 characters.
 	//
 	// example:
 	//

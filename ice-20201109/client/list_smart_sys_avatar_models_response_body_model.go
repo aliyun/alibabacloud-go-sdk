@@ -24,9 +24,9 @@ type ListSmartSysAvatarModelsResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried digital humans.
+	// A list of system digital avatars.
 	SmartSysAvatarModelList []*ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList `json:"SmartSysAvatarModelList,omitempty" xml:"SmartSysAvatarModelList,omitempty" type:"Repeated"`
-	// The total number of system digital human images returned.
+	// The total number of system digital avatars.
 	//
 	// example:
 	//
@@ -83,13 +83,17 @@ func (s *ListSmartSysAvatarModelsResponseBody) Validate() error {
 }
 
 type ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList struct {
-	// The ID of the digital human. The ID is required to submit a separate digital human rendering job or use the digital human image in an intelligent timeline.
+	// The digital avatar ID. Use this ID when you submit a rendering job or use the digital avatar in an intelligent timeline.
 	//
 	// example:
 	//
 	// yunqiao
 	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
-	// The name of the digital human.
+	// The digital avatar name.
+	//
+	// example:
+	//
+	// Yun Qiao
 	AvatarName *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
 	// The video bitrate.
 	//
@@ -97,7 +101,7 @@ type ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList struct {
 	//
 	// 4000
 	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The sample thumbnail URL of the digital human.
+	// The URL of the sample cover for the digital avatar.
 	//
 	// example:
 	//
@@ -115,7 +119,7 @@ type ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList struct {
 	//
 	// false
 	OutputMask *bool `json:"OutputMask,omitempty" xml:"OutputMask,omitempty"`
-	// The sample video URL of the digital human.
+	// The URL of the sample video for the digital avatar.
 	//
 	// example:
 	//

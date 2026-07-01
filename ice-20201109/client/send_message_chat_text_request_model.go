@@ -74,7 +74,7 @@ type SendMessageChatTextRequest struct {
 	//
 	// example:
 	//
-	// Hello
+	// Hello.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The type of the message. Valid values:
 	//

@@ -101,7 +101,7 @@ type ListMediaInfoJobsResponseBodyJobs struct {
 	//
 	// example:
 	//
-	// ab4802364a2e49208c99efab82dfa8e8
+	// ab4802364a2e49208c99efab82df****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The details of the media information.
 	MediaInfoProperty *ListMediaInfoJobsResponseBodyJobsMediaInfoProperty `json:"MediaInfoProperty,omitempty" xml:"MediaInfoProperty,omitempty" type:"Struct"`
@@ -121,11 +121,11 @@ type ListMediaInfoJobsResponseBodyJobs struct {
 	ScheduleConfig *ListMediaInfoJobsResponseBodyJobsScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
 	// The state of the job. Valid values:
 	//
-	// 	- Init: The job is submitted.
+	// - Init: The job is submitted.
 	//
-	// 	- Success: The job is successful.
+	// - Success: The job is successful.
 	//
-	// 	- Fail: The job failed.
+	// - Fail: The job failed.
 	//
 	// example:
 	//
@@ -141,11 +141,11 @@ type ListMediaInfoJobsResponseBodyJobs struct {
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
 	// The source of the job. Valid values:
 	//
-	// 	- API
+	// - API
 	//
-	// 	- WorkFlow
+	// - WorkFlow
 	//
-	// 	- Console
+	// - Console
 	//
 	// example:
 	//
@@ -306,9 +306,9 @@ func (s *ListMediaInfoJobsResponseBodyJobs) Validate() error {
 type ListMediaInfoJobsResponseBodyJobsInput struct {
 	// The media object.
 	//
-	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	// - If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
 	//
-	// 	- If Type is set to Media, the ID of a media asset is returned.
+	// - If Type is set to Media, the ID of a media asset is returned.
 	//
 	// example:
 	//
@@ -316,9 +316,9 @@ type ListMediaInfoJobsResponseBodyJobsInput struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the media object. Valid values:
 	//
-	// 	- OSS: an Object Storage Service (OSS) object.
+	// - OSS: an Object Storage Service (OSS) object.
 	//
-	// 	- Media: a media asset.
+	// - Media: a media asset.
 	//
 	// example:
 	//
@@ -726,7 +726,7 @@ type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyFileBasicInfo struct {
 	//
 	// example:
 	//
-	// 4765337007f571edbfdf81848c016303
+	// 4765337007f571edbfdf81848c01****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// The region in which the file resides.
 	//
@@ -925,11 +925,11 @@ type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList struc
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
 	// Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
 	//
-	// 	- 0: The stream contains no B-frames.
+	// - 0: The stream contains no B-frames.
 	//
-	// 	- 1: The stream contains one B-frame.
+	// - 1: The stream contains one B-frame.
 	//
-	// 	- 2: The stream contains multiple consecutive B-frames.
+	// - 2: The stream contains multiple consecutive B-frames.
 	//
 	// example:
 	//
@@ -979,9 +979,9 @@ type ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList struc
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The rotation angle of the video image.
 	//
-	// 	- Valid values: 0, 90, 180, and 270.
+	// - Valid values: 0, 90, 180, and 270.
 	//
-	// 	- Default value: 0.
+	// - Default value: 0.
 	//
 	// example:
 	//
@@ -1237,7 +1237,7 @@ type ListMediaInfoJobsResponseBodyJobsScheduleConfig struct {
 	//
 	// example:
 	//
-	// e37ebee5d98b4781897f6086e89f9c56
+	// e37ebee5d98b4781897f6086e89f****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
 	//

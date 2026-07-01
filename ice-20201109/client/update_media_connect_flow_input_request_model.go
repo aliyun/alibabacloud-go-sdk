@@ -48,7 +48,12 @@ type UpdateMediaConnectFlowInputRequest struct {
 	//
 	// rtmp://pull.test.alivecdn.com/live/alitest
 	InputFromUrl *string `json:"InputFromUrl,omitempty" xml:"InputFromUrl,omitempty"`
-	InputName    *string `json:"InputName,omitempty" xml:"InputName,omitempty"`
+	// Input name. This parameter is required only when primary/standby input is enabled for the instance.
+	//
+	// example:
+	//
+	// input1
+	InputName *string `json:"InputName,omitempty" xml:"InputName,omitempty"`
 	// The maximum bitrate. Unit: bit/s.
 	//
 	// example:

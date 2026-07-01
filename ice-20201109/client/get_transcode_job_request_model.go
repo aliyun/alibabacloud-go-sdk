@@ -14,7 +14,7 @@ type iGetTranscodeJobRequest interface {
 }
 
 type GetTranscodeJobRequest struct {
-	// The job ID.
+	// Job ID
 	//
 	// example:
 	//

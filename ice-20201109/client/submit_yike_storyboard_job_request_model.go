@@ -40,15 +40,30 @@ type iSubmitYikeStoryboardJobRequest interface {
 }
 
 type SubmitYikeStoryboardJobRequest struct {
+	// The aspect ratio of the output video.
+	//
 	// example:
 	//
 	// 4:3
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
-	ExecMode    *string `json:"ExecMode,omitempty" xml:"ExecMode,omitempty"`
+	// The storyboard generation execution mode.
+	//
+	// - `FullPipeline`: Executes the full generation pipeline, including both storyboard creation and shot video generation.
+	//
+	// - `StoryboardOnly`: Generates only the storyboard.
+	//
+	// example:
+	//
+	// FullPipeline
+	ExecMode *string `json:"ExecMode,omitempty" xml:"ExecMode,omitempty"`
+	// The OSS address of the file.
+	//
 	// example:
 	//
 	// http://test.oss-cn-shanghai.aliyuncs.com/test.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	// Parameters for the model, in JSON format.
+	//
 	// example:
 	//
 	// {
@@ -57,35 +72,58 @@ type SubmitYikeStoryboardJobRequest struct {
 	//
 	// }
 	ModelParams *string `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
+	// The narration voice ID.
+	//
 	// example:
 	//
 	// sys_YoungGracefulWoman
 	NarrationVoiceId *string `json:"NarrationVoiceId,omitempty" xml:"NarrationVoiceId,omitempty"`
+	// The resolution of the output video.
+	//
 	// example:
 	//
 	// 720P
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// The storyboard shot generation mode.
+	//
 	// example:
 	//
 	// multi
 	ShotPromptMode *string `json:"ShotPromptMode,omitempty" xml:"ShotPromptMode,omitempty"`
+	// The shot split mode.
+	//
 	// example:
 	//
 	// firstPersonNarration
-	ShotSplitMode   *string `json:"ShotSplitMode,omitempty" xml:"ShotSplitMode,omitempty"`
-	SkipFailureShot *bool   `json:"SkipFailureShot,omitempty" xml:"SkipFailureShot,omitempty"`
+	ShotSplitMode *string `json:"ShotSplitMode,omitempty" xml:"ShotSplitMode,omitempty"`
+	// Specifies whether to skip a failed shot. The default value is `true`.
+	//
+	// example:
+	//
+	// True
+	SkipFailureShot *bool `json:"SkipFailureShot,omitempty" xml:"SkipFailureShot,omitempty"`
+	// The source type.
+	//
 	// example:
 	//
 	// Novel
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The storyboard style ID.
+	//
 	// example:
 	//
 	// RealisticPhotography
 	StyleId *string `json:"StyleId,omitempty" xml:"StyleId,omitempty"`
+	// The job title. It must be a UTF-8 encoded string of up to 128 bytes. If you do not specify a title, the system generates a default one based on the date.
+	//
 	// example:
 	//
 	// test-title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Custom settings in JSON format. This parameter can contain the following field:
+	//
+	// - The `NotifyAddress` field specifies the callback URL that is invoked when the job is complete. Both MNS and HTTP callbacks are supported.
+	//
 	// example:
 	//
 	// {
@@ -94,6 +132,8 @@ type SubmitYikeStoryboardJobRequest struct {
 	//
 	// }
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The video model.
+	//
 	// example:
 	//
 	// wan2.6-r2v-flash

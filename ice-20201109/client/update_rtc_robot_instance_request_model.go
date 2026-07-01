@@ -16,7 +16,10 @@ type iUpdateRtcRobotInstanceRequest interface {
 }
 
 type UpdateRtcRobotInstanceRequest struct {
+	// The configuration for the AI Agent instance.
 	Config *UpdateRtcRobotInstanceRequestConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The ID of the AI Agent instance to update.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,11 +64,20 @@ func (s *UpdateRtcRobotInstanceRequest) Validate() error {
 }
 
 type UpdateRtcRobotInstanceRequestConfig struct {
+	// Controls whether voice interrupt is enabled. This change takes effect immediately.
+	//
 	// example:
 	//
 	// false
-	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
-	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	EnableVoiceInterrupt *bool `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	// The greeting message. The greeting is not updated if it has already been played.
+	//
+	// example:
+	//
+	// Hello
+	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// The ID of the voice. The new voice takes effect on the AI Agent\\"s next utterance.
+	//
 	// example:
 	//
 	// zhixiaoxia

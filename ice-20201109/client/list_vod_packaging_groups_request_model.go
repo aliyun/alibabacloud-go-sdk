@@ -40,9 +40,9 @@ type ListVodPackagingGroupsRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The sorting order of the packaging groups based on the time when they were created. Valid values:
 	//
-	// 	- desc (default): descending order.
+	// - desc (default): descending order.
 	//
-	// 	- asc: ascending order.
+	// - asc: ascending order.
 	//
 	// example:
 	//

@@ -27,31 +27,39 @@ type iDescribeNotifyConfigResponseBody interface {
 
 type DescribeNotifyConfigResponseBody struct {
 	AudioOssPath *string `json:"AudioOssPath,omitempty" xml:"AudioOssPath,omitempty"`
+	// The URL where event callbacks are sent.
+	//
 	// example:
 	//
 	// http://customer.com/callback
 	CallbackUrl          *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	EnableAudioRecording *bool   `json:"EnableAudioRecording,omitempty" xml:"EnableAudioRecording,omitempty"`
+	// Indicates whether notifications are enabled.
+	//
 	// example:
 	//
 	// true
 	EnableNotify *bool `json:"EnableNotify,omitempty" xml:"EnableNotify,omitempty"`
-	// The event types. If this parameter is empty, all event types are selected.
+	// The event types. If you do not specify this parameter, all event types are selected by default.
 	//
-	// 	- agent_start: The agent is started.
+	// - `agent_start`: The agent is ready.
 	//
-	// 	- agent_stop: The agent is stopped.
+	// - `agent_stop`: The agent is stopped.
 	//
-	// 	- error: An error occurred.
+	// - `error`: The task encountered an error.
 	//
 	// example:
 	//
 	// agent_start,agent_stop,error
 	EventTypes *string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty"`
+	// The unique identifier for the request.
+	//
 	// example:
 	//
 	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The authentication token used to verify the callback. This token is included in the `Authorization` field of the request header for each event callback.
+	//
 	// example:
 	//
 	// eyJhcHBpZCI6ICIxMjM0MTIzNxxxxx

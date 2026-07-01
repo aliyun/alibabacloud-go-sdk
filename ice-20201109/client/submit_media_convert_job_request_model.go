@@ -20,23 +20,23 @@ type iSubmitMediaConvertJobRequest interface {
 }
 
 type SubmitMediaConvertJobRequest struct {
-	// The idempotency key that is used to ensure repeated requests have the same effect as a single request.
+	// A unique client token that ensures request idempotency.
 	//
 	// example:
 	//
 	// 86f8e525-9d73-4dac-88aa-7aa4e950c00a
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The configurations of the transcoding task.
+	// The transcoding job configuration. For more information, see [MediaConvertJobConfig](https://help.aliyun.com/document_detail/2999539.html).
 	//
 	// This parameter is required.
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the queue.
+	// The ID of the pipeline for the transcoding job.
 	//
 	// example:
 	//
 	// e197ecfb103e4849922b054d3032f954
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The user data.
+	// Custom data to pass with the job.
 	//
 	// example:
 	//

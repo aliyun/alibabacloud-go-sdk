@@ -259,9 +259,9 @@ type QueryTraceM3u8JobListResponseBodyDataOutput struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the output file. Valid values:
 	//
-	// 	- OSS: an OSS object.
+	// - OSS: an OSS object.
 	//
-	// 	- Media: a media asset.
+	// - Media: a media asset.
 	//
 	// example:
 	//

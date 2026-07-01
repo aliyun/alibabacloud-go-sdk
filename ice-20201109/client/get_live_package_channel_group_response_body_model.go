@@ -22,7 +22,7 @@ type GetLivePackageChannelGroupResponseBody struct {
 	//
 	// example:
 	//
-	// req-abcdefg123456
+	// 5D87B753-0250-5D9D-B248-D40C3271F864
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

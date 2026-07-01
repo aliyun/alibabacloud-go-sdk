@@ -18,9 +18,9 @@ type iSubmitCustomizedVoiceJobResponseBody interface {
 }
 
 type SubmitCustomizedVoiceJobResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data *SubmitCustomizedVoiceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique identifier for the request.
 	//
 	// example:
 	//
@@ -28,9 +28,9 @@ type SubmitCustomizedVoiceJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *SubmitCustomizedVoiceJobResponseBody) Validate() error {
 }
 
 type SubmitCustomizedVoiceJobResponseBodyData struct {
-	// The ID of the human voice cloning job.
+	// The unique identifier for the voice cloning job.
 	//
 	// example:
 	//
 	// ****d718e2ff4f018ccf419a7b71****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The voice ID.
+	// The unique identifier for the voice.
 	//
 	// example:
 	//

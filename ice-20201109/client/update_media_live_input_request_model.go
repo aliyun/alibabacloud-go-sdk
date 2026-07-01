@@ -123,11 +123,33 @@ type UpdateMediaLiveInputRequestInputSettings struct {
 	// example:
 	//
 	// rtmp://domain/app/stream
-	SourceUrl     *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
-	SrtLatency    *int32  `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
-	SrtMaxBitrate *int32  `json:"SrtMaxBitrate,omitempty" xml:"SrtMaxBitrate,omitempty"`
+	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// Latency of the SRT stream, in ms. Valid range: [100, 10000]. Optional when Type is SRT_PUSH or SRT_PULL.
+	//
+	// example:
+	//
+	// 1000
+	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
+	// Maximum bitrate of the SRT stream, in bps. Valid range: [100, 100000000]. Optional when Type is SRT_PUSH or SRT_PULL.
+	//
+	// example:
+	//
+	// 3000000
+	SrtMaxBitrate *int32 `json:"SrtMaxBitrate,omitempty" xml:"SrtMaxBitrate,omitempty"`
+	// The SRT encryption configuration. The password for the SRT stream must consist of 10 to 79 visible ASCII characters. Optional when Type is SRT_PUSH or SRT_PULL.
+	//
+	// If the encryption configuration is not empty, all SRT clients must use the correct password to publish or playback streams. Otherwise, the SRT connection will be denied.
+	//
+	// example:
+	//
+	// srtencryption
 	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
-	SrtPbKeyLen   *int32  `json:"SrtPbKeyLen,omitempty" xml:"SrtPbKeyLen,omitempty"`
+	// Encryption configuration for SRT—the key length of the SRT stream. Valid values: 0, 16, 24, 32. Optional when Type is SRT_PUSH or SRT_PULL.
+	//
+	// example:
+	//
+	// 16
+	SrtPbKeyLen *int32 `json:"SrtPbKeyLen,omitempty" xml:"SrtPbKeyLen,omitempty"`
 	// The name of the pushed stream. This parameter is required for PUSH inputs. It can be up to 255 characters in length.
 	//
 	// example:

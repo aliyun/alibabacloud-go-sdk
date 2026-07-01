@@ -16,13 +16,13 @@ type iSubmitScreenMediaHighlightsJobResponseBody interface {
 }
 
 type SubmitScreenMediaHighlightsJobResponseBody struct {
-	// The ID of the task.
+	// The ID of the highlight compilation job.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID.
+	// A unique ID for the request.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iSubmitSmarttagJobResponseBody interface {
 }
 
 type SubmitSmarttagJobResponseBody struct {
-	// The ID of the smart tagging job. We recommend that you save this ID for subsequent calls of other operations.
+	// The ID of the smart tagging job. Save this ID for subsequent API calls.
 	//
 	// example:
 	//

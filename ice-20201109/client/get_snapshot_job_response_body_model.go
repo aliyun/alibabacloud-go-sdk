@@ -113,6 +113,10 @@ type GetSnapshotJobResponseBodySnapshotJob struct {
 	// 2022-07-12T16:30:54Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The name of the job.
+	//
+	// example:
+	//
+	// Test task
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The output of the job.
 	Output *GetSnapshotJobResponseBodySnapshotJobOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
@@ -126,11 +130,11 @@ type GetSnapshotJobResponseBodySnapshotJob struct {
 	//
 	// Valid values:
 	//
-	// 	- Init: The job is submitted.
+	// - Init: The job is submitted.
 	//
-	// 	- Success: The job is successful.
+	// - Success: The job is successful.
 	//
-	// 	- Fail: The job failed.
+	// - Fail: The job failed.
 	//
 	// example:
 	//
@@ -158,11 +162,11 @@ type GetSnapshotJobResponseBodySnapshotJob struct {
 	//
 	// Valid values:
 	//
-	// 	- Console
+	// - Console
 	//
-	// 	- Workflow
+	// - Workflow
 	//
-	// 	- API
+	// - API
 	//
 	// example:
 	//
@@ -172,11 +176,11 @@ type GetSnapshotJobResponseBodySnapshotJob struct {
 	//
 	// Valid values:
 	//
-	// 	- WebVtt
+	// - WebVtt
 	//
-	// 	- Sprite
+	// - Sprite
 	//
-	// 	- Normal
+	// - Normal
 	//
 	// example:
 	//
@@ -386,9 +390,9 @@ func (s *GetSnapshotJobResponseBodySnapshotJob) Validate() error {
 type GetSnapshotJobResponseBodySnapshotJobInput struct {
 	// The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
 	//
-	// 1.  oss://bucket/object
+	// 1. oss\\://bucket/object
 	//
-	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	// 2. http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
 	//
 	// example:
 	//
@@ -398,9 +402,9 @@ type GetSnapshotJobResponseBodySnapshotJobInput struct {
 	OssFile *GetSnapshotJobResponseBodySnapshotJobInputOssFile `json:"OssFile,omitempty" xml:"OssFile,omitempty" type:"Struct"`
 	// The type of the input file. Valid values:
 	//
-	// 1.  OSS: an Object Storage Service (OSS) object.
+	// 1. OSS: an Object Storage Service (OSS) object.
 	//
-	// 2.  Media: a media asset.
+	// 2. Media: a media asset.
 	//
 	// example:
 	//
@@ -515,9 +519,9 @@ func (s *GetSnapshotJobResponseBodySnapshotJobInputOssFile) Validate() error {
 type GetSnapshotJobResponseBodySnapshotJobOutput struct {
 	// The output file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
 	//
-	// 1.  oss://bucket/object
+	// 1. oss\\://bucket/object
 	//
-	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+	// 2. http(s)://bucket.oss-[RegionId].aliyuncs.com/object
 	//
 	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS. If multiple static snapshots were captured, the object must contain the "{Count}" placeholder. In the case of a sprite, the object must contain the "{TileCount}" placeholder. The suffix of the WebVTT snapshot objects must be ".vtt".
 	//
@@ -529,9 +533,9 @@ type GetSnapshotJobResponseBodySnapshotJobOutput struct {
 	OssFile *GetSnapshotJobResponseBodySnapshotJobOutputOssFile `json:"OssFile,omitempty" xml:"OssFile,omitempty" type:"Struct"`
 	// The type of the output file. Valid values:
 	//
-	// 1.  OSS: an OSS object.
+	// 1. OSS: an OSS object.
 	//
-	// 2.  Media: a media asset.
+	// 2. Media: a media asset.
 	//
 	// example:
 	//

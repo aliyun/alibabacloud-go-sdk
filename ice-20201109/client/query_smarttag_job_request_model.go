@@ -16,7 +16,7 @@ type iQuerySmarttagJobRequest interface {
 }
 
 type QuerySmarttagJobRequest struct {
-	// The ID of the smart tagging job that you want to query. You can obtain the job ID from the response parameters of the SubmitSmarttagJob operation.
+	// The ID of the smart tagging job. You can obtain this ID from the response to the [SubmitSmarttagJob](https://help.aliyun.com/document_detail/478786.html) call.
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,11 @@ type QuerySmarttagJobRequest struct {
 	//
 	// 88c6ca184c0e47098a5b665e2****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The extra parameters that you want to query in the request. The value is a JSON string. Example: {"labelResultType":"auto"}. The value of labelResultType is of the STRING type. Valid values:
+	// Additional request parameters, formatted as a JSON string. For example: `{"labelResultType":"auto"}`. The `labelResultType` parameter supports the following values:
 	//
-	// 	- auto: machine tagging
+	// - `auto`: machine-generated tagging results
 	//
-	// 	- hmi: tagging by human and machine
+	// - `hmi`: human-in-the-loop tagging results
 	//
 	// example:
 	//

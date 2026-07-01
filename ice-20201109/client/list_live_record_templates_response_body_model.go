@@ -30,7 +30,7 @@ type ListLiveRecordTemplatesResponseBody struct {
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of templates per page.
 	//
 	// example:
 	//
@@ -44,19 +44,13 @@ type ListLiveRecordTemplatesResponseBody struct {
 	//
 	// BEA98A0C-7870-15FE-B96F-8880BB600A2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The sorting order. By default, the query results are sorted by creation time in descending order.
-	//
-	// Valid values:
-	//
-	// 	- asc: sorts the query results in ascending order.
-	//
-	// 	- desc: sorts the query results in descending order.
+	// The sort order. By default, templates are sorted by creation time in descending order.
 	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The total number of entries returned.
+	// The total number of templates.
 	//
 	// example:
 	//
@@ -140,7 +134,7 @@ func (s *ListLiveRecordTemplatesResponseBody) Validate() error {
 }
 
 type ListLiveRecordTemplatesResponseBodyRecordTemplateList struct {
-	// The time when the job was created.
+	// The time the template was created.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -148,7 +142,7 @@ type ListLiveRecordTemplatesResponseBodyRecordTemplateList struct {
 	//
 	// 2022-07-20T02:48:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the template was last modified.
+	// The time the template was last modified.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -170,7 +164,7 @@ type ListLiveRecordTemplatesResponseBodyRecordTemplateList struct {
 	//
 	// 69e1f9fe-1e97-11ed-ba64-0c42a1b73d66
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The type of the template.
+	// The template type.
 	//
 	// example:
 	//
@@ -254,31 +248,31 @@ func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateList) Validate() error
 }
 
 type ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList struct {
-	// The duration of the recording cycle. Unit: seconds.
+	// The duration of the recording cycle, in seconds.
 	//
 	// example:
 	//
 	// 21600
 	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// The output file format.
+	// The recording file format.
 	//
 	// example:
 	//
 	// m3u8
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The name of the recording file that is stored in Object Storage Service (OSS).
+	// The object prefix for the recording file stored in Object Storage Service (OSS).
 	//
 	// example:
 	//
 	// record/{JobId}/{Sequence}_{EscapedStartTime}_{EscapedEndTime}
 	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	// The duration of a single segment. Unit: seconds.
+	// The duration of each slice, in seconds.
 	//
 	// example:
 	//
 	// 30
 	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
-	// The name of the TS segment.
+	// The object prefix for the Transport Stream (TS) slice.
 	//
 	// example:
 	//

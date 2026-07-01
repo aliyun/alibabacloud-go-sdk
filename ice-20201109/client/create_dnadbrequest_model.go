@@ -26,23 +26,27 @@ type iCreateDNADBRequest interface {
 }
 
 type CreateDNADBRequest struct {
-	// The description of the media fingerprint library.
+	// The description of the DNA database.
+	//
+	// example:
+	//
+	// 这是一个视频DNA库。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The model of the media fingerprint library. Valid values:
+	// The DNA database model. Valid values:
 	//
-	// 	- **Video**
+	// - **Video**: For video content.
 	//
-	// 	- **Audio**
+	// - **Audio**: For audio content.
 	//
-	// 	- **Image**
+	// - **Image**: For image content. (Deprecated)
 	//
-	// 	- **Text*	- (supported only in the China (Shanghai) region)
+	// - **Text**: For text content. Supported only in the China (Shanghai) region. (Deprecated)
 	//
 	// example:
 	//
 	// Video
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The name of the media fingerprint library.
+	// The name of the DNA database.
 	//
 	// This parameter is required.
 	//

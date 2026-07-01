@@ -18,9 +18,9 @@ type iGetPlayInfoResponseBody interface {
 }
 
 type GetPlayInfoResponseBody struct {
-	// The information about the media asset.
+	// The basic information about the media asset.
 	MediaBase *GetPlayInfoResponseBodyMediaBase `json:"MediaBase,omitempty" xml:"MediaBase,omitempty" type:"Struct"`
-	// The information about the audio or video stream.
+	// A list of audio or video playback streams.
 	PlayInfoList []*GetPlayInfoResponseBodyPlayInfoList `json:"PlayInfoList,omitempty" xml:"PlayInfoList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -84,19 +84,19 @@ func (s *GetPlayInfoResponseBody) Validate() error {
 }
 
 type GetPlayInfoResponseBodyMediaBase struct {
-	// The category ID. You can use one of the following methods to obtain the ID:
+	// The category ID. You can obtain the category ID in one of the following ways:
 	//
-	// 	- Log on to the [Intelligent Media Services (IMS) console](https://ims.console.aliyun.com) and choose **Media Asset Management*	- > **Category Management*	- to view the category ID.
+	// - Log on to the [IMS console](https://ims.console.aliyun.com) and choose **media asset management*	- > **category management*	- to view the category ID.
 	//
-	// 	- View the value of the CateId parameter returned by the AddCategory operation that you called to create a category.
+	// - The create category operation returns the category ID in the `CateId` parameter.
 	//
-	// 	- View the value of the CateId parameter returned by the GetCategories operation that you called to query a category.
+	// - The get category operation returns the category ID in the `CateId` parameter.
 	//
 	// example:
 	//
 	// 4220
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The URL of the thumbnail.
+	// The cover URL.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type GetPlayInfoResponseBodyMediaBase struct {
 	//
 	// 2021-09-22T10:07:31+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The content description.
+	// The description.
 	//
 	// example:
 	//
 	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
@@ -122,35 +122,35 @@ type GetPlayInfoResponseBodyMediaBase struct {
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// The tags.
 	//
-	// 	- Up to 16 tags are supported.
+	// - You can add up to 16 tags.
 	//
-	// 	- Multiple tags are separated by commas (,).
+	// - Separate multiple tags with commas (,).
 	//
-	// 	- Each tag can be up to 32 bytes in length.
+	// - The maximum length of a tag is 32 bytes.
 	//
-	// 	- The value is encoded in UTF-8.
+	// - Tags must be UTF-8 encoded.
 	//
 	// example:
 	//
 	// test,ccc
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// The type of the media asset. Valid values:
+	// The type of the media file. Valid values:
 	//
-	// video audio
+	// `video`: A video file. `audio`: An audio-only file.
 	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The resource status. Valid values:
+	// The status of the media asset. Valid values:
 	//
-	// Init: the initial state, which indicates that the source file is not ready.
+	// - `Init`: The source file is not ready.
 	//
-	// Preparing: The source file is being prepared. For example, the file is being uploaded or edited.
+	// - `Preparing`: The source file is being prepared. This process may involve uploading or compositing.
 	//
-	// PrepareFail: The source file failed to be prepared. For example, the information of the source file failed to be obtained.
+	// - `PrepareFail`: Preparation of the source file failed. For example, the system failed to retrieve the source file metadata.
 	//
-	// Normal: The source file is ready.
+	// - `Normal`: The source file is ready.
 	//
 	// example:
 	//
@@ -258,51 +258,51 @@ func (s *GetPlayInfoResponseBodyMediaBase) Validate() error {
 }
 
 type GetPlayInfoResponseBodyPlayInfoList struct {
-	// The color depth.
+	// The color bit depth.
 	//
 	// example:
 	//
 	// 8
 	BitDepth *int32 `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
-	// The bitrate of the media stream. Unit: Kbit/s.
+	// The bitrate of the media stream in Kbit/s.
 	//
 	// example:
 	//
 	// 20
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The time when the media stream was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The creation time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-05-10T02:28:49Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The quality of the media stream. Valid values:
+	// The definition of the video stream. Valid values:
 	//
-	// 	- **FD**: low definition
+	// - **FD**: fluent
 	//
-	// 	- **LD**: standard definition
+	// - **LD**: standard definition
 	//
-	// 	- **SD**: high definition
+	// - **SD**: high definition
 	//
-	// 	- **HD**: ultra-high definition
+	// - **HD**: ultra-high definition
 	//
-	// 	- **OD**: original definition
+	// - **OD**: original
 	//
-	// 	- **2K**
+	// - **2K**
 	//
-	// 	- **4K**
+	// - **4K**
 	//
-	// 	- **SQ**: standard sound quality
+	// - **SQ**: standard-quality audio
 	//
-	// 	- **HQ**: high sound quality
+	// - **HQ**: high-quality audio
 	//
-	// 	- **AUTO**: adaptive bitrate
+	// - **AUTO**: adaptive bitrate
 	//
 	// example:
 	//
 	// HD
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// The duration of the media stream. Unit: seconds.
+	// The duration of the media stream in seconds.
 	//
 	// example:
 	//
@@ -310,9 +310,9 @@ type GetPlayInfoResponseBodyPlayInfoList struct {
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// Indicates whether the media stream is encrypted. Valid values:
 	//
-	// 	- **0**: The media stream is not encrypted.
+	// - **0**: No.
 	//
-	// 	- **1**: The media stream is encrypted.
+	// - **1**: Yes.
 	//
 	// example:
 	//
@@ -320,17 +320,17 @@ type GetPlayInfoResponseBodyPlayInfoList struct {
 	Encrypt *int64 `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
 	// The encryption type of the media stream. Valid values:
 	//
-	// 	- **AliyunVoDEncryption**: Alibaba Cloud proprietary cryptography
+	// - **AliyunVoDEncryption**: Alibaba Cloud VoD Encryption.
 	//
-	// 	- **HLSEncryption**: HTTP Live Streaming (HLS) encryption
+	// - **HLSEncryption**: HLS standard encryption.
 	//
-	// >  If the encryption type is AliyunVoDEncryption, only ApsaraVideo Player SDK can be used to play videos.
+	// > If a stream is encrypted with **AliyunVoDEncryption**, you can play it only with the Alibaba Cloud Player SDK.
 	//
 	// example:
 	//
 	// AliyunVoDEncryption
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	// The OSS URL of the file.
+	// The OSS file URL.
 	//
 	// example:
 	//
@@ -338,99 +338,99 @@ type GetPlayInfoResponseBodyPlayInfoList struct {
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
 	// The format of the media stream.
 	//
-	// 	- If the media asset is a video file, the valid values are **mp4*	- and **m3u8**.
+	// - For video streams, valid values are **mp4*	- and **m3u8**.
 	//
-	// 	- If the media asset is an audio-only file, the value is **mp3**.
+	// - For audio-only streams, the value is **mp3**.
 	//
 	// example:
 	//
 	// mp4
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The frame rate of the media stream. Unit: frames per second (FPS).
+	// The frame rate of the media stream in frames per second.
 	//
 	// example:
 	//
 	// 25
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The high dynamic range (HDR) type of the media stream. Valid values:
+	// The High Dynamic Range (HDR) type of the media stream. Valid values:
 	//
-	// 	- HDR
+	// - HDR
 	//
-	// 	- HDR10
+	// - HDR10
 	//
-	// 	- HLG
+	// - HLG
 	//
-	// 	- DolbyVision
+	// - DolbyVision
 	//
-	// 	- HDRVivid
+	// - HDRVivid
 	//
-	// 	- SDR+
+	// - SDR+
 	//
 	// example:
 	//
 	// HDR
 	HDRType *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
-	// The height of the media stream. Unit: pixels.
+	// The height of the media stream in pixels.
 	//
 	// example:
 	//
 	// 1080
 	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// 36c9d38e70bf43ed9f7f8f48d6356***
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The time when the media stream was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The last modification time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-05-13T11:39:41.714+08:00
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The type of Narrowband HD™ transcoding. Valid values:
+	// The Narrowband HD type. Valid values:
 	//
-	// 	- **0**: standard transcoding
+	// - **0**: regular.
 	//
-	// 	- **1.0**: Narrowband HD™ 1.0 transcoding
+	// - **1.0**: Narrowband HD 1.0.
 	//
-	// 	- **2.0**: Narrowband HD™ 2.0 transcoding
+	// - **2.0**: Narrowband HD 2.0.
 	//
-	// This parameter is returned only when a definition that is available in the built-in Narrowband HD™ 1.0 transcoding template is specified. For more information, see the [Definition parameter in TranscodeTemplate](https://help.aliyun.com/document_detail/52839.html) table.
+	// This parameter applies only if a definition is configured in the built-in transcoding template for Narrowband HD 1.0. For more information, see [Configure transcoding templates - Definition](https://help.aliyun.com/document_detail/52839.html).
 	//
 	// example:
 	//
 	// 0
 	NarrowBandType *string `json:"NarrowBandType,omitempty" xml:"NarrowBandType,omitempty"`
-	// The playback URL of the media stream.
+	// The playback URL of the video stream.
 	//
 	// example:
 	//
 	// https://***.aliyuncdn.com/sv/756bee1-17f980f0945/756bee1-17f980f0945.mp4
 	PlayURL *string `json:"PlayURL,omitempty" xml:"PlayURL,omitempty"`
-	// The size of the media stream. Unit: bytes.
+	// The size of the media stream in bytes.
 	//
 	// example:
 	//
 	// 418112
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The status of the media stream. Valid values:
+	// The media stream status. Valid values:
 	//
-	// 	- **Normal**
+	// - **Normal**: The stream is available.
 	//
-	// 	- **Invisible**
+	// - **Invisible**: The stream is not visible.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the media stream, which are used to identify the transcoding type.
+	// The stream tags, which are used to identify the transcoding type.
 	//
 	// example:
 	//
 	// "{\\"ims.audioServiceType\\": \\"AudioEnhancement\\"}"
 	StreamTags *string `json:"StreamTags,omitempty" xml:"StreamTags,omitempty"`
-	// The type of the media stream. If the media stream is a video stream, the value is **video**. If the media stream is an audio-only stream, the value is **audio**.
+	// The type of the media stream. The value is **video*	- for video streams or **audio*	- for audio-only streams.
 	//
 	// example:
 	//
@@ -438,17 +438,17 @@ type GetPlayInfoResponseBodyPlayInfoList struct {
 	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
 	// The type of the transcoding template. Valid values:
 	//
-	// 	- Normal: standard transcoding
+	// - `Normal`: regular transcoding
 	//
-	// 	- AudioTranscode: audio transcoding
+	// - `AudioTranscode`: audio transcoding
 	//
-	// 	- Remux: container format conversion
+	// - `Remux`: remuxing
 	//
-	// 	- NarrowBandV1: Narrowband HD™ 1.0
+	// - `NarrowBandV1`: Narrowband HD 1.0
 	//
-	// 	- NarrowBandV2: Narrowband HD™ 2.0
+	// - `NarrowBandV2`: Narrowband HD 2.0
 	//
-	// 	- UHD: audio and video enhancement (ultra-high definition)
+	// - `UHD`: audio and video enhancement (ultra-high definition)
 	//
 	// example:
 	//
@@ -460,7 +460,7 @@ type GetPlayInfoResponseBodyPlayInfoList struct {
 	//
 	// 5bed88672b1e2520ead228935ed51***
 	WatermarkId *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
-	// The width of the media stream. Unit: pixels.
+	// The width of the media stream in pixels.
 	//
 	// example:
 	//

@@ -41,6 +41,10 @@ type CreateLivePackageChannelRequest struct {
 	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The channel description. It can be up to 1,000 characters in length.
+	//
+	// example:
+	//
+	// This is a test channel.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The channel group name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//

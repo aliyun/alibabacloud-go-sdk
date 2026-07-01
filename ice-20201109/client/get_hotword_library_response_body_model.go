@@ -50,7 +50,7 @@ type GetHotwordLibraryResponseBody struct {
 	//
 	// example:
 	//
-	// 热词库名称
+	// Hotword library name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the request.
 	//

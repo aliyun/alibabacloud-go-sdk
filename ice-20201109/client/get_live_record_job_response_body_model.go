@@ -77,6 +77,10 @@ type GetLiveRecordJobResponseBodyRecordJob struct {
 	// ab0e3e76-1e9d-11ed-ba64-0c42a1b73d66
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The name of the recording job.
+	//
+	// example:
+	//
+	// Live event recording task 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The callback URL.
 	//
@@ -90,11 +94,11 @@ type GetLiveRecordJobResponseBodyRecordJob struct {
 	//
 	// Valid values:
 	//
-	// 	- paused: The job is paused.
+	// - paused: The job is paused.
 	//
-	// 	- initial: The job is not started.
+	// - initial: The job is not started.
 	//
-	// 	- started: The job is in progress.
+	// - started: The job is in progress.
 	//
 	// example:
 	//
@@ -236,9 +240,9 @@ type GetLiveRecordJobResponseBodyRecordJobRecordOutput struct {
 	//
 	// Valid values:
 	//
-	// 	- vod
+	// - vod
 	//
-	// 	- oss
+	// - oss
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iGetProjectExportJobResponseBody interface {
 type GetProjectExportJobResponseBody struct {
 	// The project export task.
 	ProjectExportJob *GetProjectExportJobResponseBodyProjectExportJob `json:"ProjectExportJob,omitempty" xml:"ProjectExportJob,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *GetProjectExportJobResponseBody) Validate() error {
 }
 
 type GetProjectExportJobResponseBodyProjectExportJob struct {
-	// The error code for the failed export task.
+	// The error code of the project export task.
 	//
-	// 	Notice: Use the error code for troubleshooting.
+	// 	Notice: Check this field when the task fails.
 	//
 	// example:
 	//
 	// InvalidParameter
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The exported data.
+	// The export result.
 	ExportResult *GetProjectExportJobResponseBodyProjectExportJobExportResult `json:"ExportResult,omitempty" xml:"ExportResult,omitempty" type:"Struct"`
-	// The export type. Valid values:
+	// The type of the project export. Valid values:
 	//
-	// 	- **BaseTimeline**: exports the timeline.
+	// - **BaseTimeline**: timeline.
 	//
-	// 	- **AdobePremierePro**: exports an Adobe Premiere Pro project.
+	// - **AdobePremierePro**: Adobe Premiere Pro project.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type GetProjectExportJobResponseBodyProjectExportJob struct {
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The error message for the failed export task.
+	// The error message of the project export task.
 	//
-	// 	Notice: Use the error message for troubleshooting.
+	// 	Notice: Check this field when the task fails.
 	//
 	// example:
 	//
@@ -104,19 +104,19 @@ type GetProjectExportJobResponseBodyProjectExportJob struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The status of the project export task. Valid values:
 	//
-	// - Init: Initializing
+	// - **Init**: initial state.
 	//
-	// - Processing
+	// - **Processing**: processing.
 	//
-	// - Success
+	// - **Success**: succeeded.
 	//
-	// - Failed
+	// - **Failed**: failed.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The user-defined data in the JSON format.
+	// The custom settings in JSON format.
 	//
 	// example:
 	//
@@ -214,13 +214,15 @@ func (s *GetProjectExportJobResponseBodyProjectExportJob) Validate() error {
 }
 
 type GetProjectExportJobResponseBodyProjectExportJobExportResult struct {
-	// The URL of the exported project, which is typically a signed OSS URL. This field is returned when ExportType is AdobePremierePro.
+	AudioUrl *string `json:"AudioUrl,omitempty" xml:"AudioUrl,omitempty"`
+	// The file URL of the exported project, which is typically an authenticated OSS URL. This field is returned when the export type is AdobePremierePro.
 	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example_prefix/exported_project_1e8c39a502c3436c84f88290cd713bf3.zip?Expires=1750331685&....
-	ProjectUrl *string `json:"ProjectUrl,omitempty" xml:"ProjectUrl,omitempty"`
-	// The timeline of the online editing job. This field is returned when ExportType is BaseTimeline. For data structure, see [Timeline](https://help.aliyun.com/document_detail/198823.html).
+	ProjectUrl *string                                                               `json:"ProjectUrl,omitempty" xml:"ProjectUrl,omitempty"`
+	SrtList    []*GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList `json:"SrtList,omitempty" xml:"SrtList,omitempty" type:"Repeated"`
+	// The online editing timeline. This field is returned when the export type is BaseTimeline. For more information about the structure, see [Timeline configuration](https://help.aliyun.com/document_detail/198823.html).
 	//
 	// example:
 	//
@@ -236,16 +238,34 @@ func (s GetProjectExportJobResponseBodyProjectExportJobExportResult) GoString() 
 	return s.String()
 }
 
+func (s *GetProjectExportJobResponseBodyProjectExportJobExportResult) GetAudioUrl() *string {
+	return s.AudioUrl
+}
+
 func (s *GetProjectExportJobResponseBodyProjectExportJobExportResult) GetProjectUrl() *string {
 	return s.ProjectUrl
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJobExportResult) GetSrtList() []*GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList {
+	return s.SrtList
 }
 
 func (s *GetProjectExportJobResponseBodyProjectExportJobExportResult) GetTimeline() *string {
 	return s.Timeline
 }
 
+func (s *GetProjectExportJobResponseBodyProjectExportJobExportResult) SetAudioUrl(v string) *GetProjectExportJobResponseBodyProjectExportJobExportResult {
+	s.AudioUrl = &v
+	return s
+}
+
 func (s *GetProjectExportJobResponseBodyProjectExportJobExportResult) SetProjectUrl(v string) *GetProjectExportJobResponseBodyProjectExportJobExportResult {
 	s.ProjectUrl = &v
+	return s
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJobExportResult) SetSrtList(v []*GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList) *GetProjectExportJobResponseBodyProjectExportJobExportResult {
+	s.SrtList = v
 	return s
 }
 
@@ -255,5 +275,49 @@ func (s *GetProjectExportJobResponseBodyProjectExportJobExportResult) SetTimelin
 }
 
 func (s *GetProjectExportJobResponseBodyProjectExportJobExportResult) Validate() error {
+	if s.SrtList != nil {
+		for _, item := range s.SrtList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList struct {
+	SrtUrl *string `json:"SrtUrl,omitempty" xml:"SrtUrl,omitempty"`
+	Tag    *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList) GetSrtUrl() *string {
+	return s.SrtUrl
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList) GetTag() *string {
+	return s.Tag
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList) SetSrtUrl(v string) *GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList {
+	s.SrtUrl = &v
+	return s
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList) SetTag(v string) *GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList {
+	s.Tag = &v
+	return s
+}
+
+func (s *GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList) Validate() error {
 	return dara.Validate(s)
 }

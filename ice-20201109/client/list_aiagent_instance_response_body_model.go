@@ -16,9 +16,9 @@ type iListAIAgentInstanceResponseBody interface {
 }
 
 type ListAIAgentInstanceResponseBody struct {
-	// The list of the AI agents.
+	// List of agent instance objects.
 	Instances []*ListAIAgentInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -66,24 +66,27 @@ func (s *ListAIAgentInstanceResponseBody) Validate() error {
 }
 
 type ListAIAgentInstanceResponseBodyInstances struct {
+	// Template configuration used by the agent instance.
 	AgentConfig *AIAgentConfig `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
-	// The URL of the call log file for the AI agent. The structure of the file is CallLog in the JSON format.
+	// URL of the call log file. The file contains a JSON-formatted CallLog structure.
 	//
 	// example:
 	//
 	// https://example.com/call_logs/12345.json
 	CallLogUrl *string `json:"CallLogUrl,omitempty" xml:"CallLogUrl,omitempty"`
-	// The runtime configurations of the AI agent.
+	// Runtime configuration required by the agent.
 	//
 	// example:
 	//
 	// {"VoiceChat":{"AgentUserId":"voice_agent_001","ChannelId":"voice_channel_001","AuthToken":"your_voice_chat_auth_token"}}
 	RuntimeConfig *AIAgentRuntimeConfig `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
-	// The state of the instance. Valid values:
+	// Instance status:
 	//
-	// 	- Executing
+	// - Created: The call started but no connection was established between both ends.
 	//
-	// 	- Finished
+	// - Executing: The call is in progress and a connection is established between both ends.
+	//
+	// - Finished: The call ended.
 	//
 	// example:
 	//
@@ -91,13 +94,13 @@ type ListAIAgentInstanceResponseBodyInstances struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Deprecated
 	//
-	// The template configurations of the AI agent.
+	// Template configuration used by the agent instance.
 	//
 	// example:
 	//
 	// {"VoiceChat": {"VoiceId": "zhixiaoxia"}}
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The custom information.
+	// User-defined information.
 	//
 	// example:
 	//

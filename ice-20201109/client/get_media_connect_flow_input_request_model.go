@@ -16,7 +16,7 @@ type iGetMediaConnectFlowInputRequest interface {
 }
 
 type GetMediaConnectFlowInputRequest struct {
-	// The flow ID.
+	// The ID of the Flow instance.
 	//
 	// This parameter is required.
 	//

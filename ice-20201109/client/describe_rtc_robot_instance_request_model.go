@@ -14,6 +14,8 @@ type iDescribeRtcRobotInstanceRequest interface {
 }
 
 type DescribeRtcRobotInstanceRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// 727dc0e296014bb58670940a3da95592

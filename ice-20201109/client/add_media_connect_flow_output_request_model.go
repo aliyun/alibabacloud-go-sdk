@@ -60,15 +60,15 @@ type AddMediaConnectFlowOutputRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- RTMP-PUSH
+	// - RTMP-PUSH
 	//
-	// 	- SRT-Caller
+	// - SRT-Caller
 	//
-	// 	- RTMP-PULL
+	// - RTMP-PULL
 	//
-	// 	- SRT-Listener
+	// - SRT-Listener
 	//
-	// 	- Flow
+	// - Flow
 	//
 	// This parameter is required.
 	//

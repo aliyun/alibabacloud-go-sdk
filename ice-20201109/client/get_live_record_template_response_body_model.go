@@ -96,9 +96,9 @@ type GetLiveRecordTemplateResponseBodyRecordTemplate struct {
 	//
 	// Valid values:
 	//
-	// 	- system
+	// - system
 	//
-	// 	- custom
+	// - custom
 	//
 	// example:
 	//

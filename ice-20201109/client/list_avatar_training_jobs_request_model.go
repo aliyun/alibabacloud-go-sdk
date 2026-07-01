@@ -18,27 +18,27 @@ type iListAvatarTrainingJobsRequest interface {
 }
 
 type ListAvatarTrainingJobsRequest struct {
-	// 	- The page number.
+	// - The page number.
 	//
-	// 	- Default value: 1.
+	// - Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 	- The number of entries per page.
+	// - The number of entries per page.
 	//
-	// 	- Default value: 10.
+	// - Default value: 10.
 	//
-	// 	- Valid values: 1 to 100.
+	// - Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 	- The job state.
+	// - The job state.
 	//
-	// 	- Valid values: Init, Queuing, Training, Success, and Fail.
+	// - Valid values: Init, Queuing, Training, Success, and Fail.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type ListLiveSnapshotJobsResponseBody struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of jobs to return per page.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListLiveSnapshotJobsResponseBody struct {
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The sorting order of the jobs by creation time.
+	// The sort order for the job list. For example, "desc" indicates descending order.
 	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The total number of entries returned.
+	// The total number of jobs found.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListLiveSnapshotJobsResponseBody) Validate() error {
 }
 
 type ListLiveSnapshotJobsResponseBodyJobList struct {
-	// The time when the template was created.
+	// The creation time of the job.
 	//
 	// example:
 	//
@@ -146,19 +146,15 @@ type ListLiveSnapshotJobsResponseBodyJobList struct {
 	//
 	// ****a046-263c-3560-978a-fb287782****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The name of the job.
+	// The job name.
+	//
+	// example:
+	//
+	// Screenshot task1
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The output information.
+	// Details of the snapshot output.
 	SnapshotOutput *ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput `json:"SnapshotOutput,omitempty" xml:"SnapshotOutput,omitempty" type:"Struct"`
-	// The state of the job.
-	//
-	// Valid values:
-	//
-	// 	- init: The job is not started.
-	//
-	// 	- paused: The job is paused.
-	//
-	// 	- started: The job is in progress.
+	// The job status.
 	//
 	// example:
 	//
@@ -171,8 +167,12 @@ type ListLiveSnapshotJobsResponseBodyJobList struct {
 	// ****a046-263c-3560-978a-fb287666****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The template name.
+	//
+	// example:
+	//
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The interval between two adjacent snapshots. Unit: seconds.
+	// The interval between snapshots, in seconds.
 	//
 	// example:
 	//
@@ -270,19 +270,19 @@ func (s *ListLiveSnapshotJobsResponseBodyJobList) Validate() error {
 }
 
 type ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput struct {
-	// The bucket of the output endpoint. If the storage type is set to oss, the OSS bucket is returned.
+	// The name of the OSS Bucket.
 	//
 	// example:
 	//
 	// testbucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The output endpoint. If the storage type is set to oss, the Object Storage Service (OSS) domain name is returned.
+	// The domain name of the OSS endpoint.
 	//
 	// example:
 	//
 	// oss-cn-shanghai.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The storage type. The value can only be oss.
+	// The storage type. Only Object Storage Service (OSS) is supported.
 	//
 	// example:
 	//

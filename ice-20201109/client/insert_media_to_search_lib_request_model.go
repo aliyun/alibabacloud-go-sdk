@@ -26,20 +26,39 @@ type iInsertMediaToSearchLibRequest interface {
 }
 
 type InsertMediaToSearchLibRequest struct {
+	// Image set information. Supports only the IPCamera scenario, and MediaType must be video.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "images": [
+	//
+	//         "oss://[example-bucket-]/[object_path-]xxx1.jpg",
+	//
+	//         "oss://[example-bucket-]/[object_path-]xxx2.jpg",
+	//
+	//         "oss://[example-bucket-]/[object_path-]xxx3.jpg",
+	//
+	//         "oss://[example-bucket-]/[object_path-]xxx4.jpg"
+	//
+	//     ]
+	//
+	// }
 	ImagesInput *string `json:"ImagesInput,omitempty" xml:"ImagesInput,omitempty"`
 	// The URL of the video, audio, or image file that you want to import to the search library.
 	//
 	// Note: Make sure that you specify a correct file name and the bucket in which the file resides is in the same region where this operation is called. Otherwise, the file cannot be found or the operation may fail.
 	//
-	// Specify an Object Storage Service (OSS) URL in the following format: oss://[Bucket name]/[File path]. For example, you can specify oss://[example-bucket-****]/[object_path-****].
+	// Specify an Object Storage Service (OSS) URL in the following format: oss\\://[Bucket name]/[File path]. For example, you can specify oss\\://[example-bucket-****]/[object_path-****].
 	//
-	// Specify an HTTP URL in the following format: public endpoint. For example, you can specify http://example-test-\\*\\*\\*\\*.mp4.
+	// Specify an HTTP URL in the following format: public endpoint. For example, you can specify http\\://example-test-\\*\\*\\*\\*.mp4.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// http://example-test-****.mp4
+	// oss://[example-bucket-]/[object_path-]
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// The ID of the media asset. Each media ID is unique. If you leave this parameter empty, a media ID is automatically generated for this parameter.
 	//
@@ -49,11 +68,11 @@ type InsertMediaToSearchLibRequest struct {
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// The type of the media asset. Valid values:
 	//
-	// 	- video (default)
+	// - video (default)
 	//
-	// 	- image
+	// - image
 	//
-	// 	- audio
+	// - audio
 	//
 	// example:
 	//
@@ -63,8 +82,13 @@ type InsertMediaToSearchLibRequest struct {
 	//
 	// example:
 	//
-	// {}
-	MsgBody   *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	// {"title":"test","customFields":{"intField1":12,"strField1":"abc"}}
+	MsgBody *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	// Namespace.
+	//
+	// example:
+	//
+	// name-1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The name of the search library. Default value: ims-default-search-lib.
 	//

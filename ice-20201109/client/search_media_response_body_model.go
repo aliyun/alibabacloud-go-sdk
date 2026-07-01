@@ -24,21 +24,21 @@ type iSearchMediaResponseBody interface {
 }
 
 type SearchMediaResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The media assets that meet the requirements.
+	// A collection of media assets that match the criteria.
 	MediaInfoList []*SearchMediaResponseBodyMediaInfoList `json:"MediaInfoList,omitempty" xml:"MediaInfoList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// 6F61C357-ACC0-57FB-876E-D58795335E59
+	// 6F61C357-ACC0-57FB-876E-D5879533****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The pagination identifier.
+	// The token used to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type SearchMediaResponseBody struct {
 	//
 	// True
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of media assets that meet the conditions.
+	// The total number of media assets matching the search criteria.
 	//
 	// example:
 	//
@@ -134,24 +134,27 @@ func (s *SearchMediaResponseBody) Validate() error {
 }
 
 type SearchMediaResponseBodyMediaInfoList struct {
-	// The details of the intelligent AI job.
+	// The detailed AI data.
 	AiData *SearchMediaResponseBodyMediaInfoListAiData `json:"AiData,omitempty" xml:"AiData,omitempty" type:"Struct"`
-	// The description of the AI job.
+	// A summary of the AI processing data.
 	AiRoughData *SearchMediaResponseBodyMediaInfoListAiRoughData `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
+	// Custom fields for filtering, provided as a JSON string.
+	//
 	// example:
 	//
-	// {}
+	// {\\"intField1\\":12,\\"strField1\\":\\"abc\\"}
 	CustomFields *string `json:"CustomFields,omitempty" xml:"CustomFields,omitempty"`
-	// The information about the files.
-	FileInfoList    []*SearchMediaResponseBodyMediaInfoListFileInfoList    `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// A list of file information.
+	FileInfoList []*SearchMediaResponseBodyMediaInfoListFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// A list of indexing statuses for different index types.
 	IndexStatusList []*SearchMediaResponseBodyMediaInfoListIndexStatusList `json:"IndexStatusList,omitempty" xml:"IndexStatusList,omitempty" type:"Repeated"`
-	// The basic information about the media asset.
+	// Basic information about the media asset.
 	MediaBasicInfo *SearchMediaResponseBodyMediaInfoListMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
-	// 3b187b3620c8490886cfc2a9578c3ce6
+	// 3b187b3620c8490886cfc2a9578c****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
@@ -264,11 +267,11 @@ func (s *SearchMediaResponseBodyMediaInfoList) Validate() error {
 }
 
 type SearchMediaResponseBodyMediaInfoListAiData struct {
-	// The tags of the intelligent AI job.
+	// A list of AI label information.
 	AiLabelInfo []*SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo `json:"AiLabelInfo,omitempty" xml:"AiLabelInfo,omitempty" type:"Repeated"`
-	// The information about audio files.
+	// A list of Automatic Speech Recognition (ASR) results.
 	AsrInfo []*SearchMediaResponseBodyMediaInfoListAiDataAsrInfo `json:"AsrInfo,omitempty" xml:"AsrInfo,omitempty" type:"Repeated"`
-	// The subtitles.
+	// A list of Optical Character Recognition (OCR) results.
 	OcrInfo []*SearchMediaResponseBodyMediaInfoListAiDataOcrInfo `json:"OcrInfo,omitempty" xml:"OcrInfo,omitempty" type:"Repeated"`
 }
 
@@ -339,13 +342,17 @@ func (s *SearchMediaResponseBodyMediaInfoListAiData) Validate() error {
 }
 
 type SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo struct {
-	// The category.
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The face ID.
+	// The category of the label.
 	//
 	// example:
 	//
-	// 5FE19530C7A422197535FE74F5DB2B9F
+	// Vehicle
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The ID of the recognized face.
+	//
+	// example:
+	//
+	// 5FE19530C7A422197535FE74F5DB****
 	FaceId *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
 	// The ID of the entity.
 	//
@@ -354,12 +361,20 @@ type SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo struct {
 	// 10310250338
 	LabelId *string `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
 	// The name of the entity.
+	//
+	// example:
+	//
+	// Car
 	LabelName *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
-	// The type of the tag.
+	// The type of the label.
+	//
+	// example:
+	//
+	// Object
 	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	// The clips.
+	// A list of clips where the entity appears.
 	Occurrences []*SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences `json:"Occurrences,omitempty" xml:"Occurrences,omitempty" type:"Repeated"`
-	// The source.
+	// The source of the AI data.
 	//
 	// example:
 	//
@@ -453,6 +468,10 @@ func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo) Validate() error
 
 type SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences struct {
 	// The text content.
+	//
+	// example:
+	//
+	// Pipi
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The fine-grained ID of the entity.
 	//
@@ -461,6 +480,10 @@ type SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences struct {
 	// 10310250338
 	FinegrainId *string `json:"FinegrainId,omitempty" xml:"FinegrainId,omitempty"`
 	// The fine-grained name of the entity.
+	//
+	// example:
+	//
+	// Car
 	FinegrainName *string `json:"FinegrainName,omitempty" xml:"FinegrainName,omitempty"`
 	// The start time of the clip.
 	//
@@ -468,13 +491,13 @@ type SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences struct {
 	//
 	// 1.4
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
-	// The optimal face image encoded in Base64.
+	// The optimal image of the recognized face, encoded in Base64.
 	//
 	// example:
 	//
 	// 99C64F6287
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The score.
+	// The confidence score for the recognition result.
 	//
 	// example:
 	//
@@ -492,13 +515,13 @@ type SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences struct {
 	//
 	// 2.5
 	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
-	// The track sequence.
+	// A sequence of tracks that represent the entity within the clip.
 	Tracks []*SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks `json:"Tracks,omitempty" xml:"Tracks,omitempty" type:"Repeated"`
-	// The ID of the clip.
+	// The clip ID.
 	//
 	// example:
 	//
-	// 5FE19530C7A422197535FE74F5DB2B9F
+	// 5FE19530C7A422197535FE74F5DB****
 	ClipId *string `json:"clipId,omitempty" xml:"clipId,omitempty"`
 }
 
@@ -626,7 +649,7 @@ type SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks stru
 	//
 	// 50.2
 	Size *float64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The timestamp of the track.
+	// The timestamp of the track data point.
 	//
 	// example:
 	//
@@ -674,13 +697,17 @@ func (s *SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks)
 }
 
 type SearchMediaResponseBodyMediaInfoListAiDataAsrInfo struct {
-	// The ID of the clip.
+	// The clip ID.
 	//
 	// example:
 	//
-	// 5FE19530C7A422197535FE74F5DB2B9F
+	// 5FE19530C7A422197535FE74F5DB****
 	ClipId *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
-	// The text content.
+	// The transcribed text content.
+	//
+	// example:
+	//
+	// I am Pipi.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The start time of the clip.
 	//
@@ -760,13 +787,17 @@ func (s *SearchMediaResponseBodyMediaInfoListAiDataAsrInfo) Validate() error {
 }
 
 type SearchMediaResponseBodyMediaInfoListAiDataOcrInfo struct {
-	// The ID of the clip.
+	// The clip ID.
 	//
 	// example:
 	//
-	// 5FE19530C7A422197535FE74F5DB2B9F
+	// 5FE19530C7A422197535FE74F5DB****
 	ClipId *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
-	// The text content.
+	// The recognized text content.
+	//
+	// example:
+	//
+	// 我是皮皮
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The start time of the clip.
 	//
@@ -846,31 +877,31 @@ func (s *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo) Validate() error {
 }
 
 type SearchMediaResponseBodyMediaInfoListAiRoughData struct {
-	// TV Series
+	// The AI category applied to the media asset.
 	//
 	// example:
 	//
-	// TV series
+	// 视频AI分类
 	AiCategory *string `json:"AiCategory,omitempty" xml:"AiCategory,omitempty"`
 	// The ID of the AI job.
 	//
 	// example:
 	//
-	// cd35b0b0025f71edbfcb472190a9xxxx
+	// cd35b0b0025f71edbfcb472190a9****
 	AiJobId *string `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
-	// The results of the AI job.
+	// The URL of the raw AI result file.
 	//
 	// example:
 	//
 	// http://xxxx.json
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The save type.
+	// The save type of the AI data.
 	//
 	// example:
 	//
 	// TEXT
 	SaveType *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
-	// The data status.
+	// The save status of the AI data.
 	//
 	// example:
 	//
@@ -936,7 +967,7 @@ func (s *SearchMediaResponseBodyMediaInfoListAiRoughData) Validate() error {
 }
 
 type SearchMediaResponseBodyMediaInfoListFileInfoList struct {
-	// The basic information about the file, such as the duration and size.
+	// Basic information about the file, such as its duration and size.
 	FileBasicInfo *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -991,7 +1022,7 @@ type SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo struct {
 	//
 	// 164265080291300080527050.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The size of the file in bytes.
+	// The file size in bytes.
 	//
 	// example:
 	//
@@ -1013,20 +1044,25 @@ type SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo struct {
 	//
 	// example:
 	//
-	// https://outin-d3f4681ddfd911ec99a600163e1403e7.oss-cn-shanghai.aliyuncs.com/sv/23d5cdd1-18180984899/23d5cdd1-18180984899.mp4
+	// https://outin-d3f4681ddfd911ec99a600163e1403e7.oss-cn-shanghai.aliyuncs.com/sv/23d5cdd1-18180984899/23d5cdd1-1818098****.mp4
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The encapsulation format of the file.
+	// The container format of the file.
 	//
 	// example:
 	//
 	// mov,mp4,m4a,3gp,3g2,mj2
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// The height of the file.
+	// The height of the video in pixels.
 	//
 	// example:
 	//
 	// 480
-	Height      *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Information about the image set.
+	//
+	// example:
+	//
+	// {}
 	ImagesInput *string `json:"ImagesInput,omitempty" xml:"ImagesInput,omitempty"`
 	// The time when the file was last modified.
 	//
@@ -1034,13 +1070,13 @@ type SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo struct {
 	//
 	// 2021-12-10T12:19Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The region in which the file is stored.
+	// The region where the file is stored.
 	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The width of the file.
+	// The width of the video in pixels.
 	//
 	// example:
 	//
@@ -1187,10 +1223,26 @@ func (s *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo) Validate
 }
 
 type SearchMediaResponseBodyMediaInfoListIndexStatusList struct {
+	// The status of the index. Valid values:
+	//
+	// - `Running`: The index is being created.
+	//
+	// - `Fail`: The index creation failed.
+	//
+	// - `Success`: The index was created.
+	//
 	// example:
 	//
 	// Success
 	IndexStatus *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
+	// The type of the index. Valid values:
+	//
+	// - `mm`: Large Language Model (LLM).
+	//
+	// - `face`: Face.
+	//
+	// - `aiLabel`: Smart tagging.
+	//
 	// example:
 	//
 	// mm
@@ -1240,13 +1292,17 @@ type SearchMediaResponseBodyMediaInfoListMediaBasicInfo struct {
 	//
 	// opening
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The ID of the category.
+	// The category ID.
 	//
 	// example:
 	//
 	// 44
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The name of the category.
+	// The category name.
+	//
+	// example:
+	//
+	// Subcategory 1
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
 	// The category of the media asset.
 	//
@@ -1254,11 +1310,11 @@ type SearchMediaResponseBodyMediaInfoListMediaBasicInfo struct {
 	//
 	// image
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The thumbnail URL of the media asset.
+	// The URL of the cover image.
 	//
 	// example:
 	//
-	// https://dtlive-bj.oss-cn-beijing.aliyuncs.com/cover/e694372e-4f5b-4821-ae09-efd064f27b63_large_cover_url.jpg
+	// https://dtlive-bj.oss-cn-beijing.aliyuncs.com/cover/e694372e-4f5b-4821-ae09-efd064f2****_large_cover_url.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// The time when the media asset was created.
 	//
@@ -1273,20 +1329,24 @@ type SearchMediaResponseBodyMediaInfoListMediaBasicInfo struct {
 	// 2020-12-01T19:48Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
 	// The description of the media asset.
+	//
+	// example:
+	//
+	// 对这个视频进行转码处理了
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The address of the media asset that is waiting to be registered.
+	// The source URL of the media asset.
 	//
 	// example:
 	//
-	// oss://clipres/longvideo/material/voice/prod/20220418/07d7c799f6054dc3bbef250854cf84981650248140427
+	// oss://clipres/longvideo/material/voice/prod/20220418/07d7c799f6054dc3bbef250854cf8498165024814****
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
-	// 132bd600fc3c71ec99476732a78f6402
+	// 132bd600fc3c71ec99476732a78f****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The tags of the media asset.
+	// The tags assigned to the media asset. Multiple tags are separated by commas.
 	//
 	// example:
 	//
@@ -1298,20 +1358,25 @@ type SearchMediaResponseBodyMediaInfoListMediaBasicInfo struct {
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The time when the media asset was modified.
+	// The time when the media asset was last modified.
 	//
 	// example:
 	//
 	// 2020-12-01T19:48Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Namespace    *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The custom ID of the media asset. The ID is a string that contains 6 to 64 characters. Only letters, digits, hyphens (-), and underscores (_) are supported. Each custom ID is unique.
+	// The namespace.
+	//
+	// example:
+	//
+	// name-1
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// A unique, custom ID for the user. It must be 6 to 64 characters long and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
 	// 123-123
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	// The snapshots of the media asset.
+	// Snapshot information in JSON format.
 	//
 	// example:
 	//
@@ -1323,23 +1388,29 @@ type SearchMediaResponseBodyMediaInfoListMediaBasicInfo struct {
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The image sprite of the media asset
+	// Sprite Image information in JSON format.
 	//
 	// example:
 	//
 	// [{"bucket":"example-bucket","count":"32","iceJobId":"******83ec44d58b2069def2e******","location":"oss-cn-shanghai","snapshotRegular":"example/example-{Count}.jpg","spriteRegular":"example/example-{TileCount}.jpg","templateId":"******e438b14ff39293eaec25******","tileCount":"1"}]
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// The state of the media asset.
+	// The status of the media asset.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The stream status.
+	//
 	// example:
 	//
 	// Active
 	StreamStatus *string `json:"StreamStatus,omitempty" xml:"StreamStatus,omitempty"`
 	// The title of the media asset.
+	//
+	// example:
+	//
+	// Smart landscape-to-portrait conversion
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The transcoding status of the media asset.
 	//
@@ -1347,18 +1418,23 @@ type SearchMediaResponseBodyMediaInfoListMediaBasicInfo struct {
 	//
 	// Init
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
-	// The upload source of the media asset.
+	// The upload source.
 	//
 	// example:
 	//
 	// general
 	UploadSource *string `json:"UploadSource,omitempty" xml:"UploadSource,omitempty"`
-	// The user data.
+	// The custom user data.
 	//
 	// example:
 	//
 	// userData
-	UserData          *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// A computer-vision-generated description of the media content.
+	//
+	// example:
+	//
+	// 足球进球
 	VisionDescription *string `json:"VisionDescription,omitempty" xml:"VisionDescription,omitempty"`
 }
 

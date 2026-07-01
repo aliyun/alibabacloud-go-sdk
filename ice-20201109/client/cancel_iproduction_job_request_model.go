@@ -16,6 +16,8 @@ type iCancelIProductionJobRequest interface {
 }
 
 type CancelIProductionJobRequest struct {
+	// Idempotency parameter
+	//
 	// example:
 	//
 	// ****12e8864746a0a398****

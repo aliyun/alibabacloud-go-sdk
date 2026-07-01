@@ -20,11 +20,11 @@ type SendLiveSnapshotJobCommandRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- stop
+	// - stop
 	//
-	// 	- restart
+	// - restart
 	//
-	// 	- start
+	// - start
 	//
 	// This parameter is required.
 	//

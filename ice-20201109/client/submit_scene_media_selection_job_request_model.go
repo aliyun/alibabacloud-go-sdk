@@ -24,9 +24,9 @@ type iSubmitSceneMediaSelectionJobRequest interface {
 type SubmitSceneMediaSelectionJobRequest struct {
 	// The editing configuration. Its structure depends on the value of JobType.
 	//
-	// 	- When JobType is set to Smart_Mix_Media_Select, see [Image-text matching](https://help.aliyun.com/zh/ims/use-cases/intelligent-graphic-matching-into-a-piece/?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_1.7c3d6997qndkZj).
+	// - When JobType is set to Smart_Mix_Media_Select, see [Image-text matching](https://help.aliyun.com/zh/ims/use-cases/intelligent-graphic-matching-into-a-piece/?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_1.7c3d6997qndkZj).
 	//
-	// 	- When JobType is set to Screen_Media_Highlights_Media_Select, see [Highlight mashup](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.84b5661bIcQULE).
+	// - When JobType is set to Screen_Media_Highlights_Media_Select, see [Highlight mashup](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.84b5661bIcQULE).
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type SubmitSceneMediaSelectionJobRequest struct {
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
 	// The input configuration. Its structure and required fields depend on the value of JobType.
 	//
-	// 	- When JobType is set to Smart_Mix_Media_Select, see [Image-text matching](https://help.aliyun.com/zh/ims/use-cases/intelligent-graphic-matching-into-a-piece/?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_1.7c3d6997qndkZj).
+	// - When JobType is set to Smart_Mix_Media_Select, see [Image-text matching](https://help.aliyun.com/zh/ims/use-cases/intelligent-graphic-matching-into-a-piece/?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_1.7c3d6997qndkZj).
 	//
-	// 	- When JobType is set to Screen_Media_Highlights_Media_Select, see [Highlight mashup](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.84b5661bIcQULE).
+	// - When JobType is set to Screen_Media_Highlights_Media_Select, see [Highlight mashup](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.84b5661bIcQULE).
 	//
 	// This parameter is required.
 	//
@@ -64,35 +64,35 @@ type SubmitSceneMediaSelectionJobRequest struct {
 	//
 	// {
 	//
-	// 	"BackgroundMusic": "****75c3936f3a8743850f2da942****",
+	// "BackgroundMusic": "****75c3936f3a8743850f2da942****",
 	//
-	// 	"MediaArray": [
+	// "MediaArray": [
 	//
-	// 		"https://test-bucket.oss-cn-shanghai.aliyuncs.com/test.mp4"
+	// "https://test-bucket.oss-cn-shanghai.aliyuncs.com/test.mp4"
 	//
-	// 	],
+	// ],
 	//
-	// 	"SpeechTextArray": [
+	// "SpeechTextArray": [
 	//
-	// 		"Grand opening! A Freshippo store opens today at the nearby mall.",
+	// "A new Freshippo store just opened at the nearby mall, today is the first day",
 	//
-	// 		"Great deals on snacks and drinks. Stop by!"
+	// "The mall is quite busy, snacks and drinks are pretty affordable, come check it out"
 	//
-	// 	]
+	// ]
 	//
 	// }
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
 	// The job type. Valid values:
 	//
-	// 	- Smart_Mix_Media_Select
+	// - Smart_Mix_Media_Select
 	//
-	// 	- Screen_Media_Highlights_Media_Select
+	// - Screen_Media_Highlights_Media_Select
 	//
 	// Differences:
 	//
-	// 	- Smart_Mix_Media_Select: Matches voiceover scripts with provided video/image materials to select the most relevant clips and returns the matching results. Two options are available: Common mode, which is suitable for general-purpose materials like lifestyle vlogs, travel videos, and marketing content; Movie collections, which is optimized for materials with a coherent plot and specific characters, such as TV series and movies.
+	// - Smart_Mix_Media_Select: Matches voiceover scripts with provided video/image materials to select the most relevant clips and returns the matching results. Two options are available: Common mode, which is suitable for general-purpose materials like lifestyle vlogs, travel videos, and marketing content; Movie collections, which is optimized for materials with a coherent plot and specific characters, such as TV series and movies.
 	//
-	// 	- Screen_Media_Highlights_Media_Select: Automatically identifies and selects clips that are exciting or represent key story points from longer video materials.
+	// - Screen_Media_Highlights_Media_Select: Automatically identifies and selects clips that are exciting or represent key story points from longer video materials.
 	//
 	// This parameter is required.
 	//
@@ -102,9 +102,9 @@ type SubmitSceneMediaSelectionJobRequest struct {
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The output configuration. Its structure and required fields depend on the value of JobType.
 	//
-	// 	- When JobType is set to Smart_Mix_Media_Select, see [Image-text matching](https://help.aliyun.com/zh/ims/use-cases/intelligent-graphic-matching-into-a-piece/?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_1.7c3d6997qndkZj).
+	// - When JobType is set to Smart_Mix_Media_Select, see [Image-text matching](https://help.aliyun.com/zh/ims/use-cases/intelligent-graphic-matching-into-a-piece/?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_1.7c3d6997qndkZj).
 	//
-	// 	- When JobType is set to Screen_Media_Highlights_Media_Select, see [Highlight mashup](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.84b5661bIcQULE).
+	// - When JobType is set to Screen_Media_Highlights_Media_Select, see [Highlight mashup](https://help.aliyun.com/zh/ims/use-cases/create-highlight-videos?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_3.84b5661bIcQULE).
 	//
 	// This parameter is required.
 	//

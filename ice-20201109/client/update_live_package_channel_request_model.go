@@ -33,6 +33,10 @@ type UpdateLivePackageChannelRequest struct {
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
 	// The channel description. It can be up to 1,000 characters in length.
+	//
+	// example:
+	//
+	// This is a test channel.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The channel group name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//

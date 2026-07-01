@@ -24,13 +24,13 @@ type iGetAiRtcLicenseInfoListRequest interface {
 }
 
 type GetAiRtcLicenseInfoListRequest struct {
-	// The ID of the batch.
+	// The License Item ID.
 	//
 	// example:
 	//
 	// 17712***
 	LicenseItemId *string `json:"LicenseItemId,omitempty" xml:"LicenseItemId,omitempty"`
-	// Specifies whether to include the total count of records in the response. Defaults to `true`.
+	// Specifies whether to return the total count. Default value: `true`.
 	//
 	// example:
 	//
@@ -42,27 +42,27 @@ type GetAiRtcLicenseInfoListRequest struct {
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the batch. Valid values:
+	// The status of the license batch. Valid values:
 	//
-	// 	- `1`: Active
+	// - `1`: Normal
 	//
-	// 	- `2`: Expired
+	// - `2`: Expired
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of license. Valid values:
+	// The license type. Valid values:
 	//
-	// 	- `1`: Audio call
+	// - `1`: voice call
 	//
-	// 	- `2`: Vision call
+	// - `2`: visual understanding
 	//
 	// example:
 	//

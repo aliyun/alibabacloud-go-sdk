@@ -18,25 +18,25 @@ type iSubmitCopyrightExtractJobRequest interface {
 }
 
 type SubmitCopyrightExtractJobRequest struct {
-	// The source video file from which to extract the watermark.
+	// The video file for watermark extraction.
 	//
-	// > The OSS object or media asset must reside in the same region as the IMS service region.
+	// > - The region of the Object Storage Service (OSS) file or media asset must match the region of the current Intelligent Media Service (IMS) instance.
 	//
 	// This parameter is required.
 	Input *SubmitCopyrightExtractJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// Additional parameters for the watermark job, provided as a JSON string. Supported parameter:
+	// The watermark job parameters, specified as a JSON string.
 	//
-	// 	- algoType: The algorithm type. Defaults to v1. The extraction algorithm must match the one used for embedding.
+	// - algoType: The algorithm type. Default value: v1. The extraction algorithm type must match the algorithm type used for embedding the watermark.
 	//
-	//     	- v1: Copyright watermark extraction algorithm for long videos.
+	//   - v1: The copyright extraction algorithm for long-form videos.
 	//
-	//     	- v2: Copyright watermark extraction algorithm for short videos.
+	//   - v2: The copyright extraction algorithm for short-form videos.
 	//
 	// example:
 	//
 	// {"algoType":"v2"}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// The custom data, which can be up to 1,024 bytes in size.
+	// The user-defined data. The maximum length is 1,024 bytes.
 	//
 	// example:
 	//
@@ -89,13 +89,15 @@ func (s *SubmitCopyrightExtractJobRequest) Validate() error {
 }
 
 type SubmitCopyrightExtractJobRequestInput struct {
-	// The specific information for the input file, which can be an OSS URL or a media asset ID. OSS URL formats:
+	// Specifies the URL of an Object Storage Service (OSS) object or the ID of a media asset.
 	//
-	// 1\\. oss://bucket/object
+	// OSS URLs can be in the following formats:
+	//
+	// 1\\. oss\\://bucket/object
 	//
 	// 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
 	//
-	// where bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object path in OSS.
+	// In these formats, `bucket` is the name of a bucket in the same region as your IMS instance, and `object` is the file path.
 	//
 	// This parameter is required.
 	//
@@ -103,11 +105,11 @@ type SubmitCopyrightExtractJobRequestInput struct {
 	//
 	// oss://bucket/object
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The type of the source file. Valid values:
+	// The type of the input file. Valid values:
 	//
-	// 1.  OSS: an OSS object.
+	// 1. OSS: The URL of a file in Object Storage Service (OSS).
 	//
-	// 2.  Media: a media asset.
+	// 2. Media: The ID of a media asset.
 	//
 	// This parameter is required.
 	//

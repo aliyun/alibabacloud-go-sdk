@@ -16,13 +16,13 @@ type iSubmitDynamicChartJobResponseBody interface {
 }
 
 type SubmitDynamicChartJobResponseBody struct {
-	// The job ID.
+	// The Job ID.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID.
+	// The Request ID.
 	//
 	// example:
 	//

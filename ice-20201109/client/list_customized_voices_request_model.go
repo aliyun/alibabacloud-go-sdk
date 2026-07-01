@@ -30,13 +30,13 @@ type ListCustomizedVoicesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 	- The voice type. Valid values:
+	// - The voice type. Valid values:
 	//
-	//     	- Basic
+	//   - Basic
 	//
-	//     	- Standard
+	//   - Standard
 	//
-	// 	- If you do not specify this parameter, the default value Basic is used.
+	// - If you do not specify this parameter, the default value Basic is used.
 	//
 	// example:
 	//

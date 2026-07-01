@@ -22,7 +22,7 @@ type iListAIAgentInstanceRequest interface {
 }
 
 type ListAIAgentInstanceRequest struct {
-	// The ID of the AI agent.
+	// Agent ID.
 	//
 	// This parameter is required.
 	//
@@ -30,25 +30,25 @@ type ListAIAgentInstanceRequest struct {
 	//
 	// 39f8e0bc005e4f309379701645f4***
 	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. This parameter does not have a default value.
+	// End time of the query in ISO 8601 format. No default value.
 	//
 	// example:
 	//
 	// 2023-01-02T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number. Default value: 1. Valid values: 1 to 100.
+	// Page number. Default is 1. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Valid values: 0 to 100.
+	// Number of results per page. Default is 10. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. This parameter does not have a default value.
+	// Start time of the query in ISO 8601 format. No default value.
 	//
 	// example:
 	//

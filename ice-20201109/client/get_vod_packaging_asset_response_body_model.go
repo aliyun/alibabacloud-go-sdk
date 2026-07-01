@@ -181,11 +181,11 @@ type GetVodPackagingAssetResponseBodyAssetEgressEndpoints struct {
 	ConfigurationName *string `json:"ConfigurationName,omitempty" xml:"ConfigurationName,omitempty"`
 	// The asset status. Valid values:
 	//
-	// 	- Queuing: The asset is waiting for packaging.
+	// - Queuing: The asset is waiting for packaging.
 	//
-	// 	- Playable: The asset is packaged and playable.
+	// - Playable: The asset is packaged and playable.
 	//
-	// 	- Failed: The asset fails to be packaged.
+	// - Failed: The asset fails to be packaged.
 	//
 	// example:
 	//

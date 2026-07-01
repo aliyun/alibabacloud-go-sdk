@@ -290,9 +290,9 @@ type QueryTraceAbJobListResponseBodyDataInput struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the input file. Valid values:
 	//
-	// 1.  OSS: an Object Storage Service (OSS) object.
+	// 1. OSS: an Object Storage Service (OSS) object.
 	//
-	// 2.  Media: a media asset.
+	// 2. Media: a media asset.
 	//
 	// example:
 	//
@@ -339,9 +339,9 @@ type QueryTraceAbJobListResponseBodyDataOutput struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the output file. Valid values:
 	//
-	// 1.  OSS: an OSS object.
+	// 1. OSS: an OSS object.
 	//
-	// 2.  Media: a media asset.
+	// 2. Media: a media asset.
 	//
 	// example:
 	//

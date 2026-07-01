@@ -30,18 +30,26 @@ type iAiRtcAuthCodeDTO interface {
 }
 
 type AiRtcAuthCodeDTO struct {
+	// Activation time.
+	//
 	// example:
 	//
 	// 2024-01-01 06:57:43
 	ActivatedTime *string `json:"ActivatedTime,omitempty" xml:"ActivatedTime,omitempty"`
+	// Authorization code.
+	//
 	// example:
 	//
 	// iU1IeJech7***
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2023-12-23T13:33:49Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// Device ID.
+	//
 	// example:
 	//
 	// device-***
@@ -52,18 +60,34 @@ type AiRtcAuthCodeDTO struct {
 	//
 	// a659a06659a***
 	License *string `json:"License,omitempty" xml:"License,omitempty"`
+	// Batch ID.
+	//
 	// example:
 	//
 	// 11096067***
 	LicenseItemId *string `json:"LicenseItemId,omitempty" xml:"LicenseItemId,omitempty"`
+	// Update time.
+	//
 	// example:
 	//
 	// 2023-12-23T13:33:49Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// Status:
+	//
+	// - 1 - Activated
+	//
+	// - 2 - Not activated
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Type:
+	//
+	// - 1 - Voice call
+	//
+	// - 2 - Visual understanding
+	//
 	// example:
 	//
 	// 1

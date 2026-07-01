@@ -59,6 +59,10 @@ type GetLiveSnapshotJobResponseBody struct {
 	// ****a046-263c-3560-978a-fb287782****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The name of the job.
+	//
+	// example:
+	//
+	// Screenshot task 1
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The time when the file was last modified.
 	//
@@ -90,11 +94,11 @@ type GetLiveSnapshotJobResponseBody struct {
 	//
 	// Valid values:
 	//
-	// 	- init: The job is not started.
+	// - init: The job is not started.
 	//
-	// 	- paused: The job is paused.
+	// - paused: The job is paused.
 	//
-	// 	- started: The job is in progress.
+	// - started: The job is in progress.
 	//
 	// example:
 	//
@@ -109,6 +113,10 @@ type GetLiveSnapshotJobResponseBody struct {
 	// ****a046-263c-3560-978a-fb287666****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The interval between two adjacent snapshots.
 	//

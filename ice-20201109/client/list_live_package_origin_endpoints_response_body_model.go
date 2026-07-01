@@ -153,6 +153,10 @@ type ListLivePackageOriginEndpointsResponseBodyLivePackageOriginEndpoints struct
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The endpoint description.
+	//
+	// example:
+	//
+	// This is an origin endpoint.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The endpoint name.
 	//

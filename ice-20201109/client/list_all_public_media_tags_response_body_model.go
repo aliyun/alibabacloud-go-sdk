@@ -79,6 +79,10 @@ type ListAllPublicMediaTagsResponseBodyMediaTagList struct {
 	// Gif
 	MediaTagNameChinese *string `json:"MediaTagNameChinese,omitempty" xml:"MediaTagNameChinese,omitempty"`
 	// The name of the material tag in English.
+	//
+	// example:
+	//
+	// Animated image
 	MediaTagNameEnglish *string `json:"MediaTagNameEnglish,omitempty" xml:"MediaTagNameEnglish,omitempty"`
 	// The options.
 	Options []*ListAllPublicMediaTagsResponseBodyMediaTagListOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
@@ -143,6 +147,10 @@ func (s *ListAllPublicMediaTagsResponseBodyMediaTagList) Validate() error {
 
 type ListAllPublicMediaTagsResponseBodyMediaTagListOptions struct {
 	// The option name in Chinese.
+	//
+	// example:
+	//
+	// 愤怒
 	OptionChineseName *string `json:"OptionChineseName,omitempty" xml:"OptionChineseName,omitempty"`
 	// The option name in English.
 	//

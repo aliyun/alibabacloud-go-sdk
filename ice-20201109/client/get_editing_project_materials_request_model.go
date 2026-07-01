@@ -14,7 +14,7 @@ type iGetEditingProjectMaterialsRequest interface {
 }
 
 type GetEditingProjectMaterialsRequest struct {
-	// The ID of the online editing project.
+	// ID of the online editing project.
 	//
 	// This parameter is required.
 	//

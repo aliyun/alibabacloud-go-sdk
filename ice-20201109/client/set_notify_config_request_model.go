@@ -26,7 +26,7 @@ type iSetNotifyConfigRequest interface {
 }
 
 type SetNotifyConfigRequest struct {
-	// The ID of the AI agent.
+	// The ID of the AI Agent.
 	//
 	// This parameter is required.
 	//
@@ -35,14 +35,14 @@ type SetNotifyConfigRequest struct {
 	// 39f8e0bc005e4f309379701645f4****
 	AIAgentId    *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
 	AudioOssPath *string `json:"AudioOssPath,omitempty" xml:"AudioOssPath,omitempty"`
-	// The URL for receiving callback notifications. By default, this parameter is left empty.
+	// The callback URL for receiving event notifications. This is not set by default.
 	//
 	// example:
 	//
 	// http://customer.com/callback
 	CallbackUrl          *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	EnableAudioRecording *bool   `json:"EnableAudioRecording,omitempty" xml:"EnableAudioRecording,omitempty"`
-	// Specifies whether to enable event notifications.
+	// Specifies whether to enable or disable event notifications.
 	//
 	// This parameter is required.
 	//
@@ -50,19 +50,19 @@ type SetNotifyConfigRequest struct {
 	//
 	// true
 	EnableNotify *bool `json:"EnableNotify,omitempty" xml:"EnableNotify,omitempty"`
-	// The event types. If you do not specify this parameter, all event types are selected.
+	// The event types. If you do not specify this parameter, all event types are subscribed to by default. Valid values:
 	//
-	// 	- agent_start
+	// - agent_start
 	//
-	// 	- agent_stop
+	// - agent_stop
 	//
-	// 	- error
+	// - error
 	//
 	// example:
 	//
 	// agent_start,agent_stop,error
 	EventTypes *string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty"`
-	// The authentication token for callback. The token is carried in the Authorization header of a callback request. By default, this parameter is left empty.
+	// An authentication token for event callbacks. The service includes this token in the `Authorization` header of each callback request.
 	//
 	// example:
 	//

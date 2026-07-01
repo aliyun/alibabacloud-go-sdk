@@ -22,19 +22,28 @@ type iListAIAgentPhoneNumberResponseBody interface {
 }
 
 type ListAIAgentPhoneNumberResponseBody struct {
+	// Array of returned Data.
 	Data []*ListAIAgentPhoneNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ************16-412C-B127-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of phone numbers found in the query.
+	//
 	// example:
 	//
 	// 186
@@ -108,10 +117,22 @@ func (s *ListAIAgentPhoneNumberResponseBody) Validate() error {
 }
 
 type ListAIAgentPhoneNumberResponseBodyData struct {
+	// Phone number.
+	//
 	// example:
 	//
 	// 132*****683
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Phone number status.
+	//
+	// - 1: "Activation in progress".
+	//
+	// - 2: "Normal".
+	//
+	// - 3: "Deactivation in progress".
+	//
+	// - 4: "Deactivated".
+	//
 	// example:
 	//
 	// 1

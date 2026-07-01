@@ -34,11 +34,11 @@ type ListRecognitionSamplesResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// xxx-xxxx-xxxxx-xxxx
+	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Samples   *ListRecognitionSamplesResponseBodySamples `json:"Samples,omitempty" xml:"Samples,omitempty" type:"Struct"`
 	// The total number of samples.

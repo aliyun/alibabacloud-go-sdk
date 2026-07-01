@@ -129,9 +129,9 @@ func (s *ListCustomizedVoiceJobsResponseBodyData) Validate() error {
 }
 
 type ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList struct {
-	// 	- The time when the job was created.
+	// - The time when the job was created.
 	//
-	// 	- The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// - The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -139,9 +139,9 @@ type ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The gender. Valid values:
 	//
-	// 	- female
+	// - female
 	//
-	// 	- male
+	// - male
 	//
 	// example:
 	//
@@ -160,14 +160,18 @@ type ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList struct {
 	// 2245ab99a7fd4116a4fd3f499b7a56c5
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Training succeeded
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The scenario. Valid values:
 	//
-	// 	- story
+	// - story
 	//
-	// 	- interaction
+	// - interaction
 	//
-	// 	- navigation
+	// - navigation
 	//
 	// example:
 	//
@@ -175,27 +179,27 @@ type ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList struct {
 	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
 	// The job state. Valid values:
 	//
-	// 	- Initialization
+	// - Initialization
 	//
-	// 	- AudioDetecting
+	// - AudioDetecting
 	//
-	// 	- PreTraining
+	// - PreTraining
 	//
-	// 	- Training
+	// - Training
 	//
-	// 	- Success
+	// - Success
 	//
-	// 	- Fail
+	// - Fail
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 	- The voice type. Valid values:
+	// - The voice type. Valid values:
 	//
-	//     	- Basic
+	//   - Basic
 	//
-	//     	- Standard
+	//   - Standard
 	//
 	// example:
 	//
@@ -203,7 +207,11 @@ type ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The voice description.
 	//
-	// 	- The description can be up to 256 characters in length.
+	// - The description can be up to 256 characters in length.
+	//
+	// example:
+	//
+	// 这是这个声音的描述
 	VoiceDesc *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
 	// The voice ID.
 	//
@@ -213,7 +221,11 @@ type ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList struct {
 	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
 	// The voice name.
 	//
-	// 	- The name can be up to 32 characters in length.
+	// - The name can be up to 32 characters in length.
+	//
+	// example:
+	//
+	// 小专
 	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
 }
 

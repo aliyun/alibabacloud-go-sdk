@@ -24,21 +24,21 @@ type iSubmitDynamicImageJobShrinkRequest interface {
 }
 
 type SubmitDynamicImageJobShrinkRequest struct {
-	// The input of the job.
+	// The job input.
 	//
 	// This parameter is required.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The name of the job.
+	// The job name.
 	//
 	// example:
 	//
 	// SampleJob
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output of the job.
+	// The job output.
 	//
 	// This parameter is required.
 	OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The scheduling settings.
+	// The scheduling configuration.
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
 	// The snapshot template configuration.
 	//

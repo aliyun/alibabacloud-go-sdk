@@ -84,10 +84,19 @@ func (s *GetTemplateParamsResponseBody) Validate() error {
 
 type GetTemplateParamsResponseBodyParamList struct {
 	// The original subtitle content.
+	//
+	// example:
+	//
+	// Subtitle test
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The thumbnail URL of the original material.
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
-	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The height of the original material in the output video, in absolute pixel values. This value is returned only for standard templates created in the console.
+	//
+	// example:
+	//
+	// 300
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
 	// The parameter name.
 	//
 	// example:
@@ -95,26 +104,51 @@ type GetTemplateParamsResponseBodyParamList struct {
 	// video1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The URL of the original material.
-	MediaUrl    *string  `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
-	TimelineIn  *float32 `json:"TimelineIn,omitempty" xml:"TimelineIn,omitempty"`
+	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
+	// In-point of the original material segment relative to the timeline, in seconds. This value is returned only for standard templates created in the console.
+	//
+	// example:
+	//
+	// 5.5
+	TimelineIn *float32 `json:"TimelineIn,omitempty" xml:"TimelineIn,omitempty"`
+	// Out-point of the original material segment relative to the timeline, in seconds. This value is returned only for standard templates created in the console.
+	//
+	// example:
+	//
+	// 8.5
 	TimelineOut *float32 `json:"TimelineOut,omitempty" xml:"TimelineOut,omitempty"`
 	// The material type.
 	//
 	// Valid values:
 	//
-	// 	- Video
+	// - Video
 	//
-	// 	- Text
+	// - Text
 	//
-	// 	- Image
+	// - Image
 	//
 	// example:
 	//
 	// Image
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Width *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
-	X     *int32  `json:"X,omitempty" xml:"X,omitempty"`
-	Y     *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The width of the original material in the output video, in absolute pixel values. This value is returned only for standard templates created in the console.
+	//
+	// example:
+	//
+	// 300
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The horizontal distance of the original material relative to the top-left corner of the video, in absolute pixel values. This value is returned only for standard templates created in the console.
+	//
+	// example:
+	//
+	// 100
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The vertical distance of the original material relative to the top-left corner of the video, in absolute pixel values. This value is returned only for standard templates created in the console.
+	//
+	// example:
+	//
+	// 100
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s GetTemplateParamsResponseBodyParamList) String() string {

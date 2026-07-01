@@ -124,6 +124,14 @@ type ListChannelAlertsResponseBodyProgramAlerts struct {
 	// acs:ims:mediaweaver:<regionId>:<userId>:program/myChannel/MyProgram
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	// The alert type.
+	//
+	// example:
+	//
+	// Scheduling Error: An error occurred when building the schedule.
+	//
+	// PlayBack Warning: Address pull exception when adding source.
+	//
+	// info: Information.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The number of alerts.
 	//

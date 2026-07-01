@@ -100,15 +100,15 @@ type GetAIWorkflowTaskResponseBodyWorkflowTask struct {
 	//
 	// Valid values:
 	//
-	// 	- running
+	// - running
 	//
-	// 	- stopped
+	// - stopped
 	//
-	// 	- failed
+	// - failed
 	//
-	// 	- partial-succeeded
+	// - partial-succeeded
 	//
-	// 	- succeeded
+	// - succeeded
 	//
 	// example:
 	//
@@ -276,11 +276,11 @@ type GetAIWorkflowTaskResponseBodyWorkflowTaskWorkflow struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Workflow template status. Valid values:
 	//
-	// 	- Draft
+	// - Draft
 	//
-	// 	- Published
+	// - Published
 	//
-	// 	- Editing
+	// - Editing
 	//
 	// example:
 	//

@@ -64,9 +64,9 @@ func (s *GetTemplateResponseBody) Validate() error {
 type GetTemplateResponseBodyTemplate struct {
 	// The clip parameters for submitting a video production job. You can replace mediaId and text with real values to submit a job. References:
 	//
-	// 	- [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html)
+	// - [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html)
 	//
-	// 	- [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html)
+	// - [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html)
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type GetTemplateResponseBodyTemplate struct {
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 	// The template configurations.
 	//
-	// 	- For more information about the configurations of a regular template, see [Config object of a regular template](https://help.aliyun.com/document_detail/456193.html).
+	// - For more information about the configurations of a regular template, see [Config object of a regular template](https://help.aliyun.com/document_detail/456193.html).
 	//
-	// 	- For more information about the configurations of an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
+	// - For more information about the configurations of an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 	//
 	// example:
 	//
-	// 参考Timeline模板配置详解
+	// See Timeline template configuration details.
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The thumbnail URL.
 	//
@@ -90,11 +90,11 @@ type GetTemplateResponseBodyTemplate struct {
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// The source from which the template was created. Valid values:
 	//
-	// 	- AliyunConsole
+	// - AliyunConsole
 	//
-	// 	- OpenAPI
+	// - OpenAPI
 	//
-	// 	- WebSDK
+	// - WebSDK
 	//
 	// example:
 	//
@@ -108,11 +108,11 @@ type GetTemplateResponseBodyTemplate struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The source from which the template was modified. Valid values:
 	//
-	// 	- AliyunConsole
+	// - AliyunConsole
 	//
-	// 	- OpenAPI
+	// - OpenAPI
 	//
-	// 	- WebSDK
+	// - WebSDK
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type GetTemplateResponseBodyTemplate struct {
 	//
 	// example:
 	//
-	// 视频添加水印模板
+	// Video watermark template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The preview media asset.
 	//
@@ -138,13 +138,13 @@ type GetTemplateResponseBodyTemplate struct {
 	PreviewMedia *string `json:"PreviewMedia,omitempty" xml:"PreviewMedia,omitempty"`
 	// The state of the preview media asset. Valid values:
 	//
-	// 	- Init: the initial state, which indicates that the source file is not ready.
+	// - Init: the initial state, which indicates that the source file is not ready.
 	//
-	// 	- Preparing: The source file is being prepared. For example, the file is being uploaded or edited.
+	// - Preparing: The source file is being prepared. For example, the file is being uploaded or edited.
 	//
-	// 	- PrepareFail: The source file failed to be prepared. For example, the information about the source file failed to be obtained.
+	// - PrepareFail: The source file failed to be prepared. For example, the information about the source file failed to be obtained.
 	//
-	// 	- Normal: The source file is ready.
+	// - Normal: The source file is ready.
 	//
 	// example:
 	//
@@ -158,17 +158,17 @@ type GetTemplateResponseBodyTemplate struct {
 	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
 	// The template state. Valid values:
 	//
-	// 	- Available
+	// - Available
 	//
-	// 	- Created
+	// - Created
 	//
-	// 	- Uploading
+	// - Uploading
 	//
-	// 	- Processing
+	// - Processing
 	//
-	// 	- UploadFailed
+	// - UploadFailed
 	//
-	// 	- ProcessFailed
+	// - ProcessFailed
 	//
 	// example:
 	//
@@ -182,9 +182,9 @@ type GetTemplateResponseBodyTemplate struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The template type. Valid values:
 	//
-	// 	- Timeline
+	// - Timeline
 	//
-	// 	- VETemplate
+	// - VETemplate
 	//
 	// example:
 	//

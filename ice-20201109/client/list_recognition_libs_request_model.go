@@ -30,22 +30,27 @@ type iListRecognitionLibsRequest interface {
 type ListRecognitionLibsRequest struct {
 	// The type of recognition algorithm. Valid values:
 	//
-	// 	- landmark
+	// - landmark
 	//
-	// 	- object
+	// - object
 	//
-	// 	- logo
+	// - logo
 	//
-	// 	- face
+	// - face
 	//
-	// 	- label
+	// - label
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// landmark
-	Algorithm    *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// Library ID. If provided, the query returns only this specific library. A list of IDs separated by commas (",") is also supported.
+	//
+	// example:
+	//
+	// lib1,lib2,lib3
 	LibId        *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

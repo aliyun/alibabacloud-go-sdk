@@ -16,10 +16,14 @@ type iSubmitYikeStoryboardJobResponseBody interface {
 }
 
 type SubmitYikeStoryboardJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ab0e3e76-1e9d-11ed-ba64-0c42a1b73d66
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******

@@ -28,13 +28,13 @@ type SubmitMediaProducingJobResponseBody struct {
 	//
 	// ****d80e4e4044975745c14b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The media asset ID of the output file.
+	// The media ID.
 	//
 	// example:
 	//
 	// ****c469e944b5a856828dc2****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The ID of the editing project.
+	// The project ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type SubmitMediaProducingJobResponseBody struct {
 	//
 	// ****36-3C1E-4417-BDB2-1E034F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The media asset ID of the output file in ApsaraVideo VOD if the output file is stored in ApsaraVideo VOD.
+	// The VOD media ID. Returned if the output destination is VOD.
 	//
 	// example:
 	//

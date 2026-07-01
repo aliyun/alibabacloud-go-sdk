@@ -90,11 +90,11 @@ type GetLiveTranscodeJobResponseBodyJob struct {
 	StartMode *int32 `json:"StartMode,omitempty" xml:"StartMode,omitempty"`
 	// The state of the job.
 	//
-	// 	- 0: The job is not started.
+	// - 0: The job is not started.
 	//
-	// 	- 1: The job is in progress.
+	// - 1: The job is in progress.
 	//
-	// 	- 2: The job is stopped.
+	// - 2: The job is stopped.
 	//
 	// example:
 	//

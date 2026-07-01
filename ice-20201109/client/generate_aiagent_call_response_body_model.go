@@ -26,20 +26,25 @@ type iGenerateAIAgentCallResponseBody interface {
 }
 
 type GenerateAIAgentCallResponseBody struct {
-	// The username of the AI agent in the Alibaba Real-Time Communication (ARTC) channel.
+	// The name of the agent in the Alibaba Real-time Communication (ARTC) channel.
 	//
 	// example:
 	//
 	// 877ae632caae49b1afc81c2e8194ffb4
 	AIAgentUserId *string `json:"AIAgentUserId,omitempty" xml:"AIAgentUserId,omitempty"`
-	AvatarUserId  *string `json:"AvatarUserId,omitempty" xml:"AvatarUserId,omitempty"`
-	// The ARTC channel ID.
+	// The user ID of the avatar in the channel.
+	//
+	// example:
+	//
+	// avatar_39f8e0bc005e4f309379701645f4****
+	AvatarUserId *string `json:"AvatarUserId,omitempty" xml:"AvatarUserId,omitempty"`
+	// The ID of the ARTC channel.
 	//
 	// example:
 	//
 	// 70f22d5784194938a7e387052f2b3208
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// The ID of the AI agent.
+	// The ID of the generated agent instance.
 	//
 	// example:
 	//
@@ -51,7 +56,7 @@ type GenerateAIAgentCallResponseBody struct {
 	//
 	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ARTC token of the client.
+	// The client-side ARTC token.
 	//
 	// example:
 	//

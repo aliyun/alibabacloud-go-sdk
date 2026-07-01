@@ -27,6 +27,10 @@ type TranspositionResult struct {
 	// 	- The translated text corresponding to the matched hotwords. Maximum length: 100 characters.
 	//
 	// 	- This field is only used in translation-related scenarios.
+	//
+	// example:
+	//
+	// 你好
 	TranslatedText *string `json:"TranslatedText,omitempty" xml:"TranslatedText,omitempty"`
 }
 

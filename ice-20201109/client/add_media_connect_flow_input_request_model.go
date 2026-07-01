@@ -36,13 +36,13 @@ type iAddMediaConnectFlowInputRequest interface {
 }
 
 type AddMediaConnectFlowInputRequest struct {
-	// The IP address whitelist in CIDR format. Separate multiple CIDR blocks with commas (,).
+	// IP address whitelist in CIDR notation. Separate multiple CIDR blocks with commas.
 	//
 	// example:
 	//
 	// 19.168.1.1/32,18.168.1.1/16
 	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
-	// The flow ID.
+	// Flow instance ID
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type AddMediaConnectFlowInputRequest struct {
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The source URL. This parameter is required when the source type is RTMP-PULL or SRT-Listener.
+	// Input URL. Required only when the input type is RTMP-PULL or SRT-Listener.
 	//
 	// example:
 	//
 	// rtmp://pull.test.alivecdn.com/live/alitest
 	InputFromUrl *string `json:"InputFromUrl,omitempty" xml:"InputFromUrl,omitempty"`
-	// The source name.
+	// Input name
 	//
 	// This parameter is required.
 	//
@@ -64,19 +64,7 @@ type AddMediaConnectFlowInputRequest struct {
 	//
 	// AliTestInput
 	InputName *string `json:"InputName,omitempty" xml:"InputName,omitempty"`
-	// The source type.
-	//
-	// Valid values:
-	//
-	// 	- RTMP-PUSH
-	//
-	// 	- SRT-Caller
-	//
-	// 	- RTMP-PULL
-	//
-	// 	- SRT-Listener
-	//
-	// 	- Flow
+	// Input type
 	//
 	// This parameter is required.
 	//
@@ -84,47 +72,37 @@ type AddMediaConnectFlowInputRequest struct {
 	//
 	// RTMP-PUSH
 	InputProtocol *string `json:"InputProtocol,omitempty" xml:"InputProtocol,omitempty"`
-	// The maximum bitrate. Unit: bit/s.
+	// Maximum bitrate in bits per second (bps)
 	//
 	// example:
 	//
 	// 2000000
 	MaxBitrate *int32 `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
-	// The ID of the source flow. This parameter is required when the source type is Flow.
+	// Upstream Flow ID. Required only when the input type is Flow.
 	//
 	// example:
 	//
 	// 805fbdd0-575e-4146-b35d-ec7f63937b20
 	PairFlowId *string `json:"PairFlowId,omitempty" xml:"PairFlowId,omitempty"`
-	// The output of the source flow. This parameter is required when the source type is Flow.
+	// Upstream Flow output name. Required only when the input type is Flow.
 	//
 	// example:
 	//
 	// AliTestOutput
 	PairOutputName *string `json:"PairOutputName,omitempty" xml:"PairOutputName,omitempty"`
-	// The latency for the SRT stream. This parameter is required the source type is SRT-Listener or SRT-Caller.
+	// SRT latency in milliseconds. Required only when the input type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// 1000
 	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
-	// The SRT key. This parameter is required when the source type is SRT-Listener or SRT-Caller.
+	// SRT encryption key. Required only when the input type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// BETTERG08S01
 	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
-	// The encryption key length. This parameter is required when the source type is SRT-Listener or SRT-Caller.
-	//
-	// Valid values:
-	//
-	// 	- 0
-	//
-	// 	- 16
-	//
-	// 	- 24
-	//
-	// 	- 32
+	// SRT encryption key length in bytes. Required only when the input type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//

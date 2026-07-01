@@ -19,6 +19,10 @@ type iUpdateLiveTranscodeTemplateShrinkRequest interface {
 
 type UpdateLiveTranscodeTemplateShrinkRequest struct {
 	// The template name.
+	//
+	// example:
+	//
+	// Template1130-2
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The configuration of the template.
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`

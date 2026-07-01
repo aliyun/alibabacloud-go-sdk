@@ -38,9 +38,9 @@ type iUpdateMediaInfoRequest interface {
 type UpdateMediaInfoRequest struct {
 	// Specifies whether to append tags. Default value: false. Valid values:
 	//
-	// 	- true: updates the MediaTags parameter by appending new tags.
+	// - true: updates the MediaTags parameter by appending new tags.
 	//
-	// 	- false: updates the MediaTags parameter by overwriting existing tags with new tags.
+	// - false: updates the MediaTags parameter by overwriting existing tags with new tags.
 	//
 	// example:
 	//
@@ -48,15 +48,15 @@ type UpdateMediaInfoRequest struct {
 	AppendTags *bool `json:"AppendTags,omitempty" xml:"AppendTags,omitempty"`
 	// The business type. Valid values:
 	//
-	// 	- subtitles
+	// - subtitles
 	//
-	// 	- watermark
+	// - watermark
 	//
-	// 	- opening
+	// - opening
 	//
-	// 	- ending
+	// - ending
 	//
-	// 	- general
+	// - general
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type UpdateMediaInfoRequest struct {
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	// The category.
 	//
-	// 	- The value can be up to 64 bytes in length.
+	// - The value can be up to 64 bytes in length.
 	//
-	// 	- The value must be encoded in UTF-8.
+	// - The value must be encoded in UTF-8.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type UpdateMediaInfoRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The URL of the thumbnail.
 	//
-	// 	- The value can be up to 128 bytes in length.
+	// - The value can be up to 128 bytes in length.
 	//
-	// 	- The value must be encoded in UTF-8.
+	// - The value must be encoded in UTF-8.
 	//
 	// example:
 	//
@@ -90,9 +90,9 @@ type UpdateMediaInfoRequest struct {
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// The content description.
 	//
-	// 	- The value can be up to 1,024 bytes in length.
+	// - The value can be up to 1,024 bytes in length.
 	//
-	// 	- The value must be encoded in UTF-8.
+	// - The value must be encoded in UTF-8.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type UpdateMediaInfoRequest struct {
 	//
 	// 1\\. http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	//
-	// 2\\. oss://example-bucket/example.mp4. This format indicates that the region in which the OSS bucket of the media asset resides is the same as the region in which OSS is activated.
+	// 2\\. oss\\://example-bucket/example.mp4. This format indicates that the region in which the OSS bucket of the media asset resides is the same as the region in which OSS is activated.
 	//
 	// example:
 	//
@@ -118,13 +118,13 @@ type UpdateMediaInfoRequest struct {
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// The tags.
 	//
-	// 	- Up to 16 tags are supported.
+	// - Up to 16 tags are supported.
 	//
-	// 	- Separate multiple tags with commas (,).
+	// - Separate multiple tags with commas (,).
 	//
-	// 	- Each tag can be up to 32 bytes in length.
+	// - Each tag can be up to 32 bytes in length.
 	//
-	// 	- The value must be encoded in UTF-8.
+	// - The value must be encoded in UTF-8.
 	//
 	// example:
 	//
@@ -138,9 +138,9 @@ type UpdateMediaInfoRequest struct {
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
 	// The title.
 	//
-	// 	- The value can be up to 128 bytes in length.
+	// - The value can be up to 128 bytes in length.
 	//
-	// 	- The value must be encoded in UTF-8.
+	// - The value must be encoded in UTF-8.
 	//
 	// example:
 	//

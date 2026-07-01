@@ -18,14 +18,19 @@ type iGetPlayInfoRequest interface {
 }
 
 type GetPlayInfoRequest struct {
+	// The validity period of the playback URL, in seconds. The value defaults to 3600, which is also the minimum.
 	AuthTimeout *int64 `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
-	// The input URL that you specified for the media asset when you registered the media asset. For more information, see [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html).
+	// The InputURL used to register the media asset. For more information, see [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html).
 	//
-	// >  You must specify at least one of the MediaId and InputURL parameters.
+	// > Specify at least one of MediaId and InputURL.
+	//
+	// example:
+	//
+	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4  or  vod://****20b48fb04483915d4f2cd8ac****
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
-	// >  You must specify at least one of the MediaId and InputURL parameters.
+	// > Specify at least one of MediaId and InputURL.
 	//
 	// example:
 	//

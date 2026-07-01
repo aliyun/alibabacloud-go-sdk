@@ -16,9 +16,9 @@ type iQueryIProductionJobRequest interface {
 }
 
 type QueryIProductionJobRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// A token that ensures request idempotence.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the intelligent production job.
+	// The intelligent job ID.
 	//
 	// This parameter is required.
 	//

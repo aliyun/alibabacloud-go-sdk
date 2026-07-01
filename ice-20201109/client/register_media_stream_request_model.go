@@ -26,14 +26,21 @@ type RegisterMediaStreamRequest struct {
 	//
 	// http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	//
-	// oss://example-bucket/example.mp4: In this format, it is considered by default that the region of the OSS bucket in which the media asset resides is the same as the region in which IMS is activated.
+	// oss\\://example-bucket/example.mp4: In this format, it is considered by default that the region of the OSS bucket in which the media asset resides is the same as the region in which IMS is activated.
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
 	// The ID of the media asset.
 	//
 	// example:
 	//
 	// 5e778ec0027b71ed80a8909598506***
-	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Custom stream tags used to identify transcoding streams.
+	//
+	// After the media stream is registered, you can invoke [GetPlayInfo](https://help.aliyun.com/zh/ims/developer-reference/api-ice-2020-11-09-getplayinfo?spm=a2c4g.11186623.help-menu-193643.d_5_0_3_1_4.56dc5a11JzNEVj) to retrieve this tag value.
+	//
+	// example:
+	//
+	// {"key1": "value1"}
 	StreamTags *string `json:"StreamTags,omitempty" xml:"StreamTags,omitempty"`
 	// The user data.
 	//

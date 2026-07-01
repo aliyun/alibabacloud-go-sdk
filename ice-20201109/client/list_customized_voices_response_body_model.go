@@ -28,9 +28,9 @@ type ListCustomizedVoicesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -141,9 +141,9 @@ type ListCustomizedVoicesResponseBodyDataCustomizedVoiceList struct {
 	DemoAudioMediaId *string `json:"DemoAudioMediaId,omitempty" xml:"DemoAudioMediaId,omitempty"`
 	// The gender. Valid values:
 	//
-	// 	- female
+	// - female
 	//
-	// 	- male
+	// - male
 	//
 	// example:
 	//
@@ -151,27 +151,31 @@ type ListCustomizedVoicesResponseBodyDataCustomizedVoiceList struct {
 	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
 	// The scenario. Valid values:
 	//
-	// 	- story
+	// - story
 	//
-	// 	- interaction
+	// - interaction
 	//
-	// 	- navigation
+	// - navigation
 	//
 	// example:
 	//
 	// story
 	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
-	// 	- The voice type. Valid values:
+	// - The voice type. Valid values:
 	//
-	//     	- Basic
+	//   - Basic
 	//
-	//     	- Standard
+	//   - Standard
 	//
 	// example:
 	//
 	// Standard
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The voice description.
+	//
+	// example:
+	//
+	// 这是一个个性化人声小专
 	VoiceDesc *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
 	// The voice ID.
 	//
@@ -180,6 +184,10 @@ type ListCustomizedVoicesResponseBodyDataCustomizedVoiceList struct {
 	// xiaozhuan
 	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
 	// The voice name.
+	//
+	// example:
+	//
+	// 小专
 	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
 }
 

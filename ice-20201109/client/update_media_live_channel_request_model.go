@@ -179,15 +179,15 @@ type UpdateMediaLiveChannelRequestAudioSettings struct {
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
 	// The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
 	//
-	// 	- Unicode letters
+	// - Unicode letters
 	//
-	// 	- Digits (0-9)
+	// - Digits (0-9)
 	//
-	// 	- Underscore (_)
+	// - Underscore (_)
 	//
-	// 	- Hyphen (-)
+	// - Hyphen (-)
 	//
-	// 	- Space (a space cannot be at the beginning or end)
+	// - Space (a space cannot be at the beginning or end)
 	//
 	// example:
 	//
@@ -347,15 +347,15 @@ type UpdateMediaLiveChannelRequestInputAttachments struct {
 	InputId *string `json:"InputId,omitempty" xml:"InputId,omitempty"`
 	// The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
 	//
-	// 	- Unicode letters
+	// - Unicode letters
 	//
-	// 	- Digits (0-9)
+	// - Digits (0-9)
 	//
-	// 	- Underscore (_)
+	// - Underscore (_)
 	//
-	// 	- Hyphen (-)
+	// - Hyphen (-)
 	//
-	// 	- Space (a space cannot be at the beginning or end)
+	// - Space (a space cannot be at the beginning or end)
 	//
 	// example:
 	//
@@ -734,11 +734,11 @@ type UpdateMediaLiveChannelRequestOutputGroupsOutputs struct {
 	MediaPackageOutputSetting *UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting `json:"MediaPackageOutputSetting,omitempty" xml:"MediaPackageOutputSetting,omitempty" type:"Struct"`
 	// The media type of the output. Valid values:
 	//
-	// 	- 0: Audio and Video
+	// - 0: Audio and Video
 	//
-	// 	- 1: Audio If you set the value to 1, you cannot reference VideoSettings.
+	// - 1: Audio If you set the value to 1, you cannot reference VideoSettings.
 	//
-	// 	- 2: Video. If you set the value to 2, you cannot reference AudioSettings.
+	// - 2: Video. If you set the value to 2, you cannot reference AudioSettings.
 	//
 	// example:
 	//
@@ -872,9 +872,9 @@ type UpdateMediaLiveChannelRequestVideoSettings struct {
 	//
 	// Valid values:
 	//
-	// 	- For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+	// - For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
 	//
-	// 	- For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
+	// - For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
 	//
 	// example:
 	//
@@ -898,9 +898,9 @@ type UpdateMediaLiveChannelRequestVideoSettings struct {
 	VideoCodecSetting *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting `json:"VideoCodecSetting,omitempty" xml:"VideoCodecSetting,omitempty" type:"Struct"`
 	// The video transcoding method. Valid values:
 	//
-	// 	- NORMAL: regular transcoding
+	// - NORMAL: regular transcoding
 	//
-	// 	- NBHD: Narrowband HD™ transcoding
+	// - NBHD: Narrowband HD™ transcoding
 	//
 	// If not specified, regular transcoding is used by default.
 	//
@@ -912,9 +912,9 @@ type UpdateMediaLiveChannelRequestVideoSettings struct {
 	//
 	// Valid values:
 	//
-	// 	- For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+	// - For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
 	//
-	// 	- For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
+	// - For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
 	//
 	// example:
 	//

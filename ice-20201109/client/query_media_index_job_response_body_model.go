@@ -36,9 +36,9 @@ type QueryMediaIndexJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -118,11 +118,11 @@ type QueryMediaIndexJobResponseBodyIndexJobInfoList struct {
 	GmtSubmit *string `json:"GmtSubmit,omitempty" xml:"GmtSubmit,omitempty"`
 	// The index type. Valid values:
 	//
-	// 	- mm: large visual model.
+	// - mm: large visual model.
 	//
-	// 	- face: face recognition.
+	// - face: face recognition.
 	//
-	// 	- aiLabel: smart tagging.
+	// - aiLabel: smart tagging.
 	//
 	// example:
 	//
@@ -130,11 +130,11 @@ type QueryMediaIndexJobResponseBodyIndexJobInfoList struct {
 	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
 	// The job status. Valid values:
 	//
-	// 	- Running
+	// - Running
 	//
-	// 	- Success
+	// - Success
 	//
-	// 	- Fail
+	// - Fail
 	//
 	// example:
 	//

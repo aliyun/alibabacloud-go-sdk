@@ -36,19 +36,19 @@ type ListPackageJobsRequest struct {
 	//
 	// example:
 	//
-	// 7b38a5d86f1e47838927b6e7ccb11cbe
+	// 7b38a5d86f1e47838927b6e7ccb1****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
 	//
 	// example:
 	//
-	// ab4802364a2e49208c99efab82dfa8e8
+	// ab4802364a2e49208c99efab82df****
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// The order that you use to sort the query results. Valid values:
 	//
-	// 	- CreateTimeDesc: sorts the jobs by creation time in descending order.
+	// - CreateTimeDesc: sorts the jobs by creation time in descending order.
 	//
-	// 	- CreateTimeAsc: sorts the jobs by creation time in ascending order.
+	// - CreateTimeAsc: sorts the jobs by creation time in ascending order.
 	//
 	// example:
 	//
@@ -68,11 +68,11 @@ type ListPackageJobsRequest struct {
 	StartOfCreateTime *string `json:"StartOfCreateTime,omitempty" xml:"StartOfCreateTime,omitempty"`
 	// The state of the job.
 	//
-	// 	- Init: The job is submitted.
+	// - Init: The job is submitted.
 	//
-	// 	- Success: The job is successful.
+	// - Success: The job is successful.
 	//
-	// 	- Fail: The job failed.
+	// - Fail: The job failed.
 	//
 	// example:
 	//

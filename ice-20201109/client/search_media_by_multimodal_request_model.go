@@ -28,22 +28,35 @@ type iSearchMediaByMultimodalRequest interface {
 }
 
 type SearchMediaByMultimodalRequest struct {
+	// Custom filters. A JSON string. Supported backing fields include integer field intField1 and string fields strField1 and strField2. Only one matching condition can be applied per field, and filters across different fields are combined with a logical AND relationship.
+	//
+	// - Exact match example: {"intField1":12,"strField1":"abc"}
+	//
+	// - Multi-value match example: {"intField1":[12,13],"strField1":["abc","cd"]}
+	//
+	// - Range match example: {"intField1":{"gte":12,"lte":13}}
+	//
 	// example:
 	//
-	// {}
+	// {"intField1":{"gte":12,"lte":13},"strField2":["cd","de"],"strField1":"abc"}
 	CustomFilters *string `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
 	// The type of the media assets.
 	//
 	// Valid values:
 	//
-	// 	- image
+	// - image
 	//
-	// 	- video (default)
+	// - video (default)
 	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Namespace.
+	//
+	// example:
+	//
+	// name-1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The page number. Default value: 1.
 	//
@@ -64,10 +77,18 @@ type SearchMediaByMultimodalRequest struct {
 	// test-1
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 	// The content that you want to query. You can describe the content in natural language.
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	//
 	// example:
 	//
-	// {}
+	// Two pandas are fighting.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Creation time, in milliseconds UNIX timestamp. gte indicates greater than or equal to, and lte indicates less than or equal to.
+	//
+	// - Range example: {"gte":1761205662998,"lte":1771205662998}
+	//
+	// example:
+	//
+	// {"gte":1761205662998,"lte":1771205662998}
 	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
 }
 

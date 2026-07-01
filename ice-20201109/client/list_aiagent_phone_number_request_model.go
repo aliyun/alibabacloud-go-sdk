@@ -20,16 +20,38 @@ type iListAIAgentPhoneNumberRequest interface {
 }
 
 type ListAIAgentPhoneNumberRequest struct {
+	// Phone number. Specify Number to directly query the corresponding phone number.
+	//
+	// example:
+	//
+	// 139xxxxxxxxx
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// Page number. Default Value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, indicating the number of records displayed per page. Default Value is 50, with a maximum value of 100.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status   *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Status of the target phone number to query.
+	//
+	// - 1: "Activation in progress".
+	//
+	// - 2: "Normal".
+	//
+	// - 3: "Deactivation in progress".
+	//
+	// - 4: "Deactivated".
+	//
+	// example:
+	//
+	// 2
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAIAgentPhoneNumberRequest) String() string {

@@ -36,9 +36,9 @@ type QueryMediaCensorJobDetailRequest struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The number of entries per page.
 	//
-	// 	- Default value: **30**.
+	// - Default value: **30**.
 	//
-	// 	- Valid values: **1 to 300**.
+	// - Valid values: **1 to 300**.
 	//
 	// example:
 	//

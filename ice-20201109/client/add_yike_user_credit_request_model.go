@@ -16,12 +16,16 @@ type iAddYikeUserCreditRequest interface {
 }
 
 type AddYikeUserCreditRequest struct {
+	// The number of credits to add. The value must be greater than 0.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 50
 	Credit *int32 `json:"Credit,omitempty" xml:"Credit,omitempty"`
+	// The user ID of the sub-account.
+	//
 	// This parameter is required.
 	//
 	// example:

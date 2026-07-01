@@ -28,9 +28,9 @@ type GetCustomizedVoiceJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -122,9 +122,9 @@ type GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The gender. Valid values:
 	//
-	// 	- female
+	// - female
 	//
-	// 	- male
+	// - male
 	//
 	// example:
 	//
@@ -137,14 +137,18 @@ type GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob struct {
 	// ****571c704445f9a0ee011406c2****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The status description.
+	//
+	// example:
+	//
+	// Training failed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The scenario. Valid values:
 	//
-	// 	- story
+	// - story
 	//
-	// 	- interaction
+	// - interaction
 	//
-	// 	- navigation
+	// - navigation
 	//
 	// example:
 	//
@@ -152,17 +156,17 @@ type GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob struct {
 	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
 	// The job state. Valid values:
 	//
-	// 	- Initialization
+	// - Initialization
 	//
-	// 	- AudioDetecting
+	// - AudioDetecting
 	//
-	// 	- PreTraining
+	// - PreTraining
 	//
-	// 	- Training
+	// - Training
 	//
-	// 	- Success
+	// - Success
 	//
-	// 	- Fail
+	// - Fail
 	//
 	// example:
 	//
@@ -170,9 +174,9 @@ type GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the human voice cloning job. Valid values:
 	//
-	// 	- Basic
+	// - Basic
 	//
-	// 	- Standard
+	// - Standard
 	//
 	// example:
 	//
@@ -182,7 +186,7 @@ type GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob struct {
 	//
 	// example:
 	//
-	// This is an exclusive voice
+	// 这是一个专属人声
 	VoiceDesc *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
 	// The voice ID.
 	//
@@ -194,7 +198,7 @@ type GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob struct {
 	//
 	// example:
 	//
-	// Xiaozhuan
+	// Basic
 	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
 }
 

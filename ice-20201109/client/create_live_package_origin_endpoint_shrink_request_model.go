@@ -57,6 +57,10 @@ type CreateLivePackageOriginEndpointShrinkRequest struct {
 	// ****0311a423d11a5f7dee713535****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The endpoint description.
+	//
+	// example:
+	//
+	// This is an origin endpoint.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The origin endpoint name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//
@@ -85,7 +89,8 @@ type CreateLivePackageOriginEndpointShrinkRequest struct {
 	// example:
 	//
 	// 192.168.1.0/24,10.0.0.1/24
-	IpWhitelist               *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
+	// Live stream encapsulation configuration
 	LivePackagingConfigShrink *string `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
 	// The playlist name. Default value: manifest.
 	//

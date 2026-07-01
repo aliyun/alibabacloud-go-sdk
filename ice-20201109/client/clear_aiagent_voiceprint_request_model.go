@@ -16,8 +16,13 @@ type iClearAIAgentVoiceprintRequest interface {
 }
 
 type ClearAIAgentVoiceprintRequest struct {
+	// The registration mode. The default is `Explicit`.
+	//
+	// example:
+	//
+	// Explicit
 	RegistrationMode *string `json:"RegistrationMode,omitempty" xml:"RegistrationMode,omitempty"`
-	// The unique identifier for the voiceprint.
+	// The unique identifier of the voiceprint to clear.
 	//
 	// example:
 	//

@@ -16,10 +16,14 @@ type iCreateIpcOrderResponseBody interface {
 }
 
 type CreateIpcOrderResponseBody struct {
+	// The purchase status.
+	//
 	// example:
 	//
 	// Success
 	PurchaseStatus *string `json:"PurchaseStatus,omitempty" xml:"PurchaseStatus,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****36-3C1E-4417-BDB2-1E034F****

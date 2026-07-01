@@ -26,29 +26,44 @@ type iDescribeRtcRobotInstanceResponseBody interface {
 }
 
 type DescribeRtcRobotInstanceResponseBody struct {
+	// The authentication token for the RTC Channel.
+	//
 	// example:
 	//
 	// **********
 	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	// The channel ID.
+	//
 	// example:
 	//
 	// testId
-	ChannelId *string                                     `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Config    *DescribeRtcRobotInstanceResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// Id of the request
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The advanced configurations of the AI agent.
+	Config *DescribeRtcRobotInstanceResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The request ID.
 	//
 	// example:
 	//
 	// 20B3A1B6-4BD2-5DE6-BCBC-098C9B4F4E91
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// - `Executing`: The instance is running.
+	//
+	// - `Finished`: The instance has stopped.
+	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The custom user data.
+	//
 	// example:
 	//
 	// {}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The ID of the AI agent in the channel.
+	//
 	// example:
 	//
 	// my-robot
@@ -136,11 +151,20 @@ func (s *DescribeRtcRobotInstanceResponseBody) Validate() error {
 }
 
 type DescribeRtcRobotInstanceResponseBodyConfig struct {
+	// Specifies whether to allow voice interruption.
+	//
 	// example:
 	//
 	// true
-	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
-	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	EnableVoiceInterrupt *bool `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	// The welcome message.
+	//
+	// example:
+	//
+	// Hello
+	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// The voice ID.
+	//
 	// example:
 	//
 	// zhixiaoxia

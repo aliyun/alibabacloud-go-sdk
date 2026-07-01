@@ -20,15 +20,22 @@ type iListYikeProductionsResponseBody interface {
 }
 
 type ListYikeProductionsResponseBody struct {
+	// The maximum number of results returned on each page.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. If more results are available, you can use this token in the next request to retrieve the next page of results. If this field is empty, all results have been returned.
+	//
 	// example:
 	//
 	// Token
-	NextToken      *string                                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of projects.
 	ProductionList []*ListYikeProductionsResponseBodyProductionList `json:"ProductionList,omitempty" xml:"ProductionList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -93,34 +100,50 @@ func (s *ListYikeProductionsResponseBody) Validate() error {
 }
 
 type ListYikeProductionsResponseBodyProductionList struct {
+	// The authentication method.
+	//
 	// example:
 	//
 	// Manage
 	Auth *string `json:"Auth,omitempty" xml:"Auth,omitempty"`
+	// The cover URL.
+	//
 	// example:
 	//
 	// https://tagvvcloud-material-center-prod.oss-cn-hangzhou.aliyuncs.com/sumvideo/utils_image/sumvideo-video-cover.png
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// The creation time of the project.
+	//
 	// example:
 	//
 	// 2026-01-07T02:21:36Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator name.
+	//
 	// example:
 	//
 	// aliyun_183320223010****
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// The project description.
+	//
 	// example:
 	//
 	// Swas_QuerySwasInstanceByRegion
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// pd_463862****
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
+	// The title of the project.
+	//
 	// example:
 	//
 	// Harvest
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// llm-m3r546h1n9kq3mtm

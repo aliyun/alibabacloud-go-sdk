@@ -30,9 +30,9 @@ type ListSourceLocationsRequest struct {
 	//
 	// true
 	FilterState *bool `json:"FilterState,omitempty" xml:"FilterState,omitempty"`
-	// 	- The page number.
+	// - The page number.
 	//
-	// 	- Default value: 1.
+	// - Default value: 1.
 	//
 	// example:
 	//

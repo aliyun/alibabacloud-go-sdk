@@ -18,25 +18,25 @@ type iListAvatarsRequest interface {
 }
 
 type ListAvatarsRequest struct {
-	// 	- The type of the digital human.
+	// - The type of the digital human.
 	//
-	// 	- 2DAvatar
+	// - 2DAvatar
 	//
 	// example:
 	//
 	// 2DAvatar
 	AvatarType *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
-	// 	- The page number.
+	// - The page number.
 	//
-	// 	- Default value: 1.
+	// - Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 	- The number of entries per page.
+	// - The number of entries per page.
 	//
-	// 	- Default value: 10.
+	// - Default value: 10.
 	//
 	// example:
 	//

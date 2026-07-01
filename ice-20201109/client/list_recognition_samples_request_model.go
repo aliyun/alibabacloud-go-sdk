@@ -34,13 +34,13 @@ type iListRecognitionSamplesRequest interface {
 type ListRecognitionSamplesRequest struct {
 	// The type of recognition algorithm. Valid values:
 	//
-	// 	- landmark
+	// - landmark
 	//
-	// 	- object
+	// - object
 	//
-	// 	- logo
+	// - logo
 	//
-	// 	- face
+	// - face
 	//
 	// This parameter is required.
 	//
@@ -48,22 +48,27 @@ type ListRecognitionSamplesRequest struct {
 	//
 	// landmark
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The ID of the entity.
+	// The entity ID. If you set this parameter to ANY, the system queries by EntityName.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// e6b985c05174412dbc77c92496b7373b
-	EntityId   *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// **************544cb84754************
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The entity name.
+	//
+	// example:
+	//
+	// custom_person
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// The ID of the recognition library.
+	// The library ID. If you specify this parameter, the system performs an exact match. You can specify multiple library IDs. Separate them with commas (,).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// xxxxxxxxxxx
+	// lib1,lib2,lib3
 	LibId        *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

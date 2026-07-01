@@ -46,9 +46,9 @@ type ListLiveTranscodeJobsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The sorting order. By default, the query results are sorted by creation time in descending order. Valid values:
 	//
-	// 	- asc
+	// - asc
 	//
-	// 	- desc
+	// - desc
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type ListLiveTranscodeJobsRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The start mode of the transcoding job.
 	//
-	// 	- 0: The transcoding job immediately starts.
+	// - 0: The transcoding job immediately starts.
 	//
-	// 	- 1: The transcoding job starts at the scheduled time.
+	// - 1: The transcoding job starts at the scheduled time.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type ListLiveTranscodeJobsRequest struct {
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the template used by the transcoding job.
 	//
-	// 	- normal
+	// - normal
 	//
-	// 	- narrow-band
+	// - narrow-band
 	//
-	// 	- audio-only
+	// - audio-only
 	//
-	// 	- origin
+	// - origin
 	//
 	// example:
 	//

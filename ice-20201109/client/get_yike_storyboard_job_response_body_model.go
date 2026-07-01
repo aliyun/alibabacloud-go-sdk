@@ -22,16 +22,30 @@ type iGetYikeStoryboardJobResponseBody interface {
 }
 
 type GetYikeStoryboardJobResponseBody struct {
+	// The storyboard job ID. You can obtain this ID from the response parameters of the [SubmitStoryboardJob](https://help.aliyun.com/document_detail/461964.html) operation.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
-	JobId     *string                                    `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// A JSON object that contains the parameters for the job. The structure of this object varies based on the AI algorithm.
 	JobParams *GetYikeStoryboardJobResponseBodyJobParams `json:"JobParams,omitempty" xml:"JobParams,omitempty" type:"Struct"`
+	// The job result.
 	JobResult *GetYikeStoryboardJobResponseBodyJobResult `json:"JobResult,omitempty" xml:"JobResult,omitempty" type:"Struct"`
+	// The job status. Valid values:
+	//
+	// - **Succeeded**: The job completed successfully.
+	//
+	// - **Failed**: The job failed to complete.
+	//
+	// - **Running**: The job is in progress.
+	//
 	// example:
 	//
 	// Succeeded
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
@@ -106,14 +120,20 @@ func (s *GetYikeStoryboardJobResponseBody) Validate() error {
 }
 
 type GetYikeStoryboardJobResponseBodyJobParams struct {
+	// The aspect ratio of the video.
+	//
 	// example:
 	//
 	// 16:9
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
+	// The OSS URL of the file.
+	//
 	// example:
 	//
 	// https://test.oss-cn-shanghai.aliyuncs.com/test.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	// The model parameters.
+	//
 	// example:
 	//
 	// {
@@ -122,34 +142,54 @@ type GetYikeStoryboardJobResponseBodyJobParams struct {
 	//
 	// }
 	ModelParams *string `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
+	// The narration voice.
+	//
 	// example:
 	//
 	// sys_YoungGracefulWoman
 	NarrationVoiceId *string `json:"NarrationVoiceId,omitempty" xml:"NarrationVoiceId,omitempty"`
+	// The resolution of the generated video.
+	//
 	// example:
 	//
 	// 1K
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// The shot generation mode.
+	//
 	// example:
 	//
 	// multi
 	ShotPromptMode *string `json:"ShotPromptMode,omitempty" xml:"ShotPromptMode,omitempty"`
+	// The shot splitting mode.
+	//
 	// example:
 	//
 	// firstPersonNarration
 	ShotSplitMode *string `json:"ShotSplitMode,omitempty" xml:"ShotSplitMode,omitempty"`
+	// The source type.
+	//
 	// example:
 	//
 	// Novel
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The style ID.
+	//
 	// example:
 	//
 	// RealisticPhotography
 	StyleId *string `json:"StyleId,omitempty" xml:"StyleId,omitempty"`
+	// The job title.
+	//
+	// \\- Maximum length: 128 bytes.
+	//
+	// \\- UTF-8 encoding.
+	//
 	// example:
 	//
 	// test-title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The video model.
+	//
 	// example:
 	//
 	// wan2.6-r2v-flash
@@ -268,20 +308,38 @@ func (s *GetYikeStoryboardJobResponseBodyJobParams) Validate() error {
 }
 
 type GetYikeStoryboardJobResponseBodyJobResult struct {
+	// A list of IDs for storyboards that encountered an exception.
+	//
 	// example:
 	//
 	// [\\"st_2053348871\\"]
 	ExceptionStoryboardIds *string `json:"ExceptionStoryboardIds,omitempty" xml:"ExceptionStoryboardIds,omitempty"`
+	// A list of shots that failed to generate.
+	//
 	// example:
 	//
 	// [{\\"errorCode\\":\\"NoMediaData\\",\\"storyboardId\\":\\"st_2118280473\\",\\"shotId\\":\\"54\\"}]
 	FailureShotList *string `json:"FailureShotList,omitempty" xml:"FailureShotList,omitempty"`
+	// The downloadable OSS URL.
+	//
 	// example:
 	//
 	// https://test.oss-cn-shanghai.aliyuncs.com/test.mp4
-	OutputUrl            *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
-	StoryboardInfoList   *string `json:"StoryboardInfoList,omitempty" xml:"StoryboardInfoList,omitempty"`
+	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	// Detailed information about each storyboard in the job.
+	//
+	// example:
+	//
+	// [{\\"storyboardId\\":\\"st_1541525214\\",\\"title\\":\\"test_1\\",\\"status\\":\\"Produced\\",\\"subStatus\\":\\"ProduceSucc\\"},{\\"storyboardId\\":\\"st_1633435355\\",\\"title\\":\\"test_2\\",\\"status\\":\\"Produced\\",\\"subStatus\\":\\"ProduceSucc\\"}]
+	StoryboardInfoList *string `json:"StoryboardInfoList,omitempty" xml:"StoryboardInfoList,omitempty"`
+	// A comma-separated list of successful storyboard IDs.
+	//
+	// example:
+	//
+	// st_2118280473, st_2118280471
 	SuccessStoryboardIds *string `json:"SuccessStoryboardIds,omitempty" xml:"SuccessStoryboardIds,omitempty"`
+	// A list of IDs for successful storyboards.
+	//
 	// example:
 	//
 	// [\\"st_2118280473\\"]

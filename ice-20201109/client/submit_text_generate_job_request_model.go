@@ -22,29 +22,63 @@ type iSubmitTextGenerateJobRequest interface {
 }
 
 type SubmitTextGenerateJobRequest struct {
-	// The job description, which can be up to 1,024 bytes in length and must be encoded in UTF-8.
+	// The job description, with a maximum length of 1,024 bytes (UTF-8 encoded).
+	//
+	// example:
+	//
+	// Test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The text generation configurations, including keywords and the requirements for the word count and number of output copies.
+	// The generation configuration, in JSON format.
+	//
+	// If `Type` is set to `Title` or `MarketingCopy`, specify the following fields:
+	//
+	// - `keywords`: The keywords used to generate the title or marketing copy. This parameter is required.
+	//
+	// - `textLength`: The target length of the generated text, in characters. Valid values: 5 to 1,000. The actual length of the output is less than or equal to this value. This parameter is required.
+	//
+	// - `targetCount`: The number of copy variations to generate. Valid values: 1 to 1,000. This parameter is required.
+	//
+	// If `Type` is set to `StoryboardScript`, specify the following field:
+	//
+	// - `originText`: The original text used to generate the storyboard script. This parameter is required.
+	//
+	// example:
+	//
+	// {"keywords":"New cake shop, animal cream","textLength":100,"targetCount":3}
+	//
+	// or
+	//
+	// {"originText": "A new cake shop just opened on the street, selling cream cakes, fruit cakes, bread, muffins, etc. A coffee shop opened across from the cake shop, with a steady stream of customers."}
 	GenerateConfig *string `json:"GenerateConfig,omitempty" xml:"GenerateConfig,omitempty"`
 	// The job title.
 	//
-	// The job title can be up to 128 bytes in length.
+	// \\- The maximum length is 128 bytes.
 	//
-	// The value must be encoded in UTF-8.
+	// \\- UTF-8 encoding is required.
+	//
+	// example:
+	//
+	// Test title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The job type.
 	//
-	// Valid values:
+	// **Valid values:**
 	//
-	// 	- MarketingCopy: the marketing copy.
+	// - `MarketingCopy`: Generates marketing copy.
 	//
-	// 	- Title: the short video title.
+	// - `Title`: Generates a short video title.
+	//
+	// - `StoryboardScript`: Generates a storyboard script from text.
 	//
 	// example:
 	//
 	// MarketingCopy
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
+	// The custom settings in JSON format. The maximum length is 512 bytes. You can use this parameter to specify a [custom callback address](https://help.aliyun.com/document_detail/451631.html).
+	//
+	// example:
+	//
+	// {"NotifyAddress":"http://xx.xx.xxx"} or {"NotifyAddress":"https://xx.xx.xxx"} or {"NotifyAddress":"ice-callback-demo"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 

@@ -138,6 +138,10 @@ type SearchMediaByAILabelResponseBodyMediaList struct {
 	// 2017-11-14T09:15:50Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the media asset.
+	//
+	// example:
+	//
+	// Alibaba Cloud VOD video description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The duration. Unit: seconds.
 	//
@@ -169,29 +173,29 @@ type SearchMediaByAILabelResponseBodyMediaList struct {
 	//
 	// Valid values:
 	//
-	// 	- PrepareFail
+	// - PrepareFail
 	//
-	// 	- UploadFail
+	// - UploadFail
 	//
-	// 	- Init
+	// - Init
 	//
-	// 	- UploadSucc
+	// - UploadSucc
 	//
-	// 	- Transcoding
+	// - Transcoding
 	//
-	// 	- TranscodeFail
+	// - TranscodeFail
 	//
-	// 	- Deleted
+	// - Deleted
 	//
-	// 	- Normal
+	// - Normal
 	//
-	// 	- Uploading
+	// - Uploading
 	//
-	// 	- Preparing
+	// - Preparing
 	//
-	// 	- Blocked
+	// - Blocked
 	//
-	// 	- Checking
+	// - Checking
 	//
 	// example:
 	//
@@ -204,8 +208,16 @@ type SearchMediaByAILabelResponseBodyMediaList struct {
 	// out-****.oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 	// The tags of the media asset.
+	//
+	// example:
+	//
+	// Tag 1, Tag 2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The title of the media asset.
+	//
+	// example:
+	//
+	// The best music player ever
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -429,6 +441,10 @@ func (s *SearchMediaByAILabelResponseBodyMediaListAiData) Validate() error {
 
 type SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo struct {
 	// The category.
+	//
+	// example:
+	//
+	// Vehicle
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The ID of the face.
 	//
@@ -443,8 +459,16 @@ type SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo struct {
 	// 103102503**
 	LabelId *string `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
 	// The name of the entity.
+	//
+	// example:
+	//
+	// Car
 	LabelName *string `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
 	// The type of the tag.
+	//
+	// example:
+	//
+	// Object
 	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
 	// The information about the clips.
 	Occurrences []*SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences `json:"Occurrences,omitempty" xml:"Occurrences,omitempty" type:"Repeated"`
@@ -548,6 +572,10 @@ type SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences struc
 	// 158730355E4B82257D8AA1583A58****
 	ClipId *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
 	// The content of the text.
+	//
+	// example:
+	//
+	// Test content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The fine-grained ID of the entity.
 	//
@@ -556,6 +584,10 @@ type SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences struc
 	// 103102503**
 	FinegrainId *string `json:"FinegrainId,omitempty" xml:"FinegrainId,omitempty"`
 	// The fine-grained name of the entity.
+	//
+	// example:
+	//
+	// Car
 	FinegrainName *string `json:"FinegrainName,omitempty" xml:"FinegrainName,omitempty"`
 	// The start time of the clip.
 	//
@@ -770,6 +802,10 @@ type SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo struct {
 	// 5FE19530C7A422197535FE74F5DB****
 	ClipId *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
 	// The content of the audio.
+	//
+	// example:
+	//
+	// 智能标签测试
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The start time of the clip.
 	//
@@ -856,6 +892,10 @@ type SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo struct {
 	// 5FE19530C7A422197535FE74F5DB****
 	ClipId *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
 	// The content of the text.
+	//
+	// example:
+	//
+	// Pipi
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The start time of the clip.
 	//

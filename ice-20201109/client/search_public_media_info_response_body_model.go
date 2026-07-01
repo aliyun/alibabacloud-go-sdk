@@ -18,11 +18,16 @@ type iSearchPublicMediaInfoResponseBody interface {
 }
 
 type SearchPublicMediaInfoResponseBody struct {
+	// Public copyright media asset information
 	PublicMediaInfos []*SearchPublicMediaInfoResponseBodyPublicMediaInfos `json:"PublicMediaInfos,omitempty" xml:"PublicMediaInfos,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// ****3CFB-2767-54FD-B311-BD15A4C1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total amount of Data under the current request conditions.
+	//
 	// example:
 	//
 	// 100
@@ -78,15 +83,22 @@ func (s *SearchPublicMediaInfoResponseBody) Validate() error {
 }
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfos struct {
+	// Indicates whether you have purchased a resource plan that includes this media asset.
+	//
 	// example:
 	//
 	// true
 	Authorized *bool `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
+	// Whether the media asset is collected.
+	//
 	// example:
 	//
 	// true
-	Favorite  *bool                                                       `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
+	Favorite *bool `json:"Favorite,omitempty" xml:"Favorite,omitempty"`
+	// Media asset information
 	MediaInfo *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
+	// Remaining validity period of the resource plan (Day)
+	//
 	// example:
 	//
 	// 100
@@ -147,9 +159,12 @@ func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfos) Validate() error {
 }
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo struct {
+	// Dynamic metadata
 	DynamicMetaData *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData `json:"DynamicMetaData,omitempty" xml:"DynamicMetaData,omitempty" type:"Struct"`
 	// BasicInfo
 	MediaBasicInfo *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	// Media asset ID
+	//
 	// example:
 	//
 	// icepublic-****87b921bb4a55908a72a0537e****
@@ -206,10 +221,20 @@ func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo) Validate() 
 }
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData struct {
+	// Metadata JSON string
+	//
 	// example:
 	//
 	// "{\\"AuditionUrl\\": \\"http://xxx\\", \\"AuditionCount\\": 3...}"
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Type. Valid values:
+	//
+	// - "ai": AI data processed and normalized from original AI results
+	//
+	// - "user-defined": User-defined metadata
+	//
+	// - "system": System-provided
+	//
 	// example:
 	//
 	// system
@@ -247,26 +272,38 @@ func (s *SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaDa
 }
 
 type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo struct {
+	// Media Asset Business Type
+	//
 	// example:
 	//
 	// general
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// Categorization
+	//
 	// example:
 	//
 	// category
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Thumbnail URL
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.png?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// Media Asset Creation Time
+	//
 	// example:
 	//
 	// 2020-12-26T06:04:49Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Media Asset Deletion Time
+	//
 	// example:
 	//
 	// 2020-12-29T06:04:49Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// Content description
+	//
 	// example:
 	//
 	// description
@@ -276,32 +313,51 @@ type SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo st
 	// example:
 	//
 	// icepublic-****87b921bb4a55908a72a0537e****
-	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Label
+	//
+	// example:
+	//
+	// tag1
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// Media asset media type
+	//
 	// example:
 	//
 	// audio
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Updated At
+	//
 	// example:
 	//
 	// 2020-12-26T06:04:50Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// sprite
+	//
 	// example:
 	//
 	// [{"bucket":"example-bucket","count":"32","iceJobId":"******83ec44d58b2069def2e******","location":"oss-cn-shanghai","snapshotRegular":"example/example-{Count}.jpg","spriteRegular":"example/example-{TileCount}.jpg","templateId":"******e438b14ff39293eaec25******","tileCount":"1"}]
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	// Resource status
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// title
+	//
 	// example:
 	//
 	// title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// User Data
+	//
 	// example:
 	//
 	// userDataTest

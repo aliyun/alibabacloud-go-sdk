@@ -34,9 +34,9 @@ type SubmitLiveTranscodeJobShrinkRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The start mode of the transcoding job.
 	//
-	// 	- 0: The transcoding job immediately starts.
+	// - 0: The transcoding job immediately starts.
 	//
-	// 	- 1: The transcoding job starts at the scheduled time.
+	// - 1: The transcoding job starts at the scheduled time.
 	//
 	// This parameter is required.
 	//

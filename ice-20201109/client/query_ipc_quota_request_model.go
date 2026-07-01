@@ -22,22 +22,38 @@ type iQueryIpcQuotaRequest interface {
 }
 
 type QueryIpcQuotaRequest struct {
+	// Capability. Default value is understand. Valid values:
+	//
+	// - understand: understanding
+	//
+	// - understand-reid: understanding with reid
+	//
+	// - search: search
+	//
 	// example:
 	//
 	// understand
 	Capability *string `json:"Capability,omitempty" xml:"Capability,omitempty"`
+	// End time. UTC time in the format: yyyy-MM-ddTHH:mm:ssZ. The difference between EndTime and StartTime must not exceed 180 days.
+	//
 	// example:
 	//
 	// 2025-05-09T08:52:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Page number for paging. Default Value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Page size, which specifies the number of entries displayed per page. Default value is 10, and the maximum value is 50.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Start Time. UTC time in the format: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2025-05-08T08:52:00Z

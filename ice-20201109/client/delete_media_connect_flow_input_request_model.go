@@ -23,7 +23,12 @@ type DeleteMediaConnectFlowInputRequest struct {
 	// example:
 	//
 	// 0381f478-7d53-4076-9d5f-27680a6f73e7
-	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// Input name. Required when primary/standby input is enabled for the instance.
+	//
+	// example:
+	//
+	// input
 	InputName *string `json:"InputName,omitempty" xml:"InputName,omitempty"`
 }
 

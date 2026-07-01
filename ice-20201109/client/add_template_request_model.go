@@ -28,9 +28,9 @@ type iAddTemplateRequest interface {
 }
 
 type AddTemplateRequest struct {
-	// 	- The template configurations. The Config object of a regular template is encapsulated based on the Timeline object of an online editing project. The Config object of a custom template provides more flexible features. If you have special requirements, we recommend that you understand the structure of a Config object and configure a custom template. For more information, see [Config object of a regular template](https://help.aliyun.com/document_detail/456193.html).
+	// - The template configurations. The Config object of a regular template is encapsulated based on the Timeline object of an online editing project. The Config object of a custom template provides more flexible features. If you have special requirements, we recommend that you understand the structure of a Config object and configure a custom template. For more information, see [Config object of a regular template](https://help.aliyun.com/document_detail/456193.html).
 	//
-	// 	- For more information about Config object examples, see [Basic template configurations](https://help.aliyun.com/document_detail/451634.html).
+	// - For more information about Config object examples, see [Basic template configurations](https://help.aliyun.com/document_detail/451634.html).
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type AddTemplateRequest struct {
 	//
 	// example:
 	//
-	// 视频添加水印模板
+	// Template name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the template preview video.
 	//
@@ -62,11 +62,11 @@ type AddTemplateRequest struct {
 	RelatedMediaids *string `json:"RelatedMediaids,omitempty" xml:"RelatedMediaids,omitempty"`
 	// The source from which the template is created. Valid values:
 	//
-	// 	- OpenAPI
+	// - OpenAPI
 	//
-	// 	- AliyunConsole
+	// - AliyunConsole
 	//
-	// 	- WebSDK
+	// - WebSDK
 	//
 	// <!---->
 	//
@@ -76,17 +76,17 @@ type AddTemplateRequest struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The template state. Valid values:
 	//
-	// 	- Available: The template is available.
+	// - Available: The template is available.
 	//
-	// 	- Created: The template is created but not ready for use.
+	// - Created: The template is created but not ready for use.
 	//
-	// 	- Uploading: The video is being uploaded.
+	// - Uploading: The video is being uploaded.
 	//
-	// 	- Processing: The advanced template is being processed.
+	// - Processing: The advanced template is being processed.
 	//
-	// 	- UploadFailed: Failed to upload the video.
+	// - UploadFailed: Failed to upload the video.
 	//
-	// 	- ProcessFailed: Failed to process the advanced template.
+	// - ProcessFailed: Failed to process the advanced template.
 	//
 	// <!---->
 	//
@@ -96,9 +96,9 @@ type AddTemplateRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The template type. Valid values:
 	//
-	// 	- Timeline: a regular template created based on the timeline of a video editing project, in which multiple materials are arranged in sequence across multiple layers. It can be used to convert text and images into videos, create photo albums, add opening and closing parts, and apply the default watermark.
+	// - Timeline: a regular template created based on the timeline of a video editing project, in which multiple materials are arranged in sequence across multiple layers. It can be used to convert text and images into videos, create photo albums, add opening and closing parts, and apply the default watermark.
 	//
-	// 	- VETemplate: an advanced template created using effects of Adobe After Effects (AE). It can be used to produce complex animations and advanced media effects.
+	// - VETemplate: an advanced template created using effects of Adobe After Effects (AE). It can be used to produce complex animations and advanced media effects.
 	//
 	// <!---->
 	//

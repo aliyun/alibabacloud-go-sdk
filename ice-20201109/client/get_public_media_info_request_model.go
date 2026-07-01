@@ -14,6 +14,8 @@ type iGetPublicMediaInfoRequest interface {
 }
 
 type GetPublicMediaInfoRequest struct {
+	// IMS media asset ID
+	//
 	// example:
 	//
 	// icepublic-****14e501538aeef0a3140176f6****

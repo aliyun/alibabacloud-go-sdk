@@ -20,13 +20,13 @@ type iListTranscodeJobsResponseBody interface {
 type ListTranscodeJobsResponseBody struct {
 	// The list of jobs.
 	Jobs []*ListTranscodeJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. The token of the next page is returned after you call this operation for the first time.
+	// The token for the next page of results. Leave this parameter empty for the first request. The token is returned after the first query.
 	//
 	// example:
 	//
-	// 019daf5780f74831b0e1a767c9f1c178
+	// 019daf5780f74831b0e1a767c9f1****
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -83,21 +83,21 @@ func (s *ListTranscodeJobsResponseBody) Validate() error {
 }
 
 type ListTranscodeJobsResponseBodyJobs struct {
-	// The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the job was created. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the job was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-01-12T08:49:41Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
+	// The input group of the job. A single input indicates a transcoding job. Multiple inputs indicate a composition job.
 	InputGroup []*ListTranscodeJobsResponseBodyJobsInputGroup `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
-	// The number of subjobs.
+	// The number of sub-jobs.
 	//
 	// example:
 	//
@@ -111,37 +111,37 @@ type ListTranscodeJobsResponseBodyJobs struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The output group of the job.
 	OutputGroup []*ListTranscodeJobsResponseBodyJobsOutputGroup `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
-	// The main job ID.
+	// The parent job ID.
 	//
 	// example:
 	//
-	// 8b2198504dd340b7b3c9842a74fc9baa
+	// 8b2198504dd340b7b3c9842a74fc****
 	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
-	// The completion percentage of the job.
+	// The progress of the job.
 	//
 	// example:
 	//
 	// 0
 	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The ID of the request that submitted the job.
+	// The request ID of the job.
 	//
 	// example:
 	//
 	// 31E30781-9495-5E2D-A84D-759B0A01E262
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scheduling configuration of the job.
+	// The schedule configuration of the job.
 	ScheduleConfig *ListTranscodeJobsResponseBodyJobsScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// The state of the job.
+	// The status of the job. Valid values:
 	//
-	// 	- Success: At least one of the subjobs is successful.
+	// - `Success`: The job is successful if at least one sub-job is successful.
 	//
-	// 	- Fail: All subjobs failed.
+	// - `Fail`: The job fails if all sub-jobs fail.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the job was submitted. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -149,11 +149,11 @@ type ListTranscodeJobsResponseBodyJobs struct {
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
 	// The source of the job. Valid values:
 	//
-	// 	- API
+	// - `API`: The job is submitted by calling an API operation.
 	//
-	// 	- WorkFlow
+	// - `Workflow`: The job is triggered by a workflow.
 	//
-	// 	- Console
+	// - `Console`: The job is submitted on the console.
 	//
 	// example:
 	//
@@ -329,27 +329,27 @@ func (s *ListTranscodeJobsResponseBodyJobs) Validate() error {
 }
 
 type ListTranscodeJobsResponseBodyJobsInputGroup struct {
-	// The URL of the media asset. This parameter is specified only when the media asset is transcoded.
+	// The URL of the media stream. This parameter is required only when you transcode a media stream.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
-	// The media object.
+	// The media information. The value of this parameter varies based on the value of Type.
 	//
-	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	// - If Type is set to `OSS`, the value of this parameter must be an OSS URL. Both the `oss://` and `http(s)://` protocols are supported.
 	//
-	// 	- If Type is set to Media, the ID of a media asset is returned.
+	// - If Type is set to `Media`, the value of this parameter must be a media ID.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The type of the media object. Valid values:
+	// The type of the media asset. Valid values:
 	//
-	// 	- OSS: an Object Storage Service (OSS) object.
+	// - `OSS`: an OSS file.
 	//
-	// 	- Media: a media asset.
+	// - `Media`: a media asset ID.
 	//
 	// example:
 	//
@@ -397,7 +397,7 @@ func (s *ListTranscodeJobsResponseBodyJobsInputGroup) Validate() error {
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroup struct {
-	// The output file configuration.
+	// The output media configuration.
 	Output *ListTranscodeJobsResponseBodyJobsOutputGroupOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
 	// The job processing configuration.
 	ProcessConfig *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig `json:"ProcessConfig,omitempty" xml:"ProcessConfig,omitempty" type:"Struct"`
@@ -444,23 +444,27 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroup) Validate() error {
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupOutput struct {
-	// The media object. If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported. If Type is set to Media, the ID of a media asset is returned.
+	// The media information. The value of this parameter varies based on the value of Type.
+	//
+	// - If Type is set to `OSS`, the value of this parameter must be an OSS URL. Both the `oss://` and `http(s)://` protocols are supported.
+	//
+	// - If Type is set to `Media`, the value of this parameter must be a media ID.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The URL of the transcoded output stream. This parameter is required only when the output is a media asset.
+	// The URL of the output stream. This parameter is required only when you transcode a media stream.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/{MediaId}/{JobId}.mp4
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
-	// The type of the media object. Valid values:
+	// The type of the media asset. Valid values:
 	//
-	// 	- OSS: an OSS object.
+	// - `OSS`: an OSS file.
 	//
-	// 	- Media: a media asset.
+	// - `Media`: a media asset ID.
 	//
 	// example:
 	//
@@ -508,17 +512,17 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupOutput) Validate() error {
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig struct {
-	// The multi-input stream merge configuration.
+	// The configurations for combining multiple inputs.
 	CombineConfigs []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigCombineConfigs `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
 	// The encryption settings.
 	Encryption *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
-	// The watermark configuration for an image.
+	// The image watermark configurations.
 	ImageWatermarks []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	// Indicates whether the tags of the input stream are inherited in the output stream. This parameter does not take effect when the input is not a media asset. Default value: false.
+	// Specifies whether to inherit tags from the input stream. This parameter applies only when the input is a Media Asset. Default Value: false
 	IsInheritTags *bool `json:"IsInheritTags,omitempty" xml:"IsInheritTags,omitempty"`
-	// The subtitle configuration.
+	// The subtitle burn-in settings.
 	Subtitles []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	// The configurations of the text watermarks.
+	// The text watermark configurations.
 	TextWatermarks []*ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
 	// The transcoding configuration.
 	Transcode *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
@@ -652,27 +656,27 @@ type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigCombineConfigs str
 	//
 	// example:
 	//
-	// 0 或 exclude
+	// 0 or exclude
 	AudioIndex *string `json:"AudioIndex,omitempty" xml:"AudioIndex,omitempty"`
-	// The duration of the input stream. The default value is the duration of the video.
+	// The duration of the input stream. The default is the duration of the video.
 	//
 	// example:
 	//
 	// 20.0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The start time of the input stream. Default value: 0.
+	// The start time of the input stream. The default value is 0.
 	//
 	// example:
 	//
 	// 0.0
 	Start *float64 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The video stream index.
+	// The index of the video stream.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 0 或 exclude
+	// 0 or exclude
 	VideoIndex *string `json:"VideoIndex,omitempty" xml:"VideoIndex,omitempty"`
 }
 
@@ -725,13 +729,13 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigCombineConfigs
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigEncryption struct {
-	// The ciphertext of HTTP Live Streaming (HLS) encryption.
+	// The key ciphertext for standard encryption.
 	//
 	// example:
 	//
 	// MTYi00NDU0LTg5O****
 	CipherText *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
-	// The endpoint of the decryption service for HLS encryption.
+	// The URL of the decryption service for standard encryption.
 	//
 	// example:
 	//
@@ -785,13 +789,13 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigEncryption) Va
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarks struct {
-	// The parameters that are used to overwrite the corresponding parameters of the template.
+	// The override parameter. If you specify this parameter, the corresponding parameter in the template is overwritten.
 	OverwriteParams *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
 	// The template ID.
 	//
 	// example:
 	//
-	// 9547c6ad97cb4f2aaa29683ebd18d410
+	// 9547c6ad97cb4f2aaa29683ebd18****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -831,13 +835,13 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermark
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParams struct {
-	// The position of the watermark on the x-axis.
+	// The horizontal offset of the watermark.
 	//
 	// example:
 	//
 	// 10
 	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	// The position of the watermark on the y-axis.
+	// The vertical offset of the watermark.
 	//
 	// example:
 	//
@@ -845,13 +849,13 @@ type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOve
 	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
 	// The watermark image file.
 	File *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// The height of the output video.
+	// The height of the watermark.
 	//
 	// example:
 	//
 	// 32
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The reference position of the watermark. Valid values: TopLeft, TopRight, BottomLeft, and BottomRight. Default value: TopLeft.
+	// The reference position. Valid values: `TopLeft`, `TopRight`, `BottomLeft`, and `BottomRight`. Default value: `TopLeft`.
 	//
 	// example:
 	//
@@ -859,7 +863,7 @@ type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOve
 	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
 	// The timeline settings.
 	Timeline *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
-	// The width of the output video.
+	// The width of the watermark.
 	//
 	// example:
 	//
@@ -953,17 +957,21 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermark
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsFile struct {
-	// The media object. If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported. If Type is set to Media, the ID of a media asset is returned.
+	// The media information. The value of this parameter varies based on the value of Type.
+	//
+	// - If Type is set to `OSS`, the value of this parameter must be an OSS URL. Both the `oss://` and `http(s)://` protocols are supported.
+	//
+	// - If Type is set to `Media`, the value of this parameter must be a media ID.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The type of the media object. Valid values:
+	// The type of the media asset. Valid values:
 	//
-	// 	- OSS: an OSS object.
+	// - `OSS`: an OSS file.
 	//
-	// 	- Media: a media asset.
+	// - `Media`: a media asset ID.
 	//
 	// example:
 	//
@@ -1002,13 +1010,13 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermark
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline struct {
-	// The duration of the stream. Valid values: the number of seconds or "ToEND".
+	// The display duration in seconds. You can also set the value to `ToEND`.
 	//
 	// example:
 	//
 	// ToEND
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The beginning of the time range for which data was queried.
+	// The start time.
 	//
 	// example:
 	//
@@ -1047,13 +1055,13 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermark
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles struct {
-	// The parameters that are used to overwrite the corresponding parameters of the template.
+	// The overwrite parameters. If specified, these parameters overwrite the corresponding parameters in the template.
 	OverwriteParams *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
 	// The template ID.
 	//
 	// example:
 	//
-	// 9547c6ad97cb4f2aaa29683ebd18d410
+	// 9547c6ad97cb4f2aaa29683ebd18****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -1154,11 +1162,11 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParamsFile struct {
-	// The media object.
+	// The media value:
 	//
-	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	// - If type is OSS, the value is a URL. Both OSS and HTTP protocols are supported.
 	//
-	// 	- If Type is set to Media, the ID of a media asset is returned.
+	// - If type is Media, the value is the Media Asset ID.
 	//
 	// example:
 	//
@@ -1166,9 +1174,9 @@ type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwrite
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the media object. Valid values:
 	//
-	// 	- OSS: an OSS object.
+	// - OSS: an Object Storage Service (OSS) file.
 	//
-	// 	- Media: a media asset.
+	// - Media: the ID of the Media Asset.
 	//
 	// example:
 	//
@@ -1207,13 +1215,13 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks struct {
-	// The parameters that are used to overwrite the corresponding parameters of the template.
+	// The override parameter. If you specify this parameter, the corresponding parameter in the template is overwritten.
 	OverwriteParams *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
 	// The template ID.
 	//
 	// example:
 	//
-	// 9547c6ad97cb4f2aaa29683ebd18d410
+	// 9547c6ad97cb4f2aaa29683ebd18****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -1253,55 +1261,61 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarksOverwriteParams struct {
-	// Indicates whether the text size was adjusted based on the output video dimensions. true / false, default: false
+	// Specifies whether to adjust the font size based on the output video size.
+	//
+	// - `true`: The font size is automatically adjusted based on the output video size.
+	//
+	// - `false`: The font size remains fixed and is not affected by the output video size.
+	//
+	// Default value: false
 	//
 	// example:
 	//
 	// false
 	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
-	// The border color.
+	// The color of the border.
 	//
 	// example:
 	//
 	// #006400
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	// The border width.
+	// The width of the border.
 	//
 	// example:
 	//
 	// 0
 	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	// The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
+	// The watermark text, which must be UTF-8 encoded. The text does not need to be Base64 encoded.
 	//
 	// example:
 	//
-	// 测试水印
+	// Test watermark
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The transparency of the watermark.
+	// The transparency.
 	//
 	// example:
 	//
 	// 1.0
 	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
-	// The color of the text.
+	// The color.
 	//
 	// example:
 	//
 	// #006400
 	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	// The font of the text.
+	// The font.
 	//
 	// example:
 	//
 	// SimSun
 	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// The size of the text.
+	// The font size.
 	//
 	// example:
 	//
 	// 16
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	// The distance of the watermark from the left edge.
+	// The distance from the left edge of the video.
 	//
 	// example:
 	//
@@ -1418,13 +1432,13 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode struct {
-	// The parameters that are used to overwrite the corresponding parameters of the template.
+	// The override parameter. If you specify this parameter, the corresponding parameter in the template is overwritten.
 	OverwriteParams *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
 	// The template ID.
 	//
 	// example:
 	//
-	// 9547c6ad97cb4f2aaa29683ebd18d410
+	// 9547c6ad97cb4f2aaa29683ebd18****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -1466,11 +1480,12 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode) Val
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams struct {
 	// The audio settings.
 	Audio *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	// The encapsulation format settings.
+	// The container format settings.
 	Container *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	// The encapsulation settings.
+	// The muxing settings.
 	MuxConfig *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	Tags      map[string]*string                                                                          `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom tags.
+	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The video settings.
 	Video *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
@@ -1555,53 +1570,53 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudio struct {
 	// The audio bitrate of the output file.
 	//
-	// 	- Valid values: [8,1000].
+	// - Valid values: 8 to 1000.
 	//
-	// 	- Unit: Kbit/s.
+	// - Unit: Kbit/s.
 	//
-	// 	- Default value: 128.
+	// - Default value: 128.
 	//
 	// example:
 	//
 	// 128
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The number of sound channels. Default value: 2.
+	// The number of audio channels. Default value: 2.
 	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
+	// The audio codec. Valid values: `AAC`, `MP3`, `VORBIS`, and `FLAC`. Default value: `AAC`.
 	//
 	// example:
 	//
 	// AAC
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
+	// The audio encoding preset. This parameter is supported only when the audio codec is AAC. Valid values: `aac_low`, `aac_he`, `aac_he_v2`, `aac_ld`, and `aac_eld`.
 	//
 	// example:
 	//
 	// aac_low
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// Indicates whether the audio stream is deleted.
+	// Specifies whether to delete the audio stream. Valid values: `true` and `false`.
 	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// The sampling rate.
+	// The sample rate.
 	//
-	// 	- Default value: 44100.
+	// - Valid values: 22050, 32000, 44100, 48000, and 96000.
 	//
-	// 	- Valid values: 22050, 32000, 44100, 48000, and 96000.
+	// - Default value: 44100.
 	//
-	// 	- Unit: Hz.
+	// - Unit: Hz.
 	//
 	// example:
 	//
 	// 44100
 	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	// The volume configurations.
+	// The volume control settings.
 	Volume *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
@@ -1686,25 +1701,25 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume struct {
-	// The output volume.
+	// The target integrated loudness.
 	//
 	// example:
 	//
 	// -6
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
-	// The volume range.
+	// The target loudness range.
 	//
 	// example:
 	//
 	// 8
 	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
-	// The volume adjustment method. Valid values:
+	// The volume adjustment method.
 	//
 	// example:
 	//
 	// auto
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The peak volume.
+	// The true peak level.
 	//
 	// example:
 	//
@@ -1822,13 +1837,13 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
-	// The segment length.
+	// The duration of each segment.
 	//
 	// example:
 	//
 	// 10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The forced segmentation point in time.
+	// The time points at which to enforce segmentation.
 	//
 	// example:
 	//
@@ -1867,17 +1882,17 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParamsVideo struct {
-	// The maximum adaptive bitrate (ABR). This parameter takes effect only for Narrowband HD 1.0. Valid values: [10,50000]. Unit: Kbit/s.
+	// The maximum bitrate for adaptive bitrate (ABR) streaming. This parameter is valid only for videos with a narrow height and a wide width. Valid values: 10 to 50000. Unit: Kbit/s.
 	//
 	// example:
 	//
 	// 6000
 	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
-	// The average bitrate of the video.
+	// The average video bitrate.
 	//
-	// 	- Valid values: [10,50000].
+	// - Valid values: 10 to 50000.
 	//
-	// 	- Unit: Kbit/s.
+	// - Unit: Kbit/s.
 	//
 	// example:
 	//
@@ -1885,39 +1900,39 @@ type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrite
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	// The buffer size.
 	//
-	// 	- Valid values: [1000,128000].
+	// - Valid values: 1000 to 128000.
 	//
-	// 	- Default value: 6000.
+	// - Default value: 6000.
 	//
-	// 	- Unit: KB.
+	// - Unit: Kbit.
 	//
 	// example:
 	//
 	// 6000
 	Bufsize *string `json:"Bufsize,omitempty" xml:"Bufsize,omitempty"`
-	// The encoding format.
+	// The video codec.
 	//
 	// example:
 	//
 	// H.264
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// The constant rate factor.
+	// The quality-to-bitrate control factor.
 	//
-	// 	- Valid values: [0,51].
+	// - Valid values: 0 to 51.
 	//
-	// 	- Default value: 23 if the encoding format is H.264, or 26 if the encoding format is H.265.
+	// - Default value: If the codec is H.264, the default value is 23. If the codec is H.265, the default value is 26.
 	//
-	// If this parameter is set, the value of Bitrate becomes invalid.
+	// If you specify Crf, the value of Bitrate is ignored.
 	//
 	// example:
 	//
 	// 23
 	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
-	// The method of video cropping. Valid values:
+	// The cropping settings. Two modes are supported.
 	//
-	// 	- border: automatically detects and removes black bars.
+	// - Automatic: Set the value to `border` to automatically detect and crop black borders.
 	//
-	// 	- A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
+	// - Manual: Specify the crop area in the `width:height:left:top` format. Example: `1280:800:0:140`.
 	//
 	// example:
 	//
@@ -1925,105 +1940,105 @@ type ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrite
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	// The frame rate.
 	//
-	// 	- Valid values: (0,60].
+	// - Valid values: 0 to 60.
 	//
-	// 	- The value is 60 if the frame rate of the input video exceeds 60.
+	// - If the frame rate of the input file is greater than 60, the value is 60.
 	//
-	// 	- Default value: the frame rate of the input video.
+	// - Default value: the frame rate of the input file.
 	//
 	// example:
 	//
 	// 25
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The maximum number of frames between two keyframes.
+	// The maximum number of frames in a Group of Pictures (GOP).
 	//
-	// 	- Valid values: [1,1080000].
+	// - Valid values: 1 to 1080000.
 	//
-	// 	- Default value: 250.
+	// - Default value: 250.
 	//
 	// example:
 	//
 	// 250
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// The height of the output video.
+	// The height.
 	//
-	// 	- Valid values: [128,4096].
+	// - Valid values: 128 to 4096.
 	//
-	// 	- Unit: pixels.
+	// - Unit: px.
 	//
-	// 	- Default value: the height of the input video.
+	// - Default value: the height of the source video.
 	//
 	// example:
 	//
 	// 1080
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// Indicates whether the auto-rotate screen feature is enabled.
+	// Specifies whether to enable adaptive resolution by long and short sides.
 	//
 	// example:
 	//
 	// false
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
-	// The maximum bitrate of the output video. Valid values: [10,50000]. Unit: Kbit/s.
+	// The maximum video bitrate. Valid values: 10 to 50000. Unit: Kbit/s.
 	//
 	// example:
 	//
 	// 9000
 	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
-	// The black bars added to the video.
+	// The settings for adding black bars.
 	//
-	// 	- Format: width:height:left:top.
+	// - Format: `width:height:left:top`.
 	//
-	// 	- Example: 1280:800:0:140.
+	// - Example: `1280:800:0:140`.
 	//
 	// example:
 	//
 	// 1280:800:0:140
 	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	// The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
+	// The pixel format. Valid values include `yuv420p` and `yuvj420p`.
 	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
+	// The preset of the video encoder. This parameter is supported only when the video codec is H.264. Valid values: `veryfast`, `fast`, `medium`, `slow`, and `slower`. Default value: `medium`.
 	//
 	// example:
 	//
 	// medium
 	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
-	// The encoding profile. Valid values: baseline, main, and high.
+	// The encoding profile. Valid values include baseline, main, and high.
 	//
-	// 	- baseline: applicable to mobile devices.
+	// - `baseline`: suitable for mobile devices.
 	//
-	// 	- main: applicable to standard-definition devices.
+	// - `main`: suitable for standard-definition devices.
 	//
-	// 	- high: applicable to high-definition devices.
+	// - `high`: suitable for high-definition devices.
 	//
-	// Default value: high.
+	// Default value: `high`.
 	//
 	// example:
 	//
 	// Main
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// Indicates whether the video was removed.
+	// Specifies whether to delete the video. Valid values: `true` and `false`.
 	//
 	// example:
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// The scan mode. Valid values: interlaced and progressive.
+	// The scan mode. Valid values: `interlaced` and `progressive`.
 	//
 	// example:
 	//
 	// progressive
 	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	// The width of the output video.
+	// The width.
 	//
-	// 	- Valid values: [128,4096].
+	// - Valid values: 128 to 4096.
 	//
-	// 	- Unit: pixels.
+	// - Unit: px.
 	//
-	// 	- Default value: the width of the input video.
+	// - Default value: the width of the source video.
 	//
 	// example:
 	//
@@ -2206,13 +2221,13 @@ func (s *ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverw
 }
 
 type ListTranscodeJobsResponseBodyJobsScheduleConfig struct {
-	// The ID of the MPS queue to which the job was submitted.
+	// The pipeline ID.
 	//
 	// example:
 	//
-	// e37ebee5d98b4781897f6086e89f9c56
+	// e37ebee5d98b4781897f6086e89f****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	// The priority of the job. A larger value indicates a higher priority. The value can be an integer from 1 to 10.
 	//
 	// example:
 	//

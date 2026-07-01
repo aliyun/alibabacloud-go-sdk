@@ -22,7 +22,7 @@ type ListSearchLibRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 50.
+	// The number of entries to return on each page. Default value: 10. Max value: 50.
 	//
 	// example:
 	//

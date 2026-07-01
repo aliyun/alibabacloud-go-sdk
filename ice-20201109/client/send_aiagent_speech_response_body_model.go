@@ -14,6 +14,8 @@ type iSendAIAgentSpeechResponseBody interface {
 }
 
 type SendAIAgentSpeechResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0

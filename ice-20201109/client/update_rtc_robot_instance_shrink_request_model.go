@@ -16,7 +16,10 @@ type iUpdateRtcRobotInstanceShrinkRequest interface {
 }
 
 type UpdateRtcRobotInstanceShrinkRequest struct {
+	// The configuration for the AI Agent instance.
 	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the AI Agent instance to update.
+	//
 	// This parameter is required.
 	//
 	// example:

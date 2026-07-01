@@ -124,13 +124,13 @@ type QueryDNAJobListResponseBodyJobList struct {
 	PrimaryKey *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
 	// The job state. Valid values:
 	//
-	// 	- **Queuing**: The job is waiting in the queue.
+	// - **Queuing**: The job is waiting in the queue.
 	//
-	// 	- **Analysing**: The job is in progress.
+	// - **Analysing**: The job is in progress.
 	//
-	// 	- **Success**: The job is successful.
+	// - **Success**: The job is successful.
 	//
-	// 	- **Fail**: The job failed.
+	// - **Fail**: The job failed.
 	//
 	// example:
 	//
@@ -272,7 +272,7 @@ func (s *QueryDNAJobListResponseBodyJobList) Validate() error {
 type QueryDNAJobListResponseBodyJobListInput struct {
 	// The input file. The file can be an OSS object or a media asset. The path of an OSS object can be in one of the following formats:
 	//
-	// 1\\. oss://bucket/object
+	// 1\\. oss\\://bucket/object
 	//
 	// 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
 	//
@@ -284,9 +284,9 @@ type QueryDNAJobListResponseBodyJobListInput struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the input file. Valid values:
 	//
-	// 1.  OSS: Object Storage Service (OSS) object.
+	// 1. OSS: Object Storage Service (OSS) object.
 	//
-	// 2.  Media: media asset.
+	// 2. Media: media asset.
 	//
 	// example:
 	//

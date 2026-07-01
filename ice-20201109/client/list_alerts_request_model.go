@@ -29,6 +29,14 @@ type iListAlertsRequest interface {
 
 type ListAlertsRequest struct {
 	// The alert type.
+	//
+	// example:
+	//
+	// Scheduling Error: An error occurred when building the schedule.
+	//
+	// PlayBack Warning: Address pull exception when adding source.
+	//
+	// info: Information.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The end of the time range to query.
 	//

@@ -22,15 +22,15 @@ type iQuerySmarttagJobResponseBody interface {
 }
 
 type QuerySmarttagJobResponseBody struct {
-	// The status of the job. Valid values:
+	// The job status. Valid values:
 	//
-	// 	- **Success**: The job was successful.
+	// - **Success**: The job was successful.
 	//
-	// 	- **Fail**: The job failed.
+	// - **Fail**: The job failed.
 	//
-	// 	- **Processing**: The job is in progress.
+	// - **Processing**: The job is in progress.
 	//
-	// 	- **Submitted**: The job is submitted and waiting to be processed.
+	// - **Submitted**: The job is queued for processing.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type QuerySmarttagJobResponseBody struct {
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Results   *QuerySmarttagJobResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
 	Usages    *QuerySmarttagJobResponseBodyUsages  `json:"Usages,omitempty" xml:"Usages,omitempty" type:"Struct"`
-	// The content of callback messages that are sent to Simple Message Queue (SMQ) when the information of the smart tagging job changes. For more information about the parameters contained in the callback message, see the "Callback parameters" section of this topic.
+	// The custom data passed through the MNS callback. For details on the message format, see the callback message format definitions below.
 	//
 	// example:
 	//

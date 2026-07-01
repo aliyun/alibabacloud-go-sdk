@@ -34,13 +34,13 @@ type iSubmitDNAJobShrinkRequest interface {
 }
 
 type SubmitDNAJobShrinkRequest struct {
-	// The configurations of the media fingerprint analysis job. The value is a JSON object. If you specify this parameter, the template parameters are overwritten.
+	// The DNA configuration in JSON format. If specified, these settings override the corresponding template parameters.
 	//
 	// example:
 	//
-	// {"SaveType": "save","MediaType"":"video"}
+	// {"SaveType": "save","MediaType":"video"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the media fingerprint library. If you do not specify this parameter, the default media fingerprint library is used. For more information about how to create a media fingerprint library, see [CreateDNADB](https://help.aliyun.com/document_detail/479275.html).
+	// The DNA library ID. To create a DNA library, see [CreateDNADB](https://help.aliyun.com/document_detail/479275.html).
 	//
 	// This parameter is required.
 	//
@@ -48,19 +48,19 @@ type SubmitDNAJobShrinkRequest struct {
 	//
 	// 2288c6ca184c0e47098a5b665e2a12****
 	DBId *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
-	// The input file for media fingerprint analysis.
+	// The input DNA file.
 	//
 	// This parameter is required.
 	InputShrink  *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the ApsaraVideo Media Processing (MPS) queue to which the media fingerprint analysis job is submitted.
+	// The pipeline ID.
 	//
 	// example:
 	//
 	// 5246b8d12a62433ab77845074039****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The primary key of the video. You must make sure that each primary key is unique.
+	// The unique primary key for the video. You are responsible for ensuring its uniqueness.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type SubmitDNAJobShrinkRequest struct {
 	//
 	// S00000101-100060
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The user-defined data. The data can be up to 128 bytes in length.
+	// The user-defined data. The maximum length is 128 bytes.
 	//
 	// example:
 	//

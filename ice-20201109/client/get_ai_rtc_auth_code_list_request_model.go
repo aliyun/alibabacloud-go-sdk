@@ -50,9 +50,9 @@ type GetAiRtcAuthCodeListRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The status of the authorization code. Valid values:
 	//
-	// 	- `1`: Activated
+	// - `1`: Activated
 	//
-	// 	- `2`: Inactive
+	// - `2`: Inactive
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type GetAiRtcAuthCodeListRequest struct {
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of license. Valid values:
 	//
-	// 	- `1`: Audio call
+	// - `1`: Audio call
 	//
-	// 	- `2`: Vision call
+	// - `2`: Vision call
 	//
 	// example:
 	//

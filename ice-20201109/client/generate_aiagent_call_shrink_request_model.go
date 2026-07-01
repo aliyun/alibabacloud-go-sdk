@@ -28,35 +28,47 @@ type iGenerateAIAgentCallShrinkRequest interface {
 }
 
 type GenerateAIAgentCallShrinkRequest struct {
-	// The ID of the AI agent.
+	// The AI agent ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
-	AIAgentId            *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
-	AgentConfigShrink    *string `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// The agent template configuration. The configuration you provide merges with the agent template configuration in the console. If you omit this parameter, the agent uses the default configuration from the console.
+	//
+	// > Compatibility with `TemplateConfig`: Fields in `AgentConfig` take precedence. If a field is specified in `TemplateConfig` but not in `AgentConfig`, the system uses the value from `TemplateConfig`. We recommend using `AgentConfig` instead of `TemplateConfig`.
+	AgentConfigShrink *string `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
+	// The chat synchronization configuration.
 	ChatSyncConfigShrink *string `json:"ChatSyncConfig,omitempty" xml:"ChatSyncConfig,omitempty"`
-	// The time when the token expires. Unit: seconds. Default value: 3600. Valid values: 0 to 604800.
+	// Optional. The expiration time of the token in seconds. Default value: 3600. Value range: 0 to 604800.
 	//
 	// example:
 	//
 	// 3600
 	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// A unique identifier for the session. If not provided, a new session is created.
+	//
 	// example:
 	//
 	// fw1gr0bc005e4f309379701645f4****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// Deprecated
 	//
-	// The template configurations of the AI agent. The specified configurations are merged with the template configurations that are specified in the console. If you do not specify this parameter, the system uses the default configurations for an AI agent created in the console.
+	// - This configuration merges with the agent template configuration in the console.
+	//
+	// - If you omit this parameter, the agent uses the default configuration from the console.
+	//
+	// > The agent template configuration. This parameter is deprecated. Use the AgentConfig parameter instead.
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// User data.
+	//
 	// example:
 	//
 	// {"Email":"johndoe@example.com","Preferences":{"Language":"en"}}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The username of the AI agent in the channel. If you do not specify this parameter, the system automatically generates a username. The value can be up to 64 characters in length.
+	// The username in the channel. If you do not specify a username, one is automatically generated. The username can be up to 64 characters in length.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iSubmitMediaConvertJobResponseBody interface {
 }
 
 type SubmitMediaConvertJobResponseBody struct {
-	// The transcoding task.
+	// The media transcoding job.
 	Job *SubmitMediaConvertJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,63 +62,63 @@ func (s *SubmitMediaConvertJobResponseBody) Validate() error {
 }
 
 type SubmitMediaConvertJobResponseBodyJob struct {
-	// The idempotency key of the request for creating the transcoding task.
+	// The idempotency token for the request.
 	//
 	// example:
 	//
 	// FB7F25E9-AD9B-1603-8AF6-F1E42DF2E706
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The error code returned when the transcoding task failed.
+	// The error code returned if the job fails.
 	//
 	// example:
 	//
-	// 200
+	// InvalidParameter.ResourceContentBad
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The configurations of the transcoding task.
+	// The job configuration.
 	Config *SubmitMediaConvertJobResponseBodyJobConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The ID of the transcoding task.
+	// The job ID.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The error message returned when the transcoding task failed.
+	// The error message returned if the job fails.
 	//
 	// example:
 	//
-	// ok
+	// The resource operated InputFile is bad
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The details of the transcoded outputs.
+	// The output details.
 	OutputDetails []*MediaConvertOutputDetail `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
-	// The details of the output groups.
+	// The output group details.
 	OutputGroupDetails []*MediaConvertOutputGroupDetail `json:"OutputGroupDetails,omitempty" xml:"OutputGroupDetails,omitempty" type:"Repeated"`
-	// The ID of the queue.
+	// The pipeline ID.
 	//
 	// example:
 	//
-	// 3780049
+	// ***48a4edf410b908aecd91fc3b***
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A2129C9F-CE95-58B5-B8C1-07758FF6C86F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the transcoding task. Valid values:
+	// The job status. Valid values:
 	//
-	// 	- Inited: The task is initialized.
+	// - Inited: The job has been initialized.
 	//
-	// 	- Running
+	// - Running: The job is running.
 	//
-	// 	- Complete
+	// - Success: The job has completed successfully.
 	//
-	// 	- Error
+	// - Failed: The job has failed.
 	//
-	// 	- Cancelled
+	// - Canceled: The job has been canceled.
 	//
 	// example:
 	//
-	// Inited
+	// Success
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The user data.
 	//
@@ -263,13 +263,13 @@ func (s *SubmitMediaConvertJobResponseBodyJob) Validate() error {
 }
 
 type SubmitMediaConvertJobResponseBodyJobConfig struct {
-	// The inputs of the transcoding task.
+	// The job inputs.
 	Inputs []*MediaConvertInput `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
-	// The name of the job.
+	// The job name.
 	//
 	// example:
 	//
-	// insx6-1310
+	// Name
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The output group configurations.
 	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`

@@ -22,26 +22,46 @@ type iCreateYikeUserRequest interface {
 }
 
 type CreateYikeUserRequest struct {
+	// The user\\"s nickname.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// nick
 	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// The user\\"s password.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ***
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The IDs of productions to add the user to. You can specify multiple IDs separated by commas.
+	//
+	// > - A user can be added to multiple productions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// id1,id2
 	ProductionIds *string `json:"ProductionIds,omitempty" xml:"ProductionIds,omitempty"`
+	// The user name prefix for the sub-account. The prefix must meet the following requirements:
+	//
+	// - The prefix can be up to 50 characters long and must be unique within the workspace.
+	//
+	// - The system automatically generates a user login name in the format: {UserNamePrefix}.{WorkspaceCode}@{AlibabaCloudUID}.yikeai.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test.xxx@xxx.yikeai
 	UserNamePrefix *string `json:"UserNamePrefix,omitempty" xml:"UserNamePrefix,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

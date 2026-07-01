@@ -18,14 +18,24 @@ type iCreateSearchIndexResponseBody interface {
 }
 
 type CreateSearchIndexResponseBody struct {
+	// Return code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// *****ACB-44F2-5F2D-88D7-1283E70*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the invocation succeeded. Valid values:
+	//
+	// - true: Invocation succeeded
+	//
+	// - false: Failed to invoke
+	//
 	// example:
 	//
 	// true

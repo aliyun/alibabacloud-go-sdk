@@ -32,9 +32,17 @@ type iSearchMediaByFaceRequest interface {
 }
 
 type SearchMediaByFaceRequest struct {
+	// Custom filters. A JSON string. The following backing fields are supported: intField1 (integer type), strField1 and strField2 (string type). For the same field, only one matching mode can be specified. Filters across different fields are combined with a logical AND relationship.
+	//
+	// - Exact match, for example: {"intField1":12,"strField1":"abc"}
+	//
+	// - Multi-value match, for example: {"intField1":[12,13],"strField1":["abc","cd"]}
+	//
+	// - Range match, for example: {"intField1":{"gte":12,"lte":13}}
+	//
 	// example:
 	//
-	// {}
+	// {"intField1":{"gte":12,"lte":13},"strField2":["cd","de"],"strField1":"abc"}
 	CustomFilters *string `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
 	// The ID of the entity.
 	//
@@ -52,14 +60,19 @@ type SearchMediaByFaceRequest struct {
 	FaceSearchToken *string `json:"FaceSearchToken,omitempty" xml:"FaceSearchToken,omitempty"`
 	// The type of the media asset. Valid values:
 	//
-	// 	- image
+	// - image
 	//
-	// 	- video
+	// - video
 	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Namespace.
+	//
+	// example:
+	//
+	// name-1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The page number. Default value: 1.
 	//
@@ -87,9 +100,13 @@ type SearchMediaByFaceRequest struct {
 	//
 	// test1
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	// Creation time, in milliseconds UNIX timestamp. Use gte for greater than or equal to, and lte for less than or equal to.
+	//
+	// - Example range: {"gte":1761205662998,"lte":1771205662998}
+	//
 	// example:
 	//
-	// {}
+	// {"gte":1761205662998,"lte":1771205662998}
 	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
 }
 

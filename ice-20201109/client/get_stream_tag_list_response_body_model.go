@@ -46,9 +46,9 @@ type GetStreamTagListResponseBody struct {
 	StreamTagList []*GetStreamTagListResponseBodyStreamTagList `json:"StreamTagList,omitempty" xml:"StreamTagList,omitempty" type:"Repeated"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

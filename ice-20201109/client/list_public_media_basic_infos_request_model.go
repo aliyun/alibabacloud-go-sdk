@@ -28,11 +28,11 @@ type iListPublicMediaBasicInfosRequest interface {
 type ListPublicMediaBasicInfosRequest struct {
 	// The business type of the media asset. Valid values:
 	//
-	// 	- sticker
+	// - sticker
 	//
-	// 	- bgm
+	// - bgm
 	//
-	// 	- bgi
+	// - bgi
 	//
 	// example:
 	//
@@ -54,49 +54,49 @@ type ListPublicMediaBasicInfosRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The media tag. All media assets that contain the specified media tag are returned. Valid values:
 	//
-	// 	- Sticker tags:
+	// - Sticker tags:
 	//
-	//     	- sticker-atmosphere
+	//   - sticker-atmosphere
 	//
-	//     	- sticker-bubble
+	//   - sticker-bubble
 	//
-	//     	- sticker-cute
+	//   - sticker-cute
 	//
-	//     	- sticker-daily
+	//   - sticker-daily
 	//
-	//     	- sticker-expression
+	//   - sticker-expression
 	//
-	//     	- sticker-gif
+	//   - sticker-gif
 	//
-	// 	- Background music (BGM) tags:
+	// - Background music (BGM) tags:
 	//
-	//     	- bgm-romantic
+	//   - bgm-romantic
 	//
-	//     	- bgm-cuisine
+	//   - bgm-cuisine
 	//
-	//     	- bgm-chinese-style
+	//   - bgm-chinese-style
 	//
-	//     	- bgm-upbeat
+	//   - bgm-upbeat
 	//
-	//     	- bgm-dynamic
+	//   - bgm-dynamic
 	//
-	//     	- bgm-relaxing
+	//   - bgm-relaxing
 	//
-	//     	- bgm-quirky
+	//   - bgm-quirky
 	//
-	//     	- bgm-beauty
+	//   - bgm-beauty
 	//
-	// 	- Background image (BGI) tags:
+	// - Background image (BGI) tags:
 	//
-	//     	- bgi-grad
+	//   - bgi-grad
 	//
-	//     	- bgi-solid
+	//   - bgi-solid
 	//
-	//     	- bgi-pic
+	//   - bgi-pic
 	//
 	// example:
 	//
-	// ticker-atmosphere
+	// sticker-atmosphere
 	MediaTagId *string `json:"MediaTagId,omitempty" xml:"MediaTagId,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
 	//

@@ -22,19 +22,19 @@ type iGetMediaConnectFlowResponseBody interface {
 type GetMediaConnectFlowResponseBody struct {
 	// The response body.
 	Content *GetMediaConnectFlowResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// The call description.
+	// The description of the API call.
 	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the request.
+	// Request ID
 	//
 	// example:
 	//
 	// FB503AEF-118E-1516-89E2-7B227EA1AC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned code. A value of 0 indicates the call is successful.
+	// The return code. A value of 0 indicates success.
 	//
 	// example:
 	//
@@ -96,33 +96,38 @@ func (s *GetMediaConnectFlowResponseBody) Validate() error {
 }
 
 type GetMediaConnectFlowResponseBodyContent struct {
-	// The time when the flow was created.
+	// The creation time of the MediaConnect Flow instance.
 	//
 	// example:
 	//
 	// 2024-07-18T01:29:24Z
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether Input Failover is enabled for the flow. Valid values: `yes` and `no`.
+	//
+	// example:
+	//
+	// yes
 	FlowFailover *string `json:"FlowFailover,omitempty" xml:"FlowFailover,omitempty"`
-	// The flow ID.
+	// The ID of the MediaConnect Flow instance.
 	//
 	// example:
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The flow name.
+	// The name of the MediaConnect Flow instance.
 	//
 	// example:
 	//
 	// AliTestFlow
 	FlowName   *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 	FlowRegion *string `json:"FlowRegion,omitempty" xml:"FlowRegion,omitempty"`
-	// The state of the flow.
+	// The status of the MediaConnect Flow instance.
 	//
 	// example:
 	//
 	// online
 	FlowStatus *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
-	// The time when the flow is started.
+	// The start time of the MediaConnect Flow instance.
 	//
 	// example:
 	//

@@ -14,6 +14,8 @@ type iForwardAIAgentCallResponseBody interface {
 }
 
 type ForwardAIAgentCallResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// 550e8400********55440000

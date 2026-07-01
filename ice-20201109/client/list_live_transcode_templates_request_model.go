@@ -28,9 +28,9 @@ type iListLiveTranscodeTemplatesRequest interface {
 type ListLiveTranscodeTemplatesRequest struct {
 	// The category of the template. Valid values:
 	//
-	// 	- system
+	// - system
 	//
-	// 	- customized
+	// - customized
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type ListLiveTranscodeTemplatesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The sorting order. By default, the query results are sorted by creation time in descending order. Valid values:
 	//
-	// 	- asc
+	// - asc
 	//
-	// 	- desc
+	// - desc
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type ListLiveTranscodeTemplatesRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The type of the template. Valid values:
 	//
-	// 	- normal
+	// - normal
 	//
-	// 	- narrow-band
+	// - narrow-band
 	//
-	// 	- audio-only
+	// - audio-only
 	//
-	// 	- origin
+	// - origin
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type ListLiveTranscodeTemplatesRequest struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The video codec. Valid values:
 	//
-	// 	- H.264
+	// - H.264
 	//
-	// 	- H.265
+	// - H.265
 	//
 	// example:
 	//

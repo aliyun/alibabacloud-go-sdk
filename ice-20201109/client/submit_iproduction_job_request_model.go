@@ -30,33 +30,35 @@ type iSubmitIProductionJobRequest interface {
 }
 
 type SubmitIProductionJobRequest struct {
-	// The name of the algorithm that you want to use for the job. Valid values:
+	// The name of the algorithm function. Valid values:
 	//
-	// 	- **Cover**: This algorithm intelligently generates a thumbnail image for a video.
+	// - **Cover**: Generates a smart cover.
 	//
-	// 	- **VideoClip**: This algorithm intelligently generates a summary for a video.
+	// - **VideoClip**: Creates a video summary.
 	//
-	// 	- **VideoDelogo**: This algorithm removes logos from a video.
+	// - **VideoDelogo**: Removes logos from a video.
 	//
-	// 	- **VideoDetext**: This algorithm removes captions from a video.
+	// - **VideoDetext**: Removes text from a video.
 	//
-	// 	- **CaptionExtraction**: This algorithm extracts captions from a video and generates the caption file.
+	// - **CaptionExtraction**: Extracts captions from a video.
 	//
-	// 	- **VideoGreenScreenMatting**: This algorithm performs green-screen image matting on a video and generates a new video.
+	// - **VideoGreenScreenMatting**: Performs green screen keying for a video.
 	//
-	// 	- **FaceBeauty**: This algorithm performs video retouching.
+	// - **FaceBeauty**: Applies beauty filters to faces in a video.
 	//
-	// 	- **VideoH2V**: This algorithm transforms a video from the landscape mode to the portrait mode.
+	// - **VideoH2V**: Converts a horizontal video to a vertical video.
 	//
-	// 	- **MusicSegmentDetect**: This algorithm detects the chorus of a song.
+	// - **MusicSegmentDetect**: Detects chorus segments in music.
 	//
-	// 	- **AudioBeatDetection**: This algorithm detects rhythms.
+	// - **AudioBeatDetection**: Detects the beat of an audio track.
 	//
-	// 	- **AudioQualityAssessment**: This algorithm assesses the audio quality.
+	// - **AudioQualityAssessment**: Assesses audio quality.
 	//
-	// 	- **SpeechDenoise**: This algorithm performs noise reduction.
+	// - **SpeechDenoise**: Reduces noise in speech audio.
 	//
-	// 	- **AudioMixing**: This algorithm mixes audio streams.
+	// - **AudioMixing**: Mixes audio tracks.
+	//
+	// - **MusicDemix**: Separates vocals from accompaniment in music.
 	//
 	// This parameter is required.
 	//
@@ -64,32 +66,47 @@ type SubmitIProductionJobRequest struct {
 	//
 	// Cover
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The input file. The file can be an Object Storage Service (OSS) object or a media asset.
+	// The input media asset. You can specify an OSS file or a media asset ID.
+	//
+	// The requirements for input files vary by algorithm function. For more information, see the supplementary instructions.
 	//
 	// This parameter is required.
 	Input *SubmitIProductionJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// The algorithm-specific parameters. The parameters are specified as JSON objects and vary based on the algorithm. For more information, see the "Parameters of JobParams" section of this topic.
+	// The algorithm job parameters, specified as a JSON-formatted string. The content of the JSON object varies by algorithm function. For more information, see the supplementary instructions.
 	//
 	// example:
 	//
 	// {"Model":"gif"}
 	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
-	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	// The name of the intelligent production job. The name can be up to 100 characters in length.
+	// The ID of the algorithm model. If you do not specify this parameter, the system uses the default model for the selected function. We recommend leaving this parameter empty unless you need to use a specific alternative model.
+	//
+	// The following function offers an alternative model:
+	//
+	// - `VideoDetext`
+	//
+	//   - Set `ModelId` to `algo-video-detext-new` to use an advanced subtitle removal algorithm. This model provides higher quality results but is slower and more expensive than the default model.
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The name of the job, which can be up to 100 characters long.
+	//
+	// example:
+	//
+	// Test task
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output file. The file can be an OSS object or a media asset.
+	// The output destination. You can specify an OSS file path or a media asset ID.
+	//
+	// The output files vary by algorithm function. For more information, see the supplementary instructions.
 	//
 	// This parameter is required.
 	Output *SubmitIProductionJobRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// The scheduling configuration.
+	// The configuration for job scheduling.
 	ScheduleConfig *SubmitIProductionJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// The template ID.
+	// The ID of the template.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The user-defined data that is returned in the response. The value can be up to 1,024 bytes in length.
+	// Custom user data. The system passes this data through and returns it as-is in the callback or response. The length cannot exceed 256 characters.
 	//
 	// example:
 	//
@@ -206,11 +223,15 @@ func (s *SubmitIProductionJobRequest) Validate() error {
 }
 
 type SubmitIProductionJobRequestInput struct {
-	// The input file. The file can be an OSS object or a media asset. You can specify the path of an OSS object in one of the following formats:
+	// The OSS URL of the input file or the ID of the input media asset.
 	//
-	// 1.  oss://bucket/object
+	// The OSS URL can be in one of the following formats:
 	//
-	// 2.  http(s)://bucket.oss-[regionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
+	// 1. `oss://<bucket>/<object>`
+	//
+	// 2. `http(s)://<bucket>.oss-<regionId>.aliyuncs.com/<object>`
+	//
+	//    In these formats, `<bucket>` is the name of an OSS bucket in the same region as your project, and `<object>` is the file path.
 	//
 	// This parameter is required.
 	//
@@ -218,11 +239,11 @@ type SubmitIProductionJobRequestInput struct {
 	//
 	// oss://bucket/object
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The media type. Valid values:
+	// The type of input media. Valid values:
 	//
-	// 	- OSS: OSS object
+	// - `OSS`: An OSS file path.
 	//
-	// 	- Media: media asset
+	// - `Media`: A media asset ID.
 	//
 	// This parameter is required.
 	//
@@ -263,25 +284,29 @@ func (s *SubmitIProductionJobRequestInput) Validate() error {
 }
 
 type SubmitIProductionJobRequestOutput struct {
+	// The service to which the media asset belongs.
+	//
+	// example:
+	//
+	// IMS
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// The output file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
-	//
-	// 1.  oss://bucket/object
-	//
-	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket/object
-	Media     *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// If `Type` is set to `Media`, you can use this parameter to specify the OSS URL for the output file. The bucket must be registered in either IMS or VOD.
+	//
+	// example:
+	//
+	// http(s)://bucket.oss-[RegionId].aliyuncs.com/object
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
-	// The media type. Valid values:
+	// The type of the output media. Valid values:
 	//
-	// 	- OSS: OSS object
+	// - `OSS`: An OSS file path.
 	//
-	// 	- Media: media asset
+	// - `Media`: A media asset ID.
 	//
 	// This parameter is required.
 	//
@@ -340,13 +365,13 @@ func (s *SubmitIProductionJobRequestOutput) Validate() error {
 }
 
 type SubmitIProductionJobRequestScheduleConfig struct {
-	// The ID of the ApsaraVideo Media Processing (MPS) queue.
+	// The ID of the pipeline.
 	//
 	// example:
 	//
 	// 5246b8d12a62433ab77845074039c3dc
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The priority of the job. Valid values: 1 to 10. A smaller value indicates a higher priority.
+	// The job priority, which can be an integer from 1 to 10. A smaller value indicates a higher priority.
 	//
 	// example:
 	//

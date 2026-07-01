@@ -56,9 +56,9 @@ type ListLiveRecordJobsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- asc: sorts the query results in ascending order.
+	// - asc: sorts the query results in ascending order.
 	//
-	// 	- desc: sorts the query results in descending order.
+	// - desc: sorts the query results in descending order.
 	//
 	// example:
 	//
@@ -76,11 +76,11 @@ type ListLiveRecordJobsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- paused: The job is paused.
+	// - paused: The job is paused.
 	//
-	// 	- initial: The job is not started.
+	// - initial: The job is not started.
 	//
-	// 	- started: The job is in progress.
+	// - started: The job is in progress.
 	//
 	// example:
 	//

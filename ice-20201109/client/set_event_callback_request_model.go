@@ -32,9 +32,9 @@ type SetEventCallbackRequest struct {
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 	// Specifies whether to enable callback authentication. This parameter takes effect only if you set CallbackType to **HTTP**. Valid values:
 	//
-	// 	- **on**
+	// - **on**
 	//
-	// 	- **off**
+	// - **off**
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type SetEventCallbackRequest struct {
 	CallbackQueueName *string `json:"CallbackQueueName,omitempty" xml:"CallbackQueueName,omitempty"`
 	// The callback method. Valid values:
 	//
-	// 	- **HTTP**
+	// - **HTTP**
 	//
-	// 	- **MNS**
+	// - **MNS**
 	//
 	// example:
 	//

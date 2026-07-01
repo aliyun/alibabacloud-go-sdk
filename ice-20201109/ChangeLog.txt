@@ -1,3 +1,8 @@
+2026-07-01 Version: v7.19.2
+- Update API GetProjectExportJob: add response parameters Body.ProjectExportJob.ExportResult.AudioUrl.
+- Update API GetProjectExportJob: add response parameters Body.ProjectExportJob.ExportResult.SrtList.
+
+
 2026-06-05 Version: v7.19.1
 - Generated golang 2020-11-09 for ICE.
 

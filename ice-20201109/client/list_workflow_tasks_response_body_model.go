@@ -135,15 +135,15 @@ type ListWorkflowTasksResponseBodyTaskList struct {
 	//
 	// **Valid values**:
 	//
-	// 	- Init: Initializing
+	// - Init: Initializing
 	//
-	// 	- Failed
+	// - Failed
 	//
-	// 	- Canceled
+	// - Canceled
 	//
-	// 	- Processing
+	// - Processing
 	//
-	// 	- Succeed
+	// - Succeed
 	//
 	// example:
 	//
@@ -260,9 +260,9 @@ type ListWorkflowTasksResponseBodyTaskListWorkflow struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The source of the media file. Valid values:
 	//
-	// 	- OSS: an OSS object.
+	// - OSS: an OSS object.
 	//
-	// 	- Media: a media asset.
+	// - Media: a media asset.
 	//
 	// example:
 	//

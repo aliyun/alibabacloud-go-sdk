@@ -18,9 +18,9 @@ type iListMediaConvertJobsResponseBody interface {
 }
 
 type ListMediaConvertJobsResponseBody struct {
-	// The tasks.
+	// A list of media convert jobs.
 	Jobs []*MediaConvertJobWithoutDetail `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	// Indicates the read position returned by the current call. An empty value means all data has been read.
+	// The token to retrieve the next page of results. This value is empty when there are no more results to return.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListMediaConvertJobsResponseBody struct {
 	//
 	// ****cdb3e74639973036bc84****
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

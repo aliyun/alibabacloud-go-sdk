@@ -103,6 +103,10 @@ type GetCategoriesResponseBodyCategory struct {
 	// 46
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	// The category name.
+	//
+	// example:
+	//
+	// First-level category
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
 	// The level of the category. A value of **0*	- indicates a level-1 category, a value of **1*	- indicates a level-2 category, and a value of **2*	- indicates a level-3 category.
 	//
@@ -118,9 +122,9 @@ type GetCategoriesResponseBodyCategory struct {
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The type of the category. Valid values:
 	//
-	// 	- **default**: audio, video, and image files. This is the default value.
+	// - **default**: audio, video, and image files. This is the default value.
 	//
-	// 	- **material**: short video materials.
+	// - **material**: short video materials.
 	//
 	// example:
 	//

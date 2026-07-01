@@ -24,9 +24,9 @@ type iSubmitProjectExportJobRequest interface {
 type SubmitProjectExportJobRequest struct {
 	// The export type. Valid values:
 	//
-	// 	- **BaseTimeline**: exports the timeline.
+	// - **BaseTimeline**: exports the timeline.
 	//
-	// 	- **AdobePremierePro**: exports an Adobe Premiere Pro project.
+	// - **AdobePremierePro**: exports an Adobe Premiere Pro project.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type SubmitProjectExportJobRequest struct {
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
 	// The output path for the exported project and generated intermediate files, in JSON format. The export destination only supports OSS. Path fields:
 	//
-	// 	- **Bucket**: Required. The OSS bucket name.
+	// - **Bucket**: Required. The OSS bucket name.
 	//
-	// 	- **Prefix**: Optional. The path prefix. If not specified, it defaults to the root directory.
+	// - **Prefix**: Optional. The path prefix. If not specified, it defaults to the root directory.
 	//
-	// 	- **Width**: Optional. The width of the output. The value must be a positive integer. If not provided, the system automatically calculates the value based on the input project or timeline.
+	// - **Width**: Optional. The width of the output. The value must be a positive integer. If not provided, the system automatically calculates the value based on the input project or timeline.
 	//
-	// 	- **Height**: Optional. The height of the output. The value must be a positive integer. If not provided, the system automatically calculates the value based on the input project or timeline.
+	// - **Height**: Optional. The height of the output. The value must be a positive integer. If not provided, the system automatically calculates the value based on the input project or timeline.
 	//
 	// This parameter is required.
 	//

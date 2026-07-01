@@ -129,7 +129,7 @@ type GetUrlUploadInfosResponseBodyURLUploadInfoList struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The upload URL of the source file.
 	//
-	// >  A maximum of 100 URLs can be returned.
+	// > A maximum of 100 URLs can be returned.
 	//
 	// example:
 	//

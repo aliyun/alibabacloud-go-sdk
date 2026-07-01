@@ -81,15 +81,19 @@ func (s *DetectAudioForCustomizedVoiceJobResponseBody) Validate() error {
 type DetectAudioForCustomizedVoiceJobResponseBodyData struct {
 	// Indicates whether the audio file passes the check. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// false
 	Pass *bool `json:"Pass,omitempty" xml:"Pass,omitempty"`
 	// The reason returned if the audio file failed to pass the check.
+	//
+	// example:
+	//
+	// 发音错误，请准确读出文案中的内容
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 

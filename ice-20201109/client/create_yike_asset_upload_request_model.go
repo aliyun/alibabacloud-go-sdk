@@ -16,6 +16,8 @@ type iCreateYikeAssetUploadRequest interface {
 }
 
 type CreateYikeAssetUploadRequest struct {
+	// File extension.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,7 +24,7 @@ type iListLiveRecordTemplatesRequest interface {
 }
 
 type ListLiveRecordTemplatesRequest struct {
-	// The search keyword. You can use the template ID or name as the keyword to search for templates. If you search for templates by name, fuzzy match is supported.
+	// The keyword to search for templates by ID or name. Fuzzy matching is supported for template names.
 	//
 	// example:
 	//
@@ -36,32 +36,21 @@ type ListLiveRecordTemplatesRequest struct {
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The number of entries to return on each page. Value range: 1–100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sorting order. By default, the query results are sorted by creation time in descending order.
-	//
-	// Valid values:
-	//
-	// 	- asc: sorts the query results in ascending order.
-	//
-	// 	- desc: sorts the query results in descending order.
+	// The sort order. The default sort is descending by creation time.
 	//
 	// example:
 	//
 	// desc
-	SortBy      *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The template IDs to retrieve.
 	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
-	// The type of the template.
-	//
-	// Valid values:
-	//
-	// 	- system
-	//
-	// 	- custom
+	// The template type.
 	//
 	// example:
 	//

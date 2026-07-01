@@ -34,9 +34,9 @@ type UpdateAdInsertionRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- OFF: Disable.
+	// - OFF: Disable.
 	//
-	// 	- ON: Enable.
+	// - ON: Enable.
 	//
 	// example:
 	//

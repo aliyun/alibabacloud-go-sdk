@@ -33,7 +33,12 @@ type DeleteMediaFromSearchLibRequest struct {
 	// example:
 	//
 	// {}
-	MsgBody   *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	MsgBody *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	// Namespace.
+	//
+	// example:
+	//
+	// name-1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The name of the search library. Default value: ims-default-search-lib.
 	//

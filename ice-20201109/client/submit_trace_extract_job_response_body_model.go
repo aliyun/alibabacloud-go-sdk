@@ -22,13 +22,13 @@ type iSubmitTraceExtractJobResponseBody interface {
 type SubmitTraceExtractJobResponseBody struct {
 	// The data returned.
 	Data *SubmitTraceExtractJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

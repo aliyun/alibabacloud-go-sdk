@@ -117,17 +117,152 @@ type GetBatchMediaProducingJobResponseBodyEditingBatchJob struct {
 	// 	"ErrorMessage": "The specified clips id not found:[\\"****30d0b5e871eebb2ff7f6c75a****\\"]"
 	//
 	// }
-	Extend       *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	ExtendInput  *string `json:"ExtendInput,omitempty" xml:"ExtendInput,omitempty"`
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// Additional input.
+	//
+	// - When JobType is Smart_Mix_Timeline_Organize or Screen_Media_Highlights_Timeline_Organize, the additional input is the material selection result.
+	//
+	// - When JobType is Scene_Batch_Editing, the additional input is a list of video editing project IDs.
+	//
+	// example:
+	//
+	// ["****7cc47fe04eaa81bd853acb6a****", "****04eaa7cc47fe81bd853acb6a****"]
+	ExtendInput *string `json:"ExtendInput,omitempty" xml:"ExtendInput,omitempty"`
+	// Additional outputs.
+	//
+	// - When JobType is Smart_Mix_Media_Select or Screen_Media_Highlights_Media_Select, material selection results are additionally returned.
+	//
+	// example:
+	//
+	// {
+	//
+	// "textMatchMediaOutputList": [{
+	//
+	// "textMatchMediaSentenceOutputList": [{
+	//
+	// "duration": 3.366667,
+	//
+	// "matchClipList": [{
+	//
+	// "clipId": "null-2",
+	//
+	// "endTime": 11.16,
+	//
+	// "mediaId": "****a0900f5071efbf1ce7e6c66a****",
+	//
+	// "score": -0.253,
+	//
+	// "startTime": 8.04
+	//
+	// }],
+	//
+	// "text": "A new Freshippo store just opened at the nearby mall.",
+	//
+	// "textId": "0"
+	//
+	// },
+	//
+	// {
+	//
+	// "duration": 1.566667,
+	//
+	// "matchClipList": [{
+	//
+	// "clipId": "null-1",
+	//
+	// "endTime": 1.54,
+	//
+	// "mediaId": "****a0900f5071efbf1ce7e6c66a****",
+	//
+	// "score": -0.2326,
+	//
+	// "startTime": 0
+	//
+	// }],
+	//
+	// "text": "today Yesfirst day of opening",
+	//
+	// "textId": "0"
+	//
+	// }
+	//
+	// ]
+	//
+	// }]
+	//
+	// }
 	ExtendOutput *string `json:"ExtendOutput,omitempty" xml:"ExtendOutput,omitempty"`
 	// The input configurations. For more information, see [InputConfig](~~2692547#2faed1559549n~~).
+	//
+	// example:
+	//
+	// {
+	//
+	//   "MediaGroupArray": [{
+	//
+	//       "GroupName": "MediaGroup1",
+	//
+	//       "MediaArray": [
+	//
+	//         "****9d46c886b45481030f6e****",
+	//
+	//         "****6c886b4549d481030f6e****" ]
+	//
+	//     }, {
+	//
+	//       "GroupName": "MediaGroup2",
+	//
+	//       "MediaArray": [
+	//
+	//         "****d46c886810b454930f6e****",
+	//
+	//         "****4549d886810b46c30f6e****" ]
+	//
+	//   }],
+	//
+	//   "TitleArray": [
+	//
+	//       "回龙观盒马鲜生开业啦",
+	//
+	//       "盒马鲜生开业啦" ],
+	//
+	//   "SpeechTextArray": [
+	//
+	//       "附近的商场新开了一家盒马鲜生，今天是第一天开业"
+	//
+	//       "商场里的人不少，零食、酒水都比较便宜大家也快来看看呀" ]
+	//
+	// }
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
 	// The job ID.
 	//
 	// example:
 	//
 	// ****b6b2750d4308892ac3330238****
-	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Task Type:
+	//
+	// - Script (Script-based automated video editing)
+	//
+	// - Smart_Mix (Intelligent text-to-media matching for video editing)
+	//
+	// - Sports_Highlights (Sporting event highlights compilation)
+	//
+	// - Screen_Media_Highlights (High-energy multi-media mashup editing)
+	//
+	// - Smart_Mix_Media_Select (Intelligent matching – Material selection)
+	//
+	// - Smart_Mix_Timeline_Organize (Intelligent matching – Timeline orchestration)
+	//
+	// - Screen_Media_Highlights_Media_Select (High-energy mashup – Material selection)
+	//
+	// - Screen_Media_Highlights_Timeline_Organize (High-energy mashup – Timeline orchestration)
+	//
+	// - Scene_Batch_Editing (Batch synthesis across multiple timelines)
+	//
+	// example:
+	//
+	// Script
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The time when the job was last modified.
 	//
@@ -327,6 +462,11 @@ func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) Validate() error 
 }
 
 type GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList struct {
+	// The duration of the output video, in seconds (s).
+	//
+	// example:
+	//
+	// 24.5
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The error code that is returned if the subjob failed. This parameter is not returned if the subjob is successful.
 	//

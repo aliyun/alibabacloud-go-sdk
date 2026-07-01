@@ -44,9 +44,9 @@ type UpdatePipelineRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Active
+	// - Active
 	//
-	// 	- Paused
+	// - Paused
 	//
 	// example:
 	//

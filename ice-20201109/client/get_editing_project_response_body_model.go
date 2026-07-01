@@ -85,12 +85,16 @@ type GetEditingProjectResponseBodyProject struct {
 	// Reserving
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 	// The material parameter corresponding to the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information<props="china">, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use an advanced template](https://help.aliyun.com/document_detail/291418.html).
+	//
+	// example:
+	//
+	// See the template user guide.
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 	// The thumbnail URL of the online editing project.
 	//
 	// example:
 	//
-	// oss://example-bucket/example.jpg
+	// http://aaa.bbb/your-cover.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// The method for creating the online editing project. Valid values:
 	//
@@ -115,6 +119,10 @@ type GetEditingProjectResponseBodyProject struct {
 	// 2020-12-20T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the online editing project.
+	//
+	// example:
+	//
+	// Example description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The total duration of the online editing project.
 	//
@@ -221,6 +229,10 @@ type GetEditingProjectResponseBodyProject struct {
 	// Converted
 	TimelineConvertStatus *string `json:"TimelineConvertStatus,omitempty" xml:"TimelineConvertStatus,omitempty"`
 	// The title of the online editing project.
+	//
+	// example:
+	//
+	// Sample title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

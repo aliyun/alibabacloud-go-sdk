@@ -30,11 +30,11 @@ type ListTemplatesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- AliyunConsole
+	// - AliyunConsole
 	//
-	// 	- WebSDK
+	// - WebSDK
 	//
-	// 	- OpenAPI
+	// - OpenAPI
 	//
 	// example:
 	//
@@ -46,25 +46,21 @@ type ListTemplatesRequest struct {
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number. Default value: 1.
-	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
-	//
 	// example:
 	//
-	// 20
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The sorting parameter. By default, the query results are sorted by creation time in descending order.
 	//
 	// Valid values:
 	//
-	// 	- CreationTime:Asc: sorted by creation time in ascending order.
+	// - CreationTime:Asc: sorted by creation time in ascending order.
 	//
-	// 	- CreationTime:Desc: sorted by creation time in descending order.
+	// - CreationTime:Desc: sorted by creation time in descending order.
 	//
 	// example:
 	//
@@ -74,17 +70,17 @@ type ListTemplatesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- UploadFailed: Failed to upload the video.
+	// - UploadFailed: Failed to upload the video.
 	//
-	// 	- ProcessFailed: Failed to process the advanced template.
+	// - ProcessFailed: Failed to process the advanced template.
 	//
-	// 	- Available: The template is available.
+	// - Available: The template is available.
 	//
-	// 	- Uploading: The video is being uploaded.
+	// - Uploading: The video is being uploaded.
 	//
-	// 	- Created: The template is created but not ready for use.
+	// - Created: The template is created but not ready for use.
 	//
-	// 	- Processing: The advanced template is being processed.
+	// - Processing: The advanced template is being processed.
 	//
 	// example:
 	//
@@ -94,9 +90,9 @@ type ListTemplatesRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Timeline
+	// - Timeline
 	//
-	// 	- VETemplate
+	// - VETemplate
 	//
 	// example:
 	//

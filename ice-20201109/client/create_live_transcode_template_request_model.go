@@ -30,13 +30,13 @@ type CreateLiveTranscodeTemplateRequest struct {
 	TemplateConfig *CreateLiveTranscodeTemplateRequestTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty" type:"Struct"`
 	// The type of the template. Valid values:
 	//
-	// 	- normal
+	// - normal
 	//
-	// 	- narrow-band
+	// - narrow-band
 	//
-	// 	- audio-only
+	// - audio-only
 	//
-	// 	- origin
+	// - origin
 	//
 	// This parameter is required.
 	//
@@ -152,9 +152,9 @@ type CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams struct {
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
 	// The audio codec. Valid values:
 	//
-	// 	- AAC
+	// - AAC
 	//
-	// 	- MP3
+	// - MP3
 	//
 	// example:
 	//
@@ -162,13 +162,13 @@ type CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams struct {
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
 	// The audio codec profile. Valid values when the Codec parameter is set to AAC:
 	//
-	// 	- aac_low
+	// - aac_low
 	//
-	// 	- aac_he
+	// - aac_he
 	//
-	// 	- aac_he_v2
+	// - aac_he_v2
 	//
-	// 	- aac_ld
+	// - aac_ld
 	//
 	// example:
 	//
@@ -250,9 +250,9 @@ type CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams struct {
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	// The encoding type. Valid values:
 	//
-	// 	- H.264
+	// - H.264
 	//
-	// 	- H.265
+	// - H.265
 	//
 	// example:
 	//

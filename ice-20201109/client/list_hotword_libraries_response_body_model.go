@@ -124,6 +124,10 @@ type ListHotwordLibrariesResponseBodyHotwordLibraryList struct {
 	// 2017-01-11T12:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the hotword library. It can be up to 200 characters in length.
+	//
+	// example:
+	//
+	// Lexicon containing celebrity names
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the hotword library.
 	//
@@ -145,11 +149,11 @@ type ListHotwordLibrariesResponseBodyHotwordLibraryList struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The usage scenario of the hotword library. Valid values:
 	//
-	// 	- ASR: Automatic Speech Recognition
+	// - ASR: Automatic Speech Recognition
 	//
-	// 	- StructuredMediaAssets: structured media analysis
+	// - StructuredMediaAssets: structured media analysis
 	//
-	// 	- VideoTranslation: Video translation This field cannot be modified after the hotword library is created.
+	// - VideoTranslation: Video translation This field cannot be modified after the hotword library is created.
 	//
 	// example:
 	//

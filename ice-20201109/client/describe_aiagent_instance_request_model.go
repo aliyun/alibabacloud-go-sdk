@@ -14,7 +14,9 @@ type iDescribeAIAgentInstanceRequest interface {
 }
 
 type DescribeAIAgentInstanceRequest struct {
-	// The ID of the AI agent that you want to query.
+	// The ID of the AI agent instance.
+	//
+	// > The `InstanceId` is the unique ID returned when an AI agent instance starts successfully. For APIs that start an AI agent, see [StartAIAgentInstance](https://help.aliyun.com/document_detail/2846201.html) and [GenerateAIAgentCall](https://help.aliyun.com/document_detail/2846209.html).
 	//
 	// This parameter is required.
 	//

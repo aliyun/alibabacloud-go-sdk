@@ -18,7 +18,7 @@ type iSubmitTraceM3u8JobResponseBody interface {
 }
 
 type SubmitTraceM3u8JobResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data *SubmitTraceM3u8JobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -26,7 +26,7 @@ type SubmitTraceM3u8JobResponseBody struct {
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

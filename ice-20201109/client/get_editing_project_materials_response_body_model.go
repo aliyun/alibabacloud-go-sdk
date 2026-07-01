@@ -22,23 +22,23 @@ type iGetEditingProjectMaterialsResponseBody interface {
 }
 
 type GetEditingProjectMaterialsResponseBody struct {
-	// The materials associated with the live stream.
+	// Media assets associated with live streams.
 	LiveMaterials []*GetEditingProjectMaterialsResponseBodyLiveMaterials `json:"LiveMaterials,omitempty" xml:"LiveMaterials,omitempty" type:"Repeated"`
-	// The media assets that meet the specified conditions.
+	// Collection of matching media assets.
 	MediaInfos []*GetEditingProjectMaterialsResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
-	// The project ID.
+	// ID of the project.
 	//
 	// example:
 	//
 	// *****67ae06542b9b93e0d1c387*****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The materials associated with the editing project. A live stream editing project will be associated with a regular editing project after the live streaming ends.
+	// Media assets associated with the editing project. After a live stream ends, it is linked to a standard editing project.
 	//
 	// example:
 	//
 	// *****9b145c5cafc2e057304fcd*****
 	ProjectMaterials []*string `json:"ProjectMaterials,omitempty" xml:"ProjectMaterials,omitempty" type:"Repeated"`
-	// The request ID.
+	// ID of the request.
 	//
 	// example:
 	//
@@ -122,25 +122,25 @@ func (s *GetEditingProjectMaterialsResponseBody) Validate() error {
 }
 
 type GetEditingProjectMaterialsResponseBodyLiveMaterials struct {
-	// The application name of the live stream.
+	// Name of the live streaming application.
 	//
 	// example:
 	//
 	// testrecord
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The domain name of the live stream.
+	// Streaming domain name for live streaming.
 	//
 	// example:
 	//
 	// test.alivecdn.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The URL of the live stream.
+	// Streaming URL for the live stream.
 	//
 	// example:
 	//
 	// rtmp://test.alivecdn.com/testrecord/teststream
 	LiveUrl *string `json:"LiveUrl,omitempty" xml:"LiveUrl,omitempty"`
-	// The name of the live stream.
+	// Name of the live stream.
 	//
 	// example:
 	//
@@ -197,11 +197,11 @@ func (s *GetEditingProjectMaterialsResponseBodyLiveMaterials) Validate() error {
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfos struct {
-	// The information about the file.
+	// File information.
 	FileInfoList []*GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// The basic information of the media asset.
+	// Basic information about the media asset.
 	MediaBasicInfo *GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// The ID of the media asset.
+	// ID of the media asset.
 	//
 	// example:
 	//
@@ -263,7 +263,7 @@ func (s *GetEditingProjectMaterialsResponseBodyMediaInfos) Validate() error {
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList struct {
-	// The basic information of the file, such as the duration and size.
+	// Basic file information, such as duration and size.
 	FileBasicInfo *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -294,67 +294,67 @@ func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList) Validate(
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
-	// The bitrate.
+	// Bitrate of the file.
 	//
 	// example:
 	//
 	// 1132.68
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The duration.
+	// Duration of the file.
 	//
 	// example:
 	//
 	// 216.206667
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The file name.
+	// Name of the file.
 	//
 	// example:
 	//
 	// example.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file size. Unit: bytes.
+	// Size of the file, in bytes.
 	//
 	// example:
 	//
 	// 30611502
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The file status.
+	// Status of the file.
 	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// The file type.
+	// Type of the file.
 	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The Object Storage Service (OSS) URL of the file.
+	// OSS URL of the file.
 	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The container format.
+	// Container format.
 	//
 	// example:
 	//
 	// mov,mp4,m4a,3gp,3g2,mj2
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// The height.
+	// Height of the video.
 	//
 	// example:
 	//
 	// 540
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The region in which the file resides.
+	// Region where the file is stored.
 	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The width.
+	// Width of the video.
 	//
 	// example:
 	//
@@ -474,115 +474,109 @@ func (s *GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicIn
 }
 
 type GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo struct {
-	// The business type of the media asset.
+	// Business type of the media asset.
 	//
 	// example:
 	//
 	// general
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The category of the media asset.
+	// Category of the media asset.
 	//
 	// example:
 	//
 	// video
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The thumbnail URL of the media asset.
+	// URL of the thumbnail image.
 	//
 	// example:
 	//
 	// http://sample-bucket.oss-cn-shanghai.aliyuncs.com/sample-corver.jpg?Expires=1628670610&OSSAccessKeyId=AK&Signature=signature
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the media asset was created.
+	// Time when the media asset was created.
 	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the media asset was deleted.
+	// Time when the media asset was deleted.
 	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// The description of the media asset.
+	// Description of the media asset.
 	//
 	// example:
 	//
 	// sample_description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The URL of the media asset in another service.
+	// URL of the media asset in the source system.
 	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/file.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// The ID of the media asset.
+	// ID of the media asset.
 	//
 	// example:
 	//
 	// *****64623a94eca8516569c8f*****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The tags of the media asset.
+	// Tags associated with the media asset.
+	//
+	// example:
+	//
+	// tag1
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// The type of the media asset.
+	// Media type of the asset.
 	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The time when the media asset was last modified.
+	// Time when the media asset was last modified.
 	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The snapshots of the media asset.
+	// Thumbnail images.
 	//
 	// example:
 	//
 	// null
 	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
-	// The source of the media asset.
+	// Source of the media asset.
 	//
 	// example:
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The sprite of the media asset
+	// Sprite image.
 	//
 	// example:
 	//
 	// null
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// The status of the media asset.
+	// Status of the resource.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The title of the media asset.
+	// Title of the media asset.
 	//
 	// example:
 	//
 	// file.mp4
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The transcoding status of the media asset.
-	//
-	// Valid values:
-	//
-	// 	- TranscodeSuccess: transcoding completed.
-	//
-	// 	- TranscodeFailed: transcoding failed.
-	//
-	// 	- Init: initializing.
-	//
-	// 	- Transcoding: transcoding in progress.
+	// Status of the transcoding task.
 	//
 	// example:
 	//
 	// Init
 	TranscodeStatus *string `json:"TranscodeStatus,omitempty" xml:"TranscodeStatus,omitempty"`
-	// The user data.
+	// User-defined data.
 	//
 	// example:
 	//

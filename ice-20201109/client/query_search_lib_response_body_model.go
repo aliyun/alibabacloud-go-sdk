@@ -26,19 +26,25 @@ type iQuerySearchLibResponseBody interface {
 }
 
 type QuerySearchLibResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The index information.
 	IndexInfo []*QuerySearchLibResponseBodyIndexInfo `json:"IndexInfo,omitempty" xml:"IndexInfo,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The search library configuration.
+	//
+	// example:
+	//
+	// {"faceGroupIds":"xxx1,xxx2,xx3"}
 	SearchLibConfig *string `json:"SearchLibConfig,omitempty" xml:"SearchLibConfig,omitempty"`
 	// The name of the search library.
 	//
@@ -48,23 +54,15 @@ type QuerySearchLibResponseBody struct {
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 	// The status of the search library.
 	//
-	// Valid values:
-	//
-	// 	- normal
-	//
-	// 	- deleting
-	//
-	// 	- deleteFail
-	//
 	// example:
 	//
 	// normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the call was successful.
 	//
-	// 	- true
+	// - **true**: The call was successful.
 	//
-	// 	- false
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -157,9 +155,40 @@ func (s *QuerySearchLibResponseBody) Validate() error {
 }
 
 type QuerySearchLibResponseBodyIndexInfo struct {
+	// The readiness status of the index. Valid values:
+	//
+	// - Initializing: The index is being initialized.
+	//
+	// - Normal: The index is ready.
+	//
+	// - Fail: The index failed to be created.
+	//
+	// example:
+	//
+	// Normal
 	IndexReadiness *string `json:"IndexReadiness,omitempty" xml:"IndexReadiness,omitempty"`
-	IndexStatus    *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
-	IndexType      *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// The status of the index. Valid values:
+	//
+	// - Active: The index is active.
+	//
+	// - Deactive: The index is inactive.
+	//
+	// example:
+	//
+	// Active
+	IndexStatus *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
+	// The index type. Valid values:
+	//
+	// - mm: Large language model (LLM).
+	//
+	// - face: Face recognition.
+	//
+	// - aiLabel: Smart tagging.
+	//
+	// example:
+	//
+	// face
+	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
 }
 
 func (s QuerySearchLibResponseBodyIndexInfo) String() string {

@@ -46,15 +46,15 @@ type ListSnapshotJobsRequest struct {
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// The order that you use to sort the query results.
 	//
-	// 1.  CreateTimeDesc
+	// 1. CreateTimeDesc
 	//
-	// 2.  CreateTimeAsc
+	// 2. CreateTimeAsc
 	//
 	// Valid values:
 	//
-	// 	- CreateTimeDesc: sorts the jobs by creation time in descending order
+	// - CreateTimeDesc: sorts the jobs by creation time in descending order
 	//
-	// 	- CreateTimeAsc: sorts the jobs by creation time in ascending order.
+	// - CreateTimeAsc: sorts the jobs by creation time in ascending order.
 	//
 	// example:
 	//
@@ -76,11 +76,11 @@ type ListSnapshotJobsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Init: The job is submitted.
+	// - Init: The job is submitted.
 	//
-	// 	- Success: The job is successful.
+	// - Success: The job is successful.
 	//
-	// 	- Fail: The job failed.
+	// - Fail: The job failed.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iGetAiRtcLicenseInfoListResponseBody interface {
 }
 
 type GetAiRtcLicenseInfoListResponseBody struct {
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GetAiRtcLicenseInfoListResponseBody struct {
 	//
 	// httpStatusCode
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// An array of AiRtcLicenseInfoDTO objects, each representing a license batch.
+	// The list of license batch details.
 	LicenseInfoList []*AiRtcLicenseInfoDTO `json:"LicenseInfoList,omitempty" xml:"LicenseInfoList,omitempty" type:"Repeated"`
 	// The error message.
 	//
@@ -52,13 +52,13 @@ type GetAiRtcLicenseInfoListResponseBody struct {
 	//
 	// 7B117AF5-2A16-412C-B127-FA6175ED1***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total count.
 	//
 	// example:
 	//

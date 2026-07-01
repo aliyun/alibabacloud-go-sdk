@@ -53,6 +53,10 @@ type SubmitAIAgentVideoAuditTaskRequest struct {
 	// This parameter is required.
 	Input *SubmitAIAgentVideoAuditTaskRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 	// The user-defined data.
+	//
+	// example:
+	//
+	// {"Custom":"hello"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -200,6 +204,10 @@ type SubmitAIAgentVideoAuditTaskRequestCapturePolicies struct {
 	// 2
 	FrameCount *int32 `json:"FrameCount,omitempty" xml:"FrameCount,omitempty"`
 	// The text prompt to send to the MLLM along with the captured frames.
+	//
+	// example:
+	//
+	// 请分析视频中的场景
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// The timestamp in the video at which to start capturing frames. Unit: seconds.
 	//
@@ -264,11 +272,11 @@ type SubmitAIAgentVideoAuditTaskRequestInput struct {
 	//
 	// example:
 	//
-	// http://my-bucket.cn-shanghai.aliyuncs.com/object-id.mp4
+	// http://my-bucket.oss-cn-shanghai.aliyuncs.com/object-id.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the input file. Valid values:
 	//
-	// 	- OSS: an OSS object.
+	// - OSS: an OSS object.
 	//
 	// example:
 	//

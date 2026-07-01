@@ -139,6 +139,10 @@ type ListEditingProjectsResponseBodyProjectList struct {
 	// 2017-01-11T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the online editing project.
+	//
+	// example:
+	//
+	// 工程描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The error code returned if the production of the online editing project failed.
 	//
@@ -172,9 +176,9 @@ type ListEditingProjectsResponseBodyProjectList struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The type of the editing project. Valid values:
 	//
-	// 	- EditingProject: a regular editing project.
+	// - EditingProject: a regular editing project.
 	//
-	// 	- LiveEditingProject: a live stream editing project.
+	// - LiveEditingProject: a live stream editing project.
 	//
 	// example:
 	//
@@ -198,15 +202,19 @@ type ListEditingProjectsResponseBodyProjectList struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The template type. Valid values:
 	//
-	// 	- Timeline: a regular template.
+	// - Timeline: a regular template.
 	//
-	// 	- VETemplate: an advanced template.
+	// - VETemplate: an advanced template.
 	//
 	// example:
 	//
 	// Timeline
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// The title of the online editing project.
+	//
+	// example:
+	//
+	// Project title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

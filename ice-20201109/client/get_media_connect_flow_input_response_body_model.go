@@ -22,19 +22,19 @@ type iGetMediaConnectFlowInputResponseBody interface {
 type GetMediaConnectFlowInputResponseBody struct {
 	// The response body.
 	Content *GetMediaConnectFlowInputResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// The call description.
+	// The description of the API call.
 	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D4C231DF-103A-55FF-8D09-E699552457DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned error code. A value of 0 indicates the call is successful.
+	// The error code returned. A value of 0 indicates success.
 	//
 	// example:
 	//
@@ -96,101 +96,89 @@ func (s *GetMediaConnectFlowInputResponseBody) Validate() error {
 }
 
 type GetMediaConnectFlowInputResponseBodyContent struct {
-	BackupCidrs         *string `json:"BackupCidrs,omitempty" xml:"BackupCidrs,omitempty"`
+	// The IP address whitelist for the backup input.
+	BackupCidrs *string `json:"BackupCidrs,omitempty" xml:"BackupCidrs,omitempty"`
+	// The time when the backup input was created.
 	BackupCreateTime    *string `json:"BackupCreateTime,omitempty" xml:"BackupCreateTime,omitempty"`
 	BackupInnerInputUrl *string `json:"BackupInnerInputUrl,omitempty" xml:"BackupInnerInputUrl,omitempty"`
-	BackupInputName     *string `json:"BackupInputName,omitempty" xml:"BackupInputName,omitempty"`
-	BackupInputStatus   *string `json:"BackupInputStatus,omitempty" xml:"BackupInputStatus,omitempty"`
-	BackupInputUrl      *string `json:"BackupInputUrl,omitempty" xml:"BackupInputUrl,omitempty"`
-	BackupMaxBitrate    *int32  `json:"BackupMaxBitrate,omitempty" xml:"BackupMaxBitrate,omitempty"`
-	BackupSrtLatency    *int32  `json:"BackupSrtLatency,omitempty" xml:"BackupSrtLatency,omitempty"`
+	// The name of the backup input.
+	BackupInputName *string `json:"BackupInputName,omitempty" xml:"BackupInputName,omitempty"`
+	// The status of the backup input. It indicates whether the backup stream is being pushed.
+	BackupInputStatus *string `json:"BackupInputStatus,omitempty" xml:"BackupInputStatus,omitempty"`
+	// The URL of the backup input.
+	BackupInputUrl *string `json:"BackupInputUrl,omitempty" xml:"BackupInputUrl,omitempty"`
+	// The bitrate of the backup input.
+	BackupMaxBitrate *int32 `json:"BackupMaxBitrate,omitempty" xml:"BackupMaxBitrate,omitempty"`
+	// The SRT latency for the backup input.
+	BackupSrtLatency *int32 `json:"BackupSrtLatency,omitempty" xml:"BackupSrtLatency,omitempty"`
+	// The SRT encryption key for the backup input.
 	BackupSrtPassphrase *string `json:"BackupSrtPassphrase,omitempty" xml:"BackupSrtPassphrase,omitempty"`
-	BackupSrtPbkeyLen   *int32  `json:"BackupSrtPbkeyLen,omitempty" xml:"BackupSrtPbkeyLen,omitempty"`
-	// The IP address whitelist in CIDR format. CIDR blocks are separated with commas (,).
+	// The SRT encryption key length for the backup input.
+	BackupSrtPbkeyLen *int32 `json:"BackupSrtPbkeyLen,omitempty" xml:"BackupSrtPbkeyLen,omitempty"`
+	// The IP address whitelist in CIDR format. Separate multiple IP address segments with commas.
 	//
 	// example:
 	//
 	// 10.211.0.0/17
 	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
-	// The time when the flow was created.
+	// The time when the input was created.
 	//
 	// example:
 	//
 	// 2024-07-18T01:29:24Z
 	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	InnerInputUrl *string `json:"InnerInputUrl,omitempty" xml:"InnerInputUrl,omitempty"`
-	// The source name.
+	// The input name.
 	//
 	// example:
 	//
 	// AliTestInput
 	InputName *string `json:"InputName,omitempty" xml:"InputName,omitempty"`
-	// The source type.
-	//
-	// Valid values:
-	//
-	// 	- RTMP-PUSH
-	//
-	// 	- SRT-Caller
-	//
-	// 	- RTMP-PULL
-	//
-	// 	- SRT-Listener
-	//
-	// 	- Flow
+	// The input type.
 	//
 	// example:
 	//
 	// RTMP-PUSH
 	InputProtocol *string `json:"InputProtocol,omitempty" xml:"InputProtocol,omitempty"`
-	InputStatus   *string `json:"InputStatus,omitempty" xml:"InputStatus,omitempty"`
-	// The source URL.
+	// The input status. It indicates whether the primary stream is being pushed.
+	InputStatus *string `json:"InputStatus,omitempty" xml:"InputStatus,omitempty"`
+	// The input URL.
 	//
 	// example:
 	//
 	// rtmp://1.2.3.4:1935/live/AliTestInput_8666ec062190f00e263012666319a5be
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
-	// The maximum bitrate. Unit: bit/s.
+	// The input bitrate, in bps.
 	//
 	// example:
 	//
 	// 2000000
 	MaxBitrate *int32 `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
-	// The ID of the source flow. This parameter is returned when the source type is Flow.
+	// The ID of the peer Flow instance. This parameter is required only if the output type is Flow.
 	//
 	// example:
 	//
 	// 05c3adf4-aa0e-421d-a991-48ceae3e642e
 	PairFlowId *string `json:"PairFlowId,omitempty" xml:"PairFlowId,omitempty"`
-	// The output of the source flow. This parameter is returned when the source type is Flow.
+	// The output name of the peer Flow. This parameter is required only when the input type is Flow.
 	//
 	// example:
 	//
 	// AliTestOutput
 	PairOutputName *string `json:"PairOutputName,omitempty" xml:"PairOutputName,omitempty"`
-	// The latency for the SRT stream. Unit: milliseconds. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
+	// The SRT latency in milliseconds (ms). This parameter is required only when the input type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// 1000
 	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
-	// The SRT key. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
+	// The SRT encryption key. This parameter is required only when the input type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// FICUBPX4Q77DYHRF
 	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
-	// The encryption key length. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
-	//
-	// Valid values:
-	//
-	// 	- 0
-	//
-	// 	- 16
-	//
-	// 	- 24
-	//
-	// 	- 32
+	// The SRT encryption key length. This parameter is required only when the input type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//

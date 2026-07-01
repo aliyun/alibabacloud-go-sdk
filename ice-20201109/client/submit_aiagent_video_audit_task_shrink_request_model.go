@@ -53,6 +53,10 @@ type SubmitAIAgentVideoAuditTaskShrinkRequest struct {
 	// This parameter is required.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// The user-defined data.
+	//
+	// example:
+	//
+	// {"Custom":"hello"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 

@@ -16,7 +16,7 @@ type iGetMediaInfoResponseBody interface {
 }
 
 type GetMediaInfoResponseBody struct {
-	// The information about the media asset.
+	// Information about the media asset.
 	MediaInfo *GetMediaInfoResponseBodyMediaInfo `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,13 +62,13 @@ func (s *GetMediaInfoResponseBody) Validate() error {
 }
 
 type GetMediaInfoResponseBodyMediaInfo struct {
-	// The original AI analysis data.
+	// The raw data from the AI analysis.
 	AiRoughData *GetMediaInfoResponseBodyMediaInfoAiRoughData `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
-	// The file information.
+	// A list of file information objects.
 	FileInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// The basic information about the media asset.
+	// Basic information about the media asset.
 	MediaBasicInfo *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
@@ -146,61 +146,65 @@ func (s *GetMediaInfoResponseBodyMediaInfo) Validate() error {
 type GetMediaInfoResponseBodyMediaInfoAiRoughData struct {
 	// The AI category. Valid values:
 	//
-	// 	- Life
+	// - Lifestyle
 	//
-	// 	- Good-looking
+	// - Appearance
 	//
-	// 	- Cute pets
+	// - Pets
 	//
-	// 	- News
+	// - News
 	//
-	// 	- Ads
+	// - Advertisement
 	//
-	// 	- Environmental resources
+	// - Environment
 	//
-	// 	- Automobile
+	// - Automobile
+	//
+	// example:
+	//
+	// 生活
 	AiCategory *string `json:"AiCategory,omitempty" xml:"AiCategory,omitempty"`
-	// The ID of the AI task.
+	// The AI job ID.
 	//
 	// example:
 	//
 	// ****483915d4f2cd8ac20b48fb04****
 	AiJobId *string `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
-	// The analysis result.
+	// The raw AI analysis result.
 	//
 	// example:
 	//
 	// https://sample-bucket.cn-shanghai.aliyuncs.com/result.json
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The storage type. This parameter indicates the library in which the analysis data is stored. Valid values:
+	// The save type. Specifies whether to save the results to the search index after the AI analysis is complete. Valid values:
 	//
-	// 	- TEXT: the text library.
+	// - TEXT: The text index.
 	//
 	// example:
 	//
 	// TEXT
 	SaveType *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
-	// The information about the tagging job.
+	// The tag job.
 	StandardSmartTagJob *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob `json:"StandardSmartTagJob,omitempty" xml:"StandardSmartTagJob,omitempty" type:"Struct"`
-	// The analysis status. Valid values:
+	// The status of the AI analysis:
 	//
-	// 	- Analyzing
+	// - Analyzing: The analysis is in progress.
 	//
-	// 	- AnalyzeSuccess
+	// - AnalyzeSuccess: The analysis is successful.
 	//
-	// 	- AnalyzeFailed
+	// - AnalyzeFailed: The analysis failed.
 	//
-	// 	- Saving
+	// - Saving: The data is being saved.
 	//
-	// 	- SaveSuccess
+	// - SaveSuccess: The data is saved.
 	//
-	// 	- SaveFailed
+	// - SaveFailed: The data failed to save.
 	//
-	// 	- Deleting
+	// - Deleting: The data is being deleted.
 	//
-	// 	- DeleteSuccess
+	// - DeleteSuccess: The data is deleted.
 	//
-	// 	- DeleteFailed
+	// - DeleteFailed: The data failed to delete.
 	//
 	// example:
 	//
@@ -280,27 +284,27 @@ func (s *GetMediaInfoResponseBodyMediaInfoAiRoughData) Validate() error {
 }
 
 type GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob struct {
-	// The ID of the AI task.
+	// The AI job ID.
 	//
 	// example:
 	//
 	// ****483915d4f2cd8ac20b48fb04****
 	AiJobId *string `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
-	// The URL of the tagging result.
+	// The tag result URL.
 	//
 	// example:
 	//
 	// http://xx.oss-cn-shanghai.aliyuncs.com/result2.txt
 	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
-	// The recognized tags.
+	// A list of tag recognition results.
 	Results []*GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// The analysis status. Valid values:
+	// The AI analysis status:
 	//
-	// 	- Analyzing
+	// - **Analyzing**: The analysis is in progress.
 	//
-	// 	- AnalyzeSuccess
+	// - **AnalyzeSuccess**: The analysis is successful.
 	//
-	// 	- AnalyzeFailed
+	// - **AnalyzeFailed**: The analysis failed.
 	//
 	// example:
 	//
@@ -366,15 +370,23 @@ func (s *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJob) Valida
 }
 
 type GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults struct {
-	// The result data. The value is a JSON string. For information about the data structures of different data types<props="china">, see [Description of the Results parameter](https://help.aliyun.com/zh/ims/developer-reference/api-ice-2020-11-09-querysmarttagjob?spm=a2c4g.11186623.0.0.521d48b7KfapOL#api-detail-40).
+	// The detailed analysis result is a JSON string. For the data structure of each Type, see [Result parameter description](~~478787#api-detail-40~~).
 	//
 	// example:
 	//
 	// {"autoChapters": [...]}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The tagging type. Valid values:
+	// The tag identification type. Valid values:
 	//
-	// 	- NLP: natural language processing (NLP)-based tagging
+	// - NLP: The result from Natural Language Processing (NLP).
+	//
+	// - TextLabel: A text tag.
+	//
+	// - VideoLabel: A video tag.
+	//
+	// - ASR: The raw result from Automatic Speech Recognition (ASR).
+	//
+	// - OCR: The raw result from Optical Character Recognition (OCR).
 	//
 	// example:
 	//
@@ -413,13 +425,13 @@ func (s *GetMediaInfoResponseBodyMediaInfoAiRoughDataStandardSmartTagJobResults)
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoList struct {
-	// The information about the audio tracks. A media asset may have multiple audio tracks.
+	// A list of audio stream information. A media asset may contain multiple audio streams.
 	AudioStreamInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	// The basic information about the file, including the duration and size.
+	// The basic information about the file, such as the duration and size.
 	FileBasicInfo *GetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
-	// The information about the subtitle tracks. A media asset may have multiple subtitle tracks.
+	// A list of subtitle stream information. A media asset may contain multiple subtitle streams.
 	SubtitleStreamInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList `json:"SubtitleStreamInfoList,omitempty" xml:"SubtitleStreamInfoList,omitempty" type:"Repeated"`
-	// The information about the video tracks. A media asset may have multiple video tracks.
+	// A list of video stream information. A media asset may contain multiple video streams.
 	VideoStreamInfoList []*GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -504,19 +516,19 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoList) Validate() error {
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {
-	// The bitrate.
+	// The bitrate, in kbit/s.
 	//
 	// example:
 	//
 	// 127.794
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The output layout of sound channels.
+	// The channel layout.
 	//
 	// example:
 	//
 	// stereo
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// The number of sound channels.
+	// The number of audio channels.
 	//
 	// example:
 	//
@@ -552,7 +564,7 @@ type GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {
 	//
 	// 1/24000
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
-	// The duration.
+	// The duration, in seconds.
 	//
 	// example:
 	//
@@ -564,7 +576,7 @@ type GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {
 	//
 	// 8
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The sequence number of the audio track.
+	// The index of the audio stream.
 	//
 	// example:
 	//
@@ -576,31 +588,31 @@ type GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {
 	//
 	// und
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of frames.
+	// The total number of audio frames.
 	//
 	// example:
 	//
 	// 10
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// The codec profile.
+	// The encoding profile.
 	//
 	// example:
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The sampling format.
+	// The sample format.
 	//
 	// example:
 	//
 	// fltp
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
-	// The sampling rate.
+	// The sample rate, in Hz.
 	//
 	// example:
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	// The start time.
+	// The start time, in seconds.
 	//
 	// example:
 	//
@@ -789,49 +801,49 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList) Valid
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct {
-	// The bitrate.
+	// The file bitrate in kbit/s.
 	//
 	// example:
 	//
 	// 1132.68
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The time when the file was created.
+	// The time when the file was created. The time is in UTC and follows the `YYYY-MM-DDTHH:MM:SSZ` format.
 	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The duration.
+	// The file duration in seconds.
 	//
 	// example:
 	//
 	// 216.206667
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The file name.
+	// The name of the file.
 	//
 	// example:
 	//
 	// example.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file size. Unit: bytes.
+	// The file size in bytes.
 	//
 	// example:
 	//
 	// 30611502
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The file status.
+	// The status of the file.
 	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// The file type.
+	// The type of the file.
 	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The OSS URL of the file.
+	// The file\\"s OSS URL.
 	//
 	// example:
 	//
@@ -843,25 +855,25 @@ type GetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct {
 	//
 	// mov,mp4,m4a,3gp,3g2,mj2
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// The height.
+	// The video height in pixels.
 	//
 	// example:
 	//
 	// 540
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The time when the file was last modified.
+	// The time when the file was last modified. The time is in UTC and follows the `YYYY-MM-DDTHH:MM:SSZ` format.
 	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The region in which the file is stored.
+	// The Region where the file is stored.
 	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The width.
+	// The video width in pixels.
 	//
 	// example:
 	//
@@ -1035,7 +1047,7 @@ type GetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList struct 
 	//
 	// 1
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The sequence number of the subtitle track.
+	// The index of the subtitle stream.
 	//
 	// example:
 	//
@@ -1047,7 +1059,7 @@ type GetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList struct 
 	//
 	// und
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The start time.
+	// The start time, in seconds.
 	//
 	// example:
 	//
@@ -1164,13 +1176,13 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList) Va
 }
 
 type GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
-	// The average video frame rate.
+	// The average frame rate.
 	//
 	// example:
 	//
 	// 24.0
 	AvgFPS *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
-	// The bitrate.
+	// The bitrate, in kbit/s.
 	//
 	// example:
 	//
@@ -1212,7 +1224,7 @@ type GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
 	//
 	// 0:1
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
-	// The duration.
+	// The duration, in seconds.
 	//
 	// example:
 	//
@@ -1224,19 +1236,19 @@ type GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
 	//
 	// 24.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// Indicates whether the video track contains bidirectional frames (B-frames).
+	// Specifies whether B-frames exist.
 	//
 	// example:
 	//
 	// 2
 	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
-	// The height.
+	// The video height in pixels.
 	//
 	// example:
 	//
 	// 540
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The sequence number of the video track.
+	// The index of the video stream.
 	//
 	// example:
 	//
@@ -1248,19 +1260,19 @@ type GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
 	//
 	// und
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The codec level.
+	// The encoding level.
 	//
 	// example:
 	//
 	// 30
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The total number of frames.
+	// The total number of video frames.
 	//
 	// example:
 	//
 	// 5184
 	NbFrames *string `json:"Nb_frames,omitempty" xml:"Nb_frames,omitempty"`
-	// The number of frames.
+	// The total number of frames.
 	//
 	// example:
 	//
@@ -1272,13 +1284,13 @@ type GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// The codec profile.
+	// The encoding profile.
 	//
 	// example:
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The rotation angle.
+	// The rotation angle of the video.
 	//
 	// example:
 	//
@@ -1290,7 +1302,7 @@ type GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
 	//
 	// 0:1
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
-	// The start time.
+	// The start time, in seconds.
 	//
 	// example:
 	//
@@ -1302,7 +1314,7 @@ type GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
 	//
 	// 1/12288
 	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
-	// The width.
+	// The video width in pixels.
 	//
 	// example:
 	//
@@ -1539,13 +1551,13 @@ func (s *GetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList) Valid
 }
 
 type GetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
-	// The service to which the media asset belongs.
+	// The business associated with the media asset.
 	//
 	// example:
 	//
 	// ICE
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// The business type.
+	// The business type of the media asset.
 	//
 	// example:
 	//
@@ -1557,67 +1569,79 @@ type GetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// 3048
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The category name.
+	// The name of the category.
 	//
 	// example:
 	//
 	// cateName
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The category.
+	// The category of the media asset.
+	//
+	// example:
+	//
+	// Category
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The URL of the thumbnail.
+	// The cover image URL.
 	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.png?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the media asset was created.
+	// The time when the media asset was created. The time is in UTC and follows the `YYYY-MM-DDTHH:MM:SSZ` format.
 	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the media asset was deleted.
+	// The time when the media asset was deleted. The time is in UTC and follows the `YYYY-MM-DDTHH:MM:SSZ` format.
 	//
 	// example:
 	//
 	// 2020-12-26T04:11:15Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// The content description.
+	// The description of the media asset.
+	//
+	// example:
+	//
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The input URL of the media asset in another service.
+	// The media asset URL.
 	//
 	// example:
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The tags.
+	// A comma-separated list of tags for the media asset.
+	//
+	// example:
+	//
+	// tag1
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// The type of the media asset.
+	// The media asset type.
 	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The time when the media asset was last modified.
+	// The time when the media asset was last modified. The time is in UTC and follows the `YYYY-MM-DDTHH:MM:SSZ` format.
 	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The custom ID. The ID can be 6 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (_). The ID is unique among users.
+	// A custom, user-unique ID. It must be 6 to 64 characters long and can only contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
 	// 123-1234
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	// The snapshots.
+	// A list of snapshot URLs.
 	//
 	// example:
 	//
@@ -1631,25 +1655,29 @@ type GetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// ]
 	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
-	// The source.
+	// The source of the media asset.
 	//
 	// example:
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The sprite.
+	// The details of the generated sprite images.
 	//
 	// example:
 	//
 	// [{"bucket":"example-bucket","count":"32","iceJobId":"******83ec44d58b2069def2e******","location":"oss-cn-shanghai","snapshotRegular":"example/example-{Count}.jpg","spriteRegular":"example/example-{TileCount}.jpg","templateId":"******e438b14ff39293eaec25******","tileCount":"1"}]
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
-	// The resource status.
+	// The status of the media asset.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The title.
+	// The title of the media asset.
+	//
+	// example:
+	//
+	// Title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The upload source of the media asset.
 	//
@@ -1657,7 +1685,7 @@ type GetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// general
 	UploadSource *string `json:"UploadSource,omitempty" xml:"UploadSource,omitempty"`
-	// The user data.
+	// Custom user data.
 	//
 	// example:
 	//

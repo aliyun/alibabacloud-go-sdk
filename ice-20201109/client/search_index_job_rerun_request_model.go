@@ -27,7 +27,12 @@ type SearchIndexJobRerunRequest struct {
 	// example:
 	//
 	// ******b48fb04483915d4f2cd8******,******c48fb37407365d4f2cd8******
-	MediaIds  *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	// Namespace.
+	//
+	// example:
+	//
+	// name-1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The search library.
 	//
@@ -37,15 +42,15 @@ type SearchIndexJobRerunRequest struct {
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 	// The type of the job. Separate multiple types with commas (,).
 	//
-	// 	- aiLabel: smart tagging.
+	// - aiLabel: smart tagging.
 	//
-	// 	- face: face recognition.
+	// - face: face recognition.
 	//
-	// 	- mm: large visual model.
+	// - mm: large visual model.
 	//
 	// example:
 	//
-	// AiLabel,Face,Mm
+	// aiLabel,face,mm
 	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
 }
 

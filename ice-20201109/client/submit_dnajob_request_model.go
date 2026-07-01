@@ -34,13 +34,13 @@ type iSubmitDNAJobRequest interface {
 }
 
 type SubmitDNAJobRequest struct {
-	// The configurations of the media fingerprint analysis job. The value is a JSON object. If you specify this parameter, the template parameters are overwritten.
+	// The DNA configuration in JSON format. If specified, these settings override the corresponding template parameters.
 	//
 	// example:
 	//
-	// {"SaveType": "save","MediaType"":"video"}
+	// {"SaveType": "save","MediaType":"video"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the media fingerprint library. If you do not specify this parameter, the default media fingerprint library is used. For more information about how to create a media fingerprint library, see [CreateDNADB](https://help.aliyun.com/document_detail/479275.html).
+	// The DNA library ID. To create a DNA library, see [CreateDNADB](https://help.aliyun.com/document_detail/479275.html).
 	//
 	// This parameter is required.
 	//
@@ -48,19 +48,19 @@ type SubmitDNAJobRequest struct {
 	//
 	// 2288c6ca184c0e47098a5b665e2a12****
 	DBId *string `json:"DBId,omitempty" xml:"DBId,omitempty"`
-	// The input file for media fingerprint analysis.
+	// The input DNA file.
 	//
 	// This parameter is required.
 	Input        *SubmitDNAJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 	OwnerAccount *string                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the ApsaraVideo Media Processing (MPS) queue to which the media fingerprint analysis job is submitted.
+	// The pipeline ID.
 	//
 	// example:
 	//
 	// 5246b8d12a62433ab77845074039****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The primary key of the video. You must make sure that each primary key is unique.
+	// The unique primary key for the video. You are responsible for ensuring its uniqueness.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type SubmitDNAJobRequest struct {
 	//
 	// S00000101-100060
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The user-defined data. The data can be up to 128 bytes in length.
+	// The user-defined data. The maximum length is 128 bytes.
 	//
 	// example:
 	//
@@ -201,13 +201,13 @@ func (s *SubmitDNAJobRequest) Validate() error {
 }
 
 type SubmitDNAJobRequestInput struct {
-	// The input file. The file can be an OSS object or a media asset. You can specify the path of an OSS object in one of the following formats:
+	// The media ID or OSS file url of the input file.
 	//
-	// 1\\. oss://bucket/object
+	// 1\\. `oss://bucket/object`
 	//
-	// 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
+	// 2\\. `http(s)://bucket.oss-[regionId].aliyuncs.com/object`
 	//
-	// In the preceding paths, bucket indicates an OSS bucket that resides in the same region as the current project, and object indicates the path of the object in the bucket.
+	// In these formats, `bucket` is the name of an OSS bucket in the same region as your project, and `object` is the file path.
 	//
 	// This parameter is required.
 	//
@@ -217,9 +217,9 @@ type SubmitDNAJobRequestInput struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the input file. Valid values:
 	//
-	// 1.  OSS: Object Storage Service (OSS) object.
+	// 1. `OSS`: The input is an OSS file url.
 	//
-	// 2.  Media: media asset.
+	// 2. `Media`: The input is a media ID.
 	//
 	// This parameter is required.
 	//

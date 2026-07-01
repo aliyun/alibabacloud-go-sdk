@@ -26,13 +26,54 @@ type iAIAgentCallInfo interface {
 }
 
 type AIAgentCallInfo struct {
-	CallDuration  *int32  `json:"CallDuration,omitempty" xml:"CallDuration,omitempty"`
-	CallEndTime   *string `json:"CallEndTime,omitempty" xml:"CallEndTime,omitempty"`
+	// The duration of the call, in seconds.
+	//
+	// example:
+	//
+	// 5
+	CallDuration *int32 `json:"CallDuration,omitempty" xml:"CallDuration,omitempty"`
+	// The time the call ended, in ISO 8601 format.
+	//
+	// example:
+	//
+	// 2026-04-01T16:53:58.875932+00:00
+	CallEndTime *string `json:"CallEndTime,omitempty" xml:"CallEndTime,omitempty"`
+	// The time the call started, in ISO 8601 format.
+	//
+	// example:
+	//
+	// 2026-04-01T16:53:53.184797+00:00
 	CallStartTime *string `json:"CallStartTime,omitempty" xml:"CallStartTime,omitempty"`
-	CalleeNumber  *string `json:"CalleeNumber,omitempty" xml:"CalleeNumber,omitempty"`
-	CallerNumber  *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
-	HangupRole    *int32  `json:"HangupRole,omitempty" xml:"HangupRole,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of the called party.
+	//
+	// example:
+	//
+	// 136******794
+	CalleeNumber *string `json:"CalleeNumber,omitempty" xml:"CalleeNumber,omitempty"`
+	// The number of the calling party.
+	//
+	// example:
+	//
+	// 183*****333
+	CallerNumber *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	// Indicates which party ended the call.
+	//
+	// 0: The agent ended the call.
+	//
+	// 1: The user ended the call.
+	//
+	// 2: The system ended the call for a transfer.
+	//
+	// example:
+	//
+	// 0
+	HangupRole *int32 `json:"HangupRole,omitempty" xml:"HangupRole,omitempty"`
+	// The status of the call.
+	//
+	// example:
+	//
+	// 4
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AIAgentCallInfo) String() string {

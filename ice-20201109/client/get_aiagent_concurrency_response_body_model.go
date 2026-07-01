@@ -16,10 +16,14 @@ type iGetAIAgentConcurrencyResponseBody interface {
 }
 
 type GetAIAgentConcurrencyResponseBody struct {
+	// The number of active concurrent calls.
+	//
 	// example:
 	//
 	// 39
 	ActiveCount *int32 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****

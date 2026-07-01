@@ -30,9 +30,17 @@ type iSearchMediaByHybridRequest interface {
 }
 
 type SearchMediaByHybridRequest struct {
+	// Custom filters. A JSON string. Supported backing fields include integer field intField1 and string fields strField1 and strField2. Only one matching condition can be applied per field, and filters across different fields are combined with a logical AND relationship.
+	//
+	// - Exact match example: {"intField1":12,"strField1":"abc"}
+	//
+	// - Multi-value example: {"intField1":[12,13],"strField1":["abc","cd"]}
+	//
+	// - Range example: {"intField1":{"gte":12,"lte":13}}
+	//
 	// example:
 	//
-	// {}
+	// {"intField1":{"gte":12,"lte":13},"strField2":["cd","de"],"strField1":"abc"}
 	CustomFilters *string `json:"CustomFilters,omitempty" xml:"CustomFilters,omitempty"`
 	// The ID of the media asset. If provided, the details of the media asset are returned.
 	//
@@ -78,11 +86,15 @@ type SearchMediaByHybridRequest struct {
 	//
 	// example:
 	//
-	// Two pandas are fighting
+	// Two pandas are fighting.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Creation time, in milliseconds UNIX timestamp. gte means greater than or equal to, and lte means less than or equal to.
+	//
+	// - Range example: {"gte":1761205662998,"lte":1771205662998}
+	//
 	// example:
 	//
-	// {}
+	// {"gte":1761205662998,"lte":1771205662998}
 	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
 }
 

@@ -46,74 +46,99 @@ type iQueryIProductionJobResponseBody interface {
 }
 
 type QueryIProductionJobResponseBody struct {
-	// The time when the job was created.
+	// The time when the job was created, in UTC.
 	//
 	// example:
 	//
 	// 2022-07-07T07:16:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the job was complete.
+	// The time when the job was completed, in UTC.
 	//
 	// example:
 	//
 	// 2021-11-26T14:50:25Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The name of the algorithm that you want to use for the job. Valid values:
+	// The name of the algorithm to use. Valid values:
 	//
-	// 	- **Cover**: This algorithm intelligently generates a thumbnail image for a video.
+	// - **Cover**: smart cover
 	//
-	// 	- **VideoClip**: This algorithm intelligently generates a summary for a video.
+	// - **VideoClip**: video summary
 	//
-	// 	- **VideoDelogo**: This algorithm removes logos from a video.
+	// - **VideoDelogo**: video logo removal
 	//
-	// 	- **VideoDetext**: This algorithm removes captions from a video.
+	// - **VideoDetext**: video text removal
+	//
+	// - **CaptionExtraction**: caption extraction
+	//
+	// - **VideoGreenScreenMatting**: green screen matting
+	//
+	// - **FaceBeauty**: video beautification
+	//
+	// - **VideoH2V**: horizontal-to-vertical video conversion
+	//
+	// - **MusicSegmentDetect**: chorus detection
+	//
+	// - **AudioBeatDetection**: beat detection
+	//
+	// - **AudioQualityAssessment**: audio quality assessment
+	//
+	// - **SpeechDenoise**: speech denoising
+	//
+	// - **AudioMixing**: audio mixing
+	//
+	// - **MusicDemix**: music source separation
 	//
 	// example:
 	//
 	// Cover
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The input file.
+	// The input media.
 	Input *QueryIProductionJobResponseBodyInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// The ID of the intelligent production job.
+	// The job ID.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The algorithm-specific parameters. The parameters are specified as JSON objects and vary based on the algorithm.
+	// A JSON object that contains the parameters for the algorithm job. The specific parameters vary depending on the selected algorithm.
 	//
 	// example:
 	//
 	// {"Model":"gif"}
 	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
-	// The name of the intelligent production job.
+	// The job name.
+	//
+	// example:
+	//
+	// Test task
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output file.
+	// The output media.
 	Output *QueryIProductionJobResponseBodyOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// The output files.
-	OutputFiles    []*string `json:"OutputFiles,omitempty" xml:"OutputFiles,omitempty" type:"Repeated"`
+	// An array of output file paths.
+	OutputFiles []*string `json:"OutputFiles,omitempty" xml:"OutputFiles,omitempty" type:"Repeated"`
+	// The output media asset IDs.
 	OutputMediaIds []*string `json:"OutputMediaIds,omitempty" xml:"OutputMediaIds,omitempty" type:"Repeated"`
-	// The URLs of the output files.
+	// An array of output file URLs.
 	OutputUrls []*string `json:"OutputUrls,omitempty" xml:"OutputUrls,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The output of the algorithm. The output is in JSON format and varies based on the algorithm. For more information, see the "Parameters of Result" section of this topic.
+	// The algorithm output, returned as a JSON string. The structure of the output varies based on the `FunctionName`. For more information, see the additional notes below.
 	//
 	// example:
 	//
 	// {}
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The scheduling configuration.
+	// The job configuration.
 	ScheduleConfig *QueryIProductionJobResponseBodyScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// The status of the job. Valid values:
+	// The job status. Valid values:
 	//
-	// 	- Queuing: The job is waiting in the queue.
+	// - Queuing: The job is awaiting processing.
 	//
-	// 	- Analysing: The job is in progress.
+	// - Analyzing: The job is being processed.
 	//
-	// 	- Fail: The job failed.
+	// - Fail: The job failed to complete.
 	//
-	// 	- Success: The job was successful.
+	// - Success: The job completed successfully.
 	//
 	// example:
 	//
@@ -125,7 +150,7 @@ type QueryIProductionJobResponseBody struct {
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The user-defined data that is returned in the response.
+	// The user data. The system returns this value unchanged.
 	//
 	// example:
 	//
@@ -314,21 +339,25 @@ func (s *QueryIProductionJobResponseBody) Validate() error {
 }
 
 type QueryIProductionJobResponseBodyInput struct {
-	// The input file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
+	// The source file for the job. Set this to an OSS file URL if `Type` is `OSS`, or a media asset ID if `Type` is `Media`.
 	//
-	// 1.  oss://bucket/object
+	// Valid OSS URL formats:
 	//
-	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
+	// 1. oss\\://bucket/object
+	//
+	// 2. http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+	//
+	//    In these formats, `bucket` is the name of the OSS bucket in the same region as the current project, and `object` is the file path.
 	//
 	// example:
 	//
 	// oss://bucket/object
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The media type. Valid values:
+	// The input type. Valid values:
 	//
-	// 1.  OSS: Object Storage Service (OSS) object
+	// 1. OSS: An OSS file URL.
 	//
-	// 2.  Media: media asset
+	// 2. Media: A media asset ID.
 	//
 	// example:
 	//
@@ -367,23 +396,37 @@ func (s *QueryIProductionJobResponseBodyInput) Validate() error {
 }
 
 type QueryIProductionJobResponseBodyOutput struct {
+	// The service that the media asset belongs to.
+	//
+	// example:
+	//
+	// IMS
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// The output file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
+	// The destination for the output. If the output `Type` is `OSS`, this parameter returns an OSS file URL. If the output `Type` is `Media`, it returns the specified or a newly generated media asset ID.
 	//
-	// 1.  oss://bucket/object
+	// Valid OSS URL formats:
 	//
-	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
+	// 1. oss\\://bucket/object
+	//
+	// 2. http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+	//
+	//    In these formats, `bucket` is the name of the OSS bucket in the same region as the current project, and `object` is the file path.
 	//
 	// example:
 	//
 	// oss://bucket/object
-	Media     *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The OSS URL of the output file. This value is returned only when `Type` is `Media`.
+	//
+	// example:
+	//
+	// http(s)://bucket.oss-[RegionId].aliyuncs.com/object
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
 	// The media type. Valid values:
 	//
-	// 	- OSS: OSS object
+	// - OSS: An OSS file URL.
 	//
-	// 	- Media: media asset
+	// - Media: A media asset ID.
 	//
 	// example:
 	//
@@ -440,17 +483,17 @@ func (s *QueryIProductionJobResponseBodyOutput) Validate() error {
 }
 
 type QueryIProductionJobResponseBodyScheduleConfig struct {
-	// The ID of the ApsaraVideo Media Processing (MPS) queue.
+	// The pipeline ID.
 	//
 	// example:
 	//
 	// a54fdc9c9aab413caef0d1150f565e86
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The priority of the job in the MPS queue to which the job is added.
+	// The job\\"s priority within the pipeline.
 	//
-	// 	- A value of 10 indicates the highest priority.
+	// - A larger value indicates a higher priority. The highest priority is 10.
 	//
-	// 	- Default value: **6**.
+	// - Default: **6**.
 	//
 	// example:
 	//

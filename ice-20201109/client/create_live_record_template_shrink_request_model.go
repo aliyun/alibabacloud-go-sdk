@@ -16,7 +16,7 @@ type iCreateLiveRecordTemplateShrinkRequest interface {
 }
 
 type CreateLiveRecordTemplateShrinkRequest struct {
-	// The name of the template.
+	// The name of the Live Record Template.
 	//
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`

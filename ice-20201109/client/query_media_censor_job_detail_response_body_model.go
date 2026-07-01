@@ -113,13 +113,13 @@ type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail struct {
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The overall result of the content moderation job. Valid values:
 	//
-	// 	- **pass**: The content passes the moderation.
+	// - **pass**: The content passes the moderation.
 	//
-	// 	- **review**: The content needs to be manually reviewed.
+	// - **review**: The content needs to be manually reviewed.
 	//
-	// 	- **block**: The content needs to be blocked.
+	// - **block**: The content needs to be blocked.
 	//
-	// >  If the moderation result of any type of content is review, the overall result is review. If the moderation result of any type of content is block, the overall result is block.
+	// > If the moderation result of any type of content is review, the overall result is review. If the moderation result of any type of content is block, the overall result is block.
 	//
 	// example:
 	//
@@ -333,19 +333,19 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail) Validate() e
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailBarrageCensorResult struct {
 	// The label of the moderation result. Valid values:
 	//
-	// 	- **normal**: normal content.
+	// - **normal**: normal content.
 	//
-	// 	- **spam**: spam.
+	// - **spam**: spam.
 	//
-	// 	- **ad**: ads.
+	// - **ad**: ads.
 	//
-	// 	- **abuse**: abuse content.
+	// - **abuse**: abuse content.
 	//
-	// 	- **flood**: excessive junk content.
+	// - **flood**: excessive junk content.
 	//
-	// 	- **contraband**: prohibited content.
+	// - **contraband**: prohibited content.
 	//
-	// 	- **meaningless**: meaningless content.
+	// - **meaningless**: meaningless content.
 	//
 	// example:
 	//
@@ -365,11 +365,11 @@ type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailBarrageCensorResul
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	// The recommended subsequent operation. Valid values:
 	//
-	// 	- **pass**: The content passes the moderation.
+	// - **pass**: The content passes the moderation.
 	//
-	// 	- **review**: The content needs to be manually reviewed.
+	// - **review**: The content needs to be manually reviewed.
 	//
-	// 	- **block**: The content needs to be blocked.
+	// - **block**: The content needs to be blocked.
 	//
 	// example:
 	//
@@ -611,19 +611,19 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCens
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailDescCensorResult struct {
 	// The label of the moderation result. Valid values:
 	//
-	// 	- **normal**: normal content.
+	// - **normal**: normal content.
 	//
-	// 	- **spam**: spam.
+	// - **spam**: spam.
 	//
-	// 	- **ad**: ads.
+	// - **ad**: ads.
 	//
-	// 	- **abuse**: abuse content.
+	// - **abuse**: abuse content.
 	//
-	// 	- **flood**: excessive junk content.
+	// - **flood**: excessive junk content.
 	//
-	// 	- **contraband**: prohibited content.
+	// - **contraband**: prohibited content.
 	//
-	// 	- **meaningless**: meaningless content.
+	// - **meaningless**: meaningless content.
 	//
 	// example:
 	//
@@ -643,11 +643,11 @@ type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailDescCensorResult s
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	// The recommended subsequent operation. Valid values:
 	//
-	// 	- **pass**: The content passes the moderation.
+	// - **pass**: The content passes the moderation.
 	//
-	// 	- **review**: The content needs to be manually reviewed.
+	// - **review**: The content needs to be manually reviewed.
 	//
-	// 	- **block**: The content needs to be blocked.
+	// - **block**: The content needs to be blocked.
 	//
 	// example:
 	//
@@ -766,19 +766,19 @@ func (s *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailInput) Validat
 type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailTitleCensorResult struct {
 	// The label of the moderation result. Valid values:
 	//
-	// 	- **normal**: normal content.
+	// - **normal**: normal content.
 	//
-	// 	- **spam**: spam.
+	// - **spam**: spam.
 	//
-	// 	- **ad**: ads.
+	// - **ad**: ads.
 	//
-	// 	- **abuse**: abuse content.
+	// - **abuse**: abuse content.
 	//
-	// 	- **flood**: excessive junk content.
+	// - **flood**: excessive junk content.
 	//
-	// 	- **contraband**: prohibited content.
+	// - **contraband**: prohibited content.
 	//
-	// 	- **meaningless**: meaningless content.
+	// - **meaningless**: meaningless content.
 	//
 	// example:
 	//
@@ -798,11 +798,11 @@ type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailTitleCensorResult 
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	// The recommended subsequent operation. Valid values:
 	//
-	// 	- **pass**: The content passes the moderation.
+	// - **pass**: The content passes the moderation.
 	//
-	// 	- **review**: The content needs to be manually reviewed.
+	// - **review**: The content needs to be manually reviewed.
 	//
-	// 	- **block**: The content needs to be blocked.
+	// - **block**: The content needs to be blocked.
 	//
 	// example:
 	//
@@ -1191,9 +1191,9 @@ type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfig 
 	OutputFile *QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfigOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
 	// Indicates whether the video content needs to be moderated. Default value: **true**. Valid values:
 	//
-	// 	- **true**: The video content needs to be moderated.
+	// - **true**: The video content needs to be moderated.
 	//
-	// 	- **false**: The video content does not need to be moderated.
+	// - **false**: The video content does not need to be moderated.
 	//
 	// example:
 	//
@@ -1260,7 +1260,7 @@ type QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfigO
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	// The OSS object that is generated as the output snapshot.
 	//
-	// >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg`, `output00002-****.jpg`, and so on.
+	// > In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg`, `output00002-****.jpg`, and so on.
 	//
 	// example:
 	//

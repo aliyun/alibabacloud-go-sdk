@@ -87,11 +87,11 @@ type CancelIProductionJobResponseBodyAccessDeniedDetail struct {
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The identity. Values:
 	//
-	// 	- RAM user: a UID
+	// - RAM user: a UID
 	//
-	// 	- RAM role: RoleName:RoleSessionName
+	// - RAM role: RoleName:RoleSessionName
 	//
-	// 	- Federated user: ProviderType/ProviderName
+	// - Federated user: ProviderType/ProviderName
 	//
 	// example:
 	//
@@ -105,11 +105,11 @@ type CancelIProductionJobResponseBodyAccessDeniedDetail struct {
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
 	// The type of identity that made the request. Valid values:
 	//
-	// 	- SubUser: RAM user
+	// - SubUser: RAM user
 	//
-	// 	- AssumedRoleUser: RAM role
+	// - AssumedRoleUser: RAM role
 	//
-	// 	- Federated: SSO federated user
+	// - Federated: SSO federated user
 	//
 	// example:
 	//
@@ -123,9 +123,9 @@ type CancelIProductionJobResponseBodyAccessDeniedDetail struct {
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
 	// The type of policy that resulted in the denial. Valid values:
 	//
-	// 	- **ImplicitDeny**: The resource holder has not configured a policy for the current user. By default, unauthorized operations are denied.
+	// - **ImplicitDeny**: The resource holder has not configured a policy for the current user. By default, unauthorized operations are denied.
 	//
-	// 	- **ExplicitDeny**: The RAM policy configured by the resource holder explicitly denies the current user access to the corresponding resources.
+	// - **ExplicitDeny**: The RAM policy configured by the resource holder explicitly denies the current user access to the corresponding resources.
 	//
 	// example:
 	//
@@ -133,15 +133,15 @@ type CancelIProductionJobResponseBodyAccessDeniedDetail struct {
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
 	// The type of policy that triggered the permission failure.
 	//
-	// 	- **ControlPolicy**: control policy
+	// - **ControlPolicy**: control policy
 	//
-	// 	- **SessionPolicy**: an additional policy attached to a temporary token.
+	// - **SessionPolicy**: an additional policy attached to a temporary token.
 	//
-	// 	- **AssumeRolePolicy**: the trust policy of a RAM role.
+	// - **AssumeRolePolicy**: the trust policy of a RAM role.
 	//
-	// 	- **AccountLevelIdentityBasedPolicy**: an identity-based policy at the account level (custom or system).
+	// - **AccountLevelIdentityBasedPolicy**: an identity-based policy at the account level (custom or system).
 	//
-	// 	- **ResourceGroupLevelIdentityBasedPolicy**: an identity-based policy scoped to a resource group.
+	// - **ResourceGroupLevelIdentityBasedPolicy**: an identity-based policy scoped to a resource group.
 	//
 	// example:
 	//

@@ -36,46 +36,64 @@ type iSubmitVideoTranslationJobRequest interface {
 }
 
 type SubmitVideoTranslationJobRequest struct {
-	// 	- The client token.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 	- The job description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 	- The configuration parameters of the video translation job.
+	// A client-generated token that ensures the idempotence of the request.
 	//
-	// 	- The value must be in the JSON format.
+	// example:
+	//
+	// Test ClientToken
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The job description.
+	//
+	// example:
+	//
+	// Test description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Configuration parameters for the video translation job, specified as a JSON string.
 	//
 	// example:
 	//
 	// {"SourceLanguage":"zh","TargetLanguage":"en","DetextArea":"Auto"}
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	// 	- The input parameters of the video translation job.
+	// The input parameters for the video translation job.
 	//
-	// 	- A video translation job takes a video or subtitle file as the input.
+	// - The input can be a video or a subtitle file.
 	//
-	// 	- The value must be in the JSON format.
+	// - The value must be a JSON string.
 	//
 	// example:
 	//
-	// {"Type":"Video","Media":"https://your-bucket.oss-cn-shanghai.aliyuncs.com/xxx.mp4"}
+	// {"Type":"Video","Video":"1628ae20c36******8f6f7c77a6302"}
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
-	// 	- The output parameters of the video translation job.
-	//
-	// 	- A video translation job can generate a video or subtitle file as the output.
+	// Output parameters for the video translation job. The output can be a video or a subtitle file.
 	//
 	// example:
 	//
 	// {"MediaURL": "https://your-bucket.oss-cn-shanghai.aliyuncs.com/your-object.mp4"}
-	OutputConfig     *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	Signature        *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	SignatureMehtod  *string `json:"SignatureMehtod,omitempty" xml:"SignatureMehtod,omitempty"`
-	SignatureNonce   *string `json:"SignatureNonce,omitempty" xml:"SignatureNonce,omitempty"`
+	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	Signature    *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// The system automatically populates this parameter. You do not need to set it.
+	//
+	// example:
+	//
+	// Auto-complete, no need to write
+	SignatureMehtod *string `json:"SignatureMehtod,omitempty" xml:"SignatureMehtod,omitempty"`
+	SignatureNonce  *string `json:"SignatureNonce,omitempty" xml:"SignatureNonce,omitempty"`
+	// The system automatically populates this parameter. You do not need to set it.
+	//
+	// example:
+	//
+	// Auto-complete, no need to write
 	SignatureType    *string `json:"SignatureType,omitempty" xml:"SignatureType,omitempty"`
 	SignatureVersion *string `json:"SignatureVersion,omitempty" xml:"SignatureVersion,omitempty"`
-	// 	- The job title.
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 	- The user-defined data.
+	// The job title.
 	//
-	// 	- The data must be in the JSON format, and can be up to 512 characters in length.
+	// example:
+	//
+	// Test title
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// User data for the job, provided as a JSON string. The string can be up to 512 bytes long.
+	//
+	// - Use this parameter to [configure a custom callback URL](https://help.aliyun.com/document_detail/451631.html).
 	//
 	// example:
 	//

@@ -45,6 +45,10 @@ type CreateEditingProjectRequest struct {
 	// { "OutputMediaConfig" : { "StorageLocation": "test-bucket.oss-cn-shanghai.aliyuncs.com", "Path": "test-path" }, "OutputMediaTarget": "oss-object", "ReservationTime": "2021-06-21T08:05:00Z" }
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
 	// The material parameter corresponding to the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information<props="china">, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use an advanced template](https://help.aliyun.com/document_detail/291418.html).
+	//
+	// example:
+	//
+	// See the template user guide.
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 	// The thumbnail URL of the online editing project.
 	//
@@ -56,7 +60,7 @@ type CreateEditingProjectRequest struct {
 	//
 	// example:
 	//
-	// 描述
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The material associated with the project. Separate multiple material IDs with commas (,). Each type supports up to 10 material IDs.
 	//
@@ -78,9 +82,9 @@ type CreateEditingProjectRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The template type. This parameter is required if you create a template-based online editing project. Default value: Timeline. Valid values:
 	//
-	// 	- Timeline: a regular template.
+	// - Timeline: a regular template.
 	//
-	// 	- VETemplate: an advanced template.
+	// - VETemplate: an advanced template.
 	//
 	// example:
 	//

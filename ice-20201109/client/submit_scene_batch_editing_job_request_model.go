@@ -43,6 +43,10 @@ type SubmitSceneBatchEditingJobRequest struct {
 	// ****ae91539d46bb9000f74b40b80dd2,****ae91539000f74b40b80dd9d46bb
 	ProjectIds *string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty"`
 	// Custom user data, including callback configurations. For more information, see [UserData](~~357745#section-urj-v3f-0s1~~).
+	//
+	// example:
+	//
+	// {"NotifyAddress":"http://xx.xx.xxx"} or {"NotifyAddress":"https://xx.xx.xxx"} or {"NotifyAddress":"ice-callback-demo"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 

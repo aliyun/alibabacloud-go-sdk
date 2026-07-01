@@ -16,10 +16,18 @@ type iSetContentAnalyzeConfigResponseBody interface {
 }
 
 type SetContentAnalyzeConfigResponseBody struct {
+	// The Request ID.
+	//
 	// example:
 	//
 	// 953CFD27-4A2C-54AD-857F-B79EF3A338E0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the configuration succeeded. Valid values:
+	//
+	// - true: Success
+	//
+	// - false: Failed
+	//
 	// example:
 	//
 	// true

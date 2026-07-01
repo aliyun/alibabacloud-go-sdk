@@ -18,14 +18,20 @@ type iGetYikeUserCreditResponseBody interface {
 }
 
 type GetYikeUserCreditResponseBody struct {
+	// The total allocated credit.
+	//
 	// example:
 	//
 	// 400
 	CreditTotal *string `json:"CreditTotal,omitempty" xml:"CreditTotal,omitempty"`
+	// The remaining credit.
+	//
 	// example:
 	//
 	// 100
 	CreditUsage *string `json:"CreditUsage,omitempty" xml:"CreditUsage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****

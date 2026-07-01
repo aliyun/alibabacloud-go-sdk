@@ -18,9 +18,9 @@ type iSubmitAvatarTrainingJobResponseBody interface {
 }
 
 type SubmitAvatarTrainingJobResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data *SubmitAvatarTrainingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *SubmitAvatarTrainingJobResponseBody) Validate() error {
 }
 
 type SubmitAvatarTrainingJobResponseBodyData struct {
-	// The ID of the digital human training job.
+	// The unique identifier for the avatar training job.
 	//
 	// example:
 	//

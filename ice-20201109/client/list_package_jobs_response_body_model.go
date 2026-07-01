@@ -66,7 +66,7 @@ type ListPackageJobsResponseBodyPackageJobList struct {
 	//
 	// example:
 	//
-	// 019daf5780f74831b0e1a767c9f1c178
+	// 019daf5780f74831b0e1a767c9f1****
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// The list of packaging jobs.
 	PackageJobs []*ListPackageJobsResponseBodyPackageJobListPackageJobs `json:"PackageJobs,omitempty" xml:"PackageJobs,omitempty" type:"Repeated"`
@@ -136,7 +136,7 @@ type ListPackageJobsResponseBodyPackageJobListPackageJobs struct {
 	//
 	// example:
 	//
-	// 7b38a5d86f1e47838927b6e7ccb11cbe
+	// 7b38a5d86f1e47838927b6e7ccb1****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The error message that is returned.
 	//
@@ -162,7 +162,7 @@ type ListPackageJobsResponseBodyPackageJobListPackageJobs struct {
 	//
 	// example:
 	//
-	// 5b40833e4c3e4d4e95a866abb9a42510
+	// 5b40833e4c3e4d4e95a866abb9a4****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority. Default value: 6.
 	//
@@ -184,11 +184,11 @@ type ListPackageJobsResponseBodyPackageJobListPackageJobs struct {
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
 	// The source of the job. Valid values:
 	//
-	// 	- API
+	// - API
 	//
-	// 	- WorkFlow
+	// - WorkFlow
 	//
-	// 	- Console
+	// - Console
 	//
 	// example:
 	//
@@ -397,9 +397,9 @@ func (s *ListPackageJobsResponseBodyPackageJobListPackageJobsInputs) Validate() 
 type ListPackageJobsResponseBodyPackageJobListPackageJobsInputsInput struct {
 	// The media object.
 	//
-	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	// - If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
 	//
-	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	// - If Type is set to Media, set this parameter to the ID of a media asset.
 	//
 	// example:
 	//
@@ -407,9 +407,9 @@ type ListPackageJobsResponseBodyPackageJobListPackageJobsInputsInput struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the media object. Valid values:
 	//
-	// 	- OSS: an Object Storage Service (OSS) object.
+	// - OSS: an Object Storage Service (OSS) object.
 	//
-	// 	- Media: a media asset.
+	// - Media: a media asset.
 	//
 	// example:
 	//
@@ -450,9 +450,9 @@ func (s *ListPackageJobsResponseBodyPackageJobListPackageJobsInputsInput) Valida
 type ListPackageJobsResponseBodyPackageJobListPackageJobsOutput struct {
 	// The media object.
 	//
-	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	// - If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
 	//
-	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	// - If Type is set to Media, set this parameter to the ID of a media asset.
 	//
 	// example:
 	//
@@ -460,9 +460,9 @@ type ListPackageJobsResponseBodyPackageJobListPackageJobsOutput struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the media object. Valid values:
 	//
-	// 	- OSS: an OSS object.
+	// - OSS: an OSS object.
 	//
-	// 	- Media: a media asset.
+	// - Media: a media asset.
 	//
 	// example:
 	//

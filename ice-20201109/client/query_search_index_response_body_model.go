@@ -34,9 +34,9 @@ type QuerySearchIndexResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The state of the index. Valid values:
 	//
-	// 	- active: the index is enabled.
+	// - active: the index is enabled.
 	//
-	// 	- Deactive: the index is not enabled.
+	// - Deactive: the index is not enabled.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type QuerySearchIndexResponseBody struct {
 	IndexStatus *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
 	// The category of the index. Valid values:
 	//
-	// 	- mm: large visual model.
+	// - mm: large visual model.
 	//
-	// 	- face: face recognition.
+	// - face: face recognition.
 	//
-	// 	- aiLabel: smart tagging.
+	// - aiLabel: smart tagging.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type QuerySearchIndexResponseBody struct {
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

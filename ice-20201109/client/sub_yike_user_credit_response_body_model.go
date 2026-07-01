@@ -18,14 +18,26 @@ type iSubYikeUserCreditResponseBody interface {
 }
 
 type SubYikeUserCreditResponseBody struct {
+	// The error code returned if the operation fails. A possible value is:
+	//
+	// - `NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA`: The sub-account\\"s credit balance is insufficient.
+	//
 	// example:
 	//
 	// NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
+	// - `true`: The operation succeeded.
+	//
+	// - `false`: The operation failed.
+	//
 	// example:
 	//
 	// true

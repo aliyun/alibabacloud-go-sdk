@@ -24,27 +24,27 @@ type iSubmitSnapshotJobRequest interface {
 }
 
 type SubmitSnapshotJobRequest struct {
-	// The snapshot input.
+	// The input for the snapshot job.
 	//
 	// This parameter is required.
 	Input *SubmitSnapshotJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// The name of the job.
+	// The name of the snapshot job.
 	//
 	// example:
 	//
 	// SampleJob
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The snapshot output.
+	// The output destination for the snapshot job.
 	//
 	// This parameter is required.
 	Output *SubmitSnapshotJobRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// The scheduling settings.
+	// The scheduling configuration.
 	ScheduleConfig *SubmitSnapshotJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
 	// The snapshot template configuration.
 	//
 	// This parameter is required.
 	TemplateConfig *SubmitSnapshotJobRequestTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty" type:"Struct"`
-	// The user-defined data.
+	// Custom user data, passed as a JSON-formatted string.
 	//
 	// example:
 	//
@@ -139,13 +139,21 @@ func (s *SubmitSnapshotJobRequest) Validate() error {
 }
 
 type SubmitSnapshotJobRequestInput struct {
-	// The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+	// The input media asset.
 	//
-	// 1.  oss://bucket/object
+	// - If `Type` is `OSS`, specify the OSS URL of the input file.
 	//
-	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	// - If `Type` is `Media`, specify the ID of the media asset.
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the Intelligent Media Services (IMS) console.
+	// The OSS URL must be in one of the following formats:
+	//
+	// 1. `oss://bucket/object`
+	//
+	// 2. `http(s)://bucket.oss-[RegionId].aliyuncs.com/object`
+	//
+	//    <br>In these formats, `bucket` is the name of an OSS bucket located in the same region as the current project, and `object` is the file path.<br>
+	//
+	// > The OSS bucket specified in the URL must be added to IMS [storage management](https://help.aliyun.com/document_detail/609918.html) before use.
 	//
 	// This parameter is required.
 	//
@@ -153,11 +161,11 @@ type SubmitSnapshotJobRequestInput struct {
 	//
 	// oss://bucket/object.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The type of the input file. Valid values:
+	// The type of the input. Valid values:
 	//
-	// 1.  OSS: an Object Storage Service (OSS) object.
+	// - `OSS`: an OSS file URL.
 	//
-	// 2.  Media: a media asset.
+	// - `Media`: a media asset ID.
 	//
 	// This parameter is required.
 	//
@@ -198,15 +206,27 @@ func (s *SubmitSnapshotJobRequestInput) Validate() error {
 }
 
 type SubmitSnapshotJobRequestOutput struct {
-	// The output file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+	// The output media asset.
 	//
-	// 1.  oss://bucket/object
+	// - If `Type` is `OSS`, specify the OSS URL for the output file.
 	//
-	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+	// - If `Type` is `Media`, specify the ID of the output media asset.
 	//
-	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS. If multiple static snapshots were captured, the object must contain the "{Count}" placeholder. In the case of a sprite, the object must contain the "{TileCount}" placeholder. The suffix of the WebVTT snapshot objects must be ".vtt".
+	// The OSS URL must be in one of the following formats:
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the IMS console.
+	// 1. `oss://bucket/object`
+	//
+	// 2. `http(s)://bucket.oss-[RegionId].aliyuncs.com/object`
+	//
+	// In these formats, `bucket` is the name of an OSS bucket located in the same region as the current project, and `object` is the file path.
+	//
+	// - When capturing multiple static snapshots, the `object` must contain the `{Count}` placeholder.
+	//
+	// - When capturing a sprite, the `object` must contain the `{TileCount}` placeholder.
+	//
+	// - For WebVTT snapshots, the filename in the `object` path must end with `.vtt`.
+	//
+	// > The OSS bucket specified in the URL must be added to IMS [storage management](https://help.aliyun.com/document_detail/609918.html) before use.
 	//
 	// This parameter is required.
 	//
@@ -214,11 +234,11 @@ type SubmitSnapshotJobRequestOutput struct {
 	//
 	// oss://test-bucket/output-{Count}.jpg
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The type of the output file. Valid values:
+	// The type of the output. Valid values:
 	//
-	// 1.  OSS: an OSS object.
+	// - `OSS`: an OSS file URL.
 	//
-	// 2.  Media: a media asset.
+	// - `Media`: a media asset ID.
 	//
 	// This parameter is required.
 	//
@@ -259,7 +279,7 @@ func (s *SubmitSnapshotJobRequestOutput) Validate() error {
 }
 
 type SubmitSnapshotJobRequestScheduleConfig struct {
-	// The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
+	// The pipeline ID.
 	//
 	// example:
 	//
@@ -289,9 +309,9 @@ func (s *SubmitSnapshotJobRequestScheduleConfig) Validate() error {
 }
 
 type SubmitSnapshotJobRequestTemplateConfig struct {
-	// The parameters that are used to overwrite the corresponding parameters.
+	// Parameters used to override settings in the specified template.
 	OverwriteParams *SubmitSnapshotJobRequestTemplateConfigOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
-	// The template ID.
+	// The snapshot template ID.
 	//
 	// This parameter is required.
 	//
@@ -337,63 +357,63 @@ func (s *SubmitSnapshotJobRequestTemplateConfig) Validate() error {
 }
 
 type SubmitSnapshotJobRequestTemplateConfigOverwriteParams struct {
-	// The threshold that is used to filter out black frames for the first snapshot to be captured. This feature is available if you request the system to capture multiple snapshots.
+	// The threshold for detecting and filtering black content in the first frame. This applies only to multi-frame snapshots.
 	//
 	// example:
 	//
 	// 30
 	BlackLevel *int32 `json:"BlackLevel,omitempty" xml:"BlackLevel,omitempty"`
-	// The number of snapshots.
+	// The number of snapshots to capture.
 	//
 	// example:
 	//
 	// 5
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The type of the frame.
+	// The frame type.
 	//
 	// example:
 	//
 	// intra
 	FrameType *string `json:"FrameType,omitempty" xml:"FrameType,omitempty"`
-	// The height of a captured snapshot.
+	// The output image height.
 	//
 	// example:
 	//
 	// 480
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The interval at which snapshots are captured.
+	// The interval between snapshots.
 	//
 	// example:
 	//
 	// 10
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The WebVTT snapshot configuration that specifies whether to merge the output snapshots.
+	// Specifies whether to stitch snapshots into a single sprite. This applies only to WebVTT snapshots.
 	//
 	// example:
 	//
 	// true
 	IsSptFrag *bool `json:"IsSptFrag,omitempty" xml:"IsSptFrag,omitempty"`
-	// The color value threshold that determines whether a pixel is black.
+	// The threshold for determining whether a pixel is black.
 	//
 	// example:
 	//
 	// 70
 	PixelBlackThreshold *int32 `json:"PixelBlackThreshold,omitempty" xml:"PixelBlackThreshold,omitempty"`
-	// The configuration of the sprite snapshot.
+	// The sprite configuration.
 	SpriteSnapshotConfig *SubmitSnapshotJobRequestTemplateConfigOverwriteParamsSpriteSnapshotConfig `json:"SpriteSnapshotConfig,omitempty" xml:"SpriteSnapshotConfig,omitempty" type:"Struct"`
-	// The point in time at which the system starts to capture snapshots in the input video.
+	// The start time for capturing snapshots.
 	//
 	// example:
 	//
 	// 1000
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The snapshot type. Valid values:
+	// The snapshot type.
 	//
 	// example:
 	//
 	// Sprite
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The width of a captured snapshot.
+	// The output image width.
 	//
 	// example:
 	//
@@ -518,13 +538,13 @@ func (s *SubmitSnapshotJobRequestTemplateConfigOverwriteParams) Validate() error
 }
 
 type SubmitSnapshotJobRequestTemplateConfigOverwriteParamsSpriteSnapshotConfig struct {
-	// The height of a single snapshot before tiling. The default value is the height of the output snapshot.
+	// The height of each tile. Default: the height of the output snapshot.
 	//
 	// example:
 	//
 	// 480
 	CellHeight *int32 `json:"CellHeight,omitempty" xml:"CellHeight,omitempty"`
-	// The width of a single snapshot before tiling. The default value is the width of the output snapshot.
+	// The width of each tile. Default: the width of the output snapshot.
 	//
 	// example:
 	//
@@ -536,25 +556,25 @@ type SubmitSnapshotJobRequestTemplateConfigOverwriteParamsSpriteSnapshotConfig s
 	//
 	// #000000
 	Color *string `json:"Color,omitempty" xml:"Color,omitempty"`
-	// The number of columns that the image sprite contains.
+	// The number of columns in the sprite grid.
 	//
 	// example:
 	//
 	// 20
 	Columns *int32 `json:"Columns,omitempty" xml:"Columns,omitempty"`
-	// The number of rows that the image sprite contains.
+	// The number of rows in the sprite grid.
 	//
 	// example:
 	//
 	// 20
 	Lines *int32 `json:"Lines,omitempty" xml:"Lines,omitempty"`
-	// The width of the frame. Default value: 0. Unit: pixels.
+	// The margin around the sprite, in pixels. Default value: 0.
 	//
 	// example:
 	//
 	// 20
 	Margin *int32 `json:"Margin,omitempty" xml:"Margin,omitempty"`
-	// The spacing between two adjacent snapshots. Default value: 0. Unit: pixels.
+	// The padding between tiles, in pixels. Default value: 0.
 	//
 	// example:
 	//

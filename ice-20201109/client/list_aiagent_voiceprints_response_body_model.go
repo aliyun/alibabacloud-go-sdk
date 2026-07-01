@@ -24,13 +24,13 @@ type ListAIAgentVoiceprintsResponseBody struct {
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of voiceprints that match the query criteria.
+	// The total number of matching voiceprints.
 	//
 	// example:
 	//
 	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The voiceprints.
+	// A list of voiceprint objects.
 	Voiceprints []*ListAIAgentVoiceprintsResponseBodyVoiceprints `json:"Voiceprints,omitempty" xml:"Voiceprints,omitempty" type:"Repeated"`
 }
 
@@ -83,19 +83,19 @@ func (s *ListAIAgentVoiceprintsResponseBody) Validate() error {
 }
 
 type ListAIAgentVoiceprintsResponseBodyVoiceprints struct {
-	// The creation time of the voiceprint.
+	// The time the voiceprint was created. The time is in UTC and formatted according to the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2025-07-28T10:03:58.000+00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The last modification time of the voiceprint.
+	// The time the voiceprint was last modified. The time is in UTC and formatted according to the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2025-07-28T10:03:58.000+00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The unique identifier for the voiceprint.
+	// The unique voiceprint ID.
 	//
 	// example:
 	//

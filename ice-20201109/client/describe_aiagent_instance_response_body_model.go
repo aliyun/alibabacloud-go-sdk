@@ -16,7 +16,7 @@ type iDescribeAIAgentInstanceResponseBody interface {
 }
 
 type DescribeAIAgentInstanceResponseBody struct {
-	// The information about the AI agent.
+	// Information about the AI agent instance.
 	Instance *DescribeAIAgentInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,24 +62,41 @@ func (s *DescribeAIAgentInstanceResponseBody) Validate() error {
 }
 
 type DescribeAIAgentInstanceResponseBodyInstance struct {
-	AgentConfig *AIAgentConfig   `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
-	CallInfo    *AIAgentCallInfo `json:"CallInfo,omitempty" xml:"CallInfo,omitempty"`
-	// The URL of the call log file.
+	// The configuration of the AI agent.
+	AgentConfig *AIAgentConfig `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
+	// Information about the call.
+	CallInfo *AIAgentCallInfo `json:"CallInfo,omitempty" xml:"CallInfo,omitempty"`
+	// The URL of the call log.
 	//
 	// example:
 	//
 	// https://example.com/call_logs/12345
-	CallLogUrl  *string `json:"CallLogUrl,omitempty" xml:"CallLogUrl,omitempty"`
-	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	CallLogUrl *string `json:"CallLogUrl,omitempty" xml:"CallLogUrl,omitempty"`
+	// The creation time (UTC).
+	//
+	// example:
+	//
+	// 2025-07-18T06:39:08.000+00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time (UTC).
+	//
+	// example:
+	//
+	// 2025-07-18T06:40:12.000+00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The runtime configurations of the AI agent.
+	// The runtime configuration of the AI agent.
 	//
 	// example:
 	//
 	// {"VoiceChat":{"AgentUserId":"voice_agent_001","ChannelId":"voice_channel_001","AuthToken":"your_voice_chat_auth_token"}}
 	RuntimeConfig *AIAgentRuntimeConfig `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
-	SessionId     *string               `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The state of the AI agent. Valid values: Finished and Executing.
+	// The session ID for the conversation. This parameter is empty by default.
+	//
+	// example:
+	//
+	// 955535**************
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The status of the AI agent instance, such as `Finished` or `Executing`.
 	//
 	// example:
 	//
@@ -87,13 +104,13 @@ type DescribeAIAgentInstanceResponseBodyInstance struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Deprecated
 	//
-	// The template configurations of the AI agent.
+	// The AI agent template configuration.
 	//
 	// example:
 	//
 	// {"VoiceChat": {"AppId": "your_voice_chat_app_id"}}
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The custom information.
+	// The user data.
 	//
 	// example:
 	//

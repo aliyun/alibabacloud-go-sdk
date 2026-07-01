@@ -18,11 +18,11 @@ type GetDemonstrationForCustomizedVoiceJobRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- **story**
+	// - **story**
 	//
-	// 	- **interaction**
+	// - **interaction**
 	//
-	// 	- **navigation**
+	// - **navigation**
 	//
 	// This parameter is required.
 	//

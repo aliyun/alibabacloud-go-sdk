@@ -48,9 +48,9 @@ type ListVodPackagingAssetsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The sorting order of the assets based on the time when they were ingested. Valid values:
 	//
-	// 	- desc (default): descending order.
+	// - desc (default): descending order.
 	//
-	// 	- asc: ascending order.
+	// - asc: ascending order.
 	//
 	// example:
 	//

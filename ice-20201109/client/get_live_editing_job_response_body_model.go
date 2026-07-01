@@ -419,7 +419,7 @@ type GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig struct {
 	//
 	// https://testice-testbucket.oss-cn-shanghai.aliyuncs.com/test.mp4
 	MediaURL *string `json:"MediaURL,omitempty" xml:"MediaURL,omitempty"`
-	// If OutputMediaTarget is set to vod-media, this parameter indicates the storage location of the media asset in ApsaraVideo VOD. The storage location is the path of the file in ApsaraVideo VOD, excluding the prefix http://. Example: outin-xxxxxx.oss-cn-shanghai.aliyuncs.com.
+	// If OutputMediaTarget is set to vod-media, this parameter indicates the storage location of the media asset in ApsaraVideo VOD. The storage location is the path of the file in ApsaraVideo VOD, excluding the prefix http\\://. Example: outin-xxxxxx.oss-cn-shanghai.aliyuncs.com.
 	//
 	// example:
 	//

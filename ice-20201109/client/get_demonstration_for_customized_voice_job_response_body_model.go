@@ -28,9 +28,9 @@ type GetDemonstrationForCustomizedVoiceJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -126,17 +126,21 @@ type GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList stru
 	AudioId *int32 `json:"AudioId,omitempty" xml:"AudioId,omitempty"`
 	// The URL of the sample audio.
 	//
-	// 	- The value is an Object Storage Service (OSS) URL.
+	// - The value is an Object Storage Service (OSS) URL.
 	//
-	//     **
+	//   \\*\\*
 	//
-	//     **Note**: The URL expires in 12 hours.
+	//   **Note**: The URL expires in 12 hours.
 	//
 	// example:
 	//
 	// http://bucket.oss-cn-shanghai.aliyuncs.com/1.wav
 	DemoAudio *string `json:"DemoAudio,omitempty" xml:"DemoAudio,omitempty"`
 	// The text content to be read.
+	//
+	// example:
+	//
+	// No, he thought for a moment, I cannot say this to the king, that would be lying.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 

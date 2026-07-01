@@ -69,6 +69,10 @@ type CreateLivePackageChannelGroupResponseBodyLivePackageChannelGroup struct {
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The channel group description.
+	//
+	// example:
+	//
+	// This is an example description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The channel group name.
 	//

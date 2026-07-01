@@ -16,10 +16,14 @@ type iCreateYikeProductionResponseBody interface {
 }
 
 type CreateYikeProductionResponseBody struct {
+	// The production ID.
+	//
 	// example:
 	//
 	// ProductionId
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****

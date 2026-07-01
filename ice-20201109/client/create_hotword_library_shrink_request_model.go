@@ -24,7 +24,7 @@ type CreateHotwordLibraryShrinkRequest struct {
 	//
 	// example:
 	//
-	// 存放名人的词库
+	// Lexicon containing celebrity names
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The hotword list. You can add up to 300 hotword entries to a single library.
 	//

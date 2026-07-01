@@ -24,29 +24,40 @@ type iStartRtcRobotInstanceRequest interface {
 }
 
 type StartRtcRobotInstanceRequest struct {
+	// The authentication token required to join the RTC call. You must generate this token using your RTC AppKey.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// **********
 	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	// The RTC channel\\"s unique identifier.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testId
-	ChannelId *string                             `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Config    *StartRtcRobotInstanceRequestConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Specifies advanced call configurations that override the agent\\"s default configurations. If you omit this parameter, the agent uses its default configurations.
+	Config *StartRtcRobotInstanceRequestConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The AI agent\\"s unique identifier.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ca28b08ad3464ebcb42e5c0f7c6d2e89
 	RobotId *string `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	// User-defined information.
+	//
 	// example:
 	//
 	// {}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The AI agent\\"s unique identifier within the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -128,14 +139,23 @@ func (s *StartRtcRobotInstanceRequest) Validate() error {
 
 type StartRtcRobotInstanceRequestConfig struct {
 	AsrMaxSilence *int32 `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	// Specifies whether to allow voice interrupt.
+	//
 	// example:
 	//
 	// true
-	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
-	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	UseVoiceprint        *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
-	UserOfflineTimeout   *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
-	UserOnlineTimeout    *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	EnableVoiceInterrupt *bool `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	// The greeting the AI agent speaks when a user joins the call.
+	//
+	// example:
+	//
+	// 你好，有什么可以帮助的吗？
+	Greeting           *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	UseVoiceprint      *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	UserOfflineTimeout *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	UserOnlineTimeout  *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	// The voice\\"s unique identifier.
+	//
 	// example:
 	//
 	// zhixiaoxia

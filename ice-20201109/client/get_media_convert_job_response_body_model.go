@@ -16,9 +16,9 @@ type iGetMediaConvertJobResponseBody interface {
 }
 
 type GetMediaConvertJobResponseBody struct {
-	// The transcoding task.
+	// The media transcoding job.
 	Job *GetMediaConvertJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,66 +62,81 @@ func (s *GetMediaConvertJobResponseBody) Validate() error {
 }
 
 type GetMediaConvertJobResponseBodyJob struct {
-	// The idempotency key of the request for creating the transcoding task.
+	// The idempotency parameter for the job creation request.
 	//
 	// example:
 	//
 	// 780018cb-55ba-466d-8acc-946c0c319a0e
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The error code returned when the transcoding task failed.
+	// The error code if the job fails.
 	//
 	// example:
 	//
 	// InvalidParameter.ResourceContentBad
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The configurations of the transcoding task.
-	Config     *GetMediaConvertJobResponseBodyJobConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	CreateTime *string                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FinishTime *string                                  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The ID of the transcoding task, which is a 32-bit string.
+	// The job configuration.
+	Config *GetMediaConvertJobResponseBodyJobConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The time when the job was created, in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	//
+	// example:
+	//
+	// 2024-12-07T13:01:07Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the job finished, in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	//
+	// example:
+	//
+	// 2024-12-07T13:01:07Z
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The job ID. This is a 32-character string.
 	//
 	// example:
 	//
 	// ******4579b5e748b99a27f6d6******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The error message returned when the transcoding task failed.
+	// The error message detailing the failure.
 	//
 	// example:
 	//
 	// The resource operated InputFile is bad
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The details of the transcoded outputs, each corresponding to an output configuration.
+	// The execution results of the outputs specified in the job configuration.
 	OutputDetails []*MediaConvertOutputDetail `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
-	// The details of the output groups, each corresponding to an output group configuration.
+	// The execution results of the output groups specified in the job configuration.
 	OutputGroupDetails []*MediaConvertOutputGroupDetail `json:"OutputGroupDetails,omitempty" xml:"OutputGroupDetails,omitempty" type:"Repeated"`
-	Percent            *int32                           `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The ID of the queue.
+	// The completion percentage.
+	//
+	// example:
+	//
+	// 0
+	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	// The pipeline ID.
 	//
 	// example:
 	//
 	// 83500cb2a3b94fabb0956e38d64bd16d
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The ID of the request for creating the transcoding task.
+	// The ID of the job creation request.
 	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the transcoding task. Valid values:
+	// The job state. Valid values:
 	//
-	// 	- Inited: The task is initialized.
+	// - Inited: The job is initialized.
 	//
-	// 	- Running
+	// - Running: The job is in progress.
 	//
-	// 	- Success
+	// - Complete: The job finished successfully.
 	//
-	// 	- Failed
+	// - Error: The job failed.
 	//
-	// 	- Cancelled
+	// - Cancelled: The job was cancelled.
 	//
 	// example:
 	//
-	// Success
+	// Complete
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The user data.
 	//
@@ -293,12 +308,17 @@ func (s *GetMediaConvertJobResponseBodyJob) Validate() error {
 }
 
 type GetMediaConvertJobResponseBodyJobConfig struct {
-	// The inputs of the transcoding task.
-	Inputs  []*MediaConvertInput `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
-	JobName *string              `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The output group configurations.
+	// The job inputs.
+	Inputs []*MediaConvertInput `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	// The job name.
+	//
+	// example:
+	//
+	// job-1-20241205-102045
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The job output group configurations.
 	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
-	// The output configurations.
+	// The job output configurations.
 	Outputs []*MediaConvertOutput `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 }
 

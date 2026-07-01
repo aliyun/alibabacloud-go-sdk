@@ -28,15 +28,15 @@ type iDeleteRecognitionEntityRequest interface {
 type DeleteRecognitionEntityRequest struct {
 	// The type of recognition algorithm associated with the entity. Valid values:
 	//
-	// 	- landmark
+	// - landmark
 	//
-	// 	- object
+	// - object
 	//
-	// 	- logo
+	// - logo
 	//
-	// 	- face
+	// - face
 	//
-	// 	- label
+	// - label
 	//
 	// This parameter is required.
 	//

@@ -106,9 +106,9 @@ type ListPipelinesResponseBodyPipelineList struct {
 	//
 	// Valid values:
 	//
-	// 	- Active
+	// - Active
 	//
-	// 	- Paused
+	// - Paused
 	//
 	// example:
 	//

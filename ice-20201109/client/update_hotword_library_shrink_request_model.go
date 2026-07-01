@@ -24,7 +24,7 @@ type UpdateHotwordLibraryShrinkRequest struct {
 	//
 	// example:
 	//
-	// 存放名人的词库
+	// Lexicon containing celebrity names
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the hotword library.
 	//
@@ -35,6 +35,10 @@ type UpdateHotwordLibraryShrinkRequest struct {
 	// *a0052ff71efbfd4e7e6c66*
 	HotwordLibraryId *string `json:"HotwordLibraryId,omitempty" xml:"HotwordLibraryId,omitempty"`
 	// The hotword list. You can add up to 300 hotword entries to a single library.
+	//
+	// example:
+	//
+	// Lexicon containing celebrity names
 	HotwordsShrink *string `json:"Hotwords,omitempty" xml:"Hotwords,omitempty"`
 	// The name of the hotword library. It can be up to 100 characters in length.
 	//

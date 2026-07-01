@@ -67,6 +67,10 @@ type GetLiveSnapshotTemplateResponseBody struct {
 	// ****a046-263c-3560-978a-fb287782****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The template name.
+	//
+	// example:
+	//
+	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The interval between two adjacent snapshots.
 	//
@@ -78,9 +82,9 @@ type GetLiveSnapshotTemplateResponseBody struct {
 	//
 	// Valid values:
 	//
-	// 	- system
+	// - system
 	//
-	// 	- custom
+	// - custom
 	//
 	// example:
 	//

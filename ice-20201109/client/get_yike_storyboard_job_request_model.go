@@ -14,6 +14,8 @@ type iGetYikeStoryboardJobRequest interface {
 }
 
 type GetYikeStoryboardJobRequest struct {
+	// The storyboard job ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****

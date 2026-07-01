@@ -22,7 +22,7 @@ type iListSearchLibResponseBody interface {
 }
 
 type ListSearchLibResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListSearchLibResponseBody struct {
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Information about search libraries.
+	// Search library information.
 	SearchLibInfoList []*ListSearchLibResponseBodySearchLibInfoList `json:"SearchLibInfoList,omitempty" xml:"SearchLibInfoList,omitempty" type:"Repeated"`
 	// Indicates whether the request was successful.
 	//
@@ -42,7 +42,7 @@ type ListSearchLibResponseBody struct {
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,8 +117,14 @@ func (s *ListSearchLibResponseBody) Validate() error {
 }
 
 type ListSearchLibResponseBodySearchLibInfoList struct {
-	IndexInfo       []*ListSearchLibResponseBodySearchLibInfoListIndexInfo `json:"IndexInfo,omitempty" xml:"IndexInfo,omitempty" type:"Repeated"`
-	SearchLibConfig *string                                                `json:"SearchLibConfig,omitempty" xml:"SearchLibConfig,omitempty"`
+	// The index information.
+	IndexInfo []*ListSearchLibResponseBodySearchLibInfoListIndexInfo `json:"IndexInfo,omitempty" xml:"IndexInfo,omitempty" type:"Repeated"`
+	// The search library configuration.
+	//
+	// example:
+	//
+	// {"faceGroupIds":"xxx1,xxx2,xx3"}
+	SearchLibConfig *string `json:"SearchLibConfig,omitempty" xml:"SearchLibConfig,omitempty"`
 	// The search library.
 	//
 	// example:
@@ -126,12 +132,6 @@ type ListSearchLibResponseBodySearchLibInfoList struct {
 	// faceSearchLib
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 	// The status of the search library.
-	//
-	// 	- normal
-	//
-	// 	- deleting
-	//
-	// 	- deleteFail
 	//
 	// example:
 	//
@@ -197,14 +197,38 @@ func (s *ListSearchLibResponseBodySearchLibInfoList) Validate() error {
 }
 
 type ListSearchLibResponseBodySearchLibInfoListIndexInfo struct {
+	// The readiness status of the index. Valid values:
+	//
+	// - Initializing: The index is being initialized.
+	//
+	// - Normal: The index is ready.
+	//
+	// - Fail: The index failed to be created.
+	//
 	// example:
 	//
 	// Normal
 	IndexReadiness *string `json:"IndexReadiness,omitempty" xml:"IndexReadiness,omitempty"`
+	// The index status.
+	//
+	// Default value: Active. Valid values:
+	//
+	// - Active: The index is active.
+	//
+	// - Deactive: The index is inactive.
+	//
 	// example:
 	//
 	// Active
 	IndexStatus *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
+	// The index type. Valid values:
+	//
+	// - mm: Large language model (LLM).
+	//
+	// - face: Face recognition.
+	//
+	// - aiLabel: Smart tagging.
+	//
 	// example:
 	//
 	// face

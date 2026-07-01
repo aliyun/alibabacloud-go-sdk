@@ -96,11 +96,11 @@ type GetPipelineResponseBodyPipeline struct {
 	//
 	// Valid values:
 	//
-	// 	- Standard: standard MPS queue.
+	// - Standard: standard MPS queue.
 	//
-	// 	- Boost: MPS queue with transcoding speed boosted.
+	// - Boost: MPS queue with transcoding speed boosted.
 	//
-	// 	- NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
+	// - NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
 	//
 	// example:
 	//
@@ -110,9 +110,9 @@ type GetPipelineResponseBodyPipeline struct {
 	//
 	// Valid values:
 	//
-	// 	- Active
+	// - Active
 	//
-	// 	- Paused
+	// - Paused
 	//
 	// example:
 	//

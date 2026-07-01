@@ -24,9 +24,9 @@ type iSubmitLiveSnapshotJobShrinkRequest interface {
 type SubmitLiveSnapshotJobShrinkRequest struct {
 	// The snapshot callback URL.
 	//
-	// 	- It cannot exceed 255 characters in length.
+	// - It cannot exceed 255 characters in length.
 	//
-	// 	- Both HTTP and HTTPS URLs are supported.
+	// - Both HTTP and HTTPS URLs are supported.
 	//
 	// example:
 	//
@@ -34,9 +34,13 @@ type SubmitLiveSnapshotJobShrinkRequest struct {
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// The name of the job.
 	//
-	// 	- It cannot exceed 128 characters in length.
+	// - It cannot exceed 128 characters in length.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Screenshot task1
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The information about the output snapshot.
 	//

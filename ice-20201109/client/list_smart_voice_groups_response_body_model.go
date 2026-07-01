@@ -22,7 +22,7 @@ type ListSmartVoiceGroupsResponseBody struct {
 	//
 	// 627B30EB-1D0A-5C6D-8467-431626E0FA10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried speaker groups.
+	// An array of voice groups.
 	VoiceGroups []*ListSmartVoiceGroupsResponseBodyVoiceGroups `json:"VoiceGroups,omitempty" xml:"VoiceGroups,omitempty" type:"Repeated"`
 }
 
@@ -66,9 +66,13 @@ func (s *ListSmartVoiceGroupsResponseBody) Validate() error {
 }
 
 type ListSmartVoiceGroupsResponseBodyVoiceGroups struct {
-	// The name of the speaker group.
+	// The name of the voice group.
+	//
+	// example:
+	//
+	// Ultra HD
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The speakers.
+	// The voice list.
 	VoiceList []*ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList `json:"VoiceList,omitempty" xml:"VoiceList,omitempty" type:"Repeated"`
 }
 
@@ -112,43 +116,54 @@ func (s *ListSmartVoiceGroupsResponseBodyVoiceGroups) Validate() error {
 }
 
 type ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList struct {
-	// The speaker description.
+	// The description of the voice.
+	//
+	// example:
+	//
+	// 甜美女声
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The speaker name.
+	// The name of the voice.
+	//
+	// example:
+	//
+	// Zhi Tian
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The remarks of the speaker.
-	Remark            *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Notes for the voice.
+	//
+	// example:
+	//
+	// 中文及中英文混合场景
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The sample rates supported by the voice.
+	//
+	// example:
+	//
+	// 48000
 	SupportSampleRate *string `json:"SupportSampleRate,omitempty" xml:"SupportSampleRate,omitempty"`
-	// The tag of the speaker type.
+	// The tag for the voice category.
+	//
+	// example:
+	//
+	// General scenario
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The speaker ID.
+	// The voice ID.
 	//
 	// example:
 	//
 	// zhitian
 	Voice       *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
 	VoiceSource *string `json:"VoiceSource,omitempty" xml:"VoiceSource,omitempty"`
-	// The speaker type.
-	//
-	// Valid values:
-	//
-	// 	- Male
-	//
-	// 	- Female
-	//
-	// 	- Boy
-	//
-	// 	- Girl
+	// The voice type.
 	//
 	// example:
 	//
 	// Female
 	VoiceType *string `json:"VoiceType,omitempty" xml:"VoiceType,omitempty"`
-	// The URL of the sample audio file.
+	// The URL of the sample audio.
 	//
 	// example:
 	//
-	// https://***.com/zhiqing.mp3
+	// https://***.com/zhitian.mp3
 	VoiceUrl *string `json:"VoiceUrl,omitempty" xml:"VoiceUrl,omitempty"`
 }
 

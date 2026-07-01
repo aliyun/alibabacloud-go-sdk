@@ -32,9 +32,9 @@ type ListMediaLiveChannelsRequest struct {
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The number of entries per page. Valid values: 1 to 100. Default value:
 	//
-	// 	- If you do not specify this parameter or if you set a value smaller than 10, the default value is 10.
+	// - If you do not specify this parameter or if you set a value smaller than 10, the default value is 10.
 	//
-	// 	- If you set a value greater than 100, the default value is 100.
+	// - If you set a value greater than 100, the default value is 100.
 	//
 	// example:
 	//

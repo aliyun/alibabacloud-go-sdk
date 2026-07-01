@@ -42,11 +42,11 @@ type ListMediaProducingJobsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- LiveEditingJob: live editing job.
+	// - LiveEditingJob: live editing job.
 	//
-	// 	- EditingJob: regular template-based editing job
+	// - EditingJob: regular template-based editing job
 	//
-	// 	- VETemplateJob: advanced template-based editing job.
+	// - VETemplateJob: advanced template-based editing job.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type ListMediaProducingJobsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- CreationTime:Asc: sorted by creation time in ascending order.
+	// - CreationTime:Asc: sorted by creation time in ascending order.
 	//
-	// 	- CreationTime:Desc: sorted by creation time in descending order.
+	// - CreationTime:Desc: sorted by creation time in descending order.
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ type ListMediaProducingJobsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Init: The job is initialized.
+	// - Init: The job is initialized.
 	//
-	// 	- Failed: The job failed.
+	// - Failed: The job failed.
 	//
-	// 	- Success: The job is successful.
+	// - Success: The job is successful.
 	//
-	// 	- Processing: The job is in progress.
+	// - Processing: The job is in progress.
 	//
 	// example:
 	//

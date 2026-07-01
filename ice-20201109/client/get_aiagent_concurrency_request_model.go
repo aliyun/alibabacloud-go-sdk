@@ -14,6 +14,8 @@ type iGetAIAgentConcurrencyRequest interface {
 }
 
 type GetAIAgentConcurrencyRequest struct {
+	// The ID of the AI agent.
+	//
 	// This parameter is required.
 	//
 	// example:

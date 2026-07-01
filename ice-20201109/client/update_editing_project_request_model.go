@@ -28,31 +28,35 @@ type iUpdateEditingProjectRequest interface {
 }
 
 type UpdateEditingProjectRequest struct {
-	// The business status of the project. This parameter can be ignored for general editing projects. Valid values:
+	// The business status of the project. You can typically ignore this parameter for standard cloud editing projects. Use this parameter to modify the project\\"s reservation status:
 	//
-	// 	- Reserving
+	// - `Reserving`: The project is being reserved.
 	//
-	// 	- ReservationCanceled
+	// - `ReservationCanceled`: The reservation for the project is canceled.
 	//
 	// example:
 	//
 	// Reserving
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The material parameter corresponding to the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified.
+	// The clip parameters for the template, in JSON format. This parameter is required if you specify `TemplateId`.<props="china"> For more information about the format, see [Create and use a standard template](https://help.aliyun.com/document_detail/328557.html) and [Create and use an advanced template](https://help.aliyun.com/document_detail/291418.html).
+	//
+	// example:
+	//
+	// See the template user guide.
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	// The thumbnail URL of the online editing project.
+	// The project cover.
 	//
 	// example:
 	//
 	// https://****.com/6AB4D0E1E1C7446888****.png
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The description of the online editing project.
+	// The project description.
 	//
 	// example:
 	//
 	// testtimeline001desciption
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the online editing project.
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -60,19 +64,15 @@ type UpdateEditingProjectRequest struct {
 	//
 	// ****4ee4b97e27b525142a6b2****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The template ID. This parameter is used to quickly build a timeline with ease. Note: Only one of ProjectId, Timeline, and TemplateId can be specified. If TemplateId is specified, ClipsParam must also be specified.
+	// The template ID. Use this parameter to quickly build a timeline.	Notice: You can specify only one of `ProjectId`, `Timeline`, and `TemplateId`. If you specify `TemplateId`, `ClipsParam` is required.
 	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The timeline of the online editing project, in the JSON format.
-	//
-	// example:
-	//
-	// {"VideoTracks":[{"VideoTrackClips":[{"MediaId":"****cc3308ac500ca54328bc3443****"},{"MediaId":"****da87a9cff64*d88bc6d8326e4****"}]}]}
+	// The project timeline, in JSON format.
 	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
-	// The title of the online editing project.
+	// The project title.
 	//
 	// example:
 	//

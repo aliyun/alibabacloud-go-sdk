@@ -14,6 +14,8 @@ type iGetYikeUserRequest interface {
 }
 
 type GetYikeUserRequest struct {
+	// The user name of the sub-account.
+	//
 	// example:
 	//
 	// test.xxx@xxx.yikeai

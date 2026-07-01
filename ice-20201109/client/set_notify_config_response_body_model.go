@@ -14,7 +14,7 @@ type iSetNotifyConfigResponseBody interface {
 }
 
 type SetNotifyConfigResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

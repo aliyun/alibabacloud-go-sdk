@@ -279,9 +279,9 @@ type GetMediaInfoJobResponseBodyMediaInfoJobInput struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the media object. Valid values:
 	//
-	// 	- OSS: an Object Storage Service (OSS) object.
+	// - OSS: an Object Storage Service (OSS) object.
 	//
-	// 	- Media: a media asset.
+	// - Media: a media asset.
 	//
 	// example:
 	//
@@ -888,11 +888,11 @@ type GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
 	// Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
 	//
-	// 	- 0: The stream contains no B-frames.
+	// - 0: The stream contains no B-frames.
 	//
-	// 	- 1: The stream contains one B-frame.
+	// - 1: The stream contains one B-frame.
 	//
-	// 	- 2: The stream contains multiple consecutive B-frames.
+	// - 2: The stream contains multiple consecutive B-frames.
 	//
 	// example:
 	//

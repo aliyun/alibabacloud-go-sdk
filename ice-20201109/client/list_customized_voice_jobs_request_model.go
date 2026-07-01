@@ -32,9 +32,9 @@ type ListCustomizedVoiceJobsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the human voice cloning job. Valid values:
 	//
-	// 	- Basic
+	// - Basic
 	//
-	// 	- Standard
+	// - Standard
 	//
 	// > : If you do not specify this parameter, the default value Basic is used.
 	//

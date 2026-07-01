@@ -20,21 +20,21 @@ type iSubmitTraceAbJobResponseBody interface {
 }
 
 type SubmitTraceAbJobResponseBody struct {
-	// The data returned.
+	// Contains the IDs for the submitted job and the output media asset.
 	Data *SubmitTraceAbJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The response message. A value of `ok` indicates a successful request.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The unique identifier for the request. If you encounter an issue, provide this ID for technical support.
 	//
 	// example:
 	//
 	// ******36-3C1E-4417-BDB2-1E034F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code.
+	// The HTTP status code. A value of `200` indicates success.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type SubmitTraceAbJobResponseBodyData struct {
 	//
 	// bfb786c639894f4d80648792021e****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The media ID.
+	// The ID of the media asset created for tracing.
 	//
 	// example:
 	//

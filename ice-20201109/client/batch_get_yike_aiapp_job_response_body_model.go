@@ -16,7 +16,10 @@ type iBatchGetYikeAIAppJobResponseBody interface {
 }
 
 type BatchGetYikeAIAppJobResponseBody struct {
+	// The list of jobs. Each object mirrors the details returned by the `GetYikeAIAppJob` operation.
 	JobList []*BatchGetYikeAIAppJobResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -63,35 +66,62 @@ func (s *BatchGetYikeAIAppJobResponseBody) Validate() error {
 }
 
 type BatchGetYikeAIAppJobResponseBodyJobList struct {
+	// The ID of the application.
+	//
 	// example:
 	//
 	// 9e09955d662a
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The AI application\\"s input parameters, formatted as a JSON-serialized string.
+	//
 	// example:
 	//
 	// {\\"LoadImage.1.TargetImage\\":\\"MediaId1\\"}
 	AppInputConfig *string `json:"AppInputConfig,omitempty" xml:"AppInputConfig,omitempty"`
+	// The time the job execution finished. The time is in UTC and formatted as `yyyy-MM-ddTHH:mm:ssZ`.
+	//
 	// example:
 	//
 	// 2026-02-06T18:53:34.001+08:00
 	ExecutionFinishTime *string `json:"ExecutionFinishTime,omitempty" xml:"ExecutionFinishTime,omitempty"`
+	// The time the job execution started. The time is in UTC and formatted as `yyyy-MM-ddTHH:mm:ssZ`.
+	//
 	// example:
 	//
 	// 2026-02-06T18:53:18.809+08:00
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitempty" xml:"ExecutionStartTime,omitempty"`
+	// The ID of the folder.
+	//
 	// example:
 	//
 	// pd_0617169475
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The ID of the job.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the project.
+	//
 	// example:
 	//
 	// pd_0617169475
-	ProductionId *string                                        `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
-	Result       *BatchGetYikeAIAppJobResponseBodyJobListResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
+	// The execution result of the job.
+	Result *BatchGetYikeAIAppJobResponseBodyJobListResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The status of the job. Valid values are:
+	//
+	// - `Created`: The job has been created.
+	//
+	// - `Queuing`: The job is in the queue.
+	//
+	// - `Executing`: The job is executing.
+	//
+	// - `Finished`: The job completed successfully.
+	//
+	// - `Failed`: The job failed to complete.
+	//
 	// example:
 	//
 	// Created
@@ -197,8 +227,11 @@ func (s *BatchGetYikeAIAppJobResponseBodyJobList) Validate() error {
 }
 
 type BatchGetYikeAIAppJobResponseBodyJobListResult struct {
+	// The audio result.
 	AudioResult []*BatchGetYikeAIAppJobResponseBodyJobListResultAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Repeated"`
+	// The image result.
 	ImageResult []*BatchGetYikeAIAppJobResponseBodyJobListResultImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
+	// The video result.
 	VideoResult []*BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult `json:"VideoResult,omitempty" xml:"VideoResult,omitempty" type:"Repeated"`
 }
 
@@ -269,10 +302,14 @@ func (s *BatchGetYikeAIAppJobResponseBodyJobListResult) Validate() error {
 }
 
 type BatchGetYikeAIAppJobResponseBodyJobListResultAudioResult struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// bb1dfa20a0c971f08c94e7f6d6496202
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The output URL.
+	//
 	// example:
 	//
 	// https://dtlive-bj.oss-cn-beijing.aliyuncs.com/cover/01e1271d-ff4f-4689-9c20-e1df81486859_open_live_cover.mp3
@@ -310,10 +347,14 @@ func (s *BatchGetYikeAIAppJobResponseBodyJobListResultAudioResult) Validate() er
 }
 
 type BatchGetYikeAIAppJobResponseBodyJobListResultImageResult struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 318d6350a57d71f08c9ae7f7d4496302
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The output URL.
+	//
 	// example:
 	//
 	// https://dtlive-bj.oss-cn-beijing.aliyuncs.com/cover/01e1271d-ff4f-4689-9c20-e1df81486859_open_live_cover.jpg
@@ -351,10 +392,14 @@ func (s *BatchGetYikeAIAppJobResponseBodyJobListResultImageResult) Validate() er
 }
 
 type BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// ec2de25068fd71f0a48cf7e6c4596302
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The output URL.
+	//
 	// example:
 	//
 	// https://dtlive-bj.oss-cn-beijing.aliyuncs.com/cover/01e1271d-ff4f-4689-9c20-e1df81486859_open_live_cover.mp4

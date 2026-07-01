@@ -26,13 +26,21 @@ type iUpdateAvatarTrainingJobRequest interface {
 }
 
 type UpdateAvatarTrainingJobRequest struct {
-	// 	- The description of the digital human.
+	// - The description of the digital human.
 	//
-	// 	- The description can be up to 1,000 characters in length.
+	// - The description can be up to 1,000 characters in length.
+	//
+	// example:
+	//
+	// This is a digital human used for a specific scenario.
 	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
-	// 	- The name of the digital human.
+	// - The name of the digital human.
 	//
-	// 	- The name can be up to seven characters in length.
+	// - The name can be up to seven characters in length.
+	//
+	// example:
+	//
+	// Decimal
 	AvatarName *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
 	// The ID of the digital human training job.
 	//
@@ -42,49 +50,49 @@ type UpdateAvatarTrainingJobRequest struct {
 	//
 	// ****cdb3e74639973036bc84****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 	- The media asset ID of the portrait image.
+	// - The media asset ID of the portrait image.
 	//
-	// 	- The value must be 32 characters in length.
+	// - The value must be 32 characters in length.
 	//
 	// example:
 	//
 	// ****571c704445f9a0ee011406c2****
 	Portrait *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
-	// 	- The thumbnail URL.
+	// - The thumbnail URL.
 	//
-	// 	- After the digital human is trained, the thumbnail is uploaded to this URL.
+	// - After the digital human is trained, the thumbnail is uploaded to this URL.
 	//
-	// 	- The URL must be a valid public Object Storage Service (OSS) URL.
+	// - The URL must be a valid public Object Storage Service (OSS) URL.
 	//
-	// 	- The URL can be up to 512 characters in length.
+	// - The URL can be up to 512 characters in length.
 	//
-	// 	- The URL cannot be updated after the digital human is trained.
+	// - The URL cannot be updated after the digital human is trained.
 	//
 	// example:
 	//
 	// https://your-bucket.oss-cn-hangzhou.aliyuncs.com/thumbnail.png
 	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
-	// 	- Indicates whether the input video supports alpha channels.
+	// - Indicates whether the input video supports alpha channels.
 	//
-	// 	- You can modify this parameter only if the job is in the Init or Fail state.
+	// - You can modify this parameter only if the job is in the Init or Fail state.
 	//
-	//     **
+	//   \\*\\*
 	//
-	//     **Note**: Make sure that the current settings are consistent with those of the submitted training video. Otherwise, the digital human may malfunction.
+	//   **Note**: Make sure that the current settings are consistent with those of the submitted training video. Otherwise, the digital human may malfunction.
 	//
 	// example:
 	//
 	// True
 	Transparent *bool `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
-	// 	- The ID of the video used for training.
+	// - The ID of the video used for training.
 	//
-	// 	- The value must be 32 characters in length.
+	// - The value must be 32 characters in length.
 	//
-	// 	- Supported formats: MP4, MOV, and WebM.
+	// - Supported formats: MP4, MOV, and WebM.
 	//
-	// 	- The duration of the video must be 5 to 15 minutes.
+	// - The duration of the video must be 5 to 15 minutes.
 	//
-	// 	- The resolution of the video must be 1920×1080 or 1080×1920.
+	// - The resolution of the video must be 1920×1080 or 1080×1920.
 	//
 	// example:
 	//

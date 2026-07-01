@@ -44,11 +44,11 @@ type CreateVodPackagingConfigurationRequest struct {
 	PackageConfig *CreateVodPackagingConfigurationRequestPackageConfig `json:"PackageConfig,omitempty" xml:"PackageConfig,omitempty" type:"Struct"`
 	// The package type.
 	//
-	// 	- HLS: packages content into TS segments for delivery over the HLS protocol.
+	// - HLS: packages content into TS segments for delivery over the HLS protocol.
 	//
-	// 	- HLS_CMAF: packages content into CMAF segments for delivery over the HLS protocol.
+	// - HLS_CMAF: packages content into CMAF segments for delivery over the HLS protocol.
 	//
-	// 	- DASH: packages content for delivery over the DASH protocol.
+	// - DASH: packages content for delivery over the DASH protocol.
 	//
 	// example:
 	//
@@ -201,9 +201,9 @@ func (s *CreateVodPackagingConfigurationRequestPackageConfig) Validate() error {
 type CreateVodPackagingConfigurationRequestPackageConfigDrmProvider struct {
 	// The encryption method. Valid values:
 	//
-	// 	- AES_128: Advanced Encryption Standard (AES) with 128-bit key length.
+	// - AES_128: Advanced Encryption Standard (AES) with 128-bit key length.
 	//
-	// 	- SAMPLE_AES: an encryption method that encrypts individual media samples.
+	// - SAMPLE_AES: an encryption method that encrypts individual media samples.
 	//
 	// example:
 	//
@@ -217,19 +217,19 @@ type CreateVodPackagingConfigurationRequestPackageConfigDrmProvider struct {
 	IV *string `json:"IV,omitempty" xml:"IV,omitempty"`
 	// The ID of the DRM system. The maximum number of system IDs allowed is determined by the protocol type. Limits:
 	//
-	// 	- DASH: 2
+	// - DASH: 2
 	//
-	// 	- HLS: 1
+	// - HLS: 1
 	//
-	// 	- HLS_CMAF: 2
+	// - HLS_CMAF: 2
 	//
 	// Apple FairPlay, Google Widevine, and Microsoft PlayReady are supported. Their system IDs are as follows:
 	//
-	// 	- Apple FairPlay: 94ce86fb-07ff-4f43-adb8-93d2fa968ca2
+	// - Apple FairPlay: 94ce86fb-07ff-4f43-adb8-93d2fa968ca2
 	//
-	// 	- Google Widevine: edef8ba9-79d6-4ace-a3c8-27dcd51d21e
+	// - Google Widevine: edef8ba9-79d6-4ace-a3c8-27dcd51d21e
 	//
-	// 	- Microsoft PlayReady: 9a04f079-9840-4286-ab92-e65be0885f95
+	// - Microsoft PlayReady: 9a04f079-9840-4286-ab92-e65be0885f95
 	SystemIds []*string `json:"SystemIds,omitempty" xml:"SystemIds,omitempty" type:"Repeated"`
 	// The URL of the DRM key provider.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
@@ -298,11 +298,11 @@ type CreateVodPackagingConfigurationRequestPackageConfigStreamSelection struct {
 	MinVideoBitsPerSecond *int64 `json:"MinVideoBitsPerSecond,omitempty" xml:"MinVideoBitsPerSecond,omitempty"`
 	// The order of manifest files in the master playlist. Valid values:
 	//
-	// 	- ORIGINAL: sorts the manifest files in the same order as the source.
+	// - ORIGINAL: sorts the manifest files in the same order as the source.
 	//
-	// 	- VIDEO_BITRATE_ASCENDING: sorts the manifest files in ascending order of bitrates, from lowest to highest.
+	// - VIDEO_BITRATE_ASCENDING: sorts the manifest files in ascending order of bitrates, from lowest to highest.
 	//
-	// 	- VIDEO_BITRATE_DESCENDING: sorts the manifest files in descending order of bitrates, from highest to lowest.
+	// - VIDEO_BITRATE_DESCENDING: sorts the manifest files in descending order of bitrates, from highest to lowest.
 	//
 	// example:
 	//

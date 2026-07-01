@@ -22,7 +22,7 @@ type UpdateLivePackageOriginEndpointResponseBody struct {
 	//
 	// example:
 	//
-	// b1f8d6c4-a123-4cd5-9e88-d0819e3bfa70
+	// 5D87B753-0250-5D9D-B248-D40C3271F864
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -81,6 +81,10 @@ type UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The endpoint description.
+	//
+	// example:
+	//
+	// This is an origin endpoint.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The endpoint name.
 	//
@@ -117,7 +121,8 @@ type UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
-	LastModified        *string              `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// Live packaging configuration
 	LivePackagingConfig *LivePackagingConfig `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
 	// The playlist name. Default value: manifest.
 	//

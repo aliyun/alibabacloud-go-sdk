@@ -30,9 +30,9 @@ type SubmitVideoTranslationJobResponseBody struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -85,7 +85,7 @@ func (s *SubmitVideoTranslationJobResponseBody) Validate() error {
 }
 
 type SubmitVideoTranslationJobResponseBodyData struct {
-	// The ID of the video translation job.
+	// The video translation job ID.
 	//
 	// example:
 	//

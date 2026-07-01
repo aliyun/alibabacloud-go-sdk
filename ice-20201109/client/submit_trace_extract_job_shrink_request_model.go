@@ -18,25 +18,25 @@ type iSubmitTraceExtractJobShrinkRequest interface {
 }
 
 type SubmitTraceExtractJobShrinkRequest struct {
-	// The source video file from which to extract the watermark.
+	// The input video from which to extract the watermark.
 	//
-	// > The OSS object or media asset must reside in the same region as the IMS service region.
+	// > - The OSS object or media asset must be in the same region as your IMS service.
 	//
 	// This parameter is required.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// Additional parameters for the watermark job, provided as a JSON string. Supported parameter:
+	// Extraction job parameters, specified as a JSON string. The following parameters are supported:
 	//
-	// 	- m3u8Type: The extraction algorithm type. Defaults to v1.
+	// - `m3u8Type`: The algorithm type. The default value is `v1`.
 	//
-	//     	- v1: Extracts from an M3U8 with absolute paths.
+	//   - `v1`: Extracts an m3u8 playlist with absolute paths.
 	//
-	//     	- v2: Extracts from an M3U8 with relative paths.
+	//   - `v2`: Extracts an m3u8 playlist with relative paths.
 	//
 	// example:
 	//
 	// {"m3u8Type":"v1"}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// The custom data, which can be up to 1,024 bytes in size.
+	// The user-defined data. Maximum length: 1,024 bytes.
 	//
 	// example:
 	//

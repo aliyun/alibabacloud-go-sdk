@@ -16,10 +16,14 @@ type iStartAIAgentOutboundCallResponseBody interface {
 }
 
 type StartAIAgentOutboundCallResponseBody struct {
+	// The call instance ID.
+	//
 	// example:
 	//
 	// *********296014bb58670940*********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ***********-4417-BDB2************

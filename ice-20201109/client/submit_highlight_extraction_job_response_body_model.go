@@ -16,7 +16,7 @@ type iSubmitHighlightExtractionJobResponseBody interface {
 }
 
 type SubmitHighlightExtractionJobResponseBody struct {
-	// The ID of the highlight extraction task.
+	// The ID of the highlight extraction job.
 	//
 	// example:
 	//

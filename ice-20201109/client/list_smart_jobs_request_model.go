@@ -30,13 +30,13 @@ type ListSmartJobsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Finished: The job is complete.
+	// - Finished: The job is complete.
 	//
-	// 	- Failed: The job failed.
+	// - Failed: The job failed.
 	//
-	// 	- Executing: The job is in progress.
+	// - Executing: The job is in progress.
 	//
-	// 	- Created: The job is created.
+	// - Created: The job is created.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type ListSmartJobsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- ASR: automatic speech recognition(job) job.
+	// - ASR: automatic speech recognition(job) job.
 	//
-	// 	- DynamicChart: dynamic chart job.
+	// - DynamicChart: dynamic chart job.
 	//
-	// 	- VideoTranslation: video translation job.
+	// - VideoTranslation: video translation job.
 	//
-	// 	- TextToSpeech: intelligent audio production job.
+	// - TextToSpeech: intelligent audio production job.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type ListSmartJobsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- CreationTime:Asc: sorted by creation time in ascending order.
+	// - CreationTime:Asc: sorted by creation time in ascending order.
 	//
-	// 	- CreationTime:Desc: sorted by creation time in descending order.
+	// - CreationTime:Desc: sorted by creation time in descending order.
 	//
 	// example:
 	//

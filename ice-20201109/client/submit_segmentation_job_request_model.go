@@ -22,33 +22,33 @@ type iSubmitSegmentationJobRequest interface {
 }
 
 type SubmitSegmentationJobRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token to ensure request idempotence.
 	//
 	// example:
 	//
 	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The input configuration. For detailed parameters, see [InputConfig](~~2874121#cc59ad3082jbx~~).
+	// The input configuration. For more information, see [InputConfig](~~2874121#cc59ad3082jbx~~).
 	//
 	// example:
 	//
 	// {
 	//
-	// 	"Type": "OSS",
+	// "Type": "OSS",
 	//
-	// 	"Media": "http://test-bucket.oss-cn-shanghai.aliyuncs.com/test.mp4"
+	// "Media": "http://test-bucket.oss-cn-shanghai.aliyuncs.com/test.mp4"
 	//
 	// }
 	//
 	// or {
 	//
-	// 	"Type": "Media",
+	// "Type": "Media",
 	//
-	// 	"Media": "ce49a020e****1ef81c1e6f6d5686302"
+	// "Media": "ce49a020e****1ef81c1e6f6d5686302"
 	//
 	// }
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
-	// The task parameters. For details, see [JobParams](~~2874121#a60357f2d5iix~~).
+	// The job parameters. For more information, see [JobParams](~~2874121#a60357f2d5iix~~).
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type SubmitSegmentationJobRequest struct {
 	//
 	// }
 	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
-	// The output configuration. For detailed parameters, see [OutputConfig](~~2874121#cef23186a8d6w~~).
+	// The output configuration. For more information, see [OutputConfig](~~2874121#cef23186a8d6w~~).
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type SubmitSegmentationJobRequest struct {
 	//
 	// }
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	// The user-defined data in the JSON format, which can be up to 512 bytes in length.
+	// Custom user data in JSON format, with a maximum length of 512 bytes.
 	//
 	// example:
 	//

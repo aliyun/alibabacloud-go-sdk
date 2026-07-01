@@ -26,25 +26,38 @@ type iStartAIAgentInstanceRequest interface {
 }
 
 type StartAIAgentInstanceRequest struct {
-	// The ID of the AI agent created in the [IMS](https://ims.console.aliyun.com/ai/robot/list) console.
+	// The agent ID configured in the [IMS console](https://ims.console.aliyun.com/ai/robot/list).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
-	AIAgentId   *string        `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// The agent template configuration. Values you provide merge with the template configuration set in the console. If you omit this parameter, the agent uses its default configuration from the console.
+	//
+	// > This field is compatible with TemplateConfig. Fields in AgentConfig take precedence. If TemplateConfig contains fields not defined in AgentConfig, those fields are used. Use AgentConfig instead of TemplateConfig.
 	AgentConfig *AIAgentConfig `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
-	// 同步聊天记录配置。
+	// The chat history synchronization configuration.
 	ChatSyncConfig *StartAIAgentInstanceRequestChatSyncConfig `json:"ChatSyncConfig,omitempty" xml:"ChatSyncConfig,omitempty" type:"Struct"`
+	// The configuration required for the agent at runtime.
+	//
 	// This parameter is required.
 	RuntimeConfig *AIAgentRuntimeConfig `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	// A unique identifier for the chat session. This parameter is optional.
+	//
 	// example:
 	//
 	// f213fbc005e4f309379701645f4****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// Deprecated
+	//
+	// The agent template configuration. Values you provide merge with the template configuration set in the console. If you omit this parameter, the agent uses its default configuration from the console.
+	//
+	// > The agent template configuration. This field is deprecated. See the AgentConfig field.
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// User-defined data.
+	//
 	// example:
 	//
 	// {"Email":"johndoe@example.com","Preferences":{"Language":"en"}}
@@ -147,13 +160,13 @@ func (s *StartAIAgentInstanceRequest) Validate() error {
 }
 
 type StartAIAgentInstanceRequestChatSyncConfig struct {
-	// IM的智能体Id。
+	// The IM agent ID.
 	//
 	// example:
 	//
 	// ******005e4f309379701645f4****
 	IMAIAgentId *string `json:"IMAIAgentId,omitempty" xml:"IMAIAgentId,omitempty"`
-	// 接收用户Id。
+	// The receiver user ID.
 	//
 	// example:
 	//

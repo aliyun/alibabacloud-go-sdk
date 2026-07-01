@@ -22,15 +22,15 @@ type iListMediaBasicInfosResponseBody interface {
 }
 
 type ListMediaBasicInfosResponseBody struct {
-	// The maximum number of entries returned in the query.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
 	// 2
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The media assets that meet the specified conditions.
+	// The list of matching media assets.
 	MediaInfos []*ListMediaBasicInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token for retrieving the next page of results. If this parameter is not returned, all results have been retrieved.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListMediaBasicInfosResponseBody struct {
 	//
 	// ******B7-7F87-4792-BFE9-63CD21******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of matching entries.
 	//
 	// example:
 	//
@@ -117,11 +117,11 @@ func (s *ListMediaBasicInfosResponseBody) Validate() error {
 }
 
 type ListMediaBasicInfosResponseBodyMediaInfos struct {
-	// FileInfos
+	// A list of file information objects.
 	FileInfoList []*ListMediaBasicInfosResponseBodyMediaInfosFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// BasicInfo
+	// The basic information about the media asset.
 	MediaBasicInfo *ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
@@ -183,7 +183,7 @@ func (s *ListMediaBasicInfosResponseBodyMediaInfos) Validate() error {
 }
 
 type ListMediaBasicInfosResponseBodyMediaInfosFileInfoList struct {
-	// The basic information of the file, including the duration and size.
+	// Basic information about the file, such as its duration and size.
 	FileBasicInfo *ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -214,49 +214,49 @@ func (s *ListMediaBasicInfosResponseBodyMediaInfosFileInfoList) Validate() error
 }
 
 type ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
-	// The bitrate.
+	// The bitrate of the file, in Kbit/s.
 	//
 	// example:
 	//
 	// 1912.13
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The time when the file was created.
+	// The time the file was created.
 	//
 	// example:
 	//
 	// 2021-01-08T16:52:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The duration.
+	// The duration of the file, in seconds.
 	//
 	// example:
 	//
 	// 60.00000
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The file name.
+	// The name of the file.
 	//
 	// example:
 	//
 	// example.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file size. Unit: bytes.
+	// The size of the file, in bytes.
 	//
 	// example:
 	//
 	// 14340962
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The file status.
+	// The status of the file.
 	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
-	// The file type.
+	// The type of the file.
 	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The OSS URL of the file.
+	// The Object Storage Service (OSS) URL of the file.
 	//
 	// example:
 	//
@@ -268,25 +268,25 @@ type ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
 	//
 	// mov,mp4,m4a,3gp,3g2,mj2
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	// The height.
+	// The height of the video, in pixels.
 	//
 	// example:
 	//
 	// 720
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The time when the file was last modified.
+	// The time the file was last modified.
 	//
 	// example:
 	//
 	// 2021-01-08T16:52:07Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The region in which the file resides.
+	// The region where the file is stored.
 	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The width.
+	// The width of the video, in pixels.
 	//
 	// example:
 	//
@@ -424,13 +424,13 @@ func (s *ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) Val
 }
 
 type ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo struct {
-	// The service to which the media asset belongs.
+	// The associated business.
 	//
 	// example:
 	//
 	// ICE
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// The business type of the media asset.
+	// The business type.
 	//
 	// example:
 	//
@@ -443,64 +443,72 @@ type ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo struct {
 	// 3049
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	// The category of the media asset.
+	//
+	// example:
+	//
+	// video
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The thumbnail URL of the media asset.
+	// The cover URL.
 	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.png?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the media asset was created.
+	// The time the media asset was created.
 	//
 	// example:
 	//
 	// 2021-01-08T16:52:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the media asset was deleted.
+	// The time the media asset was deleted.
 	//
 	// example:
 	//
 	// 2021-01-08T16:52:07Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
 	// The description of the media asset.
+	//
+	// example:
+	//
+	// A short description of the media
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The URL of the media asset in another service.
+	// The source URL of the media asset.
 	//
 	// example:
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// The ID of the media asset.
+	// The media asset ID.
 	//
 	// example:
 	//
 	// ****019b82e24b37a1c2958dec38****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The tags of the media asset.
+	// Tags associated with the media asset.
 	//
 	// example:
 	//
 	// tags,tags2
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// The type of the media asset.
+	// The media type.
 	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The time when the media asset was last modified.
+	// The time the media asset was last modified.
 	//
 	// example:
 	//
 	// 2021-01-08T16:52:07Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The custom ID of the media asset. The ID is a string that contains 6 to 64 characters. Only letters, digits, hyphens (-), and underscores (_) are supported. The ID is unique among users.
+	// A user-defined ID that must be unique within your account. The ID must be 6 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
 	// 123-123
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	// The snapshots of the media asset.
+	// Information about the snapshots.
 	//
 	// example:
 	//
@@ -512,7 +520,7 @@ type ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo struct {
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The sprite.
+	// Information about the image sprites.
 	//
 	// example:
 	//
@@ -525,8 +533,12 @@ type ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo struct {
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The title of the media asset.
+	//
+	// example:
+	//
+	// My video title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The transcoding status of the media asset.
+	// The transcoding status.
 	//
 	// example:
 	//

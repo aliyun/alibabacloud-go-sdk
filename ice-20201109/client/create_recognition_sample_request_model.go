@@ -32,15 +32,15 @@ type iCreateRecognitionSampleRequest interface {
 type CreateRecognitionSampleRequest struct {
 	// The type of recognition this sample is for.
 	//
-	// 	- landmark
+	// - landmark
 	//
-	// 	- object
+	// - object
 	//
-	// 	- logo
+	// - logo
 	//
-	// 	- face
+	// - face
 	//
-	// 	- label
+	// - label
 	//
 	// This parameter is required.
 	//
@@ -63,6 +63,10 @@ type CreateRecognitionSampleRequest struct {
 	// https://example.com/sample.png
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	// The custom text label.
+	//
+	// example:
+	//
+	// Complete front view
 	LabelPrompt *string `json:"LabelPrompt,omitempty" xml:"LabelPrompt,omitempty"`
 	// The ID of the recognition library.
 	//

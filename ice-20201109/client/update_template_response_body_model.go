@@ -18,7 +18,7 @@ type UpdateTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// ******11-DB8D-4A9A-875B-275798******
+	// F8D475A5-F2EC-5755-ABD8-22D5561C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

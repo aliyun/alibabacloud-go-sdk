@@ -26,7 +26,7 @@ type iListAIAgentDialoguesRequest interface {
 }
 
 type ListAIAgentDialoguesRequest struct {
-	// Specify the end of the time range to query using a UNIX timestamp accurate to milliseconds.
+	// The end Unix timestamp (inclusive), in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -34,11 +34,7 @@ type ListAIAgentDialoguesRequest struct {
 	//
 	// 17358082464030
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The sorting order. Valid values:
-	//
-	// - DESC: descending order (default)
-	//
-	// - ASC: ascending order
+	// The sort order. Valid values: `ASC` (ascending) and `DESC` (descending). Default value: `DESC`.
 	//
 	// example:
 	//
@@ -50,12 +46,17 @@ type ListAIAgentDialoguesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	// The number of items per page. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of most recent dialogue rounds to return. This value must be a positive integer. This parameter is mutually exclusive with pagination parameters; if specified, it overrides them.
+	//
+	// example:
+	//
+	// 5
 	RoundLimit *string `json:"RoundLimit,omitempty" xml:"RoundLimit,omitempty"`
 	// The session ID.
 	//
@@ -65,7 +66,7 @@ type ListAIAgentDialoguesRequest struct {
 	//
 	// f27f9b9be28642a88e18****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// Specify the start of the time range to query using a UNIX timestamp accurate to milliseconds.
+	// The start Unix timestamp (inclusive), in milliseconds.
 	//
 	// This parameter is required.
 	//

@@ -24,13 +24,13 @@ type iSubmitBatchMediaProducingJobRequest interface {
 }
 
 type SubmitBatchMediaProducingJobRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// A client-side token used to ensure request idempotence.
 	//
 	// example:
 	//
 	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The editing configurations. For more information, see [EditingConfig](~~2692547#1be9bba03b7qu~~).
+	// The editing configuration. For the structure definition, see [EditingConfig](~~2692547#1be9bba03b7qu~~).
 	//
 	// example:
 	//
@@ -56,9 +56,49 @@ type SubmitBatchMediaProducingJobRequest struct {
 	//
 	// }
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	// The input configurations. For more information, see [InputConfig](~~2692547#2faed1559549n~~).
+	// The input configuration. For the structure definition, see [InputConfig](~~2692547#2faed1559549n~~).
+	//
+	// example:
+	//
+	// {
+	//
+	//   "MediaGroupArray": [{
+	//
+	//       "GroupName": "MediaGroup1",
+	//
+	//       "MediaArray": [
+	//
+	//         "****9d46c886b45481030f6e****",
+	//
+	//         "****6c886b4549d481030f6e****" ]
+	//
+	//     }, {
+	//
+	//       "GroupName": "MediaGroup2",
+	//
+	//       "MediaArray": [
+	//
+	//         "****d46c886810b454930f6e****",
+	//
+	//         "****4549d886810b46c30f6e****" ]
+	//
+	//   }],
+	//
+	//   "TitleArray": [
+	//
+	//       "回龙观盒马鲜生开业啦",
+	//
+	//       "盒马鲜生开业啦" ],
+	//
+	//   "SpeechTextArray": [
+	//
+	//       "附近的商场新开了一家盒马鲜生，今天是第一天开业"
+	//
+	//       "商场里的人不少，零食、酒水都比较便宜大家也快来看看呀" ]
+	//
+	// }
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
-	// The output configurations. For more information, see [OutputConfig](~~2692547#447b928fcbuoa~~).
+	// The output configuration. For the structure definition, see [OutputConfig](~~2692547#447b928fcbuoa~~).
 	//
 	// example:
 	//
@@ -77,9 +117,18 @@ type SubmitBatchMediaProducingJobRequest struct {
 	//   "Video": {"Crf": 27}
 	//
 	// }
-	OutputConfig   *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	// The template parameters. You can configure multiple templates for one-click smart video creation. The system randomly selects one template to apply. For more information, see [TemplateConfig parameters](https://help.aliyun.com/zh/ims/use-cases/batch-video-production-public-parameters?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_5.342860c5H30VVS\\&scm=20140722.H_2877814._.OR_help-T_cn~zh-V_1#32c3bea6182sy).
+	//
+	// example:
+	//
+	// ["****b4549d46c88681030f6e****","****549d46c88b4681030f6e****"]
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	// The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html).
+	// Custom business and callback configurations. For the structure definition, see [UserData configuration](~~357745#section-urj-v3f-0s1~~).
+	//
+	// example:
+	//
+	// {"NotifyAddress":"http://xx.xx.xxx"} or {"NotifyAddress":"https://xx.xx.xxx"} or {"NotifyAddress":"ice-callback-demo"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 

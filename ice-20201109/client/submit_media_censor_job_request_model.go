@@ -32,65 +32,65 @@ type iSubmitMediaCensorJobRequest interface {
 }
 
 type SubmitMediaCensorJobRequest struct {
-	// The live comments of the video.
+	// The video barrages (on-screen comments).
 	//
-	// >  If this parameter is specified, the system checks the live comments specified by this parameter instead of the live comments of the input file specified by Media.
+	// > If specified, it overrides the barrages specified in the Media object.
 	//
 	// example:
 	//
 	// hello world
 	Barrages *string `json:"Barrages,omitempty" xml:"Barrages,omitempty"`
-	// The Object Storage Service (OSS) objects that are used as the thumbnails. Specify the thumbnails in a JSON array. A maximum of five thumbnails are supported.
+	// The Object Storage Service (OSS) files for the cover images, specified as a JSON array. You can specify up to five cover images.
 	//
-	// >  If this parameter is specified, the system checks the thumbnails specified by this parameter instead of the thumbnails of the input file specified by **Media**.
+	// > If specified, this parameter overrides the cover image information in the **Media*	- object.
 	//
 	// example:
 	//
 	// [{"Bucket":"example-bucket-****","Location":"oss-cn-shanghai","Object":"example-****.jpeg","RoleArn":"acs:ram::1997018457688683:role/AliyunICEDefaultRole"}]
 	CoverImages *string `json:"CoverImages,omitempty" xml:"CoverImages,omitempty"`
-	// The video description, which can be up to 128 bytes in length.
+	// The video description. The maximum length is 128 bytes.
 	//
-	// >  If this parameter is specified, the system checks the description specified by this parameter instead of the description of the input file specified by Media.
+	// > If specified, this parameter overrides the description specified in the Media object.
 	//
 	// example:
 	//
 	// example description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The information about the file to be moderated.
+	// The input file to censor.
 	Input *SubmitMediaCensorJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// The callback URL. Simple Message Queue (SMQ, formerly MNS) and HTTP callbacks are supported.
+	// The callback path. Both Message Service (MNS) and HTTP callbacks are supported.
 	//
 	// example:
 	//
 	// mns://125340688170****.oss-cn-shanghai.aliyuncs.com/queues/example-pipeline
 	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
-	// The output snapshots. The moderation job generates output snapshots and the result JSON file in the path corresponding to the input file.
+	// The output location for screenshots. The censor job generates screenshots and a result JSON file in the OSS location specified by this parameter.
 	//
-	// 	- File name format of output snapshots: oss://bucket/snapshot-{Count}.jpg. In the path, bucket indicates an OSS bucket that resides in the same region as the current project, and {Count} is the sequence number of the snapshot.
+	// - Example format: `oss://bucket/snapshot-{Count}.jpg`, where `bucket` is the name of an OSS bucket in the same region as the project, and `{Count}` is a placeholder for the screenshot sequence number.
 	//
-	// 	- The detailed moderation results are stored in the {jobId}.output file in the same OSS folder as the output snapshots. For more information about the parameters in the output file, see [Output parameters of media moderation jobs](https://help.aliyun.com/document_detail/609211.html).
+	// - The detailed censor results are saved to a file named `{jobId}.output` in the same OSS folder as the value of `Output`. For information about the fields in the output file, see [Media censor result file fields](https://help.aliyun.com/document_detail/609211.html).
 	//
 	// example:
 	//
 	// oss://sashimi-cn-shanghai/censor/snapshot-{Count}.jpg
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The scheduling configurations.
+	// The scheduling configuration.
 	ScheduleConfig *SubmitMediaCensorJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// The template ID. If this parameter is not specified, the default template is used for moderation.
+	// The template ID. If this parameter is left empty, the service uses the default template for the censor job.
 	//
 	// example:
 	//
 	// S00000001-100060
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The video title, which can be up to 64 bytes in length.
+	// The video title. The maximum length is 64 bytes.
 	//
-	// >  If this parameter is specified, the system checks the title specified by this parameter instead of the title of the input file specified by Media.
+	// > If specified, this parameter overrides the title specified in the Media object.
 	//
 	// example:
 	//
 	// Hello World
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The user-defined data, which can be up to 128 bytes in length.
+	// The user-defined data. The maximum length is 128 bytes.
 	//
 	// example:
 	//
@@ -211,13 +211,15 @@ func (s *SubmitMediaCensorJobRequest) Validate() error {
 }
 
 type SubmitMediaCensorJobRequestInput struct {
-	// The input file. The file can be an OSS object or a media asset. You can specify the path of an OSS object in one of the following formats:
+	// The identifier for the input file. You can specify either an OSS URL or a media ID.
 	//
-	// 1\\. oss://bucket/object
+	// Valid OSS URL formats:
 	//
-	// 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object
+	// 1\\. `oss://bucket/object`
 	//
-	// In the preceding paths, bucket indicates an OSS bucket that resides in the same region as the current project, and object indicates the path of the object in the bucket.
+	// 2\\. `http(s)://bucket.oss-[regionId].aliyuncs.com/object`
+	//
+	// The `bucket` must be in the same region as the project, and `object` is the path to the file.
 	//
 	// example:
 	//
@@ -225,9 +227,9 @@ type SubmitMediaCensorJobRequestInput struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the input file. Valid values:
 	//
-	// OSS: OSS object.
+	// `OSS`: an OSS URL
 	//
-	// Media: media asset.
+	// `Media`: a media ID
 	//
 	// example:
 	//
@@ -266,13 +268,13 @@ func (s *SubmitMediaCensorJobRequestInput) Validate() error {
 }
 
 type SubmitMediaCensorJobRequestScheduleConfig struct {
-	// The ID of the ApsaraVideo Media Processing (MPS) queue to which the job is submitted.
+	// The pipeline ID.
 	//
 	// example:
 	//
 	// 5246b8d12a62433ab77845074039****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The job priority. A larger value indicates a higher priority. Valid values: 1 to 10.
+	// The task priority. A higher value indicates a higher priority. Valid values range from 1 to 10.
 	//
 	// example:
 	//

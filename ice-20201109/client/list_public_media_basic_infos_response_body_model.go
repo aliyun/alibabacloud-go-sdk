@@ -479,6 +479,10 @@ type ListPublicMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo struct {
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The title of the media asset.
+	//
+	// example:
+	//
+	// My video title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The transcoding status of the media asset.
 	//

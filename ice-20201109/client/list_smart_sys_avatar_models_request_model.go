@@ -18,18 +18,19 @@ type iListSmartSysAvatarModelsRequest interface {
 }
 
 type ListSmartSysAvatarModelsRequest struct {
-	// The page number. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Default value: 10. Valid values: 1 to 100.
+	// The number of items to return on each page. The default value is 10. The maximum value is 100.
 	//
 	// example:
 	//
 	// 10
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The SDK version.
 	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
 }
 

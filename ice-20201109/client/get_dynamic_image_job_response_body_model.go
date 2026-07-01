@@ -124,11 +124,11 @@ type GetDynamicImageJobResponseBodyDynamicImageJob struct {
 	//
 	// Valid values:
 	//
-	// 	- Init: The job is submitted.
+	// - Init: The job is submitted.
 	//
-	// 	- Success: The job is successful.
+	// - Success: The job is successful.
 	//
-	// 	- Fail: The job failed.
+	// - Fail: The job failed.
 	//
 	// example:
 	//
@@ -156,11 +156,11 @@ type GetDynamicImageJobResponseBodyDynamicImageJob struct {
 	//
 	// Valid values:
 	//
-	// 	- Console
+	// - Console
 	//
-	// 	- Workflow
+	// - Workflow
 	//
-	// 	- API
+	// - API
 	//
 	// example:
 	//
@@ -352,9 +352,9 @@ func (s *GetDynamicImageJobResponseBodyDynamicImageJob) Validate() error {
 type GetDynamicImageJobResponseBodyDynamicImageJobInput struct {
 	// The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
 	//
-	// 1.  OSS://bucket/object
+	// 1. OSS://bucket/object
 	//
-	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+	// 2. http(s)://bucket.oss-[RegionId].aliyuncs.com/object
 	//
 	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
 	//
@@ -366,9 +366,9 @@ type GetDynamicImageJobResponseBodyDynamicImageJobInput struct {
 	OssFile *GetDynamicImageJobResponseBodyDynamicImageJobInputOssFile `json:"OssFile,omitempty" xml:"OssFile,omitempty" type:"Struct"`
 	// The type of the input file. Valid values:
 	//
-	// 1.  OSS: an Object Storage Service (OSS) object.
+	// 1. OSS: an Object Storage Service (OSS) object.
 	//
-	// 2.  Media: a media asset.
+	// 2. Media: a media asset.
 	//
 	// example:
 	//
@@ -483,9 +483,9 @@ func (s *GetDynamicImageJobResponseBodyDynamicImageJobInputOssFile) Validate() e
 type GetDynamicImageJobResponseBodyDynamicImageJobOutput struct {
 	// The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
 	//
-	// 1.  OSS://bucket/object
+	// 1. OSS://bucket/object
 	//
-	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	// 2. http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
 	//
 	// example:
 	//

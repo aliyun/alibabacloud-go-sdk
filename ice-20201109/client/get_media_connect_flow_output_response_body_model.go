@@ -108,7 +108,12 @@ type GetMediaConnectFlowOutputResponseBodyContent struct {
 	//
 	// 2024-07-18T01:29:24Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Forbid     *string `json:"Forbid,omitempty" xml:"Forbid,omitempty"`
+	// Indicates whether the output is disabled. Valid values: yes or no.
+	//
+	// example:
+	//
+	// no
+	Forbid *string `json:"Forbid,omitempty" xml:"Forbid,omitempty"`
 	// The output name.
 	//
 	// example:
@@ -119,15 +124,15 @@ type GetMediaConnectFlowOutputResponseBodyContent struct {
 	//
 	// Valid values:
 	//
-	// 	- RTMP-PUSH
+	// - RTMP-PUSH
 	//
-	// 	- SRT-Caller
+	// - SRT-Caller
 	//
-	// 	- RTMP-PULL
+	// - RTMP-PULL
 	//
-	// 	- SRT-Listener
+	// - SRT-Listener
 	//
-	// 	- Flow
+	// - Flow
 	//
 	// example:
 	//
@@ -173,13 +178,13 @@ type GetMediaConnectFlowOutputResponseBodyContent struct {
 	//
 	// Valid values:
 	//
-	// 	- 0
+	// - 0
 	//
-	// 	- 16
+	// - 16
 	//
-	// 	- 24
+	// - 24
 	//
-	// 	- 32
+	// - 32
 	//
 	// example:
 	//

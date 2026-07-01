@@ -86,7 +86,7 @@ type GetPackageJobResponseBodyPackageJob struct {
 	//
 	// example:
 	//
-	// ab4802364a2e49208c99efab82dfa8e8
+	// ab4802364a2e49208c99efab82df****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The error message that is returned.
 	//
@@ -118,7 +118,7 @@ type GetPackageJobResponseBodyPackageJob struct {
 	//
 	// example:
 	//
-	// 36f3fee40aa047c0b067d0fb85edc12b
+	// 36f3fee40aa047c0b067d0fb85ed****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
 	//
@@ -140,11 +140,11 @@ type GetPackageJobResponseBodyPackageJob struct {
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
 	// The source of the job. Valid values:
 	//
-	// 	- API
+	// - API
 	//
-	// 	- WorkFlow
+	// - WorkFlow
 	//
-	// 	- Console
+	// - Console
 	//
 	// example:
 	//
@@ -362,9 +362,9 @@ func (s *GetPackageJobResponseBodyPackageJobInputs) Validate() error {
 type GetPackageJobResponseBodyPackageJobInputsInput struct {
 	// The media object.
 	//
-	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	// - If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
 	//
-	// 	- If Type is set to Media, the ID of a media asset is returned.
+	// - If Type is set to Media, the ID of a media asset is returned.
 	//
 	// example:
 	//
@@ -372,9 +372,9 @@ type GetPackageJobResponseBodyPackageJobInputsInput struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the media object. Valid values:
 	//
-	// 	- OSS: an Object Storage Service (OSS) object.
+	// - OSS: an Object Storage Service (OSS) object.
 	//
-	// 	- Media: a media asset.
+	// - Media: a media asset.
 	//
 	// example:
 	//
@@ -415,9 +415,9 @@ func (s *GetPackageJobResponseBodyPackageJobInputsInput) Validate() error {
 type GetPackageJobResponseBodyPackageJobOutput struct {
 	// The media object.
 	//
-	// 	- If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+	// - If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
 	//
-	// 	- If Type is set to Media, the ID of a media asset is returned.
+	// - If Type is set to Media, the ID of a media asset is returned.
 	//
 	// example:
 	//
@@ -425,9 +425,9 @@ type GetPackageJobResponseBodyPackageJobOutput struct {
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
 	// The type of the media object. Valid values:
 	//
-	// 	- OSS: an OSS object.
+	// - OSS: an OSS object.
 	//
-	// 	- Media: a media asset.
+	// - Media: a media asset.
 	//
 	// example:
 	//

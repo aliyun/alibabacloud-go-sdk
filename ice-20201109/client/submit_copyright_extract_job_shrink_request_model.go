@@ -18,25 +18,25 @@ type iSubmitCopyrightExtractJobShrinkRequest interface {
 }
 
 type SubmitCopyrightExtractJobShrinkRequest struct {
-	// The source video file from which to extract the watermark.
+	// The video file for watermark extraction.
 	//
-	// > The OSS object or media asset must reside in the same region as the IMS service region.
+	// > - The region of the Object Storage Service (OSS) file or media asset must match the region of the current Intelligent Media Service (IMS) instance.
 	//
 	// This parameter is required.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// Additional parameters for the watermark job, provided as a JSON string. Supported parameter:
+	// The watermark job parameters, specified as a JSON string.
 	//
-	// 	- algoType: The algorithm type. Defaults to v1. The extraction algorithm must match the one used for embedding.
+	// - algoType: The algorithm type. Default value: v1. The extraction algorithm type must match the algorithm type used for embedding the watermark.
 	//
-	//     	- v1: Copyright watermark extraction algorithm for long videos.
+	//   - v1: The copyright extraction algorithm for long-form videos.
 	//
-	//     	- v2: Copyright watermark extraction algorithm for short videos.
+	//   - v2: The copyright extraction algorithm for short-form videos.
 	//
 	// example:
 	//
 	// {"algoType":"v2"}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// The custom data, which can be up to 1,024 bytes in size.
+	// The user-defined data. The maximum length is 1,024 bytes.
 	//
 	// example:
 	//

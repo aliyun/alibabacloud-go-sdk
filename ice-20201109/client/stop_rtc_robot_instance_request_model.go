@@ -14,6 +14,8 @@ type iStopRtcRobotInstanceRequest interface {
 }
 
 type StopRtcRobotInstanceRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:

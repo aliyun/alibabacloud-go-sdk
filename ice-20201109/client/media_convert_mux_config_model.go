@@ -14,6 +14,9 @@ type iMediaConvertMuxConfig interface {
 }
 
 type MediaConvertMuxConfig struct {
+	// Shard configuration field. For more information, see Segment details.
+	//
+	// This field takes effect only when Container is set to m3u8, hls-fmp4, mpd, or cmaf.
 	Segment *MediaConvertSegment `json:"Segment,omitempty" xml:"Segment,omitempty"`
 }
 

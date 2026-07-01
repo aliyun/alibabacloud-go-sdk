@@ -20,9 +20,13 @@ type iSubmitMediaInfoJobShrinkRequest interface {
 }
 
 type SubmitMediaInfoJobShrinkRequest struct {
-	// The input of the job.
+	// The input for the job.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// job-name
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// The job name.
 	//
@@ -30,9 +34,13 @@ type SubmitMediaInfoJobShrinkRequest struct {
 	//
 	// job-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The scheduling parameters.
+	// The scheduling settings.
+	//
+	// example:
+	//
+	// user-data
 	ScheduleConfigShrink *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
-	// The user data.
+	// The custom user data.
 	//
 	// example:
 	//

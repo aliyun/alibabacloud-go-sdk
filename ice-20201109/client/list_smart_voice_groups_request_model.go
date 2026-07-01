@@ -14,6 +14,11 @@ type iListSmartVoiceGroupsRequest interface {
 }
 
 type ListSmartVoiceGroupsRequest struct {
+	// The voice type. If you do not specify this parameter, the operation returns voices from the small model by default. Set this parameter to `CosyVoice` to retrieve voices from the Cosyvoice large model.
+	//
+	// example:
+	//
+	// CosyVoice
 	VoiceType *string `json:"VoiceType,omitempty" xml:"VoiceType,omitempty"`
 }
 

@@ -81,6 +81,10 @@ type CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The endpoint description.
+	//
+	// example:
+	//
+	// This is an origin endpoint.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The endpoint name.
 	//
@@ -117,7 +121,8 @@ type CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
-	LastModified        *string              `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// Live packaging configuration
 	LivePackagingConfig *LivePackagingConfig `json:"LivePackagingConfig,omitempty" xml:"LivePackagingConfig,omitempty"`
 	// The playlist name.
 	//

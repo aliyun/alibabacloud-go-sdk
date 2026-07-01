@@ -38,9 +38,9 @@ type GetVideoListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -134,6 +134,10 @@ type GetVideoListResponseBodyMediaList struct {
 	// 3679
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 	// The name of the category.
+	//
+	// example:
+	//
+	// Category1
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
 	// The URL of the thumbnail.
 	//
@@ -148,6 +152,10 @@ type GetVideoListResponseBodyMediaList struct {
 	// 2017-11-14T09:15:50Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the audio or video file.
+	//
+	// example:
+	//
+	// Alibaba Cloud VOD video description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The duration. Unit: seconds.
 	//
@@ -179,27 +187,27 @@ type GetVideoListResponseBodyMediaList struct {
 	//
 	// Valid values:
 	//
-	// 	- PrepareFail: The file is abnormal.
+	// - PrepareFail: The file is abnormal.
 	//
-	// 	- UploadFail: The video failed to be uploaded.
+	// - UploadFail: The video failed to be uploaded.
 	//
-	// 	- UploadSucc: The video is uploaded.
+	// - UploadSucc: The video is uploaded.
 	//
-	// 	- Transcoding: The video is being transcoded.
+	// - Transcoding: The video is being transcoded.
 	//
-	// 	- TranscodeFail: The video failed to be transcoded.
+	// - TranscodeFail: The video failed to be transcoded.
 	//
-	// 	- ProduceFail: The video failed to be produced.
+	// - ProduceFail: The video failed to be produced.
 	//
-	// 	- Normal: The video is normal.
+	// - Normal: The video is normal.
 	//
-	// 	- Uploading: The video is being uploaded.
+	// - Uploading: The video is being uploaded.
 	//
-	// 	- Preparing: The file is being generated.
+	// - Preparing: The file is being generated.
 	//
-	// 	- Blocked: The video is blocked.
+	// - Blocked: The video is blocked.
 	//
-	// 	- checking: The video is being reviewed.
+	// - checking: The video is being reviewed.
 	//
 	// example:
 	//
@@ -212,8 +220,16 @@ type GetVideoListResponseBodyMediaList struct {
 	// out-****.oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 	// The tags of the audio or video file.
+	//
+	// example:
+	//
+	// Tag 1, Tag 2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The title of the audio or video file.
+	//
+	// example:
+	//
+	// The best music player ever
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

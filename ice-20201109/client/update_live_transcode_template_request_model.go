@@ -19,6 +19,10 @@ type iUpdateLiveTranscodeTemplateRequest interface {
 
 type UpdateLiveTranscodeTemplateRequest struct {
 	// The template name.
+	//
+	// example:
+	//
+	// Template1130-2
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The configuration of the template.
 	TemplateConfig *UpdateLiveTranscodeTemplateRequestTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty" type:"Struct"`
@@ -144,13 +148,13 @@ type UpdateLiveTranscodeTemplateRequestTemplateConfigAudioParams struct {
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
 	// The audio codec profile. Valid values when the Codec parameter is set to AAC:
 	//
-	// 	- aac_low
+	// - aac_low
 	//
-	// 	- aac_he
+	// - aac_he
 	//
-	// 	- aac_he_v2
+	// - aac_he_v2
 	//
-	// 	- aac_ld
+	// - aac_ld
 	//
 	// example:
 	//
@@ -232,9 +236,9 @@ type UpdateLiveTranscodeTemplateRequestTemplateConfigVideoParams struct {
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	// The encoding type. Valid values:
 	//
-	// 	- H.264
+	// - H.264
 	//
-	// 	- H.265
+	// - H.265
 	//
 	// example:
 	//
@@ -254,13 +258,13 @@ type UpdateLiveTranscodeTemplateRequestTemplateConfigVideoParams struct {
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
 	// The height of the output video. Valid values:
 	//
-	// 	- Height ≥ 128
+	// - Height ≥ 128
 	//
-	// 	- max (Height,Width) ≤ 2560
+	// - max (Height,Width) ≤ 2560
 	//
-	// 	- min（Height,Width）≤ 1440
+	// - min(Height,Width)≤ 1440
 	//
-	// >  The resolution of a video transcoded by using the H.265 Narrowband HD template cannot exceed 1,280 × 720 pixels.
+	// > The resolution of a video transcoded by using the H.265 Narrowband HD template cannot exceed 1,280 × 720 pixels.
 	//
 	// example:
 	//
@@ -268,11 +272,11 @@ type UpdateLiveTranscodeTemplateRequestTemplateConfigVideoParams struct {
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	// The video encoding profile. The profile determines how a video is encoded. In most cases, a greater value indicates better image quality and higher resource consumption. Valid values:
 	//
-	// 	- 1: baseline. This value is suitable for mobile devices.
+	// - 1: baseline. This value is suitable for mobile devices.
 	//
-	// 	- 2: main. This value is suitable for standard-definition devices.
+	// - 2: main. This value is suitable for standard-definition devices.
 	//
-	// 	- 3: high. This value is suitable for high-definition devices.
+	// - 3: high. This value is suitable for high-definition devices.
 	//
 	// example:
 	//
@@ -280,13 +284,13 @@ type UpdateLiveTranscodeTemplateRequestTemplateConfigVideoParams struct {
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The width of the output video. Valid values:
 	//
-	// 	- Width ≥ 128
+	// - Width ≥ 128
 	//
-	// 	- max (Height,Width) ≤ 2560
+	// - max (Height,Width) ≤ 2560
 	//
-	// 	- min（Height,Width）≤ 1440
+	// - min(Height,Width)≤ 1440
 	//
-	// >  The resolution of a video transcoded by using the H.265 Narrowband HD template cannot exceed 1,280 × 720 pixels.
+	// > The resolution of a video transcoded by using the H.265 Narrowband HD template cannot exceed 1,280 × 720 pixels.
 	//
 	// example:
 	//

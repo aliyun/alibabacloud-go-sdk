@@ -111,6 +111,10 @@ func (s *GetAvatarTrainingJobResponseBodyData) Validate() error {
 
 type GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob struct {
 	// The description of the digital human.
+	//
+	// example:
+	//
+	// This is a digital human used for a specific scenario.
 	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
 	// The ID of the digital human.
 	//
@@ -119,6 +123,10 @@ type GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob struct {
 	// Avatar-XXXX
 	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
 	// The name of the digital human.
+	//
+	// example:
+	//
+	// Decimal
 	AvatarName *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
 	// The type of the digital human.
 	//
@@ -126,9 +134,9 @@ type GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob struct {
 	//
 	// 2DAvatar
 	AvatarType *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
-	// 	- The time when the first training was initiated.
+	// - The time when the first training was initiated.
 	//
-	// 	- The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// - The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -140,15 +148,19 @@ type GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob struct {
 	//
 	// ****55d86f7f4587943ce7734d6b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 	- The time when the last training was initiated.
+	// - The time when the last training was initiated.
 	//
-	// 	- The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// - The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-12-23T13:33:40Z
 	LastTrainingTime *string `json:"LastTrainingTime,omitempty" xml:"LastTrainingTime,omitempty"`
 	// The status description.
+	//
+	// example:
+	//
+	// Training succeeded
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The media asset ID of the portrait image.
 	//
@@ -156,9 +168,9 @@ type GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob struct {
 	//
 	// ****571c704445f9a0ee011406c2****
 	Portrait *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
-	// 	- The state of the digital human training job.
+	// - The state of the digital human training job.
 	//
-	// 	- Valid values: Init, Queuing, Training, Success, and Fail.
+	// - Valid values: Init, Queuing, Training, Success, and Fail.
 	//
 	// example:
 	//

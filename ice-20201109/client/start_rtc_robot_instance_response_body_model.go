@@ -16,11 +16,13 @@ type iStartRtcRobotInstanceResponseBody interface {
 }
 
 type StartRtcRobotInstanceResponseBody struct {
+	// The instance\\"s unique identifier.
+	//
 	// example:
 	//
 	// 727dc0e296014bb58670940a3da95592
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

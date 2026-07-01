@@ -26,9 +26,9 @@ type UpdateMediaConnectFlowStatusRequest struct {
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	// The flow state. Valid values:
 	//
-	// 	- online: starts the flow.
+	// - online: starts the flow.
 	//
-	// 	- offline: stops the flow.
+	// - offline: stops the flow.
 	//
 	// This parameter is required.
 	//

@@ -28,9 +28,9 @@ type GetAvatarResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -115,6 +115,10 @@ func (s *GetAvatarResponseBodyData) Validate() error {
 
 type GetAvatarResponseBodyDataAvatar struct {
 	// The description of the digital human.
+	//
+	// example:
+	//
+	// This is a digital human used for a specific scenario.
 	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
 	// The ID of the digital human.
 	//
@@ -123,6 +127,10 @@ type GetAvatarResponseBodyDataAvatar struct {
 	// Avatar-XXXX
 	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
 	// The name of the digital human.
+	//
+	// example:
+	//
+	// Decimal
 	AvatarName *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
 	// The type of the digital human.
 	//

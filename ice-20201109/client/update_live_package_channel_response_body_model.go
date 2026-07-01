@@ -75,6 +75,10 @@ type UpdateLivePackageChannelResponseBodyLivePackageChannel struct {
 	// 2024-07-16T02:24:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The channel description. It can be up to 1,000 characters in length.
+	//
+	// example:
+	//
+	// This is a test channel.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The channel group name.
 	//

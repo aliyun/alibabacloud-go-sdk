@@ -24,21 +24,21 @@ type iSubmitDynamicImageJobRequest interface {
 }
 
 type SubmitDynamicImageJobRequest struct {
-	// The input of the job.
+	// The job input.
 	//
 	// This parameter is required.
 	Input *SubmitDynamicImageJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// The name of the job.
+	// The job name.
 	//
 	// example:
 	//
 	// SampleJob
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output of the job.
+	// The job output.
 	//
 	// This parameter is required.
 	Output *SubmitDynamicImageJobRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// The scheduling settings.
+	// The scheduling configuration.
 	ScheduleConfig *SubmitDynamicImageJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
 	// The snapshot template configuration.
 	//
@@ -139,15 +139,21 @@ func (s *SubmitDynamicImageJobRequest) Validate() error {
 }
 
 type SubmitDynamicImageJobRequestInput struct {
-	// The input file. If Type is set to OSS, set this parameter to the URL of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. The URL of an OSS object can be in one of the following formats:
+	// The input media resource.
 	//
-	// 1.  oss://bucket/object
+	// - If `Type` is set to `OSS`, specify the OSS URL of the input file.
 	//
-	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+	// - If `Type` is set to `Media`, specify the media asset ID.
 	//
-	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	// An OSS URL must be in one of the following formats:
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the Intelligent Media Services (IMS) console.
+	// 1. `oss://bucket/object`
+	//
+	// 2. `http(s)://bucket.oss-[RegionId].aliyuncs.com/object`
+	//
+	// In these formats, `bucket` is the name of an OSS bucket in the same region as the current project, and `object` is the file path.
+	//
+	// > The specified OSS bucket must be registered in IMS [storage management](https://help.aliyun.com/document_detail/609918.html).
 	//
 	// This parameter is required.
 	//
@@ -155,11 +161,11 @@ type SubmitDynamicImageJobRequestInput struct {
 	//
 	// oss://bucket/object.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The type of the input file. Valid values:
+	// The type of the job input. Valid values:
 	//
-	// 1.  OSS: an Object Storage Service (OSS) object.
+	// - `OSS`: An Object Storage Service (OSS) file URL.
 	//
-	// 2.  Media: a media asset.
+	// - `Media`: A media asset ID.
 	//
 	// This parameter is required.
 	//
@@ -200,15 +206,15 @@ func (s *SubmitDynamicImageJobRequestInput) Validate() error {
 }
 
 type SubmitDynamicImageJobRequestOutput struct {
-	// The output file. The file can be an OSS object or a media asset. The URL of an OSS object can be in one of the following formats:
+	// The destination OSS URL for the output file. This parameter is required when `Type` is set to `OSS`. The URL must be in one of the following formats:
 	//
-	// 	- oss://bucket/object
+	// - `oss://bucket/object`
 	//
-	// 	- http(s)://bucket.oss-[regionId].aliyuncs.com/object
+	// - `http(s)://bucket.oss-[regionId].aliyuncs.com/object`
 	//
-	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+	// In these formats, `bucket` is the name of an OSS bucket in the same region as the current project, and `object` is the file path.
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the IMS console.
+	// > The specified OSS bucket must be registered in IMS [storage management](https://help.aliyun.com/document_detail/609918.html).
 	//
 	// This parameter is required.
 	//
@@ -216,11 +222,11 @@ type SubmitDynamicImageJobRequestOutput struct {
 	//
 	// ****96e8864746a0b6f3****
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The type of the output file. Valid values:
+	// The type of the job output. Valid values:
 	//
-	// 1.  OSS: an OSS object.
+	// - `OSS`: The output is an OSS file.
 	//
-	// 2.  Media: a media asset.
+	// - `Media`: The output is a new media asset.
 	//
 	// This parameter is required.
 	//
@@ -261,13 +267,13 @@ func (s *SubmitDynamicImageJobRequestOutput) Validate() error {
 }
 
 type SubmitDynamicImageJobRequestScheduleConfig struct {
-	// The ID of the MPS queue to which the job was submitted.
+	// The pipeline ID.
 	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The priority. Valid values: 1 to 10. Default value: 6. A greater value specifies a higher priority.
+	// The priority of the job. Valid range: [1, 10]. A higher value indicates a higher priority. Default value: 6.
 	//
 	// example:
 	//
@@ -306,7 +312,7 @@ func (s *SubmitDynamicImageJobRequestScheduleConfig) Validate() error {
 }
 
 type SubmitDynamicImageJobRequestTemplateConfig struct {
-	// The parameters that are used to overwrite the corresponding parameters.
+	// The overwrite parameters.
 	OverwriteParams *SubmitDynamicImageJobRequestTemplateConfigOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
 	// The template ID.
 	//
@@ -354,37 +360,37 @@ func (s *SubmitDynamicImageJobRequestTemplateConfig) Validate() error {
 }
 
 type SubmitDynamicImageJobRequestTemplateConfigOverwriteParams struct {
-	// The format of the animated image. Valid values:
+	// The animated image format. Valid values:
 	//
-	// 	- **gif**
+	// - `gif`
 	//
-	// 	- **webp**
+	// - `webp`
 	//
 	// example:
 	//
 	// gif
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The frame rate. Valid values: [1,60].
+	// The frame rate. Valid range: [1, 60].
 	//
 	// example:
 	//
 	// 15
 	Fps *int32 `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The height of the animated image. Valid values: [128,4096].
+	// The height of the output animated image. Valid range: [128, 4096].
 	//
 	// example:
 	//
 	// 720
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// Specifies whether to enable the auto-rotate screen feature. Valid values:
+	// Specifies whether to enable adaptive orientation based on the long and short edges of the video. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enables adaptive orientation.
 	//
-	// 	- **false**
+	// - **false**: Disables adaptive orientation.
 	//
 	// Default value: **true**.
 	//
-	// >  If this feature is enabled, the width of the output video corresponds to the long side of the input video, which is the height of the input video in portrait mode. The height of the output video corresponds to the short side of the input video, which is the width of the input video in portrait mode.
+	// > When enabled, this mode sets the output width to the source video\\"s long edge and the output height to its short edge. For a portrait video, its height is treated as the long edge and its width as the short edge.
 	//
 	// example:
 	//
@@ -392,17 +398,17 @@ type SubmitDynamicImageJobRequestTemplateConfigOverwriteParams struct {
 	LongShortMode *bool `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
 	// The scan mode. Valid values:
 	//
-	// 	- **interlaced**
+	// - **interlaced**: Interlaced scanning.
 	//
-	// 	- **progressive*	- This is the default value.
+	// - **progressive**: Progressive scanning. This is the default value.
 	//
 	// example:
 	//
 	// progressive
 	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	// The timeline parameters.
+	// Specifies the time range of the video to process for the animated image.
 	TimeSpan *SubmitDynamicImageJobRequestTemplateConfigOverwriteParamsTimeSpan `json:"TimeSpan,omitempty" xml:"TimeSpan,omitempty" type:"Struct"`
-	// The width of the animated image. Valid values: [128,4096].
+	// The width of the output animated image. Valid range: [128, 4096].
 	//
 	// example:
 	//
@@ -491,31 +497,31 @@ func (s *SubmitDynamicImageJobRequestTemplateConfigOverwriteParams) Validate() e
 }
 
 type SubmitDynamicImageJobRequestTemplateConfigOverwriteParamsTimeSpan struct {
-	// The length of the clip.
+	// The duration of the video segment to be processed.
 	//
-	// 	- Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+	// - Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
 	//
-	// 	- Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
+	// - Valid range: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
 	//
 	// example:
 	//
 	// 01:59:59.999 or 32000.23
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The length of the ending part of the original clip to be cropped out. If you specify this parameter, the Duration parameter becomes invalid.
+	// The end time of the video segment to be processed. If this parameter is set, the `Duration` parameter is ignored.
 	//
-	// 	- Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+	// - Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
 	//
-	// 	- Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
+	// - Valid range: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
 	//
 	// example:
 	//
 	// 01:59:59.999 or 32000.23
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// The start point of the clip.
+	// The start time of the video segment to be processed.
 	//
-	// 	- Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+	// - Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
 	//
-	// 	- Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
+	// - Valid range: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
 	//
 	// example:
 	//

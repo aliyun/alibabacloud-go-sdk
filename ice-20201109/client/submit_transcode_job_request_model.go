@@ -24,13 +24,13 @@ type iSubmitTranscodeJobRequest interface {
 }
 
 type SubmitTranscodeJobRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The idempotence key. Ensures request idempotence.
 	//
 	// example:
 	//
 	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
+	// The input group for the job. A single input creates a transcoding job. Multiple inputs create a media merging job.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type SubmitTranscodeJobRequest struct {
 	//
 	// job-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output group of the job.
+	// The output group for the job.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type SubmitTranscodeJobRequest struct {
 	//
 	// user-data
 	OutputGroup []*SubmitTranscodeJobRequestOutputGroup `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
-	// The scheduling information about the job.
+	// The job scheduling information.
 	//
 	// example:
 	//
 	// job-name
 	ScheduleConfig *SubmitTranscodeJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// The custom settings. The value must be in the JSON format and can be up to 512 bytes in length. You can specify a [custom callback URL](https://help.aliyun.com/document_detail/451631.html).
+	// Custom settings in JSON format. The length is limited to 512 bytes. Supports [custom webhook address configuration](https://help.aliyun.com/document_detail/451631.html).
 	//
 	// example:
 	//
@@ -156,23 +156,23 @@ func (s *SubmitTranscodeJobRequest) Validate() error {
 }
 
 type SubmitTranscodeJobRequestInputGroup struct {
-	// The URL of the input stream.
+	// The input stream path:
 	//
-	// 	- This parameter takes effect only when Type is set to Media. You can select a specific file within the media asset as an input.
+	// - This parameter takes effect only when Type is Media. It lets you select a specific file from the media asset as the input.
 	//
-	// 	- The system checks whether the input URL exists within the media asset.
+	// - The system checks whether the input URL exists in the media asset.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
-	// The media object.
+	// The media value:
 	//
-	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	// - If Type is OSS, this is a URL that supports the OSS or HTTP protocol.
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the Intelligent Media Services (IMS) console.
+	// > You must add the OSS bucket in the URL to IMS [storage management](https://help.aliyun.com/document_detail/609918.html) before you use it.
 	//
-	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	// - If Type is Media, this is a media asset ID.
 	//
 	// This parameter is required.
 	//
@@ -180,11 +180,11 @@ type SubmitTranscodeJobRequestInputGroup struct {
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The type of the media object. Valid values:
+	// The media object type. Valid values:
 	//
-	// 	- OSS: an Object Storage Service (OSS) object.
+	// - OSS: An OSS file.
 	//
-	// 	- Media: a media asset.
+	// - Media: A media asset ID.
 	//
 	// This parameter is required.
 	//
@@ -234,7 +234,7 @@ func (s *SubmitTranscodeJobRequestInputGroup) Validate() error {
 }
 
 type SubmitTranscodeJobRequestOutputGroup struct {
-	// The output file configuration.
+	// The output media configuration.
 	//
 	// This parameter is required.
 	Output *SubmitTranscodeJobRequestOutputGroupOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
@@ -285,13 +285,13 @@ func (s *SubmitTranscodeJobRequestOutputGroup) Validate() error {
 }
 
 type SubmitTranscodeJobRequestOutputGroupOutput struct {
-	// The media object.
+	// The media value:
 	//
-	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	// - If Type is OSS, this is a URL that supports the OSS or HTTP protocol.
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the IMS console.
+	// > You must add the OSS bucket in the URL to IMS [storage management](https://help.aliyun.com/document_detail/609918.html) before you use it.
 	//
-	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	// - If Type is Media, this is a media asset ID.
 	//
 	// This parameter is required.
 	//
@@ -299,37 +299,37 @@ type SubmitTranscodeJobRequestOutputGroupOutput struct {
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The URL of the output stream.\\
+	// The output stream path:<br>
 	//
-	// This parameter takes effect only when Type is set to Media. You can select a specific file within the media asset as an output.\\
+	// This parameter takes effect only when Type is Media. It lets you select a specific file from the media asset as the output.<br>
 	//
-	// Supported placeholders:
+	// Valid placeholders:<br><br>
 	//
-	// 	- {MediaId}: the ID of the media asset.
+	// - {MediaId}: The media asset ID.
 	//
-	// 	- {JobId}: the ID of the transcoding subjob.
+	// - {JobId}: The sub-job ID.
 	//
-	// 	- {MediaBucket}: the bucket to which the media asset belongs.
+	// - {MediaBucket}: The bucket where the media asset resides.
 	//
-	// 	- {ExtName}: the file suffix, which uses the output format of the transcoding template.
+	// - {ExtName}: The file extension. This is the output format specified in the transcoding template.
 	//
-	// 	- {DestMd5}: the MD5 value of the transcoded output file.\\
+	// - {DestMd5}: The MD5 hash of the transcoded output file.
 	//
-	//     Notes:
+	// > 1. You must include both {MediaId} and {JobId} in this parameter.
 	//
-	// 1.  This parameter must contain the {MediaId} and {JobId} placeholders.
+	// >
 	//
-	// 2.  The output bucket is the same as the bucket to which the media asset belongs.
+	// > 2. The output bucket must be the same as the bucket where the media asset resides.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/{MediaId}/{JobId}.mp4
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
-	// The type of the media object. Valid values:
+	// The media object type. Valid values:
 	//
-	// 	- OSS: an OSS object.
+	// - OSS: An OSS file.
 	//
-	// 	- Media: a media asset.
+	// - Media: A media asset ID.
 	//
 	// This parameter is required.
 	//
@@ -379,15 +379,15 @@ func (s *SubmitTranscodeJobRequestOutputGroupOutput) Validate() error {
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfig struct {
-	// The multi-input stream merge configuration.
+	// The configuration for merging multiple inputs.
 	CombineConfigs []*SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
-	// The encryption settings.
+	// The encryption configuration.
 	Encryption *SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
-	// The watermark configuration of an image.
+	// The image watermark configuration.
 	ImageWatermarks []*SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	// The subtitle configuration.
+	// The subtitle burn-in configuration.
 	Subtitles []*SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
-	// The configurations of the text watermark.
+	// The text watermark configuration.
 	TextWatermarks []*SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
 	// The transcoding configuration.
 	//
@@ -514,15 +514,15 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs struct {
 	//
 	// example:
 	//
-	// 0 或 exclude
+	// 0 or exclude
 	AudioIndex *string `json:"AudioIndex,omitempty" xml:"AudioIndex,omitempty"`
-	// The duration of the input stream. The default value is the duration of the video.
+	// The duration of the input stream. Default: The video duration.
 	//
 	// example:
 	//
 	// 20.0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The start time of the input stream. Default value: 0.
+	// The start time of the input stream. Default: 0.
 	//
 	// example:
 	//
@@ -534,7 +534,7 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs struct {
 	//
 	// example:
 	//
-	// 0 或 exclude
+	// 0 or exclude
 	VideoIndex *string `json:"VideoIndex,omitempty" xml:"VideoIndex,omitempty"`
 }
 
@@ -587,33 +587,33 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs) Valida
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption struct {
-	// The ciphertext of HTTP Live Streaming (HLS) encryption.
+	// The ciphertext of the key for standard encryption.
 	//
 	// example:
 	//
 	// MTYi00NDU0LTg5O****
 	CipherText *string `json:"CipherText,omitempty" xml:"CipherText,omitempty"`
-	// The address of the decryption service for HLS encryption.
+	// The decryption service endpoint for standard encryption.
 	//
 	// example:
 	//
 	// https://sample.com/path?CipherText=MTYi00NDU0LTg5O****
 	DecryptKeyUri *string `json:"DecryptKeyUri,omitempty" xml:"DecryptKeyUri,omitempty"`
-	// Specifies the encryption type. Valid values:
+	// The encryption type. Valid values:
 	//
-	// 	- PrivateEncryption: Alibaba Cloud proprietary cryptography
+	// - PrivateEncryption: Alibaba Cloud proprietary cryptography.
 	//
-	// 	- HLSEncryption: HTTP Live Streaming (HLS) encryption
+	// - HLSEncryption: HLS standard encryption.
 	//
 	// example:
 	//
 	// PrivateEncryption
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	// The key service type for HLS encryption. Valid values:
+	// The key service type for standard encryption. Valid values:
 	//
-	// 	- KMS
+	// - KMS
 	//
-	// 	- Base64
+	// - Base64
 	//
 	// example:
 	//
@@ -670,7 +670,7 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption) Validate()
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks struct {
-	// The parameters that are used to overwrite the corresponding parameters of the template.
+	// Parameters to overwrite. If you specify these, they replace the corresponding parameters in the template.
 	OverwriteParams *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
 	// The template ID.
 	//
@@ -718,41 +718,41 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks) Valid
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParams struct {
-	// The horizontal offset of the watermark relative to the output video. Default value: 0.
+	// The horizontal offset of the image watermark relative to the output video. Default value: 0.
 	//
-	// The following value types are supported:
+	// Values can be one of the following:
 	//
-	// 	- Integer: the pixel value of the horizontal offset.
+	// - Integer: The offset in pixels.
 	//
-	//     	- Valid values: [8,4096].
+	//   - Valid values: [8, 4096]
 	//
-	//     	- Unit: pixels.
+	//   - Unit: px
 	//
-	// 	- Decimal: the ratio of the horizontal offset to the width of the output video.
+	// - Decimal: The ratio of the horizontal offset to the output video width.
 	//
-	//     	- Valid values: (0,1).
+	//   - Valid values: (0, 1)
 	//
-	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//   - Up to four decimal places are supported, such as 0.9999. Extra digits are automatically discarded.
 	//
 	// example:
 	//
 	// 10
 	Dx *string `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	// The vertical offset of the watermark relative to the output video. Default value: 0.
+	// The vertical offset of the image watermark relative to the output video. Default value: 0.
 	//
-	// The following value types are supported:
+	// Values can be one of the following:
 	//
-	// 	- Integer: the pixel value of the horizontal offset.
+	// - Integer: The offset in pixels.
 	//
-	//     	- Valid values: [8,4096].
+	//   - Valid values: [8, 4096]
 	//
-	//     	- Unit: pixels.
+	//   - Unit: px
 	//
-	// 	- Decimal: the ratio of the vertical offset to the height of the output video.
+	// - Decimal: The ratio of the vertical offset to the output video height.
 	//
-	//     	- Valid values: (0,1).
+	//   - Valid values: (0, 1)
 	//
-	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//   - Up to four decimal places are supported, such as 0.9999. Extra digits are automatically discarded.
 	//
 	// example:
 	//
@@ -760,19 +760,19 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwritePa
 	Dy *string `json:"Dy,omitempty" xml:"Dy,omitempty"`
 	// The watermark image file.
 	File *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// The height of the watermark image in the output video. The following value types are supported:
+	// The height of the image watermark on the output video. Values can be one of the following:
 	//
-	// 	- Integer: the pixel value of the watermark height.
+	// - Integer: The pixel height of the watermark image.
 	//
-	//     	- Valid values: [8,4096].
+	//   - Valid values: [8, 4096]
 	//
-	//     	- Unit: pixels.
+	//   - Unit: px
 	//
-	// 	- Decimal: the ratio of the watermark height to the height of the output video.
+	// - Decimal: The ratio of the watermark height to the output video height.
 	//
-	//     	- Valid values: (0,1).
+	//   - Valid values: (0, 1)
 	//
-	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//   - Up to four decimal places are supported, such as 0.9999. Extra digits are automatically discarded.
 	//
 	// example:
 	//
@@ -780,29 +780,29 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwritePa
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	// The position of the watermark.
 	//
-	// 	- Valid values: TopRight, TopLeft, BottomRight, and BottomLeft.
+	// - Valid values: TopRight (top-right), TopLeft (top-left), BottomRight (bottom-right), and BottomLeft (bottom-left).
 	//
-	// 	- Default value: TopRight.
+	// - Default value: TopRight.
 	//
 	// example:
 	//
 	// TopLeft
 	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	// The time settings of the dynamic watermark.
+	// The display time settings for a dynamic watermark.
 	Timeline *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline `json:"Timeline,omitempty" xml:"Timeline,omitempty" type:"Struct"`
-	// The width of the watermark in the output video. The following value types are supported:
+	// The width of the image watermark on the output video. Values can be one of the following:
 	//
-	// 	- Integer: the pixel value of the watermark width.
+	// - Integer: The pixel width of the watermark image.
 	//
-	//     	- Valid values: [8,4096].
+	//   - Valid values: [8, 4096]
 	//
-	//     	- Unit: pixels.
+	//   - Unit: px
 	//
-	// 	- Decimal: the ratio of the watermark width to the width of the output video.
+	// - Decimal: The ratio of the watermark width to the output video width.
 	//
-	//     	- Valid values: (0,1).
+	//   - Valid values: (0, 1)
 	//
-	//     	- The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+	//   - Up to four decimal places are supported, such as 0.9999. Extra digits are automatically discarded.
 	//
 	// example:
 	//
@@ -896,21 +896,21 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwri
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsFile struct {
-	// The media object.
+	// The media value:
 	//
-	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	// - If Type is OSS, this is a URL that supports the OSS or HTTP protocol.
 	//
-	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	// - If Type is Media, this is a media asset ID.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The type of the media object. Valid values:
+	// The media object type. Valid values:
 	//
-	// 	- OSS: an OSS object.
+	// - OSS: An OSS file.
 	//
-	// 	- Media: a media asset.
+	// - Media: A media asset ID.
 	//
 	// example:
 	//
@@ -949,23 +949,23 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwri
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline struct {
-	// The time range in which the watermark is displayed.
+	// The duration of the watermark.
 	//
-	// 	- Valid values: integers and ToEND.
+	// - Valid values: [number, ToEND]
 	//
-	// 	- Default value: ToEND.
+	// - Default value: ToEND
 	//
 	// example:
 	//
 	// ToEND
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The beginning of the time range in which the watermark is displayed.
+	// The start time of the watermark.
 	//
-	// 	- Unit: seconds.
+	// - Unit: seconds
 	//
-	// 	- Value values: integers.
+	// - Valid values: numbers
 	//
-	// 	- Default value: 0.
+	// - Default value: 0
 	//
 	// example:
 	//
@@ -1004,7 +1004,7 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwri
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles struct {
-	// The parameters that are used to overwrite the corresponding parameters of the template.
+	// Parameters to overwrite. If you specify these, they replace the corresponding parameters in the template.
 	OverwriteParams *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
 	// The template ID.
 	//
@@ -1060,7 +1060,7 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParams s
 	CharEnc *string `json:"CharEnc,omitempty" xml:"CharEnc,omitempty"`
 	// The subtitle file.
 	File *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParamsFile `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
-	// The format of the subtitle file.
+	// The subtitle file format.
 	//
 	// example:
 	//
@@ -1113,21 +1113,21 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParamsFile struct {
-	// The media object.
+	// The media value:
 	//
-	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	// - If Type is OSS, this is a URL that supports the OSS or HTTP protocol.
 	//
-	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	// - If Type is Media, this is a media asset ID.
 	//
 	// example:
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The type of the media object. Valid values:
+	// The media object type. Valid values:
 	//
-	// 	- OSS: an OSS object.
+	// - OSS: An OSS file.
 	//
-	// 	- Media: a media asset.
+	// - Media: A media asset ID.
 	//
 	// example:
 	//
@@ -1166,7 +1166,7 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks struct {
-	// The parameters that are used to overwrite the corresponding parameters of the template.
+	// Parameters to overwrite. If you specify these, they replace the corresponding parameters in the template.
 	OverwriteParams *SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
 	// The template ID.
 	//
@@ -1214,71 +1214,71 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks) Valida
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwriteParams struct {
-	// Specifies whether to the font size based on the output video dimensions. true / false, default: false
+	// Adjusts the font size based on the output video size. Valid values: true or false. Default: false.
 	//
 	// example:
 	//
 	// false
 	Adaptive *string `json:"Adaptive,omitempty" xml:"Adaptive,omitempty"`
-	// The outline color of the text watermark. Default value: black. For more information, see BorderColor.
+	// The outline color. Default: Black. For more values, see BorderColor.
 	//
 	// example:
 	//
 	// #006400
 	BorderColor *string `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	// The outline width of the text watermark.
+	// The outline width.
 	//
-	// 	- Default value: 0.
+	// - Default: 0
 	//
-	// 	- Valid values: (0,4096].
+	// - Valid values: (0, 4096]
 	//
 	// example:
 	//
 	// 0
 	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	// The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
+	// The watermark text. It does not need to be Base64 encoded. The string must be UTF-8 encoded.
 	//
 	// example:
 	//
-	// 测试水印
+	// Test watermark
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The transparency of the text.
+	// The font transparency.
 	//
-	// 	- Valid values: (0,1].
+	// - Valid values: (0, 1]
 	//
-	// 	- Default value: 1.
+	// - Default: 1.0
 	//
 	// example:
 	//
 	// 1.0
 	FontAlpha *string `json:"FontAlpha,omitempty" xml:"FontAlpha,omitempty"`
-	// The color of the text.
+	// The color.
 	//
 	// example:
 	//
 	// #006400
 	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	// The font of the text. Default value: SimSun.
+	// The font. Default: SimSun.
 	//
 	// example:
 	//
 	// SimSun
 	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// The size of the text.
+	// The font size.
 	//
-	// 	- Default value: 16.
+	// - Default value: 16
 	//
-	// 	- Valid values: (4,120).
+	// - Valid values: (4, 120)
 	//
 	// example:
 	//
 	// 16
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	// The left margin of the text watermark.
+	// The left margin of the text.
 	//
-	// 	- Default value: 0.
+	// - Default: 0
 	//
-	// 	- Valid values: [0,4096].
+	// - Valid values: [0, 4096]
 	//
 	// example:
 	//
@@ -1286,9 +1286,9 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwritePar
 	Left *string `json:"Left,omitempty" xml:"Left,omitempty"`
 	// The top margin of the text.
 	//
-	// 	- Default value: 0.
+	// - Default: 0
 	//
-	// 	- Valid values: [0,4096].
+	// - Valid values: [0, 4096]
 	//
 	// example:
 	//
@@ -1399,7 +1399,7 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwrit
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode struct {
-	// The parameters that are used to overwrite the corresponding parameters of the template.
+	// Parameters to overwrite. If you specify these, they replace the corresponding parameters in the template.
 	OverwriteParams *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams `json:"OverwriteParams,omitempty" xml:"OverwriteParams,omitempty" type:"Struct"`
 	// The template ID.
 	//
@@ -1449,11 +1449,11 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode) Validate() 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams struct {
 	// The audio settings.
 	Audio *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	// The encapsulation format settings.
+	// The container format settings.
 	Container *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	// The encapsulation settings.
+	// The multiplexing settings.
 	MuxConfig *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	// The conditional transcoding configurations.
+	// The conditional transcoding parameters.
 	TransConfig *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
 	// The video settings.
 	Video *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
@@ -1542,7 +1542,7 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio struct {
-	// The audio bitrate of the output file. Valid values: [8,1000]. Unit: Kbit/s. Default value: 128.
+	// The audio bitrate of the output file. Valid values: [8, 1000]. Unit: Kbps. Default value: 128.
 	//
 	// example:
 	//
@@ -1560,7 +1560,7 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAu
 	//
 	// AAC
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
+	// The audio encoding profile. When Codec is AAC, valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
 	//
 	// example:
 	//
@@ -1572,13 +1572,13 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAu
 	//
 	// false
 	Remove *string `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// The sampling rate. Valid values: 22050, 32000, 44100, 48000, and 96000. Default value: 44100. Unit: Hz.
+	// The sample rate. Default value: 44100. Valid values: 22050, 32000, 44100, 48000, and 96000. Unit: Hz.
 	//
 	// example:
 	//
 	// 44100
 	Samplerate *string `json:"Samplerate,omitempty" xml:"Samplerate,omitempty"`
-	// The volume configurations.
+	// The volume control.
 	Volume *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume `json:"Volume,omitempty" xml:"Volume,omitempty" type:"Struct"`
 }
 
@@ -1663,25 +1663,25 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume struct {
-	// The output volume.
+	// The target loudness level.
 	//
 	// example:
 	//
 	// -6
 	IntegratedLoudnessTarget *string `json:"IntegratedLoudnessTarget,omitempty" xml:"IntegratedLoudnessTarget,omitempty"`
-	// The volume range.
+	// The loudness range.
 	//
 	// example:
 	//
 	// 8
 	LoudnessRangeTarget *string `json:"LoudnessRangeTarget,omitempty" xml:"LoudnessRangeTarget,omitempty"`
-	// The volume adjustment method. Valid values:
+	// The volume adjustment method.
 	//
 	// example:
 	//
 	// auto
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The peak volume.
+	// The true peak volume.
 	//
 	// example:
 	//
@@ -1799,13 +1799,13 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment struct {
-	// The segment length.
+	// The segment duration.
 	//
 	// example:
 	//
 	// 10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The forced segmentation point in time.
+	// The forced segment time points.
 	//
 	// example:
 	//
@@ -1844,7 +1844,7 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig struct {
-	// The method that is used to adjust the resolution. This parameter takes effect only if both the Width and Height parameters are specified. You can use this parameter together with the LongShortMode parameter.
+	// The method used to adjust the display aspect ratio. This parameter takes effect only when both Width and Height are specified. You can use it with LongShortMode.
 	//
 	// Valid values: rescale, crop, pad, and none.
 	//
@@ -1854,27 +1854,27 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTr
 	//
 	// none
 	AdjDarMethod *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
-	// Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+	// Specifies whether to check the audio bitrate. IsCheckAudioBitrate and IsCheckAudioBitrateFail are mutually exclusive. IsCheckAudioBitrateFail has higher priority.
 	//
-	// 	- true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the bitrate of the input audio is used for transcoding.
+	// - true: Check the bitrate. If the input audio bitrate is lower than the output setting, transcode at the input bitrate.
 	//
-	// 	- false: does not check the video resolution.
+	// - false: Do not check the bitrate.
 	//
 	// Default value:
 	//
-	// 	- If this parameter is not specified and the codec of the output audio is different from that of the input audio, the default value is false.
+	// - Empty and the codec differs from the input source: false.
 	//
-	// 	- If this parameter is not specified and the codec of the output audio is the same as that of the input audio, the default value is true.
+	// - Empty and the codec matches the input source: true.
 	//
 	// example:
 	//
 	// true
 	IsCheckAudioBitrate *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
-	// Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+	// Specifies whether to check the audio bitrate. IsCheckAudioBitrate and IsCheckAudioBitrateFail are mutually exclusive. IsCheckAudioBitrateFail has higher priority.
 	//
-	// 	- true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the transcoding job fails.
+	// - true: Check the bitrate. If the input audio bitrate is lower than the output setting, return a failure.
 	//
-	// 	- false: does not check the video resolution.
+	// - false: Do not check the bitrate.
 	//
 	// Default value: false.
 	//
@@ -1882,11 +1882,11 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTr
 	//
 	// true
 	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
-	// Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+	// Specifies whether to check the video resolution. IsCheckReso and IsCheckResoFail are mutually exclusive. IsCheckResoFail has higher priority.
 	//
-	// 	- true: checks the video resolution. If the width or height of the input video is less than that of the output video, the resolution of the input video is used for transcoding.
+	// - true: Check the resolution. If the input video resolution (width or height) is smaller than the output setting, transcode at the input resolution.
 	//
-	// 	- false: does not check the video resolution.
+	// - false: Do not check the resolution.
 	//
 	// Default value: false.
 	//
@@ -1894,11 +1894,11 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTr
 	//
 	// true
 	IsCheckReso *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
-	// Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+	// Specifies whether to check the video resolution. IsCheckReso and IsCheckResoFail are mutually exclusive. IsCheckResoFail has higher priority.
 	//
-	// 	- true: checks the video resolution. If the width or height of the input video is less than that of the output video, the transcoding job fails.
+	// - true: Check the resolution. If the input video resolution (width or height) is smaller than the output setting, return a failure.
 	//
-	// 	- false: does not check the video resolution.
+	// - false: Do not check the resolution.
 	//
 	// Default value: false.
 	//
@@ -1906,11 +1906,11 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTr
 	//
 	// true
 	IsCheckResoFail *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
-	// Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+	// Specifies whether to check the video bitrate. IsCheckVideoBitrate and IsCheckVideoBitrateFail are mutually exclusive. IsCheckVideoBitrateFail has higher priority.
 	//
-	// 	- true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the bitrate of the input video is used for transcoding.
+	// - true: Check the bitrate. If the input video bitrate is lower than the output setting, transcode at the input bitrate.
 	//
-	// 	- false: does not check the video resolution.
+	// - false: Do not check the bitrate.
 	//
 	// Default value: false.
 	//
@@ -1918,11 +1918,11 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTr
 	//
 	// true
 	IsCheckVideoBitrate *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
-	// Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+	// Specifies whether to check the video bitrate. IsCheckVideoBitrate and IsCheckVideoBitrateFail are mutually exclusive. IsCheckVideoBitrateFail has higher priority.
 	//
-	// 	- true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the transcoding job fails.
+	// - true: Check the bitrate. If the input video bitrate is lower than the output setting, return a failure.
 	//
-	// 	- false: does not check the video resolution.
+	// - false: Do not check the bitrate.
 	//
 	// Default value: false.
 	//
@@ -1932,11 +1932,11 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTr
 	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
 	// The video transcoding mode. Valid values:
 	//
-	// 	- onepass: You can set this parameter to onepass if the Bitrate parameter is set to ABR. The encoding speed of this mode is faster than that of the twopass mode.
+	// - onepass: Used for adaptive bitrate (ABR) streaming. Encoding is faster than twopass.
 	//
-	// 	- twopass: You can set this parameter to twopass if the Bitrate parameter is set to VBR. The encoding speed of this mode is slower than that of the onepass mode.
+	// - twopass: Used for variable bitrate (VBR) streaming. Encoding is slower than onepass.
 	//
-	// 	- CBR: the constant bitrate mode.
+	// - CBR: Constant bitrate mode.
 	//
 	// Default value: onepass.
 	//
@@ -2031,19 +2031,19 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo struct {
-	// The maximum adaptive bitrate (ABR). This parameter takes effect only for Narrowband HD 1.0. Valid values: [10,50000]. Unit: Kbit/s.
+	// The maximum bitrate for adaptive bitrate streaming (ABR). This applies only to narrow-high 1. Valid values: [10, 50000]. Unit: Kbps.
 	//
 	// example:
 	//
 	// 6000
 	AbrMax *string `json:"AbrMax,omitempty" xml:"AbrMax,omitempty"`
-	// The average video bitrate. Valid values: [10,50000]. Unit: Kbit/s.
+	// The average video bitrate. Valid values: [10, 50000]. Unit: Kbps.
 	//
 	// example:
 	//
 	// 3000
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The buffer size. Valid values: [1000,128000]. Default value: 6000. Unit: KB.
+	// The buffer size. Valid values: [1000, 128000]. Default value: 6000. Unit: Kb.
 	//
 	// example:
 	//
@@ -2055,69 +2055,69 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVi
 	//
 	// H.264
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	// The constant rate factor (CRF). Valid values: [0,51]. Default value: 23 if the encoding format is H.264, or 26 if the encoding format is H.265.
+	// The constant rate factor (CRF), which controls the trade-off between quality and bitrate. Valid values: [0, 51]. Default values: 23 for H.264 and 26 for H.265.
 	//
-	// >  If this parameter is specified, the setting of the bitrate becomes invalid.
+	// > If you set Crf, the Bitrate setting is ignored.
 	//
 	// example:
 	//
 	// 23
 	Crf *string `json:"Crf,omitempty" xml:"Crf,omitempty"`
-	// The method of video cropping. Valid values:
+	// The video cropping method. Two options are available:
 	//
-	// 	- border: automatically detects and removes black bars.
+	// - Automatically detect and crop black bars. Set this to border.
 	//
-	// 	- A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
+	// - Custom cropping. Format: width:height:left:top. Example: 1280:800:0:140
 	//
 	// example:
 	//
 	// 1280:800:0:140
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	// The frame rate. Valid values:(0,60]. Default value: the frame rate of the input file.
+	// The frame rate. Valid values: (0, 60]. Default value: The frame rate of the input file.
 	//
-	// >  The value is 60 if the frame rate of the input file exceeds 60.
+	// > If the frame rate of the input file exceeds 60, the system uses 60.
 	//
 	// example:
 	//
 	// 25
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The maximum number of frames between keyframes. Valid values: [1,1080000]. Default value: 250.
+	// The maximum number of frames between keyframes. Valid values: [1, 1080000]. Default value: 250.
 	//
 	// example:
 	//
 	// 250
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// The height of the video. Valid values: [128,4096]. Unit: pixels. Default value: the original height of the video.
+	// The height. Valid values: [128, 4096]. Unit: px. Default value: The original video height.
 	//
 	// example:
 	//
 	// 1080
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// Specifies whether to enable the auto-rotate screen feature.
+	// Specifies whether to enable automatic rotation for portrait or landscape videos (also known as long-side/short-side mode).
 	//
 	// example:
 	//
 	// false
 	LongShortMode *string `json:"LongShortMode,omitempty" xml:"LongShortMode,omitempty"`
-	// The maximum bitrate of the video. Valid values: [10,50000]. Unit: Kbit/s.
+	// The peak video bitrate. Valid values: [10, 50000]. Unit: Kbps.
 	//
 	// example:
 	//
 	// 9000
 	Maxrate *string `json:"Maxrate,omitempty" xml:"Maxrate,omitempty"`
-	// The black bars added to the video. Format: width:height:left:top. Example: 1280:800:0:140.
+	// The padding configuration for black bars. Format: width:height:left:top. Example: 1280:800:0:140
 	//
 	// example:
 	//
 	// 1280:800:0:140
 	Pad *string `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	// The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
+	// The video color format. Valid values include yuv420p and yuvj420p.
 	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
+	// The video encoder preset. Only H.264 supports this parameter. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
 	//
 	// example:
 	//
@@ -2125,11 +2125,11 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVi
 	Preset *string `json:"Preset,omitempty" xml:"Preset,omitempty"`
 	// The encoding profile. Valid values: baseline, main, and high.
 	//
-	// 	- baseline: applicable to mobile devices.
+	// - baseline: For mobile devices.
 	//
-	// 	- main: applicable to standard-definition devices.
+	// - main: For standard-resolution devices.
 	//
-	// 	- high: applicable to high-definition devices.
+	// - high: For high-resolution devices.
 	//
 	// Default value: high.
 	//
@@ -2149,7 +2149,7 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVi
 	//
 	// progressive
 	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	// The width of the video. Valid values: [128,4096]. Unit: pixels. Default value: the original width of the video.
+	// The width. Valid values: [128, 4096]. Unit: px. Default value: The original video width.
 	//
 	// example:
 	//
@@ -2332,13 +2332,13 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 }
 
 type SubmitTranscodeJobRequestScheduleConfig struct {
-	// The ID of the MPS queue to which the job was submitted.
+	// The MPS queue ID.
 	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	// The job priority. A larger number indicates a higher priority. Valid values: 1 to 10.
 	//
 	// example:
 	//

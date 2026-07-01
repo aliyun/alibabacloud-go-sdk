@@ -16,7 +16,10 @@ type iGetYikeAssetMediaInfoResponseBody interface {
 }
 
 type GetYikeAssetMediaInfoResponseBody struct {
+	// The media asset information.
 	MediaInfo *GetYikeAssetMediaInfoResponseBodyMediaInfo `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -59,9 +62,14 @@ func (s *GetYikeAssetMediaInfoResponseBody) Validate() error {
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfo struct {
-	BizData        *GetYikeAssetMediaInfoResponseBodyMediaInfoBizData        `json:"BizData,omitempty" xml:"BizData,omitempty" type:"Struct"`
-	FileInfoList   []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// Custom business data.
+	BizData *GetYikeAssetMediaInfoResponseBodyMediaInfoBizData `json:"BizData,omitempty" xml:"BizData,omitempty" type:"Struct"`
+	// The file information.
+	FileInfoList []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
+	// The basic information about the media asset.
 	MediaBasicInfo *GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
+	// The media asset ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
@@ -136,51 +144,80 @@ func (s *GetYikeAssetMediaInfoResponseBodyMediaInfo) Validate() error {
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfoBizData struct {
+	// The audit label.
+	//
 	// example:
 	//
 	// Label
 	AuditBlockedLabel *string `json:"AuditBlockedLabel,omitempty" xml:"AuditBlockedLabel,omitempty"`
+	// 审核状态。
+	//
 	// example:
 	//
 	// Status
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// 创建任务 ID。
+	//
 	// example:
 	//
 	// ID
 	CreationJobId *string `json:"CreationJobId,omitempty" xml:"CreationJobId,omitempty"`
+	// The folder ID.
+	//
 	// example:
 	//
 	// fd-CBMEJaa2fA
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// 是否最喜爱的。
+	//
 	// example:
 	//
 	// 1
 	IsFavorite *string `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
+	// 是否被删除。
+	//
 	// example:
 	//
 	// 1
 	IsLogicalDeleted *string `json:"IsLogicalDeleted,omitempty" xml:"IsLogicalDeleted,omitempty"`
+	// 媒资子类型。
+	//
 	// example:
 	//
 	// SubType
 	MediaAssetSubType *string `json:"MediaAssetSubType,omitempty" xml:"MediaAssetSubType,omitempty"`
+	// 媒资类型。
+	//
 	// example:
 	//
 	// Type
 	MediaAssetType *string `json:"MediaAssetType,omitempty" xml:"MediaAssetType,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// ID
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
-	Prompt       *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// 提示词。
+	//
+	// example:
+	//
+	// 请为上述内容生成一段摘要，字数必须限制在70字以内包含标点符号
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// 源 ID。
+	//
 	// example:
 	//
 	// f4a26390f02371f0a1f4e6e7c758****
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// 源名称。
+	//
 	// example:
 	//
 	// SourceName
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// 源类型。
+	//
 	// example:
 	//
 	// MainBody
@@ -317,10 +354,14 @@ func (s *GetYikeAssetMediaInfoResponseBodyMediaInfoBizData) Validate() error {
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList struct {
-	AudioStreamInfoList    []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList    `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
-	FileBasicInfo          *GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo            `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// An array of audio stream objects. A media asset can contain multiple audio streams.
+	AudioStreamInfoList []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
+	// Basic file information, such as duration and size.
+	FileBasicInfo *GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	// An array of subtitle stream objects. A media asset can contain multiple subtitle streams.
 	SubtitleStreamInfoList []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList `json:"SubtitleStreamInfoList,omitempty" xml:"SubtitleStreamInfoList,omitempty" type:"Repeated"`
-	VideoStreamInfoList    []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList    `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
+	// An array of video stream objects. A media asset can contain multiple video streams.
+	VideoStreamInfoList []*GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
 func (s GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList) String() string {
@@ -404,74 +445,110 @@ func (s *GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList) Validate() erro
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 192.0
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The channel layout.
+	//
 	// example:
 	//
 	// stereo
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	// The number of channels.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The codec\\"s long name.
+	//
 	// example:
 	//
 	// AAC (Advanced Audio Coding)
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The codec\\"s short name.
+	//
 	// example:
 	//
 	// aac
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The codec tag.
+	//
 	// example:
 	//
 	// 0x6134706d
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The codec tag string.
+	//
 	// example:
 	//
 	// mp4a
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The codec\\"s time base.
+	//
 	// example:
 	//
 	// 1/44100
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 16.2
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The audio frame rate.
+	//
 	// example:
 	//
 	// 10
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The audio stream\\"s index.
+	//
 	// example:
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The total number of frames.
+	//
 	// example:
 	//
 	// 10
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// The profile.
+	//
 	// example:
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The sample format.
+	//
 	// example:
 	//
 	// fltp
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	// The sample rate.
+	//
 	// example:
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2026-02-04T02:13:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/44100
@@ -653,54 +730,80 @@ func (s *GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoLi
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 20
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The file\\"s creation time.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 16.2
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// example.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size, in bytes.
+	//
 	// example:
 	//
 	// 27007
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The file status.
+	//
 	// example:
 	//
 	// Normal
 	FileStatus *string `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
+	// The file type.
+	//
 	// example:
 	//
 	// source_file
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The OSS URL of the file.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4?Expires=<ExpireTime>&OSSAccessKeyId=<OSSAccessKeyId>&Signature=<Signature>&security-token=<SecurityToken>
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The container format.
+	//
 	// example:
 	//
 	// mp4
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 540
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The file\\"s last modification time.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The file\\"s storage region.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 960
@@ -837,42 +940,62 @@ func (s *GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo) Va
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList struct {
+	// The codec\\"s long name.
+	//
 	// example:
 	//
 	// SubRip Text
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The codec\\"s short name.
+	//
 	// example:
 	//
 	// srt
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The codec tag.
+	//
 	// example:
 	//
 	// unicode
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The codec tag string.
+	//
 	// example:
 	//
 	// unicode
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The codec\\"s time base.
+	//
 	// example:
 	//
 	// 29.97
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 1
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The subtitle stream\\"s index.
+	//
 	// example:
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2025-03-07T01:30Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 30
@@ -982,94 +1105,140 @@ func (s *GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInf
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
+	// The average frame rate.
+	//
 	// example:
 	//
 	// 24.0
 	AvgFPS *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	// The bitrate.
+	//
 	// example:
 	//
 	// 20
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The codec\\"s long name.
+	//
 	// example:
 	//
 	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The codec\\"s short name.
+	//
 	// example:
 	//
 	// h264
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The codec tag.
+	//
 	// example:
 	//
 	// 0x0000
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The codec tag string.
+	//
 	// example:
 	//
 	// [0][0][0][0]
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The codec\\"s time base.
+	//
 	// example:
 	//
 	// 1/48
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The display aspect ratio (DAR).
+	//
 	// example:
 	//
 	// 0:1
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 216.206706
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The video frame rate.
+	//
 	// example:
 	//
 	// 24.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Indicates whether the video stream contains B-frames.
+	//
 	// example:
 	//
 	// 2
 	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 540
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The video stream\\"s index.
+	//
 	// example:
 	//
 	// 0
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The encoding level.
+	//
 	// example:
 	//
 	// 30
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The total number of frames.
+	//
 	// example:
 	//
 	// 5184
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// The pixel format.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The profile.
+	//
 	// example:
 	//
 	// High
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The rotation angle.
+	//
 	// example:
 	//
 	// 0
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The sample aspect ratio (SAR).
+	//
 	// example:
 	//
 	// 0:1
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 0.081706
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 1/12288
 	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 960
@@ -1296,98 +1465,146 @@ func (s *GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoLi
 }
 
 type GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
+	// The associated business.
+	//
 	// example:
 	//
 	// AiSaas
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
+	// The business type.
+	//
 	// example:
 	//
 	// general
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// 3048
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The category name.
+	//
 	// example:
 	//
 	// cateName
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	// The category.
+	//
 	// example:
 	//
 	// category
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The cover URL.
+	//
 	// example:
 	//
 	// https://dtlive-bj.oss-cn-beijing.aliyuncs.com/cover/01e1271d-ff4f-4689-9c20-e1df81486859_open_live_cover.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The deletion time.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:15Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The source URL of the media asset.
+	//
 	// example:
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
+	// The media asset ID.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The media tags.
+	//
 	// example:
 	//
 	// tag1
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
+	// The media type.
+	//
 	// example:
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 2020-12-26T04:11:10Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// A custom ID. It must be 6 to 64 characters long and can contain only lowercase letters, uppercase letters, digits, hyphens (-), and underscores (_). This ID must be unique per user.
+	//
 	// example:
 	//
 	// 123-1234
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	// The snapshot information.
+	//
 	// example:
 	//
 	// []
 	Snapshots *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// oss
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The sprite images.
+	//
 	// example:
 	//
 	// [{"bucket":"example-bucket","count":"32","iceJobId":"******83ec44d58b2069def2e******","location":"oss-cn-shanghai","snapshotRegular":"example/example-{Count}.jpg","spriteRegular":"example/example-{TileCount}.jpg","templateId":"******e438b14ff39293eaec25******","tileCount":"1"}]
 	SpriteImages *string `json:"SpriteImages,omitempty" xml:"SpriteImages,omitempty"`
+	// The asset\\"s status.
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The thumbnail with a height of 240 pixels.
+	//
 	// example:
 	//
 	// ThumbURL240P
 	ThumbURL240P *string `json:"ThumbURL240P,omitempty" xml:"ThumbURL240P,omitempty"`
+	// The WebP-encoded thumbnail.
+	//
 	// example:
 	//
 	// ThumbURLWebp
 	ThumbURLWebp *string `json:"ThumbURLWebp,omitempty" xml:"ThumbURLWebp,omitempty"`
+	// The title.
+	//
 	// example:
 	//
 	// v6l82k_176822379****.jpeg
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The upload source.
+	//
 	// example:
 	//
 	// general
 	UploadSource *string `json:"UploadSource,omitempty" xml:"UploadSource,omitempty"`
+	// The user data.
+	//
 	// example:
 	//
 	// UserData

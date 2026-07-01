@@ -131,15 +131,15 @@ type SearchEditingProjectResponseBodyProjectList struct {
 	//
 	// Valid values:
 	//
-	// 	- BroadCasting:
+	// - BroadCasting:
 	//
-	// 	- ReservationCanceled
+	// - ReservationCanceled
 	//
-	// 	- LiveFinished
+	// - LiveFinished
 	//
-	// 	- LoadingFailed
+	// - LoadingFailed
 	//
-	// 	- Reserving
+	// - Reserving
 	//
 	// example:
 	//
@@ -153,19 +153,19 @@ type SearchEditingProjectResponseBodyProjectList struct {
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// The method for editing the online editing project.
 	//
-	// \\-OpenAPI
+	// -OpenAPI
 	//
-	// \\-AliyunConsole
+	// -AliyunConsole
 	//
-	// \\-WebSDK
+	// -WebSDK
 	//
 	// Valid values:
 	//
-	// 	- AliyunConsole: The project is created in the Alibaba Cloud console.
+	// - AliyunConsole: The project is created in the Alibaba Cloud console.
 	//
-	// 	- WebSDK: The project is created by using the SDK for Web.
+	// - WebSDK: The project is created by using the SDK for Web.
 	//
-	// 	- OpenAPI: The project is created by calling API operations.
+	// - OpenAPI: The project is created by calling API operations.
 	//
 	// example:
 	//
@@ -223,9 +223,9 @@ type SearchEditingProjectResponseBodyProjectList struct {
 	//
 	// Valid values:
 	//
-	// 	- LiveEditingProject: a live stream editing project.
+	// - LiveEditingProject: a live stream editing project.
 	//
-	// 	- EditingProject: a regular editing project.
+	// - EditingProject: a regular editing project.
 	//
 	// example:
 	//
@@ -233,27 +233,27 @@ type SearchEditingProjectResponseBodyProjectList struct {
 	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
 	// The status of the online editing project. Valid values:
 	//
-	// \\-Draft
+	// -Draft
 	//
-	// \\-Editing
+	// -Editing
 	//
-	// \\-Producing
+	// -Producing
 	//
-	// \\-Produced
+	// -Produced
 	//
-	// \\-ProduceFailed
+	// -ProduceFailed
 	//
 	// Valid values:
 	//
-	// 	- Draft
+	// - Draft
 	//
-	// 	- Produced
+	// - Produced
 	//
-	// 	- Editing
+	// - Editing
 	//
-	// 	- Producing
+	// - Producing
 	//
-	// 	- ProduceFailed
+	// - ProduceFailed
 	//
 	// example:
 	//

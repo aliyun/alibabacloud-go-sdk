@@ -32,19 +32,19 @@ type iSearchEditingProjectRequest interface {
 type SearchEditingProjectRequest struct {
 	// The source of the project.
 	//
-	// \\-OpenAPI
+	// -OpenAPI
 	//
-	// \\-AliyunConsole
+	// -AliyunConsole
 	//
-	// \\-WebSDK
+	// -WebSDK
 	//
 	// Valid values:
 	//
-	// 	- AliyunConsole: The project is created in the Alibaba Cloud console.
+	// - AliyunConsole: The project is created in the Alibaba Cloud console.
 	//
-	// 	- WebSDK: The project is created by using the SDK for Web.
+	// - WebSDK: The project is created by using the SDK for Web.
 	//
-	// 	- OpenAPI: The project is created by calling API operations.
+	// - OpenAPI: The project is created by calling API operations.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type SearchEditingProjectRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the editing project. Default value: EditingProject. Valid values:
 	//
-	// 	- EditingProject: a regular editing project.
+	// - EditingProject: a regular editing project.
 	//
-	// 	- LiveEditingProject: a live stream editing project.
+	// - LiveEditingProject: a live stream editing project.
 	//
 	// example:
 	//
@@ -98,13 +98,13 @@ type SearchEditingProjectRequest struct {
 	//
 	// Valid values:
 	//
-	// \\-Draft
+	// -Draft
 	//
-	// \\-Producing
+	// -Producing
 	//
-	// \\-Produced
+	// -Produced
 	//
-	// \\-ProduceFailed
+	// -ProduceFailed
 	//
 	// example:
 	//
@@ -112,17 +112,17 @@ type SearchEditingProjectRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The template type. Valid values:
 	//
-	// \\-Timeline
+	// -Timeline
 	//
-	// \\-VETemplate
+	// -VETemplate
 	//
 	// Valid values:
 	//
-	// 	- Timeline: regular template.
+	// - Timeline: regular template.
 	//
-	// 	- VETemplate: advanced template.
+	// - VETemplate: advanced template.
 	//
-	// 	- None: No template is used.
+	// - None: No template is used.
 	//
 	// example:
 	//

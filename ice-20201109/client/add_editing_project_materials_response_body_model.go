@@ -320,15 +320,15 @@ type AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo s
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	// The file status.
 	//
-	// \\-Uploading
+	// -Uploading
 	//
-	// \\-Normal
+	// -Normal
 	//
-	// \\-UploadFail
+	// -UploadFail
 	//
-	// \\-Disable
+	// -Disable
 	//
-	// \\-Deleted
+	// -Deleted
 	//
 	// example:
 	//

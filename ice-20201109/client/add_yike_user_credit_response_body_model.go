@@ -18,12 +18,30 @@ type iAddYikeUserCreditResponseBody interface {
 }
 
 type AddYikeUserCreditResponseBody struct {
+	// The error code returned if the operation fails. The following value is supported:
+	//
+	// - NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA: The credit balance of the main account is insufficient.
+	//
+	// example:
+	//
+	// NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the operation was successful.
+	//
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
+	//
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s AddYikeUserCreditResponseBody) String() string {

@@ -24,26 +24,44 @@ type iGetIpcDeviceInfoRequest interface {
 }
 
 type GetIpcDeviceInfoRequest struct {
+	// Capability. Default value is understand. Valid values:
+	//
+	// - understand: understanding
+	//
+	// - understand-reid: understanding with reid
+	//
+	// - search: search
+	//
 	// example:
 	//
 	// understand
 	Capability *string `json:"Capability,omitempty" xml:"Capability,omitempty"`
+	// Device ID.
+	//
 	// example:
 	//
 	// d123
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// End Time. UTC time in the format yyyy-MM-ddTHH:mm:ssZ. The difference between EndTime and StartTime must not exceed 180 days.
+	//
 	// example:
 	//
 	// 2017-02-11T12:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Page number for paging. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Page size, which specifies the number of entries displayed per page. Default value is 10. Maximum value is 50.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Start Time. UTC time in the format yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z

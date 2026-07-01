@@ -20,7 +20,7 @@ type GetPackageJobRequest struct {
 	//
 	// example:
 	//
-	// ab4802364a2e49208c99efab82dfa8e8
+	// ab4802364a2e49208c99efab82df****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 

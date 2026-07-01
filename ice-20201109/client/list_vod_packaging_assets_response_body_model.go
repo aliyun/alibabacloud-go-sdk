@@ -46,9 +46,9 @@ type ListVodPackagingAssetsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The sorting order of the assets based on the time when they were ingested. Valid values:
 	//
-	// 	- desc: descending order.
+	// - desc: descending order.
 	//
-	// 	- asc: ascending order.
+	// - asc: ascending order.
 	//
 	// example:
 	//

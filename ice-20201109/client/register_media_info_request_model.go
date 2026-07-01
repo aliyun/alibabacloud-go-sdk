@@ -44,15 +44,15 @@ type iRegisterMediaInfoRequest interface {
 type RegisterMediaInfoRequest struct {
 	// The business type of the media asset. Valid values:
 	//
-	// 	- subtitles
+	// - subtitles
 	//
-	// 	- watermark
+	// - watermark
 	//
-	// 	- opening
+	// - opening
 	//
-	// 	- ending
+	// - ending
 	//
-	// 	- general
+	// - general
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type RegisterMediaInfoRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The thumbnail URL of the media asset.
 	//
-	// 	- The value can be up to 128 bytes in length.
+	// - The value can be up to 128 bytes in length.
 	//
-	// 	- The value must be encoded in UTF-8.
+	// - The value must be encoded in UTF-8.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type RegisterMediaInfoRequest struct {
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// The description of the media asset.
 	//
-	// 	- The value can be up to 1,024 bytes in length.
+	// - The value can be up to 1,024 bytes in length.
 	//
-	// 	- The value must be encoded in UTF-8.
+	// - The value must be encoded in UTF-8.
 	//
 	// example:
 	//
@@ -92,27 +92,31 @@ type RegisterMediaInfoRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The URL of the media asset in another service. The URL is associated with the ID of the media asset in IMS. The URL cannot be modified once registered. The following types of URLs are supported:
 	//
-	// 	- OSS URL in one of the following formats:
+	// - OSS URL in one of the following formats:
 	//
-	// http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
+	//   - `http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4`
 	//
-	// oss://example-bucket/example.mp4: In this format, it is considered by default that the region of the OSS bucket in which the media asset resides is the same as the region in which IMS is activated.
+	//   - `oss://example-bucket/example.mp4`: In this format, it is considered by default that the region of the OSS bucket in which the media asset resides is the same as the region in which IMS is activated.
 	//
-	// 	- URL of an ApsaraVideo VOD media asset
+	// - URL of an ApsaraVideo VOD media asset
 	//
-	// vod://\\*\\*\\*20b48fb04483915d4f2cd8ac\\*\\*\\*\\*
+	//   `vod://***20b48fb04483915d4f2cd8ac****`
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4  or  vod://****20b48fb04483915d4f2cd8ac****
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
 	// The tags of the media asset.
 	//
-	// 	- Up to 16 tags are supported.
+	// - Up to 16 tags are supported.
 	//
-	// 	- Separate multiple tags with commas (,).
+	// - Separate multiple tags with commas (,).
 	//
-	// 	- Each tag can be up to 32 bytes in length.
+	// - Each tag can be up to 32 bytes in length.
 	//
-	// 	- The value must be encoded in UTF-8.
+	// - The value must be encoded in UTF-8.
 	//
 	// example:
 	//
@@ -120,17 +124,15 @@ type RegisterMediaInfoRequest struct {
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
 	// The type of the media asset. Valid values:
 	//
-	// 	- image
+	// - image
 	//
-	// 	- video
+	// - video
 	//
-	// 	- audio
+	// - audio
 	//
-	// 	- text
+	// - text
 	//
-	// We recommend that you specify this parameter based on your business requirements. If you set InputURL to an OSS URL, the media asset type can be automatically determined based on the file name extension. For more information
-	//
-	// <props="china">, see [File formats](https://help.aliyun.com/document_detail/466207.html).
+	// We recommend that you specify this parameter based on your business requirements. If you set InputURL to an OSS URL, the media asset type can be automatically determined based on the file name extension. Refer to [](t2240981.xdita#)for details.
 	//
 	// example:
 	//
@@ -138,9 +140,9 @@ type RegisterMediaInfoRequest struct {
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// Specifies whether to overwrite the media asset that has been registered by using the same URL. Default value: false. Valid values:
 	//
-	// \\- true: If a media asset has been registered by using the same URL, the original media asset is deleted and the new media asset is registered.
+	// - true: If a media asset has been registered by using the same URL, the original media asset is deleted and the new media asset is registered.
 	//
-	// \\- false: If a media asset has been registered by using the same URL, the new media asset is not registered. A URL cannot be used to register multiple media assets.
+	// - false: If a media asset has been registered by using the same URL, the new media asset is not registered. A URL cannot be used to register multiple media assets.
 	//
 	// example:
 	//
@@ -162,19 +164,27 @@ type RegisterMediaInfoRequest struct {
 	//
 	// {
 	//
-	//       "NeedSprite": "false"
+	// 	"NeedSprite": "false",
+	//
+	// 	"CoverConfig": {
+	//
+	// 		"StartTime": 1.0
+	//
+	// 	},
+	//
+	//        "SearchLibName": "test"
 	//
 	// }
 	RegisterConfig *string `json:"RegisterConfig,omitempty" xml:"RegisterConfig,omitempty"`
 	// The ID of the smart tagging template. Valid values:
 	//
-	// 	- S00000101-300080: the system template that supports natural language processing (NLP) for content recognition.
+	// - S00000101-300080: the system template that supports natural language processing (NLP) for content recognition.
 	//
-	// 	- S00000103-000001: the system template that supports NLP for content recognition and all tagging capabilities.
+	// - S00000103-000001: the system template that supports NLP for content recognition and all [tagging capabilities](t2729541.xdita#93b27f536airj).
 	//
-	// 	- S00000103-000002: the system template that supports all tagging capabilities but does not support NLP for content recognition.
+	// - S00000103-000002: the system template that supports all [tagging capabilities](t2729541.xdita#93b27f536airj) but does not support NLP for content recognition.
 	//
-	// After you configure this parameter, a smart tag analysis task is automatically initiated after the media asset is registered. For more information about the billable items<props="china">, see [Smart tagging](https://help.aliyun.com/zh/ims/media-ai-billing?spm=a2c4g.11186623.0.0.3147392dWwlSjL#p-k38-3rb-dug).
+	// After you configure this parameter, a smart tag analysis task is automatically initiated after the media asset is registered.
 	//
 	// example:
 	//
@@ -182,21 +192,25 @@ type RegisterMediaInfoRequest struct {
 	SmartTagTemplateId *string `json:"SmartTagTemplateId,omitempty" xml:"SmartTagTemplateId,omitempty"`
 	// The title. If you do not specify this parameter, a default title is automatically generated based on the date.
 	//
-	// 	- The value can be up to 128 bytes in length.
+	// - The value can be up to 128 bytes in length.
 	//
-	// 	- The value must be encoded in UTF-8.
+	// - The value must be encoded in UTF-8.
 	//
 	// example:
 	//
 	// defaultTitle
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The user data. You can specify a custom callback URL. For more information<props="china"> ,see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
+	// The user data. You can specify a custom callback URL. For more information, see [](t2243473.xdita#).
 	//
-	// 	- The value can be up to 1,024 bytes in length.
+	// - The value can be up to 1,024 bytes in length.
 	//
-	// 	- The value must be encoded in UTF-8.
+	// - The value must be encoded in UTF-8.
 	//
-	// 	- The value must be in the JSON format.
+	// - The value must be in the JSON format.
+	//
+	// example:
+	//
+	// {"NotifyAddress":"http://xx.xx.xxx"} or{"NotifyAddress":"https://xx.xx.xxx"} or{"NotifyAddress":"ice-callback-demo"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The workflow ID.
 	//

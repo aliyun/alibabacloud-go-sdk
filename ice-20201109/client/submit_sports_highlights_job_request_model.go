@@ -20,15 +20,55 @@ type iSubmitSportsHighlightsJobRequest interface {
 }
 
 type SubmitSportsHighlightsJobRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// A client-generated token to ensure request idempotency.
 	//
 	// example:
 	//
 	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The input configurations.
+	// The input configuration. For more information, see [input configuration parameters](~~2843158#5cbc796a9cuu8~~).
+	//
+	// example:
+	//
+	// {
+	//
+	//   "SportsCategory": "basketball",
+	//
+	//   "InputMedia": "http://test-bucket.oss-cn-******.basketball-0707.mp4",
+	//
+	//   "FaceRegister": [
+	//
+	//     {
+	//
+	//       "FaceUrls": ["http://testcdn.com/front.jpg", "http://testcdn.com/side.jpg"],
+	//
+	//       "Name": "James"
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "SlowMotionLogoRegister": {
+	//
+	//       "SlowMotionLogoUrls": ["http://testcdn.com/logo1.jpg", "http://testcdn.com/logo2.jpg"]
+	//
+	//   },
+	//
+	//   "TransferNameRegister": [
+	//
+	//     {
+	//
+	//       "OriginalName": "IND",
+	//
+	//       "TransferName": "印第安纳步行者"
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
-	// The output configurations.
+	// The output configuration. For more information, see [output configuration parameters](~~2843158#b7dad99fe5q0r~~).
 	//
 	// example:
 	//
@@ -44,7 +84,11 @@ type SubmitSportsHighlightsJobRequest struct {
 	//
 	// }
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	// The user-defined data.
+	// The user data, containing business and callback configurations. For more information about the structure, see [user data configuration](https://help.aliyun.com/document_detail/357745.html).
+	//
+	// example:
+	//
+	// {"NotifyAddress":"http://xx.xx.xxx"} or {"NotifyAddress":"https://xx.xx.xxx"} or {"NotifyAddress":"ice-callback-demo"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 

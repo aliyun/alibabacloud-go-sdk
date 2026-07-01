@@ -18,11 +18,16 @@ type iQueryIpcQuotaResponseBody interface {
 }
 
 type QueryIpcQuotaResponseBody struct {
+	// List of IPC usage information.
 	IpcQuotaInfos []*QueryIpcQuotaResponseBodyIpcQuotaInfos `json:"IpcQuotaInfos,omitempty" xml:"IpcQuotaInfos,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 39
@@ -78,18 +83,32 @@ func (s *QueryIpcQuotaResponseBody) Validate() error {
 }
 
 type QueryIpcQuotaResponseBodyIpcQuotaInfos struct {
+	// Capability. Valid values:
+	//
+	// - understand: understanding
+	//
+	// - understand-reid: understanding with reid
+	//
+	// - search: search
+	//
 	// example:
 	//
 	// understand
 	Capability *string `json:"Capability,omitempty" xml:"Capability,omitempty"`
+	// Consumed quota.
+	//
 	// example:
 	//
 	// 32
 	ConsumedQuota *int64 `json:"ConsumedQuota,omitempty" xml:"ConsumedQuota,omitempty"`
+	// Corresponding time. UTC time in the format: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2025-12-21T16:00:00Z
 	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// Maximum available quota.
+	//
 	// example:
 	//
 	// 10000

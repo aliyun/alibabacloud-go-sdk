@@ -24,29 +24,40 @@ type iStartRtcRobotInstanceShrinkRequest interface {
 }
 
 type StartRtcRobotInstanceShrinkRequest struct {
+	// The authentication token required to join the RTC call. You must generate this token using your RTC AppKey.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// **********
 	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	// The RTC channel\\"s unique identifier.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testId
-	ChannelId    *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Specifies advanced call configurations that override the agent\\"s default configurations. If you omit this parameter, the agent uses its default configurations.
 	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The AI agent\\"s unique identifier.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ca28b08ad3464ebcb42e5c0f7c6d2e89
 	RobotId *string `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	// User-defined information.
+	//
 	// example:
 	//
 	// {}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The AI agent\\"s unique identifier within the channel.
+	//
 	// This parameter is required.
 	//
 	// example:

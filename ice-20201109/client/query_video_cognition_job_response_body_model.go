@@ -26,31 +26,34 @@ type iQueryVideoCognitionJobResponseBody interface {
 }
 
 type QueryVideoCognitionJobResponseBody struct {
+	// The input file.
 	Input *QueryVideoCognitionJobResponseBodyInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	// The status of the task. Valid values:
+	// The job status. Valid values:
 	//
-	// 	- **Success**
+	// - **Success**: The job succeeded.
 	//
-	// 	- **Fail**
+	// - **Fail**: The job failed.
 	//
-	// 	- **Processing**
+	// - **Processing**: The job is in progress.
 	//
-	// 	- **Submitted**
+	// - **Submitted**: The job has been submitted and is awaiting processing.
 	//
 	// example:
 	//
 	// Success
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	Params    *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The request parameters.
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results    *QueryVideoCognitionJobResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
-	TemplateId *string                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The user-defined data.
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   *QueryVideoCognitionJobResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	// The template ID.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The user data.
 	//
 	// example:
 	//
@@ -144,8 +147,10 @@ func (s *QueryVideoCognitionJobResponseBody) Validate() error {
 }
 
 type QueryVideoCognitionJobResponseBodyInput struct {
+	// The URL of the input file.
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the input file. Valid value: OSS.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QueryVideoCognitionJobResponseBodyInput) String() string {

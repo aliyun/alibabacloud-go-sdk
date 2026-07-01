@@ -14,7 +14,7 @@ type iUpdateAIAgentInstanceResponseBody interface {
 }
 
 type UpdateAIAgentInstanceResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

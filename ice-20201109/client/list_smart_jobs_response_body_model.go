@@ -127,7 +127,7 @@ type ListSmartJobsResponseBodySmartJobList struct {
 	//
 	// example:
 	//
-	// 测试描述
+	// Test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The editing configurations.
 	//
@@ -147,13 +147,13 @@ type ListSmartJobsResponseBodySmartJobList struct {
 	//
 	// Valid values:
 	//
-	// 	- Finished: The job is complete.
+	// - Finished: The job is complete.
 	//
-	// 	- Failed: The job failed.
+	// - Failed: The job failed.
 	//
-	// 	- Executing: The job is in progress.
+	// - Executing: The job is in progress.
 	//
-	// 	- Created: The job is created.
+	// - Created: The job is created.
 	//
 	// example:
 	//
@@ -163,11 +163,11 @@ type ListSmartJobsResponseBodySmartJobList struct {
 	//
 	// Valid values:
 	//
-	// 	- ASR: ASR job.
+	// - ASR: ASR job.
 	//
-	// 	- DynamicChart: dynamic chart job.
+	// - DynamicChart: dynamic chart job.
 	//
-	// 	- TextToSpeech: intelligent audio production job.
+	// - TextToSpeech: intelligent audio production job.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ type ListSmartJobsResponseBodySmartJobList struct {
 	//
 	// example:
 	//
-	// 测试标题
+	// Test title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The user-defined data.
 	//
@@ -342,7 +342,7 @@ type ListSmartJobsResponseBodySmartJobListInputConfig struct {
 	//
 	// example:
 	//
-	// 测试关键词
+	// Test keyword
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 }
 

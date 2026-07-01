@@ -22,7 +22,7 @@ type UploadMediaByURLResponseBody struct {
 	//
 	// ****83B7-7F87-4792-BFE9-63CD2137****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about upload jobs.
+	// An array of upload jobs.
 	UploadJobs []*UploadMediaByURLResponseBodyUploadJobs `json:"UploadJobs,omitempty" xml:"UploadJobs,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *UploadMediaByURLResponseBody) Validate() error {
 }
 
 type UploadMediaByURLResponseBodyUploadJobs struct {
-	// The ID of the upload job.
+	// The upload job ID.
 	//
 	// example:
 	//
 	// 20ce1e05dba64576b96e9683879f0***
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the media asset.
+	// The media ID.
 	//
 	// example:
 	//
 	// f476988629f54a7b8a4ba90d1a6c7***
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The URL of the source file that is uploaded in the upload job.
+	// The source URL corresponding to the upload job.
 	//
 	// example:
 	//

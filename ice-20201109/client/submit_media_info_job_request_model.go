@@ -20,9 +20,13 @@ type iSubmitMediaInfoJobRequest interface {
 }
 
 type SubmitMediaInfoJobRequest struct {
-	// The input of the job.
+	// The input for the job.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// job-name
 	Input *SubmitMediaInfoJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 	// The job name.
 	//
@@ -30,9 +34,13 @@ type SubmitMediaInfoJobRequest struct {
 	//
 	// job-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The scheduling parameters.
+	// The scheduling settings.
+	//
+	// example:
+	//
+	// user-data
 	ScheduleConfig *SubmitMediaInfoJobRequestScheduleConfig `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty" type:"Struct"`
-	// The user data.
+	// The custom user data.
 	//
 	// example:
 	//
@@ -99,13 +107,13 @@ func (s *SubmitMediaInfoJobRequest) Validate() error {
 }
 
 type SubmitMediaInfoJobRequestInput struct {
-	// The media object.
+	// The source of the input media:
 	//
-	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+	// - If `Type` is `OSS`, set this parameter to the URL of the input file. You can use OSS (`oss://`), HTTP, or HTTPS URLs.
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the Intelligent Media Services (IMS) console.
+	// > You must first add the OSS bucket specified in the URL to Intelligent Media Management Service (IMS) by using [Storage Management](https://help.aliyun.com/document_detail/609918.html).
 	//
-	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
+	// - If `Type` is `Media`, set this parameter to the media asset ID.
 	//
 	// This parameter is required.
 	//
@@ -113,7 +121,11 @@ type SubmitMediaInfoJobRequestInput struct {
 	//
 	// oss://bucket/path/to/video.mp4
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
-	// The type of the media object. Valid values: OSS and Media. A value of OSS indicates an Object Storage Service (OSS) object. A value of Media indicates a media asset.
+	// The type of the input media.
+	//
+	// - `OSS`: The input is an OSS file.
+	//
+	// - `Media`: The input is a media asset ID.
 	//
 	// This parameter is required.
 	//
@@ -154,13 +166,13 @@ func (s *SubmitMediaInfoJobRequestInput) Validate() error {
 }
 
 type SubmitMediaInfoJobRequestScheduleConfig struct {
-	// The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
+	// The pipeline ID.
 	//
 	// example:
 	//
 	// e37ebee5d98b4781897f6086e89f9c56
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+	// The job priority. A higher value means a higher priority. Valid values range from 1 to 10.
 	//
 	// example:
 	//

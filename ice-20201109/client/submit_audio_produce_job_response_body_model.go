@@ -26,7 +26,7 @@ type SubmitAudioProduceJobResponseBody struct {
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the media asset.
+	// The media ID.
 	//
 	// example:
 	//
@@ -38,15 +38,15 @@ type SubmitAudioProduceJobResponseBody struct {
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The job state. Valid values:
+	// The job status.
 	//
-	// 	- Created
+	// - Created
 	//
-	// 	- Executing
+	// - Executing
 	//
-	// 	- Finished
+	// - Finished
 	//
-	// 	- Failed
+	// - Failed
 	//
 	// example:
 	//

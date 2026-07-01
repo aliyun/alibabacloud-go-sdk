@@ -16,10 +16,18 @@ type iSetYikeUserRoleResponseBody interface {
 }
 
 type SetYikeUserRoleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
+	// - true: Success
+	//
+	// - false: Failure
+	//
 	// example:
 	//
 	// true

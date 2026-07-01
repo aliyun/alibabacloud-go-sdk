@@ -24,23 +24,23 @@ type iCreateUploadStreamRequest interface {
 type CreateUploadStreamRequest struct {
 	// The quality of the media stream. Valid values:
 	//
-	// 	- FD: low definition.
+	// - FD: low definition.
 	//
-	// 	- LD: standard definition.
+	// - LD: standard definition.
 	//
-	// 	- SD: high definition.
+	// - SD: high definition.
 	//
-	// 	- HD: ultra-high definition.
+	// - HD: ultra-high definition.
 	//
-	// 	- OD: original quality.
+	// - OD: original quality.
 	//
-	// 	- 2K: 2K resolution.
+	// - 2K: 2K resolution.
 	//
-	// 	- 4K: 4K resolution.
+	// - 4K: 4K resolution.
 	//
-	// 	- SQ: standard sound quality.
+	// - SQ: standard sound quality.
 	//
-	// 	- HQ: high sound quality.
+	// - HQ: high sound quality.
 	//
 	// example:
 	//
@@ -54,23 +54,23 @@ type CreateUploadStreamRequest struct {
 	FileExtension *string `json:"FileExtension,omitempty" xml:"FileExtension,omitempty"`
 	// The high dynamic range (HDR) format of the transcoded stream. Valid values:
 	//
-	// 	- HDR
+	// - HDR
 	//
-	// 	- HDR10
+	// - HDR10
 	//
-	// 	- HLG
+	// - HLG
 	//
-	// 	- DolbyVision
+	// - DolbyVision
 	//
-	// 	- HDRVivid
+	// - HDRVivid
 	//
-	// 	- SDR+
+	// - SDR+
 	//
 	// >
 	//
-	// 	- The value is not case-sensitive,
+	// - The value is not case-sensitive,
 	//
-	// 	- You can leave this parameter empty for non-HDR streams.
+	// - You can leave this parameter empty for non-HDR streams.
 	//
 	// example:
 	//

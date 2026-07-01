@@ -48,7 +48,7 @@ type ListHotwordLibrariesRequest struct {
 	//
 	// example:
 	//
-	// 热词库使用名称
+	// Hotword library name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
@@ -82,11 +82,11 @@ type ListHotwordLibrariesRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The usage scenario of the hotword library. Valid values:
 	//
-	// 	- ASR: Automatic Speech Recognition
+	// - ASR: Automatic Speech Recognition
 	//
-	// 	- StructuredMediaAssets: structured media analysis
+	// - StructuredMediaAssets: structured media analysis
 	//
-	// 	- VideoTranslation: Video translation. This field cannot be modified after the hotword library is created.
+	// - VideoTranslation: Video translation. This field cannot be modified after the hotword library is created.
 	//
 	// example:
 	//

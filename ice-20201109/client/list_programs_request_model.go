@@ -50,9 +50,9 @@ type ListProgramsRequest struct {
 	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
 	// The sorting order. By default, the query results are sorted by creation time in descending order. Valid values:
 	//
-	// 	- asc: ascending order.
+	// - asc: ascending order.
 	//
-	// 	- desc: descending order.
+	// - desc: descending order.
 	//
 	// example:
 	//

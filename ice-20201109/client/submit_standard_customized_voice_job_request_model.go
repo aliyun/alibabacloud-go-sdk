@@ -22,9 +22,9 @@ type iSubmitStandardCustomizedVoiceJobRequest interface {
 }
 
 type SubmitStandardCustomizedVoiceJobRequest struct {
-	// 	- The material assets IDs of the materials for training.
+	// - The material assets IDs of the materials for training.
 	//
-	// 	- Separate multiple media IDs with commas (,).
+	// - Separate multiple media IDs with commas (,).
 	//
 	// > : The total duration of all materials must be within 15 to 30 minutes. The duration of each material must be greater than 1 minute.
 	//
@@ -32,13 +32,13 @@ type SubmitStandardCustomizedVoiceJobRequest struct {
 	//
 	// ****571c704445f9a0ee011406c2****,****571c704445f9a0ee011406c2****,****571c704445f9a0ee011406c2****
 	Audios *string `json:"Audios,omitempty" xml:"Audios,omitempty"`
-	// 	- The media asset ID of the authentication audio.
+	// - The media asset ID of the authentication audio.
 	//
-	// 	- Upload an audio file for identity authentication. If the voiceprint extracted from the uploaded file differs from that of the training file, the job fails.
+	// - Upload an audio file for identity authentication. If the voiceprint extracted from the uploaded file differs from that of the training file, the job fails.
 	//
-	//     **
+	//   \\*\\*
 	//
-	//     **Note**: Clearly read and record the following text: I confirm to customize human voice cloning and provide audio files that contain my voice for training. I promise that I am responsible for the customized content and that the content complies with laws and regulations.
+	//   **Note**: Clearly read and record the following text: I confirm to customize human voice cloning and provide audio files that contain my voice for training. I promise that I am responsible for the customized content and that the content complies with laws and regulations.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type SubmitStandardCustomizedVoiceJobRequest struct {
 	Authentication *string `json:"Authentication,omitempty" xml:"Authentication,omitempty"`
 	// The URL of the sample audio file.
 	//
-	// 	- If this parameter is specified, a sample audio file is generated at the specified Object Storage Service (OSS) URL after the training is complete.
+	// - If this parameter is specified, a sample audio file is generated at the specified Object Storage Service (OSS) URL after the training is complete.
 	//
-	// 	- If this parameter is not specified, no sample audio file is generated.
+	// - If this parameter is not specified, no sample audio file is generated.
 	//
-	//     **
+	//   \\*\\*
 	//
-	//     **Note**: The URL must be a valid public OSS URL within your Alibaba Cloud account.
+	//   **Note**: The URL must be a valid public OSS URL within your Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type SubmitStandardCustomizedVoiceJobRequest struct {
 	DemoAudioMediaURL *string `json:"DemoAudioMediaURL,omitempty" xml:"DemoAudioMediaURL,omitempty"`
 	// The gender. Valid values:
 	//
-	// 	- female
+	// - female
 	//
-	// 	- male
+	// - male
 	//
 	// example:
 	//
@@ -70,7 +70,11 @@ type SubmitStandardCustomizedVoiceJobRequest struct {
 	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
 	// The voice name.
 	//
-	// 	- The name can be up to 32 characters in length.
+	// - The name can be up to 32 characters in length.
+	//
+	// example:
+	//
+	// Basic
 	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
 }
 

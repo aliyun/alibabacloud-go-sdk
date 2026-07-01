@@ -22,19 +22,28 @@ type iListYikeAssetFoldersResponseBody interface {
 }
 
 type ListYikeAssetFoldersResponseBody struct {
+	// The folder list.
 	FolderList []*ListYikeAssetFoldersResponseBodyFolderList `json:"FolderList,omitempty" xml:"FolderList,omitempty" type:"Repeated"`
+	// The maximum number of results per page.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to retrieve the next page of results. If this parameter is not returned, all results have been retrieved.
+	//
 	// example:
 	//
 	// Token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count of folders.
+	//
 	// example:
 	//
 	// 78
@@ -108,26 +117,38 @@ func (s *ListYikeAssetFoldersResponseBody) Validate() error {
 }
 
 type ListYikeAssetFoldersResponseBodyFolderList struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-01-22T02:07:06Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The folder ID.
+	//
 	// example:
 	//
 	// fd-EXRyxc5SHY
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The folder name.
+	//
 	// example:
 	//
 	// default
 	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
+	// Indicates whether the folder is the default folder.
+	//
 	// example:
 	//
 	// 1
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// pd_183320223010****
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// llm-odl2p61i4vfbph4g

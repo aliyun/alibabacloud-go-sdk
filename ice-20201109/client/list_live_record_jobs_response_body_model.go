@@ -149,6 +149,10 @@ type ListLiveRecordJobsResponseBodyLiveRecordJobs struct {
 	// ab0e3e76-1e9d-11ed-ba64-0c42a1b73d66
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The name of the recording job.
+	//
+	// example:
+	//
+	// Live event recording task 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The callback URL.
 	//
@@ -300,9 +304,9 @@ type ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput struct {
 	//
 	// Valid values:
 	//
-	// 	- vod
+	// - vod
 	//
-	// 	- oss
+	// - oss
 	//
 	// example:
 	//

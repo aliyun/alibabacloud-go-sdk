@@ -38,35 +38,31 @@ type iSubmitDynamicChartJobRequest interface {
 }
 
 type SubmitDynamicChartJobRequest struct {
-	// The axis configurations. If XAxisFontInterval is set to 0 or left empty, the system automatically determines an optimal interval.
+	// The axis style settings. If `XAxisFontInterval` is not specified or is set to 0, the system automatically calculates the interval.
 	//
 	// example:
 	//
 	// {"FontFile":"Microsoft YaHei","XAxisFontSize":"30","YAxisFontSize":"30","XAxisFontInterval":"30","AxisColor":"30"}
 	AxisParams *string `json:"AxisParams,omitempty" xml:"AxisParams,omitempty"`
-	// The chart background.
+	// The settings for the chart background. You can specify a Background Color or a Background Image.
 	//
 	// example:
 	//
 	// {"Color":"#000000","ImageUrl":"http://your-bucket.oss-cn-shanghai.aliyuncs.com/obj.jpg"}
 	Background *string `json:"Background,omitempty" xml:"Background,omitempty"`
-	// The chart configurations.
+	// The overall configuration for the chart\\"s appearance and timing.
 	//
 	// example:
 	//
 	// {"Style":"Normal","TitleStartTime":"3000","ChartStartTime":"3000","VideoDuration":"15000"}
 	ChartConfig *string `json:"ChartConfig,omitempty" xml:"ChartConfig,omitempty"`
-	// The chart title.
+	// The chart title settings.
+	//
+	// example:
+	//
+	// {"Text":" primary title","FontSize":"30","FontColor":"#000000","FontFile":"Microsoft YaHei"}
 	ChartTitle *string `json:"ChartTitle,omitempty" xml:"ChartTitle,omitempty"`
-	// The chart type.
-	//
-	// Valid values:
-	//
-	// 	- Line: line chart
-	//
-	// 	- Histogram: bar chart
-	//
-	// 	- Pie: pie chart
+	// The chart type to generate.
 	//
 	// This parameter is required.
 	//
@@ -74,11 +70,19 @@ type SubmitDynamicChartJobRequest struct {
 	//
 	// Line
 	ChartType *string `json:"ChartType,omitempty" xml:"ChartType,omitempty"`
-	// The data source.
+	// The data source label settings.
+	//
+	// example:
+	//
+	// {"Text":"Data source","FontSize":"30","FontColor":"#000000","FontFile":"Microsoft YaHei"}
 	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
 	// The job description.
+	//
+	// example:
+	//
+	// Task description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The input data for the chart.
+	// The input data configuration, which specifies the Excel file location.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +90,7 @@ type SubmitDynamicChartJobRequest struct {
 	//
 	// {"XlsFile":"https://your-bucket.oss-cn-shanghai.aliyuncs.com/obj.xls"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The output configurations.
+	// The output video configuration.
 	//
 	// This parameter is required.
 	//
@@ -94,13 +98,25 @@ type SubmitDynamicChartJobRequest struct {
 	//
 	// {"MediaURL":"https://your-bucket.oss-cn-shanghai.aliyuncs.com/obj.mp4","Bitrate":2000,"Width":800,"Height":680}
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	// The subtitle.
+	// The subtitle settings.
+	//
+	// example:
+	//
+	// {"Text":"Subtitle","FontSize":"30","FontColor":"#000000","FontFile":"Microsoft YaHei"}
 	Subtitle *string `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
 	// The job title.
+	//
+	// example:
+	//
+	// Task title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// Unit
+	// The data unit label settings.
+	//
+	// example:
+	//
+	// {"Text":"Unit","FontSize":"30","FontColor":"#000000","FontFile":"Microsoft YaHei"}
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// The custom data in JSON format.
+	// The custom user data in JSON format.
 	//
 	// example:
 	//

@@ -93,9 +93,9 @@ type UpdateLiveRecordTemplateRequestRecordFormat struct {
 	//
 	// >
 	//
-	// 	- If a live stream is interrupted during a recording cycle but is resumed within 3 minutes, the stream is recorded in the same recording before and after the interruption.
+	// - If a live stream is interrupted during a recording cycle but is resumed within 3 minutes, the stream is recorded in the same recording before and after the interruption.
 	//
-	// 	- If a live stream is interrupted for more than 3 minutes, a new recording is generated. To change the default stream interruption time, submit a ticket.
+	// - If a live stream is interrupted for more than 3 minutes, a new recording is generated. To change the default stream interruption time, submit a ticket.
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type UpdateLiveRecordTemplateRequestRecordFormat struct {
 	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
 	// The format of recording files.
 	//
-	// >  If you set this parameter to m3u8, you must also specify the SliceOssObjectPrefix and SliceDuration parameters.
+	// > If you set this parameter to m3u8, you must also specify the SliceOssObjectPrefix and SliceDuration parameters.
 	//
 	// This parameter is required.
 	//
@@ -113,9 +113,9 @@ type UpdateLiveRecordTemplateRequestRecordFormat struct {
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 	// The name of the recording that is stored in Object Storage Service (OSS).
 	//
-	// 	- The name must be less than 256 bytes in length and can contain the {JobId}, {Sequence}, {StartTime}, {EndTime}, {EscapedStartTime}, and {EscapedEndTime} variables.
+	// - The name must be less than 256 bytes in length and can contain the {JobId}, {Sequence}, {StartTime}, {EndTime}, {EscapedStartTime}, and {EscapedEndTime} variables.
 	//
-	// 	- The name must contain the {StartTime} and {EndTime} variables or the {EscapedStartTime} and {EscapedEndTime} variables.
+	// - The name must contain the {StartTime} and {EndTime} variables or the {EscapedStartTime} and {EscapedEndTime} variables.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type UpdateLiveRecordTemplateRequestRecordFormat struct {
 	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
 	// The duration of a single segment. Unit: seconds
 	//
-	// >  This parameter takes effect only if you set Format to m3u8.
+	// > This parameter takes effect only if you set Format to m3u8.
 	//
 	// If you do not specify this parameter, the default value 30 seconds is used. Valid values: 5 to 30.
 	//
@@ -133,7 +133,7 @@ type UpdateLiveRecordTemplateRequestRecordFormat struct {
 	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
 	// The name of the TS segment.
 	//
-	// >  This parameter is required only if you set Format to m3u8. By default, the duration of a segment is 30 seconds. The segment name must be less than 256 bytes in length and can contain the {JobId}, {UnixTimestamp}, and {Sequence} variables.
+	// > This parameter is required only if you set Format to m3u8. By default, the duration of a segment is 30 seconds. The segment name must be less than 256 bytes in length and can contain the {JobId}, {UnixTimestamp}, and {Sequence} variables.
 	//
 	// The segment name must contain the {UnixTimestamp} and {Sequence} variables.
 	//

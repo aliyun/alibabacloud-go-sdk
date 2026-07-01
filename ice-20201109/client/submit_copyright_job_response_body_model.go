@@ -20,15 +20,15 @@ type iSubmitCopyrightJobResponseBody interface {
 }
 
 type SubmitCopyrightJobResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *SubmitCopyrightJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

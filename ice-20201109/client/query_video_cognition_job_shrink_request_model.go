@@ -18,9 +18,9 @@ type iQueryVideoCognitionJobShrinkRequest interface {
 }
 
 type QueryVideoCognitionJobShrinkRequest struct {
-	// Specifies whether to include the full algorithm results in the response.
+	// A container for parameters that determine which algorithm results to include in the response.
 	IncludeResultsShrink *string `json:"IncludeResults,omitempty" xml:"IncludeResults,omitempty"`
-	// The ID of the task to query. It is returned when you call the [SubmitSmarttagJob](https://help.aliyun.com/document_detail/478786.html) operation.
+	// The ID of the intelligent tagging job. You can obtain this ID from the response of the [SubmitIntelligentTaggingJob](https://help.aliyun.com/document_detail/478786.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type QueryVideoCognitionJobShrinkRequest struct {
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Additional request parameters, provided as a JSON string.
+	// Additional request parameters, specified as a JSON string.
 	//
 	// example:
 	//

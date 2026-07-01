@@ -30,13 +30,13 @@ type CreateLiveTranscodeTemplateShrinkRequest struct {
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The type of the template. Valid values:
 	//
-	// 	- normal
+	// - normal
 	//
-	// 	- narrow-band
+	// - narrow-band
 	//
-	// 	- audio-only
+	// - audio-only
 	//
-	// 	- origin
+	// - origin
 	//
 	// This parameter is required.
 	//

@@ -26,15 +26,15 @@ type iDeleteRecognitionLibRequest interface {
 type DeleteRecognitionLibRequest struct {
 	// The type of recognition algorithm. Valid values:
 	//
-	// 	- landmark
+	// - landmark
 	//
-	// 	- object
+	// - object
 	//
-	// 	- logo
+	// - logo
 	//
-	// 	- face
+	// - face
 	//
-	// 	- label
+	// - label
 	//
 	// This parameter is required.
 	//

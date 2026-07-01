@@ -44,9 +44,9 @@ type ListBatchMediaProducingJobsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Script: script-based editing job that mixes media assets.
+	// - Script: script-based editing job that mixes media assets.
 	//
-	// 	- Smart_Mix: intelligent editing job that mixes media assets.
+	// - Smart_Mix: intelligent editing job that mixes media assets.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type ListBatchMediaProducingJobsRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The sorting parameter. Valid values:
 	//
-	// 	- desc (default): sorted by creation time in descending order.
+	// - desc (default): sorted by creation time in descending order.
 	//
-	// 	- asc: sorted by creation time in ascending order.
+	// - asc: sorted by creation time in ascending order.
 	//
 	// <!---->
 	//
@@ -86,13 +86,13 @@ type ListBatchMediaProducingJobsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Finished
+	// - Finished
 	//
-	// 	- Init
+	// - Init
 	//
-	// 	- Failed
+	// - Failed
 	//
-	// 	- Processing
+	// - Processing
 	//
 	// example:
 	//

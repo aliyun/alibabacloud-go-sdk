@@ -74,9 +74,9 @@ type GetStreamTagListRequest struct {
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 	// The sorting order for the results. Valid values:
 	//
-	// 	- StartTime:Desc (default): Sort by creation time in descending order.
+	// - StartTime:Desc (default): Sort by creation time in descending order.
 	//
-	// 	- StartTime:Asc: Sort by creation time in ascending order.
+	// - StartTime:Asc: Sort by creation time in ascending order.
 	//
 	// example:
 	//

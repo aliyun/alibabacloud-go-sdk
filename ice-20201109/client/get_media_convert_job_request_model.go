@@ -14,7 +14,7 @@ type iGetMediaConvertJobRequest interface {
 }
 
 type GetMediaConvertJobRequest struct {
-	// The ID of the transcoding task.
+	// The ID of the media transcoding job.
 	//
 	// example:
 	//

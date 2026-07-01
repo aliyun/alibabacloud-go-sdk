@@ -16,7 +16,7 @@ type iSubmitMediaCensorJobResponseBody interface {
 }
 
 type SubmitMediaCensorJobResponseBody struct {
-	// The ID of the content moderation job. We recommend that you save this ID for subsequent calls of other operations.
+	// The ID of the video censor job. We recommend saving this ID for subsequent API calls.
 	//
 	// example:
 	//

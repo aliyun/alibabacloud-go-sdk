@@ -46,9 +46,9 @@ type ListDynamicImageJobsRequest struct {
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// The order that you use to sort the query results. Valid values:
 	//
-	// 1.  CreateTimeAsc: sorts the jobs by creation time in ascending order.
+	// 1. CreateTimeAsc: sorts the jobs by creation time in ascending order.
 	//
-	// 2.  CreateTimeDesc: sorts the jobs by creation time in descending order.
+	// 2. CreateTimeDesc: sorts the jobs by creation time in descending order.
 	//
 	// example:
 	//
@@ -70,11 +70,11 @@ type ListDynamicImageJobsRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- Init: The job is submitted.
+	// - Init: The job is submitted.
 	//
-	// 	- Success: The job is successful.
+	// - Success: The job is successful.
 	//
-	// 	- Fail: The job failed.
+	// - Fail: The job failed.
 	//
 	// example:
 	//
