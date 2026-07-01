@@ -2067,6 +2067,120 @@ func (client *Client) CreateDataSource(request *CreateDataSourceRequest) (_resul
 
 // Summary:
 //
+// Creates a new dataset under a specified project. Available since v6.2.0.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API creates a new dataset in a specified project.
+//
+// - `ProjectId` is a required parameter that specifies the ID of the project in which to create the dataset.
+//
+// - `CreateCommand` is a complex object that contains the configuration information required to create the dataset.
+//
+// - `Name`, `Type`, `ContentType`, and `Scenario` are required fields that specify the dataset name, type, content type, and scenarios respectively.
+//
+// - `FileStorageConfig` and `MetadataStorageConfig` in `VersionConfig` can be configured as needed.
+//
+// - If you need a real-time meta table configuration, provide the `RealtimeMetaTableConfig` information.
+//
+// - Ensure that all required fields are correctly specified. Otherwise, the request failed.
+//
+// @param tmpReq - CreateDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetResponse
+func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, runtime *dara.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateDatasetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataset"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a new dataset under a specified project. Available since v6.2.0.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API creates a new dataset in a specified project.
+//
+// - `ProjectId` is a required parameter that specifies the ID of the project in which to create the dataset.
+//
+// - `CreateCommand` is a complex object that contains the configuration information required to create the dataset.
+//
+// - `Name`, `Type`, `ContentType`, and `Scenario` are required fields that specify the dataset name, type, content type, and scenarios respectively.
+//
+// - `FileStorageConfig` and `MetadataStorageConfig` in `VersionConfig` can be configured as needed.
+//
+// - If you need a real-time meta table configuration, provide the `RealtimeMetaTableConfig` information.
+//
+// - Ensure that all required fields are correctly specified. Otherwise, the request failed.
+//
+// @param request - CreateDatasetRequest
+//
+// @return CreateDatasetResponse
+func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CreateDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a menu tree directory. This operation supports features such as compute nodes, data integration, and synchronization tasks.
 //
 // @param tmpReq - CreateDirectoryRequest
@@ -4388,6 +4502,76 @@ func (client *Client) DeleteDataSource(request *DeleteDataSourceRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteDataSourceResponse{}
 	_body, _err := client.DeleteDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a dataset. Release version: v6.2.0.
+//
+// @param request - DeleteDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetResponse
+func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, runtime *dara.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataset"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a dataset. Release version: v6.2.0.
+//
+// @param request - DeleteDatasetRequest
+//
+// @return DeleteDatasetResponse
+func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *DeleteDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.DeleteDatasetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6999,6 +7183,80 @@ func (client *Client) GetBatchTaskVersions(request *GetBatchTaskVersionsRequest)
 
 // Summary:
 //
+// 获取指定离线模板ID版本列表。
+//
+// @param request - GetBatchTemplateVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBatchTemplateVersionsResponse
+func (client *Client) GetBatchTemplateVersionsWithOptions(request *GetBatchTemplateVersionsRequest, runtime *dara.RuntimeOptions) (_result *GetBatchTemplateVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Env) {
+		query["Env"] = request.Env
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBatchTemplateVersions"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBatchTemplateVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定离线模板ID版本列表。
+//
+// @param request - GetBatchTemplateVersionsRequest
+//
+// @return GetBatchTemplateVersionsResponse
+func (client *Client) GetBatchTemplateVersions(request *GetBatchTemplateVersionsRequest) (_result *GetBatchTemplateVersionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetBatchTemplateVersionsResponse{}
+	_body, _err := client.GetBatchTemplateVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Query mapping relationships by belonging asset GUID.
 //
 // Release version: v5.4.2.
@@ -8753,6 +9011,84 @@ func (client *Client) GetDataSourceDependencies(request *GetDataSourceDependenci
 
 // Summary:
 //
+// Retrieves a dataset. Release version: v6.2.0.
+//
+// Description:
+//
+// Queries the details of a tested connectivity task based on the data source ID.
+//
+// @param request - GetDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatasetResponse
+func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime *dara.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataset"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a dataset. Release version: v6.2.0.
+//
+// Description:
+//
+// Queries the details of a tested connectivity task based on the data source ID.
+//
+// @param request - GetDatasetRequest
+//
+// @return GetDatasetResponse
+func (client *Client) GetDataset(request *GetDatasetRequest) (_result *GetDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDatasetResponse{}
+	_body, _err := client.GetDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Query upstream dependencies of development objects.
 //
 // @param request - GetDevObjectDependencyRequest
@@ -9442,6 +9778,228 @@ func (client *Client) GetNodeUpDownStream(request *GetNodeUpDownStreamRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetNodeUpDownStreamResponse{}
 	_body, _err := client.GetNodeUpDownStreamWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据Id查询运行记录
+//
+// @param tmpReq - GetOperationRecordByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOperationRecordByIdResponse
+func (client *Client) GetOperationRecordByIdWithOptions(tmpReq *GetOperationRecordByIdRequest, runtime *dara.RuntimeOptions) (_result *GetOperationRecordByIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetOperationRecordByIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DetailCommand) {
+		request.DetailCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DetailCommand, dara.String("DetailCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DetailCommandShrink) {
+		body["DetailCommand"] = request.DetailCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetOperationRecordById"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetOperationRecordByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据Id查询运行记录
+//
+// @param request - GetOperationRecordByIdRequest
+//
+// @return GetOperationRecordByIdResponse
+func (client *Client) GetOperationRecordById(request *GetOperationRecordByIdRequest) (_result *GetOperationRecordByIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetOperationRecordByIdResponse{}
+	_body, _err := client.GetOperationRecordByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an execution record. Released in version v6.2.0.
+//
+// @param tmpReq - GetOperationRecordDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOperationRecordDetailResponse
+func (client *Client) GetOperationRecordDetailWithOptions(tmpReq *GetOperationRecordDetailRequest, runtime *dara.RuntimeOptions) (_result *GetOperationRecordDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetOperationRecordDetailShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RecordDetailCommand) {
+		request.RecordDetailCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecordDetailCommand, dara.String("RecordDetailCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RecordDetailCommandShrink) {
+		body["RecordDetailCommand"] = request.RecordDetailCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetOperationRecordDetail"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetOperationRecordDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an execution record. Released in version v6.2.0.
+//
+// @param request - GetOperationRecordDetailRequest
+//
+// @return GetOperationRecordDetailResponse
+func (client *Client) GetOperationRecordDetail(request *GetOperationRecordDetailRequest) (_result *GetOperationRecordDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetOperationRecordDetailResponse{}
+	_body, _err := client.GetOperationRecordDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution code of an operation log. Online version: v6.2.0.
+//
+// @param tmpReq - GetOperationRecordRunCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOperationRecordRunCodeResponse
+func (client *Client) GetOperationRecordRunCodeWithOptions(tmpReq *GetOperationRecordRunCodeRequest, runtime *dara.RuntimeOptions) (_result *GetOperationRecordRunCodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetOperationRecordRunCodeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CodeCommand) {
+		request.CodeCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CodeCommand, dara.String("CodeCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CodeCommandShrink) {
+		body["CodeCommand"] = request.CodeCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetOperationRecordRunCode"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetOperationRecordRunCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution code of an operation log. Online version: v6.2.0.
+//
+// @param request - GetOperationRecordRunCodeRequest
+//
+// @return GetOperationRecordRunCodeResponse
+func (client *Client) GetOperationRecordRunCode(request *GetOperationRecordRunCodeRequest) (_result *GetOperationRecordRunCodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetOperationRecordRunCodeResponse{}
+	_body, _err := client.GetOperationRecordRunCodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13849,6 +14407,88 @@ func (client *Client) ListAuthorizedDataServiceApiDetails(request *ListAuthorize
 
 // Summary:
 //
+// Queries offline computing templates by paging. Online version: v6.2.0.
+//
+// @param tmpReq - ListBatchTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBatchTemplatesResponse
+func (client *Client) ListBatchTemplatesWithOptions(tmpReq *ListBatchTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListBatchTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListBatchTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Env) {
+		query["Env"] = request.Env
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBatchTemplates"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBatchTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries offline computing templates by paging. Online version: v6.2.0.
+//
+// @param request - ListBatchTemplatesRequest
+//
+// @return ListBatchTemplatesResponse
+func (client *Client) ListBatchTemplates(request *ListBatchTemplatesRequest) (_result *ListBatchTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListBatchTemplatesResponse{}
+	_body, _err := client.ListBatchTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of business entities.
 //
 // @param tmpReq - ListBizEntitiesRequest
@@ -14905,6 +15545,92 @@ func (client *Client) ListDataSourceWithConfig(request *ListDataSourceWithConfig
 
 // Summary:
 //
+// Lists datasets in a project based on specified conditional query criteria. Online version: v6.2.0.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API allows you to retrieve dataset information for a specific project by providing a tenant ID, project ID, and other optional parameters such as keywords and type lists. Paging is supported. The returned data includes basic dataset information and version details. ProjectId is required. Other parameters are optional and can be configured as needed to filter results.
+//
+// @param tmpReq - ListDatasetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasetsResponse
+func (client *Client) ListDatasetsWithOptions(tmpReq *ListDatasetsRequest, runtime *dara.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListDatasetsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DatasetQuery) {
+		request.DatasetQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetQuery, dara.String("DatasetQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetQueryShrink) {
+		body["DatasetQuery"] = request.DatasetQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDatasets"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDatasetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists datasets in a project based on specified conditional query criteria. Online version: v6.2.0.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API allows you to retrieve dataset information for a specific project by providing a tenant ID, project ID, and other optional parameters such as keywords and type lists. Paging is supported. The returned data includes basic dataset information and version details. ProjectId is required. Other parameters are optional and can be configured as needed to filter results.
+//
+// @param request - ListDatasetsRequest
+//
+// @return ListDatasetsResponse
+func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListDatasetsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDatasetsResponse{}
+	_body, _err := client.ListDatasetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Query the directory tree file list.
 //
 // @param tmpReq - ListFilesRequest
@@ -15204,6 +15930,80 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListNodesResponse{}
 	_body, _err := client.ListNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query on the list of operation records. Online version: v6.2.0.
+//
+// @param tmpReq - ListOperationRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOperationRecordResponse
+func (client *Client) ListOperationRecordWithOptions(tmpReq *ListOperationRecordRequest, runtime *dara.RuntimeOptions) (_result *ListOperationRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListOperationRecordShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListCommand) {
+		request.ListCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListCommand, dara.String("ListCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListCommandShrink) {
+		body["ListCommand"] = request.ListCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOperationRecord"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOperationRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query on the list of operation records. Online version: v6.2.0.
+//
+// @param request - ListOperationRecordRequest
+//
+// @return ListOperationRecordResponse
+func (client *Client) ListOperationRecord(request *ListOperationRecordRequest) (_result *ListOperationRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListOperationRecordResponse{}
+	_body, _err := client.ListOperationRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19994,6 +20794,116 @@ func (client *Client) UpdateDataSourceConfig(request *UpdateDataSourceConfigRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateDataSourceConfigResponse{}
 	_body, _err := client.UpdateDataSourceConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Dataphin OpenAPI 模板。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该 API 用于更新特定项目下已存在的数据集的详细信息。
+//
+// - 必须提供 `ProjectId` 和 `UpdateCommand` 参数，其中 `UpdateCommand` 包含了需要更新的数据集的具体字段。
+//
+// - `UpdateCommand` 中的 `Id` 字段是必需的，用来标识要更新的数据集。
+//
+// - 其他字段如 `Name`, `Type`, `DataCellId` 等为可选项，根据实际需求选择性填写。
+//
+// - 版本配置（`VersionConfig`）和实时元表配置（`RealtimeMetaTableConfig`）提供了更详细的设置选项，包括存储路径、表结构等，这些也是可选的。
+//
+// - 注意确保所有提供的 ID 值（如 `ProjectId`, `Id`, `DataSourceId` 等）在系统中有效且正确关联。
+//
+// @param tmpReq - UpdateDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDatasetResponse
+func (client *Client) UpdateDatasetWithOptions(tmpReq *UpdateDatasetRequest, runtime *dara.RuntimeOptions) (_result *UpdateDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateDatasetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataset"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Dataphin OpenAPI 模板。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该 API 用于更新特定项目下已存在的数据集的详细信息。
+//
+// - 必须提供 `ProjectId` 和 `UpdateCommand` 参数，其中 `UpdateCommand` 包含了需要更新的数据集的具体字段。
+//
+// - `UpdateCommand` 中的 `Id` 字段是必需的，用来标识要更新的数据集。
+//
+// - 其他字段如 `Name`, `Type`, `DataCellId` 等为可选项，根据实际需求选择性填写。
+//
+// - 版本配置（`VersionConfig`）和实时元表配置（`RealtimeMetaTableConfig`）提供了更详细的设置选项，包括存储路径、表结构等，这些也是可选的。
+//
+// - 注意确保所有提供的 ID 值（如 `ProjectId`, `Id`, `DataSourceId` 等）在系统中有效且正确关联。
+//
+// @param request - UpdateDatasetRequest
+//
+// @return UpdateDatasetResponse
+func (client *Client) UpdateDataset(request *UpdateDatasetRequest) (_result *UpdateDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDatasetResponse{}
+	_body, _err := client.UpdateDatasetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
