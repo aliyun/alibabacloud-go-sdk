@@ -16,7 +16,7 @@ type iDeleteGroupRequest interface {
 }
 
 type DeleteGroupRequest struct {
-	// The group ID.
+	// Group ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteGroupRequest struct {
 	//
 	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//

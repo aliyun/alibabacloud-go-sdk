@@ -22,7 +22,7 @@ type iListApplicationsForOrganizationalUnitRequest interface {
 }
 
 type ListApplicationsForOrganizationalUnitRequest struct {
-	// A list of application IDs. You can specify up to 100 application IDs in a single operation.
+	// The list of application IDs. A maximum of 100 application IDs are supported in a single operation.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListApplicationsForOrganizationalUnitRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The organization ID.
+	// The organizational unit ID.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ListApplicationsForOrganizationalUnitRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//

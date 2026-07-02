@@ -14,7 +14,7 @@ type iDisableIdentityProviderUdPullResponseBody interface {
 }
 
 type DisableIdentityProviderUdPullResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

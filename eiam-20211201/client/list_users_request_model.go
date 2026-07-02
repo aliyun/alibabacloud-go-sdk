@@ -44,13 +44,13 @@ type iListUsersRequest interface {
 }
 
 type ListUsersRequest struct {
-	// The prefix of the display name. The query is performed based on the prefix.
+	// The display name prefix. A left-match query is used.
 	//
 	// example:
 	//
 	// name
 	DisplayNameStartsWith *string `json:"DisplayNameStartsWith,omitempty" xml:"DisplayNameStartsWith,omitempty"`
-	// The email address of the user.
+	// The email address of the account.
 	//
 	// example:
 	//
@@ -64,97 +64,97 @@ type ListUsersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The pagination token.
 	//
 	// example:
 	//
 	// NTxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the organizational unit.
+	// The organizational unit ID.
 	//
 	// example:
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// The page number. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The default value is 20. The maximum value is 100.
+	// The number of entries per page. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The mobile number of the user.
+	// The phone number of the account.
 	//
 	// example:
 	//
 	// 156xxxxxxx
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The country calling code. For example, the country calling code of China is `86`. Do not add `00` or `+` to the country calling code.
+	// The phone region code. Example: The region code for the Chinese mainland is 86, without the 00 or + prefix.
 	//
 	// example:
 	//
 	// 86
 	PhoneRegion *string `json:"PhoneRegion,omitempty" xml:"PhoneRegion,omitempty"`
-	// The status of the user. Valid values:
+	// The account status. Valid values:
 	//
-	// - `enabled`: The user is enabled.
+	// - enabled: Enabled.
 	//
-	// - `disabled`: The user is disabled.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The external ID of the user. The external ID can be used to associate the user with a user in an external system.
+	// The external ID, which is used to associate external data with IDaaS accounts.
 	//
-	// > The external ID must be unique within the same source type and source ID.
+	// Note: The external ID must be unique within the same source type and source ID.
 	//
 	// example:
 	//
 	// id_wovwffm62xifdziem7an7xxxxx
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
-	// The list of user IDs.
+	// The list of account IDs.
 	//
 	// example:
 	//
 	// 20
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
-	// The source ID of the user.
+	// The source ID of the account.
 	//
-	// If the user is created in EIAM, the value of this parameter is the ID of the EIAM instance. If the user is imported from an external system, the value of this parameter is the enterprise ID of the user in the external system. For example, if the user is imported from DingTalk, the value of this parameter is the `corpId` of the enterprise in DingTalk.
+	// For self-built accounts, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the respective source. For example, for a DingTalk source, the value corresponds to the corpId of the DingTalk enterprise.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
-	// The source type of the user. Valid values:
+	// The source type of the account. Valid values:
 	//
-	// - `build_in`: The user is created in EIAM.
+	// - build_in: self-built.
 	//
-	// - `ding_talk`: The user is imported from DingTalk.
+	// - ding_talk: imported from DingTalk.
 	//
-	// - `ad`: The user is imported from Active Directory (AD).
+	// - ad: imported from AD.
 	//
-	// - `ldap`: The user is imported from a Lightweight Directory Access Protocol (LDAP) directory.
+	// - ldap: imported from LDAP.
 	//
-	// - `we_com`: The user is imported from WeCom.
+	// - we_com: imported from WeCom.
 	//
 	// example:
 	//
 	// build_in
 	UserSourceType *string `json:"UserSourceType,omitempty" xml:"UserSourceType,omitempty"`
-	// The prefix of the username. The query is performed based on the prefix.
+	// The username prefix. A left-match query is used.
 	//
 	// example:
 	//

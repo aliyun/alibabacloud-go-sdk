@@ -18,7 +18,7 @@ type iListGroupsForUserResponseBody interface {
 }
 
 type ListGroupsForUserResponseBody struct {
-	// The queried account groups.
+	// The list of account groups.
 	Groups []*ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListGroupsForUserResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned. The maximum number of entries returned at a time depends on the value of PageSize.
+	// The total number of matching records. The maximum number of records returned per page is determined by PageSize.
 	//
 	// example:
 	//
@@ -83,19 +83,31 @@ func (s *ListGroupsForUserResponseBody) Validate() error {
 }
 
 type ListGroupsForUserResponseBodyGroups struct {
-	// The group ID.
+	// The account group ID.
 	//
 	// example:
 	//
 	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Account membership source ID
+	// The source ID of the group member relationship.
+	//
+	// For the build_in type, this defaults to the instance ID. For other types, this corresponds to the enterprise ID of the respective source. For example, for a DingTalk source, this corresponds to the corpId of the DingTalk enterprise.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	GroupMemberRelationSourceId *string `json:"GroupMemberRelationSourceId,omitempty" xml:"GroupMemberRelationSourceId,omitempty"`
-	// Account membership source type
+	// The source type of the group member relationship. Valid values:
+	//
+	// build_in: built-in.
+	//
+	// ding_talk: imported from DingTalk.
+	//
+	// ad: imported from AD.
+	//
+	// ldap: imported from LDAP.
+	//
+	// we_com: imported from WeCom.
 	//
 	// example:
 	//

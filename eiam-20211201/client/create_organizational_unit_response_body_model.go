@@ -16,13 +16,13 @@ type iCreateOrganizationalUnitResponseBody interface {
 }
 
 type CreateOrganizationalUnitResponseBody struct {
-	// The organization ID.
+	// Organization ID.
 	//
 	// example:
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

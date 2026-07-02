@@ -16,13 +16,13 @@ type iListEventTypesRequest interface {
 }
 
 type ListEventTypesRequest struct {
-	// Page number for paging
+	// The page number of the query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of items per page
+	// The number of entries per page.
 	//
 	// example:
 	//

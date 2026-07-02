@@ -22,13 +22,13 @@ type iListUsersResponseBody interface {
 }
 
 type ListUsersResponseBody struct {
-	// The number of entries returned per page.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to retrieve the next page of results.
+	// The pagination token.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListUsersResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of users.
+	// The list of account data.
 	Users []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -117,37 +117,37 @@ func (s *ListUsersResponseBody) Validate() error {
 }
 
 type ListUsersResponseBodyUsers struct {
-	// The account expiration time. This is a Unix timestamp in milliseconds.
+	// The account expiration time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	AccountExpireTime *int64 `json:"AccountExpireTime,omitempty" xml:"AccountExpireTime,omitempty"`
-	// The creation time. This is a Unix timestamp in milliseconds.
+	// The account creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The user description.
+	// The description of the account.
 	//
 	// example:
 	//
 	// xxxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name.
+	// The display name of the account.
 	//
 	// example:
 	//
 	// display_name001
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The email address.
+	// The email address of the account.
 	//
 	// example:
 	//
 	// user@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Indicates whether the email address is verified. `true` means the user has verified the email address or an administrator has marked it as verified. `false` means the email address is not verified.
+	// Indicates whether the email address has been verified. A value of true indicates that the email address has been verified by the user or set as verified by the administrator. A value of false indicates that the email address has not been verified.
 	//
 	// example:
 	//
@@ -159,101 +159,101 @@ type ListUsersResponseBodyUsers struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The account lock expiration time. This is a Unix timestamp in milliseconds.
+	// The account lock expiration time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	LockExpireTime *int64 `json:"LockExpireTime,omitempty" xml:"LockExpireTime,omitempty"`
-	// The password expiration time. This is a Unix timestamp in milliseconds.
+	// The password expiration time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	PasswordExpireTime *int64 `json:"PasswordExpireTime,omitempty" xml:"PasswordExpireTime,omitempty"`
-	// Indicates whether a password is set.
+	// Indicates whether a password has been set.
 	//
 	// example:
 	//
 	// false
 	PasswordSet *bool `json:"PasswordSet,omitempty" xml:"PasswordSet,omitempty"`
-	// The phone number.
+	// The phone number of the account.
 	//
 	// example:
 	//
 	// 156xxxxxxx
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// Indicates whether the phone number is verified. `true` means the user has verified the phone number or an administrator has marked it as verified. `false` means the phone number is not verified.
+	// Indicates whether the phone number has been verified. A value of true indicates that the phone number has been verified by the user or set as verified by the administrator. A value of false indicates that the phone number has not been verified.
 	//
 	// example:
 	//
 	// true
 	PhoneNumberVerified *bool `json:"PhoneNumberVerified,omitempty" xml:"PhoneNumberVerified,omitempty"`
-	// The country calling code. For example, specify `86` for Chinese mainland. Do not include `00` or a plus sign (+).
+	// The phone region code. Example: The region code for the Chinese mainland is 86, without the 00 or + prefix.
 	//
 	// example:
 	//
 	// 86
 	PhoneRegion *string `json:"PhoneRegion,omitempty" xml:"PhoneRegion,omitempty"`
-	// The registration time. This is a Unix timestamp in milliseconds.
+	// The account registration time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	RegisterTime *int64 `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
-	// The status. Valid values:
+	// The account status. Valid values:
 	//
-	// - `enabled`: The user is enabled.
+	// - enabled: Enabled.
 	//
-	// - `disabled`: The user is disabled.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last update time. This is a Unix timestamp in milliseconds.
+	// The time when the account was last updated, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The external user ID. This ID maps data from an external system to a user in IDaaS. It defaults to the user ID.
+	// The external ID of the account, which is used to associate external data with IDaaS accounts. The default value is the IDaaS account ID.
 	//
-	// Note: The external user ID must be unique for the same source type and source ID.
+	// Note: The external ID must be unique within the same source type and source ID.
 	//
 	// example:
 	//
 	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
-	// The user ID.
+	// The account ID.
 	//
 	// example:
 	//
 	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The user source ID.
+	// The source ID of the account.
 	//
-	// If the user is built-in, this is the instance ID. For users from other sources, this is the enterprise ID from the source, such as the `corpId` for a DingTalk organization.
+	// For self-built accounts, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the respective source. For example, for a DingTalk source, the value corresponds to the corpId of the DingTalk enterprise.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
-	// The user source type. Valid values:
+	// The source type of the account. Valid values:
 	//
-	// - `build_in`: The user is a built-in user.
+	// - build_in: self-built.
 	//
-	// - `ding_talk`: The user is imported from DingTalk.
+	// - ding_talk: imported from DingTalk.
 	//
-	// - `ad`: The user is imported from AD.
+	// - ad: imported from AD.
 	//
-	// - `ldap`: The user is imported from LDAP.
+	// - ldap: imported from LDAP.
 	//
 	// example:
 	//
 	// build_in
 	UserSourceType *string `json:"UserSourceType,omitempty" xml:"UserSourceType,omitempty"`
-	// The user name.
+	// The username.
 	//
 	// example:
 	//

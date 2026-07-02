@@ -16,13 +16,13 @@ type iGetUserResponseBody interface {
 }
 
 type GetUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The data object of the account.
+	// The account object data.
 	User *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *GetUserResponseBody) Validate() error {
 }
 
 type GetUserResponseBodyUser struct {
-	// The time when the account expires. This value is a UNIX timestamp. Unit: milliseconds.
+	// The expiration time of the account, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	AccountExpireTime *int64 `json:"AccountExpireTime,omitempty" xml:"AccountExpireTime,omitempty"`
-	// The time when the account was created. This value is a UNIX timestamp. Unit: milliseconds.
+	// The creation time of the account, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The list of custom fields that describe the account.
+	// The list of custom fields of the account.
 	CustomFields []*GetUserResponseBodyUserCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
 	// The description of the account.
 	//
@@ -88,71 +88,71 @@ type GetUserResponseBodyUser struct {
 	//
 	// display_name001
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The email address of the user who owns the account.
+	// The email address of the account.
 	//
 	// example:
 	//
 	// user@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Indicates whether the email address has been verified. A value of true indicates that the email address has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the email address has not been verified.
+	// Indicates whether the email address is verified. A value of true indicates that the email address has been verified by the user or set as verified by the administrator. A value of false indicates that the email address is not verified.
 	//
 	// example:
 	//
 	// true
 	EmailVerified *bool `json:"EmailVerified,omitempty" xml:"EmailVerified,omitempty"`
-	// The organizational units to which the account belongs.
+	// The list of groups to which the account belongs.
 	Groups []*GetUserResponseBodyUserGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The ID of the instance
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the account lock expires. This value is a UNIX timestamp. Unit: milliseconds.
+	// The lock expiration time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	LockExpireTime *int64 `json:"LockExpireTime,omitempty" xml:"LockExpireTime,omitempty"`
-	// The organizational units to which the account belongs.
+	// The list of organizational units to which the account belongs.
 	OrganizationalUnits []*GetUserResponseBodyUserOrganizationalUnits `json:"OrganizationalUnits,omitempty" xml:"OrganizationalUnits,omitempty" type:"Repeated"`
-	// The time when the password of the account expires. This value is a UNIX timestamp. Unit: milliseconds.
+	// The expiration time of the password, in UNIX timestamp format. Unit: milliseconds.
 	//
-	// - If the value -1 is returned, the password does not expire.
+	// - A return value of -1 indicates that the password does not expire.
 	//
-	// - If no value is returned, the password does not expire.
+	// - No return value indicates that the password does not expire.
 	//
-	// - If a UNIX timestamp is returned, the password expires at the indicated point of time.
+	// - A specific timestamp value indicates the exact password expiration time.
 	//
 	// example:
 	//
 	// 1652085686179
 	PasswordExpireTime *int64 `json:"PasswordExpireTime,omitempty" xml:"PasswordExpireTime,omitempty"`
-	// Indicates whether a password is set.
+	// Indicates whether the password is set.
 	//
 	// example:
 	//
 	// false
 	PasswordSet *bool `json:"PasswordSet,omitempty" xml:"PasswordSet,omitempty"`
-	// The mobile number of the user who owns the account.
+	// The phone number of the account.
 	//
 	// example:
 	//
 	// 156xxxxxxx
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// Indicates whether the mobile number has been verified. A value of true indicates that the mobile number has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the mobile number has not been verified.
+	// Indicates whether the phone number is verified. A value of true indicates that the phone number has been verified by the user or set as verified by the administrator. A value of false indicates that the phone number is not verified.
 	//
 	// example:
 	//
 	// true
 	PhoneNumberVerified *bool `json:"PhoneNumberVerified,omitempty" xml:"PhoneNumberVerified,omitempty"`
-	// The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
+	// The country calling code of the phone number. Example: 86 for the Chinese mainland. The code does not include the 00 or + prefix.
 	//
 	// example:
 	//
 	// 86
 	PhoneRegion *string `json:"PhoneRegion,omitempty" xml:"PhoneRegion,omitempty"`
-	// Preferred language
+	// The preferred language.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type GetUserResponseBodyUser struct {
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	PrimaryOrganizationalUnitId *string `json:"PrimaryOrganizationalUnitId,omitempty" xml:"PrimaryOrganizationalUnitId,omitempty"`
-	// The time when the account was registered. This value is a UNIX timestamp. Unit: milliseconds.
+	// The registration time of the account, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -172,29 +172,29 @@ type GetUserResponseBodyUser struct {
 	RegisterTime *int64 `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
 	// The status of the account. Valid values:
 	//
-	// - enabled: The account is enabled.
+	// - enabled: enabled.
 	//
-	// - disabled: The account is disabled.
+	// - disabled: disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the account was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+	// The most recent update time of the account, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The external ID of the account. The external ID can be used by external data to map the data of the account in IDaaS EIAM. By default, the external ID is the account ID.
+	// The external ID of the account. This ID is used to associate external data with the IDaaS account. The default value is the IDaaS account ID.
 	//
-	// For accounts with the same source type and source ID, each account has a unique external ID.
+	// > Note: The external ID must be unique within the same source type and source ID.
 	//
 	// example:
 	//
 	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
-	// The ID of the account.
+	// The account ID.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ type GetUserResponseBodyUser struct {
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The source ID of the account.
 	//
-	// If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+	// For the self-built type, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the respective source. For example, the DingTalk source corresponds to the corpId of the DingTalk enterprise.
 	//
 	// example:
 	//
@@ -210,13 +210,15 @@ type GetUserResponseBodyUser struct {
 	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
 	// The source type of the account. Valid values:
 	//
-	// - build_in: The account was created in IDaaS.
+	// - build_in: self-built.
 	//
-	// - ding_talk: The account was imported from DingTalk.
+	// - ding_talk: imported from DingTalk.
 	//
-	// - ad: The account was imported from Microsoft Active Directory (AD).
+	// - ad: imported from AD.
 	//
-	// - ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	// - ldap: imported from LDAP.
+	//
+	// - we_com: imported from WeCom.
 	//
 	// example:
 	//
@@ -549,19 +551,19 @@ func (s *GetUserResponseBodyUserCustomFields) Validate() error {
 }
 
 type GetUserResponseBodyUserGroups struct {
-	// The description of the organizational unit.
+	// The group description.
 	//
 	// example:
 	//
 	// this is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the organizational unit.
+	// The group ID.
 	//
 	// example:
 	//
 	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the organizational unit.
+	// The group name.
 	//
 	// example:
 	//
@@ -609,19 +611,19 @@ func (s *GetUserResponseBodyUserGroups) Validate() error {
 }
 
 type GetUserResponseBodyUserOrganizationalUnits struct {
-	// The ID of the organizational unit.
+	// The organizational unit ID.
 	//
 	// example:
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// The name of the organizational unit.
+	// The organizational unit name.
 	//
 	// example:
 	//
 	// test_ou_name
 	OrganizationalUnitName *string `json:"OrganizationalUnitName,omitempty" xml:"OrganizationalUnitName,omitempty"`
-	// Indicates whether the organization is the primary organization.
+	// Indicates whether this is the primary organizational unit.
 	//
 	// example:
 	//

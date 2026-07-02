@@ -16,7 +16,7 @@ type iDeleteOrganizationalUnitChildrenRequest interface {
 }
 
 type DeleteOrganizationalUnitChildrenRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteOrganizationalUnitChildrenRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Organizational Unit ID.
+	// The organization ID.
 	//
 	// This parameter is required.
 	//

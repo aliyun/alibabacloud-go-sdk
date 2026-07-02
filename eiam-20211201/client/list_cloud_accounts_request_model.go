@@ -30,19 +30,19 @@ type ListCloudAccountsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of records to return on each page.
+	// The maximum number of records per page.
 	//
-	// - The default value is 20.
+	// - Default value: 20.
 	//
-	// - The maximum value is 100.
+	// - Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that specifies the start of the next page.
+	// The token that marks the starting position of the next page.
 	//
-	// - If you leave this parameter empty, the query starts from the first page.
+	// - If you do not specify this parameter, the query starts from the first page.
 	//
 	// example:
 	//
@@ -110,17 +110,17 @@ func (s *ListCloudAccountsRequest) Validate() error {
 type ListCloudAccountsRequestFilter struct {
 	// The name of the filter field. Valid values:
 	//
-	// - CloudAccountId: The ID of the Alibaba Cloud account.
+	// - CloudAccountId: the cloud account ID.
 	//
-	// - CloudAccountExternalId: The external unique ID of the Alibaba Cloud account.
+	// - CloudAccountExternalId: the external unique identifier of the cloud account.
 	//
-	// - CloudAccountVendorType: The type of the Alibaba Cloud account.
+	// - CloudAccountVendorType: the cloud account type.
 	//
 	// example:
 	//
 	// CloudAccountId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// A list of values for the filter field.
+	// The values of the filter field.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

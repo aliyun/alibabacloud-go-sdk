@@ -18,15 +18,15 @@ type iListGroupsResponseBody interface {
 }
 
 type ListGroupsResponseBody struct {
-	// The queried account groups.
+	// Account group list.
 	Groups []*ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned. The maximum number of entries returned at a time depends on the value of PageSize.
+	// Total number of matched entries. The maximum number of entries returned in a single request is determined by pageSize.
 	//
 	// example:
 	//
@@ -83,55 +83,57 @@ func (s *ListGroupsResponseBody) Validate() error {
 }
 
 type ListGroupsResponseBodyGroups struct {
-	// The time at which the group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// Group creation time in Unix timestamp format, in milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the group.
+	// Group description.
 	//
 	// example:
 	//
 	// test group
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The external ID of the group, which can be used to associate the group with an external system. By default, the external ID is the group ID.
+	// Group external ID, used for association with external systems. Defaults to the account group ID.
 	//
 	// example:
 	//
 	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupExternalId *string `json:"GroupExternalId,omitempty" xml:"GroupExternalId,omitempty"`
-	// The group ID.
+	// Group ID.
 	//
 	// example:
 	//
 	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the group.
+	// Group name.
 	//
 	// example:
 	//
 	// group_name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The source ID of the group. If the group was imported from other services, this value indicates the external source ID. By default, the source ID is the instance ID.
+	// Group source ID. If created by importing from other sources, this is the external source ID. Defaults to the instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	GroupSourceId *string `json:"GroupSourceId,omitempty" xml:"GroupSourceId,omitempty"`
-	// The source type of the group. Only build_in may be returned, which indicates that the group was created in IDaaS.
+	// Group source type. Currently, only self-built is supported. Valid values:
+	//
+	// - build_in: self-built.
 	//
 	// example:
 	//
 	// build_in
 	GroupSourceType *string `json:"GroupSourceType,omitempty" xml:"GroupSourceType,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time at which the group was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// Group last update time in Unix timestamp format, in milliseconds.
 	//
 	// example:
 	//

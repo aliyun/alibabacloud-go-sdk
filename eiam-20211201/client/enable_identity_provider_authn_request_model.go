@@ -16,7 +16,7 @@ type iEnableIdentityProviderAuthnRequest interface {
 }
 
 type EnableIdentityProviderAuthnRequest struct {
-  // The ID of the identity provider (IdP).
+  // The identity provider ID.
   // 
   // This parameter is required.
   // 

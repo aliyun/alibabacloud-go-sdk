@@ -26,7 +26,7 @@ type AddUserToOrganizationalUnitsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of organization IDs. The list can contain up to 100 IDs.
+	// The list of organization IDs. The list can contain up to 100 elements.
 	//
 	// This parameter is required.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`

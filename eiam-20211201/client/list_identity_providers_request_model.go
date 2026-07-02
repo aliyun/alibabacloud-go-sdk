@@ -20,13 +20,13 @@ type iListIdentityProvidersRequest interface {
 }
 
 type ListIdentityProvidersRequest struct {
-	// The data synchronization direction of the identity provider.
+	// The direction of the identity provider.
 	//
 	// example:
 	//
 	// pull
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type ListIdentityProvidersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// Page size.
 	//
 	// example:
 	//

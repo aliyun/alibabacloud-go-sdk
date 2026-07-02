@@ -14,7 +14,7 @@ type iDeleteOrganizationalUnitChildrenResponseBody interface {
 }
 
 type DeleteOrganizationalUnitChildrenResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

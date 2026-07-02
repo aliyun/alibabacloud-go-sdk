@@ -26,7 +26,7 @@ type ListInstancesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -83,28 +83,34 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyInstances struct {
-	// The time when the instance was created. The value is a UNIX timestamp in milliseconds.
+	// The instance creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1550115455000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether cross-region replication is enabled. Valid values: enabled or disabled.
+	//
 	// example:
 	//
 	// enabled
 	CrossRegionReplication *string `json:"CrossRegionReplication,omitempty" xml:"CrossRegionReplication,omitempty"`
+	// The cross-region replication role. Valid values: primary (primary instance) or backup (backup instance).
+	//
 	// example:
 	//
 	// primary
 	CrossRegionReplicationRole *string `json:"CrossRegionReplicationRole,omitempty" xml:"CrossRegionReplicationRole,omitempty"`
 	// The default endpoint of the instance.
 	DefaultEndpoint *ListInstancesResponseBodyInstancesDefaultEndpoint `json:"DefaultEndpoint,omitempty" xml:"DefaultEndpoint,omitempty" type:"Struct"`
-	// The description of the instance.
+	// The instance description.
 	//
 	// example:
 	//
 	// instance_for_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance failover activation status. Valid values: active (activated) or inactive (not activated).
+	//
 	// example:
 	//
 	// inactive
@@ -120,7 +126,8 @@ type ListInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// sase
-	ManagedServiceCode       *string                                                     `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
+	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
+	// The replication configuration. This parameter is returned only when CrossRegionReplication is set to enabled.
 	ReplicationConfiguration *ListInstancesResponseBodyInstancesReplicationConfiguration `json:"ReplicationConfiguration,omitempty" xml:"ReplicationConfiguration,omitempty" type:"Struct"`
 	// Indicates whether the instance is managed by an Alibaba Cloud service.
 	//
@@ -268,11 +275,11 @@ type ListInstancesResponseBodyInstancesDefaultEndpoint struct {
 	//
 	// example-xxx.aliyunidaas.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The status of the instance endpoint. Valid values:
+	// The endpoint status. Valid values:
 	//
 	// - resolved: Resolved.
 	//
-	// - unresolved: Unresolved.
+	// - unresolved: Not resolved.
 	//
 	// example:
 	//
@@ -311,22 +318,32 @@ func (s *ListInstancesResponseBodyInstancesDefaultEndpoint) Validate() error {
 }
 
 type ListInstancesResponseBodyInstancesReplicationConfiguration struct {
+	// The instance ID of the backup instance.
+	//
 	// example:
 	//
 	// idaas_xxxxxx
 	BackupInstanceId *string `json:"BackupInstanceId,omitempty" xml:"BackupInstanceId,omitempty"`
+	// The region ID of the backup instance.
+	//
 	// example:
 	//
 	// cn-beijing
 	BackupInstanceRegionId *string `json:"BackupInstanceRegionId,omitempty" xml:"BackupInstanceRegionId,omitempty"`
+	// The instance ID of the primary instance.
+	//
 	// example:
 	//
 	// idaas_xxxxxx
 	PrimaryInstanceId *string `json:"PrimaryInstanceId,omitempty" xml:"PrimaryInstanceId,omitempty"`
+	// The region ID of the primary instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	PrimaryInstanceRegionId *string `json:"PrimaryInstanceRegionId,omitempty" xml:"PrimaryInstanceRegionId,omitempty"`
+	// The time when the disaster recovery data replication was created, in UNIX timestamp format. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1778499337000

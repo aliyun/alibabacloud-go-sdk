@@ -22,13 +22,13 @@ type iListApplicationsForGroupRequest interface {
 }
 
 type ListApplicationsForGroupRequest struct {
-	// The list of application IDs. A maximum of 100 application IDs are supported.
+	// Application ID list. A maximum of 100 application IDs are supported.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	// The group ID.
+	// Group ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ListApplicationsForGroupRequest struct {
 	//
 	// group_miu8e4t4d7i4u7uwezgr54xxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type ListApplicationsForGroupRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Page size.
 	//
 	// example:
 	//

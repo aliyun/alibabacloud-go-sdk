@@ -22,13 +22,13 @@ type iCreateOrganizationalUnitRequest interface {
 }
 
 type CreateOrganizationalUnitRequest struct {
-	// The description of the organization. The value can be up to 256 characters in length.
+	// The description. The maximum length is 256 characters.
 	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type CreateOrganizationalUnitRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The external ID of the organization, which can be used to associate the organization with an external system. By default, the external ID is the organization ID. The value can be up to 64 characters in length.
+	// External ID of the organization, which is used for association with an external system. The default value is the organization ID. The maximum length is 64 characters.
 	//
 	// example:
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitExternalId *string `json:"OrganizationalUnitExternalId,omitempty" xml:"OrganizationalUnitExternalId,omitempty"`
-	// The name of the organization. The name can be up to 64 characters in length.
+	// Organization name. The maximum length is 64 characters.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CreateOrganizationalUnitRequest struct {
 	//
 	// test_ou_name
 	OrganizationalUnitName *string `json:"OrganizationalUnitName,omitempty" xml:"OrganizationalUnitName,omitempty"`
-	// The parent organization ID.
+	// Parent organization ID.
 	//
 	// This parameter is required.
 	//

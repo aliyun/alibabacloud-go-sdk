@@ -16,7 +16,7 @@ type iGetAuthorizationServerRequest interface {
 }
 
 type GetAuthorizationServerRequest struct {
-	// IDaaS的授权服务器资源ID。
+	// The authorization server ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetAuthorizationServerRequest struct {
 	//
 	// iauths_mkv7rgt4d7i4u7zqtzev2mxxxx
 	AuthorizationServerId *string `json:"AuthorizationServerId,omitempty" xml:"AuthorizationServerId,omitempty"`
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

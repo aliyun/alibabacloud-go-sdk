@@ -16,7 +16,7 @@ type iGetCloudAccountResponseBody interface {
 }
 
 type GetCloudAccountResponseBody struct {
-	// The details of the Alibaba Cloud account.
+	// The cloud account details.
 	CloudAccount *GetCloudAccountResponseBodyCloudAccount `json:"CloudAccount,omitempty" xml:"CloudAccount,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,13 +62,13 @@ func (s *GetCloudAccountResponseBody) Validate() error {
 }
 
 type GetCloudAccountResponseBodyCloudAccount struct {
-	// The unique external ID of the Alibaba Cloud account.
+	// The external unique identifier of the cloud account.
 	//
 	// example:
 	//
 	// 1234567
 	CloudAccountExternalId *string `json:"CloudAccountExternalId,omitempty" xml:"CloudAccountExternalId,omitempty"`
-	// The health status of the Alibaba Cloud account. Valid values:
+	// The health status of the cloud account. Valid values:
 	//
 	// - healthy: Healthy.
 	//
@@ -80,31 +80,32 @@ type GetCloudAccountResponseBodyCloudAccount struct {
 	//
 	// healthy
 	CloudAccountHealth *string `json:"CloudAccountHealth,omitempty" xml:"CloudAccountHealth,omitempty"`
-	// The health check result for the cloud account.
+	// The health check result of the cloud account.
 	CloudAccountHealthCheckResult *GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResult `json:"CloudAccountHealthCheckResult,omitempty" xml:"CloudAccountHealthCheckResult,omitempty" type:"Struct"`
-	// The ID of the Alibaba Cloud account.
+	// The cloud account ID.
 	//
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The name of the Alibaba Cloud account.
+	// The cloud account name.
 	//
 	// example:
 	//
 	// cloud_accout_xxxx
 	CloudAccountName *string `json:"CloudAccountName,omitempty" xml:"CloudAccountName,omitempty"`
-	// The configuration of the identity provider.
+	// The identity provider configuration.
 	CloudAccountProviderConfig *GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig `json:"CloudAccountProviderConfig,omitempty" xml:"CloudAccountProviderConfig,omitempty" type:"Struct"`
-	// The name of the identity provider.
+	// The identity provider name.
 	//
 	// example:
 	//
 	// idaas-eiam-oidc-provider
 	CloudAccountProviderName *string `json:"CloudAccountProviderName,omitempty" xml:"CloudAccountProviderName,omitempty"`
-	// The type of the Alibaba Cloud account. The valid value is:
+	CloudAccountSite         *string `json:"CloudAccountSite,omitempty" xml:"CloudAccountSite,omitempty"`
+	// The cloud account type. Valid values:
 	//
-	// - alibaba_cloud: Alibaba Cloud
+	// - alibaba_cloud: Alibaba Cloud.
 	//
 	// example:
 	//
@@ -116,7 +117,7 @@ type GetCloudAccountResponseBodyCloudAccount struct {
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the Alibaba Cloud account.
+	// The cloud account description.
 	//
 	// example:
 	//
@@ -128,7 +129,7 @@ type GetCloudAccountResponseBodyCloudAccount struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time of the last update. The value is a UNIX timestamp in milliseconds.
+	// The most recent update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -170,6 +171,10 @@ func (s *GetCloudAccountResponseBodyCloudAccount) GetCloudAccountProviderConfig(
 
 func (s *GetCloudAccountResponseBodyCloudAccount) GetCloudAccountProviderName() *string {
 	return s.CloudAccountProviderName
+}
+
+func (s *GetCloudAccountResponseBodyCloudAccount) GetCloudAccountSite() *string {
+	return s.CloudAccountSite
 }
 
 func (s *GetCloudAccountResponseBodyCloudAccount) GetCloudAccountVendorType() *string {
@@ -227,6 +232,11 @@ func (s *GetCloudAccountResponseBodyCloudAccount) SetCloudAccountProviderName(v 
 	return s
 }
 
+func (s *GetCloudAccountResponseBodyCloudAccount) SetCloudAccountSite(v string) *GetCloudAccountResponseBodyCloudAccount {
+	s.CloudAccountSite = &v
+	return s
+}
+
 func (s *GetCloudAccountResponseBodyCloudAccount) SetCloudAccountVendorType(v string) *GetCloudAccountResponseBodyCloudAccount {
 	s.CloudAccountVendorType = &v
 	return s
@@ -267,19 +277,19 @@ func (s *GetCloudAccountResponseBodyCloudAccount) Validate() error {
 }
 
 type GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResult struct {
-	// The reason for the fault. This field returns a value when the health check status is unhealthy.
+	// The error reason. This field is returned when the health check status is unhealthy.
 	ErrorReason *GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
-	// The time of the last check. The value is a UNIX timestamp in milliseconds.
+	// The time of the last health check. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
-	// The result of the health check for the cloud account. Valid values:
+	// The health check result of the cloud account. Valid values:
 	//
-	// - success: The health check was successful.
+	// - success: Succeeded.
 	//
-	// - failed: The health check failed.
+	// - failed: Failed.
 	//
 	// example:
 	//
@@ -338,7 +348,7 @@ type GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErrorRe
 	//
 	// AuthenticationFail.NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The description of the error.
+	// The error description.
 	//
 	// example:
 	//
@@ -377,25 +387,25 @@ func (s *GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErr
 }
 
 type GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig struct {
-	// The audience identity.
+	// The audience identifier.
 	//
 	// example:
 	//
 	// urn:cloud:idaas:sts:xxx:xxx
 	Audience *string `json:"Audience,omitempty" xml:"Audience,omitempty"`
-	// The ID of the authorization server.
+	// The authorization server ID.
 	//
 	// example:
 	//
 	// iauths_system
 	AuthorizationServerId *string `json:"AuthorizationServerId,omitempty" xml:"AuthorizationServerId,omitempty"`
-	// The issuer.
+	// Issuer。
 	//
 	// example:
 	//
 	// https://xxxxx.aliyunidaas.com/api/v2/iauths_system/oauth2
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The public key endpoint for signature verification.
+	// The signature verification public key endpoint.
 	//
 	// example:
 	//

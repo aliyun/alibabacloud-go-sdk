@@ -16,7 +16,7 @@ type iObtainDomainProxyTokenResponseBody interface {
 }
 
 type ObtainDomainProxyTokenResponseBody struct {
-	// The information about the proxy token.
+	// The proxy token information object.
 	DomainProxyToken *ObtainDomainProxyTokenResponseBodyDomainProxyToken `json:"DomainProxyToken,omitempty" xml:"DomainProxyToken,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,25 +62,25 @@ func (s *ObtainDomainProxyTokenResponseBody) Validate() error {
 }
 
 type ObtainDomainProxyTokenResponseBodyDomainProxyToken struct {
-	// The time when the domain name proxy token was created. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the domain proxy token was created, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The domain ID.
+	// The domain name ID.
 	//
 	// example:
 	//
 	// dm_examplexxxx
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The domain name proxy token.
+	// The domain proxy token.
 	//
 	// example:
 	//
 	// PTxxxxxxxx
 	DomainProxyToken *string `json:"DomainProxyToken,omitempty" xml:"DomainProxyToken,omitempty"`
-	// The ID of the domain name proxy token.
+	// The domain proxy token ID.
 	//
 	// example:
 	//
@@ -92,23 +92,23 @@ type ObtainDomainProxyTokenResponseBodyDomainProxyToken struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the domain name proxy token was last used. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the domain proxy token was last used, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// The status of the token. Valid values:
+	// The token status. Valid values:
 	//
-	// - enabled: The token is enabled.
+	// - enabled: Enabled.
 	//
-	// - disabled: The token is disabled.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the domain name proxy token was last updated. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the domain proxy token was last updated, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type iSetIdentityProviderAuthnConfigurationRequest interface {
 }
 
 type SetIdentityProviderAuthnConfigurationRequest struct {
-	// Automatic Account Creation Rule Configuration.
+	// Automatic account creation rule configuration.
 	AutoCreateUserConfig *SetIdentityProviderAuthnConfigurationRequestAutoCreateUserConfig `json:"AutoCreateUserConfig,omitempty" xml:"AutoCreateUserConfig,omitempty" type:"Struct"`
-	// Automatic Account Update Configuration
+	// Automatic account update configuration.
 	AutoUpdateUserConfig *SetIdentityProviderAuthnConfigurationRequestAutoUpdateUserConfig `json:"AutoUpdateUserConfig,omitempty" xml:"AutoUpdateUserConfig,omitempty" type:"Struct"`
-	// Account Binding Rule Configuration
+	// Account binding rule configuration.
 	BindingConfig *SetIdentityProviderAuthnConfigurationRequestBindingConfig `json:"BindingConfig,omitempty" xml:"BindingConfig,omitempty" type:"Struct"`
-	// Identity Provider ID
+	// Identity provider ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type SetIdentityProviderAuthnConfigurationRequest struct {
 	//
 	// idp_11111
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// Instance ID
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type SetIdentityProviderAuthnConfigurationRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// AD/LDAP Authentication Configuration
+	// AD/LDAP authentication configuration.
 	LdapAuthnConfig *SetIdentityProviderAuthnConfigurationRequestLdapAuthnConfig `json:"LdapAuthnConfig,omitempty" xml:"LdapAuthnConfig,omitempty" type:"Struct"`
 }
 
@@ -137,13 +137,13 @@ func (s *SetIdentityProviderAuthnConfigurationRequest) Validate() error {
 }
 
 type SetIdentityProviderAuthnConfigurationRequestAutoCreateUserConfig struct {
-	// Automatic account creation status.
+	// Indicates whether automatic account creation is enabled.
 	//
 	// example:
 	//
 	// disabled
 	AutoCreateUserStatus *string `json:"AutoCreateUserStatus,omitempty" xml:"AutoCreateUserStatus,omitempty"`
-	// Organization ID
+	// The organizational unit IDs.
 	TargetOrganizationalUnitIds []*string `json:"TargetOrganizationalUnitIds,omitempty" xml:"TargetOrganizationalUnitIds,omitempty" type:"Repeated"`
 }
 
@@ -178,7 +178,7 @@ func (s *SetIdentityProviderAuthnConfigurationRequestAutoCreateUserConfig) Valid
 }
 
 type SetIdentityProviderAuthnConfigurationRequestAutoUpdateUserConfig struct {
-	// Specifies whether to enable automatic account updates.
+	// Indicates whether automatic account update is enabled.
 	//
 	// example:
 	//
@@ -210,13 +210,13 @@ func (s *SetIdentityProviderAuthnConfigurationRequestAutoUpdateUserConfig) Valid
 type SetIdentityProviderAuthnConfigurationRequestBindingConfig struct {
 	// Rules for automatic account matching.
 	AutoMatchUserProfileExpressions []*SetIdentityProviderAuthnConfigurationRequestBindingConfigAutoMatchUserProfileExpressions `json:"AutoMatchUserProfileExpressions,omitempty" xml:"AutoMatchUserProfileExpressions,omitempty" type:"Repeated"`
-	// Automatic account matching status.
+	// Indicates whether automatic account matching is enabled.
 	//
 	// example:
 	//
 	// disabled
 	AutoMatchUserStatus *string `json:"AutoMatchUserStatus,omitempty" xml:"AutoMatchUserStatus,omitempty"`
-	// Specifies whether the manual account binding feature is enabled.
+	// Indicates whether the manual account binding feature is enabled.
 	//
 	// example:
 	//
@@ -273,7 +273,7 @@ func (s *SetIdentityProviderAuthnConfigurationRequestBindingConfig) Validate() e
 }
 
 type SetIdentityProviderAuthnConfigurationRequestBindingConfigAutoMatchUserProfileExpressions struct {
-	// Type of expression.
+	// The type of the expression.
 	//
 	// This parameter is required.
 	//
@@ -281,7 +281,7 @@ type SetIdentityProviderAuthnConfigurationRequestBindingConfigAutoMatchUserProfi
 	//
 	// field
 	ExpressionMappingType *string `json:"ExpressionMappingType,omitempty" xml:"ExpressionMappingType,omitempty"`
-	// Expression for mapping attribute value.
+	// The value expression of the mapping attribute.
 	//
 	// This parameter is required.
 	//
@@ -289,7 +289,7 @@ type SetIdentityProviderAuthnConfigurationRequestBindingConfigAutoMatchUserProfi
 	//
 	// idpUser.userId
 	SourceValueExpression *string `json:"SourceValueExpression,omitempty" xml:"SourceValueExpression,omitempty"`
-	// Target attribute name for mapping.
+	// The name of the mapping target attribute.
 	//
 	// This parameter is required.
 	//
@@ -297,7 +297,7 @@ type SetIdentityProviderAuthnConfigurationRequestBindingConfigAutoMatchUserProfi
 	//
 	// user.username
 	TargetField *string `json:"TargetField,omitempty" xml:"TargetField,omitempty"`
-	// Target attribute name for mapping.
+	// The description of the mapping target attribute.
 	//
 	// example:
 	//
@@ -354,19 +354,19 @@ func (s *SetIdentityProviderAuthnConfigurationRequestBindingConfigAutoMatchUserP
 }
 
 type SetIdentityProviderAuthnConfigurationRequestLdapAuthnConfig struct {
-	// Specifies whether to automatically update passwords.
+	// Indicates whether automatic password update is supported.
 	//
 	// example:
 	//
 	// enabled
 	AutoUpdatePasswordStatus *string `json:"AutoUpdatePasswordStatus,omitempty" xml:"AutoUpdatePasswordStatus,omitempty"`
-	// User Login Identifier
+	// The user login identifier.
 	//
 	// example:
 	//
 	// email
 	UserLoginIdentifier *string `json:"UserLoginIdentifier,omitempty" xml:"UserLoginIdentifier,omitempty"`
-	// User ObjectClass
+	// The user ObjectClass.
 	//
 	// example:
 	//

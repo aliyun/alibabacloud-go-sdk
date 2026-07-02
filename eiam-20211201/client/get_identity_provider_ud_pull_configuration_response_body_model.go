@@ -22,7 +22,7 @@ type GetIdentityProviderUdPullConfigurationResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Inbound Synchronization Configuration Information
+	// The inbound synchronization configuration.
 	UdPullConfiguration *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration `json:"UdPullConfiguration,omitempty" xml:"UdPullConfiguration,omitempty" type:"Struct"`
 }
 
@@ -62,53 +62,55 @@ func (s *GetIdentityProviderUdPullConfigurationResponseBody) Validate() error {
 }
 
 type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration struct {
-	// Group Synchronization Status
+	// The group synchronization status. Valid values:
 	//
-	// Possible values:
+	// - disabled
 	//
-	// Disabled: disabled
-	//
-	// Enabled: enabled
+	// - enabled.
 	//
 	// example:
 	//
 	// enabled
 	GroupSyncStatus *string `json:"GroupSyncStatus,omitempty" xml:"GroupSyncStatus,omitempty"`
-	// Identity provider ID
+	// The identity provider ID.
 	//
 	// example:
 	//
 	// idp_my664lwkhpicbyzirog3xxxxx
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// Incremental Callback Status: Whether to process incremental callback data from the IdP
+	// The incremental callback status, which specifies whether to process incremental callback data from the IdP. Valid values:
+	//
+	// - disabled
+	//
+	// - enabled.
 	//
 	// example:
 	//
 	// enabled
 	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// LDAP Synchronization Side Related Configuration Information
+	// The LDAP synchronization configuration.
 	LdapUdPullConfig *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig `json:"LdapUdPullConfig,omitempty" xml:"LdapUdPullConfig,omitempty" type:"Struct"`
-	// Scheduled sync configuration
+	// The periodic synchronization configuration.
 	PeriodicSyncConfig *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig `json:"PeriodicSyncConfig,omitempty" xml:"PeriodicSyncConfig,omitempty" type:"Struct"`
-	// Scheduled Validation Status: Whether to periodically validate data discrepancies between IDaaS and the Identity Provider. Possible values:
+	// The periodic verification status, which specifies whether to periodically verify data differences between IDaaS and the identity provider. Valid values:
 	//
-	// Disabled: disabled
+	// - disabled
 	//
-	// Enabled: enabled
+	// - enabled.
 	//
 	// example:
 	//
 	// enabled
 	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
-	// Inbound Synchronization Protection Rule Configuration
+	// The inbound synchronization protection rule configuration.
 	PullProtectedRule *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule `json:"PullProtectedRule,omitempty" xml:"PullProtectedRule,omitempty" type:"Struct"`
-	// Synchronization Scope Configuration Information
+	// The synchronization scope configuration.
 	UdSyncScopeConfig *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig `json:"UdSyncScopeConfig,omitempty" xml:"UdSyncScopeConfig,omitempty" type:"Struct"`
 }
 
@@ -226,37 +228,37 @@ func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) 
 }
 
 type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig struct {
-	// Group Member Identifier
+	// The group member identifier attribute.
 	//
 	// example:
 	//
 	// group
 	GroupMemberAttributeName *string `json:"GroupMemberAttributeName,omitempty" xml:"GroupMemberAttributeName,omitempty"`
-	// Group ObjectClass
+	// The group ObjectClass.
 	//
 	// example:
 	//
 	// member
 	GroupObjectClass *string `json:"GroupObjectClass,omitempty" xml:"GroupObjectClass,omitempty"`
-	// Group Custom Filter
+	// The custom filter for groups.
 	//
 	// example:
 	//
 	// (|(cn=test)(group=test@test.com))
 	GroupObjectClassCustomFilter *string `json:"GroupObjectClassCustomFilter,omitempty" xml:"GroupObjectClassCustomFilter,omitempty"`
-	// Organization ObjectClass
+	// The organizational unit ObjectClass.
 	//
 	// example:
 	//
 	// ou,top
 	OrganizationUnitObjectClass *string `json:"OrganizationUnitObjectClass,omitempty" xml:"OrganizationUnitObjectClass,omitempty"`
-	// User ObjectClass
+	// The user ObjectClass.
 	//
 	// example:
 	//
 	// ou,top
 	UserObjectClass *string `json:"UserObjectClass,omitempty" xml:"UserObjectClass,omitempty"`
-	// User ObjectClass Custom Filter
+	// The custom filter for users.
 	//
 	// example:
 	//
@@ -331,19 +333,19 @@ func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLd
 }
 
 type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig struct {
-	// Cron expression
+	// The cron expression.
 	//
 	// example:
 	//
 	// 0 45 1 	- 	- ?
 	PeriodicSyncCron *string `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
-	// Execution time slots, for example 3,5, meaning the task runs once between 03:00–04:00 and once between 05:00–06:00.
+	// The execution time points. For example, [3, 5] indicates that synchronization runs once between 3:00 and 4:00 and once between 5:00 and 6:00.
 	//
 	// example:
 	//
 	// [3,5]
 	PeriodicSyncTimes *int32 `json:"PeriodicSyncTimes,omitempty" xml:"PeriodicSyncTimes,omitempty"`
-	// type
+	// The periodic synchronization type.
 	//
 	// example:
 	//
@@ -391,19 +393,19 @@ func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPe
 }
 
 type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule struct {
-	// Group Deletion Threshold: If the number of deleted groups exceeds this value, the synchronization task will be terminated.
+	// The threshold for the number of deleted groups. If the number of deleted groups exceeds this value, the synchronization task is terminated.
 	//
 	// example:
 	//
 	// 10
 	GroupDeletedThreshold *int32 `json:"GroupDeletedThreshold,omitempty" xml:"GroupDeletedThreshold,omitempty"`
-	// Organization Deletion Threshold: If the number of deleted organizations exceeds this value, the synchronization task will be terminated.
+	// The threshold for the number of deleted organizational units. If the number of deleted organizational units exceeds this value, the synchronization task is terminated.
 	//
 	// example:
 	//
 	// 10
 	OrganizationalUnitDeletedThreshold *int32 `json:"OrganizationalUnitDeletedThreshold,omitempty" xml:"OrganizationalUnitDeletedThreshold,omitempty"`
-	// Account Deletion Threshold: If the number of deleted users exceeds this value, the synchronization task will be terminated.
+	// The threshold for the number of deleted accounts. If the number of deleted users exceeds this value, the synchronization task is terminated.
 	//
 	// example:
 	//
@@ -451,9 +453,9 @@ func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPu
 }
 
 type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig struct {
-	// Synchronization Source Node
+	// The list of source nodes for synchronization.
 	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
-	// Synchronization Target Node
+	// The target node for synchronization.
 	//
 	// example:
 	//

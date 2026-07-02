@@ -22,7 +22,7 @@ type CreateUserResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The user ID.
+	// The account ID.
 	//
 	// example:
 	//

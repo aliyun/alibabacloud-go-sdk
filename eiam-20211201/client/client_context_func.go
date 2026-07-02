@@ -315,7 +315,7 @@ func (client *Client) AddUserToAuthorizationRuleWithContext(ctx context.Context,
 
 // Summary:
 //
-// Adds a specified EIAM account to one or more EIAM organizations. If the account already exists in one of the specified organizations, the request succeeds.
+// Adds a specified EIAM account to multiple EIAM organizations. If the account already exists in an organization, the operation returns a success response directly.
 //
 // @param request - AddUserToOrganizationalUnitsRequest
 //
@@ -367,7 +367,7 @@ func (client *Client) AddUserToOrganizationalUnitsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Adds Employee Identity and Access Management (EIAM) accounts to an EIAM group of Identity as a Service (IDaaS).
+// Adds multiple Employee Identity and Access Management (EIAM) accounts to a specified EIAM account group.
 //
 // @param request - AddUsersToGroupRequest
 //
@@ -2363,7 +2363,7 @@ func (client *Client) CreateFederatedCredentialProviderWithContext(ctx context.C
 
 // Summary:
 //
-// Creates an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Create an EIAM account group.
 //
 // @param request - CreateGroupRequest
 //
@@ -2419,7 +2419,7 @@ func (client *Client) CreateGroupWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Creates an identity provider.
+// Create an identity provider.
 //
 // @param request - CreateIdentityProviderRequest
 //
@@ -2803,7 +2803,7 @@ func (client *Client) CreateNetworkZoneWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Creates an EIAM organization under a specified organization.
 //
 // @param request - CreateOrganizationalUnitRequest
 //
@@ -2927,7 +2927,7 @@ func (client *Client) CreateResourceServerScopeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Create an EIAM account in a specific EIAM instance.
+// Creates an EIAM account in a specified EIAM instance.
 //
 // @param request - CreateUserRequest
 //
@@ -3987,7 +3987,7 @@ func (client *Client) DeleteFederatedCredentialProviderWithContext(ctx context.C
 
 // Summary:
 //
-// Deletes the information of an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Delete an EIAM account group.
 //
 // @param request - DeleteGroupRequest
 //
@@ -4035,7 +4035,7 @@ func (client *Client) DeleteGroupWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// # Delete identity provider
+// Deletes an identity provider.
 //
 // @param request - DeleteIdentityProviderRequest
 //
@@ -4227,7 +4227,7 @@ func (client *Client) DeleteNetworkZoneWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). If the organization has EIAM accounts or child organizations, the delete operation fails.
+// Deletes a specified EIAM organizational unit. The deletion fails if the organizational unit contains EIAM accounts or child organizational units.
 //
 // @param request - DeleteOrganizationalUnitRequest
 //
@@ -4275,7 +4275,7 @@ func (client *Client) DeleteOrganizationalUnitWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes information about an organization and forcefully deletes all accounts and sub-organizations in the organization.
+// Deletes all data of a specified organization. This operation can force delete all accounts and sub-organizations under the specified organization.
 //
 // @param request - DeleteOrganizationalUnitChildrenRequest
 //
@@ -4375,7 +4375,7 @@ func (client *Client) DeleteResourceServerScopeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes a specified EIAM user and purges all related information.
+// Deletes a specified EIAM account and purges all information associated with the account.
 //
 // @param request - DeleteUserRequest
 //
@@ -5589,7 +5589,7 @@ func (client *Client) DisableIdentityProviderAdvancedAbilityWithContext(ctx cont
 //
 // Description:
 //
-// When you disable an application, all its features, such as single sign-on (SSO) and account synchronization, become unavailable. Before you perform this operation, make sure that you understand the associated risks.
+// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that this operation may cause.
 //
 // @param request - DisableIdentityProviderAuthnRequest
 //
@@ -5637,7 +5637,7 @@ func (client *Client) DisableIdentityProviderAuthnWithContext(ctx context.Contex
 
 // Summary:
 //
-// # Disable identity provider synchronization
+// Disables the inbound synchronization feature of an identity provider.
 //
 // @param request - DisableIdentityProviderUdPullRequest
 //
@@ -5825,7 +5825,7 @@ func (client *Client) DisableResourceServerCustomSubjectWithContext(ctx context.
 
 // Summary:
 //
-// Disables an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account. If the account is disabled, a success message is returned.
+// Sets an account status to disabled. If the account is already disabled, the operation returns success directly.
 //
 // @param request - DisableUserRequest
 //
@@ -6935,7 +6935,7 @@ func (client *Client) EnableIdentityProviderAdvancedAbilityWithContext(ctx conte
 //
 // Description:
 //
-// When a conditional access policy is disabled, it no longer blocks access. Ensure that you understand the potential security threats before you perform this operation.
+// When you change a conditional access policy from enabled to disabled, the policy no longer intercepts requests. Make sure that you are aware of the risks that this operation may cause.
 //
 // @param request - EnableIdentityProviderAuthnRequest
 //
@@ -6983,7 +6983,7 @@ func (client *Client) EnableIdentityProviderAuthnWithContext(ctx context.Context
 
 // Summary:
 //
-// Enable identity provider synchronization.
+// Enables the inbound synchronization feature for an identity provider.
 //
 // @param request - EnableIdentityProviderUdPullRequest
 //
@@ -7171,7 +7171,7 @@ func (client *Client) EnableResourceServerCustomSubjectWithContext(ctx context.C
 
 // Summary:
 //
-// Enables an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
+// Sets an account to the enabled state.
 //
 // @param request - EnableUserRequest
 //
@@ -8119,7 +8119,7 @@ func (client *Client) GetAuthorizationRuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询授权服务器
+// Queries an authorization server.
 //
 // @param request - GetAuthorizationServerRequest
 //
@@ -8267,7 +8267,7 @@ func (client *Client) GetClientPublicKeyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves information about resources in an Alibaba Cloud account.
+// Queries the resource information of a cloud account.
 //
 // @param request - GetCloudAccountRequest
 //
@@ -8799,7 +8799,7 @@ func (client *Client) GetForgetPasswordConfigurationWithContext(ctx context.Cont
 
 // Summary:
 //
-// Retrieves the information about an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Queries the details of an EIAM account group.
 //
 // @param request - GetGroupRequest
 //
@@ -8847,7 +8847,7 @@ func (client *Client) GetGroupWithContext(ctx context.Context, request *GetGroup
 
 // Summary:
 //
-// Get an identity provider.
+// Retrieves an identity provider.
 //
 // @param request - GetIdentityProviderRequest
 //
@@ -8995,7 +8995,7 @@ func (client *Client) GetIdentityProviderStatusCheckJobWithContext(ctx context.C
 
 // Summary:
 //
-// # Get IdP Inbound Synchronization Configuration Information
+// Retrieves the inbound synchronization configuration of an identity provider (IdP).
 //
 // @param request - GetIdentityProviderUdPullConfigurationRequest
 //
@@ -9559,7 +9559,7 @@ func (client *Client) GetNetworkZoneWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the information about an organizational unit in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Queries the information of an EIAM organizational unit.
 //
 // @param request - GetOrganizationalUnitRequest
 //
@@ -9783,7 +9783,7 @@ func (client *Client) GetPasswordInitializationConfigurationWithContext(ctx cont
 
 // Summary:
 //
-// Retrieves the permission scopes for a specified resource server.
+// Queries the scope permissions under a specified ResourceServer.
 //
 // @param request - GetResourceServerScopeRequest
 //
@@ -9971,7 +9971,7 @@ func (client *Client) GetSynchronizationJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves the details of an account in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Queries the details of an EIAM account.
 //
 // @param request - GetUserRequest
 //
@@ -10671,7 +10671,7 @@ func (client *Client) ListApplicationsForAuthorizationRuleWithContext(ctx contex
 
 // Summary:
 //
-// Retrieves a list of applications that an EIAM group can access.
+// Query the list of applications accessible to an EIAM group.
 //
 // @param request - ListApplicationsForGroupRequest
 //
@@ -10847,11 +10847,11 @@ func (client *Client) ListApplicationsForNetworkZoneWithContext(ctx context.Cont
 
 // Summary:
 //
-// This operation queries a paginated list of applications that an EIAM organization can access. The response includes application IDs. To retrieve detailed information about an application, call the GetApplication operation.
+// Queries the list of applications accessible to an EIAM organizational unit by paging. The response includes application IDs. To obtain detailed application information, call the GetApplication operation.
 //
 // Description:
 //
-// This operation queries only the applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
+// This operation queries only the direct permissions of the organizational unit, that is, applications directly assigned to the organizational unit. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListApplicationsForOrganizationalUnitRequest
 //
@@ -11483,7 +11483,7 @@ func (client *Client) ListCloudAccountRolesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Returns a paginated list of information about one or more Alibaba Cloud accounts.
+// Queries information about one or more cloud accounts by using paging.
 //
 // @param request - ListCloudAccountsRequest
 //
@@ -11599,7 +11599,7 @@ func (client *Client) ListConditionalAccessPoliciesWithContext(ctx context.Conte
 
 // Summary:
 //
-// Lists the conditional access policies associated with an application.
+// List conditional access policies associated with an application.
 //
 // @param request - ListConditionalAccessPoliciesForApplicationRequest
 //
@@ -12155,7 +12155,7 @@ func (client *Client) ListEiamInstancesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// View the event list.
+// Queries the event list.
 //
 // @param request - ListEventTypesRequest
 //
@@ -12267,7 +12267,7 @@ func (client *Client) ListFederatedCredentialProvidersWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries a list of account groups in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// List EIAM account groups.
 //
 // @param request - ListGroupsRequest
 //
@@ -12523,7 +12523,7 @@ func (client *Client) ListGroupsForResourceServerWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries a list of account groups to which an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) belongs.
+// Queries the list of account groups to which a specified EIAM account belongs.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -12579,7 +12579,7 @@ func (client *Client) ListGroupsForUserWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves a list of identity providers.
+// Query the list of identity providers.
 //
 // @param request - ListIdentityProvidersRequest
 //
@@ -12691,7 +12691,7 @@ func (client *Client) ListIdentityProvidersForNetworkAccessEndpointWithContext(c
 
 // Summary:
 //
-// Queries information about one or more Employee Identity and Access Management (EIAM) instances.
+// Queries information about one or more EIAM instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -12975,7 +12975,7 @@ func (client *Client) ListNetworkZonesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries all parent organizational units of a specified EIAM organizational unit. The returned organizational units are sorted in hierarchical order from the highest level to the lowest level.
+// Queries all ancestor organizations of a specified EIAM organization. The organizations in the result list are sorted in hierarchical order from the top level to the bottom level.
 //
 // @param request - ListOrganizationalUnitParentsRequest
 //
@@ -13529,11 +13529,11 @@ func (client *Client) ListUserAuthnSourceMappingsWithContext(ctx context.Context
 
 // Summary:
 //
-// Retrieves a paginated list of EIAM accounts.
+// Queries EIAM account information by using paging.
 //
 // Description:
 //
-// This API retrieves only applications directly assigned to an organization. Use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organizational unit, which are the applications directly assigned to the organizational unit. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListUsersRequest
 //
@@ -14041,7 +14041,7 @@ func (client *Client) ObtainCredentialWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Obtains the proxy token for a domain name in an EIAM instance.
+// Queries the proxy token of an EIAM instance domain name.
 //
 // @param request - ObtainDomainProxyTokenRequest
 //
@@ -15377,7 +15377,7 @@ func (client *Client) SetApplicationSsoConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Sets the default domain name for a specified EIAM instance.
+// Sets a specified domain name of an EIAM instance as the default domain name.
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -15477,7 +15477,7 @@ func (client *Client) SetForgetPasswordConfigurationWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Update authentication information
+// # Modify Authentication Information
 //
 // @param request - SetIdentityProviderAuthnConfigurationRequest
 //
@@ -15541,7 +15541,7 @@ func (client *Client) SetIdentityProviderAuthnConfigurationWithContext(ctx conte
 
 // Summary:
 //
-// Sets the inbound synchronization configuration for an IdP.
+// Modifies the inbound synchronization configuration of an Identity Provider (IdP).
 //
 // @param request - SetIdentityProviderUdPullConfigurationRequest
 //
@@ -16353,7 +16353,7 @@ func (client *Client) UnbindUserAuthnSourceMappingWithContext(ctx context.Contex
 
 // Summary:
 //
-// Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) that is locked.
+// Unlocks a locked EIAM account.
 //
 // @param request - UnlockUserRequest
 //

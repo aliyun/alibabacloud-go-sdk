@@ -16,7 +16,7 @@ type iGetGroupResponseBody interface {
 }
 
 type GetGroupResponseBody struct {
-	// The information about the account group.
+	// The account group object information.
 	Group *GetGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,19 +62,19 @@ func (s *GetGroupResponseBody) Validate() error {
 }
 
 type GetGroupResponseBodyGroup struct {
-	// The time at which the group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the group was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the group.
+	// The group description.
 	//
 	// example:
 	//
 	// test_group
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The external ID of the group, which can be used to associate the group with an external system. By default, the external ID is the group ID.
+	// The external ID of the group, which is used to associate the group with an external system. The default value is the account group ID.
 	//
 	// example:
 	//
@@ -86,21 +86,21 @@ type GetGroupResponseBodyGroup struct {
 	//
 	// group_d6sbsuumeta4h66ec3il7yxxxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the group.
+	// The group name.
 	//
 	// example:
 	//
 	// group_name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The source ID of the group. By default, the source ID is the instance ID.
+	// The source ID of the group. The default value is the instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	GroupSourceId *string `json:"GroupSourceId,omitempty" xml:"GroupSourceId,omitempty"`
-	// The source type of the group. Only build_in may be returned, which indicates that the group was created in IDaaS.
+	// The source type of the group. Currently, only built-in groups are supported. Valid values:
 	//
-	// \\*build_in:Create By Self.
+	// - build_in: built-in.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type GetGroupResponseBodyGroup struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time at which the group was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the group was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

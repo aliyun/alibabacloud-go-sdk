@@ -18,15 +18,15 @@ type iListIdentityProvidersResponseBody interface {
 }
 
 type ListIdentityProvidersResponseBody struct {
-	// The list of identity providers.
+	// List of identity provider information.
 	IdentityProviders []*ListIdentityProvidersResponseBodyIdentityProviders `json:"IdentityProviders,omitempty" xml:"IdentityProviders,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// Total number of entries.
 	//
 	// example:
 	//
@@ -83,11 +83,11 @@ func (s *ListIdentityProvidersResponseBody) Validate() error {
 }
 
 type ListIdentityProvidersResponseBodyIdentityProviders struct {
-	// Indicates whether advanced configuration is enabled. Valid values:
+	// Whether the advanced configuration is enabled. Valid values:
 	//
-	// - disabled: The feature is disabled.
+	// - Disabled: disabled
 	//
-	// - enabled: The feature is enabled.
+	// - Enabled: enabled
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ type ListIdentityProvidersResponseBodyIdentityProviders struct {
 	//
 	// urn:alibaba:idaas:idp:bytedance:lark
 	AuthnSourceSupplier *string `json:"AuthnSourceSupplier,omitempty" xml:"AuthnSourceSupplier,omitempty"`
-	// The authentication method type. Valid values:
+	// The authentication source type, OIDC or SAML. Valid values:
 	//
 	// - OIDC: urn:alibaba:idaas:authntype:oidc
 	//
@@ -127,41 +127,41 @@ type ListIdentityProvidersResponseBodyIdentityProviders struct {
 	//
 	// urn:alibaba:idaas:authntype:oidc
 	AuthnSourceType *string `json:"AuthnSourceType,omitempty" xml:"AuthnSourceType,omitempty"`
-	// Indicates whether the identity provider supports authentication. Valid values:
+	// Whether the corresponding IdP supports authentication. Valid values:
 	//
-	// - disabled: Authentication is disabled.
+	// - Disabled: disabled
 	//
-	// - enabled: Authentication is enabled.
+	// - Enabled: enabled
 	//
 	// example:
 	//
 	// disabled
 	AuthnStatus *string `json:"AuthnStatus,omitempty" xml:"AuthnStatus,omitempty"`
-	// The time when the identity provider was created. This is a UNIX timestamp. Unit: milliseconds.
+	// The creation time, in Unix timestamp format, measured in milliseconds.
 	//
 	// example:
 	//
 	// 1712561597000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the identity provider.
+	// Description of the identity provider.
 	//
 	// example:
 	//
 	// None
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The external ID of the identity provider.
+	// External ID of the identity provider.
 	//
 	// example:
 	//
 	// test_123
 	IdentityProviderExternalId *string `json:"IdentityProviderExternalId,omitempty" xml:"IdentityProviderExternalId,omitempty"`
-	// The identity provider ID.
+	// Identity provider ID.
 	//
 	// example:
 	//
 	// idp_m5b5wd5s2hpq4t6iaehhXXX
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// The name of the identity provider.
+	// Name of the identity provider.
 	//
 	// example:
 	//
@@ -183,57 +183,57 @@ type ListIdentityProvidersResponseBodyIdentityProviders struct {
 	//
 	// - Standard OIDC: urn:alibaba:idaas:idp:standard:oidc
 	//
-	// - Custom OIDC for SASE: urn:alibaba:idaas:idp:alibaba:sase
+	// - SASE Customized OIDC: urn:alibaba:idaas:idp:alibaba:sase
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:idp:bytedance:lark:pull
 	IdentityProviderType *string `json:"IdentityProviderType,omitempty" xml:"IdentityProviderType,omitempty"`
-	// The incremental callback status. This indicates whether to process incremental callback data from the identity provider. Valid values:
+	// The incremental callback status, indicating whether incremental callback data from the IdP is processed. Valid values:
 	//
-	// - disabled: The feature is disabled.
+	// - Disabled: disabled
 	//
-	// - enabled: The feature is enabled.
+	// - Enabled: enabled
 	//
 	// example:
 	//
 	// enabled
 	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// example:
 	//
 	// idaas_pbf4dth34l2qb7mydpntXXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The result of the last status check. A sync task can be triggered only when the status check of the identity provider returns \\`success\\`.
+	// The last status check result. Before synchronization, a sync task can only be triggered when the identity provider status check result is success.
 	//
 	// example:
 	//
 	// success
 	LastStatusCheckJobResult *string `json:"LastStatusCheckJobResult,omitempty" xml:"LastStatusCheckJobResult,omitempty"`
-	// The reason why the identity provider is locked.
+	// The lock reason.
 	//
 	// example:
 	//
 	// financial
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The URL of the custom logo for the identity provider.
+	// The custom logo URL of the identity provider.
 	//
 	// example:
 	//
 	// https://cdn-cn-hangzhou.aliyunidaas.com/xx/logos/xx
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// The periodic check status. This indicates whether to periodically check for data inconsistencies between IDaaS and the identity provider.
+	// The periodic sync status, indicating whether the data differences between EIAM and the identity provider are periodically checked.
 	//
 	// example:
 	//
 	// disabled
 	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
-	// Indicates whether inbound synchronization is enabled. Valid values:
+	// Whether the inbound sync feature is supported. Valid values:
 	//
-	// - disabled: The feature is disabled.
+	// - Disabled: disabled
 	//
-	// - enabled: The feature is enabled.
+	// - Enabled: enabled
 	//
 	// example:
 	//
@@ -245,17 +245,17 @@ type ListIdentityProvidersResponseBodyIdentityProviders struct {
 	//
 	// ou_2buqmxsa3ltyqkjgpwfijurXXX
 	UdPullTargetScope *string `json:"UdPullTargetScope,omitempty" xml:"UdPullTargetScope,omitempty"`
-	// Indicates whether outbound synchronization is enabled. Valid values:
+	// Whether the outbound sync feature is enabled. Valid values:
 	//
-	// - disabled: The feature is disabled.
+	// - Disabled: disabled
 	//
-	// - enabled: The feature is enabled.
+	// - Enabled: enabled
 	//
 	// example:
 	//
 	// disabled
 	UdPushStatus *string `json:"UdPushStatus,omitempty" xml:"UdPushStatus,omitempty"`
-	// The time when the identity provider was last updated. This is a UNIX timestamp. Unit: milliseconds.
+	// The update time, in Unix timestamp format, measured in milliseconds.
 	//
 	// example:
 	//

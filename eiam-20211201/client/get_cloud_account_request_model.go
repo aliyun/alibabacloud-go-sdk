@@ -16,7 +16,7 @@ type iGetCloudAccountRequest interface {
 }
 
 type GetCloudAccountRequest struct {
-	// The ID of the Alibaba Cloud account.
+	// The cloud account ID.
 	//
 	// This parameter is required.
 	//

@@ -18,15 +18,15 @@ type iListEventTypesResponseBody interface {
 }
 
 type ListEventTypesResponseBody struct {
-	// List of event types
+	// The list of event types.
 	EventTypes []*ListEventTypesResponseBodyEventTypes `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of items in the list
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListEventTypesResponseBody) Validate() error {
 }
 
 type ListEventTypesResponseBodyEventTypes struct {
-	// Event type
+	// The event type.
 	//
 	// example:
 	//

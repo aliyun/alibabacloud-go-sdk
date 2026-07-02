@@ -22,15 +22,15 @@ type iListCloudAccountsResponseBody interface {
 }
 
 type ListCloudAccountsResponseBody struct {
-	// The list of Alibaba Cloud accounts.
+	// The list of cloud accounts.
 	CloudAccounts []*ListCloudAccountsResponseBodyCloudAccounts `json:"CloudAccounts,omitempty" xml:"CloudAccounts,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of rows per page for paging.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token returned from this call.
+	// The token returned for the current call.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListCloudAccountsResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -117,59 +117,60 @@ func (s *ListCloudAccountsResponseBody) Validate() error {
 }
 
 type ListCloudAccountsResponseBodyCloudAccounts struct {
-	// The external unique ID of the Alibaba Cloud account.
+	// The external unique identifier of the cloud account.
 	//
 	// example:
 	//
 	// 1234567
 	CloudAccountExternalId *string `json:"CloudAccountExternalId,omitempty" xml:"CloudAccountExternalId,omitempty"`
-	// The health check status of the Alibaba Cloud account. Valid values:
+	// The health status of the cloud account. Valid values:
 	//
-	// - healthy: The account is healthy.
+	// - healthy: Healthy.
 	//
-	// - unhealthy: The account is unhealthy.
+	// - unhealthy: Unhealthy.
 	//
-	// - unknown: The status is unknown.
+	// - unknown: Unknown.
 	//
 	// example:
 	//
 	// healthy
 	CloudAccountHealth *string `json:"CloudAccountHealth,omitempty" xml:"CloudAccountHealth,omitempty"`
-	// The result of the health check for the Alibaba Cloud account.
+	// The health check result of the cloud account.
 	CloudAccountHealthCheckResult *ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult `json:"CloudAccountHealthCheckResult,omitempty" xml:"CloudAccountHealthCheckResult,omitempty" type:"Struct"`
-	// The ID of the Alibaba Cloud account.
+	// The cloud account ID.
 	//
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The name of the Alibaba Cloud account.
+	// The cloud account name.
 	//
 	// example:
 	//
 	// cloud_accout_xxxx
 	CloudAccountName *string `json:"CloudAccountName,omitempty" xml:"CloudAccountName,omitempty"`
-	// The name of the identity provider.
+	// The identity provider name.
 	//
 	// example:
 	//
 	// idaas-eiam-oidc-provider
 	CloudAccountProviderName *string `json:"CloudAccountProviderName,omitempty" xml:"CloudAccountProviderName,omitempty"`
-	// The type of the Alibaba Cloud account. Valid values:
+	CloudAccountSite         *string `json:"CloudAccountSite,omitempty" xml:"CloudAccountSite,omitempty"`
+	// The cloud account type. Valid values:
 	//
-	// - alibaba_cloud: Alibaba Cloud
+	// - alibaba_cloud: Alibaba Cloud.
 	//
 	// example:
 	//
 	// alibaba_cloud
 	CloudAccountVendorType *string `json:"CloudAccountVendorType,omitempty" xml:"CloudAccountVendorType,omitempty"`
-	// The time when the account was created. This is a UNIX timestamp in milliseconds.
+	// The time when the cloud account was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the Alibaba Cloud account.
+	// The description of the cloud account.
 	//
 	// example:
 	//
@@ -181,7 +182,7 @@ type ListCloudAccountsResponseBodyCloudAccounts struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the account was last updated. This is a UNIX timestamp in milliseconds.
+	// The time when the cloud account was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -219,6 +220,10 @@ func (s *ListCloudAccountsResponseBodyCloudAccounts) GetCloudAccountName() *stri
 
 func (s *ListCloudAccountsResponseBodyCloudAccounts) GetCloudAccountProviderName() *string {
 	return s.CloudAccountProviderName
+}
+
+func (s *ListCloudAccountsResponseBodyCloudAccounts) GetCloudAccountSite() *string {
+	return s.CloudAccountSite
 }
 
 func (s *ListCloudAccountsResponseBodyCloudAccounts) GetCloudAccountVendorType() *string {
@@ -271,6 +276,11 @@ func (s *ListCloudAccountsResponseBodyCloudAccounts) SetCloudAccountProviderName
 	return s
 }
 
+func (s *ListCloudAccountsResponseBodyCloudAccounts) SetCloudAccountSite(v string) *ListCloudAccountsResponseBodyCloudAccounts {
+	s.CloudAccountSite = &v
+	return s
+}
+
 func (s *ListCloudAccountsResponseBodyCloudAccounts) SetCloudAccountVendorType(v string) *ListCloudAccountsResponseBodyCloudAccounts {
 	s.CloudAccountVendorType = &v
 	return s
@@ -306,19 +316,19 @@ func (s *ListCloudAccountsResponseBodyCloudAccounts) Validate() error {
 }
 
 type ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult struct {
-	// The reason for the error. This field is returned when the health check status is unhealthy.
+	// The error reason. This field is returned when the health check status is unhealthy.
 	ErrorReason *ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResultErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
-	// The time of the last health check. This is a UNIX timestamp in milliseconds.
+	// The time of the last health check. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
-	// The result of the health check. Valid values:
+	// The health check result of the cloud account. Valid values:
 	//
-	// - success: The check was successful.
+	// - success: Succeeded.
 	//
-	// - failed: The check failed.
+	// - failed: Failed.
 	//
 	// example:
 	//

@@ -16,7 +16,10 @@ type iGetAuthorizationServerResponseBody interface {
 }
 
 type GetAuthorizationServerResponseBody struct {
+	// The authorization server.
 	AuthorizationServer *GetAuthorizationServerResponseBodyAuthorizationServer `json:"AuthorizationServer,omitempty" xml:"AuthorizationServer,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -59,68 +62,69 @@ func (s *GetAuthorizationServerResponseBody) Validate() error {
 }
 
 type GetAuthorizationServerResponseBodyAuthorizationServer struct {
-	// IDaaS EIAM 授权服务器ID
+	// The authorization server ID.
 	//
 	// example:
 	//
 	// iauths_system
 	AuthorizationServerId *string `json:"AuthorizationServerId,omitempty" xml:"AuthorizationServerId,omitempty"`
-	// IDaaS EIAM 授权服务器名称
+	// The name of the authorization server.
 	//
 	// example:
 	//
 	// System_Default
 	AuthorizationServerName *string `json:"AuthorizationServerName,omitempty" xml:"AuthorizationServerName,omitempty"`
-	// IDaaS EIAM 授权服务器创建时间
+	// The time when the authorization server was created.
 	//
 	// example:
 	//
 	// 1754620108295
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 创建类型：system_init-系统默认创建，jwt_credential_provider-JWT凭据提供商创建，user_custom-用户创建
+	// The creation type.
 	//
 	// example:
 	//
 	// system_init
 	CreationType *string `json:"CreationType,omitempty" xml:"CreationType,omitempty"`
-	// 授权服务器描述
+	// The description of the authorization server.
 	//
 	// example:
 	//
 	// description of authorization server
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// IDaaS EIAM 实例Id
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_qzljgbhtwnnsywtdbz7yzy2any
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// IDaaS EIAM 授权token颁发者
+	// The issuer of the authorization token.
 	//
 	// example:
 	//
 	// https://xxxx.aliyunidaas.com/api/v2/iauths_system/oauth2
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// Issuer使用的域名，可为初始化域名或已添加的自定义域名
+	// The domain name used by the issuer.
 	//
 	// example:
 	//
 	// xxxx.aliyunidaas.com
 	IssuerDomain *string `json:"IssuerDomain,omitempty" xml:"IssuerDomain,omitempty"`
-	// Issuer模式：dynamic-动态基于请求域名，static-使用固定域名
+	// The issuer mode.
 	//
 	// example:
 	//
 	// static
 	IssuerMode *string `json:"IssuerMode,omitempty" xml:"IssuerMode,omitempty"`
-	// IDaaS EIAM 授权服务器最近更新时间
+	// The time when the authorization server was last updated.
 	//
 	// example:
 	//
 	// 1781608572164
-	LastUpdateTime   *int64                                                                 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	// The endpoint configuration of the authorization server.
 	ProtocolEndpoint *GetAuthorizationServerResponseBodyAuthorizationServerProtocolEndpoint `json:"ProtocolEndpoint,omitempty" xml:"ProtocolEndpoint,omitempty" type:"Struct"`
-	// IDaaS EIAM 授权服务器状态，enabled启用，disabled禁用
+	// The status of the authorization server.
 	//
 	// example:
 	//
@@ -254,10 +258,14 @@ func (s *GetAuthorizationServerResponseBodyAuthorizationServer) Validate() error
 }
 
 type GetAuthorizationServerResponseBodyAuthorizationServerProtocolEndpoint struct {
+	// The token endpoint of the authorization server.
+	//
 	// example:
 	//
 	// https://xxxx.aliyunidaas.com/api/v2/iauths_system/oauth2/token
 	Oauth2TokenEndpoint *string `json:"Oauth2TokenEndpoint,omitempty" xml:"Oauth2TokenEndpoint,omitempty"`
+	// The JWKS endpoint of the authorization server.
+	//
 	// example:
 	//
 	// https://xxxx.aliyunidaas.com/api/v2/iauths_system/oauth2/jwks

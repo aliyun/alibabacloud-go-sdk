@@ -26,27 +26,27 @@ type iListGroupsRequest interface {
 }
 
 type ListGroupsRequest struct {
-	// The external ID of the group.
+	// Group external ID.
 	//
 	// example:
 	//
 	// group_external_id
 	GroupExternalId *string `json:"GroupExternalId,omitempty" xml:"GroupExternalId,omitempty"`
-	// The group IDs.
+	// Group ID list.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	// The name of the group. If you specify this parameter, the query is based on an exact match.
+	// Group name. The query uses exact matching.
 	//
 	// example:
 	//
 	// name_test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The prefix of the group name. If you specify this parameter, the query follows the leftmost matching principle.
+	// Group name prefix. The query uses prefix matching.
 	//
 	// example:
 	//
 	// name
 	GroupNameStartsWith *string `json:"GroupNameStartsWith,omitempty" xml:"GroupNameStartsWith,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -54,13 +54,13 @@ type ListGroupsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// Page size.
 	//
 	// example:
 	//

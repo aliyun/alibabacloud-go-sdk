@@ -462,7 +462,7 @@ func (client *Client) AddUserToAuthorizationRule(request *AddUserToAuthorization
 
 // Summary:
 //
-// Adds a specified EIAM account to one or more EIAM organizations. If the account already exists in one of the specified organizations, the request succeeds.
+// Adds a specified EIAM account to multiple EIAM organizations. If the account already exists in an organization, the operation returns a success response directly.
 //
 // @param request - AddUserToOrganizationalUnitsRequest
 //
@@ -514,7 +514,7 @@ func (client *Client) AddUserToOrganizationalUnitsWithOptions(request *AddUserTo
 
 // Summary:
 //
-// Adds a specified EIAM account to one or more EIAM organizations. If the account already exists in one of the specified organizations, the request succeeds.
+// Adds a specified EIAM account to multiple EIAM organizations. If the account already exists in an organization, the operation returns a success response directly.
 //
 // @param request - AddUserToOrganizationalUnitsRequest
 //
@@ -532,7 +532,7 @@ func (client *Client) AddUserToOrganizationalUnits(request *AddUserToOrganizatio
 
 // Summary:
 //
-// Adds Employee Identity and Access Management (EIAM) accounts to an EIAM group of Identity as a Service (IDaaS).
+// Adds multiple Employee Identity and Access Management (EIAM) accounts to a specified EIAM account group.
 //
 // @param request - AddUsersToGroupRequest
 //
@@ -584,7 +584,7 @@ func (client *Client) AddUsersToGroupWithOptions(request *AddUsersToGroupRequest
 
 // Summary:
 //
-// Adds Employee Identity and Access Management (EIAM) accounts to an EIAM group of Identity as a Service (IDaaS).
+// Adds multiple Employee Identity and Access Management (EIAM) accounts to a specified EIAM account group.
 //
 // @param request - AddUsersToGroupRequest
 //
@@ -3116,7 +3116,7 @@ func (client *Client) CreateFederatedCredentialProvider(request *CreateFederated
 
 // Summary:
 //
-// Creates an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Create an EIAM account group.
 //
 // @param request - CreateGroupRequest
 //
@@ -3172,7 +3172,7 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 
 // Summary:
 //
-// Creates an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Create an EIAM account group.
 //
 // @param request - CreateGroupRequest
 //
@@ -3190,7 +3190,7 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
-// Creates an identity provider.
+// Create an identity provider.
 //
 // @param request - CreateIdentityProviderRequest
 //
@@ -3302,7 +3302,7 @@ func (client *Client) CreateIdentityProviderWithOptions(request *CreateIdentityP
 
 // Summary:
 //
-// Creates an identity provider.
+// Create an identity provider.
 //
 // @param request - CreateIdentityProviderRequest
 //
@@ -3682,7 +3682,7 @@ func (client *Client) CreateNetworkZone(request *CreateNetworkZoneRequest) (_res
 
 // Summary:
 //
-// Creates an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Creates an EIAM organization under a specified organization.
 //
 // @param request - CreateOrganizationalUnitRequest
 //
@@ -3742,7 +3742,7 @@ func (client *Client) CreateOrganizationalUnitWithOptions(request *CreateOrganiz
 
 // Summary:
 //
-// Creates an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Creates an EIAM organization under a specified organization.
 //
 // @param request - CreateOrganizationalUnitRequest
 //
@@ -3842,7 +3842,7 @@ func (client *Client) CreateResourceServerScope(request *CreateResourceServerSco
 
 // Summary:
 //
-// Create an EIAM account in a specific EIAM instance.
+// Creates an EIAM account in a specified EIAM instance.
 //
 // @param request - CreateUserRequest
 //
@@ -3946,7 +3946,7 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 
 // Summary:
 //
-// Create an EIAM account in a specific EIAM instance.
+// Creates an EIAM account in a specified EIAM instance.
 //
 // @param request - CreateUserRequest
 //
@@ -5274,7 +5274,7 @@ func (client *Client) DeleteFederatedCredentialProvider(request *DeleteFederated
 
 // Summary:
 //
-// Deletes the information of an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Delete an EIAM account group.
 //
 // @param request - DeleteGroupRequest
 //
@@ -5322,7 +5322,7 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 
 // Summary:
 //
-// Deletes the information of an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Delete an EIAM account group.
 //
 // @param request - DeleteGroupRequest
 //
@@ -5340,7 +5340,7 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 
 // Summary:
 //
-// # Delete identity provider
+// Deletes an identity provider.
 //
 // @param request - DeleteIdentityProviderRequest
 //
@@ -5388,7 +5388,7 @@ func (client *Client) DeleteIdentityProviderWithOptions(request *DeleteIdentityP
 
 // Summary:
 //
-// # Delete identity provider
+// Deletes an identity provider.
 //
 // @param request - DeleteIdentityProviderRequest
 //
@@ -5608,7 +5608,7 @@ func (client *Client) DeleteNetworkZone(request *DeleteNetworkZoneRequest) (_res
 
 // Summary:
 //
-// Deletes an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). If the organization has EIAM accounts or child organizations, the delete operation fails.
+// Deletes a specified EIAM organizational unit. The deletion fails if the organizational unit contains EIAM accounts or child organizational units.
 //
 // @param request - DeleteOrganizationalUnitRequest
 //
@@ -5656,7 +5656,7 @@ func (client *Client) DeleteOrganizationalUnitWithOptions(request *DeleteOrganiz
 
 // Summary:
 //
-// Deletes an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). If the organization has EIAM accounts or child organizations, the delete operation fails.
+// Deletes a specified EIAM organizational unit. The deletion fails if the organizational unit contains EIAM accounts or child organizational units.
 //
 // @param request - DeleteOrganizationalUnitRequest
 //
@@ -5674,7 +5674,7 @@ func (client *Client) DeleteOrganizationalUnit(request *DeleteOrganizationalUnit
 
 // Summary:
 //
-// Deletes information about an organization and forcefully deletes all accounts and sub-organizations in the organization.
+// Deletes all data of a specified organization. This operation can force delete all accounts and sub-organizations under the specified organization.
 //
 // @param request - DeleteOrganizationalUnitChildrenRequest
 //
@@ -5722,7 +5722,7 @@ func (client *Client) DeleteOrganizationalUnitChildrenWithOptions(request *Delet
 
 // Summary:
 //
-// Deletes information about an organization and forcefully deletes all accounts and sub-organizations in the organization.
+// Deletes all data of a specified organization. This operation can force delete all accounts and sub-organizations under the specified organization.
 //
 // @param request - DeleteOrganizationalUnitChildrenRequest
 //
@@ -5810,7 +5810,7 @@ func (client *Client) DeleteResourceServerScope(request *DeleteResourceServerSco
 
 // Summary:
 //
-// Deletes a specified EIAM user and purges all related information.
+// Deletes a specified EIAM account and purges all information associated with the account.
 //
 // @param request - DeleteUserRequest
 //
@@ -5858,7 +5858,7 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 
 // Summary:
 //
-// Deletes a specified EIAM user and purges all related information.
+// Deletes a specified EIAM account and purges all information associated with the account.
 //
 // @param request - DeleteUserRequest
 //
@@ -7468,7 +7468,7 @@ func (client *Client) DisableIdentityProviderAdvancedAbility(request *DisableIde
 //
 // Description:
 //
-// When you disable an application, all its features, such as single sign-on (SSO) and account synchronization, become unavailable. Before you perform this operation, make sure that you understand the associated risks.
+// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that this operation may cause.
 //
 // @param request - DisableIdentityProviderAuthnRequest
 //
@@ -7520,7 +7520,7 @@ func (client *Client) DisableIdentityProviderAuthnWithOptions(request *DisableId
 //
 // Description:
 //
-// When you disable an application, all its features, such as single sign-on (SSO) and account synchronization, become unavailable. Before you perform this operation, make sure that you understand the associated risks.
+// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that this operation may cause.
 //
 // @param request - DisableIdentityProviderAuthnRequest
 //
@@ -7538,7 +7538,7 @@ func (client *Client) DisableIdentityProviderAuthn(request *DisableIdentityProvi
 
 // Summary:
 //
-// # Disable identity provider synchronization
+// Disables the inbound synchronization feature of an identity provider.
 //
 // @param request - DisableIdentityProviderUdPullRequest
 //
@@ -7586,7 +7586,7 @@ func (client *Client) DisableIdentityProviderUdPullWithOptions(request *DisableI
 
 // Summary:
 //
-// # Disable identity provider synchronization
+// Disables the inbound synchronization feature of an identity provider.
 //
 // @param request - DisableIdentityProviderUdPullRequest
 //
@@ -7798,7 +7798,7 @@ func (client *Client) DisableResourceServerCustomSubject(request *DisableResourc
 
 // Summary:
 //
-// Disables an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account. If the account is disabled, a success message is returned.
+// Sets an account status to disabled. If the account is already disabled, the operation returns success directly.
 //
 // @param request - DisableUserRequest
 //
@@ -7846,7 +7846,7 @@ func (client *Client) DisableUserWithOptions(request *DisableUserRequest, runtim
 
 // Summary:
 //
-// Disables an Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM) account. If the account is disabled, a success message is returned.
+// Sets an account status to disabled. If the account is already disabled, the operation returns success directly.
 //
 // @param request - DisableUserRequest
 //
@@ -9312,7 +9312,7 @@ func (client *Client) EnableIdentityProviderAdvancedAbility(request *EnableIdent
 //
 // Description:
 //
-// When a conditional access policy is disabled, it no longer blocks access. Ensure that you understand the potential security threats before you perform this operation.
+// When you change a conditional access policy from enabled to disabled, the policy no longer intercepts requests. Make sure that you are aware of the risks that this operation may cause.
 //
 // @param request - EnableIdentityProviderAuthnRequest
 //
@@ -9364,7 +9364,7 @@ func (client *Client) EnableIdentityProviderAuthnWithOptions(request *EnableIden
 //
 // Description:
 //
-// When a conditional access policy is disabled, it no longer blocks access. Ensure that you understand the potential security threats before you perform this operation.
+// When you change a conditional access policy from enabled to disabled, the policy no longer intercepts requests. Make sure that you are aware of the risks that this operation may cause.
 //
 // @param request - EnableIdentityProviderAuthnRequest
 //
@@ -9382,7 +9382,7 @@ func (client *Client) EnableIdentityProviderAuthn(request *EnableIdentityProvide
 
 // Summary:
 //
-// Enable identity provider synchronization.
+// Enables the inbound synchronization feature for an identity provider.
 //
 // @param request - EnableIdentityProviderUdPullRequest
 //
@@ -9430,7 +9430,7 @@ func (client *Client) EnableIdentityProviderUdPullWithOptions(request *EnableIde
 
 // Summary:
 //
-// Enable identity provider synchronization.
+// Enables the inbound synchronization feature for an identity provider.
 //
 // @param request - EnableIdentityProviderUdPullRequest
 //
@@ -9642,7 +9642,7 @@ func (client *Client) EnableResourceServerCustomSubject(request *EnableResourceS
 
 // Summary:
 //
-// Enables an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
+// Sets an account to the enabled state.
 //
 // @param request - EnableUserRequest
 //
@@ -9690,7 +9690,7 @@ func (client *Client) EnableUserWithOptions(request *EnableUserRequest, runtime 
 
 // Summary:
 //
-// Enables an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS).
+// Sets an account to the enabled state.
 //
 // @param request - EnableUserRequest
 //
@@ -10932,7 +10932,7 @@ func (client *Client) GetAuthorizationRule(request *GetAuthorizationRuleRequest)
 
 // Summary:
 //
-// 查询授权服务器
+// Queries an authorization server.
 //
 // @param request - GetAuthorizationServerRequest
 //
@@ -10980,7 +10980,7 @@ func (client *Client) GetAuthorizationServerWithOptions(request *GetAuthorizatio
 
 // Summary:
 //
-// 查询授权服务器
+// Queries an authorization server.
 //
 // @param request - GetAuthorizationServerRequest
 //
@@ -11134,7 +11134,7 @@ func (client *Client) GetClientPublicKey(request *GetClientPublicKeyRequest) (_r
 
 // Summary:
 //
-// Retrieves information about resources in an Alibaba Cloud account.
+// Queries the resource information of a cloud account.
 //
 // @param request - GetCloudAccountRequest
 //
@@ -11182,7 +11182,7 @@ func (client *Client) GetCloudAccountWithOptions(request *GetCloudAccountRequest
 
 // Summary:
 //
-// Retrieves information about resources in an Alibaba Cloud account.
+// Queries the resource information of a cloud account.
 //
 // @param request - GetCloudAccountRequest
 //
@@ -11868,7 +11868,7 @@ func (client *Client) GetForgetPasswordConfiguration(request *GetForgetPasswordC
 
 // Summary:
 //
-// Retrieves the information about an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Queries the details of an EIAM account group.
 //
 // @param request - GetGroupRequest
 //
@@ -11916,7 +11916,7 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *dar
 
 // Summary:
 //
-// Retrieves the information about an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Queries the details of an EIAM account group.
 //
 // @param request - GetGroupRequest
 //
@@ -11934,7 +11934,7 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 
 // Summary:
 //
-// Get an identity provider.
+// Retrieves an identity provider.
 //
 // @param request - GetIdentityProviderRequest
 //
@@ -11982,7 +11982,7 @@ func (client *Client) GetIdentityProviderWithOptions(request *GetIdentityProvide
 
 // Summary:
 //
-// Get an identity provider.
+// Retrieves an identity provider.
 //
 // @param request - GetIdentityProviderRequest
 //
@@ -12136,7 +12136,7 @@ func (client *Client) GetIdentityProviderStatusCheckJob(request *GetIdentityProv
 
 // Summary:
 //
-// # Get IdP Inbound Synchronization Configuration Information
+// Retrieves the inbound synchronization configuration of an identity provider (IdP).
 //
 // @param request - GetIdentityProviderUdPullConfigurationRequest
 //
@@ -12184,7 +12184,7 @@ func (client *Client) GetIdentityProviderUdPullConfigurationWithOptions(request 
 
 // Summary:
 //
-// # Get IdP Inbound Synchronization Configuration Information
+// Retrieves the inbound synchronization configuration of an identity provider (IdP).
 //
 // @param request - GetIdentityProviderUdPullConfigurationRequest
 //
@@ -12920,7 +12920,7 @@ func (client *Client) GetNetworkZone(request *GetNetworkZoneRequest) (_result *G
 
 // Summary:
 //
-// Queries the information about an organizational unit in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Queries the information of an EIAM organizational unit.
 //
 // @param request - GetOrganizationalUnitRequest
 //
@@ -12968,7 +12968,7 @@ func (client *Client) GetOrganizationalUnitWithOptions(request *GetOrganizationa
 
 // Summary:
 //
-// Queries the information about an organizational unit in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Queries the information of an EIAM organizational unit.
 //
 // @param request - GetOrganizationalUnitRequest
 //
@@ -13234,7 +13234,7 @@ func (client *Client) GetPasswordInitializationConfiguration(request *GetPasswor
 
 // Summary:
 //
-// Retrieves the permission scopes for a specified resource server.
+// Queries the scope permissions under a specified ResourceServer.
 //
 // @param request - GetResourceServerScopeRequest
 //
@@ -13286,7 +13286,7 @@ func (client *Client) GetResourceServerScopeWithOptions(request *GetResourceServ
 
 // Summary:
 //
-// Retrieves the permission scopes for a specified resource server.
+// Queries the scope permissions under a specified ResourceServer.
 //
 // @param request - GetResourceServerScopeRequest
 //
@@ -13494,7 +13494,7 @@ func (client *Client) GetSynchronizationJob(request *GetSynchronizationJobReques
 
 // Summary:
 //
-// Retrieves the details of an account in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Queries the details of an EIAM account.
 //
 // @param request - GetUserRequest
 //
@@ -13542,7 +13542,7 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *dara.
 
 // Summary:
 //
-// Retrieves the details of an account in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Queries the details of an EIAM account.
 //
 // @param request - GetUserRequest
 //
@@ -14414,7 +14414,7 @@ func (client *Client) ListApplicationsForAuthorizationRule(request *ListApplicat
 
 // Summary:
 //
-// Retrieves a list of applications that an EIAM group can access.
+// Query the list of applications accessible to an EIAM group.
 //
 // @param request - ListApplicationsForGroupRequest
 //
@@ -14474,7 +14474,7 @@ func (client *Client) ListApplicationsForGroupWithOptions(request *ListApplicati
 
 // Summary:
 //
-// Retrieves a list of applications that an EIAM group can access.
+// Query the list of applications accessible to an EIAM group.
 //
 // @param request - ListApplicationsForGroupRequest
 //
@@ -14644,11 +14644,11 @@ func (client *Client) ListApplicationsForNetworkZone(request *ListApplicationsFo
 
 // Summary:
 //
-// This operation queries a paginated list of applications that an EIAM organization can access. The response includes application IDs. To retrieve detailed information about an application, call the GetApplication operation.
+// Queries the list of applications accessible to an EIAM organizational unit by paging. The response includes application IDs. To obtain detailed application information, call the GetApplication operation.
 //
 // Description:
 //
-// This operation queries only the applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
+// This operation queries only the direct permissions of the organizational unit, that is, applications directly assigned to the organizational unit. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListApplicationsForOrganizationalUnitRequest
 //
@@ -14708,11 +14708,11 @@ func (client *Client) ListApplicationsForOrganizationalUnitWithOptions(request *
 
 // Summary:
 //
-// This operation queries a paginated list of applications that an EIAM organization can access. The response includes application IDs. To retrieve detailed information about an application, call the GetApplication operation.
+// Queries the list of applications accessible to an EIAM organizational unit by paging. The response includes application IDs. To obtain detailed application information, call the GetApplication operation.
 //
 // Description:
 //
-// This operation queries only the applications that are directly assigned to an organization. You can use the **ApplicationIds*	- parameter to filter the applications.
+// This operation queries only the direct permissions of the organizational unit, that is, applications directly assigned to the organizational unit. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListApplicationsForOrganizationalUnitRequest
 //
@@ -15482,7 +15482,7 @@ func (client *Client) ListCloudAccountRoles(request *ListCloudAccountRolesReques
 
 // Summary:
 //
-// Returns a paginated list of information about one or more Alibaba Cloud accounts.
+// Queries information about one or more cloud accounts by using paging.
 //
 // @param request - ListCloudAccountsRequest
 //
@@ -15538,7 +15538,7 @@ func (client *Client) ListCloudAccountsWithOptions(request *ListCloudAccountsReq
 
 // Summary:
 //
-// Returns a paginated list of information about one or more Alibaba Cloud accounts.
+// Queries information about one or more cloud accounts by using paging.
 //
 // @param request - ListCloudAccountsRequest
 //
@@ -15638,7 +15638,7 @@ func (client *Client) ListConditionalAccessPolicies(request *ListConditionalAcce
 
 // Summary:
 //
-// Lists the conditional access policies associated with an application.
+// List conditional access policies associated with an application.
 //
 // @param request - ListConditionalAccessPoliciesForApplicationRequest
 //
@@ -15686,7 +15686,7 @@ func (client *Client) ListConditionalAccessPoliciesForApplicationWithOptions(req
 
 // Summary:
 //
-// Lists the conditional access policies associated with an application.
+// List conditional access policies associated with an application.
 //
 // @param request - ListConditionalAccessPoliciesForApplicationRequest
 //
@@ -16423,7 +16423,7 @@ func (client *Client) ListEiamRegions() (_result *ListEiamRegionsResponse, _err 
 
 // Summary:
 //
-// View the event list.
+// Queries the event list.
 //
 // @param request - ListEventTypesRequest
 //
@@ -16471,7 +16471,7 @@ func (client *Client) ListEventTypesWithOptions(request *ListEventTypesRequest, 
 
 // Summary:
 //
-// View the event list.
+// Queries the event list.
 //
 // @param request - ListEventTypesRequest
 //
@@ -16571,7 +16571,7 @@ func (client *Client) ListFederatedCredentialProviders(request *ListFederatedCre
 
 // Summary:
 //
-// Queries a list of account groups in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// List EIAM account groups.
 //
 // @param request - ListGroupsRequest
 //
@@ -16639,7 +16639,7 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 
 // Summary:
 //
-// Queries a list of account groups in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// List EIAM account groups.
 //
 // @param request - ListGroupsRequest
 //
@@ -16899,7 +16899,7 @@ func (client *Client) ListGroupsForResourceServer(request *ListGroupsForResource
 
 // Summary:
 //
-// Queries a list of account groups to which an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) belongs.
+// Queries the list of account groups to which a specified EIAM account belongs.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -16955,7 +16955,7 @@ func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserReq
 
 // Summary:
 //
-// Queries a list of account groups to which an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) belongs.
+// Queries the list of account groups to which a specified EIAM account belongs.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -16973,7 +16973,7 @@ func (client *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (_res
 
 // Summary:
 //
-// Retrieves a list of identity providers.
+// Query the list of identity providers.
 //
 // @param request - ListIdentityProvidersRequest
 //
@@ -17029,7 +17029,7 @@ func (client *Client) ListIdentityProvidersWithOptions(request *ListIdentityProv
 
 // Summary:
 //
-// Retrieves a list of identity providers.
+// Query the list of identity providers.
 //
 // @param request - ListIdentityProvidersRequest
 //
@@ -17121,7 +17121,7 @@ func (client *Client) ListIdentityProvidersForNetworkAccessEndpoint(request *Lis
 
 // Summary:
 //
-// Queries information about one or more Employee Identity and Access Management (EIAM) instances.
+// Queries information about one or more EIAM instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -17185,7 +17185,7 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 
 // Summary:
 //
-// Queries information about one or more Employee Identity and Access Management (EIAM) instances.
+// Queries information about one or more EIAM instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -17540,7 +17540,7 @@ func (client *Client) ListNetworkZones(request *ListNetworkZonesRequest) (_resul
 
 // Summary:
 //
-// Queries all parent organizational units of a specified EIAM organizational unit. The returned organizational units are sorted in hierarchical order from the highest level to the lowest level.
+// Queries all ancestor organizations of a specified EIAM organization. The organizations in the result list are sorted in hierarchical order from the top level to the bottom level.
 //
 // @param request - ListOrganizationalUnitParentsRequest
 //
@@ -17588,7 +17588,7 @@ func (client *Client) ListOrganizationalUnitParentsWithOptions(request *ListOrga
 
 // Summary:
 //
-// Queries all parent organizational units of a specified EIAM organizational unit. The returned organizational units are sorted in hierarchical order from the highest level to the lowest level.
+// Queries all ancestor organizations of a specified EIAM organization. The organizations in the result list are sorted in hierarchical order from the top level to the bottom level.
 //
 // @param request - ListOrganizationalUnitParentsRequest
 //
@@ -18297,11 +18297,11 @@ func (client *Client) ListUserAuthnSourceMappings(request *ListUserAuthnSourceMa
 
 // Summary:
 //
-// Retrieves a paginated list of EIAM accounts.
+// Queries EIAM account information by using paging.
 //
 // Description:
 //
-// This API retrieves only applications directly assigned to an organization. Use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organizational unit, which are the applications directly assigned to the organizational unit. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListUsersRequest
 //
@@ -18405,11 +18405,11 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *d
 
 // Summary:
 //
-// Retrieves a paginated list of EIAM accounts.
+// Queries EIAM account information by using paging.
 //
 // Description:
 //
-// This API retrieves only applications directly assigned to an organization. Use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organizational unit, which are the applications directly assigned to the organizational unit. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListUsersRequest
 //
@@ -18961,7 +18961,7 @@ func (client *Client) ObtainCredential(request *ObtainCredentialRequest) (_resul
 
 // Summary:
 //
-// Obtains the proxy token for a domain name in an EIAM instance.
+// Queries the proxy token of an EIAM instance domain name.
 //
 // @param request - ObtainDomainProxyTokenRequest
 //
@@ -19013,7 +19013,7 @@ func (client *Client) ObtainDomainProxyTokenWithOptions(request *ObtainDomainPro
 
 // Summary:
 //
-// Obtains the proxy token for a domain name in an EIAM instance.
+// Queries the proxy token of an EIAM instance domain name.
 //
 // @param request - ObtainDomainProxyTokenRequest
 //
@@ -20737,7 +20737,7 @@ func (client *Client) SetApplicationSsoConfig(request *SetApplicationSsoConfigRe
 
 // Summary:
 //
-// Sets the default domain name for a specified EIAM instance.
+// Sets a specified domain name of an EIAM instance as the default domain name.
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -20785,7 +20785,7 @@ func (client *Client) SetDefaultDomainWithOptions(request *SetDefaultDomainReque
 
 // Summary:
 //
-// Sets the default domain name for a specified EIAM instance.
+// Sets a specified domain name of an EIAM instance as the default domain name.
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -20873,7 +20873,7 @@ func (client *Client) SetForgetPasswordConfiguration(request *SetForgetPasswordC
 
 // Summary:
 //
-// # Update authentication information
+// # Modify Authentication Information
 //
 // @param request - SetIdentityProviderAuthnConfigurationRequest
 //
@@ -20937,7 +20937,7 @@ func (client *Client) SetIdentityProviderAuthnConfigurationWithOptions(request *
 
 // Summary:
 //
-// # Update authentication information
+// # Modify Authentication Information
 //
 // @param request - SetIdentityProviderAuthnConfigurationRequest
 //
@@ -20955,7 +20955,7 @@ func (client *Client) SetIdentityProviderAuthnConfiguration(request *SetIdentity
 
 // Summary:
 //
-// Sets the inbound synchronization configuration for an IdP.
+// Modifies the inbound synchronization configuration of an Identity Provider (IdP).
 //
 // @param request - SetIdentityProviderUdPullConfigurationRequest
 //
@@ -21031,7 +21031,7 @@ func (client *Client) SetIdentityProviderUdPullConfigurationWithOptions(request 
 
 // Summary:
 //
-// Sets the inbound synchronization configuration for an IdP.
+// Modifies the inbound synchronization configuration of an Identity Provider (IdP).
 //
 // @param request - SetIdentityProviderUdPullConfigurationRequest
 //
@@ -22019,7 +22019,7 @@ func (client *Client) UnbindUserAuthnSourceMapping(request *UnbindUserAuthnSourc
 
 // Summary:
 //
-// Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) that is locked.
+// Unlocks a locked EIAM account.
 //
 // @param request - UnlockUserRequest
 //
@@ -22067,7 +22067,7 @@ func (client *Client) UnlockUserWithOptions(request *UnlockUserRequest, runtime 
 
 // Summary:
 //
-// Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) that is locked.
+// Unlocks a locked EIAM account.
 //
 // @param request - UnlockUserRequest
 //

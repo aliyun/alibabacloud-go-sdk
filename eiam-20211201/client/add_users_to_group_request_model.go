@@ -34,7 +34,7 @@ type AddUsersToGroupRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The account IDs.
+	// The list of account IDs. The list can contain up to 100 elements.
 	//
 	// This parameter is required.
 	//

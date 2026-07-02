@@ -16,7 +16,7 @@ type iGetIdentityProviderUdPullConfigurationRequest interface {
 }
 
 type GetIdentityProviderUdPullConfigurationRequest struct {
-	// Identity provider ID
+	// The identity provider ID.
 	//
 	// This parameter is required.
 	//

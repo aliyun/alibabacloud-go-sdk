@@ -52,7 +52,7 @@ type UpdateNetworkZoneRequest struct {
 	//
 	// network_11111
 	NetworkZoneId *string `json:"NetworkZoneId,omitempty" xml:"NetworkZoneId,omitempty"`
-	// The name of the network zone.
+	// The network zone name.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type UpdateNetworkZoneRequest struct {
 	//
 	// IPV4Test
 	NetworkZoneName *string `json:"NetworkZoneName,omitempty" xml:"NetworkZoneName,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
 	// example:
 	//

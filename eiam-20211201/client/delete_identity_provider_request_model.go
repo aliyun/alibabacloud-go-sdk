@@ -16,7 +16,7 @@ type iDeleteIdentityProviderRequest interface {
 }
 
 type DeleteIdentityProviderRequest struct {
-	// Identity provider ID.
+	// The identity provider ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteIdentityProviderRequest struct {
 	//
 	// idp_my664lwkhpicbyzirog3xxxxx
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

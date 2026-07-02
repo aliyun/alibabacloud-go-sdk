@@ -32,9 +32,9 @@ type iSetIdentityProviderUdPullConfigurationRequest interface {
 type SetIdentityProviderUdPullConfigurationRequest struct {
 	// The group synchronization status. Valid values:
 	//
-	// - disabled: The feature is disabled.
+	// - disabled: Disabled.
 	//
-	// - enabled: The feature is enabled.
+	// - enabled: Enabled.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type SetIdentityProviderUdPullConfigurationRequest struct {
 	//
 	// idp_my664lwkhpicbyzirog3xxxxx
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// The status of incremental callback. This parameter specifies whether to process incremental callback data from the IdP. Valid values:
+	// Specifies whether to process incremental callback data from the IdP. Valid values:
 	//
-	// - disabled: The feature is disabled.
+	// - disabled: Disabled.
 	//
-	// - enabled: The feature is enabled.
+	// - enabled: Enabled.
 	//
 	// This parameter is required.
 	//
@@ -68,15 +68,15 @@ type SetIdentityProviderUdPullConfigurationRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The configurations of LDAP synchronization.
+	// The LDAP synchronization configuration.
 	LdapUdPullConfig *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig `json:"LdapUdPullConfig,omitempty" xml:"LdapUdPullConfig,omitempty" type:"Struct"`
-	// The scheduled synchronization configuration.
+	// The periodic synchronization configuration.
 	PeriodicSyncConfig *SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig `json:"PeriodicSyncConfig,omitempty" xml:"PeriodicSyncConfig,omitempty" type:"Struct"`
-	// The status of scheduled check. This parameter specifies whether to periodically check for data inconsistencies between IDaaS and the IdP. Valid values:
+	// Specifies whether to periodically verify data differences between IDaaS and the identity provider. Valid values:
 	//
-	// - disabled: The feature is disabled.
+	// - disabled: Disabled.
 	//
-	// - enabled: The feature is enabled.
+	// - enabled: Enabled.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type SetIdentityProviderUdPullConfigurationRequest struct {
 	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
 	// The inbound synchronization protection rule.
 	PullProtectedRule *SetIdentityProviderUdPullConfigurationRequestPullProtectedRule `json:"PullProtectedRule,omitempty" xml:"PullProtectedRule,omitempty" type:"Struct"`
-	// The inbound synchronization configuration.
+	// The inbound synchronization scope configuration.
 	UdSyncScopeConfig *SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig `json:"UdSyncScopeConfig,omitempty" xml:"UdSyncScopeConfig,omitempty" type:"Struct"`
 }
 
@@ -208,31 +208,31 @@ type SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig struct {
 	//
 	// member
 	GroupMemberAttributeName *string `json:"GroupMemberAttributeName,omitempty" xml:"GroupMemberAttributeName,omitempty"`
-	// The group objectClass.
+	// The group ObjectClass.
 	//
 	// example:
 	//
 	// group
 	GroupObjectClass *string `json:"GroupObjectClass,omitempty" xml:"GroupObjectClass,omitempty"`
-	// The custom group filter.
+	// The custom filter for groups.
 	//
 	// example:
 	//
 	// (|(cn=test)(group=test@test.com))
 	GroupObjectClassCustomFilter *string `json:"GroupObjectClassCustomFilter,omitempty" xml:"GroupObjectClassCustomFilter,omitempty"`
-	// The organizational unit objectClass.
+	// The organizational unit ObjectClass.
 	//
 	// example:
 	//
 	// organizationUnit,top
 	OrganizationUnitObjectClass *string `json:"OrganizationUnitObjectClass,omitempty" xml:"OrganizationUnitObjectClass,omitempty"`
-	// The user objectClass.
+	// The user ObjectClass.
 	//
 	// example:
 	//
 	// userPrincipalName, mail
 	UserObjectClass *string `json:"UserObjectClass,omitempty" xml:"UserObjectClass,omitempty"`
-	// The custom user filter.
+	// The custom filter for users.
 	//
 	// example:
 	//
@@ -313,9 +313,9 @@ type SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig struct {
 	//
 	// 0 45 1 	- 	- ?
 	PeriodicSyncCron *string `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
-	// The time points for synchronization. This parameter is required when periodicSyncType is set to time. For example, if you set this parameter to [3, 5], the synchronization is performed from 03:00 to 04:00 and from 05:00 to 06:00.
+	// The execution time points. This parameter is required when periodicSyncType is set to time. For example, [3, 5] indicates that the task runs once between 3:00 and 4:00 and once between 5:00 and 6:00.
 	PeriodicSyncTimes []*int32 `json:"PeriodicSyncTimes,omitempty" xml:"PeriodicSyncTimes,omitempty" type:"Repeated"`
-	// The type.
+	// The type of periodic synchronization.
 	//
 	// example:
 	//
@@ -363,19 +363,19 @@ func (s *SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig) Valida
 }
 
 type SetIdentityProviderUdPullConfigurationRequestPullProtectedRule struct {
-	// The threshold for the number of groups to be deleted. If the number of groups to be deleted exceeds this value, the synchronization task is stopped.
+	// The threshold for the number of deleted groups. If the number of deleted groups exceeds this value, the synchronization task is terminated.
 	//
 	// example:
 	//
 	// 10
 	GroupDeletedThreshold *int32 `json:"GroupDeletedThreshold,omitempty" xml:"GroupDeletedThreshold,omitempty"`
-	// The threshold for the number of organizational units to be deleted. If the number of organizational units to be deleted exceeds this value, the synchronization task is stopped.
+	// The threshold for the number of deleted organizational units. If the number of deleted organizational units exceeds this value, the synchronization task is terminated.
 	//
 	// example:
 	//
 	// 10
 	OrganizationalUnitDeletedThreshold *int32 `json:"OrganizationalUnitDeletedThreshold,omitempty" xml:"OrganizationalUnitDeletedThreshold,omitempty"`
-	// The threshold for the number of users to be deleted. If the number of users to be deleted exceeds this value, the synchronization task is stopped.
+	// The threshold for the number of deleted accounts. If the number of deleted users exceeds this value, the synchronization task is terminated.
 	//
 	// example:
 	//

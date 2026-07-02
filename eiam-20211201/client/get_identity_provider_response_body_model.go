@@ -16,9 +16,9 @@ type iGetIdentityProviderResponseBody interface {
 }
 
 type GetIdentityProviderResponseBody struct {
-	// The information about the identity provider.
+	// The identity provider information.
 	IdentityProviderDetail *GetIdentityProviderResponseBodyIdentityProviderDetail `json:"IdentityProviderDetail,omitempty" xml:"IdentityProviderDetail,omitempty" type:"Struct"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ func (s *GetIdentityProviderResponseBody) Validate() error {
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
-	// The status of the advanced configuration. Valid values:
+	// The advanced configuration status. Valid values:
 	//
-	// - `disabled`
+	// - disabled: Disabled.
 	//
-	// - `enabled`
+	// - enabled: Enabled.
 	//
 	// example:
 	//
@@ -74,47 +74,47 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	AdvancedStatus *string `json:"AdvancedStatus,omitempty" xml:"AdvancedStatus,omitempty"`
 	// The authentication source product, such as Okta, Google, or Azure AD. Valid values:
 	//
-	// - DingTalk: `urn:alibaba:idaas:idp:alibaba:dingtalk`
+	// - urn:alibaba:idaas:idp:alibaba:dingtalk: DingTalk.
 	//
-	// - LDAP: `urn:alibaba:idaas:idp:unknown:ldap`
+	// - urn:alibaba:idaas:idp:unknown:ldap: LDAP.
 	//
-	// - Alibaba Cloud IDaaS: `urn:alibaba:idaas:idp:alibaba:idaas`
+	// - urn:alibaba:idaas:idp:alibaba:idaas: Alibaba Cloud IDaaS.
 	//
-	// - WeCom: `urn:alibaba:idaas:idp:tencent:wecom`
+	// - urn:alibaba:idaas:idp:tencent:wecom: WeCom.
 	//
-	// - Lark: `urn:alibaba:idaas:idp:bytedance:lark`
+	// - urn:alibaba:idaas:idp:bytedance:lark: Lark.
 	//
-	// - Active Directory: `urn:alibaba:idaas:idp:microsoft:ad`
+	// - urn:alibaba:idaas:idp:microsoft:ad: Active Directory.
 	//
-	// - Azure Active Directory: `urn:alibaba:idaas:idp:microsoft:aad`
+	// - urn:alibaba:idaas:idp:microsoft:aad: Azure Active Directory.
 	//
-	// - Alibaba Cloud SASE: `urn:alibaba:idaas:idp:alibaba:sase`
+	// - urn:alibaba:idaas:idp:alibaba:sase: Alibaba Cloud SASE.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:idp:bytedance:lark
 	AuthnSourceSupplier *string `json:"AuthnSourceSupplier,omitempty" xml:"AuthnSourceSupplier,omitempty"`
-	// The authentication protocol. Valid values:
+	// The authentication method type, such as OIDC or SAML. Valid values:
 	//
-	// - OIDC: `urn:alibaba:idaas:authntype:oidc`
+	// - urn:alibaba:idaas:authntype:oidc: OIDC.
 	//
-	// - SAML: `urn:alibaba:idaas:authntype:saml2`
+	// - urn:alibaba:idaas:authntype:saml2: SAML.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:authntype:oidc
 	AuthnSourceType *string `json:"AuthnSourceType,omitempty" xml:"AuthnSourceType,omitempty"`
-	// Indicates whether the identity provider supports authentication. Valid values:
+	// Specifies whether the corresponding IdP supports authentication. Valid values:
 	//
-	// - `disabled`
+	// - disabled: Disabled.
 	//
-	// - `enabled`
+	// - enabled: Enabled.
 	//
 	// example:
 	//
 	// disabled
 	AuthnStatus *string `json:"AuthnStatus,omitempty" xml:"AuthnStatus,omitempty"`
-	// The time when the identity provider was created, represented as a Unix timestamp in milliseconds.
+	// The creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -126,11 +126,11 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	//
 	// for poc test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The basic configuration for DingTalk.
+	// The DingTalk basic configuration.
 	DingtalkAppConfig *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig `json:"DingtalkAppConfig,omitempty" xml:"DingtalkAppConfig,omitempty" type:"Struct"`
-	// The DingTalk provisioning configuration. This parameter is returned only for DingTalk identity providers.
+	// The DingTalk synchronization configuration. This value is returned only for DingTalk identity providers.
 	DingtalkProvisioningConfig *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig `json:"DingtalkProvisioningConfig,omitempty" xml:"DingtalkProvisioningConfig,omitempty" type:"Struct"`
-	// Endpoint metadata
+	// The endpoint metadata.
 	EndpointMetadata *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata `json:"EndpointMetadata,omitempty" xml:"EndpointMetadata,omitempty" type:"Struct"`
 	// The external ID of the identity provider.
 	//
@@ -144,29 +144,29 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	//
 	// idp_mwpcwnhrimlr2horx7xgg7pp7y
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// The identity provider name.
+	// The name of the identity provider.
 	//
 	// example:
 	//
 	// test
 	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
-	// The provisioning type of the identity provider.
+	// The synchronization type of the identity provider. Valid values:
 	//
-	// - Inbound DingTalk: `urn:alibaba:idaas:idp:alibaba:dingtalk:pull`
+	// - urn:alibaba:idaas:idp:alibaba:dingtalk:pull: Inbound DingTalk.
 	//
-	// - Outbound DingTalk: `urn:alibaba:idaas:idp:alibaba:dingtalk:push`
+	// - urn:alibaba:idaas:idp:alibaba:dingtalk:push: Outbound DingTalk.
 	//
-	// - Inbound WeCom: `urn:alibaba:idaas:idp:tencent:wecom:pull`
+	// - urn:alibaba:idaas:idp:tencent:wecom:pull: Inbound WeCom.
 	//
-	// - Inbound Lark: `urn:alibaba:idaas:idp:bytedance:lark:pull`
+	// - urn:alibaba:idaas:idp:bytedance:lark:pull: Inbound Lark.
 	//
-	// - Inbound AD: `urn:alibaba:idaas:idp:microsoft:ad:pull`
+	// - urn:alibaba:idaas:idp:microsoft:ad:pull: Inbound AD.
 	//
-	// - Inbound LDAP: `urn:alibaba:idaas:idp:unknown:ldap:pull`
+	// - urn:alibaba:idaas:idp:unknown:ldap:pull: Inbound LDAP.
 	//
-	// - Standard OIDC: `urn:alibaba:idaas:idp:standard:oidc`
+	// - urn:alibaba:idaas:idp:standard:oidc: Standard OIDC.
 	//
-	// - Customized OIDC for SASE: `urn:alibaba:idaas:idp:alibaba:sase`
+	// - urn:alibaba:idaas:idp:alibaba:sase: SASE custom OIDC.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	//
 	// idaas_x2df3bak3uwnapqm6xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The configuration for Lark.
+	// The Lark configuration.
 	LarkConfig *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig `json:"LarkConfig,omitempty" xml:"LarkConfig,omitempty" type:"Struct"`
 	// The result of the last status check.
 	//
@@ -186,7 +186,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	//
 	// success
 	LastStatusCheckJobResult *string `json:"LastStatusCheckJobResult,omitempty" xml:"LastStatusCheckJobResult,omitempty"`
-	// The information about the AD/LDAP identity provider.
+	// The AD/LDAP identity provider configuration.
 	LdapConfig *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig `json:"LdapConfig,omitempty" xml:"LdapConfig,omitempty" type:"Struct"`
 	// The lock reason.
 	//
@@ -194,29 +194,29 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	//
 	// financial
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The URL of the custom logo for the identity provider.
+	// The custom logo URL of the identity provider.
 	//
 	// example:
 	//
 	// https://img.alicdn.com/imgextra/i4/O1CN01lvYwpv1aGowQXDML9_!!6000000003303-0-tps-580-580.jpg
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// The network access endpoint ID.
+	// The network endpoint ID.
 	//
 	// example:
 	//
 	// nae_mx4vsadfe6govkqkwckxxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The OIDC identity provider configuration.
+	// The OIDC IdP configuration.
 	OidcConfig *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig `json:"OidcConfig,omitempty" xml:"OidcConfig,omitempty" type:"Struct"`
-	// The SAML identity provider configuration.
+	// The SAML IdP configuration.
 	SamlConfig *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig `json:"SamlConfig,omitempty" xml:"SamlConfig,omitempty" type:"Struct"`
 	// The inbound synchronization configuration.
 	UdPullConfig *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig `json:"UdPullConfig,omitempty" xml:"UdPullConfig,omitempty" type:"Struct"`
-	// Indicates whether inbound synchronization is supported. Valid values:
+	// Specifies whether the inbound synchronization feature is supported. Valid values:
 	//
-	// - `disabled`
+	// - disabled: Disabled.
 	//
-	// - `enabled`
+	// - enabled: Enabled.
 	//
 	// example:
 	//
@@ -224,23 +224,23 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	UdPullStatus *string `json:"UdPullStatus,omitempty" xml:"UdPullStatus,omitempty"`
 	// The outbound synchronization configuration.
 	UdPushConfig *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig `json:"UdPushConfig,omitempty" xml:"UdPushConfig,omitempty" type:"Struct"`
-	// Indicates whether outbound synchronization is enabled. Valid values:
+	// Specifies whether the outbound synchronization feature is enabled. Valid values:
 	//
-	// - `disabled`
+	// - disabled: Disabled.
 	//
-	// - `enabled`
+	// - enabled: Enabled.
 	//
 	// example:
 	//
 	// disabled
 	UdPushStatus *string `json:"UdPushStatus,omitempty" xml:"UdPushStatus,omitempty"`
-	// The last update time, represented as a Unix timestamp in milliseconds.
+	// The update time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1726021079000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The configuration information for WeCom.
+	// The WeCom configuration.
 	WeComConfig *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig `json:"WeComConfig,omitempty" xml:"WeComConfig,omitempty" type:"Struct"`
 }
 
@@ -559,47 +559,47 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) Validate() error
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig struct {
-	// The AppKey of your first-party application in DingTalk.
+	// The AppKey of the DingTalk first-party application.
 	//
 	// example:
 	//
 	// 41reopmwoy9s
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The AppSecret of your first-party application in DingTalk.
+	// The AppSecret of the DingTalk first-party application.
 	//
 	// example:
 	//
 	// REOQ6Cl55kriOd8NOBeqWYLKpHR4p6fdZxxxx
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	// The corporate ID of your first-party application in DingTalk.
+	// The CorpId of the DingTalk first-party application.
 	//
 	// example:
 	//
 	// 3756043633237690761
 	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
-	// The version of DingTalk QR code login.
+	// The DingTalk QR code logon version.
 	//
 	// example:
 	//
 	// old_version
 	DingtalkLoginVersion *string `json:"DingtalkLoginVersion,omitempty" xml:"DingtalkLoginVersion,omitempty"`
-	// The DingTalk edition. Valid values:
+	// The DingTalk version. Valid values:
 	//
-	// - Standard DingTalk: `public_dingtalk`
+	// - public_dingtalk: Standard DingTalk.
 	//
-	// - Exclusive DingTalk: `private_dingtalk`
+	// - private_dingtalk: Dedicated DingTalk.
 	//
 	// example:
 	//
 	// public_dingtalk
 	DingtalkVersion *string `json:"DingtalkVersion,omitempty" xml:"DingtalkVersion,omitempty"`
-	// The encryption key for your first-party application in DingTalk.
+	// The EncryptKey of the DingTalk application.
 	//
 	// example:
 	//
 	// 29003eb11d0a28b4802a6f02fb8aa25dff730e2ac26ffd200d
 	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	// The verification token for your first-party application in DingTalk.
+	// The VerificationToken of the DingTalk application.
 	//
 	// example:
 	//
@@ -685,15 +685,15 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig)
 type GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig struct {
 	// The authorized DingTalk departments.
 	AuthedDepartmentIds []*GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds `json:"AuthedDepartmentIds,omitempty" xml:"AuthedDepartmentIds,omitempty" type:"Repeated"`
-	// The list of authorized DingTalk user accounts.
+	// The list of authorized DingTalk accounts.
 	AuthedUsers []*GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers `json:"AuthedUsers,omitempty" xml:"AuthedUsers,omitempty" type:"Repeated"`
-	// The corporate ID in DingTalk.
+	// The DingTalk enterprise CorpId.
 	//
 	// example:
 	//
 	// ding_xxxxx
 	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
-	// The corporate name in DingTalk.
+	// The DingTalk enterprise name.
 	//
 	// example:
 	//
@@ -768,13 +768,13 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioni
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds struct {
-	// The department ID in DingTalk.
+	// The DingTalk department ID.
 	//
 	// example:
 	//
 	// 123xxx444
 	DeptId *string `json:"DeptId,omitempty" xml:"DeptId,omitempty"`
-	// The department name in DingTalk.
+	// The DingTalk department name.
 	//
 	// example:
 	//
@@ -813,13 +813,13 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioni
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers struct {
-	// The user name in DingTalk.
+	// The DingTalk username.
 	//
 	// example:
 	//
 	// zhangsan
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The user ID in DingTalk.
+	// The DingTalk user ID.
 	//
 	// example:
 	//
@@ -858,19 +858,19 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioni
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata struct {
-	// SAML ACS address
+	// The SAML Assertion Consumer Service (ACS) endpoint.
 	//
 	// example:
 	//
 	// https://9test.aliyunidaas.com/login/saml2/idp_nhlraxfiwsx7w7zp26qzyoxxxx/acs
 	SamlAcsEndpoint *string `json:"SamlAcsEndpoint,omitempty" xml:"SamlAcsEndpoint,omitempty"`
-	// SAML EntityId
+	// The SAML EntityId.
 	//
 	// example:
 	//
 	// https://9test.aliyunidaas.com/login/saml2/idp_nhlraxfiwsx7w7zp26qzyoxxxx/meta
 	SamlEntityId *string `json:"SamlEntityId,omitempty" xml:"SamlEntityId,omitempty"`
-	// SAML metadata address
+	// The SAML metadata endpoint.
 	//
 	// example:
 	//
@@ -918,31 +918,31 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata) 
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig struct {
-	// The App ID of your custom application in Lark.
+	// The AppId of the Lark self-built application.
 	//
 	// example:
 	//
 	// cli_a7a99f53a317100c
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The App Secret of your custom application in Lark.
+	// The AppSecret of the Lark self-built application.
 	//
 	// example:
 	//
 	// ***
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	// The encryption key for your custom application in Lark.
+	// The EncryptKey of the Lark self-built application.
 	//
 	// example:
 	//
 	// VkdWw91mdkrjVFr3ObNwefap21dfbZbK
 	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	// The enterprise code for Lark.
+	// The Lark enterprise number.
 	//
 	// example:
 	//
 	// FX1231xxxx
 	EnterpriseNumber *string `json:"EnterpriseNumber,omitempty" xml:"EnterpriseNumber,omitempty"`
-	// The Verification Token of your custom application in Lark.
+	// The VerificationToken of the Lark self-built application.
 	//
 	// example:
 	//
@@ -1008,23 +1008,23 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig) Valida
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig struct {
-	// The password of the AD/LDAP administrator.
+	// The AD/LDAP administrator password.
 	//
 	// example:
 	//
 	// XXXX
 	AdministratorPassword *string `json:"AdministratorPassword,omitempty" xml:"AdministratorPassword,omitempty"`
-	// The username of the AD/LDAP administrator.
+	// The AD/LDAP administrator account.
 	//
 	// example:
 	//
 	// example.com
 	AdministratorUsername *string `json:"AdministratorUsername,omitempty" xml:"AdministratorUsername,omitempty"`
-	// Indicates whether to verify the certificate fingerprint. Valid values:
+	// Specifies whether to verify the certificate fingerprint. Valid values:
 	//
-	// - `disabled`
+	// - disabled: Disabled.
 	//
-	// - `enabled`
+	// - enabled: Enabled.
 	//
 	// example:
 	//
@@ -1032,29 +1032,29 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig struct {
 	CertificateFingerprintStatus *string `json:"CertificateFingerprintStatus,omitempty" xml:"CertificateFingerprintStatus,omitempty"`
 	// The list of certificate fingerprints.
 	CertificateFingerprints []*string `json:"CertificateFingerprints,omitempty" xml:"CertificateFingerprints,omitempty" type:"Repeated"`
-	// The communication protocol for AD/LDAP.
+	// The communication protocol of AD/LDAP.
 	//
 	// example:
 	//
 	// ldap
 	LdapProtocol *string `json:"LdapProtocol,omitempty" xml:"LdapProtocol,omitempty"`
-	// The address of the AD/LDAP server.
+	// The AD/LDAP server address.
 	//
 	// example:
 	//
 	// 127.xx.xx.100
 	LdapServerHost *string `json:"LdapServerHost,omitempty" xml:"LdapServerHost,omitempty"`
-	// The port of the AD/LDAP server.
+	// The AD/LDAP server address.
 	//
 	// example:
 	//
 	// 389
 	LdapServerPort *int32 `json:"LdapServerPort,omitempty" xml:"LdapServerPort,omitempty"`
-	// Indicates whether StartTLS is enabled. Valid values:
+	// Specifies whether StartTLS is enabled. Valid values:
 	//
-	// - `disabled`
+	// - disabled: Disabled.
 	//
-	// - `enabled`
+	// - enabled: Enabled.
 	//
 	// example:
 	//
@@ -1151,7 +1151,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig struct {
 	AuthnParam *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam `json:"AuthnParam,omitempty" xml:"AuthnParam,omitempty" type:"Struct"`
 	// The OIDC endpoint configuration.
 	EndpointConfig *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig `json:"EndpointConfig,omitempty" xml:"EndpointConfig,omitempty" type:"Struct"`
-	// The list of OIDC authorization scopes.
+	// The list of OIDC grant scopes.
 	//
 	// example:
 	//
@@ -1163,17 +1163,17 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig struct {
 	//
 	// authorization_code
 	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
-	// The algorithm for Proof Key for Code Exchange (PKCE). Valid values:
+	// The PKCE algorithm. Valid values:
 	//
-	// - SHA256: `S256`
+	// - S256: SHA-256.
 	//
-	// - Plaintext: `plain`
+	// - plain: Plaintext.
 	//
 	// example:
 	//
 	// S256
 	PkceChallengeMethod *string `json:"PkceChallengeMethod,omitempty" xml:"PkceChallengeMethod,omitempty"`
-	// Indicates whether to use PKCE in the authorization code grant type.
+	// Specifies whether to use PKCE in the AuthorizationCode grant mode.
 	//
 	// example:
 	//
@@ -1324,7 +1324,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConf
 	//
 	// https://example.com/oauth/authorize
 	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
-	// The OIDC issuer.
+	// The OIDC issuer information.
 	//
 	// example:
 	//
@@ -1342,7 +1342,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConf
 	//
 	// https://example.com/oauth/token
 	TokenEndpoint *string `json:"TokenEndpoint,omitempty" xml:"TokenEndpoint,omitempty"`
-	// The OIDC userinfo endpoint.
+	// The OIDC user information endpoint.
 	//
 	// example:
 	//
@@ -1408,33 +1408,33 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpoint
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig struct {
-	// Binding Type
+	// The binding type.
 	//
 	// example:
 	//
 	// HTTP-REDIRECT
 	BindingMethod *string `json:"BindingMethod,omitempty" xml:"BindingMethod,omitempty"`
-	// The list of signing certificates for the SAML identity provider.
+	// The list of IdP signing certificates.
 	Certificates []*GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The entity ID of the SAML identity provider.
+	// The EntityId of the IdP.
 	//
 	// example:
 	//
 	// http://dc.test.com/adfs/services/trust
 	IdPEntityId *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
-	// The single sign-on (SSO) URL of the SAML identity provider.
+	// The logon URL of the IdP.
 	//
 	// example:
 	//
 	// https://dc.test.com/adfs/ls/
 	IdPSsoUrl *string `json:"IdPSsoUrl,omitempty" xml:"IdPSsoUrl,omitempty"`
-	// Maximum clock skew
+	// The maximum clock skew.
 	//
 	// example:
 	//
 	// 180
 	MaxClockSkew *int64 `json:"MaxClockSkew,omitempty" xml:"MaxClockSkew,omitempty"`
-	// Is request signing required?
+	// Specifies whether the request must be signed.
 	//
 	// example:
 	//
@@ -1538,9 +1538,9 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) Valida
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates struct {
-	// The metadata of the certificate.
+	// The certificate metadata.
 	CertificateMetadata *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata `json:"CertificateMetadata,omitempty" xml:"CertificateMetadata,omitempty" type:"Struct"`
-	// The content of the certificate.
+	// The certificate content.
 	//
 	// example:
 	//
@@ -1584,13 +1584,13 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertific
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata struct {
-	// Certificate expiration on or before
+	// The latest validity date of the certificate.
 	//
 	// example:
 	//
 	// 1704067200000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// Certificate not valid before
+	// The earliest validity date of the certificate.
 	//
 	// example:
 	//
@@ -1629,21 +1629,21 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertific
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig struct {
-	// Indicates whether group synchronization is enabled. Valid values:
+	// Specifies whether group synchronization is enabled. Valid values:
 	//
-	// - `disabled`
+	// - disabled: Disabled.
 	//
-	// - `enabled`
+	// - enabled: Enabled.
 	//
 	// example:
 	//
 	// disabled
 	GroupSyncStatus *string `json:"GroupSyncStatus,omitempty" xml:"GroupSyncStatus,omitempty"`
-	// Indicates whether to process incremental callback data from the identity provider. Valid values:
+	// The incremental callback status. Specifies whether to process incremental callback data from the IdP. Valid values:
 	//
-	// - `disabled`
+	// - disabled: Disabled.
 	//
-	// - `enabled`
+	// - enabled: Enabled.
 	//
 	// example:
 	//
@@ -1698,9 +1698,9 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig) Vali
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig struct {
-	// The list of source nodes for synchronization.
+	// The list of synchronization source nodes.
 	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
-	// The target node for synchronization.
+	// The synchronization target node.
 	//
 	// example:
 	//
@@ -1739,7 +1739,7 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSync
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig struct {
-	// This parameter is reserved for future use.
+	// This field is not in use. Ignore it.
 	//
 	// example:
 	//
@@ -1789,9 +1789,9 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig) Vali
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs struct {
-	// The list of source nodes for synchronization.
+	// The list of synchronization source nodes.
 	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
-	// The target node for synchronization.
+	// The synchronization target node.
 	//
 	// example:
 	//
@@ -1830,31 +1830,31 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSync
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig struct {
-	// The ID of your custom application in WeCom.
+	// The ID of the WeCom self-built application.
 	//
 	// example:
 	//
 	// 1242350
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The authorized callback domain.
+	// The authorization callback domain.
 	//
 	// example:
 	//
 	// https://example.com/xxxx
 	AuthorizeCallbackDomain *string `json:"AuthorizeCallbackDomain,omitempty" xml:"AuthorizeCallbackDomain,omitempty"`
-	// The corporate ID of your custom application in WeCom.
+	// The CorpId of the WeCom self-built application.
 	//
 	// example:
 	//
 	// 3562012953454577801
 	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
-	// The secret of your custom application in WeCom.
+	// The CorpSecret of the WeCom self-built application.
 	//
 	// example:
 	//
 	// weaseiszjskejskaj12sjeszojxxxx
 	CorpSecret *string `json:"CorpSecret,omitempty" xml:"CorpSecret,omitempty"`
-	// The trusted domain.
+	// The trusted domain name.
 	//
 	// example:
 	//

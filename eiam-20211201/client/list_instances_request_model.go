@@ -24,6 +24,8 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
+	// The cross-region replication status.
+	//
 	// example:
 	//
 	// disabled
@@ -34,7 +36,7 @@ type ListInstancesRequest struct {
 	//
 	// - trial: Trial Edition.
 	//
-	// - scalability: Capability Expansion Edition.
+	// - scalability: Scalability Edition.
 	//
 	// - standard: Standard Edition.
 	//
