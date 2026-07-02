@@ -40,11 +40,11 @@ type ModifyInstanceSSLRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to enable TLS (SSL) encryption. Valid values:
 	//
-	// 	- **Disable**: disables SSL encryption.
+	// - **Disable**: disables SSL encryption.
 	//
-	// 	- **Enable**: enables SSL encryption.
+	// - **Enable**: enables SSL encryption.
 	//
-	// 	- **Update**: updates the SSL certificate.
+	// - **Update**: updates the SSL certificate.
 	//
 	// This parameter is required.
 	//

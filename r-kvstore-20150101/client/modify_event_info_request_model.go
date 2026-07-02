@@ -22,33 +22,33 @@ type iModifyEventInfoRequest interface {
 }
 
 type ModifyEventInfoRequest struct {
-	// The JSON-formatted parameters related to the action. Set this parameter to `{"recoverMode": "xxx", "recoverTime": "xxx"}` if the **TaskAction*	- parameter is set to **modifySwitchTime**.
+	// The parameters for the action, in JSON format. For example: `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
 	//
-	// 	- **recoverMode**: specifies the restoration mode for the task. Valid values:
+	// - **recoverMode**: The recovery mode. Valid values:
 	//
-	//     	- **timePoint**: performs the task at the specified point in time.
+	//   - **timePoint**: Executes the task at the time specified by `recoverTime`.
 	//
-	//     	- **immediate**: performs the task immediately.
+	//   - **immediate**: Executes the task immediately.
 	//
-	//     	- **maintainTime**: performs the task within the maintenance window.
+	//   - **maintainTime**: Executes the task during the maintenance window.
 	//
-	// 	- **recoverTime**: specifies the point in time for restoration. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. This parameter is required if the **recoverMode*	- parameter is set to **timePoint**.
+	// - **recoverTime**: The time to execute the task. This parameter is required when **recoverMode*	- is set to **timePoint**. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
 	//
 	// example:
 	//
 	// {"recoverTime":"2023-04-17T14:02:35Z","recoverMode":"timePoint"}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	// The event handling action. Valid values:
+	// The action to perform on the event. Valid values:
 	//
-	// 	- **archive**
+	// - **archive**: Archives the event.
 	//
-	// 	- **undo**
+	// - **undo**: Cancels processing for the event.
 	//
 	// example:
 	//
 	// archive
 	EventAction *string `json:"EventAction,omitempty" xml:"EventAction,omitempty"`
-	// The event IDs. Separate multiple event IDs with commas (,). You can specify up to 20 event IDs.
+	// The ID of the event. You can specify up to 20 event IDs. Separate multiple IDs with commas.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ModifyEventInfoRequest struct {
 	//
 	// 5422964
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// This parameter is required.
 	//

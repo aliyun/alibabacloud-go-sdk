@@ -56,7 +56,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// example:
 	//
-	// 2019-03-22T14:11Z
+	// 2019-03-10T15:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
 	//
@@ -133,7 +133,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// example:
 	//
-	// 2019-03-10T14:11Z
+	// 2019-03-10T14:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

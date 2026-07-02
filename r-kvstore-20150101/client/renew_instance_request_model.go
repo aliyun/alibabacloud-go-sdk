@@ -76,13 +76,13 @@ type RenewInstanceRequest struct {
 	//
 	// example:
 	//
-	// 1024
+	// -
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token is case-sensitive. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
-	// TF-ModifyInstanceSpec-1686645570-7dac7257-4a14-4811-939c-51a282f
+	// 0.6823317918435086
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
 	//
@@ -102,7 +102,7 @@ type RenewInstanceRequest struct {
 	//
 	// example:
 	//
-	// redis.master.small.default
+	// -
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The ID of the instance.
 	//

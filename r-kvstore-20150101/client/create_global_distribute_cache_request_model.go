@@ -28,13 +28,13 @@ type iCreateGlobalDistributeCacheRequest interface {
 }
 
 type CreateGlobalDistributeCacheRequest struct {
-	// The time when you want to perform the conversion. Valid values:
+	// Specifies when to perform the operation. Valid values:
 	//
-	// 	- **Immediately**: immediately performs the conversion.
+	// - **Immediately**: Performs the operation immediately.
 	//
-	// 	- **MaintainTime*	- (default): performs the conversion during the maintenance window.
+	// - **MaintainTime**: Performs the operation during the maintenance window. This is the default value.
 	//
-	// >  You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of an instance.
+	// > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to change the maintenance window of the instance.
 	//
 	// example:
 	//
@@ -44,16 +44,16 @@ type CreateGlobalDistributeCacheRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group.
 	//
-	// >  You do not need to specify system parameters.
+	// > This is a system parameter. You do not need to specify it.
 	//
 	// example:
 	//
-	// rg-acfmyiu4ekp****
+	// -
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the existing instance.
+	// The ID of the source instance.
 	//
 	// This parameter is required.
 	//

@@ -66,95 +66,36 @@ type iCreateTCInstanceRequest interface {
 }
 
 type CreateTCInstanceRequest struct {
-	// example:
-	//
-	// false
-	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// example:
-	//
-	// 1
+	AutoRenew       *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	AutoRenewPeriod *string `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	// example:
-	//
-	// false
-	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// example:
-	//
-	// 000000000
-	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// example:
-	//
-	// ETnLKlblzczshOTUbOCz****
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// example:
-	//
-	// youhuiquan_promotion_option_id_for_blank
-	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	AutoUseCoupon   *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	BusinessInfo    *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CouponNo        *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	// This parameter is required.
 	DataDisk []*CreateTCInstanceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	// example:
-	//
-	// false
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun   *bool                              `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ubuntu_20_04_64_20G_alibase_20210412
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// example:
-	//
-	// PrePaid
+	ImageId            *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// example:
-	//
-	// tair.kvcache.guis.8.gu60
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// example:
-	//
-	// newinstancename
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	NeedEni      *bool   `json:"NeedEni,omitempty" xml:"NeedEni,omitempty"`
-	// example:
-	//
-	// VPC
-	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// example:
-	//
-	// 12
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	InstanceClass      *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	NeedEni            *bool   `json:"NeedEni,omitempty" xml:"NeedEni,omitempty"`
+	NetworkType        *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Period             *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// rg-acfmyiu4e******
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// example:
-	//
-	// sg-bpcfmyiu4ekp****
-	SecurityGroupId *string                       `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SecurityToken   *string                       `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Tag             []*CreateTCInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// example:
-	//
-	// vsw-bp1e7clcw529l773d****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// example:
-	//
-	// vpc-bp1nme44gek34slfc****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	RegionId             *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityGroupId      *string                       `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityToken        *string                       `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag                  []*CreateTCInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VSwitchId            *string                       `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                *string                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId               *string                       `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateTCInstanceRequest) String() string {
@@ -432,22 +373,10 @@ func (s *CreateTCInstanceRequest) Validate() error {
 
 type CreateTCInstanceRequestDataDisk struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cloud_essd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// PL0
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 100
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -491,13 +420,7 @@ func (s *CreateTCInstanceRequestDataDisk) Validate() error {
 }
 
 type CreateTCInstanceRequestTag struct {
-	// example:
-	//
-	// key1_test
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// testvalue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

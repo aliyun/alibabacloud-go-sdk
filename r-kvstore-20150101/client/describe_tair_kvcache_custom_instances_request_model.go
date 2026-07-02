@@ -56,73 +56,28 @@ type iDescribeTairKVCacheCustomInstancesRequest interface {
 }
 
 type DescribeTairKVCacheCustomInstancesRequest struct {
-	// example:
-	//
-	// PrePaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// example:
-	//
-	// false
-	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// example:
-	//
-	// tair.gpu.test.16g
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// example:
-	//
-	// tc-bp16e70a4338****
-	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// example:
-	//
-	// Normal
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// example:
-	//
-	// TairCustom
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// example:
-	//
-	// VPC
-	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 30
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// rg-acfmyiu4ekp****
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// example:
-	//
-	// apitest
-	SearchKey     *string                                         `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	SecurityToken *string                                         `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Tag           []*DescribeTairKVCacheCustomInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// example:
-	//
-	// vsw-bp1e7clcw529l773d****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// example:
-	//
-	// vpc-bp1nme44gek34slfc****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-h
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ChargeType           *string                                         `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Expired              *string                                         `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	InstanceClass        *string                                         `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceIds          *string                                         `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	InstanceStatus       *string                                         `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceType         *string                                         `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	NetworkType          *string                                         `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OwnerAccount         *string                                         `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PrivateIp            *string                                         `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	RegionId             *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                                         `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                          `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SearchKey            *string                                         `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	SecurityToken        *string                                         `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag                  []*DescribeTairKVCacheCustomInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VSwitchId            *string                                         `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                *string                                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId               *string                                         `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeTairKVCacheCustomInstancesRequest) String() string {
@@ -345,13 +300,7 @@ func (s *DescribeTairKVCacheCustomInstancesRequest) Validate() error {
 }
 
 type DescribeTairKVCacheCustomInstancesRequestTag struct {
-	// example:
-	//
-	// key1_test
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// value1_test
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

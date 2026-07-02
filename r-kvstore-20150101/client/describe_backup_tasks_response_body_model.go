@@ -105,43 +105,43 @@ type DescribeBackupTasksResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// _
+	// -
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// This parameter is no longer used. Ignore this parameter.
 	//
 	// example:
 	//
-	// _
+	// -
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// This parameter is no longer used. Ignore this parameter.
 	//
 	// example:
 	//
-	// _
+	// -
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
 	// This parameter is no longer used. Ignore this parameter.
 	//
 	// example:
 	//
-	// _
+	// -
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
 	// This parameter is no longer used. Ignore this parameter.
 	//
 	// example:
 	//
-	// _
+	// -
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
 	// This parameter is no longer used. Ignore this parameter.
 	//
 	// example:
 	//
-	// _
+	// -
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
 	// This parameter is no longer used. Ignore this parameter.
 	//
 	// example:
 	//
-	// _
+	// -
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -225,7 +225,7 @@ type DescribeBackupTasksResponseBodyBackupJobs struct {
 	//
 	// example:
 	//
-	// 8491111
+	// 29****10
 	BackupJobID *int64 `json:"BackupJobID,omitempty" xml:"BackupJobID,omitempty"`
 	// The state of the backup task. Valid values:
 	//
@@ -243,7 +243,7 @@ type DescribeBackupTasksResponseBodyBackupJobs struct {
 	//
 	// example:
 	//
-	// Automated
+	// NoStart
 	BackupProgressStatus *string `json:"BackupProgressStatus,omitempty" xml:"BackupProgressStatus,omitempty"`
 	// The backup mode. Valid values:
 	//

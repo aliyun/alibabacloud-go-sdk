@@ -28,7 +28,7 @@ type iDescribeParametersRequest interface {
 }
 
 type DescribeParametersRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type DescribeParametersRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	//
-	// > You can set this parameter to query the parameter settings of the specified node in a cluster instance.
+	// > Specify this parameter to query the parameter settings of a specific node in a cluster instance.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeParametersRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query available regions. Use this parameter to specify the region of the instance.
 	//
 	// example:
 	//

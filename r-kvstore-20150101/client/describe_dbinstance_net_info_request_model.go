@@ -26,14 +26,15 @@ type iDescribeDBInstanceNetInfoRequest interface {
 }
 
 type DescribeDBInstanceNetInfoRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The network type.
 	NetType              *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

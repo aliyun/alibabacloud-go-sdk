@@ -71,7 +71,7 @@ type DescribeSlowLogRecordsResponseBody struct {
 	//
 	// example:
 	//
-	// 2019-03-10T13:11Z
+	// 2019-03-10T14:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The total number of returned log entries.
 	//

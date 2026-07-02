@@ -89,7 +89,7 @@ type DescribeParameterGroupTemplateListResponseBodyParameters struct {
 	//
 	// example:
 	//
-	// "\\\\d+\\\\s+\\\\d+\\\\s+\\\\d+"
+	// [0|1]
 	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
 	// Indicates whether the modification takes effect. Valid values: 0 and 1. A value of 0 indicates that the modification does not take effect. A value of 1 indicates that the modification takes effect.
 	//
@@ -107,7 +107,7 @@ type DescribeParameterGroupTemplateListResponseBodyParameters struct {
 	//
 	// example:
 	//
-	// Open AOF persistence mode
+	// 开启Aof持久化模式。
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
 	// The parameter name.
 	//

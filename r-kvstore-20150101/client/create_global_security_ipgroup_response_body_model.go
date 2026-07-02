@@ -70,19 +70,19 @@ type CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
 	//
 	// example:
 	//
-	// 192.168.0.1
+	// 192.168.0.1,10.10.10.10,172.16.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the IP whitelist template.
 	//
 	// example:
 	//
-	// white_list_test_sg
+	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the IP whitelist template.
 	//
 	// example:
 	//
-	// g-sdgwqyp4f5j1x3qk7yvm
+	// g-sdgwqyp4f5j1x3qk****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	// The region ID.
 	//

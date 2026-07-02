@@ -81,7 +81,7 @@ type DescribeActiveOperationTaskRequest struct {
 	//
 	// example:
 	//
-	// all
+	// rds_apsaradb_ha
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 

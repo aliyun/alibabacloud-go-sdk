@@ -23,19 +23,19 @@ type iDescribeInstancesResponseBody interface {
 
 type DescribeInstancesResponseBody struct {
 	Instances *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number of the instance list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -175,6 +175,7 @@ type DescribeInstancesResponseBodyInstancesKVStoreInstance struct {
 	Port                *int64                                                     `json:"Port,omitempty" xml:"Port,omitempty"`
 	PrivateIp           *string                                                    `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
 	QPS                 *int64                                                     `json:"QPS,omitempty" xml:"QPS,omitempty"`
+	QuotaCount          *int64                                                     `json:"QuotaCount,omitempty" xml:"QuotaCount,omitempty"`
 	ReadOnlyCount       *string                                                    `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
 	RegionId            *string                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReplacateId         *string                                                    `json:"ReplacateId,omitempty" xml:"ReplacateId,omitempty"`
@@ -186,6 +187,7 @@ type DescribeInstancesResponseBodyInstancesKVStoreInstance struct {
 	SlaveReadOnlyCount  *int32                                                     `json:"SlaveReadOnlyCount,omitempty" xml:"SlaveReadOnlyCount,omitempty"`
 	SlaveReplicaCount   *int32                                                     `json:"SlaveReplicaCount,omitempty" xml:"SlaveReplicaCount,omitempty"`
 	Tags                *DescribeInstancesResponseBodyInstancesKVStoreInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UsedCount           *int64                                                     `json:"UsedCount,omitempty" xml:"UsedCount,omitempty"`
 	UserName            *string                                                    `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	VSwitchId           *string                                                    `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcId               *string                                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -317,6 +319,10 @@ func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) GetQPS() *int64 
 	return s.QPS
 }
 
+func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) GetQuotaCount() *int64 {
+	return s.QuotaCount
+}
+
 func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) GetReadOnlyCount() *string {
 	return s.ReadOnlyCount
 }
@@ -359,6 +365,10 @@ func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) GetSlaveReplicaC
 
 func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) GetTags() *DescribeInstancesResponseBodyInstancesKVStoreInstanceTags {
 	return s.Tags
+}
+
+func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) GetUsedCount() *int64 {
+	return s.UsedCount
 }
 
 func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) GetUserName() *string {
@@ -526,6 +536,11 @@ func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetQPS(v int64) 
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetQuotaCount(v int64) *DescribeInstancesResponseBodyInstancesKVStoreInstance {
+	s.QuotaCount = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetReadOnlyCount(v string) *DescribeInstancesResponseBodyInstancesKVStoreInstance {
 	s.ReadOnlyCount = &v
 	return s
@@ -578,6 +593,11 @@ func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetSlaveReplicaC
 
 func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetTags(v *DescribeInstancesResponseBodyInstancesKVStoreInstanceTags) *DescribeInstancesResponseBodyInstancesKVStoreInstance {
 	s.Tags = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetUsedCount(v int64) *DescribeInstancesResponseBodyInstancesKVStoreInstance {
+	s.UsedCount = &v
 	return s
 }
 

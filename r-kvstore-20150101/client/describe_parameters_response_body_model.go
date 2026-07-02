@@ -23,19 +23,19 @@ type iDescribeParametersResponseBody interface {
 
 type DescribeParametersResponseBody struct {
 	ConfigParameters *DescribeParametersResponseBodyConfigParameters `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Struct"`
-	// The database engine that the instance runs.
+	// The database type.
 	//
 	// example:
 	//
 	// redis
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance.
+	// The database engine version.
 	//
 	// example:
 	//
 	// 4.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

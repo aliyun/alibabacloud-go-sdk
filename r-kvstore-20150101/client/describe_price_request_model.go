@@ -138,7 +138,7 @@ type DescribePriceRequest struct {
 	//
 	// example:
 	//
-	// Instances=[{"RegionId": "cn-hangzhou","ZoneId": "cn-hangzhou-b","InstanceClass": "redis.master.small.default","Period": "1","Quantity": "1","Capacity": "4096"}]
+	// [{"RegionId": "cn-hangzhou","ZoneId": "cn-hangzhou-b","ShardClass": "tair.scm.with.proxy.standard.2m.8d","ShardCount": "3","Period": "1","Quantity": "1"}]
 	Instances *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
 	// The node type. Valid values:
 	//
@@ -198,8 +198,15 @@ type DescribePriceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecondaryZoneId      *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The ID of the secondary zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) API to query it.
+	//
+	// > The values passed for this parameter and the ZoneId parameter must be different.
+	//
+	// example:
+	//
+	// cn-hangzhou-g
+	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The number of data shards in the cloud-native cluster instance.
 	//
 	// example:

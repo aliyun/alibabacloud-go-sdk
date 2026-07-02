@@ -26,6 +26,11 @@ type iCreateBackupRequest interface {
 }
 
 type CreateBackupRequest struct {
+	// The expiration period of this manual backup, in days. Valid values range from 7 to 730. If you specify -1, the backup data will not expire during the instance lifetime. If you do not specify a value (default), the expiration period follows the current automatic backup policy.
+	//
+	// example:
+	//
+	// 60
 	BackupRetentionPeriod *int64 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// The ID of the instance.
 	//

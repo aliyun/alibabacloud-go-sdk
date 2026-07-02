@@ -600,7 +600,7 @@ type DescribePriceResponseBodyOrderDepreciateInfoContractActivity struct {
 	//
 	// example:
 	//
-	// contract promotion_order_xxx discount
+	// 合同优惠_整单_xxx折
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
 	// The preferential price.
 	FinalFee *float64 `json:"FinalFee,omitempty" xml:"FinalFee,omitempty"`

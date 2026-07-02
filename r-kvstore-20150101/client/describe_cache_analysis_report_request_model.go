@@ -56,7 +56,7 @@ type DescribeCacheAnalysisReportRequest struct {
 	//
 	// example:
 	//
-	// -bp1zxszhcgatnx****
+	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the child node in the cluster instance.
 	//
@@ -64,7 +64,7 @@ type DescribeCacheAnalysisReportRequest struct {
 	//
 	// example:
 	//
-	// -bp1zxszhcgatnx****-db-0
+	// r-bp1zxszhcgatnx****-db-0
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

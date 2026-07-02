@@ -121,7 +121,7 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 2018-07-15 23:59:59
+	// 2023-02-24T06:00:11Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// The database type of the instance. The return value is **Redis**.
 	//
@@ -133,13 +133,13 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 2018-07-19 23:59:59
+	// 2023-03-29T13:59:59Z
 	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
 	// The ID of the O&M task.
 	//
 	// example:
 	//
-	// 114111
+	// 1****1
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the instance.
 	//
@@ -151,7 +151,7 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 2018-07-19 14:00:00
+	// 2023-02-24T08:18:53Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss	- format.
 	//
@@ -169,7 +169,7 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 2018-07-19 10:00:00
+	// 2023-03-20T02:40:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The state of the O&M task. Valid values:
 	//
@@ -193,7 +193,7 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 2018-07-19 14:00:00
+	// 2023-03-20T03:10:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	// The type of the task. Valid values:
 	//

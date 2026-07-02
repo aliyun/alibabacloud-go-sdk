@@ -42,62 +42,96 @@ type iCreateTairSkvDdbTableResponseBody interface {
 }
 
 type CreateTairSkvDdbTableResponseBody struct {
+	// The bandwidth limit of the instance. Unit: MB/s.
+	//
 	// example:
 	//
 	// 96
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - PrePaid: subscription.
+	//
+	// - PostPaid: pay-as-you-go.
+	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The detailed configuration of the instance in JSON format. For more information about the parameters, see [Parameter settings](https://help.aliyun.com/document_detail/43885.html).
+	//
 	// example:
 	//
 	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The internal endpoint of the Redis instance.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx**.redis.rds.aliyuncs.com
 	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
+	// The maximum number of connections supported by the instance.
+	//
 	// example:
 	//
 	// 10000
 	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
+	// The globally unique instance ID.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx*
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The current status of the instance. The value is fixed to Creating.
+	//
 	// example:
 	//
 	// Creating
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 20741011111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The Redis service port.
+	//
 	// example:
 	//
 	// 6379
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The queries per second (QPS). This value is the theoretical value for the current instance specification.
+	//
 	// example:
 	//
 	// 100000
 	QPS *int64 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2D9F3768-EDA9-4811-943E-42C8006E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// apitest
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the task flow that is executed for the creation.
+	//
 	// example:
 	//
 	// 11111****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The zone ID of the instance.
+	//
 	// example:
 	//
 	// cn-hangzhou-b

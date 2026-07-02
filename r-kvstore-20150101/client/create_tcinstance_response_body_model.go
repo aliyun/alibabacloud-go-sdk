@@ -18,19 +18,9 @@ type iCreateTCInstanceResponseBody interface {
 }
 
 type CreateTCInstanceResponseBody struct {
-	// example:
-	//
-	// tc-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 22179******0904
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// example:
-	//
-	// 561AFBF1-BE20-44DB-9BD1-6988B53E****
+	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -68,109 +68,34 @@ type iDescribeTairKVCacheCustomInstanceAttributeResponseBody interface {
 }
 
 type DescribeTairKVCacheCustomInstanceAttributeResponseBody struct {
-	// example:
-	//
-	// tair_custom
-	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	// example:
-	//
-	// PrePaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// example:
-	//
-	// 2
-	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// example:
-	//
-	// 2024-02-21T08:23Z
-	CreateTime *string                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Disks      *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
-	// example:
-	//
-	// 2024-05-28T00:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// m-bp10k5694v6yfevajw**
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// example:
-	//
-	// tair.gpu.test.16g
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// example:
-	//
-	// tc-bp1zxszhcgatnx****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// newinstancename
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// example:
-	//
-	// Normal
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// example:
-	//
-	// TairCustom
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// example:
-	//
-	// true
-	IsOrderCompleted *bool `json:"IsOrderCompleted,omitempty" xml:"IsOrderCompleted,omitempty"`
-	// example:
-	//
-	// 262144
-	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// example:
-	//
-	// VPC
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// example:
-	//
-	// 172.16.49.***
-	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// 2BE6E619-A657-42E3-AD2D-18F8428A****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// rg-acfmyiu4ekp****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// example:
-	//
-	// sg-bpcfmyiu4ekp****
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// example:
-	//
-	// 60
-	Storage *int64 `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// example:
-	//
-	// essd_pl1
-	StorageType *string                                                     `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Tags        *DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	UseEni      *bool                                                       `json:"UseEni,omitempty" xml:"UseEni,omitempty"`
-	// example:
-	//
-	// vsw-bp1e7clcw529l773d****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// example:
-	//
-	// vpc-bp1nme44gek34slfc****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// example:
-	//
-	// singlezone
-	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+	ArchitectureType *string                                                      `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	ChargeType       *string                                                      `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Cpu              *int64                                                       `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreateTime       *string                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Disks            *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
+	EndTime          *string                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ImageId          *string                                                      `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceClass    *string                                                      `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceId       *string                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName     *string                                                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceStatus   *string                                                      `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceType     *string                                                      `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IsOrderCompleted *bool                                                        `json:"IsOrderCompleted,omitempty" xml:"IsOrderCompleted,omitempty"`
+	Memory           *int64                                                       `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NetworkType      *string                                                      `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	PrivateIp        *string                                                      `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	RegionId         *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId        *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId  *string                                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupId  *string                                                      `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Storage          *int64                                                       `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	StorageType      *string                                                      `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags             *DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UseEni           *bool                                                        `json:"UseEni,omitempty" xml:"UseEni,omitempty"`
+	VSwitchId        *string                                                      `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId            *string                                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId           *string                                                      `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneType         *string                                                      `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
 func (s DescribeTairKVCacheCustomInstanceAttributeResponseBody) String() string {

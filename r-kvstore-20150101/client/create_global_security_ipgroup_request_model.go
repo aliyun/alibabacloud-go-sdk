@@ -38,7 +38,7 @@ type CreateGlobalSecurityIPGroupRequest struct {
 	//
 	// example:
 	//
-	// 111.175.56.206,47.253.88.168,111.181.0.162
+	// 192.168.0.1,10.10.10.10,172.16.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the IP whitelist template. The name must meet the following requirements:
 	//

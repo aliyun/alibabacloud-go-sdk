@@ -64,7 +64,7 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	//
 	// example:
 	//
-	// standardredis
+	// standardredis123
 	NewConnectionString *string `json:"NewConnectionString,omitempty" xml:"NewConnectionString,omitempty"`
 	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

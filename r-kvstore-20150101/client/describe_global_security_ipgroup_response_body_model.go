@@ -16,9 +16,9 @@ type iDescribeGlobalSecurityIPGroupResponseBody interface {
 }
 
 type DescribeGlobalSecurityIPGroupResponseBody struct {
-	// The information about the IP whitelist template.
+	// An array of global IP whitelist templates.
 	GlobalSecurityIPGroup []*DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,29 +66,29 @@ func (s *DescribeGlobalSecurityIPGroupResponseBody) Validate() error {
 }
 
 type DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
-	// The IDs of the instances that are associated with the IP whitelist template.
+	// An array of instance IDs that are associated with the global IP whitelist template.
 	DBInstances []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
-	// The IP address in the IP whitelist template.
+	// The IP addresses in the global IP whitelist template.
 	//
-	// >  Multiple IP addresses are separated by commas (,).
+	// > Separate multiple IP addresses with a comma.
 	//
 	// example:
 	//
-	// 125.38.177.62,221.197.232.185
+	// 192.168.0.1,10.10.10.10
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
-	// The name of the IP whitelist template.
+	// The name of the global IP whitelist template.
 	//
 	// example:
 	//
 	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
-	// The ID of the IP whitelist template.
+	// The ID of the global IP whitelist template.
 	//
 	// example:
 	//
 	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// example:
 	//

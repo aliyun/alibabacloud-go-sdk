@@ -41,7 +41,7 @@ type DescribeTairKVCacheInferInstancesResponseBody struct {
 	//
 	// CD225838-7069-5CE4-89E1-67B83AC149C8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned records.
+	// The total number of entries.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iModifyInstanceConfigResponseBody interface {
 }
 
 type ModifyInstanceConfigResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iModifyDBInstanceMonitorRequest interface {
 }
 
 type ModifyDBInstanceMonitorRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type ModifyDBInstanceMonitorRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The interval at which monitoring data is collected. Valid values: 5 and 60. Unit: seconds.
+	// This parameter is deprecated. The monitoring granularity is fixed at 60 seconds.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 5
+	// 60
 	Interval             *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

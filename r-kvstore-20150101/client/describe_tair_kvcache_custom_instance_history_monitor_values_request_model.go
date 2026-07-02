@@ -37,43 +37,19 @@ type iDescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest interface {
 
 type DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2024-09-20T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// {\\"extend\\":{\\"workers\\":\\"avg_dispatchers\\"}}
 	Express *string `json:"Express,omitempty" xml:"Express,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// tc-bp1zxszhcgatnx****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// 1000
-	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
-	// example:
-	//
-	// CPUUtilization
-	MetricName   *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// example:
-	//
-	// 60
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Length               *string `json:"Length,omitempty" xml:"Length,omitempty"`
+	MetricName           *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Period               *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2024-09-05T08:49:27Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

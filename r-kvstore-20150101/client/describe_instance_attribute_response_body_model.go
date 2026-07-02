@@ -17,7 +17,7 @@ type iDescribeInstanceAttributeResponseBody interface {
 
 type DescribeInstanceAttributeResponseBody struct {
 	Instances *DescribeInstanceAttributeResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

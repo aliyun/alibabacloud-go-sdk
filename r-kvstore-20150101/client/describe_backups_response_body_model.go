@@ -30,50 +30,55 @@ type iDescribeBackupsResponseBody interface {
 }
 
 type DescribeBackupsResponseBody struct {
-	// The following parameters are no longer used. Ignore the parameters.
+	// This parameter is deprecated.
 	AccessDeniedDetail *DescribeBackupsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	Backups            *DescribeBackupsResponseBodyBackups            `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
-	// This parameter does not take effect. Ignore this parameter.
+	// Details about the backup sets.
+	Backups *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
+	// <props="china">The free backup quota for the instance, in bytes. The free quota is equal to the default memory size of the instance type. For more information, see [Changes to the free backup quota policy](https://help.aliyun.com/document_detail/2664017.html).
+	//
+	// Full backups and log backups share this free quota. When the instance type is changed, the free quota also changes.
+	//
+	// <props="intl">This parameter is not in effect. Ignore this parameter.
 	//
 	// example:
 	//
 	// 100000
 	FreeSize *int64 `json:"FreeSize,omitempty" xml:"FreeSize,omitempty"`
-	// The size of the full backup file of the instance. Unit: bytes. Full backups originate from scheduled backups, manual backups, and backups generated during cache analysis.
+	// The total size of full backups for the instance, in bytes. Full backups are generated from scheduled daily backups, manual backups, or cache analysis.
 	//
-	// >  The value of this parameter is independent of the number and size of the returned backup sets. Instead, it reflects the total size of all valid full backups of the instance.
+	// > This value represents the total size of all valid full backups for the instance, regardless of the backup sets returned in this request.
 	//
 	// example:
 	//
 	// 1000
 	FullStorageSize *int64 `json:"FullStorageSize,omitempty" xml:"FullStorageSize,omitempty"`
-	// The size of the log backup file of the instance. Unit: bytes. This value is valid only when flashback is enabled.
+	// The total size of log backups for the instance, in bytes. This parameter is returned only if flashback is enabled.
 	//
-	// >  The value of this parameter is independent of the number and size of the returned backup sets. Instead, it reflects the total size of all valid log backups of the instance.
+	// > This value represents the total size of all valid log backups for the instance, regardless of the backup sets returned in this request.
 	//
 	// example:
 	//
 	// 5000
 	LogStorageSize *int64 `json:"LogStorageSize,omitempty" xml:"LogStorageSize,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 963C20F0-7CE1-4591-AAF3-6F3CD1CE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of backup files that were returned.
+	// The total number of backup sets.
 	//
 	// example:
 	//
@@ -185,47 +190,47 @@ func (s *DescribeBackupsResponseBody) Validate() error {
 }
 
 type DescribeBackupsResponseBodyAccessDeniedDetail struct {
-	// This parameter is no longer used. Ignore this parameter.
+	// This parameter is deprecated.
 	//
 	// example:
 	//
-	// _
+	// -
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// This parameter is deprecated.
 	//
 	// example:
 	//
-	// _
+	// -
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// This parameter is deprecated.
 	//
 	// example:
 	//
-	// _
+	// -
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// This parameter is deprecated.
 	//
 	// example:
 	//
-	// _
+	// -
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// This parameter is deprecated.
 	//
 	// example:
 	//
-	// _
+	// -
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// This parameter is deprecated.
 	//
 	// example:
 	//
-	// _
+	// -
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// This parameter is no longer used. Ignore this parameter.
+	// This parameter is deprecated.
 	//
 	// example:
 	//
-	// _
+	// -
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 

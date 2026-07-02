@@ -42,7 +42,7 @@ type ModifyTaskInfoRequest struct {
 	//
 	// example:
 	//
-	// {\\"recoverMode\\":\\"immediate\\"}
+	// {"recoverMode":"immediate"}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
 	// The ID of the region where the instance is deployed.
 	//
@@ -59,7 +59,7 @@ type ModifyTaskInfoRequest struct {
 	//
 	// example:
 	//
-	// exec_task
+	// do_pause
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
 	// The action name. Set the value to **modifySwitchTime**. The value specifies that you want to change the switching time or restoration time.
 	//

@@ -18,18 +18,9 @@ type iRestartTairKVCacheCustomInstanceResponseBody interface {
 }
 
 type RestartTairKVCacheCustomInstanceResponseBody struct {
-	// example:
-	//
-	// tc-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// 5D622714-AEDD-4609-9167-F5DDD3D1****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 578678678
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RestartTairKVCacheCustomInstanceResponseBody) String() string {

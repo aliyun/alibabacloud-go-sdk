@@ -63,6 +63,36 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-zhengzhou-nebula-1":       dara.String("r-kvstore.aliyuncs.com"),
 		"eu-west-1-oxs":               dara.String("r-kvstore.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("r-kvstore.aliyuncs.com"),
+		"us-west-1":                   dara.String("r-kvstore.us-west-1.aliyuncs.com"),
+		"us-southeast-1":              dara.String("r-kvstore.us-southeast-1.aliyuncs.com"),
+		"us-east-1":                   dara.String("r-kvstore.us-east-1.aliyuncs.com"),
+		"na-south-1":                  dara.String("r-kvstore.na-south-1.aliyuncs.com"),
+		"me-east-1":                   dara.String("r-kvstore.me-east-1.aliyuncs.com"),
+		"me-central-1":                dara.String("r-kvstore.me-central-1.aliyuncs.com"),
+		"eu-west-1":                   dara.String("r-kvstore.eu-west-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("r-kvstore.eu-central-1.aliyuncs.com"),
+		"cn-zhengzhou-jva":            dara.String("r-kvstore.cn-zhengzhou-jva.aliyuncs.com"),
+		"cn-zhangjiakou":              dara.String("r-kvstore.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wuhan-lr":                 dara.String("r-kvstore.cn-wuhan-lr.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       dara.String("r-kvstore.cn-shenzhen-finance-1.aliyuncs.com"),
+		"cn-shenzhen":                 dara.String("r-kvstore.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1":       dara.String("r-kvstore.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-nanjing":                  dara.String("r-kvstore.cn-nanjing.aliyuncs.com"),
+		"cn-huhehaote":                dara.String("r-kvstore.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":                 dara.String("r-kvstore.cn-hongkong.aliyuncs.com"),
+		"cn-guangzhou":                dara.String("r-kvstore.cn-guangzhou.aliyuncs.com"),
+		"cn-fuzhou":                   dara.String("r-kvstore.cn-fuzhou.aliyuncs.com"),
+		"cn-chengdu":                  dara.String("r-kvstore.cn-chengdu.aliyuncs.com"),
+		"cn-beijing-finance-1":        dara.String("r-kvstore.cn-beijing-finance-1.aliyuncs.com"),
+		"ap-southeast-7":              dara.String("r-kvstore.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-6":              dara.String("r-kvstore.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-5":              dara.String("r-kvstore.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":              dara.String("r-kvstore.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-2":              dara.String("r-kvstore.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-1":              dara.String("r-kvstore.ap-southeast-1.aliyuncs.com"),
+		"ap-south-1":                  dara.String("r-kvstore.ap-south-1.aliyuncs.com"),
+		"ap-northeast-2":              dara.String("r-kvstore.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1":              dara.String("r-kvstore.ap-northeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -631,17 +661,17 @@ func (client *Client) CheckCloudResourceAuthorized(request *CheckCloudResourceAu
 
 // Summary:
 //
-// Creates an account that has specific permissions for a Tair (Redis OSS-compatible) instance.
+// Create an account for an ApsaraDB for Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
-//	  This operation is supported only for instances that are compatible with Redis 4.0 or later.
+// This API supports only instances compatible with Redis 4.0 or later versions.
 //
-//		- The instance must be in the running state.
+//   - The instance must be in the running status to use this API.
 //
-//		- You can create up to 18 accounts for an instance.
+//   - You can create up to 18 accounts for an instance.
 //
-// >  For more information about how to create an account in the console, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
+// > For the corresponding console operation, see [Account Management](https://help.aliyun.com/document_detail/92665.html).
 //
 // @param request - CreateAccountRequest
 //
@@ -729,17 +759,17 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 
 // Summary:
 //
-// Creates an account that has specific permissions for a Tair (Redis OSS-compatible) instance.
+// Create an account for an ApsaraDB for Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
-//	  This operation is supported only for instances that are compatible with Redis 4.0 or later.
+// This API supports only instances compatible with Redis 4.0 or later versions.
 //
-//		- The instance must be in the running state.
+//   - The instance must be in the running status to use this API.
 //
-//		- You can create up to 18 accounts for an instance.
+//   - You can create up to 18 accounts for an instance.
 //
-// >  For more information about how to create an account in the console, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
+// > For the corresponding console operation, see [Account Management](https://help.aliyun.com/document_detail/92665.html).
 //
 // @param request - CreateAccountRequest
 //
@@ -757,11 +787,11 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 
 // Summary:
 //
-// Backs up a Tair (Redis OSS-compatible) instance.
+// Create a data backup for an ApsaraDB Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
-// You can also back up an instance in the Tair (Redis OSS-compatible) console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
+// For the corresponding console operation of this API, see [backup and recovery](https://help.aliyun.com/document_detail/43886.html).
 //
 // @param request - CreateBackupRequest
 //
@@ -829,11 +859,11 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 
 // Summary:
 //
-// Backs up a Tair (Redis OSS-compatible) instance.
+// Create a data backup for an ApsaraDB Tair (Redis OSS-compatible) instance.
 //
 // Description:
 //
-// You can also back up an instance in the Tair (Redis OSS-compatible) console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
+// For the corresponding console operation of this API, see [backup and recovery](https://help.aliyun.com/document_detail/43886.html).
 //
 // @param request - CreateBackupRequest
 //
@@ -941,17 +971,17 @@ func (client *Client) CreateCacheAnalysisTask(request *CreateCacheAnalysisTaskRe
 
 // Summary:
 //
-// Converts an existing Tair DRAM-based classic instance to the first child instance of a distributed instance.
+// Converts an existing classic Tair memory-enhanced instance into the first sub-instance of a distributed instance.
 //
 // Description:
 //
-// You can call this operation to convert an existing instance to the first child instance of a distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
+// This operation converts an existing instance into the first sub-instance of a distributed instance. The conversion also creates the distributed instance. The source instance must meet the following requirements:
 //
-//   - The instance that you want to convert must be a Tair [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses the classic deployment mode.
+// - The source instance must be a classic Tair [memory-enhanced](https://help.aliyun.com/document_detail/126164.html) instance.
 //
-//   - If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](https://help.aliyun.com/document_detail/150047.html).
+// - If the source instance uses the cluster architecture, you must disable the direct connection mode. For more information, see [ReleasePublicConnection](https://help.aliyun.com/document_detail/150047.html).
 //
-// >  You can also call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
+// > Alternatively, you can call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation to create a new instance to use as the first sub-instance. This action also creates the distributed instance.
 //
 // @param request - CreateGlobalDistributeCacheRequest
 //
@@ -1023,17 +1053,17 @@ func (client *Client) CreateGlobalDistributeCacheWithOptions(request *CreateGlob
 
 // Summary:
 //
-// Converts an existing Tair DRAM-based classic instance to the first child instance of a distributed instance.
+// Converts an existing classic Tair memory-enhanced instance into the first sub-instance of a distributed instance.
 //
 // Description:
 //
-// You can call this operation to convert an existing instance to the first child instance of a distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
+// This operation converts an existing instance into the first sub-instance of a distributed instance. The conversion also creates the distributed instance. The source instance must meet the following requirements:
 //
-//   - The instance that you want to convert must be a Tair [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses the classic deployment mode.
+// - The source instance must be a classic Tair [memory-enhanced](https://help.aliyun.com/document_detail/126164.html) instance.
 //
-//   - If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](https://help.aliyun.com/document_detail/150047.html).
+// - If the source instance uses the cluster architecture, you must disable the direct connection mode. For more information, see [ReleasePublicConnection](https://help.aliyun.com/document_detail/150047.html).
 //
-// >  You can also call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
+// > Alternatively, you can call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation to create a new instance to use as the first sub-instance. This action also creates the distributed instance.
 //
 // @param request - CreateGlobalDistributeCacheRequest
 //
@@ -1145,15 +1175,15 @@ func (client *Client) CreateGlobalSecurityIPGroup(request *CreateGlobalSecurityI
 
 // Summary:
 //
-// Creates a Tair (Redis OSS-compatible) instance. If you want to create a Tair (Enterprise Edition) cloud-native instance, you can call the CreateTairInstance operation.
+// Create a Redis (open-source) instance with a classic or cloud-native architecture, or a Tair memory-optimized instance with a classic architecture. To create a Tair instance with a cloud-native architecture, use the `CreateTairInstance` API.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+// Before you call this API, make sure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Tair.
 //
-// You can call this operation to create a Tair (Redis OSS-compatible) instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation.
+// This API is used to create a Redis Community Edition instance or a Tair Memory Type (Classic) instance. To create a Tair Cloud-native Edition instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) API.
 //
-// > For more information about how to create an instance that meets your requirements in the Tair (Redis OSS-compatible) console, see [Step 1: Create an instance](https://help.aliyun.com/document_detail/26351.html).
+// > For instructions on how to perform this operation in the console and for guidance on instance selection, see [Create a Redis instance](https://help.aliyun.com/document_detail/26351.html).
 //
 // @param request - CreateInstanceRequest
 //
@@ -1250,6 +1280,14 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !dara.IsNil(request.InstanceType) {
 		query["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.MaintainEndTime) {
+		query["MaintainEndTime"] = request.MaintainEndTime
+	}
+
+	if !dara.IsNil(request.MaintainStartTime) {
+		query["MaintainStartTime"] = request.MaintainStartTime
 	}
 
 	if !dara.IsNil(request.NetworkType) {
@@ -1389,15 +1427,15 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 // Summary:
 //
-// Creates a Tair (Redis OSS-compatible) instance. If you want to create a Tair (Enterprise Edition) cloud-native instance, you can call the CreateTairInstance operation.
+// Create a Redis (open-source) instance with a classic or cloud-native architecture, or a Tair memory-optimized instance with a classic architecture. To create a Tair instance with a cloud-native architecture, use the `CreateTairInstance` API.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+// Before you call this API, make sure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Tair.
 //
-// You can call this operation to create a Tair (Redis OSS-compatible) instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation.
+// This API is used to create a Redis Community Edition instance or a Tair Memory Type (Classic) instance. To create a Tair Cloud-native Edition instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) API.
 //
-// > For more information about how to create an instance that meets your requirements in the Tair (Redis OSS-compatible) console, see [Step 1: Create an instance](https://help.aliyun.com/document_detail/26351.html).
+// > For instructions on how to perform this operation in the console and for guidance on instance selection, see [Create a Redis instance](https://help.aliyun.com/document_detail/26351.html).
 //
 // @param request - CreateInstanceRequest
 //
@@ -1415,17 +1453,101 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// Creates multiple Tair (Redis OSS-compatible) instances at a time.
+// 创建实例多VIP
+//
+// @param request - CreateInstanceMultiVIPRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceMultiVIPResponse
+func (client *Client) CreateInstanceMultiVIPWithOptions(request *CreateInstanceMultiVIPRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceMultiVIPResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddCount) {
+		query["AddCount"] = request.AddCount
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInstanceMultiVIP"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInstanceMultiVIPResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建实例多VIP
+//
+// @param request - CreateInstanceMultiVIPRequest
+//
+// @return CreateInstanceMultiVIPResponse
+func (client *Client) CreateInstanceMultiVIP(request *CreateInstanceMultiVIPRequest) (_result *CreateInstanceMultiVIPResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateInstanceMultiVIPResponse{}
+	_body, _err := client.CreateInstanceMultiVIPWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates classic edition instances of ApsaraDB for Tair (Redis-compatible) in a batch.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+// Before calling this API, review the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Tair (Redis-compatible).
 //
-// >  You can call this operation to create classic Redis Open-Source Edition instances or classic Tair DRAM-based instances. We recommend that you use an API operation for creating a single instance:
+// \\> This API supports only creating Classic Edition instances.
 //
-//   - [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates a Redis Open-Source instance or a classic Tair DRAM-based instance.
+// To create a single instance, use one of the following APIs:
 //
-//   - [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair (Enterprise Edition) instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
+// \\> - [CreateInstance](https://help.aliyun.com/document_detail/473757.html): Creates open source Redis instances or DRAM-based Classic Edition instances of Tair.
+//
+// \\> - [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): Creates Cloud-native Edition instances of Tair, including DRAM-based, persistent memory-optimized, and ESSD-based instances.
 //
 // @param request - CreateInstancesRequest
 //
@@ -1521,17 +1643,19 @@ func (client *Client) CreateInstancesWithOptions(request *CreateInstancesRequest
 
 // Summary:
 //
-// Creates multiple Tair (Redis OSS-compatible) instances at a time.
+// Creates classic edition instances of ApsaraDB for Tair (Redis-compatible) in a batch.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+// Before calling this API, review the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Tair (Redis-compatible).
 //
-// >  You can call this operation to create classic Redis Open-Source Edition instances or classic Tair DRAM-based instances. We recommend that you use an API operation for creating a single instance:
+// \\> This API supports only creating Classic Edition instances.
 //
-//   - [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates a Redis Open-Source instance or a classic Tair DRAM-based instance.
+// To create a single instance, use one of the following APIs:
 //
-//   - [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair (Enterprise Edition) instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
+// \\> - [CreateInstance](https://help.aliyun.com/document_detail/473757.html): Creates open source Redis instances or DRAM-based Classic Edition instances of Tair.
+//
+// \\> - [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): Creates Cloud-native Edition instances of Tair, including DRAM-based, persistent memory-optimized, and ESSD-based instances.
 //
 // @param request - CreateInstancesRequest
 //
@@ -1550,6 +1674,10 @@ func (client *Client) CreateInstances(request *CreateInstancesRequest) (_result 
 // Summary:
 //
 // Creates a parameter template.
+//
+// Description:
+//
+// 参数模板仅适用于云原生部署模式实例（原云盘实例）。
 //
 // @param request - CreateParameterGroupRequest
 //
@@ -1639,6 +1767,10 @@ func (client *Client) CreateParameterGroupWithOptions(request *CreateParameterGr
 //
 // Creates a parameter template.
 //
+// Description:
+//
+// 参数模板仅适用于云原生部署模式实例（原云盘实例）。
+//
 // @param request - CreateParameterGroupRequest
 //
 // @return CreateParameterGroupResponse
@@ -1655,7 +1787,7 @@ func (client *Client) CreateParameterGroup(request *CreateParameterGroupRequest)
 
 // Summary:
 //
-// Creates a TairCustom instance.
+// 创建TairCustom实例
 //
 // @param request - CreateTCInstanceRequest
 //
@@ -1803,7 +1935,7 @@ func (client *Client) CreateTCInstanceWithOptions(request *CreateTCInstanceReque
 
 // Summary:
 //
-// Creates a TairCustom instance.
+// 创建TairCustom实例
 //
 // @param request - CreateTCInstanceRequest
 //
@@ -1821,19 +1953,19 @@ func (client *Client) CreateTCInstance(request *CreateTCInstanceRequest) (_resul
 
 // Summary:
 //
-// Creates a Tair (Enterprise Edition) cloud-native instance.
+// Create a cloud-native Tair Enterprise Edition instance.
 //
 // Description:
 //
-// For information about instance selection, see [Instructions for selecting an appropriate Tair (Redis OSS-compatible) instance](https://help.aliyun.com/document_detail/223808.html).
+// For information about instance selection, see [ApsaraDB for Tair (Redis-compatible) instance selection guide](https://help.aliyun.com/document_detail/223808.html).
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+// Before you call this API, ensure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) for ApsaraDB for Tair (Redis-compatible).
+//
+// > - To create an instance in the console, see [Create a Tair instance](https://help.aliyun.com/document_detail/26351.html).
 //
 // >
 //
-//   - For information about how to create an instance in the console, see [Step 1: Create an instance](https://help.aliyun.com/document_detail/26351.html).
-//
-//   - To create other types of instances, such as Redis Open-Source Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation.
+// > - To create other instance types, such as open-source or [Tair memory-enhanced](https://help.aliyun.com/document_detail/126164.html) classic edition, call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) API.
 //
 // @param request - CreateTairInstanceRequest
 //
@@ -1922,6 +2054,14 @@ func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceR
 
 	if !dara.IsNil(request.InstanceType) {
 		query["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.MaintainEndTime) {
+		query["MaintainEndTime"] = request.MaintainEndTime
+	}
+
+	if !dara.IsNil(request.MaintainStartTime) {
+		query["MaintainStartTime"] = request.MaintainStartTime
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -2061,19 +2201,19 @@ func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceR
 
 // Summary:
 //
-// Creates a Tair (Enterprise Edition) cloud-native instance.
+// Create a cloud-native Tair Enterprise Edition instance.
 //
 // Description:
 //
-// For information about instance selection, see [Instructions for selecting an appropriate Tair (Redis OSS-compatible) instance](https://help.aliyun.com/document_detail/223808.html).
+// For information about instance selection, see [ApsaraDB for Tair (Redis-compatible) instance selection guide](https://help.aliyun.com/document_detail/223808.html).
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of Tair (Redis OSS-compatible).
+// Before you call this API, ensure you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) for ApsaraDB for Tair (Redis-compatible).
+//
+// > - To create an instance in the console, see [Create a Tair instance](https://help.aliyun.com/document_detail/26351.html).
 //
 // >
 //
-//   - For information about how to create an instance in the console, see [Step 1: Create an instance](https://help.aliyun.com/document_detail/26351.html).
-//
-//   - To create other types of instances, such as Redis Open-Source Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) operation.
+// > - To create other instance types, such as open-source or [Tair memory-enhanced](https://help.aliyun.com/document_detail/126164.html) classic edition, call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) API.
 //
 // @param request - CreateTairInstanceRequest
 //
@@ -2091,7 +2231,7 @@ func (client *Client) CreateTairInstance(request *CreateTairInstanceRequest) (_r
 
 // Summary:
 //
-// Creates a Tair VNode instance.
+// # Create a Tair VNode instance
 //
 // @param request - CreateTairKVCacheVNodeRequest
 //
@@ -2235,7 +2375,7 @@ func (client *Client) CreateTairKVCacheVNodeWithOptions(request *CreateTairKVCac
 
 // Summary:
 //
-// Creates a Tair VNode instance.
+// # Create a Tair VNode instance
 //
 // @param request - CreateTairKVCacheVNodeRequest
 //
@@ -2253,7 +2393,13 @@ func (client *Client) CreateTairKVCacheVNode(request *CreateTairKVCacheVNodeRequ
 
 // Summary:
 //
-// 创建Tair Serverless 类型实例的Workspace
+// Creates a Tair Serverless KV table instance.
+//
+// Description:
+//
+// ## Operation description
+//
+// - Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
 //
 // @param request - CreateTairSkvDdbTableRequest
 //
@@ -2349,7 +2495,13 @@ func (client *Client) CreateTairSkvDdbTableWithOptions(request *CreateTairSkvDdb
 
 // Summary:
 //
-// 创建Tair Serverless 类型实例的Workspace
+// Creates a Tair Serverless KV table instance.
+//
+// Description:
+//
+// ## Operation description
+//
+// - Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
 //
 // @param request - CreateTairSkvDdbTableRequest
 //
@@ -2367,7 +2519,15 @@ func (client *Client) CreateTairSkvDdbTable(request *CreateTairSkvDdbTableReques
 
 // Summary:
 //
-// 创建Tair Serverless 类型实例的Workspace
+// Creates a Tair Serverless KV workspace instance.
+//
+// Description:
+//
+// ## Operation description
+//
+// - Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
+//
+// - To create a Tair Serverless KV table instance, call the `CreateTairSkvDdbTable` operation.
 //
 // @param request - CreateTairSkvDdbWorkspaceRequest
 //
@@ -2467,7 +2627,15 @@ func (client *Client) CreateTairSkvDdbWorkspaceWithOptions(request *CreateTairSk
 
 // Summary:
 //
-// 创建Tair Serverless 类型实例的Workspace
+// Creates a Tair Serverless KV workspace instance.
+//
+// Description:
+//
+// ## Operation description
+//
+// - Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.htm) of ApsaraDB for Redis.
+//
+// - To create a Tair Serverless KV table instance, call the `CreateTairSkvDdbTable` operation.
 //
 // @param request - CreateTairSkvDdbWorkspaceRequest
 //
@@ -2587,7 +2755,11 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
-// Deletes a specified backup set. However, you can delete only backup sets that are manually backed up.
+// Delete the specified backup set. Only manual backup sets can be deleted.
+//
+// Description:
+//
+// This operation supports only cloud-native instances.
 //
 // @param request - DeleteBackupRequest
 //
@@ -2651,7 +2823,11 @@ func (client *Client) DeleteBackupWithOptions(request *DeleteBackupRequest, runt
 
 // Summary:
 //
-// Deletes a specified backup set. However, you can delete only backup sets that are manually backed up.
+// Delete the specified backup set. Only manual backup sets can be deleted.
+//
+// Description:
+//
+// This operation supports only cloud-native instances.
 //
 // @param request - DeleteBackupRequest
 //
@@ -2965,16 +3141,6 @@ func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest)
 //
 // Removes one or more data shards from a Tair (Redis OSS-compatible) cluster instance.
 //
-// Description:
-//
-// You can also remove data shards from an instance in the Tair (Redis OSS-compatible) console. For more information, see [Adjust the number of shards for an instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
-//
-// Before you call this operation, make sure that the instance meets the following requirements:
-//
-//   - The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/183956.html).
-//
-//   - The instance has more than one data shard.
-//
 // @param request - DeleteShardingNodeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3055,16 +3221,6 @@ func (client *Client) DeleteShardingNodeWithOptions(request *DeleteShardingNodeR
 //
 // Removes one or more data shards from a Tair (Redis OSS-compatible) cluster instance.
 //
-// Description:
-//
-// You can also remove data shards from an instance in the Tair (Redis OSS-compatible) console. For more information, see [Adjust the number of shards for an instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
-//
-// Before you call this operation, make sure that the instance meets the following requirements:
-//
-//   - The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/183956.html).
-//
-//   - The instance has more than one data shard.
-//
 // @param request - DeleteShardingNodeRequest
 //
 // @return DeleteShardingNodeResponse
@@ -3081,11 +3237,7 @@ func (client *Client) DeleteShardingNode(request *DeleteShardingNodeRequest) (_r
 
 // Summary:
 //
-// Queries a specified account of a Tair (Redis OSS-compatible) instance.
-//
-// Description:
-//
-// >  Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
+// Queries information about a specific account in a specified ApsaraDB for Redis (Tair-compatible) instance.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -3153,11 +3305,7 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 
 // Summary:
 //
-// Queries a specified account of a Tair (Redis OSS-compatible) instance.
-//
-// Description:
-//
-// >  Only Tair (Redis OSS-compatible) instances of Redis 4.0 or later are supported.
+// Queries information about a specific account in a specified ApsaraDB for Redis (Tair-compatible) instance.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -4077,7 +4225,11 @@ func (client *Client) DescribeBackupTasks(request *DescribeBackupTasksRequest) (
 
 // Summary:
 //
-// Queries the backup files of the Tair (Redis OSS-compatible) instance.
+// Queries information about backup files for a Redis-compatible ApsaraDB for Tair instance.
+//
+// Description:
+//
+// This operation does not apply to cloud-native cluster instances. Instead, use the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) operation.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -4169,7 +4321,11 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 
 // Summary:
 //
-// Queries the backup files of the Tair (Redis OSS-compatible) instance.
+// Queries information about backup files for a Redis-compatible ApsaraDB for Tair instance.
+//
+// Description:
+//
+// This operation does not apply to cloud-native cluster instances. Instead, use the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) operation.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -4427,11 +4583,11 @@ func (client *Client) DescribeCacheAnalysisReportList(request *DescribeCacheAnal
 
 // Summary:
 //
-// Queries the backup sets of a Tair (Redis OSS-compatible) cluster instance.
+// Queries the backup list of a Tair (Redis OSS-compatible) cluster instance.
 //
 // Description:
 //
-// This operation is applicable only to cloud-native instances.
+// This API is applicable only to cloud-native instances.
 //
 // @param request - DescribeClusterBackupListRequest
 //
@@ -4471,11 +4627,11 @@ func (client *Client) DescribeClusterBackupListWithOptions(request *DescribeClus
 
 // Summary:
 //
-// Queries the backup sets of a Tair (Redis OSS-compatible) cluster instance.
+// Queries the backup list of a Tair (Redis OSS-compatible) cluster instance.
 //
 // Description:
 //
-// This operation is applicable only to cloud-native instances.
+// This API is applicable only to cloud-native instances.
 //
 // @param request - DescribeClusterBackupListRequest
 //
@@ -4673,7 +4829,7 @@ func (client *Client) DescribeDBInstanceMonitor(request *DescribeDBInstanceMonit
 
 // Summary:
 //
-// Queries the network information of a Tair (Redis OSS-compatible) instance.
+// Queries the network information of an ApsaraDB for Tair instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
 //
@@ -4741,7 +4897,7 @@ func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBIn
 
 // Summary:
 //
-// Queries the network information of a Tair (Redis OSS-compatible) instance.
+// Queries the network information of an ApsaraDB for Tair instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
 //
@@ -5869,11 +6025,11 @@ func (client *Client) DescribeHistoryEventsStat(request *DescribeHistoryEventsSt
 
 // Summary:
 //
-// Queries the performance monitoring data of a Tair (Redis OSS-compatible) instance.
+// View performance monitoring data for an ApsaraDB for Tair (Redis-compatible) instance.
 //
 // Description:
 //
-// You can also query the performance monitoring data of an instance in the Tair console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
+// For the console equivalent, see [performance monitoring](https://help.aliyun.com/document_detail/43887.html).
 //
 // @param request - DescribeHistoryMonitorValuesRequest
 //
@@ -5965,11 +6121,11 @@ func (client *Client) DescribeHistoryMonitorValuesWithOptions(request *DescribeH
 
 // Summary:
 //
-// Queries the performance monitoring data of a Tair (Redis OSS-compatible) instance.
+// View performance monitoring data for an ApsaraDB for Tair (Redis-compatible) instance.
 //
 // Description:
 //
-// You can also query the performance monitoring data of an instance in the Tair console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
+// For the console equivalent, see [performance monitoring](https://help.aliyun.com/document_detail/43887.html).
 //
 // @param request - DescribeHistoryMonitorValuesRequest
 //
@@ -6207,7 +6363,7 @@ func (client *Client) DescribeHistoryTasksStat(request *DescribeHistoryTasksStat
 
 // Summary:
 //
-// Queries the attribute of Tair (Redis OSS-compatible) instances.
+// Retrieves the details of a Tair (Redis-compatible) instance.
 //
 // @param request - DescribeInstanceAttributeRequest
 //
@@ -6271,7 +6427,7 @@ func (client *Client) DescribeInstanceAttributeWithOptions(request *DescribeInst
 
 // Summary:
 //
-// Queries the attribute of Tair (Redis OSS-compatible) instances.
+// Retrieves the details of a Tair (Redis-compatible) instance.
 //
 // @param request - DescribeInstanceAttributeRequest
 //
@@ -6383,13 +6539,7 @@ func (client *Client) DescribeInstanceAutoRenewalAttribute(request *DescribeInst
 
 // Summary:
 //
-// Queries the default parameter configurations of a Tair (Redis OSS-compatible) instance.
-//
-// Description:
-//
-// This operation is available only for instances that use cloud disks.
-//
-// > You can call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation to query the parameter settings of instances that use local disks.
+// Queries some of the default configuration parameters for a Tair (Redis-compatible) instance.
 //
 // @param request - DescribeInstanceConfigRequest
 //
@@ -6453,13 +6603,7 @@ func (client *Client) DescribeInstanceConfigWithOptions(request *DescribeInstanc
 
 // Summary:
 //
-// Queries the default parameter configurations of a Tair (Redis OSS-compatible) instance.
-//
-// Description:
-//
-// This operation is available only for instances that use cloud disks.
-//
-// > You can call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation to query the parameter settings of instances that use local disks.
+// Queries some of the default configuration parameters for a Tair (Redis-compatible) instance.
 //
 // @param request - DescribeInstanceConfigRequest
 //
@@ -6468,6 +6612,92 @@ func (client *Client) DescribeInstanceConfig(request *DescribeInstanceConfigRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeInstanceConfigResponse{}
 	_body, _err := client.DescribeInstanceConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例的多 VIP 信息
+//
+// Description:
+//
+// 关于多LB，详情参见
+//
+// @param request - DescribeInstanceMultiVIPRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceMultiVIPResponse
+func (client *Client) DescribeInstanceMultiVIPWithOptions(request *DescribeInstanceMultiVIPRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceMultiVIPResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInstanceMultiVIP"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInstanceMultiVIPResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例的多 VIP 信息
+//
+// Description:
+//
+// 关于多LB，详情参见
+//
+// @param request - DescribeInstanceMultiVIPRequest
+//
+// @return DescribeInstanceMultiVIPResponse
+func (client *Client) DescribeInstanceMultiVIP(request *DescribeInstanceMultiVIPRequest) (_result *DescribeInstanceMultiVIPResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInstanceMultiVIPResponse{}
+	_body, _err := client.DescribeInstanceMultiVIPWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6677,7 +6907,7 @@ func (client *Client) DescribeInstanceTDEStatus(request *DescribeInstanceTDEStat
 
 // Summary:
 //
-// Queries the information about one or more Tair (Redis OSS-compatible) instances.
+// Queries information about one or more ApsaraDB for Redis (Tair-compatible) instances.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -6825,7 +7055,7 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 
 // Summary:
 //
-// Queries the information about one or more Tair (Redis OSS-compatible) instances.
+// Queries information about one or more ApsaraDB for Redis (Tair-compatible) instances.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -6997,11 +7227,11 @@ func (client *Client) DescribeInstancesOverview(request *DescribeInstancesOvervi
 
 // Summary:
 //
-// Queries the current bandwidth of a Tair (Redis OSS-compatible) instance.
+// Describes the current bandwidth of a Tair (Redis-compatible) instance.
 //
 // Description:
 //
-// You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation to increase the internal bandwidth of an instance.
+// You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation to purchase additional bandwidth for an instance.
 //
 // @param request - DescribeIntranetAttributeRequest
 //
@@ -7069,11 +7299,11 @@ func (client *Client) DescribeIntranetAttributeWithOptions(request *DescribeIntr
 
 // Summary:
 //
-// Queries the current bandwidth of a Tair (Redis OSS-compatible) instance.
+// Describes the current bandwidth of a Tair (Redis-compatible) instance.
 //
 // Description:
 //
-// You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation to increase the internal bandwidth of an instance.
+// You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/473771.html) operation to purchase additional bandwidth for an instance.
 //
 // @param request - DescribeIntranetAttributeRequest
 //
@@ -7091,11 +7321,11 @@ func (client *Client) DescribeIntranetAttribute(request *DescribeIntranetAttribu
 
 // Summary:
 //
-// Queries the logical topology of a Tair (Redis OSS-compatible) instance.
+// Queries the logical topology structure of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// This parameter is supported only for cluster and read/write splitting instances.
+// This operation is supported only for cluster and read/write splitting instances.
 //
 // @param request - DescribeLogicInstanceTopologyRequest
 //
@@ -7159,11 +7389,11 @@ func (client *Client) DescribeLogicInstanceTopologyWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the logical topology of a Tair (Redis OSS-compatible) instance.
+// Queries the logical topology structure of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // Description:
 //
-// This parameter is supported only for cluster and read/write splitting instances.
+// This operation is supported only for cluster and read/write splitting instances.
 //
 // @param request - DescribeLogicInstanceTopologyRequest
 //
@@ -7831,13 +8061,7 @@ func (client *Client) DescribeParameterTemplates(request *DescribeParameterTempl
 
 // Summary:
 //
-// Queries the configuration parameters and running parameters of a Tair (Redis OSS-compatible) instance.
-//
-// Description:
-//
-// This operation is applicable only to classic instances.
-//
-// >  If the instance is deployed in cloud-native mode, you can use the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the configuration and operational parameters of the instance.
+// Queries the configuration parameters and running parameters of a Tair (Redis® OSS-Compatible) instance.
 //
 // @param request - DescribeParametersRequest
 //
@@ -7909,13 +8133,7 @@ func (client *Client) DescribeParametersWithOptions(request *DescribeParametersR
 
 // Summary:
 //
-// Queries the configuration parameters and running parameters of a Tair (Redis OSS-compatible) instance.
-//
-// Description:
-//
-// This operation is applicable only to classic instances.
-//
-// >  If the instance is deployed in cloud-native mode, you can use the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the configuration and operational parameters of the instance.
+// Queries the configuration parameters and running parameters of a Tair (Redis® OSS-Compatible) instance.
 //
 // @param request - DescribeParametersRequest
 //
@@ -7933,7 +8151,7 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 
 // Summary:
 //
-// Queries the fees that you must pay when you create, upgrade, or renew a Tair (Redis OSS-compatible) instance.
+// Query the fees incurred by operations such as creation, configuration upgrade, or renewal of ApsaraDB for Tair (Redis OSS-compatible) instances.
 //
 // @param request - DescribePriceRequest
 //
@@ -8065,7 +8283,7 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 
 // Summary:
 //
-// Queries the fees that you must pay when you create, upgrade, or renew a Tair (Redis OSS-compatible) instance.
+// Query the fees incurred by operations such as creation, configuration upgrade, or renewal of ApsaraDB for Tair (Redis OSS-compatible) instances.
 //
 // @param request - DescribePriceRequest
 //
@@ -8871,7 +9089,7 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 
 // Summary:
 //
-// Queries the details of a TairKVCache instance.
+// 查看TairCustom实例
 //
 // @param request - DescribeTairKVCacheCustomInstanceAttributeRequest
 //
@@ -8911,7 +9129,7 @@ func (client *Client) DescribeTairKVCacheCustomInstanceAttributeWithOptions(requ
 
 // Summary:
 //
-// Queries the details of a TairKVCache instance.
+// 查看TairCustom实例
 //
 // @param request - DescribeTairKVCacheCustomInstanceAttributeRequest
 //
@@ -8929,7 +9147,7 @@ func (client *Client) DescribeTairKVCacheCustomInstanceAttribute(request *Descri
 
 // Summary:
 //
-// Queries the monitoring data of a Tair-KVCache instance.
+// 查询TairCustom主机监控
 //
 // @param request - DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest
 //
@@ -8969,7 +9187,7 @@ func (client *Client) DescribeTairKVCacheCustomInstanceHistoryMonitorValuesWithO
 
 // Summary:
 //
-// Queries the monitoring data of a Tair-KVCache instance.
+// 查询TairCustom主机监控
 //
 // @param request - DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest
 //
@@ -8987,7 +9205,7 @@ func (client *Client) DescribeTairKVCacheCustomInstanceHistoryMonitorValues(requ
 
 // Summary:
 //
-// Queries Tair-KVCache instances.
+// 查看TairCustom实例
 //
 // @param request - DescribeTairKVCacheCustomInstancesRequest
 //
@@ -9027,7 +9245,7 @@ func (client *Client) DescribeTairKVCacheCustomInstancesWithOptions(request *Des
 
 // Summary:
 //
-// Queries Tair-KVCache instances.
+// 查看TairCustom实例
 //
 // @param request - DescribeTairKVCacheCustomInstancesRequest
 //
@@ -9103,11 +9321,11 @@ func (client *Client) DescribeTairKVCacheInferInstanceAttribute(request *Describ
 
 // Summary:
 //
-// Queries the information of one or more Tair (Redis OSS-compatible) KVCache instances.
+// Queries information about one or more Tair KVCache instances.
 //
 // Description:
 //
-// You can call this operation to query the following Tair (Redis OSS-compatible) KVCache instances: inference operator instances, virtual cluster instances, and cache service instances.
+// This operation supports querying Tair KVCache inference operator instances, virtual cluster instances, and cache service instances.
 //
 // @param request - DescribeTairKVCacheInferInstancesRequest
 //
@@ -9147,11 +9365,11 @@ func (client *Client) DescribeTairKVCacheInferInstancesWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the information of one or more Tair (Redis OSS-compatible) KVCache instances.
+// Queries information about one or more Tair KVCache instances.
 //
 // Description:
 //
-// You can call this operation to query the following Tair (Redis OSS-compatible) KVCache instances: inference operator instances, virtual cluster instances, and cache service instances.
+// This operation supports querying Tair KVCache inference operator instances, virtual cluster instances, and cache service instances.
 //
 // @param request - DescribeTairKVCacheInferInstancesRequest
 //
@@ -9169,7 +9387,15 @@ func (client *Client) DescribeTairKVCacheInferInstances(request *DescribeTairKVC
 
 // Summary:
 //
-// 查询Tair Serverless KV DDB实例的table
+// Queries all Tair Serverless KV table instances in a specified workspace.
+//
+// Description:
+//
+// ## Operation description
+//
+// - You must specify the InstanceId parameter when you call this operation.
+//
+// - The response includes basic information about each table, such as the table ID, name, bandwidth, and maximum number of connections.
 //
 // @param request - DescribeTairSkvDdbTableRequest
 //
@@ -9233,7 +9459,15 @@ func (client *Client) DescribeTairSkvDdbTableWithOptions(request *DescribeTairSk
 
 // Summary:
 //
-// 查询Tair Serverless KV DDB实例的table
+// Queries all Tair Serverless KV table instances in a specified workspace.
+//
+// Description:
+//
+// ## Operation description
+//
+// - You must specify the InstanceId parameter when you call this operation.
+//
+// - The response includes basic information about each table, such as the table ID, name, bandwidth, and maximum number of connections.
 //
 // @param request - DescribeTairSkvDdbTableRequest
 //
@@ -9251,7 +9485,21 @@ func (client *Client) DescribeTairSkvDdbTable(request *DescribeTairSkvDdbTableRe
 
 // Summary:
 //
-// 查询Tair Serverless KV DDB实例的table schema
+// Retrieves the table schema and configuration information of a specified instance.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation queries the table schema and configuration information of a Tair Serverless KV table instance.
+//
+// - You must specify the InstanceId parameter. Set this parameter to the instance ID of the instance that you want to query.
+//
+// - The BackupId parameter specifies the backup set of the table to query.
+//
+// - The response packet includes the time-to-live (TTL) specifications and detailed table schema definition.
+//
+// To invoke this operation, see the request parameters below.
 //
 // @param request - DescribeTairSkvDdbTableSchemaRequest
 //
@@ -9319,7 +9567,21 @@ func (client *Client) DescribeTairSkvDdbTableSchemaWithOptions(request *Describe
 
 // Summary:
 //
-// 查询Tair Serverless KV DDB实例的table schema
+// Retrieves the table schema and configuration information of a specified instance.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation queries the table schema and configuration information of a Tair Serverless KV table instance.
+//
+// - You must specify the InstanceId parameter. Set this parameter to the instance ID of the instance that you want to query.
+//
+// - The BackupId parameter specifies the backup set of the table to query.
+//
+// - The response packet includes the time-to-live (TTL) specifications and detailed table schema definition.
+//
+// To invoke this operation, see the request parameters below.
 //
 // @param request - DescribeTairSkvDdbTableSchemaRequest
 //
@@ -9591,13 +9853,13 @@ func (client *Client) DestroyInstance(request *DestroyInstanceRequest) (_result 
 
 // Summary:
 //
-// Adjusts the bandwidth of a Tair (Redis OSS-compatible) instance. Only the pay-as-you-go billing method is supported for bandwidth adjustment. You need to specify the InstanceId, NodeId (optional), Bandwidth, and ChargeType parameters.
+// This operation adjusts the bandwidth for an ApsaraDB for Redis instance that uses the pay-as-you-go billing method. You need to specify only the InstanceId, NodeId (optional), Bandwidth, and ChargeType parameters.
 //
 // Description:
 //
-// If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html).
+// If auto scaling of bandwidth is enabled when you call this operation, the auto scaling feature takes precedence. When the bandwidth scales back, it reverts to the default bandwidth of the instance type. For more information about the feature\\"s limitations, billing details, and FAQ, see [Adjust instance bandwidth](https://help.aliyun.com/document_detail/102588.html).
 //
-// >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation to query the current bandwidth of each data node in an instance.
+// > Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation to query the current bandwidth for each data node of the instance.
 //
 // @param request - EnableAdditionalBandwidthRequest
 //
@@ -9701,13 +9963,13 @@ func (client *Client) EnableAdditionalBandwidthWithOptions(request *EnableAdditi
 
 // Summary:
 //
-// Adjusts the bandwidth of a Tair (Redis OSS-compatible) instance. Only the pay-as-you-go billing method is supported for bandwidth adjustment. You need to specify the InstanceId, NodeId (optional), Bandwidth, and ChargeType parameters.
+// This operation adjusts the bandwidth for an ApsaraDB for Redis instance that uses the pay-as-you-go billing method. You need to specify only the InstanceId, NodeId (optional), Bandwidth, and ChargeType parameters.
 //
 // Description:
 //
-// If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html).
+// If auto scaling of bandwidth is enabled when you call this operation, the auto scaling feature takes precedence. When the bandwidth scales back, it reverts to the default bandwidth of the instance type. For more information about the feature\\"s limitations, billing details, and FAQ, see [Adjust instance bandwidth](https://help.aliyun.com/document_detail/102588.html).
 //
-// >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation to query the current bandwidth of each data node in an instance.
+// > Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation to query the current bandwidth for each data node of the instance.
 //
 // @param request - EnableAdditionalBandwidthRequest
 //
@@ -9825,6 +10087,12 @@ func (client *Client) FlushExpireKeys(request *FlushExpireKeysRequest) (_result 
 //
 // Clears the data of a Tair (Redis OSS-compatible) instance. The cleared data cannot be restored.
 //
+// Description:
+//
+// 该API对应的控制台操作请参见[清除数据](https://help.aliyun.com/document_detail/43881.html)。
+//
+// > 调用此API删除数据前请妥善备份数据或确认数据无需备份。
+//
 // @param request - FlushInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9888,6 +10156,12 @@ func (client *Client) FlushInstanceWithOptions(request *FlushInstanceRequest, ru
 // Summary:
 //
 // Clears the data of a Tair (Redis OSS-compatible) instance. The cleared data cannot be restored.
+//
+// Description:
+//
+// 该API对应的控制台操作请参见[清除数据](https://help.aliyun.com/document_detail/43881.html)。
+//
+// > 调用此API删除数据前请妥善备份数据或确认数据无需备份。
 //
 // @param request - FlushInstanceRequest
 //
@@ -10389,6 +10663,14 @@ func (client *Client) LockDBInstanceWrite(request *LockDBInstanceWriteRequest) (
 //
 // Simulates database node failures.
 //
+// Description:
+//
+// - 调用本接口时，指定的节点会关闭。实例会自动触发主备切换，将备节点提升为主节点。
+//
+// - 模拟故障的节点会在稍后自动恢复。
+//
+// - 单节点（单副本）不支持调用本接口。
+//
 // @param request - MasterNodeShutDownFailOverRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10456,6 +10738,14 @@ func (client *Client) MasterNodeShutDownFailOverWithOptions(request *MasterNodeS
 // Summary:
 //
 // Simulates database node failures.
+//
+// Description:
+//
+// - 调用本接口时，指定的节点会关闭。实例会自动触发主备切换，将备节点提升为主节点。
+//
+// - 模拟故障的节点会在稍后自动恢复。
+//
+// - 单节点（单副本）不支持调用本接口。
 //
 // @param request - MasterNodeShutDownFailOverRequest
 //
@@ -11575,7 +11865,7 @@ func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstance
 
 // Summary:
 //
-// Modifies the monitoring granularity of a Tair (Redis OSS-compatible) instance.
+// Modifies the monitoring granularity for a Tair instance.
 //
 // @param request - ModifyDBInstanceMonitorRequest
 //
@@ -11643,7 +11933,7 @@ func (client *Client) ModifyDBInstanceMonitorWithOptions(request *ModifyDBInstan
 
 // Summary:
 //
-// Modifies the monitoring granularity of a Tair (Redis OSS-compatible) instance.
+// Modifies the monitoring granularity for a Tair instance.
 //
 // @param request - ModifyDBInstanceMonitorRequest
 //
@@ -11661,7 +11951,7 @@ func (client *Client) ModifyDBInstanceMonitor(request *ModifyDBInstanceMonitorRe
 
 // Summary:
 //
-// 事件中心修改事件信息
+// # Modify event information in Event Center
 //
 // @param request - ModifyEventInfoRequest
 //
@@ -11721,7 +12011,7 @@ func (client *Client) ModifyEventInfoWithOptions(request *ModifyEventInfoRequest
 
 // Summary:
 //
-// 事件中心修改事件信息
+// # Modify event information in Event Center
 //
 // @param request - ModifyEventInfoRequest
 //
@@ -12327,7 +12617,7 @@ func (client *Client) ModifyInstanceBandwidth(request *ModifyInstanceBandwidthRe
 
 // Summary:
 //
-// Modifies the parameter settings of a Tair (Redis OSS-compatible) instance.
+// Modifies the parameter settings of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // @param request - ModifyInstanceConfigRequest
 //
@@ -12419,7 +12709,7 @@ func (client *Client) ModifyInstanceConfigWithOptions(request *ModifyInstanceCon
 
 // Summary:
 //
-// Modifies the parameter settings of a Tair (Redis OSS-compatible) instance.
+// Modifies the parameter settings of an ApsaraDB for Tair (Redis® OSS-Compatible) database instance.
 //
 // @param request - ModifyInstanceConfigRequest
 //
@@ -12945,7 +13235,7 @@ func (client *Client) ModifyInstanceParameter(request *ModifyInstanceParameterRe
 //
 // You can also configure SSL encryption in the console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
 //
-// >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the required parameter.
+// > To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the required parameter.
 //
 // @param request - ModifyInstanceSSLRequest
 //
@@ -13019,7 +13309,7 @@ func (client *Client) ModifyInstanceSSLWithOptions(request *ModifyInstanceSSLReq
 //
 // You can also configure SSL encryption in the console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
 //
-// >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the required parameter.
+// > To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/473844.html) operation to modify the required parameter.
 //
 // @param request - ModifyInstanceSSLRequest
 //
@@ -13917,7 +14207,7 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 
 // Summary:
 //
-// Modifies the basic parameters of a Tair-KVCache instance.
+// 修改TairCustom实例基本参数
 //
 // @param request - ModifyTairKVCacheCustomInstanceAttributeRequest
 //
@@ -13989,7 +14279,7 @@ func (client *Client) ModifyTairKVCacheCustomInstanceAttributeWithOptions(reques
 
 // Summary:
 //
-// Modifies the basic parameters of a Tair-KVCache instance.
+// 修改TairCustom实例基本参数
 //
 // @param request - ModifyTairKVCacheCustomInstanceAttributeRequest
 //
@@ -14807,7 +15097,7 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 
 // Summary:
 //
-// Modifies the basic parameters of a Tair-KVCache instance.
+// 重置TairCustom上主机密码
 //
 // @param request - ResetTairKVCacheCustomInstancePasswordRequest
 //
@@ -14879,7 +15169,7 @@ func (client *Client) ResetTairKVCacheCustomInstancePasswordWithOptions(request 
 
 // Summary:
 //
-// Modifies the basic parameters of a Tair-KVCache instance.
+// 重置TairCustom上主机密码
 //
 // @param request - ResetTairKVCacheCustomInstancePasswordRequest
 //
@@ -14897,7 +15187,7 @@ func (client *Client) ResetTairKVCacheCustomInstancePassword(request *ResetTairK
 
 // Summary:
 //
-// Modifies the disk size of a Tair-KVCache instance.
+// 变配TairCustom的主机的磁盘
 //
 // @param request - ResizeTairKVCacheCustomInstanceDiskRequest
 //
@@ -14973,7 +15263,7 @@ func (client *Client) ResizeTairKVCacheCustomInstanceDiskWithOptions(request *Re
 
 // Summary:
 //
-// Modifies the disk size of a Tair-KVCache instance.
+// 变配TairCustom的主机的磁盘
 //
 // @param request - ResizeTairKVCacheCustomInstanceDiskRequest
 //
@@ -15081,7 +15371,7 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 
 // Summary:
 //
-// Restarts a Tair-KVCache instance.
+// 重启TairCustom的主机
 //
 // @param request - RestartTairKVCacheCustomInstanceRequest
 //
@@ -15145,7 +15435,7 @@ func (client *Client) RestartTairKVCacheCustomInstanceWithOptions(request *Resta
 
 // Summary:
 //
-// Restarts a Tair-KVCache instance.
+// 重启TairCustom的主机
 //
 // @param request - RestartTairKVCacheCustomInstanceRequest
 //
@@ -15163,13 +15453,13 @@ func (client *Client) RestartTairKVCacheCustomInstance(request *RestartTairKVCac
 
 // Summary:
 //
-// Restores the data in a backup file to a specified Tair (Redis OSS-compatible) instance.
+// Restores data from a specified backup file to a Tair (Redis-compatible) instance.
 //
 // Description:
 //
-//	  If your instance is a [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) or a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/183956.html) and has the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature enabled, you can call this operation to restore the entire instance or specific keys to a specific point in time accurate to the second. This way, you can achieve more fine-grained data restoration.
+// - For Tair memory-enhanced enterprise edition instances that use the classic architecture, you can restore specified keys to a point in time with precision to the second for granular data recovery.
 //
-//		- For other types of instances, we recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore the backup data to a new instance.
+// - For all other instance types, use the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore backup data to a new instance.
 //
 // @param request - RestoreInstanceRequest
 //
@@ -15253,13 +15543,13 @@ func (client *Client) RestoreInstanceWithOptions(request *RestoreInstanceRequest
 
 // Summary:
 //
-// Restores the data in a backup file to a specified Tair (Redis OSS-compatible) instance.
+// Restores data from a specified backup file to a Tair (Redis-compatible) instance.
 //
 // Description:
 //
-//	  If your instance is a [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) or a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/183956.html) and has the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature enabled, you can call this operation to restore the entire instance or specific keys to a specific point in time accurate to the second. This way, you can achieve more fine-grained data restoration.
+// - For Tair memory-enhanced enterprise edition instances that use the classic architecture, you can restore specified keys to a point in time with precision to the second for granular data recovery.
 //
-//		- For other types of instances, we recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore the backup data to a new instance.
+// - For all other instance types, use the [CreateInstance](https://help.aliyun.com/document_detail/473757.html) or [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html) operation to restore backup data to a new instance.
 //
 // @param request - RestoreInstanceRequest
 //
@@ -15277,7 +15567,7 @@ func (client *Client) RestoreInstance(request *RestoreInstanceRequest) (_result 
 
 // Summary:
 //
-// Starts a Tair-KVCache instance.
+// 启动TairCustom的主机
 //
 // @param request - StartTairKVCacheCustomInstanceRequest
 //
@@ -15341,7 +15631,7 @@ func (client *Client) StartTairKVCacheCustomInstanceWithOptions(request *StartTa
 
 // Summary:
 //
-// Starts a Tair-KVCache instance.
+// 启动TairCustom的主机
 //
 // @param request - StartTairKVCacheCustomInstanceRequest
 //
@@ -15359,7 +15649,7 @@ func (client *Client) StartTairKVCacheCustomInstance(request *StartTairKVCacheCu
 
 // Summary:
 //
-// Stops a Tair-KVCache instance.
+// 停止TairCustom的主机
 //
 // @param request - StopTairKVCacheCustomInstanceRequest
 //
@@ -15423,7 +15713,7 @@ func (client *Client) StopTairKVCacheCustomInstanceWithOptions(request *StopTair
 
 // Summary:
 //
-// Stops a Tair-KVCache instance.
+// 停止TairCustom的主机
 //
 // @param request - StopTairKVCacheCustomInstanceRequest
 //
@@ -15441,19 +15731,19 @@ func (client *Client) StopTairKVCacheCustomInstance(request *StopTairKVCacheCust
 
 // Summary:
 //
-// Performs a master-replica switchover to switch node roles. This operation is applicable to disaster recovery drills and nearby access to applications that are deployed across zones.
+// Performs a primary/secondary switchover (switches node roles). This operation can be used for disaster recovery drills and nearest access for applications in multi-zone deployment scenarios.
 //
 // Description:
 //
-// > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](https://help.aliyun.com/document_detail/164222.html).
+// > For more information about nearest access for applications in multi-zone deployment scenarios, see [Scenario examples](https://help.aliyun.com/document_detail/164222.html).
 //
-// The instance must be a Redis Open-Source Edition instance or Tair (Enterprise Edition) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
+// When you call this operation, the instance must be of the high-availability or dual-replica type.
 //
-// A call to this operation has the following impacts on your instance:
+// Calling this operation has the following impacts:
 //
-//   - The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
+//   - After a node role switchover is triggered, the data node being switched enters a read-only state for a few seconds and experiences a transient connection. Make sure that your application has a reconnection mechanism.
 //
-//   - If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
+//   - While the instance is in the switching state, you cannot perform instance-level operations such as configuration changes or zone migration.
 //
 // @param request - SwitchInstanceHARequest
 //
@@ -15496,12 +15786,24 @@ func (client *Client) SwitchInstanceHAWithOptions(request *SwitchInstanceHAReque
 		query["SecurityToken"] = request.SecurityToken
 	}
 
+	if !dara.IsNil(request.SourceNodeId) {
+		query["SourceNodeId"] = request.SourceNodeId
+	}
+
 	if !dara.IsNil(request.SwitchMode) {
 		query["SwitchMode"] = request.SwitchMode
 	}
 
 	if !dara.IsNil(request.SwitchType) {
 		query["SwitchType"] = request.SwitchType
+	}
+
+	if !dara.IsNil(request.TargetNodeId) {
+		query["TargetNodeId"] = request.TargetNodeId
+	}
+
+	if !dara.IsNil(request.TargetShardName) {
+		query["TargetShardName"] = request.TargetShardName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -15529,19 +15831,19 @@ func (client *Client) SwitchInstanceHAWithOptions(request *SwitchInstanceHAReque
 
 // Summary:
 //
-// Performs a master-replica switchover to switch node roles. This operation is applicable to disaster recovery drills and nearby access to applications that are deployed across zones.
+// Performs a primary/secondary switchover (switches node roles). This operation can be used for disaster recovery drills and nearest access for applications in multi-zone deployment scenarios.
 //
 // Description:
 //
-// > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](https://help.aliyun.com/document_detail/164222.html).
+// > For more information about nearest access for applications in multi-zone deployment scenarios, see [Scenario examples](https://help.aliyun.com/document_detail/164222.html).
 //
-// The instance must be a Redis Open-Source Edition instance or Tair (Enterprise Edition) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
+// When you call this operation, the instance must be of the high-availability or dual-replica type.
 //
-// A call to this operation has the following impacts on your instance:
+// Calling this operation has the following impacts:
 //
-//   - The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
+//   - After a node role switchover is triggered, the data node being switched enters a read-only state for a few seconds and experiences a transient connection. Make sure that your application has a reconnection mechanism.
 //
-//   - If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
+//   - While the instance is in the switching state, you cannot perform instance-level operations such as configuration changes or zone migration.
 //
 // @param request - SwitchInstanceHARequest
 //
@@ -15663,6 +15965,12 @@ func (client *Client) SwitchInstanceProxy(request *SwitchInstanceProxyRequest) (
 //
 // Switches an instance from the current zone to the specified zone in the event of a fault.
 //
+// Description:
+//
+// - 本接口仅适用于多（双）可用区集群架构实例。
+//
+// - 模拟故障的节点会在稍后自动恢复。但主节点位于备可用区、备节点位于主可用区，此时可能产生实例与其他业务跨机房访问的情况。如需解决该问题，您可以在控制台服务可用性页面手动切换可用区。
+//
 // @param request - SwitchInstanceZoneFailOverRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15714,6 +16022,12 @@ func (client *Client) SwitchInstanceZoneFailOverWithOptions(request *SwitchInsta
 // Summary:
 //
 // Switches an instance from the current zone to the specified zone in the event of a fault.
+//
+// Description:
+//
+// - 本接口仅适用于多（双）可用区集群架构实例。
+//
+// - 模拟故障的节点会在稍后自动恢复。但主节点位于备可用区、备节点位于主可用区，此时可能产生实例与其他业务跨机房访问的情况。如需解决该问题，您可以在控制台服务可用性页面手动切换可用区。
 //
 // @param request - SwitchInstanceZoneFailOverRequest
 //
@@ -15835,6 +16149,12 @@ func (client *Client) SwitchNetwork(request *SwitchNetworkRequest) (_result *Swi
 //
 // Disables configuration changes for a Tair (Redis OSS-compatible) instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to configuration changes.
 //
+// Description:
+//
+// - 本接口仅适用于经典版实例。
+//
+// - 数据迁移或同步任务完成后，您可以再次调用本接口，解除变配限制。
+//
 // @param request - SyncDtsStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15910,6 +16230,12 @@ func (client *Client) SyncDtsStatusWithOptions(request *SyncDtsStatusRequest, ru
 // Summary:
 //
 // Disables configuration changes for a Tair (Redis OSS-compatible) instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to configuration changes.
+//
+// Description:
+//
+// - 本接口仅适用于经典版实例。
+//
+// - 数据迁移或同步任务完成后，您可以再次调用本接口，解除变配限制。
 //
 // @param request - SyncDtsStatusRequest
 //
@@ -16049,15 +16375,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Changes the billing method of a Tair (Redis OSS-compatible) instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
+// Changes the billing method for a Tair instance between subscription and pay-as-you-go.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
+// Before you call this operation, ensure you understand the billing implications and usage notes. For more information, see:
 //
-//   - [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
+// - [Change a pay-as-you-go instance to subscription](https://help.aliyun.com/document_detail/54542.html).
 //
-//   - [Change the billing method to pay-as-you-go](https://help.aliyun.com/document_detail/211549.html).
+// - [Change a subscription instance to pay-as-you-go](https://help.aliyun.com/document_detail/211549.html).
 //
 // @param request - TransformInstanceChargeTypeRequest
 //
@@ -16145,15 +16471,15 @@ func (client *Client) TransformInstanceChargeTypeWithOptions(request *TransformI
 
 // Summary:
 //
-// Changes the billing method of a Tair (Redis OSS-compatible) instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
+// Changes the billing method for a Tair instance between subscription and pay-as-you-go.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
+// Before you call this operation, ensure you understand the billing implications and usage notes. For more information, see:
 //
-//   - [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
+// - [Change a pay-as-you-go instance to subscription](https://help.aliyun.com/document_detail/54542.html).
 //
-//   - [Change the billing method to pay-as-you-go](https://help.aliyun.com/document_detail/211549.html).
+// - [Change a subscription instance to pay-as-you-go](https://help.aliyun.com/document_detail/211549.html).
 //
 // @param request - TransformInstanceChargeTypeRequest
 //
@@ -16171,7 +16497,7 @@ func (client *Client) TransformInstanceChargeType(request *TransformInstanceChar
 
 // Summary:
 //
-// Converts an instance use local disks to a cloud-native instance.
+// Converts an instance that uses local disk to a cloud-native instance.
 //
 // @param request - TransformToEcsRequest
 //
@@ -16218,6 +16544,14 @@ func (client *Client) TransformToEcsWithOptions(request *TransformToEcsRequest, 
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.IsAcrossZone) {
+		query["IsAcrossZone"] = request.IsAcrossZone
+	}
+
+	if !dara.IsNil(request.IzNo) {
+		query["IzNo"] = request.IzNo
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -16238,8 +16572,16 @@ func (client *Client) TransformToEcsWithOptions(request *TransformToEcsRequest, 
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !dara.IsNil(request.SecondaryIzNo) {
+		query["SecondaryIzNo"] = request.SecondaryIzNo
+	}
+
 	if !dara.IsNil(request.ShardCount) {
 		query["ShardCount"] = request.ShardCount
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -16267,7 +16609,7 @@ func (client *Client) TransformToEcsWithOptions(request *TransformToEcsRequest, 
 
 // Summary:
 //
-// Converts an instance use local disks to a cloud-native instance.
+// Converts an instance that uses local disk to a cloud-native instance.
 //
 // @param request - TransformToEcsRequest
 //
@@ -16285,13 +16627,11 @@ func (client *Client) TransformToEcs(request *TransformToEcsRequest) (_result *T
 
 // Summary:
 //
-// Changes a pay-as-you-go Tair (Redis OSS-compatible) instance to a subscription instance.
+// Converts a pay-as-you-go ApsaraDB for Tair (Redis-compatible) instance to the subscription billing method.
 //
 // Description:
 //
-// For more information about how to change the billing method in the Tair (Redis OSS-compatible) console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
-//
-// >  You cannot change the billing method of a Tair (Redis OSS-compatible) instance from subscription to pay-as-you-go.
+// To perform the equivalent operation in the console, see [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
 //
 // @param request - TransformToPrePaidRequest
 //
@@ -16375,13 +16715,11 @@ func (client *Client) TransformToPrePaidWithOptions(request *TransformToPrePaidR
 
 // Summary:
 //
-// Changes a pay-as-you-go Tair (Redis OSS-compatible) instance to a subscription instance.
+// Converts a pay-as-you-go ApsaraDB for Tair (Redis-compatible) instance to the subscription billing method.
 //
 // Description:
 //
-// For more information about how to change the billing method in the Tair (Redis OSS-compatible) console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
-//
-// >  You cannot change the billing method of a Tair (Redis OSS-compatible) instance from subscription to pay-as-you-go.
+// To perform the equivalent operation in the console, see [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
 //
 // @param request - TransformToPrePaidRequest
 //

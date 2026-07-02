@@ -26,7 +26,14 @@ type iDescribeTairSkvDdbTableSchemaRequest interface {
 }
 
 type DescribeTairSkvDdbTableSchemaRequest struct {
+	// The ID of the backup file.
+	//
+	// example:
+	//
+	// 78241****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The ID of the instance to query.
+	//
 	// This parameter is required.
 	//
 	// example:

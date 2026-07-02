@@ -20,6 +20,11 @@ type iCreateAccountResponseBody interface {
 }
 
 type CreateAccountResponseBody struct {
+	// The account name.
+	//
+	// example:
+	//
+	// demoaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The name of the account.
 	//

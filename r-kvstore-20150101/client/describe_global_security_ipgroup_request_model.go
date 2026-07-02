@@ -31,7 +31,7 @@ type iDescribeGlobalSecurityIPGroupRequest interface {
 
 type DescribeGlobalSecurityIPGroupRequest struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The ID of the IP whitelist template.
+	// The ID of the global IP whitelist template.
 	//
 	// example:
 	//
@@ -39,7 +39,7 @@ type DescribeGlobalSecurityIPGroupRequest struct {
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// This parameter is required.
 	//
@@ -47,7 +47,7 @@ type DescribeGlobalSecurityIPGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

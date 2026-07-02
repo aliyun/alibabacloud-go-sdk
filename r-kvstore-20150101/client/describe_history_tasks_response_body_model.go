@@ -169,7 +169,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// example:
 	//
-	// {\\"steps\\":[{\\"action_info\\":{\\"Waiting\\":[\\"modifySwitchTime\\"]},\\"step_name\\":\\"exec_task\\"}]}
+	// {"steps":[{"action_info":{"Waiting":["modifySwitchTime"]},"step_name":"exec_task"}]}
 	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
 	// The ID of the user who made the request. If CallerSource is set to User, CallerUid indicates the unique ID (UID) of the user.
 	//
@@ -239,7 +239,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// example:
 	//
-	// UpgradeMinorVersion
+	// 小版本升级
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	// The region ID.
 	//

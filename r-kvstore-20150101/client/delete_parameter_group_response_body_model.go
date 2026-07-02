@@ -20,7 +20,7 @@ type DeleteParameterGroupResponseBody struct {
 	//
 	// example:
 	//
-	// sys-001*****
+	// rpg-sys-00*****
 	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
 	// Id of the request
 	//

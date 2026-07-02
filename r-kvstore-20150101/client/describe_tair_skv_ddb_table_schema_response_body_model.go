@@ -18,14 +18,20 @@ type iDescribeTairSkvDdbTableSchemaResponseBody interface {
 }
 
 type DescribeTairSkvDdbTableSchemaResponseBody struct {
+	// The request ID. For more information, see common parameters.
+	//
 	// example:
 	//
 	// A1604E1B-6825-1577-BBDA-2A64E8D5F126
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The table schema information in JSON format.
+	//
 	// example:
 	//
 	// {"attributeDefinitions":[{"attributeType":"S","attributeName":"pk"},{"attributeType":"S","attributeName":"sk"}],"keySchema":[{"attributeName":"pk","keyType":"HASH"},{"attributeName":"sk","keyType":"RANGE"}]}
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The TTL property. The parameter settings toggle in JSON format.
+	//
 	// example:
 	//
 	// {"attributeName":"Expiretime","enabled":true}

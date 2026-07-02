@@ -28,13 +28,13 @@ type iCreateTairKVCacheVNodeResponseBody interface {
 }
 
 type CreateTairKVCacheVNodeResponseBody struct {
-	// The ID of the Tair VNode instance.
+	// The instance ID of the virtual node.
 	//
 	// example:
 	//
 	// tv-2zeb1ce76fee****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the VNode.
+	// The ID of the virtual node.
 	//
 	// example:
 	//
@@ -46,31 +46,31 @@ type CreateTairKVCacheVNodeResponseBody struct {
 	//
 	// 20905403119****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the region where the instance resides.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2BE6E619-A657-42E3-AD2D-18F8428A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the VCluster.
+	// The ID of the virtual cluster.
 	//
 	// example:
 	//
 	// vc-16965a9267*****-*****
 	VClusterId *string `json:"VClusterId,omitempty" xml:"VClusterId,omitempty"`
-	// The ID of the VCluster instance.
+	// The instance ID of the virtual cluster.
 	//
 	// example:
 	//
 	// tk-2ze4bba3c8fe****
 	VkName *string `json:"VkName,omitempty" xml:"VkName,omitempty"`
-	// The zone ID of the instance.
+	// The zone ID.
 	//
 	// example:
 	//

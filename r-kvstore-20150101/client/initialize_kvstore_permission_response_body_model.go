@@ -18,7 +18,7 @@ type InitializeKvstorePermissionResponseBody struct {
 	//
 	// example:
 	//
-	// 5D622714-AEDD-4609-9167-F5DDD3D1****
+	// 5D622714-AEDD-4609-9167-F5DDD3D2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

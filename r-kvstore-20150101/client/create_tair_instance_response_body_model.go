@@ -42,41 +42,41 @@ type iCreateTairInstanceResponseBody interface {
 }
 
 type CreateTairInstanceResponseBody struct {
-	// The maximum bandwidth of the instance. Unit: Mbit/s.
+	// The maximum bandwidth in MB/s.
 	//
 	// example:
 	//
 	// 96
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The charge type. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: prepaid.
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The detailed configurations of the instance. The value is a JSON string. For more information about the parameters, see [Configure parameters](https://help.aliyun.com/document_detail/43885.html).
+	// The detailed configuration of the instance, returned as a JSON string. For parameter details, see [Configuration parameters](https://help.aliyun.com/document_detail/43885.html).
 	//
 	// example:
 	//
 	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"list-max-ziplist-entries\\":512,\\"list-max-ziplist-value\\":64,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The internal endpoint of the instance.
+	// The internal connection address.
 	//
 	// example:
 	//
 	// r-bp13ac3d047b****.tairpena.rds.aliyuncs.com
 	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
-	// The maximum number of connections to the instance.
+	// The maximum number of connections.
 	//
 	// example:
 	//
 	// 10000
 	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ type CreateTairInstanceResponseBody struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance name.
 	//
-	// >  This parameter is returned only if the **InstanceName*	- parameter is specified in the request.
+	// > This parameter is returned only when the **InstanceName*	- parameter is specified in the request.
 	//
 	// example:
 	//
 	// redistest
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The current status of the instance. The value is **Creating**.
+	// The instance status. The value is always **Creating**.
 	//
 	// example:
 	//
@@ -102,13 +102,13 @@ type CreateTairInstanceResponseBody struct {
 	//
 	// 2084452111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The service port number of the instance.
+	// The instance port.
 	//
 	// example:
 	//
 	// 6379
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The maximum number of read and write operations that can be processed by the instance per second. The value is a theoretical value.
+	// The theoretical maximum number of read and write operations per second (QPS) for the instance.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type CreateTairInstanceResponseBody struct {
 	//
 	// 10****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The zone ID.
+	// The availability zone ID.
 	//
 	// example:
 	//

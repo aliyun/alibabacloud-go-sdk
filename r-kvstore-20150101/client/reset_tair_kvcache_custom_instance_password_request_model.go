@@ -29,26 +29,15 @@ type iResetTairKVCacheCustomInstancePasswordRequest interface {
 
 type ResetTairKVCacheCustomInstancePasswordRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// Pass!123456
 	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// example:
-	//
-	// SDK
-	SourceBiz *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
+	SourceBiz            *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
 }
 
 func (s ResetTairKVCacheCustomInstancePasswordRequest) String() string {

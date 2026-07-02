@@ -42,79 +42,93 @@ type iCreateInstancesRequest interface {
 type CreateInstancesRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// 	- **true*	- (default).
+	// \\	- **true**: Enables automatic payment. This is the default value.
 	//
-	// 	- **false**. If automatic payment is disabled, you must perform the following steps to complete the payment in the Tair (Redis OSS-compatible) console: In the top navigation bar, choose **Expenses*	- > **Renewal Management**. In the left-side navigation pane, click **Orders**. On the **Orders*	- page, find the order and complete the payment.
+	// \\	- **false**: Disables automatic payment. You must go to the console to complete the payment. In the top navigation bar, choose **Expenses*	- > **Renewal Management**. In the navigation pane on the left, click **Or*er Management*	- > **My Or*ers**, find the or*er, and then complete the payment.
 	//
-	// >  This parameter is valid only if the value of the **ChargeType*	- field in the **Instances*	- parameter is set to **PrePaid**.
+	// \\> This parameter is valid only when **ChargeType*	- is set to **PrePaid*	- in **Instances**.
 	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values:
+	// Specifies whether to enable auto-renewal for the instance. Valid values:
 	//
-	// 	- **true**: yes
+	// \\	- **true**: Enables auto-renewal.
 	//
-	// 	- **false**: no
+	// \\	- **false**: Disables auto-renewal. This is the default value.
 	//
-	// >  This parameter is available only if **ChargeType*	- in the **Instances*	- parameter is set to **PrePaid**.
+	// \\> This parameter is valid only when **ChargeType*	- is set to **PrePaid*	- in **Instances**.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The additional business information about the instance.
+	// Additional business information.
 	//
 	// example:
 	//
 	// 000000000
 	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	// The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+	// The coupon code. The default value is `youhuiquan_promotion_option_id_for_blank`.
 	//
 	// example:
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The database engine version of the instance. Valid values: **4.0*	- and **5.0**.
-	//
-	// >  The default value is **5.0**.
-	//
-	// Valid values:
-	//
-	// 	- 2.8
-	//
-	// 	- 4.0
-	//
-	// 	- 5.0
+	// The Redis-compatible engine version for the instance. Valid values: **4.0*	- and **5.0**. The default value is **5.0**.
 	//
 	// example:
 	//
 	// 5.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The JSON-formatted configurations of the instance. For more information, see the "Additional description of the Instances parameter" section.
+	// The configurations of the new instances, specified in JSON format. For more information, see the details of the Instances parameter.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// [{	"RegionId": "cn-hangzhou",	"izNo": "cn-hangzhou-b",	"quantity": 2,	"instanceType": "Redis",	"instanceClass": "redis.master.small.default",	"EngineVersion": "5.0",	"ChargeType": "PostPaid"}]
+	// [{
+	//
+	//     "RegionId": "cn-hangzhou",
+	//
+	//     "izNo": "cn-hangzhou-b",
+	//
+	//     "quantity": 1,
+	//
+	//     "instanceType": "Redis",
+	//
+	//     "instanceClass": "redis.logic.sharding.1g.2db.0rodb.4proxy.default",
+	//
+	//     "EngineVersion": "5.0",
+	//
+	//     "ChargeType":"PrePaid",
+	//
+	//     "Period":"1",
+	//
+	//     "networkType": "VPC" ,
+	//
+	//     "vpcId": "vpc-2zex6u1nu32k3ux35oxxx",
+	//
+	//     "vSwitchId": "vsw-2zesk464e647104kw3xxx"
+	//
+	// }]
 	Instances    *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to restore the source instance from the recycle bin. Valid values:
+	// Specifies whether to rebuild an instance from the recycle bin. Valid values:
 	//
-	// 	- **true**
+	// \\	- **true**: Rebuilds the instance.
 	//
-	// 	- **false*	- (default)
+	// \\	- **false**: Does not rebuild the instance. This is the default value.
 	//
-	// >  This parameter is valid only if the **SrcDBInstanceId*	- field in the **Instances*	- parameter is specified.
+	// \\> This parameter is valid only when **SrcDBInstanceId*	- is specified in **Instances**.
 	//
 	// example:
 	//
 	// false
 	RebuildInstance *bool `json:"RebuildInstance,omitempty" xml:"RebuildInstance,omitempty"`
-	// The ID of the resource group to which to assign the instance.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -123,7 +137,7 @@ type CreateInstancesRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token is case-sensitive. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client-generated token to ensure request idempotence. The value must be unique across requests, case-sensitive, and up to 64 ASCII characters long.
 	//
 	// example:
 	//

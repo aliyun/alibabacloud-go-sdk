@@ -25,10 +25,6 @@ type iRestartTairKVCacheCustomInstanceRequest interface {
 
 type RestartTairKVCacheCustomInstanceRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

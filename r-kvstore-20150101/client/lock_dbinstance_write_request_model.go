@@ -40,7 +40,7 @@ type LockDBInstanceWriteRequest struct {
 	//
 	// example:
 	//
-	// lock reason
+	// 锁写操作验证。
 	LockReason           *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

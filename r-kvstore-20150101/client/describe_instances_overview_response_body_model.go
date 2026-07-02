@@ -109,7 +109,7 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	//
 	// example:
 	//
-	// PostPaid
+	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The internal endpoint of the instance.
 	//
@@ -133,7 +133,7 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	//
 	// example:
 	//
-	// 4.0
+	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The ID of the distributed instance.
 	//

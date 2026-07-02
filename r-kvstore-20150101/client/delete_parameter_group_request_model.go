@@ -32,7 +32,7 @@ type DeleteParameterGroupRequest struct {
 	//
 	// example:
 	//
-	// rpg-sys-00*****
+	// g-sysa00*****
 	ParameterGroupId     *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

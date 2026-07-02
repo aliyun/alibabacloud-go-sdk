@@ -23,14 +23,20 @@ type iSwitchInstanceHARequest interface {
 	GetResourceOwnerId() *int64
 	SetSecurityToken(v string) *SwitchInstanceHARequest
 	GetSecurityToken() *string
+	SetSourceNodeId(v string) *SwitchInstanceHARequest
+	GetSourceNodeId() *string
 	SetSwitchMode(v int32) *SwitchInstanceHARequest
 	GetSwitchMode() *int32
 	SetSwitchType(v string) *SwitchInstanceHARequest
 	GetSwitchType() *string
+	SetTargetNodeId(v string) *SwitchInstanceHARequest
+	GetTargetNodeId() *string
+	SetTargetShardName(v string) *SwitchInstanceHARequest
+	GetTargetShardName() *string
 }
 
 type SwitchInstanceHARequest struct {
-	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID of the instance.
+	// The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +44,9 @@ type SwitchInstanceHARequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data shard. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation to obtain the value of the CustinsId parameter. Separate multiple data shard IDs with commas (,). `all` indicates that all data shards are specified.
+	// The ID of the data shard node. You can call [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) to obtain the CustinsId parameter. Separate multiple data shard node IDs with commas (,). To specify all nodes, enter `all`.
 	//
-	// > This parameter is available and required only for read/write splitting and cluster instances.
+	// > This parameter is available and required only when the instance uses the cluster or read/write splitting architecture.
 	//
 	// example:
 	//
@@ -51,30 +57,48 @@ type SwitchInstanceHARequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The time when to perform the switchover. Default value: 0. Valid values:
+	// The node ID of the original MASTER node in the shard.
 	//
-	// 	- **0**: immediately performs the switchover.
+	// example:
 	//
-	// 	- **1**: performs the switchover during the maintenance window.
+	// 52717408
+	SourceNodeId *string `json:"SourceNodeId,omitempty" xml:"SourceNodeId,omitempty"`
+	// The execution time. Valid values:
 	//
-	// > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of a Tair (Redis OSS-compatible) instance.
+	// 	- **0**: immediately. This is the default value.
+	//
+	// 	- **1**: during the maintenance window.
+	//
+	// > You can call [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) to modify the maintenance window of the instance.
 	//
 	// example:
 	//
 	// 0
 	SwitchMode *int32 `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
-	// The switching mode. Valid values:
+	// The switchover mode. Valid values:
 	//
-	// 	- **AvailablePriority**: immediately performs a switchover by prioritizing availability. No latency of data synchronization between the master and replica nodes is considered. This may cause data loss.
+	// 	- **ReliabilityPriority (default)**: Reliability is prioritized. The primary/secondary switchover is performed only when primary/secondary synchronization has no latency, which prevents data loss. In scenarios with heavy write workloads and persistent synchronization latency, this mode may cause the primary/secondary switchover to fail.
 	//
-	// 	- **ReliabilityPriority**: performs a switchover by prioritizing reliability. Make sure that no latency of data synchronization between the master and replica nodes exists. This ensures data integrity. This mode may cause switchover failures in scenarios where a large volume of data is written and data synchronization latency consistently exists.
+	// 	- **AvailablePriority**: Availability is prioritized. The primary/secondary switchover is performed immediately regardless of primary/secondary latency, which may cause minor data loss.
 	//
-	// >  You must evaluate the requirements for data and services based on your business scenarios and then select a switching mode.
+	// > Evaluate your business requirements for data integrity and service availability before selecting a switchover mode.
 	//
 	// example:
 	//
-	// AvailablePriority
+	// ReliabilityPriority
 	SwitchType *string `json:"SwitchType,omitempty" xml:"SwitchType,omitempty"`
+	// The node ID of the target MASTER node after the switchover.
+	//
+	// example:
+	//
+	// 52717403
+	TargetNodeId *string `json:"TargetNodeId,omitempty" xml:"TargetNodeId,omitempty"`
+	// The shard name of the instance.
+	//
+	// example:
+	//
+	// r-2zegk3jyxxxwixfo6c-db-1
+	TargetShardName *string `json:"TargetShardName,omitempty" xml:"TargetShardName,omitempty"`
 }
 
 func (s SwitchInstanceHARequest) String() string {
@@ -113,12 +137,24 @@ func (s *SwitchInstanceHARequest) GetSecurityToken() *string {
 	return s.SecurityToken
 }
 
+func (s *SwitchInstanceHARequest) GetSourceNodeId() *string {
+	return s.SourceNodeId
+}
+
 func (s *SwitchInstanceHARequest) GetSwitchMode() *int32 {
 	return s.SwitchMode
 }
 
 func (s *SwitchInstanceHARequest) GetSwitchType() *string {
 	return s.SwitchType
+}
+
+func (s *SwitchInstanceHARequest) GetTargetNodeId() *string {
+	return s.TargetNodeId
+}
+
+func (s *SwitchInstanceHARequest) GetTargetShardName() *string {
+	return s.TargetShardName
 }
 
 func (s *SwitchInstanceHARequest) SetInstanceId(v string) *SwitchInstanceHARequest {
@@ -156,6 +192,11 @@ func (s *SwitchInstanceHARequest) SetSecurityToken(v string) *SwitchInstanceHARe
 	return s
 }
 
+func (s *SwitchInstanceHARequest) SetSourceNodeId(v string) *SwitchInstanceHARequest {
+	s.SourceNodeId = &v
+	return s
+}
+
 func (s *SwitchInstanceHARequest) SetSwitchMode(v int32) *SwitchInstanceHARequest {
 	s.SwitchMode = &v
 	return s
@@ -163,6 +204,16 @@ func (s *SwitchInstanceHARequest) SetSwitchMode(v int32) *SwitchInstanceHAReques
 
 func (s *SwitchInstanceHARequest) SetSwitchType(v string) *SwitchInstanceHARequest {
 	s.SwitchType = &v
+	return s
+}
+
+func (s *SwitchInstanceHARequest) SetTargetNodeId(v string) *SwitchInstanceHARequest {
+	s.TargetNodeId = &v
+	return s
+}
+
+func (s *SwitchInstanceHARequest) SetTargetShardName(v string) *SwitchInstanceHARequest {
+	s.TargetShardName = &v
 	return s
 }
 

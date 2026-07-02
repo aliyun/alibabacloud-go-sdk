@@ -34,7 +34,7 @@ type DescribeDedicatedClusterInstanceListResponseBody struct {
 	//
 	// example:
 	//
-	// 30
+	// 25
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	//
@@ -46,7 +46,7 @@ type DescribeDedicatedClusterInstanceListResponseBody struct {
 	//
 	// example:
 	//
-	// 1
+	// 0
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 

@@ -16,13 +16,7 @@ type iResizeTairKVCacheCustomInstanceDiskResponseBody interface {
 }
 
 type ResizeTairKVCacheCustomInstanceDiskResponseBody struct {
-	// example:
-	//
-	// 20905403119****
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// example:
-	//
-	// ABAF95F6-35C1-4177-AF3A-70969EBD****
+	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

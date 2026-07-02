@@ -20,22 +20,10 @@ type iDescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody interfac
 }
 
 type DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody struct {
-	// example:
-	//
-	// { “timestamp”: 1490164200000, “Maximum”: 100, “userId”: “1234567898765432”, “Minimum”: 4.55, “instanceId”: “i-bp18abl200xk9599ck7c”, “Average”: 93.84 }
 	Datapoints *string `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
-	// example:
-	//
-	// 212db86sca4384811e0b5e8707ec2****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// 60
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// example:
-	//
-	// F3F44BE3-5419-4B61-9BAC-E66E295A****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Period     *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody) String() string {

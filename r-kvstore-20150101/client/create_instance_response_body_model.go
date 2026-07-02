@@ -56,23 +56,23 @@ type iCreateInstanceResponseBody interface {
 }
 
 type CreateInstanceResponseBody struct {
-	// The maximum bandwidth of the instance. Unit: MB/s.
+	// The bandwidth of the instance. Unit: MB/s.
 	//
 	// example:
 	//
 	// 32
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The storage capacity of the instance. Unit: MB.
+	// The storage capacity of the instance, in MB.
 	//
 	// example:
 	//
 	// 16384
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: subscription
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go
 	//
 	// example:
 	//
@@ -84,25 +84,25 @@ type CreateInstanceResponseBody struct {
 	//
 	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The internal endpoint of the instance.
+	// The private connection endpoint of the instance.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****.redis.rds.aliyuncs.com
 	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
-	// The maximum number of connections supported by the instance.
+	// The maximum number of connections.
 	//
 	// example:
 	//
 	// 10000
 	Connections *int64 `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	// The time when the subscription expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The expiration time of the subscription instance. The time is displayed in UTC. Format: *yyyy-MM-dd*T*HH:mm:ss*Z.
 	//
 	// example:
 	//
 	// 2019-01-18T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The GUID of the instance.
+	// The ID of the instance.
 	//
 	// example:
 	//
@@ -114,17 +114,17 @@ type CreateInstanceResponseBody struct {
 	//
 	// apitest
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The state of the instance. The return value is Creating.
+	// The state of the instance. For this operation, the returned value is always `Creating`.
 	//
 	// example:
 	//
 	// Creating
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The network type of the instance. Valid values:
+	// The network type. Valid values:
 	//
-	// 	- **CLASSIC**: classic network
+	// - **CLASSIC**: classic network
 	//
-	// 	- **VPC**: VPC
+	// - **VPC**: VPC
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ type CreateInstanceResponseBody struct {
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The node type. Valid values:
 	//
-	// 	- **STAND_ALONE**: standalone
+	// - **STAND_ALONE**: standalone
 	//
-	// 	- **MASTER_SLAVE**: master-replica
+	// - **MASTER_SLAVE**: primary-replica
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// 2084452111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The port number that is used to connect to the instance.
+	// The connection port of the instance.
 	//
 	// example:
 	//
@@ -160,13 +160,13 @@ type CreateInstanceResponseBody struct {
 	//
 	// 172.16.0.10
 	PrivateIpAddr *string `json:"PrivateIpAddr,omitempty" xml:"PrivateIpAddr,omitempty"`
-	// The expected maximum queries per second (QPS).
+	// The theoretical queries per second (QPS) of the instance.
 	//
 	// example:
 	//
 	// 100000
 	QPS *int64 `json:"QPS,omitempty" xml:"QPS,omitempty"`
-	// The region ID of the instance.
+	// The ID of the region.
 	//
 	// example:
 	//
@@ -178,13 +178,13 @@ type CreateInstanceResponseBody struct {
 	//
 	// 5DEA3CC9-F81D-4387-8E97-CEA40F09****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The username that is used to connect to the instance. By default, Tair (Redis OSS-compatible) provides a username that is named after the instance ID.
+	// The username of the account. By default, the username is the same as the instance ID.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The ID of the vSwitch to which the instance is connected.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// vpc-bp1nme44gek34slfc****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID of the instance.
+	// The ID of the zone.
 	//
 	// example:
 	//

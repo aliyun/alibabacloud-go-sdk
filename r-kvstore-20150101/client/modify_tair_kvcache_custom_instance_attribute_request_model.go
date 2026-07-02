@@ -29,26 +29,15 @@ type iModifyTairKVCacheCustomInstanceAttributeRequest interface {
 
 type ModifyTairKVCacheCustomInstanceAttributeRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// redistest
 	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// example:
-	//
-	// SDK
-	SourceBiz *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
+	SourceBiz            *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
 }
 
 func (s ModifyTairKVCacheCustomInstanceAttributeRequest) String() string {

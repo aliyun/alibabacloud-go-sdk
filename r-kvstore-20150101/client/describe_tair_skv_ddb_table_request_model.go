@@ -24,6 +24,8 @@ type iDescribeTairSkvDdbTableRequest interface {
 }
 
 type DescribeTairSkvDdbTableRequest struct {
+	// The ID of the instance to query.
+	//
 	// This parameter is required.
 	//
 	// example:

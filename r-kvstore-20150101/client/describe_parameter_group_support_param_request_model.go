@@ -64,7 +64,7 @@ type DescribeParameterGroupSupportParamRequest struct {
 	//
 	// example:
 	//
-	// 5
+	// 5.0
 	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

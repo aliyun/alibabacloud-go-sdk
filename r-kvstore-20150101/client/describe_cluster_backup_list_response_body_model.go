@@ -216,7 +216,12 @@ type DescribeClusterBackupListResponseBodyClusterBackups struct {
 	//
 	// OK
 	ClusterBackupStatus *string `json:"ClusterBackupStatus,omitempty" xml:"ClusterBackupStatus,omitempty"`
-	ExpectExpireTime    *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
+	// The time-to-live (TTL) of the backup set, in the format yyyy-MM-ddTHH:mmZ (UTC time).
+	//
+	// example:
+	//
+	// 2025-06-01T21:51:22Z
+	ExpectExpireTime *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
 	// Indicates whether the backup set is valid. A value of 0 indicates that shard-level backups failed or have not been completed.
 	//
 	// example:
@@ -424,7 +429,7 @@ type DescribeClusterBackupListResponseBodyClusterBackupsBackups struct {
 	//
 	// example:
 	//
-	// hins100322105_data_20240108012127.rdb
+	// r-bp1y4is8svonly****-db-0
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// Indicates whether the backup set is available. Valid values:
 	//

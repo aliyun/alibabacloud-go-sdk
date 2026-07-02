@@ -50,7 +50,7 @@ type DescribeClusterBackupListRequest struct {
 	//
 	// example:
 	//
-	// 2021-05-13T00:00:00Z
+	// 2024-07-01T09:26Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The instance ID.
 	//
@@ -127,7 +127,7 @@ type DescribeClusterBackupListRequest struct {
 	//
 	// example:
 	//
-	// 2018-12-03T07:01Z
+	// 2024-06-28T08:26Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

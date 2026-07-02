@@ -104,7 +104,7 @@ type DescribeInstancesOverviewRequest struct {
 	//
 	// example:
 	//
-	// 4.0
+	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The instance type of the instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
 	//

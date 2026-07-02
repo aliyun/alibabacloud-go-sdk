@@ -16,7 +16,7 @@ type iSwitchInstanceHAResponseBody interface {
 }
 
 type SwitchInstanceHAResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

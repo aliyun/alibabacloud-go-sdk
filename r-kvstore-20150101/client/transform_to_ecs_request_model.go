@@ -25,6 +25,10 @@ type iTransformToEcsRequest interface {
 	GetInstanceClass() *string
 	SetInstanceId(v string) *TransformToEcsRequest
 	GetInstanceId() *string
+	SetIsAcrossZone(v bool) *TransformToEcsRequest
+	GetIsAcrossZone() *bool
+	SetIzNo(v string) *TransformToEcsRequest
+	GetIzNo() *string
 	SetOwnerAccount(v string) *TransformToEcsRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *TransformToEcsRequest
@@ -35,62 +39,66 @@ type iTransformToEcsRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *TransformToEcsRequest
 	GetResourceOwnerId() *int64
+	SetSecondaryIzNo(v string) *TransformToEcsRequest
+	GetSecondaryIzNo() *string
 	SetShardCount(v int64) *TransformToEcsRequest
 	GetShardCount() *int64
+	SetVSwitchId(v string) *TransformToEcsRequest
+	GetVSwitchId() *string
 }
 
 type TransformToEcsRequest struct {
-	// Specifies whether to enable the auto-renewal feature. Valid values:
+	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- **true**: enables auto-renewal.
+	// - **true**: enables auto-renewal.
 	//
-	// 	- **false**: does not enable auto-renewal.
+	// - **false**: disables auto-renewal.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The subscription duration that is supported by auto-renewal. Unit: month. Valid values: **1**, **2**, **3**, **6**, and **12**.
+	// The auto-renewal cycle. Unit: month. Valid values: **1**, **2**, **3**, **6**, and **12**.
 	//
-	// > This parameter is required if the **AutoRenew*	- parameter is set to **true**.
+	// > This parameter is required if you set **AutoRenew*	- to **true**.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int64 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	// The new billing method. Valid values:
+	// The billing method of the target instance. Valid values:
 	//
-	// 	- **PostPaid:*	- pay-as-you-go
+	// - **PostPaid**: pay-as-you-go
 	//
-	// 	- **PrePaid**: subscription. If you set this parameter to PrePaid, you must also specify the **Period*	- parameter.
+	// - **PrePaid**: subscription. If you set this parameter to PrePaid, you must also specify the **Period*	- parameter.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Specifies whether to perform a precheck before the system creates the instance. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: The system performs a dry run and does not create the cloud-native instance. The system prechecks the request parameters, request format, service limits, and available resources. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run to check the request. The check items include the required parameters, request format, service limits, and available resources. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**: performs a dry run and sends the request. If the request passes the dry run, the instance is created.
+	// - **false*	- (default): sends a normal request and creates an instance after the request passes the check.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The time when a database switchover is performed after data is migrated. Valid values:
+	// The time when to switch the database after data migration. Valid values:
 	//
-	// 	- **Immediately**: A database switchover is performed immediately after data is migrated.
+	// - **Immediately**: The database is immediately switched after the migration is complete.
 	//
-	// 	- **MaintainTime**: A database switchover is performed during the maintenance window.
+	// - **MaintainTime**: The database is switched within the maintenance window.
 	//
-	// > Default value: Immediately.
+	// > Default value: **Immediately**.
 	//
 	// example:
 	//
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The database engine version of the instance. Valid values: **5.0**, **6.0**, and **7.0**.
+	// The Redis-compatible version of the instance. Valid values: **5.0**, **6.0**, and **7.0**.
 	//
 	// This parameter is required.
 	//
@@ -98,27 +106,39 @@ type TransformToEcsRequest struct {
 	//
 	// 5.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The instance specification of the cloud-native instance. For more information, see [Overview](https://help.aliyun.com/document_detail/26350.html).
+	// The instance type of the target cloud-native instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/26350.html).
+	//
+	// > If you want to convert a cluster instance, you must specify the corresponding cloud-native cluster instance type that includes .with.proxy in its name and specify the ShardCount parameter.
+	//
+	// >
+	//
+	// > - For a cluster instance, you must provide the corresponding cloud-native cluster specification that includes `.proxy`. You must also specify the number of shards by using the `ShardCount` parameter.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tair.rdb.1g
+	//
+	// tair.rdb.with.proxy.1g
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The ID of the instance that you want to convert.
+	// The ID of the classic instance that you want to convert.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to deploy the instance across availability zones. This feature is supported only for cluster instances.
+	IsAcrossZone *bool `json:"IsAcrossZone,omitempty" xml:"IsAcrossZone,omitempty"`
+	// The ID of the availability zone.
+	IzNo         *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The subscription duration of the instance. Unit: months. Valid values: **1**, 2, 3, 4, 5, 6, 7, 8, **9**, **12**, **24**, **36**.
+	// The subscription duration. Unit: month. Valid values: **1**, **2**, **3**, **4**, **5**, 6, 7, 8, 9, 12, 24, and 36.
 	//
-	// > This parameter is available and required only if the **ChargeType*	- parameter is set to **PrePaid**.
+	// > This parameter is available and required only if you set the **ChargeType*	- parameter to **PrePaid**.
 	//
 	// example:
 	//
@@ -126,12 +146,16 @@ type TransformToEcsRequest struct {
 	Period               *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the secondary availability zone.
+	SecondaryIzNo *string `json:"SecondaryIzNo,omitempty" xml:"SecondaryIzNo,omitempty"`
 	// The number of data shards in the cloud-native cluster instance.
 	//
 	// example:
 	//
 	// 2
 	ShardCount *int64 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s TransformToEcsRequest) String() string {
@@ -174,6 +198,14 @@ func (s *TransformToEcsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *TransformToEcsRequest) GetIsAcrossZone() *bool {
+	return s.IsAcrossZone
+}
+
+func (s *TransformToEcsRequest) GetIzNo() *string {
+	return s.IzNo
+}
+
 func (s *TransformToEcsRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -194,8 +226,16 @@ func (s *TransformToEcsRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *TransformToEcsRequest) GetSecondaryIzNo() *string {
+	return s.SecondaryIzNo
+}
+
 func (s *TransformToEcsRequest) GetShardCount() *int64 {
 	return s.ShardCount
+}
+
+func (s *TransformToEcsRequest) GetVSwitchId() *string {
+	return s.VSwitchId
 }
 
 func (s *TransformToEcsRequest) SetAutoRenew(v string) *TransformToEcsRequest {
@@ -238,6 +278,16 @@ func (s *TransformToEcsRequest) SetInstanceId(v string) *TransformToEcsRequest {
 	return s
 }
 
+func (s *TransformToEcsRequest) SetIsAcrossZone(v bool) *TransformToEcsRequest {
+	s.IsAcrossZone = &v
+	return s
+}
+
+func (s *TransformToEcsRequest) SetIzNo(v string) *TransformToEcsRequest {
+	s.IzNo = &v
+	return s
+}
+
 func (s *TransformToEcsRequest) SetOwnerAccount(v string) *TransformToEcsRequest {
 	s.OwnerAccount = &v
 	return s
@@ -263,8 +313,18 @@ func (s *TransformToEcsRequest) SetResourceOwnerId(v int64) *TransformToEcsReque
 	return s
 }
 
+func (s *TransformToEcsRequest) SetSecondaryIzNo(v string) *TransformToEcsRequest {
+	s.SecondaryIzNo = &v
+	return s
+}
+
 func (s *TransformToEcsRequest) SetShardCount(v int64) *TransformToEcsRequest {
 	s.ShardCount = &v
+	return s
+}
+
+func (s *TransformToEcsRequest) SetVSwitchId(v string) *TransformToEcsRequest {
+	s.VSwitchId = &v
 	return s
 }
 

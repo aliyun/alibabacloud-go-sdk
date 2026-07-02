@@ -92,7 +92,7 @@ type DescribeParameterGroupsResponseBodyParameterGroups struct {
 	//
 	// example:
 	//
-	// redis
+	// tair_pena
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The compatible engine version.
 	//

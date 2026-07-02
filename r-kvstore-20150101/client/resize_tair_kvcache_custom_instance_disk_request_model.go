@@ -30,25 +30,11 @@ type iResizeTairKVCacheCustomInstanceDiskRequest interface {
 }
 
 type ResizeTairKVCacheCustomInstanceDiskRequest struct {
-	// example:
-	//
-	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// d-5v1aggi3ffoxufb57**
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// example:
-	//
-	// 5000
+	DiskId   *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	DiskSize *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// tc-bp1zxszhcgatnx****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

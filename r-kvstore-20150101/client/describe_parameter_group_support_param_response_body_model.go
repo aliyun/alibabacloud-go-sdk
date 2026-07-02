@@ -82,7 +82,7 @@ type DescribeParameterGroupSupportParamResponseBodyResourceList struct {
 	//
 	// example:
 	//
-	// 5
+	// 5.0
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
 	// The name of the parameter.
 	//

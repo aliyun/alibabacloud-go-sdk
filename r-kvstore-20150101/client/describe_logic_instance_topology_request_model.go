@@ -24,7 +24,7 @@ type iDescribeLogicInstanceTopologyRequest interface {
 }
 
 type DescribeLogicInstanceTopologyRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

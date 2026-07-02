@@ -14,9 +14,6 @@ type iResetTairKVCacheCustomInstancePasswordResponseBody interface {
 }
 
 type ResetTairKVCacheCustomInstancePasswordResponseBody struct {
-	// example:
-	//
-	// AD425AD3-CC7B-4EE2-A5CB-2F61BA73****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

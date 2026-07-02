@@ -30,7 +30,7 @@ type LockDBInstanceWriteResponseBody struct {
 	//
 	// example:
 	//
-	// lock reason
+	// 锁定写操作测试。
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The request ID.
 	//

@@ -54,21 +54,21 @@ type iDescribeTairKVCacheInferInstancesRequest interface {
 }
 
 type DescribeTairKVCacheInferInstancesRequest struct {
-	// The billing method of the simple application servers. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// - **PrePaid**: subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// - **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Specifies whether the instance has expired. Valid values:
+	// The expiration status of the instance. Valid values:
 	//
-	// 	- **true**: The instance has expired.
+	// 	- **true**: expired.
 	//
-	// 	- **false**: The instance has not expired.
+	// 	- **false**: not expired.
 	//
 	// example:
 	//
@@ -82,33 +82,27 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The IDs of the instances that you want to query.
 	//
-	// >  If you want to specify multiple instance IDs, separate the instance IDs with commas (,). You can specify a maximum of 30 instance IDs in a single request.
+	// > To specify multiple instance IDs, separate them with commas (,). You can specify up to 30 instance IDs in a single request.
 	//
 	// example:
 	//
 	// tk-2zefe7728c2c****
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The state of the instance. Valid values:
+	// The instance status. Valid values:
 	//
-	// 	- **Normal**: The instance is normal.
+	// 	- **Normal**: Normal.
 	//
 	// 	- **Creating**: The instance is being created.
 	//
-	// >  For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
+	// > For more information about instance statuses, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
 	//
 	// example:
 	//
 	// Normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The network type of the instance. Default value: VPC. Valid values:
+	// The network type. Valid values:
 	//
-	// 	- **VPC*	- (default)
-	//
-	// Valid values:
-	//
-	// 	- CLASSIC
-	//
-	// 	- VPC
+	// 	- **VPC**: virtual private cloud (VPC). This is the default value.
 	//
 	// example:
 	//
@@ -116,7 +110,7 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the instance list. Start value: 1. Default value: 1.
+	// The page number. The value starts from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -128,13 +122,13 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The private IP address of the instance. This parameter is deprecated.
+	// The private IP address in the VPC. This parameter is deprecated.
 	//
 	// example:
 	//
 	// 172.16.49.***
 	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// The ID of the region where the instance resides.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -142,7 +136,7 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can leave this parameter empty.
+	// The resource group ID. This parameter can be left empty.
 	//
 	// example:
 	//
@@ -150,22 +144,22 @@ type DescribeTairKVCacheInferInstancesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The keyword that you want to use for fuzzy match. The keyword can be a part of an instance name or an instance ID.
+	// The keyword used for fuzzy search by instance name or instance ID.
 	//
 	// example:
 	//
 	// apitest
 	SearchKey     *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Details of the tags.
+	// The tags of the instance.
 	Tag []*DescribeTairKVCacheInferInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp1e7clcw529l773d****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -390,17 +384,17 @@ func (s *DescribeTairKVCacheInferInstancesRequest) Validate() error {
 }
 
 type DescribeTairKVCacheInferInstancesRequestTag struct {
-	// The tag key.
+	// The key of the tag. The key and value of a tag form a key-value pair.
 	//
-	// >  A maximum of five key-value pairs can be specified at a time.
+	// > You can specify up to 5 key-value pairs of tags in a single request.
 	//
 	// example:
 	//
 	// key1_test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the instance.
+	// The value of the tag.
 	//
-	// >  **N*	- specifies the value of the nth tag. For example, **Tag.1.Value*	- specifies the value of the first tag, and **Tag.2.Value*	- specifies the value of the second tag.
+	// > **N*	- specifies the sequence number of the tag. For example, **Tag.1.Value*	- specifies the value of the first tag, and **Tag.2.Value*	- specifies the value of the second tag.
 	//
 	// example:
 	//

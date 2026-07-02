@@ -16,13 +16,13 @@ type iTransformToEcsResponseBody interface {
 }
 
 type TransformToEcsResponseBody struct {
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 20905403119****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

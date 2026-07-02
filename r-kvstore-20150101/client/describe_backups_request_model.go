@@ -44,13 +44,13 @@ type DescribeBackupsRequest struct {
 	//
 	// 11611111
 	BackupId *int64 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup task ID, returned by CreateBackup. If CreateBackup returns multiple BackupJobIds, you need to use this interface to query each of them separately.
+	// The ID of the backup job returned by the `CreateBackup` operation. If `CreateBackup` returns multiple backup job IDs, call this operation for each ID.
 	//
 	// example:
 	//
 	// 10001
 	BackupJobId *int64 `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
-	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	// The end time for the query. The end time must be later than the start time. Specify the time in UTC using the *yyyy-MM-dd*T*HH:mm*Z format.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type DescribeBackupsRequest struct {
 	//
 	// 2019-03-14T18:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the instance whose backup files you want to query.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +66,13 @@ type DescribeBackupsRequest struct {
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether to enable append-only files (AOFs) persistence. Valid values:
+	// Specifies whether to enable AOF persistence. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: Disabled.
 	//
-	// 	- **1**: yes
+	// - **1**: Enabled.
 	//
-	// >  The default value is **0**.
+	// > The default value is **0**.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type DescribeBackupsRequest struct {
 	NeedAof      *string `json:"NeedAof,omitempty" xml:"NeedAof,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be an integer that is greater than **0**. Default value: **1**.
+	// The page number to return. The value must be greater than **0**. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries per page. Valid values: 30, 50, 100, 200, and 300.
+	// The maximum number of entries to return per page. Valid values: `30`, `50`, `100`, `200`, and `300`.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type DescribeBackupsRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The start time for the query. Specify the time in UTC using the *yyyy-MM-dd*T*HH:mm*Z format.
 	//
 	// This parameter is required.
 	//

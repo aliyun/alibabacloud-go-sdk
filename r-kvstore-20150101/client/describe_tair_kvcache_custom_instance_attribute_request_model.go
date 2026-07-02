@@ -25,10 +25,6 @@ type iDescribeTairKVCacheCustomInstanceAttributeRequest interface {
 
 type DescribeTairKVCacheCustomInstanceAttributeRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// tc-bp1zxszhcgatnx****
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
