@@ -445,6 +445,104 @@ func (client *Client) DeleteYikeAssetMediaInfosWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 查询图片生成任务
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API用于根据提供的文本内容及其它参数（如数字人信息、应用场景类型等）生成一段由虚拟人物口播的视频。用户需指定文本类型（原始稿或口播稿）、成片尺寸与清晰度等关键配置项，并可选择是否添加字幕或指定输出语言种类。此外，支持通过`UserData`字段传递自定义参数，在回调时原样返回。
+//
+// @param request - GetImageGenerationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageGenerationJobResponse
+func (client *Client) GetImageGenerationJobWithContext(ctx context.Context, request *GetImageGenerationJobRequest, runtime *dara.RuntimeOptions) (_result *GetImageGenerationJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetImageGenerationJob"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetImageGenerationJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询视频生成任务
+//
+// @param request - GetVideoGenerationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoGenerationJobResponse
+func (client *Client) GetVideoGenerationJobWithContext(ctx context.Context, request *GetVideoGenerationJobRequest, runtime *dara.RuntimeOptions) (_result *GetVideoGenerationJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoGenerationJob"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoGenerationJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of an AI application task.
 //
 // @param request - GetYikeAIAppJobRequest
@@ -1293,6 +1391,182 @@ func (client *Client) SubYikeUserCreditWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 提交图像生成接口
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API用于根据提供的文本内容及其它参数（如数字人信息、应用场景类型等）生成一段由虚拟人物口播的视频。用户需指定文本类型（原始稿或口播稿）、成片尺寸与清晰度等关键配置项，并可选择是否添加字幕或指定输出语言种类。此外，支持通过`UserData`字段传递自定义参数，在回调时原样返回。
+//
+// @param request - SubmitImageGenerationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitImageGenerationJobResponse
+func (client *Client) SubmitImageGenerationJobWithContext(ctx context.Context, request *SubmitImageGenerationJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitImageGenerationJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AspectRatio) {
+		query["AspectRatio"] = request.AspectRatio
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Input) {
+		query["Input"] = request.Input
+	}
+
+	if !dara.IsNil(request.JobParameters) {
+		query["JobParameters"] = request.JobParameters
+	}
+
+	if !dara.IsNil(request.JobType) {
+		query["JobType"] = request.JobType
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.N) {
+		query["N"] = request.N
+	}
+
+	if !dara.IsNil(request.Resolution) {
+		query["Resolution"] = request.Resolution
+	}
+
+	if !dara.IsNil(request.Scene) {
+		query["Scene"] = request.Scene
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitImageGenerationJob"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitImageGenerationJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交视频生成接口
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API用于根据提供的文本内容及其它参数（如数字人信息、应用场景类型等）生成一段由虚拟人物口播的视频。用户需指定文本类型（原始稿或口播稿）、成片尺寸与清晰度等关键配置项，并可选择是否添加字幕或指定输出语言种类。此外，支持通过`UserData`字段传递自定义参数，在回调时原样返回。
+//
+// @param request - SubmitVideoGenerationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVideoGenerationJobResponse
+func (client *Client) SubmitVideoGenerationJobWithContext(ctx context.Context, request *SubmitVideoGenerationJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitVideoGenerationJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AspectRatio) {
+		query["AspectRatio"] = request.AspectRatio
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Duration) {
+		query["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.Input) {
+		query["Input"] = request.Input
+	}
+
+	if !dara.IsNil(request.JobParameters) {
+		query["JobParameters"] = request.JobParameters
+	}
+
+	if !dara.IsNil(request.JobType) {
+		query["JobType"] = request.JobType
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.N) {
+		query["N"] = request.N
+	}
+
+	if !dara.IsNil(request.Resolution) {
+		query["Resolution"] = request.Resolution
+	}
+
+	if !dara.IsNil(request.Scene) {
+		query["Scene"] = request.Scene
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitVideoGenerationJob"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitVideoGenerationJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits an AI application task to Yike AI.
 //
 // @param request - SubmitYikeAIAppJobRequest
@@ -1609,7 +1883,7 @@ func (client *Client) SubmitYikeStoryboardJobWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 提交一刻数字人口播视频生成任务
+// Creates a video replication task that supports same-category content rewriting scenarios by preserving the original video framework and generating deduplicated variants through replacing partial elements (person/voice/image/text).
 //
 // @param request - SubmitYikeVideoCloneJobRequest
 //
