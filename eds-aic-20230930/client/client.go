@@ -7859,6 +7859,10 @@ func (client *Client) RunAgentTaskWithOptions(request *RunAgentTaskRequest, runt
 		query["ScheduleId"] = request.ScheduleId
 	}
 
+	if !dara.IsNil(request.Targets) {
+		query["Targets"] = request.Targets
+	}
+
 	if !dara.IsNil(request.TaskConfigId) {
 		query["TaskConfigId"] = request.TaskConfigId
 	}

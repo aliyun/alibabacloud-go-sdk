@@ -145,6 +145,7 @@ type RunAgentTaskResponseBodyTasks struct {
 	//
 	// 2026-04-13T17:42:19Z
 	RunningAt *string `json:"RunningAt,omitempty" xml:"RunningAt,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The task ID, which is globally unique.
 	//
 	// example:
@@ -179,6 +180,10 @@ func (s *RunAgentTaskResponseBodyTasks) GetRunningAt() *string {
 	return s.RunningAt
 }
 
+func (s *RunAgentTaskResponseBodyTasks) GetSessionId() *string {
+	return s.SessionId
+}
+
 func (s *RunAgentTaskResponseBodyTasks) GetTaskId() *string {
 	return s.TaskId
 }
@@ -199,6 +204,11 @@ func (s *RunAgentTaskResponseBodyTasks) SetInstanceId(v string) *RunAgentTaskRes
 
 func (s *RunAgentTaskResponseBodyTasks) SetRunningAt(v string) *RunAgentTaskResponseBodyTasks {
 	s.RunningAt = &v
+	return s
+}
+
+func (s *RunAgentTaskResponseBodyTasks) SetSessionId(v string) *RunAgentTaskResponseBodyTasks {
+	s.SessionId = &v
 	return s
 }
 
