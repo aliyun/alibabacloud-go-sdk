@@ -55,8 +55,6 @@ type iDescribeAuditLogsRequest interface {
 	GetRuleAggQuery() *bool
 	SetRuleCategory(v string) *DescribeAuditLogsRequest
 	GetRuleCategory() *string
-	SetRuleID(v string) *DescribeAuditLogsRequest
-	GetRuleID() *string
 	SetRuleId(v string) *DescribeAuditLogsRequest
 	GetRuleId() *string
 	SetRuleName(v string) *DescribeAuditLogsRequest
@@ -76,7 +74,7 @@ type DescribeAuditLogsRequest struct {
 	//
 	// CE4681BA-8019-5BE1-9F4B-8973BEA9CF57
 	AsyncRequestId *string `json:"AsyncRequestId,omitempty" xml:"AsyncRequestId,omitempty"`
-	// The client IP address.
+	// The IP address of the request client.
 	//
 	// example:
 	//
@@ -88,7 +86,7 @@ type DescribeAuditLogsRequest struct {
 	//
 	// mysql
 	ClientUa *string `json:"ClientUa,omitempty" xml:"ClientUa,omitempty"`
-	// The page number to return. Default value: 1.
+	// The page number in a paged query. Default value: 1.
 	//
 	// example:
 	//
@@ -106,19 +104,19 @@ type DescribeAuditLogsRequest struct {
 	//
 	// in[1 33]
 	EffectRowRange *string `json:"EffectRowRange,omitempty" xml:"EffectRowRange,omitempty"`
-	// The end time for querying alert logs, provided as a UNIX timestamp in milliseconds.
+	// The end time of the alert log. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1583856000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The execution time range.
+	// The range of execution time.
 	//
 	// example:
 	//
 	// in[1000 2000]
 	ExecuteTimeRange *string `json:"ExecuteTimeRange,omitempty" xml:"ExecuteTimeRange,omitempty"`
-	// The name of the data asset instance.
+	// The name of the asset instance.
 	//
 	// example:
 	//
@@ -126,15 +124,15 @@ type DescribeAuditLogsRequest struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The network type. Valid values:
 	//
-	// - **default**: The IP address is from outside of Alibaba Cloud. This is the default value.
+	// - **default*	- (default): non-Alibaba Cloud service
 	//
-	// - **aliyun**: The IP address is from within Alibaba Cloud.
+	// - **aliyun**: Alibaba Cloud service
 	//
 	// example:
 	//
 	// aliyun
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	// Specifies the language of the request and response. Default value: **zh_cn**. Valid values:
+	// The language of the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// - **zh_cn**: Chinese.
 	//
@@ -144,13 +142,13 @@ type DescribeAuditLogsRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether to retrieve the whitelist status.
+	// Specifies whether to load the whitelist status.
 	//
 	// example:
 	//
 	// false
 	LoadWhiteList *bool `json:"LoadWhiteList,omitempty" xml:"LoadWhiteList,omitempty"`
-	// A JSON string that specifies which query conditions to include or exclude.
+	// The JSON string that specifies whether the query conditions are included.
 	//
 	// example:
 	//
@@ -162,7 +160,7 @@ type DescribeAuditLogsRequest struct {
 	//
 	// SLOW_SQL
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	// The UID of the member account.
+	// The UID of the member accounts.
 	//
 	// example:
 	//
@@ -186,25 +184,25 @@ type DescribeAuditLogsRequest struct {
 	//
 	// oss-key
 	OssObjectKey *string `json:"OssObjectKey,omitempty" xml:"OssObjectKey,omitempty"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The service to which the data asset belongs. Valid values include **MaxCompute, OSS, AnalyticDB for MySQL, TableStore, and RDS**.
+	// The name of the product to which the data asset belongs. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and more.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the service to which the data object belongs. Valid values:
+	// The ID that corresponds to the product name to which the data object belongs. Valid values:
 	//
 	// - **1**: MaxCompute
 	//
 	// - **2**: OSS
 	//
-	// - **3**: AnalyticDB for MySQL
+	// - **3**: ADB-MYSQL
 	//
 	// - **4**: TableStore
 	//
@@ -216,7 +214,7 @@ type DescribeAuditLogsRequest struct {
 	//
 	// - **8**: PolarDB
 	//
-	// - **9**: AnalyticDB for PostgreSQL
+	// - **9**: ADB-PG
 	//
 	// - **10**: OceanBase
 	//
@@ -240,31 +238,25 @@ type DescribeAuditLogsRequest struct {
 	//
 	// 10
 	RuleCategory *string `json:"RuleCategory,omitempty" xml:"RuleCategory,omitempty"`
-	// The ID of the audit rule.
-	//
-	// example:
-	//
-	// 994007
-	RuleID *string `json:"RuleID,omitempty" xml:"RuleID,omitempty"`
-	// The ID of the audit rule.
+	// The ID of the audit policy.
 	//
 	// example:
 	//
 	// 867028
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the audit rule.
+	// The name of the audit policy.
 	//
 	// example:
 	//
 	// test_rule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The SQL statement.
+	// The content of the SQL statement.
 	//
 	// example:
 	//
 	// select 	- from test03
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
-	// The start time for querying alert logs, provided as a UNIX timestamp in milliseconds.
+	// The start time of the alert log, in milliseconds.
 	//
 	// example:
 	//
@@ -376,10 +368,6 @@ func (s *DescribeAuditLogsRequest) GetRuleAggQuery() *bool {
 
 func (s *DescribeAuditLogsRequest) GetRuleCategory() *string {
 	return s.RuleCategory
-}
-
-func (s *DescribeAuditLogsRequest) GetRuleID() *string {
-	return s.RuleID
 }
 
 func (s *DescribeAuditLogsRequest) GetRuleId() *string {
@@ -514,11 +502,6 @@ func (s *DescribeAuditLogsRequest) SetRuleAggQuery(v bool) *DescribeAuditLogsReq
 
 func (s *DescribeAuditLogsRequest) SetRuleCategory(v string) *DescribeAuditLogsRequest {
 	s.RuleCategory = &v
-	return s
-}
-
-func (s *DescribeAuditLogsRequest) SetRuleID(v string) *DescribeAuditLogsRequest {
-	s.RuleID = &v
 	return s
 }
 

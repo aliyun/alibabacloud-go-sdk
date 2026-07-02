@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/sddp-20190103/v3
+module github.com/alibabacloud-go/sddp-20190103/v4
 
 go 1.14
 

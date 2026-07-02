@@ -30,15 +30,15 @@ type DescribeAuditLogsResponseBody struct {
 	//
 	// CE4681BA-8019-5BE1-9F4B-8973BEA9CF57
 	AsyncRequestId *string `json:"AsyncRequestId,omitempty" xml:"AsyncRequestId,omitempty"`
-	// The current page number. Default value: 1.
+	// The page number in a paged query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// An array of alert logs.
+	// The list of alert logs.
 	Items []*DescribeAuditLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -146,19 +146,19 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// 35756
 	ClientPort *string `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
-	// The user agent of the client.
+	// The client type.
 	//
 	// example:
 	//
 	// mysql
 	ClientUa *string `json:"ClientUa,omitempty" xml:"ClientUa,omitempty"`
-	// The name of the column.
+	// The column name.
 	//
 	// example:
 	//
 	// hide14
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The time when the alert was generated. This value is a UNIX timestamp in milliseconds.
+	// The alert time, in milliseconds.
 	//
 	// example:
 	//
@@ -170,13 +170,13 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// plan_id ~ application_id ~ plan_type ~ plan_name ~ plan_value_id
 	DataSet *string `json:"DataSet,omitempty" xml:"DataSet,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// chngc_b2b_migration_sh
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The type of the database.
+	// The database type.
 	//
 	// example:
 	//
@@ -188,37 +188,41 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// 10
 	EffectRow *int64 `json:"EffectRow,omitempty" xml:"EffectRow,omitempty"`
-	// The execution status. Valid values: 0 (failed) and 1 (successful).
+	// The execution status. Valid values:
+	//
+	// - 0: failed.
+	//
+	// - 1: succeeded.
 	//
 	// example:
 	//
 	// 1
 	ExecuteStatus *int32 `json:"ExecuteStatus,omitempty" xml:"ExecuteStatus,omitempty"`
-	// The execution duration in milliseconds.
+	// The execution duration, in milliseconds.
 	//
 	// example:
 	//
 	// 1751870592000
 	ExecuteTime *int64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// Indicates whether the operation is whitelisted.
+	// Indicates whether the entry is whitelisted.
 	//
 	// example:
 	//
 	// true
 	InWhiteList *bool `json:"InWhiteList,omitempty" xml:"InWhiteList,omitempty"`
-	// The audit status of the instance.
+	// The instance audit status.
 	//
 	// example:
 	//
 	// 2
 	InstanceAuditStatus *string `json:"InstanceAuditStatus,omitempty" xml:"InstanceAuditStatus,omitempty"`
-	// The description of the data asset.
+	// The description of the data asset instance.
 	//
 	// example:
 	//
 	// instance dscription
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The name of the data asset.
+	// The name of the asset instance.
 	//
 	// example:
 	//
@@ -226,9 +230,9 @@ type DescribeAuditLogsResponseBodyItems struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The network type. Valid values:
 	//
-	// **default**: a non-Alibaba Cloud service. This is the default value.
+	// **default*	- (default): non-Alibaba Cloud service
 	//
-	// **aliyun**: an Alibaba Cloud service.
+	// **aliyun**: Alibaba Cloud service
 	//
 	// example:
 	//
@@ -240,13 +244,13 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// SLOW_SQL
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	// The time when the operation was logged. This value is a UNIX timestamp in milliseconds.
+	// The log execution time.
 	//
 	// example:
 	//
 	// 1751870592000
 	LogTime *int64 `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
-	// The ID of the member.
+	// The UID of the member accounts.
 	//
 	// example:
 	//
@@ -258,7 +262,7 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The sensitive data detection rule that was matched.
+	// The sensitive data model that was matched.
 	//
 	// example:
 	//
@@ -276,50 +280,50 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// oss-key1
 	OssObjectKey *string `json:"OssObjectKey,omitempty" xml:"OssObjectKey,omitempty"`
-	// The name of the MaxCompute package.
+	// The MaxCompute package name.
 	//
 	// example:
 	//
 	// test01
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
-	// The code of the Alibaba Cloud service. Examples: **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The name of the product to which the column data in the data asset table belongs. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and more.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the Alibaba Cloud service that contains the data asset. Valid values:
+	// The ID that corresponds to the product name to which the data asset belongs. Valid values:
 	//
-	// - **1**: MaxCompute
+	// - **1**: MaxCompute.
 	//
-	// - **2**: OSS
+	// - **2**: OSS.
 	//
-	// - **3**: ADS
+	// - **3**: ADS.
 	//
-	// - **4**: OTS
+	// - **4**: OTS.
 	//
-	// - **5**: RDS
+	// - **5**: RDS.
 	//
-	// - **6**: SELF_DB
+	// - **6**: SELF_DB.
 	//
 	// example:
 	//
 	// 5
 	ProductId      *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	RamConsoleLink *string `json:"RamConsoleLink,omitempty" xml:"RamConsoleLink,omitempty"`
-	// The type of the rule.
+	// The rule type.
 	//
 	// example:
 	//
 	// 10
 	RuleCategory *string `json:"RuleCategory,omitempty" xml:"RuleCategory,omitempty"`
-	// The ID of the audit rule.
+	// The audit policy ID.
 	//
 	// example:
 	//
 	// 9952275
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the audit rule.
+	// The name of the audit policy.
 	//
 	// example:
 	//
@@ -331,19 +335,19 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// select 	- from test03
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
 	// it_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the user.
+	// The user UID.
 	//
 	// example:
 	//
 	// 19********94
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The name of the user.
+	// The username.
 	//
 	// example:
 	//
@@ -351,11 +355,11 @@ type DescribeAuditLogsResponseBodyItems struct {
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - **1**: Low
+	// - **1**: Low.
 	//
-	// - **2**: Medium
+	// - **2**: Medium.
 	//
-	// - **3**: High
+	// - **3**: High.
 	//
 	// example:
 	//
@@ -363,11 +367,11 @@ type DescribeAuditLogsResponseBodyItems struct {
 	WarnLevel *string `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
 	// The name of the risk level. Valid values:
 	//
-	// - Low
+	// - Low.
 	//
-	// - Medium
+	// - Medium.
 	//
-	// - High
+	// - High.
 	//
 	// example:
 	//
