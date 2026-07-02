@@ -22,7 +22,7 @@ type CreateVpcFirewallCenConfigureResponseBody struct {
 	//
 	// 850A84D6-0DE4-4797-A1E8-00090125h4j6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The instance ID of the VPC border firewall.
+	// The instance ID of the virtual private cloud (VPC) firewall.
 	//
 	// example:
 	//

@@ -64,23 +64,23 @@ type DescribeInternetOpenIpRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time when the public IP address was exposed. The value is a UNIX timestamp. Unit: seconds.
+	// The end time of the public IP address exposure. Specify the value as a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1663640336
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the response message.
+	// The language of the content within the response. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page for a paged query.
+	// The number of entries per page for a paged query.
 	//
 	// This parameter is required.
 	//
@@ -106,27 +106,27 @@ type DescribeInternetOpenIpRequest struct {
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The risk level. If you leave this parameter empty, all risk levels are queried. Valid values:
+	// The risk level. If this parameter is not specified, all risk levels are returned. Valid values:
 	//
-	// - **3**: high
+	// - **3**: high risk
 	//
-	// - **2**: medium
+	// - **2**: medium risk
 	//
-	// - **1**: low
+	// - **1**: low risk
 	//
-	// - **0**: none
+	// - **0**: no risk.
 	//
 	// example:
 	//
 	// 2
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The name of the application to query.
+	// The application name to query.
 	//
 	// example:
 	//
 	// SSH
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The start time when the public IP address was exposed. The value is a UNIX timestamp. Unit: seconds.
+	// The start time of the public IP address exposure. Specify the value as a UNIX timestamp in seconds.
 	//
 	// example:
 	//

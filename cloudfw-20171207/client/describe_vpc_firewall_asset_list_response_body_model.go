@@ -101,7 +101,7 @@ type DescribeVpcFirewallAssetListResponseBodyDataList struct {
 	//
 	// ecs-test
 	AssetInstanceName *string `json:"AssetInstanceName,omitempty" xml:"AssetInstanceName,omitempty"`
-	// The inbound traffic. Unit: bytes.
+	// The inbound traffic, in bytes.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ type DescribeVpcFirewallAssetListResponseBodyDataList struct {
 	//
 	// 10
 	IpsHitCnt *int64 `json:"IpsHitCnt,omitempty" xml:"IpsHitCnt,omitempty"`
-	// The outbound traffic. Unit: bytes.
+	// The outbound traffic, in bytes.
 	//
 	// example:
 	//
 	// 0.0
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The list of ports.
+	// The port list.
 	PortList []*string `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
 	// The region.
 	//

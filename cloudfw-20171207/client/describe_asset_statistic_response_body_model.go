@@ -26,7 +26,7 @@ type DescribeAssetStatisticResponseBody struct {
 	//
 	// true
 	AutoResourceEnable *bool `json:"AutoResourceEnable,omitempty" xml:"AutoResourceEnable,omitempty"`
-	// The general instance specifications for version 2.0.
+	// The general instance specifications for the 2.0 billing model.
 	GeneralInstanceSpecStatistic *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic `json:"GeneralInstanceSpecStatistic,omitempty" xml:"GeneralInstanceSpecStatistic,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -34,7 +34,7 @@ type DescribeAssetStatisticResponseBody struct {
 	//
 	// 850A84******25g4d2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The consumed quota statistics information.
+	// The quota usage statistics information.
 	ResourceSpecStatistic *DescribeAssetStatisticResponseBodyResourceSpecStatistic `json:"ResourceSpecStatistic,omitempty" xml:"ResourceSpecStatistic,omitempty" type:"Struct"`
 }
 
@@ -97,9 +97,9 @@ func (s *DescribeAssetStatisticResponseBody) Validate() error {
 }
 
 type DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic struct {
-	// The region-specific statistics for the Internet firewall.
+	// The region-specific statistics of Internet firewall instances.
 	CfwGeneralInstanceRegionStatistic []*DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic `json:"CfwGeneralInstanceRegionStatistic,omitempty" xml:"CfwGeneralInstanceRegionStatistic,omitempty" type:"Repeated"`
-	// The region-specific statistics for all Internet firewall instances.
+	// The full region-specific statistics of Internet firewall instances.
 	CfwTotalGeneralInstanceRegionStatistic []*DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwTotalGeneralInstanceRegionStatistic `json:"CfwTotalGeneralInstanceRegionStatistic,omitempty" xml:"CfwTotalGeneralInstanceRegionStatistic,omitempty" type:"Repeated"`
 	// The total number of instances for the Internet firewall.
 	//
@@ -113,7 +113,7 @@ type DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic struct {
 	//
 	// 1
 	TotalCfwGeneralInstanceUsedCnt *int32 `json:"TotalCfwGeneralInstanceUsedCnt,omitempty" xml:"TotalCfwGeneralInstanceUsedCnt,omitempty"`
-	// The total quota.
+	// The total quota of general instances.
 	//
 	// example:
 	//
@@ -336,13 +336,13 @@ type DescribeAssetStatisticResponseBodyResourceSpecStatistic struct {
 	//
 	// 10
 	IpNumUsed *int32 `json:"IpNumUsed,omitempty" xml:"IpNumUsed,omitempty"`
-	// The quota for sensitive data IP addresses.
+	// The quota for IP addresses with sensitive data protection.
 	//
 	// example:
 	//
 	// 0
 	SensitiveDataIpNumSpec *int64 `json:"SensitiveDataIpNumSpec,omitempty" xml:"SensitiveDataIpNumSpec,omitempty"`
-	// The number of sensitive data IP addresses with protection enabled.
+	// The number of IP addresses with sensitive data protection enabled.
 	//
 	// example:
 	//

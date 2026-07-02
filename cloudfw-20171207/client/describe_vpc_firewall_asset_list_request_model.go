@@ -60,7 +60,7 @@ type DescribeVpcFirewallAssetListRequest struct {
 	//
 	// 192.0.XX.XX
 	AssetIP *string `json:"AssetIP,omitempty" xml:"AssetIP,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeVpcFirewallAssetListRequest struct {
 	//
 	// test-ecs
 	EcsInstanceName *string `json:"EcsInstanceName,omitempty" xml:"EcsInstanceName,omitempty"`
-	// The end time. The value is a UNIX timestamp. Unit: seconds.
+	// The end time. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type DescribeVpcFirewallAssetListRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The instance ID of the peer VPC.
+	// The instance ID of the peer VPC instance.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type DescribeVpcFirewallAssetListRequest struct {
 	//
 	// SessionCount
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The start time. The value is a UNIX timestamp. Unit: seconds.
+	// The start time. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

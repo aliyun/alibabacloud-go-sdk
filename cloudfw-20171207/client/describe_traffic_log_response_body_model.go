@@ -84,7 +84,7 @@ func (s *DescribeTrafficLogResponseBody) Validate() error {
 }
 
 type DescribeTrafficLogResponseBodyDataList struct {
-	// The policy ID of the ACL pre-match. If this parameter is empty, all policies are included.
+	// The policy ID of the ACL pre-match. If this parameter is not specified, all policies are included.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// **domain_unknown**: domain name not identified
 	//
-	// **normal**: normal.
+	// **normal**: normal
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// **unknown_strict**: strict mode, identification failed
 	//
-	// **success**: identification succeeded.
+	// **success**: identification succeeded
 	//
 	// example:
 	//
@@ -220,13 +220,13 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// 1751423363
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The additional extension data.
+	// Other extended data.
 	//
 	// example:
 	//
 	// None
 	Ext *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// The inbound traffic in bytes.
+	// The inbound traffic.
 	//
 	// example:
 	//
@@ -268,7 +268,7 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// 14151892****7022
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The outbound traffic in bytes.
+	// The outbound traffic.
 	//
 	// example:
 	//
@@ -358,7 +358,7 @@ type DescribeTrafficLogResponseBodyDataList struct {
 	//
 	// 1.1.1.1
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
-	// The source port.
+	// The port of the data source.
 	//
 	// example:
 	//
@@ -889,7 +889,7 @@ type DescribeTrafficLogResponseBodyDataListDstVpc struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The VPC instance ID.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//

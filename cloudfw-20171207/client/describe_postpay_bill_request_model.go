@@ -38,17 +38,17 @@ type DescribePostpayBillRequest struct {
 	//
 	// 1646063922
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time interval for querying data. This is an enumerated value. Valid values:
+	// The time interval for querying data. This is an enumeration value. Valid values:
 	//
-	// - 3600: queries hourly data.
+	// - 3600: queries data at the hourly level.
 	//
-	// - 86400: queries daily data.
+	// - 86400: queries data at the daily level.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The language. This is an enumerated value.
+	// The language. This is an enumeration value.
 	//
 	// Default value: zh.
 	//

@@ -102,7 +102,7 @@ type CreateSecurityProxyRequest struct {
 	//
 	// 0
 	StrictMode *int32 `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
-	// The instance ID of the VPC.
+	// The VPC-connected instance ID.
 	//
 	// This parameter is required.
 	//

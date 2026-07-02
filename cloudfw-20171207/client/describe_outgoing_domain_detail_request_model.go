@@ -44,25 +44,25 @@ type iDescribeOutgoingDomainDetailRequest interface {
 }
 
 type DescribeOutgoingDomainDetailRequest struct {
-	// The policy coverage status to filter by.
+	// The policy coverage status.
 	//
 	// example:
 	//
 	// FullCoverage
 	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
-	// The page number to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The domain name to query.
+	// The domain name.
 	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// A list of domain names to query.
+	// The list of domain names.
 	DomainList []*string `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
 	// The end of the time range to query. The value is a UNIX timestamp in seconds.
 	//
@@ -72,19 +72,19 @@ type DescribeOutgoingDomainDetailRequest struct {
 	//
 	// 1733450528
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The IP address type. Set to `NatPrivate` to query details for outbound connections that originate from a private IP address via a NAT Gateway.
+	// Specifies whether to query NAT private network outbound connections.
 	//
 	// example:
 	//
 	// NatPrivate
 	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	// The language of the response.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the NAT Gateway.
+	// The ID of the NAT gateway.
 	//
 	// example:
 	//
@@ -96,37 +96,37 @@ type DescribeOutgoingDomainDetailRequest struct {
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of entries to return per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The private IP address to query.
+	// The private IP address.
 	//
 	// example:
 	//
 	// 10.210.0.XXX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
-	// The public IP address to query.
+	// The public IP address.
 	//
 	// example:
 	//
 	// 47.96.181.XXX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The field to sort the results by.
+	// The field by which to sort the results.
 	//
 	// example:
 	//
 	// OutBytes
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The source IP address.
+	// The source IP address of the request.
 	//
 	// example:
 	//
 	// 121.15.137.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start of the time range to query. The value is a UNIX timestamp in seconds.
+	// The beginning of the time range to query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -134,7 +134,7 @@ type DescribeOutgoingDomainDetailRequest struct {
 	//
 	// 1753617600
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The tag ID to filter by.
+	// The tag ID.
 	//
 	// example:
 	//

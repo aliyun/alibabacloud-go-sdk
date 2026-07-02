@@ -18,11 +18,16 @@ type iDescribePrepayBillTotalResponseBody interface {
 }
 
 type DescribePrepayBillTotalResponseBody struct {
+	// The bill list, aggregated by day.
 	BillList []*DescribePrepayBillTotalResponseBodyBillList `json:"BillList,omitempty" xml:"BillList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 450D47F5-956E-543E-8502-***********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 132
@@ -78,58 +83,86 @@ func (s *DescribePrepayBillTotalResponseBody) Validate() error {
 }
 
 type DescribePrepayBillTotalResponseBodyBillList struct {
+	// The actual billed traffic for sensitive data leak detection.
+	//
 	// example:
 	//
 	// 5
 	BilledDetectionTraffic *float32 `json:"BilledDetectionTraffic,omitempty" xml:"BilledDetectionTraffic,omitempty"`
+	// The sensitive data detection traffic for the day.
+	//
 	// example:
 	//
 	// 8
 	DailyDetectionTraffic *float32 `json:"DailyDetectionTraffic,omitempty" xml:"DailyDetectionTraffic,omitempty"`
+	// The total elastic traffic for the day. Unit: GB.
+	//
 	// example:
 	//
 	// 10
 	DailyOverflowTraffic *float32 `json:"DailyOverflowTraffic,omitempty" xml:"DailyOverflowTraffic,omitempty"`
+	// The default bandwidth of the edition. Unit: Mbit/s.
+	//
 	// example:
 	//
 	// 200
 	DefaultBandwidth *int64 `json:"DefaultBandwidth,omitempty" xml:"DefaultBandwidth,omitempty"`
+	// The elastic bandwidth. Unit: Mbit/s.
+	//
 	// example:
 	//
 	// 200
 	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitempty" xml:"ElasticBandwidth,omitempty"`
+	// The end time of the day. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1761667200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The extended bandwidth. Unit: Mbit/s.
+	//
 	// example:
 	//
 	// 10
 	ExtensionBandwidth *int64 `json:"ExtensionBandwidth,omitempty" xml:"ExtensionBandwidth,omitempty"`
+	// The Internet traffic bandwidth. Unit: Gbit/s.
+	//
 	// example:
 	//
 	// 10
 	InternetTrafficBandwidth *float32 `json:"InternetTrafficBandwidth,omitempty" xml:"InternetTrafficBandwidth,omitempty"`
+	// The monthly free traffic quota for sensitive data detection. Unit: GB.
+	//
 	// example:
 	//
 	// 10
 	MonthlyRemainingFreeTraffic *float32 `json:"MonthlyRemainingFreeTraffic,omitempty" xml:"MonthlyRemainingFreeTraffic,omitempty"`
+	// The NAT traffic bandwidth. Unit: Gbit/s.
+	//
 	// example:
 	//
 	// 10
 	NatTrafficBandwidth *float32 `json:"NatTrafficBandwidth,omitempty" xml:"NatTrafficBandwidth,omitempty"`
+	// The timestamp when the maximum combined bandwidth (Internet + VPC + NAT) occurred on that day.
+	//
 	// example:
 	//
 	// 1761588300
 	OverflowTime *int64 `json:"OverflowTime,omitempty" xml:"OverflowTime,omitempty"`
+	// The start time of the day. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1761580800
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The temporary upgrade bandwidth. Unit: Mbit/s.
+	//
 	// example:
 	//
 	// 0
 	TemporaryBandwidth *int64 `json:"TemporaryBandwidth,omitempty" xml:"TemporaryBandwidth,omitempty"`
+	// The VPC traffic bandwidth. Unit: Gbit/s.
+	//
 	// example:
 	//
 	// 10

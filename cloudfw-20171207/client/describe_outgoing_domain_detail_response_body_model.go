@@ -30,7 +30,7 @@ type DescribeOutgoingDomainDetailResponseBody struct {
 	//
 	// 98AF5888-9606-59CF-888F-032A9ED0****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type DescribeOutgoingDomainDetailResponseBodyAssetList struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The first access time, as a Unix timestamp in seconds.
+	// The time of the first access. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -120,25 +120,25 @@ type DescribeOutgoingDomainDetailResponseBodyAssetList struct {
 	//
 	// 244438.0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// The IPS hit count.
+	// The number of IPS hits.
 	//
 	// example:
 	//
 	// 32
 	IpsHitCnt *int64 `json:"IpsHitCnt,omitempty" xml:"IpsHitCnt,omitempty"`
-	// The last access time, as a Unix timestamp in seconds.
+	// The time of the most recent access. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1739326614
 	LastTime *int32 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	// The NAT Gateway ID.
+	// The NAT gateway ID.
 	//
 	// example:
 	//
 	// ngw-bp1utx6wj4x9qu9tl****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The NAT Gateway name.
+	// The NAT gateway name.
 	//
 	// example:
 	//
@@ -168,51 +168,51 @@ type DescribeOutgoingDomainDetailResponseBodyAssetList struct {
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The asset instance ID.
+	// The ID of the asset instance.
 	//
 	// example:
 	//
 	// i-uf63wjhyoohc1g4z****
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	// The asset instance name.
+	// The name of the asset instance.
 	//
 	// example:
 	//
 	// test
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
-	// The type of the asset\\"s public IP address.
+	// The type of the public IP address of the asset.
 	//
 	// example:
 	//
 	// NatEIP
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ACL rule ID.
+	// The ID of the ACL rule.
 	//
 	// example:
 	//
 	// 08a58465-ff4d-4c47-8782-eb008301****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The rule name.
+	// The name of the rule.
 	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The session count.
+	// The number of access sessions.
 	//
 	// example:
 	//
 	// 10
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// The list of tags.
+	// The list of tag names.
 	TagList []*DescribeOutgoingDomainDetailResponseBodyAssetListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	// The total traffic, in bytes.
+	// The total traffic.
 	//
 	// example:
 	//
 	// 321120825843
 	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The VPC ID.
+	// The instance ID of the VPC.
 	//
 	// example:
 	//
@@ -431,7 +431,7 @@ func (s *DescribeOutgoingDomainDetailResponseBodyAssetList) Validate() error {
 }
 
 type DescribeOutgoingDomainDetailResponseBodyAssetListTagList struct {
-	// The risk classification ID.
+	// The risk category ID.
 	//
 	// example:
 	//

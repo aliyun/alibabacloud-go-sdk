@@ -26,17 +26,13 @@ type DescribeUnprotectedPortTrendRequest struct {
 	//
 	// 1751210395
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// - **en**: English
-	//
-	// - **zh**: Chinese.
+	// The language type of the received message.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//

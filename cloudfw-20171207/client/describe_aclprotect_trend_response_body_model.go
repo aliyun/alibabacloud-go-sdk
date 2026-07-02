@@ -44,7 +44,7 @@ type DescribeACLProtectTrendResponseBody struct {
 	//
 	// 0
 	InterVPCProtectCnt *int64 `json:"InterVPCProtectCnt,omitempty" xml:"InterVPCProtectCnt,omitempty"`
-	// The interval at which data is returned. Unit: seconds. A result is returned at each interval.
+	// The step size of the returned data, in seconds. This indicates the interval between consecutive data points.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ type DescribeACLProtectTrendResponseBody struct {
 	//
 	// 9063AB86-6FFA-5B2D-A16D-697C966DECA3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The cumulative total of AlertCnt across all time points within the query time range. This value indicates the total number of sessions that matched an ACL policy and triggered the monitor (alert) action during the entire time period.
+	// The cumulative sum of AlertCnt across all time points within the query time range. This represents the total number of sessions that matched an ACL policy and triggered the monitor (alert) action during the entire time period.
 	//
 	// example:
 	//
 	// 100
 	TotalAlertCnt *int64 `json:"TotalAlertCnt,omitempty" xml:"TotalAlertCnt,omitempty"`
-	// The cumulative total of PassCnt across all time points within the query time range. This value indicates the total number of sessions that matched an ACL policy and were allowed during the entire time period.
+	// The cumulative sum of PassCnt across all time points within the query time range. This represents the total number of sessions that matched an ACL policy and were allowed during the entire time period.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeACLProtectTrendResponseBody struct {
 	//
 	// 300
 	TotalProtectCnt *int64 `json:"TotalProtectCnt,omitempty" xml:"TotalProtectCnt,omitempty"`
-	// The list of Internet access control intercept trend data.
+	// The list of Internet access control interception trend data.
 	TrendList []*DescribeACLProtectTrendResponseBodyTrendList `json:"TrendList,omitempty" xml:"TrendList,omitempty" type:"Repeated"`
 }
 
@@ -187,13 +187,13 @@ func (s *DescribeACLProtectTrendResponseBody) Validate() error {
 }
 
 type DescribeACLProtectTrendResponseBodyTrendList struct {
-	// The total number of sessions that matched an ACL policy and triggered the monitor (alert) action at this point in time.
+	// The total number of sessions that matched an ACL policy and triggered the monitor (alert) action during the time interval.
 	//
 	// example:
 	//
 	// 20
 	AlertCnt *int32 `json:"AlertCnt,omitempty" xml:"AlertCnt,omitempty"`
-	// The total number of sessions that matched an ACL policy and were allowed at this point in time.
+	// The total number of sessions that matched an ACL policy and were allowed during the time interval.
 	//
 	// example:
 	//
@@ -205,7 +205,7 @@ type DescribeACLProtectTrendResponseBodyTrendList struct {
 	//
 	// 100
 	ProtectCnt *int32 `json:"ProtectCnt,omitempty" xml:"ProtectCnt,omitempty"`
-	// The timestamp of 00:00 on each day. Unit: seconds. Indicates the date.
+	// The timestamp of 00:00 of each day, in seconds. This indicates the date.
 	//
 	// example:
 	//

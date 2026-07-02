@@ -22,7 +22,7 @@ type DescribeResourceTypeAutoEnableResponseBody struct {
 	//
 	// 7447795A-39AB-52CB-8F92-128DF******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether traffic redirection is enabled by default.
+	// Indicates whether default traffic redirection is enabled.
 	ResourceTypeAutoEnable map[string]*bool `json:"ResourceTypeAutoEnable,omitempty" xml:"ResourceTypeAutoEnable,omitempty"`
 }
 

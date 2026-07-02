@@ -24,28 +24,50 @@ type iDescribePrepayBillTotalRequest interface {
 }
 
 type DescribePrepayBillTotalRequest struct {
+	// The billing type. Valid values:
+	//
+	// - elastic_traffic: elastic traffic.
+	//
+	// - sdl: sensitive data leak detection traffic.
+	//
 	// example:
 	//
 	// sdl
 	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
+	// The page number for a paged query. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end time. Specify a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1646063922
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language. Valid values:
+	//
+	// - zh
+	//
+	// - en
+	//
+	// Default value: zh.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time of the query. Specify a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

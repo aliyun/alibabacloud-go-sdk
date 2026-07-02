@@ -20,7 +20,7 @@ type DescribeAclRuleCountRequest struct {
 	//
 	// - **zh*	- (default): Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//

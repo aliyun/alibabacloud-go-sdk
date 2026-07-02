@@ -1675,15 +1675,15 @@ func (client *Client) CreateTrFirewallV2RoutePolicyWithContext(ctx context.Conte
 
 // Summary:
 //
-// Creates a VPC border firewall (protects mutual access traffic between network instances within a Cloud Enterprise Network (CEN) and a specified VPC).
+// Creates a virtual private cloud (VPC) firewall to protect traffic between network instances in a Cloud Enterprise Network (CEN) instance and a specified VPC.
 //
 // Description:
 //
-// This operation is generally used to create a VPC border firewall for VPC instances within a Cloud Enterprise Network (CEN). The VPC border firewall can protect mutual access traffic between network instances within the CEN (network instances include VPCs, VBRs, and CCNs) and a specified VPC. It does not support protecting mutual access traffic between VBR and VBR, CCN and CCN, or VBR and CCN. For more information, see [VPC border firewall limits](https://help.aliyun.com/document_detail/172295.html).
+// This operation is used to create a VPC firewall for VPC-connected instances in a CEN instance. The virtual private cloud (VPC) firewall protects traffic between network instances (including VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs)) in the CEN instance and a specified VPC. The VPC firewall does not protect traffic between VBRs, between CCNs, or between VBRs and CCNs. For more information, see [VPC firewall limits](https://help.aliyun.com/document_detail/172295.html).
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please call this operation as needed.
+// The single-user QPS limit for this operation is 10 calls per second. If the number of calls per second exceeds the limit, throttling is triggered. Throttling may affect your business. Invoke this operation within the limit.
 //
 // @param request - CreateVpcFirewallCenConfigureRequest
 //
@@ -4125,7 +4125,7 @@ func (client *Client) DescribeAclChecksWithContext(ctx context.Context, request 
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeAclRuleCountRequest
 //
@@ -5331,6 +5331,58 @@ func (client *Client) DescribeDownloadTaskTypeWithContext(ctx context.Context, r
 
 // Summary:
 //
+// Retrieves the overall firewall interception trend, including Internet, VPC, and NAT traffic.
+//
+// @param request - DescribeFirewallDropTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFirewallDropTrendResponse
+func (client *Client) DescribeFirewallDropTrendWithContext(ctx context.Context, request *DescribeFirewallDropTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeFirewallDropTrendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFirewallDropTrend"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeFirewallDropTrendResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a firewall task.
 //
 // Description:
@@ -5387,6 +5439,58 @@ func (client *Client) DescribeFirewallTaskWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeFirewallTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取总流量趋势
+//
+// @param request - DescribeFirewallTrafficTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFirewallTrafficTrendResponse
+func (client *Client) DescribeFirewallTrafficTrendWithContext(ctx context.Context, request *DescribeFirewallTrafficTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeFirewallTrafficTrendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFirewallTrafficTrend"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeFirewallTrafficTrendResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6037,7 +6141,7 @@ func (client *Client) DescribeInternetOpenDetailWithContext(ctx context.Context,
 
 // Summary:
 //
-// Describes a Cloud Firewall access control policy group.
+// Queries the details of an access control policy group in Cloud Firewall.
 //
 // @param request - DescribeInternetOpenIpRequest
 //
@@ -8785,7 +8889,7 @@ func (client *Client) DescribeOutgoingDomainWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieves details about an outbound domain.
+// Retrieves the details of an outbound domain.
 //
 // @param request - DescribeOutgoingDomainDetailRequest
 //
@@ -9129,13 +9233,13 @@ func (client *Client) DescribeOutgoingTagWithContext(ctx context.Context, reques
 //
 // Summary:
 //
-// Queries the FAQ of a page.
+// Queries the FAQ for a page.
 //
 // Description:
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - DescribePageDocumentsRequest
 //
@@ -9719,11 +9823,11 @@ func (client *Client) DescribePrefixListsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询包年包月2.0账单概览
+// Queries the billing overview of a subscription 2.0 instance.
 //
 // Description:
 //
-// 统计范围为该用户当前云防火墙实例，包括自购买之日起的所有数据。
+// The statistics cover the current Cloud Firewall instance of the user, including all data since the purchase date.
 //
 // @param request - DescribePrepayBillTotalRequest
 //
@@ -9969,7 +10073,7 @@ func (client *Client) DescribePrivateDnsStatisticsWithContext(ctx context.Contex
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeRegionInfoRequest
 //
@@ -10033,7 +10137,7 @@ func (client *Client) DescribeRegionInfoWithContext(ctx context.Context, request
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - DescribeRegionResourceTypeAutoEnableRequest
 //
@@ -10081,11 +10185,11 @@ func (client *Client) DescribeRegionResourceTypeAutoEnableWithContext(ctx contex
 //
 // Description:
 //
-// This operation is used to obtain DNS resolution results for a domain name. Currently, only resolution results from Alibaba Cloud DNS are supported. The domain name that you want to query must use Alibaba Cloud DNS. Otherwise, the resolution results cannot be obtained.
+// This operation is used to retrieve DNS resolution results for a domain name. Currently, only resolution results from Alibaba Cloud DNS are supported. The domain name that you want to query must use Alibaba Cloud DNS. Otherwise, the resolution results cannot be retrieved.
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a proper frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeResourceTypeAutoEnableRequest
 //
@@ -10995,6 +11099,76 @@ func (client *Client) DescribeSdlEventStatisticWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSdlEventStatisticResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the packet payload of a sensitive data leak event.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
+//
+// @param request - DescribeSdlLastPayloadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSdlLastPayloadResponse
+func (client *Client) DescribeSdlLastPayloadWithContext(ctx context.Context, request *DescribeSdlLastPayloadRequest, runtime *dara.RuntimeOptions) (_result *DescribeSdlLastPayloadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DstIp) {
+		query["DstIp"] = request.DstIp
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SensitiveCategory) {
+		query["SensitiveCategory"] = request.SensitiveCategory
+	}
+
+	if !dara.IsNil(request.SrcIp) {
+		query["SrcIp"] = request.SrcIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSdlLastPayload"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSdlLastPayloadResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

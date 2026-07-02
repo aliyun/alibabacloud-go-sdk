@@ -220,7 +220,7 @@ type DescribeTrafficLogRequest struct {
 	//
 	// - **zh*	- (default): Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -324,7 +324,7 @@ type DescribeTrafficLogRequest struct {
 	//
 	// cn-beijing
 	SrcVpcRegionNo *string `json:"SrcVpcRegionNo,omitempty" xml:"SrcVpcRegionNo,omitempty"`
-	// The start time. Specify a UNIX timestamp in seconds. Only data within the last 7 days can be queried. We recommend that a single query does not exceed one day.
+	// The start time. Specify a UNIX timestamp in seconds. Only data within the last 7 days can be queried. A single query should not exceed one day.
 	//
 	// This parameter is required.
 	//

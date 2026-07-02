@@ -83,7 +83,7 @@ func (s *DescribeUnprotectedPortTrendResponseBody) Validate() error {
 }
 
 type DescribeUnprotectedPortTrendResponseBodyDataList struct {
-	// The number of blocked requests.
+	// The number of interceptions.
 	//
 	// example:
 	//

@@ -40,7 +40,7 @@ type DescribeAclRuleCountResponseBody struct {
 	InternetOutAclCount *int32 `json:"InternetOutAclCount,omitempty" xml:"InternetOutAclCount,omitempty"`
 	// Deprecated
 	//
-	// The number of inbound access control policies for the NAT firewall.	Notice: This field is deprecated..
+	// The number of inbound access control policies for the NAT firewall.	Notice: This field is deprecated.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribeAclRuleCountResponseBody struct {
 	//
 	// 8
 	TotalAclCount *int32 `json:"TotalAclCount,omitempty" xml:"TotalAclCount,omitempty"`
-	// The number of access control policies for the VPC firewall.
+	// The number of access control policies for VPC firewalls.
 	//
 	// example:
 	//

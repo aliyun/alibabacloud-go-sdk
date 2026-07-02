@@ -22,7 +22,7 @@ type iDescribePageDocumentsResponseBody interface {
 }
 
 type DescribePageDocumentsResponseBody struct {
-	// The document list.
+	// The list of documents.
 	Docs []*DescribePageDocumentsResponseBodyDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
 	// The image URL.
 	//
