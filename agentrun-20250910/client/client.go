@@ -1158,7 +1158,7 @@ func (client *Client) CreateSandbox(request *CreateSandboxRequest) (_result *Cre
 //
 // Description:
 //
-// Creates a template for launching sandboxes. A template defines the runtime environment, resource configuration, and other settings for a sandbox.
+// Creates a new template for subsequently creating sandboxes. A template defines the runtime environment, resource configuration, and other settings for sandboxes.
 //
 // @param request - CreateTemplateRequest
 //
@@ -1204,7 +1204,7 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 //
 // Description:
 //
-// Creates a template for launching sandboxes. A template defines the runtime environment, resource configuration, and other settings for a sandbox.
+// Creates a new template for subsequently creating sandboxes. A template defines the runtime environment, resource configuration, and other settings for sandboxes.
 //
 // @param request - CreateTemplateRequest
 //

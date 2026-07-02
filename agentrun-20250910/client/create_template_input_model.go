@@ -60,7 +60,7 @@ type iCreateTemplateInput interface {
 }
 
 type CreateTemplateInput struct {
-	// Controls whether data plane calls can create, stop, or delete the sandbox.
+	// Whether to allow data channel to call create/stop/delete sandbox APIs
 	//
 	// if can be null:
 	// true
@@ -69,11 +69,11 @@ type CreateTemplateInput struct {
 	//
 	// true
 	AllowAnonymousManage *bool `json:"allowAnonymousManage,omitempty" xml:"allowAnonymousManage,omitempty"`
-	// The Application Real-Time Monitoring Service (ARMS) configuration.
+	// ARMS configuration
 	ArmsConfiguration *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
-	// The container configuration. You can only use images based on the Browser or Code Interpreter base images.
+	// Container configuration, only images based on Browser/Code Interpreter base images are allowed
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
-	// The number of CPU cores.
+	// CPU resource configuration (unit: cores)
 	//
 	// This parameter is required.
 	//
@@ -81,35 +81,34 @@ type CreateTemplateInput struct {
 	//
 	// 2
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The credential configuration.
+	// Credential configuration
 	CredentialConfiguration *CredentialConfiguration `json:"credentialConfiguration,omitempty" xml:"credentialConfiguration,omitempty"`
-	// The template description.
+	// Template description
 	//
 	// example:
 	//
 	// 模板描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The disk size in MB.
+	// Disk size
 	//
 	// example:
 	//
 	// 10240
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	// Controls whether to enable the Sandbox Agent.
-	EnableAgent *bool `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
-	// Specifies whether to enable the pre-stop hook.
+	// Sandbox Agent switch
+	EnableAgent   *bool `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
 	EnablePreStop *bool `json:"enablePreStop,omitempty" xml:"enablePreStop,omitempty"`
-	// The environment variables for the sandbox.
+	// Environment variables
 	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
-	// The Alibaba Cloud Resource Name (ARN) of the execution role.
+	// Execution role ARN
 	//
 	// example:
 	//
 	// acs:ram::123456789:role/aliyunfcdefaultrole
 	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	// The log configuration.
+	// Log configuration
 	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
-	// The memory size in MB.
+	// Memory resource configuration (unit: MB)
 	//
 	// This parameter is required.
 	//
@@ -117,33 +116,32 @@ type CreateTemplateInput struct {
 	//
 	// 2048
 	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The Network Attached Storage (NAS) mount configuration.
+	// NAS mount configuration
 	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	// The network configuration.
+	// Network configuration
 	//
 	// This parameter is required.
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	// A list of Object Storage Service (OSS) configurations.
-	OssConfiguration []*OssConfiguration `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
-	// The timeout for the pre-stop hook, in seconds. This parameter applies only when `enablePreStop` is set to `true`.
-	PreStopTimeoutInSeconds *int32 `json:"preStopTimeoutInSeconds,omitempty" xml:"preStopTimeoutInSeconds,omitempty"`
-	// The duration in seconds that a sandbox can be idle before it is automatically stopped.
+	// OSS configuration
+	OssConfiguration        []*OssConfiguration `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
+	PreStopTimeoutInSeconds *int32              `json:"preStopTimeoutInSeconds,omitempty" xml:"preStopTimeoutInSeconds,omitempty"`
+	// Sandbox idle timeout (in seconds)
 	//
 	// example:
 	//
 	// 1800
 	SandboxIdleTimeoutInSeconds *int32 `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
-	// The maximum time-to-live (TTL) in seconds for the sandbox. The sandbox is terminated after this duration, regardless of activity.
+	// Sandbox time-to-live (in seconds)
 	//
 	// example:
 	//
 	// 26000
 	SandboxTTLInSeconds *int32 `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
-	// The scaling configuration.
+	// Scaling configuration
 	ScalingConfig *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
-	// The template configuration. This is a flexible object whose structure varies depending on the `templateType`.
+	// Template configuration (flexible object structure that varies depending on templateType)
 	TemplateConfiguration map[string]interface{} `json:"templateConfiguration" xml:"templateConfiguration"`
-	// A unique name for the template within your account.
+	// Template name (must be unique within the account)
 	//
 	// This parameter is required.
 	//
@@ -151,7 +149,7 @@ type CreateTemplateInput struct {
 	//
 	// browser-1766687911567
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
-	// The template type.
+	// Template type
 	//
 	// This parameter is required.
 	//
@@ -159,8 +157,7 @@ type CreateTemplateInput struct {
 	//
 	// Browser
 	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
-	// The ID of the workspace.
-	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s CreateTemplateInput) String() string {

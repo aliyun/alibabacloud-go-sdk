@@ -11,6 +11,8 @@ type iCreateWorkspaceInput interface {
 	GoString() string
 	SetDescription(v string) *CreateWorkspaceInput
 	GetDescription() *string
+	SetEnablePresetModel(v bool) *CreateWorkspaceInput
+	GetEnablePresetModel() *bool
 	SetName(v string) *CreateWorkspaceInput
 	GetName() *string
 	SetResourceGroupId(v string) *CreateWorkspaceInput
@@ -18,9 +20,10 @@ type iCreateWorkspaceInput interface {
 }
 
 type CreateWorkspaceInput struct {
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
-	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	EnablePresetModel *bool   `json:"enablePresetModel,omitempty" xml:"enablePresetModel,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	ResourceGroupId   *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
 func (s CreateWorkspaceInput) String() string {
@@ -35,6 +38,10 @@ func (s *CreateWorkspaceInput) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateWorkspaceInput) GetEnablePresetModel() *bool {
+	return s.EnablePresetModel
+}
+
 func (s *CreateWorkspaceInput) GetName() *string {
 	return s.Name
 }
@@ -45,6 +52,11 @@ func (s *CreateWorkspaceInput) GetResourceGroupId() *string {
 
 func (s *CreateWorkspaceInput) SetDescription(v string) *CreateWorkspaceInput {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateWorkspaceInput) SetEnablePresetModel(v bool) *CreateWorkspaceInput {
+	s.EnablePresetModel = &v
 	return s
 }
 

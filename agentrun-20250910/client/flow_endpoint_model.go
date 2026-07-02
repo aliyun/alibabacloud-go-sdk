@@ -50,7 +50,7 @@ type FlowEndpoint struct {
 	//
 	// example:
 	//
-	// acs:agentrun:cn-hangzhou:1760720386195983:workspaces/ws-xxx/flows/flow-xxx/endpoints/fe-xxx
+	// acs:agentrun:cn-hangzhou:123456789012:workspaces/ws-xxx/flows/flow-xxx/endpoints/fe-xxx
 	FlowEndpointArn *string `json:"flowEndpointArn,omitempty" xml:"flowEndpointArn,omitempty"`
 	// The unique identifier of the flow endpoint.
 	//

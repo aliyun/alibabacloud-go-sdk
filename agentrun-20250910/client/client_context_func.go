@@ -746,7 +746,7 @@ func (client *Client) CreateSandboxWithContext(ctx context.Context, request *Cre
 //
 // Description:
 //
-// Creates a template for launching sandboxes. A template defines the runtime environment, resource configuration, and other settings for a sandbox.
+// Creates a new template for subsequently creating sandboxes. A template defines the runtime environment, resource configuration, and other settings for sandboxes.
 //
 // @param request - CreateTemplateRequest
 //
