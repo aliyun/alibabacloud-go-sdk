@@ -18,7 +18,7 @@ type iCreateTicketResponseBody interface {
 }
 
 type CreateTicketResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type CreateTicketResponseBody struct {
 	//
 	// ccd3428c-****-****-a608-26bae29dffee
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request was successful. Value range:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: Request succeeded
+	// - true: The request was successful.
 	//
-	// - false: Request failed
+	// - false: The request failed.
 	//
 	// example:
 	//

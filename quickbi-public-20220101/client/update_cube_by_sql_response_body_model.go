@@ -24,7 +24,7 @@ type UpdateCubeBySqlResponseBody struct {
 	//
 	// 617277******************ABA47E31
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the request. Valid values:
+	// The execution result of the operation. Valid values:
 	//
 	// - true: The request was successful.
 	//

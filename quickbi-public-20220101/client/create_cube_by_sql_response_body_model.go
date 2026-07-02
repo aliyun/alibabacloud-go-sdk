@@ -24,9 +24,9 @@ type CreateCubeBySqlResponseBody struct {
 	//
 	// 05739b************02522b9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the API call. Valid values:
+	// The execution result of the operation. Valid values:
 	//
-	// - true: The request is successful.
+	// - true: The request was successful.
 	//
 	// - false: The request failed.
 	//

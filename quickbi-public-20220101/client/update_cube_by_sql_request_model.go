@@ -15,6 +15,8 @@ type iUpdateCubeBySqlRequest interface {
 	GetCustomSql() *string
 	SetDsId(v string) *UpdateCubeBySqlRequest
 	GetDsId() *string
+	SetPlaceholders(v string) *UpdateCubeBySqlRequest
+	GetPlaceholders() *string
 	SetUserId(v string) *UpdateCubeBySqlRequest
 	GetUserId() *string
 	SetWorkspaceId(v string) *UpdateCubeBySqlRequest
@@ -22,7 +24,7 @@ type iUpdateCubeBySqlRequest interface {
 }
 
 type UpdateCubeBySqlRequest struct {
-	// The ID of the dataset.
+	// The dataset ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +40,7 @@ type UpdateCubeBySqlRequest struct {
 	//
 	// select 	- from sdsd
 	CustomSql *string `json:"CustomSql,omitempty" xml:"CustomSql,omitempty"`
-	// The ID of the data source.
+	// The data source ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +48,25 @@ type UpdateCubeBySqlRequest struct {
 	//
 	// 7AAB95D-*****-****-*4FC0C976
 	DsId *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
-	// The ID of the Quick BI user. The user must have permissions to create datasets. This ID is not your Alibaba Cloud account ID. Call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=api-workbench.api_explorer.0.0.672f50daGq9ooV\\&params=%7B%7D\\&tab=DOC\\&sdkStyle=old\\&RegionId=cn-hangzhou) operation to obtain the user ID.
+	// The placeholder parameters. For more information, see the supplementary description below.
+	//
+	// example:
+	//
+	// [
+	//
+	//     {
+	//
+	//         "name": "test",
+	//
+	//         "style": "placeholder",
+	//
+	//         "type": "string"
+	//
+	//     }
+	//
+	// ]
+	Placeholders *string `json:"Placeholders,omitempty" xml:"Placeholders,omitempty"`
+	// The Quick BI UserId of a user who has permissions to create datasets. This is not your Alibaba Cloud account ID. Call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=api-workbench.api_explorer.0.0.672f50daGq9ooV&params=%7B%7D&tab=DOC&sdkStyle=old&RegionId=cn-hangzhou) operation to obtain the UserId.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +74,7 @@ type UpdateCubeBySqlRequest struct {
 	//
 	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -84,6 +104,10 @@ func (s *UpdateCubeBySqlRequest) GetDsId() *string {
 	return s.DsId
 }
 
+func (s *UpdateCubeBySqlRequest) GetPlaceholders() *string {
+	return s.Placeholders
+}
+
 func (s *UpdateCubeBySqlRequest) GetUserId() *string {
 	return s.UserId
 }
@@ -104,6 +128,11 @@ func (s *UpdateCubeBySqlRequest) SetCustomSql(v string) *UpdateCubeBySqlRequest 
 
 func (s *UpdateCubeBySqlRequest) SetDsId(v string) *UpdateCubeBySqlRequest {
 	s.DsId = &v
+	return s
+}
+
+func (s *UpdateCubeBySqlRequest) SetPlaceholders(v string) *UpdateCubeBySqlRequest {
+	s.Placeholders = &v
 	return s
 }
 

@@ -717,7 +717,7 @@ func (client *Client) AuthorizeMenuWithContext(ctx context.Context, request *Aut
 //
 // Summary:
 //
-// Batch add Feishu users.
+// Adds Lark users in batches.
 //
 // @param request - BatchAddFeishuUsersRequest
 //
@@ -1165,7 +1165,7 @@ func (client *Client) ClearDynamicTagCacheWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a dataset from a custom SQL statement.
+// Creates a dataset based on a custom SQL statement.
 //
 // @param request - CreateCubeBySqlRequest
 //
@@ -1200,8 +1200,14 @@ func (client *Client) CreateCubeBySqlWithContext(ctx context.Context, request *C
 		query["WorkspaceId"] = request.WorkspaceId
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Placeholders) {
+		body["Placeholders"] = request.Placeholders
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateCubeBySql"),
@@ -1289,11 +1295,11 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Generate a ticket for third-party embedding.
+// Generates a ticket required for embedded report access.
 //
 // Description:
 //
-// For detailed usage, please refer to [Report Embedding Data Permission Control and Parameter Passing Security Enhancement Solution](https://help.aliyun.com/document_detail/391291.html).
+// For more information, see [Security enhancement for data permission control and parameter passing in embedded reports](https://help.aliyun.com/document_detail/391291.html).
 //
 // @param request - CreateTicketRequest
 //
@@ -1324,10 +1330,6 @@ func (client *Client) CreateTicketWithContext(ctx context.Context, request *Crea
 		query["ExpireTime"] = request.ExpireTime
 	}
 
-	if !dara.IsNil(request.GlobalParam) {
-		query["GlobalParam"] = request.GlobalParam
-	}
-
 	if !dara.IsNil(request.TicketNum) {
 		query["TicketNum"] = request.TicketNum
 	}
@@ -1344,8 +1346,14 @@ func (client *Client) CreateTicketWithContext(ctx context.Context, request *Crea
 		query["WorksId"] = request.WorksId
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GlobalParam) {
+		body["GlobalParam"] = request.GlobalParam
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateTicket"),
@@ -1755,6 +1763,58 @@ func (client *Client) DelayTicketExpireTimeWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DelayTicketExpireTimeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the collaborative authorization record of a specified user.
+//
+// @param request - DeleteAuthorizationByUserIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAuthorizationByUserIdResponse
+func (client *Client) DeleteAuthorizationByUserIdWithContext(ctx context.Context, request *DeleteAuthorizationByUserIdRequest, runtime *dara.RuntimeOptions) (_result *DeleteAuthorizationByUserIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.QbiUserId) {
+		query["QbiUserId"] = request.QbiUserId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAuthorizationByUserId"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAuthorizationByUserIdResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2431,6 +2491,54 @@ func (client *Client) GetWorksEmbedListWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetWorksEmbedListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Configures the IP address whitelist for data security.
+//
+// @param request - IpWhiteListConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IpWhiteListConfigResponse
+func (client *Client) IpWhiteListConfigWithContext(ctx context.Context, request *IpWhiteListConfigRequest, runtime *dara.RuntimeOptions) (_result *IpWhiteListConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IpWhiteList) {
+		query["IpWhiteList"] = request.IpWhiteList
+	}
+
+	if !dara.IsNil(request.Operation) {
+		query["Operation"] = request.Operation
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("IpWhiteListConfig"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &IpWhiteListConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5134,7 +5242,7 @@ func (client *Client) QueryTicketInfoWithContext(ctx context.Context, request *Q
 
 // Summary:
 //
-// 根据绑定的第三方账号ID查询UserId
+// Queries a UserId by the bound third-party account ID.
 //
 // @param request - QueryUserByMobileAccountRequest
 //
@@ -6234,7 +6342,55 @@ func (client *Client) SmartqQueryAbilityWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates a dataset that is based on a custom SQL statement.
+// Migrates a user group.
+//
+// @param request - TransferUsergroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferUsergroupResponse
+func (client *Client) TransferUsergroupWithContext(ctx context.Context, request *TransferUsergroupRequest, runtime *dara.RuntimeOptions) (_result *TransferUsergroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ParentUserGroupId) {
+		query["ParentUserGroupId"] = request.ParentUserGroupId
+	}
+
+	if !dara.IsNil(request.UserGroupId) {
+		query["UserGroupId"] = request.UserGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TransferUsergroup"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TransferUsergroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a custom SQL dataset.
 //
 // @param request - UpdateCubeBySqlRequest
 //
@@ -6259,6 +6415,10 @@ func (client *Client) UpdateCubeBySqlWithContext(ctx context.Context, request *U
 
 	if !dara.IsNil(request.DsId) {
 		query["DsId"] = request.DsId
+	}
+
+	if !dara.IsNil(request.Placeholders) {
+		query["Placeholders"] = request.Placeholders
 	}
 
 	if !dara.IsNil(request.UserId) {

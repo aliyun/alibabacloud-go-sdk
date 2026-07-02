@@ -18,9 +18,24 @@ type iQueryUserByMobileAccountResponseBody interface {
 }
 
 type QueryUserByMobileAccountResponseBody struct {
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryUserByMobileAccountResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 46e53***********270
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The user information bound to the third-party account.
+	Result *QueryUserByMobileAccountResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserByMobileAccountResponseBody) String() string {
@@ -68,7 +83,17 @@ func (s *QueryUserByMobileAccountResponseBody) Validate() error {
 }
 
 type QueryUserByMobileAccountResponseBodyResult struct {
-	BoundUserId      *string `json:"BoundUserId,omitempty" xml:"BoundUserId,omitempty"`
+	// The QuickBI user ID of the bound account.
+	//
+	// example:
+	//
+	// test
+	BoundUserId *string `json:"BoundUserId,omitempty" xml:"BoundUserId,omitempty"`
+	// The mobile account name.
+	//
+	// example:
+	//
+	// test
 	ThirdAccountName *string `json:"ThirdAccountName,omitempty" xml:"ThirdAccountName,omitempty"`
 }
 

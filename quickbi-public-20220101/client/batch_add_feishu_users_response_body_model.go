@@ -18,27 +18,27 @@ type iBatchAddFeishuUsersResponseBody interface {
 }
 
 type BatchAddFeishuUsersResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D8749D65-E80A-433C-AF1B-CE9C180FF3B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result of adding members to the user group. Possible values:
+	// The result of adding user group members. Valid values:
 	//
-	// - true: Addition successful
+	// - true: The users were added.
 	//
-	// - false: Addition failed
+	// - false: The users failed to be added.
 	//
 	// example:
 	//
 	// True
 	Result *BatchAddFeishuUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Whether the request was successful. Possible values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: Request successful
+	// - true: The request was successful.
 	//
-	// - false: Request failed
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -91,15 +91,15 @@ func (s *BatchAddFeishuUsersResponseBody) Validate() error {
 }
 
 type BatchAddFeishuUsersResponseBodyResult struct {
-	// Number of failed validations.
+	// The number of users that failed validation.
 	//
 	// example:
 	//
 	// 10
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// Details of the failures.
+	// The details of the failures.
 	FailResults []*BatchAddFeishuUsersResponseBodyResultFailResults `json:"FailResults,omitempty" xml:"FailResults,omitempty" type:"Repeated"`
-	// Count of successes.
+	// The number of users that were added.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ func (s *BatchAddFeishuUsersResponseBodyResult) Validate() error {
 }
 
 type BatchAddFeishuUsersResponseBodyResultFailResults struct {
-	// Reasons for errors.
+	// The error causes.
 	FailInfos []*BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos `json:"FailInfos,omitempty" xml:"FailInfos,omitempty" type:"Repeated"`
 }
 
@@ -191,19 +191,19 @@ func (s *BatchAddFeishuUsersResponseBodyResultFailResults) Validate() error {
 }
 
 type BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// ACCOUNT_EXIST
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Description of the error code.
+	// The error code description.
 	//
 	// example:
 	//
-	// 账号已存在
+	// test
 	CodeDesc *string `json:"CodeDesc,omitempty" xml:"CodeDesc,omitempty"`
-	// Incorrect input value.
+	// The invalid input value.
 	//
 	// example:
 	//

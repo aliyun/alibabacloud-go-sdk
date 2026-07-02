@@ -22,49 +22,49 @@ type iBatchAddFeishuUsersRequest interface {
 }
 
 type BatchAddFeishuUsersRequest struct {
-	// Information of the users to be added
+	// The information about the users to be added.
 	//
 	// example:
 	//
-	// {"ad****fd": "张三", "82****5a": "李四"}"
+	// {"ad****fd": "test", "82****5a": "t\\"t"}"
 	FeishuUsers *string `json:"FeishuUsers,omitempty" xml:"FeishuUsers,omitempty"`
-	// Whether the user is an admin user:
+	// Specifies whether the user is an admin user. Valid values:
 	//
 	// - true
 	//
 	// - false
 	//
-	// Default is false if not provided
+	// Default value: false.
 	//
 	// example:
 	//
 	// False
 	IsAdmin *bool `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
-	// Whether the user is an authorization administrator
+	// Specifies whether the user is a permission management administrator. Valid values:
 	//
 	// - true
 	//
 	// - false
 	//
-	// Default is false if not provided
+	// Default value: false.
 	//
 	// example:
 	//
 	// true
 	IsAuthAdmin *bool `json:"IsAuthAdmin,omitempty" xml:"IsAuthAdmin,omitempty"`
-	// User group ID(s)
+	// The user groups to which the users belong.
 	//
 	// example:
 	//
 	// "0d5fb19b-5555-41f0-99da-1248fc27ca51,0f868dd6_68dd_4d13_8422_c5dca3bd4b61"
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-	// User type
+	// The user type. Valid values:
 	//
-	// - Developer: 1
+	// - 1: developer
 	//
-	// - Visitor: 2
+	// - 2: visitor
 	//
-	// - Analyst: 3
+	// - 3: analyst
 	//
 	// example:
 	//

@@ -15,6 +15,8 @@ type iCreateCubeBySqlRequest interface {
 	GetCustomSql() *string
 	SetDsId(v string) *CreateCubeBySqlRequest
 	GetDsId() *string
+	SetPlaceholders(v string) *CreateCubeBySqlRequest
+	GetPlaceholders() *string
 	SetUserId(v string) *CreateCubeBySqlRequest
 	GetUserId() *string
 	SetWorkspaceId(v string) *CreateCubeBySqlRequest
@@ -38,7 +40,7 @@ type CreateCubeBySqlRequest struct {
 	//
 	// select 	- from qqq
 	CustomSql *string `json:"CustomSql,omitempty" xml:"CustomSql,omitempty"`
-	// The ID of the data source.
+	// The data source ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +48,25 @@ type CreateCubeBySqlRequest struct {
 	//
 	// 7AAB95D-*****-****-*4FC0C976
 	DsId *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
-	// The ID of a Quick BI user with permissions to create datasets. This is not your Alibaba Cloud account ID. Call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=api-workbench.api_explorer.0.0.672f50daGq9ooV\\&params=%7B%7D\\&tab=DOC\\&sdkStyle=old\\&RegionId=cn-hangzhou) operation to obtain the user ID.
+	// The placeholder parameters. For more information, see the supplementary description below.
+	//
+	// example:
+	//
+	// [
+	//
+	//     {
+	//
+	//         "name": "test",
+	//
+	//         "style": "placeholder",
+	//
+	//         "type": "string"
+	//
+	//     }
+	//
+	// ]
+	Placeholders *string `json:"Placeholders,omitempty" xml:"Placeholders,omitempty"`
+	// The Quick BI UserId of a user who has permissions to create datasets. This is not your Alibaba Cloud account ID. You can call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=api-workbench.api_explorer.0.0.672f50daGq9ooV&params=%7B%7D&tab=DOC&sdkStyle=old&RegionId=cn-hangzhou) operation to obtain the UserId.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +74,7 @@ type CreateCubeBySqlRequest struct {
 	//
 	// asdaf-asda*****asd
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -84,6 +104,10 @@ func (s *CreateCubeBySqlRequest) GetDsId() *string {
 	return s.DsId
 }
 
+func (s *CreateCubeBySqlRequest) GetPlaceholders() *string {
+	return s.Placeholders
+}
+
 func (s *CreateCubeBySqlRequest) GetUserId() *string {
 	return s.UserId
 }
@@ -104,6 +128,11 @@ func (s *CreateCubeBySqlRequest) SetCustomSql(v string) *CreateCubeBySqlRequest 
 
 func (s *CreateCubeBySqlRequest) SetDsId(v string) *CreateCubeBySqlRequest {
 	s.DsId = &v
+	return s
+}
+
+func (s *CreateCubeBySqlRequest) SetPlaceholders(v string) *CreateCubeBySqlRequest {
+	s.Placeholders = &v
 	return s
 }
 
