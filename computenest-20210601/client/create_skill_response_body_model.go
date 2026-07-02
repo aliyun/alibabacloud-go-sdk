@@ -16,13 +16,13 @@ type iCreateSkillResponseBody interface {
 }
 
 type CreateSkillResponseBody struct {
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// A17F9930-E2DC-5E87-B6D6-B0BCD2B00834
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the Skill.
+	// Skill ID
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iUpdateSkillResponseBody interface {
 }
 
 type UpdateSkillResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

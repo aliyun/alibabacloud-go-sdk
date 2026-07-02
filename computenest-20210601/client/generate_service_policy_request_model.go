@@ -26,7 +26,7 @@ type iGenerateServicePolicyRequest interface {
 }
 
 type GenerateServicePolicyRequest struct {
-	// The types of operations for which to generate policy information.
+	// The operation types for which policy information needs to be generated.
 	OperationTypes []*string              `json:"OperationTypes,omitempty" xml:"OperationTypes,omitempty" type:"Repeated"`
 	Parameters     map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID.
@@ -57,11 +57,11 @@ type GenerateServicePolicyRequest struct {
 	//
 	// Template 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The trial type. The default value is NotTrial. Valid values:
+	// The trial type. Default value: NotTrial. Valid values:
 	//
-	// - Trial: The service supports trial use.
+	// - Trial: Trial is supported.
 	//
-	// - NotTrial: The service does not support trial use.
+	// - NotTrial: Trial is not supported.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iGetSkillRequest interface {
 }
 
 type GetSkillRequest struct {
-	// The ID of the Skill.
+	// The unique ID of the Skill.
 	//
 	// This parameter is required.
 	//

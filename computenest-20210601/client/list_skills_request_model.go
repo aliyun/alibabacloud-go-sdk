@@ -20,21 +20,21 @@ type iListSkillsRequest interface {
 }
 
 type ListSkillsRequest struct {
-	// The filters for querying Skills.
+	// The filter.
 	Filter []*ListSkillsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The maximum number of entries to return per page.
+	// The maximum number of entries to return in this request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Specifies whether to return the download URL of the Skill package.
+	// Specifies whether to include the download URL of the skill package.
 	//
 	// example:
 	//
 	// false
 	NeedDownloadUrl *bool `json:"NeedDownloadUrl,omitempty" xml:"NeedDownloadUrl,omitempty"`
-	// The token for the next page of results. Leave this parameter empty for the first request. For subsequent requests, use the `NextToken` value from the previous response.
+	// NextToken
 	//
 	// example:
 	//
@@ -100,27 +100,27 @@ func (s *ListSkillsRequest) Validate() error {
 }
 
 type ListSkillsRequestFilter struct {
-	// The filter name. Valid values:
+	// The filter name. You can specify one or more names for the query. Valid values:
 	//
-	// - `SkillId`: The Skill ID. An exact match is performed.
+	// - SkillId: the skill ID. Exact match.
 	//
-	// - `SkillSpaceId`: The ID of the SkillSpace. An exact match is performed.
+	// - SkillSpaceId: the SkillSpace ID. Exact match.
 	//
-	// - `SkillName`: The Skill name.
+	// - SkillName: the skill name.
 	//
-	// - `MatchType`: The match type for `SkillName`. Valid values: `exact` (exact match), `prefix` (prefix match), and `fuzzy` (fuzzy match).
+	// - MatchType: the match type that controls how SkillName is matched. Valid values: exact, prefix, and fuzzy.
 	//
-	// - `SkillType`: The Skill type. Valid values: `official` and `custom`.
+	// - SkillType: the skill type. Valid values: official and custom.
 	//
-	// - `Keyword`: The keyword for a fuzzy match on the Skill name or Skill description.
+	// - Keyword: keyword match for the skill name or skill description. Fuzzy match.
 	//
-	// - `SkillLabels`: The Skill labels. A fuzzy match is performed.
+	// - SkillLabels: the skill labels. Fuzzy match.
 	//
 	// example:
 	//
 	// SkillId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The filter values. You can specify a maximum of 10 values.
+	// The list of filter values. Valid values of N: 1 to 10.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

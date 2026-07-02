@@ -557,9 +557,9 @@ func (client *Client) CreateServiceUsageWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Before you begin, ensure that the service provider has enabled the modification feature and configured its parameters during service creation.
+// Make sure that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - CreateSkillRequest
 //
@@ -580,6 +580,10 @@ func (client *Client) CreateSkillWithContext(ctx context.Context, request *Creat
 
 	if !dara.IsNil(request.SkillDescription) {
 		query["SkillDescription"] = request.SkillDescription
+	}
+
+	if !dara.IsNil(request.SkillDisplayName) {
+		query["SkillDisplayName"] = request.SkillDisplayName
 	}
 
 	if !dara.IsNil(request.SkillLabels) {
@@ -1123,7 +1127,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Check for missing access policies before you create a service instance.
+// Queries the missing access policies before creating a service instance.
 //
 // @param tmpReq - GenerateServicePolicyRequest
 //
@@ -1761,9 +1765,9 @@ func (client *Client) GetServiceTemplateParameterConstraintsWithContext(ctx cont
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Before calling this operation, ensure that the service provider enabled the modification feature and configured the required parameters during service creation.
+// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - GetSkillRequest
 //
@@ -2108,13 +2112,13 @@ func (client *Client) ListPoliciesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Lists public skills.
+// Queries the list of public skills.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider enabled the change specification feature and configured the relevant parameters during service creation.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListPublicSkillsRequest
 //
@@ -2804,13 +2808,13 @@ func (client *Client) ListSkillSpacesWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Retrieves a list of Skills.
+// Queries a list of skills.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider has enabled modification and configured the modification parameters when creating the service.
+// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListSkillsRequest
 //
@@ -3694,9 +3698,9 @@ func (client *Client) UpdateServiceUsageWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider has enabled the option to modify configurations and configured the relevant parameters during service creation.
+// Make sure that the service provider has enabled the specification change feature and configured the specification change parameters when creating the service.
 //
 // @param request - UpdateSkillRequest
 //
@@ -3717,6 +3721,10 @@ func (client *Client) UpdateSkillWithContext(ctx context.Context, request *Updat
 
 	if !dara.IsNil(request.SkillDescription) {
 		query["SkillDescription"] = request.SkillDescription
+	}
+
+	if !dara.IsNil(request.SkillDisplayName) {
+		query["SkillDisplayName"] = request.SkillDisplayName
 	}
 
 	if !dara.IsNil(request.SkillId) {

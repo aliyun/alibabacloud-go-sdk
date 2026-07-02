@@ -20,21 +20,21 @@ type iListPublicSkillsRequest interface {
 }
 
 type ListPublicSkillsRequest struct {
-	// A list of filters.
+	// The filter.
 	Filter []*ListPublicSkillsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The maximum number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Specifies whether to return the download link for the skill package.
+	// Specifies whether to include the download URL of the skill package.
 	//
 	// example:
 	//
 	// false
 	NeedDownloadUrl *bool `json:"NeedDownloadUrl,omitempty" xml:"NeedDownloadUrl,omitempty"`
-	// The token to retrieve the next page of results.
+	// The token for the next query.
 	//
 	// example:
 	//
@@ -100,23 +100,23 @@ func (s *ListPublicSkillsRequest) Validate() error {
 }
 
 type ListPublicSkillsRequestFilter struct {
-	// The filter criterion. Valid values:
+	// The filter name. You can specify one or more names for the query. Valid values:
 	//
-	// - `SkillId`: The ID of the skill. An exact match is performed.
+	// - SkillId: the skill ID. Exact match.
 	//
-	// - `SkillName`: The name of the skill.
+	// - SkillName: the skill name.
 	//
-	// - `MatchType`: The match type for the `SkillName` filter. Valid values: `exact` (exact match), `prefix` (prefix match), and `fuzzy` (fuzzy match).
+	// - MatchType: the match type that controls how SkillName is matched. Valid values: exact, prefix, and fuzzy.
 	//
-	// - `Keyword`: The keyword used for a fuzzy match on the skill name or skill description.
+	// - Keyword: keyword match for the skill name or skill description. Fuzzy match.
 	//
-	// - `SkillLabels`: The skill labels. A fuzzy match is performed.
+	// - SkillLabels: the skill label set. Fuzzy match.
 	//
 	// example:
 	//
 	// SkillId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The filter values. You can specify 1 to 10 values.
+	// The list of filter values. Valid values of N: 1 to 10.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

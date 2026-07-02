@@ -25,6 +25,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-hangzhou":    dara.String("computenest.cn-hangzhou.aliyuncs.com"),
+		"ap-southeast-1": dara.String("computenest.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -766,9 +770,9 @@ func (client *Client) CreateServiceUsage(request *CreateServiceUsageRequest) (_r
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Before you begin, ensure that the service provider has enabled the modification feature and configured its parameters during service creation.
+// Make sure that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - CreateSkillRequest
 //
@@ -789,6 +793,10 @@ func (client *Client) CreateSkillWithOptions(request *CreateSkillRequest, runtim
 
 	if !dara.IsNil(request.SkillDescription) {
 		query["SkillDescription"] = request.SkillDescription
+	}
+
+	if !dara.IsNil(request.SkillDisplayName) {
+		query["SkillDisplayName"] = request.SkillDisplayName
 	}
 
 	if !dara.IsNil(request.SkillLabels) {
@@ -846,9 +854,9 @@ func (client *Client) CreateSkillWithOptions(request *CreateSkillRequest, runtim
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Before you begin, ensure that the service provider has enabled the modification feature and configured its parameters during service creation.
+// Make sure that the service provider has enabled the Upgrade/Downgrade feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - CreateSkillRequest
 //
@@ -1554,7 +1562,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Check for missing access policies before you create a service instance.
+// Queries the missing access policies before creating a service instance.
 //
 // @param tmpReq - GenerateServicePolicyRequest
 //
@@ -1628,7 +1636,7 @@ func (client *Client) GenerateServicePolicyWithOptions(tmpReq *GenerateServicePo
 
 // Summary:
 //
-// Check for missing access policies before you create a service instance.
+// Queries the missing access policies before creating a service instance.
 //
 // @param request - GenerateServicePolicyRequest
 //
@@ -2366,9 +2374,9 @@ func (client *Client) GetServiceTemplateParameterConstraints(request *GetService
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Before calling this operation, ensure that the service provider enabled the modification feature and configured the required parameters during service creation.
+// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - GetSkillRequest
 //
@@ -2416,9 +2424,9 @@ func (client *Client) GetSkillWithOptions(request *GetSkillRequest, runtime *dar
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Before calling this operation, ensure that the service provider enabled the modification feature and configured the required parameters during service creation.
+// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - GetSkillRequest
 //
@@ -2869,13 +2877,13 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 
 // Summary:
 //
-// Lists public skills.
+// Queries the list of public skills.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider enabled the change specification feature and configured the relevant parameters during service creation.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListPublicSkillsRequest
 //
@@ -2931,13 +2939,13 @@ func (client *Client) ListPublicSkillsWithOptions(request *ListPublicSkillsReque
 
 // Summary:
 //
-// Lists public skills.
+// Queries the list of public skills.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider enabled the change specification feature and configured the relevant parameters during service creation.
+// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListPublicSkillsRequest
 //
@@ -3832,13 +3840,13 @@ func (client *Client) ListSkillSpaces(request *ListSkillSpacesRequest) (_result 
 
 // Summary:
 //
-// Retrieves a list of Skills.
+// Queries a list of skills.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider has enabled modification and configured the modification parameters when creating the service.
+// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListSkillsRequest
 //
@@ -3894,13 +3902,13 @@ func (client *Client) ListSkillsWithOptions(request *ListSkillsRequest, runtime 
 
 // Summary:
 //
-// Retrieves a list of Skills.
+// Queries a list of skills.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider has enabled modification and configured the modification parameters when creating the service.
+// Make sure that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - ListSkillsRequest
 //
@@ -5022,9 +5030,9 @@ func (client *Client) UpdateServiceUsage(request *UpdateServiceUsageRequest) (_r
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider has enabled the option to modify configurations and configured the relevant parameters during service creation.
+// Make sure that the service provider has enabled the specification change feature and configured the specification change parameters when creating the service.
 //
 // @param request - UpdateSkillRequest
 //
@@ -5045,6 +5053,10 @@ func (client *Client) UpdateSkillWithOptions(request *UpdateSkillRequest, runtim
 
 	if !dara.IsNil(request.SkillDescription) {
 		query["SkillDescription"] = request.SkillDescription
+	}
+
+	if !dara.IsNil(request.SkillDisplayName) {
+		query["SkillDisplayName"] = request.SkillDisplayName
 	}
 
 	if !dara.IsNil(request.SkillId) {
@@ -5102,9 +5114,9 @@ func (client *Client) UpdateSkillWithOptions(request *UpdateSkillRequest, runtim
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure the service provider has enabled the option to modify configurations and configured the relevant parameters during service creation.
+// Make sure that the service provider has enabled the specification change feature and configured the specification change parameters when creating the service.
 //
 // @param request - UpdateSkillRequest
 //

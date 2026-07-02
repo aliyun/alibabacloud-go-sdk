@@ -15,6 +15,8 @@ type iCreateSkillRequest interface {
 	GetOssUrl() *string
 	SetSkillDescription(v string) *CreateSkillRequest
 	GetSkillDescription() *string
+	SetSkillDisplayName(v string) *CreateSkillRequest
+	GetSkillDisplayName() *string
 	SetSkillLabels(v []*string) *CreateSkillRequest
 	GetSkillLabels() []*string
 	SetSkillName(v string) *CreateSkillRequest
@@ -28,37 +30,38 @@ type iCreateSkillRequest interface {
 }
 
 type CreateSkillRequest struct {
-	// A client-generated token that ensures request idempotence. It must be unique for each request. The **ClientToken*	- can contain only ASCII characters and must be no more than 64 characters long.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Required when SourceType is set to UPLOAD. The OSS URL of the Skill package to upload.
+	// The OSS URL of the Skill package to upload. This parameter is required when SourceType is set to UPLOAD.
 	//
 	// example:
 	//
 	// https://embedding-pic.oss-cn-beijing-internal.aliyuncs.com/30516570
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
-	// The description of the Skill.
+	// The Skill description.
 	//
 	// example:
 	//
 	// 11111
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
+	SkillDisplayName *string `json:"SkillDisplayName,omitempty" xml:"SkillDisplayName,omitempty"`
 	// The Skill labels.
 	//
 	// example:
 	//
 	// ["category:frontend-development"]
 	SkillLabels []*string `json:"SkillLabels,omitempty" xml:"SkillLabels,omitempty" type:"Repeated"`
-	// The name of the Skill.
+	// The Skill name.
 	//
 	// example:
 	//
 	// 11111
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
-	// The ID of the SkillSpace containing the Skill.
+	// The ID of the SkillSpace to which the Skill belongs.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +69,13 @@ type CreateSkillRequest struct {
 	//
 	// ss-111111
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
-	// Required when SourceType is set to COPY. The ID of the public Skill.
+	// The public Skill ID. This parameter is required when SourceType is set to COPY.
 	//
 	// example:
 	//
 	// s-11111
 	SourceSkillId *string `json:"SourceSkillId,omitempty" xml:"SourceSkillId,omitempty"`
-	// The creation method for the Skill.
+	// The source type used when creating the Skill.
 	//
 	// This parameter is required.
 	//
@@ -100,6 +103,10 @@ func (s *CreateSkillRequest) GetOssUrl() *string {
 
 func (s *CreateSkillRequest) GetSkillDescription() *string {
 	return s.SkillDescription
+}
+
+func (s *CreateSkillRequest) GetSkillDisplayName() *string {
+	return s.SkillDisplayName
 }
 
 func (s *CreateSkillRequest) GetSkillLabels() []*string {
@@ -134,6 +141,11 @@ func (s *CreateSkillRequest) SetOssUrl(v string) *CreateSkillRequest {
 
 func (s *CreateSkillRequest) SetSkillDescription(v string) *CreateSkillRequest {
 	s.SkillDescription = &v
+	return s
+}
+
+func (s *CreateSkillRequest) SetSkillDisplayName(v string) *CreateSkillRequest {
+	s.SkillDisplayName = &v
 	return s
 }
 

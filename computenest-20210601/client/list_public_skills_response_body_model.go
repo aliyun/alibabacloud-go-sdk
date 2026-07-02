@@ -22,25 +22,25 @@ type iListPublicSkillsResponseBody interface {
 }
 
 type ListPublicSkillsResponseBody struct {
-	// The maximum number of entries returned per page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// The token for the next page.
 	//
 	// example:
 	//
 	// AAAAAZ9FmxgN6wKfeK/GOKRnnjU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 3F976EF8-C10A-57DC-917C-BB7BEB508FFB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of public skills.
+	// The list of skills.
 	Skills []*ListPublicSkillsResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -117,45 +117,49 @@ func (s *ListPublicSkillsResponseBody) Validate() error {
 }
 
 type ListPublicSkillsResponseBodySkills struct {
-	// The creation time.
+	// The time when the skill was created.
 	//
 	// example:
 	//
 	// 2025-09-11T02:18:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The download link for the skill package.
+	// The download URL of the skill package.
 	//
 	// example:
 	//
 	// https://testts-1.oss-cn-beijing.aliyuncs.com/app/yyb_9.1.1.zip
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The description of the skill.
+	// if can be null:
+	// true
+	Locales []*ListPublicSkillsResponseBodySkillsLocales `json:"Locales,omitempty" xml:"Locales,omitempty" type:"Repeated"`
+	// The skill description.
 	//
 	// example:
 	//
 	// 11111
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
-	// The ID of the skill.
+	SkillDisplayName *string `json:"SkillDisplayName,omitempty" xml:"SkillDisplayName,omitempty"`
+	// Skill ID
 	//
 	// example:
 	//
 	// af7e49d9-277f-454a-afc5-1513d41cac31
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	// The labels attached to the skill.
+	// The skill label set.
 	SkillLabels []*string `json:"SkillLabels,omitempty" xml:"SkillLabels,omitempty" type:"Repeated"`
-	// The name of the skill.
+	// The skill name.
 	//
 	// example:
 	//
 	// ziptest
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
-	// The ID of the skill space.
+	// The ID of the SkillSpace to which the skill belongs.
 	//
 	// example:
 	//
 	// ss-1111111
 	SkillSpaceId *string `json:"SkillSpaceId,omitempty" xml:"SkillSpaceId,omitempty"`
-	// The update time.
+	// The time when the skill was last updated.
 	//
 	// example:
 	//
@@ -179,8 +183,16 @@ func (s *ListPublicSkillsResponseBodySkills) GetDownloadUrl() *string {
 	return s.DownloadUrl
 }
 
+func (s *ListPublicSkillsResponseBodySkills) GetLocales() []*ListPublicSkillsResponseBodySkillsLocales {
+	return s.Locales
+}
+
 func (s *ListPublicSkillsResponseBodySkills) GetSkillDescription() *string {
 	return s.SkillDescription
+}
+
+func (s *ListPublicSkillsResponseBodySkills) GetSkillDisplayName() *string {
+	return s.SkillDisplayName
 }
 
 func (s *ListPublicSkillsResponseBodySkills) GetSkillId() *string {
@@ -213,8 +225,18 @@ func (s *ListPublicSkillsResponseBodySkills) SetDownloadUrl(v string) *ListPubli
 	return s
 }
 
+func (s *ListPublicSkillsResponseBodySkills) SetLocales(v []*ListPublicSkillsResponseBodySkillsLocales) *ListPublicSkillsResponseBodySkills {
+	s.Locales = v
+	return s
+}
+
 func (s *ListPublicSkillsResponseBodySkills) SetSkillDescription(v string) *ListPublicSkillsResponseBodySkills {
 	s.SkillDescription = &v
+	return s
+}
+
+func (s *ListPublicSkillsResponseBodySkills) SetSkillDisplayName(v string) *ListPublicSkillsResponseBodySkills {
+	s.SkillDisplayName = &v
 	return s
 }
 
@@ -244,5 +266,59 @@ func (s *ListPublicSkillsResponseBodySkills) SetUpdateTime(v string) *ListPublic
 }
 
 func (s *ListPublicSkillsResponseBodySkills) Validate() error {
+	if s.Locales != nil {
+		for _, item := range s.Locales {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListPublicSkillsResponseBodySkillsLocales struct {
+	EnValue       *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	OriginalValue *string `json:"OriginalValue,omitempty" xml:"OriginalValue,omitempty"`
+	ZhValue       *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
+}
+
+func (s ListPublicSkillsResponseBodySkillsLocales) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListPublicSkillsResponseBodySkillsLocales) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublicSkillsResponseBodySkillsLocales) GetEnValue() *string {
+	return s.EnValue
+}
+
+func (s *ListPublicSkillsResponseBodySkillsLocales) GetOriginalValue() *string {
+	return s.OriginalValue
+}
+
+func (s *ListPublicSkillsResponseBodySkillsLocales) GetZhValue() *string {
+	return s.ZhValue
+}
+
+func (s *ListPublicSkillsResponseBodySkillsLocales) SetEnValue(v string) *ListPublicSkillsResponseBodySkillsLocales {
+	s.EnValue = &v
+	return s
+}
+
+func (s *ListPublicSkillsResponseBodySkillsLocales) SetOriginalValue(v string) *ListPublicSkillsResponseBodySkillsLocales {
+	s.OriginalValue = &v
+	return s
+}
+
+func (s *ListPublicSkillsResponseBodySkillsLocales) SetZhValue(v string) *ListPublicSkillsResponseBodySkillsLocales {
+	s.ZhValue = &v
+	return s
+}
+
+func (s *ListPublicSkillsResponseBodySkillsLocales) Validate() error {
 	return dara.Validate(s)
 }
