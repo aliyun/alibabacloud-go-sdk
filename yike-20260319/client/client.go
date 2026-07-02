@@ -2247,6 +2247,72 @@ func (client *Client) SubmitYikeStoryboardJob(request *SubmitYikeStoryboardJobRe
 
 // Summary:
 //
+// 提交一刻数字人口播视频生成任务
+//
+// @param request - SubmitYikeVideoCloneJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitYikeVideoCloneJobResponse
+func (client *Client) SubmitYikeVideoCloneJobWithOptions(request *SubmitYikeVideoCloneJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitYikeVideoCloneJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.JobParams) {
+		body["JobParams"] = request.JobParams
+	}
+
+	if !dara.IsNil(request.UserData) {
+		body["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitYikeVideoCloneJob"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitYikeVideoCloneJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交一刻数字人口播视频生成任务
+//
+// @param request - SubmitYikeVideoCloneJobRequest
+//
+// @return SubmitYikeVideoCloneJobResponse
+func (client *Client) SubmitYikeVideoCloneJob(request *SubmitYikeVideoCloneJobRequest) (_result *SubmitYikeVideoCloneJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitYikeVideoCloneJobResponse{}
+	_body, _err := client.SubmitYikeVideoCloneJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an intelligent video generation task for a voiceover-only scenario (without a digital human). This task is applicable to video scenarios such as product showcases and news broadcasts.
 //
 // @param request - SubmitYikeVoiceNarratorJobRequest
