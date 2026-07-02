@@ -33,7 +33,7 @@ type ListTagCloudResourcesRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query.
+	// The token for the next query.
 	//
 	// example:
 	//

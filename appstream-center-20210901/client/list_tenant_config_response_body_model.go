@@ -62,12 +62,21 @@ func (s *ListTenantConfigResponseBody) Validate() error {
 }
 
 type ListTenantConfigResponseBodyTenantConfigModel struct {
-	// Indicates whether resource expiration reminders are enabled.
+	// Indicates whether resource expiration reminders are enabled. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
 	//
 	// example:
 	//
 	// true
 	AppInstanceGroupExpireRemind *bool `json:"AppInstanceGroupExpireRemind,omitempty" xml:"AppInstanceGroupExpireRemind,omitempty"`
+	// example:
+	//
+	// None
+	MultiSessionSupportType      *string   `json:"MultiSessionSupportType,omitempty" xml:"MultiSessionSupportType,omitempty"`
+	MultiSessionSupportedRegions []*string `json:"MultiSessionSupportedRegions,omitempty" xml:"MultiSessionSupportedRegions,omitempty" type:"Repeated"`
 }
 
 func (s ListTenantConfigResponseBodyTenantConfigModel) String() string {
@@ -82,8 +91,26 @@ func (s *ListTenantConfigResponseBodyTenantConfigModel) GetAppInstanceGroupExpir
 	return s.AppInstanceGroupExpireRemind
 }
 
+func (s *ListTenantConfigResponseBodyTenantConfigModel) GetMultiSessionSupportType() *string {
+	return s.MultiSessionSupportType
+}
+
+func (s *ListTenantConfigResponseBodyTenantConfigModel) GetMultiSessionSupportedRegions() []*string {
+	return s.MultiSessionSupportedRegions
+}
+
 func (s *ListTenantConfigResponseBodyTenantConfigModel) SetAppInstanceGroupExpireRemind(v bool) *ListTenantConfigResponseBodyTenantConfigModel {
 	s.AppInstanceGroupExpireRemind = &v
+	return s
+}
+
+func (s *ListTenantConfigResponseBodyTenantConfigModel) SetMultiSessionSupportType(v string) *ListTenantConfigResponseBodyTenantConfigModel {
+	s.MultiSessionSupportType = &v
+	return s
+}
+
+func (s *ListTenantConfigResponseBodyTenantConfigModel) SetMultiSessionSupportedRegions(v []*string) *ListTenantConfigResponseBodyTenantConfigModel {
+	s.MultiSessionSupportedRegions = v
 	return s
 }
 

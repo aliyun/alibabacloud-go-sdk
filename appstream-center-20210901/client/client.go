@@ -403,9 +403,9 @@ func (client *Client) BatchCreateLlmTemplates(request *BatchCreateLlmTemplatesRe
 //
 // Description:
 //
-// You can assign a model group to resources associated with agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the WUYING Agent Management Center. The model group serves as the inference engine for tasks executed by agents within the resource group.
+// You can assign a model group to the resources associated with agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the WUYING Agent Management Center. The model group serves as the inference engine for tasks executed by agents within the resource group.
 //
-// When both an agent runtime and its resource group have model groups configured, the model group bound to the resource group takes effect. The resource group setting takes priority over the agent runtime setting.
+// When an agent runtime has its own model group configured and the resource group it belongs to also has a model group configured, the model group bound to the resource group takes effect. The resource group setting has a higher priority than the agent runtime setting.
 //
 // Before calling this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
 //
@@ -459,9 +459,9 @@ func (client *Client) ConfigResourceGroupModelTemplateWithOptions(request *Confi
 //
 // Description:
 //
-// You can assign a model group to resources associated with agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the WUYING Agent Management Center. The model group serves as the inference engine for tasks executed by agents within the resource group.
+// You can assign a model group to the resources associated with agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the WUYING Agent Management Center. The model group serves as the inference engine for tasks executed by agents within the resource group.
 //
-// When both an agent runtime and its resource group have model groups configured, the model group bound to the resource group takes effect. The resource group setting takes priority over the agent runtime setting.
+// When an agent runtime has its own model group configured and the resource group it belongs to also has a model group configured, the model group bound to the resource group takes effect. The resource group setting has a higher priority than the agent runtime setting.
 //
 // Before calling this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
 //
@@ -589,7 +589,7 @@ func (client *Client) ConfigRuntimeChannel(request *ConfigRuntimeChannelRequest)
 //
 // You can authorize model groups for Agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. The model groups serve as inference engines for Agent task execution.
 //
-// Make sure that you are familiar with the operations and usage of the Wuying Agent Management Center before calling this operation.
+// Before calling this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - ConfigRuntimeModelTemplateRequest
 //
@@ -647,7 +647,7 @@ func (client *Client) ConfigRuntimeModelTemplateWithOptions(request *ConfigRunti
 //
 // You can authorize model groups for Agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. The model groups serve as inference engines for Agent task execution.
 //
-// Make sure that you are familiar with the operations and usage of the Wuying Agent Management Center before calling this operation.
+// Before calling this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
 // @param request - ConfigRuntimeModelTemplateRequest
 //
@@ -3027,7 +3027,7 @@ func (client *Client) ListAppInstanceGroup(request *ListAppInstanceGroupRequest)
 
 // Summary:
 //
-// Queries the details of session instances in a delivery group, including instance IDs, instance statuses, creation time, update time, session statuses, and public IP addresses of primary network interfaces.
+// Queries the details of session instances in a delivery group, including instance ID, instance status, creation time, update time, session status, and public IP address of the primary network interface.
 //
 // @param request - ListAppInstancesRequest
 //
@@ -3101,7 +3101,7 @@ func (client *Client) ListAppInstancesWithOptions(request *ListAppInstancesReque
 
 // Summary:
 //
-// Queries the details of session instances in a delivery group, including instance IDs, instance statuses, creation time, update time, session statuses, and public IP addresses of primary network interfaces.
+// Queries the details of session instances in a delivery group, including instance ID, instance status, creation time, update time, session status, and public IP address of the primary network interface.
 //
 // @param request - ListAppInstancesRequest
 //
@@ -5593,7 +5593,7 @@ func (client *Client) RemoveResourceGroupModelTemplate(request *RemoveResourceGr
 //
 // Description:
 //
-// You can call this operation to remove a specific third-party channel configuration from agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. After the configuration is removed, the agent can no longer use the third-party channel for conversations.
+// You can call this operation to remove a specific third-party channel configuration from an agent runtime such as JVS Computer, OpenClaw, or Hermes Agent in the Wuying Agent Management Center. After the configuration is removed, the agent can no longer use the third-party channel for conversations.
 //
 // Before calling this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
@@ -5659,7 +5659,7 @@ func (client *Client) RemoveRuntimeChannelWithOptions(request *RemoveRuntimeChan
 //
 // Description:
 //
-// You can call this operation to remove a specific third-party channel configuration from agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. After the configuration is removed, the agent can no longer use the third-party channel for conversations.
+// You can call this operation to remove a specific third-party channel configuration from an agent runtime such as JVS Computer, OpenClaw, or Hermes Agent in the Wuying Agent Management Center. After the configuration is removed, the agent can no longer use the third-party channel for conversations.
 //
 // Before calling this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
 //
@@ -5679,7 +5679,7 @@ func (client *Client) RemoveRuntimeChannel(request *RemoveRuntimeChannelRequest)
 
 // Summary:
 //
-// Removes a model group from an Agent runtime resource.
+// Removes model groups from Agent runtime resources.
 //
 // Description:
 //
@@ -5737,7 +5737,7 @@ func (client *Client) RemoveRuntimeModelTemplateWithOptions(request *RemoveRunti
 
 // Summary:
 //
-// Removes a model group from an Agent runtime resource.
+// Removes model groups from Agent runtime resources.
 //
 // Description:
 //

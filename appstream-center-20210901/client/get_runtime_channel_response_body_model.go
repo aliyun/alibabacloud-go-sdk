@@ -83,9 +83,13 @@ func (s *GetRuntimeChannelResponseBody) Validate() error {
 }
 
 type GetRuntimeChannelResponseBodyData struct {
-	// The channel avatar URL.
+	// The URL of the channel avatar.
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	// The channel type. Valid values: System: a system-supported channel. Custom: a custom channel.
+	// The channel type. Valid values:
+	//
+	// - System: a channel supported by the system.
+	//
+	// - Custom: a custom channel.
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	// The channel code.
 	//
@@ -95,7 +99,7 @@ type GetRuntimeChannelResponseBodyData struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The channel configuration JSON string.
 	//
-	// Currently, only the simple configuration mode is supported. You must pass in AppKey and AppSecret.
+	// Currently, only the simple configuration mode is supported. You must pass the AppKey and AppSecret parameters.
 	//
 	// example:
 	//
@@ -107,9 +111,13 @@ type GetRuntimeChannelResponseBodyData struct {
 	//
 	// }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The configuration mode. Valid values: Simple: simple configuration mode. Custom: custom configuration mode.
+	// The configuration mode. Valid values:
+	//
+	// - Simple: simple configuration mode.
+	//
+	// - Custom: custom configuration mode.
 	ConfigMode *string `json:"ConfigMode,omitempty" xml:"ConfigMode,omitempty"`
-	// The QR code configuration notification page URL. This parameter is returned only for the ENTERPRISE or ENTERPRISE_JVS platform.
+	// The URL of the QR code configuration notification page. This parameter is returned only for the ENTERPRISE or ENTERPRISE_JVS platform.
 	QrCodeNotifyUrl *string `json:"QrCodeNotifyUrl,omitempty" xml:"QrCodeNotifyUrl,omitempty"`
 	// The QR code configuration status. This parameter is returned only when the status is not in a final state.
 	QrCodeStatus *string `json:"QrCodeStatus,omitempty" xml:"QrCodeStatus,omitempty"`

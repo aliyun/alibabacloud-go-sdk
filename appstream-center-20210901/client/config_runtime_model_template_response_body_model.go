@@ -83,19 +83,19 @@ func (s *ConfigRuntimeModelTemplateResponseBody) Validate() error {
 }
 
 type ConfigRuntimeModelTemplateResponseBodyData struct {
-	// The error code returned if the execution fails.
+	// The error code returned when the execution fails.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned if the execution fails.
+	// The HTTP status code returned when the execution fails.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned if the execution fails.
+	// The error message returned when the execution fails.
 	//
 	// example:
 	//
