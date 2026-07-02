@@ -18,7 +18,7 @@ type iListClientKeysResponseBody interface {
 type ListClientKeysResponseBody struct {
 	// A list of client keys.
 	ClientKeys []*ListClientKeysResponseBodyClientKeys `json:"ClientKeys,omitempty" xml:"ClientKeys,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//

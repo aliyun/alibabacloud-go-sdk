@@ -22,7 +22,7 @@ type iDescribeNetworkRuleResponseBody interface {
 }
 
 type DescribeNetworkRuleResponseBody struct {
-	// The ARN of the access control rule.
+	// The ARN of the network rule.
 	//
 	// example:
 	//
@@ -32,21 +32,21 @@ type DescribeNetworkRuleResponseBody struct {
 	//
 	// example:
 	//
-	// Creat by kst-hzz62ee817bvyyr5****
+	// Create by kst-hzz62ee817bvyyr5****
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 3bf02f7a-015b-4f93-be0f-cc043fda2d33
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The private IP address or private CIDR block.
+	// The private IP addresses or private CIDR blocks.
 	//
 	// example:
 	//
 	// ["192.10.XX.XX","192.168.XX.XX/24"]
 	SourcePrivateIp *string `json:"SourcePrivateIp,omitempty" xml:"SourcePrivateIp,omitempty"`
-	// The network type. Only private IP addresses are supported. The value is fixed as Private.
+	// The network type. The only valid value is Private, which means only private IP addresses are supported.
 	//
 	// example:
 	//

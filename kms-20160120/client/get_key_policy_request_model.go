@@ -16,12 +16,18 @@ type iGetKeyPolicyRequest interface {
 }
 
 type GetKeyPolicyRequest struct {
+	// The ID or Alibaba Cloud Resource Name (ARN) of the key.
+	//
+	// > When you access a key in another Alibaba Cloud account, you must enter the ARN of the key. The ARN of a key is in the `acs:kms:${region}:${account}:key/${keyid}` format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// key-hzz630494463ejqjx****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The name of the key policy. Only the static value default is supported.
+	//
 	// example:
 	//
 	// default

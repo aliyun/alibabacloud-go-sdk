@@ -22,7 +22,6 @@ type iListApplicationAccessPointsResponseBody interface {
 }
 
 type ListApplicationAccessPointsResponseBody struct {
-	// A list of AAPs.
 	ApplicationAccessPoints *ListApplicationAccessPointsResponseBodyApplicationAccessPoints `json:"ApplicationAccessPoints,omitempty" xml:"ApplicationAccessPoints,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -36,7 +35,7 @@ type ListApplicationAccessPointsResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
@@ -147,18 +146,8 @@ func (s *ListApplicationAccessPointsResponseBodyApplicationAccessPoints) Validat
 }
 
 type ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint struct {
-	// The authentication method.
-	//
-	// example:
-	//
-	// ClientKey
 	AuthenticationMethod *string `json:"AuthenticationMethod,omitempty" xml:"AuthenticationMethod,omitempty"`
-	// The name of the AAP.
-	//
-	// example:
-	//
-	// aap_test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListApplicationAccessPointsResponseBodyApplicationAccessPointsApplicationAccessPoint) String() string {

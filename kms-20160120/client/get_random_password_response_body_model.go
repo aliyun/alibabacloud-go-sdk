@@ -22,7 +22,7 @@ type GetRandomPasswordResponseBody struct {
 	//
 	// IxGn>NMmNB(y?iZ<Yc,_H/{2GC\\"U****
 	RandomPassword *string `json:"RandomPassword,omitempty" xml:"RandomPassword,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

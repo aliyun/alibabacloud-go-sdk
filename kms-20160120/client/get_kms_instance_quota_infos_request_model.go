@@ -16,8 +16,26 @@ type iGetKmsInstanceQuotaInfosRequest interface {
 }
 
 type GetKmsInstanceQuotaInfosRequest struct {
+	// The ID of the KMS instance to query.
+	//
+	// example:
+	//
+	// kst-bjj62f5ba3dnpb6v8****
 	KmsInstanceId *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
-	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The resource type. Valid values:
+	//
+	// - `key`: key quota
+	//
+	// - `secret`: secret quota
+	//
+	// - `qps`: queries per second (QPS) quota
+	//
+	// - `vpc`: Virtual Private Cloud (VPC) quota
+	//
+	// example:
+	//
+	// key
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetKmsInstanceQuotaInfosRequest) String() string {

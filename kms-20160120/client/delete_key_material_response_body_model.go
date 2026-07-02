@@ -14,7 +14,7 @@ type iDeleteKeyMaterialResponseBody interface {
 }
 
 type DeleteKeyMaterialResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

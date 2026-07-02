@@ -20,7 +20,7 @@ type iImportKeyMaterialRequest interface {
 }
 
 type ImportKeyMaterialRequest struct {
-	// Use **GetParametersForImport*	- the Returned public key and the base64-encoded key material.
+	// The key material encrypted with the public key returned by **GetParametersForImport**, and then Base64-encoded.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ImportKeyMaterialRequest struct {
 	//
 	// bCPZx7I6v6KXsqEpr2OXKxuj2CCRtKdwp75Bw+BGncYqBdfjFBYRtOE6HRlT0oeiRDWzwnw9OA54OL36smDJrq4Lo9x0CyYDiuKnRkcKtMtlzW0din7Pd7IlZWWRdVueiw2qpzl7PkUWQGTdsdbzpfJJQ+qj/cRIrk/E83UGyeyytSpgnb+lu0xEYcPajRyWNsbi98N3pqqQzHXNNHO2NJqHlnQgglqTiBEjkGeKFhfKmTc3vjulIdVa3EaVIN6lwWfgx+UUYSrvbA77WDYKlDsZ4SbK2/T7za9Tp1qU7Ynqba7OKGVVj7PMbiaO80AxWZnjUMYCgEp5w7V+seOXqw==
 	EncryptedKeyMaterial *string `json:"EncryptedKeyMaterial,omitempty" xml:"EncryptedKeyMaterial,omitempty"`
-	// By calling **GetParametersForImport*	- the import token.
+	// The import token obtained by calling **GetParametersForImport**.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ImportKeyMaterialRequest struct {
 	//
 	// If this parameter is not specified or set this parameter to 0, the key material does not expire.
 	//
-	// >  The value cannot be earlier than the time when the API is called (based on the server time).
+	// > The value cannot be earlier than the time when the operation is called (based on the server time).
 	//
 	// This parameter is required.
 	//

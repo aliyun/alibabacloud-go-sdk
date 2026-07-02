@@ -20,9 +20,9 @@ type iListTagResourcesResponseBody interface {
 type ListTagResourcesResponseBody struct {
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
-	// 	- If NextToken is empty ("NextToken": ""), no next page exists.
+	// - If NextToken is empty ("NextToken": ""), no next page exists.
 	//
-	// 	- If NextToken is not empty, the next query is required, and the value is the token used to start the next query.
+	// - If NextToken is not empty, the next query is required, and the value is the token used to start the next query.
 	//
 	// example:
 	//
@@ -33,8 +33,7 @@ type ListTagResourcesResponseBody struct {
 	// example:
 	//
 	// 00827261-20B7-4562-83F2-4DF39876A45A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of tags.
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -117,30 +116,10 @@ func (s *ListTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	// The resource ID.
-	//
-	// example:
-	//
-	// key-hzz62f1cb66fa42qo****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
-	//
-	// example:
-	//
-	// key
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag.
-	//
-	// example:
-	//
-	// disk-encryption
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
-	//
-	// example:
-	//
-	// true
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {

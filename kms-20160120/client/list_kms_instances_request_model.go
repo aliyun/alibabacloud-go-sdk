@@ -19,13 +19,13 @@ type iListKmsInstancesRequest interface {
 
 type ListKmsInstancesRequest struct {
 	Filters *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
-	// The page number. Default value: 1.
+	// The number of the page to return. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 20.
 	//
 	// example:
 	//

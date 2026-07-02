@@ -14,7 +14,7 @@ type iOpenKmsServiceResponseBody interface {
 }
 
 type OpenKmsServiceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

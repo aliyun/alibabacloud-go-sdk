@@ -17,8 +17,12 @@ type iGetKmsInstanceResponseBody interface {
 
 type GetKmsInstanceResponseBody struct {
 	// The details of the KMS instance.
+	//
+	// example:
+	//
+	// 3
 	KmsInstance *GetKmsInstanceResponseBodyKmsInstance `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use this ID to locate and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,23 +66,31 @@ func (s *GetKmsInstanceResponseBody) Validate() error {
 }
 
 type GetKmsInstanceResponseBodyKmsInstance struct {
-	// A list of associated VPCs.
-	//
-	// >  If your self-managed applications are deployed in multiple VPCs in the same region, you can associate VPCs with the KMS instance beyond the VPC that you specify when you enable the KMS instance. The VPCs can belong to the same Alibaba Cloud account or different Alibaba Cloud accounts. After the configuration is complete, self-managed applications in the VPCs can access the specified KMS instance.
 	BindVpcs *GetKmsInstanceResponseBodyKmsInstanceBindVpcs `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Struct"`
-	// The content of the certificate authority (CA) certificate of the KMS instance.
+	// The CA certificate chain for the KMS instance in PEM format.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----\\r\\nMIIDuzCCAqOgAwIBAgIJALTKwWAjvbMiMA0GCSqGSIb3DQEBCwUAMHQxCzAJBgNV****-----END CERTIFICATE-----
 	CaCertificateChainPem *string `json:"CaCertificateChainPem,omitempty" xml:"CaCertificateChainPem,omitempty"`
-	ChargeType            *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the KMS instance is created.
+	// The billing method of the instance. Valid values:
+	//
+	// - `PREPAY`: subscription
+	//
+	// - `POSTPAY`: pay-as-you-go
+	//
+	// example:
+	//
+	// POSTPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The creation time of the KMS instance.
 	//
 	// example:
 	//
 	// 2023-09-05T12:44:20Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime                    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletionProtection            *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DeletionProtectionDescription *string `json:"DeletionProtectionDescription,omitempty" xml:"DeletionProtectionDescription,omitempty"`
 	// The expiration time of the KMS instance.
 	//
 	// example:
@@ -97,18 +109,43 @@ type GetKmsInstanceResponseBodyKmsInstance struct {
 	//
 	// kst-bjj62f5ba3dnpb6v8****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The number of keys that can be created for the KMS instance.
+	// The maximum number of keys that can be created in the KMS instance.
 	//
 	// example:
 	//
 	// 1000
-	KeyNum         *int64  `json:"KeyNum,omitempty" xml:"KeyNum,omitempty"`
-	Log            *int64  `json:"Log,omitempty" xml:"Log,omitempty"`
-	LogStorage     *int64  `json:"LogStorage,omitempty" xml:"LogStorage,omitempty"`
-	ProductType    *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	KeyNum *int64 `json:"KeyNum,omitempty" xml:"KeyNum,omitempty"`
+	// Indicates whether logging is enabled for the KMS instance. Valid values: `1` (enabled) and `0` (disabled).
+	//
+	// example:
+	//
+	// 1
+	Log *int64 `json:"Log,omitempty" xml:"Log,omitempty"`
+	// The log storage capacity. Unit: GB.
+	//
+	// example:
+	//
+	// 100
+	LogStorage *int64 `json:"LogStorage,omitempty" xml:"LogStorage,omitempty"`
+	// The product type.<br>Subscription:<br>`kms_ddi_public_cn`: China site<br>`kms_ddi_public_intl`: international site<br>Pay-as-you-go:<br>`kms_ppi_public_cn`: China site<br>`kms_ppi_public_intl`: international site<br><br><br><br><br><br>
+	//
+	// example:
+	//
+	// kms_ddi_public_cn
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The version of the KMS instance.
+	//
+	// example:
+	//
+	// 3
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
-	SaleStatus     *string `json:"SaleStatus,omitempty" xml:"SaleStatus,omitempty"`
-	// The number of secrets that can be created for the KMS instance.
+	// The sales status of the instance.
+	//
+	// example:
+	//
+	// Normal
+	SaleStatus *string `json:"SaleStatus,omitempty" xml:"SaleStatus,omitempty"`
+	// The maximum number of credentials that can be created in the KMS instance.
 	//
 	// example:
 	//
@@ -120,7 +157,7 @@ type GetKmsInstanceResponseBodyKmsInstance struct {
 	//
 	// 1000
 	Spec *int64 `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The time when the KMS instance is enabled.
+	// The time when the KMS instance was enabled.
 	//
 	// example:
 	//
@@ -128,39 +165,39 @@ type GetKmsInstanceResponseBodyKmsInstance struct {
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	// The status of the KMS instance. Valid values:
 	//
-	// 	- Uninitialized: The KMS instance is not enabled.
+	// - `Uninitialized`: The instance is not enabled.
 	//
-	// 	- Connecting: The KMS instance is being connected.
+	// - `Connecting`: The instance is connecting.
 	//
-	// 	- Connected: The KMS instance is enabled.
+	// - `Connected`: The instance is enabled.
 	//
-	// 	- Disconnected: The KMS instance is disconnected.
+	// - `Disconnected`: The instance is disconnected.
 	//
-	// 	- Error: The KMS instance is abnormal.
+	// - `Error`: The instance is in an error state.
 	//
 	// example:
 	//
 	// Connected
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The virtual private cloud (VPC) with which the KMS instance is associated.
+	// The VPC to which the KMS instance is attached.
 	//
 	// example:
 	//
 	// vpc-bp19z7cwmltad5dff****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The access management quota for the KMS instance.
+	// The maximum number of VPCs that can be associated with the KMS instance for access control.
 	//
 	// example:
 	//
 	// 5
 	VpcNum *int64 `json:"VpcNum,omitempty" xml:"VpcNum,omitempty"`
-	// The vSwitch in the VPC.
+	// The vSwitches in the VPC to which the KMS instance is attached.
 	//
 	// example:
 	//
 	// vsw-bp1i512amda6d10a0****
 	VswitchIds []*string `json:"VswitchIds,omitempty" xml:"VswitchIds,omitempty" type:"Repeated"`
-	// The zone with which the KMS instance is associated.
+	// The zones to which the KMS instance is attached.
 	//
 	// example:
 	//
@@ -190,6 +227,14 @@ func (s *GetKmsInstanceResponseBodyKmsInstance) GetChargeType() *string {
 
 func (s *GetKmsInstanceResponseBodyKmsInstance) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) GetDeletionProtection() *bool {
+	return s.DeletionProtection
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) GetDeletionProtectionDescription() *string {
+	return s.DeletionProtectionDescription
 }
 
 func (s *GetKmsInstanceResponseBodyKmsInstance) GetEndDate() *string {
@@ -277,6 +322,16 @@ func (s *GetKmsInstanceResponseBodyKmsInstance) SetChargeType(v string) *GetKmsI
 
 func (s *GetKmsInstanceResponseBodyKmsInstance) SetCreateTime(v string) *GetKmsInstanceResponseBodyKmsInstance {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetDeletionProtection(v bool) *GetKmsInstanceResponseBodyKmsInstance {
+	s.DeletionProtection = &v
+	return s
+}
+
+func (s *GetKmsInstanceResponseBodyKmsInstance) SetDeletionProtectionDescription(v string) *GetKmsInstanceResponseBodyKmsInstance {
+	s.DeletionProtectionDescription = &v
 	return s
 }
 
@@ -409,29 +464,9 @@ func (s *GetKmsInstanceResponseBodyKmsInstanceBindVpcs) Validate() error {
 }
 
 type GetKmsInstanceResponseBodyKmsInstanceBindVpcsBindVpc struct {
-	// The region to which the VPC belongs.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The vSwitch in the VPC.
-	//
-	// example:
-	//
-	// vsw-bp1i512amhdje10f1****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
-	//
-	// example:
-	//
-	// vpc-bp19z7djuhtad5dff****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The Alibaba Cloud account to which the VPC belongs.
-	//
-	// example:
-	//
-	// 190325303126****
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VSwitchId  *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VpcOwnerId *string `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
 }
 

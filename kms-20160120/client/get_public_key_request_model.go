@@ -18,8 +18,25 @@ type iGetPublicKeyRequest interface {
 }
 
 type GetPublicKeyRequest struct {
+	// Specifies whether to enable the DryRun mode.
+	//
+	// - true: enables the DryRun mode.
+	//
+	// - false (default): disables the DryRun mode.
+	//
+	// The DryRun mode is used to test API calls, verify your permissions on resources, and check whether the parameters are valid. If you enable the DryRun mode, KMS always returns a failed response and a failure reason. The failure reasons include the following:
+	//
+	// - DryRunOperationError: The request would have succeeded if the DryRun parameter is not specified.
+	//
+	// - ValidationError: The specified parameters in the request are invalid.
+	//
+	// - AccessDeniedError: You are not authorized to perform the operation on the KMS resource.
+	//
+	// example:
+	//
+	// false
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+	// The globally unique identifier of the customer master key (CMK). This parameter can also be an alias that is bound to the CMK. For more information, see [Use of aliases](https://help.aliyun.com/document_detail/68522.html).
 	//
 	// This parameter is required.
 	//
@@ -27,7 +44,7 @@ type GetPublicKeyRequest struct {
 	//
 	// 5c438b18-05be-40ad-b6c2-3be6752c****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The globally unique ID of the CMK version.
+	// The globally unique identifier of the key version.
 	//
 	// This parameter is required.
 	//

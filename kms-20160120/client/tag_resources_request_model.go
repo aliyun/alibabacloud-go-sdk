@@ -22,7 +22,7 @@ type iTagResourcesRequest interface {
 type TagResourcesRequest struct {
 	// The region ID of the resource.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/601478.html) to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/601478.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type TagResourcesRequest struct {
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource to which you want to add tags. Valid values:
 	//
-	// 	- key
+	// - key
 	//
-	// 	- secret
+	// - secret
 	//
 	// This parameter is required.
 	//
@@ -118,9 +118,9 @@ type TagResourcesRequestTag struct {
 	//
 	// You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
 	//
-	// Each key can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\\\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
+	// Each key can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
 	//
-	// >  The key cannot start with aliyun or acs:.
+	// > The key cannot start with aliyun or acs:.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type TagResourcesRequestTag struct {
 	//
 	// You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
 	//
-	// Each value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\\\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
+	// Each value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
 	//
 	// example:
 	//

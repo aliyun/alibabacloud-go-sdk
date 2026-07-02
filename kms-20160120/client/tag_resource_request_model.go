@@ -22,7 +22,7 @@ type iTagResourceRequest interface {
 type TagResourceRequest struct {
 	// The ID of the certificate.
 	//
-	// >  You can configure only one of the KeyId, SecretName, and CertificateId parameters.
+	// > You can configure only one of the KeyId, SecretName, and CertificateId parameters.
 	//
 	// example:
 	//
@@ -30,15 +30,15 @@ type TagResourceRequest struct {
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// The ID of the customer master key (CMK). The ID must be globally unique.
 	//
-	// >  You can configure only one of the KeyId, SecretName, and CertificateId parameters.
+	// > You can configure only one of the KeyId, SecretName, and CertificateId parameters.
 	//
 	// example:
 	//
-	// 08c33a6f-4e0a-4a1b-a3fa-7ddf****
+	// key-hzz630494463ejqjx****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The name of the secret.
 	//
-	// >  You can configure only one of the KeyId, SecretName, and CertificateId parameters.
+	// > You can configure only one of the KeyId, SecretName, and CertificateId parameters.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type TagResourceRequest struct {
 	//
 	// Tag attributes:
 	//
-	// 	- TagKey: the tag key.
+	// - TagKey: the tag key.
 	//
-	// 	- TagValue: the tag value.
+	// - TagValue: the tag value.
 	//
 	// This parameter is required.
 	//

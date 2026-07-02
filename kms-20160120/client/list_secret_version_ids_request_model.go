@@ -20,33 +20,33 @@ type iListSecretVersionIdsRequest interface {
 }
 
 type ListSecretVersionIdsRequest struct {
-	// Specifies whether to return deprecated secret versions.
+	// Specifies whether to include credential versions that have no version stages in the response.
 	//
 	// Valid values:
 	//
-	// 	- false: no
+	// - false (default): No
 	//
-	// 	- true: yes
-	//
-	// Default value: false.
+	// - true: Yes
 	//
 	// example:
 	//
 	// false
 	IncludeDeprecated *string `json:"IncludeDeprecated,omitempty" xml:"IncludeDeprecated,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The number of the page to return for a paged query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
+	// The number of entries to return on each page for a paged query. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the secret.
+	// The name or Alibaba Cloud Resource Name (ARN) of the credential.
+	//
+	// > When you access a credential that belongs to another Alibaba Cloud account, you must specify the ARN of the credential. The ARN of a credential is in the format of `acs:kms:${region}:${account}:secret/${secret-name}`.
 	//
 	// This parameter is required.
 	//

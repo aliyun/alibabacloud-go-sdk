@@ -22,7 +22,6 @@ type iListKeyVersionsResponseBody interface {
 }
 
 type ListKeyVersionsResponseBody struct {
-	// An array that consists of key versions.
 	KeyVersions *ListKeyVersionsResponseBodyKeyVersions `json:"KeyVersions,omitempty" xml:"KeyVersions,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -36,7 +35,7 @@ type ListKeyVersionsResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -147,25 +146,8 @@ func (s *ListKeyVersionsResponseBodyKeyVersions) Validate() error {
 }
 
 type ListKeyVersionsResponseBodyKeyVersionsKeyVersion struct {
-	// The date and time when the CMK version was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2016-03-25T10:42:40Z
 	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
-	// The globally unique ID of the CMK.
-	//
-	// >  If you set the KeyId parameter to the alias of the CMK, the ID of the CMK to which the alias is bound is returned.
-	//
-	// example:
-	//
-	// 0b30658a-ed1a-4922-b8f7-a673ca9c****
-	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The globally unique ID of the CMK version.
-	//
-	// example:
-	//
-	// 1e3304fd-68ac-4d5b-8886-ae5f01a1****
+	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
 }
 

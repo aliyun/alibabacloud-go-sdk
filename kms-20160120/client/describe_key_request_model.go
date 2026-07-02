@@ -22,7 +22,7 @@ type DescribeKeyRequest struct {
 	//
 	// example:
 	//
-	// 05754286-3ba2-4fa6-8d41-4323aca6****
+	// key-hzz630494463ejqjx****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
 

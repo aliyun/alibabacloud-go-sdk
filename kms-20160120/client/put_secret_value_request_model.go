@@ -22,7 +22,7 @@ type iPutSecretValueRequest interface {
 }
 
 type PutSecretValueRequest struct {
-	// The secret value. The value is encrypted and then stored in the new version.
+	// The secret value. The value is encrypted and stored in the specified new version.
 	//
 	// This parameter is required.
 	//
@@ -32,15 +32,17 @@ type PutSecretValueRequest struct {
 	SecretData *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
 	// The type of the secret value. Valid values:
 	//
-	// 	- text: This is the default value.
+	// - text (default)
 	//
-	// 	- binary
+	// - binary
 	//
 	// example:
 	//
 	// text
 	SecretDataType *string `json:"SecretDataType,omitempty" xml:"SecretDataType,omitempty"`
-	// The name of the secret.
+	// The name or Alibaba Cloud Resource Name (ARN) of the secret.
+	//
+	// > When you access a secret in another Alibaba Cloud account, you must specify the ARN of the secret. The ARN of a secret is in the format of `acs:kms:${region}:${account}:secret/${secret-name}`.
 	//
 	// This parameter is required.
 	//
@@ -48,15 +50,15 @@ type PutSecretValueRequest struct {
 	//
 	// secret001
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The new version of the secret value. Version numbers must be unique in each secret.
+	// The version number of the secret. The value must be unique in the secret.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 00000000000000000000000000000000203
+	// v3
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	// The stage labels that are used to mark the new version. If you do not specify this parameter, Secrets Manager marks the new version with ACSCurrent.
+	// The stage labels that are used to mark the new version. If you do not specify this parameter, KMS marks the new version with ACSCurrent.
 	//
 	// example:
 	//

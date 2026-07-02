@@ -14,7 +14,7 @@ type iDeleteClientKeyResponseBody interface {
 }
 
 type DeleteClientKeyResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. This is a unique identifier that Alibaba Cloud generates for the request. Use this ID to troubleshoot and locate issues.
 	//
 	// example:
 	//

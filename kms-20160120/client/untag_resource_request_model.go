@@ -20,20 +20,32 @@ type iUntagResourceRequest interface {
 }
 
 type UntagResourceRequest struct {
+	// The ID of the certificate.
+	//
+	// > You must specify one and only one of the KeyId, SecretName, and CertificateId parameters.
+	//
 	// example:
 	//
 	// 770dbe42-e146-43d1-a55a-1355db86****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the key. This is the globally unique identifier (GUID) of the master key (CMK).
+	//
+	// > You must specify one and only one of the KeyId, SecretName, and CertificateId parameters.
 	//
 	// example:
 	//
 	// 08c33a6f-4e0a-4a1b-a3fa-7ddf****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The name of the credential.
+	//
+	// > You must specify one and only one of the KeyId, SecretName, and CertificateId parameters.
+	//
 	// example:
 	//
 	// MyDbC****
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// One or more tag keys. Separate multiple tag keys with commas (,).<br> You need to specify only tag keys, not tag values.<br> The tag key can be 1 to 128 bytes in length.<br><br>
+	//
 	// This parameter is required.
 	//
 	// example:

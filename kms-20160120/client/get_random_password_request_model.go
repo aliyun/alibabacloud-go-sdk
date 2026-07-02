@@ -30,7 +30,7 @@ type GetRandomPasswordRequest struct {
 	//
 	// Valid values:
 	//
-	// ` Valid characters: 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ! \\"#$%&\\"()*+,-. /:;<=>? @[\\] your_project_id} ~  `.
+	// `Valid characters: 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ! \\"#$%&\\"()*+,-. /:;<=>? @[\\] your_project_id} ~ `.
 	//
 	// This parameter is empty by default.
 	//
@@ -42,9 +42,9 @@ type GetRandomPasswordRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type GetRandomPasswordRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type GetRandomPasswordRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -78,9 +78,9 @@ type GetRandomPasswordRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type GetRandomPasswordRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

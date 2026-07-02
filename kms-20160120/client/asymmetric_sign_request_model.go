@@ -22,7 +22,7 @@ type iAsymmetricSignRequest interface {
 }
 
 type AsymmetricSignRequest struct {
-	// The version ID of the CMK. The ID must be globally unique.
+	// The signature algorithm.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,11 @@ type AsymmetricSignRequest struct {
 	//
 	// RSA_PSS_SHA_256
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The signature algorithm.
+	// The digest of the original message. The digest is generated using the hash algorithm that corresponds to the value of the Algorithm parameter.
+	//
+	// > - The value is Base64-encoded.
+	//
+	// - For information about how to calculate a message digest, see the "Pre-signing: calculate a message digest" section of the [Asymmetric digital signature](https://help.aliyun.com/document_detail/148146.html) topic.
 	//
 	// This parameter is required.
 	//
@@ -38,8 +42,27 @@ type AsymmetricSignRequest struct {
 	//
 	// ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiu****=
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// Specifies whether to enable the dry-run feature.
+	//
+	// - true: enables the feature.
+	//
+	// - false (default): disables the feature.
+	//
+	// The dry-run feature is used to test API calls and verify the permissions on the resources that you have and the validity of the request parameters. If you enable the dry-run feature, KMS always returns a failure response and a failure reason. The failure reasons include the following:
+	//
+	// - DryRunOperationError: The request would have succeeded if the DryRun parameter is not configured.
+	//
+	// - ValidationError: The specified parameters in the request are invalid.
+	//
+	// - AccessDeniedError: You are not authorized to perform the operation on the KMS resource.
+	//
+	// example:
+	//
+	// false
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The operation that you want to perform. Set the value to **AsymmetricSign**.
+	// The globally unique identifier (GUID) of the customer master key (CMK).
+	//
+	// > You can also specify the alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
 	//
 	// This parameter is required.
 	//
@@ -47,9 +70,7 @@ type AsymmetricSignRequest struct {
 	//
 	// 5c438b18-05be-40ad-b6c2-3be6752c****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The ID of the customer master key (CMK). The ID must be globally unique.
-	//
-	// >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](https://help.aliyun.com/document_detail/68522.html).
+	// The ID of the key version. The ID must be the GUID of the key version.
 	//
 	// This parameter is required.
 	//

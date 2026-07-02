@@ -14,7 +14,7 @@ type iImportKeyMaterialResponseBody interface {
 }
 
 type ImportKeyMaterialResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

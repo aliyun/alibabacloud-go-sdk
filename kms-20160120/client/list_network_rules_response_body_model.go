@@ -22,7 +22,6 @@ type iListNetworkRulesResponseBody interface {
 }
 
 type ListNetworkRulesResponseBody struct {
-	// A list of access control rules.
 	NetworkRules *ListNetworkRulesResponseBodyNetworkRules `json:"NetworkRules,omitempty" xml:"NetworkRules,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -36,7 +35,7 @@ type ListNetworkRulesResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
@@ -147,17 +146,7 @@ func (s *ListNetworkRulesResponseBodyNetworkRules) Validate() error {
 }
 
 type ListNetworkRulesResponseBodyNetworkRulesNetworkRule struct {
-	// The name of the access control rule.
-	//
-	// example:
-	//
-	// networkrule_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network type. The value is fixed as Private. Self-managed applications can access KMS instances only over a private virtual private cloud (VPC).
-	//
-	// example:
-	//
-	// Private
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

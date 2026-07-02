@@ -22,21 +22,20 @@ type iListKmsInstancesResponseBody interface {
 }
 
 type ListKmsInstancesResponseBody struct {
-	// A list of KMS instances.
 	KmsInstances *ListKmsInstancesResponseBodyKmsInstances `json:"KmsInstances,omitempty" xml:"KmsInstances,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of KMS instances returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
@@ -147,18 +146,8 @@ func (s *ListKmsInstancesResponseBodyKmsInstances) Validate() error {
 }
 
 type ListKmsInstancesResponseBodyKmsInstancesKmsInstance struct {
-	// The ARN of the KMS instance.
-	//
-	// example:
-	//
-	// acs:kms:pre-hangzhou:120708975881****:keystore/kst-phzz64c9f84eo32dbs****
 	KmsInstanceArn *string `json:"KmsInstanceArn,omitempty" xml:"KmsInstanceArn,omitempty"`
-	// The ID of the KMS instance.
-	//
-	// example:
-	//
-	// kst-phzz64c9f84eo32dbs****
-	KmsInstanceId *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
+	KmsInstanceId  *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
 }
 
 func (s ListKmsInstancesResponseBodyKmsInstancesKmsInstance) String() string {

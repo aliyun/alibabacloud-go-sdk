@@ -16,17 +16,13 @@ type iUpdateSecretVersionStageResponseBody interface {
 }
 
 type UpdateSecretVersionStageResponseBody struct {
-	// The name of the secret.
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 8cad259f-4d77-40ec-bbd7-b9c47a423bb9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The version to which you want to apply the specified stage label.
-	//
-	// > 	- You must specify at least one of the RemoveFromVersion and MoveToVersion parameters.
-	//
-	// > 	- If the VersionStage parameter is set to ACSCurrent or ACSPrevious, this parameter is required.
+	// The name of the secret.
 	//
 	// example:
 	//

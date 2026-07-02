@@ -20,22 +20,41 @@ type iEncryptRequest interface {
 }
 
 type EncryptRequest struct {
+  // Specifies whether to enable the dry run feature.
+  // 
+  // - true: enables the dry run feature.
+  // 
+  // - false (default): disables the dry run feature.
+  // 
+  // The dry run feature is used to test API calls and verify the permissions on the resources that you have and the validity of the request parameters. You can view the check results in the response.
+  // 
+  // - DryRunOperationError: The permissions and parameters are valid. If you do not specify the DryRun parameter, the request is successful.
+  // 
+  // - ValidationError: The parameters in the request are invalid.
+  // 
+  // - AccessDeniedError: You are not authorized to perform this operation on the KMS resource.
+  // 
+  // example:
+  // 
+  // false
   DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-  // A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
+  // A JSON string that consists of key-value pairs. If you specify this parameter, you must specify the same parameter when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
   // 
   // example:
   // 
   // {"Example":"Example"}
   EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
-  // The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+  // The ID of the key. You can also specify the alias or Amazon Resource Name (ARN) of the key. For more information about aliases, see [Manage aliases](https://help.aliyun.com/document_detail/480655.html).
+  // 
+  // > When you access a key in another Alibaba Cloud account, you must specify the ARN of the key. The ARN of a key is in the `acs:kms:${region}:${account}:key/${keyid}` format.
   // 
   // This parameter is required.
   // 
   // example:
   // 
-  // 1234abcd-12ab-34cd-56ef-12345678****
+  // key-hzz630494463ejqjx****
   KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-  // The plaintext to be encrypted. The plaintext must be Base64 encoded.
+  // The plaintext to be encrypted. The plaintext must be Base64-encoded.
   // 
   // This parameter is required.
   // 

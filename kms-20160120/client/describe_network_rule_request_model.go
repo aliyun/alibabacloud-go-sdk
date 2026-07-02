@@ -14,7 +14,7 @@ type iDescribeNetworkRuleRequest interface {
 }
 
 type DescribeNetworkRuleRequest struct {
-	// The name of the access control rule that you want to query.
+	// The name of the network rule to query.
 	//
 	// This parameter is required.
 	//

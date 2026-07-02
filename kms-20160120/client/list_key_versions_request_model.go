@@ -24,7 +24,7 @@ type ListKeyVersionsRequest struct {
 	//
 	// example:
 	//
-	// 0b30658a-ed1a-4922-b8f7-a673ca9c****
+	// key-hzz630494463ejqjx****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The number of the page to return.
 	//

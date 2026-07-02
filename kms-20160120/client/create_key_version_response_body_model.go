@@ -18,7 +18,7 @@ type iCreateKeyVersionResponseBody interface {
 type CreateKeyVersionResponseBody struct {
 	// The metadata of the version.
 	KeyVersion *CreateKeyVersionResponseBodyKeyVersion `json:"KeyVersion,omitempty" xml:"KeyVersion,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ type CreateKeyVersionResponseBodyKeyVersion struct {
 	//
 	// example:
 	//
-	// 2019-08-02T10:38:27Z
+	// 2023-07-02T10:38:27Z
 	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
 	// The ID of the CMK. The ID must be globally unique.
 	//
 	// example:
 	//
-	// 0b30658a-ed1a-4922-b8f7-a673ca9c****
+	// key-hzz62f1cb66fa42qo****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The ID of the version.
 	//
 	// example:
 	//
-	// c0a3d5dc-0b47-4199-a050-b289349a****
+	// key-hzz62f1cb66fa42qo****-20v29b****
 	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
 }
 

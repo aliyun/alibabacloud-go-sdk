@@ -18,7 +18,7 @@ type iDescribeKeyVersionResponseBody interface {
 type DescribeKeyVersionResponseBody struct {
 	// The metadata of the CMK version.
 	KeyVersion *DescribeKeyVersionResponseBodyKeyVersion `json:"KeyVersion,omitempty" xml:"KeyVersion,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,15 +66,15 @@ type DescribeKeyVersionResponseBodyKeyVersion struct {
 	//
 	// example:
 	//
-	// 2016-03-25T10:42:40Z
+	// 2024-03-25T10:42:40Z
 	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
 	// The globally unique ID of the CMK.
 	//
-	// >  If you set the KeyId parameter in the request to an alias of the CMK, the ID of the CMK to which the alias is bound is returned.
+	// > If you set the KeyId parameter in the request to an alias of the CMK, the ID of the CMK to which the alias is bound is returned.
 	//
 	// example:
 	//
-	// 1234abcd-12ab-34cd-56ef-12345678****
+	// key-hzz630494463ejqjx****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The globally unique ID of the CMK version.
 	//

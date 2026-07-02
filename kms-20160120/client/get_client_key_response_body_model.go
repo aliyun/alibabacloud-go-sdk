@@ -48,39 +48,39 @@ type GetClientKeyResponseBody struct {
 	//
 	// 2023-08-31T09:14:38Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The private key algorithm of the client key.
+	// The algorithm of the private key for the client key.
 	//
 	// example:
 	//
 	// RSA_2048
 	KeyAlgorithm *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
-	// The provider of the client key.
+	// The creator of the client key.
 	//
-	// Currently, only Key Management Service (KMS) is supported. The value is fixed as KMS_PROVIDED.
+	// Currently, client keys are generated only by KMS. The value is \\`KMS_PROVIDED\\`.
 	//
 	// example:
 	//
 	// KMS_PROVIDED
 	KeyOrigin *string `json:"KeyOrigin,omitempty" xml:"KeyOrigin,omitempty"`
-	// The end of the validity period of the client key.
+	// The time when the client key expires.
 	//
 	// example:
 	//
 	// 2028-08-31T17:14:33Z
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The beginning of the validity period of the client key.
+	// The time when the validity period of the client key starts.
 	//
 	// example:
 	//
 	// 2023-08-31T17:14:33Z
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The content of the public key of the client key.
+	// The content of the public key for the client key.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----\\nMIIDcjCCAlqgAwIBAgIQT/sAVRxwYp54mrw****-----END CERTIFICATE-----
 	PublicKeyData *string `json:"PublicKeyData,omitempty" xml:"PublicKeyData,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteNetworkRuleRequest interface {
 }
 
 type DeleteNetworkRuleRequest struct {
-	// The name of the network access rule that you want to delete.
+	// The name of the network control rule to delete.
 	//
 	// This parameter is required.
 	//

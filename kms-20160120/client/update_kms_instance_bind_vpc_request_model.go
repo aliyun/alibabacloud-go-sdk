@@ -16,17 +16,17 @@ type iUpdateKmsInstanceBindVpcRequest interface {
 }
 
 type UpdateKmsInstanceBindVpcRequest struct {
-	// The VPC configuration. The configuration of each VPC contains the following content:
+	// The VPC configuration. Each VPC configuration contains the following parameters:
 	//
-	// 	- VpcId: the ID of the VPC.
+	// - VpcId: The ID of the VPC.
 	//
-	// 	- VSwitchId: the vSwitch in the VPC.
+	// - VSwitchId: The vSwitch in the VPC.
 	//
-	// 	- RegionID: the ID of the region to which the VPC belongs.
+	// - RegionID: The region where the VPC resides.
 	//
-	// 	- VpcOwnerId: the Alibaba Cloud account to which the VPC belongs.
+	// - VpcOwnerId: The Alibaba Cloud account that owns the VPC.
 	//
-	// Format: `[{"VpcId":"${VpcId}","VSwitchId":"${VSwitchId}","RegionId":"${RegionId}","VpcOwnerId":${VpcOwnerId}},..]`.
+	// The value is a JSON string in the following format: `[{"VpcId":"${VpcId}","VSwitchId":"${VSwitchId}","RegionId":"${RegionId}","VpcOwnerId":${VpcOwnerId}},...]`.
 	//
 	// This parameter is required.
 	//

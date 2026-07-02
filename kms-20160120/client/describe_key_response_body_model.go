@@ -18,7 +18,7 @@ type iDescribeKeyResponseBody interface {
 type DescribeKeyResponseBody struct {
 	// The metadata of the CMK.
 	KeyMetadata *DescribeKeyResponseBodyKeyMetadata `json:"KeyMetadata,omitempty" xml:"KeyMetadata,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ type DescribeKeyResponseBodyKeyMetadata struct {
 	//
 	// example:
 	//
-	// acs:kms:cn-hangzhou:154035569884****:key/05754286-3ba2-4fa6-8d41-4323aca6****
+	// acs:kms:cn-hangzhou:154035569884****:key/key-hzz630494463ejqjx****
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	// Indicates whether automatic key rotation is enabled. Valid values:
 	//
-	// 	- Enabled
+	// - Enabled
 	//
-	// 	- Disabled
+	// - Disabled
 	//
-	// 	- Suspended
+	// - Suspended
 	//
 	// For more information, see [Automatic key rotation](https://help.aliyun.com/document_detail/134270.html).
 	//
-	// >  Only symmetric CMKs support automatic key rotation.
+	// > Only symmetric CMKs support automatic key rotation.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type DescribeKeyResponseBodyKeyMetadata struct {
 	//
 	// example:
 	//
-	// 2021-05-20T06:34:21Z
+	// 2024-05-20T06:34:21Z
 	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
 	// The Alibaba Cloud account that is used to create the CMK.
 	//
@@ -106,17 +106,17 @@ type DescribeKeyResponseBodyKeyMetadata struct {
 	//
 	// For more information, see [ScheduleKeyDeletion](https://help.aliyun.com/document_detail/44196.html).
 	//
-	// >  This parameter is returned only when the value of the KeyState parameter is PendingDeletion.
+	// > This parameter is returned only when the value of the KeyState parameter is PendingDeletion.
 	//
 	// example:
 	//
-	// 2021-05-26T18:22:03Z
+	// 2024-05-26T18:22:03Z
 	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
 	// Indicates whether deletion protection is enabled. Valid values:
 	//
-	// 	- Enabled
+	// - Enabled
 	//
-	// 	- Disabled
+	// - Disabled
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type DescribeKeyResponseBodyKeyMetadata struct {
 	//
 	// example:
 	//
-	// 05754286-3ba2-4fa6-8d41-4323aca6****
+	// key-hzz630494463ejqjx****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The type of the CMK.
 	//
@@ -164,17 +164,17 @@ type DescribeKeyResponseBodyKeyMetadata struct {
 	//
 	// example:
 	//
-	// 2021-05-20T06:34:21Z
+	// 2024-05-20T06:34:21Z
 	LastRotationDate *string `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
 	// The time when the key material expires. The time is displayed in UTC. If this parameter value is empty, the key material does not expire.
 	//
 	// example:
 	//
-	// 2021-07-06T18:22:03Z
+	// 2024-07-06T18:22:03Z
 	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
 	// The time when the next rotation will be performed.
 	//
-	// >  This parameter is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
+	// > This parameter is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ type DescribeKeyResponseBodyKeyMetadata struct {
 	//
 	// For example, if the value is 604800s, automatic key rotation is performed at a 7-day interval.
 	//
-	// >  This parameter is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
+	// > This parameter is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
 	//
 	// example:
 	//

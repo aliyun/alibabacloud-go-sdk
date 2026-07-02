@@ -28,14 +28,33 @@ type iGenerateAndExportDataKeyShrinkRequest interface {
 }
 
 type GenerateAndExportDataKeyShrinkRequest struct {
+	// Specifies whether to enable the dry run feature.
+	//
+	// - true: enables the feature.
+	//
+	// - false (default): disables the feature.
+	//
+	// The DryRun mode is used to test API calls and verify the permissions on the resources that you have access to and the validity of the request parameters. If you enable the DryRun mode, KMS always returns a failure response and the cause of the failure. The following failure causes are included:
+	//
+	// - DryRunOperationError: The request would have succeeded if the DryRun parameter is not specified.
+	//
+	// - ValidationError: The parameters specified in the request are invalid.
+	//
+	// - AccessDeniedError: You are not authorized to perform this operation on the KMS resource.
+	//
+	// example:
+	//
+	// false
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// A JSON string of key-value pairs. If you specify this parameter here, an equivalent value is required when you decrypt or re-encrypt the data key. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
+	// A JSON string that consists of key-value pairs. If you specify this parameter, you must specify the same parameter when you call the Decrypt operation or other operations to re-encrypt the data key. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
 	// {"Example":"Example"}
 	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
-	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+	// The ID of the key. You can also specify the alias or Amazon Resource Name (ARN) of the key. For more information about aliases, see [Manage aliases](https://help.aliyun.com/document_detail/480655.html).
+	//
+	// > To access a key in another Alibaba Cloud account, you must specify the ARN of the key. The key ARN is in the format of `acs:kms:${region}:${account}:key/${keyid}`.
 	//
 	// This parameter is required.
 	//
@@ -45,11 +64,11 @@ type GenerateAndExportDataKeyShrinkRequest struct {
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The length of the data key that you want to generate. Valid values:
 	//
-	// 	- AES_256: a 256-bit symmetric key
+	// - AES_256: a 256-bit symmetric key.
 	//
-	// 	- AES_128: a 128-bit symmetric key
+	// - AES_128: a 128-bit symmetric key.
 	//
-	// >  We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If both parameters are not specified, KMS generates a 256-bit data key. If both parameters are specified, KMS ignores the KeySpec parameter.
+	// > We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If you do not specify either of the parameters, KMS generates a 256-bit data key. If you specify both parameters, KMS ignores the KeySpec parameter.
 	//
 	// example:
 	//
@@ -65,7 +84,7 @@ type GenerateAndExportDataKeyShrinkRequest struct {
 	//
 	// 32
 	NumberOfBytes *int32 `json:"NumberOfBytes,omitempty" xml:"NumberOfBytes,omitempty"`
-	// A Base64-encoded public key.
+	// The public key that is encoded in Base64.
 	//
 	// This parameter is required.
 	//
@@ -73,15 +92,13 @@ type GenerateAndExportDataKeyShrinkRequest struct {
 	//
 	// MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAndKfC2ReLL2+y8a0+ZBBeAft/uBYo86GZiYJuflqgUzKxpyuvlo3uQkBv6b+nx+0tz8g8v7GhpPWMSW5L9mNHYsvYFsa7jTxsYdt17yj6GlUHPuMIs8hr5qbwl38IHU1iIa7nYWwE2fb3ePOvLDACRJVgGpU0yxioW80d2QD+9aU4jF5dlAahcfgsNzo2CXzCUc1+xbmNuq7Rp+H9VJB9dyYOwqnW3RhOLBo21FzpORapf0UiRlrHRpk1V6ez+aE1dofaYh/9bh0m6ioxj7j5hpZbWccuEZTMBKd+cbuBkRhJzc6Tti6qwZbDiu4fUwbZS0Tqpuo1UadiyxMW********
 	PublicKeyBlob *string `json:"PublicKeyBlob,omitempty" xml:"PublicKeyBlob,omitempty"`
-	// The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
+	// The encryption algorithm that is used to encrypt the data key using the public key specified by PublicKeyBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).<br> Valid values:<br><br>
 	//
-	// Valid values:
+	// - RSAES_OAEP_SHA_256
 	//
-	// 	- RSAES_OAEP_SHA_256
+	// - RSAES_OAEP_SHA_1
 	//
-	// 	- RSAES_OAEP_SHA_1
-	//
-	// 	- SM2PKE
+	// - SM2PKE
 	//
 	// This parameter is required.
 	//
@@ -89,13 +106,11 @@ type GenerateAndExportDataKeyShrinkRequest struct {
 	//
 	// RSAES_OAEP_SHA_256
 	WrappingAlgorithm *string `json:"WrappingAlgorithm,omitempty" xml:"WrappingAlgorithm,omitempty"`
-	// The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](https://help.aliyun.com/document_detail/148147.html).
+	// The type of the key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](https://help.aliyun.com/document_detail/148147.html).<br> Valid values:<br><br>
 	//
-	// Valid values:
+	// - RSA_2048
 	//
-	// 	- RSA_2048
-	//
-	// 	- EC_SM2
+	// - EC_SM2
 	//
 	// This parameter is required.
 	//

@@ -24,7 +24,7 @@ type iListTagResourcesRequest interface {
 type ListTagResourcesRequest struct {
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
-	// >  If the call does not return all result entries, the value of the NextToken parameter is returned. By default, 200 rows are returned. You can call this operation again and set the value of the parameter to the value of the parameter that is returned in the last call to implement paged query.
+	// > If not all results are returned, the NextToken value is included in the response. By default, 200 rows are returned per page. To retrieve the next page, set this parameter to the NextToken value from the previous response.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type ListTagResourcesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the resource.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/601478.html) to query the most recent region list.
+	// > Call [DescribeRegions](https://help.aliyun.com/document_detail/601478.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -46,9 +46,9 @@ type ListTagResourcesRequest struct {
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of resource whose tags you want to query. Valid value:
 	//
-	// 	- key
+	// - key
 	//
-	// 	- secret
+	// - secret
 	//
 	// This parameter is required.
 	//
@@ -131,7 +131,7 @@ type ListTagResourcesRequestTag struct {
 	//
 	// You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
 	//
-	// >  The key cannot start with aliyun or acs:.
+	// > The key cannot start with aliyun or acs:.
 	//
 	// example:
 	//

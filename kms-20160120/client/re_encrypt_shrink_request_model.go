@@ -28,13 +28,11 @@ type iReEncryptShrinkRequest interface {
 }
 
 type ReEncryptShrinkRequest struct {
-	// The ciphertext that you want to re-encrypt.
+	// The ciphertext that you want to re-encrypt.<br> This parameter can be the ciphertext that is returned after symmetric or asymmetric key encryption.<br><br>
 	//
-	// You can set this parameter to the ciphertext that is returned after a symmetric or asymmetric encryption operation.
+	// - Symmetric encryption: the ciphertext that is returned after you call the [Encrypt](https://help.aliyun.com/document_detail/28949.html), [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html), or [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation.
 	//
-	// 	- Symmetric encryption: the ciphertext returned after you call the [Encrypt](https://help.aliyun.com/document_detail/28949.html), [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html), or [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation
-	//
-	// 	- Asymmetric encryption: the public key-encrypted ciphertext returned after you call the [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation, or the ciphertext encrypted by using the public key of an asymmetric key pair outside KMS
+	// - Asymmetric key encryption: the data that is encrypted using a public key after you call the [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation, or the data that is encrypted using an asymmetric public key in an external system.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +40,13 @@ type ReEncryptShrinkRequest struct {
 	//
 	// ODZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmS7FmDBBQ0BkKsQrtRnidtPwirmDcS0ZuJCU41xxAAWk4Z8qsADfbV0b+i6kQmlvj79dJdGOvtX69Uycs901q********
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
-	// A JSON string that consists of key-value pairs. This parameter specifies the EncryptionContext that is used to re-encrypt the decrypted data or data key.
+	// A JSON string that consists of key-value pairs. This parameter specifies the encryption context for the destination master key.
 	//
 	// example:
 	//
 	// {"Example":"Example"}
 	DestinationEncryptionContextShrink *string `json:"DestinationEncryptionContext,omitempty" xml:"DestinationEncryptionContext,omitempty"`
-	// The ID of the symmetric CMK that is used to re-encrypt the ciphertext after the ciphertext is decrypted.
+	// The ID of the symmetric master key that is used to re-encrypt the data after the ciphertext is decrypted.
 	//
 	// This parameter is required.
 	//
@@ -56,44 +54,57 @@ type ReEncryptShrinkRequest struct {
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
 	DestinationKeyId *string `json:"DestinationKeyId,omitempty" xml:"DestinationKeyId,omitempty"`
-	DryRun           *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The encryption algorithm based on which the public key is used to encrypt the ciphertext specified by CiphertextBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
+	// Specifies whether to enable the DryRun mode.
 	//
-	// Valid values:
+	// - true: enables the DryRun mode.
 	//
-	// 	- RSAES_OAEP_SHA_256
+	// - false (default): disables the DryRun mode.
 	//
-	// 	- RSAES_OAEP_SHA_1
+	// The DryRun mode is used to test API calls, verify whether you have the permissions to perform operations on the required resources, and check whether the request parameters are valid. If you enable the DryRun mode, KMS always returns a failure and a reason for the failure. The reasons for the failure include the following:
 	//
-	// 	- SM2PKE
+	// - DryRunOperationError: The request would have succeeded if the DryRun parameter was not configured.
 	//
-	// >  If you set CiphertextBlob to the public key-encrypted ciphertext that is returned after an asymmetric encryption operation, specify this parameter.
+	// - ValidationError: The parameters specified in the request are invalid.
+	//
+	// - AccessDeniedError: You are not authorized to perform the operation on the KMS resource.
+	//
+	// example:
+	//
+	// false
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// If CiphertextBlob is the result of public key encryption, specify the public key encryption algorithm. For more information about the algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).<br> Valid values:<br><br>
+	//
+	// - RSAES_OAEP_SHA_256
+	//
+	// - RSAES_OAEP_SHA_1
+	//
+	// - SM2PKE
+	//
+	// > You must specify this parameter when CiphertextBlob is the data that is encrypted using a public key after asymmetric key encryption.
 	//
 	// example:
 	//
 	// RSAES_OAEP_SHA_256
 	SourceEncryptionAlgorithm *string `json:"SourceEncryptionAlgorithm,omitempty" xml:"SourceEncryptionAlgorithm,omitempty"`
-	// A JSON string that consists of key-value pairs. If you specify EncryptionContext when you call the [Encrypt](https://help.aliyun.com/document_detail/28949.html), [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html), or [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation to encrypt the data or data key, an equivalent value is required here. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
+	// A JSON string that consists of key-value pairs. If you specify this parameter when you call the [Encrypt](https://help.aliyun.com/document_detail/28949.html), [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html), or [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation, you must specify the same parameter to decrypt the data. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
-	// >  If you set CiphertextBlob to the ciphertext that is returned after a symmetric encryption operation, specify this parameter.
+	// > You must specify this parameter when CiphertextBlob is the ciphertext that is returned after symmetric encryption.
 	//
 	// example:
 	//
 	// {"Example":"Example"}
 	SourceEncryptionContextShrink *string `json:"SourceEncryptionContext,omitempty" xml:"SourceEncryptionContext,omitempty"`
-	// The ID of the CMK that is used to decrypt the ciphertext.
+	// The ID of the master key that is used to decrypt the ciphertext.<br> The globally unique identifier of the master key.<br><br>
 	//
-	// This parameter is the globally unique ID of the CMK.
-	//
-	// >  If you set CiphertextBlob to the public key-encrypted ciphertext that is returned after an asymmetric encryption operation, specify this parameter.
+	// > You must specify this parameter when CiphertextBlob is the data that is encrypted using a public key after asymmetric key encryption.
 	//
 	// example:
 	//
 	// 5c438b18-05be-40ad-b6c2-3be6752c****
 	SourceKeyId *string `json:"SourceKeyId,omitempty" xml:"SourceKeyId,omitempty"`
-	// The ID of the CMK version that is used to decrypt the ciphertext.
+	// The ID of the key version that is used to decrypt the ciphertext.
 	//
-	// >  If you set CiphertextBlob to the public key-encrypted ciphertext that is returned after an asymmetric encryption operation, specify this parameter.
+	// > You must specify this parameter when CiphertextBlob is the data that is encrypted using a public key after asymmetric key encryption.
 	//
 	// example:
 	//

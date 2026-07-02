@@ -15,6 +15,8 @@ type iSetDeletionProtectionRequest interface {
 	GetEnableDeletionProtection() *bool
 	SetKeyId(v string) *SetDeletionProtectionRequest
 	GetKeyId() *string
+	SetKmsInstanceId(v string) *SetDeletionProtectionRequest
+	GetKmsInstanceId() *string
 	SetProtectedResourceArn(v string) *SetDeletionProtectionRequest
 	GetProtectedResourceArn() *string
 }
@@ -22,28 +24,34 @@ type iSetDeletionProtectionRequest interface {
 type SetDeletionProtectionRequest struct {
 	// The description of deletion protection.
 	//
-	// >  This parameter takes effect only when you set the EnableDeletionProtection parameter to true.
+	// > This parameter is available only when EnableDeletionProtection is set to true.
 	//
 	// example:
 	//
-	// This key is being used by XXX service. You are protected from deletion.
+	// The CMK is being used by XXX. Deletion protection is set.
 	DeletionProtectionDescription *string `json:"DeletionProtectionDescription,omitempty" xml:"DeletionProtectionDescription,omitempty"`
 	// Specifies whether to enable deletion protection. Valid values:
 	//
-	// 	- true: enables deletion protection.
+	// - true: enables deletion protection.
 	//
-	// 	- false: disables deletion protection.
+	// - false: disables deletion protection. This is the default value.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
-	EnableDeletionProtection *bool   `json:"EnableDeletionProtection,omitempty" xml:"EnableDeletionProtection,omitempty"`
-	KeyId                    *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The ARN of the CMK for which you want to set deletion protection.
+	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitempty" xml:"EnableDeletionProtection,omitempty"`
+	// The ID of the key.
 	//
-	// You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the CMK ARN.
+	// example:
+	//
+	// key-hzz65f3a68554s6ms****
+	KeyId         *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	KmsInstanceId *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
+	// The ARN of the CMK for which you want to configure deletion protection.<br>
+	//
+	// You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the ARN of the CMK.<br><br>
 	//
 	// example:
 	//
@@ -71,6 +79,10 @@ func (s *SetDeletionProtectionRequest) GetKeyId() *string {
 	return s.KeyId
 }
 
+func (s *SetDeletionProtectionRequest) GetKmsInstanceId() *string {
+	return s.KmsInstanceId
+}
+
 func (s *SetDeletionProtectionRequest) GetProtectedResourceArn() *string {
 	return s.ProtectedResourceArn
 }
@@ -87,6 +99,11 @@ func (s *SetDeletionProtectionRequest) SetEnableDeletionProtection(v bool) *SetD
 
 func (s *SetDeletionProtectionRequest) SetKeyId(v string) *SetDeletionProtectionRequest {
 	s.KeyId = &v
+	return s
+}
+
+func (s *SetDeletionProtectionRequest) SetKmsInstanceId(v string) *SetDeletionProtectionRequest {
+	s.KmsInstanceId = &v
 	return s
 }
 

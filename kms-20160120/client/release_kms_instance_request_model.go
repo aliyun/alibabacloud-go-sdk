@@ -16,10 +16,18 @@ type iReleaseKmsInstanceRequest interface {
 }
 
 type ReleaseKmsInstanceRequest struct {
+	// Specifies whether to forcibly release the KMS instance if it has not been backed up.
+	//
+	// - true: forcibly releases the instance.
+	//
+	// - false (default): does not release the instance.
+	//
 	// example:
 	//
 	// false
 	ForceDeleteWithoutBackup *string `json:"ForceDeleteWithoutBackup,omitempty" xml:"ForceDeleteWithoutBackup,omitempty"`
+	// The ID of the KMS instance.
+	//
 	// This parameter is required.
 	//
 	// example:

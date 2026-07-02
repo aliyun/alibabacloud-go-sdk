@@ -156,11 +156,8 @@ type DescribeSecretResponseBody struct {
 	// example:
 	//
 	// Rds
-	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	// The resource tags of the secret.
-	//
-	// This parameter is not returned if you set the FetchTags parameter to false or you do not specify the FetchTags parameter.
-	Tags *DescribeSecretResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	SecretType *string                         `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+	Tags       *DescribeSecretResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The time when the secret was updated.
 	//
 	// example:
@@ -374,17 +371,7 @@ func (s *DescribeSecretResponseBodyTags) Validate() error {
 }
 
 type DescribeSecretResponseBodyTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// key1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// val1
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

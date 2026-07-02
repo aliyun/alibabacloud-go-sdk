@@ -22,7 +22,6 @@ type iListAliasesResponseBody interface {
 }
 
 type ListAliasesResponseBody struct {
-	// The alias of the user.
 	Aliases *ListAliasesResponseBodyAliases `json:"Aliases,omitempty" xml:"Aliases,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -36,7 +35,7 @@ type ListAliasesResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -147,24 +146,9 @@ func (s *ListAliasesResponseBodyAliases) Validate() error {
 }
 
 type ListAliasesResponseBodyAliasesAlias struct {
-	// The Alibaba Cloud Resource Name (ARN) of the alias.
-	//
-	// example:
-	//
-	// acs:kms:cn-hangzhou:123456:alias/ExampleAlias1
-	AliasArn *string `json:"AliasArn,omitempty" xml:"AliasArn,omitempty"`
-	// The ID of the alias.
-	//
-	// example:
-	//
-	// alias/ExampleAlias1
+	AliasArn  *string `json:"AliasArn,omitempty" xml:"AliasArn,omitempty"`
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The CMK to which the alias belongs.
-	//
-	// example:
-	//
-	// 08c33a6f-4e0a-4a1b-a3fa-7ddfa1d****
-	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	KeyId     *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
 
 func (s ListAliasesResponseBodyAliasesAlias) String() string {

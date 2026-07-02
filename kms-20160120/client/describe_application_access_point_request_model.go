@@ -14,7 +14,7 @@ type iDescribeApplicationAccessPointRequest interface {
 }
 
 type DescribeApplicationAccessPointRequest struct {
-	// The name of the AAP that you want to query.
+	// The name of the application access point (AAP) to query.
 	//
 	// This parameter is required.
 	//

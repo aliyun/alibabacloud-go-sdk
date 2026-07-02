@@ -26,7 +26,7 @@ type RotateSecretResponseBody struct {
 	//
 	// acs:kms:cn-hangzhou:154035569884****:secret/RdsSecret/Mysql5.4/MyCred
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

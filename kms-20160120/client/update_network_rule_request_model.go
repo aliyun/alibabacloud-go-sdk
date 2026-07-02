@@ -18,13 +18,13 @@ type iUpdateNetworkRuleRequest interface {
 }
 
 type UpdateNetworkRuleRequest struct {
-	// The description after the update.
+	// The updated description.
 	//
 	// example:
 	//
-	// Creat by kst-hzz62ee817bvyyr5****
+	// Create by kst-hzz62ee817bvyyr5****
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the access control rule that you want to update.
+	// The name of the network control rule that you want to update.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type UpdateNetworkRuleRequest struct {
 	//
 	// networkrule_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The private IP address or CIDR block after the update. Separate multiple items with commas (,).
+	// The updated private IP addresses or private CIDR blocks. Separate multiple IP addresses or private CIDR blocks with a comma (,).
 	//
 	// example:
 	//

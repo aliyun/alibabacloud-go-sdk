@@ -33,10 +33,9 @@ type ListPoliciesResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of permission policies.
+	PageSize *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Policies *ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
@@ -147,11 +146,6 @@ func (s *ListPoliciesResponseBodyPolicies) Validate() error {
 }
 
 type ListPoliciesResponseBodyPoliciesPolicy struct {
-	// The name of the permission policy.
-	//
-	// example:
-	//
-	// policy_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

@@ -16,10 +16,16 @@ type iGetSecretPolicyRequest interface {
 }
 
 type GetSecretPolicyRequest struct {
+	// The name of the credential policy. Only the static field default is supported.
+	//
 	// example:
 	//
 	// default
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The name or Alibaba Cloud Resource Name (ARN) of the credential.
+	//
+	// > If you access a credential that belongs to another Alibaba Cloud account, you must specify the ARN of the credential. The ARN of a credential must be in the `acs:kms:${region}:${account}:secret/${secret-name}` format.
+	//
 	// This parameter is required.
 	//
 	// example:

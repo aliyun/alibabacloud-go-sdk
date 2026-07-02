@@ -24,7 +24,7 @@ type DescribeKeyVersionRequest struct {
 	//
 	// example:
 	//
-	// 1234abcd-12ab-34cd-56ef-12345678****
+	// key-hzz630494463ejqjx****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The globally unique ID of the CMK version.
 	//

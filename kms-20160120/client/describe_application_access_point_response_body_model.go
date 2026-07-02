@@ -24,7 +24,7 @@ type iDescribeApplicationAccessPointResponseBody interface {
 }
 
 type DescribeApplicationAccessPointResponseBody struct {
-	// The ARN of the AAP.
+	// The Alibaba Cloud Resource Name (ARN) of the AAP.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type DescribeApplicationAccessPointResponseBody struct {
 	//
 	// aap_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The permission policy that is bound to the AAP.
+	// The attached access policies.
 	//
 	// example:
 	//
 	// ["kst-hzz62ee817bvyyr5x****.efkd","kst-hzz62ee817bvyyr5x****.eyyp"]
 	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//

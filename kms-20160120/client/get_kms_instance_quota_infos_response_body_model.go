@@ -18,9 +18,20 @@ type iGetKmsInstanceQuotaInfosResponseBody interface {
 }
 
 type GetKmsInstanceQuotaInfosResponseBody struct {
-	KmsInstanceId         *string                                                      `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
+	// The ID of the KMS instance.
+	//
+	// example:
+	//
+	// kst-hzz6****
+	KmsInstanceId *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
+	// An array of quota details for the instance.
 	KmsInstanceQuotaInfos []*GetKmsInstanceQuotaInfosResponseBodyKmsInstanceQuotaInfos `json:"KmsInstanceQuotaInfos,omitempty" xml:"KmsInstanceQuotaInfos,omitempty" type:"Repeated"`
-	RequestId             *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// f1fdfa9d-bd49-418b-942f-8f3e3ec00a4f
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetKmsInstanceQuotaInfosResponseBody) String() string {
@@ -72,9 +83,24 @@ func (s *GetKmsInstanceQuotaInfosResponseBody) Validate() error {
 }
 
 type GetKmsInstanceQuotaInfosResponseBodyKmsInstanceQuotaInfos struct {
-	ResourceQuota *int64  `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty"`
-	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	UsedQuantity  *int64  `json:"UsedQuantity,omitempty" xml:"UsedQuantity,omitempty"`
+	// The quota.
+	//
+	// example:
+	//
+	// 12
+	ResourceQuota *int64 `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty"`
+	// The resource type.
+	//
+	// example:
+	//
+	// key
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The quota usage.
+	//
+	// example:
+	//
+	// 10
+	UsedQuantity *int64 `json:"UsedQuantity,omitempty" xml:"UsedQuantity,omitempty"`
 }
 
 func (s GetKmsInstanceQuotaInfosResponseBodyKmsInstanceQuotaInfos) String() string {
