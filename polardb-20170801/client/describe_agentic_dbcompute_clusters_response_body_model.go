@@ -22,19 +22,28 @@ type iDescribeAgenticDBComputeClustersResponseBody interface {
 }
 
 type DescribeAgenticDBComputeClustersResponseBody struct {
+	// The list of compute instances.
 	Items []*DescribeAgenticDBComputeClustersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F6A7B8C9-D0E1-2345-FABC-678901234FAB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 3
@@ -108,26 +117,38 @@ func (s *DescribeAgenticDBComputeClustersResponseBody) Validate() error {
 }
 
 type DescribeAgenticDBComputeClustersResponseBodyItems struct {
+	// The ID of the associated branch.
+	//
 	// example:
 	//
 	// br-7g8h9i0j1k2l
 	BranchId *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
+	// The name of the associated branch.
+	//
 	// example:
 	//
 	// feature-analytics
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The compute instance ID.
+	//
 	// example:
 	//
 	// pc-g0lsayq8c5qe
 	ComputeClusterId *string `json:"ComputeClusterId,omitempty" xml:"ComputeClusterId,omitempty"`
+	// The number of compute nodes. The value is fixed to 1 in the first phase.
+	//
 	// example:
 	//
 	// 1
 	ComputeNodeCount *int32 `json:"ComputeNodeCount,omitempty" xml:"ComputeNodeCount,omitempty"`
+	// The time when the compute instance was created.
+	//
 	// example:
 	//
 	// 2026-06-10T11:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the compute instance.
+	//
 	// example:
 	//
 	// Compute cluster for analytics
@@ -136,44 +157,64 @@ type DescribeAgenticDBComputeClustersResponseBodyItems struct {
 	//
 	// false
 	IsDefaultBranch *bool `json:"IsDefaultBranch,omitempty" xml:"IsDefaultBranch,omitempty"`
+	// The time when the compute instance was last activated.
+	//
 	// example:
 	//
 	// 2026-06-10T12:30:00Z
 	LastActivatedAt *string `json:"LastActivatedAt,omitempty" xml:"LastActivatedAt,omitempty"`
+	// The maximum compute unit.
+	//
 	// example:
 	//
 	// 2
 	MaxCU *string `json:"MaxCU,omitempty" xml:"MaxCU,omitempty"`
+	// The minimum compute unit.
+	//
 	// example:
 	//
 	// 0.25
 	MinCU *string `json:"MinCU,omitempty" xml:"MinCU,omitempty"`
+	// The operator type.
+	//
 	// example:
 	//
 	// Neon
 	OperatorType     *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
 	ParentBranchId   *string `json:"ParentBranchId,omitempty" xml:"ParentBranchId,omitempty"`
 	ParentBranchName *string `json:"ParentBranchName,omitempty" xml:"ParentBranchName,omitempty"`
+	// The ID of the associated project.
+	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the associated project.
+	//
 	// example:
 	//
 	// analytics-prod
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The status of the compute instance.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The amount of used data, in bytes.
+	//
 	// example:
 	//
 	// 1073741824
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// The ID of the associated tenant.
+	//
 	// example:
 	//
 	// t-4b83e0da66674951
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The name of the associated tenant.
+	//
 	// example:
 	//
 	// my-saas-app

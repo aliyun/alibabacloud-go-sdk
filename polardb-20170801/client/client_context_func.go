@@ -2190,7 +2190,7 @@ func (client *Client) CreateAINodesWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates a database account for a PolarDB cluster.
+// Creates a PolarDB database account.
 //
 // @param request - CreateAccountRequest
 //
@@ -10294,7 +10294,7 @@ func (client *Client) DescribeAgenticDBClustersWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询 AgenticDB 计算实例列表
+// Queries the list of AgenticDB compute instances.
 //
 // @param request - DescribeAgenticDBComputeClustersRequest
 //
@@ -17852,6 +17852,82 @@ func (client *Client) DescribePolarClawTaskWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePolarClawTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看polarfs信息
+//
+// @param request - DescribePolarFsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarFsResponse
+func (client *Client) DescribePolarFsWithContext(ctx context.Context, request *DescribePolarFsRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarFsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceDescription) {
+		query["PolarFsInstanceDescription"] = request.PolarFsInstanceDescription
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceIds) {
+		query["PolarFsInstanceIds"] = request.PolarFsInstanceIds
+	}
+
+	if !dara.IsNil(request.PolarFsType) {
+		query["PolarFsType"] = request.PolarFsType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RelativeDbClusterId) {
+		query["RelativeDbClusterId"] = request.RelativeDbClusterId
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarFs"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarFsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -29971,7 +30047,7 @@ func (client *Client) UpgradePolarClawSkillsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 校验 AgenticDB 租户 API Key
+// Validates an AgenticDB tenant API key.
 //
 // @param request - VerifyAgenticDBTenantApiKeyRequest
 //

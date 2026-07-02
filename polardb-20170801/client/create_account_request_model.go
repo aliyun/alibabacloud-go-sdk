@@ -42,23 +42,23 @@ type iCreateAccountRequest interface {
 type CreateAccountRequest struct {
 	// The description of the account. The description must meet the following requirements:
 	//
-	// - It cannot start with `http://` or `https://`.
+	// - Cannot start with `http://` or `https://`.
 	//
-	// - It must be 2 to 256 characters in length.
+	// - Is 2 to 256 characters in length.
 	//
 	// example:
 	//
 	// testdes
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the database account. The name must meet the following requirements:
+	// The account name. The name must meet the following requirements:
 	//
-	// - It must start with a lowercase letter and end with a letter or a digit.
+	// 	- Starts with a lowercase letter and ends with a letter or digit.
 	//
-	// - It can contain lowercase letters, digits, and underscores (_).
+	// 	- Contains only lowercase letters, digits, or underscores (_).
 	//
-	// - It must be 2 to 16 characters in length.
+	// 	- Is 2 to 16 characters in length.
 	//
-	// - It cannot be a reserved keyword, such as root or admin.
+	// 	- Cannot use certain reserved usernames such as root or admin.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +66,13 @@ type CreateAccountRequest struct {
 	//
 	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the database account. The password must meet the following requirements:
+	// The account password. The password must meet the following requirements:
 	//
-	// - It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// 	- Contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// - It must be 8 to 32 characters in length.
+	// 	- Is 8 to 32 characters in length.
 	//
-	// - The special characters are `!@#$%^&*()_+-=`.
+	// 	- Special characters include `!@#$%^&*()_+-=`.
 	//
 	// This parameter is required.
 	//
@@ -80,53 +80,52 @@ type CreateAccountRequest struct {
 	//
 	// Test1111
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// The privilege level to grant on the specified databases. Valid values:
+	// The permissions of the account. Valid values:
 	//
-	// - **ReadWrite**: read and write permissions
+	// 	- **ReadWrite**: read and write
 	//
-	// - **ReadOnly**: read-only permissions
+	// 	- **ReadOnly**: read-only
 	//
-	// - **DMLOnly**: DML permissions only
+	// 	- **DMLOnly**: DML only
 	//
-	// - **DDLOnly**: DDL permissions only
+	// 	- **DDLOnly**: DDL only
 	//
-	// - **ReadIndex**: read-only and index permissions
+	// 	- **ReadIndex**: read-only and index
 	//
-	// > 	- This parameter takes effect only when you specify the `DBName` parameter.
+	// >	- The DBName parameter must be specified for AccountPrivilege to take effect.
 	//
-	// >
+	// >	- If you specify multiple database names for the DBName parameter, you must grant the corresponding permissions to each database. Separate multiple permissions with commas (,) and make sure that the total length of the AccountPrivilege string does not exceed 900 characters. For example, to grant read and write permissions on database DB1 and read-only permissions on database DB2, set DBName to `DB1,DB2` and set AccountPrivilege to `ReadWrite,ReadOnly`.
 	//
-	// > 	- If you specify multiple databases in `DBName`, you must specify a corresponding permission for each in `AccountPrivilege`, separated by commas. The `AccountPrivilege` string cannot exceed 900 characters. For example, to grant read and write permissions to database DB1 and read-only permissions to database DB2, set `DBName` to `DB1,DB2` and set `AccountPrivilege` to `ReadWrite,ReadOnly`.
-	//
-	// >
-	//
-	// > 	- This parameter applies only to standard accounts on PolarDB for MySQL clusters.
+	// > 	- This parameter is supported only for standard accounts of PolarDB for MySQL clusters.
 	//
 	// example:
 	//
 	// ReadWrite
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// The type of the account. Valid values:
+	// The account type. Valid values:
 	//
-	// - **Normal**: a standard account.
+	// - **Normal**: standard account.
 	//
-	// - **Super**: a privileged account.
+	// - **Super**: privileged account.
 	//
-	// > 	- If you do not specify this parameter, the system creates a **Super*	- account by default.
+	// - **DynamoDB**: DynamoDB account.
 	//
-	// >
 	//
-	// > 	- You can create multiple privileged accounts on PolarDB for PostgreSQL (Oracle-Compatible) and PolarDB for PostgreSQL clusters. A privileged account has more permissions than a standard account. For more information, see [Create database accounts](https://help.aliyun.com/document_detail/68508.html).
 	//
-	// >
 	//
-	// > 	- For a PolarDB for MySQL cluster, you can create only one privileged account. For more information, see [Create database accounts](https://help.aliyun.com/document_detail/68508.html).
+	// > 	- If this parameter is left empty, a **Super*	- account is created by default.
+	//
+	// > 	- If the cluster is a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster, you can create multiple privileged accounts for each cluster. Privileged accounts have more permissions than standard accounts. For more information, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
+	//
+	// > 	- If the cluster is a PolarDB for MySQL cluster, you can create at most one privileged account for each cluster. Privileged accounts have more permissions than standard accounts. For more information, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
+	//
+	// > 	- DynamoDB accounts are dedicated accounts created for the DynamoDB compatibility feature of PolarDB for PostgreSQL. For more information, see [DynamoDB usage instructions](https://help.aliyun.com/document_detail/2979941.html).
 	//
 	// example:
 	//
 	// Normal
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// A client-generated token to ensure request idempotency. The token must be unique across requests. It is case-sensitive and can be up to 64 ASCII characters long.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token is case-sensitive and cannot exceed 64 ASCII characters in length.
 	//
 	// example:
 	//
@@ -140,17 +139,17 @@ type CreateAccountRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the database that the account can access. To specify multiple databases, separate the database names with a comma (,).
+	// The name of the database that the account is authorized to access. You can specify multiple database names separated by commas (,).
 	//
-	// > This parameter applies only to standard accounts on PolarDB for MySQL clusters.
+	// > This parameter is supported only for standard accounts of PolarDB for MySQL clusters.
 	//
 	// example:
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The type of the node. Valid values:
+	// The node type. Valid values:
 	//
-	// - **Search**: For creating an account on a PolarDB Search node.
+	// - Search: required when creating an account for a PolarDB Search node
 	//
 	// example:
 	//
@@ -158,17 +157,15 @@ type CreateAccountRequest struct {
 	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to grant the account permissions on all current and future databases in the cluster. Valid values:
+	// Specifies whether to grant permissions on all existing databases and all new databases in the current cluster. Valid values:
 	//
-	// - **0 or do not specify**: The specified permissions are not granted to all databases.
+	// - **0 or empty**: does not grant permissions.
 	//
-	// - **1**: Grants the specified permissions to all current and future databases.
+	// - **1**: grants permissions.
 	//
-	// > 	- This parameter takes effect only when you specify the `AccountPrivilege` parameter.
+	// >	- The AccountPrivilege parameter must be specified for this parameter to take effect.
 	//
-	// >
-	//
-	// > 	- If you set this parameter to `1`, the permissions specified in `AccountPrivilege` are granted to all databases.
+	// >	- If this parameter is set to `1`, the permissions specified by AccountPrivilege are granted on all databases.
 	//
 	// example:
 	//

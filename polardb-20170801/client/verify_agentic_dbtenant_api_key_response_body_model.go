@@ -30,35 +30,50 @@ type iVerifyAgenticDBTenantApiKeyResponseBody interface {
 }
 
 type VerifyAgenticDBTenantApiKeyResponseBody struct {
+	// The key ID. This parameter is empty if the API key is invalid.
+	//
 	// example:
 	//
 	// ak-71304e39c7e841a1
 	ApiKeyId *string `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
+	// The ID of the associated AgenticDB cluster.
+	//
 	// example:
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The expiration time of the API key. This parameter is empty if the API key is permanently valid.
+	//
 	// example:
 	//
 	// 2027-01-01T00:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Reason     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The reason why the validation failed. Valid values: NotFound, Expired, and Revoked. This parameter is empty if the API key is valid.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D4E5F6A7-B8C9-0123-DEFA-234567890123
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the tenant to which the API key belongs. This parameter is empty if the API key is invalid.
+	//
 	// example:
 	//
 	// t-4b83e0da66674951
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The name of the tenant to which the API key belongs. This parameter is empty if the API key is invalid.
+	//
 	// example:
 	//
 	// my-saas-app
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	// Indicates whether the API key is valid.
+	//
 	// example:
 	//
 	// true

@@ -16,12 +16,16 @@ type iVerifyAgenticDBTenantApiKeyRequest interface {
 }
 
 type VerifyAgenticDBTenantApiKeyRequest struct {
+	// The plaintext API key to validate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pagc_key_cGFnYy1icDFh...kX9mP2vL7wQ3
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
