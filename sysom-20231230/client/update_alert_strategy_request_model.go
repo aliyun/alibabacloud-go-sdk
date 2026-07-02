@@ -22,7 +22,7 @@ type iUpdateAlertStrategyRequest interface {
 }
 
 type UpdateAlertStrategyRequest struct {
-	// Whether the alert policy is enabled
+	// Specifies whether the alert policy is enabled.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type UpdateAlertStrategyRequest struct {
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// Alert policy ID
+	// The ID of the alert policy.
 	//
 	// This parameter is required.
 	//
@@ -39,7 +39,7 @@ type UpdateAlertStrategyRequest struct {
 	// 1
 	Id       *int64 `json:"id,omitempty" xml:"id,omitempty"`
 	K8sLabel *bool  `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
-	// Alert policy name
+	// The Policy Name of the alerting policy.
 	//
 	// This parameter is required.
 	//
@@ -47,7 +47,7 @@ type UpdateAlertStrategyRequest struct {
 	//
 	// strategy1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Alert policy details
+	// The details of the alert policy.
 	//
 	// This parameter is required.
 	Strategy *UpdateAlertStrategyRequestStrategy `json:"strategy,omitempty" xml:"strategy,omitempty" type:"Struct"`
@@ -116,10 +116,10 @@ func (s *UpdateAlertStrategyRequest) Validate() error {
 }
 
 type UpdateAlertStrategyRequestStrategy struct {
-	// Set of clusters that receive alerts
+	// The collection of clusters for which alerts are received.
 	Clusters     []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
 	Destinations []*int32  `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
-	// Set of abnormal items that receive alerts
+	// 接收告警的异常项合计
 	Items []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 

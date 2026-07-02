@@ -20,27 +20,27 @@ type iCpuHighAgentStreamResponseResponseBody interface {
 }
 
 type CpuHighAgentStreamResponseResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - If `code == Success`, authorization succeeded.
+	// - If code is Success, the authorization is successful.
 	//
-	// - Any other status code indicates authorization failed. When authorization fails, check the `message` field for detailed error message.
+	// - Other status codes indicate authorization failed. Check the message field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data
+	// The response data.
 	//
 	// example:
 	//
 	// <SSEResponse>
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// Error message
+	// The error message.
 	//
-	// - If `code == Success`, this field is empty.
+	// - If code is Success, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//

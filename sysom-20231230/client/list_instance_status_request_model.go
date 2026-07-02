@@ -22,31 +22,31 @@ type iListInstanceStatusRequest interface {
 }
 
 type ListInstanceStatusRequest struct {
-	// This field exists when paging is used and indicates the current page (starting from 1).
+	// The current page number (starting from 1). This field is present when pagination is used.
 	//
 	// example:
 	//
 	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-wz9b9vucz1iubsz355rh
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Number of entries returned per page. Default value: pageSize=10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shenzhen
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// Filter the instance list by status. If this field is specified, only instances with the corresponding status are returned.
+	// Filters the instance list by status. If this field is specified, only instances with the corresponding status are returned.
 	//
 	// example:
 	//

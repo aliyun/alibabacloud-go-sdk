@@ -18,7 +18,7 @@ type iGetServiceFuncStatusRequest interface {
 }
 
 type GetServiceFuncStatusRequest struct {
-	// channel name
+	// The channel name.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type GetServiceFuncStatusRequest struct {
 	//
 	// ecs
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// Diagnosis parameters. Different types of diagnosis require different diagnosis parameters. You can use this field to filter records whose parameter values match the specified values.
+	// The diagnostic parameters. Different types of diagnostics require different diagnostic parameters. You can use this field to filter records whose parameters match the specified values.
 	//
 	// This parameter is required.
 	Params *GetServiceFuncStatusRequestParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
-	// Service Name
+	// The service name.
 	//
 	// This parameter is required.
 	//
@@ -85,7 +85,7 @@ func (s *GetServiceFuncStatusRequest) Validate() error {
 }
 
 type GetServiceFuncStatusRequestParams struct {
-	// feature name
+	// The feature name.
 	//
 	// This parameter is required.
 	//
@@ -93,13 +93,13 @@ type GetServiceFuncStatusRequestParams struct {
 	//
 	// mullprof
 	FunctionName *string `json:"function_name,omitempty" xml:"function_name,omitempty"`
-	// instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-2zei55fwj8nnu31h3z46
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//

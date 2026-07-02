@@ -20,23 +20,23 @@ type iGetVmcoreDiagnosisTaskResponseBody interface {
 }
 
 type GetVmcoreDiagnosisTaskResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - `code == Success` indicates successful authorization;
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate authorization failure. When authorization fails, view the `message` field to obtain detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Return Result
+	// The returned result.
 	Data *GetVmcoreDiagnosisTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -104,43 +104,43 @@ func (s *GetVmcoreDiagnosisTaskResponseBody) Validate() error {
 }
 
 type GetVmcoreDiagnosisTaskResponseBodyData struct {
-	// Creation Time
+	// The time when the task was created.
 	//
 	// example:
 	//
 	// 2025-12-02T17:36:12
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// Diagnosis Result
+	// The diagnostic result.
 	//
 	// example:
 	//
 	// result
 	DiagnoseResult *string `json:"diagnoseResult,omitempty" xml:"diagnoseResult,omitempty"`
-	// Diagnosis error message
+	// The diagnostic error message.
 	//
 	// example:
 	//
 	// error message
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// Job ID
+	// The task ID.
 	//
 	// example:
 	//
 	// bbe94a98-4192-4172-b856-95777e0a55d7
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// Task Status
+	// The task status.
 	//
 	// example:
 	//
 	// running
 	TaskStatus *string `json:"taskStatus,omitempty" xml:"taskStatus,omitempty"`
-	// Task Type
+	// The task type.
 	//
 	// example:
 	//
 	// vmcore
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
-	// Download links for files associated with the job
+	// The download URLs of related files associated with the task.
 	Urls *GetVmcoreDiagnosisTaskResponseBodyDataUrls `json:"urls,omitempty" xml:"urls,omitempty" type:"Struct"`
 }
 
@@ -225,25 +225,25 @@ func (s *GetVmcoreDiagnosisTaskResponseBodyData) Validate() error {
 }
 
 type GetVmcoreDiagnosisTaskResponseBodyDataUrls struct {
-	// Download link for the debuginfo-common RPM package
+	// The download URL of the debuginfo-common RPM package.
 	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/debuginfo-common/file/path
 	DebuginfoCommonUrl *string `json:"debuginfoCommonUrl,omitempty" xml:"debuginfoCommonUrl,omitempty"`
-	// Link to download the debuginfo RPM package
+	// The download URL of the debuginfo RPM package.
 	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/debuginfo/file/path
 	DebuginfoUrl *string `json:"debuginfoUrl,omitempty" xml:"debuginfoUrl,omitempty"`
-	// Download link for the dmesg log
+	// The download URL of the dmesg log.
 	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/dmesg/file/path
 	DmesgUrl *string `json:"dmesgUrl,omitempty" xml:"dmesgUrl,omitempty"`
-	// Download link for the vmcore file
+	// The download URL of the vmcore file.
 	//
 	// example:
 	//

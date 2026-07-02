@@ -20,29 +20,29 @@ type iGetDiagnosisResultResponseBody interface {
 }
 
 type GetDiagnosisResultResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - If `code == "Success"`, authorization succeeded.
+	// - `code == Success` indicates that the authorization was successful.
 	//
-	// - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The response data.
 	Data *GetDiagnosisResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
 	// ""
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request RequestId
+	// The request ID.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ func (s *GetDiagnosisResultResponseBody) Validate() error {
 }
 
 type GetDiagnosisResultResponseBodyData struct {
-	// Error code (0 indicates no error)
+	// The error code. A value of 0 indicates no error.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// Diagnosis command
+	// The diagnostic command.
 	//
 	// example:
 	//
@@ -142,19 +142,19 @@ type GetDiagnosisResultResponseBodyData struct {
 	//
 	// }
 	Command interface{} `json:"command,omitempty" xml:"command,omitempty"`
-	// Creation Time
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-12-03 16:30:28
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// Diagnosis failed
 	ErrMsg *string `json:"err_msg,omitempty" xml:"err_msg,omitempty"`
-	// Diagnosis parameters
+	// The diagnostic parameters.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type GetDiagnosisResultResponseBodyData struct {
 	//
 	// }
 	Params interface{} `json:"params,omitempty" xml:"params,omitempty"`
-	// Diagnosis result
+	// The diagnostic result.
 	//
 	// example:
 	//
@@ -610,7 +610,7 @@ type GetDiagnosisResultResponseBodyData struct {
 	//
 	// }
 	Result interface{} `json:"result,omitempty" xml:"result,omitempty"`
-	// Diagnosis Type
+	// The diagnostic type.
 	//
 	// example:
 	//
@@ -620,31 +620,31 @@ type GetDiagnosisResultResponseBodyData struct {
 	//
 	// Valid values:
 	//
-	// - **Ready**: Ready
+	// - **Ready**: ready
 	//
-	// - **Running**: Running
+	// - **Running**: running
 	//
-	// - **Success**: Succeeded
+	// - **Success**: succeeded
 	//
-	// - **Fail**: Failed
+	// - **Fail**: failed.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Job ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// grcuU21a
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
-	// Update Time
+	// The update time.
 	//
 	// example:
 	//
 	// 2025-12-03 16:30:28
 	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	// Diagnosis details URL
+	// The URL of the diagnostic details.
 	//
 	// example:
 	//

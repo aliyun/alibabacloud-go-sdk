@@ -22,35 +22,35 @@ type iListInstanceHealthResponseBody interface {
 }
 
 type ListInstanceHealthResponseBody struct {
-	// Status code.
+	// The status code.
 	//
-	// - `code == Success` indicates that authorization succeeded.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate that authorization failed. When authorization fails, check the `message` field for detailed error message.
+	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// SysomOpenAPI.ServerError
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data []*ListInstanceHealthResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// error message
+	// The error message.
 	//
-	// - If `code == Success`, this field is empty;
+	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
 	// Query no data
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request RequestId
+	// The request ID.
 	//
 	// example:
 	//
 	// 35F91AAB-5FDF-5A22-B211-C7C6B00817D0
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// Total number of query results.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -125,45 +125,47 @@ func (s *ListInstanceHealthResponseBody) Validate() error {
 }
 
 type ListInstanceHealthResponseBodyData struct {
-	// List of container image names in the pod.
+	// The list of container image names in the Pod.
 	Images []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Namespace where the pod resides.
+	// The namespace of the Pod.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// Pod name.
+	// The Pod name.
 	//
 	// example:
 	//
 	// test-pod
 	Pod *string `json:"pod,omitempty" xml:"pod,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// Health score value.
+	// The health score.
 	//
 	// example:
 	//
 	// 100
 	Score *float32 `json:"score,omitempty" xml:"score,omitempty"`
-	// Running status of the instance. Valid values:
+	// The running status of the instance. Valid values:
 	//
-	// - **Running**: The instance is running.
+	// - **Running**: running.
 	//
-	// - **Offline**: The instance is offline.
+	// - **Offline**: offline.
 	//
-	// > An instance in the Offline state indicates that the heartbeat from the edge zone to the SysOM server has been lost. This does not mean that the corresponding ECS instance is not running.
+	//
+	//
+	// > An instance in the Offline status indicates that the heartbeat between the node and the SysOM server is lost. It does not mean that the corresponding ECS instance is not running.
 	//
 	// example:
 	//

@@ -20,17 +20,17 @@ type iCreateAlertStrategyResponseBody interface {
 }
 
 type CreateAlertStrategyResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - If `code == Success`, authorization succeeded.
+	// - If `code == Success`, the request is successful.
 	//
-	// - Any other status code indicates authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
+	// - Other status codes indicate a failed request. If the request fails, check the `message` field for detailed error information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The response data.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type CreateAlertStrategyResponseBody struct {
 	//
 	//         }
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the error information of the request.
 	//
 	// example:
 	//

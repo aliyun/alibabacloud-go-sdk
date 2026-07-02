@@ -18,19 +18,19 @@ type iUpdateEventsAttentionRequest interface {
 }
 
 type UpdateEventsAttentionRequest struct {
-	// Sensitivity of the anomalous activity. Valid values are -1 to 3. A value of -1 decreases sensitivity by 1 degree, and a value of 0 increases sensitivity by 1 degree.
+	// The sensitivity of the anomaly event. Valid values: -1 to 3. A value of -1 indicates that the sensitivity is decreased by 1. A value of 0 indicates that the sensitivity is increased by 1.
 	//
 	// example:
 	//
 	// -1
 	Mode *int32 `json:"mode,omitempty" xml:"mode,omitempty"`
-	// Scope of effect: cluster or edge zone
+	// The scope in which the update takes effect. Valid values: cluster and node.
 	//
 	// example:
 	//
 	// cluster
 	Range *string `json:"range,omitempty" xml:"range,omitempty"`
-	// UUID corresponding to the anomalous activity
+	// The UUID of the anomaly event.
 	//
 	// This parameter is required.
 	//

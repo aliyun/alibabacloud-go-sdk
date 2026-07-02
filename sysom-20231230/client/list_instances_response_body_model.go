@@ -22,35 +22,35 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - `code == Success` indicates that authorization succeeded.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Any other status code indicates that authorization failed. When authorization fails, check the `message` field for detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// SysomOpenAPI.ServerError
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Return Result.
+	// The returned result.
 	Data []*ListInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
 	// Requests for llm service failed
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request RequestId
+	// The request ID.
 	//
 	// example:
 	//
 	// 9515E5A0-8905-59B0-9BBF-5F0BE568C3A0
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// Total number of records
+	// The total number of records.
 	//
 	// example:
 	//
@@ -125,25 +125,25 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyData struct {
-	// Cluster ID
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c2218ca2b76ec45e7b7ee1693f6fcd374
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// ECS instance ID
+	// The ECS instance ID.
 	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Milvus version of the instance
+	// The current kernel version of the instance.
 	//
 	// example:
 	//
 	// 5.10.134-16.1.an8.x86_64
 	KernelVersion *string `json:"kernel_version,omitempty" xml:"kernel_version,omitempty"`
-	// Metadata of the instance
+	// The metadata of the instance.
 	//
 	// example:
 	//
@@ -179,49 +179,49 @@ type ListInstancesResponseBodyData struct {
 	//
 	// }
 	Meta interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
-	// Architecture of the ECS instance
+	// The architecture of the ECS instance.
 	//
 	// example:
 	//
 	// x86
 	OsArch *string `json:"os_arch,omitempty" xml:"os_arch,omitempty"`
-	// Health score of the instance
+	// The health score of the instance.
 	//
 	// example:
 	//
 	// 100
 	OsHealthScore *string `json:"os_health_score,omitempty" xml:"os_health_score,omitempty"`
-	// Operating system name of the instance (retrieved from /etc/os-release)
+	// The operating system name of the instance (obtained from /etc/os-release).
 	//
 	// example:
 	//
 	// Anolis OS
 	OsName *string `json:"os_name,omitempty" xml:"os_name,omitempty"`
-	// Operating system name ID of the instance (retrieved from /etc/os-release)
+	// The operating system name ID of the instance (obtained from /etc/os-release).
 	//
 	// example:
 	//
 	// anolis
 	OsNameId *string `json:"os_name_id,omitempty" xml:"os_name_id,omitempty"`
-	// Operating system version of the instance (obtained from /etc/os-release)
+	// The operating system version of the instance (obtained from /etc/os-release).
 	//
 	// example:
 	//
 	// 8.9
 	OsVersion *string `json:"os_version,omitempty" xml:"os_version,omitempty"`
-	// Operating system version ID of the instance (retrieved from /etc/os-release)
+	// The operating system version ID of the instance (obtained from /etc/os-release).
 	//
 	// example:
 	//
 	// rhel fedora centos
 	OsVersionId *string `json:"os_version_id,omitempty" xml:"os_version_id,omitempty"`
-	// Region where the instance is located
+	// The region where the instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// Status of the instance
+	// The status of the instance.
 	//
 	// example:
 	//

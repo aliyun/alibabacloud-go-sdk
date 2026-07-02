@@ -20,25 +20,25 @@ type iDescribeMetricListRequest interface {
 }
 
 type DescribeMetricListRequest struct {
-	// End time, in seconds as a UNIX timestamp
+	// The end time as a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1683618245000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Metric name
+	// The metric name.
 	//
 	// example:
 	//
 	// sysom_cpu_graph
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	// Start time, in seconds as a UNIX timestamp
+	// The start time as a UNIX timestamp in seconds.
 	//
 	// example:
 	//

@@ -26,35 +26,35 @@ type iListAlertStrategiesResponseBody interface {
 }
 
 type ListAlertStrategiesResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - If `code == Success`, authorization succeeded.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
+	// - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Return Result.
+	// The returned result.
 	Data []*ListAlertStrategiesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Maximum number of returned records
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Error message
+	// The error message.
 	//
-	// - If `code == Success`, this field is empty;
+	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the error information for the request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Pagination token for the next request.
+	// The pagination token for the next request.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ListAlertStrategiesResponseBody struct {
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Total number of records
+	// The total number of records.
 	//
 	// example:
 	//
@@ -159,40 +159,40 @@ func (s *ListAlertStrategiesResponseBody) Validate() error {
 }
 
 type ListAlertStrategiesResponseBodyData struct {
-	// Creation Time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1753669116286
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// Whether the alert policy is enabled
+	// Indicates whether the alert policy is enabled.
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// Policy ID
+	// The policy ID.
 	//
 	// example:
 	//
 	// 1
 	Id       *int64 `json:"id,omitempty" xml:"id,omitempty"`
 	K8sLabel *bool  `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
-	// Policy Name
+	// The policy name.
 	//
 	// example:
 	//
 	// strategy1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Details of the alert policy
+	// The alert policy details.
 	Strategy *ListAlertStrategiesResponseBodyDataStrategy `json:"strategy,omitempty" xml:"strategy,omitempty" type:"Struct"`
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//
 	// 1880327028143673
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// Update Time
+	// The update time.
 	//
 	// example:
 	//
@@ -290,10 +290,10 @@ func (s *ListAlertStrategiesResponseBodyData) Validate() error {
 }
 
 type ListAlertStrategiesResponseBodyDataStrategy struct {
-	// Set of clusters that accept alerts
+	// The collection of clusters for which alerts are received.
 	Clusters     []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
 	Destinations []*int32  `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
-	// List of abnormal items that accept alerts
+	// 接收告警的异常项列表
 	Items []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 

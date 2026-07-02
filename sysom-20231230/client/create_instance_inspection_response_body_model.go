@@ -20,18 +20,26 @@ type iCreateInstanceInspectionResponseBody interface {
 }
 
 type CreateInstanceInspectionResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// reportId
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822

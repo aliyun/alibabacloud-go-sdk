@@ -14,7 +14,7 @@ type iGetAgentTaskRequest interface {
 }
 
 type GetAgentTaskRequest struct {
-	// Job ID.
+	// The task ID.
 	//
 	// example:
 	//

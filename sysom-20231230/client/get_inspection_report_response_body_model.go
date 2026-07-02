@@ -20,18 +20,34 @@ type iGetInspectionReportResponseBody interface {
 }
 
 type GetInspectionReportResponseBody struct {
+	// The status code.
+	//
+	// - If `code == Success`, the authorization is successful.
+	//
+	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
+	//
 	// example:
 	//
 	// SysomOpenAPI.InvalidParameter
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
+	//
 	// example:
 	//
 	// {}
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// The error message.
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error information.
+	//
 	// example:
 	//
 	// SysomOpenAPIException: SysomOpenAPI.InvalidParameter Invalid params, should be json string or dict
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822

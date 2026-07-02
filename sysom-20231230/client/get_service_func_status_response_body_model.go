@@ -20,23 +20,23 @@ type iGetServiceFuncStatusResponseBody interface {
 }
 
 type GetServiceFuncStatusResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - `code == Success` indicates that authorization succeeded.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Any other status code indicates that authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Return Result
+	// The returned result.
 	Data *GetServiceFuncStatusResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// error message
+	// The error message.
 	//
-	// - If `code == Success`, this field is empty;
+	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// Id of the request
 	//
@@ -100,7 +100,7 @@ func (s *GetServiceFuncStatusResponseBody) Validate() error {
 }
 
 type GetServiceFuncStatusResponseBodyData struct {
-	// Configuration Parameter
+	// The configuration parameters.
 	Args *GetServiceFuncStatusResponseBodyDataArgs `json:"args,omitempty" xml:"args,omitempty" type:"Struct"`
 }
 
@@ -131,43 +131,43 @@ func (s *GetServiceFuncStatusResponseBodyData) Validate() error {
 }
 
 type GetServiceFuncStatusResponseBodyDataArgs struct {
-	// Configuration process
+	// The configuration process.
 	//
 	// example:
 	//
 	// java
 	AddCmd *string `json:"add_cmd,omitempty" xml:"add_cmd,omitempty"`
-	// ONCPU tracing Toggle
+	// The ONCPU tracing switch.
 	//
 	// example:
 	//
 	// true
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// Storage Path
+	// The storage path.
 	//
 	// example:
 	//
 	// /tmp/sysom/java-profiler
 	JavaStorePath *string `json:"java_store_path,omitempty" xml:"java_store_path,omitempty"`
-	// Edit Lock tracing Toggle
+	// The lock tracing switch.
 	//
 	// example:
 	//
 	// true
 	Locks *string `json:"locks,omitempty" xml:"locks,omitempty"`
-	// Tracing epoch
+	// The tracing cycle.
 	//
 	// example:
 	//
 	// -1
 	Loop *int32 `json:"loop,omitempty" xml:"loop,omitempty"`
-	// Memory tracing Toggle
+	// The memory tracing switch.
 	//
 	// example:
 	//
 	// true
 	Mem *string `json:"mem,omitempty" xml:"mem,omitempty"`
-	// System profiling Toggle
+	// The system profiling switch.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iGetHotspotPidListRequest interface {
 }
 
 type GetHotspotPidListRequest struct {
-	// stop time
+	// The end time.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GetHotspotPidListRequest struct {
 	//
 	// 1725413947000
 	BegEnd *int64 `json:"beg_end,omitempty" xml:"beg_end,omitempty"`
-	// start time
+	// The start time.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type GetHotspotPidListRequest struct {
 	//
 	// 1725413647000
 	BegStart *int64 `json:"beg_start,omitempty" xml:"beg_start,omitempty"`
-	// instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type GetHotspotPidListRequest struct {
 	//
 	// i-2ze5ru5rjurix7f71sxv
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Table name to query
+	// The name of the table to query.
 	//
 	// This parameter is required.
 	//

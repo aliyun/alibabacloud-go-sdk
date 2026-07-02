@@ -20,29 +20,29 @@ type iUpgradeAgentResponseBody interface {
 }
 
 type UpgradeAgentResponseBody struct {
-	// Request ID, which can be used for end-to-end Diagnosis
+	// The request ID, which can be used for end-to-end diagnostics.
 	//
 	// example:
 	//
 	// B149FD9C-ED5C-5765-B3AD-05AA4A4D64D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Status code
+	// The status code.
 	//
-	// - If `code == Success`, authorization Succeeded.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate Failed to Authorize. When authorization fails, view the `message` field to obtain the detailed error message.
+	// - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned Data
+	// The returned data.
 	Data *UpgradeAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ func (s *UpgradeAgentResponseBody) Validate() error {
 }
 
 type UpgradeAgentResponseBodyData struct {
-	// Job ID.
+	// The task ID.
 	//
 	// example:
 	//

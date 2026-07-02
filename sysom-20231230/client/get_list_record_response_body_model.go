@@ -22,15 +22,15 @@ type iGetListRecordResponseBody interface {
 }
 
 type GetListRecordResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data []*GetListRecordResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Description of the status code.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetListRecordResponseBody struct {
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Total number of records
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,31 +117,31 @@ func (s *GetListRecordResponseBody) Validate() error {
 }
 
 type GetListRecordResponseBodyData struct {
-	// AI analysis ID
+	// The AI analysis ID.
 	//
 	// example:
 	//
 	// 16896fa8-37f6-4c70-bb32-67fa9817d426
 	AnalysisId *string `json:"analysisId,omitempty" xml:"analysisId,omitempty"`
-	// Analysis time
+	// The analysis time.
 	//
 	// example:
 	//
 	// 2024-12-24 12:02:05
 	AnalysisTime *string `json:"analysisTime,omitempty" xml:"analysisTime,omitempty"`
-	// Analysis parameters for the AI job
+	// The analysis parameters of the AI job analysis.
 	//
 	// example:
 	//
 	// timeout=2000 ms
 	Arguments *string `json:"arguments,omitempty" xml:"arguments,omitempty"`
-	// Analysis failure log
+	// The analysis failure log.
 	//
 	// example:
 	//
 	// 机器i-wz9dej066kii4goqpnze分析失败, 失败原因: Not get GPU trace data for \\"e59ce870-dbd4-4c44-a814-174ac6ab5bcf\\" \\"[\\"118534\\"]\\"!
 	FailedLog *string `json:"failedLog,omitempty" xml:"failedLog,omitempty"`
-	// Analysis status
+	// The analysis status.
 	//
 	// example:
 	//

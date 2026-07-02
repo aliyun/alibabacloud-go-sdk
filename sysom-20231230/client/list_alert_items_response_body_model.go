@@ -20,17 +20,17 @@ type iListAlertItemsResponseBody interface {
 }
 
 type ListAlertItemsResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - If `code == Success`, authorization succeeded.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Any other status code indicates authorization failed. When authorization fails, view the `message` field to obtain the detailed error message.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault message.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The response data.
 	//
 	// example:
 	//
@@ -114,11 +114,11 @@ type ListAlertItemsResponseBody struct {
 	//
 	// }
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//

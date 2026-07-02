@@ -20,25 +20,25 @@ type iInstallAgentForClusterResponseBody interface {
 }
 
 type InstallAgentForClusterResponseBody struct {
-	// Request ID, which can be used for end-to-end diagnosis
+	// The request ID, which can be used for end-to-end diagnostics.
 	//
 	// example:
 	//
 	// B149FD9C-ED5C-5765-B3AD-05AA4A4D64D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Status code
+	// The status code.
 	//
-	// - If `code == Success`, authorization succeeded.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Any other status code indicates authorization failed. When authorization fails, check the `message` field for detailed error information.
+	// - Any other status code indicates authorization failure. Check the `message` field for detailed error information.
 	//
 	// example:
 	//
 	// SysomOpenAPI.ServerError
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The response data.
 	Data *InstallAgentForClusterResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
@@ -104,7 +104,7 @@ func (s *InstallAgentForClusterResponseBody) Validate() error {
 }
 
 type InstallAgentForClusterResponseBodyData struct {
-	// Job ID.
+	// The task ID.
 	//
 	// example:
 	//

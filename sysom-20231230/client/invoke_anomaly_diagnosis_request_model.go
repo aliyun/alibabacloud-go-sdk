@@ -14,7 +14,7 @@ type iInvokeAnomalyDiagnosisRequest interface {
 }
 
 type InvokeAnomalyDiagnosisRequest struct {
-	// UUID corresponding to the anomalous activity
+	// The UUID of the anomaly event.
 	//
 	// example:
 	//

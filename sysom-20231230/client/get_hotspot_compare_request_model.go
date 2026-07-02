@@ -64,7 +64,7 @@ type GetHotspotCompareRequest struct {
 	//
 	// 1725415474000
 	Beg2Start *int64 `json:"beg2_start,omitempty" xml:"beg2_start,omitempty"`
-	// Hot spot type
+	// Hotspot type
 	//
 	// example:
 	//
@@ -86,13 +86,13 @@ type GetHotspotCompareRequest struct {
 	//
 	// 0
 	Instance2 *string `json:"instance2,omitempty" xml:"instance2,omitempty"`
-	// Process of instance 1
+	// Instance 1 process
 	//
 	// example:
 	//
 	// 0
 	Pid1 *int64 `json:"pid1,omitempty" xml:"pid1,omitempty"`
-	// Process of instance 2
+	// Instance 2 process
 	//
 	// example:
 	//

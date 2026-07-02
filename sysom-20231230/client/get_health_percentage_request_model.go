@@ -20,13 +20,13 @@ type iGetHealthPercentageRequest interface {
 }
 
 type GetHealthPercentageRequest struct {
-	// Cluster ID
+	// The cluster ID.
 	//
 	// example:
 	//
 	// 2ijff4be-bf24-4070-89ca-c47c879b0g32
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// End Time
+	// The end time.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type GetHealthPercentageRequest struct {
 	//
 	// 1725801327754
 	End *float32 `json:"end,omitempty" xml:"end,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Start Time
+	// The start time.
 	//
 	// This parameter is required.
 	//

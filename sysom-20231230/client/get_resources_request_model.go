@@ -18,19 +18,19 @@ type iGetResourcesRequest interface {
 }
 
 type GetResourcesRequest struct {
-	// Cluster ID
+	// The cluster ID.
 	//
 	// example:
 	//
 	// 1808078950770264
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Resource type
+	// The resource type.
 	//
 	// example:
 	//

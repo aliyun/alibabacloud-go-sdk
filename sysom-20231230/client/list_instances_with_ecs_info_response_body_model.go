@@ -22,27 +22,27 @@ type iListInstancesWithEcsInfoResponseBody interface {
 }
 
 type ListInstancesWithEcsInfoResponseBody struct {
-	// Status code.
+	// The status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data []*ListInstancesWithEcsInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error message. An empty value indicates that the data has been read completely.
+	// The error message. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
 	// result: code=1 msg=(Request failed, status_code != 200)
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request RequestId
+	// The request ID.
 	//
 	// example:
 	//
 	// 35F91AAB-5FDF-5A22-B211-C7C6B00817D0
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// Total number of records
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,69 +117,69 @@ func (s *ListInstancesWithEcsInfoResponseBody) Validate() error {
 }
 
 type ListInstancesWithEcsInfoResponseBodyData struct {
-	// Cluster ID
+	// The cluster ID.
 	//
 	// example:
 	//
 	// cbf7a37bc905d4682a3338b3744810269
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-bp118piqcio9tiwgh84b
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	// Instance Name.
+	// The instance name.
 	//
 	// example:
 	//
 	// allowed-repos-r2tzl
 	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
-	// tags of instances
+	// The instance tags.
 	InstanceTag []*ListInstancesWithEcsInfoResponseBodyDataInstanceTag `json:"instance_tag,omitempty" xml:"instance_tag,omitempty" type:"Repeated"`
-	// Milvus version
+	// The kernel version.
 	//
 	// example:
 	//
 	// 5.10.134-14.an8.x86_64
 	KernelVersion *string `json:"kernel_version,omitempty" xml:"kernel_version,omitempty"`
-	// ECS instance architecture
+	// The architecture of the ECS instance.
 	//
 	// example:
 	//
 	// x86
 	OsArch *string `json:"os_arch,omitempty" xml:"os_arch,omitempty"`
-	// Instance health score
+	// The health score of the instance.
 	//
 	// example:
 	//
 	// 100
 	OsHealthScore *string `json:"os_health_score,omitempty" xml:"os_health_score,omitempty"`
-	// The operating system name of the instance
+	// The operating system name of the instance.
 	//
 	// example:
 	//
 	// Alibaba Cloud Linux  3.2104 LTS 64bit
 	OsName *string `json:"os_name,omitempty" xml:"os_name,omitempty"`
-	// Instance private IP
+	// The private IP address of the instance.
 	//
 	// example:
 	//
 	// 1.1.1.1
 	PrivateIp *string `json:"private_ip,omitempty" xml:"private_ip,omitempty"`
-	// Instance Internet IP
+	// The public IP address of the instance.
 	//
 	// example:
 	//
 	// 1.1.1.1
 	PublicIp *string `json:"public_ip,omitempty" xml:"public_ip,omitempty"`
-	// Resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-xxxxxx
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
-	// Resource group name
+	// The resource group name.
 	//
 	// example:
 	//
@@ -191,7 +191,9 @@ type ListInstancesWithEcsInfoResponseBodyData struct {
 	//
 	// - **Offline**: The instance is offline.
 	//
-	// > An instance in the Offline state indicates that the heartbeat from the edge zone to the SysOM Server has been lost. This does not mean that the corresponding ECS instance is not running.
+	//
+	//
+	// > An instance in the Offline state indicates that the heartbeat between the node and the SysOM server is lost. It does not mean that the corresponding ECS instance has stopped running.
 	//
 	// example:
 	//
@@ -338,13 +340,13 @@ func (s *ListInstancesWithEcsInfoResponseBodyData) Validate() error {
 }
 
 type ListInstancesWithEcsInfoResponseBodyDataInstanceTag struct {
-	// Name of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// test_tag_key
 	TagKey *string `json:"tag_key,omitempty" xml:"tag_key,omitempty"`
-	// Tag value.
+	// The tag value.
 	//
 	// example:
 	//

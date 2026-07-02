@@ -20,13 +20,13 @@ type iStartAIAnalysisResponseBody interface {
 }
 
 type StartAIAnalysisResponseBody struct {
-	// Return code.
+	// Response code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data
+	// Response data
 	Data *StartAIAnalysisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Error message.
 	//

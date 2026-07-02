@@ -16,7 +16,7 @@ type iStartAIDiffAnalysisRequest interface {
 }
 
 type StartAIDiffAnalysisRequest struct {
-	// task1 parameters
+	// The task1 parameters.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type StartAIDiffAnalysisRequest struct {
 	//
 	// task1参数
 	Task1 *StartAIDiffAnalysisRequestTask1 `json:"task1,omitempty" xml:"task1,omitempty" type:"Struct"`
-	// task2 parameters
+	// The task2 parameters.
 	//
 	// This parameter is required.
 	//
@@ -75,21 +75,21 @@ func (s *StartAIDiffAnalysisRequest) Validate() error {
 }
 
 type StartAIDiffAnalysisRequestTask1 struct {
-	// AI analysis ID
+	// The AI analysis ID.
 	//
 	// example:
 	//
 	// 16896fa8-37f6-4c70-bb32-67fa9817d426
 	AnalysisId *string `json:"analysisId,omitempty" xml:"analysisId,omitempty"`
-	// PIDs of AI job processes; batch input is supported, separated by commas
+	// The pids of AI job processes. Batch input is supported. Separate multiple pids with commas.
 	Pids []*string `json:"pids,omitempty" xml:"pids,omitempty" type:"Repeated"`
-	// Step end time, computed based on the selected step number
+	// The step end time, calculated based on the selected step number.
 	//
 	// example:
 	//
 	// 4660551334179.955
 	StepEnd *float32 `json:"step_end,omitempty" xml:"step_end,omitempty"`
-	// Step start time, computed based on the selected step number
+	// The step start time, calculated based on the selected step number.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ func (s *StartAIDiffAnalysisRequestTask1) Validate() error {
 }
 
 type StartAIDiffAnalysisRequestTask2 struct {
-	// AI analysis ID
+	// The AI analysis ID.
 	//
 	// This parameter is required.
 	//
@@ -154,7 +154,7 @@ type StartAIDiffAnalysisRequestTask2 struct {
 	//
 	// 16896fa8-37f6-4c70-bb32-67fa9817d426
 	AnalysisId *string `json:"analysisId,omitempty" xml:"analysisId,omitempty"`
-	// Process IDs (PIDs) of AI jobs. Batch input is supported, with PIDs separated by commas.
+	// The pids of AI job processes. Batch input is supported. Separate multiple pids with commas.
 	//
 	// This parameter is required.
 	//
@@ -162,7 +162,7 @@ type StartAIDiffAnalysisRequestTask2 struct {
 	//
 	// 452651:python3 ./test.py
 	Pids []*string `json:"pids,omitempty" xml:"pids,omitempty" type:"Repeated"`
-	// Step end time, computed based on the selected step number.
+	// The step end time, calculated based on the selected step number.
 	//
 	// This parameter is required.
 	//
@@ -170,7 +170,7 @@ type StartAIDiffAnalysisRequestTask2 struct {
 	//
 	// 4660551334179.955
 	StepEnd *float32 `json:"step_end,omitempty" xml:"step_end,omitempty"`
-	// Step start time, computed based on the selected step number.
+	// The step start time, calculated based on the selected step number.
 	//
 	// This parameter is required.
 	//

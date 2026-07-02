@@ -18,19 +18,19 @@ type iGetHealthPercentageResponseBody interface {
 }
 
 type GetHealthPercentageResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - `code == Success` indicates that authorization succeeded.
+	// - `code == Success` indicates that the authorization was successful.
 	//
-	// - Other status codes indicate that authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault message.
 	//
 	// example:
 	//
 	// SysomOpenAPI.ServerError
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data []*GetHealthPercentageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error Details
+	// The error details.
 	//
 	// example:
 	//
@@ -87,13 +87,13 @@ func (s *GetHealthPercentageResponseBody) Validate() error {
 }
 
 type GetHealthPercentageResponseBodyData struct {
-	// Health level of the edge zone/pod
+	// The health level of the node or pod.
 	//
 	// example:
 	//
 	// health
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Quantity
+	// The quantity.
 	//
 	// example:
 	//

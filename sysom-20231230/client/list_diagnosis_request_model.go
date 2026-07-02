@@ -34,19 +34,19 @@ type ListDiagnosisRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Diagnostic parameters. Different diagnosis types require different diagnostic parameters. You can use this field to filter records whose parameter values match the specified value.
+	// Diagnostic parameters. Different types of diagnostics require different diagnostic parameters. You can use this field to filter records whose parameters match the specified values.
 	//
 	// example:
 	//
 	// [{\\"key\\":\\"region\\",\\"value\\":\\"cn-beijing\\"}]
 	Params *string `json:"params,omitempty" xml:"params,omitempty"`
-	// Diagnosis type
+	// Diagnostic type
 	//
 	// example:
 	//
 	// memgraph
 	ServiceName *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
-	// Status of the diagnostic task execution.
+	// Execution status of the diagnostic task.
 	//
 	// Valid values:
 	//
@@ -54,9 +54,9 @@ type ListDiagnosisRequest struct {
 	//
 	// - **Running**: Running
 	//
-	// - **Success**: Succeeded
+	// - **Success**: Execution succeeded
 	//
-	// - **Fail**: Failed
+	// - **Fail**: Execution failed
 	//
 	// example:
 	//

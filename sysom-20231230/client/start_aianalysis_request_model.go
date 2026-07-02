@@ -40,7 +40,7 @@ type iStartAIAnalysisRequest interface {
 }
 
 type StartAIAnalysisRequest struct {
-	// Analysis tool. This field does not need to be filled in when using OpenAPI.
+	// Analysis tool. Not required for OpenAPI access.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type StartAIAnalysisRequest struct {
 	//
 	// ecs_sysom
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// Process name. This is an optional parameter.
+	// Process name, optional parameter
 	//
 	// example:
 	//
 	// python_test
 	Comms *string `json:"comms,omitempty" xml:"comms,omitempty"`
-	// Creator. You do not need to specify this parameter when using OpenAPI.
+	// Creator. Not required for OpenAPI access.
 	//
 	// example:
 	//
@@ -72,27 +72,27 @@ type StartAIAnalysisRequest struct {
 	//
 	// i-wz9dej066kii4goqxxxx
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Instance type. This field does not need to be filled in when using OpenAPI.
+	// Instance type. Not required for OpenAPI access.
 	//
 	// example:
 	//
 	// ip/sn/hostname
 	InstanceType *string `json:"instance_type,omitempty" xml:"instance_type,omitempty"`
-	// Iteration entry function. Required only in iteration mode. This parameter is optional.
+	// Iteration entry function. Required only in iteration mode. Can be left blank.
 	//
 	// example:
 	//
 	// Class.function
 	IterationFunc *string `json:"iteration_func,omitempty" xml:"iteration_func,omitempty"`
-	// Iteration entry module. Required only in iteration mode. This parameter is optional.
+	// Iteration entry module. Required only in iteration mode. Can be left blank.
 	//
 	// example:
 	//
 	// a.b.module
 	IterationMod *string `json:"iteration_mod,omitempty" xml:"iteration_mod,omitempty"`
-	// Iteration range (iteration count: the number of iterations when the data collection module is activated, independent of the AI job\\"s iteration count)
+	// Iteration range (iteration count: refers to the number of iterations when the data collection module is activated, independent of the AI job\\"s iteration count)
 	IterationRange []*int32 `json:"iteration_range,omitempty" xml:"iteration_range,omitempty" type:"Repeated"`
-	// Process IDs (PIDs) of the AI job. Batch input is supported, separated by commas.
+	// AI job process PIDs. Supports batch input, separated by commas.
 	//
 	// example:
 	//
@@ -104,17 +104,17 @@ type StartAIAnalysisRequest struct {
 	//
 	// cn-shenzhen
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// AI Infra analysis duration.
+	// AI Infra analysis time;
 	//
-	// Unit: milliseconds.
+	// Unit: milliseconds;
 	//
-	// Default value: 2000.
+	// Default value: 2000;
 	//
 	// example:
 	//
 	// 2000
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// Alibaba Cloud User ID. You do not need to specify this parameter when using OpenAPI.
+	// Alibaba Cloud user ID. Not required for OpenAPI access.
 	//
 	// example:
 	//

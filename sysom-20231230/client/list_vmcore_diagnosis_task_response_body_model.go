@@ -22,19 +22,19 @@ type iListVmcoreDiagnosisTaskResponseBody interface {
 }
 
 type ListVmcoreDiagnosisTaskResponseBody struct {
-	// Status code
+	// Status code.
 	//
-	// - `code == Success` indicates successful authorization;
+	// - `code == Success` indicates the authorization was successful.
 	//
-	// - Other status codes indicate failed authorization. When authorization fails, view the `message` field to obtain detailed error message;
+	// - Other status codes indicate authorization failure. When authorization fails, check the `message` field for detailed error information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data
+	// Response data.
 	Data []*ListVmcoreDiagnosisTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// error message
+	// Error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
@@ -50,7 +50,7 @@ type ListVmcoreDiagnosisTaskResponseBody struct {
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Total number of jobs
+	// Total number of tasks
 	//
 	// example:
 	//
@@ -125,31 +125,31 @@ func (s *ListVmcoreDiagnosisTaskResponseBody) Validate() error {
 }
 
 type ListVmcoreDiagnosisTaskResponseBodyData struct {
-	// Job creation time
+	// Task creation time
 	//
 	// example:
 	//
 	// 2025-12-02T17:36:12
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// error message
+	// Error message
 	//
 	// example:
 	//
 	// error message
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// Job ID
+	// Task ID
 	//
 	// example:
 	//
 	// bbe94a98-4192-4172-b856-95777e0a55d7
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// Task Status
+	// Task status
 	//
 	// example:
 	//
 	// running
 	TaskStatus *string `json:"taskStatus,omitempty" xml:"taskStatus,omitempty"`
-	// Task Type
+	// Task type
 	//
 	// example:
 	//

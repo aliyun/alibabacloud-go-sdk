@@ -14,6 +14,8 @@ type iGetInspectionReportRequest interface {
 }
 
 type GetInspectionReportRequest struct {
+	// The inspection report ID.
+	//
 	// example:
 	//
 	// 91bec4c5a168494e8128468e3995df87

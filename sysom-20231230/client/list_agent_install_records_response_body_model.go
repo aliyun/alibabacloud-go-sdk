@@ -22,35 +22,35 @@ type iListAgentInstallRecordsResponseBody interface {
 }
 
 type ListAgentInstallRecordsResponseBody struct {
-	// Request ID, which can be used for end-to-end Diagnosis
+	// The request ID, which is active for end-to-end diagnostics.
 	//
 	// example:
 	//
 	// E8CDFBA1-0564-5897-B070-D3C85002AF2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Status code
+	// The status code.
 	//
-	// - `code == Success` indicates successful authorization;
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate failed authorization. When authorization fails, view the `message` field to obtain detailed error message;
+	// - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Return Result.
+	// The returned results.
 	Data []*ListAgentInstallRecordsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// error message
+	// The error message.
 	//
-	// - If `code == Success`, this field is empty;
+	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the error message for the request.
 	//
 	// example:
 	//
 	// SysomOpenAPIAssumeRoleException: EntityNotExist.Role The role not exists: acs:ram::xxxxx:role/aliyunserviceroleforsysom
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -125,37 +125,37 @@ func (s *ListAgentInstallRecordsResponseBody) Validate() error {
 }
 
 type ListAgentInstallRecordsResponseBodyData struct {
-	// Creation Time
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-11-27T16:37:53
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-bp118piqcio9tiwgh84b
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	// widget ID
+	// The component ID.
 	//
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	PluginId *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty"`
-	// plugin Version
+	// The plug-in version.
 	//
 	// example:
 	//
 	// 3.4.0-1
 	PluginVersion *string `json:"plugin_version,omitempty" xml:"plugin_version,omitempty"`
-	// widget status
+	// The component status.
 	//
 	// example:
 	//
 	// Installed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Updated At
+	// The update time.
 	//
 	// example:
 	//

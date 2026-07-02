@@ -18,7 +18,7 @@ type iUpgradeAgentRequest interface {
 }
 
 type UpgradeAgentRequest struct {
-	// ID of the widget to update
+	// The ID of the component to update.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type UpgradeAgentRequest struct {
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	AgentId *string `json:"agent_id,omitempty" xml:"agent_id,omitempty"`
-	// Version of the widget to update
+	// The version to which the component is updated.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpgradeAgentRequest struct {
 	//
 	// 3.4.0-1
 	AgentVersion *string `json:"agent_version,omitempty" xml:"agent_version,omitempty"`
-	// List of instances on which to update the widget
+	// The list of instances for which you want to update the component.
 	//
 	// This parameter is required.
 	Instances []*UpgradeAgentRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
@@ -89,7 +89,7 @@ func (s *UpgradeAgentRequest) Validate() error {
 }
 
 type UpgradeAgentRequestInstances struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -97,7 +97,7 @@ type UpgradeAgentRequestInstances struct {
 	//
 	// i-wz9b9vucz1iubsz8sjqo
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

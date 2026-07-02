@@ -16,9 +16,9 @@ type iInitialSysomRequest interface {
 }
 
 type InitialSysomRequest struct {
-	// Specifies whether to only check if the service role exists
+	// Specifies whether to only check whether the service-linked role exists.
 	CheckOnly *bool `json:"check_only,omitempty" xml:"check_only,omitempty"`
-	// Source, which is fixed as console.
+	// The source. Set this parameter to console.
 	//
 	// example:
 	//

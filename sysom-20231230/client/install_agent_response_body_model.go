@@ -20,29 +20,29 @@ type iInstallAgentResponseBody interface {
 }
 
 type InstallAgentResponseBody struct {
-	// Request ID, which can be used for end-to-end diagnosis
+	// The request ID, which can be used for end-to-end diagnostics.
 	//
 	// example:
 	//
 	// 1D8887FC-4BDB-5A1C-AB19-135C29A9E481
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Status code
+	// The status code.
 	//
-	// - `code == Success` indicates that authorization succeeded.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Any other status code indicates that authorization failed. If authorization fails, view the `message` field to obtain detailed error information.
+	// - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data
+	// The response data.
 	Data *InstallAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -104,9 +104,9 @@ func (s *InstallAgentResponseBody) Validate() error {
 }
 
 type InstallAgentResponseBodyData struct {
-	// Job ID.
+	// The task ID.
 	//
-	// You can use this job ID to invoke the GetAgentTask API to view the job execution status.
+	// You can use this task ID to call the GetAgentTask operation to retrieve the task execution status.
 	//
 	// example:
 	//

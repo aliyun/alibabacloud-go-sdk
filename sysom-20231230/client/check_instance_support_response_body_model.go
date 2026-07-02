@@ -20,19 +20,19 @@ type iCheckInstanceSupportResponseBody interface {
 }
 
 type CheckInstanceSupportResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - `code == Success` indicates that authorization succeeded.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate that authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data []*CheckInstanceSupportResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error message. When code != Success, the error message is stored here.
+	// The error message. This field contains the error information when code is not Success.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ func (s *CheckInstanceSupportResponseBody) Validate() error {
 }
 
 type CheckInstanceSupportResponseBodyData struct {
-	// ECS instance ID
+	// The ECS instance ID.
 	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// When `success` is false, this value is not empty and indicates the reason why the instance cannot be managed by SysOM.
+	// The reason why the instance cannot be managed. This field is not empty when success is false.
 	//
 	// example:
 	//

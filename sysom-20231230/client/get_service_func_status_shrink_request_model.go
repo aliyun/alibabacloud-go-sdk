@@ -18,7 +18,7 @@ type iGetServiceFuncStatusShrinkRequest interface {
 }
 
 type GetServiceFuncStatusShrinkRequest struct {
-	// channel name
+	// The channel name.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type GetServiceFuncStatusShrinkRequest struct {
 	//
 	// ecs
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// Diagnosis parameters. Different types of diagnosis require different diagnosis parameters. You can use this field to filter records whose parameter values match the specified values.
+	// The diagnostic parameters. Different types of diagnostics require different diagnostic parameters. You can use this field to filter records whose parameters match the specified values.
 	//
 	// This parameter is required.
 	ParamsShrink *string `json:"params,omitempty" xml:"params,omitempty"`
-	// Service Name
+	// The service name.
 	//
 	// This parameter is required.
 	//

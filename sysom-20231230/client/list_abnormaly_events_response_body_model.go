@@ -20,25 +20,25 @@ type iListAbnormalyEventsResponseBody interface {
 }
 
 type ListAbnormalyEventsResponseBody struct {
-	// Status code.
+	// The status code.
 	//
-	// - If `code == Success`, authorization succeeded.
+	// - `code == Success` indicates that the authorization was successful.
 	//
-	// - Any other status code indicates authorization failed. When authorization fails, check the `message` field for detailed error message.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Return Result.
+	// The returned result.
 	Data []*ListAbnormalyEventsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error code description; empty if no error
+	// The error code description. This value is empty if no error occurred.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -104,77 +104,87 @@ func (s *ListAbnormalyEventsResponseBody) Validate() error {
 }
 
 type ListAbnormalyEventsResponseBodyData struct {
-	// Creation Time
+	// The creation time.
 	//
 	// example:
 	//
 	// 1725801090000
 	CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// Detailed description of the anomalous item.
+	// The detailed description of the anomaly item.
 	//
 	// example:
 	//
 	// 节点发生OOM, 可查看OOM发生原因
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Diagnosis status (1 indicates diagnosis ready, 2 indicates running, 3 indicates completed, 4 indicates undiagnosable, 5 indicates failed)
+	// The diagnostic status. Valid values:
+	//
+	// - 1: diagnosis ready.
+	//
+	// - 2: diagnosis in progress.
+	//
+	// - 3: diagnosis completed.
+	//
+	// - 4: not diagnosable.
+	//
+	// - 5: diagnosis failed.
 	//
 	// example:
 	//
 	// 3
 	DiagStatus *int32 `json:"diag_status,omitempty" xml:"diag_status,omitempty"`
-	// End time of the anomalous activity.
+	// The end time of the anomaly event.
 	//
 	// example:
 	//
 	// 1725797727754
 	EndAt *int64 `json:"end_at,omitempty" xml:"end_at,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Name of the anomalous item.
+	// The name of the anomaly item.
 	//
 	// example:
 	//
 	// 节点CPU使用率检测
 	Item *string `json:"item,omitempty" xml:"item,omitempty"`
-	// Level of the anomalous item.
+	// The level of the anomaly item.
 	//
 	// example:
 	//
 	// potential
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// Namespace where the pod is located
+	// The namespace of the pod.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// List of operations for the abnormal item
+	// The list of operations for the anomaly item.
 	Opts []*ListAbnormalyEventsResponseBodyDataOpts `json:"opts,omitempty" xml:"opts,omitempty" type:"Repeated"`
-	// Pod name.
+	// The pod name.
 	//
 	// example:
 	//
 	// test-pod
 	Pod *string `json:"pod,omitempty" xml:"pod,omitempty"`
-	// Raw metrics
+	// The raw metrics.
 	RawMetrics *ListAbnormalyEventsResponseBodyDataRawMetrics `json:"raw_metrics,omitempty" xml:"raw_metrics,omitempty" type:"Struct"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// Type of abnormal item
+	// The type of the anomaly item.
 	//
 	// example:
 	//
 	// saturation
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// UUID corresponding to the anomalous activity
+	// The UUID of the anomaly event.
 	//
 	// example:
 	//
@@ -335,15 +345,15 @@ func (s *ListAbnormalyEventsResponseBodyData) Validate() error {
 }
 
 type ListAbnormalyEventsResponseBodyDataOpts struct {
-	// Operation Type
+	// The operation type.
 	//
 	// example:
 	//
 	// diagnose
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// Diagnosis result of the abnormal item
+	// The diagnostic result of the anomaly item.
 	Result *ListAbnormalyEventsResponseBodyDataOptsResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
-	// Diagnosis Type
+	// The diagnostic type.
 	//
 	// example:
 	//
@@ -396,13 +406,13 @@ func (s *ListAbnormalyEventsResponseBodyDataOpts) Validate() error {
 }
 
 type ListAbnormalyEventsResponseBodyDataOptsResult struct {
-	// Diagnosis status
+	// The diagnostic status.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Diagnosis details URL
+	// The URL of the diagnostic details.
 	//
 	// example:
 	//
@@ -441,15 +451,15 @@ func (s *ListAbnormalyEventsResponseBodyDataOptsResult) Validate() error {
 }
 
 type ListAbnormalyEventsResponseBodyDataRawMetrics struct {
-	// End Time
+	// The end time.
 	//
 	// example:
 	//
 	// 1761814928
 	EndTime *float32 `json:"end_time,omitempty" xml:"end_time,omitempty"`
-	// List of metric values.
+	// The list of metric values.
 	Metrics []*string `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
-	// Start Time
+	// The start time.
 	//
 	// example:
 	//

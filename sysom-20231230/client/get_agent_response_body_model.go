@@ -20,7 +20,7 @@ type iGetAgentResponseBody interface {
 }
 
 type GetAgentResponseBody struct {
-	// Request ID, which can be used for end-to-end Diagnosis
+	// Request ID, which can be used for end-to-end diagnostics
 	//
 	// example:
 	//
@@ -28,21 +28,21 @@ type GetAgentResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Status code
 	//
-	// - `code == Success` indicates that authorization succeeded.
+	// - `code == Success` indicates the authorization is successful;
 	//
-	// - Other status codes indicate that authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
+	// - Other status codes indicate authorization failure. Check the `message` field for detailed error information when authorization fails;
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// Response data.
 	Data *GetAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Error message
 	//
 	// - If `code == Success`, this field is empty;
 	//
-	// - Otherwise, this field contains the Request error message.
+	// - Otherwise, this field contains the request error message.
 	//
 	// example:
 	//
@@ -104,49 +104,49 @@ func (s *GetAgentResponseBody) Validate() error {
 }
 
 type GetAgentResponseBodyData struct {
-	// Creation Time of the widget
+	// Agent creation time
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// Description of the widget
+	// Agent description
 	//
 	// example:
 	//
 	// SysOM Agent
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Widget ID
+	// Agent ID
 	//
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Name of the widget
+	// Agent name
 	//
 	// example:
 	//
 	// SysOM
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Supported architecture
+	// Supported architectures
 	//
 	// example:
 	//
 	// x86
 	SupportArch *string `json:"support_arch,omitempty" xml:"support_arch,omitempty"`
-	// Type of the Agent
+	// Agent type
 	//
 	// example:
 	//
 	// control
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Update Time
+	// Update time
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	// Widget version information
+	// Agent version information
 	Versions []*GetAgentResponseBodyDataVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
@@ -244,37 +244,37 @@ func (s *GetAgentResponseBodyData) Validate() error {
 }
 
 type GetAgentResponseBodyDataVersions struct {
-	// Creation Time of the Agent version
+	// Agent version creation time
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// Installation script for this version of the Agent
+	// Installation script for this agent version
 	//
 	// example:
 	//
 	// sysom.sh install
 	InstallScript *string `json:"install_script,omitempty" xml:"install_script,omitempty"`
-	// Uninstall script for this Agent version
+	// Uninstallation script for this agent version
 	//
 	// example:
 	//
 	// sysom.sh uninstall
 	UninstallScript *string `json:"uninstall_script,omitempty" xml:"uninstall_script,omitempty"`
-	// Update Time of the Agent version
+	// Agent version update time
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	// Upgrade script for this Agent version
+	// Upgrade script for this agent version
 	//
 	// example:
 	//
 	// sysom.sh upgrade
 	UpgradeScript *string `json:"upgrade_script,omitempty" xml:"upgrade_script,omitempty"`
-	// Version number of the Agent
+	// Agent version number
 	//
 	// example:
 	//

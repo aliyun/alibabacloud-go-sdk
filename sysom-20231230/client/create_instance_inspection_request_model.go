@@ -22,16 +22,28 @@ type iCreateInstanceInspectionRequest interface {
 }
 
 type CreateInstanceInspectionRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// i-2ze5ru5rjurix7f71sxv
-	Instance     *string   `json:"instance,omitempty" xml:"instance,omitempty"`
-	Items        []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	MetricSource *string   `json:"metricSource,omitempty" xml:"metricSource,omitempty"`
+	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	// 异常项
+	Items []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The metric source.
+	//
+	// example:
+	//
+	// sysom
+	MetricSource *string `json:"metricSource,omitempty" xml:"metricSource,omitempty"`
+	// The region to which the instance belongs.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// console

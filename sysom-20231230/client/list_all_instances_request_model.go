@@ -30,7 +30,7 @@ type iListAllInstancesRequest interface {
 }
 
 type ListAllInstancesRequest struct {
-	// Current page
+	// Current page number.
 	//
 	// example:
 	//
@@ -48,21 +48,21 @@ type ListAllInstancesRequest struct {
 	//
 	// ecs
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// Managed type.
+	// Management type.
 	//
 	// example:
 	//
 	// managed
 	ManagedType *string `json:"managedType,omitempty" xml:"managedType,omitempty"`
-	// Maximum number of records to retrieve in a single request.
+	// Maximum number of records to retrieve at a time.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Paging cursor.
+	// Pagination token.
 	//
-	// > If this parameter is not empty, it indicates that more data is available.
+	// > If this parameter is not empty, more data is available.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListAllInstancesRequest struct {
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Plugin ID
+	// Plugin ID.
 	//
 	// example:
 	//

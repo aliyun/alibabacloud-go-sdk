@@ -20,17 +20,17 @@ type iDeleteAlertStrategyResponseBody interface {
 }
 
 type DeleteAlertStrategyResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - If `code == Success`, authorization succeeded.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate authorization failed. When authorization fails, check the `message` field for detailed error message.
+	// - Other status codes indicate authorization failed. Check the `message` field for the detailed error message.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The response data.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type DeleteAlertStrategyResponseBody struct {
 	//
 	//   }
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//

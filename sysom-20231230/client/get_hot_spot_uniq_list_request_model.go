@@ -60,7 +60,7 @@ type GetHotSpotUniqListRequest struct {
 	//
 	// prof_on
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
-	// Identity flag
+	// Identifier flag
 	//
 	// This parameter is required.
 	//

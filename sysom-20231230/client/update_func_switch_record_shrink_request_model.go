@@ -18,7 +18,7 @@ type iUpdateFuncSwitchRecordShrinkRequest interface {
 }
 
 type UpdateFuncSwitchRecordShrinkRequest struct {
-	// Diagnosis channel (currently fixed to the ecs channel)
+	// The diagnostic channel. Currently, this parameter is fixed to the ECS channel.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type UpdateFuncSwitchRecordShrinkRequest struct {
 	//
 	// ecs
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// Diagnosis parameters. Different diagnosis types require different diagnosis parameters. You can use this field to filter records whose parameters match specified values.
+	// The diagnostic parameters. Different types of diagnostics require different diagnostic parameters. You can use this field to filter records whose parameters match the specified values.
 	//
 	// This parameter is required.
 	ParamsShrink *string `json:"params,omitempty" xml:"params,omitempty"`
-	// Service Name
+	// The service name.
 	//
 	// This parameter is required.
 	//

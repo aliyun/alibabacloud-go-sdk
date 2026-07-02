@@ -14,7 +14,7 @@ type iGetVmcoreDiagnosisTaskRequest interface {
 }
 
 type GetVmcoreDiagnosisTaskRequest struct {
-	// Job ID
+	// The task ID.
 	//
 	// This parameter is required.
 	//

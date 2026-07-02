@@ -10,19 +10,19 @@ import (
 
 // Summary:
 //
-// This API is used to authorize SysOM to diagnose ECS instances under your account. You can only invoke the InvokeDiagnosis API to initiate diagnosis on a specific ECS instance after authorizing it through this API.
+// Authorizes SysOM to diagnose ECS instances under the current account. You must call this operation to authorize diagnostics for a specific ECS instance before you can call the InvokeDiagnosis operation to initiate diagnostics on it.
 //
 // Description:
 //
-//	Notice: The diagnosis feature requires a service-linked role to be created under a Resource Access Management (RAM) user. When you call this API, it automatically checks whether the service-linked role exists. If the role does not exist, the API automatically creates it. This requires the RAM user invoking this API to have the ram:CreateServiceLinkedRole permission.</notice>
+//	Notice: The diagnostics feature requires a service-linked role to be created under the Resource Access Management (RAM) user. This operation automatically checks whether the service-linked role exists and creates it if it does not. The RAM user that invokes this operation must have the ram:CreateServiceLinkedRole permission.</notice>
 //
-// When calling this API to authorize SysOM to diagnose ECS instances, note the following:
+// Note the following when you invoke this operation to authorize SysOM to diagnose ECS instances:
 //
-// - Each authorization is valid for 7 days. After 7 days, the authorization expires, and you must call this API again to re-authorize.
+// - Each authorization is valid for 7 days. After the authorization expires, invoke this operation again to re-authorize.
 //
-// - If the SysOM service-linked role (AliyunServiceRoleForSysom) does not exist when you call this API, it will be automatically created. This requires the RAM user invoking this API to have the `ram:CreateServiceLinkedRole` permission.
+// - If the SysOM service-linked role (AliyunServiceRoleForSysom) does not exist when you invoke this operation, automatic creation is performed. The RAM user that invokes this operation must have the `ram:CreateServiceLinkedRole` permission.
 //
-// - When you authorize a specific instance through this API, the system automatically adds the label `sysom:diagnosis` to the target ECS instance. SysOM can only diagnose instances that have this label.
+// - When you invoke this operation to authorize diagnostics for a specific instance, the label `sysom:diagnosis` is automatically associated with the target ECS instance. SysOM only allows diagnostics on instances that have this label.
 //
 // @param request - AuthDiagnosisRequest
 //
@@ -77,11 +77,11 @@ func (client *Client) AuthDiagnosisWithContext(ctx context.Context, request *Aut
 
 // Summary:
 //
-// # Check whether the target instance is supported by SysOM
+// Checks whether a target instance is supported by SysOM.
 //
 // Description:
 //
-// The instance list returned by this API includes only machines that are already managed by SysOM. If an ECS instance exists but is not managed by SysOM, it will not appear in the list.
+// This operation retrieves the list of instances that are already managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
 //
 // @param request - CheckInstanceSupportRequest
 //
@@ -132,7 +132,7 @@ func (client *Client) CheckInstanceSupportWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # High-CPU agent streaming API
+// Calls the CPU High Agent streaming SSE interface.
 //
 // @param request - CpuHighAgentStreamResponseRequest
 //
@@ -149,7 +149,7 @@ func (client *Client) CpuHighAgentStreamResponseWithSSECtx(ctx context.Context, 
 
 // Summary:
 //
-// # High-CPU agent streaming API
+// Calls the CPU High Agent streaming SSE interface.
 //
 // @param request - CpuHighAgentStreamResponseRequest
 //
@@ -196,7 +196,7 @@ func (client *Client) CpuHighAgentStreamResponseWithContext(ctx context.Context,
 
 // Summary:
 //
-// This API is used to create an alert contact for push notifications.
+// Creates a contact for alert notifications.
 //
 // @param request - CreateAlertDestinationRequest
 //
@@ -255,7 +255,7 @@ func (client *Client) CreateAlertDestinationWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Create an alert policy for push notifications
+// Creates an alert push strategy.
 //
 // @param request - CreateAlertStrategyRequest
 //
@@ -377,7 +377,7 @@ func (client *Client) CreateClusterVpcEndpointConnectionWithContext(ctx context.
 
 // Summary:
 //
-// 创建实例巡检
+// Creates a SysOM instance inspection.
 //
 // @param request - CreateInstanceInspectionRequest
 //
@@ -440,7 +440,7 @@ func (client *Client) CreateInstanceInspectionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// This API creates an intelligent breakdown diagnosis task to diagnose the vmcore or dmesg log file provided in the parameters.
+// Creates an intelligent breakdown diagnostic node that diagnoses the specified vmcore or dmesg log file based on the input parameters.
 //
 // @param request - CreateVmcoreDiagnosisTaskRequest
 //
@@ -503,7 +503,7 @@ func (client *Client) CreateVmcoreDiagnosisTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// This API is used to delete an alert contact.
+// Deletes an alert contact.
 //
 // @param request - DeleteAlertDestinationRequest
 //
@@ -550,7 +550,7 @@ func (client *Client) DeleteAlertDestinationWithContext(ctx context.Context, req
 
 // Summary:
 //
-// User deletes the alert policy for push notifications.
+// Deletes an alert policy for push notifications.
 //
 // @param request - DeleteAlertStrategyRequest
 //
@@ -597,11 +597,11 @@ func (client *Client) DeleteAlertStrategyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Query metrics
+// Queries metric data.
 //
 // Description:
 //
-// The instance list obtained by this API includes only the machines that are already managed by SysOM. If an ECS instance exists but is not managed by SysOM, it will not appear in the list.
+// The instance list returned by this operation contains only instances that are managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
 //
 // @param request - DescribeMetricListRequest
 //
@@ -660,13 +660,13 @@ func (client *Client) DescribeMetricListWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Obtain the Return Result of the copilot service
+// # Get the response result of the copilot service
 //
 // Description:
 //
-// - You must fill in the input parameters according to the standard LLM service input parameters, convert them into a string, and assign the result to llmParamString.
+// - Parameters need to be filled in according to the standard LLM service input parameters, converted to a string, and assigned to llmParamString
 //
-// - The returned data must be converted from a string to a dict before use. Refer to the standard LLM service return format.
+// - The returned data needs to be converted from string to dict before use. Refer to the standard LLM service response format
 //
 // @param request - GenerateCopilotResponseRequest
 //
@@ -713,15 +713,15 @@ func (client *Client) GenerateCopilotResponseWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Stream Copilot service API
+// Calls the streaming SSE endpoint of the OS Copilot service.
 //
 // Description:
 //
-// - Must be used together with the call_sseapi API of the aliyun-tea-openapi-inner package.
+// - Use this operation together with the call_sseapi operation in the aliyun-tea-openapi-inner package.
 //
-// - You must populate the input parameters according to the standard LLM service input parameters, convert them into a string, and assign the result to llmParamString.
+// - Populate the parameters based on the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
 //
-// - The returned data is a string that you must convert into a dictionary for use, following the standard LLM service response format.
+// - Convert the returned string to a dictionary before use. Refer to the standard LLM service response format.
 //
 // @param request - GenerateCopilotStreamResponseRequest
 //
@@ -738,15 +738,15 @@ func (client *Client) GenerateCopilotStreamResponseWithSSECtx(ctx context.Contex
 
 // Summary:
 //
-// # Stream Copilot service API
+// Calls the streaming SSE endpoint of the OS Copilot service.
 //
 // Description:
 //
-// - Must be used together with the call_sseapi API of the aliyun-tea-openapi-inner package.
+// - Use this operation together with the call_sseapi operation in the aliyun-tea-openapi-inner package.
 //
-// - You must populate the input parameters according to the standard LLM service input parameters, convert them into a string, and assign the result to llmParamString.
+// - Populate the parameters based on the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
 //
-// - The returned data is a string that you must convert into a dictionary for use, following the standard LLM service response format.
+// - Convert the returned string to a dictionary before use. Refer to the standard LLM service response format.
 //
 // @param request - GenerateCopilotStreamResponseRequest
 //
@@ -793,7 +793,7 @@ func (client *Client) GenerateCopilotStreamResponseWithContext(ctx context.Conte
 
 // Summary:
 //
-// # View AI Infra Analysis Result
+// Queries the AI Infra analysis results.
 //
 // @param request - GetAIQueryResultRequest
 //
@@ -840,7 +840,7 @@ func (client *Client) GetAIQueryResultWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Obtain the quantity of unprocessed (undiagnosed) anomalous activity at different Levels for edge zones/pods.
+// Get the count of unhandled (undiagnosed) abnormal events of different levels for nodes/Pods
 //
 // @param request - GetAbnormalEventsCountRequest
 //
@@ -915,7 +915,7 @@ func (client *Client) GetAbnormalEventsCountWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Retrieve the details of a widget
+// # Get details of a specific agent
 //
 // @param request - GetAgentRequest
 //
@@ -962,7 +962,7 @@ func (client *Client) GetAgentWithContext(ctx context.Context, request *GetAgent
 
 // Summary:
 //
-// # Obtain the task execution status of Agent installation
+// Retrieves the execution status of an Agent installation task.
 //
 // @param request - GetAgentTaskRequest
 //
@@ -1009,7 +1009,7 @@ func (client *Client) GetAgentTaskWithContext(ctx context.Context, request *GetA
 
 // Summary:
 //
-// This API is used to obtain the specified alert contact information.
+// Retrieves the information of a specified alert contact.
 //
 // @param request - GetAlertDestinationRequest
 //
@@ -1056,7 +1056,7 @@ func (client *Client) GetAlertDestinationWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Obtain an alert for a user by policy ID.
+// Retrieves an alert for a user based on the policy ID.
 //
 // @param request - GetAlertStrategyRequest
 //
@@ -1103,7 +1103,7 @@ func (client *Client) GetAlertStrategyWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Retrieve copilot chat history
+// Retrieves the chat history of Copilot.
 //
 // @param request - GetCopilotHistoryRequest
 //
@@ -1150,11 +1150,11 @@ func (client *Client) GetCopilotHistoryWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Obtain the diagnosis result.
+// Retrieves the diagnostic result.
 //
 // Description:
 //
-// The diagnosis flow is asynchronous. Therefore, when you invoke this API, the diagnosis may still be executing and not yet ended. You can check the `data.status` field in the returned data to determine the status. When `data.status == "Success"`, it indicates that the diagnosis succeeded, and you can read the diagnosis result from `data.result`.
+// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be in progress. You can check the `data.status` field in the response to determine the status. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic result from `data.result`.
 //
 // @param request - GetDiagnosisResultRequest
 //
@@ -1201,7 +1201,7 @@ func (client *Client) GetDiagnosisResultWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Obtain the proportion of edge zone/pod health statuses over a period of time
+// Retrieves the health status distribution of nodes or pods over a specified time period.
 //
 // @param request - GetHealthPercentageRequest
 //
@@ -1260,7 +1260,7 @@ func (client *Client) GetHealthPercentageWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Obtain the number of edge zones in a cluster or the number of pods in an edge zone
+// Retrieves the number of nodes or the number of Pods on nodes in a cluster.
 //
 // @param request - GetHostCountRequest
 //
@@ -1319,7 +1319,7 @@ func (client *Client) GetHostCountWithContext(ctx context.Context, request *GetH
 
 // Summary:
 //
-// Obtain the list of a specific field under an instance.
+// Get the list of a specific field under an instance.
 //
 // @param request - GetHotSpotUniqListRequest
 //
@@ -1386,7 +1386,7 @@ func (client *Client) GetHotSpotUniqListWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Obtain hot spot analysis results
+// Retrieves hot spot analysis results.
 //
 // @param request - GetHotspotAnalysisRequest
 //
@@ -1453,7 +1453,7 @@ func (client *Client) GetHotspotAnalysisWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Obtain hot spot comparison tracing results
+// # Get Hotspot Comparison Tracing Results
 //
 // @param request - GetHotspotCompareRequest
 //
@@ -1536,7 +1536,7 @@ func (client *Client) GetHotspotCompareWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Obtain the hot spot instance list
+// # Get Hotspot Instance List
 //
 // @param request - GetHotspotInstanceListRequest
 //
@@ -1591,7 +1591,7 @@ func (client *Client) GetHotspotInstanceListWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Obtain the PID list of a specific instance
+// Retrieves the PID list of a specified instance.
 //
 // @param request - GetHotspotPidListRequest
 //
@@ -1650,7 +1650,7 @@ func (client *Client) GetHotspotPidListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Obtain hot spot tracing results
+// Retrieves hot spot tracking results.
 //
 // @param request - GetHotspotTrackingRequest
 //
@@ -1717,7 +1717,7 @@ func (client *Client) GetHotspotTrackingWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取巡检报告
+// Retrieves a SysOM inspection report.
 //
 // @param request - GetInspectionReportRequest
 //
@@ -1764,7 +1764,7 @@ func (client *Client) GetInspectionReportWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Obtain real-time cluster/edge zone health degree score
+// Get real-time cluster/node health score
 //
 // @param request - GetInstantScoreRequest
 //
@@ -1815,7 +1815,7 @@ func (client *Client) GetInstantScoreWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// # AI Infra retrieves the list of analysis records
+// Retrieves a list of AI Infra analysis records.
 //
 // @param request - GetListRecordRequest
 //
@@ -1832,8 +1832,16 @@ func (client *Client) GetListRecordWithContext(ctx context.Context, request *Get
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AnalysisId) {
+		query["analysisId"] = request.AnalysisId
+	}
+
 	if !dara.IsNil(request.Current) {
 		query["current"] = request.Current
+	}
+
+	if !dara.IsNil(request.CustomId) {
+		query["customId"] = request.CustomId
 	}
 
 	if !dara.IsNil(request.PageSize) {
@@ -1870,7 +1878,7 @@ func (client *Client) GetListRecordWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Obtain the proportion of abnormal issues in pods within edge zones or in an edge zone within a cluster over a specified period of time.
+// Get the proportion of abnormal issues in cluster nodes/pods within a specified time range
 //
 // @param request - GetProblemPercentageRequest
 //
@@ -1929,7 +1937,7 @@ func (client *Client) GetProblemPercentageWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Retrieve the health score trend
+// Retrieves the health score trend.
 //
 // @param request - GetRangeScoreRequest
 //
@@ -1988,7 +1996,7 @@ func (client *Client) GetRangeScoreWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// # Obtain real-time resource usage of clusters or edge zones
+// Retrieves the real-time resource usage of a cluster or node.
 //
 // @param request - GetResourcesRequest
 //
@@ -2043,11 +2051,11 @@ func (client *Client) GetResourcesWithContext(ctx context.Context, request *GetR
 
 // Summary:
 //
-// # Obtain Function Modules Configuration
+// Retrieves the configuration of a feature module.
 //
 // Description:
 //
-// This API is used to retrieve the service configuration status.
+// Retrieves the service configuration status.
 //
 // @param tmpReq - GetServiceFuncStatusRequest
 //
@@ -2108,7 +2116,7 @@ func (client *Client) GetServiceFuncStatusWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// This API queries the task execution status and diagnosis result based on the job ID.
+// Queries the execution status and diagnostic result of a diagnostic task by task ID.
 //
 // @param request - GetVmcoreDiagnosisTaskRequest
 //
@@ -2155,17 +2163,17 @@ func (client *Client) GetVmcoreDiagnosisTaskWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Initialize SysOM and ensure that the service role exists.
+// Initializes SysOM to ensure that the service-linked role exists.
 //
 // Description:
 //
-// Some SysOM APIs require role assumption based on the `AliyunServiceRoleForSysom` service role. Therefore, before using SysOM features, you must invoke this API to perform initialization and ensure that the service role has been created.
+// Some SysOM API operations require role assumption based on the `AliyunServiceRoleForSysom` service-linked role. Before using SysOM features, invoke this operation to perform initialization and ensure that the service-linked role has been created.
 //
-// - `check_only`: If this parameter is set to True, the API only checks whether the service role exists and does not create it. If this parameter is set to False or omitted, the API automatically creates the service role if it does not exist.
+// - `check_only`: If this parameter is set to True, the operation only checks whether the service-linked role exists and does not create it. If this parameter is set to False or left empty, the operation performs automatic creation of the service-linked role if it does not exist.
 //
 // >
 //
-// > Note: When you invoke this API to initialize the role, you are deemed to have accepted the User Agreement of the operating system console by default. For more information, see [Overview of the Operating System Console](https://help.aliyun.com/zh/alinux/product-overview/os-console-overview?spm=a2c4g.11186623.help-menu-2632541.d_0_7.35a829ffLjQtgg) and [Alibaba Cloud Service Trial Terms](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud202001091714_51956.html).
+// > Note: When you call this operation to initialize the role through the API, you agree to the user agreement of the operating system console by default. For more information, see [Operating system console overview](https://www.alibabacloud.com/help/en/alinux/product-overview/os-console-overview) and [Alibaba Cloud Service Trial Terms](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud202001091714_51956.html).
 //
 // @param request - InitialSysomRequest
 //
@@ -2216,11 +2224,11 @@ func (client *Client) InitialSysomWithContext(ctx context.Context, request *Init
 
 // Summary:
 //
-// # Install an agent on the specified instance
+// Installs an Agent on a specified instance.
 //
 // Description:
 //
-// The API call to install an agent is asynchronous. After invoking this API, a task_id is returned. You can use this ID to invoke the GetAgentTask API to retrieve the job execution status.
+// Calling this operation to install an Agent is asynchronous. After the call, a task_id is returned. You can use this ID to call the GetAgentTask operation to retrieve the task execution status.
 //
 // @param request - InstallAgentRequest
 //
@@ -2279,15 +2287,15 @@ func (client *Client) InstallAgentWithContext(ctx context.Context, request *Inst
 
 // Summary:
 //
-// # Install widgets on a cluster
+// # Install component for cluster
 //
 // Description:
 //
-// After you install widgets on the specified ACK cluster:
+// After installing a component for the target ACK cluster:
 //
-// 1. When the cluster is first enrolled, widgets are installed on all ECS instances in the cluster (if the cluster contains more than 50 nodes, widgets are installed on only 50 nodes in the first batch).
+// 1. First, when the cluster is managed for the first time, the component will be installed on all ECS instances currently in the cluster. If the cluster has more than 50 nodes, only 50 instances will be covered in the first batch.
 //
-// 2. The operating system console periodically checks for scale-in or scale-out events in the enrolled cluster. Whenever new ECS instances are added to the cluster, the operating system console automatically installs widgets on them without requiring user intervention.
+// 2. Then, the SysOM console periodically checks the scaling status of the managed cluster. Once a new ECS instance is added to the cluster, the SysOM console automatically installs the component on it without user intervention.
 //
 // @param request - InstallAgentForClusterRequest
 //
@@ -2350,7 +2358,7 @@ func (client *Client) InstallAgentForClusterWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Initiate diagnosis for anomalous activity
+// Initiates an anomaly diagnostics task.
 //
 // @param request - InvokeAnomalyDiagnosisRequest
 //
@@ -2397,19 +2405,19 @@ func (client *Client) InvokeAnomalyDiagnosisWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Initiate a diagnosis.
+// Initiate Diagnosis.
 //
 // Description:
 //
-// Diagnosing the target ECS instance has the following requirements:
+// The following requirements must be met to diagnose a target ECS instance:
 //
-// - The instance status of the target ECS instance must be running.
+// - The target ECS instance must be in the Running state.
 //
-// - The Cloud Assistant Agent must already be installed on the target ECS instance. If it is not installed, install it by referring to [Install the Cloud Assistant Agent](https://help.aliyun.com/zh/ecs/user-guide/install-the-cloud-assistant-agent).
+// - The Cloud Assistant must be installed on the target ECS instance. If it is not installed, refer to [Install the Cloud Assistant Agent](https://help.aliyun.com/zh/ecs/user-guide/install-the-cloud-assistant-agent) for installation.
 //
-// - You must invoke the AuthDiagnosis API to authorize SysOM to diagnose the target ECS instance. If this authorization is not granted, the API call will fail immediately.
+// - You must call the AuthDiagnosis API to authorize SysOM to diagnose the target ECS instance. If authorization is not granted, this API will fail directly.
 //
-// - This API depends on the existence of the SysOM service-linked role (AliyunServiceRoleForSysom). This API does not create the service-linked role automatically. If the service-linked role does not exist, you must first call AuthDiagnosis to perform authorization, which will create the aforementioned service-linked role.
+// - This API requires that the SysOM service-linked role (AliyunServiceRoleForSysom) has been created. This API does not automatically create the service role. If the service role does not exist, you must first call AuthDiagnosis for authorization, which will create the aforementioned service role.
 //
 // @param request - InvokeDiagnosisRequest
 //
@@ -2464,7 +2472,7 @@ func (client *Client) InvokeDiagnosisWithContext(ctx context.Context, request *I
 
 // Summary:
 //
-// Obtain anomalous activity information for clusters, edge zones, or pods within a specified time period.
+// Retrieves anomaly event information for a cluster, node, or pod within a specified time range.
 //
 // @param request - ListAbnormalyEventsRequest
 //
@@ -2551,7 +2559,7 @@ func (client *Client) ListAbnormalyEventsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # List installation records of the agent
+// Lists the installation records of an Agent.
 //
 // @param request - ListAgentInstallRecordsRequest
 //
@@ -2622,7 +2630,7 @@ func (client *Client) ListAgentInstallRecordsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Retrieve the Agent List
+// Retrieves a list of agents.
 //
 // @param request - ListAgentsRequest
 //
@@ -2681,7 +2689,7 @@ func (client *Client) ListAgentsWithContext(ctx context.Context, request *ListAg
 
 // Summary:
 //
-// This API is used to obtain the alert contact list.
+// # This API is used to get the list of alert contacts
 //
 // @param request - ListAlertDestinationsRequest
 //
@@ -2744,7 +2752,7 @@ func (client *Client) ListAlertDestinationsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Retrieve all alerting items
+// Retrieves all alert metrics.
 //
 // @param headers - map
 //
@@ -2777,7 +2785,7 @@ func (client *Client) ListAlertItemsWithContext(ctx context.Context, headers map
 
 // Summary:
 //
-// # Used to obtain all alert policies for push notifications of a user
+// Retrieves all push alert policies for the current user.
 //
 // @param request - ListAlertStrategiesRequest
 //
@@ -2840,7 +2848,7 @@ func (client *Client) ListAlertStrategiesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// This API is used to obtain a list of managed or unmanaged instances along with instance information.
+// This API is used to retrieve a list of managed/unmanaged instances along with their instance information.
 //
 // @param request - ListAllInstancesRequest
 //
@@ -2919,7 +2927,7 @@ func (client *Client) ListAllInstancesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Obtain cluster widget installation records
+// # Get cluster component installation records
 //
 // @param request - ListClusterAgentInstallRecordsRequest
 //
@@ -2986,7 +2994,7 @@ func (client *Client) ListClusterAgentInstallRecordsWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Retrieve all clusters managed by the current user
+// # Retrieve all managed clusters of the current user
 //
 // @param request - ListClustersRequest
 //
@@ -3057,7 +3065,7 @@ func (client *Client) ListClustersWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Obtain the diagnosis history list.
+// Obtain the list of diagnostic history.
 //
 // @param request - ListDiagnosisRequest
 //
@@ -3120,7 +3128,7 @@ func (client *Client) ListDiagnosisWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Obtain a list of cluster node or pod health scores within a specified time period.
+// Retrieves the health status list of cluster nodes or Pods within a specified time range.
 //
 // @param request - ListInstanceHealthRequest
 //
@@ -3187,11 +3195,11 @@ func (client *Client) ListInstanceHealthWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Obtain instance status
+// Retrieves instance statuses.
 //
 // Description:
 //
-// This API is used to obtain the list of machines managed by SysOM.
+// Retrieves the list of machines managed by SysOM.
 //
 // @param request - ListInstanceStatusRequest
 //
@@ -3254,11 +3262,11 @@ func (client *Client) ListInstanceStatusWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Obtain the instance list
+// Retrieves a list of instances.
 //
 // Description:
 //
-// The instance list returned by this API includes only the machines that have been managed by SysOM. If an ECS instance exists but has not been managed by SysOM, it will not appear in the list.
+// This operation retrieves the list of instances that are already managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
 //
 // @param request - ListInstancesRequest
 //
@@ -3325,11 +3333,11 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Obtain a list of ECS information, such as the tag list, public IP address list, and so on.
+// Retrieves lists of ECS information for instances, such as tag lists and public IP address lists.
 //
 // Description:
 //
-// The instance list returned by this API includes only machines that are already managed by SysOM. If an ECS instance exists but is not managed by SysOM, it will not appear in the list.
+// The instance list retrieved by this operation contains only machines that are managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
 //
 // @param request - ListInstancesEcsInfoListRequest
 //
@@ -3392,11 +3400,11 @@ func (client *Client) ListInstancesEcsInfoListWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Obtain information about managed or unmanaged instances, including ECS information.
+// Retrieves information about managed and unmanaged instances, including ECS information.
 //
 // Description:
 //
-// The current API returns a list of instances that have already been managed by SysOM. If an ECS instance exists but has not been managed by SysOM, it will not appear in the list.
+// The instance list returned by this operation contains only machines that are managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
 //
 // @param tmpReq - ListInstancesWithEcsInfoRequest
 //
@@ -3505,11 +3513,11 @@ func (client *Client) ListInstancesWithEcsInfoWithContext(ctx context.Context, t
 
 // Summary:
 //
-// # Obtain the list of instances for plugin installation, update, or uninstallation
+// Retrieves the list of instances for plug-in installation, update, or uninstallation.
 //
 // Description:
 //
-// The instance list returned by this API consists of machines that are already managed by SysOM. If an ECS instance exists but is not managed by SysOM, it will not appear in the list.
+// The instance list retrieved by this operation contains only machines that are managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
 //
 // @param request - ListPluginsInstancesRequest
 //
@@ -3580,7 +3588,7 @@ func (client *Client) ListPluginsInstancesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Retrieve the list of pods in a cluster or instance
+// Retrieves the list of pods in a cluster or instance.
 //
 // @param request - ListPodsOfInstanceRequest
 //
@@ -3639,11 +3647,11 @@ func (client *Client) ListPodsOfInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # List all areas where machines are managed
+// Lists all regions that contain managed instances.
 //
 // Description:
 //
-// This API retrieves the list of areas where the current user has machines managed by SysOM. If the user has ECS instances in an area but those instances are not managed by SysOM, that area will not appear in the API response.
+// This operation retrieves the list of regions where the current user has instances managed by SysOM. If a user has ECS instances in a region but none of them are managed by SysOM, that region is not included in the response.
 //
 // @param headers - map
 //
@@ -3676,7 +3684,7 @@ func (client *Client) ListRegionsWithContext(ctx context.Context, headers map[st
 
 // Summary:
 //
-// Query the history list of breakdown diagnosis jobs.
+// Query the historical crash diagnosis task list.
 //
 // @param request - ListVmcoreDiagnosisTaskRequest
 //
@@ -3723,7 +3731,7 @@ func (client *Client) ListVmcoreDiagnosisTaskWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Start an AI job analysis.
+// Start AI job analysis.
 //
 // @param request - StartAIAnalysisRequest
 //
@@ -3822,11 +3830,11 @@ func (client *Client) StartAIAnalysisWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// Start AI Infra differential analysis.
+// Starts an AI Infra differential analysis.
 //
 // Description:
 //
-// Currently, only comparative analysis between different steps under the same AI Infra analysis record and the same pid is supported.
+// Currently, only comparative analysis of the same pid across different steps within the same AI Infra analysis record is supported.
 //
 // @param request - StartAIDiffAnalysisRequest
 //
@@ -3877,11 +3885,11 @@ func (client *Client) StartAIDiffAnalysisWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Uninstall a specified version of the widget
+// Uninstalls a specified version of a component.
 //
 // Description:
 //
-// The API call to uninstall an Agent is asynchronous. After invoking this API, a task_id is returned. You can use this ID to invoke the GetAgentTask API to retrieve the execution status of the job.
+// Calling this operation to uninstall an Agent is asynchronous. After the call, a task_id is returned. Use this ID to call the GetAgentTask operation to retrieve the execution status of the task.
 //
 // @param request - UninstallAgentRequest
 //
@@ -3936,7 +3944,7 @@ func (client *Client) UninstallAgentWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// # Uninstall a widget from a cluster
+// Uninstalls a component from a cluster.
 //
 // @param request - UninstallAgentForClusterRequest
 //
@@ -3991,11 +3999,11 @@ func (client *Client) UninstallAgentForClusterWithContext(ctx context.Context, r
 
 // Summary:
 //
-// This API is used to update an alert contact.
+// Updates an alert contact.
 //
 // Description:
 //
-// 、
+// .
 //
 // @param request - UpdateAlertDestinationRequest
 //
@@ -4058,7 +4066,7 @@ func (client *Client) UpdateAlertDestinationWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # User updates the status of a push alert policy
+// Updates the status of a push alert policy.
 //
 // @param request - UpdateAlertEnabledRequest
 //
@@ -4109,7 +4117,7 @@ func (client *Client) UpdateAlertEnabledWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Update push alert policy
+// Updates a push alert policy.
 //
 // @param request - UpdateAlertStrategyRequest
 //
@@ -4172,7 +4180,7 @@ func (client *Client) UpdateAlertStrategyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Update the follow level of an anomalous activity to adjust the sensitivity of the anomaly detection algorithm by modifying the follow level.
+// Updates the attention level of an anomaly item. Adjusting the attention level affects the sensitivity of the anomaly detection algorithm.
 //
 // @param request - UpdateEventsAttentionRequest
 //
@@ -4227,13 +4235,13 @@ func (client *Client) UpdateEventsAttentionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Update the service function module configuration.
+// Updates the configuration of a service feature module.
 //
 // Description:
 //
-// - You must fill in the parameters according to the input parameters of the general LLM service, convert them to a string, and assign the result to `llmParamString`.
+// - Populate parameters according to the general LLM service input parameters, convert them to a string, and assign the string to llmParamString.
 //
-// - To use the returned data, convert the string back to a dictionary, following the response format of the general LLM service.
+// - Convert the returned data from a string to a dict before use. Refer to the general LLM service response format.
 //
 // @param tmpReq - UpdateFuncSwitchRecordRequest
 //
@@ -4294,11 +4302,11 @@ func (client *Client) UpdateFuncSwitchRecordWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Update the version of the installed widget to the specified version.
+// Updates an installed component to a specified version.
 //
 // Description:
 //
-// The API call to update the Agent is asynchronous. After invoking this API, a task_id is returned. You can use this ID to invoke the GetAgentTask API to retrieve the execution status of the job.
+// Updating the Agent by calling this operation is asynchronous. After you call this operation, a task_id is returned. You can use this ID to call the GetAgentTask operation to query the execution status of the task.
 //
 // @param request - UpgradeAgentRequest
 //
@@ -4353,7 +4361,7 @@ func (client *Client) UpgradeAgentWithContext(ctx context.Context, request *Upgr
 
 // Summary:
 //
-// # Update widget for cluster
+// Updates components for a cluster.
 //
 // @param request - UpgradeAgentForClusterRequest
 //

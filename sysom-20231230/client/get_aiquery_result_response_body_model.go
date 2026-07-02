@@ -20,19 +20,19 @@ type iGetAIQueryResultResponseBody interface {
 }
 
 type GetAIQueryResultResponseBody struct {
-	// error code
+	// The error code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Return Result, with large Data Volume
+	// The returned results. The data volume can be large.
 	//
 	// example:
 	//
 	// {\\"task_id\\": \\"y4ba8uRV\\"}
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// error message.
+	// The error message.
 	//
 	// example:
 	//

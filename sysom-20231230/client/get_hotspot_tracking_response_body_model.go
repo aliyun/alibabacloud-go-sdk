@@ -20,21 +20,21 @@ type iGetHotspotTrackingResponseBody interface {
 }
 
 type GetHotspotTrackingResponseBody struct {
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SysomOpenAPI.ServerError
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data
+	// The returned data.
 	Data *GetHotspotTrackingResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Return message
+	// The response message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ func (s *GetHotspotTrackingResponseBody) Validate() error {
 }
 
 type GetHotspotTrackingResponseBodyData struct {
-	// Flame graph data
+	// The flame graph data.
 	Flame *GetHotspotTrackingResponseBodyDataFlame `json:"flame,omitempty" xml:"flame,omitempty" type:"Struct"`
-	// Data list
+	// The data list.
 	Series *GetHotspotTrackingResponseBodyDataSeries `json:"series,omitempty" xml:"series,omitempty" type:"Struct"`
 }
 
@@ -143,9 +143,9 @@ func (s *GetHotspotTrackingResponseBodyData) Validate() error {
 }
 
 type GetHotspotTrackingResponseBodyDataFlame struct {
-	// List of column names
+	// The list of field names.
 	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	// List of flame graph data
+	// The list of flame graph data.
 	Values [][]*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
@@ -180,9 +180,9 @@ func (s *GetHotspotTrackingResponseBodyDataFlame) Validate() error {
 }
 
 type GetHotspotTrackingResponseBodyDataSeries struct {
-	// List of column names
+	// The list of field names.
 	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	// List of hot spot metric data
+	// The list of hot spot time series data.
 	Values [][]*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 

@@ -20,25 +20,25 @@ type iListAgentsRequest interface {
 }
 
 type ListAgentsRequest struct {
-	// Current page number (starting from page 1)
+	// The current page number. Pages start from page 1.
 	//
 	// example:
 	//
 	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
-	// Filter plugins by plugin name
+	// Filters plug-ins by plug-in name.
 	//
 	// example:
 	//
 	// SysOM
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Retrieve the list based on the Agent Type. For example, passing "control" retrieves all control-type Agents.
+	// The agent type used to filter the list. For example, set this parameter to control to retrieve all agents of the control type.
 	//
 	// example:
 	//

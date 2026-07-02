@@ -20,25 +20,25 @@ type iListRegionsResponseBody interface {
 }
 
 type ListRegionsResponseBody struct {
-	// Request ID, which can be used for end-to-end diagnosis
+	// The request ID, which can be used for end-to-end diagnostics.
 	//
 	// example:
 	//
 	// B149FD9C-ED5C-5765-B3AD-05AA4A4D64D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// error code
+	// The error code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// List of areas
+	// The list of regions.
 	//
 	// example:
 	//
 	// ["cn-hangzhou", "cn-shengzhen"]
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Description of the error code; empty if no error occurred
+	// The error code description. This value is empty if no error occurs.
 	//
 	// example:
 	//

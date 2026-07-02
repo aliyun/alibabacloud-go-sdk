@@ -20,19 +20,19 @@ type iDescribeMetricListResponseBody interface {
 }
 
 type DescribeMetricListResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - `code == Success` indicates successful authorization;
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Any other status code indicates authorization failure. When authorization fails, check the `message` field for detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data []*DescribeMetricListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
@@ -110,19 +110,19 @@ func (s *DescribeMetricListResponseBody) Validate() error {
 }
 
 type DescribeMetricListResponseBodyData struct {
-	// Metric labels
+	// The metric labels.
 	//
 	// example:
 	//
 	// {\\"taskExecName\\": \\"build-and-deploy\\", \\"pipelineName\\": \\"pipeline-run-1722909642357\\"}
 	Labels *string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// Metric name
+	// The metric name.
 	//
 	// example:
 	//
 	// sysom_cpu_usage_idle
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	// Metric data
+	// The metric data.
 	Values [][]*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 

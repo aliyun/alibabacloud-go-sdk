@@ -22,31 +22,31 @@ type iListAlertDestinationsRequest interface {
 }
 
 type ListAlertDestinationsRequest struct {
-	// Current page number (starts from 1).
+	// Current page number (starting from 1)
 	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"current,omitempty" xml:"current,omitempty"`
-	// Maximum number of records retrieved in a single request.
+	// Maximum number of records to retrieve at a time.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Alert contact name.
+	// Alert contact name
 	//
 	// example:
 	//
 	// name1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Paging token for the next request.
+	// Pagination token for the next request.
 	//
 	// example:
 	//
 	// c2f78a783f49457caba6bace6f6f79e4
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Page size.
+	// Page size
 	//
 	// example:
 	//

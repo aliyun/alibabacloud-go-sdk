@@ -20,17 +20,17 @@ type iStartAIDiffAnalysisResponseBody interface {
 }
 
 type StartAIDiffAnalysisResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - `code == Success` indicates that authorization succeeded.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Other status codes indicate that authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// AI differential analysis result data
+	// The AI differential analysis result data.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type StartAIDiffAnalysisResponseBody struct {
 	//
 	// ]"
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// Error message description; empty if no error occurred
+	// The error code description. This field is empty if no error occurs.
 	//
 	// example:
 	//

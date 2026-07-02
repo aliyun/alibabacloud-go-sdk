@@ -14,7 +14,7 @@ type iGenerateCopilotStreamResponseRequest interface {
 }
 
 type GenerateCopilotStreamResponseRequest struct {
-	// Input parameter for integrating with the Copilot LLM service. Refer to the standard LLM API input parameter dictionary, convert it into a string, and pass it in llmParamString.
+	// The input parameter for the Copilot LLM service. Refer to the standard LLM operation input parameter dictionary. Convert the dictionary to a string and pass it in llmParamString.
 	//
 	// example:
 	//

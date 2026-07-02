@@ -24,37 +24,37 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
-	// Cluster ID
+	// The cluster ID.
 	//
 	// example:
 	//
 	// xxxxx
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// This field exists when paging is used and indicates the current page.
+	// The current page number. This field exists when pagination is used.
 	//
 	// example:
 	//
 	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
-	// Filter by ECS instance ID
+	// The ECS instance ID used to filter results.
 	//
 	// example:
 	//
 	// i-8vbfd3g9vs32sfuvv38h
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Page size. Default value is 20. Valid range: [1, 100].
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Filter instances by area
+	// Filters instances by region.
 	//
 	// example:
 	//
 	// cn-shenzhen
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// Filter instances by status
+	// Filters instances by status.
 	//
 	// example:
 	//

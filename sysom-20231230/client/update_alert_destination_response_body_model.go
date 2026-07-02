@@ -20,17 +20,17 @@ type iUpdateAlertDestinationResponseBody interface {
 }
 
 type UpdateAlertDestinationResponseBody struct {
-	// status code
+	// The status code.
 	//
-	// - If `code == Success`, authorization succeeded.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate Failed to Authorize. When authorization fails, check the `message` field for detailed error message.
+	// - Other status codes indicate authorization has failed. Check the `message` field for the detailed error message.
 	//
 	// example:
 	//
 	// SysomOpenAPI.InvalidParameter
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Return Result.
+	// The response data.
 	//
 	// example:
 	//
@@ -42,17 +42,17 @@ type UpdateAlertDestinationResponseBody struct {
 	//
 	// }
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// request ID
+	// The request ID.
 	//
 	// example:
 	//

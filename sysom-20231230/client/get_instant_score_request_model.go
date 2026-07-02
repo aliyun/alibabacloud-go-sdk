@@ -16,7 +16,7 @@ type iGetInstantScoreRequest interface {
 }
 
 type GetInstantScoreRequest struct {
-	// Cluster ID
+	// Cluster ID.
 	//
 	// example:
 	//

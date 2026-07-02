@@ -22,27 +22,27 @@ type iListAgentsResponseBody interface {
 }
 
 type ListAgentsResponseBody struct {
-	// Request ID, which can be used for end-to-end Diagnosis
+	// The request ID, which can be used for end-to-end diagnostics.
 	//
 	// example:
 	//
 	// 66EAED72-542B-583B-BCED-64433DC27AD7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Status code
+	// The status code.
 	//
-	// - `code == Success` indicates successful authorization;
+	// - If code is Success, the authorization is successful.
 	//
-	// - Other status codes indicate authorization failure. When authorization fails, view the `message` field to obtain detailed error message;
+	// - Other status codes indicate authorization failed. Check the message field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned Data
+	// The returned data.
 	Data []*ListAgentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error message
+	// The error message.
 	//
-	// - If `code == Success`, this field is empty.
+	// - If code is Success, this field is empty.
 	//
 	// - Otherwise, this field contains the request error message.
 	//
@@ -50,7 +50,7 @@ type ListAgentsResponseBody struct {
 	//
 	// SysomOpenAPIAssumeRoleException: EntityNotExist.Role The role not exists: acs:ram::xxxxx:role/aliyunserviceroleforsysom
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -125,53 +125,53 @@ func (s *ListAgentsResponseBody) Validate() error {
 }
 
 type ListAgentsResponseBodyData struct {
-	// Widget creation time
+	// The time when the component was created.
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// Widget description
+	// The component description.
 	//
 	// example:
 	//
 	// SysOM Agent
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Widget ID
+	// The component ID.
 	//
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Widget name
+	// The component name.
 	//
 	// example:
 	//
 	// SysOM Agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Supported architecture (multiple architectures separated by commas)
+	// The supported architectures. Multiple architectures are separated by commas.
 	//
 	// example:
 	//
 	// x86
 	SupportArch *string `json:"support_arch,omitempty" xml:"support_arch,omitempty"`
-	// Widget type
+	// The type of the component. Valid values:
 	//
-	// - Control: control-type widget
+	// - Control: control-type component.
 	//
-	// - AI: AI widget
+	// - AI: AI component.
 	//
 	// example:
 	//
 	// Control
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Widget Update Time
+	// The time when the component was last updated.
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	// Widget Version List
+	// The list of component versions.
 	Versions []*ListAgentsResponseBodyDataVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
@@ -269,37 +269,37 @@ func (s *ListAgentsResponseBodyData) Validate() error {
 }
 
 type ListAgentsResponseBodyDataVersions struct {
-	// Widget version creation time
+	// The time when the component version was created.
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// The widget\\"s install script
+	// The installation script of the component.
 	//
 	// example:
 	//
 	// sysom.sh install
 	InstallScript *string `json:"install_script,omitempty" xml:"install_script,omitempty"`
-	// Widget uninstall script
+	// The uninstallation script of the component.
 	//
 	// example:
 	//
 	// sysom.sh uninstall
 	UninstallScript *string `json:"uninstall_script,omitempty" xml:"uninstall_script,omitempty"`
-	// Widget version update time
+	// The time when the component version was last updated.
 	//
 	// example:
 	//
 	// 2024-09-14T20:46:08
 	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	// Widget upgrade script
+	// The update script of the component.
 	//
 	// example:
 	//
 	// sysom.sh upgrade
 	UpgradeScript *string `json:"upgrade_script,omitempty" xml:"upgrade_script,omitempty"`
-	// Widget version number
+	// The component version number.
 	//
 	// example:
 	//

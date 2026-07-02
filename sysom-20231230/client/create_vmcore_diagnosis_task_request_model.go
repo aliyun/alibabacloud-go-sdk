@@ -22,33 +22,33 @@ type iCreateVmcoreDiagnosisTaskRequest interface {
 }
 
 type CreateVmcoreDiagnosisTaskRequest struct {
-	// Download link for the debuginfo-common file. This parameter is optional when the diagnosis type is vmcore.
+	// The download URL of the debuginfo-common file. This parameter is optional when the diagnostic type is vmcore.
 	//
-	// For CentOS or Alinux kernel diagnosis, the corresponding debuginfo-common file is automatically downloaded, so you do not need to provide this parameter. For kernels of other distributions, you must manually provide the download link for the debuginfo-common file that matches the kernel version.
+	// For CentOS or Alinux kernels, the corresponding debuginfo-common file is automatically downloaded, and you do not need to specify this parameter. For other distribution kernels, manually provide the download URL of the debuginfo-common file that corresponds to the kernel version.
 	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/debuginfo-common/file/path
 	DebuginfoCommonUrl *string `json:"debuginfoCommonUrl,omitempty" xml:"debuginfoCommonUrl,omitempty"`
-	// The download link of the debuginfo file corresponding to the vmcore file. This parameter is optional when the diagnosis type is vmcore.
+	// The download URL of the debuginfo file. This parameter is optional when the diagnostic type is vmcore.
 	//
-	// For CentOS or Alinux kernel diagnosis, the corresponding debuginfo file is automatically downloaded, so you do not need to provide this parameter. For kernels from other distributions, you must manually provide the download link for the debuginfo file that matches the kernel version.
+	// For CentOS or Alinux kernels, the corresponding debuginfo file is automatically downloaded, and you do not need to specify this parameter. For other distribution kernels, manually provide the download URL of the debuginfo file that corresponds to the kernel version.
 	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/debuginfo/file/path
 	DebuginfoUrl *string `json:"debuginfoUrl,omitempty" xml:"debuginfoUrl,omitempty"`
-	// Download link for the dmesg log file. This parameter is required when the diagnosis type is dmesg.
+	// The download URL of the dmesg log file. This parameter is required when the diagnostic type is dmesg.
 	//
 	// example:
 	//
 	// https://bucket-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/dmesg/file/path
 	DmesgUrl *string `json:"dmesgUrl,omitempty" xml:"dmesgUrl,omitempty"`
-	// Task Type
+	// The task type. Valid values:
 	//
-	// vmcore: vmcore file diagnosis task
+	// - vmcore: vmcore file diagnostic task.
 	//
-	// dmesg: dmesg log diagnosis task
+	// - dmesg: dmesg log diagnostic task.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateVmcoreDiagnosisTaskRequest struct {
 	//
 	// vmcore
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
-	// The download link of the vmcore file. This parameter is required when the diagnosis type is vmcore.
+	// The download URL of the vmcore file. This parameter is required when the diagnostic type is vmcore.
 	//
 	// example:
 	//

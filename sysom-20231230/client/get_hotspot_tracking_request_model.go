@@ -24,7 +24,7 @@ type iGetHotspotTrackingRequest interface {
 }
 
 type GetHotspotTrackingRequest struct {
-	// End time
+	// The end time.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type GetHotspotTrackingRequest struct {
 	//
 	// 1725413948000
 	BegEnd *int64 `json:"beg_end,omitempty" xml:"beg_end,omitempty"`
-	// Start time
+	// The start time.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type GetHotspotTrackingRequest struct {
 	//
 	// 1725410348000
 	BegStart *int64 `json:"beg_start,omitempty" xml:"beg_start,omitempty"`
-	// Hot spot type
+	// The hot spot type.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type GetHotspotTrackingRequest struct {
 	//
 	// alloc
 	HotType *string `json:"hot_type,omitempty" xml:"hot_type,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type GetHotspotTrackingRequest struct {
 	//
 	// i-2ze5ru5rjurix7f71sxv
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Process PID
+	// The process PID.
 	//
 	// example:
 	//
 	// 1657494
 	Pid *int64 `json:"pid,omitempty" xml:"pid,omitempty"`
-	// Query table name
+	// The name of the table to query.
 	//
 	// This parameter is required.
 	//

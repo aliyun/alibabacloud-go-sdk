@@ -20,29 +20,29 @@ type iGetAgentTaskResponseBody interface {
 }
 
 type GetAgentTaskResponseBody struct {
-	// Request ID, which can be used for end-to-end Diagnosis
+	// The request ID, which can be used for end-to-end diagnostics.
 	//
 	// example:
 	//
 	// 2E75336A-0DB2-5263-B201-A6488EC97B50
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Status code
+	// The status code.
 	//
-	// - `code == Success` indicates that authorization Succeeded.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Any other status code indicates Failed to Authorize. When authorization fails, View the `message` field to obtain the detailed error message.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault message.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned Data.
+	// The returned data.
 	Data *GetAgentTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
-	// - If `code == Success`, this field is empty;
+	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the Request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -104,10 +104,10 @@ func (s *GetAgentTaskResponseBody) Validate() error {
 }
 
 type GetAgentTaskResponseBodyData struct {
-	// List of sub-Jobs
+	// The list of subtasks.
 	Jobs   []*GetAgentTaskResponseBodyDataJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
 	Status *string                             `json:"status,omitempty" xml:"status,omitempty"`
-	// Job ID.
+	// The task ID.
 	//
 	// example:
 	//
@@ -164,15 +164,15 @@ func (s *GetAgentTaskResponseBodyData) Validate() error {
 }
 
 type GetAgentTaskResponseBodyDataJobs struct {
-	// When Job execution fails, this field contains the error message indicating the cause of the failure.
+	// The cause of the task failure. This field is returned only when the task fails.
 	//
 	// example:
 	//
 	// 已废弃（误用）
 	Error *string `json:"error,omitempty" xml:"error,omitempty"`
-	// The error code indicating the reason for sub-job failure. Possible values:
+	// The error code of the subtask failure. Valid values:
 	//
-	// 	- empty: The job executed normally.
+	// 	- Empty: The task is executed normally.
 	//
 	// 	- INSTANCE_NOT_SUPPORTED: The instance type is not supported.
 	//
@@ -184,85 +184,85 @@ type GetAgentTaskResponseBodyDataJobs struct {
 	//
 	// 	- INSTANCE_NOT_OWNED: The instance does not belong to the current account.
 	//
-	// 	- AGENT_ALREADY_INSTALLED: The agent is already installed.
+	// 	- AGENT_ALREADY_INSTALLED: The Agent is already installed.
 	//
-	// 	- AGENT_NOT_INSTALLED: The agent is not installed.
+	// 	- AGENT_NOT_INSTALLED: The Agent is not installed.
 	//
 	// 	- AGENT_SAME_VERSION: The version is the same.
 	//
-	// 	- HAS_RUNNING_JOB: There is a running job.
+	// 	- HAS_RUNNING_JOB: A running task exists.
 	//
 	// 	- RPM_LOCK_HELD: The RPM lock is held.
 	//
 	// 	- DISK_SPACE_INSUFFICIENT: Insufficient disk space.
 	//
-	// 	- NODE_LOAD_HIGH: High edge zone load.
+	// 	- NODE_LOAD_HIGH: The node load is high.
 	//
 	// 	- COMMAND_FAILED: Command execution failed.
 	//
-	// 	- CLIENT_NOT_RUNNING: The Cloud Assistant agent is not running.
+	// 	- CLIENT_NOT_RUNNING: The Cloud Assistant Agent is not running.
 	//
-	// 	- CLIENT_NOT_RESPONSE: The Cloud Assistant agent is unresponsive.
+	// 	- CLIENT_NOT_RESPONSE: The Cloud Assistant Agent is not responding.
 	//
-	// 	- DELIVERY_TIMEOUT: Command delivery timeout.
+	// 	- DELIVERY_TIMEOUT: Command delivery timed out.
 	//
-	// 	- EXECUTION_TIMEOUT: Command execution timeout.
+	// 	- EXECUTION_TIMEOUT: Command execution timed out.
 	//
-	// 	- TASK_CONCURRENCY_LIMIT: Task concurrency limit reached.
+	// 	- TASK_CONCURRENCY_LIMIT: The task concurrency limit is reached.
 	//
 	// example:
 	//
 	// DISK_SPACE_INSUFFICIENT
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// Detailed reason for subtask execution failure. Possible values:
+	// The detailed description of the subtask failure. Valid values:
 	//
-	// 	- Instance type is not supported
+	// 	- The instance type is not supported.
 	//
-	// 	- Instance does not exist
+	// 	- The instance does not exist.
 	//
-	// 	- Instance has been released
+	// 	- The instance has been released.
 	//
-	// 	- Instance is not running
+	// 	- The instance is not running.
 	//
-	// 	- Instance does not belong to the current account
+	// 	- The instance does not belong to the current account.
 	//
-	// 	- Agent is already installed
+	// 	- The Agent is already installed.
 	//
-	// 	- Agent is not installed
+	// 	- The Agent is not installed.
 	//
-	// 	- Agent version is the same; no upgrade is required
+	// 	- The Agent version is the same. No upgrade is required.
 	//
-	// 	- A task is currently running; please retry later
+	// 	- A running task exists. Try again later.
 	//
-	// 	- RPM lock is occupied; please retry later
+	// 	- The RPM lock is held. Try again later.
 	//
-	// 	- Insufficient disk space
+	// 	- Insufficient disk space.
 	//
-	// 	- Edge zone payload is too high; please retry later
+	// 	- The node load is too high. Try again later.
 	//
-	// 	- Command execution failed; please retry later
+	// 	- Command execution failed. Try again later.
 	//
-	// 	- Cloud Assistant Agent is not running
+	// 	- The Cloud Assistant Agent is not running.
 	//
-	// 	- Cloud Assistant Agent is unresponsive
+	// 	- The Cloud Assistant Agent is not responding.
 	//
-	// 	- Command sending timeout
+	// 	- Command delivery timed out.
 	//
-	// 	- Command execution timeout
+	// 	- Command execution timed out.
 	//
-	// 	- Task concurrency limit has been reached
+	// 	- The task concurrency limit is reached.
 	//
 	// example:
 	//
 	// 磁盘空间不足
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-2zehme0rs1tc090fdl3n
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Parameters of the sub-Job
+	// The subtask parameters.
 	//
 	// example:
 	//
@@ -278,27 +278,27 @@ type GetAgentTaskResponseBodyDataJobs struct {
 	//
 	// }
 	Params interface{} `json:"params,omitempty" xml:"params,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// Result of sub-Job execution
+	// The subtask execution result.
 	//
 	// example:
 	//
 	// 已废弃（误用）
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
-	// Sub-Job status:
+	// The subtask status. Valid values:
 	//
-	// - Created: Created
+	// - Created: Created.
 	//
-	// - Running: Running
+	// - Running: Running.
 	//
-	// - Success: Job Run Succeeded
+	// - Success: The task succeeded.
 	//
-	// - Fail: Job Run failed
+	// - Fail: The task failed.
 	//
 	// example:
 	//

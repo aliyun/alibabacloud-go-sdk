@@ -18,11 +18,11 @@ type iAuthDiagnosisRequest interface {
 }
 
 type AuthDiagnosisRequest struct {
-	// Automatic creation of role
+	// Specifies whether to enable automatic creation of the service-linked role.
 	AutoCreateRole *bool `json:"autoCreateRole,omitempty" xml:"autoCreateRole,omitempty"`
-	// Automatic installation of agent
+	// Specifies whether to automatically install the agent.
 	AutoInstallAgent *bool `json:"autoInstallAgent,omitempty" xml:"autoInstallAgent,omitempty"`
-	// List of instances to authorize for diagnosis
+	// The list of instances to authorize for diagnostics.
 	Instances []*AuthDiagnosisRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 }
 
@@ -75,13 +75,13 @@ func (s *AuthDiagnosisRequest) Validate() error {
 }
 
 type AuthDiagnosisRequestInstances struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-wz9b9vucz1iubsz8sjqo
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//

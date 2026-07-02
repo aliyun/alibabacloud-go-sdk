@@ -26,39 +26,39 @@ type iListAlertDestinationsResponseBody interface {
 }
 
 type ListAlertDestinationsResponseBody struct {
-	// Status code.
+	// Status code
 	//
-	// - If `code == Success`, authorization succeeded.
+	// - `code == Success` indicates that the authorization was successful;
 	//
-	// - Other status codes indicate authorization failed. If authorization failed, view the `message` field to obtain detailed error message.
+	// - Other status codes indicate authorization failure. When authorization fails, check the `message` field for detailed error information;
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// Response data.
 	//
 	// example:
 	//
 	// {}
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// Maximum number of records retrieved in a single request.
+	// Maximum number of records to retrieve at a time.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Error message.
+	// Error message
 	//
-	// - If `code == Success`, this field is empty.
+	// - If `code == Success`, this field is empty;
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
 	// server error
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Paging token for the next request.
+	// Pagination token for the next request.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListAlertDestinationsResponseBody struct {
 	//
 	// 2D693121-C925-5154-8DF6-C09A8B369822
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// MaxResults is the maximum number of records returned in this request.
+	// Maximum number of records returned by this request
 	//
 	// example:
 	//

@@ -26,21 +26,21 @@ type iListClustersRequest interface {
 }
 
 type ListClustersRequest struct {
-	// Filter by cluster ID
+	// Filter by cluster ID.
 	//
-	// > This cluster ID is not the ACK cluster ID, but the `id` field in the data returned by this API
+	// > This cluster ID is not the ACK cluster ID, but the `id` field in the data returned by this API.
 	//
 	// example:
 	//
 	// cb7d4cc26c8f845fb8a8255ffd394820e
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// - `Running`: Cluster management is Normal;
+	// - `Running`: The cluster is managed normally.
 	//
-	// - `Installing`: An install Job is in progress for the cluster;
+	// - `Installing`: The cluster has an installation task in progress.
 	//
-	// - `Uninstalling`: An uninstall Job is in progress for the cluster;
+	// - `Uninstalling`: The cluster has an uninstallation task in progress.
 	//
-	// - `Upgrading`: An Update Job is in progress for the cluster;
+	// - `Upgrading`: The cluster has an upgrade task in progress.
 	//
 	// - `Offline`: The cluster is offline and management is abnormal.
 	//
@@ -48,9 +48,9 @@ type ListClustersRequest struct {
 	//
 	// Running
 	ClusterStatus *string `json:"cluster_status,omitempty" xml:"cluster_status,omitempty"`
-	// - `ACK`: ACK cluster
+	// - `ACK`: ACK cluster.
 	//
-	// - `CUSTOM`: Custom cluster (default clusters are classified as custom clusters)
+	// - `CUSTOM`: Custom cluster (the default cluster belongs to custom clusters).
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ type ListClustersRequest struct {
 	//
 	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
-	// This field is deprecated. Use the `cluster_id` field for filtering instead.
+	// This field is deprecated. Use the cluster_id field to filter instead.
 	//
 	// example:
 	//
 	// cb7d4cc26c8f845fb8a8255ffd394820e
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Filter plugins by plugin name
+	// Filter by plugin name
 	//
 	// example:
 	//

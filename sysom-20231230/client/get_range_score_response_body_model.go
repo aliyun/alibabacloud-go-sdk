@@ -22,35 +22,35 @@ type iGetRangeScoreResponseBody interface {
 }
 
 type GetRangeScoreResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - If `code == Success`, authorization succeeded.
+	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
+	// - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data []*GetRangeScoreResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
 	// ""
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request RequestId
+	// The request ID.
 	//
 	// example:
 	//
 	// 35F91AAB-5FDF-5A22-B211-C7C6B00817D0
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// Total data volume.
+	// The total amount of data.
 	//
 	// example:
 	//
@@ -125,19 +125,19 @@ func (s *GetRangeScoreResponseBody) Validate() error {
 }
 
 type GetRangeScoreResponseBodyData struct {
-	// Time point
+	// The point in time.
 	//
 	// example:
 	//
 	// 1725797727754
 	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
-	// Metric type
+	// The metric type.
 	//
 	// example:
 	//
 	// saturation
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Score
+	// The score.
 	//
 	// example:
 	//

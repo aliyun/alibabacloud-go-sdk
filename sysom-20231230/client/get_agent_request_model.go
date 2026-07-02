@@ -14,7 +14,7 @@ type iGetAgentRequest interface {
 }
 
 type GetAgentRequest struct {
-	// Widget ID
+	// Agent ID
 	//
 	// example:
 	//

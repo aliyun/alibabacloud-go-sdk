@@ -28,15 +28,15 @@ type ListPodsOfInstanceResponseBody struct {
 	//
 	// B149FD9C-ED5C-5765-B3AD-05AA4A4D64D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// error code
+	// The error code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Data returned
+	// The returned data.
 	Data []*ListPodsOfInstanceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Error message; empty indicates that data reading is complete
+	// The error message. An empty value indicates that all data has been read.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ListPodsOfInstanceResponseBody struct {
 	//
 	// instance not exists
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The maximum number of records returned by this request
+	// The maximum number of entries returned for this request.
 	//
 	// example:
 	//
@@ -119,13 +119,13 @@ func (s *ListPodsOfInstanceResponseBody) Validate() error {
 }
 
 type ListPodsOfInstanceResponseBodyData struct {
-	// Namespace where the pod resides
+	// The namespace in which the pod resides.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// Pod Name
+	// The pod name.
 	//
 	// example:
 	//

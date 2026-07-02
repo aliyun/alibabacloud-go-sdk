@@ -26,33 +26,33 @@ type iListAllInstancesResponseBody interface {
 }
 
 type ListAllInstancesResponseBody struct {
-	// Status code
+	// Status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data
+	// Returned data.
 	Data []*ListAllInstancesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Maximum number of returned items
+	// Maximum number of results returned.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Error message:
+	// Error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error message of the request.
+	// - Otherwise, this field contains the request error message.
 	//
 	// example:
 	//
 	// instance not exists
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Paging cursor.
+	// Pagination token.
 	//
-	// > If not empty, more data is available.
+	// > A non-empty value indicates that more data is available.
 	//
 	// example:
 	//
@@ -157,27 +157,27 @@ func (s *ListAllInstancesResponseBody) Validate() error {
 }
 
 type ListAllInstancesResponseBodyData struct {
-	// Agent configuration ID
+	// Agent configuration ID.
 	//
 	// example:
 	//
 	// test_id
 	AgentConfigId *string `json:"agentConfigId,omitempty" xml:"agentConfigId,omitempty"`
-	// Agent configuration name
+	// Agent configuration name.
 	//
 	// example:
 	//
 	// test_name
 	AgentConfigName *string `json:"agentConfigName,omitempty" xml:"agentConfigName,omitempty"`
-	// Extension information.
+	// Extended information.
 	Attributes []*ListAllInstancesResponseBodyDataAttributes `json:"attributes,omitempty" xml:"attributes,omitempty" type:"Repeated"`
-	// Cluster ID
+	// Cluster ID.
 	//
 	// example:
 	//
 	// 3b24a621-acb3-11ef-8c90-00163e1029af
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// Cluster name
+	// Cluster name.
 	//
 	// example:
 	//
@@ -189,19 +189,19 @@ type ListAllInstancesResponseBodyData struct {
 	//
 	// aliyun_3_x64_20G_alibase_20250117.vhd
 	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
-	// Installation level
+	// Installation level.
 	//
 	// example:
 	//
 	// Cluster
 	InstallLevel *string `json:"installLevel,omitempty" xml:"installLevel,omitempty"`
-	// Installation type
+	// Installation type.
 	//
 	// example:
 	//
 	// console
 	InstallType *string `json:"installType,omitempty" xml:"installType,omitempty"`
-	// Instance ID
+	// Instance ID.
 	//
 	// example:
 	//
@@ -213,43 +213,43 @@ type ListAllInstancesResponseBodyData struct {
 	//
 	// test
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	// Instance type
+	// Instance type.
 	//
 	// example:
 	//
 	// ecs
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// Milvus version
+	// Kernel version.
 	//
 	// example:
 	//
 	// 5.10.134-18.al8.x86_64
 	KernelVersion *string `json:"kernelVersion,omitempty" xml:"kernelVersion,omitempty"`
-	// Management level
+	// Management level.
 	//
 	// example:
 	//
 	// cluster
 	ManageLevel *string `json:"manageLevel,omitempty" xml:"manageLevel,omitempty"`
-	// Management type
+	// Management type.
 	//
 	// example:
 	//
 	// managed
 	ManageType *string `json:"manageType,omitempty" xml:"manageType,omitempty"`
-	// Operating system architecture
+	// Operating system architecture.
 	//
 	// example:
 	//
 	// x86_64
 	OsArch *string `json:"osArch,omitempty" xml:"osArch,omitempty"`
-	// Operating system health score
+	// Operating system health score.
 	//
 	// example:
 	//
 	// 100
 	OsHealthScore *int32 `json:"osHealthScore,omitempty" xml:"osHealthScore,omitempty"`
-	// Operating system name
+	// Operating system name.
 	//
 	// example:
 	//
@@ -267,25 +267,27 @@ type ListAllInstancesResponseBodyData struct {
 	//
 	// 47.98.215.58
 	PublicIp *string `json:"publicIp,omitempty" xml:"publicIp,omitempty"`
-	// The resource group ID.
+	// Resource group ID.
 	//
 	// example:
 	//
 	// 3b24a621-acb3-11ef-8c90-00163e1029af
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Resource group name
+	// Resource group name.
 	//
 	// example:
 	//
 	// xxxx
 	ResourceGroupName *string `json:"resourceGroupName,omitempty" xml:"resourceGroupName,omitempty"`
-	// The running status of the instance. Valid values:
+	// Running status of the instance. Valid values:
 	//
 	// - **Running**: The instance is running.
 	//
 	// - **Offline**: The instance is offline.
 	//
-	// > An instance in the Offline state indicates that the heartbeat from the edge zone to the SysOM Server has been lost. It does not mean that the corresponding ECS instance is not running.
+	//
+	//
+	// > An instance in the Offline status indicates that the heartbeat from the node to the SysOM server is lost. It does not necessarily mean that the corresponding ECS instance is not running.
 	//
 	// example:
 	//
@@ -513,19 +515,19 @@ func (s *ListAllInstancesResponseBodyData) Validate() error {
 }
 
 type ListAllInstancesResponseBodyDataAttributes struct {
-	// information key
+	// Information key.
 	//
 	// example:
 	//
 	// sysom
 	InfoKey *string `json:"infoKey,omitempty" xml:"infoKey,omitempty"`
-	// information type
+	// Information type.
 	//
 	// example:
 	//
 	// instance_tag
 	InfoType *string `json:"infoType,omitempty" xml:"infoType,omitempty"`
-	// information value
+	// Information value.
 	//
 	// example:
 	//

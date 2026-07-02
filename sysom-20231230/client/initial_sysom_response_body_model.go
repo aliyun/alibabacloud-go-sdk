@@ -20,29 +20,29 @@ type iInitialSysomResponseBody interface {
 }
 
 type InitialSysomResponseBody struct {
-	// Request ID, which can be used for end-to-end diagnosis
+	// The request ID, which can be used for end-to-end diagnostics.
 	//
 	// example:
 	//
 	// 3FCA2E38-2A8E-5501-93BD-5CE1BA58F2EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Status code
+	// The status code.
 	//
-	// - If `code == Success`, authorization succeeded.
+	// - `code == Success`: The authorization is successful.
 	//
-	// - Any other status code indicates a failed authorization. In such cases, view the `message` field for detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Return Result.
+	// The response data.
 	Data *InitialSysomResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ func (s *InitialSysomResponseBody) Validate() error {
 }
 
 type InitialSysomResponseBodyData struct {
-	// Indicates whether the service role exists
+	// Indicates whether the service-linked role exists.
 	//
 	// example:
 	//

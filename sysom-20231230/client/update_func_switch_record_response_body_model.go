@@ -20,23 +20,23 @@ type iUpdateFuncSwitchRecordResponseBody interface {
 }
 
 type UpdateFuncSwitchRecordResponseBody struct {
-	// Status code
+	// The status code.
 	//
-	// - If `code == Success`, authorization succeeded.
+	// - `code == Success` indicates that the authorization is successful.
 	//
-	// - Any other status code indicates authorization failed. When authorization fails, check the `message` field for detailed error information.
+	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Returned data.
+	// The response data.
 	Data *UpdateFuncSwitchRecordResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// - If `code == Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the request error information.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ func (s *UpdateFuncSwitchRecordResponseBody) Validate() error {
 }
 
 type UpdateFuncSwitchRecordResponseBodyData struct {
-	// Job ID
+	// The task ID.
 	//
 	// example:
 	//

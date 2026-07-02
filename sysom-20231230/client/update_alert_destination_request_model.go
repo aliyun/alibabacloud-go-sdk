@@ -22,27 +22,27 @@ type iUpdateAlertDestinationRequest interface {
 }
 
 type UpdateAlertDestinationRequest struct {
-	// ID of the alert contact
+	// The ID of the alert contact.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Name of the alert contact
+	// The name of the alert contact.
 	//
 	// example:
 	//
 	// name1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Configuration Parameter
+	// The configuration parameters.
 	Params *UpdateAlertDestinationRequestParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
-	// Source of the configuration
+	// The configuration source.
 	//
 	// example:
 	//
 	// console
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// Push Target for alerts. Currently, only DingTalk contacts are supported.
+	// The alert notification target. Currently, only DingTalk contacts are supported.
 	//
 	// example:
 	//
@@ -113,25 +113,25 @@ func (s *UpdateAlertDestinationRequest) Validate() error {
 }
 
 type UpdateAlertDestinationRequestParams struct {
-	// mailbox
+	// The email address.
 	//
 	// example:
 	//
 	// xxx@email.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// Phone number
+	// The phone number.
 	//
 	// example:
 	//
 	// 1xxx
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// Robot key
+	// The secret key of the chatbot.
 	//
 	// example:
 	//
 	// SECxxx
 	Sec *string `json:"sec,omitempty" xml:"sec,omitempty"`
-	// Robot webhook address
+	// The webhook URL of the chatbot.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iGetAlertStrategyRequest interface {
 }
 
 type GetAlertStrategyRequest struct {
-	// Policy ID
+	// The policy ID.
 	//
 	// example:
 	//
