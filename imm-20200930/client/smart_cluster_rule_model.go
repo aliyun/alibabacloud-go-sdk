@@ -20,11 +20,17 @@ type iSmartClusterRule interface {
 }
 
 type SmartClusterRule struct {
+	// The array of URIs for the reference files.
 	BaseURIs []*string `json:"BaseURIs,omitempty" xml:"BaseURIs,omitempty" type:"Repeated"`
-	// An array of keywords for clustering.
+	// The keywords.
 	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
-	RuleType *string   `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The sensitivity for clustering, ranging from 0.0 to 1.0.
+	// The rule type.
+	//
+	// example:
+	//
+	// figure
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The sensitivity.
 	//
 	// example:
 	//

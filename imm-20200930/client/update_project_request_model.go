@@ -9,8 +9,6 @@ type iUpdateProjectRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetDatasetConfig(v *DatasetConfig) *UpdateProjectRequest
-	GetDatasetConfig() *DatasetConfig
 	SetDatasetMaxBindCount(v int64) *UpdateProjectRequest
 	GetDatasetMaxBindCount() *int64
 	SetDatasetMaxEntityCount(v int64) *UpdateProjectRequest
@@ -36,7 +34,6 @@ type iUpdateProjectRequest interface {
 }
 
 type UpdateProjectRequest struct {
-	DatasetConfig *DatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
 	// The maximum number of bindings for each dataset. Valid values: 1 to 10.
 	//
 	// example:
@@ -83,7 +80,7 @@ type UpdateProjectRequest struct {
 	//
 	// 1000000000
 	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	// The project name. For information about how to obtain the project name, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	// The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -115,10 +112,6 @@ func (s UpdateProjectRequest) String() string {
 
 func (s UpdateProjectRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateProjectRequest) GetDatasetConfig() *DatasetConfig {
-	return s.DatasetConfig
 }
 
 func (s *UpdateProjectRequest) GetDatasetMaxBindCount() *int64 {
@@ -163,11 +156,6 @@ func (s *UpdateProjectRequest) GetTag() []*UpdateProjectRequestTag {
 
 func (s *UpdateProjectRequest) GetTemplateId() *string {
 	return s.TemplateId
-}
-
-func (s *UpdateProjectRequest) SetDatasetConfig(v *DatasetConfig) *UpdateProjectRequest {
-	s.DatasetConfig = v
-	return s
 }
 
 func (s *UpdateProjectRequest) SetDatasetMaxBindCount(v int64) *UpdateProjectRequest {
@@ -226,11 +214,6 @@ func (s *UpdateProjectRequest) SetTemplateId(v string) *UpdateProjectRequest {
 }
 
 func (s *UpdateProjectRequest) Validate() error {
-	if s.DatasetConfig != nil {
-		if err := s.DatasetConfig.Validate(); err != nil {
-			return err
-		}
-	}
 	if s.Tag != nil {
 		for _, item := range s.Tag {
 			if item != nil {

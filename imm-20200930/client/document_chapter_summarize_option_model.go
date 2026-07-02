@@ -18,11 +18,23 @@ type iDocumentChapterSummarizeOption interface {
 }
 
 type DocumentChapterSummarizeOption struct {
-	// The maximum number of results to return per request. If you do not specify this parameter, the default value is used.
+	// The number of section-by-section summaries. If neither Marker nor Index is specified, the entire article is summarized by default. Marker and Index must either both be specified or both be omitted.
+	//
+	// example:
+	//
+	// 5
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The pagination token. It specifies the starting point for the query. To retrieve the next page of results, set this parameter to the marker value from the previous response.
+	// The start position for section-by-section summarization.
+	//
+	// example:
+	//
+	// 0
 	Marker *int32 `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The summarization model version. If you do not specify this parameter, the default model version is used.
+	// The version of section-by-section summarization.
+	//
+	// example:
+	//
+	// v1
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 

@@ -14,7 +14,11 @@ type iDocumentReadNarratorOption interface {
 }
 
 type DocumentReadNarratorOption struct {
-	// Whether to enable the document narration feature. Set to `true` to enable narration. Defaults to `false`.
+	// Specifies whether to fetch.
+	//
+	// example:
+	//
+	// true
 	Narrate *bool `json:"Narrate,omitempty" xml:"Narrate,omitempty"`
 }
 

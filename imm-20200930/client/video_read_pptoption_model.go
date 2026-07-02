@@ -14,7 +14,11 @@ type iVideoReadPPTOption interface {
 }
 
 type VideoReadPPTOption struct {
-	// Specifies whether to extract content from the presentation slides. Set this parameter to `true` to enable extraction.
+	// Specifies whether to fetch.
+	//
+	// example:
+	//
+	// true
 	Extract *bool `json:"Extract,omitempty" xml:"Extract,omitempty"`
 }
 

@@ -9,8 +9,6 @@ type iCreateProjectRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetDatasetConfig(v *DatasetConfig) *CreateProjectRequest
-	GetDatasetConfig() *DatasetConfig
 	SetDatasetMaxBindCount(v int64) *CreateProjectRequest
 	GetDatasetMaxBindCount() *int64
 	SetDatasetMaxEntityCount(v int64) *CreateProjectRequest
@@ -36,14 +34,13 @@ type iCreateProjectRequest interface {
 }
 
 type CreateProjectRequest struct {
-	DatasetConfig *DatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
-	// The maximum number of bindings for each dataset. Valid values: 1 to 10. Default value: 10.
+	// The maximum number of bindings per dataset. Valid values: 1 to 10. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	// The maximum number of metadata entities in each dataset. Default value: 10000000000.
+	// The maximum number of metadata entities per dataset. Default value: 10000000000.
 	//
 	// >This parameter is reserved for future use and is not enforced.
 	//
@@ -51,13 +48,13 @@ type CreateProjectRequest struct {
 	//
 	// 10000000000
 	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	// The maximum number of files in each dataset. Valid values: 1 to 100000000. Default value: 10000000000.
+	// The maximum number of files per dataset. Valid values: 1 to 100000000. Default value: 10000000000.
 	//
 	// example:
 	//
 	// 100000000
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	// The maximum number of metadata relationships in each dataset. Default value: 100000000000.
+	// The maximum number of metadata relationships per dataset. Default value: 100000000000.
 	//
 	// >This parameter is reserved for future use and is not enforced.
 	//
@@ -65,7 +62,7 @@ type CreateProjectRequest struct {
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	// The maximum total file size in each dataset. After the limit is exceeded, no more indexes can be added. Unit: bytes. Default value: 90000000000000000.
+	// The maximum total file size per dataset. After this limit is reached, no more indexes can be added. Unit: bytes. Default value: 90000000000000000.
 	//
 	// example:
 	//
@@ -83,7 +80,7 @@ type CreateProjectRequest struct {
 	//
 	// 1000000000
 	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	// The project name. The naming rules are as follows:
+	// The project name. The following naming rules apply:
 	//
 	// - The name must be 1 to 128 characters in length.
 	//
@@ -121,10 +118,6 @@ func (s CreateProjectRequest) String() string {
 
 func (s CreateProjectRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateProjectRequest) GetDatasetConfig() *DatasetConfig {
-	return s.DatasetConfig
 }
 
 func (s *CreateProjectRequest) GetDatasetMaxBindCount() *int64 {
@@ -169,11 +162,6 @@ func (s *CreateProjectRequest) GetTag() []*CreateProjectRequestTag {
 
 func (s *CreateProjectRequest) GetTemplateId() *string {
 	return s.TemplateId
-}
-
-func (s *CreateProjectRequest) SetDatasetConfig(v *DatasetConfig) *CreateProjectRequest {
-	s.DatasetConfig = v
-	return s
 }
 
 func (s *CreateProjectRequest) SetDatasetMaxBindCount(v int64) *CreateProjectRequest {
@@ -232,11 +220,6 @@ func (s *CreateProjectRequest) SetTemplateId(v string) *CreateProjectRequest {
 }
 
 func (s *CreateProjectRequest) Validate() error {
-	if s.DatasetConfig != nil {
-		if err := s.DatasetConfig.Validate(); err != nil {
-			return err
-		}
-	}
 	if s.Tag != nil {
 		for _, item := range s.Tag {
 			if item != nil {

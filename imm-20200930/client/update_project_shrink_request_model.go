@@ -9,8 +9,6 @@ type iUpdateProjectShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetDatasetConfigShrink(v string) *UpdateProjectShrinkRequest
-	GetDatasetConfigShrink() *string
 	SetDatasetMaxBindCount(v int64) *UpdateProjectShrinkRequest
 	GetDatasetMaxBindCount() *int64
 	SetDatasetMaxEntityCount(v int64) *UpdateProjectShrinkRequest
@@ -36,7 +34,6 @@ type iUpdateProjectShrinkRequest interface {
 }
 
 type UpdateProjectShrinkRequest struct {
-	DatasetConfigShrink *string `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
 	// The maximum number of bindings for each dataset. Valid values: 1 to 10.
 	//
 	// example:
@@ -83,7 +80,7 @@ type UpdateProjectShrinkRequest struct {
 	//
 	// 1000000000
 	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
-	// The project name. For information about how to obtain the project name, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	// The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -115,10 +112,6 @@ func (s UpdateProjectShrinkRequest) String() string {
 
 func (s UpdateProjectShrinkRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateProjectShrinkRequest) GetDatasetConfigShrink() *string {
-	return s.DatasetConfigShrink
 }
 
 func (s *UpdateProjectShrinkRequest) GetDatasetMaxBindCount() *int64 {
@@ -163,11 +156,6 @@ func (s *UpdateProjectShrinkRequest) GetTagShrink() *string {
 
 func (s *UpdateProjectShrinkRequest) GetTemplateId() *string {
 	return s.TemplateId
-}
-
-func (s *UpdateProjectShrinkRequest) SetDatasetConfigShrink(v string) *UpdateProjectShrinkRequest {
-	s.DatasetConfigShrink = &v
-	return s
 }
 
 func (s *UpdateProjectShrinkRequest) SetDatasetMaxBindCount(v int64) *UpdateProjectShrinkRequest {

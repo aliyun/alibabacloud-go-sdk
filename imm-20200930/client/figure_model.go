@@ -70,29 +70,25 @@ type Figure struct {
 	//
 	// 29
 	Age *int64 `json:"Age,omitempty" xml:"Age,omitempty"`
-	// The standard deviation of the age.
+	// The age standard deviation.
 	//
 	// example:
 	//
 	// 5
 	AgeSD *float32 `json:"AgeSD,omitempty" xml:"AgeSD,omitempty"`
-	// The face attractiveness. A high score indicates strong attractiveness. Valid values: 0 to 1.
+	// The face attractiveness score. A higher score indicates greater attractiveness. Valid values: 0 to 1.
 	//
 	// example:
 	//
 	// 0.96
 	Attractive *float32 `json:"Attractive,omitempty" xml:"Attractive,omitempty"`
-	// Specifies whether the figure has a beard. Valid values:
-	//
-	// 	- beard
-	//
-	// 	- none
+	// Indicates whether the person has a beard.
 	//
 	// example:
 	//
 	// none
 	Beard *string `json:"Beard,omitempty" xml:"Beard,omitempty"`
-	// The confidence level of detecting whether the figure has a beard. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	// The confidence score for whether the person has a beard. Valid values: 0 (lowest confidence) to 1 (highest confidence).
 	//
 	// example:
 	//
@@ -100,51 +96,47 @@ type Figure struct {
 	BeardConfidence *float32 `json:"BeardConfidence,omitempty" xml:"BeardConfidence,omitempty"`
 	// The face boundary information.
 	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
-	// The emotion. Valid values:
-	//
-	// 	- happiness
-	//
-	// 	- none
+	// The emotion.
 	//
 	// example:
 	//
 	// happiness
 	Emotion *string `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
-	// The confidence level of the emotion. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	// The emotion confidence score. Valid values: 0 (lowest confidence) to 1 (highest confidence).
 	//
 	// example:
 	//
 	// 0.707845687866210
 	EmotionConfidence *float32 `json:"EmotionConfidence,omitempty" xml:"EmotionConfidence,omitempty"`
-	// The face quality.
+	// The face quality score, which evaluates whether the image quality is suitable for face recognition. A higher score indicates better quality. Valid values: 0 to 1.
 	//
 	// example:
 	//
 	// 0.960875928401947
 	FaceQuality *float32 `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
-	// The confidence level of the face clustering task. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	// The clustering confidence score. Valid values: 0 (lowest confidence) to 1 (highest confidence).
 	//
 	// example:
 	//
 	// 1
 	FigureClusterConfidence *float32 `json:"FigureClusterConfidence,omitempty" xml:"FigureClusterConfidence,omitempty"`
-	// The ID of the face clustering task. The following IDs of special face clustering tasks are reserved:
+	// The figure cluster ID. The following reserved special cluster ID names are included:
 	//
-	// 	- figure-cluster-id-independent: the ID of a face clustering task in which faces do not belong to any face group. After images are added to a dataset, the faces may be categorized into different face groups when you perform face clustering.
+	// - figure-cluster-id-independent: The face does not currently belong to any suitable group. After new images are added to the dataset and face clustering is performed, the face may be assigned to a group.
 	//
-	// 	- figure-cluster-id-unavailable: the ID of a face clustering task in which face clustering is not performed after images are added to a dataset.
+	// - figure-cluster-id-unavailable: The face has not been clustered yet. This means that after new images were added to the dataset, face clustering has not been performed.
 	//
 	// example:
 	//
 	// Cluster-dbe72fec-b84c-4ab6-885b-3678e64****
 	FigureClusterId *string `json:"FigureClusterId,omitempty" xml:"FigureClusterId,omitempty"`
-	// The confidence level of the figure. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	// The confidence score of the figure object. Valid values: 0 (lowest confidence) to 1 (highest confidence).
 	//
 	// example:
 	//
 	// 1
 	FigureConfidence *float32 `json:"FigureConfidence,omitempty" xml:"FigureConfidence,omitempty"`
-	// The figure ID.
+	// The ID of the figure object.
 	//
 	// example:
 	//
@@ -152,97 +144,73 @@ type Figure struct {
 	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
 	// The figure type.
 	//
-	// Set this parameter to face.
-	//
 	// example:
 	//
 	// face
 	FigureType *string `json:"FigureType,omitempty" xml:"FigureType,omitempty"`
-	// The gender. Valid values:
-	//
-	// 	- female
-	//
-	// 	- male
+	// The gender.
 	//
 	// example:
 	//
 	// female
 	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
-	// The confidence level of the gender. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	// The gender confidence score. Valid values: 0 (lowest confidence) to 1 (highest confidence).
 	//
 	// example:
 	//
 	// 1
 	GenderConfidence *float32 `json:"GenderConfidence,omitempty" xml:"GenderConfidence,omitempty"`
-	// Specifies whether the figure wears glasses. Valid values:
-	//
-	// 	- glasses
-	//
-	// 	- sunglasses
-	//
-	// 	- none
+	// Indicates whether the person is wearing glasses.
 	//
 	// example:
 	//
 	// none
 	Glasses *string `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
-	// The confidence level of detecting whether the figure wears glasses. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	// The confidence score for whether the person is wearing glasses. Valid values: 0 (lowest confidence) to 1 (highest confidence).
 	//
 	// example:
 	//
 	// 0.8
 	GlassesConfidence *float32 `json:"GlassesConfidence,omitempty" xml:"GlassesConfidence,omitempty"`
-	// Specifies whether the figure wears a hat. Valid values:
-	//
-	// 	- hat
-	//
-	// 	- none
+	// Indicates whether the person is wearing a hat.
 	//
 	// example:
 	//
 	// none
 	Hat *string `json:"Hat,omitempty" xml:"Hat,omitempty"`
-	// The confidence level of detecting whether the figure wears a hat.
+	// The confidence score for whether the person is wearing a hat. Valid values: 0 (lowest confidence) to 1 (highest confidence).
 	//
 	// example:
 	//
 	// 1
 	HatConfidence *float32 `json:"HatConfidence,omitempty" xml:"HatConfidence,omitempty"`
-	// The head orientation.
+	// The head pose information.
 	HeadPose *HeadPose `json:"HeadPose,omitempty" xml:"HeadPose,omitempty"`
-	// Specifies whether the figure wears a mask. Valid values:
-	//
-	// 	- mask
-	//
-	// 	- none
+	// Indicates whether the person is wearing a mask.
 	//
 	// example:
 	//
 	// none
 	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	// The confidence level of detecting whether the figure wears a mask. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	// The confidence score for whether the person is wearing a mask. Valid values: 0 (lowest confidence) to 1 (highest confidence).
 	//
 	// example:
 	//
 	// 1
 	MaskConfidence *float32 `json:"MaskConfidence,omitempty" xml:"MaskConfidence,omitempty"`
-	// Specifies whether the mouth is open. Valid values:
-	//
-	// 	- open
-	//
-	// 	- close
+	// Indicates whether the mouth is open.
 	//
 	// example:
 	//
 	// close
 	Mouth *string `json:"Mouth,omitempty" xml:"Mouth,omitempty"`
-	// The confidence level of detecting whether the mouth is open. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+	// The confidence score for whether the mouth is open. Valid values: 0 (lowest confidence) to 1 (highest confidence).
 	//
 	// example:
 	//
 	// 1
 	MouthConfidence *float32 `json:"MouthConfidence,omitempty" xml:"MouthConfidence,omitempty"`
-	// The clarity.
+	// The sharpness score. A higher score indicates a clearer face. Valid values: 0 to 1.
 	//
 	// example:
 	//

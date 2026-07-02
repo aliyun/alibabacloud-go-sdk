@@ -16,8 +16,10 @@ type iPaperDescription interface {
 }
 
 type PaperDescription struct {
+	// The guide result.
 	Description []*Summary `json:"Description,omitempty" xml:"Description,omitempty" type:"Repeated"`
-	TitleID     []*string  `json:"TitleID,omitempty" xml:"TitleID,omitempty" type:"Repeated"`
+	// The section heading included in the guide result.
+	TitleID []*string `json:"TitleID,omitempty" xml:"TitleID,omitempty" type:"Repeated"`
 }
 
 func (s PaperDescription) String() string {

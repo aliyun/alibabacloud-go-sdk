@@ -16,9 +16,17 @@ type iVideoReadQuestionOption interface {
 }
 
 type VideoReadQuestionOption struct {
-	// Specifies the maximum number of answers to return when `Extract` is `true`. If omitted, the service returns all detected answers.
+	// The number of keywords. Valid values: 0 to 10.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Specifies whether to extract answer segments from the video. When `true`, the service identifies and returns these segments. The default is `false`.
+	// Specifies whether to fetch.
+	//
+	// example:
+	//
+	// true
 	Extract *bool `json:"Extract,omitempty" xml:"Extract,omitempty"`
 }
 

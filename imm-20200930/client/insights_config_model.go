@@ -19,13 +19,14 @@ type iInsightsConfig interface {
 
 type InsightsConfig struct {
 	Image *ImageInsightsConfig `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The language of the source content.
+	// The language.
 	//
 	// example:
 	//
 	// zh-Hans
-	Language *string              `json:"Language,omitempty" xml:"Language,omitempty"`
-	Video    *VideoInsightsConfig `json:"Video,omitempty" xml:"Video,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The video content-aware configuration.
+	Video *VideoInsightsConfig `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 
 func (s InsightsConfig) String() string {

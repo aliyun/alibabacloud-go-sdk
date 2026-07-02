@@ -18,14 +18,19 @@ type iDocumentReadSummaryOption interface {
 }
 
 type DocumentReadSummaryOption struct {
-	// Specifies whether to generate a summary for each chapter. This setting applies only if the service can identify chapters.
+	// Specifies whether to extract the chapter-level summary of the article.
 	//
-	// **Default value**: `false`.
-	ChapterSummarize       *bool                           `json:"ChapterSummarize,omitempty" xml:"ChapterSummarize,omitempty"`
+	// example:
+	//
+	// true
+	ChapterSummarize *bool `json:"ChapterSummarize,omitempty" xml:"ChapterSummarize,omitempty"`
+	// The chapter-level summary options for the article.
 	ChapterSummarizeOption *DocumentChapterSummarizeOption `json:"ChapterSummarizeOption,omitempty" xml:"ChapterSummarizeOption,omitempty"`
-	// Specifies whether to generate a summary for the entire document.
+	// Specifies whether to extract the article summary.
 	//
-	// **Default value**: `false`.
+	// example:
+	//
+	// true
 	Summarize *bool `json:"Summarize,omitempty" xml:"Summarize,omitempty"`
 }
 

@@ -28,20 +28,49 @@ type iGetDocumentAnalysisOption interface {
 }
 
 type GetDocumentAnalysisOption struct {
-	// Specifies whether to generate summaries for each chapter. Set to `true` to enable this feature. Use `ChapterSummaryOption` to configure detailed options. Defaults to `false`.
-	ChapterSummary       *bool                           `json:"ChapterSummary,omitempty" xml:"ChapterSummary,omitempty"`
+	// Specifies whether to retrieve chapter-by-chapter summaries of the document.
+	//
+	// example:
+	//
+	// false
+	ChapterSummary *bool `json:"ChapterSummary,omitempty" xml:"ChapterSummary,omitempty"`
+	// The options for retrieving chapter-by-chapter summaries of the document.
 	ChapterSummaryOption *DocumentChapterSummarizeOption `json:"ChapterSummaryOption,omitempty" xml:"ChapterSummaryOption,omitempty"`
-	// Specifies whether to analyze each image within the document. Set to `true` to enable this feature. Defaults to `false`.
+	// Specifies whether to retrieve images extracted from the document, such as pictures, tables, and formulas.
+	//
+	// example:
+	//
+	// false
 	Images *bool `json:"Images,omitempty" xml:"Images,omitempty"`
-	// Specifies whether to extract keywords from the document. Set to `true` to enable this feature. Defaults to `false`.
+	// Specifies whether to retrieve keywords.
+	//
+	// example:
+	//
+	// false
 	Keyword *bool `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Specifies whether to analyze the document layout. Set to `true` to enable this feature. Defaults to `false`.
+	// Specifies whether to retrieve the layout.jsonl file.
+	//
+	// example:
+	//
+	// false
 	Layouts *bool `json:"Layouts,omitempty" xml:"Layouts,omitempty"`
-	// Specifies whether to identify the narrator in the document. Set to `true` to enable this feature. Defaults to `false`.
+	// Specifies whether to retrieve the document reading guide results.
+	//
+	// example:
+	//
+	// false
 	Narrator *bool `json:"Narrator,omitempty" xml:"Narrator,omitempty"`
-	// Specifies whether to generate questions based on the document content. Set to `true` to enable this feature. Defaults to `false`.
+	// Specifies whether to retrieve the generated questions and corresponding answers.
+	//
+	// example:
+	//
+	// false
 	Question *bool `json:"Question,omitempty" xml:"Question,omitempty"`
-	// Specifies whether to generate a summary for the document. Set to `true` to enable this feature. Defaults to `false`.
+	// Specifies whether to retrieve the full-text summary.
+	//
+	// example:
+	//
+	// true
 	Summary *bool `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 

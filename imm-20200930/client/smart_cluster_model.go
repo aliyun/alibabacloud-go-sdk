@@ -40,8 +40,13 @@ type iSmartCluster interface {
 }
 
 type SmartCluster struct {
+	// The category of the grouping.
+	//
+	// example:
+	//
+	// figure
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The creation time.
+	// The time when the grouping was created.
 	//
 	// example:
 	//
@@ -53,27 +58,31 @@ type SmartCluster struct {
 	//
 	// MyDataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The group description.
+	// The description of the grouping.
+	//
+	// example:
+	//
+	// 这是一个智能分组的描述示例，它用于展示记录的格式。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The group name.
+	// The grouping name.
 	//
 	// example:
 	//
 	// MySmartCluster1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The smart cluster ID.
+	// The intelligent grouping ID.
 	//
 	// example:
 	//
 	// SmartCluster-12cd1645-deae-4b5e-9434-613747b75f6d
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The group status. Valid values are `Succeeded`, `Failed`, and `Running`.
+	// The status of the grouping.
 	//
 	// example:
 	//
 	// Succeeded
 	ObjectStatus *string `json:"ObjectStatus,omitempty" xml:"ObjectStatus,omitempty"`
-	// The group type. The value is always `smart-cluster`.
+	// The grouping type.
 	//
 	// example:
 	//
@@ -91,11 +100,17 @@ type SmartCluster struct {
 	//
 	// MyProject
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The clustering rule.
-	Rule  *SmartClusterRule   `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// The reason why the grouping failed.
+	//
+	// example:
+	//
+	// [InvalidArgument.BaseURIs] Each BaseURI must contain exactly one figure
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The grouping rule. This parameter is deprecated. Use the Rules parameter instead.
+	Rule *SmartClusterRule `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// The list of grouping rules.
 	Rules []*SmartClusterRule `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The update time.
+	// The time when the grouping was last updated.
 	//
 	// example:
 	//

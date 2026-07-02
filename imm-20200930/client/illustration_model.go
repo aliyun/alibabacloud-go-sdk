@@ -24,17 +24,37 @@ type iIllustration interface {
 }
 
 type Illustration struct {
-	// The zero-based image index in a file that contains multiple images, such as a multi-page TIFF file.
+	// The index of the image.
+	//
+	// example:
+	//
+	// 0
 	ImageIndex *int32 `json:"ImageIndex,omitempty" xml:"ImageIndex,omitempty"`
-	// The path to the image file containing the illustration.
+	// The relative path of the image.
+	//
+	// example:
+	//
+	// "imgs/page_0_img_image_box_770_540_1367_860.png"
 	ImagePath *string `json:"ImagePath,omitempty" xml:"ImagePath,omitempty"`
-	// An array of four floating-point numbers that defines the normalized box for the illustration in [x_min, y_min, x_max, y_max] format. The coordinates are normalized to a range of [0, 1] relative to the page dimensions.
+	// The normalized coordinate of the image on the page.
 	NormalizedBox []*float32 `json:"NormalizedBox,omitempty" xml:"NormalizedBox,omitempty" type:"Repeated"`
-	// The one-based page number where the illustration is located.
+	// The page number on which the image is located.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The text associated with the illustration.
+	// The text result recognized by optical character recognition (OCR) from the image.
+	//
+	// example:
+	//
+	// "图片"
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The type of the illustration, such as `figure` or `chart`.
+	// The type of the image.
+	//
+	// example:
+	//
+	// image、table、code
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

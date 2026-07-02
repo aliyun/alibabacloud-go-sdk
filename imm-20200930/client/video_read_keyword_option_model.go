@@ -16,9 +16,17 @@ type iVideoReadKeywordOption interface {
 }
 
 type VideoReadKeywordOption struct {
-	// Specifies the maximum number of keywords to return. The service may return fewer keywords than this limit. If omitted, the service returns all extracted keywords.
+	// The number of keywords. Valid values: 0 to 10.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Specifies whether to extract keywords from the video. Set to `true` to enable keyword extraction. The default is `false`.
+	// Specifies whether to fetch keywords.
+	//
+	// example:
+	//
+	// true
 	Extract *bool `json:"Extract,omitempty" xml:"Extract,omitempty"`
 }
 

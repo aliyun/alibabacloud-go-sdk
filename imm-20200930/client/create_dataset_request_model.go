@@ -9,8 +9,6 @@ type iCreateDatasetRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetDatasetConfig(v *DatasetConfig) *CreateDatasetRequest
-	GetDatasetConfig() *DatasetConfig
 	SetDatasetMaxBindCount(v int64) *CreateDatasetRequest
 	GetDatasetMaxBindCount() *int64
 	SetDatasetMaxEntityCount(v int64) *CreateDatasetRequest
@@ -34,45 +32,43 @@ type iCreateDatasetRequest interface {
 }
 
 type CreateDatasetRequest struct {
-	// The dataset configuration.
-	DatasetConfig *DatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
-	// The maximum number of bindings for each dataset. Valid values: 1 to 10. The default value is 10.
+	// The maximum number of bindings per dataset. Valid values: 1 to 10. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	// The maximum number of metadata entities in each dataset. The default value is 10,000,000,000.
+	// The maximum number of metadata entities per dataset. Default value: 10000000000.
 	//
 	// example:
 	//
 	// 10000000000
 	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	// The maximum number of files in each dataset. Valid values: 1 to 100,000,000. The default value is 100,000,000.
+	// The maximum number of files per dataset. Valid values: 1 to 100000000. Default value: 100000000.
 	//
 	// example:
 	//
 	// 100000000
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	// The maximum number of metadata relationships in each dataset. The default value is 100,000,000,000.
+	// The maximum number of metadata relationships per dataset. Default value: 100000000000.
 	//
 	// example:
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	// The maximum total size of files in each dataset. You cannot add more indexes after exceeding this limit. The default value is 90,000,000,000,000,000 bytes.
+	// The maximum total file size per dataset, in bytes. After this limit is exceeded, no more indexes can be added. Default value: 90000000000000000.
 	//
 	// example:
 	//
 	// 90000000000000000
 	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	// The dataset name. It must be unique within the same project. Naming conventions are as follows:
+	// The dataset name. The name must be unique within the same project. The following naming rules apply:
 	//
-	// - Length: 1 to 128 characters.
+	// - The name must be 1 to 128 characters in length.
 	//
-	// - Only English letters, digits, hyphens (-), and underscores (_) are allowed.
+	// - The name can contain only letters, digits, hyphens (-), and underscores (_).
 	//
-	// - Must start with an English letter or an underscore (_).
+	// - The name must start with a letter or an underscore (_).
 	//
 	// This parameter is required.
 	//
@@ -80,13 +76,13 @@ type CreateDatasetRequest struct {
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The description of the dataset. Length: 1 to 256 English or Chinese characters. The default value is empty.
+	// The description of the dataset. The description can be 1 to 256 characters in length. Default value: empty.
 	//
 	// example:
 	//
 	// immtest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project name. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
+	// The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
 	//
 	// This parameter is required.
 	//
@@ -94,12 +90,14 @@ type CreateDatasetRequest struct {
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The workflow template ID. For more information, see [Workflow Templates and Operators](https://help.aliyun.com/document_detail/466304.html). The default value is empty.
+	// The workflow template ID. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html). Default value: empty.
 	//
 	// example:
 	//
 	// Official:ImageManagement
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Deprecated
+	//
 	// Invalid parameter.
 	WorkflowParameters []*WorkflowParameter `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty" type:"Repeated"`
 }
@@ -110,10 +108,6 @@ func (s CreateDatasetRequest) String() string {
 
 func (s CreateDatasetRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateDatasetRequest) GetDatasetConfig() *DatasetConfig {
-	return s.DatasetConfig
 }
 
 func (s *CreateDatasetRequest) GetDatasetMaxBindCount() *int64 {
@@ -154,11 +148,6 @@ func (s *CreateDatasetRequest) GetTemplateId() *string {
 
 func (s *CreateDatasetRequest) GetWorkflowParameters() []*WorkflowParameter {
 	return s.WorkflowParameters
-}
-
-func (s *CreateDatasetRequest) SetDatasetConfig(v *DatasetConfig) *CreateDatasetRequest {
-	s.DatasetConfig = v
-	return s
 }
 
 func (s *CreateDatasetRequest) SetDatasetMaxBindCount(v int64) *CreateDatasetRequest {
@@ -212,11 +201,6 @@ func (s *CreateDatasetRequest) SetWorkflowParameters(v []*WorkflowParameter) *Cr
 }
 
 func (s *CreateDatasetRequest) Validate() error {
-	if s.DatasetConfig != nil {
-		if err := s.DatasetConfig.Validate(); err != nil {
-			return err
-		}
-	}
 	if s.WorkflowParameters != nil {
 		for _, item := range s.WorkflowParameters {
 			if item != nil {

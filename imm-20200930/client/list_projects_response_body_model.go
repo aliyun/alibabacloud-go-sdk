@@ -24,7 +24,7 @@ type ListProjectsResponseBody struct {
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDAx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The array of projects. Returns information about the projects.
+	// The array of projects. Project information is returned.
 	Projects []*Project `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
 	// The request ID.
 	//

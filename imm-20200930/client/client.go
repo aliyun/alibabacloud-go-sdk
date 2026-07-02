@@ -1787,17 +1787,17 @@ func (client *Client) CreateCustomizedStory(request *CreateCustomizedStoryReques
 
 // Summary:
 //
-// Create a dataset.
+// Creates a dataset.
 //
 // Description:
 //
-// - **You must understand the billing methods and [pricing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management before using this API.**
+// - **Before you use this operation, make sure that you fully understand the billing of Intelligent Media Management (IMM) and its [pricing](https://help.aliyun.com/document_detail/477042.html)**.
 //
-// - Dataset names must be unique within a project.
+// - Dataset names must be unique within the same project.
 //
-// - The number of datasets you can create is limited. You can query this limit using [GetProject](https://help.aliyun.com/document_detail/478155.html).
+// - The number of datasets that can be created is limited. You can call [GetProjcet](https://help.aliyun.com/document_detail/478155.html) to query this limit.
 //
-// - After creating a dataset, you can use [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) to index object metadata. This enables diverse [data retrieval and statistics](https://help.aliyun.com/document_detail/478175.html) and intelligent management.
+// - After you create a dataset, you can call [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) to create file metadata indexes for diversified [data retrieval, statistics](https://help.aliyun.com/document_detail/478175.html), and intelligent management.
 //
 // @param tmpReq - CreateDatasetRequest
 //
@@ -1813,19 +1813,11 @@ func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, run
 	}
 	request := &CreateDatasetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !dara.IsNil(tmpReq.DatasetConfig) {
-		request.DatasetConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetConfig, dara.String("DatasetConfig"), dara.String("json"))
-	}
-
 	if !dara.IsNil(tmpReq.WorkflowParameters) {
 		request.WorkflowParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowParameters, dara.String("WorkflowParameters"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.DatasetConfigShrink) {
-		query["DatasetConfig"] = request.DatasetConfigShrink
-	}
-
 	if !dara.IsNil(request.DatasetMaxBindCount) {
 		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
 	}
@@ -1891,17 +1883,17 @@ func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, run
 
 // Summary:
 //
-// Create a dataset.
+// Creates a dataset.
 //
 // Description:
 //
-// - **You must understand the billing methods and [pricing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management before using this API.**
+// - **Before you use this operation, make sure that you fully understand the billing of Intelligent Media Management (IMM) and its [pricing](https://help.aliyun.com/document_detail/477042.html)**.
 //
-// - Dataset names must be unique within a project.
+// - Dataset names must be unique within the same project.
 //
-// - The number of datasets you can create is limited. You can query this limit using [GetProject](https://help.aliyun.com/document_detail/478155.html).
+// - The number of datasets that can be created is limited. You can call [GetProjcet](https://help.aliyun.com/document_detail/478155.html) to query this limit.
 //
-// - After creating a dataset, you can use [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) to index object metadata. This enables diverse [data retrieval and statistics](https://help.aliyun.com/document_detail/478175.html) and intelligent management.
+// - After you create a dataset, you can call [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) to create file metadata indexes for diversified [data retrieval, statistics](https://help.aliyun.com/document_detail/478175.html), and intelligent management.
 //
 // @param request - CreateDatasetRequest
 //
@@ -3899,7 +3891,7 @@ func (client *Client) CreateOfficeConversionTask(request *CreateOfficeConversion
 //
 //   - [Create a batch task](https://help.aliyun.com/document_detail/606694.html)
 //
-//   - [Create a binding task](https://help.aliyun.com/document_detail/478202.html).
+//   - [Create a binding task](https://help.aliyun.com/document_detail/478202.html)
 //
 // @param tmpReq - CreateProjectRequest
 //
@@ -3915,19 +3907,11 @@ func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, run
 	}
 	request := &CreateProjectShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !dara.IsNil(tmpReq.DatasetConfig) {
-		request.DatasetConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetConfig, dara.String("DatasetConfig"), dara.String("json"))
-	}
-
 	if !dara.IsNil(tmpReq.Tag) {
 		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, dara.String("Tag"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.DatasetConfigShrink) {
-		query["DatasetConfig"] = request.DatasetConfigShrink
-	}
-
 	if !dara.IsNil(request.DatasetMaxBindCount) {
 		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
 	}
@@ -4013,7 +3997,7 @@ func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, run
 //
 //   - [Create a batch task](https://help.aliyun.com/document_detail/606694.html)
 //
-//   - [Create a binding task](https://help.aliyun.com/document_detail/478202.html).
+//   - [Create a binding task](https://help.aliyun.com/document_detail/478202.html)
 //
 // @param request - CreateProjectRequest
 //
@@ -7774,11 +7758,11 @@ func (client *Client) GetOSSBucketAttachment(request *GetOSSBucketAttachmentRequ
 
 // Summary:
 //
-// Queries information about a specified project, including basic information and statistics related to datasets and files.
+// Queries information about a specified project, including basic information and statistics information related to datasets and files.
 //
 // Description:
 //
-// Querying project information supports real-time retrieval of file statistics. Enable this feature through parameter settings. For details, see the request parameters section.
+// Querying project information supports real-time retrieval of file statistics information. You can enable this feature through parameter settings. For details, see the request parameters section.
 //
 //	Notice: Only files in datasets created before December 20, 2025 can be counted.
 //
@@ -7828,11 +7812,11 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 
 // Summary:
 //
-// Queries information about a specified project, including basic information and statistics related to datasets and files.
+// Queries information about a specified project, including basic information and statistics information related to datasets and files.
 //
 // Description:
 //
-// Querying project information supports real-time retrieval of file statistics. Enable this feature through parameter settings. For details, see the request parameters section.
+// Querying project information supports real-time retrieval of file statistics information. You can enable this feature through parameter settings. For details, see the request parameters section.
 //
 //	Notice: Only files in datasets created before December 20, 2025 can be counted.
 //
@@ -10940,15 +10924,15 @@ func (client *Client) UpdateBatch(request *UpdateBatchRequest) (_result *UpdateB
 
 // Summary:
 //
-// Updates information for a dataset.
+// Updates the information of a dataset.
 //
 // Description:
 //
-// - **Before calling this operation, review*	- the billing model and [pricing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).
+// - **Before you use this operation, make sure that you fully understand the billing of Intelligent Media Management (IMM) and its [pricing](https://help.aliyun.com/document_detail/477042.html)**.
 //
-// - The dataset must exist before you can update it.
+// - Before you update dataset information, make sure that the dataset has been created. To create a dataset, refer to the request parameter descriptions.
 //
-// - You only need to specify the parameters that you want to update. Unspecified parameters remain unchanged.
+// - When you update dataset information, specify only the fields that you want to update. Fields that are not specified remain unchanged.
 //
 // - After a dataset is updated, the changes may take up to 5 minutes to take effect.
 //
@@ -10966,19 +10950,11 @@ func (client *Client) UpdateDatasetWithOptions(tmpReq *UpdateDatasetRequest, run
 	}
 	request := &UpdateDatasetShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !dara.IsNil(tmpReq.DatasetConfig) {
-		request.DatasetConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetConfig, dara.String("DatasetConfig"), dara.String("json"))
-	}
-
 	if !dara.IsNil(tmpReq.WorkflowParameters) {
 		request.WorkflowParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WorkflowParameters, dara.String("WorkflowParameters"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.DatasetConfigShrink) {
-		query["DatasetConfig"] = request.DatasetConfigShrink
-	}
-
 	if !dara.IsNil(request.DatasetMaxBindCount) {
 		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
 	}
@@ -11044,15 +11020,15 @@ func (client *Client) UpdateDatasetWithOptions(tmpReq *UpdateDatasetRequest, run
 
 // Summary:
 //
-// Updates information for a dataset.
+// Updates the information of a dataset.
 //
 // Description:
 //
-// - **Before calling this operation, review*	- the billing model and [pricing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).
+// - **Before you use this operation, make sure that you fully understand the billing of Intelligent Media Management (IMM) and its [pricing](https://help.aliyun.com/document_detail/477042.html)**.
 //
-// - The dataset must exist before you can update it.
+// - Before you update dataset information, make sure that the dataset has been created. To create a dataset, refer to the request parameter descriptions.
 //
-// - You only need to specify the parameters that you want to update. Unspecified parameters remain unchanged.
+// - When you update dataset information, specify only the fields that you want to update. Fields that are not specified remain unchanged.
 //
 // - After a dataset is updated, the changes may take up to 5 minutes to take effect.
 //
@@ -11380,19 +11356,11 @@ func (client *Client) UpdateProjectWithOptions(tmpReq *UpdateProjectRequest, run
 	}
 	request := &UpdateProjectShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !dara.IsNil(tmpReq.DatasetConfig) {
-		request.DatasetConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetConfig, dara.String("DatasetConfig"), dara.String("json"))
-	}
-
 	if !dara.IsNil(tmpReq.Tag) {
 		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, dara.String("Tag"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.DatasetConfigShrink) {
-		query["DatasetConfig"] = request.DatasetConfigShrink
-	}
-
 	if !dara.IsNil(request.DatasetMaxBindCount) {
 		query["DatasetMaxBindCount"] = request.DatasetMaxBindCount
 	}

@@ -11,8 +11,6 @@ type iProject interface {
 	GoString() string
 	SetCreateTime(v string) *Project
 	GetCreateTime() *string
-	SetDatasetConfig(v *DatasetConfig) *Project
-	GetDatasetConfig() *DatasetConfig
 	SetDatasetCount(v int64) *Project
 	GetDatasetCount() *int64
 	SetDatasetMaxBindCount(v int64) *Project
@@ -55,8 +53,7 @@ type Project struct {
 	// example:
 	//
 	// 2021-06-29T14:50:13.011643661+08:00
-	CreateTime    *string        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DatasetConfig *DatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The current number of datasets in the project.
 	//
 	// example:
@@ -97,13 +94,13 @@ type Project struct {
 	//
 	// 90000000000000000
 	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
-	// The project description.
+	// The description of the project.
 	//
 	// example:
 	//
 	// test project
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum number of tasks that the project can process per second. This specifies the maximum number of operators that can run in parallel at the same time across the project. Default value: 100.
+	// The maximum number of tasks that the project can process per second. This specifies the maximum number of operators across the project that can run in parallel at the same time. Default value: 100.
 	//
 	// - Synchronous tasks: if the number of concurrent tasks exceeds this limit, task execution time increases until a timeout occurs.
 	//
@@ -159,7 +156,7 @@ type Project struct {
 	TotalFileSize *int64 `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
 	// The timestamp when the project was last modified, in RFC3339Nano format.
 	//
-	// > If the project has not been updated since creation, this timestamp is the same as the creation timestamp.
+	// > If the project has not been updated since it was created, the modification timestamp is the same as the creation timestamp.
 	//
 	// example:
 	//
@@ -177,10 +174,6 @@ func (s Project) GoString() string {
 
 func (s *Project) GetCreateTime() *string {
 	return s.CreateTime
-}
-
-func (s *Project) GetDatasetConfig() *DatasetConfig {
-	return s.DatasetConfig
 }
 
 func (s *Project) GetDatasetCount() *int64 {
@@ -253,11 +246,6 @@ func (s *Project) GetUpdateTime() *string {
 
 func (s *Project) SetCreateTime(v string) *Project {
 	s.CreateTime = &v
-	return s
-}
-
-func (s *Project) SetDatasetConfig(v *DatasetConfig) *Project {
-	s.DatasetConfig = v
 	return s
 }
 
@@ -347,11 +335,6 @@ func (s *Project) SetUpdateTime(v string) *Project {
 }
 
 func (s *Project) Validate() error {
-	if s.DatasetConfig != nil {
-		if err := s.DatasetConfig.Validate(); err != nil {
-			return err
-		}
-	}
 	if s.Tags != nil {
 		for _, item := range s.Tags {
 			if item != nil {
@@ -365,13 +348,13 @@ func (s *Project) Validate() error {
 }
 
 type ProjectTags struct {
-	// 标签键。
+	// The tag key.
 	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// 标签值。
+	// The tag value.
 	//
 	// example:
 	//

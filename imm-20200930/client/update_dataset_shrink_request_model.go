@@ -9,8 +9,6 @@ type iUpdateDatasetShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetDatasetConfigShrink(v string) *UpdateDatasetShrinkRequest
-	GetDatasetConfigShrink() *string
 	SetDatasetMaxBindCount(v int64) *UpdateDatasetShrinkRequest
 	GetDatasetMaxBindCount() *int64
 	SetDatasetMaxEntityCount(v int64) *UpdateDatasetShrinkRequest
@@ -34,37 +32,35 @@ type iUpdateDatasetShrinkRequest interface {
 }
 
 type UpdateDatasetShrinkRequest struct {
-	// The dataset configuration.
-	DatasetConfigShrink *string `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
-	// The maximum number of bindings for the dataset. Valid values: 1 to 10.
+	// The maximum number of bindings for each dataset. Valid values: 1 to 10.
 	//
 	// example:
 	//
 	// 10
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
-	// The maximum number of metadata entities, such as data files, file relationships, and cluster groups, in the dataset. The maximum value is 2^63 - 1.
+	// The maximum number of metadata entities (including data files, file relationships, and clustering groups) in each dataset. The maximum value is 2^63-1.
 	//
-	// > This parameter is reserved and not enforced in practice.
+	// >This is a reserved parameter and is not enforced during use.
 	//
 	// example:
 	//
 	// 10000000000
 	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
-	// The maximum number of files in the dataset. Valid values: 1 to 100000000.
+	// The maximum number of files in each dataset. Valid values: 1 to 100000000.
 	//
 	// example:
 	//
 	// 100000000
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
-	// The maximum number of metadata relationships in the dataset. The maximum value is 2^63 - 1.
+	// The maximum number of metadata relationships in each dataset. The maximum value is 2^63-1.
 	//
-	// > This parameter is reserved and not enforced in practice.
+	// >This is a reserved parameter and is not enforced during use.
 	//
 	// example:
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
-	// The maximum total size of all files in the dataset, in bytes. If this limit is exceeded, you can no longer add new index entries. The maximum value is 2^63 - 1.
+	// The maximum total file size in each dataset. After this limit is exceeded, no more indexes can be added. The maximum value is 2^63-1. Unit: bytes.
 	//
 	// example:
 	//
@@ -78,7 +74,7 @@ type UpdateDatasetShrinkRequest struct {
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The dataset description.
+	// The description of the dataset.
 	//
 	// example:
 	//
@@ -98,7 +94,9 @@ type UpdateDatasetShrinkRequest struct {
 	//
 	// Official:ImageManagement
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// This parameter is invalid.
+	// Deprecated
+	//
+	// Invalid parameter.
 	WorkflowParametersShrink *string `json:"WorkflowParameters,omitempty" xml:"WorkflowParameters,omitempty"`
 }
 
@@ -108,10 +106,6 @@ func (s UpdateDatasetShrinkRequest) String() string {
 
 func (s UpdateDatasetShrinkRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateDatasetShrinkRequest) GetDatasetConfigShrink() *string {
-	return s.DatasetConfigShrink
 }
 
 func (s *UpdateDatasetShrinkRequest) GetDatasetMaxBindCount() *int64 {
@@ -152,11 +146,6 @@ func (s *UpdateDatasetShrinkRequest) GetTemplateId() *string {
 
 func (s *UpdateDatasetShrinkRequest) GetWorkflowParametersShrink() *string {
 	return s.WorkflowParametersShrink
-}
-
-func (s *UpdateDatasetShrinkRequest) SetDatasetConfigShrink(v string) *UpdateDatasetShrinkRequest {
-	s.DatasetConfigShrink = &v
-	return s
 }
 
 func (s *UpdateDatasetShrinkRequest) SetDatasetMaxBindCount(v int64) *UpdateDatasetShrinkRequest {

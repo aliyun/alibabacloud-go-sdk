@@ -18,11 +18,23 @@ type iPPTDetails interface {
 }
 
 type PPTDetails struct {
-	// The URL of the captured slide image, which is stored in an Object Storage Service (OSS) bucket.
+	// The image path of the PPT frame capture.
+	//
+	// example:
+	//
+	// "ppts/video_snapshots_0.jpg"
 	ImagePath *string `json:"ImagePath,omitempty" xml:"ImagePath,omitempty"`
-	// The zero-based index of the slide in the sequence of detected slides.
+	// The index of the PPT frame capture.
+	//
+	// example:
+	//
+	// 0
 	PPTShotIndex *int64 `json:"PPTShotIndex,omitempty" xml:"PPTShotIndex,omitempty"`
-	// The start time of the slide, in milliseconds, from the beginning of the video.
+	// The time in the video.
+	//
+	// example:
+	//
+	// 5000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
