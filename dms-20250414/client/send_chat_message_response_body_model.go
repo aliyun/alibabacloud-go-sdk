@@ -42,7 +42,7 @@ type SendChatMessageResponseBody struct {
 	//
 	// FE65CE1F-****-****-****-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Success
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ func (s *SendChatMessageResponseBody) Validate() error {
 }
 
 type SendChatMessageResponseBodyData struct {
-	// The agent ID.
+	// AgentId
 	//
 	// example:
 	//
 	// 3jqqdiuxun******
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The message.
+	// Message
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type SendChatMessageResponseBodyData struct {
 	//
 	// 922d7fd2-77fb-4549-9091-d51da225d47f
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The session ID.
+	// SessionId
 	//
 	// example:
 	//

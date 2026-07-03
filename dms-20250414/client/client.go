@@ -846,6 +846,116 @@ func (client *Client) CreateCustomAgent(request *CreateCustomAgentRequest) (_res
 
 // Summary:
 //
+// Creates an accuracy test instance.
+//
+// @param request - CreateDataAgentAccuracyTestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataAgentAccuracyTestResponse
+func (client *Client) CreateDataAgentAccuracyTestWithOptions(request *CreateDataAgentAccuracyTestRequest, runtime *dara.RuntimeOptions) (_result *CreateDataAgentAccuracyTestResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomAgentId) {
+		query["CustomAgentId"] = request.CustomAgentId
+	}
+
+	if !dara.IsNil(request.Dataset) {
+		query["Dataset"] = request.Dataset
+	}
+
+	if !dara.IsNil(request.Desc) {
+		query["Desc"] = request.Desc
+	}
+
+	if !dara.IsNil(request.DmsUnit) {
+		query["DmsUnit"] = request.DmsUnit
+	}
+
+	if !dara.IsNil(request.EvaluationPrompt) {
+		query["EvaluationPrompt"] = request.EvaluationPrompt
+	}
+
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.MaxConcurrent) {
+		query["MaxConcurrent"] = request.MaxConcurrent
+	}
+
+	if !dara.IsNil(request.Mode) {
+		query["Mode"] = request.Mode
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NeedDelete) {
+		query["NeedDelete"] = request.NeedDelete
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataAgentAccuracyTest"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataAgentAccuracyTestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an accuracy test instance.
+//
+// @param request - CreateDataAgentAccuracyTestRequest
+//
+// @return CreateDataAgentAccuracyTestResponse
+func (client *Client) CreateDataAgentAccuracyTest(request *CreateDataAgentAccuracyTestRequest) (_result *CreateDataAgentAccuracyTestResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDataAgentAccuracyTestResponse{}
+	_body, _err := client.CreateDataAgentAccuracyTestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a DataAgent knowledge base. The knowledge base creator has read and write permissions. Other workspace members have permission to use it.
 //
 // @param request - CreateDataAgentKnowledgeBaseRequest
@@ -1571,6 +1681,88 @@ func (client *Client) DeleteCustomAgent(request *DeleteCustomAgentRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteCustomAgentResponse{}
 	_body, _err := client.DeleteCustomAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an accuracy test configuration item.
+//
+// Description:
+//
+// Deletes an accuracy test item.
+//
+// @param request - DeleteDataAgentAccuracyTestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataAgentAccuracyTestResponse
+func (client *Client) DeleteDataAgentAccuracyTestWithOptions(request *DeleteDataAgentAccuracyTestRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataAgentAccuracyTestResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccuracyTestInsId) {
+		query["AccuracyTestInsId"] = request.AccuracyTestInsId
+	}
+
+	if !dara.IsNil(request.DmsUnit) {
+		query["DmsUnit"] = request.DmsUnit
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataAgentAccuracyTest"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataAgentAccuracyTestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an accuracy test configuration item.
+//
+// Description:
+//
+// Deletes an accuracy test item.
+//
+// @param request - DeleteDataAgentAccuracyTestRequest
+//
+// @return DeleteDataAgentAccuracyTestResponse
+func (client *Client) DeleteDataAgentAccuracyTest(request *DeleteDataAgentAccuracyTestRequest) (_result *DeleteDataAgentAccuracyTestResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDataAgentAccuracyTestResponse{}
+	_body, _err := client.DeleteDataAgentAccuracyTestWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4193,6 +4385,300 @@ func (client *Client) ListCustomAgent(request *ListCustomAgentRequest) (_result 
 
 // Summary:
 //
+// Lists accuracy test configuration items that meet the specified conditions.
+//
+// Description:
+//
+// Lists accuracy test configuration items that meet the specified conditions.
+//
+// @param request - ListDataAgentAccuracyTestInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataAgentAccuracyTestInstancesResponse
+func (client *Client) ListDataAgentAccuracyTestInstancesWithOptions(request *ListDataAgentAccuracyTestInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListDataAgentAccuracyTestInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccuracyTestInsId) {
+		query["AccuracyTestInsId"] = request.AccuracyTestInsId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataAgentAccuracyTestInstances"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataAgentAccuracyTestInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists accuracy test configuration items that meet the specified conditions.
+//
+// Description:
+//
+// Lists accuracy test configuration items that meet the specified conditions.
+//
+// @param request - ListDataAgentAccuracyTestInstancesRequest
+//
+// @return ListDataAgentAccuracyTestInstancesResponse
+func (client *Client) ListDataAgentAccuracyTestInstances(request *ListDataAgentAccuracyTestInstancesRequest) (_result *ListDataAgentAccuracyTestInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDataAgentAccuracyTestInstancesResponse{}
+	_body, _err := client.ListDataAgentAccuracyTestInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the execution results of a self-test task.
+//
+// Description:
+//
+// Retrieves the execution results of a self-test task.
+//
+// @param request - ListDataAgentAccuracyTestResultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataAgentAccuracyTestResultsResponse
+func (client *Client) ListDataAgentAccuracyTestResultsWithOptions(request *ListDataAgentAccuracyTestResultsRequest, runtime *dara.RuntimeOptions) (_result *ListDataAgentAccuracyTestResultsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccuracyTestInsId) {
+		query["AccuracyTestInsId"] = request.AccuracyTestInsId
+	}
+
+	if !dara.IsNil(request.AccuracyTestResultId) {
+		query["AccuracyTestResultId"] = request.AccuracyTestResultId
+	}
+
+	if !dara.IsNil(request.AccuracyTestSubtaskId) {
+		query["AccuracyTestSubtaskId"] = request.AccuracyTestSubtaskId
+	}
+
+	if !dara.IsNil(request.AccuracyTestTaskId) {
+		query["AccuracyTestTaskId"] = request.AccuracyTestTaskId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataAgentAccuracyTestResults"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataAgentAccuracyTestResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the execution results of a self-test task.
+//
+// Description:
+//
+// Retrieves the execution results of a self-test task.
+//
+// @param request - ListDataAgentAccuracyTestResultsRequest
+//
+// @return ListDataAgentAccuracyTestResultsResponse
+func (client *Client) ListDataAgentAccuracyTestResults(request *ListDataAgentAccuracyTestResultsRequest) (_result *ListDataAgentAccuracyTestResultsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDataAgentAccuracyTestResultsResponse{}
+	_body, _err := client.ListDataAgentAccuracyTestResultsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the running status of self-test tasks by paging.
+//
+// Description:
+//
+// Queries the running status of self-test tasks by paging.
+//
+// If AccuracyTestInsId or AccuracyTestTaskId is empty, all test tasks are queried.
+//
+// @param request - ListDataAgentAccuracyTestTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataAgentAccuracyTestTasksResponse
+func (client *Client) ListDataAgentAccuracyTestTasksWithOptions(request *ListDataAgentAccuracyTestTasksRequest, runtime *dara.RuntimeOptions) (_result *ListDataAgentAccuracyTestTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccuracyTestInsId) {
+		query["AccuracyTestInsId"] = request.AccuracyTestInsId
+	}
+
+	if !dara.IsNil(request.AccuracyTestTaskId) {
+		query["AccuracyTestTaskId"] = request.AccuracyTestTaskId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataAgentAccuracyTestTasks"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataAgentAccuracyTestTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the running status of self-test tasks by paging.
+//
+// Description:
+//
+// Queries the running status of self-test tasks by paging.
+//
+// If AccuracyTestInsId or AccuracyTestTaskId is empty, all test tasks are queried.
+//
+// @param request - ListDataAgentAccuracyTestTasksRequest
+//
+// @return ListDataAgentAccuracyTestTasksResponse
+func (client *Client) ListDataAgentAccuracyTestTasks(request *ListDataAgentAccuracyTestTasksRequest) (_result *ListDataAgentAccuracyTestTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDataAgentAccuracyTestTasksResponse{}
+	_body, _err := client.ListDataAgentAccuracyTestTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the list of historical session descriptions for a Data Agent.
 //
 // @param request - ListDataAgentSessionRequest
@@ -6415,7 +6901,7 @@ func (client *Client) RetrieveKnowledgeBase(request *RetrieveKnowledgeBaseReques
 //
 // Description:
 //
-// 发布工作空间的代码
+// Publishes workspace code.
 //
 // @param request - SaveWorkspaceCodeRequest
 //
@@ -6489,7 +6975,7 @@ func (client *Client) SaveWorkspaceCodeWithOptions(request *SaveWorkspaceCodeReq
 //
 // Description:
 //
-// 发布工作空间的代码
+// Publishes workspace code.
 //
 // @param request - SaveWorkspaceCodeRequest
 //
@@ -6507,7 +6993,7 @@ func (client *Client) SaveWorkspaceCode(request *SaveWorkspaceCodeRequest) (_res
 
 // Summary:
 //
-// Send a user message to a specified session or cancel the session.
+// Sends a user message to a specified session or cancels a session.
 //
 // Description:
 //
@@ -6515,15 +7001,15 @@ func (client *Client) SaveWorkspaceCode(request *SaveWorkspaceCodeRequest) (_res
 //
 // - `agent_id` and `session_id` are required fields.
 //
-// - `message_type` defaults to `primary`. When you need to append information or cancel a session, set it to `additional` or `cancel`.
+// - `message_type` defaults to `primary`. Set it to `additional` or `cancel` when you need to append information or cancel a session.
 //
 // - The `reply_to` field indicates which Agent message this message is responding to. The default value is `0`.
 //
 // - When `message_type` is `additional`, the `question` field is required.
 //
-// - `quoted_message` can be used to quote the content of the user\\"s previous message.
+// - `quoted_message` can be used to quote the content of a previous user message.
 //
-// - Fields such as `data_source`, `dms_user`, `db_metadata`, and `session_config` are all optional, but provide more detailed context information.
+// - The `data_source`, `dms_user`, `db_metadata`, and `session_config` fields are optional but provide more detailed context information.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -6608,6 +7094,10 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 		query["TaskConfig"] = request.TaskConfigShrink
 	}
 
+	if !dara.IsNil(request.UserOssBucket) {
+		query["UserOssBucket"] = request.UserOssBucket
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		query["WorkspaceId"] = request.WorkspaceId
 	}
@@ -6637,7 +7127,7 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 
 // Summary:
 //
-// Send a user message to a specified session or cancel the session.
+// Sends a user message to a specified session or cancels a session.
 //
 // Description:
 //
@@ -6645,15 +7135,15 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 //
 // - `agent_id` and `session_id` are required fields.
 //
-// - `message_type` defaults to `primary`. When you need to append information or cancel a session, set it to `additional` or `cancel`.
+// - `message_type` defaults to `primary`. Set it to `additional` or `cancel` when you need to append information or cancel a session.
 //
 // - The `reply_to` field indicates which Agent message this message is responding to. The default value is `0`.
 //
 // - When `message_type` is `additional`, the `question` field is required.
 //
-// - `quoted_message` can be used to quote the content of the user\\"s previous message.
+// - `quoted_message` can be used to quote the content of a previous user message.
 //
-// - Fields such as `data_source`, `dms_user`, `db_metadata`, and `session_config` are all optional, but provide more detailed context information.
+// - The `data_source`, `dms_user`, `db_metadata`, and `session_config` fields are optional but provide more detailed context information.
 //
 // @param request - SendChatMessageRequest
 //
@@ -6833,6 +7323,170 @@ func (client *Client) SetWorkspaceQuota(request *SetWorkspaceQuotaRequest) (_res
 
 // Summary:
 //
+// Initiates an accuracy self-test task.
+//
+// Description:
+//
+// Initiates an accuracy self-test task.
+//
+// @param request - StartDataAgentAccuracyTestTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartDataAgentAccuracyTestTaskResponse
+func (client *Client) StartDataAgentAccuracyTestTaskWithOptions(request *StartDataAgentAccuracyTestTaskRequest, runtime *dara.RuntimeOptions) (_result *StartDataAgentAccuracyTestTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccuracyTestInsId) {
+		query["AccuracyTestInsId"] = request.AccuracyTestInsId
+	}
+
+	if !dara.IsNil(request.CsvFile) {
+		query["CsvFile"] = request.CsvFile
+	}
+
+	if !dara.IsNil(request.DmsUnit) {
+		query["DmsUnit"] = request.DmsUnit
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartDataAgentAccuracyTestTask"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartDataAgentAccuracyTestTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Initiates an accuracy self-test task.
+//
+// Description:
+//
+// Initiates an accuracy self-test task.
+//
+// @param request - StartDataAgentAccuracyTestTaskRequest
+//
+// @return StartDataAgentAccuracyTestTaskResponse
+func (client *Client) StartDataAgentAccuracyTestTask(request *StartDataAgentAccuracyTestTaskRequest) (_result *StartDataAgentAccuracyTestTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &StartDataAgentAccuracyTestTaskResponse{}
+	_body, _err := client.StartDataAgentAccuracyTestTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops an accuracy self-test task.
+//
+// Description:
+//
+// Stops an accuracy self-test task.
+//
+// @param request - StopDataAgentAccuracyTestTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopDataAgentAccuracyTestTaskResponse
+func (client *Client) StopDataAgentAccuracyTestTaskWithOptions(request *StopDataAgentAccuracyTestTaskRequest, runtime *dara.RuntimeOptions) (_result *StopDataAgentAccuracyTestTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccuracyTestTaskId) {
+		query["AccuracyTestTaskId"] = request.AccuracyTestTaskId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopDataAgentAccuracyTestTask"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopDataAgentAccuracyTestTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops an accuracy self-test task.
+//
+// Description:
+//
+// Stops an accuracy self-test task.
+//
+// @param request - StopDataAgentAccuracyTestTaskRequest
+//
+// @return StopDataAgentAccuracyTestTaskResponse
+func (client *Client) StopDataAgentAccuracyTestTask(request *StopDataAgentAccuracyTestTaskRequest) (_result *StopDataAgentAccuracyTestTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &StopDataAgentAccuracyTestTaskResponse{}
+	_body, _err := client.StopDataAgentAccuracyTestTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the properties of an Airflow instance.
 //
 // @param tmpReq - UpdateAirflowRequest
@@ -6944,6 +7598,124 @@ func (client *Client) UpdateAirflow(request *UpdateAirflowRequest) (_result *Upd
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateAirflowResponse{}
 	_body, _err := client.UpdateAirflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the content of an accuracy test item.
+//
+// Description:
+//
+// Updates the content of an accuracy test item.
+//
+// @param request - UpdateDataAgentAccuracyTestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataAgentAccuracyTestResponse
+func (client *Client) UpdateDataAgentAccuracyTestWithOptions(request *UpdateDataAgentAccuracyTestRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataAgentAccuracyTestResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccuracyTestInsId) {
+		query["AccuracyTestInsId"] = request.AccuracyTestInsId
+	}
+
+	if !dara.IsNil(request.CustomerAgentId) {
+		query["CustomerAgentId"] = request.CustomerAgentId
+	}
+
+	if !dara.IsNil(request.Dataset) {
+		query["Dataset"] = request.Dataset
+	}
+
+	if !dara.IsNil(request.Desc) {
+		query["Desc"] = request.Desc
+	}
+
+	if !dara.IsNil(request.DmsUnit) {
+		query["DmsUnit"] = request.DmsUnit
+	}
+
+	if !dara.IsNil(request.EvaluationPrompt) {
+		query["EvaluationPrompt"] = request.EvaluationPrompt
+	}
+
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.MaxConcurrent) {
+		query["MaxConcurrent"] = request.MaxConcurrent
+	}
+
+	if !dara.IsNil(request.Mode) {
+		query["Mode"] = request.Mode
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NeedDelete) {
+		query["NeedDelete"] = request.NeedDelete
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataAgentAccuracyTest"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataAgentAccuracyTestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the content of an accuracy test item.
+//
+// Description:
+//
+// Updates the content of an accuracy test item.
+//
+// @param request - UpdateDataAgentAccuracyTestRequest
+//
+// @return UpdateDataAgentAccuracyTestResponse
+func (client *Client) UpdateDataAgentAccuracyTest(request *UpdateDataAgentAccuracyTestRequest) (_result *UpdateDataAgentAccuracyTestResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDataAgentAccuracyTestResponse{}
+	_body, _err := client.UpdateDataAgentAccuracyTestWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

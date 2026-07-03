@@ -30,7 +30,7 @@ type DescribeDataAgentSessionResponseBody struct {
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type DescribeDataAgentSessionResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The return value. Valid values:
 	//
-	// - **true**: The operation was successful.
+	// - **true**: Succeeded.
 	//
-	// - **false**: The operation failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type DescribeDataAgentSessionResponseBodyData struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The list of data sources used in the current session.
 	DataSources []*DescribeDataAgentSessionResponseBodyDataDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// Indicates whether the session is saved to favorites in the workspace by the current user.
+	// Indicates whether the session is saved as a favorite in the workspace by the current logged-in user.
 	//
 	// example:
 	//
@@ -153,9 +153,9 @@ type DescribeDataAgentSessionResponseBodyData struct {
 	//
 	// f-8*******01m
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
-	// The recall results from the knowledge base and memory for this session.
+	// The recall results from the knowledge base and memory for the current session.
 	RecallResults []*DescribeDataAgentSessionResponseBodyDataRecallResults `json:"RecallResults,omitempty" xml:"RecallResults,omitempty" type:"Repeated"`
-	// Indicates whether the session is saved to favorites by the current user.
+	// Indicates whether the session is saved as a favorite by the current logged-in user.
 	//
 	// example:
 	//
@@ -390,13 +390,13 @@ type DescribeDataAgentSessionResponseBodyDataArtifacts struct {
 	//
 	// 1778743587
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The globally unique artifact ID. If the report is produced by calling SendChatMessage with MessageType set to REPORT, the artifact ID is the same as the MessageId returned by the SendChatMessage operation.
+	// The globally unique artifact ID. If the report is produced by calling SendChatMessage with MessageType set to REPORT, the artifact ID is the same as the MessageId in the response of the SendChatMessage operation.
 	//
 	// example:
 	//
 	// bab******33e1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The artifact name. This is typically a string concatenated by the system. It is aligned with the name field in the ListFileUpload operation. You can use this field to query the download URL of the artifact file.
+	// The artifact name. This is typically a string concatenated by the system and is aligned with the name field in the ListFileUpload operation. You can use this field to query the download URL of the artifact file.
 	//
 	// example:
 	//
@@ -428,7 +428,7 @@ type DescribeDataAgentSessionResponseBodyDataArtifacts struct {
 	//
 	// PENDING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The artifact type. Valid values: TextReport and WebReport.
+	// The artifact type. Valid values: TextReport, WebReport.
 	//
 	// example:
 	//
@@ -629,7 +629,7 @@ type DescribeDataAgentSessionResponseBodyDataRecallResults struct {
 	//
 	// 0.65
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The type of recalled knowledge.
+	// The type of the recalled knowledge.
 	//
 	// example:
 	//
@@ -685,9 +685,9 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
 	// The stage of the custom agent. Valid values:
 	//
-	// - **debug**: the debugging stage.
+	// - **debug**: test stage.
 	//
-	// - **prod**: the production stage.
+	// - **prod**: production stage.
 	//
 	// example:
 	//
@@ -699,19 +699,19 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	//
 	// True
 	EnableSearch *bool `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
-	// The encryption key for storing artifacts in OSS (including built-in and user-specified OSS). This is typically specified in CreateDataAgentSession.
+	// The encryption key for storing artifacts in OSS (both built-in and user-specified). This is typically specified in CreateDataAgentSession.
 	//
 	// example:
 	//
 	// ay***1Te
 	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	// The encryption type for storing artifacts in OSS (including built-in and user-specified OSS).
+	// The encryption type for storing artifacts in OSS (both built-in and user-specified).
 	//
 	// example:
 	//
 	// null
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	// The list of knowledge base IDs for this session.
+	// The list of knowledge base IDs for the current session.
 	KbUuidList []*string `json:"KbUuidList,omitempty" xml:"KbUuidList,omitempty" type:"Repeated"`
 	// The language. Valid values:
 	//
@@ -727,11 +727,11 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	McpServerIds []*string `json:"McpServerIds,omitempty" xml:"McpServerIds,omitempty" type:"Repeated"`
 	// The mode. Valid values:
 	//
-	// - **ASK_DATA**: the data query mode.
+	//  - **ASK_DATA**: ask data mode.
 	//
-	// - **ANALYSIS**: the analysis mode.
+	//  - **ANALYSIS**: analysis mode.
 	//
-	// - **INSIGHT**: the insight mode.
+	//  - **INSIGHT**: insight mode.
 	//
 	// example:
 	//
@@ -749,7 +749,9 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	//
 	// ""
 	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
-	// The name of the user OSS bucket. Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
+	// The name of the user OSS bucket.
+	//
+	// - Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
 	//
 	// example:
 	//

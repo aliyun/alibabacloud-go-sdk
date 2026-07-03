@@ -24,41 +24,41 @@ type iSaveWorkspaceCodeResponseBody interface {
 }
 
 type SaveWorkspaceCodeResponseBody struct {
-	// 返回数据
+	// The response data.
 	//
 	// example:
 	//
 	// 1
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// 错误码
+	// The error code.
 	//
 	// example:
 	//
 	// InvalidTid
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// http状态码
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 错误信息，在接口失败时，返回具体错误信息，成功时则为空
+	// The error message. This parameter is returned with a specific error message when the request fails, and is empty when the request succeeds.
 	//
 	// example:
 	//
 	// Failed to publish，repo branch empty
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否调用成功。
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**：调用成功。
+	// - **true**: The call was successful.
 	//
-	// - **false**：调用失败。
+	// - **false**: The call failed.
 	//
 	// example:
 	//
