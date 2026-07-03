@@ -20,17 +20,30 @@ type iCreateSubCNInstanceRequest interface {
 }
 
 type CreateSubCNInstanceRequest struct {
+	// The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-hzravgpt8q****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	IsAutoCreate   *bool   `json:"IsAutoCreate,omitempty" xml:"IsAutoCreate,omitempty"`
+	// Specifies whether to automatically calculate compute resource parameters. Valid values:
+	//
+	// - **true**:
+	IsAutoCreate *bool `json:"IsAutoCreate,omitempty" xml:"IsAutoCreate,omitempty"`
+	// The read/write type. Valid values:
+	//
+	// - ReadWrite: row store read/write.
+	//
+	// - ColumnarRead: column store read-only.
+	//
 	// example:
 	//
 	// ReadWrite
 	ReadType *string `json:"ReadType,omitempty" xml:"ReadType,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -453,6 +453,43 @@ func (client *Client) CheckCloudResourceAuthorizedWithContext(ctx context.Contex
 
 // Summary:
 //
+// Performs a service health check.
+//
+// @param request - CheckHealthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckHealthResponse
+func (client *Client) CheckHealthWithContext(ctx context.Context, request *CheckHealthRequest, runtime *dara.RuntimeOptions) (_result *CheckHealthResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckHealth"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckHealthResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks whether SQL audit logs of a specified database instance have been successfully connected to Simple Log Service (SLS).
 //
 // After the call, the system returns the connection status between the SQL audit feature and SLS for the current instance, the project and Logstore configuration information, and whether synchronization is normal.
@@ -1473,6 +1510,106 @@ func (client *Client) CreateMem0WithContext(ctx context.Context, request *Create
 
 // Summary:
 //
+// Creates a Supabase instance.
+//
+// Description:
+//
+// ***
+//
+// @param request - CreatePolardbxSupabaseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolardbxSupabaseInstanceResponse
+func (client *Client) CreatePolardbxSupabaseInstanceWithContext(ctx context.Context, request *CreatePolardbxSupabaseInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreatePolardbxSupabaseInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DashboardPassword) {
+		query["DashboardPassword"] = request.DashboardPassword
+	}
+
+	if !dara.IsNil(request.DbInstanceDescription) {
+		query["DbInstanceDescription"] = request.DbInstanceDescription
+	}
+
+	if !dara.IsNil(request.DbPassword) {
+		query["DbPassword"] = request.DbPassword
+	}
+
+	if !dara.IsNil(request.PayType) {
+		query["PayType"] = request.PayType
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.TenantMode) {
+		query["TenantMode"] = request.TenantMode
+	}
+
+	if !dara.IsNil(request.UsedTime) {
+		query["UsedTime"] = request.UsedTime
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePolardbxSupabaseInstance"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePolardbxSupabaseInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Performs a health check on the replication task during data migration.
 //
 // Description:
@@ -1759,7 +1896,7 @@ func (client *Client) CreateStructureImportTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 创建自定义地址
+// Creates a custom endpoint.
 //
 // Description:
 //
@@ -1809,6 +1946,62 @@ func (client *Client) CreateSubCNInstanceWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSubCNInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables the public endpoint for a Supabase instance.
+//
+// Description:
+//
+// ***
+//
+// @param request - CreateSupabaseNetTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSupabaseNetTypeResponse
+func (client *Client) CreateSupabaseNetTypeWithContext(ctx context.Context, request *CreateSupabaseNetTypeRequest, runtime *dara.RuntimeOptions) (_result *CreateSupabaseNetTypeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionString) {
+		query["ConnectionString"] = request.ConnectionString
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSupabaseNetType"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSupabaseNetTypeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2299,6 +2492,58 @@ func (client *Client) DeleteMem0WithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
+// Deletes a Supabase instance.
+//
+// Description:
+//
+// ***
+//
+// @param request - DeletePolardbxSupabaseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolardbxSupabaseInstanceResponse
+func (client *Client) DeletePolardbxSupabaseInstanceWithContext(ctx context.Context, request *DeletePolardbxSupabaseInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeletePolardbxSupabaseInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePolardbxSupabaseInstance"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePolardbxSupabaseInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除自定义地址
 //
 // Description:
@@ -2345,6 +2590,58 @@ func (client *Client) DeleteSubCNInstanceWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSubCNInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Releases the public endpoint of a Supabase instance.
+//
+// Description:
+//
+// ***
+//
+// @param request - DeleteSupabaseNetTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSupabaseNetTypeResponse
+func (client *Client) DeleteSupabaseNetTypeWithContext(ctx context.Context, request *DeleteSupabaseNetTypeRequest, runtime *dara.RuntimeOptions) (_result *DeleteSupabaseNetTypeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSupabaseNetType"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSupabaseNetTypeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5391,6 +5688,246 @@ func (client *Client) DescribeStructureImportTaskInfoWithContext(ctx context.Con
 
 // Summary:
 //
+// Queries the Supabase API key.
+//
+// Description:
+//
+// - Binary log files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose log record end time is later than the query start time and whose log record start time is earlier than the query end time.
+//
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+//
+// @param request - DescribeSupabaseApiKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSupabaseApiKeyResponse
+func (client *Client) DescribeSupabaseApiKeyWithContext(ctx context.Context, request *DescribeSupabaseApiKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribeSupabaseApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSupabaseApiKey"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSupabaseApiKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a Supabase instance.
+//
+// Description:
+//
+// ***
+//
+// @param request - DescribeSupabaseInstanceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSupabaseInstanceAttributeResponse
+func (client *Client) DescribeSupabaseInstanceAttributeWithContext(ctx context.Context, request *DescribeSupabaseInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeSupabaseInstanceAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSupabaseInstanceAttribute"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSupabaseInstanceAttributeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of Supabase instances.
+//
+// Description:
+//
+// Queries the list of custom endpoints configured by the user for managing and viewing private connection or VPC endpoint service settings.
+//
+// @param request - DescribeSupabaseInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSupabaseInstancesResponse
+func (client *Client) DescribeSupabaseInstancesWithContext(ctx context.Context, request *DescribeSupabaseInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSupabaseInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSupabaseInstances"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSupabaseInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the IP whitelist of a Supabase instance.
+//
+// Description:
+//
+// - Binary log files are retained for 15 days by default.
+//
+// - The returned log list includes all logs whose log record end time is later than the specified query start time and whose log record start time is earlier than the specified query end time.
+//
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+//
+// @param request - DescribeSupabaseIpWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSupabaseIpWhitelistResponse
+func (client *Client) DescribeSupabaseIpWhitelistWithContext(ctx context.Context, request *DescribeSupabaseIpWhitelistRequest, runtime *dara.RuntimeOptions) (_result *DescribeSupabaseIpWhitelistResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSupabaseIpWhitelist"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSupabaseIpWhitelistResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves tag information.
 //
 // @param request - DescribeTagsRequest
@@ -7191,6 +7728,126 @@ func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Modifies the Supabase Dashboard password.
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifySupabaseDashboardPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySupabaseDashboardPasswordResponse
+func (client *Client) ModifySupabaseDashboardPasswordWithContext(ctx context.Context, request *ModifySupabaseDashboardPasswordRequest, runtime *dara.RuntimeOptions) (_result *ModifySupabaseDashboardPasswordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.NewPassword) {
+		query["NewPassword"] = request.NewPassword
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySupabaseDashboardPassword"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySupabaseDashboardPasswordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the IP whitelist of a Supabase instance.
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifySupabaseSecurityIPListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySupabaseSecurityIPListResponse
+func (client *Client) ModifySupabaseSecurityIPListWithContext(ctx context.Context, request *ModifySupabaseSecurityIPListRequest, runtime *dara.RuntimeOptions) (_result *ModifySupabaseSecurityIPListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.ModifyMode) {
+		query["ModifyMode"] = request.ModifyMode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityIPList) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySupabaseSecurityIPList"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySupabaseSecurityIPListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Performs a pre-check and feasibility assessment for a recovery task before you execute SQL flashback recovery.
 //
 // @param request - PreCheckSqlFlashbackTaskRequest
@@ -7741,6 +8398,58 @@ func (client *Client) RestartDataImportTaskWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartDataImportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Restarts a Supabase instance.
+//
+// Description:
+//
+// ***
+//
+// @param request - RestartSupabaseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartSupabaseInstanceResponse
+func (client *Client) RestartSupabaseInstanceWithContext(ctx context.Context, request *RestartSupabaseInstanceRequest, runtime *dara.RuntimeOptions) (_result *RestartSupabaseInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RestartSupabaseInstance"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RestartSupabaseInstanceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
