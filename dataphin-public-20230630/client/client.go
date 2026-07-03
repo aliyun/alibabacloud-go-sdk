@@ -3799,6 +3799,88 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 
 // Summary:
 //
+// Creates an unstructured workflow node using JSON script mode. Online version: v6.2.0.
+//
+// @param tmpReq - CreateWorkFlowByJsonRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkFlowByJsonResponse
+func (client *Client) CreateWorkFlowByJsonWithOptions(tmpReq *CreateWorkFlowByJsonRequest, runtime *dara.RuntimeOptions) (_result *CreateWorkFlowByJsonResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateWorkFlowByJsonShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWorkFlowByJson"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWorkFlowByJsonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an unstructured workflow node using JSON script mode. Online version: v6.2.0.
+//
+// @param request - CreateWorkFlowByJsonRequest
+//
+// @return CreateWorkFlowByJsonResponse
+func (client *Client) CreateWorkFlowByJson(request *CreateWorkFlowByJsonRequest) (_result *CreateWorkFlowByJsonResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateWorkFlowByJsonResponse{}
+	_body, _err := client.CreateWorkFlowByJsonWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an ad hoc query file from the menu tree.
 //
 // @param request - DeleteAdHocFileRequest
