@@ -28,7 +28,7 @@ type iDeleteQosCarRequest interface {
 type DeleteQosCarRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The instance ID of the QoS speed limiting rule.
+	// The instance ID of the QoS bandwidth throttling rule.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DeleteQosCarRequest struct {
 	//
 	// qos-awfxl1adxeqyk****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The ID of the region to which the QoS policy belongs.
+	// The region ID of the quality of service (QoS) policy instance.
 	//
 	// This parameter is required.
 	//

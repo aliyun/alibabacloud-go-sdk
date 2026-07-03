@@ -52,7 +52,7 @@ type iModifyACLRuleRequest interface {
 }
 
 type ModifyACLRuleRequest struct {
-	// The ID of the ACL.
+	// The ID of the ACL instance.
 	//
 	// This parameter is required.
 	//
@@ -60,9 +60,9 @@ type ModifyACLRuleRequest struct {
 	//
 	// acl-xhwhyuo43l0n*******
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the ACL rule.
+	// The ID of the access control rule.
 	//
-	// You can call the [DescribeACLAttribute](https://help.aliyun.com/document_detail/114017.html) operation to query the ID of the ACL rule that is added to the ACL.
+	// Call the [DescribeACLAttribute](https://help.aliyun.com/document_detail/114017.html) operation to query the IDs of access control rules in an ACL instance.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ModifyACLRuleRequest struct {
 	//
 	// acr-u98qztgtgvhb********
 	AcrId *string `json:"AcrId,omitempty" xml:"AcrId,omitempty"`
-	// The description of the ACL rule.
+	// The description of the access control rule.
 	//
 	// The description must be **1*	- to **512*	- characters in length.
 	//
@@ -80,49 +80,51 @@ type ModifyACLRuleRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination CIDR block.
 	//
-	// Specify the value of this parameter in CIDR notation. Example: 192.168.10.0/24.
+	// The destination CIDR block must be in CIDR format. For example: 192.168.10.0/24.
 	//
 	// example:
 	//
 	// 0.0.0.0/0
 	DestCidr *string `json:"DestCidr,omitempty" xml:"DestCidr,omitempty"`
-	// The destination port range. Valid values: **1*	- to **65535*	- and **-1**.
+	// The destination port range. Valid values: **-1*	- or **1*	- to **65535**.
 	//
-	// Examples:
+	// Examples of the destination port range format:
 	//
-	// 	- 1/200: port 1 to port 200.
+	// - 1/200: ports 1 to 200.
 	//
-	// 	- 80/80: port 80.
+	// - 80/80: port 80.
 	//
-	// 	- \\-1/-1: all ports.
+	// - -1/-1: all ports.
 	//
 	// example:
 	//
 	// 80/80
 	DestPortRange *string `json:"DestPortRange,omitempty" xml:"DestPortRange,omitempty"`
-	// The direction of traffic in which the ACL rule is applied. Valid values:
+	// The direction in which the access control rule is applied. Valid values:
 	//
-	// 	- **in**: The ACL rule controls inbound network traffic of the on-premises network that is associated with the SAG instance.
+	// - **in**: inbound. This is the direction of traffic from an external network to the on-premises network where the Smart Access Gateway instance is deployed.
 	//
-	// 	- **out**: The ACL rule controls outbound network traffic of the on-premises network that is associated with the SAG instance.
+	// - **out**: outbound. This is the direction of traffic from the on-premises network where the Smart Access Gateway instance is deployed to an external network.
 	//
 	// example:
 	//
 	// in
-	Direction       *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	DpiGroupIds     []*string `json:"DpiGroupIds,omitempty" xml:"DpiGroupIds,omitempty" type:"Repeated"`
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// A list of application group IDs that the access control rule matches.
+	DpiGroupIds []*string `json:"DpiGroupIds,omitempty" xml:"DpiGroupIds,omitempty" type:"Repeated"`
+	// A list of application IDs that the access control rule matches.
 	DpiSignatureIds []*string `json:"DpiSignatureIds,omitempty" xml:"DpiSignatureIds,omitempty" type:"Repeated"`
-	// The protocol used by the ACL rule.
+	// The protocol used by the access control rule.
 	//
-	// The supported protocols provided in this topic are for reference only. The actual protocols in the SAG console shall prevail. The value of the parameter is not case-sensitive.
+	// For the protocols supported by the access control feature, see the information in the console. The protocol is not case-sensitive.
 	//
 	// example:
 	//
 	// tcp
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The name of the ACL rule.
+	// The name of the access control rule.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, start with a letter or a Chinese character, and can contain digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -130,27 +132,27 @@ type ModifyACLRuleRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The action of the ACL rule. Valid values:
+	// The authorization policy of the access control rule. Valid values:
 	//
-	// 	- **accept**: allows network traffic.
+	// - **accept**: allows access.
 	//
-	// 	- **drop**: blocks network traffic.
+	// - **drop**: denies access.
 	//
 	// example:
 	//
 	// accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The priority of the ACL rule.
+	// The priority of the access control rule.
 	//
-	// A smaller value indicates a higher priority. If multiple rules have the same priority, the rule that is applied earlier takes effect.
+	// A smaller value indicates a higher priority. If rules have the same priority, the one that is first delivered to the Smart Access Gateway device takes precedence.
 	//
-	// Valid values: **1 to 100**. Default value: **1**.
+	// Valid values: 1 to **100**. Default value: **1**.
 	//
 	// example:
 	//
 	// 2
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the region where the ACL is deployed.
+	// The region ID of the access control list (ACL) instance.
 	//
 	// This parameter is required.
 	//
@@ -162,31 +164,31 @@ type ModifyACLRuleRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The source CIDR block.
 	//
-	// Specify the value of this parameter in CIDR notation. Example: 192.168.1.0/24.
+	// The source CIDR block must be in CIDR format. For example: 192.168.1.0/24.
 	//
 	// example:
 	//
 	// 0.0.0.0/0
 	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
-	// The source port range. Valid values: **1*	- to **65535*	- and **-1**.
+	// The source port range. Valid values: **-1*	- or **1*	- to **65535**.
 	//
-	// Examples:
+	// Examples of the source port range format:
 	//
-	// 	- 1/200: port 1 to port 200.
+	// - 1/200: ports 1 to 200.
 	//
-	// 	- 80/80: port 80.
+	// - 80/80: port 80.
 	//
-	// 	- \\-1/-1: all ports.
+	// - -1/-1: all ports.
 	//
 	// example:
 	//
 	// 80/80
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	// The type of the ACL rule: Valid values:
+	// The type of the access control rule. Valid values:
 	//
-	// 	- **LAN**: The ACL rule controls traffic of private IP addresses.
+	// - **LAN**: (Default) private network. This value indicates that the access control rule applies to traffic from private IP addresses.
 	//
-	// 	- **WAN**: The ACL rule controls traffic of public IP addresses.
+	// - **WAN**: public network. This value indicates that the access control rule applies to traffic from public IP addresses.
 	//
 	// example:
 	//

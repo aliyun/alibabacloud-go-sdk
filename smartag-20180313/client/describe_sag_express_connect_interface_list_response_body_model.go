@@ -18,15 +18,15 @@ type iDescribeSagExpressConnectInterfaceListResponseBody interface {
 }
 
 type DescribeSagExpressConnectInterfaceListResponseBody struct {
-	// The information about the port.
+	// The list of interface information.
 	Interfaces []*DescribeSagExpressConnectInterfaceListResponseBodyInterfaces `json:"Interfaces,omitempty" xml:"Interfaces,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2718F7A6-EA67-41EF-BA39-E9F4A0F5D306
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of the query task.
+	// The status of the query task.
 	TaskStates []*DescribeSagExpressConnectInterfaceListResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
 }
 
@@ -94,7 +94,7 @@ type DescribeSagExpressConnectInterfaceListResponseBodyInterfaces struct {
 	//
 	// 192.XX.XX.1
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The subnet mask of the IP address of the port.
+	// The subnet mask.
 	//
 	// example:
 	//
@@ -154,37 +154,37 @@ type DescribeSagExpressConnectInterfaceListResponseBodyTaskStates struct {
 	//
 	// 1586835287000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error code returned. A value of 200 indicates that the query task is successful.
+	// The error code. 200 indicates that the query task succeeded.
 	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message. A value of Successful indicates that the query task is successful.
+	// The error message. "Successful" indicates that the query task succeeded.
 	//
 	// example:
 	//
 	// Successful
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The state of the asynchronous query task. Valid values:
+	// The status of the asynchronous task. Valid values:
 	//
-	// 	- **Initialized**: The query task is initialized.
+	// - **Initialized**: The query task is initialized.
 	//
-	// 	- **Offline**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. After the SAG device is connected to Alibaba Cloud, Alibaba Cloud assigns the query task to the SAG device.
+	// - **Offline**: The Smart Access Gateway device is offline and the query task is not delivered. The task will be delivered after the device comes online.
 	//
-	// 	- **Succeed**: Alibaba Cloud has assigned the query task to the SAG device.
+	// - **Succeed**: The query task is delivered.
 	//
-	// 	- **Processing**: Alibaba Cloud is assigning the query task to the SAG device.
+	// - **Processing**: The query task is being delivered.
 	//
-	// 	- **VersionNotSupport**: The query task is not supported by the current version of the SAG device.
+	// - **VersionNotSupport**: The current version of the Smart Access Gateway device does not support this operation.
 	//
-	// 	- **BuildRequestError**: The query task is not supported by the controller of the SAG device.
+	// - **BuildRequestError**: The China Cloud Management Platform does not support this operation.
 	//
-	// 	- **HardwareError**: Alibaba Cloud failed to assign the query task to the SAG device because the SAG device is faulty.
+	// - **HardwareError**: The query task failed to be delivered due to a device error.
 	//
-	// 	- **TaskNotExist**: The query task does not exist.
+	// - **TaskNotExist**: The query task does not exist.
 	//
-	// 	- **OfflineNotConfiged**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. Alibaba Cloud does not assign the query task to the SAG device even after the SAG device is connected to Alibaba Cloud.
+	// - **OfflineNotConfiged**: The Smart Access Gateway device is offline and the query task is not delivered. The task will not be delivered even after the device comes online.
 	//
 	// example:
 	//

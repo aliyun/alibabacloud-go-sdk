@@ -96,7 +96,7 @@ type CreateSmartAccessGatewayRequest struct {
 	//
 	// example:
 	//
-	// Remarks
+	// Message
 	BuyerMessage *string `json:"BuyerMessage,omitempty" xml:"BuyerMessage,omitempty"`
 	// The edition of SAG when you create an SAG vCPE instance.
 	//
@@ -192,7 +192,7 @@ type CreateSmartAccessGatewayRequest struct {
 	//
 	// example:
 	//
-	// No.XX
+	// No. XX
 	ReceiverAddress *string `json:"ReceiverAddress,omitempty" xml:"ReceiverAddress,omitempty"`
 	// The city of the recipient address.
 	//
@@ -240,7 +240,7 @@ type CreateSmartAccessGatewayRequest struct {
 	//
 	// example:
 	//
-	// Alice
+	// John Doe
 	ReceiverName *string `json:"ReceiverName,omitempty" xml:"ReceiverName,omitempty"`
 	// The landline phone number of the recipient.
 	//
@@ -262,7 +262,7 @@ type CreateSmartAccessGatewayRequest struct {
 	//
 	// example:
 	//
-	// Zhuan Tang
+	// Zhuantang
 	ReceiverTown *string `json:"ReceiverTown,omitempty" xml:"ReceiverTown,omitempty"`
 	// The postcode of the recipient address.
 	//

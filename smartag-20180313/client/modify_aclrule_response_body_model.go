@@ -44,19 +44,19 @@ type iModifyACLRuleResponseBody interface {
 }
 
 type ModifyACLRuleResponseBody struct {
-	// The ID of ACL.
+	// The ID of the ACL instance.
 	//
 	// example:
 	//
 	// acl-jdc7tir4fkplwr****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the ACL rule.
+	// The ID of the access control rule.
 	//
 	// example:
 	//
 	// acr-r8hezn2pi39s5a****
 	AcrId *string `json:"AcrId,omitempty" xml:"AcrId,omitempty"`
-	// The description of the ACL rule.
+	// The description of the access control rule.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ModifyACLRuleResponseBody struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination CIDR block.
 	//
-	// The value of this parameter is in CIDR notation. Example: 192.168.10.0/24.
+	// The destination CIDR block is in CIDR format. For example: 192.168.10.0/24.
 	//
 	// example:
 	//
@@ -76,11 +76,11 @@ type ModifyACLRuleResponseBody struct {
 	//
 	// -1/-1
 	DestPortRange *string `json:"DestPortRange,omitempty" xml:"DestPortRange,omitempty"`
-	// The direction of traffic in which the ACL rule is applied. Valid values:
+	// The direction in which the access control rule is applied. Valid values:
 	//
-	// 	- **in**: The ACL rule controls inbound network traffic of the on-premises network that is associated with the SAG instance.
+	// - **in**: inbound. This is the direction of traffic from an external network to the on-premises network where the Smart Access Gateway instance is deployed.
 	//
-	// 	- **out**: The ACL rule controls outbound network traffic of the on-premises network that is associated with the SAG instance.
+	// - **out**: outbound. This is the direction of traffic from the on-premises network where the Smart Access Gateway instance is deployed to an external network.
 	//
 	// example:
 	//
@@ -88,45 +88,45 @@ type ModifyACLRuleResponseBody struct {
 	Direction       *string                                   `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	DpiGroupIds     *ModifyACLRuleResponseBodyDpiGroupIds     `json:"DpiGroupIds,omitempty" xml:"DpiGroupIds,omitempty" type:"Struct"`
 	DpiSignatureIds *ModifyACLRuleResponseBodyDpiSignatureIds `json:"DpiSignatureIds,omitempty" xml:"DpiSignatureIds,omitempty" type:"Struct"`
-	// The timestamp when the ACL rule was created.
+	// The timestamp that indicates when the access control rule was created.
 	//
-	// The timestamp is of the Long data type. If multiple ACL rules have the same priority, the rule with the earliest timestamp takes effect.
+	// The value is a UNIX timestamp. If rules have the same priority, the one with the smaller timestamp takes precedence.
 	//
 	// example:
 	//
 	// 1553777700000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The protocol used by the ACL rule.
+	// The protocol used by the access control rule.
 	//
 	// example:
 	//
 	// ALL
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The name of the ACL rule.
+	// The name of the access control rule.
 	//
 	// example:
 	//
 	// doctest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The action of the ACL rule.
+	// The authorization policy of the access control rule.
 	//
-	// 	- **accept**: allows network traffic.
+	// - **accept**: allows access.
 	//
-	// 	- **drop**: blocks network traffic.
+	// - **drop**: denies access.
 	//
 	// example:
 	//
 	// accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The priority of the ACL rule.
+	// The priority of the access control rule.
 	//
-	// A smaller value indicates a higher priority. If multiple rules have the same priority, the rule that is applied earlier takes effect.
+	// A smaller value indicates a higher priority. If rules have the same priority, the one that is first delivered to the Smart Access Gateway device takes precedence.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type ModifyACLRuleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The source CIDR block.
 	//
-	// The value of this parameter is in CIDR notation. Example: 192.168.1.0/24.
+	// The source CIDR block is in CIDR format. For example: 192.168.1.0/24.
 	//
 	// example:
 	//

@@ -18,11 +18,15 @@ type iViewSmartAccessGatewayPortRouteProtocolResponseBody interface {
 }
 
 type ViewSmartAccessGatewayPortRouteProtocolResponseBody struct {
+	// The list of port information.
 	Ports []*ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 877F5673-FFD1-5168-99D1-1E8009FBFF7B
-	RequestId  *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the query task.
 	TaskStates []*ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
 }
 
@@ -84,27 +88,54 @@ func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBody) Validate() error {
 }
 
 type ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts struct {
+	// The IP address of the neighbor.
+	//
+	// example:
+	//
+	// 192.XX.XX.2
 	NeighborIp *string `json:"NeighborIp,omitempty" xml:"NeighborIp,omitempty"`
+	// The name of the port.
+	//
 	// example:
 	//
 	// 5
 	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
+	// The autonomous system (AS) number of the BGP peer.
+	//
 	// example:
 	//
 	// 65535
 	RemoteAs *string `json:"RemoteAs,omitempty" xml:"RemoteAs,omitempty"`
+	// The IP address of the peer.
+	//
 	// example:
 	//
 	// 192.XX.XX.1
 	RemoteIp *string `json:"RemoteIp,omitempty" xml:"RemoteIp,omitempty"`
+	// The routable protocol of the port. Valid values:
+	//
+	// - **STATIC**: static routing protocol.
+	//
+	// - **OSPF**: Open Shortest Path First (OSPF) dynamic routing protocol.
+	//
+	// - **BGP**: Border Gateway Protocol (BGP) dynamic routing protocol.
+	//
 	// example:
 	//
 	// BGP
 	RouteProtocol *string `json:"RouteProtocol,omitempty" xml:"RouteProtocol,omitempty"`
+	// The status of the port. Valid values:
+	//
+	// - **UP**: The port is enabled.
+	//
+	// - **DOWN**: The port is disabled.
+	//
 	// example:
 	//
 	// UP
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The VLAN ID.
+	//
 	// example:
 	//
 	// 2
@@ -187,18 +218,46 @@ func (s *ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts) Validate() er
 }
 
 type ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates struct {
+	// The time when the query task was created.
+	//
+	// This is a UNIX timestamp that represents the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
+	//
 	// example:
 	//
 	// 1586765938000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error code. \\`200\\` indicates that the query task is successful.
+	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message. \\`Successful\\` indicates that the query task is successful.
+	//
 	// example:
 	//
 	// Successful
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The status of the asynchronous task:
+	//
+	// - **Initialized**: The query task is being initialized.
+	//
+	// - **Offline**: The SAG device is offline and the query task is not sent. The task will be sent after the device goes online.
+	//
+	// - **Succeed**: The query task is sent.
+	//
+	// - **Processing**: The query task is being sent.
+	//
+	// - **VersionNotSupport**: The current version of the SAG device is not supported.
+	//
+	// - **BuildRequestError**: The management plane does not support the operation.
+	//
+	// - **HardwareError**: The query task failed to be sent due to a device error.
+	//
+	// - **TaskNotExist**: The query task does not exist.
+	//
+	// - **OfflineNotConfiged**: The SAG device is offline and the query task is not sent. The task will not be sent even after the device goes online.
+	//
 	// example:
 	//
 	// Succeed

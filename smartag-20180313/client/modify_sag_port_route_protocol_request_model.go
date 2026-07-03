@@ -56,7 +56,7 @@ type ModifySagPortRouteProtocolRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The BGP autonomous system number (ASN) of the peer device.
 	//
-	// >  You must set this parameter when you enable BGP.
+	// > You must set this parameter when you enable BGP.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ModifySagPortRouteProtocolRequest struct {
 	RemoteAs *string `json:"RemoteAs,omitempty" xml:"RemoteAs,omitempty"`
 	// The IP address of the peer device.
 	//
-	// >  You must set this parameter when you enable BGP.
+	// > You must set this parameter when you enable BGP.
 	//
 	// example:
 	//
@@ -74,11 +74,11 @@ type ModifySagPortRouteProtocolRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The routing protocol. Valid values:
 	//
-	// 	- **STATIC**: uses a static routing protocol.
+	// - **STATIC**: uses a static routing protocol.
 	//
-	// 	- **OSPF**: uses the Open Shortest Path First protocol (OSPF).
+	// - **OSPF**: uses the Open Shortest Path First protocol (OSPF).
 	//
-	// 	- **BGP**: uses the Border Gateway Protocol (BGP).
+	// - **BGP**: uses the Border Gateway Protocol (BGP).
 	//
 	// This parameter is required.
 	//

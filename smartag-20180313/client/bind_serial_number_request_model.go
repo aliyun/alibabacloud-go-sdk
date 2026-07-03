@@ -28,7 +28,7 @@ type iBindSerialNumberRequest interface {
 type BindSerialNumberRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the SAG instance.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type BindSerialNumberRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The serial number of the SAG device.
+	// The serial number of the Smart Access Gateway device.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type BindSerialNumberRequest struct {
 	//
 	// sage62x021922****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// The SAG instance ID.
+	// The instance ID of the Smart Access Gateway.
 	//
 	// This parameter is required.
 	//

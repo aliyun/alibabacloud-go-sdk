@@ -14,7 +14,7 @@ type iDeleteEnterpriseCodeResponseBody interface {
 }
 
 type DeleteEnterpriseCodeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

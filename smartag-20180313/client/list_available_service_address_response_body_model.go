@@ -33,7 +33,7 @@ type ListAvailableServiceAddressResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -105,7 +105,7 @@ type ListAvailableServiceAddressResponseBodyData struct {
 	//
 	// 192.168.1.1
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The type of service address.
+	// The type of the service address.
 	//
 	// example:
 	//

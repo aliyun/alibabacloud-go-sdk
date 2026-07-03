@@ -28,7 +28,7 @@ type iCreateCloudConnectNetworkResponseBody interface {
 }
 
 type CreateCloudConnectNetworkResponseBody struct {
-	// The ID of the CCN instance.
+	// The instance ID of the Cloud Connect Network (CCN).
 	//
 	// example:
 	//
@@ -40,41 +40,41 @@ type CreateCloudConnectNetworkResponseBody struct {
 	//
 	// 172.XX.XX.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The description about the CCN instance.
+	// The description of the Cloud Connect Network (CCN) instance.
 	//
 	// example:
 	//
 	// ccndesc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the CCN instance.
+	// The name of the Cloud Connect Network (CCN) instance.
 	//
 	// example:
 	//
 	// ccnname
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C48E8EB2-37A4-495B-A95C-29CA1FD26C82
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the CCN instance belongs.
+	// The ID of the resource group to which the Cloud Connect Network (CCN) instance belongs.
 	//
 	// example:
 	//
 	// rg-acfm2iu4fnc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The private CIDR block used for SNAT.
+	// The SNAT private CIDR block.
 	//
 	// example:
 	//
 	// 172.XX.XX.0/25
 	SnatCidrBlock *string `json:"SnatCidrBlock,omitempty" xml:"SnatCidrBlock,omitempty"`
-	// The status of the CCN instance. Valid values:
+	// The instance status of the Cloud Connect Network (CCN). Valid values:
 	//
-	// 	- **Active**: indicates the CNN instance running as expected.
+	// - **Active**: Normal.
 	//
-	// 	- **Pending**: indicates the CCN instance is to be created.
+	// - **Pending**: Pending creation.
 	//
 	// example:
 	//

@@ -24,11 +24,11 @@ type iListDpiConfigErrorRequest interface {
 }
 
 type ListDpiConfigErrorRequest struct {
-	// The type of the instance for which the DPI feature is configured. Valid values:
+	// The type of instance for which the DPI feature is configured:
 	//
-	// 	- **acl**
+	// - **acl**: a Resource Access Management instance.
 	//
-	// 	- **qos**
+	// - **qos**: a QoS policy instance.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ListDpiConfigErrorRequest struct {
 	//
 	// qos
 	DpiConfigType *string `json:"DpiConfigType,omitempty" xml:"DpiConfigType,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The maximum number of configuration errors to return on each page.
 	//
 	// Valid values: **1*	- to **100**.
 	//
@@ -46,15 +46,13 @@ type ListDpiConfigErrorRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to query the next page.
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID of the SAG instance.
-	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+	// The ID of the region where the Smart Access Gateway instance is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the regions and their IDs that Smart Access Gateway supports.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +66,7 @@ type ListDpiConfigErrorRequest struct {
 	//
 	// qos-1strcafl4wghpb****
 	RuleInstanceId *string `json:"RuleInstanceId,omitempty" xml:"RuleInstanceId,omitempty"`
-	// The ID of the SAG instance.
+	// The ID of the Smart Access Gateway instance.
 	//
 	// example:
 	//

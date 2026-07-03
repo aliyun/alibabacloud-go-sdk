@@ -16,7 +16,7 @@ type iDescribeUserOnlineClientStatisticsResponseBody interface {
 }
 
 type DescribeUserOnlineClientStatisticsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

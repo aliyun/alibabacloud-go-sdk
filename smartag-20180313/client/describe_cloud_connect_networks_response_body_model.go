@@ -23,25 +23,25 @@ type iDescribeCloudConnectNetworksResponseBody interface {
 
 type DescribeCloudConnectNetworksResponseBody struct {
 	CloudConnectNetworks *DescribeCloudConnectNetworksResponseBodyCloudConnectNetworks `json:"CloudConnectNetworks,omitempty" xml:"CloudConnectNetworks,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3F2A0B80-D6D1-4764-8D77-38067DBBA345
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of the CCN instances.
+	// The total number of entries that match the query.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iDescribeFlowLogSagsRequest interface {
 }
 
 type DescribeFlowLogSagsRequest struct {
-	// The instance ID of the flow log.
+	// The flow log instance ID.
 	//
 	// example:
 	//
@@ -36,19 +36,19 @@ type DescribeFlowLogSagsRequest struct {
 	FlowLogId    *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the SAG instance list. Minimum value: **1**. Default value: **1**
+	// The page number of the query list. Minimum value: **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in the case of a paged query result. Maximum value: **50**. Default value: **10**
+	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region to which the flow log belongs.
+	// The region ID of the flow log.
 	//
 	// This parameter is required.
 	//

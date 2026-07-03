@@ -66,9 +66,9 @@ type ListSmartAGByAccessPointRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The status of the SAG instance. Valid values:
 	//
-	// 	- **Active**: The SAG device is connected to Alibaba Cloud.
+	// - **Active**: The SAG device is connected to Alibaba Cloud.
 	//
-	// 	- **offline**: The SAG device is disconnected from Alibaba Cloud.
+	// - **offline**: The SAG device is disconnected from Alibaba Cloud.
 	//
 	// example:
 	//

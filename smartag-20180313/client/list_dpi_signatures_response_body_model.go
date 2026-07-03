@@ -20,21 +20,21 @@ type iListDpiSignaturesResponseBody interface {
 }
 
 type ListDpiSignaturesResponseBody struct {
-	// The information about the application.
+	// A list of applications.
 	DpiSignature []*ListDpiSignaturesResponseBodyDpiSignature `json:"DpiSignature,omitempty" xml:"DpiSignature,omitempty" type:"Repeated"`
-	// The token returned for the next query.
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// FFrMV38kR4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 63081123-B7C0-4BC9-B9E5-59E77A616EC9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned on the current page.
+	// The total number of applications returned.
 	//
 	// example:
 	//
@@ -106,25 +106,25 @@ type ListDpiSignaturesResponseBodyDpiSignature struct {
 	//
 	// 20
 	DpiGroupId *string `json:"DpiGroupId,omitempty" xml:"DpiGroupId,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// 235
 	DpiSignatureId *string `json:"DpiSignatureId,omitempty" xml:"DpiSignatureId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// EdgeCast
 	DpiSignatureName *string `json:"DpiSignatureName,omitempty" xml:"DpiSignatureName,omitempty"`
-	// The earliest version of engine that supports the application.
+	// The minimum version of the deep packet inspection (DPI) engine that supports the application.
 	//
 	// example:
 	//
 	// 0-0.0.1
 	MinEngineVersion *string `json:"MinEngineVersion,omitempty" xml:"MinEngineVersion,omitempty"`
-	// The earliest version of signature database that supports the application.
+	// The minimum version of the signature library that supports the application.
 	//
 	// example:
 	//

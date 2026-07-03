@@ -14,7 +14,7 @@ type iAssociateFlowLogResponseBody interface {
 }
 
 type AssociateFlowLogResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

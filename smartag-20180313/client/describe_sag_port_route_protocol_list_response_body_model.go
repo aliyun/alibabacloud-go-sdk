@@ -18,15 +18,15 @@ type iDescribeSagPortRouteProtocolListResponseBody interface {
 }
 
 type DescribeSagPortRouteProtocolListResponseBody struct {
-	// An array that consists of the details of the port.
+	// The list of port information.
 	Ports []*DescribeSagPortRouteProtocolListResponseBodyPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CE6642D4-21EB-4168-9BF9-F217953F9892
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details about the status of the query task.
+	// The query task status.
 	TaskStates []*DescribeSagPortRouteProtocolListResponseBodyTaskStates `json:"TaskStates,omitempty" xml:"TaskStates,omitempty" type:"Repeated"`
 }
 
@@ -88,47 +88,47 @@ func (s *DescribeSagPortRouteProtocolListResponseBody) Validate() error {
 }
 
 type DescribeSagPortRouteProtocolListResponseBodyPorts struct {
-	// The IP address of the neighbor device.
+	// The neighbor IP address.
 	//
 	// example:
 	//
 	// 192.XX.XX.1
 	NeighborIp *string `json:"NeighborIp,omitempty" xml:"NeighborIp,omitempty"`
-	// The name of the port.
+	// The port name.
 	//
 	// example:
 	//
 	// 3
 	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
-	// The number of the autonomous system (AS) to which the SAG device belongs.
+	// The autonomous system number of the peer BGP network.
 	//
 	// example:
 	//
 	// 12345
 	RemoteAs *string `json:"RemoteAs,omitempty" xml:"RemoteAs,omitempty"`
-	// The IP address of the peer device.
+	// The IP address of the peer.
 	//
 	// example:
 	//
 	// 192.XX.XX.1
 	RemoteIp *string `json:"RemoteIp,omitempty" xml:"RemoteIp,omitempty"`
-	// The routing protocol. Valid values:
+	// The routable protocol of the port. Valid values:
 	//
-	// 	- **STATIC**: static routing protocol
+	// - **STATIC**: static routable protocol.
 	//
-	// 	- **OSPF**: Open Shortest Path First protocol (OSPF)
+	// - **OSPF**: OSPF dynamic routable protocol.
 	//
-	// 	- **BGP**: Border Gateway Protocol (BGP)
+	// - **BGP**: BGP dynamic routable protocol.
 	//
 	// example:
 	//
 	// BGP
 	RouteProtocol *string `json:"RouteProtocol,omitempty" xml:"RouteProtocol,omitempty"`
-	// The status of the port. Valid values:
+	// The port status. Valid values:
 	//
-	// 	- **UP**: The port was enabled.
+	// - **UP**: The port is enabled.
 	//
-	// 	- **DOWN**: The port was disabled.
+	// - **DOWN**: The port is disabled.
 	//
 	// example:
 	//
@@ -224,37 +224,37 @@ type DescribeSagPortRouteProtocolListResponseBodyTaskStates struct {
 	//
 	// 1586843621000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error code returned. A value of 200 indicates that the query task is successful.
+	// The error code. A value of 200 indicates that the query task succeeded.
 	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned. A value of Successful indicates that the query task is successful.
+	// The error message. A value of Successful indicates that the query task succeeded.
 	//
 	// example:
 	//
 	// Successful
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The status of the query task. Valid values:
+	// The status of the asynchronous task. Valid values:
 	//
-	// 	- **Initialized**: The query task is initialized.
+	// - **Initialized**: The query task is initialized.
 	//
-	// 	- **Offline**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. After the SAG device is connected to Alibaba Cloud, Alibaba Cloud assigns the query task to the SAG device.
+	// - **Offline**: The Smart Access Gateway device is offline and the query task has not been delivered. The task will be delivered after the device comes online.
 	//
-	// 	- **Succeed**: Alibaba Cloud has assigned the query task to the SAG device.
+	// - **Succeed**: The query task is delivered.
 	//
-	// 	- **Processing**: Alibaba Cloud is assigning the query task to the SAG device.
+	// - **Processing**: The query task is being delivered.
 	//
-	// 	- **VersionNotSupport**: The query task is not supported by the current version of the SAG device.
+	// - **VersionNotSupport**: The current version of the Smart Access Gateway device does not support this operation.
 	//
-	// 	- **BuildRequestError**: The query task is not supported by the controller of the SAG device.
+	// - **BuildRequestError**: The China Cloud Management Platform does not support this operation.
 	//
-	// 	- **HardwareError**: Alibaba Cloud failed to assign the query task to the SAG device because the SAG device is faulty.
+	// - **HardwareError**: The query task failed to be delivered due to a device error.
 	//
-	// 	- **TaskNotExist**: The query task does not exist.
+	// - **TaskNotExist**: The query task does not exist.
 	//
-	// 	- **OfflineNotConfiged**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. Alibaba Cloud does not assign the query task to the SAG device even after the SAG device is connected to Alibaba Cloud.
+	// - **OfflineNotConfiged**: The Smart Access Gateway device is offline and the query task has not been delivered. The task will not be delivered even after the device comes online.
 	//
 	// example:
 	//

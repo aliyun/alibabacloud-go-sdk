@@ -18,19 +18,19 @@ type iCreateQosResponseBody interface {
 }
 
 type CreateQosResponseBody struct {
-	// The ID of the QoS policy.
+	// The instance ID of the QoS policy.
 	//
 	// example:
 	//
 	// rg-acfm2iu4fnc****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// AACF5140-783D-48F0-9E4F-E59D716F7D08
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the QoS policy belongs.
+	// The ID of the resource group to which the QoS policy instance belongs.
 	//
 	// example:
 	//

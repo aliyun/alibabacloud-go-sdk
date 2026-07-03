@@ -20,21 +20,21 @@ type iListDpiGroupsResponseBody interface {
 }
 
 type ListDpiGroupsResponseBody struct {
-	// The information about the application group.
+	// The list of application groups.
 	DpiGroup []*ListDpiGroupsResponseBodyDpiGroup `json:"DpiGroup,omitempty" xml:"DpiGroup,omitempty" type:"Repeated"`
-	// The token returned for the next query.
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// FFPSpX59Ebw****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EC184A86-3C93-49D6-BB34-6C193E14D37F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of application groups returned.
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type ListDpiGroupsResponseBodyDpiGroup struct {
 	//
 	// P2P
 	DpiGroupName *string `json:"DpiGroupName,omitempty" xml:"DpiGroupName,omitempty"`
-	// The earliest version of engine that supports the application group.
+	// The minimum version of the deep packet inspection (DPI) engine that supports the application group.
 	//
 	// example:
 	//
 	// 0-0.0.1
 	MinEngineVersion *string `json:"MinEngineVersion,omitempty" xml:"MinEngineVersion,omitempty"`
-	// The earliest version of signature database that supports the application group.
+	// The minimum version of the signature database that supports the application group.
 	//
 	// example:
 	//

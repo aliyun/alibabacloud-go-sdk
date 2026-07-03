@@ -33,7 +33,7 @@ type GetAdvancedMonitorStateResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -99,11 +99,11 @@ func (s *GetAdvancedMonitorStateResponseBody) Validate() error {
 }
 
 type GetAdvancedMonitorStateResponseBodyData struct {
-	// Indicates whether the DPI feature is enabled. Valid values:
+	// Indicates whether the advanced monitoring feature is enabled. Valid values:
 	//
-	// 	- **true**: enabled
+	// - **true**: The feature is enabled.
 	//
-	// 	- **false**: disabled
+	// - **false**: The feature is disabled.
 	//
 	// example:
 	//

@@ -34,9 +34,9 @@ type iDescribeQosPoliciesRequest interface {
 }
 
 type DescribeQosPoliciesRequest struct {
-	// The description of the 5-tuple.
+	// The description of the quintuple rule instance in the QoS policy.
 	//
-	// The description must be 1 to 512 characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The description must be 1 to 512 characters in length, start with a letter or a Chinese character, and can contain digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -44,31 +44,31 @@ type DescribeQosPoliciesRequest struct {
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of quintuple rules to return on each page.
 	//
-	// Default value: **10**. A maximum of **50*	- entries can be returned on each page.
+	// The default value is **10**. The maximum value is **50**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The priority of the traffic throttling rule that is applied to the 5-tuple.
+	// The priority of the throttling rule to which the quintuple rule in the QoS policy belongs.
 	//
-	// Valid values: **1 to 3**. A smaller value indicates a higher priority.
+	// The priority range is 1 to **3**. A smaller value indicates a higher priority.
 	//
-	// >  If you have submitted a ticket and created a QoS policy with the priority value 4 by calling the [CreateQosPolicy](https://help.aliyun.com/document_detail/131575.html) operation, you can set the value to 4.
+	// > If you have submitted a ticket and created a priority-4 QoS policy by calling the [CreateQosPolicy](https://help.aliyun.com/document_detail/131575.html) operation, you can use this operation to query the configurations of quintuple rules for the priority-4 QoS policy.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the QoS policy.
+	// The ID of the QoS policy instance.
 	//
 	// This parameter is required.
 	//
@@ -76,13 +76,13 @@ type DescribeQosPoliciesRequest struct {
 	//
 	// qos-xitd8690ucu8ro****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The ID of the 5-tuple.
+	// The ID of the quintuple rule instance in the QoS policy.
 	//
 	// example:
 	//
 	// qospy-427m9fo6wkh****
 	QosPolicyId *string `json:"QosPolicyId,omitempty" xml:"QosPolicyId,omitempty"`
-	// The ID of the region to which the QoS policy belongs.
+	// The ID of the region where the QoS policy instance resides.
 	//
 	// This parameter is required.
 	//

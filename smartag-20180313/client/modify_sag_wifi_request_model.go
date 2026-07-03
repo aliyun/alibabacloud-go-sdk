@@ -46,11 +46,11 @@ type iModifySagWifiRequest interface {
 type ModifySagWifiRequest struct {
 	// The authentication type. Valid values:
 	//
-	// 	- **NONE**
+	// - **NONE**
 	//
-	// 	- **WPA-PSK**
+	// - **WPA-PSK**
 	//
-	// 	- **WPA2-PSK**
+	// - **WPA2-PSK**
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type ModifySagWifiRequest struct {
 	AuthenticationType *string `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty"`
 	// The bandwidth of the channel. Valid values:
 	//
-	// 	- **Automatic**
+	// - **Automatic**
 	//
-	// 	- **20 MHz**
+	// - **20 MHz**
 	//
-	// 	- **40 MHz**
+	// - **40 MHz**
 	//
 	// example:
 	//
-	// 20 MHz
+	// Automatic
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The Wi-Fi channel.
 	//
@@ -78,11 +78,11 @@ type ModifySagWifiRequest struct {
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// The encryption algorithm. Valid values:
 	//
-	// 	- **AUTO**: automatically selects the encryption algorithm.
+	// - **AUTO**: automatically selects the encryption algorithm.
 	//
-	// 	- **TKIP**: uses the Temporal Key Integrity Protocol (TKIP).
+	// - **TKIP**: uses the Temporal Key Integrity Protocol (TKIP).
 	//
-	// 	- **AES**: uses the Advanced Encryption Standard authorized by Wi-Fi®.
+	// - **AES**: uses the Advanced Encryption Standard authorized by Wi-Fi®.
 	//
 	// example:
 	//
@@ -90,9 +90,9 @@ type ModifySagWifiRequest struct {
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
 	// Specifies whether wireless security is enabled. Valid values:
 	//
-	// 	- **true**: enables wireless security.
+	// - **true**: enables wireless security.
 	//
-	// 	- **False**: disables wireless security.
+	// - **False**: disables wireless security.
 	//
 	// example:
 	//
@@ -100,11 +100,11 @@ type ModifySagWifiRequest struct {
 	IsAuth *string `json:"IsAuth,omitempty" xml:"IsAuth,omitempty"`
 	// Specifies whether broadcast over Wi-Fi is enabled. Valid values:
 	//
-	// 	- **true**: enables broadcast.
+	// - **true**: enables broadcast.
 	//
-	// 	- **False**: disables broadcast.
+	// - **False**: disables broadcast.
 	//
-	// >  Only after you enable broadcast, terminals that support wireless connections can search the Wi-Fi network by its SSID and receive Wi-Fi signals.
+	// > Only after you enable broadcast, terminals that support wireless connections can search the Wi-Fi network by its SSID and receive Wi-Fi signals.
 	//
 	// example:
 	//
@@ -112,9 +112,9 @@ type ModifySagWifiRequest struct {
 	IsBroadcast *string `json:"IsBroadcast,omitempty" xml:"IsBroadcast,omitempty"`
 	// Specifies whether Wi-Fi is enabled. Valid values:
 	//
-	// 	- **true**: enables Wi-Fi.
+	// - **true**: enables Wi-Fi.
 	//
-	// 	- **False**: disables Wi-Fi.
+	// - **False**: disables Wi-Fi.
 	//
 	// This parameter is required.
 	//

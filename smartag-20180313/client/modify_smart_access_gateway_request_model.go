@@ -49,12 +49,16 @@ type ModifySmartAccessGatewayRequest struct {
 	// The description of the SAG instance.
 	//
 	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	//
+	// example:
+	//
+	// SAG description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to audit the network connection logs of the SAS app instance.
 	//
-	// 	- **true**: yes
+	// - **true**: yes
 	//
-	// 	- **false**: no
+	// - **false**: no
 	//
 	// example:
 	//
@@ -71,6 +75,10 @@ type ModifySmartAccessGatewayRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The location where the SAG instance is deployed.
+	//
+	// example:
+	//
+	// [ { "adcode":"", "label":"Hangzhou, Zhejiang xx zone xx Road xx number", "value":"B0FFGxxxx", "center":"120.190xxxx, 30.182xxxx", "_new":"true" } ]
 	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
 	// The ID of the region where the SAG instance is deployed.
 	//
@@ -84,9 +92,9 @@ type ModifySmartAccessGatewayRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The policy that is used to advertise routes to Alibaba Cloud. Valid values:
 	//
-	// 	- **static**: static routing
+	// - **static**: static routing
 	//
-	// 	- **dynamic**: dynamic routing
+	// - **dynamic**: dynamic routing
 	//
 	// example:
 	//

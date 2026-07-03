@@ -26,19 +26,19 @@ type iCreateACLRequest interface {
 }
 
 type CreateACLRequest struct {
-	// The type of SAG instance to be associated with the ACL. Valid values:
+	// The type of the Smart Access Gateway instance to be associated with the access control instance. Valid values:
 	//
-	// 	- **acl-hardware*	- (default): SAG CPE instance
+	// - **acl-hardware*	- (default): Smart Access Gateway device instance.
 	//
-	// 	- **acl-software**: SAG app instance
+	// - **acl-software**: SAG app instance.
 	//
 	// example:
 	//
 	// acl-hardware
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The name of the ACL.
+	// The name of the access control instance.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,9 @@ type CreateACLRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where you want to create the ACL.
+	// The region ID of the access control instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//

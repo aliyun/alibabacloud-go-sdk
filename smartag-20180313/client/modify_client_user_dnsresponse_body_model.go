@@ -14,7 +14,7 @@ type iModifyClientUserDNSResponseBody interface {
 }
 
 type ModifyClientUserDNSResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

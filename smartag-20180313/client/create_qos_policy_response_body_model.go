@@ -42,7 +42,7 @@ type iCreateQosPolicyResponseBody interface {
 }
 
 type CreateQosPolicyResponseBody struct {
-	// The description of the traffic classification rule.
+	// The description of the traffic classification rule for the QoS policy.
 	//
 	// example:
 	//
@@ -68,37 +68,37 @@ type CreateQosPolicyResponseBody struct {
 	//
 	// 2022-09-14T16:41:33+0800
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The protocol that applies to the traffic classification rule.
+	// The protocol type to which the traffic classification rule applies.
 	//
 	// example:
 	//
 	// TCP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The name of the traffic classification rule.
+	// The name of the traffic classification rule for the QoS policy.
 	//
 	// example:
 	//
 	// nametest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The priority of the traffic throttling policy to which the traffic classification rule belongs.
+	// The priority of the rate limiting rule to which the traffic classification rule belongs.
 	//
 	// example:
 	//
 	// 3
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the QoS policy.
+	// The instance ID of the QoS policy.
 	//
 	// example:
 	//
 	// qos-xitd8690ucu8ro****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The ID of the traffic classification rule.
+	// The instance ID of the traffic classification rule for the QoS policy.
 	//
 	// example:
 	//
 	// qospy-xhwhyuo43l********
 	QosPolicyId *string `json:"QosPolicyId,omitempty" xml:"QosPolicyId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

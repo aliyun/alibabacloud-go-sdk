@@ -50,9 +50,9 @@ type iCreateHealthCheckRequest interface {
 }
 
 type CreateHealthCheckRequest struct {
-	// The description of the health check.
+	// The description of the health check instance.
 	//
-	// The description must be 2 to 256 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+	// The description must be 2 to 256 characters in length, and must start with a letter or a Chinese character. The description can contain digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -68,15 +68,15 @@ type CreateHealthCheckRequest struct {
 	DstIpAddr *string `json:"DstIpAddr,omitempty" xml:"DstIpAddr,omitempty"`
 	// The destination port of the health check.
 	//
-	// >  This parameter is not supported.
+	// > This feature is currently not supported.
 	//
 	// example:
 	//
 	// 1333
 	DstPort *int32 `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
-	// The maximum number of failed probes before a health check is declared failed.
+	// The threshold for the number of consecutive probe failures.
 	//
-	// Valid values: **1 to 15**.
+	// Valid values: **1*	- to **15**.
 	//
 	// Default value: **3**.
 	//
@@ -84,9 +84,9 @@ type CreateHealthCheckRequest struct {
 	//
 	// 3
 	FailCountThreshold *int32 `json:"FailCountThreshold,omitempty" xml:"FailCountThreshold,omitempty"`
-	// The name of the health check.
+	// The name of the health check instance.
 	//
-	// The name must be 2 to 100 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+	// The name must be 2 to 100 characters in length, and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -96,7 +96,7 @@ type CreateHealthCheckRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of probes performed per health check.
+	// The number of probes per health check.
 	//
 	// Valid values: **1*	- to **20**.
 	//
@@ -106,7 +106,7 @@ type CreateHealthCheckRequest struct {
 	//
 	// 1
 	ProbeCount *int32 `json:"ProbeCount,omitempty" xml:"ProbeCount,omitempty"`
-	// The time interval at which probes are performed. The next probe does not start before the current one is completed.
+	// The interval between health check probes. The next probe will not be initiated until the current probe is complete.
 	//
 	// Valid values: **1000*	- to **60000**.
 	//
@@ -118,7 +118,7 @@ type CreateHealthCheckRequest struct {
 	//
 	// 2000
 	ProbeInterval *int32 `json:"ProbeInterval,omitempty" xml:"ProbeInterval,omitempty"`
-	// The timeout period of a probe.
+	// The timeout period for a single probe.
 	//
 	// Valid values: **10*	- to **30000**.
 	//
@@ -130,7 +130,7 @@ type CreateHealthCheckRequest struct {
 	//
 	// 1000
 	ProbeTimeout *int32 `json:"ProbeTimeout,omitempty" xml:"ProbeTimeout,omitempty"`
-	// The region ID of the SAG instance.
+	// The ID of the region where the Smart Access Gateway instance is deployed.
 	//
 	// This parameter is required.
 	//
@@ -140,7 +140,7 @@ type CreateHealthCheckRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The number of times that the maximum RTT is exceeded before an alert is triggered.
+	// The number of times that the RTT threshold can be reached.
 	//
 	// Valid values: **1*	- to **15**.
 	//
@@ -150,11 +150,11 @@ type CreateHealthCheckRequest struct {
 	//
 	// 3
 	RttFailThreshold *int32 `json:"RttFailThreshold,omitempty" xml:"RttFailThreshold,omitempty"`
-	// The maximum round-trip time (RTT).
+	// The round-trip time (RTT) threshold.
 	//
-	// Valid values: **-1*	- and **1*	- to **5000**.
+	// Valid values: **-1*	- or **1*	- to **5000**.
 	//
-	// Default value: **-1**. This value indicates that the maximum RTT is not specified.
+	// Default value: **-1**, which indicates that no RTT threshold is set.
 	//
 	// Unit: milliseconds.
 	//
@@ -162,7 +162,7 @@ type CreateHealthCheckRequest struct {
 	//
 	// 1000
 	RttThreshold *int32 `json:"RttThreshold,omitempty" xml:"RttThreshold,omitempty"`
-	// The ID of the SAG instance.
+	// The ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -170,7 +170,7 @@ type CreateHealthCheckRequest struct {
 	//
 	// sag-1um5x5nwhilymw****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// The source IP address of the health check.
+	// The source IP address of the health check instance.
 	//
 	// This parameter is required.
 	//
@@ -180,15 +180,15 @@ type CreateHealthCheckRequest struct {
 	SrcIpAddr *string `json:"SrcIpAddr,omitempty" xml:"SrcIpAddr,omitempty"`
 	// The source port of the health check.
 	//
-	// >  This parameter is not supported.
+	// > This feature is currently not supported.
 	//
 	// example:
 	//
 	// 1344
 	SrcPort *int32 `json:"SrcPort,omitempty" xml:"SrcPort,omitempty"`
-	// The type of packets used in the health check.
+	// The type of health check packets.
 	//
-	// >  Only **ICMP_ECHO*	- is supported.
+	// > Only **ICMP_ECHO*	- is supported.
 	//
 	// This parameter is required.
 	//

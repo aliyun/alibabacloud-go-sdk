@@ -46,6 +46,8 @@ type DescribeUserOnlineClientStatisticsRequest struct {
 	//
 	// sag-sfjg*****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
+	// The usernames. You can query up to 50 users at a time. Separate multiple usernames with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:

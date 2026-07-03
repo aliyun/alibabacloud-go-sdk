@@ -22,26 +22,42 @@ type iViewSmartAccessGatewayPortRouteProtocolRequest interface {
 }
 
 type ViewSmartAccessGatewayPortRouteProtocolRequest struct {
+	// Specifies whether to query only the Smart Access Gateway instances that belong to other accounts. Valid values:
+	//
+	// - **false*	- (default): No.
+	//
+	// - **true**: Yes.
+	//
 	// example:
 	//
 	// false
 	CrossAccount *bool `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	// The ID of the region where the Smart Access Gateway instance is deployed.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to obtain the region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the Smart Access Gateway instance belongs.
+	//
 	// example:
 	//
 	// 109790620697****
 	ResourceUid *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	// The ID of the Smart Access Gateway instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sag-sv487b7lno6go5****
 	SagInsId *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	// The serial number (SN) of the Smart Access Gateway device.
+	//
 	// This parameter is required.
 	//
 	// example:

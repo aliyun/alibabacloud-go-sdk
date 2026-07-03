@@ -32,83 +32,83 @@ type iDescribeSAGDeviceInfoResponseBody interface {
 }
 
 type DescribeSAGDeviceInfoResponseBody struct {
-	// The control status of the SAG device. Valid values:
+	// The control status of the Smart Access Gateway device. Valid values:
 	//
-	// 	- **Normal**: normal
+	// - **Normal**: Normal.
 	//
-	// 	- **Abnormal**: abnormal
+	// - **Abnormal**: Abnormal.
 	//
 	// example:
 	//
 	// Normal
 	ControllerState *string `json:"ControllerState,omitempty" xml:"ControllerState,omitempty"`
-	// The last time when the SAG device was connected to Alibaba Cloud.
+	// The most recent time when the Smart Access Gateway device connected to the controller.
 	//
 	// example:
 	//
 	// 2021-07-14 00:27:48
 	LastConnectedControllerTime *string `json:"LastConnectedControllerTime,omitempty" xml:"LastConnectedControllerTime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B6A991F4-F533-1627-8144-B64E01C5EE85
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the reset button of the SAG device is enabled. Valid values:
+	// Indicates whether the reset button of the Smart Access Gateway device is enabled. Valid values:
 	//
-	// 	- **Enabled**: enabled
+	// - **Enabled**: Enabled.
 	//
-	// 	- **Disabled**: disabled
+	// - **Disabled**: Disabled.
 	//
 	// example:
 	//
 	// Enabled
 	ResettableStatus *string `json:"ResettableStatus,omitempty" xml:"ResettableStatus,omitempty"`
-	// The IP address of the SAG device.
+	// The service IP address of the Smart Access Gateway device.
 	//
 	// example:
 	//
 	// 42.XX.XX.151
 	ServiceIP *string `json:"ServiceIP,omitempty" xml:"ServiceIP,omitempty"`
-	// The model of the SAG device. Valid values:
+	// The type of the Smart Access Gateway device. Valid values:
 	//
-	// 	- **sag-100wm**
+	// - **sag-100wm**.
 	//
-	// 	- **sag-1000**
+	// - **sag-1000**.
 	//
 	// example:
 	//
 	// sag-100wm
 	SmartAGType *string `json:"SmartAGType,omitempty" xml:"SmartAGType,omitempty"`
-	// The time when the SAG device was started.
+	// The startup time of the Smart Access Gateway device.
 	//
 	// example:
 	//
 	// 2021-06-15 17:33:43
 	StartupTime *string `json:"StartupTime,omitempty" xml:"StartupTime,omitempty"`
-	// Indicates whether the settings of the SAG device are synchronized to Alibaba Cloud. Valid values:
+	// The synchronization status between the local Smart Access Gateway device and the cloud. Valid values:
 	//
-	// 	- **Synchronized**: synchronized
+	// - **Synchronized**: Synchronization is complete.
 	//
-	// 	- **Unsynchronized**: unsynchronized
+	// - **Unsynchronized**: Not synchronized.
 	//
-	// 	- **Synchronizing**: being synchronized
+	// - **Synchronizing**: Synchronization is in progress.
 	//
 	// example:
 	//
 	// Unsynchronized
 	SynStatus *string `json:"SynStatus,omitempty" xml:"SynStatus,omitempty"`
-	// The version of the SAG device.
+	// The software version that runs on the Smart Access Gateway device.
 	//
 	// example:
 	//
 	// 2.3.1.1
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The VPN connection status of the SAG device. Valid values:
+	// The VPN connection status of the Smart Access Gateway device. Valid values:
 	//
-	// 	- **Normal**: normal
+	// - **Normal**: Normal.
 	//
-	// 	- **Abnormal**: abnormal
+	// - **Abnormal**: Abnormal.
 	//
 	// example:
 	//

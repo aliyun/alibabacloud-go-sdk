@@ -26,7 +26,7 @@ type iDescribeSagDropTopNRequest interface {
 type DescribeSagDropTopNRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeSagDropTopNRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The number of SAG instances to be queried. Default value:**10**. This value cannot be modified.
+	// The number of Smart Access Gateway instances to query. Default value: **10**. This value cannot be modified.
 	//
 	// example:
 	//

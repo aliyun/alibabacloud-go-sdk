@@ -66,7 +66,7 @@ type AddACLRuleResponseBody struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination CIDR block.
 	//
-	// The value of this parameter is specified in CIDR notation. Example: 192.168.10.0/24.
+	// For example: 192.168.10.0/24.
 	//
 	// example:
 	//
@@ -78,11 +78,11 @@ type AddACLRuleResponseBody struct {
 	//
 	// 1/65535
 	DestPortRange *string `json:"DestPortRange,omitempty" xml:"DestPortRange,omitempty"`
-	// The direction of traffic in which the ACL rule is applied. Valid values:
+	// The direction of traffic to which the ACL rule applies. Valid values:
 	//
-	// 	- **in**: The ACL rule controls inbound network traffic of the on-premises network that is associated with the SAG instance.
+	// - **in**: inbound. Traffic from an external network to the local branch where the SAG instance is deployed.
 	//
-	// 	- **out**: The ACL rule controls outbound network traffic of the on-premises network that is associated with the SAG instance.
+	// - **out**: outbound. Traffic from the local branch where the SAG instance is deployed to an external network.
 	//
 	// example:
 	//
@@ -90,15 +90,15 @@ type AddACLRuleResponseBody struct {
 	Direction       *string                                `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	DpiGroupIds     *AddACLRuleResponseBodyDpiGroupIds     `json:"DpiGroupIds,omitempty" xml:"DpiGroupIds,omitempty" type:"Struct"`
 	DpiSignatureIds *AddACLRuleResponseBodyDpiSignatureIds `json:"DpiSignatureIds,omitempty" xml:"DpiSignatureIds,omitempty" type:"Struct"`
-	// The timestamp when the ACL rule was created.
+	// The UNIX timestamp when the ACL rule was created.
 	//
-	// The timestamp is of the Long data type. If multiple ACL rules have the same priority, the rule with the earliest timestamp takes effect.
+	// This value is a long integer. If rules have the same priority, the one with the earlier timestamp takes precedence.
 	//
 	// example:
 	//
 	// 1553766882689
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The protocol used by the ACL rule.
+	// The protocol to which the ACL rule applies.
 	//
 	// example:
 	//
@@ -110,11 +110,11 @@ type AddACLRuleResponseBody struct {
 	//
 	// doctest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The action policy of the ACL rule.
+	// The authorization policy of the ACL rule.
 	//
-	// 	- **accept**: allows the network traffic.
+	// - **accept**: allows access.
 	//
-	// 	- **drop**: blocks the network traffic.
+	// - **drop**: denies access.
 	//
 	// example:
 	//
@@ -122,13 +122,13 @@ type AddACLRuleResponseBody struct {
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The priority of the ACL rule.
 	//
-	// A smaller value indicates a higher priority. If rules have the same priority, whichever applied to the SAG devices earlier takes effect.
+	// A smaller value indicates a higher priority. If multiple rules have the same priority, the rule that is first delivered to the Smart Access Gateway device takes precedence.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type AddACLRuleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The source CIDR block.
 	//
-	// The value of this parameter is specified in CIDR notation. Example: 192.168.1.0/24.
+	// The source CIDR block is in the CIDR format. For example: 192.168.1.0/24.
 	//
 	// example:
 	//
@@ -148,11 +148,11 @@ type AddACLRuleResponseBody struct {
 	//
 	// 1/65535
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	// The type of the ACL rule:
+	// The type of the ACL rule.
 	//
-	// 	- **LAN**: The ACL rule controls network traffic transmitted through private IP addresses.
+	// - **LAN**: private network. The ACL rule controls traffic on private networks.
 	//
-	// 	- **WAN**: The ACL rule controls network traffic transmitted through public IP addresses.
+	// - **WAN**: public network. The ACL rule controls traffic on public networks.
 	//
 	// example:
 	//

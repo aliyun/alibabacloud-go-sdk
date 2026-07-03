@@ -26,7 +26,7 @@ type iAssociateFlowLogRequest interface {
 }
 
 type AssociateFlowLogRequest struct {
-	// The instance ID of the flow log.
+	// The flow log instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type AssociateFlowLogRequest struct {
 	FlowLogId    *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the flow log belongs.
+	// The region ID of the flow log.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type AssociateFlowLogRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG instance to be associated.
+	// The Smart Access Gateway instance ID.
 	//
 	// This parameter is required.
 	//

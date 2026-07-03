@@ -52,13 +52,13 @@ type ModifyCloudConnectNetworkRequest struct {
 	//
 	// example:
 	//
-	// Description
+	// Ccn description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to allow the SAG instances associated with the same CCN instance to communicate with each other.
 	//
-	// 	- **enable**: yes
+	// - **enable**: yes
 	//
-	// 	- **disable**: no
+	// - **disable**: no
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ModifyCloudConnectNetworkRequest struct {
 	//
 	// example:
 	//
-	// Name
+	// Ccn name
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

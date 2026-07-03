@@ -34,19 +34,19 @@ type iDescribeSmartAccessGatewayClientUsersRequest interface {
 type DescribeSmartAccessGatewayClientUsersRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries per page when paging is used. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the SAG app instance is deployed.
+	// The region ID of the Smart Access Gateway app instance.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type DescribeSmartAccessGatewayClientUsersRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG app instance.
+	// The instance ID of the Smart Access Gateway app.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +64,13 @@ type DescribeSmartAccessGatewayClientUsersRequest struct {
 	//
 	// sag-kzo5dvms3dqii3*****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// The email address of the client account.
+	// The email address of the client.
 	//
 	// example:
 	//
 	// username@example.com
 	UserMail *string `json:"UserMail,omitempty" xml:"UserMail,omitempty"`
-	// The username of the client account.
+	// The username of the client.
 	//
 	// example:
 	//

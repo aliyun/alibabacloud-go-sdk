@@ -38,15 +38,19 @@ type ListDpiSignaturesRequest struct {
 	//
 	// 20
 	DpiGroupId *string `json:"DpiGroupId,omitempty" xml:"DpiGroupId,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// 235
 	DpiSignatureIds []*string `json:"DpiSignatureIds,omitempty" xml:"DpiSignatureIds,omitempty" type:"Repeated"`
+	// The application name.
+	//
 	// example:
 	//
 	// EdgeCast
 	DpiSignatureNames []*string `json:"DpiSignatureNames,omitempty" xml:"DpiSignatureNames,omitempty" type:"Repeated"`
-	// The number of entries to return on each page.
+	// The number of applications to return on each page.
 	//
 	// Valid values: **1*	- to **100**.
 	//
@@ -56,7 +60,7 @@ type ListDpiSignaturesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to query the next page.
+	// The token for the next page of results.
 	//
 	// example:
 	//
@@ -64,9 +68,9 @@ type ListDpiSignaturesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the application or application group belongs.
+	// The region ID.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+	// Call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the regions and their IDs that are supported by SAG.
 	//
 	// This parameter is required.
 	//

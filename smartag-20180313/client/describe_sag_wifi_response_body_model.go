@@ -34,11 +34,11 @@ type iDescribeSagWifiResponseBody interface {
 type DescribeSagWifiResponseBody struct {
 	// The authentication type. Valid values:
 	//
-	// 	- **NONE**: authentication is disabled.
+	// - **NONE**: authentication is disabled.
 	//
-	// 	- **WPA-PSK**: WPA-PSK authentication is enabled.
+	// - **WPA-PSK**: WPA-PSK authentication is enabled.
 	//
-	// 	- **WPA2-PSK**: WPA2-PSK authentication is enabled.
+	// - **WPA2-PSK**: WPA2-PSK authentication is enabled.
 	//
 	// example:
 	//
@@ -46,11 +46,15 @@ type DescribeSagWifiResponseBody struct {
 	AuthenticationType *string `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty"`
 	// The bandwidth of the Wi-Fi channel. Valid values:
 	//
-	// 	- **Automatic**
+	// - **Automatic**
 	//
-	// 	- **20 HMz**
+	// - **20 HMz**
 	//
-	// 	- **40 MHz**
+	// - **40 MHz**
+	//
+	// example:
+	//
+	// Automatic
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The Wi-Fi channel.
 	//
@@ -60,11 +64,11 @@ type DescribeSagWifiResponseBody struct {
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// The encryption algorithm.
 	//
-	// 	- **AUTO**: automatically selects the encryption algorithm.
+	// - **AUTO**: automatically selects the encryption algorithm.
 	//
-	// 	- **TKIP**: uses the Temporal Key Integrity Protocol (TKIP).
+	// - **TKIP**: uses the Temporal Key Integrity Protocol (TKIP).
 	//
-	// 	- **AES**: uses the Advanced Encryption Standard authorized by Wi-Fi®.
+	// - **AES**: uses the Advanced Encryption Standard authorized by Wi-Fi®.
 	//
 	// example:
 	//
@@ -72,9 +76,9 @@ type DescribeSagWifiResponseBody struct {
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
 	// Indicates whether wireless security is enabled.
 	//
-	// 	- **True**: wireless security is enabled.
+	// - **True**: wireless security is enabled.
 	//
-	// 	- **False**: wireless security is disabled.
+	// - **False**: wireless security is disabled.
 	//
 	// example:
 	//
@@ -82,9 +86,9 @@ type DescribeSagWifiResponseBody struct {
 	IsAuth *string `json:"IsAuth,omitempty" xml:"IsAuth,omitempty"`
 	// Indicates whether broadcast over Wi-Fi is enabled. Valid values:
 	//
-	// 	- **True**: broadcast is enabled.
+	// - **True**: broadcast is enabled.
 	//
-	// 	- **False**: broadcast is disabled.
+	// - **False**: broadcast is disabled.
 	//
 	// example:
 	//
@@ -92,9 +96,9 @@ type DescribeSagWifiResponseBody struct {
 	IsBroadcast *string `json:"IsBroadcast,omitempty" xml:"IsBroadcast,omitempty"`
 	// Indicates whether wireless connections are enabled. Valid values:
 	//
-	// 	- **True**: wireless connections are enabled.
+	// - **True**: wireless connections are enabled.
 	//
-	// 	- **False**: wireless connections are disabled.
+	// - **False**: wireless connections are disabled.
 	//
 	// example:
 	//
@@ -248,23 +252,23 @@ type DescribeSagWifiResponseBodyTaskStates struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The status of the query task. Valid values:
 	//
-	// 	- **Initialized**: The query task has been initialized.
+	// - **Initialized**: The query task has been initialized.
 	//
-	// 	- **Offline**: The query task is not dispatched because the SAG device is disconnected from Alibaba Cloud. The task will be dispatched after the SAG device is connected to Alibaba Cloud.
+	// - **Offline**: The query task is not dispatched because the SAG device is disconnected from Alibaba Cloud. The task will be dispatched after the SAG device is connected to Alibaba Cloud.
 	//
-	// 	- **Succeed**: The query task has been dispatched.
+	// - **Succeed**: The query task has been dispatched.
 	//
-	// 	- **Processing**: The query task is being dispatched.
+	// - **Processing**: The query task is being dispatched.
 	//
-	// 	- **VersionNotSupport**: The current version of the SAG device does not support query tasks.
+	// - **VersionNotSupport**: The current version of the SAG device does not support query tasks.
 	//
-	// 	- **BuildRequestError**: The SAG control system does not support query tasks.
+	// - **BuildRequestError**: The SAG control system does not support query tasks.
 	//
-	// 	- **HardwareError**: The query task failed to be dispatched due to device errors.
+	// - **HardwareError**: The query task failed to be dispatched due to device errors.
 	//
-	// 	- **TaskNotExist**: The query task does not exist.
+	// - **TaskNotExist**: The query task does not exist.
 	//
-	// 	- **OfflineNotConfiged**: The query task is not dispatched because the SAG device is disconnected from Alibaba Cloud. The task will not be dispatched after the device is connected to Alibaba Cloud.
+	// - **OfflineNotConfiged**: The query task is not dispatched because the SAG device is disconnected from Alibaba Cloud. The task will not be dispatched after the device is connected to Alibaba Cloud.
 	//
 	// example:
 	//

@@ -20,21 +20,21 @@ type iListAvailableServiceAddressRequest interface {
 }
 
 type ListAvailableServiceAddressRequest struct {
-	// The type of service address. Valid values:
+	// The type of the service address for the Smart Access Gateway instance. Valid values:
 	//
-	// 	- **ProbeTask**: probes the source IP address.
+	// - **ProbeTask**: the source IP address for network probes.
 	//
-	// 	- **RemoteWeb**: probes the IP address for remote logon.
+	// - **RemoteWeb**: the IP address for remote logon.
 	//
-	// > If you do not specify a value, all service IP addresses are queried.
+	// > If you do not specify this parameter, all types of service addresses are queried.
 	//
 	// example:
 	//
 	// ProbeTask
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The ID of the region where the Smart Access Gateway instance is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+	// Call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListAvailableServiceAddressRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the SAG instance.
+	// The ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ListAvailableServiceAddressRequest struct {
 	//
 	// sag-****
 	SagId *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
-	// The serial number of the SAG device.
+	// The serial number of the Smart Access Gateway device.
 	//
 	// This parameter is required.
 	//

@@ -36,17 +36,17 @@ type CreateCloudConnectNetworkRequest struct {
 	//
 	// 172.XX.XX.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The description of the CCN instance.
+	// The description of the Cloud Connect Network (CCN) instance.
 	//
-	// The description must be 2 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+	// The description must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// ccndesc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the CCN instance.
+	// The name of the Cloud Connect Network (CCN) instance.
 	//
-	// The name must be 2 to 100 characters in length and can contain letters, digits, periods (.), underscores (_),and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 100 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreateCloudConnectNetworkRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the CCN instance is deployed.
+	// The region ID of the Cloud Connect Network (CCN) instance.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type CreateCloudConnectNetworkRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The private CIDR block used for Source Network Address Translation (SNAT).
+	// The SNAT private CIDR block.
 	//
 	// example:
 	//

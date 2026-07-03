@@ -24,7 +24,7 @@ type iDeleteHealthCheckRequest interface {
 }
 
 type DeleteHealthCheckRequest struct {
-	// The ID of the health check instance.
+	// The health check instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteHealthCheckRequest struct {
 	HcInstanceId *string `json:"HcInstanceId,omitempty" xml:"HcInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the health check instance is deployed.
+	// The region ID of the health check instance.
 	//
 	// This parameter is required.
 	//

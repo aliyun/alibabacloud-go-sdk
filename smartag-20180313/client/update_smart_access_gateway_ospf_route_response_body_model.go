@@ -20,18 +20,30 @@ type iUpdateSmartAccessGatewayOspfRouteResponseBody interface {
 }
 
 type UpdateSmartAccessGatewayOspfRouteResponseBody struct {
+	// The response code. A value of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9CF52A9E-FC3C-5CC8-B5EB-90DC03E9A531
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true

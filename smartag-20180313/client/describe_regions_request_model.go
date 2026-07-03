@@ -24,11 +24,11 @@ type iDescribeRegionsRequest interface {
 type DescribeRegionsRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- **zh-CN*	- (default): Chinese
+	// - **zh-CN*	- (default): Chinese
 	//
-	// 	- **en-US**: English
+	// - **en-US**: English
 	//
-	// 	- **ja**: Japanese
+	// - **ja**: Japanese
 	//
 	// example:
 	//

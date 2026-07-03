@@ -22,27 +22,27 @@ type iListDpiConfigErrorResponseBody interface {
 }
 
 type ListDpiConfigErrorResponseBody struct {
-	// The information about the configuration errors.
+	// A list of DPI configuration errors.
 	DpiConfigError []*ListDpiConfigErrorResponseBodyDpiConfigError `json:"DpiConfigError,omitempty" xml:"DpiConfigError,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page.
+	// The maximum number of configuration errors to return on each page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that was used to query the next page.
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F47B5293-27B6-48EF-A9C6-E90A41449813
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of DPI configuration errors.
 	//
 	// example:
 	//
@@ -117,27 +117,27 @@ func (s *ListDpiConfigErrorResponseBody) Validate() error {
 }
 
 type ListDpiConfigErrorResponseBodyDpiConfigError struct {
-	// The type of the configuration error. Valid values:
+	// The type of the configuration error.
 	//
-	// 	- **DeviceNotSupported**: The SAG instance does not support the DPI feature.
+	// - DeviceNotSupported: The Smart Access Gateway device does not support the DPI feature.
 	//
-	// 	- **VersionNotSupported**: The version of the DPI feature is outdated.
+	// - VersionNotSupported: The DPI version of the Smart Access Gateway device is too old.
 	//
-	// 	- **NotEnable**: The DPI feature is disabled on the SAG instance.
+	// - **NotEnable**: The DPI feature is disabled for the Smart Access Gateway device.
 	//
 	// example:
 	//
 	// DeviceNotSupported
 	ErrorType *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
-	// The information about the configuration errors.
+	// A list of rule configuration errors.
 	RuleConfigErrorList []*ListDpiConfigErrorResponseBodyDpiConfigErrorRuleConfigErrorList `json:"RuleConfigErrorList,omitempty" xml:"RuleConfigErrorList,omitempty" type:"Repeated"`
-	// The serial number of the SAG instance.
+	// The serial number of the Smart Access Gateway device.
 	//
 	// example:
 	//
 	// sag-2160808****
 	SN *string `json:"SN,omitempty" xml:"SN,omitempty"`
-	// The ID of the SAG instance.
+	// The ID of the Smart Access Gateway instance.
 	//
 	// example:
 	//
@@ -203,19 +203,15 @@ func (s *ListDpiConfigErrorResponseBodyDpiConfigError) Validate() error {
 }
 
 type ListDpiConfigErrorResponseBodyDpiConfigErrorRuleConfigErrorList struct {
-	// The IDs of the application groups that have configuration errors.
-	//
-	// You can call the [ListDpiGroups](https://help.aliyun.com/document_detail/196754.html) operation to query application group IDs and information about the applications.
+	// A list of IDs of application groups that have configuration errors.
 	DpiGroupIds []*string `json:"DpiGroupIds,omitempty" xml:"DpiGroupIds,omitempty" type:"Repeated"`
-	// The IDs of applications that have configuration errors.
-	//
-	// You can call the [ListDpiSignatures](https://help.aliyun.com/document_detail/196630.html) operation to query application IDs and information about the applications.
+	// A list of IDs of applications that have configuration errors.
 	DpiSignatureIds []*string `json:"DpiSignatureIds,omitempty" xml:"DpiSignatureIds,omitempty" type:"Repeated"`
-	// The IDs of rules that are applied to applications with configuration errors.
+	// The ID of the rule that is associated with the application that has a configuration error.
 	//
-	// 	- If you make the request to query configuration errors of ACLs, the IDs of ACL rules that have configuration errors are returned.
+	// - If you query DPI configuration errors for Resource Access Management, this parameter indicates the ID of the Resource Access Management rule instance that has a configuration error.
 	//
-	// 	- If you make the request to query configuration errors of QoS polices, the IDs of the 5-tuples in the QoS polices that have configuration errors are returned.
+	// - If you query DPI configuration errors for a QoS policy, this parameter indicates the ID of the quintuple rule instance that has a configuration error.
 	//
 	// example:
 	//

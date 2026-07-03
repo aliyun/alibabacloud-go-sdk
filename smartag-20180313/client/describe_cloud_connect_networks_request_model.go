@@ -32,15 +32,15 @@ type iDescribeCloudConnectNetworksRequest interface {
 }
 
 type DescribeCloudConnectNetworksRequest struct {
-	// The ID of the CCN instance.
+	// The ID of the CCN.
 	//
 	// example:
 	//
 	// ccn-l9340rlu5enst*****
 	CcnId *string `json:"CcnId,omitempty" xml:"CcnId,omitempty"`
-	// The name of the CCN instance.
+	// The name of the CCN.
 	//
-	// The name must be 2 to 100 characters in length and can contain letters, digits, periods (.), underscores (_),and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 100 characters long, start with a letter or a Chinese character, and can contain digits, underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeCloudConnectNetworksRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
@@ -60,17 +60,22 @@ type DescribeCloudConnectNetworksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the CCN instances are deployed.
+	// The ID of the region where the CCN is located.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId             *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*DescribeCloudConnectNetworksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tags to filter CCN instances.
+	//
+	// example:
+	//
+	// DescribeCloudConnectNetworks
+	Tag []*DescribeCloudConnectNetworksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCloudConnectNetworksRequest) String() string {
@@ -185,13 +190,13 @@ func (s *DescribeCloudConnectNetworksRequest) Validate() error {
 }
 
 type DescribeCloudConnectNetworksRequestTag struct {
-	// The key of the tag that is bound to the CCN instance.
+	// The tag key.
 	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag that is bound to the CCN instance.
+	// The tag value.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iDescribeSagOnlineClientStatisticsRequest interface {
 type DescribeSagOnlineClientStatisticsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the SAG app instance is deployed.
+	// The region ID of the SAG app instance.
 	//
 	// This parameter is required.
 	//
@@ -36,6 +36,8 @@ type DescribeSagOnlineClientStatisticsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The IDs of the SAG app instances. The list can contain up to 50 instance IDs.
+	//
 	// example:
 	//
 	// sag-va03wf4l4idaj*****

@@ -34,17 +34,17 @@ type iCreateQosCarResponseBody interface {
 }
 
 type CreateQosCarResponseBody struct {
-	// The description of the traffic throttling rule.
+	// The description of the QoS rate limiting rule.
 	//
 	// example:
 	//
 	// Qosdesc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of the traffic throttling rule. Valid values:
+	// The type of rate limiting. Valid values:
 	//
-	// 	- **Absolute**: throttles traffic based on a specific range of bandwidth.
+	// - **Absolute**: by bandwidth value.
 	//
-	// 	- **Percent**: throttles traffic based on a specific range of bandwidth percentage.
+	// - **Percent**: by percentage.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CreateQosCarResponseBody struct {
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
 	// The maximum bandwidth value. Unit: Mbit/s.
 	//
-	// This parameter is returned when **LimitType*	- is set to **Absolute**.
+	// This parameter is required when **LimitType*	- is set to **Absolute**.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreateQosCarResponseBody struct {
 	MaxBandwidthPercent *int32 `json:"MaxBandwidthPercent,omitempty" xml:"MaxBandwidthPercent,omitempty"`
 	// The minimum bandwidth value. Unit: Mbit/s.
 	//
-	// This parameter is returned when **LimitType*	- is set to **Absolute**.
+	// This parameter is required when **LimitType*	- is set to **Absolute**.
 	//
 	// example:
 	//
@@ -78,35 +78,35 @@ type CreateQosCarResponseBody struct {
 	//
 	// 20
 	MinBandwidthPercent *int32 `json:"MinBandwidthPercent,omitempty" xml:"MinBandwidthPercent,omitempty"`
-	// The type of bandwidth when traffic is throttled based on bandwidth percentage. Valid values:
+	// The bandwidth type when rate limiting by percentage. Valid values:
 	//
-	// 	- **CcnBandwidth**: CCN bandwidth
+	// - **CcnBandwidth**: CCN bandwidth.
 	//
-	// 	- **InternetUpBandwidth**: total Internet bandwidth
+	// - **InternetUpBandwidth**: total Internet bandwidth.
 	//
 	// example:
 	//
 	// CcnBandwidth
 	PercentSourceType *string `json:"PercentSourceType,omitempty" xml:"PercentSourceType,omitempty"`
-	// The priority value of the traffic throttling rule.
+	// The priority of the rule.
 	//
 	// example:
 	//
 	// 2
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the traffic throttling rule.
+	// The instance ID of the QoS rate limiting rule.
 	//
 	// example:
 	//
 	// qoscar-n5k8g97lihlph****
 	QosCarId *string `json:"QosCarId,omitempty" xml:"QosCarId,omitempty"`
-	// The ID of the QoS policy.
+	// The instance ID of the QoS policy.
 	//
 	// example:
 	//
 	// qos-xitd8690ucu8ro****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

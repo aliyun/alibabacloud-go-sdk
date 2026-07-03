@@ -48,73 +48,164 @@ type iUpdateSmartAccessGatewayOspfRouteRequest interface {
 }
 
 type UpdateSmartAccessGatewayOspfRouteRequest struct {
+	// The OSPF area ID.
+	//
+	// The value must be an integer from **1*	- to **2147483647**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	AreaId *int32 `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	// The authentication method. Valid values:
+	//
+	// - **NONE**: No authentication is configured.
+	//
+	// - **CLEARTEXT**: Plaintext authentication is used.
+	//
+	// - **MD5**: MD5 authentication is used.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MD5
 	AuthenticationType *string `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty"`
+	// Specifies whether to query only the SAG instances that belong to other Alibaba Cloud accounts. Valid values:
+	//
+	// - **false*	- (default): No.
+	//
+	// - **true**: Yes.
+	//
 	// example:
 	//
 	// false
 	CrossAccount *bool `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty"`
+	// The dead interval. Unit: seconds.
+	//
+	// The value must be an integer from **1*	- to **65535**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 40
 	DeadTime *int32 `json:"DeadTime,omitempty" xml:"DeadTime,omitempty"`
+	// The interval at which Hello packets are sent. Unit: seconds.
+	//
+	// The value must be an integer from **1*	- to **65535**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	HelloTime     *int32  `json:"HelloTime,omitempty" xml:"HelloTime,omitempty"`
+	HelloTime *int32 `json:"HelloTime,omitempty" xml:"HelloTime,omitempty"`
+	// The port name.
+	//
+	// > This parameter is not in use.
+	//
+	// example:
+	//
+	// 2
 	InterfaceName *string `json:"InterfaceName,omitempty" xml:"InterfaceName,omitempty"`
+	// The MD5 key.
+	//
+	// The value must be 1 to **47*	- characters in length.
+	//
+	// > This parameter is required only when you set **AuthenticationType*	- to **MD5**.
+	//
 	// example:
 	//
 	// 5
 	Md5Key *string `json:"Md5Key,omitempty" xml:"Md5Key,omitempty"`
+	// The MD5 key ID.
+	//
+	// The value must be an integer from 1 to **2147483647**.
+	//
+	// > This parameter is required only when you set **AuthenticationType*	- to **MD5**.
+	//
 	// example:
 	//
 	// 7
-	Md5KeyId        *int32  `json:"Md5KeyId,omitempty" xml:"Md5KeyId,omitempty"`
-	Networks        *string `json:"Networks,omitempty" xml:"Networks,omitempty"`
-	OspfCost        *int32  `json:"OspfCost,omitempty" xml:"OspfCost,omitempty"`
+	Md5KeyId *int32 `json:"Md5KeyId,omitempty" xml:"Md5KeyId,omitempty"`
+	// The network segment.
+	//
+	// > This parameter is not in use.
+	//
+	// example:
+	//
+	// 192.168.10.0/24
+	Networks *string `json:"Networks,omitempty" xml:"Networks,omitempty"`
+	// The cost of the OSPF route.
+	//
+	// > This parameter is not in use.
+	//
+	// example:
+	//
+	// [110/11]
+	OspfCost *int32 `json:"OspfCost,omitempty" xml:"OspfCost,omitempty"`
+	// The OSPF network type.
+	//
+	// > This parameter is not in use.
+	//
+	// example:
+	//
+	// NSSA
 	OspfNetworkType *string `json:"OspfNetworkType,omitempty" xml:"OspfNetworkType,omitempty"`
+	// The password for plaintext authentication.
+	//
+	// The password must be 1 to 8 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	//
+	// > This parameter is required only when you set **AuthenticationType*	- to **CLEARTEXT**.
+	//
 	// example:
 	//
 	// duuf****
-	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The route redistribution protocol.
+	//
+	// > This parameter is not in use.
+	//
+	// example:
+	//
+	// OSPF
 	RedistributeProtocol *string `json:"RedistributeProtocol,omitempty" xml:"RedistributeProtocol,omitempty"`
+	// The ID of the region where the SAG instance is deployed.
+	//
+	// For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/69813.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
 	// example:
 	//
 	// 109790620697****
 	ResourceUid *string `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	// The OSPF router ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 192.XX.XX.1
 	RouterId *string `json:"RouterId,omitempty" xml:"RouterId,omitempty"`
+	// The ID of the SAG instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sag-3manef62evrfr6****
 	SagInsId *string `json:"SagInsId,omitempty" xml:"SagInsId,omitempty"`
+	// The serial number of the SAG device.
+	//
 	// This parameter is required.
 	//
 	// example:

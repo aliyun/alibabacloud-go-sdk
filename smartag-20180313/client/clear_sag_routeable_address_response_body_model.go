@@ -14,7 +14,7 @@ type iClearSagRouteableAddressResponseBody interface {
 }
 
 type ClearSagRouteableAddressResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

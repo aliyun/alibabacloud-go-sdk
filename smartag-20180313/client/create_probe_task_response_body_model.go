@@ -26,7 +26,7 @@ type CreateProbeTaskResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the probe task.
+	// The ID of the probe task that was created.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CreateProbeTaskResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

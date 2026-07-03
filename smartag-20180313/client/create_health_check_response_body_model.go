@@ -16,13 +16,13 @@ type iCreateHealthCheckResponseBody interface {
 }
 
 type CreateHealthCheckResponseBody struct {
-	// The ID of the health check.
+	// The ID of the health check instance.
 	//
 	// example:
 	//
 	// hc-rrqoucina3gmpn****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

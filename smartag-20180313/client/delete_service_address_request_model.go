@@ -22,7 +22,7 @@ type iDeleteServiceAddressRequest interface {
 }
 
 type DeleteServiceAddressRequest struct {
-	// The service address. Example: **192.168.1.1**.
+	// The service address of the Smart Access Gateway instance. Example: **192.168.1.1**.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DeleteServiceAddressRequest struct {
 	//
 	// 192.168.1.1
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The type of service address. Set the value to **ProbeTask**.
+	// The type of the service address for the Smart Access Gateway instance. Set the value to **ProbeTask**.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type DeleteServiceAddressRequest struct {
 	//
 	// ProbeTask
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The ID of the region where the Smart Access Gateway instance is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type DeleteServiceAddressRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the SAG instance.
+	// The instance ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type DeleteServiceAddressRequest struct {
 	//
 	// sag-****
 	SagId *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
-	// The serial number of the SAG device.
+	// The serial number of the Smart Access Gateway device.
 	//
 	// This parameter is required.
 	//

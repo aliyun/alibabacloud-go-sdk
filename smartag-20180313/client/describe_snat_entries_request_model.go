@@ -30,19 +30,19 @@ type iDescribeSnatEntriesRequest interface {
 type DescribeSnatEntriesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the instance status list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**. Maximum value: **50**.
+	// The number of entries per page in a paged query. Default value: **10**. Maximum value: **50**.
 	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DescribeSnatEntriesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG instance.
+	// The instance ID of the Smart Access Gateway instance.
 	//
 	// This parameter is required.
 	//

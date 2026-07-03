@@ -58,7 +58,7 @@ type ModifyHealthCheckRequest struct {
 	//
 	// example:
 	//
-	// description
+	// Health check instance 1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination IP address of the health check.
 	//

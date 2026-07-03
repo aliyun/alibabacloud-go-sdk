@@ -16,9 +16,9 @@ type iDiscribeSmartAccessGatewayDiagnosisReportResponseBody interface {
 }
 
 type DiscribeSmartAccessGatewayDiagnosisReportResponseBody struct {
-	// The diagnosis report of the SAG device.
+	// The diagnosis report of the Smart Access Gateway device.
 	DiagnoseResult *DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResult `json:"DiagnoseResult,omitempty" xml:"DiagnoseResult,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,51 +62,51 @@ func (s *DiscribeSmartAccessGatewayDiagnosisReportResponseBody) Validate() error
 }
 
 type DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResult struct {
-	// The model of the SAG device.
+	// The type of the Smart Access Gateway device.
 	//
-	// 	- **sag-1000**
+	// - **sag-1000**
 	//
-	// 	- **sag-100WM**
+	// - **sag-100WM**
 	//
 	// example:
 	//
 	// sag-1000
 	BoxType *string `json:"BoxType,omitempty" xml:"BoxType,omitempty"`
-	// The version of the SAG device.
+	// The software version that runs on the Smart Access Gateway device.
 	//
 	// example:
 	//
 	// 2.1.0
 	BoxVersion *string `json:"BoxVersion,omitempty" xml:"BoxVersion,omitempty"`
-	// The list of diagnoses that are returned.
+	// The list of diagnosis results.
 	Details []*DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	// The ID of the diagnosis.
+	// The diagnosis ID.
 	//
 	// example:
 	//
 	// dia-sag42c3t703trh02olv5rf****
 	DiagnoseId *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
-	// The timestamp when the system finishes diagnosing the item.
+	// The timestamp when the diagnosis ended.
 	//
 	// example:
 	//
 	// 160274157
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of items that are diagnosed.
+	// The number of completed diagnosis items.
 	//
 	// example:
 	//
 	// 15
 	FinishedNumber *int32 `json:"FinishedNumber,omitempty" xml:"FinishedNumber,omitempty"`
-	// The ID of the SAG instance.
+	// The ID of the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// sag-0nnteglltw6z4b***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The diagnosis level.
+	// The diagnosis result level.
 	Level *DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultLevel `json:"Level,omitempty" xml:"Level,omitempty" type:"Struct"`
-	// The version of the monitoring feature that is used by the SAG device.
+	// The monitoring version used by the Smart Access Gateway device.
 	//
 	// example:
 	//
@@ -118,67 +118,67 @@ type DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResult struct 
 	//
 	// 100
 	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// The status of the diagnosis report to be uploaded to Log Service.
+	// The status of uploading the diagnosis report to SLS.
 	//
-	// 	- **0**: The system failed to upload the report.
+	// - **0**: The upload failed.
 	//
-	// 	- **1**: The system has uploaded the report to Log Service.
+	// - **1**: The upload was successful.
 	//
 	// example:
 	//
 	// 0
 	ReportSLSSuccess *int32 `json:"ReportSLSSuccess,omitempty" xml:"ReportSLSSuccess,omitempty"`
-	// The serial number of the SAG device.
+	// The serial number of the Smart Access Gateway device.
 	//
 	// example:
 	//
 	// sag42c3****
 	SN *string `json:"SN,omitempty" xml:"SN,omitempty"`
-	// The timestamp when the system starts to diagnose the item.
+	// The timestamp when the diagnosis started.
 	//
 	// example:
 	//
 	// 160274157
 	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The diagnosis status. Valid values:
+	// The diagnosis state.
 	//
-	// 	- **processing**: The SAG device is being diagnosed.
+	// - **processing**: The diagnosis is in progress.
 	//
-	// 	- **finished**: The SAG device is diagnosed.
+	// - **finished**: The diagnosis is successful.
 	//
-	// 	- **failed**: The system failed to diagnose the SAG device.
+	// - **failed**: The diagnosis failed.
 	//
-	// 	- **error**: A diagnostic error occurred.
+	// - **error**: An error occurred during the diagnosis.
 	//
-	// 	- **upload_to_sls_fail**: The system failed to upload the diagnosis report.
+	// - **upload_to_sls_fail**: The diagnosis report failed to be uploaded.
 	//
 	// example:
 	//
 	// finished
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The overall diagnosis level.
+	// The overall statistics of diagnosis item results.
 	Statistics *DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 	// The storage type.
 	//
-	// The value is set to **both**, which indicates that the data is stored in the SAG device and Log Service.
+	// Value: **both**, which indicates that the diagnosis report is stored on both the Smart Access Gateway device and in Log Service (SLS).
 	//
 	// example:
 	//
 	// both
 	StoreType *string `json:"StoreType,omitempty" xml:"StoreType,omitempty"`
-	// The total number of entries returned.
+	// The total number of diagnosis result entries.
 	//
 	// example:
 	//
 	// 15
 	TotalNumber *int32 `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
-	// The user ID (UID) of the Alibaba Cloud account to which the SAG instance belongs.
+	// The ID of the account to which the Smart Access Gateway instance belongs.
 	//
 	// example:
 	//
 	// 1688000000000000
 	UId *string `json:"UId,omitempty" xml:"UId,omitempty"`
-	// The type of user that initiated the diagnostics. The value is set to **user**.
+	// The type of user who initiated the diagnosis. Value: **user**.
 	//
 	// example:
 	//
@@ -389,17 +389,17 @@ func (s *DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResult) Va
 }
 
 type DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetails struct {
-	// The list of items diagnosed.
+	// The list of detailed information about diagnosis items.
 	Items []*DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetailsItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The information about items of each diagnosis level for the current diagnosis type.
+	// The statistics on the severity levels of diagnosis items under the current diagnosis type.
 	Statistics *DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetailsStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
-	// The type of the diagnosis. Valid values:
+	// The diagnosis type.
 	//
-	// 	- **config**: SAG configuration
+	// - **config**: SAG configuration.
 	//
-	// 	- **internet**: quality of connections to the Internet
+	// - **internet**: Internet quality.
 	//
-	// 	- **biz**: service quality
+	// - **biz**: Service quality.
 	//
 	// example:
 	//
@@ -461,47 +461,47 @@ func (s *DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDeta
 }
 
 type DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetailsItems struct {
-	// The diagnosis report in Chinese.
+	// The diagnosis result in Chinese.
 	CN *DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetailsItemsCN `json:"CN,omitempty" xml:"CN,omitempty" type:"Struct"`
-	// The diagnosis report in English.
+	// The diagnosis result in English.
 	EN *DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetailsItemsEN `json:"EN,omitempty" xml:"EN,omitempty" type:"Struct"`
-	// The timestamp when the system finishes diagnosing the item.
+	// The timestamp when the diagnosis of the diagnosis item ended.
 	//
 	// example:
 	//
 	// 1602741570596
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the item, which is the unique identifier of the item.
+	// The name of the diagnosis item, which is the unique identifier of the diagnosis item.
 	//
 	// example:
 	//
 	// eccConfigCheck
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// The diagnosis level of the item. Valid values:
+	// The severity level of the diagnosis result for the diagnosis item.
 	//
-	// 	- **error**: severe
+	// - **error**: Critical.
 	//
-	// 	- **warning**: warning
+	// - **warning**: Warning.
 	//
-	// 	- **info**: normal
+	// - **info**: Normal.
 	//
 	// example:
 	//
 	// error
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The timestamp when the system starts to diagnose the item.
+	// The timestamp when the diagnosis of the diagnosis item started.
 	//
 	// example:
 	//
 	// 1602741570567
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the item. Valid values:
+	// The diagnosis type to which the diagnosis item belongs.
 	//
-	// 	- **config**: SAG configuration
+	// - **config**: SAG configuration.
 	//
-	// 	- **internet**: quality of connections to the Internet
+	// - **internet**: Internet quality.
 	//
-	// 	- **biz**: service quality
+	// - **biz**: Service quality.
 	//
 	// example:
 	//
@@ -595,27 +595,47 @@ func (s *DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDeta
 }
 
 type DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetailsItemsCN struct {
-	// The suggestion for the diagnosis.
+	// The diagnosis suggestion.
+	//
+	// example:
+	//
+	// Check the leased-line port link wiring first, and then go to the local Leased Line Management page for configuration.
 	Advice []*string `json:"Advice,omitempty" xml:"Advice,omitempty" type:"Repeated"`
-	// The diagnosis.
+	// The diagnosis result.
+	//
+	// example:
+	//
+	// All leased-line ports have link anomalies or missing port IPs: Port 4.
 	Details []*string `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	// The diagnosis level of the item. Valid values:
+	// The severity level of the diagnosis result for the diagnosis item.
 	//
-	// 	- **ERROR**: indicates that the item has an issue that may affect your services. We recommend that you handle the issue at the earliest opportunity.
+	// - **严重*	- (Critical): indicates that the issue of the diagnosis item may affect service running. We recommend that you handle the issue at the earliest opportunity.
 	//
-	// 	- **WARNING**: indicates that the item has an issue. You can handle the issue based on your business requirements.
+	// - **警告*	- (Warning): indicates that the diagnosis item has an issue. Handle the issue based on the suggestion.
 	//
-	// 	- **INFO**: indicates that the item is working as expected. No additional operation is required.
+	// - **正常*	- (Normal): indicates that the diagnosis item is running as expected. No action is required.
+	//
+	// example:
+	//
+	// Normal
 	ItemLevel *string `json:"ItemLevel,omitempty" xml:"ItemLevel,omitempty"`
-	// The name of the item.
+	// The name of the diagnosis item.
+	//
+	// example:
+	//
+	// Leased line port configuration check
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// The type of the item. Valid values:
+	// The diagnosis type to which the diagnosis item belongs.
 	//
-	// 	- **Config**: **SAG configuration**
+	// - **配置*	- (Configuration): indicates the **SAG configuration*	- type.
 	//
-	// 	- **Service**: **service quality**
+	// - **业务*	- (Service): indicates the **service quality*	- type.
 	//
-	// 	- **Internet**: **quality of connections to the Internet**
+	// - **公网*	- (Internet): indicates the **Internet quality*	- type.
+	//
+	// example:
+	//
+	// Configuration
 	ItemType *string `json:"ItemType,omitempty" xml:"ItemType,omitempty"`
 }
 
@@ -677,35 +697,35 @@ func (s *DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDeta
 }
 
 type DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetailsItemsEN struct {
-	// The suggestion for the diagnosis.
+	// The diagnosis suggestion.
 	Advice []*string `json:"Advice,omitempty" xml:"Advice,omitempty" type:"Repeated"`
-	// The diagnosis.
+	// The diagnosis result.
 	Details []*string `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	// The diagnosis level of the item. Valid values:
+	// The severity level of the diagnosis result for the diagnosis item.
 	//
-	// 	- **ERROR**: indicates that the item has an issue that may affect your services. We recommend that you handle the issue at the earliest opportunity.
+	// - **ERROR**: indicates that the issue of the diagnosis item may affect service running. We recommend that you handle the issue at the earliest opportunity.
 	//
-	// 	- **WARNING**: indicates that the item has an issue. You can handle the issue based on your business requirements.
+	// - **WARNING**: indicates that the diagnosis item has an issue. Handle the issue based on the suggestion.
 	//
-	// 	- **INFO**: indicates that the item is working as expected. No additional operation is required.
+	// - **INFO**: indicates that the diagnosis item is running as expected. No action is required.
 	//
 	// example:
 	//
 	// ERROR
 	ItemLevel *string `json:"ItemLevel,omitempty" xml:"ItemLevel,omitempty"`
-	// The name of the item.
+	// The name of the diagnosis item.
 	//
 	// example:
 	//
 	// Express Connect Port Configuration
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// The type of the item. Valid values:
+	// The diagnosis type to which the diagnosis item belongs.
 	//
-	// 	- **Config**: **SAG configuration**
+	// - **Config**: indicates the **SAG configuration*	- type.
 	//
-	// 	- **Service**: **service quality**
+	// - **Service**: indicates the **service quality*	- type.
 	//
-	// 	- **Internet**: **quality of connections to the Internet**
+	// - **Internet**: indicates the **Internet quality*	- type.
 	//
 	// example:
 	//
@@ -771,25 +791,25 @@ func (s *DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDeta
 }
 
 type DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetailsStatistics struct {
-	// The number of items of the **ERROR*	- level.
+	// The number of diagnosis items with the **Error*	- severity level.
 	//
 	// example:
 	//
 	// 5
 	Error *int32 `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The number of items of the **INFO*	- level.
+	// The number of diagnosis items with the **Info*	- severity level.
 	//
 	// example:
 	//
 	// 3
 	Info *int32 `json:"Info,omitempty" xml:"Info,omitempty"`
-	// The total number of items for the current diagnosis type.
+	// The total number of diagnosis items under the current diagnosis type.
 	//
 	// example:
 	//
 	// 10
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The number of items of the **WARNING*	- level.
+	// The number of diagnosis items with the **Warning*	- severity level.
 	//
 	// example:
 	//
@@ -846,25 +866,25 @@ func (s *DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDeta
 }
 
 type DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultLevel struct {
-	// The diagnosis level of the service quality.
+	// The diagnosis result level for service quality.
 	//
 	// example:
 	//
 	// warning
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// The diagnosis level of the SAG configuration.
+	// The diagnosis result level for SAG configuration.
 	//
 	// example:
 	//
 	// info
 	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	// The overall diagnosis level.
+	// The overall diagnosis result level.
 	//
-	// 	- **error**: severe
+	// - **error**: Critical.
 	//
-	// 	- **warning**: warning
+	// - **warning**: Warning.
 	//
-	// 	- **info**: normal
+	// - **info**: Normal.
 	//
 	// example:
 	//
@@ -912,25 +932,25 @@ func (s *DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultLeve
 }
 
 type DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultStatistics struct {
-	// The number of items of the **ERROR*	- level.
+	// The total number of diagnosis items with the **Error*	- severity level.
 	//
 	// example:
 	//
 	// 2
 	Error *int32 `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The number of items of the **INFO*	- level.
+	// The total number of diagnosis items with the **Info*	- severity level.
 	//
 	// example:
 	//
 	// 5
 	Info *int32 `json:"Info,omitempty" xml:"Info,omitempty"`
-	// The total number of items.
+	// The total number of all diagnosis items.
 	//
 	// example:
 	//
 	// 10
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The number of items of the **WARNING*	- level.
+	// The total number of diagnosis items with the **Warning*	- severity level.
 	//
 	// example:
 	//

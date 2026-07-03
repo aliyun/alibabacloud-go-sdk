@@ -22,26 +22,26 @@ type iDescribeQosPoliciesResponseBody interface {
 }
 
 type DescribeQosPoliciesResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of quintuple rules returned on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize    *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	QosPolicies *DescribeQosPoliciesResponseBodyQosPolicies `json:"QosPolicies,omitempty" xml:"QosPolicies,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 97862812-2C7E-4D25-B0D5-B26DAC7FA293
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of quintuple rules that meet the query conditions.
 	//
 	// example:
 	//

@@ -58,9 +58,9 @@ type ModifySagWanSnatRequest struct {
 	SmartAGSn *string `json:"SmartAGSn,omitempty" xml:"SmartAGSn,omitempty"`
 	// Specifies whether to enable SNAT. Valid values:
 	//
-	// 	- **ENABLE**: enables SNAT.
+	// - **ENABLE**: enables SNAT.
 	//
-	// 	- **DISABLE**: disables SNAT.
+	// - **DISABLE**: disables SNAT.
 	//
 	// This parameter is required.
 	//

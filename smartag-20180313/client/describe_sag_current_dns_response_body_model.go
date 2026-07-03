@@ -24,7 +24,7 @@ type DescribeSagCurrentDnsResponseBody struct {
 	//
 	// 223.XX.XX.5
 	MasterDns *string `json:"MasterDns,omitempty" xml:"MasterDns,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

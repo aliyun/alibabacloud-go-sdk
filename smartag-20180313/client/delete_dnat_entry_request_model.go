@@ -44,7 +44,7 @@ type DeleteDnatEntryRequest struct {
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -56,7 +56,7 @@ type DeleteDnatEntryRequest struct {
 	//
 	// example:
 	//
-	// sag-jfh*********
+	// sag-ntwc9r1a6z3xz0****
 	SagId *string `json:"SagId,omitempty" xml:"SagId,omitempty"`
 }
 

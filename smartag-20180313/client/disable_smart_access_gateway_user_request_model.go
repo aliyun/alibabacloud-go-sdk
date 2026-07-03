@@ -28,7 +28,7 @@ type iDisableSmartAccessGatewayUserRequest interface {
 type DisableSmartAccessGatewayUserRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the SAG APP instance is deployed.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DisableSmartAccessGatewayUserRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the SAG APP instance.
+	// The instance ID of the Smart Access Gateway.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DisableSmartAccessGatewayUserRequest struct {
 	//
 	// sag-va03wf4l4idaj*****
 	SmartAGId *string `json:"SmartAGId,omitempty" xml:"SmartAGId,omitempty"`
-	// The username of the client account.
+	// The username.
 	//
 	// This parameter is required.
 	//

@@ -48,9 +48,9 @@ type iCreateQosPolicyRequest interface {
 }
 
 type CreateQosPolicyRequest struct {
-	// The description of the traffic classification rule.
+	// The description of the traffic classification rule for the QoS policy.
 	//
-	// The description must be 1 to 512 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The description must be 1 to 512 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type CreateQosPolicyRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination CIDR block.
 	//
-	// Specify the value of this parameter in CIDR notation. Example: 192.168.10.0/24.
+	// The destination CIDR block is in CIDR notation. Example: 192.168.10.0/24.
 	//
 	// This parameter is required.
 	//
@@ -68,15 +68,15 @@ type CreateQosPolicyRequest struct {
 	DestCidr *string `json:"DestCidr,omitempty" xml:"DestCidr,omitempty"`
 	// The destination port range.
 	//
-	// Valid values: **1*	- to **65535*	- and **-1**.
+	// Valid values: **-1*	- or **1*	- to **65535**.
 	//
-	// Examples:
+	// Examples of destination port range formats:
 	//
-	// 	- **1/200**: a port range from 1 to 200
+	// - **1/200**: port range 1 to 200.
 	//
-	// 	- **80/80**: port 80
+	// - **80/80**: port 80.
 	//
-	// 	- **-1/-1**: all ports
+	// - **-1/-1**: all ports.
 	//
 	// This parameter is required.
 	//
@@ -84,25 +84,29 @@ type CreateQosPolicyRequest struct {
 	//
 	// 80/80
 	DestPortRange *string `json:"DestPortRange,omitempty" xml:"DestPortRange,omitempty"`
+	// The list of application group IDs.
+	//
 	// example:
 	//
 	// 20
 	DpiGroupIds []*string `json:"DpiGroupIds,omitempty" xml:"DpiGroupIds,omitempty" type:"Repeated"`
+	// The list of application IDs.
+	//
 	// example:
 	//
 	// 1
 	DpiSignatureIds []*string `json:"DpiSignatureIds,omitempty" xml:"DpiSignatureIds,omitempty" type:"Repeated"`
 	// The time when the traffic classification rule expires.
 	//
-	// Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ss+0800` format. The time must be in UTC+8.
+	// The time is expressed in ISO 8601 format and uses UTC+8. Format: `YYYY-MM-DDThh:mm:ss+0800`.
 	//
 	// example:
 	//
 	// 2022-09-14T16:41:33+0800
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of the protocol that applies to the traffic classification rule.
+	// The protocol type to which the traffic classification rule applies.
 	//
-	// The supported protocols provided in this topic are for reference only. The actual protocols in the console shall prevail.
+	// For the protocol types supported by the traffic classification rule, refer to the console.
 	//
 	// This parameter is required.
 	//
@@ -110,9 +114,9 @@ type CreateQosPolicyRequest struct {
 	//
 	// TCP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The name of the traffic classification rule.
+	// The name of the traffic classification rule for the QoS policy.
 	//
-	// The name must be 2 to 100 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name must be 2 to 100 characters in length and must start with a letter or a Chinese character. It can contain digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
@@ -120,9 +124,9 @@ type CreateQosPolicyRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The priority of the traffic throttling policy to which the traffic classification rule belongs.
+	// The priority of the rate limiting rule to which the traffic classification rule belongs.
 	//
-	// Valid values: **1 to 3**. A smaller value indicates a higher priority.
+	// Valid values: **1*	- to **3**. A smaller value indicates a higher priority.
 	//
 	// This parameter is required.
 	//
@@ -130,7 +134,7 @@ type CreateQosPolicyRequest struct {
 	//
 	// 3
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the QoS policy.
+	// The instance ID of the QoS policy.
 	//
 	// This parameter is required.
 	//
@@ -138,7 +142,7 @@ type CreateQosPolicyRequest struct {
 	//
 	// qos-xitd8690ucu8ro****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The ID of the region to which the QoS policy belongs.
+	// The region ID of the QoS policy instance.
 	//
 	// This parameter is required.
 	//
@@ -150,7 +154,7 @@ type CreateQosPolicyRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The source CIDR block.
 	//
-	// Specify the value of this parameter in CIDR notation. Example: 192.168.1.0/24.
+	// The source CIDR block is in CIDR notation. Example: 192.168.1.0/24.
 	//
 	// This parameter is required.
 	//
@@ -160,15 +164,15 @@ type CreateQosPolicyRequest struct {
 	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
 	// The source port range.
 	//
-	// Valid values: **1*	- to **65535*	- and **-1**.
+	// Valid values: **-1*	- or **1*	- to **65535**.
 	//
-	// Examples:
+	// Examples of source port range formats:
 	//
-	// 	- **1/200**: a port range from 1 to 200
+	// - **1/200**: port range 1 to 200.
 	//
-	// 	- **80/80**: port 80
+	// - **80/80**: port 80.
 	//
-	// 	- **-1/-1**: all ports
+	// - **-1/-1**: all ports.
 	//
 	// This parameter is required.
 	//
@@ -176,9 +180,9 @@ type CreateQosPolicyRequest struct {
 	//
 	// 80/80
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	// The time when the traffic classification rule takes effect.
+	// The effective period start time of the traffic categorization rule for the QoS policy.
 	//
-	// Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ss+0800` format. The time must be in UTC+8.
+	// The time is expressed in ISO 8601 format and uses UTC+8. Format: `YYYY-MM-DDThh:mm:ss+0800`.
 	//
 	// example:
 	//

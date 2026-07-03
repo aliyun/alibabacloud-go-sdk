@@ -16,9 +16,9 @@ type iDescribeSagDropTopNResponseBody interface {
 }
 
 type DescribeSagDropTopNResponseBody struct {
-	// The information about packets dropped by the SAG instance.
+	// The list of packet loss information about Smart Access Gateway instances.
 	DropTopN []*DescribeSagDropTopNResponseBodyDropTopN `json:"DropTopN,omitempty" xml:"DropTopN,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,25 +66,25 @@ func (s *DescribeSagDropTopNResponseBody) Validate() error {
 }
 
 type DescribeSagDropTopNResponseBodyDropTopN struct {
-	// The packet loss rate of the SAG instance. Unit: packets per second (PPS).
+	// The packet loss rate of the Smart Access Gateway instance. Unit: pps.
 	//
 	// example:
 	//
 	// 0.0
 	DropRate *string `json:"DropRate,omitempty" xml:"DropRate,omitempty"`
-	// The ID of the SAG instance.
+	// The ID of the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// sag-whfn****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the SAG instance.
+	// The name of the Smart Access Gateway instance.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the region where the SAG instance is deployed.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// example:
 	//

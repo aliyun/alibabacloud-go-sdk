@@ -60,15 +60,15 @@ type AddACLRuleRequest struct {
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// The description of the ACL rule.
 	//
-	// The description must be **1 to 512*	- characters in length.
+	// The description must be 1 to **512*	- characters in length.
 	//
 	// example:
 	//
 	// desctest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The range of the destination IP addresses.
+	// The destination CIDR block.
 	//
-	// Specify the value of this parameter in CIDR notation. Example: 192.168.10.0/24.
+	// For example: 192.168.10.0/24.
 	//
 	// This parameter is required.
 	//
@@ -78,9 +78,9 @@ type AddACLRuleRequest struct {
 	DestCidr *string `json:"DestCidr,omitempty" xml:"DestCidr,omitempty"`
 	// The destination port range.
 	//
-	// Valid values: **1*	- to **65535*	- and **-1**.
+	// Valid values: **-1*	- and **1*	- to **65535**.
 	//
-	// Set the destination port range in one of the following formats: 1/200 or 80/80. A value of -1/-1 indicates all ports.
+	// Use the format 1/200 or 80/80. A value of -1/-1 means all ports.
 	//
 	// This parameter is required.
 	//
@@ -88,11 +88,11 @@ type AddACLRuleRequest struct {
 	//
 	// 1/200
 	DestPortRange *string `json:"DestPortRange,omitempty" xml:"DestPortRange,omitempty"`
-	// The direction of traffic in which the ACL rule is applied. Valid values:
+	// The direction of traffic to which the ACL rule applies. Valid values:
 	//
-	// 	- **in**: The ACL rule controls inbound network traffic of the on-premises network that is associated with the Smart Access Gateway (SAG) instance.
+	// - **in**: inbound. Traffic from an external network to the local branch where the SAG instance is deployed.
 	//
-	// 	- **out**: The ACL rule controls outbound network traffic of the on-premises network that is associated with the SAG instance.
+	// - **out**: outbound. Traffic from the local branch where the SAG instance is deployed to an external network.
 	//
 	// This parameter is required.
 	//
@@ -100,17 +100,25 @@ type AddACLRuleRequest struct {
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// A list of application group IDs. The ACL rule matches traffic of the specified application groups.
+	//
+	// For more information, see [ListDpiGroups](https://help.aliyun.com/document_detail/196754.html). You can specify up to **10*	- application group IDs.
+	//
 	// example:
 	//
 	// 20
 	DpiGroupIds []*string `json:"DpiGroupIds,omitempty" xml:"DpiGroupIds,omitempty" type:"Repeated"`
+	// A list of application IDs. The ACL rule matches traffic of the specified applications.
+	//
+	// For more information, see [ListDpiSignatures](https://help.aliyun.com/document_detail/196630.html). You can specify up to **10*	- application IDs.
+	//
 	// example:
 	//
 	// 1
 	DpiSignatureIds []*string `json:"DpiSignatureIds,omitempty" xml:"DpiSignatureIds,omitempty" type:"Repeated"`
-	// The protocol used by the ACL rule.
+	// The protocol to which the ACL rule applies.
 	//
-	// The protocols that are provided in this topic are for reference only. The protocols available in the SAG console may vary. The value of the parameter is not case-sensitive.
+	// For a list of supported protocols, see the console. The protocol is not case-sensitive.
 	//
 	// This parameter is required.
 	//
@@ -120,7 +128,7 @@ type AddACLRuleRequest struct {
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	// The name of the ACL rule.
 	//
-	// The name must be 2 to 100 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+	// The name must be 2 to 100 characters in length, start with a letter, and can contain digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -128,11 +136,11 @@ type AddACLRuleRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The action policy of the ACL rule. Valid values:
+	// The authorization policy of the ACL rule. Valid values:
 	//
-	// 	- **accept**: allows network traffic.
+	// - **accept**: allows access.
 	//
-	// 	- **drop**: blocks the network traffic.
+	// - **drop**: denies access.
 	//
 	// This parameter is required.
 	//
@@ -142,17 +150,17 @@ type AddACLRuleRequest struct {
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The priority of the ACL rule.
 	//
-	// A smaller value indicates a higher priority. If rules have the same priority, whichever applied to the SAG devices earlier takes effect.
+	// A smaller value indicates a higher priority. If multiple rules have the same priority, the rule that is first delivered to the Smart Access Gateway device takes precedence.
 	//
-	// Valid values: **1 to 100**. Default value: **1**.
+	// Valid values: 1 to **100**. Default value: **1**.
 	//
 	// example:
 	//
 	// 12
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the region where the ACL is deployed.
+	// The ID of the region where the access control list (ACL) is located.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+	// For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/69813.html).
 	//
 	// This parameter is required.
 	//
@@ -162,9 +170,9 @@ type AddACLRuleRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The range of the source IP addresses.
+	// The source CIDR block.
 	//
-	// Specify the value of this parameter in CIDR notation. Example: 192.168.1.0/24.
+	// For example: 192.168.1.0/24.
 	//
 	// This parameter is required.
 	//
@@ -174,9 +182,9 @@ type AddACLRuleRequest struct {
 	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
 	// The source port range.
 	//
-	// Valid values: **1*	- to **65535*	- and **-1**.
+	// Valid values: **-1*	- and **1*	- to **65535**.
 	//
-	// Set the source port range in one of the following formats: 1/200 or 80/80. A value of -1/-1 indicates all ports.
+	// Use the format 1/200 or 80/80. A value of -1/-1 means all ports.
 	//
 	// This parameter is required.
 	//
@@ -184,11 +192,11 @@ type AddACLRuleRequest struct {
 	//
 	// 1/200
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	// The type of the ACL rule: Valid values:
+	// The type of the ACL rule. Valid values:
 	//
-	// 	- **LAN**: The ACL rule controls network traffic transmitted through private IP addresses.
+	// - **LAN**: (Default) private network. The ACL rule controls traffic on private networks.
 	//
-	// 	- **WAN**: The ACL rule controls network traffic transmitted through public IP addresses.
+	// - **WAN**: public network. The ACL rule controls traffic on public networks.
 	//
 	// example:
 	//

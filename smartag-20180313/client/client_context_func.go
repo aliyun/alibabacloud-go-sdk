@@ -137,7 +137,7 @@ func (client *Client) ActiveFlowLogWithContext(ctx context.Context, request *Act
 
 // Summary:
 //
-// Creates an access control list (ACL) rule.
+// Adds an access control rule.
 //
 // @param request - AddACLRuleRequest
 //
@@ -421,7 +421,7 @@ func (client *Client) AddSmartAccessGatewayDnsForwardWithContext(ctx context.Con
 
 // Summary:
 //
-// You can call this operation to add a source network address translation (SNAT) entry to a Smart Access Gateway (SAG) instance.
+// Adds a source network address translation (SNAT) entry to a Smart Access Gateway (SAG) instance.
 //
 // @param request - AddSnatEntryRequest
 //
@@ -561,7 +561,7 @@ func (client *Client) AssociateACLWithContext(ctx context.Context, request *Asso
 
 // Summary:
 //
-// Associates a flow log with a Smart Access Gateway (SAG) instance.
+// Associates a Smart Access Gateway instance.
 //
 // @param request - AssociateFlowLogRequest
 //
@@ -771,7 +771,67 @@ func (client *Client) AssociateSmartAGWithApplicationBandwidthPackageWithContext
 
 // Summary:
 //
-// Associates a Smart Access Gateway (SAG) device with an SAG instance.
+// Binds a Cloud Connect Network (CCN) instance to a Cloud Enterprise Network (CEN) instance.
+//
+// Description:
+//
+// Binds a Cloud Connect Network (CCN) instance to a Cloud Enterprise Network (CEN) instance.
+//
+// @param request - AttachCcnInstanceToCenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachCcnInstanceToCenResponse
+func (client *Client) AttachCcnInstanceToCenWithContext(ctx context.Context, request *AttachCcnInstanceToCenRequest, runtime *dara.RuntimeOptions) (_result *AttachCcnInstanceToCenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CcnId) {
+		query["CcnId"] = request.CcnId
+	}
+
+	if !dara.IsNil(request.CenId) {
+		query["CenId"] = request.CenId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Subnet) {
+		query["Subnet"] = request.Subnet
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AttachCcnInstanceToCen"),
+		Version:     dara.String("2018-03-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AttachCcnInstanceToCenResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Binds a Smart Access Gateway device to a Smart Access Gateway instance.
 //
 // @param request - BindSerialNumberRequest
 //
@@ -911,7 +971,7 @@ func (client *Client) BindSmartAccessGatewayWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Associates a Smart Access Gateway (SAG) instance with a virtual border router (VBR).
+// Binds a virtual border router (VBR) to a Smart Access Gateway instance.
 //
 // @param request - BindVbrRequest
 //
@@ -1055,7 +1115,7 @@ func (client *Client) ClearSagCipherWithContext(ctx context.Context, request *Cl
 
 // Summary:
 //
-// Clears the routable IP addresses of a Smart Access Gateway (SAG) instance.
+// Purges the routable addresses of a Smart Access Gateway instance.
 //
 // @param request - ClearSagRouteableAddressRequest
 //
@@ -1119,7 +1179,7 @@ func (client *Client) ClearSagRouteableAddressWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Creates an access control list (ACL).
+// Creates an access control instance by calling the CreateACL operation.
 //
 // @param request - CreateACLRequest
 //
@@ -1187,11 +1247,11 @@ func (client *Client) CreateACLWithContext(ctx context.Context, request *CreateA
 
 // Summary:
 //
-// Creates a Cloud Connect Network (CCN) instance.
+// Calls the CreateCloudConnectNetwork operation to create a Cloud Connect Network (CCN) instance.
 //
 // Description:
 //
-// CCN is a matrix consisting of Alibaba Cloud distributed access gateways. It is an important component of Smart Access Gateway (SAG). After you associate an SAG instance with a CCN instance, the SAG instance connects the private networks associated with Alibaba Cloud. For more information, see [Overview of Cloud Connect Network](https://help.aliyun.com/document_detail/93667.html).
+// A Cloud Connect Network (CCN) is a device access matrix that consists of Alibaba Cloud distributed access gateways. CCN is another important component of Smart Access Gateway. After you attach Smart Access Gateway to a CCN, Smart Access Gateway can connect your on-premises network to Alibaba Cloud through the CCN via network connectivity. For more information, see [Cloud Connect Network overview](https://help.aliyun.com/document_detail/93667.html).
 //
 // @param request - CreateCloudConnectNetworkRequest
 //
@@ -1267,7 +1327,7 @@ func (client *Client) CreateCloudConnectNetworkWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Creates an enterprise code.
+// Creates an enterprise code by calling CreateEnterpriseCode.
 //
 // @param request - CreateEnterpriseCodeRequest
 //
@@ -1423,7 +1483,7 @@ func (client *Client) CreateFlowLogWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates a health check for a Smart Access Gateway (SAG) instance.
+// Calls CreateHealthCheck to create a health check for a Smart Access Gateway instance.
 //
 // @param request - CreateHealthCheckRequest
 //
@@ -1539,13 +1599,13 @@ func (client *Client) CreateHealthCheckWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a probing task for a Smart Access Gateway (SAG) device.
+// Creates a probe task for a specified Smart Access Gateway device.
 //
 // Description:
 //
-//	  Only SAG-1000 devices whose software version is 2.7.0 or later support the probing feature.
+// - Currently, only SAG-1000 devices with software version 2.7.0 or later support the probe monitoring feature.
 //
-//		- The SAG instance must have the deep packet inspection (DPI) feature enabled. You can call the [SetAdvancedMonitorState](https://help.aliyun.com/document_detail/476404.html) operation to enable or disable the DPI feature.
+// - Before creating a probe task, enable the advanced monitoring feature for the Smart Access Gateway instance. You can call the [SetAdvancedMonitorState](https://help.aliyun.com/document_detail/476404.html) operation to set the advanced monitoring status.
 //
 // @param request - CreateProbeTaskRequest
 //
@@ -1629,7 +1689,7 @@ func (client *Client) CreateProbeTaskWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Creates a quality of service (QoS) policy.
+// Creates a quality of service (QoS) policy instance by calling the CreateQos operation.
 //
 // @param request - CreateQosRequest
 //
@@ -1697,7 +1757,7 @@ func (client *Client) CreateQosWithContext(ctx context.Context, request *CreateQ
 
 // Summary:
 //
-// Creates a traffic throttling rule for a quality of service (QoS) policy.
+// Creates a rate limiting rule for a quality of service (QoS) policy by calling the CreateQosCar operation.
 //
 // @param request - CreateQosCarRequest
 //
@@ -1797,13 +1857,11 @@ func (client *Client) CreateQosCarWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates a traffic classification rule for a quality of service (QoS) policy.
+// Creates a traffic classification rule for a QoS policy by calling the CreateQosPolicy operation.
 //
 // Description:
 //
-// ## Prerequisites
-//
-// A traffic throttling rule is created. For more information, see [CreateQosCar](https://help.aliyun.com/document_detail/131806.html).
+// Before you create a 5-tuple rule for a QoS policy, make sure that you have created a rate limiting rule for the QoS policy. For more information, see [CreateQosCar](https://help.aliyun.com/document_detail/131806.html).
 //
 // @param request - CreateQosPolicyRequest
 //
@@ -2083,7 +2141,7 @@ func (client *Client) CreateSagStaticRouteWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Configures a service address for a Smart Access Gateway (SAG) device.
+// Configures a service address for a specified Smart Access Gateway device.
 //
 // @param request - CreateServiceAddressRequest
 //
@@ -2787,19 +2845,19 @@ func (client *Client) DeleteDnatEntryWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Deletes a specified enterprise code.
+// Deletes a specified enterprise code by calling DeleteEnterpriseCode.
 //
 // Description:
 //
-// Before you call this operation, take note of the following rules:
+// Before you delete an enterprise code, note the following information:
 //
-//   - You cannot delete default enterprise codes.
+// - Default enterprise codes cannot be deleted.
 //
-//     To delete a default enterprise code, change it to a custom enterprise code and then delete it. For more information, see [UpdateEnterpriseCode](https://help.aliyun.com/document_detail/197700.html).
+// If the enterprise code that you want to delete is a default enterprise code, change it to a common enterprise code first, and then delete it. For more information, see [UpdateEnterpriseCode](https://help.aliyun.com/document_detail/197700.html).
 //
-//   - You cannot delete enterprise codes that are associated with a Smart Access Gateway (SAG) APP instance.
+// - Enterprise codes that are attached to Smart Access Gateway app instances cannot be deleted.
 //
-//     To delete an enterprise code that is associated with an SAG APP instance, associate the SAG APP instance with another enterprise code, and then delete the enterprise code. For more information, see [UpdateSmartAGEnterpriseCode](https://help.aliyun.com/document_detail/197701.html).
+// If the enterprise code that you want to delete is attached to Smart Access Gateway app instances, change the enterprise code of the Smart Access Gateway app instances to another enterprise code first, and then delete the current enterprise code. For more information, see [UpdateSmartAGEnterpriseCode](https://help.aliyun.com/document_detail/197701.html).
 //
 // @param request - DeleteEnterpriseCodeRequest
 //
@@ -2915,7 +2973,7 @@ func (client *Client) DeleteFlowLogWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// You can call this operation to delete a health check instance.
+// Deletes a health check instance.
 //
 // @param request - DeleteHealthCheckRequest
 //
@@ -3099,7 +3157,7 @@ func (client *Client) DeleteQosWithContext(ctx context.Context, request *DeleteQ
 
 // Summary:
 //
-// Deletes a speed limiting rule of a Quality of Service (QoS) policy.
+// Deletes a QoS car (bandwidth throttling rule) by calling the DeleteQosCar operation.
 //
 // @param request - DeleteQosCarRequest
 //
@@ -3387,7 +3445,7 @@ func (client *Client) DeleteSagExpressConnectInterfaceWithContext(ctx context.Co
 
 // Summary:
 //
-// You can call this operation to delete a static route.
+// Deletes a static route.
 //
 // @param request - DeleteSagStaticRouteRequest
 //
@@ -3467,7 +3525,7 @@ func (client *Client) DeleteSagStaticRouteWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes a service address from a Smart Access Gateway (SAG) device.
+// Deletes a service address configured on a Smart Access Gateway device.
 //
 // @param request - DeleteServiceAddressRequest
 //
@@ -3655,7 +3713,7 @@ func (client *Client) DeleteSmartAccessGatewayClientUserWithContext(ctx context.
 
 // Summary:
 //
-// Disables DNS forwarding for SCG5000 or SCG5000-5G devices whose software version is 3.4.2 or later.
+// Deletes a DNS forwarding rule. This operation is applicable only to Smart Access Gateway (SAG) instances that are created using an SCG5000 or SCG5000-5G device with firmware version 3.4.2 or later.
 //
 // @param request - DeleteSmartAccessGatewayDnsForwardRequest
 //
@@ -3779,7 +3837,7 @@ func (client *Client) DeleteSnatEntryWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the information about an access control list (ACL).
+// Calls DescribeACLAttribute to query the information about a specified access control list (ACL) instance.
 //
 // @param request - DescribeACLAttributeRequest
 //
@@ -3863,7 +3921,7 @@ func (client *Client) DescribeACLAttributeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries access control lists (ACLs) in a specified region.
+// Calls DescribeACLs to query the information about access control instances in a specified region.
 //
 // @param request - DescribeACLsRequest
 //
@@ -4091,7 +4149,7 @@ func (client *Client) DescribeClientUserDNSWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries Cloud Connect Network (CCN) instances that you have created in a specific region.
+// Retrieves Cloud Connect Network (CCN) instances in a specified region.
 //
 // @param request - DescribeCloudConnectNetworksRequest
 //
@@ -4319,7 +4377,7 @@ func (client *Client) DescribeDnatEntriesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries Smart Access Gateway (SAG) instances that are associated with a specified flow log.
+// Queries the Smart Access Gateway instances associated with a flow log by calling DescribeFlowLogSags.
 //
 // @param request - DescribeFlowLogSagsRequest
 //
@@ -4931,7 +4989,7 @@ func (client *Client) DescribeQosCarsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries quality of service (QoS) rules that contain 5-tuples.
+// You can call the DescribeQosPolicies operation to query the quintuple rule configurations for a Quality of Service (QoS) policy.
 //
 // @param request - DescribeQosPoliciesRequest
 //
@@ -5227,7 +5285,7 @@ func (client *Client) DescribeRouteDistributionStrategiesWithContext(ctx context
 
 // Summary:
 //
-// Queries a Smart Access Gateway (SAG) device.
+// Queries information about a Smart Access Gateway device by calling the DescribeSAGDeviceInfo operation.
 //
 // @param request - DescribeSAGDeviceInfoRequest
 //
@@ -5295,7 +5353,7 @@ func (client *Client) DescribeSAGDeviceInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the DNS servers used by a Smart Access Gateway (SAG) device.
+// Queries the DNS settings that are currently in effect on a Smart Access Gateway device.
 //
 // @param request - DescribeSagCurrentDnsRequest
 //
@@ -5363,7 +5421,7 @@ func (client *Client) DescribeSagCurrentDnsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// You can call this operation to query the top 10 Smart Access Gateway (SAG) instances that have the highest packet loss rates in a specific region.
+// Queries the top 10 Smart Access Gateway instances with the highest packet loss rate in a specified region.
 //
 // @param request - DescribeSagDropTopNRequest
 //
@@ -5427,7 +5485,7 @@ func (client *Client) DescribeSagDropTopNWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries sub-interfaces added to an Express Connect circuit port.
+// Queries the sub-interfaces of a dedicated connection port by calling DescribeSagExpressConnectInterfaceList.
 //
 // @param request - DescribeSagExpressConnectInterfaceListRequest
 //
@@ -5567,7 +5625,7 @@ func (client *Client) DescribeSagGlobalRouteProtocolWithContext(ctx context.Cont
 
 // Summary:
 //
-// You can call this operation to query the high availability (HA) configuration of a Smart Access Gateway (SAG) instance.
+// Queries the high-availability configuration of a Smart Access Gateway instance by calling DescribeSagHa.
 //
 // @param request - DescribeSagHaRequest
 //
@@ -5771,7 +5829,7 @@ func (client *Client) DescribeSagManagementPortWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the number of clients connected to Alibaba Cloud through a Smart Access Gateway (SAG) app instance.
+// Queries online client statistics for Smart Access Gateway (SAG) app instances.
 //
 // @param request - DescribeSagOnlineClientStatisticsRequest
 //
@@ -5835,7 +5893,7 @@ func (client *Client) DescribeSagOnlineClientStatisticsWithContext(ctx context.C
 
 // Summary:
 //
-// You can call this operation to query the information of a physical port.
+// Queries the information about a physical port.
 //
 // @param request - DescribeSagPortListRequest
 //
@@ -5903,7 +5961,7 @@ func (client *Client) DescribeSagPortListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the ports for which the specified routing protocol is enabled.
+// Invokes DescribeSagPortRouteProtocolList to obtain the list of ports on which routing protocols are enabled.
 //
 // @param request - DescribeSagPortRouteProtocolListRequest
 //
@@ -6311,7 +6369,7 @@ func (client *Client) DescribeSagStaticRouteListWithContext(ctx context.Context,
 
 // Summary:
 //
-// You can call this operation to query the top 10 Smart Access Gateway (SAG) instances that have the highest data transfer rates in a specific region.
+// Queries the top 10 Smart Access Gateway (SAG) instances that have the highest data transfer rates in a specific region.
 //
 // @param request - DescribeSagTrafficTopNRequest
 //
@@ -6715,7 +6773,7 @@ func (client *Client) DescribeSagWanSnatWithContext(ctx context.Context, request
 
 // Summary:
 //
-// You can call this operation to query the Wi-Fi settings of a Smart Access Gateway (SAG) instance.
+// Queries the Wi-Fi settings of a Smart Access Gateway (SAG) instance.
 //
 // @param request - DescribeSagWifiRequest
 //
@@ -6783,7 +6841,7 @@ func (client *Client) DescribeSagWifiWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the information about a Smart Access Gateway (SAG) instance.
+// Calls the DescribeSmartAccessGatewayAttribute operation to query the information about a specified Smart Access Gateway (SAG) instance.
 //
 // @param request - DescribeSmartAccessGatewayAttributeRequest
 //
@@ -6847,7 +6905,7 @@ func (client *Client) DescribeSmartAccessGatewayAttributeWithContext(ctx context
 
 // Summary:
 //
-// Queries client accounts added to a Smart Access Gateway (SAG) app instance.
+// Invokes DescribeSmartAccessGatewayClientUsers to query the client account information of a Smart Access Gateway app instance.
 //
 // @param request - DescribeSmartAccessGatewayClientUsersRequest
 //
@@ -7195,7 +7253,7 @@ func (client *Client) DescribeSmartAccessGatewaysWithContext(ctx context.Context
 
 // Summary:
 //
-// You can call this operation to query source network address translation (SNAT) entries associated with a Smart Access Gateway (SAG) instance.
+// Queries SNAT entries bound to a Smart Access Gateway instance by calling DescribeSnatEntries.
 //
 // @param request - DescribeSnatEntriesRequest
 //
@@ -7399,7 +7457,7 @@ func (client *Client) DescribeUserFlowStatisticsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the number of clients that are connected to Alibaba Cloud through a specific Smart Access Gateway (SAG) app instance.
+// Queries a specified user\\"s online connection statistics from a Smart Access Gateway (SAG) app instance.
 //
 // @param request - DescribeUserOnlineClientStatisticsRequest
 //
@@ -7467,7 +7525,7 @@ func (client *Client) DescribeUserOnlineClientStatisticsWithContext(ctx context.
 
 // Summary:
 //
-// You can call this operation to query the connection information about a client based on the ID of the Smart Access Gateway (SAG) APP instance and username of the client account.
+// Queries the connection information about a client based on the ID of the Smart Access Gateway (SAG) APP instance and username of the client account.
 //
 // @param request - DescribeUserOnlineClientsRequest
 //
@@ -7525,6 +7583,62 @@ func (client *Client) DescribeUserOnlineClientsWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUserOnlineClientsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbinds a Cloud Connect Network (CCN) from a Cloud Enterprise Network (CEN) instance.
+//
+// Description:
+//
+// Unbinds a Cloud Connect Network (CCN) from a Cloud Enterprise Network (CEN) instance.
+//
+// @param request - DetachCcnInstanceFromCenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachCcnInstanceFromCenResponse
+func (client *Client) DetachCcnInstanceFromCenWithContext(ctx context.Context, request *DetachCcnInstanceFromCenRequest, runtime *dara.RuntimeOptions) (_result *DetachCcnInstanceFromCenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CcnId) {
+		query["CcnId"] = request.CcnId
+	}
+
+	if !dara.IsNil(request.CenId) {
+		query["CenId"] = request.CenId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DetachCcnInstanceFromCen"),
+		Version:     dara.String("2018-03-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DetachCcnInstanceFromCenResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7675,7 +7789,7 @@ func (client *Client) DisableSmartAGDpiMonitorWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Disables a client account of a Smart Access Gateway (SAG) app instance.
+// Disables a user of a Smart Access Gateway instance.
 //
 // @param request - DisableSmartAccessGatewayUserRequest
 //
@@ -7947,7 +8061,7 @@ func (client *Client) DisassociateQosWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Generates a diagnosis report for a Smart Access Gateway (SAG) device.
+// Queries the diagnosis report of a Smart Access Gateway (SAG) device by calling the DiscribeSmartAccessGatewayDiagnosisReport operation.
 //
 // @param request - DiscribeSmartAccessGatewayDiagnosisReportRequest
 //
@@ -8439,7 +8553,7 @@ func (client *Client) GetAclAttributeWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the status of the deep packet inspection (DPI) feature of a Smart Access Gateway (SAG) instance.
+// Queries the status of the advanced monitoring feature for a specified Smart Access Gateway instance.
 //
 // @param request - GetAdvancedMonitorStateRequest
 //
@@ -9155,7 +9269,7 @@ func (client *Client) ListAccessPointsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the service addresses of a Smart Access Gateway (SAG) device.
+// Lists the configured service addresses for a specified Smart Access Gateway device.
 //
 // @param request - ListAvailableServiceAddressRequest
 //
@@ -9211,13 +9325,11 @@ func (client *Client) ListAvailableServiceAddressWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries configuration errors of the deep packet inspection (DPI) feature.
+// Queries for deep packet inspection (DPI) configuration errors.
 //
 // Description:
 //
-// ## Background information
-//
-// If you have configured an application-aware access control list (ACL) or a quality of service (QoS) policy and associated it with a Smart Access Gateway (SAG) instance, you can call this operation to query whether the ACL rules or 5-tuples in the QoS policy are applied to the SAG instance. If settings are not applied to the SAG instance, the error information is returned.
+// If you configure an application-based Resource Access Management instance or a Quality of Service (QoS) policy instance and associate it with a Smart Access Gateway instance, you can call this operation to check whether the access control rules or QoS quintuple rules are successfully applied to the target Smart Access Gateway instance. If a configuration fails to apply, this operation returns information about the error.
 //
 // @param request - ListDpiConfigErrorRequest
 //
@@ -9281,7 +9393,7 @@ func (client *Client) ListDpiConfigErrorWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the information about application groups supported by Smart Access Gateway (SAG) instances in a specified region.
+// Lists the application groups that Smart Access Gateway supports in a specified region.
 //
 // @param request - ListDpiGroupsRequest
 //
@@ -9357,21 +9469,21 @@ func (client *Client) ListDpiGroupsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the information about an application or an application group in a region, or about the applications supported by Smart Access Gateway (SAG) in a region.
+// Queries all applications, specific applications, or specific application groups supported by Smart Access Gateway (SAG) in a specified region.
 //
 // Description:
 //
-// This operation supports the following features:
+// This operation lets you:
 //
-//   - Queries the information about all applications supported by the SAG instance in a specified region.
+// - Query all applications supported by SAG in a specified region.
 //
-//   - Queries the information about an application by application ID in a specified region.
+// - Query a specific application by its ID in a specified region.
 //
-//   - Queries the information about an application by application name in a specified region.
+// - Query a specific application by its name in a specified region.
 //
-//   - Queries the information about an application group by group ID in a specified region.
+// - Query all applications in a specific application group by the group ID in a specified region.
 //
-// If this is the first time you call this operation, we recommend that you query all applications supported by the SAG instance in the specified region by region ID. Then, you can query the information about a specified application.
+// If this is the first time you call this operation, we recommend that you query all applications supported by SAG in a region. This helps you obtain the information required for subsequent queries of specific applications.
 //
 // @param request - ListDpiSignaturesRequest
 //
@@ -9659,7 +9771,7 @@ func (client *Client) ListSmartAGApiUnsupportedFeatureWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries information about Smart Access Gateway (SAG) instances within specific access points in a specific region.
+// Queries Smart Access Gateway (SAG) instances associated with specific access points in a region.
 //
 // @param request - ListSmartAGByAccessPointRequest
 //
@@ -9803,7 +9915,7 @@ func (client *Client) ModifyACLWithContext(ctx context.Context, request *ModifyA
 
 // Summary:
 //
-// Modifies an access control list (ACL) rule.
+// The ModifyACLRule operation modifies an access control rule.
 //
 // @param request - ModifyACLRuleRequest
 //
@@ -9923,7 +10035,7 @@ func (client *Client) ModifyACLRuleWithContext(ctx context.Context, request *Mod
 
 // Summary:
 //
-// Modifies the DNS settings of a Smart Access Gateway (SAG) app instance.
+// Modifies the DNS configuration of a Smart Access Gateway (SAG) application instance.
 //
 // @param request - ModifyClientUserDNSRequest
 //
@@ -9995,7 +10107,7 @@ func (client *Client) ModifyClientUserDNSWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies the configurations of a Cloud Connect Network (CCN) instance.
+// Updates the configurations of a Cloud Connect Network (CCN) instance.
 //
 // @param request - ModifyCloudConnectNetworkRequest
 //
@@ -10163,7 +10275,7 @@ func (client *Client) ModifyDeviceAutoUpgradePolicyWithContext(ctx context.Conte
 
 // Summary:
 //
-// Modifies the settings of a flow log.
+// Updates the settings of a flow log.
 //
 // @param request - ModifyFlowLogAttributeRequest
 //
@@ -10391,7 +10503,7 @@ func (client *Client) ModifyHealthCheckWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// You can call this operation to modify a quality of service (QoS) policy, for example, its name.
+// Modifies a quality of service (QoS) policy, such as its name.
 //
 // @param request - ModifyQosRequest
 //
@@ -10567,7 +10679,7 @@ func (client *Client) ModifyQosCarWithContext(ctx context.Context, request *Modi
 
 // Summary:
 //
-// Modifies a traffic classification rule of a quality of service (QoS) policy.
+// You can call the ModifyQosPolicy operation to modify the stream classification rules in a Quality of Service (QoS) policy.
 //
 // @param request - ModifyQosPolicyRequest
 //
@@ -11075,7 +11187,7 @@ func (client *Client) ModifySagHaWithContext(ctx context.Context, request *Modif
 
 // Summary:
 //
-// You can call this operation to modify the LAN port configurations of a Smart Access Gateway (SAG) device.
+// Modifies the LAN port configurations of a Smart Access Gateway (SAG) device.
 //
 // @param request - ModifySagLanRequest
 //
@@ -11171,7 +11283,7 @@ func (client *Client) ModifySagLanWithContext(ctx context.Context, request *Modi
 
 // Summary:
 //
-// Modifies the settings of a Smart Access Gateway (SAG) device port.
+// Updates the settings of a Smart Access Gateway (SAG) device port.
 //
 // @param request - ModifySagManagementPortRequest
 //
@@ -11331,7 +11443,7 @@ func (client *Client) ModifySagPortRoleWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// You can call this operation to modify the routing protocol of a port.
+// Modifies the routing protocol of a port.
 //
 // @param request - ModifySagPortRouteProtocolRequest
 //
@@ -11947,7 +12059,7 @@ func (client *Client) ModifySagWanWithContext(ctx context.Context, request *Modi
 
 // Summary:
 //
-// You can call this operation to modify the SNAT configurations of a WAN port of a Smart Access Gateway (SAG) device.
+// Modifies the SNAT configurations of a WAN port of a Smart Access Gateway (SAG) device.
 //
 // @param request - ModifySagWanSnatRequest
 //
@@ -12019,7 +12131,7 @@ func (client *Client) ModifySagWanSnatWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// You can call this operation to modify the Wi-Fi settings of a Smart Access Gateway (SAG) device.
+// Modifies the Wi-Fi settings of a Smart Access Gateway (SAG) device.
 //
 // @param request - ModifySagWifiRequest
 //
@@ -14135,7 +14247,11 @@ func (client *Client) UpdateSmartAccessGatewayGlobalRouteProtocolWithContext(ctx
 
 // Summary:
 //
-// Modifies the OSPF configurations for an SAG SCG5000 or SCG5000-5G device whose version is 3.4.2 or later.
+// Modifies the Open Shortest Path First (OSPF) dynamic routing protocol configuration of a Smart Access Gateway (SAG) device. This operation is supported only for SAG instances that use the SCG5000 or SCG5000-5G device model and run device version 3.4.2 or later.
+//
+// Description:
+//
+// You can modify the OSPF dynamic routing protocol configuration only for SCG5000 and SCG5000-5G devices that run device version 3.4.2 or later.
 //
 // @param request - UpdateSmartAccessGatewayOspfRouteRequest
 //
@@ -14931,7 +15047,11 @@ func (client *Client) ViewSmartAccessGatewayOspfRouteWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the ports that have routing protocols enabled on an SAG SCG5000 or SCG5000-5G device whose version is 3.4.2 or later.
+// Queries the list of ports on a Smart Access Gateway (SAG) device that have a routable protocol enabled. This operation is applicable to SAG instances that are associated with an SCG5000 or SCG5000-5G device of version 3.4.2 or later.
+//
+// Description:
+//
+// You can query the list of ports that have a routable protocol enabled only on SCG5000 and SCG5000-5G devices of version 3.4.2 or later.
 //
 // @param request - ViewSmartAccessGatewayPortRouteProtocolRequest
 //
