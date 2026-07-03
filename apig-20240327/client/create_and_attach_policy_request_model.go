@@ -28,111 +28,57 @@ type iCreateAndAttachPolicyRequest interface {
 }
 
 type CreateAndAttachPolicyRequest struct {
-	// List of attachment point IDs.
+	// The list of target resource IDs to attach.
 	//
 	// This parameter is required.
 	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
-	// Types of attachment points supported by the policy.
-	//
-	// - HttpApi: HttpApi.
-	//
-	// - Operation: Operation of HttpApi.
-	//
-	// - GatewayRoute: Gateway route.
-	//
-	// - GatewayService: Gateway service.
-	//
-	// - GatewayServicePort: Gateway service port.
-	//
-	// - Domain: Gateway domain.
-	//
-	// - Gateway: Gateway.
+	// The type of the target resource to attach.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// HttpApi
+	// GatewayRoute
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The class name types supported by the policy. Different policies support different attachment points, to be used in conjunction with `attachResourceType`.
-	//
-	// - RateLimit: Traffic control, supports HttpApi, Operation, GatewayRoute.
-	//
-	// - ConcurrencyLimit: Concurrency control, supports HttpApi, Operation, GatewayRoute.
-	//
-	// - CircuitBreaker: Circuit breaking and degradation, supports HttpApi, Operation, GatewayRoute.
-	//
-	// - HttpRewrite: HTTP rewrite, supports HttpApi, Operation, GatewayRoute.
-	//
-	// - HeaderModify: Header modification, supports HttpApi, Operation, GatewayRoute.
-	//
-	// - Cors: Cross-origin, supports HttpApi, Operation, GatewayRoute.
-	//
-	// - FlowCopy: Traffic replication, supports HttpApi, Operation, GatewayRoute.
-	//
-	// - Timeout: Timeout, supports HttpApi, Operation, GatewayRoute.
-	//
-	// - Retry: Retry, supports HttpApi, Operation, GatewayRoute.
-	//
-	// - IpAccessControl: IP access control, supports HttpApi, Operation, GatewayRoute, Domain, Gateway.
-	//
-	// - DirectResponse: Mock, supports Operation, GatewayRoute.
-	//
-	// - Redirect: Redirection, supports GatewayRoute.
-	//
-	// - Fallback: Fallback, supports Operation, GatewayRoute.
-	//
-	// - ServiceTls: Service TLS authentication, supports GatewayService.
-	//
-	// - ServiceLb: Service load balancing, supports GatewayService.
-	//
-	// - ServicePortTls: Service port TLS authentication, supports GatewayServicePort.
-	//
-	// - Waf: WAF protection, supports GatewayRoute, Gateway.
-	//
-	// - JWTAuth: JWT global authentication, supports Gateway.
-	//
-	// - OIDCAuth: OIDC global authentication, supports Gateway.
-	//
-	// - ExternalZAuth: Custom authorization, supports Gateway.
+	// The policy type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// IpAccessControl
+	// AiFallback
 	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
-	// Configuration information.
+	// The policy configuration content (JSON string).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {\\"enable\\":false}
+	// {"serviceConfigs":[...]}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// Policy description.
+	// The policy description.
 	//
 	// example:
 	//
-	// 这是策略描述
+	// 主路由失败时回退
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Environment ID.
+	// The environment ID.
 	//
 	// example:
 	//
-	// env-cq7l5s5lhtgi6qasrdc0
+	// env-test
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Gateway ID.
+	// The gateway ID.
 	//
 	// example:
 	//
-	// gw-cq7l5s5lhtgi6qasrdc0
+	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// Policy name.
+	// The policy name.
 	//
 	// example:
 	//
-	// test
+	// my-fallback-policy
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

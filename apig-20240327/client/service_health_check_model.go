@@ -28,20 +28,54 @@ type iServiceHealthCheck interface {
 }
 
 type ServiceHealthCheck struct {
+	// Specifies whether to enable the health check.
+	//
 	// example:
 	//
 	// true
-	Enable           *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
-	HealthyThreshold *int32  `json:"healthyThreshold,omitempty" xml:"healthyThreshold,omitempty"`
-	HttpHost         *string `json:"httpHost,omitempty" xml:"httpHost,omitempty"`
-	HttpPath         *string `json:"httpPath,omitempty" xml:"httpPath,omitempty"`
-	Interval         *int32  `json:"interval,omitempty" xml:"interval,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The healthy threshold for the health check.
+	//
+	// example:
+	//
+	// 2
+	HealthyThreshold *int32 `json:"healthyThreshold,omitempty" xml:"healthyThreshold,omitempty"`
+	// The health check domain name. This parameter is optional when the health check protocol is HTTP.
+	//
+	// example:
+	//
+	// example.com
+	HttpHost *string `json:"httpHost,omitempty" xml:"httpHost,omitempty"`
+	// The health check path. This parameter is required when the health check protocol is HTTP.
+	//
+	// example:
+	//
+	// /health
+	HttpPath *string `json:"httpPath,omitempty" xml:"httpPath,omitempty"`
+	// The health check interval.
+	//
+	// example:
+	//
+	// 10
+	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
+	// The health check protocol. Valid values: TCP, HTTP, and GRPC.
+	//
 	// example:
 	//
 	// TCP
-	Protocol           *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	Timeout            *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	UnhealthyThreshold *int32  `json:"unhealthyThreshold,omitempty" xml:"unhealthyThreshold,omitempty"`
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The health check response timeout period.
+	//
+	// example:
+	//
+	// 5
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// The unhealthy threshold for the health check.
+	//
+	// example:
+	//
+	// 3
+	UnhealthyThreshold *int32 `json:"unhealthyThreshold,omitempty" xml:"unhealthyThreshold,omitempty"`
 }
 
 func (s ServiceHealthCheck) String() string {

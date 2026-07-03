@@ -26,6 +26,8 @@ type iListDomainsRequest interface {
 }
 
 type ListDomainsRequest struct {
+	// The domain name scope.
+	//
 	// example:
 	//
 	// Serverless

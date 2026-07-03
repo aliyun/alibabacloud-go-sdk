@@ -30,27 +30,27 @@ type CreateSecretRequest struct {
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The type of the gateway.
+	// The gateway type.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The key configuration information of KMS.
+	// The KMS key configuration information.
 	KmsConfig *KMSConfig `json:"kmsConfig,omitempty" xml:"kmsConfig,omitempty"`
-	// The key name. It can be up to 64 characters in length and can contain letters, digits, and underscores (_).
+	// The key name. The name can contain letters, digits, and underscores (_), and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// my_secret
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The value of the KMS credential.
+	// The KMS credential value.
 	//
 	// example:
 	//
 	// apikey-123456xxxxxxxx
 	SecretData *string `json:"secretData,omitempty" xml:"secretData,omitempty"`
-	// The source of the key.
+	// The key source.
 	//
 	// example:
 	//

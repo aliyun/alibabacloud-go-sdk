@@ -16,10 +16,14 @@ type iGetGatewayQuotaRuleSubjectUsageRequest interface {
 }
 
 type GetGatewayQuotaRuleSubjectUsageRequest struct {
+	// The page number of the detailed consumption (request) records of the consumer within the cycle.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of detailed consumption (request) records per page for the consumer within the cycle. Maximum value: 10.
+	//
 	// example:
 	//
 	// 10

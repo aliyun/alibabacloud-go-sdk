@@ -20,18 +20,26 @@ type iAddGatewayQuotaRuleResponseBody interface {
 }
 
 type AddGatewayQuotaRuleResponseBody struct {
+	// The status code or error code.
+	//
 	// example:
 	//
 	// 200, 404, 500
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
+	//
 	// example:
 	//
 	// {\\"key\\": \\"value\\"}
 	Data *AddGatewayQuotaRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The message content.
+	//
 	// example:
 	//
 	// 你好，世界！
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1234567890
@@ -92,15 +100,22 @@ func (s *AddGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyData struct {
+	// Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario such as an unconfirmed conflict overwrite.
+	//
 	// example:
 	//
 	// true
-	Accepted        *bool                                               `json:"accepted,omitempty" xml:"accepted,omitempty"`
+	Accepted *bool `json:"accepted,omitempty" xml:"accepted,omitempty"`
+	// The conflict preview.
 	ConflictPreview *AddGatewayQuotaRuleResponseBodyDataConflictPreview `json:"conflictPreview,omitempty" xml:"conflictPreview,omitempty" type:"Struct"`
+	// Indicates whether the request is a dry run.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// qr-xxxxx
@@ -161,11 +176,16 @@ func (s *AddGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyDataConflictPreview struct {
+	// The conflict hash.
+	//
 	// example:
 	//
 	// f8f44dc6cf369a017d56b7197eb4fb5ac4bbb6b09a92b9b41999541fxxxxxxxx
-	ConflictHash *string                                                    `json:"conflictHash,omitempty" xml:"conflictHash,omitempty"`
-	Items        []*AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	ConflictHash *string `json:"conflictHash,omitempty" xml:"conflictHash,omitempty"`
+	// The list of conflicting principals (consumers).
+	Items []*AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The total number of conflicts.
+	//
 	// example:
 	//
 	// 2
@@ -221,12 +241,36 @@ func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
+	// The period type of the existing conflicting rule on the consumer. Valid values:
+	//
+	// - day: The period of the existing conflicting rule is day.
+	//
+	// - week: The period of the existing conflicting rule is week.
+	//
+	// - month: The period of the existing conflicting rule is month.
+	//
+	// example:
+	//
+	// week
 	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
-	ConflictType       *string `json:"conflictType,omitempty" xml:"conflictType,omitempty"`
+	// The type of the existing conflicting rule on the consumer. Valid values:
+	//
+	// - calendar: The existing conflicting rule uses a calendar period.
+	//
+	// - epoch: The existing conflicting rule uses a custom period.
+	//
+	// example:
+	//
+	// calendar
+	ConflictType *string `json:"conflictType,omitempty" xml:"conflictType,omitempty"`
+	// The consumer ID.
+	//
 	// example:
 	//
 	// cs-xxxxxx
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
+	// The consumer name.
+	//
 	// example:
 	//
 	// consumer-a

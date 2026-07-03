@@ -18,13 +18,13 @@ type iRemoveConsumerAuthorizationRuleResponseBody interface {
 }
 
 type RemoveConsumerAuthorizationRuleResponseBody struct {
-	// The status code returned.
+	// The response code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

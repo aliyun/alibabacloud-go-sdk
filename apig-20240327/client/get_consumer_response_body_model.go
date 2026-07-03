@@ -96,11 +96,12 @@ func (s *GetConsumerResponseBody) Validate() error {
 }
 
 type GetConsumerResponseBodyData struct {
-	// The AK/SK identity authentication configurations.
+	// The AccessKey pair authentication configuration.
 	AkSkIdentityConfigs []*AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty" type:"Repeated"`
-	// The API key identity authentication configuration.
-	ApiKeyIdentityConfig *ApiKeyIdentityConfig `json:"apiKeyIdentityConfig,omitempty" xml:"apiKeyIdentityConfig,omitempty"`
-	// The consumer ID.
+	// The API key authentication configuration.
+	ApiKeyIdentityConfig *ApiKeyIdentityConfig                        `json:"apiKeyIdentityConfig,omitempty" xml:"apiKeyIdentityConfig,omitempty"`
+	ConsumerGroups       []*GetConsumerResponseBodyDataConsumerGroups `json:"consumerGroups,omitempty" xml:"consumerGroups,omitempty" type:"Repeated"`
+	// The API consumer ID.
 	//
 	// example:
 	//
@@ -124,15 +125,15 @@ type GetConsumerResponseBodyData struct {
 	//
 	// 测试专用消费者
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the consumer is enabled.
+	// Indicates whether the API consumer is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The JWT identity authentication configuration.
+	// The JWT authentication configuration.
 	JwtIdentityConfig *JwtIdentityConfig `json:"jwtIdentityConfig,omitempty" xml:"jwtIdentityConfig,omitempty"`
-	// The consumer name.
+	// The API consumer name.
 	//
 	// example:
 	//
@@ -160,6 +161,10 @@ func (s *GetConsumerResponseBodyData) GetAkSkIdentityConfigs() []*AkSkIdentityCo
 
 func (s *GetConsumerResponseBodyData) GetApiKeyIdentityConfig() *ApiKeyIdentityConfig {
 	return s.ApiKeyIdentityConfig
+}
+
+func (s *GetConsumerResponseBodyData) GetConsumerGroups() []*GetConsumerResponseBodyDataConsumerGroups {
+	return s.ConsumerGroups
 }
 
 func (s *GetConsumerResponseBodyData) GetConsumerId() *string {
@@ -201,6 +206,11 @@ func (s *GetConsumerResponseBodyData) SetAkSkIdentityConfigs(v []*AkSkIdentityCo
 
 func (s *GetConsumerResponseBodyData) SetApiKeyIdentityConfig(v *ApiKeyIdentityConfig) *GetConsumerResponseBodyData {
 	s.ApiKeyIdentityConfig = v
+	return s
+}
+
+func (s *GetConsumerResponseBodyData) SetConsumerGroups(v []*GetConsumerResponseBodyDataConsumerGroups) *GetConsumerResponseBodyData {
+	s.ConsumerGroups = v
 	return s
 }
 
@@ -259,10 +269,86 @@ func (s *GetConsumerResponseBodyData) Validate() error {
 			return err
 		}
 	}
+	if s.ConsumerGroups != nil {
+		for _, item := range s.ConsumerGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.JwtIdentityConfig != nil {
 		if err := s.JwtIdentityConfig.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type GetConsumerResponseBodyDataConsumerGroups struct {
+	// example:
+	//
+	// csg-8c13d2b4f8a1
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// example:
+	//
+	// 用于线上 API 调用方分组
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 1715769600000
+	JoinTimestamp *int64 `json:"joinTimestamp,omitempty" xml:"joinTimestamp,omitempty"`
+	// example:
+	//
+	// api-consumer-group
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetConsumerResponseBodyDataConsumerGroups) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetConsumerResponseBodyDataConsumerGroups) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumerResponseBodyDataConsumerGroups) GetConsumerGroupId() *string {
+	return s.ConsumerGroupId
+}
+
+func (s *GetConsumerResponseBodyDataConsumerGroups) GetDescription() *string {
+	return s.Description
+}
+
+func (s *GetConsumerResponseBodyDataConsumerGroups) GetJoinTimestamp() *int64 {
+	return s.JoinTimestamp
+}
+
+func (s *GetConsumerResponseBodyDataConsumerGroups) GetName() *string {
+	return s.Name
+}
+
+func (s *GetConsumerResponseBodyDataConsumerGroups) SetConsumerGroupId(v string) *GetConsumerResponseBodyDataConsumerGroups {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *GetConsumerResponseBodyDataConsumerGroups) SetDescription(v string) *GetConsumerResponseBodyDataConsumerGroups {
+	s.Description = &v
+	return s
+}
+
+func (s *GetConsumerResponseBodyDataConsumerGroups) SetJoinTimestamp(v int64) *GetConsumerResponseBodyDataConsumerGroups {
+	s.JoinTimestamp = &v
+	return s
+}
+
+func (s *GetConsumerResponseBodyDataConsumerGroups) SetName(v string) *GetConsumerResponseBodyDataConsumerGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *GetConsumerResponseBodyDataConsumerGroups) Validate() error {
+	return dara.Validate(s)
 }

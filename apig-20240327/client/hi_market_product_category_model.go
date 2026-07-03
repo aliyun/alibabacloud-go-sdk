@@ -20,13 +20,25 @@ type iHiMarketProductCategory interface {
 }
 
 type HiMarketProductCategory struct {
-	// The unique category ID.
+	// The categorization ID.
+	//
+	// example:
+	//
+	// cat-xxx
 	CategoryId *string `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
-	// The category description.
+	// The categorization description.
+	//
+	// example:
+	//
+	// AI网关相关产品分类
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The category icon.
+	// The icon configuration.
 	Icon *HiMarketIcon `json:"icon,omitempty" xml:"icon,omitempty"`
-	// The category name.
+	// The categorization name.
+	//
+	// example:
+	//
+	// AI网关
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

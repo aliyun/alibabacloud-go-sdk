@@ -26,7 +26,7 @@ type iJwtIdentityConfig interface {
 }
 
 type JwtIdentityConfig struct {
-	// The claims-to-headers configurations.
+	// The list of claim-to-header configurations.
 	ClaimsToHeadersConfigs []*JwtIdentityConfigClaimsToHeadersConfigs `json:"claimsToHeadersConfigs,omitempty" xml:"claimsToHeadersConfigs,omitempty" type:"Repeated"`
 	// The JWKS configuration.
 	//
@@ -38,7 +38,11 @@ type JwtIdentityConfig struct {
 	JwtPayloadConfig *JwtIdentityConfigJwtPayloadConfig `json:"jwtPayloadConfig,omitempty" xml:"jwtPayloadConfig,omitempty" type:"Struct"`
 	// The JWT token configuration.
 	JwtTokenConfig *JwtIdentityConfigJwtTokenConfig `json:"jwtTokenConfig,omitempty" xml:"jwtTokenConfig,omitempty" type:"Struct"`
-	// The remote JWKS.
+	// The remote JWKS configuration (JSON string).
+	//
+	// example:
+	//
+	// {"uri":"https://example.com/.well-known/jwks.json"}
 	RemoteJwks *string `json:"remoteJwks,omitempty" xml:"remoteJwks,omitempty"`
 	// The secret type.
 	//
@@ -46,7 +50,7 @@ type JwtIdentityConfig struct {
 	//
 	// Symmetry
 	SecretType *string `json:"secretType,omitempty" xml:"secretType,omitempty"`
-	// The type of authentication configuration.
+	// The authentication configuration type.
 	//
 	// example:
 	//
@@ -149,11 +153,23 @@ func (s *JwtIdentityConfig) Validate() error {
 }
 
 type JwtIdentityConfigClaimsToHeadersConfigs struct {
-	// The claim.
+	// The claim name in the JWT payload.
+	//
+	// example:
+	//
+	// sub
 	Claim *string `json:"claim,omitempty" xml:"claim,omitempty"`
-	// The header.
+	// The HTTP header name after conversion.
+	//
+	// example:
+	//
+	// X-Consumer-Id
 	Header *string `json:"header,omitempty" xml:"header,omitempty"`
-	// The override.
+	// Specifies whether to overwrite an existing header with the same name.
+	//
+	// example:
+	//
+	// true
 	Override *bool `json:"override,omitempty" xml:"override,omitempty"`
 }
 
@@ -242,19 +258,19 @@ func (s *JwtIdentityConfigJwtPayloadConfig) Validate() error {
 }
 
 type JwtIdentityConfigJwtTokenConfig struct {
-	// The JWT key configuration.
+	// The key configuration of the JWT.
 	//
 	// example:
 	//
 	// Authorization
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Specifies whether to pass through.
+	// Indicates whether the request is passed through.
 	//
 	// example:
 	//
 	// true
 	Pass *bool `json:"pass,omitempty" xml:"pass,omitempty"`
-	// The storage location of the JWT.
+	// The location where the JWT is stored.
 	//
 	// example:
 	//

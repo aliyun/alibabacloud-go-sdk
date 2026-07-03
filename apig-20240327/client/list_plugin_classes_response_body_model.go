@@ -20,21 +20,21 @@ type iListPluginClassesResponseBody interface {
 }
 
 type ListPluginClassesResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response parameters.
+	// The response data.
 	Data *ListPluginClassesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The returned message.
+	// The error message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *ListPluginClassesResponseBody) Validate() error {
 }
 
 type ListPluginClassesResponseBodyData struct {
-	// The plugin details.
+	// The result objects.
 	Items []*ListPluginClassesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -176,67 +176,67 @@ func (s *ListPluginClassesResponseBodyData) Validate() error {
 }
 
 type ListPluginClassesResponseBodyDataItems struct {
-	// The alias of the plugin.
+	// The plug-in alias.
 	//
 	// example:
 	//
 	// OAuth2 认证
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The description of the plugin.
+	// The plug-in description.
 	//
 	// example:
 	//
 	// 基于 OAuth2 实现身份认证和鉴权。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the plugin is installed.
+	// Indicates whether the plug-in is installed.
 	//
 	// example:
 	//
 	// true
 	Installed *bool `json:"installed,omitempty" xml:"installed,omitempty"`
-	// The plugin name.
+	// The plug-in name.
 	//
 	// example:
 	//
 	// oauth
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The plugin type ID.
+	// The plug-in type ID.
 	//
 	// example:
 	//
 	// pls-d4ghv6em1hkixxxxxxxx
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
-	// The plugin ID.
+	// The plug-in ID.
 	//
 	// example:
 	//
 	// pl-cvu6r4um1hkoxxxxxxxx
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	// The publishing status.
+	// The publish status.
 	//
 	// example:
 	//
 	// Success
 	PublishStatus *string `json:"publishStatus,omitempty" xml:"publishStatus,omitempty"`
-	// The source of the plugin.
+	// The plug-in source.
 	//
 	// example:
 	//
 	// HigressOfficial
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The minimum version of the gateway supported by the plugin.
+	// The minimum gateway version supported by the plug-in.
 	//
 	// example:
 	//
 	// 2.0.0
 	SupportedMinGatewayVersion *string `json:"supportedMinGatewayVersion,omitempty" xml:"supportedMinGatewayVersion,omitempty"`
-	// The type of the plugin.
+	// The plug-in type.
 	//
 	// example:
 	//
 	// Auth
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The version.
+	// The plug-in version.
 	//
 	// example:
 	//

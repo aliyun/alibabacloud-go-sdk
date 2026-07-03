@@ -22,12 +22,22 @@ type iGatewayInfo interface {
 }
 
 type GatewayInfo struct {
-	// The gateway DPI engine database engine version.
+	// The gateway DPI engine version.
 	//
 	// example:
 	//
 	// 2.0.7
 	EngineVersion *string `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
+	// The gateway instance edition. Valid values:
+	//
+	// - Professional: standard instance.
+	//
+	// - Serverless: Serverless.
+	//
+	// - MultiTenantServerless: multi-tenant Serverless.
+	//
+	// - Unknown: unknown.
+	//
 	// example:
 	//
 	// MultiTenantServerless

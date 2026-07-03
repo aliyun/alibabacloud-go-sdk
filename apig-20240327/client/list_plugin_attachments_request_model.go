@@ -30,19 +30,19 @@ type iListPluginAttachmentsRequest interface {
 }
 
 type ListPluginAttachmentsRequest struct {
-	// The resource attachment ID.
+	// The mount resource ID.
 	//
 	// example:
 	//
 	// hr-cv2h58em1hkg7c6vt43g
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The resource attachment type (not yet in use).
+	// The plug-in mount point type. This parameter is not yet enabled.
 	//
 	// example:
 	//
 	// GatewayRoute
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The resource attachment types, separated by commas.
+	// The mount point types. Separate multiple types with commas.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type ListPluginAttachmentsRequest struct {
 	//
 	// gw-cr79f75lhtgme744084g
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The page number to return. Pages start from 1. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ListPluginAttachmentsRequest struct {
 	//
 	// pl-ct8181um1hkiqns9f6e0
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	// Specifies whether to return parent resource attachments.
+	// Specifies whether to return parent resource mounts.
 	//
 	// example:
 	//

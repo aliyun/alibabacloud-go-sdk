@@ -18,13 +18,13 @@ type iRestartGatewayResponseBody interface {
 }
 
 type RestartGatewayResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response message returned.
+	// The response message.
 	//
 	// example:
 	//

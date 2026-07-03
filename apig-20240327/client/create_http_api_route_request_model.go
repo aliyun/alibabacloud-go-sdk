@@ -191,13 +191,13 @@ func (s *CreateHttpApiRouteRequest) Validate() error {
 type CreateHttpApiRouteRequestBackendConfig struct {
 	// The backend service scenario. Valid values:
 	//
-	// - SingleService: Single service.
+	// - SingleService: single service.
 	//
-	// - MultiServiceByRatio: Multiple services with ratio-based canary release.
+	// - MultiServiceByRatio: multiple services with ratio-based canary release.
 	//
-	// - Mock: Mock service.
+	// - Mock: mock service.
 	//
-	// - Redirect: Redirect service.
+	// - Redirect: redirect service.
 	//
 	// example:
 	//

@@ -46,15 +46,15 @@ type CreateMcpServerRequest struct {
 	BackendConfig *CreateMcpServerRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
 	// The creation source type. Valid values:
 	//
-	// ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
+	// - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
 	//
-	// ApiGatewayProxyMcpHosting: gateway-managed direct MCP proxy.
+	// - ApiGatewayProxyMcpHosting: gateway-managed direct MCP proxy.
 	//
-	// ApiGatewayAssembly: gateway MCP assembly.
+	// - ApiGatewayAssembly: gateway MCP assembly.
 	//
-	// NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
+	// - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
 	//
-	// NacosMcpHosting: gateway-managed Nacos-synced direct MCP proxy.
+	// - NacosMcpHosting: gateway-managed Nacos-synced direct MCP proxy.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type CreateMcpServerRequest struct {
 	//
 	// gw-cq7l5s5lhtgi6qac0
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The canary release route configurations.
+	// The canary release routing configurations.
 	GrayMcpServerConfigs []*CreateMcpServerRequestGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
 	// The route match rule.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
@@ -110,7 +110,7 @@ type CreateMcpServerRequest struct {
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// The type. Valid values:
 	//
-	// RealMCP: standard MCP service.
+	// - RealMCP: standard MCP service.
 	//
 	// This parameter is required.
 	//

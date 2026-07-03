@@ -20,11 +20,16 @@ type iListExternalServicesResponseBody interface {
 }
 
 type ListExternalServicesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The list of APIs.
 	Data *ListExternalServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// Failed to upload data. Please try again
@@ -91,6 +96,7 @@ func (s *ListExternalServicesResponseBody) Validate() error {
 }
 
 type ListExternalServicesResponseBodyData struct {
+	// The service information.
 	Items []*ListExternalServicesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -125,15 +131,20 @@ func (s *ListExternalServicesResponseBodyData) Validate() error {
 }
 
 type ListExternalServicesResponseBodyDataItems struct {
+	// The namespace.
+	//
 	// example:
 	//
 	// PUBLIC
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The display name of the namespace.
+	//
 	// example:
 	//
 	// PUBLIC
-	NamespaceShowName *string                                              `json:"namespaceShowName,omitempty" xml:"namespaceShowName,omitempty"`
-	Services          []*ListExternalServicesResponseBodyDataItemsServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+	NamespaceShowName *string `json:"namespaceShowName,omitempty" xml:"namespaceShowName,omitempty"`
+	// The backend services.
+	Services []*ListExternalServicesResponseBodyDataItemsServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
 func (s ListExternalServicesResponseBodyDataItems) String() string {
@@ -185,10 +196,14 @@ func (s *ListExternalServicesResponseBodyDataItems) Validate() error {
 }
 
 type ListExternalServicesResponseBodyDataItemsServices struct {
+	// The name.
+	//
 	// example:
 	//
 	// enable-slash-merge
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// public

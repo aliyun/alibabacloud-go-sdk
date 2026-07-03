@@ -32,7 +32,7 @@ type ListPolicyClassesRequest struct {
 	//
 	// route-001
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The type of resource that the policy can be attached to. Valid values:
+	// The type of the resource to which the policy can be attached. Valid values:
 	//
 	// - HttpApi: HttpApi.
 	//

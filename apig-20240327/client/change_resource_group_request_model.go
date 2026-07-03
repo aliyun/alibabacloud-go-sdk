@@ -20,25 +20,25 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
-	// Target resource group ID.
+	// The ID of the destination resource group.
 	//
 	// example:
 	//
 	// rg-aekzdrfx2xdnaja
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Resource ID
+	// The resource ID.
 	//
 	// example:
 	//
 	// gw-ct4i14um1hkn0tpqfae0
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// Resource type
+	// The resource type.
 	//
 	// example:
 	//
 	// gateway
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Service name, fixed value apig
+	// The service name. Set this parameter to apig.
 	//
 	// example:
 	//

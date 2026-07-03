@@ -18,7 +18,7 @@ type iUpdateHttpApiRouteResponseBody interface {
 }
 
 type UpdateHttpApiRouteResponseBody struct {
-	// The status code of the response.
+	// The response status code.
 	//
 	// example:
 	//

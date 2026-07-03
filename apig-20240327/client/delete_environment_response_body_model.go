@@ -30,7 +30,7 @@ type DeleteEnvironmentResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is used to trace the request chain.
+	// The request ID, which is used to trace the request.
 	//
 	// example:
 	//

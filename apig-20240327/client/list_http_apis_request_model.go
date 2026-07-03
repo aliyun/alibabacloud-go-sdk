@@ -46,103 +46,111 @@ type iListHttpApisRequest interface {
 }
 
 type ListHttpApisRequest struct {
-	// Specifies whether to include policy configurations.
+	// The ID of the cloud-native API gateway.
 	//
 	// example:
 	//
 	// gw-cq2avtllh****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The API information.
+	// The gateway type filter. Valid values: **AI*	- and **API**.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The consumer authentication policy in the specified environment in each returned API.
+	// The search keyword. Supports fuzzy match by API name or exact search by API ID.
 	//
 	// example:
 	//
 	// test-
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// Specifies whether authentication is enabled.
+	// The exact name to search for.
 	//
 	// example:
 	//
 	// login
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The environment information.
+	// The page number, starting from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The resource group ID.
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The returned message.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-ahr5uil8raz0rq3b
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The Ingress information.
+	// The type of the HTTP API. You can specify multiple types separated by commas (,). Valid values:
+	//
+	// - Http
+	//
+	// - Rest
+	//
+	// - WebSocket
+	//
+	// - HttpIngress
 	//
 	// example:
 	//
 	// Http,Rest
 	Types *string `json:"types,omitempty" xml:"types,omitempty"`
-	// Whether to return all APIs published to a specific environment
+	// Specifies whether to return information about APIs published to the specified environment.
 	//
 	// example:
 	//
 	// true
 	WithAPIsPublishedToEnvironment *bool `json:"withAPIsPublishedToEnvironment,omitempty" xml:"withAPIsPublishedToEnvironment,omitempty"`
-	// The gateway type to filter. Valid values: **AI*	- and **API**.
+	// The environment ID. If specified, the response includes consumer authentication policy information for each API in the specified environment.
 	//
 	// example:
 	//
 	// env-xxx
 	WithAuthPolicyInEnvironmentId *string `json:"withAuthPolicyInEnvironmentId,omitempty" xml:"withAuthPolicyInEnvironmentId,omitempty"`
-	// The page number of the returned page.
+	// Specifies whether authentication policies are enabled.
 	//
 	// example:
 	//
 	// true
 	WithAuthPolicyList *bool `json:"withAuthPolicyList,omitempty" xml:"withAuthPolicyList,omitempty"`
-	// The response body.
+	// The consumer ID. If specified, the response includes the authorization rule list for the specified consumer for each API.
 	//
 	// example:
 	//
 	// cs-xxx
 	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
-	// The request ID.
+	// The environment context.
 	//
 	// example:
 	//
 	// true
 	WithEnvironmentInfo *bool `json:"withEnvironmentInfo,omitempty" xml:"withEnvironmentInfo,omitempty"`
-	// The APIs.
+	// The environment ID.
 	//
 	// example:
 	//
 	// env-ctovu5mm1hksb4q8ln40
 	WithEnvironmentInfoById *string `json:"withEnvironmentInfoById,omitempty" xml:"withEnvironmentInfoById,omitempty"`
-	// The number of entries per page.
+	// Specifies whether to include ingress information.
 	//
 	// example:
 	//
 	// false
 	WithIngressInfo *bool `json:"withIngressInfo,omitempty" xml:"withIngressInfo,omitempty"`
-	// The status code.
+	// The plug-in ID. If specified, the response includes the plug-in publishing information for the specified plug-in.
 	//
 	// example:
 	//
 	// pl-ct9qn3um1hktue8dqol0
 	WithPluginAttachmentByPluginId *string `json:"withPluginAttachmentByPluginId,omitempty" xml:"withPluginAttachmentByPluginId,omitempty"`
-	// The total number of entries returned.
+	// Specifies whether to include policy information.
 	//
 	// example:
 	//

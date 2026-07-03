@@ -24,27 +24,29 @@ type iListPoliciesRequest interface {
 }
 
 type ListPoliciesRequest struct {
-	// The attachment point ID.
+	// The ID of the attachment point.
 	//
 	// example:
 	//
 	// api-cq7l5s5lhtgi6qasrdc0
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The types of attachment points supported by the policy. Valid values:
+	// The type of attachment point supported by the policy.
 	//
-	// - HttpApi
+	// Valid values:
 	//
-	// - Operation
+	// - HttpApi: HTTP API.
 	//
-	// - GatewayRoute
+	// - Operation: Operation of an HTTP API.
 	//
-	// - GatewayService
+	// - GatewayRoute: Gateway route.
 	//
-	// - GatewayServicePort
+	// - GatewayService: Gateway service.
 	//
-	// - Domain
+	// - GatewayServicePort: Gateway service port.
 	//
-	// - Gateway
+	// - Domain: Gateway domain name.
+	//
+	// - Gateway: Gateway.
 	//
 	// example:
 	//
@@ -68,7 +70,7 @@ type ListPoliciesRequest struct {
 	//
 	// false
 	WithAttachments *bool `json:"withAttachments,omitempty" xml:"withAttachments,omitempty"`
-	// Specifies whether it is a system policy.
+	// Specifies whether the policy is a system policy.
 	//
 	// example:
 	//

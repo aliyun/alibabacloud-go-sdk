@@ -96,7 +96,7 @@ func (s *CreatePluginAttachmentResponseBody) Validate() error {
 }
 
 type CreatePluginAttachmentResponseBodyData struct {
-	// The plug-in attachment ID.
+	// The plug-in mount ID.
 	//
 	// example:
 	//

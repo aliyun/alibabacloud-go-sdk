@@ -20,7 +20,7 @@ type iGetResourceOverviewResponseBody interface {
 }
 
 type GetResourceOverviewResponseBody struct {
-	// Response status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -28,13 +28,13 @@ type GetResourceOverviewResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The resource information.
 	Data *GetResourceOverviewResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ func (s *GetResourceOverviewResponseBody) Validate() error {
 }
 
 type GetResourceOverviewResponseBodyData struct {
-	// API information.
+	// The API information.
 	Api *GetResourceOverviewResponseBodyDataApi `json:"api,omitempty" xml:"api,omitempty" type:"Struct"`
-	// Gateway information.
+	// The gateway information.
 	Gateway *GetResourceOverviewResponseBodyDataGateway `json:"gateway,omitempty" xml:"gateway,omitempty" type:"Struct"`
 	// The risk overview.
 	RiskOverview []*GetResourceOverviewResponseBodyDataRiskOverview `json:"riskOverview,omitempty" xml:"riskOverview,omitempty" type:"Repeated"`
@@ -163,13 +163,13 @@ func (s *GetResourceOverviewResponseBodyData) Validate() error {
 }
 
 type GetResourceOverviewResponseBodyDataApi struct {
-	// Number of published APIs.
+	// The number of published APIs.
 	//
 	// example:
 	//
 	// 1
 	PublishedCount *int64 `json:"publishedCount,omitempty" xml:"publishedCount,omitempty"`
-	// Number of APIs.
+	// The total number of APIs.
 	//
 	// example:
 	//
@@ -208,13 +208,13 @@ func (s *GetResourceOverviewResponseBodyDataApi) Validate() error {
 }
 
 type GetResourceOverviewResponseBodyDataGateway struct {
-	// Number of running gateways.
+	// The number of running gateways.
 	//
 	// example:
 	//
 	// 1
 	RunningCount *int64 `json:"runningCount,omitempty" xml:"runningCount,omitempty"`
-	// Number of gateway instances.
+	// The total number of gateway instances.
 	//
 	// example:
 	//
@@ -253,13 +253,13 @@ func (s *GetResourceOverviewResponseBodyDataGateway) Validate() error {
 }
 
 type GetResourceOverviewResponseBodyDataRiskOverview struct {
-	// The number of instances at a risk level.
+	// The number of instances at this risk level.
 	//
 	// example:
 	//
 	// 1
 	Count *string `json:"count,omitempty" xml:"count,omitempty"`
-	// The risk details list.
+	// The list of risk details.
 	RiskDetails []*GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails `json:"riskDetails,omitempty" xml:"riskDetails,omitempty" type:"Repeated"`
 	// The risk level.
 	//
@@ -336,7 +336,7 @@ type GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails struct {
 	//
 	// LOW
 	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
-	// The risk name list.
+	// The list of risk names.
 	RiskNames []*string `json:"riskNames,omitempty" xml:"riskNames,omitempty" type:"Repeated"`
 	// The risk score.
 	//

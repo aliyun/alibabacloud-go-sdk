@@ -20,7 +20,7 @@ type iGetHttpApiResponseBody interface {
 }
 
 type GetHttpApiResponseBody struct {
-	// Response status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -28,13 +28,13 @@ type GetHttpApiResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The API information.
 	Data *HttpApiApiInfo `json:"data,omitempty" xml:"data,omitempty"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

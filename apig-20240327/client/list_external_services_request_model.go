@@ -22,22 +22,42 @@ type iListExternalServicesRequest interface {
 }
 
 type ListExternalServicesRequest struct {
+	// Specifies whether to return only services that have not been imported.
+	//
 	// example:
 	//
 	// true
 	ImportableOnly *bool `json:"importableOnly,omitempty" xml:"importableOnly,omitempty"`
+	// The maximum number of entries to return. Valid range: (0, 100]. Default value: 10.
+	//
 	// example:
 	//
 	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The keyword used for fuzzy match by API name.
+	//
 	// example:
 	//
 	// imah
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
+	// The workspace ID of the PAI-EAS service.
+	//
 	// example:
 	//
 	// 667435
 	PaiWorkspaceId *string `json:"paiWorkspaceId,omitempty" xml:"paiWorkspaceId,omitempty"`
+	// The service source type used to filter results. Valid values:
+	//
+	// - MSE_NACOS: the service originates from MSE Nacos.
+	//
+	// - K8S: the service originates from a Kubernetes cluster in Container Service.
+	//
+	// - FC3: the service originates from Function Compute.
+	//
+	// - VIP: the service originates from a fixed address.
+	//
+	// - DNS: the service originates from a domain name.
+	//
 	// example:
 	//
 	// FC3

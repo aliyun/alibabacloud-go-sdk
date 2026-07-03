@@ -34,25 +34,25 @@ type iListPluginClassesRequest interface {
 }
 
 type ListPluginClassesRequest struct {
-	// The alias keyword for a fuzzy search.
+	// The plug-in alias. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// OAuth2 认证
 	AliasLike *string `json:"aliasLike,omitempty" xml:"aliasLike,omitempty"`
-	// The traffic direction. Valid values:
+	// The inbound or outbound direction. Valid values:
 	//
-	// 	- OutBound
+	// - OutBound: outbound.
 	//
-	// 	- InBound
+	// - InBound: inbound.
 	//
-	// 	- Both
+	// - Both: both directions.
 	//
 	// example:
 	//
 	// InBound
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
-	// Specifies whether to exclude built-in plugins.
+	// Specifies whether to exclude built-in plug-ins.
 	//
 	// example:
 	//
@@ -64,19 +64,19 @@ type ListPluginClassesRequest struct {
 	//
 	// gw-d1j8tjum1hkhxxxxxxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The instance type. Valid values: **AI*	- and **API**.
+	// The gateway type filter. Currently, **AI*	- and **API*	- gateway types are supported.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// Indicates whether the plugin is installed.
+	// Specifies whether the plug-in is installed.
 	//
 	// example:
 	//
 	// false
 	Installed *bool `json:"installed,omitempty" xml:"installed,omitempty"`
-	// The plugin name for a fuzzy search.
+	// The plug-in name. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -94,19 +94,19 @@ type ListPluginClassesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The plugin source. Valid values:
+	// The plug-in source. Valid values:
 	//
-	// 	- HigressOfficial
+	// - HigressOfficial: Higress official.
 	//
-	// 	- HigressCommunity
+	// - HigressCommunity: Higress community.
 	//
-	// 	- Custom
+	// - Custom: custom.
 	//
 	// example:
 	//
 	// HigressOfficial
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The type of the plugin.
+	// The plug-in type.
 	//
 	// example:
 	//

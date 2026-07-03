@@ -20,15 +20,15 @@ type iListGatewayFeaturesResponseBody interface {
 }
 
 type ListGatewayFeaturesResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *ListGatewayFeaturesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message returned.
+	// The response message.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *ListGatewayFeaturesResponseBody) Validate() error {
 }
 
 type ListGatewayFeaturesResponseBodyData struct {
-	// The list of parameter configurations.
+	// The list of parameter settings.
 	Items []*ListGatewayFeaturesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -177,7 +177,7 @@ func (s *ListGatewayFeaturesResponseBodyDataItems) Validate() error {
 }
 
 type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {
-	// The default value of the parameter.
+	// The default value.
 	//
 	// example:
 	//
@@ -195,11 +195,11 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {
 	//
 	// EnableGzip
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The parameter group to which the parameter belongs. Valid values:
+	// The parameter group. Valid values:
 	//
-	// 	- Telemetry: an observability parameter
+	// - Telemetry: observability parameter.
 	//
-	// 	- Engine: an engine parameter
+	// - Engine: engine parameter.
 	//
 	// example:
 	//
@@ -207,37 +207,37 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
 	// The input type of the parameter. Valid values:
 	//
-	// 	- Trigger
+	// - Trigger: toggle.
 	//
-	// 	- Input
+	// - Input: input.
 	//
-	// 	- SingleSelect
+	// - SingleSelect: single-select.
 	//
-	// 	- MultiSelect
+	// - MultiSelect: multi-select.
 	//
 	// example:
 	//
 	// Trigger
 	InputType *string `json:"inputType,omitempty" xml:"inputType,omitempty"`
-	// The maximum length of the value. This parameter is valid when the value type is string.
+	// The maximum length supported by the parameter value. This is valid only when the value type is string.
 	//
 	// example:
 	//
 	// 64
 	MaxLength *int32 `json:"maxLength,omitempty" xml:"maxLength,omitempty"`
-	// The maximum value of the parameter. This parameter is valid when the value type is int32, int64, or float.
+	// The maximum value supported by the parameter. This is valid only when the value type is int32, int64, or float.
 	//
 	// example:
 	//
 	// 65535
 	MaxValue *string `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
-	// The minimum length of the value. This parameter is valid when the value type is string.
+	// The minimum length supported by the parameter value. This is valid only when the value type is string.
 	//
 	// example:
 	//
 	// 8
 	MinLength *int32 `json:"minLength,omitempty" xml:"minLength,omitempty"`
-	// The minimum value of the parameter. This parameter is valid when the value type is int32, int64, or float.
+	// The minimum value supported by the parameter. This is valid only when the value type is int32, int64, or float.
 	//
 	// example:
 	//
@@ -255,7 +255,7 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {
 	//
 	// false
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
-	// The regular expression that the parameter value must fulfill. This parameter is valid when the value type is string.
+	// The regular expression that the parameter value must match. This is valid only when the parameter value type is string.
 	//
 	// example:
 	//
@@ -263,27 +263,27 @@ type ListGatewayFeaturesResponseBodyDataItemsDefinition struct {
 	Regex *string `json:"regex,omitempty" xml:"regex,omitempty"`
 	// The list of options supported by the parameter value.
 	ValueOptions []*ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions `json:"valueOptions,omitempty" xml:"valueOptions,omitempty" type:"Repeated"`
-	// The value type of the parameter. Valid values:
+	// The type supported by the parameter value. Valid values:
 	//
-	// 	- bool: boolean
+	// - bool: Boolean.
 	//
-	// 	- string
+	// - string: String.
 	//
-	// 	- int32: integer
+	// - int32: Integer.
 	//
-	// 	- int64: long integer
+	// - int64: Long integer.
 	//
-	// 	- json
+	// - json: JSON format.
 	//
-	// 	- array: JSON array
+	// - array: JSON array format.
 	//
-	// 	- float: floating point
+	// - float: Float.
 	//
 	// example:
 	//
 	// bool
 	ValueType *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
-	// The value unit.
+	// The unit.
 	//
 	// example:
 	//
@@ -448,7 +448,7 @@ func (s *ListGatewayFeaturesResponseBodyDataItemsDefinition) Validate() error {
 }
 
 type ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions struct {
-	// The key to pass the parameter.
+	// The pass parameter key.
 	//
 	// example:
 	//

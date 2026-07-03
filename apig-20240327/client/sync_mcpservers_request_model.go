@@ -22,15 +22,15 @@ type iSyncMCPServersRequest interface {
 }
 
 type SyncMCPServersRequest struct {
-	// The domain ID.
+	// The domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
-	// The ID of the gateway.
+	// The gateway ID.
 	//
 	// example:
 	//
 	// gw-cq7l5s5lhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The synchronized Nacos MCP server list. If the synchronized MCP server is included, add the mcpServerId parameter.
+	// The list of Nacos MCP Servers to sync. If the list contains MCP Servers that have already been synced, include the mcpServerId.
 	NacosMcpServers []*SyncMCPServersRequestNacosMcpServers `json:"nacosMcpServers,omitempty" xml:"nacosMcpServers,omitempty" type:"Repeated"`
 	// The Nacos namespace.
 	//
@@ -113,7 +113,7 @@ func (s *SyncMCPServersRequest) Validate() error {
 }
 
 type SyncMCPServersRequestNacosMcpServers struct {
-	// The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP and the type parameter is set to RealMCP.
+	// The exposed URI path. This parameter is required when protocol is SSE or StreamableHTTP and type is RealMCP.
 	//
 	// example:
 	//
@@ -125,19 +125,19 @@ type SyncMCPServersRequestNacosMcpServers struct {
 	//
 	// mse-24afmoioxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The MCP server ID.
+	// MCP Server ID
 	//
 	// example:
 	//
 	// mcp-d3s8qo6m1hknegofa3bg
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The name of the MCP server.
+	// The MCP Server name.
 	//
 	// example:
 	//
 	// test
 	McpServerName *string `json:"mcpServerName,omitempty" xml:"mcpServerName,omitempty"`
-	// The protocol.
+	// The protocols.
 	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
 }
 

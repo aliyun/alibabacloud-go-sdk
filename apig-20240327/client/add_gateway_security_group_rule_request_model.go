@@ -24,7 +24,7 @@ type AddGatewaySecurityGroupRuleRequest struct {
 	//
 	// 商品中心访问安全组
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The port range.
+	// The port ranges.
 	PortRanges []*string `json:"portRanges,omitempty" xml:"portRanges,omitempty" type:"Repeated"`
 	// The security group ID.
 	//

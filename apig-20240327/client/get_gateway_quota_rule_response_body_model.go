@@ -20,18 +20,26 @@ type iGetGatewayQuotaRuleResponseBody interface {
 }
 
 type GetGatewayQuotaRuleResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
+	//
 	// example:
 	//
 	// {"ruleId":1001}
 	Data *GetGatewayQuotaRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 1234567890
@@ -92,43 +100,64 @@ func (s *GetGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type GetGatewayQuotaRuleResponseBodyData struct {
+	// The base timestamp of the period.
+	//
 	// example:
 	//
 	// 1745846400000
 	BaseTimestamp *int64 `json:"baseTimestamp,omitempty" xml:"baseTimestamp,omitempty"`
+	// The number of consumers associated with the rule.
+	//
 	// example:
 	//
 	// 20
-	ConsumerCount *int64                                          `json:"consumerCount,omitempty" xml:"consumerCount,omitempty"`
-	Consumers     []*GetGatewayQuotaRuleResponseBodyDataConsumers `json:"consumers,omitempty" xml:"consumers,omitempty" type:"Repeated"`
+	ConsumerCount *int64 `json:"consumerCount,omitempty" xml:"consumerCount,omitempty"`
+	// The list of principals (consumers) bound to this rule.
+	Consumers []*GetGatewayQuotaRuleResponseBodyDataConsumers `json:"consumers,omitempty" xml:"consumers,omitempty" type:"Repeated"`
+	// The quota period type.
+	//
 	// example:
 	//
 	// day
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
+	// The quota dimension.
+	//
 	// example:
 	//
 	// token
 	QuotaDimension *string `json:"quotaDimension,omitempty" xml:"quotaDimension,omitempty"`
+	// The quota limit.
+	//
 	// example:
 	//
 	// 1000
 	QuotaLimit *int64 `json:"quotaLimit,omitempty" xml:"quotaLimit,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// qr-d8j7fpmm1hks65xxxxxx
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// daily-token-limit
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	// The rule status.
+	//
 	// example:
 	//
 	// enabled
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
+	// The time zone corresponding to the calendar period, in UTC+x format.
+	//
 	// example:
 	//
 	// GMT+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	// The reset period type. Currently, only calendar period is supported, which means windowAlignment="calendar".
+	//
 	// example:
 	//
 	// calendar
@@ -256,7 +285,17 @@ func (s *GetGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type GetGatewayQuotaRuleResponseBodyDataConsumers struct {
-	Id   *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The principal (consumer) ID.
+	//
+	// example:
+	//
+	// c-aaa
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The principal (consumer) name.
+	//
+	// example:
+	//
+	// consumer-a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

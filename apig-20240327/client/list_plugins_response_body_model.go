@@ -20,15 +20,15 @@ type iListPluginsResponseBody interface {
 }
 
 type ListPluginsResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response payload.
+	// The returned data.
 	Data *ListPluginsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The status message.
+	// The response message.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *ListPluginsResponseBody) Validate() error {
 }
 
 type ListPluginsResponseBodyData struct {
-	// The list of plug-in information.
+	// The plugin list.
 	Items []*ListPluginsResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -110,7 +110,7 @@ type ListPluginsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -176,13 +176,13 @@ func (s *ListPluginsResponseBodyData) Validate() error {
 }
 
 type ListPluginsResponseBodyDataItems struct {
-	// The attachment information.
+	// The plugin attachment information.
 	AttachmentInfo *ListPluginsResponseBodyDataItemsAttachmentInfo `json:"attachmentInfo,omitempty" xml:"attachmentInfo,omitempty" type:"Struct"`
-	// The gateway instance information.
+	// The gateway information.
 	GatewayInfo *ListPluginsResponseBodyDataItemsGatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
-	// The plug-in type information.
+	// The plugin type information.
 	PluginClassInfo *ListPluginsResponseBodyDataItemsPluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty" type:"Struct"`
-	// The plug-in ID.
+	// The plugin ID.
 	//
 	// example:
 	//
@@ -254,13 +254,13 @@ func (s *ListPluginsResponseBodyDataItems) Validate() error {
 }
 
 type ListPluginsResponseBodyDataItemsAttachmentInfo struct {
-	// Indicates if enabled.
+	// Indicates whether the plugin is enabled.
 	//
 	// example:
 	//
 	// false
 	Enable *string `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The attachment ID.
+	// The plugin attachment ID.
 	//
 	// example:
 	//
@@ -299,13 +299,13 @@ func (s *ListPluginsResponseBodyDataItemsAttachmentInfo) Validate() error {
 }
 
 type ListPluginsResponseBodyDataItemsGatewayInfo struct {
-	// The instance ID.
+	// The gateway ID.
 	//
 	// example:
 	//
 	// gw-cq7og15lhtxx6qasrj60
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The instance name.
+	// The gateway name.
 	//
 	// example:
 	//
@@ -362,19 +362,19 @@ type ListPluginsResponseBodyDataItemsPluginClassInfo struct {
 	//
 	// AUTHZ
 	ExecuteStage *string `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
-	// The name of the plug-in.
+	// The plugin name.
 	//
 	// example:
 	//
 	// key-rate-limit
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The plug-in type ID.
+	// The plugin type ID.
 	//
 	// example:
 	//
 	// pls-cqebrgh46ppatmpri
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
-	// The source of the plug-in.
+	// The plugin source.
 	//
 	// example:
 	//
@@ -386,7 +386,7 @@ type ListPluginsResponseBodyDataItemsPluginClassInfo struct {
 	//
 	// 2.0.3
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The description of the version.
+	// The version description.
 	//
 	// example:
 	//

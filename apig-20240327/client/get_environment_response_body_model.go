@@ -285,7 +285,7 @@ func (s *GetEnvironmentResponseBodyData) Validate() error {
 type GetEnvironmentResponseBodyDataStatisticsInfo struct {
 	// The online resource count.
 	ResourceStatistics []*ResourceStatistic `json:"resourceStatistics,omitempty" xml:"resourceStatistics,omitempty" type:"Repeated"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//

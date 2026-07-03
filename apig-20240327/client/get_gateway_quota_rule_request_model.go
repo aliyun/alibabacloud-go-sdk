@@ -20,17 +20,22 @@ type iGetGatewayQuotaRuleRequest interface {
 type GetGatewayQuotaRuleRequest struct {
 	// Deprecated
 	//
+	// The page number of the consumer list.
+	//
 	// example:
 	//
 	// 1
 	ConsumerPageNumber *string `json:"consumerPageNumber,omitempty" xml:"consumerPageNumber,omitempty"`
 	// Deprecated
 	//
+	// The page size of the consumer list.
+	//
 	// example:
 	//
 	// 10
 	ConsumerPageSize *string `json:"consumerPageSize,omitempty" xml:"consumerPageSize,omitempty"`
-	WithConsumers    *bool   `json:"withConsumers,omitempty" xml:"withConsumers,omitempty"`
+	// Specifies whether to return the consumer list.
+	WithConsumers *bool `json:"withConsumers,omitempty" xml:"withConsumers,omitempty"`
 }
 
 func (s GetGatewayQuotaRuleRequest) String() string {

@@ -46,23 +46,108 @@ type iPluginClassInfo interface {
 }
 
 type PluginClassInfo struct {
-	Alias                      *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	ConfigExample              *string `json:"configExample,omitempty" xml:"configExample,omitempty"`
-	Description                *string `json:"description,omitempty" xml:"description,omitempty"`
-	ExecutePriority            *int32  `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
-	ExecuteStage               *string `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
-	ImageName                  *string `json:"imageName,omitempty" xml:"imageName,omitempty"`
-	InnerPlugin                *bool   `json:"innerPlugin,omitempty" xml:"innerPlugin,omitempty"`
-	Mode                       *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	Name                       *string `json:"name,omitempty" xml:"name,omitempty"`
-	PluginClassId              *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
-	Source                     *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The plugin class alias.
+	//
+	// example:
+	//
+	// AI安全护栏
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// The configuration example (JSON string).
+	//
+	// example:
+	//
+	// {"checkRequest":true}
+	ConfigExample *string `json:"configExample,omitempty" xml:"configExample,omitempty"`
+	// The plugin class description.
+	//
+	// example:
+	//
+	// AI请求内容安全检测插件
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The execution priority.
+	//
+	// example:
+	//
+	// 100
+	ExecutePriority *int32 `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
+	// The execution stage.
+	//
+	// example:
+	//
+	// AUTHN
+	ExecuteStage *string `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
+	// The Wasm image name.
+	//
+	// example:
+	//
+	// higress-registry.tencentcloudcr.com/ai-security-guard
+	ImageName *string `json:"imageName,omitempty" xml:"imageName,omitempty"`
+	// Indicates whether the plugin is a built-in plugin.
+	//
+	// example:
+	//
+	// false
+	InnerPlugin *bool `json:"innerPlugin,omitempty" xml:"innerPlugin,omitempty"`
+	// The plugin running mode.
+	//
+	// example:
+	//
+	// Wasm
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The plugin class name.
+	//
+	// example:
+	//
+	// ai-security-guard
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The plugin class ID.
+	//
+	// example:
+	//
+	// cls-xxx
+	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
+	// The plugin source.
+	//
+	// example:
+	//
+	// HigressOfficial
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The minimum supported gateway DPI engine version.
+	//
+	// example:
+	//
+	// 2.1.11
 	SupportedMinGatewayVersion *string `json:"supportedMinGatewayVersion,omitempty" xml:"supportedMinGatewayVersion,omitempty"`
-	Type                       *string `json:"type,omitempty" xml:"type,omitempty"`
-	Version                    *string `json:"version,omitempty" xml:"version,omitempty"`
-	VersionDescription         *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
-	WasmLanguage               *string `json:"wasmLanguage,omitempty" xml:"wasmLanguage,omitempty"`
-	WasmUrl                    *string `json:"wasmUrl,omitempty" xml:"wasmUrl,omitempty"`
+	// The plugin type category.
+	//
+	// example:
+	//
+	// AI
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The plugin version number.
+	//
+	// example:
+	//
+	// 1.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The version description.
+	//
+	// example:
+	//
+	// 初始版本
+	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
+	// The Wasm programming language.
+	//
+	// example:
+	//
+	// Rust
+	WasmLanguage *string `json:"wasmLanguage,omitempty" xml:"wasmLanguage,omitempty"`
+	// The Wasm file download URL.
+	//
+	// example:
+	//
+	// https://...
+	WasmUrl *string `json:"wasmUrl,omitempty" xml:"wasmUrl,omitempty"`
 }
 
 func (s PluginClassInfo) String() string {

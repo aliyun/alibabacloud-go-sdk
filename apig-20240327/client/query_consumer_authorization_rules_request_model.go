@@ -11,6 +11,8 @@ type iQueryConsumerAuthorizationRulesRequest interface {
 	GoString() string
 	SetApiNameLike(v string) *QueryConsumerAuthorizationRulesRequest
 	GetApiNameLike() *string
+	SetConsumerGroupId(v string) *QueryConsumerAuthorizationRulesRequest
+	GetConsumerGroupId() *string
 	SetConsumerId(v string) *QueryConsumerAuthorizationRulesRequest
 	GetConsumerId() *string
 	SetConsumerNameLike(v string) *QueryConsumerAuthorizationRulesRequest
@@ -25,6 +27,8 @@ type iQueryConsumerAuthorizationRulesRequest interface {
 	GetPageSize() *int32
 	SetParentResourceId(v string) *QueryConsumerAuthorizationRulesRequest
 	GetParentResourceId() *string
+	SetPrincipalType(v string) *QueryConsumerAuthorizationRulesRequest
+	GetPrincipalType() *string
 	SetResourceId(v string) *QueryConsumerAuthorizationRulesRequest
 	GetResourceId() *string
 	SetResourceType(v string) *QueryConsumerAuthorizationRulesRequest
@@ -40,6 +44,10 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// api-xx
 	ApiNameLike *string `json:"apiNameLike,omitempty" xml:"apiNameLike,omitempty"`
+	// example:
+	//
+	// csg-8c13d2b4f8a1
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
 	// The consumer ID.
 	//
 	// example:
@@ -82,6 +90,10 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// ha-cn-li942gy8p01
 	ParentResourceId *string `json:"parentResourceId,omitempty" xml:"parentResourceId,omitempty"`
+	// example:
+	//
+	// ConsumerGroup
+	PrincipalType *string `json:"principalType,omitempty" xml:"principalType,omitempty"`
 	// The resource ID.
 	//
 	// example:
@@ -114,6 +126,10 @@ func (s *QueryConsumerAuthorizationRulesRequest) GetApiNameLike() *string {
 	return s.ApiNameLike
 }
 
+func (s *QueryConsumerAuthorizationRulesRequest) GetConsumerGroupId() *string {
+	return s.ConsumerGroupId
+}
+
 func (s *QueryConsumerAuthorizationRulesRequest) GetConsumerId() *string {
 	return s.ConsumerId
 }
@@ -142,6 +158,10 @@ func (s *QueryConsumerAuthorizationRulesRequest) GetParentResourceId() *string {
 	return s.ParentResourceId
 }
 
+func (s *QueryConsumerAuthorizationRulesRequest) GetPrincipalType() *string {
+	return s.PrincipalType
+}
+
 func (s *QueryConsumerAuthorizationRulesRequest) GetResourceId() *string {
 	return s.ResourceId
 }
@@ -156,6 +176,11 @@ func (s *QueryConsumerAuthorizationRulesRequest) GetResourceTypes() *string {
 
 func (s *QueryConsumerAuthorizationRulesRequest) SetApiNameLike(v string) *QueryConsumerAuthorizationRulesRequest {
 	s.ApiNameLike = &v
+	return s
+}
+
+func (s *QueryConsumerAuthorizationRulesRequest) SetConsumerGroupId(v string) *QueryConsumerAuthorizationRulesRequest {
+	s.ConsumerGroupId = &v
 	return s
 }
 
@@ -191,6 +216,11 @@ func (s *QueryConsumerAuthorizationRulesRequest) SetPageSize(v int32) *QueryCons
 
 func (s *QueryConsumerAuthorizationRulesRequest) SetParentResourceId(v string) *QueryConsumerAuthorizationRulesRequest {
 	s.ParentResourceId = &v
+	return s
+}
+
+func (s *QueryConsumerAuthorizationRulesRequest) SetPrincipalType(v string) *QueryConsumerAuthorizationRulesRequest {
+	s.PrincipalType = &v
 	return s
 }
 

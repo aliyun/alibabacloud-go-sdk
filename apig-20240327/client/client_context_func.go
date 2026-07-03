@@ -9,27 +9,27 @@ import (
 
 // Summary:
 //
-// 新增网关配额限流规则
+// Creates a gateway quota throttling rule.
 //
 // Description:
 //
-// 该接口用于对AI网关增加基于消费者的配额规则。注意，只针对于版本大于2.1.19的AI网关生效。
+// This operation adds a consumer-based quota rule to an AI gateway. This operation takes effect only on AI gateways of version 2.1.19 or later.
 //
 // >
 //
-// >  推荐调用逻辑：
+// >  Recommended call logic:
 //
-// > - 一、先 dryRun 预检检验是否存在规则冲突
+// > - 1. Perform a dry run to check for rule conflicts.
 //
-// > - - 传dryRun=true
+// > - - Set dryRun=true.
 //
-// > - - 返回含conflictHash的冲突预览
+// > - - The response contains a conflict preview with conflictHash.
 //
-// > - 二、确认后正式提交
+// > - 2. Submit the request after confirmation.
 //
-// > - - 无冲突：dryRun=false,overwrite=false
+// > - - No conflict: dryRun=false, overwrite=false.
 //
-// > - - 有冲突且确认覆盖：dryRun=false,overwrite=true, conflictHash=<上一步返回的值＞
+// > - - Conflict exists and overwrite confirmed: dryRun=false, overwrite=true, conflictHash=<value returned in the previous step>
 //
 // @param request - AddGatewayQuotaRuleRequest
 //
@@ -175,7 +175,7 @@ func (client *Client) AddGatewaySecurityGroupRuleWithContext(ctx context.Context
 
 // Summary:
 //
-// Revokes API consumer authorization rules in batches.
+// Revokes consumer authorization rules in batches.
 //
 // @param request - BatchDeleteConsumerAuthorizationRuleRequest
 //
@@ -222,7 +222,7 @@ func (client *Client) BatchDeleteConsumerAuthorizationRuleWithContext(ctx contex
 
 // Summary:
 //
-// Moves a resource from one resource group to another.
+// Transfers a resource to a different resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -271,6 +271,65 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建AI模型供应商
+//
+// @param request - CreateAiModelProviderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAiModelProviderResponse
+func (client *Client) CreateAiModelProviderWithContext(ctx context.Context, request *CreateAiModelProviderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAiModelProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Provider) {
+		body["provider"] = request.Provider
+	}
+
+	if !dara.IsNil(request.ServiceIds) {
+		body["serviceIds"] = request.ServiceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAiModelProvider"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-model-providers"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAiModelProviderResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -907,7 +966,7 @@ func (client *Client) CreateHttpApiWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// # Create an Operation for HTTP API
+// Creates operations for an HTTP API.
 //
 // @param request - CreateHttpApiOperationRequest
 //
@@ -1203,6 +1262,89 @@ func (client *Client) CreatePluginAttachmentWithContext(ctx context.Context, req
 
 // Summary:
 //
+// Creates a custom plugin class.
+//
+// @param request - CreatePluginClassRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePluginClassResponse
+func (client *Client) CreatePluginClassWithContext(ctx context.Context, request *CreatePluginClassRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePluginClassResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Alias) {
+		body["alias"] = request.Alias
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExecutePriority) {
+		body["executePriority"] = request.ExecutePriority
+	}
+
+	if !dara.IsNil(request.ExecuteStage) {
+		body["executeStage"] = request.ExecuteStage
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SupportedMinGatewayVersion) {
+		body["supportedMinGatewayVersion"] = request.SupportedMinGatewayVersion
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	if !dara.IsNil(request.VersionDescription) {
+		body["versionDescription"] = request.VersionDescription
+	}
+
+	if !dara.IsNil(request.WasmLanguage) {
+		body["wasmLanguage"] = request.WasmLanguage
+	}
+
+	if !dara.IsNil(request.WasmUrl) {
+		body["wasmUrl"] = request.WasmUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePluginClass"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/plugin-classes"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePluginClassResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a policy.
 //
 // @param request - CreatePolicyRequest
@@ -1392,7 +1534,7 @@ func (client *Client) CreateSecretWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates a service.
+// Creates services.
 //
 // Description:
 //
@@ -1742,11 +1884,11 @@ func (client *Client) DeleteGatewayWithContext(ctx context.Context, gatewayId *s
 
 // Summary:
 //
-// 删除网关配额限流规则
+// Deletes a quota throttling rule from a gateway.
 //
 // Description:
 //
-// 该接口用于对 AI 网关删除某条基于消费者的配额规则。注意，只针对于版本大于 2.1.19 的 AI 网关生效。
+// Deletes a consumer-based quota rule from an AI gateway. This operation applies only to AI gateways of version 2.1.19 or later.
 //
 // @param request - DeleteGatewayQuotaRuleRequest
 //
@@ -1834,7 +1976,7 @@ func (client *Client) DeleteGatewaySecurityGroupRuleWithContext(ctx context.Cont
 
 // Summary:
 //
-// Deletes an HTTP API.
+// Deletes a specified HTTP API.
 //
 // @param headers - map
 //
@@ -1900,7 +2042,7 @@ func (client *Client) DeleteHttpApiOperationWithContext(ctx context.Context, htt
 
 // Summary:
 //
-// Deletes a route in an HTTP API.
+// Deletes a route of an HTTP API.
 //
 // @param headers - map
 //
@@ -2069,7 +2211,7 @@ func (client *Client) DeletePolicyAttachmentWithContext(ctx context.Context, pol
 //
 // Description:
 //
-// 接口支持创建多个服务。
+// The operation supports creating multiple services.
 //
 // @param headers - map
 //
@@ -2256,7 +2398,7 @@ func (client *Client) DeployHttpApiWithContext(ctx context.Context, httpApiId *s
 
 // Summary:
 //
-// Deploys an MCP server.
+// Publishes an MCP server.
 //
 // @param headers - map
 //
@@ -2289,7 +2431,7 @@ func (client *Client) DeployMcpServerWithContext(ctx context.Context, mcpServerI
 
 // Summary:
 //
-// 查询当前账号可见的云原生API网关开服地域
+// Queries the regions where the cloud-native API gateway is available for the current account.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -2675,11 +2817,11 @@ func (client *Client) GetGatewayWithContext(ctx context.Context, gatewayId *stri
 
 // Summary:
 //
-// 查询网关配额限流规则详情
+// Queries the details of a gateway quota rate limiting rule.
 //
 // Description:
 //
-// 该接口用于查询 AI 网关上某条消费者配额规则。
+// This operation queries a specific consumer quota rule on an AI gateway.
 //
 // @param request - GetGatewayQuotaRuleRequest
 //
@@ -2734,11 +2876,11 @@ func (client *Client) GetGatewayQuotaRuleWithContext(ctx context.Context, gatewa
 
 // Summary:
 //
-// 查询网关配额限流规则主体用量详情
+// Queries the usage details of a subject under a gateway quota rate-limiting rule, including used quota, total quota, whether the limit is exceeded, usage details, and consumption records.
 //
 // Description:
 //
-// 该接口用于获取配额规则下的某个消费者用量详情。注意，只针对于版本大于 2.1.19 的 AI 网关生效。
+// Retrieves the usage details of a specific consumer under a quota rule. This operation takes effect only for AI gateways with a version later than 2.1.19.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageRequest
 //
@@ -2789,7 +2931,7 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageWithContext(ctx context.Con
 
 // Summary:
 //
-// # Read HttpApi
+// Retrieves HTTP API information.
 //
 // @param headers - map
 //
@@ -2888,11 +3030,11 @@ func (client *Client) GetHttpApiRouteWithContext(ctx context.Context, httpApiId 
 
 // Summary:
 //
-// Get MCP Server.
+// Retrieves an MCP server.
 //
 // Description:
 //
-// The API supports creating multiple services.
+// The operation supports creating multiple services.
 //
 // @param headers - map
 //
@@ -2925,7 +3067,7 @@ func (client *Client) GetMcpServerWithContext(ctx context.Context, mcpServerId *
 
 // Summary:
 //
-// Queries a plugin attachment.
+// Queries a plugin mount.
 //
 // @param headers - map
 //
@@ -2948,6 +3090,47 @@ func (client *Client) GetPluginAttachmentWithContext(ctx context.Context, plugin
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPluginAttachmentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a custom plugin class.
+//
+// @param request - GetPluginClassRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPluginClassResponse
+func (client *Client) GetPluginClassWithContext(ctx context.Context, pluginClassId *string, request *GetPluginClassRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPluginClassResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPluginClass"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/plugin-classes/" + dara.PercentEncode(dara.StringValue(pluginClassId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPluginClassResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2991,7 +3174,7 @@ func (client *Client) GetPolicyWithContext(ctx context.Context, policyId *string
 
 // Summary:
 //
-// Queries a policy attachment.
+// Queries the resource attachment of a policy.
 //
 // @param headers - map
 //
@@ -3024,7 +3207,7 @@ func (client *Client) GetPolicyAttachmentWithContext(ctx context.Context, policy
 
 // Summary:
 //
-// # Get resource overview information
+// Retrieves resource overview information.
 //
 // @param request - GetResourceOverviewRequest
 //
@@ -3071,11 +3254,11 @@ func (client *Client) GetResourceOverviewWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Obtains the key.
+// Retrieves a key.
 //
 // Description:
 //
-// You can call this operation to create multiple services at a time.
+// The operation supports creating multiple services.
 //
 // @param headers - map
 //
@@ -3108,11 +3291,11 @@ func (client *Client) GetSecretWithContext(ctx context.Context, secretId *string
 
 // Summary:
 //
-// Gets the key value.
+// Retrieves the value of a key.
 //
 // Description:
 //
-// 接口支持创建多个服务。
+// The operation supports creating multiple services.
 //
 // @param headers - map
 //
@@ -3145,7 +3328,7 @@ func (client *Client) GetSecretValueWithContext(ctx context.Context, name *strin
 
 // Summary:
 //
-// Gets service details.
+// Retrieves the details of a service.
 //
 // @param headers - map
 //
@@ -3463,7 +3646,7 @@ func (client *Client) ListConsumerAuthorizationRulesWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询消费者配额限流规则列表
+// Queries the list of quota rules configured for a specific consumer.
 //
 // @param request - ListConsumerQuotaRulesRequest
 //
@@ -3522,7 +3705,7 @@ func (client *Client) ListConsumerQuotaRulesWithContext(ctx context.Context, con
 
 // Summary:
 //
-// Queries a list of consumers.
+// Retrieves a list of consumers.
 //
 // @param request - ListConsumersRequest
 //
@@ -3654,7 +3837,7 @@ func (client *Client) ListDomainsWithContext(ctx context.Context, request *ListD
 //
 // Summary:
 //
-// Queries a list of environments.
+// Queries the list of environments.
 //
 // @param request - ListEnvironmentsRequest
 //
@@ -3729,11 +3912,11 @@ func (client *Client) ListEnvironmentsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取网关外的服务信息
+// Retrieves the external service information of a gateway.
 //
 // Description:
 //
-// 接口支持创建多个服务。
+// This operation supports creating multiple services.
 //
 // @param request - ListExternalServicesRequest
 //
@@ -3796,7 +3979,7 @@ func (client *Client) ListExternalServicesWithContext(ctx context.Context, gatew
 
 // Summary:
 //
-// Queries the feature parameter configurations of an instance.
+// Queries the list of gateway attribute parameter settings.
 //
 // @param headers - map
 //
@@ -3829,11 +4012,11 @@ func (client *Client) ListGatewayFeaturesWithContext(ctx context.Context, gatewa
 
 // Summary:
 //
-// 查询网关周期配额规则列表
+// Queries the list of API consumer quota rules bound to a gateway.
 //
 // Description:
 //
-// 该接口用于查询网关上绑定的消费者配额规则列表
+// Queries the list of API consumer quota rules bound to a gateway.
 //
 // @param request - ListGatewayQuotaRulesRequest
 //
@@ -3896,7 +4079,7 @@ func (client *Client) ListGatewayQuotaRulesWithContext(ctx context.Context, gate
 
 // Summary:
 //
-// Queries a list of instances.
+// Queries a list of gateways.
 //
 // @param tmpReq - ListGatewaysRequest
 //
@@ -3977,7 +4160,7 @@ func (client *Client) ListGatewaysWithContext(ctx context.Context, tmpReq *ListG
 
 // Summary:
 //
-// # List Operations
+// Retrieves a list of API operations.
 //
 // @param request - ListHttpApiOperationsRequest
 //
@@ -4175,7 +4358,7 @@ func (client *Client) ListHttpApiRoutesWithContext(ctx context.Context, httpApiI
 
 // Summary:
 //
-// Queries a list of HTTP APIs.
+// Retrieves a list of HTTP APIs.
 //
 // @param request - ListHttpApisRequest
 //
@@ -4290,7 +4473,7 @@ func (client *Client) ListHttpApisWithContext(ctx context.Context, request *List
 //
 // Description:
 //
-// You can call this operation to create multiple services at a time.
+// The operation supports creating multiple services.
 //
 // @param request - ListMcpServersRequest
 //
@@ -4361,7 +4544,7 @@ func (client *Client) ListMcpServersWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Retrieves a list of plug-in attachments.
+// Retrieves the list of plug-in mounts.
 //
 // @param request - ListPluginAttachmentsRequest
 //
@@ -4440,11 +4623,11 @@ func (client *Client) ListPluginAttachmentsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Obtains a plugin.
+// Retrieves plug-ins.
 //
 // Description:
 //
-// You can call this operation to create multiple services at a time.
+// The operation supports creating multiple services.
 //
 // @param request - ListPluginClassesRequest
 //
@@ -4531,7 +4714,7 @@ func (client *Client) ListPluginClassesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries plug-ins.
+// Retrieves a list of plugins.
 //
 // @param request - ListPluginsRequest
 //
@@ -4614,7 +4797,7 @@ func (client *Client) ListPluginsWithContext(ctx context.Context, request *ListP
 
 // Summary:
 //
-// Queries policies.
+// Queries a list of policies.
 //
 // @param request - ListPoliciesRequest
 //
@@ -4752,11 +4935,11 @@ func (client *Client) ListPolicyClassesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Lists key references.
+// Lists secret references.
 //
 // Description:
 //
-// You can call this operation to create multiple services at a time.
+// This operation supports creating multiple services.
 //
 // @param request - ListSecretReferencesRequest
 //
@@ -4807,11 +4990,11 @@ func (client *Client) ListSecretReferencesWithContext(ctx context.Context, secre
 
 // Summary:
 //
-// List keys.
+// Lists keys.
 //
 // Description:
 //
-// The API supports creating multiple services.
+// The operation supports creating multiple services.
 //
 // @param request - ListSecretsRequest
 //
@@ -5000,7 +5183,7 @@ func (client *Client) ListSslCertsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 查标签接口
+// Retrieves the list of resource labels.
 //
 // @param tmpReq - ListTagResourcesRequest
 //
@@ -5069,7 +5252,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// # Retrieve the availability zones under a cloud-native API gateway region
+// Retrieves the zones available for a cloud-native API gateway in a specified region.
 //
 // @param headers - map
 //
@@ -5123,6 +5306,10 @@ func (client *Client) QueryConsumerAuthorizationRulesWithContext(ctx context.Con
 		query["apiNameLike"] = request.ApiNameLike
 	}
 
+	if !dara.IsNil(request.ConsumerGroupId) {
+		query["consumerGroupId"] = request.ConsumerGroupId
+	}
+
 	if !dara.IsNil(request.ConsumerId) {
 		query["consumerId"] = request.ConsumerId
 	}
@@ -5149,6 +5336,10 @@ func (client *Client) QueryConsumerAuthorizationRulesWithContext(ctx context.Con
 
 	if !dara.IsNil(request.ParentResourceId) {
 		query["parentResourceId"] = request.ParentResourceId
+	}
+
+	if !dara.IsNil(request.PrincipalType) {
+		query["principalType"] = request.PrincipalType
 	}
 
 	if !dara.IsNil(request.ResourceId) {
@@ -5189,7 +5380,7 @@ func (client *Client) QueryConsumerAuthorizationRulesWithContext(ctx context.Con
 
 // Summary:
 //
-// Deletes a consumer authorization rule.
+// Deletes an API consumer authorization rule.
 //
 // @param headers - map
 //
@@ -5222,27 +5413,27 @@ func (client *Client) RemoveConsumerAuthorizationRuleWithContext(ctx context.Con
 
 // Summary:
 //
-// 重置网关配额限流规则
+// Resets a quota rate limiting rule on a gateway.
 //
 // Description:
 //
-// 该接口用于重置网关上某条配额限流规则。注意，只针对于版本大于 2.1.19 的 AI 网关生效；重置将清零规则上消费者历史用量。
+// Resets a quota rate limiting rule on a gateway. This operation takes effect only for AI gateways with a version later than 2.1.19. The reset clears the historical usage of consumers on the rule.
 //
 // >
 //
-// >  推荐调用逻辑：
+// >  Recommended call logic:
 //
-// > - 一、先 dryRun 预检检验是否存在规则冲突
+// > - 1. Perform a dry run to check for rule conflicts.
 //
-// > - - 传dryRun=true
+// > - - Set dryRun=true.
 //
-// > - - 返回含conflictHash的冲突预览
+// > - - The response contains a conflict preview with conflictHash.
 //
-// > - 二、确认后正式提交
+// > - 2. Submit the request after confirmation.
 //
-// > - - 无冲突：dryRun=false,overwrite=false
+// > - - No conflict: dryRun=false, overwrite=false.
 //
-// > - - 有冲突且确认覆盖：dryRun=false,overwrite=true, conflictHash=<上一步返回的值＞
+// > - - Conflict exists and overwrite confirmed: dryRun=false, overwrite=true, conflictHash=<value returned in the previous step>
 //
 // @param request - ResetGatewayQuotaRuleRequest
 //
@@ -5317,7 +5508,7 @@ func (client *Client) ResetGatewayQuotaRuleWithContext(ctx context.Context, gate
 
 // Summary:
 //
-// Restarts an instance.
+// Restarts a gateway.
 //
 // @param headers - map
 //
@@ -5350,7 +5541,7 @@ func (client *Client) RestartGatewayWithContext(ctx context.Context, gatewayId *
 
 // Summary:
 //
-// Synchronizes Nacos Model Context Protocol (MCP) server configurations to Cloud-native API Gateway.
+// Syncs an external MCP server.
 //
 // @param request - SyncMCPServersRequest
 //
@@ -5413,7 +5604,7 @@ func (client *Client) SyncMCPServersWithContext(ctx context.Context, request *Sy
 
 // Summary:
 //
-// 打标签接口
+// Adds labels to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -5468,7 +5659,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Undeploys an MCP server.
+// Cancels the publication of an MCP server.
 //
 // @param headers - map
 //
@@ -5501,7 +5692,7 @@ func (client *Client) UnDeployMcpServerWithContext(ctx context.Context, mcpServe
 
 // Summary:
 //
-// Unpublishes an HTTP API.
+// Cancels the deployment of an HTTP API.
 //
 // @param request - UndeployHttpApiRequest
 //
@@ -5560,7 +5751,7 @@ func (client *Client) UndeployHttpApiWithContext(ctx context.Context, httpApiId 
 
 // Summary:
 //
-// Uninstalls a plug-in.
+// Uninstalls a plugin.
 //
 // @param headers - map
 //
@@ -5593,7 +5784,7 @@ func (client *Client) UninstallPluginWithContext(ctx context.Context, pluginId *
 
 // Summary:
 //
-// 删标签接口
+// Removes tags from resources.
 //
 // @param tmpReq - UntagResourcesRequest
 //
@@ -5733,7 +5924,7 @@ func (client *Client) UpdateAndAttachPolicyWithContext(ctx context.Context, poli
 
 // Summary:
 //
-// Updates a consumer.
+// Updates an API consumer.
 //
 // @param request - UpdateConsumerRequest
 //
@@ -5944,7 +6135,7 @@ func (client *Client) UpdateDomainWithContext(ctx context.Context, domainId *str
 //
 // Summary:
 //
-// # UpdateEnvironment
+// Updates an environment.
 //
 // @param request - UpdateEnvironmentRequest
 //
@@ -5995,7 +6186,7 @@ func (client *Client) UpdateEnvironmentWithContext(ctx context.Context, environm
 
 // Summary:
 //
-// Updates the configuration of an instance feature parameter.
+// Updates the attribute parameters of a gateway.
 //
 // @param request - UpdateGatewayFeatureRequest
 //
@@ -6044,7 +6235,7 @@ func (client *Client) UpdateGatewayFeatureWithContext(ctx context.Context, gatew
 //
 // Summary:
 //
-// The response message returned.
+// Modifies the name of a gateway.
 //
 // @param request - UpdateGatewayNameRequest
 //
@@ -6091,25 +6282,25 @@ func (client *Client) UpdateGatewayNameWithContext(ctx context.Context, gatewayI
 
 // Summary:
 //
-// 更新网关配额限流规则
+// Edits a quota throttling rule on a gateway.
 //
 // Description:
 //
-// 该接口用于编辑网关上某条配额规则。注意，只针对于版本大于2.1.19的AI网关生效；编辑将保留规则上消费者历史用量。
+// Edits a quota rule on a gateway. This operation takes effect only on AI gateways with a version later than 2.1.19. Editing a rule preserves the historical usage of consumers on the rule.
 //
-// >  推荐调用逻辑：
+// >  Recommended call logic:
 //
-// > - 一、先 dryRun 预检检验是否存在规则冲突
+// > - Step 1: Perform a dry run to check for rule conflicts.
 //
-// > - - 传dryRun=true
+// > - - Set dryRun to true.
 //
-// > - - 返回含conflictHash的冲突预览
+// > - - The response contains a conflict preview with conflictHash.
 //
-// > - 二、确认后正式提交
+// > - Step 2: Submit the request after confirmation.
 //
-// > - - 无冲突：dryRun=false,overwrite=false
+// > - - No conflicts: Set dryRun to false and overwrite to false.
 //
-// > - - 有冲突且确认覆盖：dryRun=false,overwrite=true, conflictHash=<上一步返回的值＞
+// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
 //
 // @param request - UpdateGatewayQuotaRuleRequest
 //
@@ -6184,11 +6375,11 @@ func (client *Client) UpdateGatewayQuotaRuleWithContext(ctx context.Context, gat
 
 // Summary:
 //
-// 启/停用网关配额限流规则
+// Enables or disables a quota throttling rule for a gateway.
 //
 // Description:
 //
-// 该接口用于启用或者停用网关上某个配额规则。注意，只针对于版本大于2.1.19的AI网关生效。
+// Enables or disables a quota rule on a gateway. This operation takes effect only for AI gateways with a version later than 2.1.19.
 //
 // @param request - UpdateGatewayQuotaRuleStatusRequest
 //
@@ -6381,7 +6572,7 @@ func (client *Client) UpdateHttpApiOperationWithContext(ctx context.Context, htt
 
 // Summary:
 //
-// Updates a route of an HTTP API.
+// Updates a route of an HttpApi.
 //
 // @param request - UpdateHttpApiRouteRequest
 //
@@ -6456,7 +6647,7 @@ func (client *Client) UpdateHttpApiRouteWithContext(ctx context.Context, httpApi
 //
 // Description:
 //
-// You can only update the listening Ingress configuration for sources of the **ACK*	- type.
+// Only sources of the **Container Service*	- type are allowed to update the listener Ingress configuration.
 //
 // @param request - UpdateMcpServerRequest
 //
@@ -6547,7 +6738,7 @@ func (client *Client) UpdateMcpServerWithContext(ctx context.Context, mcpServerI
 
 // Summary:
 //
-// Updates a plug-in attachment.
+// Updates a plugin mount.
 //
 // @param request - UpdatePluginAttachmentRequest
 //
@@ -6657,11 +6848,11 @@ func (client *Client) UpdatePolicyWithContext(ctx context.Context, policyId *str
 
 // Summary:
 //
-// Updates the key.
+// Updates a key pair.
 //
 // Description:
 //
-// You can only update the listening Ingress configuration for sources of the **ACK*	- type.
+// Only sources of the **container service*	- type allow you to update the configuration for listening to Ingress.
 //
 // @param request - UpdateSecretRequest
 //
@@ -6708,7 +6899,7 @@ func (client *Client) UpdateSecretWithContext(ctx context.Context, secretId *str
 
 // Summary:
 //
-// Update a service. You can update the health check configuration of the service, and the configuration information of DNS domain names and static addresses.
+// Updates a service. You can update the health check configuration, DNS domain name, and address configuration of fixed addresses for the service.
 //
 // @param request - UpdateServiceRequest
 //
@@ -6747,6 +6938,10 @@ func (client *Client) UpdateServiceWithContext(ctx context.Context, serviceId *s
 
 	if !dara.IsNil(request.HealthyPanicThreshold) {
 		body["healthyPanicThreshold"] = request.HealthyPanicThreshold
+	}
+
+	if !dara.IsNil(request.ModelProviderId) {
+		body["modelProviderId"] = request.ModelProviderId
 	}
 
 	if !dara.IsNil(request.OutlierDetectionConfig) {
@@ -6834,7 +7029,7 @@ func (client *Client) UpdateServiceVersionWithContext(ctx context.Context, servi
 
 // Summary:
 //
-// Updates the version of a Cloud-native API Gateway instance.
+// Upgrades the gateway version.
 //
 // @param request - UpgradeGatewayRequest
 //

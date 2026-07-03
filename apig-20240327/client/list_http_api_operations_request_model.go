@@ -38,79 +38,79 @@ type iListHttpApiOperationsRequest interface {
 }
 
 type ListHttpApiOperationsRequest struct {
-	// Filter the operation list based on a specific consumer authorization rule ID, and the interface list in the response only contains authorized operations.
+	// The consumer authorization rule ID used to filter the API operation list. The response includes only authorized API operations.
 	//
 	// example:
 	//
 	// cas-xxx
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
-	// Filter operations by authentication status
+	// Specifies whether to filter by authentication enablement status.
 	//
 	// example:
 	//
 	// true
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	// Whether to filter for deployment scenario
+	// Specifies whether the request is for a deployment scenario.
 	//
 	// example:
 	//
 	// true
 	ForDeploy *bool `json:"forDeploy,omitempty" xml:"forDeploy,omitempty"`
-	// The gateway ID
+	// The gateway ID used to filter results.
 	//
 	// example:
 	//
 	// gw-001
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// List interfaces by Method.
+	// Lists API operations by HTTP method.
 	//
 	// example:
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// Search operations by exact name.
+	// Searches for API operations by exact name match.
 	//
 	// example:
 	//
 	// getUserInfo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Search operations by name prefix.
+	// Searches for API operations by name prefix.
 	//
 	// example:
 	//
 	// GetUser
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// Page number, starting from 1, default is 1 if not specified.
+	// The page number to return. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size, valid range [1, 100], default is 10 if not specified.
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Search operations by path prefix.
+	// Searches for API operations by path prefix match.
 	//
 	// example:
 	//
 	// /v1
 	PathLike *string `json:"pathLike,omitempty" xml:"pathLike,omitempty"`
-	// Each operation information in the response carries a list of authorization rules for the specified consumer under the specified environment ID. The withConsumerInEnvironmentId field needs to be additionally specified.
+	// The environment ID. When specified, the response includes the authorization rule list of the specified consumer under the specified environment for each API operation. You must also specify the withConsumerInfoById parameter.
 	//
 	// example:
 	//
 	// env-xxx
 	WithConsumerInEnvironmentId *string `json:"withConsumerInEnvironmentId,omitempty" xml:"withConsumerInEnvironmentId,omitempty"`
-	// Each operation information in the response carries a list of authorization rules for the specified consumer under the specified environment ID. The withConsumerInEnvironmentId field needs to be additionally specified.
+	// The consumer ID. When specified, the response includes the authorization rule list of the specified consumer under the specified environment for each API operation. You must also specify the withConsumerInEnvironmentId parameter.
 	//
 	// example:
 	//
 	// cs-xxx
 	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
-	// Plugin ID, use this plugin ID to retrieve the plugin release information.
+	// The plug-in ID used to retrieve plug-in publishing information.
 	//
 	// example:
 	//

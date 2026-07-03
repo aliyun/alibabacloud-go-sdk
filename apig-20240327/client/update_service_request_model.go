@@ -21,6 +21,8 @@ type iUpdateServiceRequest interface {
 	GetHealthCheckConfig() *UpdateServiceRequestHealthCheckConfig
 	SetHealthyPanicThreshold(v float32) *UpdateServiceRequest
 	GetHealthyPanicThreshold() *float32
+	SetModelProviderId(v string) *UpdateServiceRequest
+	GetModelProviderId() *string
 	SetOutlierDetectionConfig(v *UpdateServiceRequestOutlierDetectionConfig) *UpdateServiceRequest
 	GetOutlierDetectionConfig() *UpdateServiceRequestOutlierDetectionConfig
 	SetPorts(v []*UpdateServiceRequestPorts) *UpdateServiceRequest
@@ -32,13 +34,13 @@ type iUpdateServiceRequest interface {
 type UpdateServiceRequest struct {
 	// The list of domain names or fixed addresses.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	// The agent service configurations.
+	// The agent service configuration.
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
-	// The AI service configurations.
+	// The AI service configuration.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
-	// A DNS service address.
+	// The DNS server addresses.
 	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
-	// The health check configurations.
+	// The health check configuration of the service.
 	HealthCheckConfig *UpdateServiceRequestHealthCheckConfig `json:"healthCheckConfig,omitempty" xml:"healthCheckConfig,omitempty" type:"Struct"`
 	// The health check threshold.
 	//
@@ -46,11 +48,12 @@ type UpdateServiceRequest struct {
 	//
 	// 80
 	HealthyPanicThreshold *float32 `json:"healthyPanicThreshold,omitempty" xml:"healthyPanicThreshold,omitempty"`
-	// The passive health check configurations.
+	ModelProviderId       *string  `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
+	// The passive health check parameter settings.
 	OutlierDetectionConfig *UpdateServiceRequestOutlierDetectionConfig `json:"outlierDetectionConfig,omitempty" xml:"outlierDetectionConfig,omitempty" type:"Struct"`
 	// The port information.
 	Ports []*UpdateServiceRequestPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
-	// The service protocol.
+	// The protocol of the service.
 	//
 	// example:
 	//
@@ -88,6 +91,10 @@ func (s *UpdateServiceRequest) GetHealthCheckConfig() *UpdateServiceRequestHealt
 
 func (s *UpdateServiceRequest) GetHealthyPanicThreshold() *float32 {
 	return s.HealthyPanicThreshold
+}
+
+func (s *UpdateServiceRequest) GetModelProviderId() *string {
+	return s.ModelProviderId
 }
 
 func (s *UpdateServiceRequest) GetOutlierDetectionConfig() *UpdateServiceRequestOutlierDetectionConfig {
@@ -129,6 +136,11 @@ func (s *UpdateServiceRequest) SetHealthCheckConfig(v *UpdateServiceRequestHealt
 
 func (s *UpdateServiceRequest) SetHealthyPanicThreshold(v float32) *UpdateServiceRequest {
 	s.HealthyPanicThreshold = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetModelProviderId(v string) *UpdateServiceRequest {
+	s.ModelProviderId = &v
 	return s
 }
 
@@ -181,57 +193,51 @@ func (s *UpdateServiceRequest) Validate() error {
 }
 
 type UpdateServiceRequestHealthCheckConfig struct {
-	// Specifies whether to enable health checks.
+	// Specifies whether to enable health checks for the service.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The normal status codes to be returned. This parameter is required if the health check protocol is HTTP.
+	// The list of expected HTTP status codes that indicate a healthy response. This parameter is required when the protocol is HTTP.
 	ExpectedStatuses []*string `json:"expectedStatuses,omitempty" xml:"expectedStatuses,omitempty" type:"Repeated"`
-	// The healthy threshold.
+	// The healthy threshold for health checks.
 	//
 	// example:
 	//
 	// 2
 	HealthyThreshold *int32 `json:"healthyThreshold,omitempty" xml:"healthyThreshold,omitempty"`
-	// The domain name that you want to use for health checks. Optional. This parameter is available if the health check protocol is HTTP.
+	// The domain name for health checks. This parameter is optional and can be configured when the protocol is HTTP.
 	//
 	// example:
 	//
 	// dev.itemcener.com
 	HttpHost *string `json:"httpHost,omitempty" xml:"httpHost,omitempty"`
-	// The request path of health checks. This parameter is required if the health check protocol is HTTP.
+	// The request path for health checks. This parameter is required when the protocol is HTTP.
 	//
 	// example:
 	//
 	// /healthz
 	HttpPath *string `json:"httpPath,omitempty" xml:"httpPath,omitempty"`
-	// The health check interval. Unit: seconds
+	// The health check interval. Unit: seconds.
 	//
 	// example:
 	//
 	// 2
 	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
-	// The protocol over which the system performs health checks.
-	//
-	// Valid values:
-	//
-	// 	- TCP
-	//
-	// 	- HTTP
+	// The protocol used for health checks.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The timeout period for a health check response. Unit: seconds
+	// The response timeout period for health checks. Unit: seconds.
 	//
 	// example:
 	//
 	// 2
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The unhealthy threshold.
+	// The unhealthy threshold for health checks.
 	//
 	// example:
 	//
@@ -333,7 +339,7 @@ func (s *UpdateServiceRequestHealthCheckConfig) Validate() error {
 }
 
 type UpdateServiceRequestOutlierDetectionConfig struct {
-	// The initial isolation duration after a node is isolated (e.g., 30 seconds). The isolation time is calculated as: k \\	- base_ejection_time (with k initially set to 1). Each subsequent isolation increases the isolation time (k is incremented by 1), while consecutive healthy checks gradually decrease the isolation time (k is decremented by 1).
+	// The base ejection time, which is the initial isolation duration after a node is ejected (for example, 30 seconds). The isolation time is calculated by using the following formula: k × base_ejection_time (the initial value of k is 1). Each ejection increases the isolation time (k is incremented by 1). If consecutive checks are healthy, the isolation time is gradually reduced (k is decremented by 1).
 	//
 	// example:
 	//
@@ -347,13 +353,13 @@ type UpdateServiceRequestOutlierDetectionConfig struct {
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The panic threshold.
 	//
-	// When the proportion of healthy nodes in the service is greater than the panic threshold, health checks take effect normally, and requests are only sent to healthy nodes, not to ejected nodes. When the proportion of healthy nodes in the service is less than or equal to the panic threshold, health checks are effectively disabled, and requests are sent to all nodes, including those that have been ejected nodes.
+	// When the proportion of healthy nodes in the service is greater than the panic threshold, health checks function normally. Requests are sent only to healthy nodes and not to ejected nodes. When the proportion of healthy nodes in the service is less than or equal to the panic threshold, health checks are effectively disabled. Requests are sent to all nodes, including ejected nodes.
 	//
 	// example:
 	//
 	// 1
 	FailurePercentageMinimumHosts *int32 `json:"failurePercentageMinimumHosts,omitempty" xml:"failurePercentageMinimumHosts,omitempty"`
-	// When the request failure rate of a node reaches this threshold, the system triggers the isolation mechanism of the node.
+	// The failure percentage threshold. When the percentage of failed requests on a node reaches this threshold, the system triggers the ejection mechanism for the node.
 	//
 	// example:
 	//
@@ -431,7 +437,7 @@ type UpdateServiceRequestPorts struct {
 	//
 	// catalog
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The port.
+	// The port number.
 	//
 	// example:
 	//

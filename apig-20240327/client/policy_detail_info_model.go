@@ -24,12 +24,42 @@ type iPolicyDetailInfo interface {
 }
 
 type PolicyDetailInfo struct {
-	ClassId     *string `json:"classId,omitempty" xml:"classId,omitempty"`
-	ClassName   *string `json:"className,omitempty" xml:"className,omitempty"`
-	Config      *string `json:"config,omitempty" xml:"config,omitempty"`
+	// The policy class ID.
+	//
+	// example:
+	//
+	// cls-xxx
+	ClassId *string `json:"classId,omitempty" xml:"classId,omitempty"`
+	// The policy type name.
+	//
+	// example:
+	//
+	// RateLimit
+	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
+	// The policy configuration content (JSON string).
+	//
+	// example:
+	//
+	// {"rate":100,"burst":50}
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// The policy description.
+	//
+	// example:
+	//
+	// 每秒限流100次
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
-	PolicyId    *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
+	// The policy name.
+	//
+	// example:
+	//
+	// my-rate-limit
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The policy ID.
+	//
+	// example:
+	//
+	// plc-xxx
+	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
 }
 
 func (s PolicyDetailInfo) String() string {

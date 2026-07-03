@@ -20,21 +20,21 @@ type iListZonesResponseBody interface {
 }
 
 type ListZonesResponseBody struct {
-	// Response status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *ListZonesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *ListZonesResponseBody) Validate() error {
 }
 
 type ListZonesResponseBodyData struct {
-	// The list of queried zones.
+	// The list of zones.
 	Items []*ListZonesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -131,13 +131,13 @@ func (s *ListZonesResponseBodyData) Validate() error {
 }
 
 type ListZonesResponseBodyDataItems struct {
-	// Whether QAT (Quality Assurance Testing) is supported in this zone
+	// Indicates whether QuickAssist Technology (QAT) is supported.
 	//
 	// example:
 	//
 	// true
 	SupportQat *string `json:"supportQat,omitempty" xml:"supportQat,omitempty"`
-	// The zone identifier
+	// The zone ID.
 	//
 	// example:
 	//

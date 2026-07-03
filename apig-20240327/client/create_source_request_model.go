@@ -28,9 +28,9 @@ type CreateSourceRequest struct {
 	//
 	// gw-cq7l5s5lhtgi6q***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The Container Service source configuration.
+	// The container service source configuration.
 	K8sSourceConfig *CreateSourceRequestK8sSourceConfig `json:"k8sSourceConfig,omitempty" xml:"k8sSourceConfig,omitempty" type:"Struct"`
-	// The MSE Nacos source configuration.
+	// The configuration of the MSE Nacos source.
 	NacosSourceConfig *CreateSourceRequestNacosSourceConfig `json:"nacosSourceConfig,omitempty" xml:"nacosSourceConfig,omitempty" type:"Struct"`
 	// The resource group ID.
 	//
@@ -42,7 +42,7 @@ type CreateSourceRequest struct {
 	//
 	// - MSE_NACOS: MSE Nacos.
 	//
-	// - K8S: Container Service.
+	// - K8S: Container Service for Kubernetes (ACK).
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ func (s *CreateSourceRequest) Validate() error {
 type CreateSourceRequestK8sSourceConfig struct {
 	// The list of gateway security group authorization rule configurations.
 	AuthorizeSecurityGroupRules []*CreateSourceRequestK8sSourceConfigAuthorizeSecurityGroupRules `json:"authorizeSecurityGroupRules,omitempty" xml:"authorizeSecurityGroupRules,omitempty" type:"Repeated"`
-	// The Container Service cluster ID.
+	// The container service cluster ID.
 	//
 	// example:
 	//

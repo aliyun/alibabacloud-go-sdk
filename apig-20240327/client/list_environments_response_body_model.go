@@ -96,7 +96,7 @@ func (s *ListEnvironmentsResponseBody) Validate() error {
 }
 
 type ListEnvironmentsResponseBodyData struct {
-	// 环境信息列表。
+	// The list of environment contexts.
 	Items []*EnvironmentInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//

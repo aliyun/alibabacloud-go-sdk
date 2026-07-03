@@ -30,7 +30,9 @@ type UpdateAndAttachPolicyRequest struct {
 	//
 	// This parameter is required.
 	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
-	// The type of mount point supported by the policy. Valid values:
+	// The type of mount point supported by the policy.
+	//
+	// Valid values:
 	//
 	// - HttpApi: HttpApi.
 	//

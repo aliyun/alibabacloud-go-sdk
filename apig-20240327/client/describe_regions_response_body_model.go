@@ -20,15 +20,22 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The list of regions.
 	Data []*DescribeRegionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// E6BD6C79-32B1-5D7E-A89A-93C5A6B7xxxx
@@ -93,10 +100,14 @@ func (s *DescribeRegionsResponseBody) Validate() error {
 }
 
 type DescribeRegionsResponseBodyData struct {
+	// The display name of the region.
+	//
 	// example:
 	//
 	// China (Beijing)
 	LocalName *string `json:"localName,omitempty" xml:"localName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

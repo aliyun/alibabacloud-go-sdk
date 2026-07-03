@@ -20,21 +20,21 @@ type iListPluginAttachmentsResponseBody interface {
 }
 
 type ListPluginAttachmentsResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response payload.
+	// The response data.
 	Data *ListPluginAttachmentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The status message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *ListPluginAttachmentsResponseBody) Validate() error {
 }
 
 type ListPluginAttachmentsResponseBodyData struct {
-	// The details of resource attachments.
+	// The item details.
 	Items []*ListPluginAttachmentsResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -104,13 +104,13 @@ type ListPluginAttachmentsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -176,41 +176,31 @@ func (s *ListPluginAttachmentsResponseBodyData) Validate() error {
 }
 
 type ListPluginAttachmentsResponseBodyDataItems struct {
-	// The types of resource attachments.
-	//
-	// - HttpApi
-	//
-	// - Operation
-	//
-	// - GatewayRoute
-	//
-	// - GatewayDomain
-	//
-	// - Gateway
+	// The plug-in mount resource type. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
 	//
 	// example:
 	//
 	// GatewayRoute
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// Indicates if enabled.
+	// Indicates whether the plug-in mount is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The environment metadata.
+	// The environment context.
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
-	// The parent resource metadata.
+	// The parent resource information.
 	ParentResourceInfo *ParentResourceInfo `json:"parentResourceInfo,omitempty" xml:"parentResourceInfo,omitempty"`
-	// The ID of the resource attachment.
+	// The plug-in mount ID.
 	//
 	// example:
 	//
 	// pa-d0j9t5em1hkncrlo51mg
 	PluginAttachmentId *string `json:"pluginAttachmentId,omitempty" xml:"pluginAttachmentId,omitempty"`
-	// The plug-in type metadata.
+	// The plug-in type information.
 	PluginClassInfo *PluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty"`
-	// The plug-in configurations (Base64-encoded).
+	// The Base64-encoded content of the original plug-in configuration.
 	//
 	// example:
 	//
@@ -222,7 +212,7 @@ type ListPluginAttachmentsResponseBodyDataItems struct {
 	//
 	// pl-cvu6r4um1hko3b3ti0a0
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	// The information of resource attachments.
+	// The mount resource information.
 	ResourceInfos []*ResourceInfo `json:"resourceInfos,omitempty" xml:"resourceInfos,omitempty" type:"Repeated"`
 }
 

@@ -20,21 +20,21 @@ type iListConsumersResponseBody interface {
 }
 
 type ListConsumersResponseBody struct {
-	// The status code.
+	// The response code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response payload.
+	// The response data.
 	Data *ListConsumersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The status message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *ListConsumersResponseBody) Validate() error {
 }
 
 type ListConsumersResponseBodyData struct {
-	// The list of consumer information.
+	// The list of consumers.
 	Items []*ListConsumersResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -104,13 +104,13 @@ type ListConsumersResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type ListConsumersResponseBodyDataItems struct {
 	//
 	// 1721097861050
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The deployment status of the API in the current environment.
+	// The publish status of the API in the current environment.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ type ListConsumersResponseBodyDataItems struct {
 	//
 	// 测试消费者
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates if enabled.
+	// Indicates whether the consumer is enabled.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type ListConsumersResponseBodyDataItems struct {
 	//
 	// user-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The last update timestamp.
+	// The update timestamp.
 	//
 	// example:
 	//

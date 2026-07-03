@@ -20,7 +20,11 @@ type iUpdateConsumerAuthorizationRuleRequest interface {
 type UpdateConsumerAuthorizationRuleRequest struct {
 	// The list of resource authorization information.
 	AuthorizationResourceInfos []*AuthorizationResourceInfo `json:"authorizationResourceInfos,omitempty" xml:"authorizationResourceInfos,omitempty" type:"Repeated"`
-	// The expiry mode. Valid values: LongTerm and ShortTerm.
+	// The expiration mode. Valid values:
+	//
+	// - LongTerm
+	//
+	// - ShortTerm
 	//
 	// example:
 	//

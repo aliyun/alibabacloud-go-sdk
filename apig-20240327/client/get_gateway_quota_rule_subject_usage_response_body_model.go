@@ -20,18 +20,26 @@ type iGetGatewayQuotaRuleSubjectUsageResponseBody interface {
 }
 
 type GetGatewayQuotaRuleSubjectUsageResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
+	//
 	// example:
 	//
 	// {"usedAmount":500}
 	Data *GetGatewayQuotaRuleSubjectUsageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 1234567890
@@ -92,30 +100,44 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBody) Validate() error {
 }
 
 type GetGatewayQuotaRuleSubjectUsageResponseBodyData struct {
+	// The total cached token consumption.
+	//
 	// example:
 	//
 	// 20
 	CachedAmount *int64 `json:"cachedAmount,omitempty" xml:"cachedAmount,omitempty"`
+	// The paginated consumption details.
+	//
 	// example:
 	//
 	// {"totalSize":100}
 	Details *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails `json:"details,omitempty" xml:"details,omitempty" type:"Struct"`
+	// The total input token consumption.
+	//
 	// example:
 	//
 	// 300
 	InputAmount *int64 `json:"inputAmount,omitempty" xml:"inputAmount,omitempty"`
+	// The total output token consumption.
+	//
 	// example:
 	//
 	// 180
 	OutputAmount *int64 `json:"outputAmount,omitempty" xml:"outputAmount,omitempty"`
+	// Indicates whether the quota limit is exceeded.
+	//
 	// example:
 	//
 	// false
 	OverLimit *bool `json:"overLimit,omitempty" xml:"overLimit,omitempty"`
+	// The total quota of the subject.
+	//
 	// example:
 	//
 	// 1000
 	TotalQuota *int64 `json:"totalQuota,omitempty" xml:"totalQuota,omitempty"`
+	// The total used amount of the subject.
+	//
 	// example:
 	//
 	// 500
@@ -203,18 +225,26 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) Validate() error {
 }
 
 type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails struct {
+	// The list of usage details.
+	//
 	// example:
 	//
 	// [{"model":"qwen-plus",\\"usedAmount\\":210}]
 	Items []*GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The current page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -279,26 +309,38 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails) Validate() erro
 }
 
 type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
+	// The cached token consumption.
+	//
 	// example:
 	//
 	// 10
 	CachedAmount *int64 `json:"cachedAmount,omitempty" xml:"cachedAmount,omitempty"`
+	// The input token consumption.
+	//
 	// example:
 	//
 	// 120
 	InputAmount *int64 `json:"inputAmount,omitempty" xml:"inputAmount,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// qwen-plus
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
+	// The output token consumption.
+	//
 	// example:
 	//
 	// 80
 	OutputAmount *int64 `json:"outputAmount,omitempty" xml:"outputAmount,omitempty"`
+	// The consumption (request) time.
+	//
 	// example:
 	//
 	// 2026-06-05 13:16:31
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The total consumption.
+	//
 	// example:
 	//
 	// 210

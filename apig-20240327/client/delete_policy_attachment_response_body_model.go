@@ -18,19 +18,19 @@ type iDeletePolicyAttachmentResponseBody interface {
 }
 
 type DeletePolicyAttachmentResponseBody struct {
-	// Response status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//

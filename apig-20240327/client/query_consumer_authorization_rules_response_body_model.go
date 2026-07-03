@@ -96,7 +96,7 @@ func (s *QueryConsumerAuthorizationRulesResponseBody) Validate() error {
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyData struct {
-	// 消费者规则列表。
+	// The list of consumer rules.
 	Items []*QueryConsumerAuthorizationRulesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -176,71 +176,84 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyData) Validate() error {
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
-	// API信息详情。
+	// The API information.
 	ApiInfo *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
-	// 消费者授权规则ID。
+	// The consumer authorization rule ID.
 	//
 	// example:
 	//
 	// car-csgeka5lhtggrjcprok0
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
-	// 消费者ID。
+	// example:
+	//
+	// csg-8c13d2b4f8a1
+	ConsumerGroupId   *string            `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	ConsumerGroupInfo *ConsumerGroupInfo `json:"consumerGroupInfo,omitempty" xml:"consumerGroupInfo,omitempty"`
+	// The consumer ID.
 	//
 	// example:
 	//
 	// cs-csheiftlhtgmp0j0hp4g
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// 消费者信息详情。
+	// The consumer information.
 	ConsumerInfo *ConsumerInfo `json:"consumerInfo,omitempty" xml:"consumerInfo,omitempty"`
-	// 创建时间戳。单位: 毫秒。
+	// The creation timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// API在当前环境的发布状态
+	// The publish status of the API in the current environment.
 	//
 	// example:
 	//
 	// {}
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
-	// 环境信息。
+	// The environment context.
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
-	// 失效模式。LongTerm、ShortTerm，二选一。
+	// The expiration mode. Valid values:
+	//
+	// - LongTerm
+	//
+	// - ShortTerm
 	//
 	// example:
 	//
 	// ShortTerm
 	ExpireMode *string `json:"expireMode,omitempty" xml:"expireMode,omitempty"`
-	// 失效状态。
+	// The expiration status.
 	//
 	// example:
 	//
 	// InEffect
 	ExpireStatus *string `json:"expireStatus,omitempty" xml:"expireStatus,omitempty"`
-	// 到期时间。
+	// The expiration time.
 	//
 	// example:
 	//
 	// 172086834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// 网关信息。
+	// The gateway information.
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	// 资源ID。
+	// example:
+	//
+	// ConsumerGroup
+	PrincipalType *string `json:"principalType,omitempty" xml:"principalType,omitempty"`
+	// The resource ID.
 	//
 	// example:
 	//
 	// 2351944
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// 资源信息详情。
+	// The resource information.
 	ResourceInfo *QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo `json:"resourceInfo,omitempty" xml:"resourceInfo,omitempty" type:"Struct"`
-	// 资源类型。
+	// The resource type.
 	//
 	// example:
 	//
 	// HttpApiRoute
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 更新时间戳。单位: 毫秒。
+	// The update timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -262,6 +275,14 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) GetApiInfo() *Htt
 
 func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) GetConsumerAuthorizationRuleId() *string {
 	return s.ConsumerAuthorizationRuleId
+}
+
+func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) GetConsumerGroupId() *string {
+	return s.ConsumerGroupId
+}
+
+func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) GetConsumerGroupInfo() *ConsumerGroupInfo {
+	return s.ConsumerGroupInfo
 }
 
 func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) GetConsumerId() *string {
@@ -300,6 +321,10 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) GetGatewayInfo() 
 	return s.GatewayInfo
 }
 
+func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) GetPrincipalType() *string {
+	return s.PrincipalType
+}
+
 func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) GetResourceId() *string {
 	return s.ResourceId
 }
@@ -323,6 +348,16 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) SetApiInfo(v *Htt
 
 func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) SetConsumerAuthorizationRuleId(v string) *QueryConsumerAuthorizationRulesResponseBodyDataItems {
 	s.ConsumerAuthorizationRuleId = &v
+	return s
+}
+
+func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) SetConsumerGroupId(v string) *QueryConsumerAuthorizationRulesResponseBodyDataItems {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) SetConsumerGroupInfo(v *ConsumerGroupInfo) *QueryConsumerAuthorizationRulesResponseBodyDataItems {
+	s.ConsumerGroupInfo = v
 	return s
 }
 
@@ -371,6 +406,11 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) SetGatewayInfo(v 
 	return s
 }
 
+func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) SetPrincipalType(v string) *QueryConsumerAuthorizationRulesResponseBodyDataItems {
+	s.PrincipalType = &v
+	return s
+}
+
 func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) SetResourceId(v string) *QueryConsumerAuthorizationRulesResponseBodyDataItems {
 	s.ResourceId = &v
 	return s
@@ -394,6 +434,11 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) SetUpdateTimestam
 func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) Validate() error {
 	if s.ApiInfo != nil {
 		if err := s.ApiInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConsumerGroupInfo != nil {
+		if err := s.ConsumerGroupInfo.Validate(); err != nil {
 			return err
 		}
 	}
@@ -421,9 +466,9 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) Validate() error 
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo struct {
-	// 接口信息。
+	// The operation information.
 	OperationInfo *HttpApiOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty"`
-	// 路由规则。
+	// The routing rule.
 	Route *HttpRoute `json:"route,omitempty" xml:"route,omitempty"`
 }
 

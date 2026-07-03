@@ -20,21 +20,21 @@ type iListGatewaysResponseBody interface {
 }
 
 type ListGatewaysResponseBody struct {
-	// The request ID.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned message.
+	// The query result of the gateway list.
 	Data *ListGatewaysResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The status code.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Schema of Response
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,21 +96,21 @@ func (s *ListGatewaysResponseBody) Validate() error {
 }
 
 type ListGatewaysResponseBodyData struct {
-	// The total number of entries returned.
+	// The gateway list.
 	Items []*ListGatewaysResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The gateway list query result.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page number of the returned page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The number of entries per page.
+	// The total number of gateways.
 	//
 	// example:
 	//
@@ -176,151 +176,145 @@ func (s *ListGatewaysResponseBodyData) Validate() error {
 }
 
 type ListGatewaysResponseBodyDataItems struct {
-	// The instance name.
+	// The billing type. Valid values:
+	//
+	// - POSTPAY: Pay-as-you-go.
+	//
+	// - PREPAY: Subscription.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// Indicates whether the address is the default ingress address of the instance.
+	// The source from which the gateway was created. Valid values:
+	//
+	// - Console: The gateway was created from the console.
 	//
 	// example:
 	//
 	// Console
 	CreateFrom *string `json:"createFrom,omitempty" xml:"createFrom,omitempty"`
-	// The load balancer IP address.
+	// The creation timestamp, in milliseconds.
 	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The mode in which the load balancer is provided. Valid values:
-	//
-	// 	- Managed: Cloud-native API Gateway manages and provides the load balancer.
+	// The subscription expiration timestamp, in milliseconds.
 	//
 	// example:
 	//
 	// 172086834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// The gateway edition
+	// The gateway instance edition. Valid values:
+	//
+	// - Professional: Standard instance.
+	//
+	// - Serverless: Serverless instance.
 	//
 	// example:
 	//
 	// Serverless
 	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
-	// The information about a gateway.
+	// The gateway ID.
 	//
 	// example:
 	//
 	// gw-cpv54p5***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The instance state. Valid values:
-	//
-	// 	- Running: The instance is running.
-	//
-	// 	- Creating: The instance is being created.
-	//
-	// 	- CreateFailed: The instance fails to be created.
-	//
-	// 	- Upgrading: The instance is being upgraded.
-	//
-	// 	- UpgradeFailed: The instance fails to be upgraded.
-	//
-	// 	- Restarting: The instance is being restarted.
-	//
-	// 	- RestartFailed: The instance fails to be restarted.
-	//
-	// 	- Deleting: The instance is being released.
-	//
-	// 	- DeleteFailed: The instance failed to be released.
+	// The gateway type.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// Whether the gateway is a legacy instance
+	// Indicates whether the gateway instance was created before the AI gateway feature was launched.
 	//
 	// example:
 	//
 	// true
 	Legacy *bool `json:"legacy,omitempty" xml:"legacy,omitempty"`
-	// The port number.
+	// The list of gateway entry addresses.
 	LoadBalancers []*ListGatewaysResponseBodyDataItemsLoadBalancers `json:"loadBalancers,omitempty" xml:"loadBalancers,omitempty" type:"Repeated"`
-	// The instance ID.
+	// The gateway name.
 	//
 	// example:
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The load balancer status. Valid values:
-	//
-	// 	- Ready: The load balancer is available.
-	//
-	// 	- NotCreate: The load balancer is not associated with the instance.
+	// The number of gateway instance nodes.
 	//
 	// example:
 	//
 	// 2
 	Replicas *string `json:"replicas,omitempty" xml:"replicas,omitempty"`
-	// The resource group ID
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-xxxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// rg-xxx
+	// The security group information of the gateway.
 	SecurityGroup *ListGatewaysResponseBodyDataItemsSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
-	// The load balancer type. Valid values:
+	// The gateway specification. Valid values:
 	//
-	// 	- NLB: Network Load Balancer
-	//
-	// 	- CLB: Classic Load Balancer
+	// - apigw.small.x1: small specification.
 	//
 	// example:
 	//
 	// apigw.small.x1
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
-	// The time when the instance was created. This value is a UNIX timestamp. Unit: milliseconds.
+	// The gateway status. Valid values:
+	//
+	// - Running: The gateway is running.
+	//
+	// - Creating: The gateway is being created.
+	//
+	// - CreateFailed: The gateway failed to be created.
+	//
+	// - Upgrading: The gateway is being upgraded.
+	//
+	// - UpgradeFailed: The gateway failed to be upgraded.
+	//
+	// - Restarting: The gateway is being restarted.
+	//
+	// - RestartFailed: The gateway failed to be restarted.
+	//
+	// - Deleting: The gateway is being released.
+	//
+	// - DeleteFailed: The gateway failed to be released.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The subdomain information
+	// The list of second-level domain names.
 	SubDomainInfos []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
-	// The tags
+	// The list of tags.
 	Tags []*ListGatewaysResponseBodyDataItemsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The protocol. Valid values:
-	//
-	// 	- TCP
-	//
-	// 	- UDP
+	// The target version of the gateway. When this value differs from version, a version upgrade can be performed.
 	//
 	// example:
 	//
 	// 2.0.2
 	TargetVersion *string `json:"targetVersion,omitempty" xml:"targetVersion,omitempty"`
-	// The IP version of the address. Valid values:
-	//
-	// 	- ipv4: IPv4
-	//
-	// 	- ipv6: IPv6
+	// The update timestamp, in milliseconds.
 	//
 	// example:
 	//
 	// 1719386834548
 	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
-	// Indicates whether the gateway instance was created before AI Gateway launch.
+	// The vSwitch information.
 	VSwitch *ListGatewaysResponseBodyDataItemsVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
-	// The information about the port.
+	// The gateway version.
 	//
 	// example:
 	//
 	// 2.0.2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The VPC information
+	// The VPC information of the gateway.
 	Vpc *ListGatewaysResponseBodyDataItemsVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
-	// The tag.
+	// The zone information of the gateway.
 	Zones []*ListGatewaysResponseBodyDataItemsZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
 }
 
@@ -595,55 +589,73 @@ func (s *ListGatewaysResponseBodyDataItems) Validate() error {
 }
 
 type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
-	// vsw-xxxxx
+	// The load balancing address.
 	//
 	// example:
 	//
 	// nlb-xoh3pghr***.cn-hangzhou.nlb.aliyuncs.com
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// The vSwitch information.
+	// The protocol version. Valid values:
+	//
+	// - ipv4: IPv4.
+	//
+	// - ipv6: IPv6.
 	//
 	// example:
 	//
 	// ipv4
 	AddressIpVersion *string `json:"addressIpVersion,omitempty" xml:"addressIpVersion,omitempty"`
-	// sg-xxxx
+	// The load balancing address type. Valid values:
+	//
+	// - Internet: public network.
+	//
+	// - Intranet: private network.
 	//
 	// example:
 	//
 	// Internet
 	AddressType *string `json:"addressType,omitempty" xml:"addressType,omitempty"`
-	// vsw-xxxxx
+	// Indicates whether this is the default entry address of the gateway.
 	//
 	// example:
 	//
 	// true
 	GatewayDefault *bool `json:"gatewayDefault,omitempty" xml:"gatewayDefault,omitempty"`
-	// The IPv4 addresses
+	// The list of IPv4 addresses.
 	Ipv4Addresses []*string `json:"ipv4Addresses,omitempty" xml:"ipv4Addresses,omitempty" type:"Repeated"`
-	// The IPv6 addresses
+	// The list of IPv6 addresses.
 	Ipv6Addresses []*string `json:"ipv6Addresses,omitempty" xml:"ipv6Addresses,omitempty" type:"Repeated"`
-	// The security group ID.
+	// The load balancing instance ID.
 	//
 	// example:
 	//
 	// nlb-xqwioje1c91r***
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
-	// The vSwitch ID.
+	// The load balancing provisioning pattern of the gateway. Valid values:
+	//
+	// - Managed: Managed by Cloud-native API Gateway.
 	//
 	// example:
 	//
 	// Managed
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The virtual private cloud (VPC) information of the instance.
+	// The list of listening ports.
 	Ports []*ListGatewaysResponseBodyDataItemsLoadBalancersPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
-	// The vSwitch ID.
+	// The load balancing status. Valid values:
+	//
+	// - Ready: Active.
+	//
+	// - NotCreate: No associated instance.
 	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The zone ID.
+	// The load balancing type of the gateway. Valid values:
+	//
+	// - NLB: Network load balancing.
+	//
+	// - CLB: Classic load balancing.
 	//
 	// example:
 	//
@@ -772,13 +784,17 @@ func (s *ListGatewaysResponseBodyDataItemsLoadBalancers) Validate() error {
 }
 
 type ListGatewaysResponseBodyDataItemsLoadBalancersPorts struct {
-	// The resource group ID.
+	// The port number.
 	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// vpc-xxxxx
+	// The protocol. Valid values:
+	//
+	// - TCP
+	//
+	// - UDP
 	//
 	// example:
 	//
@@ -817,7 +833,7 @@ func (s *ListGatewaysResponseBodyDataItemsLoadBalancersPorts) Validate() error {
 }
 
 type ListGatewaysResponseBodyDataItemsSecurityGroup struct {
-	// The tags.
+	// The security group ID.
 	//
 	// example:
 	//
@@ -847,13 +863,13 @@ func (s *ListGatewaysResponseBodyDataItemsSecurityGroup) Validate() error {
 }
 
 type ListGatewaysResponseBodyDataItemsTags struct {
-	// The tag key
+	// The tag key.
 	//
 	// example:
 	//
 	// owner
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The tag value
+	// The tag value.
 	//
 	// example:
 	//
@@ -892,7 +908,7 @@ func (s *ListGatewaysResponseBodyDataItemsTags) Validate() error {
 }
 
 type ListGatewaysResponseBodyDataItemsVSwitch struct {
-	// List Gateways
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -922,7 +938,7 @@ func (s *ListGatewaysResponseBodyDataItemsVSwitch) Validate() error {
 }
 
 type ListGatewaysResponseBodyDataItemsVpc struct {
-	// The VPC ID
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -952,9 +968,9 @@ func (s *ListGatewaysResponseBodyDataItemsVpc) Validate() error {
 }
 
 type ListGatewaysResponseBodyDataItemsZones struct {
-	// The second-level domain names.
+	// The vSwitch.
 	VSwitch *ListGatewaysResponseBodyDataItemsZonesVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
-	// The tag value.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -998,7 +1014,7 @@ func (s *ListGatewaysResponseBodyDataItemsZones) Validate() error {
 }
 
 type ListGatewaysResponseBodyDataItemsZonesVSwitch struct {
-	// The second-level domain name.
+	// The vSwitch ID.
 	//
 	// example:
 	//

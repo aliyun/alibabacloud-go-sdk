@@ -24,26 +24,38 @@ type iListGatewayQuotaRulesResponseBody interface {
 }
 
 type ListGatewayQuotaRulesResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
+	//
 	// example:
 	//
 	// {"totalSize":100}
 	Data *ListGatewayQuotaRulesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The maximum number of records to retrieve in a single request. This parameter is not supported.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token. This parameter is not supported.
+	//
 	// example:
 	//
 	// 762b1fa4e2434fd3959b1f66481979cf
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 1234567890
@@ -122,18 +134,26 @@ func (s *ListGatewayQuotaRulesResponseBody) Validate() error {
 }
 
 type ListGatewayQuotaRulesResponseBodyData struct {
+	// The list of rules.
+	//
 	// example:
 	//
 	// [{"ruleId":"rule-001"}]
 	Items []*ListGatewayQuotaRulesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The current page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -198,34 +218,50 @@ func (s *ListGatewayQuotaRulesResponseBodyData) Validate() error {
 }
 
 type ListGatewayQuotaRulesResponseBodyDataItems struct {
+	// The period type.
+	//
 	// example:
 	//
 	// week
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
+	// The quota dimension.
+	//
 	// example:
 	//
 	// token
 	QuotaDimension *string `json:"quotaDimension,omitempty" xml:"quotaDimension,omitempty"`
+	// The quota limit.
+	//
 	// example:
 	//
 	// 1000
 	QuotaLimit *int64 `json:"quotaLimit,omitempty" xml:"quotaLimit,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// qr-xxxxx
 	RuleId *string `json:"ruleId,omitempty" xml:"ruleId,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// daily-token-limit
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	// The rule status.
+	//
 	// example:
 	//
 	// enabled
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
+	// The time zone for the calendar period, in UTC+x format.
+	//
 	// example:
 	//
 	// GMT+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	// The reset period type. Only calendar periods are supported, which means windowAlignment="calendar".
+	//
 	// example:
 	//
 	// calendar

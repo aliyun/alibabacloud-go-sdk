@@ -49,6 +49,10 @@ func (s *CreateConsumerAuthorizationRulesRequest) Validate() error {
 }
 
 type CreateConsumerAuthorizationRulesRequestAuthorizationRules struct {
+	// example:
+	//
+	// csg-8c13d2b4f8a1
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
 	// The consumer ID.
 	//
 	// example:
@@ -67,6 +71,10 @@ type CreateConsumerAuthorizationRulesRequestAuthorizationRules struct {
 	//
 	// 174116222x
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
+	// example:
+	//
+	// ConsumerGroup
+	PrincipalType *string `json:"principalType,omitempty" xml:"principalType,omitempty"`
 	// The resource identifier, which serves as a unique identifier for non-standard code sources for space reuse.
 	ResourceIdentifier *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier `json:"resourceIdentifier,omitempty" xml:"resourceIdentifier,omitempty" type:"Struct"`
 	// The resource type.
@@ -85,6 +93,10 @@ func (s CreateConsumerAuthorizationRulesRequestAuthorizationRules) GoString() st
 	return s.String()
 }
 
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) GetConsumerGroupId() *string {
+	return s.ConsumerGroupId
+}
+
 func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) GetConsumerId() *string {
 	return s.ConsumerId
 }
@@ -97,12 +109,21 @@ func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) GetExpireTim
 	return s.ExpireTimestamp
 }
 
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) GetPrincipalType() *string {
+	return s.PrincipalType
+}
+
 func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) GetResourceIdentifier() *CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier {
 	return s.ResourceIdentifier
 }
 
 func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) GetResourceType() *string {
 	return s.ResourceType
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) SetConsumerGroupId(v string) *CreateConsumerAuthorizationRulesRequestAuthorizationRules {
+	s.ConsumerGroupId = &v
+	return s
 }
 
 func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) SetConsumerId(v string) *CreateConsumerAuthorizationRulesRequestAuthorizationRules {
@@ -117,6 +138,11 @@ func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) SetExpireMod
 
 func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) SetExpireTimestamp(v int64) *CreateConsumerAuthorizationRulesRequestAuthorizationRules {
 	s.ExpireTimestamp = &v
+	return s
+}
+
+func (s *CreateConsumerAuthorizationRulesRequestAuthorizationRules) SetPrincipalType(v string) *CreateConsumerAuthorizationRulesRequestAuthorizationRules {
+	s.PrincipalType = &v
 	return s
 }
 

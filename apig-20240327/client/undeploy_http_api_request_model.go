@@ -26,7 +26,7 @@ type UndeployHttpApiRequest struct {
 	//
 	// env-cqsmtellhtgvo***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Gateway ID.
+	// The gateway ID.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type UndeployHttpApiRequest struct {
 	//
 	// op-d4favr6m1hk***
 	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
-	// The route ID. You must specify this parameter when you unpublish the route of an HTTP API.
+	// The route ID. This parameter is required when you offline a route of an HTTP API.
 	//
 	// example:
 	//

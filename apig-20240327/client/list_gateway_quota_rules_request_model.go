@@ -22,22 +22,32 @@ type iListGatewayQuotaRulesRequest interface {
 }
 
 type ListGatewayQuotaRulesRequest struct {
+	// The rule name keyword, used for fuzzy match.
+	//
 	// example:
 	//
 	// daily
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The maximum number of records to retrieve in a single request. This parameter is not supported.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. This parameter is not supported.
+	//
 	// example:
 	//
 	// C4tM8BlBJwHSNyjWpGaci4/7dKNGp1JMgsKtvCagmtY=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

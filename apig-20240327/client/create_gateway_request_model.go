@@ -34,7 +34,11 @@ type iCreateGatewayRequest interface {
 }
 
 type CreateGatewayRequest struct {
-	// The billing method.
+	// The billing method. Valid values:
+	//
+	// - POSTPAY: subscription.
+	//
+	// - PREPAY: pay-as-you-go.
 	//
 	// example:
 	//
@@ -42,19 +46,23 @@ type CreateGatewayRequest struct {
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The gateway instance edition. Valid values:
 	//
-	// - Professional: Standard instance.
+	// - Professional: standard instance.
 	//
 	// - Serverless: Serverless instance.
 	//
-	// - MultiTenantServerless: Multi-tenant Serverless instance.
+	// - MultiTenantServerless: multi-tenant Serverless instance.
 	//
-	// - Unknown: Unknown.
+	// - Unknown: unknown.
 	//
 	// example:
 	//
 	// Professional
 	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
-	// The gateway type.
+	// The gateway type. Valid values:
+	//
+	// - AI: AI gateway.
+	//
+	// - API: cloud-native API gateway.
 	//
 	// example:
 	//
@@ -291,7 +299,13 @@ func (s *CreateGatewayRequestLogConfigSls) Validate() error {
 }
 
 type CreateGatewayRequestNetworkAccessConfig struct {
-	// The network access type.
+	// The network access type. Valid values:
+	//
+	// - InternetAndIntranet: public and internal network.
+	//
+	// - Intranet: internal network.
+	//
+	// - Internet: public network.
 	//
 	// example:
 	//
@@ -366,7 +380,11 @@ func (s *CreateGatewayRequestTag) Validate() error {
 }
 
 type CreateGatewayRequestZoneConfig struct {
-	// The zone selection option.
+	// The zone selection option. Valid values:
+	//
+	// - Auto: automatic.
+	//
+	// - Manual: manual.
 	//
 	// example:
 	//

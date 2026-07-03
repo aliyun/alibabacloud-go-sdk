@@ -20,25 +20,25 @@ type iListSecretsRequest interface {
 }
 
 type ListSecretsRequest struct {
-	// Gateway type for filtering secrets of specific gateway type
+	// The gateway type used to filter results. Valid values: **AI*	- and **API**.
 	//
 	// example:
 	//
 	// AI
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// Secret name for fuzzy matching, supports filtering secrets by name
+	// The key name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// my_secret
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Number of items per page
+	// The page size. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//

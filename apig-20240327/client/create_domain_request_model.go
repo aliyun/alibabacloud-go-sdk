@@ -66,9 +66,11 @@ type CreateDomainRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
+	// The domain name scope.
+	//
 	// example:
 	//
-	// Serverless
+	// Dedicated
 	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
 	// Specifies whether to enable forced HTTPS redirect when the protocol type is set to HTTPS.
 	//
@@ -82,7 +84,7 @@ type CreateDomainRequest struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The HTTP/2 settings.
+	// The HTTP/2 setting.
 	//
 	// example:
 	//
@@ -98,11 +100,11 @@ type CreateDomainRequest struct {
 	//
 	// abc.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocol type supported by the domain name.
+	// The protocol type supported by the domain name. Valid values:
 	//
-	// - HTTP: supports only HTTP.
+	// - HTTP: Only HTTP is supported.
 	//
-	// - HTTPS: supports only HTTPS.
+	// - HTTPS: Only HTTPS is supported.
 	//
 	// example:
 	//

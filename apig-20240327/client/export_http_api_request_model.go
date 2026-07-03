@@ -18,7 +18,7 @@ type iExportHttpApiRequest interface {
 }
 
 type ExportHttpApiRequest struct {
-  // Specifies whether to export plug-in configurations.
+  // Specifies whether to export the plug-in configuration.
   ExtensionConfig *ExportHttpApiRequestExtensionConfig `json:"extensionConfig,omitempty" xml:"extensionConfig,omitempty" type:"Struct"`
   // The gateway instance ID. This parameter is required when you export gateway extension information.
   // 
@@ -26,7 +26,7 @@ type ExportHttpApiRequest struct {
   // 
   // gw-xxx
   GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-  // The IDs of specific operations to export when you export a REST API.
+  // The IDs of specific operations to export when exporting a REST API.
   OperationIds []*string `json:"operationIds,omitempty" xml:"operationIds,omitempty" type:"Repeated"`
 }
 
@@ -75,15 +75,15 @@ func (s *ExportHttpApiRequest) Validate() error {
 }
 
 type ExportHttpApiRequestExtensionConfig struct {
-  // Specifies whether to export consumer authorization configurations for operations or routes.
+  // Specifies whether to export the consumer authorization configuration for operations or routes.
   WithAuthConfig *bool `json:"withAuthConfig,omitempty" xml:"withAuthConfig,omitempty"`
-  // Specifies whether to export authorized consumers.
+  // Specifies whether to export the authorized consumers.
   WithAuthConsumer *bool `json:"withAuthConsumer,omitempty" xml:"withAuthConsumer,omitempty"`
-  // Specifies whether to export plug-in configurations.
+  // Specifies whether to export the plug-in configuration.
   WithPlugin *bool `json:"withPlugin,omitempty" xml:"withPlugin,omitempty"`
-  // Specifies whether to export policy configurations.
+  // Specifies whether to export the policy configuration.
   WithPolicy *bool `json:"withPolicy,omitempty" xml:"withPolicy,omitempty"`
-  // Specifies whether to export backend services.
+  // Specifies whether to export the backend service.
   WithService *bool `json:"withService,omitempty" xml:"withService,omitempty"`
 }
 

@@ -20,21 +20,21 @@ type iListHttpApisResponseBody interface {
 }
 
 type ListHttpApisResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// The API list.
 	Data *ListHttpApisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Get HTTP API List
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,21 +96,21 @@ func (s *ListHttpApisResponseBody) Validate() error {
 }
 
 type ListHttpApisResponseBodyData struct {
-	// object
+	// The API information.
 	Items []*HttpApiInfoByName `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// Page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//

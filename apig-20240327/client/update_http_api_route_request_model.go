@@ -26,15 +26,15 @@ type iUpdateHttpApiRouteRequest interface {
 }
 
 type UpdateHttpApiRouteRequest struct {
-	// The configuration of the backend service for the route.
+	// The backend service configuration of the route.
 	BackendConfig *UpdateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	// The description of the route.
+	// The route description.
 	//
 	// example:
 	//
 	// 商品中心服务路由
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// A list of domain name IDs.
+	// The list of domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
 	// The environment ID.
 	//
@@ -42,10 +42,12 @@ type UpdateHttpApiRouteRequest struct {
 	//
 	// env-cquqsollhtgid***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The route matching rule.
-	Match          *HttpRouteMatch                          `json:"match,omitempty" xml:"match,omitempty"`
+	// The route match rule.
+	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
+	// The MCP route configuration.
 	McpRouteConfig *UpdateHttpApiRouteRequestMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
-	PolicyConfigs  []*HttpApiPolicyConfigs                  `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
+	// The route-level policy configurations.
+	PolicyConfigs []*HttpApiPolicyConfigs `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
 }
 
 func (s UpdateHttpApiRouteRequest) String() string {
@@ -154,7 +156,7 @@ type UpdateHttpApiRouteRequestBackendConfig struct {
 	//
 	// SingleService
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// A list of backend services.
+	// The list of backend services.
 	Services []*UpdateHttpApiRouteRequestBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
@@ -198,7 +200,7 @@ func (s *UpdateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type UpdateHttpApiRouteRequestBackendConfigServices struct {
-	// The service port. This parameter is not required for dynamic ports.
+	// The service port. Do not specify this parameter for dynamic ports.
 	//
 	// example:
 	//
@@ -226,7 +228,7 @@ type UpdateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The percentage of traffic.
+	// The percentage value of the traffic ratio.
 	//
 	// example:
 	//
@@ -292,9 +294,24 @@ func (s *UpdateHttpApiRouteRequestBackendConfigServices) Validate() error {
 }
 
 type UpdateHttpApiRouteRequestMcpRouteConfig struct {
-	ExposedUriPath      *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
-	McpStatisticsEnable *bool   `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
-	Protocol            *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The exposed URI path.
+	//
+	// example:
+	//
+	// /mcp/chat
+	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
+	// Specifies whether to enable MCP statistics.
+	//
+	// example:
+	//
+	// true
+	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
+	// The MCP protocol.
+	//
+	// example:
+	//
+	// SSE
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
 func (s UpdateHttpApiRouteRequestMcpRouteConfig) String() string {

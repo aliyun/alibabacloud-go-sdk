@@ -20,21 +20,21 @@ type iGetPolicyAttachmentResponseBody interface {
 }
 
 type GetPolicyAttachmentResponseBody struct {
-	// Response code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// The response data.
 	Data *GetPolicyAttachmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,43 +96,43 @@ func (s *GetPolicyAttachmentResponseBody) Validate() error {
 }
 
 type GetPolicyAttachmentResponseBodyData struct {
-	// Attached Resource ID
+	// The ID of the attached resource.
 	//
 	// example:
 	//
 	// op-csbkd9llhtgqhqua***
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// Attached resource type, HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, Domain
+	// The type of the attached resource. Valid values: HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, and Domain.
 	//
 	// example:
 	//
 	// Operation
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// Policy attachment configuration
+	// The configuration of the attached policy.
 	//
 	// example:
 	//
 	// {"unitNum":1,"timeUnit":"s","enable":true}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// Environment ID
+	// The environment ID.
 	//
 	// example:
 	//
 	// env-cq7l5s5lhtgi6qa***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Gateway Instance ID
+	// The gateway instance ID.
 	//
 	// example:
 	//
 	// gw-cq2vundlhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// Policy Attachment ID
+	// The policy attachment ID.
 	//
 	// example:
 	//
 	// pr-cqoojualhtgquuj***
 	PolicyAttachmentId *string `json:"policyAttachmentId,omitempty" xml:"policyAttachmentId,omitempty"`
-	// Policy ID
+	// The policy ID.
 	//
 	// example:
 	//

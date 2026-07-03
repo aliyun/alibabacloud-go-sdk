@@ -20,15 +20,15 @@ type iCreateSecretResponseBody interface {
 }
 
 type CreateSecretResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *CreateSecretResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error message.
+	// The error details.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateSecretResponseBody) Validate() error {
 }
 
 type CreateSecretResponseBodyData struct {
-	// The ID of the key.
+	// The key ID.
 	//
 	// example:
 	//

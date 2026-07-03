@@ -135,13 +135,13 @@ func (s *CreateServiceRequest) Validate() error {
 type CreateServiceRequestServiceConfigs struct {
 	// The list of domain names or fixed addresses.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	// The Agent service configuration. This parameter is required when sourceType is set to AGENT.
+	// The Agent service configuration. This parameter is required when `sourceType` is set to `AGENT`.
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
 	// The AI service configuration.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
 	// The list of DNS server addresses.
 	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
-	// The service expression type that identifies the special type or mode of the service.
+	// The service expression type. Identifies the special type or mode of the service.
 	//
 	// example:
 	//
@@ -152,14 +152,15 @@ type CreateServiceRequestServiceConfigs struct {
 	// example:
 	//
 	// DEFAULT_GROUP
-	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	GroupName       *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	ModelProviderId *string `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
 	// The service name.
 	//
 	// example:
 	//
 	// user-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The namespace of the service.
+	// The namespace of the service:
 	//
 	// - If sourceType is set to K8S, this parameter specifies the namespace of the Kubernetes service.
 	//
@@ -183,7 +184,7 @@ type CreateServiceRequestServiceConfigs struct {
 	//
 	// nacos-instance-001
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The validation options for service verification configuration.
+	// The validation options. Configuration options related to service validation.
 	ValidationOptions *CreateServiceRequestServiceConfigsValidationOptions `json:"validationOptions,omitempty" xml:"validationOptions,omitempty" type:"Struct"`
 }
 
@@ -217,6 +218,10 @@ func (s *CreateServiceRequestServiceConfigs) GetExpressType() *string {
 
 func (s *CreateServiceRequestServiceConfigs) GetGroupName() *string {
 	return s.GroupName
+}
+
+func (s *CreateServiceRequestServiceConfigs) GetModelProviderId() *string {
+	return s.ModelProviderId
 }
 
 func (s *CreateServiceRequestServiceConfigs) GetName() *string {
@@ -266,6 +271,11 @@ func (s *CreateServiceRequestServiceConfigs) SetExpressType(v string) *CreateSer
 
 func (s *CreateServiceRequestServiceConfigs) SetGroupName(v string) *CreateServiceRequestServiceConfigs {
 	s.GroupName = &v
+	return s
+}
+
+func (s *CreateServiceRequestServiceConfigs) SetModelProviderId(v string) *CreateServiceRequestServiceConfigs {
+	s.ModelProviderId = &v
 	return s
 }
 

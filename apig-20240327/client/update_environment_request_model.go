@@ -16,7 +16,7 @@ type iUpdateEnvironmentRequest interface {
 }
 
 type UpdateEnvironmentRequest struct {
-	// Schema of Response
+	// The alias of the environment.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type UpdateEnvironmentRequest struct {
 	//
 	// 测试环境
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The status code returned.
+	// The description of the environment. You can specify information such as the purpose and owner of the environment.
 	//
 	// example:
 	//

@@ -102,7 +102,7 @@ type CreateHttpApiResponseBodyData struct {
 	//
 	// api-xxx
 	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
-	// The API name.
+	// The name of the API.
 	//
 	// example:
 	//

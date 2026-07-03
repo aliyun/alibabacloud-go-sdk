@@ -18,13 +18,13 @@ type iUpdateSecretResponseBody interface {
 }
 
 type UpdateSecretResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

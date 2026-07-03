@@ -22,9 +22,9 @@ type iUpdateConsumerRequest interface {
 }
 
 type UpdateConsumerRequest struct {
-	// The list of AK/SK authentication configurations.
+	// The list of AccessKey pair authentication configurations.
 	AkSkIdentityConfigs []*AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty" type:"Repeated"`
-	// The API key authentication configurations.
+	// The API key authentication configuration.
 	ApikeyIdentityConfig *ApiKeyIdentityConfig `json:"apikeyIdentityConfig,omitempty" xml:"apikeyIdentityConfig,omitempty"`
 	// The description.
 	//
@@ -32,7 +32,7 @@ type UpdateConsumerRequest struct {
 	//
 	// 测试消费者
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies the enablement status.
+	// Specifies whether to enable the API consumer.
 	//
 	// example:
 	//

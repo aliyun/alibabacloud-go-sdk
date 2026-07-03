@@ -20,21 +20,21 @@ type iCreateHttpApiOperationResponseBody interface {
 }
 
 type CreateHttpApiOperationResponseBody struct {
-	// Response status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Operation information.
+	// The operation information.
 	Data *CreateHttpApiOperationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateHttpApiOperationResponseBody) Validate() error {
 }
 
 type CreateHttpApiOperationResponseBodyData struct {
-	// Operation information.
+	// The operation information.
 	Operations []*CreateHttpApiOperationResponseBodyDataOperations `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
 }
 
@@ -131,7 +131,7 @@ func (s *CreateHttpApiOperationResponseBodyData) Validate() error {
 }
 
 type CreateHttpApiOperationResponseBodyDataOperations struct {
-	// Operation ID.
+	// The operation ID.
 	//
 	// example:
 	//

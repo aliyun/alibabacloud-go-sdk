@@ -28,49 +28,49 @@ type iListGatewaysShrinkRequest interface {
 }
 
 type ListGatewaysShrinkRequest struct {
-	// Retrieve the list of created cloud-native gateways
+	// The gateway ID for exact match query.
 	//
 	// example:
 	//
 	// gw-cpv4sqdl****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The search keyword. A full match is performed. The search is case-insensitive.
+	// The gateway type.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The instance name. If you specify a name, an exact search is performed.
+	// The keyword for full match search. Case-insensitive.
 	//
 	// example:
 	//
 	// dev
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The number of entries per page.
+	// The gateway name for exact match query.
 	//
 	// example:
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The instance ID. If you specify an ID, an exact search is performed.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of the page to return.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// rg-aekz3wes3hnre5a
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aekzq6bzz5uyg2q
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The tags that you want to use for the search.
+	// The list of tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 

@@ -20,18 +20,26 @@ type iListConsumerQuotaRulesRequest interface {
 }
 
 type ListConsumerQuotaRulesRequest struct {
+	// The gateway ID. This parameter is optional.
+	//
 	// example:
 	//
 	// gw-123456
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The rule name keyword, used for fuzzy match.
+	//
 	// example:
 	//
 	// daily
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

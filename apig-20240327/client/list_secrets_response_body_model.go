@@ -20,15 +20,15 @@ type iListSecretsResponseBody interface {
 }
 
 type ListSecretsResponseBody struct {
-	// Code of the request
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Data
+	// The list of key information.
 	Data *ListSecretsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// message
+	// The response message.
 	//
 	// example:
 	//
@@ -96,21 +96,21 @@ func (s *ListSecretsResponseBody) Validate() error {
 }
 
 type ListSecretsResponseBodyData struct {
-	// Array of secret details
+	// The list of key details.
 	Items []*ListSecretsResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Number of items per page
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Total number of records matching the query
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -176,51 +176,57 @@ func (s *ListSecretsResponseBodyData) Validate() error {
 }
 
 type ListSecretsResponseBodyDataItems struct {
-	// Unix timestamp when the secret was created
+	// The creation timestamp.
 	//
 	// example:
 	//
 	// 1725617840096
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// Gateway type associated with the secret
+	// The gateway type.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// KMS configuration object
+	// The KMS configuration information.
 	KmsConfig *KMSConfig `json:"kmsConfig,omitempty" xml:"kmsConfig,omitempty"`
-	// Name of the secret
+	// The key name.
 	//
 	// example:
 	//
 	// my_secret
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Number of resources referencing this secret
+	// The resource count of resources that reference the current key.
 	//
 	// example:
 	//
 	// 3
 	ReferenceCount *int32 `json:"referenceCount,omitempty" xml:"referenceCount,omitempty"`
-	// Source of the ID
+	// The key ID.
 	//
 	// example:
 	//
 	// sec-d5e6shmm1hkoxxxxxxxx
 	SecretId *string `json:"secretId,omitempty" xml:"secretId,omitempty"`
-	// Source of the secret
+	// The key source.
 	//
 	// example:
 	//
 	// KMS
 	SecretSource *string `json:"secretSource,omitempty" xml:"secretSource,omitempty"`
-	// Current status of the secret
+	// The key status. Valid values:
+	//
+	// - ENABLE: Enabled.
+	//
+	// - DISABLE: Disabled.
+	//
+	// - DELETED: Deleted.
 	//
 	// example:
 	//
 	// ENABLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Unix timestamp when the secret was last updated
+	// The update timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

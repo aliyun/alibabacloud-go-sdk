@@ -20,18 +20,26 @@ type iListTagResourcesShrinkRequest interface {
 }
 
 type ListTagResourcesShrinkRequest struct {
+	// The token that determines the start point of the next query.
+	//
 	// example:
 	//
 	// caeb235b-xxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource ID. You can specify up to 50 subkeys.
+	//
 	// example:
 	//
 	// ["gw-xxx","gw-yyy"]
 	ResourceIdShrink *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// Gateway
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of labels to add. You can specify up to 20 subkeys.
+	//
 	// example:
 	//
 	// [{"key":"env","value":"prod"}]

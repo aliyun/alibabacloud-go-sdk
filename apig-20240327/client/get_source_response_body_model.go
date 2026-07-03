@@ -118,7 +118,7 @@ type GetSourceResponseBodyData struct {
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	// The Kubernetes source information.
 	K8SSourceInfo *GetSourceResponseBodyDataK8SSourceInfo `json:"k8SSourceInfo,omitempty" xml:"k8SSourceInfo,omitempty" type:"Struct"`
-	// The Microservices Engine (MSE) Nacos source information.
+	// The MSE Nacos source information.
 	NacosSourceInfo *GetSourceResponseBodyDataNacosSourceInfo `json:"nacosSourceInfo,omitempty" xml:"nacosSourceInfo,omitempty" type:"Struct"`
 	// The name.
 	//
@@ -274,7 +274,7 @@ func (s *GetSourceResponseBodyData) Validate() error {
 }
 
 type GetSourceResponseBodyDataK8SSourceInfo struct {
-	// The container service cluster ID.
+	// The Container Service cluster ID.
 	//
 	// example:
 	//

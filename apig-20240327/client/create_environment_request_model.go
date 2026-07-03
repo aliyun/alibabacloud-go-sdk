@@ -22,7 +22,7 @@ type iCreateEnvironmentRequest interface {
 }
 
 type CreateEnvironmentRequest struct {
-	// The request body.
+	// The environment alias.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type CreateEnvironmentRequest struct {
 	//
 	// 测试环境
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The environment alias.
+	// The description of the environment. You can specify information such as the purpose and owner of the environment.
 	//
 	// example:
 	//
 	// 这是xxx的xx项目测试环境
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The environment description, such as its purpose and owner.
+	// The gateway ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateEnvironmentRequest struct {
 	//
 	// gw-cq7l5s5lhtgi6qasrdc0
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// Create environment.
+	// The environment name.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreateEnvironmentRequest struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Testing environment for xx project of xxx
+	// The resource group ID.
 	//
 	// example:
 	//

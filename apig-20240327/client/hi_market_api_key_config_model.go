@@ -18,11 +18,19 @@ type iHiMarketApiKeyConfig interface {
 }
 
 type HiMarketApiKeyConfig struct {
-	// An array of objects, each containing a valid API key and its associated mode.
+	// The list of credentials.
 	Credentials []*HiMarketApiKeyConfigCredentials `json:"credentials,omitempty" xml:"credentials,omitempty" type:"Repeated"`
-	// The name of the parameter that holds the API key. For example, if `source` is `HEADER`, this is the request header name, such as `X-API-Key`.
+	// The name of the location from which the API key is extracted.
+	//
+	// example:
+	//
+	// Apikey
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The location of the API key in the request. Valid values are `HEADER` and `QUERY`.
+	// The source type of the API key.
+	//
+	// example:
+	//
+	// Header
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
@@ -75,9 +83,17 @@ func (s *HiMarketApiKeyConfig) Validate() error {
 }
 
 type HiMarketApiKeyConfigCredentials struct {
-	// The value of the API key.
+	// The API key value.
+	//
+	// example:
+	//
+	// my-api-key-123
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// The operational mode for the key, such as `test` or `production`.
+	// The generation mode.
+	//
+	// example:
+	//
+	// Custom
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
 }
 

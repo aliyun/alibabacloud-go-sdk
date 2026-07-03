@@ -157,7 +157,7 @@ func (s *ImportHttpApiResponseBodyData) Validate() error {
 }
 
 type ImportHttpApiResponseBodyDataDryRunInfo struct {
-	// The error messages. If error messages are not empty, the API cannot be imported.
+	// The error messages. If error messages are not empty, the API cannot be imported successfully.
 	ErrorMessages []*string `json:"errorMessages,omitempty" xml:"errorMessages,omitempty" type:"Repeated"`
 	// The information about the existing API. If this field is not empty, the import updates this API.
 	ExistHttpApiInfo *HttpApiApiInfo `json:"existHttpApiInfo,omitempty" xml:"existHttpApiInfo,omitempty"`
@@ -172,7 +172,7 @@ type ImportHttpApiResponseBodyDataDryRunInfo struct {
 	// The list of operations that passed the dry run.
 	SuccessOperations []*ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations `json:"successOperations,omitempty" xml:"successOperations,omitempty" type:"Repeated"`
 	SuccessRoutes     []*ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes     `json:"successRoutes,omitempty" xml:"successRoutes,omitempty" type:"Repeated"`
-	// The warning messages. If warning messages are not empty, some operations or data structures may not be imported.
+	// The warning messages. If warning messages are not empty, some operations or data structures may not be imported successfully.
 	WarningMessages []*string `json:"warningMessages,omitempty" xml:"warningMessages,omitempty" type:"Repeated"`
 }
 
@@ -480,9 +480,9 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) Validate() error 
 type ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents struct {
 	// The action to be performed after the dry run. Valid values:
 	//
-	// - Create: Create.
+	// - Create: create.
 	//
-	// - Update: Update.
+	// - Update: update.
 	//
 	// example:
 	//
@@ -529,9 +529,9 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents) Validate() er
 type ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations struct {
 	// The action to be performed after the dry run. Valid values:
 	//
-	// - Create: Create.
+	// - Create: create.
 	//
-	// - Update: Update.
+	// - Update: update.
 	//
 	// example:
 	//

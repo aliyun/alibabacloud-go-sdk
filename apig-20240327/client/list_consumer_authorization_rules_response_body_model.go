@@ -96,7 +96,7 @@ func (s *ListConsumerAuthorizationRulesResponseBody) Validate() error {
 }
 
 type ListConsumerAuthorizationRulesResponseBodyData struct {
-	// 消费者授权信息列表。
+	// The list of consumer authorization information.
 	Items []*ListConsumerAuthorizationRulesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -176,67 +176,71 @@ func (s *ListConsumerAuthorizationRulesResponseBodyData) Validate() error {
 }
 
 type ListConsumerAuthorizationRulesResponseBodyDataItems struct {
-	// API信息。
+	// The API information.
 	ApiInfo *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
-	// 消费者授权规则ID。
+	// The consumer authorization rule ID.
 	//
 	// example:
 	//
 	// car-csgeka5lhtggrjcprok0
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
-	// 消费者ID。
+	// The consumer ID.
 	//
 	// example:
 	//
 	// cs-csheiftlhtgmp0j0hp4g
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// 创建时间戳。
+	// The creation timestamp.
 	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// API在当前环境的发布状态
+	// The publish status of the API in the current environment.
 	//
 	// example:
 	//
 	// {}
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
-	// 环境信息。
+	// The environment context.
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
-	// 失效模式。LongTerm、ShortTerm，二选一。
+	// The expiration mode. Valid values:
+	//
+	// - LongTerm
+	//
+	// - ShortTerm
 	//
 	// example:
 	//
 	// ShortTerm
 	ExpireMode *string `json:"expireMode,omitempty" xml:"expireMode,omitempty"`
-	// 失效状态。
+	// The expiration status.
 	//
 	// example:
 	//
 	// InEffect
 	ExpireStatus *string `json:"expireStatus,omitempty" xml:"expireStatus,omitempty"`
-	// 到期时间。
+	// The expiration time.
 	//
 	// example:
 	//
 	// 172086834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// 网关信息。
+	// The gateway information.
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	// 资源ID。
+	// The resource ID.
 	//
 	// example:
 	//
 	// 2351944
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// 资源类型。
+	// The resource type.
 	//
 	// example:
 	//
 	// HttpApiRoute
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// 更新时间戳。单位: 毫秒。
+	// The update timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

@@ -20,21 +20,21 @@ type iInstallPluginResponseBody interface {
 }
 
 type InstallPluginResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response payload.
+	// The response data.
 	Data *InstallPluginResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The status message.
+	// The response message.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *InstallPluginResponseBody) Validate() error {
 }
 
 type InstallPluginResponseBodyData struct {
-	// The installation result.
+	// The installation results.
 	InstallPluginResults []*InstallPluginResponseBodyDataInstallPluginResults `json:"installPluginResults,omitempty" xml:"installPluginResults,omitempty" type:"Repeated"`
 }
 

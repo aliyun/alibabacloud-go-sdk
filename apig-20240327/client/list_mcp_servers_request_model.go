@@ -26,7 +26,7 @@ type iListMcpServersRequest interface {
 }
 
 type ListMcpServersRequest struct {
-	// The type of source to create from.
+	// The creation source type.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListMcpServersRequest struct {
 	//
 	// Deployed
 	DeployStatuses *string `json:"deployStatuses,omitempty" xml:"deployStatuses,omitempty"`
-	// The gateway instance ID.
+	// The gateway ID.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type ListMcpServersRequest struct {
 	//
 	// gw-co370icmjeu****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The name to perform a fuzzy search on the MCP server.
+	// The fuzzy match keyword for searching MCP servers by API name.
 	//
 	// example:
 	//
 	// test
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The page number to return. Pages start from 1. Default value: 1.
+	// The page number, starting from 1. Default value: 1.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type ListMcpServersRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The type of the MCP server.
+	// The MCP server type.
 	//
 	// example:
 	//

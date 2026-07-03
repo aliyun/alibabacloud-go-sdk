@@ -38,13 +38,13 @@ type iUpdateHttpApiRequest interface {
 }
 
 type UpdateHttpApiRequest struct {
-	// The list of agent protocols
+	// The list of Agent protocols.
 	AgentProtocols []*string `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
-	// The status code.
+	// The list of AI protocols.
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
-	// The authentication configuration
+	// The permission authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The list of API deployment configurations.
+	// The base path of the API. The value must start with a forward slash (/).
 	//
 	// This parameter is required.
 	//
@@ -52,43 +52,43 @@ type UpdateHttpApiRequest struct {
 	//
 	// /v1
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
-	// The deployment configurations
+	// The list of API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	// The environment ID.
+	// The API description.
 	//
 	// example:
 	//
 	// 更新API描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Whether authentication is enabled
+	// Specifies whether to enable permission authentication.
 	//
 	// example:
 	//
 	// true
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	// The first byte timeout in nanoseconds
+	// The first byte timeout period.
 	//
 	// example:
 	//
 	// 30s
 	FirstByteTimeout *int32 `json:"firstByteTimeout,omitempty" xml:"firstByteTimeout,omitempty"`
-	// Specifies whether to enable authentication.
+	// The configuration of the HTTP Ingress API.
 	IngressConfig *UpdateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-	// Whether to only change configuration without redeployment
+	// Specifies whether to only modify the configuration. A value of true indicates that only the configuration is modified without triggering redeployment.
 	//
 	// example:
 	//
 	// true
 	OnlyChangeConfig *bool `json:"onlyChangeConfig,omitempty" xml:"onlyChangeConfig,omitempty"`
-	// The listened namespace.
+	// The list of API access protocols.
 	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
-	// Whether to remove base path when forwarding
+	// Specifies whether to remove the base path during forwarding.
 	//
 	// example:
 	//
 	// true
 	RemoveBasePathOnForward *bool `json:"removeBasePathOnForward,omitempty" xml:"removeBasePathOnForward,omitempty"`
-	// A deployment configuration.
+	// The API versioning configuration.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
 }
 
@@ -246,31 +246,31 @@ func (s *UpdateHttpApiRequest) Validate() error {
 }
 
 type UpdateHttpApiRequestIngressConfig struct {
-	// The authentication configuration.
+	// The environment ID.
 	//
 	// example:
 	//
 	// env-cr6ql0tlhtgmc****
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The response parameters.
+	// The Ingress Class to listen on.
 	//
 	// example:
 	//
 	// mse
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
-	// The returned message.
+	// Specifies whether to update the address in the Ingress Status.
 	//
 	// example:
 	//
 	// false
 	OverrideIngressIp *bool `json:"overrideIngressIp,omitempty" xml:"overrideIngressIp,omitempty"`
-	// json
+	// The source ID.
 	//
 	// example:
 	//
 	// src-crdddallhtgtr****
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The request ID.
+	// The namespace to listen on.
 	//
 	// example:
 	//

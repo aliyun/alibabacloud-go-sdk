@@ -18,14 +18,20 @@ type iUpdateGatewayQuotaRuleStatusResponseBody interface {
 }
 
 type UpdateGatewayQuotaRuleStatusResponseBody struct {
+	// The status code or error code.
+	//
 	// example:
 	//
 	// 200, 404, 500
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The message content.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 1234567890

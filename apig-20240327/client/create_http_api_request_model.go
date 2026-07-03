@@ -54,7 +54,7 @@ type CreateHttpApiRequest struct {
 	AgentProtocols []*string `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
 	// The AI API protocols. The following protocols are supported:
 	//
-	// - OpenAI/v1.
+	// - OpenAI/v1
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
 	// The authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
@@ -72,7 +72,7 @@ type CreateHttpApiRequest struct {
 	BelongGatewayId *string `json:"belongGatewayId,omitempty" xml:"belongGatewayId,omitempty"`
 	// The API deployment configurations. Currently, only AI APIs support deployment configurations, and only a single deployment configuration can be specified.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	// The API description.
+	// The description of the API.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateHttpApiRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether to perform a dry run without executing the operation.
+	// Specifies whether to perform a dry run without actually executing the operation.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type CreateHttpApiRequest struct {
 	//
 	// 30
 	FirstByteTimeout *int32 `json:"firstByteTimeout,omitempty" xml:"firstByteTimeout,omitempty"`
-	// The HTTP Ingress API configuration.
+	// The configuration of the HTTP Ingress API.
 	IngressConfig *CreateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
 	// The model category.
 	//
@@ -106,7 +106,7 @@ type CreateHttpApiRequest struct {
 	//
 	// llm/text-to-image
 	ModelCategory *string `json:"modelCategory,omitempty" xml:"modelCategory,omitempty"`
-	// The API name.
+	// The name of the API.
 	//
 	// This parameter is required.
 	//
@@ -146,13 +146,13 @@ type CreateHttpApiRequest struct {
 	//
 	// - LLM
 	//
-	// - Agent.
+	// - Agent
 	//
 	// example:
 	//
 	// Http
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The API versioning configuration.
+	// The versioning configuration of the API.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
 }
 

@@ -26,9 +26,9 @@ type iCreateConsumerRequest interface {
 }
 
 type CreateConsumerRequest struct {
-	// A list of AK/SK identity configurations.
+	// The list of AK/SK identity configurations.
 	AkSkIdentityConfigs []*AkSkIdentityConfig `json:"akSkIdentityConfigs,omitempty" xml:"akSkIdentityConfigs,omitempty" type:"Repeated"`
-	// The identity configuration for API key authentication.
+	// The API key authentication identity configuration.
 	ApikeyIdentityConfig *ApiKeyIdentityConfig `json:"apikeyIdentityConfig,omitempty" xml:"apikeyIdentityConfig,omitempty"`
 	// The consumer description.
 	//
@@ -44,9 +44,9 @@ type CreateConsumerRequest struct {
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The gateway type. Valid values:
 	//
-	// - API: For a cloud-native API gateway.
+	// - API: a consumer of a cloud-native API gateway.
 	//
-	// - AI: For an AI gateway.
+	// - AI: a consumer of an AI gateway.
 	//
 	// example:
 	//

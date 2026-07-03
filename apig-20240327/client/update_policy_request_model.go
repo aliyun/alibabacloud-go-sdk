@@ -18,7 +18,7 @@ type iUpdatePolicyRequest interface {
 }
 
 type UpdatePolicyRequest struct {
-	// Policy configuration
+	// The policy configuration.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type UpdatePolicyRequest struct {
 	//
 	// {"unitNum":1,"timeUnit":"s","enable":true}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// Description
+	// The description of the policy.
 	//
 	// example:
 	//
 	// 这是一条网关超时策略
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Policy name
+	// The Policy Name.
 	//
 	// This parameter is required.
 	//

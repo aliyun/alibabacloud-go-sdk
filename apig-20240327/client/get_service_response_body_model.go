@@ -34,7 +34,7 @@ type GetServiceResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

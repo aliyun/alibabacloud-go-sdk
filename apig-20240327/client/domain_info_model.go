@@ -38,7 +38,7 @@ type iDomainInfo interface {
 }
 
 type DomainInfo struct {
-	// The China Security certificate identity.
+	// The SSL Certificates Service certificate identity.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DomainInfo struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	// The source from which the domain name was created.
+	// The source from which the domain name is created.
 	//
 	// example:
 	//
@@ -75,7 +75,12 @@ type DomainInfo struct {
 	// example:
 	//
 	// d-cq1lthllhtgja4dk54eg
-	DomainId    *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	// domainScope
+	//
+	// example:
+	//
+	// Dedicated
 	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
 	// Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is configured.
 	//
@@ -83,7 +88,7 @@ type DomainInfo struct {
 	//
 	// false
 	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
-	// Specifies whether to enable mTLS mutual authentication.
+	// Indicates whether MTLS mutual authentication is enabled.
 	//
 	// example:
 	//
@@ -95,11 +100,11 @@ type DomainInfo struct {
 	//
 	// abc.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocol type supported by the domain name. Valid values:
+	// The protocol type supported by the domain name.
 	//
-	// - HTTP: Only HTTP is supported.
+	// - HTTP: Only the HTTP protocol is supported.
 	//
-	// - HTTPS: Only HTTPS is supported.
+	// - HTTP: Only the HTTPS protocol is supported.
 	//
 	// example:
 	//

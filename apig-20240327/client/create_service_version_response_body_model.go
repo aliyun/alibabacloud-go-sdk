@@ -18,13 +18,13 @@ type iCreateServiceVersionResponseBody interface {
 }
 
 type CreateServiceVersionResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//

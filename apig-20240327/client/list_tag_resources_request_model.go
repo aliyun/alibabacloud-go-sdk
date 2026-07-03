@@ -20,18 +20,26 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
+	// The token that determines the start point of the next query.
+	//
 	// example:
 	//
 	// caeb235b-xxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource ID. You can specify up to 50 subkeys.
+	//
 	// example:
 	//
 	// ["gw-xxx","gw-yyy"]
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type.
+	//
 	// example:
 	//
 	// Gateway
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of labels to add. You can specify up to 20 subkeys.
+	//
 	// example:
 	//
 	// [{"key":"env","value":"prod"}]
@@ -96,10 +104,14 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
+	// The label key.
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The label value.
+	//
 	// example:
 	//
 	// prod

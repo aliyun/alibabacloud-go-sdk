@@ -20,13 +20,13 @@ type iListSecretReferencesResponseBody interface {
 }
 
 type ListSecretReferencesResponseBody struct {
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *ListSecretReferencesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -110,7 +110,7 @@ type ListSecretReferencesResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -176,11 +176,11 @@ func (s *ListSecretReferencesResponseBodyData) Validate() error {
 }
 
 type ListSecretReferencesResponseBodyDataItems struct {
-	// The information about the plug-in that references the current key.
+	// The plug-in information that references the current secret.
 	PluginConfig *ListSecretReferencesResponseBodyDataItemsPluginConfig `json:"PluginConfig,omitempty" xml:"PluginConfig,omitempty" type:"Struct"`
-	// The service information that references the current key.
+	// The service information that references the current secret.
 	ServiceConfig *ListSecretReferencesResponseBodyDataItemsServiceConfig `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty" type:"Struct"`
-	// The consumer information that references the current key.
+	// The consumer information that references the current secret.
 	ConsumerConfig *ListSecretReferencesResponseBodyDataItemsConsumerConfig `json:"consumerConfig,omitempty" xml:"consumerConfig,omitempty" type:"Struct"`
 	// The gateway instance ID.
 	//
@@ -188,9 +188,9 @@ type ListSecretReferencesResponseBodyDataItems struct {
 	//
 	// gw-xxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// MCP service information that references the current key.
+	// The MCP server information that references the current secret.
 	McpServerConfig *ListSecretReferencesResponseBodyDataItemsMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
-	// The type of resource.
+	// The resource type.
 	//
 	// example:
 	//
@@ -435,7 +435,7 @@ func (s *ListSecretReferencesResponseBodyDataItemsConsumerConfig) Validate() err
 }
 
 type ListSecretReferencesResponseBodyDataItemsMcpServerConfig struct {
-	// The HTTP API ID.
+	// HTTP API ID。
 	//
 	// example:
 	//

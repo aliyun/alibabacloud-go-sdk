@@ -20,18 +20,36 @@ type iUntagResourcesShrinkRequest interface {
 }
 
 type UntagResourcesShrinkRequest struct {
+	// Specifies whether to delete all tags. This parameter takes effect only when tags are empty. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// - True
+	//
+	// - False
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The resource IDs. You can specify up to 50 subkeys.
+	//
 	// example:
 	//
 	// ["gw-xxx","gw-yyy"]
 	ResourceIdShrink *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// gateway
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of tag keys. You can specify up to 20 subkeys.
+	//
 	// example:
 	//
 	// ["env","team"]

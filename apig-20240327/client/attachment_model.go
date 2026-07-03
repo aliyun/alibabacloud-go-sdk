@@ -26,45 +26,49 @@ type iAttachment interface {
 }
 
 type Attachment struct {
-	// The attachment point ID.
+	// attachResourceId
+	//
+	// example:
+	//
+	// gw-xxx
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// A list of attached resource IDs.
+	// The list of mounted resource IDs.
 	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
-	// A list of parent resource IDs.
+	// The list of parent IDs of the mounted resource.
 	AttachResourceParentIds []*string `json:"attachResourceParentIds,omitempty" xml:"attachResourceParentIds,omitempty" type:"Repeated"`
-	// The supported attachment point types for the policy.
+	// The type of mount point supported by the policy. Valid values:
 	//
-	// - `HttpApi`: An HTTP API.
+	// - HttpApi: HttpApi.
 	//
-	// - `Operation`: An operation of an HTTP API.
+	// - Operation: Operation of HttpApi.
 	//
-	// - `GatewayRoute`: A gateway route.
+	// - GatewayRoute: gateway route.
 	//
-	// - `GatewayService`: A gateway service.
+	// - GatewayService: gateway service.
 	//
-	// - `GatewayServicePort`: A gateway service port.
+	// - GatewayServicePort: gateway service port.
 	//
-	// - `Domain`: A gateway domain.
+	// - Domain: gateway domain name.
 	//
-	// - `Gateway`: A gateway.
+	// - Gateway: gateway.
 	//
 	// example:
 	//
 	// HttpApi
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The ID of the environment for the attached resource. An asterisk (`*`) indicates that the policy attachment is not environment-specific.
+	// The environment to which the mounted resource belongs. If the environment ID is *, the mounted resource of the policy is not associated with any environment.
 	//
 	// example:
 	//
 	// env-cq7l5s5lhtgi6qasrdc0
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The ID of the gateway for the attached resource.
+	// The gateway to which the mounted resource belongs.
 	//
 	// example:
 	//
 	// gw-cpr4f9dlhtgq5ksfgmb0
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The policy attachment ID.
+	// The policy mount ID.
 	//
 	// example:
 	//

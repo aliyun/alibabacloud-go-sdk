@@ -18,15 +18,15 @@ type iUpdatePluginAttachmentRequest interface {
 }
 
 type UpdatePluginAttachmentRequest struct {
-	// The IDs of the resources to which the plug-in is attached.
+	// The list of mount point IDs.
 	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
-	// Specifies whether to enable the plug-in.
+	// Specifies whether to enable the plugin.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The Base64-encoded configurations of the plug-in.
+	// The Base64-encoded content of the original plugin configuration.
 	//
 	// example:
 	//

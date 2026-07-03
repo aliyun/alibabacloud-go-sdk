@@ -14,7 +14,7 @@ type iCreateHttpApiOperationRequest interface {
 }
 
 type CreateHttpApiOperationRequest struct {
-	// The operation definitions.
+	// The list of operation definitions.
 	Operations []*HttpApiOperation `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
 }
 

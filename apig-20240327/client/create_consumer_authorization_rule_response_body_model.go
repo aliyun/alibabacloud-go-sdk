@@ -96,7 +96,7 @@ func (s *CreateConsumerAuthorizationRuleResponseBody) Validate() error {
 }
 
 type CreateConsumerAuthorizationRuleResponseBodyData struct {
-	// The consumer authorization rule ID. When this ID is used to filter the API list, the response contains only the authorized APIs.
+	// The consumer authorization rule ID. When this ID is used to filter the API list, the response includes only the authorized APIs.
 	//
 	// example:
 	//

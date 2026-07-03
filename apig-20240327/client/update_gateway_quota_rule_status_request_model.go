@@ -16,10 +16,14 @@ type iUpdateGatewayQuotaRuleStatusRequest interface {
 }
 
 type UpdateGatewayQuotaRuleStatusRequest struct {
+	// Specifies whether to clear historical quota usage when enabling or disabling the rule.
+	//
 	// example:
 	//
 	// false
 	ClearHistory *bool `json:"clearHistory,omitempty" xml:"clearHistory,omitempty"`
+	// Specifies whether to enable or disable the rule.
+	//
 	// example:
 	//
 	// false
