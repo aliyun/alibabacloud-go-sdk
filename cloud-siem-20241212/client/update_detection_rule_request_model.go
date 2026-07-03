@@ -82,43 +82,81 @@ type iUpdateDetectionRuleRequest interface {
 }
 
 type UpdateDetectionRuleRequest struct {
+	// The ATT\\&CK tactic of the alert.
+	//
 	// example:
 	//
 	// Discovery
 	AlertAttCk        *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
 	AlertAttCkMapping *string `json:"AlertAttCkMapping,omitempty" xml:"AlertAttCkMapping,omitempty"`
-	AlertDescription  *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
+	// The description of the alert. You can use $$ to reference fields from the query output.
+	//
+	// example:
+	//
+	// Alert from: $product_code$, detected network attack from $src_ip$, affected assets include: $dst_ip$
+	AlertDescription *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
+	// The threat level of the alert. Valid values:
+	//
+	// - 5: Critical.
+	//
+	// - 4: Important.
+	//
+	// - 3: Medium.
+	//
+	// - 2: Low.
+	//
+	// - 1: Informational.
+	//
 	// example:
 	//
 	// 1
 	AlertLevel        *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
 	AlertLevelMapping *string `json:"AlertLevelMapping,omitempty" xml:"AlertLevelMapping,omitempty"`
-	AlertName         *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The name of the alert. You can use $$ to reference fields from the query output.
+	//
+	// example:
+	//
+	// Detected high-frequency multi-type network attacks from $src_ip$
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The ID of the alert template for the detection rule.
+	//
 	// example:
 	//
 	// ALERT_ACTIVITY
 	AlertSchemaId *string `json:"AlertSchemaId,omitempty" xml:"AlertSchemaId,omitempty"`
+	// The ATT\\&CK tactic ID of the alert.
+	//
 	// example:
 	//
 	// TA0042
 	AlertTacticId *string `json:"AlertTacticId,omitempty" xml:"AlertTacticId,omitempty"`
+	// The number of alerts for the alert threshold.
+	//
 	// example:
 	//
 	// 10
 	AlertThresholdCount *int32 `json:"AlertThresholdCount,omitempty" xml:"AlertThresholdCount,omitempty"`
+	// The fields for the alert threshold. Separate multiple fields with commas.
+	//
 	// example:
 	//
 	// alert_type,ip
 	AlertThresholdGroup *string `json:"AlertThresholdGroup,omitempty" xml:"AlertThresholdGroup,omitempty"`
+	// The period for the alert threshold.
+	//
 	// example:
 	//
 	// 5m
 	AlertThresholdPeriod *string `json:"AlertThresholdPeriod,omitempty" xml:"AlertThresholdPeriod,omitempty"`
+	// The type of the alert.
+	//
 	// example:
 	//
 	// siem_rule_type_alert_storm
 	AlertType        *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	AlertTypeMapping *string `json:"AlertTypeMapping,omitempty" xml:"AlertTypeMapping,omitempty"`
+	// The content of the detection expression.
+	//
 	// example:
 	//
 	// *|set session mode=scan;SELECT 	- FROM log
@@ -149,58 +187,104 @@ type UpdateDetectionRuleRequest struct {
 	//
 	// )
 	DetectionExpressionContent *string `json:"DetectionExpressionContent,omitempty" xml:"DetectionExpressionContent,omitempty"`
+	// The type of the detection expression.
+	//
 	// example:
 	//
 	// sql
 	DetectionExpressionType *string `json:"DetectionExpressionType,omitempty" xml:"DetectionExpressionType,omitempty"`
+	// The description of the detection rule.
+	//
 	// example:
 	//
 	// Check the enumeration behavior of local system groups. An attacker may attempt to find the Local Systems group and its permission settings.
 	DetectionRuleDescription *string `json:"DetectionRuleDescription,omitempty" xml:"DetectionRuleDescription,omitempty"`
+	// The ID of the detection rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// jndi-attack-success_http_dns
 	DetectionRuleId *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
+	// The name of the detection rule.
+	//
 	// example:
 	//
 	// CTDR Port Scan Behavior
 	DetectionRuleName *string `json:"DetectionRuleName,omitempty" xml:"DetectionRuleName,omitempty"`
+	// The status of the detection rule.
+	//
 	// example:
 	//
 	// enabled
 	DetectionRuleStatus *string `json:"DetectionRuleStatus,omitempty" xml:"DetectionRuleStatus,omitempty"`
+	// The type of the detection rule. Valid values:
+	//
+	// - preset: a preset detection rule.
+	//
+	// - custom: a custom detection rule.
+	//
+	// - custom_template: a rule template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// custom
 	DetectionRuleType *string `json:"DetectionRuleType,omitempty" xml:"DetectionRuleType,omitempty"`
+	// The entity mapping configuration.
+	//
 	// example:
 	//
 	// [{\\"NormalizationSchemaId\\":\\"host\\",\\"NormalizationFieldMappings\\":[{\\"NormalizationFieldName\\":\\"uuid\\",\\"MappingFieldName\\":\\"host\\",\\"NormalizationFieldType\\":\\"varchar\\"}]}]
 	EntityMappings *string `json:"EntityMappings,omitempty" xml:"EntityMappings,omitempty"`
+	// The configuration of the event aggregation period.
+	//
 	// example:
 	//
 	// 60m
 	IncidentAggregationExpression *string `json:"IncidentAggregationExpression,omitempty" xml:"IncidentAggregationExpression,omitempty"`
+	// The type of event aggregation. Valid values:
+	//
+	// - none: Events are not generated.
+	//
+	// - graph_compute: graph computing (supported by predefined rules).
+	//
+	// - expert: expert rule.
+	//
+	// - passthrough: pass-through (one-to-one mapping with alerts).
+	//
+	// - window: window-based aggregation of similar events.
+	//
 	// example:
 	//
 	// window
 	IncidentAggregationType *string `json:"IncidentAggregationType,omitempty" xml:"IncidentAggregationType,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the log normalization category.
+	//
 	// example:
 	//
 	// NETWORK_CATEGORY
 	LogCategoryId *string `json:"LogCategoryId,omitempty" xml:"LogCategoryId,omitempty"`
+	// The ID of the log normalization schema.
+	//
 	// example:
 	//
 	// API_RISK_ACTIVITY
 	LogSchemaId *string `json:"LogSchemaId,omitempty" xml:"LogSchemaId,omitempty"`
+	// The custom parameters for the playbook.
+	//
 	// example:
 	//
 	// {
@@ -213,34 +297,58 @@ type UpdateDetectionRuleRequest struct {
 	//
 	// }
 	PlaybookParameters *string `json:"PlaybookParameters,omitempty" xml:"PlaybookParameters,omitempty"`
+	// The unique ID of the playbook.
+	//
 	// example:
 	//
 	// 31568394-7a86-487c-b8ec-b3f42b59****
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
+	// The region of the Data Management center for Threat Analysis. Select the region where your assets are located. Valid values:
+	//
+	// - cn-hangzhou: The Chinese mainland.
+	//
+	// - ap-southeast-1: Regions outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time for scheduling. This is a 13-digit UNIX timestamp.
+	//
 	// example:
 	//
 	// 1733269771123
 	ScheduleBeginTime *int64 `json:"ScheduleBeginTime,omitempty" xml:"ScheduleBeginTime,omitempty"`
+	// The cron expression for scheduling. This parameter is required when you set ScheduleType to cron.
+	//
 	// example:
 	//
 	// 1h
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
+	// The maximum number of retries after a timeout. The value must be between 1 and 100.
+	//
 	// example:
 	//
 	// 1
 	ScheduleMaxRetries *int32 `json:"ScheduleMaxRetries,omitempty" xml:"ScheduleMaxRetries,omitempty"`
+	// The maximum timeout period. Unit: seconds. The value must be between 60 and 1800.
+	//
 	// example:
 	//
 	// 60
 	ScheduleMaxTimeout *int32 `json:"ScheduleMaxTimeout,omitempty" xml:"ScheduleMaxTimeout,omitempty"`
+	// The scheduling type. Valid values:
+	//
+	// - fixed_rate: fixed interval.
+	//
+	// - cron: cron expression.
+	//
 	// example:
 	//
 	// fixed_rate
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	// The length of the scheduling window.
+	//
 	// example:
 	//
 	// 5m

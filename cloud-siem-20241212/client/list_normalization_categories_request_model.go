@@ -24,32 +24,56 @@ type iListNormalizationCategoriesRequest interface {
 }
 
 type ListNormalizationCategoriesRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
 	// if can be null:
 	// true
 	//
 	// example:
 	//
-	// 50。
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. Set this parameter to the NextToken value returned in the previous API call to retrieve the next page of results. You do not need to specify this parameter for the first query.
+	//
 	// example:
 	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****。
+	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The type of the normalization rule category. Valid values:
+	//
+	// - log
+	//
+	// - entity
+	//
 	// example:
 	//
-	// entity。
+	// entity
 	NormalizationCategoryType *string `json:"NormalizationCategoryType,omitempty" xml:"NormalizationCategoryType,omitempty"`
+	// The region of the Data Management center for threat analysis. Select the region for the Data Management center based on the region where your assets are located. Valid values:
+	//
+	// - cn-hangzhou: Assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Assets are in a region outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member. An administrator can use this parameter to switch to the perspective of this member.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

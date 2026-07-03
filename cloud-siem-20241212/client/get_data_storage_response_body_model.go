@@ -16,7 +16,10 @@ type iGetDataStorageResponseBody interface {
 }
 
 type GetDataStorageResponseBody struct {
+	// The returned details.
 	Data *GetDataStorageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 81FB0DEA-52C1-55A0-8631-8E1B9A9D****
@@ -59,38 +62,62 @@ func (s *GetDataStorageResponseBody) Validate() error {
 }
 
 type GetDataStorageResponseBodyData struct {
+	// The cold storage capacity used by user logs.
+	//
 	// example:
 	//
 	// 100.0
 	ColdStorageUsedCapacity *float64 `json:"ColdStorageUsedCapacity,omitempty" xml:"ColdStorageUsedCapacity,omitempty"`
+	// The storage region of user logs.
+	//
 	// example:
 	//
 	// cn-shanghai
 	DataStorageRegionId *string `json:"DataStorageRegionId,omitempty" xml:"DataStorageRegionId,omitempty"`
+	// Indicates whether the storage region can be modified. By default, the storage region cannot be modified. Contact your account manager to reset the region. The region can be reset only once. Valid values:
+	//
+	// - allow: The storage region can be modified.
+	//
+	// - deny: The storage region cannot be modified.
+	//
 	// example:
 	//
 	// deny
 	DataStorageRegionPermission *string `json:"DataStorageRegionPermission,omitempty" xml:"DataStorageRegionPermission,omitempty"`
+	// The storage capacity purchased in the subscription scenario.
+	//
 	// example:
 	//
 	// 100
 	DataStorageTotalCapacity *int64 `json:"DataStorageTotalCapacity,omitempty" xml:"DataStorageTotalCapacity,omitempty"`
+	// The storage capacity used in user log management.
+	//
 	// example:
 	//
 	// 100.0
 	DataStorageUsedCapacity *float64 `json:"DataStorageUsedCapacity,omitempty" xml:"DataStorageUsedCapacity,omitempty"`
+	// The storage usage details in log management.
+	//
 	// example:
 	//
 	// {\\"purchasedHotStorageCapacity\\":1000,\\"usedHotStorageCapacity\\":4.2,\\"usedHotStorageCapacityDetail\\":{\\"ap-southeast-1\\":4.2,\\"cn-shenzhen\\":0.0,\\"cn-shanghai\\":0.0}}
 	DataStorageUsedCapacityDetail *string `json:"DataStorageUsedCapacityDetail,omitempty" xml:"DataStorageUsedCapacityDetail,omitempty"`
+	// The name of the Simple Log Service project that stores user logs.
+	//
 	// example:
 	//
 	// aliyun-cloudsiem-data-171835723111****-cn-shanghai
-	LogProject             *string                                                 `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	// The details of the Logstores for normalized data.
 	NormalizationLogStores []*GetDataStorageResponseBodyDataNormalizationLogStores `json:"NormalizationLogStores,omitempty" xml:"NormalizationLogStores,omitempty" type:"Repeated"`
-	NormalizationLogViews  []*GetDataStorageResponseBodyDataNormalizationLogViews  `json:"NormalizationLogViews,omitempty" xml:"NormalizationLogViews,omitempty" type:"Repeated"`
-	SasLogStores           []*GetDataStorageResponseBodyDataSasLogStores           `json:"SasLogStores,omitempty" xml:"SasLogStores,omitempty" type:"Repeated"`
-	UnusedLogStores        []*GetDataStorageResponseBodyDataUnusedLogStores        `json:"UnusedLogStores,omitempty" xml:"UnusedLogStores,omitempty" type:"Repeated"`
+	// The details of normalized datasets.
+	NormalizationLogViews []*GetDataStorageResponseBodyDataNormalizationLogViews `json:"NormalizationLogViews,omitempty" xml:"NormalizationLogViews,omitempty" type:"Repeated"`
+	// The list of record Logstores.
+	RecordLogStores []*GetDataStorageResponseBodyDataRecordLogStores `json:"RecordLogStores,omitempty" xml:"RecordLogStores,omitempty" type:"Repeated"`
+	// The details of raw log storage in Security Center.
+	SasLogStores []*GetDataStorageResponseBodyDataSasLogStores `json:"SasLogStores,omitempty" xml:"SasLogStores,omitempty" type:"Repeated"`
+	// The list of legacy SIEM V1 Logstores.
+	UnusedLogStores []*GetDataStorageResponseBodyDataUnusedLogStores `json:"UnusedLogStores,omitempty" xml:"UnusedLogStores,omitempty" type:"Repeated"`
 }
 
 func (s GetDataStorageResponseBodyData) String() string {
@@ -135,6 +162,10 @@ func (s *GetDataStorageResponseBodyData) GetNormalizationLogStores() []*GetDataS
 
 func (s *GetDataStorageResponseBodyData) GetNormalizationLogViews() []*GetDataStorageResponseBodyDataNormalizationLogViews {
 	return s.NormalizationLogViews
+}
+
+func (s *GetDataStorageResponseBodyData) GetRecordLogStores() []*GetDataStorageResponseBodyDataRecordLogStores {
+	return s.RecordLogStores
 }
 
 func (s *GetDataStorageResponseBodyData) GetSasLogStores() []*GetDataStorageResponseBodyDataSasLogStores {
@@ -190,6 +221,11 @@ func (s *GetDataStorageResponseBodyData) SetNormalizationLogViews(v []*GetDataSt
 	return s
 }
 
+func (s *GetDataStorageResponseBodyData) SetRecordLogStores(v []*GetDataStorageResponseBodyDataRecordLogStores) *GetDataStorageResponseBodyData {
+	s.RecordLogStores = v
+	return s
+}
+
 func (s *GetDataStorageResponseBodyData) SetSasLogStores(v []*GetDataStorageResponseBodyDataSasLogStores) *GetDataStorageResponseBodyData {
 	s.SasLogStores = v
 	return s
@@ -219,6 +255,15 @@ func (s *GetDataStorageResponseBodyData) Validate() error {
 			}
 		}
 	}
+	if s.RecordLogStores != nil {
+		for _, item := range s.RecordLogStores {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.SasLogStores != nil {
 		for _, item := range s.SasLogStores {
 			if item != nil {
@@ -241,14 +286,20 @@ func (s *GetDataStorageResponseBodyData) Validate() error {
 }
 
 type GetDataStorageResponseBodyDataNormalizationLogStores struct {
+	// The name of the Logstore that stores normalized data.
+	//
 	// example:
 	//
 	// vulnerability-activity
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The storage duration of normalized data.
+	//
 	// example:
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
+	// The hot storage capacity used.
+	//
 	// example:
 	//
 	// 10.333
@@ -295,31 +346,50 @@ func (s *GetDataStorageResponseBodyDataNormalizationLogStores) Validate() error 
 }
 
 type GetDataStorageResponseBodyDataNormalizationLogViews struct {
+	// The log type of the normalized log.
+	//
 	// example:
 	//
 	// API security risk log
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	// The category of the normalized log.
+	//
 	// example:
 	//
 	// Security Category
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The number of times the normalized dataset is referenced in the threat analysis access center.
+	//
 	// example:
 	//
 	// 3
-	DetectionRuleReferenceCount      *int32    `json:"DetectionRuleReferenceCount,omitempty" xml:"DetectionRuleReferenceCount,omitempty"`
+	DetectionRuleReferenceCount *int32 `json:"DetectionRuleReferenceCount,omitempty" xml:"DetectionRuleReferenceCount,omitempty"`
+	// The list of products that reference the normalized dataset in the threat analysis access center.
 	DetectionRuleReferenceProductIds []*string `json:"DetectionRuleReferenceProductIds,omitempty" xml:"DetectionRuleReferenceProductIds,omitempty" type:"Repeated"`
+	// The query statement used to query the log type in the normalized dataset.
+	//
 	// example:
 	//
 	// [{\\"SCHEMA\\":\\"AZURE_ACTIVE_DIRECTORY_AUDIT_ACTIVITY\\"}]
 	LogSearchConditions *string `json:"LogSearchConditions,omitempty" xml:"LogSearchConditions,omitempty"`
+	// The Logstore where threat analysis stores normalized logs.
+	//
 	// example:
 	//
 	// risk-activity
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// Indicates whether the normalized dataset exists. Valid values:
+	//
+	// - true: The normalized dataset exists.
+	//
+	// - false: The normalized dataset does not exist.
+	//
 	// example:
 	//
 	// true
 	LogViewExisted *bool `json:"LogViewExisted,omitempty" xml:"LogViewExisted,omitempty"`
+	// The name of the normalized dataset.
+	//
 	// example:
 	//
 	// risk_activity
@@ -410,47 +480,145 @@ func (s *GetDataStorageResponseBodyDataNormalizationLogViews) Validate() error {
 	return dara.Validate(s)
 }
 
+type GetDataStorageResponseBodyDataRecordLogStores struct {
+	// The Logstore name.
+	//
+	// example:
+	//
+	// alert-record
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The time-to-live (TTL) of the Logstore.
+	//
+	// example:
+	//
+	// 90
+	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
+	// The used capacity of the Logstore.
+	//
+	// example:
+	//
+	// 11.111
+	UsedCapacity *float64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
+}
+
+func (s GetDataStorageResponseBodyDataRecordLogStores) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataStorageResponseBodyDataRecordLogStores) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataStorageResponseBodyDataRecordLogStores) GetLogStoreName() *string {
+	return s.LogStoreName
+}
+
+func (s *GetDataStorageResponseBodyDataRecordLogStores) GetLogStoreTtl() *int32 {
+	return s.LogStoreTtl
+}
+
+func (s *GetDataStorageResponseBodyDataRecordLogStores) GetUsedCapacity() *float64 {
+	return s.UsedCapacity
+}
+
+func (s *GetDataStorageResponseBodyDataRecordLogStores) SetLogStoreName(v string) *GetDataStorageResponseBodyDataRecordLogStores {
+	s.LogStoreName = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataRecordLogStores) SetLogStoreTtl(v int32) *GetDataStorageResponseBodyDataRecordLogStores {
+	s.LogStoreTtl = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataRecordLogStores) SetUsedCapacity(v float64) *GetDataStorageResponseBodyDataRecordLogStores {
+	s.UsedCapacity = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataRecordLogStores) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetDataStorageResponseBodyDataSasLogStores struct {
+	// The log code.
+	//
 	// example:
 	//
 	// sas-net-block
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The group to which the log belongs. Valid values:
+	//
+	// - host: host logs.
+	//
+	// - security: security logs.
+	//
 	// example:
 	//
 	// host
 	LogDeliveryGroup *string `json:"LogDeliveryGroup,omitempty" xml:"LogDeliveryGroup,omitempty"`
+	// Indicates whether log delivery can be toggled. Log delivery cannot be enabled if the service is not purchased. Valid values:
+	//
+	// - allow: Allowed.
+	//
+	// - deny: Not allowed.
+	//
 	// example:
 	//
 	// deny
 	LogDeliveryPermission *string `json:"LogDeliveryPermission,omitempty" xml:"LogDeliveryPermission,omitempty"`
+	// The log delivery status. Valid values:
+	//
+	// - enable: log delivery is enabled.
+	//
+	// - disable: log delivery is disabled.
+	//
 	// example:
 	//
 	// enable
 	LogDeliveryStatus *string `json:"LogDeliveryStatus,omitempty" xml:"LogDeliveryStatus,omitempty"`
+	// The time when the log delivery was last modified.
+	//
 	// example:
 	//
 	// 2025-07-16T15:10:29
 	LogDeliveryUpdateTime *string `json:"LogDeliveryUpdateTime,omitempty" xml:"LogDeliveryUpdateTime,omitempty"`
+	// The log name.
+	//
 	// example:
 	//
 	// Process Snapshot
 	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	// The default log query conditions for the log. When multiple logs are stored in the same Logstore, log query conditions are required to query individual logs.
+	//
 	// example:
 	//
 	// [{\\"__topic__\\":\\"sas-net-block\\"}]
 	LogSearchConditions *string `json:"LogSearchConditions,omitempty" xml:"LogSearchConditions,omitempty"`
+	// Indicates whether the Logstore where the log is stored exists. Valid values:
+	//
+	// - true: The Logstore exists.
+	//
+	// - false: The Logstore does not exist.
+	//
 	// example:
 	//
 	// true
 	LogStoreExisted *bool `json:"LogStoreExisted,omitempty" xml:"LogStoreExisted,omitempty"`
+	// The name of the Logstore where the log is stored.
+	//
 	// example:
 	//
 	// sas-security-log
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The storage duration of the Logstore where the log is stored. Logs are stored for at least 30 days.
+	//
 	// example:
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
+	// The hot storage capacity used.
+	//
 	// example:
 	//
 	// 10.333
@@ -569,14 +737,20 @@ func (s *GetDataStorageResponseBodyDataSasLogStores) Validate() error {
 }
 
 type GetDataStorageResponseBodyDataUnusedLogStores struct {
+	// The Logstore name.
+	//
 	// example:
 	//
 	// cloud-siem
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The data storage duration.
+	//
 	// example:
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
+	// The hot storage capacity used.
+	//
 	// example:
 	//
 	// 10.333

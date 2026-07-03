@@ -28,28 +28,53 @@ type iListDataIngestionsShrinkRequest interface {
 }
 
 type ListDataIngestionsShrinkRequest struct {
+	// An array of data ingestion policy IDs.
 	DataIngestionIdsShrink *string `json:"DataIngestionIds,omitempty" xml:"DataIngestionIds,omitempty"`
+	// The data ingestion status. Valid values:
+	//
+	// - `enabled`: Enabled.
+	//
+	// - `disabled`: Disabled.
+	//
 	// example:
 	//
-	// enabled。
-	DataIngestionStatus            *string `json:"DataIngestionStatus,omitempty" xml:"DataIngestionStatus,omitempty"`
+	// enabled
+	DataIngestionStatus *string `json:"DataIngestionStatus,omitempty" xml:"DataIngestionStatus,omitempty"`
+	// An array of data ingestion template IDs.
 	DataIngestionTemplateIdsShrink *string `json:"DataIngestionTemplateIds,omitempty" xml:"DataIngestionTemplateIds,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
-	Lang                         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// An array of normalization schema IDs.
 	NormalizationSchemaIdsShrink *string `json:"NormalizationSchemaIds,omitempty" xml:"NormalizationSchemaIds,omitempty"`
+	// The product ID.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas。
+	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region where the threat analysis feature is deployed. Select the region that corresponds to the location of your asset. Valid values:
+	//
+	// - `cn-hangzhou`: Your asset is in the Chinese mainland.
+	//
+	// - `ap-southeast-1`: Your asset is in a region outside the Chinese mainland.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. An administrator can use this parameter to query data as the specified member.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

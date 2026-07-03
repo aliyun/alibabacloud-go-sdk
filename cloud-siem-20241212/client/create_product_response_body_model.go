@@ -16,13 +16,17 @@ type iCreateProductResponseBody interface {
 }
 
 type CreateProductResponseBody struct {
+	// The ID of the product.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas。
+	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

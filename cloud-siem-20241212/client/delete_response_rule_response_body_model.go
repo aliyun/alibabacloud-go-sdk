@@ -14,7 +14,7 @@ type iDeleteResponseRuleResponseBody interface {
 }
 
 type DeleteResponseRuleResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -42,39 +42,112 @@ type iCreateDataIngestionRequest interface {
 }
 
 type CreateDataIngestionRequest struct {
+	// The number of associated security capabilities.
+	//
+	// example:
+	//
+	// 10
 	CapacityCount *int32 `json:"CapacityCount,omitempty" xml:"CapacityCount,omitempty"`
+	// The data ingestion mode. Valid values:
+	//
+	// - realtime
+	//
+	// - scan
+	//
 	// example:
 	//
-	// realtime。
-	DataIngestionMode      *string `json:"DataIngestionMode,omitempty" xml:"DataIngestionMode,omitempty"`
+	// realtime
+	DataIngestionMode *string `json:"DataIngestionMode,omitempty" xml:"DataIngestionMode,omitempty"`
+	// The error code for the data ingestion status.
+	//
+	// example:
+	//
+	// UserUnauthorized
 	DataIngestionStateCode *string `json:"DataIngestionStateCode,omitempty" xml:"DataIngestionStateCode,omitempty"`
-	DataIngestionType      *string `json:"DataIngestionType,omitempty" xml:"DataIngestionType,omitempty"`
-	DataSourceEditable     *bool   `json:"DataSourceEditable,omitempty" xml:"DataSourceEditable,omitempty"`
+	// The data ingestion type. Valid values:
+	//
+	// - preset
+	//
+	// - custom
+	//
 	// example:
 	//
-	// ds-3g6lyf4eonngyohaq7tr。
+	// custom
+	DataIngestionType *string `json:"DataIngestionType,omitempty" xml:"DataIngestionType,omitempty"`
+	// Specifies whether the data source can be edited.
+	//
+	// example:
+	//
+	// true
+	DataSourceEditable *bool `json:"DataSourceEditable,omitempty" xml:"DataSourceEditable,omitempty"`
+	// The ID of the data source.
+	//
+	// example:
+	//
+	// ds-3g6lyf4eonngyohaq7tr
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
-	Lang                      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NormalizationRuleEditable *bool   `json:"NormalizationRuleEditable,omitempty" xml:"NormalizationRuleEditable,omitempty"`
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether the normalization rule can be edited.
+	//
 	// example:
 	//
-	// nr-hdmady54piigkjfv17yp。
+	// true
+	NormalizationRuleEditable *bool `json:"NormalizationRuleEditable,omitempty" xml:"NormalizationRuleEditable,omitempty"`
+	// The ID of the normalization rule.
+	//
+	// example:
+	//
+	// nr-hdmady54piigkjfv17yp
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
-	ProductId           *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The product ID.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// alibaba_cloud_sas
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region where the Data Management hub for threat analysis is located. Select a region for the management hub based on the region of your assets. Valid values:
+	//
+	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets are in a region outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. An administrator can use this parameter to assume the permissions of the specified member.
+	//
 	// example:
 	//
-	// 173326*******。
-	RoleFor          *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// 173326*******
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The ID of the data source for the scan mode.
+	//
+	// example:
+	//
+	// ds-014frtpy28m5ct2eoyo1
 	ScanDataSourceId *string `json:"ScanDataSourceId,omitempty" xml:"ScanDataSourceId,omitempty"`
-	StreamJobId      *string `json:"StreamJobId,omitempty" xml:"StreamJobId,omitempty"`
-	UpdateTime       *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the stream job.
+	//
+	// example:
+	//
+	// 802c0129b6cfd50861d4b25deea29afb
+	StreamJobId *string `json:"StreamJobId,omitempty" xml:"StreamJobId,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 1733269771123
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateDataIngestionRequest) String() string {

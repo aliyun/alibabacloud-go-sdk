@@ -16,10 +16,13 @@ type iSetDefaultNormalizationRuleVersionResponseBody interface {
 }
 
 type SetDefaultNormalizationRuleVersionResponseBody struct {
+	// The normalization rule version.
 	NormalizationRuleVersion *SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -59,61 +62,97 @@ func (s *SetDefaultNormalizationRuleVersionResponseBody) Validate() error {
 }
 
 type SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion struct {
+	// The creation time.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The normalization rule category ID.
+	//
 	// example:
 	//
-	// NETWORK_CATEGORY。
+	// NETWORK_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
+	// The normalization rule description.
+	//
 	// example:
 	//
-	// normalization_rule_Z57np。
+	// normalization_rule_Z57np
 	NormalizationRuleDescription *string `json:"NormalizationRuleDescription,omitempty" xml:"NormalizationRuleDescription,omitempty"`
+	// The normalization rule expression.
+	//
 	// example:
 	//
-	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content。
+	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content
 	NormalizationRuleExpression *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
+	// The normalization rule format.
+	//
 	// example:
 	//
-	// SPL。
+	// SPL
 	NormalizationRuleFormat *string `json:"NormalizationRuleFormat,omitempty" xml:"NormalizationRuleFormat,omitempty"`
+	// The normalization rule ID.
+	//
 	// example:
 	//
-	// nr-z0b2ssjteut85uoh9nzp。
+	// nr-z0b2ssjteut85uoh9nzp
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	// The normalization rule name.
+	//
 	// example:
 	//
-	// normalization_rule_Z57np。
+	// normalization_rule_Z57np
 	NormalizationRuleName *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
+	// The normalization rule status.
+	//
 	// example:
 	//
-	// started。
+	// started
 	NormalizationRuleStatus *string `json:"NormalizationRuleStatus,omitempty" xml:"NormalizationRuleStatus,omitempty"`
+	// The normalization rule type. Valid values:
+	//
+	// - predefined: predefined normalization rule.
+	//
+	// - custom: custom normalization rule.
+	//
 	// example:
 	//
-	// predefined。
+	// predefined
 	NormalizationRuleType *string `json:"NormalizationRuleType,omitempty" xml:"NormalizationRuleType,omitempty"`
+	// The current version of the normalization rule.
+	//
 	// example:
 	//
-	// V1。
+	// V1
 	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
+	// The normalization schema ID.
+	//
 	// example:
 	//
-	// HTTP_ACTIVITY。
+	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
 	// example:
 	//
-	// alibaba_cloud_sas。
+	// NETWORK_AND_WEB_SECURITY
+	NormalizationSecurityDomainId *string `json:"NormalizationSecurityDomainId,omitempty" xml:"NormalizationSecurityDomainId,omitempty"`
+	// The product ID.
+	//
+	// example:
+	//
+	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The vendor ID associated with the normalization rule.
+	//
 	// example:
 	//
-	// alibaba_cloud。
+	// alibaba_cloud
 	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
 }
 
@@ -167,6 +206,10 @@ func (s *SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion)
 
 func (s *SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion) GetNormalizationSchemaId() *string {
 	return s.NormalizationSchemaId
+}
+
+func (s *SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion) GetNormalizationSecurityDomainId() *string {
+	return s.NormalizationSecurityDomainId
 }
 
 func (s *SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion) GetProductId() *string {
@@ -233,6 +276,11 @@ func (s *SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion)
 
 func (s *SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion) SetNormalizationSchemaId(v string) *SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion {
 	s.NormalizationSchemaId = &v
+	return s
+}
+
+func (s *SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion) SetNormalizationSecurityDomainId(v string) *SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion {
+	s.NormalizationSecurityDomainId = &v
 	return s
 }
 

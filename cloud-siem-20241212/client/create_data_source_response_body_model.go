@@ -16,13 +16,17 @@ type iCreateDataSourceResponseBody interface {
 }
 
 type CreateDataSourceResponseBody struct {
+	// The ID of the data source.
+	//
 	// example:
 	//
-	// ds-jl67vixpe1scwysgyu3x。
+	// ds-jl67vixpe1scwysgyu3x
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

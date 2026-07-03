@@ -22,22 +22,31 @@ type iListLogStoresResponseBody interface {
 }
 
 type ListLogStoresResponseBody struct {
+	// The list of Simple Log Service Logstores.
 	LogStores []*string `json:"LogStores,omitempty" xml:"LogStores,omitempty" type:"Repeated"`
+	// The maximum number of entries returned on this call.
+	//
 	// example:
 	//
-	// 50。
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to start the next query. If this parameter is empty, no subsequent query is required.
+	//
 	// example:
 	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****。
+	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
-	// 57。
+	// 57
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 

@@ -16,11 +16,14 @@ type iGetUserConfigResponseBody interface {
 }
 
 type GetUserConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *GetUserConfigResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The user.
+	User *GetUserConfigResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s GetUserConfigResponseBody) String() string {
@@ -59,18 +62,34 @@ func (s *GetUserConfigResponseBody) Validate() error {
 }
 
 type GetUserConfigResponseBodyUser struct {
+	// The current CTDR version.
+	//
 	// example:
 	//
 	// v2
 	CtdrVersion *string `json:"CtdrVersion,omitempty" xml:"CtdrVersion,omitempty"`
+	// The upgrade status. Valid values:
+	//
+	// - pending: The upgrade is pending.
+	//
+	// - upgrading: The upgrade is in progress.
+	//
+	// - success: The upgrade is successful.
+	//
+	// - failed: The upgrade failed.
+	//
 	// example:
 	//
 	// pending
 	DataStorageVersion *string `json:"DataStorageVersion,omitempty" xml:"DataStorageVersion,omitempty"`
+	// The version of Log Management.
+	//
 	// example:
 	//
 	// v2
 	UpgradeCtdrVersion *string `json:"UpgradeCtdrVersion,omitempty" xml:"UpgradeCtdrVersion,omitempty"`
+	// The target CTDR version for the upgrade.
+	//
 	// example:
 	//
 	// v2

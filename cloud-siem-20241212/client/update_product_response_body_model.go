@@ -14,9 +14,11 @@ type iUpdateProductResponseBody interface {
 }
 
 type UpdateProductResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

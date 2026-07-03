@@ -22,19 +22,28 @@ type iListProductsResponseBody interface {
 }
 
 type ListProductsResponseBody struct {
+	// The maximum number of entries returned.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. If the value of this parameter is not empty, more results are available. You can use this token in the next request to retrieve the next page of results.
+	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
-	NextToken *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Products  []*ListProductsResponseBodyProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of products.
+	Products []*ListProductsResponseBodyProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 57
@@ -108,58 +117,94 @@ func (s *ListProductsResponseBody) Validate() error {
 }
 
 type ListProductsResponseBodyProducts struct {
+	// The number of abnormal data ingestion configurations.
+	//
 	// example:
 	//
 	// 2
 	AbnormalDataIngestionCount *int32 `json:"AbnormalDataIngestionCount,omitempty" xml:"AbnormalDataIngestionCount,omitempty"`
+	// The activation time.
+	//
 	// example:
 	//
 	// 1733269771123
 	ActiveTime *int64 `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
+	// Indicates whether data collection configurations can be added.
+	//
 	// example:
 	//
 	// true
 	AllowAddDataIngestion *bool `json:"AllowAddDataIngestion,omitempty" xml:"AllowAddDataIngestion,omitempty"`
+	// The time when the product was created.
+	//
 	// example:
 	//
 	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The data ingestion status. Valid values:
+	//
+	// - true: enabled.
+	//
+	// - false: disabled.
+	//
 	// example:
 	//
 	// enabled
 	DataIngestionStatus *bool `json:"DataIngestionStatus,omitempty" xml:"DataIngestionStatus,omitempty"`
+	// The number of enabled data ingestion configurations.
+	//
 	// example:
 	//
 	// 1
 	EnabledDataIngestionCount *int32 `json:"EnabledDataIngestionCount,omitempty" xml:"EnabledDataIngestionCount,omitempty"`
+	// The product alias.
+	//
 	// example:
 	//
 	// alibaba_cloud_sas
 	ProductAlias *string `json:"ProductAlias,omitempty" xml:"ProductAlias,omitempty"`
+	// The product ID.
+	//
 	// example:
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// This parameter is deprecated.
+	//
 	// example:
 	//
 	// sas
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The product type. Valid values:
+	//
+	// - preset
+	//
+	// - custom
+	//
 	// example:
 	//
 	// preset
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The total number of data ingestion configurations.
+	//
 	// example:
 	//
 	// 10
 	TotalDataIngestionCount *int32 `json:"TotalDataIngestionCount,omitempty" xml:"TotalDataIngestionCount,omitempty"`
+	// The time when the product was updated.
+	//
 	// example:
 	//
 	// 1733269771123
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The vendor ID.
+	//
 	// example:
 	//
 	// vd-qlsw5eocx94w9
 	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
+	// The vendor name.
+	//
 	// example:
 	//
 	// 111

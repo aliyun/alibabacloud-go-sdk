@@ -18,18 +18,32 @@ type iUpdateAutoDisposeConfigRequest interface {
 }
 
 type UpdateAutoDisposeConfigRequest struct {
+	// Specifies whether to enable auto decision. Valid values:
+	//
+	// - `enabled`: Enables auto decision.
+	//
+	// - `disabled`: Disables auto decision.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// enabled
 	AutoDecisionStatus *string `json:"AutoDecisionStatus,omitempty" xml:"AutoDecisionStatus,omitempty"`
+	// The language of the response message. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The code for the cloud product.
+	//
 	// This parameter is required.
 	//
 	// example:

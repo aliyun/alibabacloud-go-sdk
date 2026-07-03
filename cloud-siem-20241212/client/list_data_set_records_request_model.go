@@ -34,52 +34,90 @@ type iListDataSetRecordsRequest interface {
 }
 
 type ListDataSetRecordsRequest struct {
+	// The ID of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset-nhcrmjpx1zsorlaq****
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
+	// The filter conditions, specified as a JSON string. For example: {"field1":"value1","field2":"value2"}
+	//
 	// example:
 	//
 	// {"field1":"value1","field2":"value2"}
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum number of results to return for each request when `NextToken` is used for pagination. Valid values: 1 to 100. Default value: 50.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - "desc" (default)
+	//
+	// - "asc"
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The sort field. Valid values:
+	//
+	// - "updatetime" (default)
+	//
+	// - "createtime"
+	//
 	// example:
 	//
 	// updatetime
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region of the data management center for Threat Analysis. Select the region where your assets are located. Valid values:
+	//
+	// - `cn-hangzhou`: For assets in the Chinese mainland.
+	//
+	// - `ap-southeast-1`: For assets in regions outside mainland China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID that an administrator can use to view data as another member.
+	//
 	// example:
 	//
 	// 113091674488****

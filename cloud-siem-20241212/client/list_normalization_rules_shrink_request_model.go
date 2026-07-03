@@ -25,6 +25,8 @@ type iListNormalizationRulesShrinkRequest interface {
 	GetNormalizationRuleType() *string
 	SetNormalizationSchemaId(v string) *ListNormalizationRulesShrinkRequest
 	GetNormalizationSchemaId() *string
+	SetNormalizationSecurityDomainId(v string) *ListNormalizationRulesShrinkRequest
+	GetNormalizationSecurityDomainId() *string
 	SetOrderField(v string) *ListNormalizationRulesShrinkRequest
 	GetOrderField() *string
 	SetOrderType(v string) *ListNormalizationRulesShrinkRequest
@@ -44,69 +46,120 @@ type iListNormalizationRulesShrinkRequest interface {
 }
 
 type ListNormalizationRulesShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum number of entries to return in this request.
+	//
 	// if can be null:
 	// true
 	//
 	// example:
 	//
-	// 50。
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+	//
 	// example:
 	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****。
+	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The category ID of the normalization rule.
+	//
 	// example:
 	//
-	// NETWORK_CATEGORY。
-	NormalizationCategoryId    *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
+	// NETWORK_CATEGORY
+	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
+	// The list of normalization rule IDs.
 	NormalizationRuleIdsShrink *string `json:"NormalizationRuleIds,omitempty" xml:"NormalizationRuleIds,omitempty"`
+	// The name of the normalization rule.
+	//
 	// example:
 	//
-	// normalization_rule_Z57np。
+	// normalization_rule_Z57np
 	NormalizationRuleName *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
+	// The type of the normalization rule. Valid values:
+	//
+	// - predefined: predefined normalization rule.
+	//
+	// - custom: custom normalization rule.
+	//
 	// example:
 	//
-	// predefined。
+	// predefined
 	NormalizationRuleType *string `json:"NormalizationRuleType,omitempty" xml:"NormalizationRuleType,omitempty"`
+	// The normalization schema ID.
+	//
 	// example:
 	//
-	// HTTP_ACTIVITY。
+	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
 	// example:
 	//
-	// UpdateTime。
+	// NETWORK_AND_WEB_SECURITY
+	NormalizationSecurityDomainId *string `json:"NormalizationSecurityDomainId,omitempty" xml:"NormalizationSecurityDomainId,omitempty"`
+	// The field used for sorting.
+	//
+	// example:
+	//
+	// UpdateTime
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - desc
+	//
+	// - asc.
+	//
 	// example:
 	//
-	// desc。
+	// desc
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The page number of the current page.
+	//
 	// example:
 	//
-	// 3。
+	// 3
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
-	// 10。
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product ID.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas。
+	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region where the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// - cn-hangzhou: the Chinese mainland.
+	//
+	// - ap-southeast-1: outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member to which the administrator switches the view.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The vendor ID associated with the normalization rule.
+	//
 	// example:
 	//
-	// alibaba_cloud。
+	// alibaba_cloud
 	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
 }
 
@@ -148,6 +201,10 @@ func (s *ListNormalizationRulesShrinkRequest) GetNormalizationRuleType() *string
 
 func (s *ListNormalizationRulesShrinkRequest) GetNormalizationSchemaId() *string {
 	return s.NormalizationSchemaId
+}
+
+func (s *ListNormalizationRulesShrinkRequest) GetNormalizationSecurityDomainId() *string {
+	return s.NormalizationSecurityDomainId
 }
 
 func (s *ListNormalizationRulesShrinkRequest) GetOrderField() *string {
@@ -219,6 +276,11 @@ func (s *ListNormalizationRulesShrinkRequest) SetNormalizationRuleType(v string)
 
 func (s *ListNormalizationRulesShrinkRequest) SetNormalizationSchemaId(v string) *ListNormalizationRulesShrinkRequest {
 	s.NormalizationSchemaId = &v
+	return s
+}
+
+func (s *ListNormalizationRulesShrinkRequest) SetNormalizationSecurityDomainId(v string) *ListNormalizationRulesShrinkRequest {
+	s.NormalizationSecurityDomainId = &v
 	return s
 }
 

@@ -16,10 +16,13 @@ type iGetNormalizationRuleVersionResponseBody interface {
 }
 
 type GetNormalizationRuleVersionResponseBody struct {
+	// The version of the normalization rule.
 	NormalizationRuleVersion *GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -59,63 +62,109 @@ func (s *GetNormalizationRuleVersionResponseBody) Validate() error {
 }
 
 type GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion struct {
+	// The time when the rule version was created.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the normalization rule category.
+	//
 	// example:
 	//
-	// NETWORK_CATEGORY。
+	// NETWORK_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
+	// The description of the normalization rule.
+	//
 	// example:
 	//
-	// normalization_rule_Z57np。
+	// normalization_rule_Z57np
 	NormalizationRuleDescription *string `json:"NormalizationRuleDescription,omitempty" xml:"NormalizationRuleDescription,omitempty"`
+	// The expression for the normalization rule.
+	//
 	// example:
 	//
-	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content。
+	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content
 	NormalizationRuleExpression *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
+	// The format of the normalization rule.
+	//
 	// example:
 	//
-	// SPL。
+	// SPL
 	NormalizationRuleFormat *string `json:"NormalizationRuleFormat,omitempty" xml:"NormalizationRuleFormat,omitempty"`
+	// The ID of the normalization rule.
+	//
 	// example:
 	//
-	// nr-z0b2ssjteut85uoh9nzp。
+	// nr-z0b2ssjteut85uoh9nzp
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	// The name of the normalization rule.
+	//
 	// example:
 	//
-	// normalization_rule_Z57np。
+	// normalization_rule_Z57np
 	NormalizationRuleName *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
+	// The status of the normalization rule.
+	//
 	// example:
 	//
-	// started。
+	// started
 	NormalizationRuleStatus *string `json:"NormalizationRuleStatus,omitempty" xml:"NormalizationRuleStatus,omitempty"`
+	// The type of the normalization rule. Valid values:
+	//
+	// - predefined: a predefined rule.
+	//
+	// - custom: a custom rule.
+	//
 	// example:
 	//
-	// predefined。
+	// predefined
 	NormalizationRuleType *string `json:"NormalizationRuleType,omitempty" xml:"NormalizationRuleType,omitempty"`
+	// The version of the normalization rule.
+	//
 	// example:
 	//
-	// V1。
-	NormalizationRuleVersion     *int32  `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
+	// V1
+	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
+	// The name of the normalization rule version.
+	//
+	// example:
+	//
+	// v1
 	NormalizationRuleVersionName *string `json:"NormalizationRuleVersionName,omitempty" xml:"NormalizationRuleVersionName,omitempty"`
+	// The ID of the normalization schema.
+	//
 	// example:
 	//
-	// HTTP_ACTIVITY。
+	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
+	// The product ID.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas。
+	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region where the Data Management center for Threat Analysis is located. Select a region for the management center based on the region where your assets are located. Valid values:
+	//
+	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets are in a region outside China.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The time when the rule version was last updated.
+	//
+	// example:
+	//
+	// 1733269771123
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the vendor for the normalization rule.
+	//
 	// example:
 	//
-	// alibaba_cloud。
+	// alibaba_cloud
 	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
 }
 

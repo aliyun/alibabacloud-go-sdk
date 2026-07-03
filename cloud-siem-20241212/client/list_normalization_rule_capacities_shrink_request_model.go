@@ -26,33 +26,54 @@ type iListNormalizationRuleCapacitiesShrinkRequest interface {
 }
 
 type ListNormalizationRuleCapacitiesShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
 	// if can be null:
 	// true
 	//
 	// example:
 	//
-	// 50。
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to start the next query. Leave this parameter empty for the first query. If the response is truncated, use the \\`NextToken\\` value from the previous response.
+	//
 	// example:
 	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****。
+	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the normalization rule.
+	//
 	// example:
 	//
-	// nr-z0b2ssjteut85uoh9nzp。
-	NormalizationRuleId        *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	// nr-z0b2ssjteut85uoh9nzp
+	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	// A list of normalization rule IDs.
 	NormalizationRuleIdsShrink *string `json:"NormalizationRuleIds,omitempty" xml:"NormalizationRuleIds,omitempty"`
+	// The region of the threat analysis Data Management Center. Select the region where your assets are located. Valid values:
+	//
+	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets are outside the Chinese mainland.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID that an administrator uses to switch to a member\\"s perspective.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

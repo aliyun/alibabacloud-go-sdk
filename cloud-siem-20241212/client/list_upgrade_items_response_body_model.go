@@ -22,22 +22,31 @@ type iListUpgradeItemsResponseBody interface {
 }
 
 type ListUpgradeItemsResponseBody struct {
+	// The maximum number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. If the value is not empty, more results are available.
+	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 57
-	TotalCount   *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of upgrade items.
 	UpgradeItems []*ListUpgradeItemsResponseBodyUpgradeItems `json:"UpgradeItems,omitempty" xml:"UpgradeItems,omitempty" type:"Repeated"`
 }
 
@@ -108,6 +117,8 @@ func (s *ListUpgradeItemsResponseBody) Validate() error {
 }
 
 type ListUpgradeItemsResponseBodyUpgradeItems struct {
+	// The ID of the upgrade item.
+	//
 	// example:
 	//
 	// data_storage_2_upgrade

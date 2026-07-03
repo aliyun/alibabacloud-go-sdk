@@ -24,29 +24,49 @@ type iUpdateProductRequest interface {
 }
 
 type UpdateProductRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// en。
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The product ID.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas。
+	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The product name.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas。
+	// alibaba_cloud_sas
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The region of the Data Management center for threat analysis. Select the region for the Data Management center based on the region of your assets. Valid values:
+	//
+	// - cn-hangzhou: The Chinese mainland.
+	//
+	// - ap-southeast-1: Regions outside the Chinese mainland.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. An administrator can specify this parameter to switch to the perspective of the member.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The vendor name.
+	//
 	// example:
 	//
-	// 111。
+	// 111
 	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
 }
 

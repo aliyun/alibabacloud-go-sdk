@@ -22,25 +22,43 @@ type iDeleteVendorRequest interface {
 }
 
 type DeleteVendorRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region where the Data Management Center of your threat analysis service is located. Select a region for the Management Center based on the region of your asset. Valid values:
+	//
+	// - cn-hangzhou: Your asset is in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your asset is in a region outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member. This parameter is used when an administrator switches to the perspective of a member.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The vendor ID.
+	//
 	// example:
 	//
-	// vd-qlsw5eocx94w9。
+	// vd-qlsw5eocx94w9
 	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
+	// The vendor name.
+	//
 	// example:
 	//
-	// 111。
+	// 111
 	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
 }
 

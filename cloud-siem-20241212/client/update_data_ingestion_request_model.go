@@ -26,33 +26,59 @@ type iUpdateDataIngestionRequest interface {
 }
 
 type UpdateDataIngestionRequest struct {
+	// The data ingestion ID.
+	//
 	// example:
 	//
-	// alibaba_cloud_actiontrail_event_ingestion_173326*******。
+	// alibaba_cloud_actiontrail_event_ingestion_173326*******
 	DataIngestionId *string `json:"DataIngestionId,omitempty" xml:"DataIngestionId,omitempty"`
+	// The data ingestion mode. Valid values:
+	//
+	// - realtime
+	//
+	// - scan
+	//
 	// example:
 	//
-	// realtime。
+	// realtime
 	DataIngestionMode *string `json:"DataIngestionMode,omitempty" xml:"DataIngestionMode,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
-	// alibaba_cloud_actiontrail_event_log_173326*******。
+	// alibaba_cloud_actiontrail_event_log_173326*******
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The language of the response messages. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The normalization rule ID.
+	//
 	// example:
 	//
-	// alibaba_cloud_actiontrail_event_rule。
+	// alibaba_cloud_actiontrail_event_rule
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	// The region of the Data Management center for threat analysis. Select the region where your assets are located. Valid values:
+	//
+	// - cn-hangzhou: The assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: The assets are in a region outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. An administrator can perform operations on behalf of this member.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

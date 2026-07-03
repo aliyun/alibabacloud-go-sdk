@@ -28,37 +28,64 @@ type iListVendorsShrinkRequest interface {
 }
 
 type ListVendorsShrinkRequest struct {
+	// The language of the response message. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// en。
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum number of entries to return for this request.
+	//
 	// if can be null:
 	// true
 	//
 	// example:
 	//
-	// 50。
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. If this is your first query or if no next page exists, you do not need to specify this parameter. If a next page exists, set the value to the NextToken value that is returned in the last response.
+	//
 	// example:
 	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****。
+	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region where the Data Management center for threat analysis is located. Select a region for the Management Hub based on the region where your asset resides. Valid values:
+	//
+	// - cn-hangzhou: Your asset is in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your asset is outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. An administrator can use this ID to switch to the member\\"s perspective.
+	//
 	// example:
 	//
-	// 173326*******。
-	RoleFor         *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// 173326*******
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// A list of vendors.
 	VendorIdsShrink *string `json:"VendorIds,omitempty" xml:"VendorIds,omitempty"`
+	// The vendor name.
+	//
 	// example:
 	//
-	// 111。
+	// 111
 	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
+	// The vendor type. Valid values:
+	//
+	// - preset
+	//
+	// - custom
+	//
 	// example:
 	//
-	// preset。
+	// preset
 	VendorType *string `json:"VendorType,omitempty" xml:"VendorType,omitempty"`
 }
 

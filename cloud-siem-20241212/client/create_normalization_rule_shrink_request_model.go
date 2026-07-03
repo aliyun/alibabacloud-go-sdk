@@ -35,6 +35,8 @@ type iCreateNormalizationRuleShrinkRequest interface {
 	GetNormalizationRuleVersion() *int32
 	SetNormalizationSchemaId(v string) *CreateNormalizationRuleShrinkRequest
 	GetNormalizationSchemaId() *string
+	SetNormalizationSecurityDomainId(v string) *CreateNormalizationRuleShrinkRequest
+	GetNormalizationSecurityDomainId() *string
 	SetOrderField(v string) *CreateNormalizationRuleShrinkRequest
 	GetOrderField() *string
 	SetProductId(v string) *CreateNormalizationRuleShrinkRequest
@@ -48,62 +50,139 @@ type iCreateNormalizationRuleShrinkRequest interface {
 }
 
 type CreateNormalizationRuleShrinkRequest struct {
+	// Specifies whether to pack non-standard fields into the extension field extend_content. Valid values:
+	//
+	// - enabled: Enabled.
+	//
+	// - disabled: Disabled.
+	//
+	// example:
+	//
+	// enabled
 	ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
+	// The storage mode for extension fields. Valid values: flat, pack, and reject.
+	//
 	// example:
 	//
 	// flat
 	ExtendFieldStoreMode *string `json:"ExtendFieldStoreMode,omitempty" xml:"ExtendFieldStoreMode,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The category ID of the normalization rule.
+	//
 	// example:
 	//
-	// NETWORK_CATEGORY。
+	// NETWORK_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
+	// The description of the normalization rule.
+	//
 	// example:
 	//
-	// normalization_rule_Z57np。
+	// normalization_rule_Z57np
 	NormalizationRuleDescription *string `json:"NormalizationRuleDescription,omitempty" xml:"NormalizationRuleDescription,omitempty"`
+	// The expression of the normalization rule.
+	//
 	// example:
 	//
-	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content。
+	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content
 	NormalizationRuleExpression *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
+	// The format of the normalization rule.
+	//
 	// example:
 	//
-	// SPL。
-	NormalizationRuleFormat    *string `json:"NormalizationRuleFormat,omitempty" xml:"NormalizationRuleFormat,omitempty"`
+	// SPL
+	NormalizationRuleFormat *string `json:"NormalizationRuleFormat,omitempty" xml:"NormalizationRuleFormat,omitempty"`
+	// The list of normalization rule IDs.
 	NormalizationRuleIdsShrink *string `json:"NormalizationRuleIds,omitempty" xml:"NormalizationRuleIds,omitempty"`
+	// The mode of the normalization rule. Valid values:
+	//
+	// - both
+	//
+	// - scan
+	//
+	// - realtime.
+	//
 	// example:
 	//
-	// both。
+	// both
 	NormalizationRuleMode *string `json:"NormalizationRuleMode,omitempty" xml:"NormalizationRuleMode,omitempty"`
+	// The name of the normalization rule.
+	//
 	// example:
 	//
-	// normalization_rule_Z57np。
-	NormalizationRuleName    *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
-	NormalizationRuleType    *string `json:"NormalizationRuleType,omitempty" xml:"NormalizationRuleType,omitempty"`
-	NormalizationRuleVersion *int32  `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
+	// normalization_rule_Z57np
+	NormalizationRuleName *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
+	// The type of the normalization rule. Valid values:
+	//
+	// - predefined: predefined normalization rule.
+	//
+	// - custom: custom normalization rule.
+	//
 	// example:
 	//
-	// HTTP_ACTIVITY。
+	// custom
+	NormalizationRuleType *string `json:"NormalizationRuleType,omitempty" xml:"NormalizationRuleType,omitempty"`
+	// The version of the normalization rule.
+	//
+	// example:
+	//
+	// 1
+	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
+	// The normalization schema ID.
+	//
+	// example:
+	//
+	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
-	OrderField            *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
 	// example:
 	//
-	// alibaba_cloud_sas。
+	// NETWORK_AND_WEB_SECURITY
+	NormalizationSecurityDomainId *string `json:"NormalizationSecurityDomainId,omitempty" xml:"NormalizationSecurityDomainId,omitempty"`
+	// The field used to sort the rule list. Valid values:
+	//
+	// - GmtModified: sorted by modification time.
+	//
+	// - Id: sorted by rule ID (default).
+	//
+	// example:
+	//
+	// Id
+	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	// The product ID.
+	//
+	// example:
+	//
+	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// - cn-hangzhou: Your assets reside in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets reside outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the member accounts in the resource directory.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The vendor ID associated with the normalization rule.
+	//
 	// example:
 	//
-	// alibaba_cloud。
+	// alibaba_cloud
 	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
 }
 
@@ -165,6 +244,10 @@ func (s *CreateNormalizationRuleShrinkRequest) GetNormalizationRuleVersion() *in
 
 func (s *CreateNormalizationRuleShrinkRequest) GetNormalizationSchemaId() *string {
 	return s.NormalizationSchemaId
+}
+
+func (s *CreateNormalizationRuleShrinkRequest) GetNormalizationSecurityDomainId() *string {
+	return s.NormalizationSecurityDomainId
 }
 
 func (s *CreateNormalizationRuleShrinkRequest) GetOrderField() *string {
@@ -249,6 +332,11 @@ func (s *CreateNormalizationRuleShrinkRequest) SetNormalizationRuleVersion(v int
 
 func (s *CreateNormalizationRuleShrinkRequest) SetNormalizationSchemaId(v string) *CreateNormalizationRuleShrinkRequest {
 	s.NormalizationSchemaId = &v
+	return s
+}
+
+func (s *CreateNormalizationRuleShrinkRequest) SetNormalizationSecurityDomainId(v string) *CreateNormalizationRuleShrinkRequest {
+	s.NormalizationSecurityDomainId = &v
 	return s
 }
 

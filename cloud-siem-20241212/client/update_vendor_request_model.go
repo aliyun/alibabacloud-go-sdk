@@ -22,25 +22,43 @@ type iUpdateVendorRequest interface {
 }
 
 type UpdateVendorRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region of the Data Management center for threat analysis. Select the region based on where your asset is located. Valid values:
+	//
+	// - cn-hangzhou: The asset is in the Chinese mainland.
+	//
+	// - ap-southeast-1: The asset is outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member. This parameter allows an administrator to switch to the perspective of a member.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The ID of the vendor.
+	//
 	// example:
 	//
-	// vd-qlsw5eocx94w9。
+	// vd-qlsw5eocx94w9
 	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
+	// The name of the vendor.
+	//
 	// example:
 	//
-	// 111。
+	// 111
 	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
 }
 

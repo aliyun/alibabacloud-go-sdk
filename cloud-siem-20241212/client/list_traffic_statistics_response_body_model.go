@@ -16,10 +16,13 @@ type iListTrafficStatisticsResponseBody interface {
 }
 
 type ListTrafficStatisticsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 6276D891-*****-55B2-87B9-74D413F7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of traffic statistics.
 	TrafficStatistics []*ListTrafficStatisticsResponseBodyTrafficStatistics `json:"TrafficStatistics,omitempty" xml:"TrafficStatistics,omitempty" type:"Repeated"`
 }
 
@@ -63,10 +66,13 @@ func (s *ListTrafficStatisticsResponseBody) Validate() error {
 }
 
 type ListTrafficStatisticsResponseBodyTrafficStatistics struct {
+	// The statistics information.
 	TrafficStatisticData []*ListTrafficStatisticsResponseBodyTrafficStatisticsTrafficStatisticData `json:"TrafficStatisticData,omitempty" xml:"TrafficStatisticData,omitempty" type:"Repeated"`
+	// The statistic target.
+	//
 	// example:
 	//
-	// all。
+	// all
 	TrafficStatisticTarget *string `json:"TrafficStatisticTarget,omitempty" xml:"TrafficStatisticTarget,omitempty"`
 }
 
@@ -110,13 +116,17 @@ func (s *ListTrafficStatisticsResponseBodyTrafficStatistics) Validate() error {
 }
 
 type ListTrafficStatisticsResponseBodyTrafficStatisticsTrafficStatisticData struct {
+	// The statistic time.
+	//
 	// example:
 	//
-	// 20250815。
+	// 20250815
 	TrafficStatisticTime *int64 `json:"TrafficStatisticTime,omitempty" xml:"TrafficStatisticTime,omitempty"`
+	// The statistic value.
+	//
 	// example:
 	//
-	// 1.699814。
+	// 1.699814
 	TrafficStatisticValue *float64 `json:"TrafficStatisticValue,omitempty" xml:"TrafficStatisticValue,omitempty"`
 }
 

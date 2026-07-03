@@ -22,22 +22,31 @@ type iListNormalizationCategoriesResponseBody interface {
 }
 
 type ListNormalizationCategoriesResponseBody struct {
+	// The maximum number of entries returned on the current page.
+	//
 	// example:
 	//
-	// 50。
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. If the response does not contain this parameter, no more results are available.
+	//
 	// example:
 	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****。
-	NextToken               *string                                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// AAAAAUqcj6VO4E3ECWIrFczs****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// A list of normalization categories.
 	NormalizationCategories []*ListNormalizationCategoriesResponseBodyNormalizationCategories `json:"NormalizationCategories,omitempty" xml:"NormalizationCategories,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
-	// 57。
+	// 57
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -108,13 +117,17 @@ func (s *ListNormalizationCategoriesResponseBody) Validate() error {
 }
 
 type ListNormalizationCategoriesResponseBodyNormalizationCategories struct {
+	// The ID of the normalization category.
+	//
 	// example:
 	//
-	// COMMON_CATEGORY。
+	// COMMON_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
+	// The name of the normalization category.
+	//
 	// example:
 	//
-	// COMMON_CATEGORY。
+	// COMMON_CATEGORY
 	NormalizationCategoryName *string `json:"NormalizationCategoryName,omitempty" xml:"NormalizationCategoryName,omitempty"`
 }
 

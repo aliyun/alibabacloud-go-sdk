@@ -22,24 +22,46 @@ type iUpdateDataStorageRequest interface {
 }
 
 type UpdateDataStorageRequest struct {
+	// The log storage region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	DataStorageRegionId *string `json:"DataStorageRegionId,omitempty" xml:"DataStorageRegionId,omitempty"`
+	// The global switch for log delivery in Log Management. This parameter is not yet available. Valid values:
+	//
+	// - enable: Enables global delivery.
+	//
+	// - disable: Disables global delivery.
+	//
 	// example:
 	//
 	// enable
 	DeliveryStatus *string `json:"DeliveryStatus,omitempty" xml:"DeliveryStatus,omitempty"`
+	// The language of the response message. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region where the Data Management center for threat analysis is located. This region must be the same as the region where your assets are located. Valid values:
+	//
+	// - cn-hangzhou: The assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: The assets are in a region outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. An administrator can specify this parameter to switch to the perspective of the member.
+	//
 	// example:
 	//
 	// 113091674488****

@@ -32,39 +32,78 @@ type iListTrafficStatisticsShrinkRequest interface {
 }
 
 type ListTrafficStatisticsShrinkRequest struct {
+	// The language of the response messages. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
-	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// A list of user IDs for batch data ingestion.
 	LogUserIdsShrink *string `json:"LogUserIds,omitempty" xml:"LogUserIds,omitempty"`
+	// The product ID.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas。
+	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region of the Data Management center for threat analysis. Select a region based on the location of your asset. Valid values:
+	//
+	// - cn-hangzhou: Your asset is in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your asset is outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region.
+	//
 	// example:
 	//
-	// 1。
+	// 1
 	RegionTag *int32 `json:"RegionTag,omitempty" xml:"RegionTag,omitempty"`
+	// The user ID of a member. This parameter is used by an administrator to switch to the perspective of the member.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The statistical period.
+	//
 	// example:
 	//
-	// 30。
+	// 30
 	TrafficStatisticPeriod *string `json:"TrafficStatisticPeriod,omitempty" xml:"TrafficStatisticPeriod,omitempty"`
+	// The statistic granularity. Valid values:
+	//
+	// - day: day. This is the default value.
+	//
+	// - hour: hour.
+	//
 	// example:
 	//
-	// day。
+	// day
 	TrafficStatisticPeriodType *string `json:"TrafficStatisticPeriodType,omitempty" xml:"TrafficStatisticPeriodType,omitempty"`
+	// The statistic dimension. Valid values:
+	//
+	// - Region
+	//
+	// - Product
+	//
+	// - DataIngetion
+	//
+	// - logUserId
+	//
 	// example:
 	//
-	// Region。
+	// Region
 	TrafficStatisticType *string `json:"TrafficStatisticType,omitempty" xml:"TrafficStatisticType,omitempty"`
+	// The type of the log traffic.
+	//
 	// example:
 	//
 	// agentAnalysisLogTraffic

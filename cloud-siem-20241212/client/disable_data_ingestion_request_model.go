@@ -20,21 +20,37 @@ type iDisableDataIngestionRequest interface {
 }
 
 type DisableDataIngestionRequest struct {
+	// The data ingestion ID.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas_netstat_ingestion_173326*******。
+	// alibaba_cloud_sas_netstat_ingestion_173326*******
 	DataIngestionId *string `json:"DataIngestionId,omitempty" xml:"DataIngestionId,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region of the Data Management center for threat analysis. Select the region of the management center based on the region where your asset is located. Valid values:
+	//
+	// - cn-hangzhou: Your asset is in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your asset is outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member account that the administrator wants to switch to.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

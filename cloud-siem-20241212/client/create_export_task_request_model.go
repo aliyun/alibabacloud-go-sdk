@@ -22,6 +22,8 @@ type iCreateExportTaskRequest interface {
 }
 
 type CreateExportTaskRequest struct {
+	// The parameters for the export task. The value is a JSON string that is generated based on the query conditions.
+	//
 	// example:
 	//
 	// {
@@ -36,18 +38,36 @@ type CreateExportTaskRequest struct {
 	//
 	// }
 	ExportTaskParameter *string `json:"ExportTaskParameter,omitempty" xml:"ExportTaskParameter,omitempty"`
+	// The type of data to export. Valid values:
+	//
+	// - incident_list: event list.
+	//
 	// example:
 	//
 	// incident_list
 	ExportTaskType *string `json:"ExportTaskType,omitempty" xml:"ExportTaskType,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region of the Data Management center. Select a region based on where your assets are located. Valid values:
+	//
+	// - cn-hangzhou: The Chinese mainland.
+	//
+	// - ap-southeast-1: Regions outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. An administrator can use this parameter to switch to the perspective of a member.
+	//
 	// example:
 	//
 	// 113091674488****

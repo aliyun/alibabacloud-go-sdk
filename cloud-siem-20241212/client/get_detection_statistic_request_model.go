@@ -18,14 +18,28 @@ type iGetDetectionStatisticRequest interface {
 }
 
 type GetDetectionStatisticRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// - cn-hangzhou: China (Hangzhou). Your assets reside in the Chinese mainland.
+	//
+	// - ap-southeast-1: Singapore. Your assets reside outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the member to which the administrator switches the view.
+	//
 	// example:
 	//
 	// 113091674488****

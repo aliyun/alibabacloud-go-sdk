@@ -22,24 +22,46 @@ type iUpdateDataStorageDeliveryRequest interface {
 }
 
 type UpdateDataStorageDeliveryRequest struct {
+	// The language of the response message. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The log code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aegis-log-login
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The status of log delivery. Valid values:
+	//
+	// - enable: Enables log delivery.
+	//
+	// - disable: Disables log delivery.
+	//
 	// example:
 	//
 	// enable
 	LogDeliveryStatus *string `json:"LogDeliveryStatus,omitempty" xml:"LogDeliveryStatus,omitempty"`
+	// The region where the Data Management hub for Threat Analysis is located. Select the region of the management hub based on the region of your asset. Valid values:
+	//
+	// - cn-hangzhou: Your asset is in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your asset is in a region outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member. This parameter is used when an administrator switches to the perspective of a member.
+	//
 	// example:
 	//
 	// 113091674488****

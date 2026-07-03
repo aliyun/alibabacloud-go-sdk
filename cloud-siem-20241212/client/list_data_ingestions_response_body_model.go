@@ -16,10 +16,13 @@ type iListDataIngestionsResponseBody interface {
 }
 
 type ListDataIngestionsResponseBody struct {
+	// The list of data ingestions.
 	DataIngestions []*ListDataIngestionsResponseBodyDataIngestions `json:"DataIngestions,omitempty" xml:"DataIngestions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -63,81 +66,137 @@ func (s *ListDataIngestionsResponseBody) Validate() error {
 }
 
 type ListDataIngestionsResponseBodyDataIngestions struct {
+	// The time when the data ingestion was enabled.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	ActiveTime *int64 `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
+	// The number of associated security capabilities.
+	//
 	// example:
 	//
-	// 3。
+	// 3
 	CapacityCount *int32 `json:"CapacityCount,omitempty" xml:"CapacityCount,omitempty"`
+	// The time when the data ingestion was created.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the data ingestion.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas_netstat_ingestion_173326*******。
+	// alibaba_cloud_sas_netstat_ingestion_173326*******
 	DataIngestionId *string `json:"DataIngestionId,omitempty" xml:"DataIngestionId,omitempty"`
+	// The mode of the data ingestion. Valid values:
+	//
+	// - realtime
+	//
+	// - scan
+	//
 	// example:
 	//
-	// realtime。
+	// realtime
 	DataIngestionMode *string `json:"DataIngestionMode,omitempty" xml:"DataIngestionMode,omitempty"`
+	// Indicates whether the data ingestion mode is editable.
+	//
 	// example:
 	//
-	// true。
+	// true
 	DataIngestionModeEditable *bool `json:"DataIngestionModeEditable,omitempty" xml:"DataIngestionModeEditable,omitempty"`
+	// The state of the data ingestion. Valid values:
+	//
+	// - ingested
+	//
+	// - uningested
+	//
+	// - abnormal
+	//
 	// example:
 	//
-	// ingested。
+	// ingested
 	DataIngestionState *string `json:"DataIngestionState,omitempty" xml:"DataIngestionState,omitempty"`
+	// The error code for the data ingestion anomaly.
+	//
 	// example:
 	//
-	// UserUnauthorized。
+	// UserUnauthorized
 	DataIngestionStateCode *string `json:"DataIngestionStateCode,omitempty" xml:"DataIngestionStateCode,omitempty"`
+	// The status of the data ingestion. Valid values:
+	//
+	// - enabled: The data ingestion is enabled.
+	//
+	// - disabled: The data ingestion is disabled.
+	//
 	// example:
 	//
-	// enabled。
+	// enabled
 	DataIngestionStatus *string `json:"DataIngestionStatus,omitempty" xml:"DataIngestionStatus,omitempty"`
+	// The ID of the data ingestion template.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas_netstat_ingestion。
+	// alibaba_cloud_sas_netstat_ingestion
 	DataIngestionTemplateId *string `json:"DataIngestionTemplateId,omitempty" xml:"DataIngestionTemplateId,omitempty"`
+	// The type of the data ingestion. Valid values:
+	//
+	// - preset
+	//
+	// - custom
+	//
 	// example:
 	//
-	// preset。
+	// preset
 	DataIngestionType *string `json:"DataIngestionType,omitempty" xml:"DataIngestionType,omitempty"`
+	// Indicates whether the data source is editable.
+	//
 	// example:
 	//
-	// true。
+	// true
 	DataSourceEditable *bool `json:"DataSourceEditable,omitempty" xml:"DataSourceEditable,omitempty"`
+	// The ID of the data source.
+	//
 	// example:
 	//
-	// ds-scpfegri73oyoknbc90c。
+	// ds-scpfegri73oyoknbc90c
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Indicates whether the normalization rule is editable.
+	//
 	// example:
 	//
-	// true。
+	// true
 	NormalizationRuleEditable *bool `json:"NormalizationRuleEditable,omitempty" xml:"NormalizationRuleEditable,omitempty"`
+	// The ID of the normalization rule.
+	//
 	// example:
 	//
-	// nr-0aywiqdtaqdvwac7xkbjsf3a。
+	// nr-0aywiqdtaqdvwac7xkbjsf3a
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	// The ID of the data source for real-time ingestion.
+	//
 	// example:
 	//
-	// ds-scpfegri73oyoknbc90c。
+	// ds-scpfegri73oyoknbc90c
 	RealtimeDataSourceId *string `json:"RealtimeDataSourceId,omitempty" xml:"RealtimeDataSourceId,omitempty"`
+	// The ID of the data source for scan-based ingestion.
+	//
 	// example:
 	//
-	// ds-scpfegri73oyoknbc90c。
+	// ds-scpfegri73oyoknbc90c
 	ScanDataSourceId *string `json:"ScanDataSourceId,omitempty" xml:"ScanDataSourceId,omitempty"`
+	// The job ID of the stream processing task.
+	//
 	// example:
 	//
-	// 73a78aa245e3b1299d6ceed093de7bd8。
+	// 73a78aa245e3b1299d6ceed093de7bd8
 	StreamJobId *string `json:"StreamJobId,omitempty" xml:"StreamJobId,omitempty"`
+	// The time when the data ingestion was last updated.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 

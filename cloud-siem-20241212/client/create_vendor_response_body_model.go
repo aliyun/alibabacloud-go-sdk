@@ -16,13 +16,17 @@ type iCreateVendorResponseBody interface {
 }
 
 type CreateVendorResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The vendor ID.
+	//
 	// example:
 	//
-	// vd-qlsw5eocx94w9。
+	// vd-qlsw5eocx94w9
 	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
 }
 

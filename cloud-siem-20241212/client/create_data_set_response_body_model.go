@@ -16,7 +16,10 @@ type iCreateDataSetResponseBody interface {
 }
 
 type CreateDataSetResponseBody struct {
+	// The result returned after the dataset is created.
 	DataSetRecordStatistic *CreateDataSetResponseBodyDataSetRecordStatistic `json:"DataSetRecordStatistic,omitempty" xml:"DataSetRecordStatistic,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
@@ -59,10 +62,14 @@ func (s *CreateDataSetResponseBody) Validate() error {
 }
 
 type CreateDataSetResponseBodyDataSetRecordStatistic struct {
+	// The dataset ID.
+	//
 	// example:
 	//
 	// dataset-qt0n8246gs9nackg****
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
+	// The number of new records in the dataset.
+	//
 	// example:
 	//
 	// 6

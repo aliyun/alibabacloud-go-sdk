@@ -18,13 +18,21 @@ type iExecuteAutoDisposeRecordsRequest interface {
 }
 
 type ExecuteAutoDisposeRecordsRequest struct {
+  // The language of the response. Valid values:
+  // 
+  // - **zh*	- (default): Chinese.
+  // 
+  // - **en**: English.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // zh
   Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+  // The list of entities selected for manual handling.
   SelectedEntityList []*ExecuteAutoDisposeRecordsRequestSelectedEntityList `json:"SelectedEntityList,omitempty" xml:"SelectedEntityList,omitempty" type:"Repeated"`
+  // The list of entities not selected for manual handling.
   UnSelectedEntityList []*ExecuteAutoDisposeRecordsRequestUnSelectedEntityList `json:"UnSelectedEntityList,omitempty" xml:"UnSelectedEntityList,omitempty" type:"Repeated"`
 }
 
@@ -86,10 +94,14 @@ func (s *ExecuteAutoDisposeRecordsRequest) Validate() error {
 }
 
 type ExecuteAutoDisposeRecordsRequestSelectedEntityList struct {
+  // The unique ID of the investigation record.
+  // 
   // example:
   // 
   // 0000089b040b8935fed2e24ca2ec8335
   AutoDisposeRecordId *string `json:"AutoDisposeRecordId,omitempty" xml:"AutoDisposeRecordId,omitempty"`
+  // The UUID of the entity.
+  // 
   // example:
   // 
   // 9938fc2708ddc7b7651f3a19e4f09962
@@ -127,10 +139,14 @@ func (s *ExecuteAutoDisposeRecordsRequestSelectedEntityList) Validate() error {
 }
 
 type ExecuteAutoDisposeRecordsRequestUnSelectedEntityList struct {
+  // The unique ID of the investigation record.
+  // 
   // example:
   // 
   // 0000089b040b8935fed2e24ca2ec8335
   AutoDisposeRecordId *string `json:"AutoDisposeRecordId,omitempty" xml:"AutoDisposeRecordId,omitempty"`
+  // The UUID of the entity.
+  // 
   // example:
   // 
   // ae6ac3e1c9ada174eb8dadd029a2e9d1

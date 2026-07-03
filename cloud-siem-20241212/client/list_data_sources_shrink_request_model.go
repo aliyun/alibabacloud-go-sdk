@@ -52,73 +52,146 @@ type iListDataSourcesShrinkRequest interface {
 }
 
 type ListDataSourcesShrinkRequest struct {
+	// The source of the data. Valid values:
+	//
+	// - center
+	//
+	// - custom
+	//
 	// example:
 	//
-	// center。
-	DataSourceFrom      *string `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
+	// center
+	DataSourceFrom *string `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
+	// The IDs of the data sources.
 	DataSourceIdsShrink *string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
-	// alibaba_cloud_waf_alert_log。
-	DataSourceName              *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	DataSourceStatus            *string `json:"DataSourceStatus,omitempty" xml:"DataSourceStatus,omitempty"`
-	DataSourceStoreStatus       *string `json:"DataSourceStoreStatus,omitempty" xml:"DataSourceStoreStatus,omitempty"`
+	// alibaba_cloud_waf_alert_log
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The status of the data source. Valid values:
+	//
+	// - unconfigured
+	//
+	// - normal
+	//
+	// - abnormal
+	//
+	// example:
+	//
+	// unconfigured
+	DataSourceStatus *string `json:"DataSourceStatus,omitempty" xml:"DataSourceStatus,omitempty"`
+	// The status of the Logstore. Valid values:
+	//
+	// - normal
+	//
+	// - abnormal
+	//
+	// example:
+	//
+	// normal
+	DataSourceStoreStatus *string `json:"DataSourceStoreStatus,omitempty" xml:"DataSourceStoreStatus,omitempty"`
+	// The IDs of the data source templates.
 	DataSourceTemplateIdsShrink *string `json:"DataSourceTemplateIds,omitempty" xml:"DataSourceTemplateIds,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// - preset
+	//
+	// - custom
+	//
 	// example:
 	//
-	// custom。
+	// custom
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the Simple Log Service project.
+	//
 	// example:
 	//
-	// aliyun-cloudsiem-data-173326*******-cn-hangzhou。
+	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
+	// The ID of the log storage region.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// The name of the Simple Log Service Logstore.
+	//
 	// example:
 	//
-	// audit-activity。
-	LogStoreName     *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// audit-activity
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The IDs of the users who can access the data.
 	LogUserIdsShrink *string `json:"LogUserIds,omitempty" xml:"LogUserIds,omitempty"`
+	// The maximum number of entries to return for a single request.
+	//
 	// if can be null:
 	// true
 	//
 	// example:
 	//
-	// 50。
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. Set this parameter to the value of NextToken that is returned in the response to the previous query. Leave this parameter empty for the first query.
+	//
 	// example:
 	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****。
+	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sorting order. Valid values:
+	//
+	// - desc
+	//
+	// - asc
+	//
 	// example:
 	//
-	// desc。
+	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The sorting field.
+	//
 	// example:
 	//
-	// UpdateTime。
+	// UpdateTime
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
-	// 1。
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
-	// 5。
+	// 5
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region where the Data Management Center of your threat analysis feature is located. Select a region based on the location of your assets. Valid values:
+	//
+	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets are in a region outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member. You can use this parameter to switch the perspective to a member.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

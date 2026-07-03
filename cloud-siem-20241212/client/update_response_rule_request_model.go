@@ -36,50 +36,104 @@ type iUpdateResponseRuleRequest interface {
 }
 
 type UpdateResponseRuleRequest struct {
+	// The language of the response messages. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum number of results to return for a single request.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. If you do not specify this parameter, the query starts from the first page.
+	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region where the data management center of Cloud SIEM is located. Select a region based on the location of your assets. Valid values:
+	//
+	// - `cn-hangzhou`: China (Hangzhou). For assets in the Chinese mainland.
+	//
+	// - `ap-southeast-1`: Asia Pacific SE 1 (Singapore). For assets in overseas regions.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The action configuration for the automatic response rule.
+	//
 	// example:
 	//
 	// [{"actionType":"doPlaybook","playbookName":"block waf IP","playbookUuid":"system_aliyun_waf_whole_process_book","disposeParam":{"period":"7d"}}]
 	ResponseActionConfig *string `json:"ResponseActionConfig,omitempty" xml:"ResponseActionConfig,omitempty"`
+	// The action for the automatic response rule. Valid values:
+	//
+	// - `doPlaybook`: Executes a playbook.
+	//
+	// - `changeEventStatus`: Updates the event status.
+	//
+	// - `changeThreatLevel`: Updates the event threat level.
+	//
+	// - `addEventTag`: Adds an event tag.
+	//
+	// - `deleteEventTag`: Deletes an event tag.
+	//
+	// - `alertWhitelist`: Adds the alert to a whitelist.
+	//
 	// example:
 	//
 	// alertWhitelist
 	ResponseActionType *string `json:"ResponseActionType,omitempty" xml:"ResponseActionType,omitempty"`
+	// The trigger conditions for the rule.
+	//
 	// example:
 	//
 	// [{"left":{"value":"threat_level"},"operator":"equals","right":{"value":"suspicious"}}]
 	ResponseExecutionCondition *string `json:"ResponseExecutionCondition,omitempty" xml:"ResponseExecutionCondition,omitempty"`
+	// The ID of the automatic response rule.
+	//
 	// example:
 	//
 	// 440918
 	ResponseRuleId *string `json:"ResponseRuleId,omitempty" xml:"ResponseRuleId,omitempty"`
+	// The name of the automatic response rule.
+	//
 	// example:
 	//
 	// Send Notification When Generating Urgent Incident
 	ResponseRuleName *string `json:"ResponseRuleName,omitempty" xml:"ResponseRuleName,omitempty"`
+	// The execution priority of the automatic response rule.
+	//
 	// example:
 	//
 	// 1
 	ResponseRulePriority *int32 `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// - `0`: disabled
+	//
+	// - `100`: enabled
+	//
 	// example:
 	//
 	// 0
 	ResponseRuleStatus *int32 `json:"ResponseRuleStatus,omitempty" xml:"ResponseRuleStatus,omitempty"`
+	// The trigger for the automatic response rule. Valid values:
+	//
+	// - `event`: The rule is triggered when an event occurs.
+	//
+	// - `event_update`: The rule is triggered when an event is updated.
+	//
+	// - `alert`: The rule is triggered when an alert is generated.
+	//
 	// example:
 	//
 	// event

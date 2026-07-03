@@ -16,7 +16,10 @@ type iGetIncidentResponseBody interface {
 }
 
 type GetIncidentResponseBody struct {
+	// The event information.
 	Incident *GetIncidentResponseBodyIncident `json:"Incident,omitempty" xml:"Incident,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
@@ -59,6 +62,8 @@ func (s *GetIncidentResponseBody) Validate() error {
 }
 
 type GetIncidentResponseBodyIncident struct {
+	// The count of attack stages associated with the event alerts.
+	//
 	// example:
 	//
 	// {
@@ -79,70 +84,138 @@ type GetIncidentResponseBodyIncident struct {
 	//
 	// }
 	AttckTactics interface{} `json:"AttckTactics,omitempty" xml:"AttckTactics,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1757386075000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the detection rule.
+	//
 	// example:
 	//
 	// dr-fy2zvgiykjifbiim****
 	DetectionRuleId *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
+	// The event summaries type. Valid values:
+	//
+	// - none: no event is generated.
+	//
+	// - graph_compute: graph computing (supported by predefined rules).
+	//
+	// - expert: expert rule.
+	//
+	// - passthrough: alerting pass-through (one-to-one).
+	//
+	// - window: same-type aggregation (window).
+	//
 	// example:
 	//
 	// window
 	IncidentAggregationType *string `json:"IncidentAggregationType,omitempty" xml:"IncidentAggregationType,omitempty"`
+	// The description of the event.
+	//
 	// example:
 	//
 	// Forti incident desc
 	IncidentDescription *string `json:"IncidentDescription,omitempty" xml:"IncidentDescription,omitempty"`
+	// The name of the event.
+	//
 	// example:
 	//
 	// Forti
 	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
+	// The remarks of the event.
+	//
 	// example:
 	//
 	// Remark
 	IncidentRemark *string `json:"IncidentRemark,omitempty" xml:"IncidentRemark,omitempty"`
+	// The status of the event. Valid values:
+	//
+	// - 0: unhandled.
+	//
+	// - 1: handling.
+	//
+	// - 5: handling failed.
+	//
+	// - 10: handled.
+	//
 	// example:
 	//
 	// 0
 	IncidentStatus *int32 `json:"IncidentStatus,omitempty" xml:"IncidentStatus,omitempty"`
+	// The tags of the event.
+	//
 	// example:
 	//
 	// ["sys:data_source:waf"]
 	IncidentTags *string `json:"IncidentTags,omitempty" xml:"IncidentTags,omitempty"`
+	// The UUID of the event.
+	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The owner of the event.
+	//
 	// example:
 	//
 	// 1234567890xxxxxx
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The number of alerts associated with the event.
+	//
 	// example:
 	//
 	// 23
 	RelateAlertCount *int32 `json:"RelateAlertCount,omitempty" xml:"RelateAlertCount,omitempty"`
+	// The number of assets associated with the event.
+	//
 	// example:
 	//
 	// 2
 	RelateAssetCount *int32 `json:"RelateAssetCount,omitempty" xml:"RelateAssetCount,omitempty"`
+	// The list of associated data sources.
+	//
 	// example:
 	//
 	// ["siem"]
 	RelateDataSourceIds interface{} `json:"RelateDataSourceIds,omitempty" xml:"RelateDataSourceIds,omitempty"`
+	// The list of user IDs associated with the event.
+	//
 	// example:
 	//
 	// ["176618589410****","1130916744888****"]
 	RelateUserIds interface{} `json:"RelateUserIds,omitempty" xml:"RelateUserIds,omitempty"`
+	// The response time. Unit: milliseconds (ms).
+	//
+	// example:
+	//
+	// 1757386075000
+	ResponseTime *int64 `json:"ResponseTime,omitempty" xml:"ResponseTime,omitempty"`
+	// The threat level. Valid values:
+	//
+	// - 5: critical.
+	//
+	// - 4: high.
+	//
+	// - 3: medium.
+	//
+	// - 2: low.
+	//
+	// - 1: informational.
+	//
 	// example:
 	//
 	// 2
 	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
+	// The threat score of the event. Valid values: 0 to 100. A higher score indicates a higher risk level.
+	//
 	// example:
 	//
 	// 90
 	ThreatScore *string `json:"ThreatScore,omitempty" xml:"ThreatScore,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1757386075000
@@ -215,6 +288,10 @@ func (s *GetIncidentResponseBodyIncident) GetRelateDataSourceIds() interface{} {
 
 func (s *GetIncidentResponseBodyIncident) GetRelateUserIds() interface{} {
 	return s.RelateUserIds
+}
+
+func (s *GetIncidentResponseBodyIncident) GetResponseTime() *int64 {
+	return s.ResponseTime
 }
 
 func (s *GetIncidentResponseBodyIncident) GetThreatLevel() *string {
@@ -301,6 +378,11 @@ func (s *GetIncidentResponseBodyIncident) SetRelateDataSourceIds(v interface{}) 
 
 func (s *GetIncidentResponseBodyIncident) SetRelateUserIds(v interface{}) *GetIncidentResponseBodyIncident {
 	s.RelateUserIds = v
+	return s
+}
+
+func (s *GetIncidentResponseBodyIncident) SetResponseTime(v int64) *GetIncidentResponseBodyIncident {
+	s.ResponseTime = &v
 	return s
 }
 

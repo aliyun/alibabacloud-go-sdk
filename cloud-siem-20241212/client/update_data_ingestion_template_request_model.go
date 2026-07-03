@@ -26,33 +26,59 @@ type iUpdateDataIngestionTemplateRequest interface {
 }
 
 type UpdateDataIngestionTemplateRequest struct {
+	// The status of data ingestion. Valid values:
+	//
+	// - enabled: Enabled.
+	//
+	// - disabled: Disabled.
+	//
 	// example:
 	//
-	// enabled。
+	// enabled
 	DataIngestionStatus *string `json:"DataIngestionStatus,omitempty" xml:"DataIngestionStatus,omitempty"`
+	// The ID of the data ingestion template.
+	//
 	// example:
 	//
-	// alibaba_cloud_actiontrail_event_ingestion_173326*******。
+	// alibaba_cloud_actiontrail_event_ingestion_173326*******
 	DataIngestionTemplateId *string `json:"DataIngestionTemplateId,omitempty" xml:"DataIngestionTemplateId,omitempty"`
+	// The name of the data source template.
+	//
 	// example:
 	//
-	// alibaba_cloud_actiontrail_event_ingestion_173326*******。
+	// alibaba_cloud_actiontrail_event_ingestion_173326*******
 	DataIngestionTemplateName *string `json:"DataIngestionTemplateName,omitempty" xml:"DataIngestionTemplateName,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the normalization rule.
+	//
 	// example:
 	//
-	// alibaba_cloud_actiontrail_event_rule。
+	// alibaba_cloud_actiontrail_event_rule
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	// The region where the Data Management center for threat analysis is located. Select a region for the management center based on the region of your asset. Valid values:
+	//
+	// - cn-hangzhou: The asset is in the Chinese mainland.
+	//
+	// - ap-southeast-1: The asset is outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member. This parameter is used by an administrator to switch to the perspective of the member.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

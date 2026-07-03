@@ -16,8 +16,9 @@ type iGetAutoDisposeConfigResponseBody interface {
 }
 
 type GetAutoDisposeConfigResponseBody struct {
+	// The automatic response configuration.
 	AutoDisposeConfig *GetAutoDisposeConfigResponseBodyAutoDisposeConfig `json:"AutoDisposeConfig,omitempty" xml:"AutoDisposeConfig,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,10 +62,18 @@ func (s *GetAutoDisposeConfigResponseBody) Validate() error {
 }
 
 type GetAutoDisposeConfigResponseBodyAutoDisposeConfig struct {
+	// Indicates whether automatic response is enabled. Valid values:
+	//
+	// - enabled: Enabled.
+	//
+	// - disabled: Disabled.
+	//
 	// example:
 	//
 	// enabled
 	AutoDecisionStatus *string `json:"AutoDecisionStatus,omitempty" xml:"AutoDecisionStatus,omitempty"`
+	// The code for the cloud product.
+	//
 	// example:
 	//
 	// alibaba_cloud_sas

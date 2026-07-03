@@ -40,55 +40,106 @@ type iListDataSetsShrinkRequest interface {
 }
 
 type ListDataSetsShrinkRequest struct {
+	// The ID of the dataset.
+	//
 	// example:
 	//
 	// dataset-qt0n8246gs9nackg****
-	DataSetId        *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
+	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
+	// The list of dataset IDs.
 	DataSetIdsShrink *string `json:"DataSetIds,omitempty" xml:"DataSetIds,omitempty"`
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// lmftest
 	DataSetName *string `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
+	// The status of the dataset. Valid values:
+	//
+	// - 0: deleted.
+	//
+	// - 1: enabled.
+	//
 	// example:
 	//
 	// 0
 	DataSetStatus *int32 `json:"DataSetStatus,omitempty" xml:"DataSetStatus,omitempty"`
+	// The type of the dataset. Valid values:
+	//
+	// - custom: custom.
+	//
+	// - preset: predefined.
+	//
 	// example:
 	//
 	// custom
 	DataSetType *string `json:"DataSetType,omitempty" xml:"DataSetType,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum number of results to return for the request. This parameter is used for queries that use NextToken. Valid values: 1 to 100. Default value: 50.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to start the next query.
+	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - **asc*	- (default): ascending.
+	//
+	// - **desc**: descending.
+	//
 	// example:
 	//
 	// asc
 	OrderDirection *string `json:"OrderDirection,omitempty" xml:"OrderDirection,omitempty"`
+	// The field to use for sorting. Valid values:
+	//
+	// - GmtCreate: creation time.
+	//
+	// - GmtModified: update time.
+	//
 	// example:
 	//
 	// GmtCreate
 	OrderFieldName *string `json:"OrderFieldName,omitempty" xml:"OrderFieldName,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region where the Data Management Center for threat analysis is deployed. Select a region based on the location of your assets. Valid values:
+	//
+	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets are in a region outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID that an administrator uses to switch to the perspective of a member.
+	//
 	// example:
 	//
 	// 113091674488****

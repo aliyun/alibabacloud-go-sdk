@@ -28,37 +28,69 @@ type iListDataIngestionTemplatesRequest interface {
 }
 
 type ListDataIngestionTemplatesRequest struct {
+	// The status of the data ingestion template. Valid values:
+	//
+	// - pending
+	//
+	// - running
+	//
+	// - success
+	//
+	// - failed
+	//
 	// example:
 	//
-	// running。
+	// running
 	DataIngestionTemplateStatus *string `json:"DataIngestionTemplateStatus,omitempty" xml:"DataIngestionTemplateStatus,omitempty"`
+	// A list of data source template IDs.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas_account_snapshot_log_173326*******。
+	// alibaba_cloud_sas_account_snapshot_log_173326*******
 	DataSourceTemplateIds *string `json:"DataSourceTemplateIds,omitempty" xml:"DataSourceTemplateIds,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
-	// 1。
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
-	// 10。
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product ID.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas。
+	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region where the Data Management center of threat analysis is located. You must select a region based on the region where your assets are located. Valid values:
+	//
+	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets are in a region outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member whose perspective you want to use. This parameter is available only for administrators.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

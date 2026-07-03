@@ -18,17 +18,31 @@ type iExecuteUpgradeRequest interface {
 }
 
 type ExecuteUpgradeRequest struct {
+  // The language of the response. Valid values:
+  // 
+  // - **zh*	- (default): Chinese.
+  // 
+  // - **en**: English.
+  // 
   // example:
   // 
-  // zh。
+  // zh
   Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+  // The region of the Data Management center for threat analysis. Select a region for the Management Hub based on the region of your assets. Valid values:
+  // 
+  // - cn-hangzhou: Your assets are in the Chinese mainland.
+  // 
+  // - ap-southeast-1: Your assets are in a region outside China.
+  // 
   // example:
   // 
-  // cn-hangzhou。
+  // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // The user ID of a member. An administrator can switch to the perspective of this member.
+  // 
   // example:
   // 
-  // 173326*******。
+  // 173326*******
   RoleFor *string `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

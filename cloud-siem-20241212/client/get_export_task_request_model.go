@@ -20,18 +20,34 @@ type iGetExportTaskRequest interface {
 }
 
 type GetExportTaskRequest struct {
+	// The ID of the export task.
+	//
 	// example:
 	//
 	// 200013
 	ExportId *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region where the threat analysis data management center is deployed. Select a region based on your asset location. Valid values:
+	//
+	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets are outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member account. An administrator can use this parameter to operate as the specified member account.
+	//
 	// example:
 	//
 	// 113091674488****

@@ -22,26 +22,35 @@ type iListVendorsResponseBody interface {
 }
 
 type ListVendorsResponseBody struct {
+	// The maximum number of entries returned for this request.
+	//
 	// if can be null:
 	// true
 	//
 	// example:
 	//
-	// 50。
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. If this is your first query or if no next page exists, you do not need to specify this parameter. If a next page exists, set the value to the NextToken value that is returned in the last response.
+	//
 	// example:
 	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****。
+	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
-	// 57。
-	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Vendors    []*ListVendorsResponseBodyVendors `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
+	// 57
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The vendors.
+	Vendors []*ListVendorsResponseBodyVendors `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }
 
 func (s ListVendorsResponseBody) String() string {
@@ -111,25 +120,39 @@ func (s *ListVendorsResponseBody) Validate() error {
 }
 
 type ListVendorsResponseBodyVendors struct {
+	// The creation time.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The vendor ID.
+	//
 	// example:
 	//
-	// vd-qlsw5eocx94w9。
+	// vd-qlsw5eocx94w9
 	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
+	// The vendor name.
+	//
 	// example:
 	//
-	// 111。
+	// 111
 	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
+	// The vendor type. Valid values:
+	//
+	// - preset
+	//
+	// - custom
+	//
 	// example:
 	//
-	// preset。
+	// preset
 	VendorType *string `json:"VendorType,omitempty" xml:"VendorType,omitempty"`
 }
 

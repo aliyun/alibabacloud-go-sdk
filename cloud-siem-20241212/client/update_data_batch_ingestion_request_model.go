@@ -28,31 +28,61 @@ type iUpdateDataBatchIngestionRequest interface {
 }
 
 type UpdateDataBatchIngestionRequest struct {
+	// Specifies whether to automatically discover new users.
+	//
+	// - enabled: Enables the feature.
+	//
+	// - disabled: Disables the feature.
+	//
 	// example:
 	//
-	// enabled。
+	// enabled
 	AutoScanNew *string `json:"AutoScanNew,omitempty" xml:"AutoScanNew,omitempty"`
+	// The mode for batch data ingestion. Valid values:
+	//
+	// - full
+	//
+	// - increment
+	//
 	// example:
 	//
-	// full。
-	DataBatchIngestionMode *string   `json:"DataBatchIngestionMode,omitempty" xml:"DataBatchIngestionMode,omitempty"`
-	DataIngestionIds       []*string `json:"DataIngestionIds,omitempty" xml:"DataIngestionIds,omitempty" type:"Repeated"`
+	// full
+	DataBatchIngestionMode *string `json:"DataBatchIngestionMode,omitempty" xml:"DataBatchIngestionMode,omitempty"`
+	// The list of ingestion policy IDs.
+	DataIngestionIds []*string `json:"DataIngestionIds,omitempty" xml:"DataIngestionIds,omitempty" type:"Repeated"`
+	// Specifies whether to automatically discover new Logstores.
+	//
 	// example:
 	//
-	// true。
+	// true
 	DataSourceRecognizeEnabled *bool `json:"DataSourceRecognizeEnabled,omitempty" xml:"DataSourceRecognizeEnabled,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
-	Lang       *string  `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The list of user IDs for batch data ingestion.
 	LogUserIds []*int64 `json:"LogUserIds,omitempty" xml:"LogUserIds,omitempty" type:"Repeated"`
+	// The region of the Data Management hub for threat analysis. Select a region for the management hub based on the region of your assets. Valid values:
+	//
+	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets are in a region outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member whose perspective the administrator wants to switch to.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

@@ -16,10 +16,13 @@ type iCheckUpgradeItemResponseBody interface {
 }
 
 type CheckUpgradeItemResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId   *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The upgrade item.
 	UpgradeItem *CheckUpgradeItemResponseBodyUpgradeItem `json:"UpgradeItem,omitempty" xml:"UpgradeItem,omitempty" type:"Struct"`
 }
 
@@ -59,14 +62,20 @@ func (s *CheckUpgradeItemResponseBody) Validate() error {
 }
 
 type CheckUpgradeItemResponseBodyUpgradeItem struct {
+	// The name of the module.
+	//
 	// example:
 	//
 	// OK
 	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	// The check status.
+	//
 	// example:
 	//
 	// success
 	CheckStatus *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	// The ID of the upgrade item.
+	//
 	// example:
 	//
 	// incident_upgrade

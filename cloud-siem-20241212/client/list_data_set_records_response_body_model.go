@@ -26,27 +26,40 @@ type iListDataSetRecordsResponseBody interface {
 }
 
 type ListDataSetRecordsResponseBody struct {
+	// A list of dataset records.
 	DataSetRecords []*ListDataSetRecordsResponseBodyDataSetRecords `json:"DataSetRecords,omitempty" xml:"DataSetRecords,omitempty" type:"Repeated"`
+	// The maximum number of results to return per page for token-based pagination. Valid values: 1 to 100. Default: 50.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results.
+	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries that match the query.
+	//
 	// example:
 	//
 	// 57
@@ -138,23 +151,34 @@ func (s *ListDataSetRecordsResponseBody) Validate() error {
 }
 
 type ListDataSetRecordsResponseBodyDataSetRecords struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1658974643000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// dataset-t8ha6p7k61rmniqw****
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
+	// The dataset name.
+	//
 	// example:
 	//
 	// lmftest
 	DataSetName *string `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
+	// The dataset record ID.
+	//
 	// example:
 	//
 	// 124566
-	DataSetRecordId     *string `json:"DataSetRecordId,omitempty" xml:"DataSetRecordId,omitempty"`
+	DataSetRecordId *string `json:"DataSetRecordId,omitempty" xml:"DataSetRecordId,omitempty"`
+	// The dataset record value.
 	DataSetRecordValues *string `json:"DataSetRecordValues,omitempty" xml:"DataSetRecordValues,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1658974643000

@@ -14,6 +14,8 @@ type iUpdateDataStorageTtlResponseBody interface {
 }
 
 type UpdateDataStorageTtlResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D92E4FCF-4584-5E50-9C02-26B79A9C****

@@ -20,20 +20,36 @@ type iDeleteDataSetRequest interface {
 }
 
 type DeleteDataSetRequest struct {
+	// The ID of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset-10iy8mbifnb4gniv****
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region of the Data Management center for threat analysis. Select a region based on the location of your assets. Valid values:
+	//
+	// - cn-hangzhou: for assets in the Chinese mainland.
+	//
+	// - ap-southeast-1: for assets outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID that an administrator uses to switch to the perspective of a member.
+	//
 	// example:
 	//
 	// 113091674488****

@@ -20,21 +20,37 @@ type iGetLogTicketRequest interface {
 }
 
 type GetLogTicketRequest struct {
+	// The language of the response messages. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The user ID for data access.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// The region of the Data Management hub for threat analysis. Select the region based on the location of your asset. Valid values:
+	//
+	// - cn-hangzhou: The asset is in the Chinese mainland.
+	//
+	// - ap-southeast-1: The asset is in a region outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. This parameter lets an administrator switch to the perspective of the member.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

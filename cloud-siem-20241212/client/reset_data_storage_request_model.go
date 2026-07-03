@@ -18,14 +18,28 @@ type iResetDataStorageRequest interface {
 }
 
 type ResetDataStorageRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region of the Data Management center. Select a region for the Data Management center based on the region where your assets are located. Valid values:
+	//
+	// - cn-hangzhou: The assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: The assets are in a region outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. An administrator uses this ID to switch to the member\\"s perspective.
+	//
 	// example:
 	//
 	// 113091674488****

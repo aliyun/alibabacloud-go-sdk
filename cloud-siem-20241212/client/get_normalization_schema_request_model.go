@@ -22,25 +22,47 @@ type iGetNormalizationSchemaRequest interface {
 }
 
 type GetNormalizationSchemaRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the normalization rule category.
+	//
 	// example:
 	//
-	// HTTP_ACTIVITY。
+	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
+	// The normalization schema type. Valid values:
+	//
+	// - log: log.
+	//
+	// - entity: entity.
+	//
 	// example:
 	//
-	// log。
+	// log
 	NormalizationSchemaType *string `json:"NormalizationSchemaType,omitempty" xml:"NormalizationSchemaType,omitempty"`
+	// The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
+	//
+	// - cn-hangzhou: Your assets reside in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets reside outside the Chinese mainland.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID that the administrator switches to when viewing as another member.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

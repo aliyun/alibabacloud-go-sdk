@@ -13,6 +13,8 @@ type iCreateNormalizationSchemaRequest interface {
 	GetLang() *string
 	SetNormalizationCategoryId(v string) *CreateNormalizationSchemaRequest
 	GetNormalizationCategoryId() *string
+	SetNormalizationFieldSource(v string) *CreateNormalizationSchemaRequest
+	GetNormalizationFieldSource() *string
 	SetNormalizationFields(v []*CreateNormalizationSchemaRequestNormalizationFields) *CreateNormalizationSchemaRequest
 	GetNormalizationFields() []*CreateNormalizationSchemaRequestNormalizationFields
 	SetNormalizationSchemaDescription(v string) *CreateNormalizationSchemaRequest
@@ -23,42 +25,71 @@ type iCreateNormalizationSchemaRequest interface {
 	GetNormalizationSchemaName() *string
 	SetNormalizationSchemaType(v string) *CreateNormalizationSchemaRequest
 	GetNormalizationSchemaType() *string
+	SetNormalizationSecurityDomainId(v string) *CreateNormalizationSchemaRequest
+	GetNormalizationSecurityDomainId() *string
+	SetProductId(v string) *CreateNormalizationSchemaRequest
+	GetProductId() *string
 	SetRegionId(v string) *CreateNormalizationSchemaRequest
 	GetRegionId() *string
 	SetRoleFor(v int64) *CreateNormalizationSchemaRequest
 	GetRoleFor() *int64
 	SetTargetLogStore(v string) *CreateNormalizationSchemaRequest
 	GetTargetLogStore() *string
+	SetVendorId(v string) *CreateNormalizationSchemaRequest
+	GetVendorId() *string
 }
 
 type CreateNormalizationSchemaRequest struct {
+	// The language of the response message. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// This parameter is required.
+	// The ID of the normalization classification.
 	//
 	// example:
 	//
 	// NETWORK_CATEGORY
-	NormalizationCategoryId *string                                                `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
-	NormalizationFields     []*CreateNormalizationSchemaRequestNormalizationFields `json:"NormalizationFields,omitempty" xml:"NormalizationFields,omitempty" type:"Repeated"`
+	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
+	// example:
+	//
+	// native
+	NormalizationFieldSource *string `json:"NormalizationFieldSource,omitempty" xml:"NormalizationFieldSource,omitempty"`
+	// The normalization fields.
+	NormalizationFields []*CreateNormalizationSchemaRequestNormalizationFields `json:"NormalizationFields,omitempty" xml:"NormalizationFields,omitempty" type:"Repeated"`
+	// The description of the normalization structure.
+	//
 	// example:
 	//
 	// ProcessQuery
 	NormalizationSchemaDescription *string `json:"NormalizationSchemaDescription,omitempty" xml:"NormalizationSchemaDescription,omitempty"`
+	// The ID of the normalization structure.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROCESS_QUERY_DNS_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
+	// The name of the normalization structure.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ProcessQuery
 	NormalizationSchemaName *string `json:"NormalizationSchemaName,omitempty" xml:"NormalizationSchemaName,omitempty"`
+	// The type of the normalization structure. Valid values:
+	//
+	// - log: a log
+	//
+	// - entity: an entity
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -67,18 +98,40 @@ type CreateNormalizationSchemaRequest struct {
 	NormalizationSchemaType *string `json:"NormalizationSchemaType,omitempty" xml:"NormalizationSchemaType,omitempty"`
 	// example:
 	//
+	// NETWORK_AND_WEB_SECURITY
+	NormalizationSecurityDomainId *string `json:"NormalizationSecurityDomainId,omitempty" xml:"NormalizationSecurityDomainId,omitempty"`
+	// example:
+	//
+	// sas
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region where the Data Management center for threat analysis is located. Select a region based on the location of your assets. Valid values:
+	//
+	// - cn-hangzhou: for assets in the Chinese mainland and China (Hong Kong)
+	//
+	// - ap-southeast-1: for assets in regions outside China
+	//
+	// example:
+	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. An administrator can use this ID to switch to the member\\"s perspective.
+	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The Simple Log Service Logstore.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxx-activity
 	TargetLogStore *string `json:"TargetLogStore,omitempty" xml:"TargetLogStore,omitempty"`
+	// example:
+	//
+	// alibaba
+	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
 }
 
 func (s CreateNormalizationSchemaRequest) String() string {
@@ -95,6 +148,10 @@ func (s *CreateNormalizationSchemaRequest) GetLang() *string {
 
 func (s *CreateNormalizationSchemaRequest) GetNormalizationCategoryId() *string {
 	return s.NormalizationCategoryId
+}
+
+func (s *CreateNormalizationSchemaRequest) GetNormalizationFieldSource() *string {
+	return s.NormalizationFieldSource
 }
 
 func (s *CreateNormalizationSchemaRequest) GetNormalizationFields() []*CreateNormalizationSchemaRequestNormalizationFields {
@@ -117,6 +174,14 @@ func (s *CreateNormalizationSchemaRequest) GetNormalizationSchemaType() *string 
 	return s.NormalizationSchemaType
 }
 
+func (s *CreateNormalizationSchemaRequest) GetNormalizationSecurityDomainId() *string {
+	return s.NormalizationSecurityDomainId
+}
+
+func (s *CreateNormalizationSchemaRequest) GetProductId() *string {
+	return s.ProductId
+}
+
 func (s *CreateNormalizationSchemaRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -129,6 +194,10 @@ func (s *CreateNormalizationSchemaRequest) GetTargetLogStore() *string {
 	return s.TargetLogStore
 }
 
+func (s *CreateNormalizationSchemaRequest) GetVendorId() *string {
+	return s.VendorId
+}
+
 func (s *CreateNormalizationSchemaRequest) SetLang(v string) *CreateNormalizationSchemaRequest {
 	s.Lang = &v
 	return s
@@ -136,6 +205,11 @@ func (s *CreateNormalizationSchemaRequest) SetLang(v string) *CreateNormalizatio
 
 func (s *CreateNormalizationSchemaRequest) SetNormalizationCategoryId(v string) *CreateNormalizationSchemaRequest {
 	s.NormalizationCategoryId = &v
+	return s
+}
+
+func (s *CreateNormalizationSchemaRequest) SetNormalizationFieldSource(v string) *CreateNormalizationSchemaRequest {
+	s.NormalizationFieldSource = &v
 	return s
 }
 
@@ -164,6 +238,16 @@ func (s *CreateNormalizationSchemaRequest) SetNormalizationSchemaType(v string) 
 	return s
 }
 
+func (s *CreateNormalizationSchemaRequest) SetNormalizationSecurityDomainId(v string) *CreateNormalizationSchemaRequest {
+	s.NormalizationSecurityDomainId = &v
+	return s
+}
+
+func (s *CreateNormalizationSchemaRequest) SetProductId(v string) *CreateNormalizationSchemaRequest {
+	s.ProductId = &v
+	return s
+}
+
 func (s *CreateNormalizationSchemaRequest) SetRegionId(v string) *CreateNormalizationSchemaRequest {
 	s.RegionId = &v
 	return s
@@ -176,6 +260,11 @@ func (s *CreateNormalizationSchemaRequest) SetRoleFor(v int64) *CreateNormalizat
 
 func (s *CreateNormalizationSchemaRequest) SetTargetLogStore(v string) *CreateNormalizationSchemaRequest {
 	s.TargetLogStore = &v
+	return s
+}
+
+func (s *CreateNormalizationSchemaRequest) SetVendorId(v string) *CreateNormalizationSchemaRequest {
+	s.VendorId = &v
 	return s
 }
 
@@ -193,45 +282,66 @@ func (s *CreateNormalizationSchemaRequest) Validate() error {
 }
 
 type CreateNormalizationSchemaRequestNormalizationFields struct {
+	// The description of the normalization field.
+	//
 	// example:
 	//
 	// cloud_user
 	NormalizationFieldDescription *string `json:"NormalizationFieldDescription,omitempty" xml:"NormalizationFieldDescription,omitempty"`
+	// An example of the normalization field.
+	//
 	// example:
 	//
 	// 173326*******
 	NormalizationFieldExample *string `json:"NormalizationFieldExample,omitempty" xml:"NormalizationFieldExample,omitempty"`
+	// The source of the key for a normalization field of the json type.
+	//
 	// example:
 	//
 	// preset
 	NormalizationFieldFrom *string `json:"NormalizationFieldFrom,omitempty" xml:"NormalizationFieldFrom,omitempty"`
+	// Indicates whether to create an index for all keys of a json type normalization field.
+	//
 	// example:
 	//
 	// true
-	NormalizationFieldJsonIndexAll *bool                                                                            `json:"NormalizationFieldJsonIndexAll,omitempty" xml:"NormalizationFieldJsonIndexAll,omitempty"`
-	NormalizationFieldJsonKeys     []*CreateNormalizationSchemaRequestNormalizationFieldsNormalizationFieldJsonKeys `json:"NormalizationFieldJsonKeys,omitempty" xml:"NormalizationFieldJsonKeys,omitempty" type:"Repeated"`
+	NormalizationFieldJsonIndexAll *bool `json:"NormalizationFieldJsonIndexAll,omitempty" xml:"NormalizationFieldJsonIndexAll,omitempty"`
+	// The list of keys for a normalization field of the json type.
+	NormalizationFieldJsonKeys []*CreateNormalizationSchemaRequestNormalizationFieldsNormalizationFieldJsonKeys `json:"NormalizationFieldJsonKeys,omitempty" xml:"NormalizationFieldJsonKeys,omitempty" type:"Repeated"`
+	// The name of the normalization field.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cloud_user
 	NormalizationFieldName *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
+	// Indicates whether the normalization field is required.
+	//
 	// example:
 	//
 	// true
 	NormalizationFieldRequired *bool `json:"NormalizationFieldRequired,omitempty" xml:"NormalizationFieldRequired,omitempty"`
+	// Indicates whether the normalization field is required.
+	//
 	// example:
 	//
 	// true
 	NormalizationFieldRequirement *bool `json:"NormalizationFieldRequirement,omitempty" xml:"NormalizationFieldRequirement,omitempty"`
+	// Indicates whether the normalization field is reserved.
+	//
 	// example:
 	//
 	// true
 	NormalizationFieldReserved *bool `json:"NormalizationFieldReserved,omitempty" xml:"NormalizationFieldReserved,omitempty"`
+	// Indicates whether to tokenize the normalization field.
+	//
 	// example:
 	//
 	// true
 	NormalizationFieldTokenize *bool `json:"NormalizationFieldTokenize,omitempty" xml:"NormalizationFieldTokenize,omitempty"`
+	// The type of the normalization field. Supported types: text, long, double, and json.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -361,26 +471,46 @@ func (s *CreateNormalizationSchemaRequestNormalizationFields) Validate() error {
 }
 
 type CreateNormalizationSchemaRequestNormalizationFieldsNormalizationFieldJsonKeys struct {
+	// The description of the key for a normalization field of the json type.
+	//
+	// example:
+	//
+	// The alert severity levels are represented by the values 1, 2, 3, and 4.
 	NormalizationFieldDescription *string `json:"NormalizationFieldDescription,omitempty" xml:"NormalizationFieldDescription,omitempty"`
-	NormalizationFieldExample     *string `json:"NormalizationFieldExample,omitempty" xml:"NormalizationFieldExample,omitempty"`
+	// An example of the key for a normalization field of the json type.
+	//
+	// example:
+	//
+	// 1, 2, 3, 4
+	NormalizationFieldExample *string `json:"NormalizationFieldExample,omitempty" xml:"NormalizationFieldExample,omitempty"`
+	// The source of the key for a normalization field of the json type.
+	//
 	// example:
 	//
 	// preset
 	NormalizationFieldFrom *string `json:"NormalizationFieldFrom,omitempty" xml:"NormalizationFieldFrom,omitempty"`
+	// The name of the key for a normalization field of the json type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// alert_name
+	// alert_level
 	NormalizationFieldName *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
+	// Indicates whether the key for a normalization field of the json type is required.
+	//
 	// example:
 	//
 	// true
 	NormalizationFieldRequired *bool `json:"NormalizationFieldRequired,omitempty" xml:"NormalizationFieldRequired,omitempty"`
+	// Indicates whether to tokenize the key for a normalization field of the json type.
+	//
 	// example:
 	//
 	// true
 	NormalizationFieldTokenize *bool `json:"NormalizationFieldTokenize,omitempty" xml:"NormalizationFieldTokenize,omitempty"`
+	// The type of the key for a normalization field of the json type. Supported types: text, long, double, and json.
+	//
 	// This parameter is required.
 	//
 	// example:

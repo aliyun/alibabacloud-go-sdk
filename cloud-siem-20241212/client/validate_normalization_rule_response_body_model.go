@@ -16,10 +16,13 @@ type iValidateNormalizationRuleResponseBody interface {
 }
 
 type ValidateNormalizationRuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
-	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 6276D891-*****-55B2-87B9-74D413F7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of validation results.
 	ValidateResult []*ValidateNormalizationRuleResponseBodyValidateResult `json:"ValidateResult,omitempty" xml:"ValidateResult,omitempty" type:"Repeated"`
 }
 
@@ -63,54 +66,99 @@ func (s *ValidateNormalizationRuleResponseBody) Validate() error {
 }
 
 type ValidateNormalizationRuleResponseBodyValidateResult struct {
+	// The field name.
+	//
 	// example:
 	//
-	// host。
+	// host
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The field value.
+	//
 	// example:
 	//
-	// ze。
+	// ze
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	// The name of the log field.
+	//
 	// example:
 	//
 	// aaa
 	LogFieldName *string `json:"LogFieldName,omitempty" xml:"LogFieldName,omitempty"`
+	// The value of the log field.
+	//
 	// example:
 	//
 	// bbb
 	LogFieldValue *string `json:"LogFieldValue,omitempty" xml:"LogFieldValue,omitempty"`
+	// The reason for the validation result. Valid values:
+	//
+	// - OperationDenied.TheValueIsRequired: A required parameter is empty.
+	//
+	// - OperationDenied.TheValueIsNull: The parameter value is empty.
+	//
+	// - OperationDenied.TheEnumValueNotSupport: The field value is not within the valid enumeration.
+	//
+	// - OperationDenied.TheValueLessThanMin: The field value is less than the minimum value.
+	//
+	// - OperationDenied.TheValueMoreThanMax: The field value is greater than the maximum value.
+	//
+	// - OperationDenied.TheValueNotMatchRegularExpression: The field value does not match the regular expression.
+	//
+	// - success: The validation passed.
+	//
 	// example:
 	//
-	// success。
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The source of the normalized field. Valid values: \\`preset\\` (built-in) and \\`custom\\`.
+	//
 	// example:
 	//
 	// preset
 	NormalizationFieldFrom *string `json:"NormalizationFieldFrom,omitempty" xml:"NormalizationFieldFrom,omitempty"`
+	// The name of the normalized field.
+	//
 	// example:
 	//
-	// host。
+	// host
 	NormalizationFieldName *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
+	// Indicates whether the normalized field is required.
+	//
 	// example:
 	//
-	// true。
+	// true
 	NormalizationFieldRequired *bool `json:"NormalizationFieldRequired,omitempty" xml:"NormalizationFieldRequired,omitempty"`
+	// Indicates whether the name of the normalized field is a built-in field name.
 	NormalizationFieldReserved *bool `json:"NormalizationFieldReserved,omitempty" xml:"NormalizationFieldReserved,omitempty"`
+	// The type of the normalized field. Supported types: \\`text\\`, \\`long\\`, \\`double\\`, and \\`json\\`.
+	//
 	// example:
 	//
 	// text
 	NormalizationFieldType *string `json:"NormalizationFieldType,omitempty" xml:"NormalizationFieldType,omitempty"`
+	// The reason why the validation of the normalized field failed.
+	//
 	// example:
 	//
 	// OperationDenied.TheValueIsRequired
 	NormalizationFieldValidationReason *string `json:"NormalizationFieldValidationReason,omitempty" xml:"NormalizationFieldValidationReason,omitempty"`
+	// The validation status of the normalized field. Valid values: \\`pass\\` and \\`fail\\`.
+	//
 	// example:
 	//
 	// pass
 	NormalizationFieldValidationStatus *string `json:"NormalizationFieldValidationStatus,omitempty" xml:"NormalizationFieldValidationStatus,omitempty"`
+	// The result of the validation. Valid values:
+	//
+	// - 1: The validation passed.
+	//
+	// - 0: A warning is returned.
+	//
+	// - -1: The validation failed.
+	//
 	// example:
 	//
-	// 1。
+	// 1
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 

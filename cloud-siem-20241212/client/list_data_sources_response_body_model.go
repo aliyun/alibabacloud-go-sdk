@@ -28,34 +28,49 @@ type iListDataSourcesResponseBody interface {
 }
 
 type ListDataSourcesResponseBody struct {
+	// The data sources.
 	DataSources []*ListDataSourcesResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// The maximum number of entries returned on each page.
+	//
 	// example:
 	//
-	// 50。
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. If a value is returned, it indicates that not all results have been returned. You can use this token in the next query to continue retrieving results.
+	//
 	// example:
 	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****。
+	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
-	// 1。
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
-	// 1。
+	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
-	// 2。
+	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
-	// 1。
+	// 1
 	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
@@ -153,60 +168,107 @@ func (s *ListDataSourcesResponseBody) Validate() error {
 }
 
 type ListDataSourcesResponseBodyDataSources struct {
+	// The time when the data source was created.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The source of the data. Valid values:
+	//
+	// - center
+	//
+	// - custom
+	//
 	// example:
 	//
-	// center。
+	// center
 	DataSourceFrom *string `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
+	// The ID of the data source.
+	//
 	// example:
 	//
-	// ds-scpfegri73oyoknbc90c。
+	// ds-scpfegri73oyoknbc90c
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
-	// AD_LOG。
+	// AD_LOG
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// Indicates whether new Logstores are automatically discovered.
+	//
 	// example:
 	//
-	// true。
+	// true
 	DataSourceRecognizeEnabled *bool `json:"DataSourceRecognizeEnabled,omitempty" xml:"DataSourceRecognizeEnabled,omitempty"`
+	// The data source recognizer.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas_account_snapshot。
-	DataSourceRecognizer *string                                                       `json:"DataSourceRecognizer,omitempty" xml:"DataSourceRecognizer,omitempty"`
+	// alibaba_cloud_sas_account_snapshot
+	DataSourceRecognizer *string `json:"DataSourceRecognizer,omitempty" xml:"DataSourceRecognizer,omitempty"`
+	// The list of data ingestion IDs that are associated with the data source.
 	DataSourceReferences []*ListDataSourcesResponseBodyDataSourcesDataSourceReferences `json:"DataSourceReferences,omitempty" xml:"DataSourceReferences,omitempty" type:"Repeated"`
-	DataSourceStatus     *string                                                       `json:"DataSourceStatus,omitempty" xml:"DataSourceStatus,omitempty"`
-	DataSourceStores     []*ListDataSourcesResponseBodyDataSourcesDataSourceStores     `json:"DataSourceStores,omitempty" xml:"DataSourceStores,omitempty" type:"Repeated"`
+	// The status of the data source. Valid values:
+	//
+	// - unconfigured
+	//
+	// - normal
+	//
+	// - abnormal
+	//
 	// example:
 	//
-	// alibaba_cloud_sas_account_snapshot_log_173326*******。
+	// unconfigured
+	DataSourceStatus *string `json:"DataSourceStatus,omitempty" xml:"DataSourceStatus,omitempty"`
+	// The list of Logstores.
+	DataSourceStores []*ListDataSourcesResponseBodyDataSourcesDataSourceStores `json:"DataSourceStores,omitempty" xml:"DataSourceStores,omitempty" type:"Repeated"`
+	// The ID of the data source template.
+	//
+	// example:
+	//
+	// alibaba_cloud_sas_account_snapshot_log_173326*******
 	DataSourceTemplateId *string `json:"DataSourceTemplateId,omitempty" xml:"DataSourceTemplateId,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// - preset
+	//
+	// - custom
+	//
 	// example:
 	//
-	// custom。
+	// custom
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The name of the Simple Log Service project.
+	//
 	// example:
 	//
-	// aliyun-cloudsiem-data-173326*******-cn-hangzhou。
+	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
+	// The ID of the log storage region.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// The name of the Simple Log Service Logstore.
+	//
 	// example:
 	//
-	// audit-activity。
+	// audit-activity
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The ID of the user who can access the data.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// The time when the data source was last updated.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -385,9 +447,11 @@ func (s *ListDataSourcesResponseBodyDataSources) Validate() error {
 }
 
 type ListDataSourcesResponseBodyDataSourcesDataSourceReferences struct {
+	// The data ingestion ID.
+	//
 	// example:
 	//
-	// alibaba_cloud_sas_account_snapshot_log_173326*******。
+	// alibaba_cloud_sas_account_snapshot_log_173326*******
 	DataIngestionId *string `json:"DataIngestionId,omitempty" xml:"DataIngestionId,omitempty"`
 }
 
@@ -413,42 +477,73 @@ func (s *ListDataSourcesResponseBodyDataSourcesDataSourceReferences) Validate() 
 }
 
 type ListDataSourcesResponseBodyDataSourcesDataSourceStores struct {
+	// The time when the check was performed.
+	//
+	// example:
+	//
+	// 1733269771123
 	CheckTime *int64 `json:"CheckTime,omitempty" xml:"CheckTime,omitempty"`
+	// The time when the log storage was created.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The source of the data. Valid values:
+	//
+	// - center
+	//
+	// - custom
+	//
 	// example:
 	//
-	// center。
+	// center
 	DataSourceStoreFrom *string `json:"DataSourceStoreFrom,omitempty" xml:"DataSourceStoreFrom,omitempty"`
+	// The ID of the log storage.
+	//
 	// example:
 	//
-	// di_xxxx_source_1。
+	// di_xxxx_source_1
 	DataSourceStoreId *string `json:"DataSourceStoreId,omitempty" xml:"DataSourceStoreId,omitempty"`
+	// The status of the log storage. Valid values:
+	//
+	// - normal
+	//
+	// - abnormal
+	//
 	// example:
 	//
-	// normal。
+	// normal
 	DataSourceStoreStatus *string `json:"DataSourceStoreStatus,omitempty" xml:"DataSourceStoreStatus,omitempty"`
+	// The status code of the log storage.
+	//
 	// example:
 	//
 	// LogStoreNotExist
 	DataSourceStoreStatusCode *string `json:"DataSourceStoreStatusCode,omitempty" xml:"DataSourceStoreStatusCode,omitempty"`
+	// The name of the Simple Log Service project.
+	//
 	// example:
 	//
-	// aliyun-cloudsiem-data-173326*******-cn-hangzhou。
+	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
+	// The ID of the log storage region.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// The name of the Simple Log Service Logstore.
+	//
 	// example:
 	//
-	// audit-activity。
+	// audit-activity
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The time when the log storage was last updated.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 

@@ -16,13 +16,17 @@ type iCreateNormalizationRuleResponseBody interface {
 }
 
 type CreateNormalizationRuleResponseBody struct {
+	// The normalization rule ID.
+	//
 	// example:
 	//
-	// nr-z0b2ssjteut85uoh9nzp。
+	// nr-z0b2ssjteut85uoh9nzp
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

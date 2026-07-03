@@ -26,33 +26,55 @@ type iCreateLogStoreRequest interface {
 }
 
 type CreateLogStoreRequest struct {
+	// The language of the response messages. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the Simple Log Service project.
+	//
 	// example:
 	//
-	// aliyun-cloudsiem-channel-173326*******-cn-hangzhou。
+	// aliyun-cloudsiem-channel-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
+	// The ID of the log storage region.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// The name of the Simple Log Service Logstore.
+	//
 	// example:
 	//
-	// logstoreqykug。
+	// logstoreqykug
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The user ID for data access.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// The region of the Data Management Center for threat analysis. Select a region for the Management Center based on the region of your assets. Valid values:
+	//
+	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets are in a region outside China.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. An administrator can specify this parameter to switch to the perspective of the member.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

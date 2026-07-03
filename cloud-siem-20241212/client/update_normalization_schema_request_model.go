@@ -28,37 +28,64 @@ type iUpdateNormalizationSchemaRequest interface {
 }
 
 type UpdateNormalizationSchemaRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
-	Lang                *string                                                `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The normalization fields.
 	NormalizationFields []*UpdateNormalizationSchemaRequestNormalizationFields `json:"NormalizationFields,omitempty" xml:"NormalizationFields,omitempty" type:"Repeated"`
+	// The normalization schema description.
+	//
 	// example:
 	//
 	// ProcessQuery
 	NormalizationSchemaDescription *string `json:"NormalizationSchemaDescription,omitempty" xml:"NormalizationSchemaDescription,omitempty"`
+	// The normalization schema ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WAF_ALERT_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
+	// The normalization schema name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ProcessQuery
 	NormalizationSchemaName *string `json:"NormalizationSchemaName,omitempty" xml:"NormalizationSchemaName,omitempty"`
+	// The normalization schema type. Valid values:
+	//
+	// - log: Log.
+	//
+	// - entity: Entity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// log
 	NormalizationSchemaType *string `json:"NormalizationSchemaType,omitempty" xml:"NormalizationSchemaType,omitempty"`
+	// The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
+	//
+	// - cn-hangzhou: Your assets reside in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets reside outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member to which the administrator switches the view.
+	//
 	// example:
 	//
 	// 113091674488****
@@ -159,28 +186,42 @@ func (s *UpdateNormalizationSchemaRequest) Validate() error {
 }
 
 type UpdateNormalizationSchemaRequestNormalizationFields struct {
+	// The normalization field description.
+	//
 	// example:
 	//
 	// cloud_user
 	NormalizationFieldDescription *string `json:"NormalizationFieldDescription,omitempty" xml:"NormalizationFieldDescription,omitempty"`
+	// The normalization field example.
+	//
 	// example:
 	//
 	// 173326*******
 	NormalizationFieldExample *string `json:"NormalizationFieldExample,omitempty" xml:"NormalizationFieldExample,omitempty"`
+	// The key source of the JSON-type normalization field.
+	//
 	// example:
 	//
 	// preset
-	NormalizationFieldFrom         *string                                                                          `json:"NormalizationFieldFrom,omitempty" xml:"NormalizationFieldFrom,omitempty"`
-	NormalizationFieldJsonIndexAll *bool                                                                            `json:"NormalizationFieldJsonIndexAll,omitempty" xml:"NormalizationFieldJsonIndexAll,omitempty"`
-	NormalizationFieldJsonKeys     []*UpdateNormalizationSchemaRequestNormalizationFieldsNormalizationFieldJsonKeys `json:"NormalizationFieldJsonKeys,omitempty" xml:"NormalizationFieldJsonKeys,omitempty" type:"Repeated"`
+	NormalizationFieldFrom *string `json:"NormalizationFieldFrom,omitempty" xml:"NormalizationFieldFrom,omitempty"`
+	// Specifies whether indexes are created for all keys of the JSON-type normalization field.
+	NormalizationFieldJsonIndexAll *bool `json:"NormalizationFieldJsonIndexAll,omitempty" xml:"NormalizationFieldJsonIndexAll,omitempty"`
+	// The key list of the JSON-type normalization field.
+	NormalizationFieldJsonKeys []*UpdateNormalizationSchemaRequestNormalizationFieldsNormalizationFieldJsonKeys `json:"NormalizationFieldJsonKeys,omitempty" xml:"NormalizationFieldJsonKeys,omitempty" type:"Repeated"`
+	// The normalization field name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cloud_user
-	NormalizationFieldName     *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
-	NormalizationFieldRequired *bool   `json:"NormalizationFieldRequired,omitempty" xml:"NormalizationFieldRequired,omitempty"`
-	NormalizationFieldTokenize *bool   `json:"NormalizationFieldTokenize,omitempty" xml:"NormalizationFieldTokenize,omitempty"`
+	NormalizationFieldName *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
+	// Specifies whether the normalization field is required.
+	NormalizationFieldRequired *bool `json:"NormalizationFieldRequired,omitempty" xml:"NormalizationFieldRequired,omitempty"`
+	// Specifies whether the normalization field is tokenized.
+	NormalizationFieldTokenize *bool `json:"NormalizationFieldTokenize,omitempty" xml:"NormalizationFieldTokenize,omitempty"`
+	// The normalization field type. Valid values: text, long, double, and json.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -292,23 +333,42 @@ func (s *UpdateNormalizationSchemaRequestNormalizationFields) Validate() error {
 }
 
 type UpdateNormalizationSchemaRequestNormalizationFieldsNormalizationFieldJsonKeys struct {
+	// The key description of the JSON-type normalization field.
+	//
+	// example:
+	//
+	// alert level
 	NormalizationFieldDescription *string `json:"NormalizationFieldDescription,omitempty" xml:"NormalizationFieldDescription,omitempty"`
-	NormalizationFieldExample     *string `json:"NormalizationFieldExample,omitempty" xml:"NormalizationFieldExample,omitempty"`
+	// The key example of the JSON-type normalization field.
+	//
+	// example:
+	//
+	// Enum values: 1, 2, 3, 4, 5
+	NormalizationFieldExample *string `json:"NormalizationFieldExample,omitempty" xml:"NormalizationFieldExample,omitempty"`
+	// The key source of the JSON-type normalization field.
+	//
 	// example:
 	//
 	// preset
 	NormalizationFieldFrom *string `json:"NormalizationFieldFrom,omitempty" xml:"NormalizationFieldFrom,omitempty"`
+	// The key name of the JSON-type normalization field.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alert_name
-	NormalizationFieldName     *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
-	NormalizationFieldRequired *bool   `json:"NormalizationFieldRequired,omitempty" xml:"NormalizationFieldRequired,omitempty"`
+	NormalizationFieldName *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
+	// Specifies whether the key of the JSON-type normalization field is required.
+	NormalizationFieldRequired *bool `json:"NormalizationFieldRequired,omitempty" xml:"NormalizationFieldRequired,omitempty"`
+	// Specifies whether the key of the JSON-type normalization field is tokenized.
+	//
 	// example:
 	//
 	// true
 	NormalizationFieldTokenize *bool `json:"NormalizationFieldTokenize,omitempty" xml:"NormalizationFieldTokenize,omitempty"`
+	// The key type of the JSON-type normalization field. Valid values: text, long, double, and json.
+	//
 	// This parameter is required.
 	//
 	// example:

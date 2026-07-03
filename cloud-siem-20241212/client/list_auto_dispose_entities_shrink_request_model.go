@@ -28,37 +28,56 @@ type iListAutoDisposeEntitiesShrinkRequest interface {
 }
 
 type ListAutoDisposeEntitiesShrinkRequest struct {
+	// The IDs of automated disposal records.
 	AutoDisposeRecordIdsShrink *string `json:"AutoDisposeRecordIds,omitempty" xml:"AutoDisposeRecordIds,omitempty"`
+	// The page number. The value must be 1 or greater.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The type of the data source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alibaba_cloud_sas
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum number of entries to return.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. You can obtain this token from the response to a previous call.
+	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique identifier of the playbook.
+	//
 	// example:
 	//
 	// b2491e39-ddf2-478a-8c07-*****

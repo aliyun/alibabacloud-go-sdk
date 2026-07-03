@@ -46,52 +46,115 @@ type iCreateDataSourceRequest interface {
 }
 
 type CreateDataSourceRequest struct {
+	// The source of the data. Valid values:
+	//
+	// - center
+	//
+	// - custom
+	//
 	// example:
 	//
-	// center。
-	DataSourceFrom *string   `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
-	DataSourceIds  []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
+	// center
+	DataSourceFrom *string `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
+	// A list of data source IDs.
+	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
+	// The name of the data source.
+	//
 	// example:
 	//
-	// AD_LOG。
-	DataSourceName             *string                                    `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	DataSourceRecognizeEnabled *bool                                      `json:"DataSourceRecognizeEnabled,omitempty" xml:"DataSourceRecognizeEnabled,omitempty"`
-	DataSourceRecognizer       *string                                    `json:"DataSourceRecognizer,omitempty" xml:"DataSourceRecognizer,omitempty"`
-	DataSourceReferences       []*string                                  `json:"DataSourceReferences,omitempty" xml:"DataSourceReferences,omitempty" type:"Repeated"`
-	DataSourceStores           []*CreateDataSourceRequestDataSourceStores `json:"DataSourceStores,omitempty" xml:"DataSourceStores,omitempty" type:"Repeated"`
-	DataSourceTemplateId       *string                                    `json:"DataSourceTemplateId,omitempty" xml:"DataSourceTemplateId,omitempty"`
+	// AD_LOG
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// Specifies whether to automatically discover new data sources.
+	//
 	// example:
 	//
-	// preset。
+	// true
+	DataSourceRecognizeEnabled *bool `json:"DataSourceRecognizeEnabled,omitempty" xml:"DataSourceRecognizeEnabled,omitempty"`
+	// The data source recognizer.
+	//
+	// example:
+	//
+	// alibaba_cloud_waf_flow_log_1766185894104675
+	DataSourceRecognizer *string `json:"DataSourceRecognizer,omitempty" xml:"DataSourceRecognizer,omitempty"`
+	// The IDs of associated data access instances.
+	DataSourceReferences []*string `json:"DataSourceReferences,omitempty" xml:"DataSourceReferences,omitempty" type:"Repeated"`
+	// The list of Simple Log Service projects.
+	DataSourceStores []*CreateDataSourceRequestDataSourceStores `json:"DataSourceStores,omitempty" xml:"DataSourceStores,omitempty" type:"Repeated"`
+	// The ID of the data source template.
+	//
+	// example:
+	//
+	// dst_alibaba_cloud_nas_audit_log_1358117679873357
+	DataSourceTemplateId *string `json:"DataSourceTemplateId,omitempty" xml:"DataSourceTemplateId,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// - preset
+	//
+	// - custom
+	//
+	// example:
+	//
+	// preset
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the Simple Log Service project.
+	//
 	// example:
 	//
-	// aliyun-cloudsiem-data-173326*******-cn-hangzhou。
+	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
+	// The ID of the log storage region.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// The name of the Simple Log Service Logstore.
+	//
 	// example:
 	//
-	// mde_raw。
+	// mde_raw
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The user ID for data ingestion.
+	//
 	// example:
 	//
-	// 173326*******。
-	LogUserId *int64  `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-	Order     *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// 173326*******
+	LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - desc: descending.
+	//
+	// - asc: ascending.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The region of the Management Hub. Select a region based on the location of your assets. Valid values:
+	//
+	// - cn-hangzhou: Assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Assets are outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member whose perspective the administrator assumes.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 
@@ -270,20 +333,49 @@ func (s *CreateDataSourceRequest) Validate() error {
 }
 
 type CreateDataSourceRequestDataSourceStores struct {
-	DataSourceStoreFrom   *string `json:"DataSourceStoreFrom,omitempty" xml:"DataSourceStoreFrom,omitempty"`
-	DataSourceStoreId     *string `json:"DataSourceStoreId,omitempty" xml:"DataSourceStoreId,omitempty"`
+	// The source of the data. Valid values:
+	//
+	// - center
+	//
+	// - custom
+	//
+	// example:
+	//
+	// center
+	DataSourceStoreFrom *string `json:"DataSourceStoreFrom,omitempty" xml:"DataSourceStoreFrom,omitempty"`
+	// The ID of the log storage.
+	//
+	// example:
+	//
+	// 1
+	DataSourceStoreId *string `json:"DataSourceStoreId,omitempty" xml:"DataSourceStoreId,omitempty"`
+	// The status of the log storage. Valid values:
+	//
+	// - normal
+	//
+	// - abnormal
+	//
+	// example:
+	//
+	// normal
 	DataSourceStoreStatus *string `json:"DataSourceStoreStatus,omitempty" xml:"DataSourceStoreStatus,omitempty"`
+	// The name of the Simple Log Service project.
+	//
 	// example:
 	//
-	// aliyun-cloudsiem-data-173326*******-cn-hangzhou。
+	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
+	// The ID of the log storage region.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// The name of the Simple Log Service Logstore.
+	//
 	// example:
 	//
-	// actiontrail_management-events。
+	// actiontrail_management-events
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 }
 

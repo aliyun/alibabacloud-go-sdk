@@ -20,18 +20,34 @@ type iGetIncidentRequest interface {
 }
 
 type GetIncidentRequest struct {
+	// The UUID of the event.
+	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region where the data management center of the threat analysis feature is located. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// - cn-hangzhou: Your assets reside in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets reside outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the member to which the administrator switches the view.
+	//
 	// example:
 	//
 	// 113091674488****

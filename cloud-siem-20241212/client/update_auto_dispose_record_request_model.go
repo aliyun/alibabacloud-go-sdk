@@ -22,21 +22,38 @@ type iUpdateAutoDisposeRecordRequest interface {
 }
 
 type UpdateAutoDisposeRecordRequest struct {
+	// The conclusion of the automatic alert analysis.
+	//
+	// example:
+	//
+	// 疑似误报
 	AutoDecisionConclusion *string `json:"AutoDecisionConclusion,omitempty" xml:"AutoDecisionConclusion,omitempty"`
+	// The list of entities for analysis.
+	//
 	// example:
 	//
 	// [{"entityType":"file","entityName":"/path/file.file","entityUuid":"b7efb45ce7ff09758****","disposalMethod":"delete","playbookUuid":"9213bhdjagdja****"}]
 	AutoDecisionEntityList *string `json:"AutoDecisionEntityList,omitempty" xml:"AutoDecisionEntityList,omitempty"`
+	// The analysis result.
+	//
 	// example:
 	//
 	// success
 	AutoDecisionResult *string `json:"AutoDecisionResult,omitempty" xml:"AutoDecisionResult,omitempty"`
+	// The unique ID of the analysis record.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4227e0cdc4b7efb45ce7ff09758****
 	AutoDisposeRecordId *string `json:"AutoDisposeRecordId,omitempty" xml:"AutoDisposeRecordId,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// This parameter is required.
 	//
 	// example:

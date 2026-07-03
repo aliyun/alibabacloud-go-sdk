@@ -16,10 +16,13 @@ type iGetNormalizationRuleResponseBody interface {
 }
 
 type GetNormalizationRuleResponseBody struct {
+	// The normalization rule.
 	NormalizationRule *GetNormalizationRuleResponseBodyNormalizationRule `json:"NormalizationRule,omitempty" xml:"NormalizationRule,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -59,72 +62,147 @@ func (s *GetNormalizationRuleResponseBody) Validate() error {
 }
 
 type GetNormalizationRuleResponseBodyNormalizationRule struct {
+	// The creation time.
+	//
 	// example:
 	//
-	// 1733269771123。
-	CreateTime          *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 1733269771123
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Specifies whether to pack non-standard fields into the extend_content field. Valid values:
+	//
+	// - enabled: Enabled.
+	//
+	// - disabled: Disabled.
+	//
+	// example:
+	//
+	// enabled
 	ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
+	// The storage mode for extended fields. Valid values:
+	//
+	// - flat: ingested as-is.
+	//
+	// - reject: not ingested.
+	//
+	// - pack: packed into the extend_content field.
+	//
 	// example:
 	//
 	// flat
 	ExtendFieldStoreMode *string `json:"ExtendFieldStoreMode,omitempty" xml:"ExtendFieldStoreMode,omitempty"`
+	// The category ID of the normalization rule.
+	//
 	// example:
 	//
-	// NETWORK_CATEGORY。
+	// NETWORK_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
 	// example:
 	//
-	// normalization_rule_Z57np。
+	// normalized
+	NormalizationFieldSource *string `json:"NormalizationFieldSource,omitempty" xml:"NormalizationFieldSource,omitempty"`
+	// The description of the normalization rule.
+	//
+	// example:
+	//
+	// normalization_rule_Z57np
 	NormalizationRuleDescription *string `json:"NormalizationRuleDescription,omitempty" xml:"NormalizationRuleDescription,omitempty"`
+	// The expression of the normalization rule.
+	//
 	// example:
 	//
-	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content。
+	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content
 	NormalizationRuleExpression *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
+	// The format of the normalization rule.
+	//
 	// example:
 	//
-	// SPL。
+	// SPL
 	NormalizationRuleFormat *string `json:"NormalizationRuleFormat,omitempty" xml:"NormalizationRuleFormat,omitempty"`
+	// The normalization rule ID.
+	//
 	// example:
 	//
-	// nr-z0b2ssjteut85uoh9nzp。
-	NormalizationRuleId  *string   `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	// nr-z0b2ssjteut85uoh9nzp
+	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	// The list of normalization rule IDs.
 	NormalizationRuleIds []*string `json:"NormalizationRuleIds,omitempty" xml:"NormalizationRuleIds,omitempty" type:"Repeated"`
+	// The mode of the normalization rule. Valid values:
+	//
+	// - both
+	//
+	// - scan
+	//
+	// - realtime.
+	//
 	// example:
 	//
-	// both。
+	// both
 	NormalizationRuleMode *string `json:"NormalizationRuleMode,omitempty" xml:"NormalizationRuleMode,omitempty"`
+	// The name of the normalization rule.
+	//
 	// example:
 	//
-	// normalization_rule_Z57np。
+	// normalization_rule_Z57np
 	NormalizationRuleName *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
+	// The status of the normalization rule.
+	//
 	// example:
 	//
-	// started。
+	// started
 	NormalizationRuleStatus *string `json:"NormalizationRuleStatus,omitempty" xml:"NormalizationRuleStatus,omitempty"`
+	// The type of the normalization rule. Valid values:
+	//
+	// - predefined: predefined normalization rule.
+	//
+	// - custom: custom normalization rule.
+	//
 	// example:
 	//
-	// predefined。
+	// predefined
 	NormalizationRuleType *string `json:"NormalizationRuleType,omitempty" xml:"NormalizationRuleType,omitempty"`
+	// The version of the normalization rule.
+	//
 	// example:
 	//
-	// V1。
+	// V1
 	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
+	// The normalization schema ID.
+	//
 	// example:
 	//
-	// HTTP_ACTIVITY。
+	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
-	OrderField            *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
 	// example:
 	//
-	// alibaba_cloud_sas。
+	// NETWORK_AND_WEB_SECURITY
+	NormalizationSecurityDomainId *string `json:"NormalizationSecurityDomainId,omitempty" xml:"NormalizationSecurityDomainId,omitempty"`
+	// The field used to sort the rule list. Valid values:
+	//
+	// - GmtModified: sorted by modification time.
+	//
+	// - Id: sorted by rule ID (default).
+	//
+	// example:
+	//
+	// GmtModified
+	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	// The product ID.
+	//
+	// example:
+	//
+	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The vendor ID associated with the normalization rule.
+	//
 	// example:
 	//
-	// alibaba_cloud。
+	// alibaba_cloud
 	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
 }
 
@@ -150,6 +228,10 @@ func (s *GetNormalizationRuleResponseBodyNormalizationRule) GetExtendFieldStoreM
 
 func (s *GetNormalizationRuleResponseBodyNormalizationRule) GetNormalizationCategoryId() *string {
 	return s.NormalizationCategoryId
+}
+
+func (s *GetNormalizationRuleResponseBodyNormalizationRule) GetNormalizationFieldSource() *string {
+	return s.NormalizationFieldSource
 }
 
 func (s *GetNormalizationRuleResponseBodyNormalizationRule) GetNormalizationRuleDescription() *string {
@@ -196,6 +278,10 @@ func (s *GetNormalizationRuleResponseBodyNormalizationRule) GetNormalizationSche
 	return s.NormalizationSchemaId
 }
 
+func (s *GetNormalizationRuleResponseBodyNormalizationRule) GetNormalizationSecurityDomainId() *string {
+	return s.NormalizationSecurityDomainId
+}
+
 func (s *GetNormalizationRuleResponseBodyNormalizationRule) GetOrderField() *string {
 	return s.OrderField
 }
@@ -229,6 +315,11 @@ func (s *GetNormalizationRuleResponseBodyNormalizationRule) SetExtendFieldStoreM
 
 func (s *GetNormalizationRuleResponseBodyNormalizationRule) SetNormalizationCategoryId(v string) *GetNormalizationRuleResponseBodyNormalizationRule {
 	s.NormalizationCategoryId = &v
+	return s
+}
+
+func (s *GetNormalizationRuleResponseBodyNormalizationRule) SetNormalizationFieldSource(v string) *GetNormalizationRuleResponseBodyNormalizationRule {
+	s.NormalizationFieldSource = &v
 	return s
 }
 
@@ -284,6 +375,11 @@ func (s *GetNormalizationRuleResponseBodyNormalizationRule) SetNormalizationRule
 
 func (s *GetNormalizationRuleResponseBodyNormalizationRule) SetNormalizationSchemaId(v string) *GetNormalizationRuleResponseBodyNormalizationRule {
 	s.NormalizationSchemaId = &v
+	return s
+}
+
+func (s *GetNormalizationRuleResponseBodyNormalizationRule) SetNormalizationSecurityDomainId(v string) *GetNormalizationRuleResponseBodyNormalizationRule {
+	s.NormalizationSecurityDomainId = &v
 	return s
 }
 

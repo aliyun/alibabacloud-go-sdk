@@ -22,22 +22,31 @@ type iListNormalizationRuleVersionsResponseBody interface {
 }
 
 type ListNormalizationRuleVersionsResponseBody struct {
+	// The maximum number of entries returned on each page.
+	//
 	// example:
 	//
-	// 50。
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no more results are available.
+	//
 	// example:
 	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****。
-	NextToken                 *string                                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// AAAAAUqcj6VO4E3ECWIrFczs****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of normalization rule versions.
 	NormalizationRuleVersions []*ListNormalizationRuleVersionsResponseBodyNormalizationRuleVersions `json:"NormalizationRuleVersions,omitempty" xml:"NormalizationRuleVersions,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
-	// 57。
+	// 57
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -108,25 +117,35 @@ func (s *ListNormalizationRuleVersionsResponseBody) Validate() error {
 }
 
 type ListNormalizationRuleVersionsResponseBodyNormalizationRuleVersions struct {
+	// The time when the version was created.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The expression of the normalization rule.
+	//
 	// example:
 	//
-	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content。
+	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content
 	NormalizationRuleExpression *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
+	// The ID of the normalization rule.
+	//
 	// example:
 	//
-	// nr-z0b2ssjteut85uoh9nzp。
+	// nr-z0b2ssjteut85uoh9nzp
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	// The version of the normalization rule.
+	//
 	// example:
 	//
-	// V1。
+	// V1
 	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
+	// The time when the version was updated.
+	//
 	// example:
 	//
-	// 1733269771123。
+	// 1733269771123
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 

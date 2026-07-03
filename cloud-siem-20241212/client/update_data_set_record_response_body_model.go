@@ -16,7 +16,10 @@ type iUpdateDataSetRecordResponseBody interface {
 }
 
 type UpdateDataSetRecordResponseBody struct {
+	// The result of the dataset update.
 	DataSetRecordStatistic *UpdateDataSetRecordResponseBodyDataSetRecordStatistic `json:"DataSetRecordStatistic,omitempty" xml:"DataSetRecordStatistic,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
@@ -59,10 +62,14 @@ func (s *UpdateDataSetRecordResponseBody) Validate() error {
 }
 
 type UpdateDataSetRecordResponseBodyDataSetRecordStatistic struct {
+	// The number of new dataset records.
+	//
 	// example:
 	//
 	// 12
 	NewDataSetRecordCount *int32 `json:"NewDataSetRecordCount,omitempty" xml:"NewDataSetRecordCount,omitempty"`
+	// The number of updated dataset records.
+	//
 	// example:
 	//
 	// 4

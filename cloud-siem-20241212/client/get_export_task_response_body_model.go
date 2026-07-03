@@ -28,34 +28,56 @@ type iGetExportTaskResponseBody interface {
 }
 
 type GetExportTaskResponseBody struct {
+	// The status of the task. Valid values:
+	//
+	// - success: The task is successful.
+	//
+	// - exporting: The task is in progress.
+	//
 	// example:
 	//
 	// success
 	ExportStatus *string `json:"ExportStatus,omitempty" xml:"ExportStatus,omitempty"`
+	// The type of the export task. Valid value:
+	//
+	// - incident_list: event list.
+	//
 	// example:
 	//
 	// incident_list
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	// The name of the file.
+	//
 	// example:
 	//
 	// event_1193842352994186_17344888****.xlsx
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 1605076118000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The ID of the export task.
+	//
 	// example:
 	//
 	// 400185
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The download link for the exported Excel file.
+	//
 	// example:
 	//
 	// https://cloud-siem-user-dataset.oss-cn-shanghai.aliyuncs.com/export_file/17661858******5/event_17661858******5_175748****.xlsx
 	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
+	// The progress of the export task.
+	//
 	// example:
 	//
 	// 66
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****

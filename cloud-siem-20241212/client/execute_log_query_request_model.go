@@ -15,6 +15,8 @@ type iExecuteLogQueryRequest interface {
   GetExtendContentPacked() *string 
   SetLang(v string) *ExecuteLogQueryRequest
   GetLang() *string 
+  SetLogCondition(v string) *ExecuteLogQueryRequest
+  GetLogCondition() *string 
   SetLogProjectName(v string) *ExecuteLogQueryRequest
   GetLogProjectName() *string 
   SetLogQuery(v string) *ExecuteLogQueryRequest
@@ -36,47 +38,90 @@ type iExecuteLogQueryRequest interface {
 }
 
 type ExecuteLogQueryRequest struct {
+  // The end time.
+  // 
   // example:
   // 
-  // 1733269771123。
+  // 1733269771123
   EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-  ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
+  // Specifies whether to pack non-standard fields into the extension field extend_content. Valid values:
+  // 
+  // - enabled: Enabled.
+  // 
+  // - disabled: Disabled.
+  // 
   // example:
   // 
-  // zh。
+  // enabled
+  ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
+  // The language of the response. Valid values:
+  // 
+  // - **zh*	- (default): Chinese.
+  // 
+  // - **en**: English.
+  // 
+  // example:
+  // 
+  // zh
   Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+  LogCondition *string `json:"LogCondition,omitempty" xml:"LogCondition,omitempty"`
+  // The Simple Log Service project name.
+  // 
   // example:
   // 
   // slsaudit-center-173326*******-cn-hangzhou
   LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
+  // The Simple Log Service query statement.
+  // 
   // example:
   // 
   // *
   LogQuery *string `json:"LogQuery,omitempty" xml:"LogQuery,omitempty"`
+  // The log storage region ID.
+  // 
   // example:
   // 
-  // cn-hangzhou。
+  // cn-hangzhou
   LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+  // The Simple Log Service project name.
+  // 
   // example:
   // 
   // huawei-cn-cfw
   LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+  // The user ID for data access.
+  // 
   // example:
   // 
-  // 173326*******。
+  // 173326*******
   LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+  // If packing is enabled, you must specify NormalizationSchemaId.
+  // 
+  // example:
+  // 
+  // WAF_ALERT_ACTIVITY
   NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
+  // The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
+  // 
+  // - cn-hangzhou: the asset is in the Chinese mainland.
+  // 
+  // - ap-southeast-1: the asset is outside the Chinese mainland.
+  // 
   // example:
   // 
-  // cn-hangzhou。
+  // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // The user ID of the member to which the administrator switches the view.
+  // 
   // example:
   // 
-  // 173326*******。
+  // 173326*******
   RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+  // The start time.
+  // 
   // example:
   // 
-  // 1733269771123。
+  // 1733269771123
   StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -98,6 +143,10 @@ func (s *ExecuteLogQueryRequest) GetExtendContentPacked() *string  {
 
 func (s *ExecuteLogQueryRequest) GetLang() *string  {
   return s.Lang
+}
+
+func (s *ExecuteLogQueryRequest) GetLogCondition() *string  {
+  return s.LogCondition
 }
 
 func (s *ExecuteLogQueryRequest) GetLogProjectName() *string  {
@@ -148,6 +197,11 @@ func (s *ExecuteLogQueryRequest) SetExtendContentPacked(v string) *ExecuteLogQue
 
 func (s *ExecuteLogQueryRequest) SetLang(v string) *ExecuteLogQueryRequest {
   s.Lang = &v
+  return s
+}
+
+func (s *ExecuteLogQueryRequest) SetLogCondition(v string) *ExecuteLogQueryRequest {
+  s.LogCondition = &v
   return s
 }
 

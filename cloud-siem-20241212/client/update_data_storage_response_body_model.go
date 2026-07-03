@@ -14,6 +14,8 @@ type iUpdateDataStorageResponseBody interface {
 }
 
 type UpdateDataStorageResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EA7FC160-8D86-5ABE-A08A-7962FDC1****

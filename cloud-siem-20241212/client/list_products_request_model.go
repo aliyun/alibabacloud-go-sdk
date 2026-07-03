@@ -30,10 +30,18 @@ type iListProductsRequest interface {
 }
 
 type ListProductsRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum number of entries to return.
+	//
 	// if can be null:
 	// true
 	//
@@ -41,27 +49,48 @@ type ListProductsRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to start the next query. You do not need to specify this parameter for the first query. For subsequent queries, set this parameter to the \\`NextToken\\` value that is returned from the previous API call.
+	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
-	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of product IDs.
 	ProductIds []*string `json:"ProductIds,omitempty" xml:"ProductIds,omitempty" type:"Repeated"`
+	// The product name.
+	//
 	// example:
 	//
 	// sas
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The product type. Valid values:
+	//
+	// - preset
+	//
+	// - custom
+	//
 	// example:
 	//
 	// preset
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The region of the Data Management center for threat analysis. Select the region for the Management Hub based on the region where your assets are located. Valid values:
+	//
+	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+	//
+	// - ap-southeast-1: Your assets are in regions outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member. An administrator can specify this parameter to switch to the perspective of this member.
+	//
 	// example:
 	//
 	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The vendor ID.
+	//
 	// example:
 	//
 	// vd-qlsw5eocx94w9

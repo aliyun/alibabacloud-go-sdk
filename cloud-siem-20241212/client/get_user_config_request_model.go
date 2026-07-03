@@ -18,14 +18,28 @@ type iGetUserConfigRequest interface {
 }
 
 type GetUserConfigRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region of the Data Management center for threat analysis. Select a region for the Management Hub based on the region where your assets are located. Valid values:
+	//
+	// - cn-hangzhou: Assets in the Chinese mainland.
+	//
+	// - ap-southeast-1: Assets outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. An administrator can use this parameter to switch to the perspective of the specified member.
+	//
 	// example:
 	//
 	// 173326*******

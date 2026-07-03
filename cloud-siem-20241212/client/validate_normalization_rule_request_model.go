@@ -36,50 +36,82 @@ type iValidateNormalizationRuleRequest interface {
 }
 
 type ValidateNormalizationRuleRequest struct {
+	// The rule ID.
+	//
 	// example:
 	//
-	// 123456。
+	// 123456
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The storage mode for extended fields. Valid values: \\`flat\\`, \\`pack\\`, and \\`reject\\`.
+	//
 	// example:
 	//
 	// flat
 	ExtendFieldStoreMode *string `json:"ExtendFieldStoreMode,omitempty" xml:"ExtendFieldStoreMode,omitempty"`
+	// The language of the response messages. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The sample log. The value must be in the JSON format.
+	//
 	// example:
 	//
 	// {"aaa":"bbb","xxx":"yyy"}
 	LogSample *string `json:"LogSample,omitempty" xml:"LogSample,omitempty"`
+	// The normalization category of the rule.
+	//
 	// example:
 	//
-	// NETWORK_CATEGORY。
+	// NETWORK_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
+	// The expression for the normalization rule.
+	//
 	// example:
 	//
 	// *
 	NormalizationRuleExpression *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
+	// The mode of the normalization rule. Valid values: \\`both\\` and \\`realtime\\`.
+	//
 	// example:
 	//
 	// realtime
 	NormalizationRuleMode *string `json:"NormalizationRuleMode,omitempty" xml:"NormalizationRuleMode,omitempty"`
+	// The ID of the normalization pattern for the rule.
+	//
 	// example:
 	//
-	// HTTP_ACTIVITY。
+	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
+	// The product ID.
+	//
 	// example:
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region where the Data Management center for threat analysis is deployed. Select the region based on the location of your assets. Valid values:
+	//
+	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Your assets are in regions outside the Chinese mainland.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member. An administrator uses this parameter to switch to the perspective of the member.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The vendor ID.
+	//
 	// example:
 	//
 	// alibaba_cloud

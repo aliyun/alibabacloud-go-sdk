@@ -28,34 +28,49 @@ type iListNormalizationRuleCapacitiesResponseBody interface {
 }
 
 type ListNormalizationRuleCapacitiesResponseBody struct {
+	// The maximum number of entries returned.
+	//
 	// example:
 	//
-	// 50。
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query. If the response is truncated, use this token in your next request to retrieve the next page of results. If this parameter is empty, all results have been returned.
+	//
 	// example:
 	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****。
-	NextToken                   *string                                                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// AAAAAUqcj6VO4E3ECWIrFczs****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of security capabilities that are associated with the normalization rules.
 	NormalizationRuleCapacities []*ListNormalizationRuleCapacitiesResponseBodyNormalizationRuleCapacities `json:"NormalizationRuleCapacities,omitempty" xml:"NormalizationRuleCapacities,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
-	// 1。
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
-	// 10。
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
-	// 6276D891-*****-55B2-87B9-74D413F7****。
+	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
-	// 57。
+	// 57
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
-	// 3。
+	// 3
 	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
@@ -153,14 +168,27 @@ func (s *ListNormalizationRuleCapacitiesResponseBody) Validate() error {
 }
 
 type ListNormalizationRuleCapacitiesResponseBodyNormalizationRuleCapacities struct {
+	// The list of security capabilities.
 	Capacities []*string `json:"Capacities,omitempty" xml:"Capacities,omitempty" type:"Repeated"`
+	// The type of the security capability. Valid values:
+	//
+	// - detection_preset_rule: predefined analysis rule.
+	//
+	// - detection_custom_rule: custom analysis rule.
+	//
+	// - incident_investigation: security event handling.
+	//
+	// - soar_playbooks: predefined playbook.
+	//
 	// example:
 	//
-	// detection_preset_rule。
+	// detection_preset_rule
 	CapacityType *string `json:"CapacityType,omitempty" xml:"CapacityType,omitempty"`
+	// The ID of the normalization rule.
+	//
 	// example:
 	//
-	// nr-z0b2ssjteut85uoh9nzp。
+	// nr-z0b2ssjteut85uoh9nzp
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
 }
 

@@ -26,29 +26,40 @@ type iListAutoDisposeEntitiesResponseBody interface {
 }
 
 type ListAutoDisposeEntitiesResponseBody struct {
+	// A list of AI-powered automated analysis entities.
 	AutoDecisionEntities []*ListAutoDisposeEntitiesResponseBodyAutoDecisionEntities `json:"AutoDecisionEntities,omitempty" xml:"AutoDecisionEntities,omitempty" type:"Repeated"`
+	// The current page number. The value must be greater than or equal to 1.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The maximum number of entries returned in this request.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to retrieve the next page of results. An empty value indicates that all results have been returned.
+	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count of entries.
+	//
 	// example:
 	//
 	// 57
@@ -140,34 +151,64 @@ func (s *ListAutoDisposeEntitiesResponseBody) Validate() error {
 }
 
 type ListAutoDisposeEntitiesResponseBodyAutoDecisionEntities struct {
+	// The alert rule ID.
+	//
 	// example:
 	//
 	// 20403189
 	AlertId *string `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	// The disposal method. Valid values:
+	//
+	// - `ignore`: Ignore.
+	//
+	// - `dispose`: Playbook-based disposal.
+	//
 	// example:
 	//
 	// dispose
 	DisposalMethod *string `json:"DisposalMethod,omitempty" xml:"DisposalMethod,omitempty"`
+	// The disposal ID.
+	//
 	// example:
 	//
 	// 1ec121479b341a61886dbd2c4ccd*****
 	DisposeRecordId *string `json:"DisposeRecordId,omitempty" xml:"DisposeRecordId,omitempty"`
+	// The entity name.
+	//
 	// example:
 	//
 	// /apps/ext/ka****
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// The entity type. Valid values:
+	//
+	// - `ip`: An IP address.
+	//
+	// - `domain`: A domain.
+	//
+	// - `process`: A process.
+	//
+	// - `file`: A file.
+	//
+	// - `host`: A host.
+	//
 	// example:
 	//
 	// process
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The entity UUID.
+	//
 	// example:
 	//
 	// 022ed6c601514a370cc9e3acd37a****
 	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	// The playbook UUID.
+	//
 	// example:
 	//
 	// 6fd2b143-e420-4c1b-a118-e764*****
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
+	// The unique identifier (UUID) of the entry.
+	//
 	// example:
 	//
 	// 0d23f133-22d7-4388-b738-ab******

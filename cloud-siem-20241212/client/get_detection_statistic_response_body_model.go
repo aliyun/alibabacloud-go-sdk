@@ -16,7 +16,10 @@ type iGetDetectionStatisticResponseBody interface {
 }
 
 type GetDetectionStatisticResponseBody struct {
+	// The detection rule count result.
 	DetectionStatistic *GetDetectionStatisticResponseBodyDetectionStatistic `json:"DetectionStatistic,omitempty" xml:"DetectionStatistic,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6FB890AC-90B2-5EEA-845B-F7C86FB2****
@@ -59,26 +62,39 @@ func (s *GetDetectionStatisticResponseBody) Validate() error {
 }
 
 type GetDetectionStatisticResponseBodyDetectionStatistic struct {
+	AiPoweredAggregationRuleCount *int32 `json:"AiPoweredAggregationRuleCount,omitempty" xml:"AiPoweredAggregationRuleCount,omitempty"`
+	// The number of online rules.
+	//
 	// example:
 	//
 	// 10
 	DetectionRuleOnlineCount *int32 `json:"DetectionRuleOnlineCount,omitempty" xml:"DetectionRuleOnlineCount,omitempty"`
+	// The number of rule templates.
+	//
 	// example:
 	//
 	// 20
 	DetectionRuleTemplateCount *int32 `json:"DetectionRuleTemplateCount,omitempty" xml:"DetectionRuleTemplateCount,omitempty"`
+	// The number of test rules.
+	//
 	// example:
 	//
 	// 5
 	DetectionRuleTestCount *int32 `json:"DetectionRuleTestCount,omitempty" xml:"DetectionRuleTestCount,omitempty"`
+	// The number of graph computing rules.
+	//
 	// example:
 	//
 	// 12
 	GraphComputeRuleCount *int32 `json:"GraphComputeRuleCount,omitempty" xml:"GraphComputeRuleCount,omitempty"`
+	// The number of alert pass-through rules.
+	//
 	// example:
 	//
 	// 2
 	PassthroughRuleCount *int32 `json:"PassthroughRuleCount,omitempty" xml:"PassthroughRuleCount,omitempty"`
+	// The number of similar aggregation rules.
+	//
 	// example:
 	//
 	// 6
@@ -91,6 +107,10 @@ func (s GetDetectionStatisticResponseBodyDetectionStatistic) String() string {
 
 func (s GetDetectionStatisticResponseBodyDetectionStatistic) GoString() string {
 	return s.String()
+}
+
+func (s *GetDetectionStatisticResponseBodyDetectionStatistic) GetAiPoweredAggregationRuleCount() *int32 {
+	return s.AiPoweredAggregationRuleCount
 }
 
 func (s *GetDetectionStatisticResponseBodyDetectionStatistic) GetDetectionRuleOnlineCount() *int32 {
@@ -115,6 +135,11 @@ func (s *GetDetectionStatisticResponseBodyDetectionStatistic) GetPassthroughRule
 
 func (s *GetDetectionStatisticResponseBodyDetectionStatistic) GetWindowRuleCount() *int32 {
 	return s.WindowRuleCount
+}
+
+func (s *GetDetectionStatisticResponseBodyDetectionStatistic) SetAiPoweredAggregationRuleCount(v int32) *GetDetectionStatisticResponseBodyDetectionStatistic {
+	s.AiPoweredAggregationRuleCount = &v
+	return s
 }
 
 func (s *GetDetectionStatisticResponseBodyDetectionStatistic) SetDetectionRuleOnlineCount(v int32) *GetDetectionStatisticResponseBodyDetectionStatistic {

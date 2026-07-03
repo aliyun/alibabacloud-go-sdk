@@ -20,18 +20,34 @@ type iRefreshDataSourceRequest interface {
 }
 
 type RefreshDataSourceRequest struct {
+	// The ID of the data source.
+	//
 	// example:
 	//
 	// ds-jl67vixpe1scwysgyu3x
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The language of the messages. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region where the Data Management Center for threat analysis is located. Select the region of the Data Management Center based on the region of your assets. Valid values:
+	//
+	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+	//
+	// - ap-southeast-1: Your assets are in a region outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. An administrator can use this parameter to switch to the perspective of the specified member.
+	//
 	// example:
 	//
 	// 113091674488****

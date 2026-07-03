@@ -18,14 +18,20 @@ type iCreateExportTaskResponseBody interface {
 }
 
 type CreateExportTaskResponseBody struct {
+	// The name of the exported file.
+	//
 	// example:
 	//
 	// event_1193842352994186_17344888****.xlsx
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The ID of the export task.
+	//
 	// example:
 	//
 	// 400151
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****

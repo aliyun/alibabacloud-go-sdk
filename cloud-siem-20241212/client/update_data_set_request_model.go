@@ -30,28 +30,66 @@ type iUpdateDataSetRequest interface {
 }
 
 type UpdateDataSetRequest struct {
+	// The description of the dataset.
+	//
 	// example:
 	//
 	// lmftest desc
 	DataSetDescription *string `json:"DataSetDescription,omitempty" xml:"DataSetDescription,omitempty"`
-	DataSetFileName    *string `json:"DataSetFileName,omitempty" xml:"DataSetFileName,omitempty"`
+	// The name of the uploaded dataset file.
+	//
+	// example:
+	//
+	// cloudsiem-dataset/1358117679873357_1743387731614.csv
+	DataSetFileName *string `json:"DataSetFileName,omitempty" xml:"DataSetFileName,omitempty"`
+	// The ID of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset-10iy8mbifnb4gniv****
-	DataSetId              *string                                       `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
-	DataSetName            *string                                       `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
-	DataSetStatus          *int32                                        `json:"DataSetStatus,omitempty" xml:"DataSetStatus,omitempty"`
+	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
+	// The name of the dataset.
+	//
+	// example:
+	//
+	// lmftest
+	DataSetName *string `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
+	// The status of the dataset. Valid values:
+	//
+	// - 0: Delete.
+	//
+	// - 1: Enable.
+	//
+	// example:
+	//
+	// 1
+	DataSetStatus *int32 `json:"DataSetStatus,omitempty" xml:"DataSetStatus,omitempty"`
+	// The IP address types that the recognizer can detect.
 	IpWhitelistRecognizers []*UpdateDataSetRequestIpWhitelistRecognizers `json:"IpWhitelistRecognizers,omitempty" xml:"IpWhitelistRecognizers,omitempty" type:"Repeated"`
+	// The language of the response message. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region where the Data Management center for threat analysis is located. Select a region based on the location of your assets. Valid values:
+	//
+	// - cn-hangzhou: Assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Assets are in a region outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of a member. An administrator can use this parameter to switch to the member\\"s view.
+	//
 	// example:
 	//
 	// 113091674488****
@@ -161,14 +199,46 @@ func (s *UpdateDataSetRequest) Validate() error {
 }
 
 type UpdateDataSetRequestIpWhitelistRecognizers struct {
+	// The automatic detection status. Valid values:
+	//
+	// - enabled: Enabled.
+	//
+	// - disabled: Disabled.
+	//
 	// example:
 	//
 	// enabled
 	AutoRecognizeStatus *string `json:"AutoRecognizeStatus,omitempty" xml:"AutoRecognizeStatus,omitempty"`
+	// The IP address type that the recognizer can detect. Valid values:
+	//
+	// - sas_vulnerability_scanner_ip: The IP addresses of the Security Center web vulnerability scanner.
+	//
+	// - waf_back_source_ip: The back-to-origin IP addresses of Web Application Firewall (WAF).
+	//
+	// - ddos_back_source_ip: The back-to-origin IP addresses of Anti-DDoS.
+	//
+	// - esa_back_source_ip: The back-to-origin IP addresses of Edge Security Acceleration (ESA) nodes.
+	//
+	// - ecs_public_ip: The public IP addresses of Elastic Compute Service (ECS) instances.
+	//
+	// - slb_public_ip: The public IP addresses of Server Load Balancer (SLB).
+	//
+	// - vpc_eip: The elastic IP addresses (EIPs).
+	//
+	// - cdn_back_source_ip: The back-to-origin IP addresses of Alibaba Cloud CDN.
+	//
+	// - ga_back_source_ip: The back-to-origin IP addresses of Global Accelerator (GA).
+	//
 	// example:
 	//
 	// cdn_back_source_ip
 	IpWhitelistRecognizerType *string `json:"IpWhitelistRecognizerType,omitempty" xml:"IpWhitelistRecognizerType,omitempty"`
+	// The detection scope. Valid values:
+	//
+	// - current_account: The current account only.
+	//
+	// - rd_accounts: Multiple accounts are enabled.
+	//
 	// example:
 	//
 	// current_account

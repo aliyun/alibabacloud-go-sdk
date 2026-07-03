@@ -24,30 +24,50 @@ type iUpdateDataSetRecordRequest interface {
 }
 
 type UpdateDataSetRecordRequest struct {
+	// The name of the uploaded dataset file.
+	//
 	// example:
 	//
 	// cloudsiem-dataset/1358117679873357_174338773****.csv
 	DataSetFileName *string `json:"DataSetFileName,omitempty" xml:"DataSetFileName,omitempty"`
+	// The ID of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset-10iy8mbifnb4gniv****
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
+	// The content of the dataset records, in JSON array format.
+	//
 	// example:
 	//
 	// [{\\"ip\\":\\"1.1.1.1\\",\\"userid\\":\\"1234\\",\\"name\\":\\"a12401\\"},
 	//
 	//  {\\"ip\\":\\"2.2.2.2\\",\\"userid\\":\\"33333\\",\\"name\\":\\"a12401\\"}]
 	DataSetRecords *string `json:"DataSetRecords,omitempty" xml:"DataSetRecords,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region where the Data Management center for threat analysis is located. Select a region for the management center based on the region of your asset. Valid values:
+	//
+	// - cn-hangzhou: The asset is in the Chinese mainland.
+	//
+	// - ap-southeast-1: The asset is in a region outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member. An administrator can use this parameter to switch to the perspective of a specific member.
+	//
 	// example:
 	//
 	// 113091674488****

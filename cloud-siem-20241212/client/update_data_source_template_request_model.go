@@ -34,46 +34,79 @@ type iUpdateDataSourceTemplateRequest interface {
 }
 
 type UpdateDataSourceTemplateRequest struct {
+	// Specifies whether to automatically discover new users.
+	//
+	// - enabled: Enabled.
+	//
+	// - disabled: Disabled.
+	//
 	// example:
 	//
-	// enabled。
+	// enabled
 	AutoScanNew *string `json:"AutoScanNew,omitempty" xml:"AutoScanNew,omitempty"`
+	// Specifies whether to automatically discover new data sources.
+	//
 	// example:
 	//
-	// true。
+	// true
 	DataSourceRecognizeEnabled *bool `json:"DataSourceRecognizeEnabled,omitempty" xml:"DataSourceRecognizeEnabled,omitempty"`
+	// The ID of the data source template.
+	//
 	// example:
 	//
-	// alibaba_cloud_actiontrail_event_ingestion。
+	// alibaba_cloud_actiontrail_event_ingestion
 	DataSourceTemplateId *string `json:"DataSourceTemplateId,omitempty" xml:"DataSourceTemplateId,omitempty"`
+	// The name of the data source template.
+	//
 	// example:
 	//
-	// alibaba_cloud_actiontrail_event_ingestion。
+	// alibaba_cloud_actiontrail_event_ingestion
 	DataSourceTemplateName *string `json:"DataSourceTemplateName,omitempty" xml:"DataSourceTemplateName,omitempty"`
+	// The language of the response message. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
-	// zh。
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The matching rule for the names of Simple Log Service projects.
+	//
 	// example:
 	//
-	// aliyun-cloudsiem-data-173326*******。
+	// aliyun-cloudsiem-data-173326*******
 	LogProjectPattern *string `json:"LogProjectPattern,omitempty" xml:"LogProjectPattern,omitempty"`
+	// The list of IDs of log storage regions.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	LogRegionIds *string `json:"LogRegionIds,omitempty" xml:"LogRegionIds,omitempty"`
+	// The matching rule for the names of Simple Log Service Logstores.
+	//
 	// example:
 	//
-	// audit-activity。
-	LogStorePattern *string   `json:"LogStorePattern,omitempty" xml:"LogStorePattern,omitempty"`
-	LogUserIds      []*string `json:"LogUserIds,omitempty" xml:"LogUserIds,omitempty" type:"Repeated"`
+	// audit-activity
+	LogStorePattern *string `json:"LogStorePattern,omitempty" xml:"LogStorePattern,omitempty"`
+	// The list of user IDs for batch data access.
+	LogUserIds []*string `json:"LogUserIds,omitempty" xml:"LogUserIds,omitempty" type:"Repeated"`
+	// The region where the Management Hub of threat analysis is located. Select a region based on the region where your assets are located. Valid values:
+	//
+	// - cn-hangzhou: Assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: Assets are outside the Chinese mainland.
+	//
 	// example:
 	//
-	// cn-hangzhou。
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member. This parameter lets an administrator switch to the perspective of the member.
+	//
 	// example:
 	//
-	// 173326*******。
+	// 173326*******
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 

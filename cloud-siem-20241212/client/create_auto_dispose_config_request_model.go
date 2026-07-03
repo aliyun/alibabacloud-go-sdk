@@ -18,18 +18,32 @@ type iCreateAutoDisposeConfigRequest interface {
 }
 
 type CreateAutoDisposeConfigRequest struct {
+	// Specifies whether to enable automated analysis. Valid values:
+	//
+	// - enabled: Enables automated analysis.
+	//
+	// - disabled: Disables automated analysis.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// enabled
 	AutoDecisionStatus *string `json:"AutoDecisionStatus,omitempty" xml:"AutoDecisionStatus,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The code of the cloud product.
+	//
 	// This parameter is required.
 	//
 	// example:

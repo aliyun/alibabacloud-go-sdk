@@ -26,30 +26,52 @@ type iUpdateDataStorageTtlRequest interface {
 }
 
 type UpdateDataStorageTtlRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The storage duration for cold storage in Simple Log Service. This setting is not yet available.
+	//
 	// example:
 	//
 	// 0
 	LogStoreColdTtl *string `json:"LogStoreColdTtl,omitempty" xml:"LogStoreColdTtl,omitempty"`
+	// The storage duration for hot storage in Simple Log Service.
+	//
 	// example:
 	//
 	// 180
 	LogStoreHotTtl *string `json:"LogStoreHotTtl,omitempty" xml:"LogStoreHotTtl,omitempty"`
+	// The name of the Logstore for threat analysis.
+	//
 	// example:
 	//
 	// network-activity
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The storage duration of the Logstore.
+	//
 	// example:
 	//
 	// 180
 	LogStoreTtl *string `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
+	// The region of the Data Management Center for threat analysis. Select a region based on the location of your assets. Valid values:
+	//
+	// - cn-hangzhou: The Chinese mainland.
+	//
+	// - ap-southeast-1: Regions outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member whose perspective the administrator assumes.
+	//
 	// example:
 	//
 	// 113091674488****

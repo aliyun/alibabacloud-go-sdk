@@ -20,20 +20,36 @@ type iDeleteDetectionRuleRequest interface {
 }
 
 type DeleteDetectionRuleRequest struct {
+	// The ID of the detection rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dr-53np4nguf5jmh1vc****
 	DetectionRuleId *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region of the Management Hub. Select a region based on the location of your assets. Valid values:
+	//
+	// - cn-hangzhou: The assets are in the Chinese mainland.
+	//
+	// - ap-southeast-1: The assets are outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the member. This parameter is used by an administrator to switch to the perspective of a member.
+	//
 	// example:
 	//
 	// 113091674488****
