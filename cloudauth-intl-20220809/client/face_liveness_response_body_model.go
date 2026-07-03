@@ -98,11 +98,11 @@ func (s *FaceLivenessResponseBody) Validate() error {
 type FaceLivenessResponseBodyResult struct {
 	// The face result information.
 	ExtFaceInfo *FaceLivenessResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// Indicates whether the authentication passed. Valid values:
+	// Indicates whether the authentication is passed. Valid values:
 	//
-	// - Y: passed.
+	// - Y: Passed.
 	//
-	// - N: not passed.
+	// - N: Not passed.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ func (s *FaceLivenessResponseBodyResult) Validate() error {
 }
 
 type FaceLivenessResponseBodyResultExtFaceInfo struct {
-	// The predicted reference age based on the face. The prediction may fail and return no value.
+	// The predicted reference age of the face. The prediction may fail and return no value.
 	//
 	// example:
 	//
@@ -187,18 +187,19 @@ type FaceLivenessResponseBodyResultExtFaceInfo struct {
 	// example:
 	//
 	// Y
-	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
-	// The predicted gender based on the face photo. The prediction may fail and return no value. Valid values:
+	FaceAttack        *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
+	FaceAttributeInfo *string `json:"FaceAttributeInfo,omitempty" xml:"FaceAttributeInfo,omitempty"`
+	// The predicted gender of the face in the photo. The prediction may fail and return no value. Valid values:
 	//
-	// - M: male.
+	// - M: Male.
 	//
-	// - F: female.
+	// - F: Female.
 	//
 	// example:
 	//
 	// M
 	FaceGender *string `json:"FaceGender,omitempty" xml:"FaceGender,omitempty"`
-	// The face quality score (0 to 100). This value is returned only when the face quality score switch is enabled in the request parameters.
+	// The face quality score (0 to 100). This parameter is returned only when the face quality score switch is enabled.
 	//
 	// example:
 	//
@@ -216,7 +217,7 @@ type FaceLivenessResponseBodyResultExtFaceInfo struct {
 	//
 	// 20
 	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
-	// The occlusion detection result. Valid values: Y (occluded) and N (not occluded). This value is returned only when the occlusion detection switch is enabled.
+	// The occlusion detection result. Valid values: Y (occluded) and N (not occluded). This parameter is returned only when the occlusion detection switch is enabled.
 	//
 	// example:
 	//
@@ -250,6 +251,10 @@ func (s *FaceLivenessResponseBodyResultExtFaceInfo) GetFaceAge() *int32 {
 
 func (s *FaceLivenessResponseBodyResultExtFaceInfo) GetFaceAttack() *string {
 	return s.FaceAttack
+}
+
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) GetFaceAttributeInfo() *string {
+	return s.FaceAttributeInfo
 }
 
 func (s *FaceLivenessResponseBodyResultExtFaceInfo) GetFaceGender() *string {
@@ -287,6 +292,11 @@ func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetFaceAge(v int32) *FaceLiv
 
 func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetFaceAttack(v string) *FaceLivenessResponseBodyResultExtFaceInfo {
 	s.FaceAttack = &v
+	return s
+}
+
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetFaceAttributeInfo(v string) *FaceLivenessResponseBodyResultExtFaceInfo {
+	s.FaceAttributeInfo = &v
 	return s
 }
 

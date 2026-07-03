@@ -20,19 +20,26 @@ type iInitializeV2ResponseBody interface {
 }
 
 type InitializeV2ResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 86C40EC3-5940-5F47-995C-BFE90B70E540
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *InitializeV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response result.
+	Result *InitializeV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s InitializeV2ResponseBody) String() string {
@@ -89,18 +96,28 @@ func (s *InitializeV2ResponseBody) Validate() error {
 }
 
 type InitializeV2ResponseBodyResult struct {
+	// The client configuration.
+	//
 	// example:
 	//
 	// ***
 	ClientCfg *string `json:"ClientCfg,omitempty" xml:"ClientCfg,omitempty"`
+	// The standard authentication encryption protocol.
+	//
+	// > This field is required when you use iframe embedding for H5 web page integration.
+	//
 	// example:
 	//
 	// hksb7ba1b28130d24e015d*********
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The unique ID of the authentication request.
+	//
 	// example:
 	//
 	// 4ab0b***cbde97
 	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+	// The web authentication URL.
+	//
 	// example:
 	//
 	// http****

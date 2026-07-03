@@ -40,58 +40,140 @@ type iDocOcrMaxV2Request interface {
 }
 
 type DocOcrMaxV2Request struct {
+	// Specifies whether to enable authoritative data source verification to enhance document anti-forgery capabilities. Valid values:
+	//
+	// - **T**: enabled.
+	//
+	// - **F*	- (default): disabled.
+	//
+	// >
+	//
+	// > - **Applicable document types**: China resident identity card (CHN01001) and China mainland driver\\"s license (CHN02001).
+	//
+	// > - **Data transmission statement**: Enabling this parameter indicates consent to transmit the user\\"s name and document number to an authoritative data source in the Chinese mainland for consistency verification.
+	//
+	// > - **Performance impact**: Enabling this parameter increases the API response time by approximately 1 to 2 seconds. Adjust the timeout settings accordingly.
+	//
 	// example:
 	//
 	// T
 	Authorize *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	// The expected page to recognize. Valid values:
+	//
+	// - 01 (default): the portrait side of the document.
+	//
+	// - 02: the back side of the document.
+	//
 	// example:
 	//
 	// 01
 	DocPage *string `json:"DocPage,omitempty" xml:"DocPage,omitempty"`
+	// The document type.
+	//
+	// - Format: country code + document type abbreviation + page (optional).
+	//
+	// Note:
+	//
+	// - OcrModel = 0: DocType is required. Specify the document type. The existing logic remains unchanged.
+	//
+	// - OcrModel = 1 or 2: DocType must be left empty.
+	//
 	// example:
 	//
 	// CHN01001
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// The Base64-encoded image of the identity document.
+	//
+	// If you use IdOcrPictureBase64 to pass in the document image, check the image size and do not pass in an excessively large image.
+	//
 	// example:
 	//
 	// base64
 	IdOcrPictureBase64 *string `json:"IdOcrPictureBase64,omitempty" xml:"IdOcrPictureBase64,omitempty"`
+	// The file stream of the document image.
+	//
 	// example:
 	//
 	// InputStream
 	IdOcrPictureFile *string `json:"IdOcrPictureFile,omitempty" xml:"IdOcrPictureFile,omitempty"`
+	// The URL of the identity document image. The URL must be a publicly accessible HTTP or HTTPS link.
+	//
 	// example:
 	//
 	// https://***********.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
 	IdOcrPictureUrl *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
+	// Specifies whether to enable the document anti-forgery feature. Valid values:
+	//
+	// - T: enabled.
+	//
+	// - F (default): disabled.
+	//
 	// example:
 	//
 	// F
 	IdSpoof *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
+	// The custom OCR quality detection threshold mode. Valid values:
+	//
+	// - 0: system default.
+	//
+	// - 1: strict mode.
+	//
+	// - 2: loose mode.
+	//
+	// - 3 (default): quality detection disabled.
+	//
 	// example:
 	//
 	// 0
 	IdThreshold *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
+	// The merchant-defined unique business identifier, used for subsequent troubleshooting. The value can contain letters and digits, with a maximum length of 32 characters. Make sure the value is unique.
+	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// The custom user ID, or another identifier that can identify a specific user, such as a phone number or email address.
+	//
+	// Hash or otherwise desensitize this field value before passing it in.
+	//
 	// example:
 	//
 	// 123456789
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	// The OCR recognition mode. Valid values:
+	//
+	// - 0: general document recognition mode (default).
+	//
+	// - 1: automatic document classification mode.
+	//
+	// - 2: automatic document classification and general recognition mode.
+	//
 	// example:
 	//
 	// 0
 	OcrModel *string `json:"OcrModel,omitempty" xml:"OcrModel,omitempty"`
+	// Specifies whether to enable OCR key field standardization. Valid values:
+	//
+	// - 0 (default): disabled.
+	//
+	// - 1: enabled.
+	//
 	// example:
 	//
 	// 0
 	OcrValueStandard *string `json:"OcrValueStandard,omitempty" xml:"OcrValueStandard,omitempty"`
+	// The product solution to use.
+	//
+	// Set this parameter to ID_OCR_MAX.
+	//
 	// example:
 	//
 	// ID_OCR_MAX
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The custom verification scenario ID. You can use this scenario ID to query related records in the console.
+	//
+	// The value can contain letters, digits, and underscores, with a maximum length of 10 characters.
+	//
 	// example:
 	//
 	// 1234567890

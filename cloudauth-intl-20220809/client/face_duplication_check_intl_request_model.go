@@ -46,17 +46,17 @@ type iFaceDuplicationCheckIntlRequest interface {
 }
 
 type FaceDuplicationCheckIntlRequest struct {
-	// Specifies whether to automatically register the face in the specified face database when no duplicate face is found during the search. Valid values:
+	// Specifies whether to automatically register the face in the specified face library when no duplicate face is found during the search. Valid values:
 	//
-	// - 0: automatic registration
+	// - 0: Automatic registration.
 	//
-	// - 1: no registration (default).
+	// - 1: No registration (default).
 	//
 	// example:
 	//
 	// 1
 	AutoRegistration *string `json:"AutoRegistration,omitempty" xml:"AutoRegistration,omitempty"`
-	// The face database codes created in the console. A maximum of 10 face databases can be queried at a time. Separate multiple face database codes with commas (,).
+	// The face library codes created by the customer in the console. A maximum of 10 face libraries can be queried at the same time. Separate multiple face library codes with commas (,).
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type FaceDuplicationCheckIntlRequest struct {
 	//
 	// Y
 	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
-	// The face database for registration.
+	// The face library for registration.
 	//
 	// example:
 	//
 	// 0e0c34a77f
 	FaceRegisterGroupCode *string `json:"FaceRegisterGroupCode,omitempty" xml:"FaceRegisterGroupCode,omitempty"`
-	// The face matching threshold. 	Warning: This is a reserved field and is not currently enabled.</warning>.
+	// The face matching threshold. 	Warning: This is a reserved field and is not currently enabled.</warning>
 	//
 	// example:
 	//
@@ -82,15 +82,15 @@ type FaceDuplicationCheckIntlRequest struct {
 	FaceVerifyThreshold *string `json:"FaceVerifyThreshold,omitempty" xml:"FaceVerifyThreshold,omitempty"`
 	// Specifies whether to enable passive liveness detection. Valid values:
 	//
-	// - 0: disabled
+	// - 0: Disabled.
 	//
-	// - 1: enabled.
+	// - 1: Enabled.
 	//
 	// example:
 	//
 	// 0
 	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	// The custom unique business identifier, which is used for subsequent troubleshooting. The value is a combination of letters and digits up to 32 characters in length. Ensure that the value is unique.
+	// The custom unique business identifier, used for subsequent troubleshooting. The value is a combination of letters and digits up to 32 characters in length. Ensure that the value is unique.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type FaceDuplicationCheckIntlRequest struct {
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c35****
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// The custom user ID or another identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
+	// The custom user ID, or another identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
 	//
 	// This parameter is required.
 	//
@@ -114,7 +114,7 @@ type FaceDuplicationCheckIntlRequest struct {
 	//
 	// FACE_IDU_MIN
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The number of faces to return when multiple faces above the matching threshold are found.
+	// Specifies the number of faces to return when multiple faces above the matching threshold exist.
 	//
 	// - Default value: 1.
 	//
@@ -130,7 +130,7 @@ type FaceDuplicationCheckIntlRequest struct {
 	//
 	// - 1: feature
 	//
-	// 	Warning: This is a reserved field and is not currently enabled.</warning>.
+	// 	Warning: This is a reserved field and is not currently enabled.</warning>
 	//
 	// example:
 	//
@@ -142,49 +142,49 @@ type FaceDuplicationCheckIntlRequest struct {
 	//
 	// 1234567890
 	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	// The Base64-encoded facial image.
+	// The Base64-encoded face image.
 	//
 	// example:
 	//
 	// base64
 	SourceFacePicture *string `json:"SourceFacePicture,omitempty" xml:"SourceFacePicture,omitempty"`
-	// The URL of the facial image. The URL must be a publicly accessible HTTP or HTTPS link.
+	// The URL of the face image. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
 	// https://***face1.jpeg
 	SourceFacePictureUrl *string `json:"SourceFacePictureUrl,omitempty" xml:"SourceFacePictureUrl,omitempty"`
-	// The Base64-encoded facial image.
+	// The Base64-encoded face image.
 	//
 	// example:
 	//
 	// base64
 	TargetFacePicture *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
-	// The URL of the facial image. The URL must be a publicly accessible HTTP or HTTPS link.
+	// The URL of the face image. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
 	// https://***face2.jpeg
 	TargetFacePictureUrl *string `json:"TargetFacePictureUrl,omitempty" xml:"TargetFacePictureUrl,omitempty"`
-	// The verification type. Valid values:
+	// The authentication type. Valid values:
 	//
-	// - 0: retrieve pattern
+	// - 0: retrieval pattern
 	//
-	// > - Feature: Submits a face database and a user facial image (sourceFacePicture). The system automatically retrieves the face database to check whether the specified facial image (sourceFacePicture) already exists. Passive liveness detection can be enabled for the facial image (sourceFacePicture).
+	// > - Feature: Submits a face library and a user face image (sourceFacePicture). The system automatically retrieves faces from the face library to determine whether the specified face image (sourceFacePicture) already exists. Passive liveness detection can be enabled for the face image (sourceFacePicture).
 	//
-	// > - Recommended scenario: Real-person create an account where duplicate registration is not allowed.
+	// > - Recommended scenario: Real-person scenarios where you want to create an account and duplicate registration is not allowed.
 	//
-	// - 1 (default): authenticate pattern
+	// - 1 (default): authentication pattern
 	//
-	// > - Feature: Submits a specified facial image (sourceFacePicture) and a stored facial image (TargetFacePicture). The system automatically authenticates whether the two faces match. Passive liveness detection can be enabled for the specified facial image (sourceFacePicture).
+	// > - Feature: Submits a specified face image (sourceFacePicture) and a retained face image (TargetFacePicture). The system automatically authenticates whether the faces match. Passive liveness detection can be enabled for the specified face image (sourceFacePicture).
 	//
-	// > - Recommended scenario: Authenticating whether the operation is performed by the account owner when logon credentials or account information is modified.
+	// > - Recommended scenario: Authenticating the identity of the operator when logon credentials or account information is modified.
 	//
 	// - 2: comprehensive pattern
 	//
-	// > - Feature: Submits a face database, a specified facial image (sourceFacePicture), and a stored facial image (TargetFacePicture). The system automatically retrieves the face database to check whether the specified facial image (sourceFacePicture) exists and whether it matches the stored face. Passive liveness detection can be enabled for the specified facial image (sourceFacePicture).
+	// > - Feature: Submits a face library, a specified face image (sourceFacePicture), and a retained face image (TargetFacePicture). The system automatically retrieves faces from the face library to determine whether the specified face image (sourceFacePicture) exists and whether it matches the retained face image. Passive liveness detection can be enabled for the specified face image (sourceFacePicture).
 	//
-	// > - Recommended scenario: Authenticating that the user is new and the operation is performed by the user.
+	// > - Recommended scenario: Authenticating that the user is new and the operation is performed by the user in person.
 	//
 	// This parameter is required.
 	//

@@ -20,19 +20,26 @@ type iFaceLivenessV2ResponseBody interface {
 }
 
 type FaceLivenessV2ResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *FaceLivenessV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *FaceLivenessV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s FaceLivenessV2ResponseBody) String() string {
@@ -89,15 +96,26 @@ func (s *FaceLivenessV2ResponseBody) Validate() error {
 }
 
 type FaceLivenessV2ResponseBodyResult struct {
+	// The face result information.
 	ExtFaceInfo *FaceLivenessV2ResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
+	// Indicates whether the authentication is passed. Valid values:
+	//
+	// - Y: passed.
+	//
+	// - N: not passed.
+	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// The sub-result code.
+	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// The unique ID of the authentication request.
+	//
 	// example:
 	//
 	// hksb7ba1b28130d24e015d694361****
@@ -158,38 +176,61 @@ func (s *FaceLivenessV2ResponseBodyResult) Validate() error {
 }
 
 type FaceLivenessV2ResponseBodyResultExtFaceInfo struct {
+	// The predicted reference age of the face. The prediction may fail and return no value.
+	//
 	// example:
 	//
 	// 18
 	FaceAge *int64 `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
+	// The liveness detection result. Valid values: Y (attack detected) and N (Normal).
+	//
 	// example:
 	//
 	// Y
-	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
+	FaceAttack        *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
+	FaceAttributeInfo *string `json:"FaceAttributeInfo,omitempty" xml:"FaceAttributeInfo,omitempty"`
+	// The predicted gender of the face image. The prediction may fail and return no value. Valid values:
+	//
+	// - M: male.
+	//
+	// - F: female.
+	//
 	// example:
 	//
 	// M
 	FaceGender *string `json:"FaceGender,omitempty" xml:"FaceGender,omitempty"`
+	// The quality score of the liveness face. Valid values: 0 to 100. A higher value indicates better quality.
+	//
 	// example:
 	//
 	// 79.04
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
+	// The algorithm score for illumination as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
+	//
 	// example:
 	//
 	// 97.43
 	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
+	// The algorithm score for key area occlusion as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
+	//
 	// example:
 	//
 	// 100
 	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
+	// Indicates whether facial occlusion is detected. A value of Y indicates occlusion is detected. A value of N indicates no occlusion is detected.
+	//
 	// example:
 	//
 	// Y
 	OcclusionResult *string `json:"OcclusionResult,omitempty" xml:"OcclusionResult,omitempty"`
+	// The algorithm score for occlusion as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
+	//
 	// example:
 	//
 	// 50.26
 	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
+	// The algorithm score for image sharpness as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
+	//
 	// example:
 	//
 	// 60.78
@@ -210,6 +251,10 @@ func (s *FaceLivenessV2ResponseBodyResultExtFaceInfo) GetFaceAge() *int64 {
 
 func (s *FaceLivenessV2ResponseBodyResultExtFaceInfo) GetFaceAttack() *string {
 	return s.FaceAttack
+}
+
+func (s *FaceLivenessV2ResponseBodyResultExtFaceInfo) GetFaceAttributeInfo() *string {
+	return s.FaceAttributeInfo
 }
 
 func (s *FaceLivenessV2ResponseBodyResultExtFaceInfo) GetFaceGender() *string {
@@ -247,6 +292,11 @@ func (s *FaceLivenessV2ResponseBodyResultExtFaceInfo) SetFaceAge(v int64) *FaceL
 
 func (s *FaceLivenessV2ResponseBodyResultExtFaceInfo) SetFaceAttack(v string) *FaceLivenessV2ResponseBodyResultExtFaceInfo {
 	s.FaceAttack = &v
+	return s
+}
+
+func (s *FaceLivenessV2ResponseBodyResultExtFaceInfo) SetFaceAttributeInfo(v string) *FaceLivenessV2ResponseBodyResultExtFaceInfo {
+	s.FaceAttributeInfo = &v
 	return s
 }
 

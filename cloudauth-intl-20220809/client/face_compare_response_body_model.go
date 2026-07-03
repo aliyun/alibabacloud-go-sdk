@@ -20,17 +20,17 @@ type iFaceCompareResponseBody interface {
 }
 
 type FaceCompareResponseBody struct {
-	// The response code.
+	// Response code.
 	//
-	// 200: The request was successful.
+	// 200: Success.
 	//
-	// Other values: An error occurred. For more information, see error codes.
+	// Other: Error code. For error code details, see Error Codes.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// Response message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type FaceCompareResponseBody struct {
 	//
 	// 4EB356FE-BB6A-5DCC-B4C5-E8051787EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// Response result.
 	Result *FaceCompareResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -100,15 +100,15 @@ func (s *FaceCompareResponseBody) Validate() error {
 }
 
 type FaceCompareResponseBodyResult struct {
-	// The additional result information.
+	// Related result information
 	ExtFaceInfo *FaceCompareResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The comparison score between the submitted face image and the reference face image during verification. Value range: **0*	- to **100**.
+	// The comparison score between the submitted face photo and the reference face image during the authentication process. Value range: **0*	- to **100**.
 	//
 	// example:
 	//
 	// 98
 	FaceComparisonScore *float64 `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// Indicates whether the verification passed.
+	// Whether the authentication passed.
 	//
 	// - Y: Passed.
 	//
@@ -118,7 +118,7 @@ type FaceCompareResponseBodyResult struct {
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// The unique ID of the verification request.
+	// The unique identifier of the authentication request.
 	//
 	// example:
 	//
@@ -180,36 +180,41 @@ func (s *FaceCompareResponseBodyResult) Validate() error {
 }
 
 type FaceCompareResponseBodyResultExtFaceInfo struct {
-	// The overall quality score.
+	// Overall quality score
 	//
 	// example:
 	//
 	// 39.04
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
-	// The illumination score.
+	// Illumination score
 	//
 	// example:
 	//
 	// 0.02
 	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
-	// The key area occlusion score.
+	// Key area occlusion score
 	//
 	// example:
 	//
 	// 20
 	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
-	// The occlusion score.
+	// Occlusion score
 	//
 	// example:
 	//
 	// 50.26
 	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
-	// The sharpness score.
+	// Sharpness score
 	//
 	// example:
 	//
 	// 86.47
-	SharpnessScore *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
+	SharpnessScore          *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
+	TargetFaceQualityScore  *float64 `json:"TargetFaceQualityScore,omitempty" xml:"TargetFaceQualityScore,omitempty"`
+	TargetIlluminationScore *float64 `json:"TargetIlluminationScore,omitempty" xml:"TargetIlluminationScore,omitempty"`
+	TargetKaOcclusionScore  *float64 `json:"TargetKaOcclusionScore,omitempty" xml:"TargetKaOcclusionScore,omitempty"`
+	TargetOcclusionScore    *float64 `json:"TargetOcclusionScore,omitempty" xml:"TargetOcclusionScore,omitempty"`
+	TargetSharpnessScore    *float64 `json:"TargetSharpnessScore,omitempty" xml:"TargetSharpnessScore,omitempty"`
 }
 
 func (s FaceCompareResponseBodyResultExtFaceInfo) String() string {
@@ -240,6 +245,26 @@ func (s *FaceCompareResponseBodyResultExtFaceInfo) GetSharpnessScore() *float64 
 	return s.SharpnessScore
 }
 
+func (s *FaceCompareResponseBodyResultExtFaceInfo) GetTargetFaceQualityScore() *float64 {
+	return s.TargetFaceQualityScore
+}
+
+func (s *FaceCompareResponseBodyResultExtFaceInfo) GetTargetIlluminationScore() *float64 {
+	return s.TargetIlluminationScore
+}
+
+func (s *FaceCompareResponseBodyResultExtFaceInfo) GetTargetKaOcclusionScore() *float64 {
+	return s.TargetKaOcclusionScore
+}
+
+func (s *FaceCompareResponseBodyResultExtFaceInfo) GetTargetOcclusionScore() *float64 {
+	return s.TargetOcclusionScore
+}
+
+func (s *FaceCompareResponseBodyResultExtFaceInfo) GetTargetSharpnessScore() *float64 {
+	return s.TargetSharpnessScore
+}
+
 func (s *FaceCompareResponseBodyResultExtFaceInfo) SetFaceQualityScore(v float64) *FaceCompareResponseBodyResultExtFaceInfo {
 	s.FaceQualityScore = &v
 	return s
@@ -262,6 +287,31 @@ func (s *FaceCompareResponseBodyResultExtFaceInfo) SetOcclusionScore(v float64) 
 
 func (s *FaceCompareResponseBodyResultExtFaceInfo) SetSharpnessScore(v float64) *FaceCompareResponseBodyResultExtFaceInfo {
 	s.SharpnessScore = &v
+	return s
+}
+
+func (s *FaceCompareResponseBodyResultExtFaceInfo) SetTargetFaceQualityScore(v float64) *FaceCompareResponseBodyResultExtFaceInfo {
+	s.TargetFaceQualityScore = &v
+	return s
+}
+
+func (s *FaceCompareResponseBodyResultExtFaceInfo) SetTargetIlluminationScore(v float64) *FaceCompareResponseBodyResultExtFaceInfo {
+	s.TargetIlluminationScore = &v
+	return s
+}
+
+func (s *FaceCompareResponseBodyResultExtFaceInfo) SetTargetKaOcclusionScore(v float64) *FaceCompareResponseBodyResultExtFaceInfo {
+	s.TargetKaOcclusionScore = &v
+	return s
+}
+
+func (s *FaceCompareResponseBodyResultExtFaceInfo) SetTargetOcclusionScore(v float64) *FaceCompareResponseBodyResultExtFaceInfo {
+	s.TargetOcclusionScore = &v
+	return s
+}
+
+func (s *FaceCompareResponseBodyResultExtFaceInfo) SetTargetSharpnessScore(v float64) *FaceCompareResponseBodyResultExtFaceInfo {
+	s.TargetSharpnessScore = &v
 	return s
 }
 

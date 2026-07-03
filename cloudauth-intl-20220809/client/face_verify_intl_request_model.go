@@ -42,64 +42,150 @@ type iFaceVerifyIntlRequest interface {
 }
 
 type FaceVerifyIntlRequest struct {
+	// Required when ProductCode is set to FACE_IDU_MIN.
+	//
+	// Specifies whether to automatically register the face to the specified face library when no duplicate face is found during retrieval. Valid values:
+	//
+	// - 0: automatic registration.
+	//
+	// - 1: no registration. This is the default value.
+	//
 	// example:
 	//
 	// 1
 	AutoRegistration *string `json:"AutoRegistration,omitempty" xml:"AutoRegistration,omitempty"`
+	// Required when ProductCode is set to FACE_IDU_MIN.
+	//
+	// The face library codes created by the customer through the console. A maximum of 10 face libraries can be queried at the same time. Separate multiple face library codes with commas (,).
+	//
 	// example:
 	//
 	// 1232344，23444
 	FaceGroupCodes *string `json:"FaceGroupCodes,omitempty" xml:"FaceGroupCodes,omitempty"`
+	// Specifies whether to check the quality of the face image. Valid values:
+	//
+	// - Y: enabled.
+	//
+	// - N: disabled. This is the default value.
+	//
 	// example:
 	//
 	// Y
 	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
+	// Required when ProductCode is set to FACE_IDU_MIN.
+	//
+	// The face library for registration.
+	//
 	// example:
 	//
 	// 0e0c34a77f
 	FaceRegisterGroupCode *string `json:"FaceRegisterGroupCode,omitempty" xml:"FaceRegisterGroupCode,omitempty"`
+	// A custom unique business identifier used for subsequent troubleshooting. The value supports a combination of letters and numbers up to 32 characters in length. Make sure the value is unique.
+	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c35****
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// A custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
+	//
 	// example:
 	//
 	// 123456789
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	// The product code. Valid values: FACE_VERIFY_MIN and FACE_IDU_MIN.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FACE_VERIFY_MIN
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Required when ProductCode is set to FACE_IDU_MIN.
+	//
+	// Specifies the number of faces to return when multiple faces exist above the matching threshold. You can use this parameter to customize the number of returned faces.
+	//
+	// - Default value: 1.
+	//
+	// - Maximum value: 5.
+	//
 	// example:
 	//
 	// 1
 	ReturnFaces *string `json:"ReturnFaces,omitempty" xml:"ReturnFaces,omitempty"`
+	// The Base64-encoded portrait image.
+	//
+	// > **Note**
+	//
+	// >
+	//
+	// > - If you use this method to pass in the image, check the image size and do not pass in an excessively large image.
+	//
+	// > - Specify one of the following parameters: SourceFacePicture, SourceFacePictureUrl, or SourceFacePictureFile.
+	//
 	// example:
 	//
 	// base64
 	SourceFacePicture *string `json:"SourceFacePicture,omitempty" xml:"SourceFacePicture,omitempty"`
+	// The file stream of the face image.
+	//
 	// example:
 	//
 	// InputStream
 	SourceFacePictureFile *string `json:"SourceFacePictureFile,omitempty" xml:"SourceFacePictureFile,omitempty"`
+	// The publicly accessible HTTPS URL of the portrait image.
+	//
 	// example:
 	//
 	// https://***face1.jpeg
 	SourceFacePictureUrl *string `json:"SourceFacePictureUrl,omitempty" xml:"SourceFacePictureUrl,omitempty"`
+	// The Base64-encoded reference face image.
+	//
+	// > **Note**
+	//
+	// >
+	//
+	// > - If you use this method to pass in the image, check the image size and do not pass in an excessively large image.
+	//
+	// > - Specify one of the following parameters: TargetFacePicture, TargetFacePictureUrl, or TargetFacePictureFile.
+	//
 	// example:
 	//
 	// base64
 	TargetFacePicture *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
+	// The file stream of the reference face image.
+	//
 	// example:
 	//
 	// InputStream
 	TargetFacePictureFile *string `json:"TargetFacePictureFile,omitempty" xml:"TargetFacePictureFile,omitempty"`
+	// The HTTPS URL of the reference face image.
+	//
 	// example:
 	//
 	// https://***face2.jpeg
 	TargetFacePictureUrl *string `json:"TargetFacePictureUrl,omitempty" xml:"TargetFacePictureUrl,omitempty"`
+	// Required when ProductCode is set to FACE_IDU_MIN.
+	//
+	// The verification type. Valid values:
+	//
+	// - 0: retrieval pattern.
+	//
+	// > - Feature: Pass in a face library and a user face image (sourceFacePicture). The system automatically retrieves whether the specified face image (sourceFacePicture) already exists in the face library. Passive liveness detection can be enabled for the face image (sourceFacePicture).
+	//
+	// > - Recommended scenario: real-person account creation where duplicate registration is not allowed.
+	//
+	// - 1 (default): authentication pattern.
+	//
+	// > - Feature: Pass in a specified face image (sourceFacePicture) and a reference face image (TargetFacePicture). The system automatically authenticates whether the faces match. Passive liveness detection can be enabled for the specified face image (sourceFacePicture).
+	//
+	// > - Recommended scenario: authenticating the identity of the user when modifying logon credentials or account information.
+	//
+	// - 2: comprehensive pattern.
+	//
+	// > - Feature: Pass in a face library, a specified face image (sourceFacePicture), and a reference face image (TargetFacePicture). The system automatically retrieves whether the specified face image (sourceFacePicture) exists in the face library, authenticates whether it matches the reference face, and supports enabling passive liveness detection for the specified face image (sourceFacePicture).
+	//
+	// > - Recommended scenario: verifying that the user is new and creating an account in person.
+	//
 	// example:
 	//
 	// 0

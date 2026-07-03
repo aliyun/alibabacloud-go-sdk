@@ -20,19 +20,26 @@ type iFaceVerifyIntlResponseBody interface {
 }
 
 type FaceVerifyIntlResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *FaceVerifyIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *FaceVerifyIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s FaceVerifyIntlResponseBody) String() string {
@@ -89,6 +96,8 @@ func (s *FaceVerifyIntlResponseBody) Validate() error {
 }
 
 type FaceVerifyIntlResponseBodyResult struct {
+	// The face ID, user ID, and comparison score of the corresponding face in the face library when a duplicate face is found during retrieval.
+	//
 	// example:
 	//
 	// [
@@ -104,44 +113,83 @@ type FaceVerifyIntlResponseBodyResult struct {
 	//     }
 	//
 	// ]
-	DuplicateFace *string                                      `json:"DuplicateFace,omitempty" xml:"DuplicateFace,omitempty"`
-	ExtFaceInfo   *FaceVerifyIntlResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
+	DuplicateFace *string `json:"DuplicateFace,omitempty" xml:"DuplicateFace,omitempty"`
+	// The additional face result information.
+	ExtFaceInfo *FaceVerifyIntlResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
+	// The predicted reference age of the face. Prediction may fail and the value may not be returned.
+	//
 	// example:
 	//
 	// 30
 	FaceAge *int64 `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
+	// Indicates whether the captured face involves a liveness attack. Valid values:
+	//
+	// - Y: attack detected.
+	//
+	// - N: no attack detected.
+	//
+	// This field is returned only when passive liveness detection is enabled.
+	//
 	// example:
 	//
 	// N
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
+	// The probability of a passive liveness detection attack on the face. Value range: 0 to 100. This field is returned only when passive liveness detection is enabled.
+	//
 	// example:
 	//
 	// 99
 	FaceAttackScore *float64 `json:"FaceAttackScore,omitempty" xml:"FaceAttackScore,omitempty"`
+	// The comparison score between the face image submitted during verification and the reference face image. Value range: 0 to 100.
+	//
 	// example:
 	//
 	// 95.0
 	FaceComparisonScore *float64 `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
+	// The predicted gender of the face image. Prediction may fail and the value may not be returned. Valid values:
+	//
+	// - M: male.
+	//
+	// - F: female.
+	//
 	// example:
 	//
 	// M
 	FaceGender *string `json:"FaceGender,omitempty" xml:"FaceGender,omitempty"`
+	// The final verification result. Valid values:
+	//
+	// - Y: passed.
+	//
+	// - N: not passed.
+	//
 	// example:
 	//
 	// Y
 	FacePassed *string `json:"FacePassed,omitempty" xml:"FacePassed,omitempty"`
+	// The corresponding face ID returned only when the customer has enabled automatic registration and the face is registered successfully.
+	//
 	// example:
 	//
 	// 9e792ec84c8f0ca592a
 	FaceRegistrationId *string `json:"FaceRegistrationId,omitempty" xml:"FaceRegistrationId,omitempty"`
+	// The face registration result. Valid values:
+	//
+	// - 0: failed.
+	//
+	// - 1: succeeded.
+	//
 	// example:
 	//
 	// 0
 	FaceRegistrationResult *int64 `json:"FaceRegistrationResult,omitempty" xml:"FaceRegistrationResult,omitempty"`
+	// The sub-result code.
+	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// The unique identifier of the verification request.
+	//
 	// example:
 	//
 	// 4ab0b***cbde97
@@ -274,26 +322,42 @@ func (s *FaceVerifyIntlResponseBodyResult) Validate() error {
 }
 
 type FaceVerifyIntlResponseBodyResultExtFaceInfo struct {
+	FaceAttributeInfo *string `json:"FaceAttributeInfo,omitempty" xml:"FaceAttributeInfo,omitempty"`
+	// The liveness face quality score. Value range: 0 to 100. A higher value indicates better quality.
+	//
 	// example:
 	//
 	// 39.04
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
+	// The algorithm score for illumination, a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+	//
 	// example:
 	//
 	// 97.43
 	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
+	// The algorithm score for key area occlusion, a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+	//
 	// example:
 	//
 	// 100
 	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
+	// The algorithm score for occlusion, a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+	//
 	// example:
 	//
 	// 50.26
 	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
+	// The image sharpness score, a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+	//
 	// example:
 	//
 	// 86.47
-	SharpnessScore *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
+	SharpnessScore          *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
+	TargetFaceQualityScore  *float64 `json:"TargetFaceQualityScore,omitempty" xml:"TargetFaceQualityScore,omitempty"`
+	TargetIlluminationScore *float64 `json:"TargetIlluminationScore,omitempty" xml:"TargetIlluminationScore,omitempty"`
+	TargetKaOcclusionScore  *float64 `json:"TargetKaOcclusionScore,omitempty" xml:"TargetKaOcclusionScore,omitempty"`
+	TargetOcclusionScore    *float64 `json:"TargetOcclusionScore,omitempty" xml:"TargetOcclusionScore,omitempty"`
+	TargetSharpnessScore    *float64 `json:"TargetSharpnessScore,omitempty" xml:"TargetSharpnessScore,omitempty"`
 }
 
 func (s FaceVerifyIntlResponseBodyResultExtFaceInfo) String() string {
@@ -302,6 +366,10 @@ func (s FaceVerifyIntlResponseBodyResultExtFaceInfo) String() string {
 
 func (s FaceVerifyIntlResponseBodyResultExtFaceInfo) GoString() string {
 	return s.String()
+}
+
+func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) GetFaceAttributeInfo() *string {
+	return s.FaceAttributeInfo
 }
 
 func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) GetFaceQualityScore() *float64 {
@@ -322,6 +390,31 @@ func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) GetOcclusionScore() *float
 
 func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) GetSharpnessScore() *float64 {
 	return s.SharpnessScore
+}
+
+func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) GetTargetFaceQualityScore() *float64 {
+	return s.TargetFaceQualityScore
+}
+
+func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) GetTargetIlluminationScore() *float64 {
+	return s.TargetIlluminationScore
+}
+
+func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) GetTargetKaOcclusionScore() *float64 {
+	return s.TargetKaOcclusionScore
+}
+
+func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) GetTargetOcclusionScore() *float64 {
+	return s.TargetOcclusionScore
+}
+
+func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) GetTargetSharpnessScore() *float64 {
+	return s.TargetSharpnessScore
+}
+
+func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) SetFaceAttributeInfo(v string) *FaceVerifyIntlResponseBodyResultExtFaceInfo {
+	s.FaceAttributeInfo = &v
+	return s
 }
 
 func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) SetFaceQualityScore(v float64) *FaceVerifyIntlResponseBodyResultExtFaceInfo {
@@ -346,6 +439,31 @@ func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) SetOcclusionScore(v float6
 
 func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) SetSharpnessScore(v float64) *FaceVerifyIntlResponseBodyResultExtFaceInfo {
 	s.SharpnessScore = &v
+	return s
+}
+
+func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) SetTargetFaceQualityScore(v float64) *FaceVerifyIntlResponseBodyResultExtFaceInfo {
+	s.TargetFaceQualityScore = &v
+	return s
+}
+
+func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) SetTargetIlluminationScore(v float64) *FaceVerifyIntlResponseBodyResultExtFaceInfo {
+	s.TargetIlluminationScore = &v
+	return s
+}
+
+func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) SetTargetKaOcclusionScore(v float64) *FaceVerifyIntlResponseBodyResultExtFaceInfo {
+	s.TargetKaOcclusionScore = &v
+	return s
+}
+
+func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) SetTargetOcclusionScore(v float64) *FaceVerifyIntlResponseBodyResultExtFaceInfo {
+	s.TargetOcclusionScore = &v
+	return s
+}
+
+func (s *FaceVerifyIntlResponseBodyResultExtFaceInfo) SetTargetSharpnessScore(v float64) *FaceVerifyIntlResponseBodyResultExtFaceInfo {
+	s.TargetSharpnessScore = &v
 	return s
 }
 

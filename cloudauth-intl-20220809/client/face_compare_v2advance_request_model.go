@@ -33,7 +33,7 @@ type iFaceCompareV2AdvanceRequest interface {
 type FaceCompareV2AdvanceRequest struct {
 	// Specifies whether to enable quality check for the input face images.
 	//
-	// 	Danger: Deprecated.
+	// 	Danger: Deprecated.</danger>.
 	//
 	// example:
 	//

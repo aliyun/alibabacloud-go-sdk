@@ -20,19 +20,26 @@ type iDocOcrMaxV2ResponseBody interface {
 }
 
 type DocOcrMaxV2ResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DocOcrMaxV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *DocOcrMaxV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DocOcrMaxV2ResponseBody) String() string {
@@ -89,6 +96,8 @@ func (s *DocOcrMaxV2ResponseBody) Validate() error {
 }
 
 type DocOcrMaxV2ResponseBodyResult struct {
+	// The card and certificate recognition result. This parameter is returned only when the API response is successful.
+	//
 	// example:
 	//
 	// {
@@ -123,14 +132,24 @@ type DocOcrMaxV2ResponseBodyResult struct {
 	//
 	// }
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
+	// Indicates whether the verification passed. Valid values:
+	//
+	// - Y: passed.
+	//
+	// - N: not passed.
+	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// The sub-result code.
+	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// The unique identifier of the verification request.
+	//
 	// example:
 	//
 	// 08573be80f944d95ac812e019e3655a8

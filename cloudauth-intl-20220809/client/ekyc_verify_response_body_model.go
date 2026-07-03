@@ -96,7 +96,7 @@ func (s *EkycVerifyResponseBody) Validate() error {
 }
 
 type EkycVerifyResponseBodyResult struct {
-  // The face verification result information.
+  // The face verification result.
   // 
   // example:
   // 
@@ -112,7 +112,7 @@ type EkycVerifyResponseBodyResult struct {
   // 
   // }
   ExtFaceInfo *string `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty"`
-  // The document recognition result. This parameter is returned only when the API response is successful.
+  // The document recognition result. This field is returned only when the API response is successful.
   // 
   // example:
   // 
@@ -144,11 +144,7 @@ type EkycVerifyResponseBodyResult struct {
   // 
   // }
   ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
-  // Indicates whether the verification is passed. Valid values:
-  // 
-  // - T: Passed.
-  // 
-  // - F: Not passed.
+  // Indicates whether the verification is passed. Valid values: T (passed) and F (not passed).
   // 
   // example:
   // 

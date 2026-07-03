@@ -25,6 +25,8 @@ type iEkycVerifyV2Request interface {
   GetFacePictureFile() *string 
   SetFacePictureUrl(v string) *EkycVerifyV2Request
   GetFacePictureUrl() *string 
+  SetFaceQualityCheck(v string) *EkycVerifyV2Request
+  GetFaceQualityCheck() *string 
   SetIdOcrPictureBase64(v string) *EkycVerifyV2Request
   GetIdOcrPictureBase64() *string 
   SetIdOcrPictureFile(v string) *EkycVerifyV2Request
@@ -42,113 +44,114 @@ type iEkycVerifyV2Request interface {
 }
 
 type EkycVerifyV2Request struct {
-  // Indicates whether to enable authoritative identity verification. This parameter currently applies only to second-generation ID cards issued in the Chinese mainland.
+  // Specifies whether to enable authoritative identity verification. Currently, this feature is applicable only to second-generation ID cards of mainland China.
   // 
   // example:
   // 
   // T
   Authorize *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
-  // Indicates whether clipping is allowed. Clipping is disabled by default (T/F).
+  // Specifies whether cropping is allowed. Not allowed by default. Valid values: T and F.
   // 
-  // - T: Detection is required.
+  // - T: Cropping is allowed.
   // 
-  // - F: Detection is required (default is F).
+  // - F: Cropping is not allowed. (Default: F)
   // 
   // example:
   // 
   // F
   Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-  // The user\\"s real name. When Authorize=\\"T\\" and the certificate type is a Chinese mainland ID card, you must provide at least one of the following: key certificate information (DocName, DocNo) or certificate image (IdOcrPictureBase64/URL). Note: It supports combinations of one or more Chinese characters, excluding special characters except for the interpunct 【·】 used in ethnic minority names.
+  // The real name of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, at least one of the following groups must be provided: document key information (DocName, DocNo) or document image (IdOcrPictureBase64/URL). Note: Supports combinations of Chinese characters with a length of at least 1 character. Special characters are not supported, except for the middle dot (·) used in ethnic minority names.
   // 
   // example:
   // 
   // 张**
   DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
-  // The user\\"s certificate number. When Authorize=\\"T\\" and the certificate type is a Chinese mainland ID card, you must provide at least one of the following: key certificate information (DocName, DocNo) or certificate image (IdOcrPictureBase64/URL). Note: It supports a combination of letters and digits with a length of 18 characters.
+  // The document number of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, at least one of the following groups must be provided: document key information (DocName, DocNo) or document image (IdOcrPictureBase64/URL). Note: Supports a combination of letters and digits with a length of 18 characters.
   // 
   // example:
   // 
   // 410***************
   DocNo *string `json:"DocNo,omitempty" xml:"DocNo,omitempty"`
-  // Certificate type
+  // The document type.
   // 
   // example:
   // 
   // 00000001
   DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-  // Base64 encoding of the facial image.
+  // The Base64-encoded face image.
   // 
-  // Notes:
+  // Note:
   // 
-  // - If you choose this method to submit the certificate image, check the image size and avoid uploading excessively large images.
+  // - If you use this method to pass the face image, check the photo size and do not pass an overly large photo.
   // 
-  // - You must specify exactly one of FacePictureBase64, FacePictureUrl, or FacePictureFile.
+  // - You can only specify one of FacePictureBase64, FacePictureUrl, and FacePictureFile.
   // 
   // example:
   // 
   // Base64
   FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
-  // File stream of the facial photo
+  // The file stream of the face photo.
   // 
   // example:
   // 
   // InputStream
   FacePictureFile *string `json:"FacePictureFile,omitempty" xml:"FacePictureFile,omitempty"`
-  // URL of the facial photo
+  // The URL of the face photo.
   // 
   // example:
   // 
   // https://digital-face-prod8.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
   FacePictureUrl *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
-  // Base64-encoded certificate Image. Notes:
+  FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
+  // The Base64-encoded document image. Note:
   // 
-  // - If you use this method to submit the certificate image, check the image size and avoid uploading excessively large images.
+  // - If you use this method to pass the document image, check the photo size and do not pass an overly large photo.
   // 
-  // - You must specify exactly one of IdOcrPictureBase64, IdOcrPictureUrl, or IdOcrPictureFile.
+  // - You can only specify one of IdOcrPictureBase64, IdOcrPictureUrl, and IdOcrPictureFile.
   // 
   // example:
   // 
   // base64
   IdOcrPictureBase64 *string `json:"IdOcrPictureBase64,omitempty" xml:"IdOcrPictureBase64,omitempty"`
-  // File stream of the front side of the certificate
+  // The file stream of the front side of the document image.
   // 
   // example:
   // 
   // InputStream
   IdOcrPictureFile *string `json:"IdOcrPictureFile,omitempty" xml:"IdOcrPictureFile,omitempty"`
-  // URL of the front side of the certificate
+  // The URL of the front side of the document image.
   // 
   // example:
   // 
   // https://digital-cardocr-prod8.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
   IdOcrPictureUrl *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
-  // Custom OCR quality detection threshold mode:
+  // The custom OCR quality detection threshold mode:
   // 
-  // - 0: System default
+  // - 0: System default.
   // 
-  // - 1: Strict mode
+  // - 1: Strict mode.
   // 
-  // - 2: Loose mode
+  // - 2: Lenient mode.
   // 
-  // - 3 (default): Shutdown quality detection
+  // - 3 (Default): Quality detection is disabled.
   // 
   // example:
   // 
   // 0
   IdThreshold *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
-  // A custom business UUID defined by the merchant, used for subsequent issue tracking and troubleshooting. It supports a combination of letters and digits with a length of 32 characters. Ensure its uniqueness.
+  // A unique business identifier customized by the merchant, used for subsequent troubleshooting. Supports a combination of letters and digits with a length of 32 characters. Ensure that the value is unique.
   // 
   // example:
   // 
   // e0c34a77f5ac40a5aa5e6ed20c353888
   MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-  // Your custom user ID or another identifier that can uniquely identify a specific user, such as a mobile phone number or mailbox address. We strongly recommend pre-masking the value of this field—for example, by applying a hash function.
+  // A custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
   // 
   // example:
   // 
   // 123456
   MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
-  // Product code
+  // The product code.
   // 
   // example:
   // 
@@ -194,6 +197,10 @@ func (s *EkycVerifyV2Request) GetFacePictureFile() *string  {
 
 func (s *EkycVerifyV2Request) GetFacePictureUrl() *string  {
   return s.FacePictureUrl
+}
+
+func (s *EkycVerifyV2Request) GetFaceQualityCheck() *string  {
+  return s.FaceQualityCheck
 }
 
 func (s *EkycVerifyV2Request) GetIdOcrPictureBase64() *string  {
@@ -261,6 +268,11 @@ func (s *EkycVerifyV2Request) SetFacePictureFile(v string) *EkycVerifyV2Request 
 
 func (s *EkycVerifyV2Request) SetFacePictureUrl(v string) *EkycVerifyV2Request {
   s.FacePictureUrl = &v
+  return s
+}
+
+func (s *EkycVerifyV2Request) SetFaceQualityCheck(v string) *EkycVerifyV2Request {
+  s.FaceQualityCheck = &v
   return s
 }
 

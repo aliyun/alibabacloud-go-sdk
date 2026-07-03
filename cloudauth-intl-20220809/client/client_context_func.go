@@ -1291,7 +1291,7 @@ func (client *Client) DocOcrMaxWithContext(ctx context.Context, request *DocOcrM
 
 // Summary:
 //
-// 全球证件ocr识别接口
+// Recognizes identity documents worldwide through OCR.
 //
 // @param request - DocOcrMaxV2Request
 //
@@ -1578,6 +1578,10 @@ func (client *Client) EkycVerifyWithContext(ctx context.Context, request *EkycVe
 		query["FacePictureUrl"] = request.FacePictureUrl
 	}
 
+	if !dara.IsNil(request.FaceQualityCheck) {
+		query["FaceQualityCheck"] = request.FaceQualityCheck
+	}
+
 	if !dara.IsNil(request.IdOcrPictureUrl) {
 		query["IdOcrPictureUrl"] = request.IdOcrPictureUrl
 	}
@@ -1633,7 +1637,7 @@ func (client *Client) EkycVerifyWithContext(ctx context.Context, request *EkycVe
 
 // Summary:
 //
-// # Server-side-only eKYC API
+// The eKYC solution server-side API.
 //
 // @param request - EkycVerifyV2Request
 //
@@ -1670,6 +1674,10 @@ func (client *Client) EkycVerifyV2WithContext(ctx context.Context, request *Ekyc
 
 	if !dara.IsNil(request.FacePictureUrl) {
 		query["FacePictureUrl"] = request.FacePictureUrl
+	}
+
+	if !dara.IsNil(request.FaceQualityCheck) {
+		query["FaceQualityCheck"] = request.FaceQualityCheck
 	}
 
 	if !dara.IsNil(request.IdOcrPictureUrl) {
@@ -1735,7 +1743,7 @@ func (client *Client) EkycVerifyV2WithContext(ctx context.Context, request *Ekyc
 
 // Summary:
 //
-// Compares two face images by using face recognition technology and returns the comparison result and similarity score.
+// Uses facial recognition technology to compare and verify two input face images, returning the face comparison result and similarity score.
 //
 // @param request - FaceCompareRequest
 //
@@ -1969,7 +1977,7 @@ func (client *Client) FaceCrossCompareIntlWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// FaceDuplicationCheckIntl is designed for scenarios where SDK integration is not feasible. You can call this API operation to submit facial images and perform the following functions: verify whether the user is a real person, compare the submitted face against a stored face to verify identity, search a face database to check for existing records, and automatically register the face in a specified face database after successful verification.
+// Performs face duplication check (FaceDuplicationCheckIntl) for scenarios where SDK integration is not feasible. Submits face images through the API to verify whether a user is a real person, compare the face against a retained face image for identity verification, search a face library to determine whether the face already exists, and automatically register the face in a specified face library after successful verification.
 //
 // @param request - FaceDuplicationCheckIntlRequest
 //
@@ -2139,7 +2147,7 @@ func (client *Client) FaceGuardRiskWithContext(ctx context.Context, request *Fac
 
 // Summary:
 //
-// Calls the server-side API for passive liveness detection.
+// Provides the server-side passive liveness detection API.
 //
 // @param request - FaceLivenessRequest
 //
@@ -2217,11 +2225,11 @@ func (client *Client) FaceLivenessWithContext(ctx context.Context, request *Face
 
 // Summary:
 //
-// 人脸活体验证
+// Detects whether a face in an image is from a real person by using an API operation. This service combines the Qwen-VL large model for in-depth forgery risk detection to determine face liveness.
 //
 // Description:
 //
-// 调用FaceLivenessV2接口对人脸图片进行活体检测。
+// Calls the FaceLivenessV2 operation to perform liveness detection on a face image.
 //
 // @param request - FaceLivenessV2Request
 //
@@ -2291,11 +2299,11 @@ func (client *Client) FaceLivenessV2WithContext(ctx context.Context, request *Fa
 
 // Summary:
 //
-// 人脸活体验证
+// Performs real face detection by using face images obtained in advance through the API operation. The algorithm identifies whether a face is a screen recapture or printed photo to detect basic presentation liveness attacks that render fake faces, and supports comparison with another face image to authenticate whether they belong to the same person.
 //
 // Description:
 //
-// 调用FaceVerifyIntl接口对人脸图片进行活体检测。
+// Calls the FaceVerifyIntl operation to perform liveness detection on face images.
 //
 // @param request - FaceVerifyIntlRequest
 //
@@ -2587,6 +2595,100 @@ func (client *Client) Id2MetaVerifyIntlWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Verifies the identity of an Indonesian user by calling the authoritative source API in a standalone business scenario.
+//
+// @param request - IdnAuthorityVerifyIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IdnAuthorityVerifyIntlResponse
+func (client *Client) IdnAuthorityVerifyIntlWithContext(ctx context.Context, request *IdnAuthorityVerifyIntlRequest, runtime *dara.RuntimeOptions) (_result *IdnAuthorityVerifyIntlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BirthDate) {
+		query["BirthDate"] = request.BirthDate
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.FullName) {
+		query["FullName"] = request.FullName
+	}
+
+	if !dara.IsNil(request.IdNumber) {
+		query["IdNumber"] = request.IdNumber
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.MerchantUserId) {
+		query["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !dara.IsNil(request.Mobile) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneCode) {
+		query["SceneCode"] = request.SceneCode
+	}
+
+	if !dara.IsNil(request.SourceFacePictureFile) {
+		query["SourceFacePictureFile"] = request.SourceFacePictureFile
+	}
+
+	if !dara.IsNil(request.SourceFacePictureUrl) {
+		query["SourceFacePictureUrl"] = request.SourceFacePictureUrl
+	}
+
+	if !dara.IsNil(request.Timestamp) {
+		query["Timestamp"] = request.Timestamp
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SourceFacePicture) {
+		body["SourceFacePicture"] = request.SourceFacePicture
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("IdnAuthorityVerifyIntl"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &IdnAuthorityVerifyIntlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Initializes an authentication session.
 //
 // @param tmpReq - InitializeRequest
@@ -2859,7 +2961,7 @@ func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *Initial
 
 // Summary:
 //
-// 认证初始化
+// Initializes an authentication session.
 //
 // @param tmpReq - InitializeV2Request
 //

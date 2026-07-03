@@ -20,15 +20,15 @@ type iFaceCompareV2ResponseBody interface {
 }
 
 type FaceCompareV2ResponseBody struct {
-	// The return code.
+	// The response code.
 	//
-	// 200: succeeded. Other values: error codes. For more information, see error codes.
+	// 200: success. Other values: error codes. For more information, see error codes.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return message.
+	// The response message.
 	//
 	// example:
 	//
@@ -100,17 +100,17 @@ func (s *FaceCompareV2ResponseBody) Validate() error {
 type FaceCompareV2ResponseBodyResult struct {
 	// The additional result information.
 	ExtFaceInfo *FaceCompareV2ResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The comparison score between the submitted face image and the reference face image during verification. Value range: 0 to 100.
+	// The comparison score between the submitted face image and the reference face image during the verification process. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 98
 	FaceComparisonScore *float64 `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// Indicates whether the verification passed. Valid values:
+	// Indicates whether the verification is passed. Valid values:
 	//
-	// - Y: passed.
+	// - Y: Passed.
 	//
-	// - N: not passed.
+	// - N: Not passed.
 	//
 	// example:
 	//
@@ -207,7 +207,12 @@ type FaceCompareV2ResponseBodyResultExtFaceInfo struct {
 	// example:
 	//
 	// 86.47
-	SharpnessScore *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
+	SharpnessScore          *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
+	TargetFaceQualityScore  *float64 `json:"TargetFaceQualityScore,omitempty" xml:"TargetFaceQualityScore,omitempty"`
+	TargetIlluminationScore *float64 `json:"TargetIlluminationScore,omitempty" xml:"TargetIlluminationScore,omitempty"`
+	TargetKaOcclusionScore  *float64 `json:"TargetKaOcclusionScore,omitempty" xml:"TargetKaOcclusionScore,omitempty"`
+	TargetOcclusionScore    *float64 `json:"TargetOcclusionScore,omitempty" xml:"TargetOcclusionScore,omitempty"`
+	TargetSharpnessScore    *float64 `json:"TargetSharpnessScore,omitempty" xml:"TargetSharpnessScore,omitempty"`
 }
 
 func (s FaceCompareV2ResponseBodyResultExtFaceInfo) String() string {
@@ -238,6 +243,26 @@ func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) GetSharpnessScore() *float6
 	return s.SharpnessScore
 }
 
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) GetTargetFaceQualityScore() *float64 {
+	return s.TargetFaceQualityScore
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) GetTargetIlluminationScore() *float64 {
+	return s.TargetIlluminationScore
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) GetTargetKaOcclusionScore() *float64 {
+	return s.TargetKaOcclusionScore
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) GetTargetOcclusionScore() *float64 {
+	return s.TargetOcclusionScore
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) GetTargetSharpnessScore() *float64 {
+	return s.TargetSharpnessScore
+}
+
 func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) SetFaceQualityScore(v float64) *FaceCompareV2ResponseBodyResultExtFaceInfo {
 	s.FaceQualityScore = &v
 	return s
@@ -260,6 +285,31 @@ func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) SetOcclusionScore(v float64
 
 func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) SetSharpnessScore(v float64) *FaceCompareV2ResponseBodyResultExtFaceInfo {
 	s.SharpnessScore = &v
+	return s
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) SetTargetFaceQualityScore(v float64) *FaceCompareV2ResponseBodyResultExtFaceInfo {
+	s.TargetFaceQualityScore = &v
+	return s
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) SetTargetIlluminationScore(v float64) *FaceCompareV2ResponseBodyResultExtFaceInfo {
+	s.TargetIlluminationScore = &v
+	return s
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) SetTargetKaOcclusionScore(v float64) *FaceCompareV2ResponseBodyResultExtFaceInfo {
+	s.TargetKaOcclusionScore = &v
+	return s
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) SetTargetOcclusionScore(v float64) *FaceCompareV2ResponseBodyResultExtFaceInfo {
+	s.TargetOcclusionScore = &v
+	return s
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) SetTargetSharpnessScore(v float64) *FaceCompareV2ResponseBodyResultExtFaceInfo {
+	s.TargetSharpnessScore = &v
 	return s
 }
 

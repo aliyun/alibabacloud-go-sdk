@@ -32,9 +32,9 @@ type iFaceLivenessRequest interface {
 type FaceLivenessRequest struct {
 	// Specifies whether to allow cropping. Default value: F. Valid values:
 	//
-	// - T: enabled.
+	// - T: Allow cropping.
 	//
-	// - F: disabled. (Default).
+	// - F: Do not allow cropping.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type FaceLivenessRequest struct {
 	//
 	// Note:
 	//
-	// - If you use FacePictureBase64 to pass in the face photo, check the photo size and do not pass in an excessively large photo.
+	// - If you use FacePictureBase64 (Base64-encoded photo) to pass in the face photo, check the photo size and do not pass in an excessively large photo.
 	//
 	// example:
 	//
@@ -56,29 +56,29 @@ type FaceLivenessRequest struct {
 	//
 	// https://digital-face-prod8.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
 	FacePictureUrl *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
-	// Specifies whether to return the face quality score. Default value: F. Valid values:
+	// Specifies whether to output the face quality score. Default value: F. Valid values:
 	//
-	// - T: enabled.
+	// - T: Output the face quality score.
 	//
-	// - F: disabled. (Default).
+	// - F: Do not output the face quality score.
 	//
 	// example:
 	//
 	// T
 	FaceQuality *string `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
-	// The face quality check.
+	// Specifies whether to perform a face quality check.
 	//
 	// example:
 	//
 	// Y
 	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
-	// The merchant-defined unique business ID for subsequent troubleshooting. The value can contain letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
+	// The merchant-defined unique business ID for subsequent troubleshooting. The value supports a combination of letters and numbers with a maximum length of 32 characters. Ensure that the value is unique.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// The merchant user ID or another identifier that can be used to identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of the userId field before passing it in, for example, by hashing the value.
+	// The merchant user ID or other identifier that can be used to identify a specific user, such as a phone number or email address. We strongly recommend that you pre-desensitize the value of the userId field, such as by hashing the value.
 	//
 	// example:
 	//
@@ -86,9 +86,9 @@ type FaceLivenessRequest struct {
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
 	// Specifies whether to perform occlusion detection. Default value: F. Valid values:
 	//
-	// - T: enabled.
+	// - T: Perform occlusion detection.
 	//
-	// - F: disabled. (Default).
+	// - F: Do not perform occlusion detection.
 	//
 	// example:
 	//

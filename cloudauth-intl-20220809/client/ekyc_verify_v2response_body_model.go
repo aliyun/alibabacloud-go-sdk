@@ -20,13 +20,13 @@ type iEkycVerifyV2ResponseBody interface {
 }
 
 type EkycVerifyV2ResponseBody struct {
-  // Return code
+  // The response code.
   // 
   // example:
   // 
   // Success
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-  // Return message
+  // The response message.
   // 
   // example:
   // 
@@ -38,7 +38,7 @@ type EkycVerifyV2ResponseBody struct {
   // 
   // 4EB356FE-BB6A-5DCC-B4C5-E8051787EBA1
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Return Result
+  // The response result.
   Result *EkycVerifyV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *EkycVerifyV2ResponseBody) Validate() error {
 }
 
 type EkycVerifyV2ResponseBodyResult struct {
-  // Face detection result information
+  // The face verification result information.
   // 
   // example:
   // 
@@ -112,7 +112,7 @@ type EkycVerifyV2ResponseBodyResult struct {
   // 
   // }
   ExtFaceInfo *string `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty"`
-  // Certificate Classification Result. Returned only when the API response Succeeded.
+  // The document recognition result. This parameter is returned only when the API response is successful.
   // 
   // example:
   // 
@@ -144,19 +144,19 @@ type EkycVerifyV2ResponseBodyResult struct {
   // 
   // }
   ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
-  // Indicates whether the verification passed. The value is Y if passed, or N if Failed.
+  // Indicates whether the verification is passed. Valid values: Y (passed) and N (not passed).
   // 
   // example:
   // 
   // Y
   Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-  // Sub-result code
+  // The sub-result code.
   // 
   // example:
   // 
   // 205
   SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-  // The unique id of the request
+  // The unique identifier of the authentication request.
   // 
   // example:
   // 

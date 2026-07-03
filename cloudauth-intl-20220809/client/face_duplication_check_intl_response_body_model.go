@@ -96,7 +96,7 @@ func (s *FaceDuplicationCheckIntlResponseBody) Validate() error {
 }
 
 type FaceDuplicationCheckIntlResponseBodyResult struct {
-	// The face ID and UserID retrieved from the face database when a duplicate face is detected.
+	// The face ID and UserID retrieved from the face library when a duplicate face is detected.
 	//
 	// example:
 	//
@@ -114,33 +114,33 @@ type FaceDuplicationCheckIntlResponseBodyResult struct {
 	//
 	// ]
 	DuplicateFace *string `json:"DuplicateFace,omitempty" xml:"DuplicateFace,omitempty"`
-	// The additional result information.
+	// The related result information.
 	ExtFaceInfo *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
-	// The estimated age of the face. This value may not be returned if the prediction fails.
+	// The estimated age of the face. The prediction may fail and no value is returned in some cases.
 	//
 	// example:
 	//
 	// 30
 	FaceAge *string `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
-	// Indicates whether the captured face involves a liveness attack. A value of Y indicates an attack, and a value of N indicates no attack. This field is returned only when passive liveness detection is enabled.
+	// Indicates whether the captured face involves a liveness attack. Valid values: Y (attack detected) and N (no attack detected). This field is returned when passive liveness detection is enabled.
 	//
 	// example:
 	//
 	// N
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
-	// The probability of a passive liveness detection attack. Value range: 0 to 100. This field is returned only when passive liveness detection is enabled.
+	// The probability of a passive liveness detection attack. The value ranges from 0 to 100. This field is returned when passive liveness detection is enabled.
 	//
 	// example:
 	//
 	// 99
 	FaceAttackScore *string `json:"FaceAttackScore,omitempty" xml:"FaceAttackScore,omitempty"`
-	// The 1:1 face comparison score returned when the verification mode is 1 or 2. Value range: 0 to 100.
+	// The 1:1 face comparison score returned when the verification mode is 1 or 2. The value ranges from 0 to 100.
 	//
 	// example:
 	//
 	// 98
 	FaceComparisonScore *string `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// The predicted gender of the face. This value may not be returned if the prediction fails. Valid values:
+	// The predicted gender of the face image. The prediction may fail and no value is returned in some cases. Valid values:
 	//
 	// - M: Male.
 	//
@@ -160,7 +160,7 @@ type FaceDuplicationCheckIntlResponseBodyResult struct {
 	//
 	// Y
 	FacePassed *string `json:"FacePassed,omitempty" xml:"FacePassed,omitempty"`
-	// The FACEID returned only when automatic registration is enabled and the face is registered successfully.
+	// The FACEID returned only when the customer has enabled automatic registration and the face is registered.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type FaceDuplicationCheckIntlResponseBodyResult struct {
 	//
 	// 0
 	FaceRegistrationResult *int32 `json:"FaceRegistrationResult,omitempty" xml:"FaceRegistrationResult,omitempty"`
-	// The description of the verification result. For more information, refer to the ResultObject.SubCode error code description.
+	// The verification result description. For more information, refer to the ResultObject.SubCode error code description.
 	//
 	// example:
 	//
@@ -316,6 +316,7 @@ func (s *FaceDuplicationCheckIntlResponseBodyResult) Validate() error {
 }
 
 type FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo struct {
+	FaceAttributeInfo *string `json:"FaceAttributeInfo,omitempty" xml:"FaceAttributeInfo,omitempty"`
 	// The overall quality score.
 	//
 	// example:
@@ -345,7 +346,12 @@ type FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo struct {
 	// example:
 	//
 	// 86.47
-	SharpnessScore *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
+	SharpnessScore          *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
+	TargetFaceQualityScore  *float64 `json:"TargetFaceQualityScore,omitempty" xml:"TargetFaceQualityScore,omitempty"`
+	TargetIlluminationScore *float64 `json:"TargetIlluminationScore,omitempty" xml:"TargetIlluminationScore,omitempty"`
+	TargetKaOcclusionScore  *float64 `json:"TargetKaOcclusionScore,omitempty" xml:"TargetKaOcclusionScore,omitempty"`
+	TargetOcclusionScore    *float64 `json:"TargetOcclusionScore,omitempty" xml:"TargetOcclusionScore,omitempty"`
+	TargetSharpnessScore    *float64 `json:"TargetSharpnessScore,omitempty" xml:"TargetSharpnessScore,omitempty"`
 }
 
 func (s FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) String() string {
@@ -354,6 +360,10 @@ func (s FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) String() string {
 
 func (s FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GoString() string {
 	return s.String()
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetFaceAttributeInfo() *string {
+	return s.FaceAttributeInfo
 }
 
 func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetFaceQualityScore() *float64 {
@@ -374,6 +384,31 @@ func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetOcclusionScor
 
 func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetSharpnessScore() *float64 {
 	return s.SharpnessScore
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetTargetFaceQualityScore() *float64 {
+	return s.TargetFaceQualityScore
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetTargetIlluminationScore() *float64 {
+	return s.TargetIlluminationScore
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetTargetKaOcclusionScore() *float64 {
+	return s.TargetKaOcclusionScore
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetTargetOcclusionScore() *float64 {
+	return s.TargetOcclusionScore
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetTargetSharpnessScore() *float64 {
+	return s.TargetSharpnessScore
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetFaceAttributeInfo(v string) *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
+	s.FaceAttributeInfo = &v
+	return s
 }
 
 func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetFaceQualityScore(v float64) *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
@@ -398,6 +433,31 @@ func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetOcclusionScor
 
 func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetSharpnessScore(v float64) *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
 	s.SharpnessScore = &v
+	return s
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetTargetFaceQualityScore(v float64) *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
+	s.TargetFaceQualityScore = &v
+	return s
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetTargetIlluminationScore(v float64) *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
+	s.TargetIlluminationScore = &v
+	return s
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetTargetKaOcclusionScore(v float64) *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
+	s.TargetKaOcclusionScore = &v
+	return s
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetTargetOcclusionScore(v float64) *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
+	s.TargetOcclusionScore = &v
+	return s
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetTargetSharpnessScore(v float64) *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
+	s.TargetSharpnessScore = &v
 	return s
 }
 
