@@ -22,7 +22,7 @@ type iDescribeEventDisposeResponseBody interface {
 }
 
 type DescribeEventDisposeResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeEventDisposeResponseBody struct {
 	//
 	// 123456
 	Data *DescribeEventDisposeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeEventDisposeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -121,15 +121,15 @@ func (s *DescribeEventDisposeResponseBody) Validate() error {
 }
 
 type DescribeEventDisposeResponseBodyData struct {
-	// An array consisting of JSON objects that are configured for event handling.
+	// The JSON object of the event handling configuration.
 	//
 	// example:
 	//
 	// { playbookName: "使用安全组封禁入方向IP", sophonTaskId: "400442a5-4f98-45ed-97db-5ab117eb0b8f", … }
 	EventDispose []interface{} `json:"EventDispose,omitempty" xml:"EventDispose,omitempty" type:"Repeated"`
-	// The JSON object that is configured for an alert recipient.
+	// The JSON object of the alert recipient configuration.
 	ReceiverInfo *DescribeEventDisposeResponseBodyDataReceiverInfo `json:"ReceiverInfo,omitempty" xml:"ReceiverInfo,omitempty" type:"Struct"`
-	// The description of the event.
+	// The remarks on the event.
 	//
 	// example:
 	//
@@ -137,13 +137,13 @@ type DescribeEventDisposeResponseBodyData struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// 	- 0: not handled
+	// - 0: unhandled
 	//
-	// 	- 1: handing
+	// - 1: handling
 	//
-	// 	- 5: handling failed
+	// - 5: failed
 	//
-	// 	- 10: handled
+	// - 10: handled
 	//
 	// example:
 	//
@@ -205,41 +205,41 @@ func (s *DescribeEventDisposeResponseBodyData) Validate() error {
 }
 
 type DescribeEventDisposeResponseBodyDataReceiverInfo struct {
-	// The channel of the contact information. Valid values:
+	// The channel to send the notification. Valid values:
 	//
-	// 	- message
+	// - message: text message
 	//
-	// 	- mail
+	// - mail: email
 	//
 	// example:
 	//
 	// message
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The creation time.
+	// The time when the record was created.
 	//
 	// example:
 	//
 	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The time when the record was last modified.
 	//
 	// example:
 	//
 	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the recipient who receives the event handling result.
+	// The record ID of the recipient for the event handling result.
 	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The UUID of the event.
+	// The globally unique UUID of the event.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The message title.
+	// The title of the message.
 	//
 	// example:
 	//
@@ -251,11 +251,11 @@ type DescribeEventDisposeResponseBodyDataReceiverInfo struct {
 	//
 	// 138xxxxxx
 	Receiver *string `json:"Receiver,omitempty" xml:"Receiver,omitempty"`
-	// Indicates whether the message is sent. Valid values:
+	// The sending status of the notification. Valid values:
 	//
-	// 	- 0: not sent
+	// - 0: not sent
 	//
-	// 	- 1: sent
+	// - 1: sent
 	//
 	// example:
 	//

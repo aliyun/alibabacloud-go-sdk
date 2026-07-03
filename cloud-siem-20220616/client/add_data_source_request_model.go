@@ -26,21 +26,13 @@ type iAddDataSourceRequest interface {
 }
 
 type AddDataSourceRequest struct {
-	// The ID of the cloud account.
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 123xxxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The code of the cloud service provider.
-	//
-	// Valid values:
-	//
-	// 	- qcloud
-	//
-	// 	- hcloud
-	//
-	// 	- aliyun
+	// The code for the multicloud service.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +44,9 @@ type AddDataSourceRequest struct {
 	//
 	// example:
 	//
-	// beijing_waf_kafka
+	// XX-Beijing-Kafka
 	DataSourceInstanceName *string `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
-	// The parameters of the data source. Set this parameter to a JSON array.
+	// The parameters for the data source. The value must be a JSON array.
 	//
 	// example:
 	//
@@ -64,25 +56,25 @@ type AddDataSourceRequest struct {
 	//
 	// example:
 	//
-	// waf_alert_log
+	// XX Cloud Firewall Shanghai instance
 	DataSourceInstanceRemark *string `json:"DataSourceInstanceRemark,omitempty" xml:"DataSourceInstanceRemark,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- obs: Huawei Cloud Object Storage Service (OBS)
+	// - obs: Huawei Cloud Object Storage Service (OBS).
 	//
-	// 	- wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	// - wafApi: Tencent Cloud Web Application Firewall (WAF) download API.
 	//
-	// 	- ckafka: Tencent Cloud Kafka (CKafka)
+	// - ckafka: Tencent Cloud CKafka.
 	//
 	// example:
 	//
 	// obs
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region of the data management center for threat analysis. Select a region based on the location of your assets. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: For assets in the Chinese mainland or China (Hong Kong).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: For assets in regions outside China.
 	//
 	// example:
 	//

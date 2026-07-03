@@ -16,11 +16,11 @@ type iCloseDeliveryResponseBody interface {
 }
 
 type CloseDeliveryResponseBody struct {
-	// Indicates whether the threat analysis feature was disabled. Valid values:
+	// The result of the request. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//

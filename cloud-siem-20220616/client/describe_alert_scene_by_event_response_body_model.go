@@ -22,7 +22,7 @@ type iDescribeAlertSceneByEventResponseBody interface {
 }
 
 type DescribeAlertSceneByEventResponseBody struct {
-	// The HTTP status code.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeAlertSceneByEventResponseBody struct {
 	//
 	// 123456
 	Data []*DescribeAlertSceneByEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeAlertSceneByEventResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -125,43 +125,43 @@ func (s *DescribeAlertSceneByEventResponseBody) Validate() error {
 }
 
 type DescribeAlertSceneByEventResponseBodyData struct {
-	// The alert name. The display name of the alert name varies based on the language of the system, such as Chinese and English.
+	// The display name of the alert. The value varies based on the language settings.
 	//
 	// example:
 	//
 	// login_common_ip
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// The ID of the alert name.
+	// The identifier of the alert name.
 	//
 	// example:
 	//
 	// login_common_ip
 	AlertNameId *string `json:"AlertNameId,omitempty" xml:"AlertNameId,omitempty"`
-	// The alert title. The display name of the alert title varies based on the language of the system, such as Chinese and English.
+	// The display title of the alert. The value varies based on the language settings.
 	//
 	// example:
 	//
 	// Unusual Logon-login_common_ip
 	AlertTile *string `json:"AlertTile,omitempty" xml:"AlertTile,omitempty"`
-	// The ID of the alert title.
+	// The identifier of the alert title.
 	//
 	// example:
 	//
 	// Unusual Logon-login_common_ip
 	AlertTileId *string `json:"AlertTileId,omitempty" xml:"AlertTileId,omitempty"`
-	// The alert type. The display name of the alert type varies based on the language of the system, such as Chinese and English.
+	// The display name of the alert type. The value varies based on the language settings.
 	//
 	// example:
 	//
 	// Unusual Logon
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The ID of the alert type.
+	// The identifier of the alert type.
 	//
 	// example:
 	//
 	// Unusual Logon
 	AlertTypeId *string `json:"AlertTypeId,omitempty" xml:"AlertTypeId,omitempty"`
-	// The objects that can be added to the whitelist.
+	// The objects to be whitelisted.
 	//
 	// example:
 	//
@@ -254,25 +254,25 @@ func (s *DescribeAlertSceneByEventResponseBodyData) Validate() error {
 }
 
 type DescribeAlertSceneByEventResponseBodyDataTargets struct {
-	// The display name of the entity attribute field that can be added to the whitelist.
+	// The display name of the entity property field that can be whitelisted.
 	//
 	// example:
 	//
 	// host uuid
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The entity attribute field that can be added to the whitelist.
+	// The field of the entity property that can be whitelisted.
 	//
 	// example:
 	//
 	// host_uuid
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The right operand that is displayed by default in the whitelist rule.
+	// The default right operand displayed for the whitelisting rule.
 	//
 	// example:
 	//
 	// 441862da-a539-4cc0-a00d-47395582****
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The supported right operands of the whitelist rule.
+	// The available right operands for the whitelisting rule.
 	//
 	// example:
 	//

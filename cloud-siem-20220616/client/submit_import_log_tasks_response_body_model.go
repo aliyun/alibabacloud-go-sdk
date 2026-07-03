@@ -62,7 +62,7 @@ func (s *SubmitImportLogTasksResponseBody) Validate() error {
 }
 
 type SubmitImportLogTasksResponseBodyData struct {
-	// The number of log collection tasks that are submitted.
+	// The number of log ingestion tasks that are successfully submitted.
 	//
 	// example:
 	//

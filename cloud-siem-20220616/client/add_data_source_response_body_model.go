@@ -18,7 +18,7 @@ type iAddDataSourceResponseBody interface {
 type AddDataSourceResponseBody struct {
 	// The data returned.
 	Data *AddDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *AddDataSourceResponseBody) Validate() error {
 }
 
 type AddDataSourceResponseBodyData struct {
-	// The number of data sources that are added. The value 1 indicates that data source is added, and a value less than or equal to 0 indicates that the data source failed to be added.
+	// The number of data sources that were added. A value of 1 indicates success. A value of 0 or less indicates failure.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+	// The ID of the data source. The threat analysis feature generates the ID by calculating an MD5 hash of the parameter values.
 	//
 	// example:
 	//

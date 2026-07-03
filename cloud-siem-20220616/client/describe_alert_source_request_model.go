@@ -24,51 +24,51 @@ type iDescribeAlertSourceRequest interface {
 }
 
 type DescribeAlertSourceRequest struct {
-	// The end of the time range to query. Unit: milliseconds.
+	// The end of the query time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The risk levels. The value is a JSON array. Valid values:
+	// The threat levels. Valid values:
 	//
-	// 	- serious: high
+	// - `serious`: High
 	//
-	// 	- suspicious: medium
+	// - `suspicious`: Medium
 	//
-	// 	- remind: low
+	// - `remind`: Low
 	//
 	// example:
 	//
 	// ["serious","suspicious","remind"]
 	Level []*string `json:"Level,omitempty" xml:"Level,omitempty" type:"Repeated"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region of the data management center for threat analysis. Select the data management center that corresponds to the region where your assets are located. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - `cn-hangzhou`: for assets in the Chinese mainland and Hong Kong (China).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - `ap-southeast-1`: for assets in regions outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID of the member whose data you want to view. An administrator uses this parameter to view data from the perspective of a specific member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The type of view. Valid values:
 	//
-	// - 0: the current Alibaba Cloud account
+	// - `0`: View data for the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - `1`: View data for all accounts in the enterprise.
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The beginning of the time range to query. Unit: milliseconds.
+	// The start of the query time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

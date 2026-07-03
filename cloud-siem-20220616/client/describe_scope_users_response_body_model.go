@@ -22,7 +22,7 @@ type iDescribeScopeUsersResponseBody interface {
 }
 
 type DescribeScopeUsersResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeScopeUsersResponseBody struct {
 	//
 	// 123456
 	Data []*DescribeScopeUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeScopeUsersResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -125,23 +125,23 @@ func (s *DescribeScopeUsersResponseBody) Validate() error {
 }
 
 type DescribeScopeUsersResponseBodyData struct {
-	// The ID of the security information and event management (SIEM) user.
+	// The user ID in Security Information and Event Management (SIEM).
 	//
 	// example:
 	//
 	// 123456789****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 云code。  取值：
+	// The cloud code. Valid values:
 	//
-	// - qcloud：腾讯云
+	// - qcloud: Tencent Cloud
 	//
-	// - hcloud：华为云
+	// - hcloud: Huawei Cloud
 	//
 	// example:
 	//
 	// qcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// An array consisting of the domain names that are protected by the WAF instance.
+	// The list of domain names protected by the WAF instance.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type DescribeScopeUsersResponseBodyData struct {
 	//
 	// waf-cn-tl123ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 多云用户ID。
+	// The multicloud user ID.
 	//
 	// example:
 	//

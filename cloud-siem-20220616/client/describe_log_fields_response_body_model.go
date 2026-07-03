@@ -22,7 +22,7 @@ type iDescribeLogFieldsResponseBody interface {
 }
 
 type DescribeLogFieldsResponseBody struct {
-	// The HTTP status code.
+	// The request status code.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeLogFieldsResponseBody struct {
 	//
 	// 123456
 	Data []*DescribeLogFieldsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeLogFieldsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -125,19 +125,19 @@ func (s *DescribeLogFieldsResponseBody) Validate() error {
 }
 
 type DescribeLogFieldsResponseBodyData struct {
-	// The type of the log to which the field belongs.
+	// The log type to which the field belongs.
 	//
 	// example:
 	//
 	// HTTP_ACTIVITY
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	// The internal code of the field description.
+	// The Medusa code for the field description.
 	//
 	// example:
 	//
 	// sas.cloudsiem.prod.activity_name
 	FieldDesc *string `json:"FieldDesc,omitempty" xml:"FieldDesc,omitempty"`
-	// The name of the field.
+	// The name of the rule field.
 	//
 	// example:
 	//
@@ -145,9 +145,9 @@ type DescribeLogFieldsResponseBodyData struct {
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	// The data type of the field. Valid values:
 	//
-	// 	- varchar
+	// - varchar: string
 	//
-	// 	- bigint
+	// - bigint: number
 	//
 	// example:
 	//

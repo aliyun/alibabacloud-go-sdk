@@ -16,7 +16,7 @@ type iListBindAccountResponseBody interface {
 }
 
 type ListBindAccountResponseBody struct {
-	// The data returned.
+	// The result set.
 	Data []*ListBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,7 +66,7 @@ func (s *ListBindAccountResponseBody) Validate() error {
 }
 
 type ListBindAccountResponseBodyData struct {
-	// The AccessKey ID of the cloud account.
+	// The AccessKey ID of the account.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type ListBindAccountResponseBodyData struct {
 	//
 	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The username of the cloud account.
+	// The name of the account.
 	//
 	// example:
 	//
-	// sas_account_xxx
+	// XXXX Company
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID that is generated when the cloud account is added.
+	// The binding ID.
 	//
 	// example:
 	//
@@ -92,29 +92,29 @@ type ListBindAccountResponseBodyData struct {
 	BindId *int64 `json:"BindId,omitempty" xml:"BindId,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// 	- qcloud: Tencent Cloud
+	// - qcloud: Tencent Cloud.
 	//
-	// 	- aliyun: Alibaba Cloud
+	// - aliyun: Alibaba Cloud.
 	//
-	// 	- hcloud: Huawei Cloud
+	// - hcloud: Huawei Cloud.
 	//
 	// example:
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the account that is used to add the cloud account.
+	// The user who bound the account.
 	//
 	// example:
 	//
 	// 123xxxxxxx
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The number of data sources that are added to the threat analysis feature within the cloud account.
+	// The number of data sources that are bound to the account.
 	//
 	// example:
 	//
 	// 2
 	DataSourceCount *int64 `json:"DataSourceCount,omitempty" xml:"DataSourceCount,omitempty"`
-	// The modification time.
+	// The time when the binding was modified.
 	//
 	// example:
 	//

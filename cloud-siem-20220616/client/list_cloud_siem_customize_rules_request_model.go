@@ -56,7 +56,7 @@ type ListCloudSiemCustomizeRulesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. Unit: milliseconds.
+	// The end time of the query. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -68,27 +68,27 @@ type ListCloudSiemCustomizeRulesRequest struct {
 	//
 	// 10223
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The sort method. Valid values:
+	// The order in which you want to sort the custom rules. Valid values:
 	//
-	// 	- desc: descending order.
+	// - desc: descending order
 	//
-	// 	- asc: ascending order.
+	// - asc: ascending order
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The field that is used to sort the rules. Valid values:
+	// The field that you use to sort the custom rules. Valid values:
 	//
-	// 	- GmtModified: The rules are sorted based on the modification time.
+	// - GmtModified: sorts the rules by modification time.
 	//
-	// 	- Id (default): The rules are sorted based on the rule ID.
+	// - Id: sorts the rules by rule ID. This is the default value.
 	//
 	// example:
 	//
 	// Id
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// The number of entries per page. The value can be up to 100.
+	// The number of entries per page. Maximum value: 100.
 	//
 	// This parameter is required.
 	//
@@ -96,31 +96,31 @@ type ListCloudSiemCustomizeRulesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The data management center of the threat analysis feature. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region where the data management center of Threat Analysis is deployed. You must select the region where your assets reside. Valid values:
 	//
-	// 	- **cn-hangzhou**: Your assets reside in regions in China.
+	// - **cn-hangzhou**: your assets are in the Chinese mainland or Hong Kong (China).
 	//
-	// 	- **ap-southeast-1**: Your assets reside in regions outside China.
+	// - **ap-southeast-1**: your assets are outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the destination account to which you switch the view from the management account.
+	// The user ID that is used to switch the administrator\\"s view to the view of a member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type.
 	//
-	// 	- 0: view of the current Alibaba Cloud account.
+	// - 0: the view of the current Alibaba Cloud account.
 	//
-	// 	- 1: view of all accounts for the enterprise.
+	// - 1: the view of all members in the enterprise.
 	//
 	// example:
 	//
-	// 0
+	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The name of the rule. The name can contain letters, digits, underscores (_), and periods (.).
 	//
@@ -130,15 +130,15 @@ type ListCloudSiemCustomizeRulesRequest struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// 	- **predefine**
+	// - **predefine**: predefined
 	//
-	// 	- **customize**
+	// - **customize**: custom
 	//
 	// example:
 	//
 	// customize
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The beginning of the time range to query. Unit: milliseconds.
+	// The start time of the query. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -146,27 +146,27 @@ type ListCloudSiemCustomizeRulesRequest struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// 	- **0**: The rule is in the initial state.
+	// - **0**: initial
 	//
-	// 	- **10**: The simulation data is tested.
+	// - **10**: testing with simulated data
 	//
-	// 	- **15**: The business data is being tested.
+	// - **15**: testing with business data
 	//
-	// 	- **20**: The business data test is complete.
+	// - **20**: testing with business data is complete
 	//
-	// 	- **100**: The rule is in effect.
+	// - **100**: published
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The threat level. The value must be a JSON array. Valid values:
+	// The threat level. The value is a JSON array. Valid values:
 	//
-	// 	- **serious**: high-risk.
+	// - **serious**: high
 	//
-	// 	- **suspicious**: medium-risk.
+	// - **suspicious**: medium
 	//
-	// 	- **remind**: low-risk.
+	// - **remind**: low
 	//
 	// example:
 	//

@@ -22,19 +22,19 @@ type iDescribeDisposeAndPlaybookResponseBody interface {
 }
 
 type DescribeDisposeAndPlaybookResponseBody struct {
-	// The HTTP status code that is returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	//
 	// example:
 	//
 	// 123456
 	Data *DescribeDisposeAndPlaybookResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeDisposeAndPlaybookResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - `true`: The request was successful.
 	//
-	// 	- false
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -178,13 +178,13 @@ type DescribeDisposeAndPlaybookResponseBodyDataPageInfo struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -238,43 +238,61 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseData struct {
 	//
 	// 1
 	AlertNum *int32 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
-	// The object for handling.
+	// The disposition object.
 	//
 	// example:
 	//
-	// 192.168.1.1
+	// 192.168.*.*
 	Dispose *string `json:"Dispose,omitempty" xml:"Dispose,omitempty"`
-	// The entity ID
+	// The ID of the entity.
 	//
 	// example:
 	//
-	// 12345
+	// 12345****
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The entity information.
+	// The information about the entity.
 	//
 	// example:
 	//
-	// {"file_path": "c:/www/leixi.jsp","file_hash": "aa0ca926ad948cd820e0a3d9a18c09d0","host_uuid": "efed2cf7-0b77-45d9-a97b-d2cf246bcbb3","malware_type": "${aliyun.siem.sas.alert_tag.webshell}","host_name": "launch-advisor-20230531"}
+	// {"file_path": "c:/www/leixi.jsp","file_hash": "aa0ca926ad948cd820e0a3d9a18c****","host_uuid": "efed2cf7-0b77-45d9-a97b-d2cf246b****","malware_type": "${aliyun.siem.sas.alert_tag.webshell}","host_name": "launch-advisor-2023****"}
 	EntityInfo map[string]interface{} `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
+	// The type of the entity. Valid values:
+	//
+	// - `ip`: IP address
+	//
+	// - `domain`: Domain name
+	//
+	// - `url`: URL
+	//
+	// - `process`: Process
+	//
+	// - `file`: File
+	//
+	// - `host`: Host
+	//
 	// example:
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The key-value pairs each of which consists of opcode and oplevel.
+	// The opcode and the corresponding operation level.
 	//
 	// example:
 	//
 	// 12345
 	OpcodeMap map[string]*string `json:"OpcodeMap,omitempty" xml:"OpcodeMap,omitempty"`
-	// The codes of the playbooks that are recommended for entity handling.
+	// The recommended playbook opcode for the entity.
 	//
 	// example:
 	//
 	// [1,3]
 	OpcodeSet []*string `json:"OpcodeSet,omitempty" xml:"OpcodeSet,omitempty" type:"Repeated"`
-	// The playbooks that can handle the entity.
+	// The list of playbooks that can be used to handle the entity.
+	//
+	// example:
+	//
+	// [{"name":"云安全中心-云服务器安全","code":"1"}]
 	PlaybookList []*DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList `json:"PlaybookList,omitempty" xml:"PlaybookList,omitempty" type:"Repeated"`
-	// The IDs of the users who can handle objects.
+	// The list of user IDs that are authorized to perform the disposition.
 	//
 	// example:
 	//
@@ -385,8 +403,17 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) Validate() erro
 }
 
 type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
+	// Indicates whether the playbook is available.
+	//
+	// - 1: available
+	//
+	// - 0: unavailable
+	//
+	// example:
+	//
+	// 1
 	Available *string `json:"Available,omitempty" xml:"Available,omitempty"`
-	// The playbook description.
+	// The description of the playbook.
 	//
 	// example:
 	//
@@ -398,46 +425,57 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
 	//
 	// WafBlockIP
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The playbook name, which is the unique identifier of the playbook.
+	// The name of the playbook, which is the unique identifier of the playbook.
 	//
 	// example:
 	//
 	// kill_process_isolate_file
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The opcode of the playbook, which corresponds to the opcode of the playbook recommended for entity handling.
+	// The opcode of the playbook. The value corresponds to the recommended playbook opcode of the entity.
 	//
 	// example:
 	//
 	// 7
 	OpCode *string `json:"OpCode,omitempty" xml:"OpCode,omitempty"`
-	// Indicates whether quick event handling is selected by default. Valid values:
+	// Indicates whether the playbook is selected by default for one-click event disposition. Valid values:
 	//
-	// 	- 2: Quick event handling is selected.
+	// - 2: selected
 	//
-	// 	- 1: Quick event handling is displayed but not selected.
+	// - 1: displayed but not selected
 	//
 	// example:
 	//
 	// 2
 	OpLevel *string `json:"OpLevel,omitempty" xml:"OpLevel,omitempty"`
-	// The playbook parameters and the corresponding properties.
+	// The list of parameters for the playbook and the attributes of the parameters.
 	ParamConfig []interface{} `json:"ParamConfig,omitempty" xml:"ParamConfig,omitempty" type:"Repeated"`
-	// The opcode configuration.
+	// The configuration of the opcode.
 	//
 	// example:
 	//
 	// {"opCode":"3"}
-	TaskConfig      *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
+	TaskConfig *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
+	// The reason why the playbook is unavailable.
+	//
+	// - PARAM_INVALID: The input parameters are invalid.
+	//
+	// - NO_INGESTION: The required service is not integrated.
+	//
+	// example:
+	//
+	// PARAM_INVALID
 	UnAvailableCode *string `json:"UnAvailableCode,omitempty" xml:"UnAvailableCode,omitempty"`
+	// The UUID of the playbook, which is the unique identifier of the playbook.
+	//
 	// example:
 	//
 	// kill_process_isolate_file
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// Indicates whether the playbook is intended for Web Application Firewall (WAF). Valid values:
+	// Indicates whether the playbook is a WAF playbook. Valid values:
 	//
-	// 	- true
+	// - `true`: Yes
 	//
-	// 	- false
+	// - `false`: No
 	//
 	// example:
 	//

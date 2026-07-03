@@ -16,11 +16,11 @@ type iDescribeAuthResponseBody interface {
 }
 
 type DescribeAuthResponseBody struct {
-	// Indicates whether the SIEM system is granted the required permissions. Valid values:
+	// Indicates whether the permissions are granted.
 	//
-	// 	- true
+	// - true: The permissions are granted.
 	//
-	// 	- false
+	// - false: The permissions are not granted.
 	//
 	// example:
 	//

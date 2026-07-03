@@ -22,7 +22,7 @@ type iDescribeAlertSceneResponseBody interface {
 }
 
 type DescribeAlertSceneResponseBody struct {
-	// The response code.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeAlertSceneResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ func (s *DescribeAlertSceneResponseBody) Validate() error {
 }
 
 type DescribeAlertSceneResponseBodyData struct {
-	// The name of the alert. The value varies based on the display language (Chinese or English) of the Security Center console.
+	// The display name of the alert. The value varies based on the language of the environment.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DescribeAlertSceneResponseBodyData struct {
 	//
 	// login_common_ip
 	AlertNameId *string `json:"AlertNameId,omitempty" xml:"AlertNameId,omitempty"`
-	// The title of the alert notification. The value varies based on the display language (Chinese or English) of the Security Center console.
+	// The display title of the alert. The value varies based on the language of the environment.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type DescribeAlertSceneResponseBodyData struct {
 	//
 	// unusual login-login_common_ip
 	AlertTileId *string `json:"AlertTileId,omitempty" xml:"AlertTileId,omitempty"`
-	// The type of the alert. The value varies based on the display language (Chinese or English) of the Security Center console.
+	// The display name of the alert type. The value varies based on the language of the environment.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type DescribeAlertSceneResponseBodyData struct {
 	//
 	// unusual login
 	AlertTypeId *string `json:"AlertTypeId,omitempty" xml:"AlertTypeId,omitempty"`
-	// The information about the entities for which you need to add the alert to the whitelist.
+	// The objects that can be added to the whitelist.
 	//
 	// example:
 	//
@@ -254,25 +254,25 @@ func (s *DescribeAlertSceneResponseBodyData) Validate() error {
 }
 
 type DescribeAlertSceneResponseBodyDataTargets struct {
-	// The display name of the attribute for the entity.
+	// The display name of the field of the entity that can be added to the whitelist.
 	//
 	// example:
 	//
 	// HOST UUID
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The attribute of the entity.
+	// The field of the entity that can be added to the whitelist.
 	//
 	// example:
 	//
 	// host_uuid
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The right operand that is displayed by default in the whitelist rule.
+	// The default right operand that is displayed for the whitelist rule.
 	//
 	// example:
 	//
 	// 441862da-a539-4cc0-a00d-47395582****
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The right operands supported by the whitelist rule.
+	// The available right operands for the whitelist rule.
 	//
 	// example:
 	//

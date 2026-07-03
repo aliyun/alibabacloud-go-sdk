@@ -22,19 +22,19 @@ type iDescribeAlertSourceResponseBody interface {
 }
 
 type DescribeAlertSourceResponseBody struct {
-	// The HTTP status code.
+	// The status code of the response. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The list of alert sources.
 	//
 	// example:
 	//
 	// 123456
 	Data []*DescribeAlertSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeAlertSourceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - `true`: The request was successful.
 	//
-	// 	- false
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -125,14 +125,15 @@ func (s *DescribeAlertSourceResponseBody) Validate() error {
 }
 
 type DescribeAlertSourceResponseBodyData struct {
+	// The list of modules.
 	Modules []*string `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Repeated"`
-	// The internal code of the alert data source.
+	// The internal code for the alert source.
 	//
 	// example:
 	//
 	// aliyun.siem.alert_datasource.sas
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The name of the alert data source.
+	// The name of the alert source.
 	//
 	// example:
 	//

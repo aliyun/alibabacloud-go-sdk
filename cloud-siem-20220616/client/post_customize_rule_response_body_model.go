@@ -48,9 +48,9 @@ type PostCustomizeRuleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -121,47 +121,47 @@ func (s *PostCustomizeRuleResponseBody) Validate() error {
 }
 
 type PostCustomizeRuleResponseBodyData struct {
-	// The risk type.
+	// The threat type.
 	//
 	// example:
 	//
 	// WEBSHELL
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The internal code of the risk type.
+	// The Medusa code of the threat type.
 	//
 	// example:
 	//
 	// ${siem_rule_type_process_abnormal_command}
 	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	// The ID of the Alibaba Cloud account that is used to purchase Threat Analysis.
 	//
 	// example:
 	//
 	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// 告警附加字段attck
+	// The ATT\\&CK attack technique.
 	//
 	// example:
 	//
 	// T1595.002 Vulnerability Scanning
 	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	// 自动化响应规则条件字段数据类型。
+	// The data type of the condition field in the automated response rule.
 	//
 	// example:
 	//
 	// varchar
 	DataType *int32 `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
+	// The extended information for event generation. This parameter is returned only when EventTransferType is set to allToSingle. The value indicates the length and unit of the alert aggregation window. You must unescape the HTML escape characters.
 	//
 	// example:
 	//
 	// {&quot;time&quot;:&quot;1&quot;,&quot;unit&quot;:&quot;MINUTE&quot;}
 	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
-	// Indicates whether the system generates an event for the alert. Valid values:
+	// Indicates whether alerts are converted into events. Valid values:
 	//
-	// 	- 0: no
+	// - 0: no
 	//
-	// 	- 1: yes
+	// - 1: yes
 	//
 	// example:
 	//
@@ -169,11 +169,11 @@ type PostCustomizeRuleResponseBodyData struct {
 	EventTransferSwitch *int32 `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
 	// The event generation method. Valid values:
 	//
-	// 	- default: The default method is used.
+	// - default: the default method
 	//
-	// 	- singleToSingle: The system generates an event for each alert.
+	// - singleToSingle: An event is generated for each alert.
 	//
-	// 	- allToSingle: The system generates an event for alerts within a period of time.
+	// - allToSingle: An event is generated for all alerts in a period.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ type PostCustomizeRuleResponseBodyData struct {
 	//
 	// cloud_siem_aegis_sas_alert
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	// The internal code of the log source.
+	// The Medusa code of the log source.
 	//
 	// example:
 	//
@@ -215,19 +215,19 @@ type PostCustomizeRuleResponseBodyData struct {
 	//
 	// ALERT_ACTIVITY
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The internal code of the log type.
+	// The Medusa code of the log type.
 	//
 	// example:
 	//
 	// ${security_event_config.event_name.webshellName_clientav}
 	LogTypeMds *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
-	// The window length of the rule. The HTML escape characters are reversed.
+	// The length of the rule window. You must unescape the HTML escape characters.
 	//
 	// example:
 	//
 	// {&quot;time&quot;:&quot;1&quot;,&quot;unit&quot;:&quot;HOUR&quot;}
 	QueryCycle *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
-	// The query condition of the rule. The value is in the JSON format. The HTML escape characters are reversed.
+	// The query condition of the rule in the JSON format. You must unescape the HTML escape characters.
 	//
 	// example:
 	//
@@ -239,7 +239,7 @@ type PostCustomizeRuleResponseBodyData struct {
 	//
 	// this rule is for waf scan
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	// The log aggregation field of the rule. The value is a JSON string. The HTML escape characters are reversed.
+	// The fields that are used to group logs. The value is a JSON array. You must unescape the HTML escape characters.
 	//
 	// example:
 	//
@@ -251,45 +251,45 @@ type PostCustomizeRuleResponseBodyData struct {
 	//
 	// waf_scan
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The threshold configuration of the rule. The value is in the JSON format. The HTML escape characters are reversed.
+	// The threshold configuration of the rule in the JSON format. You must unescape the HTML escape characters.
 	//
 	// example:
 	//
 	// {&quot;aggregateFunction&quot;:&quot;count&quot;,&quot;aggregateFunctionName&quot;:&quot;count&quot;,&quot;field&quot;:&quot;activity_name&quot;,&quot;operator&quot;:&quot;&lt;=&quot;,&quot;value&quot;:1}
 	RuleThreshold *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
-	// The type of the rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// 	- predefine
+	// - predefine: predefined
 	//
-	// 	- customize
+	// - customize: custom
 	//
 	// example:
 	//
 	// customize
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The rule status. Valid values:
+	// The status of the rule. Valid values:
 	//
-	// 	- 0: The rule is in the initial state.
+	// - 0: initial
 	//
-	// 	- 10: The simulation data is tested.
+	// - 10: testing with simulated data
 	//
-	// 	- 15: The business data is being tested.
+	// - 15: testing with business data
 	//
-	// 	- 20: The business data test ends.
+	// - 20: test with business data ends
 	//
-	// 	- 100: The rule takes effect.
+	// - 100: published
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The risk level. Valid values:
+	// The threat level. Valid values:
 	//
-	// 	- serious: high
+	// - serious: high
 	//
-	// 	- suspicious: medium
+	// - suspicious: medium
 	//
-	// 	- remind: low
+	// - remind: low
 	//
 	// example:
 	//

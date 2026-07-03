@@ -22,19 +22,19 @@ type iDescribeAlertsWithEventResponseBody interface {
 }
 
 type DescribeAlertsWithEventResponseBody struct {
-	// The HTTP status code.
+	// The status code of the request.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The response payload.
 	//
 	// example:
 	//
 	// 123456
 	Data *DescribeAlertsWithEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeAlertsWithEventResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - `true`: The request was successful.
 	//
-	// 	- false
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ func (s *DescribeAlertsWithEventResponseBody) Validate() error {
 type DescribeAlertsWithEventResponseBodyData struct {
 	// The pagination information.
 	PageInfo *DescribeAlertsWithEventResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The detailed data.
+	// The details of the alerts.
 	ResponseData []*DescribeAlertsWithEventResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -178,13 +178,13 @@ type DescribeAlertsWithEventResponseBodyDataPageInfo struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -238,37 +238,37 @@ type DescribeAlertsWithEventResponseBodyDataResponseData struct {
 	//
 	// The detection model found a suspicious Webshell file on your server, which may be a backdoor file implanted to maintain permissions after the attacker successfully invaded the website.
 	AlertDesc *string `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
-	// The internal code of the alert description.
+	// The Medusa code of the alert description.
 	//
 	// example:
 	//
 	// security_event_config.event_name.webshell
 	AlertDescCode *string `json:"AlertDescCode,omitempty" xml:"AlertDescCode,omitempty"`
-	// The alert description in English.
+	// The English description of the alert.
 	//
 	// example:
 	//
 	// The detection model found a suspicious Webshell file on your server, which may be a backdoor file implanted to maintain permissions after the attacker successfully invaded the website.
 	AlertDescEn *string `json:"AlertDescEn,omitempty" xml:"AlertDescEn,omitempty"`
-	// The details of the alert.
+	// A JSON-formatted string that contains the alert details.
 	//
 	// example:
 	//
 	// {"main_user_id": "165295629792****";"log_uuid_count": "99";"attack_ip": "21.92.*.*"}
 	AlertDetail *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
-	// The displayed details of the alert.
+	// A list of objects that contain detailed alert attributes.
 	//
 	// example:
 	//
 	// aliyun
 	AlertInfoList []*DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList `json:"AlertInfoList,omitempty" xml:"AlertInfoList,omitempty" type:"Repeated"`
-	// The risk level. Valid values:
+	// The threat level of the alert. Valid values:
 	//
-	// 	- serious: high.
+	// - `serious`: high
 	//
-	// 	- suspicious: medium.
+	// - `suspicious`: medium
 	//
-	// 	- remind: low.
+	// - `remind`: low
 	//
 	// example:
 	//
@@ -280,25 +280,25 @@ type DescribeAlertsWithEventResponseBodyDataResponseData struct {
 	//
 	// Try SNMP weak password
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// The internal code of the alert name.
+	// The Medusa code of the alert name.
 	//
 	// example:
 	//
 	// security_event_config.event_name.webshell
 	AlertNameCode *string `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
-	// The alert name in English.
+	// The English name of the alert.
 	//
 	// example:
 	//
 	// Try SNMP weak password
 	AlertNameEn *string `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
-	// The source of the alert.
+	// The source product of the alert.
 	//
 	// example:
 	//
 	// sas
 	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
-	// The sub-module of the alert source.
+	// The submodule of the source product.
 	//
 	// example:
 	//
@@ -310,7 +310,7 @@ type DescribeAlertsWithEventResponseBodyDataResponseData struct {
 	//
 	// Scan-Try SNMP weak password
 	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
-	// The alert title in English.
+	// The English title of the alert.
 	//
 	// example:
 	//
@@ -322,13 +322,13 @@ type DescribeAlertsWithEventResponseBodyDataResponseData struct {
 	//
 	// Scan
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The internal code of the alert type.
+	// The Medusa code of the alert type.
 	//
 	// example:
 	//
 	// security_event_config.event_name.webshellName
 	AlertTypeCode *string `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
-	// The alert type in English.
+	// The English type of the alert.
 	//
 	// example:
 	//
@@ -340,7 +340,7 @@ type DescribeAlertsWithEventResponseBodyDataResponseData struct {
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	// The details of the asset.
+	// A JSON-formatted string that lists the assets associated with the alert.
 	//
 	// example:
 	//
@@ -368,39 +368,49 @@ type DescribeAlertsWithEventResponseBodyDataResponseData struct {
 	//
 	// ]
 	AssetList *string `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
-	// The tag of the ATT\\&CK technique.
+	// The ATT\\&CK tag.
 	//
 	// example:
 	//
 	// T1595.002 Vulnerability Scanning
 	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	// The code of the cloud service provider. Valid values:
+	// The cloud service provider. Valid values:
 	//
-	// 	- aliyun: Alibaba Cloud.
+	// - `aliyun`: Alibaba Cloud
 	//
-	// 	- qcloud: Tencent Cloud.
+	// - `qcloud`: Tencent Cloud
 	//
-	// 	- hcloud: Huawei Cloud.
+	// - `hcloud`: Huawei Cloud
 	//
 	// example:
 	//
 	// aliyun
-	CloudCode       *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The ID of the detection rule.
+	//
+	// example:
+	//
+	// dr-48zs4tk7qfd4rjd9****
 	DetectionRuleId *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
-	// The time when the alert was closed.
+	// The end time of the alert.
 	//
 	// example:
 	//
 	// 2021-01-06 16:37:29
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The details of the entity.
+	// A JSON-formatted string that lists the entities involved in the alert.
 	//
 	// example:
 	//
 	// [{&quot;entity_user_id&quot;:&quot;198921674491****&quot;,&quot;entity_account_id&quot;:&quot;N/A&quot;,&quot;entity_uuid&quot;:&quot;6245f979d5dd9ef8dd19bdc72228****&quot;,&quot;entity_type&quot;:&quot;host&quot;,&quot;entity_name&quot;:&quot;zhh-test-20240409&quot;,&quot;is_comprised&quot;:&quot;1&quot;,&quot;os_type&quot;:&quot;linux&quot;,&quot;entity_id&quot;:&quot;a88f44dd-b8d4-4ded-831c-77a4835****&quot;,&quot;host_uuid&quot;:&quot;a88f44dd-b8d4-4ded-831c-77a4835****&quot;,&quot;host_name&quot;:&quot;zhh-test-2024****&quot;}]
-	EntityList    *string `json:"EntityList,omitempty" xml:"EntityList,omitempty"`
+	EntityList *string `json:"EntityList,omitempty" xml:"EntityList,omitempty"`
+	// A JSON-formatted string that contains extended information about the alert.
+	//
+	// example:
+	//
+	// {"main_user_id": "165295629792****";"log_uuid_count": "99****"}
 	ExtendContent *string `json:"ExtendContent,omitempty" xml:"ExtendContent,omitempty"`
-	// The time when the alert was received.
+	// The time when the alert was created.
 	//
 	// example:
 	//
@@ -418,18 +428,23 @@ type DescribeAlertsWithEventResponseBodyDataResponseData struct {
 	//
 	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The UUID of the event.
+	// The universally unique identifier (UUID) of the event.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
-	IncidentUuid        *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// A JSON-formatted string that contains the investigation report for the alert.
+	//
+	// example:
+	//
+	// {"agent_attack_confidence": 90, "agent_judgement_category": "false_positive", "reason": "The command line contains \\"mediacenter\\" which is a normal startup behavior of Lark (Feishu) client, and the process path is in the standard user installation directory.", "start_time": 1774929064, "end_time": 1774929071}
 	InvestigationReport *string `json:"InvestigationReport,omitempty" xml:"InvestigationReport,omitempty"`
-	// Indicates whether an attack is defended against. Valid values:
+	// Indicates whether the attack was blocked. Valid values:
 	//
-	// 	- 0: detected.
+	// - `0`: detected
 	//
-	// 	- 1: blocked.
+	// - `1`: blocked
 	//
 	// example:
 	//
@@ -447,36 +462,54 @@ type DescribeAlertsWithEventResponseBodyDataResponseData struct {
 	//
 	// cfw_d12e285a-a042-4d7e-be89-f8a795ef****
 	LogUuid *string `json:"LogUuid,omitempty" xml:"LogUuid,omitempty"`
-	// The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
+	// The ID of the main account associated with the alert.
 	//
 	// example:
 	//
 	// 127608589417****
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	// The time when the alert was triggered.
+	// The time when the alert occurred.
 	//
 	// example:
 	//
 	// 2021-01-06 16:37:29
 	OccurTime *string `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
+	// The cloud service ID.
+	//
+	// example:
+	//
+	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The time at which the alert was first generated.
+	// The time when the alert first occurred.
 	//
 	// example:
 	//
 	// 2021-01-06 16:37:29
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the Alibaba Cloud account within which the alert is generated.
+	// The ID of the sub-account that generated the alert.
 	//
 	// example:
 	//
 	// 176555323***
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The name of the sub-account that generated the alert.
+	//
 	// example:
 	//
 	// 176555323***
 	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
-	VendorId    *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
+	// The cloud service provider. Valid values:
+	//
+	// - `aliyun`: Alibaba Cloud
+	//
+	// - `qcloud`: Tencent Cloud
+	//
+	// - `hcloud`: Huawei Cloud
+	//
+	// example:
+	//
+	// aliyun
+	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
 }
 
 func (s DescribeAlertsWithEventResponseBodyDataResponseData) String() string {
@@ -852,19 +885,19 @@ func (s *DescribeAlertsWithEventResponseBodyDataResponseData) Validate() error {
 }
 
 type DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList struct {
-	// The attribute key.
+	// The key of the alert attribute.
 	//
 	// example:
 	//
 	// suspicious.wbd.wb.trojanpath
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The name of the key.
+	// The display name of the alert attribute.
 	//
 	// example:
 	//
 	// Trojan Path
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// The value of the key.
+	// The value of the alert attribute.
 	//
 	// example:
 	//

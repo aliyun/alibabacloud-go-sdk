@@ -66,49 +66,49 @@ func (s *ListProjectLogStoresResponseBody) Validate() error {
 }
 
 type ListProjectLogStoresResponseBodyData struct {
-	// The endpoint of the Simple Log Service project.
+	// The endpoint of the SLS project.
 	//
 	// example:
 	//
 	// cn-hangzhou.log.aliyuncs.com
 	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	// The name of the region in which the Simple Log Service project resides.
+	// The name of the region where the SLS project resides.
 	//
 	// example:
 	//
 	// hangzhou
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The name of the Simple Log Service Logstore.
+	// The name of the SLS Logstore.
 	//
 	// example:
 	//
 	// cloud-siem-logstore
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	// The ID of the Alibaba Cloud account that is used to purchase Threat Analysis.
 	//
 	// example:
 	//
 	// 123XXXXXXXXX
 	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	// The name of the Simple Log Service project.
+	// The name of the SLS project.
 	//
 	// example:
 	//
 	// cloud-siem-project
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The ID of the region in which the Simple Log Service project resides.
+	// The region where the SLS project resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	// The ID of the member account for which threat analysis is performed.
 	//
 	// example:
 	//
 	// 123XXXXXXXX
 	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	// The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+	// The name of the member account.
 	//
 	// example:
 	//

@@ -22,19 +22,19 @@ type iDescribeCustomizeRuleTestHistogramResponseBody interface {
 }
 
 type DescribeCustomizeRuleTestHistogramResponseBody struct {
-	// The HTTP status code.
+	// The status code of the request.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return value for the request.
+	// The data returned.
 	//
 	// example:
 	//
 	// 123456
 	Data []*DescribeCustomizeRuleTestHistogramResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeCustomizeRuleTestHistogramResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -125,19 +125,19 @@ func (s *DescribeCustomizeRuleTestHistogramResponseBody) Validate() error {
 }
 
 type DescribeCustomizeRuleTestHistogramResponseBodyData struct {
-	// The number of alerts that are generated in the query time range.
+	// The number of alerts generated in the subinterval.
 	//
 	// example:
 	//
 	// 125
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The start of the time range for querying alerts. The value is a UNIX timestamp. Unit: seconds.
+	// The start of the time range for the alert. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1599897188
 	From *int64 `json:"From,omitempty" xml:"From,omitempty"`
-	// The end of the time range for querying alerts. The value is a UNIX timestamp. Unit: seconds.
+	// The end of the time range for the alert. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

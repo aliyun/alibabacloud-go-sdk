@@ -18,27 +18,27 @@ type iGetCapacityRequest interface {
 }
 
 type GetCapacityRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// Region where the Data Management Center for threat analysis is located. Choose a region based on where your assets are located.
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: Select this if your assets are in the Chinese mainland or Hong Kong (China).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Select this if your assets are outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// User ID of the member whose view the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// View type.
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: View for the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: View for all accounts under your enterprise.
 	//
 	// example:
 	//

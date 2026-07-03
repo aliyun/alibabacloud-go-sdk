@@ -24,43 +24,45 @@ type iDescribeAlertsCountRequest interface {
 }
 
 type DescribeAlertsCountRequest struct {
-	// The end of the time range to query. Unit: milliseconds.
+	// The end time of the query. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The query type.
+	//
 	// example:
 	//
 	// bySrcProd
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region of the data management center. Select the region where your assets are located. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Your assets are outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID of a member. An administrator can specify this parameter to query alerts from the perspective of the member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type.
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: The view of all accounts in the enterprise.
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The beginning of the time range to query. Unit: milliseconds.
+	// The start time of the query. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

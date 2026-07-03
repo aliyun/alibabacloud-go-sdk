@@ -54,7 +54,13 @@ type iDescribeAlertsRequest interface {
 }
 
 type DescribeAlertsRequest struct {
-	AlertName   *string   `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The name of the alert.
+	//
+	// example:
+	//
+	// Try SNMP weak password
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The status of the alert.
 	AlertStatus []*string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty" type:"Repeated"`
 	// The title of the alert.
 	//
@@ -62,16 +68,31 @@ type DescribeAlertsRequest struct {
 	//
 	// Unusual Logon-login_common_account
 	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
-	AlertType  *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The UUID of the alert.
+	// The type of the alert.
+	//
+	// example:
+	//
+	// Scan
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The unique ID of the alert.
 	//
 	// example:
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	AssetId   *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
+	// The ID of the asset.
+	//
+	// example:
+	//
+	// F3385128-69A5-3EE8-BD05-FBEE7DB2****
+	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
+	// The name of the asset.
+	//
+	// example:
+	//
+	// hostname-****
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number. The value must be greater than or equal to 1.
 	//
 	// This parameter is required.
 	//
@@ -79,35 +100,59 @@ type DescribeAlertsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. Unit: milliseconds.
+	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1577808000000
-	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EntityId   *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the entity.
+	//
+	// example:
+	//
+	// f366e287ea530e7a324cbe987993****
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The name of the entity.
+	//
+	// example:
+	//
+	// launch-advisor-*****
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// Specifies whether an attack is defended. Valid values:
+	// Specifies whether the threat is defended. Valid values:
 	//
-	// 	- 0: detected.
+	// - `0`: detected
 	//
-	// 	- 1: blocked.
+	// - `1`: blocked
 	//
 	// example:
 	//
 	// 1
 	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
+	// The alert type. Valid values:
+	//
+	// - `system`: An alert generated from aggregated analysis
+	//
+	// - `custom`: An alert generated from custom analysis
+	//
+	// - `cfw`: firewall
+	//
+	// - `waf`: web application firewall
+	//
+	// - `edr`: endpoint detection and response
+	//
+	// - `other`: other
+	//
 	// example:
 	//
-	// 176555323***
+	// custom
 	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	// The risk level. The value is a JSON array. Valid values:
+	// The threat levels. This parameter is a JSON array. Valid values:
 	//
-	// 	- serious: high
+	// - `serious`: high
 	//
-	// 	- suspicious: medium
+	// - `suspicious`: medium
 	//
-	// 	- remind: low
+	// - `remind`: low
 	//
 	// example:
 	//
@@ -121,27 +166,27 @@ type DescribeAlertsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region where the data management center of the threat analysis feature resides. You are required to specify this parameter based on the region where your assets reside. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - `cn-hangzhou`: Your assets reside in the Chinese mainland or Hong Kong (China).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - `ap-southeast-1`: Your assets reside outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The ID of the user who is used to switch the account to view the data of the member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type of the alert. Valid values:
 	//
-	// - 0: the current Alibaba Cloud account
+	// - `0`: current account
 	//
-	// - 1: the global account
+	// - `1`: all accounts
 	//
 	// example:
 	//
@@ -153,13 +198,13 @@ type DescribeAlertsRequest struct {
 	//
 	// sas
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The beginning of the time range to query. Unit: milliseconds.
+	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the Alibaba Cloud account within which the alert is generated.
+	// The ID of the Alibaba Cloud account that is associated with the alert.
 	//
 	// example:
 	//

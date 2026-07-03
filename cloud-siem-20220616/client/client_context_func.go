@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Adds a data source to a cloud account that is added to the threat analysis feature.
+// Adds a data source to an attached multicloud account.
 //
 // @param request - AddDataSourceRequest
 //
@@ -77,7 +77,7 @@ func (client *Client) AddDataSourceWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// Adds logs of a cloud account to the threat analysis feature.
+// Adds a log for a data source.
 //
 // @param request - AddDataSourceLogRequest
 //
@@ -141,7 +141,7 @@ func (client *Client) AddDataSourceLogWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Adds the logs of a cloud service within a cloud account to the threat analysis feature for alert and event anslysis.
+// Adds a log collection task to import log data into Threat Analysis for alerting and event analysis.
 //
 // @param request - AddUserSourceLogConfigRequest
 //
@@ -209,7 +209,7 @@ func (client *Client) AddUserSourceLogConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Adds a third-party cloud account that is displayed on the Multi-cloud assets tab of the Feature Settings page to the threat analysis feature.
+// Binds a multicloud account from Multicloud Assets of Security Center to Threat Analysis.
 //
 // @param request - BindAccountRequest
 //
@@ -277,7 +277,7 @@ func (client *Client) BindAccountWithContext(ctx context.Context, request *BindA
 
 // Summary:
 //
-// Disables the log delivery feature for a cloud service.
+// Stops log delivery from a connected cloud service. Once stopped, no new logs are added to your Logstore.
 //
 // @param request - CloseDeliveryRequest
 //
@@ -337,7 +337,7 @@ func (client *Client) CloseDeliveryWithContext(ctx context.Context, request *Clo
 
 // Summary:
 //
-// Deletes the automated response rule with a specified ID.
+// Deletes an automated response rule by its ID.
 //
 // @param request - DeleteAutomateResponseConfigRequest
 //
@@ -393,7 +393,7 @@ func (client *Client) DeleteAutomateResponseConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Removes a third-party cloud account that is added to the threat analysis feature by using its AccessKey ID. You can add another cloud account based on your business requirements.
+// Detaches the AccessKey of a multicloud account, such as a Tencent Cloud or Huawei Cloud account, from a threat analysis data source. You can then attach a new account.
 //
 // @param request - DeleteBindAccountRequest
 //
@@ -461,7 +461,7 @@ func (client *Client) DeleteBindAccountWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a rule by rule ID.
+// You can customize rules for a specific ID.
 //
 // @param request - DeleteCustomizeRuleRequest
 //
@@ -517,7 +517,7 @@ func (client *Client) DeleteCustomizeRuleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Removes a data source that is no longer required.
+// Call this operation to delete a data source that is no longer required.
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -633,7 +633,7 @@ func (client *Client) DeleteDataSourceLogWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes an alert whitelist rule with a specified ID.
+// Deletes an alert whitelist rule with the specified ID.
 //
 // @param request - DeleteWhiteRuleListRequest
 //
@@ -689,7 +689,7 @@ func (client *Client) DeleteWhiteRuleListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the aggregate functions that are supported for a custom rule.
+// Describes the aggregate functions that are supported by custom rules.
 //
 // @param request - DescribeAggregateFunctionRequest
 //
@@ -741,7 +741,7 @@ func (client *Client) DescribeAggregateFunctionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the scenarios in which an alert needs to be added to the whitelist.
+// Queries the scenarios in which alerts can be whitelisted.
 //
 // @param request - DescribeAlertSceneRequest
 //
@@ -793,7 +793,7 @@ func (client *Client) DescribeAlertSceneWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the scenarios and objects that can be added to an alert whitelist rule.
+// Retrieves a list of alert whitelisting scenarios and objects.
 //
 // @param request - DescribeAlertSceneByEventRequest
 //
@@ -849,7 +849,7 @@ func (client *Client) DescribeAlertSceneByEventWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries alert data sources.
+// Retrieves a list of alert sources.
 //
 // @param request - DescribeAlertSourceRequest
 //
@@ -913,7 +913,7 @@ func (client *Client) DescribeAlertSourceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the data sources of the alert that is associated with an event.
+// Retrieves the alert data sources associated with an event.
 //
 // @param request - DescribeAlertSourceWithEventRequest
 //
@@ -969,7 +969,7 @@ func (client *Client) DescribeAlertSourceWithEventWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the threat types that you can select when you create a custom rule.
+// Retrieves a list of threat types for custom rules.
 //
 // @param request - DescribeAlertTypeRequest
 //
@@ -1025,7 +1025,7 @@ func (client *Client) DescribeAlertTypeWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries alerts within your account.
+// Gets the list of alerts for a user.
 //
 // @param request - DescribeAlertsRequest
 //
@@ -1149,7 +1149,7 @@ func (client *Client) DescribeAlertsWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Queries the number of alerts of different severities.
+// Queries the count of alerts for different severity levels.
 //
 // @param request - DescribeAlertsCountRequest
 //
@@ -1213,7 +1213,7 @@ func (client *Client) DescribeAlertsCountWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the alerts that are associated with an entity.
+// Queries for alerts that are associated with an entity.
 //
 // @param request - DescribeAlertsWithEntityRequest
 //
@@ -1297,7 +1297,7 @@ func (client *Client) DescribeAlertsWithEntityWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the alerts that are associated with an event.
+// Retrieves alerts associated with a specific event.
 //
 // @param request - DescribeAlertsWithEventRequest
 //
@@ -1413,7 +1413,7 @@ func (client *Client) DescribeAlertsWithEventWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Checks whether the security information and event management (SIEM) system is granted the required permissions to access other cloud resources within your Alibaba Cloud account and whether the AliyunServiceRoleForSasCloudSiem service-linked role is created.
+// Checks whether an Alibaba Cloud account has granted permissions to Cloud SIEM and the AliyunServiceRoleForSasCloudSiem role has been created.
 //
 // @param request - DescribeAuthRequest
 //
@@ -1457,7 +1457,7 @@ func (client *Client) DescribeAuthWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// Queries the number of automated response rules.
+// Returns the number of automated response rules.
 //
 // @param request - DescribeAutomateResponseConfigCounterRequest
 //
@@ -1509,7 +1509,7 @@ func (client *Client) DescribeAutomateResponseConfigCounterWithContext(ctx conte
 
 // Summary:
 //
-// Queries the configurable fields and operators of an automated response rule.
+// Retrieves the configurable fields and operators for automated response rules.
 //
 // @param request - DescribeAutomateResponseConfigFeatureRequest
 //
@@ -1565,7 +1565,7 @@ func (client *Client) DescribeAutomateResponseConfigFeatureWithContext(ctx conte
 
 // Summary:
 //
-// Queries the assets that are associated with an event.
+// Queries a list of assets that are associated with an event.
 //
 // @param request - DescribeCloudSiemAssetsRequest
 //
@@ -1641,7 +1641,7 @@ func (client *Client) DescribeCloudSiemAssetsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the number of assets that are associated with an event by asset type.
+// Queries the number of assets of each type that are associated with an event.
 //
 // @param request - DescribeCloudSiemAssetsCounterRequest
 //
@@ -1697,7 +1697,7 @@ func (client *Client) DescribeCloudSiemAssetsCounterWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the details of an event.
+// Retrieves the details of an event.
 //
 // @param request - DescribeCloudSiemEventDetailRequest
 //
@@ -1753,7 +1753,7 @@ func (client *Client) DescribeCloudSiemEventDetailWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries events in SIEM.
+// Retrieves a list of threat analysis events.
 //
 // @param request - DescribeCloudSiemEventsRequest
 //
@@ -1853,7 +1853,7 @@ func (client *Client) DescribeCloudSiemEventsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the number of custom rules.
+// Retrieves the count of custom rules.
 //
 // @param request - DescribeCustomizeRuleCountRequest
 //
@@ -1905,7 +1905,7 @@ func (client *Client) DescribeCustomizeRuleCountWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the historical simulation data that is used in a simulation test scenario.
+// Retrieves historical simulated data from a test scenario.
 //
 // @param request - DescribeCustomizeRuleTestRequest
 //
@@ -1961,7 +1961,7 @@ func (client *Client) DescribeCustomizeRuleTestWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the chart that displays the test results of business data for a custom rule.
+// Retrieves the chart of test results for a custom rule.
 //
 // @param request - DescribeCustomizeRuleTestHistogramRequest
 //
@@ -2073,7 +2073,7 @@ func (client *Client) DescribeDataSourceInstanceWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the parameters of a data source.
+// Describes the parameters for a data source.
 //
 // @param request - DescribeDataSourceParametersRequest
 //
@@ -2125,7 +2125,7 @@ func (client *Client) DescribeDataSourceParametersWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the list of entities and playbooks that need to be handled.
+// Retrieves entities to be remediated and a list of playbooks.
 //
 // @param request - DescribeDisposeAndPlaybookRequest
 //
@@ -2197,7 +2197,7 @@ func (client *Client) DescribeDisposeAndPlaybookWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the list of playbooks that are used by a handling policy.
+// Retrieves the list of playbooks used in a disposal policy.
 //
 // @param request - DescribeDisposeStrategyPlaybookRequest
 //
@@ -2257,7 +2257,7 @@ func (client *Client) DescribeDisposeStrategyPlaybookWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the details of an entity.
+// Retrieves the details of an entity.
 //
 // @param request - DescribeEntityInfoRequest
 //
@@ -2325,7 +2325,7 @@ func (client *Client) DescribeEntityInfoWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the number of events by type.
+// You can obtain the count for each event type.
 //
 // @param request - DescribeEventCountByThreatLevelRequest
 //
@@ -2385,7 +2385,7 @@ func (client *Client) DescribeEventCountByThreatLevelWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the handling policies of a historical event.
+// Queries the policy handling history for an event.
 //
 // @param request - DescribeEventDisposeRequest
 //
@@ -2449,7 +2449,7 @@ func (client *Client) DescribeEventDisposeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the number of logs that are added to the threat analysis feature.
+// Queries the number of imported logs.
 //
 // @param request - DescribeImportedLogCountRequest
 //
@@ -2501,7 +2501,7 @@ func (client *Client) DescribeImportedLogCountWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the fields that can be configured for a custom rule.
+// Retrieves the list of configurable fields for custom rules.
 //
 // @param request - DescribeLogFieldsRequest
 //
@@ -2561,7 +2561,7 @@ func (client *Client) DescribeLogFieldsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the log sources that can be configured for a custom rule.
+// Retrieves a list of configurable log sources for custom rules.
 //
 // @param request - DescribeLogSourceRequest
 //
@@ -2617,7 +2617,7 @@ func (client *Client) DescribeLogSourceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the log types that can be configured for a custom rule.
+// Retrieves the log types that can be configured for custom rules.
 //
 // @param request - DescribeLogTypeRequest
 //
@@ -2669,7 +2669,7 @@ func (client *Client) DescribeLogTypeWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the operator of a custom rule.
+// Retrieves the list of operators for custom rules.
 //
 // @param request - DescribeOperatorsRequest
 //
@@ -2725,7 +2725,7 @@ func (client *Client) DescribeOperatorsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the number of services that can be added to the threat analysis feature in Alibaba Cloud, Tenant Cloud, and Huawei Cloud.
+// Queries the number of Alibaba Cloud, Tencent Cloud, and Huawei Cloud products that can be integrated with Threat Analysis.
 //
 // @param request - DescribeProdCountRequest
 //
@@ -2777,7 +2777,7 @@ func (client *Client) DescribeProdCountWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the list of users in the playbook scope.
+// Retrieves the list of users in the playbook scope.
 //
 // @param request - DescribeScopeUsersRequest
 //
@@ -2829,7 +2829,7 @@ func (client *Client) DescribeScopeUsersWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Checks whether the threat analysis feature is authorized to access a resource directory.
+// Checks whether a resource directory is authorized for threat analysis.
 //
 // @param request - DescribeServiceStatusRequest
 //
@@ -2873,7 +2873,7 @@ func (client *Client) DescribeServiceStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the status of the Logstores for the threat analysis feature in Simple Log Service on the user side.
+// Checks the status of the storage for the threat analysis feature. The storage is a Logstore in Simple Log Service.
 //
 // @param request - DescribeStorageRequest
 //
@@ -2925,7 +2925,7 @@ func (client *Client) DescribeStorageWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Checks whether the current Alibaba Cloud account or the management account of a resource directory is used to purchase the threat analysis feature.
+// Checks whether the current Alibaba Cloud account or its associated enterprise organization has purchased threat analysis.
 //
 // @param request - DescribeUserBuyStatusRequest
 //
@@ -2973,7 +2973,7 @@ func (client *Client) DescribeUserBuyStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the protected domain names of the WAF instance for a user to which an entity belongs.
+// Retrieves the list of domain names protected by Web Application Firewall (WAF) instances.
 //
 // @param request - DescribeWafScopeRequest
 //
@@ -3029,7 +3029,7 @@ func (client *Client) DescribeWafScopeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries a list of whitelist rules for alerts.
+// Queries the rules in the alert whitelist.
 //
 // @param request - DescribeWhiteRuleListRequest
 //
@@ -3101,7 +3101,7 @@ func (client *Client) DescribeWhiteRuleListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a service-linked role named AliyunServiceRoleForSasCloudSiem for the threat analysis feature. The feature can assume this role to access cloud services.
+// Grants permissions to Threat Analysis and creates the AliyunServiceRoleForSasCloudSiem service-linked role.
 //
 // @param request - EnableAccessForCloudSiemRequest
 //
@@ -3157,7 +3157,7 @@ func (client *Client) EnableAccessForCloudSiemWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Authorizes the threat analysis feature to access a resource directory. This operation must be called by the management account of the resource directory.
+// Enables resource directory authorization for threat analysis. This operation can be called only by a resource directory administrator.
 //
 // @param request - EnableServiceForCloudSiemRequest
 //
@@ -3201,7 +3201,7 @@ func (client *Client) EnableServiceForCloudSiemWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Queries the storage capacity usage of the threat analysis feature and the purchased storage capacity
+// Retrieves the current billable storage usage and subscription purchase volume for threat analysis. Units are in GB.
 //
 // @param request - GetCapacityRequest
 //
@@ -3253,7 +3253,99 @@ func (client *Client) GetCapacityWithContext(ctx context.Context, request *GetCa
 
 // Summary:
 //
-// Queries the storage configurations for the threat analysis feature on the user side.
+// Queries entity counts.
+//
+// Description:
+//
+// The input parameter JsonConfig is a complex JSON configuration. A utility class with configuration examples is provided. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+//
+// @param request - GetEntitiyStatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEntitiyStatResponse
+func (client *Client) GetEntitiyStatWithContext(ctx context.Context, request *GetEntitiyStatRequest, runtime *dara.RuntimeOptions) (_result *GetEntitiyStatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AssetName) {
+		body["AssetName"] = request.AssetName
+	}
+
+	if !dara.IsNil(request.AssetUuid) {
+		body["AssetUuid"] = request.AssetUuid
+	}
+
+	if !dara.IsNil(request.EntityName) {
+		body["EntityName"] = request.EntityName
+	}
+
+	if !dara.IsNil(request.EntityType) {
+		body["EntityType"] = request.EntityType
+	}
+
+	if !dara.IsNil(request.EntityUuid) {
+		body["EntityUuid"] = request.EntityUuid
+	}
+
+	if !dara.IsNil(request.IncidentUuid) {
+		body["IncidentUuid"] = request.IncidentUuid
+	}
+
+	if !dara.IsNil(request.IsAsset) {
+		body["IsAsset"] = request.IsAsset
+	}
+
+	if !dara.IsNil(request.IsMalwareEntity) {
+		body["IsMalwareEntity"] = request.IsMalwareEntity
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.RoleType) {
+		body["RoleType"] = request.RoleType
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["Tags"] = request.Tags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetEntitiyStat"),
+		Version:     dara.String("2022-06-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetEntitiyStatResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the storage settings created by the Threat Analysis and Response product in your Simple Log Service (SLS). These settings include the storage duration and storage region.
 //
 // @param request - GetStorageRequest
 //
@@ -3305,7 +3397,7 @@ func (client *Client) GetStorageWithContext(ctx context.Context, request *GetSto
 
 // Summary:
 //
-// Queries a list of AccessKey IDs of third-party cloud accounts that are added to the threat analysis feature.
+// Lists the AccessKey IDs for attached multicloud accounts.
 //
 // @param request - ListAccountAccessIdRequest
 //
@@ -3361,7 +3453,7 @@ func (client *Client) ListAccountAccessIdWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Query accounts by log.
+// Queries the accounts associated with a log.
 //
 // @param request - ListAccountsByLogRequest
 //
@@ -3425,7 +3517,7 @@ func (client *Client) ListAccountsByLogWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a list of cloud services that can be added to the threat analysis feature.
+// Lists the cloud products supported by Threat Analysis for data ingestion.
 //
 // @param request - ListAllProdsRequest
 //
@@ -3477,7 +3569,7 @@ func (client *Client) ListAllProdsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries automated response rules.
+// Retrieves a list of automated response rules.
 //
 // @param request - ListAutomateResponseConfigsRequest
 //
@@ -3569,7 +3661,7 @@ func (client *Client) ListAutomateResponseConfigsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries a list of cloud accounts that are added to the threat analysis feature.
+// Lists multicloud accounts bound to Threat Analysis.
 //
 // @param request - ListBindAccountRequest
 //
@@ -3625,7 +3717,7 @@ func (client *Client) ListBindAccountWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Queries a list of data sources that are added to the threat analysis feature.
+// Queries all bound data sources.
 //
 // @param request - ListBindDataSourcesRequest
 //
@@ -3677,7 +3769,7 @@ func (client *Client) ListBindDataSourcesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries custom rules.
+// Retrieves a list of custom rules.
 //
 // @param request - ListCloudSiemCustomizeRulesRequest
 //
@@ -3777,7 +3869,7 @@ func (client *Client) ListCloudSiemCustomizeRulesWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries predefined rules.
+// Retrieves a list of predefined rules.
 //
 // @param request - ListCloudSiemPredefinedRulesRequest
 //
@@ -3889,7 +3981,7 @@ func (client *Client) ListCloudSiemPredefinedRulesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the test results of a custom rule.
+// Retrieves the list of test results for a custom rule.
 //
 // @param request - ListCustomizeRuleTestResultRequest
 //
@@ -3969,7 +4061,7 @@ func (client *Client) ListCustomizeRuleTestResultWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the logs of a data source.
+// Lists the logs for a data source.
 //
 // @param request - ListDataSourceLogsRequest
 //
@@ -4025,7 +4117,7 @@ func (client *Client) ListDataSourceLogsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries a list of data source types in third-party cloud services that can be added to the threat analysis feature.
+// Lists the types of multicloud data sources that Threat Analysis supports.
 //
 // @param request - ListDataSourceTypesRequest
 //
@@ -4073,7 +4165,7 @@ func (client *Client) ListDataSourceTypesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the information about the cloud services that are integrated with the threat analysis feature, the logs of the cloud services, and the delivery of the logs.
+// Lists the products and logs that are connected to threat analysis for an enterprise or a member, and the data shipping status of these logs.
 //
 // @param request - ListDeliveryRequest
 //
@@ -4125,7 +4217,7 @@ func (client *Client) ListDeliveryWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries handling policies.
+// Retrieve a list of system-recommended disposal strategies.
 //
 // @param request - ListDisposeStrategyRequest
 //
@@ -4237,7 +4329,7 @@ func (client *Client) ListDisposeStrategyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries entities.
+// Queries a list of entities.
 //
 // @param request - ListEntitiesRequest
 //
@@ -4329,7 +4421,7 @@ func (client *Client) ListEntitiesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries the details of the logs in a cloud service that is added to the threat analysis feature.
+// Queries the log ingestion details for a specific product.
 //
 // @param request - ListImportedLogsByProdRequest
 //
@@ -4389,7 +4481,7 @@ func (client *Client) ListImportedLogsByProdWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the dedicated Simple Log Service project and Logstore for a cloud service based on the patterns of the project and Logstore names.
+// Queries projects and Logstores based on the name patterns of the default SLS project and Logstore for an Alibaba Cloud service.
 //
 // @param request - ListProjectLogStoresRequest
 //
@@ -4445,7 +4537,7 @@ func (client *Client) ListProjectLogStoresWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries a list of Alibaba Cloud accounts that are added to the threat analysis feature for centralized management. These accounts can be used to perform operations supported by the threat analysis feature, such as adding logs and handling events.
+// Lists the Alibaba Cloud accounts that are managed by the multi-account control feature of Threat Analysis. An account must be managed to use features such as log collection and event handling.
 //
 // @param request - ListRdUsersRequest
 //
@@ -4489,7 +4581,7 @@ func (client *Client) ListRdUsersWithContext(ctx context.Context, request *ListR
 
 // Summary:
 //
-// Modifies a third-party cloud account that is added to the threat analysis feature.
+// Modifies a bound Alibaba Cloud account.
 //
 // @param request - ModifyBindAccountRequest
 //
@@ -4561,7 +4653,7 @@ func (client *Client) ModifyBindAccountWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies a data source that is added to the threat analysis feature.
+// Modifies the description of an existing data source.
 //
 // @param request - ModifyDataSourceRequest
 //
@@ -4633,7 +4725,7 @@ func (client *Client) ModifyDataSourceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Modifies the description of the logs that are added to the threat analysis feature for a data source within a cloud account.
+// Modifies the description of a data source log.
 //
 // @param request - ModifyDataSourceLogRequest
 //
@@ -4705,7 +4797,7 @@ func (client *Client) ModifyDataSourceLogWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Enables the log delivery feature for a cloud service that is integrated with Simple Log Service.
+// Enables log delivery for integrated cloud services.
 //
 // @param request - OpenDeliveryRequest
 //
@@ -4765,7 +4857,7 @@ func (client *Client) OpenDeliveryWithContext(ctx context.Context, request *Open
 
 // Summary:
 //
-// Creates or updates an automatic response rule.
+// Adds or updates an automated response rule.
 //
 // @param request - PostAutomateResponseConfigRequest
 //
@@ -4845,7 +4937,7 @@ func (client *Client) PostAutomateResponseConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates or updates a custom rule.
+// Adds or updates a custom rule.
 //
 // @param request - PostCustomizeRuleRequest
 //
@@ -5033,7 +5125,7 @@ func (client *Client) PostCustomizeRuleTestWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Submits event handling information.
+// Submit incident response information to update the incident status and severity level.
 //
 // @param request - PostEventDisposeAndWhiteruleListRequest
 //
@@ -5121,7 +5213,7 @@ func (client *Client) PostEventDisposeAndWhiteruleListWithContext(ctx context.Co
 
 // Summary:
 //
-// Submits an alert whitelist rule.
+// Submits alert whitelisting rules.
 //
 // @param request - PostEventWhiteruleListRequest
 //
@@ -5181,7 +5273,7 @@ func (client *Client) PostEventWhiteruleListWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Ends the test of a custom rule.
+// Finishes the test for a custom rule.
 //
 // @param request - PostFinishCustomizeRuleTestRequest
 //
@@ -5237,7 +5329,7 @@ func (client *Client) PostFinishCustomizeRuleTestWithContext(ctx context.Context
 
 // Summary:
 //
-// Updates the status of a custom rule.
+// Updates the statuses of custom rules.
 //
 // @param request - PostRuleStatusChangeRequest
 //
@@ -5301,7 +5393,7 @@ func (client *Client) PostRuleStatusChangeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Releases storage to reduce the storage usage. The release operation is irreversible and may cause data loss. Proceed with caution.
+// Releases storage space. This operation is irreversible and causes data loss. Use with caution.
 //
 // @param request - RestoreCapacityRequest
 //
@@ -5353,7 +5445,7 @@ func (client *Client) RestoreCapacityWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// Configures the settings of log storage, such as the storage duration and storage region.
+// Sets user settings, such as the storage duration and storage region.
 //
 // @param request - SetStorageRequest
 //
@@ -5413,7 +5505,7 @@ func (client *Client) SetStorageWithContext(ctx context.Context, request *SetSto
 
 // Summary:
 //
-// Submits log collection tasks at a time.
+// Submits a batch of log ingestion tasks.
 //
 // @param request - SubmitImportLogTasksRequest
 //
@@ -5485,7 +5577,7 @@ func (client *Client) SubmitImportLogTasksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Updates the status of an automatic response rule.
+// Updates the status of an automated response rule.
 //
 // @param request - UpdateAutomateResponseConfigStatusRequest
 //
@@ -5545,7 +5637,7 @@ func (client *Client) UpdateAutomateResponseConfigStatusWithContext(ctx context.
 
 // Summary:
 //
-// Creates or updates an alert whitelist rule.
+// Adds or updates alert whitelist rules.
 //
 // @param request - UpdateWhiteRuleListRequest
 //

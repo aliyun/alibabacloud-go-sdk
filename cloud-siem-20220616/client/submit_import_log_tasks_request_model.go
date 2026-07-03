@@ -28,37 +28,31 @@ type iSubmitImportLogTasksRequest interface {
 }
 
 type SubmitImportLogTasksRequest struct {
-	// The accounts that you want to add. The value is a JSON array. Valid values:
+	// The list of accounts for log ingestion. The value must be a JSON array. Valid values:
 	//
-	// 	- AccountId: the IDs of the accounts.
+	// - AccountId: The ID of the account.
 	//
-	// 	- Imported: specifies whether to add the accounts. Valid values:
+	// - Imported: Specifies whether to enable or disable log ingestion for the account. Valid values:
 	//
-	//     	- 0: no
+	//   - 0: Disable ingestion.
 	//
-	//     	- 1: yes
+	//   - 1: Enable ingestion.
 	//
 	// example:
 	//
 	// [{"AccountId":"123123","Imported":1}]
 	Accounts *string `json:"Accounts,omitempty" xml:"Accounts,omitempty"`
-	// Specifies whether to automatically add the account for which the logging feature is configured. Valid values:
+	// Specifies whether to automatically enable log ingestion for accounts that are configured with the specified log. Valid values:
 	//
-	// 	- 1: yes
+	// - 1: Yes.
 	//
-	// 	- 0: no
+	// - 0: No.
 	//
 	// example:
 	//
-	// ["cloud_siem_qcloud_cfw_alert_log"]
+	// 1
 	AutoImported *int32 `json:"AutoImported,omitempty" xml:"AutoImported,omitempty"`
-	// The code that is used for multi-cloud environments. Valid values:
-	//
-	// 	- qcloud: Tencent Cloud
-	//
-	// 	- aliyun: Alibaba Cloud
-	//
-	// 	- hcloud: Huawei Cloud
+	// The code of the cloud service provider.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +60,13 @@ type SubmitImportLogTasksRequest struct {
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The logs that you want to collect. The value is a JSON array.
+	// The list of logs to be ingested. The value must be a JSON array.
 	//
 	// example:
 	//
 	// ["cloud_siem_qcloud_cfw_alert_log"]
 	LogCodes *string `json:"LogCodes,omitempty" xml:"LogCodes,omitempty"`
-	// The code of the service.
+	// The code of the product.
 	//
 	// This parameter is required.
 	//
@@ -80,31 +74,31 @@ type SubmitImportLogTasksRequest struct {
 	//
 	// qcloud_waf
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region where the data management center for Threat Analysis is located. Select a region based on the location of your assets. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	// - cn-hangzhou: Your assets are in the Chinese mainland or Hong Kong (China).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Your assets are outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID of the member that the administrator wants to access.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The type of view. Valid values:
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: The view of all accounts within the enterprise.
 	//
 	// example:
 	//
-	// 0
+	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 

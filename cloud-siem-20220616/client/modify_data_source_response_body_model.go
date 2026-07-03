@@ -18,7 +18,7 @@ type iModifyDataSourceResponseBody interface {
 type ModifyDataSourceResponseBody struct {
 	// The data returned.
 	Data *ModifyDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *ModifyDataSourceResponseBody) Validate() error {
 }
 
 type ModifyDataSourceResponseBodyData struct {
-	// The number of data sources that are modified. The value 1 indicates that the modification is successful, and a value less than or equal to 0 indicates that the modification failed.
+	// The number of modified data sources. A value of 1 indicates success. A value of 0 or less indicates failure.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+	// The ID of the data source. The ID is an MD5 hash that is calculated based on the values of other parameters.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDescribeProdCountResponseBody interface {
 type DescribeProdCountResponseBody struct {
 	// The data returned.
 	Data *DescribeProdCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,27 +62,49 @@ func (s *DescribeProdCountResponseBody) Validate() error {
 }
 
 type DescribeProdCountResponseBodyData struct {
+	// The number of automatically connected Alibaba Cloud products.
+	//
+	// example:
+	//
+	// 2
 	AliyunImportedCount *int32 `json:"AliyunImportedCount,omitempty" xml:"AliyunImportedCount,omitempty"`
-	// The number of Alibaba Cloud services.
+	// The number of Alibaba Cloud products.
 	//
 	// example:
 	//
 	// 19
-	AliyunProdCount     *int32 `json:"AliyunProdCount,omitempty" xml:"AliyunProdCount,omitempty"`
+	AliyunProdCount *int32 `json:"AliyunProdCount,omitempty" xml:"AliyunProdCount,omitempty"`
+	// The number of automatically connected Huawei Cloud products.
+	//
+	// example:
+	//
+	// 2
 	HcloudImportedCount *int32 `json:"HcloudImportedCount,omitempty" xml:"HcloudImportedCount,omitempty"`
-	// The number of Huawei Cloud services.
+	// The number of Huawei Cloud products.
 	//
 	// example:
 	//
 	// 2
-	HcloudProdCount  *int32 `json:"HcloudProdCount,omitempty" xml:"HcloudProdCount,omitempty"`
+	HcloudProdCount *int32 `json:"HcloudProdCount,omitempty" xml:"HcloudProdCount,omitempty"`
+	// The number of automatically connected IDC products.
+	//
+	// example:
+	//
+	// 2
 	IdcImportedCount *int32 `json:"IdcImportedCount,omitempty" xml:"IdcImportedCount,omitempty"`
+	// The number of IDC products.
+	//
 	// example:
 	//
 	// 2
-	IdcProdCount        *int32 `json:"IdcProdCount,omitempty" xml:"IdcProdCount,omitempty"`
+	IdcProdCount *int32 `json:"IdcProdCount,omitempty" xml:"IdcProdCount,omitempty"`
+	// The number of automatically connected Tencent Cloud products.
+	//
+	// example:
+	//
+	// 2
 	QcloudImportedCount *int32 `json:"QcloudImportedCount,omitempty" xml:"QcloudImportedCount,omitempty"`
-	// The number of Tencent Cloud services.
+	// The number of Tencent Cloud products.
 	//
 	// example:
 	//

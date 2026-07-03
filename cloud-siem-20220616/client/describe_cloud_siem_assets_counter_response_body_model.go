@@ -22,25 +22,25 @@ type iDescribeCloudSiemAssetsCounterResponseBody interface {
 }
 
 type DescribeCloudSiemAssetsCounterResponseBody struct {
-	// The HTTP status code.
+	// The status code returned.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	//
 	// example:
 	//
 	// 123456
 	Data []*DescribeCloudSiemAssetsCounterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeCloudSiemAssetsCounterResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -133,17 +133,17 @@ type DescribeCloudSiemAssetsCounterResponseBodyData struct {
 	AssetNum *int32 `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// 	- ip
+	// - ip: IP address
 	//
-	// 	- domain
+	// - domain: domain name
 	//
-	// 	- url
+	// - url: URL
 	//
-	// 	- process
+	// - process: process
 	//
-	// 	- file
+	// - file: file
 	//
-	// 	- host
+	// - host: host
 	//
 	// example:
 	//

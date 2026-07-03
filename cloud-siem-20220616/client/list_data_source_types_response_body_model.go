@@ -18,7 +18,7 @@ type iListDataSourceTypesResponseBody interface {
 type ListDataSourceTypesResponseBody struct {
 	// The data returned.
 	Data []*ListDataSourceTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *ListDataSourceTypesResponseBody) Validate() error {
 }
 
 type ListDataSourceTypesResponseBodyData struct {
-	// The code of the third-party cloud service.
+	// The code of the multicloud service.
 	//
 	// example:
 	//
@@ -74,11 +74,11 @@ type ListDataSourceTypesResponseBodyData struct {
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- obs: Huawei Cloud Object Storage Service (OBS)
+	// - obs: Huawei Cloud OBS.
 	//
-	// 	- wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	// - wafApi: Tencent Cloud WAF download API.
 	//
-	// 	- ckafka: Tencent Cloud Kafka (CKafka)
+	// - ckafka: Tencent Cloud CKafka.
 	//
 	// example:
 	//

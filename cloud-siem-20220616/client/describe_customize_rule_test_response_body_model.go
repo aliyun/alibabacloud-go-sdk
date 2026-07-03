@@ -22,7 +22,7 @@ type iDescribeCustomizeRuleTestResponseBody interface {
 }
 
 type DescribeCustomizeRuleTestResponseBody struct {
-	// The HTTP status code.
+	// The HTTP status code returned.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeCustomizeRuleTestResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -121,13 +121,13 @@ func (s *DescribeCustomizeRuleTestResponseBody) Validate() error {
 }
 
 type DescribeCustomizeRuleTestResponseBodyData struct {
-	// The ID of the rule.
+	// The ID of the custom rule.
 	//
 	// example:
 	//
 	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The historical data that is used in the simulation test.
+	// The historical data of the simulated test case.
 	//
 	// example:
 	//
@@ -135,15 +135,15 @@ type DescribeCustomizeRuleTestResponseBodyData struct {
 	SimulateData *string `json:"SimulateData,omitempty" xml:"SimulateData,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// 	- 0: The rule is in the initial state.
+	// - 0: initial
 	//
-	// 	- 10: The simulation data is tested.
+	// - 10: simulated data test
 	//
-	// 	- 15: The business data is being tested.
+	// - 15: real-time data test in progress
 	//
-	// 	- 20: The business data test ends.
+	// - 20: real-time data test complete
 	//
-	// 	- 100: The rule takes effect.
+	// - 100: published
 	//
 	// example:
 	//

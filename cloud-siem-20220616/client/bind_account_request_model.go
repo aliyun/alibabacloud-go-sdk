@@ -26,7 +26,7 @@ type iBindAccountRequest interface {
 }
 
 type BindAccountRequest struct {
-	// The AccessKey ID of the cloud account.
+	// The AccessKey ID of the Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type BindAccountRequest struct {
 	//
 	// ABCXXXXXXXX
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// The ID of the cloud account.
+	// The ID of the Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type BindAccountRequest struct {
 	//
 	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The username of the cloud account.
+	// The name of the multicloud account.
 	//
 	// This parameter is required.
 	//
@@ -52,11 +52,11 @@ type BindAccountRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// 	- aliyun: Alibaba Cloud
+	// - aliyun: Alibaba Cloud
 	//
-	// 	- hcloud: Huawei Cloud
+	// - hcloud: Huawei Cloud
 	//
-	// 	- qcloud: Tencent Cloud
+	// - qcloud: Tencent Cloud
 	//
 	// This parameter is required.
 	//
@@ -64,18 +64,32 @@ type BindAccountRequest struct {
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select a region for the data management center based on the region where your assets reside. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: Your assets are deployed in the Chinese mainland or Hong Kong (China).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Your assets are deployed in regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleFor  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The user ID of the member to whose view the administrator switches.
+	//
+	// example:
+	//
+	// 113091674488****
+	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The type of the view.
+	//
+	// - 0: the view of the current Alibaba Cloud account.
+	//
+	// - 1: the view of all accounts that belong to the enterprise.
+	//
+	// example:
+	//
+	// 1
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s BindAccountRequest) String() string {

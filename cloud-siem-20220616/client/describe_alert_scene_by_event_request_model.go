@@ -20,7 +20,7 @@ type iDescribeAlertSceneByEventRequest interface {
 }
 
 type DescribeAlertSceneByEventRequest struct {
-	// The ID of the event.
+	// The event ID.
 	//
 	// This parameter is required.
 	//
@@ -28,27 +28,27 @@ type DescribeAlertSceneByEventRequest struct {
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region of the Data Management center. Select a region based on the location of your assets. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: Assets are in the Chinese mainland or China (Hong Kong).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Assets are outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID of the member. This parameter is used when an administrator switches to the perspective of a member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type.
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: the view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: the view of all accounts that belong to the enterprise.
 	//
 	// example:
 	//

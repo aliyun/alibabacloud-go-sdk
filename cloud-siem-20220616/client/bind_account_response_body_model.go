@@ -16,7 +16,7 @@ type iBindAccountResponseBody interface {
 }
 
 type BindAccountResponseBody struct {
-	// The data returned.
+	// The detailed information returned by the Threat Analysis service.
 	Data *BindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *BindAccountResponseBody) Validate() error {
 }
 
 type BindAccountResponseBodyData struct {
-	// The number of the cloud accounts that are added to the threat analysis feature.
+	// The number of account bindings that are added.
 	//
 	// example:
 	//

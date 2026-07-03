@@ -16,9 +16,9 @@ type iGetStorageResponseBody interface {
 }
 
 type GetStorageResponseBody struct {
-	// The information about the storage.
+	// The details of the storage settings.
 	Data *GetStorageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,35 +62,35 @@ func (s *GetStorageResponseBody) Validate() error {
 }
 
 type GetStorageResponseBodyData struct {
-	// Indicates whether the storage region can be changed for once. Default value: false Valid values:
+	// Indicates whether you can change the storage region. You can change the storage region only once. The default value is false. Valid values:
 	//
-	// 	- true
+	// - true: You can change the storage region.
 	//
-	// 	- false
+	// - false: You cannot change the storage region.
 	//
 	// example:
 	//
 	// false
 	CanOperate *bool `json:"CanOperate,omitempty" xml:"CanOperate,omitempty"`
-	// Indicates whether the storage region can be changed. Default value: false Valid values:
+	// Indicates whether you have permission to change the storage region. The default value is false. Valid values:
 	//
-	// 	- true
+	// - true: You have permission.
 	//
-	// 	- false
+	// - false: You do not have permission.
 	//
 	// example:
 	//
 	// false
 	DisplayRegion *bool `json:"DisplayRegion,omitempty" xml:"DisplayRegion,omitempty"`
-	// The region where the data is stored.
+	// The storage region.
 	//
-	// If the data management center is **cn-hangzhou**, the default value of **Region*	- is cn-shanghai, which specifies the China (Shanghai) region. If the data management center is **ap-southeast-1**, the default value of **Region*	- is ap-southeast-1, which specifies the Singapore region.
+	// If the Data Management hub is in the **cn-hangzhou*	- region, the default value of **Region*	- is \\`cn-shanghai\\`. If the Data Management hub is in the **ap-southeast-1*	- region, the default value of **Region*	- is \\`ap-southeast-1\\`.
 	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The storage period of logs. Unit: day. Default value: 180. Valid values: 30 to 3000.
+	// The storage duration in days. The default value is 180. The value must be an integer from 30 to 3000.
 	//
 	// example:
 	//

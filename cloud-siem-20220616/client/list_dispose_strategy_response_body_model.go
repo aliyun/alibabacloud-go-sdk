@@ -22,35 +22,35 @@ type iListDisposeStrategyResponseBody interface {
 }
 
 type ListDisposeStrategyResponseBody struct {
-	// The HTTP status code.
+	// HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// Response data.
 	//
 	// example:
 	//
 	// 123456
 	Data *ListDisposeStrategyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// Response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request succeeded. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -121,9 +121,9 @@ func (s *ListDisposeStrategyResponseBody) Validate() error {
 }
 
 type ListDisposeStrategyResponseBodyData struct {
-	// The pagination information.
+	// Paging information.
 	PageInfo *ListDisposeStrategyResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The detailed data.
+	// Detailed data.
 	ResponseData []*ListDisposeStrategyResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -172,19 +172,19 @@ func (s *ListDisposeStrategyResponseBodyData) Validate() error {
 }
 
 type ListDisposeStrategyResponseBodyDataPageInfo struct {
-	// The current page number.
+	// Current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// Number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// Total number of entries.
 	//
 	// example:
 	//
@@ -232,155 +232,155 @@ func (s *ListDisposeStrategyResponseBodyDataPageInfo) Validate() error {
 }
 
 type ListDisposeStrategyResponseBodyDataResponseData struct {
-	// The UUID of the alert.
+	// Alert UUID.
 	//
 	// example:
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	// The ID of the Alibaba Cloud account that is associated with the policy in SIEM.
+	// SIEM root account ID associated with the strategy.
 	//
 	// example:
 	//
 	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// The status of the policy. Valid values:
+	// Strategy status. Valid values:
 	//
-	// 	- 0: invalid
+	// - 0: disabled
 	//
-	// 	- 1: valid
+	// - 1: enabled
 	//
 	// example:
 	//
 	// 0
 	EffectiveStatus *int32 `json:"EffectiveStatus,omitempty" xml:"EffectiveStatus,omitempty"`
-	// The details of the entity. The value is a JSON array.
+	// Entity details in JSON array format.
 	//
 	// example:
 	//
 	// [{"ip":"1.1.1.1"}]
 	Entity []interface{} `json:"Entity,omitempty" xml:"Entity,omitempty" type:"Repeated"`
-	// The ID of the entity.
+	// Entity ID.
 	//
 	// example:
 	//
 	// 123456789
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The type of the entity. Valid values:
+	// Entity type. Valid values:
 	//
-	// 	- ip
+	// - ip
 	//
-	// 	- process
+	// - process
 	//
-	// 	- file
+	// - file
 	//
 	// example:
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The summary information about the failed task.
+	// Summary of task failure.
 	//
 	// example:
 	//
 	// DisposalEntity failed which description is Aegis Quarantine File , return_info failed which description is Check Aegis Process Result , [ERROR DETAIL] *******.php:file not found
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The end time of the task.
+	// Task completion time.
 	//
 	// example:
 	//
 	// 2021-08-10 21:34:07
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The creation time.
+	// Creation time.
 	//
 	// example:
 	//
 	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
+	// Last modified time.
 	//
 	// example:
 	//
 	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the policy.
+	// Strategy ID.
 	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the event.
+	// Event name.
 	//
 	// example:
 	//
 	// Multiple type of alerts, including Miner Network, Command line download and run malicious files, Backdoor Process, etc
 	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
-	// The UUID of the event.
+	// Global unique UUID of the event.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The name of the playbook, which is the unique identifier of the playbook.
+	// Unique name of the playbook.
 	//
 	// example:
 	//
 	// WafBlockIP
 	PlaybookName *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
-	// The type of the playbook. Valid values:
+	// Playbook type. Valid values:
 	//
-	// 	- system: user-triggered playbook
+	// - system: manual disposal
 	//
-	// 	- custom: event-triggered playbook
+	// - custom: event-triggered playbook
 	//
-	// 	- custom_alert: alert-triggered playbook
+	// - custom_alert: alert-triggered playbook
 	//
-	// 	- soar-manual: user-run playbook
+	// - soar-manual: manually run playbook
 	//
-	// 	- soar-mdr: MDR-run playbook
+	// - soar-mdr: MDR-run playbook
 	//
 	// example:
 	//
 	// system
 	PlaybookType *string `json:"PlaybookType,omitempty" xml:"PlaybookType,omitempty"`
-	// The UUID of the playbook.
+	// UUID of the playbook.
 	//
 	// example:
 	//
 	// system_aliyun_clb_process_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The scope of the policy.
+	// Disposal scope.
 	//
 	// example:
 	//
 	// [{ aliUid: 1766185894104675 }]
 	Scope []interface{} `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Repeated"`
-	// The ID of the SOAR handling policy.
+	// ID of the security orchestration and automated response disposal strategy.
 	//
 	// example:
 	//
-	// 577bbf90-a770-44a7-8154-586aa2d318fa
+	// 577bbf90-a770-44a7-8154-586aa2d3****
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
-	// The running status of the playbook. Valid values:
+	// Playbook invocation status. Valid values:
 	//
-	// 	- 200: successful
+	// - 200: succeeded
 	//
-	// 	- 10: deleted
+	// - 10: deleted
 	//
-	// 	- 5: failed
+	// - 5: failed
 	//
-	// 	- 0: initial
+	// - 0: initial state
 	//
 	// example:
 	//
 	// 10
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the Alibaba account that is used to configure the policy.
+	// The Alibaba Cloud account ID associated with the configuration policy.
 	//
 	// example:
 	//
 	// 176555323***
 	SubAliuid *int64 `json:"SubAliuid,omitempty" xml:"SubAliuid,omitempty"`
-	// The parameters that are used to trigger the playbook. The value is in the JSON format.
+	// Parameters used to trigger the playbook, in JSON format.
 	//
 	// example:
 	//
@@ -448,7 +448,12 @@ type ListDisposeStrategyResponseBodyDataResponseData struct {
 	//
 	// }
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
-	TaskUrl   *string `json:"TaskUrl,omitempty" xml:"TaskUrl,omitempty"`
+	// Playbook URL.
+	//
+	// example:
+	//
+	// {"playbookUuid":"system_aliyun_aegis_stop_container_book","requestUuid":"e8924356-448b-4301-aee9-*******"}
+	TaskUrl *string `json:"TaskUrl,omitempty" xml:"TaskUrl,omitempty"`
 }
 
 func (s ListDisposeStrategyResponseBodyDataResponseData) String() string {

@@ -22,7 +22,7 @@ type iDescribeLogTypeResponseBody interface {
 }
 
 type DescribeLogTypeResponseBody struct {
-	// The HTTP status code.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeLogTypeResponseBody struct {
 	//
 	// 123456
 	Data []*DescribeLogTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeLogTypeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -125,13 +125,13 @@ func (s *DescribeLogTypeResponseBody) Validate() error {
 }
 
 type DescribeLogTypeResponseBodyData struct {
-	// The log type of the rule.
+	// The log type for the rule.
 	//
 	// example:
 	//
 	// HTTP_ACTIVITY
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The internal code of the log type.
+	// The code for the log type name.
 	//
 	// example:
 	//

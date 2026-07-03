@@ -22,7 +22,7 @@ type iDescribeCustomizeRuleCountResponseBody interface {
 }
 
 type DescribeCustomizeRuleCountResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeCustomizeRuleCountResponseBody struct {
 	//
 	// 123456
 	Data *DescribeCustomizeRuleCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeCustomizeRuleCountResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -121,73 +121,73 @@ func (s *DescribeCustomizeRuleCountResponseBody) Validate() error {
 }
 
 type DescribeCustomizeRuleCountResponseBodyData struct {
-	// 同类聚合规则数。
+	// The number of rules for intra-class aggregation.
 	//
 	// example:
 	//
 	// 3
 	AggregationRuleNum *int32 `json:"AggregationRuleNum,omitempty" xml:"AggregationRuleNum,omitempty"`
-	// 自定义规则数。
+	// The number of custom rules.
 	//
 	// example:
 	//
 	// 10
 	CustomizeRuleNum *int32 `json:"CustomizeRuleNum,omitempty" xml:"CustomizeRuleNum,omitempty"`
-	// 专家规则数。
+	// The number of expert rules.
 	//
 	// example:
 	//
 	// 7
 	ExpertRuleNum *int32 `json:"ExpertRuleNum,omitempty" xml:"ExpertRuleNum,omitempty"`
-	// 图计算规则数。
+	// The number of graph computing rules.
 	//
 	// example:
 	//
 	// 2
 	GraphComputingRuleNum *int32 `json:"GraphComputingRuleNum,omitempty" xml:"GraphComputingRuleNum,omitempty"`
-	// The number of rules that are used to identify high-risk threats.
+	// The number of high-risk rules.
 	//
 	// example:
 	//
 	// 12
 	HighRuleNum *int32 `json:"HighRuleNum,omitempty" xml:"HighRuleNum,omitempty"`
-	// The total number of rules.
+	// The number of rules in use.
 	//
 	// example:
 	//
 	// 20
 	InUseRuleNum *int32 `json:"InUseRuleNum,omitempty" xml:"InUseRuleNum,omitempty"`
-	// The number of rules that are used to identify low-risk threats.
+	// The number of low-risk rules.
 	//
 	// example:
 	//
 	// 3
 	LowRuleNum *int32 `json:"LowRuleNum,omitempty" xml:"LowRuleNum,omitempty"`
-	// The number of rules that are used to identify medium-risk threats.
+	// The number of medium-risk rules.
 	//
 	// example:
 	//
 	// 5
 	MediumRuleNum *int32 `json:"MediumRuleNum,omitempty" xml:"MediumRuleNum,omitempty"`
-	// 预定义规则数。
+	// The number of predefined rules.
 	//
 	// example:
 	//
 	// 10
 	PredefinedRuleNum *int32 `json:"PredefinedRuleNum,omitempty" xml:"PredefinedRuleNum,omitempty"`
-	// 告警透传规则数。
+	// The number of alert pass-through rules.
 	//
 	// example:
 	//
 	// 3
 	SingleAlertRuleNum *int32 `json:"SingleAlertRuleNum,omitempty" xml:"SingleAlertRuleNum,omitempty"`
-	// 总规则数。
+	// The total number of rules.
 	//
 	// example:
 	//
 	// 10
 	TotalRuleNum *int32 `json:"TotalRuleNum,omitempty" xml:"TotalRuleNum,omitempty"`
-	// 不产生事件规则数。
+	// The number of rules that do not generate events.
 	//
 	// example:
 	//

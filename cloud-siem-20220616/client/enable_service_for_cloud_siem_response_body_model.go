@@ -16,11 +16,11 @@ type iEnableServiceForCloudSiemResponseBody interface {
 }
 
 type EnableServiceForCloudSiemResponseBody struct {
-  // Indicates whether the threat analysis feature is authorized to access the resource directory. Valid values:
+  // The return value. Valid values:
   // 
-  // 	- true
+  // - true: The service is enabled.
   // 
-  // 	- false
+  // - false: The service failed to be enabled.
   // 
   // example:
   // 

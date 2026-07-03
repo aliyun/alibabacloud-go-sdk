@@ -36,7 +36,7 @@ type ListAccountAccessIdResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type ListAccountAccessIdResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -121,47 +121,47 @@ func (s *ListAccountAccessIdResponseBody) Validate() error {
 }
 
 type ListAccountAccessIdResponseBodyData struct {
-	// The AccessKey ID of the cloud account that is added to the threat analysis feature.
+	// The attached AccessKey ID.
 	//
 	// example:
 	//
 	// ABCXXXXXXXX
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// The MD5 hash value of the AccessKey ID.
+	// The MD5 value of the multicloud AccessKey ID.
 	//
 	// example:
 	//
 	// abcXXXXXXXX
 	AccessIdMd5 *string `json:"AccessIdMd5,omitempty" xml:"AccessIdMd5,omitempty"`
-	// The ID of the cloud account.
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The information about the cloud account to which the AccessKey ID belongs. The value is in the following format: Alibaba Cloud account ID|Alibaba Cloud account username|AccessKey ID.
+	// The information of the account to which the multicloud AccessKey ID belongs. The format is: Alibaba Cloud account ID|Alibaba Cloud account name|Multicloud AccessKey ID.
 	//
 	// example:
 	//
 	// 123xxxxxx|xxxx|ABCXXXXX
 	AccountStr *string `json:"AccountStr,omitempty" xml:"AccountStr,omitempty"`
-	// Indicates whether the cloud account to which the AccessKey ID belongs is added to the threat analysis feature. Valid values:
+	// Indicates whether the AccessKey ID is attached to threat analysis. Valid values:
 	//
-	// 	- 0: no
+	// - 0: Not attached.
 	//
-	// 	- 1: yes
+	// - 1: Attached.
 	//
 	// example:
 	//
 	// 1
 	Bound *int32 `json:"Bound,omitempty" xml:"Bound,omitempty"`
-	// The code of the cloud service provider.
+	// The code for the multicloud environment.
 	//
 	// example:
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to add the third-party cloud account.
+	// The ID of the Alibaba Cloud account that corresponds to the multicloud AccessKey ID.
 	//
 	// example:
 	//

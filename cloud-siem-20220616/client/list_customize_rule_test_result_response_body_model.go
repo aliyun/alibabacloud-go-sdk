@@ -22,7 +22,7 @@ type iListCustomizeRuleTestResultResponseBody interface {
 }
 
 type ListCustomizeRuleTestResultResponseBody struct {
-	// The HTTP status code.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListCustomizeRuleTestResultResponseBody struct {
 	//
 	// 123456
 	Data *ListCustomizeRuleTestResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type ListCustomizeRuleTestResultResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -178,18 +178,23 @@ type ListCustomizeRuleTestResultResponseBodyDataPageInfo struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 100
-	TotalCount    *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of alerts that passed the verification.
+	//
+	// example:
+	//
+	// 30
 	VerifiedCount *int64 `json:"VerifiedCount,omitempty" xml:"VerifiedCount,omitempty"`
 }
 
@@ -246,39 +251,39 @@ type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
 	//
 	// example:
 	//
-	// The account you logged in this time is not in the legal account category defined by you. Please confirm the legality of the login behavior.
+	// The account you logged in this time is not in the legal account category defined by you. Please confirm the legality of the login behavior。
 	AlertDesc *string `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
-	// The alert details in the JSON format.
+	// The details of the alert, in JSON format.
 	//
 	// example:
 	//
 	// {"main_user_id": "165295629792****";"log_uuid_count": "99";"attack_ip": "218.92.XX.XX"}
 	AlertDetail *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
-	// The source of the alert.
+	// The source product of the alert that is associated with the event.
 	//
 	// example:
 	//
 	// sas
 	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
-	// The sub-module of the source.
+	// The sub-module of the source product of the alert that is associated with the event.
 	//
 	// example:
 	//
 	// waf
 	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
-	// The tag of the ATT\\&CK attack.
+	// The ATT\\&CK attack technique tag.
 	//
 	// example:
 	//
 	// T1595.002 Vulnerability Scanning
 	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	// The name of the alert, which corresponds to the name of the custom rule.
+	// The name of the alert. This value corresponds to the name of the custom rule.
 	//
 	// example:
 	//
 	// waf_scan
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The threat type, which indicates the alert type.
+	// The threat type. This parameter is equivalent to the alert type.
 	//
 	// example:
 	//
@@ -286,17 +291,17 @@ type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The threat level. Valid values:
 	//
-	// 	- serious: high.
+	// - serious: high
 	//
-	// 	- suspicious: medium.
+	// - suspicious: medium
 	//
-	// 	- remind: low.
+	// - remind: low
 	//
 	// example:
 	//
 	// remind
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The log source of the rule.
+	// The log source that corresponds to the rule.
 	//
 	// example:
 	//
@@ -306,15 +311,15 @@ type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
 	//
 	// example:
 	//
-	// 2021-01-06 16:37:29
+	// 2023-01-06 16:37:29
 	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
-	// The log type of the rule.
+	// The log type that corresponds to the rule.
 	//
 	// example:
 	//
 	// ALERT_ACTIVITY
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
+	// The ID of the main Alibaba Cloud account for Security Information and Event Management (SIEM) that is associated with the alert.
 	//
 	// example:
 	//
@@ -322,15 +327,15 @@ type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
 	MainUserId *string `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
 	// The status of the alert data. Valid values:
 	//
-	// 	- test: business test data.
+	// - test: business test
 	//
-	// 	- online: online data.
+	// - online: published
 	//
 	// example:
 	//
 	// test
 	OnlineStatus *string `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
-	// The ID of the Alibaba Cloud account within which the alert is generated.
+	// The ID of the member account that is associated with the alert.
 	//
 	// example:
 	//
@@ -341,7 +346,16 @@ type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
 	// example:
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
-	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The result of verifying the alert based on the alert template.
+	//
+	// - true: The verification is passed.
+	//
+	// - false: The verification failed.
+	//
+	// example:
+	//
+	// true
 	VerifyType *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
 }
 

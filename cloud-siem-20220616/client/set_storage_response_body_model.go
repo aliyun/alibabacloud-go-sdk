@@ -16,11 +16,11 @@ type iSetStorageResponseBody interface {
 }
 
 type SetStorageResponseBody struct {
-	// Indicates whether the settings are saved. Valid values:
+	// Indicates whether the settings were saved. Valid values:
 	//
-	// 	- true:
+	// - true: The settings were saved.
 	//
-	// 	- false:
+	// - false: The settings failed to be saved.
 	//
 	// example:
 	//

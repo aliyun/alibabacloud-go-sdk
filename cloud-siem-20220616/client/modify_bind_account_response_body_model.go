@@ -16,9 +16,9 @@ type iModifyBindAccountResponseBody interface {
 }
 
 type ModifyBindAccountResponseBody struct {
-	// The data returned.
+	// The return value of the request.
 	Data *ModifyBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ModifyBindAccountResponseBody) Validate() error {
 }
 
 type ModifyBindAccountResponseBodyData struct {
-	// The number of the accounts that are modified. The value 1 indicates that the modification is successful, and a value less than or equal to 0 indicates that the modification failed.
+	// The number of account bindings that are modified. A value of 1 indicates that the operation is successful. A value of 0 or less indicates that the operation failed.
 	//
 	// example:
 	//

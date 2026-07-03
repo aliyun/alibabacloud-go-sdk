@@ -38,58 +38,122 @@ type iListEntitiesRequest interface {
 }
 
 type ListEntitiesRequest struct {
+	// The page number of the current page. The value must be greater than or equal to 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The entity name.
+	//
 	// example:
 	//
 	// host1****
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// The entity type. Valid values:
+	//
+	// - ip: IP address
+	//
+	// - domain: domain name
+	//
+	// - url: URL
+	//
+	// - process: process
+	//
+	// - file: file
+	//
+	// - host: host
+	//
+	// - cloud_account: cloud account
+	//
+	// - container: container
+	//
+	// - bucket: Object Storage Service (OSS) bucket.
+	//
 	// example:
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The entity UUID.
+	//
 	// example:
 	//
 	// 6c740667-80b2-476d-8924-2e706feb****
-	EntityUuid  *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	// The list of entity UUIDs.
+	//
+	// example:
+	//
+	// 6c740667-80b2-476d-8924-2e706feb****,6c740667-80b2-476d-8924-2e706feb****
 	EntityUuids *string `json:"EntityUuids,omitempty" xml:"EntityUuids,omitempty"`
+	// The incident ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// Specifies whether the entity is malicious. Valid values:
+	//
+	// - 0: No.
+	//
+	// - 1: Yes.
+	//
 	// example:
 	//
 	// 1
 	IsMalwareEntity *string `json:"IsMalwareEntity,omitempty" xml:"IsMalwareEntity,omitempty"`
+	// The malicious entity type.
+	//
 	// example:
 	//
 	// aliyun.siem.sas.alert_tag.miner_software
 	MalwareType *string `json:"MalwareType,omitempty" xml:"MalwareType,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Select the region based on the region where your assets reside. Valid values:
+	//
+	// - cn-hangzhou: the assets reside in the Chinese mainland or Hong Kong (China).
+	//
+	// - ap-southeast-1: the assets reside in regions outside China.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the member to which the administrator switches the view.
+	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// The view type. Valid values:
+	//
+	// - 0: the view of the current Alibaba Cloud account.
+	//
+	// - 1: the view of all accounts in the enterprise.
+	//
 	// example:
 	//
 	// 1
-	RoleType *int32  `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	Tags     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The entity tags. The value is a JSON array string:
+	//
+	// `"[{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]"`.
+	//
+	// example:
+	//
+	// [{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListEntitiesRequest) String() string {

@@ -16,11 +16,11 @@ type iOpenDeliveryResponseBody interface {
 }
 
 type OpenDeliveryResponseBody struct {
-	// Indicates whether the log delivery feature is enabled. Valid values:
+	// Indicates whether log delivery is enabled. Valid values:
 	//
-	// 	- true
+	// - true: Enabled
 	//
-	// 	- false
+	// - false: Failed
 	//
 	// example:
 	//

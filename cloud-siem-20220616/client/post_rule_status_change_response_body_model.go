@@ -22,7 +22,7 @@ type iPostRuleStatusChangeResponseBody interface {
 }
 
 type PostRuleStatusChangeResponseBody struct {
-	// The HTTP status code.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type PostRuleStatusChangeResponseBody struct {
 	//
 	// 123456
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message.
+	// The message returned.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type PostRuleStatusChangeResponseBody struct {
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true
+	// - true: The request is successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//

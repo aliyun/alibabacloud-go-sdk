@@ -16,9 +16,9 @@ type iDeleteDataSourceResponseBody interface {
 }
 
 type DeleteDataSourceResponseBody struct {
-	// The data returned.
+	// The return value of the request.
 	Data *DeleteDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *DeleteDataSourceResponseBody) Validate() error {
 }
 
 type DeleteDataSourceResponseBodyData struct {
-	// The number of data sources that are removed. The value 1 indicates that data source is removed, and a value less than or equal to 0 indicates that the data source failed to be removed.
+	// The number of data sources that are deleted. A value of 1 indicates success. A value of 0 or less indicates failure.
 	//
 	// example:
 	//

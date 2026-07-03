@@ -22,7 +22,7 @@ type iDescribeOperatorsResponseBody interface {
 }
 
 type DescribeOperatorsResponseBody struct {
-	// The HTTP status code.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeOperatorsResponseBody struct {
 	//
 	// 123456
 	Data []*DescribeOperatorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeOperatorsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -137,31 +137,31 @@ type DescribeOperatorsResponseBodyData struct {
 	//
 	// <=
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The description of the operator in Chinese.
+	// The Chinese description of the operator.
 	//
 	// example:
 	//
 	// arger than or equal to
 	OperatorDescCn *string `json:"OperatorDescCn,omitempty" xml:"OperatorDescCn,omitempty"`
-	// The description of the operator in English.
+	// The English description of the operator.
 	//
 	// example:
 	//
 	// larger than or equal to
 	OperatorDescEn *string `json:"OperatorDescEn,omitempty" xml:"OperatorDescEn,omitempty"`
-	// The name of the operator.
+	// The display name of the operator.
 	//
 	// example:
 	//
 	// <=
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	// The data types that are supported by the operator. The data types are separated by commas (,).
+	// The data types that the operator supports. Multiple data types are separated by commas.
 	//
 	// example:
 	//
 	// varchar
 	SupportDataType *string `json:"SupportDataType,omitempty" xml:"SupportDataType,omitempty"`
-	// The scenarios that are supported by the operator. Multiple scenarios are separated by commas (,), such as AGGREGATE scenarios. By default, this parameter is empty.
+	// The scenarios that the operator supports. Multiple scenarios are separated by commas, such as aggregation (AGGREGATE). The default value is empty.
 	//
 	// example:
 	//

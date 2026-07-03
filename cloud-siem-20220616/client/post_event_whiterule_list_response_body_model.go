@@ -22,7 +22,7 @@ type iPostEventWhiteruleListResponseBody interface {
 }
 
 type PostEventWhiteruleListResponseBody struct {
-	// The HTTP status code.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type PostEventWhiteruleListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//

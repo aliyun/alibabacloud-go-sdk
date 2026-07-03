@@ -24,43 +24,43 @@ type iPostRuleStatusChangeRequest interface {
 }
 
 type PostRuleStatusChangeRequest struct {
-	// The rule IDs. The value is a JSON array.
+	// A JSON array of rule IDs.
 	//
 	// example:
 	//
 	// [123,345]
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// Specifies whether to enable the rule. Valid values:
+	// The status of the rule. Valid values:
 	//
-	// 	- true
+	// - true: enabled
 	//
-	// 	- false
+	// - false: disabled
 	//
 	// example:
 	//
 	// true
 	InUse *bool `json:"InUse,omitempty" xml:"InUse,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region where the Data Management center of threat analysis is located. Select a region based on the location of your assets. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Your assets are in a region outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID of a member. An administrator can specify this parameter to switch to the perspective of the member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The type of the view.
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: the view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: the view of all accounts that belong to the enterprise.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type PostRuleStatusChangeRequest struct {
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// 	- predefine
+	// - predefine: predefined rule
 	//
-	// 	- customize
+	// - customize: custom rule
 	//
 	// example:
 	//

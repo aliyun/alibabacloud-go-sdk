@@ -22,35 +22,35 @@ type iDescribeEventCountByThreatLevelResponseBody interface {
 }
 
 type DescribeEventCountByThreatLevelResponseBody struct {
-	// The HTTP status code.
+	// HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// Response data.
 	//
 	// example:
 	//
 	// 123456
 	Data *DescribeEventCountByThreatLevelResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// Response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request succeeded. Valid values:
 	//
-	// 	- true
+	// - true: The request succeeded.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -121,34 +121,45 @@ func (s *DescribeEventCountByThreatLevelResponseBody) Validate() error {
 }
 
 type DescribeEventCountByThreatLevelResponseBodyData struct {
+	// Daily event statistics.
 	EventDailyNum []*DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum `json:"EventDailyNum,omitempty" xml:"EventDailyNum,omitempty" type:"Repeated"`
-	// The total number of events.
+	// Total number of events.
 	//
 	// example:
 	//
 	// 100
 	EventNum *int64 `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
-	// The number of high-risk events.
+	// Number of high-risk events.
 	//
 	// example:
 	//
 	// 20
 	HighLevelEventNum *int64 `json:"HighLevelEventNum,omitempty" xml:"HighLevelEventNum,omitempty"`
+	// Number of informational events.
+	//
+	// example:
+	//
+	// 0
 	InfoLevelEventNum *int64 `json:"InfoLevelEventNum,omitempty" xml:"InfoLevelEventNum,omitempty"`
-	// The number of low-risk events.
+	// Number of low-risk events.
 	//
 	// example:
 	//
 	// 52
 	LowLevelEventNum *int64 `json:"LowLevelEventNum,omitempty" xml:"LowLevelEventNum,omitempty"`
-	// The number of medium-risk events.
+	// Number of medium-risk events.
 	//
 	// example:
 	//
 	// 3
-	MediumLevelEventNum  *int64 `json:"MediumLevelEventNum,omitempty" xml:"MediumLevelEventNum,omitempty"`
+	MediumLevelEventNum *int64 `json:"MediumLevelEventNum,omitempty" xml:"MediumLevelEventNum,omitempty"`
+	// Number of critical events.
+	//
+	// example:
+	//
+	// 0
 	SeriousLevelEventNum *int64 `json:"SeriousLevelEventNum,omitempty" xml:"SeriousLevelEventNum,omitempty"`
-	// The number of unhandled events.
+	// Number of unhandled events.
 	//
 	// example:
 	//
@@ -250,9 +261,24 @@ func (s *DescribeEventCountByThreatLevelResponseBodyData) Validate() error {
 }
 
 type DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum struct {
-	Date           *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	EventNum       *int64  `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
-	UndealEventNum *int64  `json:"UndealEventNum,omitempty" xml:"UndealEventNum,omitempty"`
+	// Date.
+	//
+	// example:
+	//
+	// 2025-10-06
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// Total number of security events.
+	//
+	// example:
+	//
+	// 100
+	EventNum *int64 `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
+	// Number of unhandled security events.
+	//
+	// example:
+	//
+	// 34
+	UndealEventNum *int64 `json:"UndealEventNum,omitempty" xml:"UndealEventNum,omitempty"`
 }
 
 func (s DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum) String() string {

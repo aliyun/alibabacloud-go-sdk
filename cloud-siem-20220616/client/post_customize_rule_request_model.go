@@ -54,35 +54,35 @@ type iPostCustomizeRuleRequest interface {
 }
 
 type PostCustomizeRuleRequest struct {
-	// The risk type.
+	// The threat type.
 	//
 	// example:
 	//
 	// WEBSHELL
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The internal code of the risk type.
+	// The Medusa code of the threat type.
 	//
 	// example:
 	//
 	// ${siem_rule_type_process_abnormal_command}
 	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
-	// att&ck.
+	// The ATT\\&CK technique.
 	//
 	// example:
 	//
 	// T1595.002 Vulnerability Scanning
 	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	// The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window.
+	// The extended information for event generation. This parameter is returned only when EventTransferType is set to allToSingle. The value indicates the length and unit of the alert aggregation window.
 	//
 	// example:
 	//
 	// {"time":"1","unit":"MINUTE"}
 	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
-	// Specifies whether to convert an alert to an event. Valid values:
+	// Specifies whether to convert alerts into events. Valid values:
 	//
-	// 	- 0: no
+	// - 0: no
 	//
-	// 	- 1: yes
+	// - 1: yes
 	//
 	// example:
 	//
@@ -90,17 +90,17 @@ type PostCustomizeRuleRequest struct {
 	EventTransferSwitch *int32 `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
 	// The event generation method. Valid values:
 	//
-	// 	- default: The default method is used.
+	// - default: the default method
 	//
-	// 	- singleToSingle: The system generates an event for each alert.
+	// - singleToSingle: An event is generated for each alert.
 	//
-	// 	- allToSingle: The system generates an event for alerts within a period of time.
+	// - allToSingle: An event is generated for all alerts in a period.
 	//
 	// example:
 	//
 	// allToSingle
 	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
-	// The ID of the rule.
+	// The ID of the custom rule.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type PostCustomizeRuleRequest struct {
 	//
 	// cloud_siem_aegis_sas_alert
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	// The internal code of the log source.
+	// The Medusa code of the log source.
 	//
 	// example:
 	//
@@ -124,45 +124,45 @@ type PostCustomizeRuleRequest struct {
 	//
 	// ALERT_ACTIVITY
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The internal code of the log type.
+	// The Medusa code of the log type.
 	//
 	// example:
 	//
 	// ${security_event_config.event_name.webshellName_clientav}
 	LogTypeMds *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
-	// The window length of the rule.
+	// The length of the rule window.
 	//
 	// example:
 	//
 	// {"time":"1","unit":"HOUR"}
 	QueryCycle *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region where the data management center of Threat Analysis is located. Select the region where your assets are located. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: assets in the Chinese mainland and China (Hong Kong)
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: assets outside China
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID that is used to switch the administrator\\"s perspective to a member\\"s perspective.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type.
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: the view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: the view of all accounts that are managed by the administrator.
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The query condition of the rule. The value is in the JSON format.
+	// The query condition of the rule. The value is a JSON string.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type PostCustomizeRuleRequest struct {
 	//
 	// this rule is for waf scan
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	// The log aggregation field of the rule. The value is a JSON string.
+	// The fields that are used to group logs. The value is a JSON array.
 	//
 	// example:
 	//
@@ -186,19 +186,19 @@ type PostCustomizeRuleRequest struct {
 	//
 	// waf_scan
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The threshold configuration of the rule. The value is in the JSON format.
+	// The threshold configuration of the rule. The value is a JSON string.
 	//
 	// example:
 	//
 	// {"aggregateFunction":"count","aggregateFunctionName":"count","field":"activity_name","operator":"&lt;=","value":1}
 	RuleThreshold *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
-	// The risk level. Valid values:
+	// The threat level. Valid values:
 	//
-	// 	- serious: high
+	// - serious: high
 	//
-	// 	- suspicious: medium
+	// - suspicious: medium
 	//
-	// 	- remind: low
+	// - remind: low
 	//
 	// example:
 	//

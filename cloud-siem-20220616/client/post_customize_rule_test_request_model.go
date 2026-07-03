@@ -24,39 +24,39 @@ type iPostCustomizeRuleTestRequest interface {
 }
 
 type PostCustomizeRuleTestRequest struct {
-	// The ID of the rule.
+	// The ID of the custom rule.
 	//
 	// example:
 	//
 	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+	// The region where the Data Management center of threat analysis is located. Select the region based on the region where your assets are located. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Your assets are in regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID of the member that the administrator wants to impersonate to view data.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type.
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: the view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: the view of all accounts in the enterprise.
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The simulation data for the test. This parameter is available only when TestType is set to simulate.
+	// The simulated data for the test. This parameter is required only when TestType is set to simulate.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type PostCustomizeRuleTestRequest struct {
 	SimulatedData *string `json:"SimulatedData,omitempty" xml:"SimulatedData,omitempty"`
 	// The test type. Valid values:
 	//
-	// 	- simulate: simulation data test
+	// - simulate: tests the rule with simulated data
 	//
-	// 	- business: business data test
+	// - business: tests the rule with business data
 	//
 	// example:
 	//

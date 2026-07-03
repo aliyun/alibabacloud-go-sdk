@@ -22,22 +22,36 @@ type iListEntitiesResponseBody interface {
 }
 
 type ListEntitiesResponseBody struct {
+	// The HTTP status code of the request.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
+	//
 	// example:
 	//
 	// 123456
 	Data *ListEntitiesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: successful.
+	//
+	// - false: failed.
+	//
 	// example:
 	//
 	// true
@@ -107,7 +121,9 @@ func (s *ListEntitiesResponseBody) Validate() error {
 }
 
 type ListEntitiesResponseBodyData struct {
-	PageInfo     *ListEntitiesResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *ListEntitiesResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The detailed data.
 	ResponseData []*ListEntitiesResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -156,14 +172,20 @@ func (s *ListEntitiesResponseBodyData) Validate() error {
 }
 
 type ListEntitiesResponseBodyDataPageInfo struct {
+	// The page number of the current page.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -210,78 +232,182 @@ func (s *ListEntitiesResponseBodyDataPageInfo) Validate() error {
 }
 
 type ListEntitiesResponseBodyDataResponseData struct {
-	AgentConfidence           *string                                                  `json:"AgentConfidence,omitempty" xml:"AgentConfidence,omitempty"`
-	AgentDisposalMethod       *string                                                  `json:"AgentDisposalMethod,omitempty" xml:"AgentDisposalMethod,omitempty"`
-	AgentDisposalPlaybookUuid *string                                                  `json:"AgentDisposalPlaybookUuid,omitempty" xml:"AgentDisposalPlaybookUuid,omitempty"`
-	AgentDisposalSuggestion   *string                                                  `json:"AgentDisposalSuggestion,omitempty" xml:"AgentDisposalSuggestion,omitempty"`
-	AgentDisposes             []*ListEntitiesResponseBodyDataResponseDataAgentDisposes `json:"AgentDisposes,omitempty" xml:"AgentDisposes,omitempty" type:"Repeated"`
+	AgentAnalysisReason *string `json:"AgentAnalysisReason,omitempty" xml:"AgentAnalysisReason,omitempty"`
+	// The confidence level of the entity as determined by the agent.
+	//
+	// example:
+	//
+	// 85
+	AgentConfidence *string `json:"AgentConfidence,omitempty" xml:"AgentConfidence,omitempty"`
+	// The disposal method recommended by the agent.
+	//
+	// example:
+	//
+	// delete_file
+	AgentDisposalMethod *string `json:"AgentDisposalMethod,omitempty" xml:"AgentDisposalMethod,omitempty"`
+	// The UUID of the playbook recommended by the agent for disposal.
+	//
+	// example:
+	//
+	// 12XAD-SFQ-WAF-2ca2
+	AgentDisposalPlaybookUuid *string `json:"AgentDisposalPlaybookUuid,omitempty" xml:"AgentDisposalPlaybookUuid,omitempty"`
+	AgentDisposalReason       *string `json:"AgentDisposalReason,omitempty" xml:"AgentDisposalReason,omitempty"`
+	// The disposal suggestion recommended by the agent.
+	//
+	// example:
+	//
+	// {}
+	AgentDisposalSuggestion *string `json:"AgentDisposalSuggestion,omitempty" xml:"AgentDisposalSuggestion,omitempty"`
+	// The list of disposal suggestions recommended by the agent.
+	AgentDisposes []*ListEntitiesResponseBodyDataResponseDataAgentDisposes `json:"AgentDisposes,omitempty" xml:"AgentDisposes,omitempty" type:"Repeated"`
+	// The number of alerts associated with the entity.
+	//
 	// example:
 	//
 	// 1
 	AlertNum *int32 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
+	// The alert UUID.
+	//
 	// example:
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	// The Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 123456789****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The code of the cloud service provider from which the entity originates. Valid values:
+	//
+	// - aliyun: Alibaba Cloud
+	//
+	// - qcloud: Tencent Cloud
+	//
+	// - hcloud: Huawei Cloud.
+	//
 	// example:
 	//
 	// aliyun
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The logical ID of the entity.
+	//
 	// example:
 	//
 	// 12345****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The display information of the entity in JSON format.
+	//
 	// example:
 	//
 	// {"file_path": "c:/www/leixi.jsp","file_hash": "aa0ca926ad948cd820e0a3d9a18c****","host_uuid": "efed2cf7-0b77-45d9-a97b-d2cf246b****","malware_type": "${aliyun.siem.sas.alert_tag.webshell}","host_name": "launch-advisor-2023****"}
 	EntityInfo *string `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
+	// The entity name.
+	//
 	// example:
 	//
 	// 123.123.123.123
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// The entity type. Valid values:
+	//
+	// - ip: IP address
+	//
+	// - domain: domain name
+	//
+	// - url: URL
+	//
+	// - process: process
+	//
+	// - file: file
+	//
+	// - host: host
+	//
+	// - cloud_account: cloud account
+	//
+	// - container: container
+	//
+	// - bucket: Object Storage Service (OSS) bucket.
+	//
 	// example:
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The entity UUID.
+	//
 	// example:
 	//
 	// 8087b3e4aa6862852c100c8738cf****
 	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
+	// The number of events associated with the entity.
+	//
 	// example:
 	//
 	// 1
 	EventNum *int32 `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
+	// The time when the entity was collected.
+	//
 	// example:
 	//
 	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the entity was last updated.
+	//
 	// example:
 	//
 	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The entity ID.
+	//
 	// example:
 	//
 	// 123456789***
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The incident UUID. You can obtain this value from the incident list operation.
+	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	IsAsset      *string `json:"IsAsset,omitempty" xml:"IsAsset,omitempty"`
-	IsMalware    *string `json:"IsMalware,omitempty" xml:"IsMalware,omitempty"`
+	// Indicates whether the entity is an asset. Valid values:
+	//
+	// + 0: No.
+	//
+	// + 1: Yes.
+	//
+	// example:
+	//
+	// 1
+	IsAsset *string `json:"IsAsset,omitempty" xml:"IsAsset,omitempty"`
+	// Indicates whether the entity is malicious. Valid values:
+	//
+	// + 0: No.
+	//
+	// + 1: Yes.
+	//
+	// example:
+	//
+	// 0
+	IsMalware *string `json:"IsMalware,omitempty" xml:"IsMalware,omitempty"`
+	// The malware type of the entity.
+	//
 	// example:
 	//
 	// aliyun.siem.sas.alert_tag.webshell
 	MalwareType *string `json:"MalwareType,omitempty" xml:"MalwareType,omitempty"`
+	// The linked account ID associated with the entity.
+	//
 	// example:
 	//
 	// 113091674488****
-	SubUserId *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	Tags      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The entity tags. The value is a JSON array string:
+	//
+	// `"[{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]"`.
+	//
+	// example:
+	//
+	// [{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListEntitiesResponseBodyDataResponseData) String() string {
@@ -290,6 +416,10 @@ func (s ListEntitiesResponseBodyDataResponseData) String() string {
 
 func (s ListEntitiesResponseBodyDataResponseData) GoString() string {
 	return s.String()
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) GetAgentAnalysisReason() *string {
+	return s.AgentAnalysisReason
 }
 
 func (s *ListEntitiesResponseBodyDataResponseData) GetAgentConfidence() *string {
@@ -302,6 +432,10 @@ func (s *ListEntitiesResponseBodyDataResponseData) GetAgentDisposalMethod() *str
 
 func (s *ListEntitiesResponseBodyDataResponseData) GetAgentDisposalPlaybookUuid() *string {
 	return s.AgentDisposalPlaybookUuid
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) GetAgentDisposalReason() *string {
+	return s.AgentDisposalReason
 }
 
 func (s *ListEntitiesResponseBodyDataResponseData) GetAgentDisposalSuggestion() *string {
@@ -388,6 +522,11 @@ func (s *ListEntitiesResponseBodyDataResponseData) GetTags() *string {
 	return s.Tags
 }
 
+func (s *ListEntitiesResponseBodyDataResponseData) SetAgentAnalysisReason(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.AgentAnalysisReason = &v
+	return s
+}
+
 func (s *ListEntitiesResponseBodyDataResponseData) SetAgentConfidence(v string) *ListEntitiesResponseBodyDataResponseData {
 	s.AgentConfidence = &v
 	return s
@@ -400,6 +539,11 @@ func (s *ListEntitiesResponseBodyDataResponseData) SetAgentDisposalMethod(v stri
 
 func (s *ListEntitiesResponseBodyDataResponseData) SetAgentDisposalPlaybookUuid(v string) *ListEntitiesResponseBodyDataResponseData {
 	s.AgentDisposalPlaybookUuid = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetAgentDisposalReason(v string) *ListEntitiesResponseBodyDataResponseData {
+	s.AgentDisposalReason = &v
 	return s
 }
 
@@ -522,8 +666,19 @@ func (s *ListEntitiesResponseBodyDataResponseData) Validate() error {
 }
 
 type ListEntitiesResponseBodyDataResponseDataAgentDisposes struct {
-	AgentDisposalMethod       *string `json:"AgentDisposalMethod,omitempty" xml:"AgentDisposalMethod,omitempty"`
+	// The disposal suggestion recommended by the agent.
+	//
+	// example:
+	//
+	// {}
+	AgentDisposalMethod *string `json:"AgentDisposalMethod,omitempty" xml:"AgentDisposalMethod,omitempty"`
+	// The UUID of the playbook recommended by the agent for disposal.
+	//
+	// example:
+	//
+	// 12XAD-SFQ-WAF-2ca2
 	AgentDisposalPlaybookUuid *string `json:"AgentDisposalPlaybookUuid,omitempty" xml:"AgentDisposalPlaybookUuid,omitempty"`
+	AgentDisposalReason       *string `json:"AgentDisposalReason,omitempty" xml:"AgentDisposalReason,omitempty"`
 }
 
 func (s ListEntitiesResponseBodyDataResponseDataAgentDisposes) String() string {
@@ -542,6 +697,10 @@ func (s *ListEntitiesResponseBodyDataResponseDataAgentDisposes) GetAgentDisposal
 	return s.AgentDisposalPlaybookUuid
 }
 
+func (s *ListEntitiesResponseBodyDataResponseDataAgentDisposes) GetAgentDisposalReason() *string {
+	return s.AgentDisposalReason
+}
+
 func (s *ListEntitiesResponseBodyDataResponseDataAgentDisposes) SetAgentDisposalMethod(v string) *ListEntitiesResponseBodyDataResponseDataAgentDisposes {
 	s.AgentDisposalMethod = &v
 	return s
@@ -549,6 +708,11 @@ func (s *ListEntitiesResponseBodyDataResponseDataAgentDisposes) SetAgentDisposal
 
 func (s *ListEntitiesResponseBodyDataResponseDataAgentDisposes) SetAgentDisposalPlaybookUuid(v string) *ListEntitiesResponseBodyDataResponseDataAgentDisposes {
 	s.AgentDisposalPlaybookUuid = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseDataAgentDisposes) SetAgentDisposalReason(v string) *ListEntitiesResponseBodyDataResponseDataAgentDisposes {
+	s.AgentDisposalReason = &v
 	return s
 }
 

@@ -22,13 +22,13 @@ type iDeleteCustomizeRuleResponseBody interface {
 }
 
 type DeleteCustomizeRuleResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code of the request.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The return value of the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DeleteCustomizeRuleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//

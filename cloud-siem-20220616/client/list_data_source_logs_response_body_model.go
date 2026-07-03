@@ -18,7 +18,7 @@ type iListDataSourceLogsResponseBody interface {
 type ListDataSourceLogsResponseBody struct {
 	// The data returned.
 	Data *ListDataSourceLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,31 +62,31 @@ func (s *ListDataSourceLogsResponseBody) Validate() error {
 }
 
 type ListDataSourceLogsResponseBodyData struct {
-	// The ID of the cloud account.
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The code that is used for multi-cloud environments. Valid values:
+	// The code for the cloud service provider. Valid values:
 	//
-	// 	- qcloud: Tencent Cloud
+	// - qcloud: Tencent Cloud.
 	//
-	// 	- aliyun: Alibaba Cloud
+	// - aliyun: Alibaba Cloud.
 	//
-	// 	- hcloud: Huawei Cloud
+	// - hcloud: Huawei Cloud
 	//
 	// example:
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the data source. The value is obtained after the threat analysis feature calculates the MD5 hash value of a parameter.
+	// The ID of the data source. This ID is an MD5 hash value that is calculated by threat analysis based on specific parameters.
 	//
 	// example:
 	//
 	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
-	// The logs of the data source.
+	// The list of logs for the data source.
 	DataSourceInstanceLogs []*ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs `json:"DataSourceInstanceLogs,omitempty" xml:"DataSourceInstanceLogs,omitempty" type:"Repeated"`
 	// The name of the data source.
 	//
@@ -94,13 +94,13 @@ type ListDataSourceLogsResponseBodyData struct {
 	//
 	// waf kafka
 	DataSourceInstanceName *string `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
-	// The remarks of the data source.
+	// The remarks on the data source.
 	//
 	// example:
 	//
 	// waf kafka
 	DataSourceInstanceRemark *string `json:"DataSourceInstanceRemark,omitempty" xml:"DataSourceInstanceRemark,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account to which the log belongs.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs struct {
 	//
 	// cloud_siem_waf_xxxxx
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	// The ID of the log. The value is obtained after the threat analysis feature calculates the MD5 hash value of a parameter.
+	// The ID of the log. This ID is an MD5 hash value that is calculated by threat analysis based on specific parameters.
 	//
 	// example:
 	//
@@ -211,13 +211,13 @@ type ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs struct {
 	//
 	// ${siem.prod.cloud_siem_waf_xxxxx}
 	LogMdsCode *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
-	// The parameters of the log.
+	// The detailed parameters for the log.
 	LogParams []*ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams `json:"LogParams,omitempty" xml:"LogParams,omitempty" type:"Repeated"`
-	// Indicates whether the task for which logs are collected is enabled. Valid values:
+	// The status of the log collection task. Valid values:
 	//
-	// 	- 1: yes
+	// - 1: collected.
 	//
-	// 	- 0: no
+	// - 0: not collected.
 	//
 	// example:
 	//
@@ -292,13 +292,13 @@ func (s *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) Validate() er
 }
 
 type ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams struct {
-	// The parameter code of the log.
+	// The code of the log parameter.
 	//
 	// example:
 	//
 	// region_code
 	ParaCode *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
-	// The parameter value of the log.
+	// The value of the log parameter.
 	//
 	// example:
 	//

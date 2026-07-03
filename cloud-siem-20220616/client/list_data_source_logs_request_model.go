@@ -20,7 +20,7 @@ type iListDataSourceLogsRequest interface {
 }
 
 type ListDataSourceLogsRequest struct {
-	// The ID of the cloud account.
+	// The ID of the Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//
@@ -28,13 +28,13 @@ type ListDataSourceLogsRequest struct {
 	//
 	// 123xxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The code that is used for multi-cloud environments. Valid values:
+	// The code for the cloud service provider. Valid values:
 	//
-	// 	- qcloud: Tencent Cloud
+	// - qcloud: Tencent Cloud.
 	//
-	// 	- aliyun: Alibaba Cloud
+	// - aliyun: Alibaba Cloud.
 	//
-	// 	- hcloud: Huawei Cloud
+	// - hcloud: Huawei Cloud.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListDataSourceLogsRequest struct {
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the data source. The value is obtained after the threat analysis feature calculates the MD5 hash value of a parameter.
+	// The ID of the data source. This ID is an MD5 hash value that is calculated by threat analysis based on specific parameters.
 	//
 	// This parameter is required.
 	//
@@ -50,11 +50,11 @@ type ListDataSourceLogsRequest struct {
 	//
 	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
-	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region where the Data Management hub of threat analysis is deployed. Select a region based on the location of your assets. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	// - cn-hangzhou: Your assets are in the Chinese mainland or Hong Kong (China).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Your assets are in a region outside China.
 	//
 	// example:
 	//

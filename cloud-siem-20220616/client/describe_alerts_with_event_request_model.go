@@ -50,6 +50,11 @@ type iDescribeAlertsWithEventRequest interface {
 }
 
 type DescribeAlertsWithEventRequest struct {
+	// The name of the alert.
+	//
+	// example:
+	//
+	// Try SNMP weak password
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The title of the alert.
 	//
@@ -57,9 +62,24 @@ type DescribeAlertsWithEventRequest struct {
 	//
 	// Scan-Try SNMP weak password
 	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
-	AlertType  *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AssetId    *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	AssetName  *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// The type of the alert.
+	//
+	// example:
+	//
+	// Scan
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The ID of the asset.
+	//
+	// example:
+	//
+	// 09414e9ebaa9c19b84d851abb91d****
+	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
+	// The name of the asset.
+	//
+	// example:
+	//
+	// hostname-****
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
 	// The page number. Pages start from page 1.
 	//
 	// This parameter is required.
@@ -68,35 +88,47 @@ type DescribeAlertsWithEventRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1577808000000
-	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EntityId   *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the entity.
+	//
+	// example:
+	//
+	// 21034e803f492b926cea9e5beab4****
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The name of the entity.
+	//
+	// example:
+	//
+	// launch-advisor-*****
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// The ID of the event.
+	// The incident ID.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// Specifies whether an attack is defended. Valid values:
+	// Indicates whether the attack is defended. Valid values:
 	//
-	// 	- 0: detected
+	// - `0`: detected
 	//
-	// 	- 1: blocked
+	// - `1`: blocked
 	//
 	// example:
 	//
 	// 1
 	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
-	// The risk levels. The value is a JSON array. Valid values:
+	// The threat level. The value is a JSON array. Valid values:
 	//
-	// 	- serious: high
+	// - `serious`: high
 	//
-	// 	- suspicious: medium
+	// - `suspicious`: medium
 	//
-	// 	- remind: low
+	// - `remind`: low
 	//
 	// example:
 	//
@@ -110,11 +142,11 @@ type DescribeAlertsWithEventRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region in which the data management center of Threat Analysis resides. You can determine the region based on the region in which your assets reside. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - `cn-hangzhou`: Your assets reside in the Chinese mainland or Hong Kong (China).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - `ap-southeast-1`: Your assets reside in regions outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -126,11 +158,11 @@ type DescribeAlertsWithEventRequest struct {
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view.
+	// The entity of the alert. Valid values:
 	//
-	// 	- 0: view of the current Alibaba Cloud account.
+	// - `0`: the current Alibaba Cloud account.
 	//
-	// 	- 1: view of all accounts for the enterprise.
+	// - `1`: all members in the resource directory.
 	//
 	// example:
 	//
@@ -142,11 +174,13 @@ type DescribeAlertsWithEventRequest struct {
 	//
 	// sas
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The start of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the account within which the alert is generated.
+	// The ID of the account that is associated with the alert.
 	//
 	// example:
 	//

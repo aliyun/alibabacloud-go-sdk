@@ -16,11 +16,11 @@ type iDescribeServiceStatusResponseBody interface {
 }
 
 type DescribeServiceStatusResponseBody struct {
-	// Indicates whether the threat analysis feature is authorized to access the resource directory. Valid values:
+	// The return value.
 	//
-	// 	- true
+	// - true: The authorization is granted.
 	//
-	// 	- false
+	// - false: The authorization is not granted.
 	//
 	// example:
 	//

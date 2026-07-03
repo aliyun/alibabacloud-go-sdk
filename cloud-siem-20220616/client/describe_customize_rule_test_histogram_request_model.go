@@ -20,33 +20,33 @@ type iDescribeCustomizeRuleTestHistogramRequest interface {
 }
 
 type DescribeCustomizeRuleTestHistogramRequest struct {
-	// The ID of the rule.
+	// The ID of the custom rule.
 	//
 	// example:
 	//
 	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region where the Management Hub of threat analysis is located. Select the region of the Management Hub based on the region where your assets are located. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Your assets are in regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID of the member. This parameter is used when an administrator switches to the perspective of a member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type.
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: The view of all accounts in your enterprise.
 	//
 	// example:
 	//

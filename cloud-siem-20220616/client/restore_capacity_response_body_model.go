@@ -16,17 +16,17 @@ type iRestoreCapacityResponseBody interface {
 }
 
 type RestoreCapacityResponseBody struct {
-	// Indicates whether the release command has been sent. Valid values:
+	// Indicates whether the delete command was sent. Valid values:
 	//
-	// 	- true: The command has been sent and the storage space is being released.
+	// - true: The delete command was sent and the cleanup is in progress.
 	//
-	// 	- false: The command failed to be sent.
+	// - false: The command failed to send.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

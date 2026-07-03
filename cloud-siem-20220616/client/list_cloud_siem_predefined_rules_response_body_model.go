@@ -48,9 +48,9 @@ type ListCloudSiemPredefinedRulesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -172,19 +172,19 @@ func (s *ListCloudSiemPredefinedRulesResponseBodyData) Validate() error {
 }
 
 type ListCloudSiemPredefinedRulesResponseBodyDataPageInfo struct {
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -232,25 +232,25 @@ func (s *ListCloudSiemPredefinedRulesResponseBodyDataPageInfo) Validate() error 
 }
 
 type ListCloudSiemPredefinedRulesResponseBodyDataResponseData struct {
-	// The type of the risk.
+	// The threat type.
 	//
 	// example:
 	//
 	// WEBSHELL
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The alert additional field for ATT\\&CK.
+	// The ATT\\&CK technique.
 	//
 	// example:
 	//
 	// T1595.002 Vulnerability Scanning
 	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	// The method that is used to generate an event. Valid values:
+	// The event generation method. Valid values:
 	//
-	// 	- default: built-in method.
+	// - default: the default built-in method
 	//
-	// 	- singleToSingle: The system generates an event for each alert.
+	// - singleToSingle: An event is generated for each alert.
 	//
-	// 	- allToSingle: The system generates an event for alerts within a period of time.
+	// - allToSingle: An event is generated for all alerts in an epoch.
 	//
 	// example:
 	//
@@ -262,7 +262,7 @@ type ListCloudSiemPredefinedRulesResponseBodyDataResponseData struct {
 	//
 	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the rule was modified.
+	// The time when the rule was last modified.
 	//
 	// example:
 	//
@@ -274,31 +274,31 @@ type ListCloudSiemPredefinedRulesResponseBodyDataResponseData struct {
 	//
 	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The internal code of the rule description.
+	// The Medusa code of the rule description.
 	//
 	// example:
 	//
 	// ${siem_rule_description_siem_cfw-attack-count-level-up_cfw-attack}
 	RuleDescMds *string `json:"RuleDescMds,omitempty" xml:"RuleDescMds,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// siem_base64-command-exec_aegis-proc
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule name in Chinese.
+	// The Chinese name of the rule.
 	//
 	// example:
 	//
 	// siem_base64-command-exec_aegis-proc
 	RuleNameCn *string `json:"RuleNameCn,omitempty" xml:"RuleNameCn,omitempty"`
-	// The rule name in English.
+	// The English name of the rule.
 	//
 	// example:
 	//
 	// siem_base64-command-exec_aegis-proc
 	RuleNameEn *string `json:"RuleNameEn,omitempty" xml:"RuleNameEn,omitempty"`
-	// The internal code of the rule name.
+	// The Medusa code of the rule name.
 	//
 	// example:
 	//
@@ -312,21 +312,21 @@ type ListCloudSiemPredefinedRulesResponseBodyDataResponseData struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status of the predefined rule. Valid values:
 	//
-	// 	- 0: The rule is in the initial state.
+	// - 0: initial
 	//
-	// 	- 100: The rule takes effect.
+	// - 100: published
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The risk level. Valid values:
+	// The threat level. Valid values:
 	//
-	// 	- serious: high.
+	// - serious: high
 	//
-	// 	- suspicious: medium.
+	// - suspicious: medium
 	//
-	// 	- remind: low.
+	// - remind: low
 	//
 	// example:
 	//

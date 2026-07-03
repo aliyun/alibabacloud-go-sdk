@@ -62,7 +62,7 @@ func (s *ListAllProdsResponseBody) Validate() error {
 }
 
 type ListAllProdsResponseBodyData struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListAllProdsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The cloud services.
+	// The list of products.
 	//
 	// example:
 	//
@@ -146,37 +146,37 @@ func (s *ListAllProdsResponseBodyData) Validate() error {
 }
 
 type ListAllProdsResponseBodyDataProdList struct {
-	// The code of the cloud service provider. Valid values:
+	// The multicloud code. Valid values:
 	//
-	// 	- qcloud: Tencent Cloud.
+	// - qcloud: Tencent Cloud.
 	//
-	// 	- aliyun: Alibaba Cloud.
+	// - aliyun: Alibaba Cloud.
 	//
-	// 	- hcloud: Huawei Cloud.
+	// - hcloud: Huawei Cloud.
 	//
 	// example:
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The number of logs within the cloud service that are added to the threat analysis feature.
+	// The number of ingested logs for the product.
 	//
 	// example:
 	//
 	// 10
 	ImportedLogCount *int32 `json:"ImportedLogCount,omitempty" xml:"ImportedLogCount,omitempty"`
-	// The time when the logs within the cloud service were last added to the threat analysis feature.
+	// The time when logs were last ingested for the product.
 	//
 	// example:
 	//
 	// 2023-11-23 12:12:12
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The code of the cloud service.
+	// The code of the cloud product.
 	//
 	// example:
 	//
 	// sas
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	// The total number of logs within the cloud service.
+	// The total number of logs for the product.
 	//
 	// example:
 	//

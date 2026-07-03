@@ -20,33 +20,33 @@ type iDescribeAlertSourceWithEventRequest interface {
 }
 
 type DescribeAlertSourceWithEventRequest struct {
-	// The UUID of the event.
+	// The globally unique ID of the event.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region where the Data Management center of Threat Analysis is located. Select a region based on the location of your assets. Valid values:
 	//
-	// 	- Valid values: Your assets reside in regions in China.
+	// - cn-hangzhou: Your assets are in China.
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Your assets are outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The ID of the member whose data you want to view. An administrator can use this parameter to switch to the perspective of a member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The type of the view.
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: The view of all accounts that are managed by the enterprise.
 	//
 	// example:
 	//

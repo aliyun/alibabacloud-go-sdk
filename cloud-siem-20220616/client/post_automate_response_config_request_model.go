@@ -32,7 +32,7 @@ type iPostAutomateResponseConfigRequest interface {
 }
 
 type PostAutomateResponseConfigRequest struct {
-	// The action configuration of the automated response rule. The value is in the JSON format.
+	// The configuration of the action that is specified in the automated response rule. The value is a JSON array.
 	//
 	// example:
 	//
@@ -50,23 +50,23 @@ type PostAutomateResponseConfigRequest struct {
 	//
 	// ]
 	ActionConfig *string `json:"ActionConfig,omitempty" xml:"ActionConfig,omitempty"`
-	// The type of the handling action. Multiple types are separated by commas (,). Valid values:
+	// The type of the action. Separate multiple values with commas. Valid values:
 	//
-	// 	- **doPlaybook**: runs the playbook.
+	// - **doPlaybook**: runs a playbook
 	//
-	// 	- **changeEventStatus**: changes the event status.
+	// - **changeEventStatus**: changes the status of the event
 	//
-	// 	- **changeThreatLevel**: changes the threat level of the event.
+	// - **changeThreatLevel**: changes the threat level of the event
 	//
 	// example:
 	//
 	// doPlaybook,changeEventStatus
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The type of the automated response rule. Valid values:
+	// The type of the automated response. Valid values:
 	//
-	// 	- **event**
+	// - **event**: event
 	//
-	// 	- **alert**
+	// - **alert**: alert
 	//
 	// example:
 	//
@@ -78,39 +78,39 @@ type PostAutomateResponseConfigRequest struct {
 	//
 	// [{"left":{"value":"alert_name"},"operator":"containsString","right":{"value":"webshell_online"}}]
 	ExecutionCondition *string `json:"ExecutionCondition,omitempty" xml:"ExecutionCondition,omitempty"`
-	// The rule ID.
+	// The ID of the automated response rule.
 	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The data management center of the threat analysis feature. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region where the Data Management center of Threat Analysis is located. Select a region based on the location of your assets. Valid values:
 	//
-	// 	- **cn-hangzhou**: Your assets reside in regions in China.
+	// - **cn-hangzhou**: your assets are in the Chinese mainland or China (Hong Kong).
 	//
-	// 	- **ap-southeast-1**: Your assets reside in regions outside China.
+	// - **ap-southeast-1**: your assets are outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The ID of the user that the administrator uses to switch the view. This parameter is used when an administrator switches to the perspective of a member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type.
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: the view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: the view of all accounts that are managed by the administrator.
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The rule name.
+	// The name of the automated response rule.
 	//
 	// example:
 	//

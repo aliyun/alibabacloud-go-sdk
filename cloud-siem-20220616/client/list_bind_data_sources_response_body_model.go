@@ -66,31 +66,31 @@ func (s *ListBindDataSourcesResponseBody) Validate() error {
 }
 
 type ListBindDataSourcesResponseBodyData struct {
-	// The ID of the cloud account.
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The username of the cloud account.
+	// The name of the multicloud account.
 	//
 	// example:
 	//
 	// sas_tq_account_xxxx
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The code of the cloud service provider. Valid values:
+	// The code of the multicloud environment. Valid values:
 	//
-	// 	- qcloud: Tencent Cloud
+	// - qcloud: Tencent Cloud.
 	//
-	// 	- aliyun: Alibaba Cloud
+	// - aliyun: Alibaba Cloud.
 	//
-	// 	- hcloud: Huawei Cloud
+	// - hcloud: Huawei Cloud.
 	//
 	// example:
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+	// The ID of the data source. This ID is an MD5 hash value that is calculated by Threat Analysis based on specific parameters.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type ListBindDataSourcesResponseBodyData struct {
 	//
 	// waf_kafka
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The remarks on the data source.
+	// The remarks of the data source.
 	//
 	// example:
 	//
@@ -110,23 +110,23 @@ type ListBindDataSourcesResponseBodyData struct {
 	DataSourceRemark *string `json:"DataSourceRemark,omitempty" xml:"DataSourceRemark,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- obs: Huawei Cloud Object Storage Service (OBS)
+	// - obs: Huawei Cloud OBS.
 	//
-	// 	- wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	// - wafApi: Tencent Cloud WAF download API.
 	//
-	// 	- ckafka: Tencent Cloud Kafka (CKafka)
+	// - ckafka: Tencent Cloud CKafka.
 	//
 	// example:
 	//
 	// obs
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The number of logs that are added within the data source.
+	// The number of logs added to the data source.
 	//
 	// example:
 	//
 	// 1
 	LogCount *int32 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	// The number of existing tasks that are created to add logs within the data source.
+	// The number of log collection tasks created for the data source.
 	//
 	// example:
 	//

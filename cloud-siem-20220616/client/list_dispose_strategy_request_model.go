@@ -48,7 +48,7 @@ type iListDisposeStrategyRequest interface {
 }
 
 type ListDisposeStrategyRequest struct {
-	// The page number. Pages start from page 1.
+	// Current page number. Must be greater than or equal to 1.
 	//
 	// This parameter is required.
 	//
@@ -56,17 +56,17 @@ type ListDisposeStrategyRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The status of the policy. Valid values:
+	// Strategy status. Valid values:
 	//
-	// 	- 0: invalid
+	// - 0: disabled
 	//
-	// 	- 1: valid
+	// - 1: enabled
 	//
 	// example:
 	//
 	// 0
 	EffectiveStatus *int32 `json:"EffectiveStatus,omitempty" xml:"EffectiveStatus,omitempty"`
-	// The end of the time range to query. Unit: milliseconds.
+	// End time of the query, in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -74,48 +74,53 @@ type ListDisposeStrategyRequest struct {
 	//
 	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The feature value of the entity. Fuzzy match is supported.
+	// Entity feature value. Use this to perform a fuzzy search on entities.
 	//
 	// example:
 	//
 	// test22.php
 	EntityIdentity *string `json:"EntityIdentity,omitempty" xml:"EntityIdentity,omitempty"`
-	// The entity type of the playbook. Valid values:
+	// Entity type. Valid values:
 	//
-	// 	- ip
+	// - ip
 	//
-	// 	- process
+	// - process
 	//
-	// 	- file
+	// - file
 	//
 	// example:
 	//
 	// ip
-	EntityType   *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// Event ID.
+	//
+	// example:
+	//
+	// 49670d3bbf7aa9556a2fff3dbaa9****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The sort order. Valid values:
+	// Sort order. Valid values:
 	//
-	// 	- desc: descending order.
+	// - desc: descending
 	//
-	// 	- asc: ascending order.
+	// - asc: ascending
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The sort field. Valid values:
+	// Sort field. Valid values:
 	//
-	// 	- GmtModified: sorts the policies by update time.
+	// - GmtModified: sort by last modified time
 	//
-	// 	- GmtCreate: sorts the policies by creation time.
+	// - GmtCreate: sort by creation time
 	//
-	// 	- FinishTime: sorts the policies by end time.
+	// - FinishTime: sort by strategy end time
 	//
 	// example:
 	//
 	// GmtModified
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// The number of entries per page. Maximum value: 100.
+	// Number of entries per page. Maximum value is 100.
 	//
 	// This parameter is required.
 	//
@@ -123,67 +128,67 @@ type ListDisposeStrategyRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the playbook, which is the unique identifier of the playbook.
+	// Unique name of the playbook.
 	//
 	// example:
 	//
 	// WafBlockIP
 	PlaybookName *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
-	// The type of the playbook. Valid values:
+	// Playbook type. Valid values:
 	//
-	// 	- system: user-triggered playbook
+	// - system: manual disposal
 	//
-	// 	- custom: event-triggered playbook
+	// - custom: event-triggered playbook
 	//
-	// 	- custom_alert: alert-triggered playbook
+	// - custom_alert: alert-triggered playbook
 	//
-	// 	- soar-manual: user-run playbook
+	// - soar-manual: manually run playbook
 	//
-	// 	- soar-mdr: MDR-run playbook
+	// - soar-mdr: MDR-run playbook
 	//
 	// example:
 	//
 	// system
 	PlaybookTypes *string `json:"PlaybookTypes,omitempty" xml:"PlaybookTypes,omitempty"`
-	// The UUID of the playbook.
+	// UUID of the playbook.
 	//
 	// example:
 	//
 	// system_aliyun_clb_process_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// Location of the Data Management center for Threat Analysis and Response. Select the location based on where your assets are deployed. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: assets in the Chinese mainland or Hong Kong (China)
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: assets outside China
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// Alibaba Cloud account ID when an administrator switches to another member\\"s perspective.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// View type. Valid values:
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: view for the current Alibaba Cloud account
 	//
-	// - 1: the global account
+	// - 1: view for all accounts under the enterprise
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The ID of the SOAR handling policy.
+	// ID of the security orchestration and automated response disposal strategy.
 	//
 	// example:
 	//
-	// a50a49b7-6044-4593-ab15-2b46567caadd
+	// a50a49b7-6044-4593-ab15-2b46567c****
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
-	// The beginning of the time range to query. Unit: milliseconds.
+	// Start time of the query, in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -191,7 +196,12 @@ type ListDisposeStrategyRequest struct {
 	//
 	// 1577808000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Disposal strategy status.
+	//
+	// example:
+	//
+	// 200
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListDisposeStrategyRequest) String() string {

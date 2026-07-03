@@ -22,7 +22,7 @@ type iDescribeDisposeStrategyPlaybookResponseBody interface {
 }
 
 type DescribeDisposeStrategyPlaybookResponseBody struct {
-	// The HTTP status code that is returned.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeDisposeStrategyPlaybookResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ func (s *DescribeDisposeStrategyPlaybookResponseBody) Validate() error {
 }
 
 type DescribeDisposeStrategyPlaybookResponseBodyData struct {
-	// The playbook name, which is the unique identifier of the playbook.
+	// The unique name of the playbook.
 	//
 	// example:
 	//

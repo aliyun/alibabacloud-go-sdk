@@ -18,17 +18,17 @@ type iGetStorageRequest interface {
 }
 
 type GetStorageRequest struct {
-	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region where the Data Management hub for threat analysis is located. Select a region for the management hub based on the region of your assets. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: Select this value if your assets are in the Chinese mainland or the China (Hong Kong) region.
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Select this value if your assets are in a region outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID of the member. This parameter is used by an administrator to switch to the perspective of a member.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type GetStorageRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The type of the view. Valid values:
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: The view of all accounts that belong to the enterprise.
 	//
 	// example:
 	//

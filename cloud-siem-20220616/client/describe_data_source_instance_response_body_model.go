@@ -18,7 +18,7 @@ type iDescribeDataSourceInstanceResponseBody interface {
 type DescribeDataSourceInstanceResponseBody struct {
 	// The data returned.
 	Data *DescribeDataSourceInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,31 +62,31 @@ func (s *DescribeDataSourceInstanceResponseBody) Validate() error {
 }
 
 type DescribeDataSourceInstanceResponseBodyData struct {
-	// The ID of the cloud account.
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 123xxxxxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The code of the cloud service provider. Valid values:
+	// The code for the multicloud environment. Valid values:
 	//
-	// 	- qcloud: Tencent Cloud
+	// - qcloud: Tencent Cloud.
 	//
-	// 	- aliyun: Alibaba Cloud
+	// - aliyun: Alibaba Cloud.
 	//
-	// 	- hcloud: Huawei Cloud
+	// - hcloud: Huawei Cloud.
 	//
 	// example:
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+	// The ID of the data source. The threat analysis service generates the ID by calculating the MD5 hash of specific parameters.
 	//
 	// example:
 	//
 	// 220ba97c9d1fdb0b9c7e8c7ca328d7ea
 	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
-	// The parameters of the data source.
+	// The list of detailed parameters for the data source.
 	DataSourceInstanceParams []*DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams `json:"DataSourceInstanceParams,omitempty" xml:"DataSourceInstanceParams,omitempty" type:"Repeated"`
 }
 
@@ -148,13 +148,13 @@ func (s *DescribeDataSourceInstanceResponseBodyData) Validate() error {
 }
 
 type DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams struct {
-	// The code of the parameter.
+	// The parameter code.
 	//
 	// example:
 	//
 	// region_code
 	ParaCode *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
-	// The value of the parameter.
+	// The parameter value.
 	//
 	// example:
 	//

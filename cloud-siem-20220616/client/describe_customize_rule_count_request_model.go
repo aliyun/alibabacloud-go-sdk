@@ -18,27 +18,27 @@ type iDescribeCustomizeRuleCountRequest interface {
 }
 
 type DescribeCustomizeRuleCountRequest struct {
-	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+	// The region of the management center for threat analysis. Select a region based on where your assets are located. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions inside China.
+	// - cn-hangzhou: Assets are in the Chinese mainland or China (Hong Kong).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Assets are in regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID of a member. An administrator can use this ID to switch to the member\\"s perspective.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The type of view. Valid values:
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: the view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: the view of all accounts in the enterprise.
 	//
 	// example:
 	//

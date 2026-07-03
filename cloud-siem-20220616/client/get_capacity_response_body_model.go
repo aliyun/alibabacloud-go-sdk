@@ -16,9 +16,9 @@ type iGetCapacityResponseBody interface {
 }
 
 type GetCapacityResponseBody struct {
-	// The information about the storage capacity.
+	// Storage capacity details.
 	Data *GetCapacityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// ID of the request.
 	//
 	// example:
 	//
@@ -62,31 +62,35 @@ func (s *GetCapacityResponseBody) Validate() error {
 }
 
 type GetCapacityResponseBodyData struct {
+	// Purchased quota for Agent-managed instances.
+	//
 	// example:
 	//
 	// 1
 	AgentManagedAssetQuota *int64 `json:"AgentManagedAssetQuota,omitempty" xml:"AgentManagedAssetQuota,omitempty"`
+	// Used quota for Agent-managed instances.
+	//
 	// example:
 	//
 	// 1
 	AgentManagedAssetUsed *int64 `json:"AgentManagedAssetUsed,omitempty" xml:"AgentManagedAssetUsed,omitempty"`
-	// Indicates whether the Logstores for the threat analysis feature exist on the user side. Valid values:
+	// Indicates whether the LogStore for threat analysis exists.
 	//
-	// 	- true: The logs are in the normal state. The log analysis feature is available.
+	// - true: Logs are normal and log analysis is available.
 	//
-	// 	- false: The logs are being cleared. The log analysis feature is unavailable.
+	// - false: Logs are being cleaned up and log analysis is unavailable.
 	//
 	// example:
 	//
 	// true
 	ExistLogStore *bool `json:"ExistLogStore,omitempty" xml:"ExistLogStore,omitempty"`
-	// The purchased storage capacity of the threat analysis feature. Unit: GB.
+	// Purchased storage capacity for threat analysis, in GB.
 	//
 	// example:
 	//
 	// 9000
 	PreservedCapacity *int64 `json:"PreservedCapacity,omitempty" xml:"PreservedCapacity,omitempty"`
-	// The billable storage capacity of the threat analysis feature. Unit: GB.
+	// Current billable storage usage for threat analysis, in GB.
 	//
 	// example:
 	//

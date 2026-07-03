@@ -18,7 +18,7 @@ type iModifyDataSourceLogResponseBody interface {
 type ModifyDataSourceLogResponseBody struct {
 	// The data returned.
 	Data *ModifyDataSourceLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *ModifyDataSourceLogResponseBody) Validate() error {
 }
 
 type ModifyDataSourceLogResponseBodyData struct {
-	// The number of logs that are modified. The value 1 indicates that the modification is successful, and a value less than or equal to 0 indicates that the modification failed.
+	// The number of modified logs. A value of 1 indicates success. A value of 0 or less indicates failure.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+	// The ID of the log. The threat analysis feature generates this ID by calculating an MD5 hash of the parameters.
 	//
 	// example:
 	//

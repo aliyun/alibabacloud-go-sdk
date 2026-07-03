@@ -28,7 +28,7 @@ type iModifyDataSourceRequest interface {
 }
 
 type ModifyDataSourceRequest struct {
-	// The ID of the cloud account.
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -36,11 +36,11 @@ type ModifyDataSourceRequest struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The code of the cloud service provider. Valid values:
 	//
-	// 	- qcloud: Tencent Cloud
+	// - qcloud: Tencent Cloud.
 	//
-	// 	- aliyun: Alibaba Cloud
+	// - aliyun: Alibaba Cloud.
 	//
-	// 	- hcloud: Huawei Cloud
+	// - hcloud: Huawei Cloud.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ModifyDataSourceRequest struct {
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [DescribeDataSourceInstance](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CDescribeDataSourceInstance) operation to query the IDs of data sources.
+	// The ID of the data source. The ID is an MD5 hash that is calculated based on the values of other parameters. You can call the [DescribeDataSourceInstance](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CDescribeDataSourceInstance) operation to obtain the data source ID.
 	//
 	// This parameter is required.
 	//
@@ -62,13 +62,13 @@ type ModifyDataSourceRequest struct {
 	//
 	// beijing_waf_kafka
 	DataSourceInstanceName *string `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
-	// The parameters of the data source in the JSON string format.
+	// The parameters of the data source, in a JSON array format.
 	//
 	// example:
 	//
 	// [{"paraCode":"region_code","paraValue":"ap-guangzhou"}]
 	DataSourceInstanceParams *string `json:"DataSourceInstanceParams,omitempty" xml:"DataSourceInstanceParams,omitempty"`
-	// The remarks on the data source.
+	// The description of the data source.
 	//
 	// example:
 	//
@@ -76,11 +76,11 @@ type ModifyDataSourceRequest struct {
 	DataSourceInstanceRemark *string `json:"DataSourceInstanceRemark,omitempty" xml:"DataSourceInstanceRemark,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- ckafka: Tencent Cloud Kafka (CKafka)
+	// - ckafka: Tencent Cloud CKafka.
 	//
-	// 	- obs: Huawei Cloud Object Storage Service (OBS)
+	// - obs: Huawei Cloud Object Storage Service (OBS).
 	//
-	// 	- wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+	// - wafApi: the API used to download attack logs from Tencent Cloud Web Application Firewall (WAF).
 	//
 	// This parameter is required.
 	//
@@ -88,11 +88,11 @@ type ModifyDataSourceRequest struct {
 	//
 	// obs
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region where the Data Management center of the threat analysis feature is located. Select a region based on the region where your assets are located. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Your assets are in a region outside China.
 	//
 	// example:
 	//

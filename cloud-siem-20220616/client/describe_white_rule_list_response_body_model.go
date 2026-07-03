@@ -22,13 +22,13 @@ type iDescribeWhiteRuleListResponseBody interface {
 }
 
 type DescribeWhiteRuleListResponseBody struct {
-	// The response code.
+	// The status code of the request.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The return value.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeWhiteRuleListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -178,13 +178,13 @@ type DescribeWhiteRuleListResponseBodyDataPageInfo struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -262,31 +262,31 @@ type DescribeWhiteRuleListResponseBodyDataResponseData struct {
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	// The ID of the Alibaba Cloud account that is used to purchase Threat Analysis.
 	//
 	// example:
 	//
 	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// The conditions in the rule. The value is a JSON array.
+	// The rule conditions, which are in the JSON array format.
 	//
 	// example:
 	//
 	// [{"conditions":[{"isNot":false,"itemId":0,"left":{"value":"host_uuid.host_name"},"operator":"containsString","right":{"value":"Cloud-MCH"}}]}]
 	Expression *DescribeWhiteRuleListResponseBodyDataResponseDataExpression `json:"Expression,omitempty" xml:"Expression,omitempty" type:"Struct"`
-	// The time when the whitelist rule was created.
+	// The time when the rule was created.
 	//
 	// example:
 	//
 	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the whitelist rule was modified.
+	// The time when the rule was last modified.
 	//
 	// example:
 	//
 	// 2021-01-06 16:37:29
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the whitelist rule.
+	// The unique ID of the whitelist rule.
 	//
 	// example:
 	//
@@ -298,17 +298,17 @@ type DescribeWhiteRuleListResponseBodyDataResponseData struct {
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The status of the whitelist rule. Valid values:
+	// The status of the rule. Valid values:
 	//
-	// 	- 1: enabled.
+	// - 1: enabled
 	//
-	// 	- 0: disabled.
+	// - 0: disabled
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to create the whitelist rule.
+	// The ID of the Alibaba Cloud account that is used to create the rule.
 	//
 	// example:
 	//
@@ -451,9 +451,9 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseData) Validate() error {
 }
 
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpression struct {
-	// The rule conditions.
+	// The array of rule conditions.
 	Conditions []*DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// The logical relationships among the rule conditions.
+	// The logical relation for the conditions.
 	//
 	// example:
 	//
@@ -501,43 +501,43 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpression) Validate()
 }
 
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions struct {
-	// Indicates whether the result is inverted. Valid values:
+	// Indicates whether to negate the result. Valid values:
 	//
-	// 	- true
+	// - true: The result is negated.
 	//
-	// 	- false
+	// - false: The result is not negated.
 	//
 	// example:
 	//
 	// false
 	IsNot *bool `json:"IsNot,omitempty" xml:"IsNot,omitempty"`
-	// The ID of the rule condition.
+	// The condition ID.
 	//
 	// example:
 	//
 	// 1
 	ItemId *int32 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// The left operand of the rule condition.
+	// The left operand of the condition.
 	Left *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft `json:"Left,omitempty" xml:"Left,omitempty" type:"Struct"`
-	// The logical operator of the rule condition. Valid values:
+	// The operator. Valid values:
 	//
-	// 	- `=`: equals to.
+	// - `=`: equals
 	//
-	// 	- `<>`: does not equal to.
+	// - `<>`: does not equal
 	//
-	// 	- `in`: contains.
+	// - `in`: includes
 	//
-	// 	- `not in`: does not contain.
+	// - `not in`: does not include
 	//
-	// 	- `REGEXP`: matches a regular expression.
+	// - `REGEXP`: matches a regular expression
 	//
-	// 	- `NOT REGEXP`: does not match a regular expression.
+	// - `NOT REGEXP`: does not match a regular expression
 	//
 	// example:
 	//
 	// REGEXP
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The right operand of the rule condition.
+	// The right operand.
 	Right *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight `json:"Right,omitempty" xml:"Right,omitempty" type:"Struct"`
 }
 
@@ -611,27 +611,27 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) 
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft struct {
 	// Indicates whether the left operand is a variable. Valid values:
 	//
-	// 	- true: variable.
+	// - true: variable
 	//
-	// 	- false: constant.
+	// - false: constant
 	//
 	// example:
 	//
 	// true
 	IsVar *bool `json:"IsVar,omitempty" xml:"IsVar,omitempty"`
-	// The remarks on the right operand.
+	// The remarks.
 	//
 	// example:
 	//
 	// length
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The key-value pair information of the remarks.
+	// The key-value pair for the remarks.
 	ModifierParam map[string]interface{} `json:"ModifierParam,omitempty" xml:"ModifierParam,omitempty"`
-	// Indicates whether the left operand is a constant. Valid values:
+	// Specifies whether the value is a constant. Valid values:
 	//
-	// 	- true
+	// - true: The value is a constant.
 	//
-	// 	- false
+	// - false: The value is not a constant.
 	//
 	// example:
 	//
@@ -703,31 +703,31 @@ func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLe
 }
 
 type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight struct {
-	// Indicates whether the right operand is a constant or a runtime variable that is obtained from the runtime context. Valid values:
+	// Specifies whether the right operand is a constant or a runtime variable. A runtime variable obtains a value from the runtime context. Valid values:
 	//
-	// 	- true: runtime variable.
+	// - true: runtime variable
 	//
-	// 	- false: constant.
+	// - false: constant
 	//
 	// example:
 	//
 	// false
 	IsVar *bool `json:"IsVar,omitempty" xml:"IsVar,omitempty"`
-	// The remarks on the right operand.
+	// The remarks.
 	//
 	// example:
 	//
 	// length
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The key-value pair information of the remarks.
+	// The key-value pair for the remarks.
 	ModifierParam map[string]interface{} `json:"ModifierParam,omitempty" xml:"ModifierParam,omitempty"`
-	// The data type of the right operand.
+	// The data type.
 	//
 	// example:
 	//
 	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The right operand.
+	// The value of the right operand.
 	//
 	// example:
 	//

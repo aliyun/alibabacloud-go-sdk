@@ -22,7 +22,7 @@ type iDescribeWafScopeResponseBody interface {
 }
 
 type DescribeWafScopeResponseBody struct {
-	// The HTTP status code.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeWafScopeResponseBody struct {
 	//
 	// 123456
 	Data []*DescribeWafScopeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeWafScopeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -125,13 +125,13 @@ func (s *DescribeWafScopeResponseBody) Validate() error {
 }
 
 type DescribeWafScopeResponseBodyData struct {
-	// The ID of the Alibaba Cloud account in SIEM.
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// The domain names that are protected by the WAF instance.
+	// The list of domain names that are protected by the WAF instance.
 	//
 	// example:
 	//

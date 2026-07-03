@@ -22,7 +22,7 @@ type iListAutomateResponseConfigsResponseBody interface {
 }
 
 type ListAutomateResponseConfigsResponseBody struct {
-	// The HTTP status code.
+	// The request status code.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type ListAutomateResponseConfigsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - **true**: The request was successful.
 	//
-	// 	- false
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -172,19 +172,19 @@ func (s *ListAutomateResponseConfigsResponseBodyData) Validate() error {
 }
 
 type ListAutomateResponseConfigsResponseBodyDataPageInfo struct {
-	// The current page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ func (s *ListAutomateResponseConfigsResponseBodyDataPageInfo) Validate() error {
 }
 
 type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
-	// The configuration of the action that is performed after the automated response rule is hit. The value is in the JSON format.
+	// The action configuration of the automated response rule. The value is a JSON array.
 	//
 	// example:
 	//
@@ -250,43 +250,39 @@ type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
 	//
 	// ]
 	ActionConfig *string `json:"ActionConfig,omitempty" xml:"ActionConfig,omitempty"`
-	// The type of the handling action. Multiple types are separated by commas (,). Valid values:
+	// The handling action. Multiple values are separated by commas. Valid values:
 	//
-	// 	- **doPlaybook**: runs the playbook.
+	// - **doPlaybook**: executes a playbook.
 	//
-	// 	- **changeEventStatus**: changes the event status.
+	// - **changeEventStatus**: changes the status of an event.
 	//
-	// 	- **changeThreatLevel**: changes the risk level of the event.
+	// - **changeThreatLevel**: changes the threat level of an event.
 	//
 	// example:
 	//
 	// doPlaybook,changeEventStatus
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The ID of the Alibaba Cloud account that is associated with the rule in SIEM.
+	// The ID of the Alibaba Cloud account that is associated with the rule.
 	//
 	// example:
 	//
 	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// The type of the automated response rule. Valid values:
+	// The type of the automated response. Valid values:
 	//
-	// 	- **event**
+	// - **event**
 	//
-	// 	- **alert**
+	// - **alert**
 	//
 	// example:
 	//
 	// event
 	AutoResponseType *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
-	// The type of the view. Valid values:
-	//
-	// 0: the current Alibaba Cloud account
-	//
-	// 1: the global account
+	// The data type of the condition field in the automated response rule.
 	//
 	// example:
 	//
-	// 1
+	// varchar
 	DataType *int32 `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The trigger condition of the automated response rule. The value is in the JSON format.
 	//
@@ -294,13 +290,13 @@ type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
 	//
 	// [{"left":{"value":"alert_name"},"operator":"containsString","right":{"value":"webshell_online"}}]
 	ExecutionCondition *string `json:"ExecutionCondition,omitempty" xml:"ExecutionCondition,omitempty"`
-	// The creation time.
+	// The time when the rule was created.
 	//
 	// example:
 	//
 	// 2021-01-06 16:37:29
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
+	// The time when the rule was last modified.
 	//
 	// example:
 	//
@@ -311,7 +307,16 @@ type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
 	// example:
 	//
 	// 123
-	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of the response rule.
+	//
+	// - preset: predefined
+	//
+	// - custom: custom
+	//
+	// example:
+	//
+	// custom
 	ResponseRuleType *string `json:"ResponseRuleType,omitempty" xml:"ResponseRuleType,omitempty"`
 	// The name of the automated response rule.
 	//
@@ -321,9 +326,9 @@ type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: disabled
 	//
-	// 	- **100**: enabled.
+	// - **100**: enabled
 	//
 	// example:
 	//

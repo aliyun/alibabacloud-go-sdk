@@ -48,9 +48,9 @@ type ListCloudSiemCustomizeRulesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ func (s *ListCloudSiemCustomizeRulesResponseBodyData) Validate() error {
 }
 
 type ListCloudSiemCustomizeRulesResponseBodyDataPageInfo struct {
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type ListCloudSiemCustomizeRulesResponseBodyDataPageInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -232,61 +232,63 @@ func (s *ListCloudSiemCustomizeRulesResponseBodyDataPageInfo) Validate() error {
 }
 
 type ListCloudSiemCustomizeRulesResponseBodyDataResponseData struct {
-	// The type of the risk.
+	// The threat type.
 	//
 	// example:
 	//
 	// WEBSHELL
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The internal code of the risk type.
+	// The Medusa code of the threat type.
 	//
 	// example:
 	//
 	// ${siem_rule_type_process_abnormal_command}
 	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
-	// The ID of the Alibaba Cloud account in SIEM.
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 127608589417****
 	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// The alert additional field for ATT\\&CK.
+	// The ATT\\&CK attack technique.
 	//
 	// example:
 	//
 	// T1595.002 Vulnerability Scanning
 	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	// The type of the view. Valid values:
+	// The view type.
 	//
-	// 0: view of the current Alibaba Cloud account. 1: view of all accounts for the enterprise.
+	// 0: the view of the current Alibaba Cloud account.
+	//
+	// 1: the view of all members in the enterprise.
 	//
 	// example:
 	//
 	// 1
 	DataType *int32 `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The extended information about event generation. If the value of **eventTransferType*	- is **allToSingle**, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
+	// The extended information for event generation. This parameter is returned only when **EventTransferType*	- is set to **allToSingle**. The value is a JSON-formatted string that indicates the window length and unit for alert aggregation. You must unescape the HTML escape characters in the string.
 	//
 	// example:
 	//
 	// {&quot;time&quot;:&quot;1&quot;,&quot;unit&quot;:&quot;MINUTE&quot;}
 	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
-	// Indicates whether the system generates an event for the alert. Valid values:
+	// Indicates whether to convert alerts into events. Valid values:
 	//
-	// 	- **0**: no.
+	// - **0**: no
 	//
-	// 	- **1**: yes.
+	// - **1**: yes
 	//
 	// example:
 	//
 	// 1
 	EventTransferSwitch *int32 `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
-	// The method that is used to generate an event. Valid values:
+	// The event generation method. Valid values:
 	//
-	// 	- **default**: built-in method.
+	// - **default**: the default method
 	//
-	// 	- **singleToSingle**: The system generates an event for each alert.
+	// - **singleToSingle**: An event is generated for each alert.
 	//
-	// 	- **allToSingle**: The system generates an event for alerts within a period of time.
+	// - **allToSingle**: An event is generated for all alerts within a period.
 	//
 	// example:
 	//
@@ -310,37 +312,37 @@ type ListCloudSiemCustomizeRulesResponseBodyDataResponseData struct {
 	//
 	// 123456789
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The log source of the rule.
+	// The log source that is associated with the rule.
 	//
 	// example:
 	//
 	// cloud_siem_aegis_sas_alert
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	// The internal code of the log source.
+	// The Medusa code of the log source that is associated with the rule.
 	//
 	// example:
 	//
 	// ${sas.cloudsiem.prod.cloud_siem_aegis_sas_alert}
 	LogSourceMds *string `json:"LogSourceMds,omitempty" xml:"LogSourceMds,omitempty"`
-	// The log type of the rule.
+	// The log type that is associated with the rule.
 	//
 	// example:
 	//
 	// ALERT_ACTIVITY
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The internal code of the log type.
+	// The Medusa code of the log type that is associated with the rule.
 	//
 	// example:
 	//
 	// ${sas.cloudsiem.prod.alert_activity}
 	LogTypeMds *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
-	// The window length of the rule. The HTML escape characters are reversed.
+	// The window length of the rule, which is a JSON-formatted string. You must unescape the HTML escape characters in the string.
 	//
 	// example:
 	//
 	// {&quot;time&quot;:&quot;1&quot;,&quot;unit&quot;:&quot;HOUR&quot;}
 	QueryCycle *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
-	// The query condition of the rule. The value is in the JSON format. The HTML escape characters are reversed.
+	// The query condition of the rule, which is a JSON-formatted string that represents an array. You must unescape the HTML escape characters in the string.
 	//
 	// example:
 	//
@@ -352,7 +354,7 @@ type ListCloudSiemCustomizeRulesResponseBodyDataResponseData struct {
 	//
 	// this rule is for waf scan
 	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	// The log aggregation field. The value is in the JSON format. The HTML escape characters are reversed.
+	// The aggregation field of the log, which is a JSON-formatted string that represents an array. You must unescape the HTML escape characters in the string.
 	//
 	// example:
 	//
@@ -364,7 +366,7 @@ type ListCloudSiemCustomizeRulesResponseBodyDataResponseData struct {
 	//
 	// waf_scan
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The threshold configurations of the rule in the JSON format. The HTML escape characters are reversed.
+	// The threshold of the rule, which is a JSON-formatted string. You must unescape the HTML escape characters in the string.
 	//
 	// example:
 	//
@@ -372,9 +374,9 @@ type ListCloudSiemCustomizeRulesResponseBodyDataResponseData struct {
 	RuleThreshold *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// 	- **predefine**
+	// - **predefine**: predefined
 	//
-	// 	- **customize**
+	// - **customize**: custom
 	//
 	// example:
 	//
@@ -382,27 +384,27 @@ type ListCloudSiemCustomizeRulesResponseBodyDataResponseData struct {
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// 	- **0**: The rule is in the initial state.
+	// - **0**: initial
 	//
-	// 	- **10**: The simulation data is tested.
+	// - **10**: testing with simulated data
 	//
-	// 	- **15**: The business data is being tested.
+	// - **15**: testing with business data
 	//
-	// 	- **20**: The business data test is complete.
+	// - **20**: testing with business data is complete
 	//
-	// 	- **100**: The rule is in effect.
+	// - **100**: published
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The risk level. Valid values:
+	// The threat level. Valid values:
 	//
-	// 	- **serious**: high-risk.
+	// - **serious**: high
 	//
-	// 	- **suspicious**: medium-risk.
+	// - **suspicious**: medium
 	//
-	// 	- **remind**: low-risk.
+	// - **remind**: low
 	//
 	// example:
 	//

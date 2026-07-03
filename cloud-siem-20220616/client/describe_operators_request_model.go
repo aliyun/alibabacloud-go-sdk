@@ -20,37 +20,37 @@ type iDescribeOperatorsRequest interface {
 }
 
 type DescribeOperatorsRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region of the Data Management center for threat analysis. Select a region based on your asset location. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: Assets in the Chinese mainland and China (Hong Kong).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Assets outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID of the member. An administrator can use this parameter to switch to the perspective of this member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type.
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: The view of all accounts that are managed by your enterprise.
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The type of the scenario in which the operator is used. Valid values:
+	// The scenario for the operator. Valid values:
 	//
-	// 	- If you do not specify this parameter, the default scenario is used.
+	// - If you leave this parameter empty, the default scenario is used.
 	//
-	// 	- AGGREGATE: AGGREGATE scenario.
+	// - AGGREGATE: The aggregate function scenario.
 	//
 	// example:
 	//

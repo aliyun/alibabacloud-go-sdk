@@ -22,7 +22,7 @@ type iDescribeLogSourceResponseBody interface {
 }
 
 type DescribeLogSourceResponseBody struct {
-	// The HTTP status code.
+	// The request status code.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeLogSourceResponseBody struct {
 	//
 	// 123456
 	Data []*DescribeLogSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeLogSourceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type DescribeLogSourceResponseBodyData struct {
 	//
 	// cloud_siem_aegis_sas_alert
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	// The internal code of the log source.
+	// The Medusa code of the log source for the rule.
 	//
 	// example:
 	//

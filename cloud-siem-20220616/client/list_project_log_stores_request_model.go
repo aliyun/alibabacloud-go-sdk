@@ -20,17 +20,17 @@ type iListProjectLogStoresRequest interface {
 }
 
 type ListProjectLogStoresRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region of the Data Management center for threat analysis. Specify the region based on where your assets are located. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: Assets are in the Chinese mainland or China (Hong Kong).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Assets are in regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The log code.
+	// The code of the log to query.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ListProjectLogStoresRequest struct {
 	//
 	// cloud_siem_aegis_proc
 	SourceLogCode *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
-	// The code of the cloud service.
+	// The code of the product to query.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ListProjectLogStoresRequest struct {
 	//
 	// sas
 	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account to query.
 	//
 	// This parameter is required.
 	//

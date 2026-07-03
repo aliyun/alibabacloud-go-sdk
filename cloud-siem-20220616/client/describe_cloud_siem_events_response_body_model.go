@@ -22,19 +22,19 @@ type iDescribeCloudSiemEventsResponseBody interface {
 }
 
 type DescribeCloudSiemEventsResponseBody struct {
-	// The HTTP status code.
+	// The request status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The return value of the request.
 	//
 	// example:
 	//
 	// 123456
 	Data *DescribeCloudSiemEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeCloudSiemEventsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: successful
 	//
-	// 	- false
+	// - false: failed
 	//
 	// example:
 	//
@@ -172,19 +172,19 @@ func (s *DescribeCloudSiemEventsResponseBodyData) Validate() error {
 }
 
 type DescribeCloudSiemEventsResponseBodyDataPageInfo struct {
-	// The current page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -250,14 +250,15 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	//
 	// 4
 	AssetNum *int32 `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
-	// The tags of the ATT\\&CK techniques.
+	// The tags of the ATT\\&CK attack technique.
 	//
 	// example:
 	//
 	// ["T1595.002 Vulnerability Scanning"]
-	AttCkLabels []*string                                                         `json:"AttCkLabels,omitempty" xml:"AttCkLabels,omitempty" type:"Repeated"`
+	AttCkLabels []*string `json:"AttCkLabels,omitempty" xml:"AttCkLabels,omitempty" type:"Repeated"`
+	// The list of attack stages.
 	AttckStages []*DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages `json:"AttckStages,omitempty" xml:"AttckStages,omitempty" type:"Repeated"`
-	// The sources of the alert.
+	// The cloud services that generated the alerts, which are associated with the event.
 	//
 	// example:
 	//
@@ -269,13 +270,13 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	//
 	// The threat event contains 13 Miner Network,1 Execute suspicious encoded commands on Linux, etc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The event description in English.
+	// The English description of the event.
 	//
 	// example:
 	//
 	// The threat event contains 13 Miner Network,1 Execute suspicious encoded commands on Linux, etc
 	DescriptionEn *string `json:"DescriptionEn,omitempty" xml:"DescriptionEn,omitempty"`
-	// The extended event information in the JSON format.
+	// The extended information about the event, in the JSON format.
 	//
 	// example:
 	//
@@ -299,59 +300,73 @@ type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
 	//
 	// Multiple type of alerts, including Miner Network, Command line download and run malicious files, Backdoor Process, etc
 	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
-	// The event name in English.
+	// The English name of the event.
 	//
 	// example:
 	//
 	// Multiple type of alerts, including Miner Network, Command line download and run malicious files, Backdoor Process, etc
 	IncidentNameEn *string `json:"IncidentNameEn,omitempty" xml:"IncidentNameEn,omitempty"`
-	IncidentType   *string `json:"IncidentType,omitempty" xml:"IncidentType,omitempty"`
-	// The UUID of the event.
+	// The event type.
+	//
+	// - net-attack: expert rule
+	//
+	// - graph: graph computing
+	//
+	// example:
+	//
+	// graph
+	IncidentType *string `json:"IncidentType,omitempty" xml:"IncidentType,omitempty"`
+	// The globally unique UUID of the event.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// the refer account info.
+	// The linked account.
 	//
 	// example:
 	//
 	// 127608589417****
 	ReferAccount *string `json:"ReferAccount,omitempty" xml:"ReferAccount,omitempty"`
-	// The remarks of the event.
+	// The remarks on the event.
 	//
 	// example:
 	//
 	// dealed
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The rule ID.
+	//
+	// example:
+	//
+	// crecr-21d7pogu9v4a****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// 	- 0: unhandled.
+	// - 0: unhandled
 	//
-	// 	- 1: handling.
+	// - 1: in progress
 	//
-	// 	- 5: handling failed.
+	// - 5: failed
 	//
-	// 	- 10: handled.
+	// - 10: handled
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The risk level. Valid values:
+	// The threat level. Valid values:
 	//
-	// 	- serious: high.
+	// - serious: high
 	//
-	// 	- suspicious: medium.
+	// - suspicious: medium
 	//
-	// 	- remind: low.
+	// - remind: low
 	//
 	// example:
 	//
 	// remind
 	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
-	// The risk score of the event. Valid values: 0 to 100. A higher value indicates a higher risk level.
+	// The threat score of the event. The score ranges from 0 to 100. A higher score indicates a higher risk level.
 	//
 	// example:
 	//
@@ -570,8 +585,23 @@ func (s *DescribeCloudSiemEventsResponseBodyDataResponseData) Validate() error {
 }
 
 type DescribeCloudSiemEventsResponseBodyDataResponseDataAttckStages struct {
-	AlertNum   *int32  `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
-	TacticId   *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+	// The number of alerts that are associated with the attack stage.
+	//
+	// example:
+	//
+	// 21
+	AlertNum *int32 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
+	// The ID of the ATT\\&CK attack stage.
+	//
+	// example:
+	//
+	// TA0001
+	TacticId *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+	// The name of the attack stage.
+	//
+	// example:
+	//
+	// Persistence
 	TacticName *string `json:"TacticName,omitempty" xml:"TacticName,omitempty"`
 }
 

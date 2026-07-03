@@ -16,9 +16,9 @@ type iDescribeImportedLogCountResponseBody interface {
 }
 
 type DescribeImportedLogCountResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *DescribeImportedLogCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *DescribeImportedLogCountResponseBody) Validate() error {
 }
 
 type DescribeImportedLogCountResponseBodyData struct {
-	// The number of logs that are added.
+	// The number of ingested logs.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribeImportedLogCountResponseBodyData struct {
 	//
 	// 59
 	TotalLogCount *int32 `json:"TotalLogCount,omitempty" xml:"TotalLogCount,omitempty"`
-	// The number of logs that are not added.
+	// The number of logs that are not ingested.
 	//
 	// example:
 	//

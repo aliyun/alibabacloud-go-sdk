@@ -48,7 +48,7 @@ type DescribeCloudSiemEventsRequest struct {
 	//
 	// 6c740667-80b2-476d-8924-2e706feb****
 	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number. The value must be greater than or equal to 1.
 	//
 	// This parameter is required.
 	//
@@ -56,12 +56,14 @@ type DescribeCloudSiemEventsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. Unit: milliseconds.
+	// The end time of the query. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1577808000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The UUID of the entity that is associated with the event.
+	//
 	// example:
 	//
 	// 6c740667-80b2-476d-8924-2e706feb****
@@ -72,7 +74,7 @@ type DescribeCloudSiemEventsRequest struct {
 	//
 	// ECS unusual log in
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The ID of the event.
+	// The event ID.
 	//
 	// example:
 	//
@@ -80,25 +82,25 @@ type DescribeCloudSiemEventsRequest struct {
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	// The sort order. Valid values:
 	//
-	// 	- desc: descending order
+	// - desc: descending
 	//
-	// 	- asc: ascending order
+	// - asc: ascending
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The sort field. Valid values:
+	// The field to sort the event list by. Valid values:
 	//
-	// 	- GmtModified: sorts the events by creation time. This is the default value.
+	// - GmtModified: Sorts by modification time. This is the default value.
 	//
-	// 	- ThreatScore: sorts the events by risk score.
+	// - ThreatScore: Sorts by threat score.
 	//
 	// example:
 	//
 	// ThreatScore
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// The number of entries per page. Maximum value: 100.
+	// The number of entries per page. The maximum value is 100.
 	//
 	// This parameter is required.
 	//
@@ -106,33 +108,33 @@ type DescribeCloudSiemEventsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region where the Data Management center of Threat Analysis & Response is located. Select the region based on the region where your assets are located. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Your assets are in regions outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The ID of the member. The administrator can use this ID to view the data of the member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type.
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: The view of all accounts that are managed by the administrator account.
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The beginning of the time range to query. Unit: milliseconds.
+	// The start time of the query. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -140,25 +142,25 @@ type DescribeCloudSiemEventsRequest struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// 	- 0: unhandled
+	// - 0: unhandled
 	//
-	// 	- 1: handling
+	// - 1: in progress
 	//
-	// 	- 5: handling failed
+	// - 5: failed
 	//
-	// 	- 10: handled
+	// - 10: handled
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The risk levels of the events. The value is a JSON array. Valid values:
+	// The threat level of the event. The value is a JSON array. Valid values:
 	//
-	// 	- serious: high
+	// - serious: high
 	//
-	// 	- suspicious: medium
+	// - suspicious: medium
 	//
-	// 	- remind: low
+	// - remind: low
 	//
 	// example:
 	//

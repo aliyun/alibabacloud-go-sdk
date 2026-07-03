@@ -66,39 +66,39 @@ func (s *ListImportedLogsByProdResponseBody) Validate() error {
 }
 
 type ListImportedLogsByProdResponseBodyData struct {
-	// Indicates whether the log is automatically added to the threat analysis feature within newly added accounts. Valid values:
+	// Indicates whether logs are automatically ingested for new accounts. Valid values:
 	//
-	// 	- 1: yes.
+	// - 1: Logs are automatically ingested.
 	//
-	// 	- 0: no.
+	// - 0: Logs are not automatically ingested.
 	//
 	// example:
 	//
 	// 2023-11-23 12:30:00
 	AutoImported *int32 `json:"AutoImported,omitempty" xml:"AutoImported,omitempty"`
-	// The code of the cloud service provider. Valid values:
+	// The multicloud code. Valid values:
 	//
-	// 	- qcloud: Tencent Cloud.
+	// - qcloud: Tencent Cloud.
 	//
-	// 	- aliyun: Alibaba Cloud.
+	// - aliyun: Alibaba Cloud.
 	//
-	// 	- hcloud: Huawei Cloud.
+	// - hcloud: Huawei Cloud.
 	//
 	// example:
 	//
 	// hcloud
 	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	// Indicates whether the log is added to the threat analysis feature. Valid values:
+	// Indicates whether the log is ingested. Valid values:
 	//
-	// 	- 1: yes.
+	// - 1: The log is ingested.
 	//
-	// 	- 0: no.
+	// - 0: The log is not ingested.
 	//
 	// example:
 	//
 	// 2023-11-23 12:30:00
 	Imported *int32 `json:"Imported,omitempty" xml:"Imported,omitempty"`
-	// The number of users who have added the log.
+	// The number of users who have ingested the log.
 	//
 	// example:
 	//
@@ -116,37 +116,35 @@ type ListImportedLogsByProdResponseBodyData struct {
 	//
 	// ${siem.prod. cloud_siem_waf_xxxxx}
 	LogMdsCode *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
-	// The type of log. Valid values:
+	// The log type. Valid values:
 	//
-	//  - 1: the log produced by other product
+	// - 1: Ingested on the threat analysis side.
 	//
-	//  - 2: the predefined log
-	//
-	//  - 3: the custom log
+	// - 2: Predefined Simple Log Service log. -3: Custom Simple Log Service log.
 	//
 	// example:
 	//
-	// 1
+	// 2023-11-23 12:30:00
 	LogType *int32 `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The time when the log was last added.
+	// The time when the log was last ingested.
 	//
 	// example:
 	//
 	// 2023-11-23 12:30:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The code of the cloud service to which the log belongs.
+	// The code of the product to which the log belongs.
 	//
 	// example:
 	//
 	// qcloud_waf
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	// The total number of users who have the log.
+	// The total number of users for the log.
 	//
 	// example:
 	//
 	// 5
 	TotalUserCount *int32 `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
-	// The number of users who have not added the log.
+	// The number of users who have not ingested the log.
 	//
 	// example:
 	//

@@ -18,27 +18,27 @@ type iRestoreCapacityRequest interface {
 }
 
 type RestoreCapacityRequest struct {
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	// The region where the Data Management center is located. Select a region based on the location of your assets. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Your assets are in a region outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID of the member. An administrator can use this parameter to switch to the perspective of a specific member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The type of view. Valid values:
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: The view for the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: The view for all accounts that belong to the enterprise.
 	//
 	// example:
 	//

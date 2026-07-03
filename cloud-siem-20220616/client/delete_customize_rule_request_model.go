@@ -20,29 +20,29 @@ type iDeleteCustomizeRuleRequest interface {
 }
 
 type DeleteCustomizeRuleRequest struct {
-	// The region in which the service is deployed.
+	// The region where the product is deployed.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID of the member. This parameter is used when an administrator switches to the perspective of a member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The type of the view.
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: The view of all accounts in your enterprise.
 	//
 	// example:
 	//
 	// 1
 	RoleType *int32 `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The ID of the rule.
+	// The ID of the custom rule.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iCloseDeliveryRequest interface {
 }
 
 type CloseDeliveryRequest struct {
-	// The log code of the cloud service, such as the code of the process log for Security Center. You can obtain the log code from the response of the ListDelivery operation.
+	// The code of the log within the cloud service. For example, the process log of Security Center. For valid values, see the return value of the ListDelivery operation.
 	//
 	// example:
 	//
@@ -30,51 +30,51 @@ type CloseDeliveryRequest struct {
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 	// The code of the cloud service. Valid values:
 	//
-	// 	- qcloud_waf
+	// - qcloud_waf
 	//
-	// 	- qlcoud_cfw
+	// - qlcoud_cfw
 	//
-	// 	- hcloud_waf
+	// - hcloud_waf
 	//
-	// 	- hcloud_cfw
+	// - hcloud_cfw
 	//
-	// 	- ddos
+	// - ddos
 	//
-	// 	- sas
+	// - sas
 	//
-	// 	- cfw
+	// - cfw
 	//
-	// 	- config
+	// - config
 	//
-	// 	- csk
+	// - csk
 	//
-	// 	- fc
+	// - fc
 	//
-	// 	- rds
+	// - rds
 	//
-	// 	- nas
+	// - nas
 	//
-	// 	- apigateway
+	// - apigateway
 	//
-	// 	- cdn
+	// - cdn
 	//
-	// 	- mongodb
+	// - mongodb
 	//
-	// 	- eip
+	// - eip
 	//
-	// 	- slb
+	// - slb
 	//
-	// 	- vpc
+	// - vpc
 	//
-	// 	- actiontrail
+	// - actiontrail
 	//
-	// 	- waf
+	// - waf
 	//
-	// 	- bastionhost
+	// - bastionhost
 	//
-	// 	- oss
+	// - oss
 	//
-	// 	- polardb
+	// - polardb
 	//
 	// This parameter is required.
 	//
@@ -82,27 +82,27 @@ type CloseDeliveryRequest struct {
 	//
 	// sas
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region where the data management center of threat analysis is located. Select a region based on the region where your assets are located. Valid values:
 	//
-	// 	- cn-hangzhou: Your assets reside in regions in China.
+	// - cn-hangzhou: Select this region if your assets are in the Chinese mainland or Hong Kong (China).
 	//
-	// 	- ap-southeast-1: Your assets reside in regions outside China.
+	// - ap-southeast-1: Select this region if your assets are outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the account that you switch from the management account.
+	// The user ID of a member. An administrator can use this parameter to switch to the perspective of the member.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type.
 	//
-	// - 0: the current Alibaba Cloud account
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the global account
+	// - 1: The view of all accounts in your enterprise.
 	//
 	// example:
 	//

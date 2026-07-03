@@ -22,7 +22,7 @@ type iDescribeEntityInfoResponseBody interface {
 }
 
 type DescribeEntityInfoResponseBody struct {
-	// The HTTP status code.
+	// The status code of the request.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeEntityInfoResponseBody struct {
 	//
 	// 123456
 	Data *DescribeEntityInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeEntityInfoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type DescribeEntityInfoResponseBodyData struct {
 	//
 	// 12345
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The information about the entry.
+	// The information about the entity.
 	//
 	// example:
 	//
@@ -135,23 +135,23 @@ type DescribeEntityInfoResponseBodyData struct {
 	EntityInfo map[string]interface{} `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
 	// The type of the entity. Valid values:
 	//
-	// 	- ip
+	// - ip: IP address
 	//
-	// 	- domain
+	// - domain: domain name
 	//
-	// 	- url
+	// - url: URL
 	//
-	// 	- process
+	// - process: process
 	//
-	// 	- file
+	// - file: file
 	//
-	// 	- host
+	// - host: host
 	//
 	// example:
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The information about the risk Intelligence.
+	// The threat intelligence information.
 	//
 	// example:
 	//

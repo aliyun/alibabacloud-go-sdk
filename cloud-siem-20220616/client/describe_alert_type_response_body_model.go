@@ -22,7 +22,7 @@ type iDescribeAlertTypeResponseBody interface {
 }
 
 type DescribeAlertTypeResponseBody struct {
-	// The HTTP status code.
+	// The request status code.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeAlertTypeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -125,13 +125,13 @@ func (s *DescribeAlertTypeResponseBody) Validate() error {
 }
 
 type DescribeAlertTypeResponseBodyData struct {
-	// The type of the risk.
+	// The threat type.
 	//
 	// example:
 	//
 	// WEBSHELL
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The internal code of the risk type.
+	// The Medusa code of the threat type.
 	//
 	// example:
 	//

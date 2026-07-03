@@ -22,13 +22,13 @@ type iDescribeAutomateResponseConfigFeatureResponseBody interface {
 }
 
 type DescribeAutomateResponseConfigFeatureResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type DescribeAutomateResponseConfigFeatureResponseBody struct {
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true
+	// - true: The request is successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -125,21 +125,21 @@ func (s *DescribeAutomateResponseConfigFeatureResponseBody) Validate() error {
 }
 
 type DescribeAutomateResponseConfigFeatureResponseBodyData struct {
-	// The data type of the condition field in the automated response rule.
+	// The data type of the condition field for the automated response rule.
 	//
 	// example:
 	//
 	// varchar
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The name of the condition field in the automated response rule.
+	// The name of the condition field for the automated response rule.
 	//
 	// example:
 	//
 	// alert_desc
 	Feature *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
-	// The enumerated values of the right operand for the field.
+	// The enumeration of the right operand that corresponds to the field.
 	RightValueEnums []*DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums `json:"RightValueEnums,omitempty" xml:"RightValueEnums,omitempty" type:"Repeated"`
-	// The operators that are supported for the condition field.
+	// The operators that the field supports.
 	SupportOperators []*DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators `json:"SupportOperators,omitempty" xml:"SupportOperators,omitempty" type:"Repeated"`
 }
 
@@ -210,13 +210,13 @@ func (s *DescribeAutomateResponseConfigFeatureResponseBodyData) Validate() error
 }
 
 type DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums struct {
-	// The enumerated value of the right operand.
+	// The enumeration value of the right operand.
 	//
 	// example:
 	//
 	// serious
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The internal code of the enumerated value.
+	// The Medusa code for the enumeration value of the right operand.
 	//
 	// example:
 	//
@@ -255,17 +255,17 @@ func (s *DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums) V
 }
 
 type DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators struct {
-	// Indicates whether the right operand is required. Valid values:
+	// Indicates whether a right operand is required. Valid values:
 	//
-	// 	- true
+	// - true: A right operand is required.
 	//
-	// 	- false
+	// - false: A right operand is not required.
 	//
 	// example:
 	//
 	// false
 	HasRightValue *bool `json:"HasRightValue,omitempty" xml:"HasRightValue,omitempty"`
-	// The position of the operator in the operator list.
+	// The position of the operator in the list of operators.
 	//
 	// example:
 	//
@@ -289,19 +289,19 @@ type DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators struc
 	//
 	// larger than or equal to
 	OperatorDescEn *string `json:"OperatorDescEn,omitempty" xml:"OperatorDescEn,omitempty"`
-	// The name of the operator.
+	// The display name of the operator.
 	//
 	// example:
 	//
 	// <=
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	// The data types that are supported by the operator. The data types are separated by commas (,).
+	// The data types that the operator supports. Multiple data types are separated by commas.
 	//
 	// example:
 	//
 	// varchar
 	SupportDataType *string `json:"SupportDataType,omitempty" xml:"SupportDataType,omitempty"`
-	// The scenarios that are supported by the operator. Multiple scenarios are separated by commas (,), such as aggregation scenarios. By default, this parameter is empty.
+	// The scenarios that the operator supports. Multiple scenarios are separated by commas, such as aggregation. By default, this parameter is empty.
 	//
 	// example:
 	//
