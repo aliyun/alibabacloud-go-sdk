@@ -22,6 +22,11 @@ type iGetListRecordRequest interface {
 }
 
 type GetListRecordRequest struct {
+	// The ID of the analysis record to query the status of.
+	//
+	// example:
+	//
+	// xxxxxxxxx-f37b-478d-87f6-2259ed8766bf
 	AnalysisId *string `json:"analysisId,omitempty" xml:"analysisId,omitempty"`
 	// The current page number.
 	//

@@ -135,7 +135,7 @@ type GetListRecordResponseBodyData struct {
 	//
 	// timeout=2000 ms
 	Arguments *string `json:"arguments,omitempty" xml:"arguments,omitempty"`
-	// The analysis failure log.
+	// The failure log of the analysis.
 	//
 	// example:
 	//

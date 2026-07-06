@@ -4066,6 +4066,69 @@ func (client *Client) UninstallAgentForClusterWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 卸载 SysOM Agent
+//
+// Description:
+//
+// 调用本接口卸载 Agent 是异步的，调用接口后会返回一个 task_id，可以凭借该 ID 调用 GetAgentTask 接口获取任务的执行情况。
+//
+// @param request - UninstallAgentWithTypeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UninstallAgentWithTypeResponse
+func (client *Client) UninstallAgentWithTypeWithContext(ctx context.Context, request *UninstallAgentWithTypeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UninstallAgentWithTypeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		body["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.AgentVersion) {
+		body["agentVersion"] = request.AgentVersion
+	}
+
+	if !dara.IsNil(request.InstanceType) {
+		body["instanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.Instances) {
+		body["instances"] = request.Instances
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UninstallAgentWithType"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/am/agent/uninstallAgent"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UninstallAgentWithTypeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates an alert contact.
 //
 // Description:
@@ -4473,6 +4536,69 @@ func (client *Client) UpgradeAgentForClusterWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeAgentForClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 SysOM Agent
+//
+// Description:
+//
+// 调用本接口更新 Agent 是异步的，调用接口后会返回一个 task_id，可以凭借该 ID 调用 GetAgentTask 接口获取任务的执行情况。
+//
+// @param request - UpgradeAgentWithTypeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeAgentWithTypeResponse
+func (client *Client) UpgradeAgentWithTypeWithContext(ctx context.Context, request *UpgradeAgentWithTypeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpgradeAgentWithTypeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		body["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.AgentVersion) {
+		body["agentVersion"] = request.AgentVersion
+	}
+
+	if !dara.IsNil(request.InstanceType) {
+		body["instanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.Instances) {
+		body["instances"] = request.Instances
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradeAgentWithType"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/am/agent/upgradeAgent"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpgradeAgentWithTypeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
