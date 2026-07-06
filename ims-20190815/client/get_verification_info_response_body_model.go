@@ -88,9 +88,9 @@ type GetVerificationInfoResponseBodySecurityEmailDevice struct {
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The status of the email. Valid values:
 	//
-	// 	- active: The email is activated.
+	// - active: The email is activated.
 	//
-	// 	- pending: The email is pending for activation.
+	// - pending: The email is pending for activation.
 	//
 	// example:
 	//
@@ -143,9 +143,9 @@ type GetVerificationInfoResponseBodySecurityPhoneDevice struct {
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// The status of the mobile phone. Valid values:
 	//
-	// 	- active: The mobile phone is activated.
+	// - active: The mobile phone is activated.
 	//
-	// 	- pending: The mobile phone is pending for activation.
+	// - pending: The mobile phone is pending for activation.
 	//
 	// example:
 	//

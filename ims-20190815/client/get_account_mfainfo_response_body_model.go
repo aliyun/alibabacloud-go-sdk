@@ -18,9 +18,9 @@ type iGetAccountMFAInfoResponseBody interface {
 type GetAccountMFAInfoResponseBody struct {
 	// Indicates whether MFA devices are enabled. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

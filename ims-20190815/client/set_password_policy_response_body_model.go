@@ -16,7 +16,7 @@ type iSetPasswordPolicyResponseBody interface {
 }
 
 type SetPasswordPolicyResponseBody struct {
-	// The details of the password policy.
+	// Details of the password policy.
 	PasswordPolicy *SetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,69 +62,79 @@ func (s *SetPasswordPolicyResponseBody) Validate() error {
 }
 
 type SetPasswordPolicyResponseBodyPasswordPolicy struct {
-	// Indicates whether to disable logon after the password expires.
+	// Indicates whether logon is blocked after a password expires.
 	//
 	// example:
 	//
 	// false
-	HardExpire                 *bool  `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
-	InitialPasswordAge         *int32 `json:"InitialPasswordAge,omitempty" xml:"InitialPasswordAge,omitempty"`
-	InterceptRiskPasswordOnApi *bool  `json:"InterceptRiskPasswordOnApi,omitempty" xml:"InterceptRiskPasswordOnApi,omitempty"`
-	// The maximum number of password retries.
+	HardExpire *bool `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	// The validity period for initial passwords.
+	//
+	// example:
+	//
+	// 14
+	InitialPasswordAge *int32 `json:"InitialPasswordAge,omitempty" xml:"InitialPasswordAge,omitempty"`
+	// Indicates whether threat passwords are blocked when set using APIs.
+	//
+	// example:
+	//
+	// false
+	InterceptRiskPasswordOnApi *bool `json:"InterceptRiskPasswordOnApi,omitempty" xml:"InterceptRiskPasswordOnApi,omitempty"`
+	// Maximum number of failed password attempts.
 	//
 	// example:
 	//
 	// 0
 	MaxLoginAttemps *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
-	// The validity period of the password.
+	// The password validity period.
 	//
 	// example:
 	//
 	// 0
 	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
-	// The minimum number of unique characters in the password.
+	// Minimum number of unique characters in a password.
 	//
 	// example:
 	//
 	// 0
 	MinimumPasswordDifferentCharacter *int32 `json:"MinimumPasswordDifferentCharacter,omitempty" xml:"MinimumPasswordDifferentCharacter,omitempty"`
-	// The minimum number of characters in the password.
+	// Minimum password length.
 	//
 	// example:
 	//
 	// 8
 	MinimumPasswordLength *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
-	// Indicates whether to exclude the username from the password.
+	// Indicates whether passwords must not contain the user name.
 	//
 	// example:
 	//
 	// false
 	PasswordNotContainUserName *bool `json:"PasswordNotContainUserName,omitempty" xml:"PasswordNotContainUserName,omitempty"`
-	// The policy for password history check.
+	// Prevents reuse of previous passwords.
 	//
 	// example:
 	//
 	// 0
 	PasswordReusePrevention *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
-	// Indicates whether the password must contain lowercase letters.
+	// Indicates whether passwords must contain lowercase letters.
 	//
 	// example:
 	//
 	// false
 	RequireLowercaseCharacters *bool `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
-	// Indicates whether the password must contain digits.
+	// Indicates whether passwords must contain numbers.
 	//
 	// example:
 	//
 	// false
 	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	// Indicates whether the password must contain special characters.
+	// Indicates whether passwords must contain special characters.
 	//
 	// example:
 	//
 	// false
 	RequireSymbols *bool `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
-	// Indicates whether the password must contain uppercase letters.
+	// Indicates whether passwords must contain uppercase letters.
 	//
 	// example:
 	//

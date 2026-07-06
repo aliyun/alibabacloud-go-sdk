@@ -82,9 +82,9 @@ type CreateAccessKeyResponseBodyAccessKey struct {
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The status of the AccessKey pair. Valid values:
 	//
-	// 	- Active
+	// - Active
 	//
-	// 	- Inactive
+	// - Inactive
 	//
 	// example:
 	//

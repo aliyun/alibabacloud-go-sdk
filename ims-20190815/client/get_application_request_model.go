@@ -14,7 +14,7 @@ type iGetApplicationRequest interface {
 }
 
 type GetApplicationRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//

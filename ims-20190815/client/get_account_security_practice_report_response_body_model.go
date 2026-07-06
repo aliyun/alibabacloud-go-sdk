@@ -110,9 +110,9 @@ func (s *GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo
 type GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAccountSecurityPracticeUserInfo struct {
 	// Indicates whether multi-factor authentication (MFA) is enabled. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -144,11 +144,11 @@ type GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAcco
 	SubUserBindMfa *int32 `json:"SubUserBindMfa,omitempty" xml:"SubUserBindMfa,omitempty"`
 	// The complexity level of the password for the RAM user. Valid values:
 	//
-	// 	- low
+	// - low
 	//
-	// 	- mid
+	// - mid
 	//
-	// 	- high
+	// - high
 	//
 	// example:
 	//

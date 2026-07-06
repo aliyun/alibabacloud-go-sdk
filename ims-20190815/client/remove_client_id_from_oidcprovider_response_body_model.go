@@ -114,7 +114,7 @@ type RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider struct {
 	//
 	// example:
 	//
-	// https://dev-xxxxxx.okta.com
+	// https://xxxxxx.example.com
 	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	// The name of the OIDC IdP.
 	//

@@ -9,7 +9,13 @@ import (
 
 // Summary:
 //
-// Adds a client ID to an OpenID Connect (OIDC) identity provider (IdP).
+// Calls AddClientIdToOIDCProvider to add a specified client ID to an OIDC IdP.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This topic provides an example on how to add client ID `598469743454717****` to the OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - AddClientIdToOIDCProviderRequest
 //
@@ -219,7 +225,7 @@ func (client *Client) BindMFADeviceWithContext(ctx context.Context, request *Bin
 //
 // Description:
 //
-// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
+// > This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
 //
 // @param request - ChangePasswordRequest
 //
@@ -491,7 +497,7 @@ func (client *Client) CreateGroupWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Enables logon to the console for a Resource Access Management (RAM) user.
+// Creates a logon configuration for a Resource Access Management (RAM) user.
 //
 // @param request - CreateLoginProfileRequest
 //
@@ -561,11 +567,11 @@ func (client *Client) CreateLoginProfileWithContext(ctx context.Context, request
 //
 // ### [](#)Limits
 //
-//   - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+// - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
 //
-//   - You can add a maximum of 50 client IDs to an OIDC IdP.
+// - You can add a maximum of 50 client IDs to an OIDC IdP.
 //
-//   - You can add a maximum of five fingerprints to an OIDC IdP.
+// - You can add a maximum of five fingerprints to an OIDC IdP.
 //
 // ### [](#)Operation description
 //
@@ -679,6 +685,62 @@ func (client *Client) CreateSAMLProviderWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSAMLProviderResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a service credential for a Resource Access Management (RAM) user in a specified cloud service.
+//
+// @param request - CreateServiceCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceCredentialResponse
+func (client *Client) CreateServiceCredentialWithContext(ctx context.Context, request *CreateServiceCredentialRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialAgeDays) {
+		query["CredentialAgeDays"] = request.CredentialAgeDays
+	}
+
+	if !dara.IsNil(request.ServiceCredentialName) {
+		query["ServiceCredentialName"] = request.ServiceCredentialName
+	}
+
+	if !dara.IsNil(request.ServiceName) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !dara.IsNil(request.UserPrincipalName) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateServiceCredential"),
+		Version:     dara.String("2019-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateServiceCredentialResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1223,6 +1285,54 @@ func (client *Client) DeleteSAMLProviderWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Deletes a service credential of a Resource Access Management (RAM) user.
+//
+// @param request - DeleteServiceCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceCredentialResponse
+func (client *Client) DeleteServiceCredentialWithContext(ctx context.Context, request *DeleteServiceCredentialRequest, runtime *dara.RuntimeOptions) (_result *DeleteServiceCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ServiceCredentialId) {
+		query["ServiceCredentialId"] = request.ServiceCredentialId
+	}
+
+	if !dara.IsNil(request.UserPrincipalName) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteServiceCredential"),
+		Version:     dara.String("2019-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteServiceCredentialResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a Resource Access Management (RAM) user.
 //
 // @param request - DeleteUserRequest
@@ -1365,7 +1475,7 @@ func (client *Client) DeleteVirtualMFADeviceWithContext(ctx context.Context, req
 //
 // If you want to call this operation to uninstall an internal application, the type of the internal application must be **ServerApp**. Otherwise, an error occurs when you call this operation.
 //
-// >  For **internal applications**, only internal applications of the ServerApp type need to be **installed or provisioned**. Therefore, only internal applications of the ServerApp type **can be uninstalled**. Internal applications of the WebApp and NativeApp types **do not need to and cannot be uninstalled**.
+// > For **internal applications**, only internal applications of the ServerApp type need to be **installed or provisioned**. Therefore, only internal applications of the ServerApp type **can be uninstalled**. Internal applications of the WebApp and NativeApp types **do not need to and cannot be uninstalled**.
 //
 // @param request - DeprovisionApplicationRequest
 //
@@ -1589,6 +1699,54 @@ func (client *Client) GetAccessKeyLastUsedWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Queries the network access restriction policy of an access key for an Alibaba Cloud account or a Resource Access Management (RAM) user.
+//
+// @param request - GetAccessKeyPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccessKeyPolicyResponse
+func (client *Client) GetAccessKeyPolicyWithContext(ctx context.Context, request *GetAccessKeyPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetAccessKeyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.UserAccessKeyId) {
+		query["UserAccessKeyId"] = request.UserAccessKeyId
+	}
+
+	if !dara.IsNil(request.UserPrincipalName) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAccessKeyPolicy"),
+		Version:     dara.String("2019-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAccessKeyPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of an application secret.
 //
 // @param request - GetAppSecretRequest
@@ -1637,11 +1795,11 @@ func (client *Client) GetAppSecretWithContext(ctx context.Context, request *GetA
 
 // Summary:
 //
-// Queries the configuration information about an application.
+// Queries the configuration information of an application.
 //
 // Description:
 //
-// This topic provides an example on how to query the configurations of an application named `472457090344041****`.
+// This topic provides an example on how to query the configurations of an application named `472457090344041****`.
 //
 // @param request - GetApplicationRequest
 //
@@ -1821,7 +1979,7 @@ func (client *Client) GetExternalApplicationWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询用户的单项ram治理报告
+// Queries the details of a specific check item in an identity and access governance report.
 //
 // @param request - GetGovernanceItemReportRequest
 //
@@ -1917,7 +2075,7 @@ func (client *Client) GetGroupWithContext(ctx context.Context, request *GetGroup
 
 // Summary:
 //
-// Queries the logon configurations of a Resource Access Management (RAM) user.
+// Queries the console logon settings for a Resource Access Management (RAM) user.
 //
 // @param request - GetLoginProfileRequest
 //
@@ -2045,6 +2203,54 @@ func (client *Client) GetSAMLProviderWithContext(ctx context.Context, request *G
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSAMLProviderResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a specific service credential of a Resource Access Management (RAM) user.
+//
+// @param request - GetServiceCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceCredentialResponse
+func (client *Client) GetServiceCredentialWithContext(ctx context.Context, request *GetServiceCredentialRequest, runtime *dara.RuntimeOptions) (_result *GetServiceCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ServiceCredentialId) {
+		query["ServiceCredentialId"] = request.ServiceCredentialId
+	}
+
+	if !dara.IsNil(request.UserPrincipalName) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetServiceCredential"),
+		Version:     dara.String("2019-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetServiceCredentialResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2701,6 +2907,66 @@ func (client *Client) ListSAMLProvidersWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Retrieves the list of service credentials for a Resource Access Management (RAM) user or all RAM users under an Alibaba Cloud account.
+//
+// @param request - ListServiceCredentialsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceCredentialsResponse
+func (client *Client) ListServiceCredentialsWithContext(ctx context.Context, request *ListServiceCredentialsRequest, runtime *dara.RuntimeOptions) (_result *ListServiceCredentialsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllUsers) {
+		query["AllUsers"] = request.AllUsers
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ServiceName) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !dara.IsNil(request.UserPrincipalName) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListServiceCredentials"),
+		Version:     dara.String("2019-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListServiceCredentialsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the tags that are added resources.
 //
 // Description:
@@ -2709,11 +2975,11 @@ func (client *Client) ListSAMLProvidersWithContext(ctx context.Context, request 
 //
 // You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
 //
-//   - `ResourceId.N`
+// - `ResourceId.N`
 //
-//   - `Tag.N.Key`
+// - `Tag.N.Key`
 //
-//   - `Tag.N.Key` and `Tag.N.Value`
+// - `Tag.N.Key` and `Tag.N.Value`
 //
 // @param request - ListTagResourcesRequest
 //
@@ -2783,9 +3049,9 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // You can call the following API operations to query information about all RAM users:
 //
-//   - ListUsers: queries the details of all RAM users.
+// - ListUsers: queries the details of all RAM users.
 //
-//   - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+// - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
 //
 // @param request - ListUserBasicInfosRequest
 //
@@ -2849,9 +3115,9 @@ func (client *Client) ListUserBasicInfosWithContext(ctx context.Context, request
 //
 // You can call the following API operations to query the details of all RAM users:
 //
-//   - ListUsers: queries the details of all RAM users.
+// - ListUsers: queries the details of all RAM users.
 //
-//   - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+// - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
 //
 // @param request - ListUsersRequest
 //
@@ -3403,6 +3669,58 @@ func (client *Client) RestoreUserFromRecycleBinWithContext(ctx context.Context, 
 
 // Summary:
 //
+// Settings the network access restriction policy for an AccessKey pair of an Alibaba Cloud account or a Resource Access Management (RAM) user.
+//
+// @param request - SetAccessKeyPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAccessKeyPolicyResponse
+func (client *Client) SetAccessKeyPolicyWithContext(ctx context.Context, request *SetAccessKeyPolicyRequest, runtime *dara.RuntimeOptions) (_result *SetAccessKeyPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessKeyPolicy) {
+		query["AccessKeyPolicy"] = request.AccessKeyPolicy
+	}
+
+	if !dara.IsNil(request.UserAccessKeyId) {
+		query["UserAccessKeyId"] = request.UserAccessKeyId
+	}
+
+	if !dara.IsNil(request.UserPrincipalName) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetAccessKeyPolicy"),
+		Version:     dara.String("2019-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetAccessKeyPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures the default domain name for an Alibaba Cloud account.
 //
 // @param request - SetDefaultDomainRequest
@@ -3447,7 +3765,7 @@ func (client *Client) SetDefaultDomainWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Configures the password policy for Resource Access Management (RAM) users.
+// Set the password policy for Resource Access Management (RAM) users.
 //
 // @param request - SetPasswordPolicyRequest
 //
@@ -3539,13 +3857,7 @@ func (client *Client) SetPasswordPolicyWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Configures security preferences for a RAM user.
-//
-// Description:
-//
-// ###
-//
-// This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
+// Configure the global security preferences for a RAM user.
 //
 // @param tmpReq - SetSecurityPreferenceRequest
 //
@@ -4031,7 +4343,7 @@ func (client *Client) UpdateAccessKeyWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Modifies the information about a specified application.
+// Modifies the configuration information of an application.
 //
 // @param request - UpdateApplicationRequest
 //
@@ -4163,7 +4475,7 @@ func (client *Client) UpdateGroupWithContext(ctx context.Context, request *Updat
 
 // Summary:
 //
-// Modifies the console logon configurations of a Resource Access Management (RAM) user.
+// Modifies the console logon settings for a Resource Access Management (RAM) user.
 //
 // @param request - UpdateLoginProfileRequest
 //
@@ -4337,11 +4649,11 @@ func (client *Client) UpdatePasskeyWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// Modifies information about an identity provider (IdP) for role-based single sign-on (SSO).
+// Updates the information about a specified identity provider for role-based single sign-on (SSO).
 //
 // Description:
 //
-// This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
+// This example shows how to change the description of the identity provider `test-provider` to `This is a new provider.`.
 //
 // @param request - UpdateSAMLProviderRequest
 //
@@ -4387,6 +4699,62 @@ func (client *Client) UpdateSAMLProviderWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSAMLProviderResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the status or name of a service credential for a Resource Access Management (RAM) user.
+//
+// @param request - UpdateServiceCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceCredentialResponse
+func (client *Client) UpdateServiceCredentialWithContext(ctx context.Context, request *UpdateServiceCredentialRequest, runtime *dara.RuntimeOptions) (_result *UpdateServiceCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ServiceCredentialId) {
+		query["ServiceCredentialId"] = request.ServiceCredentialId
+	}
+
+	if !dara.IsNil(request.ServiceCredentialName) {
+		query["ServiceCredentialName"] = request.ServiceCredentialName
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.UserPrincipalName) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateServiceCredential"),
+		Version:     dara.String("2019-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateServiceCredentialResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

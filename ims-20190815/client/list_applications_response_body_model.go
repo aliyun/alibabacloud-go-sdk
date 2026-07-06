@@ -17,7 +17,7 @@ type iListApplicationsResponseBody interface {
 
 type ListApplicationsResponseBody struct {
 	Applications *ListApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

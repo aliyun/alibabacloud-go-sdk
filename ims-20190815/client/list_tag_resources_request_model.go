@@ -50,7 +50,7 @@ type ListTagResourcesRequest struct {
 	ResourcePrincipalName []*string `json:"ResourcePrincipalName,omitempty" xml:"ResourcePrincipalName,omitempty" type:"Repeated"`
 	// The type of the resource. Valid value:
 	//
-	// 	- user: a RAM user
+	// - user: a RAM user
 	//
 	// example:
 	//

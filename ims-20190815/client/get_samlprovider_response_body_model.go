@@ -67,33 +67,42 @@ type GetSAMLProviderResponseBodySAMLProvider struct {
 	// example:
 	//
 	// acs:ram::177242285274****:saml-provider/test-provider
-	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The supported signature algorithm. Valid values:
+	//
+	// - rsa-sha256
+	//
+	// - rsa-sha1
+	//
+	// example:
+	//
+	// rsa-sha1
 	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
-	// The creation time.
+	// The time when the information was created. It is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-10-22T02:37:05Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The description.
+	// The IdP description.
 	//
 	// example:
 	//
 	// This is a provider.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The metadata file, which is Base64 encoded.
+	// The metadata file, which is Base64-encoded.
 	//
 	// example:
 	//
 	// PD94bWwgdmVy****
 	EncodedSAMLMetadataDocument *string `json:"EncodedSAMLMetadataDocument,omitempty" xml:"EncodedSAMLMetadataDocument,omitempty"`
-	// The name of the IdP.
+	// The IdP name.
 	//
 	// example:
 	//
 	// test-provider
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	// The update time.
+	// The time when the information was last updated. It is displayed in UTC.
 	//
 	// example:
 	//

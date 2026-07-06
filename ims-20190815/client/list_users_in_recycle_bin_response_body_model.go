@@ -22,9 +22,9 @@ type iListUsersInRecycleBinResponseBody interface {
 type ListUsersInRecycleBinResponseBody struct {
 	// Indicates whether the response is truncated. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

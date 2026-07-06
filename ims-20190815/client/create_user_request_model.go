@@ -72,7 +72,7 @@ type CreateUserRequest struct {
 	//
 	// example:
 	//
-	// test@example.onaliyun.com
+	// Test@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

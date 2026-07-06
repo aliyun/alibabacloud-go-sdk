@@ -24,11 +24,11 @@ type GenerateCredentialReportResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The generation status of the user credential report. Valid values:
 	//
-	// 	- STARTED: The system starts to generate the user credential report.
+	// - STARTED: The system starts to generate the user credential report.
 	//
-	// 	- INPROGRESS: The user credential report is being generated.
+	// - INPROGRESS: The user credential report is being generated.
 	//
-	// 	- COMPLETED: The user credential report is generated.
+	// - COMPLETED: The user credential report is generated.
 	//
 	// example:
 	//

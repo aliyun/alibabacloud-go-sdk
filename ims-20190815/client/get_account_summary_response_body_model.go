@@ -16,13 +16,13 @@ type iGetAccountSummaryResponseBody interface {
 }
 
 type GetAccountSummaryResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 81313F5E-3C85-478F-BCC9-E1B70E4556DB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The overview information about the Alibaba Cloud account.
+	// An overview of the Alibaba Cloud account.
 	SummaryMap *GetAccountSummaryResponseBodySummaryMap `json:"SummaryMap,omitempty" xml:"SummaryMap,omitempty" type:"Struct"`
 }
 
@@ -62,81 +62,86 @@ func (s *GetAccountSummaryResponseBody) Validate() error {
 }
 
 type GetAccountSummaryResponseBodySummaryMap struct {
-	// The maximum number of AccessKey pairs that a Resource Access Management (RAM) user can have.
+	// The maximum number of access keys that a RAM user can have.
 	//
 	// example:
 	//
 	// 2
-	AccessKeysPerUserQuota           *int32 `json:"AccessKeysPerUserQuota,omitempty" xml:"AccessKeysPerUserQuota,omitempty"`
+	AccessKeysPerUserQuota *int32 `json:"AccessKeysPerUserQuota,omitempty" xml:"AccessKeysPerUserQuota,omitempty"`
+	// The maximum number of access keys that an Alibaba Cloud account can have.
+	//
+	// example:
+	//
+	// 2
 	AccountAccessKeysPerAccountQuota *int32 `json:"AccountAccessKeysPerAccountQuota,omitempty" xml:"AccountAccessKeysPerAccountQuota,omitempty"`
-	// The maximum number of custom policies that can be added to a RAM user group.
+	// The maximum number of custom policies that can be attached to a user group.
 	//
 	// example:
 	//
 	// 5
 	AttachedPoliciesPerGroupQuota *int32 `json:"AttachedPoliciesPerGroupQuota,omitempty" xml:"AttachedPoliciesPerGroupQuota,omitempty"`
-	// The maximum number of custom policies that can be added to a RAM role.
+	// The maximum number of custom policies that can be attached to a RAM role.
 	//
 	// example:
 	//
 	// 5
 	AttachedPoliciesPerRoleQuota *int32 `json:"AttachedPoliciesPerRoleQuota,omitempty" xml:"AttachedPoliciesPerRoleQuota,omitempty"`
-	// The maximum number of custom policies that can be added to a RAM user.
+	// The maximum number of custom policies that can be attached to a RAM user.
 	//
 	// example:
 	//
 	// 10
 	AttachedPoliciesPerUserQuota *int32 `json:"AttachedPoliciesPerUserQuota,omitempty" xml:"AttachedPoliciesPerUserQuota,omitempty"`
-	// The maximum number of system policies that can be added to a RAM user group.
+	// The maximum number of system policies that can be attached to a user group.
 	//
 	// example:
 	//
 	// 20
 	AttachedSystemPoliciesPerGroupQuota *int32 `json:"AttachedSystemPoliciesPerGroupQuota,omitempty" xml:"AttachedSystemPoliciesPerGroupQuota,omitempty"`
-	// The maximum number of system policies that can be added to a RAM role.
+	// The maximum number of system policies that can be attached to a RAM role.
 	//
 	// example:
 	//
 	// 20
 	AttachedSystemPoliciesPerRoleQuota *int32 `json:"AttachedSystemPoliciesPerRoleQuota,omitempty" xml:"AttachedSystemPoliciesPerRoleQuota,omitempty"`
-	// The maximum number of system policies that can be added to a RAM user.
+	// The maximum number of system policies that can be attached to a RAM user.
 	//
 	// example:
 	//
 	// 20
 	AttachedSystemPoliciesPerUserQuota *int32 `json:"AttachedSystemPoliciesPerUserQuota,omitempty" xml:"AttachedSystemPoliciesPerUserQuota,omitempty"`
 	AuthorizedClientPerUserQuota       *int32 `json:"AuthorizedClientPerUserQuota,omitempty" xml:"AuthorizedClientPerUserQuota,omitempty"`
-	// The maximum number of network access control policies that can be configured for an Alibaba Cloud account or AccessKey pair.
+	// The maximum number of conditions allowed in a network access control policy for an account or an access key.
 	//
 	// example:
 	//
 	// 8
 	ConditionsPerAKPolicyQuota *int32 `json:"ConditionsPerAKPolicyQuota,omitempty" xml:"ConditionsPerAKPolicyQuota,omitempty"`
-	// The number of RAM user groups.
+	// The number of user groups.
 	//
 	// example:
 	//
 	// 7
 	Groups *int32 `json:"Groups,omitempty" xml:"Groups,omitempty"`
-	// The maximum number of RAM user groups to which a RAM user can be added.
+	// The maximum number of user groups to which a RAM user can be added.
 	//
 	// example:
 	//
 	// 5
 	GroupsPerUserQuota *int32 `json:"GroupsPerUserQuota,omitempty" xml:"GroupsPerUserQuota,omitempty"`
-	// The maximum number of RAM user groups that can be created.
+	// The maximum number of user groups that can be created.
 	//
 	// example:
 	//
 	// 50
 	GroupsQuota *int32 `json:"GroupsQuota,omitempty" xml:"GroupsQuota,omitempty"`
-	// The maximum number of IP addresses that can be specified in an account-level AccessKey pair-based or AccessKey pair-level policy for network access control.
+	// The maximum number of IP addresses or CIDR blocks allowed in a network access control policy for an account or an access key.
 	//
 	// example:
 	//
 	// 50
 	IPItemsPerAKPolicyQuota *int32 `json:"IPItemsPerAKPolicyQuota,omitempty" xml:"IPItemsPerAKPolicyQuota,omitempty"`
-	// The number of virtual multi-factor authentication (MFA) devices.
+	// The number of virtual MFA devices.
 	//
 	// example:
 	//
@@ -160,7 +165,7 @@ type GetAccountSummaryResponseBodySummaryMap struct {
 	//
 	// 1500
 	PoliciesQuota *int32 `json:"PoliciesQuota,omitempty" xml:"PoliciesQuota,omitempty"`
-	// The maximum length of the policy content.
+	// The maximum character length of a policy document.
 	//
 	// example:
 	//
@@ -177,7 +182,12 @@ type GetAccountSummaryResponseBodySummaryMap struct {
 	// example:
 	//
 	// 1000
-	RolesQuota                               *int32 `json:"RolesQuota,omitempty" xml:"RolesQuota,omitempty"`
+	RolesQuota *int32 `json:"RolesQuota,omitempty" xml:"RolesQuota,omitempty"`
+	// The maximum number of service-specific credentials that a RAM user can create for each service.
+	//
+	// example:
+	//
+	// 2
 	ServiceCredentialsPerUserPerServiceQuota *int32 `json:"ServiceCredentialsPerUserPerServiceQuota,omitempty" xml:"ServiceCredentialsPerUserPerServiceQuota,omitempty"`
 	// The number of RAM users.
 	//
@@ -191,7 +201,7 @@ type GetAccountSummaryResponseBodySummaryMap struct {
 	//
 	// 1000
 	UsersQuota *int32 `json:"UsersQuota,omitempty" xml:"UsersQuota,omitempty"`
-	// The maximum number of policy versions.
+	// The maximum number of versions that can be created for a policy.
 	//
 	// example:
 	//

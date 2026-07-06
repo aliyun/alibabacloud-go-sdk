@@ -100,9 +100,9 @@ type GetAccessKeyInfoInRecycleBinResponseBodyAccessKey struct {
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 	// Indicates whether the RAM user to which the AccessKey pair belongs is in the recycle bin. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

@@ -19,10 +19,20 @@ type iGetGovernanceReportStatusResponseBody interface {
 
 type GetGovernanceReportStatusResponseBody struct {
 	GovernanceItemsStatus *GetGovernanceReportStatusResponseBodyGovernanceItemsStatus `json:"GovernanceItemsStatus,omitempty" xml:"GovernanceItemsStatus,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F2CE9688-AA85-5F23-8C22-0EC23473405A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The overall generation status of the report. Valid values:
+	//
+	// - Started: The report generation has started.
+	//
+	// - Progressing: The report is being generated.
+	//
+	// - Completed: The report has been generated.
+	//
 	// example:
 	//
 	// Progressing

@@ -20,14 +20,23 @@ type iCreateSAMLProviderRequest interface {
 }
 
 type CreateSAMLProviderRequest struct {
+	// The supported signature algorithm. Valid values:
+	//
+	// - rsa-sha256
+	//
+	// - rsa-sha1 (default)
+	//
+	// example:
+	//
+	// rsa-sha1
 	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
-	// The description.
+	// The IdP escription.
 	//
 	// example:
 	//
 	// This is a provider.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The metadata file which is Base64-encoded.
+	// The metadata file, which is Base64-encoded.
 	//
 	// The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
 	//
@@ -35,9 +44,9 @@ type CreateSAMLProviderRequest struct {
 	//
 	// PD94bWwgdmVy****
 	EncodedSAMLMetadataDocument *string `json:"EncodedSAMLMetadataDocument,omitempty" xml:"EncodedSAMLMetadataDocument,omitempty"`
-	// The name of the IdP.
+	// The IdP name.
 	//
-	// The name can be up to 128 characters in length. The name can contain letters, digits, `periods (.), hyphens (-), and underscores (_)`. The name cannot start or end with `periods (.), hyphens (-), or underscores (_)`.
+	// It can be up to 128 characters in length, and can contain letters, digits, `periods (.), hyphens (-), and underscores (_)`. The name cannot start or end with `periods (.), hyphens (-), or underscores (_)`.
 	//
 	// This parameter is required.
 	//

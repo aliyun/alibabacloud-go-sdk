@@ -20,9 +20,9 @@ type iUpdateAccessKeyRequest interface {
 type UpdateAccessKeyRequest struct {
 	// The status of the AccessKey pair. Valid values:
 	//
-	// 	- Active
+	// - Active
 	//
-	// 	- Inactive
+	// - Inactive
 	//
 	// This parameter is required.
 	//

@@ -24,9 +24,9 @@ type iUntagResourcesRequest interface {
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the resource. Valid values:
 	//
-	// 	- true: remove all tags from the resources.
+	// - true: remove all tags from the resources.
 	//
-	// 	- false (default): does not remove all tags from the resources.
+	// - false (default): does not remove all tags from the resources.
 	//
 	// > This parameter takes effect only when TagKey.N is not set in the request.
 	//
@@ -52,7 +52,7 @@ type UntagResourcesRequest struct {
 	ResourcePrincipalName []*string `json:"ResourcePrincipalName,omitempty" xml:"ResourcePrincipalName,omitempty" type:"Repeated"`
 	// The type of the resource. Valid value:
 	//
-	// 	- user: a RAM user
+	// - user: a RAM user
 	//
 	// example:
 	//

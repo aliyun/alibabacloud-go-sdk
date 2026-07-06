@@ -30,7 +30,7 @@ type iUpdateApplicationRequest interface {
 }
 
 type UpdateApplicationRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type UpdateApplicationRequest struct {
 	//
 	// 3600
 	NewAccessTokenValidity *int32 `json:"NewAccessTokenValidity,omitempty" xml:"NewAccessTokenValidity,omitempty"`
-	// The display name.
+	// The display name of the application.
 	//
 	// example:
 	//
@@ -54,29 +54,29 @@ type UpdateApplicationRequest struct {
 	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
 	// Specifies whether the application can be installed by using other Alibaba Cloud accounts. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	NewIsMultiTenant *bool `json:"NewIsMultiTenant,omitempty" xml:"NewIsMultiTenant,omitempty"`
-	// The permission that is granted on the application.
+	// The scope of application permissions.
 	//
-	// For more information about the application permission scope, see [OAuth scopes](https://help.aliyun.com/document_detail/93693.html). You can also call the [ListPredefinedScopes](https://help.aliyun.com/document_detail/187206.html) operation to query the permissions that are supported by different types of applications.
+	// For more information about the application permission scope, see [OAuth overview](https://help.aliyun.com/document_detail/93693.html). You can also call the [ListPredefinedScopes](https://help.aliyun.com/document_detail/187206.html) operation to obtain the scopes that are supported by different application types.
 	//
-	// If you enter multiple permissions, separate them with semicolons (;).
+	// To specify multiple permissions, separate them with semicolons (;).
 	//
-	// The new value of this parameter overwrites the original value, and the permission specified by the new value takes effect. For example, if the original value is `/acs/ccc`, and the new value is `/acs/alidns`, `/acs/alidns` takes effect. If you want to retain the original permission and the `/acs/alidns` permission, set the value to `/acs/ccc;/acs/alidns`.
+	// The new value of this parameter overwrites the original value, and the permission specified by the new value takes effect. For example, if the original value is `/acs/ccc`, and the new value is `/acs/alidns`, `/acs/alidns` takes effect. If you want to retain the original permission and the `/acs/alidns` permission, set the value to `/acs/ccc;/acs/alidns`.
 	//
 	// example:
 	//
 	// openid
 	NewPredefinedScopes *string `json:"NewPredefinedScopes,omitempty" xml:"NewPredefinedScopes,omitempty"`
-	// The callback URL.
+	// The redirect URL.
 	//
-	// If you enter multiple callback URLs, separate them with semicolons (;).
+	// To specify multiple URLs, separate them with semicolons (;).
 	//
 	// example:
 	//
@@ -92,15 +92,15 @@ type UpdateApplicationRequest struct {
 	NewRefreshTokenValidity *int32 `json:"NewRefreshTokenValidity,omitempty" xml:"NewRefreshTokenValidity,omitempty"`
 	// The required permission.
 	//
-	// You can specify one or more permissions for the `RequiredScopes` parameter. After you specify this parameter, the required permissions are automatically selected and cannot be revoked when a user grants permissions on the application.
+	// You can specify one or more permissions for the `RequiredScopes` parameter. When a user grants permissions to the application, the scopes specified in this parameter are pre-selected and cannot be deselected.
 	//
-	// If you also specify the `NewPredefinedScopes` parameter, the `NewPredefinedScopes` parameter specifies the permissions that can be granted on the application, and this parameter specifies the required permissions.
+	// If you also specify the `NewPredefinedScopes` parameter, the `NewPredefinedScopes` parameter specifies the permissions that can be granted on the application, and this parameter specifies the required permissions.
 	//
-	// If you enter multiple permissions, separate them with semicolons (;).
+	// To enter multiple scopes, separate them with semicolons (;).
 	//
 	// The new value of this parameter overwrites the original value, and the required permission specified by the new value takes effect.
 	//
-	// >  If the permission that you specify for the `RequiredScopes` parameter is not included in value of the `PredefinedScopes` parameter, the permission does not take effect.
+	// > Any scope specified here must also be included in `PredefinedScopes`. Otherwise, the scope will not be set as required.
 	//
 	// example:
 	//
@@ -108,15 +108,17 @@ type UpdateApplicationRequest struct {
 	NewRequiredScopes *string `json:"NewRequiredScopes,omitempty" xml:"NewRequiredScopes,omitempty"`
 	// Specifies whether a secret is required. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
+	//
+	// > 	- For applications of the WebApp and ServerApp types, this parameter is automatically set to true and cannot be changed.
 	//
 	// >
 	//
-	// 	- For applications of the WebApp and ServerApp types, this parameter is automatically set to true and cannot be changed.
+	// > 	- For applications of the NativeApp type, this parameter can be set to true or false. If you do not set this parameter, false is used. Applications of the NativeApp type run in untrusted environments and the secrets of these applications are not protected.
 	//
-	// 	- For applications of the NativeApp type, this parameter can be set to true or false. If you do not set this parameter, false is used. Applications of the NativeApp type run in untrusted environments and the secrets of these applications are not protected. Therefore, we recommend that you do not set this parameter to true unless otherwise specified. For more information, see [Use an application of the NativeApp type to log on to Alibaba Cloud](https://help.aliyun.com/document_detail/93697.html).
+	// We recommend that you do not set this parameter to true unless otherwise specified. For more information, see [Access Alibaba Cloud APIs from a native application](https://help.aliyun.com/document_detail/93697.html).
 	//
 	// example:
 	//

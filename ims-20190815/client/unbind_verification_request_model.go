@@ -22,7 +22,7 @@ type iUnbindVerificationRequest interface {
 type UnbindVerificationRequest struct {
 	// The email address.
 	//
-	// >  If you set `VerifyType` to `email`, you must specify this parameter.
+	// > If you set `VerifyType` to `email`, you must specify this parameter.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type UnbindVerificationRequest struct {
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The mobile phone number.
 	//
-	// >  If you set `VerifyType` to `sms`, you must specify this parameter.
+	// > If you set `VerifyType` to `sms`, you must specify this parameter.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type UnbindVerificationRequest struct {
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 	// The multi-factor authentication (MFA) method. Valid values:
 	//
-	// 	- sms: mobile phone.
+	// - sms: mobile phone.
 	//
-	// 	- email: email.
+	// - email: email.
 	//
 	// example:
 	//

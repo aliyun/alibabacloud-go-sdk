@@ -24,13 +24,13 @@ type TagResourcesRequest struct {
 	//
 	// Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource ID is the ID of the RAM user.
 	//
-	// >  You must specify only one of the following parameters: `ResourceId` and `ResourcePrincipalName`.
+	// > You must specify only one of the following parameters: `ResourceId` and `ResourcePrincipalName`.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The name of resource N.
 	//
 	// Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource name is the name of the RAM user.
 	//
-	// >  You must specify only one of the following parameters: `ResourceId` and `ResourcePrincipalName`.
+	// > You must specify only one of the following parameters: `ResourceId` and `ResourcePrincipalName`.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type TagResourcesRequest struct {
 	ResourcePrincipalName []*string `json:"ResourcePrincipalName,omitempty" xml:"ResourcePrincipalName,omitempty" type:"Repeated"`
 	// The type of the resource. Valid value:
 	//
-	// 	- user: a Resource Access Management (RAM) user.
+	// - user: a Resource Access Management (RAM) user.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iGetUserInRecycleBinRequest interface {
 type GetUserInRecycleBinRequest struct {
 	// The AccessKey ID of the RAM user.
 	//
-	// >  You must specify only one of the following parameters: `UserId` and `UserAccessKeyId`.
+	// > You must specify only one of the following parameters: `UserId` and `UserAccessKeyId`.
 	//
 	// example:
 	//
@@ -26,7 +26,7 @@ type GetUserInRecycleBinRequest struct {
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
 	// The ID of the RAM user.
 	//
-	// >  You must specify only one of the following parameters: `UserId` and `UserAccessKeyId`.
+	// > You must specify only one of the following parameters: `UserId` and `UserAccessKeyId`.
 	//
 	// example:
 	//

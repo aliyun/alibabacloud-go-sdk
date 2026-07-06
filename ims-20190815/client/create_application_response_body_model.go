@@ -16,7 +16,7 @@ type iCreateApplicationResponseBody interface {
 }
 
 type CreateApplicationResponseBody struct {
-	// The information about the application.
+	// The application information.
 	Application *CreateApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,7 +74,7 @@ type CreateApplicationResponseBodyApplication struct {
 	//
 	// 177242285274****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type CreateApplicationResponseBodyApplication struct {
 	//
 	// WebApp
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The creation time.
+	// The time when the application was created.
 	//
 	// example:
 	//
@@ -111,9 +111,19 @@ type CreateApplicationResponseBodyApplication struct {
 	// example:
 	//
 	// true
-	IsMultiTenant   *bool                                                 `json:"IsMultiTenant,omitempty" xml:"IsMultiTenant,omitempty"`
-	ProtocolVersion *string                                               `json:"ProtocolVersion,omitempty" xml:"ProtocolVersion,omitempty"`
-	RedirectUris    *CreateApplicationResponseBodyApplicationRedirectUris `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Struct"`
+	IsMultiTenant *bool `json:"IsMultiTenant,omitempty" xml:"IsMultiTenant,omitempty"`
+	// The OAuth protocol version of the application. Valid values:
+	//
+	// - `2.0`: OAuth 2.0
+	//
+	// - `2.1`: OAuth 2.1
+	//
+	// example:
+	//
+	// 2.0
+	ProtocolVersion *string `json:"ProtocolVersion,omitempty" xml:"ProtocolVersion,omitempty"`
+	// The redirect URLs.
+	RedirectUris *CreateApplicationResponseBodyApplicationRedirectUris `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Struct"`
 	// The validity period of the refresh token. Unit: seconds.
 	//
 	// example:
@@ -126,7 +136,7 @@ type CreateApplicationResponseBodyApplication struct {
 	//
 	// true
 	SecretRequired *bool `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
-	// The update time.
+	// The time when the application information was last updated.
 	//
 	// example:
 	//
@@ -283,6 +293,7 @@ func (s *CreateApplicationResponseBodyApplication) Validate() error {
 }
 
 type CreateApplicationResponseBodyApplicationDelegatedScope struct {
+	// The information about the permissions that are granted on the application.
 	PredefinedScopes *CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
 }
 

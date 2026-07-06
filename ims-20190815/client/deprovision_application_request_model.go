@@ -20,7 +20,7 @@ type DeprovisionApplicationRequest struct {
 	//
 	// example:
 	//
-	// 452392483381546****
+	// 407342493648015****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 

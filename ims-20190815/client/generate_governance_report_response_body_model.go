@@ -24,11 +24,11 @@ type GenerateGovernanceReportResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The report generation status. Valid values:
 	//
-	// 	- Started: The system starts to generate a governance report.
+	// - Started: The system starts to generate a governance report.
 	//
-	// 	- Progressing: The system is generating a governance report.
+	// - Progressing: The system is generating a governance report.
 	//
-	// 	- Completed: A governance report is generated.
+	// - Completed: A governance report is generated.
 	//
 	// example:
 	//

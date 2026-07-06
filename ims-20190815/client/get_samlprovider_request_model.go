@@ -14,7 +14,7 @@ type iGetSAMLProviderRequest interface {
 }
 
 type GetSAMLProviderRequest struct {
-	// The name of the IdP.
+	// The name of the IdP whose information you want to query.
 	//
 	// This parameter is required.
 	//

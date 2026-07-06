@@ -104,11 +104,11 @@ type GetUserResponseBodyUser struct {
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
 	// The source of the RAM user. Valid value:
 	//
-	// 	- Manual: The RAM user is manually created in the RAM console.
+	// - Manual: The RAM user is manually created in the RAM console.
 	//
-	// 	- SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
+	// - SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
 	//
-	// 	- CloudSSO: The RAM user is mapped from a CloudSSO user.
+	// - CloudSSO: The RAM user is mapped from a CloudSSO user.
 	//
 	// example:
 	//

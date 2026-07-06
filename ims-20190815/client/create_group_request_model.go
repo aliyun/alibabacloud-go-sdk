@@ -24,7 +24,7 @@ type CreateGroupRequest struct {
 	//
 	// example:
 	//
-	// Dev-Team
+	// 开发团队
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	// The display name of the RAM user group.
 	//

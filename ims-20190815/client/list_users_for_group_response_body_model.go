@@ -22,9 +22,9 @@ type iListUsersForGroupResponseBody interface {
 type ListUsersForGroupResponseBody struct {
 	// Indicates whether the response is truncated. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type ListUsersForGroupResponseBody struct {
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
-	// >  This parameter is returned only when `IsTruncated` is `true`.
+	// > This parameter is returned only when `IsTruncated` is `true`.
 	//
 	// example:
 	//
