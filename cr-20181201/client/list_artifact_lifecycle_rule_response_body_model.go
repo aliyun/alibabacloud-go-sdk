@@ -26,17 +26,17 @@ type iListArtifactLifecycleRuleResponseBody interface {
 }
 
 type ListArtifactLifecycleRuleResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request succeeded. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The request succeeded.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListArtifactLifecycleRuleResponseBody struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListArtifactLifecycleRuleResponseBody struct {
 	//
 	// F92D82F9-A4C4-5A4A-97B9-E495BF1B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// _
+	// The list of lifecycle management rules.
 	Rules []*ListArtifactLifecycleRuleResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -155,19 +155,19 @@ func (s *ListArtifactLifecycleRuleResponseBody) Validate() error {
 }
 
 type ListArtifactLifecycleRuleResponseBodyRules struct {
-	// Indicates whether the lifecycle management rule is automatically executed.
+	// Indicates whether the rule runs automatically.
 	//
 	// example:
 	//
 	// false
 	Auto *bool `json:"Auto,omitempty" xml:"Auto,omitempty"`
-	// The time when the lifecycle management rule was created.
+	// The creation time of the rule.
 	//
 	// example:
 	//
 	// 1638187989000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether lifecycle management is enabled for the artifact.
+	// Indicates whether the rule is configured to delete tags.
 	//
 	// example:
 	//
@@ -179,32 +179,32 @@ type ListArtifactLifecycleRuleResponseBodyRules struct {
 	//
 	// cri-brlg4cbj2yl****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the lifecycle management rule was last modified.
+	// The last modification time of the rule.
 	//
 	// example:
 	//
 	// 1678341923385
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// example:
 	//
 	// test-ns
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The time when the lifecycle management rule is next executed.
+	// The next execution time.
 	//
 	// example:
 	//
 	// 1638187989000
 	NextTime *int64                                                `json:"NextTime,omitempty" xml:"NextTime,omitempty"`
 	Policies []*ListArtifactLifecycleRuleResponseBodyRulesPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	// The name of the image repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// test_1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The number of retained images.
+	// The number of image tags to retain.
 	//
 	// example:
 	//
@@ -216,19 +216,19 @@ type ListArtifactLifecycleRuleResponseBodyRules struct {
 	//
 	// cralr-yqx1q5sir6d****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The execution cycle of the lifecycle management rule.
+	// The execution schedule.
 	//
 	// example:
 	//
 	// WEEK
 	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	// The deletion scope of artifacts.
+	// The scope of the rule.
 	//
 	// example:
 	//
 	// INSTANCE
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The regular expression that indicates which image tags are retained.
+	// The regular expression that matches image tags to retain.
 	//
 	// example:
 	//

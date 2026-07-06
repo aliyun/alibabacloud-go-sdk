@@ -26,7 +26,7 @@ type iListNamespaceResponseBody interface {
 }
 
 type ListNamespaceResponseBody struct {
-	// The HTTP status code.
+	// The return code.
 	//
 	// example:
 	//
@@ -34,15 +34,15 @@ type ListNamespaceResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The queried namespaces.
+	// The list of namespaces.
 	Namespaces []*ListNamespaceResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -50,19 +50,19 @@ type ListNamespaceResponseBody struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// B7E5FCA5-55ED-451C-9649-0BB2B93387D0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of the queried namespaces.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ func (s *ListNamespaceResponseBody) Validate() error {
 }
 
 type ListNamespaceResponseBodyNamespaces struct {
-	// Indicates whether the automatically creating repositories feature is enabled for the namespace.
+	// Indicates whether a repository is automatically created when an image is pushed to the namespace.
 	//
 	// example:
 	//
@@ -164,29 +164,29 @@ type ListNamespaceResponseBodyNamespaces struct {
 	DefaultRepoConfiguration *RepoConfiguration `json:"DefaultRepoConfiguration,omitempty" xml:"DefaultRepoConfiguration,omitempty"`
 	// Deprecated
 	//
-	// The default type of repositories in the namespace. Valid values:
+	// The default type of the repository. Valid values:
 	//
-	// 	- `PUBLIC`: public repositories.
+	// - `PUBLIC`: public
 	//
-	// 	- `PRIVATE`: private repositories.
+	// - `PRIVATE`: private
 	//
 	// example:
 	//
 	// PUBLIC
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// cri-94klsruryslx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The namespace ID.
+	// The ID of the namespace.
 	//
 	// example:
 	//
 	// crn-tiw8t3f8i5lt****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The namespace name.
+	// The name of the namespace.
 	//
 	// example:
 	//
@@ -194,15 +194,15 @@ type ListNamespaceResponseBodyNamespaces struct {
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	// The status of the namespace. Valid values:
 	//
-	// 	- `NORMAL`: The namespace is normal.
+	// - `NORMAL`: The namespace is normal.
 	//
-	// 	- `DELETING`: The namespace is being deleted.
+	// - `DELETING`: The namespace is being deleted.
 	//
 	// example:
 	//
 	// NORMAL
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//

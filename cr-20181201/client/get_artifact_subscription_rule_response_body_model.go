@@ -48,19 +48,19 @@ type iGetArtifactSubscriptionRuleResponseBody interface {
 }
 
 type GetArtifactSubscriptionRuleResponseBody struct {
-	// Indicates whether an acceleration link is enabled for image subscription. The subscription acceleration feature is in public preview. The feature is optimized based on scheduling policies and network links to accelerate image subscription.
+	// Indicates whether to enable the accelerated data transfer feature. This feature is in public preview. It optimizes scheduling policies and network paths to improve the speed of artifact subscription.
 	//
 	// example:
 	//
 	// true
 	Accelerate *bool `json:"Accelerate,omitempty" xml:"Accelerate,omitempty"`
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the subscription rule was created.
+	// The time when the rule was created.
 	//
 	// example:
 	//
@@ -72,37 +72,37 @@ type GetArtifactSubscriptionRuleResponseBody struct {
 	//
 	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the API request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The request succeeded.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The time when the subscription rule was modified.
+	// The time when the rule was last modified.
 	//
 	// example:
 	//
 	// 1638259914000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The name of the Container Registry namespace.
+	// The destination ACR namespace.
 	//
 	// example:
 	//
 	// test-ns
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// Indicates whether the original image is overwritten.
+	// Indicates whether to overwrite the existing images that have the same tag in the destination repository.
 	//
 	// example:
 	//
 	// true
 	Override *bool `json:"Override,omitempty" xml:"Override,omitempty"`
-	// The operating system and architecture. If the source repository contains multi-arch images, only the images with the specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance.
+	// The operating systems and architectures. If a source repository contains multi-architecture images, only images that match the specified platforms are synchronized to the destination repository of the Enterprise Edition instance.
 	Platform []*string `json:"Platform,omitempty" xml:"Platform,omitempty" type:"Repeated"`
-	// The name of the Container Registry repository.
+	// The destination ACR repository.
 	//
 	// example:
 	//
@@ -119,23 +119,16 @@ type GetArtifactSubscriptionRuleResponseBody struct {
 	// example:
 	//
 	// crasr-mdbpung4i1rm****
-	RuleId       *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The domain name of the artifact source.
 	SourceDomain *string `json:"SourceDomain,omitempty" xml:"SourceDomain,omitempty"`
-	// The name of the source namespace.
+	// The source namespace.
 	//
 	// example:
 	//
 	// library
 	SourceNamespaceName *string `json:"SourceNamespaceName,omitempty" xml:"SourceNamespaceName,omitempty"`
-	// The source of the artifact.
-	//
-	// Valid values:
-	//
-	// 	- DOCKER_HUB: Docker Hub
-	//
-	// 	- GCR: GCR
-	//
-	// 	- QUAY: Quay.io
+	// The artifact source.
 	//
 	// example:
 	//
@@ -147,13 +140,13 @@ type GetArtifactSubscriptionRuleResponseBody struct {
 	//
 	// nginx
 	SourceRepoName *string `json:"SourceRepoName,omitempty" xml:"SourceRepoName,omitempty"`
-	// The number of subscribed images.
+	// The number of images to subscribe to.
 	//
 	// example:
 	//
 	// 1
 	TagCount *int64 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
-	// The image tag in the subscription source repository. Regular expressions are supported.
+	// The regular expression that is used to match the tags of images in the source repository for subscription.
 	//
 	// example:
 	//

@@ -40,7 +40,7 @@ type ListRepoSyncTaskRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -52,19 +52,19 @@ type ListRepoSyncTaskRequest struct {
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the repository belongs.
+	// The name of the repository namespace.
 	//
 	// example:
 	//
 	// ns
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	// The ID of the synchronization task record, which is the same as SyncBatchTaskId in the response.
+	// The ID of the sync task. This ID is also the `SyncBatchTaskId` returned in the response, which identifies the image\\"s sync batch task.
 	//
-	// >  If an image meets multiple synchronization rules and multiple synchronization tasks are generated for the image, these synchronization tasks use the same SyncBatchTaskId.
+	// > An image that matches multiple sync rules generates multiple sync tasks, each with the same `SyncBatchTaskId`.
 	//
 	// example:
 	//
-	// crsr-7lph66uloi6h****
+	// 9d8ac4f6-8138-4c15-a2e3-60624ad3****
 	SyncRecordId *string `json:"SyncRecordId,omitempty" xml:"SyncRecordId,omitempty"`
 	// The image tag.
 	//

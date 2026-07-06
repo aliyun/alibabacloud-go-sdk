@@ -777,20 +777,26 @@ func (client *Client) CreateChartRepositoryWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a whitelist policy for the public endpoint of the instance.
+// Creates a whitelist policy for an instance access endpoint (public network only).
 //
-// @param request - CreateInstanceEndpointAclPolicyRequest
+// @param tmpReq - CreateInstanceEndpointAclPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateInstanceEndpointAclPolicyResponse
-func (client *Client) CreateInstanceEndpointAclPolicyWithContext(ctx context.Context, request *CreateInstanceEndpointAclPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceEndpointAclPolicyResponse, _err error) {
+func (client *Client) CreateInstanceEndpointAclPolicyWithContext(ctx context.Context, tmpReq *CreateInstanceEndpointAclPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceEndpointAclPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &CreateInstanceEndpointAclPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Entries) {
+		request.EntriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Entries, dara.String("Entries"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
 		query["Comment"] = request.Comment
@@ -798,6 +804,10 @@ func (client *Client) CreateInstanceEndpointAclPolicyWithContext(ctx context.Con
 
 	if !dara.IsNil(request.EndpointType) {
 		query["EndpointType"] = request.EndpointType
+	}
+
+	if !dara.IsNil(request.EntriesShrink) {
+		query["Entries"] = request.EntriesShrink
 	}
 
 	if !dara.IsNil(request.Entry) {
@@ -901,7 +911,7 @@ func (client *Client) CreateInstanceVpcEndpointLinkedVpcWithContext(ctx context.
 
 // Summary:
 //
-// Creates a namespace of image repositories.
+// Creates a repository namespace.
 //
 // @param tmpReq - CreateNamespaceRequest
 //
@@ -1211,7 +1221,7 @@ func (client *Client) CreateRepoSyncRuleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Manually creates an image synchronization task.
+// Manually create a sync task.
 //
 // @param request - CreateRepoSyncTaskRequest
 //
@@ -1407,7 +1417,7 @@ func (client *Client) CreateRepoTagWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates an image scan task.
+// Creates a security scan task for an image.
 //
 // @param request - CreateRepoTagScanTaskRequest
 //
@@ -1693,7 +1703,7 @@ func (client *Client) CreateScanRuleWithContext(ctx context.Context, tmpReq *Cre
 //
 // Description:
 //
-// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param tmpReq - CreateStorageDomainRoutingRuleRequest
 //
@@ -2003,7 +2013,7 @@ func (client *Client) DeleteChartReleaseWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a chart repository from an instance.
+// Deletes a chart repository.
 //
 // @param request - DeleteChartRepositoryRequest
 //
@@ -2103,23 +2113,33 @@ func (client *Client) DeleteEventCenterRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes a whitelist policy for the public endpoint of an instance.
+// Deletes a whitelist policy from the public access endpoint of an instance.
 //
-// @param request - DeleteInstanceEndpointAclPolicyRequest
+// @param tmpReq - DeleteInstanceEndpointAclPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteInstanceEndpointAclPolicyResponse
-func (client *Client) DeleteInstanceEndpointAclPolicyWithContext(ctx context.Context, request *DeleteInstanceEndpointAclPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceEndpointAclPolicyResponse, _err error) {
+func (client *Client) DeleteInstanceEndpointAclPolicyWithContext(ctx context.Context, tmpReq *DeleteInstanceEndpointAclPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceEndpointAclPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &DeleteInstanceEndpointAclPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Entries) {
+		request.EntriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Entries, dara.String("Entries"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointType) {
 		query["EndpointType"] = request.EndpointType
+	}
+
+	if !dara.IsNil(request.EntriesShrink) {
+		query["Entries"] = request.EntriesShrink
 	}
 
 	if !dara.IsNil(request.Entry) {
@@ -2535,7 +2555,7 @@ func (client *Client) DeleteRepositoryWithContext(ctx context.Context, request *
 //
 // Description:
 //
-// Deletes a scan rule.
+// 删除扫描规则。
 //
 // @param request - DeleteScanRuleRequest
 //
@@ -2587,7 +2607,7 @@ func (client *Client) DeleteScanRuleWithContext(ctx context.Context, request *De
 //
 // Description:
 //
-// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param request - DeleteStorageDomainRoutingRuleRequest
 //
@@ -2675,7 +2695,7 @@ func (client *Client) GetArtifactBuildRuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the details of an artifact building task.
+// Retrieves the details of an artifact build task.
 //
 // @param request - GetArtifactBuildTaskRequest
 //
@@ -2715,7 +2735,7 @@ func (client *Client) GetArtifactBuildTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the lifecycle management rules of an artifact.
+// Lists artifact lifecycle management rules.
 //
 // @param request - GetArtifactLifecycleRuleRequest
 //
@@ -2755,7 +2775,7 @@ func (client *Client) GetArtifactLifecycleRuleWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about an artifact subscription rule.
+// Retrieves the details of an artifact subscription rule.
 //
 // @param request - GetArtifactSubscriptionRuleRequest
 //
@@ -2875,17 +2895,17 @@ func (client *Client) GetArtifactSubscriptionTaskResultWithContext(ctx context.C
 
 // Summary:
 //
-// Queries a pair of temporary username and password that you use to log on to a Container Registry instance.
+// Retrieves a temporary account and temporary password for logging on to an instance.
 //
 // Description:
 //
-// The validity period of the temporary password is 1 hour. If you use STS to request a token, the validity period of the temporary password is the same as the validity period of the STS token.
+// The temporary password is valid for 1 hour. If you use STS to make the request, the validity period of the temporary password is the same as that of the STS token used in the request.
 //
-//   - If you log on to an instance by using the temporary password obtained through an Alibaba Cloud account, you have the same permissions on resources as the user of the Alibaba Cloud account.
+// - The permissions granted by a temporary token obtained through an Alibaba Cloud account are the same as the permissions granted when you log on to the instance with the username and password of the Alibaba Cloud account.
 //
-//   - If you log on to an instance by using the temporary password obtained through a RAM user, you have the same permissions as the RAM user.
+// - The permissions granted by a temporary token obtained through a RAM user are the same as the permissions granted when you log on to the instance with the username and password of the RAM user.
 //
-//   - If you log on to an instance by using the temporary password obtained through STS, you have the same permissions as the STS token.
+// - The permissions granted by a temporary token obtained through STS are the same as the permissions of the STS token.
 //
 // @param request - GetAuthorizationTokenRequest
 //
@@ -2929,7 +2949,7 @@ func (client *Client) GetAuthorizationTokenWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Obtains the information of a delivery chain to understand the node execution sequence of the delivery chain.
+// Obtain the delivery chain definition to understand the execution order of edge zones in the delivery chain.
 //
 // @param request - GetChainRequest
 //
@@ -3077,7 +3097,7 @@ func (client *Client) GetChartRepositoryWithContext(ctx context.Context, request
 
 // Summary:
 //
-// The ID of the resource group to which the instance belongs.
+// Query instance information.
 //
 // @param request - GetInstanceRequest
 //
@@ -3265,7 +3285,7 @@ func (client *Client) GetInstanceVpcEndpointWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about a namespace.
+// Retrieves information about a namespace.
 //
 // @param request - GetNamespaceRequest
 //
@@ -3517,7 +3537,7 @@ func (client *Client) GetRepoSyncTaskWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the information about an image tag.
+// Retrieve information about a single image tag.
 //
 // @param request - GetRepoTagRequest
 //
@@ -3557,7 +3577,7 @@ func (client *Client) GetRepoTagWithContext(ctx context.Context, request *GetRep
 
 // Summary:
 //
-// Queries the scanning status of an image tag.
+// Retrieves the scan status of a specific image tag.
 //
 // @param request - GetRepoTagScanStatusRequest
 //
@@ -3621,7 +3641,7 @@ func (client *Client) GetRepoTagScanStatusWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the number of vulnerabilities for each severity level. These vulnerabilities are detected in a security scan that is created for an image version.
+// Obtain the number of scan results for an image version.
 //
 // @param request - GetRepoTagScanSummaryRequest
 //
@@ -3737,11 +3757,11 @@ func (client *Client) GetRepositoryWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Queries a scan rule.
+// Retrieves a scan rule.
 //
 // Description:
 //
-// Get scan rule.
+// Retrieves a scan rule.
 //
 // @param request - GetScanRuleRequest
 //
@@ -3789,11 +3809,11 @@ func (client *Client) GetScanRuleWithContext(ctx context.Context, request *GetSc
 
 // Summary:
 //
-// # Queries instance storage domain routing rules
+// Retrieves the instance storage domain name routing list.
 //
 // Description:
 //
-// This API is open to a whitelist. Please [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) for support.
+// This API is available through whitelist access. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to obtain support.
 //
 // @param request - GetStorageDomainRoutingRuleRequest
 //
@@ -3881,7 +3901,7 @@ func (client *Client) ListArtifactBuildTaskLogWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the lifecycle management rules of an artifact.
+// Lists artifact lifecycle management rules.
 //
 // @param request - ListArtifactLifecycleRuleRequest
 //
@@ -3921,7 +3941,7 @@ func (client *Client) ListArtifactLifecycleRuleWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Lists the subscription rules of artifacts.
+// List artifact subscription rules.
 //
 // @param request - ListArtifactSubscriptionRuleRequest
 //
@@ -4061,7 +4081,7 @@ func (client *Client) ListChainWithContext(ctx context.Context, request *ListCha
 
 // Summary:
 //
-// Queries execution records of delivery chains.
+// Queries the execution records of a delivery chain.
 //
 // @param request - ListChainInstanceRequest
 //
@@ -4389,7 +4409,7 @@ func (client *Client) ListEventCenterRuleNameWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries Container Registry instances.
+// Queries a list of instances.
 //
 // @param request - ListInstanceRequest
 //
@@ -4545,7 +4565,7 @@ func (client *Client) ListInstanceRegionWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries namespaces in a Container Registry instance.
+// Lists namespaces.
 //
 // @param request - ListNamespaceRequest
 //
@@ -4717,7 +4737,7 @@ func (client *Client) ListRepoBuildRecordLogWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries image building rules of a repository.
+// Lists the build rules of an image repository.
 //
 // @param request - ListRepoBuildRuleRequest
 //
@@ -4773,7 +4793,7 @@ func (client *Client) ListRepoBuildRuleWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries image synchronization rules of a repository.
+// Returns a list of repository synchronization rules.
 //
 // @param request - ListRepoSyncRuleRequest
 //
@@ -4841,7 +4861,7 @@ func (client *Client) ListRepoSyncRuleWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries image synchronization tasks in an image repository.
+// Lists repository synchronization tasks.
 //
 // @param request - ListRepoSyncTaskRequest
 //
@@ -5097,7 +5117,7 @@ func (client *Client) ListRepoTriggerWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Queries image repositories.
+// Query the image repository list.
 //
 // @param request - ListRepositoryRequest
 //
@@ -5253,7 +5273,7 @@ func (client *Client) ListScanMaliciousFileByTaskWithContext(ctx context.Context
 //
 // Description:
 //
-// Lists the scan rules.
+// 列举扫描规则。
 //
 // @param request - ListScanRuleRequest
 //
@@ -5294,6 +5314,14 @@ func (client *Client) ListScanRuleWithContext(ctx context.Context, request *List
 // Summary:
 //
 // Queries the tags that are added to cloud resources. Instance resources are supported.
+//
+// Description:
+//
+// - 请求中ResourceId.N 及 (Tag.N.Key,Tag.N.Value) 至少存在一个，以确定检索对象。
+//
+// - Tag.N是资源的标签，由一个键值对组成。仅指定Tag.N.Key时，则返回该标签键关联的所有标签值。仅指定Tag.N.Value会报错。
+//
+// - ResourceId.N需满足所有输入的键值对。当输入多个键值对，查询结果为资源中包含指定多个键值对的资源。
 //
 // @param request - ListTagResourcesRequest
 //
@@ -5402,6 +5430,10 @@ func (client *Client) ResetLoginPasswordWithContext(ctx context.Context, request
 // Summary:
 //
 // Adds tags to resources. Instance resources are supported.
+//
+// Description:
+//
+// 单个实例最多可绑定 20 条标签。绑定标签前，阿里云会校验资源已有标签数量，超过限制值会返回报错信息。
 //
 // @param request - TagResourcesRequest
 //
@@ -6301,7 +6333,7 @@ func (client *Client) UpdateRepoTriggerWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// The ID of the request.
+// Updates repository information.
 //
 // @param request - UpdateRepositoryRequest
 //
@@ -6377,7 +6409,7 @@ func (client *Client) UpdateRepositoryWithContext(ctx context.Context, request *
 //
 // Description:
 //
-// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// This API is available through whitelist access. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to request access.
 //
 // @param tmpReq - UpdateScanRuleRequest
 //
@@ -6463,7 +6495,7 @@ func (client *Client) UpdateScanRuleWithContext(ctx context.Context, tmpReq *Upd
 //
 // Description:
 //
-// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param tmpReq - UpdateStorageDomainRoutingRuleRequest
 //

@@ -22,7 +22,7 @@ type iListChainInstanceRequest interface {
 }
 
 type ListChainInstanceRequest struct {
-	// The operation that you want to perform. Set this parameter to **ListChainInstance**.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,25 +30,25 @@ type ListChainInstanceRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the delivery chain started.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The name of the image repository.
+	// The page size.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The time when the delivery chain is completed.
+	// The image repository name.
 	//
 	// example:
 	//
 	// test-repo
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the delivery chain.
+	// The namespace name.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type GetRepoTagScanStatusRequest struct {
 	//
 	// 67bfbcc12b67936ec7f867927817cbb071832b873dbcaed312a1930ba5f1d529
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type GetRepoTagScanStatusRequest struct {
 	//
 	// cri-2j88dtld8yel****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the image repository.
+	// The ID of the repository.
 	//
 	// example:
 	//

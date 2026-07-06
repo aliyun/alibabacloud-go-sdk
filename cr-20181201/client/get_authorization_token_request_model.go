@@ -14,7 +14,7 @@ type iGetAuthorizationTokenRequest interface {
 }
 
 type GetAuthorizationTokenRequest struct {
-	// The ID of the request.
+	// The repository instance ID.
 	//
 	// This parameter is required.
 	//

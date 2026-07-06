@@ -20,29 +20,29 @@ type iGetInstanceCountResponseBody interface {
 }
 
 type GetInstanceCountResponseBody struct {
-	// Return value
+	// The return value.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Number of instances
+	// The number of instances.
 	//
 	// example:
 	//
 	// 5
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Indicates whether the API call was successful. Values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// - `true`: The API call was successful.
+	// - `true`: The API call is successful.
 	//
-	// - `false`: The API call failed.
+	// - `false`: The API call fails.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//

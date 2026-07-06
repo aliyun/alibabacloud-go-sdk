@@ -36,25 +36,25 @@ type UpdateScanRuleRequest struct {
 	//
 	// cri-4abntrj42twd****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of namespaces.
+	// The collection of namespaces.
 	//
-	// 	- When the scan scope is NAMESPACE, this parameter cannot be empty.
+	// - If the scan scope is set to NAMESPACE, this parameter is required.
 	//
-	// 	- If the scan scope is REPO, you must specify a unique Namespace for this parameter.
+	// - If the scan scope is set to REPO, specify exactly one namespace for this parameter.
 	//
 	// if can be null:
 	// true
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 	// The list of repositories.
 	//
-	// 	- When the scan scope is NAMESPACE, this parameter must be empty.
+	// - If the scan scope is set to NAMESPACE, this parameter must be empty.
 	//
-	// 	- When the scan scope is REPO, this parameter cannot be empty.
+	// - If the scan scope is set to REPO, this parameter is required.
 	//
 	// if can be null:
 	// true
 	RepoNames []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
-	// The tag filtering rules.
+	// The tag filtering rule.
 	//
 	// This parameter is required.
 	//
@@ -78,13 +78,11 @@ type UpdateScanRuleRequest struct {
 	//
 	// crscnr-3qmkeiuggfpjkfrq
 	ScanRuleId *string `json:"ScanRuleId,omitempty" xml:"ScanRuleId,omitempty"`
-	// The scan scope.
+	// The scan scope. Valid values:
 	//
-	// Valid values:
+	// - NAMESPACE: namespace
 	//
-	// 	- NAMESPACE: namespace.
-	//
-	// 	- REPO: repository.
+	// - REPO: repository.
 	//
 	// This parameter is required.
 	//
@@ -92,13 +90,11 @@ type UpdateScanRuleRequest struct {
 	//
 	// REPO
 	ScanScope *string `json:"ScanScope,omitempty" xml:"ScanScope,omitempty"`
-	// The trigger type.
+	// The trigger type. Valid values:
 	//
-	// Valid values:
+	// - AUTO: Automatically triggered upon push.
 	//
-	// 	- AUTO: automatically triggers.
-	//
-	// 	- MANUAL: manually triggers.
+	// - MANUAL: Manually triggered.
 	//
 	// This parameter is required.
 	//

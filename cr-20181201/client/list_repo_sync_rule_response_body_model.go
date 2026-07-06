@@ -26,7 +26,7 @@ type iListRepoSyncRuleResponseBody interface {
 }
 
 type ListRepoSyncRuleResponseBody struct {
-	// The return value.
+	// The response code.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type ListRepoSyncRuleResponseBody struct {
 	//
 	// 838D1602-6D8F-47FB-B60A-656645D2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried synchronization rules.
+	// The list of synchronization rules.
 	SyncRules []*ListRepoSyncRuleResponseBodySyncRules `json:"SyncRules,omitempty" xml:"SyncRules,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -151,17 +151,17 @@ func (s *ListRepoSyncRuleResponseBody) Validate() error {
 }
 
 type ListRepoSyncRuleResponseBodySyncRules struct {
-	// The time when the synchronization rule was created.
+	// The time when the synchronization rule was created. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1572604642000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the synchronization is performed across Alibaba Cloud accounts. Valid values:
+	// Indicates whether images are synchronized across different Alibaba Cloud accounts. Valid values:
 	//
-	// 	- `true`: Images are synchronized across Alibaba Cloud accounts.
+	// - `true`
 	//
-	// 	- `false`: Images are synchronized within the same Alibaba Cloud account.
+	// - `false`
 	//
 	// Default value: `false`.
 	//
@@ -194,7 +194,7 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	//
 	// test-repo-local
 	LocalRepoName *string `json:"LocalRepoName,omitempty" xml:"LocalRepoName,omitempty"`
-	// The time when the synchronization rule was last modified.
+	// The time when the synchronization rule was last modified. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The regular expression that is used to filter repositories.
 	//
-	// >  This parameter is valid only when SyncScope is set to `NAMESPACE`.
+	// > This parameter is valid only when `SyncScope` is set to `NAMESPACE`.
 	//
 	// example:
 	//
@@ -210,9 +210,9 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	RepoNameFilter *string `json:"RepoNameFilter,omitempty" xml:"RepoNameFilter,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// 	- `FROM`: Images are synchronized from the source instance to the destination instance.
+	// - `FROM`: from the source instance to the target instance.
 	//
-	// 	- `TO`: Images are synchronized from the destination instance to the source instance.
+	// - `TO`: from the target instance to the source instance.
 	//
 	// example:
 	//
@@ -232,49 +232,49 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	SyncRuleName *string `json:"SyncRuleName,omitempty" xml:"SyncRuleName,omitempty"`
 	// The synchronization scope. Valid values:
 	//
-	// 	- `NAMESPACE`: synchronizes the image tags in a namespace that meet the synchronization rule.
+	// - `NAMESPACE`: Synchronizes resources by namespace.
 	//
-	// 	- `REPO`: synchronizes the image tags in an image repository that meet the synchronization rule.
+	// - `REPO`: Synchronizes resources by repository.
 	//
 	// example:
 	//
 	// NAMESPACE
 	SyncScope *string `json:"SyncScope,omitempty" xml:"SyncScope,omitempty"`
-	// The policy that is applied to trigger the synchronization rule. Valid values:
+	// The trigger policy. Valid values:
 	//
-	// 	- `INITIATIVE`: The synchronization rule is positively triggered.
+	// - `INITIATIVE`: The synchronization is actively triggered.
 	//
-	// 	- `PASSIVE`: The synchronization rule is passively triggered.
+	// - `PASSIVE`: The synchronization is passively triggered.
 	//
 	// example:
 	//
 	// PASSIVE
 	SyncTrigger *string `json:"SyncTrigger,omitempty" xml:"SyncTrigger,omitempty"`
-	// The regular expression that is used to filter image tags.
+	// The regular expression that is used to filter tags.
 	//
 	// example:
 	//
 	// .*
 	TagFilter *string `json:"TagFilter,omitempty" xml:"TagFilter,omitempty"`
-	// The ID of the destination instance.
+	// The ID of the target instance.
 	//
 	// example:
 	//
 	// cri-k77rd2eo9ztt****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The name of the namespace in the destination instance.
+	// The name of the namespace in the target instance.
 	//
 	// example:
 	//
 	// test
 	TargetNamespaceName *string `json:"TargetNamespaceName,omitempty" xml:"TargetNamespaceName,omitempty"`
-	// The region ID of the destination instance.
+	// The region ID of the target instance.
 	//
 	// example:
 	//
 	// cn-shenzhen
 	TargetRegionId *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
-	// The name of the repository in the destination instance.
+	// The name of the repository in the target instance.
 	//
 	// example:
 	//

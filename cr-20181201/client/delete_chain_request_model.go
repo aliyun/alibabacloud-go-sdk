@@ -16,7 +16,7 @@ type iDeleteChainRequest interface {
 }
 
 type DeleteChainRequest struct {
-	// The ID of the delivery pipeline.
+	// The delivery chain ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteChainRequest struct {
 	//
 	// chi-02ymhtwl3cq8****
 	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

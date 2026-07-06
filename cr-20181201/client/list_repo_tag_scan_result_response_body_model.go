@@ -167,7 +167,7 @@ type ListRepoTagScanResultResponseBodyVulnerabilities struct {
 	//
 	// example:
 	//
-	// Vulnerability
+	// 漏洞
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// The URL of the vulnerability.
 	//

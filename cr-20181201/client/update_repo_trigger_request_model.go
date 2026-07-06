@@ -74,7 +74,7 @@ type UpdateRepoTriggerRequest struct {
 	//
 	// example:
 	//
-	// TAG_LIST
+	// ALL
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 	// The URL of the trigger.
 	//

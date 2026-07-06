@@ -24,13 +24,13 @@ type iCreateRepoTagScanTaskRequest interface {
 }
 
 type CreateRepoTagScanTaskRequest struct {
-	// The digest of the image.
+	// The image digest.
 	//
 	// example:
 	//
 	// sha256:815386ebbe9a3490f38785ab11bda34ec8dacf4634af77b8912832d4f85dca04
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The ID of the Container Registry instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type CreateRepoTagScanTaskRequest struct {
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the image repository.
+	// The image repository ID.
 	//
 	// This parameter is required.
 	//
@@ -46,18 +46,18 @@ type CreateRepoTagScanTaskRequest struct {
 	//
 	// crr-xwvi3osiy4ff****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The type of the scanning engine.
+	// The scan engine type:
 	//
-	// 	- `SAS_SCAN_SERVICE`: Security Center scan engine (paid service)
+	// - `SAS_SCAN_SERVICE`: The cloud security scan engine. This is a paid service.
 	//
-	// 	- `ACR_SCAN_SERVICE`: Container Registry scan engine
+	// - `ACR_SCAN_SERVICE`: The ACR scan engine.
 	//
 	// example:
 	//
 	// ACR_SCAN_SERVICE
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
 	ScanType    *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
-	// The image version.
+	// The image tag.
 	//
 	// This parameter is required.
 	//

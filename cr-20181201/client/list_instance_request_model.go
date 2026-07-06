@@ -30,23 +30,23 @@ type ListInstanceRequest struct {
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The status of the instance. Valid values:
+	// The instance status. Valid values:
 	//
-	// 	- `PENDING`: The instance is being initialized.
+	// - `PENDING`: Initializing.
 	//
-	// 	- `INIT_ERROR`: The initialization of the instance fails.
+	// - `INIT_ERROR`: Initialization failed.
 	//
-	// 	- `STARTING`: The instance is being started.
+	// - `STARTING`: Starting.
 	//
-	// 	- `RUNNING`: The instance is running.
+	// - `RUNNING`: Running.
 	//
-	// 	- `STOPPING`: The instance is being stopped.
+	// - `STOPPING`: Stopping.
 	//
-	// 	- `STOPPED`: The instance is stopped.
+	// - `STOPPED`: Stopped.
 	//
-	// 	- `DELETING`: The instance is being deleted.
+	// - `DELETING`: Deleting.
 	//
-	// 	- `DELETED`: The instance is deleted.
+	// - `DELETED`: Deleted.
 	//
 	// example:
 	//
@@ -58,13 +58,13 @@ type ListInstanceRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The resource group ID.
 	//
 	// example:
 	//

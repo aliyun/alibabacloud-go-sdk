@@ -18,7 +18,7 @@ type ListInstanceRegionRequest struct {
 	//
 	// example:
 	//
-	// zh-CN
+	// zh_CN
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 

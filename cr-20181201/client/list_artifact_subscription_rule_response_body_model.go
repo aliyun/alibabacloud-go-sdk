@@ -26,17 +26,17 @@ type iListArtifactSubscriptionRuleResponseBody interface {
 }
 
 type ListArtifactSubscriptionRuleResponseBody struct {
-	// The return value.
+	// The response code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`
+	// - `true`: The request was successful.
 	//
-	// 	- `false`
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListArtifactSubscriptionRuleResponseBody struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type ListArtifactSubscriptionRuleResponseBody struct {
 	//
 	// 07FC5654-C82A-59FA-A9D1-78B4EE443F86
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried artifact subscription rules.
+	// The subscription rules.
 	Rules []*ListArtifactSubscriptionRuleResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -155,13 +155,13 @@ func (s *ListArtifactSubscriptionRuleResponseBody) Validate() error {
 }
 
 type ListArtifactSubscriptionRuleResponseBodyRules struct {
-	// Indicates whether an acceleration link is enabled for image subscription. The subscription acceleration feature is in public preview. The feature is optimized based on scheduling policies and network links to accelerate image subscription.
+	// Indicates whether to enable the accelerated subscription channel. This feature is in public preview. Based on an optimized scheduling policy and network link, the speed of image subscription is improved.
 	//
 	// example:
 	//
 	// true
 	Accelerate *bool `json:"Accelerate,omitempty" xml:"Accelerate,omitempty"`
-	// The time when the subscription rule was created.
+	// The time when the rule was created.
 	//
 	// example:
 	//
@@ -173,27 +173,27 @@ type ListArtifactSubscriptionRuleResponseBodyRules struct {
 	//
 	// cri-brlg4cbj2yl****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the subscription rule was modified.
+	// The time when the rule was last modified.
 	//
 	// example:
 	//
 	// 1678341923385
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The name of the source namespace.
+	// The name of the namespace.
 	//
 	// example:
 	//
 	// test-ns
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// Indicates whether the original image is overwritten.
+	// Indicates whether to overwrite the image.
 	//
 	// example:
 	//
 	// true
 	Override *bool `json:"Override,omitempty" xml:"Override,omitempty"`
-	// The operating system and architecture. If the source repository contains a multi-arch image, only the images with the specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance.
+	// The operating system and architecture. If the source repository contains a multi-architecture image, only images that have a specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance.
 	Platform []*string `json:"Platform,omitempty" xml:"Platform,omitempty" type:"Repeated"`
-	// The name of the source repository.
+	// The name of the repository.
 	//
 	// example:
 	//
@@ -212,15 +212,7 @@ type ListArtifactSubscriptionRuleResponseBodyRules struct {
 	//
 	// library
 	SourceNamespaceName *string `json:"SourceNamespaceName,omitempty" xml:"SourceNamespaceName,omitempty"`
-	// The source of the artifact.
-	//
-	// Valid values:
-	//
-	// 	- DOCKER_HUB: Docker Hub
-	//
-	// 	- GCR: GCR
-	//
-	// 	- QUAY: Quay.io
+	// The source of the artifact. Valid values:
 	//
 	// example:
 	//
@@ -238,7 +230,7 @@ type ListArtifactSubscriptionRuleResponseBodyRules struct {
 	//
 	// 1
 	TagCount *int64 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
-	// The image tag in the subscription source repository. Regular expressions are supported.
+	// The regular expression that is used to subscribe to the source repository.
 	//
 	// example:
 	//

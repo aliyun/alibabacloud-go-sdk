@@ -26,13 +26,13 @@ type ListArtifactSubscriptionRuleRequest struct {
 	//
 	// cri-c0o11woew0k****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Maximum value: 100. If you specify a value greater than 100 for this parameter, the system reports a parameter error or uses 100 as the maximum value.
+	// The number of entries to return on each page. The maximum value is 100. If you specify a value greater than 100, the system either caps the page size at 100 or returns a parameter error.
 	//
 	// example:
 	//

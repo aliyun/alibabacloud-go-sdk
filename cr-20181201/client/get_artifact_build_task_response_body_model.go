@@ -34,36 +34,36 @@ type iGetArtifactBuildTaskResponseBody interface {
 }
 
 type GetArtifactBuildTaskResponseBody struct {
-	// The type of the artifact building task. Valid values:
+	// The artifact build type. Valid values:
 	//
-	// 	- `IMAGE_TO_ACCELERATED_IMAGE`: builds accelerated images for Container Service for Kubernetes (ACK) clusters.
+	// - `IMAGE_TO_ACCELERATED_IMAGE`: an accelerated image for ACK.
 	//
-	// 	- `IMAGE_TO_ECI_ACCELERATED_IMAGE`: builds accelerated images for elastic container instances.
+	// - `IMAGE_TO_ECI_ACCELERATED_IMAGE`: an accelerated image for ECI.
 	//
 	// example:
 	//
 	// IMAGE_TO_ACCELERATED_IMAGE
 	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
-	// The ID of the artifact building task.
+	// The ID of the artifact build task.
 	//
 	// example:
 	//
 	// i2a-1yu****
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
-	// The return value.
+	// The response code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the artifact building task ends.
+	// The Unix timestamp in seconds when the task ended.
 	//
 	// example:
 	//
-	// 156871880
+	// 1685415871
 	EndTime      *int32    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Instructions []*string `json:"Instructions,omitempty" xml:"Instructions,omitempty" type:"Repeated"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -75,25 +75,25 @@ type GetArtifactBuildTaskResponseBody struct {
 	//
 	// C4C7DD0C-C9D6-437A-A7EE-121EFD70D002
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the source artifact.
+	// The source artifact.
 	SourceArtifact *GetArtifactBuildTaskResponseBodySourceArtifact `json:"SourceArtifact,omitempty" xml:"SourceArtifact,omitempty" type:"Struct"`
-	// The time when the artifact building task starts.
+	// The Unix timestamp in seconds when the task started.
 	//
 	// example:
 	//
-	// 156871881
+	// 1685437471
 	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The artifact that is built in the task.
+	// The target artifact.
 	TargetArtifact *GetArtifactBuildTaskResponseBodyTargetArtifact `json:"TargetArtifact,omitempty" xml:"TargetArtifact,omitempty" type:"Struct"`
-	// The status of the artifact that is built in the task. Valid values:
+	// The status of the artifact build task. Valid values:
 	//
-	// 	- `PENDING`: The artifact is being scheduled.
+	// - `PENDING`: The task is being scheduled.
 	//
-	// 	- `BUILDING`: The artifact is being built.
+	// - `BUILDING`: The task is in progress.
 	//
-	// 	- `SUCCESS`: The artifact is built.
+	// - `SUCCESS`: The task is successful.
 	//
-	// 	- `FAILED`: The artifact fails to be built.
+	// - `FAILED`: The task failed.
 	//
 	// example:
 	//
@@ -223,19 +223,19 @@ func (s *GetArtifactBuildTaskResponseBody) Validate() error {
 }
 
 type GetArtifactBuildTaskResponseBodySourceArtifact struct {
-	// The type of the artifact that is built in the task. The value can only be IMAGE.
+	// The artifact type. Currently, only `IMAGE` is supported.
 	//
 	// example:
 	//
 	// IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The ID of the repository to which the source artifact belongs. The repository can only be an image repository.
+	// The repository ID. Currently, only image repositories are supported.
 	//
 	// example:
 	//
 	// cri-shac42yvqzvq****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The version of the artifact. The artifact can only be an image.
+	// The artifact version. Currently, only image versions are supported.
 	//
 	// example:
 	//
@@ -283,19 +283,19 @@ func (s *GetArtifactBuildTaskResponseBodySourceArtifact) Validate() error {
 }
 
 type GetArtifactBuildTaskResponseBodyTargetArtifact struct {
-	// The type of the artifact that is built in the task. The value can only be IMAGE.
+	// The artifact type. Currently, only `IMAGE` is supported.
 	//
 	// example:
 	//
 	// IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The ID of the repository to which the artifact that is built in the task belongs. The repository can only be an image repository. The value is the same as the ID of the repository to which the source artifact belongs.
+	// The repository ID. It must be the same as the repository ID of the source artifact. Only image repositories are supported.
 	//
 	// example:
 	//
 	// crr-1234567
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The version of the artifact that is built in the task. The artifact can only be an image.
+	// The artifact version. Currently, only image versions are supported.
 	//
 	// example:
 	//

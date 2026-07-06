@@ -26,13 +26,13 @@ type iListRepoSyncTaskResponseBody interface {
 }
 
 type ListRepoSyncTaskResponseBody struct {
-	// The HTTP status code.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful.
+	// Whether the request was successful.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListRepoSyncTaskResponseBody struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type ListRepoSyncTaskResponseBody struct {
 	//
 	// 7640819A-FB5B-4E25-A227-97717F62****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried synchronization tasks.
+	// A list of sync tasks.
 	SyncTasks []*ListRepoSyncTaskResponseBodySyncTasks `json:"SyncTasks,omitempty" xml:"SyncTasks,omitempty" type:"Repeated"`
-	// The total number of the queried synchronization tasks.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -151,105 +151,93 @@ func (s *ListRepoSyncTaskResponseBody) Validate() error {
 }
 
 type ListRepoSyncTaskResponseBodySyncTasks struct {
-	// The time when the synchronization task was created.
+	// The creation time of the task.
 	//
 	// example:
 	//
 	// 1572839126000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the synchronization task is performed across Alibaba Cloud accounts. Valid values:
+	// Whether the image is synchronized across accounts. Valid values:
 	//
-	// 	- `true`: The image synchronization task is performed across accounts.
+	// - `true`: The image is synchronized across accounts.
 	//
-	// 	- `false`: The image synchronization task is performed within the same account.
+	// - `false`: The image is synchronized within the same account.
 	//
-	// Default value: `false`.
+	// Default value: `false`
 	//
 	// example:
 	//
 	// true
 	CrossUser *bool `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
-	// Indicates whether a custom synchronization link is used.
+	// Whether a custom sync link is used.
 	//
 	// example:
 	//
 	// true
 	CustomLink *bool `json:"CustomLink,omitempty" xml:"CustomLink,omitempty"`
-	// The information about the source image.
+	// The source image.
 	ImageFrom *ListRepoSyncTaskResponseBodySyncTasksImageFrom `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
-	// The information about the destination image.
+	// The destination image.
 	ImageTo *ListRepoSyncTaskResponseBodySyncTasksImageTo `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
-	LinkId  *string                                       `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// The ID of the custom sync link.
+	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
 	// Deprecated
 	//
-	// The time when the synchronization task was last modified.
+	// This parameter is deprecated due to a typo. Use `ModifiedTime` instead.
 	//
 	// example:
 	//
 	// 1572839133000
-	ModifedTime  *int64 `json:"ModifedTime,omitempty" xml:"ModifedTime,omitempty"`
+	ModifedTime *int64 `json:"ModifedTime,omitempty" xml:"ModifedTime,omitempty"`
+	// The modification time of the task.
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the image synchronization batch tasks, which is the same as the value of SyncRecordId in the request.
+	// The ID of the batch sync task. This ID is the same as the sync record ID (`SyncRecordId`).
 	//
-	// >  If an image meets multiple synchronization rules and multiple synchronization tasks are generated for the image, these synchronization tasks use the same SyncBatchTaskId.
+	// > If an image matches multiple sync rules, multiple sync tasks are generated. These tasks share the same `SyncBatchTaskId`.
 	//
 	// example:
 	//
-	// 15DEEB56-9271-4FDD-AC4D-C3A5CC2C****
+	// 9d8ac4f6-8138-4c15-a2e3-60624ad3****
 	SyncBatchTaskId *string `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
-	// The ID of the synchronization rule.
+	// The ID of the sync rule.
 	//
 	// example:
 	//
 	// crsr-7lph66uloi6h****
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
-	// The ID of the synchronization task.
+	// The ID of the sync task.
 	//
 	// example:
 	//
 	// rst-4kfd7fk6pohk****
 	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
-	// Indicates whether the synchronization transfer acceleration feature is enabled for the synchronization task.
+	// Whether transfer acceleration is enabled for the sync task.
 	//
 	// example:
 	//
 	// true
 	SyncTransAccelerate *bool `json:"SyncTransAccelerate,omitempty" xml:"SyncTransAccelerate,omitempty"`
-	// The error message that is returned if the synchronization task fails.
+	// The task failure information.
 	//
-	// >  The system uses this parameter to return an error message if the synchronization task fails.
-	//
-	// Valid value:
-	//
-	// 	- OSS_POLICY_UNAUTHORIZED: Container Registry is not granted permissions to access Object Storage Service (OSS).
-	//
-	// 	- TAG_CONFLICT: The destination repository contains an image that has the same tag as the source image, and image tag immutability is enabled for the destination repository.
-	//
-	// 	- UNSUPPORTED_FORMAT: The manifest or config format of the image to be synchronized is not supported.
-	//
-	// 	- INTERNAL_ERROR: The synchronization task failed due to internal issues on the server.
-	//
-	// 	- NETWORK_ERROR: The synchronization task failed due to unstable network connection.
-	//
-	// 	- DATA_LENGTH_EXCEEDED: The manifest or config of the image is oversized.
+	// > If the sync task fails, this field returns details about the failure.
 	//
 	// example:
 	//
 	// NETWORK_ERROR
 	TaskIssue *string `json:"TaskIssue,omitempty" xml:"TaskIssue,omitempty"`
-	// The status of the synchronization task.
+	// The task status.
 	//
 	// example:
 	//
-	// SUCCESS
+	// ERROR
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The policy that is configured to trigger the synchronization task. Valid values:
+	// The trigger policy. Valid values:
 	//
-	// 	- `PASSIVE`: automatically triggers the synchronization task.
+	// - `PASSIVE`: The sync task is automatically triggered.
 	//
-	// 	- `INITIATIVE`: manually triggers the synchronization task.
+	// - `INITIATIVE`: The sync task is manually triggered.
 	//
-	// Default value: `PASSIVE`.
+	// Default value: `PASSIVE`
 	//
 	// example:
 	//
@@ -421,13 +409,13 @@ type ListRepoSyncTaskResponseBodySyncTasksImageFrom struct {
 	//
 	// v0.1
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// example:
 	//
@@ -439,7 +427,7 @@ type ListRepoSyncTaskResponseBodySyncTasksImageFrom struct {
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the repository belongs.
+	// The repository namespace.
 	//
 	// example:
 	//
@@ -511,13 +499,13 @@ type ListRepoSyncTaskResponseBodySyncTasksImageTo struct {
 	//
 	// v0.1
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// cri-k77rd2eo9zttneqo
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// example:
 	//
@@ -529,7 +517,7 @@ type ListRepoSyncTaskResponseBodySyncTasksImageTo struct {
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the repository belongs.
+	// The repository namespace.
 	//
 	// example:
 	//

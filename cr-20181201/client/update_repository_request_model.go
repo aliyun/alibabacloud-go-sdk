@@ -28,40 +28,64 @@ type iUpdateRepositoryRequest interface {
 }
 
 type UpdateRepositoryRequest struct {
+	// The repository description.
+	//
 	// example:
 	//
 	// repo-for-test
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The repository ID.
+	//
 	// example:
 	//
 	// crr-tquyps22md8p****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The repository name.
+	//
 	// example:
 	//
 	// dsp/domain-microapp
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the repository namespace.
+	//
 	// example:
 	//
 	// ejiayou-other
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+	// The repository type. Valid values:
+	//
+	// - `PUBLIC`: public repository
+	//
+	// - `PRIVATE`: private repository.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PUBLIC
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	// The summary.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test repo
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Specifies whether image tag immutability is enabled. Valid values:
+	//
+	// - `true`: enabled
+	//
+	// - `false`: disabled.
+	//
 	// example:
 	//
 	// true

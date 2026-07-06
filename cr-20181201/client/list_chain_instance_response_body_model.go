@@ -28,45 +28,45 @@ type iListChainInstanceResponseBody interface {
 }
 
 type ListChainInstanceResponseBody struct {
-	// The number of entries to return on each page.
+	// The list of delivery chain execution records.
 	ChainInstances []*ListChainInstanceResponseBodyChainInstances `json:"ChainInstances,omitempty" xml:"ChainInstances,omitempty" type:"Repeated"`
-	// The version of the delivery chain.
+	// The return value.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The page number of the page to return.
+	// The instance ID.
 	//
 	// example:
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The execution record of the delivery chain.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// 30
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Indicates whether the operation is successful.
+	// The page size.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the Container Registry instance.
+	// The request ID.
 	//
 	// example:
 	//
 	// 838D1602-6D8F-47FB-B60A-656645D2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the repository.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -168,61 +168,61 @@ func (s *ListChainInstanceResponseBody) Validate() error {
 }
 
 type ListChainInstanceResponseBodyChainInstances struct {
-	// The name of the namespace.
+	// The delivery chain execution record.
 	Chain *ListChainInstanceResponseBodyChainInstancesChain `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Struct"`
-	// 1
+	// The delivery chain instance ID.
 	//
 	// example:
 	//
 	// F4CF4DDB-BEF2-5575-****-*******
 	ChainInstanceId *string `json:"ChainInstanceId,omitempty" xml:"ChainInstanceId,omitempty"`
-	// The ID of the Container Registry instance.
+	// The end time.
 	//
 	// example:
 	//
 	// 1636685856000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the delivery chain.
+	// The repository name.
 	//
 	// example:
 	//
 	// test-repo
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The execution result of the delivery chain. Valid values:
-	//
-	// 	- `SUCCESS`
-	//
-	// 	- `FAILED`
-	//
-	// 	- `CANCELED`
-	//
-	// 	- `DENIED`
+	// The namespace.
 	//
 	// example:
 	//
 	// test-ns
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	// The list of the execution records of delivery chains.
+	// The execution result of the delivery chain. Valid values:
+	//
+	// - `SUCCESS`: Succeeded.
+	//
+	// - `FAILED`: Failed.
+	//
+	// - `CANCELED`: Canceled.
+	//
+	// - `DENIED`: Denied.
 	//
 	// example:
 	//
 	// SUCCESS
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// test-repo
+	// The start time.
 	//
 	// example:
 	//
 	// 1636685776000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the delivery chain. Valid values:
+	// The execution status of the delivery chain. Valid values:
 	//
-	// 	- `RUNNING`
+	// - `RUNNING`: Running.
 	//
-	// 	- `COMPLETE`
+	// - `COMPLETE`: Complete.
 	//
-	// 	- `CANCELING`
+	// - `CANCELING`: Canceling.
 	//
-	// 	- `CANCELED`
+	// - `CANCELED`: Canceled.
 	//
 	// example:
 	//
@@ -320,19 +320,19 @@ func (s *ListChainInstanceResponseBodyChainInstances) Validate() error {
 }
 
 type ListChainInstanceResponseBodyChainInstancesChain struct {
-	// The name of the namespace.
+	// The delivery chain ID.
 	//
 	// example:
 	//
 	// chi-m42gbku0****
 	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
-	// The number of entries returned on each page.
+	// The delivery chain name.
 	//
 	// example:
 	//
 	// test-chain
 	ChainName *string `json:"ChainName,omitempty" xml:"ChainName,omitempty"`
-	// The ID of the request.
+	// The delivery chain version.
 	//
 	// example:
 	//

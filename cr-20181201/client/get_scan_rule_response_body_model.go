@@ -20,17 +20,17 @@ type iGetScanRuleResponseBody interface {
 }
 
 type GetScanRuleResponseBody struct {
-	// Return value
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the API call was successful, valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// - `true`: The API call was successful
+	// - `true`: The API call is successful.
 	//
-	// - `false`: The API call failed
+	// - `false`: The API call failed.
 	//
 	// example:
 	//
@@ -112,17 +112,17 @@ type GetScanRuleResponseBodyScanRule struct {
 	//
 	// cri-szw6f6bhrky0c8jk
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Names of namespaces where the event is effective.
+	// The namespace names for which the event takes effect.
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	// Names of repositories where the event is effective.
+	// The repository names for which the event takes effect.
 	RepoNames []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
-	// Tag filter pattern for event triggering.
+	// The tag filtering rule that triggers the event.
 	//
 	// example:
 	//
 	// .*
 	RepoTagFilterPattern *string `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
-	// The event rule name.
+	// The name of the event rule.
 	//
 	// example:
 	//
@@ -140,23 +140,23 @@ type GetScanRuleResponseBodyScanRule struct {
 	//
 	// REPO
 	ScanScope *string `json:"ScanScope,omitempty" xml:"ScanScope,omitempty"`
-	// The vulnerability type:
+	// The vulnerability type. Valid values:
 	//
-	// - `cve`: System vulnerability
+	// - `cve`: system vulnerability
 	//
-	// - `sca`: Application vulnerability
+	// - `sca`: application vulnerability
 	//
 	// example:
 	//
 	// SBOM
 	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
-	// The trigger type, valid values:
+	// The trigger type. Valid values:
 	//
-	// - `ALL`: All triggers
+	// - `ALL`: all triggers
 	//
-	// - `TAG_LISTTAG`: Trigger
+	// - `TAG_LISTTAG`: tag trigger
 	//
-	// - `TAG_REG_EXP`: Expression trigger
+	// - `TAG_REG_EXP`: expression trigger
 	//
 	// example:
 	//

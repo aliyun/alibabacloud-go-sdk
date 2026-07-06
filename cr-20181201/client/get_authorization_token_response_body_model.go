@@ -24,19 +24,19 @@ type iGetAuthorizationTokenResponseBody interface {
 }
 
 type GetAuthorizationTokenResponseBody struct {
-	// The password that you use to log on to the registry.
+	// The password used to log on to the Registry.
 	//
 	// example:
 	//
 	// shaunadadakks:uuczxnjcyeyhdjadkkajsjdjadhyucb
 	AuthorizationToken *string `json:"AuthorizationToken,omitempty" xml:"AuthorizationToken,omitempty"`
-	// The HTTP status code.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The timestamp when the temporary token expired. Unit: milliseconds.
+	// The expiration timestamp of the temporary token, in milliseconds.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type GetAuthorizationTokenResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// E069EB86-E6AD-4A98-ADDE-0E993390239A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The username that you use to log on to the registry.
+	// The username used to log on to the Registry.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreateScanRuleResponseBody interface {
 }
 
 type CreateScanRuleResponseBody struct {
-	// The returned HTTP or HTTPS status code.
+	// The status code.
 	//
 	// example:
 	//

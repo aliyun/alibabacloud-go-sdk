@@ -22,17 +22,17 @@ type iGetRepoTagScanStatusResponseBody interface {
 }
 
 type GetRepoTagScanStatusResponseBody struct {
-	// The HTTP status code.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Specifies whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -44,25 +44,25 @@ type GetRepoTagScanStatusResponseBody struct {
 	//
 	// BC648259-91A7-4502-BED3-EDF64361FA83
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the scanning engine.
+	// The scan engine type. Valid values:
 	//
-	// 	- `ACR_SCAN_SERVICE`: Trivy scan engine provided by Container Registry
+	// - `ACR_SCAN_SERVICE`: the ACR Trivy scan engine.
 	//
-	// 	- `SAS_SCAN_SERVICE`: Security Center scan engine
+	// - `SAS_SCAN_SERVICE`: the Cloud Security scan engine.
 	//
 	// example:
 	//
 	// ACR_SCAN_SERVICE
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
-	// The scanning status of the image tag. Valid values:
+	// The scan status of the image. Valid values:
 	//
-	// 	- `SCANNING`: The image tag is being scanned.
+	// - `SCANNING`: The image is being scanned.
 	//
-	// 	- `COMPLETE`: The scanning of the image tag is complete.
+	// - `COMPLETE`: The scan is complete.
 	//
-	// 	- `FAILED`: The image tag failed to be scanned.
+	// - `FAILED`: The scan failed.
 	//
-	// 	- `RETRYING`: The system is retrying to scan the image tag.
+	// - `RETRYING`: The scan is being retried.
 	//
 	// example:
 	//

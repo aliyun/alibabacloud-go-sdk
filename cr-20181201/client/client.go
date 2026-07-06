@@ -25,6 +25,51 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":             dara.String("cr.us-west-1.aliyuncs.com"),
+		"us-southeast-1":        dara.String("cr.us-southeast-1.aliyuncs.com"),
+		"us-east-1":             dara.String("cr.us-east-1.aliyuncs.com"),
+		"na-south-1":            dara.String("cr.na-south-1.aliyuncs.com"),
+		"me-east-1":             dara.String("cr.me-east-1.aliyuncs.com"),
+		"me-central-1":          dara.String("cr.me-central-1.aliyuncs.com"),
+		"eu-west-2":             dara.String("cr.eu-west-2.aliyuncs.com"),
+		"eu-west-1":             dara.String("cr.eu-west-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("cr.eu-central-1.aliyuncs.com"),
+		"cn-zhongwei":           dara.String("cr.cn-zhongwei.aliyuncs.com"),
+		"cn-zhengzhou-jva":      dara.String("cr.cn-zhengzhou-jva.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("cr.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu-gic-1":   dara.String("cr.cn-wulanchabu-gic-1.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("cr.cn-wulanchabu.aliyuncs.com"),
+		"cn-wuhan-lr":           dara.String("cr.cn-wuhan-lr.aliyuncs.com"),
+		"cn-shenzhen-finance-1": dara.String("cr.cn-shenzhen-finance-1.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("cr.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("cr.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai":           dara.String("cr.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":            dara.String("cr.cn-qingdao.aliyuncs.com"),
+		"cn-north-2-gov-1":      dara.String("cr.cn-north-2-gov-1.aliyuncs.com"),
+		"cn-nanjing":            dara.String("cr.cn-nanjing.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("cr.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":           dara.String("cr.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan-acdr-1":      dara.String("cr.cn-heyuan-acdr-1.aliyuncs.com"),
+		"cn-heyuan":             dara.String("cr.cn-heyuan.aliyuncs.com"),
+		"cn-hangzhou-finance":   dara.String("cr.cn-hangzhou-finance.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("cr.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("cr.cn-guangzhou.aliyuncs.com"),
+		"cn-fuzhou":             dara.String("cr.cn-fuzhou.aliyuncs.com"),
+		"cn-chengdu":            dara.String("cr.cn-chengdu.aliyuncs.com"),
+		"cn-beijing-finance-1":  dara.String("cr.cn-beijing-finance-1.aliyuncs.com"),
+		"cn-beijing":            dara.String("cr.cn-beijing.aliyuncs.com"),
+		"ap-southeast-8":        dara.String("cr.ap-southeast-8.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("cr.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-6":        dara.String("cr.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("cr.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("cr.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-2":        dara.String("cr.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("cr.ap-southeast-1.aliyuncs.com"),
+		"ap-south-1":            dara.String("cr.ap-south-1.aliyuncs.com"),
+		"ap-northeast-2":        dara.String("cr.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("cr.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -1066,20 +1111,26 @@ func (client *Client) CreateChartRepository(request *CreateChartRepositoryReques
 
 // Summary:
 //
-// Creates a whitelist policy for the public endpoint of the instance.
+// Creates a whitelist policy for an instance access endpoint (public network only).
 //
-// @param request - CreateInstanceEndpointAclPolicyRequest
+// @param tmpReq - CreateInstanceEndpointAclPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateInstanceEndpointAclPolicyResponse
-func (client *Client) CreateInstanceEndpointAclPolicyWithOptions(request *CreateInstanceEndpointAclPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceEndpointAclPolicyResponse, _err error) {
+func (client *Client) CreateInstanceEndpointAclPolicyWithOptions(tmpReq *CreateInstanceEndpointAclPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceEndpointAclPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &CreateInstanceEndpointAclPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Entries) {
+		request.EntriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Entries, dara.String("Entries"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
 		query["Comment"] = request.Comment
@@ -1087,6 +1138,10 @@ func (client *Client) CreateInstanceEndpointAclPolicyWithOptions(request *Create
 
 	if !dara.IsNil(request.EndpointType) {
 		query["EndpointType"] = request.EndpointType
+	}
+
+	if !dara.IsNil(request.EntriesShrink) {
+		query["Entries"] = request.EntriesShrink
 	}
 
 	if !dara.IsNil(request.Entry) {
@@ -1126,7 +1181,7 @@ func (client *Client) CreateInstanceEndpointAclPolicyWithOptions(request *Create
 
 // Summary:
 //
-// Creates a whitelist policy for the public endpoint of the instance.
+// Creates a whitelist policy for an instance access endpoint (public network only).
 //
 // @param request - CreateInstanceEndpointAclPolicyRequest
 //
@@ -1230,7 +1285,7 @@ func (client *Client) CreateInstanceVpcEndpointLinkedVpc(request *CreateInstance
 
 // Summary:
 //
-// Creates a namespace of image repositories.
+// Creates a repository namespace.
 //
 // @param tmpReq - CreateNamespaceRequest
 //
@@ -1296,7 +1351,7 @@ func (client *Client) CreateNamespaceWithOptions(tmpReq *CreateNamespaceRequest,
 
 // Summary:
 //
-// Creates a namespace of image repositories.
+// Creates a repository namespace.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -1612,7 +1667,7 @@ func (client *Client) CreateRepoSyncRule(request *CreateRepoSyncRuleRequest) (_r
 
 // Summary:
 //
-// Manually creates an image synchronization task.
+// Manually create a sync task.
 //
 // @param request - CreateRepoSyncTaskRequest
 //
@@ -1692,7 +1747,7 @@ func (client *Client) CreateRepoSyncTaskWithOptions(request *CreateRepoSyncTaskR
 
 // Summary:
 //
-// Manually creates an image synchronization task.
+// Manually create a sync task.
 //
 // @param request - CreateRepoSyncTaskRequest
 //
@@ -1862,7 +1917,7 @@ func (client *Client) CreateRepoTag(request *CreateRepoTagRequest) (_result *Cre
 
 // Summary:
 //
-// Creates an image scan task.
+// Creates a security scan task for an image.
 //
 // @param request - CreateRepoTagScanTaskRequest
 //
@@ -1926,7 +1981,7 @@ func (client *Client) CreateRepoTagScanTaskWithOptions(request *CreateRepoTagSca
 
 // Summary:
 //
-// Creates an image scan task.
+// Creates a security scan task for an image.
 //
 // @param request - CreateRepoTagScanTaskRequest
 //
@@ -2224,7 +2279,7 @@ func (client *Client) CreateScanRule(request *CreateScanRuleRequest) (_result *C
 //
 // Description:
 //
-// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param tmpReq - CreateStorageDomainRoutingRuleRequest
 //
@@ -2282,7 +2337,7 @@ func (client *Client) CreateStorageDomainRoutingRuleWithOptions(tmpReq *CreateSt
 //
 // Description:
 //
-// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param request - CreateStorageDomainRoutingRuleRequest
 //
@@ -2650,7 +2705,7 @@ func (client *Client) DeleteChartRelease(request *DeleteChartReleaseRequest) (_r
 
 // Summary:
 //
-// Deletes a chart repository from an instance.
+// Deletes a chart repository.
 //
 // @param request - DeleteChartRepositoryRequest
 //
@@ -2702,7 +2757,7 @@ func (client *Client) DeleteChartRepositoryWithOptions(request *DeleteChartRepos
 
 // Summary:
 //
-// Deletes a chart repository from an instance.
+// Deletes a chart repository.
 //
 // @param request - DeleteChartRepositoryRequest
 //
@@ -2786,23 +2841,33 @@ func (client *Client) DeleteEventCenterRule(request *DeleteEventCenterRuleReques
 
 // Summary:
 //
-// Deletes a whitelist policy for the public endpoint of an instance.
+// Deletes a whitelist policy from the public access endpoint of an instance.
 //
-// @param request - DeleteInstanceEndpointAclPolicyRequest
+// @param tmpReq - DeleteInstanceEndpointAclPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteInstanceEndpointAclPolicyResponse
-func (client *Client) DeleteInstanceEndpointAclPolicyWithOptions(request *DeleteInstanceEndpointAclPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceEndpointAclPolicyResponse, _err error) {
+func (client *Client) DeleteInstanceEndpointAclPolicyWithOptions(tmpReq *DeleteInstanceEndpointAclPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceEndpointAclPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &DeleteInstanceEndpointAclPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Entries) {
+		request.EntriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Entries, dara.String("Entries"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndpointType) {
 		query["EndpointType"] = request.EndpointType
+	}
+
+	if !dara.IsNil(request.EntriesShrink) {
+		query["Entries"] = request.EntriesShrink
 	}
 
 	if !dara.IsNil(request.Entry) {
@@ -2842,7 +2907,7 @@ func (client *Client) DeleteInstanceEndpointAclPolicyWithOptions(request *Delete
 
 // Summary:
 //
-// Deletes a whitelist policy for the public endpoint of an instance.
+// Deletes a whitelist policy from the public access endpoint of an instance.
 //
 // @param request - DeleteInstanceEndpointAclPolicyRequest
 //
@@ -3370,7 +3435,7 @@ func (client *Client) DeleteRepository(request *DeleteRepositoryRequest) (_resul
 //
 // Description:
 //
-// Deletes a scan rule.
+// 删除扫描规则。
 //
 // @param request - DeleteScanRuleRequest
 //
@@ -3422,7 +3487,7 @@ func (client *Client) DeleteScanRuleWithOptions(request *DeleteScanRuleRequest, 
 //
 // Description:
 //
-// Deletes a scan rule.
+// 删除扫描规则。
 //
 // @param request - DeleteScanRuleRequest
 //
@@ -3444,7 +3509,7 @@ func (client *Client) DeleteScanRule(request *DeleteScanRuleRequest) (_result *D
 //
 // Description:
 //
-// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param request - DeleteStorageDomainRoutingRuleRequest
 //
@@ -3496,7 +3561,7 @@ func (client *Client) DeleteStorageDomainRoutingRuleWithOptions(request *DeleteS
 //
 // Description:
 //
-// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param request - DeleteStorageDomainRoutingRuleRequest
 //
@@ -3572,7 +3637,7 @@ func (client *Client) GetArtifactBuildRule(request *GetArtifactBuildRuleRequest)
 
 // Summary:
 //
-// Queries the details of an artifact building task.
+// Retrieves the details of an artifact build task.
 //
 // @param request - GetArtifactBuildTaskRequest
 //
@@ -3612,7 +3677,7 @@ func (client *Client) GetArtifactBuildTaskWithOptions(request *GetArtifactBuildT
 
 // Summary:
 //
-// Queries the details of an artifact building task.
+// Retrieves the details of an artifact build task.
 //
 // @param request - GetArtifactBuildTaskRequest
 //
@@ -3630,7 +3695,7 @@ func (client *Client) GetArtifactBuildTask(request *GetArtifactBuildTaskRequest)
 
 // Summary:
 //
-// Queries the lifecycle management rules of an artifact.
+// Lists artifact lifecycle management rules.
 //
 // @param request - GetArtifactLifecycleRuleRequest
 //
@@ -3670,7 +3735,7 @@ func (client *Client) GetArtifactLifecycleRuleWithOptions(request *GetArtifactLi
 
 // Summary:
 //
-// Queries the lifecycle management rules of an artifact.
+// Lists artifact lifecycle management rules.
 //
 // @param request - GetArtifactLifecycleRuleRequest
 //
@@ -3688,7 +3753,7 @@ func (client *Client) GetArtifactLifecycleRule(request *GetArtifactLifecycleRule
 
 // Summary:
 //
-// Queries the information about an artifact subscription rule.
+// Retrieves the details of an artifact subscription rule.
 //
 // @param request - GetArtifactSubscriptionRuleRequest
 //
@@ -3728,7 +3793,7 @@ func (client *Client) GetArtifactSubscriptionRuleWithOptions(request *GetArtifac
 
 // Summary:
 //
-// Queries the information about an artifact subscription rule.
+// Retrieves the details of an artifact subscription rule.
 //
 // @param request - GetArtifactSubscriptionRuleRequest
 //
@@ -3862,17 +3927,17 @@ func (client *Client) GetArtifactSubscriptionTaskResult(request *GetArtifactSubs
 
 // Summary:
 //
-// Queries a pair of temporary username and password that you use to log on to a Container Registry instance.
+// Retrieves a temporary account and temporary password for logging on to an instance.
 //
 // Description:
 //
-// The validity period of the temporary password is 1 hour. If you use STS to request a token, the validity period of the temporary password is the same as the validity period of the STS token.
+// The temporary password is valid for 1 hour. If you use STS to make the request, the validity period of the temporary password is the same as that of the STS token used in the request.
 //
-//   - If you log on to an instance by using the temporary password obtained through an Alibaba Cloud account, you have the same permissions on resources as the user of the Alibaba Cloud account.
+// - The permissions granted by a temporary token obtained through an Alibaba Cloud account are the same as the permissions granted when you log on to the instance with the username and password of the Alibaba Cloud account.
 //
-//   - If you log on to an instance by using the temporary password obtained through a RAM user, you have the same permissions as the RAM user.
+// - The permissions granted by a temporary token obtained through a RAM user are the same as the permissions granted when you log on to the instance with the username and password of the RAM user.
 //
-//   - If you log on to an instance by using the temporary password obtained through STS, you have the same permissions as the STS token.
+// - The permissions granted by a temporary token obtained through STS are the same as the permissions of the STS token.
 //
 // @param request - GetAuthorizationTokenRequest
 //
@@ -3916,17 +3981,17 @@ func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorization
 
 // Summary:
 //
-// Queries a pair of temporary username and password that you use to log on to a Container Registry instance.
+// Retrieves a temporary account and temporary password for logging on to an instance.
 //
 // Description:
 //
-// The validity period of the temporary password is 1 hour. If you use STS to request a token, the validity period of the temporary password is the same as the validity period of the STS token.
+// The temporary password is valid for 1 hour. If you use STS to make the request, the validity period of the temporary password is the same as that of the STS token used in the request.
 //
-//   - If you log on to an instance by using the temporary password obtained through an Alibaba Cloud account, you have the same permissions on resources as the user of the Alibaba Cloud account.
+// - The permissions granted by a temporary token obtained through an Alibaba Cloud account are the same as the permissions granted when you log on to the instance with the username and password of the Alibaba Cloud account.
 //
-//   - If you log on to an instance by using the temporary password obtained through a RAM user, you have the same permissions as the RAM user.
+// - The permissions granted by a temporary token obtained through a RAM user are the same as the permissions granted when you log on to the instance with the username and password of the RAM user.
 //
-//   - If you log on to an instance by using the temporary password obtained through STS, you have the same permissions as the STS token.
+// - The permissions granted by a temporary token obtained through STS are the same as the permissions of the STS token.
 //
 // @param request - GetAuthorizationTokenRequest
 //
@@ -3944,7 +4009,7 @@ func (client *Client) GetAuthorizationToken(request *GetAuthorizationTokenReques
 
 // Summary:
 //
-// Obtains the information of a delivery chain to understand the node execution sequence of the delivery chain.
+// Obtain the delivery chain definition to understand the execution order of edge zones in the delivery chain.
 //
 // @param request - GetChainRequest
 //
@@ -3992,7 +4057,7 @@ func (client *Client) GetChainWithOptions(request *GetChainRequest, runtime *dar
 
 // Summary:
 //
-// Obtains the information of a delivery chain to understand the node execution sequence of the delivery chain.
+// Obtain the delivery chain definition to understand the execution order of edge zones in the delivery chain.
 //
 // @param request - GetChainRequest
 //
@@ -4146,7 +4211,7 @@ func (client *Client) GetChartRepository(request *GetChartRepositoryRequest) (_r
 
 // Summary:
 //
-// The ID of the resource group to which the instance belongs.
+// Query instance information.
 //
 // @param request - GetInstanceRequest
 //
@@ -4190,7 +4255,7 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 
 // Summary:
 //
-// The ID of the resource group to which the instance belongs.
+// Query instance information.
 //
 // @param request - GetInstanceRequest
 //
@@ -4208,7 +4273,7 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 
 // Summary:
 //
-// Queries the number of instances.
+// Queries the number of instances of a user.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -4237,7 +4302,7 @@ func (client *Client) GetInstanceCountWithOptions(runtime *dara.RuntimeOptions) 
 
 // Summary:
 //
-// Queries the number of instances.
+// Queries the number of instances of a user.
 //
 // @return GetInstanceCountResponse
 func (client *Client) GetInstanceCount() (_result *GetInstanceCountResponse, _err error) {
@@ -4451,7 +4516,7 @@ func (client *Client) GetInstanceVpcEndpoint(request *GetInstanceVpcEndpointRequ
 
 // Summary:
 //
-// Queries the information about a namespace.
+// Retrieves information about a namespace.
 //
 // @param request - GetNamespaceRequest
 //
@@ -4503,7 +4568,7 @@ func (client *Client) GetNamespaceWithOptions(request *GetNamespaceRequest, runt
 
 // Summary:
 //
-// Queries the information about a namespace.
+// Retrieves information about a namespace.
 //
 // @param request - GetNamespaceRequest
 //
@@ -4797,7 +4862,7 @@ func (client *Client) GetRepoSyncTask(request *GetRepoSyncTaskRequest) (_result 
 
 // Summary:
 //
-// Queries the information about an image tag.
+// Retrieve information about a single image tag.
 //
 // @param request - GetRepoTagRequest
 //
@@ -4837,7 +4902,7 @@ func (client *Client) GetRepoTagWithOptions(request *GetRepoTagRequest, runtime 
 
 // Summary:
 //
-// Queries the information about an image tag.
+// Retrieve information about a single image tag.
 //
 // @param request - GetRepoTagRequest
 //
@@ -4855,7 +4920,7 @@ func (client *Client) GetRepoTag(request *GetRepoTagRequest) (_result *GetRepoTa
 
 // Summary:
 //
-// Queries the scanning status of an image tag.
+// Retrieves the scan status of a specific image tag.
 //
 // @param request - GetRepoTagScanStatusRequest
 //
@@ -4919,7 +4984,7 @@ func (client *Client) GetRepoTagScanStatusWithOptions(request *GetRepoTagScanSta
 
 // Summary:
 //
-// Queries the scanning status of an image tag.
+// Retrieves the scan status of a specific image tag.
 //
 // @param request - GetRepoTagScanStatusRequest
 //
@@ -4937,7 +5002,7 @@ func (client *Client) GetRepoTagScanStatus(request *GetRepoTagScanStatusRequest)
 
 // Summary:
 //
-// Queries the number of vulnerabilities for each severity level. These vulnerabilities are detected in a security scan that is created for an image version.
+// Obtain the number of scan results for an image version.
 //
 // @param request - GetRepoTagScanSummaryRequest
 //
@@ -4997,7 +5062,7 @@ func (client *Client) GetRepoTagScanSummaryWithOptions(request *GetRepoTagScanSu
 
 // Summary:
 //
-// Queries the number of vulnerabilities for each severity level. These vulnerabilities are detected in a security scan that is created for an image version.
+// Obtain the number of scan results for an image version.
 //
 // @param request - GetRepoTagScanSummaryRequest
 //
@@ -5089,11 +5154,11 @@ func (client *Client) GetRepository(request *GetRepositoryRequest) (_result *Get
 
 // Summary:
 //
-// Queries a scan rule.
+// Retrieves a scan rule.
 //
 // Description:
 //
-// Get scan rule.
+// Retrieves a scan rule.
 //
 // @param request - GetScanRuleRequest
 //
@@ -5141,11 +5206,11 @@ func (client *Client) GetScanRuleWithOptions(request *GetScanRuleRequest, runtim
 
 // Summary:
 //
-// Queries a scan rule.
+// Retrieves a scan rule.
 //
 // Description:
 //
-// Get scan rule.
+// Retrieves a scan rule.
 //
 // @param request - GetScanRuleRequest
 //
@@ -5163,11 +5228,11 @@ func (client *Client) GetScanRule(request *GetScanRuleRequest) (_result *GetScan
 
 // Summary:
 //
-// # Queries instance storage domain routing rules
+// Retrieves the instance storage domain name routing list.
 //
 // Description:
 //
-// This API is open to a whitelist. Please [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) for support.
+// This API is available through whitelist access. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to obtain support.
 //
 // @param request - GetStorageDomainRoutingRuleRequest
 //
@@ -5215,11 +5280,11 @@ func (client *Client) GetStorageDomainRoutingRuleWithOptions(request *GetStorage
 
 // Summary:
 //
-// # Queries instance storage domain routing rules
+// Retrieves the instance storage domain name routing list.
 //
 // Description:
 //
-// This API is open to a whitelist. Please [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) for support.
+// This API is available through whitelist access. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to obtain support.
 //
 // @param request - GetStorageDomainRoutingRuleRequest
 //
@@ -5295,7 +5360,7 @@ func (client *Client) ListArtifactBuildTaskLog(request *ListArtifactBuildTaskLog
 
 // Summary:
 //
-// Queries the lifecycle management rules of an artifact.
+// Lists artifact lifecycle management rules.
 //
 // @param request - ListArtifactLifecycleRuleRequest
 //
@@ -5335,7 +5400,7 @@ func (client *Client) ListArtifactLifecycleRuleWithOptions(request *ListArtifact
 
 // Summary:
 //
-// Queries the lifecycle management rules of an artifact.
+// Lists artifact lifecycle management rules.
 //
 // @param request - ListArtifactLifecycleRuleRequest
 //
@@ -5353,7 +5418,7 @@ func (client *Client) ListArtifactLifecycleRule(request *ListArtifactLifecycleRu
 
 // Summary:
 //
-// Lists the subscription rules of artifacts.
+// List artifact subscription rules.
 //
 // @param request - ListArtifactSubscriptionRuleRequest
 //
@@ -5393,7 +5458,7 @@ func (client *Client) ListArtifactSubscriptionRuleWithOptions(request *ListArtif
 
 // Summary:
 //
-// Lists the subscription rules of artifacts.
+// List artifact subscription rules.
 //
 // @param request - ListArtifactSubscriptionRuleRequest
 //
@@ -5547,7 +5612,7 @@ func (client *Client) ListChain(request *ListChainRequest) (_result *ListChainRe
 
 // Summary:
 //
-// Queries execution records of delivery chains.
+// Queries the execution records of a delivery chain.
 //
 // @param request - ListChainInstanceRequest
 //
@@ -5607,7 +5672,7 @@ func (client *Client) ListChainInstanceWithOptions(request *ListChainInstanceReq
 
 // Summary:
 //
-// Queries execution records of delivery chains.
+// Queries the execution records of a delivery chain.
 //
 // @param request - ListChainInstanceRequest
 //
@@ -5983,7 +6048,7 @@ func (client *Client) ListEventCenterRuleName(request *ListEventCenterRuleNameRe
 
 // Summary:
 //
-// Queries Container Registry instances.
+// Queries a list of instances.
 //
 // @param request - ListInstanceRequest
 //
@@ -6043,7 +6108,7 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runt
 
 // Summary:
 //
-// Queries Container Registry instances.
+// Queries a list of instances.
 //
 // @param request - ListInstanceRequest
 //
@@ -6193,7 +6258,7 @@ func (client *Client) ListInstanceRegion(request *ListInstanceRegionRequest) (_r
 
 // Summary:
 //
-// Queries namespaces in a Container Registry instance.
+// Lists namespaces.
 //
 // @param request - ListNamespaceRequest
 //
@@ -6253,7 +6318,7 @@ func (client *Client) ListNamespaceWithOptions(request *ListNamespaceRequest, ru
 
 // Summary:
 //
-// Queries namespaces in a Container Registry instance.
+// Lists namespaces.
 //
 // @param request - ListNamespaceRequest
 //
@@ -6419,7 +6484,7 @@ func (client *Client) ListRepoBuildRecordLog(request *ListRepoBuildRecordLogRequ
 
 // Summary:
 //
-// Queries image building rules of a repository.
+// Lists the build rules of an image repository.
 //
 // @param request - ListRepoBuildRuleRequest
 //
@@ -6475,7 +6540,7 @@ func (client *Client) ListRepoBuildRuleWithOptions(request *ListRepoBuildRuleReq
 
 // Summary:
 //
-// Queries image building rules of a repository.
+// Lists the build rules of an image repository.
 //
 // @param request - ListRepoBuildRuleRequest
 //
@@ -6493,7 +6558,7 @@ func (client *Client) ListRepoBuildRule(request *ListRepoBuildRuleRequest) (_res
 
 // Summary:
 //
-// Queries image synchronization rules of a repository.
+// Returns a list of repository synchronization rules.
 //
 // @param request - ListRepoSyncRuleRequest
 //
@@ -6561,7 +6626,7 @@ func (client *Client) ListRepoSyncRuleWithOptions(request *ListRepoSyncRuleReque
 
 // Summary:
 //
-// Queries image synchronization rules of a repository.
+// Returns a list of repository synchronization rules.
 //
 // @param request - ListRepoSyncRuleRequest
 //
@@ -6579,7 +6644,7 @@ func (client *Client) ListRepoSyncRule(request *ListRepoSyncRuleRequest) (_resul
 
 // Summary:
 //
-// Queries image synchronization tasks in an image repository.
+// Lists repository synchronization tasks.
 //
 // @param request - ListRepoSyncTaskRequest
 //
@@ -6647,7 +6712,7 @@ func (client *Client) ListRepoSyncTaskWithOptions(request *ListRepoSyncTaskReque
 
 // Summary:
 //
-// Queries image synchronization tasks in an image repository.
+// Lists repository synchronization tasks.
 //
 // @param request - ListRepoSyncTaskRequest
 //
@@ -6907,7 +6972,7 @@ func (client *Client) ListRepoTrigger(request *ListRepoTriggerRequest) (_result 
 
 // Summary:
 //
-// Queries image repositories.
+// Query the image repository list.
 //
 // @param request - ListRepositoryRequest
 //
@@ -6971,7 +7036,7 @@ func (client *Client) ListRepositoryWithOptions(request *ListRepositoryRequest, 
 
 // Summary:
 //
-// Queries image repositories.
+// Query the image repository list.
 //
 // @param request - ListRepositoryRequest
 //
@@ -7125,7 +7190,7 @@ func (client *Client) ListScanMaliciousFileByTask(request *ListScanMaliciousFile
 //
 // Description:
 //
-// Lists the scan rules.
+// 列举扫描规则。
 //
 // @param request - ListScanRuleRequest
 //
@@ -7169,7 +7234,7 @@ func (client *Client) ListScanRuleWithOptions(request *ListScanRuleRequest, runt
 //
 // Description:
 //
-// Lists the scan rules.
+// 列举扫描规则。
 //
 // @param request - ListScanRuleRequest
 //
@@ -7188,6 +7253,14 @@ func (client *Client) ListScanRule(request *ListScanRuleRequest) (_result *ListS
 // Summary:
 //
 // Queries the tags that are added to cloud resources. Instance resources are supported.
+//
+// Description:
+//
+// - 请求中ResourceId.N 及 (Tag.N.Key,Tag.N.Value) 至少存在一个，以确定检索对象。
+//
+// - Tag.N是资源的标签，由一个键值对组成。仅指定Tag.N.Key时，则返回该标签键关联的所有标签值。仅指定Tag.N.Value会报错。
+//
+// - ResourceId.N需满足所有输入的键值对。当输入多个键值对，查询结果为资源中包含指定多个键值对的资源。
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7248,6 +7321,14 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 // Summary:
 //
 // Queries the tags that are added to cloud resources. Instance resources are supported.
+//
+// Description:
+//
+// - 请求中ResourceId.N 及 (Tag.N.Key,Tag.N.Value) 至少存在一个，以确定检索对象。
+//
+// - Tag.N是资源的标签，由一个键值对组成。仅指定Tag.N.Key时，则返回该标签键关联的所有标签值。仅指定Tag.N.Value会报错。
+//
+// - ResourceId.N需满足所有输入的键值对。当输入多个键值对，查询结果为资源中包含指定多个键值对的资源。
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7333,6 +7414,10 @@ func (client *Client) ResetLoginPassword(request *ResetLoginPasswordRequest) (_r
 //
 // Adds tags to resources. Instance resources are supported.
 //
+// Description:
+//
+// 单个实例最多可绑定 20 条标签。绑定标签前，阿里云会校验资源已有标签数量，超过限制值会返回报错信息。
+//
 // @param request - TagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7388,6 +7473,10 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 // Summary:
 //
 // Adds tags to resources. Instance resources are supported.
+//
+// Description:
+//
+// 单个实例最多可绑定 20 条标签。绑定标签前，阿里云会校验资源已有标签数量，超过限制值会返回报错信息。
 //
 // @param request - TagResourcesRequest
 //
@@ -8465,7 +8554,7 @@ func (client *Client) UpdateRepoTrigger(request *UpdateRepoTriggerRequest) (_res
 
 // Summary:
 //
-// The ID of the request.
+// Updates repository information.
 //
 // @param request - UpdateRepositoryRequest
 //
@@ -8537,7 +8626,7 @@ func (client *Client) UpdateRepositoryWithOptions(request *UpdateRepositoryReque
 
 // Summary:
 //
-// The ID of the request.
+// Updates repository information.
 //
 // @param request - UpdateRepositoryRequest
 //
@@ -8559,7 +8648,7 @@ func (client *Client) UpdateRepository(request *UpdateRepositoryRequest) (_resul
 //
 // Description:
 //
-// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// This API is available through whitelist access. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to request access.
 //
 // @param tmpReq - UpdateScanRuleRequest
 //
@@ -8645,7 +8734,7 @@ func (client *Client) UpdateScanRuleWithOptions(tmpReq *UpdateScanRuleRequest, r
 //
 // Description:
 //
-// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// This API is available through whitelist access. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to request access.
 //
 // @param request - UpdateScanRuleRequest
 //
@@ -8667,7 +8756,7 @@ func (client *Client) UpdateScanRule(request *UpdateScanRuleRequest) (_result *U
 //
 // Description:
 //
-// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param tmpReq - UpdateStorageDomainRoutingRuleRequest
 //
@@ -8729,7 +8818,7 @@ func (client *Client) UpdateStorageDomainRoutingRuleWithOptions(tmpReq *UpdateSt
 //
 // Description:
 //
-// The whitelist of this API operation is available. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param request - UpdateStorageDomainRoutingRuleRequest
 //

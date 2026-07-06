@@ -32,9 +32,9 @@ type ListInstanceResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried instances.
+	// The instance information.
 	Instances []*ListInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// Indicates whether the request is successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListInstanceResponseBody struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Default value: 30.
+	// The page size. Default value: 30.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListInstanceResponseBody struct {
 	//
 	// A2A9BA68-B264-4953-9154-CE61B1C03BA6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *ListInstanceResponseBody) Validate() error {
 }
 
 type ListInstanceResponseBodyInstances struct {
-	// The time when the instance was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -163,43 +163,51 @@ type ListInstanceResponseBodyInstances struct {
 	//
 	// cri-sgedpenzw80e****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The issue occurs on the instance.
+	// The instance issue.
 	//
 	// example:
 	//
-	// oss bucket already exists
+	// 实例问题，取值：
+	//
+	// OSS_TOO_MANY_BUCKETS：OSS Bucket 数量超限
+	//
+	// OSS_BUCKET_ALREADY_EXISTS：同名 OSS Bucket 已存在
+	//
+	// OSS_SERVICE_ROLE_UNAUTHORIZED：OSS 权限未授权
+	//
+	// USER_NOT_REGISTERED_BY_REAL_NAME：国际站账号在购买中国站 OSS Bucket 时未进行实名认证
 	InstanceIssue *string `json:"InstanceIssue,omitempty" xml:"InstanceIssue,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The edition of the Container Registry Enterprise Edition instance.
+	// The Enterprise Edition specification.
 	//
 	// example:
 	//
 	// Enterprise_Basic
 	InstanceSpecification *string `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
-	// The status of the instance.
+	// The instance status.
 	//
 	// example:
 	//
 	// RUNNING
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The time when the instance was last modified.
+	// The last modification time.
 	//
 	// example:
 	//
 	// 1562849760000
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The resource group ID.
 	//
 	// example:
 	//

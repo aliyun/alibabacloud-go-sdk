@@ -189,7 +189,7 @@ type ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles struct {
 	//
 	// example:
 	//
-	// Suspected to contain Webshell code
+	// 疑似含有Webshell代码
 	MaliciousName *string `json:"MaliciousName,omitempty" xml:"MaliciousName,omitempty"`
 	// The ID of the image scan task.
 	//

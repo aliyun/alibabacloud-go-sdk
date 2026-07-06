@@ -22,7 +22,7 @@ type iListNamespaceRequest interface {
 }
 
 type ListNamespaceRequest struct {
-	// The instance ID.
+	// The ID of the Container Registry (ACR) instance.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ListNamespaceRequest struct {
 	//
 	// cri-94klsruryslx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The namespace name.
+	// The name of the namespace.
 	//
 	// example:
 	//
@@ -38,9 +38,9 @@ type ListNamespaceRequest struct {
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	// The status of the namespace. Valid values:
 	//
-	// 	- `NORMAL`
+	// - `NORMAL`: The namespace is normal.
 	//
-	// 	- `DELETING`
+	// - `DELETING`: The namespace is being deleted.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListNamespaceRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//

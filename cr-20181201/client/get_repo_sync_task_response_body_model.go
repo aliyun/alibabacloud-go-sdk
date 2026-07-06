@@ -146,7 +146,7 @@ type GetRepoSyncTaskResponseBody struct {
 	//
 	// example:
 	//
-	// null
+	// PASSIVE
 	TaskTrigger *string `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
 }
 

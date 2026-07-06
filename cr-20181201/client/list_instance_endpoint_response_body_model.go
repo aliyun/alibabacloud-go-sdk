@@ -239,7 +239,7 @@ type ListInstanceEndpointResponseBodyEndpointsAclEntries struct {
 	//
 	// example:
 	//
-	// null
+	// 127.0.0.1
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
@@ -318,7 +318,7 @@ type ListInstanceEndpointResponseBodyEndpointsLinkedVpcs struct {
 	//
 	// example:
 	//
-	// null
+	// vpc-bp1b1xjllp3ve5yze****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 

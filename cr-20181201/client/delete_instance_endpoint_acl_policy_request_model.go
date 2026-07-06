@@ -11,6 +11,8 @@ type iDeleteInstanceEndpointAclPolicyRequest interface {
 	GoString() string
 	SetEndpointType(v string) *DeleteInstanceEndpointAclPolicyRequest
 	GetEndpointType() *string
+	SetEntries(v []*AccessControlEntry) *DeleteInstanceEndpointAclPolicyRequest
+	GetEntries() []*AccessControlEntry
 	SetEntry(v string) *DeleteInstanceEndpointAclPolicyRequest
 	GetEntry() *string
 	SetInstanceId(v string) *DeleteInstanceEndpointAclPolicyRequest
@@ -20,23 +22,24 @@ type iDeleteInstanceEndpointAclPolicyRequest interface {
 }
 
 type DeleteInstanceEndpointAclPolicyRequest struct {
-	// The type of the endpoint. Set the value to Internet.
+	// The endpoint type. Only Internet is supported.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// internet
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The CIDR block.
+	EndpointType *string               `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	Entries      []*AccessControlEntry `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
+	// Deprecated
 	//
-	// This parameter is required.
+	// The IP CIDR block.
 	//
 	// example:
 	//
 	// 127.0.0.1/32
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,11 +47,11 @@ type DeleteInstanceEndpointAclPolicyRequest struct {
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the module that you want to access. Valid values:
+	// The module for which the access policy is set. Valid values:
 	//
-	// 	- `Registry`: the image repository.
+	// - `Registry`: access to the image repository
 	//
-	// 	- `Chart`: a Helm chart.
+	// - `Chart`: access to Helm Chart
 	//
 	// example:
 	//
@@ -68,6 +71,10 @@ func (s *DeleteInstanceEndpointAclPolicyRequest) GetEndpointType() *string {
 	return s.EndpointType
 }
 
+func (s *DeleteInstanceEndpointAclPolicyRequest) GetEntries() []*AccessControlEntry {
+	return s.Entries
+}
+
 func (s *DeleteInstanceEndpointAclPolicyRequest) GetEntry() *string {
 	return s.Entry
 }
@@ -82,6 +89,11 @@ func (s *DeleteInstanceEndpointAclPolicyRequest) GetModuleName() *string {
 
 func (s *DeleteInstanceEndpointAclPolicyRequest) SetEndpointType(v string) *DeleteInstanceEndpointAclPolicyRequest {
 	s.EndpointType = &v
+	return s
+}
+
+func (s *DeleteInstanceEndpointAclPolicyRequest) SetEntries(v []*AccessControlEntry) *DeleteInstanceEndpointAclPolicyRequest {
+	s.Entries = v
 	return s
 }
 
@@ -101,5 +113,14 @@ func (s *DeleteInstanceEndpointAclPolicyRequest) SetModuleName(v string) *Delete
 }
 
 func (s *DeleteInstanceEndpointAclPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Entries != nil {
+		for _, item := range s.Entries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

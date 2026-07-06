@@ -28,7 +28,7 @@ type iCreateScanRuleRequest interface {
 }
 
 type CreateScanRuleRequest struct {
-	// The instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,25 +36,25 @@ type CreateScanRuleRequest struct {
 	//
 	// cri-dqwc**********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of namespaces.
+	// The collection of namespaces.
 	//
-	// 	- When the scan scope is NAMESPACE, this parameter cannot be empty.
+	// - If the scan scope is set to NAMESPACE, this parameter cannot be empty.
 	//
-	// 	- If the scan scope is REPO, you must specify a unique Namespace for this parameter.
+	// - If the scan scope is set to REPO, this parameter must contain exactly one namespace.
 	//
 	// if can be null:
 	// true
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 	// The list of repositories.
 	//
-	// 	- When the scan scope is NAMESPACE, this parameter must be empty.
+	// - If the scan scope is set to NAMESPACE, this parameter must be empty.
 	//
-	// 	- When the scan scope is REPO, this parameter cannot be empty.
+	// - If the scan scope is set to REPO, this parameter cannot be empty.
 	//
 	// if can be null:
 	// true
 	RepoNames []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
-	// The tag that triggers the scan matches the regular expression
+	// The regular expression used to match tags that trigger a scan.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CreateScanRuleRequest struct {
 	//
 	// .*
 	RepoTagFilterPattern *string `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
-	// The rule name
+	// The rule name.
 	//
 	// This parameter is required.
 	//
@@ -70,13 +70,7 @@ type CreateScanRuleRequest struct {
 	//
 	// default
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The scan scope
-	//
-	// Valid values:
-	//
-	// 	- NAMESPACE: namespace.
-	//
-	// 	- REPO: repository.
+	// The scan scope.
 	//
 	// This parameter is required.
 	//
@@ -86,23 +80,17 @@ type CreateScanRuleRequest struct {
 	ScanScope *string `json:"ScanScope,omitempty" xml:"ScanScope,omitempty"`
 	// The scan type. Valid values:
 	//
-	// 	- `VUL`: Products Cloud Security Scanner
+	// - `VUL`: cloud native artifact vulnerability scanning.
 	//
-	// 	- `SBOM`: Product Content Analysis
+	// - `SBOM`: cloud native artifact content analysis.
 	//
-	// Default value: `VUL`
+	// Default value: `VUL`.
 	//
 	// example:
 	//
 	// VUL
 	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
-	// Trigger type
-	//
-	// Valid values:
-	//
-	// 	- AUTO: automatically trigger.
-	//
-	// 	- MANUAL: manually trigger.
+	// The trigger type.
 	//
 	// This parameter is required.
 	//

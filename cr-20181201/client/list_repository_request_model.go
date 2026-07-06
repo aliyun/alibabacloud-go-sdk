@@ -56,6 +56,16 @@ type ListRepositoryRequest struct {
 	//
 	// repo-namespace-test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+	// Repository status. Valid values:
+	//
+	// - `NORMAL`: Normal.
+	//
+	// - `DELETING`: Deleting.
+	//
+	// - `DELETED`: Deleted.
+	//
+	// - `ALL`: All repository statuses.
+	//
 	// example:
 	//
 	// ALL

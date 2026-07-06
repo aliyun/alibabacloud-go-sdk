@@ -58,13 +58,13 @@ type ListRepoSyncRuleRequest struct {
 	//
 	// test-repo
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The ID of the destination instance.
+	// The ID of the target instance.
 	//
 	// example:
 	//
 	// cri-k77rd2eo9ztt****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The region ID of the destination instance.
+	// The ID of the target region.
 	//
 	// example:
 	//

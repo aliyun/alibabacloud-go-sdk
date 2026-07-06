@@ -42,6 +42,12 @@ type GetArtifactBuildRuleResponseBody struct {
 	//
 	// crabr-o2670wqz2n70****
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	// The API return code:
+	//
+	// - **200**: Indicates success.
+	//
+	// - Others: Indicate error codes.
+	//
 	// example:
 	//
 	// success

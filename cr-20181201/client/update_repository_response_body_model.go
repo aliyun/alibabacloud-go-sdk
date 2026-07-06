@@ -18,14 +18,20 @@ type iUpdateRepositoryResponseBody interface {
 }
 
 type UpdateRepositoryResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CC43EC6B-0DD4-40AE-8811-B0519617051A

@@ -108,7 +108,7 @@ type ListInstanceRegionResponseBodyRegions struct {
 	//
 	// example:
 	//
-	// China (Shenzhen)
+	// 华南1（深圳）
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The ID of the region.
 	//

@@ -16,7 +16,7 @@ type iGetArtifactLifecycleRuleRequest interface {
 }
 
 type GetArtifactLifecycleRuleRequest struct {
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetArtifactLifecycleRuleRequest struct {
 	//
 	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// This parameter is required.
 	//

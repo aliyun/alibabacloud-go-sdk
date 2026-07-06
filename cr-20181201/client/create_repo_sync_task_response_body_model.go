@@ -20,18 +20,30 @@ type iCreateRepoSyncTaskResponseBody interface {
 }
 
 type CreateRepoSyncTaskResponseBody struct {
+	// Return value
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the invocation succeeded. Valid values:
+	//
+	// - `true`: The invocation succeeded.
+	//
+	// - `false`: Failed to invoke.
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 8F8A0BA6-7F06-4BAE-B147-10BD6A25****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Sync task ID
+	//
 	// example:
 	//
 	// rst-gbch330f0c****

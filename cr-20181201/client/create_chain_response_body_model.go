@@ -20,25 +20,25 @@ type iCreateChainResponseBody interface {
 }
 
 type CreateChainResponseBody struct {
-	// The ID of the delivery chain.
+	// The delivery chain ID.
 	//
 	// example:
 	//
 	// chi-02ymhtwl3cq8****
 	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

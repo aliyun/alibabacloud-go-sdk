@@ -46,6 +46,8 @@ type GetRepoTagScanSummaryResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// Number of low-severity vulnerabilities
+	//
 	// example:
 	//
 	// 89

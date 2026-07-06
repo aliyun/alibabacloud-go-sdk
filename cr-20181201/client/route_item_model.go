@@ -24,26 +24,14 @@ type RouteItem struct {
 	//
 	// if can be null:
 	// false
-	//
-	// example:
-	//
-	// Internet
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	// Instance Domain
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test-instance-registry-vpc.cn-hangzhou.cr.aliyuncs.com
 	InstanceDomain *string `json:"InstanceDomain,omitempty" xml:"InstanceDomain,omitempty"`
 	// OSS Domain
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// https://cri-cfafawer***-registry.oss-cn-hangzhou.aliyuncs.com
 	StorageDomain *string `json:"StorageDomain,omitempty" xml:"StorageDomain,omitempty"`
 }
 

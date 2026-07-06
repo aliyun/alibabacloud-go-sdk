@@ -34,13 +34,13 @@ type iGetNamespaceResponseBody interface {
 }
 
 type GetNamespaceResponseBody struct {
-	// Indicates whether a repository is automatically created when an image is pushed to the namespace.
+	// Indicates whether automatic repository creation is enabled.
 	//
 	// example:
 	//
 	// true
 	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
-	// The return value.
+	// The response code.
 	//
 	// example:
 	//
@@ -49,23 +49,23 @@ type GetNamespaceResponseBody struct {
 	DefaultRepoConfiguration *RepoConfiguration `json:"DefaultRepoConfiguration,omitempty" xml:"DefaultRepoConfiguration,omitempty"`
 	// Deprecated
 	//
-	// The default type of repositories in the namespace. Valid values:
+	// The default repository type. Valid values:
 	//
-	// 	- PUBLIC: public repositories.
+	// - `PUBLIC`: a public repository
 	//
-	// 	- PRIVATE: private repositories.
+	// - `PRIVATE`: a private repository
 	//
 	// example:
 	//
 	// PUBLIC
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	// The ID of the Container Registry instance.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request succeeded.
 	//
 	// example:
 	//
@@ -83,11 +83,11 @@ type GetNamespaceResponseBody struct {
 	//
 	// test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The status of the namespace.
+	// The status of the namespace. Valid values:
 	//
-	// 	- NORMAL
+	// - `NORMAL`: The namespace is running as expected.
 	//
-	// 	- DELETING
+	// - `DELETING`: The namespace is being deleted.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type GetNamespaceResponseBody struct {
 	//
 	// E4BC9E21-8AA5-4582-83C1-C1209AB8196F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the namespace belongs.
+	// The ID of the resource group.
 	//
 	// example:
 	//

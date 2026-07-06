@@ -156,10 +156,22 @@ func (s *ListScanBaselineByTaskResponseBody) Validate() error {
 
 type ListScanBaselineByTaskResponseBodyScanBaselines struct {
 	// The category to which the baseline risk belongs.
+	//
+	// example:
+	//
+	// 服务配置
 	BaselineClassAlias *string `json:"BaselineClassAlias,omitempty" xml:"BaselineClassAlias,omitempty"`
 	// Suggestions about how to fix the baseline risk.
+	//
+	// example:
+	//
+	// 建议对ak混淆加密，避免被利用
 	BaselineDetailAdvice *string `json:"BaselineDetailAdvice,omitempty" xml:"BaselineDetailAdvice,omitempty"`
 	// The description of the baseline risk.
+	//
+	// example:
+	//
+	// Access Key明文存储
 	BaselineDetailDescription *string `json:"BaselineDetailDescription,omitempty" xml:"BaselineDetailDescription,omitempty"`
 	// The path and content of the baseline risk.
 	//
@@ -174,6 +186,10 @@ type ListScanBaselineByTaskResponseBodyScanBaselines struct {
 	// 1
 	BaselineItemCount *int32 `json:"BaselineItemCount,omitempty" xml:"BaselineItemCount,omitempty"`
 	// The name of the baseline risk.
+	//
+	// example:
+	//
+	// 服务配置
 	BaselineNameAlias *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
 	// The key of the baseline name.
 	//

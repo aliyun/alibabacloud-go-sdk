@@ -26,7 +26,7 @@ type iGetStorageDomainRoutingRuleResponseBody interface {
 }
 
 type GetStorageDomainRoutingRuleResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type GetStorageDomainRoutingRuleResponseBody struct {
 	//
 	// crsdr-luq6qiegzvx****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// Indicates whether the request is successful.
+	// The request status identifier.
 	//
 	// example:
 	//

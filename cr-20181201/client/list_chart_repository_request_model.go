@@ -66,7 +66,7 @@ type ListChartRepositoryRequest struct {
 	//
 	// example:
 	//
-	// ALL
+	// NORMAL
 	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
 }
 

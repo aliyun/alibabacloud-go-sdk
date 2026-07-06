@@ -32,58 +32,82 @@ type iCreateRepoSyncTaskRequest interface {
 }
 
 type CreateRepoSyncTaskRequest struct {
+	// Source instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to overwrite an existing image:
+	//
+	// - `true`: Overwrite the existing image.
+	//
+	// - `false`: Do not overwrite the existing image.
+	//
 	// example:
 	//
 	// true
 	Override *bool `json:"Override,omitempty" xml:"Override,omitempty"`
+	// Image repository ID in the source instance
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// crr-iql7jalx4g0****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// Image tag in the source instance
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tag1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Target instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cri-ibxs3piklys3****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	// Namespace in the target instance
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ns1
 	TargetNamespace *string `json:"TargetNamespace,omitempty" xml:"TargetNamespace,omitempty"`
+	// Region ID of the target instance
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	TargetRegionId *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
+	// Name of the image repository in the target instance
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// repo1
 	TargetRepoName *string `json:"TargetRepoName,omitempty" xml:"TargetRepoName,omitempty"`
+	// Image tag in the target instance
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tag1
 	TargetTag *string `json:"TargetTag,omitempty" xml:"TargetTag,omitempty"`
+	// UID of the account to which the target instance belongs
+	//
 	// example:
 	//
 	// 12345***

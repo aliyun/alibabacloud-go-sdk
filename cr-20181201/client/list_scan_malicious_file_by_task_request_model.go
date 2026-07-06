@@ -44,7 +44,7 @@ type ListScanMaliciousFileByTaskRequest struct {
 	//
 	// example:
 	//
-	// High
+	// serious、suspicious、remind
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The page number.
 	//

@@ -18,7 +18,7 @@ type iDeleteChartRepositoryRequest interface {
 }
 
 type DeleteChartRepositoryRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteChartRepositoryRequest struct {
 	//
 	// cri-xkx6vujuhay****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteChartRepositoryRequest struct {
 	//
 	// repo01
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the repository belongs.
+	// The namespace name.
 	//
 	// This parameter is required.
 	//

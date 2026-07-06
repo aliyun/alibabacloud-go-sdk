@@ -38,48 +38,72 @@ type iGetChainResponseBody interface {
 }
 
 type GetChainResponseBody struct {
+	// Delivery chain configuration description
 	ChainConfig *GetChainResponseBodyChainConfig `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty" type:"Struct"`
+	// Delivery chain ID
+	//
 	// example:
 	//
 	// chi-0ops0gsmw5x2****
 	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	// Return code
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Delivery chain creation time
+	//
 	// example:
 	//
 	// 1638255427000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Delivery chain description
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// cri-4cdrlqmhn4gm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// Updated At of the delivery chain description
+	//
 	// example:
 	//
 	// 1638259914000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// Delivery chain name
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// C87993B5-7D61-5CAC-8D64-1AC732DD69FF
-	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Collection of repositories excluded from delivery chain execution
 	ScopeExclude []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
+	// Delivery chain scope ID
+	//
 	// example:
 	//
 	// crr-nyrh2oko32xb****
 	ScopeId *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	// Delivery chain scope type
+	//
 	// example:
 	//
 	// REPOSITORY
@@ -221,16 +245,28 @@ func (s *GetChainResponseBody) Validate() error {
 }
 
 type GetChainResponseBodyChainConfig struct {
+	// Delivery chain configuration ID
+	//
 	// example:
 	//
 	// cci-lz3ycgo69ukt****
 	ChainConfigId *string `json:"ChainConfigId,omitempty" xml:"ChainConfigId,omitempty"`
+	// Indicates whether the delivery chain configuration is active. Valid values:
+	//
+	// - `true`: The configuration is active.
+	//
+	// - `false`: The configuration is not active.
+	//
 	// example:
 	//
 	// true
-	IsActive *bool                                     `json:"IsActive,omitempty" xml:"IsActive,omitempty"`
-	Nodes    []*GetChainResponseBodyChainConfigNodes   `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Routers  []*GetChainResponseBodyChainConfigRouters `json:"Routers,omitempty" xml:"Routers,omitempty" type:"Repeated"`
+	IsActive *bool `json:"IsActive,omitempty" xml:"IsActive,omitempty"`
+	// Each edge zone in the delivery chain
+	Nodes []*GetChainResponseBodyChainConfigNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// Execution order relationships between edge zones in the delivery chain
+	Routers []*GetChainResponseBodyChainConfigRouters `json:"Routers,omitempty" xml:"Routers,omitempty" type:"Repeated"`
+	// Delivery chain version
+	//
 	// example:
 	//
 	// 1
@@ -313,11 +349,20 @@ func (s *GetChainResponseBodyChainConfig) Validate() error {
 }
 
 type GetChainResponseBodyChainConfigNodes struct {
+	// Indicates whether to enable the delivery chain edge zone. Valid values:
+	//
+	// - `true`: Enable the delivery chain edge zone.
+	//
+	// - `false`: Do not enable the delivery chain edge zone.
+	//
 	// example:
 	//
 	// true
-	Enable     *bool                                           `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Delivery chain edge zone configuration
 	NodeConfig *GetChainResponseBodyChainConfigNodesNodeConfig `json:"NodeConfig,omitempty" xml:"NodeConfig,omitempty" type:"Struct"`
+	// Delivery chain edge zone name
+	//
 	// example:
 	//
 	// VULNERABILITY_SCANNING
@@ -369,16 +414,30 @@ func (s *GetChainResponseBodyChainConfigNodes) Validate() error {
 }
 
 type GetChainResponseBodyChainConfigNodesNodeConfig struct {
+	// Deny rules for scan nodes in the delivery chain
 	DenyPolicy *GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy `json:"DenyPolicy,omitempty" xml:"DenyPolicy,omitempty" type:"Struct"`
+	// Retry Count
+	//
 	// example:
 	//
 	// 3
 	Retry *int32 `json:"Retry,omitempty" xml:"Retry,omitempty"`
+	// Scan engine for the delivery chain node
+	//
+	// - `SAS_SCAN_SERVICE`, Security Center scan engine (requires paid activation)
+	//
+	// - `ACR_SCAN_SERVICE`, ACR scan engine
+	//
 	// example:
 	//
 	// ACR_SCAN_SERVICE
 	ScanEngine *string `json:"ScanEngine,omitempty" xml:"ScanEngine,omitempty"`
-	Timeout    *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// Timeout (in seconds)
+	//
+	// example:
+	//
+	// 900
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s GetChainResponseBodyChainConfigNodesNodeConfig) String() string {
@@ -435,30 +494,50 @@ func (s *GetChainResponseBodyChainConfigNodesNodeConfig) Validate() error {
 }
 
 type GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy struct {
+	// Deny action. Valid values:
+	//
+	// - `BLOCK`: Block further execution of the delivery chain
+	//
+	// - `BLOCK_RETAG`: Block overwriting and pushing image tags
+	//
+	// - `BLOCK_DELETE_TAG`: Block deleting image tags
+	//
 	// example:
 	//
 	// BLOCK
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// Collection of baseline samples to block. Separate multiple baseline sample names with commas.
+	//
 	// example:
 	//
 	// identification,hc_image_exploit
 	BaselineList *string `json:"BaselineList,omitempty" xml:"BaselineList,omitempty"`
+	// Number of scanned vulnerabilities that triggers a block
+	//
 	// example:
 	//
 	// 10
 	IssueCount *string `json:"IssueCount,omitempty" xml:"IssueCount,omitempty"`
+	// The vulnerability Level at which blocking is triggered during a scan
+	//
 	// example:
 	//
 	// HIGH
 	IssueLevel *string `json:"IssueLevel,omitempty" xml:"IssueLevel,omitempty"`
+	// Collection of CVE vulnerabilities to block. Separate multiple CVE vulnerability names with commas.
+	//
 	// example:
 	//
 	// CVE-2020-8286,CVE-2020-8285
 	IssueList *string `json:"IssueList,omitempty" xml:"IssueList,omitempty"`
+	// The logic that triggers blocking upon scan detection
+	//
 	// example:
 	//
 	// AND
 	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The collection of malicious samples to block, with multiple sample names separated by commas
+	//
 	// example:
 	//
 	// mutate_cockhorse,abnormal_program
@@ -541,8 +620,10 @@ func (s *GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy) Validate() er
 }
 
 type GetChainResponseBodyChainConfigRouters struct {
+	// source edge zone
 	From *GetChainResponseBodyChainConfigRoutersFrom `json:"From,omitempty" xml:"From,omitempty" type:"Struct"`
-	To   *GetChainResponseBodyChainConfigRoutersTo   `json:"To,omitempty" xml:"To,omitempty" type:"Struct"`
+	// destination edge zone
+	To *GetChainResponseBodyChainConfigRoutersTo `json:"To,omitempty" xml:"To,omitempty" type:"Struct"`
 }
 
 func (s GetChainResponseBodyChainConfigRouters) String() string {
@@ -586,6 +667,8 @@ func (s *GetChainResponseBodyChainConfigRouters) Validate() error {
 }
 
 type GetChainResponseBodyChainConfigRoutersFrom struct {
+	// source edge zone name
+	//
 	// example:
 	//
 	// DOCKER_IMAGE_BUILD
@@ -614,6 +697,8 @@ func (s *GetChainResponseBodyChainConfigRoutersFrom) Validate() error {
 }
 
 type GetChainResponseBodyChainConfigRoutersTo struct {
+	// destination edge zone name
+	//
 	// example:
 	//
 	// DOCKER_IMAGE_PUSH

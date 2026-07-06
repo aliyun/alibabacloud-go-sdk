@@ -13,6 +13,8 @@ type iCreateInstanceEndpointAclPolicyRequest interface {
 	GetComment() *string
 	SetEndpointType(v string) *CreateInstanceEndpointAclPolicyRequest
 	GetEndpointType() *string
+	SetEntries(v []*AccessControlEntry) *CreateInstanceEndpointAclPolicyRequest
+	GetEntries() []*AccessControlEntry
 	SetEntry(v string) *CreateInstanceEndpointAclPolicyRequest
 	GetEntry() *string
 	SetInstanceId(v string) *CreateInstanceEndpointAclPolicyRequest
@@ -22,29 +24,32 @@ type iCreateInstanceEndpointAclPolicyRequest interface {
 }
 
 type CreateInstanceEndpointAclPolicyRequest struct {
+	// Deprecated
+	//
 	// The description.
 	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The type of the endpoint. Set the value to Internet.
+	// The endpoint type. Only Internet is supported.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// internet
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The CIDR block that is accessible.
+	EndpointType *string               `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	Entries      []*AccessControlEntry `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
+	// Deprecated
 	//
-	// This parameter is required.
+	// The IP address range that is allowed to access the instance.
 	//
 	// example:
 	//
 	// 192.168.1.1/32
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -52,11 +57,11 @@ type CreateInstanceEndpointAclPolicyRequest struct {
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the module that you want to access. Valid values:
+	// The module for which you want to set the access policy. Valid values:
 	//
-	// 	- `Registry`: the image repository.
+	// - `Registry`: access the image repository
 	//
-	// 	- `Chart`: a Helm chart.
+	// - `Chart`: access Helm Chart
 	//
 	// example:
 	//
@@ -78,6 +83,10 @@ func (s *CreateInstanceEndpointAclPolicyRequest) GetComment() *string {
 
 func (s *CreateInstanceEndpointAclPolicyRequest) GetEndpointType() *string {
 	return s.EndpointType
+}
+
+func (s *CreateInstanceEndpointAclPolicyRequest) GetEntries() []*AccessControlEntry {
+	return s.Entries
 }
 
 func (s *CreateInstanceEndpointAclPolicyRequest) GetEntry() *string {
@@ -102,6 +111,11 @@ func (s *CreateInstanceEndpointAclPolicyRequest) SetEndpointType(v string) *Crea
 	return s
 }
 
+func (s *CreateInstanceEndpointAclPolicyRequest) SetEntries(v []*AccessControlEntry) *CreateInstanceEndpointAclPolicyRequest {
+	s.Entries = v
+	return s
+}
+
 func (s *CreateInstanceEndpointAclPolicyRequest) SetEntry(v string) *CreateInstanceEndpointAclPolicyRequest {
 	s.Entry = &v
 	return s
@@ -118,5 +132,14 @@ func (s *CreateInstanceEndpointAclPolicyRequest) SetModuleName(v string) *Create
 }
 
 func (s *CreateInstanceEndpointAclPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Entries != nil {
+		for _, item := range s.Entries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
