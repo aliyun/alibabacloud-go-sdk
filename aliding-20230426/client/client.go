@@ -25292,6 +25292,105 @@ func (client *Client) SetRowsVisibility(request *SetRowsVisibilityRequest) (_res
 
 // Summary:
 //
+// 强制登出企业账号
+//
+// @param tmpReq - SignOutOrgAccountRequest
+//
+// @param tmpHeader - SignOutOrgAccountHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SignOutOrgAccountResponse
+func (client *Client) SignOutOrgAccountWithOptions(tmpReq *SignOutOrgAccountRequest, tmpHeader *SignOutOrgAccountHeaders, runtime *dara.RuntimeOptions) (_result *SignOutOrgAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SignOutOrgAccountShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &SignOutOrgAccountShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ReasonI18nForEmployee) {
+		request.ReasonI18nForEmployeeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReasonI18nForEmployee, dara.String("ReasonI18nForEmployee"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Reason) {
+		body["Reason"] = request.Reason
+	}
+
+	if !dara.IsNil(request.ReasonI18nForEmployeeShrink) {
+		body["ReasonI18nForEmployee"] = request.ReasonI18nForEmployeeShrink
+	}
+
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SignOutOrgAccount"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/contact/signOutOrgAccount"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SignOutOrgAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 强制登出企业账号
+//
+// @param request - SignOutOrgAccountRequest
+//
+// @return SignOutOrgAccountResponse
+func (client *Client) SignOutOrgAccount(request *SignOutOrgAccountRequest) (_result *SignOutOrgAccountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &SignOutOrgAccountHeaders{}
+	_result = &SignOutOrgAccountResponse{}
+	_body, _err := client.SignOutOrgAccountWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取用户发送日志的概要信息
 //
 // @param tmpReq - SimpleListReportRequest
