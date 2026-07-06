@@ -16,13 +16,13 @@ type iCreatePipelineRunResponseBody interface {
 }
 
 type CreatePipelineRunResponseBody struct {
-	// The ID of the process.
+	// The unique identifier of the publish process.
 	//
 	// example:
 	//
 	// a7ef0634-20ec-4a7c-a214-54020f91XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iImportWorkflowDefinitionResponseBody interface {
 }
 
 type ImportWorkflowDefinitionResponseBody struct {
-	// The status information of the asynchronous task.
+	// The asynchronous task status information.
 	AsyncJob *ImportWorkflowDefinitionResponseBodyAsyncJob `json:"AsyncJob,omitempty" xml:"AsyncJob,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type ImportWorkflowDefinitionResponseBodyAsyncJob struct {
 	//
 	// false
 	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
-	// The time when the asynchronous task was created. This value is a UNIX timestamp.
+	// The timestamp when the asynchronous task was created.
 	//
 	// example:
 	//
 	// 1706581425000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error message returned if the asynchronous task fails.
+	// The error message returned when the asynchronous task fails.
 	//
 	// example:
 	//
@@ -92,9 +92,9 @@ type ImportWorkflowDefinitionResponseBodyAsyncJob struct {
 	//
 	// 0
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The response.
+	// The content that the asynchronous task is expected to return.
 	//
-	// > The workflow ID is returned.
+	// > This field currently contains the ID of the workflow created by the asynchronous task.
 	//
 	// example:
 	//
@@ -104,25 +104,25 @@ type ImportWorkflowDefinitionResponseBodyAsyncJob struct {
 	//
 	// Valid values:
 	//
-	// - Running: The asynchronous task is running.
+	// - Running: The task is running.
 	//
-	// - Success: The asynchronous task is complete.
+	// - Success: The task succeeded.
 	//
-	// - Fail: The asynchronous task fails.
+	// - Fail: The task failed.
 	//
-	// - Cancel: The asynchronous task is canceled.
+	// - Cancel: The task was canceled.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the asynchronous task.
+	// The operation type of the asynchronous task.
 	//
 	// Valid values:
 	//
-	// - Create: The asynchronous task is used to create an object.
+	// - Create: creates a resource.
 	//
-	// - Cancel: The asynchronous task is used to cancel an operation.
+	// - Cancel: cancels a creation job.
 	//
 	// example:
 	//

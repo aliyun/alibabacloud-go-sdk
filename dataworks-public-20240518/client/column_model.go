@@ -25,6 +25,8 @@ type iColumn interface {
 	GetPosition() *int32
 	SetPrimaryKey(v bool) *Column
 	GetPrimaryKey() *bool
+	SetStatisticsInfos(v map[string]*string) *Column
+	GetStatisticsInfos() map[string]*string
 	SetTableId(v string) *Column
 	GetTableId() *string
 	SetType(v string) *Column
@@ -32,7 +34,7 @@ type iColumn interface {
 }
 
 type Column struct {
-	// Business metadata.
+	// The business metadata.
 	BusinessMetadata *ColumnBusinessMetadata `json:"BusinessMetadata,omitempty" xml:"BusinessMetadata,omitempty" type:"Struct"`
 	// The comment.
 	//
@@ -40,7 +42,7 @@ type Column struct {
 	//
 	// 字段1
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Indicates whether the field is a foreign key. Only MaxCompute supports this property.
+	// Indicates whether the column is a foreign key. Currently, only MaxCompute is supported.
 	//
 	// example:
 	//
@@ -48,13 +50,13 @@ type Column struct {
 	ForeignKey *bool `json:"ForeignKey,omitempty" xml:"ForeignKey,omitempty"`
 	// The ID. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
 	//
-	// The format is `${EntityType}:${instance ID or URL-encoded connection string}:${data catalog identifier}:${database name}:${schema name}:${table name}:${field name}`. Use an empty string for any level that does not exist.
+	// The format is `${EntityType}:${instance ID or encoded URL}:${DataCatalogIdentity}:${DatabaseName}:${PatternName}:${TableName}:${ColumnName}`. Use an empty character as a placeholder for levels that do not exist.
 	//
-	// > For MaxCompute and DLF types, use an empty string for the instance ID. For MaxCompute, the database name is the MaxCompute project name. If the project uses the three-layer model, provide the schema name. Otherwise, use an empty string for the schema name.
+	// > For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID. For MaxCompute, the database name is the MaxCompute project name. Projects with the three-layer model enabled must include the schema name. For projects without the three-layer model enabled, use an empty string as a placeholder for the schema name.
 	//
-	// > For StarRocks, the data catalog identifier is the catalog name. For DLF, it is the catalog ID. Other types do not support the catalog level, so use an empty string.
+	// > For StarRocks, the data catalog identifier is the catalog name. For DLF, the data catalog identifier is the catalog ID. Other types do not support the catalog level, and you can use an empty string as a placeholder.
 	//
-	// Examples of common ID formats:
+	// The following examples show the ID formats for several common types:
 	//
 	// `maxcompute-column:::project_name:[schema_name]:table_name:column_name`
 	//
@@ -66,23 +68,23 @@ type Column struct {
 	//
 	// `mysql-column:(instance_id|encoded_jdbc_url)::database_name::table_name:column_name`
 	//
-	// > Where:<br>
+	// > Where
 	//
-	// > `instance_id`: The instance ID, required when the data source is registered in instance mode.<br>
+	// `instance_id`: The instance ID. This is required when the data source is registered in instance mode.
 	//
-	// > `encoded_jdbc_url`: The URL-encoded JDBC connection string, required when the data source is registered using a connection string.<br>
+	// `encoded_jdbc_url`: The URL-encoded JDBC connection string. This is required when the data source is registered by using a connection string.
 	//
-	// > `catalog_id`: The DLF catalog ID.<br>
+	// `catalog_id`: The DLF catalog ID.
 	//
-	// > `project_name`: The MaxCompute project name.<br>
+	// `project_name`: The MaxCompute project name.
 	//
-	// > `database_name`: The database name.<br>
+	// `database_name`: The database name.
 	//
-	// > `schema_name`: The schema name. For MaxCompute, provide this only if the project uses the three-layer model. Otherwise, use an empty string.<br>
+	// `schema_name`: The schema name. For MaxCompute, this is required only when the three-layer model is enabled for the project. If the three-layer model is not enabled, use an empty string as a placeholder.
 	//
-	// > `table_name`: The table name.<br>
+	// `table_name`: The table name.
 	//
-	// > `column_name`: The field name.<br><br><br><br><br><br><br><br>
+	// `column_name`: The column name.
 	//
 	// example:
 	//
@@ -94,7 +96,7 @@ type Column struct {
 	//
 	// column_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the field is a partition key.
+	// Indicates whether the column is a partition key.
 	//
 	// example:
 	//
@@ -106,13 +108,14 @@ type Column struct {
 	//
 	// 1
 	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// Indicates whether the field is a primary key. Only MaxCompute supports this property.
+	// Indicates whether the column is a primary key. Currently, only MaxCompute is supported.
 	//
 	// example:
 	//
 	// false
-	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The table ID. For details, see the `Table` object.
+	PrimaryKey      *bool              `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	StatisticsInfos map[string]*string `json:"StatisticsInfos,omitempty" xml:"StatisticsInfos,omitempty"`
+	// The table ID. For more information, see the `Table` object.
 	//
 	// example:
 	//
@@ -166,6 +169,10 @@ func (s *Column) GetPrimaryKey() *bool {
 	return s.PrimaryKey
 }
 
+func (s *Column) GetStatisticsInfos() map[string]*string {
+	return s.StatisticsInfos
+}
+
 func (s *Column) GetTableId() *string {
 	return s.TableId
 }
@@ -214,6 +221,11 @@ func (s *Column) SetPrimaryKey(v bool) *Column {
 	return s
 }
 
+func (s *Column) SetStatisticsInfos(v map[string]*string) *Column {
+	s.StatisticsInfos = v
+	return s
+}
+
 func (s *Column) SetTableId(v string) *Column {
 	s.TableId = &v
 	return s
@@ -234,9 +246,9 @@ func (s *Column) Validate() error {
 }
 
 type ColumnBusinessMetadata struct {
-	// Custom attribute values. The key is the custom attribute identifier, and the value is a list of attribute values.
+	// The custom attribute values, where key is the custom attribute identifier and value is the attribute value list.
 	CustomAttributes map[string][]*string `json:"CustomAttributes,omitempty" xml:"CustomAttributes,omitempty"`
-	// The business description of the field. Supported only for MaxCompute, HMS (EMR cluster), and DLF types.
+	// The business description of the field. Currently, only MaxCompute, HMS (EMR cluster), and DLF types are supported.
 	//
 	// example:
 	//

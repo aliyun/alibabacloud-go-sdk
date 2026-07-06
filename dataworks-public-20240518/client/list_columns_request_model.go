@@ -11,6 +11,8 @@ type iListColumnsRequest interface {
 	GoString() string
 	SetComment(v string) *ListColumnsRequest
 	GetComment() *string
+	SetIncludeExtendedProperties(v bool) *ListColumnsRequest
+	GetIncludeExtendedProperties() *bool
 	SetName(v string) *ListColumnsRequest
 	GetName() *string
 	SetOrder(v string) *ListColumnsRequest
@@ -26,51 +28,52 @@ type iListColumnsRequest interface {
 }
 
 type ListColumnsRequest struct {
-	// The column comment. Supports fuzzy match.
+	// The comment. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test comment
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The column name. Supports fuzzy match.
+	Comment                   *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	IncludeExtendedProperties *bool   `json:"IncludeExtendedProperties,omitempty" xml:"IncludeExtendedProperties,omitempty"`
+	// The name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test_table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sort order. Default: Asc. Valid values:
+	// The sort order. Default value: Asc. Valid values:
 	//
-	// - Asc
+	// - Asc: ascending order
 	//
-	// - Desc
+	// - Desc: descending order
 	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Default: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Default: 10. Maximum: 100.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort field. Default: Position. Valid values:
+	// The sort field. Default value: Position. Valid values:
 	//
-	// - Name
+	// - Name: name
 	//
-	// - Position
+	// - Position: position
 	//
 	// example:
 	//
 	// Position
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The table ID. Call the ListTables operation or refer to [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html) to obtain this value.
+	// The ID of the data table. You can obtain the ID from the response of the ListTables operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
 	//
 	// This parameter is required.
 	//
@@ -90,6 +93,10 @@ func (s ListColumnsRequest) GoString() string {
 
 func (s *ListColumnsRequest) GetComment() *string {
 	return s.Comment
+}
+
+func (s *ListColumnsRequest) GetIncludeExtendedProperties() *bool {
+	return s.IncludeExtendedProperties
 }
 
 func (s *ListColumnsRequest) GetName() *string {
@@ -118,6 +125,11 @@ func (s *ListColumnsRequest) GetTableId() *string {
 
 func (s *ListColumnsRequest) SetComment(v string) *ListColumnsRequest {
 	s.Comment = &v
+	return s
+}
+
+func (s *ListColumnsRequest) SetIncludeExtendedProperties(v bool) *ListColumnsRequest {
+	s.IncludeExtendedProperties = &v
 	return s
 }
 

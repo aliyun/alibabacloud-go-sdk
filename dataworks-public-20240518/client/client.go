@@ -4527,13 +4527,13 @@ func (client *Client) CreateParameter(request *CreateParameterRequest) (_result 
 
 // Summary:
 //
-// Creates a deployment process for entities in the Data Studio (new version).
+// Creates a publish process for an entity in the new-version DataStudio.
 //
 // Description:
 //
-//	Notice: This API does not support batch operations. If you specify multiple entities to be published, all entities except the first one are ignored.
+//	Notice: This operation does not support batch operations. If you specify multiple publish entities in the parameters, all entities except the first one are ignored.
 //
-//	Notice: This API may not be available in earlier versions of the SDK. In that case, use the CreateDeployment API, which accepts the same parameters.
+//	Notice: This operation may not be available in earlier versions of the SDK. In this case, use the CreateDeployment operation. The parameters are the same as those described in this topic.
 //
 // @param tmpReq - CreatePipelineRunRequest
 //
@@ -4554,6 +4554,10 @@ func (client *Client) CreatePipelineRunWithOptions(tmpReq *CreatePipelineRunRequ
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRunUntilStage) {
+		body["AutoRunUntilStage"] = request.AutoRunUntilStage
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}
@@ -4564,6 +4568,10 @@ func (client *Client) CreatePipelineRunWithOptions(tmpReq *CreatePipelineRunRequ
 
 	if !dara.IsNil(request.ProjectId) {
 		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RunMode) {
+		body["RunMode"] = request.RunMode
 	}
 
 	if !dara.IsNil(request.Type) {
@@ -4595,13 +4603,13 @@ func (client *Client) CreatePipelineRunWithOptions(tmpReq *CreatePipelineRunRequ
 
 // Summary:
 //
-// Creates a deployment process for entities in the Data Studio (new version).
+// Creates a publish process for an entity in the new-version DataStudio.
 //
 // Description:
 //
-//	Notice: This API does not support batch operations. If you specify multiple entities to be published, all entities except the first one are ignored.
+//	Notice: This operation does not support batch operations. If you specify multiple publish entities in the parameters, all entities except the first one are ignored.
 //
-//	Notice: This API may not be available in earlier versions of the SDK. In that case, use the CreateDeployment API, which accepts the same parameters.
+//	Notice: This operation may not be available in earlier versions of the SDK. In this case, use the CreateDeployment operation. The parameters are the same as those described in this topic.
 //
 // @param request - CreatePipelineRunRequest
 //
@@ -10734,11 +10742,11 @@ func (client *Client) GetCertificate(request *GetCertificateRequest) (_result *G
 
 // Summary:
 //
-// Queries the information about a specific field of a table in Data Map.
+// Retrieves the details of a specified column in a Data Map table.
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or a higher edition is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - GetColumnRequest
 //
@@ -10778,11 +10786,11 @@ func (client *Client) GetColumnWithOptions(request *GetColumnRequest, runtime *d
 
 // Summary:
 //
-// Queries the information about a specific field of a table in Data Map.
+// Retrieves the details of a specified column in a Data Map table.
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or a higher edition is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - GetColumnRequest
 //
@@ -14210,11 +14218,11 @@ func (client *Client) GetSkill(request *GetSkillRequest) (_result *GetSkillRespo
 
 // Summary:
 //
-// Queries the information about a specific table in Data Map.
+// Retrieves the details of a specified data table in DataWorks Data Map. You can specify whether to return business metadata.
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or a higher edition is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - GetTableRequest
 //
@@ -14254,11 +14262,11 @@ func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *dar
 
 // Summary:
 //
-// Queries the information about a specific table in Data Map.
+// Retrieves the details of a specified data table in DataWorks Data Map. You can specify whether to return business metadata.
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or a higher edition is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - GetTableRequest
 //
@@ -14933,15 +14941,15 @@ func (client *Client) ImportCertificateAdvance(request *ImportCertificateAdvance
 
 // Summary:
 //
-// Imports a workflow and its child nodes that are specified by the FlowSpec field to DataStudio.
+// Imports a workflow node defined by FlowSpec and its child nodes into DataStudio.
 //
 // Description:
 //
 //	Notice:
 //
-// - This API does not support importing multiple workflow definitions. If you define more than one workflow definition in the FlowSpec, all workflow definitions except the first one are ignored.
+// - This operation does not support importing multiple workflows. If more than one workflow is defined in the FlowSpec, all workflows except the first one are ignored.
 //
-// - This is an asynchronous API. Calling this API returns an asynchronous task object. You must call the GetJobStatus API to query the execution status of the task.
+// - This is an asynchronous operation. The response returns an asynchronous task object. Call GetJobStatus to query the execution status of the task.
 //
 // @param request - ImportWorkflowDefinitionRequest
 //
@@ -14956,6 +14964,10 @@ func (client *Client) ImportWorkflowDefinitionWithOptions(request *ImportWorkflo
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		body["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		body["ProjectId"] = request.ProjectId
 	}
@@ -14989,15 +15001,15 @@ func (client *Client) ImportWorkflowDefinitionWithOptions(request *ImportWorkflo
 
 // Summary:
 //
-// Imports a workflow and its child nodes that are specified by the FlowSpec field to DataStudio.
+// Imports a workflow node defined by FlowSpec and its child nodes into DataStudio.
 //
 // Description:
 //
 //	Notice:
 //
-// - This API does not support importing multiple workflow definitions. If you define more than one workflow definition in the FlowSpec, all workflow definitions except the first one are ignored.
+// - This operation does not support importing multiple workflows. If more than one workflow is defined in the FlowSpec, all workflows except the first one are ignored.
 //
-// - This is an asynchronous API. Calling this API returns an asynchronous task object. You must call the GetJobStatus API to query the execution status of the task.
+// - This is an asynchronous operation. The response returns an asynchronous task object. Call GetJobStatus to query the execution status of the task.
 //
 // @param request - ImportWorkflowDefinitionRequest
 //
@@ -15623,11 +15635,11 @@ func (client *Client) ListCertificates(request *ListCertificatesRequest) (_resul
 
 // Summary:
 //
-// Queries the column list of a specified table in Data Map.
+// Queries the column list of a specified data table in DataWorks Data Map.
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or a higher edition is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - ListColumnsRequest
 //
@@ -15667,11 +15679,11 @@ func (client *Client) ListColumnsWithOptions(request *ListColumnsRequest, runtim
 
 // Summary:
 //
-// Queries the column list of a specified table in Data Map.
+// Queries the column list of a specified data table in DataWorks Data Map.
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or a higher edition is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - ListColumnsRequest
 //
@@ -21387,11 +21399,11 @@ func (client *Client) ListSkills(request *ListSkillsRequest) (_result *ListSkill
 
 // Summary:
 //
-// Queries a list of tables in the data map. For data source types that do not support schemas, this operation queries tables within a specified database. For data source types that support schemas, you can query tables within a specified database, MaxCompute project, or schema. The response includes basic table information, technical metadata, and business metadata.
+// Queries the list of data tables in DataWorks Data Map. For types that do not support the schema level, you can query data tables under a specified database. For types that support the schema level, you can query data tables under a specified database, MaxCompute project, or schema. The response contains only basic table information and does not include technical metadata or business metadata.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+// 1. DataWorks Basic Edition or a higher edition is required.
 //
 // @param tmpReq - ListTablesRequest
 //
@@ -21437,11 +21449,11 @@ func (client *Client) ListTablesWithOptions(tmpReq *ListTablesRequest, runtime *
 
 // Summary:
 //
-// Queries a list of tables in the data map. For data source types that do not support schemas, this operation queries tables within a specified database. For data source types that support schemas, you can query tables within a specified database, MaxCompute project, or schema. The response includes basic table information, technical metadata, and business metadata.
+// Queries the list of data tables in DataWorks Data Map. For types that do not support the schema level, you can query data tables under a specified database. For types that support the schema level, you can query data tables under a specified database, MaxCompute project, or schema. The response contains only basic table information and does not include technical metadata or business metadata.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+// 1. DataWorks Basic Edition or a higher edition is required.
 //
 // @param request - ListTablesRequest
 //
