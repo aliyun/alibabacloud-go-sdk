@@ -1051,6 +1051,54 @@ func (client *Client) DeleteFaceRecordWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Deletes a face record.
+//
+// @param request - DeleteFaceRecordV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFaceRecordV2Response
+func (client *Client) DeleteFaceRecordV2WithContext(ctx context.Context, request *DeleteFaceRecordV2Request, runtime *dara.RuntimeOptions) (_result *DeleteFaceRecordV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FaceGroupCode) {
+		query["FaceGroupCode"] = request.FaceGroupCode
+	}
+
+	if !dara.IsNil(request.MerchantUserId) {
+		query["MerchantUserId"] = request.MerchantUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFaceRecordV2"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteFaceRecordV2Response{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes data related to a user authentication record.
 //
 // @param request - DeleteVerifyResultRequest
