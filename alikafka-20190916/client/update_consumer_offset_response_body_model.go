@@ -20,19 +20,19 @@ type iUpdateConsumerOffsetResponseBody interface {
 }
 
 type UpdateConsumerOffsetResponseBody struct {
-	// The HTTP status code that is returned. The status code **200*	- indicates that the request is successful.
+	// Return code. A return value of **200*	- indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// Return message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

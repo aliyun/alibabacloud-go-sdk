@@ -20,15 +20,15 @@ type iReleaseInstanceRequest interface {
 type ReleaseInstanceRequest struct {
 	// Specifies whether to immediately release the physical resources of the instance. Valid values:
 	//
-	// 	- **true**: The physical resources of the instance are immediately released.
+	// - **true**: Immediately releases the physical resources of the instance.
 	//
-	// 	- **false**: The physical resources of the instance are retained for a period of time before they are released.
+	// - **false**: The physical resources of the instance are retained for a period of time before they are released.
 	//
 	// example:
 	//
 	// false
 	ForceDeleteInstance *bool `json:"ForceDeleteInstance,omitempty" xml:"ForceDeleteInstance,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

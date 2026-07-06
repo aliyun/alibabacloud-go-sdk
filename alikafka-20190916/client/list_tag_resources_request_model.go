@@ -22,13 +22,13 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The token that determines the start point of the next query.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region in which the resource is deployed.
+	// The region ID of the resource.
 	//
 	// This parameter is required.
 	//
@@ -36,29 +36,29 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource whose tags you want to query. The resource ID follows the following rules:
+	// The ID of the resource to be tagged. Resource ID rules:
 	//
-	// 	- Instance ID: instanceId
+	// - Instance: instanceId
 	//
-	// 	- Topic ID: Kafka_alikafka_instanceId_topic
+	// - Topic: Kafka_alikafka_instanceId_topic
 	//
-	// 	- Group ID: Kafka_alikafka_instanceId_consumerGroup
+	// - Group: Kafka_alikafka_instanceId_consumerGroup
 	//
-	// For example, if the instance ID is alikafka_post-cn-v0h1fgs2xxxx, the topic name is test-topic, and the group name is test-consumer-group, the resource IDs are alikafka_post-cn-v0h1fgs2xxxx, Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-topic, and Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-consumer-group, respectively.
+	// For example: If the instance ID is alikafka_post-cn-v0h1fgs2xxxx, the Topic name is test-topic, and the Group name is test-consumer-group, the resource IDs are alikafka_post-cn-v0h1fgs2xxxx, Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-topic, and Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-consumer-group respectively.
 	//
-	// >  You must configure one of **ResourceId*	- and **Tag*	- to query the tags that are bound to a resource. Otherwise, the request fails.
+	// > Either the **ResourceId*	- or **Tag*	- parameter must be configured to query the tag list bound to resources. Otherwise, the API call fails.
 	//
 	// example:
 	//
 	// alikafka_post-cn-v0h1fgs2****
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource whose tags you want to query. The value is an enumerated value. Valid values:
+	// The resource type. Enumeration type. Valid values:
 	//
-	// 	- **INSTANCE**
+	// - **INSTANCE**: instance.
 	//
-	// 	- **TOPIC**
+	// - **TOPIC**: topic.
 	//
-	// 	- **CONSUMERGROUP**
+	// - **CONSUMERGROUP**: consumer group.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type ListTagResourcesRequest struct {
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The tag list.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -137,21 +137,21 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of the resource tag.
+	// The tag key of the resource.
 	//
-	// 	- If you leave this parameter empty, the keys of all tags are matched.
+	// - If this parameter is empty, all tag keys are matched.
 	//
-	// 	- The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+	// - The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http\\:// or https\\://.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the resource tag.
+	// The tag value of the resource.
 	//
-	// 	- If you leave Key empty, you must also leave this parameter empty. If you leave this parameter empty, the values of all tags are matched.
+	// - If the tag key is empty, this parameter must be empty. If this parameter is empty, all tag values are matched.
 	//
-	// 	- The tag value can be up to 128 characters in length and cannot contain http:// or https://. The tag value cannot start with acs: or aliyun.
+	// - The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http\\:// or https\\://.
 	//
 	// example:
 	//

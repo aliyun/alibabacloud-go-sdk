@@ -22,26 +22,26 @@ type iGetInstanceListResponseBody interface {
 }
 
 type GetInstanceListResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the call is successful.
+	// The status code. A value of 200 indicates that the request is successful.
 	//
 	// example:
 	//
 	// 200
 	Code         *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	InstanceList *GetInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the region.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4B6D821D-7F67-4CAA-9E13-A5A997C3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates if the request was successful.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iGetKafkaClientIpRequest interface {
 }
 
 type GetKafkaClientIpRequest struct {
-	// The end of the time range to query.
+	// End time.
 	//
 	// This parameter is required.
 	//
@@ -34,15 +34,15 @@ type GetKafkaClientIpRequest struct {
 	//
 	// 1716343502000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the consumer group.
+	// Consumer group ID.
 	//
-	// >  This parameter is required only if you set Type to byGroup.
+	// > This parameter is required when Type is set to byGroup.
 	//
 	// example:
 	//
 	// group_name
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type GetKafkaClientIpRequest struct {
 	//
 	// alikafka_post-cn-v0h1fgs2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region where the instance is deployed.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type GetKafkaClientIpRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query.
+	// Start time.
 	//
 	// This parameter is required.
 	//
@@ -66,23 +66,21 @@ type GetKafkaClientIpRequest struct {
 	//
 	// 1716343501000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The topic name.
+	// Topic name.
 	//
-	// >
-	//
-	// 	- This parameter is required only if you set Type to byTopic.
+	// > - This parameter is required when Type is set to byTopic.
 	//
 	// example:
 	//
 	// topic_name
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The query method that you want to use to query the client IP addresses. Valid values:
+	// The type of client IP query. You can choose from three methods.
 	//
-	// 	- byInstance: queries the IP addresses of the clients that are connected to the instance within a specific period of time.
+	// - byInstance: Query client IPs for the instance within the specified time range.
 	//
-	// 	- byTopic: queries the IP addresses of the clients that are connected to a specific topic on the instance within a specific period of time.
+	// - byTopic: Query client IPs for the topic within the specified time range.
 	//
-	// 	- byGroup: queries the IP addresses of the clients that are connected to a specific group on the instance within a specific period of time.
+	// - byGroup: Query client IPs for the group within the specified time range.
 	//
 	// This parameter is required.
 	//

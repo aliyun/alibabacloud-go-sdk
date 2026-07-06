@@ -28,25 +28,25 @@ type iGetTopicListResponseBody interface {
 }
 
 type GetTopicListResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	// The return code. A value of 200 indicates that the call was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The page number of the returned page.
+	// The number of the page returned.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -58,14 +58,14 @@ type GetTopicListResponseBody struct {
 	//
 	// C0D3DC5B-5C37-47AD-9F22-1F559880****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
 	// true
 	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
 	TopicList *GetTopicListResponseBodyTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
-	// The number of topics.
+	// The total number of topics.
 	//
 	// example:
 	//

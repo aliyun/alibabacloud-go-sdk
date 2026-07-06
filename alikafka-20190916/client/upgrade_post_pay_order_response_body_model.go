@@ -20,25 +20,25 @@ type iUpgradePostPayOrderResponseBody interface {
 }
 
 type UpgradePostPayOrderResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABA4A7FD-E10F-45C7-9774-A5236015A***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

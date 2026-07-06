@@ -18,7 +18,7 @@ type iGetTopicStatusRequest interface {
 }
 
 type GetTopicStatusRequest struct {
-	// The ID of the instance.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type GetTopicStatusRequest struct {
 	//
 	// alikafka_pre-cn-v0h15tjm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the instance.
+	// Region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the topic.
+	// Topic name.
 	//
 	// This parameter is required.
 	//

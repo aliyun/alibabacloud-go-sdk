@@ -20,7 +20,7 @@ type iCreateScheduledScalingRuleResponseBody interface {
 }
 
 type CreateScheduledScalingRuleResponseBody struct {
-	// The response code. The value 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -32,17 +32,17 @@ type CreateScheduledScalingRuleResponseBody struct {
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// DB6F1BEA-903B-4FD8-8809-46E7E9CE***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful.
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//

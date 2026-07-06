@@ -20,7 +20,7 @@ type iUpdateInstanceConfigResponseBody interface {
 }
 
 type UpdateInstanceConfigResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The return code. A value of 200 indicates that the call was successful.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type UpdateInstanceConfigResponseBody struct {
 	//
 	// 4B6D821D-7F67-4CAA-9E13-A5A997C35***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

@@ -32,19 +32,19 @@ type iCreateAclRequest interface {
 }
 
 type CreateAclRequest struct {
-	// The type of the operation allowed by the access control list (ACL). Valid values:
+	// Operation type. Valid values:
 	//
-	// 	- **Write**
+	// - **Write**: write
 	//
-	// 	- **Read**
+	// - **Read**: read
 	//
-	// 	- **Describe**: reads of transactional IDs.
+	// - **Describe**: read TransactionalId
 	//
-	// 	- **IdempotentWrite**: idempotent data writes to clusters.
+	// - **IdempotentWrite**: idempotent write to Cluster
 	//
-	// 	- **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for serverless ApsaraMQ for Kafka instances.
+	// - **IDEMPOTENT_WRITE**: idempotent write to Cluster, only available for Serverless instances.
 	//
-	// 	- **DESCRIBE_CONFIGS**: configuration query. This value is available only for serverless ApsaraMQ for Kafka instances.
+	// - **DESCRIBE_CONFIGS**: query configuration, only available for Serverless instances.
 	//
 	// This parameter is required.
 	//
@@ -52,47 +52,47 @@ type CreateAclRequest struct {
 	//
 	// Read
 	AclOperationType *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
-	// The types of operations allowed by the ACL. Separate multiple operation types with commas (,).
+	// Batch authorization operation types. Multiple operations are separated by commas (,).
 	//
 	// Valid values:
 	//
-	// 	- **Write**
+	// - **Write**: read
 	//
-	// 	- **Read**
+	// - **Read**: write
 	//
-	// 	- **Describe**: reads of transactional IDs.
+	// - **Describe**: read TransactionalId
 	//
-	// 	- **IdempotentWrite**: idempotent data writes to clusters.
+	// - **IdempotentWrite**: idempotent write to Cluster
 	//
-	// 	- **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for serverless ApsaraMQ for Kafka instances.
+	// - **IDEMPOTENT_WRITE**: idempotent write to Cluster, only available for Serverless instances.
 	//
-	// 	- **DESCRIBE_CONFIGS**: configuration query. This value is available only for serverless ApsaraMQ for Kafka instances.
+	// - **DESCRIBE_CONFIGS**: query configuration, only available for Serverless instances.
 	//
-	// >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
+	// > This parameter is only supported for Serverless instances.
 	//
 	// example:
 	//
 	// Write,Read
 	AclOperationTypes *string `json:"AclOperationTypes,omitempty" xml:"AclOperationTypes,omitempty"`
-	// The authorization method. Valid values:
+	// Authorization method. Valid values:
 	//
-	// 	- **DENY**
+	// - **DENY**: deny.
 	//
-	// 	- **ALLOW**
+	// - **ALLOW**: allow.
 	//
-	// >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
+	// > This parameter is only supported for Serverless instances.
 	//
 	// example:
 	//
 	// DENY
 	AclPermissionType *string `json:"AclPermissionType,omitempty" xml:"AclPermissionType,omitempty"`
-	// The resource name.
+	// Resource name.
 	//
-	// 	- The value can be a topic name, a group ID, a cluster name, or a transaction ID.
+	// - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
 	//
-	// 	- You can use an asterisk (\\*) to specify the names of all resources of the specified type.
+	// - You can use an asterisk (\\*) to represent all resources of this type.
 	//
-	// > You can use an asterisk (\\*) to query the resources on which permissions are granted only after you grant the user the required permissions on all resources.
+	// > 	- Only after authorization is granted to all resources can you query the authorized resources using an asterisk (\\*).
 	//
 	// This parameter is required.
 	//
@@ -100,11 +100,11 @@ type CreateAclRequest struct {
 	//
 	// X****
 	AclResourceName *string `json:"AclResourceName,omitempty" xml:"AclResourceName,omitempty"`
-	// The matching mode. Valid values:
+	// Matching pattern. Valid values:
 	//
-	// 	- **LITERAL**: exact match
+	// - **LITERAL**: exact match
 	//
-	// 	- **PREFIXED**: prefix match
+	// - **PREFIXED**: prefix match
 	//
 	// This parameter is required.
 	//
@@ -112,15 +112,15 @@ type CreateAclRequest struct {
 	//
 	// LITERAL
 	AclResourcePatternType *string `json:"AclResourcePatternType,omitempty" xml:"AclResourcePatternType,omitempty"`
-	// The resource type. Valid values:
+	// Resource type. Valid values:
 	//
-	// 	- **Topic**
+	// - **Topic**: message topic.
 	//
-	// 	- **Group**
+	// - **Group**: consumer group.
 	//
-	// 	- **Cluster**
+	// - **Cluster**: instance.
 	//
-	// 	- **TransactionalId**: transactional ID
+	// - **TransactionalId**: transaction ID.
 	//
 	// This parameter is required.
 	//
@@ -128,19 +128,19 @@ type CreateAclRequest struct {
 	//
 	// Group
 	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
-	// The IP address of the source.
+	// Source IP.
+	//
+	// > - Only specific IP addresses or \\	- (all IPs) are supported. IP address ranges are not supported.
 	//
 	// >
 	//
-	// 	- You can specify a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
-	//
-	// 	- This parameter is available only for serverless ApsaraMQ for Kafka instances.
+	// > - This parameter is only supported for Serverless instances.
 	//
 	// example:
 	//
 	// *
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -148,7 +148,7 @@ type CreateAclRequest struct {
 	//
 	// alikafka_pre-cn-v0h1cng0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID.
+	// Region ID.
 	//
 	// This parameter is required.
 	//
@@ -156,11 +156,11 @@ type CreateAclRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The username.
+	// Username.
 	//
-	// 	- You can use an asterisk (\\*) to specify all usernames.
+	// - You can use an asterisk (\\*) to represent all usernames.
 	//
-	// > You can use an asterisk (\\*) to query the authorized users only after you grant the required permissions to all users.
+	// > 	- Only after authorization is granted to all users can you query the authorized users using an asterisk (\\*).
 	//
 	// This parameter is required.
 	//

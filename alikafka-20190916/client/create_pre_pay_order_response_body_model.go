@@ -22,13 +22,13 @@ type iCreatePrePayOrderResponseBody interface {
 }
 
 type CreatePrePayOrderResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	// The return code. A value of 200 indicates that the call is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreatePrePayOrderResponseBody struct {
 	//
 	// 06084011-E093-46F3-A51F-4B19A8AD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

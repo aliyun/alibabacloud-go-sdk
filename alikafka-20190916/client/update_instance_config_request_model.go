@@ -18,7 +18,7 @@ type iUpdateInstanceConfigRequest interface {
 }
 
 type UpdateInstanceConfigRequest struct {
-	// The configurations that you want to update for the ApsaraMQ for Kafka instance. The value must be a valid JSON string.
+	// The configuration of ApsaraMQ for Kafka that needs to be updated. The configuration information must be a valid JSON string.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type UpdateInstanceConfigRequest struct {
 	//
 	// {"kafka.log.retention.hours":"33"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

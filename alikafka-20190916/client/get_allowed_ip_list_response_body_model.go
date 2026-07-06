@@ -22,21 +22,21 @@ type iGetAllowedIpListResponseBody interface {
 }
 
 type GetAllowedIpListResponseBody struct {
-	// The IP address whitelist.
+	// The allowlist.
 	AllowedList *GetAllowedIpListResponseBodyAllowedList `json:"AllowedList,omitempty" xml:"AllowedList,omitempty" type:"Struct"`
-	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	// The return code. A value of 200 indicates that the request is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned.
+	// The return message.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,21 +113,21 @@ func (s *GetAllowedIpListResponseBody) Validate() error {
 }
 
 type GetAllowedIpListResponseBodyAllowedList struct {
-	// The deployment mode of the instance. Valid values:
+	// The deployment type. Valid values:
 	//
-	// 	- **4**: allows access from the Internet and a virtual private cloud (VPC).
+	// - **4**: Internet/VPC
 	//
-	// 	- **5**: allows access from a VPC.
+	// - **5**: VPC
 	//
-	// >  Only integrators need to concern themselves with the value of this parameter.
+	// > This field is not relevant for regular users and is intended for integration partners.
 	//
 	// example:
 	//
 	// 4
 	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// The whitelist for access from the Internet.
+	// The Internet allowlists.
 	InternetList []*GetAllowedIpListResponseBodyAllowedListInternetList `json:"InternetList,omitempty" xml:"InternetList,omitempty" type:"Repeated"`
-	// The whitelist for access from a virtual private cloud (VPC).
+	// The VPC allowlists.
 	VpcList []*GetAllowedIpListResponseBodyAllowedListVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
 }
 
@@ -189,22 +189,34 @@ func (s *GetAllowedIpListResponseBodyAllowedList) Validate() error {
 }
 
 type GetAllowedIpListResponseBodyAllowedListInternetList struct {
-	// The group to which the IP address whitelist belongs.
+	// The Internet IP address allowlist group.
 	AllowedIpGroup map[string]*string `json:"AllowedIpGroup,omitempty" xml:"AllowedIpGroup,omitempty"`
-	// The information about the IP address whitelist.
-	AllowedIpList []*string          `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
-	BlackIPList   []*string          `json:"BlackIPList,omitempty" xml:"BlackIPList,omitempty" type:"Repeated"`
-	BlackIPMap    map[string]*string `json:"BlackIPMap,omitempty" xml:"BlackIPMap,omitempty"`
-	// The port range. Valid value:
+	// The Internet IP address allowlists.
+	AllowedIpList []*string `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
+	// The Internet IP address blocklists.
+	BlackIPList []*string `json:"BlackIPList,omitempty" xml:"BlackIPList,omitempty" type:"Repeated"`
+	// The Internet IP address blocklist group.
+	BlackIPMap map[string]*string `json:"BlackIPMap,omitempty" xml:"BlackIPMap,omitempty"`
+	// The port range. Valid values:
 	//
 	// **9093/9093**.
 	//
 	// example:
 	//
 	// 9093/9093
-	PortRange                      *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	SecurityGroupId                *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	UserDefinedSharedSecurityGroup *bool   `json:"UserDefinedSharedSecurityGroup,omitempty" xml:"UserDefinedSharedSecurityGroup,omitempty"`
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-2zea4atm7fvj**********
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// Indicates whether it is a shared security group.
+	//
+	// example:
+	//
+	// false
+	UserDefinedSharedSecurityGroup *bool `json:"UserDefinedSharedSecurityGroup,omitempty" xml:"UserDefinedSharedSecurityGroup,omitempty"`
 }
 
 func (s GetAllowedIpListResponseBodyAllowedListInternetList) String() string {
@@ -283,22 +295,34 @@ func (s *GetAllowedIpListResponseBodyAllowedListInternetList) Validate() error {
 }
 
 type GetAllowedIpListResponseBodyAllowedListVpcList struct {
-	// The group to which the IP address whitelist belongs.
+	// The IP address allowlist group.
 	AllowedIpGroup map[string]*string `json:"AllowedIpGroup,omitempty" xml:"AllowedIpGroup,omitempty"`
-	// The information about the IP address whitelist.
-	AllowedIpList []*string          `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
-	BlackIPList   []*string          `json:"BlackIPList,omitempty" xml:"BlackIPList,omitempty" type:"Repeated"`
-	BlackIPMap    map[string]*string `json:"BlackIPMap,omitempty" xml:"BlackIPMap,omitempty"`
-	// The port range. Valid value:
+	// The IP address allowlists.
+	AllowedIpList []*string `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
+	// The IP address blocklists.
+	BlackIPList []*string `json:"BlackIPList,omitempty" xml:"BlackIPList,omitempty" type:"Repeated"`
+	// The IP address blocklist group.
+	BlackIPMap map[string]*string `json:"BlackIPMap,omitempty" xml:"BlackIPMap,omitempty"`
+	// The port range. Valid values:
 	//
 	// **9092/9092**.
 	//
 	// example:
 	//
 	// 9092/9092
-	PortRange                      *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	SecurityGroupId                *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	UserDefinedSharedSecurityGroup *bool   `json:"UserDefinedSharedSecurityGroup,omitempty" xml:"UserDefinedSharedSecurityGroup,omitempty"`
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-2zea4atm7fvj**********
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// Indicates whether it is a shared security group.
+	//
+	// example:
+	//
+	// false
+	UserDefinedSharedSecurityGroup *bool `json:"UserDefinedSharedSecurityGroup,omitempty" xml:"UserDefinedSharedSecurityGroup,omitempty"`
 }
 
 func (s GetAllowedIpListResponseBodyAllowedListVpcList) String() string {

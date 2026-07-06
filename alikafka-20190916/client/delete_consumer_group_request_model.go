@@ -18,7 +18,7 @@ type iDeleteConsumerGroupRequest interface {
 }
 
 type DeleteConsumerGroupRequest struct {
-	// The name of the consumer group.
+	// Group name.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteConsumerGroupRequest struct {
 	//
 	// CID-test
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	// The ID of the instance.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteConsumerGroupRequest struct {
 	//
 	// alikafka_post-cn-v0h1fgs2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the instance.
+	// Region ID of the instance.
 	//
 	// This parameter is required.
 	//

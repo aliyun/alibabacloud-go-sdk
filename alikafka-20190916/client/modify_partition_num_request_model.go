@@ -20,13 +20,13 @@ type iModifyPartitionNumRequest interface {
 }
 
 type ModifyPartitionNumRequest struct {
-	// The number of partitions that you want to add to the topic.
+	// Number of partitions to add.
 	//
-	// 	- The value must be an integer that is greater than 0.
+	// - Must be greater than 0.
 	//
-	// 	- To reduce the risk of data skew, we recommend that you set the value to a multiple of 6.
+	// - It is recommended that the number of partitions is a multiple of 6 to reduce the risk of data skew.
 	//
-	// 	- The number of total partitions ranges from 1 to 360.
+	// - The total number of partitions is limited to 1-360.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ModifyPartitionNumRequest struct {
 	//
 	// 6
 	AddPartitionNum *int32 `json:"AddPartitionNum,omitempty" xml:"AddPartitionNum,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ModifyPartitionNumRequest struct {
 	//
 	// alikafka_post-cn-0pp1l9z****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the instance.
+	// Region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ModifyPartitionNumRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The topic name.
+	// Topic name.
 	//
 	// This parameter is required.
 	//

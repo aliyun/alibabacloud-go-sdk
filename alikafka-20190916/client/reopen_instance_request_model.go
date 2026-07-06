@@ -24,7 +24,7 @@ type ReopenInstanceRequest struct {
 	//
 	// alikafka_post-cn-mp91inkw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region where the instance resides.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//

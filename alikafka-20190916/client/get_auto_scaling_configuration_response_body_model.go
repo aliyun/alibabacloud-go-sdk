@@ -22,27 +22,27 @@ type iGetAutoScalingConfigurationResponseBody interface {
 }
 
 type GetAutoScalingConfigurationResponseBody struct {
-	// The response code. The value 200 indicates that the request was successful.
+	// Status code. A return value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// Return result.
 	Data *GetAutoScalingConfigurationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// Return message.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// B7A39AE5-0B36-4442-A304-E0885265***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Whether the call was successful.
 	//
 	// example:
 	//

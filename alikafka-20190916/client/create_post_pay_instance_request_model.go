@@ -36,52 +36,126 @@ type iCreatePostPayInstanceRequest interface {
 }
 
 type CreatePostPayInstanceRequest struct {
+	// The deployment type. Valid values:
+	//
+	// - **4**: instance that is accessible over the internet and a VPC
+	//
+	// - **5**: instance that is accessible only over a VPC
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4
 	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The disk capacity.
+	//
+	// For more information about the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
+	// > This parameter is not required when you create a Serverless instance.
+	//
 	// example:
 	//
 	// 1500
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The disk type. Valid values:
+	//
+	// - **0**: ultra disk
+	//
+	// - **1**: SSD
+	//
+	// > This parameter is not required when you create a Serverless instance.
+	//
 	// example:
 	//
 	// 0
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The Internet traffic.
+	//
+	// - This parameter is required if you set **DeployType*	- to **4**.
+	//
+	// - For more information about the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
+	// > This parameter is not required when you create a Serverless instance.
+	//
 	// example:
 	//
 	// 3
 	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// The traffic specification.
+	//
+	// - For more information about the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
+	// > This parameter is not required when you create a Serverless instance.
+	//
 	// example:
 	//
 	// alikafka.hw.2xlarge
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - 1 (default): pay-as-you-go for reserved instances.
+	//
+	// - 3: pay-as-you-go for reserved capacity and elastic scaling of Serverless instances.
+	//
 	// example:
 	//
 	// 0
 	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	// The number of partitions.
+	//
+	// - For more information about the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
+	// > This parameter is not required if the instance is a Serverless instance.
+	//
 	// example:
 	//
 	// 100
 	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// If you do not specify this parameter, the instance is added to the default resource group. You can view the resource group ID in the Resource Group console.
+	//
 	// example:
 	//
 	// rg-ac***********7q
-	ResourceGroupId  *string                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The settings of the Serverless instance. This parameter is required when you create a Serverless instance.
 	ServerlessConfig *CreatePostPayInstanceRequestServerlessConfig `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty" type:"Struct"`
+	// The edition of the instance.
+	//
+	// If you set the PaidType parameter to 1 (pay-as-you-go for reserved instances), valid values are:
+	//
+	// - normal: Standard Edition (High-write)
+	//
+	// - professional: Professional Edition (High-write)
+	//
+	// - professionalForHighRead: Professional Edition (High-read)
+	//
+	// If you set the PaidType parameter to 3 (pay-as-you-go for reserved capacity and elastic scaling of Serverless instances), valid values are:
+	//
+	// - basic: Serverless Basic Edition
+	//
+	// - normal: Serverless Standard Edition
+	//
+	// - professional: Serverless Professional Edition
+	//
+	// For more information about these instance editions, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
 	// example:
 	//
 	// professional
-	SpecType *string                            `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	Tag      []*CreatePostPayInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The tags.
+	Tag []*CreatePostPayInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreatePostPayInstanceRequest) String() string {
@@ -219,13 +293,21 @@ func (s *CreatePostPayInstanceRequest) Validate() error {
 }
 
 type CreatePostPayInstanceRequestServerlessConfig struct {
+	// The reserved publish traffic. The value must be an integer. Minimum value: 60. This parameter is required for Serverless instances.
+	//
+	// > The actual upper limit is subject to the inventory in the current region. For more information, see the value range on the buy page.
+	//
 	// example:
 	//
 	// 60
 	ReservedPublishCapacity *int64 `json:"ReservedPublishCapacity,omitempty" xml:"ReservedPublishCapacity,omitempty"`
+	// The reserved subscribe traffic. The value must be an integer. Minimum value: 20. This parameter is required for Serverless instances.
+	//
+	// > The actual upper limit is subject to the inventory in the current region. For more information, see the value range on the buy page.
+	//
 	// example:
 	//
-	// 50
+	// 20
 	ReservedSubscribeCapacity *int64 `json:"ReservedSubscribeCapacity,omitempty" xml:"ReservedSubscribeCapacity,omitempty"`
 }
 
@@ -260,12 +342,28 @@ func (s *CreatePostPayInstanceRequestServerlessConfig) Validate() error {
 }
 
 type CreatePostPayInstanceRequestTag struct {
+	// The tag key of the resource.
+	//
+	// - The value of N can be from 1 to 20.
+	//
+	// - If this parameter is left empty, all tag keys are matched.
+	//
+	// - The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http\\:// or https\\://.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the resource.
+	//
+	// - The value of N can be from 1 to 20.
+	//
+	// - If the tag key is empty, this parameter must also be empty. If this parameter is empty, all tag values are matched.
+	//
+	// - The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http\\:// or https\\://.
+	//
 	// example:
 	//
 	// test

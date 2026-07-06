@@ -20,7 +20,7 @@ type iDeleteScheduledScalingRuleResponseBody interface {
 }
 
 type DeleteScheduledScalingRuleResponseBody struct {
-	// The responses code. The value 200 indicates that the request was successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type DeleteScheduledScalingRuleResponseBody struct {
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// ABA4A7FD-E10F-45C7-9774-A5236015****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

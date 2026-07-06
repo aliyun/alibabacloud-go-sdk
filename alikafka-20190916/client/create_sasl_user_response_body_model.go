@@ -20,7 +20,7 @@ type iCreateSaslUserResponseBody interface {
 }
 
 type CreateSaslUserResponseBody struct {
-	// The HTTP status code. The HTTP status code 200 indicates that the request was successful.
+	// The status code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type CreateSaslUserResponseBody struct {
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

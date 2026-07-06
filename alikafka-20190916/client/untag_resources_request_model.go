@@ -22,13 +22,13 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to detach all tags from the resource. This parameter only takes effect when the TagKey.N parameter is not configured. Default value: **false**.
+	// Specifies whether to detach all tags from the resource. This parameter takes effect when TagKey.N is empty. The default value is **false**.
 	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The ID of the region in which the resource is deployed.
+	// The region ID of the resource.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the resources from which you want to detach tags.
+	// The IDs of resources from which you want to detach tags.
 	//
 	// This parameter is required.
 	//
@@ -44,15 +44,15 @@ type UntagResourcesRequest struct {
 	//
 	// alikafka_post-cn-v0h1fgs2****
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resources. Valid values:
+	// The resource type. Enumeration type, currently supported resource types:
 	//
-	// 	- **INSTANCE**
+	// - **INSTANCE**
 	//
-	// 	- **TOPIC**
+	// - **TOPIC**
 	//
-	// 	- **CONSUMERGROUP**
+	// - **CONSUMERGROUP**
 	//
-	// >  The value of this parameter is not case-sensitive.
+	// > Case-insensitive.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type UntagResourcesRequest struct {
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the resource tag.
+	// The tag keys of the resource.
 	//
 	// example:
 	//

@@ -20,24 +20,44 @@ type iDescribeAclResourceNameRequest interface {
 }
 
 type DescribeAclResourceNameRequest struct {
+	// Matching pattern. Valid values:
+	//
+	// - LITERAL: exact match
+	//
+	// - PREFIXED: prefix match
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// LITERAL
 	AclResourcePatternType *string `json:"AclResourcePatternType,omitempty" xml:"AclResourcePatternType,omitempty"`
+	// Resource type.
+	//
+	// - **Topic**: message topic.
+	//
+	// - **Group**: consumer group.
+	//
+	// - **Cluster**: instance.
+	//
+	// - **TransactionalId**: transaction ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Topic
 	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alikafka_post-cn-mp919o4v****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

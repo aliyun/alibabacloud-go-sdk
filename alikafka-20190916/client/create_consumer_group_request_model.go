@@ -22,13 +22,11 @@ type iCreateConsumerGroupRequest interface {
 }
 
 type CreateConsumerGroupRequest struct {
-	// The name of the consumer group.
+	// Group name.
 	//
-	// 	- The value can contain only letters, digits, hyphens (-), and underscores (_), and the value must contain at least one letter or digit.
+	// - Reserved instance: Supports uppercase and lowercase letters, numbers, underscores (_), hyphens (-), and periods (.), limited to 3-64 characters.
 	//
-	// 	- The value must be 3 to 128 characters in length. If the value that you specify contains more than 128 characters, the system automatically truncates the value to 128 characters.
-	//
-	// 	- After a consumer group is created, you cannot change the name of the consumer group.
+	// - Serverless instance: Can only contain letters, numbers, and special characters "@._\\*$#^!&-", limited to 1-249 characters.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +34,7 @@ type CreateConsumerGroupRequest struct {
 	//
 	// test
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +42,7 @@ type CreateConsumerGroupRequest struct {
 	//
 	// alikafka_post-cn-0pp1l9z8****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the instance.
+	// Region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +50,13 @@ type CreateConsumerGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The description of the consumer group.
+	// Remarks.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The tags.
+	// Tag list.
 	Tag []*CreateConsumerGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -129,11 +127,13 @@ func (s *CreateConsumerGroupRequest) Validate() error {
 }
 
 type CreateConsumerGroupRequestTag struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
-	// 	- You must specify this parameter.
+	// - N ranges from 1 to 20.
 	//
-	// 	- The tag key can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`.
+	// - Cannot be empty.
+	//
+	// - Supports up to 128 characters, cannot start with aliyun or acs:, and cannot contain `http://` or `https://`.
 	//
 	// This parameter is required.
 	//
@@ -141,11 +141,13 @@ type CreateConsumerGroupRequestTag struct {
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
-	// 	- You can leave this parameter empty.
+	// - N ranges from 1 to 20.
 	//
-	// 	- The tag value can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`.
+	// - Can be empty.
+	//
+	// - Supports up to 128 characters, cannot start with aliyun or acs:, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

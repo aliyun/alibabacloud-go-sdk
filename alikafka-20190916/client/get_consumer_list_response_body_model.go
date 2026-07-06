@@ -28,14 +28,14 @@ type iGetConsumerListResponseBody interface {
 }
 
 type GetConsumerListResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	// The return code. A value of 200 indicates that the call is successful.
 	//
 	// example:
 	//
 	// 200
 	Code         *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	ConsumerList *GetConsumerListResponseBodyConsumerList `json:"ConsumerList,omitempty" xml:"ConsumerList,omitempty" type:"Struct"`
-	// The number of the page to return. Pages start from page 1.
+	// The page number of the returned page. The minimum value is 1.
 	//
 	// example:
 	//
@@ -53,19 +53,19 @@ type GetConsumerListResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 808F042B-CB9A-4FBC-9009-00E7DDB6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

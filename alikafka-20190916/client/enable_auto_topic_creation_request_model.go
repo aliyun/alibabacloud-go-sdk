@@ -22,7 +22,7 @@ type iEnableAutoTopicCreationRequest interface {
 }
 
 type EnableAutoTopicCreationRequest struct {
-  // The instance ID.
+  // Instance ID.
   // 
   // This parameter is required.
   // 
@@ -30,27 +30,27 @@ type EnableAutoTopicCreationRequest struct {
   // 
   // alikafka_post-cn-v0h1fgs2****
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-  // The operation that you want to perform. Valid values:
+  // Currently only these three request parameters are supported:
   // 
-  // 	- enable: enables the automatic topic creation feature.
+  // - enable: Enable automatic topic creation.
   // 
-  // 	- disable: disables the automatic topic creation feature.
+  // - disable: Disable automatic topic creation.
   // 
-  // 	- updatePartition: changes the number of partitions in topics that are automatically created.
+  // - updatePartition: Modify the number of partitions for automatic creation.
   // 
   // example:
   // 
   // enable
   Operate *string `json:"Operate,omitempty" xml:"Operate,omitempty"`
-  // The changed number of partitions in topics that are automatically created.
+  // Adjust the default number of partitions for automatically created topics.
   // 
-  // This parameter takes effect only if you set Operate to updatePartition.
+  // > This value is passed only when the Operate value is updatePartition, or when UpdatePartition is true.
   // 
   // example:
   // 
   // 12
   PartitionNum *int64 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-  // The region ID.
+  // Region ID.
   // 
   // This parameter is required.
   // 
@@ -58,6 +58,13 @@ type EnableAutoTopicCreationRequest struct {
   // 
   // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // Modify the number of partitions for automatic creation.
+  // 
+  // > If this parameter is set to true, the Operate parameter must be updatePartition or left empty.
+  // 
+  // example:
+  // 
+  // true
   UpdatePartition *bool `json:"UpdatePartition,omitempty" xml:"UpdatePartition,omitempty"`
 }
 

@@ -16,7 +16,7 @@ type iDescribeSaslUsersRequest interface {
 }
 
 type DescribeSaslUsersRequest struct {
-	// The ID of the instance.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeSaslUsersRequest struct {
 	//
 	// alikafka_pre-cn-v0h1cng0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region.
+	// Region ID.
 	//
 	// This parameter is required.
 	//

@@ -20,25 +20,25 @@ type iUpdateAllowedIpResponseBody interface {
 }
 
 type UpdateAllowedIpResponseBody struct {
-	// The HTTP status code that is returned. The HTTP status code 200 indicates that the request is successful.
+	// The return code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned.
+	// The return message.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 17D425C2-4EA3-4AB8-928D-E10511ECF***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

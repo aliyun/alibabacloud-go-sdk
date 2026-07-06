@@ -22,7 +22,7 @@ type iDescribeAclsResponseBody interface {
 }
 
 type DescribeAclsResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	// The HTTP status code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeAclsResponseBody struct {
 	//
 	// 46496E38-881E-4719-A2F3-F3DA6AE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

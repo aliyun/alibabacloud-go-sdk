@@ -22,31 +22,31 @@ type iGetTopicStatusResponseBody interface {
 }
 
 type GetTopicStatusResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	// Status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// Response message.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// E475C7E2-8C35-46EF-BE7D-5D2A9F5D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The status information about messages in the topic.
+	// Topic status.
 	TopicStatus *GetTopicStatusResponseBodyTopicStatus `json:"TopicStatus,omitempty" xml:"TopicStatus,omitempty" type:"Struct"`
 }
 
@@ -113,14 +113,14 @@ func (s *GetTopicStatusResponseBody) Validate() error {
 }
 
 type GetTopicStatusResponseBodyTopicStatus struct {
-	// The time when the last consumed message was generated.
+	// Generation time of the last consumed message. Unit: ms.
 	//
 	// example:
 	//
 	// 1566470063575
 	LastTimeStamp *int64                                            `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
 	OffsetTable   *GetTopicStatusResponseBodyTopicStatusOffsetTable `json:"OffsetTable,omitempty" xml:"OffsetTable,omitempty" type:"Struct"`
-	// The number of messages in the topic.
+	// Total number of messages.
 	//
 	// example:
 	//

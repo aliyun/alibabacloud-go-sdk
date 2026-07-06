@@ -38,54 +38,136 @@ type iCreatePrePayInstanceRequest interface {
 }
 
 type CreatePrePayInstanceRequest struct {
+	// The configurations of the Confluent components.
+	//
+	// > This parameter is required if you create a Confluent instance.
 	ConfluentConfig *CreatePrePayInstanceRequestConfluentConfig `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty" type:"Struct"`
+	// The deployment type. Valid values:
+	//
+	// - **4**: an instance accessible from the internet and a VPC
+	//
+	// - **5**: an instance accessible from a VPC only
+	//
+	// > If you create a Confluent instance, you cannot specify the deployment type and must set this parameter to 5. After the instance is created, you can configure internet access for each component.
+	//
 	// example:
 	//
 	// 5
 	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The disk capacity, in GB.
+	//
+	// For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
+	// > This parameter is not required if you create a Confluent instance.
+	//
 	// example:
 	//
 	// 500
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The disk type. Valid values:
+	//
+	// - **0**: ultra disk
+	//
+	// - **1**: SSD
+	//
+	// > This parameter is not required if you create a Confluent instance.
+	//
 	// example:
 	//
 	// 1
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The subscription duration, in months. Default value: 1. Valid values:
+	//
+	// - Confluent instances: **1*	- and **12**
+	//
+	// - Kafka instances: **1**
+	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The peak internet bandwidth.
+	//
+	// - This parameter is required if you set **DeployType*	- to **4**.
+	//
+	// - For the value range, see [pay-as-you-go](https://help.aliyun.com/document_detail/72142.html).
+	//
+	// > This parameter is not required if you create a Confluent instance.
+	//
 	// example:
 	//
 	// 3
 	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// The I/O specification.
+	//
+	// - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
+	// > This parameter is not required if you create a Confluent instance.
+	//
 	// example:
 	//
 	// alikafka.hw.2xlarge
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - **0**: subscription
+	//
+	// - **4**: subscription for Confluent instances
+	//
 	// example:
 	//
 	// 1
 	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	// The number of partitions.
+	//
+	// - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
+	// > This parameter is not required if you create a Confluent instance.
+	//
 	// example:
 	//
 	// 1000
 	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// If you do not specify this parameter, the instance is placed in the default resource group. You can find the resource group ID in the Resource Group console.
+	//
 	// example:
 	//
 	// rg-ac***********7q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The specification type.
+	//
+	// Valid values for Kafka instances:
+	//
+	// - **normal**: Standard Edition (High-write)
+	//
+	// - **professional**: Professional Edition (High-write)
+	//
+	// - **professionalForHighRead**: Professional Edition (High-read)
+	//
+	// Valid values for Confluent instances:
+	//
+	// - **professional**: Professional Edition
+	//
+	// - **enterprise**: Enterprise Edition
+	//
+	// For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
 	// example:
 	//
 	// professional
-	SpecType *string                           `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	Tag      []*CreatePrePayInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The tags to attach to the instance. You can specify up to 20 tags.
+	Tag []*CreatePrePayInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreatePrePayInstanceRequest) String() string {
@@ -232,75 +314,111 @@ func (s *CreatePrePayInstanceRequest) Validate() error {
 }
 
 type CreatePrePayInstanceRequestConfluentConfig struct {
+	// The number of CPU cores for Connect.
+	//
 	// example:
 	//
 	// 4
 	ConnectCU *int32 `json:"ConnectCU,omitempty" xml:"ConnectCU,omitempty"`
+	// The number of replicas for Connect.
+	//
 	// example:
 	//
 	// 2
 	ConnectReplica *int32 `json:"ConnectReplica,omitempty" xml:"ConnectReplica,omitempty"`
+	// The number of CPU cores for Control Center.
+	//
 	// example:
 	//
 	// 4
 	ControlCenterCU *int32 `json:"ControlCenterCU,omitempty" xml:"ControlCenterCU,omitempty"`
+	// The number of replicas for Control Center.
+	//
 	// example:
 	//
 	// 1
 	ControlCenterReplica *int32 `json:"ControlCenterReplica,omitempty" xml:"ControlCenterReplica,omitempty"`
+	// The disk capacity for Control Center, in GB.
+	//
 	// example:
 	//
 	// 300
 	ControlCenterStorage *int32 `json:"ControlCenterStorage,omitempty" xml:"ControlCenterStorage,omitempty"`
+	// The number of CPU cores for the Kafka broker.
+	//
 	// example:
 	//
 	// 4
 	KafkaCU *int32 `json:"KafkaCU,omitempty" xml:"KafkaCU,omitempty"`
+	// The number of replicas for the Kafka broker.
+	//
 	// example:
 	//
 	// 3
 	KafkaReplica *int32 `json:"KafkaReplica,omitempty" xml:"KafkaReplica,omitempty"`
+	// The number of CPU cores for Kafka REST Proxy.
+	//
 	// example:
 	//
 	// 4
 	KafkaRestProxyCU *int32 `json:"KafkaRestProxyCU,omitempty" xml:"KafkaRestProxyCU,omitempty"`
+	// The number of replicas for Kafka REST Proxy.
+	//
 	// example:
 	//
 	// 2
 	KafkaRestProxyReplica *int32 `json:"KafkaRestProxyReplica,omitempty" xml:"KafkaRestProxyReplica,omitempty"`
+	// The disk capacity for the Kafka broker, in GB.
+	//
 	// example:
 	//
 	// 800
 	KafkaStorage *int32 `json:"KafkaStorage,omitempty" xml:"KafkaStorage,omitempty"`
+	// The number of CPU cores for ksqlDB.
+	//
 	// example:
 	//
 	// 4
 	KsqlCU   *int32                                                `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
 	KsqlList []*CreatePrePayInstanceRequestConfluentConfigKsqlList `json:"KsqlList,omitempty" xml:"KsqlList,omitempty" type:"Repeated"`
+	// The number of replicas for ksqlDB.
+	//
 	// example:
 	//
 	// 2
 	KsqlReplica *int32 `json:"KsqlReplica,omitempty" xml:"KsqlReplica,omitempty"`
+	// The disk capacity for ksqlDB, in GB.
+	//
 	// example:
 	//
 	// 100
 	KsqlStorage *int32 `json:"KsqlStorage,omitempty" xml:"KsqlStorage,omitempty"`
+	// The number of CPU cores for Schema Registry.
+	//
 	// example:
 	//
 	// 1
 	SchemaRegistryCU *int32 `json:"SchemaRegistryCU,omitempty" xml:"SchemaRegistryCU,omitempty"`
+	// The number of replicas for Schema Registry.
+	//
 	// example:
 	//
 	// 2
 	SchemaRegistryReplica *int32 `json:"SchemaRegistryReplica,omitempty" xml:"SchemaRegistryReplica,omitempty"`
+	// The number of CPU cores for ZooKeeper.
+	//
 	// example:
 	//
 	// 2
 	ZooKeeperCU *int32 `json:"ZooKeeperCU,omitempty" xml:"ZooKeeperCU,omitempty"`
+	// The number of replicas for ZooKeeper.
+	//
 	// example:
 	//
 	// 3
 	ZooKeeperReplica *int32 `json:"ZooKeeperReplica,omitempty" xml:"ZooKeeperReplica,omitempty"`
+	// The disk capacity for ZooKeeper, in GB.
+	//
 	// example:
 	//
 	// 100
@@ -565,12 +683,28 @@ func (s *CreatePrePayInstanceRequestConfluentConfigKsqlList) Validate() error {
 }
 
 type CreatePrePayInstanceRequestTag struct {
+	// The tag key.
+	//
+	// -
+	//
+	// -
+	//
+	// - The key must be 1 to 128 characters long. It cannot start with aliyun or acs:, nor can it contain http\\:// or https\\://.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// -
+	//
+	// -
+	//
+	// - The value can be 0 to 128 characters long. It cannot start with aliyun or acs:, nor can it contain http\\:// or https\\://.
+	//
 	// example:
 	//
 	// test

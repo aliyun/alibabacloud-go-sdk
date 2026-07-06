@@ -22,21 +22,21 @@ type iGetQuotaTipResponseBody interface {
 }
 
 type GetQuotaTipResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	// Status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The additional message. This message is typically used to describe API call failures for troubleshooting.
+	// Additional information. In typical scenarios, it provides a brief description of failed calls to help the caller locate the problem
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The quota.
+	// Quota information.
 	QuotaData *GetQuotaTipResponseBodyQuotaData `json:"QuotaData,omitempty" xml:"QuotaData,omitempty" type:"Struct"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
@@ -113,71 +113,71 @@ func (s *GetQuotaTipResponseBody) Validate() error {
 }
 
 type GetQuotaTipResponseBodyQuotaData struct {
-	// The number of available groups.
+	// Remaining Group quota.
 	//
 	// example:
 	//
 	// 50
 	GroupLeft *int32 `json:"GroupLeft,omitempty" xml:"GroupLeft,omitempty"`
-	// The number of used groups.
+	// Used Group quota.
 	//
 	// example:
 	//
 	// 50
 	GroupUsed *int32 `json:"GroupUsed,omitempty" xml:"GroupUsed,omitempty"`
-	// The method that you use to purchase partitions. Valid values:
+	// Partition purchase method distinction, with the following values:
 	//
-	// 	- 0: indicates that the instance is purchased based on topics.
+	// - 0: indicates that the instance uses the topic model for purchase.
 	//
-	// 	- 1: indicates that the instance is purchased based on partitions.
+	// - 1: indicates partition model purchase.
 	//
 	// example:
 	//
 	// 1
 	IsPartitionBuy *int32 `json:"IsPartitionBuy,omitempty" xml:"IsPartitionBuy,omitempty"`
-	// The number of available partitions.
+	// Remaining partition quota.
 	//
 	// example:
 	//
 	// 1050
 	PartitionLeft *int32 `json:"PartitionLeft,omitempty" xml:"PartitionLeft,omitempty"`
-	// The number of purchased partitions.
+	// Number of purchased partitions.
 	//
 	// example:
 	//
 	// 100
 	PartitionNumOfBuy *int32 `json:"PartitionNumOfBuy,omitempty" xml:"PartitionNumOfBuy,omitempty"`
-	// The quota of partitions.
+	// Partition quota.
 	//
 	// example:
 	//
 	// 1100
 	PartitionQuota *int32 `json:"PartitionQuota,omitempty" xml:"PartitionQuota,omitempty"`
-	// The number of used partitions.
+	// Used partition quota.
 	//
 	// example:
 	//
 	// 50
 	PartitionUsed *int32 `json:"PartitionUsed,omitempty" xml:"PartitionUsed,omitempty"`
-	// The number of available topics.
+	// Remaining topic quota.
 	//
 	// example:
 	//
 	// 20
 	TopicLeft *int32 `json:"TopicLeft,omitempty" xml:"TopicLeft,omitempty"`
-	// The number of purchased topics.
+	// Number of purchased topics.
 	//
 	// example:
 	//
 	// 50
 	TopicNumOfBuy *int32 `json:"TopicNumOfBuy,omitempty" xml:"TopicNumOfBuy,omitempty"`
-	// The quota of topics.
+	// Topic quota.
 	//
 	// example:
 	//
 	// 50
 	TopicQuota *int32 `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
-	// The number of used topics.
+	// Used topic quota.
 	//
 	// example:
 	//

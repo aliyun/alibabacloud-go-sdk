@@ -26,13 +26,13 @@ type iUpdateAllowedIpRequest interface {
 }
 
 type UpdateAllowedIpRequest struct {
-	// The IP addresses that you want to manage. You can specify a CIDR block. Example: **192.168.0.0/16**.
+	// The IP list. It can be a CIDR block, for example: **192.168.0.0/16**.
 	//
-	// 	- If the **UpdateType*	- parameter is set to **add**, specify one or more IP addresses for this parameter. Separate multiple IP addresses with commas (,).
+	// - When **UpdateType*	- is set to **add**, you can specify multiple items separated by commas (,).
 	//
-	// 	- If the **UpdateType*	- parameter is set to **delete**, specify only one IP address.
+	// - When **UpdateType*	- is set to **delete**, you can specify only one item at a time.
 	//
-	// 	- Exercise caution when you delete IP addresses.
+	// - Exercise caution when deleting.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type UpdateAllowedIpRequest struct {
 	AllowedListIp *string `json:"AllowedListIp,omitempty" xml:"AllowedListIp,omitempty"`
 	// The type of the whitelist. Valid values:
 	//
-	// 	- **vpc**: a whitelist for access from a VPC.
+	// - **vpc**: virtual private cloud (VPC).
 	//
-	// 	- **internet**: a whitelist for access from the Internet.
+	// - **internet**: Internet.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type UpdateAllowedIpRequest struct {
 	//
 	// tf-testAccEcsImageConfigBasic3549descriptionChange
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +68,13 @@ type UpdateAllowedIpRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The port range. Valid values:
 	//
-	// 	- **9092/9092**: Messages are transmitted in a virtual private cloud (VPC) by using the PLAINTEXT protocol.
+	// - **9092/9092**: virtual private cloud (VPC) - PLAINTEXT protocol.
 	//
-	// 	- **9093/9093**: Messages are transmitted over the Internet by using the SASL_SSL protocol.
+	// - **9093/9093**: Internet - SASL_SSL protocol.
 	//
-	// 	- **9094/9094**: Messages are transmitted in a VPC by using the SASL_PLAINTEXT protocol.
+	// - **9094/9094**: virtual private cloud (VPC) - SASL_PLAINTEXT protocol.
 	//
-	// 	- **9095/9095**: Messages are transmitted in a VPC by using the SASL_SSL protocol.
+	// - **9095/9095**: virtual private cloud (VPC) - SASL_SSL protocol.
 	//
 	// This parameter must correspond to **AllowdedListType**.
 	//
@@ -84,7 +84,7 @@ type UpdateAllowedIpRequest struct {
 	//
 	// 9092/9092
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The ID of the region where the instance resides.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -92,11 +92,11 @@ type UpdateAllowedIpRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of configuration change. Valid values:
+	// The update type. Valid values:
 	//
-	// 	- **add**
+	// - **add**: add.
 	//
-	// 	- **delete**
+	// - **delete**: delete.
 	//
 	// This parameter is required.
 	//

@@ -22,19 +22,28 @@ type iCreatePostPayInstanceResponseBody interface {
 }
 
 type CreatePostPayInstanceResponseBody struct {
+	// The status code. A value of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned results.
 	Data *CreatePostPayInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ABA4A7FD-E10F-45C7-9774-A5236015A***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,10 +113,14 @@ func (s *CreatePostPayInstanceResponseBody) Validate() error {
 }
 
 type CreatePostPayInstanceResponseBodyData struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// alikafka_pre-cn-pe333xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the order.
+	//
 	// example:
 	//
 	// 236972661580636

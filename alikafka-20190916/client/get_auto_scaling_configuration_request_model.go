@@ -16,7 +16,7 @@ type iGetAutoScalingConfigurationRequest interface {
 }
 
 type GetAutoScalingConfigurationRequest struct {
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetAutoScalingConfigurationRequest struct {
 	//
 	// alikafka_serverless-cn-vxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region where the instance resides.
+	// Region ID.
 	//
 	// This parameter is required.
 	//

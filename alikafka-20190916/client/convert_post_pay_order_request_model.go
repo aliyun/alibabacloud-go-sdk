@@ -20,13 +20,13 @@ type iConvertPostPayOrderRequest interface {
 }
 
 type ConvertPostPayOrderRequest struct {
-	// The subscription duration. Unit: months. Valid values:
+	// The subscription duration in months. The default value is 1. Valid values:
 	//
-	// 	- **1~12**
+	// - 1 to **12**
 	//
-	// 	- **24**
+	// - **24**
 	//
-	// 	- **36**
+	// - **36**
 	//
 	// example:
 	//
@@ -40,7 +40,16 @@ type ConvertPostPayOrderRequest struct {
 	//
 	// alikafka_post-cn-v0h1fgs2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PaidType   *int32  `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - **0**: subscription
+	//
+	// - **4**: Confluent series subscription
+	//
+	// example:
+	//
+	// 1
+	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
 	// The region ID of the instance.
 	//
 	// This parameter is required.

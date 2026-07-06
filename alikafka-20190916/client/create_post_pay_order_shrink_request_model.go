@@ -40,11 +40,11 @@ type iCreatePostPayOrderShrinkRequest interface {
 }
 
 type CreatePostPayOrderShrinkRequest struct {
-	// The deployment mode of the instance. Valid values:
+	// The deployment type. Valid values:
 	//
-	// 	- **4**: deploys the instance that allows access from the Internet and a VPC.
+	// - **4**: An instance that is accessible from the Internet and a VPC.
 	//
-	// 	- **5**: deploys the instance that allows access only from a VPC.
+	// - **5**: An instance that is accessible only from a VPC.
 	//
 	// This parameter is required.
 	//
@@ -52,23 +52,23 @@ type CreatePostPayOrderShrinkRequest struct {
 	//
 	// 5
 	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// The disk size.
+	// The disk capacity.
 	//
-	// For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	// For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
+	// > Do not specify this parameter if you create a Serverless instance.
 	//
 	// example:
 	//
 	// 500
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The disk type of the instance. Valid values:
+	// The disk type. Valid values:
 	//
-	// 	- **0**: ultra disk
+	// - **0**: Ultra disk
 	//
-	// 	- **1**: standard SSD
+	// - **1**: SSD
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
+	// > Do not specify this parameter if you create a Serverless instance.
 	//
 	// example:
 	//
@@ -76,59 +76,59 @@ type CreatePostPayOrderShrinkRequest struct {
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The Internet traffic.
 	//
-	// 	- If you set **DeployType*	- to **4**, you must configure this parameter.
+	// - This parameter is required if you set **DeployType*	- to **4**.
 	//
-	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	// - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
+	// > Do not specify this parameter if you create a Serverless instance.
 	//
 	// example:
 	//
 	// 0
 	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	// The maximum traffic in the instance. We recommend that you do not configure this parameter.
+	// The peak traffic. This parameter is not recommended.
 	//
-	// 	- You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
+	// - You must specify this parameter or \\`IoMaxSpec\\`. If you specify both parameters, the value of \\`IoMaxSpec\\` takes precedence. We recommend that you specify only \\`IoMaxSpec\\`.
 	//
-	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	// - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
+	// > Do not specify this parameter if you create a Serverless instance.
 	//
 	// example:
 	//
 	// 20
 	IoMax *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	// The traffic specification of the instance. We recommend that you configure this parameter.
+	// The traffic specification. This parameter is recommended.
 	//
-	// 	- You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
+	// - You must specify this parameter or \\`IoMax\\`. If you specify both parameters, the value of this parameter takes precedence. We recommend that you specify only this parameter.
 	//
-	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	// - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
+	// > Do not specify this parameter if you create a Serverless instance.
 	//
 	// example:
 	//
 	// alikafka.hw.2xlarge
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The billing method. Valid values:
 	//
-	// 	- 1: pay-as-you-go (reserved capacity).
+	// - 1 (default): Pay-as-you-go for a reserved instance.
 	//
-	// 	- 3: pay-as-you-go (reserved capacity) + pay-as-you-go (on-demand capacity)
+	// - 3: Pay-as-you-go for a reserved Serverless instance and pay-as-you-go for elastic scaling of a Serverless instance.
 	//
 	// example:
 	//
 	// 1
 	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
-	// The number of partitions. We recommend that you configure this parameter.
+	// The number of partitions. This parameter is recommended.
 	//
-	// 	- You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+	// - You must specify this parameter or \\`TopicQuota\\`. We recommend that you specify only this parameter.
 	//
-	// 	- If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+	// - If you specify both this parameter and \\`TopicQuota\\`, the system verifies whether the values of the two parameters are equivalent based on the previous topic-based sales model. If the values are not equivalent, the system returns a failure. If the values are equivalent, the purchase is made based on the number of partitions.
 	//
-	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	// - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
+	// > Do not specify this parameter if you create a Serverless instance.
 	//
 	// example:
 	//
@@ -144,29 +144,33 @@ type CreatePostPayOrderShrinkRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	//
-	// If this parameter is left empty, the default resource group is used. You can view the resource group ID on the Resource Group page in the Resource Management console.
+	// If you do not set this parameter, the instance is added to the default resource group. You can view the resource group ID in the Resource Group console.
 	//
 	// example:
 	//
 	// rg-ac***********7q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The parameters configured for the serverless ApsaraMQ for Kafka instance. These parameters are required only when you create a serverless instance.
+	// The settings of the Serverless instance. This parameter is required if you create a Serverless instance.
 	ServerlessConfigShrink *string `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty"`
-	// The instance edition.
+	// The specification type.
 	//
-	// Valid values if you set PaidType to 1:
+	// If you set \\`PaidType\\` to 1 (pay-as-you-go for a reserved instance), valid values are:
 	//
-	// 	- normal: Standard Edition (High Write)
+	// - normal: Standard Edition (High-write)
 	//
-	// 	- professional: Professional Edition (High Write)
+	// - professional: Professional Edition (High-write)
 	//
-	// 	- professionalForHighRead: Professional Edition (High Read)
+	// - professionalForHighRead: Professional Edition (High-read)
 	//
-	// Valid values if you set PaidType to 3:
+	// If you set \\`PaidType\\` to 3 (pay-as-you-go for a reserved Serverless instance and pay-as-you-go for elastic scaling of a Serverless instance), valid values are:
 	//
-	// 	- normal: Serverless Standard Edition
+	// - basic: Serverless Basic Edition
 	//
-	// For more information about the instance editions, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	// - normal: Serverless Standard Edition
+	//
+	// - professional: Serverless Professional Edition
+	//
+	// For more information about these specification types, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
 	// example:
 	//
@@ -174,17 +178,17 @@ type CreatePostPayOrderShrinkRequest struct {
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	// The tags.
 	Tag []*CreatePostPayOrderShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The number of topics. We recommend that you do not configure this parameter.
+	// The number of topics. This parameter is not recommended.
 	//
-	// 	- You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+	// - You must specify this parameter or \\`PartitionNum\\`. We recommend that you specify only \\`PartitionNum\\`.
 	//
-	// 	- If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+	// - If you specify both this parameter and \\`PartitionNum\\`, the system verifies whether the values of the two parameters are equivalent based on the previous topic-based sales model. If the values are not equivalent, the system returns a failure. If the values are equivalent, the purchase is made based on the number of partitions.
 	//
-	// 	- The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+	// - The default value of this parameter varies based on the traffic specification. You are charged for the extra topics that exceed the default value.
 	//
-	// 	- For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	// - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
+	// > Do not specify this parameter if you create a Serverless instance.
 	//
 	// example:
 	//
@@ -340,13 +344,13 @@ func (s *CreatePostPayOrderShrinkRequest) Validate() error {
 }
 
 type CreatePostPayOrderShrinkRequestTag struct {
-	// The key of tag N.
+	// The tag key.
 	//
-	// 	- Valid values of N: 1 to 20.
+	// - N can be an integer from 1 to 20.
 	//
-	// 	- If this parameter is left empty, the keys of all tags are matched.
+	// - If this parameter is empty, all tag keys are matched.
 	//
-	// 	- The tag key must be up to 128 characters in length. It cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	// - The tag key can be up to 128 characters in length. It cannot start with \\`aliyun\\` or \\`acs:\\` and cannot contain \\`http\\://\\` or \\`https\\://\\`.
 	//
 	// This parameter is required.
 	//
@@ -354,13 +358,13 @@ type CreatePostPayOrderShrinkRequestTag struct {
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
+	// The tag value.
 	//
-	// 	- Valid values of N: 1 to 20.
+	// - N can be an integer from 1 to 20.
 	//
-	// 	- If you do not specify a tag key, you cannot specify a tag value. If this parameter is not configured, all tag values are matched.
+	// - This parameter must be empty if the tag key is empty. If this parameter is empty, all tag values are matched.
 	//
-	// 	- The tag value must be 1 to 128 characters in length. It cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	// - The tag value can be up to 128 characters in length. It cannot start with \\`aliyun\\` or \\`acs:\\` and cannot contain \\`http\\://\\` or \\`https\\://\\`.
 	//
 	// example:
 	//

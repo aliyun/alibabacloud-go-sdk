@@ -20,7 +20,7 @@ type iModifyTopicRemarkRequest interface {
 }
 
 type ModifyTopicRemarkRequest struct {
-	// The ID of the instance.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ModifyTopicRemarkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The description of the topic.
+	// Remark.
 	//
 	// example:
 	//

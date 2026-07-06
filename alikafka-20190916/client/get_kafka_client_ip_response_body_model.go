@@ -22,21 +22,21 @@ type iGetKafkaClientIpResponseBody interface {
 }
 
 type GetKafkaClientIpResponseBody struct {
-	// The returned status code. The status code 200 indicates that the request was successful.
+	// Return code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned result.
 	Data *GetKafkaClientIpResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The prompt message for the result.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -113,38 +113,38 @@ func (s *GetKafkaClientIpResponseBody) Validate() error {
 }
 
 type GetKafkaClientIpResponseBodyData struct {
-	// The value true indicates that the broker is not of the latest minor version.
+	// If this value is true, it indicates that the minor version is not the latest version.
 	//
-	// >  If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
+	// > If your server minor version is not the latest version, the sampling logs may not be accurate enough, resulting in less precise IP information statistics. Therefore, it is recommended that you upgrade the server minor version as soon as possible.
 	//
 	// example:
 	//
 	// true
 	Alert *bool                                 `json:"Alert,omitempty" xml:"Alert,omitempty"`
 	Data  *GetKafkaClientIpResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The end of the date range within which data is queried.
+	// End time
 	//
 	// example:
 	//
 	// 1716343502000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The time range within which the client IP addresses are queried.
+	// The time range for querying client IPs.
 	//
-	// >  The valid value is 1 hour. If the beginning of the time range to query and the end of the time range to query exceeds 1 hour, only data within 1 hour is returned.
+	// > This range is 1 hour. If the start time and end time you enter exceed 1 hour, only data within 1 hour will be queried.
 	//
 	// example:
 	//
 	// 1
 	SearchTimeRange *int32 `json:"SearchTimeRange,omitempty" xml:"SearchTimeRange,omitempty"`
-	// The beginning of the date range within which data is queried.
+	// Start time.
 	//
 	// example:
 	//
 	// 1716343501000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The date range within which the client IP addresses are queried.
+	// The date range for querying client IPs.
 	//
-	// >  The valid value is 7 days. If the beginning of the date range to query and the end of the date range to query exceeds 7 days, only data within 7 days is returned.
+	// > This range is 7 days. If the start time and end time you enter exceed 7 days, only data within 7 days will be queried.
 	//
 	// example:
 	//

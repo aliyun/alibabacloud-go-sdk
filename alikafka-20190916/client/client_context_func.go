@@ -67,7 +67,7 @@ func (client *Client) AddUserDefinedSgWithContext(ctx context.Context, tmpReq *A
 
 // Summary:
 //
-// Changes the resource group of an ApsaraMQ for Kafka instance.
+// Moves a resource to a different resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -119,7 +119,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Changes the billing method of a Message Queue for Apache Kafka instance from pay-as-you-go to subscription.
+// Converts a pay-as-you-go instance to a subscription instance.
 //
 // @param request - ConvertPostPayOrderRequest
 //
@@ -175,7 +175,7 @@ func (client *Client) ConvertPostPayOrderWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates an access control list (ACL).
+// This operation is used to create an access control list (ACL).
 //
 // @param request - CreateAclRequest
 //
@@ -255,7 +255,7 @@ func (client *Client) CreateAclWithContext(ctx context.Context, request *CreateA
 
 // Summary:
 //
-// Creates a consumer group.
+// You can call CreateConsumerGroup to create a consumer group.
 //
 // @param request - CreateConsumerGroupRequest
 //
@@ -315,7 +315,7 @@ func (client *Client) CreateConsumerGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a pay-as-you-go instance and returns the instance ID and order ID.
+// This operation creates a pay-as-you-go instance and returns the instance ID and order ID.
 //
 // @param tmpReq - CreatePostPayInstanceRequest
 //
@@ -409,11 +409,11 @@ func (client *Client) CreatePostPayInstanceWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Creates a pay-as-you-go ApsaraMQ for Kafka instance. Pay-as-you-go instances allow you to pay after you use the resources. You are charged for pay-as-you-go instances based on the actual resource usage. You can use pay-as-you-go instances in test scenarios or scenarios in which the peak traffic is uncertain.
+// Pay-as-you-go instances are billed based on actual usage. This billing method is ideal for testing or short-term scenarios with unpredictable traffic peaks. This topic describes how to call the CreatePostPayOrder operation to create a pay-as-you-go instance.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing method and pricing of pay-as-you-go Message Queue for Apache Kafka instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+// Before you call this operation, make sure you understand the billing methods and pricing of pay-as-you-go instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 //
 // @param tmpReq - CreatePostPayOrderRequest
 //
@@ -517,6 +517,12 @@ func (client *Client) CreatePostPayOrderWithContext(ctx context.Context, tmpReq 
 //
 // Creates a subscription instance and returns the instance ID and order ID.
 //
+// Description:
+//
+// - Before calling this operation, ensure you understand the billing methods and pricing of subscription instances. For more information, see [billing overview](https://help.aliyun.com/document_detail/84737.html).
+//
+// - By default, a subscription instance created using this operation has a one-month subscription period and is set to auto-renew monthly. To change the renewal period or disable auto-renewal, go to the [renewal management](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console.<props="china"> For more information, see [Set up auto-renewal](https://help.aliyun.com/document_detail/37128.html).
+//
 // @param tmpReq - CreatePrePayInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -613,13 +619,13 @@ func (client *Client) CreatePrePayInstanceWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Creates a subscription ApsaraMQ for Kafka instance. You can use subscription instances only after you pay for them. Subscription instances are suitable for long-term and stable business scenarios.
+// Subscription instances require prepayment for resources and are ideal for long-term, stable business scenarios. This topic describes how to call the CreatePrePayOrder operation to create a subscription instance.
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you understand the billing methods and pricing of subscription ApsaraMQ for Kafka instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+// - Before you call this operation, ensure that you understand the billing method and pricing of subscription instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 //
-//		- If you create an ApsaraMQ for Kafka instance by calling this operation, the subscription duration is one month and the auto-renewal feature is enabled by default. The auto-renewal cycle is also one month. If you want to change the auto-renewal cycle or disable the auto-renewal feature, you can go to the [Renewal](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console.
+// - By default, when you call this operation, the subscription duration is one month and auto-renewal is enabled with a Unified Auto Renewal Cycle of one month. To modify the Unified Auto Renewal Cycle or disable auto-renewal, go to the [Renewal Management](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console. For more information, see [Configure auto-renewal](https://help.aliyun.com/document_detail/37128.html).
 //
 // @param tmpReq - CreatePrePayOrderRequest
 //
@@ -725,7 +731,7 @@ func (client *Client) CreatePrePayOrderWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Creates a Simple Authentication and Security Layer (SASL) user.
+// This operation creates a SASL user.
 //
 // @param request - CreateSaslUserRequest
 //
@@ -789,11 +795,11 @@ func (client *Client) CreateSaslUserWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+// After you deploy a serverless instance, you can use this API to create a scheduled scaling rule for the instance.
 //
 // Description:
 //
-// ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
+// ###### This operation supports only serverless instances.
 //
 // @param tmpReq - CreateScheduledScalingRuleRequest
 //
@@ -891,9 +897,9 @@ func (client *Client) CreateScheduledScalingRuleWithContext(ctx context.Context,
 //
 // Description:
 //
-//	  Each Alibaba Cloud account can call this operation up to once per second.
+// - Each user can send up to 20 queries per second (QPS).
 //
-//		- The maximum number of topics that you can create in an instance is determined by the specification of the instance.
+// - The maximum number of topics for an instance depends on its instance type.
 //
 // @param request - CreateTopicRequest
 //
@@ -1057,7 +1063,7 @@ func (client *Client) DeleteAclWithContext(ctx context.Context, request *DeleteA
 
 // Summary:
 //
-// Deletes a consumer group from a specified Message Queue for Apache Kafka instance.
+// Deletes a Group.
 //
 // @param request - DeleteConsumerGroupRequest
 //
@@ -1109,7 +1115,7 @@ func (client *Client) DeleteConsumerGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes an instance. You can delete subscription and pay-as-you-go instances after you release them.
+// The DeleteInstance operation deletes an instance after a subscription instance or a pay-as-you-go instance is released.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -1157,7 +1163,7 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes a Simple Authentication and Security Layer (SASL) user.
+// You can call the DeleteSaslUser operation to delete a Simple Authentication and Security Layer (SASL) user.
 //
 // @param request - DeleteSaslUserRequest
 //
@@ -1217,11 +1223,11 @@ func (client *Client) DeleteSaslUserWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
+// After a Serverless instance is deployed, you can call this API operation to delete its scheduled scaling policy configuration.
 //
 // Description:
 //
-// ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
+// ###### This operation applies only to Serverless instances.
 //
 // @param request - DeleteScheduledScalingRuleRequest
 //
@@ -1383,7 +1389,7 @@ func (client *Client) DeleteUserDefinedSgWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Queries the name of the resource with which an access control list (ACL) is associated.
+// Queries access control list (ACL) resource names.
 //
 // @param request - DescribeAclResourceNameRequest
 //
@@ -1515,7 +1521,7 @@ func (client *Client) DescribeAclsWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// Queries Simple Authentication and Security Layer (SASL) users.
+// You can call DescribeSaslUsers to query SASL users.
 //
 // @param request - DescribeSaslUsersRequest
 //
@@ -1747,7 +1753,13 @@ func (client *Client) DowngradePrePayOrderWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Enables and disables the flexible group creation feature.
+// This topic describes how to call EnableAutoGroupCreation to enable or disable the free use of Groups.
+//
+// Description:
+//
+// Currently, only reserved instances support this API.
+//
+// Serverless instances are not supported at this time.
 //
 // @param request - EnableAutoGroupCreationRequest
 //
@@ -1799,7 +1811,7 @@ func (client *Client) EnableAutoGroupCreationWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Enables or disables the automatic topic creation feature, or changes the number of partitions in topics that are automatically created.
+// This topic describes how to call the EnableAutoTopicCreation operation to enable or disable automatic topic creation and modify the default number of partitions for automatically created topics.
 //
 // @param request - EnableAutoTopicCreationRequest
 //
@@ -1975,7 +1987,7 @@ func (client *Client) GetAllInstanceIdListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the IP address whitelist.
+// The GetAllowedIpList operation retrieves the IP address allowlist.
 //
 // @param request - GetAllowedIpListRequest
 //
@@ -2023,11 +2035,11 @@ func (client *Client) GetAllowedIpListWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
+// After a Serverless instance is deployed, you can call this API operation to query the auto scaling configuration of the instance.
 //
 // Description:
 //
-// ###### [](#-serverless-)**This operation is available only for serverless ApsaraMQ for Kafka instances.
+// ###### **This operation applies only to Serverless instances.**
 //
 // @param request - GetAutoScalingConfigurationRequest
 //
@@ -2075,7 +2087,7 @@ func (client *Client) GetAutoScalingConfigurationWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries one or more consumer groups in a specified Message Queue for Apache Kafka instance.
+// Retrieves a list of consumer groups.
 //
 // @param request - GetConsumerListRequest
 //
@@ -2135,7 +2147,7 @@ func (client *Client) GetConsumerListWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the consumer progress of a consumer group.
+// Queries the consumption status of a consumer group.
 //
 // @param request - GetConsumerProgressRequest
 //
@@ -2191,7 +2203,7 @@ func (client *Client) GetConsumerProgressWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the information about instances in a specified region.
+// Queries information about instances in a specified region.
 //
 // @param request - GetInstanceListRequest
 //
@@ -2255,15 +2267,15 @@ func (client *Client) GetInstanceListWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the IP addresses of the clients that are connected to an ApsaraMQ for Kafka instance.
+// Retrieves the IP addresses of Kafka clients.
 //
 // Description:
 //
-//	  The IP information is obtained from the sampled logs generated for the requests that the client sends to the broker by calling the API operations of ApsaraMQ for Kafka.
+// - The IP information is retrieved from the sampling logs of client requests to the server through the Kafka API.
 //
-//		- Statistics refers to the number of connections on different ports of an IP address within a specific period of time.
+// - The count indicates the number of connections from a single IP address using different ports that the server detected within the specified time range.
 //
-//		- If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
+// - If your server is not running the latest minor version, the sampling logs may be inaccurate and provide less precise IP information. We recommend that you upgrade the server to the latest minor version.
 //
 // @param request - GetKafkaClientIpRequest
 //
@@ -2331,7 +2343,7 @@ func (client *Client) GetKafkaClientIpWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the used quota of topics and partitions.
+// Retrieves the usage quotas for topics and partitions.
 //
 // @param request - GetQuotaTipRequest
 //
@@ -2379,7 +2391,7 @@ func (client *Client) GetQuotaTipWithContext(ctx context.Context, request *GetQu
 
 // Summary:
 //
-// 查询实例风险列表
+// Queries the list of threats on an instance.
 //
 // @param request - GetRiskListRequest
 //
@@ -2435,7 +2447,7 @@ func (client *Client) GetRiskListWithContext(ctx context.Context, request *GetRi
 
 // Summary:
 //
-// Queries the information about a topic.
+// Retrieves information about topics.
 //
 // @param request - GetTopicListRequest
 //
@@ -2495,7 +2507,7 @@ func (client *Client) GetTopicListWithContext(ctx context.Context, request *GetT
 
 // Summary:
 //
-// Queries the messaging status of a topic.
+// Retrieves the message sending and receiving status of a topic.
 //
 // @param request - GetTopicStatusRequest
 //
@@ -2547,7 +2559,7 @@ func (client *Client) GetTopicStatusWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the information about the groups that subscribe to a topic.
+// Retrieves the subscription status of Groups for a topic.
 //
 // @param request - GetTopicSubscribeStatusRequest
 //
@@ -2599,7 +2611,7 @@ func (client *Client) GetTopicSubscribeStatusWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Obtains the rebalance details of a consumer group.
+// Queries the details of rebalancing tasks.
 //
 // @param request - ListRebalanceInfoRequest
 //
@@ -2651,7 +2663,7 @@ func (client *Client) ListRebalanceInfoWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the tags that are attached to a specified resource.
+// Queries the list of tags that are attached to resources.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -2711,7 +2723,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Changes the name of an ApsaraMQ for Kafka instance. After you deploy an instance, you can call this operation to change the name of the instance.
+// You can modify the name of an ApsaraMQ for Kafka instance after it is deployed. This topic describes how to call the ModifyInstanceName operation.
 //
 // @param request - ModifyInstanceNameRequest
 //
@@ -2763,7 +2775,7 @@ func (client *Client) ModifyInstanceNameWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Changes the number of partitions in a topic.
+// This operation modifies the number of partitions in a topic.
 //
 // @param request - ModifyPartitionNumRequest
 //
@@ -2819,11 +2831,11 @@ func (client *Client) ModifyPartitionNumWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
+// After you deploy Serverless instances, you can call this API operation to modify their scheduled scaling policy.
 //
 // Description:
 //
-// ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
+// ###### This operation applies only to Serverless instances.
 //
 // @param request - ModifyScheduledScalingRuleRequest
 //
@@ -2879,7 +2891,7 @@ func (client *Client) ModifyScheduledScalingRuleWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the description of a topic.
+// Modifies the remark of a topic.
 //
 // @param request - ModifyTopicRemarkRequest
 //
@@ -2993,7 +3005,7 @@ func (client *Client) ModifyUserDefinedSgWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Queries messages stored in a topic. You can query messages by creation time or offset.
+// This operation queries messages stored in a topic by message creation time or offset.
 //
 // @param request - QueryMessageRequest
 //
@@ -3037,7 +3049,7 @@ func (client *Client) QueryMessageWithContext(ctx context.Context, request *Quer
 //
 // Description:
 //
-// You cannot call this operation to release a subscription Message Queue for Apache Kafka instance.
+// You cannot use this operation to release subscription instances.
 //
 // @param request - ReleaseInstanceRequest
 //
@@ -3089,11 +3101,11 @@ func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// Enables an ApsaraMQ for Kafka instance.
+// Starts an instance.
 //
 // Description:
 //
-// You can call this operation only if your instance is in the Stopped state.
+// You can call this operation only when the instance is in the Stopped state.
 //
 // @param request - ReopenInstanceRequest
 //
@@ -3141,11 +3153,11 @@ func (client *Client) ReopenInstanceWithContext(ctx context.Context, request *Re
 
 // Summary:
 //
-// Deploys an ApsaraMQ for Kafka instance. You must purchase and deploy an ApsaraMQ for Kafka instance before you can use the instance to send and receive messages.
+// You must purchase and deploy an ApsaraMQ for Kafka instance before you can send and receive messages. This topic describes how to deploy an instance by calling the StartInstance operation.
 //
 // Description:
 //
-// >  You can call this operation up to twice per second.
+// > The request frequency is limited to 2 queries per second (QPS) for each user.
 //
 // @param request - StartInstanceRequest
 //
@@ -3269,11 +3281,11 @@ func (client *Client) StartInstanceWithContext(ctx context.Context, request *Sta
 
 // Summary:
 //
-// Stops an ApsaraMQ for Kafka instance.
+// Stops an instance.
 //
 // Description:
 //
-// You cannot stop a subscription ApsaraMQ for Kafka instance. If you want to stop a subscription ApsaraMQ for Kafka instance, submit a ticket.
+// Stopping subscription instances is not currently supported. To stop a subscription instance, submit a ticket.
 //
 // @param request - StopInstanceRequest
 //
@@ -3321,7 +3333,7 @@ func (client *Client) StopInstanceWithContext(ctx context.Context, request *Stop
 
 // Summary:
 //
-// Attaches a tag to a resource.
+// You can call the TagResources operation to attach tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -3381,7 +3393,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Detaches tags from a specified resource.
+// You can call UntagResources to detach tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -3441,7 +3453,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// Updates the IP address whitelist of an ApsaraMQ for Kafka instance. Only IP addresses and ports that are configured in the IP address whitelist of an instance can access the instance.
+// You can call the UpdateAllowedIp operation to edit the IP whitelist for an ApsaraMQ for Kafka instance. The whitelist specifies the IP addresses and ports that are allowed to access the instance.
 //
 // @param request - UpdateAllowedIpRequest
 //
@@ -3509,17 +3521,17 @@ func (client *Client) UpdateAllowedIpWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Resets the consumer offsets of the subscribed topics of a consumer group.
+// The UpdateConsumerOffset operation resets the consumer offset of a consumer group.
 //
 // Description:
 //
-// You can call this operation to reset the consumer offset of a specific consumer group. You can use the timestamp or offset parameter to reset the consumer offset of a consumer group. You can implement the following features by configuring a combination of different parameters:
+// This operation resets the consumer offset of a specified consumer group. You can reset the consumer offset by timestamp or by a specific offset value. Using different parameter combinations, you can perform the following tasks:
 //
-//   - Reset the consumer offsets of one or all subscribed topics of a consumer group to the latest offset. This way, you can consume messages in the topics from the latest offset.
+// - Consume messages from the latest offset by setting the consumer offset to the latest position. This is supported for a single topic or all topics.
 //
-//   - Reset the consumer offsets of one or all subscribed topics of a consumer group to a specific point in time. This way, you can consume messages in the topics from the specified point in time.
+// - Consume messages from the offset of a specified time point by providing a timestamp. This is supported for a single topic or all topics.
 //
-//   - Reset the consumer offset of one subscribed topic of a consumer group to a specific offset in a specific partition. This way, you can consume messages from the specified offset in the specified partition.
+// - Reset the consumer offset for a specific partition by providing the target partition ID and consumer offset. This is supported only for a single topic.
 //
 // @param tmpReq - UpdateConsumerOffsetRequest
 //
@@ -3593,19 +3605,19 @@ func (client *Client) UpdateConsumerOffsetWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Modifies the configurations of an ApsaraMQ for Kafka instance. ApsaraMQ for Kafka allows you to modify the configurations of an instance, including the access control list (ACL) feature, the Secure Sockets Layer (SSL) feature, the message retention period, and the maximum message size.
+// After an instance is deployed, you can modify configurations such as enabling Access Control List (ACL) and SSL, the message retention period, and the maximum message size. This topic describes how to call the UpdateInstanceConfig operation to modify the configuration of an instance.
 //
 // Description:
 //
-// ## **Permissions**
+// ## **Permission information**
 //
-// If a RAM user wants to call the **UpdateInstanceConfig*	- operation, the RAM user must be granted the required permissions. For more information about how to grant permissions, see [RAM policies](https://help.aliyun.com/document_detail/185815.html).
+// RAM users must obtain authorization before they can call the **UpdateInstanceConfig*	- operation. For more information, see [RAM access policies](https://help.aliyun.com/document_detail/185815.html).
 //
-// |API|Action|Resource|
+// | API                  | Action                   | Resource                      |
 //
-// |---|---|---|
+// | -------------------- | ------------------------ | ----------------------------- |
 //
-// |UpdateInstanceConfig|alikafka: UpdateInstance|acs:alikafka:*:*:{instanceId}|
+// | UpdateInstanceConfig | alikafka: UpdateInstance | acs:alikafka:*:*:{instanceId} |
 //
 // @param request - UpdateInstanceConfigRequest
 //
@@ -3657,7 +3669,7 @@ func (client *Client) UpdateInstanceConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Modifies the configurations of a topic. After you create a topic, you can modify the message retention period and maximum message size of the topic.
+// After a topic is created, you can modify its configurations, such as the message retention period and maximum message size. This topic describes how to call this API operation to modify topic configurations.
 //
 // @param request - UpdateTopicConfigRequest
 //
@@ -3717,23 +3729,23 @@ func (client *Client) UpdateTopicConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Updates the version of an instance.
+// Upgrades the version of an instance.
 //
 // Description:
 //
-// ## **Permissions**
+// ## **Permission description**
 //
-// A RAM user must be granted the required permissions before the RAM user calls the **UpgradeInstanceVersion*	- operation. For information about how to grant permissions, see [RAM policies](https://help.aliyun.com/document_detail/185815.html).
+// RAM users must be authorized before they can call the **UpgradeInstanceVersion*	- API. For more information about authorization, see [RAM access policy](https://help.aliyun.com/document_detail/185815.html).
 //
-// |API|Action|Resource|
+// | API                    | Action         | Resource                      |
 //
-// |---|---|---|
+// | ---------------------- | -------------- | ----------------------------- |
 //
-// |UpgradeInstanceVersion|UpdateInstance|acs:alikafka:*:*:{instanceId}|
+// | UpgradeInstanceVersion | UpdateInstance | acs:alikafka:*:*:{instanceId} |
 //
 // ## **QPS limits**
 //
-// You can send a maximum of two queries per second (QPS).
+// The request frequency is limited to 2 queries per second (QPS) for a single user.
 //
 // @param request - UpgradeInstanceVersionRequest
 //
@@ -3785,11 +3797,11 @@ func (client *Client) UpgradeInstanceVersionWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Upgrades a pay-as-you-go ApsaraMQ for Kafka instance.
+// Upgrades a pay-as-you-go instance.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing method and pricing of pay-as-you-go Message Queue for Apache Kafka instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+// Before you call this operation, make sure that you fully understand the billing method and pricing of pay-as-you-go instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 //
 // @param tmpReq - UpgradePostPayOrderRequest
 //
@@ -3879,11 +3891,11 @@ func (client *Client) UpgradePostPayOrderWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// # Upgrade Prepaid Instance
+// Upgrades a subscription instance.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing method and pricing of subscription Message Queue for Apache Kafka instances. For more information, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+// Before calling this operation, ensure you understand the billing method and pricing of subscription instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 //
 // @param tmpReq - UpgradePrePayOrderRequest
 //

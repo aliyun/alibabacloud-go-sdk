@@ -22,13 +22,13 @@ type iGetTopicListRequest interface {
 }
 
 type GetTopicListRequest struct {
-	// The page number. Default value: 1
+	// The number of the page to return. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the instance.
+	// The ID of the instance to which the topic belongs.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type GetTopicListRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance to which the topics that you want to query belong.
+	// The ID of the region where the instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the topic that you want to query.
+	// The name of the topic whose information you want to query.
 	//
 	// example:
 	//

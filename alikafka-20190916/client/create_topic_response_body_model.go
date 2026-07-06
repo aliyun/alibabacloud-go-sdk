@@ -20,25 +20,25 @@ type iCreateTopicResponseBody interface {
 }
 
 type CreateTopicResponseBody struct {
-	// The HTTP status code returned. The HTTP status code 200 indicates that the call is successful.
+	// The response code. A value of 200 indicates that the request is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9C0F207C-77A6-43E5-991C-9D98510A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

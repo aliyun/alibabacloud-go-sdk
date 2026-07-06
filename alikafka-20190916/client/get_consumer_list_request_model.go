@@ -22,13 +22,13 @@ type iGetConsumerListRequest interface {
 }
 
 type GetConsumerListRequest struct {
-	// The name of the consumer group. If you do not configure this parameter, all consumer groups are queried.
+	// The ID of the consumer group. If you do not specify this parameter, information about all consumer groups is returned.
 	//
 	// example:
 	//
 	// kafka-test
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	// The page number.
+	// The number of the page to return.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetConsumerListRequest struct {
 	//
 	// alikafka_post-cn-v0h18sav****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to be returned per page.
+	// The number of consumer groups to return on each page.
 	//
 	// example:
 	//

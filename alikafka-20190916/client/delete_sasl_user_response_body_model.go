@@ -20,25 +20,25 @@ type iDeleteSaslUserResponseBody interface {
 }
 
 type DeleteSaslUserResponseBody struct {
-	// The HTTP status code. If the request is successful, 200 is returned.
+	// Status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// Response message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 3CB89F5C-CD97-4C1D-BC7C-FEDEC2F4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iReopenInstanceResponseBody interface {
 }
 
 type ReopenInstanceResponseBody struct {
-	// The returned HTTP status code. If the request is successful, 200 is returned.
+	// The return code. A return code of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ReopenInstanceResponseBody struct {
 	//
 	// 252820E1-A2E6-45F2-B4C9-1056B8CE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

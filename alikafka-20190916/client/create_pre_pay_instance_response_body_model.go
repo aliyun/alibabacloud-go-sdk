@@ -22,19 +22,28 @@ type iCreatePrePayInstanceResponseBody interface {
 }
 
 type CreatePrePayInstanceResponseBody struct {
+	// The status code. A value of 200 indicates a successful request.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *CreatePrePayInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// E57A8862-DF68-4055-8E55-B80CB4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,10 +113,14 @@ func (s *CreatePrePayInstanceResponseBody) Validate() error {
 }
 
 type CreatePrePayInstanceResponseBodyData struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// alikafka_post-cn-xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The unique ID of the order.
+	//
 	// example:
 	//
 	// 236972661xxxx

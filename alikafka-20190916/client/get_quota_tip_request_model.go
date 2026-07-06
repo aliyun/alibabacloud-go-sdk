@@ -16,7 +16,7 @@ type iGetQuotaTipRequest interface {
 }
 
 type GetQuotaTipRequest struct {
-	// The ID of the instance.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetQuotaTipRequest struct {
 	//
 	// alikafka_pre-cn-i7m2wpm5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region in which the instance resides.
+	// Region ID.
 	//
 	// This parameter is required.
 	//

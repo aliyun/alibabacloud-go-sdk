@@ -36,36 +36,43 @@ type iUpgradePrePayOrderRequest interface {
 }
 
 type UpgradePrePayOrderRequest struct {
+	// Configurations for the Confluent components.
 	ConfluentConfig *UpgradePrePayOrderRequestConfluentConfig `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty" type:"Struct"`
-	// The size of the disk.
+	// The disk capacity.
 	//
-	// 	- The disk size that you specify must be greater than or equal to the current disk size of the instance.
+	// - The specified disk capacity must be greater than or equal to the current disk capacity of the instance.
 	//
-	// 	- For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+	// - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
+	// > This parameter is required for subscription instances but not for Confluent-series instances.
 	//
 	// example:
 	//
 	// 900
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The Internet traffic for the instance.
+	// The maximum Internet traffic bandwidth.
 	//
-	// 	- The Internet traffic volume that you specify must be greater than or equal to the current Internet traffic volume of the instance.
+	// - The specified Internet traffic bandwidth must be greater than or equal to the current Internet traffic bandwidth of the instance.
 	//
-	// 	- For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+	// - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
-	// > - If the **EipModel*	- parameter is set to **true**, set the **EipMax*	- parameter to a value that is greater than 0.
+	// > 	- If **EipModel*	- is set to **true**, **EipMax*	- must be greater than 0.
 	//
-	// > - If the **EipModel*	- parameter is set to **false**, set the **EipMax*	- parameter to **0**.
+	// >
+	//
+	// > 	- If **EipModel*	- is set to **false**, **EipMax*	- must be set to **0**.
 	//
 	// example:
 	//
 	// 3
 	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	// Specifies whether to enable Internet access for the instance. Valid values:
+	// Specifies whether to enable Internet access. Valid values:
 	//
-	// 	- true: enables Internet access.
+	// - `true`: enables Internet access.
 	//
-	// 	- false: disables Internet access.
+	// - `false`: disables Internet access.
+	//
+	// > This parameter is required for subscription instances but not for Confluent-series instances.
 	//
 	// example:
 	//
@@ -79,44 +86,57 @@ type UpgradePrePayOrderRequest struct {
 	//
 	// alikafka_post-cn-mp919o4v****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum traffic for the instance. We recommend that you do not configure this parameter.
+	// The traffic peak (not recommended).
 	//
-	// 	- The maximum traffic volume that you specify must be greater than or equal to the current maximum traffic volume of the instance.
+	// - The specified traffic peak must be greater than or equal to the current traffic peak of the instance.
 	//
-	// 	- You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you configure only the IoMaxSpec parameter.
+	// - You must specify either this parameter or `IoMaxSpec`. If you specify both, `IoMaxSpec` takes precedence. We recommend that you specify only `IoMaxSpec`.
 	//
-	// 	- For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+	// - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
 	// example:
 	//
 	// 40
 	IoMax *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	// The traffic specification of the instance. We recommend that you configure this parameter.
+	// The traffic specification (recommended).
 	//
-	// 	- The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
+	// - The specified traffic specification must be greater than or equal to the current traffic specification of the instance.
 	//
-	// 	- You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you configure only the IoMaxSpec parameter.
+	// - You must specify either this parameter or `IoMax`. If you specify both, this parameter takes precedence. We recommend that you specify only this parameter.
 	//
-	// 	- For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+	// - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
+	// > This parameter is required for subscription instances but not for Confluent-series instances.
 	//
 	// example:
 	//
 	// alikafka.hw.2xlarge
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
-	PaidType  *int32  `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
-	// The number of partitions. We recommend that you configure this parameter.
+	// The billing method. Valid values:
 	//
-	// 	- You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// - **0**: subscription
 	//
-	// 	- If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// - **4**: subscription for Confluent instances
 	//
-	// 	- For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+	// example:
+	//
+	// 4
+	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	// The number of partitions (recommended).
+	//
+	// - You must specify either this parameter or `TopicQuota`. We recommend that you specify only this parameter.
+	//
+	// - If you specify both `PartitionNum` and `TopicQuota`, the system checks if their values are equivalent under the previous topic pricing model. A mismatch causes the request to fail. If they match, the system uses `PartitionNum` to process the purchase.
+	//
+	// - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
+	// > This parameter is required for subscription instances but not for Confluent-series instances.
 	//
 	// example:
 	//
 	// 50
 	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	// The region ID of the instance.
+	// The ID of the region where the instance is located.
 	//
 	// This parameter is required.
 	//
@@ -124,29 +144,37 @@ type UpgradePrePayOrderRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The edition of the instance. Valid values:
+	// The specification type.
 	//
-	// 	- **normal**: Standard Edition (High Write)
+	// Valid values for ApsaraMQ for Kafka instances:
 	//
-	// 	- **professional**: Professional Edition (High Write)
+	// - **normal**: Standard Edition (high write)
 	//
-	// 	- **professionalForHighRead**: Professional Edition (High Read)
+	// - **professional**: Professional Edition (high write)
 	//
-	// You cannot downgrade an instance from the Professional Edition to the Standard Edition. For more information about these instance editions, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+	// - **professionalForHighRead**: Professional Edition (high read)
+	//
+	// Valid values for Confluent instances:
+	//
+	// - **professional**: Professional Edition
+	//
+	// - **enterprise**: Enterprise Edition
+	//
+	// You cannot downgrade an instance from Professional Edition to Standard Edition. For more information about these specification types, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
 	// example:
 	//
 	// professional
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	// The number of topics. We recommend that you do not configure this parameter.
+	// The number of topics (not recommended).
 	//
-	// 	- You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// - You must specify either this parameter or `PartitionNum`. We recommend that you specify only `PartitionNum`.
 	//
-	// 	- If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// - If you specify both `TopicQuota` and `PartitionNum`, the system checks if their values are equivalent under the previous topic pricing model. A mismatch causes the request to fail. If they match, the system uses `PartitionNum` to process the purchase.
 	//
-	// 	- The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+	// - The default value of this parameter varies based on the traffic specification. You are charged additional fees if the specified value exceeds the default value.
 	//
-	// 	- For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+	// - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 	//
 	// example:
 	//
@@ -280,25 +308,118 @@ func (s *UpgradePrePayOrderRequest) Validate() error {
 }
 
 type UpgradePrePayOrderRequestConfluentConfig struct {
-	ConnectCU             *int32                                              `json:"ConnectCU,omitempty" xml:"ConnectCU,omitempty"`
-	ConnectReplica        *int32                                              `json:"ConnectReplica,omitempty" xml:"ConnectReplica,omitempty"`
-	ControlCenterCU       *int32                                              `json:"ControlCenterCU,omitempty" xml:"ControlCenterCU,omitempty"`
-	ControlCenterReplica  *int32                                              `json:"ControlCenterReplica,omitempty" xml:"ControlCenterReplica,omitempty"`
-	ControlCenterStorage  *int32                                              `json:"ControlCenterStorage,omitempty" xml:"ControlCenterStorage,omitempty"`
-	KafkaCU               *int32                                              `json:"KafkaCU,omitempty" xml:"KafkaCU,omitempty"`
-	KafkaReplica          *int32                                              `json:"KafkaReplica,omitempty" xml:"KafkaReplica,omitempty"`
-	KafkaRestProxyCU      *int32                                              `json:"KafkaRestProxyCU,omitempty" xml:"KafkaRestProxyCU,omitempty"`
-	KafkaRestProxyReplica *int32                                              `json:"KafkaRestProxyReplica,omitempty" xml:"KafkaRestProxyReplica,omitempty"`
-	KafkaStorage          *int32                                              `json:"KafkaStorage,omitempty" xml:"KafkaStorage,omitempty"`
-	KsqlCU                *int32                                              `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
-	KsqlList              []*UpgradePrePayOrderRequestConfluentConfigKsqlList `json:"KsqlList,omitempty" xml:"KsqlList,omitempty" type:"Repeated"`
-	KsqlReplica           *int32                                              `json:"KsqlReplica,omitempty" xml:"KsqlReplica,omitempty"`
-	KsqlStorage           *int32                                              `json:"KsqlStorage,omitempty" xml:"KsqlStorage,omitempty"`
-	SchemaRegistryCU      *int32                                              `json:"SchemaRegistryCU,omitempty" xml:"SchemaRegistryCU,omitempty"`
-	SchemaRegistryReplica *int32                                              `json:"SchemaRegistryReplica,omitempty" xml:"SchemaRegistryReplica,omitempty"`
-	ZooKeeperCU           *int32                                              `json:"ZooKeeperCU,omitempty" xml:"ZooKeeperCU,omitempty"`
-	ZooKeeperReplica      *int32                                              `json:"ZooKeeperReplica,omitempty" xml:"ZooKeeperReplica,omitempty"`
-	ZooKeeperStorage      *int32                                              `json:"ZooKeeperStorage,omitempty" xml:"ZooKeeperStorage,omitempty"`
+	// The number of CPU cores for the Connect component.
+	//
+	// example:
+	//
+	// 4
+	ConnectCU *int32 `json:"ConnectCU,omitempty" xml:"ConnectCU,omitempty"`
+	// The number of replicas for the Connect component.
+	//
+	// example:
+	//
+	// 2
+	ConnectReplica *int32 `json:"ConnectReplica,omitempty" xml:"ConnectReplica,omitempty"`
+	// The number of CPU cores for the Control Center component.
+	//
+	// example:
+	//
+	// 4
+	ControlCenterCU *int32 `json:"ControlCenterCU,omitempty" xml:"ControlCenterCU,omitempty"`
+	// The number of replicas for the Control Center component.
+	//
+	// example:
+	//
+	// 1
+	ControlCenterReplica *int32 `json:"ControlCenterReplica,omitempty" xml:"ControlCenterReplica,omitempty"`
+	// The disk capacity of the Control Center component, in GB.
+	//
+	// example:
+	//
+	// 300
+	ControlCenterStorage *int32 `json:"ControlCenterStorage,omitempty" xml:"ControlCenterStorage,omitempty"`
+	// The number of CPU cores for the Kafka broker.
+	//
+	// example:
+	//
+	// 4
+	KafkaCU *int32 `json:"KafkaCU,omitempty" xml:"KafkaCU,omitempty"`
+	// The number of replicas for the Kafka broker.
+	//
+	// example:
+	//
+	// 3
+	KafkaReplica *int32 `json:"KafkaReplica,omitempty" xml:"KafkaReplica,omitempty"`
+	// The number of CPU cores for the Kafka REST Proxy component.
+	//
+	// example:
+	//
+	// 4
+	KafkaRestProxyCU *int32 `json:"KafkaRestProxyCU,omitempty" xml:"KafkaRestProxyCU,omitempty"`
+	// The number of replicas for the Kafka REST Proxy component.
+	//
+	// example:
+	//
+	// 2
+	KafkaRestProxyReplica *int32 `json:"KafkaRestProxyReplica,omitempty" xml:"KafkaRestProxyReplica,omitempty"`
+	// The disk capacity of the Kafka broker, in GB.
+	//
+	// example:
+	//
+	// 800
+	KafkaStorage           *int32 `json:"KafkaStorage,omitempty" xml:"KafkaStorage,omitempty"`
+	KraftControllerCU      *int32 `json:"KraftControllerCU,omitempty" xml:"KraftControllerCU,omitempty"`
+	KraftControllerReplica *int32 `json:"KraftControllerReplica,omitempty" xml:"KraftControllerReplica,omitempty"`
+	KraftControllerStorage *int32 `json:"KraftControllerStorage,omitempty" xml:"KraftControllerStorage,omitempty"`
+	// The number of CPU cores for the ksqlDB component.
+	//
+	// example:
+	//
+	// 4
+	KsqlCU   *int32                                              `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
+	KsqlList []*UpgradePrePayOrderRequestConfluentConfigKsqlList `json:"KsqlList,omitempty" xml:"KsqlList,omitempty" type:"Repeated"`
+	// The number of replicas for the ksqlDB component.
+	//
+	// example:
+	//
+	// 2
+	KsqlReplica *int32 `json:"KsqlReplica,omitempty" xml:"KsqlReplica,omitempty"`
+	// The disk capacity of the ksqlDB component, in GB.
+	//
+	// example:
+	//
+	// 100
+	KsqlStorage *int32 `json:"KsqlStorage,omitempty" xml:"KsqlStorage,omitempty"`
+	// The number of CPU cores for the Schema Registry component.
+	//
+	// example:
+	//
+	// 1
+	SchemaRegistryCU *int32 `json:"SchemaRegistryCU,omitempty" xml:"SchemaRegistryCU,omitempty"`
+	// The number of replicas for the Schema Registry component.
+	//
+	// example:
+	//
+	// 2
+	SchemaRegistryReplica *int32 `json:"SchemaRegistryReplica,omitempty" xml:"SchemaRegistryReplica,omitempty"`
+	// The number of CPU cores for the ZooKeeper component.
+	//
+	// example:
+	//
+	// 2
+	ZooKeeperCU *int32 `json:"ZooKeeperCU,omitempty" xml:"ZooKeeperCU,omitempty"`
+	// The number of replicas for the ZooKeeper component.
+	//
+	// example:
+	//
+	// 3
+	ZooKeeperReplica *int32 `json:"ZooKeeperReplica,omitempty" xml:"ZooKeeperReplica,omitempty"`
+	// The disk capacity of the ZooKeeper component, in GB.
+	//
+	// example:
+	//
+	// 100
+	ZooKeeperStorage *int32 `json:"ZooKeeperStorage,omitempty" xml:"ZooKeeperStorage,omitempty"`
 }
 
 func (s UpgradePrePayOrderRequestConfluentConfig) String() string {
@@ -347,6 +468,18 @@ func (s *UpgradePrePayOrderRequestConfluentConfig) GetKafkaRestProxyReplica() *i
 
 func (s *UpgradePrePayOrderRequestConfluentConfig) GetKafkaStorage() *int32 {
 	return s.KafkaStorage
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) GetKraftControllerCU() *int32 {
+	return s.KraftControllerCU
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) GetKraftControllerReplica() *int32 {
+	return s.KraftControllerReplica
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) GetKraftControllerStorage() *int32 {
+	return s.KraftControllerStorage
 }
 
 func (s *UpgradePrePayOrderRequestConfluentConfig) GetKsqlCU() *int32 {
@@ -432,6 +565,21 @@ func (s *UpgradePrePayOrderRequestConfluentConfig) SetKafkaRestProxyReplica(v in
 
 func (s *UpgradePrePayOrderRequestConfluentConfig) SetKafkaStorage(v int32) *UpgradePrePayOrderRequestConfluentConfig {
 	s.KafkaStorage = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetKraftControllerCU(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.KraftControllerCU = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetKraftControllerReplica(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.KraftControllerReplica = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetKraftControllerStorage(v int32) *UpgradePrePayOrderRequestConfluentConfig {
+	s.KraftControllerStorage = &v
 	return s
 }
 

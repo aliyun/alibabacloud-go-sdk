@@ -22,19 +22,27 @@ type iListRebalanceInfoResponseBody interface {
 }
 
 type ListRebalanceInfoResponseBody struct {
+	// The return code. A return code of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *ListRebalanceInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06084011-E093-46F3-A51F-4B19A8AD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true

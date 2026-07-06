@@ -18,18 +18,24 @@ type iListRebalanceInfoRequest interface {
 }
 
 type ListRebalanceInfoRequest struct {
+	// The name of the consumer group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// kafka-test
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alikafka_pre-cn-v0h1cng0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

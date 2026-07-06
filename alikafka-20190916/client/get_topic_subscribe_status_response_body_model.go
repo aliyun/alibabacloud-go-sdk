@@ -22,19 +22,19 @@ type iGetTopicSubscribeStatusResponseBody interface {
 }
 
 type GetTopicSubscribeStatusResponseBody struct {
-	// The HTTP status code.
+	// HTTP return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// Return message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetTopicSubscribeStatusResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The subscription details.
+	// Subscription details
 	TopicSubscribeStatus *GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus `json:"TopicSubscribeStatus,omitempty" xml:"TopicSubscribeStatus,omitempty" type:"Struct"`
 }
 
@@ -113,9 +113,9 @@ func (s *GetTopicSubscribeStatusResponseBody) Validate() error {
 }
 
 type GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus struct {
-	// The groups that subscribe to the topic.
+	// List of Groups that subscribe to this topic.
 	ConsumerGroups []*string `json:"ConsumerGroups,omitempty" xml:"ConsumerGroups,omitempty" type:"Repeated"`
-	// The topic name.
+	// Topic name.
 	//
 	// example:
 	//

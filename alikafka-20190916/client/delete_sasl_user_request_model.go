@@ -22,7 +22,7 @@ type iDeleteSaslUserRequest interface {
 }
 
 type DeleteSaslUserRequest struct {
-	// The ID of the instance.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,19 +30,19 @@ type DeleteSaslUserRequest struct {
 	//
 	// alikafka_pre-cn-v0h1cng0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The encryption method. Valid values:
+	// Encryption method. Valid values:
 	//
-	// 	- SCRAM-SHA-512. This is the default value.
+	// - SCRAM-SHA-512 (selected by default)
 	//
-	// 	- SCRAM-SHA-256
+	// - SCRAM-SHA-256
 	//
-	// >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
+	// > This parameter is only supported for Serverless instances.
 	//
 	// example:
 	//
 	// SCRAM-SHA-256
 	Mechanism *string `json:"Mechanism,omitempty" xml:"Mechanism,omitempty"`
-	// The ID of the region.
+	// Region ID.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type DeleteSaslUserRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the Simple Authentication and Security Layer (SASL) user. Valid values:
+	// Type. Valid values:
 	//
-	// 	- **plain**: a simple mechanism that uses usernames and passwords to verify user identities. ApsaraMQ for Kafka provides an improved PLAIN mechanism that allows you to dynamically add SASL users without the need to restart an instance.
+	// - **plain**: A simple username and password verification mechanism. MSMQ optimizes the PLAIN mechanism to support adding SASL users dynamically without restarting the instance.
 	//
-	// 	- **SCRAM**: a mechanism that uses usernames and passwords to verify user identities. Compared with the PLAIN mechanism, this mechanism provides better security protection. ApsaraMQ for Kafka uses the SCRAM-SHA-256 algorithm.
+	// - **scram**: A username and password verification mechanism with higher security than PLAIN. MSMQ uses SCRAM-SHA-256.
 	//
-	// 	- **LDAP**: This value is available only for the SASL users of ApsaraMQ for Confluent instances.
+	// - **LDAP**: Only applicable for deleting Confluent instance users.
 	//
 	// Default value: **plain**.
 	//
@@ -64,7 +64,7 @@ type DeleteSaslUserRequest struct {
 	//
 	// scram
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The name of the user.
+	// Username.
 	//
 	// This parameter is required.
 	//

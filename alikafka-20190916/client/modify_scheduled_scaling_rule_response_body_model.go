@@ -20,27 +20,27 @@ type iModifyScheduledScalingRuleResponseBody interface {
 }
 
 type ModifyScheduledScalingRuleResponseBody struct {
-	// The response code.
+	// The return code.
 	//
-	// The value **200*	- indicates that the request was successful.
+	// A value of **200*	- indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The prompt message of the return result.
 	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// DB6F1BEA-903B-4FD8-8809-46E7E9CE***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

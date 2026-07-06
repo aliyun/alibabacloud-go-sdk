@@ -22,7 +22,7 @@ type iUpdateTopicConfigResponseBody interface {
 }
 
 type UpdateTopicConfigResponseBody struct {
-	// The HTTP status code. If the request is successful, 200 is returned.
+	// The status code. A value of 200 indicates that the call was successful.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type UpdateTopicConfigResponseBody struct {
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 0178A3A7-E87B-5E50-A16F-3E62F534****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//

@@ -38,54 +38,136 @@ type iCreatePrePayInstanceShrinkRequest interface {
 }
 
 type CreatePrePayInstanceShrinkRequest struct {
+	// The configurations of the Confluent components.
+	//
+	// > This parameter is required if you create a Confluent instance.
 	ConfluentConfigShrink *string `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty"`
+	// The deployment type. Valid values:
+	//
+	// - **4**: an instance accessible from the internet and a VPC
+	//
+	// - **5**: an instance accessible from a VPC only
+	//
+	// > If you create a Confluent instance, you cannot specify the deployment type and must set this parameter to 5. After the instance is created, you can configure internet access for each component.
+	//
 	// example:
 	//
 	// 5
 	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The disk capacity, in GB.
+	//
+	// For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
+	// > This parameter is not required if you create a Confluent instance.
+	//
 	// example:
 	//
 	// 500
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The disk type. Valid values:
+	//
+	// - **0**: ultra disk
+	//
+	// - **1**: SSD
+	//
+	// > This parameter is not required if you create a Confluent instance.
+	//
 	// example:
 	//
 	// 1
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The subscription duration, in months. Default value: 1. Valid values:
+	//
+	// - Confluent instances: **1*	- and **12**
+	//
+	// - Kafka instances: **1**
+	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The peak internet bandwidth.
+	//
+	// - This parameter is required if you set **DeployType*	- to **4**.
+	//
+	// - For the value range, see [pay-as-you-go](https://help.aliyun.com/document_detail/72142.html).
+	//
+	// > This parameter is not required if you create a Confluent instance.
+	//
 	// example:
 	//
 	// 3
 	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// The I/O specification.
+	//
+	// - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
+	// > This parameter is not required if you create a Confluent instance.
+	//
 	// example:
 	//
 	// alikafka.hw.2xlarge
 	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	// The billing method. Valid values:
+	//
+	// - **0**: subscription
+	//
+	// - **4**: subscription for Confluent instances
+	//
 	// example:
 	//
 	// 1
 	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	// The number of partitions.
+	//
+	// - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
+	// > This parameter is not required if you create a Confluent instance.
+	//
 	// example:
 	//
 	// 1000
 	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// If you do not specify this parameter, the instance is placed in the default resource group. You can find the resource group ID in the Resource Group console.
+	//
 	// example:
 	//
 	// rg-ac***********7q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The specification type.
+	//
+	// Valid values for Kafka instances:
+	//
+	// - **normal**: Standard Edition (High-write)
+	//
+	// - **professional**: Professional Edition (High-write)
+	//
+	// - **professionalForHighRead**: Professional Edition (High-read)
+	//
+	// Valid values for Confluent instances:
+	//
+	// - **professional**: Professional Edition
+	//
+	// - **enterprise**: Enterprise Edition
+	//
+	// For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+	//
 	// example:
 	//
 	// professional
-	SpecType *string                                 `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	Tag      []*CreatePrePayInstanceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The tags to attach to the instance. You can specify up to 20 tags.
+	Tag []*CreatePrePayInstanceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreatePrePayInstanceShrinkRequest) String() string {
@@ -227,12 +309,28 @@ func (s *CreatePrePayInstanceShrinkRequest) Validate() error {
 }
 
 type CreatePrePayInstanceShrinkRequestTag struct {
+	// The tag key.
+	//
+	// -
+	//
+	// -
+	//
+	// - The key must be 1 to 128 characters long. It cannot start with aliyun or acs:, nor can it contain http\\:// or https\\://.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// -
+	//
+	// -
+	//
+	// - The value can be 0 to 128 characters long. It cannot start with aliyun or acs:, nor can it contain http\\:// or https\\://.
+	//
 	// example:
 	//
 	// test

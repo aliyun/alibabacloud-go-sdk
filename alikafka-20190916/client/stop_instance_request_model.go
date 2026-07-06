@@ -16,7 +16,7 @@ type iStopInstanceRequest interface {
 }
 
 type StopInstanceRequest struct {
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type StopInstanceRequest struct {
 	//
 	// alikafka_post-cn-v0h1fgs2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region where the instance resides.
+	// Region ID of the instance.
 	//
 	// This parameter is required.
 	//
