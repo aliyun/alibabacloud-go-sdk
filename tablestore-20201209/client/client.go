@@ -86,6 +86,84 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// Binds agent storage to a VPC.
+//
+// @param request - BindAgentStorage2VpcRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindAgentStorage2VpcResponse
+func (client *Client) BindAgentStorage2VpcWithOptions(request *BindAgentStorage2VpcRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BindAgentStorage2VpcResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentStorageName) {
+		body["AgentStorageName"] = request.AgentStorageName
+	}
+
+	if !dara.IsNil(request.AgentStorageVpcName) {
+		body["AgentStorageVpcName"] = request.AgentStorageVpcName
+	}
+
+	if !dara.IsNil(request.VirtualSwitchId) {
+		body["VirtualSwitchId"] = request.VirtualSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		body["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BindAgentStorage2Vpc"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/bindagentstorage2vpc"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BindAgentStorage2VpcResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Binds agent storage to a VPC.
+//
+// @param request - BindAgentStorage2VpcRequest
+//
+// @return BindAgentStorage2VpcResponse
+func (client *Client) BindAgentStorage2Vpc(request *BindAgentStorage2VpcRequest) (_result *BindAgentStorage2VpcResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BindAgentStorage2VpcResponse{}
+	_body, _err := client.BindAgentStorage2VpcWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Binds an instance to a VPC.
 //
 // @param request - BindInstance2VpcRequest
@@ -234,6 +312,76 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
+// Checks the validity of an agent storage access control policy.
+//
+// @param request - CheckAgentStoragePolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckAgentStoragePolicyResponse
+func (client *Client) CheckAgentStoragePolicyWithOptions(request *CheckAgentStoragePolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckAgentStoragePolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentStorageName) {
+		body["AgentStorageName"] = request.AgentStorageName
+	}
+
+	if !dara.IsNil(request.Policy) {
+		body["Policy"] = request.Policy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckAgentStoragePolicy"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/checkagentstoragepolicy"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckAgentStoragePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Checks the validity of an agent storage access control policy.
+//
+// @param request - CheckAgentStoragePolicyRequest
+//
+// @return CheckAgentStoragePolicyResponse
+func (client *Client) CheckAgentStoragePolicy(request *CheckAgentStoragePolicyRequest) (_result *CheckAgentStoragePolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CheckAgentStoragePolicyResponse{}
+	_body, _err := client.CheckAgentStoragePolicyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks the validity of a Resource Access Management (RAM) policy for an instance.
 //
 // @param request - CheckInstancePolicyRequest
@@ -304,17 +452,13 @@ func (client *Client) CheckInstancePolicy(request *CheckInstancePolicyRequest) (
 
 // Summary:
 //
-// Creates an agent storage instance.
+// Creates an agent storage.
 //
 // Description:
 //
-// - **Before you call this operation, make sure that you fully understand the billing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
+// - **Before you use this operation, make sure that you fully understand the billing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
 //
-// - You can create up to 10 agent storage instances within a single Alibaba Cloud account. Agent storage instance names must be unique within the same region.
-//
-// [_single.params.body.props.Network.title](Deprecated) The network type of the instance. Valid values: NORMAL, VPC_CONSOLE. Default value: NORMAL.
-//
-// [_single.params.body.props.Network.desc](Deprecated) The network type of the agent storage instance. Valid values: NORMAL, VPC_CONSOLE. Default value: NORMAL.
+// - You can create up to 10 agent storages for a single Alibaba Cloud account. Agent storage names must be unique within the same region.
 //
 // @param request - CreateAgentStorageRequest
 //
@@ -389,17 +533,13 @@ func (client *Client) CreateAgentStorageWithOptions(request *CreateAgentStorageR
 
 // Summary:
 //
-// Creates an agent storage instance.
+// Creates an agent storage.
 //
 // Description:
 //
-// - **Before you call this operation, make sure that you fully understand the billing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
+// - **Before you use this operation, make sure that you fully understand the billing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
 //
-// - You can create up to 10 agent storage instances within a single Alibaba Cloud account. Agent storage instance names must be unique within the same region.
-//
-// [_single.params.body.props.Network.title](Deprecated) The network type of the instance. Valid values: NORMAL, VPC_CONSOLE. Default value: NORMAL.
-//
-// [_single.params.body.props.Network.desc](Deprecated) The network type of the agent storage instance. Valid values: NORMAL, VPC_CONSOLE. Default value: NORMAL.
+// - You can create up to 10 agent storages for a single Alibaba Cloud account. Agent storage names must be unique within the same region.
 //
 // @param request - CreateAgentStorageRequest
 //
@@ -658,13 +798,13 @@ func (client *Client) CreateVCUInstance(request *CreateVCUInstanceRequest) (_res
 
 // Summary:
 //
-// Deletes an agent store.
+// Deletes an agent storage.
 //
 // Description:
 //
-// - To avoid conflicts, do not create an agent store with the same name as the agent store being deleted during the deletion process.
+// - To avoid conflicts, do not create an agent storage with the same name as the agent storage being deleted during the deletion process.
 //
-// - After an agent store is deleted, the agent store becomes unavailable, and the tables, table data, and related indexes in the agent store cannot be recovered. Proceed with caution.
+// - After an agent storage is deleted, the agent storage becomes unavailable, and the tables, table data, and related indexes in the agent storage cannot be recovered. Proceed with caution.
 //
 // @param request - DeleteAgentStorageRequest
 //
@@ -711,13 +851,13 @@ func (client *Client) DeleteAgentStorageWithOptions(request *DeleteAgentStorageR
 
 // Summary:
 //
-// Deletes an agent store.
+// Deletes an agent storage.
 //
 // Description:
 //
-// - To avoid conflicts, do not create an agent store with the same name as the agent store being deleted during the deletion process.
+// - To avoid conflicts, do not create an agent storage with the same name as the agent storage being deleted during the deletion process.
 //
-// - After an agent store is deleted, the agent store becomes unavailable, and the tables, table data, and related indexes in the agent store cannot be recovered. Proceed with caution.
+// - After an agent storage is deleted, the agent storage becomes unavailable, and the tables, table data, and related indexes in the agent storage cannot be recovered. Proceed with caution.
 //
 // @param request - DeleteAgentStorageRequest
 //
@@ -727,6 +867,88 @@ func (client *Client) DeleteAgentStorage(request *DeleteAgentStorageRequest) (_r
 	headers := make(map[string]*string)
 	_result = &DeleteAgentStorageResponse{}
 	_body, _err := client.DeleteAgentStorageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an access control policy for agent storage.
+//
+// Description:
+//
+// - After an agent storage policy is deleted, it cannot be recovered. Proceed with caution.
+//
+// - After an agent storage policy is deleted, the corresponding permission controls become ineffective. Make sure the agent storage is in a secure environment.
+//
+// @param request - DeleteAgentStoragePolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentStoragePolicyResponse
+func (client *Client) DeleteAgentStoragePolicyWithOptions(request *DeleteAgentStoragePolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAgentStoragePolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentStorageName) {
+		body["AgentStorageName"] = request.AgentStorageName
+	}
+
+	if !dara.IsNil(request.PolicyVersion) {
+		body["PolicyVersion"] = request.PolicyVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgentStoragePolicy"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/deleteagentstoragepolicy"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgentStoragePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an access control policy for agent storage.
+//
+// Description:
+//
+// - After an agent storage policy is deleted, it cannot be recovered. Proceed with caution.
+//
+// - After an agent storage policy is deleted, the corresponding permission controls become ineffective. Make sure the agent storage is in a secure environment.
+//
+// @param request - DeleteAgentStoragePolicyRequest
+//
+// @return DeleteAgentStoragePolicyResponse
+func (client *Client) DeleteAgentStoragePolicy(request *DeleteAgentStoragePolicyRequest) (_result *DeleteAgentStoragePolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAgentStoragePolicyResponse{}
+	_body, _err := client.DeleteAgentStoragePolicyWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1506,6 +1728,80 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
+// Retrieves the list of VPC information stored in an agent storage.
+//
+// @param request - ListVpcInfoByAgentStorageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpcInfoByAgentStorageResponse
+func (client *Client) ListVpcInfoByAgentStorageWithOptions(request *ListVpcInfoByAgentStorageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListVpcInfoByAgentStorageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentStorageName) {
+		query["AgentStorageName"] = request.AgentStorageName
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVpcInfoByAgentStorage"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/listvpcinfobyagentstorage"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVpcInfoByAgentStorageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of VPC information stored in an agent storage.
+//
+// @param request - ListVpcInfoByAgentStorageRequest
+//
+// @return ListVpcInfoByAgentStorageResponse
+func (client *Client) ListVpcInfoByAgentStorage(request *ListVpcInfoByAgentStorageRequest) (_result *ListVpcInfoByAgentStorageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListVpcInfoByAgentStorageResponse{}
+	_body, _err := client.ListVpcInfoByAgentStorageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a list of VPC information for an instance.
 //
 // @param request - ListVpcInfoByInstanceRequest
@@ -1719,6 +2015,76 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	headers := make(map[string]*string)
 	_result = &TagResourcesResponse{}
 	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Disassociates agent storage from a VPC.
+//
+// @param request - UnbindAgentStorage2VpcRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindAgentStorage2VpcResponse
+func (client *Client) UnbindAgentStorage2VpcWithOptions(request *UnbindAgentStorage2VpcRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UnbindAgentStorage2VpcResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentStorageName) {
+		body["AgentStorageName"] = request.AgentStorageName
+	}
+
+	if !dara.IsNil(request.AgentStorageVpcName) {
+		body["AgentStorageVpcName"] = request.AgentStorageVpcName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnbindAgentStorage2Vpc"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/unbindagentstorage2vpc"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnbindAgentStorage2VpcResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disassociates agent storage from a VPC.
+//
+// @param request - UnbindAgentStorage2VpcRequest
+//
+// @return UnbindAgentStorage2VpcResponse
+func (client *Client) UnbindAgentStorage2Vpc(request *UnbindAgentStorage2VpcRequest) (_result *UnbindAgentStorage2VpcResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UnbindAgentStorage2VpcResponse{}
+	_body, _err := client.UnbindAgentStorage2VpcWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1961,6 +2327,80 @@ func (client *Client) UpdateAgentStorage(request *UpdateAgentStorageRequest) (_r
 	headers := make(map[string]*string)
 	_result = &UpdateAgentStorageResponse{}
 	_body, _err := client.UpdateAgentStorageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the access control policy of agent storage.
+//
+// @param request - UpdateAgentStoragePolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgentStoragePolicyResponse
+func (client *Client) UpdateAgentStoragePolicyWithOptions(request *UpdateAgentStoragePolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAgentStoragePolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentStorageName) {
+		body["AgentStorageName"] = request.AgentStorageName
+	}
+
+	if !dara.IsNil(request.Policy) {
+		body["Policy"] = request.Policy
+	}
+
+	if !dara.IsNil(request.PolicyVersion) {
+		body["PolicyVersion"] = request.PolicyVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAgentStoragePolicy"),
+		Version:     dara.String("2020-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/openapi/updateagentstoragepolicy"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAgentStoragePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the access control policy of agent storage.
+//
+// @param request - UpdateAgentStoragePolicyRequest
+//
+// @return UpdateAgentStoragePolicyResponse
+func (client *Client) UpdateAgentStoragePolicy(request *UpdateAgentStoragePolicyRequest) (_result *UpdateAgentStoragePolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAgentStoragePolicyResponse{}
+	_body, _err := client.UpdateAgentStoragePolicyWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

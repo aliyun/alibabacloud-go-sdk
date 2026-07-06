@@ -42,19 +42,19 @@ type iGetAgentStorageResponseBody interface {
 }
 
 type GetAgentStorageResponseBody struct {
-	// agent storage description
+	// The description of the agent storage.
 	//
 	// example:
 	//
 	// description for agent storage
 	AgentStorageDescription *string `json:"AgentStorageDescription,omitempty" xml:"AgentStorageDescription,omitempty"`
-	// agent storage name
+	// The name of the agent storage.
 	//
 	// example:
 	//
 	// agent-test
 	AgentStorageName *string `json:"AgentStorageName,omitempty" xml:"AgentStorageName,omitempty"`
-	// The specification of the agent storage.
+	// The specifications of the agent storage.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetAgentStorageResponseBody struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The list of network sources allowed for the agent storage. TRUST_PROXY: console.
 	NetworkSourceACL []*string `json:"NetworkSourceACL,omitempty" xml:"NetworkSourceACL,omitempty" type:"Repeated"`
-	// The list of network types allowed for the agent storage. CLASSIC: classic network. INTERNET: Internet. VPC: VPC network.
+	// The list of network types allowed for the agent storage. CLASSIC: classic network. INTERNET: public network. VPC: VPC network.
 	NetworkTypeACL []*string `json:"NetworkTypeACL,omitempty" xml:"NetworkTypeACL,omitempty" type:"Repeated"`
 	// The access control policy of the agent storage.
 	//
@@ -94,7 +94,7 @@ type GetAgentStorageResponseBody struct {
 	//
 	// drop
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The version of the agent storage policy.
+	// The version of the access control policy for the agent storage.
 	//
 	// example:
 	//
@@ -104,9 +104,9 @@ type GetAgentStorageResponseBody struct {
 	//
 	// example:
 	//
-	// cn-chengdu
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Id of the request
+	// The request ID, which can be used for troubleshooting.
 	//
 	// example:
 	//

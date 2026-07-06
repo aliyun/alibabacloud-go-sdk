@@ -14,7 +14,7 @@ type iGetAgentStorageRequest interface {
 }
 
 type GetAgentStorageRequest struct {
-	// agent storage name
+	// The name of the agent storage.
 	//
 	// This parameter is required.
 	//

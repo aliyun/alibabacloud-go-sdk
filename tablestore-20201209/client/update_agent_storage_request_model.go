@@ -24,13 +24,13 @@ type iUpdateAgentStorageRequest interface {
 }
 
 type UpdateAgentStorageRequest struct {
-	// agent storage description
+	// The description of the agent storage.
 	//
 	// example:
 	//
 	// description for agent storage
 	AgentStorageDescription *string `json:"AgentStorageDescription,omitempty" xml:"AgentStorageDescription,omitempty"`
-	// agent storage name
+	// The name of the agent storage.
 	//
 	// This parameter is required.
 	//
@@ -50,11 +50,9 @@ type UpdateAgentStorageRequest struct {
 	//
 	// VPC
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// The list of network sources allowed for the agent storage. All sources are allowed by default. Valid values:
-	//
-	// - TRUST_PROXY: console.
+	// The list of allowed network sources for the agent storage. All sources are allowed by default. Must be used with TRUST_PROXY (console).
 	NetworkSourceACL []*string `json:"NetworkSourceACL,omitempty" xml:"NetworkSourceACL,omitempty" type:"Repeated"`
-	// The list of network types allowed for the agent storage. All types are allowed by default. Valid values:
+	// The list of allowed network types for the agent storage. All types are allowed by default. Valid values:
 	//
 	// - CLASSIC: classic network.
 	//

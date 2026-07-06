@@ -14,7 +14,7 @@ type iDeleteAgentStorageRequest interface {
 }
 
 type DeleteAgentStorageRequest struct {
-	// agent storage name
+	// The name of the agent storage.
 	//
 	// This parameter is required.
 	//

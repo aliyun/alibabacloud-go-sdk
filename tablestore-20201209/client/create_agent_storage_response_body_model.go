@@ -22,7 +22,7 @@ type CreateAgentStorageResponseBody struct {
 	//
 	// example:
 	//
-	// OK
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response message.
 	//
@@ -30,7 +30,7 @@ type CreateAgentStorageResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// request id
+	// The request ID, which can be used for troubleshooting.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteAgentStorageResponseBody interface {
 }
 
 type DeleteAgentStorageResponseBody struct {
-	// Id of the request
+	// The request ID, which can be used to troubleshoot and locate issues.
 	//
 	// example:
 	//

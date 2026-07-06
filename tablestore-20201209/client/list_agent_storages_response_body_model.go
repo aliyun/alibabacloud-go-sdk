@@ -22,13 +22,13 @@ type iListAgentStoragesResponseBody interface {
 type ListAgentStoragesResponseBody struct {
 	// The list of agent storage information.
 	AgentStorages []*ListAgentStoragesResponseBodyAgentStorages `json:"AgentStorages,omitempty" xml:"AgentStorages,omitempty" type:"Repeated"`
-	// The token used to retrieve the next page of results when the total number of tag resources exceeds the value of MaxResults. This parameter has a value only when not all tag resources are returned.
+	// The pagination token for querying subsequent pages. This parameter has a value only when not all tag resources are returned. If the total number of expected tag resources exceeds the MaxResults value, use this token to retrieve the next page.
 	//
 	// example:
 	//
 	// CAESCG15aC1xxxxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The request ID, which can be used for troubleshooting.
 	//
 	// example:
 	//
@@ -100,19 +100,19 @@ func (s *ListAgentStoragesResponseBody) Validate() error {
 }
 
 type ListAgentStoragesResponseBodyAgentStorages struct {
-	// agent storage description
+	// The description of the agent storage.
 	//
 	// example:
 	//
 	// description for agent storage
 	AgentStorageDescription *string `json:"AgentStorageDescription,omitempty" xml:"AgentStorageDescription,omitempty"`
-	// The agent storage name, which is a unique key.
+	// The name of the agent storage, which is a unique key.
 	//
 	// example:
 	//
 	// agent-test
 	AgentStorageName *string `json:"AgentStorageName,omitempty" xml:"AgentStorageName,omitempty"`
-	// The specifications of the agent storage.
+	// The specification of the agent storage.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type ListAgentStoragesResponseBodyAgentStorages struct {
 	//
 	// btnots
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The creation time of the agent storage.
+	// The time when the agent storage was created.
 	//
 	// example:
 	//
