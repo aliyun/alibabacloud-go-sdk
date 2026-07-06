@@ -4149,6 +4149,134 @@ func (client *Client) ListAutoDisposeEntities(request *ListAutoDisposeEntitiesRe
 
 // Summary:
 //
+// Queries collectors by paging.
+//
+// @param tmpReq - ListDataConnectorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataConnectorsResponse
+func (client *Client) ListDataConnectorsWithOptions(tmpReq *ListDataConnectorsRequest, runtime *dara.RuntimeOptions) (_result *ListDataConnectorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListDataConnectorsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DataConnectorIds) {
+		request.DataConnectorIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataConnectorIds, dara.String("DataConnectorIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataConnectorIdsShrink) {
+		body["DataConnectorIds"] = request.DataConnectorIdsShrink
+	}
+
+	if !dara.IsNil(request.DataConnectorName) {
+		body["DataConnectorName"] = request.DataConnectorName
+	}
+
+	if !dara.IsNil(request.DataConnectorStatus) {
+		body["DataConnectorStatus"] = request.DataConnectorStatus
+	}
+
+	if !dara.IsNil(request.DataConnectorType) {
+		body["DataConnectorType"] = request.DataConnectorType
+	}
+
+	if !dara.IsNil(request.DestDataSourceId) {
+		body["DestDataSourceId"] = request.DestDataSourceId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OrderField) {
+		body["OrderField"] = request.OrderField
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		body["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.SlsIngestionJobName) {
+		body["SlsIngestionJobName"] = request.SlsIngestionJobName
+	}
+
+	if !dara.IsNil(request.SrcDataType) {
+		body["SrcDataType"] = request.SrcDataType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataConnectors"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataConnectorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries collectors by paging.
+//
+// @param request - ListDataConnectorsRequest
+//
+// @return ListDataConnectorsResponse
+func (client *Client) ListDataConnectors(request *ListDataConnectorsRequest) (_result *ListDataConnectorsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDataConnectorsResponse{}
+	_body, _err := client.ListDataConnectorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries data ingestion templates.
 //
 // Description:
@@ -7192,6 +7320,100 @@ func (client *Client) SetDefaultNormalizationRuleVersion(request *SetDefaultNorm
 	runtime := &dara.RuntimeOptions{}
 	_result = &SetDefaultNormalizationRuleVersionResponse{}
 	_body, _err := client.SetDefaultNormalizationRuleVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an alert.
+//
+// Description:
+//
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+//
+// @param request - UpdateAlertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAlertResponse
+func (client *Client) UpdateAlertWithOptions(request *UpdateAlertRequest, runtime *dara.RuntimeOptions) (_result *UpdateAlertResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AlertStatus) {
+		body["AlertStatus"] = request.AlertStatus
+	}
+
+	if !dara.IsNil(request.AlertUuid) {
+		body["AlertUuid"] = request.AlertUuid
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.RoleType) {
+		body["RoleType"] = request.RoleType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAlert"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAlertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an alert.
+//
+// Description:
+//
+// Notifications are subject to frequency and time restrictions.
+//
+// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+//
+// @param request - UpdateAlertRequest
+//
+// @return UpdateAlertResponse
+func (client *Client) UpdateAlert(request *UpdateAlertRequest) (_result *UpdateAlertResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAlertResponse{}
+	_body, _err := client.UpdateAlertWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
