@@ -32,17 +32,17 @@ type UpdateJobResponseBody struct {
 	//
 	// Parameter error: content is null.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier for the request. Alibaba Cloud generates this ID to help you troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 3808cf26-dde2-4286-8503-b0a2cd4065a7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - `true`: The request succeeded.
+	// - true: The call was successful.
 	//
-	// - `false`: The request failed.
+	// - false: The call failed.
 	//
 	// example:
 	//

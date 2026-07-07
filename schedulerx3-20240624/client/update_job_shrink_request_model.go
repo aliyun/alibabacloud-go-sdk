@@ -72,7 +72,7 @@ type UpdateJobShrinkRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The interval in seconds between retry attempts.
+	// The retry interval upon node failure.
 	//
 	// example:
 	//
@@ -84,13 +84,7 @@ type UpdateJobShrinkRequest struct {
 	//
 	// workday
 	Calendar *string `json:"Calendar,omitempty" xml:"Calendar,omitempty"`
-	// The client blocking strategy.
-	//
-	// - 1: Serial execution
-	//
-	// - 2: Ignore later schedules
-	//
-	// - 3: Overwrite earlier schedules
+	// The child node IDs, separated by commas.
 	//
 	// example:
 	//
@@ -104,29 +98,37 @@ type UpdateJobShrinkRequest struct {
 	//
 	// xxljob-b6ec1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The dependency strategy.
+	//
 	// example:
 	//
 	// 1
 	DependentStrategy *int32 `json:"DependentStrategy,omitempty" xml:"DependentStrategy,omitempty"`
-	// The job description.
+	// The node description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Notification contact configuration
+	// The client blocking strategy. Valid values:
+	//
+	// - 1: serial execution on a single machine
+	//
+	// - 2: ignore subsequent scheduling
+	//
+	// - 3: override previous scheduling
 	//
 	// example:
 	//
 	// 1
 	ExecutorBlockStrategy *int32 `json:"ExecutorBlockStrategy,omitempty" xml:"ExecutorBlockStrategy,omitempty"`
-	// The job handler name.
+	// The JobHandler name.
 	//
 	// example:
 	//
 	// testJobVoidHandler
 	JobHandler *string `json:"JobHandler,omitempty" xml:"JobHandler,omitempty"`
-	// The job ID.
+	// The node ID.
 	//
 	// This parameter is required.
 	//
@@ -134,111 +136,101 @@ type UpdateJobShrinkRequest struct {
 	//
 	// 74
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The maximum number of retries for a failed job.
+	// The maximum number of retry attempts upon node failure.
 	//
 	// example:
 	//
 	// 3
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	// The maximum number of concurrent job instances.
+	// The maximum number of concurrent instances of the node.
 	//
-	// > This parameter defines the maximum number of instances for a single job that can run concurrently. A value of `1` prevents duplicate execution. If this limit is exceeded, the scheduler skips the current job.
+	// >The maximum number of instances that can run at the same time for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
 	//
 	// example:
 	//
 	// 1
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	// The job name.
+	// The node name.
 	//
 	// example:
 	//
 	// test-job
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Time zone
-	//
-	// > The default is the time zone of the SchedulerX server.
+	// The notification configuration.
 	NoticeConfigShrink *string `json:"NoticeConfig,omitempty" xml:"NoticeConfig,omitempty"`
-	// Notification configuration
+	// The notification contact configuration.
 	NoticeContactsShrink *string `json:"NoticeContacts,omitempty" xml:"NoticeContacts,omitempty"`
-	// The job parameters.
+	// The node parameters.
 	//
 	// example:
 	//
 	// test
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The job execution priority. Valid values:
+	// The execution priority of the node. Valid values:
 	//
-	// - `1`: Low
+	// - 1: low
 	//
-	// - `5`: Medium
+	// - 5: medium
 	//
-	// - `10`: High
+	// - 10: high
 	//
-	// - `15`: Very High
+	// - 15: very high
 	//
 	// example:
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The routing strategy. Valid values:
+	// The routing policy. Valid values:
 	//
-	// - `1`: round-robin
+	// - 1: round robin
 	//
-	// - `2`: random
+	// - 2: random
 	//
-	// - `3`: first
+	// - 3: first
 	//
-	// - `4`: last
+	// - 4: last
 	//
-	// - `5`: least frequently used
+	// - 5: least frequently used
 	//
-	// - `6`: least recently used
+	// - 6: least recently used
 	//
-	// - `7`: consistent hashing
+	// - 7: consistent hashing
 	//
-	// - `8`: sharded broadcast
+	// - 8: shard broadcast
 	//
 	// example:
 	//
 	// 1
 	RouteStrategy *int32 `json:"RouteStrategy,omitempty" xml:"RouteStrategy,omitempty"`
-	// The script content for non-BEAN jobs.
+	// The script for non-BEAN nodes. Use this field to configure the script.
 	//
 	// example:
 	//
 	// echo "hello world"
 	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	// The type of the start time.
+	// The scheduling start time.
 	//
 	// example:
 	//
 	// 1716902187
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task execution priority. The following values are supported:
-	//
-	// - 1: Low
-	//
-	// - 5: Medium
-	//
-	// - 10: High
-	//
-	// - 15: Very High
+	// The start time type.
 	//
 	// example:
 	//
 	// 1
 	StartTimeType *string `json:"StartTimeType,omitempty" xml:"StartTimeType,omitempty"`
-	// The time expression. The expression format depends on the `TimeType`.
+	// The time expression. Set the time expression based on the selected time type.
 	//
-	// - `none`: Leave this parameter empty.
+	// - none: No value is required.
 	//
-	// - `cron`: Specify a standard cron expression. Online validation is supported.
+	// - cron: Specify a standard cron expression. Online verification is supported.
 	//
-	// - `api`: Leave this parameter empty.
+	// - api: No value is required.
 	//
-	// - `fixed_rate`: An integer that represents a fixed interval in seconds. For example, `30` triggers the job every 30 seconds.
+	// - fixed_rate: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
 	//
-	// - `one_time`: A single execution time, specified in the `yyyy-MM-dd HH:mm:ss` format or as a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+	// - one_time: Specify a scheduling time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
 	//
 	// example:
 	//
@@ -246,27 +238,29 @@ type UpdateJobShrinkRequest struct {
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
 	// The time type. Valid values:
 	//
-	// - `-1`: none
+	// - -1: none
 	//
-	// - `1`: cron
+	// - 1: cron
 	//
-	// - `3`: fixed_rate
+	// - 3: fix_rate
 	//
-	// - `5`: one_time
+	// - 5: one_time
 	//
-	// - `100`: api
+	// - 100: api
 	//
 	// example:
 	//
 	// 1
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	// The start time of the schedule.
+	// The time zone.
+	//
+	// > By default, the time zone of the SchedulerX server is used.
 	//
 	// example:
 	//
 	// Hongkong
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The ID of the child job. Separate multiple IDs with a comma.
+	// The node weight.
 	//
 	// example:
 	//

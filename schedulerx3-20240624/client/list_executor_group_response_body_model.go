@@ -220,11 +220,13 @@ type ListExecutorGroupResponseBodyDataRecords struct {
 	AutoScale      *bool                                               `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
 	CiteList       []*ListExecutorGroupResponseBodyDataRecordsCiteList `json:"CiteList,omitempty" xml:"CiteList,omitempty" type:"Repeated"`
 	CmsWorkspaceId *string                                             `json:"CmsWorkspaceId,omitempty" xml:"CmsWorkspaceId,omitempty"`
+	CurrentJobs    *int32                                              `json:"CurrentJobs,omitempty" xml:"CurrentJobs,omitempty"`
 	// example:
 	//
 	// my first workflow
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
+	MaxJobs         *int32  `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
 	// example:
 	//
 	// job01
@@ -281,12 +283,20 @@ func (s *ListExecutorGroupResponseBodyDataRecords) GetCmsWorkspaceId() *string {
 	return s.CmsWorkspaceId
 }
 
+func (s *ListExecutorGroupResponseBodyDataRecords) GetCurrentJobs() *int32 {
+	return s.CurrentJobs
+}
+
 func (s *ListExecutorGroupResponseBodyDataRecords) GetDescription() *string {
 	return s.Description
 }
 
 func (s *ListExecutorGroupResponseBodyDataRecords) GetIntegrationType() *string {
 	return s.IntegrationType
+}
+
+func (s *ListExecutorGroupResponseBodyDataRecords) GetMaxJobs() *int32 {
+	return s.MaxJobs
 }
 
 func (s *ListExecutorGroupResponseBodyDataRecords) GetName() *string {
@@ -346,6 +356,11 @@ func (s *ListExecutorGroupResponseBodyDataRecords) SetCmsWorkspaceId(v string) *
 	return s
 }
 
+func (s *ListExecutorGroupResponseBodyDataRecords) SetCurrentJobs(v int32) *ListExecutorGroupResponseBodyDataRecords {
+	s.CurrentJobs = &v
+	return s
+}
+
 func (s *ListExecutorGroupResponseBodyDataRecords) SetDescription(v string) *ListExecutorGroupResponseBodyDataRecords {
 	s.Description = &v
 	return s
@@ -353,6 +368,11 @@ func (s *ListExecutorGroupResponseBodyDataRecords) SetDescription(v string) *Lis
 
 func (s *ListExecutorGroupResponseBodyDataRecords) SetIntegrationType(v string) *ListExecutorGroupResponseBodyDataRecords {
 	s.IntegrationType = &v
+	return s
+}
+
+func (s *ListExecutorGroupResponseBodyDataRecords) SetMaxJobs(v int32) *ListExecutorGroupResponseBodyDataRecords {
+	s.MaxJobs = &v
 	return s
 }
 

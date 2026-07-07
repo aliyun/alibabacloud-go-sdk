@@ -237,6 +237,62 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
+// 创建通知联系人
+//
+// Description:
+//
+// 创建自定义联系人
+//
+// @param request - CreateContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateContactResponse
+func (client *Client) CreateContactWithContext(ctx context.Context, request *CreateContactRequest, runtime *dara.RuntimeOptions) (_result *CreateContactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.ContactName) {
+		body["ContactName"] = request.ContactName
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateContact"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateContactResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create a data source
 //
 // @param request - CreateDatasourceRequest
@@ -841,6 +897,54 @@ func (client *Client) DeleteClusterWithContext(ctx context.Context, request *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除通知联系人
+//
+// Description:
+//
+// 删除自定义联系人
+//
+// @param request - DeleteContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContactResponse
+func (client *Client) DeleteContactWithContext(ctx context.Context, request *DeleteContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteContactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContactName) {
+		body["ContactName"] = request.ContactName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContact"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContactResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2419,7 +2523,7 @@ func (client *Client) ListCalendarsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Query the list of instances.
+// Queries a list of instances.
 //
 // @param request - ListClustersRequest
 //
@@ -2449,6 +2553,62 @@ func (client *Client) ListClustersWithContext(ctx context.Context, request *List
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListClustersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询通知联系人列表
+//
+// Description:
+//
+// 查看联系人
+//
+// @param request - ListContactsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContactsResponse
+func (client *Client) ListContactsWithContext(ctx context.Context, request *ListContactsRequest, runtime *dara.RuntimeOptions) (_result *ListContactsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContactName) {
+		query["ContactName"] = request.ContactName
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContacts"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContactsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4799,6 +4959,66 @@ func (client *Client) UpdateClusterWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
+// 更新通知联系人
+//
+// Description:
+//
+// 更新通知联系人
+//
+// @param request - UpdateContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContactResponse
+func (client *Client) UpdateContactWithContext(ctx context.Context, request *UpdateContactRequest, runtime *dara.RuntimeOptions) (_result *UpdateContactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.ContactName) {
+		body["ContactName"] = request.ContactName
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContact"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContactResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Update data source
 //
 // @param request - UpdateDatasourceRequest
@@ -5031,7 +5251,7 @@ func (client *Client) UpdateExecutorsWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Update task details.
+// Updates node information.
 //
 // @param tmpReq - UpdateJobRequest
 //

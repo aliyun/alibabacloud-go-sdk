@@ -358,6 +358,84 @@ func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *Cre
 
 // Summary:
 //
+// 创建通知联系人
+//
+// Description:
+//
+// 创建自定义联系人
+//
+// @param request - CreateContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateContactResponse
+func (client *Client) CreateContactWithOptions(request *CreateContactRequest, runtime *dara.RuntimeOptions) (_result *CreateContactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.ContactName) {
+		body["ContactName"] = request.ContactName
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateContact"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateContactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建通知联系人
+//
+// Description:
+//
+// 创建自定义联系人
+//
+// @param request - CreateContactRequest
+//
+// @return CreateContactResponse
+func (client *Client) CreateContact(request *CreateContactRequest) (_result *CreateContactResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateContactResponse{}
+	_body, _err := client.CreateContactWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create a data source
 //
 // @param request - CreateDatasourceRequest
@@ -1115,6 +1193,76 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteClusterResponse{}
 	_body, _err := client.DeleteClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除通知联系人
+//
+// Description:
+//
+// 删除自定义联系人
+//
+// @param request - DeleteContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContactResponse
+func (client *Client) DeleteContactWithOptions(request *DeleteContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteContactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContactName) {
+		body["ContactName"] = request.ContactName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContact"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除通知联系人
+//
+// Description:
+//
+// 删除自定义联系人
+//
+// @param request - DeleteContactRequest
+//
+// @return DeleteContactResponse
+func (client *Client) DeleteContact(request *DeleteContactRequest) (_result *DeleteContactResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteContactResponse{}
+	_body, _err := client.DeleteContactWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3272,7 +3420,7 @@ func (client *Client) ListCalendars(request *ListCalendarsRequest) (_result *Lis
 
 // Summary:
 //
-// Query the list of instances.
+// Queries a list of instances.
 //
 // @param request - ListClustersRequest
 //
@@ -3312,7 +3460,7 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 
 // Summary:
 //
-// Query the list of instances.
+// Queries a list of instances.
 //
 // @param request - ListClustersRequest
 //
@@ -3321,6 +3469,84 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListClustersResponse{}
 	_body, _err := client.ListClustersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询通知联系人列表
+//
+// Description:
+//
+// 查看联系人
+//
+// @param request - ListContactsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContactsResponse
+func (client *Client) ListContactsWithOptions(request *ListContactsRequest, runtime *dara.RuntimeOptions) (_result *ListContactsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContactName) {
+		query["ContactName"] = request.ContactName
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContacts"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContactsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询通知联系人列表
+//
+// Description:
+//
+// 查看联系人
+//
+// @param request - ListContactsRequest
+//
+// @return ListContactsResponse
+func (client *Client) ListContacts(request *ListContactsRequest) (_result *ListContactsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListContactsResponse{}
+	_body, _err := client.ListContactsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6490,6 +6716,88 @@ func (client *Client) UpdateCluster(request *UpdateClusterRequest) (_result *Upd
 
 // Summary:
 //
+// 更新通知联系人
+//
+// Description:
+//
+// 更新通知联系人
+//
+// @param request - UpdateContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateContactResponse
+func (client *Client) UpdateContactWithOptions(request *UpdateContactRequest, runtime *dara.RuntimeOptions) (_result *UpdateContactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.ContactName) {
+		body["ContactName"] = request.ContactName
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateContact"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateContactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新通知联系人
+//
+// Description:
+//
+// 更新通知联系人
+//
+// @param request - UpdateContactRequest
+//
+// @return UpdateContactResponse
+func (client *Client) UpdateContact(request *UpdateContactRequest) (_result *UpdateContactResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateContactResponse{}
+	_body, _err := client.UpdateContactWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Update data source
 //
 // @param request - UpdateDatasourceRequest
@@ -6796,7 +7104,7 @@ func (client *Client) UpdateExecutors(request *UpdateExecutorsRequest) (_result 
 
 // Summary:
 //
-// Update task details.
+// Updates node information.
 //
 // @param tmpReq - UpdateJobRequest
 //
@@ -6950,7 +7258,7 @@ func (client *Client) UpdateJobWithOptions(tmpReq *UpdateJobRequest, runtime *da
 
 // Summary:
 //
-// Update task details.
+// Updates node information.
 //
 // @param request - UpdateJobRequest
 //

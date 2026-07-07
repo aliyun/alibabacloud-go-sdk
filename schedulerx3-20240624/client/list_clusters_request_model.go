@@ -46,7 +46,7 @@ type ListClustersRequest struct {
 	//
 	// 5
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page for paginated queries.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
