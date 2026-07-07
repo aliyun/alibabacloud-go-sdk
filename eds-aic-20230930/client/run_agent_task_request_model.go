@@ -36,16 +36,27 @@ type RunAgentTaskRequest struct {
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// The list of Mobile node IDs. A maximum of 100 nodes are supported per request.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The maximum number of execution steps for the task to prevent infinite loops. Valid values: 30 to 1000. Default value: 1000.
+	// The maximum number of execution steps for the task. This prevents infinite loops. Valid values: 30 to 1000. Default value: 1000.
 	//
 	// example:
 	//
 	// 30
-	MaxSteps     *int32                        `json:"MaxSteps,omitempty" xml:"MaxSteps,omitempty"`
-	ScheduleId   *string                       `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	Targets      []*RunAgentTaskRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	TaskConfigId *string                       `json:"TaskConfigId,omitempty" xml:"TaskConfigId,omitempty"`
-	// The task timeout period in seconds. Valid values: 300 to 3600. Default value: 3600.
+	MaxSteps *int32 `json:"MaxSteps,omitempty" xml:"MaxSteps,omitempty"`
+	// The scheduling plan ID. When specified, execution records are associated with the corresponding scheduled node, which facilitates aggregation query by scheduling dimension.
+	//
+	// example:
+	//
+	// sch-260625-pbj2****
+	ScheduleId *string `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
+	// The array of target objects. Each element contains an InstanceId and a SessionId.
+	Targets []*RunAgentTaskRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	// The task configuration ID used to trigger a task with the specified configuration.
+	//
+	// example:
+	//
+	// tsk-260625-49be****
+	TaskConfigId *string `json:"TaskConfigId,omitempty" xml:"TaskConfigId,omitempty"`
+	// The timeout period of the task, in seconds. Valid values: 300 to 3600. Default value: 3600.
 	//
 	// example:
 	//
@@ -55,7 +66,7 @@ type RunAgentTaskRequest struct {
 	//
 	// example:
 	//
-	// Download DingTalk from App Store
+	// 去应用宝下载钉钉
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 }
 
@@ -153,8 +164,18 @@ func (s *RunAgentTaskRequest) Validate() error {
 }
 
 type RunAgentTaskRequestTargets struct {
+	// The Mobile node ID, such as acp-xxx.
+	//
+	// example:
+	//
+	// acp-5hh4a31emkt6u****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SessionId  *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The session ID. Tasks with the same session ID share context, such as ses-260702-21b****.
+	//
+	// example:
+	//
+	// ses-260702-21bh****。
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s RunAgentTaskRequestTargets) String() string {

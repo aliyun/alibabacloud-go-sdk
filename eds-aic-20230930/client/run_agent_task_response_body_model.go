@@ -26,7 +26,7 @@ type RunAgentTaskResponseBody struct {
 	//
 	// example:
 	//
-	// For example, "200" indicates success.
+	// 例如 "200" 表示成功。
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The number of tasks.
 	//
@@ -119,15 +119,29 @@ func (s *RunAgentTaskResponseBody) Validate() error {
 type RunAgentTaskResponseBodyTasks struct {
 	// The current status of the task. Valid values:
 	//
-	// - PENDING: The task is being created.
+	// PENDING: The task is being created.
 	//
-	// - RUNNING: The task is running.
+	// RUNNING: The task is running.
 	//
-	// - COMPLETED: The task is completed.
+	// COMPLETED: The task is completed.
 	//
-	// - FAILED: The task failed.
+	// FAILED: The task failed.
 	//
-	// - TIMEOUT: The task execution timed out.
+	// TIMEOUT: The task timed out.
+	//
+	// CALL_FOR_USER: The task is waiting for user action.
+	//
+	// PAUSING: The task is being paused.
+	//
+	// PAUSED: The task is paused.
+	//
+	// CANCELLING: The task is being canceled.
+	//
+	// CANCELED: The task is canceled.
+	//
+	// STOPPED: The task is stopped.
+	//
+	// TIMEOUT: The task timed out.
 	//
 	// example:
 	//
@@ -145,6 +159,11 @@ type RunAgentTaskResponseBodyTasks struct {
 	//
 	// 2026-04-13T17:42:19Z
 	RunningAt *string `json:"RunningAt,omitempty" xml:"RunningAt,omitempty"`
+	// The session ID. Tasks with the same session ID share context.
+	//
+	// example:
+	//
+	// ses-260702-21bh****。
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The task ID, which is globally unique.
 	//
@@ -156,7 +175,7 @@ type RunAgentTaskResponseBodyTasks struct {
 	//
 	// example:
 	//
-	// Download DingTalk from App Store
+	// 去应用宝下载钉钉
 	UserPrompt *string `json:"UserPrompt,omitempty" xml:"UserPrompt,omitempty"`
 }
 

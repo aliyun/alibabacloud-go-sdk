@@ -9,6 +9,62 @@ import (
 
 // Summary:
 //
+// Activates an edge agent device.
+//
+// @param request - ActivateEdgeMobileAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ActivateEdgeMobileAgentResponse
+func (client *Client) ActivateEdgeMobileAgentWithContext(ctx context.Context, request *ActivateEdgeMobileAgentRequest, runtime *dara.RuntimeOptions) (_result *ActivateEdgeMobileAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeviceClass) {
+		query["DeviceClass"] = request.DeviceClass
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.DeviceMeta) {
+		query["DeviceMeta"] = request.DeviceMeta
+	}
+
+	if !dara.IsNil(request.LicenseKey) {
+		query["LicenseKey"] = request.LicenseKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ActivateEdgeMobileAgent"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ActivateEdgeMobileAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Attaches an Android Debug Bridge (ADB) key pair to one or more cloud phone instances.
 //
 // Description:
@@ -1183,6 +1239,86 @@ func (client *Client) CreateCustomImageWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCustomImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Places an order to purchase an edge smart gateway agent package.
+//
+// Description:
+//
+// This operation involves billing. Before you call this operation, make sure that you fully understand the [billing methods and pricing](https://www.alibabacloud.com/help/en/ecp/jvs-mobile-billing-instructions) of the Cloud Phone product.
+//
+// @param request - CreateEdgeMobileAgentPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEdgeMobileAgentPackageResponse
+func (client *Client) CreateEdgeMobileAgentPackageWithContext(ctx context.Context, request *CreateEdgeMobileAgentPackageRequest, runtime *dara.RuntimeOptions) (_result *CreateEdgeMobileAgentPackageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DeviceClass) {
+		query["DeviceClass"] = request.DeviceClass
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PeriodUnit) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
+	if !dara.IsNil(request.Quantity) {
+		query["Quantity"] = request.Quantity
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateEdgeMobileAgentPackage"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateEdgeMobileAgentPackageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2709,6 +2845,70 @@ func (client *Client) DescribeDisplayConfigWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDisplayConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of edge agent packages.
+//
+// @param request - DescribeEdgeMobileAgentPackagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEdgeMobileAgentPackagesResponse
+func (client *Client) DescribeEdgeMobileAgentPackagesWithContext(ctx context.Context, request *DescribeEdgeMobileAgentPackagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeEdgeMobileAgentPackagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeviceClass) {
+		query["DeviceClass"] = request.DeviceClass
+	}
+
+	if !dara.IsNil(request.LicenseKeys) {
+		query["LicenseKeys"] = request.LicenseKeys
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PackageIds) {
+		query["PackageIds"] = request.PackageIds
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeEdgeMobileAgentPackages"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeEdgeMobileAgentPackagesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5597,6 +5797,58 @@ func (client *Client) RecoveryFileWithContext(ctx context.Context, request *Reco
 
 // Summary:
 //
+// Refreshes model authentication tokens.
+//
+// @param request - RefreshAuthTokensRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshAuthTokensResponse
+func (client *Client) RefreshAuthTokensWithContext(ctx context.Context, request *RefreshAuthTokensRequest, runtime *dara.RuntimeOptions) (_result *RefreshAuthTokensResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExpireSeconds) {
+		query["ExpireSeconds"] = request.ExpireSeconds
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.LicenseKeys) {
+		query["LicenseKeys"] = request.LicenseKeys
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RefreshAuthTokens"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RefreshAuthTokensResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Renews subscription Cloud Phone instance groups. If a subscription instance group expires, the system automatically deletes the instance group and its instances after 15 days. You cannot recover deleted resources. Renew your instance groups promptly to prevent resource loss.
 //
 // @param request - RenewAndroidInstanceGroupsRequest
@@ -5907,7 +6159,7 @@ func (client *Client) ResumeAgentTaskWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// Triggers an Agent on Mobile nodes to execute an AI automation task.
+// Triggers an Agent to execute an AI automation task on Mobile nodes.
 //
 // @param request - RunAgentTaskRequest
 //
