@@ -11,6 +11,8 @@ type iListClustersResponseBody interface {
 	GoString() string
 	SetClusters(v []*ListClustersResponseBodyClusters) *ListClustersResponseBody
 	GetClusters() []*ListClustersResponseBodyClusters
+	SetEhpcVersionStatistics(v *ListClustersResponseBodyEhpcVersionStatistics) *ListClustersResponseBody
+	GetEhpcVersionStatistics() *ListClustersResponseBodyEhpcVersionStatistics
 	SetPageNumber(v string) *ListClustersResponseBody
 	GetPageNumber() *string
 	SetPageSize(v int32) *ListClustersResponseBody
@@ -22,15 +24,16 @@ type iListClustersResponseBody interface {
 }
 
 type ListClustersResponseBody struct {
-	// The list of clusters.
-	Clusters []*ListClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The cluster details.
+	Clusters              []*ListClustersResponseBodyClusters            `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	EhpcVersionStatistics *ListClustersResponseBodyEhpcVersionStatistics `json:"EhpcVersionStatistics,omitempty" xml:"EhpcVersionStatistics,omitempty" type:"Struct"`
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
@@ -42,7 +45,7 @@ type ListClustersResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -60,6 +63,10 @@ func (s ListClustersResponseBody) GoString() string {
 
 func (s *ListClustersResponseBody) GetClusters() []*ListClustersResponseBodyClusters {
 	return s.Clusters
+}
+
+func (s *ListClustersResponseBody) GetEhpcVersionStatistics() *ListClustersResponseBodyEhpcVersionStatistics {
+	return s.EhpcVersionStatistics
 }
 
 func (s *ListClustersResponseBody) GetPageNumber() *string {
@@ -80,6 +87,11 @@ func (s *ListClustersResponseBody) GetTotalCount() *int32 {
 
 func (s *ListClustersResponseBody) SetClusters(v []*ListClustersResponseBodyClusters) *ListClustersResponseBody {
 	s.Clusters = v
+	return s
+}
+
+func (s *ListClustersResponseBody) SetEhpcVersionStatistics(v *ListClustersResponseBodyEhpcVersionStatistics) *ListClustersResponseBody {
+	s.EhpcVersionStatistics = v
 	return s
 }
 
@@ -113,35 +125,40 @@ func (s *ListClustersResponseBody) Validate() error {
 			}
 		}
 	}
+	if s.EhpcVersionStatistics != nil {
+		if err := s.EhpcVersionStatistics.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type ListClustersResponseBodyClusters struct {
-	// The information about installed software in the cluster.
+	// The software installed on the cluster.
 	AdditionalPackages []*ListClustersResponseBodyClustersAdditionalPackages `json:"AdditionalPackages,omitempty" xml:"AdditionalPackages,omitempty" type:"Repeated"`
-	// The information about the addons in the cluster.
+	// The custom service component information of the cluster.
 	Addons []*ListClustersResponseBodyClustersAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
-	// The cluster type. Valid values:
+	// The cluster edition. Valid values:
 	//
-	// 	- Standard
+	// - Standard
 	//
-	// 	- Serverless
+	// - Serverless
 	//
 	// example:
 	//
 	// Standard
 	ClusterCategory *string `json:"ClusterCategory,omitempty" xml:"ClusterCategory,omitempty"`
-	// The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+	// The time when the cluster was created. The time is displayed in UTC+0 in the ISO 8601 standard format of yyyy-MM-ddTHH:mmZ. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
 	//
 	// example:
 	//
 	// 2024-08-06T12:43:01.000Z
 	ClusterCreateTime *string `json:"ClusterCreateTime,omitempty" xml:"ClusterCreateTime,omitempty"`
-	// The logon credential type of the cluster. Valid values:
+	// The logon credential types of the cluster. Valid values:
 	//
-	// 	- password: requires passwords for logons.
+	// - password: uses a password to log on to the cluster.
 	//
-	// 	- keypair: requires key pairs for logons.
+	// - keypair: uses a key pair to log on to the cluster.
 	ClusterCredentials []*string `json:"ClusterCredentials,omitempty" xml:"ClusterCredentials,omitempty" type:"Repeated"`
 	// The post-processing script used by the cluster.
 	ClusterCustomConfiguration *ListClustersResponseBodyClustersClusterCustomConfiguration `json:"ClusterCustomConfiguration,omitempty" xml:"ClusterCustomConfiguration,omitempty" type:"Struct"`
@@ -159,17 +176,17 @@ type ListClustersResponseBodyClusters struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The deployment type of the cluster. Valid values:
 	//
-	// 	- Integrated: public cloud
+	// - Integrated: public cloud
 	//
-	// 	- Hybrid: hybrid cloud
+	// - Hybrid: hybrid cloud
 	//
-	// 	- Custom: a custom cluster
+	// - Custom: custom cluster
 	//
 	// example:
 	//
 	// Integrated
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
-	// The time when the cluster was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+	// The time when the cluster was last modified. The time is displayed in UTC+0 in the ISO 8601 standard format of yyyy-MM-ddTHH:mmZ. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
 	//
 	// example:
 	//
@@ -181,43 +198,43 @@ type ListClustersResponseBodyClusters struct {
 	//
 	// slurm22.05.8-cluster-20240227
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The cluster state. Valid values:
+	// The cluster status. Valid values:
 	//
-	// 	- uninit: The cluster is being installed.
+	// - uninit: installing.
 	//
-	// 	- creating: The cluster is being created.
+	// - creating: being created.
 	//
-	// 	- initing: The cluster is being initialized.
+	// - initing: being initialized.
 	//
-	// 	- running: The cluster is running.
+	// - running: running.
 	//
-	// 	- Releasing: The cluster is being released.
+	// - releasing: being released.
 	//
-	// 	- stopping: The cluster is being stopped.
+	// - stopping: being stopped.
 	//
-	// 	- stopped: The cluster is stopped.
+	// - stopped: stopped.
 	//
-	// 	- exception: The cluster has run into an exception.
+	// - exception: abnormal.
 	//
-	// 	- pending: The cluster is waiting to be configured.
+	// - pending: pending configuration.
 	//
 	// example:
 	//
 	// running
 	ClusterStatus *string `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	// The vCPU-hour usage of the cluster.
+	// The core-hours consumed by the cluster.
 	//
 	// example:
 	//
 	// 1000
 	ClusterUsedCoreTime *float32 `json:"ClusterUsedCoreTime,omitempty" xml:"ClusterUsedCoreTime,omitempty"`
-	// The ID of the vSwitch used by the cluster.
+	// The vSwitch ID used by the cluster.
 	//
 	// example:
 	//
 	// vsw-f8za5p0mwzgdu3wgx****
 	ClusterVSwitchId *string `json:"ClusterVSwitchId,omitempty" xml:"ClusterVSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC) used by the cluster.
+	// The VPC ID used by the cluster.
 	//
 	// example:
 	//
@@ -225,35 +242,35 @@ type ListClustersResponseBodyClusters struct {
 	ClusterVpcId *string `json:"ClusterVpcId,omitempty" xml:"ClusterVpcId,omitempty"`
 	// Indicates whether deletion protection is enabled for the cluster. Valid values:
 	//
-	// 	- true
+	// - true: Deletion protection is enabled.
 	//
-	// 	- false
+	// - false: Deletion protection is not enabled.
 	//
 	// example:
 	//
 	// true
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The Elastic High Performance Computing (E-HPC) version.
+	// The version of the E-HPC cluster.
 	//
 	// example:
 	//
 	// 2.0.0
 	EhpcVersion *string `json:"EhpcVersion,omitempty" xml:"EhpcVersion,omitempty"`
-	// The configurations of the cluster management node.
+	// The management node configuration of the cluster.
 	Manager *ListClustersResponseBodyClustersManager `json:"Manager,omitempty" xml:"Manager,omitempty" type:"Struct"`
-	// The maximum total number of vCPUs used by the compute nodes that can be managed by the cluster.
+	// The maximum total number of vCPUs of compute nodes that the cluster can manage.
 	//
 	// example:
 	//
 	// 10000
 	MaxCoreCount *int64 `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
-	// The maximum number of compute nodes that can be managed by the cluster.
+	// The maximum number of compute nodes that the cluster can manage.
 	//
 	// example:
 	//
 	// 500
 	MaxCount *int64 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	// The node statistics of the cluster.
+	// The node count information of the cluster.
 	Nodes *ListClustersResponseBodyClustersNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Struct"`
 	// The resource group ID.
 	//
@@ -261,7 +278,7 @@ type ListClustersResponseBodyClusters struct {
 	//
 	// rg-acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the security group used by the cluster.
+	// The security group ID used by the cluster.
 	//
 	// example:
 	//
@@ -583,25 +600,25 @@ func (s *ListClustersResponseBodyClustersAdditionalPackages) Validate() error {
 }
 
 type ListClustersResponseBodyClustersAddons struct {
-	// The addon ID.
+	// The ID of the custom service component.
 	//
 	// example:
 	//
 	// Login-1.0-W2g****
 	AddonId *string `json:"AddonId,omitempty" xml:"AddonId,omitempty"`
-	// The addon description.
+	// The description of the custom service component.
 	//
 	// example:
 	//
 	// Logon node, mainly used for connecting to the E-HPC cluster environment and submitting user tasks.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The addon label.
+	// The label of the custom service component.
 	//
 	// example:
 	//
 	// Logon node
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The addon name.
+	// The name of the custom service component.
 	//
 	// This parameter is required.
 	//
@@ -609,17 +626,17 @@ type ListClustersResponseBodyClustersAddons struct {
 	//
 	// Login
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The resource configurations of the addon.
+	// The resource configuration of the component.
 	ResourcesSpec *ListClustersResponseBodyClustersAddonsResourcesSpec `json:"ResourcesSpec,omitempty" xml:"ResourcesSpec,omitempty" type:"Struct"`
-	// The information about the addon services.
+	// The service configuration of the component.
 	ServicesSpec []*ListClustersResponseBodyClustersAddonsServicesSpec `json:"ServicesSpec,omitempty" xml:"ServicesSpec,omitempty" type:"Repeated"`
-	// The addon state.
+	// The status of the custom service component.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The addon version.
+	// The version of the custom service component.
 	//
 	// This parameter is required.
 	//
@@ -728,13 +745,13 @@ func (s *ListClustersResponseBodyClustersAddons) Validate() error {
 }
 
 type ListClustersResponseBodyClustersAddonsResourcesSpec struct {
-	// The instance ID.
+	// The component instance ID.
 	//
 	// example:
 	//
 	// i-bp1bg85d2q6laic8****
 	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
-	// The Elastic IP Address (EIP) ID.
+	// The elastic IP address (EIP) ID.
 	//
 	// example:
 	//
@@ -835,13 +852,13 @@ func (s *ListClustersResponseBodyClustersAddonsServicesSpec) Validate() error {
 }
 
 type ListClustersResponseBodyClustersClusterCustomConfiguration struct {
-	// The parameters of the post-processing script.
+	// The parameters of the cluster post-processing script.
 	//
 	// example:
 	//
 	// demo
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
-	// The link to the post-processing script.
+	// The URL of the cluster post-processing script.
 	//
 	// example:
 	//
@@ -880,11 +897,11 @@ func (s *ListClustersResponseBodyClustersClusterCustomConfiguration) Validate() 
 }
 
 type ListClustersResponseBodyClustersManager struct {
-	// The configurations of the domain name resolution service.
+	// The domain name resolution service configuration.
 	DNS *ListClustersResponseBodyClustersManagerDNS `json:"DNS,omitempty" xml:"DNS,omitempty" type:"Struct"`
-	// The configurations of the directory service.
+	// The domain account service configuration.
 	DirectoryService *ListClustersResponseBodyClustersManagerDirectoryService `json:"DirectoryService,omitempty" xml:"DirectoryService,omitempty" type:"Struct"`
-	// The configurations of the scheduler service.
+	// The scheduler service configuration.
 	Scheduler *ListClustersResponseBodyClustersManagerScheduler `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
 }
 
@@ -943,13 +960,13 @@ func (s *ListClustersResponseBodyClustersManager) Validate() error {
 }
 
 type ListClustersResponseBodyClustersManagerDNS struct {
-	// The resolution type.
+	// The domain name resolution type.
 	//
 	// example:
 	//
 	// NIS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version of the domain name resolution service.
+	// The domain name resolution version.
 	//
 	// example:
 	//
@@ -988,13 +1005,13 @@ func (s *ListClustersResponseBodyClustersManagerDNS) Validate() error {
 }
 
 type ListClustersResponseBodyClustersManagerDirectoryService struct {
-	// The type of the domain account.
+	// The domain account type.
 	//
 	// example:
 	//
 	// NIS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version of the domain account service.
+	// The domain account version.
 	//
 	// example:
 	//
@@ -1078,13 +1095,13 @@ func (s *ListClustersResponseBodyClustersManagerScheduler) Validate() error {
 }
 
 type ListClustersResponseBodyClustersNodes struct {
-	// The number of malfunctioning compute nodes.
+	// The number of abnormal compute nodes.
 	//
 	// example:
 	//
 	// 0
 	AbnormalCounts *int32 `json:"AbnormalCounts,omitempty" xml:"AbnormalCounts,omitempty"`
-	// The number of compute nodes that are being created.
+	// The number of compute nodes being created.
 	//
 	// example:
 	//
@@ -1138,13 +1155,13 @@ func (s *ListClustersResponseBodyClustersNodes) Validate() error {
 }
 
 type ListClustersResponseBodyClustersUsers struct {
-	// The number of ordinary users.
+	// The number of regular users.
 	//
 	// example:
 	//
 	// 2
 	NormalCounts *int32 `json:"NormalCounts,omitempty" xml:"NormalCounts,omitempty"`
-	// The number of administrators.
+	// The number of sudo users.
 	//
 	// example:
 	//
@@ -1179,5 +1196,40 @@ func (s *ListClustersResponseBodyClustersUsers) SetSudoCounts(v int32) *ListClus
 }
 
 func (s *ListClustersResponseBodyClustersUsers) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListClustersResponseBodyEhpcVersionStatistics struct {
+	V1Count *int32 `json:"V1Count,omitempty" xml:"V1Count,omitempty"`
+	V2Count *int32 `json:"V2Count,omitempty" xml:"V2Count,omitempty"`
+}
+
+func (s ListClustersResponseBodyEhpcVersionStatistics) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListClustersResponseBodyEhpcVersionStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *ListClustersResponseBodyEhpcVersionStatistics) GetV1Count() *int32 {
+	return s.V1Count
+}
+
+func (s *ListClustersResponseBodyEhpcVersionStatistics) GetV2Count() *int32 {
+	return s.V2Count
+}
+
+func (s *ListClustersResponseBodyEhpcVersionStatistics) SetV1Count(v int32) *ListClustersResponseBodyEhpcVersionStatistics {
+	s.V1Count = &v
+	return s
+}
+
+func (s *ListClustersResponseBodyEhpcVersionStatistics) SetV2Count(v int32) *ListClustersResponseBodyEhpcVersionStatistics {
+	s.V2Count = &v
+	return s
+}
+
+func (s *ListClustersResponseBodyEhpcVersionStatistics) Validate() error {
 	return dara.Validate(s)
 }

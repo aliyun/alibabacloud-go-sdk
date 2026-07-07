@@ -22,7 +22,7 @@ type iListJobsRequest interface {
 type ListJobsRequest struct {
 	// The cluster ID.
 	//
-	// You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+	// You can call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to query the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -32,21 +32,21 @@ type ListJobsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The job filter information.
 	JobFilter *ListJobsRequestJobFilter `json:"JobFilter,omitempty" xml:"JobFilter,omitempty" type:"Struct"`
-	// The page number of the page to return.
+	// The page number of the list.
 	//
-	// 	- Pages start from page 1.
+	// - Minimum value: 1.
 	//
-	// 	- Default value: 1
+	// - Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page when using paged query. Paging is applied to the results.
 	//
-	// 	- Maximum value: 50.
+	// - Maximum value: 50.
 	//
-	// 	- Default value: 10
+	// - Default value: 10.
 	//
 	// example:
 	//
@@ -108,19 +108,19 @@ func (s *ListJobsRequest) Validate() error {
 }
 
 type ListJobsRequestJobFilter struct {
-	// The time when the job was last updated. The value is a UNIX timestamp representing the number of seconds that have elapsed since 1970-01-01T00:00:00Z.
+	// The last update time of the job. The value is a UNIX timestamp representing the number of seconds that have elapsed since 1970-01-01T00:00:00Z.
 	//
 	// example:
 	//
 	// 1724123085
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// The time when the job started. The value is a UNIX timestamp representing the number of seconds that have elapsed since 1970-01-01T00:00:00Z.
+	// The start time of the job. The value is a UNIX timestamp representing the number of seconds that have elapsed since 1970-01-01T00:00:00Z.
 	//
 	// example:
 	//
 	// 1724122486
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	// Job diagnosis and analysis list.
+	// The job diagnostic analysis list.
 	Diagnosis []*ListJobsRequestJobFilterDiagnosis `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty" type:"Repeated"`
 	// The job name. Fuzzy match is supported.
 	//
@@ -130,11 +130,11 @@ type ListJobsRequestJobFilter struct {
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The job status. Valid values:
 	//
-	// 	- all: returns all jobs.
+	// - all: all statuses.
 	//
-	// 	- finished: returns completed jobs.
+	// - finished: completed.
 	//
-	// 	- notfinish: returns uncompleted jobs.
+	// - notfinish: not completed.
 	//
 	// Default value: all.
 	//
@@ -142,13 +142,13 @@ type ListJobsRequestJobFilter struct {
 	//
 	// all
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	// The compute nodes that run the jobs.
+	// The list of compute nodes that run the jobs.
 	Nodes []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// The queues to which the jobs belong.
+	// The list of queues that run the jobs.
 	Queues []*string `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
-	// The result sorting configurations.
+	// The sorting configuration for the job list.
 	SortBy *ListJobsRequestJobFilterSortBy `json:"SortBy,omitempty" xml:"SortBy,omitempty" type:"Struct"`
-	// The users that run the jobs.
+	// The list of users who run the jobs.
 	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -260,19 +260,19 @@ func (s *ListJobsRequestJobFilter) Validate() error {
 }
 
 type ListJobsRequestJobFilterDiagnosis struct {
-	// Job diagnosis threshold comparator.
+	// The comparison operator for the job diagnostic threshold.
 	//
 	// example:
 	//
 	// greater
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// Job diagnosis and analysis metrics
+	// The job diagnostic analysis metric.
 	//
 	// example:
 	//
 	// run_duration
 	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	// Job diagnosis threshold.
+	// The job diagnostic threshold.
 	//
 	// example:
 	//
@@ -320,11 +320,11 @@ func (s *ListJobsRequestJobFilterDiagnosis) Validate() error {
 }
 
 type ListJobsRequestJobFilterSortBy struct {
-	// The order in which jobs are sorted based on their execution time. Valid values:
+	// Sorts jobs by execution time. Valid values:
 	//
-	// 	- asc: in ascending order.
+	// - asc: ascending order.
 	//
-	// 	- desc: in descending order.
+	// - desc: descending order.
 	//
 	// Default value: desc.
 	//
@@ -332,11 +332,11 @@ type ListJobsRequestJobFilterSortBy struct {
 	//
 	// asc
 	ExecuteOrder *string `json:"ExecuteOrder,omitempty" xml:"ExecuteOrder,omitempty"`
-	// The order in which jobs are sorted based on their queuing time. Valid values:
+	// Sorts jobs by queue wait time. Valid values:
 	//
-	// 	- asc: in ascending order.
+	// - asc: ascending order.
 	//
-	// 	- desc: in descending order.
+	// - desc: descending order.
 	//
 	// Default value: desc.
 	//
@@ -344,11 +344,11 @@ type ListJobsRequestJobFilterSortBy struct {
 	//
 	// desc
 	PendOrder *string `json:"PendOrder,omitempty" xml:"PendOrder,omitempty"`
-	// The order in which jobs are sorted based on their submitting time. Valid values:
+	// Sorts jobs by submission time. Valid values:
 	//
-	// 	- asc: in ascending order.
+	// - asc: ascending order.
 	//
-	// 	- desc: in descending order.
+	// - desc: descending order.
 	//
 	// Default value: desc.
 	//

@@ -25,6 +25,26 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"eu-central-1":   dara.String("ehpc.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou": dara.String("ehpc.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":  dara.String("ehpc.cn-wulanchabu.aliyuncs.com"),
+		"cn-wuhan-lr":    dara.String("ehpc.cn-wuhan-lr.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("ehpc.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":    dara.String("ehpc.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":     dara.String("ehpc.cn-qingdao.aliyuncs.com"),
+		"cn-huhehaote":   dara.String("ehpc.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":    dara.String("ehpc.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan":      dara.String("ehpc.cn-heyuan.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("ehpc.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":   dara.String("ehpc.cn-guangzhou.aliyuncs.com"),
+		"cn-chengdu":     dara.String("ehpc.cn-chengdu.aliyuncs.com"),
+		"cn-beijing":     dara.String("ehpc.cn-beijing.aliyuncs.com"),
+		"ap-southeast-5": dara.String("ehpc.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-2": dara.String("ehpc.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-1": dara.String("ehpc.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-1": dara.String("ehpc.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -546,7 +566,7 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 
 // Summary:
 //
-// Creates a batch of compute nodes for an E-HPC cluster.
+// Creates compute nodes for an Elastic High Performance Computing (E-HPC) cluster in a batch.
 //
 // @param tmpReq - CreateNodesRequest
 //
@@ -652,7 +672,7 @@ func (client *Client) CreateNodesWithOptions(tmpReq *CreateNodesRequest, runtime
 
 // Summary:
 //
-// Creates a batch of compute nodes for an E-HPC cluster.
+// Creates compute nodes for an Elastic High Performance Computing (E-HPC) cluster in a batch.
 //
 // @param request - CreateNodesRequest
 //
@@ -2336,7 +2356,7 @@ func (client *Client) ListAvailableImages(request *ListAvailableImagesRequest) (
 
 // Summary:
 //
-// Queries all clusters of a user in each region.
+// Queries the list of all clusters in each region under your account.
 //
 // @param tmpReq - ListClustersRequest
 //
@@ -2402,7 +2422,7 @@ func (client *Client) ListClustersWithOptions(tmpReq *ListClustersRequest, runti
 
 // Summary:
 //
-// Queries all clusters of a user in each region.
+// Queries the list of all clusters in each region under your account.
 //
 // @param request - ListClustersRequest
 //
@@ -2590,7 +2610,7 @@ func (client *Client) ListInstalledSoftwares(request *ListInstalledSoftwaresRequ
 
 // Summary:
 //
-// Queries the jobs in a cluster.
+// Queries the list of jobs in a specified cluster.
 //
 // @param tmpReq - ListJobsRequest
 //
@@ -2652,7 +2672,7 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, runtime *dara
 
 // Summary:
 //
-// Queries the jobs in a cluster.
+// Queries the list of jobs in a specified cluster.
 //
 // @param request - ListJobsRequest
 //

@@ -385,7 +385,7 @@ func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJo
 
 // Summary:
 //
-// Creates a batch of compute nodes for an E-HPC cluster.
+// Creates compute nodes for an Elastic High Performance Computing (E-HPC) cluster in a batch.
 //
 // @param tmpReq - CreateNodesRequest
 //
@@ -1711,7 +1711,7 @@ func (client *Client) ListAvailableImagesWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Queries all clusters of a user in each region.
+// Queries the list of all clusters in each region under your account.
 //
 // @param tmpReq - ListClustersRequest
 //
@@ -1911,7 +1911,7 @@ func (client *Client) ListInstalledSoftwaresWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the jobs in a cluster.
+// Queries the list of jobs in a specified cluster.
 //
 // @param tmpReq - ListJobsRequest
 //

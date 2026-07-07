@@ -24,15 +24,15 @@ type iListJobsResponseBody interface {
 }
 
 type ListJobsResponseBody struct {
-	// The jobs.
+	// The job list.
 	Jobs []*ListJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	// The page number. Default value: 1
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10
+	// The number of entries per page set for the paged query. Paging settings apply. Default value: 10.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type ListJobsResponseBody struct {
 	//
 	// EABFBD93-58BE-53F3-BBFE-8654BB2E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the command was run and the result was obtained. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: Succeeded.
 	//
-	// 	- false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListJobsResponseBodyJobs struct {
 	//
 	// testjob
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The job configurations.
+	// The job configuration.
 	JobSpec *ListJobsResponseBodyJobsJobSpec `json:"JobSpec,omitempty" xml:"JobSpec,omitempty" type:"Struct"`
 }
 
@@ -190,17 +190,17 @@ type ListJobsResponseBodyJobsJobSpec struct {
 	//
 	// 4
 	ArrayJobId *string `json:"ArrayJobId,omitempty" xml:"ArrayJobId,omitempty"`
-	// The ID of the job in the array.
+	// The array sub-job ID.
 	//
 	// example:
 	//
 	// 1
 	ArrayJobSubId *string `json:"ArrayJobSubId,omitempty" xml:"ArrayJobSubId,omitempty"`
-	// The queue format of the job.
+	// The array job format.
 	//
-	// 	- If the job is not in a queue, the output is empty.
+	// - If the job is not an array job, the output is empty.
 	//
-	// 	- The format is X-Y:Z. X indicates the first index, Y indicates the final index, and Z indicates the step size. For example, 2-7:2 indicates three sub-jobs numbered 2, 4, and 6.
+	// - The format is X-Y:Z, where X is the first index, Y is the last index, and Z is the step size. For example, 2-7:2 indicates that the array job contains three sub-jobs numbered 2, 4, and 6.
 	//
 	// example:
 	//
@@ -218,61 +218,61 @@ type ListJobsResponseBodyJobsJobSpec struct {
 	//
 	// 12
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The queue name.
+	// The name of the queue that runs the job.
 	//
 	// example:
 	//
 	// comp
 	JobQueue *string `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
-	// The time when the job was last updated.
+	// The last update time of the job.
 	//
 	// example:
 	//
 	// 1724123085
 	LastModifyTime *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// The compute nodes that were used to run the job.
+	// The list of compute nodes that run the job.
 	//
 	// example:
 	//
 	// compute[002,005,003]
 	NodeList *string `json:"NodeList,omitempty" xml:"NodeList,omitempty"`
-	// The job priority. Valid values: 0 to 9. A larger value indicates a higher priority.
+	// The priority of the job. Valid values: 0 to 9. A larger value indicates a higher priority.
 	//
 	// example:
 	//
 	// 0
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The information about the resources required to run the job.
+	// The resource information required to run the job.
 	Resources *ListJobsResponseBodyJobsJobSpecResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	// Actual resource usage of the job program
+	// The resources actually occupied by the job.
 	ResourcesActualOccupied *ListJobsResponseBodyJobsJobSpecResourcesActualOccupied `json:"ResourcesActualOccupied,omitempty" xml:"ResourcesActualOccupied,omitempty" type:"Struct"`
-	// The user that ran the job.
+	// The username of the user who runs the job.
 	//
 	// example:
 	//
 	// testuser1
 	RunasUser *string `json:"RunasUser,omitempty" xml:"RunasUser,omitempty"`
-	// Job start time.
+	// The start time of the job.
 	//
 	// example:
 	//
 	// 1724122486
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The job state. Valid values: (PBS cluster and Slurm cluster)
+	// The job status. Valid values: (PBS cluster/Slurm cluster)
 	//
-	// 	- FINISHED/Completed
+	// - FINISHED/Completed: completed.
 	//
-	// 	- RUNNING/Running
+	// - RUNNING/Running: running.
 	//
-	// 	- QUEUED/Pending
+	// - QUEUED/Pending: queued and waiting.
 	//
-	// 	- FAILED/Failed
+	// - FAILED/Failed: failed.
 	//
 	// example:
 	//
 	// Running
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The error output path.
+	// The standard error output path.
 	//
 	// example:
 	//
@@ -284,13 +284,13 @@ type ListJobsResponseBodyJobsJobSpec struct {
 	//
 	// ./Temp
 	StdoutPath *string `json:"StdoutPath,omitempty" xml:"StdoutPath,omitempty"`
-	// The time when the job was submitted.
+	// The submission time of the job.
 	//
 	// example:
 	//
 	// 1724122486
 	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-	// The variables of the job.
+	// The list of job variables.
 	//
 	// example:
 	//
@@ -483,25 +483,25 @@ func (s *ListJobsResponseBodyJobsJobSpec) Validate() error {
 }
 
 type ListJobsResponseBodyJobsJobSpecResources struct {
-	// The number of vCPUs that were used to run the job.
+	// The number of CPU cores used to run the job.
 	//
 	// example:
 	//
 	// 6
 	Cores *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The number of GPUs that were used to run the job.
+	// The number of GPUs used to run the job.
 	//
 	// example:
 	//
 	// 0
 	Gpus *string `json:"Gpus,omitempty" xml:"Gpus,omitempty"`
-	// The size of memory that was used to run the job.
+	// The memory size used to run the job.
 	//
 	// example:
 	//
 	// 1536MB
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The number of compute nodes that were used to run the job.
+	// The number of compute nodes that run the job.
 	//
 	// example:
 	//
@@ -558,25 +558,25 @@ func (s *ListJobsResponseBodyJobsJobSpecResources) Validate() error {
 }
 
 type ListJobsResponseBodyJobsJobSpecResourcesActualOccupied struct {
-	// Number of CPU cores.
+	// The number of CPU cores.
 	//
 	// example:
 	//
 	// 4
 	Cores *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// Number of CPUs
+	// The number of GPUs.
 	//
 	// example:
 	//
 	// 0
 	Gpus *string `json:"Gpus,omitempty" xml:"Gpus,omitempty"`
-	// Number of memory.
+	// The memory size.
 	//
 	// example:
 	//
 	// 982MB
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// Number of compute nodes.
+	// The number of compute nodes.
 	//
 	// example:
 	//

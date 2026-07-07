@@ -22,7 +22,7 @@ type iListJobsShrinkRequest interface {
 type ListJobsShrinkRequest struct {
 	// The cluster ID.
 	//
-	// You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+	// You can call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to query the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -32,21 +32,21 @@ type ListJobsShrinkRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The job filter information.
 	JobFilterShrink *string `json:"JobFilter,omitempty" xml:"JobFilter,omitempty"`
-	// The page number of the page to return.
+	// The page number of the list.
 	//
-	// 	- Pages start from page 1.
+	// - Minimum value: 1.
 	//
-	// 	- Default value: 1
+	// - Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page when using paged query. Paging is applied to the results.
 	//
-	// 	- Maximum value: 50.
+	// - Maximum value: 50.
 	//
-	// 	- Default value: 10
+	// - Default value: 10.
 	//
 	// example:
 	//

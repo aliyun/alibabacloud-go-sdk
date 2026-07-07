@@ -42,33 +42,35 @@ type iCreateNodesShrinkRequest interface {
 type CreateNodesShrinkRequest struct {
 	// The ID of the cluster.
 	//
-	// You can call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to obtain the cluster ID.
+	// You can call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to query the cluster ID.
 	//
 	// example:
 	//
 	// ehpc-hz-FYUr32****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies the hardware configuration of the compute node.
+	// The hardware configuration of the compute nodes.
 	ComputeNodeShrink *string `json:"ComputeNode,omitempty" xml:"ComputeNode,omitempty"`
-	// The number of compute nodes to add. Valid values: 1 to 99. The value of MinCount must be less than the value of Count.
+	// The number of compute nodes to add. Valid values: 1 to 99. The value must be greater than MinCount.
 	//
-	// - If the ECS inventory is less than MinCount, the operation fails.
+	// - If the available ECS inventory is less than MinCount, the node creation fails.
 	//
-	// - If the ECS inventory is between MinCount and Count, the number of nodes specified by MinCount is added.
+	// - If the available ECS inventory is greater than or equal to MinCount but less than Count, nodes are added based on the number specified by MinCount.
 	//
-	// - If the ECS inventory is greater than Count, the number of nodes specified by Count is added.
+	// - If the available ECS inventory is greater than or equal to Count, nodes are added based on the number specified by Count.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the deployment set. You can call the [DescribeDeploymentSets](https://help.aliyun.com/document_detail/91313.html) operation to obtain the ID. Only deployment sets that use the low-latency network policy are supported.
+	// The ID of the deployment set.
+	//
+	// You can call [DescribeDeploymentSets](https://help.aliyun.com/document_detail/91313.html) to query the deployment set ID. Only deployment sets that use the low network latency strategy are supported.
 	//
 	// example:
 	//
 	// ds-bp1frxuzdg87zh4pzq****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// Specifies the network type for communication between compute nodes. Valid values:
+	// The network type for communication between compute nodes. Valid values:
 	//
 	// - vpc
 	//
@@ -78,7 +80,7 @@ type CreateNodesShrinkRequest struct {
 	//
 	// vpc
 	HPCInterConnect *string `json:"HPCInterConnect,omitempty" xml:"HPCInterConnect,omitempty"`
-	// The hostname prefix for the compute nodes in the queue.
+	// The hostname prefix of the compute nodes in the queue.
 	//
 	// example:
 	//
@@ -89,10 +91,9 @@ type CreateNodesShrinkRequest struct {
 	// example:
 	//
 	// demo
-	HostnameSuffix *string `json:"HostnameSuffix,omitempty" xml:"HostnameSuffix,omitempty"`
-	// The ID of the reserved node pool.
+	HostnameSuffix  *string `json:"HostnameSuffix,omitempty" xml:"HostnameSuffix,omitempty"`
 	HostnamesShrink *string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty"`
-	// Specifies whether deletion protection is enabled for the compute node.
+	// Specifies whether deletion protection is enabled for the compute nodes.
 	//
 	// example:
 	//
@@ -108,7 +109,7 @@ type CreateNodesShrinkRequest struct {
 	//
 	// test1
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The name of the authorized instance role to be attached to the compute nodes in the queue.
+	// The name of the RAM role attached to the compute nodes in the queue.
 	//
 	// example:
 	//
@@ -120,7 +121,7 @@ type CreateNodesShrinkRequest struct {
 	//
 	// rnp-756vlp7a
 	ReservedNodePoolId *string `json:"ReservedNodePoolId,omitempty" xml:"ReservedNodePoolId,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
