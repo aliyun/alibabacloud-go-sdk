@@ -1956,7 +1956,7 @@ func (client *Client) VideoModerationCancel(request *VideoModerationCancelReques
 //
 // Description:
 //
-// This operation is not billed. Set the query interval to 30 seconds (that is, query the results 30 seconds after submitting the asynchronous moderation task). The maximum query window is 24 hours. After 24 hours, the results are automatically deleted.
+// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting the asynchronous moderation task). The maximum query window is 24 hours. After that, results are automatically deleted.
 //
 // @param request - VideoModerationResultRequest
 //
@@ -2008,7 +2008,7 @@ func (client *Client) VideoModerationResultWithOptions(request *VideoModerationR
 //
 // Description:
 //
-// This operation is not billed. Set the query interval to 30 seconds (that is, query the results 30 seconds after submitting the asynchronous moderation task). The maximum query window is 24 hours. After 24 hours, the results are automatically deleted.
+// This operation is not billed. Set the polling interval to 30 seconds (query results 30 seconds after submitting the asynchronous moderation task). The maximum query window is 24 hours. After that, results are automatically deleted.
 //
 // @param request - VideoModerationResultRequest
 //

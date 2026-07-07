@@ -20,7 +20,7 @@ type iVideoModerationResultResponseBody interface {
 }
 
 type VideoModerationResultResponseBody struct {
-	// The response code. A value of 200 indicates success.
+	// The return code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type VideoModerationResultResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The moderation result data.
 	Data *VideoModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//
@@ -336,7 +336,7 @@ type VideoModerationResultResponseBodyDataAudioResultAudioSummarys struct {
 	//
 	// profanity
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The number of times the label appears.
+	// The number of times the label was detected.
 	//
 	// example:
 	//
@@ -408,12 +408,13 @@ type VideoModerationResultResponseBodyDataAudioResultSliceDetails struct {
 	//
 	// {\\"consoleProduct\\":\\"slbnext\\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The violation labels that are hit.
+	// The violated labels that were hit.
 	//
 	// example:
 	//
 	// porn
-	Labels *string                                                               `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The text detection result.
 	Result []*VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The risk level, returned based on the configured high and low risk score thresholds. Valid values:
 	//
@@ -437,7 +438,7 @@ type VideoModerationResultResponseBodyDataAudioResultSliceDetails struct {
 	//
 	// ""
 	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	// The risk keywords that are hit.
+	// The risk keywords that were hit.
 	//
 	// example:
 	//
@@ -623,13 +624,40 @@ func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) Validate(
 }
 
 type VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult struct {
-	Confidence    *float32                                                                           `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The confidence level.
+	//
+	// example:
+	//
+	// 99.9
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The list of hit custom libraries.
 	CustomizedHit []*VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit `json:"CustomizedHit,omitempty" xml:"CustomizedHit,omitempty" type:"Repeated"`
-	Description   *string                                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	Label         *string                                                                            `json:"Label,omitempty" xml:"Label,omitempty"`
-	RiskLevel     *string                                                                            `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// 疑似违禁内容
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The label.
+	//
+	// example:
+	//
+	// profanity
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The risk level.
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The list of risk positions.
 	RiskPositions []*VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions `json:"RiskPositions,omitempty" xml:"RiskPositions,omitempty" type:"Repeated"`
-	RiskWords     *string                                                                            `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	// The hit risk content.
+	//
+	// example:
+	//
+	// fxxk
+	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) String() string {
@@ -726,8 +754,18 @@ func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult) Val
 }
 
 type VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit struct {
+	// The custom keywords.
+	//
+	// example:
+	//
+	// fxxk
 	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
-	LibName  *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// The name of the custom library.
+	//
+	// example:
+	//
+	// 备用词库02
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit) String() string {
@@ -761,9 +799,24 @@ func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCusto
 }
 
 type VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions struct {
-	EndPos   *int32  `json:"EndPos,omitempty" xml:"EndPos,omitempty"`
+	// The end position.
+	//
+	// example:
+	//
+	// 3
+	EndPos *int32 `json:"EndPos,omitempty" xml:"EndPos,omitempty"`
+	// The detected sensitive word.
+	//
+	// example:
+	//
+	// fxxk
 	RiskWord *string `json:"RiskWord,omitempty" xml:"RiskWord,omitempty"`
-	StartPos *int32  `json:"StartPos,omitempty" xml:"StartPos,omitempty"`
+	// The start position.
+	//
+	// example:
+	//
+	// 0
+	StartPos *int32 `json:"StartPos,omitempty" xml:"StartPos,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions) String() string {
@@ -889,7 +942,7 @@ type VideoModerationResultResponseBodyDataExtAigcDataAIGC struct {
 	//
 	// 001191******M000100Y43
 	ContentProducer *string `json:"ContentProducer,omitempty" xml:"ContentProducer,omitempty"`
-	// The name, ID, or code of the propagation platform. For services that provide artificial intelligence-generated content, this value can be the same as ContentProducer.
+	// The name, code, or identifier of the propagation platform. For services that provide artificial intelligence-generated content, this value can be the same as ContentProducer.
 	//
 	// example:
 	//
@@ -897,39 +950,39 @@ type VideoModerationResultResponseBodyDataExtAigcDataAIGC struct {
 	ContentPropagator *string `json:"ContentPropagator,omitempty" xml:"ContentPropagator,omitempty"`
 	// Indicates whether the content is generated by artificial intelligence (AI). Valid values:
 	//
-	// - 1: The content is generated through artificial intelligence content generation.
+	// - 1: The content is AI-generated content (AIGC).
 	//
-	// - 2: (Propagation platforms only) The content may be generated through artificial intelligence content generation.
+	// - 2: (Propagation platforms only) The content may be AI-generated content generation.
 	//
-	// - 3: (Propagation platforms only) The content is suspected to be generated through artificial intelligence content generation.
+	// - 3: (Propagation platforms only) The content is suspected to be AI-generated content generation.
 	//
 	// example:
 	//
 	// 1
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The content production ID, which is the unique identifier used by the production platform to trace synthesized content.
+	// The content production ID, a unique identifier used by the production platform to trace synthesized content.
 	//
 	// example:
 	//
 	// 123******456
 	ProduceID *string `json:"ProduceID,omitempty" xml:"ProduceID,omitempty"`
-	// The content propagation ID, which is the unique identifier assigned by the propagation platform to the propagated AI-generated content.
+	// The content propagation ID, a unique identifier assigned by the propagation platform to the distributed AI-generated content.
 	//
 	// example:
 	//
 	// 123******456
 	PropagateID *string `json:"PropagateID,omitempty" xml:"PropagateID,omitempty"`
-	// The reserved field.
+	// A reserved field.
 	//
-	// This field can store information used by the content generation service provider for self-initiated security protection to safeguard content and identifier integrity. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify critical information.
+	// This field can store information used by the content generation service provider for self-initiated security protection and content/identifier integrity assurance. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify critical information.
 	//
 	// example:
 	//
 	// d41d**********427e
 	ReservedCode1 *string `json:"ReservedCode1,omitempty" xml:"ReservedCode1,omitempty"`
-	// The reserved field.
+	// A reserved field.
 	//
-	// This field can be used by the content propagation service provider for self-initiated security protection to safeguard content and identifier integrity. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify critical information.
+	// This field can be used by the content propagation service provider for self-initiated security protection and content/identifier integrity assurance. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify critical information.
 	//
 	// example:
 	//
@@ -1120,7 +1173,7 @@ type VideoModerationResultResponseBodyDataFrameResultFrameSummarys struct {
 	//
 	// violent_armedForces
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The number of times the label appears.
+	// The number of times the label was detected.
 	//
 	// example:
 	//
@@ -1192,7 +1245,7 @@ type VideoModerationResultResponseBodyDataFrameResultFrames struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The temporary URL of the captured frame image.
+	// The temporary access URL of the captured frame image.
 	//
 	// example:
 	//
@@ -1273,11 +1326,11 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrames) Validate() erro
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
-	// The custom image library information that is hit. This field is returned only when a custom image library is hit.
+	// The custom image library information returned when a custom image library is hit.
 	CustomImage []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
-	// The logo information returned when the video contains a logo.
+	// The logo information returned when a logo is detected in the video.
 	LogoData []*VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData `json:"LogoData,omitempty" xml:"LogoData,omitempty" type:"Repeated"`
-	// The recognized public figure codes returned when the video contains specific public figures.
+	// The identified public figure codes returned when the video contains specific public figures.
 	PublicFigure []*VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
 	// The hit result details.
 	Result []*VideoModerationResultResponseBodyDataFrameResultFramesResultsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
@@ -1287,9 +1340,9 @@ type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
 	//
 	// tonalityImprove
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	// The text information in the image that is hit.
+	// The text information detected in the hit image.
 	TextInImage map[string]interface{} `json:"TextInImage,omitempty" xml:"TextInImage,omitempty"`
-	// The foundation model result.
+	// The large model result.
 	VlContent *VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent `json:"VlContent,omitempty" xml:"VlContent,omitempty" type:"Struct"`
 }
 
@@ -1410,13 +1463,13 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) Validate
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage struct {
-	// The ID of the custom image that is hit.
+	// The ID of the hit custom image.
 	//
 	// example:
 	//
 	// 1234
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the custom image library that is hit.
+	// The ID of the hit custom image library.
 	//
 	// example:
 	//
@@ -1457,7 +1510,7 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImag
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData struct {
 	// The text line and coordinate information.
 	Location *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	// The logo identification information.
+	// The logo information.
 	Logo []*VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
 }
 
@@ -1641,19 +1694,19 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLo
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure struct {
-	// The code of the recognized public figure.
+	// The code of the identified public figure.
 	//
 	// example:
 	//
 	// xxx001
 	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
-	// The name of the recognized public figure.
+	// The name of the identified public figure.
 	//
 	// example:
 	//
 	// 张三
 	FigureName *string `json:"FigureName,omitempty" xml:"FigureName,omitempty"`
-	// The location of the recognized public figure.
+	// The location of the identified public figure.
 	Location []*VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Repeated"`
 }
 
@@ -1841,7 +1894,7 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsResult) Va
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent struct {
-	// The output text from the foundation model.
+	// The output text from the large model.
 	//
 	// example:
 	//
