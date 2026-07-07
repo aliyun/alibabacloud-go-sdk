@@ -38,7 +38,7 @@ type iListPromotionActivitiesForPartnerResponseBody interface {
 }
 
 type ListPromotionActivitiesForPartnerResponseBody struct {
-	// The access denied detail.
+	// The access denied details.
 	//
 	// example:
 	//
@@ -249,7 +249,7 @@ func (s *ListPromotionActivitiesForPartnerResponseBody) Validate() error {
 type ListPromotionActivitiesForPartnerResponseBodyModule struct {
 	// The list of promotional activities.
 	Activities []*ListPromotionActivitiesForPartnerResponseBodyModuleActivities `json:"Activities,omitempty" xml:"Activities,omitempty" type:"Repeated"`
-	// The total count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -327,13 +327,13 @@ type ListPromotionActivitiesForPartnerResponseBodyModuleActivities struct {
 	//
 	// 2022-02-14 11:57:51
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator.
+	// The user who created the activity.
 	//
 	// example:
 	//
 	// onlinehoztestrolebasicallow1755461756261068111(300216315676902267)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// The eligibility configuration (JSON).
+	// The eligibility configuration in JSON format.
 	//
 	// example:
 	//
@@ -345,7 +345,7 @@ type ListPromotionActivitiesForPartnerResponseBodyModuleActivities struct {
 	//
 	// 2026-04-22 10:18:51 +0800
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The offer configuration (JSON).
+	// The offer configuration in JSON format.
 	//
 	// example:
 	//
@@ -381,7 +381,7 @@ type ListPromotionActivitiesForPartnerResponseBodyModuleActivities struct {
 	//
 	// 10
 	TotalQuota *int64 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
-	// The touchpoint configuration (JSON).
+	// The touchpoint configuration in JSON format.
 	//
 	// example:
 	//

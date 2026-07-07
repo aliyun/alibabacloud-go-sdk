@@ -38,13 +38,13 @@ type iListAppInstanceDomainsResponseBody interface {
 }
 
 type ListAppInstanceDomainsResponseBody struct {
-	// The details about the access denial.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
@@ -62,17 +62,17 @@ type ListAppInstanceDomainsResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace the `%s` in the **ErrMessage*	- return parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The maximum number of entries to return per query.
+	// The maximum number of entries per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -82,7 +82,7 @@ type ListAppInstanceDomainsResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The response data.
 	Module *ListAppInstanceDomainsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token for the next query. This parameter is empty if there are no more results.
+	// The token for the next query. This parameter is empty if no more results exist.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type ListAppInstanceDomainsResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
@@ -255,7 +255,7 @@ type ListAppInstanceDomainsResponseBodyModule struct {
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The query results.
+	// The request results.
 	Data []*ListAppInstanceDomainsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The decision weight.
 	Next *ListAppInstanceDomainsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
@@ -269,7 +269,7 @@ type ListAppInstanceDomainsResponseBodyModule struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Indicates whether a previous page exists.
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to pagination limits, the server processes up to 1,000 recent records per query. If the results exceed 1,000 records, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// The server processes up to 1000 recent records beyond the pagination limit. If the results exceed 1000 entries, **ResultLimit*	- is **true**, and you must narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
 	// The total number of entries.
 	//
@@ -393,20 +393,22 @@ func (s *ListAppInstanceDomainsResponseBodyModule) Validate() error {
 }
 
 type ListAppInstanceDomainsResponseBodyModuleData struct {
-	// The SSL certificate information of the domain name.
+	// The domain name SSL certificate information.
 	Certificate *ListAppInstanceDomainsResponseBodyModuleDataCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
-	// The time when the instance was created. Format: yyyy-MM-dd HH:mm:ss.
+	// The instance creation time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 1683256054000
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime  *string                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DnsConflict *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict `json:"DnsConflict,omitempty" xml:"DnsConflict,omitempty" type:"Struct"`
 	// The domain name.
 	//
 	// example:
 	//
 	// kaibaidu.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName *string                                                `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Migration  *ListAppInstanceDomainsResponseBodyModuleDataMigration `json:"Migration,omitempty" xml:"Migration,omitempty" type:"Struct"`
 	// The overall binding status.
 	//
 	// example:
@@ -439,8 +441,16 @@ func (s *ListAppInstanceDomainsResponseBodyModuleData) GetCreateTime() *string {
 	return s.CreateTime
 }
 
+func (s *ListAppInstanceDomainsResponseBodyModuleData) GetDnsConflict() *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict {
+	return s.DnsConflict
+}
+
 func (s *ListAppInstanceDomainsResponseBodyModuleData) GetDomainName() *string {
 	return s.DomainName
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleData) GetMigration() *ListAppInstanceDomainsResponseBodyModuleDataMigration {
+	return s.Migration
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModuleData) GetOverallStatus() *string {
@@ -473,8 +483,18 @@ func (s *ListAppInstanceDomainsResponseBodyModuleData) SetCreateTime(v string) *
 	return s
 }
 
+func (s *ListAppInstanceDomainsResponseBodyModuleData) SetDnsConflict(v *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict) *ListAppInstanceDomainsResponseBodyModuleData {
+	s.DnsConflict = v
+	return s
+}
+
 func (s *ListAppInstanceDomainsResponseBodyModuleData) SetDomainName(v string) *ListAppInstanceDomainsResponseBodyModuleData {
 	s.DomainName = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleData) SetMigration(v *ListAppInstanceDomainsResponseBodyModuleDataMigration) *ListAppInstanceDomainsResponseBodyModuleData {
+	s.Migration = v
 	return s
 }
 
@@ -509,6 +529,16 @@ func (s *ListAppInstanceDomainsResponseBodyModuleData) Validate() error {
 			return err
 		}
 	}
+	if s.DnsConflict != nil {
+		if err := s.DnsConflict.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Migration != nil {
+		if err := s.Migration.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Ownership != nil {
 		if err := s.Ownership.Validate(); err != nil {
 			return err
@@ -533,19 +563,19 @@ func (s *ListAppInstanceDomainsResponseBodyModuleData) Validate() error {
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataCertificate struct {
-	// The certificate name.
+	// The name of the certificate.
 	//
 	// example:
 	//
 	// 2024
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The certificate status.
+	// The status of the certificate.
 	//
 	// example:
 	//
 	// ACTIVE
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
-	// The certificate type.
+	// The type of the certificate.
 	//
 	// example:
 	//
@@ -604,6 +634,160 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataCertificate) SetEndTime(v s
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModuleDataCertificate) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListAppInstanceDomainsResponseBodyModuleDataDnsConflict struct {
+	CanAutoResolve *bool                                                             `json:"CanAutoResolve,omitempty" xml:"CanAutoResolve,omitempty"`
+	HasConflict    *bool                                                             `json:"HasConflict,omitempty" xml:"HasConflict,omitempty"`
+	Message        *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Records        []*ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleDataDnsConflict) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleDataDnsConflict) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict) GetCanAutoResolve() *bool {
+	return s.CanAutoResolve
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict) GetHasConflict() *bool {
+	return s.HasConflict
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict) GetMessage() *string {
+	return s.Message
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict) GetRecords() []*ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords {
+	return s.Records
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict) SetCanAutoResolve(v bool) *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict {
+	s.CanAutoResolve = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict) SetHasConflict(v bool) *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict {
+	s.HasConflict = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict) SetMessage(v string) *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict) SetRecords(v []*ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords) *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict {
+	s.Records = v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict) Validate() error {
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords struct {
+	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords) GetHost() *string {
+	return s.Host
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords) GetRecordType() *string {
+	return s.RecordType
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords) SetHost(v string) *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords {
+	s.Host = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords) SetRecordType(v string) *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords {
+	s.RecordType = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords) SetStatus(v string) *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords) SetValue(v string) *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords {
+	s.Value = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListAppInstanceDomainsResponseBodyModuleDataMigration struct {
+	MigrationStatus *string     `json:"MigrationStatus,omitempty" xml:"MigrationStatus,omitempty"`
+	PreviousDomain  interface{} `json:"PreviousDomain,omitempty" xml:"PreviousDomain,omitempty"`
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleDataMigration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleDataMigration) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataMigration) GetMigrationStatus() *string {
+	return s.MigrationStatus
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataMigration) GetPreviousDomain() interface{} {
+	return s.PreviousDomain
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataMigration) SetMigrationStatus(v string) *ListAppInstanceDomainsResponseBodyModuleDataMigration {
+	s.MigrationStatus = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataMigration) SetPreviousDomain(v interface{}) *ListAppInstanceDomainsResponseBodyModuleDataMigration {
+	s.PreviousDomain = v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleDataMigration) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -973,20 +1157,22 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataVerificationDnsRecord) Vali
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNext struct {
-	// The SSL certificate information of the domain name.
+	// The domain name SSL certificate information.
 	Certificate *ListAppInstanceDomainsResponseBodyModuleNextCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
-	// The time when the instance was created. Format: yyyy-MM-dd HH:mm:ss.
+	// The instance creation time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 1741572465000
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime  *string                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DnsConflict *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict `json:"DnsConflict,omitempty" xml:"DnsConflict,omitempty" type:"Struct"`
 	// The domain name.
 	//
 	// example:
 	//
 	// usdcoin.xin
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName *string                                                `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Migration  *ListAppInstanceDomainsResponseBodyModuleNextMigration `json:"Migration,omitempty" xml:"Migration,omitempty" type:"Struct"`
 	// The overall binding status.
 	//
 	// example:
@@ -1019,8 +1205,16 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNext) GetCreateTime() *string {
 	return s.CreateTime
 }
 
+func (s *ListAppInstanceDomainsResponseBodyModuleNext) GetDnsConflict() *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict {
+	return s.DnsConflict
+}
+
 func (s *ListAppInstanceDomainsResponseBodyModuleNext) GetDomainName() *string {
 	return s.DomainName
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNext) GetMigration() *ListAppInstanceDomainsResponseBodyModuleNextMigration {
+	return s.Migration
 }
 
 func (s *ListAppInstanceDomainsResponseBodyModuleNext) GetOverallStatus() *string {
@@ -1053,8 +1247,18 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNext) SetCreateTime(v string) *
 	return s
 }
 
+func (s *ListAppInstanceDomainsResponseBodyModuleNext) SetDnsConflict(v *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict) *ListAppInstanceDomainsResponseBodyModuleNext {
+	s.DnsConflict = v
+	return s
+}
+
 func (s *ListAppInstanceDomainsResponseBodyModuleNext) SetDomainName(v string) *ListAppInstanceDomainsResponseBodyModuleNext {
 	s.DomainName = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNext) SetMigration(v *ListAppInstanceDomainsResponseBodyModuleNextMigration) *ListAppInstanceDomainsResponseBodyModuleNext {
+	s.Migration = v
 	return s
 }
 
@@ -1089,6 +1293,16 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNext) Validate() error {
 			return err
 		}
 	}
+	if s.DnsConflict != nil {
+		if err := s.DnsConflict.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Migration != nil {
+		if err := s.Migration.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Ownership != nil {
 		if err := s.Ownership.Validate(); err != nil {
 			return err
@@ -1113,19 +1327,19 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNext) Validate() error {
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextCertificate struct {
-	// The certificate name.
+	// The name of the certificate.
 	//
 	// example:
 	//
 	// jfztkg202502
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The certificate status.
+	// The status of the certificate.
 	//
 	// example:
 	//
 	// ACTIVE
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
-	// The certificate type.
+	// The type of the certificate.
 	//
 	// example:
 	//
@@ -1187,6 +1401,150 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextCertificate) Validate() err
 	return dara.Validate(s)
 }
 
+type ListAppInstanceDomainsResponseBodyModuleNextDnsConflict struct {
+	CanAutoResolve *bool                                                             `json:"CanAutoResolve,omitempty" xml:"CanAutoResolve,omitempty"`
+	HasConflict    *bool                                                             `json:"HasConflict,omitempty" xml:"HasConflict,omitempty"`
+	Message        *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Records        []*ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleNextDnsConflict) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleNextDnsConflict) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict) GetCanAutoResolve() *bool {
+	return s.CanAutoResolve
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict) GetHasConflict() *bool {
+	return s.HasConflict
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict) GetMessage() *string {
+	return s.Message
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict) GetRecords() []*ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords {
+	return s.Records
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict) SetCanAutoResolve(v bool) *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict {
+	s.CanAutoResolve = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict) SetHasConflict(v bool) *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict {
+	s.HasConflict = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict) SetMessage(v string) *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict) SetRecords(v []*ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords) *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict {
+	s.Records = v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict) Validate() error {
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords struct {
+	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords) GetHost() *string {
+	return s.Host
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords) GetRecordType() *string {
+	return s.RecordType
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords) SetHost(v string) *ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords {
+	s.Host = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords) SetRecordType(v string) *ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords {
+	s.RecordType = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords) SetValue(v string) *ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords {
+	s.Value = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListAppInstanceDomainsResponseBodyModuleNextMigration struct {
+	MigrationStatus *string     `json:"MigrationStatus,omitempty" xml:"MigrationStatus,omitempty"`
+	PreviousDomain  interface{} `json:"PreviousDomain,omitempty" xml:"PreviousDomain,omitempty"`
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleNextMigration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAppInstanceDomainsResponseBodyModuleNextMigration) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextMigration) GetMigrationStatus() *string {
+	return s.MigrationStatus
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextMigration) GetPreviousDomain() interface{} {
+	return s.PreviousDomain
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextMigration) SetMigrationStatus(v string) *ListAppInstanceDomainsResponseBodyModuleNextMigration {
+	s.MigrationStatus = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextMigration) SetPreviousDomain(v interface{}) *ListAppInstanceDomainsResponseBodyModuleNextMigration {
+	s.PreviousDomain = v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextMigration) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListAppInstanceDomainsResponseBodyModuleNextOwnership struct {
 	// The account owner type. Valid values: CURRENT and OTHER.
 	//
@@ -1199,7 +1557,8 @@ type ListAppInstanceDomainsResponseBodyModuleNextOwnership struct {
 	// example:
 	//
 	// pai
-	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Provider   *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	RootDomain *string `json:"RootDomain,omitempty" xml:"RootDomain,omitempty"`
 }
 
 func (s ListAppInstanceDomainsResponseBodyModuleNextOwnership) String() string {
@@ -1218,6 +1577,10 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextOwnership) GetProvider() *s
 	return s.Provider
 }
 
+func (s *ListAppInstanceDomainsResponseBodyModuleNextOwnership) GetRootDomain() *string {
+	return s.RootDomain
+}
+
 func (s *ListAppInstanceDomainsResponseBodyModuleNextOwnership) SetAccount(v string) *ListAppInstanceDomainsResponseBodyModuleNextOwnership {
 	s.Account = &v
 	return s
@@ -1225,6 +1588,11 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextOwnership) SetAccount(v str
 
 func (s *ListAppInstanceDomainsResponseBodyModuleNextOwnership) SetProvider(v string) *ListAppInstanceDomainsResponseBodyModuleNextOwnership {
 	s.Provider = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextOwnership) SetRootDomain(v string) *ListAppInstanceDomainsResponseBodyModuleNextOwnership {
+	s.RootDomain = &v
 	return s
 }
 
@@ -1415,7 +1783,8 @@ type ListAppInstanceDomainsResponseBodyModuleNextVerification struct {
 	// example:
 	//
 	// SUCCESSFUL
-	VerificationStatus *string `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
+	VerificationStatus     *string `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
+	VerificationStatusCode *string `json:"VerificationStatusCode,omitempty" xml:"VerificationStatusCode,omitempty"`
 }
 
 func (s ListAppInstanceDomainsResponseBodyModuleNextVerification) String() string {
@@ -1438,6 +1807,10 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextVerification) GetVerificati
 	return s.VerificationStatus
 }
 
+func (s *ListAppInstanceDomainsResponseBodyModuleNextVerification) GetVerificationStatusCode() *string {
+	return s.VerificationStatusCode
+}
+
 func (s *ListAppInstanceDomainsResponseBodyModuleNextVerification) SetDnsRecord(v *ListAppInstanceDomainsResponseBodyModuleNextVerificationDnsRecord) *ListAppInstanceDomainsResponseBodyModuleNextVerification {
 	s.DnsRecord = v
 	return s
@@ -1450,6 +1823,11 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextVerification) SetErrorMsg(v
 
 func (s *ListAppInstanceDomainsResponseBodyModuleNextVerification) SetVerificationStatus(v string) *ListAppInstanceDomainsResponseBodyModuleNextVerification {
 	s.VerificationStatus = &v
+	return s
+}
+
+func (s *ListAppInstanceDomainsResponseBodyModuleNextVerification) SetVerificationStatusCode(v string) *ListAppInstanceDomainsResponseBodyModuleNextVerification {
+	s.VerificationStatusCode = &v
 	return s
 }
 

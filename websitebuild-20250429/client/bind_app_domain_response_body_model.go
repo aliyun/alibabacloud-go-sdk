@@ -60,7 +60,7 @@ type BindAppDomainResponseBody struct {
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	// The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- response element.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type BindAppDomainResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The data table module.
+	// The data table module. Valid values:
 	//
 	// - ABTest: experiment data table
 	//
 	// - ExperimentTool: experiment tool table
 	//
-	// - DataDiagnosis: data modeling diagnostics.
+	// - DataDiagnosis: data modeling diagnostics
 	Module *BindAppDomainResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -219,6 +219,7 @@ func (s *BindAppDomainResponseBody) Validate() error {
 }
 
 type BindAppDomainResponseBodyModule struct {
+	DnsConflict *BindAppDomainResponseBodyModuleDnsConflict `json:"DnsConflict,omitempty" xml:"DnsConflict,omitempty" type:"Struct"`
 	// Indicates whether the request is successful.
 	//
 	// example:
@@ -235,8 +236,17 @@ func (s BindAppDomainResponseBodyModule) GoString() string {
 	return s.String()
 }
 
+func (s *BindAppDomainResponseBodyModule) GetDnsConflict() *BindAppDomainResponseBodyModuleDnsConflict {
+	return s.DnsConflict
+}
+
 func (s *BindAppDomainResponseBodyModule) GetSuccess() *bool {
 	return s.Success
+}
+
+func (s *BindAppDomainResponseBodyModule) SetDnsConflict(v *BindAppDomainResponseBodyModuleDnsConflict) *BindAppDomainResponseBodyModule {
+	s.DnsConflict = v
+	return s
 }
 
 func (s *BindAppDomainResponseBodyModule) SetSuccess(v bool) *BindAppDomainResponseBodyModule {
@@ -245,5 +255,129 @@ func (s *BindAppDomainResponseBodyModule) SetSuccess(v bool) *BindAppDomainRespo
 }
 
 func (s *BindAppDomainResponseBodyModule) Validate() error {
+	if s.DnsConflict != nil {
+		if err := s.DnsConflict.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type BindAppDomainResponseBodyModuleDnsConflict struct {
+	CanAutoResolve *bool                                                `json:"CanAutoResolve,omitempty" xml:"CanAutoResolve,omitempty"`
+	HasConflict    *bool                                                `json:"HasConflict,omitempty" xml:"HasConflict,omitempty"`
+	Message        *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Records        []*BindAppDomainResponseBodyModuleDnsConflictRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+}
+
+func (s BindAppDomainResponseBodyModuleDnsConflict) String() string {
+	return dara.Prettify(s)
+}
+
+func (s BindAppDomainResponseBodyModuleDnsConflict) GoString() string {
+	return s.String()
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflict) GetCanAutoResolve() *bool {
+	return s.CanAutoResolve
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflict) GetHasConflict() *bool {
+	return s.HasConflict
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflict) GetMessage() *string {
+	return s.Message
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflict) GetRecords() []*BindAppDomainResponseBodyModuleDnsConflictRecords {
+	return s.Records
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflict) SetCanAutoResolve(v bool) *BindAppDomainResponseBodyModuleDnsConflict {
+	s.CanAutoResolve = &v
+	return s
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflict) SetHasConflict(v bool) *BindAppDomainResponseBodyModuleDnsConflict {
+	s.HasConflict = &v
+	return s
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflict) SetMessage(v string) *BindAppDomainResponseBodyModuleDnsConflict {
+	s.Message = &v
+	return s
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflict) SetRecords(v []*BindAppDomainResponseBodyModuleDnsConflictRecords) *BindAppDomainResponseBodyModuleDnsConflict {
+	s.Records = v
+	return s
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflict) Validate() error {
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type BindAppDomainResponseBodyModuleDnsConflictRecords struct {
+	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s BindAppDomainResponseBodyModuleDnsConflictRecords) String() string {
+	return dara.Prettify(s)
+}
+
+func (s BindAppDomainResponseBodyModuleDnsConflictRecords) GoString() string {
+	return s.String()
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflictRecords) GetHost() *string {
+	return s.Host
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflictRecords) GetRecordType() *string {
+	return s.RecordType
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflictRecords) GetStatus() *string {
+	return s.Status
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflictRecords) GetValue() *string {
+	return s.Value
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflictRecords) SetHost(v string) *BindAppDomainResponseBodyModuleDnsConflictRecords {
+	s.Host = &v
+	return s
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflictRecords) SetRecordType(v string) *BindAppDomainResponseBodyModuleDnsConflictRecords {
+	s.RecordType = &v
+	return s
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflictRecords) SetStatus(v string) *BindAppDomainResponseBodyModuleDnsConflictRecords {
+	s.Status = &v
+	return s
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflictRecords) SetValue(v string) *BindAppDomainResponseBodyModuleDnsConflictRecords {
+	s.Value = &v
+	return s
+}
+
+func (s *BindAppDomainResponseBodyModuleDnsConflictRecords) Validate() error {
 	return dara.Validate(s)
 }

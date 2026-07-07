@@ -35,7 +35,7 @@ type ListAppInstanceDomainsRequest struct {
 	// WD20250718165839000001
 	BizId         *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	DomainKeyword *string `json:"DomainKeyword,omitempty" xml:"DomainKeyword,omitempty"`
-	// The maximum number of entries to return per query.
+	// The maximum number of entries per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -43,19 +43,19 @@ type ListAppInstanceDomainsRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. This parameter is empty if there are no more results.
+	// The token for the next query. This parameter is empty if no more results exist.
 	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The field by which to sort the results.
+	// The field used for sorting.
 	//
 	// example:
 	//
 	// CreationTime
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values: ASC and DESC.
+	// The sort type. Valid values: ASC and DESC.
 	//
 	// example:
 	//
