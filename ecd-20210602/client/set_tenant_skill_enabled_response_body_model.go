@@ -1,0 +1,42 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iSetTenantSkillEnabledResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *SetTenantSkillEnabledResponseBody
+	GetRequestId() *string
+}
+
+type SetTenantSkillEnabledResponseBody struct {
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetTenantSkillEnabledResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SetTenantSkillEnabledResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetTenantSkillEnabledResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *SetTenantSkillEnabledResponseBody) SetRequestId(v string) *SetTenantSkillEnabledResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetTenantSkillEnabledResponseBody) Validate() error {
+	return dara.Validate(s)
+}
