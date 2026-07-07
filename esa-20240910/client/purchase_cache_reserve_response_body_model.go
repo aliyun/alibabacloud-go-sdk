@@ -18,19 +18,19 @@ type iPurchaseCacheReserveResponseBody interface {
 }
 
 type PurchaseCacheReserveResponseBody struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// xcdn-ad*****s11w
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Order ID.
+	// The order ID.
 	//
 	// example:
 	//
 	// 31223****11
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

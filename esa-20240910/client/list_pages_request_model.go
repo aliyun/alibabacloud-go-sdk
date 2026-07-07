@@ -30,7 +30,7 @@ type ListPagesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query filters, specified as a JSON object.
+	// The query parameters passed in JSON format, which contain various filter conditions.
 	QueryArgs *ListPagesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
 }
 
@@ -79,13 +79,17 @@ func (s *ListPagesRequest) Validate() error {
 }
 
 type ListPagesRequestQueryArgs struct {
-	// Filters the custom response pages by content type.
+	// The Content-Type field in the HTTP header. Example values:
+	//
+	// 	- text/html
+	//
+	// 	- application/json
 	//
 	// example:
 	//
 	// application/json
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// A keyword for a fuzzy search on the name or description of custom response pages.
+	// The keyword used for fuzzy matching against the name or description of custom pages.
 	//
 	// example:
 	//

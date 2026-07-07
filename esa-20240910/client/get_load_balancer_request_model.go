@@ -16,7 +16,7 @@ type iGetLoadBalancerRequest interface {
 }
 
 type GetLoadBalancerRequest struct {
-	// The ID of the load balancer. This ID is returned when the load balancer is created. You can also call [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) to get the IDs of all load balancers in a site.
+	// The load balancer ID, which uniquely identifies the load balancer to query. This ID is returned when the load balancer is created. You can also call the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) operation to obtain all load balancers under a site.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetLoadBalancerRequest struct {
 	//
 	// 99867648760****
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the site. Call [ListSites](~~ListSites~~) to get this ID.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

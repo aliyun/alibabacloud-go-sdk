@@ -18,13 +18,13 @@ type iListSiteOriginClientCertificatesRequest interface {
 }
 
 type ListSiteOriginClientCertificatesRequest struct {
-	// The page number. The default value is **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//

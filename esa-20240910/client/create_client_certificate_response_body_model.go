@@ -40,7 +40,7 @@ type iCreateClientCertificateResponseBody interface {
 }
 
 type CreateClientCertificateResponseBody struct {
-	// The ID of the CA certificate.
+	// The CA certificate ID.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CreateClientCertificateResponseBody struct {
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The Common Name of the certificate.
+	// The common name of the certificate.
 	//
 	// example:
 	//
@@ -64,25 +64,25 @@ type CreateClientCertificateResponseBody struct {
 	//
 	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
-	// The certificate ID on ESA.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb1d95
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The CA that issued the certificate.
+	// The certification authority that issued the certificate.
 	//
 	// example:
 	//
 	// ESA CA
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The time when the certificate expires.
+	// The end time of the certificate validity period.
 	//
 	// example:
 	//
 	// 2024-12-01T02:12:49Z
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The time when the certificate takes effect.
+	// The start time of the certificate validity period.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type CreateClientCertificateResponseBody struct {
 	//
 	// C370DAF1-C838-4288-A1A0-9A87633D248E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The serial number of the certificate.
+	// The certificate serial number.
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type CreateClientCertificateResponseBody struct {
 	//
 	// SHA256-RSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
-	// The status of the certificate.
+	// The certificate status.
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The validity period of the certificate. Unit: day.
+	// The validity period of the certificate.
 	//
 	// example:
 	//

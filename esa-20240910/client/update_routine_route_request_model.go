@@ -36,7 +36,7 @@ type UpdateRoutineRouteRequest struct {
 	//
 	// - on: enabled
 	//
-	// - off: disabled.
+	// - off: disabled
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type UpdateRoutineRouteRequest struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The fallback-to-origin switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request falls back to the origin server. Valid values:
+	// The back-to-origin on exception switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request is forwarded to the origin server. Valid values:
 	//
 	// - on: Enabled.
 	//
@@ -64,7 +64,7 @@ type UpdateRoutineRouteRequest struct {
 	//
 	// - on: enabled
 	//
-	// - off: disabled.
+	// - off: disabled
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type UpdateRoutineRouteRequest struct {
 	//
 	// test_route
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The name of the Edge Routine.
+	// The Edge Routine name.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type UpdateRoutineRouteRequest struct {
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The execution order of the rule.
+	// The rule execution order.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type UpdateRoutineRouteRequest struct {
 	//
 	// 123456******
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The Edge Routine timeout period. Valid values: 5 to 60.
+	// The Edge Routine timeout period. Valid values: 5 to 60. Unit: seconds.
 	//
 	// example:
 	//

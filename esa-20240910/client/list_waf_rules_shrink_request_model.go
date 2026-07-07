@@ -26,35 +26,35 @@ type iListWafRulesShrinkRequest interface {
 }
 
 type ListWafRulesShrinkRequest struct {
-	// The number of the page to return.
+	// The page number for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of items to return per page.
+	// The page size for pagination.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The WAF rule execution phase. Valid values are:
+	// The WAF rule execution phase. Valid values:
 	//
-	// - `http_whitelist`: whitelist rule
+	// - http_whitelist: whitelist rule
 	//
-	// - `http_custom`: custom rule
+	// - http_custom: custom rule
 	//
-	// - `http_managed`: managed rule
+	// - http_managed: managed rule
 	//
-	// - `http_anti_scan`: scan protection rule
+	// - http_anti_scan: scan protection rule
 	//
-	// - `http_ratelimit`: rate limiting rule
+	// - http_ratelimit: frequency control rule
 	//
-	// - `ip_access_rule`: IP access rule
+	// - ip_access_rule: IP access rule
 	//
-	// - `http_bot`: Advanced bots
+	// - http_bot: advanced mode bots
 	//
-	// - `http_security_level_rule`: security rule
+	// - http_security_level_rule: security rule
 	//
 	// This parameter is required.
 	//
@@ -62,19 +62,19 @@ type ListWafRulesShrinkRequest struct {
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Query filters.
+	// The query filter conditions.
 	//
 	// example:
 	//
 	// http_custom
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
-	// The ID of the WAF ruleset. You can obtain this ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
+	// The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ruleset ID.
 	//
 	// example:
 	//
 	// 10000001
 	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	// The site ID. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type ListWafRulesShrinkRequest struct {
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The site configuration version. For sites with configuration version management enabled, this parameter specifies the version to use. Defaults to 0.
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is 0.
 	//
 	// example:
 	//

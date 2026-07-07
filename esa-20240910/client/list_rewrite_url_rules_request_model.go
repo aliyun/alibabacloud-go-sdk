@@ -26,43 +26,43 @@ type iListRewriteUrlRulesRequest interface {
 }
 
 type ListRewriteUrlRulesRequest struct {
-	// Configuration ID.
+	// The configuration ID.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type, which can be used to query global or rule configurations. Value range:
+	// The configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
 	//
-	// - global: Query global configuration;
+	// - global: queries global configurations.
 	//
-	// - rule: Query rule configuration;
+	// - rule: queries rule configurations.
 	//
-	// This parameter is optional. If not provided, it does not distinguish between global and rule configurations. This parameter only takes effect when the functionName parameter is provided.
+	// This parameter is optional. If you do not specify this parameter, both global and rule configurations are returned. This parameter takes effect only when the functionName parameter is specified.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Page number.
+	// The page number for a paged query. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size. Range: **1~500**, default is **500**.
+	// The number of entries per page for a paged query. Valid values: 1 to 500.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Rule name. Not required when adding a global configuration.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ListRewriteUrlRulesRequest struct {
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
 	//
 	// example:
 	//

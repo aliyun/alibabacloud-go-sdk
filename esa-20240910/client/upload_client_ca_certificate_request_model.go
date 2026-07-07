@@ -32,7 +32,7 @@ type UploadClientCaCertificateRequest struct {
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// This parameter is required.
 	//

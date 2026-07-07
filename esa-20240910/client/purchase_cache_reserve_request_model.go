@@ -24,53 +24,51 @@ type iPurchaseCacheReserveRequest interface {
 }
 
 type PurchaseCacheReserveRequest struct {
-	// Whether to automatically pay. The default value is false.
+	// Specifies whether to enable automatic payment. Default value: false. Valid values:
 	//
-	// - true: Automatically pay.
+	// - true: Enables automatic payment.
 	//
-	// - false: Do not automatically pay.
+	// - false: Disables automatic payment.
 	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Whether to auto-renew:
+	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - true: Auto-renew.
+	// - true: Enables auto-renewal.
 	//
-	// - false: Do not auto-renew.
+	// - false: Disables auto-renewal.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// Billing type
+	// The billing type. Valid values:
 	//
-	// - PREPAY: Prepaid.
-	//
-	// - POSTPAY: Postpaid.
+	// - PREPAY: upfront.
 	//
 	// example:
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Cache retention region
+	// The cache reserve region.
 	//
-	// - HK: Hong Kong, China
+	// - HK: Hong Kong (China)
 	//
-	// - CN-beijing: Mainland China - Beijing
+	// - CN-beijing: Chinese mainland - Beijing
 	//
 	// example:
 	//
 	// HK
 	CrRegion *string `json:"CrRegion,omitempty" xml:"CrRegion,omitempty"`
-	// Purchase period (unit: month).
+	// The purchase period. Unit: months.
 	//
 	// example:
 	//
 	// 3
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// Cache retention specification (unit: GB).
+	// The cache reserve specification. Unit: GB.
 	//
 	// example:
 	//

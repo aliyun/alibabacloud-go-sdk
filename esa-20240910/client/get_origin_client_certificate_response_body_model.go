@@ -24,33 +24,33 @@ type iGetOriginClientCertificateResponseBody interface {
 }
 
 type GetOriginClientCertificateResponseBody struct {
-	// The content of the certificate.
+	// The certificate content.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The unique ID for the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the certificate.
+	// The certificate information.
 	Result *GetOriginClientCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The ID of the site. Call the [ListSites](~~ListSites~~) operation to obtain this ID.
+	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The name of the site.
+	// The site name.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The status of the certificate.
+	// The certificate status.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type GetOriginClientCertificateResponseBodyResult struct {
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The date and time when the certificate was created.
+	// The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -148,33 +148,33 @@ type GetOriginClientCertificateResponseBodyResult struct {
 	//
 	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
-	// A list of bound hostnames.
+	// The list of associated domain names.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The issuer of the certificate.
+	// The certificate issue authority.
 	//
 	// example:
 	//
 	// DigiCert
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The name of the certificate.
+	// The certificate name.
 	//
 	// example:
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The date and time when the certificate expires.
+	// The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The date and time when the certificate becomes valid.
+	// The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -186,13 +186,13 @@ type GetOriginClientCertificateResponseBodyResult struct {
 	//
 	// RSA
 	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
-	// The Subject Alternative Names (SANs) of the certificate.
+	// The Subject Alternative Name (SAN) of the certificate.
 	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
-	// The serial number of the certificate.
+	// The certificate serial number.
 	//
 	// example:
 	//
@@ -204,19 +204,19 @@ type GetOriginClientCertificateResponseBodyResult struct {
 	//
 	// SHA256-RSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
-	// The status of the certificate.
+	// The certificate status.
 	//
 	// example:
 	//
 	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the certificate.
+	// The certificate type.
 	//
 	// example:
 	//
 	// upload
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The date and time when the certificate was last updated.
+	// The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//

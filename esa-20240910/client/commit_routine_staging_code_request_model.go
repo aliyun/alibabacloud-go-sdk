@@ -24,7 +24,7 @@ type CommitRoutineStagingCodeRequest struct {
 	//
 	// description of this code ver
 	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
-	// The deployment environment whose environment variable configuration is used. If you do not specify this parameter, environment variables are not used.
+	// The deployment environment. The environment variable configuration of the specified environment is used. If you do not specify this parameter, environment variables are not used.
 	//
 	// example:
 	//

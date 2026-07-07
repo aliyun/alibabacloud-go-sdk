@@ -18,19 +18,19 @@ type iListClientCaCertificatesRequest interface {
 }
 
 type ListClientCaCertificatesRequest struct {
-	// The page number. Valid values: 1 to 500.
+	// The page number to return. Valid values: 1 to 500.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Valid values: 1 to 100. The default value is 20.
+	// The number of entries per page. Default value: 20. Maximum value: 100. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The site ID. Call the [ListSites](~~ListSites~~) operation to obtain this ID.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

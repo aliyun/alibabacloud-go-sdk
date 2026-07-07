@@ -24,15 +24,15 @@ type iListLoadBalancersResponseBody interface {
 }
 
 type ListLoadBalancersResponseBody struct {
-	// An array of load balancers.
+	// The list of load balancing instances returned in array format.
 	LoadBalancers []*ListLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
-	// The page number. This value matches the `PageNumber` request parameter.
+	// The page number, which is the same as the PageNumber request parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListLoadBalancersResponseBody struct {
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries found.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -134,49 +134,49 @@ func (s *ListLoadBalancersResponseBody) Validate() error {
 }
 
 type ListLoadBalancersResponseBodyLoadBalancers struct {
-	// The configuration for failover across pools.
+	// The cross-origin address pool back-to-origin configuration.
 	AdaptiveRouting *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty" type:"Struct"`
-	// A list of default pool IDs.
+	// The list of default address pool IDs.
 	DefaultPools []*int64 `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty" type:"Repeated"`
-	// The description of the load balancer.
+	// The description of the load balancing instance.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the load balancer is enabled.
+	// Indicates whether the load balancing instance is enabled. Valid values:
 	//
-	// - `true`: Enabled.
+	// - true: Enabled.
 	//
-	// - `false`: Disabled.
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ID of the fallback pool. The load balancer routes traffic to this pool when all other pools are unavailable.
+	// The ID of the fallback address pool. When all other address pools are unavailable, traffic is redirected to this address pool.
 	//
 	// example:
 	//
 	// 96228666776****
 	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
-	// The unique ID of the load balancer.
+	// The unique identity ID of the load balancing instance.
 	//
 	// example:
 	//
 	// 998676487607104
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The health check configuration.
+	// The monitor configuration.
 	Monitor *ListLoadBalancersResponseBodyLoadBalancersMonitor `json:"Monitor,omitempty" xml:"Monitor,omitempty" type:"Struct"`
-	// The name of the load balancer.
+	// The name of the load balancing instance.
 	//
 	// example:
 	//
 	// lb.example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The configuration for weighted round robin, which controls traffic distribution among pools.
+	// The weighted round-robin configuration, which controls the traffic distribution weight across different address pools.
 	RandomSteering *ListLoadBalancersResponseBodyLoadBalancersRandomSteering `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty" type:"Struct"`
-	// The pools that correspond to regions.
+	// The address pools mapped to primary regions.
 	//
 	// example:
 	//
@@ -198,27 +198,29 @@ type ListLoadBalancersResponseBodyLoadBalancers struct {
 	//
 	// }
 	RegionPools interface{} `json:"RegionPools,omitempty" xml:"RegionPools,omitempty"`
-	// A list of rule configurations that define behavior for specific conditions.
+	// The list of rule configurations that define behaviors under specific conditions.
 	Rules []*ListLoadBalancersResponseBodyLoadBalancersRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The session affinity setting. Valid values:
+	// The session persistence mode. Valid values:
 	//
-	// - `off`: Session affinity is disabled.
+	// - off: Disabled.
 	//
-	// - `ip`: Enables session affinity based on the client\\"s IP address.
+	// - ip: IP-based session persistence.
 	//
-	// - `cookie`: Enables session affinity based on a cookie.
+	// - cookie: Cookie-based session persistence.
+	//
+	// - http_header: HTTP header-based session persistence.
 	//
 	// example:
 	//
 	// ip
 	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
-	// The site ID of the load balancer.
+	// The ID of the site to which the load balancing instance belongs.
 	//
 	// example:
 	//
 	// 1159101787****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The status of the load balancer.
+	// The status of the load balancing instance.
 	//
 	// example:
 	//
@@ -230,13 +232,13 @@ type ListLoadBalancersResponseBodyLoadBalancers struct {
 	//
 	// order
 	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
-	// The pools that correspond to sub-regions. If multiple sub-regions share the same set of pools, you can use a comma-separated list of sub-region codes as the key.
+	// The address pools mapped to secondary regions. When multiple secondary regions share the same set of address pools, the secondary region names can be concatenated with commas as the key.
 	//
 	// example:
 	//
 	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
 	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
-	// The Time to Live (TTL) for the DNS record, in seconds. The default value is 30.
+	// The TTL value, which specifies the time-to-live of the DNS record. Default value: 30.
 	//
 	// example:
 	//
@@ -434,17 +436,22 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) Validate() error {
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting struct {
-	// Indicates whether to enable failover across pools.
+	// Indicates whether cross-origin address pool failover is enabled. Valid values:
 	//
-	// - `true`: Enabled.
+	// - true: Enabled.
 	//
-	// - `false`: Disabled.
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	FailoverAcrossPools *bool `json:"FailoverAcrossPools,omitempty" xml:"FailoverAcrossPools,omitempty"`
-	OriginLevelRetry    *bool `json:"OriginLevelRetry,omitempty" xml:"OriginLevelRetry,omitempty"`
+	// Specifies whether to retry the next IP address when back-to-origin fails and the origin server is a domain name that resolves to multiple IP addresses.
+	//
+	// example:
+	//
+	// true
+	OriginLevelRetry *bool `json:"OriginLevelRetry,omitempty" xml:"OriginLevelRetry,omitempty"`
 }
 
 func (s ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting) String() string {
@@ -478,35 +485,35 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersAdaptiveRouting) Validate() e
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersMonitor struct {
-	// The number of consecutive failed health checks required to consider a pool unhealthy. For example, `5`.
+	// The number of consecutive failed probes required to consider the check failed, such as 5.
 	//
 	// example:
 	//
 	// 5
 	ConsecutiveDown *int32 `json:"ConsecutiveDown,omitempty" xml:"ConsecutiveDown,omitempty"`
-	// The number of consecutive successful health checks required to consider a pool healthy. For example, `3`.
+	// The number of consecutive successful probes required to consider the check successful, such as 3.
 	//
 	// example:
 	//
 	// 3
 	ConsecutiveUp *int32 `json:"ConsecutiveUp,omitempty" xml:"ConsecutiveUp,omitempty"`
-	// The expected HTTP status codes that indicate a successful health check, such as `200` or `202`.
+	// The expected status codes for a successful HTTP response, such as 200,202.
 	//
 	// example:
 	//
 	// 200,202
 	ExpectedCodes *string `json:"ExpectedCodes,omitempty" xml:"ExpectedCodes,omitempty"`
-	// Indicates whether the health check should follow redirects.
+	// Indicates whether to follow redirects. Valid values:
 	//
-	// - `true`: Follows redirects.
+	// - true: Yes.
 	//
-	// - `false`: Does not follow redirects.
+	// - false: No.
 	//
 	// example:
 	//
 	// true
 	FollowRedirects *bool `json:"FollowRedirects,omitempty" xml:"FollowRedirects,omitempty"`
-	// The HTTP headers to include in the health check probe.
+	// The HTTP header information included in the probe request.
 	//
 	// example:
 	//
@@ -522,7 +529,7 @@ type ListLoadBalancersResponseBodyLoadBalancersMonitor struct {
 	//
 	//     }
 	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
-	// The interval between health checks, in seconds.
+	// The interval of the health check, in seconds.
 	//
 	// example:
 	//
@@ -534,37 +541,37 @@ type ListLoadBalancersResponseBodyLoadBalancersMonitor struct {
 	//
 	// GET
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The probe locations for health checks. The default is `Global`. Valid values:
+	// The region where the probe nodes are located. Default value: Global. Valid values:
 	//
-	// - `Global`: Sends probes from global locations.
+	// - Global: worldwide.
 	//
-	// - `ChineseMainland`: Sends probes from locations within the Chinese mainland.
+	// - ChineseMainland: the Chinese mainland.
 	//
-	// - `OutsideChineseMainland`: Sends probes from global locations outside the Chinese mainland.
+	// - OutsideChineseMainland: worldwide (excluding the Chinese mainland).
 	//
 	// example:
 	//
 	// Global
 	MonitoringRegion *string `json:"MonitoringRegion,omitempty" xml:"MonitoringRegion,omitempty"`
-	// The path to request for the health check.
+	// The path.
 	//
 	// example:
 	//
 	// /
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The destination port for the health check.
+	// The target port.
 	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The timeout for a single health check, in seconds.
+	// The timeout period of the health check, in seconds.
 	//
 	// example:
 	//
 	// 5
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The protocol for the health check, such as `HTTP`. Set to `off` to disable health checks.
+	// The monitor protocol type, such as HTTP, used for health checks. A value of off indicates that no health check is performed.
 	//
 	// example:
 	//
@@ -693,13 +700,13 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersMonitor) Validate() error {
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersRandomSteering struct {
-	// The default weight applied to any pool not defined in `PoolWeights`. The weight determines the proportion of traffic sent to the pool.
+	// The weight configuration for each backend server pool. The key is the pool ID and the value is the weight coefficient. The weight coefficient represents the relative proportion of traffic distribution.
 	//
 	// example:
 	//
 	// 50
 	DefaultWeight *int32 `json:"DefaultWeight,omitempty" xml:"DefaultWeight,omitempty"`
-	// The weight configuration for each backend pool, where the key is the pool ID and the value is the weight.
+	// The weight configuration for each backend server pool. The key is the pool ID and the value is the weight coefficient.
 	PoolWeights map[string]*int32 `json:"PoolWeights,omitempty" xml:"PoolWeights,omitempty"`
 }
 
@@ -734,9 +741,9 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersRandomSteering) Validate() er
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersRules struct {
-	// Specifies the response to return when a rule matches.
+	// The fixed response content returned after a rule is matched.
 	FixedResponse *ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse `json:"FixedResponse,omitempty" xml:"FixedResponse,omitempty" type:"Struct"`
-	// The load balancer settings to override when a rule matches. Any field you specify overwrites the load balancer\\"s corresponding setting.
+	// The load balancing configuration overrides applied after a rule is matched. The configured fields override the corresponding fields in the load balancer configuration.
 	//
 	// example:
 	//
@@ -840,43 +847,43 @@ type ListLoadBalancersResponseBodyLoadBalancersRules struct {
 	//
 	//         }
 	Overrides interface{} `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
-	// The rule expression that matches user requests. This parameter is not required for global configurations. Use cases:
+	// The rule content, which uses conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. Two scenarios are supported:
 	//
-	// - To match all incoming requests, set the value to `true`.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
+	// - Match specific requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// http.request.uri.path contains "/testing"
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Indicates whether the rule is enabled. This parameter is not required for global configurations. Valid values:
+	// The rule switch. This parameter does not need to be set when adding a global configuration. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: Enabled.
 	//
-	// - `off`: Disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The name of the rule. This parameter is not required for global configurations.
+	// The rule name. This parameter does not need to be set when adding a global configuration.
 	//
 	// example:
 	//
 	// r2
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The execution priority of the rule. Higher values indicate higher priority.
+	// The rule execution order. A higher value indicates higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Specifies whether to stop executing subsequent rules after this rule matches.
+	// Indicates whether to stop executing subsequent rules. Valid values:
 	//
-	// - `true`: Stops executing subsequent rules.
+	// - true: Yes.
 	//
-	// - `false`: Continues to execute subsequent rules. This is the default value.
+	// - false: No. This is the default value.
 	//
 	// example:
 	//
@@ -965,19 +972,19 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersRules) Validate() error {
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersRulesFixedResponse struct {
-	// The `Content-Type` header.
+	// The Content-Type field in the HTTP header.
 	//
 	// example:
 	//
 	// application/json
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The `Location` response header.
+	// The location field in the HTTP response.
 	//
 	// example:
 	//
 	// http://www.example.com/index.html
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The content of the response body.
+	// The response body value.
 	//
 	// example:
 	//

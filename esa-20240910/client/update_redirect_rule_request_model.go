@@ -32,7 +32,7 @@ type iUpdateRedirectRuleRequest interface {
 }
 
 type UpdateRedirectRuleRequest struct {
-	// The ID of the configuration. To get this ID, call the [ListRedirectRules](https://help.aliyun.com/document_detail/2867474.html) operation.
+	// The configuration ID. You can call the [ListRedirectRules](https://help.aliyun.com/document_detail/2867474.html) operation to obtain the configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -40,49 +40,49 @@ type UpdateRedirectRuleRequest struct {
 	//
 	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Specifies whether to preserve the query string of the original request. Valid values:
+	// Specifies whether to preserve the query string. Valid values:
 	//
-	// - `on`: Preserves the query string.
+	// - on: Enabled.
 	//
-	// - `off`: Does not preserve the query string.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
-	// The conditional expression that matches user requests. This parameter is not required for a global configuration. Two scenarios are supported:
+	// The rule content. A conditional expression is used to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
 	//
-	// - To match all requests, set the value to `true`.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// - To match specific requests, use a custom expression, such as `(http.host eq "video.example.com")`.
+	// - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. This parameter is not required for a global configuration. Valid values:
+	// Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
 	//
-	// - `on`: Enables the rule.
+	// - on: Enabled.
 	//
-	// - `off`: Disables the rule.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The name of the rule. This parameter is not required for a global configuration.
+	// The rule name. This parameter is not required when you add a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The execution order of the rule. A lower value indicates a higher priority.
+	// The execution order of the rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The ID of the site. To get this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type UpdateRedirectRuleRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The response status code that the edge node returns to the client for the redirect. Valid values:
+	// The HTTP status code used when the node responds to the client with the redirect address. Valid values:
 	//
 	// - 301
 	//
@@ -106,17 +106,17 @@ type UpdateRedirectRuleRequest struct {
 	//
 	// 301
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The URL to which requests are redirected.
+	// The target URL after the redirect.
 	//
 	// example:
 	//
 	// http://www.exapmle.com/index.html
 	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	// The redirection type. Valid values:
+	// The redirect type. Valid values:
 	//
-	// - `static`: Static mode.
+	// - static: static pattern.
 	//
-	// - `dynamic`: Dynamic mode.
+	// - dynamic: dynamic pattern.
 	//
 	// example:
 	//

@@ -40,9 +40,9 @@ type iGetRoutineRouteResponseBody interface {
 type GetRoutineRouteResponseBody struct {
 	// The bypass mode. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: enabled.
 	//
-	// - `off`: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
@@ -54,21 +54,21 @@ type GetRoutineRouteResponseBody struct {
 	//
 	// 352816******
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type. Valid values:
+	// The configuration type. You can use this parameter to query global or rule configurations. Valid values:
 	//
-	// - `global`: Queries the global configuration.
+	// - global: queries global configurations.
 	//
-	// - `rule`: Queries the rule configuration.
+	// - rule: queries rule configurations.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Specifies whether to enable fallback to origin. If this feature is enabled, requests are sent to the origin server when the function encounters an exception, such as exceeding its CPU limit. Valid values:
+	// The back-to-origin on exception switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request is forwarded to the origin. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: enabled.
 	//
-	// - `off`: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type GetRoutineRouteResponseBody struct {
 	Fallback *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
 	// The configuration mode. Valid values:
 	//
-	// - `simple`: simple mode.
+	// - simple: simple mode.
 	//
-	// - `custom`: custom mode.
+	// - custom: custom mode.
 	//
 	// example:
 	//
@@ -90,11 +90,11 @@ type GetRoutineRouteResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The route status. Valid values:
+	// The route switch. Valid values:
 	//
-	// - `on`: Enabled.
+	// - on: enabled.
 	//
-	// - `off`: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ type GetRoutineRouteResponseBody struct {
 	//
 	// test_route
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The name of the edge function routine.
+	// The Edge Routine name.
 	//
 	// example:
 	//
 	// test-routine1
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
-	// The rule expression.
+	// The rule content.
 	//
 	// example:
 	//
@@ -130,6 +130,8 @@ type GetRoutineRouteResponseBody struct {
 	//
 	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The Edge Routine timeout period. Valid values: 5 to 60. Unit: seconds.
+	//
 	// example:
 	//
 	// 5

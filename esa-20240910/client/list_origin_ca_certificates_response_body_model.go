@@ -44,7 +44,7 @@ type ListOriginCaCertificatesResponseBody struct {
 	//
 	// 34DCBC8A-****-****-****-6DAA11D7DDBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of certificate objects that match the query.
+	// The result.
 	Result []*ListOriginCaCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The site ID.
 	//
@@ -58,7 +58,7 @@ type ListOriginCaCertificatesResponseBody struct {
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The total number of certificates that match the query.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type ListOriginCaCertificatesResponseBodyResult struct {
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The time when the certificate was created.
+	// The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type ListOriginCaCertificatesResponseBodyResult struct {
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The issuer of the certificate.
+	// The certification authority.
 	//
 	// example:
 	//
@@ -187,17 +187,17 @@ type ListOriginCaCertificatesResponseBodyResult struct {
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The expiration date of the certificate.
+	// The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The validity start date of the certificate.
+	// The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//
-	// 2023-11-26T16:00:00Z
+	// 2023-11-26 16:00:00
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
 	// The public key algorithm of the certificate.
 	//
@@ -211,7 +211,7 @@ type ListOriginCaCertificatesResponseBodyResult struct {
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
-	// The serial number of the certificate.
+	// The certificate serial number.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type ListOriginCaCertificatesResponseBodyResult struct {
 	//
 	// upload
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the certificate was last updated.
+	// The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//

@@ -130,19 +130,23 @@ func (s *GetClientCaCertificateResponseBody) Validate() error {
 }
 
 type GetClientCaCertificateResponseBodyResult struct {
-	// The common name (CN) of the certificate.
+	// The common name of the certificate.
 	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The time of the certificate\\"s creation.
+	// The creation time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-03-05 18:24:04
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The SHA-256 fingerprint of the certificate.
+	//
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
 	// The certificate ID.
 	//
@@ -150,7 +154,7 @@ type GetClientCaCertificateResponseBodyResult struct {
 	//
 	// babab9db65ee5efcca9f3d41d4b5****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The issuer of the certificate.
+	// The certificate issuer.
 	//
 	// example:
 	//
@@ -162,13 +166,13 @@ type GetClientCaCertificateResponseBodyResult struct {
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The expiration date of the certificate.
+	// The end time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The start of the certificate\\"s validity period.
+	// The start time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -186,7 +190,11 @@ type GetClientCaCertificateResponseBodyResult struct {
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
-	// The serial number of the certificate.
+	// The certificate serial number.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1d**
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The signature algorithm of the certificate.
 	//
@@ -206,7 +214,7 @@ type GetClientCaCertificateResponseBodyResult struct {
 	//
 	// upload
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time of the certificate\\"s last update.
+	// The update time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type GetCertificateRequest struct {
 	//
 	// babaded901474b9693acf530e0fb1d95
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The site ID. You can get this ID by calling the [ListSites](~~ListSites~~) interface.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to query the site ID.
 	//
 	// This parameter is required.
 	//

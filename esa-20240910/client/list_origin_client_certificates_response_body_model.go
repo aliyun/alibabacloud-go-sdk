@@ -26,7 +26,7 @@ type iListOriginClientCertificatesResponseBody interface {
 }
 
 type ListOriginClientCertificatesResponseBody struct {
-	// The page number. The default value is **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type ListOriginClientCertificatesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of certificate information.
 	Result []*ListOriginClientCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The ID of the site.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The name of the site.
+	// The site name.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type ListOriginClientCertificatesResponseBodyResult struct {
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The time when the certificate was created.
+	// The creation time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -169,33 +169,33 @@ type ListOriginClientCertificatesResponseBodyResult struct {
 	//
 	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
-	// The hostnames bound to the certificate.
+	// The list of associated domain names.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The issuer of the certificate.
+	// The certification authority.
 	//
 	// example:
 	//
 	// DigiCert
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The name of the certificate.
+	// The certificate name.
 	//
 	// example:
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The expiration date and time of the certificate.
+	// The end time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The beginning of the certificate\\"s validity period.
+	// The start time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -213,7 +213,7 @@ type ListOriginClientCertificatesResponseBodyResult struct {
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
-	// The serial number of the certificate.
+	// The certificate serial number.
 	//
 	// example:
 	//
@@ -225,19 +225,19 @@ type ListOriginClientCertificatesResponseBodyResult struct {
 	//
 	// SHA256-RSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
-	// The status of the certificate.
+	// The certificate status.
 	//
 	// example:
 	//
 	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the certificate.
+	// The certificate type.
 	//
 	// example:
 	//
 	// upload
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the certificate was last updated.
+	// The update time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
 	//
 	// example:
 	//

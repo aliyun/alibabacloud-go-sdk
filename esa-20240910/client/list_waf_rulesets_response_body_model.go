@@ -26,7 +26,7 @@ type iListWafRulesetsResponseBody interface {
 }
 
 type ListWafRulesetsResponseBody struct {
-	// The number of WAF rulesets used by the instance in this WAF phase.
+	// The number of WAF rulesets used by the instance in this WAF execution phase.
 	//
 	// example:
 	//
@@ -50,15 +50,15 @@ type ListWafRulesetsResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of rulesets.
+	// The list of rulesets, including detailed information about each ruleset.
 	Rulesets []*ListWafRulesetsResponseBodyRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
-	// The number of WAF rulesets used by the site in this WAF phase.
+	// The number of WAF rulesets used by the site in this WAF execution phase.
 	//
 	// example:
 	//
 	// 5
 	SiteUsage *int64 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
-	// The total number of entries returned after filtering.
+	// The total number of records after filtering.
 	//
 	// example:
 	//
@@ -151,9 +151,9 @@ func (s *ListWafRulesetsResponseBody) Validate() error {
 }
 
 type ListWafRulesetsResponseBodyRulesets struct {
-	// A list of match fields.
+	// The list of match objects.
 	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The ID of the WAF ruleset. This value is returned by the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
+	// The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ruleset ID.
 	//
 	// example:
 	//
@@ -165,23 +165,23 @@ type ListWafRulesetsResponseBodyRulesets struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The execution phase of the ruleset. Valid values are:
+	// The WAF rule execution phase. Valid values:
 	//
-	// - `http_whitelist`: whitelist rule
+	// - http_whitelist: whitelist rules
 	//
-	// - `http_custom`: custom rule
+	// - http_custom: custom rules
 	//
-	// - `http_managed`: managed rule
+	// - http_managed: managed rules
 	//
-	// - `http_anti_scan`: scan protection rule
+	// - http_anti_scan: scan protection rules
 	//
-	// - `http_ratelimit`: rate limiting rule
+	// - http_ratelimit: frequency control rules
 	//
-	// - `ip_access_rule`: IP access rule
+	// - ip_access_rule: IP access rules
 	//
-	// - `http_bot`: advanced bot protection
+	// - http_bot: advanced mode bots
 	//
-	// - `http_security_level_rule`: security rule
+	// - http_security_level_rule: security rules
 	//
 	// example:
 	//
@@ -193,15 +193,19 @@ type ListWafRulesetsResponseBodyRulesets struct {
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The protection target for the \\"http_bot\\" phase.
+	// The protection target type in http_bot.
 	//
 	// example:
 	//
 	// web
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// A list of rule types.
+	// The list of rule types.
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
-	// The time the ruleset was last modified.
+	// The last modification time of the ruleset.
+	//
+	// Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+	//
+	// Example: 2026-06-10T14:23:45Z
 	//
 	// example:
 	//

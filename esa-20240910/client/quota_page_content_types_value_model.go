@@ -16,9 +16,9 @@ type iQuotaPageContentTypesValue interface {
 }
 
 type QuotaPageContentTypesValue struct {
-	// Whether the Content-Type is enabled.
+	// Indicates whether the corresponding Content-Type for custom response pages is enabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The maximum content length for this Content-Type.
+	// The content length quota for the corresponding Content-Type in custom response pages.
 	ContentLength *WafQuotaInteger `json:"ContentLength,omitempty" xml:"ContentLength,omitempty"`
 }
 

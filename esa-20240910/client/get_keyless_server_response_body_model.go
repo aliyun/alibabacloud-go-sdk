@@ -38,49 +38,49 @@ type iGetKeylessServerResponseBody interface {
 }
 
 type GetKeylessServerResponseBody struct {
-	// The CA certificate used to verify the server certificate of the keyless server. This parameter applies only when Verify is set to true.
+	// The CA certificate used to verify the Keyless server certificate. This parameter takes effect only when Verify is set to true.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----****
 	CaCertificate *string `json:"CaCertificate,omitempty" xml:"CaCertificate,omitempty"`
-	// The client certificate. Must be provided as a pair with the client private key.
+	// The client certificate. This parameter must be used together with the client private key.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----****
 	ClientCertificate *string `json:"ClientCertificate,omitempty" xml:"ClientCertificate,omitempty"`
-	// The client private key. Must be provided as a pair with the client certificate.
+	// The client private key. This parameter must be used together with the client certificate.
 	//
 	// example:
 	//
 	// -----BEGIN RSA PRIVATE KEY-----****
 	ClientPrivateKey *string `json:"ClientPrivateKey,omitempty" xml:"ClientPrivateKey,omitempty"`
-	// The creation time.
+	// The creation time. The time follows the format YYYY-MM-DDTHH:MM:SS+08:00 in the UTC/GMT time zone.
 	//
 	// example:
 	//
-	// 2024-03-11T01:23:21Z
+	// 2025-07-18T20:33:31+08:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The hostname of the keyless server.
+	// The Keyless server hostname.
 	//
 	// example:
 	//
 	// example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The keyless server ID.
+	// Keyless server ID。
 	//
 	// example:
 	//
 	// baba39055622c008b90285a8838e****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The keyless server name.
+	// The Keyless server name.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port of the keyless server. Valid values: **1*	- to **65535**.
+	// The Keyless server port. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type GetKeylessServerResponseBody struct {
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The update time.
+	// The modification time. The time follows the format YYYY-MM-DDTHH:MM:SS+08:00 in the UTC/GMT time zone.
 	//
 	// example:
 	//
-	// 2025-03-13T02:13:28Z
+	// 2025-07-18T20:33:31+08:00
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Indicates whether to verify the server certificate of the keyless server. The default value is false.
+	// Indicates whether to verify the Keyless server certificate. Default value: false.
 	//
 	// example:
 	//

@@ -22,9 +22,9 @@ type iSetClientCertificateHostnamesResponseBody interface {
 }
 
 type SetClientCertificateHostnamesResponseBody struct {
-	// The list of bound hostnames.
+	// The list of domain names to associate.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// The ID of the client CA certificate.
+	// The client CA certificate ID.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type SetClientCertificateHostnamesResponseBody struct {
 	//
 	// ET5BF670-09D5-4D0B-BEBY-D96A2A528000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the site.
+	// The site ID.
 	//
 	// example:
 	//

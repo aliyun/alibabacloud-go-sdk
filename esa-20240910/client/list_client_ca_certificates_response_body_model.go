@@ -26,7 +26,7 @@ type iListClientCaCertificatesResponseBody interface {
 }
 
 type ListClientCaCertificatesResponseBody struct {
-	// The page number.
+	// The page number of the returned data.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListClientCaCertificatesResponseBody struct {
 	//
 	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of client CA certificates.
+	// The list of client CA certificates.
 	Result []*ListClientCaCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The site ID.
 	//
@@ -151,19 +151,19 @@ func (s *ListClientCaCertificatesResponseBody) Validate() error {
 }
 
 type ListClientCaCertificatesResponseBodyResult struct {
-	// The common name.
+	// The common name of the certificate.
 	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The time when the certificate was added.
+	// The creation time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-06-24 07:48:51
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The SHA-256 fingerprint.
+	// The SHA-256 fingerprint of the certificate.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type ListClientCaCertificatesResponseBodyResult struct {
 	//
 	// babab9db65ee5efcca9f3d41d4b5****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The issuer of the certificate.
+	// The authority that issued the certificate.
 	//
 	// example:
 	//
@@ -187,37 +187,37 @@ type ListClientCaCertificatesResponseBodyResult struct {
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The date and time when the certificate expires.
+	// The end time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The date and time when the certificate becomes valid.
+	// The start time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2023-03-31 02:08:00
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The algorithm of the certificate\\"s public key.
+	// The public key algorithm of the certificate.
 	//
 	// example:
 	//
 	// RSA
 	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
-	// The subject alternative names (SANs) of the certificate.
+	// The Subject Alternative Name (SAN) of the certificate.
 	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
-	// The unique serial number assigned by the issuer.
+	// The certificate sequence number.
 	//
 	// example:
 	//
 	// babab022c5e9b27bf9c64d7f4b16****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// The algorithm used to sign the certificate.
+	// The signature algorithm of the certificate.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type ListClientCaCertificatesResponseBodyResult struct {
 	//
 	// upload
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the certificate was last updated.
+	// The update time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
 	//
 	// example:
 	//

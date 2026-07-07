@@ -28,7 +28,7 @@ type iGetWafRulesetResponseBody interface {
 }
 
 type GetWafRulesetResponseBody struct {
-	// The ID of the WAF ruleset. You can obtain this ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
+	// The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ID.
 	//
 	// example:
 	//
@@ -42,23 +42,23 @@ type GetWafRulesetResponseBody struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The execution phase of the WAF ruleset. Valid values:
+	// The WAF rule execution phase. Valid values:
 	//
-	// - `http_whitelist`: A whitelist rule
+	// - http_whitelist: whitelist rules
 	//
-	// - `http_custom`: A custom rule
+	// - http_custom: custom rules
 	//
-	// - `http_managed`: A managed rule
+	// - http_managed: managed rules
 	//
-	// - `http_anti_scan`: A scan protection rule
+	// - http_anti_scan: scan protection rules
 	//
-	// - `http_ratelimit`: A rate limit rule
+	// - http_ratelimit: rate limiting rules
 	//
-	// - `ip_access_rule`: An IP access rule
+	// - ip_access_rule: IP access rules
 	//
-	// - `http_bot`: A bot rule
+	// - http_bot: advanced mode bots
 	//
-	// - `http_security_level_rule`: A security rule
+	// - http_security_level_rule: security rules
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type GetWafRulesetResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of rule configurations in the ruleset.
 	Rules []*WafRuleConfig `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The shared configuration for rules within the ruleset.
+	// The shared configuration of rules in the ruleset.
 	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
 	// The ruleset status.
 	//
@@ -82,7 +82,11 @@ type GetWafRulesetResponseBody struct {
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the ruleset was last updated.
+	// The last modification time of the ruleset.
+	//
+	// Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+	//
+	// Example: 2026-06-10T14:23:45Z
 	//
 	// example:
 	//

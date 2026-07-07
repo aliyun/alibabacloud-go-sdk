@@ -74,7 +74,7 @@ type DescribeRatePlanPriceGapResponseBodyPriceModel struct {
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The order discount amount.
+	// The discount amount of the order.
 	//
 	// example:
 	//

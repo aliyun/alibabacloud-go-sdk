@@ -20,25 +20,27 @@ type iCreateListShrinkRequest interface {
 }
 
 type CreateListShrinkRequest struct {
-	// The description of the list that you want to create.
+	// The description of the custom list. This parameter provides detailed information about the custom list.
 	//
 	// example:
 	//
 	// a custom list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The items in the list that you want to create.
+	// The list items. This parameter provides the specific item data for the list.
 	//
 	// example:
 	//
 	// a custom list
 	ItemsShrink *string `json:"Items,omitempty" xml:"Items,omitempty"`
-	// The type of the list that you want to create.
+	// The kind of the custom list. This parameter specifies the type of the custom list.
 	//
 	// example:
 	//
 	// ip
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// The name of the list that you want to create.
+	// The name of the custom list.
+	//
+	// **Naming rules**: Only letters, digits, and underscores are supported (`^\\w{1,64}$`). The name must be 1 to 64 characters in length.
 	//
 	// This parameter is required.
 	//

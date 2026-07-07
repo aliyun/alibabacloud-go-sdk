@@ -36,15 +36,11 @@ type DescribeRatePlanPriceGapRequest struct {
 	//
 	// UPGRADE
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The specification change type. Valid values:
-	//
-	// - DOWNGRADE: downgrade.
-	//
-	// - UPGRADE: upgrade.
+	// The code of the target plan for the specification change.
 	//
 	// example:
 	//
-	// UPGRADE
+	// standardplan
 	TargetPlanCode *string `json:"TargetPlanCode,omitempty" xml:"TargetPlanCode,omitempty"`
 	// The name of the target plan for the specification change.
 	//

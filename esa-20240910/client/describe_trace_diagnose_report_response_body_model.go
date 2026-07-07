@@ -48,39 +48,39 @@ type iDescribeTraceDiagnoseReportResponseBody interface {
 }
 
 type DescribeTraceDiagnoseReportResponseBody struct {
-	// IP address of the local DNS server.
+	// The IP address of the local DNS server.
 	//
 	// example:
 	//
 	// 47.xx.112.120
 	ClientAddr *string `json:"ClientAddr,omitempty" xml:"ClientAddr,omitempty"`
-	// Client information.
+	// The client information.
 	ClientInfo *DescribeTraceDiagnoseReportResponseBodyClientInfo `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty" type:"Struct"`
-	// Client IP.
+	// The client IP address.
 	//
 	// example:
 	//
 	// 33.7.98.136
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// Creation time. Format: yyyy-MM-dd HH:mm:ss. Time zone: +08:00.
+	// The creation time. Format: yyyy-MM-dd HH:mm:ss. Time zone: UTC+8.
 	//
 	// example:
 	//
 	// 2024-03-11T01:23:21Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Diagnostic ID.
+	// The diagnostic ID.
 	//
 	// example:
 	//
 	// vpndgn-hn316ixao7ut50ybl5qui
 	DiagnoseId *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
-	// Diagnostic report link.
+	// The diagnostic report link.
 	//
 	// example:
 	//
 	// https://cdnskyeye.alibaba-inc.com/#/databrain/detectionPlatformAction?module=trace&id=xxx&instance_id=xxxx&type=copy&edition_id=xxxxx
 	DiagnoseReportLink *string `json:"DiagnoseReportLink,omitempty" xml:"DiagnoseReportLink,omitempty"`
-	// Diagnostic link.
+	// The diagnostic link.
 	//
 	// example:
 	//
@@ -92,71 +92,71 @@ type DescribeTraceDiagnoseReportResponseBody struct {
 	//
 	// www.pecmnr.cn
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Expiration time. Timestamp in seconds.
+	// The expiration time. Unit: seconds. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1678701915
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Remaining available diagnostic attempts.
+	// The remaining number of available diagnostic attempts.
 	//
 	// example:
 	//
 	// 10
 	RemainDiagnoseTimes *int64 `json:"RemainDiagnoseTimes,omitempty" xml:"RemainDiagnoseTimes,omitempty"`
-	// Diagnostic report details.
+	// The diagnostic report details.
 	Report *DescribeTraceDiagnoseReportResponseBodyReport `json:"Report,omitempty" xml:"Report,omitempty" type:"Struct"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Report generation status.
+	// The report generation status. Valid values:
 	//
-	// 0: Successful.
+	// 0: succeeded.
 	//
-	// 1: Failed.
+	// 1: failed.
 	//
-	// 2: Timed out.
+	// 2: timed out.
 	//
-	// 3: Running.
+	// 3: running.
 	//
-	// 4: Waiting.
+	// 4: waiting.
 	//
 	// example:
 	//
 	// ok
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Status of the diagnostic link.
+	// The status of the diagnostic link. Valid values:
 	//
-	// 1: Active.
+	// 1: active.
 	//
-	// 0: Expired.
+	// 0: expired.
 	//
 	// example:
 	//
 	// 1
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// xxxxxxx-xxxxx-xxxxx-xxxxxxxxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Time consumed for report generation, in seconds.
+	// The time consumed to generate the report. Unit: seconds.
 	//
 	// example:
 	//
 	// 10
 	TimeConsuming *int64 `json:"TimeConsuming,omitempty" xml:"TimeConsuming,omitempty"`
-	// Trace display link.
+	// The trace display link.
 	//
 	// example:
 	//
 	// https://tracing-sk.alibaba-inc.com/trace/xxxxxxxxxxxxxx
 	TraceDisplayLink *string `json:"TraceDisplayLink,omitempty" xml:"TraceDisplayLink,omitempty"`
-	// Diagnostic trace ID.
+	// The diagnostic trace ID.
 	//
 	// example:
 	//
@@ -349,19 +349,19 @@ func (s *DescribeTraceDiagnoseReportResponseBody) Validate() error {
 }
 
 type DescribeTraceDiagnoseReportResponseBodyClientInfo struct {
-	// Browser.
+	// The browser.
 	//
 	// example:
 	//
 	// Chrome
 	BrowserInfo *string `json:"BrowserInfo,omitempty" xml:"BrowserInfo,omitempty"`
-	// Operating system name.
+	// The operating system name.
 	//
 	// example:
 	//
 	// Macintosh
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// Version.
+	// The version.
 	//
 	// example:
 	//
@@ -409,25 +409,25 @@ func (s *DescribeTraceDiagnoseReportResponseBodyClientInfo) Validate() error {
 }
 
 type DescribeTraceDiagnoseReportResponseBodyReport struct {
-	// Client information.
+	// The client information.
 	//
 	// example:
 	//
 	// Client IP : xxx.xxx.xxx.xxx DNS_IP : xxx.xxx.xxx.xxx
 	ClientInfo *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
-	// Diagnostic result.
+	// The diagnostic result.
 	//
 	// example:
 	//
 	// Diagnosis Result: Normal Scheduling Result: Normal Check Item Details: Exception Item: [Request Normal]
 	DiagnoseResult *string `json:"DiagnoseResult,omitempty" xml:"DiagnoseResult,omitempty"`
-	// Client request response header.
+	// The response header of the client request.
 	//
 	// example:
 	//
 	// <br>connection: keep-alive<br>content-type: application/json
 	ResponseHeader *string `json:"ResponseHeader,omitempty" xml:"ResponseHeader,omitempty"`
-	// Static snapshot page.
+	// The static snapshot page.
 	//
 	// example:
 	//

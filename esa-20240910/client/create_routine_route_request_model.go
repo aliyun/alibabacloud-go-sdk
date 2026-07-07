@@ -34,13 +34,13 @@ type CreateRoutineRouteRequest struct {
 	//
 	// - on: enabled
 	//
-	// - off: disabled.
+	// - off: disabled
 	//
 	// example:
 	//
 	// on
 	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
-	// The fallback-to-origin switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request is forwarded to the origin server. Valid values:
+	// The back-to-origin on exception switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request falls back to the origin server. Valid values:
 	//
 	// - on: Enabled.
 	//
@@ -54,7 +54,7 @@ type CreateRoutineRouteRequest struct {
 	//
 	// - on: enabled
 	//
-	// - off: disabled.
+	// - off: disabled
 	//
 	// This parameter is required.
 	//
@@ -100,7 +100,7 @@ type CreateRoutineRouteRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The Edge Routine timeout period. Valid values: 5 to 60.
+	// The Edge Routine timeout period. Valid values: 5 to 60. Unit: seconds.
 	//
 	// example:
 	//

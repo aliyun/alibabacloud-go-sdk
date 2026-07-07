@@ -16,7 +16,7 @@ type iGetSiteOriginClientCertificateRequest interface {
 }
 
 type GetSiteOriginClientCertificateRequest struct {
-	// The ID of the client certificate.
+	// The certificate ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetSiteOriginClientCertificateRequest struct {
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the site.
+	// The site ID.
 	//
 	// This parameter is required.
 	//

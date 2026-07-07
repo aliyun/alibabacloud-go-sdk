@@ -255,7 +255,7 @@ func (client *Client) BatchCreateRecordsWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// This operation creates multiple WAF rules and configures their shared settings in a single request.
+// Batch creates rules in a specified WAF phase. You can create multiple rules at a time and configure shared settings for these rules.
 //
 // @param tmpReq - BatchCreateWafRulesRequest
 //
@@ -779,7 +779,7 @@ func (client *Client) BatchPutKvWithHighCapacityWithContext(ctx context.Context,
 
 // Summary:
 //
-// Updates the configurations of multiple rules in a specified WAF ruleset.
+// Batch updates rules in a specified WAF ruleset. You can use this operation to update the configurations of multiple rules at a time.
 //
 // @param tmpReq - BatchUpdateWafRulesRequest
 //
@@ -1041,7 +1041,9 @@ func (client *Client) CheckUserProjectNameWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Submits the test version (unstable) code of an Edge Routine and generates a production version.
+// Submits the staging (unstable) code of an Edge Routine and generates a production version.
+//
+// Prerequisite: Before calling this API operation, call GetRoutineStagingCodeUploadInfo to obtain OSS upload credentials. Upload the code file through OSS POST. After the upload callback succeeds, call this API operation to submit the code.
 //
 // @param request - CommitRoutineStagingCodeRequest
 //
@@ -1249,7 +1251,7 @@ func (client *Client) CreateCacheRuleWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Uses the ESA-managed certificate authority (CA) to issue client certificates.
+// Issues a client certificate by using the ESA certificate authority (CA).
 //
 // @param request - CreateClientCertificateRequest
 //
@@ -2507,7 +2509,7 @@ func (client *Client) CreateKvNamespaceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a list. Lists are used for the referencing of values in the rules engine to implement complex logic and control in security policies.
+// Creates a custom list. Custom lists are typically referenced by the rule matching engine for values used in various security policies to implement complex logic and control.
 //
 // @param tmpReq - CreateListRequest
 //
@@ -2569,11 +2571,13 @@ func (client *Client) CreateListWithContext(ctx context.Context, tmpReq *CreateL
 
 // Summary:
 //
-// Creates a new Server Load Balancer instance with advanced features, including custom routing, session persistence, and health check configuration.
+// Creates a load balancer instance that supports custom routing policies, session persistence, monitoring configurations, and other advanced features.
 //
 // Description:
 //
-// Use this API to configure Server Load Balancer features for effective traffic management and optimization, such as adaptive routing, weighted round-robin, rule matching, and health checks.
+// Creates a load balancing service based on your business requirements. You can configure settings such as adaptive routing, weighted polling, rule matching, and health checks to effectively manage and optimize traffic.
+//
+// Only Enterprise plans support the load balancing service. To use this feature, contact Alibaba Cloud sales to apply for an Enterprise plan.
 //
 // @param tmpReq - CreateLoadBalancerRequest
 //
@@ -3025,7 +3029,7 @@ func (client *Client) CreateOriginRuleWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a custom error page. This page appears when the web application firewall (WAF) blocks a user request. You can configure the page\\"s HTML content, content type, and description, and submit the page content using BASE64 encoding.
+// Creates a custom error response page. When a user request is blocked by Web Application Firewall (WAF), these custom error pages can be displayed. You can configure the page HTML content, page type, description, and other information, and submit the page content in BASE64 encoding.
 //
 // @param tmpReq - CreatePageRequest
 //
@@ -4317,27 +4321,27 @@ func (client *Client) CreateUserDeliveryTaskWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Creates an instance-level Web Application Firewall (WAF) ruleset that supports various types of protection rules.
+// Creates an instance-level Web Application Firewall (WAF) ruleset that supports multiple types of protection rules.
 //
 // Description:
 //
-// ## Description
+// ## Operation description
 //
-// - You can use this API to create a Web Application Firewall (WAF) ruleset for a specific instance.
+// - This API operation allows you to create a WAF ruleset for a specified instance.
 //
-// - The required `InstanceId` parameter specifies the instance for which to create the ruleset.
+// - InstanceId is a required parameter that specifies the instance for which you want to create the ruleset.
 //
-// - The `Phase` parameter defines the execution phase of the ruleset, such as a custom rule or rate limiting.
+// - The Phase parameter defines the phase in which the ruleset is applied, such as custom rules or rate limiting.
 //
-// - The required `Name` and `Expression` parameters specify the ruleset\\"s name and match expression.
+// - Name and Expression are required parameters that specify the ruleset name and the match expression.
 //
-// - The optional `Description` parameter describes the purpose of the ruleset.
+// - The optional Description parameter provides a text description of the ruleset function or purpose.
 //
-// - The `Status` parameter controls whether the ruleset is immediately enabled (`on`) or disabled (`off`).
+// - Status controls whether the ruleset takes effect immediately (`on`) or is disabled (`off`).
 //
-// - Use the `Rules` parameter to configure a detailed rule list. Each rule includes properties such as name, position, expression, and action.
+// - Use the Rules parameter to configure a detailed list of rules. Each rule contains properties such as name, position, expression, and action.
 //
-// - A successful response returns the unique ID of the new ruleset in `Id` and a list of associated rule IDs in `RuleIds`.
+// - A successful response returns the unique identifier Id of the newly created ruleset and the RuleIds list of all associated rule IDs.
 //
 // @param tmpReq - CreateUserWafRulesetRequest
 //
@@ -4509,7 +4513,7 @@ func (client *Client) CreateVideoProcessingWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a new rule in the Web Application Firewall (WAF). Use this operation to fine-tune firewall behavior and improve the security of your site or application.
+// Creates a rule in Web Application Firewall (WAF). You can use this operation to refine firewall behavior and improve the security of your website or application.
 //
 // @param tmpReq - CreateWafRuleRequest
 //
@@ -8393,7 +8397,7 @@ func (client *Client) DescribePreloadTasksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the execution status of a refresh task.
+// Queries the execution status of refresh tasks.
 //
 // @param request - DescribePurgeTasksRequest
 //
@@ -8541,7 +8545,7 @@ func (client *Client) DescribeRatePlanPriceWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// The plan name and plan code can be obtained from the DescribeRatePlanPrice operation.
+// The plan name and plan code can be obtained from the [DescribeRatePlanPrice](~~DescribeRatePlanPrice~~) operation.
 //
 // @param request - DescribeRatePlanPriceGapRequest
 //
@@ -8827,11 +8831,171 @@ func (client *Client) DescribeSiteTopDataWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Get diagnostic report details. 1. Call GenerateTraceDiagnose to obtain the diagnostic link. 2. Open the link in a browser to complete client-side diagnosis. 3. Call ListTraceTasks to obtain the TaskId/TraceId. 4. Call this API to get the report.
+// Retrieves time series data for WAF event analysis of a website.
 //
 // Description:
 //
-//	Notice: Make sure you have activated the Layer 4 acceleration service before using this API.1. Call GenerateTraceDiagnose to obtain the diagnostic link. 2. Open the link in a browser to complete client-side diagnosis. 3. Call ListTraceTasks to obtain the TaskId/TraceId. 4. Call this API to get the report.
+// - If you do not specify StartTime and EndTime, this operation returns data from the past 24 hours. If you specify StartTime and EndTime, this operation returns data for the specified time range.
+//
+// - The time granularity of the returned data varies based on the time span between StartTime and EndTime.
+//
+//   - Less than or equal to 3 hours: returns data at a 1-minute granularity.
+//
+//   - Greater than 3 hours and less than or equal to 12 hours: returns data at a 5-minute granularity.
+//
+//   - Greater than 12 hours and less than or equal to 1 day: returns data at a 15-minute granularity.
+//
+//   - Greater than 1 day and less than or equal to 10 days: returns data at an hourly granularity.
+//
+//   - Greater than 10 days and less than or equal to 31 days: returns data at a daily granularity.
+//
+// - Because the number of access requests during the query period may be large, the data analytics results may undergo sampling.
+//
+// @param tmpReq - DescribeSiteWafTimeSeriesDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSiteWafTimeSeriesDataResponse
+func (client *Client) DescribeSiteWafTimeSeriesDataWithContext(ctx context.Context, tmpReq *DescribeSiteWafTimeSeriesDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeSiteWafTimeSeriesDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeSiteWafTimeSeriesDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Fields) {
+		request.FieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Fields, dara.String("Fields"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.FieldsShrink) {
+		query["Fields"] = request.FieldsShrink
+	}
+
+	if !dara.IsNil(request.Interval) {
+		query["Interval"] = request.Interval
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSiteWafTimeSeriesData"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSiteWafTimeSeriesDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the top data from WAF event analysis for a website.
+//
+// Description:
+//
+// - If you do not specify StartTime or EndTime, this operation returns data from the past 24 hours. If you specify StartTime and EndTime, this operation returns data for the specified time range.
+//
+// - Because of the high volume of access requests during the query period, data analytics may involve sampling.
+//
+// @param tmpReq - DescribeSiteWafTopDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSiteWafTopDataResponse
+func (client *Client) DescribeSiteWafTopDataWithContext(ctx context.Context, tmpReq *DescribeSiteWafTopDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeSiteWafTopDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeSiteWafTopDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Fields) {
+		request.FieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Fields, dara.String("Fields"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.FieldsShrink) {
+		query["Fields"] = request.FieldsShrink
+	}
+
+	if !dara.IsNil(request.Interval) {
+		query["Interval"] = request.Interval
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSiteWafTopData"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSiteWafTopDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a diagnostic report. 1. Call GenerateTraceDiagnose to obtain a diagnostic link. 2. Open the link in a browser to complete client-side diagnostics. 3. Call ListTraceTasks to obtain the TaskId or TraceId. 4. Call this operation to retrieve the report.
+//
+// Description:
+//
+//	Notice: Make sure that you have activated the Layer 4 acceleration service before calling this operation.1. Call GenerateTraceDiagnose to obtain a diagnostic link. 2. Open the link in a browser to complete client-side diagnostics. 3. Call ListTraceTasks to obtain the TaskId or TraceId. 4. Call this operation to retrieve the report.
 //
 // @param request - DescribeTraceDiagnoseReportRequest
 //
@@ -8933,6 +9097,80 @@ func (client *Client) DescribeUrlObservationDataWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUrlObservationDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the usage data of WAF by calling DescribeWafUsageData.
+//
+// Description:
+//
+// Maximum storage duration: 93 days.
+//
+//   - Maximum query time range: 31 days.
+//
+//   - Default time range: 24 hours.
+//
+// All times are expressed in UTC+0.
+//
+// @param request - DescribeWafUsageDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWafUsageDataResponse
+func (client *Client) DescribeWafUsageDataWithContext(ctx context.Context, request *DescribeWafUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeWafUsageDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Interval) {
+		query["Interval"] = request.Interval
+	}
+
+	if !dara.IsNil(request.RecordName) {
+		query["RecordName"] = request.RecordName
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.SplitBy) {
+		query["SplitBy"] = request.SplitBy
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeWafUsageData"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeWafUsageDataResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9355,7 +9593,7 @@ func (client *Client) GetCacheTagWithContext(ctx context.Context, request *GetCa
 
 // Summary:
 //
-// Retrieves a specified certificate for a site.
+// Retrieves information about a specified certificate for a site.
 //
 // @param request - GetCertificateRequest
 //
@@ -9443,7 +9681,7 @@ func (client *Client) GetCertificateQuotaWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Gets the specified client CA certificate.
+// Retrieves a specified client CA certificate.
 //
 // @param request - GetClientCaCertificateRequest
 //
@@ -9531,7 +9769,7 @@ func (client *Client) GetClientCaCertificateHostnamesWithContext(ctx context.Con
 
 // Summary:
 //
-// Retrieves the details of a specified client certificate.
+// Retrieves information about a specified client certificate.
 //
 // @param request - GetClientCertificateRequest
 //
@@ -10455,7 +10693,7 @@ func (client *Client) GetErServiceWithContext(ctx context.Context, request *GetE
 
 // Summary:
 //
-// Downloads a failed file.
+// Downloads the failed file for a specified upload task.
 //
 // @param request - GetFailFileRequest
 //
@@ -10815,7 +11053,7 @@ func (client *Client) GetImageTransformWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves the configuration of a keyless server.
+// Retrieves the configuration of a Keyless server.
 //
 // @param request - GetKeylessServerRequest
 //
@@ -10991,7 +11229,7 @@ func (client *Client) GetKvNamespaceWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries a custom list, such as the name, description, type, and content.
+// Retrieves the details of a specific custom list. You can use this operation to query the properties of a specific list, including the name, description, kind, and list items.
 //
 // @param request - GetListRequest
 //
@@ -11035,11 +11273,11 @@ func (client *Client) GetListWithContext(ctx context.Context, request *GetListRe
 
 // Summary:
 //
-// Retrieves the details of a load balancer by its site ID and load balancer ID.
+// Retrieves the details of a specific load balancer based on the specified site ID and load balancer ID.
 //
 // Description:
 //
-// Use this API to query the configuration details of a load balancer, such as its name, session persistence policy, and routing policy, by providing its resource identifier and authentication information.
+// This API allows you to query the configuration details of a specific load balancer by providing the required authentication information and resource identity. The details include but are not limited to the name, session persistence policy, and load balancing policy.
 //
 // @param request - GetLoadBalancerRequest
 //
@@ -11159,7 +11397,7 @@ func (client *Client) GetNetworkOptimizationWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Get the CA certificate of the source server.
+// Retrieves the CA certificate information of an origin server.
 //
 // @param request - GetOriginCaCertificateRequest
 //
@@ -11199,7 +11437,7 @@ func (client *Client) GetOriginCaCertificateWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieves origin-pull client certificate information for a domain.
+// Retrieves the back-to-origin client certificate information at the domain name granularity.
 //
 // @param request - GetOriginClientCertificateRequest
 //
@@ -11399,7 +11637,7 @@ func (client *Client) GetOriginRuleWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Gets the details of a custom response page by its ID.
+// Retrieves the details of a custom response page by its ID.
 //
 // @param request - GetPageRequest
 //
@@ -11831,13 +12069,13 @@ func (client *Client) GetRoutineCodeVersionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the status and other information of a specific code version of a specified Edge Routine.
+// Queries the status and other information of a specific code version of a specified Routine.
 //
 // Description:
 //
 // ## Operation description
 //
-// By calling this API operation, you can retrieve detailed information about a specific Edge Routine at a specified version, including but not limited to the version status, creation time, and whether the version contains asset resource files. You must provide the Edge Routine name and the specific code version number as request parameters.
+// By calling this API operation, you can retrieve detailed information about a specific code version of a Routine, including but not limited to the version status, creation time, and whether the version contains Assets resource files. You must specify the Routine name and the code version number as request parameters.
 //
 // @param request - GetRoutineCodeVersionInfoRequest
 //
@@ -11885,7 +12123,7 @@ func (client *Client) GetRoutineCodeVersionInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves a specific edge function route configuration.
+// Queries the configuration of a single Edge Routine route.
 //
 // @param request - GetRoutineRouteRequest
 //
@@ -12331,7 +12569,7 @@ func (client *Client) GetSiteNameExclusiveWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves origin-pull client certificate information at the site level.
+// Retrieves the back-to-origin client certificate information at the site level.
 //
 // @param request - GetSiteOriginClientCertificateRequest
 //
@@ -12677,13 +12915,13 @@ func (client *Client) GetUserLogDeliveryQuotaWithContext(ctx context.Context, re
 
 // Summary:
 //
-// This API retrieves the details of the WAF rule set for a specified instance.
+// Queries the details of a WAF ruleset for a specified instance.
 //
 // Description:
 //
-// ## Request
+// ## Operation description
 //
-// `GetUserWafRuleset` retrieves the details of a specific Web Application Firewall (WAF) ruleset, identified by its instance ID and ruleset ID. The response includes details such as the ruleset\\"s location, name, description, status, and its rules. Specify all required parameters correctly to prevent request failures.
+// By calling the `GetUserWafRuleset` operation, you can retrieve information about a specific Web Application Firewall (WAF) ruleset based on the instance ID and ruleset ID. The returned information includes but is not limited to the position, name, description, status, and specific rules of the ruleset. Make sure that you correctly specify the required parameters to avoid request failures.
 //
 // @param request - GetUserWafRulesetRequest
 //
@@ -12835,7 +13073,7 @@ func (client *Client) GetWafFilterWithContext(ctx context.Context, request *GetW
 
 // Summary:
 //
-// Web Application Firewall (WAF) quotas define the maximum number of resources a customer can use, including managed rule groups, custom lists, custom response pages, and scenario-based protection rules.
+// Retrieves quota details for Web Application Firewall (WAF) resources. These quotas define the quantity limits of corresponding resources that a customer can use, such as managed rule groups, custom lists, custom response pages, and scenario-specific protection rules.
 //
 // @param request - GetWafQuotaRequest
 //
@@ -12879,7 +13117,7 @@ func (client *Client) GetWafQuotaWithContext(ctx context.Context, request *GetWa
 
 // Summary:
 //
-// Retrieves the details of a specific WAF rule, including its configuration and status.
+// Retrieves the details of a single rule in Web Application Firewall (WAF). You can call this operation to query the configuration and status of a specific rule.
 //
 // @param request - GetWafRuleRequest
 //
@@ -12927,7 +13165,7 @@ func (client *Client) GetWafRuleWithContext(ctx context.Context, request *GetWaf
 
 // Summary:
 //
-// Retrieves the details of a specified WAF ruleset, including its configuration and status.
+// Retrieves the details of a specified WAF ruleset. You can call this operation to query the configuration and status information of a specific ruleset.
 //
 // @param request - GetWafRulesetRequest
 //
@@ -13115,7 +13353,7 @@ func (client *Client) ListCasCertificatesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Lists the certificates for a given site.
+// Queries the certificate list for a specific site.
 //
 // @param request - ListCertificatesRequest
 //
@@ -13175,7 +13413,7 @@ func (client *Client) ListCertificatesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves site certificates for multiple matching records.
+// Queries the list of site certificates that match records. Batch record matching is supported.
 //
 // @param request - ListCertificatesByRecordRequest
 //
@@ -13271,7 +13509,7 @@ func (client *Client) ListCiphersWithContext(ctx context.Context, request *ListC
 
 // Summary:
 //
-// Retrieves the client CA certificates for a specified site.
+// Retrieves the list of client CA certificates for a specified site.
 //
 // @param request - ListClientCaCertificatesRequest
 //
@@ -13311,7 +13549,7 @@ func (client *Client) ListClientCaCertificatesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves a list of client certificates for a specified site.
+// Retrieves the list of client certificates for a specified site.
 //
 // @param request - ListClientCertificatesRequest
 //
@@ -14271,7 +14509,7 @@ func (client *Client) ListInstanceQuotasWithUsageWithContext(ctx context.Context
 
 // Summary:
 //
-// Retrieves keyless server configurations for a site.
+// Retrieves the list of Keyless server configurations for a site.
 //
 // @param request - ListKeylessServersRequest
 //
@@ -14363,7 +14601,7 @@ func (client *Client) ListKvsWithContext(ctx context.Context, request *ListKvsRe
 
 // Summary:
 //
-// Lists all custom lists and their details for an account. Use query parameters to filter the results and pagination to navigate the list collection.
+// Lists all custom lists under the account along with their details. You can use query parameters to filter results and paginate to retrieve a specific set of lists.
 //
 // @param tmpReq - ListListsRequest
 //
@@ -14517,7 +14755,7 @@ func (client *Client) ListLoadBalancerRegionsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves a paged list of load balancers in a specific site, returning their details. You can filter the list by load balancer name.
+// Queries the list of load balancers under a site and returns load balancing information. You can query by load balancer name. Paging is supported.
 //
 // @param request - ListLoadBalancersRequest
 //
@@ -14645,7 +14883,7 @@ func (client *Client) ListNetworkOptimizationsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the CA certificates for the source server.
+// Queries the list of origin server CA certificates.
 //
 // @param request - ListOriginCaCertificatesRequest
 //
@@ -14685,7 +14923,7 @@ func (client *Client) ListOriginCaCertificatesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Lists back-to-source client certificates for a domain name.
+// Queries the list of back-to-origin client certificates at the domain name granularity.
 //
 // @param request - ListOriginClientCertificatesRequest
 //
@@ -14805,7 +15043,7 @@ func (client *Client) ListOriginRulesWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Retrieves a list of your custom response pages. This operation supports pagination, allowing you to control the results by specifying a page number and a page size.
+// Lists all custom response pages created by the user. This operation supports pagination and allows you to retrieve the response page list by specifying the page number and page size.
 //
 // @param tmpReq - ListPagesRequest
 //
@@ -14991,7 +15229,7 @@ func (client *Client) ListRedirectRulesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # List of Rewrite URL Rules
+// Queries the list of URL rewrite configurations for a site.
 //
 // @param request - ListRewriteUrlRulesRequest
 //
@@ -15325,7 +15563,7 @@ func (client *Client) ListSiteDeliveryTasksWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Lists the back-to-origin client certificates for a site.
+// Queries the list of back-to-origin client certificates at the site level.
 //
 // @param request - ListSiteOriginClientCertificatesRequest
 //
@@ -15365,7 +15603,7 @@ func (client *Client) ListSiteOriginClientCertificatesWithContext(ctx context.Co
 
 // Summary:
 //
-// Retrieves the function routes for a site.
+// Queries the list of Edge Routine routes for a site.
 //
 // @param request - ListSiteRoutesRequest
 //
@@ -15699,7 +15937,7 @@ func (client *Client) ListUploadTasksWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Queries the list of page monitoring configurations.
+// Queries the list of web page observation configurations.
 //
 // @param request - ListUrlObservationsRequest
 //
@@ -16177,7 +16415,7 @@ func (client *Client) ListWafPhasesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// This API retrieves a paginated list of detailed WAF rules, which can be filtered by specific conditions.
+// Lists all rules or filters rules by specific conditions under Web Application Firewall (WAF). You can use this operation to query detailed information about WAF rules in a paged manner.
 //
 // @param tmpReq - ListWafRulesRequest
 //
@@ -16251,7 +16489,7 @@ func (client *Client) ListWafRulesWithContext(ctx context.Context, tmpReq *ListW
 
 // Summary:
 //
-// Retrieves a paginated list of rule sets in the current WAF runtime phase, returning their basic information and status.
+// Lists the rulesets under the current WAF execution phase. Queries basic information and status of rulesets with paging support.
 //
 // @param tmpReq - ListWafRulesetsRequest
 //
@@ -16853,7 +17091,55 @@ func (client *Client) PublishRoutineCodeVersionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # New Purchase of Cache Retention
+// Purchases a new bot instance.
+//
+// @param request - PurchaseBotInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PurchaseBotInstanceResponse
+func (client *Client) PurchaseBotInstanceWithContext(ctx context.Context, request *PurchaseBotInstanceRequest, runtime *dara.RuntimeOptions) (_result *PurchaseBotInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BotInstanceLevel) {
+		query["BotInstanceLevel"] = request.BotInstanceLevel
+	}
+
+	if !dara.IsNil(request.SiteInstanceId) {
+		query["SiteInstanceId"] = request.SiteInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PurchaseBotInstance"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PurchaseBotInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Purchases a cache reserve instance.
 //
 // @param request - PurchaseCacheReserveRequest
 //
@@ -17705,7 +17991,7 @@ func (client *Client) SetClientCaCertificateHostnamesWithContext(ctx context.Con
 
 // Summary:
 //
-// Binds one or more hostnames to a specified client CA certificate. If you do not specify a certificate, the hostnames are bound to the ESA CA certificate.
+// Associates domain names with a specified client CA certificate. If no certificate is specified, the domain names are associated with the ESA CA certificate. This API is deprecated. Use SetClientCaCertificateHostnames instead.
 //
 // @param tmpReq - SetClientCertificateHostnamesRequest
 //
@@ -20495,7 +20781,7 @@ func (client *Client) UpdateOriginRuleWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Updates a user-created custom response page. Use this API to modify the page name, description, content type, and content.
+// Updates a custom response page that the user has created. You can use this operation to modify the page name, description, content type, and content.
 //
 // @param tmpReq - UpdatePageRequest
 //
@@ -20791,7 +21077,7 @@ func (client *Client) UpdateRecordWithContext(ctx context.Context, tmpReq *Updat
 
 // Summary:
 //
-// Updates the redirection configuration of a site.
+// Modifies the redirect configuration of a site.
 //
 // @param request - UpdateRedirectRuleRequest
 //
@@ -20871,7 +21157,7 @@ func (client *Client) UpdateRedirectRuleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Update a Site\\"s URL Rewrite Configuration
+// Modifies the URL rewrite configuration of a site.
 //
 // @param request - UpdateRewriteUrlRuleRequest
 //
@@ -21751,7 +22037,7 @@ func (client *Client) UpdateTransportLayerApplicationWithContext(ctx context.Con
 
 // Summary:
 //
-// Updates the webpage monitoring configuration.
+// Updates the URL observation configuration.
 //
 // @param request - UpdateUrlObservationRequest
 //
@@ -22531,7 +22817,7 @@ func (client *Client) UpdateWaitingRoomRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Uploads a client certificate authority (CA) certificate.
+// Uploads a client CA certificate.
 //
 // @param request - UploadClientCaCertificateRequest
 //

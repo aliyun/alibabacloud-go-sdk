@@ -18,17 +18,17 @@ type iSetClientCertificateHostnamesRequest interface {
 }
 
 type SetClientCertificateHostnamesRequest struct {
-	// The hostnames to bind.
+	// The list of domain names to associate.
 	//
 	// This parameter is required.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// The ID of the client CA certificate.
+	// The client CA certificate ID.
 	//
 	// example:
 	//
 	// babab9db65ee5efcca9f3d41d4b50d**
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the site.
+	// The site ID.
 	//
 	// This parameter is required.
 	//

@@ -24,33 +24,33 @@ type iListRewriteUrlRulesResponseBody interface {
 }
 
 type ListRewriteUrlRulesResponseBody struct {
-	// List of rewrite URL configurations.
+	// The list of URL rewrite configurations.
 	Configs []*ListRewriteUrlRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The current page number.
+	// The current page number, which is the same as the PageNumber request parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The size of the page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 8
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,87 +134,87 @@ func (s *ListRewriteUrlRulesResponseBody) Validate() error {
 }
 
 type ListRewriteUrlRulesResponseBodyConfigs struct {
-	// Configuration ID.
+	// The configuration ID.
 	//
 	// example:
 	//
 	// 39538644977****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// Configuration type. Value range:
+	// The configuration type. Valid values:
 	//
-	// - global: Global configuration;
+	// - global: global configuration.
 	//
-	// - rule: Rule configuration;
+	// - rule: rule configuration.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The rewritten query string.
+	// The query string after rewriting.
 	//
 	// example:
 	//
 	// example=123
 	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
-	// Query string rewrite type. Value range:
+	// The query string rewrite type. Valid values:
 	//
-	// - static: Static mode.
+	// - static: static pattern.
 	//
-	// - dynamic: Dynamic mode.
+	// - dynamic: dynamic schema.
 	//
 	// example:
 	//
 	// static
 	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
-	// URI rewrite type. Value range:
+	// The path rewrite type. Valid values:
 	//
-	// - static: Static mode.
+	// - static: static pattern.
 	//
-	// - dynamic: Dynamic mode.
+	// - dynamic: dynamic schema.
 	//
 	// example:
 	//
 	// static
 	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
-	// Rule content, using conditional expressions to match user requests. Not required when adding a global configuration. There are two usage scenarios:
+	// The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
 	//
-	// - Match all incoming requests: Set the value to true
+	// - Match all incoming requests: set the value to true.
 	//
-	// - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
+	// - Match specified requests: set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Rule switch. Not required when adding a global configuration. Value range:
+	// The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
 	//
-	// - on: Enabled.
+	// - on: enabled.
 	//
-	// - off: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// Rule name. Not required when adding a global configuration.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Rule execution order. The smaller the value, the higher the priority.
+	// The rule execution order. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
+	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
 	//
 	// example:
 	//
 	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Target URI after rewriting.
+	// The target URI after rewriting.
 	//
 	// example:
 	//

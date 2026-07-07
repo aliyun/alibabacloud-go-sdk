@@ -24,7 +24,7 @@ type iListRoutineRoutesResponseBody interface {
 }
 
 type ListRoutineRoutesResponseBody struct {
-	// The configuration list in the response body.
+	// The configuration information.
 	Configs []*ListRoutineRoutesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
 	// The current page number, which is the same as the PageNumber request parameter.
 	//
@@ -136,9 +136,9 @@ func (s *ListRoutineRoutesResponseBody) Validate() error {
 type ListRoutineRoutesResponseBodyConfigs struct {
 	// The bypass mode. Valid values:
 	//
-	// - on: Enabled.
+	// - on: enabled.
 	//
-	// - off: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
@@ -150,21 +150,21 @@ type ListRoutineRoutesResponseBodyConfigs struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type. You can use this parameter to query global or rule configurations. Valid values:
+	// The configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
 	//
-	// - global: global configuration.
+	// - global: queries global configurations.
 	//
-	// - rule: rule configuration.
+	// - rule: queries rule configurations.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The fallback-to-origin switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request is forwarded to the origin server. Valid values:
+	// The fallback-to-origin switch. After this switch is enabled, requests are sent to the origin server if the function encounters an exception such as CPU usage exceeding the limit. Valid values:
 	//
-	// - on: Enabled.
+	// - on: enabled.
 	//
-	// - off: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
@@ -180,11 +180,11 @@ type ListRoutineRoutesResponseBodyConfigs struct {
 	//
 	// simple
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The route switch status. Valid values:
+	// The route switch. Valid values:
 	//
-	// - on: Enabled.
+	// - on: enabled.
 	//
-	// - off: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
@@ -208,7 +208,7 @@ type ListRoutineRoutesResponseBodyConfigs struct {
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The execution order of the rule.
+	// The rule execution order.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ type ListRoutineRoutesResponseBodyConfigs struct {
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// The Edge Routine timeout period. Valid values: 5 to 60.
+	// The ER timeout period. Valid values: 5 to 60. Unit: seconds.
 	//
 	// example:
 	//

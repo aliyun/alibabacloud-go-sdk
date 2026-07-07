@@ -26,13 +26,13 @@ type iListCertificatesResponseBody interface {
 }
 
 type ListCertificatesResponseBody struct {
-	// The page number.
+	// The page number of the data to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -44,21 +44,21 @@ type ListCertificatesResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of certificate details.
+	// The result array.
 	Result []*ListCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The ID of the site.
+	// The site ID.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The name of the site.
+	// The site name.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -151,19 +151,19 @@ func (s *ListCertificatesResponseBody) Validate() error {
 }
 
 type ListCertificatesResponseBodyResult struct {
-	// The error code returned when a certificate application fails.
+	// The error code for the certificate application.
 	//
 	// example:
 	//
 	// 2
 	ApplyCode *int64 `json:"ApplyCode,omitempty" xml:"ApplyCode,omitempty"`
-	// The error message returned when a certificate application fails.
+	// The error message for the certificate application.
 	//
 	// example:
 	//
 	// canceled
 	ApplyMessage *string `json:"ApplyMessage,omitempty" xml:"ApplyMessage,omitempty"`
-	// The ID of the cloud certificate.
+	// The cloud certificate ID.
 	//
 	// example:
 	//
@@ -175,13 +175,13 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The time when the certificate was created.
+	// The creation time. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2022-06-24 07:48:51
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The domain control validation (DCV) information.
+	// The Domain Control Validation (DCV) information.
 	DCV []*ListCertificatesResponseBodyResultDCV `json:"DCV,omitempty" xml:"DCV,omitempty" type:"Repeated"`
 	// The SHA-256 fingerprint of the certificate.
 	//
@@ -189,13 +189,13 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// baba39055622c008b90285a8838e****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The issuer of the certificate.
+	// The certificate issuer.
 	//
 	// example:
 	//
@@ -207,25 +207,25 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// GlobalSign Organization Validation CA - SHA256 - G3
 	IssuerCN *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
-	// The ID of the keyless server. This parameter is valid only when `Type` is set to `keyless`.
+	// The Keyless server ID. This parameter is valid only when Type is set to keyless.
 	//
 	// example:
 	//
 	// baba39055622c008b90285a8838e****
 	KeyServerId *string `json:"KeyServerId,omitempty" xml:"KeyServerId,omitempty"`
-	// The name of the certificate.
+	// The certificate name.
 	//
 	// example:
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the certificate expires.
+	// The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The time when the certificate becomes valid.
+	// The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -237,19 +237,19 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// RSA
 	PubAlg *string `json:"PubAlg,omitempty" xml:"PubAlg,omitempty"`
-	// The region.
+	// The region information.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The subject alternative name (SAN) of the certificate.
+	// The Subject Alternative Name (SAN) of the certificate.
 	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
-	// The serial number of the certificate.
+	// The certificate serial number.
 	//
 	// example:
 	//
@@ -261,41 +261,41 @@ type ListCertificatesResponseBodyResult struct {
 	//
 	// SHA256-RSA
 	SigAlg *string `json:"SigAlg,omitempty" xml:"SigAlg,omitempty"`
-	// The status of the certificate. Valid values:
+	// The certificate status. Valid values:
 	//
-	// - `OK`: The certificate is valid.
+	// - OK: Normal.
 	//
-	// - `Expired`: The certificate has expired.
+	// - Expired: The certificate has expired.
 	//
-	// - `Expiring`: The certificate is due to expire within 30 days.
+	// - Expiring: The certificate is about to expire (within 30 days).
 	//
-	// - `Issued`: The free certificate has been issued.
+	// - Issued: Free certificate - issued.
 	//
-	// - `Applying`: The free certificate application is in progress.
+	// - Applying: Free certificate - applying.
 	//
-	// - `ApplyFailed`: The free certificate application has failed.
+	// - ApplyFailed: Free certificate - application failed.
 	//
-	// - `Canceled`: The free certificate application has been canceled.
+	// - Canceled: Free certificate - canceled.
 	//
 	// example:
 	//
 	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the certificate. Valid values:
+	// The certificate type. Valid values:
 	//
-	// - `cas`: An Alibaba Cloud certificate.
+	// - cas: SSL Certificates Service certificate.
 	//
-	// - `upload`: A user-uploaded certificate.
+	// - upload: Custom uploaded certificate.
 	//
-	// - `free`: A free certificate.
+	// - free: Free certificate.
 	//
-	// - `keyless`: A keyless certificate.
+	// - keyless: Keyless certificate.
 	//
 	// example:
 	//
 	// free
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the certificate was last updated.
+	// The update time. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -523,13 +523,13 @@ func (s *ListCertificatesResponseBodyResult) Validate() error {
 }
 
 type ListCertificatesResponseBodyResultDCV struct {
-	// The ID of the DCV record.
+	// DCV ID。
 	//
 	// example:
 	//
 	// bababf7cdd1546a2ad04c0def1f4****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The DCV key. For the `DNS` method, this is the name of the TXT record. For the `HTTP` method, this is the URL.
+	// The DCV name. For the DNS type, this is the TXT record name. For the HTTP type, this is the URL.
 	//
 	// example:
 	//
@@ -541,13 +541,13 @@ type ListCertificatesResponseBodyResultDCV struct {
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The DCV method. Valid values: `DNS` and `HTTP`.
+	// The DCV type. Valid values: DNS and HTTP.
 	//
 	// example:
 	//
 	// HTTP
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The DCV value.
+	// The DCV content.
 	//
 	// example:
 	//

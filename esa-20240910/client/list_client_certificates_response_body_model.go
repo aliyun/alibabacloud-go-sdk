@@ -26,7 +26,7 @@ type iListClientCertificatesResponseBody interface {
 }
 
 type ListClientCertificatesResponseBody struct {
-	// The page number of the returned entries.
+	// The page number of the returned data.
 	//
 	// example:
 	//
@@ -163,13 +163,17 @@ type ListClientCertificatesResponseBodyResult struct {
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The creation time of the certificate.
+	// The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-06-24 07:48:51
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The SHA-256 fingerprint of the certificate.
+	//
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
 	// The certificate ID.
 	//
@@ -177,7 +181,7 @@ type ListClientCertificatesResponseBodyResult struct {
 	//
 	// babab9db65ee5efcca9f3d41d4b50d66
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The certificate issuer.
+	// The authority that issued the certificate.
 	//
 	// example:
 	//
@@ -189,13 +193,13 @@ type ListClientCertificatesResponseBodyResult struct {
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the certificate expires.
+	// The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The time when the certificate becomes valid.
+	// The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -207,13 +211,17 @@ type ListClientCertificatesResponseBodyResult struct {
 	//
 	// RSA
 	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
-	// The subject alternative name (SAN) of the certificate.
+	// The Subject Alternative Name (SAN) of the certificate.
 	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
-	// The serial number of the certificate.
+	// The certificate serial number.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1d**
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The signature algorithm of the certificate.
 	//
@@ -233,7 +241,7 @@ type ListClientCertificatesResponseBodyResult struct {
 	//
 	// dcdn
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The last update time of the certificate.
+	// The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
 	//
 	// example:
 	//

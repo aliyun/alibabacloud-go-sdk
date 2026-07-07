@@ -30,7 +30,7 @@ type iGetPageResponseBody interface {
 }
 
 type GetPageResponseBody struct {
-	// The Base64-encoded content of the custom response page.
+	// The Base64-encoded response page content corresponding to the Content-Type.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type GetPageResponseBody struct {
 	//
 	// PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The value for the page\\"s Content-Type HTTP header.
+	// The Content-Type field in the HTTP header.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type GetPageResponseBody struct {
 	//
 	// a custom deny page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the custom response page.
+	// The ID of the custom response page. You can obtain this value by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
 	//
 	// example:
 	//
@@ -78,9 +78,13 @@ type GetPageResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The sites to which the page is applied.
+	// The list of associated site IDs.
 	SiteIds []*int64 `json:"SiteIds,omitempty" xml:"SiteIds,omitempty" type:"Repeated"`
-	// The time the custom response page was last modified.
+	// The last modification time of the custom response page.
+	//
+	// Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+	//
+	// Example: 2026-06-10T14:23:45Z
 	//
 	// example:
 	//

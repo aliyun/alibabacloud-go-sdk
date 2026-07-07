@@ -24,53 +24,53 @@ type iListWafRulesetsShrinkRequest interface {
 }
 
 type ListWafRulesetsShrinkRequest struct {
-	// The page number for pagination.
+	// The page number. Specifies the current page number for paging queries.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size. Specifies the number of records per page for paging queries.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The execution phase for WAF rules.
+	// The WAF rule execution phase. Valid values:
 	//
-	// - `http_whitelist`: whitelist rule
+	// - http_whitelist: whitelist rules
 	//
-	// - `http_custom`: custom rule
+	// - http_custom: custom rules
 	//
-	// - `http_managed`: managed rule
+	// - http_managed: managed rules
 	//
-	// - `http_anti_scan`: scan protection rule
+	// - http_anti_scan: scan protection rules
 	//
-	// - `http_ratelimit`: rate-limiting rule
+	// - http_ratelimit: frequency control rules
 	//
-	// - `ip_access_rule`: IP access rule
+	// - ip_access_rule: IP access rules
 	//
-	// - `http_bot`: bot rule
+	// - http_bot: advanced mode bots
 	//
-	// - `http_security_level_rule`: security rule
+	// - http_security_level_rule: security rules
 	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// A JSON object containing query parameters for filtering.
+	// The query parameters, passed in JSON format, including various filter conditions.
 	//
 	// example:
 	//
 	// http_bot
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
-	// The ID of the site. Get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The site\\"s configuration version. For sites with configuration version management enabled, use this parameter to specify the version. The default is 0.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iGetKeylessServerRequest interface {
 }
 
 type GetKeylessServerRequest struct {
-	// The keyless server ID.
+	// Keyless server ID。
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetKeylessServerRequest struct {
 	//
 	// baba39055622c008b90285a8838e****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The site ID. To obtain this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//

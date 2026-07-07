@@ -32,13 +32,13 @@ type iGetWafRuleResponseBody interface {
 type GetWafRuleResponseBody struct {
 	// The rule configuration.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the WAF rule. You can get this ID by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) operation.
+	// The ID of the WAF rule. You can call the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) operation to obtain the ID.
 	//
 	// example:
 	//
 	// 2000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// This parameter is required.
 	//
@@ -46,23 +46,23 @@ type GetWafRuleResponseBody struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The execution phase of the WAF rule.
+	// The phase in which the WAF rule runs. Valid values:
 	//
-	// - `http_whitelist`: A whitelist rule
+	// - http_whitelist: whitelist rule
 	//
-	// - `http_custom`: A custom rule
+	// - http_custom: custom rule
 	//
-	// - `http_managed`: A managed rule
+	// - http_managed: managed rule
 	//
-	// - `http_anti_scan`: A scan protection rule
+	// - http_anti_scan: scan protection rule
 	//
-	// - `http_ratelimit`: A rate limiting rule
+	// - http_ratelimit: frequency control rule
 	//
-	// - `ip_access_rule`: An IP access rule
+	// - ip_access_rule: IP access rule
 	//
-	// - `http_bot`: A bot management rule
+	// - http_bot: advanced mode bots
 	//
-	// - `http_security_level_rule`: A security rule
+	// - http_security_level_rule: security rule
 	//
 	// This parameter is required.
 	//
@@ -82,15 +82,19 @@ type GetWafRuleResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the WAF ruleset. You can get this ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
+	// The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ID.
 	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	// The status of the rule.
+	// The rule status.
 	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time the rule was last updated.
+	// The time when the rule was last modified.
+	//
+	// Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+	//
+	// Example: 2026-06-10T14:23:45Z
 	//
 	// example:
 	//

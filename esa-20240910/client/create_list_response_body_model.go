@@ -16,7 +16,7 @@ type iCreateListResponseBody interface {
 }
 
 type CreateListResponseBody struct {
-	// The ID of the custom list.[](~~2850217~~)
+	// The ID of the custom list. You can obtain this value by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
 	//
 	// example:
 	//

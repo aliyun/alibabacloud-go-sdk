@@ -28,19 +28,19 @@ type ListCertificatesRequest struct {
 	//
 	// example
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number to return.
+	// The page number of the data to return.
 	//
 	// example:
 	//
 	// 3
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The site ID. To get this ID, call the [ListSites](~~ListSites~~) API.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to query the site ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type ListCertificatesRequest struct {
 	//
 	// example:
 	//
-	// 1
+	// true
 	ValidOnly *bool `json:"ValidOnly,omitempty" xml:"ValidOnly,omitempty"`
 }
 

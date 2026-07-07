@@ -123,7 +123,7 @@ type DescribePurgeTasksResponseBodyTasks struct {
 	//
 	// http://a.com/1.jpg?b=1
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The creation time, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
+	// The creation time in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
 	//
 	// example:
 	//
@@ -141,13 +141,13 @@ type DescribePurgeTasksResponseBodyTasks struct {
 	//
 	// 100%
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The task status. Valid values:
+	// The status. Valid values:
 	//
-	// - **Complete**: The task is complete.
+	// - **Complete**: Completed.
 	//
-	// - **Refreshing**: The task is in progress.
+	// - **Refreshing**: Refreshing.
 	//
-	// - **Failed**: The task failed.
+	// - **Failed**: Refresh failed.
 	//
 	// example:
 	//
@@ -167,11 +167,11 @@ type DescribePurgeTasksResponseBodyTasks struct {
 	//
 	// - **directory**: directory refresh.
 	//
-	// - **ignoreParams**: parameter-stripped refresh.
+	// - **ignoreParams**: ignore parameters refresh.
 	//
 	// - **hostname**: hostname refresh.
 	//
-	// - **purgeall**: refresh all cached content of the site.
+	// - **purgeall**: purge all cache under the site.
 	//
 	// example:
 	//

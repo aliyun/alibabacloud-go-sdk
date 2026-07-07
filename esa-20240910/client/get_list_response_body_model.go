@@ -32,15 +32,15 @@ type GetListResponseBody struct {
 	//
 	// a custom list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the custom list.[](~~2850217~~)
+	// The ID of the custom list. You can obtain the ID by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
 	//
 	// example:
 	//
 	// 40000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The items in the custom list, which are displayed as an array.
+	// The items of the custom list, displayed as an array.
 	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The type of the custom list.
+	// The kind of the custom list.
 	//
 	// example:
 	//
@@ -60,7 +60,11 @@ type GetListResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time when the custom list was last modified.
+	// The last update time of the custom list.
+	//
+	// Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+	//
+	// Example: 2026-06-10T14:23:45Z
 	//
 	// example:
 	//

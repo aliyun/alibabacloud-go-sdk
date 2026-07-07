@@ -26,13 +26,13 @@ type iListListsResponseBody interface {
 }
 
 type ListListsResponseBody struct {
-	// The total number of items across all lists.
+	// The total item usage.
 	//
 	// example:
 	//
 	// 5000
 	ItemsUsage *int64 `json:"ItemsUsage,omitempty" xml:"ItemsUsage,omitempty"`
-	// A paginated array of lists.
+	// The array of list information, which contains the paginated list data.
 	Lists []*ListListsResponseBodyLists `json:"Lists,omitempty" xml:"Lists,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -40,7 +40,7 @@ type ListListsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type ListListsResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of filtered records.
+	// The total number of records after filtering.
 	//
 	// example:
 	//
 	// 5
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The number of lists used by the account.
+	// The amount of usage consumed by the user.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ func (s *ListListsResponseBody) Validate() error {
 }
 
 type ListListsResponseBodyLists struct {
-	// The description of the list.
+	// The list description.
 	//
 	// example:
 	//
 	// a custom list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the custom list. To get this ID, call the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
+	// The ID of the custom list. You can obtain the ID by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
 	//
 	// example:
 	//
@@ -169,19 +169,23 @@ type ListListsResponseBodyLists struct {
 	//
 	// ip
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// The number of items in the list.
+	// The length of the list content array, which indicates the number of items in the list.
 	//
 	// example:
 	//
 	// 100
 	Length *int64 `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The name of the list.
+	// The list name.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the list was last updated.
+	// The time when the list was last modified.
+	//
+	// Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+	//
+	// Example: 2026-06-10T14:23:45Z
 	//
 	// example:
 	//

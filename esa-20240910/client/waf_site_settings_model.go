@@ -28,21 +28,29 @@ type iWafSiteSettings interface {
 }
 
 type WafSiteSettings struct {
-	// Configuration for adding bot protection headers.
+	// The bot protection headers.
 	AddBotProtectionHeaders *WafSiteSettingsAddBotProtectionHeaders `json:"AddBotProtectionHeaders,omitempty" xml:"AddBotProtectionHeaders,omitempty" type:"Struct"`
-	// Configuration for adding security headers.
+	// The security headers.
 	AddSecurityHeaders *WafSiteSettingsAddSecurityHeaders `json:"AddSecurityHeaders,omitempty" xml:"AddSecurityHeaders,omitempty" type:"Struct"`
-	// The bandwidth abuse protection settings.
+	// The bandwidth abuse protection.
 	BandwidthAbuseProtection *WafSiteSettingsBandwidthAbuseProtection `json:"BandwidthAbuseProtection,omitempty" xml:"BandwidthAbuseProtection,omitempty" type:"Struct"`
-	// The bot management settings.
+	// The bot management.
 	BotManagement *WafSiteSettingsBotManagement `json:"BotManagement,omitempty" xml:"BotManagement,omitempty" type:"Struct"`
-	// Configuration for client IP identification.
+	// The client IP identification.
 	ClientIpIdentifier *WafSiteSettingsClientIpIdentifier `json:"ClientIpIdentifier,omitempty" xml:"ClientIpIdentifier,omitempty" type:"Struct"`
-	// Configuration for disabling the security module.
+	// The configuration for disabling the security module.
 	DisableSecurityModule *WafSiteSettingsDisableSecurityModule `json:"DisableSecurityModule,omitempty" xml:"DisableSecurityModule,omitempty" type:"Struct"`
-	// Configuration for request body inspection.
+	// The request body inspection configuration. Controls the deep packet inspection behavior of WAF for HTTP request bodies. After this feature is enabled, content-based matching rules such as SQL injection and XSS detection take effect on request bodies.
+	//
+	// This structure can contain the following fields:
+	//
+	// - Id: The unique identifier of the built-in inspection rule.
+	//
+	// - SizeLimit: The maximum size of the request body to inspect.
+	//
+	// - Action: The action to take when the request body exceeds the size limit.
 	RequestBodyInspection *WafSiteSettingsRequestBodyInspection `json:"RequestBodyInspection,omitempty" xml:"RequestBodyInspection,omitempty" type:"Struct"`
-	// The security level settings.
+	// The security level.
 	SecurityLevel *WafSiteSettingsSecurityLevel `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty" type:"Struct"`
 }
 
@@ -171,7 +179,7 @@ func (s *WafSiteSettings) Validate() error {
 }
 
 type WafSiteSettingsAddBotProtectionHeaders struct {
-	// Specifies whether to add bot protection headers.
+	// The switch.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -197,7 +205,7 @@ func (s *WafSiteSettingsAddBotProtectionHeaders) Validate() error {
 }
 
 type WafSiteSettingsAddSecurityHeaders struct {
-	// Specifies whether to add security headers.
+	// The switch.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -223,19 +231,19 @@ func (s *WafSiteSettingsAddSecurityHeaders) Validate() error {
 }
 
 type WafSiteSettingsBandwidthAbuseProtection struct {
-	// The action to perform for the bandwidth abuse protection rule.
+	// The action of the bandwidth abuse protection rule.
 	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The rule ID for bandwidth abuse protection.
+	// The ID of the bandwidth abuse protection rule.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The status of the bandwidth abuse protection rule. Valid values: `on` and `off`.
+	// The status of the bandwidth abuse protection rule.
 	//
 	// example:
 	//
@@ -283,15 +291,15 @@ func (s *WafSiteSettingsBandwidthAbuseProtection) Validate() error {
 }
 
 type WafSiteSettingsBotManagement struct {
-	// Configuration for traffic identified as a definite bot.
+	// The definite bots.
 	DefiniteBots *WafSiteSettingsBotManagementDefiniteBots `json:"DefiniteBots,omitempty" xml:"DefiniteBots,omitempty" type:"Struct"`
-	// Configuration to apply bot management to static resource requests.
+	// Specifies whether the rule applies to static resource requests.
 	EffectOnStatic *WafSiteSettingsBotManagementEffectOnStatic `json:"EffectOnStatic,omitempty" xml:"EffectOnStatic,omitempty" type:"Struct"`
-	// The JavaScript detection settings.
+	// The JavaScript detection.
 	JSDetection *WafSiteSettingsBotManagementJSDetection `json:"JSDetection,omitempty" xml:"JSDetection,omitempty" type:"Struct"`
-	// Configuration for traffic identified as a likely bot.
+	// The likely bots.
 	LikelyBots *WafSiteSettingsBotManagementLikelyBots `json:"LikelyBots,omitempty" xml:"LikelyBots,omitempty" type:"Struct"`
-	// Configuration for traffic identified as a verified bot.
+	// The verified bots.
 	VerifiedBots *WafSiteSettingsBotManagementVerifiedBots `json:"VerifiedBots,omitempty" xml:"VerifiedBots,omitempty" type:"Struct"`
 }
 
@@ -378,7 +386,7 @@ func (s *WafSiteSettingsBotManagement) Validate() error {
 }
 
 type WafSiteSettingsBotManagementDefiniteBots struct {
-	// The action to perform.
+	// The action.
 	//
 	// example:
 	//
@@ -423,7 +431,7 @@ func (s *WafSiteSettingsBotManagementDefiniteBots) Validate() error {
 }
 
 type WafSiteSettingsBotManagementEffectOnStatic struct {
-	// Specifies whether to apply bot management to static resource requests.
+	// The switch.
 	//
 	// example:
 	//
@@ -453,7 +461,7 @@ func (s *WafSiteSettingsBotManagementEffectOnStatic) Validate() error {
 }
 
 type WafSiteSettingsBotManagementJSDetection struct {
-	// Specifies whether to enable JavaScript detection.
+	// The switch.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -479,7 +487,7 @@ func (s *WafSiteSettingsBotManagementJSDetection) Validate() error {
 }
 
 type WafSiteSettingsBotManagementLikelyBots struct {
-	// The action to perform.
+	// The action.
 	//
 	// example:
 	//
@@ -524,7 +532,7 @@ func (s *WafSiteSettingsBotManagementLikelyBots) Validate() error {
 }
 
 type WafSiteSettingsBotManagementVerifiedBots struct {
-	// The action to perform.
+	// The action.
 	//
 	// example:
 	//
@@ -569,7 +577,7 @@ func (s *WafSiteSettingsBotManagementVerifiedBots) Validate() error {
 }
 
 type WafSiteSettingsClientIpIdentifier struct {
-	// An array of headers to check for the client IP address.
+	// The specified headers.
 	Headers []*string `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
 	// The identification mode.
 	//
@@ -610,7 +618,7 @@ func (s *WafSiteSettingsClientIpIdentifier) Validate() error {
 }
 
 type WafSiteSettingsDisableSecurityModule struct {
-	// Specifies whether to disable the security module. Set to `on` to disable.
+	// The status switch for disabling the security module.
 	//
 	// example:
 	//
@@ -640,11 +648,35 @@ func (s *WafSiteSettingsDisableSecurityModule) Validate() error {
 }
 
 type WafSiteSettingsRequestBodyInspection struct {
-	// The action to perform when the request body size exceeds the limit.
+	// The action to take when the request body size exceeds SizeLimit.
+	//
+	// Common valid values (the complete list is determined by the server-side configuration):
+	//
+	// - allow: allows the request without performing deep packet inspection on the portion that exceeds the limit.
+	//
+	// > The complete enumeration is determined by the WAF server-side configuration.
+	//
+	// example:
+	//
+	// allow
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The rule ID for request body inspection.
+	// The request body inspection rule ID, which is the unique identifier of the built-in rule. When request body inspection is enabled, the server uses this ID to associate the matching logic of the built-in inspection rule. The valid values are based on the built-in rule list of WAF.
+	//
+	// example:
+	//
+	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The size limit, in bytes, for inspecting the request body.
+	// The maximum size of the request body to inspect, in bytes.
+	//
+	// - If the request body is less than or equal to this value, the entire content is subject to WAF matching.
+	//
+	// - If the request body exceeds this value, the action specified in the Action field is taken, such as inspecting only the first N bytes, rejecting the request, or allowing the request.
+	//
+	// > The valid value range and default value are determined by the WAF server-side configuration.
+	//
+	// example:
+	//
+	// 16KB
 	SizeLimit *string `json:"SizeLimit,omitempty" xml:"SizeLimit,omitempty"`
 }
 
@@ -688,7 +720,7 @@ func (s *WafSiteSettingsRequestBodyInspection) Validate() error {
 }
 
 type WafSiteSettingsSecurityLevel struct {
-	// The security level.
+	// The security level value.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type iUpdateRewriteUrlRuleRequest interface {
 }
 
 type UpdateRewriteUrlRuleRequest struct {
-	// The configuration ID. You can get this ID by calling the [ListRewriteUrlRules](https://help.aliyun.com/document_detail/2867480.html) API.
+	// The configuration ID. You can call the [ListRewriteUrlRules](https://help.aliyun.com/document_detail/2867480.html) operation to obtain the configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -40,27 +40,27 @@ type UpdateRewriteUrlRuleRequest struct {
 	//
 	// 3528160969****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The query string after the rewrite.
+	// The query string after rewriting.
 	//
 	// example:
 	//
 	// example=123
 	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
-	// The query string rewrite type. Valid values:
+	// The query character string rewrite type. Valid values:
 	//
-	// - static: Static Mode.
+	// - static: static pattern.
 	//
-	// - dynamic: Dynamic Mode.
+	// - dynamic: dynamic pattern.
 	//
 	// example:
 	//
 	// static
 	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
-	// The URI rewrite type. Valid values:
+	// The path rewrite type. Valid values:
 	//
-	// - static: Static Mode.
+	// - static: static pattern.
 	//
-	// - dynamic: Dynamic Mode.
+	// - dynamic: dynamic pattern.
 	//
 	// if can be null:
 	// false
@@ -69,39 +69,39 @@ type UpdateRewriteUrlRuleRequest struct {
 	//
 	// static
 	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
-	// The content of the rule, a conditional expression that matches user requests. This parameter is not required for a Global Configuration. Two use cases are supported:
+	// The rule content. A conditional expression is used to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
 	//
-	// - To match all incoming requests, set the value to true.
+	// - Match all incoming requests: Set the value to true.
 	//
-	// - To match specific requests, set the value to a custom expression, for example, (http.host eq "video.example.com").
+	// - Match specified requests: Set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
 	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether the rule is enabled. This parameter is not required for a Global Configuration. Valid values:
+	// The rule switch. This parameter is not required when you add a global configuration. Valid values:
 	//
-	// - on: The rule is enabled.
+	// - on: Enabled.
 	//
-	// - off: The rule is disabled.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. This parameter is not required for a Global Configuration.
+	// The rule name. This parameter is not required when you add a global configuration.
 	//
 	// example:
 	//
 	// example=123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The execution priority of the rule. A smaller value indicates a higher priority.
+	// The rule execution order. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The site ID. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -109,7 +109,7 @@ type UpdateRewriteUrlRuleRequest struct {
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The destination URI after the rewrite.
+	// The target URI after rewriting.
 	//
 	// example:
 	//

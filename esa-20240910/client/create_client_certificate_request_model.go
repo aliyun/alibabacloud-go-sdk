@@ -20,19 +20,19 @@ type iCreateClientCertificateRequest interface {
 }
 
 type CreateClientCertificateRequest struct {
-	// The certificate signing request (CSR).
+	// The certificate signing request (CSR) content.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE REQUEST-----
 	CSR *string `json:"CSR,omitempty" xml:"CSR,omitempty"`
-	// The type of the private key algorithm.
+	// The private key algorithm type. This parameter is required if CSR is not provided.
 	//
 	// example:
 	//
 	// RSA
 	PkeyType *string `json:"PkeyType,omitempty" xml:"PkeyType,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateClientCertificateRequest struct {
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The validity period of the certificate. Unit: day.
+	// The validity period of the certificate. Unit: days.
 	//
 	// This parameter is required.
 	//

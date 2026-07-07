@@ -20,11 +20,11 @@ type iListCertificatesByRecordRequest interface {
 }
 
 type ListCertificatesByRecordRequest struct {
-	// Specifies whether to return certificate details. A value of `1` includes certificate details, whereas a value of `0` excludes them.
+	// Specifies whether to return certificate details.
 	//
 	// example:
 	//
-	// 1
+	// true
 	Detail *bool `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The record name.
 	//
@@ -34,7 +34,7 @@ type ListCertificatesByRecordRequest struct {
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The site ID. To obtain this ID, call the [ListSites](~~ListSites~~) operation.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to query the site ID.
 	//
 	// This parameter is required.
 	//
@@ -42,11 +42,11 @@ type ListCertificatesByRecordRequest struct {
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Specifies whether to return only valid certificates. A value of `1` returns only valid certificates, whereas `0` returns all matching certificates.
+	// Specifies whether to return only valid certificates.
 	//
 	// example:
 	//
-	// 1
+	// true
 	ValidOnly *bool `json:"ValidOnly,omitempty" xml:"ValidOnly,omitempty"`
 }
 

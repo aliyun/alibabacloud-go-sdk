@@ -18,7 +18,7 @@ type iUpdateUrlObservationRequest interface {
 }
 
 type UpdateUrlObservationRequest struct {
-	// The ID of the configuration. You can call the [ListUrlObservations](~~ListUrlObservations~~) operation to obtain the ID.
+	// The configuration ID. You can call the [ListUrlObservations](~~ListUrlObservations~~) operation to obtain the configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type UpdateUrlObservationRequest struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// SDK integration. Valid values:
+	// The SDK integration method. Valid values:
 	//
-	// 	- **automatic*	- (Recommended)
+	// - **automatic**: automatic integration.
 	//
-	// 	- **manual**
+	// - **manual**: manual integration.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type UpdateUrlObservationRequest struct {
 	//
 	// manual
 	SdkType *string `json:"SdkType,omitempty" xml:"SdkType,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

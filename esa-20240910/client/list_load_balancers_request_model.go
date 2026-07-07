@@ -24,41 +24,41 @@ type iListLoadBalancersRequest interface {
 }
 
 type ListLoadBalancersRequest struct {
-	// The matching strategy to use when querying by name. Valid values:
+	// The name matching strategy when querying by name. Valid values:
 	//
-	// - `fuzzy`: Performs a fuzzy match.
+	// - fuzzy: fuzzy match.
 	//
-	// - `exact`: Performs an exact match.
+	// - exact: exact match.
 	//
 	// example:
 	//
 	// fuzzy
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	// The name of the load balancer.
+	// The load balancing name. You can query by name.
 	//
 	// example:
 	//
 	// lb.example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sort field. Only sorting by ID is supported. IDs are assigned chronologically. Specify `id` for ascending order or `-id` for descending order. If this parameter is omitted, the results are sorted by ID in descending order.
+	// The sort field. Currently, only sorting by ID is supported. id indicates ascending order by ID, and -id indicates descending order by ID. The ID value is positively correlated with the creation time. If this parameter is not specified, the default sort order is descending by ID.
 	//
 	// example:
 	//
 	// id
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number for pagination.
+	// The page number settings for the paging query. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 500.
+	// The number of entries per page for the paging query. Valid values: 1 to 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The site ID. You can obtain this ID by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

@@ -14,15 +14,15 @@ type iGetWafQuotaRequest interface {
 }
 
 type GetWafQuotaRequest struct {
-	// The path of the WAF quota. Valid values:
+	// The paths of WAF quotas. Valid values:
 	//
-	// - managed_rules_group: The quota for managed rule groups.
+	// 	- managed_rules_group: the quota for WAF managed rule groups.
 	//
-	// - list: The quota for custom lists.
+	// 	- list: the quota for custom lists.
 	//
-	// - page: The quota for custom response pages.
+	// 	- page: the quota for custom response pages.
 	//
-	// - scene_policy: The quota for scene-based protection.
+	// 	- scene_policy: the quota for scenario-specific protection rules.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type DescribePurgeTasksRequest struct {
 	//
 	// http://a.com/1.jpg?b=1
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
 	//
 	// > The end time must be later than the start time.
@@ -57,11 +57,13 @@ type DescribePurgeTasksRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
+	// 	Notice: You must always specify SiteId. An error is reported if SiteId is not specified.</notice>
+	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
 	// example:
 	//
@@ -69,11 +71,11 @@ type DescribePurgeTasksRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task execution status. Valid values:
 	//
-	// - **Complete**: The task is complete.
+	// - **Complete**: Completed.
 	//
-	// - **Refreshing**: The task is in progress.
+	// - **Refreshing**: Refreshing.
 	//
-	// - **Failed**: The task failed.
+	// - **Failed**: Refresh failed.
 	//
 	// example:
 	//
@@ -87,11 +89,11 @@ type DescribePurgeTasksRequest struct {
 	//
 	// - **directory**: directory refresh.
 	//
-	// - **ignoreParams**: parameter-stripped refresh.
+	// - **ignoreParams**: ignore parameters refresh.
 	//
 	// - **hostname**: hostname refresh.
 	//
-	// - **purgeall**: refresh all cached content of the site.
+	// - **purgeall**: purge all cache under the site.
 	//
 	// example:
 	//

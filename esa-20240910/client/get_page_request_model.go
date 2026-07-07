@@ -14,7 +14,7 @@ type iGetPageRequest interface {
 }
 
 type GetPageRequest struct {
-	// The ID of the custom response page. To obtain this ID, call the [ListPages](https://help.aliyun.com/document_detail/2850223.html) API.
+	// The ID of the custom response page. You can obtain this value by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
 	//
 	// example:
 	//

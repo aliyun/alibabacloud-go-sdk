@@ -24,9 +24,9 @@ type iListUrlObservationsResponseBody interface {
 }
 
 type ListUrlObservationsResponseBody struct {
-	// The configurations of the feature.
+	// The configuration data.
 	Configs []*ListUrlObservationsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The number of the returned page.
+	// The current page number, which is the same as the PageNumber request parameter.
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type ListUrlObservationsResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -140,11 +140,11 @@ type ListUrlObservationsResponseBodyConfigs struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// SDK integration. Valid values:
+	// The SDK integration method. Valid values:
 	//
-	// 	- **automatic**
+	// - **automatic**: Automatic integration.
 	//
-	// 	- **manual**
+	// - **manual**: Manual integration.
 	//
 	// example:
 	//

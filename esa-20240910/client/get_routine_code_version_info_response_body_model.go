@@ -50,19 +50,19 @@ type GetRoutineCodeVersionInfoResponseBody struct {
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
 	// The list of configuration items for the code version.
 	ConfOptions *GetRoutineCodeVersionInfoResponseBodyConfOptions `json:"ConfOptions,omitempty" xml:"ConfOptions,omitempty" type:"Struct"`
-	// The time when the code version was created.
+	// The time when the code version was created. The time follows the RFC 3339 standard in the UTC time zone.
 	//
 	// example:
 	//
 	// 2025-08-04T01:54:19Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The additional information about the code version. The value is in JSON string format.
+	// The extra information of the code version. The value is in JSON string format.
 	//
 	// example:
 	//
 	// {}
 	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	// Indicates whether the code version contains asset files.
+	// Indicates whether the code version contains Assets files.
 	//
 	// example:
 	//

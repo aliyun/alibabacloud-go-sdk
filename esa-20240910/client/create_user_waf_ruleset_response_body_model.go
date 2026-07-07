@@ -18,7 +18,7 @@ type iCreateUserWafRulesetResponseBody interface {
 }
 
 type CreateUserWafRulesetResponseBody struct {
-	// The WAF ruleset ID.
+	// The ID of the WAF ruleset.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateUserWafRulesetResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of rule IDs within the WAF ruleset.
+	// The list of rule IDs in the WAF ruleset.
 	RuleIds []*int64 `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 }
 

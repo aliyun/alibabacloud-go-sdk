@@ -16,13 +16,13 @@ type iDescribeTraceDiagnoseReportRequest interface {
 }
 
 type DescribeTraceDiagnoseReportRequest struct {
-	// Diagnostic task ID.
+	// The diagnostic task ID. You must specify at least one of TraceId and TaskId. If neither is specified, the API returns an error.
 	//
 	// example:
 	//
 	// xxxxxxxxx-x-x-xxxxxxxxxxxxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Diagnostic trace ID.
+	// The diagnostic trace ID. You must specify at least one of TraceId and TaskId. If neither is specified, the API returns an error.
 	//
 	// example:
 	//

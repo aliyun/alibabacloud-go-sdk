@@ -14,7 +14,7 @@ type iGetListRequest interface {
 }
 
 type GetListRequest struct {
-	// The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
+	// The ID of the custom list. You can obtain the ID by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
 	//
 	// example:
 	//

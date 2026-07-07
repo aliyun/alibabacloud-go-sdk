@@ -18,7 +18,7 @@ type iCreateWafRuleResponseBody interface {
 }
 
 type CreateWafRuleResponseBody struct {
-	// The ID of the newly created WAF rule.
+	// The ID of the WAF rule. You can call the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) operation to obtain the rule ID.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateWafRuleResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the ruleset to which the new rule belongs.
+	// The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ruleset ID.
 	//
 	// example:
 	//

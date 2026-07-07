@@ -26,7 +26,7 @@ type iListWafRulesResponseBody interface {
 }
 
 type ListWafRulesResponseBody struct {
-	// The number of rules used in this WAF phase for the site\\"s instance.
+	// The number of rules used in the WAF phase for the instance associated with the site.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListWafRulesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of items per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -50,15 +50,15 @@ type ListWafRulesResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of rule objects.
+	// The list of rules returned.
 	Rules []*ListWafRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The number of rules used by the site.
+	// The site usage.
 	//
 	// example:
 	//
 	// 5
 	SiteUsage *int64 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
-	// The total number of filtered rules.
+	// The total number of rules after filtering.
 	//
 	// example:
 	//
@@ -151,95 +151,99 @@ func (s *ListWafRulesResponseBody) Validate() error {
 }
 
 type ListWafRulesResponseBodyRules struct {
-	// The action to take when a rule matches.
+	// The action associated with the rule. Valid values:
 	//
-	// - `deny`: Block the request.
+	// - deny: Block.
 	//
-	// - `monitor`: Log the request without blocking it.
+	// - monitor: Monitor.
 	//
-	// - `js`: Issue a JS challenge.
+	// - js: JavaScript Challenge.
 	//
-	// - `captcha`: Issue a CAPTCHA challenge.
+	// - captcha: Slider challenge.
 	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// A list of tracking characteristics for rate limit rules.
+	// The list of statistical objects for frequency control rules.
 	CharacteristicsFields []*string `json:"CharacteristicsFields,omitempty" xml:"CharacteristicsFields,omitempty" type:"Repeated"`
-	// The rule configuration object.
+	// The rule configuration.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// An array of match fields for the rule.
+	// The list of matching fields for the rule.
 	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The WAF rule\\"s execution phase.
+	// The WAF rule execution phase. Valid values:
 	//
-	// - `http_whitelist`: Whitelist rule.
+	// - http_whitelist: whitelist rule
 	//
-	// - `http_custom`: Custom rule.
+	// - http_custom: custom rule
 	//
-	// - `http_managed`: Managed rule.
+	// - http_managed: managed rule
 	//
-	// - `http_anti_scan`: Scan protection rule.
+	// - http_anti_scan: scan protection rule
 	//
-	// - `http_ratelimit`: Rate limit rule.
+	// - http_ratelimit: frequency control rule
 	//
-	// - `ip_access_rule`: IP access rule.
+	// - ip_access_rule: IP access rule
 	//
-	// - `http_bot`: Advanced bot management rule.
+	// - http_bot: advanced mode bots
 	//
-	// - `http_security_level_rule`: Security level rule.
+	// - http_security_level_rule: security rule
 	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The position of the rule within the ruleset.
+	// The position of the rule in the corresponding ruleset.
 	//
 	// example:
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// The ID of the ruleset.
+	// The ruleset ID.
 	//
 	// example:
 	//
 	// 10000001
 	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	// The skip behavior for whitelist rules.
+	// The skip property for whitelist rules.
 	//
 	// example:
 	//
 	// part
 	Skip *string `json:"Skip,omitempty" xml:"Skip,omitempty"`
-	// The status of the rule.
+	// The rule status.
 	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// An array of WAF phases to skip when the whitelist rule matches.
+	// The list of WAF phases to skip for whitelist rules.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The effective time configuration for the rule.
+	// The effective period configuration of the rule.
 	Timer *WafTimer `json:"Timer,omitempty" xml:"Timer,omitempty"`
-	// The type of the rule.
+	// The rule type.
 	//
 	// example:
 	//
 	// http_custom
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// When the rule was last updated.
+	// The last modification time of the rule.
+	//
+	// Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+	//
+	// Example: 2026-06-10T14:23:45Z
 	//
 	// example:
 	//
