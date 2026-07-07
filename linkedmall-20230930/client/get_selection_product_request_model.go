@@ -16,15 +16,19 @@ type iGetSelectionProductRequest interface {
 }
 
 type GetSelectionProductRequest struct {
+	// Region code (use a five-level township or subdistrict address code)
+	//
 	// example:
 	//
-	// 110000
+	// 330106109
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// Purchaser ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 56****2304
+	// PID22000009
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 }
 

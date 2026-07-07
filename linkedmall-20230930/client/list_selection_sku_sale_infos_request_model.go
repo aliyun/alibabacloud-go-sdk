@@ -14,6 +14,8 @@ type iListSelectionSkuSaleInfosRequest interface {
 }
 
 type ListSelectionSkuSaleInfosRequest struct {
+	// Parameters for querying SKU sales information in batch
+	//
 	// This parameter is required.
 	Body *SkuSaleInfoListQuery `json:"body,omitempty" xml:"body,omitempty"`
 }

@@ -30,39 +30,72 @@ type iRefundOrderCmd interface {
 }
 
 type RefundOrderCmd struct {
+	// Refund reason ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 47821
-	ApplyReasonTextId *int64  `json:"applyReasonTextId,omitempty" xml:"applyReasonTextId,omitempty"`
-	ApplyReasonTips   *string `json:"applyReasonTips,omitempty" xml:"applyReasonTips,omitempty"`
+	ApplyReasonTextId *int64 `json:"applyReasonTextId,omitempty" xml:"applyReasonTextId,omitempty"`
+	// Refund reason text
+	//
+	// example:
+	//
+	// 不想要了
+	ApplyReasonTips *string `json:"applyReasonTips,omitempty" xml:"applyReasonTips,omitempty"`
+	// Number of items to return
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	ApplyRefundCount *int32 `json:"applyRefundCount,omitempty" xml:"applyRefundCount,omitempty"`
+	// Refund amount in cents
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
 	ApplyRefundFee *int64 `json:"applyRefundFee,omitempty" xml:"applyRefundFee,omitempty"`
+	// Refund type
+	//
+	// 1: Refund only
+	//
+	// 3: Return and refund
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	BizClaimType *int32 `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
+	// Item status
+	//
+	// 4: Not shipped
+	//
+	// 1: Not received
+	//
+	// 2: Received
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	GoodsStatus       *int32              `json:"goodsStatus,omitempty" xml:"goodsStatus,omitempty"`
-	LeaveMessage      *string             `json:"leaveMessage,omitempty" xml:"leaveMessage,omitempty"`
+	GoodsStatus *int32 `json:"goodsStatus,omitempty" xml:"goodsStatus,omitempty"`
+	// Customer message
+	//
+	// example:
+	//
+	// 不想要了
+	LeaveMessage *string `json:"leaveMessage,omitempty" xml:"leaveMessage,omitempty"`
+	// Collection of images
 	LeavePictureLists []*LeavePictureList `json:"leavePictureLists,omitempty" xml:"leavePictureLists,omitempty" type:"Repeated"`
+	// Sub-distribution order ID
+	//
 	// This parameter is required.
 	//
 	// example:

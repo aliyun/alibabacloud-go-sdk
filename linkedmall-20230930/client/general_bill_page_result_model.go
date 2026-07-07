@@ -22,13 +22,20 @@ type iGeneralBillPageResult interface {
 }
 
 type GeneralBillPageResult struct {
+	// List of bills.
 	GeneralBills []*GeneralBill `json:"generalBills,omitempty" xml:"generalBills,omitempty" type:"Repeated"`
-	PageNumber   *int32         `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize     *int32         `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Current page number.
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size.
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// API request ID.
+	//
 	// example:
 	//
 	// 3239281273464326823
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 24

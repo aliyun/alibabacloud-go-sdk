@@ -32,39 +32,62 @@ type iShop interface {
 }
 
 type Shop struct {
+	// The partner shops.
+	//
 	// example:
 	//
 	// 12***01
 	CooperationShops []*CooperationShop `json:"cooperationShops,omitempty" xml:"cooperationShops,omitempty" type:"Repeated"`
+	// The ID of the distributor.
+	//
 	// example:
 	//
 	// 12****09
 	DistributorId *string `json:"distributorId,omitempty" xml:"distributorId,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
-	// 2024-09-09 00:00:00
+	// 2023-09-11T12:22:24.000+08:00
 	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// The ID of the purchaser.
+	//
 	// example:
 	//
-	// 56****2304
+	// PID56****2304
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 48A34399-A72C-1E23-8388-7E63****E927
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The ID of the shop.
+	//
 	// example:
 	//
 	// 22****09
-	ShopId   *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	// The name of the shop.
+	//
+	// example:
+	//
+	// 儿童分销店铺
 	ShopName *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
+	// The type of the shop.
+	//
 	// example:
 	//
-	// Distribution
+	// DistributorQYG
 	ShopType *string `json:"shopType,omitempty" xml:"shopType,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
-	// 2023-09-09 00:00:00
+	// 2023-09-11T12:22:24.000+08:00
 	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// The status of the shop.
+	//
 	// example:
 	//
 	// Working

@@ -20,11 +20,20 @@ type iDeliveryInfo interface {
 }
 
 type DeliveryInfo struct {
+	// Display name
+	//
+	// example:
+	//
+	// 快递 免邮
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Unique ID
+	//
 	// example:
 	//
 	// 20
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Shipping fee amount
+	//
 	// example:
 	//
 	// 0

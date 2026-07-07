@@ -18,16 +18,24 @@ type iSkuSaleInfoListQuery interface {
 }
 
 type SkuSaleInfoListQuery struct {
+	// Region code. Use a five-level administrative division code, such as a town or subdistrict code.
+	//
 	// example:
 	//
-	// 110000
+	// 330106109
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// Purchaser ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 21000017
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// Product query parameters
+	//
+	// > You can query up to 20 SKUs per request.
+	//
 	// This parameter is required.
 	SkuQueryParams []*SkuQueryParam `json:"skuQueryParams,omitempty" xml:"skuQueryParams,omitempty" type:"Repeated"`
 }

@@ -26,15 +26,140 @@ type iLogisticsOrderResult interface {
 }
 
 type LogisticsOrderResult struct {
-	DataProvider      *string `json:"dataProvider,omitempty" xml:"dataProvider,omitempty"`
+	// The data provider.
+	//
+	// example:
+	//
+	// 菜鸟
+	DataProvider *string `json:"dataProvider,omitempty" xml:"dataProvider,omitempty"`
+	// The display title of the data provider.
+	//
+	// example:
+	//
+	// 菜鸟裹裹
 	DataProviderTitle *string `json:"dataProviderTitle,omitempty" xml:"dataProviderTitle,omitempty"`
-	Goods             []*Good `json:"goods,omitempty" xml:"goods,omitempty" type:"Repeated"`
+	// Details of the goods.
+	Goods []*Good `json:"goods,omitempty" xml:"goods,omitempty" type:"Repeated"`
+	// The logistics company code.
+	//
+	// > Valid values:
+	//
+	// >
+	//
+	// > - `ZTKY` - China Railway Logistics
+	//
+	// >
+	//
+	// > - `POST` - China Post
+	//
+	// >
+	//
+	// > - `DBKD` - Deppon Express
+	//
+	// >
+	//
+	// > - `JT` - J\\&T Express
+	//
+	// >
+	//
+	// > - `QFKD` - Quanfeng Express
+	//
+	// >
+	//
+	// > - `EYB` - China Post E-commerce Express
+	//
+	// >
+	//
+	// > - `STO` - STO Express
+	//
+	// >
+	//
+	// > - `SF` - SF Express
+	//
+	// >
+	//
+	// > - `ZTO` - ZTO Express
+	//
+	// >
+	//
+	// > - `YTO` - YTO Express
+	//
+	// >
+	//
+	// > - `TTKDEX` - Tiantian Express
+	//
+	// >
+	//
+	// > - `JDLEx` - JD Express
+	//
+	// >
+	//
+	// > - `ETICKET` - e-ticket
+	//
+	// >
+	//
+	// > - `HTKY` - Best Express
+	//
+	// >
+	//
+	// > - `SHQ` - Huaqiang Logistics
+	//
+	// >
+	//
+	// > - `TAOBAO` - Taobao Logistics
+	//
+	// >
+	//
+	// > - `YUNDA` - Yunda Express
+	//
+	// >
+	//
+	// > - `ZJS` - ZJS Express
+	//
+	// >
+	//
+	// > - `FEDEX` - FedEx
+	//
+	// >
+	//
+	// > - `EMS` - EMS
+	//
+	// >
+	//
+	// > - `POSTB` - China Post Parcel
+	//
+	// >
+	//
+	// > - `OTHER` - other
+	//
+	// >
+	//
+	// > - `CNDJWL` - Cainiao Heavy Parcel Logistics
+	//
+	// >
+	//
+	// > - `TN` - T-neng Logistics
+	//
+	// >
+	//
+	// > - `ZMKM` - Cainiao Express
+	//
 	// example:
 	//
 	// SF
-	LogisticsCompanyCode *string            `json:"logisticsCompanyCode,omitempty" xml:"logisticsCompanyCode,omitempty"`
-	LogisticsCompanyName *string            `json:"logisticsCompanyName,omitempty" xml:"logisticsCompanyName,omitempty"`
-	LogisticsDetailList  []*LogisticsDetail `json:"logisticsDetailList,omitempty" xml:"logisticsDetailList,omitempty" type:"Repeated"`
+	LogisticsCompanyCode *string `json:"logisticsCompanyCode,omitempty" xml:"logisticsCompanyCode,omitempty"`
+	// The name of the logistics company.
+	//
+	// example:
+	//
+	// 顺丰
+	LogisticsCompanyName *string `json:"logisticsCompanyName,omitempty" xml:"logisticsCompanyName,omitempty"`
+	// A list of logistics details.
+	LogisticsDetailList []*LogisticsDetail `json:"logisticsDetailList,omitempty" xml:"logisticsDetailList,omitempty" type:"Repeated"`
+	// The tracking number.
+	//
+	// > For an e-ticket, the tracking number is a fixed value: \\*
+	//
 	// example:
 	//
 	// SF234***2345

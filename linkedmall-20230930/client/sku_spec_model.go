@@ -22,16 +22,32 @@ type iSkuSpec interface {
 }
 
 type SkuSpec struct {
+	// Specification key
+	//
+	// example:
+	//
+	// 颜色分类
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Specification ID
+	//
 	// example:
 	//
 	// 1000
-	KeyId *int64  `json:"keyId,omitempty" xml:"keyId,omitempty"`
+	KeyId *int64 `json:"keyId,omitempty" xml:"keyId,omitempty"`
+	// Specification value
+	//
+	// example:
+	//
+	// 天蓝色
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// Specification value alias (Recommendation: If this field is not empty (null), use its value as the frontend display specification; if this field is empty (null), use the value field as the frontend display specification.)
+	//
 	// example:
 	//
 	// 秘色
 	ValueAlias *string `json:"valueAlias,omitempty" xml:"valueAlias,omitempty"`
+	// Specification value ID
+	//
 	// example:
 	//
 	// 1000

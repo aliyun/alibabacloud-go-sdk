@@ -34,29 +34,52 @@ type iOrderProductResult interface {
 }
 
 type OrderProductResult struct {
+	// Indicates whether the product is available for sale
+	//
 	// example:
 	//
 	// true
-	CanSell  *bool                  `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	// Additional product information
 	Features map[string]interface{} `json:"features,omitempty" xml:"features,omitempty"`
-	Message  *string                `json:"message,omitempty" xml:"message,omitempty"`
+	// Reason for unavailability
+	//
+	// example:
+	//
+	// 库存为0
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Product price (unit: cent)
+	//
 	// example:
 	//
 	// 100
 	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// Product ID
+	//
 	// example:
 	//
 	// 6600****6736
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product image link
+	//
 	// example:
 	//
 	// //img.alicdn.com/imgextra/i4/2216003305543/O1CN01bip3Un1qokG0
 	ProductPicUrl *string `json:"productPicUrl,omitempty" xml:"productPicUrl,omitempty"`
-	ProductTitle  *string `json:"productTitle,omitempty" xml:"productTitle,omitempty"`
+	// Product title
+	//
 	// example:
 	//
-	// 56****2304
+	// 儿童学习桌
+	ProductTitle *string `json:"productTitle,omitempty" xml:"productTitle,omitempty"`
+	// Purchaser ID
+	//
+	// example:
+	//
+	// PID56****2304
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// Quantity
+	//
 	// example:
 	//
 	// 1
@@ -66,7 +89,12 @@ type OrderProductResult struct {
 	// example:
 	//
 	// 6600****6737
-	SkuId    *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	// SKU title
+	//
+	// example:
+	//
+	// 浅绿色
 	SkuTitle *string `json:"skuTitle,omitempty" xml:"skuTitle,omitempty"`
 }
 

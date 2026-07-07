@@ -36,46 +36,73 @@ type iOrderLineResult interface {
 }
 
 type OrderLineResult struct {
+	// A list of electronic vouchers.
 	EticketInfos []*EticketInfo `json:"eticketInfos,omitempty" xml:"eticketInfos,omitempty" type:"Repeated"`
+	// The logistics status of the order line.
+	//
 	// example:
 	//
 	// 1
 	LogisticsStatus *string `json:"logisticsStatus,omitempty" xml:"logisticsStatus,omitempty"`
+	// The number of items.
+	//
 	// example:
 	//
 	// 1
 	Number *string `json:"number,omitempty" xml:"number,omitempty"`
+	// The unique ID of the main order.
+	//
 	// example:
 	//
 	// 6692****5457
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// The unique ID of the order line.
+	//
 	// example:
 	//
 	// 6692****5458
 	OrderLineId *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
+	// The status of the order line.
+	//
 	// example:
 	//
 	// 1
 	OrderLineStatus *string `json:"orderLineStatus,omitempty" xml:"orderLineStatus,omitempty"`
+	// The payable amount for the order line.
+	//
 	// example:
 	//
 	// 100
 	PayFee *int64 `json:"payFee,omitempty" xml:"payFee,omitempty"`
+	// The unique ID of the product.
+	//
 	// example:
 	//
 	// 6600****6736
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// The URL of the product image.
+	//
 	// example:
 	//
 	// //img.alicdn.com/imgextra/i4/2216003305543/O1CN01bip3Un1qokG0
-	ProductPic   *string `json:"productPic,omitempty" xml:"productPic,omitempty"`
+	ProductPic *string `json:"productPic,omitempty" xml:"productPic,omitempty"`
+	// The product name.
+	//
+	// example:
+	//
+	// 儿童学习桌
 	ProductTitle *string `json:"productTitle,omitempty" xml:"productTitle,omitempty"`
-	// skuId
+	// The unique ID of the SKU.
 	//
 	// example:
 	//
 	// 6600****6737
-	SkuId    *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	// The SKU name.
+	//
+	// example:
+	//
+	// 浅绿色
 	SkuTitle *string `json:"skuTitle,omitempty" xml:"skuTitle,omitempty"`
 }
 

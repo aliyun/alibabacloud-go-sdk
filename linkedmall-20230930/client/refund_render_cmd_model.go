@@ -18,18 +18,24 @@ type iRefundRenderCmd interface {
 }
 
 type RefundRenderCmd struct {
+	// Refund Type: 1 for refund only, 3 for return and refund
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	BizClaimType *int32 `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
+	// Goods Status: 4 for not shipped, 1 for not received, 2 for received
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4
 	GoodsStatus *int32 `json:"goodsStatus,omitempty" xml:"goodsStatus,omitempty"`
+	// Sub-distribution order ID
+	//
 	// This parameter is required.
 	//
 	// example:

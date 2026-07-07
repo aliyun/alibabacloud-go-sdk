@@ -22,22 +22,40 @@ type iLimitRule interface {
 }
 
 type LimitRule struct {
+	// Start time of validity
+	//
+	// > UNIX timestamp in milliseconds
+	//
 	// example:
 	//
 	// 1724947200000
 	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	// Period condition
+	//
+	// > This field applies only when ruleType is UpperNumberPerUserPeriod.
+	//
 	// example:
 	//
 	// day
 	Condcase *string `json:"condcase,omitempty" xml:"condcase,omitempty"`
+	// End time of validity
+	//
+	// > UNIX timestamp in milliseconds
+	//
 	// example:
 	//
 	// 1724947200000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// Purchase limit quantity
+	//
+	// > If multiple purchase limit rules are active at the same time, the final limit is the minimum value.
+	//
 	// example:
 	//
 	// 1
 	LimitNum *int32 `json:"limitNum,omitempty" xml:"limitNum,omitempty"`
+	// Purchase limit type
+	//
 	// example:
 	//
 	// UpperNumberPerUser

@@ -14,6 +14,8 @@ type iRenderPurchaseOrderRequest interface {
 }
 
 type RenderPurchaseOrderRequest struct {
+	// Render purchase order
+	//
 	// This parameter is required.
 	Body *PurchaseOrderRenderQuery `json:"body,omitempty" xml:"body,omitempty"`
 }

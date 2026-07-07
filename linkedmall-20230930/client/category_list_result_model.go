@@ -16,8 +16,10 @@ type iCategoryListResult interface {
 }
 
 type CategoryListResult struct {
+	// category collection
 	Categories []*Category `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
-	RequestId  *string     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// request ID
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CategoryListResult) String() string {

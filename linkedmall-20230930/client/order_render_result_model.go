@@ -22,14 +22,24 @@ type iOrderRenderResult interface {
 }
 
 type OrderRenderResult struct {
+	// Indicates whether the item can be sold.
+	//
 	// example:
 	//
 	// true
-	CanSell          *bool                  `json:"canSell,omitempty" xml:"canSell,omitempty"`
-	DeliveryInfoList []*DeliveryInfo        `json:"deliveryInfoList,omitempty" xml:"deliveryInfoList,omitempty" type:"Repeated"`
-	ExtInfo          map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	Message          *string                `json:"message,omitempty" xml:"message,omitempty"`
-	ProductList      []*OrderProductResult  `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`
+	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	// The fulfillment information.
+	DeliveryInfoList []*DeliveryInfo `json:"deliveryInfoList,omitempty" xml:"deliveryInfoList,omitempty" type:"Repeated"`
+	// The extension information.
+	ExtInfo map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	// The reason why the item is unavailable.
+	//
+	// example:
+	//
+	// 库存为0
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The list of products.
+	ProductList []*OrderProductResult `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`
 }
 
 func (s OrderRenderResult) String() string {

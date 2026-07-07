@@ -22,19 +22,32 @@ type iDivision interface {
 }
 
 type Division struct {
+	// Address encoding
+	//
 	// example:
 	//
 	// 310000
 	DivisionCode *int64 `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// Address Level
+	//
 	// example:
 	//
 	// 2
-	DivisionLevel *int64  `json:"divisionLevel,omitempty" xml:"divisionLevel,omitempty"`
-	DivisionName  *string `json:"divisionName,omitempty" xml:"divisionName,omitempty"`
+	DivisionLevel *int64 `json:"divisionLevel,omitempty" xml:"divisionLevel,omitempty"`
+	// Address Name
+	//
+	// example:
+	//
+	// 上海
+	DivisionName *string `json:"divisionName,omitempty" xml:"divisionName,omitempty"`
+	// Parent ID
+	//
 	// example:
 	//
 	// 1
 	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// Address pinyin
+	//
 	// example:
 	//
 	// shang hai

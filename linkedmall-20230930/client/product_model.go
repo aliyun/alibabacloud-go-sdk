@@ -66,87 +66,138 @@ type iProduct interface {
 }
 
 type Product struct {
+	// The brand name.
+	//
 	// example:
 	//
 	// Apple/苹果
 	BrandName *string `json:"brandName,omitempty" xml:"brandName,omitempty"`
+	// Indicates whether the product is available for sale. This is a calculated value.
+	//
 	// example:
 	//
 	// true
-	CanSell       *bool       `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	// The category chain.
 	CategoryChain []*Category `json:"categoryChain,omitempty" xml:"categoryChain,omitempty" type:"Repeated"`
+	// The leaf category ID.
+	//
 	// example:
 	//
-	// 201856501
+	// 201****501
 	CategoryLeafId *int64 `json:"categoryLeafId,omitempty" xml:"categoryLeafId,omitempty"`
+	// The product description URL.
+	//
 	// example:
 	//
-	// https://img.alicdn.com/descpath/O1CN01wciRDp22AEU14435dsf34
+	// https://img.alicdn.com/descpath/O1CN01wciRDp22AEU1*******f34
 	DescPath *string `json:"descPath,omitempty" xml:"descPath,omitempty"`
+	// The region code.
+	//
 	// example:
 	//
 	// 110000
-	DivisionCode     *string                  `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// The product\\"s extended properties.
 	ExtendProperties []*ProductExtendProperty `json:"extendProperties,omitempty" xml:"extendProperties,omitempty" type:"Repeated"`
+	// The stock status.
+	//
 	// example:
 	//
-	// 100+
+	// 有货
 	FuzzyQuantity *string `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
-	// images
-	Images     []*string    `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	InGroup    *bool        `json:"inGroup,omitempty" xml:"inGroup,omitempty"`
+	// The product images.
+	Images []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	// The warehousing status.
+	//
+	// example:
+	//
+	// True
+	InGroup *bool `json:"inGroup,omitempty" xml:"inGroup,omitempty"`
+	// The purchase limit rules.
 	LimitRules []*LimitRule `json:"limitRules,omitempty" xml:"limitRules,omitempty" type:"Repeated"`
+	// The LM product ID.
+	//
 	// example:
 	//
-	// 21000017-4580902812
+	// 2100****7-458****812
 	LmItemId *string `json:"lmItemId,omitempty" xml:"lmItemId,omitempty"`
+	// The main product image URL.
+	//
 	// example:
 	//
-	// https://img.alicdn.com/imgextra/i3/2214281521988/O1CN01w4vomR1QYYEx6nyr5_!!2214281521988.jpg
+	// https://img.alicdn.com/imgextra/i3/221*******988/O1CN01w4vomR1QYYEx6nyr5_!!221******988.jpg
 	PicUrl *string `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
+	// The product ID.
+	//
 	// example:
 	//
-	// 660460842235822080
+	// 660460842******080
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	// productSpecs
+	// The product specifications.
 	ProductSpecs []*ProductSpec `json:"productSpecs,omitempty" xml:"productSpecs,omitempty" type:"Repeated"`
+	// The product status.
+	//
 	// example:
 	//
 	// Online
 	ProductStatus *string `json:"productStatus,omitempty" xml:"productStatus,omitempty"`
+	// The product type.
+	//
 	// example:
 	//
 	// Normal
-	ProductType *string            `json:"productType,omitempty" xml:"productType,omitempty"`
-	Properties  []*ProductProperty `json:"properties,omitempty" xml:"properties,omitempty" type:"Repeated"`
+	ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
+	// The product attributes.
+	Properties []*ProductProperty `json:"properties,omitempty" xml:"properties,omitempty" type:"Repeated"`
+	// The inventory.
+	//
+	// > - This parameter is fixed at -1 and can be ignored.
+	//
 	// example:
 	//
 	// -1
 	Quantity *int64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 3239281273464326823
-	RequestId       *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 3239281273******823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The service promises.	Notice:  Suppliers maintain all service promises. If a supplier fails to update this information in a timely manner, the service promise labels for some products may be inaccurate. Distributors should display this information to their customers with caution.
 	ServicePromises []*string `json:"servicePromises,omitempty" xml:"servicePromises,omitempty" type:"Repeated"`
+	// The channel shop ID.
+	//
 	// example:
 	//
-	// 21000017
+	// 210*****7
 	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	// skus
+	// The product SKUs.
 	Skus []*Sku `json:"skus,omitempty" xml:"skus,omitempty" type:"Repeated"`
+	// The quantity sold.
+	//
 	// example:
 	//
 	// 100+
 	SoldQuantity *string `json:"soldQuantity,omitempty" xml:"soldQuantity,omitempty"`
+	// The tax code.
+	//
 	// example:
 	//
-	// 3040203000000000000
+	// 3040203000*******000
 	TaxCode *string `json:"taxCode,omitempty" xml:"taxCode,omitempty"`
+	// The tax rate.
+	//
 	// example:
 	//
 	// 600
-	TaxRate *int32  `json:"taxRate,omitempty" xml:"taxRate,omitempty"`
-	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+	TaxRate *int32 `json:"taxRate,omitempty" xml:"taxRate,omitempty"`
+	// The product title.
+	//
+	// example:
+	//
+	// 发财树
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s Product) String() string {

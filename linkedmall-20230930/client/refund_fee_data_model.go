@@ -16,10 +16,14 @@ type iRefundFeeData interface {
 }
 
 type RefundFeeData struct {
+	// Maximum amount (cents)
+	//
 	// example:
 	//
 	// 100
 	MaxRefundFee *int64 `json:"maxRefundFee,omitempty" xml:"maxRefundFee,omitempty"`
+	// Minimum amount (cents)
+	//
 	// example:
 	//
 	// 1

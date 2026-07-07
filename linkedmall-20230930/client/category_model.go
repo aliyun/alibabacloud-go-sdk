@@ -22,19 +22,32 @@ type iCategory interface {
 }
 
 type Category struct {
+	// The ID of the category.
+	//
 	// example:
 	//
 	// 201792301
 	CategoryId *int64 `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
+	// Indicates whether the category is a leaf category.
+	//
 	// example:
 	//
 	// false
 	IsLeaf *bool `json:"isLeaf,omitempty" xml:"isLeaf,omitempty"`
+	// The level of the category.
+	//
 	// example:
 	//
 	// 0
-	Level *int32  `json:"level,omitempty" xml:"level,omitempty"`
-	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	Level *int32 `json:"level,omitempty" xml:"level,omitempty"`
+	// The name of the category.
+	//
+	// example:
+	//
+	// 名称测试
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the parent category.
+	//
 	// example:
 	//
 	// 0

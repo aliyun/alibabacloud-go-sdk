@@ -14,6 +14,7 @@ type iSelectionGroupAddProductResponseBody interface {
 }
 
 type SelectionGroupAddProductResponseBody struct {
+	// List of product IDs successfully added
 	ProductIds []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
 }
 

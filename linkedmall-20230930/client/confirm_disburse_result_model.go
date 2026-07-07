@@ -16,10 +16,14 @@ type iConfirmDisburseResult interface {
 }
 
 type ConfirmDisburseResult struct {
+	// API Request requestId
+	//
 	// example:
 	//
-	// 3239281273464326823
+	// 841471F6-5D61-1331-8C38-2****B55
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Return Result of Confirm Delivery
+	//
 	// example:
 	//
 	// success

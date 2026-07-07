@@ -72,110 +72,212 @@ type iSearchProductsRequest interface {
 }
 
 type SearchProductsRequest struct {
-	BrandName   *string   `json:"brandName,omitempty" xml:"brandName,omitempty"`
+	// Brand name
+	//
+	// example:
+	//
+	// 绿植
+	BrandName *string `json:"brandName,omitempty" xml:"brandName,omitempty"`
+	// Collection of category IDs
 	CategoryIds []*string `json:"categoryIds,omitempty" xml:"categoryIds,omitempty" type:"Repeated"`
+	// Creation end time
+	//
 	// example:
 	//
 	// 2025-01-02 12:23:34
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	CreateEndTime *string `json:"createEndTime,omitempty" xml:"createEndTime,omitempty"`
+	// Creation start time
+	//
 	// example:
 	//
 	// 2025-01-02 12:23:34
 	//
 	// (yyyy-MM-dd HH:mm:ss)
-	CreateStartTime       *string `json:"createStartTime,omitempty" xml:"createStartTime,omitempty"`
-	DistributionHighPrice *int64  `json:"distributionHighPrice,omitempty" xml:"distributionHighPrice,omitempty"`
+	CreateStartTime *string `json:"createStartTime,omitempty" xml:"createStartTime,omitempty"`
+	// Upper limit of distribution purchase price
+	//
+	// example:
+	//
+	// 100（单位：分）
+	DistributionHighPrice *int64 `json:"distributionHighPrice,omitempty" xml:"distributionHighPrice,omitempty"`
+	// Upper limit of distribution premium rate
+	//
 	// example:
 	//
 	// 244（2.44%）
 	DistributionHighPriceRatio *int64 `json:"distributionHighPriceRatio,omitempty" xml:"distributionHighPriceRatio,omitempty"`
-	DistributionLowPrice       *int64 `json:"distributionLowPrice,omitempty" xml:"distributionLowPrice,omitempty"`
+	// Lower limit of distribution purchase price
+	//
+	// example:
+	//
+	// 100（单位：分）
+	DistributionLowPrice *int64 `json:"distributionLowPrice,omitempty" xml:"distributionLowPrice,omitempty"`
+	// Lower limit of distribution premium rate
+	//
 	// example:
 	//
 	// 133（1.33%）
 	DistributionLowPriceRatio *int64 `json:"distributionLowPriceRatio,omitempty" xml:"distributionLowPriceRatio,omitempty"`
-	HighMarkPrice             *int64 `json:"highMarkPrice,omitempty" xml:"highMarkPrice,omitempty"`
-	HighPrice                 *int64 `json:"highPrice,omitempty" xml:"highPrice,omitempty"`
+	// Upper limit of strikethrough price
+	//
+	// example:
+	//
+	// 100（单位：分）
+	HighMarkPrice *int64 `json:"highMarkPrice,omitempty" xml:"highMarkPrice,omitempty"`
+	// Upper limit of suggested retail price
+	//
+	// example:
+	//
+	// 100（单位：分）
+	HighPrice *int64 `json:"highPrice,omitempty" xml:"highPrice,omitempty"`
+	// Whether the product is in inventory
+	//
 	// example:
 	//
 	// true
 	InGroup *bool `json:"inGroup,omitempty" xml:"inGroup,omitempty"`
+	// End time of the product’s entry period.
+	//
 	// example:
 	//
 	// 2025-01-02 12:23:34
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	InGroupEndTime *string `json:"inGroupEndTime,omitempty" xml:"inGroupEndTime,omitempty"`
+	// Inventory start time
+	//
 	// example:
 	//
 	// 2025-01-02 12:23:34
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	InGroupStartTime *string `json:"inGroupStartTime,omitempty" xml:"inGroupStartTime,omitempty"`
+	// Inventory risk level
+	//
 	// example:
 	//
 	// Low
 	InventoryRiskLevel *string `json:"inventoryRiskLevel,omitempty" xml:"inventoryRiskLevel,omitempty"`
+	// LM product ID
+	//
 	// example:
 	//
 	// xxx-xxxxx
-	LmItemId     *string `json:"lmItemId,omitempty" xml:"lmItemId,omitempty"`
-	LowMarkPrice *int64  `json:"lowMarkPrice,omitempty" xml:"lowMarkPrice,omitempty"`
-	LowPrice     *int64  `json:"lowPrice,omitempty" xml:"lowPrice,omitempty"`
+	LmItemId *string `json:"lmItemId,omitempty" xml:"lmItemId,omitempty"`
+	// Lower limit of strikethrough price
+	//
+	// example:
+	//
+	// 100（单位：分）
+	LowMarkPrice *int64 `json:"lowMarkPrice,omitempty" xml:"lowMarkPrice,omitempty"`
+	// Lower limit of suggested retail price
+	//
+	// example:
+	//
+	// 100（单位：分）
+	LowPrice *int64 `json:"lowPrice,omitempty" xml:"lowPrice,omitempty"`
+	// Modification end time
+	//
 	// example:
 	//
 	// 2025-01-02 12:23:34
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	ModifyEndTime *string `json:"modifyEndTime,omitempty" xml:"modifyEndTime,omitempty"`
+	// Modification start time
+	//
 	// example:
 	//
 	// 2025-01-02 12:23:34
 	//
 	// (yyyy-MM-dd HH:mm:ss)
 	ModifyStartTime *string `json:"modifyStartTime,omitempty" xml:"modifyStartTime,omitempty"`
-	OrderBy         *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// Sort field
+	//
+	// > - Used in combination with the sort direction field
+	//
+	// example:
+	//
+	// soldQuantity（按销量排序，不填默认创建时间倒序)
+	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// Sort direction
+	//
+	// > - Used in combination with the sort field
+	//
 	// example:
 	//
 	// ASC
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
+	// Page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size
+	//
+	// > - Maximum of 20 items per page
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Source platform
+	//
 	// example:
 	//
-	// Taobao
+	// Taobao（来源淘宝）
+	//
+	// Tmall（来源天猫）
+	//
+	// Cbu（来源1688分销货盘）
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
+	// Product ID
+	//
 	// example:
 	//
 	// xxxxxxx
-	ProductId   *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product name
+	//
+	// example:
+	//
+	// 绿植
 	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	// Product status
+	//
 	// example:
 	//
 	// Sellable
 	ProductStatus *string `json:"productStatus,omitempty" xml:"productStatus,omitempty"`
+	// Purchaser ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PIDxxxx
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// Tax rate
+	//
+	// > - Supports combining multiple tax rate enumeration values as request parameters. Use commas to separate them, for example: Rate0,Rate1.
+	//
+	// >
+	//
+	// > - HasRate cannot be combined with other enumeration values as request parameters.
+	//
 	// example:
 	//
 	// Rate0
 	TaxRate *string `json:"taxRate,omitempty" xml:"taxRate,omitempty"`
+	// Sales pattern
+	//
 	// example:
 	//
 	// JingXiao

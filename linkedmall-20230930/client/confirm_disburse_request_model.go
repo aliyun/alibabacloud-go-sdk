@@ -14,6 +14,8 @@ type iConfirmDisburseRequest interface {
 }
 
 type ConfirmDisburseRequest struct {
+	// The request body for confirming the receipt of goods.
+	//
 	// This parameter is required.
 	Body *ConfirmDisburseCmd `json:"body,omitempty" xml:"body,omitempty"`
 }

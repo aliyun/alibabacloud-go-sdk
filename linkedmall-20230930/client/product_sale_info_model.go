@@ -36,42 +36,70 @@ type iProductSaleInfo interface {
 }
 
 type ProductSaleInfo struct {
+	// Is sellable, calculated value
+	//
 	// example:
 	//
 	// true
 	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	// Region code
+	//
 	// example:
 	//
-	// 110000
-	DivisionCode  *string      `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
-	FuzzyQuantity *string      `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
-	LimitRules    []*LimitRule `json:"limitRules,omitempty" xml:"limitRules,omitempty" type:"Repeated"`
+	// 330106109
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// Fuzzy inventory quantity.
+	//
+	// example:
+	//
+	// 有货
+	FuzzyQuantity *string `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
+	// Purchase limit configuration
+	LimitRules []*LimitRule `json:"limitRules,omitempty" xml:"limitRules,omitempty" type:"Repeated"`
+	// LM product ID
+	//
 	// example:
 	//
 	// 21000017-4580902812
 	LmItemId *string `json:"lmItemId,omitempty" xml:"lmItemId,omitempty"`
+	// Product ID
+	//
 	// example:
 	//
 	// 660460842235822080
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Product status
+	//
 	// example:
 	//
 	// Online
 	ProductStatus *string `json:"productStatus,omitempty" xml:"productStatus,omitempty"`
+	// Inventory
+	//
 	// example:
 	//
 	// 10
 	Quantity *int64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// API request ID
+	//
 	// example:
 	//
 	// 3239281273464326823
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Channel shop ID
+	//
 	// example:
 	//
 	// 21000017
-	ShopId *string        `json:"shopId,omitempty" xml:"shopId,omitempty"`
-	Skus   []*SkuSaleInfo `json:"skus,omitempty" xml:"skus,omitempty" type:"Repeated"`
-	Title  *string        `json:"title,omitempty" xml:"title,omitempty"`
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	// SKU collection
+	Skus []*SkuSaleInfo `json:"skus,omitempty" xml:"skus,omitempty" type:"Repeated"`
+	// Title
+	//
+	// example:
+	//
+	// 发财树
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ProductSaleInfo) String() string {

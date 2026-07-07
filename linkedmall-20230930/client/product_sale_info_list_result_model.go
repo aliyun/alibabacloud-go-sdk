@@ -16,7 +16,10 @@ type iProductSaleInfoListResult interface {
 }
 
 type ProductSaleInfoListResult struct {
+	// Product sales information
 	ProductSaleInfos []*ProductSaleInfo `json:"productSaleInfos,omitempty" xml:"productSaleInfos,omitempty" type:"Repeated"`
+	// The request ID of the API call
+	//
 	// example:
 	//
 	// 3239281273464326823

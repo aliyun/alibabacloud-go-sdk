@@ -18,10 +18,14 @@ type iSkuQueryParam interface {
 }
 
 type SkuQueryParam struct {
+	// Quantity
+	//
 	// example:
 	//
 	// 1
 	BuyAmount *int32 `json:"buyAmount,omitempty" xml:"buyAmount,omitempty"`
+	// Product ID
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,17 +22,36 @@ type iPurchaseOrderCreateCmd interface {
 }
 
 type PurchaseOrderCreateCmd struct {
+	// User ID in the distributor\\"s business, customized by the distributor.
+	//
+	// 	Notice:
+	//
+	// Allocate different buyer IDs for different buyers.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// buyer123456
 	BuyerId *string `json:"buyerId,omitempty" xml:"buyerId,omitempty"`
+	// Address information.
+	//
 	// This parameter is required.
-	DeliveryAddress *AddressInfo           `json:"deliveryAddress,omitempty" xml:"deliveryAddress,omitempty"`
-	ExtInfo         map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	DeliveryAddress *AddressInfo `json:"deliveryAddress,omitempty" xml:"deliveryAddress,omitempty"`
+	// Extension information.
+	ExtInfo map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	// Order ID in the distributor\\"s business, customized by the distributor.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// outer123456
 	OuterPurchaseOrderId *string `json:"outerPurchaseOrderId,omitempty" xml:"outerPurchaseOrderId,omitempty"`
+	// Product collection.
+	//
+	// > Maximum number of SKUs per purchase order: 20.
+	//
 	// This parameter is required.
 	ProductList []*ProductDTO `json:"productList,omitempty" xml:"productList,omitempty" type:"Repeated"`
 }

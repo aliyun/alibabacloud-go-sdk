@@ -56,67 +56,172 @@ type iRefundResult interface {
 }
 
 type RefundResult struct {
-	ApplyDisputeDesc *string      `json:"applyDisputeDesc,omitempty" xml:"applyDisputeDesc,omitempty"`
-	ApplyReason      *ApplyReason `json:"applyReason,omitempty" xml:"applyReason,omitempty"`
+	// Current buyer\\"s refund request description
+	//
+	// example:
+	//
+	// 多拍不想要
+	ApplyDisputeDesc *string `json:"applyDisputeDesc,omitempty" xml:"applyDisputeDesc,omitempty"`
+	// Request reason
+	ApplyReason *ApplyReason `json:"applyReason,omitempty" xml:"applyReason,omitempty"`
+	// Order return method
+	//
+	// 1 – identity indicates refund only
+	//
+	// 3 – identity indicates return and refund
+	//
 	// example:
 	//
 	// 1
 	BizClaimType *int32 `json:"bizClaimType,omitempty" xml:"bizClaimType,omitempty"`
+	// Dispute creation time
+	//
 	// example:
 	//
-	// 2023-09-02T00:00:00.000Z
+	// 2023-09-15T19:23:59.000+08:00
 	DisputeCreateTime *string `json:"disputeCreateTime,omitempty" xml:"disputeCreateTime,omitempty"`
-	DisputeDesc       *string `json:"disputeDesc,omitempty" xml:"disputeDesc,omitempty"`
+	// Reverse request description
+	//
 	// example:
 	//
-	// 2023-09-02T12:00:00.000Z
+	// 多拍不想要
+	DisputeDesc *string `json:"disputeDesc,omitempty" xml:"disputeDesc,omitempty"`
+	// Reverse process end time
+	//
+	// example:
+	//
+	// 2023-09-15T19:23:59.000+08:00
 	DisputeEndTime *string `json:"disputeEndTime,omitempty" xml:"disputeEndTime,omitempty"`
+	// Reverse order ID
+	//
 	// example:
 	//
 	// 6693****4352
 	DisputeId *string `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
+	// Reverse order status
+	//
+	// 1 – Return pending
+	//
+	// 2 – Awaiting buyer return
+	//
+	// 3 – Awaiting merchant receipt
+	//
+	// 4 – Refund shutdown
+	//
+	// 5 – Refund succeeded
+	//
+	// 6 – Refund denied
+	//
+	// 17 – Canceling refund
+	//
 	// example:
 	//
 	// 1
 	DisputeStatus *int32 `json:"disputeStatus,omitempty" xml:"disputeStatus,omitempty"`
+	// Main order ID
+	//
 	// example:
 	//
 	// 6692****5457
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// Sub-order ID
+	//
 	// example:
 	//
 	// 6692****5458
 	OrderLineId *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
+	// Order logistics status
+	//
+	// 1 – Not shipped → Awaiting seller shipment
+	//
+	// 2 – Shipped → Awaiting buyer confirmation of receipt
+	//
+	// 3 – Received → Transaction succeeded
+	//
+	// 6 – Partially shipping
+	//
+	// 8 – Logistics order not yet created
+	//
 	// example:
 	//
 	// 1
 	OrderLogisticsStatus *int32 `json:"orderLogisticsStatus,omitempty" xml:"orderLogisticsStatus,omitempty"`
+	// Refund amount
+	//
 	// example:
 	//
 	// 1
-	RefundFee       *int64         `json:"refundFee,omitempty" xml:"refundFee,omitempty"`
-	RefundFeeData   *RefundFeeData `json:"refundFeeData,omitempty" xml:"refundFeeData,omitempty"`
-	RefunderAddress *string        `json:"refunderAddress,omitempty" xml:"refunderAddress,omitempty"`
-	RefunderName    *string        `json:"refunderName,omitempty" xml:"refunderName,omitempty"`
+	RefundFee *int64 `json:"refundFee,omitempty" xml:"refundFee,omitempty"`
+	// Refund period
+	RefundFeeData *RefundFeeData `json:"refundFeeData,omitempty" xml:"refundFeeData,omitempty"`
+	// Merchant return address (available when disputeStatus=2, indicating the status is pending buyer return; save the return address during this status if needed)
+	//
+	// example:
+	//
+	// 阿里云云谷
+	RefunderAddress *string `json:"refunderAddress,omitempty" xml:"refunderAddress,omitempty"`
+	// Return recipient name
+	//
+	// example:
+	//
+	// 赵先生
+	RefunderName *string `json:"refunderName,omitempty" xml:"refunderName,omitempty"`
+	// Return contact information
+	//
 	// example:
 	//
 	// 182****1334
 	RefunderTel *string `json:"refunderTel,omitempty" xml:"refunderTel,omitempty"`
+	// Return address ZIP code
+	//
 	// example:
 	//
 	// 331001
 	RefunderZipCode *string `json:"refunderZipCode,omitempty" xml:"refunderZipCode,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 841471F6-5D61-1331-8C38-2****B55
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Return logistics status
+	//
+	// 0 – Return not initiated
+	//
+	// 1 – Awaiting pickup
+	//
+	// 2 – Package picked up
+	//
+	// 3 – In transit
+	//
+	// 4 – Out for delivery
+	//
+	// 5 – Delivered
+	//
+	// 6 – Delivery failed
+	//
 	// example:
 	//
 	// 0
-	ReturnGoodLogisticsStatus    *int32  `json:"returnGoodLogisticsStatus,omitempty" xml:"returnGoodLogisticsStatus,omitempty"`
-	SellerAgreeMsg               *string `json:"sellerAgreeMsg,omitempty" xml:"sellerAgreeMsg,omitempty"`
+	ReturnGoodLogisticsStatus *int32 `json:"returnGoodLogisticsStatus,omitempty" xml:"returnGoodLogisticsStatus,omitempty"`
+	// Seller’s return approval message
+	//
+	// example:
+	//
+	// 同意退款
+	SellerAgreeMsg *string `json:"sellerAgreeMsg,omitempty" xml:"sellerAgreeMsg,omitempty"`
+	// Merchant\\"s message explaining the denial
+	//
+	// example:
+	//
+	// 不同意退款
 	SellerRefuseAgreementMessage *string `json:"sellerRefuseAgreementMessage,omitempty" xml:"sellerRefuseAgreementMessage,omitempty"`
-	SellerRefuseReason           *string `json:"sellerRefuseReason,omitempty" xml:"sellerRefuseReason,omitempty"`
+	// Merchant denial reason
+	//
+	// example:
+	//
+	// 商品没问题，买家举证无效
+	SellerRefuseReason *string `json:"sellerRefuseReason,omitempty" xml:"sellerRefuseReason,omitempty"`
 }
 
 func (s RefundResult) String() string {

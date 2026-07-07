@@ -16,10 +16,14 @@ type iListPurchaserShopsRequest interface {
 }
 
 type ListPurchaserShopsRequest struct {
+	// Page number of the request.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 10

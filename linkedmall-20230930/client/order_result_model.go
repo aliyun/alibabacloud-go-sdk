@@ -30,38 +30,55 @@ type iOrderResult interface {
 }
 
 type OrderResult struct {
+	// The order creation time.
+	//
 	// example:
 	//
-	// 2023-09-01T12:00:00.000Z
+	// 2023-09-11T12:22:24.000+08:00
 	CreateDate *string `json:"createDate,omitempty" xml:"createDate,omitempty"`
+	// The distributor ID.
+	//
 	// example:
 	//
 	// 12****01
 	DistributorId *string `json:"distributorId,omitempty" xml:"distributorId,omitempty"`
+	// The logistics status. Valid values: 1 (Awaiting Seller\\"s Shipment), 2 (Awaiting Buyer\\"s Confirmation), 3 (Received), 4 (Returned), 5 (Partially Received), 6 (Partially Shipped), and 8 (Logistics Order Not Created).
+	//
 	// example:
 	//
 	// 1
 	LogisticsStatus *string `json:"logisticsStatus,omitempty" xml:"logisticsStatus,omitempty"`
+	// The order amount, in cents.
+	//
 	// example:
 	//
 	// 100
 	OrderAmount *int64 `json:"orderAmount,omitempty" xml:"orderAmount,omitempty"`
+	// The reason the order was closed.
+	//
 	// example:
 	//
 	// 系统关单
 	OrderClosedReason *string `json:"orderClosedReason,omitempty" xml:"orderClosedReason,omitempty"`
+	// The ID of the main order.
+	//
 	// example:
 	//
 	// 6692****5457
-	OrderId       *string            `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// The list of sub-orders.
 	OrderLineList []*OrderLineResult `json:"orderLineList,omitempty" xml:"orderLineList,omitempty" type:"Repeated"`
+	// The order status. Valid values: 1 (Pending Payment), 2 (Paid), 4 (Closed with Refund), 6 (Transaction Successful), and 8 (Closed).
+	//
 	// example:
 	//
 	// 1
 	OrderStatus *string `json:"orderStatus,omitempty" xml:"orderStatus,omitempty"`
+	// The unique identifier for the request.
+	//
 	// example:
 	//
-	// D12***111
+	// 841471F6-5D61-1331-8C38-2****B55
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

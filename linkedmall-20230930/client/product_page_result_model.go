@@ -22,23 +22,32 @@ type iProductPageResult interface {
 }
 
 type ProductPageResult struct {
+	// Current page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32     `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Collection of products
 	Products []*Product `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	// Request ID for the API call
+	//
 	// example:
 	//
 	// 3239281273464326823
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Total count
+	//
 	// This parameter is required.
 	//
 	// example:

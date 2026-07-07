@@ -14,6 +14,8 @@ type iProductPrice interface {
 }
 
 type ProductPrice struct {
+	// Amount payable
+	//
 	// example:
 	//
 	// 120

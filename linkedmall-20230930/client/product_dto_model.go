@@ -22,22 +22,30 @@ type iProductDTO interface {
 }
 
 type ProductDTO struct {
+	// Product price (unit: cent)	Notice: It is recommended to include this field.</notice>
+	//
 	// example:
 	//
 	// 100
 	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// Product ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6600****6736
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Purchaser ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 56****2304
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// Quantity
+	//
 	// This parameter is required.
 	//
 	// example:

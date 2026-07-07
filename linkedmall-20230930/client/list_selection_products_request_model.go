@@ -18,23 +18,29 @@ type iListSelectionProductsRequest interface {
 }
 
 type ListSelectionProductsRequest struct {
+	// The page number. The value must be 1 or greater.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 20.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The ID of the purchaser.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 56****2304
+	// PID22000009
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
 }
 

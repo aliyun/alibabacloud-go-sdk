@@ -26,18 +26,31 @@ type iPurchaseOrderRenderResult interface {
 }
 
 type PurchaseOrderRenderResult struct {
+	// A collection of addresses.
 	AddressList []*AddressInfo `json:"addressList,omitempty" xml:"addressList,omitempty" type:"Repeated"`
+	// Indicates whether the item can be sold.
+	//
 	// example:
 	//
 	// true
-	CanSell   *bool                  `json:"canSell,omitempty" xml:"canSell,omitempty"`
-	ExtInfo   map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	Message   *string                `json:"message,omitempty" xml:"message,omitempty"`
-	OrderList []*OrderRenderResult   `json:"orderList,omitempty" xml:"orderList,omitempty" type:"Repeated"`
+	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	// Extended information.
+	ExtInfo map[string]interface{} `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	// The reason why the item cannot be sold.
+	//
 	// example:
 	//
-	// 3239281273464326823
-	RequestId           *string              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 库存为0
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// A collection of sellable main orders.
+	OrderList []*OrderRenderResult `json:"orderList,omitempty" xml:"orderList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 841471F6-5D61-1331-8C38-2****B55
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// A collection of unsellable main orders.
 	UnsellableOrderList []*OrderRenderResult `json:"unsellableOrderList,omitempty" xml:"unsellableOrderList,omitempty" type:"Repeated"`
 }
 

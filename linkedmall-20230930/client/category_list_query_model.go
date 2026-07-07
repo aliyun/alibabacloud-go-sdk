@@ -16,7 +16,10 @@ type iCategoryListQuery interface {
 }
 
 type CategoryListQuery struct {
+	// Collection of category IDs
 	CategoryIds []*int64 `json:"categoryIds,omitempty" xml:"categoryIds,omitempty" type:"Repeated"`
+	// Parent category ID
+	//
 	// example:
 	//
 	// 5200001

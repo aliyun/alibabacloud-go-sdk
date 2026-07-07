@@ -16,11 +16,18 @@ type iApplyReason interface {
 }
 
 type ApplyReason struct {
+	// The reason ID.
+	//
 	// example:
 	//
 	// 403769
-	ReasonTextId *int64  `json:"reasonTextId,omitempty" xml:"reasonTextId,omitempty"`
-	ReasonTips   *string `json:"reasonTips,omitempty" xml:"reasonTips,omitempty"`
+	ReasonTextId *int64 `json:"reasonTextId,omitempty" xml:"reasonTextId,omitempty"`
+	// The reason text.
+	//
+	// example:
+	//
+	// 不想要了
+	ReasonTips *string `json:"reasonTips,omitempty" xml:"reasonTips,omitempty"`
 }
 
 func (s ApplyReason) String() string {

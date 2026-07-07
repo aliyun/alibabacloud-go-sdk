@@ -20,15 +20,26 @@ type iRefundReason interface {
 }
 
 type RefundReason struct {
+	// Is upload credential required
+	//
 	// example:
 	//
 	// true
 	ProofRequired *bool `json:"proofRequired,omitempty" xml:"proofRequired,omitempty"`
+	// Reason text ID
+	//
 	// example:
 	//
 	// 47683
 	ReasonTextId *string `json:"reasonTextId,omitempty" xml:"reasonTextId,omitempty"`
-	ReasonTips   *string `json:"reasonTips,omitempty" xml:"reasonTips,omitempty"`
+	// Reason text
+	//
+	// example:
+	//
+	// 不想要了
+	ReasonTips *string `json:"reasonTips,omitempty" xml:"reasonTips,omitempty"`
+	// Is a message required
+	//
 	// example:
 	//
 	// true

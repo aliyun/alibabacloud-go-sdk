@@ -16,10 +16,13 @@ type iSkuSaleInfoListResult interface {
 }
 
 type SkuSaleInfoListResult struct {
+	// Request ID of the API call
+	//
 	// example:
 	//
 	// 3239281273464326823
-	RequestId    *string        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Collection of SKU inventory records
 	SkuSaleInfos []*SkuSaleInfo `json:"skuSaleInfos,omitempty" xml:"skuSaleInfos,omitempty" type:"Repeated"`
 }
 

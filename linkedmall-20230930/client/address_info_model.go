@@ -24,27 +24,47 @@ type iAddressInfo interface {
 }
 
 type AddressInfo struct {
+	// The detailed shipping address. Enter the full address in the format of province, city, district/county, street, and community.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 陕西省西安市新城区xx街道xxx大厦xx室
 	AddressDetail *string `json:"addressDetail,omitempty" xml:"addressDetail,omitempty"`
+	// The address ID.
+	//
 	// example:
 	//
 	// 0
 	AddressId *int64 `json:"addressId,omitempty" xml:"addressId,omitempty"`
+	// The level-4 address code for the district or county. This parameter is recommended.
+	//
 	// example:
 	//
-	// 610102
+	// 330106
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// The recipient.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 任先生
 	Receiver *string `json:"receiver,omitempty" xml:"receiver,omitempty"`
+	// The phone number of the recipient.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 182***5674
 	ReceiverPhone *string `json:"receiverPhone,omitempty" xml:"receiverPhone,omitempty"`
+	// The level-5 address code for the town or street. This parameter is required.
+	//
 	// example:
 	//
-	// 61010212
+	// 330106109
 	TownDivisionCode *string `json:"townDivisionCode,omitempty" xml:"townDivisionCode,omitempty"`
 }
 

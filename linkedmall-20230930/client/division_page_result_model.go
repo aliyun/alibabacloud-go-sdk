@@ -16,10 +16,13 @@ type iDivisionPageResult interface {
 }
 
 type DivisionPageResult struct {
+	// Collection of regions
 	DivisionList []*Division `json:"divisionList,omitempty" xml:"divisionList,omitempty" type:"Repeated"`
+	// API request ID
+	//
 	// example:
 	//
-	// 3239281273464326823
+	// 841471F6-5D61-1331-8C38-2****B55
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

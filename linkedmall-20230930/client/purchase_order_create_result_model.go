@@ -16,13 +16,17 @@ type iPurchaseOrderCreateResult interface {
 }
 
 type PurchaseOrderCreateResult struct {
+	// Purchase Order ID
+	//
 	// example:
 	//
 	// 6692****5696
 	PurchaseOrderId *string `json:"purchaseOrderId,omitempty" xml:"purchaseOrderId,omitempty"`
+	// API Request requestId
+	//
 	// example:
 	//
-	// 3239281273464326823
+	// 841471F6-5D61-1331-8C38-2****B55
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

@@ -114,7 +114,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 取消逆向单
+// Cancels a refund order.
+//
+// Description:
+//
+// Cancel a refund order.
 //
 // @param headers - map
 //
@@ -147,7 +151,11 @@ func (client *Client) CancelRefundOrderWithOptions(disputeId *string, headers ma
 
 // Summary:
 //
-// 取消逆向单
+// Cancels a refund order.
+//
+// Description:
+//
+// Cancel a refund order.
 //
 // @return CancelRefundOrderResponse
 func (client *Client) CancelRefundOrder(disputeId *string) (_result *CancelRefundOrderResponse, _err error) {
@@ -164,7 +172,11 @@ func (client *Client) CancelRefundOrder(disputeId *string) (_result *CancelRefun
 
 // Summary:
 //
-// 确认收货（订单）
+// Confirms the receipt of goods.
+//
+// Description:
+//
+// Confirms the receipt of goods.
 //
 // @param request - ConfirmDisburseRequest
 //
@@ -206,7 +218,11 @@ func (client *Client) ConfirmDisburseWithOptions(request *ConfirmDisburseRequest
 
 // Summary:
 //
-// 确认收货（订单）
+// Confirms the receipt of goods.
+//
+// Description:
+//
+// Confirms the receipt of goods.
 //
 // @param request - ConfirmDisburseRequest
 //
@@ -225,7 +241,11 @@ func (client *Client) ConfirmDisburse(request *ConfirmDisburseRequest) (_result 
 
 // Summary:
 //
-// 提交运单信息
+// Backfill shipping notice information.
+//
+// Description:
+//
+// Backfill shipping notice information.
 //
 // @param request - CreateGoodsShippingNoticeRequest
 //
@@ -267,7 +287,11 @@ func (client *Client) CreateGoodsShippingNoticeWithOptions(request *CreateGoodsS
 
 // Summary:
 //
-// 提交运单信息
+// Backfill shipping notice information.
+//
+// Description:
+//
+// Backfill shipping notice information.
 //
 // @param request - CreateGoodsShippingNoticeRequest
 //
@@ -286,7 +310,15 @@ func (client *Client) CreateGoodsShippingNotice(request *CreateGoodsShippingNoti
 
 // Summary:
 //
-// 创建采购单
+// Creates a purchase order and returns the purchase order ID. The specific result of order creation is communicated through messages. After the order is created, you can query the order details associated with the purchase order using the order API.
+//
+// Description:
+//
+// Creates a purchase order and returns the purchase order ID. Messages communicate the specific result of order creation. After the order is created, you can query the order details associated with the purchase order using the order API.
+//
+//	Warning: Note: Purchase order creation is an asynchronous task. If a distributor calls this API and receives an abnormal status (such as error code 503), do not immediately process customer refunds. Distributors must wait for and consume the PurchaseOrderCreate message (the purchase order creation result message) to determine the order status—for example, by consuming the order status synchronization message—before proceeding with business logic. This prevents financial losses.
+//
+//	Notice: Note: If you do not receive the PurchaseOrderCreate message (the purchase order creation result message) after calling the purchase order creation API, submit a ticket to the technical support team to inquire about the cause.
 //
 // @param request - CreatePurchaseOrderRequest
 //
@@ -328,7 +360,15 @@ func (client *Client) CreatePurchaseOrderWithOptions(request *CreatePurchaseOrde
 
 // Summary:
 //
-// 创建采购单
+// Creates a purchase order and returns the purchase order ID. The specific result of order creation is communicated through messages. After the order is created, you can query the order details associated with the purchase order using the order API.
+//
+// Description:
+//
+// Creates a purchase order and returns the purchase order ID. Messages communicate the specific result of order creation. After the order is created, you can query the order details associated with the purchase order using the order API.
+//
+//	Warning: Note: Purchase order creation is an asynchronous task. If a distributor calls this API and receives an abnormal status (such as error code 503), do not immediately process customer refunds. Distributors must wait for and consume the PurchaseOrderCreate message (the purchase order creation result message) to determine the order status—for example, by consuming the order status synchronization message—before proceeding with business logic. This prevents financial losses.
+//
+//	Notice: Note: If you do not receive the PurchaseOrderCreate message (the purchase order creation result message) after calling the purchase order creation API, submit a ticket to the technical support team to inquire about the cause.
 //
 // @param request - CreatePurchaseOrderRequest
 //
@@ -347,7 +387,11 @@ func (client *Client) CreatePurchaseOrder(request *CreatePurchaseOrderRequest) (
 
 // Summary:
 //
-// 创建逆向单
+// Create a support ticket.
+//
+// Description:
+//
+// Creates a refund order.
 //
 // @param request - CreateRefundOrderRequest
 //
@@ -389,7 +433,11 @@ func (client *Client) CreateRefundOrderWithOptions(request *CreateRefundOrderReq
 
 // Summary:
 //
-// 创建逆向单
+// Create a support ticket.
+//
+// Description:
+//
+// Creates a refund order.
 //
 // @param request - CreateRefundOrderRequest
 //
@@ -408,7 +456,7 @@ func (client *Client) CreateRefundOrder(request *CreateRefundOrderRequest) (_res
 
 // Summary:
 //
-// 查询主单详情
+// Queries the details of an order.
 //
 // @param headers - map
 //
@@ -441,7 +489,7 @@ func (client *Client) GetOrderWithOptions(orderId *string, headers map[string]*s
 
 // Summary:
 //
-// 查询主单详情
+// Queries the details of an order.
 //
 // @return GetOrderResponse
 func (client *Client) GetOrder(orderId *string) (_result *GetOrderResponse, _err error) {
@@ -458,7 +506,11 @@ func (client *Client) GetOrder(orderId *string) (_result *GetOrderResponse, _err
 
 // Summary:
 //
-// 查询采购单状态
+// Retrieve the purchase order status.
+//
+// Description:
+//
+// Retrieve the transaction order status.
 //
 // @param headers - map
 //
@@ -491,7 +543,11 @@ func (client *Client) GetPurchaseOrderStatusWithOptions(purchaseOrderId *string,
 
 // Summary:
 //
-// 查询采购单状态
+// Retrieve the purchase order status.
+//
+// Description:
+//
+// Retrieve the transaction order status.
 //
 // @return GetPurchaseOrderStatusResponse
 func (client *Client) GetPurchaseOrderStatus(purchaseOrderId *string) (_result *GetPurchaseOrderStatusResponse, _err error) {
@@ -508,7 +564,11 @@ func (client *Client) GetPurchaseOrderStatus(purchaseOrderId *string) (_result *
 
 // Summary:
 //
-// 查询分销商店铺
+// Retrieves the purchaser\\"s shop.
+//
+// Description:
+//
+// Retrieves the purchaser\\"s shop.
 //
 // @param headers - map
 //
@@ -541,7 +601,11 @@ func (client *Client) GetPurchaserShopWithOptions(purchaserId *string, headers m
 
 // Summary:
 //
-// 查询分销商店铺
+// Retrieves the purchaser\\"s shop.
+//
+// Description:
+//
+// Retrieves the purchaser\\"s shop.
 //
 // @return GetPurchaserShopResponse
 func (client *Client) GetPurchaserShop(purchaserId *string) (_result *GetPurchaserShopResponse, _err error) {
@@ -558,7 +622,11 @@ func (client *Client) GetPurchaserShop(purchaserId *string) (_result *GetPurchas
 
 // Summary:
 //
-// 查询逆向单详情
+// Retrieve details of an after-sales order.
+//
+// Description:
+//
+// # Retrieve after-sales order details
 //
 // @param headers - map
 //
@@ -591,7 +659,11 @@ func (client *Client) GetRefundOrderWithOptions(disputeId *string, headers map[s
 
 // Summary:
 //
-// 查询逆向单详情
+// Retrieve details of an after-sales order.
+//
+// Description:
+//
+// # Retrieve after-sales order details
 //
 // @return GetRefundOrderResponse
 func (client *Client) GetRefundOrder(disputeId *string) (_result *GetRefundOrderResponse, _err error) {
@@ -608,7 +680,11 @@ func (client *Client) GetRefundOrder(disputeId *string) (_result *GetRefundOrder
 
 // Summary:
 //
-// 查询选品池商品详情
+// Query the details of a product in the selection pool.
+//
+// Description:
+//
+// Retrieve product details from the selection pool using the product ID. You can also specify a region code to check regional inventory.
 //
 // @param request - GetSelectionProductRequest
 //
@@ -659,7 +735,11 @@ func (client *Client) GetSelectionProductWithOptions(productId *string, request 
 
 // Summary:
 //
-// 查询选品池商品详情
+// Query the details of a product in the selection pool.
+//
+// Description:
+//
+// Retrieve product details from the selection pool using the product ID. You can also specify a region code to check regional inventory.
 //
 // @param request - GetSelectionProductRequest
 //
@@ -678,7 +758,11 @@ func (client *Client) GetSelectionProduct(productId *string, request *GetSelecti
 
 // Summary:
 //
-// 查询选品池商品库存
+// Queries sales information for products in the selection pool.
+//
+// Description:
+//
+// Queries sales information for products in the selection pool. Distributors can call this operation to check product sales details, such as product status. Use the divisionCode input parameter to check whether a product is available for sale in a specific region. We recommend using a five-level administrative division code (township or subdistrict level).
 //
 // @param request - GetSelectionProductSaleInfoRequest
 //
@@ -729,7 +813,11 @@ func (client *Client) GetSelectionProductSaleInfoWithOptions(productId *string, 
 
 // Summary:
 //
-// 查询选品池商品库存
+// Queries sales information for products in the selection pool.
+//
+// Description:
+//
+// Queries sales information for products in the selection pool. Distributors can call this operation to check product sales details, such as product status. Use the divisionCode input parameter to check whether a product is available for sale in a specific region. We recommend using a five-level administrative division code (township or subdistrict level).
 //
 // @param request - GetSelectionProductSaleInfoRequest
 //
@@ -748,7 +836,13 @@ func (client *Client) GetSelectionProductSaleInfo(productId *string, request *Ge
 
 // Summary:
 //
-// 查询类目
+// Lists categories.
+//
+// Description:
+//
+// Retrieves all subcategories for a parent category ID, or the details for a specific category ID.
+//
+// If the parent category ID (parentCategoryId) is 0, the API returns the top-level categories under the root category.
 //
 // @param request - ListCategoriesRequest
 //
@@ -790,7 +884,13 @@ func (client *Client) ListCategoriesWithOptions(request *ListCategoriesRequest, 
 
 // Summary:
 //
-// 查询类目
+// Lists categories.
+//
+// Description:
+//
+// Retrieves all subcategories for a parent category ID, or the details for a specific category ID.
+//
+// If the parent category ID (parentCategoryId) is 0, the API returns the top-level categories under the root category.
 //
 // @param request - ListCategoriesRequest
 //
@@ -809,7 +909,11 @@ func (client *Client) ListCategories(request *ListCategoriesRequest) (_result *L
 
 // Summary:
 //
-// 查询物流信息（订单）
+// Query logistics information for an order.
+//
+// Description:
+//
+// Retrieves logistics information for an order.
 //
 // @param headers - map
 //
@@ -842,7 +946,11 @@ func (client *Client) ListLogisticsOrdersWithOptions(orderId *string, headers ma
 
 // Summary:
 //
-// 查询物流信息（订单）
+// Query logistics information for an order.
+//
+// Description:
+//
+// Retrieves logistics information for an order.
 //
 // @return ListLogisticsOrdersResponse
 func (client *Client) ListLogisticsOrders(orderId *string) (_result *ListLogisticsOrdersResponse, _err error) {
@@ -859,7 +967,11 @@ func (client *Client) ListLogisticsOrders(orderId *string) (_result *ListLogisti
 
 // Summary:
 //
-// 采购方店铺列表查询
+// Lists purchaser shops.
+//
+// Description:
+//
+// Lists purchaser shops.
 //
 // @param request - ListPurchaserShopsRequest
 //
@@ -910,7 +1022,11 @@ func (client *Client) ListPurchaserShopsWithOptions(request *ListPurchaserShopsR
 
 // Summary:
 //
-// 采购方店铺列表查询
+// Lists purchaser shops.
+//
+// Description:
+//
+// Lists purchaser shops.
 //
 // @param request - ListPurchaserShopsRequest
 //
@@ -929,7 +1045,11 @@ func (client *Client) ListPurchaserShops(request *ListPurchaserShopsRequest) (_r
 
 // Summary:
 //
-// 批量查询选品池商品库存
+// Query product sales information for the selection pool in batches.
+//
+// Description:
+//
+// You can query product sales information for the selection pool in batches. Distributors can call this operation to retrieve product sales details, such as product status. Use the divisionCode input parameter to check whether products are available for sale in a specific region. We recommend that you pass a five-level address code (town or street level).
 //
 // @param request - ListSelectionProductSaleInfosRequest
 //
@@ -971,7 +1091,11 @@ func (client *Client) ListSelectionProductSaleInfosWithOptions(request *ListSele
 
 // Summary:
 //
-// 批量查询选品池商品库存
+// Query product sales information for the selection pool in batches.
+//
+// Description:
+//
+// You can query product sales information for the selection pool in batches. Distributors can call this operation to retrieve product sales details, such as product status. Use the divisionCode input parameter to check whether products are available for sale in a specific region. We recommend that you pass a five-level address code (town or street level).
 //
 // @param request - ListSelectionProductSaleInfosRequest
 //
@@ -990,7 +1114,7 @@ func (client *Client) ListSelectionProductSaleInfos(request *ListSelectionProduc
 
 // Summary:
 //
-// 查询商品列表
+// Retrieves a list of products from a product selection pool.
 //
 // @param request - ListSelectionProductsRequest
 //
@@ -1045,7 +1169,7 @@ func (client *Client) ListSelectionProductsWithOptions(request *ListSelectionPro
 
 // Summary:
 //
-// 查询商品列表
+// Retrieves a list of products from a product selection pool.
 //
 // @param request - ListSelectionProductsRequest
 //
@@ -1064,7 +1188,11 @@ func (client *Client) ListSelectionProducts(request *ListSelectionProductsReques
 
 // Summary:
 //
-// 批量查询选品池商品SKU库存
+// Query SKU sales information for items in the selection pool in batch.
+//
+// Description:
+//
+// Query SKU sales information for items in the selection pool in batch. Distributors can call this API to retrieve batch details about SKU sales status and other attributes. To determine whether SKUs are sellable in a specific region, use the divisionCode parameter—preferably a five-level administrative division code for townships or subdistricts.
 //
 // @param request - ListSelectionSkuSaleInfosRequest
 //
@@ -1106,7 +1234,11 @@ func (client *Client) ListSelectionSkuSaleInfosWithOptions(request *ListSelectio
 
 // Summary:
 //
-// 批量查询选品池商品SKU库存
+// Query SKU sales information for items in the selection pool in batch.
+//
+// Description:
+//
+// Query SKU sales information for items in the selection pool in batch. Distributors can call this API to retrieve batch details about SKU sales status and other attributes. To determine whether SKUs are sellable in a specific region, use the divisionCode parameter—preferably a five-level administrative division code for townships or subdistricts.
 //
 // @param request - ListSelectionSkuSaleInfosRequest
 //
@@ -1125,7 +1257,11 @@ func (client *Client) ListSelectionSkuSaleInfos(request *ListSelectionSkuSaleInf
 
 // Summary:
 //
-// 查询地址divisionCode
+// Queries child division codes.
+//
+// Description:
+//
+// Queries child division codes.
 //
 // @param request - QueryChildDivisionCodeRequest
 //
@@ -1167,7 +1303,11 @@ func (client *Client) QueryChildDivisionCodeWithOptions(request *QueryChildDivis
 
 // Summary:
 //
-// 查询地址divisionCode
+// Queries child division codes.
+//
+// Description:
+//
+// Queries child division codes.
 //
 // @param request - QueryChildDivisionCodeRequest
 //
@@ -1186,7 +1326,11 @@ func (client *Client) QueryChildDivisionCode(request *QueryChildDivisionCodeRequ
 
 // Summary:
 //
-// 查询主单列表
+// Queries a list of orders.
+//
+// Description:
+//
+// Queries a list of orders.
 //
 // @param request - QueryOrdersRequest
 //
@@ -1228,7 +1372,11 @@ func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, header
 
 // Summary:
 //
-// 查询主单列表
+// Queries a list of orders.
+//
+// Description:
+//
+// Queries a list of orders.
 //
 // @param request - QueryOrdersRequest
 //
@@ -1247,7 +1395,13 @@ func (client *Client) QueryOrders(request *QueryOrdersRequest) (_result *QueryOr
 
 // Summary:
 //
-// 渲染采购单
+// Renders a purchase order and returns both sellable and unsellable products. Customers can then select the sellable products to place their orders.
+//
+// Description:
+//
+//	Warning:
+//
+// This API will be offline soon. For purchase order rendering, use the SplitPurchaseOrder API, which supports both purchase order rendering and splitting.
 //
 // @param request - RenderPurchaseOrderRequest
 //
@@ -1289,7 +1443,13 @@ func (client *Client) RenderPurchaseOrderWithOptions(request *RenderPurchaseOrde
 
 // Summary:
 //
-// 渲染采购单
+// Renders a purchase order and returns both sellable and unsellable products. Customers can then select the sellable products to place their orders.
+//
+// Description:
+//
+//	Warning:
+//
+// This API will be offline soon. For purchase order rendering, use the SplitPurchaseOrder API, which supports both purchase order rendering and splitting.
 //
 // @param request - RenderPurchaseOrderRequest
 //
@@ -1308,7 +1468,11 @@ func (client *Client) RenderPurchaseOrder(request *RenderPurchaseOrderRequest) (
 
 // Summary:
 //
-// 逆向单渲染
+// # Reverse Single Rendering
+//
+// Description:
+//
+// Renders a refund order.
 //
 // @param request - RenderRefundOrderRequest
 //
@@ -1350,7 +1514,11 @@ func (client *Client) RenderRefundOrderWithOptions(request *RenderRefundOrderReq
 
 // Summary:
 //
-// 逆向单渲染
+// # Reverse Single Rendering
+//
+// Description:
+//
+// Renders a refund order.
 //
 // @param request - RenderRefundOrderRequest
 //
@@ -1369,7 +1537,7 @@ func (client *Client) RenderRefundOrder(request *RenderRefundOrderRequest) (_res
 
 // Summary:
 //
-// 搜索商品
+// The product search API is a paginated interface for searching products based on various criteria.
 //
 // @param request - SearchProductsRequest
 //
@@ -1532,7 +1700,7 @@ func (client *Client) SearchProductsWithOptions(request *SearchProductsRequest, 
 
 // Summary:
 //
-// 搜索商品
+// The product search API is a paginated interface for searching products based on various criteria.
 //
 // @param request - SearchProductsRequest
 //
@@ -1551,7 +1719,13 @@ func (client *Client) SearchProducts(request *SearchProductsRequest) (_result *S
 
 // Summary:
 //
-// 入库操作
+// The distributor takes delivery of goods.
+//
+// Description:
+//
+// Distributors use this API to add products to their selection group.
+//
+// > We recommend that distributors who onboard on or after January 1, 2025 use this API. For more information about adding products and the related impact, see the [product best practices](https://help.aliyun.com/zh/linkedmall/user-guide/product-interface-best-practices?spm=a2c4g.11186623.help-menu-88587.d_2_2_0_8_0.58122056oN3crP\\&scm=20140722.H_2869668._.OR_help-T_cn~zh-V_1#lFENl).
 //
 // @param request - SelectionGroupAddProductRequest
 //
@@ -1602,7 +1776,13 @@ func (client *Client) SelectionGroupAddProductWithOptions(request *SelectionGrou
 
 // Summary:
 //
-// 入库操作
+// The distributor takes delivery of goods.
+//
+// Description:
+//
+// Distributors use this API to add products to their selection group.
+//
+// > We recommend that distributors who onboard on or after January 1, 2025 use this API. For more information about adding products and the related impact, see the [product best practices](https://help.aliyun.com/zh/linkedmall/user-guide/product-interface-best-practices?spm=a2c4g.11186623.help-menu-88587.d_2_2_0_8_0.58122056oN3crP\\&scm=20140722.H_2869668._.OR_help-T_cn~zh-V_1#lFENl).
 //
 // @param request - SelectionGroupAddProductRequest
 //
@@ -1621,7 +1801,11 @@ func (client *Client) SelectionGroupAddProduct(request *SelectionGroupAddProduct
 
 // Summary:
 //
-// 出库操作
+// Removes products from a distributor\\"s stock.
+//
+// Description:
+//
+// Distributors use this API to remove products from their stock.
 //
 // @param request - SelectionGroupRemoveProductRequest
 //
@@ -1672,7 +1856,11 @@ func (client *Client) SelectionGroupRemoveProductWithOptions(request *SelectionG
 
 // Summary:
 //
-// 出库操作
+// Removes products from a distributor\\"s stock.
+//
+// Description:
+//
+// Distributors use this API to remove products from their stock.
 //
 // @param request - SelectionGroupRemoveProductRequest
 //
@@ -1691,7 +1879,11 @@ func (client *Client) SelectionGroupRemoveProduct(request *SelectionGroupRemoveP
 
 // Summary:
 //
-// 渲染拆分采购单
+// Splits a purchase order and renders the resulting parent-child order structure. This API returns a list of items based on the final parent-child order structure. Distributors can use this response to render the final parent-child order layout, which simplifies receiving the purchase order creation success message and backfilling parent-child order information later.
+//
+// Description:
+//
+// Call this API before creating a purchase order. It returns two lists: one for sellable items and one for unsellable items. The sellable items list follows the final parent-child order split structure.
 //
 // @param request - SplitPurchaseOrderRequest
 //
@@ -1733,7 +1925,11 @@ func (client *Client) SplitPurchaseOrderWithOptions(request *SplitPurchaseOrderR
 
 // Summary:
 //
-// 渲染拆分采购单
+// Splits a purchase order and renders the resulting parent-child order structure. This API returns a list of items based on the final parent-child order structure. Distributors can use this response to render the final parent-child order layout, which simplifies receiving the purchase order creation success message and backfilling parent-child order information later.
+//
+// Description:
+//
+// Call this API before creating a purchase order. It returns two lists: one for sellable items and one for unsellable items. The sellable items list follows the final parent-child order split structure.
 //
 // @param request - SplitPurchaseOrderRequest
 //

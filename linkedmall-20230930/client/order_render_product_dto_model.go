@@ -20,18 +20,24 @@ type iOrderRenderProductDTO interface {
 }
 
 type OrderRenderProductDTO struct {
+	// Product ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6600****6736
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Purchaser ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 56****2304
+	// PID56****2304
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// Quantity
+	//
 	// This parameter is required.
 	//
 	// example:

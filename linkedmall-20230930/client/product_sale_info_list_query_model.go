@@ -18,12 +18,18 @@ type iProductSaleInfoListQuery interface {
 }
 
 type ProductSaleInfoListQuery struct {
+	// Area code (recommended to use a five-level township/street-level address code)
+	//
 	// example:
 	//
-	// 110000
+	// 330106109
 	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// Collection of product IDs to query, supporting batch queries of 1 to 10 items
+	//
 	// This parameter is required.
 	ProductIds []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
+	// Purchaser ID
+	//
 	// This parameter is required.
 	//
 	// example:

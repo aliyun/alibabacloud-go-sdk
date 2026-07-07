@@ -16,10 +16,13 @@ type iLogisticsOrderListResult interface {
 }
 
 type LogisticsOrderListResult struct {
+	// Collection of logistics orders
 	LogisticsOrderList []*LogisticsOrderResult `json:"logisticsOrderList,omitempty" xml:"logisticsOrderList,omitempty" type:"Repeated"`
+	// Request ID for the API call
+	//
 	// example:
 	//
-	// 3239281273464326823
+	// 841471F6-5D61-1331-8C38-2****B55
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

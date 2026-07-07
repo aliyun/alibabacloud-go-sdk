@@ -16,12 +16,16 @@ type iProductSaleInfoQuery interface {
 }
 
 type ProductSaleInfoQuery struct {
+	// Distributor shop ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 22000009
 	DistributorShopId *string `json:"distributorShopId,omitempty" xml:"distributorShopId,omitempty"`
+	// Area code
+	//
 	// example:
 	//
 	// 110000

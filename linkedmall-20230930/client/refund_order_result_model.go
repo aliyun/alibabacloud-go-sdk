@@ -20,21 +20,43 @@ type iRefundOrderResult interface {
 }
 
 type RefundOrderResult struct {
+	// Dispute ID
+	//
 	// example:
 	//
 	// 6693****4352
 	DisputeId *string `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
+	// Status of the reverse operation
+	//
+	// 1 – Return pending
+	//
+	// 2 – Awaiting buyer return
+	//
+	// 3 – Awaiting merchant receipt
+	//
+	// 4 – Refund closed
+	//
+	// 5 – Refund succeeded
+	//
+	// 6 – Refund denied
+	//
+	// 17 – Canceling refund
+	//
 	// example:
 	//
 	// 1
 	DisputeStatus *int32 `json:"disputeStatus,omitempty" xml:"disputeStatus,omitempty"`
+	// Sub-distribution order ID for which the reverse operation was initiated
+	//
 	// example:
 	//
 	// 6692****5458
 	OrderLineId *string `json:"orderLineId,omitempty" xml:"orderLineId,omitempty"`
+	// API request ID
+	//
 	// example:
 	//
-	// 3239281273464326823
+	// 841471F6-5D61-1331-8C38-2****B55
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

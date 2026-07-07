@@ -52,68 +52,114 @@ type iSku interface {
 }
 
 type Sku struct {
+	// 69 barcode
+	//
 	// example:
 	//
 	// 6922454329176
 	Barcode *string `json:"barcode,omitempty" xml:"barcode,omitempty"`
+	// Indicates whether the SKU is available for sale
+	//
 	// example:
 	//
 	// true
-	CanSell             *bool  `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	// Reserved field
 	DiscountRetailPrice *int64 `json:"discountRetailPrice,omitempty" xml:"discountRetailPrice,omitempty"`
+	// Region code
+	//
 	// example:
 	//
 	// 110000
-	DivisionCode  *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// Fuzzy inventory availability
+	//
+	// example:
+	//
+	// 有货
+	//
+	// 无货
+	//
+	// 库存紧张
 	FuzzyQuantity *string `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
+	// Strikethrough price, in cents
+	//
 	// example:
 	//
 	// 999900
 	MarkPrice *int64 `json:"markPrice,omitempty" xml:"markPrice,omitempty"`
+	// SKU image URL
+	//
 	// example:
 	//
 	// https:////img.alicdn.com/imgextra///img.alicdn.com/imgextra/i2/2216003305543/O1CN010DEQCX1qokFYGRfPE_!!2216003305543.png
 	PicUrl *string `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
+	// Suggested retail price, in cents
+	//
 	// example:
 	//
 	// 999900
 	PlatformPrice *int64 `json:"platformPrice,omitempty" xml:"platformPrice,omitempty"`
+	// Distributor purchase price, in cents
+	//
 	// example:
 	//
 	// 19800
 	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// Product ID
+	//
 	// example:
 	//
 	// 660460842235822080
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Available inventory. Note: This field is currently set to -1 for all SKUs and has no practical meaning.
+	//
 	// example:
 	//
 	// -1
 	Quantity *int64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// SKU sort order
+	//
 	// example:
 	//
 	// 3
 	RankValue *int64 `json:"rankValue,omitempty" xml:"rankValue,omitempty"`
+	// Shop ID
+	//
 	// example:
 	//
 	// 21000017
-	ShopId   *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	// SKU note
 	SkuAlias *string `json:"skuAlias,omitempty" xml:"skuAlias,omitempty"`
-	// skuId
+	// SKU ID
 	//
 	// example:
 	//
 	// 660460842235822081
 	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
-	// sku
-	SkuSpecs     []*SkuSpec `json:"skuSpecs,omitempty" xml:"skuSpecs,omitempty" type:"Repeated"`
-	SkuSpecsCode *string    `json:"skuSpecsCode,omitempty" xml:"skuSpecsCode,omitempty"`
+	// SKU specifications
+	SkuSpecs []*SkuSpec `json:"skuSpecs,omitempty" xml:"skuSpecs,omitempty" type:"Repeated"`
+	// SKU sales specification code. Used by the frontend to filter SKUs
+	//
+	// example:
+	//
+	// 颜色分类:天蓝色
+	SkuSpecsCode *string `json:"skuSpecsCode,omitempty" xml:"skuSpecsCode,omitempty"`
+	// SKU control status
+	//
 	// example:
 	//
 	// Online
-	SkuStatus            *string `json:"skuStatus,omitempty" xml:"skuStatus,omitempty"`
-	SuggestedRetailPrice *int64  `json:"suggestedRetailPrice,omitempty" xml:"suggestedRetailPrice,omitempty"`
-	Title                *string `json:"title,omitempty" xml:"title,omitempty"`
+	SkuStatus *string `json:"skuStatus,omitempty" xml:"skuStatus,omitempty"`
+	// Reserved field
+	SuggestedRetailPrice *int64 `json:"suggestedRetailPrice,omitempty" xml:"suggestedRetailPrice,omitempty"`
+	// SKU title. Note: We recommend that distributors build the customer-facing SKU title by concatenating the value or valueAlias field from the SkuSpec struct (use `valueAlias` if it is present). Do not use this field directly as the customer-facing SKU title.
+	//
+	// example:
+	//
+	// 天蓝色
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s Sku) String() string {

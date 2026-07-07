@@ -18,23 +18,29 @@ type iGoodsShippingNoticeCreateCmd interface {
 }
 
 type GoodsShippingNoticeCreateCmd struct {
+	// Company code
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SF
 	CpCode *string `json:"cpCode,omitempty" xml:"cpCode,omitempty"`
+	// Dispute ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6693****4352
 	DisputeId *string `json:"disputeId,omitempty" xml:"disputeId,omitempty"`
+	// Logistics tracking number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// SF145****4351
+	// SF145****4353
 	LogisticsNo *string `json:"logisticsNo,omitempty" xml:"logisticsNo,omitempty"`
 }
 

@@ -20,19 +20,26 @@ type iOrderPageQuery interface {
 }
 
 type OrderPageQuery struct {
+	// Collection of primary order IDs
 	OrderIdList []*string `json:"orderIdList,omitempty" xml:"orderIdList,omitempty" type:"Repeated"`
+	// Page number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Quantity per page
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Purchase order ID
+	//
 	// example:
 	//
 	// 6692****5696

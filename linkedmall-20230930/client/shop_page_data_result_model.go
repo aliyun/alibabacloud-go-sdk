@@ -28,31 +28,50 @@ type iShopPageDataResult interface {
 }
 
 type ShopPageDataResult struct {
+	// Partner shops
+	//
 	// example:
 	//
 	// 12****01
 	CooperationShops []*CooperationShop `json:"cooperationShops,omitempty" xml:"cooperationShops,omitempty" type:"Repeated"`
+	// End time
+	//
 	// example:
 	//
-	// 2023-09-01 00:00:00
+	// 2023-09-11T12:22:24.000+08:00
 	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// Purchaser ID
+	//
 	// example:
 	//
-	// 56****2304
+	// PID56****2304
 	PurchaserId *string `json:"purchaserId,omitempty" xml:"purchaserId,omitempty"`
+	// Shop ID
+	//
 	// example:
 	//
 	// 22****09
-	ShopId   *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	// Shop name
+	//
+	// example:
+	//
+	// 儿童座椅分销店铺
 	ShopName *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
+	// Shop type
+	//
 	// example:
 	//
-	// Distribution
+	// DistributorQYG
 	ShopType *string `json:"shopType,omitempty" xml:"shopType,omitempty"`
+	// Start time
+	//
 	// example:
 	//
-	// 2023-09-01 00:00:00
+	// 2023-09-11T12:22:24.000+08:00
 	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// Shop status
+	//
 	// example:
 	//
 	// Working

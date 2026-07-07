@@ -18,9 +18,12 @@ type iCooperationShop interface {
 }
 
 type CooperationShop struct {
+	// The partner company ID.
 	CooperationCompanyId *string `json:"cooperationCompanyId,omitempty" xml:"cooperationCompanyId,omitempty"`
-	CooperationShopId    *string `json:"cooperationShopId,omitempty" xml:"cooperationShopId,omitempty"`
-	ShopId               *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	// The partner shop ID.
+	CooperationShopId *string `json:"cooperationShopId,omitempty" xml:"cooperationShopId,omitempty"`
+	// The shop ID.
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
 }
 
 func (s CooperationShop) String() string {

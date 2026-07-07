@@ -30,38 +30,80 @@ type iEticketInfo interface {
 }
 
 type EticketInfo struct {
+  // The number of available units.
+  // 
   // example:
   // 
   // 0
   AvailableNum *int64 `json:"availableNum,omitempty" xml:"availableNum,omitempty"`
+  // The unique code for the e-ticket.
+  // 
   // example:
   // 
   // taobao******tpg
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
+  // The status of the e-ticket.
+  // 
+  // > Valid enum values:
+  // 
+  // >
+  // 
+  // > - 1: valid
+  // 
+  // >
+  // 
+  // > - -1: redeemed
+  // 
+  // >
+  // 
+  // > - -2: expired
+  // 
+  // >
+  // 
+  // > - -5: expired
+  // 
+  // >
+  // 
+  // > - -8: expired
+  // 
   // example:
   // 
   // -1
   CodeStatus *int64 `json:"codeStatus,omitempty" xml:"codeStatus,omitempty"`
+  // The end time of the e-ticket validity period.
+  // 
   // example:
   // 
   // 2026-08-02T23:59:59.000+08:00
   EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+  // The number of locked units.
+  // 
   // example:
   // 
   // 0
   LockNum *int64 `json:"lockNum,omitempty" xml:"lockNum,omitempty"`
+  // The URL of the QR code image for the e-ticket.
+  // 
+  // > This field is not currently populated. Distributors must generate the QR code using the `code` field.
+  // 
   // example:
   // 
   // http://qrcode.alicdn.com/img.jpg
   QrcodeUrl *string `json:"qrcodeUrl,omitempty" xml:"qrcodeUrl,omitempty"`
+  // The start time of the e-ticket validity period.
+  // 
   // example:
   // 
   // 2026-02-04T00:00:00.000+08:00
   StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+  // The time the e-ticket was redeemed.
+  // 
   // example:
   // 
   // 2026-02-04T15:07:59.000+08:00
   UseTime *string `json:"useTime,omitempty" xml:"useTime,omitempty"`
+  // The number of redeemed units.
+  // 
   // example:
   // 
   // 1

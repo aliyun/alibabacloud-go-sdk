@@ -16,10 +16,14 @@ type iPurchaseOrderStatusResult interface {
 }
 
 type PurchaseOrderStatusResult struct {
+	// API request requestId
+	//
 	// example:
 	//
 	// 3239281273464326823
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Purchase order status
+	//
 	// example:
 	//
 	// 10

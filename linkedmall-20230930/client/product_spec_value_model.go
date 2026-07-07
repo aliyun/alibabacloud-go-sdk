@@ -18,11 +18,20 @@ type iProductSpecValue interface {
 }
 
 type ProductSpecValue struct {
+	// Specification value
+	//
+	// example:
+	//
+	// 白色
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// Specification value alias
+	//
 	// example:
 	//
 	// 秘色
 	ValueAlias *string `json:"valueAlias,omitempty" xml:"valueAlias,omitempty"`
+	// Rule value ID
+	//
 	// example:
 	//
 	// 1000

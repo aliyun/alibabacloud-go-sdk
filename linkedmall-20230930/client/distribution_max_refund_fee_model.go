@@ -16,10 +16,14 @@ type iDistributionMaxRefundFee interface {
 }
 
 type DistributionMaxRefundFee struct {
+	// Maximum refundable amount for this order
+	//
 	// example:
 	//
 	// 100
 	MaxRefundFee *int64 `json:"maxRefundFee,omitempty" xml:"maxRefundFee,omitempty"`
+	// Minimum refundable amount for this order
+	//
 	// example:
 	//
 	// 1

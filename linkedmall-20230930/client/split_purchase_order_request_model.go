@@ -14,6 +14,7 @@ type iSplitPurchaseOrderRequest interface {
 }
 
 type SplitPurchaseOrderRequest struct {
+	// Input parameters for splitting and rendering a purchase order
 	Body *PurchaseOrderRenderQuery `json:"body,omitempty" xml:"body,omitempty"`
 }
 

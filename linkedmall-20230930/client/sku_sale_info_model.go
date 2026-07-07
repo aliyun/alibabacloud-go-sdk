@@ -36,35 +36,56 @@ type iSkuSaleInfo interface {
 }
 
 type SkuSaleInfo struct {
+	// Reason for not being sellable
+	//
 	// example:
 	//
 	// 不可售
 	CanNotSellReason *string `json:"canNotSellReason,omitempty" xml:"canNotSellReason,omitempty"`
+	// Indicates whether the SKU is sellable
+	//
 	// example:
 	//
 	// true
 	CanSell *bool `json:"canSell,omitempty" xml:"canSell,omitempty"`
+	// Area code
+	//
 	// example:
 	//
-	// 110000
-	DivisionCode  *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// 330106109
+	DivisionCode *string `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
+	// Blur inventory availability
+	//
+	// example:
+	//
+	// 有货
 	FuzzyQuantity *string `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
+	// Strikethrough price, in cents
+	//
 	// example:
 	//
 	// 999900
 	MarkPrice *int64 `json:"markPrice,omitempty" xml:"markPrice,omitempty"`
+	// Distributor purchase price, in cents
+	//
 	// example:
 	//
 	// 19800
 	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// Product ID
+	//
 	// example:
 	//
 	// 660460842235822080
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Available inventory
+	//
 	// example:
 	//
 	// -1
 	Quantity *int64 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// Shop ID
+	//
 	// example:
 	//
 	// 21000017
@@ -75,11 +96,18 @@ type SkuSaleInfo struct {
 	//
 	// 660460842235822081
 	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	// SKU control status
+	//
 	// example:
 	//
 	// Online
 	SkuStatus *string `json:"skuStatus,omitempty" xml:"skuStatus,omitempty"`
-	Title     *string `json:"title,omitempty" xml:"title,omitempty"`
+	// SKU title
+	//
+	// example:
+	//
+	// 天蓝色
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s SkuSaleInfo) String() string {

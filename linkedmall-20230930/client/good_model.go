@@ -22,16 +22,35 @@ type iGood interface {
 }
 
 type Good struct {
+	// Product name
+	//
+	// example:
+	//
+	// 儿童学习桌
 	GoodName *string `json:"goodName,omitempty" xml:"goodName,omitempty"`
+	// Product ID
+	//
 	// example:
 	//
 	// 6600****6736
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Quantity
+	//
 	// example:
 	//
 	// 1
-	Quantity *int32  `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	SkuId    *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	Quantity *int32 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// SKU ID
+	//
+	// example:
+	//
+	// 7232****2321
+	SkuId *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	// SKU title
+	//
+	// example:
+	//
+	// 白色
 	SkuTitle *string `json:"skuTitle,omitempty" xml:"skuTitle,omitempty"`
 }
 
