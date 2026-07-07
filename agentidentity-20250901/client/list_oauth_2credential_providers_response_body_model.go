@@ -103,6 +103,7 @@ type ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders struct {
 	Description                  *string               `json:"Description,omitempty" xml:"Description,omitempty"`
 	OAuth2CredentialProviderName *string               `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
 	OAuth2ProviderConfig         *OAuth2ProviderConfig `json:"OAuth2ProviderConfig,omitempty" xml:"OAuth2ProviderConfig,omitempty"`
+	OAuthType                    *string               `json:"OAuthType,omitempty" xml:"OAuthType,omitempty"`
 	TokenVaultName               *string               `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 	UpdateTime                   *string               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
@@ -141,6 +142,10 @@ func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) Get
 
 func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) GetOAuth2ProviderConfig() *OAuth2ProviderConfig {
 	return s.OAuth2ProviderConfig
+}
+
+func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) GetOAuthType() *string {
+	return s.OAuthType
 }
 
 func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) GetTokenVaultName() *string {
@@ -183,6 +188,11 @@ func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) Set
 
 func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) SetOAuth2ProviderConfig(v *OAuth2ProviderConfig) *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders {
 	s.OAuth2ProviderConfig = v
+	return s
+}
+
+func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) SetOAuthType(v string) *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders {
+	s.OAuthType = &v
 	return s
 }
 

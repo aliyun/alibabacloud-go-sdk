@@ -324,6 +324,10 @@ func (client *Client) CreateOAuth2CredentialProviderWithContext(ctx context.Cont
 		body["OAuth2ProviderConfig"] = request.OAuth2ProviderConfigShrink
 	}
 
+	if !dara.IsNil(request.OAuthType) {
+		body["OAuthType"] = request.OAuthType
+	}
+
 	if !dara.IsNil(request.TokenVaultName) {
 		body["TokenVaultName"] = request.TokenVaultName
 	}
@@ -2188,8 +2192,16 @@ func (client *Client) GetUserWithContext(ctx context.Context, request *GetUserRe
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserId) {
+		body["UserId"] = request.UserId
+	}
+
 	if !dara.IsNil(request.UserName) {
 		body["UserName"] = request.UserName
+	}
+
+	if !dara.IsNil(request.UserPoolId) {
+		body["UserPoolId"] = request.UserPoolId
 	}
 
 	if !dara.IsNil(request.UserPoolName) {
