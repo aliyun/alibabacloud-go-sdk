@@ -36,62 +36,69 @@ type iDescribeCertificateStateResponseBody interface {
 }
 
 type DescribeCertificateStateResponseBody struct {
-	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The content of the certificate in the PEM format. For more information about the PEM format and how to convert certificate formats, see [What formats are used for mainstream digital certificates?](https://help.aliyun.com/document_detail/42214.html)
+	// The certificate ID.
 	//
-	// >  This parameter is returned only when the value of the **Type*	- parameter is **certificate**. The value certificate indicates that the certificate is issued.
+	// > This parameter is returned when the certificate is issued.
 	//
 	// example:
 	//
-	// ——BEGIN CERTIFICATE—— …… ——END CERTIFICATE——
-	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The content that you need to write to the newly created file when you use the file verification method.
+	// 111111
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The certificate content (in PEM format). For more information about the PEM format and how to convert the format of a certificate, see [What are the formats of mainstream digital certificates?](https://help.aliyun.com/document_detail/42214.html).
 	//
-	// >  This parameter is returned only when the value of the **Type*	- parameter is **domain_verify*	- and the value of the **ValidateType*	- parameter is **FILE**. The value domain_verify indicates that the verification of the domain name ownership is not complete, and the value FILE indicates that the file verification method is used.
+	// > This parameter is returned only when **Type*	- is set to **certificate*	- (indicating that the certificate has been issued).
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE----- …… -----END CERTIFICATE-----
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The content that you need to write to the newly created file when you use the file validation method for domain validation.
+	//
+	// > This parameter is returned only when **Type*	- is set to **domain_verify*	- (indicating the domain validation stage) and **ValidateType*	- is set to **FILE*	- (indicating the file validation method).
 	//
 	// example:
 	//
 	// http://example.com/.well-known/pki-validation/fileauth.txt
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The domain name to be verified when you use the file verification method. You must connect to the DNS server of the domain name and create a file on the server. The file is specified by the **Uri*	- parameter.
+	// The domain name to be validated when you use the file validation method for domain validation. You need to connect to the server corresponding to this domain name and create the specified file (i.e., **Uri**) on the server.
 	//
-	// >  This parameter is returned only when the value of the **Type*	- parameter is **domain_verify*	- and the value of the **ValidateType*	- parameter is **FILE**. The value domain_verify indicates that the verification of the domain name ownership is not complete, and the value FILE indicates that the file verification method is used.
+	// > This parameter is returned only when **Type*	- is set to **domain_verify*	- (indicating the domain validation stage) and **ValidateType*	- is set to **FILE*	- (indicating the file validation method).
 	//
 	// example:
 	//
 	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The private key of the certificate in the PEM format. For more information about the PEM format and how to convert certificate formats, see [What formats are used for mainstream digital certificates?](https://help.aliyun.com/document_detail/42214.html)
+	// The content of the certificate private key (in PEM format). For more information about the PEM format and how to convert the format of a certificate, see [What are the formats of mainstream digital certificates?](https://help.aliyun.com/document_detail/42214.html).
 	//
-	// >  This parameter is returned only when the value of the **Type*	- parameter is **certificate**. The value certificate indicates that the certificate is issued.
+	// > This parameter is returned only when **Type*	- is set to **certificate*	- (indicating that the certificate has been issued).
 	//
 	// example:
 	//
-	// ——BEGIN RSA PRIVATE KEY—— …… ——END RSA PRIVATE KEY——
+	// -----BEGIN RSA PRIVATE KEY-----…… -----END RSA PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// The DNS record that you need to manage when you use the DNS verification method.
+	// The host record that you need to operate when you use the DNS validation method for domain validation.
 	//
-	// >  This parameter is returned only when the value of the **Type*	- parameter is **domain_verify*	- and the value of the **ValidateType*	- parameter is **DNS**. The value domain_verify indicates that the verification of the domain name ownership is not complete, and the value DNS indicates that the DNS verification method is used.
+	// > This parameter is returned only when **Type*	- is set to **domain_verify*	- (indicating the domain validation stage) and **ValidateType*	- is set to **DNS*	- (indicating the DNS validation method).
 	//
 	// example:
 	//
 	// _dnsauth
 	RecordDomain *string `json:"RecordDomain,omitempty" xml:"RecordDomain,omitempty"`
-	// The type of the DNS record that you need to add when you use the DNS verification method. Valid values:
+	// The type of DNS record that you need to add when you use the DNS validation method for domain validation. Valid values:
 	//
-	// 	- **TXT**
+	// - **TXT**: text record.
 	//
-	// 	- **CNAME**
+	// - **CNAME**: alias record.
 	//
-	// >  This parameter is returned only when the value of the **Type*	- parameter is **domain_verify*	- and the value of the **ValidateType*	- parameter is **DNS**. The value domain_verify indicates that the verification of the domain name ownership is not complete.
+	// > This parameter is returned only when **Type*	- is set to **domain_verify*	- (indicating the domain validation stage) and **ValidateType*	- is set to **DNS*	- (indicating the DNS validation method).
 	//
 	// example:
 	//
 	// TXT
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	// You need to add a TXT record to the DNS records only when you use the DNS verification method.
+	// The record value that you need to add when you use the DNS validation method for domain validation.
 	//
-	// >  This parameter is returned only when the value of the **Type*	- parameter is **domain_verify*	- and the value of the **ValidateType*	- parameter is **DNS**. The value domain_verify indicates that the verification of the domain name ownership is not complete, and the value DNS indicates that the DNS verification method is used.
+	// > This parameter is returned only when **Type*	- is set to **domain_verify*	- (indicating the domain validation stage) and **ValidateType*	- is set to **DNS*	- (indicating the DNS validation method).
 	//
 	// example:
 	//
@@ -103,43 +110,43 @@ type DescribeCertificateStateResponseBody struct {
 	//
 	// 082FAB35-6AB9-4FD5-8750-D36673548E76
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the certificate application order. Valid values:
+	// The status of the certificate request order. Valid values:
 	//
-	// 	- **domain_verify**: **pending review**, which indicates that you have not completed the verification of the domain name ownership after you submit the certificate application.
+	// - **domain_verify**: **Pending validation**, which indicates that you have not completed domain validation after submitting the certificate request.
 	//
-	//      >After you submit a certificate application, you must manually complete the verification of the domain name ownership. The CA reviews the certificate application only after the verification is complete. If you have not completed the verification of the domain name ownership, you can complete the verification based on the data returned by this operation.
+	//   > After you submit a certificate request, you must manually complete domain ownership validation before the certificate request can enter the review stage. If you have not completed domain validation, you can refer to the response parameters of this operation to complete domain validation.
 	//
-	// 	- **process**: **being reviewed**, which indicates that the certificate application is being reviewed by the CA.
+	// - **process**: **Under review**, which indicates that the certificate request is being reviewed by the CA center.
 	//
-	// 	- **verify_fail**: **review failed**, which indicates that the certificate application failed to be reviewed.
+	// - **verify_fail**: **Review failed**, which indicates that the certificate request failed the review.
 	//
-	//     >  If a certificate application fails to be reviewed, the information that you specified in the certificate application may be incorrect. We recommend that you call the [DeleteCertificateRequest](https://help.aliyun.com/document_detail/164109.html) operation to delete the certificate application order and resubmit a certificate application. After the order is deleted, the quota that is consumed for the order is released.
+	//   > The review may fail because the certificate request information you submitted is incorrect. We recommend that you call [DeleteCertificateRequest](https://help.aliyun.com/document_detail/455294.html) to delete the order that failed the review (deleted orders do not consume certificate resource plan quota) and submit a new certificate request.
 	//
-	// 	- **certificate**: **issued**, which indicates that the certificate is issued.
+	// - **certificate**: **Issued**, which indicates that the certificate has been issued.
 	//
-	// 	- **payed**: **pending application**, which indicates that you have not submitted a certificate application.
+	// - **payed**: **Pending request**, which indicates that the certificate is pending request.
 	//
-	// 	- **unknow**: The status is **unknown**.
+	// - **unknow**: **Unknown status**.
 	//
 	// example:
 	//
 	// domain_verify
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The file that you need to create on the DNS server when you use the file verification method. **The value of this parameter contains the file path and file name.**
+	// The file that you need to create on the domain server when you use the file validation method for domain validation. **Uri*	- includes the file path and name.
 	//
-	// >  This parameter is returned only when the value of the **Type*	- parameter is **domain_verify*	- and the value of the **ValidateType*	- parameter is **FILE**. The value domain_verify indicates that the verification of the domain name ownership is not complete, and the value FILE indicates that the file verification method is used.
+	// > This parameter is returned only when **Type*	- is set to **domain_verify*	- (indicating the domain validation stage) and **ValidateType*	- is set to **FILE*	- (indicating the file validation method).
 	//
 	// example:
 	//
 	// /.well-known/pki-validation/fileauth.txt
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// The verification method of the domain name ownership. Valid values:
+	// The domain validation method selected when submitting the certificate request. Valid values:
 	//
-	// 	- **DNS**: DNS verification. If you use this method, you must add a TXT record to the DNS records of the domain name in the management platform of the domain name.
+	// - **DNS**: DNS validation. This method validates domain ownership by adding the specified DNS record to the domain on the DNS management platform.
 	//
-	// 	- **FILE**: file verification. If you use this method, you must create a specified file on the DNS server.
+	// - **FILE**: file validation. This method validates domain ownership by creating the specified file on the domain server.
 	//
-	// >  This parameter is returned only when the value of the **Type*	- parameter is **domain_verify**. The value domain_verify indicates that the verification of the domain name ownership is not complete.
+	// > This parameter is returned only when **Type*	- is set to **domain_verify*	- (indicating the domain validation stage).
 	//
 	// example:
 	//

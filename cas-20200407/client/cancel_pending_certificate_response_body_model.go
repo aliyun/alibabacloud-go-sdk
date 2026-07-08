@@ -14,6 +14,8 @@ type iCancelPendingCertificateResponseBody interface {
 }
 
 type CancelPendingCertificateResponseBody struct {
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 12345678-1234-1234-1234-123456789ABC

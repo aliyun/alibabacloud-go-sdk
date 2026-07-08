@@ -22,21 +22,31 @@ type iGetCertWarehouseQuotaResponseBody interface {
 }
 
 type GetCertWarehouseQuotaResponseBody struct {
+	// The total quota for the certificate application service. This includes both complimentary and purchased quotas.
+	//
+	// example:
+	//
+	// 5000
 	AppTotalQuota *int64 `json:"AppTotalQuota,omitempty" xml:"AppTotalQuota,omitempty"`
-	AppUseCount   *int64 `json:"AppUseCount,omitempty" xml:"AppUseCount,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The used quota for the certificate application service.
+	//
+	// example:
+	//
+	// 1000
+	AppUseCount *int64 `json:"AppUseCount,omitempty" xml:"AppUseCount,omitempty"`
+	// The request ID. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total quota for certificate repositories, including the free quota and purchased quota.
+	// The total quota for the electronic contract signing service. This includes both complimentary and purchased quotas.
 	//
 	// example:
 	//
 	// 5000
 	TotalQuota *int64 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
-	// The used quota.
+	// The used quota for the electronic contract signing service.
 	//
 	// example:
 	//

@@ -133,7 +133,7 @@ type ListCloudResourcesResponseBodyData struct {
 	//
 	// example:
 	//
-	// shop.amsaudio.cn
+	// example
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// The start date of the certificate bound to the cloud resource. The value is a timestamp in seconds.
 	//
@@ -143,23 +143,23 @@ type ListCloudResourcesResponseBodyData struct {
 	CertStartTime *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
 	// The AccessKey ID that is used to access cloud resources.
 	//
-	// >  This parameter is returned only when you deploy certificates to cloud services of third-party clouds.
+	// > This parameter is returned only when you deploy certificates to cloud services of third-party clouds.
 	//
 	// example:
 	//
-	// 1234
+	// AK96*******6M
 	CloudAccessId *string `json:"CloudAccessId,omitempty" xml:"CloudAccessId,omitempty"`
 	// The cloud service provider.
 	//
 	// Valid values:
 	//
-	// 	- Tencent
+	// - Tencent
 	//
-	// 	- Huawei
+	// - Huawei
 	//
-	// 	- Aws
+	// - Aws
 	//
-	// 	- aliyun
+	// - aliyun
 	//
 	// example:
 	//
@@ -179,11 +179,11 @@ type ListCloudResourcesResponseBodyData struct {
 	CloudRegion *string `json:"CloudRegion,omitempty" xml:"CloudRegion,omitempty"`
 	// Indicates whether the cloud resource is the default resource. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: yes
 	//
-	// 	- **0**: no
+	// - **0**: no
 	//
-	// >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+	// > This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
 	//
 	// example:
 	//
@@ -193,13 +193,13 @@ type ListCloudResourcesResponseBodyData struct {
 	//
 	// example:
 	//
-	// www.tkgeo.ru
+	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Indicates whether HTTPS is enabled for the cloud resource. Valid values:
 	//
-	// 	- **1**: yes.
+	// - **1**: yes.
 	//
-	// 	- **0**: no.
+	// - **0**: no.
 	//
 	// example:
 	//
@@ -225,27 +225,27 @@ type ListCloudResourcesResponseBodyData struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The instance ID of the cloud resource.
 	//
-	// >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+	// > This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
 	//
 	// example:
 	//
-	// nlb-rv05agjc97ovm14il5
+	// nlb-rv05a********14il5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The listener ID of the cloud resource.
 	//
-	// >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+	// > This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
 	//
 	// example:
 	//
-	// lsn-jiugof6t23et66lsnc@443
+	// lsn-jiug********66lsnc@443
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The listening port of the cloud resource.
 	//
-	// >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+	// > This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
 	//
 	// example:
 	//
-	// 8047
+	// 443
 	ListenerPort *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The region ID of the cloud resource.
 	//
@@ -261,11 +261,11 @@ type ListCloudResourcesResponseBodyData struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether an Alibaba Cloud SSL certificate is used. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: yes
 	//
-	// 	- **0**: no
+	// - **0**: no
 	//
-	// >  This parameter is required only when you deploy certificates to services of multiple clouds.
+	// > This parameter is required only when you deploy certificates to services of multiple clouds.
 	//
 	// example:
 	//
@@ -275,7 +275,7 @@ type ListCloudResourcesResponseBodyData struct {
 	//
 	// example:
 	//
-	// 1666884372152785
+	// 1666884372******
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

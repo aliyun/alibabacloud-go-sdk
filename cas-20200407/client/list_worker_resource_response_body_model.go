@@ -40,7 +40,7 @@ type ListWorkerResourceResponseBody struct {
 	//
 	// example:
 	//
-	// 20
+	// 50
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
 	// The total number of entries returned.
 	//
@@ -143,7 +143,7 @@ type ListWorkerResourceResponseBodyData struct {
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// The cloud service provider to which the cloud resource in the worker task belongs.
 	//
-	// >  This parameter is not returned if you deploy certificates to Alibaba Cloud services.
+	// > This parameter is not returned if you deploy certificates to Alibaba Cloud services.
 	//
 	// example:
 	//
@@ -151,41 +151,41 @@ type ListWorkerResourceResponseBodyData struct {
 	CloudName *string `json:"CloudName,omitempty" xml:"CloudName,omitempty"`
 	// The cloud service to which the cloud resource in the worker task belongs. Valid values:
 	//
-	// 	- **CDN**: Alibaba Cloud CDN (CDN). This value is supported only at the China site (aliyun.com).
+	// - **CDN**: Alibaba Cloud CDN (CDN). This value is supported only at the China site (aliyun.com).
 	//
-	// 	- **SLB**: Classic Load Balancer (CLB). This value is supported only at the China site (aliyun.com).
+	// - **SLB**: Classic Load Balancer (CLB). This value is supported only at the China site (aliyun.com).
 	//
-	// 	- **DCDN**: Dynamic Content Delivery Network (DCDN). This value is supported only at the China site (aliyun.com).
+	// - **DCDN**: Dynamic Content Delivery Network (DCDN). This value is supported only at the China site (aliyun.com).
 	//
-	// 	- **DDOS**: Anti-DDoS. This value is supported only at the China site (aliyun.com).
+	// - **DDOS**: Anti-DDoS. This value is supported only at the China site (aliyun.com).
 	//
-	// 	- **LIVE**: ApsaraVideo Live. This value is supported only at the China site (aliyun.com).
+	// - **LIVE**: ApsaraVideo Live. This value is supported only at the China site (aliyun.com).
 	//
-	// 	- **webHosting**: Cloud Web Hosting. This value is supported only at the China site (aliyun.com).
+	// - **webHosting**: Cloud Web Hosting. This value is supported only at the China site (aliyun.com).
 	//
-	// 	- **VOD**: ApsaraVideo VOD. This value is supported only at the China site (aliyun.com).
+	// - **VOD**: ApsaraVideo VOD. This value is supported only at the China site (aliyun.com).
 	//
-	// 	- **CR**: Container Registry. This value is supported only at the China site (aliyun.com).
+	// - **CR**: Container Registry. This value is supported only at the China site (aliyun.com).
 	//
-	// 	- **ALB**: Application Load Balancer (ALB).
+	// - **ALB**: Application Load Balancer (ALB).
 	//
-	// 	- **APIGateway**: API Gateway.
+	// - **APIGateway**: API Gateway.
 	//
-	// 	- **FC**: Function Compute.
+	// - **FC**: Function Compute.
 	//
-	// 	- **GA**: Global Accelerator (GA).
+	// - **GA**: Global Accelerator (GA).
 	//
-	// 	- **MSE**: Microservices Engine (MSE).
+	// - **MSE**: Microservices Engine (MSE).
 	//
-	// 	- **NLB**: Network Load Balancer (NLB).
+	// - **NLB**: Network Load Balancer (NLB).
 	//
-	// 	- **OSS**: Object Storage Service (OSS).
+	// - **OSS**: Object Storage Service (OSS).
 	//
-	// 	- **SAE**: Serverless App Engine (SAE).
+	// - **SAE**: Serverless App Engine (SAE).
 	//
-	// 	- **TencentCDN**: Tencent Cloud Content Delivery Network (CDN).
+	// - **TencentCDN**: Tencent Cloud Content Delivery Network (CDN).
 	//
-	// 	- **WAF**: Web Application Firewall (WAF).
+	// - **WAF**: Web Application Firewall (WAF).
 	//
 	// example:
 	//
@@ -199,15 +199,15 @@ type ListWorkerResourceResponseBodyData struct {
 	CloudRegion *string `json:"CloudRegion,omitempty" xml:"CloudRegion,omitempty"`
 	// Indicates whether the cloud resource in the worker task is the default resource. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
-	// >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+	// > This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
 	//
 	// example:
 	//
-	// 0
+	// true
 	DefaultResource *bool `json:"DefaultResource,omitempty" xml:"DefaultResource,omitempty"`
 	// The time when the worker task was created. The time is a timestamp in seconds.
 	//
@@ -229,7 +229,7 @@ type ListWorkerResourceResponseBodyData struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the cloud resource in the worker task.
 	//
-	// >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+	// > This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
 	//
 	// example:
 	//
@@ -243,7 +243,7 @@ type ListWorkerResourceResponseBodyData struct {
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The listener ID of the cloud resource in the worker task.
 	//
-	// >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+	// > This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
 	//
 	// example:
 	//
@@ -257,7 +257,7 @@ type ListWorkerResourceResponseBodyData struct {
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The order ID of the worker task, which is the same as the order ID of the certificate.
 	//
-	// >  If the CertId parameter is returned, this parameter is not returned.
+	// > If the CertId parameter is returned, this parameter is not returned.
 	//
 	// example:
 	//
@@ -265,7 +265,7 @@ type ListWorkerResourceResponseBodyData struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The listening port of the cloud resource in the worker task.
 	//
-	// >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+	// > This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
 	//
 	// example:
 	//
@@ -297,23 +297,23 @@ type ListWorkerResourceResponseBodyData struct {
 	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The status of the worker task. Valid values:
 	//
-	// 	- **editing**
+	// - **editing**
 	//
-	// 	- **pending**
+	// - **pending**
 	//
-	// 	- **scheduling**
+	// - **scheduling**
 	//
-	// 	- **processing**
+	// - **processing**
 	//
-	// 	- **error**
+	// - **error**
 	//
-	// 	- **success**
+	// - **success**
 	//
-	// 	- **rollback**
+	// - **rollback**
 	//
-	// 	- **rollback_success**
+	// - **rollback_success**
 	//
-	// 	- **rollback_error**
+	// - **rollback_error**
 	//
 	// example:
 	//
@@ -323,7 +323,7 @@ type ListWorkerResourceResponseBodyData struct {
 	//
 	// example:
 	//
-	// 1666884372152785
+	// 166688437******
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

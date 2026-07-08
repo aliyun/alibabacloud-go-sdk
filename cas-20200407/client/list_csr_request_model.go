@@ -26,13 +26,13 @@ type ListCsrRequest struct {
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The page number.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The keyword.
+	// The keyword for fuzzy search. For example, you can specify a domain name.
 	//
 	// example:
 	//

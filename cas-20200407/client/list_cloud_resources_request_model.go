@@ -26,83 +26,83 @@ type iListCloudResourcesRequest interface {
 }
 
 type ListCloudResourcesRequest struct {
-	// The certificate IDs.
+	// The certificate IDs. Separate multiple IDs with commas (,).
 	CertIds []*int64 `json:"CertIds,omitempty" xml:"CertIds,omitempty" type:"Repeated"`
 	// The cloud service provider.
 	//
 	// Valid values:
 	//
-	// 	- Tencent
+	// - Tencent
 	//
-	// 	- Huawei
+	// - Huawei
 	//
-	// 	- Aws
+	// - Aws
 	//
-	// 	- aliyun
+	// - aliyun
 	//
 	// example:
 	//
-	// Tencent
+	// aliyun
 	CloudName *string `json:"CloudName,omitempty" xml:"CloudName,omitempty"`
-	// The cloud service.
+	// The cloud service name. Used to filter resources by cloud service.
 	//
 	// Valid values when CloudName is set to aliyun:
 	//
-	// 	- SLB: Classic Load Balancer (CLB). This value is available only on the China site (aliyun.com).
+	// - SLB: Classic Load Balancer (CLB). This value is available only on the China site (aliyun.com).
 	//
-	// 	- LIVE: ApsaraVideo Live. This value is available only on the China site (aliyun.com).
+	// - LIVE: ApsaraVideo Live. This value is available only on the China site (aliyun.com).
 	//
-	// 	- webHosting: Cloud Web Hosting. This value is available only on the China site (aliyun.com).
+	// - webHosting: Cloud Web Hosting. This value is available only on the China site (aliyun.com).
 	//
-	// 	- VOD: ApsaraVideo VOD. This value is available only on the China site (aliyun.com).
+	// - VOD: ApsaraVideo VOD. This value is available only on the China site (aliyun.com).
 	//
-	// 	- CR: Container Registry. This value is available only on the China site (aliyun.com).
+	// - CR: Container Registry. This value is available only on the China site (aliyun.com).
 	//
-	// 	- DCDN: Dynamic Content Delivery Network (DCDN).
+	// - DCDN: Dynamic Content Delivery Network (DCDN).
 	//
-	// 	- DDOS: Anti-DDoS.
+	// - DDOS: Anti-DDoS.
 	//
-	// 	- CDN: Alibaba Cloud CDN (CDN).
+	// - CDN: Alibaba Cloud CDN (CDN).
 	//
-	// 	- ALB: Application Load Balancer (ALB).
+	// - ALB: Application Load Balancer (ALB).
 	//
-	// 	- APIGateway: API Gateway.
+	// - APIGateway: API Gateway.
 	//
-	// 	- FC: Function Compute.
+	// - FC: Function Compute.
 	//
-	// 	- GA: Global Accelerator (GA).
+	// - GA: Global Accelerator (GA).
 	//
-	// 	- MSE: Microservices Engine (MSE).
+	// - MSE: Microservices Engine (MSE).
 	//
-	// 	- NLB: Network Load Balancer (NLB).
+	// - NLB: Network Load Balancer (NLB).
 	//
-	// 	- OSS: Object Storage Service (OSS).
+	// - OSS: Object Storage Service (OSS).
 	//
-	// 	- SAE: Serverless App Engine (SAE).
+	// - SAE: Serverless App Engine (SAE).
 	//
-	// 	- WAF: Web Application Firewall (WAF).
+	// - WAF: Web Application Firewall (WAF).
 	//
 	// Valid values when CloudName is set to Tencent:
 	//
-	// 	- TencentCDN: Content Delivery Network (CDN).
+	// - TencentCDN: Content Delivery Network (CDN).
 	//
-	// 	- TencentCLB: CLB.
+	// - TencentCLB: CLB.
 	//
-	// 	- TencentWAF: WAF.
+	// - TencentWAF: WAF.
 	//
 	// Valid value when CloudName is set to Huawei:
 	//
-	// 	- HuaweiCDN: CDN.
+	// - HuaweiCDN: CDN.
 	//
 	// Valid values when CloudName is set to Aws:
 	//
-	// 	- AwsCloudFront: Amazon CloudFront.
+	// - AwsCloudFront: Amazon CloudFront.
 	//
-	// 	- AwsCLB: CLB.
+	// - AwsCLB: CLB.
 	//
-	// 	- AwsALB: ALB.
+	// - AwsALB: ALB.
 	//
-	// 	- AwsNLB: NLB.
+	// - AwsNLB: NLB.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type ListCloudResourcesRequest struct {
 	//
 	// example:
 	//
-	// 21
+	// AK96*******6M
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 	// The number of entries per page. Default value: **20**.
 	//

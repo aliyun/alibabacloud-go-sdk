@@ -26,30 +26,58 @@ type iListCertificatesRequest interface {
 }
 
 type ListCertificatesRequest struct {
+	// The source of the certificate.
+	//
+	// - BUY: A purchased certificate.
+	//
+	// - TEST: A test certificate.
+	//
+	// - UPLOAD: An uploaded certificate.
+	//
 	// example:
 	//
 	// BUY
 	CertificateSource *string `json:"CertificateSource,omitempty" xml:"CertificateSource,omitempty"`
+	// The status of the certificate.
+	//
+	// - **issued**: The certificate is issued.
+	//
+	// - **revoked**: The certificate is revoked.
+	//
+	// - **willExpire**: The certificate is about to expire.
+	//
+	// - **expired**: The certificate has expired.
+	//
 	// example:
 	//
 	// issued
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// cas-ivauto-hqito6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A keyword for a fuzzy query. The keyword can be a domain name, a certificate name, or a resource ID.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-aek****wia
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10

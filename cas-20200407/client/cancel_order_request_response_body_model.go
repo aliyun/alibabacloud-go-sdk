@@ -14,7 +14,7 @@ type iCancelOrderRequestResponseBody interface {
 }
 
 type CancelOrderRequestResponseBody struct {
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot and locate problems.
 	//
 	// example:
 	//

@@ -14,6 +14,8 @@ type iUpdateInstanceResponseBody interface {
 }
 
 type UpdateInstanceResponseBody struct {
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request to help troubleshoot and locate issues.
+	//
 	// example:
 	//
 	// 0068247C-A454-5FC9-93BF-C41CBB5CD19E

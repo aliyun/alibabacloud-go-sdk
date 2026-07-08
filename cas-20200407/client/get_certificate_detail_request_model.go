@@ -14,6 +14,8 @@ type iGetCertificateDetailRequest interface {
 }
 
 type GetCertificateDetailRequest struct {
+	// The certificate ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -30,11 +30,11 @@ type UploadUserCertificateResponseBody struct {
 	//
 	// BDB81BA2-E1F5-4D08-A2DD-4BE2BF44C90E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource.
+	// The ID of the certificate instance.
 	//
 	// example:
 	//
-	// cas-upload-j2ofdb
+	// cas-upload-xki1d0
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 

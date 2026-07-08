@@ -9,7 +9,63 @@ import (
 
 // Summary:
 //
-// 申请证书
+// Adds an AccessKey for authorization.
+//
+// Description:
+//
+// The single-user QPS limit for this API is 100 queries per second (QPS). Calls that exceed this limit are throttled, which can affect your business operations. Call this API at a reasonable rate to avoid throttling.
+//
+// @param request - AddCloudAccessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddCloudAccessResponse
+func (client *Client) AddCloudAccessWithContext(ctx context.Context, request *AddCloudAccessRequest, runtime *dara.RuntimeOptions) (_result *AddCloudAccessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudName) {
+		query["CloudName"] = request.CloudName
+	}
+
+	if !dara.IsNil(request.SecretId) {
+		query["SecretId"] = request.SecretId
+	}
+
+	if !dara.IsNil(request.SecretKey) {
+		query["SecretKey"] = request.SecretKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddCloudAccess"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddCloudAccessResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a certificate application for a Certificate Management Service instance.
 //
 // @param request - ApplyCertificateRequest
 //
@@ -53,11 +109,81 @@ func (client *Client) ApplyCertificateWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Revokes an issued certificate and cancels the application order of the certificate.
+// # Updates the notification status in batches
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// After a CA certificate is created, it is in the normal issuance state by default. You can call this operation to change the status of a CA certificate from normal issuance to revoked. In the normal issuance state, the CA certificate can be used to issue certificates. In the revoked state, the CA certificate cannot be used to issue certificates, and the certificates that have been issued by the CA certificate also become invalid accordingly.
+//
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a sub CA certificate.
+//
+// ## QPS limit
+//
+// The QPS limit per user for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation properly.
+//
+// @param request - BatchUpdateNoticeStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchUpdateNoticeStatusResponse
+func (client *Client) BatchUpdateNoticeStatusWithContext(ctx context.Context, request *BatchUpdateNoticeStatusRequest, runtime *dara.RuntimeOptions) (_result *BatchUpdateNoticeStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Ids) {
+		query["Ids"] = request.Ids
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.NoticeBiz) {
+		query["NoticeBiz"] = request.NoticeBiz
+	}
+
+	if !dara.IsNil(request.NoticeStatus) {
+		query["NoticeStatus"] = request.NoticeStatus
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchUpdateNoticeStatus"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchUpdateNoticeStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes an issued certificate or cancels a pending certificate order and restores the quota.
+//
+// Description:
+//
+// This API has a limit of 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled. This can affect your business. Call the API at a reasonable rate.
 //
 // @param request - CancelCertificateForPackageRequestRequest
 //
@@ -101,11 +227,11 @@ func (client *Client) CancelCertificateForPackageRequestWithContext(ctx context.
 
 // Summary:
 //
-// Cancels a certificate application order that is in the pending validation or being reviewed state.
+// Cancels a certificate application order that is pending domain verification or under review.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 100 queries per second (QPS) for each user. API calls that exceed this limit are throttled. Because this can impact your business, you should call this API at a reasonable rate.
 //
 // @param request - CancelOrderRequestRequest
 //
@@ -149,7 +275,7 @@ func (client *Client) CancelOrderRequestWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 撤回证书申请
+// Cancels a pending certificate application that has not been issued.
 //
 // @param request - CancelPendingCertificateRequest
 //
@@ -193,15 +319,15 @@ func (client *Client) CancelPendingCertificateWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Submits a certificate application.
+// Submits a certificate application by using a purchased certificate package quota.
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455800.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
+// - Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455800.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
 //
-//		- After you call this operation to submit a certificate application and the certificate is issued, the certificate quota provided by the resource plan that you purchased is consumed. When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate that you want to apply for.
+// - After you call this operation to submit a certificate application and the certificate is issued, the certificate quota provided by the resource plan that you purchased is consumed. When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate that you want to apply for.
 //
-//		- After you call this operation to submit a certificate application, you also need to call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required for domain name ownership verification and manually complete the verification. Then, your certificate application is reviewed by the certificate authority (CA). If you use the Domain Name System (DNS) verification method, you must complete the verification on your DNS service provider system. If you use the file verification method, you must complete the verification on the DNS server.
+// - After you call this operation to submit a certificate application, you also need to call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required for domain name ownership verification and manually complete the verification. Then, your certificate application is reviewed by the certificate authority (CA). If you use the Domain Name System (DNS) verification method, you must complete the verification on your DNS service provider system. If you use the file verification method, you must complete the verification on the DNS server.
 //
 // @param request - CreateCertificateForPackageRequestRequest
 //
@@ -281,13 +407,13 @@ func (client *Client) CreateCertificateForPackageRequestWithContext(ctx context.
 //
 // Description:
 //
-//	  You can call this operation to apply for only DV certificates. If you want to apply for an organization validated (OV) or extended validation (EV) certificate, we recommend that you call the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html) operation. This operation allows you to apply for certificates of all specifications and specify the method to generate a certificate signing request (CSR) file.
+// - You can call this operation to apply for only DV certificates. If you want to apply for an organization validated (OV) or extended validation (EV) certificate, we recommend that you call the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html) operation. This operation allows you to apply for certificates of all specifications and specify the method to generate a certificate signing request (CSR) file.
 //
-//		- Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455803.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
+// - Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455803.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
 //
-//		- When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate.
+// - When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate.
 //
-//		- After you call this operation to submit a certificate application, Certificate Management Service automatically creates a CSR file for your application and consumes the certificate quota in the certificate resource plans of the specified specifications that you purchased. After you call this operation, you also need to call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required to complete domain name verification, and manually complete the verification. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on your DNS server. Then, the certificate authority (CA) will review your certificate application.
+// - After you call this operation to submit a certificate application, Certificate Management Service automatically creates a CSR file for your application and consumes the certificate quota in the certificate resource plans of the specified specifications that you purchased. After you call this operation, you also need to call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required to complete domain name verification, and manually complete the verification. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on your DNS server. Then, the certificate authority (CA) will review your certificate application.
 //
 // @param request - CreateCertificateRequestRequest
 //
@@ -355,17 +481,17 @@ func (client *Client) CreateCertificateRequestWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Purchases, applies for, and issues a domain validated (DV) certificate by using a custom certificate signing request (CSR) file. You can use extended certificate services to purchase and apply for a DV certificate with a few clicks.
+// Purchases, applies for, and issues a domain validated (DV) certificate by using a custom certificate signing request (CSR) file.
 //
 // Description:
 //
-//	  You can use this operation to apply for only a domain validated (DV) certificate. You cannot use this operation to apply for an organization validated (OV) certificate. We recommend that you use the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html) operation to apply for a certificate. You can use the CreateCertificateForPackageRequest operation to apply for certificates of all types and specify the CSR generation method.
+// - You can use this operation to apply for only a domain validated (DV) certificate. You cannot use this operation to apply for an organization validated (OV) certificate. We recommend that you use the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html) operation to apply for a certificate. You can use the CreateCertificateForPackageRequest operation to apply for certificates of all types and specify the CSR generation method.
 //
-//		- Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455803.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
+// - Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455803.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
 //
-//		- When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate that you want to apply for.
+// - When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate that you want to apply for.
 //
-//		- After you call this operation to submit a certificate application, the certificate quota of the required specifications that you purchased is consumed. After you call this operation, you must call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required for domain name ownership verification and manually complete the verification. Then, your certificate application is reviewed by the certificate authority (CA). If you use the Domain Name System (DNS) verification method, you must complete the verification on your DNS service provider system. If you use the file verification method, you must complete the verification on the DNS server.
+// - After you call this operation to submit a certificate application, the certificate quota of the required specifications that you purchased is consumed. After you call this operation, you must call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required for domain name ownership verification and manually complete the verification. Then, your certificate application is reviewed by the certificate authority (CA). If you use the Domain Name System (DNS) verification method, you must complete the verification on your DNS service provider system. If you use the file verification method, you must complete the verification on the DNS server.
 //
 // @param request - CreateCertificateWithCsrRequestRequest
 //
@@ -433,7 +559,7 @@ func (client *Client) CreateCertificateWithCsrRequestWithContext(ctx context.Con
 
 // Summary:
 //
-// Creates a certificate signing request (CSR). A CSR file contains the information about an SSL certificate that you want to apply for. The information includes the domain names that you want to bind to the certificate and the name and the geographical location of the certificate holder. When you submit a certificate application to a certificate authority (CA), you must provide a CSR. After the CA approves your certificate application, the CA uses the private key of the root CA to sign your CSR and generates a public key file. The public key file is the SSL certificate that the CA issues to you. The private key of the SSL certificate is generated when you create the CSR.
+// Creates a certificate signing request (CSR) that contains information about an SSL certificate to apply for, such as the domain names and the certificate holder. You must provide a CSR when you submit a certificate application to a certificate authority (CA).
 //
 // @param request - CreateCsrRequest
 //
@@ -513,7 +639,7 @@ func (client *Client) CreateCsrWithContext(ctx context.Context, request *CreateC
 
 // Summary:
 //
-// Creates a certificate deployment task. After an SSL certificate is issued, you can create a certificate deployment task to immediately deploy the certificate to an Alibaba Cloud service or deploy the certificate to the service at a specific point in time. Then, the certificate can implement trusted identity authentication and ensure the security of data transmission for your website hosted on the service.
+// Creates a certificate deployment task to deploy an SSL certificate to one or more Alibaba Cloud services immediately or at a scheduled time.
 //
 // Description:
 //
@@ -581,11 +707,175 @@ func (client *Client) CreateDeploymentJobWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Decrypts a certificate in a certificate repository.
+// Issues a single client certificate from the general user certificate repository.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 10 QPS per user. Exceeding this limit triggers throttling, which can affect your business. Call this API at a reasonable rate to avoid disruption.
+//
+// @param request - CreateWHClientCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWHClientCertificateResponse
+func (client *Client) CreateWHClientCertificateWithContext(ctx context.Context, request *CreateWHClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateWHClientCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AfterTime) {
+		query["AfterTime"] = request.AfterTime
+	}
+
+	if !dara.IsNil(request.Algorithm) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !dara.IsNil(request.BeforeTime) {
+		query["BeforeTime"] = request.BeforeTime
+	}
+
+	if !dara.IsNil(request.CommonName) {
+		query["CommonName"] = request.CommonName
+	}
+
+	if !dara.IsNil(request.Country) {
+		query["Country"] = request.Country
+	}
+
+	if !dara.IsNil(request.Csr) {
+		query["Csr"] = request.Csr
+	}
+
+	if !dara.IsNil(request.Days) {
+		query["Days"] = request.Days
+	}
+
+	if !dara.IsNil(request.Immediately) {
+		query["Immediately"] = request.Immediately
+	}
+
+	if !dara.IsNil(request.Locality) {
+		query["Locality"] = request.Locality
+	}
+
+	if !dara.IsNil(request.Months) {
+		query["Months"] = request.Months
+	}
+
+	if !dara.IsNil(request.Organization) {
+		query["Organization"] = request.Organization
+	}
+
+	if !dara.IsNil(request.OrganizationUnit) {
+		query["OrganizationUnit"] = request.OrganizationUnit
+	}
+
+	if !dara.IsNil(request.ParentIdentifier) {
+		query["ParentIdentifier"] = request.ParentIdentifier
+	}
+
+	if !dara.IsNil(request.SanType) {
+		query["SanType"] = request.SanType
+	}
+
+	if !dara.IsNil(request.SanValue) {
+		query["SanValue"] = request.SanValue
+	}
+
+	if !dara.IsNil(request.State) {
+		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Years) {
+		query["Years"] = request.Years
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWHClientCertificate"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWHClientCertificateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a certificate warehouse.
+//
+// @param request - CreateWarehouseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWarehouseResponse
+func (client *Client) CreateWarehouseWithContext(ctx context.Context, request *CreateWarehouseRequest, runtime *dara.RuntimeOptions) (_result *CreateWarehouseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Biz) {
+		query["Biz"] = request.Biz
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWarehouse"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWarehouseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Decrypts data that was encrypted by using a certificate in a certificate application repository.
+//
+// Description:
+//
+// The queries per second (QPS) limit for this API operation is 10 per user. If you exceed the limit, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DecryptRequest
 //
@@ -649,15 +939,15 @@ func (client *Client) DecryptWithContext(ctx context.Context, request *DecryptRe
 
 // Summary:
 //
-// Deletes an order in which the application for a domain validated (DV) certificate failed.
+// Deletes a failed domain validated (DV) certificate application order.
 //
 // Description:
 //
 // You can call this operation to delete a certificate application order only in the following scenarios:
 //
-//   - The status of the order is **review failed**. You have called the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to query the status of the certificate application order and the value of the **Type*	- parameter is **verify_fail**.
+// - The status of the order is **review failed**. You have called the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to query the status of the certificate application order and the value of the **Type*	- parameter is **verify_fail**.
 //
-//   - The status of the order is **pending application**. You have called the [CancelOrderRequest](https://help.aliyun.com/document_detail/455299.html) operation to cancel a certificate application order whose status is pending review or being reviewed. The status of the certificate application order that is canceled in this case changes to **pending application**.
+// - The status of the order is **pending application**. You have called the [CancelOrderRequest](https://help.aliyun.com/document_detail/455299.html) operation to cancel a certificate application order whose status is pending review or being reviewed. The status of the certificate application order that is canceled in this case changes to **pending application**.
 //
 // @param request - DeleteCertificateRequestRequest
 //
@@ -701,7 +991,55 @@ func (client *Client) DeleteCertificateRequestWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes a Certificate Signing Request (CSR) that is no longer required.
+// Deletes an access key.
+//
+// Description:
+//
+// This operation is limited to 100 queries per second (QPS) per user. API calls that exceed this limit are throttled, which can impact your business.
+//
+// @param request - DeleteCloudAccessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudAccessResponse
+func (client *Client) DeleteCloudAccessWithContext(ctx context.Context, request *DeleteCloudAccessRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudAccessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessId) {
+		query["AccessId"] = request.AccessId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCloudAccess"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCloudAccessResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a certificate signing request (CSR).
 //
 // @param request - DeleteCsrRequest
 //
@@ -745,7 +1083,7 @@ func (client *Client) DeleteCsrWithContext(ctx context.Context, request *DeleteC
 
 // Summary:
 //
-// Deletes a deployment task.
+// Deletes a certificate deployment task.
 //
 // @param request - DeleteDeploymentJobRequest
 //
@@ -789,7 +1127,7 @@ func (client *Client) DeleteDeploymentJobWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除实例
+// Deletes a Certificate Management Service instance.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -885,11 +1223,11 @@ func (client *Client) DeletePCACertWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes an expired or uploaded certificate.
+// Deletes an expired, revoked, or manually uploaded certificate from Certificate Management Service.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation is limited to 100 queries per second (QPS) per user. API calls exceeding this limit are throttled, which can impact your business. We recommend calling this operation at a reasonable rate to avoid this.
 //
 // @param request - DeleteUserCertificateRequest
 //
@@ -933,7 +1271,59 @@ func (client *Client) DeleteUserCertificateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes the worker of a deployment task.
+// Deletes a certificate warehouse.
+//
+// Description:
+//
+// This operation deletes a certificate warehouse.
+//
+// ### QPS limit
+//
+// This operation has a QPS limit of 10 requests per second per user. Exceeding this limit causes subsequent API calls to be throttled, which can impact your services. To ensure service availability, call this operation at a reasonable rate.
+//
+// @param request - DeleteWarehouseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWarehouseResponse
+func (client *Client) DeleteWarehouseWithContext(ctx context.Context, request *DeleteWarehouseRequest, runtime *dara.RuntimeOptions) (_result *DeleteWarehouseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WarehouseInstanceId) {
+		query["WarehouseInstanceId"] = request.WarehouseInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWarehouse"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWarehouseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a worker task from a certificate deployment task.
 //
 // @param request - DeleteWorkerResourceRequest
 //
@@ -981,13 +1371,17 @@ func (client *Client) DeleteWorkerResourceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the status of a specified certificate application order.
+// Queries the status of a certificate application order, such as domain validation progress.
 //
 // Description:
 //
-// If you do not complete the verification of the domain name ownership after you submit a certificate application, you can call this operation to obtain the information that is required to complete the verification. You can complete the verification of the domain name ownership based on the data returned. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on the DNS server.
+// If you have not completed domain ownership validation after submitting a certificate request, you can call this operation to obtain the information required to complete domain validation. Using the returned domain validation information, you can complete domain validation on the DNS management platform (DNS validation method) or on the domain server (file validation method).
 //
-// The certificate authority (CA) reviews your certificate application only after you complete the verification of the domain name ownership. After the CA approves your certificate application, the CA issues the certificate. If a certificate is issued, you can call this operation to obtain the CA certificate and private key of the certificate.
+// Your certificate request will enter the CA center review stage only after you complete domain validation. After the CA center approves your certificate request, a certificate will be issued to you. If the certificate has been issued, you can call this operation to obtain the issued certificate file and private key content.
+//
+// <props="china">
+//
+// For the complete process of requesting a certificate using the resource plan API, see [Process of requesting a certificate using API operations](https://help.aliyun.com/document_detail/204741.html).
 //
 // @param request - DescribeCertificateStateRequest
 //
@@ -1031,7 +1425,7 @@ func (client *Client) DescribeCertificateStateWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the number of third-party cloud resources on which you deployed certificates by using a multi-cloud deployment task.
+// Queries the number of cloud resources on which certificates were deployed by using a multi-cloud deployment task.
 //
 // @param request - DescribeCloudResourceStatusRequest
 //
@@ -1075,7 +1469,7 @@ func (client *Client) DescribeCloudResourceStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the details of a deployment task. You can call the CreateDeploymentJob operation to create a deployment task and obtain the ID of the task.
+// Retrieves information about a certificate deployment task, including the task status, target resources, and certificates.
 //
 // @param request - DescribeDeploymentJobRequest
 //
@@ -1119,7 +1513,7 @@ func (client *Client) DescribeDeploymentJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the number of worker tasks in a deployment task.
+// Queries the execution status summary of a certificate deployment task, including the number of succeeded and failed workers.
 //
 // @param request - DescribeDeploymentJobStatusRequest
 //
@@ -1163,7 +1557,7 @@ func (client *Client) DescribeDeploymentJobStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the quota for domain validated (DV) certificates that you purchase and the quota usage.
+// Queries the quota and usage of domain validated (DV) certificate packages.
 //
 // @param request - DescribePackageStateRequest
 //
@@ -1207,11 +1601,55 @@ func (client *Client) DescribePackageStateWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Encrypts a certificate in a certificate repository.
+// Retrieves the details of a certificate stored in a certificate warehouse.
+//
+// @param request - DescribeWarehouseCertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWarehouseCertResponse
+func (client *Client) DescribeWarehouseCertWithContext(ctx context.Context, request *DescribeWarehouseCertRequest, runtime *dara.RuntimeOptions) (_result *DescribeWarehouseCertResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertIdentifier) {
+		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeWarehouseCert"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeWarehouseCertResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Encrypts data by using a certificate in a certificate application repository.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled, which may affect your business. To prevent this, call this operation at a reasonable rate.
 //
 // @param request - EncryptRequest
 //
@@ -1275,7 +1713,7 @@ func (client *Client) EncryptWithContext(ctx context.Context, request *EncryptRe
 
 // Summary:
 //
-// 查询证书详情
+// Retrieves certificate details, excluding the certificate body and private key.
 //
 // @param request - GetCertificateDetailRequest
 //
@@ -1319,7 +1757,7 @@ func (client *Client) GetCertificateDetailWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Obtains the content of a certificate signing request (CSR) file.
+// Queries the content of a certificate signing request (CSR).
 //
 // @param request - GetCsrDetailRequest
 //
@@ -1363,7 +1801,7 @@ func (client *Client) GetCsrDetailWithContext(ctx context.Context, request *GetC
 
 // Summary:
 //
-// 查询实例详情
+// Queries the details of an instance.
 //
 // @param request - GetInstanceDetailRequest
 //
@@ -1407,7 +1845,7 @@ func (client *Client) GetInstanceDetailWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 实例统计
+// Queries the summary statistics of Certificate Management Service instances, such as certificate counts by status.
 //
 // @param request - GetInstanceSummaryRequest
 //
@@ -1451,7 +1889,73 @@ func (client *Client) GetInstanceSummaryWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询异步任务状态
+// Retrieves the resources that match a certificate.
+//
+// Description:
+//
+// 本接口用于通过私有 CA 实例的 ID，查询您通过 SSL 证书服务控制台购买的私有 CA 实例的状态信息，例如，CA 实例的状态、包含的证书数量、已签发的证书数量等。
+//
+// 调用本接口前，您必须已经通过[数字证书管理服务控制台](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist)购买了私有 CA。具体操作，请参见[购买私有 CA](https://help.aliyun.com/document_detail/208553.html)。
+//
+// ## QPS 限制
+//
+// 本接口的单用户 QPS 限制为 10 次/秒。超过限制，API 调用将会被限流，这可能影响您的业务，请合理调用。
+//
+// @param request - GetMatchedResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMatchedResourcesResponse
+func (client *Client) GetMatchedResourcesWithContext(ctx context.Context, request *GetMatchedResourcesRequest, runtime *dara.RuntimeOptions) (_result *GetMatchedResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertIds) {
+		query["CertIds"] = request.CertIds
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceScope) {
+		query["ResourceScope"] = request.ResourceScope
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMatchedResources"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMatchedResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the processing result and status of a submitted certificate application.
 //
 // @param request - GetTaskAttributeRequest
 //
@@ -1499,11 +2003,11 @@ func (client *Client) GetTaskAttributeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries certificate details, including the basic information and public and private key content. You can call this operation to download the certificate and private key.
+// Retrieves certificate details, including the basic information, certificate body, and private key. You can also use this operation to download the certificate content and private key.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for each user is 100. If you exceed this limit, the system throttles your API calls, which may affect your business. We recommend that you call this operation within this limit.
 //
 // @param request - GetUserCertificateDetailRequest
 //
@@ -1551,7 +2055,15 @@ func (client *Client) GetUserCertificateDetailWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询云产品资源统计列表
+// Queries the certificate deployment statistics by cloud service type.
+//
+// Description:
+//
+// Queries the number of created Certificate Authority (CA) certificates, including root and subordinate CA certificates.
+//
+// ## QPS limit
+//
+// Each user can make up to 10 queries per second (QPS). If you exceed this limit, the system applies rate limiting to your API calls. This may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - ListAssetCountRequest
 //
@@ -1607,11 +2119,11 @@ func (client *Client) ListAssetCountWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries the certificates in a certificate repository.
+// This API queries certificates in the certificate store.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this API is 10. Calls exceeding this limit are throttled, which may impact your business. Plan your API calls accordingly.
 //
 // @param request - ListCertRequest
 //
@@ -1632,6 +2144,10 @@ func (client *Client) ListCertWithContext(ctx context.Context, request *ListCert
 
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Identifiers) {
+		query["Identifiers"] = request.Identifiers
 	}
 
 	if !dara.IsNil(request.KeyWord) {
@@ -1679,7 +2195,7 @@ func (client *Client) ListCertWithContext(ctx context.Context, request *ListCert
 
 // Summary:
 //
-// Queries certificate repositories.
+// Queries the certificate application repositories in your account.
 //
 // Description:
 //
@@ -1747,7 +2263,7 @@ func (client *Client) ListCertWarehouseWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取证书列表
+// Queries the certificates managed by Certificate Management Service.
 //
 // @param request - ListCertificatesRequest
 //
@@ -1815,7 +2331,7 @@ func (client *Client) ListCertificatesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries a list of AccessKey pairs for multi-cloud deployment.
+// Queries the AccessKey pairs that are configured for multi-cloud certificate deployment.
 //
 // @param request - ListCloudAccessRequest
 //
@@ -1871,7 +2387,7 @@ func (client *Client) ListCloudAccessWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Queries the certificate resources of a cloud service provider and cloud services.
+// Queries the cloud resources on which certificates are deployed, such as Server Load Balancer (SLB) instances and CDN domains.
 //
 // @param tmpReq - ListCloudResourcesRequest
 //
@@ -1945,7 +2461,7 @@ func (client *Client) ListCloudResourcesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Queries a list of contacts.
+// Queries the contacts that receive certificate deployment notifications.
 //
 // @param request - ListContactRequest
 //
@@ -1997,7 +2513,7 @@ func (client *Client) ListContactWithContext(ctx context.Context, request *ListC
 
 // Summary:
 //
-// Queries the details of Certificate Signing Requests (CSRs).
+// Queries the certificate signing requests (CSRs) in your account.
 //
 // @param request - ListCsrRequest
 //
@@ -2053,7 +2569,7 @@ func (client *Client) ListCsrWithContext(ctx context.Context, request *ListCsrRe
 
 // Summary:
 //
-// Queries a list of deployment tasks that are created.
+// Queries the certificate deployment tasks that are created in your account.
 //
 // @param request - ListDeploymentJobRequest
 //
@@ -2109,7 +2625,7 @@ func (client *Client) ListDeploymentJobWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the basic information about a deployment task. After you create a deployment task, you can call this operation to obtain the basic information about the deployment task, including the instance ID, type, and name of the certificate.
+// Queries the certificates associated with a deployment task, such as the certificate instance ID, type, and name.
 //
 // @param request - ListDeploymentJobCertRequest
 //
@@ -2153,7 +2669,7 @@ func (client *Client) ListDeploymentJobCertWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the cloud resources of cloud services in a deployment task.
+// Queries the cloud resources associated with a deployment task. An empty list indicates that the resources are invalid and must be re-associated.
 //
 // @param request - ListDeploymentJobResourceRequest
 //
@@ -2197,7 +2713,7 @@ func (client *Client) ListDeploymentJobResourceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取实例列表
+// Retrieves a list of instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -2273,15 +2789,15 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the certificates or certificate orders of users.
+// Queries the SSL certificates and certificate orders in your account.
 //
 // Description:
 //
-// You can call the ListUserCertificateOrder operation to query the certificates or certificate orders of users. If you set OrderType to CERT or UPLOAD, certificates are returned. If you set OrderType to CPACK or BUY, certificate orders are returned.
+// This operation queries a list of your certificates or orders. Set OrderType to CERT or UPLOAD to query certificates. Set OrderType to CPACK or BUY to query orders.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed this limit, API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - ListUserCertificateOrderRequest
 //
@@ -2345,7 +2861,81 @@ func (client *Client) ListUserCertificateOrderWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the details about the worker tasks of a deployment task. Alibaba Cloud allows you to deploy multiple certificates at a time. Therefore, a deployment task may include multiple worker tasks in multiple cloud services. A worker task refers to a task that deploys a certificate to a cloud resource in a cloud service.
+// Lists warehouses.
+//
+// Description:
+//
+// This operation lists your warehouses.
+//
+// ### QPS limit
+//
+// This operation has a per-user QPS limit of 10 requests per second. Calls exceeding this limit are throttled, which can affect your business.
+//
+// @param tmpReq - ListWarehouseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWarehouseResponse
+func (client *Client) ListWarehouseWithContext(ctx context.Context, tmpReq *ListWarehouseRequest, runtime *dara.RuntimeOptions) (_result *ListWarehouseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListWarehouseShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WarehouseInstanceIds) {
+		request.WarehouseInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WarehouseInstanceIds, dara.String("WarehouseInstanceIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.WarehouseTypes) {
+		request.WarehouseTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WarehouseTypes, dara.String("WarehouseTypes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.WarehouseInstanceIdsShrink) {
+		query["WarehouseInstanceIds"] = request.WarehouseInstanceIdsShrink
+	}
+
+	if !dara.IsNil(request.WarehouseTypesShrink) {
+		query["WarehouseTypes"] = request.WarehouseTypesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWarehouse"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWarehouseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the worker tasks of a deployment task. Each worker task deploys a certificate to a specific cloud resource in a cloud service.
 //
 // @param request - ListWorkerResourceRequest
 //
@@ -2461,7 +3051,7 @@ func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 申请证书
+// Refunds a Certificate Management Service instance if the refund is requested within seven days of purchase.
 //
 // @param request - RefundInstanceRequest
 //
@@ -2505,13 +3095,13 @@ func (client *Client) RefundInstanceWithContext(ctx context.Context, request *Re
 
 // Summary:
 //
-// Submits a renewal application for an issued certificate.
+// Submits a renewal application for an issued SSL certificate.
 //
 // Description:
 //
 // You can call the RenewCertificateOrderForPackageRequest operation to submit a renewal application for a certificate only when the order of the certificate is in the expiring state. After the renewal is complete, a new certificate order whose status is pending application is generated. You must submit a certificate application for the new certificate order and install the new certificate after the new certificate is issued.
 //
-// >  You can call the [DescribeCertificateState](https://help.aliyun.com/document_detail/164111.html) operation to query the status of a certificate application order. If the value of the **Type*	- response parameter is **certificate**, the certificate is issued.
+// > You can call the [DescribeCertificateState](https://help.aliyun.com/document_detail/164111.html) operation to query the status of a certificate application order. If the value of the **Type*	- response parameter is **certificate**, the certificate is issued.
 //
 // @param request - RenewCertificateOrderForPackageRequestRequest
 //
@@ -2563,7 +3153,7 @@ func (client *Client) RenewCertificateOrderForPackageRequestWithContext(ctx cont
 
 // Summary:
 //
-// 吊销证书
+// Revokes a certificate.
 //
 // @param request - RevokeCertificateRequest
 //
@@ -2578,6 +3168,10 @@ func (client *Client) RevokeCertificateWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertificateId) {
+		query["CertificateId"] = request.CertificateId
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -2607,15 +3201,63 @@ func (client *Client) RevokeCertificateWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Signs a private certificate in a certificate application repository.
+// Revokes a client certificate from the certificate repository.
 //
 // Description:
 //
-// You can call the Sign operation to sign a private certificate in a certificate application repository.
+// The rate limit for this API is 10 queries per second (QPS) per user. If you exceed this limit, subsequent API calls will be throttled, which can disrupt your services. We recommend that you call this API at a reasonable rate.
 //
-// ### Limits
+// @param request - RevokeWHClientCertificateRequest
 //
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeWHClientCertificateResponse
+func (client *Client) RevokeWHClientCertificateWithContext(ctx context.Context, request *RevokeWHClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *RevokeWHClientCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Identifier) {
+		query["Identifier"] = request.Identifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeWHClientCertificate"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeWHClientCertificateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// This operation creates a digital signature with a PCA certificate from a certificate repository.
+//
+// Description:
+//
+// This operation creates a digital signature with a PCA certificate from a certificate repository.
+//
+// ### QPS limit
+//
+// This operation supports up to 1,000 queries per second (QPS) for a single user. If you exceed this limit, the system throttles your API calls, which can impact your business. Plan your API calls accordingly.
 //
 // @param request - SignRequest
 //
@@ -2679,7 +3321,7 @@ func (client *Client) SignWithContext(ctx context.Context, request *SignRequest,
 
 // Summary:
 //
-// Uploads or updates the private key for a Certificate Signing Request (CSR). If you did not upload the required priviate when you uploaded a CSR, you can call this operation to upload or update the private key.
+// Updates the private key associated with a certificate signing request (CSR).
 //
 // @param request - UpdateCsrRequest
 //
@@ -2727,7 +3369,7 @@ func (client *Client) UpdateCsrWithContext(ctx context.Context, request *UpdateC
 
 // Summary:
 //
-// Updates a deployment task.
+// Updates the configuration of a certificate deployment task, such as the certificates or target resources.
 //
 // @param request - UpdateDeploymentJobRequest
 //
@@ -2791,7 +3433,7 @@ func (client *Client) UpdateDeploymentJobWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Updates the status of a deployment task.
+// Updates the status of a certificate deployment task, such as changing from editing to pending execution.
 //
 // @param request - UpdateDeploymentJobStatusRequest
 //
@@ -2839,7 +3481,7 @@ func (client *Client) UpdateDeploymentJobStatusWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 更新实例
+// Updates the configuration of a Certificate Management Service instance.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -2939,7 +3581,7 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Rolls back or executes a worker task in a deployment task.
+// Rolls back or re-executes a worker task in a certificate deployment task.
 //
 // @param request - UpdateWorkerResourceStatusRequest
 //
@@ -2991,7 +3633,7 @@ func (client *Client) UpdateWorkerResourceStatusWithContext(ctx context.Context,
 
 // Summary:
 //
-// Uploads an existing Certificate Signing Request (CSR). You can use the CSR when you upload a certificate. You can also manage the uploaded CSRs in a centralized manner.
+// Uploads an existing certificate signing request (CSR) to Certificate Management Service. After the upload, you can use the CSR to apply for certificates.
 //
 // @param request - UploadCsrRequest
 //
@@ -3043,11 +3685,75 @@ func (client *Client) UploadCsrWithContext(ctx context.Context, request *UploadC
 
 // Summary:
 //
-// Uploads a certificate.
+// Uploads a PCA certificate to a certificate warehouse.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// Use this operation to upload a PCA certificate to a certificate warehouse.
+//
+// ## QPS limit
+//
+// The QPS limit for this operation is 10 requests per second per user. Exceeding this limit triggers throttling, which can affect your business.
+//
+// @param request - UploadPCACertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadPCACertResponse
+func (client *Client) UploadPCACertWithContext(ctx context.Context, request *UploadPCACertRequest, runtime *dara.RuntimeOptions) (_result *UploadPCACertResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cert) {
+		query["Cert"] = request.Cert
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PrivateKey) {
+		query["PrivateKey"] = request.PrivateKey
+	}
+
+	if !dara.IsNil(request.WarehouseId) {
+		query["WarehouseId"] = request.WarehouseId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadPCACert"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadPCACertResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a certificate and its private key to Certificate Management Service. Both SM and non-SM certificates are supported.
+//
+// Description:
+//
+// The queries per second (QPS) limit for this operation is 100 for each user. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - UploadUserCertificateRequest
 //
@@ -3123,15 +3829,15 @@ func (client *Client) UploadUserCertificateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Verifies the signature of a private certificate in a certificate application repository.
+// Verifies a data signature by using a private certificate in a certificate application repository.
 //
 // Description:
 //
-// You can call the Verify operation to verify the signature of a private certificate in a certificate application repository.
+// This API verifies the signatures of PCA certificates and SSL certificates in the certificate repository.
 //
-// ### Limits
+// ### QPS limits
 //
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this API is 1,000 for a single user. For your specific QPS limit, refer to the certificate repository. If you exceed this limit, API calls are throttled, which may affect your business. Plan your API calls accordingly.
 //
 // @param request - VerifyRequest
 //

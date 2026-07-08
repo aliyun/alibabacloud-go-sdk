@@ -26,13 +26,13 @@ type UploadCsrRequest struct {
 	//
 	// -----BEGIN CERTIFICATE REQUEST----- ...... -----END CERTIFICATE REQUEST-----
 	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	// The private key content of the certificate in the PEM format.
+	// The content of the certificate\\"s private key in PEM format.
 	//
 	// example:
 	//
 	// -----BEGIN RSA PRIVATE KEY----- MII.... -----END RSA PRIVATE KEY-----
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The name of the CSR.
+	// The name of the CSR. The name can be up to 50 characters long and can contain uppercase letters (A–Z), lowercase letters (a–z), digits (0–9), underscores (_), and hyphens (-).
 	//
 	// example:
 	//

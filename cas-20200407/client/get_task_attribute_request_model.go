@@ -16,12 +16,16 @@ type iGetTaskAttributeRequest interface {
 }
 
 type GetTaskAttributeRequest struct {
+	// The ID of the task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the asynchronous task. The default value is ApplyCertificate, which specifies a query for the result of a certificate application.
+	//
 	// example:
 	//
 	// ApplyCertificate

@@ -16,7 +16,7 @@ type iUploadCsrResponseBody interface {
 }
 
 type UploadCsrResponseBody struct {
-	// The ID of the CSR.
+	// The unique ID of the CSR. You can use this ID to obtain the content of the CSR. For more information, see [GetCsrDetail](https://help.aliyun.com/document_detail/2709720.html).
 	//
 	// example:
 	//

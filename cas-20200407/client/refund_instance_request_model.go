@@ -14,6 +14,8 @@ type iRefundInstanceRequest interface {
 }
 
 type RefundInstanceRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

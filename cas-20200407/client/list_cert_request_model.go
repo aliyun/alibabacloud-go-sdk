@@ -13,6 +13,8 @@ type iListCertRequest interface {
 	GetCertType() *string
 	SetCurrentPage(v int64) *ListCertRequest
 	GetCurrentPage() *int64
+	SetIdentifiers(v string) *ListCertRequest
+	GetIdentifiers() *string
 	SetKeyWord(v string) *ListCertRequest
 	GetKeyWord() *string
 	SetShowSize(v int64) *ListCertRequest
@@ -26,29 +28,35 @@ type iListCertRequest interface {
 }
 
 type ListCertRequest struct {
-	// 证书的类型 。取值：
+	// The certificate type. Valid values:
 	//
-	// - **CA**：表示CA证书。
+	// - **CA**: CA certificate
 	//
-	// - **CERT**：表示签发的证书。
+	// - **CERT**: issued certificate
 	//
 	// example:
 	//
 	// CERT
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number to return. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The keyword for the query. You can enter a name, domain name, or Subject Alternative Name (SAN) extension. Fuzzy match is supported.
+	// A comma-separated list of certificate identifiers.
+	//
+	// example:
+	//
+	// aaa,bbb
+	Identifiers *string `json:"Identifiers,omitempty" xml:"Identifiers,omitempty"`
+	// The keyword for a fuzzy search by name, domain name, or subject alternative name.
 	//
 	// example:
 	//
 	// test_name
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	// The number of entries to return on each page. Default value: 50.
+	// The number of entries per page. The default value is 50.
 	//
 	// example:
 	//
@@ -56,25 +64,25 @@ type ListCertRequest struct {
 	ShowSize *int64 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
 	// The source of the certificate. Valid values:
 	//
-	// 	- **upload**: uploaded certificate
+	// - **upload**: uploaded certificate
 	//
-	// 	- **aliyun**: Alibaba Cloud certificate
+	// - **aliyun**: Alibaba Cloud certificate
 	//
 	// example:
 	//
 	// aliyun
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The status of the certificate. Valid values:
+	// The certificate status. Valid values:
 	//
-	// 	- **ISSUE**: issued
+	// - **ISSUE**: issued
 	//
-	// 	- **REVOKE**: revoked
+	// - **REVOKE**: revoked
 	//
 	// example:
 	//
 	// ISSUE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the certificate repository. You can call the ListCertWarehouse API operation to query the IDs of certificate repositories.
+	// The warehouse ID. You can obtain this ID by calling the [ListCertWarehouse](https://help.aliyun.com/document_detail/453246.html) API.
 	//
 	// example:
 	//
@@ -96,6 +104,10 @@ func (s *ListCertRequest) GetCertType() *string {
 
 func (s *ListCertRequest) GetCurrentPage() *int64 {
 	return s.CurrentPage
+}
+
+func (s *ListCertRequest) GetIdentifiers() *string {
+	return s.Identifiers
 }
 
 func (s *ListCertRequest) GetKeyWord() *string {
@@ -125,6 +137,11 @@ func (s *ListCertRequest) SetCertType(v string) *ListCertRequest {
 
 func (s *ListCertRequest) SetCurrentPage(v int64) *ListCertRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCertRequest) SetIdentifiers(v string) *ListCertRequest {
+	s.Identifiers = &v
 	return s
 }
 

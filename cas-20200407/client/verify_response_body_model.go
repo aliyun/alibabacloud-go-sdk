@@ -16,17 +16,17 @@ type iVerifyResponseBody interface {
 }
 
 type VerifyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1ed33293-2e48-6b14-861e-538e28e408eb
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the signature is valid. Valid values:
+	// The result of the signature verification. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

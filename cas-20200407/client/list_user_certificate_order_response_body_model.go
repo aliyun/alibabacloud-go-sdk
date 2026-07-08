@@ -22,27 +22,31 @@ type iListUserCertificateOrderResponseBody interface {
 }
 
 type ListUserCertificateOrderResponseBody struct {
-	// The certificates and orders.
+	// The list of certificates and orders.
+	//
+	// example:
+	//
+	// {"CertificateOrderList": [{"Status": "PAYED","ProductName": "专业版通配符 OV SSL","InstanceId": "cert-instanceId","ProductCode": "globalsign-xxxx","SourceType": "buy","WildDomainCount": 1,"CertType": "OV","PartnerOrderId": "","OrderId": 3451111,"Algorithm": "RSA","RootBrand": "GlobalSign","AliyunOrderId": 21xxxxxx40655,"DomainType": "WILDCARD","TrusteeStatus": "trustee","Domain": "","BuyDate": 1632649385000,"DomainCount": 1}]}
 	CertificateOrderList []*ListUserCertificateOrderResponseBodyCertificateOrderList `json:"CertificateOrderList,omitempty" xml:"CertificateOrderList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. This ID is unique to each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 10
 	ShowSize *int64 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,257 +121,259 @@ func (s *ListUserCertificateOrderResponseBody) Validate() error {
 }
 
 type ListUserCertificateOrderResponseBodyCertificateOrderList struct {
-	// The algorithm. This parameter is returned only if OrderType is set to CPACK or BUY.
+	// The algorithm. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The ID of the Alibaba Cloud order. This parameter is returned only if OrderType is set to CPACK or BUY.
+	// The ID of the Alibaba Cloud order. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
 	// example:
 	//
 	// 234567
 	AliyunOrderId *int64 `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
-	// The time at which the order was placed. Unit: milliseconds. This parameter is returned only if OrderType is set to CPACK or BUY.
+	// The purchase time. The value is a UNIX timestamp. Unit: milliseconds. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
 	// example:
 	//
 	// 1634283958000
 	BuyDate *int64 `json:"BuyDate,omitempty" xml:"BuyDate,omitempty"`
-	// The time at which the certificate expires. Unit: milliseconds. This parameter is returned only if OrderType is set to CPACK or BUY.
+	// The expiration time of the certificate. The value is a UNIX timestamp. Unit: milliseconds. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
 	// example:
 	//
 	// 1665819958000
 	CertEndTime *int64 `json:"CertEndTime,omitempty" xml:"CertEndTime,omitempty"`
-	// The time at which the certificate starts to take effect. Unit: milliseconds. This parameter is returned only if OrderType is set to CPACK or BUY.
+	// The start time of the certificate. The value is a UNIX timestamp. Unit: milliseconds. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
 	// example:
 	//
 	// 1665819958000
 	CertStartTime *int64 `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
-	// The type of the certificate. This parameter is returned only if OrderType is set to CPACK or BUY. Valid values:
+	// The certificate type. This parameter is returned when OrderType is set to CPACK or BUY. Valid values:
 	//
-	// 	- **DV**: domain validated (DV) certificate
+	// - **DV**: A DV certificate.
 	//
-	// 	- **EV**: extended validation (EV) certificate
+	// - **EV**: An EV certificate.
 	//
-	// 	- **OV**: organization validated (OV) certificate **FREE**: free certificate, available only on the China site (aliyun.com)
+	// - **OV**: An OV certificate.
+	//
+	// - **FREE**: A free certificate for personal trial. This value is supported only on the Alibaba Cloud China website (www\\.aliyun.com).
 	//
 	// example:
 	//
 	// FREE
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The ID of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The certificate ID. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// 896521
 	CertificateId *int64 `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The city in which the organization is located. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The city. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
-	// Hangzhou
+	// 杭州市
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// The parent domain name of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The primary domain name of the certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// aliyun.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The code of the country in which the organization is located. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The country code. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// CN
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// The domain name. This parameter is returned only if OrderType is set to CPACK or BUY.
+	// The domain name. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
 	// example:
 	//
 	// aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The total number of domain names that can be bound to the certificate. This parameter is returned only if OrderType is set to CPACK or BUY.
+	// The number of domain names that you purchased. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
 	// example:
 	//
 	// 1
 	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	// The type of the domain name. This parameter is returned only if OrderType is set to CPACK or BUY. Valid values:
+	// The domain name type. This parameter is returned when OrderType is set to CPACK or BUY. Valid values:
 	//
-	// 	- **ONE**: single domain name
+	// - **ONE**: A single domain name.
 	//
-	// 	- **MULTIPLE**: multiple domain names
+	// - **MULTIPLE**: Multiple domain names.
 	//
-	// 	- **WILDCARD**: single wildcard domain name
+	// - **WILDCARD**: A single wildcard domain name.
 	//
-	// 	- **M_WILDCARD**: multiple wildcard domain names
+	// - **M_WILDCARD**: Multiple wildcard domain names.
 	//
-	// 	- **MIX**: hybrid domain name
+	// - **MIX**: A hybrid domain name.
 	//
 	// example:
 	//
 	// ONE
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The time at which the certificate expires. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The end date of the certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// 2022-11-17
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Indicates whether the certificate expires. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// Indicates whether the certificate has expired. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// true
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The fingerprint of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The certificate fingerprint. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// CC6B3696E7C7CA715BD26E28E45FF3E3DF435C03
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
 	// cas-instanceId
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The issuer of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The issuer of the certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// MyIssuer
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The name of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The certificate name. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// cert-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The order ID. This parameter is returned only if OrderType is set to CPACK or BUY.
+	// The order ID. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
 	// example:
 	//
 	// 2345687
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The name of the organization that is associated with the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The name of the organization that is associated with the certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
-	// Alibaba Cloud
+	// 阿里云
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
-	// The ID of the third-party certificate authority (CA) order. This parameter is returned only if OrderType is set to CPACK or BUY.
+	// The ID of the third-party certificate authority (CA) order. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
 	// example:
 	//
 	// ca-123456
 	PartnerOrderId *string `json:"PartnerOrderId,omitempty" xml:"PartnerOrderId,omitempty"`
-	// The specification ID of the order. This parameter is returned only if OrderType is set to CPACK or BUY.
+	// The code for the product specifications. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
 	// example:
 	//
 	// bykj123456
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The specification name of the order. This parameter is returned only if OrderType is set to CPACK or BUY.
+	// The name of the product specifications. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
 	// example:
 	//
 	// CFCA
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The province or autonomous region in which the organization is located. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The province or autonomous region. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
-	// Zhejiang
+	// 浙江省
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// The ID of the resource group. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The ID of the resource group. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// rg-ae******4wia
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The brand of the certificate. Valid values: WoSign, CFCA, DigiCert, and vTrus. This parameter is returned only if OrderType is set to CPACK or BUY.
+	// The brand, such as WoSign, CFCA, DigiCert, and vTrus. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
 	// example:
 	//
 	// CFCA
 	RootBrand *string `json:"RootBrand,omitempty" xml:"RootBrand,omitempty"`
-	// All domain names that are bound to the certificate. Multiple domain names are separated by commas (,). This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The domain names that are bound to the certificate. Multiple domain names are separated by commas (,). This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// aliyun.com
 	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
-	// The serial number of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The certificate serial number. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// 040a6e493cffdda6d744acf99b6576cf
 	SerialNo *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
-	// The SHA-2 value of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The SHA-2 value of the certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// 56B4DED2243A81DD909D7C39824FFE4DDBD87F91BFA46CD333FF212FE0E7CB11
 	Sha2 *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
-	// The type of the order. This parameter is returned only if OrderType is set to CPACK or BUY. Valid values:
+	// The order type. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
-	// 	- **cpack**: virtual resource order
+	// - **cpack**: An order for a resource plan.
 	//
-	// 	- **buy**: purchase order
+	// - **buy**: A direct purchase.
 	//
 	// example:
 	//
 	// buy
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The time at which the certificate starts to take effect. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// The start date of the certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// 2021-11-16
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// The certificate status of the order. This parameter is returned only if OrderType is set to CPACK or BUY. Valid values:
+	// The status of the order or certificate. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
-	// 	- **PAYED**: pending application
+	// - **PAYED**: The certificate is pending application.
 	//
-	// 	- **CHECKING**: reviewing
+	// - **CHECKING**: The certificate is under review.
 	//
-	// 	- **CHECKED_FAIL**: review failed
+	// - **CHECKED_FAIL**: The review failed.
 	//
-	// 	- **ISSUED**: issued
+	// - **ISSUED**: The certificate is issued.
 	//
-	// 	- **WILLEXPIRED**: about to expire
+	// - **WILLEXPIRED**: The certificate is about to expire.
 	//
-	// 	- **EXPIRED**: expired
+	// - **EXPIRED**: The certificate has expired.
 	//
-	// 	- **NOTACTIVATED**: not activated
+	// - **NOTACTIVATED**: The certificate is not activated.
 	//
-	// 	- **REVOKED**: revoked
+	// - **REVOKED**: The certificate is revoked.
 	//
 	// example:
 	//
 	// PAYED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The hosting status of the certificate. This parameter is returned only if OrderType is set to CPACK or BUY. Valid values:
+	// The hosting status. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
-	// 	- **unTrustee**: not hosted
+	// - **unTrustee**: Not hosted.
 	//
-	// 	- **trustee**: hosted
+	// - **trustee**: Hosted.
 	//
 	// example:
 	//
 	// unTrustee
 	TrusteeStatus *string `json:"TrusteeStatus,omitempty" xml:"TrusteeStatus,omitempty"`
-	// Indicates whether the certificate is an uploaded certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	// Indicates whether the certificate is an uploaded certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
 	//
 	// example:
 	//
 	// false
 	Upload *bool `json:"Upload,omitempty" xml:"Upload,omitempty"`
-	// The number of wildcard domain names that can be bound to the certificate. This parameter is returned only if OrderType is set to CPACK or BUY.
+	// The number of wildcard domain names that you purchased. This parameter is returned when OrderType is set to CPACK or BUY.
 	//
 	// example:
 	//

@@ -88,15 +88,15 @@ type ListDeploymentJobCertResponseBodyData struct {
 	//
 	// example:
 	//
-	// edkog.shop
+	// cert-11488855
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// The type of the certificate order. Valid values:
 	//
-	// 	- **upload**: uploaded certificate.
+	// - **upload**: uploaded certificate.
 	//
-	// 	- **buy**: purchased certificate.
+	// - **buy**: purchased certificate.
 	//
-	// 	- **free**: free certificate. This value is available only on the China site (aliyun.com).
+	// - **free**: free certificate. This value is available only on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type ListDeploymentJobCertResponseBodyData struct {
 	//
 	// example:
 	//
-	// vaultwebhook.vault-webhook.svc
+	// example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 	// Indicates whether the certificate is hosted. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListDeploymentJobCertResponseBodyData struct {
 	NotBeforeTime *int64 `json:"NotBeforeTime,omitempty" xml:"NotBeforeTime,omitempty"`
 	// The ID of the certificate order.
 	//
-	// >  If CertId is returned, this parameter is not returned.
+	// > If CertId is returned, this parameter is not returned.
 	//
 	// example:
 	//
@@ -154,31 +154,31 @@ type ListDeploymentJobCertResponseBodyData struct {
 	Sans []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
 	// The status code of the certificate. Valid values:
 	//
-	// 	- **payed**: paid and pending application
+	// - **payed**: paid and pending application
 	//
-	// 	- **checking**: being validated
+	// - **checking**: being validated
 	//
-	// 	- **checkedFail**: validation failed
+	// - **checkedFail**: validation failed
 	//
-	// 	- **revoked**: revoked
+	// - **revoked**: revoked
 	//
-	// 	- **revokeChecking**: revocation request being validated
+	// - **revokeChecking**: revocation request being validated
 	//
-	// 	- **issued**: issued (excluding hosted certificates that are issued, certificates that are about to expire, expired certificates, and uploaded certificates)
+	// - **issued**: issued (excluding hosted certificates that are issued, certificates that are about to expire, expired certificates, and uploaded certificates)
 	//
-	// 	- **trustee**: hosted and issued
+	// - **trustee**: hosted and issued
 	//
-	// 	- **upload**: uploaded (excluding certificates that are about to expire and expired certificates)
+	// - **upload**: uploaded (excluding certificates that are about to expire and expired certificates)
 	//
-	// 	- **willExpired**: about to expire (including certificates issued by using the Certificate Management Service console and uploaded certificates)
+	// - **willExpired**: about to expire (including certificates issued by using the Certificate Management Service (CAS) console and uploaded certificates)
 	//
-	// 	- **expired**: expired (including certificates issued by using the Certificate Management Service console and uploaded certificates)
+	// - **expired**: expired (including certificates issued by using the CAS console and uploaded certificates)
 	//
-	// 	- **validity**: valid (including certificates that are not expired or revoked)
+	// - **validity**: valid (including certificates that are not expired or revoked)
 	//
-	// 	- **refund**: refunded
+	// - **refund**: refunded
 	//
-	// 	- **closed**: closed
+	// - **closed**: closed
 	//
 	// example:
 	//

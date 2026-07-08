@@ -24,36 +24,39 @@ type iSignRequest interface {
 }
 
 type SignRequest struct {
-	// The unique identifier of the certificate. You can call the [ListCert](https://help.aliyun.com/document_detail/455806.html) operation to obtain the identifier.
+	// The unique identifier of the certificate. You can get this value by calling the [ListCert](https://help.aliyun.com/document_detail/455806.html) operation.
 	//
-	// 	- If the certificate is an SSL certificate, the value of this parameter must be in the {Certificate ID}-cn-hangzhou format.
+	// - The identifier of an SSL certificate is typically in the format \\"{Certificate ID}-cn-hangzhou\\".
 	//
-	// 	- If the certificate is a private certificate, the value of this parameter must be the value of the Identifier field for the private certificate.
+	// - For a PCA certificate, this is the Identifier from the corresponding private certificate.
 	//
 	// example:
 	//
-	// ccaf0c629c2be1e2abb63bb76b
-	CertIdentifier   *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	// 1ef1da5f-38ed-69b3-****-037781890265
+	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	// A unique, user-defined identifier.
+	//
+	// example:
+	//
+	// ***e6bb538d538c70c01f81fg3****
 	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
-	// The data to sign. The value must be encoded in Base64.\\
-	//
-	// For example, if the hexadecimal data that you want to sign is [0x31, 0x32, 0x33, 0x34], set the parameter to the Base64-encoded value MTIzNA==. If you set MessageType to RAW, the size of the data must be less than 4 KB. If the size of the data is greater than 4 KB, you can set MessageType to DIGEST and set Message to the digest of the data. The digest is a hash value. You can compute the digest of the data on an on-premises machine. The certificate application repository uses the digest that you compute in your own certificate application system. The message digest algorithm that you use must match the specified signature algorithm. The following items describe the details:
-	//
-	// 	- If the signature algorithm is SHA256withRSA, SHA256withRSA/PSS, or SHA256withECDSA, the message digest algorithm must be SHA-256.
-	//
-	// 	- If the signature algorithm is SM3withSM2, the message digest algorithm must be SM3.
+	// The data to sign. The MessageType parameter determines the format of this data. If MessageType is set to RAW, Message is the raw data. If MessageType is set to BASE64, Message is the Base64-encoded raw data. If MessageType is set to DIGEST, Message is the message digest (hash value). If MessageType is set to BLIND, Message is the Base64-encoded blinded message.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// message
+	// MTIzNA==
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The value type of the Message parameter. Valid values:
+	// The message type. Valid values:
 	//
-	// 	- RAW: the raw data. This is the default value.
+	// - `RAW` (default): The raw data.
 	//
-	// 	- DIGEST: the message digest (hash value) of the raw data.
+	// - `DIGEST`: The message digest (hash value) of the raw data.
+	//
+	// - `BASE64`: The Base64-encoded raw data.
+	//
+	// - `BLIND`: Enables blind signing. This is supported only for certificates that use an RSA algorithm.
 	//
 	// This parameter is required.
 	//
@@ -63,13 +66,15 @@ type SignRequest struct {
 	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 	// The signature algorithm. Valid values:
 	//
-	// 	- SHA256withRSA
+	// - `SHA256withRSA`
 	//
-	// 	- SHA256withRSA/PSS
+	// - `SHA256withRSA/PSS`
 	//
-	// 	- SHA256withECDSA
+	// - `SHA256withECDSA`
 	//
-	// 	- SM3withSM2
+	// - `SM3withSM2`
+	//
+	// - `SHA256withRSA/P7`
 	//
 	// This parameter is required.
 	//
@@ -77,7 +82,14 @@ type SignRequest struct {
 	//
 	// SHA256withRSA
 	SigningAlgorithm *string `json:"SigningAlgorithm,omitempty" xml:"SigningAlgorithm,omitempty"`
-	WarehouseId      *int64  `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
+	// The repository ID.
+	//
+	// > You can get this ID by calling the [ListCertWarehouse](https://help.aliyun.com/document_detail/455805.html) operation.
+	//
+	// example:
+	//
+	// 1
+	WarehouseId *int64 `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
 }
 
 func (s SignRequest) String() string {

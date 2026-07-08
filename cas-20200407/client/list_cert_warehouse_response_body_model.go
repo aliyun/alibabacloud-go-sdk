@@ -131,9 +131,9 @@ type ListCertWarehouseResponseBodyCertWarehouseList struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the certificate application repository has expired. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -159,15 +159,15 @@ type ListCertWarehouseResponseBodyCertWarehouseList struct {
 	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
 	// The type of the certificate application repository. Valid values:
 	//
-	// 	- **ssl**: certificate application repository of SSL certificates
+	// - **ssl**: certificate application repository of SSL certificates
 	//
-	// 	- **uploadPCA**: certificate application repository of uploaded private certificates
+	// - **uploadPCA**: certificate application repository of uploaded private certificates
 	//
-	// 	- **free**: certificate application repository of free certificates, available only on the China site (aliyun.com)
+	// - **free**: certificate application repository of free certificates, available only on the China site (aliyun.com)
 	//
-	// 	- **aliyunPCA**: certificate application repository of private certificates purchased from Alibaba Cloud Private Certificate Authority (PCA), available only on the China site (aliyun.com)
+	// - **aliyunPCA**: certificate application repository of private certificates purchased from Alibaba Cloud PCA, available only on the China site (aliyun.com)
 	//
-	// 	- **disable**: disabled certificate application repository
+	// - **disable**: disabled certificate application repository
 	//
 	// example:
 	//

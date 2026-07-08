@@ -40,7 +40,7 @@ type ListDeploymentJobResponseBody struct {
 	//
 	// example:
 	//
-	// 20
+	// 50
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
 	// The total number of deployment tasks returned.
 	//
@@ -125,11 +125,11 @@ type ListDeploymentJobResponseBodyData struct {
 	CertDomain *string `json:"CertDomain,omitempty" xml:"CertDomain,omitempty"`
 	// The type of the certificate. Valid values:
 	//
-	// 	- **upload**: uploaded certificate
+	// - **upload**: uploaded certificate
 	//
-	// 	- **buy**: purchased certificate
+	// - **buy**: purchased certificate
 	//
-	// 	- **free**: free certificate, available only on the China site (aliyun.com)
+	// - **free**: free certificate, available only on the China site (aliyun.com)
 	//
 	// example:
 	//
@@ -137,9 +137,9 @@ type ListDeploymentJobResponseBodyData struct {
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
 	// Indicates whether the deployment task is deleted. Valid values:
 	//
-	// 	- **0**: not deleted
+	// - **0**: not deleted
 	//
-	// 	- **1**: deleted
+	// - **1**: deleted
 	//
 	// example:
 	//
@@ -173,13 +173,13 @@ type ListDeploymentJobResponseBodyData struct {
 	//
 	// example:
 	//
-	// cas-job-user-0gvntn
+	// cas-job-user-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the deployment task.
 	//
-	// 	- **cloud**: multi-cloud deployment task.
+	// - **cloud**: multi-cloud deployment task.
 	//
-	// 	- **user**: cloud service deployment task. This type of task does not support ECS instances.
+	// - **user**: cloud service deployment task. This type of task does not support ECS instances.
 	//
 	// example:
 	//
@@ -199,9 +199,9 @@ type ListDeploymentJobResponseBodyData struct {
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// Indicates whether the rollback worker is included. For example, if a cloud service involved in a deployment task has been rolled back, **1*	- is returned. Valid values:
 	//
-	// 	- **0**: The rollback worker is not included.
+	// - **0**: The rollback worker is not included.
 	//
-	// 	- **1**: The rollback worker is included.
+	// - **1**: The rollback worker is included.
 	//
 	// example:
 	//
@@ -221,17 +221,17 @@ type ListDeploymentJobResponseBodyData struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the deployment task. Valid values:
 	//
-	// 	- **pending**
+	// - **pending**
 	//
-	// 	- **editing**
+	// - **editing**
 	//
-	// 	- **scheduling**
+	// - **scheduling**
 	//
-	// 	- **processing**
+	// - **processing**
 	//
-	// 	- **error**
+	// - **error**
 	//
-	// 	- **success**
+	// - **success**
 	//
 	// example:
 	//
@@ -241,7 +241,7 @@ type ListDeploymentJobResponseBodyData struct {
 	//
 	// example:
 	//
-	// 1666884372152785
+	// 166688437*****
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

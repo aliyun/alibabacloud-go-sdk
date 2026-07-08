@@ -26,11 +26,11 @@ type UpdateWorkerResourceStatusRequest struct {
 	//
 	// 8888
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The desired status.
+	// The desired status of the worker resource.
 	//
 	// Valid values:
 	//
-	// 	- rollback
+	// - rollback
 	//
 	// This parameter is required.
 	//

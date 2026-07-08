@@ -30,13 +30,13 @@ type iUploadUserCertificateRequest interface {
 }
 
 type UploadUserCertificateRequest struct {
-	// The content of the certificate in the PEM format.
+	// The content of a non-SM certificate in PEM format.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE----- MIIF...... -----END CERTIFICATE-----
 	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
-	// The content of the encryption certificate in PEM format.
+	// The content of the SM encryption certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type UploadUserCertificateRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	EncryptCert *string `json:"EncryptCert,omitempty" xml:"EncryptCert,omitempty"`
-	// The private key of the encryption certificate in the PEM format.
+	// The content of the private key of the SM encryption certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type UploadUserCertificateRequest struct {
 	//
 	// -----END EC PRIVATE KEY-----
 	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitempty" xml:"EncryptPrivateKey,omitempty"`
-	// The private key of the certificate in the PEM format.
+	// The private key of a non-SM certificate in PEM format.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type UploadUserCertificateRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The name of the certificate. The name can be up to 64 characters in length, and can contain all types of characters, such as letters, digits, and underscores (_).
+	// The custom name of the certificate. The name can be up to 63 characters long and can contain letters, digits, and underscores (_).
 	//
-	// >  The name must be unique within an Alibaba Cloud account.
+	// > Certificate names must be unique for each user.
 	//
 	// This parameter is required.
 	//
@@ -76,13 +76,13 @@ type UploadUserCertificateRequest struct {
 	//
 	// cert-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// the resource group id.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-ae****vty
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The content of the signing certificate in the PEM format.
+	// The content of the SM signing certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type UploadUserCertificateRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	SignCert *string `json:"SignCert,omitempty" xml:"SignCert,omitempty"`
-	// The private key of the signing certificate in the PEM format.
+	// The content of the private key of the SM signing certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type UploadUserCertificateRequest struct {
 	//
 	// -----END EC PRIVATE KEY-----
 	SignPrivateKey *string `json:"SignPrivateKey,omitempty" xml:"SignPrivateKey,omitempty"`
-	// The tags.
+	// A list of tags.
 	Tags []*UploadUserCertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

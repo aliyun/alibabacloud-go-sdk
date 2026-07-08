@@ -22,19 +22,28 @@ type iListCertificatesResponseBody interface {
 }
 
 type ListCertificatesResponseBody struct {
+	// The list of certificates.
 	CertificateList []*ListCertificatesResponseBodyCertificateList `json:"CertificateList,omitempty" xml:"CertificateList,omitempty" type:"Repeated"`
+	// The current page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 10
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -108,72 +117,140 @@ func (s *ListCertificatesResponseBody) Validate() error {
 }
 
 type ListCertificatesResponseBodyCertificateList struct {
+	// The encryption algorithm of the certificate. Valid values:
+	//
+	// - **RSA**
+	//
+	// - **ECC**
+	//
+	// - **SM2**
+	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The global ID of the certificate. This ID is used across Alibaba Cloud services and is in the `Certificate ID-Region ID` format. For example, if a certificate ID is `123`, the `CertIdentifier` is `123-cn-hangzhou` for the Alibaba Cloud China site and `123-ap-southeast-1` for the Alibaba Cloud International site (www\\.alibabacloud.com).
+	//
+	// - For the Alibaba Cloud China website, the format is certificate ID + "-cn-hangzhou".
+	//
+	// - For the Alibaba Cloud International website (www\\.alibabacloud.com), the format is certificate ID + "-ap-southeast-1".
+	//
+	// For example, if the certificate ID is 123, the CertIdentifier is "123-cn-hangzhou" for the China site and "123-ap-southeast-1" for the International site.
+	//
 	// example:
 	//
 	// 21589515-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	// The ID of the certificate.
+	//
 	// example:
 	//
 	// 17281539
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The name of the certificate.
+	//
 	// example:
 	//
 	// test
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	// The source of the certificate.
+	//
+	// - BUY: A purchased certificate.
+	//
+	// - TEST: A test certificate.
+	//
+	// - UPLOAD: An uploaded certificate.
+	//
 	// example:
 	//
 	// BUY
 	CertificateSource *string `json:"CertificateSource,omitempty" xml:"CertificateSource,omitempty"`
+	// The status of the certificate.
+	//
+	// - **issued**: The certificate is issued.
+	//
+	// - **revoked**: The certificate is revoked.
+	//
+	// - **willExpire**: The certificate is about to expire.
+	//
+	// - **expired**: The certificate has expired.
+	//
 	// example:
 	//
 	// issued
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
+	// The common name of the certificate.
+	//
 	// example:
 	//
 	// aliyun.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The domain names that are bound to the certificate. Multiple domain names are separated by commas.
+	//
 	// example:
 	//
 	// test.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Indicates whether a private key is available. Valid values:
+	//
+	// - **true**: A private key is available.
+	//
+	// - **false**: A private key is not available.
+	//
 	// example:
 	//
 	// true
 	ExistPrivateKey *bool `json:"ExistPrivateKey,omitempty" xml:"ExistPrivateKey,omitempty"`
+	// The fingerprint of the public key.
+	//
 	// example:
 	//
 	// 123
 	FingerPrint *string `json:"FingerPrint,omitempty" xml:"FingerPrint,omitempty"`
+	// The ID of the certificate instance.
+	//
 	// example:
 	//
 	// cas-cn-v***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The certification authority.
+	//
 	// example:
 	//
 	// DigiCert
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The key size, in bits.
+	//
+	// - For RSA keys, typical sizes are 2048, 3072, or 4096.
+	//
+	// - For ECC or SM2 keys, the typical size is 256.
+	//
 	// example:
 	//
 	// 2048
 	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
+	// The end of the certificate validity period.
+	//
 	// example:
 	//
 	// 1749580567000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The beginning of the certificate validity period.
+	//
 	// example:
 	//
 	// 1760745600000
 	NotBefore *int64 `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The serial number of the certificate.
+	//
 	// example:
 	//
 	// 123
-	Serial                  *string   `json:"Serial,omitempty" xml:"Serial,omitempty"`
+	Serial *string `json:"Serial,omitempty" xml:"Serial,omitempty"`
+	// An array that contains the alternative domain names of the certificate. This parameter corresponds to the `Subject Alternative Name` field of the certificate.
 	SubjectAlternativeNames []*string `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Repeated"`
-	UsingProductList        []*string `json:"UsingProductList,omitempty" xml:"UsingProductList,omitempty" type:"Repeated"`
+	// The list of Alibaba Cloud products in which the certificate is deployed.
+	UsingProductList []*string `json:"UsingProductList,omitempty" xml:"UsingProductList,omitempty" type:"Repeated"`
 }
 
 func (s ListCertificatesResponseBodyCertificateList) String() string {

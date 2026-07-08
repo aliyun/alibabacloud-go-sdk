@@ -20,18 +20,26 @@ type iListAssetCountRequest interface {
 }
 
 type ListAssetCountRequest struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The expiration date of the certificate.
+	//
 	// example:
 	//
 	// 2020-07-13
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The number of entries to return on each page. Default value: 50.
+	//
 	// example:
 	//
 	// 1
 	ShowSize *int64 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The date of certificate issuance.
+	//
 	// example:
 	//
 	// 2018-07-13

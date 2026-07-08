@@ -22,15 +22,15 @@ type EncryptResponseBody struct {
   // 
   // example:
   // 
-  // 12345678-1234-1234-1234-12345678****
+  // 1ef1da5f-38ed-69b3-****-037781890265
   CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-  // The data after encryption. The value is encoded in Base64.
+  // The encrypted data. The data is Base64-encoded.
   // 
   // example:
   // 
   // ZOyIygCyaOW6Gj****MlNKiuyjfzw=
   CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 

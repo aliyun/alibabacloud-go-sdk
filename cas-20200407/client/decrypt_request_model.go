@@ -26,11 +26,11 @@ type iDecryptRequest interface {
 type DecryptRequest struct {
 	// The encryption algorithm. Valid values:
 	//
-	// 	- **RSAES_OAEP_SHA_1**
+	// - **RSAES_OAEP_SHA_1**
 	//
-	// 	- **RSAES_OAEP_SHA_256**
+	// - **RSAES_OAEP_SHA_256**
 	//
-	// 	- **SM2PKE**
+	// - **SM2PKE**
 	//
 	// This parameter is required.
 	//
@@ -38,36 +38,48 @@ type DecryptRequest struct {
 	//
 	// RSAESOAEPSHA_1
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The unique identifier of the certificate. You can call the [ListCert](https://help.aliyun.com/document_detail/455806.html) operation to query the identifier.
+	// The unique identifier of the certificate. Call [ListCert](https://help.aliyun.com/document_detail/455806.html) to obtain this parameter.
 	//
-	// 	- If the certificate is an SSL certificate, the value of this parameter must be in the {Certificate ID}-cn-hangzhou format.
+	// - The identifier of an SSL certificate is typically in the format {Certificate ID}-cn-hangzhou.
 	//
-	// 	- If the certificate is a private certificate, the value of this parameter must be the value of the Identifier field for the private certificate.
+	// - For a private certificate authority (PCA) certificate, this is the value of the Identifier field of the private certificate.
 	//
 	// example:
 	//
-	// 12345678-1234-1234-1234-12345678****
+	// 1ef1da5f-38ed-69b3-****-037781890265
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The data that you want to decrypt. The value is encoded in Base64.
+	// The Base64-encoded data to decrypt.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ZOyIygCyaOW6Gj****MlNKiuyjfzw=
-	CiphertextBlob   *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	// A custom identifier that serves as a unique key.
+	//
+	// example:
+	//
+	// ****6bb538d538c70c01f81jh2****
 	CustomIdentifier *string `json:"CustomIdentifier,omitempty" xml:"CustomIdentifier,omitempty"`
-	// The value type of the Message parameter. Valid values:
+	// The message type. Valid values:
 	//
-	// 	- RAW: The returned result is raw data encoded in UTF-8.
+	// - RAW: The response returns the plaintext in UTF-8 encoding.
 	//
-	// 	- Base64: The returned result is Base64-encoded data. This is the default value.
+	// - Base64 (default): The response returns the Base64-encoded plaintext.
 	//
 	// example:
 	//
 	// Base64
 	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
-	WarehouseId *int64  `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
+	// The ID of the repository.
+	//
+	// > Call [ListCertWarehouse](https://help.aliyun.com/document_detail/455805.html) to obtain this ID.
+	//
+	// example:
+	//
+	// 1
+	WarehouseId *int64 `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
 }
 
 func (s DecryptRequest) String() string {

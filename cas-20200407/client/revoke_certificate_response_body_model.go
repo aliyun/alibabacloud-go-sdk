@@ -14,6 +14,8 @@ type iRevokeCertificateResponseBody interface {
 }
 
 type RevokeCertificateResponseBody struct {
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74

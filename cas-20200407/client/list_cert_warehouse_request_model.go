@@ -22,7 +22,7 @@ type iListCertWarehouseRequest interface {
 }
 
 type ListCertWarehouseRequest struct {
-	// The number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
@@ -48,15 +48,15 @@ type ListCertWarehouseRequest struct {
 	ShowSize *int64 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
 	// The type of the certificate application repository. Valid values:
 	//
-	// 	- **ssl**: certificate application repository of SSL certificates
+	// - **ssl**: certificate application repository of SSL certificates
 	//
-	// 	- **uploadPCA**: certificate application repository of uploaded private certificates
+	// - **uploadPCA**: certificate application repository of uploaded private certificates
 	//
-	// 	- **free**: certificate application repository of free certificates, available only on the China site (aliyun.com)
+	// - **free**: certificate application repository of free certificates, available only on the China site (aliyun.com)
 	//
-	// 	- **aliyunPCA**: certificate application repository of private certificates purchased from Alibaba Cloud Private Certificate Authority (PCA), available only on the China site (aliyun.com)
+	// - **aliyunPCA**: certificate application repository of private certificates purchased from Alibaba Cloud Private Certificate Authority (PCA), available only on the China site (aliyun.com)
 	//
-	// 	- **disable**: disabled certificate application repository
+	// - **disable**: disabled certificate application repository
 	//
 	// example:
 	//

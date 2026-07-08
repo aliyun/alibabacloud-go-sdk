@@ -42,15 +42,15 @@ type MoveResourceGroupRequest struct {
 	//
 	// cas-cn-4591d3xa****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.\\
+	// The type of the resource.<br>
 	//
 	// Default value: **instance**
 	//
 	// Valid values:
 	//
-	// 	- instance: certificate order
+	// - instance: certificate order
 	//
-	// 	- Certificate: certificate
+	// - Certificate: certificate
 	//
 	// This parameter is required.
 	//

@@ -44,9 +44,9 @@ type CreateDeploymentJobRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- cloud: multi-cloud deployment task.
+	// - cloud: multi-cloud deployment task.
 	//
-	// 	- user: cloud service deployment task. This type of task does not support cloud servers.
+	// - user: cloud service deployment task. This type of task does not support cloud servers.
 	//
 	// This parameter is required.
 	//

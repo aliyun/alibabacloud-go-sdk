@@ -46,29 +46,29 @@ type ListWorkerResourceRequest struct {
 	//
 	// example:
 	//
-	// 20
+	// 50
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
 	// The status of the worker task.
 	//
 	// Valid values:
 	//
-	// 	- rollback
+	// - rollback
 	//
-	// 	- rollback_error
+	// - rollback_error
 	//
-	// 	- success
+	// - success
 	//
-	// 	- rollback_success
+	// - rollback_success
 	//
-	// 	- pending
+	// - pending
 	//
-	// 	- scheduling
+	// - scheduling
 	//
-	// 	- processing
+	// - processing
 	//
-	// 	- error
+	// - error
 	//
-	// 	- editing
+	// - editing
 	//
 	// example:
 	//

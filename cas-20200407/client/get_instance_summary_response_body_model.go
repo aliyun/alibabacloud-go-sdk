@@ -24,26 +24,38 @@ type iGetInstanceSummaryResponseBody interface {
 }
 
 type GetInstanceSummaryResponseBody struct {
+	// The remaining quota for automatic reissue.
+	//
 	// example:
 	//
 	// 1
 	AutoReissueCount *int32 `json:"AutoReissueCount,omitempty" xml:"AutoReissueCount,omitempty"`
+	// The remaining certificate quota.
+	//
 	// example:
 	//
 	// 1
 	CertificateCount *int32 `json:"CertificateCount,omitempty" xml:"CertificateCount,omitempty"`
+	// The total number of inactive instances.
+	//
 	// example:
 	//
 	// 1
 	InactiveCount *int32 `json:"InactiveCount,omitempty" xml:"InactiveCount,omitempty"`
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 09470F19-CEE8-5C63-BF2C-02B5E3F07A17
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of instances.
+	//
 	// example:
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of instances that are about to expire.
+	//
 	// example:
 	//
 	// 1

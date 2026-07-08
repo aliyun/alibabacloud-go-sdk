@@ -46,13 +46,13 @@ type CreateCsrRequest struct {
 	//
 	// example:
 	//
-	// 123.com
+	// example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 	// The name of the company.
 	//
 	// example:
 	//
-	// aly
+	// 北京CSR科技有效公司
 	CorpName *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
 	// The code of the country or region in which the organization is located. For example, you can use CN to indicate China and use US to indicate the United States.
 	//
@@ -70,9 +70,9 @@ type CreateCsrRequest struct {
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
 	// The key length that is used by the algorithm.
 	//
-	// 	- The key length for RSA algorithms can be 2,048, 3,072, and 4,096 bits.
+	// - The key length for RSA algorithms can be 2,048, 3,072, and 4,096 bits.
 	//
-	// 	- The key length for ECC and SM2 algorithms can be 256 bits.
+	// - The key length for ECC and SM2 algorithms can be 256 bits.
 	//
 	// This parameter is required.
 	//
@@ -106,7 +106,7 @@ type CreateCsrRequest struct {
 	//
 	// example:
 	//
-	// www.example.com,www.aliyundoc.com
+	// www.aliyundoc.com,www.example.com
 	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
 }
 

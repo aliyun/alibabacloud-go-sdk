@@ -22,9 +22,9 @@ type iListCertResponseBody interface {
 }
 
 type ListCertResponseBody struct {
-	// An array that consists of the certificates.
+	// The list of certificates.
 	CertList []*ListCertResponseBodyCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Repeated"`
-	// The page number of the returned page. Default value: 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type ListCertResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned per page. Default value: 50.
+	// The page size. Default value: 50.
 	//
 	// example:
 	//
 	// 50
 	ShowSize *int64 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,39 +117,51 @@ func (s *ListCertResponseBody) Validate() error {
 }
 
 type ListCertResponseBodyCertList struct {
-	// The expiration time of the certificate. The value is a UNIX timestamp. Unit: milliseconds.
+	// The expiration date of the certificate. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1634283958000
 	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	// The issuance time of the certificate. The value is a UNIX timestamp. Unit: milliseconds.
+	// The encryption algorithm of the certificate. Valid values:
+	//
+	// - **RSA**: the RSA algorithm
+	//
+	// - **ECC**: the ECC algorithm
+	//
+	// - **SM2**: the SM2 algorithm
+	//
+	// example:
+	//
+	// RSA
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The start date of the certificate\\"s validity period. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1665819958000
 	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	// 证书的类型 。取值：
+	// The type of the certificate. Valid values:
 	//
-	// - **CA**：表示CA证书。
+	// - **CA**: a Certificate Authority (CA) certificate
 	//
-	// - **CERT**：表示签发的证书。
+	// - **CERT**: an issued certificate
 	//
 	// example:
 	//
 	// CERT
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The domain name.
+	// The common name of the certificate. This is typically the primary domain name associated with the certificate.
 	//
 	// example:
 	//
 	// aliyun.alibaba.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// Indicates whether the certificate contains a private key. Valid values:
+	// Indicates whether a private key is available for the certificate. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -167,17 +179,29 @@ type ListCertResponseBodyCertList struct {
 	//
 	// mySSL
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The domain names that are bound to the certificate. Multiple domain names are separated by commas.
+	// The Subject Alternative Names (SANs) associated with the certificate. Multiple domain names are separated by commas (,).
 	//
 	// example:
 	//
 	// *.alibaba.com,aliyun.alibaba.com
 	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	// The serial number of the certificate. This parameter is returned only if the `OrderType` request parameter is set to `CERT` or `UPLOAD`.
+	//
+	// example:
+	//
+	// 038abf4c27c33a7c11ad6658124135b52180
+	SerialNo *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	// The signature algorithm of the certificate.
+	//
+	// example:
+	//
+	// SHA256WITHRSA
+	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
 	// The source of the certificate. Valid values:
 	//
-	// 	- **upload**: uploaded certificate
+	// - **upload**: The certificate is uploaded.
 	//
-	// 	- **aliyun**: Alibaba Cloud certificate
+	// - **aliyun**: The certificate is from Alibaba Cloud.
 	//
 	// example:
 	//
@@ -185,21 +209,21 @@ type ListCertResponseBodyCertList struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The status of the certificate. Valid values:
 	//
-	// 	- **ISSUE**: issued
+	// - **ISSUE**: The certificate is issued.
 	//
-	// 	- **REVOKE**: revoked
+	// - **REVOKE**: The certificate is revoked.
 	//
 	// example:
 	//
 	// ISSUE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the certificate repository.
+	// The warehouse ID.
 	//
 	// example:
 	//
 	// 2
 	WhId *int64 `json:"WhId,omitempty" xml:"WhId,omitempty"`
-	// The instance ID of the certificate repository.
+	// The warehouse instance ID.
 	//
 	// example:
 	//
@@ -217,6 +241,10 @@ func (s ListCertResponseBodyCertList) GoString() string {
 
 func (s *ListCertResponseBodyCertList) GetAfterDate() *int64 {
 	return s.AfterDate
+}
+
+func (s *ListCertResponseBodyCertList) GetAlgorithm() *string {
+	return s.Algorithm
 }
 
 func (s *ListCertResponseBodyCertList) GetBeforeDate() *int64 {
@@ -247,6 +275,14 @@ func (s *ListCertResponseBodyCertList) GetSans() *string {
 	return s.Sans
 }
 
+func (s *ListCertResponseBodyCertList) GetSerialNo() *string {
+	return s.SerialNo
+}
+
+func (s *ListCertResponseBodyCertList) GetSignAlgorithm() *string {
+	return s.SignAlgorithm
+}
+
 func (s *ListCertResponseBodyCertList) GetSourceType() *string {
 	return s.SourceType
 }
@@ -265,6 +301,11 @@ func (s *ListCertResponseBodyCertList) GetWhInstanceId() *string {
 
 func (s *ListCertResponseBodyCertList) SetAfterDate(v int64) *ListCertResponseBodyCertList {
 	s.AfterDate = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetAlgorithm(v string) *ListCertResponseBodyCertList {
+	s.Algorithm = &v
 	return s
 }
 
@@ -300,6 +341,16 @@ func (s *ListCertResponseBodyCertList) SetIssuer(v string) *ListCertResponseBody
 
 func (s *ListCertResponseBodyCertList) SetSans(v string) *ListCertResponseBodyCertList {
 	s.Sans = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetSerialNo(v string) *ListCertResponseBodyCertList {
+	s.SerialNo = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetSignAlgorithm(v string) *ListCertResponseBodyCertList {
+	s.SignAlgorithm = &v
 	return s
 }
 

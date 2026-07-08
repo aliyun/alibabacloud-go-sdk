@@ -30,7 +30,7 @@ type ListContactRequest struct {
 	//
 	// 186
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The number of contacts per page.
+	// The number of entries to return on each page. Default value: 20.
 	//
 	// example:
 	//

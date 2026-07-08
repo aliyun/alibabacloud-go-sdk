@@ -14,6 +14,8 @@ type iCancelPendingCertificateRequest interface {
 }
 
 type CancelPendingCertificateRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,7 +24,7 @@ type RenewCertificateOrderForPackageRequestRequest struct {
 	//
 	// A CSR file contains the information about your server and company. When you apply for a certificate, you must submit the CSR file to the CA. The CA signs the CSR file by using the private key of the root certificate and generates a public key file to issue your certificate.
 	//
-	// >  The **CN*	- field in the CSR file specifies the domain name that is bound to the certificate.
+	// > The **CN*	- field in the CSR file specifies the domain name that is bound to the certificate.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type RenewCertificateOrderForPackageRequestRequest struct {
 	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
 	// The ID of the certificate application order that you want to renew.
 	//
-	// >  After you call the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html), [CreateCertificateRequest](https://help.aliyun.com/document_detail/455292.html), or [CreateCertificateWithCsrRequest](https://help.aliyun.com/document_detail/455801.html) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId*	- response parameter. You can also call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/455804.html) operation to obtain the order ID.
+	// > After you call the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html), [CreateCertificateRequest](https://help.aliyun.com/document_detail/455292.html), or [CreateCertificateWithCsrRequest](https://help.aliyun.com/document_detail/455801.html) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId*	- response parameter. You can also call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/455804.html) operation to obtain the order ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type RenewCertificateOrderForPackageRequestRequest struct {
 	//
 	// 123451222
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The tags.
+	// A list of tags.
 	Tags []*RenewCertificateOrderForPackageRequestRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -95,7 +95,7 @@ func (s *RenewCertificateOrderForPackageRequestRequest) Validate() error {
 type RenewCertificateOrderForPackageRequestRequestTags struct {
 	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
 	//
-	// A tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	// A tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http\\:// or https\\://.
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type RenewCertificateOrderForPackageRequestRequestTags struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the resource tag. A maximum of 20 tag values can be entered. If this value needs to be passed in, an empty string can be entered.
 	//
-	// A maximum of 128 characters are supported, it cannot start with \\"aliyun\\" or \\"acs:\\", and it cannot contain \\"http://\\" or \\"https://\\".
+	// A maximum of 128 characters are supported, it cannot start with \\"aliyun\\" or \\"acs:\\", and it cannot contain \\"http\\://\\" or \\"https\\://\\".
 	//
 	// example:
 	//

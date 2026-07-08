@@ -16,11 +16,11 @@ type iDescribeCloudResourceStatusRequest interface {
 type DescribeCloudResourceStatusRequest struct {
 	// The AccessKey secret used to access cloud resources.
 	//
-	// >  You can call the [ListCloudAccess](https://help.aliyun.com/document_detail/2712219.html) operation to obtain the ID.
+	// > You can call the [ListCloudAccess](https://help.aliyun.com/document_detail/2712219.html) operation to obtain the ID.
 	//
 	// example:
 	//
-	// AKID9*******XX
+	// AKID9AHG6iCZlncN7yPmOsQ1X******
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 }
 

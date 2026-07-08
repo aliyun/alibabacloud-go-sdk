@@ -133,7 +133,7 @@ type ListCsrResponseBodyCsrList struct {
 	//
 	// example:
 	//
-	// corp_name
+	// 北京CSR科技有限公司
 	CorpName *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
 	// The code of the country or region in which the organization is located. For example, you can use CN to indicate China and use US to indicate the United States. The default value is the code of the country or region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued. For more information about country codes, see the "Country codes" section of the [Manage company profiles](https://help.aliyun.com/document_detail/198289.html) topic.
 	//
@@ -181,7 +181,7 @@ type ListCsrResponseBodyCsrList struct {
 	//
 	// example:
 	//
-	// name
+	// test_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The province or location.
 	//
@@ -193,7 +193,7 @@ type ListCsrResponseBodyCsrList struct {
 	//
 	// example:
 	//
-	// www.example.com,www.aliyundoc.com
+	// www.aliyundoc.com,www.example.com
 	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
 }
 

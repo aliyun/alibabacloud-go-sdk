@@ -24,15 +24,15 @@ type UpdateDeploymentJobStatusRequest struct {
 	//
 	// 8888
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The desired status.
+	// The desired status of the deployment task.
 	//
 	// Valid values:
 	//
-	// 	- pending
+	// - pending
 	//
-	// 	- scheduling
+	// - scheduling
 	//
-	// 	- editing
+	// - editing
 	//
 	// This parameter is required.
 	//

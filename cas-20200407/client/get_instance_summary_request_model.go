@@ -14,6 +14,8 @@ type iGetInstanceSummaryRequest interface {
 }
 
 type GetInstanceSummaryRequest struct {
+	// The instance type. Valid values: BUY: a paid certificate. TEST: a test certificate.
+	//
 	// example:
 	//
 	// TEST

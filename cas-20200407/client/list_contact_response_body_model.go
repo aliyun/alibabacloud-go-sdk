@@ -168,7 +168,7 @@ type ListContactResponseBodyContactList struct {
 	//
 	// example:
 	//
-	// ty-yaoyue.com
+	// John
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The webhook URL of the chatbot.
 	//

@@ -18,7 +18,7 @@ type iCreateCertificateRequestResponseBody interface {
 type CreateCertificateRequestResponseBody struct {
 	// The ID of the certificate application order.
 	//
-	// >  You can use the ID to query the status of the certificate application. For more information, see [DescribeCertificateState](https://help.aliyun.com/document_detail/164111.html).
+	// > You can use the ID to query the status of the certificate application. For more information, see [DescribeCertificateState](https://help.aliyun.com/document_detail/164111.html).
 	//
 	// example:
 	//

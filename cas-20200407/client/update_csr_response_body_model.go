@@ -14,7 +14,7 @@ type iUpdateCsrResponseBody interface {
 }
 
 type UpdateCsrResponseBody struct {
-	// The request ID.
+	// The unique ID of the request. Alibaba Cloud generates this ID for each request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//

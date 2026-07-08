@@ -16,13 +16,13 @@ type iSignResponseBody interface {
 }
 
 type SignResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1ed33293-2e48-6b14-861e-538e28e408eb
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The signature.
+	// The Base64-encoded signature.
 	//
 	// example:
 	//

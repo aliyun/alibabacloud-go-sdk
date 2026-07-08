@@ -50,28 +50,120 @@ type iGetRiskCountResponseBody interface {
 }
 
 type GetRiskCountResponseBody struct {
-	AliyunAssetCertificateExpiredCount         *int32 `json:"AliyunAssetCertificateExpiredCount,omitempty" xml:"AliyunAssetCertificateExpiredCount,omitempty"`
-	AliyunAssetCertificateWillExpiredCount     *int32 `json:"AliyunAssetCertificateWillExpiredCount,omitempty" xml:"AliyunAssetCertificateWillExpiredCount,omitempty"`
-	BuyCertificateExpireCount                  *int32 `json:"BuyCertificateExpireCount,omitempty" xml:"BuyCertificateExpireCount,omitempty"`
-	BuyCertificateNotDeploymentCount           *int32 `json:"BuyCertificateNotDeploymentCount,omitempty" xml:"BuyCertificateNotDeploymentCount,omitempty"`
-	BuyCertificateNotTrusteeCount              *int32 `json:"BuyCertificateNotTrusteeCount,omitempty" xml:"BuyCertificateNotTrusteeCount,omitempty"`
-	BuyCertificateWillExpiredCount             *int32 `json:"BuyCertificateWillExpiredCount,omitempty" xml:"BuyCertificateWillExpiredCount,omitempty"`
-	BuyCheckedFailCount                        *int32 `json:"BuyCheckedFailCount,omitempty" xml:"BuyCheckedFailCount,omitempty"`
-	DomainAssetNotMonitorCount                 *int32 `json:"DomainAssetNotMonitorCount,omitempty" xml:"DomainAssetNotMonitorCount,omitempty"`
-	FreeCertificateExpireCount                 *int32 `json:"FreeCertificateExpireCount,omitempty" xml:"FreeCertificateExpireCount,omitempty"`
-	FreeCertificateNotDeploymentCount          *int32 `json:"FreeCertificateNotDeploymentCount,omitempty" xml:"FreeCertificateNotDeploymentCount,omitempty"`
-	FreeCertificateWillExpiredCount            *int32 `json:"FreeCertificateWillExpiredCount,omitempty" xml:"FreeCertificateWillExpiredCount,omitempty"`
-	FreeCheckedFailCount                       *int32 `json:"FreeCheckedFailCount,omitempty" xml:"FreeCheckedFailCount,omitempty"`
-	MultiCloudAssetCertificateExpiredCount     *int32 `json:"MultiCloudAssetCertificateExpiredCount,omitempty" xml:"MultiCloudAssetCertificateExpiredCount,omitempty"`
+	// Number of expired Alibaba Cloud certificates.
+	//
+	// example:
+	//
+	// 10
+	AliyunAssetCertificateExpiredCount *int32 `json:"AliyunAssetCertificateExpiredCount,omitempty" xml:"AliyunAssetCertificateExpiredCount,omitempty"`
+	// Number of Alibaba Cloud certificates that will expire soon.
+	//
+	// example:
+	//
+	// 10
+	AliyunAssetCertificateWillExpiredCount *int32 `json:"AliyunAssetCertificateWillExpiredCount,omitempty" xml:"AliyunAssetCertificateWillExpiredCount,omitempty"`
+	// Number of expired paid certificates.
+	//
+	// example:
+	//
+	// 10
+	BuyCertificateExpireCount *int32 `json:"BuyCertificateExpireCount,omitempty" xml:"BuyCertificateExpireCount,omitempty"`
+	// Number of paid certificates not deployed.
+	//
+	// example:
+	//
+	// 10
+	BuyCertificateNotDeploymentCount *int32 `json:"BuyCertificateNotDeploymentCount,omitempty" xml:"BuyCertificateNotDeploymentCount,omitempty"`
+	// Number of paid certificates not managed.
+	//
+	// example:
+	//
+	// 10
+	BuyCertificateNotTrusteeCount *int32 `json:"BuyCertificateNotTrusteeCount,omitempty" xml:"BuyCertificateNotTrusteeCount,omitempty"`
+	// Number of paid certificates that will expire soon.
+	//
+	// example:
+	//
+	// 10
+	BuyCertificateWillExpiredCount *int32 `json:"BuyCertificateWillExpiredCount,omitempty" xml:"BuyCertificateWillExpiredCount,omitempty"`
+	// Number of failed paid certificate orders.
+	//
+	// example:
+	//
+	// 10
+	BuyCheckedFailCount *int32 `json:"BuyCheckedFailCount,omitempty" xml:"BuyCheckedFailCount,omitempty"`
+	// Number of domains without monitoring configured.
+	//
+	// example:
+	//
+	// 10
+	DomainAssetNotMonitorCount *int32 `json:"DomainAssetNotMonitorCount,omitempty" xml:"DomainAssetNotMonitorCount,omitempty"`
+	// Number of expired free certificates.
+	//
+	// example:
+	//
+	// 10
+	FreeCertificateExpireCount *int32 `json:"FreeCertificateExpireCount,omitempty" xml:"FreeCertificateExpireCount,omitempty"`
+	// Number of free certificates not deployed.
+	//
+	// example:
+	//
+	// 10
+	FreeCertificateNotDeploymentCount *int32 `json:"FreeCertificateNotDeploymentCount,omitempty" xml:"FreeCertificateNotDeploymentCount,omitempty"`
+	// Number of free certificates that will expire soon.
+	//
+	// example:
+	//
+	// 10
+	FreeCertificateWillExpiredCount *int32 `json:"FreeCertificateWillExpiredCount,omitempty" xml:"FreeCertificateWillExpiredCount,omitempty"`
+	// Number of failed free certificate orders.
+	//
+	// example:
+	//
+	// 10
+	FreeCheckedFailCount *int32 `json:"FreeCheckedFailCount,omitempty" xml:"FreeCheckedFailCount,omitempty"`
+	// Number of expired multicloud certificates.
+	//
+	// example:
+	//
+	// 10
+	MultiCloudAssetCertificateExpiredCount *int32 `json:"MultiCloudAssetCertificateExpiredCount,omitempty" xml:"MultiCloudAssetCertificateExpiredCount,omitempty"`
+	// Number of multicloud certificates that will expire soon.
+	//
+	// example:
+	//
+	// 10
 	MultiCloudAssetCertificateWillExpiredCount *int32 `json:"MultiCloudAssetCertificateWillExpiredCount,omitempty" xml:"MultiCloudAssetCertificateWillExpiredCount,omitempty"`
+	// The ID of this API call. Alibaba Cloud generates this unique identifier for each request. Use it to troubleshoot and locate issues.
+	//
 	// example:
 	//
 	// 5BCD2F6C-7A9D-47C1-8588-2CC6A4E0BE5E
-	RequestId                           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UploadCertificateExpireCount        *int32  `json:"UploadCertificateExpireCount,omitempty" xml:"UploadCertificateExpireCount,omitempty"`
-	UploadCertificateNotDeploymentCount *int32  `json:"UploadCertificateNotDeploymentCount,omitempty" xml:"UploadCertificateNotDeploymentCount,omitempty"`
-	UploadCertificateNotNoticeCount     *int32  `json:"UploadCertificateNotNoticeCount,omitempty" xml:"UploadCertificateNotNoticeCount,omitempty"`
-	UploadCertificateWillExpiredCount   *int32  `json:"UploadCertificateWillExpiredCount,omitempty" xml:"UploadCertificateWillExpiredCount,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of expired uploaded certificates.
+	//
+	// example:
+	//
+	// 10
+	UploadCertificateExpireCount *int32 `json:"UploadCertificateExpireCount,omitempty" xml:"UploadCertificateExpireCount,omitempty"`
+	// Number of uploaded certificates not deployed.
+	//
+	// example:
+	//
+	// 10
+	UploadCertificateNotDeploymentCount *int32 `json:"UploadCertificateNotDeploymentCount,omitempty" xml:"UploadCertificateNotDeploymentCount,omitempty"`
+	// Number of uploaded certificates without alerting configured.
+	//
+	// example:
+	//
+	// 10
+	UploadCertificateNotNoticeCount *int32 `json:"UploadCertificateNotNoticeCount,omitempty" xml:"UploadCertificateNotNoticeCount,omitempty"`
+	// Number of uploaded certificates that will expire soon.
+	//
+	// example:
+	//
+	// 10
+	UploadCertificateWillExpiredCount *int32 `json:"UploadCertificateWillExpiredCount,omitempty" xml:"UploadCertificateWillExpiredCount,omitempty"`
 }
 
 func (s GetRiskCountResponseBody) String() string {

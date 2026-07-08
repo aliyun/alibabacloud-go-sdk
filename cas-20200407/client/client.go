@@ -77,6 +77,12 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"rus-west-1-pop":              dara.String("cas.aliyuncs.com"),
 		"us-east-1":                   dara.String("cas.aliyuncs.com"),
 		"us-west-1":                   dara.String("cas.aliyuncs.com"),
+		"me-east-1":                   dara.String("cas.me-east-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("cas.eu-central-1.aliyuncs.com"),
+		"ap-southeast-2":              dara.String("cas.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-1":              dara.String("cas.ap-southeast-1.aliyuncs.com"),
+		"ap-south-1":                  dara.String("cas.ap-south-1.aliyuncs.com"),
+		"ap-northeast-1":              dara.String("cas.ap-northeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -111,7 +117,85 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 申请证书
+// Adds an AccessKey for authorization.
+//
+// Description:
+//
+// The single-user QPS limit for this API is 100 queries per second (QPS). Calls that exceed this limit are throttled, which can affect your business operations. Call this API at a reasonable rate to avoid throttling.
+//
+// @param request - AddCloudAccessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddCloudAccessResponse
+func (client *Client) AddCloudAccessWithOptions(request *AddCloudAccessRequest, runtime *dara.RuntimeOptions) (_result *AddCloudAccessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudName) {
+		query["CloudName"] = request.CloudName
+	}
+
+	if !dara.IsNil(request.SecretId) {
+		query["SecretId"] = request.SecretId
+	}
+
+	if !dara.IsNil(request.SecretKey) {
+		query["SecretKey"] = request.SecretKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddCloudAccess"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddCloudAccessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds an AccessKey for authorization.
+//
+// Description:
+//
+// The single-user QPS limit for this API is 100 queries per second (QPS). Calls that exceed this limit are throttled, which can affect your business operations. Call this API at a reasonable rate to avoid throttling.
+//
+// @param request - AddCloudAccessRequest
+//
+// @return AddCloudAccessResponse
+func (client *Client) AddCloudAccess(request *AddCloudAccessRequest) (_result *AddCloudAccessResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddCloudAccessResponse{}
+	_body, _err := client.AddCloudAccessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a certificate application for a Certificate Management Service instance.
 //
 // @param request - ApplyCertificateRequest
 //
@@ -155,7 +239,7 @@ func (client *Client) ApplyCertificateWithOptions(request *ApplyCertificateReque
 
 // Summary:
 //
-// 申请证书
+// Submits a certificate application for a Certificate Management Service instance.
 //
 // @param request - ApplyCertificateRequest
 //
@@ -173,11 +257,109 @@ func (client *Client) ApplyCertificate(request *ApplyCertificateRequest) (_resul
 
 // Summary:
 //
-// Revokes an issued certificate and cancels the application order of the certificate.
+// # Updates the notification status in batches
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// After a CA certificate is created, it is in the normal issuance state by default. You can call this operation to change the status of a CA certificate from normal issuance to revoked. In the normal issuance state, the CA certificate can be used to issue certificates. In the revoked state, the CA certificate cannot be used to issue certificates, and the certificates that have been issued by the CA certificate also become invalid accordingly.
+//
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a sub CA certificate.
+//
+// ## QPS limit
+//
+// The QPS limit per user for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation properly.
+//
+// @param request - BatchUpdateNoticeStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchUpdateNoticeStatusResponse
+func (client *Client) BatchUpdateNoticeStatusWithOptions(request *BatchUpdateNoticeStatusRequest, runtime *dara.RuntimeOptions) (_result *BatchUpdateNoticeStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Ids) {
+		query["Ids"] = request.Ids
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.NoticeBiz) {
+		query["NoticeBiz"] = request.NoticeBiz
+	}
+
+	if !dara.IsNil(request.NoticeStatus) {
+		query["NoticeStatus"] = request.NoticeStatus
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchUpdateNoticeStatus"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchUpdateNoticeStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Updates the notification status in batches
+//
+// Description:
+//
+// After a CA certificate is created, it is in the normal issuance state by default. You can call this operation to change the status of a CA certificate from normal issuance to revoked. In the normal issuance state, the CA certificate can be used to issue certificates. In the revoked state, the CA certificate cannot be used to issue certificates, and the certificates that have been issued by the CA certificate also become invalid accordingly.
+//
+// Before you call this operation, you must have called [CreateRootCACertificate](https://help.aliyun.com/document_detail/465962.html) to create a root CA certificate and called [CreateSubCACertificate](https://help.aliyun.com/document_detail/465959.html) to create a sub CA certificate.
+//
+// ## QPS limit
+//
+// The QPS limit per user for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation properly.
+//
+// @param request - BatchUpdateNoticeStatusRequest
+//
+// @return BatchUpdateNoticeStatusResponse
+func (client *Client) BatchUpdateNoticeStatus(request *BatchUpdateNoticeStatusRequest) (_result *BatchUpdateNoticeStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BatchUpdateNoticeStatusResponse{}
+	_body, _err := client.BatchUpdateNoticeStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes an issued certificate or cancels a pending certificate order and restores the quota.
+//
+// Description:
+//
+// This API has a limit of 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled. This can affect your business. Call the API at a reasonable rate.
 //
 // @param request - CancelCertificateForPackageRequestRequest
 //
@@ -221,11 +403,11 @@ func (client *Client) CancelCertificateForPackageRequestWithOptions(request *Can
 
 // Summary:
 //
-// Revokes an issued certificate and cancels the application order of the certificate.
+// Revokes an issued certificate or cancels a pending certificate order and restores the quota.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API has a limit of 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled. This can affect your business. Call the API at a reasonable rate.
 //
 // @param request - CancelCertificateForPackageRequestRequest
 //
@@ -243,11 +425,11 @@ func (client *Client) CancelCertificateForPackageRequest(request *CancelCertific
 
 // Summary:
 //
-// Cancels a certificate application order that is in the pending validation or being reviewed state.
+// Cancels a certificate application order that is pending domain verification or under review.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 100 queries per second (QPS) for each user. API calls that exceed this limit are throttled. Because this can impact your business, you should call this API at a reasonable rate.
 //
 // @param request - CancelOrderRequestRequest
 //
@@ -291,11 +473,11 @@ func (client *Client) CancelOrderRequestWithOptions(request *CancelOrderRequestR
 
 // Summary:
 //
-// Cancels a certificate application order that is in the pending validation or being reviewed state.
+// Cancels a certificate application order that is pending domain verification or under review.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 100 queries per second (QPS) for each user. API calls that exceed this limit are throttled. Because this can impact your business, you should call this API at a reasonable rate.
 //
 // @param request - CancelOrderRequestRequest
 //
@@ -313,7 +495,7 @@ func (client *Client) CancelOrderRequest(request *CancelOrderRequestRequest) (_r
 
 // Summary:
 //
-// 撤回证书申请
+// Cancels a pending certificate application that has not been issued.
 //
 // @param request - CancelPendingCertificateRequest
 //
@@ -357,7 +539,7 @@ func (client *Client) CancelPendingCertificateWithOptions(request *CancelPending
 
 // Summary:
 //
-// 撤回证书申请
+// Cancels a pending certificate application that has not been issued.
 //
 // @param request - CancelPendingCertificateRequest
 //
@@ -375,15 +557,15 @@ func (client *Client) CancelPendingCertificate(request *CancelPendingCertificate
 
 // Summary:
 //
-// Submits a certificate application.
+// Submits a certificate application by using a purchased certificate package quota.
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455800.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
+// - Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455800.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
 //
-//		- After you call this operation to submit a certificate application and the certificate is issued, the certificate quota provided by the resource plan that you purchased is consumed. When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate that you want to apply for.
+// - After you call this operation to submit a certificate application and the certificate is issued, the certificate quota provided by the resource plan that you purchased is consumed. When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate that you want to apply for.
 //
-//		- After you call this operation to submit a certificate application, you also need to call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required for domain name ownership verification and manually complete the verification. Then, your certificate application is reviewed by the certificate authority (CA). If you use the Domain Name System (DNS) verification method, you must complete the verification on your DNS service provider system. If you use the file verification method, you must complete the verification on the DNS server.
+// - After you call this operation to submit a certificate application, you also need to call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required for domain name ownership verification and manually complete the verification. Then, your certificate application is reviewed by the certificate authority (CA). If you use the Domain Name System (DNS) verification method, you must complete the verification on your DNS service provider system. If you use the file verification method, you must complete the verification on the DNS server.
 //
 // @param request - CreateCertificateForPackageRequestRequest
 //
@@ -459,15 +641,15 @@ func (client *Client) CreateCertificateForPackageRequestWithOptions(request *Cre
 
 // Summary:
 //
-// Submits a certificate application.
+// Submits a certificate application by using a purchased certificate package quota.
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455800.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
+// - Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455800.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
 //
-//		- After you call this operation to submit a certificate application and the certificate is issued, the certificate quota provided by the resource plan that you purchased is consumed. When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate that you want to apply for.
+// - After you call this operation to submit a certificate application and the certificate is issued, the certificate quota provided by the resource plan that you purchased is consumed. When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate that you want to apply for.
 //
-//		- After you call this operation to submit a certificate application, you also need to call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required for domain name ownership verification and manually complete the verification. Then, your certificate application is reviewed by the certificate authority (CA). If you use the Domain Name System (DNS) verification method, you must complete the verification on your DNS service provider system. If you use the file verification method, you must complete the verification on the DNS server.
+// - After you call this operation to submit a certificate application, you also need to call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required for domain name ownership verification and manually complete the verification. Then, your certificate application is reviewed by the certificate authority (CA). If you use the Domain Name System (DNS) verification method, you must complete the verification on your DNS service provider system. If you use the file verification method, you must complete the verification on the DNS server.
 //
 // @param request - CreateCertificateForPackageRequestRequest
 //
@@ -489,13 +671,13 @@ func (client *Client) CreateCertificateForPackageRequest(request *CreateCertific
 //
 // Description:
 //
-//	  You can call this operation to apply for only DV certificates. If you want to apply for an organization validated (OV) or extended validation (EV) certificate, we recommend that you call the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html) operation. This operation allows you to apply for certificates of all specifications and specify the method to generate a certificate signing request (CSR) file.
+// - You can call this operation to apply for only DV certificates. If you want to apply for an organization validated (OV) or extended validation (EV) certificate, we recommend that you call the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html) operation. This operation allows you to apply for certificates of all specifications and specify the method to generate a certificate signing request (CSR) file.
 //
-//		- Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455803.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
+// - Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455803.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
 //
-//		- When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate.
+// - When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate.
 //
-//		- After you call this operation to submit a certificate application, Certificate Management Service automatically creates a CSR file for your application and consumes the certificate quota in the certificate resource plans of the specified specifications that you purchased. After you call this operation, you also need to call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required to complete domain name verification, and manually complete the verification. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on your DNS server. Then, the certificate authority (CA) will review your certificate application.
+// - After you call this operation to submit a certificate application, Certificate Management Service automatically creates a CSR file for your application and consumes the certificate quota in the certificate resource plans of the specified specifications that you purchased. After you call this operation, you also need to call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required to complete domain name verification, and manually complete the verification. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on your DNS server. Then, the certificate authority (CA) will review your certificate application.
 //
 // @param request - CreateCertificateRequestRequest
 //
@@ -567,13 +749,13 @@ func (client *Client) CreateCertificateRequestWithOptions(request *CreateCertifi
 //
 // Description:
 //
-//	  You can call this operation to apply for only DV certificates. If you want to apply for an organization validated (OV) or extended validation (EV) certificate, we recommend that you call the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html) operation. This operation allows you to apply for certificates of all specifications and specify the method to generate a certificate signing request (CSR) file.
+// - You can call this operation to apply for only DV certificates. If you want to apply for an organization validated (OV) or extended validation (EV) certificate, we recommend that you call the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html) operation. This operation allows you to apply for certificates of all specifications and specify the method to generate a certificate signing request (CSR) file.
 //
-//		- Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455803.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
+// - Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455803.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
 //
-//		- When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate.
+// - When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate.
 //
-//		- After you call this operation to submit a certificate application, Certificate Management Service automatically creates a CSR file for your application and consumes the certificate quota in the certificate resource plans of the specified specifications that you purchased. After you call this operation, you also need to call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required to complete domain name verification, and manually complete the verification. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on your DNS server. Then, the certificate authority (CA) will review your certificate application.
+// - After you call this operation to submit a certificate application, Certificate Management Service automatically creates a CSR file for your application and consumes the certificate quota in the certificate resource plans of the specified specifications that you purchased. After you call this operation, you also need to call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required to complete domain name verification, and manually complete the verification. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on your DNS server. Then, the certificate authority (CA) will review your certificate application.
 //
 // @param request - CreateCertificateRequestRequest
 //
@@ -591,17 +773,17 @@ func (client *Client) CreateCertificateRequest(request *CreateCertificateRequest
 
 // Summary:
 //
-// Purchases, applies for, and issues a domain validated (DV) certificate by using a custom certificate signing request (CSR) file. You can use extended certificate services to purchase and apply for a DV certificate with a few clicks.
+// Purchases, applies for, and issues a domain validated (DV) certificate by using a custom certificate signing request (CSR) file.
 //
 // Description:
 //
-//	  You can use this operation to apply for only a domain validated (DV) certificate. You cannot use this operation to apply for an organization validated (OV) certificate. We recommend that you use the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html) operation to apply for a certificate. You can use the CreateCertificateForPackageRequest operation to apply for certificates of all types and specify the CSR generation method.
+// - You can use this operation to apply for only a domain validated (DV) certificate. You cannot use this operation to apply for an organization validated (OV) certificate. We recommend that you use the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html) operation to apply for a certificate. You can use the CreateCertificateForPackageRequest operation to apply for certificates of all types and specify the CSR generation method.
 //
-//		- Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455803.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
+// - Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455803.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
 //
-//		- When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate that you want to apply for.
+// - When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate that you want to apply for.
 //
-//		- After you call this operation to submit a certificate application, the certificate quota of the required specifications that you purchased is consumed. After you call this operation, you must call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required for domain name ownership verification and manually complete the verification. Then, your certificate application is reviewed by the certificate authority (CA). If you use the Domain Name System (DNS) verification method, you must complete the verification on your DNS service provider system. If you use the file verification method, you must complete the verification on the DNS server.
+// - After you call this operation to submit a certificate application, the certificate quota of the required specifications that you purchased is consumed. After you call this operation, you must call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required for domain name ownership verification and manually complete the verification. Then, your certificate application is reviewed by the certificate authority (CA). If you use the Domain Name System (DNS) verification method, you must complete the verification on your DNS service provider system. If you use the file verification method, you must complete the verification on the DNS server.
 //
 // @param request - CreateCertificateWithCsrRequestRequest
 //
@@ -669,17 +851,17 @@ func (client *Client) CreateCertificateWithCsrRequestWithOptions(request *Create
 
 // Summary:
 //
-// Purchases, applies for, and issues a domain validated (DV) certificate by using a custom certificate signing request (CSR) file. You can use extended certificate services to purchase and apply for a DV certificate with a few clicks.
+// Purchases, applies for, and issues a domain validated (DV) certificate by using a custom certificate signing request (CSR) file.
 //
 // Description:
 //
-//	  You can use this operation to apply for only a domain validated (DV) certificate. You cannot use this operation to apply for an organization validated (OV) certificate. We recommend that you use the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html) operation to apply for a certificate. You can use the CreateCertificateForPackageRequest operation to apply for certificates of all types and specify the CSR generation method.
+// - You can use this operation to apply for only a domain validated (DV) certificate. You cannot use this operation to apply for an organization validated (OV) certificate. We recommend that you use the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html) operation to apply for a certificate. You can use the CreateCertificateForPackageRequest operation to apply for certificates of all types and specify the CSR generation method.
 //
-//		- Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455803.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
+// - Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](https://help.aliyun.com/document_detail/28542.html). You can call the [DescribePackageState](https://help.aliyun.com/document_detail/455803.html) operation to query the usage of a certificate resource plan of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that you submit, and the number of certificates that are issued.
 //
-//		- When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate that you want to apply for.
+// - When you call this operation, you can use the **ProductCode*	- parameter to specify the specifications of the certificate that you want to apply for.
 //
-//		- After you call this operation to submit a certificate application, the certificate quota of the required specifications that you purchased is consumed. After you call this operation, you must call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required for domain name ownership verification and manually complete the verification. Then, your certificate application is reviewed by the certificate authority (CA). If you use the Domain Name System (DNS) verification method, you must complete the verification on your DNS service provider system. If you use the file verification method, you must complete the verification on the DNS server.
+// - After you call this operation to submit a certificate application, the certificate quota of the required specifications that you purchased is consumed. After you call this operation, you must call the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to obtain the information that is required for domain name ownership verification and manually complete the verification. Then, your certificate application is reviewed by the certificate authority (CA). If you use the Domain Name System (DNS) verification method, you must complete the verification on your DNS service provider system. If you use the file verification method, you must complete the verification on the DNS server.
 //
 // @param request - CreateCertificateWithCsrRequestRequest
 //
@@ -697,7 +879,7 @@ func (client *Client) CreateCertificateWithCsrRequest(request *CreateCertificate
 
 // Summary:
 //
-// Creates a certificate signing request (CSR). A CSR file contains the information about an SSL certificate that you want to apply for. The information includes the domain names that you want to bind to the certificate and the name and the geographical location of the certificate holder. When you submit a certificate application to a certificate authority (CA), you must provide a CSR. After the CA approves your certificate application, the CA uses the private key of the root CA to sign your CSR and generates a public key file. The public key file is the SSL certificate that the CA issues to you. The private key of the SSL certificate is generated when you create the CSR.
+// Creates a certificate signing request (CSR) that contains information about an SSL certificate to apply for, such as the domain names and the certificate holder. You must provide a CSR when you submit a certificate application to a certificate authority (CA).
 //
 // @param request - CreateCsrRequest
 //
@@ -777,7 +959,7 @@ func (client *Client) CreateCsrWithOptions(request *CreateCsrRequest, runtime *d
 
 // Summary:
 //
-// Creates a certificate signing request (CSR). A CSR file contains the information about an SSL certificate that you want to apply for. The information includes the domain names that you want to bind to the certificate and the name and the geographical location of the certificate holder. When you submit a certificate application to a certificate authority (CA), you must provide a CSR. After the CA approves your certificate application, the CA uses the private key of the root CA to sign your CSR and generates a public key file. The public key file is the SSL certificate that the CA issues to you. The private key of the SSL certificate is generated when you create the CSR.
+// Creates a certificate signing request (CSR) that contains information about an SSL certificate to apply for, such as the domain names and the certificate holder. You must provide a CSR when you submit a certificate application to a certificate authority (CA).
 //
 // @param request - CreateCsrRequest
 //
@@ -795,7 +977,7 @@ func (client *Client) CreateCsr(request *CreateCsrRequest) (_result *CreateCsrRe
 
 // Summary:
 //
-// Creates a certificate deployment task. After an SSL certificate is issued, you can create a certificate deployment task to immediately deploy the certificate to an Alibaba Cloud service or deploy the certificate to the service at a specific point in time. Then, the certificate can implement trusted identity authentication and ensure the security of data transmission for your website hosted on the service.
+// Creates a certificate deployment task to deploy an SSL certificate to one or more Alibaba Cloud services immediately or at a scheduled time.
 //
 // Description:
 //
@@ -863,7 +1045,7 @@ func (client *Client) CreateDeploymentJobWithOptions(request *CreateDeploymentJo
 
 // Summary:
 //
-// Creates a certificate deployment task. After an SSL certificate is issued, you can create a certificate deployment task to immediately deploy the certificate to an Alibaba Cloud service or deploy the certificate to the service at a specific point in time. Then, the certificate can implement trusted identity authentication and ensure the security of data transmission for your website hosted on the service.
+// Creates a certificate deployment task to deploy an SSL certificate to one or more Alibaba Cloud services immediately or at a scheduled time.
 //
 // Description:
 //
@@ -885,11 +1067,215 @@ func (client *Client) CreateDeploymentJob(request *CreateDeploymentJobRequest) (
 
 // Summary:
 //
-// Decrypts a certificate in a certificate repository.
+// Issues a single client certificate from the general user certificate repository.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This API is limited to 10 QPS per user. Exceeding this limit triggers throttling, which can affect your business. Call this API at a reasonable rate to avoid disruption.
+//
+// @param request - CreateWHClientCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWHClientCertificateResponse
+func (client *Client) CreateWHClientCertificateWithOptions(request *CreateWHClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateWHClientCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AfterTime) {
+		query["AfterTime"] = request.AfterTime
+	}
+
+	if !dara.IsNil(request.Algorithm) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !dara.IsNil(request.BeforeTime) {
+		query["BeforeTime"] = request.BeforeTime
+	}
+
+	if !dara.IsNil(request.CommonName) {
+		query["CommonName"] = request.CommonName
+	}
+
+	if !dara.IsNil(request.Country) {
+		query["Country"] = request.Country
+	}
+
+	if !dara.IsNil(request.Csr) {
+		query["Csr"] = request.Csr
+	}
+
+	if !dara.IsNil(request.Days) {
+		query["Days"] = request.Days
+	}
+
+	if !dara.IsNil(request.Immediately) {
+		query["Immediately"] = request.Immediately
+	}
+
+	if !dara.IsNil(request.Locality) {
+		query["Locality"] = request.Locality
+	}
+
+	if !dara.IsNil(request.Months) {
+		query["Months"] = request.Months
+	}
+
+	if !dara.IsNil(request.Organization) {
+		query["Organization"] = request.Organization
+	}
+
+	if !dara.IsNil(request.OrganizationUnit) {
+		query["OrganizationUnit"] = request.OrganizationUnit
+	}
+
+	if !dara.IsNil(request.ParentIdentifier) {
+		query["ParentIdentifier"] = request.ParentIdentifier
+	}
+
+	if !dara.IsNil(request.SanType) {
+		query["SanType"] = request.SanType
+	}
+
+	if !dara.IsNil(request.SanValue) {
+		query["SanValue"] = request.SanValue
+	}
+
+	if !dara.IsNil(request.State) {
+		query["State"] = request.State
+	}
+
+	if !dara.IsNil(request.Years) {
+		query["Years"] = request.Years
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWHClientCertificate"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWHClientCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Issues a single client certificate from the general user certificate repository.
+//
+// Description:
+//
+// This API is limited to 10 QPS per user. Exceeding this limit triggers throttling, which can affect your business. Call this API at a reasonable rate to avoid disruption.
+//
+// @param request - CreateWHClientCertificateRequest
+//
+// @return CreateWHClientCertificateResponse
+func (client *Client) CreateWHClientCertificate(request *CreateWHClientCertificateRequest) (_result *CreateWHClientCertificateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateWHClientCertificateResponse{}
+	_body, _err := client.CreateWHClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a certificate warehouse.
+//
+// @param request - CreateWarehouseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWarehouseResponse
+func (client *Client) CreateWarehouseWithOptions(request *CreateWarehouseRequest, runtime *dara.RuntimeOptions) (_result *CreateWarehouseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Biz) {
+		query["Biz"] = request.Biz
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateWarehouse"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateWarehouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a certificate warehouse.
+//
+// @param request - CreateWarehouseRequest
+//
+// @return CreateWarehouseResponse
+func (client *Client) CreateWarehouse(request *CreateWarehouseRequest) (_result *CreateWarehouseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateWarehouseResponse{}
+	_body, _err := client.CreateWarehouseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Decrypts data that was encrypted by using a certificate in a certificate application repository.
+//
+// Description:
+//
+// The queries per second (QPS) limit for this API operation is 10 per user. If you exceed the limit, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DecryptRequest
 //
@@ -953,11 +1339,11 @@ func (client *Client) DecryptWithOptions(request *DecryptRequest, runtime *dara.
 
 // Summary:
 //
-// Decrypts a certificate in a certificate repository.
+// Decrypts data that was encrypted by using a certificate in a certificate application repository.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this API operation is 10 per user. If you exceed the limit, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DecryptRequest
 //
@@ -975,15 +1361,15 @@ func (client *Client) Decrypt(request *DecryptRequest) (_result *DecryptResponse
 
 // Summary:
 //
-// Deletes an order in which the application for a domain validated (DV) certificate failed.
+// Deletes a failed domain validated (DV) certificate application order.
 //
 // Description:
 //
 // You can call this operation to delete a certificate application order only in the following scenarios:
 //
-//   - The status of the order is **review failed**. You have called the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to query the status of the certificate application order and the value of the **Type*	- parameter is **verify_fail**.
+// - The status of the order is **review failed**. You have called the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to query the status of the certificate application order and the value of the **Type*	- parameter is **verify_fail**.
 //
-//   - The status of the order is **pending application**. You have called the [CancelOrderRequest](https://help.aliyun.com/document_detail/455299.html) operation to cancel a certificate application order whose status is pending review or being reviewed. The status of the certificate application order that is canceled in this case changes to **pending application**.
+// - The status of the order is **pending application**. You have called the [CancelOrderRequest](https://help.aliyun.com/document_detail/455299.html) operation to cancel a certificate application order whose status is pending review or being reviewed. The status of the certificate application order that is canceled in this case changes to **pending application**.
 //
 // @param request - DeleteCertificateRequestRequest
 //
@@ -1027,15 +1413,15 @@ func (client *Client) DeleteCertificateRequestWithOptions(request *DeleteCertifi
 
 // Summary:
 //
-// Deletes an order in which the application for a domain validated (DV) certificate failed.
+// Deletes a failed domain validated (DV) certificate application order.
 //
 // Description:
 //
 // You can call this operation to delete a certificate application order only in the following scenarios:
 //
-//   - The status of the order is **review failed**. You have called the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to query the status of the certificate application order and the value of the **Type*	- parameter is **verify_fail**.
+// - The status of the order is **review failed**. You have called the [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html) operation to query the status of the certificate application order and the value of the **Type*	- parameter is **verify_fail**.
 //
-//   - The status of the order is **pending application**. You have called the [CancelOrderRequest](https://help.aliyun.com/document_detail/455299.html) operation to cancel a certificate application order whose status is pending review or being reviewed. The status of the certificate application order that is canceled in this case changes to **pending application**.
+// - The status of the order is **pending application**. You have called the [CancelOrderRequest](https://help.aliyun.com/document_detail/455299.html) operation to cancel a certificate application order whose status is pending review or being reviewed. The status of the certificate application order that is canceled in this case changes to **pending application**.
 //
 // @param request - DeleteCertificateRequestRequest
 //
@@ -1053,7 +1439,77 @@ func (client *Client) DeleteCertificateRequest(request *DeleteCertificateRequest
 
 // Summary:
 //
-// Deletes a Certificate Signing Request (CSR) that is no longer required.
+// Deletes an access key.
+//
+// Description:
+//
+// This operation is limited to 100 queries per second (QPS) per user. API calls that exceed this limit are throttled, which can impact your business.
+//
+// @param request - DeleteCloudAccessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudAccessResponse
+func (client *Client) DeleteCloudAccessWithOptions(request *DeleteCloudAccessRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudAccessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessId) {
+		query["AccessId"] = request.AccessId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCloudAccess"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCloudAccessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an access key.
+//
+// Description:
+//
+// This operation is limited to 100 queries per second (QPS) per user. API calls that exceed this limit are throttled, which can impact your business.
+//
+// @param request - DeleteCloudAccessRequest
+//
+// @return DeleteCloudAccessResponse
+func (client *Client) DeleteCloudAccess(request *DeleteCloudAccessRequest) (_result *DeleteCloudAccessResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteCloudAccessResponse{}
+	_body, _err := client.DeleteCloudAccessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a certificate signing request (CSR).
 //
 // @param request - DeleteCsrRequest
 //
@@ -1097,7 +1553,7 @@ func (client *Client) DeleteCsrWithOptions(request *DeleteCsrRequest, runtime *d
 
 // Summary:
 //
-// Deletes a Certificate Signing Request (CSR) that is no longer required.
+// Deletes a certificate signing request (CSR).
 //
 // @param request - DeleteCsrRequest
 //
@@ -1115,7 +1571,7 @@ func (client *Client) DeleteCsr(request *DeleteCsrRequest) (_result *DeleteCsrRe
 
 // Summary:
 //
-// Deletes a deployment task.
+// Deletes a certificate deployment task.
 //
 // @param request - DeleteDeploymentJobRequest
 //
@@ -1159,7 +1615,7 @@ func (client *Client) DeleteDeploymentJobWithOptions(request *DeleteDeploymentJo
 
 // Summary:
 //
-// Deletes a deployment task.
+// Deletes a certificate deployment task.
 //
 // @param request - DeleteDeploymentJobRequest
 //
@@ -1177,7 +1633,7 @@ func (client *Client) DeleteDeploymentJob(request *DeleteDeploymentJobRequest) (
 
 // Summary:
 //
-// 删除实例
+// Deletes a Certificate Management Service instance.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -1221,7 +1677,7 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 
 // Summary:
 //
-// 删除实例
+// Deletes a Certificate Management Service instance.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -1317,11 +1773,11 @@ func (client *Client) DeletePCACert(request *DeletePCACertRequest) (_result *Del
 
 // Summary:
 //
-// Deletes an expired or uploaded certificate.
+// Deletes an expired, revoked, or manually uploaded certificate from Certificate Management Service.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation is limited to 100 queries per second (QPS) per user. API calls exceeding this limit are throttled, which can impact your business. We recommend calling this operation at a reasonable rate to avoid this.
 //
 // @param request - DeleteUserCertificateRequest
 //
@@ -1365,11 +1821,11 @@ func (client *Client) DeleteUserCertificateWithOptions(request *DeleteUserCertif
 
 // Summary:
 //
-// Deletes an expired or uploaded certificate.
+// Deletes an expired, revoked, or manually uploaded certificate from Certificate Management Service.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation is limited to 100 queries per second (QPS) per user. API calls exceeding this limit are throttled, which can impact your business. We recommend calling this operation at a reasonable rate to avoid this.
 //
 // @param request - DeleteUserCertificateRequest
 //
@@ -1387,7 +1843,85 @@ func (client *Client) DeleteUserCertificate(request *DeleteUserCertificateReques
 
 // Summary:
 //
-// Deletes the worker of a deployment task.
+// Deletes a certificate warehouse.
+//
+// Description:
+//
+// This operation deletes a certificate warehouse.
+//
+// ### QPS limit
+//
+// This operation has a QPS limit of 10 requests per second per user. Exceeding this limit causes subsequent API calls to be throttled, which can impact your services. To ensure service availability, call this operation at a reasonable rate.
+//
+// @param request - DeleteWarehouseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWarehouseResponse
+func (client *Client) DeleteWarehouseWithOptions(request *DeleteWarehouseRequest, runtime *dara.RuntimeOptions) (_result *DeleteWarehouseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WarehouseInstanceId) {
+		query["WarehouseInstanceId"] = request.WarehouseInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteWarehouse"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteWarehouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a certificate warehouse.
+//
+// Description:
+//
+// This operation deletes a certificate warehouse.
+//
+// ### QPS limit
+//
+// This operation has a QPS limit of 10 requests per second per user. Exceeding this limit causes subsequent API calls to be throttled, which can impact your services. To ensure service availability, call this operation at a reasonable rate.
+//
+// @param request - DeleteWarehouseRequest
+//
+// @return DeleteWarehouseResponse
+func (client *Client) DeleteWarehouse(request *DeleteWarehouseRequest) (_result *DeleteWarehouseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteWarehouseResponse{}
+	_body, _err := client.DeleteWarehouseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a worker task from a certificate deployment task.
 //
 // @param request - DeleteWorkerResourceRequest
 //
@@ -1435,7 +1969,7 @@ func (client *Client) DeleteWorkerResourceWithOptions(request *DeleteWorkerResou
 
 // Summary:
 //
-// Deletes the worker of a deployment task.
+// Deletes a worker task from a certificate deployment task.
 //
 // @param request - DeleteWorkerResourceRequest
 //
@@ -1453,13 +1987,17 @@ func (client *Client) DeleteWorkerResource(request *DeleteWorkerResourceRequest)
 
 // Summary:
 //
-// Queries the status of a specified certificate application order.
+// Queries the status of a certificate application order, such as domain validation progress.
 //
 // Description:
 //
-// If you do not complete the verification of the domain name ownership after you submit a certificate application, you can call this operation to obtain the information that is required to complete the verification. You can complete the verification of the domain name ownership based on the data returned. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on the DNS server.
+// If you have not completed domain ownership validation after submitting a certificate request, you can call this operation to obtain the information required to complete domain validation. Using the returned domain validation information, you can complete domain validation on the DNS management platform (DNS validation method) or on the domain server (file validation method).
 //
-// The certificate authority (CA) reviews your certificate application only after you complete the verification of the domain name ownership. After the CA approves your certificate application, the CA issues the certificate. If a certificate is issued, you can call this operation to obtain the CA certificate and private key of the certificate.
+// Your certificate request will enter the CA center review stage only after you complete domain validation. After the CA center approves your certificate request, a certificate will be issued to you. If the certificate has been issued, you can call this operation to obtain the issued certificate file and private key content.
+//
+// <props="china">
+//
+// For the complete process of requesting a certificate using the resource plan API, see [Process of requesting a certificate using API operations](https://help.aliyun.com/document_detail/204741.html).
 //
 // @param request - DescribeCertificateStateRequest
 //
@@ -1503,13 +2041,17 @@ func (client *Client) DescribeCertificateStateWithOptions(request *DescribeCerti
 
 // Summary:
 //
-// Queries the status of a specified certificate application order.
+// Queries the status of a certificate application order, such as domain validation progress.
 //
 // Description:
 //
-// If you do not complete the verification of the domain name ownership after you submit a certificate application, you can call this operation to obtain the information that is required to complete the verification. You can complete the verification of the domain name ownership based on the data returned. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on the DNS server.
+// If you have not completed domain ownership validation after submitting a certificate request, you can call this operation to obtain the information required to complete domain validation. Using the returned domain validation information, you can complete domain validation on the DNS management platform (DNS validation method) or on the domain server (file validation method).
 //
-// The certificate authority (CA) reviews your certificate application only after you complete the verification of the domain name ownership. After the CA approves your certificate application, the CA issues the certificate. If a certificate is issued, you can call this operation to obtain the CA certificate and private key of the certificate.
+// Your certificate request will enter the CA center review stage only after you complete domain validation. After the CA center approves your certificate request, a certificate will be issued to you. If the certificate has been issued, you can call this operation to obtain the issued certificate file and private key content.
+//
+// <props="china">
+//
+// For the complete process of requesting a certificate using the resource plan API, see [Process of requesting a certificate using API operations](https://help.aliyun.com/document_detail/204741.html).
 //
 // @param request - DescribeCertificateStateRequest
 //
@@ -1527,7 +2069,7 @@ func (client *Client) DescribeCertificateState(request *DescribeCertificateState
 
 // Summary:
 //
-// Queries the number of third-party cloud resources on which you deployed certificates by using a multi-cloud deployment task.
+// Queries the number of cloud resources on which certificates were deployed by using a multi-cloud deployment task.
 //
 // @param request - DescribeCloudResourceStatusRequest
 //
@@ -1571,7 +2113,7 @@ func (client *Client) DescribeCloudResourceStatusWithOptions(request *DescribeCl
 
 // Summary:
 //
-// Queries the number of third-party cloud resources on which you deployed certificates by using a multi-cloud deployment task.
+// Queries the number of cloud resources on which certificates were deployed by using a multi-cloud deployment task.
 //
 // @param request - DescribeCloudResourceStatusRequest
 //
@@ -1589,7 +2131,7 @@ func (client *Client) DescribeCloudResourceStatus(request *DescribeCloudResource
 
 // Summary:
 //
-// Queries the details of a deployment task. You can call the CreateDeploymentJob operation to create a deployment task and obtain the ID of the task.
+// Retrieves information about a certificate deployment task, including the task status, target resources, and certificates.
 //
 // @param request - DescribeDeploymentJobRequest
 //
@@ -1633,7 +2175,7 @@ func (client *Client) DescribeDeploymentJobWithOptions(request *DescribeDeployme
 
 // Summary:
 //
-// Queries the details of a deployment task. You can call the CreateDeploymentJob operation to create a deployment task and obtain the ID of the task.
+// Retrieves information about a certificate deployment task, including the task status, target resources, and certificates.
 //
 // @param request - DescribeDeploymentJobRequest
 //
@@ -1651,7 +2193,7 @@ func (client *Client) DescribeDeploymentJob(request *DescribeDeploymentJobReques
 
 // Summary:
 //
-// Queries the number of worker tasks in a deployment task.
+// Queries the execution status summary of a certificate deployment task, including the number of succeeded and failed workers.
 //
 // @param request - DescribeDeploymentJobStatusRequest
 //
@@ -1695,7 +2237,7 @@ func (client *Client) DescribeDeploymentJobStatusWithOptions(request *DescribeDe
 
 // Summary:
 //
-// Queries the number of worker tasks in a deployment task.
+// Queries the execution status summary of a certificate deployment task, including the number of succeeded and failed workers.
 //
 // @param request - DescribeDeploymentJobStatusRequest
 //
@@ -1713,7 +2255,7 @@ func (client *Client) DescribeDeploymentJobStatus(request *DescribeDeploymentJob
 
 // Summary:
 //
-// Queries the quota for domain validated (DV) certificates that you purchase and the quota usage.
+// Queries the quota and usage of domain validated (DV) certificate packages.
 //
 // @param request - DescribePackageStateRequest
 //
@@ -1757,7 +2299,7 @@ func (client *Client) DescribePackageStateWithOptions(request *DescribePackageSt
 
 // Summary:
 //
-// Queries the quota for domain validated (DV) certificates that you purchase and the quota usage.
+// Queries the quota and usage of domain validated (DV) certificate packages.
 //
 // @param request - DescribePackageStateRequest
 //
@@ -1775,11 +2317,73 @@ func (client *Client) DescribePackageState(request *DescribePackageStateRequest)
 
 // Summary:
 //
-// Encrypts a certificate in a certificate repository.
+// Retrieves the details of a certificate stored in a certificate warehouse.
+//
+// @param request - DescribeWarehouseCertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWarehouseCertResponse
+func (client *Client) DescribeWarehouseCertWithOptions(request *DescribeWarehouseCertRequest, runtime *dara.RuntimeOptions) (_result *DescribeWarehouseCertResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertIdentifier) {
+		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeWarehouseCert"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeWarehouseCertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a certificate stored in a certificate warehouse.
+//
+// @param request - DescribeWarehouseCertRequest
+//
+// @return DescribeWarehouseCertResponse
+func (client *Client) DescribeWarehouseCert(request *DescribeWarehouseCertRequest) (_result *DescribeWarehouseCertResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeWarehouseCertResponse{}
+	_body, _err := client.DescribeWarehouseCertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Encrypts data by using a certificate in a certificate application repository.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled, which may affect your business. To prevent this, call this operation at a reasonable rate.
 //
 // @param request - EncryptRequest
 //
@@ -1843,11 +2447,11 @@ func (client *Client) EncryptWithOptions(request *EncryptRequest, runtime *dara.
 
 // Summary:
 //
-// Encrypts a certificate in a certificate repository.
+// Encrypts data by using a certificate in a certificate application repository.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled, which may affect your business. To prevent this, call this operation at a reasonable rate.
 //
 // @param request - EncryptRequest
 //
@@ -1865,9 +2469,15 @@ func (client *Client) Encrypt(request *EncryptRequest) (_result *EncryptResponse
 
 // Summary:
 //
-// 统计资产数量
+// Queries the total number of certificate-related assets, such as websites and cloud resources.
 //
-// @param request - GetAssetCountRequest
+// Description:
+//
+// This API call queries the number of CA certificates that you have created, including root CA certificates and sub-CA certificates.
+//
+// ## QPS Limit
+//
+// This API call has a single-user limit of 10 queries per second (QPS). If you exceed this limit, API calls are rate-limited. This may affect your business. We recommend that you call this API operation at a reasonable rate.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -1896,7 +2506,15 @@ func (client *Client) GetAssetCountWithOptions(runtime *dara.RuntimeOptions) (_r
 
 // Summary:
 //
-// 统计资产数量
+// Queries the total number of certificate-related assets, such as websites and cloud resources.
+//
+// Description:
+//
+// This API call queries the number of CA certificates that you have created, including root CA certificates and sub-CA certificates.
+//
+// ## QPS Limit
+//
+// This API call has a single-user limit of 10 queries per second (QPS). If you exceed this limit, API calls are rate-limited. This may affect your business. We recommend that you call this API operation at a reasonable rate.
 //
 // @return GetAssetCountResponse
 func (client *Client) GetAssetCount() (_result *GetAssetCountResponse, _err error) {
@@ -1912,13 +2530,11 @@ func (client *Client) GetAssetCount() (_result *GetAssetCountResponse, _err erro
 
 // Summary:
 //
-// Queries the API call quota for certificate application repositories. When you call API operations for signature generation, signature verification, data encryption, and data decryption, your API call quota for certificate application repositories is consumed. If your API call quota is exhausted, you can no longer call specific certificate application repository-related operations. You can call this operation to query the API call quota for certificate application repositories.
+// Queries the remaining quota for certificate application repository operations.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetCertWarehouseQuotaRequest
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed the limit, your API calls are throttled. This may impact your business. Call this operation at a reasonable rate.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -1947,11 +2563,11 @@ func (client *Client) GetCertWarehouseQuotaWithOptions(runtime *dara.RuntimeOpti
 
 // Summary:
 //
-// Queries the API call quota for certificate application repositories. When you call API operations for signature generation, signature verification, data encryption, and data decryption, your API call quota for certificate application repositories is consumed. If your API call quota is exhausted, you can no longer call specific certificate application repository-related operations. You can call this operation to query the API call quota for certificate application repositories.
+// Queries the remaining quota for certificate application repository operations.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed the limit, your API calls are throttled. This may impact your business. Call this operation at a reasonable rate.
 //
 // @return GetCertWarehouseQuotaResponse
 func (client *Client) GetCertWarehouseQuota() (_result *GetCertWarehouseQuotaResponse, _err error) {
@@ -1967,7 +2583,7 @@ func (client *Client) GetCertWarehouseQuota() (_result *GetCertWarehouseQuotaRes
 
 // Summary:
 //
-// 查询证书详情
+// Retrieves certificate details, excluding the certificate body and private key.
 //
 // @param request - GetCertificateDetailRequest
 //
@@ -2011,7 +2627,7 @@ func (client *Client) GetCertificateDetailWithOptions(request *GetCertificateDet
 
 // Summary:
 //
-// 查询证书详情
+// Retrieves certificate details, excluding the certificate body and private key.
 //
 // @param request - GetCertificateDetailRequest
 //
@@ -2029,7 +2645,7 @@ func (client *Client) GetCertificateDetail(request *GetCertificateDetailRequest)
 
 // Summary:
 //
-// Obtains the content of a certificate signing request (CSR) file.
+// Queries the content of a certificate signing request (CSR).
 //
 // @param request - GetCsrDetailRequest
 //
@@ -2073,7 +2689,7 @@ func (client *Client) GetCsrDetailWithOptions(request *GetCsrDetailRequest, runt
 
 // Summary:
 //
-// Obtains the content of a certificate signing request (CSR) file.
+// Queries the content of a certificate signing request (CSR).
 //
 // @param request - GetCsrDetailRequest
 //
@@ -2091,7 +2707,7 @@ func (client *Client) GetCsrDetail(request *GetCsrDetailRequest) (_result *GetCs
 
 // Summary:
 //
-// 查询实例详情
+// Queries the details of an instance.
 //
 // @param request - GetInstanceDetailRequest
 //
@@ -2135,7 +2751,7 @@ func (client *Client) GetInstanceDetailWithOptions(request *GetInstanceDetailReq
 
 // Summary:
 //
-// 查询实例详情
+// Queries the details of an instance.
 //
 // @param request - GetInstanceDetailRequest
 //
@@ -2153,7 +2769,7 @@ func (client *Client) GetInstanceDetail(request *GetInstanceDetailRequest) (_res
 
 // Summary:
 //
-// 实例统计
+// Queries the summary statistics of Certificate Management Service instances, such as certificate counts by status.
 //
 // @param request - GetInstanceSummaryRequest
 //
@@ -2197,7 +2813,7 @@ func (client *Client) GetInstanceSummaryWithOptions(request *GetInstanceSummaryR
 
 // Summary:
 //
-// 实例统计
+// Queries the summary statistics of Certificate Management Service instances, such as certificate counts by status.
 //
 // @param request - GetInstanceSummaryRequest
 //
@@ -2215,9 +2831,109 @@ func (client *Client) GetInstanceSummary(request *GetInstanceSummaryRequest) (_r
 
 // Summary:
 //
-// 统计风险资产数量
+// Retrieves the resources that match a certificate.
 //
-// @param request - GetRiskCountRequest
+// Description:
+//
+// 本接口用于通过私有 CA 实例的 ID，查询您通过 SSL 证书服务控制台购买的私有 CA 实例的状态信息，例如，CA 实例的状态、包含的证书数量、已签发的证书数量等。
+//
+// 调用本接口前，您必须已经通过[数字证书管理服务控制台](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist)购买了私有 CA。具体操作，请参见[购买私有 CA](https://help.aliyun.com/document_detail/208553.html)。
+//
+// ## QPS 限制
+//
+// 本接口的单用户 QPS 限制为 10 次/秒。超过限制，API 调用将会被限流，这可能影响您的业务，请合理调用。
+//
+// @param request - GetMatchedResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMatchedResourcesResponse
+func (client *Client) GetMatchedResourcesWithOptions(request *GetMatchedResourcesRequest, runtime *dara.RuntimeOptions) (_result *GetMatchedResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertIds) {
+		query["CertIds"] = request.CertIds
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceScope) {
+		query["ResourceScope"] = request.ResourceScope
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMatchedResources"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMatchedResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the resources that match a certificate.
+//
+// Description:
+//
+// 本接口用于通过私有 CA 实例的 ID，查询您通过 SSL 证书服务控制台购买的私有 CA 实例的状态信息，例如，CA 实例的状态、包含的证书数量、已签发的证书数量等。
+//
+// 调用本接口前，您必须已经通过[数字证书管理服务控制台](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist)购买了私有 CA。具体操作，请参见[购买私有 CA](https://help.aliyun.com/document_detail/208553.html)。
+//
+// ## QPS 限制
+//
+// 本接口的单用户 QPS 限制为 10 次/秒。超过限制，API 调用将会被限流，这可能影响您的业务，请合理调用。
+//
+// @param request - GetMatchedResourcesRequest
+//
+// @return GetMatchedResourcesResponse
+func (client *Client) GetMatchedResources(request *GetMatchedResourcesRequest) (_result *GetMatchedResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetMatchedResourcesResponse{}
+	_body, _err := client.GetMatchedResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the number of assets with certificate-related risks, such as expired or soon-to-expire certificates.
+//
+// Description:
+//
+// This operation queries the number of created Certificate Authority (CA) certificates, including root and subordinate CA certificates.
+//
+// ## QPS limits
+//
+// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed this limit, API calls are rate-limited, which may affect your business. We recommend that you call this operation at a reasonable frequency.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2246,7 +2962,15 @@ func (client *Client) GetRiskCountWithOptions(runtime *dara.RuntimeOptions) (_re
 
 // Summary:
 //
-// 统计风险资产数量
+// Queries the number of assets with certificate-related risks, such as expired or soon-to-expire certificates.
+//
+// Description:
+//
+// This operation queries the number of created Certificate Authority (CA) certificates, including root and subordinate CA certificates.
+//
+// ## QPS limits
+//
+// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed this limit, API calls are rate-limited, which may affect your business. We recommend that you call this operation at a reasonable frequency.
 //
 // @return GetRiskCountResponse
 func (client *Client) GetRiskCount() (_result *GetRiskCountResponse, _err error) {
@@ -2262,7 +2986,7 @@ func (client *Client) GetRiskCount() (_result *GetRiskCountResponse, _err error)
 
 // Summary:
 //
-// 查询异步任务状态
+// Queries the processing result and status of a submitted certificate application.
 //
 // @param request - GetTaskAttributeRequest
 //
@@ -2310,7 +3034,7 @@ func (client *Client) GetTaskAttributeWithOptions(request *GetTaskAttributeReque
 
 // Summary:
 //
-// 查询异步任务状态
+// Queries the processing result and status of a submitted certificate application.
 //
 // @param request - GetTaskAttributeRequest
 //
@@ -2328,11 +3052,11 @@ func (client *Client) GetTaskAttribute(request *GetTaskAttributeRequest) (_resul
 
 // Summary:
 //
-// Queries certificate details, including the basic information and public and private key content. You can call this operation to download the certificate and private key.
+// Retrieves certificate details, including the basic information, certificate body, and private key. You can also use this operation to download the certificate content and private key.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for each user is 100. If you exceed this limit, the system throttles your API calls, which may affect your business. We recommend that you call this operation within this limit.
 //
 // @param request - GetUserCertificateDetailRequest
 //
@@ -2380,11 +3104,11 @@ func (client *Client) GetUserCertificateDetailWithOptions(request *GetUserCertif
 
 // Summary:
 //
-// Queries certificate details, including the basic information and public and private key content. You can call this operation to download the certificate and private key.
+// Retrieves certificate details, including the basic information, certificate body, and private key. You can also use this operation to download the certificate content and private key.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for each user is 100. If you exceed this limit, the system throttles your API calls, which may affect your business. We recommend that you call this operation within this limit.
 //
 // @param request - GetUserCertificateDetailRequest
 //
@@ -2402,7 +3126,15 @@ func (client *Client) GetUserCertificateDetail(request *GetUserCertificateDetail
 
 // Summary:
 //
-// 查询云产品资源统计列表
+// Queries the certificate deployment statistics by cloud service type.
+//
+// Description:
+//
+// Queries the number of created Certificate Authority (CA) certificates, including root and subordinate CA certificates.
+//
+// ## QPS limit
+//
+// Each user can make up to 10 queries per second (QPS). If you exceed this limit, the system applies rate limiting to your API calls. This may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - ListAssetCountRequest
 //
@@ -2458,7 +3190,15 @@ func (client *Client) ListAssetCountWithOptions(request *ListAssetCountRequest, 
 
 // Summary:
 //
-// 查询云产品资源统计列表
+// Queries the certificate deployment statistics by cloud service type.
+//
+// Description:
+//
+// Queries the number of created Certificate Authority (CA) certificates, including root and subordinate CA certificates.
+//
+// ## QPS limit
+//
+// Each user can make up to 10 queries per second (QPS). If you exceed this limit, the system applies rate limiting to your API calls. This may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - ListAssetCountRequest
 //
@@ -2476,11 +3216,11 @@ func (client *Client) ListAssetCount(request *ListAssetCountRequest) (_result *L
 
 // Summary:
 //
-// Queries the certificates in a certificate repository.
+// This API queries certificates in the certificate store.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this API is 10. Calls exceeding this limit are throttled, which may impact your business. Plan your API calls accordingly.
 //
 // @param request - ListCertRequest
 //
@@ -2501,6 +3241,10 @@ func (client *Client) ListCertWithOptions(request *ListCertRequest, runtime *dar
 
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Identifiers) {
+		query["Identifiers"] = request.Identifiers
 	}
 
 	if !dara.IsNil(request.KeyWord) {
@@ -2548,11 +3292,11 @@ func (client *Client) ListCertWithOptions(request *ListCertRequest, runtime *dar
 
 // Summary:
 //
-// Queries the certificates in a certificate repository.
+// This API queries certificates in the certificate store.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this API is 10. Calls exceeding this limit are throttled, which may impact your business. Plan your API calls accordingly.
 //
 // @param request - ListCertRequest
 //
@@ -2570,7 +3314,7 @@ func (client *Client) ListCert(request *ListCertRequest) (_result *ListCertRespo
 
 // Summary:
 //
-// Queries certificate repositories.
+// Queries the certificate application repositories in your account.
 //
 // Description:
 //
@@ -2638,7 +3382,7 @@ func (client *Client) ListCertWarehouseWithOptions(request *ListCertWarehouseReq
 
 // Summary:
 //
-// Queries certificate repositories.
+// Queries the certificate application repositories in your account.
 //
 // Description:
 //
@@ -2664,7 +3408,7 @@ func (client *Client) ListCertWarehouse(request *ListCertWarehouseRequest) (_res
 
 // Summary:
 //
-// 获取证书列表
+// Queries the certificates managed by Certificate Management Service.
 //
 // @param request - ListCertificatesRequest
 //
@@ -2732,7 +3476,7 @@ func (client *Client) ListCertificatesWithOptions(request *ListCertificatesReque
 
 // Summary:
 //
-// 获取证书列表
+// Queries the certificates managed by Certificate Management Service.
 //
 // @param request - ListCertificatesRequest
 //
@@ -2750,7 +3494,7 @@ func (client *Client) ListCertificates(request *ListCertificatesRequest) (_resul
 
 // Summary:
 //
-// Queries a list of AccessKey pairs for multi-cloud deployment.
+// Queries the AccessKey pairs that are configured for multi-cloud certificate deployment.
 //
 // @param request - ListCloudAccessRequest
 //
@@ -2806,7 +3550,7 @@ func (client *Client) ListCloudAccessWithOptions(request *ListCloudAccessRequest
 
 // Summary:
 //
-// Queries a list of AccessKey pairs for multi-cloud deployment.
+// Queries the AccessKey pairs that are configured for multi-cloud certificate deployment.
 //
 // @param request - ListCloudAccessRequest
 //
@@ -2824,7 +3568,7 @@ func (client *Client) ListCloudAccess(request *ListCloudAccessRequest) (_result 
 
 // Summary:
 //
-// Queries the certificate resources of a cloud service provider and cloud services.
+// Queries the cloud resources on which certificates are deployed, such as Server Load Balancer (SLB) instances and CDN domains.
 //
 // @param tmpReq - ListCloudResourcesRequest
 //
@@ -2898,7 +3642,7 @@ func (client *Client) ListCloudResourcesWithOptions(tmpReq *ListCloudResourcesRe
 
 // Summary:
 //
-// Queries the certificate resources of a cloud service provider and cloud services.
+// Queries the cloud resources on which certificates are deployed, such as Server Load Balancer (SLB) instances and CDN domains.
 //
 // @param request - ListCloudResourcesRequest
 //
@@ -2916,7 +3660,7 @@ func (client *Client) ListCloudResources(request *ListCloudResourcesRequest) (_r
 
 // Summary:
 //
-// Queries a list of contacts.
+// Queries the contacts that receive certificate deployment notifications.
 //
 // @param request - ListContactRequest
 //
@@ -2968,7 +3712,7 @@ func (client *Client) ListContactWithOptions(request *ListContactRequest, runtim
 
 // Summary:
 //
-// Queries a list of contacts.
+// Queries the contacts that receive certificate deployment notifications.
 //
 // @param request - ListContactRequest
 //
@@ -2986,7 +3730,7 @@ func (client *Client) ListContact(request *ListContactRequest) (_result *ListCon
 
 // Summary:
 //
-// Queries the details of Certificate Signing Requests (CSRs).
+// Queries the certificate signing requests (CSRs) in your account.
 //
 // @param request - ListCsrRequest
 //
@@ -3042,7 +3786,7 @@ func (client *Client) ListCsrWithOptions(request *ListCsrRequest, runtime *dara.
 
 // Summary:
 //
-// Queries the details of Certificate Signing Requests (CSRs).
+// Queries the certificate signing requests (CSRs) in your account.
 //
 // @param request - ListCsrRequest
 //
@@ -3060,7 +3804,7 @@ func (client *Client) ListCsr(request *ListCsrRequest) (_result *ListCsrResponse
 
 // Summary:
 //
-// Queries a list of deployment tasks that are created.
+// Queries the certificate deployment tasks that are created in your account.
 //
 // @param request - ListDeploymentJobRequest
 //
@@ -3116,7 +3860,7 @@ func (client *Client) ListDeploymentJobWithOptions(request *ListDeploymentJobReq
 
 // Summary:
 //
-// Queries a list of deployment tasks that are created.
+// Queries the certificate deployment tasks that are created in your account.
 //
 // @param request - ListDeploymentJobRequest
 //
@@ -3134,7 +3878,7 @@ func (client *Client) ListDeploymentJob(request *ListDeploymentJobRequest) (_res
 
 // Summary:
 //
-// Queries the basic information about a deployment task. After you create a deployment task, you can call this operation to obtain the basic information about the deployment task, including the instance ID, type, and name of the certificate.
+// Queries the certificates associated with a deployment task, such as the certificate instance ID, type, and name.
 //
 // @param request - ListDeploymentJobCertRequest
 //
@@ -3178,7 +3922,7 @@ func (client *Client) ListDeploymentJobCertWithOptions(request *ListDeploymentJo
 
 // Summary:
 //
-// Queries the basic information about a deployment task. After you create a deployment task, you can call this operation to obtain the basic information about the deployment task, including the instance ID, type, and name of the certificate.
+// Queries the certificates associated with a deployment task, such as the certificate instance ID, type, and name.
 //
 // @param request - ListDeploymentJobCertRequest
 //
@@ -3196,7 +3940,7 @@ func (client *Client) ListDeploymentJobCert(request *ListDeploymentJobCertReques
 
 // Summary:
 //
-// Queries the cloud resources of cloud services in a deployment task.
+// Queries the cloud resources associated with a deployment task. An empty list indicates that the resources are invalid and must be re-associated.
 //
 // @param request - ListDeploymentJobResourceRequest
 //
@@ -3240,7 +3984,7 @@ func (client *Client) ListDeploymentJobResourceWithOptions(request *ListDeployme
 
 // Summary:
 //
-// Queries the cloud resources of cloud services in a deployment task.
+// Queries the cloud resources associated with a deployment task. An empty list indicates that the resources are invalid and must be re-associated.
 //
 // @param request - ListDeploymentJobResourceRequest
 //
@@ -3258,7 +4002,7 @@ func (client *Client) ListDeploymentJobResource(request *ListDeploymentJobResour
 
 // Summary:
 //
-// 获取实例列表
+// Retrieves a list of instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -3334,7 +4078,7 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 
 // Summary:
 //
-// 获取实例列表
+// Retrieves a list of instances.
 //
 // @param request - ListInstancesRequest
 //
@@ -3352,15 +4096,15 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the certificates or certificate orders of users.
+// Queries the SSL certificates and certificate orders in your account.
 //
 // Description:
 //
-// You can call the ListUserCertificateOrder operation to query the certificates or certificate orders of users. If you set OrderType to CERT or UPLOAD, certificates are returned. If you set OrderType to CPACK or BUY, certificate orders are returned.
+// This operation queries a list of your certificates or orders. Set OrderType to CERT or UPLOAD to query certificates. Set OrderType to CPACK or BUY to query orders.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed this limit, API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - ListUserCertificateOrderRequest
 //
@@ -3424,15 +4168,15 @@ func (client *Client) ListUserCertificateOrderWithOptions(request *ListUserCerti
 
 // Summary:
 //
-// Queries the certificates or certificate orders of users.
+// Queries the SSL certificates and certificate orders in your account.
 //
 // Description:
 //
-// You can call the ListUserCertificateOrder operation to query the certificates or certificate orders of users. If you set OrderType to CERT or UPLOAD, certificates are returned. If you set OrderType to CPACK or BUY, certificate orders are returned.
+// This operation queries a list of your certificates or orders. Set OrderType to CERT or UPLOAD to query certificates. Set OrderType to CPACK or BUY to query orders.
 //
-// ## Limits
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed this limit, API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - ListUserCertificateOrderRequest
 //
@@ -3450,7 +4194,107 @@ func (client *Client) ListUserCertificateOrder(request *ListUserCertificateOrder
 
 // Summary:
 //
-// Queries the details about the worker tasks of a deployment task. Alibaba Cloud allows you to deploy multiple certificates at a time. Therefore, a deployment task may include multiple worker tasks in multiple cloud services. A worker task refers to a task that deploys a certificate to a cloud resource in a cloud service.
+// Lists warehouses.
+//
+// Description:
+//
+// This operation lists your warehouses.
+//
+// ### QPS limit
+//
+// This operation has a per-user QPS limit of 10 requests per second. Calls exceeding this limit are throttled, which can affect your business.
+//
+// @param tmpReq - ListWarehouseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWarehouseResponse
+func (client *Client) ListWarehouseWithOptions(tmpReq *ListWarehouseRequest, runtime *dara.RuntimeOptions) (_result *ListWarehouseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListWarehouseShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.WarehouseInstanceIds) {
+		request.WarehouseInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WarehouseInstanceIds, dara.String("WarehouseInstanceIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.WarehouseTypes) {
+		request.WarehouseTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WarehouseTypes, dara.String("WarehouseTypes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.WarehouseInstanceIdsShrink) {
+		query["WarehouseInstanceIds"] = request.WarehouseInstanceIdsShrink
+	}
+
+	if !dara.IsNil(request.WarehouseTypesShrink) {
+		query["WarehouseTypes"] = request.WarehouseTypesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWarehouse"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWarehouseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists warehouses.
+//
+// Description:
+//
+// This operation lists your warehouses.
+//
+// ### QPS limit
+//
+// This operation has a per-user QPS limit of 10 requests per second. Calls exceeding this limit are throttled, which can affect your business.
+//
+// @param request - ListWarehouseRequest
+//
+// @return ListWarehouseResponse
+func (client *Client) ListWarehouse(request *ListWarehouseRequest) (_result *ListWarehouseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListWarehouseResponse{}
+	_body, _err := client.ListWarehouseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the worker tasks of a deployment task. Each worker task deploys a certificate to a specific cloud resource in a cloud service.
 //
 // @param request - ListWorkerResourceRequest
 //
@@ -3510,7 +4354,7 @@ func (client *Client) ListWorkerResourceWithOptions(request *ListWorkerResourceR
 
 // Summary:
 //
-// Queries the details about the worker tasks of a deployment task. Alibaba Cloud allows you to deploy multiple certificates at a time. Therefore, a deployment task may include multiple worker tasks in multiple cloud services. A worker task refers to a task that deploys a certificate to a cloud resource in a cloud service.
+// Queries the worker tasks of a deployment task. Each worker task deploys a certificate to a specific cloud resource in a cloud service.
 //
 // @param request - ListWorkerResourceRequest
 //
@@ -3602,7 +4446,7 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 
 // Summary:
 //
-// 申请证书
+// Refunds a Certificate Management Service instance if the refund is requested within seven days of purchase.
 //
 // @param request - RefundInstanceRequest
 //
@@ -3646,7 +4490,7 @@ func (client *Client) RefundInstanceWithOptions(request *RefundInstanceRequest, 
 
 // Summary:
 //
-// 申请证书
+// Refunds a Certificate Management Service instance if the refund is requested within seven days of purchase.
 //
 // @param request - RefundInstanceRequest
 //
@@ -3664,13 +4508,13 @@ func (client *Client) RefundInstance(request *RefundInstanceRequest) (_result *R
 
 // Summary:
 //
-// Submits a renewal application for an issued certificate.
+// Submits a renewal application for an issued SSL certificate.
 //
 // Description:
 //
 // You can call the RenewCertificateOrderForPackageRequest operation to submit a renewal application for a certificate only when the order of the certificate is in the expiring state. After the renewal is complete, a new certificate order whose status is pending application is generated. You must submit a certificate application for the new certificate order and install the new certificate after the new certificate is issued.
 //
-// >  You can call the [DescribeCertificateState](https://help.aliyun.com/document_detail/164111.html) operation to query the status of a certificate application order. If the value of the **Type*	- response parameter is **certificate**, the certificate is issued.
+// > You can call the [DescribeCertificateState](https://help.aliyun.com/document_detail/164111.html) operation to query the status of a certificate application order. If the value of the **Type*	- response parameter is **certificate**, the certificate is issued.
 //
 // @param request - RenewCertificateOrderForPackageRequestRequest
 //
@@ -3722,13 +4566,13 @@ func (client *Client) RenewCertificateOrderForPackageRequestWithOptions(request 
 
 // Summary:
 //
-// Submits a renewal application for an issued certificate.
+// Submits a renewal application for an issued SSL certificate.
 //
 // Description:
 //
 // You can call the RenewCertificateOrderForPackageRequest operation to submit a renewal application for a certificate only when the order of the certificate is in the expiring state. After the renewal is complete, a new certificate order whose status is pending application is generated. You must submit a certificate application for the new certificate order and install the new certificate after the new certificate is issued.
 //
-// >  You can call the [DescribeCertificateState](https://help.aliyun.com/document_detail/164111.html) operation to query the status of a certificate application order. If the value of the **Type*	- response parameter is **certificate**, the certificate is issued.
+// > You can call the [DescribeCertificateState](https://help.aliyun.com/document_detail/164111.html) operation to query the status of a certificate application order. If the value of the **Type*	- response parameter is **certificate**, the certificate is issued.
 //
 // @param request - RenewCertificateOrderForPackageRequestRequest
 //
@@ -3746,7 +4590,7 @@ func (client *Client) RenewCertificateOrderForPackageRequest(request *RenewCerti
 
 // Summary:
 //
-// 吊销证书
+// Revokes a certificate.
 //
 // @param request - RevokeCertificateRequest
 //
@@ -3761,6 +4605,10 @@ func (client *Client) RevokeCertificateWithOptions(request *RevokeCertificateReq
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertificateId) {
+		query["CertificateId"] = request.CertificateId
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -3790,7 +4638,7 @@ func (client *Client) RevokeCertificateWithOptions(request *RevokeCertificateReq
 
 // Summary:
 //
-// 吊销证书
+// Revokes a certificate.
 //
 // @param request - RevokeCertificateRequest
 //
@@ -3808,15 +4656,85 @@ func (client *Client) RevokeCertificate(request *RevokeCertificateRequest) (_res
 
 // Summary:
 //
-// Signs a private certificate in a certificate application repository.
+// Revokes a client certificate from the certificate repository.
 //
 // Description:
 //
-// You can call the Sign operation to sign a private certificate in a certificate application repository.
+// The rate limit for this API is 10 queries per second (QPS) per user. If you exceed this limit, subsequent API calls will be throttled, which can disrupt your services. We recommend that you call this API at a reasonable rate.
 //
-// ### Limits
+// @param request - RevokeWHClientCertificateRequest
 //
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeWHClientCertificateResponse
+func (client *Client) RevokeWHClientCertificateWithOptions(request *RevokeWHClientCertificateRequest, runtime *dara.RuntimeOptions) (_result *RevokeWHClientCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Identifier) {
+		query["Identifier"] = request.Identifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeWHClientCertificate"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeWHClientCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes a client certificate from the certificate repository.
+//
+// Description:
+//
+// The rate limit for this API is 10 queries per second (QPS) per user. If you exceed this limit, subsequent API calls will be throttled, which can disrupt your services. We recommend that you call this API at a reasonable rate.
+//
+// @param request - RevokeWHClientCertificateRequest
+//
+// @return RevokeWHClientCertificateResponse
+func (client *Client) RevokeWHClientCertificate(request *RevokeWHClientCertificateRequest) (_result *RevokeWHClientCertificateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RevokeWHClientCertificateResponse{}
+	_body, _err := client.RevokeWHClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// This operation creates a digital signature with a PCA certificate from a certificate repository.
+//
+// Description:
+//
+// This operation creates a digital signature with a PCA certificate from a certificate repository.
+//
+// ### QPS limit
+//
+// This operation supports up to 1,000 queries per second (QPS) for a single user. If you exceed this limit, the system throttles your API calls, which can impact your business. Plan your API calls accordingly.
 //
 // @param request - SignRequest
 //
@@ -3880,15 +4798,15 @@ func (client *Client) SignWithOptions(request *SignRequest, runtime *dara.Runtim
 
 // Summary:
 //
-// Signs a private certificate in a certificate application repository.
+// This operation creates a digital signature with a PCA certificate from a certificate repository.
 //
 // Description:
 //
-// You can call the Sign operation to sign a private certificate in a certificate application repository.
+// This operation creates a digital signature with a PCA certificate from a certificate repository.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation supports up to 1,000 queries per second (QPS) for a single user. If you exceed this limit, the system throttles your API calls, which can impact your business. Plan your API calls accordingly.
 //
 // @param request - SignRequest
 //
@@ -3906,7 +4824,7 @@ func (client *Client) Sign(request *SignRequest) (_result *SignResponse, _err er
 
 // Summary:
 //
-// Uploads or updates the private key for a Certificate Signing Request (CSR). If you did not upload the required priviate when you uploaded a CSR, you can call this operation to upload or update the private key.
+// Updates the private key associated with a certificate signing request (CSR).
 //
 // @param request - UpdateCsrRequest
 //
@@ -3954,7 +4872,7 @@ func (client *Client) UpdateCsrWithOptions(request *UpdateCsrRequest, runtime *d
 
 // Summary:
 //
-// Uploads or updates the private key for a Certificate Signing Request (CSR). If you did not upload the required priviate when you uploaded a CSR, you can call this operation to upload or update the private key.
+// Updates the private key associated with a certificate signing request (CSR).
 //
 // @param request - UpdateCsrRequest
 //
@@ -3972,7 +4890,7 @@ func (client *Client) UpdateCsr(request *UpdateCsrRequest) (_result *UpdateCsrRe
 
 // Summary:
 //
-// Updates a deployment task.
+// Updates the configuration of a certificate deployment task, such as the certificates or target resources.
 //
 // @param request - UpdateDeploymentJobRequest
 //
@@ -4036,7 +4954,7 @@ func (client *Client) UpdateDeploymentJobWithOptions(request *UpdateDeploymentJo
 
 // Summary:
 //
-// Updates a deployment task.
+// Updates the configuration of a certificate deployment task, such as the certificates or target resources.
 //
 // @param request - UpdateDeploymentJobRequest
 //
@@ -4054,7 +4972,7 @@ func (client *Client) UpdateDeploymentJob(request *UpdateDeploymentJobRequest) (
 
 // Summary:
 //
-// Updates the status of a deployment task.
+// Updates the status of a certificate deployment task, such as changing from editing to pending execution.
 //
 // @param request - UpdateDeploymentJobStatusRequest
 //
@@ -4102,7 +5020,7 @@ func (client *Client) UpdateDeploymentJobStatusWithOptions(request *UpdateDeploy
 
 // Summary:
 //
-// Updates the status of a deployment task.
+// Updates the status of a certificate deployment task, such as changing from editing to pending execution.
 //
 // @param request - UpdateDeploymentJobStatusRequest
 //
@@ -4120,7 +5038,7 @@ func (client *Client) UpdateDeploymentJobStatus(request *UpdateDeploymentJobStat
 
 // Summary:
 //
-// 更新实例
+// Updates the configuration of a Certificate Management Service instance.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -4220,7 +5138,7 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 
 // Summary:
 //
-// 更新实例
+// Updates the configuration of a Certificate Management Service instance.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -4238,7 +5156,7 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 
 // Summary:
 //
-// Rolls back or executes a worker task in a deployment task.
+// Rolls back or re-executes a worker task in a certificate deployment task.
 //
 // @param request - UpdateWorkerResourceStatusRequest
 //
@@ -4290,7 +5208,7 @@ func (client *Client) UpdateWorkerResourceStatusWithOptions(request *UpdateWorke
 
 // Summary:
 //
-// Rolls back or executes a worker task in a deployment task.
+// Rolls back or re-executes a worker task in a certificate deployment task.
 //
 // @param request - UpdateWorkerResourceStatusRequest
 //
@@ -4308,7 +5226,7 @@ func (client *Client) UpdateWorkerResourceStatus(request *UpdateWorkerResourceSt
 
 // Summary:
 //
-// Uploads an existing Certificate Signing Request (CSR). You can use the CSR when you upload a certificate. You can also manage the uploaded CSRs in a centralized manner.
+// Uploads an existing certificate signing request (CSR) to Certificate Management Service. After the upload, you can use the CSR to apply for certificates.
 //
 // @param request - UploadCsrRequest
 //
@@ -4360,7 +5278,7 @@ func (client *Client) UploadCsrWithOptions(request *UploadCsrRequest, runtime *d
 
 // Summary:
 //
-// Uploads an existing Certificate Signing Request (CSR). You can use the CSR when you upload a certificate. You can also manage the uploaded CSRs in a centralized manner.
+// Uploads an existing certificate signing request (CSR) to Certificate Management Service. After the upload, you can use the CSR to apply for certificates.
 //
 // @param request - UploadCsrRequest
 //
@@ -4378,11 +5296,101 @@ func (client *Client) UploadCsr(request *UploadCsrRequest) (_result *UploadCsrRe
 
 // Summary:
 //
-// Uploads a certificate.
+// Uploads a PCA certificate to a certificate warehouse.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// Use this operation to upload a PCA certificate to a certificate warehouse.
+//
+// ## QPS limit
+//
+// The QPS limit for this operation is 10 requests per second per user. Exceeding this limit triggers throttling, which can affect your business.
+//
+// @param request - UploadPCACertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadPCACertResponse
+func (client *Client) UploadPCACertWithOptions(request *UploadPCACertRequest, runtime *dara.RuntimeOptions) (_result *UploadPCACertResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cert) {
+		query["Cert"] = request.Cert
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PrivateKey) {
+		query["PrivateKey"] = request.PrivateKey
+	}
+
+	if !dara.IsNil(request.WarehouseId) {
+		query["WarehouseId"] = request.WarehouseId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadPCACert"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadPCACertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a PCA certificate to a certificate warehouse.
+//
+// Description:
+//
+// Use this operation to upload a PCA certificate to a certificate warehouse.
+//
+// ## QPS limit
+//
+// The QPS limit for this operation is 10 requests per second per user. Exceeding this limit triggers throttling, which can affect your business.
+//
+// @param request - UploadPCACertRequest
+//
+// @return UploadPCACertResponse
+func (client *Client) UploadPCACert(request *UploadPCACertRequest) (_result *UploadPCACertResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UploadPCACertResponse{}
+	_body, _err := client.UploadPCACertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a certificate and its private key to Certificate Management Service. Both SM and non-SM certificates are supported.
+//
+// Description:
+//
+// The queries per second (QPS) limit for this operation is 100 for each user. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - UploadUserCertificateRequest
 //
@@ -4458,11 +5466,11 @@ func (client *Client) UploadUserCertificateWithOptions(request *UploadUserCertif
 
 // Summary:
 //
-// Uploads a certificate.
+// Uploads a certificate and its private key to Certificate Management Service. Both SM and non-SM certificates are supported.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 100 for each user. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - UploadUserCertificateRequest
 //
@@ -4480,15 +5488,15 @@ func (client *Client) UploadUserCertificate(request *UploadUserCertificateReques
 
 // Summary:
 //
-// Verifies the signature of a private certificate in a certificate application repository.
+// Verifies a data signature by using a private certificate in a certificate application repository.
 //
 // Description:
 //
-// You can call the Verify operation to verify the signature of a private certificate in a certificate application repository.
+// This API verifies the signatures of PCA certificates and SSL certificates in the certificate repository.
 //
-// ### Limits
+// ### QPS limits
 //
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this API is 1,000 for a single user. For your specific QPS limit, refer to the certificate repository. If you exceed this limit, API calls are throttled, which may affect your business. Plan your API calls accordingly.
 //
 // @param request - VerifyRequest
 //
@@ -4556,15 +5564,15 @@ func (client *Client) VerifyWithOptions(request *VerifyRequest, runtime *dara.Ru
 
 // Summary:
 //
-// Verifies the signature of a private certificate in a certificate application repository.
+// Verifies a data signature by using a private certificate in a certificate application repository.
 //
 // Description:
 //
-// You can call the Verify operation to verify the signature of a private certificate in a certificate application repository.
+// This API verifies the signatures of PCA certificates and SSL certificates in the certificate repository.
 //
-// ### Limits
+// ### QPS limits
 //
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The queries per second (QPS) limit for this API is 1,000 for a single user. For your specific QPS limit, refer to the certificate repository. If you exceed this limit, API calls are throttled, which may affect your business. Plan your API calls accordingly.
 //
 // @param request - VerifyRequest
 //

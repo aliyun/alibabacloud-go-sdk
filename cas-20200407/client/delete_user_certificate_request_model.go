@@ -14,9 +14,9 @@ type iDeleteUserCertificateRequest interface {
 }
 
 type DeleteUserCertificateRequest struct {
-	// The ID of the certificate.
+	// The certificate ID.
 	//
-	// >  You can call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/455804.html) operation to obtain the ID.
+	// > To obtain the certificate ID, call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/455804.html) operation.
 	//
 	// This parameter is required.
 	//

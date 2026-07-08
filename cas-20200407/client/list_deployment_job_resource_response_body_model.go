@@ -16,9 +16,9 @@ type iListDeploymentJobResourceResponseBody interface {
 }
 
 type ListDeploymentJobResourceResponseBody struct {
-	// The response parameters.
+	// The data returned.
 	Data []*ListDeploymentJobResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,191 +66,195 @@ func (s *ListDeploymentJobResourceResponseBody) Validate() error {
 }
 
 type ListDeploymentJobResourceResponseBodyData struct {
-	// The end date of the certificate bound to the cloud resource. The value is a timestamp in seconds.
+	// The expiration date of the certificate that is attached to the cloud product resource. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1681956830000
 	CertEndTime *string `json:"CertEndTime,omitempty" xml:"CertEndTime,omitempty"`
-	// The ID of the certificate bound to the cloud resource.
+	// The ID of the certificate that is attached to the cloud product resource.
 	//
 	// example:
 	//
 	// 11599949
 	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The name of the certificate bound to the cloud resource.
+	// The name of the certificate that is attached to the cloud product resource.
 	//
 	// example:
 	//
 	// sc-SSL
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The start date of the certificate bound to the cloud resource. The value is a timestamp in seconds.
+	// The start date of the certificate that is attached to the cloud product resource. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1681956830000
 	CertStartTime *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
-	// The AccessKey ID used to access cloud resources.
+	// The key ID used to access the cloud resource set.
 	//
-	// >  This parameter is required only when you deploy certificates to services of multiple clouds.
+	// > This parameter is returned only for multicloud deployments.
 	//
 	// example:
 	//
 	// 1234
 	CloudAccessId *string `json:"CloudAccessId,omitempty" xml:"CloudAccessId,omitempty"`
-	// The cloud service provider of the cloud resource. Valid values:
+	// The provider of the cloud product resource.
 	//
-	// 	- **aliyun**: Alibaba Cloud
+	// - **aliyun**: Alibaba Cloud
 	//
-	// 	- **Tencent**: Tencent Cloud
+	// - **Tencent**: Tencent Cloud
 	//
 	// example:
 	//
 	// aliyun
 	CloudName *string `json:"CloudName,omitempty" xml:"CloudName,omitempty"`
-	// The cloud service. Valid values:
+	// The cloud service.
 	//
-	// 	- **CDN**: Alibaba Cloud CDN (CDN). This value is supported only at the China site (aliyun.com).
+	// <props="china">
 	//
-	// 	- **SLB**: Classic Load Balancer (CLB). This value is supported only at the China site (aliyun.com).
+	// - **SLB**: Classic Load Balancer (CLB) (China site only)
 	//
-	// 	- **DCDN**: Dynamic Content Delivery Network (DCDN). This value is supported only at the China site (aliyun.com).
+	// - **LIVE**: ApsaraVideo Live (China site only)
 	//
-	// 	- **DDOS**: Anti-DDoS. This value is supported only at the China site (aliyun.com).
+	// - **webHosting**: Cloud Web Hosting (China site only)
 	//
-	// 	- **LIVE**: ApsaraVideo Live. This value is supported only at the China site (aliyun.com).
+	// - **VOD**: ApsaraVideo VOD (China site only)
 	//
-	// 	- **webHosting**: Cloud Web Hosting. This value is supported only at the China site (aliyun.com).
+	// - **CR**: Container Registry (China site only)
 	//
-	// 	- **VOD**: ApsaraVideo VOD. This value is supported only at the China site (aliyun.com).
 	//
-	// 	- **CR**: Container Registry. This value is supported only at the China site (aliyun.com).
 	//
-	// 	- **ALB**: Application Load Balancer (ALB).
+	// - **DCDN**: DCDN
 	//
-	// 	- **APIGateway**: API Gateway.
+	// - **DDOS**: Anti-DDoS
 	//
-	// 	- **FC**: Function Compute.
+	// - **CDN**: Alibaba Cloud CDN
 	//
-	// 	- **GA**: Global Accelerator (GA).
+	// - **ALB**: Application Load Balancer
 	//
-	// 	- **MSE**: Microservices Engine (MSE).
+	// - **APIGateway**: API Gateway
 	//
-	// 	- **NLB**: Network Load Balancer (NLB).
+	// - **FC**: Function Compute
 	//
-	// 	- **OSS**: Object Storage Service (OSS).
+	// - **GA**: Global Accelerator
 	//
-	// 	- **SAE**: Serverless App Engine (SAE).
+	// - **MSE**: MSE
 	//
-	// 	- **TencentCDN**: Tencent Cloud Content Delivery Network (CDN).
+	// - **NLB**: Network Load Balancer
 	//
-	// 	- **WAF**: Web Application Firewall (WAF).
+	// - **OSS**: OSS
+	//
+	// - **SAE**: SAE
+	//
+	// - **TencentCDN**: Tencent CDN
+	//
+	// - **WAF**: WAF
 	//
 	// example:
 	//
 	// SLB
 	CloudProduct *string `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
-	// The region ID of the cloud service provider to which the cloud resource belongs.
+	// The region ID of the cloud product resource from the cloud provider.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	CloudRegion *string `json:"CloudRegion,omitempty" xml:"CloudRegion,omitempty"`
-	// Indicates whether the cloud resource is the default resource. Valid values:
+	// Indicates whether the cloud product resource is a default resource.
 	//
-	// 	- **1**: yes
+	// - **1**: Default resource
 	//
-	// 	- **0**: no
+	// - **0**: Not a default resource
 	//
-	// >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+	// > This parameter is returned only for deployments of SLB, NLB, ALB, and GA.
 	//
 	// example:
 	//
 	// 0
 	DefaultResource *int32 `json:"DefaultResource,omitempty" xml:"DefaultResource,omitempty"`
-	// The domain name bound to the cloud resource.
+	// The domain name that is attached to the cloud product resource.
 	//
 	// example:
 	//
 	// aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Indicates whether HTTPS is enabled for the cloud resource. Valid values:
+	// Indicates whether HTTPS is enabled for the cloud product resource.
 	//
-	// 	- **1**: yes
+	// - **1**: Enabled
 	//
-	// 	- **0**: no
+	// - **0**: Disabled
 	//
 	// example:
 	//
 	// 1
 	EnableHttps *int32 `json:"EnableHttps,omitempty" xml:"EnableHttps,omitempty"`
-	// The time when the cloud resource was created. The time is a timestamp in seconds.
+	// The time when the synchronized resource was created. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1673423339000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the cloud resource was last modified. The time is in the timestamp format.
+	// The time when the synchronized resource was last modified. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1681956830000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the cloud resource.
+	// The ID of the cloud product resource.
 	//
 	// example:
 	//
 	// 20979
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance ID of the cloud resource.
+	// The instance ID of the cloud product resource.
 	//
-	// >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+	// > This parameter is returned only for deployments of SLB, NLB, ALB, and GA.
 	//
 	// example:
 	//
 	// cas-cn-m7r1qocw91at
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The listener ID of the cloud resource.
+	// The listener ID of the cloud product resource.
 	//
-	// >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+	// > This parameter is returned only for deployments of SLB, NLB, ALB, and GA.
 	//
 	// example:
 	//
 	// lsn-vwdff0q20poq5xazb9@443
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The listening port of the cloud resource.
+	// The listener port of the cloud product resource.
 	//
-	// >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+	// > This parameter is returned only for deployments of SLB, NLB, ALB, and GA.
 	//
 	// example:
 	//
 	// 8047
 	ListenerPort *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The region ID of the cloud resource.
+	// The region ID of the synchronized cloud product resource.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The other metadata related to the cloud resource.
+	// Other metadata about the cloud product resource.
 	//
 	// example:
 	//
 	// {\\"camera_model\\":\\"GIFSHOW [1267087617][OnePlus
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The status of the cloud resource.
+	// The status of the synchronized cloud product resource.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether an Alibaba Cloud SSL certificate is used. Valid values:
+	// Indicates whether an Alibaba Cloud SSL certificate is used.
 	//
-	// 	- **1**: yes
+	// - **1**: Yes
 	//
-	// 	- **0**: no
+	// - **0**: No
 	//
-	// >  This parameter is required only when you deploy certificates to services of multiple clouds.
+	// > This parameter is returned only for multicloud deployments.
 	//
 	// example:
 	//
@@ -260,7 +264,7 @@ type ListDeploymentJobResourceResponseBodyData struct {
 	//
 	// example:
 	//
-	// 1666884372152785
+	// 1666884372******
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

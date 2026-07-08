@@ -19,6 +19,8 @@ type iGetUserCertificateDetailResponseBody interface {
 	GetCertChain() []*GetUserCertificateDetailResponseBodyCertChain
 	SetCertIdentifier(v string) *GetUserCertificateDetailResponseBody
 	GetCertIdentifier() *string
+	SetCertSha2(v string) *GetUserCertificateDetailResponseBody
+	GetCertSha2() *string
 	SetCity(v string) *GetUserCertificateDetailResponseBody
 	GetCity() *string
 	SetCommon(v string) *GetUserCertificateDetailResponseBody
@@ -76,7 +78,7 @@ type iGetUserCertificateDetailResponseBody interface {
 }
 
 type GetUserCertificateDetailResponseBody struct {
-	// The algorithm.
+	// The algorithm of the certificate.
 	//
 	// example:
 	//
@@ -84,29 +86,30 @@ type GetUserCertificateDetailResponseBody struct {
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// Indicates whether the certificate was purchased from Alibaba Cloud. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: Yes
 	//
-	// 	- **false**: no
+	// - **false**: No
 	//
 	// example:
 	//
 	// true
 	BuyInAliyun *bool `json:"BuyInAliyun,omitempty" xml:"BuyInAliyun,omitempty"`
-	// The content of the certificate if the certificate does not use an SM algorithm. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
+	// The content of the certificate that does not use a Chinese cryptographic algorithm. This parameter is returned only when the certFilter request parameter is false.
 	//
 	// example:
 	//
 	// ---BEGIN CERTIFICATE----- MIIF...... -----END CERTIFICATE-----
 	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
-	// The certificate chain.
+	// The information about the certificate chain.
 	CertChain []*GetUserCertificateDetailResponseBodyCertChain `json:"CertChain,omitempty" xml:"CertChain,omitempty" type:"Repeated"`
-	// The certificate identifier. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of CertIdentifier is 123-cn-hangzhou.
+	// The certificate ID followed by "-cn-hangzhou". For example, if the certificate ID is 123, the value of CertIdentifier is "123-cn-hangzhou".
 	//
 	// example:
 	//
-	// 10741304-cn-hangzhou
+	// 13781326-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The city of the company or organization to which the certificate purchaser belongs.
+	CertSha2       *string `json:"CertSha2,omitempty" xml:"CertSha2,omitempty"`
+	// The city where the company or organization of the certificate purchaser is located.
 	//
 	// example:
 	//
@@ -118,13 +121,13 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// *.com
 	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
-	// The country or region of the company or organization to which the certificate purchaser belongs.
+	// The country where the company or organization of the certificate purchaser is located.
 	//
 	// example:
 	//
 	// CN
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// The content of the encryption certificate if the certificate uses an SM algorithm and is encoded in the PEM format. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
+	// The content of the encryption certificate that uses a Chinese cryptographic algorithm. The certificate is in PEM format. This parameter is returned only when the certFilter request parameter is false.
 	//
 	// example:
 	//
@@ -134,7 +137,7 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// -----END CERTIFICATE-----
 	EncryptCert *string `json:"EncryptCert,omitempty" xml:"EncryptCert,omitempty"`
-	// The private key of the encryption certificate if the certificate uses an SM algorithm and is encoded in the PEM format. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
+	// The private key of the encryption certificate that uses a Chinese cryptographic algorithm. The private key is in PEM format. This parameter is returned only when the certFilter request parameter is false.
 	//
 	// example:
 	//
@@ -152,9 +155,9 @@ type GetUserCertificateDetailResponseBody struct {
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// Indicates whether the certificate has expired. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: The certificate has expired.
 	//
-	// 	- **false**: no
+	// - **false**: The certificate has not expired.
 	//
 	// example:
 	//
@@ -172,19 +175,19 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// 121345
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance ID of the resource.
+	// The ID of the resource instance.
 	//
 	// example:
 	//
-	// cas-upload-50yf1q
+	// cas-ivauto-hqito6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The certificate authority (CA) that issued the certificate.
+	// The certification authority (CA) that issued the certificate.
 	//
 	// example:
 	//
 	// Digicert
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The private key of the certificate if the certificate does not use an SM algorithm. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
+	// The private key of the certificate that does not use a Chinese cryptographic algorithm. This parameter is returned only when the certFilter request parameter is false.
 	//
 	// example:
 	//
@@ -196,37 +199,37 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// cert_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The end of the validity period of the certificate.
+	// The end time of the validity period of the certificate.
 	//
 	// example:
 	//
-	// 17322613180000
+	// 17326613180000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The beginning of the validity period of the certificate.
+	// The start time of the validity period of the certificate.
 	//
 	// example:
 	//
-	// 17312613180000
+	// 17321613180000
 	NotBefore *int64 `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The order ID.
+	// The ID of the certificate application order.
 	//
 	// example:
 	//
 	// 123456
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The name of the company or organization to which the certificate purchaser belongs.
+	// The name of the company or organization of the certificate purchaser.
 	//
 	// example:
 	//
 	// Alibaba
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
-	// The province of the company or organization to which the certificate purchaser belongs.
+	// The province where the company or organization of the certificate purchaser is located.
 	//
 	// example:
 	//
 	// zhejiang
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The ID of the request. This unique ID is generated by Alibaba Cloud for the request and can be used to troubleshoot and locate issues.
 	//
 	// example:
 	//
@@ -248,15 +251,15 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// example:
 	//
-	// 06ea4879591ddf84e6c8b6ba43607ccf
+	// 033cd852608689ef5e368fde89e0961769e8
 	SerialNo *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
 	// The SHA-2 value of the certificate.
 	//
 	// example:
 	//
-	// 840707695D5EE41323102DDC2CB4924AA561012FBDC4E1A6324147119ED3C339
+	// 573415B23243066AD345AE5A57BD0FAE94F598BDD06D906278B5FF318F090FC8
 	Sha2 *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
-	// The content of the signing certificate if the certificate uses an SM algorithm and is encoded in the PEM format. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
+	// The content of the signing certificate that uses a Chinese cryptographic algorithm. The certificate is in PEM format. This parameter is returned only when the certFilter request parameter is false.
 	//
 	// example:
 	//
@@ -266,7 +269,7 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// -----END CERTIFICATE-----
 	SignCert *string `json:"SignCert,omitempty" xml:"SignCert,omitempty"`
-	// The private key of the signing certificate if the certificate uses an SM algorithm and is encoded in the PEM format. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
+	// The private key of the signing certificate that uses a Chinese cryptographic algorithm. The private key is in PEM format. This parameter is returned only when the certFilter request parameter is false.
 	//
 	// example:
 	//
@@ -281,8 +284,9 @@ type GetUserCertificateDetailResponseBody struct {
 	// example:
 	//
 	// 2018-07-13
-	StartDate *string                                     `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Tags      []*GetUserCertificateDetailResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The list of tags.
+	Tags []*GetUserCertificateDetailResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetUserCertificateDetailResponseBody) String() string {
@@ -311,6 +315,10 @@ func (s *GetUserCertificateDetailResponseBody) GetCertChain() []*GetUserCertific
 
 func (s *GetUserCertificateDetailResponseBody) GetCertIdentifier() *string {
 	return s.CertIdentifier
+}
+
+func (s *GetUserCertificateDetailResponseBody) GetCertSha2() *string {
+	return s.CertSha2
 }
 
 func (s *GetUserCertificateDetailResponseBody) GetCity() *string {
@@ -443,6 +451,11 @@ func (s *GetUserCertificateDetailResponseBody) SetCertChain(v []*GetUserCertific
 
 func (s *GetUserCertificateDetailResponseBody) SetCertIdentifier(v string) *GetUserCertificateDetailResponseBody {
 	s.CertIdentifier = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetCertSha2(v string) *GetUserCertificateDetailResponseBody {
+	s.CertSha2 = &v
 	return s
 }
 
@@ -604,7 +617,7 @@ func (s *GetUserCertificateDetailResponseBody) Validate() error {
 }
 
 type GetUserCertificateDetailResponseBodyCertChain struct {
-	// The common name of the certificate.
+	// The common name of the certificate in the chain.
 	//
 	// example:
 	//
@@ -616,19 +629,19 @@ type GetUserCertificateDetailResponseBodyCertChain struct {
 	//
 	// Encryption Everywhere DV TLS CA - G2
 	IssuerCommonName *string `json:"IssuerCommonName,omitempty" xml:"IssuerCommonName,omitempty"`
-	// The end of the validity period of the certificate.
+	// The expiration date of the certificate in the chain.
 	//
 	// example:
 	//
-	// 17322613180000
+	// 17352613180000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The beginning of the validity period of the certificate.
+	// The issuance date of the certificate in the chain.
 	//
 	// example:
 	//
-	// 17302633180000
+	// 17322633180000
 	NotBefore *int64 `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The remaining days of the certificate validity period.
+	// The number of days until the certificate in the chain expires.
 	//
 	// example:
 	//
@@ -694,7 +707,17 @@ func (s *GetUserCertificateDetailResponseBodyCertChain) Validate() error {
 }
 
 type GetUserCertificateDetailResponseBodyTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The key of the tag.
+	//
+	// example:
+	//
+	// test
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// test
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

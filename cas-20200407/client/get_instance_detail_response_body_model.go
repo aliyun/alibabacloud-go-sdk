@@ -23,6 +23,8 @@ type iGetInstanceDetailResponseBody interface {
 	GetCertificateName() *string
 	SetCertificateNotAfter(v int64) *GetInstanceDetailResponseBody
 	GetCertificateNotAfter() *int64
+	SetCertificateNotBefore(v int64) *GetInstanceDetailResponseBody
+	GetCertificateNotBefore() *int64
 	SetCertificateRevokeTime(v int64) *GetInstanceDetailResponseBody
 	GetCertificateRevokeTime() *int64
 	SetCertificateStatus(v string) *GetInstanceDetailResponseBody
@@ -77,6 +79,8 @@ type iGetInstanceDetailResponseBody interface {
 	GetStatus() *string
 	SetTags(v []*GetInstanceDetailResponseBodyTags) *GetInstanceDetailResponseBody
 	GetTags() []*GetInstanceDetailResponseBodyTags
+	SetUpgradeStatus(v string) *GetInstanceDetailResponseBody
+	GetUpgradeStatus() *string
 	SetValidationMethod(v string) *GetInstanceDetailResponseBody
 	GetValidationMethod() *string
 	SetWildcardDomainCount(v int32) *GetInstanceDetailResponseBody
@@ -84,134 +88,269 @@ type iGetInstanceDetailResponseBody interface {
 }
 
 type GetInstanceDetailResponseBody struct {
+	// Specifies whether automatic managed renewal is enabled. Valid values:
+	//
+	// - enable: Enabled.
+	//
+	// - disable: Disabled.
+	//
 	// example:
 	//
 	// enable
 	AutoReissue *string `json:"AutoReissue,omitempty" xml:"AutoReissue,omitempty"`
+	// The average waiting time for issuing a certificate of this specification. Unit: seconds.
+	//
 	// example:
 	//
 	// 120
 	AverageWaitingTime *string `json:"AverageWaitingTime,omitempty" xml:"AverageWaitingTime,omitempty"`
+	// The CA brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
+	//
 	// example:
 	//
 	// DigiCert
 	Brand *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
+	// The global certificate ID, in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
+	//
+	//   --For the China site, the format is certificate ID + "-cn-hangzhou".
+	//
+	// For the China site, the format is certificate ID + "-ap-southeast-1".
+	//
+	// For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the China site is "123-ap-southeast-1".
+	//
 	// example:
 	//
 	// 22783111-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	// The certificate ID.
+	//
 	// example:
 	//
 	// 1234567890
 	CertificateId *int32 `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The name of the instance. When a certificate is issued, this name is used as the default certificate name.
+	//
 	// example:
 	//
 	// 123
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	// The end time of the latest certificate. The value is a UNIX timestamp. This field is empty if no certificate has been issued.
+	//
 	// example:
 	//
 	// 1801324800000
-	CertificateNotAfter *int64 `json:"CertificateNotAfter,omitempty" xml:"CertificateNotAfter,omitempty"`
+	CertificateNotAfter  *int64 `json:"CertificateNotAfter,omitempty" xml:"CertificateNotAfter,omitempty"`
+	CertificateNotBefore *int64 `json:"CertificateNotBefore,omitempty" xml:"CertificateNotBefore,omitempty"`
+	// The revocation time of the latest certificate. The value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1801324800000
 	CertificateRevokeTime *int64 `json:"CertificateRevokeTime,omitempty" xml:"CertificateRevokeTime,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// - **issued**: issued.
+	//
+	// - **revoked**: revoked.
+	//
+	// - **willExpire**: about to expire.
+	//
+	// - **expired**: expired.
+	//
 	// example:
 	//
 	// issued
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
+	// The type of the certificate. Valid values: DV, OV, and EV.
+	//
 	// example:
 	//
 	// DV
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	// The city where the company or organization of the certificate purchaser is located. This field is required when generating a certificate signing request. Default value: Beijing.
+	//
 	// example:
 	//
 	// Beijing
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The company information ID.
+	//
 	// example:
 	//
 	// 47305
-	CompanyId     *int64   `json:"CompanyId,omitempty" xml:"CompanyId,omitempty"`
+	CompanyId *int64 `json:"CompanyId,omitempty" xml:"CompanyId,omitempty"`
+	// The list of contact IDs.
 	ContactIdList []*int64 `json:"ContactIdList,omitempty" xml:"ContactIdList,omitempty" type:"Repeated"`
+	// The code of the country or region where the certificate organization is located. For example, CN indicates China, and US indicates the United States. This field is required when generating a certificate signing request. Default value: CN.
+	//
 	// example:
 	//
 	// CN
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The certificate signing request in PEM format.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE REQUEST-----   ...... -----END CERTIFICATE REQUEST-----
-	Csr           *string                                       `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	// The list of associated expert service DingTalk groups.
 	DingGroupList []*GetInstanceDetailResponseBodyDingGroupList `json:"DingGroupList,omitempty" xml:"DingGroupList,omitempty" type:"Repeated"`
+	// The domain name bound to the certificate.
+	//
 	// example:
 	//
 	// example.com
-	Domain               *string                                              `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The list of domain names to be validated.
 	DomainValidationList []*GetInstanceDetailResponseBodyDomainValidationList `json:"DomainValidationList,omitempty" xml:"DomainValidationList,omitempty" type:"Repeated"`
+	// The number of exact-match domain names.
+	//
 	// example:
 	//
 	// 1
 	FullDomainCount *int32 `json:"FullDomainCount,omitempty" xml:"FullDomainCount,omitempty"`
+	// The CSR generation method. Valid values:
+	//
+	// - online: system-generated. The Csr field is ignored.
+	//
+	// - upload: user-uploaded. The Csr field is required.
+	//
 	// example:
 	//
 	// online
 	GenerateCsrMethod *string `json:"GenerateCsrMethod,omitempty" xml:"GenerateCsrMethod,omitempty"`
+	// The expiration time of the instance. The value is a UNIX timestamp. If no certificate has been issued, this field is empty.
+	//
 	// example:
 	//
 	// 1801324800000
 	InstanceEndTime *int64 `json:"InstanceEndTime,omitempty" xml:"InstanceEndTime,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// cas_dv-cn-123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The start time of the instance. The value is a UNIX timestamp. If no certificate has been issued, this field is empty.
+	//
 	// example:
 	//
 	// 1801324800000
 	InstanceStartTime *int64 `json:"InstanceStartTime,omitempty" xml:"InstanceStartTime,omitempty"`
+	// The instance type. Valid values:
+	//
+	// - **BUY**: formal certificate.
+	//
+	// - **TEST**: test certificate.
+	//
 	// example:
 	//
 	// TEST
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The certificate algorithm. Valid values:
+	//
+	// - **RSA_2048**
+	//
+	// - **RSA_3072**
+	//
+	// - **RSA_4096**
+	//
+	// - **ECC_256**
+	//
+	// - **SM2**.
+	//
 	// example:
 	//
 	// RSA_2048
 	KeyAlgorithm *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
+	// The end time of the instance purchase. The value is a UNIX timestamp. You can use this value to determine the purchase duration of the instance.
+	//
 	// example:
 	//
 	// 1801324800000
 	OrderEndTime *int64 `json:"OrderEndTime,omitempty" xml:"OrderEndTime,omitempty"`
+	// The start time of the instance purchase. The value is a UNIX timestamp. You can use this value to determine the refund time limit.
+	//
 	// example:
 	//
 	// 1801324800000
 	OrderStartTime *int64 `json:"OrderStartTime,omitempty" xml:"OrderStartTime,omitempty"`
+	// The result returned by the certification authority (CA) during the last certificate operation.
+	//
 	// example:
 	//
 	// pending
 	PendingResult *string `json:"PendingResult,omitempty" xml:"PendingResult,omitempty"`
+	// The province or region where the company is located. This field is required when generating a certificate signing request. Default value: Beijing.
+	//
 	// example:
 	//
 	// Beijing
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// B2CE1D02-6D5E-56E5-A9BD-EE288255C7F9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aek****wia
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The purchased instance specification.
+	//
 	// example:
 	//
 	// ss.dv.t
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The instance status. Valid values:
+	//
+	// - **inactive**: pending use.
+	//
+	// - **pending**: under review. The latest certificate is being reviewed.
+	//
+	// - **willExpire**: the instance is about to expire.
+	//
+	// - **expired**: the instance has expired.
+	//
+	// - **refund**: refunded.
+	//
+	// - **normal**: normal.
+	//
+	// - **closed**: closed and unavailable.
+	//
 	// example:
 	//
 	// inactive
-	Status *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*GetInstanceDetailResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of tags.
+	Tags []*GetInstanceDetailResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The upgrade status of the instance. Valid values:
+	//
+	// - none: the instance has not been upgraded.
+	//
+	// - payed: the instance upgrade has been paid.
+	//
+	// - issued: the latest certificate has been issued after the instance upgrade.
+	//
+	// example:
+	//
+	// none
+	UpgradeStatus *string `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
+	// The validation method for the certificate application. Valid values:
+	//
+	// - DNS: DNS validation, using TXT or CNAME.
+	//
+	// - HTTP: file-based validation.
+	//
 	// example:
 	//
 	// DNS
 	ValidationMethod *string `json:"ValidationMethod,omitempty" xml:"ValidationMethod,omitempty"`
+	// The number of wildcard domain names.
+	//
 	// example:
 	//
 	// 0
@@ -252,6 +391,10 @@ func (s *GetInstanceDetailResponseBody) GetCertificateName() *string {
 
 func (s *GetInstanceDetailResponseBody) GetCertificateNotAfter() *int64 {
 	return s.CertificateNotAfter
+}
+
+func (s *GetInstanceDetailResponseBody) GetCertificateNotBefore() *int64 {
+	return s.CertificateNotBefore
 }
 
 func (s *GetInstanceDetailResponseBody) GetCertificateRevokeTime() *int64 {
@@ -362,6 +505,10 @@ func (s *GetInstanceDetailResponseBody) GetTags() []*GetInstanceDetailResponseBo
 	return s.Tags
 }
 
+func (s *GetInstanceDetailResponseBody) GetUpgradeStatus() *string {
+	return s.UpgradeStatus
+}
+
 func (s *GetInstanceDetailResponseBody) GetValidationMethod() *string {
 	return s.ValidationMethod
 }
@@ -402,6 +549,11 @@ func (s *GetInstanceDetailResponseBody) SetCertificateName(v string) *GetInstanc
 
 func (s *GetInstanceDetailResponseBody) SetCertificateNotAfter(v int64) *GetInstanceDetailResponseBody {
 	s.CertificateNotAfter = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBody) SetCertificateNotBefore(v int64) *GetInstanceDetailResponseBody {
+	s.CertificateNotBefore = &v
 	return s
 }
 
@@ -540,6 +692,11 @@ func (s *GetInstanceDetailResponseBody) SetTags(v []*GetInstanceDetailResponseBo
 	return s
 }
 
+func (s *GetInstanceDetailResponseBody) SetUpgradeStatus(v string) *GetInstanceDetailResponseBody {
+	s.UpgradeStatus = &v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBody) SetValidationMethod(v string) *GetInstanceDetailResponseBody {
 	s.ValidationMethod = &v
 	return s
@@ -582,18 +739,30 @@ func (s *GetInstanceDetailResponseBody) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyDingGroupList struct {
+	// The instance ID of the expert service DingTalk group.
+	//
 	// example:
 	//
 	// 123
 	DingGroupInstanceId *string `json:"DingGroupInstanceId,omitempty" xml:"DingGroupInstanceId,omitempty"`
+	// The name of the expert service DingTalk group.
+	//
 	// example:
 	//
 	// 123
 	DingGroupName *string `json:"DingGroupName,omitempty" xml:"DingGroupName,omitempty"`
+	// The type of the expert service DingTalk group. Valid values:
+	//
+	// - expedite: application assistance.
+	//
+	// - remote: offline deployment.
+	//
 	// example:
 	//
 	// remote
 	DingGroupType *string `json:"DingGroupType,omitempty" xml:"DingGroupType,omitempty"`
+	// The link to join the expert service DingTalk group.
+	//
 	// example:
 	//
 	// https://123.com
@@ -649,26 +818,44 @@ func (s *GetInstanceDetailResponseBodyDingGroupList) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyDomainValidationList struct {
+	// The CNAME record value for verification-free authorization. This field may be empty.
+	//
 	// example:
 	//
 	// 123.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// The prefix for CNAME validation.
+	//
+	// example:
+	//
+	// abc
+	CnameKey *string `json:"CnameKey,omitempty" xml:"CnameKey,omitempty"`
+	// The domain name to be validated.
+	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The root domain name.
+	//
 	// example:
 	//
 	// example.com
 	RootDomain *string `json:"RootDomain,omitempty" xml:"RootDomain,omitempty"`
+	// The host record.
+	//
 	// example:
 	//
 	// @
 	ValidationKey *string `json:"ValidationKey,omitempty" xml:"ValidationKey,omitempty"`
+	// The validation type. Valid values: TXT, HTTP, and CNAME.
+	//
 	// example:
 	//
 	// TXT
 	ValidationType *string `json:"ValidationType,omitempty" xml:"ValidationType,omitempty"`
+	// The host record value for validation.
+	//
 	// example:
 	//
 	// 123
@@ -685,6 +872,10 @@ func (s GetInstanceDetailResponseBodyDomainValidationList) GoString() string {
 
 func (s *GetInstanceDetailResponseBodyDomainValidationList) GetCname() *string {
 	return s.Cname
+}
+
+func (s *GetInstanceDetailResponseBodyDomainValidationList) GetCnameKey() *string {
+	return s.CnameKey
 }
 
 func (s *GetInstanceDetailResponseBodyDomainValidationList) GetDomain() *string {
@@ -709,6 +900,11 @@ func (s *GetInstanceDetailResponseBodyDomainValidationList) GetValidationValue()
 
 func (s *GetInstanceDetailResponseBodyDomainValidationList) SetCname(v string) *GetInstanceDetailResponseBodyDomainValidationList {
 	s.Cname = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDomainValidationList) SetCnameKey(v string) *GetInstanceDetailResponseBodyDomainValidationList {
+	s.CnameKey = &v
 	return s
 }
 
@@ -742,10 +938,14 @@ func (s *GetInstanceDetailResponseBodyDomainValidationList) Validate() error {
 }
 
 type GetInstanceDetailResponseBodyTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// test
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test

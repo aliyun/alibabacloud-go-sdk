@@ -22,19 +22,28 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
+	// The current page number in a paged query.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage  *int32                                   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of instances.
 	InstanceList []*ListInstancesResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 12345678-1234-1234-1234-123456789ABC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 20
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The total number of instances.
+	//
 	// example:
 	//
 	// 12
@@ -108,90 +117,191 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyInstanceList struct {
+	// Indicates whether automatic managed renewal is enabled. Valid values:
+	//
+	// - enable: enabled.
+	//
+	// - disable: disabled.
+	//
 	// example:
 	//
 	// enable
 	AutoReissue *string `json:"AutoReissue,omitempty" xml:"AutoReissue,omitempty"`
+	// The CA brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
+	//
 	// example:
 	//
 	// DigiCert
 	Brand *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
+	// The global certificate ID in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
+	//
+	// - For the China site: certificate ID + "-cn-hangzhou"
+	//
+	// - For the China site: certificate ID + "-ap-southeast-1"
+	//
+	// For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the China site is "123-ap-southeast-1".
+	//
 	// example:
 	//
 	// 21795675-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	// The domain name of the latest issued certificate.
+	//
+	// example:
+	//
+	// abc.com,www.abc.com
+	CertificateDomain *string `json:"CertificateDomain,omitempty" xml:"CertificateDomain,omitempty"`
+	// The certificate ID.
+	//
 	// example:
 	//
 	// 18541349
 	CertificateId *int64 `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The certificate name.
+	//
 	// example:
 	//
 	// cert-13216408
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	// The end time of the latest certificate, in UNIX timestamp format. If no certificate has been issued, this value is empty.
+	//
 	// example:
 	//
 	// 1801324800000
-	CertificateNotAfter *int64 `json:"CertificateNotAfter,omitempty" xml:"CertificateNotAfter,omitempty"`
+	CertificateNotAfter  *int64 `json:"CertificateNotAfter,omitempty" xml:"CertificateNotAfter,omitempty"`
+	CertificateNotBefore *int64 `json:"CertificateNotBefore,omitempty" xml:"CertificateNotBefore,omitempty"`
+	// The revocation time of the latest certificate, in UNIX timestamp format.
+	//
 	// example:
 	//
 	// 1801324800000
 	CertificateRevokeTime *int64 `json:"CertificateRevokeTime,omitempty" xml:"CertificateRevokeTime,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// - **issued**: issued.
+	//
+	// - **revoked**: revoked.
+	//
+	// - **willExpire**: about to expire.
+	//
+	// - **expired**: expired.
+	//
 	// example:
 	//
 	// issued
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
+	// The type of the certificate. Valid values: DV, OV, and EV.
+	//
 	// example:
 	//
 	// DV
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	// The domain name bound to the certificate.
+	//
 	// example:
 	//
 	// test.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The number of exact-match domain names.
+	//
 	// example:
 	//
 	// 1
 	FullDomainCount *int32 `json:"FullDomainCount,omitempty" xml:"FullDomainCount,omitempty"`
+	// The expiration time of the instance, in UNIX timestamp format. If no certificate has been issued, this value is empty.
+	//
 	// example:
 	//
 	// 1801324800000
 	InstanceEndTime *int64 `json:"InstanceEndTime,omitempty" xml:"InstanceEndTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// cas_dv-cn-123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The start time of the instance, in UNIX timestamp format. If no certificate has been issued, this value is empty.
+	//
 	// example:
 	//
 	// 1801324800000
 	InstanceStartTime *int64 `json:"InstanceStartTime,omitempty" xml:"InstanceStartTime,omitempty"`
+	// The instance type. Valid values: BUY (official certificate) and TEST (test certificate).
+	//
 	// example:
 	//
 	// BUY
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The certificate algorithm. Default value: RSA_2048. Valid values:
+	//
+	// - **RSA_2048**
+	//
+	// - **RSA_3072**
+	//
+	// - **RSA_4096**
+	//
+	// - **ECC_256**
+	//
+	// - **SM2**.
+	//
 	// example:
 	//
 	// RSA_2048
 	KeyAlgorithm *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
+	// The end time of the instance purchase, in UNIX timestamp format. This value is used to determine the purchase duration of the instance.
+	//
 	// example:
 	//
 	// 1801324800000
 	OrderEndTime *int64 `json:"OrderEndTime,omitempty" xml:"OrderEndTime,omitempty"`
+	// The start time of the instance purchase, in UNIX timestamp format. This value is used to determine the refund time limit.
+	//
 	// example:
 	//
 	// 1801324800000
 	OrderStartTime *int64 `json:"OrderStartTime,omitempty" xml:"OrderStartTime,omitempty"`
+	// The result returned by the CA during the last certificate operation.
+	//
 	// example:
 	//
 	// pending
 	PendingResult *string `json:"PendingResult,omitempty" xml:"PendingResult,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// 123
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The purchased instance specification.
+	//
 	// example:
 	//
 	// ss.dv.t
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The instance status. Valid values:
+	//
+	// - **inactive**: pending use.
+	//
+	// - **pending**: under review. The latest certificate is being reviewed.
+	//
+	// - **willExpire**: about to expire.
+	//
+	// - **expired**: expired.
+	//
+	// - **refund**: refunded.
+	//
+	// - **normal**: normal.
+	//
+	// - **closed**: closed and unavailable.
+	//
 	// example:
 	//
 	// inactive
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of cloud services to which the latest certificate is deployed.
+	UsingProductList []*string `json:"UsingProductList,omitempty" xml:"UsingProductList,omitempty" type:"Repeated"`
+	// The number of wildcard domain names.
+	//
 	// example:
 	//
 	// 0
@@ -218,6 +328,10 @@ func (s *ListInstancesResponseBodyInstanceList) GetCertIdentifier() *string {
 	return s.CertIdentifier
 }
 
+func (s *ListInstancesResponseBodyInstanceList) GetCertificateDomain() *string {
+	return s.CertificateDomain
+}
+
 func (s *ListInstancesResponseBodyInstanceList) GetCertificateId() *int64 {
 	return s.CertificateId
 }
@@ -228,6 +342,10 @@ func (s *ListInstancesResponseBodyInstanceList) GetCertificateName() *string {
 
 func (s *ListInstancesResponseBodyInstanceList) GetCertificateNotAfter() *int64 {
 	return s.CertificateNotAfter
+}
+
+func (s *ListInstancesResponseBodyInstanceList) GetCertificateNotBefore() *int64 {
+	return s.CertificateNotBefore
 }
 
 func (s *ListInstancesResponseBodyInstanceList) GetCertificateRevokeTime() *int64 {
@@ -282,12 +400,20 @@ func (s *ListInstancesResponseBodyInstanceList) GetPendingResult() *string {
 	return s.PendingResult
 }
 
+func (s *ListInstancesResponseBodyInstanceList) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListInstancesResponseBodyInstanceList) GetSpec() *string {
 	return s.Spec
 }
 
 func (s *ListInstancesResponseBodyInstanceList) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListInstancesResponseBodyInstanceList) GetUsingProductList() []*string {
+	return s.UsingProductList
 }
 
 func (s *ListInstancesResponseBodyInstanceList) GetWildcardDomainCount() *int32 {
@@ -309,6 +435,11 @@ func (s *ListInstancesResponseBodyInstanceList) SetCertIdentifier(v string) *Lis
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstanceList) SetCertificateDomain(v string) *ListInstancesResponseBodyInstanceList {
+	s.CertificateDomain = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstanceList) SetCertificateId(v int64) *ListInstancesResponseBodyInstanceList {
 	s.CertificateId = &v
 	return s
@@ -321,6 +452,11 @@ func (s *ListInstancesResponseBodyInstanceList) SetCertificateName(v string) *Li
 
 func (s *ListInstancesResponseBodyInstanceList) SetCertificateNotAfter(v int64) *ListInstancesResponseBodyInstanceList {
 	s.CertificateNotAfter = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstanceList) SetCertificateNotBefore(v int64) *ListInstancesResponseBodyInstanceList {
+	s.CertificateNotBefore = &v
 	return s
 }
 
@@ -389,6 +525,11 @@ func (s *ListInstancesResponseBodyInstanceList) SetPendingResult(v string) *List
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstanceList) SetResourceGroupId(v string) *ListInstancesResponseBodyInstanceList {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstanceList) SetSpec(v string) *ListInstancesResponseBodyInstanceList {
 	s.Spec = &v
 	return s
@@ -396,6 +537,11 @@ func (s *ListInstancesResponseBodyInstanceList) SetSpec(v string) *ListInstances
 
 func (s *ListInstancesResponseBodyInstanceList) SetStatus(v string) *ListInstancesResponseBodyInstanceList {
 	s.Status = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstanceList) SetUsingProductList(v []*string) *ListInstancesResponseBodyInstanceList {
+	s.UsingProductList = v
 	return s
 }
 

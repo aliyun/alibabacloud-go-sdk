@@ -60,11 +60,11 @@ type DescribeDeploymentJobResponseBody struct {
 	CertDomain *string `json:"CertDomain,omitempty" xml:"CertDomain,omitempty"`
 	// The type of the certificate. Valid values:
 	//
-	// 	- **upload**: uploaded certificate
+	// - **upload**: uploaded certificate
 	//
-	// 	- **buy**: purchased certificate
+	// - **buy**: purchased certificate
 	//
-	// 	- **free**: free certificate available only on the China site (aliyun.com)
+	// - **free**: free certificate available only on the China site (aliyun.com)
 	//
 	// example:
 	//
@@ -78,9 +78,9 @@ type DescribeDeploymentJobResponseBody struct {
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// Indicates whether the deployment job was deleted. Valid values:
 	//
-	// 	- **0**: not deleted
+	// - **0**: not deleted
 	//
-	// 	- **1**: deleted
+	// - **1**: deleted
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type DescribeDeploymentJobResponseBody struct {
 	//
 	// example:
 	//
-	// 8888
+	// 43222
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The instance ID of the deployment task.
 	//
@@ -118,11 +118,11 @@ type DescribeDeploymentJobResponseBody struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the deployment job. Valid values:
 	//
-	// 	- **cloud**: multi-cloud deployment job.
+	// - **cloud**: multi-cloud deployment job.
 	//
-	// 	- **trustee**: hosted deployment job available only on the China site (aliyun.com).
+	// - **trustee**: hosted deployment job available only on the China site (aliyun.com).
 	//
-	// 	- **user**: cloud service deployment job. The cloud server is not included.
+	// - **user**: cloud service deployment job. The cloud server is not included.
 	//
 	// example:
 	//
@@ -148,9 +148,9 @@ type DescribeDeploymentJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the deployment job includes the rollback worker. For example, if a cloud service in a deployment job has been rolled back, **1*	- is returned. Valid values:
 	//
-	// 	- **0**: The rollback worker is not included.
+	// - **0**: The rollback worker is not included.
 	//
-	// 	- **1**: The rollback worker is included.
+	// - **1**: The rollback worker is included.
 	//
 	// example:
 	//
@@ -170,17 +170,17 @@ type DescribeDeploymentJobResponseBody struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the deployment job. Valid values:
 	//
-	// 	- **pending**
+	// - **pending**
 	//
-	// 	- **editing**
+	// - **editing**
 	//
-	// 	- **scheduling**
+	// - **scheduling**
 	//
-	// 	- **processing**
+	// - **processing**
 	//
-	// 	- **error**
+	// - **error**
 	//
-	// 	- **success**
+	// - **success**
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type DescribeDeploymentJobResponseBody struct {
 	//
 	// example:
 	//
-	// 166688437XXXX785
+	// 166688437******
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -409,7 +409,7 @@ type DescribeDeploymentJobResponseBodyCasContacts struct {
 	//
 	// example:
 	//
-	// zhangsan
+	// John
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

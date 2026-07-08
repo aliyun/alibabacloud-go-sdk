@@ -133,7 +133,7 @@ type ListCloudAccessResponseBodyCloudAccessList struct {
 	//
 	// example:
 	//
-	// AAAqdwPBA****
+	// AAAZCJQ******
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 	// The service status. The value normal indicates that the service runs as expected.
 	//

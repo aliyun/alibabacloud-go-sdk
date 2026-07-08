@@ -22,15 +22,15 @@ type DecryptResponseBody struct {
 	//
 	// example:
 	//
-	// 12345678-1234-1234-1234-12345678****
+	// 1ef1da5f-38ed-69b3-****-037781890265
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The data after decryption.
+	// The decrypted data.
 	//
 	// example:
 	//
 	// VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4
 	Plaintext *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

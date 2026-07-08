@@ -30,38 +30,78 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
+	// The certification authority (CA) brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
+	//
 	// example:
 	//
 	// Digicert
 	Brand *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// - **issued**: issued.
+	//
+	// - **revoked**: revoked.
+	//
+	// - **willExpire**: about to expire.
+	//
+	// - **expired**: expired.
+	//
 	// example:
 	//
 	// issued
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
+	// The type of the certificate. Valid values: DV, OV, and EV.
+	//
 	// example:
 	//
 	// DV
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	// The page number of the current page in a paged query. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The instance type. Valid values: BUY (official certificate) and TEST (test certificate).
+	//
 	// example:
 	//
 	// BUY
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The keyword for fuzzy match. Matches domain names, instance names, or corresponding resource IDs.
+	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-ae******4wia
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The number of instances to display per page in a paged query. Default value: **10**. Maximum value: **100**.
+	//
 	// example:
 	//
 	// 10
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The instance status. Valid values:
+	//
+	// - **inactive**: pending use.
+	//
+	// - **pending**: under review. The latest certificate is being reviewed.
+	//
+	// - **willExpire**: about to expire.
+	//
+	// - **expired**: expired.
+	//
+	// - **refund**: refunded.
+	//
+	// - **normal**: normal.
+	//
+	// - **closed**: closed and unavailable.
+	//
 	// example:
 	//
 	// inactive

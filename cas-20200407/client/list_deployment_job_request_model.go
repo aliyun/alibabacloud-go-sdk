@@ -30,35 +30,35 @@ type ListDeploymentJobRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- cloud: multi-cloud deployment task.
+	// - cloud: multi-cloud deployment task.
 	//
-	// 	- user: cloud service deployment task. This type of task does not support Elastic Compute Service (ECS) instances.
+	// - user: cloud service deployment task. This type of task does not support Elastic Compute Service (ECS) instances.
 	//
 	// example:
 	//
 	// user
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The number of certificates per page. Default value: **50**.
+	// The number of entries to return on each page. Default value: 50.
 	//
 	// example:
 	//
-	// 20
+	// 50
 	ShowSize *int32 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
 	// The status of the deployment task.
 	//
 	// Valid values:
 	//
-	// 	- success
+	// - success
 	//
-	// 	- pending
+	// - pending
 	//
-	// 	- scheduling
+	// - scheduling
 	//
-	// 	- processing
+	// - processing
 	//
-	// 	- error
+	// - error
 	//
-	// 	- editing
+	// - editing
 	//
 	// example:
 	//
