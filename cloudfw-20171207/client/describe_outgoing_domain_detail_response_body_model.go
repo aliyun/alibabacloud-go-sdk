@@ -212,7 +212,7 @@ type DescribeOutgoingDomainDetailResponseBodyAssetList struct {
 	//
 	// 321120825843
 	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The instance ID of the VPC.
+	// The VPC instance ID.
 	//
 	// example:
 	//
@@ -437,7 +437,15 @@ type DescribeOutgoingDomainDetailResponseBodyAssetListTagList struct {
 	//
 	// 3
 	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	// The risk level.
+	// The risk level. Valid values:
+	//
+	// - **0**: no risk.
+	//
+	// - **1**: low risk.
+	//
+	// - **2**: medium risk.
+	//
+	// - **3**: high risk.
 	//
 	// example:
 	//

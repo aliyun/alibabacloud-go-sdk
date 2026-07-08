@@ -16,7 +16,7 @@ type iAddAddressBookResponseBody interface {
 }
 
 type AddAddressBookResponseBody struct {
-	// The unique ID of the address book that is returned after the address book is successfully added.
+	// The unique ID of the address book returned after the address book is created.
 	//
 	// example:
 	//

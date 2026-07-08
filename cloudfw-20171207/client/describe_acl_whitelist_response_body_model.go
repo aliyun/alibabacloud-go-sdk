@@ -24,25 +24,25 @@ type iDescribeAclWhitelistResponseBody interface {
 type DescribeAclWhitelistResponseBody struct {
 	// Indicates whether the whitelist is enabled. Valid values:
 	//
-	// - **true**: enabled
+	// - **true**: Enabled.
 	//
-	// - **false**: disabled
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
 	// true
 	DomainGroupUseDns *bool `json:"DomainGroupUseDns,omitempty" xml:"DomainGroupUseDns,omitempty"`
-	// Indicates whether DNS is supported for domain names in NAT scenarios. Valid values:
+	// Indicates whether domain name DNS is supported in NAT scenarios. Valid values:
 	//
-	// - **true**: supported
+	// - **true**: Supported.
 	//
-	// - **false**: not supported
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// false
 	NatDomainGroupUseDns *bool `json:"NatDomainGroupUseDns,omitempty" xml:"NatDomainGroupUseDns,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -50,19 +50,19 @@ type DescribeAclWhitelistResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the message type is supported. Valid values:
 	//
-	// - **true**: supported
+	// - **true**: Supported.
 	//
-	// - **false**: not supported
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	SupportMessageType *bool `json:"SupportMessageType,omitempty" xml:"SupportMessageType,omitempty"`
-	// Indicates whether DNS is supported for domain names in VPC scenarios. Valid values:
+	// Indicates whether domain name DNS is supported in VPC scenarios. Valid values:
 	//
-	// - **true**: supported
+	// - **true**: Supported.
 	//
-	// - **false**: not supported
+	// - **false**: Not supported.
 	//
 	// example:
 	//

@@ -5,31 +5,31 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iDescribeAddressBookRequest interface {
+type iDescribeAddressBookShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetAssetMemberUids(v []*int64) *DescribeAddressBookRequest
-	GetAssetMemberUids() []*int64
-	SetContainPort(v string) *DescribeAddressBookRequest
+	SetAssetMemberUidsShrink(v string) *DescribeAddressBookShrinkRequest
+	GetAssetMemberUidsShrink() *string
+	SetContainPort(v string) *DescribeAddressBookShrinkRequest
 	GetContainPort() *string
-	SetCurrentPage(v string) *DescribeAddressBookRequest
+	SetCurrentPage(v string) *DescribeAddressBookShrinkRequest
 	GetCurrentPage() *string
-	SetGroupType(v string) *DescribeAddressBookRequest
+	SetGroupType(v string) *DescribeAddressBookShrinkRequest
 	GetGroupType() *string
-	SetGroupUuid(v string) *DescribeAddressBookRequest
+	SetGroupUuid(v string) *DescribeAddressBookShrinkRequest
 	GetGroupUuid() *string
-	SetLang(v string) *DescribeAddressBookRequest
+	SetLang(v string) *DescribeAddressBookShrinkRequest
 	GetLang() *string
-	SetPageSize(v string) *DescribeAddressBookRequest
+	SetPageSize(v string) *DescribeAddressBookShrinkRequest
 	GetPageSize() *string
-	SetQuery(v string) *DescribeAddressBookRequest
+	SetQuery(v string) *DescribeAddressBookShrinkRequest
 	GetQuery() *string
 }
 
-type DescribeAddressBookRequest struct {
+type DescribeAddressBookShrinkRequest struct {
 	// The list of member accounts for the asset address book.
-	AssetMemberUids []*int64 `json:"AssetMemberUids,omitempty" xml:"AssetMemberUids,omitempty" type:"Repeated"`
+	AssetMemberUidsShrink *string `json:"AssetMemberUids,omitempty" xml:"AssetMemberUids,omitempty"`
 	// Queries address books that contain the specified port. This parameter takes effect only when the **GroupType*	- parameter is set to **port**.
 	//
 	// example:
@@ -84,86 +84,86 @@ type DescribeAddressBookRequest struct {
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
-func (s DescribeAddressBookRequest) String() string {
+func (s DescribeAddressBookShrinkRequest) String() string {
 	return dara.Prettify(s)
 }
 
-func (s DescribeAddressBookRequest) GoString() string {
+func (s DescribeAddressBookShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAddressBookRequest) GetAssetMemberUids() []*int64 {
-	return s.AssetMemberUids
+func (s *DescribeAddressBookShrinkRequest) GetAssetMemberUidsShrink() *string {
+	return s.AssetMemberUidsShrink
 }
 
-func (s *DescribeAddressBookRequest) GetContainPort() *string {
+func (s *DescribeAddressBookShrinkRequest) GetContainPort() *string {
 	return s.ContainPort
 }
 
-func (s *DescribeAddressBookRequest) GetCurrentPage() *string {
+func (s *DescribeAddressBookShrinkRequest) GetCurrentPage() *string {
 	return s.CurrentPage
 }
 
-func (s *DescribeAddressBookRequest) GetGroupType() *string {
+func (s *DescribeAddressBookShrinkRequest) GetGroupType() *string {
 	return s.GroupType
 }
 
-func (s *DescribeAddressBookRequest) GetGroupUuid() *string {
+func (s *DescribeAddressBookShrinkRequest) GetGroupUuid() *string {
 	return s.GroupUuid
 }
 
-func (s *DescribeAddressBookRequest) GetLang() *string {
+func (s *DescribeAddressBookShrinkRequest) GetLang() *string {
 	return s.Lang
 }
 
-func (s *DescribeAddressBookRequest) GetPageSize() *string {
+func (s *DescribeAddressBookShrinkRequest) GetPageSize() *string {
 	return s.PageSize
 }
 
-func (s *DescribeAddressBookRequest) GetQuery() *string {
+func (s *DescribeAddressBookShrinkRequest) GetQuery() *string {
 	return s.Query
 }
 
-func (s *DescribeAddressBookRequest) SetAssetMemberUids(v []*int64) *DescribeAddressBookRequest {
-	s.AssetMemberUids = v
+func (s *DescribeAddressBookShrinkRequest) SetAssetMemberUidsShrink(v string) *DescribeAddressBookShrinkRequest {
+	s.AssetMemberUidsShrink = &v
 	return s
 }
 
-func (s *DescribeAddressBookRequest) SetContainPort(v string) *DescribeAddressBookRequest {
+func (s *DescribeAddressBookShrinkRequest) SetContainPort(v string) *DescribeAddressBookShrinkRequest {
 	s.ContainPort = &v
 	return s
 }
 
-func (s *DescribeAddressBookRequest) SetCurrentPage(v string) *DescribeAddressBookRequest {
+func (s *DescribeAddressBookShrinkRequest) SetCurrentPage(v string) *DescribeAddressBookShrinkRequest {
 	s.CurrentPage = &v
 	return s
 }
 
-func (s *DescribeAddressBookRequest) SetGroupType(v string) *DescribeAddressBookRequest {
+func (s *DescribeAddressBookShrinkRequest) SetGroupType(v string) *DescribeAddressBookShrinkRequest {
 	s.GroupType = &v
 	return s
 }
 
-func (s *DescribeAddressBookRequest) SetGroupUuid(v string) *DescribeAddressBookRequest {
+func (s *DescribeAddressBookShrinkRequest) SetGroupUuid(v string) *DescribeAddressBookShrinkRequest {
 	s.GroupUuid = &v
 	return s
 }
 
-func (s *DescribeAddressBookRequest) SetLang(v string) *DescribeAddressBookRequest {
+func (s *DescribeAddressBookShrinkRequest) SetLang(v string) *DescribeAddressBookShrinkRequest {
 	s.Lang = &v
 	return s
 }
 
-func (s *DescribeAddressBookRequest) SetPageSize(v string) *DescribeAddressBookRequest {
+func (s *DescribeAddressBookShrinkRequest) SetPageSize(v string) *DescribeAddressBookShrinkRequest {
 	s.PageSize = &v
 	return s
 }
 
-func (s *DescribeAddressBookRequest) SetQuery(v string) *DescribeAddressBookRequest {
+func (s *DescribeAddressBookShrinkRequest) SetQuery(v string) *DescribeAddressBookShrinkRequest {
 	s.Query = &v
 	return s
 }
 
-func (s *DescribeAddressBookRequest) Validate() error {
+func (s *DescribeAddressBookShrinkRequest) Validate() error {
 	return dara.Validate(s)
 }

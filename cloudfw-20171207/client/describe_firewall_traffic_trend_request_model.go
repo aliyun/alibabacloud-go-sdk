@@ -18,14 +18,24 @@ type iDescribeFirewallTrafficTrendRequest interface {
 }
 
 type DescribeFirewallTrafficTrendRequest struct {
+	// The end time of the query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1758474000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - **zh*	- (default): Chinese
+	//
+	// - **en**: English
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The start time of the query. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1758470400

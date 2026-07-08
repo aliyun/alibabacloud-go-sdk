@@ -17,6 +17,10 @@ type iAddAddressBookRequest interface {
 	GetAckNamespaces() []*string
 	SetAddressList(v string) *AddAddressBookRequest
 	GetAddressList() *string
+	SetAssetMemberUids(v []*int64) *AddAddressBookRequest
+	GetAssetMemberUids() []*int64
+	SetAssetRegionResourceTypes(v []*AddAddressBookRequestAssetRegionResourceTypes) *AddAddressBookRequest
+	GetAssetRegionResourceTypes() []*AddAddressBookRequestAssetRegionResourceTypes
 	SetAutoAddTagEcs(v string) *AddAddressBookRequest
 	GetAutoAddTagEcs() *string
 	SetDescription(v string) *AddAddressBookRequest
@@ -36,9 +40,9 @@ type iAddAddressBookRequest interface {
 }
 
 type AddAddressBookRequest struct {
-	// The ACK cluster connector ID. You can obtain the value from:
+	// The ACK cluster connector ID. You can obtain the value from the following operation:
 	//
-	// - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): queries a list of ACK cluster connectors.
+	// - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Lists ACK cluster connectors.
 	//
 	// example:
 	//
@@ -52,21 +56,25 @@ type AddAddressBookRequest struct {
 	//
 	// > A maximum of 10 namespaces are supported.
 	AckNamespaces []*string `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
-	// The address list of the address book. Multiple addresses are separated by commas, and within each address element, the address and its description are separated by a space.
+	// The addresses in the address book. Separate multiple addresses with commas (,). Use a space to separate an address from its description within a single address element.
 	//
 	// > This parameter is required when GroupType is set to `ip`, `port`, or `domain`.
 	//
-	// - When GroupType is set to `ip`, enter IP addresses in the address list. Example: 192.0.XX.XX/32 development network segment, 10.0.0.X/24,192.0.XX.XX/24 test network segment.
+	// - When GroupType is set to `ip`, enter IP addresses in the address list. Example: 192.0.XX.XX/32 Development CIDR block,10.0.0.X/24,192.0.XX.XX/24 Test CIDR block.
 	//
-	// - When GroupType is set to `port`, enter ports or port ranges in the address list. Example: 80 HTTP port, 100/200,3306 database port.
+	// - When GroupType is set to `port`, enter ports or port ranges in the address list. Example: 80 HTTP port,100/200,3306 Database port.
 	//
-	// - When GroupType is set to `domain`, enter domain names in the address list. Example: example.com test domain, aliyundoc.com,www.aliyun.com Alibaba Cloud official website.
+	// - When GroupType is set to `domain`, enter domain names in the address list. Example: example.com Test domain name,aliyundoc.com,www.aliyun.com Alibaba Cloud official website.
 	//
 	// example:
 	//
 	// 192.0.XX.XX/32 ,192.0.XX.XX/24
 	AddressList *string `json:"AddressList,omitempty" xml:"AddressList,omitempty"`
-	// Specifies whether to automatically add the public IP addresses of ECS instances that match new tags to the address book.
+	// The list of member accounts for the asset address book.
+	AssetMemberUids []*int64 `json:"AssetMemberUids,omitempty" xml:"AssetMemberUids,omitempty" type:"Repeated"`
+	// The list of regions and resource types for the asset address book.
+	AssetRegionResourceTypes []*AddAddressBookRequestAssetRegionResourceTypes `json:"AssetRegionResourceTypes,omitempty" xml:"AssetRegionResourceTypes,omitempty" type:"Repeated"`
+	// Indicates whether to automatically add the public IP addresses of Elastic Compute Service (ECS) instances that match the specified tags to the address book.
 	//
 	// example:
 	//
@@ -104,15 +112,15 @@ type AddAddressBookRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the requester.
+	// The source IP address of the request.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The list of ECS tags.
+	// The ECS tag list.
 	TagList []*AddAddressBookRequestTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	// The logical relationship among multiple ECS tags to be matched.
+	// The logical relationship among multiple ECS tags to match.
 	//
 	// example:
 	//
@@ -142,6 +150,14 @@ func (s *AddAddressBookRequest) GetAckNamespaces() []*string {
 
 func (s *AddAddressBookRequest) GetAddressList() *string {
 	return s.AddressList
+}
+
+func (s *AddAddressBookRequest) GetAssetMemberUids() []*int64 {
+	return s.AssetMemberUids
+}
+
+func (s *AddAddressBookRequest) GetAssetRegionResourceTypes() []*AddAddressBookRequestAssetRegionResourceTypes {
+	return s.AssetRegionResourceTypes
 }
 
 func (s *AddAddressBookRequest) GetAutoAddTagEcs() *string {
@@ -196,6 +212,16 @@ func (s *AddAddressBookRequest) SetAddressList(v string) *AddAddressBookRequest 
 	return s
 }
 
+func (s *AddAddressBookRequest) SetAssetMemberUids(v []*int64) *AddAddressBookRequest {
+	s.AssetMemberUids = v
+	return s
+}
+
+func (s *AddAddressBookRequest) SetAssetRegionResourceTypes(v []*AddAddressBookRequestAssetRegionResourceTypes) *AddAddressBookRequest {
+	s.AssetRegionResourceTypes = v
+	return s
+}
+
 func (s *AddAddressBookRequest) SetAutoAddTagEcs(v string) *AddAddressBookRequest {
 	s.AutoAddTagEcs = &v
 	return s
@@ -239,6 +265,15 @@ func (s *AddAddressBookRequest) SetTagRelation(v string) *AddAddressBookRequest 
 func (s *AddAddressBookRequest) Validate() error {
 	if s.AckLabels != nil {
 		for _, item := range s.AckLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AssetRegionResourceTypes != nil {
+		for _, item := range s.AssetRegionResourceTypes {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -300,6 +335,504 @@ func (s *AddAddressBookRequestAckLabels) SetValue(v string) *AddAddressBookReque
 }
 
 func (s *AddAddressBookRequestAckLabels) Validate() error {
+	return dara.Validate(s)
+}
+
+type AddAddressBookRequestAssetRegionResourceTypes struct {
+	// The region ID of the asset.
+	//
+	// example:
+	//
+	// all
+	AssetRegionId *string `json:"AssetRegionId,omitempty" xml:"AssetRegionId,omitempty"`
+	// The asset type.
+	ResourceType *AddAddressBookRequestAssetRegionResourceTypesResourceType `json:"ResourceType,omitempty" xml:"ResourceType,omitempty" type:"Struct"`
+}
+
+func (s AddAddressBookRequestAssetRegionResourceTypes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddAddressBookRequestAssetRegionResourceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypes) GetAssetRegionId() *string {
+	return s.AssetRegionId
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypes) GetResourceType() *AddAddressBookRequestAssetRegionResourceTypesResourceType {
+	return s.ResourceType
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypes) SetAssetRegionId(v string) *AddAddressBookRequestAssetRegionResourceTypes {
+	s.AssetRegionId = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypes) SetResourceType(v *AddAddressBookRequestAssetRegionResourceTypesResourceType) *AddAddressBookRequestAssetRegionResourceTypes {
+	s.ResourceType = v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypes) Validate() error {
+	if s.ResourceType != nil {
+		if err := s.ResourceType.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type AddAddressBookRequestAssetRegionResourceTypesResourceType struct {
+	// The IPv4 asset type.
+	Ipv4 *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 `json:"Ipv4,omitempty" xml:"Ipv4,omitempty" type:"Struct"`
+	// The IPv6 asset type.
+	Ipv6 *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6 `json:"Ipv6,omitempty" xml:"Ipv6,omitempty" type:"Struct"`
+}
+
+func (s AddAddressBookRequestAssetRegionResourceTypesResourceType) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddAddressBookRequestAssetRegionResourceTypesResourceType) GoString() string {
+	return s.String()
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceType) GetIpv4() *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	return s.Ipv4
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceType) GetIpv6() *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6 {
+	return s.Ipv6
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceType) SetIpv4(v *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) *AddAddressBookRequestAssetRegionResourceTypesResourceType {
+	s.Ipv4 = v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceType) SetIpv6(v *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) *AddAddressBookRequestAssetRegionResourceTypesResourceType {
+	s.Ipv6 = v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceType) Validate() error {
+	if s.Ipv4 != nil {
+		if err := s.Ipv4.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv6 != nil {
+		if err := s.Ipv6.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 struct {
+	// The asset type: AIGatewayEIP.
+	//
+	// example:
+	//
+	// false
+	AiGatewayEIP *bool `json:"AiGatewayEIP,omitempty" xml:"AiGatewayEIP,omitempty"`
+	// The asset type: AlbEIP.
+	//
+	// example:
+	//
+	// false
+	AlbEIP *bool `json:"AlbEIP,omitempty" xml:"AlbEIP,omitempty"`
+	// The asset type: ApigEIP.
+	//
+	// example:
+	//
+	// false
+	ApiGatewayEIP *bool `json:"ApiGatewayEIP,omitempty" xml:"ApiGatewayEIP,omitempty"`
+	// The asset type: BastionHostEgressIP.
+	//
+	// example:
+	//
+	// false
+	BastionHostEgressIP *bool `json:"BastionHostEgressIP,omitempty" xml:"BastionHostEgressIP,omitempty"`
+	// The asset type: BastionHostIP.
+	//
+	// example:
+	//
+	// false
+	BastionHostIP *bool `json:"BastionHostIP,omitempty" xml:"BastionHostIP,omitempty"`
+	// The asset type: BastionHostIngressIP.
+	//
+	// example:
+	//
+	// false
+	BastionHostIngressIP *bool `json:"BastionHostIngressIP,omitempty" xml:"BastionHostIngressIP,omitempty"`
+	// The asset type: EIP.
+	//
+	// example:
+	//
+	// false
+	EIP *bool `json:"EIP,omitempty" xml:"EIP,omitempty"`
+	// The asset type: EcsEIP.
+	//
+	// example:
+	//
+	// false
+	EcsEIP *bool `json:"EcsEIP,omitempty" xml:"EcsEIP,omitempty"`
+	// The asset type: EcsPublicIP.
+	//
+	// example:
+	//
+	// false
+	EcsPublicIP *bool `json:"EcsPublicIP,omitempty" xml:"EcsPublicIP,omitempty"`
+	// The asset type: EniEIP.
+	//
+	// example:
+	//
+	// false
+	EniEIP *bool `json:"EniEIP,omitempty" xml:"EniEIP,omitempty"`
+	// The asset type: GaEIP.
+	//
+	// example:
+	//
+	// false
+	GaEIP *bool `json:"GaEIP,omitempty" xml:"GaEIP,omitempty"`
+	// The asset type: HAVIP.
+	//
+	// example:
+	//
+	// false
+	HAVIP *bool `json:"HAVIP,omitempty" xml:"HAVIP,omitempty"`
+	// The asset type: NatEIP.
+	//
+	// example:
+	//
+	// false
+	NatEIP *bool `json:"NatEIP,omitempty" xml:"NatEIP,omitempty"`
+	// The asset type: NatPublicIP.
+	//
+	// example:
+	//
+	// false
+	NatPublicIP *bool `json:"NatPublicIP,omitempty" xml:"NatPublicIP,omitempty"`
+	// The asset type: NlbEIP.
+	//
+	// example:
+	//
+	// false
+	NlbEIP *bool `json:"NlbEIP,omitempty" xml:"NlbEIP,omitempty"`
+	// The asset type: SlbEIP.
+	//
+	// example:
+	//
+	// true
+	SlbEIP *bool `json:"SlbEIP,omitempty" xml:"SlbEIP,omitempty"`
+	// The asset type: SlbPublicIP.
+	//
+	// example:
+	//
+	// false
+	SlbPublicIP *bool `json:"SlbPublicIP,omitempty" xml:"SlbPublicIP,omitempty"`
+}
+
+func (s AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GoString() string {
+	return s.String()
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetAiGatewayEIP() *bool {
+	return s.AiGatewayEIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetAlbEIP() *bool {
+	return s.AlbEIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetApiGatewayEIP() *bool {
+	return s.ApiGatewayEIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetBastionHostEgressIP() *bool {
+	return s.BastionHostEgressIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetBastionHostIP() *bool {
+	return s.BastionHostIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetBastionHostIngressIP() *bool {
+	return s.BastionHostIngressIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetEIP() *bool {
+	return s.EIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetEcsEIP() *bool {
+	return s.EcsEIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetEcsPublicIP() *bool {
+	return s.EcsPublicIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetEniEIP() *bool {
+	return s.EniEIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetGaEIP() *bool {
+	return s.GaEIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetHAVIP() *bool {
+	return s.HAVIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetNatEIP() *bool {
+	return s.NatEIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetNatPublicIP() *bool {
+	return s.NatPublicIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetNlbEIP() *bool {
+	return s.NlbEIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetSlbEIP() *bool {
+	return s.SlbEIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) GetSlbPublicIP() *bool {
+	return s.SlbPublicIP
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetAiGatewayEIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.AiGatewayEIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetAlbEIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.AlbEIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetApiGatewayEIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.ApiGatewayEIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetBastionHostEgressIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.BastionHostEgressIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetBastionHostIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.BastionHostIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetBastionHostIngressIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.BastionHostIngressIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetEIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.EIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetEcsEIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.EcsEIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetEcsPublicIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.EcsPublicIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetEniEIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.EniEIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetGaEIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.GaEIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetHAVIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.HAVIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetNatEIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.NatEIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetNatPublicIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.NatPublicIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetNlbEIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.NlbEIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetSlbEIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.SlbEIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) SetSlbPublicIP(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 {
+	s.SlbPublicIP = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) Validate() error {
+	return dara.Validate(s)
+}
+
+type AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6 struct {
+	// The asset type: AIGatewayEIPv6.
+	//
+	// example:
+	//
+	// false
+	AiGatewayEIPv6 *bool `json:"AiGatewayEIPv6,omitempty" xml:"AiGatewayEIPv6,omitempty"`
+	// The asset type: AlbIPv6.
+	//
+	// example:
+	//
+	// false
+	AlbIPv6 *bool `json:"AlbIPv6,omitempty" xml:"AlbIPv6,omitempty"`
+	// The asset type: ApigEIPv6.
+	//
+	// example:
+	//
+	// false
+	ApiGatewayEIPv6 *bool `json:"ApiGatewayEIPv6,omitempty" xml:"ApiGatewayEIPv6,omitempty"`
+	// The asset type: EcsIPv6.
+	//
+	// example:
+	//
+	// false
+	EcsIPv6 *bool `json:"EcsIPv6,omitempty" xml:"EcsIPv6,omitempty"`
+	// The asset type: EniEIPv6.
+	//
+	// example:
+	//
+	// false
+	EniEIPv6 *bool `json:"EniEIPv6,omitempty" xml:"EniEIPv6,omitempty"`
+	// The asset type: GaEIPv6.
+	//
+	// example:
+	//
+	// false
+	GaEIPv6 *bool `json:"GaEIPv6,omitempty" xml:"GaEIPv6,omitempty"`
+	// The asset type: NlbIPv6.
+	//
+	// example:
+	//
+	// false
+	NlbIPv6 *bool `json:"NlbIPv6,omitempty" xml:"NlbIPv6,omitempty"`
+	// The asset type: SlbIPv6.
+	//
+	// example:
+	//
+	// false
+	SlbIPv6 *bool `json:"SlbIPv6,omitempty" xml:"SlbIPv6,omitempty"`
+}
+
+func (s AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) GoString() string {
+	return s.String()
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) GetAiGatewayEIPv6() *bool {
+	return s.AiGatewayEIPv6
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) GetAlbIPv6() *bool {
+	return s.AlbIPv6
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) GetApiGatewayEIPv6() *bool {
+	return s.ApiGatewayEIPv6
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) GetEcsIPv6() *bool {
+	return s.EcsIPv6
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) GetEniEIPv6() *bool {
+	return s.EniEIPv6
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) GetGaEIPv6() *bool {
+	return s.GaEIPv6
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) GetNlbIPv6() *bool {
+	return s.NlbIPv6
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) GetSlbIPv6() *bool {
+	return s.SlbIPv6
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) SetAiGatewayEIPv6(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6 {
+	s.AiGatewayEIPv6 = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) SetAlbIPv6(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6 {
+	s.AlbIPv6 = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) SetApiGatewayEIPv6(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6 {
+	s.ApiGatewayEIPv6 = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) SetEcsIPv6(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6 {
+	s.EcsIPv6 = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) SetEniEIPv6(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6 {
+	s.EniEIPv6 = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) SetGaEIPv6(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6 {
+	s.GaEIPv6 = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) SetNlbIPv6(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6 {
+	s.NlbIPv6 = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) SetSlbIPv6(v bool) *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6 {
+	s.SlbIPv6 = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6) Validate() error {
 	return dara.Validate(s)
 }
 

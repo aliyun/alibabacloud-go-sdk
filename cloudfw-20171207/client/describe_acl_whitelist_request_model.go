@@ -16,7 +16,7 @@ type iDescribeAclWhitelistRequest interface {
 }
 
 type DescribeAclWhitelistRequest struct {
-	// The language of the response message. Valid values:
+	// The language of the messages to receive. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//

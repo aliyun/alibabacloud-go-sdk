@@ -14,7 +14,7 @@ type iModifyNatFirewallControlPolicyPositionResponseBody interface {
 }
 
 type ModifyNatFirewallControlPolicyPositionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -65,28 +65,38 @@ func (client *Client) AddAclBackupDataWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Create an address book, including IPv4 address book, ECS tag address book, IPv6 address book, domain address book, and ACK address book.
+// Creates an address book, including IPv4 address books, ECS tag-based address books, IPv6 address books, domain name address books, and ACK address books.
 //
 // Description:
 //
-// This API operation is used to create an address book, including IPv4 address book, ECS tag address book, IPv6 address book, domain address book, and ACK address book.
+// This operation creates an address book, including IPv4 address books, ECS tag-based address books, IPv6 address books, domain name address books, and ACK address books.
 //
-// ## QPS Limit
+// ## Rate limit
 //
-// The single-user QPS limit for this API operation is 10 calls per second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please make calls appropriately.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
-// @param request - AddAddressBookRequest
+// @param tmpReq - AddAddressBookRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddAddressBookResponse
-func (client *Client) AddAddressBookWithContext(ctx context.Context, request *AddAddressBookRequest, runtime *dara.RuntimeOptions) (_result *AddAddressBookResponse, _err error) {
+func (client *Client) AddAddressBookWithContext(ctx context.Context, tmpReq *AddAddressBookRequest, runtime *dara.RuntimeOptions) (_result *AddAddressBookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &AddAddressBookShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AssetMemberUids) {
+		request.AssetMemberUidsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssetMemberUids, dara.String("AssetMemberUids"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.AssetRegionResourceTypes) {
+		request.AssetRegionResourceTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssetRegionResourceTypes, dara.String("AssetRegionResourceTypes"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AckClusterConnectorId) {
 		query["AckClusterConnectorId"] = request.AckClusterConnectorId
@@ -102,6 +112,14 @@ func (client *Client) AddAddressBookWithContext(ctx context.Context, request *Ad
 
 	if !dara.IsNil(request.AddressList) {
 		query["AddressList"] = request.AddressList
+	}
+
+	if !dara.IsNil(request.AssetMemberUidsShrink) {
+		query["AssetMemberUids"] = request.AssetMemberUidsShrink
+	}
+
+	if !dara.IsNil(request.AssetRegionResourceTypesShrink) {
+		query["AssetRegionResourceTypes"] = request.AssetRegionResourceTypesShrink
 	}
 
 	if !dara.IsNil(request.AutoAddTagEcs) {
@@ -4173,13 +4191,13 @@ func (client *Client) DescribeAclRuleCountWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the Access Control List (ACL) whitelist.
+// Retrieves the ACL whitelist.
 //
 // Description:
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for this API is 10 for each user. If you exceed this limit, API calls are throttled, which may affect your business. We recommend that you call the API at a reasonable rate.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - DescribeAclWhitelistRequest
 //
@@ -4227,29 +4245,39 @@ func (client *Client) DescribeAclWhitelistWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries address books in a batch.
+// Queries address books in batches.
 //
 // Description:
 //
-// Use this API to query the details of an access control policy address book.
+// This operation is used to query the details of access control policy address books.
 //
 // ## QPS limit
 //
-// The per-user QPS limit for this API is 10. Exceeding this limit throttles your API calls and may impact your business. Plan your calls accordingly.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
-// @param request - DescribeAddressBookRequest
+// @param tmpReq - DescribeAddressBookRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAddressBookResponse
-func (client *Client) DescribeAddressBookWithContext(ctx context.Context, request *DescribeAddressBookRequest, runtime *dara.RuntimeOptions) (_result *DescribeAddressBookResponse, _err error) {
+func (client *Client) DescribeAddressBookWithContext(ctx context.Context, tmpReq *DescribeAddressBookRequest, runtime *dara.RuntimeOptions) (_result *DescribeAddressBookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &DescribeAddressBookShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AssetMemberUids) {
+		request.AssetMemberUidsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssetMemberUids, dara.String("AssetMemberUids"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetMemberUidsShrink) {
+		query["AssetMemberUids"] = request.AssetMemberUidsShrink
+	}
+
 	if !dara.IsNil(request.ContainPort) {
 		query["ContainPort"] = request.ContainPort
 	}
@@ -5449,7 +5477,7 @@ func (client *Client) DescribeFirewallTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取总流量趋势
+// Queries the traffic trend of a firewall.
 //
 // @param request - DescribeFirewallTrafficTrendRequest
 //
@@ -14561,28 +14589,38 @@ func (client *Client) ListTlsInspectCACertificatesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modify an address book.
+// Modifies an address book.
 //
 // Description:
 //
-// This API is used to modify an address book.
+// This operation is used to modify an address book.
 //
-// ## QPS Limit
+// ## QPS limit
 //
-// The single-user QPS limit for this API is 10 requests per second. Exceeding this limit will result in API throttling, which may affect your business. Please make calls responsibly.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation appropriately.
 //
-// @param request - ModifyAddressBookRequest
+// @param tmpReq - ModifyAddressBookRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAddressBookResponse
-func (client *Client) ModifyAddressBookWithContext(ctx context.Context, request *ModifyAddressBookRequest, runtime *dara.RuntimeOptions) (_result *ModifyAddressBookResponse, _err error) {
+func (client *Client) ModifyAddressBookWithContext(ctx context.Context, tmpReq *ModifyAddressBookRequest, runtime *dara.RuntimeOptions) (_result *ModifyAddressBookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ModifyAddressBookShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AssetMemberUids) {
+		request.AssetMemberUidsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssetMemberUids, dara.String("AssetMemberUids"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.AssetRegionResourceTypes) {
+		request.AssetRegionResourceTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssetRegionResourceTypes, dara.String("AssetRegionResourceTypes"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AckLabels) {
 		query["AckLabels"] = request.AckLabels
@@ -14594,6 +14632,14 @@ func (client *Client) ModifyAddressBookWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.AddressList) {
 		query["AddressList"] = request.AddressList
+	}
+
+	if !dara.IsNil(request.AssetMemberUidsShrink) {
+		query["AssetMemberUids"] = request.AssetMemberUidsShrink
+	}
+
+	if !dara.IsNil(request.AssetRegionResourceTypesShrink) {
+		query["AssetRegionResourceTypes"] = request.AssetRegionResourceTypesShrink
 	}
 
 	if !dara.IsNil(request.AutoAddTagEcs) {
