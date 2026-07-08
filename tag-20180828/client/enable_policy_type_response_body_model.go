@@ -14,6 +14,8 @@ type iEnablePolicyTypeResponseBody interface {
 }
 
 type EnablePolicyTypeResponseBody struct {
+  // The request ID.
+  // 
   // example:
   // 
   // 6E27F22C-EDA3-132E-A53F-77DE3BC2343D

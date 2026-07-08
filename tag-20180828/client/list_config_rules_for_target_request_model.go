@@ -52,9 +52,9 @@ type ListConfigRulesForTargetRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The use scenario of the tag policy. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// 	- tags: enables tags with specified tag values to be added to resources.
+	// - tags: enables tags with specified tag values to be added to resources.
 	//
-	// 	- rg_inherit: enables resources in a resource group to automatically inherit tags from the resource group.
+	// - rg_inherit: enables resources in a resource group to automatically inherit tags from the resource group.
 	//
 	// example:
 	//
@@ -81,15 +81,15 @@ type ListConfigRulesForTargetRequest struct {
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// 	- USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
+	// - USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
 	//
-	// 	- ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// - ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
-	// 	- FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// - FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
-	// 	- ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// - ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
-	// >  The value of this parameter is not case-sensitive.
+	// > The value of this parameter is not case-sensitive.
 	//
 	// example:
 	//
@@ -97,13 +97,13 @@ type ListConfigRulesForTargetRequest struct {
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The mode of the Tag Policy feature. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// 	- USER: single-account mode
+	// - USER: single-account mode
 	//
-	// 	- RD: multi-account mode
+	// - RD: multi-account mode
 	//
 	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
 	//
-	// >  The value of this parameter is not case-sensitive.
+	// > The value of this parameter is not case-sensitive.
 	//
 	// example:
 	//

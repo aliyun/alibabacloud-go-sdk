@@ -16,13 +16,21 @@ type iCheckCreatedByEnabledResponseBody interface {
 }
 
 type CheckCreatedByEnabledResponseBody struct {
+	// Indicates whether the createdby tag is enabled. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// false
 	OpenStatus *bool `json:"OpenStatus,omitempty" xml:"OpenStatus,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 682DD9E1-F530-5D14-A839-A6787FA82B74
+	// 682DD9E1-F530-5D14-A839-A6787FA8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

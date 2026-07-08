@@ -59,5 +59,10 @@ func (s *OpenCreatedByResponse) SetBody(v *OpenCreatedByResponseBody) *OpenCreat
 }
 
 func (s *OpenCreatedByResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

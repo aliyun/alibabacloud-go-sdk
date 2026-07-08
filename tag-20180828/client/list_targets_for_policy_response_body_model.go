@@ -114,7 +114,16 @@ func (s *ListTargetsForPolicyResponseBody) SetTargets(v []*ListTargetsForPolicyR
 }
 
 func (s *ListTargetsForPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Targets != nil {
+		for _, item := range s.Targets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTargetsForPolicyResponseBodyTargets struct {

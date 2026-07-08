@@ -33,9 +33,8 @@ type ListTagValuesResponseBody struct {
 	// example:
 	//
 	// 8989CA7E-D2E0-4B6D-8282-311106E80150
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the tag values.
-	Values *ListTagValuesResponseBodyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Values    *ListTagValuesResponseBodyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
 }
 
 func (s ListTagValuesResponseBody) String() string {
@@ -74,7 +73,12 @@ func (s *ListTagValuesResponseBody) SetValues(v *ListTagValuesResponseBodyValues
 }
 
 func (s *ListTagValuesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Values != nil {
+		if err := s.Values.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTagValuesResponseBodyValues struct {

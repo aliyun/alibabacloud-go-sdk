@@ -16,13 +16,6 @@ type iUntagResourcesResponseBody interface {
 }
 
 type UntagResourcesResponseBody struct {
-	// The information about the resources from which tags fail to be removed.
-	//
-	// >
-	//
-	// 	- If tags are removed from all resources, the value of FailedResources is empty.
-	//
-	// 	- If tags fail to be removed from some or all resources, the value of FailedResources contains the detailed information about the resources.
 	FailedResources *UntagResourcesResponseBodyFailedResources `json:"FailedResources,omitempty" xml:"FailedResources,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -59,7 +52,12 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 func (s *UntagResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailedResources != nil {
+		if err := s.FailedResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UntagResourcesResponseBodyFailedResources struct {
@@ -84,18 +82,21 @@ func (s *UntagResourcesResponseBodyFailedResources) SetFailedResource(v []*Untag
 }
 
 func (s *UntagResourcesResponseBodyFailedResources) Validate() error {
-	return dara.Validate(s)
+	if s.FailedResource != nil {
+		for _, item := range s.FailedResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UntagResourcesResponseBodyFailedResourcesFailedResource struct {
-	// The ARN of the resource.
-	//
-	// example:
-	//
-	// arn:acs:ecs:cn-hangzhou:123456789****:instance/i-xxxxxxxxxx1
-	ResourceARN *string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
-	// The information about the error.
-	Result *UntagResourcesResponseBodyFailedResourcesFailedResourceResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	ResourceARN *string                                                        `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
+	Result      *UntagResourcesResponseBodyFailedResourcesFailedResourceResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s UntagResourcesResponseBodyFailedResourcesFailedResource) String() string {
@@ -125,21 +126,16 @@ func (s *UntagResourcesResponseBodyFailedResourcesFailedResource) SetResult(v *U
 }
 
 func (s *UntagResourcesResponseBodyFailedResourcesFailedResource) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UntagResourcesResponseBodyFailedResourcesFailedResourceResult struct {
-	// The error code.
-	//
-	// example:
-	//
-	// InvalidResourceId.NotFound
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// The specified ResourceIds are not found in our records.
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

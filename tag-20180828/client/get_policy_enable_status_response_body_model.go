@@ -53,7 +53,16 @@ func (s *GetPolicyEnableStatusResponseBody) SetStatusModels(v []*GetPolicyEnable
 }
 
 func (s *GetPolicyEnableStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StatusModels != nil {
+		for _, item := range s.StatusModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPolicyEnableStatusResponseBodyStatusModels struct {

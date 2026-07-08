@@ -37,13 +37,13 @@ type ListTagKeysRequest struct {
 	TagFilter *ListTagKeysRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Struct"`
 	// The type of the resource tags. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// 	- all (default value)
+	// - all (default value)
 	//
-	// 	- custom
+	// - custom
 	//
-	// 	- system
+	// - system
 	//
-	// >  The value of this parameter is not case-sensitive.
+	// > The value of this parameter is not case-sensitive.
 	//
 	// example:
 	//
@@ -51,9 +51,9 @@ type ListTagKeysRequest struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The type of the query. Valid values:
 	//
-	// 	- EQUAL (default): exact match
+	// - EQUAL (default): exact match
 	//
-	// 	- PREFIX: prefix-based fuzzy match
+	// - PREFIX: prefix-based fuzzy match
 	//
 	// example:
 	//
@@ -77,11 +77,11 @@ type ListTagKeysRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The category of the tags. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// 	- ResourceTag: resource tags, including custom and system tags. This is the default value.
+	// - ResourceTag: resource tags, including custom and system tags. This is the default value.
 	//
-	// 	- MetaTag: preset tags.
+	// - MetaTag: preset tags.
 	//
-	// >  The value of this parameter is not case-sensitive.
+	// > The value of this parameter is not case-sensitive.
 	//
 	// example:
 	//
@@ -102,9 +102,9 @@ type ListTagKeysRequest struct {
 	//
 	// Format: `ALIYUN::${ProductCode}::${ResourceType}`. All letters in the value of this parameter must be in uppercase.
 	//
-	// 	- `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
+	// - `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
 	//
-	// 	- `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
+	// - `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
 	//
 	// example:
 	//
@@ -220,7 +220,12 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 }
 
 func (s *ListTagKeysRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TagFilter != nil {
+		if err := s.TagFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTagKeysRequestTagFilter struct {

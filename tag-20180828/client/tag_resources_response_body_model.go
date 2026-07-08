@@ -16,13 +16,6 @@ type iTagResourcesResponseBody interface {
 }
 
 type TagResourcesResponseBody struct {
-	// The information about the resources to which tags fail to be added.
-	//
-	// >
-	//
-	// 	- If tags are added to all resources, the value of `FailedResources` is empty.
-	//
-	// 	- If tags fail to be added to some or all resources, the value of `FailedResources` contains the detailed information about the resources.
 	FailedResources *TagResourcesResponseBodyFailedResources `json:"FailedResources,omitempty" xml:"FailedResources,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -59,7 +52,12 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 func (s *TagResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailedResources != nil {
+		if err := s.FailedResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TagResourcesResponseBodyFailedResources struct {
@@ -84,18 +82,21 @@ func (s *TagResourcesResponseBodyFailedResources) SetFailedResource(v []*TagReso
 }
 
 func (s *TagResourcesResponseBodyFailedResources) Validate() error {
-	return dara.Validate(s)
+	if s.FailedResource != nil {
+		for _, item := range s.FailedResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TagResourcesResponseBodyFailedResourcesFailedResource struct {
-	// The ARN of the resource.
-	//
-	// example:
-	//
-	// arn:acs:vpc:cn-hangzhou:123456789****:vpc/vpc-bp19dd90tkt6tz7wu****
-	ResourceARN *string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
-	// The information about the error.
-	Result *TagResourcesResponseBodyFailedResourcesFailedResourceResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	ResourceARN *string                                                      `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
+	Result      *TagResourcesResponseBodyFailedResourcesFailedResourceResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s TagResourcesResponseBodyFailedResourcesFailedResource) String() string {
@@ -125,21 +126,16 @@ func (s *TagResourcesResponseBodyFailedResourcesFailedResource) SetResult(v *Tag
 }
 
 func (s *TagResourcesResponseBodyFailedResourcesFailedResource) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TagResourcesResponseBodyFailedResourcesFailedResourceResult struct {
-	// The error code.
-	//
-	// example:
-	//
-	// InvalidResourceId.NotFound
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// The specified ResourceIds are not found in our records.
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

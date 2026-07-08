@@ -91,7 +91,12 @@ func (s *GetConfigRuleReportResponseBody) SetSuccess(v bool) *GetConfigRuleRepor
 }
 
 func (s *GetConfigRuleReportResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConfigRuleReportResponseBodyData struct {

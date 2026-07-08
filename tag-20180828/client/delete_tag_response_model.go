@@ -59,5 +59,10 @@ func (s *DeleteTagResponse) SetBody(v *DeleteTagResponseBody) *DeleteTagResponse
 }
 
 func (s *DeleteTagResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

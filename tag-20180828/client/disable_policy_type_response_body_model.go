@@ -14,7 +14,7 @@ type iDisablePolicyTypeResponseBody interface {
 }
 
 type DisablePolicyTypeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

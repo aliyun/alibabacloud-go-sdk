@@ -214,7 +214,12 @@ func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
 }
 
 func (s *ListTagValuesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TagFilter != nil {
+		if err := s.TagFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTagValuesRequestTagFilter struct {

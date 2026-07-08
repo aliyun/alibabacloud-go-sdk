@@ -31,16 +31,16 @@ type UpdateAssociatedResourceRuleRequest struct {
 	ExistingStatus *string `json:"ExistingStatus,omitempty" xml:"ExistingStatus,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The setting name of the associated resource tag rule.
+	// The name of the Associated Resource Tag Rule setting.
 	//
-	// For specific values, see the **Rule Setting Name*	- column in [Resources that Support Associated Resource Tag Settings](https://help.aliyun.com/document_detail/2586330.html).
+	// For valid values, see the **Setting Name*	- column in [Resources that support the Associated Resource Tag Rule feature](https://help.aliyun.com/document_detail/2586330.html).
 	//
 	// This parameter is required.
 	//
@@ -48,17 +48,17 @@ type UpdateAssociatedResourceRuleRequest struct {
 	//
 	// rule:AssociateEip-UnassociateEip-TagInstance:Ecs-Instance:Vpc-Eip
 	SettingName *string `json:"SettingName,omitempty" xml:"SettingName,omitempty"`
-	// Indicates whether to enable the associated resource tag rule. Values:
+	// The status of the Associated Resource Tag Rule. Valid values:
 	//
-	// - Enable: Enabled.
+	// - Enable: The rule is enabled.
 	//
-	// - Disable: Disabled.
+	// - Disable: The rule is disabled.
 	//
 	// example:
 	//
 	// Enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// List of tag keys affected by the associated resource tag rule.
+	// A list of tag keys for the Associated Resource Tag Rule.
 	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 }
 

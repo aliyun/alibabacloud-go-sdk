@@ -24,6 +24,10 @@ type iCloseCreatedByRequest interface {
 type CloseCreatedByRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the instance resides.
+	//
+	// Set the value to cn-shanghai.
+	//
 	// This parameter is required.
 	//
 	// example:

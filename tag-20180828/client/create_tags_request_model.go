@@ -95,7 +95,16 @@ func (s *CreateTagsRequest) SetTagKeyValueParamList(v []*CreateTagsRequestTagKey
 }
 
 func (s *CreateTagsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TagKeyValueParamList != nil {
+		for _, item := range s.TagKeyValueParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTagsRequestTagKeyValueParamList struct {
@@ -159,7 +168,16 @@ func (s *CreateTagsRequestTagKeyValueParamList) SetTagValueParamList(v []*Create
 }
 
 func (s *CreateTagsRequestTagKeyValueParamList) Validate() error {
-	return dara.Validate(s)
+	if s.TagValueParamList != nil {
+		for _, item := range s.TagValueParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTagsRequestTagKeyValueParamListTagValueParamList struct {

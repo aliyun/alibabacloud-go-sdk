@@ -44,7 +44,7 @@ type ListSupportResourceTypesRequest struct {
 	//
 	// example:
 	//
-	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Y3wDNwUdssyKODK****
+	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Y3wDNwUdssyKODK+myOlBL
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

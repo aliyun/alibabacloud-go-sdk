@@ -38,7 +38,7 @@ type DeleteTagRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  Only `cn-hangzhou` is supported.
+	// > Only `cn-hangzhou` is supported.
 	//
 	// This parameter is required.
 	//

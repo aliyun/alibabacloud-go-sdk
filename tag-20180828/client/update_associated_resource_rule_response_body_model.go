@@ -14,7 +14,7 @@ type iUpdateAssociatedResourceRuleResponseBody interface {
 }
 
 type UpdateAssociatedResourceRuleResponseBody struct {
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

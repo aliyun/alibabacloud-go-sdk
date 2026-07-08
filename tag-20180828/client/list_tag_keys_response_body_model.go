@@ -18,13 +18,12 @@ type iListTagKeysResponseBody interface {
 }
 
 type ListTagKeysResponseBody struct {
-	// The information of the tag keys.
 	Keys *ListTagKeysResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
 	// Indicates whether the next query is required. The value of this parameter may be empty.
 	//
-	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	// - If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
 	//
-	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	// - If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
 	//
 	// example:
 	//
@@ -74,7 +73,12 @@ func (s *ListTagKeysResponseBody) SetRequestId(v string) *ListTagKeysResponseBod
 }
 
 func (s *ListTagKeysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Keys != nil {
+		if err := s.Keys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTagKeysResponseBodyKeys struct {
@@ -99,32 +103,22 @@ func (s *ListTagKeysResponseBodyKeys) SetKey(v []*ListTagKeysResponseBodyKeysKey
 }
 
 func (s *ListTagKeysResponseBodyKeys) Validate() error {
-	return dara.Validate(s)
+	if s.Key != nil {
+		for _, item := range s.Key {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTagKeysResponseBodyKeysKey struct {
-	// The type of the resource tag. Valid values:
-	//
-	// 	- custom
-	//
-	// 	- system
-	//
-	// example:
-	//
-	// custom
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The description of the tag key.
-	//
-	// example:
-	//
-	// Business team
+	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The tag key.
-	//
-	// example:
-	//
-	// team
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key         *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
 func (s ListTagKeysResponseBodyKeysKey) String() string {

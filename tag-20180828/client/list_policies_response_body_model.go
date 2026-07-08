@@ -20,9 +20,9 @@ type iListPoliciesResponseBody interface {
 type ListPoliciesResponseBody struct {
 	// Indicates whether the next query is required.
 	//
-	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	// - If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
 	//
-	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	// - If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
 	//
 	// example:
 	//
@@ -74,7 +74,16 @@ func (s *ListPoliciesResponseBody) SetRequestId(v string) *ListPoliciesResponseB
 }
 
 func (s *ListPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PolicyList != nil {
+		for _, item := range s.PolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPoliciesResponseBodyPolicyList struct {
@@ -104,9 +113,9 @@ type ListPoliciesResponseBodyPolicyList struct {
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The mode of the Tag Policy feature. Valid values:
 	//
-	// 	- USER: single-account mode
+	// - USER: single-account mode
 	//
-	// 	- RD: multi-account mode
+	// - RD: multi-account mode
 	//
 	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
 	//

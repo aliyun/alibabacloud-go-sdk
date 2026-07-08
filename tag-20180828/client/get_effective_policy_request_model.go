@@ -28,7 +28,7 @@ type iGetEffectivePolicyRequest interface {
 type GetEffectivePolicyRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. Set the value to cn-shanghai.
+	// The region ID. Only `cn-shanghai` is supported.
 	//
 	// example:
 	//
@@ -36,25 +36,25 @@ type GetEffectivePolicyRequest struct {
 	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	TagKeys              []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
-	// The ID of the object.
+	// The ID of the target object.
 	//
-	// >  If you use the Tag Policy feature in single-account mode, this parameter is optional. If you use the Tag Policy feature in multi-account mode, this feature is required.
+	// > This parameter is optional in Single-Account Mode and required in Multi-Account Mode.
 	//
 	// example:
 	//
 	// 154950938137****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the object. Valid values:
+	// The type of the target object. Valid values:
 	//
-	// 	- USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
+	// - USER: queries the effective policy for the current logon account. This value applies only to Single-Account Mode.
 	//
-	// 	- ROOT: the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// - ROOT: queries the effective policy for the Root Folder in a Resource Directory. This value applies only to Multi-Account Mode.
 	//
-	// 	- FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// - FOLDER: queries the effective policy for a Folder in a Resource Directory. This value applies only to Multi-Account Mode.
 	//
-	// 	- ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// - ACCOUNT: queries the effective policy for a Member in a Resource Directory. This value applies only to Multi-Account Mode.
 	//
-	// >  If you use the Tag Policy feature in single-account mode, this parameter is optional. If you use the Tag Policy feature in multi-account mode, this feature is required. The value of this parameter is not case-sensitive.
+	// > This parameter is optional in Single-Account Mode and required in Multi-Account Mode. The value is case-insensitive.
 	//
 	// example:
 	//

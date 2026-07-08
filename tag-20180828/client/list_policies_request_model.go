@@ -59,13 +59,13 @@ type ListPoliciesRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The mode of the Tag Policy feature. This parameter specifies a filter condition for the query. Valid values:
 	//
-	// 	- USER: single-account mode
+	// - USER: single-account mode
 	//
-	// 	- RD: multi-account mode
+	// - RD: multi-account mode
 	//
 	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
 	//
-	// >  The value of this parameter is not case-sensitive.
+	// > The value of this parameter is not case-sensitive.
 	//
 	// example:
 	//

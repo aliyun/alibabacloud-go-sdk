@@ -14,9 +14,11 @@ type iCloseCreatedByResponseBody interface {
 }
 
 type CloseCreatedByResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
-	// AECFE0F2-CEC3-5D16-BE4C-E2F95083D063
+	// AECFE0F2-CEC3-5D16-BE4C-E2F95083****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

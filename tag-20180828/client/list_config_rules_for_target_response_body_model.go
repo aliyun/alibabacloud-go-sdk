@@ -22,9 +22,9 @@ type ListConfigRulesForTargetResponseBody struct {
 	Data []*ListConfigRulesForTargetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Indicates whether the next query is required.
 	//
-	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	// - If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
 	//
-	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	// - If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
 	//
 	// example:
 	//
@@ -74,7 +74,16 @@ func (s *ListConfigRulesForTargetResponseBody) SetRequestId(v string) *ListConfi
 }
 
 func (s *ListConfigRulesForTargetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListConfigRulesForTargetResponseBodyData struct {
@@ -82,7 +91,7 @@ type ListConfigRulesForTargetResponseBodyData struct {
 	//
 	// You can use the ID to query the content of the related resource non-compliance report in Cloud Config.
 	//
-	// >  This parameter is returned only if you use the Tag Policy feature in multi-account mode.
+	// > This parameter is returned only if you use the Tag Policy feature in multi-account mode.
 	//
 	// example:
 	//
@@ -96,9 +105,9 @@ type ListConfigRulesForTargetResponseBodyData struct {
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 	// The use scenario of the tag policy. Valid values:
 	//
-	// 	- tags: enables tags with specified tag values to be added to resources.
+	// - tags: enables tags with specified tag values to be added to resources.
 	//
-	// 	- rg_inherit: enables resources in a resource group to automatically inherit tags from the resource group.
+	// - rg_inherit: enables resources in a resource group to automatically inherit tags from the resource group.
 	//
 	// example:
 	//
@@ -106,9 +115,9 @@ type ListConfigRulesForTargetResponseBodyData struct {
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	// Indicates whether automatic remediation is enabled. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -134,13 +143,13 @@ type ListConfigRulesForTargetResponseBodyData struct {
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. Valid values:
 	//
-	// 	- USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
+	// - USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
 	//
-	// 	- ROOT: the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// - ROOT: the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
-	// 	- FOLDER: a folder other than the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// - FOLDER: a folder other than the Root folder in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
-	// 	- ACCOUNT: a member in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
+	// - ACCOUNT: a member in the resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
 	// example:
 	//

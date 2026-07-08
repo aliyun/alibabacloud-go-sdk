@@ -59,5 +59,10 @@ func (s *CloseCreatedByResponse) SetBody(v *CloseCreatedByResponseBody) *CloseCr
 }
 
 func (s *CloseCreatedByResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

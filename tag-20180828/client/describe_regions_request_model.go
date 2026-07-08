@@ -26,11 +26,11 @@ type iDescribeRegionsRequest interface {
 type DescribeRegionsRequest struct {
 	// The supported natural language. Valid values:
 	//
-	// 	- zh-CN: Chinese (default value)
+	// - zh-CN: Chinese (default value)
 	//
-	// 	- en-US: English
+	// - en-US: English
 	//
-	// 	- ja: Japanese
+	// - ja: Japanese
 	//
 	// example:
 	//

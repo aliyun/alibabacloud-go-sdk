@@ -59,5 +59,10 @@ func (s *DeleteAssociatedResourceRuleResponse) SetBody(v *DeleteAssociatedResour
 }
 
 func (s *DeleteAssociatedResourceRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

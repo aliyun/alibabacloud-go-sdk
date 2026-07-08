@@ -22,7 +22,7 @@ type iCreateAssociatedResourceRulesRequest interface {
 }
 
 type CreateAssociatedResourceRulesRequest struct {
-	// The associated resource tagging rules that you want to create.
+	// A list of associated resource tag rules.
 	CreateRulesList []*CreateAssociatedResourceRulesRequestCreateRulesList `json:"CreateRulesList,omitempty" xml:"CreateRulesList,omitempty" type:"Repeated"`
 	OwnerAccount    *string                                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64                                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -89,14 +89,23 @@ func (s *CreateAssociatedResourceRulesRequest) SetResourceOwnerAccount(v string)
 }
 
 func (s *CreateAssociatedResourceRulesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CreateRulesList != nil {
+		for _, item := range s.CreateRulesList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAssociatedResourceRulesRequestCreateRulesList struct {
 	ExistingStatus *string `json:"ExistingStatus,omitempty" xml:"ExistingStatus,omitempty"`
-	// The name of the associated resource tagging rule.
+	// The setting name of the associated resource tag rule.
 	//
-	// For more information, see the **Rule Name*	- column in [Resource types that support the Associated Resource Tagging feature](https://help.aliyun.com/document_detail/2586330.html).
+	// For valid values, see the **Setting name*	- column in [Resources that support associated resource tagging](https://help.aliyun.com/document_detail/2586330.html).
 	//
 	// This parameter is required.
 	//
@@ -104,11 +113,11 @@ type CreateAssociatedResourceRulesRequestCreateRulesList struct {
 	//
 	// rule:AttachEni-DetachEni-TagInstance:Ecs-Instance:Ecs-Eni
 	SettingName *string `json:"SettingName,omitempty" xml:"SettingName,omitempty"`
-	// Specifies whether to enable the associated resource tagging rule. Valid values:
+	// Specifies whether to enable the associated resource tag rule. Valid values:
 	//
-	// 	- Enable (default)
+	// - Enable (default): The rule is enabled.
 	//
-	// 	- Disable
+	// - Disable: The rule is disabled.
 	//
 	// This parameter is required.
 	//
@@ -116,7 +125,7 @@ type CreateAssociatedResourceRulesRequestCreateRulesList struct {
 	//
 	// Enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag keys to which the associated resource tagging rule applies.
+	// The tag keys to which the rule applies.
 	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 }
 

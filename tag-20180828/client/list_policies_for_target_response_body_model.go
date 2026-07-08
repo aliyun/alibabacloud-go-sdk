@@ -22,9 +22,9 @@ type ListPoliciesForTargetResponseBody struct {
 	Data []*ListPoliciesForTargetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Indicates whether the next query is required.
 	//
-	// 	- If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
+	// - If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
 	//
-	// 	- If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	// - If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
 	//
 	// example:
 	//
@@ -74,7 +74,16 @@ func (s *ListPoliciesForTargetResponseBody) SetRequestId(v string) *ListPolicies
 }
 
 func (s *ListPoliciesForTargetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPoliciesForTargetResponseBodyData struct {
@@ -104,9 +113,9 @@ type ListPoliciesForTargetResponseBodyData struct {
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The mode of the Tag Policy feature. Valid values:
 	//
-	// 	- USER: single-account mode
+	// - USER: single-account mode
 	//
-	// 	- RD: multi-account mode
+	// - RD: multi-account mode
 	//
 	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
 	//

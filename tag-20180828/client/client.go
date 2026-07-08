@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -58,6 +59,35 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-zhengzhou-nebula-1":       dara.String("tag.cn-qingdao-nebula.aliyuncs.com"),
 		"eu-west-1-oxs":               dara.String("tag.cn-shenzhen-cloudstone.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("tag.aliyuncs.com"),
+		"us-east-1":                   dara.String("tag.us-east-1.aliyuncs.com"),
+		"me-east-1":                   dara.String("tag.me-east-1.aliyuncs.com"),
+		"me-central-1":                dara.String("tag.me-central-1.aliyuncs.com"),
+		"eu-west-1":                   dara.String("tag.eu-west-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("tag.eu-central-1.aliyuncs.com"),
+		"cn-zhengzhou-jva":            dara.String("tag.cn-zhengzhou-jva.aliyuncs.com"),
+		"cn-zhangjiakou":              dara.String("tag.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":               dara.String("tag.cn-wulanchabu.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       dara.String("tag.cn-shenzhen-finance-1.aliyuncs.com"),
+		"cn-shenzhen":                 dara.String("tag.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":                 dara.String("tag.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":                  dara.String("tag.cn-qingdao.aliyuncs.com"),
+		"cn-nanjing":                  dara.String("tag.cn-nanjing.aliyuncs.com"),
+		"cn-huhehaote":                dara.String("tag.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":                 dara.String("tag.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan":                   dara.String("tag.cn-heyuan.aliyuncs.com"),
+		"cn-hangzhou":                 dara.String("tag.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":                dara.String("tag.cn-guangzhou.aliyuncs.com"),
+		"cn-fuzhou":                   dara.String("tag.cn-fuzhou.aliyuncs.com"),
+		"cn-chengdu":                  dara.String("tag.cn-chengdu.aliyuncs.com"),
+		"cn-beijing-finance-1":        dara.String("tag.cn-beijing-finance-1.aliyuncs.com"),
+		"cn-beijing":                  dara.String("tag.cn-beijing.aliyuncs.com"),
+		"ap-southeast-7":              dara.String("tag.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-6":              dara.String("tag.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-5":              dara.String("tag.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":              dara.String("tag.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-1":              dara.String("tag.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-2":              dara.String("tag.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1":              dara.String("tag.ap-northeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -92,7 +122,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 绑定策略
+// Attaches a tag policy to an object.
 //
 // Description:
 //
@@ -106,9 +136,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AttachPolicyResponse
 func (client *Client) AttachPolicyWithOptions(request *AttachPolicyRequest, runtime *dara.RuntimeOptions) (_result *AttachPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -164,7 +196,7 @@ func (client *Client) AttachPolicyWithOptions(request *AttachPolicyRequest, runt
 
 // Summary:
 //
-// 绑定策略
+// Attaches a tag policy to an object.
 //
 // Description:
 //
@@ -188,7 +220,7 @@ func (client *Client) AttachPolicy(request *AttachPolicyRequest) (_result *Attac
 
 // Summary:
 //
-// 校验CreatedBy开通状态
+// Checks whether the createdby tag is enabled.
 //
 // @param request - CheckCreatedByEnabledRequest
 //
@@ -196,9 +228,11 @@ func (client *Client) AttachPolicy(request *AttachPolicyRequest) (_result *Attac
 //
 // @return CheckCreatedByEnabledResponse
 func (client *Client) CheckCreatedByEnabledWithOptions(request *CheckCreatedByEnabledRequest, runtime *dara.RuntimeOptions) (_result *CheckCreatedByEnabledResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -246,7 +280,7 @@ func (client *Client) CheckCreatedByEnabledWithOptions(request *CheckCreatedByEn
 
 // Summary:
 //
-// 校验CreatedBy开通状态
+// Checks whether the createdby tag is enabled.
 //
 // @param request - CheckCreatedByEnabledRequest
 //
@@ -264,7 +298,7 @@ func (client *Client) CheckCreatedByEnabled(request *CheckCreatedByEnabledReques
 
 // Summary:
 //
-// 关闭CreatedBy服务
+// Disables createdby tags.
 //
 // @param request - CloseCreatedByRequest
 //
@@ -272,9 +306,11 @@ func (client *Client) CheckCreatedByEnabled(request *CheckCreatedByEnabledReques
 //
 // @return CloseCreatedByResponse
 func (client *Client) CloseCreatedByWithOptions(request *CloseCreatedByRequest, runtime *dara.RuntimeOptions) (_result *CloseCreatedByResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -322,7 +358,7 @@ func (client *Client) CloseCreatedByWithOptions(request *CloseCreatedByRequest, 
 
 // Summary:
 //
-// 关闭CreatedBy服务
+// Disables createdby tags.
 //
 // @param request - CloseCreatedByRequest
 //
@@ -340,7 +376,7 @@ func (client *Client) CloseCreatedBy(request *CloseCreatedByRequest) (_result *C
 
 // Summary:
 //
-// Creates associated resource tagging rules.
+// Creates associated resource tag rules.
 //
 // @param request - CreateAssociatedResourceRulesRequest
 //
@@ -348,9 +384,11 @@ func (client *Client) CloseCreatedBy(request *CloseCreatedByRequest) (_result *C
 //
 // @return CreateAssociatedResourceRulesResponse
 func (client *Client) CreateAssociatedResourceRulesWithOptions(request *CreateAssociatedResourceRulesRequest, runtime *dara.RuntimeOptions) (_result *CreateAssociatedResourceRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreateRulesList) {
@@ -398,7 +436,7 @@ func (client *Client) CreateAssociatedResourceRulesWithOptions(request *CreateAs
 
 // Summary:
 //
-// Creates associated resource tagging rules.
+// Creates associated resource tag rules.
 //
 // @param request - CreateAssociatedResourceRulesRequest
 //
@@ -430,9 +468,11 @@ func (client *Client) CreateAssociatedResourceRules(request *CreateAssociatedRes
 //
 // @return CreatePolicyResponse
 func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runtime *dara.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -536,9 +576,11 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 //
 // @return CreateTagsResponse
 func (client *Client) CreateTagsWithOptions(request *CreateTagsRequest, runtime *dara.RuntimeOptions) (_result *CreateTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -620,9 +662,11 @@ func (client *Client) CreateTags(request *CreateTagsRequest) (_result *CreateTag
 //
 // @return DeleteAssociatedResourceRuleResponse
 func (client *Client) DeleteAssociatedResourceRuleWithOptions(request *DeleteAssociatedResourceRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteAssociatedResourceRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -702,9 +746,11 @@ func (client *Client) DeleteAssociatedResourceRule(request *DeleteAssociatedReso
 //
 // @return DeletePolicyResponse
 func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runtime *dara.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -788,9 +834,11 @@ func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *Delet
 //
 // @return DeleteTagResponse
 func (client *Client) DeleteTagWithOptions(request *DeleteTagRequest, runtime *dara.RuntimeOptions) (_result *DeleteTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Key) {
@@ -872,9 +920,11 @@ func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagRe
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -960,9 +1010,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // @return DetachPolicyResponse
 func (client *Client) DetachPolicyWithOptions(request *DetachPolicyRequest, runtime *dara.RuntimeOptions) (_result *DetachPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -1044,7 +1096,13 @@ func (client *Client) DetachPolicy(request *DetachPolicyRequest) (_result *Detac
 
 // Summary:
 //
-// 关闭策略
+// Disables a control policy.
+//
+// Description:
+//
+// ### Usage notes
+//
+// After you disable a tag policy, all bound tag policies are automatically unbound.
 //
 // @param request - DisablePolicyTypeRequest
 //
@@ -1052,9 +1110,11 @@ func (client *Client) DetachPolicy(request *DetachPolicyRequest) (_result *Detac
 //
 // @return DisablePolicyTypeResponse
 func (client *Client) DisablePolicyTypeWithOptions(request *DisablePolicyTypeRequest, runtime *dara.RuntimeOptions) (_result *DisablePolicyTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpenType) {
@@ -1110,7 +1170,13 @@ func (client *Client) DisablePolicyTypeWithOptions(request *DisablePolicyTypeReq
 
 // Summary:
 //
-// 关闭策略
+// Disables a control policy.
+//
+// Description:
+//
+// ### Usage notes
+//
+// After you disable a tag policy, all bound tag policies are automatically unbound.
 //
 // @param request - DisablePolicyTypeRequest
 //
@@ -1128,7 +1194,19 @@ func (client *Client) DisablePolicyType(request *DisablePolicyTypeRequest) (_res
 
 // Summary:
 //
-// 开通策略
+// Enables the tag policy feature.
+//
+// Description:
+//
+// ### Usage notes
+//
+// You can enable the single-account mode or multi-account mode for tag policies:
+//
+// - Single-account mode: If the current logon account is an independent Alibaba Cloud account, the single-account mode for tag policies is enabled to manage resources within the scope of the single account.
+//
+// - Multi-account mode: If the current logon account is the management account of a resource directory, the multi-account mode for tag policies is enabled to manage resources within the scope of the resource directory.
+//
+//	> Members of a resource directory cannot enable the tag policy feature.
 //
 // @param request - EnablePolicyTypeRequest
 //
@@ -1136,9 +1214,11 @@ func (client *Client) DisablePolicyType(request *DisablePolicyTypeRequest) (_res
 //
 // @return EnablePolicyTypeResponse
 func (client *Client) EnablePolicyTypeWithOptions(request *EnablePolicyTypeRequest, runtime *dara.RuntimeOptions) (_result *EnablePolicyTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpenType) {
@@ -1194,7 +1274,19 @@ func (client *Client) EnablePolicyTypeWithOptions(request *EnablePolicyTypeReque
 
 // Summary:
 //
-// 开通策略
+// Enables the tag policy feature.
+//
+// Description:
+//
+// ### Usage notes
+//
+// You can enable the single-account mode or multi-account mode for tag policies:
+//
+// - Single-account mode: If the current logon account is an independent Alibaba Cloud account, the single-account mode for tag policies is enabled to manage resources within the scope of the single account.
+//
+// - Multi-account mode: If the current logon account is the management account of a resource directory, the multi-account mode for tag policies is enabled to manage resources within the scope of the resource directory.
+//
+//	> Members of a resource directory cannot enable the tag policy feature.
 //
 // @param request - EnablePolicyTypeRequest
 //
@@ -1212,7 +1304,7 @@ func (client *Client) EnablePolicyType(request *EnablePolicyTypeRequest) (_resul
 
 // Summary:
 //
-// 生成规则检测报告
+// Generates a resource non-compliance report.
 //
 // Description:
 //
@@ -1226,9 +1318,11 @@ func (client *Client) EnablePolicyType(request *EnablePolicyTypeRequest) (_resul
 //
 // @return GenerateConfigRuleReportResponse
 func (client *Client) GenerateConfigRuleReportWithOptions(request *GenerateConfigRuleReportRequest, runtime *dara.RuntimeOptions) (_result *GenerateConfigRuleReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -1284,7 +1378,7 @@ func (client *Client) GenerateConfigRuleReportWithOptions(request *GenerateConfi
 
 // Summary:
 //
-// 生成规则检测报告
+// Generates a resource non-compliance report.
 //
 // Description:
 //
@@ -1308,7 +1402,7 @@ func (client *Client) GenerateConfigRuleReport(request *GenerateConfigRuleReport
 
 // Summary:
 //
-// Queries the basic information of the resource non-compliance report that is last generated.
+// Queries the basic information about the latest resource non-compliance report.
 //
 // Description:
 //
@@ -1322,9 +1416,11 @@ func (client *Client) GenerateConfigRuleReport(request *GenerateConfigRuleReport
 //
 // @return GetConfigRuleReportResponse
 func (client *Client) GetConfigRuleReportWithOptions(request *GetConfigRuleReportRequest, runtime *dara.RuntimeOptions) (_result *GetConfigRuleReportResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -1380,7 +1476,7 @@ func (client *Client) GetConfigRuleReportWithOptions(request *GetConfigRuleRepor
 
 // Summary:
 //
-// Queries the basic information of the resource non-compliance report that is last generated.
+// Queries the basic information about the latest resource non-compliance report.
 //
 // Description:
 //
@@ -1404,15 +1500,17 @@ func (client *Client) GetConfigRuleReport(request *GetConfigRuleReportRequest) (
 
 // Summary:
 //
-// Queries the information about the effective policy.
+// Retrieves the effective policy for a specified object.
 //
 // Description:
 //
-// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+// ### Usage notes
 //
-// An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](https://help.aliyun.com/document_detail/417435.html).
+// In Single-Account Mode, the current logon account can query its own effective policy. In Multi-Account Mode, the Management Account of a Resource Directory can query the effective policy for the Root Folder, a Folder, or a Member. A Member can also query its own effective policy. For more information about tag policy modes, see [Tag policy modes](https://help.aliyun.com/document_detail/417434.html).
 //
-// This topic provides an example on how to call the API operation to query the effective tag policy for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+// Tag policy inheritance determines the effective policy. For more information, see [Tag policy inheritance and effective policy calculation](https://help.aliyun.com/document_detail/417435.html).
+//
+// This topic provides an example of how to query the effective policy for the current logon account in Single-Account Mode.
 //
 // @param request - GetEffectivePolicyRequest
 //
@@ -1420,9 +1518,11 @@ func (client *Client) GetConfigRuleReport(request *GetConfigRuleReportRequest) (
 //
 // @return GetEffectivePolicyResponse
 func (client *Client) GetEffectivePolicyWithOptions(request *GetEffectivePolicyRequest, runtime *dara.RuntimeOptions) (_result *GetEffectivePolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -1478,15 +1578,17 @@ func (client *Client) GetEffectivePolicyWithOptions(request *GetEffectivePolicyR
 
 // Summary:
 //
-// Queries the information about the effective policy.
+// Retrieves the effective policy for a specified object.
 //
 // Description:
 //
-// If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+// ### Usage notes
 //
-// An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](https://help.aliyun.com/document_detail/417435.html).
+// In Single-Account Mode, the current logon account can query its own effective policy. In Multi-Account Mode, the Management Account of a Resource Directory can query the effective policy for the Root Folder, a Folder, or a Member. A Member can also query its own effective policy. For more information about tag policy modes, see [Tag policy modes](https://help.aliyun.com/document_detail/417434.html).
 //
-// This topic provides an example on how to call the API operation to query the effective tag policy for the current logon account. In this example, the Tag Policy feature in single-account mode is used.
+// Tag policy inheritance determines the effective policy. For more information, see [Tag policy inheritance and effective policy calculation](https://help.aliyun.com/document_detail/417435.html).
+//
+// This topic provides an example of how to query the effective policy for the current logon account in Single-Account Mode.
 //
 // @param request - GetEffectivePolicyRequest
 //
@@ -1516,9 +1618,11 @@ func (client *Client) GetEffectivePolicy(request *GetEffectivePolicyRequest) (_r
 //
 // @return GetPolicyResponse
 func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -1600,9 +1704,11 @@ func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyRe
 //
 // @return GetPolicyEnableStatusResponse
 func (client *Client) GetPolicyEnableStatusWithOptions(request *GetPolicyEnableStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPolicyEnableStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpenType) {
@@ -1680,7 +1786,7 @@ func (client *Client) GetPolicyEnableStatus(request *GetPolicyEnableStatusReques
 
 // Summary:
 //
-// Search the rules for associated resources that the user has set up.
+// Retrieves a list of associated resource rules.
 //
 // @param request - ListAssociatedResourceRulesRequest
 //
@@ -1688,9 +1794,11 @@ func (client *Client) GetPolicyEnableStatus(request *GetPolicyEnableStatusReques
 //
 // @return ListAssociatedResourceRulesResponse
 func (client *Client) ListAssociatedResourceRulesWithOptions(request *ListAssociatedResourceRulesRequest, runtime *dara.RuntimeOptions) (_result *ListAssociatedResourceRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResult) {
@@ -1750,7 +1858,7 @@ func (client *Client) ListAssociatedResourceRulesWithOptions(request *ListAssoci
 
 // Summary:
 //
-// Search the rules for associated resources that the user has set up.
+// Retrieves a list of associated resource rules.
 //
 // @param request - ListAssociatedResourceRulesRequest
 //
@@ -1782,9 +1890,11 @@ func (client *Client) ListAssociatedResourceRules(request *ListAssociatedResourc
 //
 // @return ListConfigRulesForTargetResponse
 func (client *Client) ListConfigRulesForTargetWithOptions(request *ListConfigRulesForTargetRequest, runtime *dara.RuntimeOptions) (_result *ListConfigRulesForTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResult) {
@@ -1880,7 +1990,7 @@ func (client *Client) ListConfigRulesForTarget(request *ListConfigRulesForTarget
 
 // Summary:
 //
-// Queries tag policies.
+// Queries a list of tag policies.
 //
 // Description:
 //
@@ -1894,9 +2004,11 @@ func (client *Client) ListConfigRulesForTarget(request *ListConfigRulesForTarget
 //
 // @return ListPoliciesResponse
 func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResult) {
@@ -1960,7 +2072,7 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runt
 
 // Summary:
 //
-// Queries tag policies.
+// Queries a list of tag policies.
 //
 // Description:
 //
@@ -1984,7 +2096,7 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 
 // Summary:
 //
-// Queries the tag policies that are attached to an object.
+// Queries a list of tag policies that are attached to an object.
 //
 // Description:
 //
@@ -1998,9 +2110,11 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 //
 // @return ListPoliciesForTargetResponse
 func (client *Client) ListPoliciesForTargetWithOptions(request *ListPoliciesForTargetRequest, runtime *dara.RuntimeOptions) (_result *ListPoliciesForTargetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResult) {
@@ -2060,7 +2174,7 @@ func (client *Client) ListPoliciesForTargetWithOptions(request *ListPoliciesForT
 
 // Summary:
 //
-// Queries the tag policies that are attached to an object.
+// Queries a list of tag policies that are attached to an object.
 //
 // Description:
 //
@@ -2096,9 +2210,11 @@ func (client *Client) ListPoliciesForTarget(request *ListPoliciesForTargetReques
 //
 // @return ListResourcesByTagResponse
 func (client *Client) ListResourcesByTagWithOptions(request *ListResourcesByTagRequest, runtime *dara.RuntimeOptions) (_result *ListResourcesByTagResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FuzzyType) {
@@ -2210,9 +2326,11 @@ func (client *Client) ListResourcesByTag(request *ListResourcesByTagRequest) (_r
 //
 // @return ListSupportResourceTypesResponse
 func (client *Client) ListSupportResourceTypesWithOptions(request *ListSupportResourceTypesRequest, runtime *dara.RuntimeOptions) (_result *ListSupportResourceTypesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResult) {
@@ -2320,9 +2438,11 @@ func (client *Client) ListSupportResourceTypes(request *ListSupportResourceTypes
 //
 // @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *dara.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -2432,9 +2552,11 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -2536,9 +2658,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // @return ListTagValuesResponse
 func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, runtime *dara.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FuzzyType) {
@@ -2650,9 +2774,11 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 //
 // @return ListTargetsForPolicyResponse
 func (client *Client) ListTargetsForPolicyWithOptions(request *ListTargetsForPolicyRequest, runtime *dara.RuntimeOptions) (_result *ListTargetsForPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResult) {
@@ -2746,9 +2872,11 @@ func (client *Client) ListTargetsForPolicy(request *ListTargetsForPolicyRequest)
 //
 // @return ModifyPolicyResponse
 func (client *Client) ModifyPolicyWithOptions(request *ModifyPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DryRun) {
@@ -2848,9 +2976,11 @@ func (client *Client) ModifyPolicy(request *ModifyPolicyRequest) (_result *Modif
 //
 // @return OpenCreatedByResponse
 func (client *Client) OpenCreatedByWithOptions(request *OpenCreatedByRequest, runtime *dara.RuntimeOptions) (_result *OpenCreatedByResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -2934,9 +3064,11 @@ func (client *Client) OpenCreatedBy(request *OpenCreatedByRequest) (_result *Ope
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -3030,9 +3162,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OwnerAccount) {
@@ -3112,7 +3246,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Update the rule for tagging associated resources.
+// Updates an Associated Resource Tag Rule.
 //
 // @param request - UpdateAssociatedResourceRuleRequest
 //
@@ -3120,9 +3254,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpdateAssociatedResourceRuleResponse
 func (client *Client) UpdateAssociatedResourceRuleWithOptions(request *UpdateAssociatedResourceRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateAssociatedResourceRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExistingStatus) {
@@ -3182,7 +3318,7 @@ func (client *Client) UpdateAssociatedResourceRuleWithOptions(request *UpdateAss
 
 // Summary:
 //
-// Update the rule for tagging associated resources.
+// Updates an Associated Resource Tag Rule.
 //
 // @param request - UpdateAssociatedResourceRuleRequest
 //

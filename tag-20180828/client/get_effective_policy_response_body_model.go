@@ -18,14 +18,14 @@ type iGetEffectivePolicyResponseBody interface {
 }
 
 type GetEffectivePolicyResponseBody struct {
-	// The effective tag policy.
+	// The effective policy.
 	//
 	// example:
 	//
 	// {\\"tags\\":{\\"costcenter\\":{\\"tag_value\\":[\\"Beijing\\",\\"Shanghai\\"],\\"tag_key\\":\\"CostCenter\\"}}}
 	EffectivePolicy   *string                                            `json:"EffectivePolicy,omitempty" xml:"EffectivePolicy,omitempty"`
 	PolicyAttachments []*GetEffectivePolicyResponseBodyPolicyAttachments `json:"PolicyAttachments,omitempty" xml:"PolicyAttachments,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -69,7 +69,16 @@ func (s *GetEffectivePolicyResponseBody) SetRequestId(v string) *GetEffectivePol
 }
 
 func (s *GetEffectivePolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PolicyAttachments != nil {
+		for _, item := range s.PolicyAttachments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEffectivePolicyResponseBodyPolicyAttachments struct {
@@ -114,7 +123,16 @@ func (s *GetEffectivePolicyResponseBodyPolicyAttachments) SetTagKey(v string) *G
 }
 
 func (s *GetEffectivePolicyResponseBodyPolicyAttachments) Validate() error {
-	return dara.Validate(s)
+	if s.PolicyList != nil {
+		for _, item := range s.PolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList struct {

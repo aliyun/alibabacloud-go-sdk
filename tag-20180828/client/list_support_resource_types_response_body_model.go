@@ -26,7 +26,7 @@ type ListSupportResourceTypesResponseBody struct {
 	//
 	// example:
 	//
-	// AAAAAYws9fJ0Ur4MGm****
+	// AAAAAYws9fJ0Ur4MGm
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
 	//
@@ -74,7 +74,16 @@ func (s *ListSupportResourceTypesResponseBody) SetSupportResourceTypes(v []*List
 }
 
 func (s *ListSupportResourceTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SupportResourceTypes != nil {
+		for _, item := range s.SupportResourceTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSupportResourceTypesResponseBodySupportResourceTypes struct {
@@ -147,7 +156,16 @@ func (s *ListSupportResourceTypesResponseBodySupportResourceTypes) SetSupportIte
 }
 
 func (s *ListSupportResourceTypesResponseBodySupportResourceTypes) Validate() error {
-	return dara.Validate(s)
+	if s.SupportItems != nil {
+		for _, item := range s.SupportItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems struct {

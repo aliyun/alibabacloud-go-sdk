@@ -28,15 +28,15 @@ type iListAssociatedResourceRulesRequest interface {
 }
 
 type ListAssociatedResourceRulesRequest struct {
-	// Number of data entries to display per page during pagination.
+	// The number of entries to return on each page.
 	//
-	// Default value: 50. Maximum value: 100.
+	// Default Value: 50. Maximum Value: 100.
 	//
 	// example:
 	//
 	// 50
 	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
-	// Token for the next query start.
+	// The token returned from a previous call to retrieve the next page of results.
 	//
 	// example:
 	//
@@ -44,20 +44,20 @@ type ListAssociatedResourceRulesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Region ID.
+	// The Region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// Setting name of the associated resource tag rule.
+	// The names of the associated resource rules.
 	SettingName []*string `json:"SettingName,omitempty" xml:"SettingName,omitempty" type:"Repeated"`
-	// Whether the associated resource tag rule is enabled. Values:
+	// The status of the associated resource rules to query. Valid values:
 	//
-	// - Enable: Enabled.
+	// - Enable: The rule is enabled.
 	//
-	// - Disable: Disabled.
+	// - Disable: The rule is disabled.
 	//
 	// example:
 	//
