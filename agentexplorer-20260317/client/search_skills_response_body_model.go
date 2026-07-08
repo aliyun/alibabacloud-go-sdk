@@ -22,11 +22,16 @@ type iSearchSkillsResponseBody interface {
 }
 
 type SearchSkillsResponseBody struct {
+	// The list of skills returned.
 	Data []*Skill `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The maximum number of entries per page for a paged query. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The NextToken value, which is used to retrieve more results.
+	//
 	// example:
 	//
 	// AAAAAZjtYxxxxxxxx
@@ -37,6 +42,8 @@ type SearchSkillsResponseBody struct {
 	//
 	// 53EAEBC0-4DEC-5AF4-AA21-3923D5A819C3
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 22

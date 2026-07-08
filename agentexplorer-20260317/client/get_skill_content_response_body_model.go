@@ -16,6 +16,8 @@ type iGetSkillContentResponseBody interface {
 }
 
 type GetSkillContentResponseBody struct {
+	// SKILL.md file content
+	//
 	// example:
 	//
 	// ---

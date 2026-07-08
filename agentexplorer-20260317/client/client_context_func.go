@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 获取阿里云 Agent Skill 内容
+// # Get the SKILL.md file content of the specified Agent Skill
 //
 // @param request - GetSkillContentRequest
 //
@@ -50,7 +50,7 @@ func (client *Client) GetSkillContentWithContext(ctx context.Context, skillName 
 
 // Summary:
 //
-// 列举所有的阿里云 Skills 类目
+// List all Alibaba Cloud Skills categories.
 //
 // @param request - ListCategoriesRequest
 //
@@ -91,7 +91,7 @@ func (client *Client) ListCategoriesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 通过关键词、类目搜索阿里云 Agent Skills
+// Searches for Alibaba Cloud Agent Skills by keyword or category.
 //
 // @param request - SearchSkillsRequest
 //
@@ -122,6 +122,10 @@ func (client *Client) SearchSkillsWithContext(ctx context.Context, request *Sear
 
 	if !dara.IsNil(request.NextToken) {
 		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SearchMode) {
+		query["searchMode"] = request.SearchMode
 	}
 
 	if !dara.IsNil(request.Skip) {

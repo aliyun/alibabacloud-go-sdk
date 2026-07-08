@@ -18,11 +18,16 @@ type iListCategoriesResponseBody interface {
 }
 
 type ListCategoriesResponseBody struct {
+	// The returned category list
 	Data []*Category `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// Response message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// request ID
+	//
 	// example:
 	//
 	// 099A671E-FA21-5A36-8A73-918572DDEF53

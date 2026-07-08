@@ -18,11 +18,19 @@ type iCategory interface {
 }
 
 type Category struct {
+	// Sub-categories
 	Children []*CategoryChildren `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
+	// Level 1 Category Code
+	//
 	// example:
 	//
 	// compute
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Level 1 Category Name
+	//
+	// example:
+	//
+	// 计算
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -75,10 +83,17 @@ func (s *Category) Validate() error {
 }
 
 type CategoryChildren struct {
+	// Level 2 Category Code
+	//
 	// example:
 	//
 	// ecs
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Level 2 Category Name
+	//
+	// example:
+	//
+	// 弹性计算
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

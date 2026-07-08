@@ -17,27 +17,40 @@ type iSearchSkillsRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *SearchSkillsRequest
 	GetNextToken() *string
+	SetSearchMode(v string) *SearchSkillsRequest
+	GetSearchMode() *string
 	SetSkip(v int32) *SearchSkillsRequest
 	GetSkip() *int32
 }
 
 type SearchSkillsRequest struct {
+	// The skill category code. Separate multiple codes with commas. For a second-level category, use the format: first-level category.second-level category.
+	//
 	// example:
 	//
 	// compute.serverless,network
 	CategoryCode *string `json:"categoryCode,omitempty" xml:"categoryCode,omitempty"`
+	// The search keyword.
+	//
 	// example:
 	//
 	// ecs
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The maximum number of entries per page for a paged query. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token for the next query. Set this to the NextToken value returned by the previous API call.
+	//
 	// example:
 	//
 	// AAAAAZjtYxxxxxxxx
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	SearchMode *string `json:"searchMode,omitempty" xml:"searchMode,omitempty"`
+	// The number of entries to skip for pagination.
+	//
 	// example:
 	//
 	// 10
@@ -68,6 +81,10 @@ func (s *SearchSkillsRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *SearchSkillsRequest) GetSearchMode() *string {
+	return s.SearchMode
+}
+
 func (s *SearchSkillsRequest) GetSkip() *int32 {
 	return s.Skip
 }
@@ -89,6 +106,11 @@ func (s *SearchSkillsRequest) SetMaxResults(v int32) *SearchSkillsRequest {
 
 func (s *SearchSkillsRequest) SetNextToken(v string) *SearchSkillsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *SearchSkillsRequest) SetSearchMode(v string) *SearchSkillsRequest {
+	s.SearchMode = &v
 	return s
 }
 

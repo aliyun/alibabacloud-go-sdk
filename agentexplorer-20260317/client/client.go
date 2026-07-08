@@ -24,7 +24,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"public":      dara.String("agentexplorer.aliyuncs.com"),
+		"cn-hangzhou": dara.String("agentexplorer.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +62,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 获取阿里云 Agent Skill 内容
+// # Get the SKILL.md file content of the specified Agent Skill
 //
 // @param request - GetSkillContentRequest
 //
@@ -99,7 +103,7 @@ func (client *Client) GetSkillContentWithOptions(skillName *string, request *Get
 
 // Summary:
 //
-// 获取阿里云 Agent Skill 内容
+// # Get the SKILL.md file content of the specified Agent Skill
 //
 // @param request - GetSkillContentRequest
 //
@@ -118,7 +122,7 @@ func (client *Client) GetSkillContent(skillName *string, request *GetSkillConten
 
 // Summary:
 //
-// 列举所有的阿里云 Skills 类目
+// List all Alibaba Cloud Skills categories.
 //
 // @param request - ListCategoriesRequest
 //
@@ -159,7 +163,7 @@ func (client *Client) ListCategoriesWithOptions(request *ListCategoriesRequest, 
 
 // Summary:
 //
-// 列举所有的阿里云 Skills 类目
+// List all Alibaba Cloud Skills categories.
 //
 // @param request - ListCategoriesRequest
 //
@@ -178,7 +182,7 @@ func (client *Client) ListCategories(request *ListCategoriesRequest) (_result *L
 
 // Summary:
 //
-// 通过关键词、类目搜索阿里云 Agent Skills
+// Searches for Alibaba Cloud Agent Skills by keyword or category.
 //
 // @param request - SearchSkillsRequest
 //
@@ -211,6 +215,10 @@ func (client *Client) SearchSkillsWithOptions(request *SearchSkillsRequest, head
 		query["nextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.SearchMode) {
+		query["searchMode"] = request.SearchMode
+	}
+
 	if !dara.IsNil(request.Skip) {
 		query["skip"] = request.Skip
 	}
@@ -241,7 +249,7 @@ func (client *Client) SearchSkillsWithOptions(request *SearchSkillsRequest, head
 
 // Summary:
 //
-// 通过关键词、类目搜索阿里云 Agent Skills
+// Searches for Alibaba Cloud Agent Skills by keyword or category.
 //
 // @param request - SearchSkillsRequest
 //
