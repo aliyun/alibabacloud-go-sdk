@@ -24,25 +24,36 @@ type iListUserAuthConfigsRequest interface {
 }
 
 type ListUserAuthConfigsRequest struct {
+	// The authentication type.
+	//
 	// example:
 	//
 	// QQBotAccessToken
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The ID of the connector.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// connector-88d2c03da8c9410e8a91
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The version of the connector.
+	//
 	// example:
 	//
 	// 6
-	ConnectorVersion *string                             `json:"ConnectorVersion,omitempty" xml:"ConnectorVersion,omitempty"`
-	Filter           []*ListUserAuthConfigsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	ConnectorVersion *string `json:"ConnectorVersion,omitempty" xml:"ConnectorVersion,omitempty"`
+	// The query conditions.
+	Filter []*ListUserAuthConfigsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The maximum number of entries.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the request.
+	//
 	// example:
 	//
 	// AAAAAVY3rYiv9VoUJQSiCitgjgQu5rMgGgvUoNWg8LykhA85j8bgHiGAwZWnCMJPepC+WWc0DK5hx1qIycMHVWP2AjQ=
@@ -125,10 +136,13 @@ func (s *ListUserAuthConfigsRequest) Validate() error {
 }
 
 type ListUserAuthConfigsRequestFilter struct {
+	// The name of the filter field.
+	//
 	// example:
 	//
 	// AuthConfigName
-	Name   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of filter values. The valid range for N is 1 to 10.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

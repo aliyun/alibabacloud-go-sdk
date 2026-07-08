@@ -16,8 +16,9 @@ type iGetFlowResponseBody interface {
 }
 
 type GetFlowResponseBody struct {
+	// The flow object.
 	Flow *GetFlowResponseBodyFlow `json:"Flow,omitempty" xml:"Flow,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,17 +62,38 @@ func (s *GetFlowResponseBody) Validate() error {
 }
 
 type GetFlowResponseBodyFlow struct {
+	// Indicates whether the flow is enabled.
+	//
 	// example:
 	//
 	// true
-	Enabled  *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The flow description.
+	//
+	// example:
+	//
+	// 以AI卡片形式发送至钉钉群聊，如果想要支持私聊，请使用同时支持群聊&私聊的模版
 	FlowDesc *string `json:"FlowDesc,omitempty" xml:"FlowDesc,omitempty"`
+	// The flow ID.
+	//
 	// example:
 	//
 	// flow-xxxxxxxx
-	FlowId    *string                             `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowName  *string                             `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The flow name.
+	//
+	// example:
+	//
+	// 微信连接流1
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The list of nodes.
+	//
+	// example:
+	//
+	// 连接流节点信息
 	FlowNodes []*GetFlowResponseBodyFlowFlowNodes `json:"FlowNodes,omitempty" xml:"FlowNodes,omitempty" type:"Repeated"`
+	// The flow template content.
+	//
 	// example:
 	//
 	// {
@@ -86,23 +108,32 @@ type GetFlowResponseBodyFlow struct {
 	//
 	// }
 	FlowTemplate *string `json:"FlowTemplate,omitempty" xml:"FlowTemplate,omitempty"`
+	// The flow version.
+	//
 	// example:
 	//
 	// 2
 	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	// The flow version status.
+	//
 	// example:
 	//
 	// 1
 	FlowVersionStatus *string `json:"FlowVersionStatus,omitempty" xml:"FlowVersionStatus,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-07-30T02:13:22Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 2025-11-13T02:11:56Z
-	GmtModified *string                        `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Tags        []*GetFlowResponseBodyFlowTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// A list of tags.
+	Tags []*GetFlowResponseBodyFlowTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetFlowResponseBodyFlow) String() string {
@@ -235,58 +266,86 @@ func (s *GetFlowResponseBodyFlow) Validate() error {
 }
 
 type GetFlowResponseBodyFlowFlowNodes struct {
+	// The authentication credentials of the node.
+	//
 	// example:
 	//
 	// {\\"authconfigId\\":\\"uac-xxxxxxxxx\\"}
 	AuthMetadata *string `json:"AuthMetadata,omitempty" xml:"AuthMetadata,omitempty"`
+	// The connector ID.
+	//
 	// example:
 	//
 	// connector-xxx24b139c62
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The connector version.
+	//
 	// example:
 	//
 	// 2
 	ConnectorVersion *string `json:"ConnectorVersion,omitempty" xml:"ConnectorVersion,omitempty"`
+	// The flow ID.
+	//
 	// example:
 	//
 	// flow-856cb84b309747e48b43
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The flow version.
+	//
 	// example:
 	//
 	// 1
 	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
+	// The metadata of the node.
+	//
 	// example:
 	//
 	// {}
 	InputSchema *string `json:"InputSchema,omitempty" xml:"InputSchema,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// fn-xxxxxxxx
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The node key.
+	//
 	// example:
 	//
 	// Node1
 	NodeKey *string `json:"NodeKey,omitempty" xml:"NodeKey,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// NotifyMessage_1
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The node type.
+	//
 	// example:
 	//
 	// Trigger
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The ID of the previous node.
+	//
 	// example:
 	//
 	// fn-xxxxx,fn-yyyyyy
 	PrevNodeId *string `json:"PrevNodeId,omitempty" xml:"PrevNodeId,omitempty"`
+	// The ID of the trigger or action.
+	//
 	// example:
 	//
 	// trigger-xxxxxxxxxx
 	RefId *string `json:"RefId,omitempty" xml:"RefId,omitempty"`
+	// The trigger or action version.
+	//
 	// example:
 	//
 	// 1
 	RefVersion *string `json:"RefVersion,omitempty" xml:"RefVersion,omitempty"`
+	// The webhook URL.
+	//
 	// example:
 	//
 	// https://{uid}.computenest.aliyun.com/webhook/xxxxxxxx
@@ -432,10 +491,14 @@ func (s *GetFlowResponseBodyFlowFlowNodes) Validate() error {
 }
 
 type GetFlowResponseBodyFlowTags struct {
+	// The tag key. The value can be up to 64 characters in length.
+	//
 	// example:
 	//
 	// Environment
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// pre

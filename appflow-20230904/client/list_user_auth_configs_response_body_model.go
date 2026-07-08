@@ -22,10 +22,14 @@ type iListUserAuthConfigsResponseBody interface {
 }
 
 type ListUserAuthConfigsResponseBody struct {
+	// The page size.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// AAAAAVY3rYiv9VoUJQSiCitgjgRBp055u+7M/ZFoi7I0NZHJj8bgHiGAwZWnCMJPepC+WQbLSjoLewJIqkMQqvaJO7M=
@@ -36,10 +40,13 @@ type ListUserAuthConfigsResponseBody struct {
 	//
 	// 35A48818-81F2-506C-891C-2296BE8DD667
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 0
-	TotalCount      *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The user authentication credentials.
 	UserAuthConfigs []*ListUserAuthConfigsResponseBodyUserAuthConfigs `json:"UserAuthConfigs,omitempty" xml:"UserAuthConfigs,omitempty" type:"Repeated"`
 }
 
@@ -110,34 +117,50 @@ func (s *ListUserAuthConfigsResponseBody) Validate() error {
 }
 
 type ListUserAuthConfigsResponseBodyUserAuthConfigs struct {
+	// The credential ID.
+	//
 	// example:
 	//
 	// uac-xxxxxxxx
 	AuthConfigId *string `json:"AuthConfigId,omitempty" xml:"AuthConfigId,omitempty"`
+	// The credential name.
+	//
 	// example:
 	//
 	// name
 	AuthConfigName *string `json:"AuthConfigName,omitempty" xml:"AuthConfigName,omitempty"`
+	// The authentication type.
+	//
 	// example:
 	//
 	// ApiKey
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The ID of the connector.
+	//
 	// example:
 	//
 	// connector-xxxxxxxxx
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The version of the connector.
+	//
 	// example:
 	//
 	// 1
 	ConnectorVersion *string `json:"ConnectorVersion,omitempty" xml:"ConnectorVersion,omitempty"`
+	// The number of connection flows that use this credential.
+	//
 	// example:
 	//
 	// 1
 	FlowCount *int32 `json:"FlowCount,omitempty" xml:"FlowCount,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-04-01 14:22:33
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The last modification time.
+	//
 	// example:
 	//
 	// 2026-04-01 14:22:33

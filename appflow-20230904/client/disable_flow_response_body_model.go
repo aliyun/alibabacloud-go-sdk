@@ -16,8 +16,13 @@ type iDisableFlowResponseBody interface {
 }
 
 type DisableFlowResponseBody struct {
+	// The data returned by the operation.
+	//
+	// example:
+	//
+	// 无
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

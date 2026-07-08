@@ -16,12 +16,13 @@ type iGetUserAuthConfigResponseBody interface {
 }
 
 type GetUserAuthConfigResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 458CB9FE-8C71-58A8-AD49-97EF28D58FAB
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Contains the credential details.
 	UserAuthConfig *GetUserAuthConfigResponseBodyUserAuthConfig `json:"UserAuthConfig,omitempty" xml:"UserAuthConfig,omitempty" type:"Struct"`
 }
 
@@ -61,26 +62,38 @@ func (s *GetUserAuthConfigResponseBody) Validate() error {
 }
 
 type GetUserAuthConfigResponseBodyUserAuthConfig struct {
+	// The auth config, specified as a JSON string.
+	//
 	// example:
 	//
 	// {\\"apiKey":\\"xxxxxxxxxx\\"}
 	AuthConfig *string `json:"AuthConfig,omitempty" xml:"AuthConfig,omitempty"`
+	// The credential ID.
+	//
 	// example:
 	//
 	// uac-111111111
 	AuthConfigId *string `json:"AuthConfigId,omitempty" xml:"AuthConfigId,omitempty"`
+	// The credential name.
+	//
 	// example:
 	//
 	// dingtlak_name
 	AuthConfigName *string `json:"AuthConfigName,omitempty" xml:"AuthConfigName,omitempty"`
+	// The authentication type.
+	//
 	// example:
 	//
 	// ApiKey
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The connector ID.
+	//
 	// example:
 	//
 	// connector-172176821387
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The connector version.
+	//
 	// example:
 	//
 	// 1

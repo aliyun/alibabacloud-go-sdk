@@ -14,7 +14,7 @@ type iUpdateUserAuthConfigResponseBody interface {
 }
 
 type UpdateUserAuthConfigResponseBody struct {
-	// Id of the request
+	// The unique request ID.
 	//
 	// example:
 	//

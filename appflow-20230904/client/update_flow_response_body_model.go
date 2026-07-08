@@ -16,11 +16,13 @@ type iUpdateFlowResponseBody interface {
 }
 
 type UpdateFlowResponseBody struct {
+	// The data returned by the operation.
+	//
 	// example:
 	//
 	// None
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

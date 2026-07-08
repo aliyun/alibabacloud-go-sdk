@@ -24,18 +24,34 @@ type iUpdateFlowRequest interface {
 }
 
 type UpdateFlowRequest struct {
+	// Specifies whether the connection flow is enabled.
+	//
 	// example:
 	//
 	// true
-	Enabled  *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The description of the connection flow.
+	//
+	// example:
+	//
+	// 新建流程
 	FlowDesc *string `json:"FlowDesc,omitempty" xml:"FlowDesc,omitempty"`
+	// The ID of the connection flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// flow-15550241a1e942c29835
-	FlowId   *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the connection flow.
+	//
+	// example:
+	//
+	// 新建流程
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The template of the connection flow.
+	//
 	// example:
 	//
 	// {
@@ -48,6 +64,8 @@ type UpdateFlowRequest struct {
 	//
 	// }
 	FlowTemplate *string `json:"FlowTemplate,omitempty" xml:"FlowTemplate,omitempty"`
+	// The version of the connection flow.
+	//
 	// example:
 	//
 	// 9

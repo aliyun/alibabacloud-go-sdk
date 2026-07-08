@@ -18,18 +18,24 @@ type iGetUserAuthConfigRequest interface {
 }
 
 type GetUserAuthConfigRequest struct {
+	// The credential ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// uac-ac11e0f1db7647ce8469
 	AuthConfigId *string `json:"AuthConfigId,omitempty" xml:"AuthConfigId,omitempty"`
+	// The connector ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// connector-5e43ef26b53e4a158529
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The connector version.
+	//
 	// example:
 	//
 	// 1

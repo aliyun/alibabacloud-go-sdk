@@ -28,17 +28,56 @@ type iCreateFlowRequest interface {
 }
 
 type CreateFlowRequest struct {
+	// The description of the flow.
+	//
+	// example:
+	//
+	// 在钉钉中使用OpenClaw(MoltBot、MoltBot)
 	FlowDesc *string `json:"FlowDesc,omitempty" xml:"FlowDesc,omitempty"`
+	// The ID of the flow. This parameter is required when you update a flow or create a new flow version.
+	//
 	// example:
 	//
 	// flow-647da8e366a74d1cab6e
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the flow.
+	//
 	// This parameter is required.
-	FlowName     *string                        `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	FlowTemplate *string                        `json:"FlowTemplate,omitempty" xml:"FlowTemplate,omitempty"`
-	LaunchStatus *bool                          `json:"LaunchStatus,omitempty" xml:"LaunchStatus,omitempty"`
-	Parameters   []*CreateFlowRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	Tag          []*CreateFlowRequestTag        `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// 企业微信自建应用大模型自动回复
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The content of the template.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "FormatVersion": "appflow-2025-07-01",
+	//
+	//   "Nodes": [
+	//
+	//      ]
+	//
+	// }
+	FlowTemplate *string `json:"FlowTemplate,omitempty" xml:"FlowTemplate,omitempty"`
+	// The publication status of the flow: True for published, False for unpublished.
+	//
+	// example:
+	//
+	// true
+	LaunchStatus *bool `json:"LaunchStatus,omitempty" xml:"LaunchStatus,omitempty"`
+	// The parameters for the template.
+	//
+	// You can specify up to 200 parameters.
+	//
+	// > This parameter is optional. If you use this parameter, you must specify both ParameterKey and ParameterValue for each entry.
+	Parameters []*CreateFlowRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The object tags to which the rule applies. You can specify multiple tags.
+	Tag []*CreateFlowRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the template. Specify this parameter when you create a flow from a template in the Template Center.
+	//
 	// example:
 	//
 	// tl-715d93e708b546b7b464
@@ -148,13 +187,23 @@ func (s *CreateFlowRequest) Validate() error {
 }
 
 type CreateFlowRequestParameters struct {
+	// The name of a parameter defined in the template. If no parameter name or value is specified, ROS uses the default value defined in the template.
+	//
+	// The maximum value of N is 200.<br>
+	//
+	// The name must be 1 to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// > Parameters is optional. If you specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
+	//
 	// example:
 	//
 	// dingdingAuthId
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	// The value for the parameter.
+	//
 	// example:
 	//
-	// uac-cdd8e1cfde534b4db482
+	// uac-xxxxxxx
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -189,7 +238,19 @@ func (s *CreateFlowRequestParameters) Validate() error {
 }
 
 type CreateFlowRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. You can filter the cluster list by tag. You can specify up to 20 tag pairs. The number N in each tag pair must be unique and a consecutive integer starting from 1. The value corresponding to `Tag.N.Key` is `Tag.N.Value`.
+	//
+	// > The tag key can be up to 64 characters long and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	//
+	// example:
+	//
+	// CreateBy
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The authentication content.
+	//
+	// example:
+	//
+	// zhangsan
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

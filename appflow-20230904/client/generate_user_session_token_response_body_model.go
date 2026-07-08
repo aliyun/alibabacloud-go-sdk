@@ -22,7 +22,7 @@ type GenerateUserSessionTokenResponseBody struct {
 	//
 	// 34C2713A-2270-5EEC-825E-115F9AD3BAC9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Token.
+	// Token
 	//
 	// example:
 	//

@@ -22,28 +22,38 @@ type iCreateUserAuthConfigRequest interface {
 }
 
 type CreateUserAuthConfigRequest struct {
+	// The authentication information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ***
 	AuthConfig *string `json:"AuthConfig,omitempty" xml:"AuthConfig,omitempty"`
+	// The name of the credential.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bailian-01ce5586-420f-4cbf-9392-7001a1c33bc1
 	AuthConfigName *string `json:"AuthConfigName,omitempty" xml:"AuthConfigName,omitempty"`
+	// The type of the credential.
+	//
 	// example:
 	//
 	// DingdingAccessToken
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The ID of the connector.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// connector-3c60c6e123e146fbb6f8
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The version of the connector.
+	//
 	// example:
 	//
 	// 1

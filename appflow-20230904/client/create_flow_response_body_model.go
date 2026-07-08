@@ -16,11 +16,13 @@ type iCreateFlowResponseBody interface {
 }
 
 type CreateFlowResponseBody struct {
+	// The information of the newly created product returned when the call succeeds.
+	//
 	// example:
 	//
 	// flow-9691a04fc7f94525aac1
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

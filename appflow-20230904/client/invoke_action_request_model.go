@@ -32,31 +32,46 @@ type iInvokeActionRequest interface {
 }
 
 type InvokeActionRequest struct {
+	// The action ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// action-xxx
 	ActionId *string `json:"ActionId,omitempty" xml:"ActionId,omitempty"`
+	// The action version.
+	//
 	// example:
 	//
 	// 1
-	ActionVersion *string                        `json:"ActionVersion,omitempty" xml:"ActionVersion,omitempty"`
-	AuthConfig    *InvokeActionRequestAuthConfig `json:"AuthConfig,omitempty" xml:"AuthConfig,omitempty" type:"Struct"`
-	Body          map[string]interface{}         `json:"Body,omitempty" xml:"Body,omitempty"`
+	ActionVersion *string `json:"ActionVersion,omitempty" xml:"ActionVersion,omitempty"`
+	// The authentication information for the action.
+	AuthConfig *InvokeActionRequestAuthConfig `json:"AuthConfig,omitempty" xml:"AuthConfig,omitempty" type:"Struct"`
+	// The request body for the action.
+	Body map[string]interface{} `json:"Body,omitempty" xml:"Body,omitempty"`
+	// The connector ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// connector-xxx
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The connector version.
+	//
 	// example:
 	//
 	// 1
-	ConnectorVersion *string            `json:"ConnectorVersion,omitempty" xml:"ConnectorVersion,omitempty"`
-	Headers          map[string]*string `json:"Headers,omitempty" xml:"Headers,omitempty"`
-	Path             map[string]*string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Query            map[string]*string `json:"Query,omitempty" xml:"Query,omitempty"`
+	ConnectorVersion *string `json:"ConnectorVersion,omitempty" xml:"ConnectorVersion,omitempty"`
+	// The request header parameters for the action.
+	Headers map[string]*string `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	// The path parameters for the action.
+	Path map[string]*string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The query parameters for the action.
+	Query map[string]*string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Specifies whether to use streaming output.
+	//
 	// example:
 	//
 	// false
@@ -171,10 +186,14 @@ func (s *InvokeActionRequest) Validate() error {
 }
 
 type InvokeActionRequestAuthConfig struct {
+	// The type of authentication information.
+	//
 	// example:
 	//
 	// raw
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The authentication content. Its value is a raw JSON object or a credential ID, as determined by the `Type` parameter.
+	//
 	// example:
 	//
 	// {"AppId":"xxxx","AppSecret":"sk-xxx"}

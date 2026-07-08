@@ -26,13 +26,13 @@ type iGenerateUserSessionTokenRequest interface {
 }
 
 type GenerateUserSessionTokenRequest struct {
-	// AI Assistant ID
+	// RDS Copilot ID
 	//
 	// example:
 	//
 	// cb-069d508f9ab341b1****
 	ChatbotId *string `json:"ChatbotId,omitempty" xml:"ChatbotId,omitempty"`
-	// Expiration Time, in seconds, default 24 hours
+	// Time-to-live (TTL) in seconds. Default is 24 hours.
 	//
 	// example:
 	//
@@ -45,7 +45,7 @@ type GenerateUserSessionTokenRequest struct {
 	//
 	// cit-960f499au184m7****
 	IntegrateId *string `json:"IntegrateId,omitempty" xml:"IntegrateId,omitempty"`
-	// User Avatar (URL)
+	// Profile picture (URL)
 	//
 	// example:
 	//
@@ -59,7 +59,7 @@ type GenerateUserSessionTokenRequest struct {
 	//
 	// 929293312213****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// User Nickname
+	// Nickname
 	//
 	// example:
 	//

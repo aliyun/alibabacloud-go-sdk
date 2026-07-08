@@ -16,11 +16,13 @@ type iCreateUserAuthConfigResponseBody interface {
 }
 
 type CreateUserAuthConfigResponseBody struct {
+	// The ID of the user credential.
+	//
 	// example:
 	//
 	// uac-a2253c40486c40c1b910
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

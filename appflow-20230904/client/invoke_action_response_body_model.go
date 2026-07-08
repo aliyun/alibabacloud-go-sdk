@@ -16,13 +16,14 @@ type iInvokeActionResponseBody interface {
 }
 
 type InvokeActionResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 346E5EE9-D5FE-56A0-B3E2-A43E0F67302A
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *InvokeActionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The execution result.
+	Result *InvokeActionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s InvokeActionResponseBody) String() string {
@@ -61,10 +62,14 @@ func (s *InvokeActionResponseBody) Validate() error {
 }
 
 type InvokeActionResponseBodyResult struct {
+	// The error message.
+	//
 	// example:
 	//
 	// The provided parameter xxx is invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The output of the action.
+	//
 	// example:
 	//
 	// {
@@ -91,6 +96,8 @@ type InvokeActionResponseBodyResult struct {
 	//
 	// }
 	Output interface{} `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The execution status.
+	//
 	// example:
 	//
 	// RUNNING、COMPLETED

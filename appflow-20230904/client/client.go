@@ -24,7 +24,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-hangzhou": dara.String("appflow.cn-hangzhou.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +61,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建连接流
+// Creates a flow.
+//
+// Description:
+//
+// Creates a flow or a flow version.
 //
 // @param request - CreateFlowRequest
 //
@@ -130,7 +137,11 @@ func (client *Client) CreateFlowWithOptions(request *CreateFlowRequest, runtime 
 
 // Summary:
 //
-// 创建连接流
+// Creates a flow.
+//
+// Description:
+//
+// Creates a flow or a flow version.
 //
 // @param request - CreateFlowRequest
 //
@@ -148,7 +159,11 @@ func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlo
 
 // Summary:
 //
-// 创建用户鉴权凭证
+// Creates a user authentication credential.
+//
+// Description:
+//
+// Creates a connection flow or a connection flow version.
 //
 // @param request - CreateUserAuthConfigRequest
 //
@@ -208,7 +223,11 @@ func (client *Client) CreateUserAuthConfigWithOptions(request *CreateUserAuthCon
 
 // Summary:
 //
-// 创建用户鉴权凭证
+// Creates a user authentication credential.
+//
+// Description:
+//
+// Creates a connection flow or a connection flow version.
 //
 // @param request - CreateUserAuthConfigRequest
 //
@@ -226,7 +245,7 @@ func (client *Client) CreateUserAuthConfig(request *CreateUserAuthConfigRequest)
 
 // Summary:
 //
-// 删除连接流
+// Deletes a connection flow.
 //
 // @param request - DeleteFlowRequest
 //
@@ -274,7 +293,7 @@ func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime 
 
 // Summary:
 //
-// 删除连接流
+// Deletes a connection flow.
 //
 // @param request - DeleteFlowRequest
 //
@@ -292,7 +311,11 @@ func (client *Client) DeleteFlow(request *DeleteFlowRequest) (_result *DeleteFlo
 
 // Summary:
 //
-// 删除用户鉴权凭证
+// Deletes a user authentication credential.
+//
+// Description:
+//
+// Creates a connection flow or a connection flow version.
 //
 // @param request - DeleteUserAuthConfigRequest
 //
@@ -344,7 +367,11 @@ func (client *Client) DeleteUserAuthConfigWithOptions(request *DeleteUserAuthCon
 
 // Summary:
 //
-// 删除用户鉴权凭证
+// Deletes a user authentication credential.
+//
+// Description:
+//
+// Creates a connection flow or a connection flow version.
 //
 // @param request - DeleteUserAuthConfigRequest
 //
@@ -362,7 +389,7 @@ func (client *Client) DeleteUserAuthConfig(request *DeleteUserAuthConfigRequest)
 
 // Summary:
 //
-// 禁用连接流
+// Disables a flow.
 //
 // @param request - DisableFlowRequest
 //
@@ -410,7 +437,7 @@ func (client *Client) DisableFlowWithOptions(request *DisableFlowRequest, runtim
 
 // Summary:
 //
-// 禁用连接流
+// Disables a flow.
 //
 // @param request - DisableFlowRequest
 //
@@ -428,7 +455,7 @@ func (client *Client) DisableFlow(request *DisableFlowRequest) (_result *Disable
 
 // Summary:
 //
-// 启用连接流
+// Enables a flow.
 //
 // @param request - EnableFlowRequest
 //
@@ -476,7 +503,7 @@ func (client *Client) EnableFlowWithOptions(request *EnableFlowRequest, runtime 
 
 // Summary:
 //
-// 启用连接流
+// Enables a flow.
 //
 // @param request - EnableFlowRequest
 //
@@ -494,7 +521,7 @@ func (client *Client) EnableFlow(request *EnableFlowRequest) (_result *EnableFlo
 
 // Summary:
 //
-// # Generate Login Session Token
+// Generates a logon session token.
 //
 // @param request - GenerateUserSessionTokenRequest
 //
@@ -562,7 +589,7 @@ func (client *Client) GenerateUserSessionTokenWithOptions(request *GenerateUserS
 
 // Summary:
 //
-// # Generate Login Session Token
+// Generates a logon session token.
 //
 // @param request - GenerateUserSessionTokenRequest
 //
@@ -580,7 +607,7 @@ func (client *Client) GenerateUserSessionToken(request *GenerateUserSessionToken
 
 // Summary:
 //
-// 获取连接流详情
+// Queries the details of a flow.
 //
 // @param request - GetFlowRequest
 //
@@ -628,7 +655,7 @@ func (client *Client) GetFlowWithOptions(request *GetFlowRequest, runtime *dara.
 
 // Summary:
 //
-// 获取连接流详情
+// Queries the details of a flow.
 //
 // @param request - GetFlowRequest
 //
@@ -646,7 +673,11 @@ func (client *Client) GetFlow(request *GetFlowRequest) (_result *GetFlowResponse
 
 // Summary:
 //
-// 获取用户鉴权凭证详情
+// Gets the details of a user authentication credential.
+//
+// Description:
+//
+// This operation gets the details of a specified credential.
 //
 // @param request - GetUserAuthConfigRequest
 //
@@ -698,7 +729,11 @@ func (client *Client) GetUserAuthConfigWithOptions(request *GetUserAuthConfigReq
 
 // Summary:
 //
-// 获取用户鉴权凭证详情
+// Gets the details of a user authentication credential.
+//
+// Description:
+//
+// This operation gets the details of a specified credential.
 //
 // @param request - GetUserAuthConfigRequest
 //
@@ -716,7 +751,7 @@ func (client *Client) GetUserAuthConfig(request *GetUserAuthConfigRequest) (_res
 
 // Summary:
 //
-// 运行连接器的执行动作
+// Invokes a connector action.
 //
 // @param tmpReq - InvokeActionRequest
 //
@@ -731,7 +766,7 @@ func (client *Client) InvokeActionWithSSE(tmpReq *InvokeActionRequest, runtime *
 
 // Summary:
 //
-// 运行连接器的执行动作
+// Invokes a connector action.
 //
 // @param tmpReq - InvokeActionRequest
 //
@@ -833,7 +868,7 @@ func (client *Client) InvokeActionWithOptions(tmpReq *InvokeActionRequest, runti
 
 // Summary:
 //
-// 运行连接器的执行动作
+// Invokes a connector action.
 //
 // @param request - InvokeActionRequest
 //
@@ -851,7 +886,7 @@ func (client *Client) InvokeAction(request *InvokeActionRequest) (_result *Invok
 
 // Summary:
 //
-// 发布连接流
+// Launches a flow.
 //
 // @param request - LaunchFlowRequest
 //
@@ -911,7 +946,7 @@ func (client *Client) LaunchFlowWithOptions(request *LaunchFlowRequest, runtime 
 
 // Summary:
 //
-// 发布连接流
+// Launches a flow.
 //
 // @param request - LaunchFlowRequest
 //
@@ -929,7 +964,93 @@ func (client *Client) LaunchFlow(request *LaunchFlowRequest) (_result *LaunchFlo
 
 // Summary:
 //
-// 获取用户鉴权凭证列表
+// Retrieves a list of connector flows.
+//
+// Description:
+//
+// Creates a connector flow or a connector flow version.
+//
+// @param request - ListFlowsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFlowsResponse
+func (client *Client) ListFlowsWithOptions(request *ListFlowsRequest, runtime *dara.RuntimeOptions) (_result *ListFlowsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFlows"),
+		Version:     dara.String("2023-09-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFlowsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of connector flows.
+//
+// Description:
+//
+// Creates a connector flow or a connector flow version.
+//
+// @param request - ListFlowsRequest
+//
+// @return ListFlowsResponse
+func (client *Client) ListFlows(request *ListFlowsRequest) (_result *ListFlowsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListFlowsResponse{}
+	_body, _err := client.ListFlowsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists user authentication credentials.
+//
+// Description:
+//
+// This operation retrieves user auth configs that match specified filters.
 //
 // @param request - ListUserAuthConfigsRequest
 //
@@ -993,7 +1114,11 @@ func (client *Client) ListUserAuthConfigsWithOptions(request *ListUserAuthConfig
 
 // Summary:
 //
-// 获取用户鉴权凭证列表
+// Lists user authentication credentials.
+//
+// Description:
+//
+// This operation retrieves user auth configs that match specified filters.
 //
 // @param request - ListUserAuthConfigsRequest
 //
@@ -1011,7 +1136,7 @@ func (client *Client) ListUserAuthConfigs(request *ListUserAuthConfigsRequest) (
 
 // Summary:
 //
-// 更新连接流
+// Updates a connection flow.
 //
 // @param request - UpdateFlowRequest
 //
@@ -1075,7 +1200,7 @@ func (client *Client) UpdateFlowWithOptions(request *UpdateFlowRequest, runtime 
 
 // Summary:
 //
-// 更新连接流
+// Updates a connection flow.
 //
 // @param request - UpdateFlowRequest
 //
@@ -1093,7 +1218,11 @@ func (client *Client) UpdateFlow(request *UpdateFlowRequest) (_result *UpdateFlo
 
 // Summary:
 //
-// 编辑用户鉴权凭证
+// Updates a user authentication credential.
+//
+// Description:
+//
+// Updates the configuration of a specific user authentication credential.
 //
 // @param request - UpdateUserAuthConfigRequest
 //
@@ -1153,7 +1282,11 @@ func (client *Client) UpdateUserAuthConfigWithOptions(request *UpdateUserAuthCon
 
 // Summary:
 //
-// 编辑用户鉴权凭证
+// Updates a user authentication credential.
+//
+// Description:
+//
+// Updates the configuration of a specific user authentication credential.
 //
 // @param request - UpdateUserAuthConfigRequest
 //
@@ -1171,7 +1304,7 @@ func (client *Client) UpdateUserAuthConfig(request *UpdateUserAuthConfigRequest)
 
 // Summary:
 //
-// 下线连接流
+// Withdraws a connection flow.
 //
 // @param request - WithdrawFlowRequest
 //
@@ -1219,7 +1352,7 @@ func (client *Client) WithdrawFlowWithOptions(request *WithdrawFlowRequest, runt
 
 // Summary:
 //
-// 下线连接流
+// Withdraws a connection flow.
 //
 // @param request - WithdrawFlowRequest
 //

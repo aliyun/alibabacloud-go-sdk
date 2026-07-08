@@ -16,11 +16,13 @@ type iWithdrawFlowResponseBody interface {
 }
 
 type WithdrawFlowResponseBody struct {
+	// The returned data.
+	//
 	// example:
 	//
 	// None
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

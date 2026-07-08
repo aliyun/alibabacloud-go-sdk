@@ -16,12 +16,16 @@ type iDeleteFlowRequest interface {
 }
 
 type DeleteFlowRequest struct {
+	// The flow ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// flow-xxxxxxxxx
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The flow version.
+	//
 	// example:
 	//
 	// 8

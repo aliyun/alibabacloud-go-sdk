@@ -16,11 +16,13 @@ type iEnableFlowResponseBody interface {
 }
 
 type EnableFlowResponseBody struct {
+  // The response data.
+  // 
   // example:
   // 
   // None
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-  // Id of the request
+  // The request ID.
   // 
   // example:
   // 

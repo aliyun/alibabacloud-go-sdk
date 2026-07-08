@@ -16,11 +16,13 @@ type iLaunchFlowResponseBody interface {
 }
 
 type LaunchFlowResponseBody struct {
+	// The returned object.
+	//
 	// example:
 	//
 	// None
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

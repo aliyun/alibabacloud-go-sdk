@@ -22,26 +22,36 @@ type iUpdateUserAuthConfigRequest interface {
 }
 
 type UpdateUserAuthConfigRequest struct {
+	// The user authentication credential, provided as a JSON string.
+	//
 	// example:
 	//
 	// {\\"apiKey\\": \\"************\\"}
 	AuthConfig *string `json:"AuthConfig,omitempty" xml:"AuthConfig,omitempty"`
+	// The ID of the credential.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// uac-42b60d53bcce466d9d08
 	AuthConfigId *string `json:"AuthConfigId,omitempty" xml:"AuthConfigId,omitempty"`
+	// The name of the credential.
+	//
 	// example:
 	//
 	// name
 	AuthConfigName *string `json:"AuthConfigName,omitempty" xml:"AuthConfigName,omitempty"`
+	// The ID of the connector.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// connector-6b8df2297dca4a5f8f15
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The connector version.
+	//
 	// example:
 	//
 	// 1

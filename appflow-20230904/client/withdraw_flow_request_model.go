@@ -16,12 +16,16 @@ type iWithdrawFlowRequest interface {
 }
 
 type WithdrawFlowRequest struct {
+	// The connection flow ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// flow-6b03788c25244c93b254
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The connection flow version.
+	//
 	// example:
 	//
 	// 1

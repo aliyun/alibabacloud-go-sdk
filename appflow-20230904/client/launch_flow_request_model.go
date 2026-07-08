@@ -22,14 +22,28 @@ type iLaunchFlowRequest interface {
 }
 
 type LaunchFlowRequest struct {
+	// The description of the flow.
+	//
+	// example:
+	//
+	// 公司管理群内定期消息提醒
 	FlowDesc *string `json:"FlowDesc,omitempty" xml:"FlowDesc,omitempty"`
+	// The ID of the flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// flow-6a3acc07d51541b0b836
-	FlowId   *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the flow.
+	//
+	// example:
+	//
+	// 通过飞书使用OpenClaw——多模态
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// The template of the flow.
+	//
 	// example:
 	//
 	// {
@@ -42,6 +56,8 @@ type LaunchFlowRequest struct {
 	//
 	// }
 	FlowTemplate *string `json:"FlowTemplate,omitempty" xml:"FlowTemplate,omitempty"`
+	// The version of the flow.
+	//
 	// example:
 	//
 	// 1

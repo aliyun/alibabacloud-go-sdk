@@ -16,12 +16,16 @@ type iDisableFlowRequest interface {
 }
 
 type DisableFlowRequest struct {
+	// The flow ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// flow-xxxxxx
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The flow version.
+	//
 	// example:
 	//
 	// 1

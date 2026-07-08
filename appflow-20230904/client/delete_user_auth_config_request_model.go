@@ -18,18 +18,24 @@ type iDeleteUserAuthConfigRequest interface {
 }
 
 type DeleteUserAuthConfigRequest struct {
+	// The credential ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// uac-8f4bfe29041441d8bdd9
 	AuthConfigId *string `json:"AuthConfigId,omitempty" xml:"AuthConfigId,omitempty"`
+	// The ID of the connector.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// connector-5e43ef26b53e4a158529
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// The connector name.
+	//
 	// example:
 	//
 	// 2

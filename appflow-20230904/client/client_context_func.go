@@ -10,7 +10,11 @@ import (
 
 // Summary:
 //
-// 创建连接流
+// Creates a flow.
+//
+// Description:
+//
+// Creates a flow or a flow version.
 //
 // @param request - CreateFlowRequest
 //
@@ -82,7 +86,11 @@ func (client *Client) CreateFlowWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// 创建用户鉴权凭证
+// Creates a user authentication credential.
+//
+// Description:
+//
+// Creates a connection flow or a connection flow version.
 //
 // @param request - CreateUserAuthConfigRequest
 //
@@ -142,7 +150,7 @@ func (client *Client) CreateUserAuthConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除连接流
+// Deletes a connection flow.
 //
 // @param request - DeleteFlowRequest
 //
@@ -190,7 +198,11 @@ func (client *Client) DeleteFlowWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// 删除用户鉴权凭证
+// Deletes a user authentication credential.
+//
+// Description:
+//
+// Creates a connection flow or a connection flow version.
 //
 // @param request - DeleteUserAuthConfigRequest
 //
@@ -242,7 +254,7 @@ func (client *Client) DeleteUserAuthConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 禁用连接流
+// Disables a flow.
 //
 // @param request - DisableFlowRequest
 //
@@ -290,7 +302,7 @@ func (client *Client) DisableFlowWithContext(ctx context.Context, request *Disab
 
 // Summary:
 //
-// 启用连接流
+// Enables a flow.
 //
 // @param request - EnableFlowRequest
 //
@@ -338,7 +350,7 @@ func (client *Client) EnableFlowWithContext(ctx context.Context, request *Enable
 
 // Summary:
 //
-// # Generate Login Session Token
+// Generates a logon session token.
 //
 // @param request - GenerateUserSessionTokenRequest
 //
@@ -406,7 +418,7 @@ func (client *Client) GenerateUserSessionTokenWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取连接流详情
+// Queries the details of a flow.
 //
 // @param request - GetFlowRequest
 //
@@ -454,7 +466,11 @@ func (client *Client) GetFlowWithContext(ctx context.Context, request *GetFlowRe
 
 // Summary:
 //
-// 获取用户鉴权凭证详情
+// Gets the details of a user authentication credential.
+//
+// Description:
+//
+// This operation gets the details of a specified credential.
 //
 // @param request - GetUserAuthConfigRequest
 //
@@ -506,7 +522,7 @@ func (client *Client) GetUserAuthConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 运行连接器的执行动作
+// Invokes a connector action.
 //
 // @param tmpReq - InvokeActionRequest
 //
@@ -521,7 +537,7 @@ func (client *Client) InvokeActionWithSSECtx(ctx context.Context, tmpReq *Invoke
 
 // Summary:
 //
-// 运行连接器的执行动作
+// Invokes a connector action.
 //
 // @param tmpReq - InvokeActionRequest
 //
@@ -623,7 +639,7 @@ func (client *Client) InvokeActionWithContext(ctx context.Context, tmpReq *Invok
 
 // Summary:
 //
-// 发布连接流
+// Launches a flow.
 //
 // @param request - LaunchFlowRequest
 //
@@ -683,7 +699,71 @@ func (client *Client) LaunchFlowWithContext(ctx context.Context, request *Launch
 
 // Summary:
 //
-// 获取用户鉴权凭证列表
+// Retrieves a list of connector flows.
+//
+// Description:
+//
+// Creates a connector flow or a connector flow version.
+//
+// @param request - ListFlowsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFlowsResponse
+func (client *Client) ListFlowsWithContext(ctx context.Context, request *ListFlowsRequest, runtime *dara.RuntimeOptions) (_result *ListFlowsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFlows"),
+		Version:     dara.String("2023-09-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFlowsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists user authentication credentials.
+//
+// Description:
+//
+// This operation retrieves user auth configs that match specified filters.
 //
 // @param request - ListUserAuthConfigsRequest
 //
@@ -747,7 +827,7 @@ func (client *Client) ListUserAuthConfigsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 更新连接流
+// Updates a connection flow.
 //
 // @param request - UpdateFlowRequest
 //
@@ -811,7 +891,11 @@ func (client *Client) UpdateFlowWithContext(ctx context.Context, request *Update
 
 // Summary:
 //
-// 编辑用户鉴权凭证
+// Updates a user authentication credential.
+//
+// Description:
+//
+// Updates the configuration of a specific user authentication credential.
 //
 // @param request - UpdateUserAuthConfigRequest
 //
@@ -871,7 +955,7 @@ func (client *Client) UpdateUserAuthConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 下线连接流
+// Withdraws a connection flow.
 //
 // @param request - WithdrawFlowRequest
 //
