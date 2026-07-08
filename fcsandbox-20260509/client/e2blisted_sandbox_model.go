@@ -25,16 +25,24 @@ type iE2BListedSandbox interface {
   GetMemoryMB() *int32 
   SetMetadata(v map[string]*string) *E2BListedSandbox
   GetMetadata() map[string]*string 
+  SetResourceGroupID(v string) *E2BListedSandbox
+  GetResourceGroupID() *string 
   SetSandboxID(v string) *E2BListedSandbox
   GetSandboxID() *string 
   SetStartedAt(v string) *E2BListedSandbox
   GetStartedAt() *string 
   SetState(v string) *E2BListedSandbox
   GetState() *string 
+  SetTeamID(v string) *E2BListedSandbox
+  GetTeamID() *string 
+  SetTeamName(v string) *E2BListedSandbox
+  GetTeamName() *string 
   SetTemplateID(v string) *E2BListedSandbox
   GetTemplateID() *string 
   SetTemplateName(v string) *E2BListedSandbox
   GetTemplateName() *string 
+  SetUserID(v string) *E2BListedSandbox
+  GetUserID() *string 
   SetVolumeMounts(v []*E2BVolumeMount) *E2BListedSandbox
   GetVolumeMounts() []*E2BVolumeMount 
 }
@@ -48,11 +56,15 @@ type E2BListedSandbox struct {
   EnvdVersion *string `json:"envdVersion,omitempty" xml:"envdVersion,omitempty"`
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
   Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
+  ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
   SandboxID *string `json:"sandboxID,omitempty" xml:"sandboxID,omitempty"`
   StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
   State *string `json:"state,omitempty" xml:"state,omitempty"`
+  TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
   TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+  UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
   VolumeMounts []*E2BVolumeMount `json:"volumeMounts,omitempty" xml:"volumeMounts,omitempty" type:"Repeated"`
 }
 
@@ -96,6 +108,10 @@ func (s *E2BListedSandbox) GetMetadata() map[string]*string  {
   return s.Metadata
 }
 
+func (s *E2BListedSandbox) GetResourceGroupID() *string  {
+  return s.ResourceGroupID
+}
+
 func (s *E2BListedSandbox) GetSandboxID() *string  {
   return s.SandboxID
 }
@@ -108,12 +124,24 @@ func (s *E2BListedSandbox) GetState() *string  {
   return s.State
 }
 
+func (s *E2BListedSandbox) GetTeamID() *string  {
+  return s.TeamID
+}
+
+func (s *E2BListedSandbox) GetTeamName() *string  {
+  return s.TeamName
+}
+
 func (s *E2BListedSandbox) GetTemplateID() *string  {
   return s.TemplateID
 }
 
 func (s *E2BListedSandbox) GetTemplateName() *string  {
   return s.TemplateName
+}
+
+func (s *E2BListedSandbox) GetUserID() *string  {
+  return s.UserID
 }
 
 func (s *E2BListedSandbox) GetVolumeMounts() []*E2BVolumeMount  {
@@ -160,6 +188,11 @@ func (s *E2BListedSandbox) SetMetadata(v map[string]*string) *E2BListedSandbox {
   return s
 }
 
+func (s *E2BListedSandbox) SetResourceGroupID(v string) *E2BListedSandbox {
+  s.ResourceGroupID = &v
+  return s
+}
+
 func (s *E2BListedSandbox) SetSandboxID(v string) *E2BListedSandbox {
   s.SandboxID = &v
   return s
@@ -175,6 +208,16 @@ func (s *E2BListedSandbox) SetState(v string) *E2BListedSandbox {
   return s
 }
 
+func (s *E2BListedSandbox) SetTeamID(v string) *E2BListedSandbox {
+  s.TeamID = &v
+  return s
+}
+
+func (s *E2BListedSandbox) SetTeamName(v string) *E2BListedSandbox {
+  s.TeamName = &v
+  return s
+}
+
 func (s *E2BListedSandbox) SetTemplateID(v string) *E2BListedSandbox {
   s.TemplateID = &v
   return s
@@ -182,6 +225,11 @@ func (s *E2BListedSandbox) SetTemplateID(v string) *E2BListedSandbox {
 
 func (s *E2BListedSandbox) SetTemplateName(v string) *E2BListedSandbox {
   s.TemplateName = &v
+  return s
+}
+
+func (s *E2BListedSandbox) SetUserID(v string) *E2BListedSandbox {
+  s.UserID = &v
   return s
 }
 

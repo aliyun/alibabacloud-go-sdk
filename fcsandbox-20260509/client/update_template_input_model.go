@@ -11,10 +11,13 @@ type iUpdateTemplateInput interface {
 	GoString() string
 	SetLogConfiguration(v *LogConfiguration) *UpdateTemplateInput
 	GetLogConfiguration() *LogConfiguration
+	SetNetworkConfiguration(v *NetworkConfiguration) *UpdateTemplateInput
+	GetNetworkConfiguration() *NetworkConfiguration
 }
 
 type UpdateTemplateInput struct {
-	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
+	LogConfiguration     *LogConfiguration     `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
+	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 }
 
 func (s UpdateTemplateInput) String() string {
@@ -29,14 +32,28 @@ func (s *UpdateTemplateInput) GetLogConfiguration() *LogConfiguration {
 	return s.LogConfiguration
 }
 
+func (s *UpdateTemplateInput) GetNetworkConfiguration() *NetworkConfiguration {
+	return s.NetworkConfiguration
+}
+
 func (s *UpdateTemplateInput) SetLogConfiguration(v *LogConfiguration) *UpdateTemplateInput {
 	s.LogConfiguration = v
+	return s
+}
+
+func (s *UpdateTemplateInput) SetNetworkConfiguration(v *NetworkConfiguration) *UpdateTemplateInput {
+	s.NetworkConfiguration = v
 	return s
 }
 
 func (s *UpdateTemplateInput) Validate() error {
 	if s.LogConfiguration != nil {
 		if err := s.LogConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkConfiguration != nil {
+		if err := s.NetworkConfiguration.Validate(); err != nil {
 			return err
 		}
 	}

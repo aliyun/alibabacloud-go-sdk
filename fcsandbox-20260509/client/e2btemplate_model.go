@@ -13,8 +13,6 @@ type iE2BTemplate interface {
   GetAliases() []*string 
   SetBuildStatus(v string) *E2BTemplate
   GetBuildStatus() *string 
-  SetBuilds(v *E2BTemplateBuild) *E2BTemplate
-  GetBuilds() *E2BTemplateBuild 
   SetCpuCount(v int32) *E2BTemplate
   GetCpuCount() *int32 
   SetCreatedAt(v string) *E2BTemplate
@@ -29,12 +27,18 @@ type iE2BTemplate interface {
   GetNames() []*string 
   SetPublic(v bool) *E2BTemplate
   GetPublic() *bool 
-  SetSpawnCount(v string) *E2BTemplate
-  GetSpawnCount() *string 
+  SetResourceGroupID(v string) *E2BTemplate
+  GetResourceGroupID() *string 
+  SetSpawnCount(v int32) *E2BTemplate
+  GetSpawnCount() *int32 
   SetStatusReason(v string) *E2BTemplate
   GetStatusReason() *string 
   SetTags(v []*E2BTemplateTag) *E2BTemplate
   GetTags() []*E2BTemplateTag 
+  SetTeamID(v string) *E2BTemplate
+  GetTeamID() *string 
+  SetTeamName(v string) *E2BTemplate
+  GetTeamName() *string 
   SetTemplateID(v string) *E2BTemplate
   GetTemplateID() *string 
   SetUpdatedAt(v string) *E2BTemplate
@@ -46,7 +50,6 @@ type iE2BTemplate interface {
 type E2BTemplate struct {
   Aliases []*string `json:"aliases,omitempty" xml:"aliases,omitempty" type:"Repeated"`
   BuildStatus *string `json:"buildStatus,omitempty" xml:"buildStatus,omitempty"`
-  Builds *E2BTemplateBuild `json:"builds,omitempty" xml:"builds,omitempty"`
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
   LastSpawnedAt *string `json:"lastSpawnedAt,omitempty" xml:"lastSpawnedAt,omitempty"`
@@ -54,9 +57,12 @@ type E2BTemplate struct {
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
   Names []*string `json:"names,omitempty" xml:"names,omitempty" type:"Repeated"`
   Public *bool `json:"public,omitempty" xml:"public,omitempty"`
-  SpawnCount *string `json:"spawnCount,omitempty" xml:"spawnCount,omitempty"`
+  ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  SpawnCount *int32 `json:"spawnCount,omitempty" xml:"spawnCount,omitempty"`
   StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
   Tags []*E2BTemplateTag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+  TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
   UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
@@ -76,10 +82,6 @@ func (s *E2BTemplate) GetAliases() []*string  {
 
 func (s *E2BTemplate) GetBuildStatus() *string  {
   return s.BuildStatus
-}
-
-func (s *E2BTemplate) GetBuilds() *E2BTemplateBuild  {
-  return s.Builds
 }
 
 func (s *E2BTemplate) GetCpuCount() *int32  {
@@ -110,7 +112,11 @@ func (s *E2BTemplate) GetPublic() *bool  {
   return s.Public
 }
 
-func (s *E2BTemplate) GetSpawnCount() *string  {
+func (s *E2BTemplate) GetResourceGroupID() *string  {
+  return s.ResourceGroupID
+}
+
+func (s *E2BTemplate) GetSpawnCount() *int32  {
   return s.SpawnCount
 }
 
@@ -120,6 +126,14 @@ func (s *E2BTemplate) GetStatusReason() *string  {
 
 func (s *E2BTemplate) GetTags() []*E2BTemplateTag  {
   return s.Tags
+}
+
+func (s *E2BTemplate) GetTeamID() *string  {
+  return s.TeamID
+}
+
+func (s *E2BTemplate) GetTeamName() *string  {
+  return s.TeamName
 }
 
 func (s *E2BTemplate) GetTemplateID() *string  {
@@ -141,11 +155,6 @@ func (s *E2BTemplate) SetAliases(v []*string) *E2BTemplate {
 
 func (s *E2BTemplate) SetBuildStatus(v string) *E2BTemplate {
   s.BuildStatus = &v
-  return s
-}
-
-func (s *E2BTemplate) SetBuilds(v *E2BTemplateBuild) *E2BTemplate {
-  s.Builds = v
   return s
 }
 
@@ -184,7 +193,12 @@ func (s *E2BTemplate) SetPublic(v bool) *E2BTemplate {
   return s
 }
 
-func (s *E2BTemplate) SetSpawnCount(v string) *E2BTemplate {
+func (s *E2BTemplate) SetResourceGroupID(v string) *E2BTemplate {
+  s.ResourceGroupID = &v
+  return s
+}
+
+func (s *E2BTemplate) SetSpawnCount(v int32) *E2BTemplate {
   s.SpawnCount = &v
   return s
 }
@@ -196,6 +210,16 @@ func (s *E2BTemplate) SetStatusReason(v string) *E2BTemplate {
 
 func (s *E2BTemplate) SetTags(v []*E2BTemplateTag) *E2BTemplate {
   s.Tags = v
+  return s
+}
+
+func (s *E2BTemplate) SetTeamID(v string) *E2BTemplate {
+  s.TeamID = &v
+  return s
+}
+
+func (s *E2BTemplate) SetTeamName(v string) *E2BTemplate {
+  s.TeamName = &v
   return s
 }
 
@@ -215,11 +239,6 @@ func (s *E2BTemplate) SetUserID(v string) *E2BTemplate {
 }
 
 func (s *E2BTemplate) Validate() error {
-  if s.Builds != nil {
-    if err := s.Builds.Validate(); err != nil {
-      return err
-    }
-  }
   if s.LogConfiguration != nil {
     if err := s.LogConfiguration.Validate(); err != nil {
       return err

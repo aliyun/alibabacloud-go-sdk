@@ -11,6 +11,8 @@ type iListQuotaResponseBody interface {
 	GoString() string
 	SetCode(v string) *ListQuotaResponseBody
 	GetCode() *string
+	SetMaxResults(v int32) *ListQuotaResponseBody
+	GetMaxResults() *int32
 	SetMessage(v string) *ListQuotaResponseBody
 	GetMessage() *string
 	SetNextToken(v string) *ListQuotaResponseBody
@@ -22,11 +24,12 @@ type iListQuotaResponseBody interface {
 }
 
 type ListQuotaResponseBody struct {
-	Code      *string  `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string  `json:"message,omitempty" xml:"message,omitempty"`
-	NextToken *string  `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Quotas    []*Quota `json:"quotas,omitempty" xml:"quotas,omitempty" type:"Repeated"`
-	RequestId *string  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Code       *string  `json:"code,omitempty" xml:"code,omitempty"`
+	MaxResults *int32   `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	Message    *string  `json:"message,omitempty" xml:"message,omitempty"`
+	NextToken  *string  `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Quotas     []*Quota `json:"quotas,omitempty" xml:"quotas,omitempty" type:"Repeated"`
+	RequestId  *string  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListQuotaResponseBody) String() string {
@@ -39,6 +42,10 @@ func (s ListQuotaResponseBody) GoString() string {
 
 func (s *ListQuotaResponseBody) GetCode() *string {
 	return s.Code
+}
+
+func (s *ListQuotaResponseBody) GetMaxResults() *int32 {
+	return s.MaxResults
 }
 
 func (s *ListQuotaResponseBody) GetMessage() *string {
@@ -59,6 +66,11 @@ func (s *ListQuotaResponseBody) GetRequestId() *string {
 
 func (s *ListQuotaResponseBody) SetCode(v string) *ListQuotaResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *ListQuotaResponseBody) SetMaxResults(v int32) *ListQuotaResponseBody {
+	s.MaxResults = &v
 	return s
 }
 

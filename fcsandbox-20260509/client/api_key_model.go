@@ -23,6 +23,14 @@ type iApiKey interface {
 	GetExpireTime() *string
 	SetLastUsedTime(v string) *ApiKey
 	GetLastUsedTime() *string
+	SetResourceGroupID(v string) *ApiKey
+	GetResourceGroupID() *string
+	SetStatus(v string) *ApiKey
+	GetStatus() *string
+	SetTeamID(v string) *ApiKey
+	GetTeamID() *string
+	SetTeamName(v string) *ApiKey
+	GetTeamName() *string
 	SetUserID(v string) *ApiKey
 	GetUserID() *string
 	SetUsername(v string) *ApiKey
@@ -30,15 +38,19 @@ type iApiKey interface {
 }
 
 type ApiKey struct {
-	ApiKeyID     *string `json:"apiKeyID,omitempty" xml:"apiKeyID,omitempty"`
-	ApiKeyMask   *string `json:"apiKeyMask,omitempty" xml:"apiKeyMask,omitempty"`
-	ApiKeyName   *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
-	ApiKeyValue  *string `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
-	CreatedTime  *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	ExpireTime   *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	LastUsedTime *string `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
-	UserID       *string `json:"userID,omitempty" xml:"userID,omitempty"`
-	Username     *string `json:"username,omitempty" xml:"username,omitempty"`
+	ApiKeyID        *string `json:"apiKeyID,omitempty" xml:"apiKeyID,omitempty"`
+	ApiKeyMask      *string `json:"apiKeyMask,omitempty" xml:"apiKeyMask,omitempty"`
+	ApiKeyName      *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	ApiKeyValue     *string `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
+	CreatedTime     *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	ExpireTime      *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	LastUsedTime    *string `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
+	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
+	TeamID          *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	TeamName        *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+	UserID          *string `json:"userID,omitempty" xml:"userID,omitempty"`
+	Username        *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ApiKey) String() string {
@@ -75,6 +87,22 @@ func (s *ApiKey) GetExpireTime() *string {
 
 func (s *ApiKey) GetLastUsedTime() *string {
 	return s.LastUsedTime
+}
+
+func (s *ApiKey) GetResourceGroupID() *string {
+	return s.ResourceGroupID
+}
+
+func (s *ApiKey) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ApiKey) GetTeamID() *string {
+	return s.TeamID
+}
+
+func (s *ApiKey) GetTeamName() *string {
+	return s.TeamName
 }
 
 func (s *ApiKey) GetUserID() *string {
@@ -117,6 +145,26 @@ func (s *ApiKey) SetExpireTime(v string) *ApiKey {
 
 func (s *ApiKey) SetLastUsedTime(v string) *ApiKey {
 	s.LastUsedTime = &v
+	return s
+}
+
+func (s *ApiKey) SetResourceGroupID(v string) *ApiKey {
+	s.ResourceGroupID = &v
+	return s
+}
+
+func (s *ApiKey) SetStatus(v string) *ApiKey {
+	s.Status = &v
+	return s
+}
+
+func (s *ApiKey) SetTeamID(v string) *ApiKey {
+	s.TeamID = &v
+	return s
+}
+
+func (s *ApiKey) SetTeamName(v string) *ApiKey {
+	s.TeamName = &v
 	return s
 }
 

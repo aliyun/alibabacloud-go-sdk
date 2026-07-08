@@ -9,6 +9,8 @@ type iE2BSandbox interface {
   dara.Model
   String() string
   GoString() string
+  SetAccessEndpoint(v string) *E2BSandbox
+  GetAccessEndpoint() *string 
   SetAlias(v string) *E2BSandbox
   GetAlias() *string 
   SetAllowInternetAccess(v bool) *E2BSandbox
@@ -41,21 +43,30 @@ type iE2BSandbox interface {
   GetMetadata() map[string]*string 
   SetNetwork(v *E2BNetwork) *E2BSandbox
   GetNetwork() *E2BNetwork 
+  SetResourceGroupID(v string) *E2BSandbox
+  GetResourceGroupID() *string 
   SetSandboxID(v string) *E2BSandbox
   GetSandboxID() *string 
   SetStartedAt(v string) *E2BSandbox
   GetStartedAt() *string 
   SetState(v string) *E2BSandbox
   GetState() *string 
-  SetTemplateId(v string) *E2BSandbox
-  GetTemplateId() *string 
+  SetTeamID(v string) *E2BSandbox
+  GetTeamID() *string 
+  SetTeamName(v string) *E2BSandbox
+  GetTeamName() *string 
+  SetTemplateID(v string) *E2BSandbox
+  GetTemplateID() *string 
   SetTemplateName(v string) *E2BSandbox
   GetTemplateName() *string 
+  SetUserID(v string) *E2BSandbox
+  GetUserID() *string 
   SetVolumeMounts(v []*E2BVolumeMount) *E2BSandbox
   GetVolumeMounts() []*E2BVolumeMount 
 }
 
 type E2BSandbox struct {
+  AccessEndpoint *string `json:"accessEndpoint,omitempty" xml:"accessEndpoint,omitempty"`
   Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
   AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
   ClientID *string `json:"clientID,omitempty" xml:"clientID,omitempty"`
@@ -72,11 +83,15 @@ type E2BSandbox struct {
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
   Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
   Network *E2BNetwork `json:"network,omitempty" xml:"network,omitempty"`
+  ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
   SandboxID *string `json:"sandboxID,omitempty" xml:"sandboxID,omitempty"`
   StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
   State *string `json:"state,omitempty" xml:"state,omitempty"`
-  TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+  TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+  TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
   TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+  UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
   VolumeMounts []*E2BVolumeMount `json:"volumeMounts,omitempty" xml:"volumeMounts,omitempty" type:"Repeated"`
 }
 
@@ -86,6 +101,10 @@ func (s E2BSandbox) String() string {
 
 func (s E2BSandbox) GoString() string {
   return s.String()
+}
+
+func (s *E2BSandbox) GetAccessEndpoint() *string  {
+  return s.AccessEndpoint
 }
 
 func (s *E2BSandbox) GetAlias() *string  {
@@ -152,6 +171,10 @@ func (s *E2BSandbox) GetNetwork() *E2BNetwork  {
   return s.Network
 }
 
+func (s *E2BSandbox) GetResourceGroupID() *string  {
+  return s.ResourceGroupID
+}
+
 func (s *E2BSandbox) GetSandboxID() *string  {
   return s.SandboxID
 }
@@ -164,16 +187,33 @@ func (s *E2BSandbox) GetState() *string  {
   return s.State
 }
 
-func (s *E2BSandbox) GetTemplateId() *string  {
-  return s.TemplateId
+func (s *E2BSandbox) GetTeamID() *string  {
+  return s.TeamID
+}
+
+func (s *E2BSandbox) GetTeamName() *string  {
+  return s.TeamName
+}
+
+func (s *E2BSandbox) GetTemplateID() *string  {
+  return s.TemplateID
 }
 
 func (s *E2BSandbox) GetTemplateName() *string  {
   return s.TemplateName
 }
 
+func (s *E2BSandbox) GetUserID() *string  {
+  return s.UserID
+}
+
 func (s *E2BSandbox) GetVolumeMounts() []*E2BVolumeMount  {
   return s.VolumeMounts
+}
+
+func (s *E2BSandbox) SetAccessEndpoint(v string) *E2BSandbox {
+  s.AccessEndpoint = &v
+  return s
 }
 
 func (s *E2BSandbox) SetAlias(v string) *E2BSandbox {
@@ -256,6 +296,11 @@ func (s *E2BSandbox) SetNetwork(v *E2BNetwork) *E2BSandbox {
   return s
 }
 
+func (s *E2BSandbox) SetResourceGroupID(v string) *E2BSandbox {
+  s.ResourceGroupID = &v
+  return s
+}
+
 func (s *E2BSandbox) SetSandboxID(v string) *E2BSandbox {
   s.SandboxID = &v
   return s
@@ -271,13 +316,28 @@ func (s *E2BSandbox) SetState(v string) *E2BSandbox {
   return s
 }
 
-func (s *E2BSandbox) SetTemplateId(v string) *E2BSandbox {
-  s.TemplateId = &v
+func (s *E2BSandbox) SetTeamID(v string) *E2BSandbox {
+  s.TeamID = &v
+  return s
+}
+
+func (s *E2BSandbox) SetTeamName(v string) *E2BSandbox {
+  s.TeamName = &v
+  return s
+}
+
+func (s *E2BSandbox) SetTemplateID(v string) *E2BSandbox {
+  s.TemplateID = &v
   return s
 }
 
 func (s *E2BSandbox) SetTemplateName(v string) *E2BSandbox {
   s.TemplateName = &v
+  return s
+}
+
+func (s *E2BSandbox) SetUserID(v string) *E2BSandbox {
+  s.UserID = &v
   return s
 }
 

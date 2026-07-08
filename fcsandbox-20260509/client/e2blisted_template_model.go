@@ -13,10 +13,14 @@ type iE2BListedTemplate interface {
   GetAliases() []*string 
   SetBuildStatus(v string) *E2BListedTemplate
   GetBuildStatus() *string 
+  SetCategory(v string) *E2BListedTemplate
+  GetCategory() *string 
   SetCpuCount(v int32) *E2BListedTemplate
   GetCpuCount() *int32 
   SetCreatedAt(v string) *E2BListedTemplate
   GetCreatedAt() *string 
+  SetFunctionName(v string) *E2BListedTemplate
+  GetFunctionName() *string 
   SetLastSpawnedAt(v string) *E2BListedTemplate
   GetLastSpawnedAt() *string 
   SetLogConfiguration(v *LogConfiguration) *E2BListedTemplate
@@ -27,33 +31,47 @@ type iE2BListedTemplate interface {
   GetNames() []*string 
   SetPublic(v bool) *E2BListedTemplate
   GetPublic() *bool 
-  SetSpawnCount(v string) *E2BListedTemplate
-  GetSpawnCount() *string 
+  SetResourceGroupID(v string) *E2BListedTemplate
+  GetResourceGroupID() *string 
+  SetSpawnCount(v int32) *E2BListedTemplate
+  GetSpawnCount() *int32 
   SetStatusReason(v string) *E2BListedTemplate
   GetStatusReason() *string 
   SetTags(v []*E2BTemplateTag) *E2BListedTemplate
   GetTags() []*E2BTemplateTag 
+  SetTeamID(v string) *E2BListedTemplate
+  GetTeamID() *string 
+  SetTeamName(v string) *E2BListedTemplate
+  GetTeamName() *string 
   SetTemplateID(v string) *E2BListedTemplate
   GetTemplateID() *string 
   SetUpdatedAt(v string) *E2BListedTemplate
   GetUpdatedAt() *string 
+  SetUserID(v string) *E2BListedTemplate
+  GetUserID() *string 
 }
 
 type E2BListedTemplate struct {
   Aliases []*string `json:"aliases,omitempty" xml:"aliases,omitempty" type:"Repeated"`
   BuildStatus *string `json:"buildStatus,omitempty" xml:"buildStatus,omitempty"`
+  Category *string `json:"category,omitempty" xml:"category,omitempty"`
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+  FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
   LastSpawnedAt *string `json:"lastSpawnedAt,omitempty" xml:"lastSpawnedAt,omitempty"`
   LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
   Names []*string `json:"names,omitempty" xml:"names,omitempty" type:"Repeated"`
   Public *bool `json:"public,omitempty" xml:"public,omitempty"`
-  SpawnCount *string `json:"spawnCount,omitempty" xml:"spawnCount,omitempty"`
+  ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  SpawnCount *int32 `json:"spawnCount,omitempty" xml:"spawnCount,omitempty"`
   StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
   Tags []*E2BTemplateTag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+  TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+  TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
   UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+  UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
 }
 
 func (s E2BListedTemplate) String() string {
@@ -72,12 +90,20 @@ func (s *E2BListedTemplate) GetBuildStatus() *string  {
   return s.BuildStatus
 }
 
+func (s *E2BListedTemplate) GetCategory() *string  {
+  return s.Category
+}
+
 func (s *E2BListedTemplate) GetCpuCount() *int32  {
   return s.CpuCount
 }
 
 func (s *E2BListedTemplate) GetCreatedAt() *string  {
   return s.CreatedAt
+}
+
+func (s *E2BListedTemplate) GetFunctionName() *string  {
+  return s.FunctionName
 }
 
 func (s *E2BListedTemplate) GetLastSpawnedAt() *string  {
@@ -100,7 +126,11 @@ func (s *E2BListedTemplate) GetPublic() *bool  {
   return s.Public
 }
 
-func (s *E2BListedTemplate) GetSpawnCount() *string  {
+func (s *E2BListedTemplate) GetResourceGroupID() *string  {
+  return s.ResourceGroupID
+}
+
+func (s *E2BListedTemplate) GetSpawnCount() *int32  {
   return s.SpawnCount
 }
 
@@ -112,12 +142,24 @@ func (s *E2BListedTemplate) GetTags() []*E2BTemplateTag  {
   return s.Tags
 }
 
+func (s *E2BListedTemplate) GetTeamID() *string  {
+  return s.TeamID
+}
+
+func (s *E2BListedTemplate) GetTeamName() *string  {
+  return s.TeamName
+}
+
 func (s *E2BListedTemplate) GetTemplateID() *string  {
   return s.TemplateID
 }
 
 func (s *E2BListedTemplate) GetUpdatedAt() *string  {
   return s.UpdatedAt
+}
+
+func (s *E2BListedTemplate) GetUserID() *string  {
+  return s.UserID
 }
 
 func (s *E2BListedTemplate) SetAliases(v []*string) *E2BListedTemplate {
@@ -130,6 +172,11 @@ func (s *E2BListedTemplate) SetBuildStatus(v string) *E2BListedTemplate {
   return s
 }
 
+func (s *E2BListedTemplate) SetCategory(v string) *E2BListedTemplate {
+  s.Category = &v
+  return s
+}
+
 func (s *E2BListedTemplate) SetCpuCount(v int32) *E2BListedTemplate {
   s.CpuCount = &v
   return s
@@ -137,6 +184,11 @@ func (s *E2BListedTemplate) SetCpuCount(v int32) *E2BListedTemplate {
 
 func (s *E2BListedTemplate) SetCreatedAt(v string) *E2BListedTemplate {
   s.CreatedAt = &v
+  return s
+}
+
+func (s *E2BListedTemplate) SetFunctionName(v string) *E2BListedTemplate {
+  s.FunctionName = &v
   return s
 }
 
@@ -165,7 +217,12 @@ func (s *E2BListedTemplate) SetPublic(v bool) *E2BListedTemplate {
   return s
 }
 
-func (s *E2BListedTemplate) SetSpawnCount(v string) *E2BListedTemplate {
+func (s *E2BListedTemplate) SetResourceGroupID(v string) *E2BListedTemplate {
+  s.ResourceGroupID = &v
+  return s
+}
+
+func (s *E2BListedTemplate) SetSpawnCount(v int32) *E2BListedTemplate {
   s.SpawnCount = &v
   return s
 }
@@ -180,6 +237,16 @@ func (s *E2BListedTemplate) SetTags(v []*E2BTemplateTag) *E2BListedTemplate {
   return s
 }
 
+func (s *E2BListedTemplate) SetTeamID(v string) *E2BListedTemplate {
+  s.TeamID = &v
+  return s
+}
+
+func (s *E2BListedTemplate) SetTeamName(v string) *E2BListedTemplate {
+  s.TeamName = &v
+  return s
+}
+
 func (s *E2BListedTemplate) SetTemplateID(v string) *E2BListedTemplate {
   s.TemplateID = &v
   return s
@@ -187,6 +254,11 @@ func (s *E2BListedTemplate) SetTemplateID(v string) *E2BListedTemplate {
 
 func (s *E2BListedTemplate) SetUpdatedAt(v string) *E2BListedTemplate {
   s.UpdatedAt = &v
+  return s
+}
+
+func (s *E2BListedTemplate) SetUserID(v string) *E2BListedTemplate {
+  s.UserID = &v
   return s
 }
 
