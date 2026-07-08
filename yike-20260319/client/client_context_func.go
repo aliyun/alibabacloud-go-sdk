@@ -445,13 +445,13 @@ func (client *Client) DeleteYikeAssetMediaInfosWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询图片生成任务
+// Queries an image generation task.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 该API用于根据提供的文本内容及其它参数（如数字人信息、应用场景类型等）生成一段由虚拟人物口播的视频。用户需指定文本类型（原始稿或口播稿）、成片尺寸与清晰度等关键配置项，并可选择是否添加字幕或指定输出语言种类。此外，支持通过`UserData`字段传递自定义参数，在回调时原样返回。
+// This API generates a video narrated by a virtual human based on the provided text content and other parameters such as digital human information and common scenario type. You must specify key configuration items including the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. Additionally, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - GetImageGenerationJobRequest
 //
@@ -495,7 +495,7 @@ func (client *Client) GetImageGenerationJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询视频生成任务
+// Queries an AI video generation task.
 //
 // @param request - GetVideoGenerationJobRequest
 //
@@ -1391,13 +1391,13 @@ func (client *Client) SubYikeUserCreditWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 提交图像生成接口
+// Submits an image generation task.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该API用于根据提供的文本内容及其它参数（如数字人信息、应用场景类型等）生成一段由虚拟人物口播的视频。用户需指定文本类型（原始稿或口播稿）、成片尺寸与清晰度等关键配置项，并可选择是否添加字幕或指定输出语言种类。此外，支持通过`UserData`字段传递自定义参数，在回调时原样返回。
+// This API operation generates a video in which a virtual human delivers a spoken narration based on the provided text content and other parameters such as digital human information and common scenarios type. You must specify key configuration items including the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the UserData field, which are returned as-is in the callback.
 //
 // @param request - SubmitImageGenerationJobRequest
 //
@@ -1477,13 +1477,13 @@ func (client *Client) SubmitImageGenerationJobWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 提交视频生成接口
+// Submits a video generation task.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 该API用于根据提供的文本内容及其它参数（如数字人信息、应用场景类型等）生成一段由虚拟人物口播的视频。用户需指定文本类型（原始稿或口播稿）、成片尺寸与清晰度等关键配置项，并可选择是否添加字幕或指定输出语言种类。此外，支持通过`UserData`字段传递自定义参数，在回调时原样返回。
+// This API operation generates a video featuring a virtual human narration based on the provided text content and other parameters such as digital human information and common scenarios type. You must specify key configuration items including the text type (original script or narration script), output dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - SubmitVideoGenerationJobRequest
 //
@@ -1623,13 +1623,15 @@ func (client *Client) SubmitYikeAIAppJobWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates an intelligent video production task for a digital human oral broadcasting scenario. This task is applicable to video scenarios such as influencer product promotion and knowledge sharing.
+// Creates an intelligent video production task for a digital human oral broadcasting scenario. This operation is applicable to video scenarios such as influencer product promotion and knowledge explanation.
 //
 // Description:
 //
-// ## Operation description
+// ## Description
 //
-// This API operation generates a video featuring a virtual human delivering an oral broadcast based on the provided text content and other parameters such as digital human information and common scenario type. You must specify key configuration items including the text type (raw script or oral broadcast script), video dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
+// This operation generates a video in which a virtual human delivers an oral broadcast based on the provided text content and other parameters such as digital human information and application scenario type. You must specify key configuration items including the text type (raw script or oral broadcast script), video dimensions, and resolution. You can also choose whether to add subtitles or specify the output language. In addition, you can use the `UserData` field to pass custom parameters, which are returned as-is in the callback.
+//
+// Common scenarios: influencer product promotion, knowledge explanation, and similar video scenarios.
 //
 // @param request - SubmitYikeAvatarNarratorJobRequest
 //
@@ -1816,8 +1818,16 @@ func (client *Client) SubmitYikeStoryboardJobWithContext(ctx context.Context, re
 		query["NarrationVoiceId"] = request.NarrationVoiceId
 	}
 
+	if !dara.IsNil(request.NeedCaption) {
+		query["NeedCaption"] = request.NeedCaption
+	}
+
 	if !dara.IsNil(request.Resolution) {
 		query["Resolution"] = request.Resolution
+	}
+
+	if !dara.IsNil(request.ShotPromptLang) {
+		query["ShotPromptLang"] = request.ShotPromptLang
 	}
 
 	if !dara.IsNil(request.ShotPromptMode) {
@@ -1931,7 +1941,7 @@ func (client *Client) SubmitYikeVideoCloneJobWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates an intelligent video generation task for a voiceover-only scenario (without a digital human). This task is applicable to video scenarios such as product showcases and news broadcasts.
+// Creates an intelligent video generation task for a voice-over-only scenario (without a digital human). This task is applicable to video scenarios such as product showcasing and news broadcasting.
 //
 // @param request - SubmitYikeVoiceNarratorJobRequest
 //

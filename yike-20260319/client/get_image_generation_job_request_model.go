@@ -14,6 +14,8 @@ type iGetImageGenerationJobRequest interface {
 }
 
 type GetImageGenerationJobRequest struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// 68ca759e798b40b4903b255*******

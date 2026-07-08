@@ -21,8 +21,12 @@ type iSubmitYikeStoryboardJobRequest interface {
 	GetModelParams() *string
 	SetNarrationVoiceId(v string) *SubmitYikeStoryboardJobRequest
 	GetNarrationVoiceId() *string
+	SetNeedCaption(v bool) *SubmitYikeStoryboardJobRequest
+	GetNeedCaption() *bool
 	SetResolution(v string) *SubmitYikeStoryboardJobRequest
 	GetResolution() *string
+	SetShotPromptLang(v string) *SubmitYikeStoryboardJobRequest
+	GetShotPromptLang() *string
 	SetShotPromptMode(v string) *SubmitYikeStoryboardJobRequest
 	GetShotPromptMode() *string
 	SetShotSplitMode(v string) *SubmitYikeStoryboardJobRequest
@@ -50,7 +54,7 @@ type SubmitYikeStoryboardJobRequest struct {
 	//
 	// - 4:3
 	//
-	// - 3:4.
+	// - 3:4
 	//
 	// example:
 	//
@@ -58,15 +62,15 @@ type SubmitYikeStoryboardJobRequest struct {
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
 	// The execution mode for storyboard generation. Valid values:
 	//
-	// - FullPipeline: Full pipeline generation, which includes both storyboard generation and shot video generation.
+	// - FullPipeline: full pipeline generation, which includes storyboard generation and shot video generation.
 	//
-	// - StoryboardOnly: Generates only the storyboard.
+	// - StoryboardOnly: generates only the storyboard.
 	//
 	// example:
 	//
 	// FullPipeline
 	ExecMode *string `json:"ExecMode,omitempty" xml:"ExecMode,omitempty"`
-	// The OSS URL of the file. Only URLs with the .txt or .doc file name extension are supported.
+	// The OSS URL of the file. The URL must point to a file with a .txt or .doc extension.
 	//
 	// example:
 	//
@@ -92,46 +96,47 @@ type SubmitYikeStoryboardJobRequest struct {
 	ModelParams *string `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
 	// The narration voice ID. Valid values:
 	//
-	// - sys_GracefulPoisedWoman: Graceful Poised Woman
+	// - sys_GracefulPoisedWoman: mature graceful female
 	//
-	// - sys_ElderlyWistfulWoman: Elderly Wistful Woman
+	// - sys_ElderlyWistfulWoman: wistful elderly female
 	//
-	// - sys_SweetBrightGirl: Sweet Bright Girl
+	// - sys_SweetBrightGirl: sweet bright girl
 	//
-	// - sys_YoungGracefulWoman: Young Graceful Woman
+	// - sys_YoungGracefulWoman: gentle graceful female
 	//
-	// - sys_MaturePoisedWoman: Mature Poised Woman
+	// - sys_MaturePoisedWoman: poised mature female
 	//
-	// - sys_MatureWiseWoman: Mature Wise Woman
+	// - sys_MatureWiseWoman: elegant wise female
 	//
-	// - sys_CalmDeepMale: Calm Deep Male
+	// - sys_CalmDeepMale: calm deep male
 	//
-	// - sys_SereneIntellect: Serene Intellect
+	// - sys_SereneIntellect: serene intellectual male
 	//
-	// - sys_MajesticBaritone: Majestic Baritone
+	// - sys_MajesticBaritone: majestic baritone male
 	//
-	// - sys_GravellySoulful: Gravelly Soulful
+	// - sys_GravellySoulful: gravelly soulful male
 	//
-	// - sys_ClassicYoungMan: Classic Young Man Narrator
+	// - sys_ClassicYoungMan: classic narrator male
 	//
-	// - sys_WiseYoungMan: Wise Young Man Narrator
+	// - sys_WiseYoungMan: wise narrator male
 	//
-	// - sys_ClassicYoungWoman: Classic Young Woman Narrator
+	// - sys_ClassicYoungWoman: classic narrator female
 	//
-	// - sys_IntellectualYoungWoman: Intellectual Young Woman Narrator
+	// - sys_IntellectualYoungWoman: intellectual narrator female
 	//
-	// - sys_GentleYoungMan: Gentle Young Man Narrator
+	// - sys_GentleYoungMan: gentle narrator male
 	//
-	// - sys_thoughtfulBoy: Thoughtful Boy
+	// - sys_thoughtfulBoy: thoughtful boy
 	//
-	// - sys_RichBassMale: Rich Bass Male
+	// - sys_RichBassMale: rich bass male
 	//
-	// - sys_ClassicMiddleAgedWoman: Classic Middle-Aged Woman Narrator.
+	// - sys_ClassicMiddleAgedWoman: classic middle-aged narrator female
 	//
 	// example:
 	//
 	// sys_YoungGracefulWoman
 	NarrationVoiceId *string `json:"NarrationVoiceId,omitempty" xml:"NarrationVoiceId,omitempty"`
+	NeedCaption      *bool   `json:"NeedCaption,omitempty" xml:"NeedCaption,omitempty"`
 	// The resolution of the output video. Valid values:
 	//
 	// - 720P
@@ -140,17 +145,18 @@ type SubmitYikeStoryboardJobRequest struct {
 	//
 	// - 2K
 	//
-	// - 4K.
+	// - 4K
 	//
 	// example:
 	//
 	// 720P
-	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	Resolution     *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	ShotPromptLang *string `json:"ShotPromptLang,omitempty" xml:"ShotPromptLang,omitempty"`
 	// The storyboard shot generation mode. Valid values:
 	//
 	// - multi: multi-reference video generation
 	//
-	// - default: image-to-video generation.
+	// - default: image-to-video generation
 	//
 	// example:
 	//
@@ -158,7 +164,7 @@ type SubmitYikeStoryboardJobRequest struct {
 	ShotPromptMode *string `json:"ShotPromptMode,omitempty" xml:"ShotPromptMode,omitempty"`
 	// The shot split mode. Valid values:
 	//
-	// - firstPersonNarration: narration mode.
+	// - firstPersonNarration: narration commentary mode
 	//
 	// example:
 	//
@@ -172,7 +178,7 @@ type SubmitYikeStoryboardJobRequest struct {
 	SkipFailureShot *bool `json:"SkipFailureShot,omitempty" xml:"SkipFailureShot,omitempty"`
 	// The type of the material source. Valid values:
 	//
-	// - Novel: novel.
+	// - Novel: novel
 	//
 	// example:
 	//
@@ -180,59 +186,59 @@ type SubmitYikeStoryboardJobRequest struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The storyboard style ID. Valid values:
 	//
-	// - RealisticPhotographyPro: Realistic Photography Pro
+	// - RealisticPhotographyPro: realistic photography Pro
 	//
-	// - RealisticGuzhuangPro: Realistic Ancient Costume Pro
+	// - RealisticGuzhuangPro: realistic ancient costume Pro
 	//
-	// - RealisticXianxiaPro: Realistic Xianxia Pro
+	// - RealisticXianxiaPro: realistic Xianxia Pro
 	//
-	// - RealisticWesternPro: Western Realism Pro
+	// - RealisticWesternPro: Western realistic Pro
 	//
-	// - RealisticPhotography: Realistic Photography
+	// - RealisticPhotography: realistic photography
 	//
-	// - RealisticGuzhuang: Realistic Ancient Costume
+	// - RealisticGuzhuang: realistic ancient costume
 	//
-	// - RealisticXianxia: Realistic Xianxia
+	// - RealisticXianxia: realistic Xianxia
 	//
-	// - RealisticWasteland: Realistic Wasteland
+	// - RealisticWasteland: realistic wasteland
 	//
-	// - RealisticEra: Realistic Vintage
+	// - RealisticEra: realistic vintage
 	//
-	// - GuofengAnime: 2D Chinese-style Anime
+	// - GuofengAnime: 2D Chinese-style anime
 	//
-	// - GuofengAnime3D: 3D Chinese-style Anime
+	// - GuofengAnime3D: 3D Chinese-style anime
 	//
-	// - AncientRomanceAnime: Anime Ancient Romance
+	// - AncientRomanceAnime: anime ancient romance
 	//
-	// - PostApocalypticAnime: Anime Post-Apocalyptic
+	// - PostApocalypticAnime: anime post-apocalyptic
 	//
-	// - Cartoon3D: 3D Cartoon
+	// - Cartoon3D: 3D cartoon
 	//
-	// - Photorealistic3D: Photorealistic 3D Rendering
+	// - Photorealistic3D: photorealistic 3D rendering
 	//
-	// - SciFiRealism: Sci-Fi Realism
+	// - SciFiRealism: sci-fi realism
 	//
-	// - Chibi3D: 3D Chibi
+	// - Chibi3D: 3D chibi
 	//
-	// - ShojoManga: Japanese Manga
+	// - ShojoManga: Japanese manga
 	//
-	// - NewPeriodAnime: New Era Japanese Anime
+	// - NewPeriodAnime: new era Japanese anime
 	//
-	// - FairyTale2D: 2D Fairy Tale
+	// - FairyTale2D: 2D fairy tale
 	//
-	// - Wasteland2D: 2D Wasteland
+	// - Wasteland2D: 2D wasteland
 	//
-	// - InkWuxia: Ink Wash Wuxia
+	// - InkWuxia: ink wash Wuxia
 	//
-	// - ShadiaoMeme: Panda Head Meme
+	// - ShadiaoMeme: panda head meme style
 	//
-	// - Chibi2D: 2D Chibi
+	// - Chibi2D: 2D chibi
 	//
 	// - Ghibli: Ghibli
 	//
-	// - SciFiComic: Cyberpunk
+	// - SciFiComic: cyberpunk
 	//
-	// - AmericanSuperhero: American Superhero.
+	// - AmericanSuperhero: American superhero
 	//
 	// example:
 	//
@@ -244,9 +250,9 @@ type SubmitYikeStoryboardJobRequest struct {
 	//
 	// test-title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The custom settings in JSON format.
+	// The custom settings in JSON format. Fields include:
 	//
-	// - NotifyAddress specifies the callback for task completion. Both MNS callbacks and HTTP callbacks are supported.
+	// - NotifyAddress: the callback URL for task completion. MNS callbacks and HTTP callbacks are supported.
 	//
 	// example:
 	//
@@ -258,7 +264,7 @@ type SubmitYikeStoryboardJobRequest struct {
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The video model. Valid values:
 	//
-	// - wan2.6-r2v-flash.
+	// - wan2.6-r2v-flash
 	//
 	// example:
 	//
@@ -298,8 +304,16 @@ func (s *SubmitYikeStoryboardJobRequest) GetNarrationVoiceId() *string {
 	return s.NarrationVoiceId
 }
 
+func (s *SubmitYikeStoryboardJobRequest) GetNeedCaption() *bool {
+	return s.NeedCaption
+}
+
 func (s *SubmitYikeStoryboardJobRequest) GetResolution() *string {
 	return s.Resolution
+}
+
+func (s *SubmitYikeStoryboardJobRequest) GetShotPromptLang() *string {
+	return s.ShotPromptLang
 }
 
 func (s *SubmitYikeStoryboardJobRequest) GetShotPromptMode() *string {
@@ -364,8 +378,18 @@ func (s *SubmitYikeStoryboardJobRequest) SetNarrationVoiceId(v string) *SubmitYi
 	return s
 }
 
+func (s *SubmitYikeStoryboardJobRequest) SetNeedCaption(v bool) *SubmitYikeStoryboardJobRequest {
+	s.NeedCaption = &v
+	return s
+}
+
 func (s *SubmitYikeStoryboardJobRequest) SetResolution(v string) *SubmitYikeStoryboardJobRequest {
 	s.Resolution = &v
+	return s
+}
+
+func (s *SubmitYikeStoryboardJobRequest) SetShotPromptLang(v string) *SubmitYikeStoryboardJobRequest {
+	s.ShotPromptLang = &v
 	return s
 }
 

@@ -16,10 +16,13 @@ type iGetVideoGenerationJobResponseBody interface {
 }
 
 type GetVideoGenerationJobResponseBody struct {
+	// Id of the request
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
-	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The video generation task.
 	VideoGenerationJob *GetVideoGenerationJobResponseBodyVideoGenerationJob `json:"VideoGenerationJob,omitempty" xml:"VideoGenerationJob,omitempty" type:"Struct"`
 }
 
@@ -59,58 +62,102 @@ func (s *GetVideoGenerationJobResponseBody) Validate() error {
 }
 
 type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
+	// The aspect ratio.
+	//
 	// example:
 	//
 	// 16:9
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
+	// The video duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 5
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The error message. This parameter is returned when the task is in the Failed state.
+	//
 	// example:
 	//
 	// Input file not found.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The task input.
+	//
 	// example:
 	//
 	// {"Prompt":"图1在篮球场上，用图2来了个灌篮","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// fdc7f121056249c2b64e04bba27bcc8c
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The task feature configuration. This parameter does not need to be set.
+	//
 	// example:
 	//
 	// {}
 	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// first_last_frame
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// happyhorse-1.1
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The number of generated videos.
+	//
 	// example:
 	//
 	// 1
 	N *int32 `json:"N,omitempty" xml:"N,omitempty"`
+	// The output result in JsonString format. The following fields are included:
+	//
+	// Medias: a list of media information (Media objects). The Media object contains the following fields:
+	//
+	// MediaId: String. The media asset ID.
+	//
+	// OutputUrl: String. The media URL (with the authentication string).
+	//
 	// example:
 	//
 	// {\\"Medias\\":[{\\"MediaId\\":\\"*****470732171f1bfcaf7f6d44*****\\",\\"OutputUrl\\":\\"https://xxxxxxx/.../xxxxx.mp4?Expires=xxxx&OSSAccessKeyId=xxx&Signature=xxxx\\"}]}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The resolution.
+	//
 	// example:
 	//
 	// 720P
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// The scene type. Currently, only general is supported.
+	//
 	// example:
 	//
 	// general
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The task status. Valid values:
+	//
+	// - Created: The task is created.
+	//
+	// - Queuing: The task is queuing.
+	//
+	// - Executing: The task is being executed.
+	//
+	// - Finished: The task is completed.
+	//
+	// - Failed: The task failed.
+	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user business information.
+	//
 	// example:
 	//
 	// {}

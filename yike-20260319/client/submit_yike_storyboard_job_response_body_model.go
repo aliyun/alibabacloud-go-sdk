@@ -16,7 +16,7 @@ type iSubmitYikeStoryboardJobResponseBody interface {
 }
 
 type SubmitYikeStoryboardJobResponseBody struct {
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//

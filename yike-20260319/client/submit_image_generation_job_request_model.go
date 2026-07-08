@@ -32,42 +32,74 @@ type iSubmitImageGenerationJobRequest interface {
 }
 
 type SubmitImageGenerationJobRequest struct {
+	// The aspect ratio. Valid values: 16:9 (default), 9:16, 4:3, 3:4, and 1:1.
+	//
 	// example:
 	//
 	// 4:3
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
+	// The idempotency parameter.
+	//
 	// example:
 	//
 	// ****3e761e9d11edba640c42a1b7****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The task input. This is a JSON string that contains the following fields:
+	//
+	// - Prompt: String. Required. The prompt.
+	//
+	// - Medias: the media list. Required when the task type is `image_to_image`. A maximum of 9 items are supported.
+	//
+	// > The Media struct contains: Type, the media type, String, valid value: image. URL, the media download URL, String.
+	//
+	// >
+	//
 	// example:
 	//
 	// {\\"Bucket\\":\\"dbj-app-prod\\",\\"Location\\":\\"oss-cn-hangzhou\\",\\"Object\\":\\"classpal/1767838045280pzmgnvwe.mp4\\"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The task feature parameters. This is a JSON string. No configuration is required at this time.
+	//
 	// example:
 	//
 	// {}
 	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
+	// The type of the generation task. Valid values:
+	//
+	// - text_to_image: text-to-image.
+	//
+	// - image_to_image: image-to-image.
+	//
 	// example:
 	//
 	// text_to_image
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// wan2.7-image
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The number of images. Valid values: 1 to 4. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	N *string `json:"N,omitempty" xml:"N,omitempty"`
+	// The resolution. Valid values: 1K (default), 2K, and 4K.
+	//
 	// example:
 	//
 	// 720P
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// The scenario. This is an enumeration type. Currently, only `general` is supported.
+	//
 	// example:
 	//
 	// general
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The user business data in JSON format.
+	//
 	// example:
 	//
 	// {"env":"prd"}

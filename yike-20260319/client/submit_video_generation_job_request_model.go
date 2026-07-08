@@ -34,46 +34,94 @@ type iSubmitVideoGenerationJobRequest interface {
 }
 
 type SubmitVideoGenerationJobRequest struct {
+	// The aspect ratio. Valid values: 16:9 (default), 9:16, 4:3, 3:4, and 1:1.
+	//
 	// example:
 	//
 	// 9:16
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
+	// The idempotency token.
+	//
 	// example:
 	//
 	// ****3e761e9d11edba640c42a1b7****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The output duration. Valid values: 4 to 15 seconds. Default value: 5s.
+	//
 	// example:
 	//
 	// 5
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The task input, in JSON string format. The following fields are included:
+	//
+	// - Prompt: String. Required. The prompt.
+	//
+	// - Medias: the media list.
+	//
+	//   - When JobType is set to image_to_video, this field is required. Only 1 Media item is needed.
+	//
+	//   - When JobType is set to first_last_frame, this field is required. Only 2 Media items are needed.
+	//
+	//   - When JobType is set to reference_to_video, this field is required. A maximum of 9 Media items are supported.
+	//
+	// > The Media struct contains: Type, the media type, String, valid values are `image`/`video`/`audio`; URL, the media download URL, String.
+	//
+	// >
+	//
 	// example:
 	//
 	// {"Prompt":"图1在篮球场上，用图2来了个灌篮","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The task feature parameters. No configuration is required at this time.
+	//
 	// example:
 	//
 	// {}
 	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
+	// The task type. Valid values:
+	//
+	// - text_to_video: text-to-video
+	//
+	// - image_to_video: image-to-video
+	//
+	// - first_last_frame: first and last frame to video
+	//
+	// - reference_to_video: reference-to-video
+	//
 	// example:
 	//
 	// text_to_video
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The model name. Valid values:
+	//
+	// - happyhorse-1.1
+	//
+	// - happyhorse-1.0
+	//
 	// example:
 	//
 	// happyhorse-1.1
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The number of outputs. Valid values: 1 to 4. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	N *int32 `json:"N,omitempty" xml:"N,omitempty"`
+	// The resolution. Valid values: 720P (default) and 1080P.
+	//
 	// example:
 	//
 	// 720P
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// The scenario type. Currently only `general` is supported.
+	//
 	// example:
 	//
 	// general
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The user business data in JSON format.
+	//
 	// example:
 	//
 	// {"env":"prd"}

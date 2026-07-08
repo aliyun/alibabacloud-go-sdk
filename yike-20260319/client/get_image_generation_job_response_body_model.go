@@ -16,7 +16,10 @@ type iGetImageGenerationJobResponseBody interface {
 }
 
 type GetImageGenerationJobResponseBody struct {
+	// The image generation task.
 	ImageGenerationJob *GetImageGenerationJobResponseBodyImageGenerationJob `json:"ImageGenerationJob,omitempty" xml:"ImageGenerationJob,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
@@ -59,54 +62,96 @@ func (s *GetImageGenerationJobResponseBody) Validate() error {
 }
 
 type GetImageGenerationJobResponseBodyImageGenerationJob struct {
+	// The video aspect ratio.
+	//
 	// example:
 	//
 	// 16:9
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
+	// The error message. This parameter is of the String type and is returned when the task is in the Failed state.
+	//
 	// example:
 	//
 	// Input file not found.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The task input.
+	//
 	// example:
 	//
 	// {"Prompt":"图1在篮球场上，用图2来了个灌篮"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// fdc7f121056249c2b64e04bba27bcc8c
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The task feature configuration. No configuration is required at this time.
+	//
 	// example:
 	//
 	// {}
 	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// text_to_image
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// wan2.7-image
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The number of generated images.
+	//
 	// example:
 	//
 	// 1
 	N *string `json:"N,omitempty" xml:"N,omitempty"`
+	// The generation result in JSON string format. Fields:
+	//
+	// - Medias: a list of media information (Media objects). Fields of a Media object:
+	//
+	//   - MediaId: String. The media asset ID.
+	//
+	//   - OutputUrl: String. The media URL (with authentication string).
+	//
 	// example:
 	//
 	// {"Medias":[{"MediaId":"***e3700761971f19c32e7e7d5496***","OutputUrl":"https://**bucket**.oss-ap-southeast-1.aliyuncs.com/xxx.prd"}]}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The resolution of the generated video.
+	//
 	// example:
 	//
 	// 1K
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// The scenario type. Currently only `general` is supported.
+	//
 	// example:
 	//
 	// general
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The task status. Valid values:
+	//
+	// - Created: The task is created.
+	//
+	// - Queuing: The task is queuing.
+	//
+	// - Executing: The task is being executed.
+	//
+	// - Finished: The task is completed.
+	//
+	// - Failed: The task failed.
+	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The custom business information.
+	//
 	// example:
 	//
 	// {}
