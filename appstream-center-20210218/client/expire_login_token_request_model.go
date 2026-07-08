@@ -20,22 +20,30 @@ type iExpireLoginTokenRequest interface {
 }
 
 type ExpireLoginTokenRequest struct {
+  // The logon username.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // testuser
   EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+  // The logon token.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // v185fdd7f6d39fa7861981639366085772e150a390a5bb7b43c4e62440d94fc392b945770e1596cebe90085ce0af4d****
   LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+  // The ID of the workspace. This parameter is required if you log on using a workspace ID. You can leave this parameter empty if you log on using an organization ID.
+  // 
   // example:
   // 
   // cn-beijing+dir-172301****
   OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+  // The ID of the logon session.
+  // 
   // This parameter is required.
   // 
   // example:

@@ -9,6 +9,10 @@ type iGetAuthCodeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccountType(v string) *GetAuthCodeRequest
+	GetAccountType() *string
+	SetAdDomain(v string) *GetAuthCodeRequest
+	GetAdDomain() *string
 	SetAutoCreateUser(v bool) *GetAuthCodeRequest
 	GetAutoCreateUser() *bool
 	SetEndUserId(v string) *GetAuthCodeRequest
@@ -22,15 +26,56 @@ type iGetAuthCodeRequest interface {
 }
 
 type GetAuthCodeRequest struct {
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	AdDomain    *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// Specifies whether to synchronously create an EndUserId based on `ExternalUserId`. This parameter takes effect only when `EndUserId` is empty.
+	//
+	// example:
+	//
+	// false
 	AutoCreateUser *bool `json:"AutoCreateUser,omitempty" xml:"AutoCreateUser,omitempty"`
+	// The username of the China Desktop Service (China Desktop Service) convenience account, which is unique within an Alibaba Cloud account. This parameter and `ExternalUserId` cannot both be empty.
+	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The external user ID. This ID is defined by the caller and must be unique within an Alibaba Cloud account. This parameter and `EndUserId` cannot both be empty.
+	//
 	// example:
 	//
 	// alice
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// The access policy that restricts the access permissions of the authorization code. An empty value indicates no restrictions.
+	//
+	// Syntax:
+	//
+	// ```json
+	//
+	// {
+	//
+	//       "Version": "1",
+	//
+	//       "Resource": {
+	//
+	//             "Type": "<Resource type>",
+	//
+	//             "Id": "<Resource ID>"
+	//
+	//       }
+	//
+	// }
+	//
+	// ```
+	//
+	// Valid values of <Resource type>:
+	//
+	// - AppInstanceGroup: delivery group. You can call the ListAppInstanceGroup operation to obtain the ID.
+	//
+	// - AppInstance: application instance (dedicated field).
+	//
+	// - App: application. You can call the ListAppInstanceGroup operation to obtain the ID.
+	//
 	// example:
 	//
 	// {
@@ -58,6 +103,14 @@ func (s GetAuthCodeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetAuthCodeRequest) GetAccountType() *string {
+	return s.AccountType
+}
+
+func (s *GetAuthCodeRequest) GetAdDomain() *string {
+	return s.AdDomain
+}
+
 func (s *GetAuthCodeRequest) GetAutoCreateUser() *bool {
 	return s.AutoCreateUser
 }
@@ -76,6 +129,16 @@ func (s *GetAuthCodeRequest) GetPolicy() *string {
 
 func (s *GetAuthCodeRequest) GetTokenType() *string {
 	return s.TokenType
+}
+
+func (s *GetAuthCodeRequest) SetAccountType(v string) *GetAuthCodeRequest {
+	s.AccountType = &v
+	return s
+}
+
+func (s *GetAuthCodeRequest) SetAdDomain(v string) *GetAuthCodeRequest {
+	s.AdDomain = &v
+	return s
 }
 
 func (s *GetAuthCodeRequest) SetAutoCreateUser(v bool) *GetAuthCodeRequest {

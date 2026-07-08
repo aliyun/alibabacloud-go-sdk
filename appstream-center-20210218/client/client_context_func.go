@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Manually invalidates a logon token.
+// Manually expires a logon token before its automatic expiration.
 //
 // @param request - ExpireLoginTokenRequest
 //
@@ -65,7 +65,7 @@ func (client *Client) ExpireLoginTokenWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Obtains an authorization code that includes the identity and permission information of a user. You can use the code to launch cloud apps in integration scenarios.
+// Obtains an authorization code that contains user identity and permission information. The authorization code can be used to launch a cloud application in integration scenarios.
 //
 // @param request - GetAuthCodeRequest
 //
@@ -85,6 +85,14 @@ func (client *Client) GetAuthCodeWithContext(ctx context.Context, request *GetAu
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountType) {
+		body["AccountType"] = request.AccountType
+	}
+
+	if !dara.IsNil(request.AdDomain) {
+		body["AdDomain"] = request.AdDomain
+	}
+
 	if !dara.IsNil(request.AutoCreateUser) {
 		body["AutoCreateUser"] = request.AutoCreateUser
 	}
@@ -127,7 +135,7 @@ func (client *Client) GetAuthCodeWithContext(ctx context.Context, request *GetAu
 
 // Summary:
 //
-// 获取stsToken
+// Gets a Security Token Service (STS) token.
 //
 // @param request - GetStsTokenRequest
 //

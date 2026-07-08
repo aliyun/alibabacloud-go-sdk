@@ -24,7 +24,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shanghai":    dara.String("appstream-center.cn-shanghai.aliyuncs.com"),
+		"ap-southeast-1": dara.String("appstream-center.ap-southeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +62,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Manually invalidates a logon token.
+// Manually expires a logon token before its automatic expiration.
 //
 // @param request - ExpireLoginTokenRequest
 //
@@ -114,7 +118,7 @@ func (client *Client) ExpireLoginTokenWithOptions(request *ExpireLoginTokenReque
 
 // Summary:
 //
-// Manually invalidates a logon token.
+// Manually expires a logon token before its automatic expiration.
 //
 // @param request - ExpireLoginTokenRequest
 //
@@ -132,7 +136,7 @@ func (client *Client) ExpireLoginToken(request *ExpireLoginTokenRequest) (_resul
 
 // Summary:
 //
-// Obtains an authorization code that includes the identity and permission information of a user. You can use the code to launch cloud apps in integration scenarios.
+// Obtains an authorization code that contains user identity and permission information. The authorization code can be used to launch a cloud application in integration scenarios.
 //
 // @param request - GetAuthCodeRequest
 //
@@ -152,6 +156,14 @@ func (client *Client) GetAuthCodeWithOptions(request *GetAuthCodeRequest, runtim
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountType) {
+		body["AccountType"] = request.AccountType
+	}
+
+	if !dara.IsNil(request.AdDomain) {
+		body["AdDomain"] = request.AdDomain
+	}
+
 	if !dara.IsNil(request.AutoCreateUser) {
 		body["AutoCreateUser"] = request.AutoCreateUser
 	}
@@ -194,7 +206,7 @@ func (client *Client) GetAuthCodeWithOptions(request *GetAuthCodeRequest, runtim
 
 // Summary:
 //
-// Obtains an authorization code that includes the identity and permission information of a user. You can use the code to launch cloud apps in integration scenarios.
+// Obtains an authorization code that contains user identity and permission information. The authorization code can be used to launch a cloud application in integration scenarios.
 //
 // @param request - GetAuthCodeRequest
 //
@@ -212,7 +224,7 @@ func (client *Client) GetAuthCode(request *GetAuthCodeRequest) (_result *GetAuth
 
 // Summary:
 //
-// 获取stsToken
+// Gets a Security Token Service (STS) token.
 //
 // @param request - GetStsTokenRequest
 //
@@ -264,7 +276,7 @@ func (client *Client) GetStsTokenWithOptions(request *GetStsTokenRequest, runtim
 
 // Summary:
 //
-// 获取stsToken
+// Gets a Security Token Service (STS) token.
 //
 // @param request - GetStsTokenRequest
 //
