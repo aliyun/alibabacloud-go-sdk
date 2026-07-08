@@ -26,7 +26,7 @@ type iPhoneNumberStatusForSmsRequest interface {
 type PhoneNumberStatusForSmsRequest struct {
 	// The authorization code.
 	//
-	// >  On the **My Applications*	- page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	// > On the **My Applications*	- page in the [Phone Number Pedia console](https://dytns.console.aliyun.com/analysis/apply), obtain the authorization ID and use it as the value for this parameter.
 	//
 	// This parameter is required.
 	//
@@ -34,15 +34,19 @@ type PhoneNumberStatusForSmsRequest struct {
 	//
 	// zf08***pi6
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	// The phone number to be queried.
+	// The phone number to query.
 	//
-	// 	- If the value of Mask is NORMAL, specify an 11-digit phone number in plaintext.
+	// - If `Mask` is set to `NORMAL`, specify an 11-digit phone number.
 	//
-	// 	- If the value of Mask is MD5, specify a 32-bit string that is encrypted by using MD5.
+	// - If `Mask` is set to `MD5`, specify a 32-character encrypted string.
 	//
-	// 	- If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
+	// - If `Mask` is set to `SHA256`, specify a 64-character encrypted string.
 	//
-	// >  Letters in the encrypted strings are not case-sensitive.
+	// - If `Mask` is set to `SM3`, specify a 64-character encrypted string.
+	//
+	// 	Notice:
+	//
+	// The encrypted string is not case-sensitive.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +54,15 @@ type PhoneNumberStatusForSmsRequest struct {
 	//
 	// 181****1234
 	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
-	// The encryption method of the phone number. Valid values:
+	// The encryption method for the phone number. Valid values:
 	//
-	// 	- **NORMAL**: plaintext
+	// - **NORMAL**: The number is not encrypted.
 	//
-	// 	- **MD5**
+	// - **MD5**
 	//
-	// 	- **SHA256**
+	// - **SHA256**
+	//
+	// - **SM3**
 	//
 	// This parameter is required.
 	//

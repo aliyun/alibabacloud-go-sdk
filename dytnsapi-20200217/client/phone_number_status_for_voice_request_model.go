@@ -26,7 +26,7 @@ type iPhoneNumberStatusForVoiceRequest interface {
 type PhoneNumberStatusForVoiceRequest struct {
 	// The authorization code.
 	//
-	// >  On the **My Applications*	- page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	// > The authorization code is the authorization ID that you can find on the **My Applications*	- page of the [Phone Number Encyclopedia console](https://dytns.console.aliyun.com/analysis/apply).
 	//
 	// This parameter is required.
 	//
@@ -34,15 +34,19 @@ type PhoneNumberStatusForVoiceRequest struct {
 	//
 	// Dd1r***4id
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	// The phone number to be queried.
+	// The phone number to query.
 	//
-	// 	- If the value of Mask is NORMAL, specify an 11-digit phone number in plaintext.
+	// - If you set `Mask` to `NORMAL`, specify an 11-digit mobile number.
 	//
-	// 	- If the value of Mask is MD5, specify a 32-bit string that is encrypted by using MD5.
+	// - If you set `Mask` to `MD5`, specify a 32-bit encrypted string.
 	//
-	// 	- If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
+	// - If you set `Mask` to `SHA256`, specify a 64-bit encrypted string.
 	//
-	// >  Letters in the encrypted strings are not case-sensitive.
+	// - If you set `Mask` to `SM3`, specify a 64-bit encrypted string.
+	//
+	// 	Notice:
+	//
+	// The letters in the encrypted string are not case-sensitive.
 	//
 	// This parameter is required.
 	//
@@ -52,11 +56,13 @@ type PhoneNumberStatusForVoiceRequest struct {
 	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	// The encryption method. Valid values:
 	//
-	// 	- **NORMAL**: plaintext
+	// - **NORMAL**: The number is in plaintext.
 	//
-	// 	- **MD5**
+	// - **MD5**
 	//
-	// 	- **SHA256**
+	// - **SHA256**
+	//
+	// - **SM3**
 	//
 	// This parameter is required.
 	//

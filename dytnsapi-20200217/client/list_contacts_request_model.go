@@ -22,10 +22,14 @@ type iListContactsRequest interface {
 }
 
 type ListContactsRequest struct {
+	// The business type. Set the value to `dytns`.
+	//
 	// example:
 	//
 	// dytns
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The contact ID.
+	//
 	// example:
 	//
 	// 1298647

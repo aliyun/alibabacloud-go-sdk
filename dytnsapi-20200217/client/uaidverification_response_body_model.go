@@ -22,19 +22,30 @@ type iUAIDVerificationResponseBody interface {
 }
 
 type UAIDVerificationResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// -
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code. Valid values:
+	//
+	// - **OK**: The request is successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
 	Data *UAIDVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 68A40250-50CD-034C-B728-0BD******177
@@ -104,6 +115,8 @@ func (s *UAIDVerificationResponseBody) Validate() error {
 }
 
 type UAIDVerificationResponseBodyData struct {
+	// The obtained UAID value.
+	//
 	// example:
 	//
 	// B1E0C1********9F757AF52A035

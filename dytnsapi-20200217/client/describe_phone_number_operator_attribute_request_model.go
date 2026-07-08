@@ -30,7 +30,7 @@ type iDescribePhoneNumberOperatorAttributeRequest interface {
 type DescribePhoneNumberOperatorAttributeRequest struct {
 	// The authorization code.
 	//
-	// >  On the **My Applications*	- page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	// > On the **My Applications*	- page of the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), obtain the authorization ID, which is the authorization code.
 	//
 	// This parameter is required.
 	//
@@ -38,19 +38,23 @@ type DescribePhoneNumberOperatorAttributeRequest struct {
 	//
 	// Dd1r***4id
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
 	// example:
 	//
-	// 示例值
+	// -
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	// The phone number to be queried.
+	// The phone number that you want to query.
 	//
-	// 	- If the value of Mask is NORMAL, specify an 11-digit phone number in plaintext.
+	// - If Mask is set to NORMAL, this field is an 11-digit phone number.
 	//
-	// 	- If the value of Mask is MD5, specify a 32-bit string that is encrypted by using MD5.
+	// - If Mask is set to MD5, this field is a 32-character encrypted string.
 	//
-	// 	- If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
+	// - If Mask is set to SHA256, this field is a 64-character encrypted string.
 	//
-	// >  Letters in the encrypted strings are not case-sensitive.
+	// - If Mask is set to SM3, this field is a 64-character encrypted string.
+	//
+	// 	Notice: The letters in the encrypted string are not case-sensitive.</notice>
 	//
 	// This parameter is required.
 	//
@@ -60,13 +64,15 @@ type DescribePhoneNumberOperatorAttributeRequest struct {
 	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	// The encryption method of the phone number. Valid values:
 	//
-	// 	- **NORMAL**: The phone number is not encrypted.
+	// - **NORMAL**: no encryption
 	//
-	// 	- **MD5**: The phone number is MD5-encrypted.
+	// - **MD5**: MD5 encryption
 	//
-	// 	- **SHA256**: The phone number is SHA256-encrypted.
+	// - **SHA256**: SHA256 encryption
 	//
-	// > Letters in the string must be uppercase.
+	// - **SM3**: SM3 encryption
+	//
+	// 	Notice: All letters in the string must be uppercase.</notice>
 	//
 	// This parameter is required.
 	//
@@ -77,9 +83,11 @@ type DescribePhoneNumberOperatorAttributeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// -
 	ResultCount *string `json:"ResultCount,omitempty" xml:"ResultCount,omitempty"`
 }
 

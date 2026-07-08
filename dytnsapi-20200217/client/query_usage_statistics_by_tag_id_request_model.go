@@ -28,13 +28,13 @@ type iQueryUsageStatisticsByTagIdRequest interface {
 }
 
 type QueryUsageStatisticsByTagIdRequest struct {
-	// The beginning of the time range to query.
+	// The start time of the query.
 	//
 	// example:
 	//
 	// 20230308
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The end of the time range to query.
+	// The end time of the query.
 	//
 	// example:
 	//
@@ -47,11 +47,11 @@ type QueryUsageStatisticsByTagIdRequest struct {
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
-	// 20
+	// 10
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -59,7 +59,7 @@ type QueryUsageStatisticsByTagIdRequest struct {
 	//
 	// example:
 	//
-	// 14
+	// 89
 	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 

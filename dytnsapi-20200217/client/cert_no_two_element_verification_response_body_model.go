@@ -22,19 +22,28 @@ type iCertNoTwoElementVerificationResponseBody interface {
 }
 
 type CertNoTwoElementVerificationResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// -
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
 	Data *CertNoTwoElementVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CC3BB6D2-2FDF-4321-9DCE-B38165CE4C47
@@ -104,6 +113,14 @@ func (s *CertNoTwoElementVerificationResponseBody) Validate() error {
 }
 
 type CertNoTwoElementVerificationResponseBodyData struct {
+	// Indicates whether the verification result is consistent. Valid values:
+	//
+	// - **1**: Consistent
+	//
+	// - **0**: Inconsistent
+	//
+	// - **2**: Not found
+	//
 	// example:
 	//
 	// 1

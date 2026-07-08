@@ -22,18 +22,23 @@ type iDescribePhoneNumberAnalysisAIResponseBody interface {
 }
 
 type DescribePhoneNumberAnalysisAIResponseBody struct {
-	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code. Valid values:
+	// The details about the access denial.
 	//
-	// 	- OK: The request is successful.
+	// example:
+	//
+	// -
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code. Valid values:
+	//
+	// - OK: success
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The returned result.
 	Data *DescribePhoneNumberAnalysisAIResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The description of the returned status code.
 	//
 	// example:
 	//
@@ -110,19 +115,19 @@ func (s *DescribePhoneNumberAnalysisAIResponseBody) Validate() error {
 }
 
 type DescribePhoneNumberAnalysisAIResponseBodyData struct {
-	// The returned code.
+	// The returned result code.
 	//
-	// 	- YES: The specified phone number is valid.
+	// - YES: valid
 	//
-	// 	- NO: The specified phone number is invalid.
+	// - NO: invalid
 	//
-	// 	- UNKNOWN: The specified phone number is unknown
+	// - UNKNOWN: unknown
 	//
 	// example:
 	//
 	// YES
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The specified phone number.
+	// The phone number that was passed in.
 	//
 	// example:
 	//

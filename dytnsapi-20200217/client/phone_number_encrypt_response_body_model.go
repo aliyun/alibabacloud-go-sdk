@@ -20,19 +20,19 @@ type iPhoneNumberEncryptResponseBody interface {
 }
 
 type PhoneNumberEncryptResponseBody struct {
-	// The response code.
+	// The status code of the request.
 	//
-	// 	- The value OK indicates that the request was successful.
+	// - The value OK indicates that the request was successful.
 	//
-	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	// - For information about other error codes, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Details about the returned entries.
+	// The array.
 	Data []*PhoneNumberEncryptResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The description of the returned status code.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type PhoneNumberEncryptResponseBodyData struct {
 	//
 	// 1400513****
 	EncryptedNumber *string `json:"EncryptedNumber,omitempty" xml:"EncryptedNumber,omitempty"`
-	// The time when the phone number expires.
+	// The expiration time of the phone number.
 	//
 	// example:
 	//
@@ -122,7 +122,14 @@ type PhoneNumberEncryptResponseBodyData struct {
 	//
 	// 1390000****
 	OriginalNumber *string `json:"OriginalNumber,omitempty" xml:"OriginalNumber,omitempty"`
-	OutId          *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The custom ID reserved for the caller when the request was initiated. This ID is eventually returned to the caller.
+	//
+	// The value is of the string type. The maximum length is 64 characters.
+	//
+	// example:
+	//
+	// 215044c917374256269257695e9d22
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 }
 
 func (s PhoneNumberEncryptResponseBodyData) String() string {

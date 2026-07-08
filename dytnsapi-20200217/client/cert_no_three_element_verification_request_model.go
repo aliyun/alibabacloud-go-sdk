@@ -28,33 +28,47 @@ type iCertNoThreeElementVerificationRequest interface {
 }
 
 type CertNoThreeElementVerificationRequest struct {
+	// The authorization code. Sources:
+	//
+	// - In the Cell Phone Number Service console, go to the [Tag Square](https://dytns.console.aliyun.com/analysis/square) page, select the **ID Card Three Elements*	- tag, and submit a usage application. After the application is approved, you will obtain the authorization code.
+	//
+	// - On the [My Applications](https://dytns.console.aliyun.com/analysis/apply) page of the Cell Phone Number Service console, view the approved **ID Card Three Elements*	- authorization ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// QASDW@#**
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The name to be verified.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// 张三
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The ID card number to be verified.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3***************0
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
+	// The BASE64 encoding of the portrait photo to be verified. **Remove the encoded URI information (such as `data:image/png;base64,`) before submission**. The photo size and the BASE64-encoded size must not exceed 50 KB.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// iVBOFMKODOFNDFP123DFSMOO...
 	CertPicture *string `json:"CertPicture,omitempty" xml:"CertPicture,omitempty"`
+	// Specifies whether to encrypt. Currently only unencrypted is supported.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 不加密
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

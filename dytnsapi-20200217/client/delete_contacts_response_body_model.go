@@ -20,15 +20,26 @@ type iDeleteContactsResponseBody interface {
 }
 
 type DeleteContactsResponseBody struct {
+	// The response code. `OK` indicates a successful request.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the operation succeeded. Valid values:
+	//
+	// - true
+	//
+	// - false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CC3BB6D2-2FDF-4321-9DCE-B38165CE4C47

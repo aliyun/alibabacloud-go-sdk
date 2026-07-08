@@ -22,16 +22,30 @@ type iDescribePhoneNumberAnalysisResponseBody interface {
 }
 
 type DescribePhoneNumberAnalysisResponseBody struct {
+	// The details about the access denial. This parameter is returned only if RAM verification fails.
+	//
+	// example:
+	//
+	// -
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code. Valid values:
+	//
+	//  **OK**: The request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the phone number analysis result.
 	Data *DescribePhoneNumberAnalysisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the phone number status.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CC3BB6D2-2FDF-4321-9DCE-B38165CE4C47
@@ -101,6 +115,7 @@ func (s *DescribePhoneNumberAnalysisResponseBody) Validate() error {
 }
 
 type DescribePhoneNumberAnalysisResponseBodyData struct {
+	// The data list.
 	List []*DescribePhoneNumberAnalysisResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
@@ -135,13 +150,23 @@ func (s *DescribePhoneNumberAnalysisResponseBodyData) Validate() error {
 }
 
 type DescribePhoneNumberAnalysisResponseBodyDataList struct {
+	// The result code returned.
+	//
+	// - YES: valid
+	//
+	// - NO: invalid
+	//
+	// - UNKNOWN: unknown
+	//
 	// example:
 	//
 	// NO
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The mobile phone number that is passed in.
+	//
 	// example:
 	//
-	// 18752785620
+	// 187****5620
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
 }
 

@@ -32,30 +32,42 @@ type iQueryTaskListShrinkRequest interface {
 }
 
 type QueryTaskListShrinkRequest struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 80
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page size. Maximum value: 1000.
+	//
 	// example:
 	//
 	// 10
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResultShrink         *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The task statuses.
+	ResultShrink *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The tag ID. You can call the [QueryTagListPage](~~QueryTagListPage~~) operation to query tag IDs.
+	//
 	// example:
 	//
 	// 15
 	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The task ID. You can call the DescribeTasks operation to query the list of task IDs.
+	//
 	// example:
 	//
 	// 91
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task name.
+	//
 	// example:
 	//
-	// 示例值示例值
-	TaskName       *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Example
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// An array of task types.
 	TaskTypeShrink *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 

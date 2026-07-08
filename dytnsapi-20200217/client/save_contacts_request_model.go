@@ -34,33 +34,53 @@ type iSaveContactsRequest interface {
 }
 
 type SaveContactsRequest struct {
+	// The business type. Set the value to **contact**.
+	//
 	// example:
 	//
 	// dytns
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The contact email.
+	//
 	// example:
 	//
 	// 1234@alibaba-inc.com
 	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	// The contact name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 张光宇
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// The contact phone number.
+	//
 	// example:
 	//
 	// 122354532434
 	ContactPhone *string `json:"ContactPhone,omitempty" xml:"ContactPhone,omitempty"`
+	// Specifies whether to enable email alerts. Valid values:
+	//
 	// example:
 	//
 	// 0
 	MailStatus *int32 `json:"MailStatus,omitempty" xml:"MailStatus,omitempty"`
+	// Specifies whether to enable status warnings. Valid values:
+	//
 	// example:
 	//
 	// false
 	OpenStatusWarning *bool `json:"OpenStatusWarning,omitempty" xml:"OpenStatusWarning,omitempty"`
+	// Specifies whether to enable attribution warnings. Valid values:
+	//
 	// example:
 	//
 	// true
 	OpentAttributionWarning *bool  `json:"OpentAttributionWarning,omitempty" xml:"OpentAttributionWarning,omitempty"`
 	OwnerId                 *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to enable phone alerts. Valid values:
+	//
 	// example:
 	//
 	// 0

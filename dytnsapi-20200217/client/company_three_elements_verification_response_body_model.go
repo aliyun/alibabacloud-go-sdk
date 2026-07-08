@@ -28,21 +28,21 @@ type CompanyThreeElementsVerificationResponseBody struct {
 	//
 	// -
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code.
+	// The request status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The returned data.
 	Data *CompanyThreeElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The description of the returned status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+	// The common parameter. Each request returns a unique ID, which can be used to troubleshoot and locate issues.
 	//
 	// example:
 	//
@@ -113,37 +113,47 @@ func (s *CompanyThreeElementsVerificationResponseBody) Validate() error {
 }
 
 type CompanyThreeElementsVerificationResponseBodyData struct {
-	// The information about the enterprise.
-	DetailInfo *CompanyThreeElementsVerificationResponseBodyDataDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
-	// The fields to be verified.
-	InconsistentData []*string `json:"InconsistentData,omitempty" xml:"InconsistentData,omitempty" type:"Repeated"`
-	// The code of the verification result. Valid values:
-	//
-	// 	- 0: The three elements belong to the same enterprise.
-	//
-	// 	- 1: The three elements belong to the same enterprise, and the business status of the enterprise is abnormal.
-	//
-	// 	- 2: The legal representative information cannot match the enterprise information.
-	//
-	// 	- 3: The three elements do not belong to the same enterprise.
-	//
-	// 	- 4: No information about the enterprise is found.
-	//
-	// 	- 5: No information about the legal representative is found.
+	// The company details.
 	//
 	// example:
 	//
-	// 0
+	// {
+	//
+	//       "enterpriseStatus": "在营（开业）",
+	//
+	//       "openTime": "2023-05-25/2053-05-24"
+	//
+	// }
+	DetailInfo *CompanyThreeElementsVerificationResponseBodyDataDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
+	// The fields whose verification results are inconsistent.
+	InconsistentData []*string `json:"InconsistentData,omitempty" xml:"InconsistentData,omitempty" type:"Repeated"`
+	// The verification result code. Valid values:
+	//
+	// - 0: The verification is consistent.
+	//
+	// - 1: The verification is consistent, but the company is not operating normally.
+	//
+	// - 2: The person-company verification is inconsistent.
+	//
+	// - 3: The two-element company verification failed.
+	//
+	// - 4: The company is not found.
+	//
+	// - 5: The person does not exist in the database.
+	//
+	// example:
+	//
+	// 2
 	ReasonCode *int64 `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	// The verification result. Valid values:
 	//
-	// 	- true: The three elements belong to the same enterprise and the business status of the enterprise is Active.
+	// - true: The information is consistent and the company is operating normally.
 	//
-	// 	- false: The three elements do not belong to the same enterprise.
+	// - false: The verification failed.
 	//
 	// example:
 	//
-	// true
+	// false
 	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
@@ -201,13 +211,13 @@ func (s *CompanyThreeElementsVerificationResponseBodyData) Validate() error {
 }
 
 type CompanyThreeElementsVerificationResponseBodyDataDetailInfo struct {
-	// The business status of the enterprise.
+	// The operating status of the company.
 	//
 	// example:
 	//
-	// Active
+	// 在营（开业）
 	EnterpriseStatus *string `json:"EnterpriseStatus,omitempty" xml:"EnterpriseStatus,omitempty"`
-	// The business term of the enterprise.
+	// The business term of the company.
 	//
 	// example:
 	//

@@ -22,15 +22,15 @@ type iQueryTagInfoBySelectionResponseBody interface {
 }
 
 type QueryTagInfoBySelectionResponseBody struct {
-	// The response code. **OK*	- indicates that the request is successful.
+	// The request status code. The value **OK*	- indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data []*QueryTagInfoBySelectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The description of the returned status code.
 	//
 	// example:
 	//
@@ -42,15 +42,15 @@ type QueryTagInfoBySelectionResponseBody struct {
 	//
 	// 1C3B8084-3A7D-570B-BC84-BF945A9CF65E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
-	// false
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -122,21 +122,26 @@ func (s *QueryTagInfoBySelectionResponseBody) Validate() error {
 
 type QueryTagInfoBySelectionResponseBodyData struct {
 	// The list of available authorization codes.
-	AuthCodeList   []*string `json:"AuthCodeList,omitempty" xml:"AuthCodeList,omitempty" type:"Repeated"`
-	ComplexityType *string   `json:"ComplexityType,omitempty" xml:"ComplexityType,omitempty"`
-	// The URL for the API demo.
+	AuthCodeList []*string `json:"AuthCodeList,omitempty" xml:"AuthCodeList,omitempty" type:"Repeated"`
+	// The tag type.
+	//
+	// example:
+	//
+	// SINGLE_STAGE
+	ComplexityType *string `json:"ComplexityType,omitempty" xml:"ComplexityType,omitempty"`
+	// The link to the API demo.
 	//
 	// example:
 	//
 	// https://help.aliyun.com/document_detail/388997.html?spm=a2c4g.2573870.0.0.3aa921cbOrtqJz
 	DemoAddress *string `json:"DemoAddress,omitempty" xml:"DemoAddress,omitempty"`
-	// The URL for the API documentation.
+	// The link to the API documentation.
 	//
 	// example:
 	//
 	// https://help.aliyun.com/document_detail/388997.html?spm=a2c4g.2573870.0.0.3aa921cbOrtqJz
 	DocAddress *string `json:"DocAddress,omitempty" xml:"DocAddress,omitempty"`
-	// The URL for the definitions of the enumerated values.
+	// The link to the enumerated value definition.
 	//
 	// example:
 	//
@@ -146,7 +151,7 @@ type QueryTagInfoBySelectionResponseBodyData struct {
 	//
 	// example:
 	//
-	// process name
+	// 查询
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 	// The industry ID.
 	//
@@ -158,11 +163,16 @@ type QueryTagInfoBySelectionResponseBodyData struct {
 	//
 	// example:
 	//
-	// logistics
+	// 物流
 	IndustryName *string `json:"IndustryName,omitempty" xml:"IndustryName,omitempty"`
 	// The list of tag parameters.
-	ParamList           []*QueryTagInfoBySelectionResponseBodyDataParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
-	RichTextDescription *string                                             `json:"RichTextDescription,omitempty" xml:"RichTextDescription,omitempty"`
+	ParamList []*QueryTagInfoBySelectionResponseBodyDataParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+	// The rich text description. This field is available only for complex tags.
+	//
+	// example:
+	//
+	// 无
+	RichTextDescription *string `json:"RichTextDescription,omitempty" xml:"RichTextDescription,omitempty"`
 	// The scene ID.
 	//
 	// example:
@@ -173,7 +183,7 @@ type QueryTagInfoBySelectionResponseBodyData struct {
 	//
 	// example:
 	//
-	// General scenario
+	// 通用
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 	// The tag ID.
 	//
@@ -185,7 +195,7 @@ type QueryTagInfoBySelectionResponseBodyData struct {
 	//
 	// example:
 	//
-	// Number ownership
+	// 号码归属
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -347,7 +357,7 @@ type QueryTagInfoBySelectionResponseBodyDataParamList struct {
 	//
 	// example:
 	//
-	// none
+	// 无
 	Hint *string `json:"Hint,omitempty" xml:"Hint,omitempty"`
 	// Indicates whether the parameter is required.
 	//
@@ -359,15 +369,15 @@ type QueryTagInfoBySelectionResponseBodyDataParamList struct {
 	//
 	// example:
 	//
-	// none
+	// 无
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type. The code that corresponds to EnumUIWidgetTypes.
+	// The code corresponding to the type EnumUIWidgetTypes.
 	//
 	// example:
 	//
 	// aqzx
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The definitions of the enumerated values such as Code or Desc.
+	// The definition of an enumerated value, in the format of code:desc.
 	ValueDict []*QueryTagInfoBySelectionResponseBodyDataParamListValueDict `json:"ValueDict,omitempty" xml:"ValueDict,omitempty" type:"Repeated"`
 }
 

@@ -20,15 +20,22 @@ type iListContactsResponseBody interface {
 }
 
 type ListContactsResponseBody struct {
+	// The status code. `OK` indicates a successful request.
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// An array of contact information objects.
 	Data []*ListContactsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CC3BB6D2-2FDF-4321-9DCE-B38165CE4C47
@@ -93,35 +100,72 @@ func (s *ListContactsResponseBody) Validate() error {
 }
 
 type ListContactsResponseBodyData struct {
+	// The contact email.
+	//
 	// example:
 	//
 	// xxxx @alibaba-inc.com
 	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	// The contact ID.
+	//
 	// example:
 	//
 	// 0
-	ContactId   *int64  `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The contact name.
+	//
+	// example:
+	//
+	// 黄勇
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// The contact mobile number.
+	//
 	// example:
 	//
 	// 19211111111
 	ContactPhone *string `json:"ContactPhone,omitempty" xml:"ContactPhone,omitempty"`
+	// The email status.
+	//
+	// - 1: Normal
+	//
+	// - 0: Abnormal
+	//
 	// example:
 	//
 	// 1
 	MailStatus *int32 `json:"MailStatus,omitempty" xml:"MailStatus,omitempty"`
+	// The calling number.
+	//
 	// example:
 	//
 	// 0
 	Main *int32 `json:"Main,omitempty" xml:"Main,omitempty"`
+	// Specifies whether the number status warning is enabled.
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
+	//
 	// example:
 	//
 	// true
 	OpenStatusWarning *bool `json:"OpenStatusWarning,omitempty" xml:"OpenStatusWarning,omitempty"`
+	// Specifies whether the number attribution query warning is enabled.
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
+	//
 	// example:
 	//
 	// true
 	OpentAttributionWarning *bool `json:"OpentAttributionWarning,omitempty" xml:"OpentAttributionWarning,omitempty"`
+	// The number status.
+	//
+	// - 1: Normal
+	//
+	// - 0: Abnormal
+	//
 	// example:
 	//
 	// 1

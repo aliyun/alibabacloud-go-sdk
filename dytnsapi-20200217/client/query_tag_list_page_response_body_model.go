@@ -22,7 +22,7 @@ type iQueryTagListPageResponseBody interface {
 }
 
 type QueryTagListPageResponseBody struct {
-	// The response code. **OK*	- indicates that the request is successful.
+	// The response code. **OK*	- indicates success.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type QueryTagListPageResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *QueryTagListPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The description of the response code.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type QueryTagListPageResponseBody struct {
 	//
 	// A4475657-BB7E-585D-9E09-37934F096103
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: successful.
 	//
-	// 	- false
+	// - false: failed.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *QueryTagListPageResponseBody) Validate() error {
 }
 
 type QueryTagListPageResponseBodyData struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -129,15 +129,15 @@ type QueryTagListPageResponseBodyData struct {
 	//
 	// 24
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The retruned data.
+	// The data list.
 	Records []*QueryTagListPageResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// The total number of returned entries.
+	// The total count.
 	//
 	// example:
 	//
 	// 32
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -212,19 +212,19 @@ func (s *QueryTagListPageResponseBodyData) Validate() error {
 }
 
 type QueryTagListPageResponseBodyDataRecords struct {
-	// The API operation that is called by the frontend.
+	// The name of the API called by the frontend.
 	//
 	// example:
 	//
 	// TwoElementsVerification
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// Code
+	// The response code. OK indicates success.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The URL for the API documentation.
+	// The API document link.
 	//
 	// example:
 	//
@@ -246,29 +246,31 @@ type QueryTagListPageResponseBodyDataRecords struct {
 	//
 	// example:
 	//
-	// Test
+	// 测试
 	IndustryName *string `json:"IndustryName,omitempty" xml:"IndustryName,omitempty"`
-	// The tag description.
+	// The tag introduction.
 	//
 	// example:
 	//
-	// for autotest new
+	// 这个标签是查询号码状态的。
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// Indicates whether the number is activated.
+	// Indicates whether the activation has been applied for.
 	//
 	// example:
 	//
-	// 45
+	// 是
 	IsOpen *int64 `json:"IsOpen,omitempty" xml:"IsOpen,omitempty"`
 	// The tag name.
 	//
 	// example:
 	//
-	// Aliyun
+	// 阿里云
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 	- 0: The number is hidden.
+	// - 0: hidden.
 	//
-	// 	- 1: The number is public.
+	//
+	//
+	// - 1: public.
 	//
 	// example:
 	//
@@ -284,7 +286,7 @@ type QueryTagListPageResponseBodyDataRecords struct {
 	//
 	// example:
 	//
-	// check
+	// 查询
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 }
 

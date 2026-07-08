@@ -22,19 +22,34 @@ type iHistoryThreeElementsVerificationResponseBody interface {
 }
 
 type HistoryThreeElementsVerificationResponseBody struct {
+	// Details about why access is denied.
+	//
+	// > This parameter is returned only when RAM authentication fails.
+	//
 	// example:
 	//
 	// -
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code of the request.
+	//
+	// - A value of `OK` indicates the request was successful.
+	//
+	// - For other values, see the Error Codes section.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The query results.
 	Data *HistoryThreeElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CC3BB6D2-2FDF-4321-9DCE-B38165CE4C47
@@ -104,10 +119,24 @@ func (s *HistoryThreeElementsVerificationResponseBody) Validate() error {
 }
 
 type HistoryThreeElementsVerificationResponseBodyData struct {
+	// The consistency of the verification result. Valid values:
+	//
+	// - `0`: No record found.
+	//
+	// - `1`: The phone number, ID number, and name match the carrier\\"s records.
+	//
+	// - `2`: The phone number and ID number match the carrier\\"s records, but the name does not.
+	//
+	// - `3`: The phone number and name match the carrier\\"s records, but the ID number does not.
+	//
+	// - `4`: The phone number matches the carrier\\"s records, but the name and ID number do not.
+	//
 	// example:
 	//
 	// 72
 	IsConsistent *int64 `json:"IsConsistent,omitempty" xml:"IsConsistent,omitempty"`
+	// The carrier to which the request was routed.
+	//
 	// example:
 	//
 	// CMCC

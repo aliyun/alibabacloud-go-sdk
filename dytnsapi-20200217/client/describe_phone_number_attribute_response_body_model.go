@@ -20,34 +20,10 @@ type iDescribePhoneNumberAttributeResponseBody interface {
 }
 
 type DescribePhoneNumberAttributeResponseBody struct {
-	// The response code. Valid values:
-	//
-	// 	- **OK**: The request is successful.
-	//
-	// 	- **InvalidParameter**: The specified phone number is invalid or the parameter format is invalid.
-	//
-	// 	- **PhoneNumberNotfound**: No attribute information can be found for the specified phone number.
-	//
-	// 	- **isp.UNKNOWN**: An unknown exception occurred.
-	//
-	// example:
-	//
-	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
-	//
-	// example:
-	//
-	// OK
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The attribute information about the phone number.
+	Code                 *string                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message              *string                                                       `json:"Message,omitempty" xml:"Message,omitempty"`
 	PhoneNumberAttribute *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute `json:"PhoneNumberAttribute,omitempty" xml:"PhoneNumberAttribute,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// CC3BB6D2-2FDF-4321-9DCE-B38165CE4C47
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId            *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePhoneNumberAttributeResponseBody) String() string {
@@ -104,36 +80,12 @@ func (s *DescribePhoneNumberAttributeResponseBody) Validate() error {
 }
 
 type DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute struct {
-	// The basic carrier. Valid values:
-	//
-	// 	- **China Mobile**
-	//
-	// 	- **China Unicom**
-	//
-	// 	- **China Telecom**
-	BasicCarrier *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
-	// The actual carrier, including the virtual network operator (VNO). If the phone number involves mobile number portability, the value of this parameter is the carrier after mobile number portability.
-	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	// The city where the phone number is registered.
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// Indicates whether the phone number involves mobile number portability. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	IsNumberPortability *bool `json:"IsNumberPortability,omitempty" xml:"IsNumberPortability,omitempty"`
-	// The number segment to which the phone number belongs.
-	//
-	// example:
-	//
-	// 139
-	NumberSegment *int64 `json:"NumberSegment,omitempty" xml:"NumberSegment,omitempty"`
-	// The province where the phone number is registered.
-	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	BasicCarrier        *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
+	Carrier             *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	City                *string `json:"City,omitempty" xml:"City,omitempty"`
+	IsNumberPortability *bool   `json:"IsNumberPortability,omitempty" xml:"IsNumberPortability,omitempty"`
+	NumberSegment       *int64  `json:"NumberSegment,omitempty" xml:"NumberSegment,omitempty"`
+	Province            *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
 func (s DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute) String() string {

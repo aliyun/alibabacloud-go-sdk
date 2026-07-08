@@ -28,7 +28,7 @@ type iPhoneNumberEncryptRequest interface {
 type PhoneNumberEncryptRequest struct {
 	// The authorization code.
 	//
-	// >  On the **My Applications*	- page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	// > On the **My Applications*	- page of the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), obtain the authorization ID, which is the authorization code.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type PhoneNumberEncryptRequest struct {
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	// The phone number to be queried.
 	//
-	// >  You can query only one phone number at a time.
+	// > Currently, only single phone number queries are supported.
 	//
 	// This parameter is required.
 	//
@@ -46,16 +46,22 @@ type PhoneNumberEncryptRequest struct {
 	//
 	// 1390000****
 	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
-	// The encryption method of the phone number. Set the value to **NORMAL**.
+	// The encryption method of the phone number. Valid value: **NORMAL**.
 	//
-	// >  Only the NORMAL encryption method is supported.
+	//
+	// 	Notice: Currently, only the NORMAL encryption method is supported.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// NORMAL
-	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	// The user-defined outId. This parameter is optional. The format is not limited, and the length must be less than or equal to 64 characters.
+	//
+	// example:
+	//
+	// 213e367117422635749191493eea68
 	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

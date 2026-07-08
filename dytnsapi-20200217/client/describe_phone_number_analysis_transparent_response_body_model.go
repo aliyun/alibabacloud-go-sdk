@@ -22,23 +22,11 @@ type iDescribePhoneNumberAnalysisTransparentResponseBody interface {
 }
 
 type DescribePhoneNumberAnalysisTransparentResponseBody struct {
-	// example:
-	//
-	// -
-	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// example:
-	//
-	// OK
-	Code *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *DescribePhoneNumberAnalysisTransparentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// OK
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// CC3BB6D2-2FDF-4321-9DCE-B38165CE4C47
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AccessDeniedDetail *string                                                 `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *DescribePhoneNumberAnalysisTransparentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePhoneNumberAnalysisTransparentResponseBody) String() string {

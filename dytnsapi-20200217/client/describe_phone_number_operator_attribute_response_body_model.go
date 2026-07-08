@@ -22,26 +22,31 @@ type iDescribePhoneNumberOperatorAttributeResponseBody interface {
 }
 
 type DescribePhoneNumberOperatorAttributeResponseBody struct {
+	// The details about the access denial. This parameter is returned only if the request is denied because the RAM user or RAM role does not have the required permissions.
+	//
+	// example:
+	//
+	// -
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code. Valid values:
+	// The status code of the request. Valid values:
 	//
-	// 	- **OK**: The request is successful.
+	// - **OK**: The request is successful.
 	//
-	// 	- **InvalidParameter**: The specified phone number is invalid or the parameter format is invalid.
+	// - **InvalidParameter**: The phone number is invalid or the format of the parameter is invalid.
 	//
-	// 	- **PhoneNumberNotfound**: No attribute information can be found for the specified phone number.
+	// - **PhoneNumberNotfound**: The carrier information of the phone number is not found.
 	//
-	// 	- **isp.UNKNOWN**: An unknown exception occurred.
+	// - **isp.UNKNOWN**: An unknown error occurred.
 	//
-	// 	- **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	// - **RequestFrequencyLimit**: Due to carrier restrictions, you cannot frequently query the same number in a short period of time. If this error code is returned, try again later.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The returned data.
 	Data *DescribePhoneNumberOperatorAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -120,35 +125,35 @@ func (s *DescribePhoneNumberOperatorAttributeResponseBody) Validate() error {
 type DescribePhoneNumberOperatorAttributeResponseBodyData struct {
 	// The basic carrier. Valid values:
 	//
-	// 	- **China Mobile**
+	// - **China Mobile**.
 	//
-	// 	- **China Unicom**
+	// - **China Unicom**.
 	//
-	// 	- **China Telecom**
+	// - **China Telecom**.
 	//
-	// 	- **China Broadnet**
+	// - **China Broadnet**.
 	//
 	// example:
 	//
-	// China Mobile
+	// 中国移动
 	BasicCarrier *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
-	// The actual carrier, including the virtual network operator (VNO). If the phone number involves mobile number portability, the value of this parameter is the carrier after mobile number portability.
+	// The actual carrier (including the mobile virtual network operator). If number portability is enabled, the value indicates the carrier after number portability.
 	//
 	// example:
 	//
-	// China Mobile
+	// 中国移动
 	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	// The city where the phone number is registered.
+	// The city to which the phone number belongs.
 	//
 	// example:
 	//
-	// hangzhou
+	// 杭州
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// Indicates whether the phone number involves mobile number portability. Valid values:
+	// Indicates whether the number has been ported. Valid values:
 	//
-	// 	- **true**
+	// - **true**: yes
 	//
-	// 	- **false**
+	// - **false**: no
 	//
 	// example:
 	//
@@ -160,11 +165,11 @@ type DescribePhoneNumberOperatorAttributeResponseBodyData struct {
 	//
 	// 139
 	NumberSegment *int64 `json:"NumberSegment,omitempty" xml:"NumberSegment,omitempty"`
-	// The province where the phone number is registered.
+	// The province to which the phone number belongs.
 	//
 	// example:
 	//
-	// zhejiang
+	// 浙江
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 

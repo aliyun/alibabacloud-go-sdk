@@ -20,18 +20,26 @@ type iUpdateContactsResponseBody interface {
 }
 
 type UpdateContactsResponseBody struct {
+	// The request status code. The value `OK` indicates a successful request. For more information about other error codes, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the operation was successful. A value of **true*	- indicates success, and a value of **false*	- indicates failure.
+	//
 	// example:
 	//
 	// false
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The description of the status code.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 68A40250-50CD-034C-B728-0BD******177

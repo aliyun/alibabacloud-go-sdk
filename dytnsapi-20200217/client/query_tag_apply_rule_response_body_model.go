@@ -22,7 +22,7 @@ type iQueryTagApplyRuleResponseBody interface {
 }
 
 type QueryTagApplyRuleResponseBody struct {
-	// The response code. **OK*	- indicates that the request is successful.
+	// The request status code. **OK*	- indicates success.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type QueryTagApplyRuleResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *QueryTagApplyRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The description of the returned status code.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type QueryTagApplyRuleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true
+	// - true: successful.
 	//
-	// 	- false
+	// - false: failed.
 	//
 	// example:
 	//
-	// false
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -117,37 +117,49 @@ func (s *QueryTagApplyRuleResponseBody) Validate() error {
 }
 
 type QueryTagApplyRuleResponseBodyData struct {
-	// The requirements for application materials.
+	// The application material requirements. This parameter is returned when NeedApplyMaterial=1.
 	//
 	// example:
 	//
-	// Requirements for application materials
+	// 申请材料的要求是XXX
 	ApplyMaterialDesc *string `json:"ApplyMaterialDesc,omitempty" xml:"ApplyMaterialDesc,omitempty"`
-	// Indicates whether the application is automatically approved.
+	// Indicates whether to automatically approve. Valid values:
+	//
+	// - 0: do not automatically approve.
+	//
+	// - 1: automatically approve.
 	//
 	// example:
 	//
-	// 16
+	// 1
 	AutoAudit *int64 `json:"AutoAudit,omitempty" xml:"AutoAudit,omitempty"`
-	// The URL for the billing documentation.
+	// The billing standard description link.
 	//
 	// example:
 	//
 	// aliyundoc.com
 	ChargingStandardLink *string `json:"ChargingStandardLink,omitempty" xml:"ChargingStandardLink,omitempty"`
-	// indicates whether encrypted queries are supported.
+	// Indicates whether encrypted query is supported. Valid values:
+	//
+	// - 0: not supported.
+	//
+	// - 1: supported.
 	//
 	// example:
 	//
-	// 99
+	// 0
 	EncryptedQuery *int64 `json:"EncryptedQuery,omitempty" xml:"EncryptedQuery,omitempty"`
-	// Indicates whether application materials are required.
+	// Indicates whether application materials need to be provided. Valid values:
+	//
+	// - 0: not required.
+	//
+	// - 1: required.
 	//
 	// example:
 	//
-	// 46
+	// 1
 	NeedApplyMaterial *int64 `json:"NeedApplyMaterial,omitempty" xml:"NeedApplyMaterial,omitempty"`
-	// The URL for the service agreement.
+	// The service agreement link.
 	//
 	// example:
 	//

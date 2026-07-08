@@ -20,15 +20,30 @@ type iQueryTaskListResponseBody interface {
 }
 
 type QueryTaskListResponseBody struct {
+	// The request status code. Valid values:
+	//
+	// - **OK**: The request was successful.
+	//
+	// - **isv.INVALID_PARAMETERS**: The specified parameter is invalid.
+	//
+	// - **isp.SYSTEM_ERROR**: A system error occurred.
+	//
+	// > For more information, see the "Error codes" section of this topic.
+	//
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *QueryTaskListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The status code description.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 68A40250-50CD-034C-B728-0BD******177
@@ -89,11 +104,16 @@ func (s *QueryTaskListResponseBody) Validate() error {
 }
 
 type QueryTaskListResponseBodyData struct {
+	// The details of the tasks.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 62
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 22

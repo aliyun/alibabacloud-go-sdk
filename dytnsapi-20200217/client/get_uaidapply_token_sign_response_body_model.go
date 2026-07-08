@@ -22,19 +22,30 @@ type iGetUAIDApplyTokenSignResponseBody interface {
 }
 
 type GetUAIDApplyTokenSignResponseBody struct {
+	// Details about the access denial.
+	//
 	// example:
 	//
 	// -
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response status code. Valid values:
+	//
+	// - **OK**: The request was successful.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *GetUAIDApplyTokenSignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 68A40250-50CD-034C-B728-0BD******177
@@ -104,14 +115,26 @@ func (s *GetUAIDApplyTokenSignResponseBody) Validate() error {
 }
 
 type GetUAIDApplyTokenSignResponseBodyData struct {
+	// The mobile carrier. Valid values:
+	//
+	// - **CM**: China Mobile
+	//
+	// - **CU**: China Unicom
+	//
+	// - **CT**: China Telecom
+	//
 	// example:
 	//
 	// CM
 	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	// The external ID.
+	//
 	// example:
 	//
 	// b8b5b3a*******0b9893484fdf412c99
 	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The signature value.
+	//
 	// example:
 	//
 	// D2E204D74EEB373E468632********23F592C4C9

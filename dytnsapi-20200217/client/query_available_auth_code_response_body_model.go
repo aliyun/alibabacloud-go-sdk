@@ -22,15 +22,15 @@ type iQueryAvailableAuthCodeResponseBody interface {
 }
 
 type QueryAvailableAuthCodeResponseBody struct {
-	// The response code. **OK*	- indicates that the request is successful.
+	// The status code returned. **OK*	- indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message.
+	// The description of the status code returned.
 	//
 	// example:
 	//
@@ -42,15 +42,15 @@ type QueryAvailableAuthCodeResponseBody struct {
 	//
 	// 6ADDCD31-6BC7-5913-A47F-E29A07E37FEE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: successful.
 	//
-	// 	- false
+	// - false: failed.
 	//
 	// example:
 	//
-	// false
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

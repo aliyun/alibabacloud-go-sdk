@@ -24,23 +24,31 @@ type iCertNoTwoElementVerificationRequest interface {
 }
 
 type CertNoTwoElementVerificationRequest struct {
+	// The authorization code.
+	//
+	// > In **Cell Phone Number Service*	- -> [**Tag Marketplace**](https://dytns.console.aliyun.com/analysis/square), select a tag and submit an application for use. After the application is approved, you will obtain the authorization code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// QASDW@#**
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The name to be verified.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// 张三
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The ID card number to be verified.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 331021200001010000
+	// 3***************0
 	CertNo               *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

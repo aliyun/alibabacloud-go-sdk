@@ -20,18 +20,26 @@ type iSaveContactsResponseBody interface {
 }
 
 type SaveContactsResponseBody struct {
+	// The status code. A value of `OK` indicates that the request was successful. For more information about other error codes, see the [error code list](https://help.aliyun.com/document_detail/109196.html).
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned by the operation.
+	//
 	// example:
 	//
 	// 1
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 29E058D7-4B28-55EE-BE3B-61D5AE488A9E

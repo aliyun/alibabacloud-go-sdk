@@ -23,7 +23,7 @@ type QueryAvailableAuthCodeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tag ID.
+	// The tag ID. You can call the [QueryTagListPage](~~QueryTagListPage~~) operation to query tag IDs.
 	//
 	// example:
 	//

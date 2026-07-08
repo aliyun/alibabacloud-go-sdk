@@ -28,27 +28,51 @@ type iDescribePhoneNumberAnalysisRequest interface {
 }
 
 type DescribePhoneNumberAnalysisRequest struct {
+	// The authorization code.
+	//
+	// > Log on to the [Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), go to the **My Applications*	- page, and obtain the authorization ID, which is the authorization code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// QASDW@#**
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be queried.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1310000****
+	// 187****5620
 	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method of the phone number. Valid values:
+	//
+	// - **NORMAL**: no encryption
+	//
+	// - **MD5**
+	//
+	// - **SHA256**
+	//
 	// example:
 	//
-	// MD5
+	// NORMAL
 	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	// The type of the phone number. Valid values:
+	//
+	// - **0**: mobile phone number
+	//
+	// - **1**: mobile IMEI number
+	//
 	// example:
 	//
 	// 0
 	NumberType *int64 `json:"NumberType,omitempty" xml:"NumberType,omitempty"`
 	OwnerId    *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The score threshold of the phone number. Valid values: **0 to 100**.
+	//
+	// 	Notice: Whether the specified score threshold is accepted is determined by the server. When the specified score threshold is not accepted, the data entered in this field is invalid.
+	//
 	// example:
 	//
 	// 10

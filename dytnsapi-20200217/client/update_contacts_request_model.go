@@ -34,37 +34,67 @@ type iUpdateContactsRequest interface {
 }
 
 type UpdateContactsRequest struct {
+	// The email address of the contact.
+	//
 	// example:
 	//
 	// XXXX@alibaba-inc.com
 	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	// The ID of the contact to update. You can retrieve the ID by calling the ListContacts operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1194432
 	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The name of the contact.
+	//
 	// example:
 	//
 	// XXX
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// The mobile phone number of the contact.
+	//
 	// example:
 	//
 	// 192XXXXXXXX
 	ContactPhone *string `json:"ContactPhone,omitempty" xml:"ContactPhone,omitempty"`
+	// Enables or disables email alerts. Valid values:
+	//
+	// - 0: disabled.
+	//
+	// - 1: enabled.
+	//
 	// example:
 	//
 	// 1
 	MailStatus *int32 `json:"MailStatus,omitempty" xml:"MailStatus,omitempty"`
+	// Enables or disables alerts for number status.
+	//
+	// Valid values:
+	//
+	// - **true**: enabled.
+	//
+	// - **false**: disabled.
+	//
 	// example:
 	//
 	// false
 	OpenStatusWarning *bool `json:"OpenStatusWarning,omitempty" xml:"OpenStatusWarning,omitempty"`
+	// Enables or disables alerts for number attribution queries. Valid values: -**true**: enabled. -**false**: disabled.
+	//
 	// example:
 	//
 	// true
 	OpentAttributionWarning *bool  `json:"OpentAttributionWarning,omitempty" xml:"OpentAttributionWarning,omitempty"`
 	OwnerId                 *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Enables or disables phone call alerts. Valid values:
+	//
+	// - 0: disabled.
+	//
+	// - 1: enabled.
+	//
 	// example:
 	//
 	// 1

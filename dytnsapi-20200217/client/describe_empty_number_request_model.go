@@ -26,7 +26,7 @@ type iDescribeEmptyNumberRequest interface {
 type DescribeEmptyNumberRequest struct {
 	// The authorization code.
 	//
-	// >  On the **My Applications*	- page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	// > On the **My Applications*	- page of the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), obtain the authorization ID, which is the authorization code.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,10 @@ type DescribeEmptyNumberRequest struct {
 	//
 	// Dd1r***4id
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	// The phone number to be queried.
+	// The phone number to query.
 	//
-	// >  You can query only one phone number a time.
+	//
+	// > Only single-number queries are supported.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +45,13 @@ type DescribeEmptyNumberRequest struct {
 	//
 	// 189****1234
 	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
-	// The encryption method of the phone number. Valid values:
+	// The encryption method for the phone number. Valid values:
 	//
-	// 	- **NORMAL**: The phone number is not encrypted.
+	// - **NORMAL**: no encryption.
 	//
-	// 	- **MD5**
+	// - **MD5**
 	//
-	// 	- **SHA256**
+	// - **SHA256**.
 	//
 	// This parameter is required.
 	//

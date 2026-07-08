@@ -21,7 +21,7 @@ type iQueryPackageTypeInfoRequest interface {
 
 type QueryPackageTypeInfoRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 产品名称，如dysms
+	// The product name. The value must be dytns.
 	//
 	// example:
 	//

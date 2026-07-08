@@ -22,27 +22,27 @@ type iCompanyTwoElementsVerificationResponseBody interface {
 }
 
 type CompanyTwoElementsVerificationResponseBody struct {
-	// The details about the access denial.
+	// Details about the access denial.
 	//
 	// example:
 	//
 	// -
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code.
+	// The request status code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The struct.
 	Data *CompanyTwoElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The description of the returned status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+	// The common parameter. Each request returns a unique ID, which can be used to troubleshoot and locate issues.
 	//
 	// example:
 	//
@@ -113,19 +113,31 @@ func (s *CompanyTwoElementsVerificationResponseBody) Validate() error {
 }
 
 type CompanyTwoElementsVerificationResponseBodyData struct {
-	// The information about the enterprise.
+	// Enterprise details.
+	//
+	// > This field is not returned for public institutions or civil groups.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "enterpriseStatus": "在营（开业）",
+	//
+	//       "openTime": "2023-05-25/2053-05-24"
+	//
+	// }
 	DetailInfo *CompanyTwoElementsVerificationResponseBodyDataDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
-	// The fields to be verified.
+	// The fields that are inconsistent in the verification.
 	InconsistentData []*string `json:"InconsistentData,omitempty" xml:"InconsistentData,omitempty" type:"Repeated"`
-	// The code of the verification result. Valid values:
+	// The verification result code. Valid values:
 	//
-	// 	- 0: The two elements belong to the same enterprise.
+	// - 0: Verification consistent
 	//
-	// 	- 1: The two elements belong to the same enterprise, but the business status of the enterprise is abnormal.
+	// - 1: Verification consistent, the enterprise is not in normal operation
 	//
-	// 	- 3: The two elements do not belong to the same enterprise.
+	// - 3: The two enterprise elements failed verification
 	//
-	// 	- 4: No information about the enterprise is found.
+	// - 4: No such enterprise found
 	//
 	// example:
 	//
@@ -133,9 +145,11 @@ type CompanyTwoElementsVerificationResponseBodyData struct {
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	// The verification result. Valid values:
 	//
-	// 	- true: The two elements belong to the same enterprise and the business status of the enterprise is Active.
+	// - true: The information is verified to be consistent, and the enterprise is operating normally.
 	//
-	// 	- false: The two elements do not belong to the same enterprise.
+	// - false: The verification failed.
+	//
+	// > The operating status verification is not supported for public institutions or civil groups. Only the consistency between the enterprise name and the enterprise certificate number is verified.
 	//
 	// example:
 	//
@@ -197,11 +211,11 @@ func (s *CompanyTwoElementsVerificationResponseBodyData) Validate() error {
 }
 
 type CompanyTwoElementsVerificationResponseBodyDataDetailInfo struct {
-	// The business status of the enterprise.
+	// The operating status of the enterprise.
 	//
 	// example:
 	//
-	// Active
+	// 在营（开业）
 	EnterpriseStatus *string `json:"EnterpriseStatus,omitempty" xml:"EnterpriseStatus,omitempty"`
 	// The business term of the enterprise.
 	//

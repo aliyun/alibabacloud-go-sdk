@@ -21,13 +21,7 @@ type iDescribePhoneNumberAttributeRequest interface {
 
 type DescribePhoneNumberAttributeRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The phone number that you want to query.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1390000****
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

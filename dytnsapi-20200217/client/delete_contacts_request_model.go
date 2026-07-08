@@ -20,6 +20,8 @@ type iDeleteContactsRequest interface {
 }
 
 type DeleteContactsRequest struct {
+	// The ID of the contact.
+	//
 	// This parameter is required.
 	//
 	// example:

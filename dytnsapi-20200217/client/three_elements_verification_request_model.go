@@ -30,7 +30,7 @@ type iThreeElementsVerificationRequest interface {
 type ThreeElementsVerificationRequest struct {
 	// The authorization code.
 	//
-	// >  On the **My Applications*	- page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	// > On the **My Applications*	- page of the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), the authorization ID is the authorization code.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type ThreeElementsVerificationRequest struct {
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	// The ID card number to be verified.
 	//
-	// 	- If the value of Mask is NORMAL, specify a value in plaintext for this field.
+	// - If Mask is set to NORMAL, this field is in plaintext.
 	//
-	// 	- If the value of Mask is MD5, specify a MD5-encrypted value for this field.
+	// - If Mask is set to MD5, encrypt this field by using MD5.
 	//
-	// 	- If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
+	// - If Mask is set to SHA256, encrypt this field by using SHA256.
 	//
-	// >  Letters in the encrypted strings are not case-sensitive.
+	// 	Notice: Letters in the encrypted string are case-insensitive.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type ThreeElementsVerificationRequest struct {
 	CertCode *string `json:"CertCode,omitempty" xml:"CertCode,omitempty"`
 	// The phone number to be verified.
 	//
-	// 	- If the value of Mask is NORMAL, specify a value in plaintext for this field.
+	// - If Mask is set to NORMAL, this field is in plaintext.
 	//
-	// 	- If the value of Mask is MD5, specify a MD5-encrypted value for this field.
+	// - If Mask is set to MD5, encrypt this field by using MD5.
 	//
-	// 	- If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
+	// - If Mask is set to SHA256, encrypt this field by using SHA256.
 	//
-	// >  Letters in the encrypted strings are not case-sensitive.
+	// 	Notice: Letters in the encrypted string are case-insensitive.
 	//
 	// This parameter is required.
 	//
@@ -72,11 +72,11 @@ type ThreeElementsVerificationRequest struct {
 	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	// The encryption method. Valid values:
 	//
-	// 	- **NORMAL**: The phone number is not encrypted.
+	// - **NORMAL**: No encryption.
 	//
-	// 	- **MD5**
+	// - **MD5**
 	//
-	// 	- **SHA256**
+	// - **SHA256**
 	//
 	// This parameter is required.
 	//
@@ -86,19 +86,19 @@ type ThreeElementsVerificationRequest struct {
 	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	// The name to be verified.
 	//
-	// 	- If the value of Mask is NORMAL, specify a value in plaintext for this field.
+	// - If Mask is set to NORMAL, this field is in plaintext.
 	//
-	// 	- If the value of Mask is MD5, specify a MD5-encrypted value for this field.
+	// - If Mask is set to MD5, encrypt this field by using MD5.
 	//
-	// 	- If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
+	// - If Mask is set to SHA256, encrypt this field by using SHA256.
 	//
-	// >  Letters in the encrypted strings are not case-sensitive.
+	// 	Notice: Letters in the encrypted string are case-insensitive.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Aliyun
+	// 阿里云
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

@@ -20,29 +20,29 @@ type iPhoneNumberStatusForPublicResponseBody interface {
 }
 
 type PhoneNumberStatusForPublicResponseBody struct {
-	// The response code. Valid values:
+	// The status code of the request. Valid values:
 	//
-	// 	- **OK**: The request is successful.
+	// - **OK**: The request was successful.
 	//
-	// 	- **OperatorLimit**: The carrier prohibits the query of the phone number.
+	// - **OperatorLimit**: The query for the phone number is prohibited by the carrier.
 	//
-	// 	- **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	// - **RequestFrequencyLimit**: Carrier restrictions prohibit frequent queries for the same number in a short period. If this error code is returned, try again later.
 	//
-	// >  For a list of error codes, see [Service error codes](https://next.api.aliyun.com/document/Dytnsapi/2020-02-17/errorCode).
+	// > For a list of other error codes, see [API Error Center](https://next.api.aliyun.com/document/Dytnsapi/2020-02-17/errorCode).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The returned data.
 	Data *PhoneNumberStatusForPublicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The description of the status code.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -104,39 +104,39 @@ func (s *PhoneNumberStatusForPublicResponseBody) Validate() error {
 }
 
 type PhoneNumberStatusForPublicResponseBodyData struct {
-	// The basic carrier who assigns the phone number. If the queried phone number involves mobile number portability, the carrier after mobile number portability is returned.
+	// The basic carrier of the number. If the number has been ported, this parameter returns the current carrier.
 	//
 	// Valid values:
 	//
-	// 	- **CMCC**: China Mobile
+	// - **CMCC**: China Mobile
 	//
-	// 	- **CUCC**: China Unicom
+	// - **CUCC**: China Unicom
 	//
-	// 	- **CTCC**: China Telecom
+	// - **CTCC**: China Telecom
 	//
-	// >  You are not allowed to query the phone numbers assigned by China Broadnet.
+	// - **CBN**: China Broadnet
 	//
 	// example:
 	//
 	// CMCC
 	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	// The returned status for the queried phone number. Valid values:
+	// The status of the queried phone number. Valid values:
 	//
-	// 	- **NORMAL**: The queried phone number can be reached.
+	// - **NORMAL**: The number is in service.
 	//
-	// 	- **SHUTDOWN**: The queried phone number is suspended.
+	// - **SHUTDOWN**: The service for the number is suspended.
 	//
-	// 	- **POWER_OFF**: The phone is powered off.
+	// - **POWER_OFF**: The phone is powered off.
 	//
-	// 	- **NOT_EXIST**: The queried phone number is a nonexistent number.
+	// - **NOT_EXIST**: The number is non-existent.
 	//
-	// 	- **SUSPECTED_POWER_OFF**: The phone is suspected to be powered off.
+	// - **SUSPECTED_POWER_OFF**: The phone is suspected to be powered off.
 	//
-	// 	- **BUSY**: The queried phone number is busy.
+	// - **BUSY**: The line is busy.
 	//
-	// 	- **UNKNOWN**: The queried phone number is unknown.
+	// - **UNKNOWN**: The status is unknown.
 	//
-	// >  Due to system adjustment of the carrier, the BUSY and POWER_OFF states cannot be returned for the numbers assigned by China Telecom. [For more information, see the official announcements](https://help.aliyun.com/document_detail/2489709.html).
+	// > Due to carrier system adjustments, the `BUSY`, `SUSPECTED_POWER_OFF`, and `POWER_OFF` statuses are not returned for China Telecom numbers. For more information, see the [official announcement](https://help.aliyun.com/document_detail/2489709.html).
 	//
 	// example:
 	//
