@@ -28,38 +28,17 @@ type iBatchTranslateForHtmlRequest interface {
 }
 
 type BatchTranslateForHtmlRequest struct {
-	// example:
-	//
-	// baidufanyi
 	AppName *string                          `json:"appName,omitempty" xml:"appName,omitempty"`
 	Ext     *BatchTranslateForHtmlRequestExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
-	// example:
-	//
-	// text
-	Format *string `json:"format,omitempty" xml:"format,omitempty"`
-	// example:
-	//
-	// mt-turbo
-	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	Format  *string                          `json:"format,omitempty" xml:"format,omitempty"`
+	Scene   *string                          `json:"scene,omitempty" xml:"scene,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// zh
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// en
 	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
 	// This parameter is required.
 	Text map[string]interface{} `json:"text,omitempty" xml:"text,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-kqtrcpdee4xm29xx
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
@@ -153,10 +132,7 @@ func (s *BatchTranslateForHtmlRequest) Validate() error {
 }
 
 type BatchTranslateForHtmlRequestExt struct {
-	Config *BatchTranslateForHtmlRequestExtConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// example:
-	//
-	// this sentence from an e-commerce product image, please provide a translation that is both highly concise and no more than 1.2 times the length of the original.
+	Config        *BatchTranslateForHtmlRequestExtConfig          `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
 	DomainHint    *string                                         `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
 	Examples      []*BatchTranslateForHtmlRequestExtExamples      `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
 	LangDetect    *bool                                           `json:"langDetect,omitempty" xml:"langDetect,omitempty"`
@@ -269,9 +245,6 @@ func (s *BatchTranslateForHtmlRequestExt) Validate() error {
 }
 
 type BatchTranslateForHtmlRequestExtConfig struct {
-	// example:
-	//
-	// fasle
 	SkipCsiCheck *bool `json:"skipCsiCheck,omitempty" xml:"skipCsiCheck,omitempty"`
 }
 
@@ -298,9 +271,6 @@ func (s *BatchTranslateForHtmlRequestExtConfig) Validate() error {
 
 type BatchTranslateForHtmlRequestExtExamples struct {
 	Src *string `json:"src,omitempty" xml:"src,omitempty"`
-	// example:
-	//
-	// hello
 	Tgt *string `json:"tgt,omitempty" xml:"tgt,omitempty"`
 }
 
@@ -336,9 +306,6 @@ func (s *BatchTranslateForHtmlRequestExtExamples) Validate() error {
 
 type BatchTranslateForHtmlRequestExtTerminologies struct {
 	Src *string `json:"src,omitempty" xml:"src,omitempty"`
-	// example:
-	//
-	// API
 	Tgt *string `json:"tgt,omitempty" xml:"tgt,omitempty"`
 }
 
@@ -373,17 +340,8 @@ func (s *BatchTranslateForHtmlRequestExtTerminologies) Validate() error {
 }
 
 type BatchTranslateForHtmlRequestExtTextTransform struct {
-	// example:
-	//
-	// false
 	ToLower *bool `json:"toLower,omitempty" xml:"toLower,omitempty"`
-	// example:
-	//
-	// false
 	ToTitle *bool `json:"toTitle,omitempty" xml:"toTitle,omitempty"`
-	// example:
-	//
-	// false
 	ToUpper *bool `json:"toUpper,omitempty" xml:"toUpper,omitempty"`
 }
 

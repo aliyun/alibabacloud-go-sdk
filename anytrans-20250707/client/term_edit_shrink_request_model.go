@@ -24,32 +24,44 @@ type iTermEditShrinkRequest interface {
 }
 
 type TermEditShrinkRequest struct {
+	// The action type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ADD
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The extended parameters.
+	//
 	// This parameter is required.
 	ExtShrink *string `json:"ext,omitempty" xml:"ext,omitempty"`
+	// The model type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mt-turbo
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The source language. The value must be a valid BCP-47 language code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// en
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// The target language. The value must be a valid BCP-47 language code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh
 	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
+	// The ID of the Model Studio workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

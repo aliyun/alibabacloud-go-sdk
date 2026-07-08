@@ -24,26 +24,37 @@ type iSubmitDocTranslateTaskResponseBody interface {
 }
 
 type SubmitDocTranslateTaskResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// success
-	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *SubmitDocTranslateTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID, used to trace the API call.
+	//
 	// example:
 	//
 	// 377A48D7-7CFA-53F9-8CA2-14FE3F2774B6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
-	// True
+	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -119,14 +130,23 @@ func (s *SubmitDocTranslateTaskResponseBody) Validate() error {
 }
 
 type SubmitDocTranslateTaskResponseBodyData struct {
+	// The task status.
+	//
 	// example:
 	//
 	// ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The document translation task ID.
+	//
 	// example:
 	//
 	// d3a2397bc2c14ab4a2e40a4f5b46241b
-	TaskId       *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// User-defined passthrough data. The translation service returns this data without processing it. This is useful for analytics tracking.
+	//
+	// example:
+	//
+	// {"traceId":"trace_123456"}
 	TrackingData *string `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 

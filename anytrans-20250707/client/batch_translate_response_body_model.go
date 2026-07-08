@@ -24,23 +24,34 @@ type iBatchTranslateResponseBody interface {
 }
 
 type BatchTranslateResponseBody struct {
+	// The status code for the overall API call.
+	//
 	// example:
 	//
 	// 200
-	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response payload that contains the translation results.
 	Data *BatchTranslateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The unique identifier for the request. Use this ID for tracing and troubleshooting.
+	//
 	// example:
 	//
 	// 3BE338D3-16B1-513F-8DD2-57C8528DEAAA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the API call was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,6 +130,7 @@ func (s *BatchTranslateResponseBody) Validate() error {
 }
 
 type BatchTranslateResponseBodyData struct {
+	// An array of translation results, one for each text provided in the request.
 	TranslationList []*BatchTranslateResponseBodyDataTranslationList `json:"translationList,omitempty" xml:"translationList,omitempty" type:"Repeated"`
 }
 
@@ -153,24 +165,34 @@ func (s *BatchTranslateResponseBodyData) Validate() error {
 }
 
 type BatchTranslateResponseBodyDataTranslationList struct {
+	// The status code for the individual translation within the batch.
+	//
 	// example:
 	//
 	// 200
-	Code         *int64  `json:"code,omitempty" xml:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// The language code of the detected source language.
 	DetectedLang *string `json:"detectedLang,omitempty" xml:"detectedLang,omitempty"`
+	// The zero-based index of this result, which corresponds to the order of the source text in the original request.
+	//
 	// example:
 	//
 	// 0
 	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// The status message for the individual translation.
+	//
 	// example:
 	//
-	// ok
+	// OK
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The translated text.
+	//
 	// example:
 	//
-	// Featured Double Color Ball experts: Liu Ke and A Wang both hit the second prize, winning 1.43 million!
-	Translation *string                                             `json:"translation,omitempty" xml:"translation,omitempty"`
-	Usage       *BatchTranslateResponseBodyDataTranslationListUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+	// What will the weather be like tomorrow?
+	Translation *string `json:"translation,omitempty" xml:"translation,omitempty"`
+	// An object detailing the token usage for this translation.
+	Usage *BatchTranslateResponseBodyDataTranslationListUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
 }
 
 func (s BatchTranslateResponseBodyDataTranslationList) String() string {
@@ -245,17 +267,23 @@ func (s *BatchTranslateResponseBodyDataTranslationList) Validate() error {
 }
 
 type BatchTranslateResponseBodyDataTranslationListUsage struct {
+	// The number of tokens in the source text.
+	//
 	// example:
 	//
-	// 480
+	// 53
 	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// The number of tokens in the generated translation.
+	//
 	// example:
 	//
-	// 520
+	// 8
 	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// The total number of tokens processed for the translation (the sum of `inputTokens` and `outputTokens`).
+	//
 	// example:
 	//
-	// 1000
+	// 61
 	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
 }
 

@@ -24,25 +24,34 @@ type iTextTranslateResponseBody interface {
 }
 
 type TextTranslateResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                        `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The data object returned by the request.
 	Data *TextTranslateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// A message that provides details about the response.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The unique identifier for the request.
 	//
 	// example:
 	//
 	// 299C57B2-EBB4-57E2-A6FE-723B874ACB74
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,12 +130,16 @@ func (s *TextTranslateResponseBody) Validate() error {
 }
 
 type TextTranslateResponseBodyData struct {
+	// The detected source language.
 	DetectedLang *string `json:"detectedLang,omitempty" xml:"detectedLang,omitempty"`
+	// The translated text.
+	//
 	// example:
 	//
 	// How does Mogujie solve the data annotation challenge by building a platform?
-	Translation *string                             `json:"translation,omitempty" xml:"translation,omitempty"`
-	Usage       *TextTranslateResponseBodyDataUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+	Translation *string `json:"translation,omitempty" xml:"translation,omitempty"`
+	// Details about the Tokens consumed by the request.
+	Usage *TextTranslateResponseBodyDataUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
 }
 
 func (s TextTranslateResponseBodyData) String() string {
@@ -174,14 +187,20 @@ func (s *TextTranslateResponseBodyData) Validate() error {
 }
 
 type TextTranslateResponseBodyDataUsage struct {
+	// The number of Tokens in the input text.
+	//
 	// example:
 	//
 	// 491
 	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// The number of Tokens in the output text.
+	//
 	// example:
 	//
 	// 400
 	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// The total number of Tokens consumed by the request.
+	//
 	// example:
 	//
 	// 891

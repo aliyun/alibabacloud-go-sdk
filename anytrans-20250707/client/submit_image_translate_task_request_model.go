@@ -26,27 +26,44 @@ type iSubmitImageTranslateTaskRequest interface {
 }
 
 type SubmitImageTranslateTaskRequest struct {
+	// Extended parameters to control translation features.
 	Ext *SubmitImageTranslateTaskRequestExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
+	// The translation format.
+	//
 	// example:
 	//
 	// image
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// Specifies the translation model.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// flash
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The source language.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// A list of target languages.
+	//
 	// This parameter is required.
 	TargetLanguage []*string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty" type:"Repeated"`
+	// The URL of the image to translate.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i3/2214557014466/O1CN0174Thmb1irTsyTXYFO_!!4611686018427386306-0-item_pic.jpg
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The ID of the Model Studio workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -136,16 +153,32 @@ func (s *SubmitImageTranslateTaskRequest) Validate() error {
 }
 
 type SubmitImageTranslateTaskRequestExt struct {
+	// An English string that guides the translation style of the large language model (LLM).
+	//
 	// example:
 	//
-	// technology
-	DomainHint    *string                                            `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
-	Examples      []*SubmitImageTranslateTaskRequestExtExamples      `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
-	ParamMap      interface{}                                        `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
-	Sensitives    []*string                                          `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
+	// this sentence from an e-commerce product image, please provide a translation that is both highly concise and no more than 1.2 times the length of the original.
+	DomainHint *string `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
+	// A list of translation examples.
+	Examples []*SubmitImageTranslateTaskRequestExtExamples `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
+	// Parameters for isolating terminology to prevent interference between different users or business scenarios. Use `bizUserId` for user-level isolation and `bizType` for scenario-level isolation.
+	//
+	// example:
+	//
+	// {"bizUserld":"123456","bizType":session"}
+	ParamMap interface{} `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
+	// A list of sensitive words.
+	Sensitives []*string `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
+	// A list of custom term pairs to apply to the translation.
 	Terminologies []*SubmitImageTranslateTaskRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
-	TextTransform *SubmitImageTranslateTaskRequestExtTextTransform   `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
-	TrackingData  *string                                            `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
+	// Specifies case conversion for the translated text.
+	TextTransform *SubmitImageTranslateTaskRequestExtTextTransform `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
+	// User-defined pass-through data that the service returns unmodified in the response. This is typically used for analytics tracking.
+	//
+	// example:
+	//
+	// {"traceId":"trace_123456"}
+	TrackingData *string `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 
 func (s SubmitImageTranslateTaskRequestExt) String() string {
@@ -247,7 +280,14 @@ func (s *SubmitImageTranslateTaskRequestExt) Validate() error {
 }
 
 type SubmitImageTranslateTaskRequestExtExamples struct {
+	// The source text.
+	//
+	// example:
+	//
+	// 你好
 	Src *string `json:"src,omitempty" xml:"src,omitempty"`
+	// The target text.
+	//
 	// example:
 	//
 	// hello
@@ -285,7 +325,14 @@ func (s *SubmitImageTranslateTaskRequestExtExamples) Validate() error {
 }
 
 type SubmitImageTranslateTaskRequestExtTerminologies struct {
+	// The source text.
+	//
+	// example:
+	//
+	// 机器学习
 	Src *string `json:"src,omitempty" xml:"src,omitempty"`
+	// The custom translation for the source text.
+	//
 	// example:
 	//
 	// ML
@@ -323,14 +370,20 @@ func (s *SubmitImageTranslateTaskRequestExtTerminologies) Validate() error {
 }
 
 type SubmitImageTranslateTaskRequestExtTextTransform struct {
+	// Set to `true` to convert the entire translated text to lowercase.
+	//
 	// example:
 	//
 	// false
 	ToLower *bool `json:"toLower,omitempty" xml:"toLower,omitempty"`
+	// Set to `true` to convert the entire translated text to title case.
+	//
 	// example:
 	//
 	// false
 	ToTitle *bool `json:"toTitle,omitempty" xml:"toTitle,omitempty"`
+	// Set to `true` to convert the entire translated text to uppercase.
+	//
 	// example:
 	//
 	// false

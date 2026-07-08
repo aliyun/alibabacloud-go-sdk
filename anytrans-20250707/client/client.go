@@ -24,7 +24,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-beijing": dara.String("anytrans.cn-beijing.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +61,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 通义多模态翻译批量翻译
+// Tongyi Multimodal Translation: Batch Translation
 //
 // @param tmpReq - BatchTranslateRequest
 //
@@ -143,7 +146,7 @@ func (client *Client) BatchTranslateWithOptions(tmpReq *BatchTranslateRequest, h
 
 // Summary:
 //
-// 通义多模态翻译批量翻译
+// Tongyi Multimodal Translation: Batch Translation
 //
 // @param request - BatchTranslateRequest
 //
@@ -266,7 +269,11 @@ func (client *Client) BatchTranslateForHtml(request *BatchTranslateForHtmlReques
 
 // Summary:
 //
-// 通义多模态翻译获文档翻译任务
+// Gets the results of a document translation task from Tongyi Multimodal Translation.
+//
+// Description:
+//
+// Gets the results of a document translation task.
 //
 // @param request - GetDocTranslateTaskRequest
 //
@@ -317,7 +324,11 @@ func (client *Client) GetDocTranslateTaskWithOptions(request *GetDocTranslateTas
 
 // Summary:
 //
-// 通义多模态翻译获文档翻译任务
+// Gets the results of a document translation task from Tongyi Multimodal Translation.
+//
+// Description:
+//
+// Gets the results of a document translation task.
 //
 // @param request - GetDocTranslateTaskRequest
 //
@@ -336,7 +347,7 @@ func (client *Client) GetDocTranslateTask(request *GetDocTranslateTaskRequest) (
 
 // Summary:
 //
-// 通义多模态翻译获取html翻译结果
+// Retrieves the result of an HTML translation task from Tongyi Multimodal Translation.
 //
 // @param request - GetHtmlTranslateTaskRequest
 //
@@ -387,7 +398,7 @@ func (client *Client) GetHtmlTranslateTaskWithOptions(request *GetHtmlTranslateT
 
 // Summary:
 //
-// 通义多模态翻译获取html翻译结果
+// Retrieves the result of an HTML translation task from Tongyi Multimodal Translation.
 //
 // @param request - GetHtmlTranslateTaskRequest
 //
@@ -406,7 +417,7 @@ func (client *Client) GetHtmlTranslateTask(request *GetHtmlTranslateTaskRequest)
 
 // Summary:
 //
-// 通义多模态翻译获取图片翻译任务
+// Tongyi Multimodal Translation: Getting image translation results
 //
 // @param request - GetImageTranslateTaskRequest
 //
@@ -457,7 +468,7 @@ func (client *Client) GetImageTranslateTaskWithOptions(request *GetImageTranslat
 
 // Summary:
 //
-// 通义多模态翻译获取图片翻译任务
+// Tongyi Multimodal Translation: Getting image translation results
 //
 // @param request - GetImageTranslateTaskRequest
 //
@@ -476,7 +487,7 @@ func (client *Client) GetImageTranslateTask(request *GetImageTranslateTaskReques
 
 // Summary:
 //
-// 通义多模态翻译获取长文翻译结果
+// Get document translations from Tongyi Multimodal Translation.
 //
 // @param request - GetLongTextTranslateTaskRequest
 //
@@ -527,7 +538,7 @@ func (client *Client) GetLongTextTranslateTaskWithOptions(request *GetLongTextTr
 
 // Summary:
 //
-// 通义多模态翻译获取长文翻译结果
+// Get document translations from Tongyi Multimodal Translation.
 //
 // @param request - GetLongTextTranslateTaskRequest
 //
@@ -546,7 +557,7 @@ func (client *Client) GetLongTextTranslateTask(request *GetLongTextTranslateTask
 
 // Summary:
 //
-// 通义多模态翻译提交文档翻译任务
+// Submit a document translation task to Tongyi Multimodal Translation.
 //
 // @param tmpReq - SubmitDocTranslateTaskRequest
 //
@@ -623,7 +634,7 @@ func (client *Client) SubmitDocTranslateTaskWithOptions(tmpReq *SubmitDocTransla
 
 // Summary:
 //
-// 通义多模态翻译提交文档翻译任务
+// Submit a document translation task to Tongyi Multimodal Translation.
 //
 // @param request - SubmitDocTranslateTaskRequest
 //
@@ -642,7 +653,7 @@ func (client *Client) SubmitDocTranslateTask(request *SubmitDocTranslateTaskRequ
 
 // Summary:
 //
-// 通义多模态翻译提交html翻译任务
+// # Submitting an HTML translation task with Tongyi Multimodal Translation
 //
 // @param tmpReq - SubmitHtmlTranslateTaskRequest
 //
@@ -719,7 +730,7 @@ func (client *Client) SubmitHtmlTranslateTaskWithOptions(tmpReq *SubmitHtmlTrans
 
 // Summary:
 //
-// 通义多模态翻译提交html翻译任务
+// # Submitting an HTML translation task with Tongyi Multimodal Translation
 //
 // @param request - SubmitHtmlTranslateTaskRequest
 //
@@ -738,7 +749,7 @@ func (client *Client) SubmitHtmlTranslateTask(request *SubmitHtmlTranslateTaskRe
 
 // Summary:
 //
-// 通义多模态翻译提交图片翻译任务
+// Use Tongyi multimodal translation to submit an image for translation.
 //
 // @param tmpReq - SubmitImageTranslateTaskRequest
 //
@@ -819,7 +830,7 @@ func (client *Client) SubmitImageTranslateTaskWithOptions(tmpReq *SubmitImageTra
 
 // Summary:
 //
-// 通义多模态翻译提交图片翻译任务
+// Use Tongyi multimodal translation to submit an image for translation.
 //
 // @param request - SubmitImageTranslateTaskRequest
 //
@@ -838,7 +849,7 @@ func (client *Client) SubmitImageTranslateTask(request *SubmitImageTranslateTask
 
 // Summary:
 //
-// 通义多模态翻译提交长文翻译任务
+// Submitting a long text translation task using Translate Multimodal.
 //
 // @param tmpReq - SubmitLongTextTranslateTaskRequest
 //
@@ -915,7 +926,7 @@ func (client *Client) SubmitLongTextTranslateTaskWithOptions(tmpReq *SubmitLongT
 
 // Summary:
 //
-// 通义多模态翻译提交长文翻译任务
+// Submitting a long text translation task using Translate Multimodal.
 //
 // @param request - SubmitLongTextTranslateTaskRequest
 //
@@ -934,7 +945,7 @@ func (client *Client) SubmitLongTextTranslateTask(request *SubmitLongTextTransla
 
 // Summary:
 //
-// 通义多模态翻译术语编辑
+// # Editing the Tongyi Multimodal Translation termbase
 //
 // @param tmpReq - TermEditRequest
 //
@@ -1007,7 +1018,7 @@ func (client *Client) TermEditWithOptions(tmpReq *TermEditRequest, headers map[s
 
 // Summary:
 //
-// 通义多模态翻译术语编辑
+// # Editing the Tongyi Multimodal Translation termbase
 //
 // @param request - TermEditRequest
 //
@@ -1026,7 +1037,7 @@ func (client *Client) TermEdit(request *TermEditRequest) (_result *TermEditRespo
 
 // Summary:
 //
-// 通义多模态翻译术语查询
+// Queries the Tongyi Multimodal Translation termbase for intervention terms.
 //
 // @param tmpReq - TermQueryRequest
 //
@@ -1099,7 +1110,7 @@ func (client *Client) TermQueryWithOptions(tmpReq *TermQueryRequest, headers map
 
 // Summary:
 //
-// 通义多模态翻译术语查询
+// Queries the Tongyi Multimodal Translation termbase for intervention terms.
 //
 // @param request - TermQueryRequest
 //
@@ -1118,7 +1129,7 @@ func (client *Client) TermQuery(request *TermQueryRequest) (_result *TermQueryRe
 
 // Summary:
 //
-// 通义多模态翻译文本翻译
+// Tongyi Multimodal Translation: Text Translation
 //
 // @param tmpReq - TextTranslateRequest
 //
@@ -1195,7 +1206,7 @@ func (client *Client) TextTranslateWithOptions(tmpReq *TextTranslateRequest, hea
 
 // Summary:
 //
-// 通义多模态翻译文本翻译
+// Tongyi Multimodal Translation: Text Translation
 //
 // @param request - TextTranslateRequest
 //

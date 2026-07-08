@@ -26,33 +26,46 @@ type iSubmitDocTranslateTaskShrinkRequest interface {
 }
 
 type SubmitDocTranslateTaskShrinkRequest struct {
+	// Extension parameters that control translation features.
 	ExtShrink *string `json:"ext,omitempty" xml:"ext,omitempty"`
+	// The format for the translation.
+	//
 	// example:
 	//
 	// text
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// The translation model.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// spoke-llm
+	// mt-turbo
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The source language code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// The target language code.
+	//
 	// example:
 	//
 	// en
 	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
+	// The URL of the document to translate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://xxx-hangzhou.aliyuncs.com/docs/tmp/%E6%A0%B7%E4%BE%8B_%E6%97%A0%E5%9B%BE.pdf
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The ID of the Model Studio workspace for the current request.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -26,24 +26,66 @@ type iSubmitHtmlTranslateTaskRequest interface {
 }
 
 type SubmitHtmlTranslateTaskRequest struct {
+	// Extended parameters to control translation behavior.
 	Ext *SubmitHtmlTranslateTaskRequestExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
+	// The format of the input text.
+	//
 	// example:
 	//
 	// text
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// The translation model.
+	//
 	// example:
 	//
 	// mt-turbo
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The source language.
+	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// The target language.
+	//
 	// example:
 	//
 	// en
 	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
-	Text           *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The HTML content to be translated.
+	//
+	// example:
+	//
+	// <!DOCTYPE html>
+	//
+	// <html lang="zh-CN">
+	//
+	// <head>
+	//
+	//     <meta charset="UTF-8">
+	//
+	//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	//
+	//     <title>我的第一个网页</title>
+	//
+	// </head>
+	//
+	// <body>
+	//
+	//     <h1>欢迎来到我的网页！</h1>
+	//
+	//     <p>这是一个简单的 HTML 页面。</p>
+	//
+	//     <p>学习 HTML 是进入网页开发的第一步。</p>
+	//
+	//     <a href="https://www.example.com">点击这里访问示例网站</a>
+	//
+	// </body>
+	//
+	// </html>
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The ID of the Model Studio workspace used for this request.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -133,17 +175,34 @@ func (s *SubmitHtmlTranslateTaskRequest) Validate() error {
 }
 
 type SubmitHtmlTranslateTaskRequestExt struct {
+	// Provides specific configuration settings for the translation task.
 	Config *SubmitHtmlTranslateTaskRequestExtConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// A natural language prompt in English to guide the model\\"s translation style.
+	//
 	// example:
 	//
-	// technology
-	DomainHint    *string                                           `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
-	Examples      []*SubmitHtmlTranslateTaskRequestExtExamples      `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
-	ParamMap      interface{}                                       `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
-	Sensitives    []*string                                         `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
+	// his sentence from an e-commerce product image, please provide a translation that is both highly concise and no more than 1.2 times the length of the original.
+	DomainHint *string `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
+	// A list of translation examples.
+	Examples []*SubmitHtmlTranslateTaskRequestExtExamples `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
+	// Provides extended parameter configuration. The `bizUserId` key specifies the business user ID to isolate custom terminology enforcement by user. The `bizType` key specifies the business scenario type to isolate custom terminology enforcement by scenario.
+	//
+	// example:
+	//
+	// {"bizUserld":"123456","bizType":session"}
+	ParamMap interface{} `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
+	// A list of sensitive words to filter from the translation.
+	Sensitives []*string `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
+	// A list of custom terminology pairs to apply to the translation.
 	Terminologies []*SubmitHtmlTranslateTaskRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
-	TextTransform *SubmitHtmlTranslateTaskRequestExtTextTransform   `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
-	TrackingData  *string                                           `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
+	// Specifies case transformations for the translated text.
+	TextTransform *SubmitHtmlTranslateTaskRequestExtTextTransform `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
+	// Custom passthrough data that the service returns unprocessed in the response. Useful for tasks such as event tracking.
+	//
+	// example:
+	//
+	// {"traceId":"trace_123456"}
+	TrackingData *string `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 
 func (s SubmitHtmlTranslateTaskRequestExt) String() string {
@@ -259,8 +318,14 @@ func (s *SubmitHtmlTranslateTaskRequestExt) Validate() error {
 }
 
 type SubmitHtmlTranslateTaskRequestExtConfig struct {
-	CallbackUrl  *string `json:"callbackUrl,omitempty" xml:"callbackUrl,omitempty"`
-	SkipCsiCheck *bool   `json:"skipCsiCheck,omitempty" xml:"skipCsiCheck,omitempty"`
+	// The callback URL for receiving translation results.
+	CallbackUrl *string `json:"callbackUrl,omitempty" xml:"callbackUrl,omitempty"`
+	// Specifies whether to skip the Content Moderation check. To skip this check, you must first complete the Content Moderation disablement process before calling the API.
+	//
+	// example:
+	//
+	// false
+	SkipCsiCheck *bool `json:"skipCsiCheck,omitempty" xml:"skipCsiCheck,omitempty"`
 }
 
 func (s SubmitHtmlTranslateTaskRequestExtConfig) String() string {
@@ -294,7 +359,14 @@ func (s *SubmitHtmlTranslateTaskRequestExtConfig) Validate() error {
 }
 
 type SubmitHtmlTranslateTaskRequestExtExamples struct {
+	// The source text in the example.
+	//
+	// example:
+	//
+	// 你好
 	Src *string `json:"src,omitempty" xml:"src,omitempty"`
+	// The target text in the example.
+	//
 	// example:
 	//
 	// hello
@@ -332,7 +404,14 @@ func (s *SubmitHtmlTranslateTaskRequestExtExamples) Validate() error {
 }
 
 type SubmitHtmlTranslateTaskRequestExtTerminologies struct {
+	// The source text for the terminology pair.
+	//
+	// example:
+	//
+	// 机器学习
 	Src *string `json:"src,omitempty" xml:"src,omitempty"`
+	// The target text for the terminology pair.
+	//
 	// example:
 	//
 	// ML
@@ -370,14 +449,20 @@ func (s *SubmitHtmlTranslateTaskRequestExtTerminologies) Validate() error {
 }
 
 type SubmitHtmlTranslateTaskRequestExtTextTransform struct {
+	// Converts the entire translated text to lowercase.
+	//
 	// example:
 	//
 	// false
 	ToLower *bool `json:"toLower,omitempty" xml:"toLower,omitempty"`
+	// Converts the translated text to title case.
+	//
 	// example:
 	//
 	// false
 	ToTitle *bool `json:"toTitle,omitempty" xml:"toTitle,omitempty"`
+	// Converts the entire translated text to uppercase.
+	//
 	// example:
 	//
 	// false

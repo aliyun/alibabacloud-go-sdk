@@ -26,33 +26,46 @@ type iSubmitDocTranslateTaskRequest interface {
 }
 
 type SubmitDocTranslateTaskRequest struct {
+	// Extension parameters that control translation features.
 	Ext *SubmitDocTranslateTaskRequestExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
+	// The format for the translation.
+	//
 	// example:
 	//
 	// text
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// The translation model.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// spoke-llm
+	// mt-turbo
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The source language code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// The target language code.
+	//
 	// example:
 	//
 	// en
 	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
+	// The URL of the document to translate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://xxx-hangzhou.aliyuncs.com/docs/tmp/%E6%A0%B7%E4%BE%8B_%E6%97%A0%E5%9B%BE.pdf
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The ID of the Model Studio workspace for the current request.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -142,14 +155,28 @@ func (s *SubmitDocTranslateTaskRequest) Validate() error {
 }
 
 type SubmitDocTranslateTaskRequestExt struct {
+	// Configuration settings for the translation job.
 	Config *SubmitDocTranslateTaskRequestExtConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// A prompt that tailors the translation style to a specific domain.
+	//
 	// example:
 	//
 	// This text comes from a rigorous academic paper. Please provide a translation that complies with academic standards.
-	DomainHint    *string                                          `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
-	ParamMap      interface{}                                      `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
+	DomainHint *string `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
+	// A map for advanced configuration. Use `bizUserId` to apply terminologies on a per-user basis and `bizType` to apply them on a per-scenario basis. This prevents terminology conflicts between different users or scenarios.
+	//
+	// example:
+	//
+	// {"bizUserld":"123456","bizType":session"}
+	ParamMap interface{} `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
+	// The glossary to apply to the translation.
 	Terminologies []*SubmitDocTranslateTaskRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
-	TrackingData  *string                                          `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
+	// User-defined pass-through data. The service does not process this data and returns it as-is in the response. This is useful for scenarios such as tracking.
+	//
+	// example:
+	//
+	// {"traceId":"trace_123456"}
+	TrackingData *string `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 
 func (s SubmitDocTranslateTaskRequestExt) String() string {
@@ -224,7 +251,17 @@ func (s *SubmitDocTranslateTaskRequestExt) Validate() error {
 }
 
 type SubmitDocTranslateTaskRequestExtConfig struct {
-	IsBilingual  *bool `json:"isBilingual,omitempty" xml:"isBilingual,omitempty"`
+	// Specifies whether to generate a bilingual document containing both the source and target text.
+	//
+	// example:
+	//
+	// false
+	IsBilingual *bool `json:"isBilingual,omitempty" xml:"isBilingual,omitempty"`
+	// Specifies whether to translate images in PDF documents.
+	//
+	// example:
+	//
+	// false
 	SkipImgTrans *bool `json:"skipImgTrans,omitempty" xml:"skipImgTrans,omitempty"`
 }
 
@@ -259,10 +296,17 @@ func (s *SubmitDocTranslateTaskRequestExtConfig) Validate() error {
 }
 
 type SubmitDocTranslateTaskRequestExtTerminologies struct {
-	Src *string `json:"src,omitempty" xml:"src,omitempty"`
+	// The source text that the custom translation will replace.
+	//
 	// example:
 	//
-	// llm
+	// 机器学习
+	Src *string `json:"src,omitempty" xml:"src,omitempty"`
+	// The custom translation for the corresponding source term.
+	//
+	// example:
+	//
+	// ML
 	Tgt *string `json:"tgt,omitempty" xml:"tgt,omitempty"`
 }
 

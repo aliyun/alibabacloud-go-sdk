@@ -28,30 +28,52 @@ type iBatchTranslateShrinkRequest interface {
 }
 
 type BatchTranslateShrinkRequest struct {
-	AppName   *string `json:"appName,omitempty" xml:"appName,omitempty"`
+	// The name of the calling application.
+	//
+	// example:
+	//
+	// baidufanyi
+	AppName *string `json:"appName,omitempty" xml:"appName,omitempty"`
+	// The extended parameters that control translation features.
 	ExtShrink *string `json:"ext,omitempty" xml:"ext,omitempty"`
+	// The translation format.
+	//
 	// example:
 	//
 	// text
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// The translation model.
+	//
 	// example:
 	//
 	// mt-turbo
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The source language.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// The target language.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// en
 	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
+	// A map of texts to translate, in which the key is a custom identifier and the value is the source text.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"0":"明天天气怎么样？","1":"你中午吃饭了吗"}
 	TextShrink *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The ID of the Model Studio workspace used for this request.
+	//
 	// This parameter is required.
 	//
 	// example:

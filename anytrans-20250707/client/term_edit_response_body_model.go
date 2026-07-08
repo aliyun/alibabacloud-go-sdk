@@ -24,23 +24,34 @@ type iTermEditResponseBody interface {
 }
 
 type TermEditResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
-	// "success"
-	Code *string                   `json:"code,omitempty" xml:"code,omitempty"`
+	// success
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *TermEditResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The message.
+	//
 	// example:
 	//
-	// "success"
+	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1DCD50EC-D218-1844-9CD8-E97CAB9D31BE
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the API call is successful.
+	//
 	// example:
 	//
 	// true
@@ -119,11 +130,14 @@ func (s *TermEditResponseBody) Validate() error {
 }
 
 type TermEditResponseBodyData struct {
+	// The number of items that failed to be processed.
+	//
 	// example:
 	//
 	// 0
-	FailCount *int64                           `json:"failCount,omitempty" xml:"failCount,omitempty"`
-	Terms     []*TermEditResponseBodyDataTerms `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
+	FailCount *int64 `json:"failCount,omitempty" xml:"failCount,omitempty"`
+	// An array of intervention term objects.
+	Terms []*TermEditResponseBodyDataTerms `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
 }
 
 func (s TermEditResponseBodyData) String() string {
@@ -166,11 +180,20 @@ func (s *TermEditResponseBodyData) Validate() error {
 }
 
 type TermEditResponseBodyDataTerms struct {
+	// The source text.
+	//
+	// example:
+	//
+	// 大模型
 	Src *string `json:"src,omitempty" xml:"src,omitempty"`
+	// The term ID.
+	//
 	// example:
 	//
 	// 92669964
 	TermId *string `json:"termId,omitempty" xml:"termId,omitempty"`
+	// The target text.
+	//
 	// example:
 	//
 	// LLM

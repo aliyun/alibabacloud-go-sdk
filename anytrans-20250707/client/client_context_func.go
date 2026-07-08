@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 通义多模态翻译批量翻译
+// Tongyi Multimodal Translation: Batch Translation
 //
 // @param tmpReq - BatchTranslateRequest
 //
@@ -179,7 +179,11 @@ func (client *Client) BatchTranslateForHtmlWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 通义多模态翻译获文档翻译任务
+// Gets the results of a document translation task from Tongyi Multimodal Translation.
+//
+// Description:
+//
+// Gets the results of a document translation task.
 //
 // @param request - GetDocTranslateTaskRequest
 //
@@ -230,7 +234,7 @@ func (client *Client) GetDocTranslateTaskWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 通义多模态翻译获取html翻译结果
+// Retrieves the result of an HTML translation task from Tongyi Multimodal Translation.
 //
 // @param request - GetHtmlTranslateTaskRequest
 //
@@ -281,7 +285,7 @@ func (client *Client) GetHtmlTranslateTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 通义多模态翻译获取图片翻译任务
+// Tongyi Multimodal Translation: Getting image translation results
 //
 // @param request - GetImageTranslateTaskRequest
 //
@@ -332,7 +336,7 @@ func (client *Client) GetImageTranslateTaskWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 通义多模态翻译获取长文翻译结果
+// Get document translations from Tongyi Multimodal Translation.
 //
 // @param request - GetLongTextTranslateTaskRequest
 //
@@ -383,7 +387,7 @@ func (client *Client) GetLongTextTranslateTaskWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 通义多模态翻译提交文档翻译任务
+// Submit a document translation task to Tongyi Multimodal Translation.
 //
 // @param tmpReq - SubmitDocTranslateTaskRequest
 //
@@ -460,7 +464,7 @@ func (client *Client) SubmitDocTranslateTaskWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 通义多模态翻译提交html翻译任务
+// # Submitting an HTML translation task with Tongyi Multimodal Translation
 //
 // @param tmpReq - SubmitHtmlTranslateTaskRequest
 //
@@ -537,7 +541,7 @@ func (client *Client) SubmitHtmlTranslateTaskWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 通义多模态翻译提交图片翻译任务
+// Use Tongyi multimodal translation to submit an image for translation.
 //
 // @param tmpReq - SubmitImageTranslateTaskRequest
 //
@@ -618,7 +622,7 @@ func (client *Client) SubmitImageTranslateTaskWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 通义多模态翻译提交长文翻译任务
+// Submitting a long text translation task using Translate Multimodal.
 //
 // @param tmpReq - SubmitLongTextTranslateTaskRequest
 //
@@ -695,7 +699,7 @@ func (client *Client) SubmitLongTextTranslateTaskWithContext(ctx context.Context
 
 // Summary:
 //
-// 通义多模态翻译术语编辑
+// # Editing the Tongyi Multimodal Translation termbase
 //
 // @param tmpReq - TermEditRequest
 //
@@ -768,7 +772,7 @@ func (client *Client) TermEditWithContext(ctx context.Context, tmpReq *TermEditR
 
 // Summary:
 //
-// 通义多模态翻译术语查询
+// Queries the Tongyi Multimodal Translation termbase for intervention terms.
 //
 // @param tmpReq - TermQueryRequest
 //
@@ -841,7 +845,7 @@ func (client *Client) TermQueryWithContext(ctx context.Context, tmpReq *TermQuer
 
 // Summary:
 //
-// 通义多模态翻译文本翻译
+// Tongyi Multimodal Translation: Text Translation
 //
 // @param tmpReq - TextTranslateRequest
 //

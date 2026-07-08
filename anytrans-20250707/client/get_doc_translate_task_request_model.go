@@ -16,12 +16,16 @@ type iGetDocTranslateTaskRequest interface {
 }
 
 type GetDocTranslateTaskRequest struct {
+	// The document translation task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// d3a2397bc2c14ab4a2e40a4f5b46241b
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The ID of the Model Studio workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

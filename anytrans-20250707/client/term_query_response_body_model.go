@@ -24,23 +24,34 @@ type iTermQueryResponseBody interface {
 }
 
 type TermQueryResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
-	// "success"
-	Code *string                    `json:"code,omitempty" xml:"code,omitempty"`
+	// success
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *TermQueryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
-	// "success"
+	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C3C70C8F-E026-17D8-854E-7F8EF2F5C909
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates if the API call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -119,11 +130,14 @@ func (s *TermQueryResponseBody) Validate() error {
 }
 
 type TermQueryResponseBodyData struct {
+	// The number of items that failed processing.
+	//
 	// example:
 	//
 	// 0
-	FailCount *int64                            `json:"failCount,omitempty" xml:"failCount,omitempty"`
-	Terms     []*TermQueryResponseBodyDataTerms `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
+	FailCount *int64 `json:"failCount,omitempty" xml:"failCount,omitempty"`
+	// A list of identified intervention terms.
+	Terms []*TermQueryResponseBodyDataTerms `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
 }
 
 func (s TermQueryResponseBodyData) String() string {
@@ -166,11 +180,20 @@ func (s *TermQueryResponseBodyData) Validate() error {
 }
 
 type TermQueryResponseBodyDataTerms struct {
+	// The term in the source language.
+	//
+	// example:
+	//
+	// 大模型
 	Src *string `json:"src,omitempty" xml:"src,omitempty"`
+	// The ID of the intervention term.
+	//
 	// example:
 	//
 	// 92669963
 	TermId *string `json:"termId,omitempty" xml:"termId,omitempty"`
+	// The translated term in the target language.
+	//
 	// example:
 	//
 	// LLM

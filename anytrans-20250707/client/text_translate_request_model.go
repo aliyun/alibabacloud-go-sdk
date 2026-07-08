@@ -26,29 +26,46 @@ type iTextTranslateRequest interface {
 }
 
 type TextTranslateRequest struct {
+	// Extended parameters to control translation behavior
 	Ext *TextTranslateRequestExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
+	// text format
+	//
 	// example:
 	//
 	// text
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// Model type
+	//
 	// example:
 	//
 	// mt-turbo
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// Source language code
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// Target Language Code
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// en
 	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
+	// Text to be translated
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 今天天气怎么样
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// Workspace ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -138,19 +155,41 @@ func (s *TextTranslateRequest) Validate() error {
 }
 
 type TextTranslateRequestExt struct {
-	Agent  *string                        `json:"agent,omitempty" xml:"agent,omitempty"`
+	// Expert agent
+	//
+	// example:
+	//
+	// game
+	Agent *string `json:"agent,omitempty" xml:"agent,omitempty"`
+	// Translation Behavior Control
 	Config *TextTranslateRequestExtConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// Domain hint
+	//
 	// example:
 	//
 	// technology
-	DomainHint    *string                                 `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
-	Examples      []*TextTranslateRequestExtExamples      `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
-	LangDetect    *bool                                   `json:"langDetect,omitempty" xml:"langDetect,omitempty"`
-	ParamMap      interface{}                             `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
-	Prefix        *string                                 `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	Sensitives    []*string                               `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
+	DomainHint *string `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
+	// List of Translation Examples
+	Examples   []*TextTranslateRequestExtExamples `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
+	LangDetect *bool                              `json:"langDetect,omitempty" xml:"langDetect,omitempty"`
+	// Extended parameter configuration (bizUserld: A business-level user ID that distinguishes between different business users. It implements "user-based isolation" for terminology intervention so that interventions for one user do not affect others. bizType: A business scenario type or identifier that distinguishes between different scenarios. It implements "scenario-based isolation" for terminology intervention so that interventions for one scenario do not affect others.)
+	//
+	// example:
+	//
+	// {"bizUserld":"123456","bizType":session"}
+	ParamMap interface{} `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
+	// Prefix Configuration
+	//
+	// example:
+	//
+	// Today\\"s weather
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// Sensitive word list
+	Sensitives []*string `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
+	// Translation terminology
 	Terminologies []*TextTranslateRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
-	TextTransform *TextTranslateRequestExtTextTransform   `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
+	// Translated Text Conversion
+	TextTransform *TextTranslateRequestExtTextTransform `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
 }
 
 func (s TextTranslateRequestExt) String() string {
@@ -284,6 +323,11 @@ func (s *TextTranslateRequestExt) Validate() error {
 }
 
 type TextTranslateRequestExtConfig struct {
+	// Whether to skip the Green Web check. (To use this option, you must first complete the process to disable Green Web before making the API call.)
+	//
+	// example:
+	//
+	// fasle
 	SkipCsiCheck *bool `json:"skipCsiCheck,omitempty" xml:"skipCsiCheck,omitempty"`
 }
 
@@ -309,7 +353,14 @@ func (s *TextTranslateRequestExtConfig) Validate() error {
 }
 
 type TextTranslateRequestExtExamples struct {
+	// Source text
+	//
+	// example:
+	//
+	// 你好
 	Src *string `json:"src,omitempty" xml:"src,omitempty"`
+	// Target text
+	//
 	// example:
 	//
 	// hello
@@ -347,7 +398,14 @@ func (s *TextTranslateRequestExtExamples) Validate() error {
 }
 
 type TextTranslateRequestExtTerminologies struct {
+	// Source text
+	//
+	// example:
+	//
+	// 机器学习
 	Src *string `json:"src,omitempty" xml:"src,omitempty"`
+	// Target text
+	//
 	// example:
 	//
 	// ML
@@ -385,14 +443,20 @@ func (s *TextTranslateRequestExtTerminologies) Validate() error {
 }
 
 type TextTranslateRequestExtTextTransform struct {
+	// Convert to lowercase
+	//
 	// example:
 	//
 	// false
 	ToLower *bool `json:"toLower,omitempty" xml:"toLower,omitempty"`
+	// First letter capitalized
+	//
 	// example:
 	//
 	// false
 	ToTitle *bool `json:"toTitle,omitempty" xml:"toTitle,omitempty"`
+	// Convert to uppercase
+	//
 	// example:
 	//
 	// false

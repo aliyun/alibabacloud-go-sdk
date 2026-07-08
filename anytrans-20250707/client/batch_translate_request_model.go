@@ -28,30 +28,52 @@ type iBatchTranslateRequest interface {
 }
 
 type BatchTranslateRequest struct {
-	AppName *string                   `json:"appName,omitempty" xml:"appName,omitempty"`
-	Ext     *BatchTranslateRequestExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
+	// The name of the calling application.
+	//
+	// example:
+	//
+	// baidufanyi
+	AppName *string `json:"appName,omitempty" xml:"appName,omitempty"`
+	// The extended parameters that control translation features.
+	Ext *BatchTranslateRequestExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
+	// The translation format.
+	//
 	// example:
 	//
 	// text
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// The translation model.
+	//
 	// example:
 	//
 	// mt-turbo
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The source language.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// The target language.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// en
 	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
+	// A map of texts to translate, in which the key is a custom identifier and the value is the source text.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"0":"明天天气怎么样？","1":"你中午吃饭了吗"}
 	Text map[string]interface{} `json:"text,omitempty" xml:"text,omitempty"`
+	// The ID of the Model Studio workspace used for this request.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -150,17 +172,30 @@ func (s *BatchTranslateRequest) Validate() error {
 }
 
 type BatchTranslateRequestExt struct {
+	// Controls the translation behavior.
 	Config *BatchTranslateRequestExtConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// A natural language instruction in English that guides the model\\"s translation style.
+	//
 	// example:
 	//
-	// technology
-	DomainHint    *string                                  `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
-	Examples      []*BatchTranslateRequestExtExamples      `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
-	LangDetect    *bool                                    `json:"langDetect,omitempty" xml:"langDetect,omitempty"`
-	ParamMap      interface{}                              `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
-	Sensitives    []*string                                `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
+	// this sentence from an e-commerce product image, please provide a translation that is both highly concise and no more than 1.2 times the length of the original.
+	DomainHint *string `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
+	// A list of translation examples.
+	Examples []*BatchTranslateRequestExtExamples `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
+	// Specifies whether to enable automatic detection of the source language. If set to true, the `sourceLanguage` parameter is ignored.
+	LangDetect *bool `json:"langDetect,omitempty" xml:"langDetect,omitempty"`
+	// Extended parameters for applying custom terminology that is isolated by user or business scenario.
+	//
+	// example:
+	//
+	// {"bizUserld":"123456","bizType":session"}
+	ParamMap interface{} `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
+	// A list of sensitive terms.
+	Sensitives []*string `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
+	// A list of custom terminology for overriding translations.
 	Terminologies []*BatchTranslateRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
-	TextTransform *BatchTranslateRequestExtTextTransform   `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
+	// Specifies case transformations for the translated text.
+	TextTransform *BatchTranslateRequestExtTextTransform `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
 }
 
 func (s BatchTranslateRequestExt) String() string {
@@ -276,6 +311,11 @@ func (s *BatchTranslateRequestExt) Validate() error {
 }
 
 type BatchTranslateRequestExtConfig struct {
+	// Specifies whether to skip the Content Moderation check. To set this to true, you must first complete the required process to disable Content Moderation.
+	//
+	// example:
+	//
+	// false
 	SkipCsiCheck *bool `json:"skipCsiCheck,omitempty" xml:"skipCsiCheck,omitempty"`
 }
 
@@ -301,7 +341,14 @@ func (s *BatchTranslateRequestExtConfig) Validate() error {
 }
 
 type BatchTranslateRequestExtExamples struct {
+	// The source text.
+	//
+	// example:
+	//
+	// 你好
 	Src *string `json:"src,omitempty" xml:"src,omitempty"`
+	// The target text.
+	//
 	// example:
 	//
 	// hello
@@ -339,7 +386,14 @@ func (s *BatchTranslateRequestExtExamples) Validate() error {
 }
 
 type BatchTranslateRequestExtTerminologies struct {
+	// The source text to be overridden.
+	//
+	// example:
+	//
+	// 应用接口
 	Src *string `json:"src,omitempty" xml:"src,omitempty"`
+	// The target text to use for the override.
+	//
 	// example:
 	//
 	// API
@@ -377,14 +431,20 @@ func (s *BatchTranslateRequestExtTerminologies) Validate() error {
 }
 
 type BatchTranslateRequestExtTextTransform struct {
+	// Specifies whether to convert the entire translated text to lowercase.
+	//
 	// example:
 	//
 	// false
 	ToLower *bool `json:"toLower,omitempty" xml:"toLower,omitempty"`
+	// Specifies whether to convert the entire translated text to title case.
+	//
 	// example:
 	//
 	// false
 	ToTitle *bool `json:"toTitle,omitempty" xml:"toTitle,omitempty"`
+	// Specifies whether to convert the entire translated text to uppercase.
+	//
 	// example:
 	//
 	// false

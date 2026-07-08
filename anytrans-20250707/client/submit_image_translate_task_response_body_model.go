@@ -24,23 +24,34 @@ type iSubmitImageTranslateTaskResponseBody interface {
 }
 
 type SubmitImageTranslateTaskResponseBody struct {
+	// The response error code.
+	//
 	// example:
 	//
-	// 200
-	Code *string                                   `json:"code,omitempty" xml:"code,omitempty"`
+	// success
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *SubmitImageTranslateTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID, used for tracing API calls.
+	//
 	// example:
 	//
 	// 42FF90E5-5D40-5797-AAF6-8A4D837CCCD5
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,14 +130,23 @@ func (s *SubmitImageTranslateTaskResponseBody) Validate() error {
 }
 
 type SubmitImageTranslateTaskResponseBodyData struct {
+	// The status of the translation task.
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the image translation task.
+	//
 	// example:
 	//
 	// 2746f4be-cff2-465e-a2c6-12bff30ce0f9
-	TaskId       *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// User-defined passthrough data returned unmodified in the response, which is useful for tracking purposes.
+	//
+	// example:
+	//
+	// {"traceId":"trace_123456"}
 	TrackingData *string `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 

@@ -24,23 +24,34 @@ type iSubmitHtmlTranslateTaskResponseBody interface {
 }
 
 type SubmitHtmlTranslateTaskResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
-	// 200
-	Code *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	// success
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *SubmitHtmlTranslateTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID. Use it to trace the API call.
+	//
 	// example:
 	//
 	// 72E4FDA1-5474-5DC1-8DFF-968BEEA65C49
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the API call was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,14 +130,23 @@ func (s *SubmitHtmlTranslateTaskResponseBody) Validate() error {
 }
 
 type SubmitHtmlTranslateTaskResponseBodyData struct {
+	// The translation task status.
+	//
 	// example:
 	//
 	// in_process
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The HTML translation task ID.
+	//
 	// example:
 	//
 	// 2746f4be-cff2-465e-a2c6-12bff30ce0f9
-	TaskId       *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// User-defined tracking data that the service returns as-is. Use this parameter for data tracking.
+	//
+	// example:
+	//
+	// {"traceId":"trace_123456"}
 	TrackingData *string `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 

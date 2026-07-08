@@ -24,23 +24,34 @@ type iGetHtmlTranslateTaskResponseBody interface {
 }
 
 type GetHtmlTranslateTaskResponseBody struct {
+	// The operation status code.
+	//
 	// example:
 	//
-	// 200
-	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	// success
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *GetHtmlTranslateTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code returned by the server.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the request. Use this ID to trace the request.
+	//
 	// example:
 	//
-	// 64191A87-C480-53AD-AEA2-2E847D4DFA66
+	// 04B53310-CB1A-14B4-AC85-26C154D8366A
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -119,6 +130,8 @@ func (s *GetHtmlTranslateTaskResponseBody) Validate() error {
 }
 
 type GetHtmlTranslateTaskResponseBodyData struct {
+	// Translation Result
+	//
 	// example:
 	//
 	// <!DOCTYPE html>
@@ -148,8 +161,9 @@ type GetHtmlTranslateTaskResponseBodyData struct {
 	// </body>
 	//
 	// </html>
-	Translation *string                                    `json:"translation,omitempty" xml:"translation,omitempty"`
-	Usage       *GetHtmlTranslateTaskResponseBodyDataUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+	Translation *string `json:"translation,omitempty" xml:"translation,omitempty"`
+	// Details about token usage.
+	Usage *GetHtmlTranslateTaskResponseBodyDataUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
 }
 
 func (s GetHtmlTranslateTaskResponseBodyData) String() string {
@@ -188,17 +202,23 @@ func (s *GetHtmlTranslateTaskResponseBodyData) Validate() error {
 }
 
 type GetHtmlTranslateTaskResponseBodyDataUsage struct {
+	// The number of tokens in the input.
+	//
 	// example:
 	//
-	// 495
+	// 22
 	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// The number of tokens in the output.
+	//
 	// example:
 	//
-	// 444
+	// 19
 	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// The total number of tokens for the request.
+	//
 	// example:
 	//
-	// 939
+	// 41
 	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
 }
 

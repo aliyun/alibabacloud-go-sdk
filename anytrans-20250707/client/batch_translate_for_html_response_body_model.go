@@ -24,27 +24,12 @@ type iBatchTranslateForHtmlResponseBody interface {
 }
 
 type BatchTranslateForHtmlResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Data *BatchTranslateForHtmlResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 3BE338D3-16B1-513F-8DD2-57C8528DEAAA
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Code           *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Data           *BatchTranslateForHtmlResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	HttpStatusCode *string                                `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s BatchTranslateForHtmlResponseBody) String() string {
@@ -153,24 +138,12 @@ func (s *BatchTranslateForHtmlResponseBodyData) Validate() error {
 }
 
 type BatchTranslateForHtmlResponseBodyDataTranslationList struct {
-	// example:
-	//
-	// 200
-	Code         *int64  `json:"code,omitempty" xml:"code,omitempty"`
-	DetectedLang *string `json:"detectedLang,omitempty" xml:"detectedLang,omitempty"`
-	// example:
-	//
-	// 0
-	Index *string `json:"index,omitempty" xml:"index,omitempty"`
-	// example:
-	//
-	// OK
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// What will the weather be like tomorrow?
-	Translation *string                                                    `json:"translation,omitempty" xml:"translation,omitempty"`
-	Usage       *BatchTranslateForHtmlResponseBodyDataTranslationListUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+	Code         *int64                                                     `json:"code,omitempty" xml:"code,omitempty"`
+	DetectedLang *string                                                    `json:"detectedLang,omitempty" xml:"detectedLang,omitempty"`
+	Index        *string                                                    `json:"index,omitempty" xml:"index,omitempty"`
+	Message      *string                                                    `json:"message,omitempty" xml:"message,omitempty"`
+	Translation  *string                                                    `json:"translation,omitempty" xml:"translation,omitempty"`
+	Usage        *BatchTranslateForHtmlResponseBodyDataTranslationListUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
 }
 
 func (s BatchTranslateForHtmlResponseBodyDataTranslationList) String() string {
@@ -245,18 +218,9 @@ func (s *BatchTranslateForHtmlResponseBodyDataTranslationList) Validate() error 
 }
 
 type BatchTranslateForHtmlResponseBodyDataTranslationListUsage struct {
-	// example:
-	//
-	// 53
-	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
-	// example:
-	//
-	// 8
+	InputTokens  *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
 	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
-	// example:
-	//
-	// 61
-	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+	TotalTokens  *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
 }
 
 func (s BatchTranslateForHtmlResponseBodyDataTranslationListUsage) String() string {

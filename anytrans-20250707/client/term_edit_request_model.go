@@ -24,32 +24,44 @@ type iTermEditRequest interface {
 }
 
 type TermEditRequest struct {
+	// The action type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ADD
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The extended parameters.
+	//
 	// This parameter is required.
 	Ext *TermEditRequestExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
+	// The model type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mt-turbo
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The source language. The value must be a valid BCP-47 language code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// en
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// The target language. The value must be a valid BCP-47 language code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh
 	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
+	// The ID of the Model Studio workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -130,7 +142,14 @@ func (s *TermEditRequest) Validate() error {
 }
 
 type TermEditRequestExt struct {
+	// The extended parameter configuration.
+	//
+	// example:
+	//
+	// {"bizUserld":"123456","bizType":session"}
 	ParamMap interface{} `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
+	// The intervention term list.
+	//
 	// This parameter is required.
 	Terms []*TermEditRequestExtTerms `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
 }
@@ -175,12 +194,22 @@ func (s *TermEditRequestExt) Validate() error {
 }
 
 type TermEditRequestExtTerms struct {
+	// The source text.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 大模型
 	Src *string `json:"src,omitempty" xml:"src,omitempty"`
+	// The intervention term ID.
+	//
 	// example:
 	//
 	// 92669964
 	TermId *string `json:"termId,omitempty" xml:"termId,omitempty"`
+	// The post-intervention translation.
+	//
 	// This parameter is required.
 	//
 	// example:

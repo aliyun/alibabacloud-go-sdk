@@ -26,29 +26,46 @@ type iTextTranslateShrinkRequest interface {
 }
 
 type TextTranslateShrinkRequest struct {
+	// Extended parameters to control translation behavior
 	ExtShrink *string `json:"ext,omitempty" xml:"ext,omitempty"`
+	// text format
+	//
 	// example:
 	//
 	// text
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// Model type
+	//
 	// example:
 	//
 	// mt-turbo
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// Source language code
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// Target Language Code
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// en
 	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
+	// Text to be translated
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 今天天气怎么样
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// Workspace ID
+	//
 	// This parameter is required.
 	//
 	// example:

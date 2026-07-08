@@ -16,12 +16,16 @@ type iGetImageTranslateTaskRequest interface {
 }
 
 type GetImageTranslateTaskRequest struct {
+	// The ID of the image translation task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2746f4be-cff2-465e-a2c6-12bff30ce0f9
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The ID of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

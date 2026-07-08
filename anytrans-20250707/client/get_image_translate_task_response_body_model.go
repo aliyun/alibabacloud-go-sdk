@@ -26,27 +26,40 @@ type iGetImageTranslateTaskResponseBody interface {
 }
 
 type GetImageTranslateTaskResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
-	// 200
-	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	// success
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// A JSON object that contains the returned data.
 	Data *GetImageTranslateTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID, used to trace the API call.
+	//
 	// example:
 	//
 	// 377A48D7-7CFA-53F9-8CA2-14FE3F2774B6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the API call was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request is synchronous.
+	//
 	// example:
 	//
 	// true
@@ -134,10 +147,13 @@ func (s *GetImageTranslateTaskResponseBody) Validate() error {
 }
 
 type GetImageTranslateTaskResponseBodyData struct {
+	// The trace ID.
+	//
 	// example:
 	//
 	// 213e391517328463424251152ec9fb
-	TraceId     *string                                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// An object containing the translation result.
 	Translation *GetImageTranslateTaskResponseBodyDataTranslation `json:"translation,omitempty" xml:"translation,omitempty" type:"Struct"`
 }
 
@@ -177,28 +193,42 @@ func (s *GetImageTranslateTaskResponseBodyData) Validate() error {
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslation struct {
+	// The rotation angle of the image in degrees.
+	//
 	// example:
 	//
 	// 0
-	Angle         *int64                                                           `json:"angle,omitempty" xml:"angle,omitempty"`
+	Angle *int64 `json:"angle,omitempty" xml:"angle,omitempty"`
+	// An array of detected bounding boxes.
 	BoundingBoxes []*GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxes `json:"boundingBoxes,omitempty" xml:"boundingBoxes,omitempty" type:"Repeated"`
+	// The number of detected bounding boxes.
+	//
 	// example:
 	//
-	// 5
+	// 13
 	BoxesCount *int64 `json:"boxesCount,omitempty" xml:"boxesCount,omitempty"`
+	// The height of the image after rotation, in pixels.
+	//
 	// example:
 	//
 	// 800
 	Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
+	// The height of the original image, in pixels.
+	//
 	// example:
 	//
 	// 800
 	OrgHeight *int64 `json:"orgHeight,omitempty" xml:"orgHeight,omitempty"`
+	// The width of the original image, in pixels.
+	//
 	// example:
 	//
 	// 800
-	OrgWidth   *int64                                                        `json:"orgWidth,omitempty" xml:"orgWidth,omitempty"`
+	OrgWidth *int64 `json:"orgWidth,omitempty" xml:"orgWidth,omitempty"`
+	// Information about tables detected in the image.
 	TableInfos []*GetImageTranslateTaskResponseBodyDataTranslationTableInfos `json:"tableInfos,omitempty" xml:"tableInfos,omitempty" type:"Repeated"`
+	// The width of the image after rotation, in pixels.
+	//
 	// example:
 	//
 	// 800
@@ -308,35 +338,50 @@ func (s *GetImageTranslateTaskResponseBodyDataTranslation) Validate() error {
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxes struct {
+	// The confidence score for the recognized text. The value ranges from 0 (lowest confidence) to 1 (highest confidence).
+	//
 	// example:
 	//
-	// 1
+	// 0.99
 	Confidence *float32 `json:"confidence,omitempty" xml:"confidence,omitempty"`
+	// The text direction. Valid values: `0` (horizontal) and `1` (vertical).
+	//
 	// example:
 	//
 	// 0
-	Direction *int64                                                                  `json:"direction,omitempty" xml:"direction,omitempty"`
-	DownLeft  *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownLeft  `json:"downLeft,omitempty" xml:"downLeft,omitempty" type:"Struct"`
+	Direction *int64 `json:"direction,omitempty" xml:"direction,omitempty"`
+	// The coordinates of the lower-left corner of the bounding box.
+	DownLeft *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownLeft `json:"downLeft,omitempty" xml:"downLeft,omitempty" type:"Struct"`
+	// The coordinates of the lower-right corner of the bounding box.
 	DownRight *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownRight `json:"downRight,omitempty" xml:"downRight,omitempty" type:"Struct"`
+	// The cell ID of the bounding box. If the bounding box is not part of a table, the value is `-1`.
+	//
 	// example:
 	//
 	// 1
 	TableCellId *int64 `json:"tableCellId,omitempty" xml:"tableCellId,omitempty"`
+	// The ID of the table that contains the bounding box. If the bounding box is not part of a table, the value is `-1`.
+	//
 	// example:
 	//
-	// tbl-1dd15f7e-e373-4da9-858e-8785db1a2954
-	TableId *int64  `json:"tableId,omitempty" xml:"tableId,omitempty"`
-	Text    *string `json:"text,omitempty" xml:"text,omitempty"`
+	// 1
+	TableId *int64 `json:"tableId,omitempty" xml:"tableId,omitempty"`
+	// The source-language text within the bounding box.
+	//
 	// example:
 	//
-	// {
+	// 修护头皮
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// An object containing the translated text, keyed by the target language code.
 	//
-	//           "en": "Promotional price:"
+	// example:
 	//
-	//         }
-	Translation map[string]interface{}                                                `json:"translation,omitempty" xml:"translation,omitempty"`
-	UpLeft      *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpLeft  `json:"upLeft,omitempty" xml:"upLeft,omitempty" type:"Struct"`
-	UpRight     *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpRight `json:"upRight,omitempty" xml:"upRight,omitempty" type:"Struct"`
+	// { "en": "Restore Scalp Health" }
+	Translation map[string]interface{} `json:"translation,omitempty" xml:"translation,omitempty"`
+	// The coordinates of the upper-left corner of the bounding box.
+	UpLeft *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpLeft `json:"upLeft,omitempty" xml:"upLeft,omitempty" type:"Struct"`
+	// The coordinates of the upper-right corner of the bounding box.
+	UpRight *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpRight `json:"upRight,omitempty" xml:"upRight,omitempty" type:"Struct"`
 }
 
 func (s GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxes) String() string {
@@ -462,13 +507,17 @@ func (s *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxes) Validate
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownLeft struct {
+	// The x-coordinate.
+	//
 	// example:
 	//
-	// 10
+	// 9
 	X *int64 `json:"x,omitempty" xml:"x,omitempty"`
+	// The y-coordinate.
+	//
 	// example:
 	//
-	// 694
+	// 145
 	Y *int64 `json:"y,omitempty" xml:"y,omitempty"`
 }
 
@@ -503,13 +552,17 @@ func (s *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownLeft) 
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownRight struct {
+	// The x-coordinate.
+	//
 	// example:
 	//
-	// 97
+	// 327
 	X *int64 `json:"x,omitempty" xml:"x,omitempty"`
+	// The y-coordinate.
+	//
 	// example:
 	//
-	// 694
+	// 148
 	Y *int64 `json:"y,omitempty" xml:"y,omitempty"`
 }
 
@@ -544,13 +597,17 @@ func (s *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownRight)
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpLeft struct {
+	// The x-coordinate.
+	//
 	// example:
 	//
 	// 10
 	X *int64 `json:"x,omitempty" xml:"x,omitempty"`
+	// The y-coordinate.
+	//
 	// example:
 	//
-	// 669
+	// 66
 	Y *int64 `json:"y,omitempty" xml:"y,omitempty"`
 }
 
@@ -585,13 +642,17 @@ func (s *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpLeft) Va
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpRight struct {
+	// The x-coordinate.
+	//
 	// example:
 	//
-	// 11
+	// 328
 	X *int64 `json:"x,omitempty" xml:"x,omitempty"`
+	// The y-coordinate.
+	//
 	// example:
 	//
-	// 22
+	// 69
 	Y *int64 `json:"y,omitempty" xml:"y,omitempty"`
 }
 
@@ -626,15 +687,22 @@ func (s *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpRight) V
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslationTableInfos struct {
+	// Information about the cells within the table.
 	CellInfos []*GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfos `json:"cellInfos,omitempty" xml:"cellInfos,omitempty" type:"Repeated"`
+	// The ID of the table.
+	//
 	// example:
 	//
-	// tbl-f16944be-5955-466c-aa6c-940e4ed99a09
+	// 1
 	TableId *int64 `json:"tableId,omitempty" xml:"tableId,omitempty"`
+	// The number of columns in the table.
+	//
 	// example:
 	//
 	// 50
 	XCellSize *int64 `json:"xCellSize,omitempty" xml:"xCellSize,omitempty"`
+	// The number of rows in the table.
+	//
 	// example:
 	//
 	// 50
@@ -699,24 +767,40 @@ func (s *GetImageTranslateTaskResponseBodyDataTranslationTableInfos) Validate() 
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfos struct {
+	// An array of coordinates defining the cell\\"s bounding box.
 	Pos []*GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfosPos `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+	// The cell ID.
+	//
 	// example:
 	//
 	// 1
-	TableCellId *int64  `json:"tableCellId,omitempty" xml:"tableCellId,omitempty"`
-	Text        *string `json:"text,omitempty" xml:"text,omitempty"`
+	TableCellId *int64 `json:"tableCellId,omitempty" xml:"tableCellId,omitempty"`
+	// The text content of the cell.
+	//
+	// example:
+	//
+	// 活动价
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The ending column index of the cell. The index starts from 1.
+	//
 	// example:
 	//
 	// 2
 	Xec *int64 `json:"xec,omitempty" xml:"xec,omitempty"`
+	// The starting column index of the cell. The index starts from 1.
+	//
 	// example:
 	//
 	// 1
 	Xsc *int64 `json:"xsc,omitempty" xml:"xsc,omitempty"`
+	// The ending row index of the cell. The index starts from 1.
+	//
 	// example:
 	//
 	// 1
 	Yec *int64 `json:"yec,omitempty" xml:"yec,omitempty"`
+	// The starting row index of the cell. The index starts from 1.
+	//
 	// example:
 	//
 	// 3
@@ -808,10 +892,14 @@ func (s *GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfos) Va
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfosPos struct {
+	// The x-coordinate.
+	//
 	// example:
 	//
 	// 33
 	X *int64 `json:"x,omitempty" xml:"x,omitempty"`
+	// The y-coordinate.
+	//
 	// example:
 	//
 	// 11

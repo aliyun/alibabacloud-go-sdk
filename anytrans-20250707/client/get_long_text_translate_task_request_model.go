@@ -16,10 +16,14 @@ type iGetLongTextTranslateTaskRequest interface {
 }
 
 type GetLongTextTranslateTaskRequest struct {
+	// The ID of the long-text translation task.
+	//
 	// example:
 	//
-	// 2746f4be-cff2-465e-a2c6-12bff30ce0f9
+	// a8f25f25-0b36-4349-857f-e19a43f69e51
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The ID of the Model Studio workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

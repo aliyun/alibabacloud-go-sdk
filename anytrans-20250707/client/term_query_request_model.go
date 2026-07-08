@@ -24,26 +24,40 @@ type iTermQueryRequest interface {
 }
 
 type TermQueryRequest struct {
+	// Extended parameters.
 	Ext *TermQueryRequestExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
+	// The translation model.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mt-turbo
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The source language.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// The target language.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// en
 	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
-	Text           *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The source text to search for intervention terms.
+	//
+	// example:
+	//
+	// 今天的天气非常不错，我准备去跟我的好朋友去学习一些大模型相关和应用接口的知识。
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The ID of the Model Studio workspace used for the request.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -124,6 +138,11 @@ func (s *TermQueryRequest) Validate() error {
 }
 
 type TermQueryRequestExt struct {
+	// Specifies extended parameters to isolate term interventions.
+	//
+	// example:
+	//
+	// {"bizUserld":"123456","bizType":session"}
 	ParamMap interface{} `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
 }
 

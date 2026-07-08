@@ -24,25 +24,34 @@ type iSubmitLongTextTranslateTaskResponseBody interface {
 }
 
 type SubmitLongTextTranslateTaskResponseBody struct {
+	// The result code of the API call.
+	//
 	// example:
 	//
-	// 200
-	Code *string                                      `json:"code,omitempty" xml:"code,omitempty"`
+	// success
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The object that contains the returned data.
 	Data *SubmitLongTextTranslateTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// A message that corresponds to the code.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The unique ID for the API request, used for tracing.
 	//
 	// example:
 	//
-	// 400392FF-2F47-549A-A7FF-60FA4121D19E
+	// C2D45266-3135-1A06-AD7F-69E782ED596F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the API call was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,14 +130,23 @@ func (s *SubmitLongTextTranslateTaskResponseBody) Validate() error {
 }
 
 type SubmitLongTextTranslateTaskResponseBodyData struct {
+	// The status of the translation task.
+	//
 	// example:
 	//
 	// 200
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the long-text translation task.
+	//
 	// example:
 	//
-	// 2746f4be-cff2-465e-a2c6-12bff30ce0f9
-	TaskId       *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// a8f25f25-0b36-4349-857f-e19a43f69e51
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// A custom string passed from the request to the response unmodified. This is useful for tracking or correlating API calls.
+	//
+	// example:
+	//
+	// {"traceId":"trace_123456"}
 	TrackingData *string `json:"trackingData,omitempty" xml:"trackingData,omitempty"`
 }
 

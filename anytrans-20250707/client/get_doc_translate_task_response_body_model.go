@@ -24,23 +24,34 @@ type iGetDocTranslateTaskResponseBody interface {
 }
 
 type GetDocTranslateTaskResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// success
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *GetDocTranslateTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP response code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The unique identifier for the request.
+	//
 	// example:
 	//
 	// AC642EEB-C29D-54DF-8F52-622565BBB78A
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the API call was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,25 +130,35 @@ func (s *GetDocTranslateTaskResponseBody) Validate() error {
 }
 
 type GetDocTranslateTaskResponseBodyData struct {
+	// The character count.
+	//
 	// example:
 	//
 	// 4
 	CharactersCount *int32 `json:"charactersCount,omitempty" xml:"charactersCount,omitempty"`
+	// The page count.
+	//
 	// example:
 	//
 	// 2
 	PageCount *int32 `json:"pageCount,omitempty" xml:"pageCount,omitempty"`
+	// The translation status. Valid values:
+	//
 	// example:
 	//
 	// translated
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The document translation task ID.
+	//
 	// example:
 	//
 	// d3a2397bc2c14ab4a2e40a4f5b46241b
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The translation result URL.
+	//
 	// example:
 	//
-	// http://translate-ai-data-dev.oss-cn-hangzhou.aliyuncs.com/tongyiTranslate/123456789/a7630164ce894c799cca0f0822c36f84_merge.md?Expires=1756700753&OSSAccessKeyId=LTAI5tRmTwxU5YoHUyrF93Jv&Signature=qB03ldVmRa%2FRwWgJ2wSi7ylayMA%3D
+	// http://translate-ai-data-dev.oss-cn-hangzhou.aliyuncs.com/tongyiTranslate/123456789/a7630164ce894c799cca0f0822c36f84_merge.md
 	TranslateFileUrl *string `json:"translateFileUrl,omitempty" xml:"translateFileUrl,omitempty"`
 }
 

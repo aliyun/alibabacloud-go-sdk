@@ -26,27 +26,44 @@ type iSubmitImageTranslateTaskShrinkRequest interface {
 }
 
 type SubmitImageTranslateTaskShrinkRequest struct {
+	// Extended parameters to control translation features.
 	ExtShrink *string `json:"ext,omitempty" xml:"ext,omitempty"`
+	// The translation format.
+	//
 	// example:
 	//
 	// image
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// Specifies the translation model.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// flash
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The source language.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// A list of target languages.
+	//
 	// This parameter is required.
 	TargetLanguageShrink *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
+	// The URL of the image to translate.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i3/2214557014466/O1CN0174Thmb1irTsyTXYFO_!!4611686018427386306-0-item_pic.jpg
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The ID of the Model Studio workspace.
+	//
 	// This parameter is required.
 	//
 	// example:

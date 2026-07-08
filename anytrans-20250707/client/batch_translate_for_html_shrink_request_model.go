@@ -28,38 +28,17 @@ type iBatchTranslateForHtmlShrinkRequest interface {
 }
 
 type BatchTranslateForHtmlShrinkRequest struct {
-	// example:
-	//
-	// baidufanyi
 	AppName   *string `json:"appName,omitempty" xml:"appName,omitempty"`
 	ExtShrink *string `json:"ext,omitempty" xml:"ext,omitempty"`
-	// example:
-	//
-	// text
-	Format *string `json:"format,omitempty" xml:"format,omitempty"`
-	// example:
-	//
-	// mt-turbo
-	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	Format    *string `json:"format,omitempty" xml:"format,omitempty"`
+	Scene     *string `json:"scene,omitempty" xml:"scene,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// zh
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// en
 	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
 	// This parameter is required.
 	TextShrink *string `json:"text,omitempty" xml:"text,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// llm-kqtrcpdee4xm29xx
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 

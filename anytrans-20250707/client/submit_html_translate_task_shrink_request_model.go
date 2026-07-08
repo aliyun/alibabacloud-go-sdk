@@ -26,24 +26,66 @@ type iSubmitHtmlTranslateTaskShrinkRequest interface {
 }
 
 type SubmitHtmlTranslateTaskShrinkRequest struct {
+	// Extended parameters to control translation behavior.
 	ExtShrink *string `json:"ext,omitempty" xml:"ext,omitempty"`
+	// The format of the input text.
+	//
 	// example:
 	//
 	// text
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	// The translation model.
+	//
 	// example:
 	//
 	// mt-turbo
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The source language.
+	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"sourceLanguage,omitempty" xml:"sourceLanguage,omitempty"`
+	// The target language.
+	//
 	// example:
 	//
 	// en
 	TargetLanguage *string `json:"targetLanguage,omitempty" xml:"targetLanguage,omitempty"`
-	Text           *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The HTML content to be translated.
+	//
+	// example:
+	//
+	// <!DOCTYPE html>
+	//
+	// <html lang="zh-CN">
+	//
+	// <head>
+	//
+	//     <meta charset="UTF-8">
+	//
+	//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	//
+	//     <title>我的第一个网页</title>
+	//
+	// </head>
+	//
+	// <body>
+	//
+	//     <h1>欢迎来到我的网页！</h1>
+	//
+	//     <p>这是一个简单的 HTML 页面。</p>
+	//
+	//     <p>学习 HTML 是进入网页开发的第一步。</p>
+	//
+	//     <a href="https://www.example.com">点击这里访问示例网站</a>
+	//
+	// </body>
+	//
+	// </html>
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	// The ID of the Model Studio workspace used for this request.
+	//
 	// This parameter is required.
 	//
 	// example:
