@@ -18917,6 +18917,92 @@ func (client *Client) DescribeVpcFirewallTrafficAssetList(request *DescribeVpcFi
 
 // Summary:
 //
+// Retrieves the traffic trend of a virtual private cloud (VPC) firewall.
+//
+// @param request - DescribeVpcFirewallTrafficTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcFirewallTrafficTrendResponse
+func (client *Client) DescribeVpcFirewallTrafficTrendWithOptions(request *DescribeVpcFirewallTrafficTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallTrafficTrendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PeerVpcId) {
+		query["PeerVpcId"] = request.PeerVpcId
+	}
+
+	if !dara.IsNil(request.PrivateIP) {
+		query["PrivateIP"] = request.PrivateIP
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcFirewallTrafficTrend"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcFirewallTrafficTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the traffic trend of a virtual private cloud (VPC) firewall.
+//
+// @param request - DescribeVpcFirewallTrafficTrendRequest
+//
+// @return DescribeVpcFirewallTrafficTrendResponse
+func (client *Client) DescribeVpcFirewallTrafficTrend(request *DescribeVpcFirewallTrafficTrendRequest) (_result *DescribeVpcFirewallTrafficTrendResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeVpcFirewallTrafficTrendResponse{}
+	_body, _err := client.DescribeVpcFirewallTrafficTrendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Describes the available zones for a VPC firewall.
 //
 // @param request - DescribeVpcFirewallZoneRequest
