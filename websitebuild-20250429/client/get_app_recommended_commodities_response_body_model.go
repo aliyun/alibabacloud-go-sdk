@@ -58,9 +58,9 @@ type GetAppRecommendedCommoditiesResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
@@ -70,11 +70,11 @@ type GetAppRecommendedCommoditiesResponseBody struct {
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The data table module. Valid values:
 	//
-	// - ABTest: the experiment data table.
+	// - ABTest: experiment data table
 	//
-	// - ExperimentTool: the experiment tool table.
+	// - ExperimentTool: experiment tool table
 	//
-	// - DataDiagnosis: data modeling diagnostics.
+	// - DataDiagnosis: data modeling diagnostics
 	Module *GetAppRecommendedCommoditiesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -219,7 +219,7 @@ func (s *GetAppRecommendedCommoditiesResponseBody) Validate() error {
 }
 
 type GetAppRecommendedCommoditiesResponseBodyModule struct {
-	// The list of promotional commodities.
+	// The list of marketing commodities.
 	Commodities []*GetAppRecommendedCommoditiesResponseBodyModuleCommodities `json:"Commodities,omitempty" xml:"Commodities,omitempty" type:"Repeated"`
 }
 
@@ -255,14 +255,14 @@ func (s *GetAppRecommendedCommoditiesResponseBodyModule) Validate() error {
 
 type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The commodity code. This code applies to both resource plans and promotional commodities.
+	// The commodity code. Applicable to both resource plans and marketing commodities.
 	//
 	// example:
 	//
 	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The extension field, such as unsupportedReason.
+	// The extension fields, such as unsupportedReason.
 	Extend map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The order type. Valid values:
 	//
@@ -274,20 +274,20 @@ type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The sorting priority. A smaller value indicates a higher priority.
+	// The sort priority. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The promotional commodity ID. This parameter is returned only for new purchases.
+	// The marketing commodity ID. Returned only for new purchases.
 	//
 	// example:
 	//
 	// 12345
 	PromotionCommodityId *string `json:"PromotionCommodityId,omitempty" xml:"PromotionCommodityId,omitempty"`
 	RecommendType        *string `json:"RecommendType,omitempty" xml:"RecommendType,omitempty"`
-	// The redirect URL. This parameter is returned when a redirect is required, such as during an upgrade.
+	// The redirect URL. Returned when redirection is required, such as for upgrades.
 	//
 	// example:
 	//

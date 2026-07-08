@@ -26,7 +26,7 @@ type iCreateInspirationRequest interface {
 }
 
 type CreateInspirationRequest struct {
-	// The resource plan specification.
+	// The specification of the resource plan.
 	//
 	// example:
 	//
@@ -56,21 +56,21 @@ type CreateInspirationRequest struct {
 	//
 	// AUTO_PAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The unit of the subscription duration. Valid values:
+	// The unit of the subscription cycle. Valid values:
 	//
-	// - Year: year.
+	// - Year: year
 	//
-	// - Month: month.
+	// - Month: month
 	//
-	// - Day: day.
+	// - Day: day
 	//
-	// - Hour: hour.
+	// - Hour: hour
 	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The number of instances to purchase.
+	// The number of instances to subscribe to.
 	//
 	// example:
 	//

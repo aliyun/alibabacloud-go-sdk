@@ -34,7 +34,7 @@ type iOnlineAppInstanceResponseBody interface {
 }
 
 type OnlineAppInstanceResponseBody struct {
-	// The authentication failure details.
+	// The details of the authentication failure.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type OnlineAppInstanceResponseBody struct {
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//

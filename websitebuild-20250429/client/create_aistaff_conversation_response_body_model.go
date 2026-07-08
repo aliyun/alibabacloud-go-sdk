@@ -235,7 +235,7 @@ type CreateAIStaffConversationResponseBodyModule struct {
 	//
 	// 11
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
-	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+	// The site ID. You can obtain this value by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// example:
 	//

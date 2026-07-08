@@ -34,7 +34,7 @@ type iGetAppSupabaseSecretsResponseBody interface {
 }
 
 type GetAppSupabaseSecretsResponseBody struct {
-	// Detailed reason for access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
@@ -50,49 +50,49 @@ type GetAppSupabaseSecretsResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App name.
+	// The application name.
 	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message, used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage*	- response parameter.
 	//
-	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// abc
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Returned object.
+	// The response object.
 	Module *GetAppSupabaseSecretsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.EROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The exception message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the operation is processed synchronously.
+	// Indicates whether the request is synchronously processed.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ func (s *GetAppSupabaseSecretsResponseBody) Validate() error {
 }
 
 type GetAppSupabaseSecretsResponseBodyModule struct {
-	// Instance ID.
+	// The instance ID.
 	Secrets []*GetAppSupabaseSecretsResponseBodyModuleSecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
 }
 
@@ -252,13 +252,13 @@ func (s *GetAppSupabaseSecretsResponseBodyModule) Validate() error {
 }
 
 type GetAppSupabaseSecretsResponseBodyModuleSecrets struct {
-	// Tag key
+	// The tag key.
 	//
 	// example:
 	//
 	// curl GCEA6fET.popscan.xaliyun.com
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Application name
+	// The application name.
 	//
 	// example:
 	//
@@ -266,9 +266,9 @@ type GetAppSupabaseSecretsResponseBodyModuleSecrets struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The credential type. Valid values:
 	//
-	// - Generic: generic secret.
+	// - Generic: generic credential.
 	//
-	// - Rds: RDS credential.
+	// - Rds: ApsaraDB RDS credential.
 	//
 	// - Redis: Redis/Tair credential.
 	//
@@ -282,7 +282,7 @@ type GetAppSupabaseSecretsResponseBodyModuleSecrets struct {
 	//
 	// Opaque
 	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	// Record value
+	// The record value.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDeleteAppInstanceFileRequest interface {
 }
 
 type DeleteAppInstanceFileRequest struct {
-	// Session ID
+	// The session ID.
 	//
 	// example:
 	//
 	// 81bc5a34-1d8d-4ef7-a208-7401c51b054b
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// File Path
+	// The file path.
 	//
 	// example:
 	//

@@ -86,7 +86,7 @@ type GetLlmProxyConfigForAdminResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The exception message.
+	// The error message.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ func (s *GetLlmProxyConfigForAdminResponseBody) Validate() error {
 }
 
 type GetLlmProxyConfigForAdminResponseBodyModule struct {
-	// The list of allowed models.
+	// The list of supported models.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type GetLlmProxyConfigForAdminResponseBodyModule struct {
 	//
 	// qwen3.5-plus
 	BlockedModels *string `json:"BlockedModels,omitempty" xml:"BlockedModels,omitempty"`
-	// The specific permissions granted to processes in the container. Only NET_ADMIN and NET_RAW are supported.
+	// Grants specific permissions to processes in the container. Only NET_ADMIN and NET_RAW are supported.
 	//
 	// > NET_RAW is not supported by default. Submit a ticket to apply for this permission.
 	//
@@ -255,7 +255,7 @@ type GetLlmProxyConfigForAdminResponseBodyModule struct {
 	//
 	// -1
 	DailyTokenLimit *int64 `json:"DailyTokenLimit,omitempty" xml:"DailyTokenLimit,omitempty"`
-	// Specifies whether scheduled delivery of resource snapshots is enabled.
+	// Indicates whether scheduled delivery of resource snapshots is enabled.
 	//
 	// Valid values:
 	//

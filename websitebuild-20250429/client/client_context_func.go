@@ -210,7 +210,7 @@ func (client *Client) BindAppDomainWithContext(ctx context.Context, request *Bin
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - CheckAppVerifyCodeRequest
 //
@@ -502,11 +502,11 @@ func (client *Client) ConfirmAppInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 复制插件配置
+// Copies the plug-in configuration.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the code generation plug-in configuration information.
 //
 // @param request - CopyAppPluginConfigRequest
 //
@@ -625,7 +625,7 @@ func (client *Client) CreateAIStaffChatWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// Creates an AI session for WanXiaoZhi 2.0.
+// Creates an AI session for Wan Xiaozhi 2.0.
 //
 // @param request - CreateAIStaffConversationRequest
 //
@@ -1488,11 +1488,11 @@ func (client *Client) DeleteAppDomainRedirectWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 删除文件
+// Deletes a file.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - DeleteAppFileRequest
 //
@@ -1540,11 +1540,11 @@ func (client *Client) DeleteAppFileWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// # Delete file
+// Deletes a file.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - DeleteAppInstanceFileRequest
 //
@@ -1644,11 +1644,11 @@ func (client *Client) DeleteAppNotificationSceneWithContext(ctx context.Context,
 
 // Summary:
 //
-// # Delete Supabase key
+// Deletes a Supabase key.
 //
 // Description:
 //
-// # Operation resource corresponds to the supabase instance information
+// The Supabase instance information corresponding to the operated resource.
 //
 // @param request - DeleteAppSupabaseSecretsRequest
 //
@@ -2120,11 +2120,11 @@ func (client *Client) GetAppCodeWorkspaceDetailWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Retrieve conversation details
+// Retrieves the details of a conversation.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 API for creating an AI session
+// Creates an AI conversation through the Wanxiaozhi 2.0 interface.
 //
 // @param request - GetAppConversationRequest
 //
@@ -2272,11 +2272,11 @@ func (client *Client) GetAppDatabaseTableSchemasWithContext(ctx context.Context,
 
 // Summary:
 //
-// 读取文件及修改时间
+// Retrieves file content and modification time.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppFileContentRequest
 //
@@ -2368,11 +2368,11 @@ func (client *Client) GetAppInstanceWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// # GetAppInstanceEntitlement
+// Queries the entitlement information of an application instance.
 //
 // Description:
 //
-// # Query application instance information
+// Queries the entitlement information of an application instance.
 //
 // @param request - GetAppInstanceEntitlementRequest
 //
@@ -2516,11 +2516,11 @@ func (client *Client) GetAppInstanceForPartnerWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Obtain a temporary short URL for the application
+// Retrieves a temporary short URL for an application.
 //
 // Description:
 //
-// # Obtain configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppInstanceTempShortUrlRequest
 //
@@ -2616,11 +2616,11 @@ func (client *Client) GetAppPluginConfigWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Query publishing status
+// Queries the publish status.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppPublishStatusRequest
 //
@@ -2832,11 +2832,11 @@ func (client *Client) GetAppSandboxPreviewUrlWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Query SEO index status
+// Queries the SEO index status.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppSeoStatusRequest
 //
@@ -2888,11 +2888,11 @@ func (client *Client) GetAppSeoStatusWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// # SEO Index Chart
+// SEO index chart.
 //
 // Description:
 //
-// # Obtain plugin configuration information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppSeoTrendsRequest
 //
@@ -2944,11 +2944,11 @@ func (client *Client) GetAppSeoTrendsWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// # Retrieve site map
+// Retrieves the sitemap.
 //
 // Description:
 //
-// # Retrieve QR code plugin configuration information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppSitemapRequest
 //
@@ -3000,11 +3000,11 @@ func (client *Client) GetAppSitemapWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// # Query Supabase authentication settings
+// Queries the Supabase authentication settings.
 //
 // Description:
 //
-// Query the auth configuration information of the Supabase instance corresponding to the resource.
+// Queries the Supabase instance authentication configuration information for a specified resource.
 //
 // @param request - GetAppSupabaseAuthConfigRequest
 //
@@ -3100,11 +3100,11 @@ func (client *Client) GetAppSupabaseInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Query Supabase keys
+// Queries Supabase keys.
 //
 // Description:
 //
-// # The supabase instance information corresponding to the operated resource
+// Queries the Supabase instance information corresponding to the specified resource.
 //
 // @param request - GetAppSupabaseSecretsRequest
 //
@@ -3404,7 +3404,7 @@ func (client *Client) GetIcpFilingInfoForPartnerWithContext(ctx context.Context,
 //
 // Description:
 //
-// Queries the Supabase instance configuration information for a specified resource.
+// Queries the Supabase instance configuration information corresponding to a resource.
 //
 // @param request - GetLlmProxyConfigForAdminRequest
 //
@@ -3452,7 +3452,7 @@ func (client *Client) GetLlmProxyConfigForAdminWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Obtain miniapp authorization link
+// Retrieves the authorization URL for a mini program.
 //
 // @param request - GetMiniAppAuthUrlRequest
 //
@@ -3504,11 +3504,11 @@ func (client *Client) GetMiniAppAuthUrlWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Query the miniapp attached to a site
+// Queries the mini programs associated with a site.
 //
 // Description:
 //
-// # Obtain the QR code plugin configuration information
+// Retrieves the configuration information of the QR code generation plug-in.
 //
 // @param tmpReq - GetMiniAppBindingRequest
 //
@@ -3566,7 +3566,7 @@ func (client *Client) GetMiniAppBindingWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// # Query the miniapp attached to an application instance based on conditions
+// Performs a conditional query for mini programs attached to an application instance.
 //
 // @param request - GetMiniAppBindingForAdminRequest
 //
@@ -3618,11 +3618,11 @@ func (client *Client) GetMiniAppBindingForAdminWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 生成文件上传策略
+// Generates a file upload policy.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetOssUploadPolicyRequest
 //
@@ -4114,11 +4114,11 @@ func (client *Client) ListAppAssistantAgentsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Query the message list of a specified chat
+// Queries the message list of a specified chat.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 - AI session history information query API
+// Wanxiaozhi 2.0 - API for querying AI conversation history.
 //
 // @param request - ListAppChatMessagesRequest
 //
@@ -4298,11 +4298,11 @@ func (client *Client) ListAppConversationMessagesWithContext(ctx context.Context
 
 // Summary:
 //
-// # Search session list
+// Searches the conversation list.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 Create AI Session API
+// Creates an AI session by using Wanxiaozhi 2.0.
 //
 // @param request - ListAppConversationsRequest
 //
@@ -4656,11 +4656,11 @@ func (client *Client) ListAppPluginConfigsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # List of code generation plugins
+// Queries the list of code generation plug-ins.
 //
 // Description:
 //
-// # Obtain configuration information of code generation plugins
+// Retrieves the configuration information of code generation plug-ins.
 //
 // @param request - ListAppPluginsRequest
 //
@@ -5740,11 +5740,11 @@ func (client *Client) OperateAppServiceForPartnerWithContext(ctx context.Context
 
 // Summary:
 //
-// # Switch template like statistics
+// Switches the like statistics for a template.
 //
 // Description:
 //
-// # Obtain barcode generation plugin configuration information
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - OperateAppTemplateLikeRequest
 //
@@ -5796,7 +5796,7 @@ func (client *Client) OperateAppTemplateLikeWithContext(ctx context.Context, req
 //
 // Description:
 //
-// The Supabase instance information corresponding to the operated resource.
+// The Supabase instance information corresponding to the resource to operate on.
 //
 // @param request - OperateSupabaseForAdminRequest
 //
@@ -7165,11 +7165,11 @@ func (client *Client) RollbackAppCodeSnapshotWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Roll back application instance deployment
+// Rolls back the release of an application instance.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - RollbackAppInstancePublishRequest
 //
@@ -7279,11 +7279,11 @@ func (client *Client) SaveAppRequirementWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Save Supabase key
+// Saves Supabase secrets.
 //
 // Description:
 //
-// # The supabase instance information corresponding to the operation resource
+// The Supabase instance information corresponding to the operated resource.
 //
 // @param request - SaveAppSupabaseSecretsRequest
 //
@@ -7501,11 +7501,11 @@ func (client *Client) SetAppDomainCertificateWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 提交SEO索引
+// Submits an SEO index.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - SubmitAppSeoIndexRequest
 //
@@ -7609,11 +7609,11 @@ func (client *Client) SubmitMaterialTaskWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 切换到指定对话
+// Switches to a specified conversation.
 //
 // Description:
 //
-// 万小智2.0创建AI会话接口
+// Creates an AI conversation through the Wanxiaozhi 2.0 interface.
 //
 // @param request - SwitchAppConversationRequest
 //
@@ -7779,11 +7779,11 @@ func (client *Client) UnbindAppDomainWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// # Update message content
+// Updates message content.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 - AI session history query API
+// Wanxiaozhi 2.0 - API for querying AI conversation history.
 //
 // @param request - UpdateAppChatMessageRequest
 //
@@ -7839,11 +7839,11 @@ func (client *Client) UpdateAppChatMessageWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Edit JSX Code
+// Edits JSX code.
 //
 // Description:
 //
-// # Retrieve the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UpdateAppCodeRequest
 //
@@ -7947,11 +7947,11 @@ func (client *Client) UpdateAppFileWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// Upgrade/Downgrade website instance.
+// Changes the specifications of a website building instance.
 //
 // Description:
 //
-// # Query application instance information
+// Queries the information of an application instance.
 //
 // @param tmpReq - UpdateAppInstanceRequest
 //
@@ -8051,11 +8051,11 @@ func (client *Client) UpdateAppInstanceWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// # Update SEO Index Status
+// Updates the SEO index status.
 //
 // Description:
 //
-// # WanXiaoZhi 2.0 AI Conversation
+// Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - UpdateAppSeoStatusRequest
 //
@@ -8163,11 +8163,11 @@ func (client *Client) UpdateAppSupabaseAuthConfigWithContext(ctx context.Context
 
 // Summary:
 //
-// # Update Supabase key
+// Updates a Supabase key.
 //
 // Description:
 //
-// # Operation resource corresponds to the supabase instance information
+// The Supabase instance information corresponding to the operated resource.
 //
 // @param request - UpdateAppSupabaseSecretRequest
 //
@@ -8283,11 +8283,11 @@ func (client *Client) UpdateMiniAppBindingWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # Upload to the site root directory
+// Uploads a file to the root directory of a site.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UploadAppSiteValidationFileRequest
 //

@@ -22,33 +22,33 @@ type iListAppChatMessagesRequest interface {
 }
 
 type ListAppChatMessagesRequest struct {
-	// Chat ID
+	// The chat ID.
 	//
 	// example:
 	//
 	// 20833ba4-d189-4c50-9a44-a6bcbda2c93b
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
-	// Session ID
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 593fe1a2-d0b4-4fde-a2b0-78ad6a438d41
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// Number of results per query.
+	// The number of entries per query.
 	//
-	// Valid range: 10 to 100. Default Value: 20.
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Token indicating the start of the next query. This value is empty if there is no subsequent query.
+	// The token for the next query. This parameter is empty if no more results exist.
 	//
 	// example:
 	//
 	// FFh3Xqm+JgZ/U9Jyb7wdVr9LWk80Tghn5UZjbcWEVEderBcbVF+Y6PS0i8PpCL4PQZ3e0C9oEH0Asd4tJEuGtkl2WuKdiWZpEwadNydQdJPFM=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Segment ID
+	// The section ID.
 	//
 	// example:
 	//

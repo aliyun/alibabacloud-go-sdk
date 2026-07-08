@@ -16,10 +16,14 @@ type iDeleteAppFileRequest interface {
 }
 
 type DeleteAppFileRequest struct {
+	// The session ID.
+	//
 	// example:
 	//
 	// 593fe1a2-d0b4-4fde-a2b0-78ad6a438d41
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The file path. The path is restricted to the ./public/ directory.
+	//
 	// example:
 	//
 	// pt3/01/31/pengpeixin.png

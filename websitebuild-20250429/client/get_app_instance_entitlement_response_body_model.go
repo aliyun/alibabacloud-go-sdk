@@ -34,41 +34,41 @@ type iGetAppInstanceEntitlementResponseBody interface {
 }
 
 type GetAppInstanceEntitlementResponseBody struct {
-	// Permission denied information
+	// The access denied details.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App Name.
+	// The application name.
 	//
 	// example:
 	//
 	// ish-intelligence-store-platform-admin-web
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message, used to replace `%s` in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error arguments.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Response data
+	// The response data.
 	Module *GetAppInstanceEntitlementResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -76,19 +76,19 @@ type GetAppInstanceEntitlementResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The root error message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -213,13 +213,13 @@ func (s *GetAppInstanceEntitlementResponseBody) Validate() error {
 }
 
 type GetAppInstanceEntitlementResponseBodyModule struct {
-	// BizId of the associated application instance
+	// The business ID of the application instance.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// All entitlements
+	// The list of all entitlement items.
 	Items []*GetAppInstanceEntitlementResponseBodyModuleItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
@@ -263,95 +263,95 @@ func (s *GetAppInstanceEntitlementResponseBodyModule) Validate() error {
 }
 
 type GetAppInstanceEntitlementResponseBodyModuleItems struct {
-	// Indicates whether an instance has been assigned
+	// Indicates whether an instance is allocated.
 	Allocated *bool `json:"Allocated,omitempty" xml:"Allocated,omitempty"`
-	// Is this item currently active?
+	// Indicates whether this entitlement item is currently available.
 	//
 	// example:
 	//
 	// on
 	Available *bool `json:"Available,omitempty" xml:"Available,omitempty"`
-	// Authorization item identity
+	// The code of the entitlement item.
 	//
 	// example:
 	//
 	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether configuration has been completed
+	// Indicates whether the configuration is complete.
 	//
 	// example:
 	//
 	// true
 	Configured *bool `json:"Configured,omitempty" xml:"Configured,omitempty"`
-	// Is this item entitled in the version?
+	// Indicates whether the edition grants this entitlement item.
 	Entitled *bool `json:"Entitled,omitempty" xml:"Entitled,omitempty"`
-	// Feature source type (PLUGIN/SKILL/CHANNEL/SYSTEM)
+	// The feature source type. Valid values: PLUGIN, SKILL, CHANNEL, and SYSTEM.
 	//
 	// example:
 	//
 	// 5
 	FeatureType *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
-	// Runtime instance ID
+	// The runtime instance ID.
 	//
 	// example:
 	//
 	// waf_v2intl_public_intl-sg-i5c43rcpw04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Authorization item Name
+	// The name of the entitlement item.
 	//
 	// example:
 	//
 	// 4e46d24b56bfa944b5e6f2305715bc4e.jpg
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Plugin ID
+	// The plug-in ID.
 	//
 	// example:
 	//
 	// alipay-isv
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// Total quota
+	// The total quota.
 	//
 	// example:
 	//
 	// 10
 	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// Remaining quantity
+	// The remaining amount.
 	//
 	// example:
 	//
 	// 1234
 	Remaining *int64 `json:"Remaining,omitempty" xml:"Remaining,omitempty"`
-	// Resource domain association identity
+	// The association code of the resource domain.
 	//
 	// example:
 	//
 	// SmsCount
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
-	// Resource type (QUOTA/LIMIT)
+	// The resource type. Valid values: QUOTA and LIMIT.
 	//
 	// example:
 	//
 	// filesystem
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Is it running?
+	// Indicates whether the instance is running.
 	//
 	// example:
 	//
 	// 0
 	Running *bool `json:"Running,omitempty" xml:"Running,omitempty"`
-	// Authorization Type (FEATURE / RESOURCE / RUNTIME)
+	// The entitlement type. Valid values: FEATURE, RESOURCE, and RUNTIME.
 	//
 	// example:
 	//
 	// question
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Usage percentage
+	// The usage percentage.
 	//
 	// example:
 	//
 	// 10
 	UsagePercent *int32 `json:"UsagePercent,omitempty" xml:"UsagePercent,omitempty"`
-	// Usage
+	// The used amount.
 	//
 	// example:
 	//

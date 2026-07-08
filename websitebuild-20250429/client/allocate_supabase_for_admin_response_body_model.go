@@ -40,7 +40,7 @@ type AllocateSupabaseForAdminResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type AllocateSupabaseForAdminResponseBody struct {
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -259,7 +259,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// 111
 	InstanceCreateFinishedTime *string `json:"InstanceCreateFinishedTime,omitempty" xml:"InstanceCreateFinishedTime,omitempty"`
-	// The instance creation status.
+	// The creation status of the instance.
 	//
 	// example:
 	//
@@ -271,7 +271,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// false
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The password for accessing the ApsaraDB RDS database.
+	// The password used to access the ApsaraDB RDS database.
 	//
 	// example:
 	//
@@ -287,7 +287,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// - 0: paused
 	//
-	// - 1: running.
+	// - 1: running
 	//
 	// example:
 	//

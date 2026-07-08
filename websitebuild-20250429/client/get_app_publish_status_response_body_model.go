@@ -34,39 +34,39 @@ type iGetAppPublishStatusResponseBody interface {
 }
 
 type GetAppPublishStatusResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Is retry allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App name.
+	// The application name.
 	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic message.
+	// The dynamic message.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Returned error parameters
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Response data
+	// The response data.
 	Module *GetAppPublishStatusResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -74,19 +74,19 @@ type GetAppPublishStatusResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Abnormal message
+	// The exception message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -217,73 +217,73 @@ type GetAppPublishStatusResponseBodyModule struct {
 	//
 	// true
 	CanQuickRevert *string `json:"CanQuickRevert,omitempty" xml:"CanQuickRevert,omitempty"`
-	// Current operation step of the job.
+	// The current step of the task.
 	//
 	// example:
 	//
 	// PRE_CHECK
 	CurrentStep *string `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
-	// Deployment channel
+	// The deployment channel.
 	//
 	// example:
 	//
 	// PC,WEAPP
 	DeployChannel *string `json:"DeployChannel,omitempty" xml:"DeployChannel,omitempty"`
-	// Application description
+	// The application description.
 	//
 	// example:
 	//
 	// /bak->serverless.handler(2020091300200279)
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Publishing procedure
+	// The publish process.
 	//
 	// example:
 	//
 	// abc
 	ErrorStep *string `json:"ErrorStep,omitempty" xml:"ErrorStep,omitempty"`
-	// Indicates whether the job is finished.
+	// Indicates whether the task is complete.
 	IsFinish *bool `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
-	// Indicates whether the invocation succeeded. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// - `true`: The invocation succeeded.
+	// - `true`: The call is successful.
 	//
-	// - `false`: Failed to invoke.
+	// - `false`: The call failed.
 	//
 	// example:
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// Additional description information.
+	// The additional description.
 	//
 	// example:
 	//
 	// common notify successfully.
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Sorting type: ASC or DESC.
+	// The sort type. Valid values: ASC and DESC.
 	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// Job completion percentage.
+	// The task completion percentage.
 	//
 	// example:
 	//
 	// 20
 	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
-	// Publish number
+	// The publish number.
 	//
 	// example:
 	//
 	// 123
 	PublishNumber *string `json:"PublishNumber,omitempty" xml:"PublishNumber,omitempty"`
-	// Publish order ID
+	// The publish order ID.
 	//
 	// example:
 	//
 	// 123
 	PublishOrderId *int64 `json:"PublishOrderId,omitempty" xml:"PublishOrderId,omitempty"`
-	// Scheduled publish time
+	// The scheduled publish time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -291,13 +291,13 @@ type GetAppPublishStatusResponseBodyModule struct {
 	//
 	// 123123
 	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	// The site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+	// The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// example:
 	//
 	// 865181640657408
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Error Level, including FATAL, ERROR, WARNING, and CRITICAL.
+	// The error level. Valid values: FATAL, ERROR, WARNING, and CRITICAL.
 	Steps      []*string `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
 	Subchannel *string   `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
 }

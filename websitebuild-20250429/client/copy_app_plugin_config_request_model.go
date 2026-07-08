@@ -16,10 +16,14 @@ type iCopyAppPluginConfigRequest interface {
 }
 
 type CopyAppPluginConfigRequest struct {
+	// The source business ID.
+	//
 	// example:
 	//
 	// 31104757
 	SourceBizId *string `json:"SourceBizId,omitempty" xml:"SourceBizId,omitempty"`
+	// The target business ID.
+	//
 	// example:
 	//
 	// 31104758

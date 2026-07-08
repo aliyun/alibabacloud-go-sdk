@@ -38,51 +38,51 @@ type iListAppChatMessagesResponseBody interface {
 }
 
 type ListAppChatMessagesResponseBody struct {
-	// permission denied information
+	// The access denied detail.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// is retry allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App name.
+	// The application name.
 	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// dynamic error message used to replace `%s` in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// xxx
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// returned error parameters
+	// The error arguments.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Number of results per query.
+	// The number of entries per query.
 	//
-	// Value range: 10 to 100. Default Value: 20.
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Response data
+	// The response data.
 	Module []*ListAppChatMessagesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
-	// Token for starting the next query. It is empty when there is no next query.
+	// The token for the next query. This parameter is empty if no more results exist.
 	//
 	// example:
 	//
@@ -94,19 +94,19 @@ type ListAppChatMessagesResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.EROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// abnormal message
+	// The exception message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -253,43 +253,43 @@ func (s *ListAppChatMessagesResponseBody) Validate() error {
 }
 
 type ListAppChatMessagesResponseBodyModule struct {
-	// Bot ID
+	// The bot ID.
 	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
-	// Unique ID of a single message
+	// The unique ID of a single message.
 	//
 	// example:
 	//
 	// chat-xrz3etcl2bsygwlx8g
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
-	// Current chat status
+	// The current chat status.
 	//
 	// example:
 	//
 	// created
 	ChatStatus *string `json:"ChatStatus,omitempty" xml:"ChatStatus,omitempty"`
-	// ID of the data class API being invoked.
+	// The ID of the data API operation that is called.
 	//
 	// example:
 	//
 	// {\\"code\\": \\"200\\", \\"success\\": True, \\"content\\": True, \\"requestId\\": \\"028993DE-097E-5F4E-AC48-64A2D5ED5F30\\", \\"businessError\\": False, \\"message\\": \\"success\\", \\"httpStatusCode\\": 200}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Content type
+	// The content type.
 	//
 	// example:
 	//
 	// image/png
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// Session ID
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 872be9bc-3097-433d-b462-596202455102
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// Creation Time
+	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -297,7 +297,7 @@ type ListAppChatMessagesResponseBodyModule struct {
 	//
 	// 1740479834
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// Updated At
+	// The modification time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -305,55 +305,55 @@ type ListAppChatMessagesResponseBodyModule struct {
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// Message ID
+	// The message ID.
 	//
 	// example:
 	//
 	// ee60f5a6-88ca-4074-ad37-515f065bbbd2
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// Business extension metadata (in Map format, must be a JSON string)
+	// The business extension metadata in Map format. The value must be a JSON string.
 	//
 	// example:
 	//
 	// {\\"appId\\":\\"WS20260506101154000001\\",\\"inputTokens\\":1148,\\"outputTokens\\":60}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// Region ordinal number. This parameter is deprecated.
+	// The region sequence number. This parameter is deprecated.
 	//
 	// example:
 	//
 	// 1
 	No *int32 `json:"No,omitempty" xml:"No,omitempty"`
-	// Indicates the role of the participant in the conversation. Valid values include:
+	// The role of the conversation participant. Valid values:
 	//
-	// - user: User
+	// - user: user
 	//
-	// - assistant: Assistant
+	// - assistant: assistant
 	//
-	// - system: System
+	// - system: system
 	//
-	// - function: Function
+	// - function: function
 	//
-	// - plugin: Plugin
+	// - plugin: plug-in
 	//
-	// - tool: Tool
+	// - tool: tool
 	//
 	// example:
 	//
 	// LoC
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// Section ID of the checklist item.
+	// The section ID of the check item.
 	//
 	// example:
 	//
 	// 11
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
-	// Site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+	// The site ID. You can obtain this value by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// example:
 	//
 	// 865181640657408
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// File type
+	// The file type.
 	//
 	// example:
 	//

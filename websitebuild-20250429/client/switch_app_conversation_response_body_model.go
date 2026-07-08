@@ -34,40 +34,60 @@ type iSwitchAppConversationResponseBody interface {
 }
 
 type SwitchAppConversationResponseBody struct {
+	// The access denied details.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether retry is allowed.
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// watermark
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                                  `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                            `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *SwitchAppConversationResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error parameters.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The response data.
+	Module *SwitchAppConversationResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// The root error message.
+	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// The reserved parameter.
+	//
 	// example:
 	//
 	// True
@@ -191,46 +211,68 @@ func (s *SwitchAppConversationResponseBody) Validate() error {
 }
 
 type SwitchAppConversationResponseBodyModule struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 12343131221311
 	AliyunPk *string `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
+	// The bot ID.
+	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// The chat records.
+	//
 	// example:
 	//
 	// 123
 	ChatNum *int32 `json:"ChatNum,omitempty" xml:"ChatNum,omitempty"`
+	// The conversation ID.
+	//
 	// example:
 	//
 	// 8642d886-0322-43a9-b12f-6629b067978c
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1740479834
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The extended information in JSON string format.
+	//
 	// example:
 	//
 	// {\\"appId\\":\\"WS20260504134737000001\\",\\"inputTokens\\":1395,\\"outputTokens\\":38}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	// The section ID of the check item.
+	//
 	// example:
 	//
 	// 11
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
+	// The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// example:
 	//
 	// 865181640657408
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The current viewpoint, equivalent to the news title.
+	//
 	// example:
 	//
 	// Feel Like Makin\\" Love
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 12345

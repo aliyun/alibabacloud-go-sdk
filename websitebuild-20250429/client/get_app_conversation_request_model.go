@@ -16,13 +16,13 @@ type iGetAppConversationRequest interface {
 }
 
 type GetAppConversationRequest struct {
-	// Bot ID
+	// The bot ID.
 	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
-	// Session ID
+	// The conversation ID.
 	//
 	// example:
 	//

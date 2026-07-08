@@ -34,41 +34,41 @@ type iUpdateAppChatMessageResponseBody interface {
 }
 
 type UpdateAppChatMessageResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// is retry allowed
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App name.
+	// The application name.
 	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// dynamic code; not currently used. Please ignore.
+	// The dynamic code. This parameter is not currently used. Ignore this parameter.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// dynamic error message, used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the `%s` in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// faulty parameters
+	// The error arguments.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The returned object.
+	// The response object.
 	Module *UpdateAppChatMessageResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -76,19 +76,19 @@ type UpdateAppChatMessageResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// abnormal message
+	// The root error message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// is processed synchronously
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -213,43 +213,43 @@ func (s *UpdateAppChatMessageResponseBody) Validate() error {
 }
 
 type UpdateAppChatMessageResponseBodyModule struct {
-	// Bot ID
+	// The bot ID.
 	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
-	// The ID of the chat.
+	// The chat ID.
 	//
 	// example:
 	//
 	// 53467af9-8c4e-4498-9032-1f26978007f8
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
-	// Current conversation status
+	// The current conversation status.
 	//
 	// example:
 	//
 	// 123
 	ChatStatus *string `json:"ChatStatus,omitempty" xml:"ChatStatus,omitempty"`
-	// The ID of the data class API being invoked.
+	// The ID of the data API operation that is called.
 	//
 	// example:
 	//
 	// {\\"code\\": \\"200\\", \\"success\\": True, \\"content\\": True, \\"requestId\\": \\"4AF53F7B-FEA9-5966-B0F8-BAF9A1EEFE34\\", \\"businessError\\": False, \\"message\\": \\"success\\", \\"httpStatusCode\\": 200}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Content type.
+	// The content type.
 	//
 	// example:
 	//
 	// image/png
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// Session ID.
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 872be9bc-3097-433d-b462-596202455102
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// Creation Time
+	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -257,7 +257,7 @@ type UpdateAppChatMessageResponseBodyModule struct {
 	//
 	// 1740479834
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// Updated At.
+	// The modification time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -265,55 +265,55 @@ type UpdateAppChatMessageResponseBodyModule struct {
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// Message ID
+	// The message ID.
 	//
 	// example:
 	//
 	// 471791769135220858
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// Business extension metadata (in Map format, must be a JSON string)
+	// The business extension metadata in Map format. The value must be a JSON string.
 	//
 	// example:
 	//
 	// {\\"appId\\":\\"WS20260418211121000001\\",\\"inputTokens\\":273,\\"outputTokens\\":1}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// The probability of not wearing a mask, not wearing a uniform, or not wearing a hat.
+	// The probability of not wearing a mask, not wearing work clothes, or not wearing a hat.
 	//
 	// example:
 	//
 	// 1
 	No *int32 `json:"No,omitempty" xml:"No,omitempty"`
-	// Indicates the role of a conversation participant. Valid values include:
+	// The role of the conversation participant. Valid values:
 	//
-	// - user: User
+	// - user: user
 	//
-	// - assistant: Assistant
+	// - assistant: assistant
 	//
-	// - system: System
+	// - system: system
 	//
-	// - function: Function
+	// - function: function
 	//
-	// - plugin: Plugin
+	// - plugin: plug-in
 	//
-	// - tool: Tool
+	// - tool: tool
 	//
 	// example:
 	//
 	// LoC
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// Section ID of the checklist item.
+	// The section ID of the check item.
 	//
 	// example:
 	//
 	// 11
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
-	// Site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+	// The site ID. You can obtain this value by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// example:
 	//
 	// 865181640657408
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// File type
+	// The file type.
 	//
 	// example:
 	//

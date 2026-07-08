@@ -20,19 +20,26 @@ type iSubmitAppSeoIndexRequest interface {
 }
 
 type SubmitAppSeoIndexRequest struct {
+	// The business ID.
+	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// yjdw.bpu.edu.cn-waf
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The search engine type.
+	//
 	// example:
 	//
 	// type
-	SeType      *string `json:"SeType,omitempty" xml:"SeType,omitempty"`
-	SubmitLater *bool   `json:"SubmitLater,omitempty" xml:"SubmitLater,omitempty"`
+	SeType *string `json:"SeType,omitempty" xml:"SeType,omitempty"`
+	// Specifies whether to delay the submission.
+	SubmitLater *bool `json:"SubmitLater,omitempty" xml:"SubmitLater,omitempty"`
 }
 
 func (s SubmitAppSeoIndexRequest) String() string {

@@ -24,37 +24,37 @@ type iUploadAppSiteValidationFileRequest interface {
 }
 
 type UploadAppSiteValidationFileRequest struct {
-	// business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// domain name
+	// The domain name.
 	//
 	// example:
 	//
 	// yjdw.bpu.edu.cn-waf
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// file name
+	// The file name.
 	//
 	// example:
 	//
 	// {\\"URI\\": \\"oss://imm-test-co-cn-chengdu/zqh/input/Image/indexImage/nn1.jpg\\", \\"LatLong\\":\\"+39.998800,+116.480900\\"}
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
-	// file content
+	// The file content.
 	//
 	// example:
 	//
 	// abc
 	FileContent *string `json:"FileContent,omitempty" xml:"FileContent,omitempty"`
-	// file type
+	// The file type.
 	//
 	// example:
 	//
 	// APP_MAPPING
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// site host
+	// The site host.
 	//
 	// example:
 	//

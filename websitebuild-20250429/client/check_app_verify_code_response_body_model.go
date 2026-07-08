@@ -58,7 +58,7 @@ type CheckAppVerifyCodeResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the %s variable in the ErrMessage response element.
+	// The dynamic error message, which is used to replace the %s variable in the ErrMessage response parameter.
 	//
 	// example:
 	//

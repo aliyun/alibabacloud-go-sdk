@@ -40,11 +40,11 @@ type OperateSupabaseForAdminResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed. Valid values:
+	// Indicates whether retry is allowed. Valid values:
 	//
-	// - false: A retry is not allowed.
+	// - false: Retry is not allowed.
 	//
-	// - true: A retry is allowed.
+	// - true: Retry is allowed.
 	//
 	// example:
 	//

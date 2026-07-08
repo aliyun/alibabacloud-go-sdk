@@ -16,7 +16,7 @@ type iGetMiniAppBindingResponseBody interface {
 }
 
 type GetMiniAppBindingResponseBody struct {
-	// Request result.
+	// The request result.
 	Data *GetMiniAppBindingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,43 +62,43 @@ func (s *GetMiniAppBindingResponseBody) Validate() error {
 }
 
 type GetMiniAppBindingResponseBodyData struct {
-	// Authorization status
+	// The authorization status.
 	//
 	// example:
 	//
 	// disabled
 	AuthStatus *string `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WS20260206134402000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// ICP filing status
+	// The ICP filing status.
 	//
 	// example:
 	//
 	// false
 	IcpFiled *bool `json:"IcpFiled,omitempty" xml:"IcpFiled,omitempty"`
-	// Miniapp ID
+	// The mini program ID.
 	//
 	// example:
 	//
 	// wx7f122a7d23fdxxxx
 	PlatformAppid *string `json:"PlatformAppid,omitempty" xml:"PlatformAppid,omitempty"`
-	// Preview QR code
+	// The preview QR code URL.
 	//
 	// example:
 	//
 	// http://xxxx
 	PreviewQrCodeUrl *string `json:"PreviewQrCodeUrl,omitempty" xml:"PreviewQrCodeUrl,omitempty"`
-	// Production QR code
+	// The production QR code URL.
 	//
 	// example:
 	//
 	// http://xxxx
 	ProductionQrCodeUrl *string `json:"ProductionQrCodeUrl,omitempty" xml:"ProductionQrCodeUrl,omitempty"`
-	// Extension information
+	// The extension information.
 	SettingValues map[string]*string `json:"SettingValues,omitempty" xml:"SettingValues,omitempty"`
 }
 

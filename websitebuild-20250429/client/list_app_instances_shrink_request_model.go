@@ -63,7 +63,7 @@ type ListAppInstancesShrinkRequest struct {
 	//
 	// {}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The number of entries per query.
+	// The maximum number of results per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -71,7 +71,7 @@ type ListAppInstancesShrinkRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. This parameter is empty if no more results are available.
+	// The token for the next query. This parameter is empty if no more results exist.
 	//
 	// example:
 	//

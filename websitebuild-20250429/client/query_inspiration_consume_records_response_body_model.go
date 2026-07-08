@@ -40,7 +40,7 @@ type QueryInspirationConsumeRecordsResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
@@ -239,7 +239,7 @@ type QueryInspirationConsumeRecordsResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// Apart from pagination limits, the server processes up to 1,000 recent records for the current query. If the results exceed 1,000 records, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to pagination limits, the server processes up to 1,000 recent records for the current query. If the results exceed 1,000 records, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
 	// The total number of entries.
 	//
@@ -384,7 +384,7 @@ type QueryInspirationConsumeRecordsResponseBodyModuleData struct {
 	// {\\"MD5\\":\\"296f6c01e7fea2697ffe1cf41082b774\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"12845825\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":true,\\"uefi_preferred\\":false}
 	MetaData  *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 	RecordKey *string `json:"RecordKey,omitempty" xml:"RecordKey,omitempty"`
-	// The name of the consumption scenario, such as AI Application Development, AI Creative Illustration, AI Video Creation, or AI Content Creation.
+	// The consumption scenario name, such as AI application development, AI creative illustration, AI video creation, or AI content creation.
 	//
 	// example:
 	//
@@ -488,7 +488,7 @@ type QueryInspirationConsumeRecordsResponseBodyModuleNext struct {
 	//
 	// {\\"MD5\\":\\"1042e65a2b7cdd3059b6a873ee1a3260\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"12845825\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":true,\\"uefi_preferred\\":false}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// The name of the consumption scenario, such as AI Application Development, AI Creative Illustration, AI Video Creation, or AI Content Creation.
+	// The consumption scenario name, such as AI application development, AI creative illustration, AI video creation, or AI content creation.
 	//
 	// example:
 	//

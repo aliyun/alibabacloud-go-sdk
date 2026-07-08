@@ -34,40 +34,64 @@ type iGetOssUploadPolicyResponseBody interface {
 }
 
 type GetOssUploadPolicyResponseBody struct {
+	// The detailed reason why access is denied.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Indicates whether a retry is allowed. Valid values:
+	//
+	// - false: No retry is allowed.
+	//
+	// - true: A retry is allowed.
+	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// ish-intelligence-store-platform-admin-web
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic message.
+	//
 	// example:
 	//
 	// SYSTEM_ERROR
-	DynamicMessage *string                               `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorArgs      []interface{}                         `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	Module         *GetOssUploadPolicyResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error parameters returned.
+	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	// The task object.
+	Module *GetOssUploadPolicyResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
+	// The exception message.
+	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
+	// Indicates whether the request is synchronously processed.
+	//
 	// example:
 	//
 	// True
@@ -191,34 +215,50 @@ func (s *GetOssUploadPolicyResponseBody) Validate() error {
 }
 
 type GetOssUploadPolicyResponseBodyModule struct {
+	// The upload directory path.
+	//
 	// example:
 	//
 	// pano_src/100070-2679478/images/
 	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
+	// The OSS bucket host address.
+	//
 	// example:
 	//
 	// *.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The Base64-encoded policy.
+	//
 	// example:
 	//
 	// Accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The Security Token Service (STS) token. This parameter is null in non-STS scenarios.
+	//
 	// example:
 	//
 	// ***
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The calculated signature.
+	//
 	// example:
 	//
 	// ****************************
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// The signature version, such as OSS4-HMAC-SHA256.
+	//
 	// example:
 	//
 	// 2019-04-02
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// x-oss-credential
+	//
 	// example:
 	//
 	// 123123
 	XossCredential *string `json:"XossCredential,omitempty" xml:"XossCredential,omitempty"`
+	// x-oss-date
+	//
 	// example:
 	//
 	// 20260101

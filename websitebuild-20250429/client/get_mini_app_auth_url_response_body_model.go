@@ -16,9 +16,9 @@ type iGetMiniAppAuthUrlResponseBody interface {
 }
 
 type GetMiniAppAuthUrlResponseBody struct {
-	// Result of the request.
+	// The request result.
 	Data *GetMiniAppAuthUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// request ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetMiniAppAuthUrlResponseBody) Validate() error {
 }
 
 type GetMiniAppAuthUrlResponseBodyData struct {
-	// authorized address
+	// The authorization URL.
 	//
 	// example:
 	//

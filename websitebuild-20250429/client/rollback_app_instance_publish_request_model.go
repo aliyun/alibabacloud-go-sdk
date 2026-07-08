@@ -20,25 +20,25 @@ type iRollbackAppInstancePublishRequest interface {
 }
 
 type RollbackAppInstancePublishRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Deployment channel
+	// The deployment channel.
 	//
 	// example:
 	//
 	// PC
 	DeployChannel *string `json:"DeployChannel,omitempty" xml:"DeployChannel,omitempty"`
-	// Publish number
+	// The publish number.
 	//
 	// example:
 	//
 	// 123
 	PublishNumber *string `json:"PublishNumber,omitempty" xml:"PublishNumber,omitempty"`
-	// Quick rollback.
+	// Specifies whether to perform a quick rollback.
 	//
 	// example:
 	//

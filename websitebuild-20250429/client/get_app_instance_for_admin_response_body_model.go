@@ -46,7 +46,7 @@ type GetAppInstanceForAdminResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name that was queried.
+	// The application name to query.
 	//
 	// example:
 	//

@@ -16,10 +16,14 @@ type iGetAppFileContentRequest interface {
 }
 
 type GetAppFileContentRequest struct {
+	// The conversation ID.
+	//
 	// example:
 	//
 	// 593fe1a2-d0b4-4fde-a2b0-78ad6a438d41
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The file path.
+	//
 	// example:
 	//
 	// index.html

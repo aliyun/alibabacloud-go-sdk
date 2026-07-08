@@ -18,19 +18,19 @@ type iGetAppPublishStatusRequest interface {
 }
 
 type GetAppPublishStatusRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Deployment ticket ID
+	// The deployment order ID.
 	//
 	// example:
 	//
 	// 4998717
 	DeployOrderId *int64 `json:"DeployOrderId,omitempty" xml:"DeployOrderId,omitempty"`
-	// Website domain name
+	// The website domain name.
 	//
 	// example:
 	//

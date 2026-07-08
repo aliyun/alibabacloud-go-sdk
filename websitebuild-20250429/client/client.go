@@ -324,7 +324,7 @@ func (client *Client) BindAppDomain(request *BindAppDomainRequest) (_result *Bin
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - CheckAppVerifyCodeRequest
 //
@@ -384,7 +384,7 @@ func (client *Client) CheckAppVerifyCodeWithOptions(request *CheckAppVerifyCodeR
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - CheckAppVerifyCodeRequest
 //
@@ -704,11 +704,11 @@ func (client *Client) ConfirmAppInstance(request *ConfirmAppInstanceRequest) (_r
 
 // Summary:
 //
-// 复制插件配置
+// Copies the plug-in configuration.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the code generation plug-in configuration information.
 //
 // @param request - CopyAppPluginConfigRequest
 //
@@ -756,11 +756,11 @@ func (client *Client) CopyAppPluginConfigWithOptions(request *CopyAppPluginConfi
 
 // Summary:
 //
-// 复制插件配置
+// Copies the plug-in configuration.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the code generation plug-in configuration information.
 //
 // @param request - CopyAppPluginConfigRequest
 //
@@ -871,7 +871,7 @@ func (client *Client) CreateAIStaffChat(request *CreateAIStaffChatRequest) (_res
 //
 // Description:
 //
-// Creates an AI session for WanXiaoZhi 2.0.
+// Creates an AI session for Wan Xiaozhi 2.0.
 //
 // @param request - CreateAIStaffConversationRequest
 //
@@ -919,7 +919,7 @@ func (client *Client) CreateAIStaffConversationWithOptions(request *CreateAIStaf
 //
 // Description:
 //
-// Creates an AI session for WanXiaoZhi 2.0.
+// Creates an AI session for Wan Xiaozhi 2.0.
 //
 // @param request - CreateAIStaffConversationRequest
 //
@@ -2010,11 +2010,11 @@ func (client *Client) DeleteAppDomainRedirect(request *DeleteAppDomainRedirectRe
 
 // Summary:
 //
-// 删除文件
+// Deletes a file.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - DeleteAppFileRequest
 //
@@ -2062,11 +2062,11 @@ func (client *Client) DeleteAppFileWithOptions(request *DeleteAppFileRequest, ru
 
 // Summary:
 //
-// 删除文件
+// Deletes a file.
 //
 // Description:
 //
-// 查询应用实例信息
+// Queries application instance information.
 //
 // @param request - DeleteAppFileRequest
 //
@@ -2084,11 +2084,11 @@ func (client *Client) DeleteAppFile(request *DeleteAppFileRequest) (_result *Del
 
 // Summary:
 //
-// # Delete file
+// Deletes a file.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - DeleteAppInstanceFileRequest
 //
@@ -2136,11 +2136,11 @@ func (client *Client) DeleteAppInstanceFileWithOptions(request *DeleteAppInstanc
 
 // Summary:
 //
-// # Delete file
+// Deletes a file.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - DeleteAppInstanceFileRequest
 //
@@ -2232,11 +2232,11 @@ func (client *Client) DeleteAppNotificationScene(request *DeleteAppNotificationS
 
 // Summary:
 //
-// # Delete Supabase key
+// Deletes a Supabase key.
 //
 // Description:
 //
-// # Operation resource corresponds to the supabase instance information
+// The Supabase instance information corresponding to the operated resource.
 //
 // @param request - DeleteAppSupabaseSecretsRequest
 //
@@ -2284,11 +2284,11 @@ func (client *Client) DeleteAppSupabaseSecretsWithOptions(request *DeleteAppSupa
 
 // Summary:
 //
-// # Delete Supabase key
+// Deletes a Supabase key.
 //
 // Description:
 //
-// # Operation resource corresponds to the supabase instance information
+// The Supabase instance information corresponding to the operated resource.
 //
 // @param request - DeleteAppSupabaseSecretsRequest
 //
@@ -2882,11 +2882,11 @@ func (client *Client) GetAppCodeWorkspaceDetail(request *GetAppCodeWorkspaceDeta
 
 // Summary:
 //
-// # Retrieve conversation details
+// Retrieves the details of a conversation.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 API for creating an AI session
+// Creates an AI conversation through the Wanxiaozhi 2.0 interface.
 //
 // @param request - GetAppConversationRequest
 //
@@ -2934,11 +2934,11 @@ func (client *Client) GetAppConversationWithOptions(request *GetAppConversationR
 
 // Summary:
 //
-// # Retrieve conversation details
+// Retrieves the details of a conversation.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 API for creating an AI session
+// Creates an AI conversation through the Wanxiaozhi 2.0 interface.
 //
 // @param request - GetAppConversationRequest
 //
@@ -3100,11 +3100,11 @@ func (client *Client) GetAppDatabaseTableSchemas(request *GetAppDatabaseTableSch
 
 // Summary:
 //
-// 读取文件及修改时间
+// Retrieves file content and modification time.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppFileContentRequest
 //
@@ -3152,11 +3152,11 @@ func (client *Client) GetAppFileContentWithOptions(request *GetAppFileContentReq
 
 // Summary:
 //
-// 读取文件及修改时间
+// Retrieves file content and modification time.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppFileContentRequest
 //
@@ -3236,11 +3236,11 @@ func (client *Client) GetAppInstance(request *GetAppInstanceRequest) (_result *G
 
 // Summary:
 //
-// # GetAppInstanceEntitlement
+// Queries the entitlement information of an application instance.
 //
 // Description:
 //
-// # Query application instance information
+// Queries the entitlement information of an application instance.
 //
 // @param request - GetAppInstanceEntitlementRequest
 //
@@ -3284,11 +3284,11 @@ func (client *Client) GetAppInstanceEntitlementWithOptions(request *GetAppInstan
 
 // Summary:
 //
-// # GetAppInstanceEntitlement
+// Queries the entitlement information of an application instance.
 //
 // Description:
 //
-// # Query application instance information
+// Queries the entitlement information of an application instance.
 //
 // @param request - GetAppInstanceEntitlementRequest
 //
@@ -3450,11 +3450,11 @@ func (client *Client) GetAppInstanceForPartner(request *GetAppInstanceForPartner
 
 // Summary:
 //
-// # Obtain a temporary short URL for the application
+// Retrieves a temporary short URL for an application.
 //
 // Description:
 //
-// # Obtain configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppInstanceTempShortUrlRequest
 //
@@ -3498,11 +3498,11 @@ func (client *Client) GetAppInstanceTempShortUrlWithOptions(request *GetAppInsta
 
 // Summary:
 //
-// # Obtain a temporary short URL for the application
+// Retrieves a temporary short URL for an application.
 //
 // Description:
 //
-// # Obtain configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppInstanceTempShortUrlRequest
 //
@@ -3594,11 +3594,11 @@ func (client *Client) GetAppPluginConfig(request *GetAppPluginConfigRequest) (_r
 
 // Summary:
 //
-// # Query publishing status
+// Queries the publish status.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppPublishStatusRequest
 //
@@ -3650,11 +3650,11 @@ func (client *Client) GetAppPublishStatusWithOptions(request *GetAppPublishStatu
 
 // Summary:
 //
-// # Query publishing status
+// Queries the publish status.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppPublishStatusRequest
 //
@@ -3898,11 +3898,11 @@ func (client *Client) GetAppSandboxPreviewUrl(request *GetAppSandboxPreviewUrlRe
 
 // Summary:
 //
-// # Query SEO index status
+// Queries the SEO index status.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppSeoStatusRequest
 //
@@ -3954,11 +3954,11 @@ func (client *Client) GetAppSeoStatusWithOptions(request *GetAppSeoStatusRequest
 
 // Summary:
 //
-// # Query SEO index status
+// Queries the SEO index status.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppSeoStatusRequest
 //
@@ -3976,11 +3976,11 @@ func (client *Client) GetAppSeoStatus(request *GetAppSeoStatusRequest) (_result 
 
 // Summary:
 //
-// # SEO Index Chart
+// SEO index chart.
 //
 // Description:
 //
-// # Obtain plugin configuration information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppSeoTrendsRequest
 //
@@ -4032,11 +4032,11 @@ func (client *Client) GetAppSeoTrendsWithOptions(request *GetAppSeoTrendsRequest
 
 // Summary:
 //
-// # SEO Index Chart
+// SEO index chart.
 //
 // Description:
 //
-// # Obtain plugin configuration information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppSeoTrendsRequest
 //
@@ -4054,11 +4054,11 @@ func (client *Client) GetAppSeoTrends(request *GetAppSeoTrendsRequest) (_result 
 
 // Summary:
 //
-// # Retrieve site map
+// Retrieves the sitemap.
 //
 // Description:
 //
-// # Retrieve QR code plugin configuration information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppSitemapRequest
 //
@@ -4110,11 +4110,11 @@ func (client *Client) GetAppSitemapWithOptions(request *GetAppSitemapRequest, ru
 
 // Summary:
 //
-// # Retrieve site map
+// Retrieves the sitemap.
 //
 // Description:
 //
-// # Retrieve QR code plugin configuration information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppSitemapRequest
 //
@@ -4132,11 +4132,11 @@ func (client *Client) GetAppSitemap(request *GetAppSitemapRequest) (_result *Get
 
 // Summary:
 //
-// # Query Supabase authentication settings
+// Queries the Supabase authentication settings.
 //
 // Description:
 //
-// Query the auth configuration information of the Supabase instance corresponding to the resource.
+// Queries the Supabase instance authentication configuration information for a specified resource.
 //
 // @param request - GetAppSupabaseAuthConfigRequest
 //
@@ -4184,11 +4184,11 @@ func (client *Client) GetAppSupabaseAuthConfigWithOptions(request *GetAppSupabas
 
 // Summary:
 //
-// # Query Supabase authentication settings
+// Queries the Supabase authentication settings.
 //
 // Description:
 //
-// Query the auth configuration information of the Supabase instance corresponding to the resource.
+// Queries the Supabase instance authentication configuration information for a specified resource.
 //
 // @param request - GetAppSupabaseAuthConfigRequest
 //
@@ -4276,11 +4276,11 @@ func (client *Client) GetAppSupabaseInstance(request *GetAppSupabaseInstanceRequ
 
 // Summary:
 //
-// # Query Supabase keys
+// Queries Supabase keys.
 //
 // Description:
 //
-// # The supabase instance information corresponding to the operated resource
+// Queries the Supabase instance information corresponding to the specified resource.
 //
 // @param request - GetAppSupabaseSecretsRequest
 //
@@ -4328,11 +4328,11 @@ func (client *Client) GetAppSupabaseSecretsWithOptions(request *GetAppSupabaseSe
 
 // Summary:
 //
-// # Query Supabase keys
+// Queries Supabase keys.
 //
 // Description:
 //
-// # The supabase instance information corresponding to the operated resource
+// Queries the Supabase instance information corresponding to the specified resource.
 //
 // @param request - GetAppSupabaseSecretsRequest
 //
@@ -4753,7 +4753,7 @@ func (client *Client) GetIcpFilingInfoForPartner(request *GetIcpFilingInfoForPar
 //
 // Description:
 //
-// Queries the Supabase instance configuration information for a specified resource.
+// Queries the Supabase instance configuration information corresponding to a resource.
 //
 // @param request - GetLlmProxyConfigForAdminRequest
 //
@@ -4805,7 +4805,7 @@ func (client *Client) GetLlmProxyConfigForAdminWithOptions(request *GetLlmProxyC
 //
 // Description:
 //
-// Queries the Supabase instance configuration information for a specified resource.
+// Queries the Supabase instance configuration information corresponding to a resource.
 //
 // @param request - GetLlmProxyConfigForAdminRequest
 //
@@ -4823,7 +4823,7 @@ func (client *Client) GetLlmProxyConfigForAdmin(request *GetLlmProxyConfigForAdm
 
 // Summary:
 //
-// # Obtain miniapp authorization link
+// Retrieves the authorization URL for a mini program.
 //
 // @param request - GetMiniAppAuthUrlRequest
 //
@@ -4875,7 +4875,7 @@ func (client *Client) GetMiniAppAuthUrlWithOptions(request *GetMiniAppAuthUrlReq
 
 // Summary:
 //
-// # Obtain miniapp authorization link
+// Retrieves the authorization URL for a mini program.
 //
 // @param request - GetMiniAppAuthUrlRequest
 //
@@ -4893,11 +4893,11 @@ func (client *Client) GetMiniAppAuthUrl(request *GetMiniAppAuthUrlRequest) (_res
 
 // Summary:
 //
-// # Query the miniapp attached to a site
+// Queries the mini programs associated with a site.
 //
 // Description:
 //
-// # Obtain the QR code plugin configuration information
+// Retrieves the configuration information of the QR code generation plug-in.
 //
 // @param tmpReq - GetMiniAppBindingRequest
 //
@@ -4955,11 +4955,11 @@ func (client *Client) GetMiniAppBindingWithOptions(tmpReq *GetMiniAppBindingRequ
 
 // Summary:
 //
-// # Query the miniapp attached to a site
+// Queries the mini programs associated with a site.
 //
 // Description:
 //
-// # Obtain the QR code plugin configuration information
+// Retrieves the configuration information of the QR code generation plug-in.
 //
 // @param request - GetMiniAppBindingRequest
 //
@@ -4977,7 +4977,7 @@ func (client *Client) GetMiniAppBinding(request *GetMiniAppBindingRequest) (_res
 
 // Summary:
 //
-// # Query the miniapp attached to an application instance based on conditions
+// Performs a conditional query for mini programs attached to an application instance.
 //
 // @param request - GetMiniAppBindingForAdminRequest
 //
@@ -5029,7 +5029,7 @@ func (client *Client) GetMiniAppBindingForAdminWithOptions(request *GetMiniAppBi
 
 // Summary:
 //
-// # Query the miniapp attached to an application instance based on conditions
+// Performs a conditional query for mini programs attached to an application instance.
 //
 // @param request - GetMiniAppBindingForAdminRequest
 //
@@ -5047,11 +5047,11 @@ func (client *Client) GetMiniAppBindingForAdmin(request *GetMiniAppBindingForAdm
 
 // Summary:
 //
-// 生成文件上传策略
+// Generates a file upload policy.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetOssUploadPolicyRequest
 //
@@ -5095,11 +5095,11 @@ func (client *Client) GetOssUploadPolicyWithOptions(request *GetOssUploadPolicyR
 
 // Summary:
 //
-// 生成文件上传策略
+// Generates a file upload policy.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetOssUploadPolicyRequest
 //
@@ -5729,11 +5729,11 @@ func (client *Client) ListAppAssistantAgents(request *ListAppAssistantAgentsRequ
 
 // Summary:
 //
-// # Query the message list of a specified chat
+// Queries the message list of a specified chat.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 - AI session history information query API
+// Wanxiaozhi 2.0 - API for querying AI conversation history.
 //
 // @param request - ListAppChatMessagesRequest
 //
@@ -5793,11 +5793,11 @@ func (client *Client) ListAppChatMessagesWithOptions(request *ListAppChatMessage
 
 // Summary:
 //
-// # Query the message list of a specified chat
+// Queries the message list of a specified chat.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 - AI session history information query API
+// Wanxiaozhi 2.0 - API for querying AI conversation history.
 //
 // @param request - ListAppChatMessagesRequest
 //
@@ -6038,11 +6038,11 @@ func (client *Client) ListAppConversationMessages(request *ListAppConversationMe
 
 // Summary:
 //
-// # Search session list
+// Searches the conversation list.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 Create AI Session API
+// Creates an AI session by using Wanxiaozhi 2.0.
 //
 // @param request - ListAppConversationsRequest
 //
@@ -6114,11 +6114,11 @@ func (client *Client) ListAppConversationsWithOptions(request *ListAppConversati
 
 // Summary:
 //
-// # Search session list
+// Searches the conversation list.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 Create AI Session API
+// Creates an AI session by using Wanxiaozhi 2.0.
 //
 // @param request - ListAppConversationsRequest
 //
@@ -6494,11 +6494,11 @@ func (client *Client) ListAppPluginConfigs(request *ListAppPluginConfigsRequest)
 
 // Summary:
 //
-// # List of code generation plugins
+// Queries the list of code generation plug-ins.
 //
 // Description:
 //
-// # Obtain configuration information of code generation plugins
+// Retrieves the configuration information of code generation plug-ins.
 //
 // @param request - ListAppPluginsRequest
 //
@@ -6558,11 +6558,11 @@ func (client *Client) ListAppPluginsWithOptions(request *ListAppPluginsRequest, 
 
 // Summary:
 //
-// # List of code generation plugins
+// Queries the list of code generation plug-ins.
 //
 // Description:
 //
-// # Obtain configuration information of code generation plugins
+// Retrieves the configuration information of code generation plug-ins.
 //
 // @param request - ListAppPluginsRequest
 //
@@ -7934,11 +7934,11 @@ func (client *Client) OperateAppServiceForPartner(request *OperateAppServiceForP
 
 // Summary:
 //
-// # Switch template like statistics
+// Switches the like statistics for a template.
 //
 // Description:
 //
-// # Obtain barcode generation plugin configuration information
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - OperateAppTemplateLikeRequest
 //
@@ -7986,11 +7986,11 @@ func (client *Client) OperateAppTemplateLikeWithOptions(request *OperateAppTempl
 
 // Summary:
 //
-// # Switch template like statistics
+// Switches the like statistics for a template.
 //
 // Description:
 //
-// # Obtain barcode generation plugin configuration information
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - OperateAppTemplateLikeRequest
 //
@@ -8012,7 +8012,7 @@ func (client *Client) OperateAppTemplateLike(request *OperateAppTemplateLikeRequ
 //
 // Description:
 //
-// The Supabase instance information corresponding to the operated resource.
+// The Supabase instance information corresponding to the resource to operate on.
 //
 // @param request - OperateSupabaseForAdminRequest
 //
@@ -8104,7 +8104,7 @@ func (client *Client) OperateSupabaseForAdminWithOptions(request *OperateSupabas
 //
 // Description:
 //
-// The Supabase instance information corresponding to the operated resource.
+// The Supabase instance information corresponding to the resource to operate on.
 //
 // @param request - OperateSupabaseForAdminRequest
 //
@@ -8408,11 +8408,11 @@ func (client *Client) QueryInspirationAccountDetails(request *QueryInspirationAc
 
 // Summary:
 //
-// # Query Inspiration Balance Overview
+// Queries the overview of inspiration point balance.
 //
 // Description:
 //
-// Query the Supabase instance information corresponding to the resource.
+// Queries the Supabase instance information corresponding to a resource.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -8441,11 +8441,11 @@ func (client *Client) QueryInspirationBalanceWithOptions(runtime *dara.RuntimeOp
 
 // Summary:
 //
-// # Query Inspiration Balance Overview
+// Queries the overview of inspiration point balance.
 //
 // Description:
 //
-// Query the Supabase instance information corresponding to the resource.
+// Queries the Supabase instance information corresponding to a resource.
 //
 // @return QueryInspirationBalanceResponse
 func (client *Client) QueryInspirationBalance() (_result *QueryInspirationBalanceResponse, _err error) {
@@ -9838,11 +9838,11 @@ func (client *Client) RollbackAppCodeSnapshot(request *RollbackAppCodeSnapshotRe
 
 // Summary:
 //
-// # Roll back application instance deployment
+// Rolls back the release of an application instance.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - RollbackAppInstancePublishRequest
 //
@@ -9898,11 +9898,11 @@ func (client *Client) RollbackAppInstancePublishWithOptions(request *RollbackApp
 
 // Summary:
 //
-// # Roll back application instance deployment
+// Rolls back the release of an application instance.
 //
 // Description:
 //
-// # Query application instance information
+// Queries application instance information.
 //
 // @param request - RollbackAppInstancePublishRequest
 //
@@ -9996,11 +9996,11 @@ func (client *Client) SaveAppRequirement(request *SaveAppRequirementRequest) (_r
 
 // Summary:
 //
-// # Save Supabase key
+// Saves Supabase secrets.
 //
 // Description:
 //
-// # The supabase instance information corresponding to the operation resource
+// The Supabase instance information corresponding to the operated resource.
 //
 // @param request - SaveAppSupabaseSecretsRequest
 //
@@ -10048,11 +10048,11 @@ func (client *Client) SaveAppSupabaseSecretsWithOptions(request *SaveAppSupabase
 
 // Summary:
 //
-// # Save Supabase key
+// Saves Supabase secrets.
 //
 // Description:
 //
-// # The supabase instance information corresponding to the operation resource
+// The Supabase instance information corresponding to the operated resource.
 //
 // @param request - SaveAppSupabaseSecretsRequest
 //
@@ -10276,11 +10276,11 @@ func (client *Client) SetAppDomainCertificate(request *SetAppDomainCertificateRe
 
 // Summary:
 //
-// 提交SEO索引
+// Submits an SEO index.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - SubmitAppSeoIndexRequest
 //
@@ -10336,11 +10336,11 @@ func (client *Client) SubmitAppSeoIndexWithOptions(request *SubmitAppSeoIndexReq
 
 // Summary:
 //
-// 提交SEO索引
+// Submits an SEO index.
 //
 // Description:
 //
-// 获取生码插件配置信息
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - SubmitAppSeoIndexRequest
 //
@@ -10424,11 +10424,11 @@ func (client *Client) SubmitMaterialTask(request *SubmitMaterialTaskRequest) (_r
 
 // Summary:
 //
-// 切换到指定对话
+// Switches to a specified conversation.
 //
 // Description:
 //
-// 万小智2.0创建AI会话接口
+// Creates an AI conversation through the Wanxiaozhi 2.0 interface.
 //
 // @param request - SwitchAppConversationRequest
 //
@@ -10480,11 +10480,11 @@ func (client *Client) SwitchAppConversationWithOptions(request *SwitchAppConvers
 
 // Summary:
 //
-// 切换到指定对话
+// Switches to a specified conversation.
 //
 // Description:
 //
-// 万小智2.0创建AI会话接口
+// Creates an AI conversation through the Wanxiaozhi 2.0 interface.
 //
 // @param request - SwitchAppConversationRequest
 //
@@ -10652,11 +10652,11 @@ func (client *Client) UnbindAppDomain(request *UnbindAppDomainRequest) (_result 
 
 // Summary:
 //
-// # Update message content
+// Updates message content.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 - AI session history query API
+// Wanxiaozhi 2.0 - API for querying AI conversation history.
 //
 // @param request - UpdateAppChatMessageRequest
 //
@@ -10712,11 +10712,11 @@ func (client *Client) UpdateAppChatMessageWithOptions(request *UpdateAppChatMess
 
 // Summary:
 //
-// # Update message content
+// Updates message content.
 //
 // Description:
 //
-// # Wan Xiaozhi 2.0 - AI session history query API
+// Wanxiaozhi 2.0 - API for querying AI conversation history.
 //
 // @param request - UpdateAppChatMessageRequest
 //
@@ -10734,11 +10734,11 @@ func (client *Client) UpdateAppChatMessage(request *UpdateAppChatMessageRequest)
 
 // Summary:
 //
-// # Edit JSX Code
+// Edits JSX code.
 //
 // Description:
 //
-// # Retrieve the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UpdateAppCodeRequest
 //
@@ -10786,11 +10786,11 @@ func (client *Client) UpdateAppCodeWithOptions(request *UpdateAppCodeRequest, ru
 
 // Summary:
 //
-// # Edit JSX Code
+// Edits JSX code.
 //
 // Description:
 //
-// # Retrieve the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UpdateAppCodeRequest
 //
@@ -10886,11 +10886,11 @@ func (client *Client) UpdateAppFile(request *UpdateAppFileRequest) (_result *Upd
 
 // Summary:
 //
-// Upgrade/Downgrade website instance.
+// Changes the specifications of a website building instance.
 //
 // Description:
 //
-// # Query application instance information
+// Queries the information of an application instance.
 //
 // @param tmpReq - UpdateAppInstanceRequest
 //
@@ -10990,11 +10990,11 @@ func (client *Client) UpdateAppInstanceWithOptions(tmpReq *UpdateAppInstanceRequ
 
 // Summary:
 //
-// Upgrade/Downgrade website instance.
+// Changes the specifications of a website building instance.
 //
 // Description:
 //
-// # Query application instance information
+// Queries the information of an application instance.
 //
 // @param request - UpdateAppInstanceRequest
 //
@@ -11012,11 +11012,11 @@ func (client *Client) UpdateAppInstance(request *UpdateAppInstanceRequest) (_res
 
 // Summary:
 //
-// # Update SEO Index Status
+// Updates the SEO index status.
 //
 // Description:
 //
-// # WanXiaoZhi 2.0 AI Conversation
+// Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - UpdateAppSeoStatusRequest
 //
@@ -11072,11 +11072,11 @@ func (client *Client) UpdateAppSeoStatusWithOptions(request *UpdateAppSeoStatusR
 
 // Summary:
 //
-// # Update SEO Index Status
+// Updates the SEO index status.
 //
 // Description:
 //
-// # WanXiaoZhi 2.0 AI Conversation
+// Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - UpdateAppSeoStatusRequest
 //
@@ -11168,11 +11168,11 @@ func (client *Client) UpdateAppSupabaseAuthConfig(request *UpdateAppSupabaseAuth
 
 // Summary:
 //
-// # Update Supabase key
+// Updates a Supabase key.
 //
 // Description:
 //
-// # Operation resource corresponds to the supabase instance information
+// The Supabase instance information corresponding to the operated resource.
 //
 // @param request - UpdateAppSupabaseSecretRequest
 //
@@ -11232,11 +11232,11 @@ func (client *Client) UpdateAppSupabaseSecretWithOptions(request *UpdateAppSupab
 
 // Summary:
 //
-// # Update Supabase key
+// Updates a Supabase key.
 //
 // Description:
 //
-// # Operation resource corresponds to the supabase instance information
+// The Supabase instance information corresponding to the operated resource.
 //
 // @param request - UpdateAppSupabaseSecretRequest
 //
@@ -11328,11 +11328,11 @@ func (client *Client) UpdateMiniAppBinding(request *UpdateMiniAppBindingRequest)
 
 // Summary:
 //
-// # Upload to the site root directory
+// Uploads a file to the root directory of a site.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UploadAppSiteValidationFileRequest
 //
@@ -11396,11 +11396,11 @@ func (client *Client) UploadAppSiteValidationFileWithOptions(request *UploadAppS
 
 // Summary:
 //
-// # Upload to the site root directory
+// Uploads a file to the root directory of a site.
 //
 // Description:
 //
-// # Obtain the configuration information of the code generation plugin
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UploadAppSiteValidationFileRequest
 //

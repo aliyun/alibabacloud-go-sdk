@@ -22,31 +22,31 @@ type iUpdateAppSupabaseSecretRequest interface {
 }
 
 type UpdateAppSupabaseSecretRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Key value
+	// The secret key.
 	//
 	// example:
 	//
 	// ***
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// Key name
+	// The secret name.
 	//
 	// example:
 	//
 	// 277356_pre_auth
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// Key Type
+	// The secret type.
 	//
 	// example:
 	//
 	// Opaque
 	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	// Key Value
+	// The secret value.
 	//
 	// example:
 	//

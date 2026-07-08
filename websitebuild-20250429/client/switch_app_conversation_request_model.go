@@ -18,14 +18,20 @@ type iSwitchAppConversationRequest interface {
 }
 
 type SwitchAppConversationRequest struct {
+	// The business ID of the agent task.
+	//
 	// example:
 	//
 	// WD20250814102215000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The bot ID.
+	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// The type of the agent task.
+	//
 	// example:
 	//
 	// IMAGE_LOGO

@@ -69,6 +69,8 @@ type iAppInstanceAggregate interface {
 	GetStatusText() *string
 	SetTags(v []*AppInstanceAggregateTags) *AppInstanceAggregate
 	GetTags() []*AppInstanceAggregateTags
+	SetTemplateRecord(v *TemplateRecord) *AppInstanceAggregate
+	GetTemplateRecord() *TemplateRecord
 	SetThumbnailUrl(v string) *AppInstanceAggregate
 	GetThumbnailUrl() *string
 	SetUserId(v string) *AppInstanceAggregate
@@ -105,13 +107,14 @@ type AppInstanceAggregate struct {
 	Slug                *string                            `json:"Slug,omitempty" xml:"Slug,omitempty"`
 	SourceType          *string                            `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	StartTime           *string                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// trial,draft,live,refunded,expired,released
-	Status       *string                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusText   *string                     `json:"StatusText,omitempty" xml:"StatusText,omitempty"`
-	Tags         []*AppInstanceAggregateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	ThumbnailUrl *string                     `json:"ThumbnailUrl,omitempty" xml:"ThumbnailUrl,omitempty"`
-	UserId       *string                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Version      *string                     `json:"Version,omitempty" xml:"Version,omitempty"`
+	// Valid values: trial, draft, live, refunded, expired, released.
+	Status         *string                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusText     *string                     `json:"StatusText,omitempty" xml:"StatusText,omitempty"`
+	Tags           []*AppInstanceAggregateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateRecord *TemplateRecord             `json:"TemplateRecord,omitempty" xml:"TemplateRecord,omitempty"`
+	ThumbnailUrl   *string                     `json:"ThumbnailUrl,omitempty" xml:"ThumbnailUrl,omitempty"`
+	UserId         *string                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Version        *string                     `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s AppInstanceAggregate) String() string {
@@ -240,6 +243,10 @@ func (s *AppInstanceAggregate) GetStatusText() *string {
 
 func (s *AppInstanceAggregate) GetTags() []*AppInstanceAggregateTags {
 	return s.Tags
+}
+
+func (s *AppInstanceAggregate) GetTemplateRecord() *TemplateRecord {
+	return s.TemplateRecord
 }
 
 func (s *AppInstanceAggregate) GetThumbnailUrl() *string {
@@ -404,6 +411,11 @@ func (s *AppInstanceAggregate) SetTags(v []*AppInstanceAggregateTags) *AppInstan
 	return s
 }
 
+func (s *AppInstanceAggregate) SetTemplateRecord(v *TemplateRecord) *AppInstanceAggregate {
+	s.TemplateRecord = v
+	return s
+}
+
 func (s *AppInstanceAggregate) SetThumbnailUrl(v string) *AppInstanceAggregate {
 	s.ThumbnailUrl = &v
 	return s
@@ -460,6 +472,11 @@ func (s *AppInstanceAggregate) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.TemplateRecord != nil {
+		if err := s.TemplateRecord.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil

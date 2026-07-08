@@ -16,13 +16,13 @@ type iDeleteAppSupabaseSecretsRequest interface {
 }
 
 type DeleteAppSupabaseSecretsRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// JSON list of keys to be deleted
+	// The JSON list of keys to be deleted.
 	//
 	// example:
 	//

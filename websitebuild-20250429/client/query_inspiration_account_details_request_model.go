@@ -40,9 +40,9 @@ type QueryInspirationAccountDetailsRequest struct {
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - ASC: ascending order.
+	// - ASC: ascending order
 	//
-	// - DESC: descending order.
+	// - DESC: descending order
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type QueryInspirationAccountDetailsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The source type used to filter results. Valid values: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
+	// The source type used to filter results, such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, or PURCHASED.
 	//
 	// example:
 	//

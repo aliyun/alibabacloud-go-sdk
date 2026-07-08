@@ -22,7 +22,7 @@ type iGetCreateLogoTaskResponseBody interface {
 }
 
 type GetCreateLogoTaskResponseBody struct {
-	// The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error code list in this topic.
+	// The error code. Valid values: If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
 	//
 	// example:
 	//
@@ -121,15 +121,15 @@ type GetCreateLogoTaskResponseBodyTask struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The current status of the task. Valid values:
 	//
-	// - pending: pending execution
+	// - pending: Pending execution.
 	//
-	// - configuring: being configured
+	// - configuring: Being configured.
 	//
-	// - success: succeeded
+	// - success: Succeeded.
 	//
-	// - failed: failed
+	// - failed: Failed.
 	//
-	// - partialFailed: partially failed.
+	// - partialFailed: Partially failed.
 	//
 	// example:
 	//

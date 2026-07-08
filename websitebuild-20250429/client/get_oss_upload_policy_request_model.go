@@ -14,6 +14,8 @@ type iGetOssUploadPolicyRequest interface {
 }
 
 type GetOssUploadPolicyRequest struct {
+	// The scenario, such as knowledge.
+	//
 	// example:
 	//
 	// default

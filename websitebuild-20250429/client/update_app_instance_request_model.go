@@ -38,55 +38,55 @@ type iUpdateAppInstanceRequest interface {
 }
 
 type UpdateAppInstanceRequest struct {
-	// Application type
+	// The application type.
 	//
 	// example:
 	//
 	// Application
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Ensures the idempotence of the request. Generate a unique value from your client for this parameter to guarantee uniqueness across different requests. ClientToken supports only ASCII characters and must not exceed 64 characters.
+	// The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 123
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Deployment area
+	// The deployment region.
 	//
 	// example:
 	//
 	// ChineseMainland
 	DeployArea *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
-	// Application description
+	// The application description.
 	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Extension information
+	// The extended information.
 	//
 	// example:
 	//
 	// {\\"user_device_id\\":\\"6bef45cb0c76de284d24de074c088b73\\"}\\n
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// Application icon
+	// The application icon URL.
 	//
 	// example:
 	//
 	// https://app-center-icon-prod-shanghai.oss-cn-shanghai.aliyuncs.com/tenant/1864953777494693/1753841032702_WX20250729-171155%402x.png
 	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
-	// Application name
+	// The application name.
 	//
 	// example:
 	//
 	// 大角鹿
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Payment type
+	// The payment type.
 	//
 	// example:
 	//
@@ -98,15 +98,15 @@ type UpdateAppInstanceRequest struct {
 	//
 	// rg-aek3cqkrqibqkby
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Website version
+	// The website version.
 	//
 	// example:
 	//
 	// Basic_Edition
 	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// Tags.
+	// The tags.
 	Tags []*UpdateAppInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Application thumbnail
+	// The application thumbnail URL.
 	//
 	// example:
 	//
@@ -253,17 +253,17 @@ func (s *UpdateAppInstanceRequest) Validate() error {
 }
 
 type UpdateAppInstanceRequestTags struct {
-	// The tag key of the instance. Valid values for N: **1*	- to **20**. If you specify this parameter, it cannot be an empty string.
+	// The tag key of the instance. Valid values of N: **1*	- to **20**. The tag key cannot be an empty string.
 	//
-	// It can contain up to 64 characters, must not start with `aliyun` or `acs:`, and must not contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// Group
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the instance. Valid values for N: **1*	- to **20**. If you specify this parameter, it can be an empty string.
+	// The tag value of the instance. Valid values of N: **1*	- to **20**. The tag value can be an empty string.
 	//
-	// It can contain up to 128 characters, must not start with `aliyun` or `acs:`, and must not contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

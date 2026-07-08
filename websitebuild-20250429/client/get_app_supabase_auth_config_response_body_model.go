@@ -34,7 +34,7 @@ type iGetAppSupabaseAuthConfigResponseBody interface {
 }
 
 type GetAppSupabaseAuthConfigResponseBody struct {
-	// Detailed reason for access denial.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
@@ -46,29 +46,29 @@ type GetAppSupabaseAuthConfigResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// App Name.
+	// The application name.
 	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Dynamic error code.
+	// The dynamic error code.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic error message used to replace the `%s` placeholder in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the ErrMessage parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	// > If ErrMessage returns **The Value of Input Parameter %s is not valid*	- and DynamicMessage returns **DtsJobId**, the DtsJobId request parameter is invalid.
 	//
 	// example:
 	//
 	// abc
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Error arguments returned.
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Task object
+	// The task object.
 	Module *GetAppSupabaseAuthConfigResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -76,19 +76,19 @@ type GetAppSupabaseAuthConfigResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.EROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// Error message
+	// The exception message.
 	//
 	// example:
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
@@ -213,21 +213,21 @@ func (s *GetAppSupabaseAuthConfigResponseBody) Validate() error {
 }
 
 type GetAppSupabaseAuthConfigResponseBodyModule struct {
-	// Configuration value. Valid values:
+	// The configuration value. Valid values:
 	//
-	// - cc_rule: CC rule.
+	// - cc_rule: HTTP flood protection rule.
 	//
-	// - ddos_dispatch: DDoS filter interaction scheduling.
+	// - ddos_dispatch: DDoS mitigation interaction scheduling.
 	//
-	// - edge_safe: Edge application security.
+	// - edge_safe: edge application security.
 	//
-	// - blocked_regions: Geo-blocking.
+	// - blocked_regions: location blacklist.
 	//
-	// - http_acl_policy: Precise ACL rule.
+	// - http_acl_policy: accurate access control.
 	//
-	// - bot_manager: Bot traffic management.
+	// - bot_manager: bot traffic management.
 	//
-	// - ip_reputation: IP reputation investigation.
+	// - ip_reputation: IP reputation library.
 	Configs map[string]interface{} `json:"Configs,omitempty" xml:"Configs,omitempty"`
 }
 

@@ -16,13 +16,13 @@ type iSaveAppSupabaseSecretsRequest interface {
 }
 
 type SaveAppSupabaseSecretsRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Key list JSON
+	// The JSON string of the secrets list.
 	//
 	// example:
 	//

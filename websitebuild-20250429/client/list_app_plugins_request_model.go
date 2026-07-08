@@ -22,39 +22,39 @@ type iListAppPluginsRequest interface {
 }
 
 type ListAppPluginsRequest struct {
-	// Business ID of the application instance
+	// The business ID of the application instance.
 	//
 	// example:
 	//
 	// WD20250820143531000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Number of results per query.
+	// The number of entries per query.
 	//
-	// Valid range: 10 to 100. Default value: 20.
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Token indicating the start of the next query. Empty if there is no next query.
+	// The token for the next query. This parameter is empty if no more results are available.
 	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Status of the dataset acceleration instance. Valid values:
+	// The status of the Dataset Accelerator instance. Valid values:
 	//
-	// - Created: Initialization.
+	// - Created: init.
 	//
-	// - Running: Running.
+	// - Running: running.
 	//
-	// - Stopped: Stopped.
+	// - Stopped: stopped.
 	//
 	// example:
 	//
 	// http_whitelist
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Platform
+	// The platform.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iUpdateAppSeoStatusRequest interface {
 }
 
 type UpdateAppSeoStatusRequest struct {
-	// Business ID
+	// The business ID.
 	//
 	// example:
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Domain Name
+	// The domain name.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type UpdateAppSeoStatusRequest struct {
 	//
 	// 123123
 	SeAuthInfo *string `json:"SeAuthInfo,omitempty" xml:"SeAuthInfo,omitempty"`
-	// Search Engine Type
+	// The search engine type.
 	//
 	// example:
 	//

@@ -42,9 +42,9 @@ type QueryInspirationAccountDetailsResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// Indicates whether a retry is allowed. Valid values:
 	//
-	// - false: A retry is not allowed.
+	// - false: Not allowed.
 	//
-	// - true: A retry is allowed.
+	// - true: Allowed.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type QueryInspirationAccountDetailsResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *QueryInspirationAccountDetailsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -243,7 +243,7 @@ type QueryInspirationAccountDetailsResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// Apart from pagination limits, the server processes up to 1000 recent records for the current query. If the results exceed 1000 records, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// Indicates whether the result set exceeds the server-side limit of 1,000 records (excluding pagination). If the results exceed 1,000 records, **ResultLimit*	- is **true**. Narrow the time range and search again. If the results do not exceed 1,000 records, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
 	// The total number of entries.
 	//
@@ -373,33 +373,33 @@ type QueryInspirationAccountDetailsResponseBodyModuleData struct {
 	//
 	// 2026-03-03 12:00:00
 	AcquisitionTime *string `json:"AcquisitionTime,omitempty" xml:"AcquisitionTime,omitempty"`
-	// The remaining balance (InitQuota minus used).
+	// The remaining balance (initQuota - used).
 	//
 	// example:
 	//
 	// 12
 	Balance    *int64  `json:"Balance,omitempty" xml:"Balance,omitempty"`
 	BalanceStr *string `json:"BalanceStr,omitempty" xml:"BalanceStr,omitempty"`
-	// The expiration time of the quota.
+	// The time when the quota expires.
 	//
 	// example:
 	//
 	// 2025-04-11 10:26:27 +0800
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Indicates whether the quota has expired (EndDate is earlier than the current time). The frontend grays out expired entries based on this value.
+	// Indicates whether the quota has expired (endDate is earlier than the current time). The frontend uses this flag to gray out expired entries.
 	//
 	// example:
 	//
 	// False
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The acquired quantity (initial quota).
+	// The quantity acquired (initial quota).
 	//
 	// example:
 	//
 	// 123123
 	InitQuota    *int64  `json:"InitQuota,omitempty" xml:"InitQuota,omitempty"`
 	InitQuotaStr *string `json:"InitQuotaStr,omitempty" xml:"InitQuotaStr,omitempty"`
-	// The source type code. Valid values: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
+	// The source type code, such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, or PURCHASED.
 	//
 	// example:
 	//
@@ -523,33 +523,33 @@ type QueryInspirationAccountDetailsResponseBodyModuleNext struct {
 	//
 	// 2026-03-03 12:00:00
 	AcquisitionTime *string `json:"AcquisitionTime,omitempty" xml:"AcquisitionTime,omitempty"`
-	// The remaining balance (InitQuota minus used).
+	// The remaining balance (initQuota - used).
 	//
 	// example:
 	//
 	// 12
 	Balance    *int64  `json:"Balance,omitempty" xml:"Balance,omitempty"`
 	BalanceStr *string `json:"BalanceStr,omitempty" xml:"BalanceStr,omitempty"`
-	// The expiration time of the quota.
+	// The time when the quota expires.
 	//
 	// example:
 	//
 	// 2026-02-25 10:11:25
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Indicates whether the quota has expired (EndDate is earlier than the current time). The frontend grays out expired entries based on this value.
+	// Indicates whether the quota has expired (endDate is earlier than the current time). The frontend uses this flag to gray out expired entries.
 	//
 	// example:
 	//
 	// False
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The acquired quantity (initial quota).
+	// The quantity acquired (initial quota).
 	//
 	// example:
 	//
 	// 123123
 	InitQuota    *int64  `json:"InitQuota,omitempty" xml:"InitQuota,omitempty"`
 	InitQuotaStr *string `json:"InitQuotaStr,omitempty" xml:"InitQuotaStr,omitempty"`
-	// The source type code. Valid values: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
+	// The source type code, such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, or PURCHASED.
 	//
 	// example:
 	//
