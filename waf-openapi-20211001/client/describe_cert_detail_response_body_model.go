@@ -16,9 +16,9 @@ type iDescribeCertDetailResponseBody interface {
 }
 
 type DescribeCertDetailResponseBody struct {
-	// The details of the certificate.
+	// The SSL certificate details.
 	CertDetail *DescribeCertDetailResponseBodyCertDetail `json:"CertDetail,omitempty" xml:"CertDetail,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,43 +62,43 @@ func (s *DescribeCertDetailResponseBody) Validate() error {
 }
 
 type DescribeCertDetailResponseBodyCertDetail struct {
-	// The time when the certificate expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The expiration date of the CA certificate. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1976256736582
 	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	// The time when the certificate was issued. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The issuance time of the certificate. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1976256736582
 	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// 123-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The name of the certificate.
+	// The certificate name.
 	//
 	// example:
 	//
 	// testCertName
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The primary domain name, which is a common name.
+	// The common name of the certificate.
 	//
 	// example:
 	//
 	// *.xxxaliyun.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The domain name that is associated with the certificate.
+	// The domain name associated with the certificate.
 	//
 	// example:
 	//
 	// demo.xxxaliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The other domain names that are associated with the certificate.
+	// The list of other domain names associated with the certificate.
 	Sans []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
 }
 

@@ -28,9 +28,9 @@ type iDescribeCertsRequest interface {
 type DescribeCertsRequest struct {
 	// The type of the encryption algorithm. Valid values:
 	//
-	// 	- **NotSM2**: The encryption algorithm is not the SM2 algorithm. This is the default value.
+	// - **NotSM2 (default)**: Specifies a non-ShangMi (SM) cryptographic algorithm.
 	//
-	// 	- **SM2**: The encryption algorithm is the SM2 algorithm.
+	// - **SM2**: Specifies an SM cryptographic algorithm.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeCertsRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of your current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -52,27 +52,27 @@ type DescribeCertsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-5yd****tb02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
+	// The number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: **10**.
+	// The number of entries per page. Default value: **10**. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: The Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
-	// ap-southeast-1
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
 	//

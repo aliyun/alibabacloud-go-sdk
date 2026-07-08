@@ -18,7 +18,7 @@ type iDescribeApisecMatchedHostsResponseBody interface {
 }
 
 type DescribeApisecMatchedHostsResponseBody struct {
-	// The domain names.
+	// The list of domain names.
 	Data []*DescribeApisecMatchedHostsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,7 +83,7 @@ func (s *DescribeApisecMatchedHostsResponseBody) Validate() error {
 }
 
 type DescribeApisecMatchedHostsResponseBodyData struct {
-	// The number of APIs related to the domain name.
+	// The number of queries.
 	//
 	// example:
 	//

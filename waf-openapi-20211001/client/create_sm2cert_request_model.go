@@ -28,13 +28,13 @@ type iCreateSM2CertRequest interface {
 }
 
 type CreateSM2CertRequest struct {
-	// The name of the SM certificate.
+	// The certificate name.
 	//
 	// example:
 	//
 	// test-sm2
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The content of the SM certificate.
+	// The content of the SM encryption certificate.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type CreateSM2CertRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	EncryptCertificate *string `json:"EncryptCertificate,omitempty" xml:"EncryptCertificate,omitempty"`
-	// The private key of the SM certificate.
+	// The private key content of the SM encryption certificate.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type CreateSM2CertRequest struct {
 	//
 	// -----END PRIVATE KEY-----
 	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitempty" xml:"EncryptPrivateKey,omitempty"`
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -64,23 +64,23 @@ type CreateSM2CertRequest struct {
 	//
 	// waf_v2_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The content of the signing certificate for the SM certificate.
+	// The signing certificate content of the SM certificate.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type CreateSM2CertRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	SignCertificate *string `json:"SignCertificate,omitempty" xml:"SignCertificate,omitempty"`
-	// The private key of the signing certificate for the SM certificate.
+	// The private key content of the SM signing certificate.
 	//
 	// example:
 	//

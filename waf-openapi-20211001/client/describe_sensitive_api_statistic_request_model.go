@@ -34,15 +34,15 @@ type iDescribeSensitiveApiStatisticRequest interface {
 type DescribeSensitiveApiStatisticRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
 	//
 	// example:
 	//
 	// 269
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The end of the time range to query. The value is a UNIX timestamp (UTC) in seconds.
 	//
-	// >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
+	// > Compliance review currently supports querying data only for the last 1 month, last 3 months, last 6 months, last 12 months, or from January 1 of the previous year to the present. Make sure the time range is valid.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeSensitiveApiStatisticRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -58,29 +58,29 @@ type DescribeSensitiveApiStatisticRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The domain name or IP address of the API.
+	// The domain name or IP address to which the API operation belongs.
 	//
 	// example:
 	//
 	// a.***.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number to return in a paged query. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries per page in a paged query. Default value: **10**, which indicates 10 entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -92,15 +92,26 @@ type DescribeSensitiveApiStatisticRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The beginning of the time range to query. The value is a UNIX timestamp (UTC) in seconds.
 	//
-	// >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
+	// > Compliance review currently supports querying data only for the last 1 month, last 3 months, last 6 months, last 12 months, or from January 1 of the previous year to the present. Make sure the time range is valid.
 	//
 	// example:
 	//
 	// 1672502400
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The dimension for statistics. Valid values:
+	//
+	// - **matchedHost*	- (default): statistics by domain name.
+	//
+	// - **apiFormat**: statistics by API operation.
+	//
+	// > When the **apiFormat*	- dimension is used, specify the corresponding domain name in the **MatchedHost*	- parameter.
+	//
+	// example:
+	//
+	// matchedHost
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeSensitiveApiStatisticRequest) String() string {

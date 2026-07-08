@@ -18,7 +18,7 @@ type iDescribePrepayDailyBillsResponseBody interface {
 }
 
 type DescribePrepayDailyBillsResponseBody struct {
-	// The bills of the burstable QPS (pay-as-you-go) feature.
+	// The list of WAF elastic billing records.
 	Bills []*DescribePrepayDailyBillsResponseBodyBills `json:"Bills,omitempty" xml:"Bills,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,49 +83,51 @@ func (s *DescribePrepayDailyBillsResponseBody) Validate() error {
 }
 
 type DescribePrepayDailyBillsResponseBodyBills struct {
-	// The burstable QPS of the WAF instance.
+	// The burstable QPS specification of the WAF instance.
 	//
 	// example:
 	//
 	// 100
 	ElasticQpsSetValue *int64 `json:"ElasticQpsSetValue,omitempty" xml:"ElasticQpsSetValue,omitempty"`
-	// The billing end time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end time of the billing period. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//
 	// 1687591200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The status of QPS usage within the current period of time. Valid values:
+	// The overuse status of the current period. Valid values:
 	//
-	// 	- **0**: normal.
+	// - **0**: Normal.
 	//
-	// 	- **1**: excess.
+	// - **1**: Overused.
 	//
-	// 	- **2**: sandbox.
+	// - **2**: Sandboxed.
 	//
 	// example:
 	//
 	// 0
-	ExceedStatus *int32 `json:"ExceedStatus,omitempty" xml:"ExceedStatus,omitempty"`
-	// The peak QPS within the current period of time.
+	ExceedStatus           *int32 `json:"ExceedStatus,omitempty" xml:"ExceedStatus,omitempty"`
+	ExtensionPlugin        *bool  `json:"ExtensionPlugin,omitempty" xml:"ExtensionPlugin,omitempty"`
+	ExtensionPluginRequest *int64 `json:"ExtensionPluginRequest,omitempty" xml:"ExtensionPluginRequest,omitempty"`
+	// The maximum QPS during the current period.
 	//
 	// example:
 	//
 	// 600
 	MaxQps *int64 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
-	// The unit price in the bill. The price is measured in CNY for bills at the China site (aliyun.com) and in USD for bills at the international site (alibabacloud.com).
+	// The unit price for elastic billing. Unit: CNY for the China site and USD for the international site.
 	//
 	// example:
 	//
 	// 0.25
 	Price *float32 `json:"Price,omitempty" xml:"Price,omitempty"`
-	// The extended QPS of the WAF instance.
+	// The QPS extension specification of the WAF instance.
 	//
 	// example:
 	//
 	// 10
 	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The default QPS of the WAF instance.
+	// The QPS specification included in the WAF instance edition.
 	//
 	// example:
 	//
@@ -133,33 +135,33 @@ type DescribePrepayDailyBillsResponseBodyBills struct {
 	QpsVersion *int64 `json:"QpsVersion,omitempty" xml:"QpsVersion,omitempty"`
 	// Indicates whether risk identification is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Risk identification is enabled.
 	//
-	// 	- **false**
+	// - **false**: Risk identification is not enabled.
 	//
 	// example:
 	//
 	// true
 	RiskControl *bool `json:"RiskControl,omitempty" xml:"RiskControl,omitempty"`
-	// The number of times that risk identification is performed.
+	// The number of times risk identification is used.
 	//
 	// example:
 	//
 	// 100
 	RiskTraffic *int64 `json:"RiskTraffic,omitempty" xml:"RiskTraffic,omitempty"`
-	// The billing start time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of the billing period. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//
 	// 1687822980
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The actual QPS in total.
+	// The total QPS that is billed.
 	//
 	// example:
 	//
 	// 0
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The billing types.
+	// The elastic billing type.
 	Type []*string `json:"Type,omitempty" xml:"Type,omitempty" type:"Repeated"`
 }
 
@@ -181,6 +183,14 @@ func (s *DescribePrepayDailyBillsResponseBodyBills) GetEndTime() *int64 {
 
 func (s *DescribePrepayDailyBillsResponseBodyBills) GetExceedStatus() *int32 {
 	return s.ExceedStatus
+}
+
+func (s *DescribePrepayDailyBillsResponseBodyBills) GetExtensionPlugin() *bool {
+	return s.ExtensionPlugin
+}
+
+func (s *DescribePrepayDailyBillsResponseBodyBills) GetExtensionPluginRequest() *int64 {
+	return s.ExtensionPluginRequest
 }
 
 func (s *DescribePrepayDailyBillsResponseBodyBills) GetMaxQps() *int64 {
@@ -231,6 +241,16 @@ func (s *DescribePrepayDailyBillsResponseBodyBills) SetEndTime(v int64) *Describ
 
 func (s *DescribePrepayDailyBillsResponseBodyBills) SetExceedStatus(v int32) *DescribePrepayDailyBillsResponseBodyBills {
 	s.ExceedStatus = &v
+	return s
+}
+
+func (s *DescribePrepayDailyBillsResponseBodyBills) SetExtensionPlugin(v bool) *DescribePrepayDailyBillsResponseBodyBills {
+	s.ExtensionPlugin = &v
+	return s
+}
+
+func (s *DescribePrepayDailyBillsResponseBodyBills) SetExtensionPluginRequest(v int64) *DescribePrepayDailyBillsResponseBodyBills {
+	s.ExtensionPluginRequest = &v
 	return s
 }
 

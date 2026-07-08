@@ -36,7 +36,7 @@ type DescribeHybridCloudUnassignedMachinesRequest struct {
 	//
 	// 123
 	ClusterId *int32 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The host name.
+	// The hostname of the server that you want to query.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeHybridCloudUnassignedMachinesRequest struct {
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -52,29 +52,29 @@ type DescribeHybridCloudUnassignedMachinesRequest struct {
 	//
 	// waf_v3prepaid_public_cn-5yd****7009
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address of the server.
+	// The IP address of the server that you want to query.
 	//
 	// example:
 	//
 	// 1.X.X.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries to return on each page. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

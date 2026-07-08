@@ -32,13 +32,13 @@ type iCreateHybridCloudGroupRequest interface {
 }
 
 type CreateHybridCloudGroupRequest struct {
-	// The region in which the node resides. Specify the parameter in the Carrier code-Continent code-City code format.
+	// The back-to-origin mark of the node group. The value is in the format of Carrier-Continent-City, which is used to identify the origin of back-to-origin requests.
 	//
 	// example:
 	//
 	// aliyun-asiapacific-beijing
 	BackSourceMark *string `json:"BackSourceMark,omitempty" xml:"BackSourceMark,omitempty"`
-	// The ID of the hybrid cloud cluster.
+	// The ID of the Hybrid Cloud WAF cluster.
 	//
 	// This parameter is required.
 	//
@@ -52,17 +52,17 @@ type CreateHybridCloudGroupRequest struct {
 	//
 	// example:
 	//
-	// demoGroupName
+	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the node group. Valid values:
 	//
-	// 	- **protect**
+	// - **protect**: a protection node group that processes traffic filtering.
 	//
-	// 	- **control**
+	// - **control**: a control node group that manages cluster configurations.
 	//
-	// 	- **storage**
+	// - **storage**: a storage node group that stores logs and data.
 	//
-	// 	- **controlStorage**
+	// - **controlStorage**: a node group that serves as both control and storage.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type CreateHybridCloudGroupRequest struct {
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type CreateHybridCloudGroupRequest struct {
 	//
 	// waf-cn-n6w***x52m
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address of the server used for load balancing.
+	// The IP address of the load balancer that is associated with the node group.
 	//
 	// This parameter is required.
 	//
@@ -88,29 +88,29 @@ type CreateHybridCloudGroupRequest struct {
 	//
 	// 3.3.3.3
 	LoadBalanceIp *string `json:"LoadBalanceIp,omitempty" xml:"LoadBalanceIp,omitempty"`
-	// The region in which the node resides. Specify the parameter in the Carrier code-Continent code-City code format.
+	// The location code of the region where the node group resides. The value is in the format of Carrier-Continent-City.
 	//
 	// example:
 	//
 	// 0-410-0
 	LocationCode *string `json:"LocationCode,omitempty" xml:"LocationCode,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The remarks.
+	// The remarks on the node group. You can use this parameter to add a brief description for the node group.
 	//
 	// example:
 	//
-	// demoRamark
+	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//

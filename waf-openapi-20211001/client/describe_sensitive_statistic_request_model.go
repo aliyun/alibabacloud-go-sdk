@@ -32,13 +32,13 @@ type iDescribeSensitiveStatisticRequest interface {
 type DescribeSensitiveStatisticRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The end of the time range to query. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeSensitiveStatisticRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -54,23 +54,23 @@ type DescribeSensitiveStatisticRequest struct {
 	//
 	// waf_elasticity-cn-0xldbq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number to return in a paging query. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries per page in a paging query. Default value: **10**, which indicates that each page contains 10 entries.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -82,21 +82,21 @@ type DescribeSensitiveStatisticRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The beginning of the time range to query. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//
 	// 1672502400
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the statistics. Valid values:
+	// The type of data statistics. Valid values:
 	//
-	// 	- **ip**: IP address
+	// - **ip**: IP address statistics.
 	//
-	// 	- **host**: domain name
+	// - **host**: domain name statistics.
 	//
-	// 	- **sensitive_code**: sensitive data type
+	// - **sensitive_code**: sensitive data type statistics.
 	//
-	// 	- **api**: sensitive data-related API
+	// - **api**: sensitive data API operation statistics.
 	//
 	// example:
 	//

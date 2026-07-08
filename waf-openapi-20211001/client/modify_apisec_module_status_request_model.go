@@ -28,7 +28,7 @@ type iModifyApisecModuleStatusRequest interface {
 type ModifyApisecModuleStatusRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -36,33 +36,33 @@ type ModifyApisecModuleStatusRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqtm**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the compliance check feature. Valid values:
+	// The compliance review status. Valid values:
 	//
-	// 	- **1**: enabled
+	// - **1**: Enabled.
 	//
-	// 	- **0**: disabled
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	ReportStatus *int64 `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	// The name of the protected object group to which the protected object belongs.
+	// The name of the protected object group to which the protected object is added.
 	//
 	// example:
 	//
 	// group1
 	ResourceGroups *string `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
@@ -74,11 +74,11 @@ type ModifyApisecModuleStatusRequest struct {
 	//
 	// cwaf-***-waf
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// The status of the tracing and auditing feature. Valid values:
+	// The tracing audit status. Valid values:
 	//
-	// 	- **1**: enabled
+	// - **1**: Enabled.
 	//
-	// 	- **0**: disabled
+	// - **0**: Disabled.
 	//
 	// example:
 	//

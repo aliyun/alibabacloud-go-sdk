@@ -28,9 +28,9 @@ type iCreateApiExportRequest interface {
 }
 
 type CreateApiExportRequest struct {
-	// The ID of the hybrid cloud cluster.
+	// The hybrid cloud cluster ID.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CreateApiExportRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -46,31 +46,25 @@ type CreateApiExportRequest struct {
 	//
 	// waf-cn-zxu3***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The extended parameters of the data export task. The parameter value is in the JSON format. The following keys are supported:
+	// The extended parameters of the export task. You can filter the exported content by specifying conditions. The value is a JSON string constructed from a series of parameters.
 	//
-	// 	- **instanceId**: the instance ID
-	//
-	// 	- **clusterId**: the ID of the hybrid cloud cluster
-	//
-	// 	- **orderKey**: the name of the field used to sort exported data
-	//
-	// 	- **orderWay**: the sorting method of the exported data
+	// > The specific parameters vary depending on the specified **export task type*	- (**Type**). For more information, refer to **Export task parameter description**.
 	//
 	// example:
 	//
 	// {
 	//
-	//     "orderWay": "asc",
+	//     "startTime": 1741449600,
 	//
-	//     "orderKey": "endTs",
+	//     "endTime": 1744079820,
 	//
-	//     "instanceId": "waf_v3prepaid_public_cn-****"
+	//     "sensitiveLevel": "L1"
 	//
 	// }
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// Language type. Valid values:
+	// The language type. Valid values:
 	//
-	// - **cn**: Chinese.
+	// - **cn*	- (default): Chinese.
 	//
 	// - **en**: English.
 	//
@@ -78,35 +72,35 @@ type CreateApiExportRequest struct {
 	//
 	// cn
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of the data export task. Valid values:
+	// The type of the export task. Valid values:
 	//
-	// 	- **apisec_api**: API tasks
+	// - **apisec_api*	- (default): API asset task.
 	//
-	// 	- **apisec_abnormal**: API risk tasks
+	// - **apisec_abnormal**: API risk task.
 	//
-	// 	- **apisec_event**: API security event tasks
+	// - **apisec_event**: API security event task.
 	//
 	// example:
 	//
 	// apisec_api
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the time zone.
+	// The time zone ID.
 	//
 	// example:
 	//

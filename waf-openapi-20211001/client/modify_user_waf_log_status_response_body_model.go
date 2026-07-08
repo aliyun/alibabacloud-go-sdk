@@ -18,14 +18,20 @@ type iModifyUserWafLogStatusResponseBody interface {
 }
 
 type ModifyUserWafLogStatusResponseBody struct {
+	// The name of the Logstore in Simple Log Service (SLS).
+	//
 	// example:
 	//
 	// wafng-logstore
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// Indicates whether the Simple Log Service project is created.
+	//
 	// example:
 	//
 	// wafng-project-14316572********-cn-hangzhou
 	ProjectName *bool `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D7861F61-5B61-****-A47C-6B19160*****

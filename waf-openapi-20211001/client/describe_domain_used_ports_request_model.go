@@ -16,12 +16,22 @@ type iDescribeDomainUsedPortsRequest interface {
 }
 
 type DescribeDomainUsedPortsRequest struct {
+	// Instance ID of the WAF instance.
+	//
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance is deployed. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou

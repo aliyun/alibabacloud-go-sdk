@@ -22,13 +22,13 @@ type iModifyApisecLogDeliveryStatusRequest interface {
 }
 
 type ModifyApisecLogDeliveryStatusRequest struct {
-	// The type of the log subscription. Valid values:
+	// The log subscription type. Valid values:
 	//
-	// 	- **risk**: risk information.
+	// - **risk**: risk information.
 	//
-	// 	- **event**: attack event information.
+	// - **event**: attack event information.
 	//
-	// 	- **asset**: asset information.
+	// - **asset**: asset information.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type ModifyApisecLogDeliveryStatusRequest struct {
 	//
 	// risk
 	AssertKey *string `json:"AssertKey,omitempty" xml:"AssertKey,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Instance ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +46,11 @@ type ModifyApisecLogDeliveryStatusRequest struct {
 	//
 	// waf_v3_public_cn-uqm2z****0a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ type ModifyApisecLogDeliveryStatusRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The status of API security log subscription. Valid values:
+	// The enabling status of API security log subscribe. Valid values:
 	//
-	// 	- **true**: enabled.
+	// - **true**: Enabled.
 	//
-	// 	- **false**: disabled.
+	// - **false**: shutdown.
 	//
 	// This parameter is required.
 	//

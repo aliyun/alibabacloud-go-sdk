@@ -36,31 +36,31 @@ type DescribeHybridCloudGroupsRequest struct {
 	//
 	// 428
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of proxy cluster that is used. Valid values:
+	// The proxy type of the hybrid cloud cluster. Valid values:
 	//
-	// 	- **service**: service-based traffic mirroring.
+	// - **service**: SDK-based integration.
 	//
-	// 	- **cname**: reverse proxy.
+	// - **cname**: CNAME-based reverse proxy.
 	//
 	// example:
 	//
 	// cname
 	ClusterProxyType *string `json:"ClusterProxyType,omitempty" xml:"ClusterProxyType,omitempty"`
-	// The name of the node group that you want to query.
+	// The name of the hybrid cloud node group that you want to query.
 	//
 	// example:
 	//
 	// groupName1
 	GroupName *int32 `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the node group. Valid values:
+	// The type of the hybrid cloud node group. Valid values:
 	//
-	// 	- **protect**
+	// - **protect**: protection node group.
 	//
-	// 	- **control**
+	// - **control**: control node group.
 	//
-	// 	- **storage**
+	// - **storage**: storage node group.
 	//
-	// 	- **controlStorage**
+	// - **controlStorage**: control and storage node group.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeHybridCloudGroupsRequest struct {
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -76,29 +76,29 @@ type DescribeHybridCloudGroupsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-********w0b
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
+	// The number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries to return on each page. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region in which the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group to which the WAF instance belongs.
 	//
 	// example:
 	//

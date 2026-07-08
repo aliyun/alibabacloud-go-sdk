@@ -22,7 +22,7 @@ type DescribeUserEventTrendResponseBody struct {
 	//
 	// F51E6DD6-B2D2-57C9-90F1-FAFD0A19DE00
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The trends of attacks.
+	// The attack trend list.
 	Trend []*DescribeUserEventTrendResponseBodyTrend `json:"Trend,omitempty" xml:"Trend,omitempty" type:"Repeated"`
 }
 
@@ -86,15 +86,15 @@ type DescribeUserEventTrendResponseBodyTrend struct {
 	EventMedium *int64 `json:"EventMedium,omitempty" xml:"EventMedium,omitempty"`
 	// Deprecated
 	//
-	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The statistics time, in UNIX timestamp format (UTC). Unit: seconds.
 	//
-	// 	Notice: The parameter has been deprecated, it is recommended to use the Timestamp parameter.
+	// 	Notice: This parameter is deprecated. Use the Timestamp parameter instead.
 	//
 	// example:
 	//
 	// 1723435200
 	TimeStamp *int64 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The statistics time, in UNIX timestamp format (UTC). Unit: seconds.
 	//
 	// example:
 	//

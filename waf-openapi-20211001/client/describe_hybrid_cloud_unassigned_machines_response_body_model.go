@@ -18,19 +18,19 @@ type iDescribeHybridCloudUnassignedMachinesResponseBody interface {
 }
 
 type DescribeHybridCloudUnassignedMachinesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3EBCFCE9-4A3C-5E01-915D-691B****510A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of unassigned servers returned.
 	//
 	// example:
 	//
 	// 28
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The servers that are not assigned to the hybrid cloud cluster.
+	// The unassigned servers in the hybrid cloud cluster.
 	UnassignedMachines []*DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines `json:"UnassignedMachines,omitempty" xml:"UnassignedMachines,omitempty" type:"Repeated"`
 }
 
@@ -83,19 +83,19 @@ func (s *DescribeHybridCloudUnassignedMachinesResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines struct {
-	// The number of CPU cores.
+	// The number of CPU cores of the server.
 	//
 	// example:
 	//
 	// 16
 	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The name of the node.
+	// The custom name of the server.
 	//
 	// example:
 	//
 	// exampleName
 	CustomName *string `json:"CustomName,omitempty" xml:"CustomName,omitempty"`
-	// The host name.
+	// The hostname of the server.
 	//
 	// example:
 	//
@@ -107,19 +107,19 @@ type DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines struct 
 	//
 	// 1.X.X.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The media access control (MAC) address of the device.
+	// The MAC address of the server.
 	//
 	// example:
 	//
 	// 00163e2686ac
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// The memory size. Unit: KB. A conversion factor of 1,000 is used.
+	// The memory size of the server. Unit: KB.
 	//
 	// example:
 	//
 	// 31580872
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The ID of the node.
+	// The ID of the server.
 	//
 	// example:
 	//

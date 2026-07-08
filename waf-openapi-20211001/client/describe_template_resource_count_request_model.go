@@ -22,7 +22,7 @@ type iDescribeTemplateResourceCountRequest interface {
 type DescribeTemplateResourceCountRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -30,11 +30,11 @@ type DescribeTemplateResourceCountRequest struct {
 	//
 	// waf_v3prepaid_public_cn-lbj****gx08
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region in which the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeTemplateResourceCountRequest struct {
 	//
 	// rg-aekzwwkpn****5i
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The IDs of the protection templates that you want to query. Separate multiple template IDs with commas (,).
+	// The IDs of protection templates. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//

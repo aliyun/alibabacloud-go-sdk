@@ -28,17 +28,17 @@ type iCreateDomainShrinkRequest interface {
 }
 
 type CreateDomainShrinkRequest struct {
-	// The mode in which you want to add the domain name to WAF. Valid values:
+	// The access type of the WAF instance. Valid values:
 	//
-	// 	- **share:*	- adds the domain name to WAF in CNAME record mode. This is the default value.
+	// - **share*	- (default): CNAME access.
 	//
-	// 	- **hybrid_cloud_cname:*	- adds the domain name to WAF in hybrid cloud reverse proxy mode.
+	// - **hybrid_cloud_cname**: hybrid cloud CNAME access.
 	//
 	// example:
 	//
 	// share
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The domain name that you want to add to WAF.
+	// The domain name to query.
 	//
 	// This parameter is required.
 	//
@@ -46,9 +46,9 @@ type CreateDomainShrinkRequest struct {
 	//
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -56,19 +56,19 @@ type CreateDomainShrinkRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The listener configurations.
+	// The listening configuration.
 	//
 	// This parameter is required.
 	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
-	// The forwarding configurations.
+	// The forwarding configuration.
 	//
 	// This parameter is required.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: the Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -76,13 +76,13 @@ type CreateDomainShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The tags. You can specify up to 20 tags.
+	// The tag list, which contains a maximum of 20 items.
 	Tag []*CreateDomainShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -180,13 +180,13 @@ func (s *CreateDomainShrinkRequest) Validate() error {
 }
 
 type CreateDomainShrinkRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// Tagkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

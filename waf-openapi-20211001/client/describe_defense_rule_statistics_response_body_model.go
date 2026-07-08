@@ -16,10 +16,13 @@ type iDescribeDefenseRuleStatisticsResponseBody interface {
 }
 
 type DescribeDefenseRuleStatisticsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
-	RequestId       *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics results.
 	StatisticsInfos []*DescribeDefenseRuleStatisticsResponseBodyStatisticsInfos `json:"StatisticsInfos,omitempty" xml:"StatisticsInfos,omitempty" type:"Repeated"`
 }
 
@@ -63,22 +66,32 @@ func (s *DescribeDefenseRuleStatisticsResponseBody) Validate() error {
 }
 
 type DescribeDefenseRuleStatisticsResponseBodyStatisticsInfos struct {
+	// The number of rules that meet all the query conditions.
+	//
 	// example:
 	//
 	// 27
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The value corresponding to the quaternary query condition.
+	//
 	// example:
 	//
 	// action
 	FourthValue *string `json:"FourthValue,omitempty" xml:"FourthValue,omitempty"`
+	// The value corresponding to the primary query condition.
+	//
 	// example:
 	//
 	// sytem
 	PrimaryValue *string `json:"PrimaryValue,omitempty" xml:"PrimaryValue,omitempty"`
+	// The value corresponding to the secondary query condition.
+	//
 	// example:
 	//
 	// block
 	SecondaryValue *string `json:"SecondaryValue,omitempty" xml:"SecondaryValue,omitempty"`
+	// The value corresponding to the tertiary query condition.
+	//
 	// example:
 	//
 	// 1

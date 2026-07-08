@@ -16,10 +16,20 @@ type iDescribeCustomBaseRuleCompileResultResponseBody interface {
 }
 
 type DescribeCustomBaseRuleCompileResultResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 58FDF266-3D56-5DE8-91E0-96A26BAB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The compilation result. Valid values:
+	//
+	// - **success**: The rule is successfully compiled.
+	//
+	// - **compiling**: The rule is being compiled.
+	//
+	// - **failed**: The rule failed to be compiled.
+	//
 	// example:
 	//
 	// success

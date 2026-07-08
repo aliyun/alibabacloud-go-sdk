@@ -16,7 +16,7 @@ type iDescribeApisecSuggestionsResponseBody interface {
 }
 
 type DescribeApisecSuggestionsResponseBody struct {
-	// The protection suggestions.
+	// The list of protection suggestions.
 	Data []*DescribeApisecSuggestionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,41 +66,41 @@ func (s *DescribeApisecSuggestionsResponseBody) Validate() error {
 }
 
 type DescribeApisecSuggestionsResponseBodyData struct {
-	// The API.
+	// The API operation.
 	//
 	// example:
 	//
 	// /apisec/v1/saveinfo
 	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
-	// The domain name or IP address of the API.
+	// The domain name or IP address to which the API operation belongs.
 	//
 	// example:
 	//
 	// a.aliyun.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The rule ID of the protection suggestion.
+	// The ID of the protection suggestion.
 	//
 	// example:
 	//
 	// 15060a1f8fed40130b7c4a7bf8d8733b
 	SuggestId *string `json:"SuggestId,omitempty" xml:"SuggestId,omitempty"`
-	// The rule content of the protection suggestion. The value is a string that consists of multiple parameters in the JSON format. Valid values:
+	// The content of the protection suggestion rule, which is a string converted from a JSON object constructed with a series of parameters. The parameters include:
 	//
-	// 	- **event_tags**: event type
+	// - **event_tags**: the event type.
 	//
-	// 	- **black_iplist**: IP address blacklist
+	// - **black_iplist**: the IP blacklist.
 	//
-	// 	- **ip_baseline**: IP address
+	// - **ip_baseline**: the IP list.
 	//
-	// 	- **freq_baseline**: throttling frequency
+	// - **freq_baseline**: the throttling frequency information.
 	//
-	// 	- **client_id_baseline**: client information
+	// - **client_id_baseline**: the client information.
 	//
-	// 	- **country_baseline**: country information
+	// - **country_baseline**: the country information.
 	//
-	// 	- **province_baseline**: province information
+	// - **province_baseline**: the region information.
 	//
-	// 	- **sensitive_type**: sensitive information
+	// - **sensitive_type**: the sensitive information type.
 	//
 	// example:
 	//
@@ -112,23 +112,23 @@ type DescribeApisecSuggestionsResponseBodyData struct {
 	//
 	// }
 	SuggestRule *string `json:"SuggestRule,omitempty" xml:"SuggestRule,omitempty"`
-	// The rule type of the protection suggestion. Valid values:
+	// The type of the protection suggestion. Valid values:
 	//
-	// 	- **BotRule**: bot management rules
+	// - **BotRule**: bot rule.
 	//
-	// 	- **BlackIPRule**: IP address blacklist rules
+	// - **BlackIPRule**: IP blacklist rule.
 	//
-	// 	- **WhiteIPRule**: IP address whitelist rules
+	// - **WhiteIPRule**: IP whitelist rule.
 	//
-	// 	- **RateLimitRule**: throttling rules
+	// - **RateLimitRule**: throttling rule.
 	//
-	// 	- **ClientRule**: client rules
+	// - **ClientRule**: client rule.
 	//
-	// 	- **GeoRule**: region-related rules
+	// - **GeoRule**: geo-blocking rule.
 	//
-	// 	- **SensitiveRule**: sensitive information rules
+	// - **SensitiveRule**: sensitive information rule.
 	//
-	// 	- **UnauthRule**: authentication rules
+	// - **UnauthRule**: authentication rule.
 	//
 	// example:
 	//

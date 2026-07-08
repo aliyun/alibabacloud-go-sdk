@@ -22,19 +22,30 @@ type iDescribeAddressesResponseBody interface {
 }
 
 type DescribeAddressesResponseBody struct {
+	// The list of addresses.
 	AddressList []*DescribeAddressesResponseBodyAddressList `json:"AddressList,omitempty" xml:"AddressList,omitempty" type:"Repeated"`
+	// The number of entries per page for paging. Valid values: 1 to 500. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next page. If a next page exists, this field contains a value.
+	//
+	// > If this parameter has a return value, a next page exists. You can pass the returned **NextToken*	- as a request parameter to retrieve the next page of data. Repeat this process until no value is returned, which indicates that all data has been retrieved.
+	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8D8EBFB7-E1EB-5236-952A-092EDC72***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -108,14 +119,20 @@ func (s *DescribeAddressesResponseBody) Validate() error {
 }
 
 type DescribeAddressesResponseBodyAddressList struct {
+	// The address.
+	//
 	// example:
 	//
 	// 1.1.1.1
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The most recent modification time of the address. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1760408233000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The address book ID.
+	//
 	// example:
 	//
 	// 12345678

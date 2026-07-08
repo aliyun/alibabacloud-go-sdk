@@ -40,11 +40,13 @@ type iDescribeSensitiveRequestLogRequest interface {
 }
 
 type DescribeSensitiveRequestLogRequest struct {
+	// The account information.
+	//
 	// example:
 	//
 	// admin
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The API.
+	// The API operation.
 	//
 	// example:
 	//
@@ -56,23 +58,23 @@ type DescribeSensitiveRequestLogRequest struct {
 	//
 	// 103.118.55.**
 	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
-	// The ID of the hybrid cloud cluster.
+	// The hybrid cloud cluster ID.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud cluster information.
 	//
 	// example:
 	//
 	// 433
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The end time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
 	//
 	// example:
 	//
 	// 1726057800
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -80,43 +82,43 @@ type DescribeSensitiveRequestLogRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The domain name of the API.
+	// The domain name to which the API operation belongs.
 	//
 	// example:
 	//
 	// a.***.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the page to return in a paged query. Default value: **1**, which indicates the first page. Paging starts from page 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries to return on each page in a paged query. Default value: **10**, which indicates 10 entries per page. Paging starts from page 1.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of the sensitive data.
+	// The sensitive data type.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
+	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
 	//
 	// example:
 	//
@@ -128,7 +130,7 @@ type DescribeSensitiveRequestLogRequest struct {
 	//
 	// user
 	SensitiveData *string `json:"SensitiveData,omitempty" xml:"SensitiveData,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The start time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
 	//
 	// example:
 	//

@@ -26,19 +26,21 @@ type iDescribeApisecAssetTrendRequest interface {
 type DescribeApisecAssetTrendRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
+	// > This parameter is available only in hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
+	//
 	// example:
 	//
 	// 590
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+	// The end of the time range to query. The value is a UNIX timestamp (UTC). Unit: milliseconds.
 	//
 	// example:
 	//
-	// 1683183599
+	// 1668496310000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +48,11 @@ type DescribeApisecAssetTrendRequest struct {
 	//
 	// waf_v2_public_cn-ww**b06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -62,11 +64,11 @@ type DescribeApisecAssetTrendRequest struct {
 	//
 	// rg-aek**7uq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+	// The beginning of the time range to query. The value is a UNIX timestamp (UTC). Unit: milliseconds.
 	//
 	// example:
 	//
-	// 1668496310
+	// 1668496310000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

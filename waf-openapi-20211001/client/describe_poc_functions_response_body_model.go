@@ -16,7 +16,10 @@ type iDescribePocFunctionsResponseBody interface {
 }
 
 type DescribePocFunctionsResponseBody struct {
+	// A list of the POC feature details.
 	Functions []*DescribePocFunctionsResponseBodyFunctions `json:"Functions,omitempty" xml:"Functions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1557B42F-B889-460A-B17F-1DE5C5AD7FF2
@@ -63,10 +66,22 @@ func (s *DescribePocFunctionsResponseBody) Validate() error {
 }
 
 type DescribePocFunctionsResponseBodyFunctions struct {
+	// The expiration time of the POC feature trial. This value is a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1760581677000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The type of the POC feature trial. Valid values:
+	//
+	// - **apisec**: API security.
+	//
+	// - **botWeb**: bot management for websites.
+	//
+	// - **botApp**: bot management for apps.
+	//
+	// - **largeLanguageModel**: AI-powered application protection.
+	//
 	// example:
 	//
 	// botWeb

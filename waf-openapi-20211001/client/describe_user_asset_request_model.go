@@ -26,29 +26,29 @@ type iDescribeUserAssetRequest interface {
 type DescribeUserAssetRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the statistics. Valid values:
+	// The type of statistics. Valid values:
 	//
-	// 	- **asset_num**: total number of APIs
+	// - **asset_num**: total number of API assets.
 	//
-	// 	- **asset_active**: number of active APIs
+	// - **asset_active**: number of active APIs.
 	//
-	// 	- **asset_newborn**: number of new APIs
+	// - **asset_newborn**: number of APIs added today.
 	//
-	// 	- **asset_offline**: number of deactivated APIs
+	// - **asset_offline**: number of inactive APIs.
 	//
-	// 	- **asset_bot**: number of APIs that are called by bots
+	// - **asset_bot**: number of APIs with bot requests.
 	//
-	// 	- **asset_cross_border**: number of APIs that are called for cross-border data transfer
+	// - **asset_cross_border**: number of APIs with cross-border data transfer.
 	//
-	// 	- **sensitive_api**: number of response-sensitive APIs
+	// - **sensitive_api**: number of APIs with sensitive data in responses.
 	//
-	// 	- **sensitive_domain**: number of response-sensitive domain names
+	// - **sensitive_domain**: number of sites with sensitive data in responses.
 	//
 	// This parameter is required.
 	//
@@ -58,17 +58,17 @@ type DescribeUserAssetRequest struct {
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// Deprecated
 	//
-	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The query time in UNIX timestamp format (UTC). Unit: seconds.
 	//
-	// 	Notice: The parameter has been deprecated.
+	// 	Notice: This parameter is deprecated.
 	//
 	// example:
 	//
 	// 1723435200
 	Days *string `json:"Days,omitempty" xml:"Days,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Instance ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -76,11 +76,11 @@ type DescribeUserAssetRequest struct {
 	//
 	// waf-cn-uax37ijm***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

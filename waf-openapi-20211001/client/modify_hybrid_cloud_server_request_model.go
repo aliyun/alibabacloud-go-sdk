@@ -36,17 +36,17 @@ type ModifyHybridCloudServerRequest struct {
 	//
 	// asiapacific
 	Continents *string `json:"Continents,omitempty" xml:"Continents,omitempty"`
-	// The name of the node.
+	// The node name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// demo
+	// 节点名称
 	CustomName *string `json:"CustomName,omitempty" xml:"CustomName,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	// > You can call [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifyHybridCloudServerRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	//
 	// This parameter is required.
 	//
@@ -78,17 +78,17 @@ type ModifyHybridCloudServerRequest struct {
 	//
 	// beijing
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//

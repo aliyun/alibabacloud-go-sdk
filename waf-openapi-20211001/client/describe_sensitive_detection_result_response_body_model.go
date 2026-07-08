@@ -16,7 +16,7 @@ type iDescribeSensitiveDetectionResultResponseBody interface {
 }
 
 type DescribeSensitiveDetectionResultResponseBody struct {
-	// The compliance check results.
+	// The compliance detection results.
 	Data *DescribeSensitiveDetectionResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *DescribeSensitiveDetectionResultResponseBody) Validate() error {
 }
 
 type DescribeSensitiveDetectionResultResponseBodyData struct {
-	// The compliance checks.
+	// The compliance detection list.
 	Result []*DescribeSensitiveDetectionResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -97,19 +97,19 @@ func (s *DescribeSensitiveDetectionResultResponseBodyData) Validate() error {
 }
 
 type DescribeSensitiveDetectionResultResponseBodyDataResult struct {
-	// The compliance check results. Valid values:
+	// The compliance detection result. Valid values:
 	//
-	// 	- **report**: Risks exist in cross-border data transfer.
+	// - **report**: A data cross-border transfer risk exists.
 	//
-	// 	- **none**: No risks exist in cross-border data transfer.
+	// - **none**: No data cross-border transfer risk exists.
 	//
 	// example:
 	//
 	// report
 	DetectionResult *string `json:"DetectionResult,omitempty" xml:"DetectionResult,omitempty"`
-	// The sensitive information check results by sensitive data type.
+	// The detection list of sensitive data types.
 	List []*DescribeSensitiveDetectionResultResponseBodyDataResultList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The maximum values in the statistics of sensitive data types.
+	// The maximum values of sensitive data type statistics.
 	Max *DescribeSensitiveDetectionResultResponseBodyDataResultMax `json:"Max,omitempty" xml:"Max,omitempty" type:"Struct"`
 }
 
@@ -173,7 +173,7 @@ type DescribeSensitiveDetectionResultResponseBodyDataResultList struct {
 	//
 	// 11
 	InfoCount *int64 `json:"InfoCount,omitempty" xml:"InfoCount,omitempty"`
-	// The number of sensitive personal information records that are involved in cross-border data transfer.
+	// The number of cross-border personal information records.
 	//
 	// example:
 	//
@@ -227,19 +227,19 @@ func (s *DescribeSensitiveDetectionResultResponseBodyDataResultList) Validate() 
 }
 
 type DescribeSensitiveDetectionResultResponseBodyDataResultMax struct {
-	// The number of sensitive personal information records that are of the most frequent sensitive data type.
+	// The number of personal information records corresponding to the sensitive data type with the highest count.
 	//
 	// example:
 	//
 	// 187
 	InfoCount *int64 `json:"InfoCount,omitempty" xml:"InfoCount,omitempty"`
-	// The number of sensitive personal information records that are of the most frequent sensitive data type and are involved in cross-border data transfer.
+	// The number of cross-border personal information records corresponding to the sensitive data type with the highest count.
 	//
 	// example:
 	//
 	// 54
 	OutboundCount *int64 `json:"OutboundCount,omitempty" xml:"OutboundCount,omitempty"`
-	// The most frequent sensitive data type.
+	// The sensitive data type with the highest count.
 	//
 	// example:
 	//

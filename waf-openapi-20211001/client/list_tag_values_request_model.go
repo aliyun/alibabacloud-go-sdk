@@ -24,9 +24,9 @@ type iListTagValuesRequest interface {
 }
 
 type ListTagValuesRequest struct {
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// >  Obtain the ID of the WAF instance by calling the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -42,17 +42,17 @@ type ListTagValuesRequest struct {
 	//
 	// demoKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type ListTagValuesRequest struct {
 	//
 	// rg-aekzwwk****cv5i
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+	// The resource type. Fixed value: ALIYUN::WAF::DEFENSERESOURCE.
 	//
 	// This parameter is required.
 	//

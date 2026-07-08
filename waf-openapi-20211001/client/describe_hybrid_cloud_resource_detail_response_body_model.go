@@ -16,7 +16,10 @@ type iDescribeHybridCloudResourceDetailResponseBody interface {
 }
 
 type DescribeHybridCloudResourceDetailResponseBody struct {
+	// The domain name information.
 	Domain *DescribeHybridCloudResourceDetailResponseBodyDomain `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 66A98669-CC6E-4F3E-80A6-3014697B11AE
@@ -65,6 +68,8 @@ type DescribeHybridCloudResourceDetailResponseBodyDomain struct {
 	//
 	// kdmqyi3ck7xogegxpiyfpb0fj21mgkxn.****.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// The domain name.
+	//
 	// example:
 	//
 	// www.*****.com
@@ -74,17 +79,25 @@ type DescribeHybridCloudResourceDetailResponseBodyDomain struct {
 	// example:
 	//
 	// 31323
-	Id       *int64                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	Listen   *DescribeHybridCloudResourceDetailResponseBodyDomainListen   `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The listening information.
+	Listen *DescribeHybridCloudResourceDetailResponseBodyDomainListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
+	// The rules for returning response header values.
 	Redirect *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-***aby
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The resource status.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1046011128270720
@@ -186,50 +199,118 @@ func (s *DescribeHybridCloudResourceDetailResponseBodyDomain) Validate() error {
 }
 
 type DescribeHybridCloudResourceDetailResponseBodyDomainListen struct {
+	// The certificate ID.
+	//
 	// example:
 	//
 	// 19312542-cn-hangzhou
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The type of cipher suite. Valid values:
+	//
+	// - **1**: all cipher suites.
+	//
+	// - **2**: strong cipher suites.
+	//
+	// - **99**: custom cipher suites.
+	//
 	// example:
 	//
 	// 0
-	CipherSuite   *int32    `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	// The custom cipher suites.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	// Indicates whether TLS 1.3 is supported. Valid values:
+	//
+	// - **true**: TLS 1.3 is supported.
+	//
+	// - **false**: TLS 1.3 is not supported.
+	//
 	// example:
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// Indicates whether an exclusive IP address is supported. Valid values:
+	//
+	// - **true**: Supported.
+	//
+	// - **false**: Not supported.
+	//
 	// example:
 	//
 	// true
 	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
+	// Indicates whether HTTPS forced redirect is enabled. Valid values:
+	//
+	// - **true**: HTTPS forced redirect is enabled.
+	//
+	// - **false**: HTTPS forced redirect is disabled.
+	//
 	// example:
 	//
 	// true
 	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
+	// Indicates whether HTTP/2 is enabled. Valid values:
+	//
+	// - **true**: HTTP/2 is enabled.
+	//
+	// - **false**: HTTP/2 is disabled.
+	//
 	// example:
 	//
 	// true
-	Http2Enabled *bool    `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	HttpPorts    []*int64 `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
-	HttpsPorts   []*int64 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
+	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	// The list of available ports for the HTTP protocol. The value is a string. When multiple ports are available, they are returned in the format of **port1,port2,port3**.
+	HttpPorts []*int64 `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
+	// The ports for the HTTPS protocol.
+	HttpsPorts []*int64 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
+	// Indicates whether IPv6 is enabled. Valid values:
+	//
+	// - **true**: IPv6 is enabled.
+	//
+	// - **false**: IPv6 is disabled.
+	//
 	// example:
 	//
 	// true
 	IPv6Enabled *bool `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
+	// The type of protection resource to use. Valid values:
+	//
+	// - **share**: shared cluster.
+	//
+	// - **gslb**: shared cluster with intelligent load balancing.
+	//
 	// example:
 	//
 	// share
 	ProtectionResource *string `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
+	// The TLS version. Valid values:
+	//
+	// - **tlsv1**
+	//
+	// - **tlsv1.1**
+	//
+	// - **tlsv1.2**
+	//
 	// example:
 	//
 	// tlsv1
 	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
+	// The method that WAF uses to obtain the actual client IP address. Valid values:
+	//
+	// - **0**: No Layer 7 proxy is deployed in front of WAF.
+	//
+	// - **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the client IP address.
+	//
+	// - **2**: WAF reads the value of a custom header field that you specify as the client IP address.
+	//
 	// example:
 	//
 	// 1
-	XffHeaderMode *int32    `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	XffHeaders    []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
+	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
+	// The custom header fields used to obtain the client IP address, in the format of [**"header1","header2",……**].
+	//
+	// > This parameter is required only when **XffHeaderMode*	- is set to 2, which indicates that WAF reads the value of a custom header field that you specify in the request header as the client IP address.
+	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
 }
 
 func (s DescribeHybridCloudResourceDetailResponseBodyDomainListen) String() string {
@@ -371,58 +452,128 @@ func (s *DescribeHybridCloudResourceDetailResponseBodyDomainListen) Validate() e
 }
 
 type DescribeHybridCloudResourceDetailResponseBodyDomainRedirect struct {
+	// The custom port configuration. By default, this is the same as the listening port.
 	BackendPorts []*DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
-	Backends     []*string                                                                  `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	// The IP address of the origin server or the domain name used for back-to-origin.
+	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	// Specifies whether to enable public cloud disaster recovery. Valid values:
+	//
+	// - **true**: Public cloud disaster recovery is enabled.
+	//
+	// - **false**: Public cloud disaster recovery is disabled.
+	//
 	// example:
 	//
 	// true
 	CnameEnabled *bool `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
+	// The connection timeout period. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1
 	ConnectTimeout *int64 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	// Indicates whether forced HTTP back-to-origin is enabled. Valid values:
+	//
+	// - **true**: Forced HTTP back-to-origin is enabled.
+	//
+	// - **false**: Forced HTTP back-to-origin is disabled.
+	//
 	// example:
 	//
 	// true
 	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
+	// Indicates whether persistent connections are enabled. Valid values:
+	//
+	// - **true*	- (default): Persistent connections are enabled.
+	//
+	// - **false**: Persistent connections are disabled.
+	//
 	// example:
 	//
 	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	// The number of requests that reuse persistent connections. Valid values: 60 to 1000.
+	//
+	// > This specifies how many persistent connections are reused after persistent connections are enabled.
+	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int64 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	// The idle timeout period of persistent connections.
+	//
 	// example:
 	//
 	// 1
 	KeepaliveTimeout *int64 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	// The load balancing algorithm used for back-to-origin. Valid values:
+	//
+	// - **iphash**: IP hash algorithm.
+	//
+	// - **roundRobin**: round-robin algorithm.
+	//
+	// - **leastTime**: least-time back-to-origin algorithm.
+	//
 	// example:
 	//
 	// iphash
-	Loadbalance   *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
-	ProxyProtocol *bool   `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
+	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
+	// Indicates whether the client source IP preservation feature is enabled.
+	//
+	// - true: The client source IP preservation feature is enabled. After this feature is enabled, the backend service can view the originating IP address of the client.
+	//
+	// - false: The client source IP preservation feature is disabled.
+	//
+	// example:
+	//
+	// false
+	ProxyProtocol *bool `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
+	// The read timeout period of the request.
+	//
 	// example:
 	//
 	// 1
-	ReadTimeout    *int64                                                                       `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	ReadTimeout *int64 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	// The HTTP request headers.
 	RequestHeaders []*DescribeHybridCloudResourceDetailResponseBodyDomainRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// Indicates whether WAF retries when back-to-origin fails. Valid values:
+	//
+	// - **true**: WAF retries.
+	//
+	// - **false**: WAF does not retry.
+	//
 	// example:
 	//
 	// true
 	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
+	// The hybrid cloud forwarding rules, expressed as a string converted from a JSON array. Each element in the JSON array is a structure that contains the following field:
+	//
+	// - **rs**: Array type.
+	//
 	// example:
 	//
 	// [{\\"backupRs\\":[],\\"location\\":\\"v3-test\\",\\"locationId\\":1148,\\"rs\\":[\\"39.98.217.197\\",\\"2.2.2.2\\"]}]
 	RoutingRules *string `json:"RoutingRules,omitempty" xml:"RoutingRules,omitempty"`
+	// Indicates whether back-to-origin Server Name Indication (SNI) is enabled. Valid values:
+	//
+	// - **true**: Back-to-origin SNI is enabled.
+	//
+	// - **false**: Back-to-origin SNI is disabled.
+	//
 	// example:
 	//
 	// true
 	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
+	// The custom value of the SNI extension field. If the value is empty, the SNI value is not customized, and the value of the **Host*	- field in the request header is used as the value of the SNI extension field by default.
+	//
+	// > This parameter is returned only when **SniStatus*	- is set to **1**, which indicates that back-to-origin SNI is enabled.
+	//
 	// example:
 	//
 	// eew111
 	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	// The write timeout period. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1
@@ -613,9 +764,28 @@ func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirect) Validate()
 }
 
 type DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts struct {
-	BackendPort *int32  `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
-	ListenPort  *int32  `json:"ListenPort,omitempty" xml:"ListenPort,omitempty"`
-	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The back-to-origin port.
+	//
+	// example:
+	//
+	// 80
+	BackendPort *int32 `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
+	// The listening port.
+	//
+	// example:
+	//
+	// 80
+	ListenPort *int32 `json:"ListenPort,omitempty" xml:"ListenPort,omitempty"`
+	// The protocol type of the listening port. Valid values:
+	//
+	// - http: HTTP protocol.
+	//
+	// - https: HTTPS protocol.
+	//
+	// example:
+	//
+	// http
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
 func (s DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts) String() string {
@@ -658,10 +828,14 @@ func (s *DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts
 }
 
 type DescribeHybridCloudResourceDetailResponseBodyDomainRedirectRequestHeaders struct {
+	// The key of the tag.
+	//
 	// example:
 	//
 	// L2x1ZmZ5L2NvcmUvYXBwcy9tLnl1bmR1bi53YWYuMS9wbHVnaW5z
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value.
+	//
 	// example:
 	//
 	// 9506360478730

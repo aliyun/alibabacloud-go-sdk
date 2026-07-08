@@ -26,10 +26,19 @@ type iModifyDefenseRuleStatusRequest interface {
 }
 
 type ModifyDefenseRuleStatusRequest struct {
-	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The type of the protection rule. Valid values:
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// - **template*	- (default): a template protection rule.
+	//
+	// - **resource**: a rule that is configured for a protected object.
+	//
+	// example:
+	//
+	// template
+	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -37,11 +46,11 @@ type ModifyDefenseRuleStatusRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -53,7 +62,7 @@ type ModifyDefenseRuleStatusRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the protection rule whose status you want to change.
+	// The ID of the protection rule to modify.
 	//
 	// This parameter is required.
 	//
@@ -63,9 +72,9 @@ type ModifyDefenseRuleStatusRequest struct {
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The new status of the protection rule. Valid values:
 	//
-	// 	- **0:*	- disabled.
+	// - **0**: disabled
 	//
-	// 	- **1:*	- enabled.
+	// - **1**: enabled
 	//
 	// This parameter is required.
 	//
@@ -73,7 +82,7 @@ type ModifyDefenseRuleStatusRequest struct {
 	//
 	// 1
 	RuleStatus *int32 `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	// The ID of the protection rule template to which the protection rule whose status you want to change belongs.
+	// The ID of the protection template.
 	//
 	// example:
 	//

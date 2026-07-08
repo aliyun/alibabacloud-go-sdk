@@ -28,40 +28,62 @@ type iDescribeDefenseRuleStatisticsRequest interface {
 }
 
 type DescribeDefenseRuleStatisticsRequest struct {
+	// The quaternary query condition. The value cannot be the same as the primary, secondary, or tertiary query condition.
+	//
 	// example:
 	//
 	// riskLevel
 	FourthKey *string `json:"FourthKey,omitempty" xml:"FourthKey,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The primary query condition.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// scene
 	PrimaryKey *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	// The region where the WAF instance is deployed. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The secondary query condition. The value cannot be the same as the primary query condition.
+	//
 	// example:
 	//
 	// action
 	SecondaryKey *string `json:"SecondaryKey,omitempty" xml:"SecondaryKey,omitempty"`
+	// The ID of the protection template to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 239136
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The tertiary query condition. The value cannot be the same as the primary or secondary query condition.
+	//
 	// example:
 	//
 	// status

@@ -18,16 +18,24 @@ type iClearAddressRequest interface {
 }
 
 type ClearAddressRequest struct {
+	// Instance ID of the WAF instance.
+	//
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf-cn-7mz****hw0u
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The ID of the address book.
+	//
 	// This parameter is required.
 	//
 	// example:

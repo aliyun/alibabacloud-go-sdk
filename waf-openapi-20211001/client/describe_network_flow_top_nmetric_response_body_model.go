@@ -18,13 +18,13 @@ type iDescribeNetworkFlowTopNMetricResponseBody interface {
 }
 
 type DescribeNetworkFlowTopNMetricResponseBody struct {
-	// The top statistical data array returned.
+	// An array of the top N statistics.
 	NetworkFlowTopNValues []*DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues `json:"NetworkFlowTopNValues,omitempty" xml:"NetworkFlowTopNValues,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
 	// example:
 	//
-	// D827FCFE-90A7-4330-9326-D33C8B4C7726
+	// D827FCFE-90A7-4330-9326-******4C7726
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The metadata of the returned data.
 	TopNMetaData *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData `json:"TopNMetaData,omitempty" xml:"TopNMetaData,omitempty" type:"Struct"`
@@ -84,19 +84,19 @@ func (s *DescribeNetworkFlowTopNMetricResponseBody) Validate() error {
 }
 
 type DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues struct {
-	// Returns additional information, such as the country, province, or city to which an IP address belongs.
+	// The additional attribute associated with the entry. For example, when the Metric is set to real_client_ip, this parameter indicates the country or region to which the IP address belongs.
 	//
 	// example:
 	//
-	// ""
+	// CN
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The value of this field varies depending on the queried Metric.
+	// The dimension value that corresponds to the specified Metric request parameter. For example, if the Metric is set to real_client_ip, this parameter indicates the source IP address.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Counts for top ranking.
+	// The total number of requests or the QPS value, depending on the specified Metric. This value is used for top N ranking.
 	//
 	// example:
 	//
@@ -144,9 +144,9 @@ func (s *DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues) Validat
 }
 
 type DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData struct {
-	// The query time range.
+	// The time range used for the query.
 	DateRange *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
-	// The unit of the returned data. It is fixed as requests.
+	// The unit of the returned statistical data.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ func (s *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData) Validate() error
 }
 
 type DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange struct {
-	// The end time of the query range (Unix timestamp, seconds). Same as the EndDate request parameter.
+	// The end of the time range. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1713888600
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The start time of the query range (Unix timestamp, seconds). Same as the StartDate request parameter.
+	// The beginning of the time range. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

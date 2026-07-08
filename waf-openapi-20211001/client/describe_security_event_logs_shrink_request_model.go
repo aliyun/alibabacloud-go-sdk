@@ -24,13 +24,13 @@ type iDescribeSecurityEventLogsShrinkRequest interface {
 }
 
 type DescribeSecurityEventLogsShrinkRequest struct {
-	// The filter conditions for the query. Multiple conditions are evaluated by using a logical AND.
+	// The filter conditions. A logical AND relationship exists between multiple filter conditions.
 	//
 	// This parameter is required.
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeSecurityEventLogsShrinkRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number to return for a paged query. The default value is **1**, which indicates the first page.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeSecurityEventLogsShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **100**.
+	// The number of entries to return on each page for a paged query. The maximum value is **100**.
 	//
 	// This parameter is required.
 	//
@@ -54,15 +54,15 @@ type DescribeSecurityEventLogsShrinkRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: The Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
-	// ap-southeast-1
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
 	//

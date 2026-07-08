@@ -26,15 +26,15 @@ type iDescribePeakTrendRequest interface {
 }
 
 type DescribePeakTrendRequest struct {
-	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the current time is used as the end time.
 	//
 	// example:
 	//
 	// 1665386340
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// The ID of the WAF instance.
+	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribePeakTrendRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time interval. Unit: seconds. The value must be an integral multiple of 60.
+	// The time interval. Unit: seconds. The value must be an integer multiple of 60.
 	//
 	// This parameter is required.
 	//
@@ -52,15 +52,15 @@ type DescribePeakTrendRequest struct {
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The protected object.
+	// The protected object for which you want to query the QPS trend, such as a domain name.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribePeakTrendRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. Unit: seconds.
+	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//

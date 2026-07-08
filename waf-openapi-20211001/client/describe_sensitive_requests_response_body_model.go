@@ -18,7 +18,7 @@ type iDescribeSensitiveRequestsResponseBody interface {
 }
 
 type DescribeSensitiveRequestsResponseBody struct {
-	// The tracing results of the data.
+	// The list of data tracing results.
 	Data []*DescribeSensitiveRequestsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,13 +83,13 @@ func (s *DescribeSensitiveRequestsResponseBody) Validate() error {
 }
 
 type DescribeSensitiveRequestsResponseBodyData struct {
-	// The number of risks in the previous 30 days.
+	// The number of risks in the last 30 days.
 	//
 	// example:
 	//
 	// 23
 	AbnormalCount *int64 `json:"AbnormalCount,omitempty" xml:"AbnormalCount,omitempty"`
-	// The API.
+	// The API operation.
 	//
 	// example:
 	//
@@ -107,31 +107,31 @@ type DescribeSensitiveRequestsResponseBodyData struct {
 	//
 	// 103.118.55.**
 	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
-	// The evaluation result. Valid values:
+	// The assessment result. Valid values:
 	//
-	// 	- **leak**: Data leaks may occur.
+	// - **leak**: a leak risk exists.
 	//
-	// 	- **none**: No data leak can occur.
+	// - **none**: no leak risk exists.
 	//
 	// example:
 	//
 	// leak
 	DetectionResult *string `json:"DetectionResult,omitempty" xml:"DetectionResult,omitempty"`
-	// The number of events in the previous 30 days.
+	// The number of events in the last 30 days.
 	//
 	// example:
 	//
 	// 679
 	EventCount *int64 `json:"EventCount,omitempty" xml:"EventCount,omitempty"`
-	// The statistics of the sensitive data.
+	// The list of sensitive data statistics.
 	InfoCount []*DescribeSensitiveRequestsResponseBodyDataInfoCount `json:"InfoCount,omitempty" xml:"InfoCount,omitempty" type:"Repeated"`
-	// The domain name of the API.
+	// The domain name to which the API operation belongs.
 	//
 	// example:
 	//
 	// a.****.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The sensitive data.
+	// The list of sensitive data.
 	SensitiveList []*string `json:"SensitiveList,omitempty" xml:"SensitiveList,omitempty" type:"Repeated"`
 }
 
@@ -238,7 +238,7 @@ func (s *DescribeSensitiveRequestsResponseBodyData) Validate() error {
 }
 
 type DescribeSensitiveRequestsResponseBodyDataInfoCount struct {
-	// The type of the sensitive data.
+	// The type of sensitive data.
 	//
 	// example:
 	//

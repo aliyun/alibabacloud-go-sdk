@@ -26,7 +26,7 @@ type iDescribeLogDeliveryConfigsRequest interface {
 }
 
 type DescribeLogDeliveryConfigsRequest struct {
-	// The name of the log delivery configuration. Fuzzy queries are supported.
+	// The name of the log delivery configuration that you want to query. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -34,17 +34,17 @@ type DescribeLogDeliveryConfigsRequest struct {
 	DeliveryNameLike *string `json:"DeliveryNameLike,omitempty" xml:"DeliveryNameLike,omitempty"`
 	// The type of the log delivery configuration that you want to query. Valid values:
 	//
-	// 	- **syslog**: Logs are delivered to a syslog service.
+	// - **syslog**: Log delivery to a syslog server.
 	//
-	// 	- **kafka**: Logs are delivered to a Kafka service.
+	// - **kafka**: Log delivery to a Kafka cluster.
 	//
 	// example:
 	//
 	// kafka
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -52,19 +52,29 @@ type DescribeLogDeliveryConfigsRequest struct {
 	//
 	// waf-cn-zz11sr5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The maximum number of entries per page. Valid values: 1 to 50. Default value: 20.
 	//
-	// 	- **cn-hangzhou**: the Chinese mainland.
+	// example:
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Set this parameter to the value of **NextToken*	- returned in the previous call. You do not need to specify this parameter for the first request.
+	//
+	// example:
+	//
+	// AAAAAINZ+8pH1oQnusEu1tGAc8is
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the Alibaba Cloud resource group to which the WAF instance belongs.
 	//
 	// example:
 	//

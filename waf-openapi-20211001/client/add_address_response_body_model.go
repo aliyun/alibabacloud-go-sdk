@@ -14,6 +14,8 @@ type iAddAddressResponseBody interface {
 }
 
 type AddAddressResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 2EFCFE18-78F8-5079-B312-07***48B

@@ -42,7 +42,7 @@ type ModifyHybridCloudGroupShrinkServerRequest struct {
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ModifyHybridCloudGroupShrinkServerRequest struct {
 	//
 	// waf_elasticity-cn-0xldb****05
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	//
 	// This parameter is required.
 	//
@@ -58,11 +58,11 @@ type ModifyHybridCloudGroupShrinkServerRequest struct {
 	//
 	// b1bf3f544f30c1de0b72d91290***bbbb
 	Mids *string `json:"Mids,omitempty" xml:"Mids,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

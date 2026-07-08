@@ -34,9 +34,9 @@ type DescribeRuleHitsTopRuleIdRequest struct {
 	//
 	// 1665386280
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -44,21 +44,21 @@ type DescribeRuleHitsTopRuleIdRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether protected objects that trigger protection rules are returned in the response. Valid values
+	// Specifies whether to aggregate rule hits by protected object.
 	//
-	// - **true**: returns only the number of times each protection rule is triggered. If you set IsGroupResource to true, Resource is left empty.
+	// - **true (default)**: Aggregates rule hits by protected object. In this case, rule hits are counted based on individual rules only, and the Resource value in the response is empty.
 	//
-	// - **false**: returns the number of times each protection rule is triggered by each protected object.
+	// - **false**: Does not aggregate rule hits by protected object. In this case, rule hits are counted based on both protected objects and rules.
 	//
 	// example:
 	//
 	// true
 	IsGroupResource *string `json:"IsGroupResource,omitempty" xml:"IsGroupResource,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -70,23 +70,23 @@ type DescribeRuleHitsTopRuleIdRequest struct {
 	//
 	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of rules that are triggered by the protected object. By default, this parameter is not specified and all types of rules are queried.
+	// The type of rule hit by the protected object. By default, this parameter is not specified, which indicates that all rules are displayed.
 	//
-	// 	- **blacklist:*	- IP address blacklist rules.
+	// - **blacklist**: IP blacklist.
 	//
-	// 	- **custom:*	- custom rules.
+	// - **custom**: Custom rule.
 	//
-	// 	- **antiscan:*	- scan protection rules.
+	// - **antiscan**: Scan protection rule.
 	//
-	// 	- **cc_system:*	- HTTP flood protection rules.
+	// - **cc_system**: HTTP flood mitigation rule.
 	//
-	// 	- **region_block:*	- region blacklist rules.
+	// - **region_block**: Location blacklist.
 	//
 	// example:
 	//

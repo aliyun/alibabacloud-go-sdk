@@ -14,7 +14,7 @@ type iDeleteDefenseTemplateResponseBody interface {
 }
 
 type DeleteDefenseTemplateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

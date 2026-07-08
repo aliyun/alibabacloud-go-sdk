@@ -24,7 +24,7 @@ type iDescribeHybridCloudServerRegionsRequest interface {
 type DescribeHybridCloudServerRegionsRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -32,19 +32,17 @@ type DescribeHybridCloudServerRegionsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-5yd****7009
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The code of the region.
-	//
-	// >  This parameter is required if you set RegionType to region. The value is the code of the city.
+	// The region code. Use this parameter to filter results by a specific continent or area.	Notice: This parameter is required when `RegionType` is set to `region`. Set the value to the code of the continent that you want to query.
 	//
 	// example:
 	//
 	// 410
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region in which the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -52,11 +50,11 @@ type DescribeHybridCloudServerRegionsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the region. Valid values:
 	//
-	// 	- **operator**: the ISP.
+	// - **operator**: queries carriers.
 	//
-	// 	- **continents**: the continent.
+	// - **continents**: queries continents.
 	//
-	// 	- **region**: the city.
+	// - **region**: queries cities.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +62,7 @@ type DescribeHybridCloudServerRegionsRequest struct {
 	//
 	// region
 	RegionType *string `json:"RegionType,omitempty" xml:"RegionType,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//

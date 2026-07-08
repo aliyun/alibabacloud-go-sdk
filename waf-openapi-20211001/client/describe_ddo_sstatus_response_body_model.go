@@ -16,9 +16,9 @@ type iDescribeDDoSStatusResponseBody interface {
 }
 
 type DescribeDDoSStatusResponseBody struct {
-	// Indicates whether DDoS attacks occur on specific domain names.
+	// The current DDoS status.
 	DDoSStatus []*DescribeDDoSStatusResponseBodyDDoSStatus `json:"DDoSStatus,omitempty" xml:"DDoSStatus,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ func (s *DescribeDDoSStatusResponseBody) Validate() error {
 }
 
 type DescribeDDoSStatusResponseBodyDDoSStatus struct {
-	// The type of events that are triggered by DDoS attacks. Valid values:
+	// The event type. Valid values:
 	//
-	// 	- defense: traffic scrubbing events.
+	// - defense: DDoS scrubbing events.
 	//
-	// 	- blackhole: blackhole filtering events.
+	// - blackhole: DDoS blackhole filtering events.
 	//
 	// example:
 	//
 	// blackhole
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// Indicates whether DDoS attacks occur on specific domain names. Valid value:
+	// The DDoS status. Valid values:
 	//
-	// 	- **doing**: DDoS attacks occur on specific domain names.
+	// - **doing**: under DDoS attack.
 	//
 	// example:
 	//

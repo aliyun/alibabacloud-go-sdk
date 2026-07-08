@@ -22,7 +22,7 @@ type DescribeFlowTopResourceResponseBody struct {
 	//
 	// 8F0E0B9A-B518-5C6D-BEFC-A373DDE4F652
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The array of the top 10 protected objects that receive requests.
+	// The top 10 protected objects that received the most requests.
 	RuleHitsTopResource []*DescribeFlowTopResourceResponseBodyRuleHitsTopResource `json:"RuleHitsTopResource,omitempty" xml:"RuleHitsTopResource,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *DescribeFlowTopResourceResponseBody) Validate() error {
 }
 
 type DescribeFlowTopResourceResponseBodyRuleHitsTopResource struct {
-	// The total number of requests received by the protected object in a specified time range.
+	// The total number of requests for the protected object during the specified time period.
 	//
 	// example:
 	//

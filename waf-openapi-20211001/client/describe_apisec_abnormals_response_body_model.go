@@ -18,7 +18,7 @@ type iDescribeApisecAbnormalsResponseBody interface {
 }
 
 type DescribeApisecAbnormalsResponseBody struct {
-	// The risks.
+	// The list of risks.
 	Data []*DescribeApisecAbnormalsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -30,7 +30,7 @@ type DescribeApisecAbnormalsResponseBody struct {
 	//
 	// example:
 	//
-	// 35
+	// 5
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -83,65 +83,83 @@ func (s *DescribeApisecAbnormalsResponseBody) Validate() error {
 }
 
 type DescribeApisecAbnormalsResponseBodyData struct {
-	// The number of risk-related security events.
+	// The number of events associated with the risk.
 	//
 	// example:
 	//
 	// 2
 	AbnormalEventNumber *int64 `json:"AbnormalEventNumber,omitempty" xml:"AbnormalEventNumber,omitempty"`
-	// The ID of the risk.
+	// The risk ID.
 	//
 	// example:
 	//
 	// 7c1431f27ae7e9c8cc64095***68e
 	AbnormalId *string `json:"AbnormalId,omitempty" xml:"AbnormalId,omitempty"`
-	// The details of the risk. The value is a string that consists of multiple parameters in the JSON format. Valid values:
+	// The detailed risk information, which is a JSON string constructed from a series of parameters. The parameters include:
 	//
-	// 	- **rule**: risk-related rule
+	// - **rule**: the rule associated with the risk.
 	//
-	// 	- **data_type**: sensitive data type
+	// - **data_type**: the sensitive data type.
 	//
-	// 	- **custom_rule_name**: custom rule name
+	// - **custom_rule_name**: the custom rule name.
 	//
-	// 	- **rule_name**: built-in rule name
+	// - **rule_name**: the built-in rule name.
 	//
 	// example:
 	//
-	// { "data_type": ["1005","1004"], "rule": { "parent": "RiskType_Permission", "code": "Risk_UnauthSensitive", "level": "high", "origin": "default", "name": "Risk_UnauthSensitive" } }
+	// {
+	//
+	//     "data_type": ["1005","1004"],
+	//
+	//     "rule": {
+	//
+	//         "parent": "RiskType_Permission",
+	//
+	//         "code": "Risk_UnauthSensitive",
+	//
+	//         "level": "high",
+	//
+	//         "origin": "default",
+	//
+	//         "name": "Risk_UnauthSensitive"
+	//
+	//     }
+	//
+	// }
 	AbnormalInfo *string `json:"AbnormalInfo,omitempty" xml:"AbnormalInfo,omitempty"`
-	// The level of the risk. Valid values:
+	// The risk level. Valid values:
 	//
-	// 	- **high**
+	// - **high**: high risk.
 	//
-	// 	- **medium**
+	// - **medium**: medium risk.
 	//
-	// 	- **low**
+	// - **low**: low risk.
 	//
 	// example:
 	//
 	// high
 	AbnormalLevel *string `json:"AbnormalLevel,omitempty" xml:"AbnormalLevel,omitempty"`
-	// The type of the risk.
+	// The risk type.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
+	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported risk types.
 	//
 	// example:
 	//
 	// LackOfSpeedLimit
 	AbnormalTag *string `json:"AbnormalTag,omitempty" xml:"AbnormalTag,omitempty"`
-	// The status of the risk.
+	// The risk status.
 	//
 	// example:
 	//
 	// unresolved
 	AbnromalStatus *string `json:"AbnromalStatus,omitempty" xml:"AbnromalStatus,omitempty"`
-	// The risk-related API.
+	// The API operation associated with the risk.
 	//
 	// example:
 	//
 	// /api/login
 	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
-	// The ID of the risk-related API.
+	// The ID of the API associated with the risk.
 	//
 	// example:
 	//
@@ -149,13 +167,13 @@ type DescribeApisecAbnormalsResponseBodyData struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The business purpose of the API.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
+	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported business purposes.
 	//
 	// example:
 	//
 	// SendMail
 	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
-	// The time at which the risk was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The time when the risk was first detected. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//
@@ -163,43 +181,43 @@ type DescribeApisecAbnormalsResponseBodyData struct {
 	DiscoverTime *int64 `json:"DiscoverTime,omitempty" xml:"DiscoverTime,omitempty"`
 	// Deprecated
 	//
-	// The risk-related samples.
+	// The list of examples associated with the risk.
 	Examples []*string `json:"Examples,omitempty" xml:"Examples,omitempty" type:"Repeated"`
-	// The time at which the API was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The time when the API asset was first discovered. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//
 	// 1701138088
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	// Indicates whether the API is followed. Valid values:
+	// Indicates whether the risk is followed. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: followed.
 	//
-	// 	- **0**(default): no
+	// - **0**: not followed. This is the default value.
 	//
 	// example:
 	//
 	// 0
 	Follow *int64 `json:"Follow,omitempty" xml:"Follow,omitempty"`
-	// The time at which the risk was marked as ignored. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The time when the user marked the risk as ignored. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//
 	// 1684252800
 	IgnoreTime *int64 `json:"IgnoreTime,omitempty" xml:"IgnoreTime,omitempty"`
-	// The time at which the API was last accessed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The most recent access time of the API asset. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//
 	// 1684252800
 	LastestTime *int64 `json:"LastestTime,omitempty" xml:"LastestTime,omitempty"`
-	// The time at which the risk was last detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The time when the risk was most recently detected. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//
 	// 1684252800
 	LatestDiscoverTime *int64 `json:"LatestDiscoverTime,omitempty" xml:"LatestDiscoverTime,omitempty"`
-	// The domain name or IP address of the API.
+	// The domain name or IP address to which the API operation belongs.
 	//
 	// example:
 	//
@@ -209,29 +227,35 @@ type DescribeApisecAbnormalsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Business side notified
+	// Strict
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	// The source of the risk type. Valid values:
 	//
-	// 	- **custom**
+	// - **custom**: custom.
 	//
-	// 	- **default**
+	// - **default**: built-in.
 	//
 	// example:
 	//
 	// custom
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The status of the risk. Valid values:
+	// The risk status. Valid values:
 	//
-	// 	- **toBeConfirmed**
+	// - **toBeConfirmed**: to be confirmed.
 	//
-	// 	- **confirmed**
+	// - **confirmed**: confirmed.
 	//
-	// 	- **toBeFixed**
+	// - **toBeFixed**: to be fixed.
 	//
-	// 	- **fixed**
+	// - **fixed**: fixed (manually verified).
 	//
-	// 	- **ignored**
+	// - **ignored**: ignored.
+	//
+	// - *	- toBeVerified**: to be verified by the system.
+	//
+	// - *	- notFixed**: not fixed after verification.
+	//
+	// - *	- systemFixed**: fixed (verified by the system).
 	//
 	// example:
 	//

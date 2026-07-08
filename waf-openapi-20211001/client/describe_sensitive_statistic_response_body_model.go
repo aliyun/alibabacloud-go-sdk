@@ -18,7 +18,7 @@ type iDescribeSensitiveStatisticResponseBody interface {
 }
 
 type DescribeSensitiveStatisticResponseBody struct {
-	// The statistics of the sensitive data.
+	// The list of sensitive data statistics.
 	Data []*DescribeSensitiveStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,7 +83,7 @@ func (s *DescribeSensitiveStatisticResponseBody) Validate() error {
 }
 
 type DescribeSensitiveStatisticResponseBodyData struct {
-	// The API.
+	// The API operation.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type DescribeSensitiveStatisticResponseBodyData struct {
 	//
 	// 10.50.11.**
 	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
-	// The number of entries returned.
+	// The number of data entries.
 	//
 	// example:
 	//
@@ -107,9 +107,9 @@ type DescribeSensitiveStatisticResponseBodyData struct {
 	//
 	// a.****.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The type of the sensitive data.
+	// The sensitive data type.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
+	// > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported sensitive data types.
 	//
 	// example:
 	//

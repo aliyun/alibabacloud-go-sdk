@@ -28,16 +28,21 @@ type iModifyHybridCloudClusterRuleRequest interface {
 }
 
 type ModifyHybridCloudClusterRuleRequest struct {
-	// The ID of the hybrid cloud cluster.
+	// [Deprecated] The ID of the hybrid cloud cluster.
 	//
 	// example:
 	//
-	// 1018
-	ClusterId             *int64  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
-	// The ID of the WAF instance.
+	// 10*
+	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The resource ID of the cluster rule.
 	//
-	// >  You can call the DescribeInstanceInfo operation to query the ID of the WAF instance.[](~~140857~~)
+	// example:
+	//
+	// hdbc-clusterrule-*******ym0w
+	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
+	// Instance ID of the WAF instance.
+	//
+	// > You can call [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -45,11 +50,11 @@ type ModifyHybridCloudClusterRuleRequest struct {
 	//
 	// waf-cn-n6w***x52m
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid value:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -61,25 +66,41 @@ type ModifyHybridCloudClusterRuleRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The configuration of the rule.
+	// The traffic redirection rule configuration.
+	//
+	// <notice>The mode cannot be modified.</notice>
+	//
+	// - **check_mode**: The mode. Valid values:
+	//
+	//   - **all**: full traffic redirection.
+	//
+	//   - **part**: partial traffic redirection.
+	//
+	// - **type**: The rule matching type. Valid values:
+	//
+	//   - **exact**: exact match.
+	//
+	//   - **regex**: regular expression.
+	//
+	// - **substance**: The rule value.
 	//
 	// example:
 	//
-	// {\\"check_mode\\":\\"part\\",\\"include\\":{\\"exact\\":[],\\"regex\\":[]}}
+	// {\\"check_mode\\": \\"all\\", \\"type\\": \\"exact\\", \\"substance\\": \\"122\\"}
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
-	// The status of the rule. Valid values:
+	// The rule status. Valid values:
 	//
-	// 	- **on**: enables the rule.
+	// - **on**: enabled.
 	//
-	// 	- **off**: disables the rule.
+	// - **off**: disabled.
 	//
 	// example:
 	//
 	// on
 	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	// The type of the rule. Valid values:
+	// [Deprecated] The rule type. Valid values:
 	//
-	// 	- **pullin**: The traffic redirection rule.
+	// - **pullin**: traffic redirection configuration.
 	//
 	// example:
 	//

@@ -18,16 +18,28 @@ type iDescribeAlarmBannerRequest interface {
 }
 
 type DescribeAlarmBannerRequest struct {
+	// The ID of the WAF instance.
+	//
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-kf74****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the WAF instance belongs.
+	//
 	// example:
 	//
 	// rg-aek2zerdgm****

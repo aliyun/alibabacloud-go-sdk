@@ -28,38 +28,64 @@ type iDescribeHybridCloudResourceDetailRequest interface {
 }
 
 type DescribeHybridCloudResourceDetailRequest struct {
+	// The back-to-origin address.
+	//
 	// example:
 	//
 	// 1.1.XX.XX
 	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
+	// Specifies whether to enable public cloud disaster recovery. Valid values:
+	//
+	// - **true**: Public cloud disaster recovery is enabled.
+	//
+	// - **false**: Public cloud disaster recovery is disabled.
+	//
 	// example:
 	//
 	// true
 	CnameEnabled *bool `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
+	// The domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// www.*****.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Instance ID of the WAF instance.
+	//
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q

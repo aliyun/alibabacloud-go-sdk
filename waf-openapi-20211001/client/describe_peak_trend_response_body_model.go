@@ -16,9 +16,9 @@ type iDescribePeakTrendResponseBody interface {
 }
 
 type DescribePeakTrendResponseBody struct {
-	// An array of the QPS statistics of the WAF instance.
+	// The QPS statistics of WAF.
 	FlowChart []*DescribePeakTrendResponseBodyFlowChart `json:"FlowChart,omitempty" xml:"FlowChart,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ func (s *DescribePeakTrendResponseBody) Validate() error {
 }
 
 type DescribePeakTrendResponseBodyFlowChart struct {
-	// The number of requests that are monitored or blocked by the custom rule (access control) module.
+	// The number of requests protected by the ACL module. This includes requests that are monitored and blocked.
 	//
 	// example:
 	//
 	// 0
 	AclSum *int64 `json:"AclSum,omitempty" xml:"AclSum,omitempty"`
-	// The number of requests that are monitored or blocked by the scan protection module.
+	// The number of requests protected by the scan protection module. This includes requests that are monitored and blocked.
 	//
 	// example:
 	//
 	// 0
 	AntiScanSum *int64 `json:"AntiScanSum,omitempty" xml:"AntiScanSum,omitempty"`
-	// The number of requests that are monitored or blocked by the HTTP flood protection module.
+	// The number of requests protected by the CC protection module. This includes requests that are monitored and blocked.
 	//
 	// example:
 	//
@@ -90,13 +90,13 @@ type DescribePeakTrendResponseBodyFlowChart struct {
 	//
 	// 2622
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The serial number of the time interval. The serial numbers are arranged in chronological order.
+	// The ordinal number for the time point, sorted in chronological order.
 	//
 	// example:
 	//
 	// 10
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The number of requests that are monitored or blocked by the regular expression protection engine.
+	// The number of requests protected by the web attack protection module. This includes requests that are monitored and blocked.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iDescribeApisecEventDomainStatisticRequest interface {
 }
 
 type DescribeApisecEventDomainStatisticRequest struct {
-	// The ID of the hybrid cloud cluster.
+	// The hybrid cloud cluster ID.
 	//
 	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
 	//
@@ -38,15 +38,15 @@ type DescribeApisecEventDomainStatisticRequest struct {
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+	// The end time, in UNIX timestamp (UTC) format. Unit: seconds.
 	//
 	// example:
 	//
 	// 1686895256
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DescribeApisecEventDomainStatisticRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The sorting order. Valid values:
+	// The sort order of the list. Valid values:
 	//
 	// - **asc**: ascending order.
 	//
@@ -64,35 +64,35 @@ type DescribeApisecEventDomainStatisticRequest struct {
 	//
 	// desc
 	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the page to return in a paged query. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **5**.
+	// The number of entries per page in a paged query. Default value: **5**, which indicates **5*	- entries per page.
 	//
 	// example:
 	//
-	// 5
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The Alibaba Cloud resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmvyknl****fa
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+	// The start time, in UNIX timestamp (UTC) format. Unit: seconds.
 	//
 	// example:
 	//

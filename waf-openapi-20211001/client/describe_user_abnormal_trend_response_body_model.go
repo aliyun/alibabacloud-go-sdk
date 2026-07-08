@@ -16,13 +16,13 @@ type iDescribeUserAbnormalTrendResponseBody interface {
 }
 
 type DescribeUserAbnormalTrendResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The trends of risks.
+	// The list of API security risk trend data points.
 	Trend []*DescribeUserAbnormalTrendResponseBodyTrend `json:"Trend,omitempty" xml:"Trend,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *DescribeUserAbnormalTrendResponseBody) Validate() error {
 }
 
 type DescribeUserAbnormalTrendResponseBodyTrend struct {
-	// The number of high risks.
+	// The number of high-severity security risks.
 	//
 	// example:
 	//
 	// 12
 	AbnormalHigh *int64 `json:"AbnormalHigh,omitempty" xml:"AbnormalHigh,omitempty"`
-	// The number of low risks.
+	// The number of low-severity security risks.
 	//
 	// example:
 	//
 	// 23
 	AbnormalLow *int64 `json:"AbnormalLow,omitempty" xml:"AbnormalLow,omitempty"`
-	// The number of medium risks.
+	// The number of medium-severity security risks.
 	//
 	// example:
 	//
@@ -86,15 +86,13 @@ type DescribeUserAbnormalTrendResponseBodyTrend struct {
 	AbnormalMedium *int64 `json:"AbnormalMedium,omitempty" xml:"AbnormalMedium,omitempty"`
 	// Deprecated
 	//
-	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
-	//
-	// 	Notice: The parameter has been deprecated, it is recommended to use the Timestamp parameter.
+	// The point in time when the statistics were collected. This value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1722268800
 	TimeStamp *int64 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The point in time when the statistics were collected. This value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//

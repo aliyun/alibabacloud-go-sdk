@@ -28,23 +28,23 @@ type iDescribeHybridCloudResourcesRequest interface {
 }
 
 type DescribeHybridCloudResourcesRequest struct {
-	// The back-to-origin IP address or domain name.
+	// The IP address or domain name of the origin server that corresponds to the domain name.
 	//
 	// example:
 	//
 	// 1.1.XX.XX
 	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
-	// Specifies whether the public cloud disaster recovery feature is enabled for the domain name. Valid values:
+	// Specifies whether to enable public cloud disaster recovery. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	CnameEnabled *bool `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
-	// The domain name that you want to query.
+	// The domain name to query.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribeHybridCloudResourcesRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -60,29 +60,29 @@ type DescribeHybridCloudResourcesRequest struct {
 	//
 	// waf_v3prepaid_public_cn-***********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number to return when paging is used. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries per page when paging is used. Default value: **10**, which indicates 10 entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

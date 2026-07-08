@@ -18,9 +18,9 @@ type iDescribeDefenseTemplateValidGroupsResponseBody interface {
 }
 
 type DescribeDefenseTemplateValidGroupsResponseBody struct {
-	// The names of the protected object groups.
+	// A list of protected object group names.
 	Groups []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

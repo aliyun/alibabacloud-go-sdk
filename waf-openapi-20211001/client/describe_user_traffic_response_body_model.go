@@ -16,10 +16,13 @@ type iDescribeUserTrafficResponseBody interface {
 }
 
 type DescribeUserTrafficResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EC10C9EA-A367-52D5-***-***
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of user traffic data.
 	UserTraffic []*DescribeUserTrafficResponseBodyUserTraffic `json:"UserTraffic,omitempty" xml:"UserTraffic,omitempty" type:"Repeated"`
 }
 
@@ -63,10 +66,14 @@ func (s *DescribeUserTrafficResponseBody) Validate() error {
 }
 
 type DescribeUserTrafficResponseBodyUserTraffic struct {
+	// The sequence number sorted in chronological order.
+	//
 	// example:
 	//
 	// 10
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The usage.
+	//
 	// example:
 	//
 	// 1024

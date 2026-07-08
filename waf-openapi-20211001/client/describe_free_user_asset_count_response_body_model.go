@@ -16,7 +16,7 @@ type iDescribeFreeUserAssetCountResponseBody interface {
 }
 
 type DescribeFreeUserAssetCountResponseBody struct {
-	// The asset statistics provided by basic detection.
+	// The statistics information about assets detected by the basic API security feature.
 	Asset *DescribeFreeUserAssetCountResponseBodyAsset `json:"Asset,omitempty" xml:"Asset,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,13 +68,13 @@ type DescribeFreeUserAssetCountResponseBodyAsset struct {
 	//
 	// 34
 	AssetActive *int64 `json:"AssetActive,omitempty" xml:"AssetActive,omitempty"`
-	// The total number of APIs.
+	// The total number of API assets.
 	//
 	// example:
 	//
 	// 15
 	AssetCount *int64 `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
-	// The number of deactivated APIs.
+	// The number of inactive APIs.
 	//
 	// example:
 	//

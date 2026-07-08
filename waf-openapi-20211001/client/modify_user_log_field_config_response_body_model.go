@@ -14,6 +14,8 @@ type iModifyUserLogFieldConfigResponseBody interface {
 }
 
 type ModifyUserLogFieldConfigResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// E2D63742-9BAA-*****

@@ -28,7 +28,7 @@ type iDescribeResponseCodeTrendGraphRequest interface {
 }
 
 type DescribeResponseCodeTrendGraphRequest struct {
-	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the end time is the current query time.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeResponseCodeTrendGraphRequest struct {
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeResponseCodeTrendGraphRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time interval. Unit: seconds. The value must be an integral multiple of 60.
+	// The time interval. Unit: seconds. The value must be an integer multiple of 60.
 	//
 	// This parameter is required.
 	//
@@ -52,23 +52,23 @@ type DescribeResponseCodeTrendGraphRequest struct {
 	//
 	// 300
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ID of the region where the WAF instance resides. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The protected object.
+	// The protected object to query.
 	//
 	// example:
 	//
 	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -82,11 +82,11 @@ type DescribeResponseCodeTrendGraphRequest struct {
 	//
 	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	// The type of the error codes. Valid values:
+	// The type of response codes. Valid values:
 	//
-	// 	- **waf:*	- error codes that are returned to clients from WAF.
+	// - **waf**: response codes returned by WAF to clients.
 	//
-	// 	- **upstream:*	- error codes that are returned to WAF from the origin server.
+	// - **upstream**: response codes returned by origin servers to WAF.
 	//
 	// This parameter is required.
 	//

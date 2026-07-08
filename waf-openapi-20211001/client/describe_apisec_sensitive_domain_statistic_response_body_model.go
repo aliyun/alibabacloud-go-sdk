@@ -18,7 +18,7 @@ type iDescribeApisecSensitiveDomainStatisticResponseBody interface {
 }
 
 type DescribeApisecSensitiveDomainStatisticResponseBody struct {
-	// The response parameters.
+	// The returned data.
 	Data []*DescribeApisecSensitiveDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,43 +83,43 @@ func (s *DescribeApisecSensitiveDomainStatisticResponseBody) Validate() error {
 }
 
 type DescribeApisecSensitiveDomainStatisticResponseBodyData struct {
-	// The number of APIs that are involved.
+	// The number of involved APIs.
 	//
 	// example:
 	//
 	// 10
 	ApiCount *int64 `json:"ApiCount,omitempty" xml:"ApiCount,omitempty"`
-	// The number of sites that are involved.
+	// The number of involved domain names.
 	//
 	// example:
 	//
 	// 10
 	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	// The code of the sensitive data.
+	// The code of the sensitive data type.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
+	// > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported sensitive data types.
 	//
 	// example:
 	//
 	// 10
 	SensitiveCode *string `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
-	// The sensitivity level of the sensitive data.Valid values:
+	// The sensitivity level of the API. Valid values:
 	//
-	// 	- **S1**: low sensitivity.
+	// - **S1**: low sensitivity.
 	//
-	// 	- **S2**: moderate sensitivity.
+	// - **S2**: medium sensitivity.
 	//
-	// 	- **S3**: high sensitivity.
+	// - **S3**: high sensitivity.
 	//
 	// example:
 	//
-	// L3
+	// S3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	// The name of the sensitive data.
+	// The name of the sensitive data type.
 	//
 	// example:
 	//
-	// 1002
+	// 自定义敏感类型。
 	SensitiveName *string `json:"SensitiveName,omitempty" xml:"SensitiveName,omitempty"`
 }
 

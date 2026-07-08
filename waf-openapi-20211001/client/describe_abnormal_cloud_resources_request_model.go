@@ -18,16 +18,28 @@ type iDescribeAbnormalCloudResourcesRequest interface {
 }
 
 type DescribeAbnormalCloudResourcesRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of your WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: a region outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q

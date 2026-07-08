@@ -20,20 +20,34 @@ type iDescribeBotAppKeyRequest interface {
 }
 
 type DescribeBotAppKeyRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of your WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-5v23u******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The version of the AppKey. Set the value to 1.
+	//
 	// example:
 	//
 	// 1
 	KeyVersion *string `json:"KeyVersion,omitempty" xml:"KeyVersion,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-aek2uo27badl***

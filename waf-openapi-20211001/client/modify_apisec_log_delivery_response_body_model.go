@@ -14,7 +14,7 @@ type iModifyApisecLogDeliveryResponseBody interface {
 }
 
 type ModifyApisecLogDeliveryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

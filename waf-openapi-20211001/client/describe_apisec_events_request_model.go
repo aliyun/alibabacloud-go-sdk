@@ -56,17 +56,19 @@ type iDescribeApisecEventsRequest interface {
 }
 
 type DescribeApisecEventsRequest struct {
+	// The account that you want to use to filter events.
+	//
 	// example:
 	//
 	// 1818743389962696
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The API.
+	// The path of the API that is associated with the security event.
 	//
 	// example:
 	//
-	// /apisec/v1/register.php
+	// /apisec/v1/***.php
 	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
-	// The ID of the event-related API.
+	// The ID of the API.
 	//
 	// example:
 	//
@@ -74,27 +76,27 @@ type DescribeApisecEventsRequest struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The business purpose of the API.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
+	// > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported business purposes.
 	//
 	// example:
 	//
 	// SendMail
 	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
-	// The Attack source IP.
+	// The IP address of the attacker that you want to use to filter events.
 	//
 	// example:
 	//
 	// 42.224.*.*
 	AttackIp *string `json:"AttackIp,omitempty" xml:"AttackIp,omitempty"`
-	// The ID of the hybrid cloud cluster.
+	// The ID of the hybrid cloud WAF cluster.
 	//
-	// >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
+	// > This parameter is required only in hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the IDs of hybrid cloud WAF clusters.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
+	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
@@ -108,23 +110,29 @@ type DescribeApisecEventsRequest struct {
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// The severity level of the event. Valid values:
 	//
-	// 	- **high**
+	// - **high**: high severity.
 	//
-	// 	- **medium**
+	// - **medium**: medium severity.
 	//
-	// 	- **low**
+	// - **low**: low severity.
 	//
 	// example:
 	//
 	// low
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
+	// The dimension by which security events are categorized. Valid values:
+	//
+	// - **ip**: IP security event. This is the default value.
+	//
+	// - **account**: account security event.
+	//
 	// example:
 	//
 	// ip
 	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
-	// The type of the event.
+	// The event type.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
+	// > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
 	//
 	// example:
 	//
@@ -132,7 +140,7 @@ type DescribeApisecEventsRequest struct {
 	EventTag *string `json:"EventTag,omitempty" xml:"EventTag,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -140,29 +148,29 @@ type DescribeApisecEventsRequest struct {
 	//
 	// waf_v2_public_cn-5y***d31
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The domain name or IP address of the API.
+	// The domain name or IP address that is protected by WAF.
 	//
 	// example:
 	//
-	// a.aliyun.com
+	// a.***.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The name of the sorting field. Valid values:
+	// The field that is used to sort the query results. Valid values:
 	//
-	// 	- **allCnt**: the number of attacks
+	// - **allCnt**: the number of attacks.
 	//
-	// 	- **startTs**: the start time of the event
+	// - **startTs**: the start time of the event.
 	//
-	// 	- **endTs**: the end time of the event
+	// - **endTs**: the end time of the event.
 	//
 	// example:
 	//
 	// startTs
 	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
-	// The sorting method. Valid values:
+	// The order in which the query results are sorted. Valid values:
 	//
-	// 	- **desc*	- (default): descending order
+	// - **desc**: descending order. This is the default value.
 	//
-	// 	- **asc**: ascending order
+	// - **asc**: ascending order.
 	//
 	// example:
 	//
@@ -170,59 +178,61 @@ type DescribeApisecEventsRequest struct {
 	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
 	// The source of the event type. Valid values:
 	//
-	// 	- **custom**
+	// - **custom**: a user-defined event type.
 	//
-	// 	- **default**
+	// - **default**: a built-in event type.
 	//
 	// example:
 	//
 	// default
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries to return on each page. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the WAF instance. Value:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp in UTC. Unit: seconds.
+	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1683648000
 	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-	// The event status. Valid values:
+	// The handling status of the event. Valid values:
 	//
-	// 	- **toBeConfirmed**
+	// - **toBeConfirmed**: pending confirmation.
 	//
-	// 	- **confirmed**
+	// - **confirmed**: confirmed but not yet handled.
 	//
-	// 	- **ignored**
+	// - **actioned**: handled.
+	//
+	// - **ignored**: ignored.
 	//
 	// example:
 	//
-	// Ignore
+	// ignored
 	UserStatus *string `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
 }
 

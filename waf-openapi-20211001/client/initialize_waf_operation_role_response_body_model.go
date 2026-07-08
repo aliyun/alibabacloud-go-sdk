@@ -14,6 +14,8 @@ type iInitializeWafOperationRoleResponseBody interface {
 }
 
 type InitializeWafOperationRoleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4EC9EA6C-F80A-5D25-A8F7-***

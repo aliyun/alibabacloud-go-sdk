@@ -22,11 +22,11 @@ type DescribeDefenseResourcesResponseBody struct {
 	//
 	// example:
 	//
-	// 618F2626-DB27-5187-8C6C-4E61A491DF29
+	// 618F2626-DB27-5187-8C6C-4E61A491****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The protected objects.
+	// The list of protected objects.
 	Resources []*DescribeDefenseResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The total number of entries that are returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -85,64 +85,73 @@ func (s *DescribeDefenseResourcesResponseBody) Validate() error {
 type DescribeDefenseResourcesResponseBodyResources struct {
 	// The status of the tracking cookie.
 	//
-	// 	- **0**: disabled
+	// - **0**: Disabled.
 	//
-	// 	- **1**: enabled. This is the default value.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	AcwCookieStatus *int32 `json:"AcwCookieStatus,omitempty" xml:"AcwCookieStatus,omitempty"`
-	// The status of the secure attribute of the tracking cookie.
+	// The status of the secure attribute for the tracking cookie.
 	//
-	// 	- **0**: disabled. This is the default value.
+	// - **0**: Disabled.
 	//
-	// 	- **1**: enabled.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwSecureStatus *int32 `json:"AcwSecureStatus,omitempty" xml:"AcwSecureStatus,omitempty"`
-	// The status of the secure attribute of the slider CAPTCHA cookie.
+	// The status of the secure attribute for the slider cookie.
 	//
-	// 	- **0**: disabled. This is the default value.
+	// - **0**: Disabled.
 	//
-	// 	- **1**: enabled.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwV3SecureStatus *int32 `json:"AcwV3SecureStatus,omitempty" xml:"AcwV3SecureStatus,omitempty"`
-	// The custom header fields that are used to identify the originating IP addresses of clients. If the value of XffStatus is 1 and CustomHeaders is left empty, the first IP addresses in the XFF header fields are used as the originating IP addresses of clients.
+	// The custom XFF headers used to obtain the originating IP address of the client. If XFF is set to 1 and this field is empty, the first IP address in the XFF header is used as the originating IP address of the client.
 	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
-	// The description of the protected object.
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The description of the protected object. Different key-value pairs in a map indicate different properties of the protected object.
+	// The detailed description of the protected object. Different key-value pairs in the map represent different attributes of the protected object.
+	//
+	// example:
+	//
+	// {"domain":"eou.eleme.cn","uri":"/"}
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The creation time of the protected object. Unit: seconds.
+	// The time when the protected object was created. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1652149203187
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The most recent modification time of the protected object. Unit: seconds.
+	// The time when the protected object was last modified. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1665633032000
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The Alibaba Cloud account to which the protected object belongs. You can specify this parameter to query protected objects that belong to a specific Alibaba Cloud account. Exact match is supported.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The instance ID of the WAF instance.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-k*****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The Alibaba Cloud account to which the protected object asset belongs in a multi-account management feature scenario.
 	//
 	// example:
 	//
 	// 135*********46
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The protection pattern.
+	// The protection mode of the protected object.
 	//
 	// example:
 	//
@@ -160,13 +169,13 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	//
 	// alb-rencs***
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The name of the protected object group to which the protected object belongs.
+	// The name of the protection group to which the protected object is added.
 	//
 	// example:
 	//
 	// test
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -178,9 +187,21 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	//
 	// custom
 	ResourceOrigin *string `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
-	// The response header.
+	// The status of the protected object. Valid values:
+	//
+	// - **initializing**: Default protection is being initialized.
+	//
+	// - **active**: Running normally.
+	//
+	// - **init_failed**: Default protection initialization failed.
+	//
+	// example:
+	//
+	// active
+	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// The response header parameters.
 	ResponseHeaders []*DescribeDefenseResourcesResponseBodyResourcesResponseHeaders `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
-	// Indicates whether the X-Forwarded-For (XFF) header is used.
+	// Indicates whether XFF proxy is enabled for the protected object.
 	//
 	// example:
 	//
@@ -258,6 +279,10 @@ func (s *DescribeDefenseResourcesResponseBodyResources) GetResourceManagerResour
 
 func (s *DescribeDefenseResourcesResponseBodyResources) GetResourceOrigin() *string {
 	return s.ResourceOrigin
+}
+
+func (s *DescribeDefenseResourcesResponseBodyResources) GetResourceStatus() *string {
+	return s.ResourceStatus
 }
 
 func (s *DescribeDefenseResourcesResponseBodyResources) GetResponseHeaders() []*DescribeDefenseResourcesResponseBodyResourcesResponseHeaders {
@@ -348,6 +373,11 @@ func (s *DescribeDefenseResourcesResponseBodyResources) SetResourceOrigin(v stri
 	return s
 }
 
+func (s *DescribeDefenseResourcesResponseBodyResources) SetResourceStatus(v string) *DescribeDefenseResourcesResponseBodyResources {
+	s.ResourceStatus = &v
+	return s
+}
+
 func (s *DescribeDefenseResourcesResponseBodyResources) SetResponseHeaders(v []*DescribeDefenseResourcesResponseBodyResourcesResponseHeaders) *DescribeDefenseResourcesResponseBodyResources {
 	s.ResponseHeaders = v
 	return s
@@ -372,13 +402,13 @@ func (s *DescribeDefenseResourcesResponseBodyResources) Validate() error {
 }
 
 type DescribeDefenseResourcesResponseBodyResourcesResponseHeaders struct {
-	// Specifies the key for a custom response header.
+	// The key of the custom response header.
 	//
 	// example:
 	//
 	// Header-Key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Specifies the value for a custom response header.
+	// The value of the custom response header.
 	//
 	// example:
 	//

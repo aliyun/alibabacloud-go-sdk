@@ -26,34 +26,66 @@ type iModifyUserLogFieldConfigRequest interface {
 }
 
 type ModifyUserLogFieldConfigRequest struct {
+	// The delivery type. Valid value:
+	//
+	// - **sls**: Simple Log Service.
+	//
 	// example:
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	// The extended configuration for log delivery, in JSON format.
+	//
+	// > For more information, see the description of the **ExtendConfig*	- parameter.
+	//
 	// example:
 	//
 	// {\\"request_header\\":\\"App-Id,channelCode\\"}
 	ExtendConfig *string `json:"ExtendConfig,omitempty" xml:"ExtendConfig,omitempty"`
+	// The list of log fields to deliver. Use the \\`a,b,c,...\\` format.
+	//
+	// > - You must include all required log fields. Call the [DescribeCommonLogFields](~~DescribeCommonLogFields~~) operation to view the log fields that WAF supports.
+	//
+	// >
+	//
+	// > - If the log fields include **request_header**, use the **ExtendConfig*	- parameter to specify the request headers to deliver.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// account,acl_action,acl_rule_id,acl_rule_type,acl_test,antiscan_action,antiscan_rule_id,antiscan_rule_type,antiscan_test,body_bytes_sent,bypass_matched_ids
 	FieldList *string `json:"FieldList,omitempty" xml:"FieldList,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to view the ID of your WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v2_public_cn-fou****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The log delivery strategy, in JSON array format. You can specify multiple strategies.
+	//
+	// > For more information, see the description of the **LogDeliveryStrategy*	- parameter.
+	//
 	// example:
 	//
 	// [{\\"logType\\":\\"blockLog\\",\\"rate\\":100},{\\"logType\\":\\"normalRequestLog\\",\\"rate\\":100},{\\"logType\\":\\"checkLog\\",\\"rate\\":100}]
 	LogDeliveryStrategy *string `json:"LogDeliveryStrategy,omitempty" xml:"LogDeliveryStrategy,omitempty"`
+	// The region in which the WAF instance resides. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q

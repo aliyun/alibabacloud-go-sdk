@@ -18,9 +18,9 @@ type iDescribeApisecEventDomainStatisticResponseBody interface {
 }
 
 type DescribeApisecEventDomainStatisticResponseBody struct {
-	// The response parameters.
+	// The returned data.
 	Data []*DescribeApisecEventDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -95,19 +95,19 @@ type DescribeApisecEventDomainStatisticResponseBodyData struct {
 	//
 	// a.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The number of high-risk security events.
+	// The number of high-risk events.
 	//
 	// example:
 	//
 	// 10
 	High *int64 `json:"High,omitempty" xml:"High,omitempty"`
-	// The number of low-risk security events.
+	// The number of low-risk events.
 	//
 	// example:
 	//
 	// 2
 	Low *int64 `json:"Low,omitempty" xml:"Low,omitempty"`
-	// The number of medium-risk security events.
+	// The number of medium-risk events.
 	//
 	// example:
 	//

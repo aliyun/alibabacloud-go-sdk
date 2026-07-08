@@ -30,15 +30,15 @@ type iDescribeApisecMatchedHostsRequest interface {
 type DescribeApisecMatchedHostsRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
 	//
 	// example:
 	//
 	// 433
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Instance ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -52,23 +52,23 @@ type DescribeApisecMatchedHostsRequest struct {
 	//
 	// bc.aliyun.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number to return in a paging query. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries per page in a paging query. Default value: **10**, which indicates 10 entries per page.
 	//
 	// example:
 	//
 	// 8
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -82,11 +82,11 @@ type DescribeApisecMatchedHostsRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The detection type. Valid values:
 	//
-	// 	- **api**: API-related domain names
+	// - **api**: the domain name list of API assets.
 	//
-	// 	- **abnormal**: risk-related domain names
+	// - **abnormal**: the domain name list of risks.
 	//
-	// 	- **event**: security event-related domain names
+	// - **event**: the domain name list of security events.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDescribeUserSlsLogRegionsResponseBody interface {
 }
 
 type DescribeUserSlsLogRegionsResponseBody struct {
-	// The region IDs.
+	// The list of log storage region IDs.
 	LogRegions []*string `json:"LogRegions,omitempty" xml:"LogRegions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 9D11AC3A-A10C-56E7-A342-E87EC892****
+	// 9D11AC3A-A10C-56E7-A342-E87EC892BAE2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

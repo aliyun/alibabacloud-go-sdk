@@ -22,7 +22,7 @@ type DescribeDefenseResourceResponseBody struct {
 	//
 	// 439AADF2-368C-5E98-B14E-3086****0573
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The protected object.
+	// The information about the protected object.
 	Resource *DescribeDefenseResourceResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 }
 
@@ -62,47 +62,47 @@ func (s *DescribeDefenseResourceResponseBody) Validate() error {
 }
 
 type DescribeDefenseResourceResponseBodyResource struct {
-	// The status of the tracking cookie.
+	// The status of the tracking cookie. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: disabled.
 	//
-	// 	- **1**: enabled.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwCookieStatus *int32 `json:"AcwCookieStatus,omitempty" xml:"AcwCookieStatus,omitempty"`
-	// The status of the secure attribute of the tracking cookie.
+	// The status of the secure attribute of the tracking cookie. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: disabled.
 	//
-	// 	- **1**: enabled.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwSecureStatus *int32 `json:"AcwSecureStatus,omitempty" xml:"AcwSecureStatus,omitempty"`
-	// The status of the secure attribute of the slider CAPTCHA cookie.
+	// The status of the secure attribute of the slider cookie. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: disabled.
 	//
-	// 	- **1**: enabled.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwV3SecureStatus *int32 `json:"AcwV3SecureStatus,omitempty" xml:"AcwV3SecureStatus,omitempty"`
-	// The custom header fields.
+	// The list of specified header fields.
 	//
-	// >  If the value of XffStatus is 1, the first IP address in the specified header field is used as the originating IP address of the client to prevent X-Forwarded-For (XFF) forgery. If you specify multiple header fields, WAF reads the values of the header fields in sequence until the originating IP address is obtained. If the originating IP address cannot be obtained, the first IP address in the XFF header field is used as the originating IP address of the client.
+	// > When XffStatus is set to 1, the first IP address in the specified header field is used as the client source IP address to prevent XFF forgery. If multiple header fields are specified, they are tried in order to obtain the source IP address. If the source IP address cannot be obtained from the first header field, the second header field is tried, and so on. If the source IP address cannot be obtained from any of the specified header fields, the first IP address in X-Forwarded-For is used. When XffStatus is set to 1, it indicates that the source IP address is obtained from the first header field.
 	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
-	// The description of the protected object.
+	// The description.
 	//
 	// example:
 	//
 	// This is Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The details of the protected object. Different key-value pairs indicate different attributes of the protected object.
+	// The detailed description of the protected object. Different key-value pairs in the Map represent different attributes of the protected object.
 	//
 	// example:
 	//
@@ -125,15 +125,20 @@ type DescribeDefenseResourceResponseBodyResource struct {
 	// example:
 	//
 	// 1691720010000
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The user ID (UID) of the Alibaba Cloud account to which the protected object belongs.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-wwo****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The UID of the owner of the protected object.
 	//
 	// example:
 	//
 	// 170457******9107
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The pattern used for the protected object.
+	// The protection form of the protected object.
 	//
 	// example:
 	//
@@ -151,7 +156,7 @@ type DescribeDefenseResourceResponseBodyResource struct {
 	//
 	// alb-rencs***
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The name of the protected object group to which the protected object belongs.
+	// The name of the protected object group to which the protected object is added.
 	//
 	// example:
 	//
@@ -165,21 +170,33 @@ type DescribeDefenseResourceResponseBodyResource struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The origin of the protected object. Valid values:
 	//
-	// 	- **custom**
+	// - **custom**: the protected object created from Access Management.
 	//
-	// 	- **access**
+	// - **access**: the protected object created by the user.
 	//
 	// example:
 	//
 	// custom
 	ResourceOrigin *string `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
-	// The response header.
+	// The status of the protected object. Valid values:
+	//
+	// - **initializing**: default protection is being initialized.
+	//
+	// - **active**: running normally.
+	//
+	// - **init_failed**: default protection initialization failed.
+	//
+	// example:
+	//
+	// active
+	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// The response header parameters.
 	ResponseHeaders []*DescribeDefenseResourceResponseBodyResourceResponseHeaders `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
-	// Indicates whether a Layer 7 proxy is deployed in front of WAF, such as Anti-DDoS Proxy and Alibaba Cloud CDN. Valid values:
+	// Indicates whether a Layer 7 proxy (Anti-DDoS/CDN, etc.) is deployed in front of WAF. Valid values:
 	//
-	// 	- **0**: No Layer 7 proxy is deployed.
+	// - **0**: not enabled.
 	//
-	// 	- **1**: A Layer 7 proxy is deployed.
+	// - **1**: enabled.
 	//
 	// example:
 	//
@@ -257,6 +274,10 @@ func (s *DescribeDefenseResourceResponseBodyResource) GetResourceManagerResource
 
 func (s *DescribeDefenseResourceResponseBodyResource) GetResourceOrigin() *string {
 	return s.ResourceOrigin
+}
+
+func (s *DescribeDefenseResourceResponseBodyResource) GetResourceStatus() *string {
+	return s.ResourceStatus
 }
 
 func (s *DescribeDefenseResourceResponseBodyResource) GetResponseHeaders() []*DescribeDefenseResourceResponseBodyResourceResponseHeaders {
@@ -347,6 +368,11 @@ func (s *DescribeDefenseResourceResponseBodyResource) SetResourceOrigin(v string
 	return s
 }
 
+func (s *DescribeDefenseResourceResponseBodyResource) SetResourceStatus(v string) *DescribeDefenseResourceResponseBodyResource {
+	s.ResourceStatus = &v
+	return s
+}
+
 func (s *DescribeDefenseResourceResponseBodyResource) SetResponseHeaders(v []*DescribeDefenseResourceResponseBodyResourceResponseHeaders) *DescribeDefenseResourceResponseBodyResource {
 	s.ResponseHeaders = v
 	return s
@@ -371,13 +397,13 @@ func (s *DescribeDefenseResourceResponseBodyResource) Validate() error {
 }
 
 type DescribeDefenseResourceResponseBodyResourceResponseHeaders struct {
-	// Specifies the key for a custom response header.
+	// The key of the specified custom response header.
 	//
 	// example:
 	//
 	// Header-Key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Specifies the value for a custom response header.
+	// The value of the specified custom response header.
 	//
 	// example:
 	//

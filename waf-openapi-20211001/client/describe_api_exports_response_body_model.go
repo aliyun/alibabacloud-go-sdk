@@ -18,7 +18,7 @@ type iDescribeApiExportsResponseBody interface {
 }
 
 type DescribeApiExportsResponseBody struct {
-	// The returned data export tasks.
+	// The list of export tasks.
 	ApiExports []*DescribeApiExportsResponseBodyApiExports `json:"ApiExports,omitempty" xml:"ApiExports,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,13 +26,7 @@ type DescribeApiExportsResponseBody struct {
 	//
 	// D9532525-E885-54E7-A178-D5554D563AFB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the data export task. Valid values:
-	//
-	// 	- **expired**: The file is expired.
-	//
-	// 	- **exporting**: Data is being exported.
-	//
-	// 	- **completed**: Data is exported.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -89,19 +83,19 @@ func (s *DescribeApiExportsResponseBody) Validate() error {
 }
 
 type DescribeApiExportsResponseBodyApiExports struct {
-	// The time when the data export task was created. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The time when the export task was created. The value is a UNIX timestamp (UTC). Unit: seconds.
 	//
 	// example:
 	//
 	// 1725604852
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The name of the file.
+	// The file name.
 	//
 	// example:
 	//
 	// file_16109541456445334c0f01d9a7444e0e908***.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The download URL of the exported file.
+	// The download URL of the file.
 	//
 	// example:
 	//
@@ -113,25 +107,25 @@ type DescribeApiExportsResponseBodyApiExports struct {
 	//
 	// CSV
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The status of the data export task. Valid values:
+	// The status of the export task. Valid values:
 	//
-	// 	- **expired**: The file is expired.
+	// - **expired**: The file has expired.
 	//
-	// 	- **exporting**: Data is being exported.
+	// - **exporting**: The export is in progress.
 	//
-	// 	- **completed**: Data is exported.
+	// - **completed**: The export is complete.
 	//
 	// example:
 	//
 	// completed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the data export task. Valid values:
+	// The type of the export task. Valid values:
 	//
-	// 	- **apisec_api**: API tasks
+	// - **apisec_api**: API asset task.
 	//
-	// 	- **apisec_abnormal**: API risk tasks
+	// - **apisec_abnormal**: API risk task.
 	//
-	// 	- **apisec_event**: API security event tasks
+	// - **apisec_event**: API security event task.
 	//
 	// example:
 	//

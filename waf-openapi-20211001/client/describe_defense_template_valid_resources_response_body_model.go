@@ -18,11 +18,16 @@ type iDescribeDefenseTemplateValidResourcesResponseBody interface {
 }
 
 type DescribeDefenseTemplateValidResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C54DD36B-6380-57E5-89BA-2642757C4DB8
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The names of the protected objects that are valid for the protection template.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The total number of protected objects that match the query criteria.
+	//
 	// example:
 	//
 	// 34

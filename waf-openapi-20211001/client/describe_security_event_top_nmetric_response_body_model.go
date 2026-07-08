@@ -24,9 +24,9 @@ type DescribeSecurityEventTopNMetricResponseBody struct {
 	//
 	// D827FCFE-90A7-4330-9326-*****B4C7726
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The top N data entries returned.
+	// The array of top N statistics.
 	SecurityEventTopNValues []*DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues `json:"SecurityEventTopNValues,omitempty" xml:"SecurityEventTopNValues,omitempty" type:"Repeated"`
-	// The metadata of the data entries returned.
+	// The metadata of the returned data.
 	TopNMetaData *DescribeSecurityEventTopNMetricResponseBodyTopNMetaData `json:"TopNMetaData,omitempty" xml:"TopNMetaData,omitempty" type:"Struct"`
 }
 
@@ -84,19 +84,19 @@ func (s *DescribeSecurityEventTopNMetricResponseBody) Validate() error {
 }
 
 type DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues struct {
-	// The additional information, such as the protection module for a protection rule whose ID is returned.
+	// The additional information, such as the protection module to which a rule ID belongs.
 	//
 	// example:
 	//
 	// waf_base
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The field value, which varies based on the metric.
+	// The value of a specific field. The meaning varies depending on the queried Metric.
 	//
 	// example:
 	//
 	// 10000
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The count for the data entry.
+	// The statistical count used for top N sorting.
 	//
 	// example:
 	//
@@ -144,9 +144,9 @@ func (s *DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues) Val
 }
 
 type DescribeSecurityEventTopNMetricResponseBodyTopNMetaData struct {
-	// The time range that is used for the query.
+	// The time range used for the query.
 	DateRange *DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
-	// The unit of the statistics returned. It is fixed as requests.
+	// The unit of the returned statistics.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ func (s *DescribeSecurityEventTopNMetricResponseBodyTopNMetaData) Validate() err
 }
 
 type DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange struct {
-	// The end of the time range to query. The value is a Unix timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
+	// The end time used for querying data, expressed as a UNIX timestamp. Unit: seconds. This value is the same as the EndDate in the request parameters.
 	//
 	// example:
 	//
 	// 1713888600
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The beginning of the time range to query. The value is a Unix timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
+	// The start time used for querying data, expressed as a UNIX timestamp. Unit: seconds. This value is the same as the StartDate in the request parameters.
 	//
 	// example:
 	//

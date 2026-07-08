@@ -18,7 +18,7 @@ type ModifyTemplateResourcesResponseBody struct {
 	//
 	// example:
 	//
-	// CF708F2F-FFB0-54D4-B1E0-B84A7CEBFB60
+	// CF708F2F-FFB0-54D4-B1E0-B84A7CEB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

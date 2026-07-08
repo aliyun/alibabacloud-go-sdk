@@ -28,36 +28,62 @@ type iDescribePostpayBillsRequest interface {
 }
 
 type DescribePostpayBillsRequest struct {
+	// The end time. The value is a UNIX timestamp (UTC). Unit: seconds.
+	//
 	// example:
 	//
 	// 1779195599
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Instance ID of the WAF instance.
+	//
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf-cn-zz11sr5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of entries per page for a paged query.
+	//
 	// example:
 	//
 	// 24
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next page. If a next page exists, this field has a return value.
+	//
+	// > If this parameter has a return value, a next page exists. You can use the returned **NextToken*	- as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The epoch type for billing information. Valid values:
+	//
+	// - **hour**: Billing information is calculated on an hourly basis.
+	//
 	// example:
 	//
 	// hour
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	// The region where the WAF instance is deployed. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The start time. The value is a UNIX timestamp (UTC). Unit: seconds.
+	//
 	// example:
 	//
 	// 1779120000

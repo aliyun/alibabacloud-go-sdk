@@ -18,15 +18,15 @@ type iDescribeDomainsResponseBody interface {
 }
 
 type DescribeDomainsResponseBody struct {
-	// The domain names that are added to WAF in CNAME record mode.
+	// The list of domain names.
 	Domains []*DescribeDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABF68BB3-2C48-5FA4-9750-D5FE55700E36
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of domain name configurations returned.
 	//
 	// example:
 	//
@@ -83,24 +83,29 @@ func (s *DescribeDomainsResponseBody) Validate() error {
 }
 
 type DescribeDomainsResponseBodyDomains struct {
-	// The back-to-origin settings.
+	// The back-to-origin configuration.
 	Backeds *DescribeDomainsResponseBodyDomainsBackeds `json:"Backeds,omitempty" xml:"Backeds,omitempty" type:"Struct"`
-	// The CNAME assigned by WAF to the domain name.
+	// The canonical name (CNAME) that is assigned to the domain name by WAF.
 	//
 	// example:
 	//
 	// xxxxxcvdaf.****.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The domain name that is added to WAF in CNAME record mode.
+	// The domain name that is added to WAF.
 	//
 	// example:
 	//
 	// www.aliyundoc.com
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the domain name.
+	//
+	// example:
+	//
+	// www.aliyundoc.com-waf
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The configurations of the listeners.
+	// The listener configuration.
 	ListenPorts *DescribeDomainsResponseBodyDomainsListenPorts `json:"ListenPorts,omitempty" xml:"ListenPorts,omitempty" type:"Struct"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -108,15 +113,15 @@ type DescribeDomainsResponseBodyDomains struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The status of the domain name. Valid values:
 	//
-	// 	- **1:*	- The domain name is in a normal state.
+	// - **1**: The domain name is in a normal state.
 	//
-	// 	- **2:*	- The domain name is being created.
+	// - **2**: The domain name is being created.
 	//
-	// 	- **3:*	- The domain name is being modified.
+	// - **3**: The domain name is being modified.
 	//
-	// 	- **4:*	- The domain name is being released.
+	// - **4**: The domain name is being released.
 	//
-	// 	- **5:*	- WAF no longer forwards traffic that is sent to the domain name.
+	// - **5**: Forwarding is disabled for the domain name.
 	//
 	// example:
 	//
@@ -210,9 +215,9 @@ func (s *DescribeDomainsResponseBodyDomains) Validate() error {
 }
 
 type DescribeDomainsResponseBodyDomainsBackeds struct {
-	// The HTTP addresses of the origin server.
+	// The list of origin addresses for the HTTP protocol.
 	Http []*DescribeDomainsResponseBodyDomainsBackedsHttp `json:"Http,omitempty" xml:"Http,omitempty" type:"Repeated"`
-	// The HTTPS addresses of the origin server.
+	// The list of origin addresses for the HTTPS protocol.
 	Https []*DescribeDomainsResponseBodyDomainsBackedsHttps `json:"Https,omitempty" xml:"Https,omitempty" type:"Repeated"`
 }
 
@@ -265,7 +270,7 @@ func (s *DescribeDomainsResponseBodyDomainsBackeds) Validate() error {
 }
 
 type DescribeDomainsResponseBodyDomainsBackedsHttp struct {
-	// The HTTP address of the origin server.
+	// The origin address for the HTTP protocol.
 	//
 	// example:
 	//
@@ -295,7 +300,7 @@ func (s *DescribeDomainsResponseBodyDomainsBackedsHttp) Validate() error {
 }
 
 type DescribeDomainsResponseBodyDomainsBackedsHttps struct {
-	// The HTTPS address of the origin server.
+	// The origin address for the HTTPS protocol.
 	//
 	// example:
 	//
@@ -325,9 +330,9 @@ func (s *DescribeDomainsResponseBodyDomainsBackedsHttps) Validate() error {
 }
 
 type DescribeDomainsResponseBodyDomainsListenPorts struct {
-	// The HTTP listener ports.
+	// The list of listening ports for the HTTP protocol.
 	Http []*int64 `json:"Http,omitempty" xml:"Http,omitempty" type:"Repeated"`
-	// The HTTPS listener ports.
+	// The list of listening ports for the HTTPS protocol.
 	Https []*int64 `json:"Https,omitempty" xml:"Https,omitempty" type:"Repeated"`
 }
 

@@ -28,27 +28,7 @@ type iDescribeDefenseTemplateValidGroupsRequest interface {
 }
 
 type DescribeDefenseTemplateValidGroupsRequest struct {
-	// The scenario in which the protection template is used.
-	//
-	// 	- **waf_group**: basic protection.
-	//
-	// 	- **antiscan**: scan protection.
-	//
-	// 	- **ip_blacklist**: IP address blacklist.
-	//
-	// 	- **custom_acl**: custom rule.
-	//
-	// 	- **whitelist**: whitelist.
-	//
-	// 	- **region_block**: region blacklist.
-	//
-	// 	- **custom_response**: custom response.
-	//
-	// 	- **cc**: HTTP flood protection.
-	//
-	// 	- **tamperproof**: website tamper-proofing.
-	//
-	// 	- **dlp**: data leakage prevention.
+	// The protection scenario. For more information, see the valid values for the **DefenseScene*	- parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) when **DefenseType*	- is set to **template**.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +36,7 @@ type DescribeDefenseTemplateValidGroupsRequest struct {
 	//
 	// region_block
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	// The name of the protected object group that you want to query.
+	// The name of the protected object group. Use this parameter to filter results by group name.
 	//
 	// example:
 	//
@@ -64,7 +44,7 @@ type DescribeDefenseTemplateValidGroupsRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +52,7 @@ type DescribeDefenseTemplateValidGroupsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-nwy****pf0e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
+	// The number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
@@ -84,11 +64,11 @@ type DescribeDefenseTemplateValidGroupsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

@@ -20,12 +20,18 @@ type iDescribeVerifyContentResponseBody interface {
 }
 
 type DescribeVerifyContentResponseBody struct {
-	DnsContent  *DescribeVerifyContentResponseBodyDnsContent  `json:"DnsContent,omitempty" xml:"DnsContent,omitempty" type:"Struct"`
+	// The DNS-based verification content, including the TXT record details.
+	DnsContent *DescribeVerifyContentResponseBodyDnsContent `json:"DnsContent,omitempty" xml:"DnsContent,omitempty" type:"Struct"`
+	// The file-based verification content, including the file name, path, and download URL.
 	FileContent *DescribeVerifyContentResponseBodyFileContent `json:"FileContent,omitempty" xml:"FileContent,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the domain ownership verification is successful.
+	//
 	// example:
 	//
 	// true
@@ -91,14 +97,20 @@ func (s *DescribeVerifyContentResponseBody) Validate() error {
 }
 
 type DescribeVerifyContentResponseBodyDnsContent struct {
+	// The host record of the DNS TXT record used for domain ownership verification.
+	//
 	// example:
 	//
 	// verification
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
+	// The type of the DNS record used for verification.
+	//
 	// example:
 	//
 	// TXT
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of the DNS TXT record used for verification.
+	//
 	// example:
 	//
 	// verify_0a246ca99d504ba087472d***
@@ -145,22 +157,32 @@ func (s *DescribeVerifyContentResponseBodyDnsContent) Validate() error {
 }
 
 type DescribeVerifyContentResponseBodyFileContent struct {
+	// The download URL of the verification file.
+	//
 	// example:
 	//
 	// http://oss.xxx.com//xxx.html
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The name of the verification file.
+	//
 	// example:
 	//
 	// xxx.html
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The root domain of the domain name to be verified.
+	//
 	// example:
 	//
 	// aliyundemo.com
 	TopDomain *string `json:"TopDomain,omitempty" xml:"TopDomain,omitempty"`
+	// The content of the verification file.
+	//
 	// example:
 	//
 	// verify_0a246ca99d504ba08***
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The URL that is used to access the verification file.
+	//
 	// example:
 	//
 	// http://xxx.xxx.com//xxx.html

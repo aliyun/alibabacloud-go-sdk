@@ -18,13 +18,13 @@ type iDescribeNetworkFlowTimeSeriesMetricResponseBody interface {
 }
 
 type DescribeNetworkFlowTimeSeriesMetricResponseBody struct {
-	// The array of time-series data. Supports returning data with multiple values.
+	// The time series data. Multiple data series can be returned.
 	NetworkFlowTimeSeries []*DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries `json:"NetworkFlowTimeSeries,omitempty" xml:"NetworkFlowTimeSeries,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// D827FCFE-90A7-4330-9326-D33C8B4C7726
+	// D827FCFE-90A7-4330-9326-D33C8B4*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The metadata of the returned data.
 	TimeSeriesMetaData *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData `json:"TimeSeriesMetaData,omitempty" xml:"TimeSeriesMetaData,omitempty" type:"Struct"`
@@ -84,15 +84,15 @@ func (s *DescribeNetworkFlowTimeSeriesMetricResponseBody) Validate() error {
 }
 
 type DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries struct {
-	// The metric name, consistent with the Metric request parameter.
+	// The metric name. This value is the same as the Metric request parameter.
 	//
 	// example:
 	//
 	// total_requests
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The array of timestamps (seconds) marking the start of each time interval.
+	// The timestamps. Each value represents the start of a time interval.
 	Timestamps []*string `json:"Timestamps,omitempty" xml:"Timestamps,omitempty" type:"Repeated"`
-	// The array of counts, each representing the count for the corresponding time interval.
+	// The metric values. Each value represents the count within the corresponding time interval.
 	Values []*int64 `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -136,15 +136,15 @@ func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries) V
 }
 
 type DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData struct {
-	// The time granularity. For example, 15m indicates that each data point is counted every 15 minutes. For details, see the **Time granularity of time series data points*	- section below.
+	// The time granularity of each data point in the returned time series. For example, "15m" indicates that each data point represents statistics for a 15-minute interval. For more information about the time granularity, see the **Time granularity of data points*	- section.
 	//
 	// example:
 	//
 	// 1m
 	AggregateInterval *string `json:"AggregateInterval,omitempty" xml:"AggregateInterval,omitempty"`
-	// The query time range.
+	// The time range that was queried.
 	DateRange *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
-	// The unit of the returned data. It is fixed as requests.
+	// The unit of the returned data. Default value: requests.
 	//
 	// example:
 	//
@@ -197,13 +197,13 @@ func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData) Vali
 }
 
 type DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange struct {
-	// The end time of the query range (Unix timestamp, seconds). Same as the EndDate request parameter.
+	// The end of the time range that was queried. This value is a UNIX timestamp. Unit: seconds. This value is the same as the EndDate request parameter.
 	//
 	// example:
 	//
 	// 1713888600
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The start time of the query range (Unix timestamp, seconds). Same as the StartDate request parameter.
+	// The start of the time range that was queried. This value is a UNIX timestamp. Unit: seconds. This value is the same as the StartDate request parameter.
 	//
 	// example:
 	//

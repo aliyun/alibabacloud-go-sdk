@@ -20,9 +20,9 @@ type iDescribeHybridCloudProcessMonitorRequest interface {
 }
 
 type DescribeHybridCloudProcessMonitorRequest struct {
-	// The ID of the Web Application Firewall (WAF) instance that you want to query.
+	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DescribeHybridCloudProcessMonitorRequest struct {
 	//
 	// waf-cn-7mz****hw0u
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the SDK.
+	// The ID of the hybrid cloud cluster node.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type DescribeHybridCloudProcessMonitorRequest struct {
 	//
 	// 2fdb63fea03b173bc9e65c24****d7d5
 	Mid *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

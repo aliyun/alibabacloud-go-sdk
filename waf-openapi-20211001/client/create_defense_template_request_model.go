@@ -36,24 +36,31 @@ type iCreateDefenseTemplateRequest interface {
 }
 
 type CreateDefenseTemplateRequest struct {
-	// The scenario in which you want to use the protection rule template. For more information, see the description of the **DefenseScene*	- parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	// The protection scenario. For more information, see the **DefenseScene*	- parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_group
-	DefenseScene    *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	DefenseSubScene *string `json:"DefenseSubScene,omitempty" xml:"DefenseSubScene,omitempty"`
-	// The description of the protection rule template.
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	// The sub-scenario of the protection template. Valid values:
+	//
+	// - **bot_custom_acl**: a protection template for advanced custom rules for Bot management.
 	//
 	// example:
 	//
-	// Test
+	// bot_custom_acl
+	DefenseSubScene *string `json:"DefenseSubScene,omitempty" xml:"DefenseSubScene,omitempty"`
+	// The description of the protection template.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -61,23 +68,25 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// - **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The name of the protection rule template.
+	// The name of the protection template. The name must be 1 to 255 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+	//
+	// > Template names must be unique within the same protection scenario (**DefenseScene**).
 	//
 	// This parameter is required.
 	//
@@ -85,7 +94,7 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// test221
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template.
+	// The origin of the protection template. The value must be **custom**, which indicates a user-defined template.
 	//
 	// This parameter is required.
 	//
@@ -93,11 +102,11 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// custom
 	TemplateOrigin *string `json:"TemplateOrigin,omitempty" xml:"TemplateOrigin,omitempty"`
-	// The status of the protection rule template. Valid values:
+	// The status of the protection template. Valid values:
 	//
-	// 	- **0:*	- disabled.
+	// - **0**: Disabled.
 	//
-	// 	- **1:*	- enabled.
+	// - **1**: Enabled.
 	//
 	// This parameter is required.
 	//
@@ -105,20 +114,26 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// 1
 	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
-	// The type of the protection rule template. Valid values:
+	// The type of the protection template. Valid values:
 	//
-	// 	- **user_default:*	- default template.
+	// - **user_default**: a default template created by the user.
 	//
-	// 	- **user_custom:*	- custom template.
+	// - **user_custom**: a custom template created by the user.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user_default
-	TemplateType         *string   `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The protected object groups to unbind from the default protection template. Specify the value in the [**"group1","group2",...**] format.
+	//
+	// > This parameter takes effect only when you create a **default template*	- (**TemplateType*	- is set to **user_default**).
 	UnbindResourceGroups []*string `json:"UnbindResourceGroups,omitempty" xml:"UnbindResourceGroups,omitempty" type:"Repeated"`
-	UnbindResources      []*string `json:"UnbindResources,omitempty" xml:"UnbindResources,omitempty" type:"Repeated"`
+	// The protected objects to unbind from the default protection template. Specify the value in the [**"XX1","XX2",...**] format.
+	//
+	// > This parameter takes effect only when you create a **default template*	- (**TemplateType*	- is set to **user_default**).
+	UnbindResources []*string `json:"UnbindResources,omitempty" xml:"UnbindResources,omitempty" type:"Repeated"`
 }
 
 func (s CreateDefenseTemplateRequest) String() string {

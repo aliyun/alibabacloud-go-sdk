@@ -18,15 +18,15 @@ type iDescribeApisecAbnormalDomainStatisticResponseBody interface {
 }
 
 type DescribeApisecAbnormalDomainStatisticResponseBody struct {
-	// The response parameters.
+	// The data list.
 	Data []*DescribeApisecAbnormalDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 66A98669-CC6E-4F3E-80A6-3014***B11AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records returned.
 	//
 	// example:
 	//
@@ -95,19 +95,19 @@ type DescribeApisecAbnormalDomainStatisticResponseBodyData struct {
 	//
 	// ba.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The number of high-level risks.
+	// The number of high-risk vulnerabilities.
 	//
 	// example:
 	//
 	// 12
 	High *int64 `json:"High,omitempty" xml:"High,omitempty"`
-	// The number of low-level risks.
+	// The number of low-risk vulnerabilities.
 	//
 	// example:
 	//
 	// 4
 	Low *int64 `json:"Low,omitempty" xml:"Low,omitempty"`
-	// The number of medium-level risks.
+	// The number of medium-risk vulnerabilities.
 	//
 	// example:
 	//

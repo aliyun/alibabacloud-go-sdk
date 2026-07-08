@@ -16,13 +16,13 @@ type iDescribeRuleHitsTopRuleIdResponseBody interface {
 }
 
 type DescribeRuleHitsTopRuleIdResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F6334274-8870-5D2F-A1AD-D6EF885AC1ED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The array of the IDs of the top 10 rules that are matched by requests.
+	// The top 10 rule IDs by rule hits.
 	RuleHitsTopRuleId []*DescribeRuleHitsTopRuleIdResponseBodyRuleHitsTopRuleId `json:"RuleHitsTopRuleId,omitempty" xml:"RuleHitsTopRuleId,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,19 @@ func (s *DescribeRuleHitsTopRuleIdResponseBody) Validate() error {
 }
 
 type DescribeRuleHitsTopRuleIdResponseBodyRuleHitsTopRuleId struct {
-	// The number of requests that match the rule.
+	// The number of requests that hit the rule.
 	//
 	// example:
 	//
 	// 181174784
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The protected object.
+	// The protected object. This parameter is returned when the IsGroupResource request parameter is set to false.
 	//
 	// example:
 	//
 	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//

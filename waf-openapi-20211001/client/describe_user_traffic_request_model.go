@@ -26,32 +26,74 @@ type iDescribeUserTrafficRequest interface {
 }
 
 type DescribeUserTrafficRequest struct {
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 1665386280
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// Instance ID of the WAF instance.
+	//
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time interval. Unit: seconds.
+	//
 	// example:
 	//
 	// 3600
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The region where the WAF instance is deployed. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-ae*******i
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// example:
 	//
 	// 1665331200
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	// The type of real-time user traffic. Valid values:
+	//
+	// - bot: the number of bot management requests.
+	//
+	// - risk: the number of times risk identification is triggered.
+	//
+	// - custom_acl_captcha: the number of times the slider action of custom rules is triggered.
+	//
+	// - qps: the peak QPS.
+	//
+	// - apisec: the number of API security requests.
+	//
+	// - alb: the number of requests connected through ALB.
+	//
+	// - mse: the number of requests connected through MSE.
+	//
+	// - fc: the number of requests connected through Function Compute.
+	//
+	// - sae: the number of requests connected through Serverless App Engine.
+	//
+	// - apig: the number of requests connected through Cloud Native API Gateway.
+	//
+	// - nlb: the number of requests connected through NLB.
+	//
 	// example:
 	//
 	// qps

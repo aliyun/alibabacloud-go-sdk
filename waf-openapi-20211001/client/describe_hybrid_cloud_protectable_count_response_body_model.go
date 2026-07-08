@@ -16,13 +16,13 @@ type iDescribeHybridCloudProtectableCountResponseBody interface {
 }
 
 type DescribeHybridCloudProtectableCountResponseBody struct {
-	// The number of protection nodes that can be added to the hybrid cloud cluster.
+	// The number of protectable nodes that can be added to the cluster.
 	//
 	// example:
 	//
 	// 1
 	ProtectableCount *int32 `json:"ProtectableCount,omitempty" xml:"ProtectableCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
