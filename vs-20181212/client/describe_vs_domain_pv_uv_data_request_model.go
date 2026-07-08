@@ -20,17 +20,23 @@ type iDescribeVsDomainPvUvDataRequest interface {
 }
 
 type DescribeVsDomainPvUvDataRequest struct {
+	// Visual Edge Computing Service domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// End time in UTC format. For example: 2016-06-30T19:00:00Z
+	//
 	// example:
 	//
 	// 2021-11-24T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Start time in UTC format. For example: 2016-06-29T19:00:00Z
+	//
 	// example:
 	//
 	// 2021-10-14T23:00:00Z

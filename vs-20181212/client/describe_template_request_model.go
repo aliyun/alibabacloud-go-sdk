@@ -16,6 +16,8 @@ type iDescribeTemplateRequest interface {
 }
 
 type DescribeTemplateRequest struct {
+	// Template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

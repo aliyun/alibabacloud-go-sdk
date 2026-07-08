@@ -22,22 +22,28 @@ type iDisassociateRenderingProjectInstancesResponseBody interface {
 }
 
 type DisassociateRenderingProjectInstancesResponseBody struct {
+	// The number of cloud application service instances that failed to dissociate.
+	//
 	// example:
 	//
 	// 0
-	FailedInstanceCount *string                                                             `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
-	FailedInstances     []*DisassociateRenderingProjectInstancesResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
-	// Id of the request
+	FailedInstanceCount *string `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
+	// A list of instances that failed to dissociate.
+	FailedInstances []*DisassociateRenderingProjectInstancesResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
+	// The ID of the request.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of cloud application service instances that were successfully dissociated.
+	//
 	// example:
 	//
 	// 5
-	SuccessInstanceCount *string                                                              `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
-	SuccessInstances     []*DisassociateRenderingProjectInstancesResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
+	SuccessInstanceCount *string `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
+	// A list of instances that were successfully dissociated.
+	SuccessInstances []*DisassociateRenderingProjectInstancesResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
 func (s DisassociateRenderingProjectInstancesResponseBody) String() string {
@@ -116,7 +122,14 @@ func (s *DisassociateRenderingProjectInstancesResponseBody) Validate() error {
 }
 
 type DisassociateRenderingProjectInstancesResponseBodyFailedInstances struct {
+	// The reason for failure.
+	//
+	// example:
+	//
+	// 会话中
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A cloud application service instance ID.
+	//
 	// example:
 	//
 	// render-421cd2a1125947c19fcd5c7dd2c7d31e
@@ -154,10 +167,14 @@ func (s *DisassociateRenderingProjectInstancesResponseBodyFailedInstances) Valid
 }
 
 type DisassociateRenderingProjectInstancesResponseBodySuccessInstances struct {
+	// The result message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A cloud application service instance ID.
+	//
 	// example:
 	//
 	// render-e6cf423c787e4e43b460a788da254fe3

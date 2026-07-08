@@ -24,23 +24,34 @@ type iDescribeParentPlatformDevicesResponseBody interface {
 }
 
 type DescribeParentPlatformDevicesResponseBody struct {
+	// The list of devices.
 	Devices []*DescribeParentPlatformDevicesResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
 	PageCount *int64 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of devices.
+	//
 	// example:
 	//
 	// 1
@@ -123,19 +134,32 @@ func (s *DescribeParentPlatformDevicesResponseBody) Validate() error {
 }
 
 type DescribeParentPlatformDevicesResponseBodyDevices struct {
+	// The GB ID of the device.
+	//
 	// example:
 	//
 	// 310101*****7542007
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	// The ID of the space to which the device belongs.
+	//
 	// example:
 	//
 	// 3484*****8732174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The device ID.
+	//
 	// example:
 	//
 	// 3487*****323380-cn-qingdao
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the device.
+	//
+	// example:
+	//
+	// 测试设备1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parent device ID.
+	//
 	// example:
 	//
 	// 3614*****766212-cn-qingdao

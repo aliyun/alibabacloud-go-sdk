@@ -16,6 +16,8 @@ type iUnbindPurchasedDeviceRequest interface {
 }
 
 type UnbindPurchasedDeviceRequest struct {
+	// The ID of the device.
+	//
 	// This parameter is required.
 	//
 	// example:

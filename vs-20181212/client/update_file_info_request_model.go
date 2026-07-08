@@ -16,8 +16,16 @@ type iUpdateFileInfoRequest interface {
 }
 
 type UpdateFileInfoRequest struct {
+	// The file description.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 测试使用
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the file. Each file has a unique ID.
+	//
 	// This parameter is required.
 	//
 	// example:

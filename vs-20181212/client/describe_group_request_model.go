@@ -18,8 +18,16 @@ type iDescribeGroupRequest interface {
 }
 
 type DescribeGroupRequest struct {
+	// Space ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 337639*****224964-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Specifies whether to return the statistics of devices in the group. The default value is false.
+	//
 	// example:
 	//
 	// false

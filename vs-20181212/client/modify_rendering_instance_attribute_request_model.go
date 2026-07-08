@@ -16,12 +16,16 @@ type iModifyRenderingInstanceAttributeRequest interface {
 }
 
 type ModifyRenderingInstanceAttributeRequest struct {
+	// Password for the device.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Toehold2020
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// ID of the cloud application service instance.
+	//
 	// This parameter is required.
 	//
 	// example:

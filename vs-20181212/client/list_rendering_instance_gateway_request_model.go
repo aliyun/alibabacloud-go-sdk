@@ -24,24 +24,42 @@ type iListRenderingInstanceGatewayRequest interface {
 }
 
 type ListRenderingInstanceGatewayRequest struct {
+	// The time range for filtering. The time must be in ISO 8601 format and in UTC, such as \\`yyyy-MM-ddTHH:mm:ssZ\\`.
+	//
+	// example:
+	//
+	// 2025-05-20T12:23:02Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the gateway instance.
+	//
 	// example:
 	//
 	// render-xxx
 	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" xml:"GatewayInstanceId,omitempty"`
+	// The page number of the list to query.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page for a paged query.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the cloud application service instance.
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter specifies the time range filter. The time must be in ISO 8601 format and UTC time, such as yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2025-05-18T02:20:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListRenderingInstanceGatewayRequest) String() string {

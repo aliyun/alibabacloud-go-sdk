@@ -16,6 +16,8 @@ type iDescribeVsCertificateDetailRequest interface {
 }
 
 type DescribeVsCertificateDetailRequest struct {
+	// The certificate name.
+	//
 	// This parameter is required.
 	//
 	// example:

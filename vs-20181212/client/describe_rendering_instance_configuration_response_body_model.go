@@ -16,7 +16,10 @@ type iDescribeRenderingInstanceConfigurationResponseBody interface {
 }
 
 type DescribeRenderingInstanceConfigurationResponseBody struct {
+	// The configuration.
 	Configuration []*DescribeRenderingInstanceConfigurationResponseBodyConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
@@ -63,7 +66,28 @@ func (s *DescribeRenderingInstanceConfigurationResponseBody) Validate() error {
 }
 
 type DescribeRenderingInstanceConfigurationResponseBodyConfiguration struct {
+	// The list of properties for the module.
 	Attributes []*DescribeRenderingInstanceConfigurationResponseBodyConfigurationAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The name of the device simulation feature module. Valid values:
+	//
+	// 1. ctl: The control module.
+	//
+	// 2. prop: The property module.
+	//
+	// 3. location: The location module.
+	//
+	// 4. battery: The battery module.
+	//
+	// 5. network: The network module.
+	//
+	// 6. bluetooth: The Bluetooth module.
+	//
+	// 7. sim: The SIM card module.
+	//
+	// 8. display: The device module.
+	//
+	// 9. system: The basic module.
+	//
 	// example:
 	//
 	// location
@@ -110,10 +134,14 @@ func (s *DescribeRenderingInstanceConfigurationResponseBodyConfiguration) Valida
 }
 
 type DescribeRenderingInstanceConfigurationResponseBodyConfigurationAttributes struct {
+	// The name of the attribute.
+	//
 	// example:
 	//
 	// lon
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the attribute.
+	//
 	// example:
 	//
 	// 100

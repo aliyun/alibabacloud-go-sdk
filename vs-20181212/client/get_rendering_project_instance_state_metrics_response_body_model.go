@@ -16,12 +16,13 @@ type iGetRenderingProjectInstanceStateMetricsResponseBody interface {
 }
 
 type GetRenderingProjectInstanceStateMetricsResponseBody struct {
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId    *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of project instance state statistics
 	StateMetrics []*GetRenderingProjectInstanceStateMetricsResponseBodyStateMetrics `json:"StateMetrics,omitempty" xml:"StateMetrics,omitempty" type:"Repeated"`
 }
 
@@ -65,10 +66,14 @@ func (s *GetRenderingProjectInstanceStateMetricsResponseBody) Validate() error {
 }
 
 type GetRenderingProjectInstanceStateMetricsResponseBodyStateMetrics struct {
+	// Number of instances
+	//
 	// example:
 	//
 	// 10
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Project instance state
+	//
 	// example:
 	//
 	// Idle

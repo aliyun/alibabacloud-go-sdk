@@ -24,26 +24,38 @@ type iGetRenderingInstanceStreamingInfoResponseBody interface {
 }
 
 type GetRenderingInstanceStreamingInfoResponseBody struct {
+	// Token for this connection
+	//
 	// example:
 	//
 	// 792fy125-594c-4dde-ab35-9ff8hrf0a86f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// Domain name of the cloud application service instance streaming gateway
+	//
 	// example:
 	//
 	// 10.178.208.22
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// Hostname or IP address of the cloud application service instance stream
+	//
 	// example:
 	//
 	// 10.18.20.2
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Streaming connection port
+	//
 	// example:
 	//
 	// 10003
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Cloud application service instance ID
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

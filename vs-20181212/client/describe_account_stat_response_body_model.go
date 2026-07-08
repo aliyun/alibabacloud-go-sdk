@@ -24,28 +24,38 @@ type iDescribeAccountStatResponseBody interface {
 }
 
 type DescribeAccountStatResponseBody struct {
+	// The maximum number of device spaces.
+	//
 	// example:
 	//
 	// 100
 	GroupLimit *int64 `json:"GroupLimit,omitempty" xml:"GroupLimit,omitempty"`
+	// Number of device groups in the current region.
+	//
 	// example:
 	//
 	// 6
 	GroupNum *int64 `json:"GroupNum,omitempty" xml:"GroupNum,omitempty"`
-	// ID
+	// Alibaba Cloud account ID.
 	//
 	// example:
 	//
-	// 3238848****092996
+	// 1165*****601
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Maximum number of templates.
+	//
 	// example:
 	//
 	// 20
 	TemplateLimit *int64 `json:"TemplateLimit,omitempty" xml:"TemplateLimit,omitempty"`
+	// Current number of templates.
+	//
 	// example:
 	//
 	// 10

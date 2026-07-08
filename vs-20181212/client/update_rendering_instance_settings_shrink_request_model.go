@@ -16,11 +16,14 @@ type iUpdateRenderingInstanceSettingsShrinkRequest interface {
 }
 
 type UpdateRenderingInstanceSettingsShrinkRequest struct {
+	// ID of the cloud application service instance.
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	SettingsShrink      *string `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	// List of instance settings.
+	SettingsShrink *string `json:"Settings,omitempty" xml:"Settings,omitempty"`
 }
 
 func (s UpdateRenderingInstanceSettingsShrinkRequest) String() string {

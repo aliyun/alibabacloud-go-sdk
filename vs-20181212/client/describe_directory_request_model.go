@@ -16,6 +16,8 @@ type iDescribeDirectoryRequest interface {
 }
 
 type DescribeDirectoryRequest struct {
+	// The directory ID.
+	//
 	// This parameter is required.
 	//
 	// example:

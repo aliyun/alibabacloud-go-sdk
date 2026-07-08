@@ -22,19 +22,28 @@ type iListFilesResponseBody interface {
 }
 
 type ListFilesResponseBody struct {
+	// List of file information.
 	Files []*ListFilesResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// Page number of the list.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page for paged queries.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of matching file records.
+	//
 	// example:
 	//
 	// 200
@@ -108,31 +117,58 @@ func (s *ListFilesResponseBody) Validate() error {
 }
 
 type ListFilesResponseBodyFiles struct {
+	// File description.
+	//
+	// example:
+	//
+	// 我的文件
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// File ID.
+	//
 	// example:
 	//
 	// f-1671accd4dafdag3er256cvgewt13f7141db2f7
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// File name.
+	//
 	// example:
 	//
 	// myfile
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// Upload status. Valid values:
+	//
+	// 1. Created
+	//
+	// 2. Doing
+	//
+	// 3. Success (desired state)
+	//
+	// 4. Failed (desired state)
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Status description.
+	//
 	// example:
 	//
 	// upload success
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
+	// Destination path for pushing the file to the service instance.
+	//
 	// example:
 	//
 	// /data/tmp/test/xxx.tar
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	// Most recent status update time.
+	//
 	// example:
 	//
 	// 2024-03-28T14:15:08+08:00
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Upload start time.
+	//
 	// example:
 	//
 	// 2024-03-28T14:10:12+08:00

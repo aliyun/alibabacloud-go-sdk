@@ -20,12 +20,16 @@ type iDeleteVsPullStreamInfoConfigRequest interface {
 }
 
 type DeleteVsPullStreamInfoConfigRequest struct {
+	// The application name for the live stream.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Your stream pulling domain.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33,6 +37,8 @@ type DeleteVsPullStreamInfoConfigRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the live stream.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,11 +16,14 @@ type iBatchBindDirectoriesResponseBody interface {
 }
 
 type BatchBindDirectoriesResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*BatchBindDirectoriesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Results list.
+	Results []*BatchBindDirectoriesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s BatchBindDirectoriesResponseBody) String() string {
@@ -63,14 +66,22 @@ func (s *BatchBindDirectoriesResponseBody) Validate() error {
 }
 
 type BatchBindDirectoriesResponseBodyResults struct {
+	// Device ID.
+	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Directory ID.
+	//
 	// example:
 	//
 	// 399*****488-cn-qingdao
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// Error message for the binding.
+	//
+	// > Appears only if an error occurs.
+	//
 	// example:
 	//
 	// An error occurred while processing your request.

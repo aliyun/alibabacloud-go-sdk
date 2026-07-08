@@ -16,11 +16,14 @@ type iBatchBindPurchasedDevicesResponseBody interface {
 }
 
 type BatchBindPurchasedDevicesResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*BatchBindPurchasedDevicesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of results.
+	Results []*BatchBindPurchasedDevicesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s BatchBindPurchasedDevicesResponseBody) String() string {
@@ -63,18 +66,26 @@ func (s *BatchBindPurchasedDevicesResponseBody) Validate() error {
 }
 
 type BatchBindPurchasedDevicesResponseBodyResults struct {
+	// The ID of the device.
+	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The error message for the device. This parameter is returned only when an error occurs.
+	//
 	// example:
 	//
 	// some error
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// Space ID.
+	//
 	// example:
 	//
 	// 238*****380-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-qingdao

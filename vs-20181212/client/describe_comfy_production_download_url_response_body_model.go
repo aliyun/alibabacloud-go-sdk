@@ -22,23 +22,31 @@ type iDescribeComfyProductionDownloadUrlResponseBody interface {
 }
 
 type DescribeComfyProductionDownloadUrlResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The download link for the production. Use an Alibaba Cloud Object Storage Service (OSS) SDK to download the file.
+	//
 	// example:
 	//
 	// https://xxx.xxx.xxx
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The download link\\"s expiration time.
+	//
 	// example:
 	//
 	// 2029-03-28T16:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

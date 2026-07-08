@@ -14,6 +14,8 @@ type iDeleteComfyUserDataRequest interface {
 }
 
 type DeleteComfyUserDataRequest struct {
+	// The file or directory to delete. To specify a directory, provide a path that ends with a forward slash (/).
+	//
 	// example:
 	//
 	// mytest

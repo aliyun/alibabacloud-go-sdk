@@ -26,27 +26,47 @@ type iDescribeVsDomainReqTrafficDataRequest interface {
 }
 
 type DescribeVsDomainReqTrafficDataRequest struct {
+	// Visual Edge Computing Service domain name.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// End time of the query. Must be later than the start time. Specify in ISO 8601 format using UTC time.<br>Format: YYYY-MM-DDThh:mm:ssZ<br>
+	//
 	// example:
 	//
 	// 2021-10-13T10:00:41Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Time granularity of the query. Unit: seconds. Valid values:
+	//
+	// - **300*	- (default).
+	//
+	// - **3600**.
+	//
+	// - **86400**.
+	//
+	// > If you omit this parameter or specify an unsupported value, the default value **300*	- is used.
+	//
 	// example:
 	//
 	// 3600
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// ISP name in English. Call DescribeCdnRegionAndIsp to get valid values. If you omit this parameter, the system returns data for all ISPs.
+	//
 	// example:
 	//
 	// unicom
 	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	// Region name in English. Call DescribeCdnRegionAndIsp to get valid values. If you omit this parameter, the system returns data for all regions.
+	//
 	// example:
 	//
 	// shanghai
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Start time of the query. Specify in ISO 8601 format using UTC time.<br>Format: YYYY-MM-DDThh:mm:ssZ<br>Minimum time granularity is 5 minutes.<br>If you omit this parameter, the system returns data for the last 24 hours.<br><br><br>
+	//
 	// example:
 	//
 	// 2021-09-30T16:00:00Z

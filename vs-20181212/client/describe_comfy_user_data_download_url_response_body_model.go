@@ -22,23 +22,31 @@ type iDescribeComfyUserDataDownloadUrlResponseBody interface {
 }
 
 type DescribeComfyUserDataDownloadUrlResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The download URL for the application package.
+	//
 	// example:
 	//
 	// https://xxx.xxx.xxx.
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The expiration time for the download link.
+	//
 	// example:
 	//
 	// 1752805579553
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The result message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

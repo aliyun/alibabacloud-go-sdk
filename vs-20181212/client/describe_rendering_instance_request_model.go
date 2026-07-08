@@ -14,6 +14,8 @@ type iDescribeRenderingInstanceRequest interface {
 }
 
 type DescribeRenderingInstanceRequest struct {
+	// The ID of the rendering instance.
+	//
 	// This parameter is required.
 	//
 	// example:

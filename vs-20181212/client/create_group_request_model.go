@@ -34,40 +34,81 @@ type iCreateGroupRequest interface {
 }
 
 type CreateGroupRequest struct {
+	// Application name used by the workspace. Default value: live
+	//
 	// example:
 	//
 	// live
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
+	// Callback URL triggered when device or stream status updates in the workspace
+	//
 	// example:
 	//
 	// http://example.com/callback
-	Callback    *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	// Workspace description
+	//
+	// example:
+	//
+	// 我的视频监控
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Ingest protocol used by the workspace. Valid values:
+	//
+	// - gb28181
+	//
+	// - rtmp
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rtmp
 	InProtocol *string `json:"InProtocol,omitempty" xml:"InProtocol,omitempty"`
+	// Whether to enable on-demand stream pulling. Valid values:
+	//
+	// - false (default)
+	//
+	// - true
+	//
 	// example:
 	//
 	// false
 	LazyPull *bool `json:"LazyPull,omitempty" xml:"LazyPull,omitempty"`
+	// Workspace name
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 我的视频监控
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Playback protocols used by the workspace. Separate multiple values with commas. Valid values:
+	//
+	// - flv
+	//
+	// - hls
+	//
+	// - rtmp
+	//
 	// example:
 	//
 	// flv,rtmp
 	OutProtocol *string `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Streaming domain used by the workspace
+	//
 	// example:
 	//
 	// demo.aliyundoc.com
 	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
+	// Ingest domain used by the workspace
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	PushDomain *string `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
+	// Region where the workspace is located, that is, the service center
+	//
 	// example:
 	//
 	// cn-shanghai

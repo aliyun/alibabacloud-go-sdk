@@ -16,10 +16,14 @@ type iCreateHiveResponseBody interface {
 }
 
 type CreateHiveResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// hive-6c1418bf513e400bb697307c077a0ec3
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

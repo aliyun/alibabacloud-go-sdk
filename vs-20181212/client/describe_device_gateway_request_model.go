@@ -20,14 +20,20 @@ type iDescribeDeviceGatewayRequest interface {
 }
 
 type DescribeDeviceGatewayRequest struct {
+	// Client IP address.
+	//
 	// example:
 	//
 	// 192.168.0.1
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// Time-to-live (TTL).
+	//
 	// example:
 	//
 	// 3600
 	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:

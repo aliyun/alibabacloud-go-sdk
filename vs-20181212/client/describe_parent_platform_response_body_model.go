@@ -46,64 +46,120 @@ type iDescribeParentPlatformResponseBody interface {
 }
 
 type DescribeParentPlatformResponseBody struct {
+	// Specifies whether to enable the parent platform automatically. Valid values:
+	//
+	// - false (default)
+	//
+	// - true
+	//
 	// example:
 	//
 	// false
 	AutoStart *bool `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
+	// Specifies whether to enable local authentication. Valid values:
+	//
+	// - true (default)
+	//
+	// - false
+	//
 	// example:
 	//
 	// true
 	ClientAuth *bool `json:"ClientAuth,omitempty" xml:"ClientAuth,omitempty"`
+	// The local GB ID.
+	//
 	// example:
 	//
 	// 31010*****317542006
 	ClientGbId *string `json:"ClientGbId,omitempty" xml:"ClientGbId,omitempty"`
+	// The local SIP service IP address.
+	//
 	// example:
 	//
 	// 192.168.0.1
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The local password.
+	//
 	// example:
 	//
 	// admin123
 	ClientPassword *string `json:"ClientPassword,omitempty" xml:"ClientPassword,omitempty"`
+	// The local SIP service port.
+	//
 	// example:
 	//
 	// 5160
 	ClientPort *int64 `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
+	// The local username.
+	//
 	// example:
 	//
 	// user01
 	ClientUsername *string `json:"ClientUsername,omitempty" xml:"ClientUsername,omitempty"`
+	// The time when the parent platform was created.
+	//
 	// example:
 	//
 	// 2018-12-10T21:00:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The description of the parent platform.
+	//
+	// example:
+	//
+	// 级联平台描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The GB ID of the parent platform.
+	//
 	// example:
 	//
 	// 31000*****2170123451
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	// The ID of the parent platform.
+	//
 	// example:
 	//
 	// 359*****374-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The SIP service IP address of the parent platform.
+	//
 	// example:
 	//
 	// 10.10.10.10
-	Ip   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The name of the parent platform.
+	//
+	// example:
+	//
+	// 国标级联平台测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The SIP service port of the parent platform.
+	//
 	// example:
 	//
 	// 5060
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol of the parent platform. Valid values:
+	//
+	// - gb28181 (GB standard)
+	//
 	// example:
 	//
 	// gb28181
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the parent platform. Valid values:
+	//
+	// - on (online)
+	//
+	// - off (offline)
+	//
+	// - failed (failed)
+	//
 	// example:
 	//
 	// on

@@ -32,6 +32,8 @@ type iDescribeRecordsRequest interface {
 }
 
 type DescribeRecordsRequest struct {
+	// Specify the end time for the query.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -39,38 +41,64 @@ type DescribeRecordsRequest struct {
 	// 2021-11-24T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to use a private bucket.
+	//
 	// example:
 	//
 	// true
 	PrivateBucket *bool `json:"PrivateBucket,omitempty" xml:"PrivateBucket,omitempty"`
+	// The field to sort the records by. Valid value:
+	//
+	// - Id (default)
+	//
 	// example:
 	//
 	// Id
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The sorting method. Valid values:
+	//
+	// - asc (ascending, default)
+	//
+	// - desc (descending)
+	//
 	// example:
 	//
 	// asc
 	SortDirection *string `json:"SortDirection,omitempty" xml:"SortDirection,omitempty"`
+	// Query records by start time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2021-11-22T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Query by stream ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 323*****997-cn-qingdao
 	StreamId *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
+	// The type of the recording record to query. Valid values:
+	//
+	// - record (Recording)
+	//
+	// - snapshot
+	//
 	// This parameter is required.
 	//
 	// example:

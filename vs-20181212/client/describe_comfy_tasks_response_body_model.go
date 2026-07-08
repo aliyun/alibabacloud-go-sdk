@@ -26,29 +26,42 @@ type iDescribeComfyTasksResponseBody interface {
 }
 
 type DescribeComfyTasksResponseBody struct {
+	// The error code. A value of 0 indicates a successful request.
+	//
 	// example:
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that provides details about the result of the request.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number of the returned data. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of tasks per page.
+	//
+	// > This parameter applies only to recording queries.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*DescribeComfyTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of Comfy tasks.
+	Tasks []*DescribeComfyTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of tasks that match the filter criteria.
+	//
 	// example:
 	//
 	// 1
@@ -140,21 +153,44 @@ func (s *DescribeComfyTasksResponseBody) Validate() error {
 }
 
 type DescribeComfyTasksResponseBodyTasks struct {
+	// The creation time of the task.
+	//
+	// example:
+	//
+	// 1780387493000
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time of the task.
+	//
+	// example:
+	//
+	// 1780387494000
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the resource pool used by the task.
+	//
 	// example:
 	//
 	// hive-26cd567b35c04a0a90f017388207b2
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 6c8234f4-d1e1-4cea-b08b-7926fbdea144
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task state.
+	//
 	// example:
 	//
 	// RUNNING
-	TaskState   *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	// The last modified time of the task.
+	//
+	// example:
+	//
+	// 1780387494000
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The ID of the Comfy workflow associated with the task.
+	//
 	// example:
 	//
 	// wf_adb32aed-ccdc-42ae-b4d4-a21181ac8a5f

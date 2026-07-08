@@ -34,39 +34,86 @@ type iListRenderingSessionsRequest interface {
 }
 
 type ListRenderingSessionsRequest struct {
+	// Cloud application ID
+	//
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Unique ID of the client.
+	//
 	// example:
 	//
 	// ae7990f4-203d-494b-a5ea-e0babe9fa13d
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Time range filter parameter. Represented in ISO8601 standard and must use UTC time, in the format yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2025-03-31T22:20:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Page number, starting from 1
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page set for paged queries.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Cloud application patch ID.
+	//
+	// 1. When you enter origin, only sessions that started the original version of the app are filtered.
+	//
 	// example:
 	//
 	// patch-03fa76e8e13a49b6a966b063d9d309b4
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
+	// Project ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// project-422bc38dfgh5eb44149f135ef76304f63b
-	ProjectId           *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Cloud application service instance ID
+	//
+	// example:
+	//
+	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// session-i205217481741918129226
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Time range filter parameter. Represented in ISO8601 standard and must use UTC time, in the format yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2025-03-25T02:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Session state. Valid values:
+	//
+	// 1. SessionStarting: The session is starting.
+	//
+	// 2. SessionStartSuspended: Session startup is paused. Retry by initiating start again.
+	//
+	// 3. SessionStarted: The session has started/is in use.
+	//
+	// 4. SessionStartFailed: Session startup failed.
+	//
+	// 5. SessionAbnormal: The session is abnormal after successful startup.
+	//
+	// 6. SessionStopping: The session is stopping.
+	//
+	// 7. SessionStopFailed: Session stop failed.
+	//
 	// example:
 	//
 	// SessionStarting

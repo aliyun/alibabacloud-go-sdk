@@ -16,6 +16,8 @@ type iDescribeVsPullStreamInfoConfigRequest interface {
 }
 
 type DescribeVsPullStreamInfoConfigRequest struct {
+	// The stream pulling domain.
+	//
 	// This parameter is required.
 	//
 	// example:

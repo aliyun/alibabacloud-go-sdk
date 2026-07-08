@@ -34,37 +34,77 @@ type iDescribeGroupsRequest interface {
 }
 
 type DescribeGroupsRequest struct {
+	// The space ID.
+	//
 	// example:
 	//
 	// 33763950877224964-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Ingest protocol used by the group. Valid values:
+	//
+	// - gb28181
+	//
+	// - rtmp
+	//
 	// example:
 	//
 	// rtmp
 	InProtocol *string `json:"InProtocol,omitempty" xml:"InProtocol,omitempty"`
+	// Whether to return device statistics for the group. Default: false.
+	//
 	// example:
 	//
 	// false
-	IncludeStats *bool   `json:"IncludeStats,omitempty" xml:"IncludeStats,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	IncludeStats *bool `json:"IncludeStats,omitempty" xml:"IncludeStats,omitempty"`
+	// Space name.
+	//
+	// example:
+	//
+	// 我的视频监控
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Page number. Default: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The service region where the group is located.
+	//
 	// example:
 	//
 	// cn-qingdao
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Field to sort by. Valid values:
+	//
+	// - Id (default)
+	//
+	// example:
+	//
+	// Id
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Sort order. Valid values:
+	//
+	// - asc (ascending, default)
+	//
+	// - desc (descending)
+	//
 	// example:
 	//
 	// asc
 	SortDirection *string `json:"SortDirection,omitempty" xml:"SortDirection,omitempty"`
+	// Group status. Valid values:
+	//
+	// - on (enabled)
+	//
+	// - off (disabled)
+	//
 	// example:
 	//
 	// on

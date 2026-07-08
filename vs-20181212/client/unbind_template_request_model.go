@@ -22,12 +22,20 @@ type iUnbindTemplateRequest interface {
 }
 
 type UnbindTemplateRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 323*****994-cn-qingdao
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the instance. Valid values:
+	//
+	// - group
+	//
+	// - stream
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -35,10 +43,18 @@ type UnbindTemplateRequest struct {
 	// group
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the template.
+	//
 	// example:
 	//
 	// 323*****998-cn-qingdao
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The type of the template. Valid values:
+	//
+	// - record
+	//
+	// - snapshot
+	//
 	// example:
 	//
 	// record

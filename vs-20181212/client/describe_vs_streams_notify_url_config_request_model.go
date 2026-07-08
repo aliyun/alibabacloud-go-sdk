@@ -16,6 +16,8 @@ type iDescribeVsStreamsNotifyUrlConfigRequest interface {
 }
 
 type DescribeVsStreamsNotifyUrlConfigRequest struct {
+	// Your accelerated domain name.
+	//
 	// This parameter is required.
 	//
 	// example:

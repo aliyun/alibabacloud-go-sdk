@@ -22,22 +22,32 @@ type iCreateDeviceAlarmResponseBody interface {
 }
 
 type CreateDeviceAlarmResponseBody struct {
+	// 下次相同告警的最小间隔。（单位：秒）
+	//
 	// example:
 	//
 	// 60
 	AlarmDelay *int64 `json:"AlarmDelay,omitempty" xml:"AlarmDelay,omitempty"`
+	// 告警ID。
+	//
 	// example:
 	//
 	// 0hyNgTdgv2D000195842
 	AlarmId *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// URL的过期时长。（单位：秒）
+	//
 	// example:
 	//
 	// 3600
 	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// 请求ID。
+	//
 	// example:
 	//
 	// 76E11E6A-4441-51C9-AF60-D354362257A7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 媒体上传的URL，可使用PUT上传。
+	//
 	// example:
 	//
 	// rtmp://demo.aliyundoc.com/live/310101*****7542007?auth_key=1639130258-0-0-b2b04fe85ece6*****a6b1a42bc7e

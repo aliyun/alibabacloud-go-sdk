@@ -26,26 +26,52 @@ type iListRenderingProjectInstancesRequest interface {
 }
 
 type ListRenderingProjectInstancesRequest struct {
+	// End time of the time range. Use ISO 8601 format in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2024-11-30T02:18:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Page number. Start from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Project ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// project-422bc38dfgh5eb44149f135ef76304f63b
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Cloud application service instance ID
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// A parameter for filtering by a time range. The time must be in UTC and formatted according to the ISO 8601 standard as \\`yyyy-MM-ddTHH:mm:ssZ\\`.
+	//
+	// example:
+	//
+	// 2024-11-27T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Instance status. Valid values:
+	//
+	// 1. Idle
+	//
+	// 2. Locked
+	//
+	// 3. InUse
+	//
 	// example:
 	//
 	// Idle

@@ -22,20 +22,28 @@ type iAssociateRenderingProjectInstancesResponseBody interface {
 }
 
 type AssociateRenderingProjectInstancesResponseBody struct {
+	// Number of failed cloud application service instances
+	//
 	// example:
 	//
 	// 0
-	FailedInstanceCount *string                                                          `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
-	FailedInstances     []*AssociateRenderingProjectInstancesResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
+	FailedInstanceCount *string `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
+	// List of instances that failed to associate
+	FailedInstances []*AssociateRenderingProjectInstancesResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of successful cloud application service instances
+	//
 	// example:
 	//
 	// 5
-	SuccessInstanceCount *string                                                           `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
-	SuccessInstances     []*AssociateRenderingProjectInstancesResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
+	SuccessInstanceCount *string `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
+	// List of successfully associated instances
+	SuccessInstances []*AssociateRenderingProjectInstancesResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
 func (s AssociateRenderingProjectInstancesResponseBody) String() string {
@@ -114,10 +122,14 @@ func (s *AssociateRenderingProjectInstancesResponseBody) Validate() error {
 }
 
 type AssociateRenderingProjectInstancesResponseBodyFailedInstances struct {
+	// Failure reason
+	//
 	// example:
 	//
 	// invalid id
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Cloud application service instance ID
+	//
 	// example:
 	//
 	// render-b45f28650ffe4591bf4c5c95996a428c
@@ -155,10 +167,14 @@ func (s *AssociateRenderingProjectInstancesResponseBodyFailedInstances) Validate
 }
 
 type AssociateRenderingProjectInstancesResponseBodySuccessInstances struct {
+	// Description
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Cloud application service instance ID
+	//
 	// example:
 	//
 	// render-5130e2feb23f442fb9456a3d977f03d4

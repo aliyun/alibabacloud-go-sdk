@@ -18,6 +18,8 @@ type iSetPresetRequest interface {
 }
 
 type SetPresetRequest struct {
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,10 @@ type SetPresetRequest struct {
 	// 348*****380-cn-qingdao
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Preset ID.<br>
+	//
+	// Valid values: 1 to 7.<br>
+	//
 	// This parameter is required.
 	//
 	// example:

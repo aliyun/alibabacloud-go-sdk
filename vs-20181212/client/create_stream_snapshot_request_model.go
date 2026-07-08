@@ -18,12 +18,20 @@ type iCreateStreamSnapshotRequest interface {
 }
 
 type CreateStreamSnapshotRequest struct {
+	// Stream ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 323*****997-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Screenshot method. Valid values:
+	//
+	// - center (cloud screenshot) (default)
+	//
+	// - device (device screenshot)
+	//
 	// example:
 	//
 	// device

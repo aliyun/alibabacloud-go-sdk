@@ -16,10 +16,14 @@ type iSyncCatalogsResponseBody interface {
 }
 
 type SyncCatalogsResponseBody struct {
+	// Device ID.
+	//
 	// example:
 	//
-	// 3238****739092996
+	// 3238****739092996-cn-shenzhen
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

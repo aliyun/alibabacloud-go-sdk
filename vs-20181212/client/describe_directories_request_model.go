@@ -28,33 +28,51 @@ type iDescribeDirectoriesRequest interface {
 }
 
 type DescribeDirectoriesRequest struct {
+	// ID of the group to which the directory belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Disable paging. Default is false.
+	//
 	// example:
 	//
 	// false
 	NoPagination *bool  `json:"NoPagination,omitempty" xml:"NoPagination,omitempty"`
 	OwnerId      *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Page number. Default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size. Default is 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Query by parent directory ID.
+	//
 	// example:
 	//
 	// 399*****774-cn-qingdao
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// Sort by the specified field. Default is by ID.
+	//
 	// example:
 	//
 	// ID
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Sort order. Default is ascending. Values:
+	//
+	// - asc (ascending)
+	//
+	// - desc (descending)
+	//
 	// example:
 	//
 	// asc

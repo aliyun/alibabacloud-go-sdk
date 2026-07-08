@@ -16,6 +16,8 @@ type iDescribeParentPlatformRequest interface {
 }
 
 type DescribeParentPlatformRequest struct {
+	// The ID of the parent platform.
+	//
 	// This parameter is required.
 	//
 	// example:

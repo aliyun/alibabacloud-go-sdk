@@ -32,37 +32,68 @@ type iListCloudAppInstallationsRequest interface {
 }
 
 type ListCloudAppInstallationsRequest struct {
+	// Cloud application ID. Each ID maps to a unique application package.
+	//
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Application name.
+	//
 	// example:
 	//
 	// com.aaa.bbb
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Application version.
+	//
 	// example:
 	//
 	// 1.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Time range filter. Use ISO 8601 format and UTC time, such as yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2025-06-02T02:18:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Page number of the returned list. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page for paged queries. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Patch package ID. Supported only in Windows scenarios.
+	//
+	// 1. Set to origin to return only original versions.
+	//
 	// example:
 	//
 	// patch-7bdf679812484df08a956b73e0b3bdf6
-	PatchId   *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
+	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
+	// Project ID.
+	//
+	// example:
+	//
+	// project-b93ea81de76f48609eed3cd420f0399f
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Cloud application service instance ID. Use this to list installations on a specific instance.
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Start time of the time range filter. Specify in ISO 8601 format using UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2025-05-26T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListCloudAppInstallationsRequest) String() string {

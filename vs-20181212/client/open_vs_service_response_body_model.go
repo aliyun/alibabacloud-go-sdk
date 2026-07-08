@@ -16,10 +16,14 @@ type iOpenVsServiceResponseBody interface {
 }
 
 type OpenVsServiceResponseBody struct {
+	// The order ID.
+	//
 	// example:
 	//
 	// 150275784
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

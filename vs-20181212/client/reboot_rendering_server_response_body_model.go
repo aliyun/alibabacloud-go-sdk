@@ -22,20 +22,28 @@ type iRebootRenderingServerResponseBody interface {
 }
 
 type RebootRenderingServerResponseBody struct {
+	// Number of cloud application service instances that failed to restart
+	//
 	// example:
 	//
 	// 0
-	FailedInstanceCount *int32                                              `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
-	FailedInstances     []*RebootRenderingServerResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
+	FailedInstanceCount *int32 `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
+	// Cloud application service instance IDs and their failure details
+	FailedInstances []*RebootRenderingServerResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of successful cloud application service instances
+	//
 	// example:
 	//
 	// 5
-	SuccessInstanceCount *int32                                               `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
-	SuccessInstances     []*RebootRenderingServerResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
+	SuccessInstanceCount *int32 `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
+	// The instance ID of the cloud application service and the description of the result.
+	SuccessInstances []*RebootRenderingServerResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
 func (s RebootRenderingServerResponseBody) String() string {
@@ -114,14 +122,20 @@ func (s *RebootRenderingServerResponseBody) Validate() error {
 }
 
 type RebootRenderingServerResponseBodyFailedInstances struct {
+	// Error code
+	//
 	// example:
 	//
 	// 300000
 	ErrCode *int32 `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// Reason for failure
+	//
 	// example:
 	//
 	// Rejected due to timeout
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// Cloud application service instance ID
+	//
 	// example:
 	//
 	// render-421cd2a1125947c19fcd5c7dd2c7d31e
@@ -168,6 +182,8 @@ func (s *RebootRenderingServerResponseBodyFailedInstances) Validate() error {
 }
 
 type RebootRenderingServerResponseBodySuccessInstances struct {
+	// Cloud application service instance ID
+	//
 	// example:
 	//
 	// render-e6cf423c787e4e43b460a788da254fe3

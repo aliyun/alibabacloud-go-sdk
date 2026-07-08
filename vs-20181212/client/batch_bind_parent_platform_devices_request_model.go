@@ -18,6 +18,8 @@ type iBatchBindParentPlatformDevicesRequest interface {
 }
 
 type BatchBindParentPlatformDevicesRequest struct {
+	// The device IDs. Separate multiple values with commas.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type BatchBindParentPlatformDevicesRequest struct {
 	// 348*****380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the parent platform.
+	//
 	// This parameter is required.
 	//
 	// example:

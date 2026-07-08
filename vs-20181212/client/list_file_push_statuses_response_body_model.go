@@ -22,19 +22,28 @@ type iListFilePushStatusesResponseBody interface {
 }
 
 type ListFilePushStatusesResponseBody struct {
+	// The page number of the returned results.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page in a paged query.
+	//
 	// example:
 	//
 	// 10
-	PageSize     *int64                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of file push status records.
 	PushStatuses []*ListFilePushStatusesResponseBodyPushStatuses `json:"PushStatuses,omitempty" xml:"PushStatuses,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of matching file push records.
+	//
 	// example:
 	//
 	// 100
@@ -108,30 +117,52 @@ func (s *ListFilePushStatusesResponseBody) Validate() error {
 }
 
 type ListFilePushStatusesResponseBodyPushStatuses struct {
+	// The file ID.
+	//
 	// example:
 	//
 	// f-1671accd4dafdag3er256cvgewt13f7141db2f7
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// myfile
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The scheduled push start time.
+	//
 	// example:
 	//
 	// 2024-03-26T16:32:20+08:00
 	PushTime *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
+	// The cloud application service instance ID.
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// The file push status. Valid values:
+	//
+	// 1. Created
+	//
+	// 2. Doing
+	//
+	// 3. Success: desired state
+	//
+	// 4. Failed: desired state
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status description.
+	//
 	// example:
 	//
 	// push success
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
+	// The latest update time of the status.
+	//
 	// example:
 	//
 	// 2024-03-26T17:02:10+08:00

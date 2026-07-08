@@ -16,13 +16,14 @@ type iDescribeRenderingInstanceSettingsResponseBody interface {
 }
 
 type DescribeRenderingInstanceSettingsResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Settings  []*DescribeRenderingInstanceSettingsResponseBodySettings `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of instance configurations.
+	Settings []*DescribeRenderingInstanceSettingsResponseBodySettings `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRenderingInstanceSettingsResponseBody) String() string {
@@ -65,10 +66,14 @@ func (s *DescribeRenderingInstanceSettingsResponseBody) Validate() error {
 }
 
 type DescribeRenderingInstanceSettingsResponseBodySettings struct {
+	// The name of an instance configuration.
+	//
 	// example:
 	//
 	// navbar.hide
 	AttributeName *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
+	// The value of an instance configuration.
+	//
 	// example:
 	//
 	// 1

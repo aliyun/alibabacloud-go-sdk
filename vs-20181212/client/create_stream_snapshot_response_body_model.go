@@ -32,42 +32,62 @@ type iCreateStreamSnapshotResponseBody interface {
 }
 
 type CreateStreamSnapshotResponseBody struct {
+	// Image format.
+	//
 	// example:
 	//
 	// jpg
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// Image height.
+	//
 	// example:
 	//
 	// 720
 	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Stream ID.
+	//
 	// example:
 	//
 	// 323*****997-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The OSS bucket of the snapshot file.
+	//
 	// example:
 	//
 	// examplebucket
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The OSS endpoint of the snapshot file.
+	//
 	// example:
 	//
 	// oss-cn-qingdao.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	// The OSS object of the snapshot file.
+	//
 	// example:
 	//
 	// photos/live/340200*****100049/ondemand-1639126601767.jpg
 	OssObject *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The snapshot timestamp.
+	//
 	// example:
 	//
 	// 1639126601767
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The URL of the snapshot file.
+	//
 	// example:
 	//
 	// http://examplebucket.oss-*****.aliyuncs.com/photos/live/340200*****100049/ondemand-1639126601767.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Image width.
+	//
 	// example:
 	//
 	// 1280

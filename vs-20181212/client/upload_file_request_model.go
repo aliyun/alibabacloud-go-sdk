@@ -22,25 +22,58 @@ type iUploadFileRequest interface {
 }
 
 type UploadFileRequest struct {
+	// The description of the file.
+	//
+	// example:
+	//
+	// 测试使用
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// A custom file name. The name must be unique and serves as a unique identifier for the file. The name must meet the following requirements:
+	//
+	// 1. It must be 8 to 255 characters in length.
+	//
+	// 2. It can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+	//
+	// 3. The first and last characters must be a letter or a digit.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mytest
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The MD5 hash of the file. This is used to verify the integrity of the file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 150b6083f50dd08159d45a0d5e4b56f9
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The download URL of the file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://xxx.xxx.xxx.tar
 	OriginUrl *string `json:"OriginUrl,omitempty" xml:"OriginUrl,omitempty"`
+	// The destination path on the service instance. This must be an absolute path to a file. You cannot specify only a folder. The parent folder of the destination path is restricted to the following locations:
+	//
+	// 1. /data/local
+	//
+	// 2. /data/user
+	//
+	// 3. /data/data
+	//
+	// 4. /data/cache
+	//
+	// 5. /data/tmp
+	//
+	// 6. /data/storage
+	//
+	// 7. /data/media/0
+	//
 	// This parameter is required.
 	//
 	// example:

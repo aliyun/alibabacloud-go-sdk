@@ -9,13 +9,19 @@ import (
 
 // Summary:
 //
-// 添加负载到集群
+// Adds one or more instances to a specified cluster.
 //
 // Description:
 //
-// ## 请求说明
+// ## Usage notes
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - **HiveId*	- is a required parameter that specifies the ID of the target cluster.
+//
+// - **InstanceIds*	- is a required parameter that specifies a list of instance IDs to add.
+//
+// - Adding an instance that already exists in the target cluster returns an error message.
+//
+// - The response includes lists of successful and failed instances. This allows you to verify which instances were added and review the reasons for any failures.
 //
 // @param tmpReq - AddHiveEdgeWorkersRequest
 //
@@ -67,6 +73,10 @@ func (client *Client) AddHiveEdgeWorkersWithContext(ctx context.Context, tmpReq 
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a stream pulling configuration.
+//
 // @param request - AddVsPullStreamInfoConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -137,13 +147,13 @@ func (client *Client) AddVsPullStreamInfoConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 云应用服务实例与项目进行关联。
+// Associates cloud application service instances with a project.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - This operation associates instances that meet specific conditions with a specified project.
 //
 // @param tmpReq - AssociateRenderingProjectInstancesRequest
 //
@@ -195,6 +205,10 @@ func (client *Client) AssociateRenderingProjectInstancesWithContext(ctx context.
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds multiple devices to directories in a single operation.
+//
 // @param request - BatchBindDirectoriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -243,6 +257,10 @@ func (client *Client) BatchBindDirectoriesWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds multiple devices to a parent platform for push in batches.
+//
 // @param request - BatchBindParentPlatformDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -291,6 +309,10 @@ func (client *Client) BatchBindParentPlatformDevicesWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds multiple purchased devices.
+//
 // @param request - BatchBindPurchasedDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -343,6 +365,10 @@ func (client *Client) BatchBindPurchasedDevicesWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Bind templates to multiple specified instances, such as instances bound to spaces and streams.
+//
 // @param request - BatchBindTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -403,6 +429,10 @@ func (client *Client) BatchBindTemplateWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds multiple templates in a single operation.
+//
 // @param request - BatchBindTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -467,6 +497,76 @@ func (client *Client) BatchBindTemplatesWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves screenshots of cloud application service instances.
+//
+// Description:
+//
+// ## Request description
+//
+// - **Authentication**: Requests must include the `AliUid` parameter for identity verification.
+//
+// - **Instance specification**: Use `RenderingInstanceIds` to specify the instances to capture screenshots from.
+//
+// - **Screenshot quality**: Use the `Quality` parameter to set the image quality of screenshots. The default value is 75 (if not configured). Valid values: 1 to 100.
+//
+// - **Response handling**: The response contains lists of successful and failed instances with related information, including download URLs and screenshot completion times.
+//
+// @param tmpReq - BatchCaptureRenderingInstanceScreenshotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCaptureRenderingInstanceScreenshotResponse
+func (client *Client) BatchCaptureRenderingInstanceScreenshotWithContext(ctx context.Context, tmpReq *BatchCaptureRenderingInstanceScreenshotRequest, runtime *dara.RuntimeOptions) (_result *BatchCaptureRenderingInstanceScreenshotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchCaptureRenderingInstanceScreenshotShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RenderingInstanceIds) {
+		request.RenderingInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RenderingInstanceIds, dara.String("RenderingInstanceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Quality) {
+		query["Quality"] = request.Quality
+	}
+
+	if !dara.IsNil(request.RenderingInstanceIdsShrink) {
+		query["RenderingInstanceIds"] = request.RenderingInstanceIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchCaptureRenderingInstanceScreenshot"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchCaptureRenderingInstanceScreenshotResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes multiple devices in a single operation.
+//
 // @param request - BatchDeleteDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -511,6 +611,10 @@ func (client *Client) BatchDeleteDevicesWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes domain name configurations in a batch.
+//
 // @param request - BatchDeleteVsDomainConfigsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -559,6 +663,10 @@ func (client *Client) BatchDeleteVsDomainConfigsWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Stop stream ingest for one or more streams. You can schedule when to resume ingest.
+//
 // @param request - BatchForbidVsStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -623,6 +731,10 @@ func (client *Client) BatchForbidVsStreamWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes stream ingest for one or more streams.
+//
 // @param request - BatchResumeVsStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -679,6 +791,10 @@ func (client *Client) BatchResumeVsStreamWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Configure multiple domain names in batch.
+//
 // @param request - BatchSetVsDomainConfigsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -727,6 +843,10 @@ func (client *Client) BatchSetVsDomainConfigsWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Start stream pulling for multiple devices at once.
+//
 // @param request - BatchStartDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -771,6 +891,10 @@ func (client *Client) BatchStartDevicesWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts multiple streams.
+//
 // @param request - BatchStartStreamsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -815,6 +939,10 @@ func (client *Client) BatchStartStreamsWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops stream pulling for multiple devices.
+//
 // @param request - BatchStopDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -863,6 +991,10 @@ func (client *Client) BatchStopDevicesWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops multiple streams in a batch.
+//
 // @param request - BatchStopStreamsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -911,6 +1043,10 @@ func (client *Client) BatchStopStreamsWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Detaches multiple devices from a folder in bulk.
+//
 // @param request - BatchUnbindDirectoriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -959,6 +1095,10 @@ func (client *Client) BatchUnbindDirectoriesWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Batch unbind multiple devices from parent platform push.
+//
 // @param request - BatchUnbindParentPlatformDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1007,6 +1147,10 @@ func (client *Client) BatchUnbindParentPlatformDevicesWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// Detach multiple purchased devices from a space in a single operation.
+//
 // @param request - BatchUnbindPurchasedDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1051,6 +1195,14 @@ func (client *Client) BatchUnbindPurchasedDevicesWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Detach a template from multiple specified instances, such as space instances or stream instances.
+//
+// Description:
+//
+// > Specify at least one of TemplateId or TemplateType.
+//
 // @param request - BatchUnbindTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1107,6 +1259,10 @@ func (client *Client) BatchUnbindTemplateWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbind multiple templates simultaneously.
+//
 // @param request - BatchUnbindTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1163,6 +1319,10 @@ func (client *Client) BatchUnbindTemplatesWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Attach a device to a folder.
+//
 // @param request - BindDirectoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1211,6 +1371,10 @@ func (client *Client) BindDirectoryWithContext(ctx context.Context, request *Bin
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a device to push streams to a parent platform.
+//
 // @param request - BindParentPlatformDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1259,6 +1423,10 @@ func (client *Client) BindParentPlatformDeviceWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Attach purchased devices to a space.
+//
 // @param request - BindPurchasedDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1311,6 +1479,10 @@ func (client *Client) BindPurchasedDeviceWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a template to a specified instance, such as a group or stream.
+//
 // @param request - BindTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1377,7 +1549,11 @@ func (client *Client) BindTemplateWithContext(ctx context.Context, request *Bind
 
 // Summary:
 //
-// 上传用户数据文件
+// Cancels a Comfy task.
+//
+// Description:
+//
+// > Stop the parent platform before canceling the task.
 //
 // @param request - CancelComfyTaskRequest
 //
@@ -1419,6 +1595,10 @@ func (client *Client) CancelComfyTaskWithContext(ctx context.Context, request *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Continuously adjust lens parameters such as aperture and zoom.
+//
 // @param request - ContinuousAdjustRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1471,6 +1651,10 @@ func (client *Client) ContinuousAdjustWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Rotate the camera continuously by panning, tilting, or zooming.
+//
 // @param request - ContinuousMoveRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1529,7 +1713,11 @@ func (client *Client) ContinuousMoveWithContext(ctx context.Context, request *Co
 
 // Summary:
 //
-// 上传用户数据文件
+// Starts a Comfy task.
+//
+// Description:
+//
+// > You must first enable the on-demand screenshot feature in the associated screenshot template.
 //
 // @param request - CreateComfyTaskRequest
 //
@@ -1581,7 +1769,11 @@ func (client *Client) CreateComfyTaskWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建一个用户数据的目录
+// Creates a directory for user data.
+//
+// Description:
+//
+// > You must specify either a template ID or a template type.
 //
 // @param request - CreateComfyUserDataDirRequest
 //
@@ -1625,7 +1817,11 @@ func (client *Client) CreateComfyUserDataDirWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建Comfy工作流
+// Creates a Comfy workflow.
+//
+// Description:
+//
+// > You must enable the on-demand screenshot feature in the associated screenshot template before calling this operation.
 //
 // @param request - CreateComfyWorkflowRequest
 //
@@ -1675,6 +1871,10 @@ func (client *Client) CreateComfyWorkflowWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Add a new device.
+//
 // @param request - CreateDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1803,6 +2003,10 @@ func (client *Client) CreateDeviceWithContext(ctx context.Context, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// Reports a device alert.
+//
 // @param request - CreateDeviceAlarmRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1875,6 +2079,10 @@ func (client *Client) CreateDeviceAlarmWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a new folder.
+//
 // @param request - CreateDirectoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1931,6 +2139,10 @@ func (client *Client) CreateDirectoryWithContext(ctx context.Context, request *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a new workspace.
+//
 // @param request - CreateGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2013,13 +2225,13 @@ func (client *Client) CreateGroupWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建集群
+// Creates a cluster.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - This operation creates an empty cluster to manage workloads.
 //
 // @param request - CreateHiveRequest
 //
@@ -2065,6 +2277,10 @@ func (client *Client) CreateHiveWithContext(ctx context.Context, request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a new parent platform.
+//
 // @param request - CreateParentPlatformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2147,7 +2363,7 @@ func (client *Client) CreateParentPlatformWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 创建云渲染数据包
+// Creates a data pack for a cloud application service.
 //
 // @param request - CreateRenderingDataPackageRequest
 //
@@ -2203,7 +2419,7 @@ func (client *Client) CreateRenderingDataPackageWithContext(ctx context.Context,
 
 // Summary:
 //
-// 申请云渲染资源实例
+// Call CreateRenderingInstance to create a cloud application service instance.
 //
 // @param tmpReq - CreateRenderingInstanceRequest
 //
@@ -2293,7 +2509,11 @@ func (client *Client) CreateRenderingInstanceWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 创建自定义网关
+// Creates a custom gateway.
+//
+// Description:
+//
+// > You can specify a template ID or a template type.
 //
 // @param request - CreateRenderingInstanceGatewayRequest
 //
@@ -2341,7 +2561,7 @@ func (client *Client) CreateRenderingInstanceGatewayWithContext(ctx context.Cont
 
 // Summary:
 //
-// 创建一个新的云应用服务项目，并设置相关属性。
+// Creates a cloud application service project and configures its properties, such as session attributes.
 //
 // @param tmpReq - CreateRenderingProjectRequest
 //
@@ -2397,6 +2617,14 @@ func (client *Client) CreateRenderingProjectWithContext(ctx context.Context, tmp
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an on-demand snapshot for the specified stream.
+//
+// Description:
+//
+// > You must first enable the on-demand snapshot feature in the attached snapshot template.
+//
 // @param request - CreateStreamSnapshotRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2445,6 +2673,10 @@ func (client *Client) CreateStreamSnapshotWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a new template.
+//
 // @param request - CreateTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2573,7 +2805,11 @@ func (client *Client) CreateTemplateWithContext(ctx context.Context, request *Cr
 //
 // ## 请求说明
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - **HiveId*	- 是必填参数，表示要操作的集群ID。
+//
+// - **InstanceIds*	- 是必填参数，需要提供一个负载ID列表，用于指定要从集群中解绑的负载实例。
+//
+// - 解绑操作成功后，会返回成功和失败的负载实例列表及其相关信息。
 //
 // @param tmpReq - DelHiveEdgeWorkersRequest
 //
@@ -2627,7 +2863,7 @@ func (client *Client) DelHiveEdgeWorkersWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 删除云应用
+// Deletes a cloud application. You cannot delete a cloud application that is in use.
 //
 // @param request - DeleteCloudAppRequest
 //
@@ -2671,7 +2907,11 @@ func (client *Client) DeleteCloudAppWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除用户的生成结果
+// # Deleting artifacts
+//
+// Description:
+//
+// > Stop the parent platform before you delete a production.
 //
 // @param request - DeleteComfyProductionRequest
 //
@@ -2715,7 +2955,11 @@ func (client *Client) DeleteComfyProductionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除用户数据的中的文件或目录
+// Deletes a file or directory from user data.
+//
+// Description:
+//
+// > You must stop the upper-level platform before performing this operation.
 //
 // @param request - DeleteComfyUserDataRequest
 //
@@ -2759,7 +3003,11 @@ func (client *Client) DeleteComfyUserDataWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除Comfy工作流
+// Deletes a Comfy workflow.
+//
+// Description:
+//
+// > You must stop the parent platform before you can delete the workflow.
 //
 // @param request - DeleteComfyWorkflowRequest
 //
@@ -2801,6 +3049,10 @@ func (client *Client) DeleteComfyWorkflowWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a device from a space.
+//
 // @param request - DeleteDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2845,6 +3097,10 @@ func (client *Client) DeleteDeviceWithContext(ctx context.Context, request *Dele
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a folder.
+//
 // @param request - DeleteDirectoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2891,7 +3147,7 @@ func (client *Client) DeleteDirectoryWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 删除文件对象。
+// You cannot delete a file while it is uploading or pre-pushing. After deletion, all related push records become invalid. You can push a file with the same name again.
 //
 // @param request - DeleteFileRequest
 //
@@ -2933,6 +3189,10 @@ func (client *Client) DeleteFileWithContext(ctx context.Context, request *Delete
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete a workspace.
+//
 // @param request - DeleteGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2985,7 +3245,9 @@ func (client *Client) DeleteGroupWithContext(ctx context.Context, request *Delet
 //
 // ## 请求说明
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - 需要确保该集群内所有应用服务已清空，否则无法执行删除操作。
+//
+// - `HiveId` 是必填参数，用于标识待删除的集群。
 //
 // @param request - DeleteHiveRequest
 //
@@ -3027,6 +3289,14 @@ func (client *Client) DeleteHiveWithContext(ctx context.Context, request *Delete
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a parent platform.
+//
+// Description:
+//
+// > You must stop the parent platform before you delete it.
+//
 // @param request - DeleteParentPlatformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3071,6 +3341,10 @@ func (client *Client) DeleteParentPlatformWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a preset.
+//
 // @param request - DeletePresetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3121,7 +3395,7 @@ func (client *Client) DeletePresetWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// 删除公钥信息
+// Deletes a specified public key. This action automatically revokes logon authorization for all associated cloud application service instances.
 //
 // @param request - DeletePublicKeyRequest
 //
@@ -3165,7 +3439,7 @@ func (client *Client) DeletePublicKeyWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 删除云渲染实例配置参数
+// Deletes the configuration of a cloud application service instance. This operation deletes only module properties that are configured using the UpdateRenderingInstanceConfiguration operation.
 //
 // @param tmpReq - DeleteRenderingInstanceConfigurationRequest
 //
@@ -3221,7 +3495,11 @@ func (client *Client) DeleteRenderingInstanceConfigurationWithContext(ctx contex
 
 // Summary:
 //
-// 删除自定义网关
+// Deletes a custom gateway.
+//
+// Description:
+//
+// > Stop the parent platform before you delete the gateway.
 //
 // @param request - DeleteRenderingInstanceGatewayRequest
 //
@@ -3265,7 +3543,7 @@ func (client *Client) DeleteRenderingInstanceGatewayWithContext(ctx context.Cont
 
 // Summary:
 //
-// 清除实例设置
+// You can call DeleteRenderingInstanceSettings to delete the settings of a cloud application service instance.
 //
 // @param tmpReq - DeleteRenderingInstanceSettingsRequest
 //
@@ -3319,7 +3597,7 @@ func (client *Client) DeleteRenderingInstanceSettingsWithContext(ctx context.Con
 
 // Summary:
 //
-// 删除一个云应用服务项目，有在线会话等业务调度数据的项目不允许删除。
+// Delete a Data Service Project. Projects that have business scheduling data, such as active sessions, cannot be deleted.
 //
 // @param request - DeleteRenderingProjectRequest
 //
@@ -3361,6 +3639,10 @@ func (client *Client) DeleteRenderingProjectWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a template.
+//
 // @param request - DeleteTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3405,6 +3687,10 @@ func (client *Client) DeleteTemplateWithContext(ctx context.Context, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete stream pulling information.
+//
 // @param request - DeleteVsPullStreamInfoConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3457,6 +3743,10 @@ func (client *Client) DeleteVsPullStreamInfoConfigWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the callback configuration for stream ingest.
+//
 // @param request - DeleteVsStreamsNotifyUrlConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3501,6 +3791,10 @@ func (client *Client) DeleteVsStreamsNotifyUrlConfigWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// Query all resource information for an account in a specified region.
+//
 // @param request - DescribeAccountStatRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3547,7 +3841,11 @@ func (client *Client) DescribeAccountStatWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取用户生成结果的下载链接
+// Retrieves a download link for a production.
+//
+// Description:
+//
+// > Screenshot queries do not support pagination and must be performed iteratively. To fetch the next page, use the extStartTime value from the response as the StartTime for your subsequent request.
 //
 // @param request - DescribeComfyProductionDownloadUrlRequest
 //
@@ -3591,7 +3889,11 @@ func (client *Client) DescribeComfyProductionDownloadUrlWithContext(ctx context.
 
 // Summary:
 //
-// 本接口支持根据不同请求条件查询Comfy生成物列表
+// Lists a user\\"s productions.
+//
+// Description:
+//
+// > This API uses pagination. Use the PageNumber and PageSize parameters to navigate through the results.
 //
 // @param request - DescribeComfyProductionsRequest
 //
@@ -3643,7 +3945,11 @@ func (client *Client) DescribeComfyProductionsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 列举用户数据的中所有文件和目录的信息。
+// Queries a list of Comfy tasks.
+//
+// Description:
+//
+// > Querying by screenshot does not support pagination and only supports iteration. To request the next page, use the extStartTime parameter value from the response as the StartTime for the new request.
 //
 // @param request - DescribeComfyTasksRequest
 //
@@ -3699,7 +4005,7 @@ func (client *Client) DescribeComfyTasksWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 上传用户数据文件
+// Gets a download URL for user data.
 //
 // @param request - DescribeComfyUserDataDownloadUrlRequest
 //
@@ -3743,7 +4049,11 @@ func (client *Client) DescribeComfyUserDataDownloadUrlWithContext(ctx context.Co
 
 // Summary:
 //
-// 获取用户数据文件上传的URL，进行用户文件上传
+// Retrieves a URL to upload a user file.
+//
+// Description:
+//
+// You can upload files using the retrieved URL and the Alibaba Cloud OSS software development kit (SDK).
 //
 // @param request - DescribeComfyUserDataUploadUrlRequest
 //
@@ -3799,7 +4109,17 @@ func (client *Client) DescribeComfyUserDataUploadUrlWithContext(ctx context.Cont
 
 // Summary:
 //
-// 列举用户数据的中所有文件和目录的信息。
+// Lists all files and folders in the user data.
+//
+// Description:
+//
+// If StartTime and EndTime are not specified, data from the last 24 hours is read by default. To query a specific time range, you must specify both StartTime and EndTime. The maximum time range for a query is 31 days.
+//
+// - You can query multiple domain names in a batch. Separate the domain names with a comma (,).
+//
+// - You can retrieve data from the last 90 days.
+//
+// - The time granularity is one hour.
 //
 // @param request - DescribeComfyUserDatasRequest
 //
@@ -3851,7 +4171,11 @@ func (client *Client) DescribeComfyUserDatasWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取Comfy工作流列表
+// This operation retrieves a paginated list of your Comfy workflows.
+//
+// Description:
+//
+// \\> 截图查询目前不支持分页，仅支持按迭代方式。使用返回结果里的extStartTime参数值，作为新请求的StartTime可请求下一页。
 //
 // @param request - DescribeComfyWorkflowsRequest
 //
@@ -3901,6 +4225,10 @@ func (client *Client) DescribeComfyWorkflowsWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Query information about a device.
+//
 // @param request - DescribeDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3953,6 +4281,10 @@ func (client *Client) DescribeDeviceWithContext(ctx context.Context, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of device channels.
+//
 // @param request - DescribeDeviceChannelsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4005,6 +4337,10 @@ func (client *Client) DescribeDeviceChannelsWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a device gateway.
+//
 // @param request - DescribeDeviceGatewayRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4057,6 +4393,10 @@ func (client *Client) DescribeDeviceGatewayWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the URL information for a device stream.
+//
 // @param request - DescribeDeviceURLRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4125,6 +4465,10 @@ func (client *Client) DescribeDeviceURLWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of devices.
+//
 // @param request - DescribeDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4229,6 +4573,10 @@ func (client *Client) DescribeDevicesWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the list of directories.
+//
 // @param request - DescribeDirectoriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4297,6 +4645,10 @@ func (client *Client) DescribeDirectoriesWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a directory.
+//
 // @param request - DescribeDirectoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4341,6 +4693,10 @@ func (client *Client) DescribeDirectoryWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves information about a space.
+//
 // @param request - DescribeGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4389,6 +4745,10 @@ func (client *Client) DescribeGroupWithContext(ctx context.Context, request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// You can query the list of spaces.
+//
 // @param request - DescribeGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4469,6 +4829,10 @@ func (client *Client) DescribeGroupsWithContext(ctx context.Context, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a parent platform.
+//
 // @param request - DescribeParentPlatformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4513,6 +4877,10 @@ func (client *Client) DescribeParentPlatformWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of devices under a parent platform.
+//
 // @param request - DescribeParentPlatformDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4573,6 +4941,10 @@ func (client *Client) DescribeParentPlatformDevicesWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the list of parent platforms.
+//
 // @param request - DescribeParentPlatformsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4637,6 +5009,10 @@ func (client *Client) DescribeParentPlatformsWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve the list of presets.
+//
 // @param request - DescribePresetsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4725,6 +5101,10 @@ func (client *Client) DescribePublishStreamStatusWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about purchased devices.
+//
 // @param request - DescribePurchasedDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4769,6 +5149,10 @@ func (client *Client) DescribePurchasedDeviceWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of purchased devices.
+//
 // @param request - DescribePurchasedDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4849,6 +5233,14 @@ func (client *Client) DescribePurchasedDevicesWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of recordings.
+//
+// Description:
+//
+// > Paging is not supported for snapshot queries. Only iteration is supported. To request the next page, use the NextStartTime value from the response as the StartTime for the new request.
+//
 // @param request - DescribeRecordsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4927,7 +5319,7 @@ func (client *Client) DescribeRecordsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 查询云渲染实例详细信息。
+// Queries the details of a cloud application service instance.
 //
 // @param request - DescribeRenderingInstanceRequest
 //
@@ -4971,7 +5363,7 @@ func (client *Client) DescribeRenderingInstanceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询云渲染实例模块配置参数
+// Queries the real-time configuration of a cloud application service instance.
 //
 // @param tmpReq - DescribeRenderingInstanceConfigurationRequest
 //
@@ -5017,7 +5409,7 @@ func (client *Client) DescribeRenderingInstanceConfigurationWithContext(ctx cont
 
 // Summary:
 //
-// 查询实例配置
+// DescribeRenderingInstanceSettings queries the configuration of a Cloud Application service instance.
 //
 // @param tmpReq - DescribeRenderingInstanceSettingsRequest
 //
@@ -5071,7 +5463,7 @@ func (client *Client) DescribeRenderingInstanceSettingsWithContext(ctx context.C
 
 // Summary:
 //
-// 输出会话的详情信息，包含关联的实例、网络出口等信息。
+// Retrieve details about a rendering session, including the current session state, network access IP address and port, and the location of the cloud application service instance.
 //
 // @param request - DescribeRenderingSessionRequest
 //
@@ -5121,6 +5513,10 @@ func (client *Client) DescribeRenderingSessionWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a stream.
+//
 // @param request - DescribeStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5165,6 +5561,10 @@ func (client *Client) DescribeStreamWithContext(ctx context.Context, request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the URL of a stream.
+//
 // @param request - DescribeStreamURLRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5241,6 +5641,10 @@ func (client *Client) DescribeStreamURLWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Get the stream VOD record list, such as historical stream list from NVR.
+//
 // @param request - DescribeStreamVodListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5293,6 +5697,10 @@ func (client *Client) DescribeStreamVodListWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists video streams. You can filter the results by stream ID, name, group ID, device ID, or other criteria.
+//
 // @param request - DescribeStreamsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5377,6 +5785,10 @@ func (client *Client) DescribeStreamsWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Query information about a template.
+//
 // @param request - DescribeTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5421,6 +5833,10 @@ func (client *Client) DescribeTemplateWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// List templates.
+//
 // @param request - DescribeTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5489,6 +5905,10 @@ func (client *Client) DescribeTemplatesWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the URL information of a video-on-demand (VOD) stream.
+//
 // @param request - DescribeVodStreamURLRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5533,6 +5953,10 @@ func (client *Client) DescribeVodStreamURLWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve certificate details.
+//
 // @param request - DescribeVsCertificateDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5577,6 +6001,10 @@ func (client *Client) DescribeVsCertificateDetailWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of domain name certificates.
+//
 // @param request - DescribeVsCertificateListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5621,6 +6049,20 @@ func (client *Client) DescribeVsCertificateListWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves usage data for connected devices.
+//
+// Description:
+//
+// If you do not specify \\`StartTime\\` and \\`EndTime\\`, the API retrieves data from the last 24 hours by default. To query data for a specific time range, you must specify both \\`StartTime\\` and \\`EndTime\\`. The maximum time range for a single query is 31 days.
+//
+// - You can query multiple domain names at once. Separate the domain names with commas.
+//
+// - You can retrieve data from the last 90 days.
+//
+// - The time granularity is one hour.
+//
 // @param request - DescribeVsDevicesDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5673,6 +6115,10 @@ func (client *Client) DescribeVsDevicesDataWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries network bandwidth monitoring data for Domain Names.
+//
 // @param request - DescribeVsDomainBpsDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5737,6 +6183,10 @@ func (client *Client) DescribeVsDomainBpsDataWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the certificate information for a specified accelerated domain name.
+//
 // @param request - DescribeVsDomainCertificateInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5781,6 +6231,10 @@ func (client *Client) DescribeVsDomainCertificateInfoWithContext(ctx context.Con
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries domain name configurations. You can query the configurations of multiple features in a single request.
+//
 // @param request - DescribeVsDomainConfigsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5829,6 +6283,10 @@ func (client *Client) DescribeVsDomainConfigsWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the basic configuration information for a specified Visual Edge Computing Service domain name.
+//
 // @param request - DescribeVsDomainDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5873,6 +6331,10 @@ func (client *Client) DescribeVsDomainDetailWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the page view (PV) data for a domain name.
+//
 // @param request - DescribeVsDomainPvDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5925,6 +6387,10 @@ func (client *Client) DescribeVsDomainPvDataWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve page view (PV) and unique visitor (UV) data for a Visual Edge Computing Service domain.
+//
 // @param request - DescribeVsDomainPvUvDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5977,6 +6443,10 @@ func (client *Client) DescribeVsDomainPvUvDataWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve domain name record data.
+//
 // @param request - DescribeVsDomainRecordDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6033,6 +6503,10 @@ func (client *Client) DescribeVsDomainRecordDataWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves domain region data.
+//
 // @param request - DescribeVsDomainRegionDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6085,6 +6559,10 @@ func (client *Client) DescribeVsDomainRegionDataWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Query network request monitoring data for a domain name.
+//
 // @param request - DescribeVsDomainReqBpsDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6149,6 +6627,10 @@ func (client *Client) DescribeVsDomainReqBpsDataWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtain traffic data for domain name requests.
+//
 // @param request - DescribeVsDomainReqTrafficDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6213,6 +6695,10 @@ func (client *Client) DescribeVsDomainReqTrafficDataWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves snapshot data for a domain name.
+//
 // @param request - DescribeVsDomainSnapshotDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6265,6 +6751,10 @@ func (client *Client) DescribeVsDomainSnapshotDataWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve traffic data for a domain name.
+//
 // @param request - DescribeVsDomainTrafficDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6329,6 +6819,10 @@ func (client *Client) DescribeVsDomainTrafficDataWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve UV data by domain name.
+//
 // @param request - DescribeVsDomainUvDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6381,6 +6875,10 @@ func (client *Client) DescribeVsDomainUvDataWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the pull stream configurations for a domain name.
+//
 // @param request - DescribeVsPullStreamInfoConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6425,6 +6923,10 @@ func (client *Client) DescribeVsPullStreamInfoConfigWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the stream ingest callback configuration.
+//
 // @param request - DescribeVsStreamsNotifyUrlConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6469,6 +6971,10 @@ func (client *Client) DescribeVsStreamsNotifyUrlConfigWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves information about all active streams for a specified domain name or application.
+//
 // @param request - DescribeVsStreamsOnlineListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6549,6 +7055,10 @@ func (client *Client) DescribeVsStreamsOnlineListWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve stream ingest records for a domain, an application under that domain, or a specific stream within a specified time range.
+//
 // @param request - DescribeVsStreamsPublishListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6629,6 +7139,14 @@ func (client *Client) DescribeVsStreamsPublishListWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a user\\"s domain names ranked by traffic.
+//
+// If you do not specify StartTime and EndTime, data for the current month is retrieved by default. To query data over a specific time range, you must specify both StartTime and EndTime.
+//
+// \\	- You can retrieve data for a maximum of 90 days.
+//
 // @param request - DescribeVsTopDomainsByFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6681,6 +7199,10 @@ func (client *Client) DescribeVsTopDomainsByFlowWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the daily peak number of concurrent stream ingest operations.
+//
 // @param request - DescribeVsUpPeakPublishStreamDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6781,6 +7303,10 @@ func (client *Client) DescribeVsUserResourcePackageWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// # DescribeVsVerifyContent
+//
 // @param request - DescribeVsVerifyContentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6827,7 +7353,7 @@ func (client *Client) DescribeVsVerifyContentWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 云应用服务实例与项目解除关联
+// Disassociate cloud application service instances from a project.
 //
 // @param tmpReq - DisassociateRenderingProjectInstancesRequest
 //
@@ -6879,6 +7405,10 @@ func (client *Client) DisassociateRenderingProjectInstancesWithContext(ctx conte
 	return _result, _err
 }
 
+// Summary:
+//
+// Forbids pushing a specific stream. You can schedule a time to resume the stream.
+//
 // @param request - ForbidVsStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6949,7 +7479,7 @@ func (client *Client) ForbidVsStreamWithContext(ctx context.Context, request *Fo
 
 // Summary:
 //
-// 查询命令的执行状态与结果。
+// Queries the execution status of a control command to determine whether the command was successful and to retrieve the result string.
 //
 // @param request - GetRenderingInstanceCommandsStatusRequest
 //
@@ -6997,7 +7527,7 @@ func (client *Client) GetRenderingInstanceCommandsStatusWithContext(ctx context.
 
 // Summary:
 //
-// 获取云渲染实例流连接信息，每次流化建联前都需要调用此接口获取最新连接信息
+// Retrieves the streaming connection information for a cloud application service instance. Call this operation before establishing each streaming connection to obtain the latest connection details.
 //
 // @param request - GetRenderingInstanceStreamingInfoRequest
 //
@@ -7041,7 +7571,7 @@ func (client *Client) GetRenderingInstanceStreamingInfoWithContext(ctx context.C
 
 // Summary:
 //
-// 输出满足特定条件的资源各状态数据量统计值。
+// Queries the data volume statistics for the states of project instances that meet specified conditions.
 //
 // @param request - GetRenderingProjectInstanceStateMetricsRequest
 //
@@ -7083,6 +7613,10 @@ func (client *Client) GetRenderingProjectInstanceStateMetricsWithContext(ctx con
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves to a specified preset.
+//
 // @param request - GotoPresetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7133,7 +7667,7 @@ func (client *Client) GotoPresetWithContext(ctx context.Context, request *GotoPr
 
 // Summary:
 //
-// 安装云应用
+// Installs a cloud application to a specified cloud application instance. This is an asynchronous interface. To monitor the installation progress, use the ListCloudAppInstallations interface.
 //
 // @param tmpReq - InstallCloudAppRequest
 //
@@ -7207,7 +7741,7 @@ func (client *Client) InstallCloudAppWithContext(ctx context.Context, tmpReq *In
 
 // Summary:
 //
-// 查询云应用安装信息列表
+// Lists cloud application installations. The response includes the installation status of cloud application service instances and supports paged queries.
 //
 // @param request - ListCloudAppInstallationsRequest
 //
@@ -7247,7 +7781,11 @@ func (client *Client) ListCloudAppInstallationsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询一个云应用的Patch列表。
+// Queries the list of patches for a cloud application.
+//
+// Description:
+//
+// > Specify at least one of the template ID or the template type.
 //
 // @param request - ListCloudAppPatchesRequest
 //
@@ -7315,7 +7853,7 @@ func (client *Client) ListCloudAppPatchesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询云应用列表
+// Queries a list of cloud applications. This operation supports paged queries.
 //
 // @param request - ListCloudAppsRequest
 //
@@ -7355,7 +7893,19 @@ func (client *Client) ListCloudAppsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 查询所有负载信息，支持分页查询。
+// Queries payload information for cloud application services. This operation supports paged queries.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API queries payload information for cloud application services and supports filtering and paged queries using various parameters.
+//
+// - Optional parameters include `Spec`, `Statuses`, `InstanceIds`, `PlanIds`, and `HiveIds`.
+//
+// - For paged queries, you can use the `PageNumber` and `PageSize` parameters to control the amount of data returned. The default page size is 10 records, and the maximum is 100 records.
+//
+// - You can specify a time range for the query using the `StartTime` and `EndTime` parameters.
 //
 // @param tmpReq - ListEdgeWorkersRequest
 //
@@ -7449,7 +7999,7 @@ func (client *Client) ListEdgeWorkersWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// 查询文件的实例推送状态信息列表。
+// Lists the push status records for a file pushed to cloud application service instances. It supports paged query.
 //
 // @param request - ListFilePushStatusesRequest
 //
@@ -7489,7 +8039,7 @@ func (client *Client) ListFilePushStatusesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询可用文件列表。
+// Lists uploaded files. The response includes the upload status for each file and supports paged queries.
 //
 // @param request - ListFilesRequest
 //
@@ -7530,6 +8080,18 @@ func (client *Client) ListFilesWithContext(ctx context.Context, request *ListFil
 // Summary:
 //
 // 查询所有集群信息，支持分页查询。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该 API 用于查询用户创建的所有集群信息。
+//
+// - 支持通过 `HiveId` 和 `Name` 参数进行过滤查询。
+//
+// - 分页参数 `PageNumber` 和 `PageSize` 可以控制返回结果的数量和页码，默认每页显示10条记录，最大支持100条。
+//
+// - `StartTime` 和 `EndTime` 参数可用于指定时间范围内的集群信息查询，但非必填项。
 //
 // @param request - ListHivesRequest
 //
@@ -7593,7 +8155,7 @@ func (client *Client) ListHivesWithContext(ctx context.Context, request *ListHiv
 
 // Summary:
 //
-// 查询公钥信息
+// Retrieves a list of public keys that match the specified criteria. This operation supports pagination.
 //
 // @param request - ListPublicKeysRequest
 //
@@ -7633,7 +8195,7 @@ func (client *Client) ListPublicKeysWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 查询所有云应用数据包信息，支持分页查询。
+// Queries information about the data packets of cloud applications. Paged queries are supported.
 //
 // @param request - ListRenderingDataPackagesRequest
 //
@@ -7705,7 +8267,11 @@ func (client *Client) ListRenderingDataPackagesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询自定义网关
+// Queries custom gateways.
+//
+// Description:
+//
+// > Specify at least the template ID or the template type.
 //
 // @param request - ListRenderingInstanceGatewayRequest
 //
@@ -7769,7 +8335,7 @@ func (client *Client) ListRenderingInstanceGatewayWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询所有云渲染实例信息，支持分页查询。
+// Lists basic information about cloud application service instances and supports paged queries.
 //
 // @param request - ListRenderingInstancesRequest
 //
@@ -7809,13 +8375,13 @@ func (client *Client) ListRenderingInstancesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 分页查询项目关联的云应用服务实例列表。
+// Retrieve a paginated list of cloud application service instances associated with a project.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口支持通过多种筛选条件（如状态、实例ID等）来查询指定项目下的云应用服务实例。
+// - This operation enables you to query cloud application service instances in a project using multiple filter conditions, such as status and instance ID.
 //
 // @param request - ListRenderingProjectInstancesRequest
 //
@@ -7883,15 +8449,15 @@ func (client *Client) ListRenderingProjectInstancesWithContext(ctx context.Conte
 
 // Summary:
 //
-// 分页查询用户下的云应用服务项目基本信息列表。
+// Obtain a paged list of basic information about cloud application projects for the current user.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request details
 //
-// - 该接口用于分页查询指定用户下的渲染项目基本信息列表。
+// - This operation returns a paged list of basic information about rendering projects for a specified user.
 //
-// - 可通过 `ProjectId` 和 `ProjectName` 进行过滤查询。
+// - Filter results by `ProjectId` or `ProjectName`.
 //
 // @param request - ListRenderingProjectsRequest
 //
@@ -7955,15 +8521,15 @@ func (client *Client) ListRenderingProjectsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 分页查询指定条件下的渲染会话列表。
+// Performs a paged query for the list of cloud application service sessions based on specified conditions.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// - 该接口支持通过多种参数组合来过滤和分页查询用户的渲染会话列表。
+// - This API supports filtering and paged query of user rendering session lists with various parameter combinations.
 //
-// - `SessionId` 和 `ClientId` 参数至少需要提供一个，但两者都不是必选的。如果同时提供了两个参数，则将根据这两个参数进行更精确的匹配。
+// - You must provide at least one of the `SessionId` or `ClientId` parameters. Neither parameter is mandatory independently. If both parameters are provided, a more precise match is performed based on these two parameters.
 //
 // @param request - ListRenderingSessionsRequest
 //
@@ -8049,6 +8615,16 @@ func (client *Client) ListRenderingSessionsWithContext(ctx context.Context, requ
 //
 // 查询规格信息，支持分页查询。
 //
+// Description:
+//
+// ## 请求说明
+//
+// - 该 API 用于查询所有可用的云应用服务规格信息。
+//
+// - 支持通过 `Specification` 参数过滤特定规格。
+//
+// - 分页查询时，可以通过 `PageNumber` 和 `PageSize` 参数控制返回的数据量。
+//
 // @param request - ListSpecificationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8099,7 +8675,7 @@ func (client *Client) ListSpecificationsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 安全登陆管理
+// Manages secure logons.
 //
 // @param request - ManageLoginRequest
 //
@@ -8155,7 +8731,11 @@ func (client *Client) ManageLoginWithContext(ctx context.Context, request *Manag
 
 // Summary:
 //
-// 查询Comfy的工作流详细信息
+// Modifies the metadata of a specified workflow.
+//
+// Description:
+//
+// \\> 截图查询目前不支持分页，仅支持按迭代方式。使用返回结果里的extStartTime参数值，作为新请求的StartTime可请求下一页。
 //
 // @param request - ModifyComfyWorkflowRequest
 //
@@ -8205,6 +8785,10 @@ func (client *Client) ModifyComfyWorkflowWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Update device information.
+//
 // @param request - ModifyDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8333,6 +8917,10 @@ func (client *Client) ModifyDeviceWithContext(ctx context.Context, request *Modi
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the alarm status of a device.
+//
 // @param request - ModifyDeviceAlarmRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8389,6 +8977,10 @@ func (client *Client) ModifyDeviceAlarmWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modify the device image capture configuration.
+//
 // @param request - ModifyDeviceCaptureRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8441,6 +9033,10 @@ func (client *Client) ModifyDeviceCaptureWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the list of channels for a device.
+//
 // @param request - ModifyDeviceChannelsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8497,6 +9093,10 @@ func (client *Client) ModifyDeviceChannelsWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information of a directory.
+//
 // @param request - ModifyDirectoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8549,6 +9149,10 @@ func (client *Client) ModifyDirectoryWithContext(ctx context.Context, request *M
 	return _result, _err
 }
 
+// Summary:
+//
+// You can modify the details of a space.
+//
 // @param request - ModifyGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8635,13 +9239,17 @@ func (client *Client) ModifyGroupWithContext(ctx context.Context, request *Modif
 
 // Summary:
 //
-// 更新集群
+// Updates the name or description of a specified cluster.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - This API modifies the name and/or description of an existing cluster.
+//
+// - `HiveId` is a required parameter that identifies the cluster to modify.
+//
+// - The `Name` and `Description` parameters are optional. You can specify either or both to update the corresponding attributes of the cluster.
 //
 // @param request - ModifyHiveAttributeRequest
 //
@@ -8691,6 +9299,10 @@ func (client *Client) ModifyHiveAttributeWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information of a parent platform.
+//
 // @param request - ModifyParentPlatformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8773,7 +9385,7 @@ func (client *Client) ModifyParentPlatformWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 变配云渲染资源实例付费类型
+// Change the billing method for a Graphic Computing Service instance.
 //
 // @param request - ModifyRenderingChargeTypeRequest
 //
@@ -8833,7 +9445,7 @@ func (client *Client) ModifyRenderingChargeTypeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 变配云渲染资源实例
+// Upgrades or downgrades a cloud application service instance.
 //
 // @param request - ModifyRenderingInstanceRequest
 //
@@ -8885,7 +9497,7 @@ func (client *Client) ModifyRenderingInstanceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 修改云应用服务实例密码
+// Modifies the attributes of a cloud application service instance.
 //
 // @param request - ModifyRenderingInstanceAttributeRequest
 //
@@ -8933,7 +9545,7 @@ func (client *Client) ModifyRenderingInstanceAttributeWithContext(ctx context.Co
 
 // Summary:
 //
-// 修改云渲染实例限速带宽
+// Updates the rate limiting bandwidth for a cloud application service instance. You can call the DescribeRenderingInstance operation to retrieve the current rate limiting value and check the status of the rate limiting update.
 //
 // @param request - ModifyRenderingInstanceBandwidthRequest
 //
@@ -8983,6 +9595,10 @@ func (client *Client) ModifyRenderingInstanceBandwidthWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies template information.
+//
 // @param request - ModifyTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9105,13 +9721,13 @@ func (client *Client) ModifyTemplateWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// 移动负载到集群
+// Moves the specified cloud application service instances from their current cluster to the target Hive.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - Ensure the target Hive has sufficient resources to accommodate the instances.
 //
 // @param tmpReq - MoveHiveEdgeWorkersRequest
 //
@@ -9165,7 +9781,7 @@ func (client *Client) MoveHiveEdgeWorkersWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 预推文件到云渲染实例。
+// Push a file to a specified cloud application service instance. This is an asynchronous operation. You can query the push progress using the ListFilePushStatuses operation.
 //
 // @param request - PushFileRequest
 //
@@ -9213,7 +9829,7 @@ func (client *Client) PushFileWithContext(ctx context.Context, request *PushFile
 
 // Summary:
 //
-// 重启云渲染实例
+// Restarts a cloud application service instance. You can call the DescribeRenderingInstance API to monitor the restart progress.
 //
 // @param request - RebootRenderingInstanceRequest
 //
@@ -9257,7 +9873,7 @@ func (client *Client) RebootRenderingInstanceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 云应用服务实例主机重启
+// Restarts the host of a cloud application service instance.
 //
 // @param tmpReq - RebootRenderingServerRequest
 //
@@ -9307,7 +9923,7 @@ func (client *Client) RebootRenderingServerWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 恢复数据到云渲染实例
+// # Recover data to a Graphic Computing Service instance
 //
 // @param request - RecoverRenderingDataPackageRequest
 //
@@ -9359,7 +9975,11 @@ func (client *Client) RecoverRenderingDataPackageWithContext(ctx context.Context
 
 // Summary:
 //
-// 更新实例流连接信息
+// Call RefreshRenderingInstanceStreaming to refresh the stream connection for a cloud application service instance.
+//
+// Description:
+//
+// > Specify at least one of the template ID or template type.
 //
 // @param tmpReq - RefreshRenderingInstanceStreamingRequest
 //
@@ -9413,7 +10033,7 @@ func (client *Client) RefreshRenderingInstanceStreamingWithContext(ctx context.C
 
 // Summary:
 //
-// 释放云渲染数据包
+// # Release a cloud application service data pack
 //
 // @param request - ReleaseRenderingDataPackageRequest
 //
@@ -9457,7 +10077,7 @@ func (client *Client) ReleaseRenderingDataPackageWithContext(ctx context.Context
 
 // Summary:
 //
-// 释放云渲染实例
+// Invoke ReleaseRenderingInstance to release a Graphic Computing Service application instance.
 //
 // @param request - ReleaseRenderingInstanceRequest
 //
@@ -9501,7 +10121,7 @@ func (client *Client) ReleaseRenderingInstanceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 续费云渲染资源实例
+// Invoke RenewRenderingInstance to renew a cloud application service instance.
 //
 // @param request - RenewRenderingInstanceRequest
 //
@@ -9553,7 +10173,7 @@ func (client *Client) RenewRenderingInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 重置云渲染实例
+// Resets a cloud application service instance. You can query the DescribeRenderingInstance interface to obtain the reset progress.
 //
 // @param request - ResetRenderingInstanceRequest
 //
@@ -9603,6 +10223,10 @@ func (client *Client) ResetRenderingInstanceWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes pushing for a stream.
+//
 // @param request - ResumeVsStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9665,7 +10289,7 @@ func (client *Client) ResumeVsStreamWithContext(ctx context.Context, request *Re
 
 // Summary:
 //
-// 下发shell命令，支持同步/异步响应命令。
+// Sends shell control instructions to a cloud application service instance. This operation supports both sync and asynchronous command responses. The sync scenario is not suitable for time-consuming commands. The maximum execution time cannot exceed 30 s. In an asynchronous scenario, you can call the GetRenderingInstanceCommandsStatus operation to query the execution status and result of a command.
 //
 // @param request - SendRenderingInstanceCommandsRequest
 //
@@ -9721,6 +10345,10 @@ func (client *Client) SendRenderingInstanceCommandsWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// Set a preset position.
+//
 // @param request - SetPresetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9769,6 +10397,10 @@ func (client *Client) SetPresetWithContext(ctx context.Context, request *SetPres
 	return _result, _err
 }
 
+// Summary:
+//
+// Enable or disable the certificate feature for a domain name.
+//
 // @param request - SetVsDomainCertificateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9841,6 +10473,10 @@ func (client *Client) SetVsDomainCertificateWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Configure stream ingest callbacks.
+//
 // @param request - SetVsStreamsNotifyUrlConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9897,6 +10533,14 @@ func (client *Client) SetVsStreamsNotifyUrlConfigWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Start stream pulling from a device. This action starts all streams on the device.
+//
+// Description:
+//
+// Each device currently supports only one ingest endpoint. The effect is the same as StartStream.
+//
 // @param request - StartDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9941,6 +10585,10 @@ func (client *Client) StartDeviceWithContext(ctx context.Context, request *Start
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts interactions with the parent platform, such as registration and keep-alive.
+//
 // @param request - StartParentPlatformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10033,6 +10681,18 @@ func (client *Client) StartPublishStreamWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts on-demand recording for the specified stream.
+//
+// Description:
+//
+// > - An on-demand record template is required. You must first attach one to the space or stream.
+//
+// >
+//
+// > - You can specify a stream in two ways: using its ID or its PlayDomain/App/Name.
+//
 // @param request - StartRecordStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10091,7 +10751,7 @@ func (client *Client) StartRecordStreamWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 调度一个空闲云应用服务实例，并完成服务启动。
+// Schedules an idle cloud application service instance for the requesting client (ClientId) and starts the service. If the requesting client (ClientId) sends another start request after a successful start and the associated session is in the SessionStartSuspended state, the session is restarted. If the session is in any other state, the session information is returned directly.
 //
 // @param tmpReq - StartRenderingSessionRequest
 //
@@ -10155,6 +10815,10 @@ func (client *Client) StartRenderingSessionWithContext(ctx context.Context, tmpR
 	return _result, _err
 }
 
+// Summary:
+//
+// Start a stream.
+//
 // @param request - StartStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10207,6 +10871,10 @@ func (client *Client) StartStreamWithContext(ctx context.Context, request *Start
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts forwarding a stream to an external address.
+//
 // @param request - StartTransferStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10259,6 +10927,10 @@ func (client *Client) StartTransferStreamWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops lens adjustments, such as aperture or zoom changes.
+//
 // @param request - StopAdjustRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10311,6 +10983,14 @@ func (client *Client) StopAdjustWithContext(ctx context.Context, request *StopAd
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops stream pulling for a device. This operation terminates all streams on that device.
+//
+// Description:
+//
+// Stops stream pulling for a device. This operation terminates all streams on that device.
+//
 // @param request - StopDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10359,6 +11039,10 @@ func (client *Client) StopDeviceWithContext(ctx context.Context, request *StopDe
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops camera movement, such as panning, tilting, and zooming.
+//
 // @param request - StopMoveRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10459,6 +11143,14 @@ func (client *Client) StopPublishStreamWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops on-demand recording for a specified stream.
+//
+// Description:
+//
+// > You can specify a stream by ID or by PlayDomain/App/Name.
+//
 // @param request - StopRecordStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10517,11 +11209,11 @@ func (client *Client) StopRecordStreamWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 关闭指定的云应用服务会话并回收相关实例资源。
+// Shut down the specified cloud application service session and revoke the associated instance resources.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request information
 //
 // @param request - StopRenderingSessionRequest
 //
@@ -10571,6 +11263,10 @@ func (client *Client) StopRenderingSessionWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops a stream.
+//
 // @param request - StopStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10623,6 +11319,10 @@ func (client *Client) StopStreamWithContext(ctx context.Context, request *StopSt
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops a stream.
+//
 // @param request - StopTransferStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10671,6 +11371,10 @@ func (client *Client) StopTransferStreamWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Synchronizes platform channel information.
+//
 // @param request - SyncCatalogsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10715,6 +11419,10 @@ func (client *Client) SyncCatalogsWithContext(ctx context.Context, request *Sync
 	return _result, _err
 }
 
+// Summary:
+//
+// Detach a device from a folder.
+//
 // @param request - UnbindDirectoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10763,6 +11471,10 @@ func (client *Client) UnbindDirectoryWithContext(ctx context.Context, request *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Dissociates a device from a parent platform push configuration so that the device is no longer pushed.
+//
 // @param request - UnbindParentPlatformDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10811,6 +11523,10 @@ func (client *Client) UnbindParentPlatformDeviceWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds a purchased device from a space.
+//
 // @param request - UnbindPurchasedDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10855,6 +11571,14 @@ func (client *Client) UnbindPurchasedDeviceWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbind a template from a specified instance, such as a group instance or a stream.
+//
+// Description:
+//
+// > Specify at least one of TemplateId or TemplateType.
+//
 // @param request - UnbindTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10913,7 +11637,7 @@ func (client *Client) UnbindTemplateWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// 卸载云应用
+// You can uninstall a specified cloud application from a specified cloud application instance. This operation is asynchronous. You can use the ListCloudAppInstallations operation to check the uninstallation progress. After successful uninstallation, the query operation no longer returns related information.
 //
 // @param tmpReq - UninstallCloudAppRequest
 //
@@ -10985,6 +11709,10 @@ func (client *Client) UninstallCloudAppWithContext(ctx context.Context, tmpReq *
 	return _result, _err
 }
 
+// Summary:
+//
+// Unlock a device.
+//
 // @param request - UnlockDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11031,7 +11759,7 @@ func (client *Client) UnlockDeviceWithContext(ctx context.Context, request *Unlo
 
 // Summary:
 //
-// 更新云应用信息
+// Updates information for a cloud application, such as its description and tags. You can upload patch or hotfix packages and create hotfix packages for the Android cloud application marketplace. A cloud application supports up to 20 patch packages, but only one package can be in the uploading state at a time.
 //
 // @param tmpReq - UpdateCloudAppInfoRequest
 //
@@ -11103,7 +11831,7 @@ func (client *Client) UpdateCloudAppInfoWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 更新文件信息。
+// Update basic information for a file, such as its description.
 //
 // @param request - UpdateFileInfoRequest
 //
@@ -11151,7 +11879,11 @@ func (client *Client) UpdateFileInfoWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 更新云渲染实例配置参数
+// This operation updates the configuration parameters of a cloud application service instance. It lets you modify various configurations of the Cloud Android system, such as prop, location, and network, to create a real device simulation.
+//
+// You can retrieve the configured values for the real device simulation by calling the DescribeRenderingInstance API.
+//
+// To query the configuration parameters of the real-time environment, see the DescribeRenderingInstanceConfiguration API.
 //
 // @param tmpReq - UpdateRenderingInstanceConfigurationRequest
 //
@@ -11207,7 +11939,7 @@ func (client *Client) UpdateRenderingInstanceConfigurationWithContext(ctx contex
 
 // Summary:
 //
-// 更新实例设置
+// Updates the settings of a cloud application service instance.
 //
 // @param tmpReq - UpdateRenderingInstanceSettingsRequest
 //
@@ -11261,7 +11993,7 @@ func (client *Client) UpdateRenderingInstanceSettingsWithContext(ctx context.Con
 
 // Summary:
 //
-// 更新一个项目的属性信息
+// Updates a project’s properties.
 //
 // @param tmpReq - UpdateRenderingProjectRequest
 //
@@ -11321,6 +12053,10 @@ func (client *Client) UpdateRenderingProjectWithContext(ctx context.Context, tmp
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the configuration for stream pulling. You can modify the start and end times of origin server addresses in an existing stream pulling task.
+//
 // @param request - UpdateVsPullStreamInfoConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11391,7 +12127,7 @@ func (client *Client) UpdateVsPullStreamInfoConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// 应用上架
+// Upload or list a cloud application package. This is an asynchronous API. Use the ListCloudApps API to check upload progress.
 //
 // @param tmpReq - UploadCloudAppRequest
 //
@@ -11469,7 +12205,7 @@ func (client *Client) UploadCloudAppWithContext(ctx context.Context, tmpReq *Upl
 
 // Summary:
 //
-// 文件上传
+// Uploads a file from a public URL to local or cloud storage. This is an asynchronous operation. You can call the ListFiles operation to monitor the upload progress.
 //
 // @param request - UploadFileRequest
 //
@@ -11529,7 +12265,7 @@ func (client *Client) UploadFileWithContext(ctx context.Context, request *Upload
 
 // Summary:
 //
-// 上传公钥，用于安全登陆鉴权。
+// Upload a new public key.
 //
 // @param request - UploadPublicKeyRequest
 //
@@ -11587,6 +12323,10 @@ func (client *Client) UploadPublicKeyWithContext(ctx context.Context, request *U
 	return _result, _err
 }
 
+// Summary:
+//
+// # VerifyVsDomainOwner
+//
 // @param request - VerifyVsDomainOwnerRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

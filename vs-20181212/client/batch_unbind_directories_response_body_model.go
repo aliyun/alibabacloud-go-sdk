@@ -16,11 +16,14 @@ type iBatchUnbindDirectoriesResponseBody interface {
 }
 
 type BatchUnbindDirectoriesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 64DB7F34-11A8-45DC-A421-40ACF446282C
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*BatchUnbindDirectoriesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of results.
+	Results []*BatchUnbindDirectoriesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s BatchUnbindDirectoriesResponseBody) String() string {
@@ -63,14 +66,22 @@ func (s *BatchUnbindDirectoriesResponseBody) Validate() error {
 }
 
 type BatchUnbindDirectoriesResponseBodyResults struct {
+	// Folder ID.
+	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The folder ID.
+	//
 	// example:
 	//
 	// 399*****488-cn-qingdao
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The error message for the detach operation.
+	//
+	// > This field appears only if an error occurs.
+	//
 	// example:
 	//
 	// An error occurred while processing your request.

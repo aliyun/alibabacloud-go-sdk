@@ -24,23 +24,34 @@ type iDescribeDeviceChannelsResponseBody interface {
 }
 
 type DescribeDeviceChannelsResponseBody struct {
+	// The list of channels.
 	Channels []*DescribeDeviceChannelsResponseBodyChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
 	PageCount *int64 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4641C72D-462E-4AEA-8485-FC267AF90B0A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of channels.
+	//
 	// example:
 	//
 	// 1
@@ -123,31 +134,50 @@ func (s *DescribeDeviceChannelsResponseBody) Validate() error {
 }
 
 type DescribeDeviceChannelsResponseBodyChannels struct {
+	// The channel ID.
+	//
 	// example:
 	//
 	// 0
 	ChannelId *int64 `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The device ID.
+	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The status of the device.
+	//
 	// example:
 	//
 	// on
 	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	// The GB ID.
+	//
 	// example:
 	//
 	// 3100000****000000002
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	// The name of the channel.
+	//
+	// example:
+	//
+	// 通道1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Other configurations of the device.
+	//
 	// example:
 	//
 	// {}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The stream ID.
+	//
 	// example:
 	//
 	// 323*****997-cn-qingdao
 	StreamId *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
+	// The status of the stream.
+	//
 	// example:
 	//
 	// off

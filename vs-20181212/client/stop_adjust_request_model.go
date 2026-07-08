@@ -20,16 +20,22 @@ type iStopAdjustRequest interface {
 }
 
 type StopAdjustRequest struct {
+	// Stop adjusting the zoom. Default is false.
+	//
 	// example:
 	//
 	// true
 	Focus *bool `json:"Focus,omitempty" xml:"Focus,omitempty"`
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Stop adjusting the aperture. Default is false.
+	//
 	// example:
 	//
 	// true

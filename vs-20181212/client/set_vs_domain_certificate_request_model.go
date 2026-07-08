@@ -30,39 +30,67 @@ type iSetVsDomainCertificateRequest interface {
 }
 
 type SetVsDomainCertificateRequest struct {
+	// The certificate name.
+	//
 	// example:
 	//
 	// Cert-77****7
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The certificate type.
+	//
+	// - upload: Upload certificate
+	//
+	// - cas: Alibaba Cloud Security certificate
+	//
+	// - free: Personal test certificate (Free Edition)
+	//
 	// example:
 	//
 	// free
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// The accelerated domain name to which the certificate belongs.
+	//
+	// > The domain must use HTTPS acceleration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Set to 1 to skip the certificate name duplication check and overwrite an existing certificate with the same name.
+	//
 	// example:
 	//
 	// 1
 	ForceSet *string `json:"ForceSet,omitempty" xml:"ForceSet,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-qingdao
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The private key content. Omit this parameter if you disable the certificate. Provide the private key content if you configure a certificate.
+	//
 	// example:
 	//
 	// xxxxxxx
 	SSLPri *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
+	// Whether to enable the HTTPS certificate. Valid values:
+	//
+	// - **on**: Enable.
+	//
+	// - **off*	- (default): Disable.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// on
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
+	// The public certificate content. Omit this parameter if you disable the certificate. Provide the certificate content if you configure a certificate.
+	//
 	// example:
 	//
 	// 328uiuii28****82dsada81

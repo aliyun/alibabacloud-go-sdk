@@ -14,6 +14,8 @@ type iDeleteFileRequest interface {
 }
 
 type DeleteFileRequest struct {
+	// File ID. Each file has a unique ID.
+	//
 	// This parameter is required.
 	//
 	// example:

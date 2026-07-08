@@ -22,20 +22,40 @@ type iSetVsStreamsNotifyUrlConfigRequest interface {
 }
 
 type SetVsStreamsNotifyUrlConfigRequest struct {
+	// The primary key associated with the playback domain name. This key generates authenticated URLs.
+	//
+	// > Call the [DescribeVsDomainConfigs](https://help.aliyun.com/document_detail/464513.html) operation to query the AuthKey value.
+	//
 	// example:
 	//
 	// ocs*****ace
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	// The authentication type. Valid values:
+	//
+	// - **no_auth*	- (disabled)
+	//
+	// - **type_a*	- (method A)
+	//
+	// - **type_b*	- (method B)
+	//
+	// - **type_c*	- (method C)
+	//
 	// example:
 	//
 	// type_a
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Your accelerated domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The URL to which live stream information is pushed.
+	//
+	// > This URL must start with http\\:// or https\\://.
+	//
 	// This parameter is required.
 	//
 	// example:

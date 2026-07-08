@@ -16,6 +16,8 @@ type iCreateRenderingProjectResponseBody interface {
 }
 
 type CreateRenderingProjectResponseBody struct {
+	// The project ID. Call ListRenderingProjects to view the project ID.
+	//
 	// example:
 	//
 	// project-b93ea81de76f48609eed3cd420f0399f

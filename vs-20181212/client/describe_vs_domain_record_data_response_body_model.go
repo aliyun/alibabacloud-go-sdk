@@ -17,6 +17,8 @@ type iDescribeVsDomainRecordDataResponseBody interface {
 
 type DescribeVsDomainRecordDataResponseBody struct {
 	RecordDataPerInterval *DescribeVsDomainRecordDataResponseBodyRecordDataPerInterval `json:"RecordDataPerInterval,omitempty" xml:"RecordDataPerInterval,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

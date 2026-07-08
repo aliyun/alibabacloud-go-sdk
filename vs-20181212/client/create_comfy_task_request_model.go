@@ -18,18 +18,24 @@ type iCreateComfyTaskRequest interface {
 }
 
 type CreateComfyTaskRequest struct {
+	// The ID of the resource pool.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hive-26cd567b35c04a0a90f017388207b232
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
+	// The parameters to replace in the workflow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"2":{"text":"masterpiece, best quality, beautiful cat, sunny day"},"3":{"text":"low quality, worst quality, blurry, watermark, text, signature"}}
 	UserParameters *string `json:"UserParameters,omitempty" xml:"UserParameters,omitempty"`
+	// The ID of the Comfy workflow to start.
+	//
 	// This parameter is required.
 	//
 	// example:

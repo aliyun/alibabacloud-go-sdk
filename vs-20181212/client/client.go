@@ -25,6 +25,12 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shenzhen": dara.String("vs.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai": dara.String("vs.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":  dara.String("vs.cn-qingdao.aliyuncs.com"),
+		"cn-beijing":  dara.String("vs.cn-beijing.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,13 +64,19 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 添加负载到集群
+// Adds one or more instances to a specified cluster.
 //
 // Description:
 //
-// ## 请求说明
+// ## Usage notes
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - **HiveId*	- is a required parameter that specifies the ID of the target cluster.
+//
+// - **InstanceIds*	- is a required parameter that specifies a list of instance IDs to add.
+//
+// - Adding an instance that already exists in the target cluster returns an error message.
+//
+// - The response includes lists of successful and failed instances. This allows you to verify which instances were added and review the reasons for any failures.
 //
 // @param tmpReq - AddHiveEdgeWorkersRequest
 //
@@ -118,13 +130,19 @@ func (client *Client) AddHiveEdgeWorkersWithOptions(tmpReq *AddHiveEdgeWorkersRe
 
 // Summary:
 //
-// 添加负载到集群
+// Adds one or more instances to a specified cluster.
 //
 // Description:
 //
-// ## 请求说明
+// ## Usage notes
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - **HiveId*	- is a required parameter that specifies the ID of the target cluster.
+//
+// - **InstanceIds*	- is a required parameter that specifies a list of instance IDs to add.
+//
+// - Adding an instance that already exists in the target cluster returns an error message.
+//
+// - The response includes lists of successful and failed instances. This allows you to verify which instances were added and review the reasons for any failures.
 //
 // @param request - AddHiveEdgeWorkersRequest
 //
@@ -140,6 +158,10 @@ func (client *Client) AddHiveEdgeWorkers(request *AddHiveEdgeWorkersRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a stream pulling configuration.
+//
 // @param request - AddVsPullStreamInfoConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -208,6 +230,10 @@ func (client *Client) AddVsPullStreamInfoConfigWithOptions(request *AddVsPullStr
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a stream pulling configuration.
+//
 // @param request - AddVsPullStreamInfoConfigRequest
 //
 // @return AddVsPullStreamInfoConfigResponse
@@ -224,13 +250,13 @@ func (client *Client) AddVsPullStreamInfoConfig(request *AddVsPullStreamInfoConf
 
 // Summary:
 //
-// 云应用服务实例与项目进行关联。
+// Associates cloud application service instances with a project.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - This operation associates instances that meet specific conditions with a specified project.
 //
 // @param tmpReq - AssociateRenderingProjectInstancesRequest
 //
@@ -284,13 +310,13 @@ func (client *Client) AssociateRenderingProjectInstancesWithOptions(tmpReq *Asso
 
 // Summary:
 //
-// 云应用服务实例与项目进行关联。
+// Associates cloud application service instances with a project.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - This operation associates instances that meet specific conditions with a specified project.
 //
 // @param request - AssociateRenderingProjectInstancesRequest
 //
@@ -306,6 +332,10 @@ func (client *Client) AssociateRenderingProjectInstances(request *AssociateRende
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds multiple devices to directories in a single operation.
+//
 // @param request - BatchBindDirectoriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -354,6 +384,10 @@ func (client *Client) BatchBindDirectoriesWithOptions(request *BatchBindDirector
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds multiple devices to directories in a single operation.
+//
 // @param request - BatchBindDirectoriesRequest
 //
 // @return BatchBindDirectoriesResponse
@@ -368,6 +402,10 @@ func (client *Client) BatchBindDirectories(request *BatchBindDirectoriesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds multiple devices to a parent platform for push in batches.
+//
 // @param request - BatchBindParentPlatformDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -416,6 +454,10 @@ func (client *Client) BatchBindParentPlatformDevicesWithOptions(request *BatchBi
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds multiple devices to a parent platform for push in batches.
+//
 // @param request - BatchBindParentPlatformDevicesRequest
 //
 // @return BatchBindParentPlatformDevicesResponse
@@ -430,6 +472,10 @@ func (client *Client) BatchBindParentPlatformDevices(request *BatchBindParentPla
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds multiple purchased devices.
+//
 // @param request - BatchBindPurchasedDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -482,6 +528,10 @@ func (client *Client) BatchBindPurchasedDevicesWithOptions(request *BatchBindPur
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds multiple purchased devices.
+//
 // @param request - BatchBindPurchasedDevicesRequest
 //
 // @return BatchBindPurchasedDevicesResponse
@@ -496,6 +546,10 @@ func (client *Client) BatchBindPurchasedDevices(request *BatchBindPurchasedDevic
 	return _result, _err
 }
 
+// Summary:
+//
+// Bind templates to multiple specified instances, such as instances bound to spaces and streams.
+//
 // @param request - BatchBindTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -556,6 +610,10 @@ func (client *Client) BatchBindTemplateWithOptions(request *BatchBindTemplateReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Bind templates to multiple specified instances, such as instances bound to spaces and streams.
+//
 // @param request - BatchBindTemplateRequest
 //
 // @return BatchBindTemplateResponse
@@ -570,6 +628,10 @@ func (client *Client) BatchBindTemplate(request *BatchBindTemplateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds multiple templates in a single operation.
+//
 // @param request - BatchBindTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -634,6 +696,10 @@ func (client *Client) BatchBindTemplatesWithOptions(request *BatchBindTemplatesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds multiple templates in a single operation.
+//
 // @param request - BatchBindTemplatesRequest
 //
 // @return BatchBindTemplatesResponse
@@ -648,6 +714,106 @@ func (client *Client) BatchBindTemplates(request *BatchBindTemplatesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves screenshots of cloud application service instances.
+//
+// Description:
+//
+// ## Request description
+//
+// - **Authentication**: Requests must include the `AliUid` parameter for identity verification.
+//
+// - **Instance specification**: Use `RenderingInstanceIds` to specify the instances to capture screenshots from.
+//
+// - **Screenshot quality**: Use the `Quality` parameter to set the image quality of screenshots. The default value is 75 (if not configured). Valid values: 1 to 100.
+//
+// - **Response handling**: The response contains lists of successful and failed instances with related information, including download URLs and screenshot completion times.
+//
+// @param tmpReq - BatchCaptureRenderingInstanceScreenshotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCaptureRenderingInstanceScreenshotResponse
+func (client *Client) BatchCaptureRenderingInstanceScreenshotWithOptions(tmpReq *BatchCaptureRenderingInstanceScreenshotRequest, runtime *dara.RuntimeOptions) (_result *BatchCaptureRenderingInstanceScreenshotResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchCaptureRenderingInstanceScreenshotShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RenderingInstanceIds) {
+		request.RenderingInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RenderingInstanceIds, dara.String("RenderingInstanceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Quality) {
+		query["Quality"] = request.Quality
+	}
+
+	if !dara.IsNil(request.RenderingInstanceIdsShrink) {
+		query["RenderingInstanceIds"] = request.RenderingInstanceIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchCaptureRenderingInstanceScreenshot"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchCaptureRenderingInstanceScreenshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves screenshots of cloud application service instances.
+//
+// Description:
+//
+// ## Request description
+//
+// - **Authentication**: Requests must include the `AliUid` parameter for identity verification.
+//
+// - **Instance specification**: Use `RenderingInstanceIds` to specify the instances to capture screenshots from.
+//
+// - **Screenshot quality**: Use the `Quality` parameter to set the image quality of screenshots. The default value is 75 (if not configured). Valid values: 1 to 100.
+//
+// - **Response handling**: The response contains lists of successful and failed instances with related information, including download URLs and screenshot completion times.
+//
+// @param request - BatchCaptureRenderingInstanceScreenshotRequest
+//
+// @return BatchCaptureRenderingInstanceScreenshotResponse
+func (client *Client) BatchCaptureRenderingInstanceScreenshot(request *BatchCaptureRenderingInstanceScreenshotRequest) (_result *BatchCaptureRenderingInstanceScreenshotResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BatchCaptureRenderingInstanceScreenshotResponse{}
+	_body, _err := client.BatchCaptureRenderingInstanceScreenshotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes multiple devices in a single operation.
+//
 // @param request - BatchDeleteDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -692,6 +858,10 @@ func (client *Client) BatchDeleteDevicesWithOptions(request *BatchDeleteDevicesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes multiple devices in a single operation.
+//
 // @param request - BatchDeleteDevicesRequest
 //
 // @return BatchDeleteDevicesResponse
@@ -706,6 +876,10 @@ func (client *Client) BatchDeleteDevices(request *BatchDeleteDevicesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes domain name configurations in a batch.
+//
 // @param request - BatchDeleteVsDomainConfigsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -754,6 +928,10 @@ func (client *Client) BatchDeleteVsDomainConfigsWithOptions(request *BatchDelete
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes domain name configurations in a batch.
+//
 // @param request - BatchDeleteVsDomainConfigsRequest
 //
 // @return BatchDeleteVsDomainConfigsResponse
@@ -768,6 +946,10 @@ func (client *Client) BatchDeleteVsDomainConfigs(request *BatchDeleteVsDomainCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Stop stream ingest for one or more streams. You can schedule when to resume ingest.
+//
 // @param request - BatchForbidVsStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -832,6 +1014,10 @@ func (client *Client) BatchForbidVsStreamWithOptions(request *BatchForbidVsStrea
 	return _result, _err
 }
 
+// Summary:
+//
+// Stop stream ingest for one or more streams. You can schedule when to resume ingest.
+//
 // @param request - BatchForbidVsStreamRequest
 //
 // @return BatchForbidVsStreamResponse
@@ -846,6 +1032,10 @@ func (client *Client) BatchForbidVsStream(request *BatchForbidVsStreamRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes stream ingest for one or more streams.
+//
 // @param request - BatchResumeVsStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -902,6 +1092,10 @@ func (client *Client) BatchResumeVsStreamWithOptions(request *BatchResumeVsStrea
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes stream ingest for one or more streams.
+//
 // @param request - BatchResumeVsStreamRequest
 //
 // @return BatchResumeVsStreamResponse
@@ -916,6 +1110,10 @@ func (client *Client) BatchResumeVsStream(request *BatchResumeVsStreamRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Configure multiple domain names in batch.
+//
 // @param request - BatchSetVsDomainConfigsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -964,6 +1162,10 @@ func (client *Client) BatchSetVsDomainConfigsWithOptions(request *BatchSetVsDoma
 	return _result, _err
 }
 
+// Summary:
+//
+// Configure multiple domain names in batch.
+//
 // @param request - BatchSetVsDomainConfigsRequest
 //
 // @return BatchSetVsDomainConfigsResponse
@@ -978,6 +1180,10 @@ func (client *Client) BatchSetVsDomainConfigs(request *BatchSetVsDomainConfigsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Start stream pulling for multiple devices at once.
+//
 // @param request - BatchStartDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1022,6 +1228,10 @@ func (client *Client) BatchStartDevicesWithOptions(request *BatchStartDevicesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Start stream pulling for multiple devices at once.
+//
 // @param request - BatchStartDevicesRequest
 //
 // @return BatchStartDevicesResponse
@@ -1036,6 +1246,10 @@ func (client *Client) BatchStartDevices(request *BatchStartDevicesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts multiple streams.
+//
 // @param request - BatchStartStreamsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1080,6 +1294,10 @@ func (client *Client) BatchStartStreamsWithOptions(request *BatchStartStreamsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts multiple streams.
+//
 // @param request - BatchStartStreamsRequest
 //
 // @return BatchStartStreamsResponse
@@ -1094,6 +1312,10 @@ func (client *Client) BatchStartStreams(request *BatchStartStreamsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops stream pulling for multiple devices.
+//
 // @param request - BatchStopDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1142,6 +1364,10 @@ func (client *Client) BatchStopDevicesWithOptions(request *BatchStopDevicesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops stream pulling for multiple devices.
+//
 // @param request - BatchStopDevicesRequest
 //
 // @return BatchStopDevicesResponse
@@ -1156,6 +1382,10 @@ func (client *Client) BatchStopDevices(request *BatchStopDevicesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops multiple streams in a batch.
+//
 // @param request - BatchStopStreamsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1204,6 +1434,10 @@ func (client *Client) BatchStopStreamsWithOptions(request *BatchStopStreamsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops multiple streams in a batch.
+//
 // @param request - BatchStopStreamsRequest
 //
 // @return BatchStopStreamsResponse
@@ -1218,6 +1452,10 @@ func (client *Client) BatchStopStreams(request *BatchStopStreamsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Detaches multiple devices from a folder in bulk.
+//
 // @param request - BatchUnbindDirectoriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1266,6 +1504,10 @@ func (client *Client) BatchUnbindDirectoriesWithOptions(request *BatchUnbindDire
 	return _result, _err
 }
 
+// Summary:
+//
+// Detaches multiple devices from a folder in bulk.
+//
 // @param request - BatchUnbindDirectoriesRequest
 //
 // @return BatchUnbindDirectoriesResponse
@@ -1280,6 +1522,10 @@ func (client *Client) BatchUnbindDirectories(request *BatchUnbindDirectoriesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Batch unbind multiple devices from parent platform push.
+//
 // @param request - BatchUnbindParentPlatformDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1328,6 +1574,10 @@ func (client *Client) BatchUnbindParentPlatformDevicesWithOptions(request *Batch
 	return _result, _err
 }
 
+// Summary:
+//
+// Batch unbind multiple devices from parent platform push.
+//
 // @param request - BatchUnbindParentPlatformDevicesRequest
 //
 // @return BatchUnbindParentPlatformDevicesResponse
@@ -1342,6 +1592,10 @@ func (client *Client) BatchUnbindParentPlatformDevices(request *BatchUnbindParen
 	return _result, _err
 }
 
+// Summary:
+//
+// Detach multiple purchased devices from a space in a single operation.
+//
 // @param request - BatchUnbindPurchasedDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1386,6 +1640,10 @@ func (client *Client) BatchUnbindPurchasedDevicesWithOptions(request *BatchUnbin
 	return _result, _err
 }
 
+// Summary:
+//
+// Detach multiple purchased devices from a space in a single operation.
+//
 // @param request - BatchUnbindPurchasedDevicesRequest
 //
 // @return BatchUnbindPurchasedDevicesResponse
@@ -1400,6 +1658,14 @@ func (client *Client) BatchUnbindPurchasedDevices(request *BatchUnbindPurchasedD
 	return _result, _err
 }
 
+// Summary:
+//
+// Detach a template from multiple specified instances, such as space instances or stream instances.
+//
+// Description:
+//
+// > Specify at least one of TemplateId or TemplateType.
+//
 // @param request - BatchUnbindTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1456,6 +1722,14 @@ func (client *Client) BatchUnbindTemplateWithOptions(request *BatchUnbindTemplat
 	return _result, _err
 }
 
+// Summary:
+//
+// Detach a template from multiple specified instances, such as space instances or stream instances.
+//
+// Description:
+//
+// > Specify at least one of TemplateId or TemplateType.
+//
 // @param request - BatchUnbindTemplateRequest
 //
 // @return BatchUnbindTemplateResponse
@@ -1470,6 +1744,10 @@ func (client *Client) BatchUnbindTemplate(request *BatchUnbindTemplateRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbind multiple templates simultaneously.
+//
 // @param request - BatchUnbindTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1526,6 +1804,10 @@ func (client *Client) BatchUnbindTemplatesWithOptions(request *BatchUnbindTempla
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbind multiple templates simultaneously.
+//
 // @param request - BatchUnbindTemplatesRequest
 //
 // @return BatchUnbindTemplatesResponse
@@ -1540,6 +1822,10 @@ func (client *Client) BatchUnbindTemplates(request *BatchUnbindTemplatesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Attach a device to a folder.
+//
 // @param request - BindDirectoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1588,6 +1874,10 @@ func (client *Client) BindDirectoryWithOptions(request *BindDirectoryRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Attach a device to a folder.
+//
 // @param request - BindDirectoryRequest
 //
 // @return BindDirectoryResponse
@@ -1602,6 +1892,10 @@ func (client *Client) BindDirectory(request *BindDirectoryRequest) (_result *Bin
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a device to push streams to a parent platform.
+//
 // @param request - BindParentPlatformDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1650,6 +1944,10 @@ func (client *Client) BindParentPlatformDeviceWithOptions(request *BindParentPla
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a device to push streams to a parent platform.
+//
 // @param request - BindParentPlatformDeviceRequest
 //
 // @return BindParentPlatformDeviceResponse
@@ -1664,6 +1962,10 @@ func (client *Client) BindParentPlatformDevice(request *BindParentPlatformDevice
 	return _result, _err
 }
 
+// Summary:
+//
+// Attach purchased devices to a space.
+//
 // @param request - BindPurchasedDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1716,6 +2018,10 @@ func (client *Client) BindPurchasedDeviceWithOptions(request *BindPurchasedDevic
 	return _result, _err
 }
 
+// Summary:
+//
+// Attach purchased devices to a space.
+//
 // @param request - BindPurchasedDeviceRequest
 //
 // @return BindPurchasedDeviceResponse
@@ -1730,6 +2036,10 @@ func (client *Client) BindPurchasedDevice(request *BindPurchasedDeviceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a template to a specified instance, such as a group or stream.
+//
 // @param request - BindTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1794,6 +2104,10 @@ func (client *Client) BindTemplateWithOptions(request *BindTemplateRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a template to a specified instance, such as a group or stream.
+//
 // @param request - BindTemplateRequest
 //
 // @return BindTemplateResponse
@@ -1810,7 +2124,11 @@ func (client *Client) BindTemplate(request *BindTemplateRequest) (_result *BindT
 
 // Summary:
 //
-// 上传用户数据文件
+// Cancels a Comfy task.
+//
+// Description:
+//
+// > Stop the parent platform before canceling the task.
 //
 // @param request - CancelComfyTaskRequest
 //
@@ -1854,7 +2172,11 @@ func (client *Client) CancelComfyTaskWithOptions(request *CancelComfyTaskRequest
 
 // Summary:
 //
-// 上传用户数据文件
+// Cancels a Comfy task.
+//
+// Description:
+//
+// > Stop the parent platform before canceling the task.
 //
 // @param request - CancelComfyTaskRequest
 //
@@ -1870,6 +2192,10 @@ func (client *Client) CancelComfyTask(request *CancelComfyTaskRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Continuously adjust lens parameters such as aperture and zoom.
+//
 // @param request - ContinuousAdjustRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1922,6 +2248,10 @@ func (client *Client) ContinuousAdjustWithOptions(request *ContinuousAdjustReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Continuously adjust lens parameters such as aperture and zoom.
+//
 // @param request - ContinuousAdjustRequest
 //
 // @return ContinuousAdjustResponse
@@ -1936,6 +2266,10 @@ func (client *Client) ContinuousAdjust(request *ContinuousAdjustRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Rotate the camera continuously by panning, tilting, or zooming.
+//
 // @param request - ContinuousMoveRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1992,6 +2326,10 @@ func (client *Client) ContinuousMoveWithOptions(request *ContinuousMoveRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Rotate the camera continuously by panning, tilting, or zooming.
+//
 // @param request - ContinuousMoveRequest
 //
 // @return ContinuousMoveResponse
@@ -2008,7 +2346,11 @@ func (client *Client) ContinuousMove(request *ContinuousMoveRequest) (_result *C
 
 // Summary:
 //
-// 上传用户数据文件
+// Starts a Comfy task.
+//
+// Description:
+//
+// > You must first enable the on-demand screenshot feature in the associated screenshot template.
 //
 // @param request - CreateComfyTaskRequest
 //
@@ -2060,7 +2402,11 @@ func (client *Client) CreateComfyTaskWithOptions(request *CreateComfyTaskRequest
 
 // Summary:
 //
-// 上传用户数据文件
+// Starts a Comfy task.
+//
+// Description:
+//
+// > You must first enable the on-demand screenshot feature in the associated screenshot template.
 //
 // @param request - CreateComfyTaskRequest
 //
@@ -2078,7 +2424,11 @@ func (client *Client) CreateComfyTask(request *CreateComfyTaskRequest) (_result 
 
 // Summary:
 //
-// 创建一个用户数据的目录
+// Creates a directory for user data.
+//
+// Description:
+//
+// > You must specify either a template ID or a template type.
 //
 // @param request - CreateComfyUserDataDirRequest
 //
@@ -2122,7 +2472,11 @@ func (client *Client) CreateComfyUserDataDirWithOptions(request *CreateComfyUser
 
 // Summary:
 //
-// 创建一个用户数据的目录
+// Creates a directory for user data.
+//
+// Description:
+//
+// > You must specify either a template ID or a template type.
 //
 // @param request - CreateComfyUserDataDirRequest
 //
@@ -2140,7 +2494,11 @@ func (client *Client) CreateComfyUserDataDir(request *CreateComfyUserDataDirRequ
 
 // Summary:
 //
-// 创建Comfy工作流
+// Creates a Comfy workflow.
+//
+// Description:
+//
+// > You must enable the on-demand screenshot feature in the associated screenshot template before calling this operation.
 //
 // @param request - CreateComfyWorkflowRequest
 //
@@ -2192,7 +2550,11 @@ func (client *Client) CreateComfyWorkflowWithOptions(request *CreateComfyWorkflo
 
 // Summary:
 //
-// 创建Comfy工作流
+// Creates a Comfy workflow.
+//
+// Description:
+//
+// > You must enable the on-demand screenshot feature in the associated screenshot template before calling this operation.
 //
 // @param request - CreateComfyWorkflowRequest
 //
@@ -2208,6 +2570,10 @@ func (client *Client) CreateComfyWorkflow(request *CreateComfyWorkflowRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Add a new device.
+//
 // @param request - CreateDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2336,6 +2702,10 @@ func (client *Client) CreateDeviceWithOptions(request *CreateDeviceRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Add a new device.
+//
 // @param request - CreateDeviceRequest
 //
 // @return CreateDeviceResponse
@@ -2350,6 +2720,10 @@ func (client *Client) CreateDevice(request *CreateDeviceRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// Reports a device alert.
+//
 // @param request - CreateDeviceAlarmRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2422,6 +2796,10 @@ func (client *Client) CreateDeviceAlarmWithOptions(request *CreateDeviceAlarmReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Reports a device alert.
+//
 // @param request - CreateDeviceAlarmRequest
 //
 // @return CreateDeviceAlarmResponse
@@ -2436,6 +2814,10 @@ func (client *Client) CreateDeviceAlarm(request *CreateDeviceAlarmRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a new folder.
+//
 // @param request - CreateDirectoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2492,6 +2874,10 @@ func (client *Client) CreateDirectoryWithOptions(request *CreateDirectoryRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a new folder.
+//
 // @param request - CreateDirectoryRequest
 //
 // @return CreateDirectoryResponse
@@ -2506,6 +2892,10 @@ func (client *Client) CreateDirectory(request *CreateDirectoryRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a new workspace.
+//
 // @param request - CreateGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2586,6 +2976,10 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a new workspace.
+//
 // @param request - CreateGroupRequest
 //
 // @return CreateGroupResponse
@@ -2602,13 +2996,13 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
-// 创建集群
+// Creates a cluster.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - This operation creates an empty cluster to manage workloads.
 //
 // @param request - CreateHiveRequest
 //
@@ -2656,13 +3050,13 @@ func (client *Client) CreateHiveWithOptions(request *CreateHiveRequest, runtime 
 
 // Summary:
 //
-// 创建集群
+// Creates a cluster.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - This operation creates an empty cluster to manage workloads.
 //
 // @param request - CreateHiveRequest
 //
@@ -2678,6 +3072,10 @@ func (client *Client) CreateHive(request *CreateHiveRequest) (_result *CreateHiv
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a new parent platform.
+//
 // @param request - CreateParentPlatformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2758,6 +3156,10 @@ func (client *Client) CreateParentPlatformWithOptions(request *CreateParentPlatf
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a new parent platform.
+//
 // @param request - CreateParentPlatformRequest
 //
 // @return CreateParentPlatformResponse
@@ -2774,7 +3176,7 @@ func (client *Client) CreateParentPlatform(request *CreateParentPlatformRequest)
 
 // Summary:
 //
-// 创建云渲染数据包
+// Creates a data pack for a cloud application service.
 //
 // @param request - CreateRenderingDataPackageRequest
 //
@@ -2830,7 +3232,7 @@ func (client *Client) CreateRenderingDataPackageWithOptions(request *CreateRende
 
 // Summary:
 //
-// 创建云渲染数据包
+// Creates a data pack for a cloud application service.
 //
 // @param request - CreateRenderingDataPackageRequest
 //
@@ -2848,7 +3250,7 @@ func (client *Client) CreateRenderingDataPackage(request *CreateRenderingDataPac
 
 // Summary:
 //
-// 申请云渲染资源实例
+// Call CreateRenderingInstance to create a cloud application service instance.
 //
 // @param tmpReq - CreateRenderingInstanceRequest
 //
@@ -2938,7 +3340,7 @@ func (client *Client) CreateRenderingInstanceWithOptions(tmpReq *CreateRendering
 
 // Summary:
 //
-// 申请云渲染资源实例
+// Call CreateRenderingInstance to create a cloud application service instance.
 //
 // @param request - CreateRenderingInstanceRequest
 //
@@ -2956,7 +3358,11 @@ func (client *Client) CreateRenderingInstance(request *CreateRenderingInstanceRe
 
 // Summary:
 //
-// 创建自定义网关
+// Creates a custom gateway.
+//
+// Description:
+//
+// > You can specify a template ID or a template type.
 //
 // @param request - CreateRenderingInstanceGatewayRequest
 //
@@ -3004,7 +3410,11 @@ func (client *Client) CreateRenderingInstanceGatewayWithOptions(request *CreateR
 
 // Summary:
 //
-// 创建自定义网关
+// Creates a custom gateway.
+//
+// Description:
+//
+// > You can specify a template ID or a template type.
 //
 // @param request - CreateRenderingInstanceGatewayRequest
 //
@@ -3022,7 +3432,7 @@ func (client *Client) CreateRenderingInstanceGateway(request *CreateRenderingIns
 
 // Summary:
 //
-// 创建一个新的云应用服务项目，并设置相关属性。
+// Creates a cloud application service project and configures its properties, such as session attributes.
 //
 // @param tmpReq - CreateRenderingProjectRequest
 //
@@ -3080,7 +3490,7 @@ func (client *Client) CreateRenderingProjectWithOptions(tmpReq *CreateRenderingP
 
 // Summary:
 //
-// 创建一个新的云应用服务项目，并设置相关属性。
+// Creates a cloud application service project and configures its properties, such as session attributes.
 //
 // @param request - CreateRenderingProjectRequest
 //
@@ -3096,6 +3506,14 @@ func (client *Client) CreateRenderingProject(request *CreateRenderingProjectRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an on-demand snapshot for the specified stream.
+//
+// Description:
+//
+// > You must first enable the on-demand snapshot feature in the attached snapshot template.
+//
 // @param request - CreateStreamSnapshotRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3144,6 +3562,14 @@ func (client *Client) CreateStreamSnapshotWithOptions(request *CreateStreamSnaps
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an on-demand snapshot for the specified stream.
+//
+// Description:
+//
+// > You must first enable the on-demand snapshot feature in the attached snapshot template.
+//
 // @param request - CreateStreamSnapshotRequest
 //
 // @return CreateStreamSnapshotResponse
@@ -3158,6 +3584,10 @@ func (client *Client) CreateStreamSnapshot(request *CreateStreamSnapshotRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a new template.
+//
 // @param request - CreateTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3278,6 +3708,10 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a new template.
+//
 // @param request - CreateTemplateRequest
 //
 // @return CreateTemplateResponse
@@ -3300,7 +3734,11 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 //
 // ## 请求说明
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - **HiveId*	- 是必填参数，表示要操作的集群ID。
+//
+// - **InstanceIds*	- 是必填参数，需要提供一个负载ID列表，用于指定要从集群中解绑的负载实例。
+//
+// - 解绑操作成功后，会返回成功和失败的负载实例列表及其相关信息。
 //
 // @param tmpReq - DelHiveEdgeWorkersRequest
 //
@@ -3360,7 +3798,11 @@ func (client *Client) DelHiveEdgeWorkersWithOptions(tmpReq *DelHiveEdgeWorkersRe
 //
 // ## 请求说明
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - **HiveId*	- 是必填参数，表示要操作的集群ID。
+//
+// - **InstanceIds*	- 是必填参数，需要提供一个负载ID列表，用于指定要从集群中解绑的负载实例。
+//
+// - 解绑操作成功后，会返回成功和失败的负载实例列表及其相关信息。
 //
 // @param request - DelHiveEdgeWorkersRequest
 //
@@ -3378,7 +3820,7 @@ func (client *Client) DelHiveEdgeWorkers(request *DelHiveEdgeWorkersRequest) (_r
 
 // Summary:
 //
-// 删除云应用
+// Deletes a cloud application. You cannot delete a cloud application that is in use.
 //
 // @param request - DeleteCloudAppRequest
 //
@@ -3422,7 +3864,7 @@ func (client *Client) DeleteCloudAppWithOptions(request *DeleteCloudAppRequest, 
 
 // Summary:
 //
-// 删除云应用
+// Deletes a cloud application. You cannot delete a cloud application that is in use.
 //
 // @param request - DeleteCloudAppRequest
 //
@@ -3440,7 +3882,11 @@ func (client *Client) DeleteCloudApp(request *DeleteCloudAppRequest) (_result *D
 
 // Summary:
 //
-// 删除用户的生成结果
+// # Deleting artifacts
+//
+// Description:
+//
+// > Stop the parent platform before you delete a production.
 //
 // @param request - DeleteComfyProductionRequest
 //
@@ -3484,7 +3930,11 @@ func (client *Client) DeleteComfyProductionWithOptions(request *DeleteComfyProdu
 
 // Summary:
 //
-// 删除用户的生成结果
+// # Deleting artifacts
+//
+// Description:
+//
+// > Stop the parent platform before you delete a production.
 //
 // @param request - DeleteComfyProductionRequest
 //
@@ -3502,7 +3952,11 @@ func (client *Client) DeleteComfyProduction(request *DeleteComfyProductionReques
 
 // Summary:
 //
-// 删除用户数据的中的文件或目录
+// Deletes a file or directory from user data.
+//
+// Description:
+//
+// > You must stop the upper-level platform before performing this operation.
 //
 // @param request - DeleteComfyUserDataRequest
 //
@@ -3546,7 +4000,11 @@ func (client *Client) DeleteComfyUserDataWithOptions(request *DeleteComfyUserDat
 
 // Summary:
 //
-// 删除用户数据的中的文件或目录
+// Deletes a file or directory from user data.
+//
+// Description:
+//
+// > You must stop the upper-level platform before performing this operation.
 //
 // @param request - DeleteComfyUserDataRequest
 //
@@ -3564,7 +4022,11 @@ func (client *Client) DeleteComfyUserData(request *DeleteComfyUserDataRequest) (
 
 // Summary:
 //
-// 删除Comfy工作流
+// Deletes a Comfy workflow.
+//
+// Description:
+//
+// > You must stop the parent platform before you can delete the workflow.
 //
 // @param request - DeleteComfyWorkflowRequest
 //
@@ -3608,7 +4070,11 @@ func (client *Client) DeleteComfyWorkflowWithOptions(request *DeleteComfyWorkflo
 
 // Summary:
 //
-// 删除Comfy工作流
+// Deletes a Comfy workflow.
+//
+// Description:
+//
+// > You must stop the parent platform before you can delete the workflow.
 //
 // @param request - DeleteComfyWorkflowRequest
 //
@@ -3624,6 +4090,10 @@ func (client *Client) DeleteComfyWorkflow(request *DeleteComfyWorkflowRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a device from a space.
+//
 // @param request - DeleteDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3668,6 +4138,10 @@ func (client *Client) DeleteDeviceWithOptions(request *DeleteDeviceRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a device from a space.
+//
 // @param request - DeleteDeviceRequest
 //
 // @return DeleteDeviceResponse
@@ -3682,6 +4156,10 @@ func (client *Client) DeleteDevice(request *DeleteDeviceRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a folder.
+//
 // @param request - DeleteDirectoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3726,6 +4204,10 @@ func (client *Client) DeleteDirectoryWithOptions(request *DeleteDirectoryRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a folder.
+//
 // @param request - DeleteDirectoryRequest
 //
 // @return DeleteDirectoryResponse
@@ -3742,7 +4224,7 @@ func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result 
 
 // Summary:
 //
-// 删除文件对象。
+// You cannot delete a file while it is uploading or pre-pushing. After deletion, all related push records become invalid. You can push a file with the same name again.
 //
 // @param request - DeleteFileRequest
 //
@@ -3786,7 +4268,7 @@ func (client *Client) DeleteFileWithOptions(request *DeleteFileRequest, runtime 
 
 // Summary:
 //
-// 删除文件对象。
+// You cannot delete a file while it is uploading or pre-pushing. After deletion, all related push records become invalid. You can push a file with the same name again.
 //
 // @param request - DeleteFileRequest
 //
@@ -3802,6 +4284,10 @@ func (client *Client) DeleteFile(request *DeleteFileRequest) (_result *DeleteFil
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete a workspace.
+//
 // @param request - DeleteGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3846,6 +4332,10 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete a workspace.
+//
 // @param request - DeleteGroupRequest
 //
 // @return DeleteGroupResponse
@@ -3868,7 +4358,9 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 //
 // ## 请求说明
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - 需要确保该集群内所有应用服务已清空，否则无法执行删除操作。
+//
+// - `HiveId` 是必填参数，用于标识待删除的集群。
 //
 // @param request - DeleteHiveRequest
 //
@@ -3918,7 +4410,9 @@ func (client *Client) DeleteHiveWithOptions(request *DeleteHiveRequest, runtime 
 //
 // ## 请求说明
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - 需要确保该集群内所有应用服务已清空，否则无法执行删除操作。
+//
+// - `HiveId` 是必填参数，用于标识待删除的集群。
 //
 // @param request - DeleteHiveRequest
 //
@@ -3934,6 +4428,14 @@ func (client *Client) DeleteHive(request *DeleteHiveRequest) (_result *DeleteHiv
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a parent platform.
+//
+// Description:
+//
+// > You must stop the parent platform before you delete it.
+//
 // @param request - DeleteParentPlatformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3978,6 +4480,14 @@ func (client *Client) DeleteParentPlatformWithOptions(request *DeleteParentPlatf
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a parent platform.
+//
+// Description:
+//
+// > You must stop the parent platform before you delete it.
+//
 // @param request - DeleteParentPlatformRequest
 //
 // @return DeleteParentPlatformResponse
@@ -3992,6 +4502,10 @@ func (client *Client) DeleteParentPlatform(request *DeleteParentPlatformRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a preset.
+//
 // @param request - DeletePresetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4040,6 +4554,10 @@ func (client *Client) DeletePresetWithOptions(request *DeletePresetRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a preset.
+//
 // @param request - DeletePresetRequest
 //
 // @return DeletePresetResponse
@@ -4056,7 +4574,7 @@ func (client *Client) DeletePreset(request *DeletePresetRequest) (_result *Delet
 
 // Summary:
 //
-// 删除公钥信息
+// Deletes a specified public key. This action automatically revokes logon authorization for all associated cloud application service instances.
 //
 // @param request - DeletePublicKeyRequest
 //
@@ -4100,7 +4618,7 @@ func (client *Client) DeletePublicKeyWithOptions(request *DeletePublicKeyRequest
 
 // Summary:
 //
-// 删除公钥信息
+// Deletes a specified public key. This action automatically revokes logon authorization for all associated cloud application service instances.
 //
 // @param request - DeletePublicKeyRequest
 //
@@ -4118,7 +4636,7 @@ func (client *Client) DeletePublicKey(request *DeletePublicKeyRequest) (_result 
 
 // Summary:
 //
-// 删除云渲染实例配置参数
+// Deletes the configuration of a cloud application service instance. This operation deletes only module properties that are configured using the UpdateRenderingInstanceConfiguration operation.
 //
 // @param tmpReq - DeleteRenderingInstanceConfigurationRequest
 //
@@ -4174,7 +4692,7 @@ func (client *Client) DeleteRenderingInstanceConfigurationWithOptions(tmpReq *De
 
 // Summary:
 //
-// 删除云渲染实例配置参数
+// Deletes the configuration of a cloud application service instance. This operation deletes only module properties that are configured using the UpdateRenderingInstanceConfiguration operation.
 //
 // @param request - DeleteRenderingInstanceConfigurationRequest
 //
@@ -4192,7 +4710,11 @@ func (client *Client) DeleteRenderingInstanceConfiguration(request *DeleteRender
 
 // Summary:
 //
-// 删除自定义网关
+// Deletes a custom gateway.
+//
+// Description:
+//
+// > Stop the parent platform before you delete the gateway.
 //
 // @param request - DeleteRenderingInstanceGatewayRequest
 //
@@ -4236,7 +4758,11 @@ func (client *Client) DeleteRenderingInstanceGatewayWithOptions(request *DeleteR
 
 // Summary:
 //
-// 删除自定义网关
+// Deletes a custom gateway.
+//
+// Description:
+//
+// > Stop the parent platform before you delete the gateway.
 //
 // @param request - DeleteRenderingInstanceGatewayRequest
 //
@@ -4254,7 +4780,7 @@ func (client *Client) DeleteRenderingInstanceGateway(request *DeleteRenderingIns
 
 // Summary:
 //
-// 清除实例设置
+// You can call DeleteRenderingInstanceSettings to delete the settings of a cloud application service instance.
 //
 // @param tmpReq - DeleteRenderingInstanceSettingsRequest
 //
@@ -4308,7 +4834,7 @@ func (client *Client) DeleteRenderingInstanceSettingsWithOptions(tmpReq *DeleteR
 
 // Summary:
 //
-// 清除实例设置
+// You can call DeleteRenderingInstanceSettings to delete the settings of a cloud application service instance.
 //
 // @param request - DeleteRenderingInstanceSettingsRequest
 //
@@ -4326,7 +4852,7 @@ func (client *Client) DeleteRenderingInstanceSettings(request *DeleteRenderingIn
 
 // Summary:
 //
-// 删除一个云应用服务项目，有在线会话等业务调度数据的项目不允许删除。
+// Delete a Data Service Project. Projects that have business scheduling data, such as active sessions, cannot be deleted.
 //
 // @param request - DeleteRenderingProjectRequest
 //
@@ -4370,7 +4896,7 @@ func (client *Client) DeleteRenderingProjectWithOptions(request *DeleteRendering
 
 // Summary:
 //
-// 删除一个云应用服务项目，有在线会话等业务调度数据的项目不允许删除。
+// Delete a Data Service Project. Projects that have business scheduling data, such as active sessions, cannot be deleted.
 //
 // @param request - DeleteRenderingProjectRequest
 //
@@ -4386,6 +4912,10 @@ func (client *Client) DeleteRenderingProject(request *DeleteRenderingProjectRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a template.
+//
 // @param request - DeleteTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4430,6 +4960,10 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a template.
+//
 // @param request - DeleteTemplateRequest
 //
 // @return DeleteTemplateResponse
@@ -4444,6 +4978,10 @@ func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete stream pulling information.
+//
 // @param request - DeleteVsPullStreamInfoConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4496,6 +5034,10 @@ func (client *Client) DeleteVsPullStreamInfoConfigWithOptions(request *DeleteVsP
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete stream pulling information.
+//
 // @param request - DeleteVsPullStreamInfoConfigRequest
 //
 // @return DeleteVsPullStreamInfoConfigResponse
@@ -4510,6 +5052,10 @@ func (client *Client) DeleteVsPullStreamInfoConfig(request *DeleteVsPullStreamIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the callback configuration for stream ingest.
+//
 // @param request - DeleteVsStreamsNotifyUrlConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4554,6 +5100,10 @@ func (client *Client) DeleteVsStreamsNotifyUrlConfigWithOptions(request *DeleteV
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the callback configuration for stream ingest.
+//
 // @param request - DeleteVsStreamsNotifyUrlConfigRequest
 //
 // @return DeleteVsStreamsNotifyUrlConfigResponse
@@ -4568,6 +5118,10 @@ func (client *Client) DeleteVsStreamsNotifyUrlConfig(request *DeleteVsStreamsNot
 	return _result, _err
 }
 
+// Summary:
+//
+// Query all resource information for an account in a specified region.
+//
 // @param request - DescribeAccountStatRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4612,6 +5166,10 @@ func (client *Client) DescribeAccountStatWithOptions(request *DescribeAccountSta
 	return _result, _err
 }
 
+// Summary:
+//
+// Query all resource information for an account in a specified region.
+//
 // @param request - DescribeAccountStatRequest
 //
 // @return DescribeAccountStatResponse
@@ -4628,7 +5186,11 @@ func (client *Client) DescribeAccountStat(request *DescribeAccountStatRequest) (
 
 // Summary:
 //
-// 获取用户生成结果的下载链接
+// Retrieves a download link for a production.
+//
+// Description:
+//
+// > Screenshot queries do not support pagination and must be performed iteratively. To fetch the next page, use the extStartTime value from the response as the StartTime for your subsequent request.
 //
 // @param request - DescribeComfyProductionDownloadUrlRequest
 //
@@ -4672,7 +5234,11 @@ func (client *Client) DescribeComfyProductionDownloadUrlWithOptions(request *Des
 
 // Summary:
 //
-// 获取用户生成结果的下载链接
+// Retrieves a download link for a production.
+//
+// Description:
+//
+// > Screenshot queries do not support pagination and must be performed iteratively. To fetch the next page, use the extStartTime value from the response as the StartTime for your subsequent request.
 //
 // @param request - DescribeComfyProductionDownloadUrlRequest
 //
@@ -4690,7 +5256,11 @@ func (client *Client) DescribeComfyProductionDownloadUrl(request *DescribeComfyP
 
 // Summary:
 //
-// 本接口支持根据不同请求条件查询Comfy生成物列表
+// Lists a user\\"s productions.
+//
+// Description:
+//
+// > This API uses pagination. Use the PageNumber and PageSize parameters to navigate through the results.
 //
 // @param request - DescribeComfyProductionsRequest
 //
@@ -4742,7 +5312,11 @@ func (client *Client) DescribeComfyProductionsWithOptions(request *DescribeComfy
 
 // Summary:
 //
-// 本接口支持根据不同请求条件查询Comfy生成物列表
+// Lists a user\\"s productions.
+//
+// Description:
+//
+// > This API uses pagination. Use the PageNumber and PageSize parameters to navigate through the results.
 //
 // @param request - DescribeComfyProductionsRequest
 //
@@ -4760,7 +5334,11 @@ func (client *Client) DescribeComfyProductions(request *DescribeComfyProductions
 
 // Summary:
 //
-// 列举用户数据的中所有文件和目录的信息。
+// Queries a list of Comfy tasks.
+//
+// Description:
+//
+// > Querying by screenshot does not support pagination and only supports iteration. To request the next page, use the extStartTime parameter value from the response as the StartTime for the new request.
 //
 // @param request - DescribeComfyTasksRequest
 //
@@ -4816,7 +5394,11 @@ func (client *Client) DescribeComfyTasksWithOptions(request *DescribeComfyTasksR
 
 // Summary:
 //
-// 列举用户数据的中所有文件和目录的信息。
+// Queries a list of Comfy tasks.
+//
+// Description:
+//
+// > Querying by screenshot does not support pagination and only supports iteration. To request the next page, use the extStartTime parameter value from the response as the StartTime for the new request.
 //
 // @param request - DescribeComfyTasksRequest
 //
@@ -4834,7 +5416,7 @@ func (client *Client) DescribeComfyTasks(request *DescribeComfyTasksRequest) (_r
 
 // Summary:
 //
-// 上传用户数据文件
+// Gets a download URL for user data.
 //
 // @param request - DescribeComfyUserDataDownloadUrlRequest
 //
@@ -4878,7 +5460,7 @@ func (client *Client) DescribeComfyUserDataDownloadUrlWithOptions(request *Descr
 
 // Summary:
 //
-// 上传用户数据文件
+// Gets a download URL for user data.
 //
 // @param request - DescribeComfyUserDataDownloadUrlRequest
 //
@@ -4896,7 +5478,11 @@ func (client *Client) DescribeComfyUserDataDownloadUrl(request *DescribeComfyUse
 
 // Summary:
 //
-// 获取用户数据文件上传的URL，进行用户文件上传
+// Retrieves a URL to upload a user file.
+//
+// Description:
+//
+// You can upload files using the retrieved URL and the Alibaba Cloud OSS software development kit (SDK).
 //
 // @param request - DescribeComfyUserDataUploadUrlRequest
 //
@@ -4952,7 +5538,11 @@ func (client *Client) DescribeComfyUserDataUploadUrlWithOptions(request *Describ
 
 // Summary:
 //
-// 获取用户数据文件上传的URL，进行用户文件上传
+// Retrieves a URL to upload a user file.
+//
+// Description:
+//
+// You can upload files using the retrieved URL and the Alibaba Cloud OSS software development kit (SDK).
 //
 // @param request - DescribeComfyUserDataUploadUrlRequest
 //
@@ -4970,7 +5560,17 @@ func (client *Client) DescribeComfyUserDataUploadUrl(request *DescribeComfyUserD
 
 // Summary:
 //
-// 列举用户数据的中所有文件和目录的信息。
+// Lists all files and folders in the user data.
+//
+// Description:
+//
+// If StartTime and EndTime are not specified, data from the last 24 hours is read by default. To query a specific time range, you must specify both StartTime and EndTime. The maximum time range for a query is 31 days.
+//
+// - You can query multiple domain names in a batch. Separate the domain names with a comma (,).
+//
+// - You can retrieve data from the last 90 days.
+//
+// - The time granularity is one hour.
 //
 // @param request - DescribeComfyUserDatasRequest
 //
@@ -5022,7 +5622,17 @@ func (client *Client) DescribeComfyUserDatasWithOptions(request *DescribeComfyUs
 
 // Summary:
 //
-// 列举用户数据的中所有文件和目录的信息。
+// Lists all files and folders in the user data.
+//
+// Description:
+//
+// If StartTime and EndTime are not specified, data from the last 24 hours is read by default. To query a specific time range, you must specify both StartTime and EndTime. The maximum time range for a query is 31 days.
+//
+// - You can query multiple domain names in a batch. Separate the domain names with a comma (,).
+//
+// - You can retrieve data from the last 90 days.
+//
+// - The time granularity is one hour.
 //
 // @param request - DescribeComfyUserDatasRequest
 //
@@ -5040,7 +5650,11 @@ func (client *Client) DescribeComfyUserDatas(request *DescribeComfyUserDatasRequ
 
 // Summary:
 //
-// 获取Comfy工作流列表
+// This operation retrieves a paginated list of your Comfy workflows.
+//
+// Description:
+//
+// \\> 截图查询目前不支持分页，仅支持按迭代方式。使用返回结果里的extStartTime参数值，作为新请求的StartTime可请求下一页。
 //
 // @param request - DescribeComfyWorkflowsRequest
 //
@@ -5092,7 +5706,11 @@ func (client *Client) DescribeComfyWorkflowsWithOptions(request *DescribeComfyWo
 
 // Summary:
 //
-// 获取Comfy工作流列表
+// This operation retrieves a paginated list of your Comfy workflows.
+//
+// Description:
+//
+// \\> 截图查询目前不支持分页，仅支持按迭代方式。使用返回结果里的extStartTime参数值，作为新请求的StartTime可请求下一页。
 //
 // @param request - DescribeComfyWorkflowsRequest
 //
@@ -5108,6 +5726,10 @@ func (client *Client) DescribeComfyWorkflows(request *DescribeComfyWorkflowsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Query information about a device.
+//
 // @param request - DescribeDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5160,6 +5782,10 @@ func (client *Client) DescribeDeviceWithOptions(request *DescribeDeviceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Query information about a device.
+//
 // @param request - DescribeDeviceRequest
 //
 // @return DescribeDeviceResponse
@@ -5174,6 +5800,10 @@ func (client *Client) DescribeDevice(request *DescribeDeviceRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of device channels.
+//
 // @param request - DescribeDeviceChannelsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5226,6 +5856,10 @@ func (client *Client) DescribeDeviceChannelsWithOptions(request *DescribeDeviceC
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of device channels.
+//
 // @param request - DescribeDeviceChannelsRequest
 //
 // @return DescribeDeviceChannelsResponse
@@ -5240,6 +5874,10 @@ func (client *Client) DescribeDeviceChannels(request *DescribeDeviceChannelsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a device gateway.
+//
 // @param request - DescribeDeviceGatewayRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5292,6 +5930,10 @@ func (client *Client) DescribeDeviceGatewayWithOptions(request *DescribeDeviceGa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a device gateway.
+//
 // @param request - DescribeDeviceGatewayRequest
 //
 // @return DescribeDeviceGatewayResponse
@@ -5306,6 +5948,10 @@ func (client *Client) DescribeDeviceGateway(request *DescribeDeviceGatewayReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the URL information for a device stream.
+//
 // @param request - DescribeDeviceURLRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5374,6 +6020,10 @@ func (client *Client) DescribeDeviceURLWithOptions(request *DescribeDeviceURLReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the URL information for a device stream.
+//
 // @param request - DescribeDeviceURLRequest
 //
 // @return DescribeDeviceURLResponse
@@ -5388,6 +6038,10 @@ func (client *Client) DescribeDeviceURL(request *DescribeDeviceURLRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of devices.
+//
 // @param request - DescribeDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5492,6 +6146,10 @@ func (client *Client) DescribeDevicesWithOptions(request *DescribeDevicesRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of devices.
+//
 // @param request - DescribeDevicesRequest
 //
 // @return DescribeDevicesResponse
@@ -5506,6 +6164,10 @@ func (client *Client) DescribeDevices(request *DescribeDevicesRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the list of directories.
+//
 // @param request - DescribeDirectoriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5574,6 +6236,10 @@ func (client *Client) DescribeDirectoriesWithOptions(request *DescribeDirectorie
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the list of directories.
+//
 // @param request - DescribeDirectoriesRequest
 //
 // @return DescribeDirectoriesResponse
@@ -5588,6 +6254,10 @@ func (client *Client) DescribeDirectories(request *DescribeDirectoriesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a directory.
+//
 // @param request - DescribeDirectoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5632,6 +6302,10 @@ func (client *Client) DescribeDirectoryWithOptions(request *DescribeDirectoryReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a directory.
+//
 // @param request - DescribeDirectoryRequest
 //
 // @return DescribeDirectoryResponse
@@ -5646,6 +6320,10 @@ func (client *Client) DescribeDirectory(request *DescribeDirectoryRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves information about a space.
+//
 // @param request - DescribeGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5694,6 +6372,10 @@ func (client *Client) DescribeGroupWithOptions(request *DescribeGroupRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves information about a space.
+//
 // @param request - DescribeGroupRequest
 //
 // @return DescribeGroupResponse
@@ -5708,6 +6390,10 @@ func (client *Client) DescribeGroup(request *DescribeGroupRequest) (_result *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// You can query the list of spaces.
+//
 // @param request - DescribeGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5788,6 +6474,10 @@ func (client *Client) DescribeGroupsWithOptions(request *DescribeGroupsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// You can query the list of spaces.
+//
 // @param request - DescribeGroupsRequest
 //
 // @return DescribeGroupsResponse
@@ -5802,6 +6492,10 @@ func (client *Client) DescribeGroups(request *DescribeGroupsRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a parent platform.
+//
 // @param request - DescribeParentPlatformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5846,6 +6540,10 @@ func (client *Client) DescribeParentPlatformWithOptions(request *DescribeParentP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a parent platform.
+//
 // @param request - DescribeParentPlatformRequest
 //
 // @return DescribeParentPlatformResponse
@@ -5860,6 +6558,10 @@ func (client *Client) DescribeParentPlatform(request *DescribeParentPlatformRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of devices under a parent platform.
+//
 // @param request - DescribeParentPlatformDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5920,6 +6622,10 @@ func (client *Client) DescribeParentPlatformDevicesWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of devices under a parent platform.
+//
 // @param request - DescribeParentPlatformDevicesRequest
 //
 // @return DescribeParentPlatformDevicesResponse
@@ -5934,6 +6640,10 @@ func (client *Client) DescribeParentPlatformDevices(request *DescribeParentPlatf
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the list of parent platforms.
+//
 // @param request - DescribeParentPlatformsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5998,6 +6708,10 @@ func (client *Client) DescribeParentPlatformsWithOptions(request *DescribeParent
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the list of parent platforms.
+//
 // @param request - DescribeParentPlatformsRequest
 //
 // @return DescribeParentPlatformsResponse
@@ -6012,6 +6726,10 @@ func (client *Client) DescribeParentPlatforms(request *DescribeParentPlatformsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve the list of presets.
+//
 // @param request - DescribePresetsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6056,6 +6774,10 @@ func (client *Client) DescribePresetsWithOptions(request *DescribePresetsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve the list of presets.
+//
 // @param request - DescribePresetsRequest
 //
 // @return DescribePresetsResponse
@@ -6128,6 +6850,10 @@ func (client *Client) DescribePublishStreamStatus(request *DescribePublishStream
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about purchased devices.
+//
 // @param request - DescribePurchasedDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6172,6 +6898,10 @@ func (client *Client) DescribePurchasedDeviceWithOptions(request *DescribePurcha
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about purchased devices.
+//
 // @param request - DescribePurchasedDeviceRequest
 //
 // @return DescribePurchasedDeviceResponse
@@ -6186,6 +6916,10 @@ func (client *Client) DescribePurchasedDevice(request *DescribePurchasedDeviceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of purchased devices.
+//
 // @param request - DescribePurchasedDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6266,6 +7000,10 @@ func (client *Client) DescribePurchasedDevicesWithOptions(request *DescribePurch
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of purchased devices.
+//
 // @param request - DescribePurchasedDevicesRequest
 //
 // @return DescribePurchasedDevicesResponse
@@ -6280,6 +7018,14 @@ func (client *Client) DescribePurchasedDevices(request *DescribePurchasedDevices
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of recordings.
+//
+// Description:
+//
+// > Paging is not supported for snapshot queries. Only iteration is supported. To request the next page, use the NextStartTime value from the response as the StartTime for the new request.
+//
 // @param request - DescribeRecordsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6356,6 +7102,14 @@ func (client *Client) DescribeRecordsWithOptions(request *DescribeRecordsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of recordings.
+//
+// Description:
+//
+// > Paging is not supported for snapshot queries. Only iteration is supported. To request the next page, use the NextStartTime value from the response as the StartTime for the new request.
+//
 // @param request - DescribeRecordsRequest
 //
 // @return DescribeRecordsResponse
@@ -6372,7 +7126,7 @@ func (client *Client) DescribeRecords(request *DescribeRecordsRequest) (_result 
 
 // Summary:
 //
-// 查询云渲染实例详细信息。
+// Queries the details of a cloud application service instance.
 //
 // @param request - DescribeRenderingInstanceRequest
 //
@@ -6416,7 +7170,7 @@ func (client *Client) DescribeRenderingInstanceWithOptions(request *DescribeRend
 
 // Summary:
 //
-// 查询云渲染实例详细信息。
+// Queries the details of a cloud application service instance.
 //
 // @param request - DescribeRenderingInstanceRequest
 //
@@ -6434,7 +7188,7 @@ func (client *Client) DescribeRenderingInstance(request *DescribeRenderingInstan
 
 // Summary:
 //
-// 查询云渲染实例模块配置参数
+// Queries the real-time configuration of a cloud application service instance.
 //
 // @param tmpReq - DescribeRenderingInstanceConfigurationRequest
 //
@@ -6480,7 +7234,7 @@ func (client *Client) DescribeRenderingInstanceConfigurationWithOptions(tmpReq *
 
 // Summary:
 //
-// 查询云渲染实例模块配置参数
+// Queries the real-time configuration of a cloud application service instance.
 //
 // @param request - DescribeRenderingInstanceConfigurationRequest
 //
@@ -6498,7 +7252,7 @@ func (client *Client) DescribeRenderingInstanceConfiguration(request *DescribeRe
 
 // Summary:
 //
-// 查询实例配置
+// DescribeRenderingInstanceSettings queries the configuration of a Cloud Application service instance.
 //
 // @param tmpReq - DescribeRenderingInstanceSettingsRequest
 //
@@ -6552,7 +7306,7 @@ func (client *Client) DescribeRenderingInstanceSettingsWithOptions(tmpReq *Descr
 
 // Summary:
 //
-// 查询实例配置
+// DescribeRenderingInstanceSettings queries the configuration of a Cloud Application service instance.
 //
 // @param request - DescribeRenderingInstanceSettingsRequest
 //
@@ -6570,7 +7324,7 @@ func (client *Client) DescribeRenderingInstanceSettings(request *DescribeRenderi
 
 // Summary:
 //
-// 输出会话的详情信息，包含关联的实例、网络出口等信息。
+// Retrieve details about a rendering session, including the current session state, network access IP address and port, and the location of the cloud application service instance.
 //
 // @param request - DescribeRenderingSessionRequest
 //
@@ -6622,7 +7376,7 @@ func (client *Client) DescribeRenderingSessionWithOptions(request *DescribeRende
 
 // Summary:
 //
-// 输出会话的详情信息，包含关联的实例、网络出口等信息。
+// Retrieve details about a rendering session, including the current session state, network access IP address and port, and the location of the cloud application service instance.
 //
 // @param request - DescribeRenderingSessionRequest
 //
@@ -6638,6 +7392,10 @@ func (client *Client) DescribeRenderingSession(request *DescribeRenderingSession
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a stream.
+//
 // @param request - DescribeStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6682,6 +7440,10 @@ func (client *Client) DescribeStreamWithOptions(request *DescribeStreamRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a stream.
+//
 // @param request - DescribeStreamRequest
 //
 // @return DescribeStreamResponse
@@ -6696,6 +7458,10 @@ func (client *Client) DescribeStream(request *DescribeStreamRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the URL of a stream.
+//
 // @param request - DescribeStreamURLRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6772,6 +7538,10 @@ func (client *Client) DescribeStreamURLWithOptions(request *DescribeStreamURLReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the URL of a stream.
+//
 // @param request - DescribeStreamURLRequest
 //
 // @return DescribeStreamURLResponse
@@ -6786,6 +7556,10 @@ func (client *Client) DescribeStreamURL(request *DescribeStreamURLRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Get the stream VOD record list, such as historical stream list from NVR.
+//
 // @param request - DescribeStreamVodListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6838,6 +7612,10 @@ func (client *Client) DescribeStreamVodListWithOptions(request *DescribeStreamVo
 	return _result, _err
 }
 
+// Summary:
+//
+// Get the stream VOD record list, such as historical stream list from NVR.
+//
 // @param request - DescribeStreamVodListRequest
 //
 // @return DescribeStreamVodListResponse
@@ -6852,6 +7630,10 @@ func (client *Client) DescribeStreamVodList(request *DescribeStreamVodListReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists video streams. You can filter the results by stream ID, name, group ID, device ID, or other criteria.
+//
 // @param request - DescribeStreamsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6936,6 +7718,10 @@ func (client *Client) DescribeStreamsWithOptions(request *DescribeStreamsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists video streams. You can filter the results by stream ID, name, group ID, device ID, or other criteria.
+//
 // @param request - DescribeStreamsRequest
 //
 // @return DescribeStreamsResponse
@@ -6950,6 +7736,10 @@ func (client *Client) DescribeStreams(request *DescribeStreamsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Query information about a template.
+//
 // @param request - DescribeTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6994,6 +7784,10 @@ func (client *Client) DescribeTemplateWithOptions(request *DescribeTemplateReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Query information about a template.
+//
 // @param request - DescribeTemplateRequest
 //
 // @return DescribeTemplateResponse
@@ -7008,6 +7802,10 @@ func (client *Client) DescribeTemplate(request *DescribeTemplateRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// List templates.
+//
 // @param request - DescribeTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7076,6 +7874,10 @@ func (client *Client) DescribeTemplatesWithOptions(request *DescribeTemplatesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// List templates.
+//
 // @param request - DescribeTemplatesRequest
 //
 // @return DescribeTemplatesResponse
@@ -7090,6 +7892,10 @@ func (client *Client) DescribeTemplates(request *DescribeTemplatesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the URL information of a video-on-demand (VOD) stream.
+//
 // @param request - DescribeVodStreamURLRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7134,6 +7940,10 @@ func (client *Client) DescribeVodStreamURLWithOptions(request *DescribeVodStream
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the URL information of a video-on-demand (VOD) stream.
+//
 // @param request - DescribeVodStreamURLRequest
 //
 // @return DescribeVodStreamURLResponse
@@ -7148,6 +7958,10 @@ func (client *Client) DescribeVodStreamURL(request *DescribeVodStreamURLRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve certificate details.
+//
 // @param request - DescribeVsCertificateDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7192,6 +8006,10 @@ func (client *Client) DescribeVsCertificateDetailWithOptions(request *DescribeVs
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve certificate details.
+//
 // @param request - DescribeVsCertificateDetailRequest
 //
 // @return DescribeVsCertificateDetailResponse
@@ -7206,6 +8024,10 @@ func (client *Client) DescribeVsCertificateDetail(request *DescribeVsCertificate
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of domain name certificates.
+//
 // @param request - DescribeVsCertificateListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7250,6 +8072,10 @@ func (client *Client) DescribeVsCertificateListWithOptions(request *DescribeVsCe
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of domain name certificates.
+//
 // @param request - DescribeVsCertificateListRequest
 //
 // @return DescribeVsCertificateListResponse
@@ -7264,6 +8090,20 @@ func (client *Client) DescribeVsCertificateList(request *DescribeVsCertificateLi
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves usage data for connected devices.
+//
+// Description:
+//
+// If you do not specify \\`StartTime\\` and \\`EndTime\\`, the API retrieves data from the last 24 hours by default. To query data for a specific time range, you must specify both \\`StartTime\\` and \\`EndTime\\`. The maximum time range for a single query is 31 days.
+//
+// - You can query multiple domain names at once. Separate the domain names with commas.
+//
+// - You can retrieve data from the last 90 days.
+//
+// - The time granularity is one hour.
+//
 // @param request - DescribeVsDevicesDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7316,6 +8156,20 @@ func (client *Client) DescribeVsDevicesDataWithOptions(request *DescribeVsDevice
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves usage data for connected devices.
+//
+// Description:
+//
+// If you do not specify \\`StartTime\\` and \\`EndTime\\`, the API retrieves data from the last 24 hours by default. To query data for a specific time range, you must specify both \\`StartTime\\` and \\`EndTime\\`. The maximum time range for a single query is 31 days.
+//
+// - You can query multiple domain names at once. Separate the domain names with commas.
+//
+// - You can retrieve data from the last 90 days.
+//
+// - The time granularity is one hour.
+//
 // @param request - DescribeVsDevicesDataRequest
 //
 // @return DescribeVsDevicesDataResponse
@@ -7330,6 +8184,10 @@ func (client *Client) DescribeVsDevicesData(request *DescribeVsDevicesDataReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries network bandwidth monitoring data for Domain Names.
+//
 // @param request - DescribeVsDomainBpsDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7394,6 +8252,10 @@ func (client *Client) DescribeVsDomainBpsDataWithOptions(request *DescribeVsDoma
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries network bandwidth monitoring data for Domain Names.
+//
 // @param request - DescribeVsDomainBpsDataRequest
 //
 // @return DescribeVsDomainBpsDataResponse
@@ -7408,6 +8270,10 @@ func (client *Client) DescribeVsDomainBpsData(request *DescribeVsDomainBpsDataRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the certificate information for a specified accelerated domain name.
+//
 // @param request - DescribeVsDomainCertificateInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7452,6 +8318,10 @@ func (client *Client) DescribeVsDomainCertificateInfoWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the certificate information for a specified accelerated domain name.
+//
 // @param request - DescribeVsDomainCertificateInfoRequest
 //
 // @return DescribeVsDomainCertificateInfoResponse
@@ -7466,6 +8336,10 @@ func (client *Client) DescribeVsDomainCertificateInfo(request *DescribeVsDomainC
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries domain name configurations. You can query the configurations of multiple features in a single request.
+//
 // @param request - DescribeVsDomainConfigsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7514,6 +8388,10 @@ func (client *Client) DescribeVsDomainConfigsWithOptions(request *DescribeVsDoma
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries domain name configurations. You can query the configurations of multiple features in a single request.
+//
 // @param request - DescribeVsDomainConfigsRequest
 //
 // @return DescribeVsDomainConfigsResponse
@@ -7528,6 +8406,10 @@ func (client *Client) DescribeVsDomainConfigs(request *DescribeVsDomainConfigsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the basic configuration information for a specified Visual Edge Computing Service domain name.
+//
 // @param request - DescribeVsDomainDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7572,6 +8454,10 @@ func (client *Client) DescribeVsDomainDetailWithOptions(request *DescribeVsDomai
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the basic configuration information for a specified Visual Edge Computing Service domain name.
+//
 // @param request - DescribeVsDomainDetailRequest
 //
 // @return DescribeVsDomainDetailResponse
@@ -7586,6 +8472,10 @@ func (client *Client) DescribeVsDomainDetail(request *DescribeVsDomainDetailRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the page view (PV) data for a domain name.
+//
 // @param request - DescribeVsDomainPvDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7638,6 +8528,10 @@ func (client *Client) DescribeVsDomainPvDataWithOptions(request *DescribeVsDomai
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the page view (PV) data for a domain name.
+//
 // @param request - DescribeVsDomainPvDataRequest
 //
 // @return DescribeVsDomainPvDataResponse
@@ -7652,6 +8546,10 @@ func (client *Client) DescribeVsDomainPvData(request *DescribeVsDomainPvDataRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve page view (PV) and unique visitor (UV) data for a Visual Edge Computing Service domain.
+//
 // @param request - DescribeVsDomainPvUvDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7704,6 +8602,10 @@ func (client *Client) DescribeVsDomainPvUvDataWithOptions(request *DescribeVsDom
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve page view (PV) and unique visitor (UV) data for a Visual Edge Computing Service domain.
+//
 // @param request - DescribeVsDomainPvUvDataRequest
 //
 // @return DescribeVsDomainPvUvDataResponse
@@ -7718,6 +8620,10 @@ func (client *Client) DescribeVsDomainPvUvData(request *DescribeVsDomainPvUvData
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve domain name record data.
+//
 // @param request - DescribeVsDomainRecordDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7774,6 +8680,10 @@ func (client *Client) DescribeVsDomainRecordDataWithOptions(request *DescribeVsD
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve domain name record data.
+//
 // @param request - DescribeVsDomainRecordDataRequest
 //
 // @return DescribeVsDomainRecordDataResponse
@@ -7788,6 +8698,10 @@ func (client *Client) DescribeVsDomainRecordData(request *DescribeVsDomainRecord
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves domain region data.
+//
 // @param request - DescribeVsDomainRegionDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7840,6 +8754,10 @@ func (client *Client) DescribeVsDomainRegionDataWithOptions(request *DescribeVsD
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves domain region data.
+//
 // @param request - DescribeVsDomainRegionDataRequest
 //
 // @return DescribeVsDomainRegionDataResponse
@@ -7854,6 +8772,10 @@ func (client *Client) DescribeVsDomainRegionData(request *DescribeVsDomainRegion
 	return _result, _err
 }
 
+// Summary:
+//
+// Query network request monitoring data for a domain name.
+//
 // @param request - DescribeVsDomainReqBpsDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7918,6 +8840,10 @@ func (client *Client) DescribeVsDomainReqBpsDataWithOptions(request *DescribeVsD
 	return _result, _err
 }
 
+// Summary:
+//
+// Query network request monitoring data for a domain name.
+//
 // @param request - DescribeVsDomainReqBpsDataRequest
 //
 // @return DescribeVsDomainReqBpsDataResponse
@@ -7932,6 +8858,10 @@ func (client *Client) DescribeVsDomainReqBpsData(request *DescribeVsDomainReqBps
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtain traffic data for domain name requests.
+//
 // @param request - DescribeVsDomainReqTrafficDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7996,6 +8926,10 @@ func (client *Client) DescribeVsDomainReqTrafficDataWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtain traffic data for domain name requests.
+//
 // @param request - DescribeVsDomainReqTrafficDataRequest
 //
 // @return DescribeVsDomainReqTrafficDataResponse
@@ -8010,6 +8944,10 @@ func (client *Client) DescribeVsDomainReqTrafficData(request *DescribeVsDomainRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves snapshot data for a domain name.
+//
 // @param request - DescribeVsDomainSnapshotDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8062,6 +9000,10 @@ func (client *Client) DescribeVsDomainSnapshotDataWithOptions(request *DescribeV
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves snapshot data for a domain name.
+//
 // @param request - DescribeVsDomainSnapshotDataRequest
 //
 // @return DescribeVsDomainSnapshotDataResponse
@@ -8076,6 +9018,10 @@ func (client *Client) DescribeVsDomainSnapshotData(request *DescribeVsDomainSnap
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve traffic data for a domain name.
+//
 // @param request - DescribeVsDomainTrafficDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8140,6 +9086,10 @@ func (client *Client) DescribeVsDomainTrafficDataWithOptions(request *DescribeVs
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve traffic data for a domain name.
+//
 // @param request - DescribeVsDomainTrafficDataRequest
 //
 // @return DescribeVsDomainTrafficDataResponse
@@ -8154,6 +9104,10 @@ func (client *Client) DescribeVsDomainTrafficData(request *DescribeVsDomainTraff
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve UV data by domain name.
+//
 // @param request - DescribeVsDomainUvDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8206,6 +9160,10 @@ func (client *Client) DescribeVsDomainUvDataWithOptions(request *DescribeVsDomai
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve UV data by domain name.
+//
 // @param request - DescribeVsDomainUvDataRequest
 //
 // @return DescribeVsDomainUvDataResponse
@@ -8220,6 +9178,10 @@ func (client *Client) DescribeVsDomainUvData(request *DescribeVsDomainUvDataRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the pull stream configurations for a domain name.
+//
 // @param request - DescribeVsPullStreamInfoConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8264,6 +9226,10 @@ func (client *Client) DescribeVsPullStreamInfoConfigWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the pull stream configurations for a domain name.
+//
 // @param request - DescribeVsPullStreamInfoConfigRequest
 //
 // @return DescribeVsPullStreamInfoConfigResponse
@@ -8278,6 +9244,10 @@ func (client *Client) DescribeVsPullStreamInfoConfig(request *DescribeVsPullStre
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the stream ingest callback configuration.
+//
 // @param request - DescribeVsStreamsNotifyUrlConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8322,6 +9292,10 @@ func (client *Client) DescribeVsStreamsNotifyUrlConfigWithOptions(request *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the stream ingest callback configuration.
+//
 // @param request - DescribeVsStreamsNotifyUrlConfigRequest
 //
 // @return DescribeVsStreamsNotifyUrlConfigResponse
@@ -8336,6 +9310,10 @@ func (client *Client) DescribeVsStreamsNotifyUrlConfig(request *DescribeVsStream
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves information about all active streams for a specified domain name or application.
+//
 // @param request - DescribeVsStreamsOnlineListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8416,6 +9394,10 @@ func (client *Client) DescribeVsStreamsOnlineListWithOptions(request *DescribeVs
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves information about all active streams for a specified domain name or application.
+//
 // @param request - DescribeVsStreamsOnlineListRequest
 //
 // @return DescribeVsStreamsOnlineListResponse
@@ -8430,6 +9412,10 @@ func (client *Client) DescribeVsStreamsOnlineList(request *DescribeVsStreamsOnli
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve stream ingest records for a domain, an application under that domain, or a specific stream within a specified time range.
+//
 // @param request - DescribeVsStreamsPublishListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8510,6 +9496,10 @@ func (client *Client) DescribeVsStreamsPublishListWithOptions(request *DescribeV
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieve stream ingest records for a domain, an application under that domain, or a specific stream within a specified time range.
+//
 // @param request - DescribeVsStreamsPublishListRequest
 //
 // @return DescribeVsStreamsPublishListResponse
@@ -8524,6 +9514,14 @@ func (client *Client) DescribeVsStreamsPublishList(request *DescribeVsStreamsPub
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a user\\"s domain names ranked by traffic.
+//
+// If you do not specify StartTime and EndTime, data for the current month is retrieved by default. To query data over a specific time range, you must specify both StartTime and EndTime.
+//
+// \\	- You can retrieve data for a maximum of 90 days.
+//
 // @param request - DescribeVsTopDomainsByFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8576,6 +9574,14 @@ func (client *Client) DescribeVsTopDomainsByFlowWithOptions(request *DescribeVsT
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a user\\"s domain names ranked by traffic.
+//
+// If you do not specify StartTime and EndTime, data for the current month is retrieved by default. To query data over a specific time range, you must specify both StartTime and EndTime.
+//
+// \\	- You can retrieve data for a maximum of 90 days.
+//
 // @param request - DescribeVsTopDomainsByFlowRequest
 //
 // @return DescribeVsTopDomainsByFlowResponse
@@ -8590,6 +9596,10 @@ func (client *Client) DescribeVsTopDomainsByFlow(request *DescribeVsTopDomainsBy
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the daily peak number of concurrent stream ingest operations.
+//
 // @param request - DescribeVsUpPeakPublishStreamDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8646,6 +9656,10 @@ func (client *Client) DescribeVsUpPeakPublishStreamDataWithOptions(request *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the daily peak number of concurrent stream ingest operations.
+//
 // @param request - DescribeVsUpPeakPublishStreamDataRequest
 //
 // @return DescribeVsUpPeakPublishStreamDataResponse
@@ -8718,6 +9732,10 @@ func (client *Client) DescribeVsUserResourcePackage(request *DescribeVsUserResou
 	return _result, _err
 }
 
+// Summary:
+//
+// # DescribeVsVerifyContent
+//
 // @param request - DescribeVsVerifyContentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8762,6 +9780,10 @@ func (client *Client) DescribeVsVerifyContentWithOptions(request *DescribeVsVeri
 	return _result, _err
 }
 
+// Summary:
+//
+// # DescribeVsVerifyContent
+//
 // @param request - DescribeVsVerifyContentRequest
 //
 // @return DescribeVsVerifyContentResponse
@@ -8778,7 +9800,7 @@ func (client *Client) DescribeVsVerifyContent(request *DescribeVsVerifyContentRe
 
 // Summary:
 //
-// 云应用服务实例与项目解除关联
+// Disassociate cloud application service instances from a project.
 //
 // @param tmpReq - DisassociateRenderingProjectInstancesRequest
 //
@@ -8832,7 +9854,7 @@ func (client *Client) DisassociateRenderingProjectInstancesWithOptions(tmpReq *D
 
 // Summary:
 //
-// 云应用服务实例与项目解除关联
+// Disassociate cloud application service instances from a project.
 //
 // @param request - DisassociateRenderingProjectInstancesRequest
 //
@@ -8848,6 +9870,10 @@ func (client *Client) DisassociateRenderingProjectInstances(request *Disassociat
 	return _result, _err
 }
 
+// Summary:
+//
+// Forbids pushing a specific stream. You can schedule a time to resume the stream.
+//
 // @param request - ForbidVsStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8916,6 +9942,10 @@ func (client *Client) ForbidVsStreamWithOptions(request *ForbidVsStreamRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Forbids pushing a specific stream. You can schedule a time to resume the stream.
+//
 // @param request - ForbidVsStreamRequest
 //
 // @return ForbidVsStreamResponse
@@ -8932,7 +9962,7 @@ func (client *Client) ForbidVsStream(request *ForbidVsStreamRequest) (_result *F
 
 // Summary:
 //
-// 查询命令的执行状态与结果。
+// Queries the execution status of a control command to determine whether the command was successful and to retrieve the result string.
 //
 // @param request - GetRenderingInstanceCommandsStatusRequest
 //
@@ -8980,7 +10010,7 @@ func (client *Client) GetRenderingInstanceCommandsStatusWithOptions(request *Get
 
 // Summary:
 //
-// 查询命令的执行状态与结果。
+// Queries the execution status of a control command to determine whether the command was successful and to retrieve the result string.
 //
 // @param request - GetRenderingInstanceCommandsStatusRequest
 //
@@ -8998,7 +10028,7 @@ func (client *Client) GetRenderingInstanceCommandsStatus(request *GetRenderingIn
 
 // Summary:
 //
-// 获取云渲染实例流连接信息，每次流化建联前都需要调用此接口获取最新连接信息
+// Retrieves the streaming connection information for a cloud application service instance. Call this operation before establishing each streaming connection to obtain the latest connection details.
 //
 // @param request - GetRenderingInstanceStreamingInfoRequest
 //
@@ -9042,7 +10072,7 @@ func (client *Client) GetRenderingInstanceStreamingInfoWithOptions(request *GetR
 
 // Summary:
 //
-// 获取云渲染实例流连接信息，每次流化建联前都需要调用此接口获取最新连接信息
+// Retrieves the streaming connection information for a cloud application service instance. Call this operation before establishing each streaming connection to obtain the latest connection details.
 //
 // @param request - GetRenderingInstanceStreamingInfoRequest
 //
@@ -9060,7 +10090,7 @@ func (client *Client) GetRenderingInstanceStreamingInfo(request *GetRenderingIns
 
 // Summary:
 //
-// 输出满足特定条件的资源各状态数据量统计值。
+// Queries the data volume statistics for the states of project instances that meet specified conditions.
 //
 // @param request - GetRenderingProjectInstanceStateMetricsRequest
 //
@@ -9104,7 +10134,7 @@ func (client *Client) GetRenderingProjectInstanceStateMetricsWithOptions(request
 
 // Summary:
 //
-// 输出满足特定条件的资源各状态数据量统计值。
+// Queries the data volume statistics for the states of project instances that meet specified conditions.
 //
 // @param request - GetRenderingProjectInstanceStateMetricsRequest
 //
@@ -9120,6 +10150,10 @@ func (client *Client) GetRenderingProjectInstanceStateMetrics(request *GetRender
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves to a specified preset.
+//
 // @param request - GotoPresetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9168,6 +10202,10 @@ func (client *Client) GotoPresetWithOptions(request *GotoPresetRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves to a specified preset.
+//
 // @param request - GotoPresetRequest
 //
 // @return GotoPresetResponse
@@ -9184,7 +10222,7 @@ func (client *Client) GotoPreset(request *GotoPresetRequest) (_result *GotoPrese
 
 // Summary:
 //
-// 安装云应用
+// Installs a cloud application to a specified cloud application instance. This is an asynchronous interface. To monitor the installation progress, use the ListCloudAppInstallations interface.
 //
 // @param tmpReq - InstallCloudAppRequest
 //
@@ -9258,7 +10296,7 @@ func (client *Client) InstallCloudAppWithOptions(tmpReq *InstallCloudAppRequest,
 
 // Summary:
 //
-// 安装云应用
+// Installs a cloud application to a specified cloud application instance. This is an asynchronous interface. To monitor the installation progress, use the ListCloudAppInstallations interface.
 //
 // @param request - InstallCloudAppRequest
 //
@@ -9276,7 +10314,7 @@ func (client *Client) InstallCloudApp(request *InstallCloudAppRequest) (_result 
 
 // Summary:
 //
-// 查询云应用安装信息列表
+// Lists cloud application installations. The response includes the installation status of cloud application service instances and supports paged queries.
 //
 // @param request - ListCloudAppInstallationsRequest
 //
@@ -9316,7 +10354,7 @@ func (client *Client) ListCloudAppInstallationsWithOptions(request *ListCloudApp
 
 // Summary:
 //
-// 查询云应用安装信息列表
+// Lists cloud application installations. The response includes the installation status of cloud application service instances and supports paged queries.
 //
 // @param request - ListCloudAppInstallationsRequest
 //
@@ -9334,7 +10372,11 @@ func (client *Client) ListCloudAppInstallations(request *ListCloudAppInstallatio
 
 // Summary:
 //
-// 查询一个云应用的Patch列表。
+// Queries the list of patches for a cloud application.
+//
+// Description:
+//
+// > Specify at least one of the template ID or the template type.
 //
 // @param request - ListCloudAppPatchesRequest
 //
@@ -9402,7 +10444,11 @@ func (client *Client) ListCloudAppPatchesWithOptions(request *ListCloudAppPatche
 
 // Summary:
 //
-// 查询一个云应用的Patch列表。
+// Queries the list of patches for a cloud application.
+//
+// Description:
+//
+// > Specify at least one of the template ID or the template type.
 //
 // @param request - ListCloudAppPatchesRequest
 //
@@ -9420,7 +10466,7 @@ func (client *Client) ListCloudAppPatches(request *ListCloudAppPatchesRequest) (
 
 // Summary:
 //
-// 查询云应用列表
+// Queries a list of cloud applications. This operation supports paged queries.
 //
 // @param request - ListCloudAppsRequest
 //
@@ -9460,7 +10506,7 @@ func (client *Client) ListCloudAppsWithOptions(request *ListCloudAppsRequest, ru
 
 // Summary:
 //
-// 查询云应用列表
+// Queries a list of cloud applications. This operation supports paged queries.
 //
 // @param request - ListCloudAppsRequest
 //
@@ -9478,7 +10524,19 @@ func (client *Client) ListCloudApps(request *ListCloudAppsRequest) (_result *Lis
 
 // Summary:
 //
-// 查询所有负载信息，支持分页查询。
+// Queries payload information for cloud application services. This operation supports paged queries.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API queries payload information for cloud application services and supports filtering and paged queries using various parameters.
+//
+// - Optional parameters include `Spec`, `Statuses`, `InstanceIds`, `PlanIds`, and `HiveIds`.
+//
+// - For paged queries, you can use the `PageNumber` and `PageSize` parameters to control the amount of data returned. The default page size is 10 records, and the maximum is 100 records.
+//
+// - You can specify a time range for the query using the `StartTime` and `EndTime` parameters.
 //
 // @param tmpReq - ListEdgeWorkersRequest
 //
@@ -9572,7 +10630,19 @@ func (client *Client) ListEdgeWorkersWithOptions(tmpReq *ListEdgeWorkersRequest,
 
 // Summary:
 //
-// 查询所有负载信息，支持分页查询。
+// Queries payload information for cloud application services. This operation supports paged queries.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API queries payload information for cloud application services and supports filtering and paged queries using various parameters.
+//
+// - Optional parameters include `Spec`, `Statuses`, `InstanceIds`, `PlanIds`, and `HiveIds`.
+//
+// - For paged queries, you can use the `PageNumber` and `PageSize` parameters to control the amount of data returned. The default page size is 10 records, and the maximum is 100 records.
+//
+// - You can specify a time range for the query using the `StartTime` and `EndTime` parameters.
 //
 // @param request - ListEdgeWorkersRequest
 //
@@ -9590,7 +10660,7 @@ func (client *Client) ListEdgeWorkers(request *ListEdgeWorkersRequest) (_result 
 
 // Summary:
 //
-// 查询文件的实例推送状态信息列表。
+// Lists the push status records for a file pushed to cloud application service instances. It supports paged query.
 //
 // @param request - ListFilePushStatusesRequest
 //
@@ -9630,7 +10700,7 @@ func (client *Client) ListFilePushStatusesWithOptions(request *ListFilePushStatu
 
 // Summary:
 //
-// 查询文件的实例推送状态信息列表。
+// Lists the push status records for a file pushed to cloud application service instances. It supports paged query.
 //
 // @param request - ListFilePushStatusesRequest
 //
@@ -9648,7 +10718,7 @@ func (client *Client) ListFilePushStatuses(request *ListFilePushStatusesRequest)
 
 // Summary:
 //
-// 查询可用文件列表。
+// Lists uploaded files. The response includes the upload status for each file and supports paged queries.
 //
 // @param request - ListFilesRequest
 //
@@ -9688,7 +10758,7 @@ func (client *Client) ListFilesWithOptions(request *ListFilesRequest, runtime *d
 
 // Summary:
 //
-// 查询可用文件列表。
+// Lists uploaded files. The response includes the upload status for each file and supports paged queries.
 //
 // @param request - ListFilesRequest
 //
@@ -9707,6 +10777,18 @@ func (client *Client) ListFiles(request *ListFilesRequest) (_result *ListFilesRe
 // Summary:
 //
 // 查询所有集群信息，支持分页查询。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该 API 用于查询用户创建的所有集群信息。
+//
+// - 支持通过 `HiveId` 和 `Name` 参数进行过滤查询。
+//
+// - 分页参数 `PageNumber` 和 `PageSize` 可以控制返回结果的数量和页码，默认每页显示10条记录，最大支持100条。
+//
+// - `StartTime` 和 `EndTime` 参数可用于指定时间范围内的集群信息查询，但非必填项。
 //
 // @param request - ListHivesRequest
 //
@@ -9772,6 +10854,18 @@ func (client *Client) ListHivesWithOptions(request *ListHivesRequest, runtime *d
 //
 // 查询所有集群信息，支持分页查询。
 //
+// Description:
+//
+// ## 请求说明
+//
+// - 该 API 用于查询用户创建的所有集群信息。
+//
+// - 支持通过 `HiveId` 和 `Name` 参数进行过滤查询。
+//
+// - 分页参数 `PageNumber` 和 `PageSize` 可以控制返回结果的数量和页码，默认每页显示10条记录，最大支持100条。
+//
+// - `StartTime` 和 `EndTime` 参数可用于指定时间范围内的集群信息查询，但非必填项。
+//
 // @param request - ListHivesRequest
 //
 // @return ListHivesResponse
@@ -9788,7 +10882,7 @@ func (client *Client) ListHives(request *ListHivesRequest) (_result *ListHivesRe
 
 // Summary:
 //
-// 查询公钥信息
+// Retrieves a list of public keys that match the specified criteria. This operation supports pagination.
 //
 // @param request - ListPublicKeysRequest
 //
@@ -9828,7 +10922,7 @@ func (client *Client) ListPublicKeysWithOptions(request *ListPublicKeysRequest, 
 
 // Summary:
 //
-// 查询公钥信息
+// Retrieves a list of public keys that match the specified criteria. This operation supports pagination.
 //
 // @param request - ListPublicKeysRequest
 //
@@ -9846,7 +10940,7 @@ func (client *Client) ListPublicKeys(request *ListPublicKeysRequest) (_result *L
 
 // Summary:
 //
-// 查询所有云应用数据包信息，支持分页查询。
+// Queries information about the data packets of cloud applications. Paged queries are supported.
 //
 // @param request - ListRenderingDataPackagesRequest
 //
@@ -9918,7 +11012,7 @@ func (client *Client) ListRenderingDataPackagesWithOptions(request *ListRenderin
 
 // Summary:
 //
-// 查询所有云应用数据包信息，支持分页查询。
+// Queries information about the data packets of cloud applications. Paged queries are supported.
 //
 // @param request - ListRenderingDataPackagesRequest
 //
@@ -9936,7 +11030,11 @@ func (client *Client) ListRenderingDataPackages(request *ListRenderingDataPackag
 
 // Summary:
 //
-// 查询自定义网关
+// Queries custom gateways.
+//
+// Description:
+//
+// > Specify at least the template ID or the template type.
 //
 // @param request - ListRenderingInstanceGatewayRequest
 //
@@ -10000,7 +11098,11 @@ func (client *Client) ListRenderingInstanceGatewayWithOptions(request *ListRende
 
 // Summary:
 //
-// 查询自定义网关
+// Queries custom gateways.
+//
+// Description:
+//
+// > Specify at least the template ID or the template type.
 //
 // @param request - ListRenderingInstanceGatewayRequest
 //
@@ -10018,7 +11120,7 @@ func (client *Client) ListRenderingInstanceGateway(request *ListRenderingInstanc
 
 // Summary:
 //
-// 查询所有云渲染实例信息，支持分页查询。
+// Lists basic information about cloud application service instances and supports paged queries.
 //
 // @param request - ListRenderingInstancesRequest
 //
@@ -10058,7 +11160,7 @@ func (client *Client) ListRenderingInstancesWithOptions(request *ListRenderingIn
 
 // Summary:
 //
-// 查询所有云渲染实例信息，支持分页查询。
+// Lists basic information about cloud application service instances and supports paged queries.
 //
 // @param request - ListRenderingInstancesRequest
 //
@@ -10076,13 +11178,13 @@ func (client *Client) ListRenderingInstances(request *ListRenderingInstancesRequ
 
 // Summary:
 //
-// 分页查询项目关联的云应用服务实例列表。
+// Retrieve a paginated list of cloud application service instances associated with a project.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口支持通过多种筛选条件（如状态、实例ID等）来查询指定项目下的云应用服务实例。
+// - This operation enables you to query cloud application service instances in a project using multiple filter conditions, such as status and instance ID.
 //
 // @param request - ListRenderingProjectInstancesRequest
 //
@@ -10150,13 +11252,13 @@ func (client *Client) ListRenderingProjectInstancesWithOptions(request *ListRend
 
 // Summary:
 //
-// 分页查询项目关联的云应用服务实例列表。
+// Retrieve a paginated list of cloud application service instances associated with a project.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口支持通过多种筛选条件（如状态、实例ID等）来查询指定项目下的云应用服务实例。
+// - This operation enables you to query cloud application service instances in a project using multiple filter conditions, such as status and instance ID.
 //
 // @param request - ListRenderingProjectInstancesRequest
 //
@@ -10174,15 +11276,15 @@ func (client *Client) ListRenderingProjectInstances(request *ListRenderingProjec
 
 // Summary:
 //
-// 分页查询用户下的云应用服务项目基本信息列表。
+// Obtain a paged list of basic information about cloud application projects for the current user.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request details
 //
-// - 该接口用于分页查询指定用户下的渲染项目基本信息列表。
+// - This operation returns a paged list of basic information about rendering projects for a specified user.
 //
-// - 可通过 `ProjectId` 和 `ProjectName` 进行过滤查询。
+// - Filter results by `ProjectId` or `ProjectName`.
 //
 // @param request - ListRenderingProjectsRequest
 //
@@ -10246,15 +11348,15 @@ func (client *Client) ListRenderingProjectsWithOptions(request *ListRenderingPro
 
 // Summary:
 //
-// 分页查询用户下的云应用服务项目基本信息列表。
+// Obtain a paged list of basic information about cloud application projects for the current user.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request details
 //
-// - 该接口用于分页查询指定用户下的渲染项目基本信息列表。
+// - This operation returns a paged list of basic information about rendering projects for a specified user.
 //
-// - 可通过 `ProjectId` 和 `ProjectName` 进行过滤查询。
+// - Filter results by `ProjectId` or `ProjectName`.
 //
 // @param request - ListRenderingProjectsRequest
 //
@@ -10272,15 +11374,15 @@ func (client *Client) ListRenderingProjects(request *ListRenderingProjectsReques
 
 // Summary:
 //
-// 分页查询指定条件下的渲染会话列表。
+// Performs a paged query for the list of cloud application service sessions based on specified conditions.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// - 该接口支持通过多种参数组合来过滤和分页查询用户的渲染会话列表。
+// - This API supports filtering and paged query of user rendering session lists with various parameter combinations.
 //
-// - `SessionId` 和 `ClientId` 参数至少需要提供一个，但两者都不是必选的。如果同时提供了两个参数，则将根据这两个参数进行更精确的匹配。
+// - You must provide at least one of the `SessionId` or `ClientId` parameters. Neither parameter is mandatory independently. If both parameters are provided, a more precise match is performed based on these two parameters.
 //
 // @param request - ListRenderingSessionsRequest
 //
@@ -10364,15 +11466,15 @@ func (client *Client) ListRenderingSessionsWithOptions(request *ListRenderingSes
 
 // Summary:
 //
-// 分页查询指定条件下的渲染会话列表。
+// Performs a paged query for the list of cloud application service sessions based on specified conditions.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request Description
 //
-// - 该接口支持通过多种参数组合来过滤和分页查询用户的渲染会话列表。
+// - This API supports filtering and paged query of user rendering session lists with various parameter combinations.
 //
-// - `SessionId` 和 `ClientId` 参数至少需要提供一个，但两者都不是必选的。如果同时提供了两个参数，则将根据这两个参数进行更精确的匹配。
+// - You must provide at least one of the `SessionId` or `ClientId` parameters. Neither parameter is mandatory independently. If both parameters are provided, a more precise match is performed based on these two parameters.
 //
 // @param request - ListRenderingSessionsRequest
 //
@@ -10391,6 +11493,16 @@ func (client *Client) ListRenderingSessions(request *ListRenderingSessionsReques
 // Summary:
 //
 // 查询规格信息，支持分页查询。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该 API 用于查询所有可用的云应用服务规格信息。
+//
+// - 支持通过 `Specification` 参数过滤特定规格。
+//
+// - 分页查询时，可以通过 `PageNumber` 和 `PageSize` 参数控制返回的数据量。
 //
 // @param request - ListSpecificationsRequest
 //
@@ -10444,6 +11556,16 @@ func (client *Client) ListSpecificationsWithOptions(request *ListSpecificationsR
 //
 // 查询规格信息，支持分页查询。
 //
+// Description:
+//
+// ## 请求说明
+//
+// - 该 API 用于查询所有可用的云应用服务规格信息。
+//
+// - 支持通过 `Specification` 参数过滤特定规格。
+//
+// - 分页查询时，可以通过 `PageNumber` 和 `PageSize` 参数控制返回的数据量。
+//
 // @param request - ListSpecificationsRequest
 //
 // @return ListSpecificationsResponse
@@ -10460,7 +11582,7 @@ func (client *Client) ListSpecifications(request *ListSpecificationsRequest) (_r
 
 // Summary:
 //
-// 安全登陆管理
+// Manages secure logons.
 //
 // @param request - ManageLoginRequest
 //
@@ -10516,7 +11638,7 @@ func (client *Client) ManageLoginWithOptions(request *ManageLoginRequest, runtim
 
 // Summary:
 //
-// 安全登陆管理
+// Manages secure logons.
 //
 // @param request - ManageLoginRequest
 //
@@ -10534,7 +11656,11 @@ func (client *Client) ManageLogin(request *ManageLoginRequest) (_result *ManageL
 
 // Summary:
 //
-// 查询Comfy的工作流详细信息
+// Modifies the metadata of a specified workflow.
+//
+// Description:
+//
+// \\> 截图查询目前不支持分页，仅支持按迭代方式。使用返回结果里的extStartTime参数值，作为新请求的StartTime可请求下一页。
 //
 // @param request - ModifyComfyWorkflowRequest
 //
@@ -10586,7 +11712,11 @@ func (client *Client) ModifyComfyWorkflowWithOptions(request *ModifyComfyWorkflo
 
 // Summary:
 //
-// 查询Comfy的工作流详细信息
+// Modifies the metadata of a specified workflow.
+//
+// Description:
+//
+// \\> 截图查询目前不支持分页，仅支持按迭代方式。使用返回结果里的extStartTime参数值，作为新请求的StartTime可请求下一页。
 //
 // @param request - ModifyComfyWorkflowRequest
 //
@@ -10602,6 +11732,10 @@ func (client *Client) ModifyComfyWorkflow(request *ModifyComfyWorkflowRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Update device information.
+//
 // @param request - ModifyDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10730,6 +11864,10 @@ func (client *Client) ModifyDeviceWithOptions(request *ModifyDeviceRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Update device information.
+//
 // @param request - ModifyDeviceRequest
 //
 // @return ModifyDeviceResponse
@@ -10744,6 +11882,10 @@ func (client *Client) ModifyDevice(request *ModifyDeviceRequest) (_result *Modif
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the alarm status of a device.
+//
 // @param request - ModifyDeviceAlarmRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10800,6 +11942,10 @@ func (client *Client) ModifyDeviceAlarmWithOptions(request *ModifyDeviceAlarmReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the alarm status of a device.
+//
 // @param request - ModifyDeviceAlarmRequest
 //
 // @return ModifyDeviceAlarmResponse
@@ -10814,6 +11960,10 @@ func (client *Client) ModifyDeviceAlarm(request *ModifyDeviceAlarmRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Modify the device image capture configuration.
+//
 // @param request - ModifyDeviceCaptureRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10866,6 +12016,10 @@ func (client *Client) ModifyDeviceCaptureWithOptions(request *ModifyDeviceCaptur
 	return _result, _err
 }
 
+// Summary:
+//
+// Modify the device image capture configuration.
+//
 // @param request - ModifyDeviceCaptureRequest
 //
 // @return ModifyDeviceCaptureResponse
@@ -10880,6 +12034,10 @@ func (client *Client) ModifyDeviceCapture(request *ModifyDeviceCaptureRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the list of channels for a device.
+//
 // @param request - ModifyDeviceChannelsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10936,6 +12094,10 @@ func (client *Client) ModifyDeviceChannelsWithOptions(request *ModifyDeviceChann
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the list of channels for a device.
+//
 // @param request - ModifyDeviceChannelsRequest
 //
 // @return ModifyDeviceChannelsResponse
@@ -10950,6 +12112,10 @@ func (client *Client) ModifyDeviceChannels(request *ModifyDeviceChannelsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information of a directory.
+//
 // @param request - ModifyDirectoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11002,6 +12168,10 @@ func (client *Client) ModifyDirectoryWithOptions(request *ModifyDirectoryRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information of a directory.
+//
 // @param request - ModifyDirectoryRequest
 //
 // @return ModifyDirectoryResponse
@@ -11016,6 +12186,10 @@ func (client *Client) ModifyDirectory(request *ModifyDirectoryRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// You can modify the details of a space.
+//
 // @param request - ModifyGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11100,6 +12274,10 @@ func (client *Client) ModifyGroupWithOptions(request *ModifyGroupRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// You can modify the details of a space.
+//
 // @param request - ModifyGroupRequest
 //
 // @return ModifyGroupResponse
@@ -11116,13 +12294,17 @@ func (client *Client) ModifyGroup(request *ModifyGroupRequest) (_result *ModifyG
 
 // Summary:
 //
-// 更新集群
+// Updates the name or description of a specified cluster.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - This API modifies the name and/or description of an existing cluster.
+//
+// - `HiveId` is a required parameter that identifies the cluster to modify.
+//
+// - The `Name` and `Description` parameters are optional. You can specify either or both to update the corresponding attributes of the cluster.
 //
 // @param request - ModifyHiveAttributeRequest
 //
@@ -11174,13 +12356,17 @@ func (client *Client) ModifyHiveAttributeWithOptions(request *ModifyHiveAttribut
 
 // Summary:
 //
-// 更新集群
+// Updates the name or description of a specified cluster.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - This API modifies the name and/or description of an existing cluster.
+//
+// - `HiveId` is a required parameter that identifies the cluster to modify.
+//
+// - The `Name` and `Description` parameters are optional. You can specify either or both to update the corresponding attributes of the cluster.
 //
 // @param request - ModifyHiveAttributeRequest
 //
@@ -11196,6 +12382,10 @@ func (client *Client) ModifyHiveAttribute(request *ModifyHiveAttributeRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information of a parent platform.
+//
 // @param request - ModifyParentPlatformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11276,6 +12466,10 @@ func (client *Client) ModifyParentPlatformWithOptions(request *ModifyParentPlatf
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information of a parent platform.
+//
 // @param request - ModifyParentPlatformRequest
 //
 // @return ModifyParentPlatformResponse
@@ -11292,7 +12486,7 @@ func (client *Client) ModifyParentPlatform(request *ModifyParentPlatformRequest)
 
 // Summary:
 //
-// 变配云渲染资源实例付费类型
+// Change the billing method for a Graphic Computing Service instance.
 //
 // @param request - ModifyRenderingChargeTypeRequest
 //
@@ -11352,7 +12546,7 @@ func (client *Client) ModifyRenderingChargeTypeWithOptions(request *ModifyRender
 
 // Summary:
 //
-// 变配云渲染资源实例付费类型
+// Change the billing method for a Graphic Computing Service instance.
 //
 // @param request - ModifyRenderingChargeTypeRequest
 //
@@ -11370,7 +12564,7 @@ func (client *Client) ModifyRenderingChargeType(request *ModifyRenderingChargeTy
 
 // Summary:
 //
-// 变配云渲染资源实例
+// Upgrades or downgrades a cloud application service instance.
 //
 // @param request - ModifyRenderingInstanceRequest
 //
@@ -11422,7 +12616,7 @@ func (client *Client) ModifyRenderingInstanceWithOptions(request *ModifyRenderin
 
 // Summary:
 //
-// 变配云渲染资源实例
+// Upgrades or downgrades a cloud application service instance.
 //
 // @param request - ModifyRenderingInstanceRequest
 //
@@ -11440,7 +12634,7 @@ func (client *Client) ModifyRenderingInstance(request *ModifyRenderingInstanceRe
 
 // Summary:
 //
-// 修改云应用服务实例密码
+// Modifies the attributes of a cloud application service instance.
 //
 // @param request - ModifyRenderingInstanceAttributeRequest
 //
@@ -11488,7 +12682,7 @@ func (client *Client) ModifyRenderingInstanceAttributeWithOptions(request *Modif
 
 // Summary:
 //
-// 修改云应用服务实例密码
+// Modifies the attributes of a cloud application service instance.
 //
 // @param request - ModifyRenderingInstanceAttributeRequest
 //
@@ -11506,7 +12700,7 @@ func (client *Client) ModifyRenderingInstanceAttribute(request *ModifyRenderingI
 
 // Summary:
 //
-// 修改云渲染实例限速带宽
+// Updates the rate limiting bandwidth for a cloud application service instance. You can call the DescribeRenderingInstance operation to retrieve the current rate limiting value and check the status of the rate limiting update.
 //
 // @param request - ModifyRenderingInstanceBandwidthRequest
 //
@@ -11558,7 +12752,7 @@ func (client *Client) ModifyRenderingInstanceBandwidthWithOptions(request *Modif
 
 // Summary:
 //
-// 修改云渲染实例限速带宽
+// Updates the rate limiting bandwidth for a cloud application service instance. You can call the DescribeRenderingInstance operation to retrieve the current rate limiting value and check the status of the rate limiting update.
 //
 // @param request - ModifyRenderingInstanceBandwidthRequest
 //
@@ -11574,6 +12768,10 @@ func (client *Client) ModifyRenderingInstanceBandwidth(request *ModifyRenderingI
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies template information.
+//
 // @param request - ModifyTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11694,6 +12892,10 @@ func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies template information.
+//
 // @param request - ModifyTemplateRequest
 //
 // @return ModifyTemplateResponse
@@ -11710,13 +12912,13 @@ func (client *Client) ModifyTemplate(request *ModifyTemplateRequest) (_result *M
 
 // Summary:
 //
-// 移动负载到集群
+// Moves the specified cloud application service instances from their current cluster to the target Hive.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - Ensure the target Hive has sufficient resources to accommodate the instances.
 //
 // @param tmpReq - MoveHiveEdgeWorkersRequest
 //
@@ -11770,13 +12972,13 @@ func (client *Client) MoveHiveEdgeWorkersWithOptions(tmpReq *MoveHiveEdgeWorkers
 
 // Summary:
 //
-// 移动负载到集群
+// Moves the specified cloud application service instances from their current cluster to the target Hive.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request
 //
-// - 该接口用于将满足特定条件的实例与指定项目进行关联。
+// - Ensure the target Hive has sufficient resources to accommodate the instances.
 //
 // @param request - MoveHiveEdgeWorkersRequest
 //
@@ -11792,6 +12994,10 @@ func (client *Client) MoveHiveEdgeWorkers(request *MoveHiveEdgeWorkersRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates the service.
+//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenVsServiceResponse
@@ -11817,6 +13023,10 @@ func (client *Client) OpenVsServiceWithOptions(runtime *dara.RuntimeOptions) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates the service.
+//
 // @return OpenVsServiceResponse
 func (client *Client) OpenVsService() (_result *OpenVsServiceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -11831,7 +13041,7 @@ func (client *Client) OpenVsService() (_result *OpenVsServiceResponse, _err erro
 
 // Summary:
 //
-// 预推文件到云渲染实例。
+// Push a file to a specified cloud application service instance. This is an asynchronous operation. You can query the push progress using the ListFilePushStatuses operation.
 //
 // @param request - PushFileRequest
 //
@@ -11879,7 +13089,7 @@ func (client *Client) PushFileWithOptions(request *PushFileRequest, runtime *dar
 
 // Summary:
 //
-// 预推文件到云渲染实例。
+// Push a file to a specified cloud application service instance. This is an asynchronous operation. You can query the push progress using the ListFilePushStatuses operation.
 //
 // @param request - PushFileRequest
 //
@@ -11897,7 +13107,7 @@ func (client *Client) PushFile(request *PushFileRequest) (_result *PushFileRespo
 
 // Summary:
 //
-// 重启云渲染实例
+// Restarts a cloud application service instance. You can call the DescribeRenderingInstance API to monitor the restart progress.
 //
 // @param request - RebootRenderingInstanceRequest
 //
@@ -11941,7 +13151,7 @@ func (client *Client) RebootRenderingInstanceWithOptions(request *RebootRenderin
 
 // Summary:
 //
-// 重启云渲染实例
+// Restarts a cloud application service instance. You can call the DescribeRenderingInstance API to monitor the restart progress.
 //
 // @param request - RebootRenderingInstanceRequest
 //
@@ -11959,7 +13169,7 @@ func (client *Client) RebootRenderingInstance(request *RebootRenderingInstanceRe
 
 // Summary:
 //
-// 云应用服务实例主机重启
+// Restarts the host of a cloud application service instance.
 //
 // @param tmpReq - RebootRenderingServerRequest
 //
@@ -12009,7 +13219,7 @@ func (client *Client) RebootRenderingServerWithOptions(tmpReq *RebootRenderingSe
 
 // Summary:
 //
-// 云应用服务实例主机重启
+// Restarts the host of a cloud application service instance.
 //
 // @param request - RebootRenderingServerRequest
 //
@@ -12027,7 +13237,7 @@ func (client *Client) RebootRenderingServer(request *RebootRenderingServerReques
 
 // Summary:
 //
-// 恢复数据到云渲染实例
+// # Recover data to a Graphic Computing Service instance
 //
 // @param request - RecoverRenderingDataPackageRequest
 //
@@ -12079,7 +13289,7 @@ func (client *Client) RecoverRenderingDataPackageWithOptions(request *RecoverRen
 
 // Summary:
 //
-// 恢复数据到云渲染实例
+// # Recover data to a Graphic Computing Service instance
 //
 // @param request - RecoverRenderingDataPackageRequest
 //
@@ -12097,7 +13307,11 @@ func (client *Client) RecoverRenderingDataPackage(request *RecoverRenderingDataP
 
 // Summary:
 //
-// 更新实例流连接信息
+// Call RefreshRenderingInstanceStreaming to refresh the stream connection for a cloud application service instance.
+//
+// Description:
+//
+// > Specify at least one of the template ID or template type.
 //
 // @param tmpReq - RefreshRenderingInstanceStreamingRequest
 //
@@ -12151,7 +13365,11 @@ func (client *Client) RefreshRenderingInstanceStreamingWithOptions(tmpReq *Refre
 
 // Summary:
 //
-// 更新实例流连接信息
+// Call RefreshRenderingInstanceStreaming to refresh the stream connection for a cloud application service instance.
+//
+// Description:
+//
+// > Specify at least one of the template ID or template type.
 //
 // @param request - RefreshRenderingInstanceStreamingRequest
 //
@@ -12169,7 +13387,7 @@ func (client *Client) RefreshRenderingInstanceStreaming(request *RefreshRenderin
 
 // Summary:
 //
-// 释放云渲染数据包
+// # Release a cloud application service data pack
 //
 // @param request - ReleaseRenderingDataPackageRequest
 //
@@ -12213,7 +13431,7 @@ func (client *Client) ReleaseRenderingDataPackageWithOptions(request *ReleaseRen
 
 // Summary:
 //
-// 释放云渲染数据包
+// # Release a cloud application service data pack
 //
 // @param request - ReleaseRenderingDataPackageRequest
 //
@@ -12231,7 +13449,7 @@ func (client *Client) ReleaseRenderingDataPackage(request *ReleaseRenderingDataP
 
 // Summary:
 //
-// 释放云渲染实例
+// Invoke ReleaseRenderingInstance to release a Graphic Computing Service application instance.
 //
 // @param request - ReleaseRenderingInstanceRequest
 //
@@ -12275,7 +13493,7 @@ func (client *Client) ReleaseRenderingInstanceWithOptions(request *ReleaseRender
 
 // Summary:
 //
-// 释放云渲染实例
+// Invoke ReleaseRenderingInstance to release a Graphic Computing Service application instance.
 //
 // @param request - ReleaseRenderingInstanceRequest
 //
@@ -12293,7 +13511,7 @@ func (client *Client) ReleaseRenderingInstance(request *ReleaseRenderingInstance
 
 // Summary:
 //
-// 续费云渲染资源实例
+// Invoke RenewRenderingInstance to renew a cloud application service instance.
 //
 // @param request - RenewRenderingInstanceRequest
 //
@@ -12345,7 +13563,7 @@ func (client *Client) RenewRenderingInstanceWithOptions(request *RenewRenderingI
 
 // Summary:
 //
-// 续费云渲染资源实例
+// Invoke RenewRenderingInstance to renew a cloud application service instance.
 //
 // @param request - RenewRenderingInstanceRequest
 //
@@ -12363,7 +13581,7 @@ func (client *Client) RenewRenderingInstance(request *RenewRenderingInstanceRequ
 
 // Summary:
 //
-// 重置云渲染实例
+// Resets a cloud application service instance. You can query the DescribeRenderingInstance interface to obtain the reset progress.
 //
 // @param request - ResetRenderingInstanceRequest
 //
@@ -12415,7 +13633,7 @@ func (client *Client) ResetRenderingInstanceWithOptions(request *ResetRenderingI
 
 // Summary:
 //
-// 重置云渲染实例
+// Resets a cloud application service instance. You can query the DescribeRenderingInstance interface to obtain the reset progress.
 //
 // @param request - ResetRenderingInstanceRequest
 //
@@ -12431,6 +13649,10 @@ func (client *Client) ResetRenderingInstance(request *ResetRenderingInstanceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes pushing for a stream.
+//
 // @param request - ResumeVsStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12491,6 +13713,10 @@ func (client *Client) ResumeVsStreamWithOptions(request *ResumeVsStreamRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Resumes pushing for a stream.
+//
 // @param request - ResumeVsStreamRequest
 //
 // @return ResumeVsStreamResponse
@@ -12507,7 +13733,7 @@ func (client *Client) ResumeVsStream(request *ResumeVsStreamRequest) (_result *R
 
 // Summary:
 //
-// 下发shell命令，支持同步/异步响应命令。
+// Sends shell control instructions to a cloud application service instance. This operation supports both sync and asynchronous command responses. The sync scenario is not suitable for time-consuming commands. The maximum execution time cannot exceed 30 s. In an asynchronous scenario, you can call the GetRenderingInstanceCommandsStatus operation to query the execution status and result of a command.
 //
 // @param request - SendRenderingInstanceCommandsRequest
 //
@@ -12565,7 +13791,7 @@ func (client *Client) SendRenderingInstanceCommandsWithOptions(request *SendRend
 
 // Summary:
 //
-// 下发shell命令，支持同步/异步响应命令。
+// Sends shell control instructions to a cloud application service instance. This operation supports both sync and asynchronous command responses. The sync scenario is not suitable for time-consuming commands. The maximum execution time cannot exceed 30 s. In an asynchronous scenario, you can call the GetRenderingInstanceCommandsStatus operation to query the execution status and result of a command.
 //
 // @param request - SendRenderingInstanceCommandsRequest
 //
@@ -12581,6 +13807,10 @@ func (client *Client) SendRenderingInstanceCommands(request *SendRenderingInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Set a preset position.
+//
 // @param request - SetPresetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12629,6 +13859,10 @@ func (client *Client) SetPresetWithOptions(request *SetPresetRequest, runtime *d
 	return _result, _err
 }
 
+// Summary:
+//
+// Set a preset position.
+//
 // @param request - SetPresetRequest
 //
 // @return SetPresetResponse
@@ -12643,6 +13877,10 @@ func (client *Client) SetPreset(request *SetPresetRequest) (_result *SetPresetRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Enable or disable the certificate feature for a domain name.
+//
 // @param request - SetVsDomainCertificateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12715,6 +13953,10 @@ func (client *Client) SetVsDomainCertificateWithOptions(request *SetVsDomainCert
 	return _result, _err
 }
 
+// Summary:
+//
+// Enable or disable the certificate feature for a domain name.
+//
 // @param request - SetVsDomainCertificateRequest
 //
 // @return SetVsDomainCertificateResponse
@@ -12729,6 +13971,10 @@ func (client *Client) SetVsDomainCertificate(request *SetVsDomainCertificateRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Configure stream ingest callbacks.
+//
 // @param request - SetVsStreamsNotifyUrlConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12785,6 +14031,10 @@ func (client *Client) SetVsStreamsNotifyUrlConfigWithOptions(request *SetVsStrea
 	return _result, _err
 }
 
+// Summary:
+//
+// Configure stream ingest callbacks.
+//
 // @param request - SetVsStreamsNotifyUrlConfigRequest
 //
 // @return SetVsStreamsNotifyUrlConfigResponse
@@ -12799,6 +14049,14 @@ func (client *Client) SetVsStreamsNotifyUrlConfig(request *SetVsStreamsNotifyUrl
 	return _result, _err
 }
 
+// Summary:
+//
+// Start stream pulling from a device. This action starts all streams on the device.
+//
+// Description:
+//
+// Each device currently supports only one ingest endpoint. The effect is the same as StartStream.
+//
 // @param request - StartDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12843,6 +14101,14 @@ func (client *Client) StartDeviceWithOptions(request *StartDeviceRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Start stream pulling from a device. This action starts all streams on the device.
+//
+// Description:
+//
+// Each device currently supports only one ingest endpoint. The effect is the same as StartStream.
+//
 // @param request - StartDeviceRequest
 //
 // @return StartDeviceResponse
@@ -12857,6 +14123,10 @@ func (client *Client) StartDevice(request *StartDeviceRequest) (_result *StartDe
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts interactions with the parent platform, such as registration and keep-alive.
+//
 // @param request - StartParentPlatformRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12901,6 +14171,10 @@ func (client *Client) StartParentPlatformWithOptions(request *StartParentPlatfor
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts interactions with the parent platform, such as registration and keep-alive.
+//
 // @param request - StartParentPlatformRequest
 //
 // @return StartParentPlatformResponse
@@ -12977,6 +14251,18 @@ func (client *Client) StartPublishStream(request *StartPublishStreamRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts on-demand recording for the specified stream.
+//
+// Description:
+//
+// > - An on-demand record template is required. You must first attach one to the space or stream.
+//
+// >
+//
+// > - You can specify a stream in two ways: using its ID or its PlayDomain/App/Name.
+//
 // @param request - StartRecordStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13033,6 +14319,18 @@ func (client *Client) StartRecordStreamWithOptions(request *StartRecordStreamReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts on-demand recording for the specified stream.
+//
+// Description:
+//
+// > - An on-demand record template is required. You must first attach one to the space or stream.
+//
+// >
+//
+// > - You can specify a stream in two ways: using its ID or its PlayDomain/App/Name.
+//
 // @param request - StartRecordStreamRequest
 //
 // @return StartRecordStreamResponse
@@ -13049,7 +14347,7 @@ func (client *Client) StartRecordStream(request *StartRecordStreamRequest) (_res
 
 // Summary:
 //
-// 调度一个空闲云应用服务实例，并完成服务启动。
+// Schedules an idle cloud application service instance for the requesting client (ClientId) and starts the service. If the requesting client (ClientId) sends another start request after a successful start and the associated session is in the SessionStartSuspended state, the session is restarted. If the session is in any other state, the session information is returned directly.
 //
 // @param tmpReq - StartRenderingSessionRequest
 //
@@ -13115,7 +14413,7 @@ func (client *Client) StartRenderingSessionWithOptions(tmpReq *StartRenderingSes
 
 // Summary:
 //
-// 调度一个空闲云应用服务实例，并完成服务启动。
+// Schedules an idle cloud application service instance for the requesting client (ClientId) and starts the service. If the requesting client (ClientId) sends another start request after a successful start and the associated session is in the SessionStartSuspended state, the session is restarted. If the session is in any other state, the session information is returned directly.
 //
 // @param request - StartRenderingSessionRequest
 //
@@ -13131,6 +14429,10 @@ func (client *Client) StartRenderingSession(request *StartRenderingSessionReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Start a stream.
+//
 // @param request - StartStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13183,6 +14485,10 @@ func (client *Client) StartStreamWithOptions(request *StartStreamRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Start a stream.
+//
 // @param request - StartStreamRequest
 //
 // @return StartStreamResponse
@@ -13197,6 +14503,10 @@ func (client *Client) StartStream(request *StartStreamRequest) (_result *StartSt
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts forwarding a stream to an external address.
+//
 // @param request - StartTransferStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13249,6 +14559,10 @@ func (client *Client) StartTransferStreamWithOptions(request *StartTransferStrea
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts forwarding a stream to an external address.
+//
 // @param request - StartTransferStreamRequest
 //
 // @return StartTransferStreamResponse
@@ -13263,6 +14577,10 @@ func (client *Client) StartTransferStream(request *StartTransferStreamRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops lens adjustments, such as aperture or zoom changes.
+//
 // @param request - StopAdjustRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13315,6 +14633,10 @@ func (client *Client) StopAdjustWithOptions(request *StopAdjustRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops lens adjustments, such as aperture or zoom changes.
+//
 // @param request - StopAdjustRequest
 //
 // @return StopAdjustResponse
@@ -13329,6 +14651,14 @@ func (client *Client) StopAdjust(request *StopAdjustRequest) (_result *StopAdjus
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops stream pulling for a device. This operation terminates all streams on that device.
+//
+// Description:
+//
+// Stops stream pulling for a device. This operation terminates all streams on that device.
+//
 // @param request - StopDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13377,6 +14707,14 @@ func (client *Client) StopDeviceWithOptions(request *StopDeviceRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops stream pulling for a device. This operation terminates all streams on that device.
+//
+// Description:
+//
+// Stops stream pulling for a device. This operation terminates all streams on that device.
+//
 // @param request - StopDeviceRequest
 //
 // @return StopDeviceResponse
@@ -13391,6 +14729,10 @@ func (client *Client) StopDevice(request *StopDeviceRequest) (_result *StopDevic
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops camera movement, such as panning, tilting, and zooming.
+//
 // @param request - StopMoveRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13447,6 +14789,10 @@ func (client *Client) StopMoveWithOptions(request *StopMoveRequest, runtime *dar
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops camera movement, such as panning, tilting, and zooming.
+//
 // @param request - StopMoveRequest
 //
 // @return StopMoveResponse
@@ -13519,6 +14865,14 @@ func (client *Client) StopPublishStream(request *StopPublishStreamRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops on-demand recording for a specified stream.
+//
+// Description:
+//
+// > You can specify a stream by ID or by PlayDomain/App/Name.
+//
 // @param request - StopRecordStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13575,6 +14929,14 @@ func (client *Client) StopRecordStreamWithOptions(request *StopRecordStreamReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops on-demand recording for a specified stream.
+//
+// Description:
+//
+// > You can specify a stream by ID or by PlayDomain/App/Name.
+//
 // @param request - StopRecordStreamRequest
 //
 // @return StopRecordStreamResponse
@@ -13591,11 +14953,11 @@ func (client *Client) StopRecordStream(request *StopRecordStreamRequest) (_resul
 
 // Summary:
 //
-// 关闭指定的云应用服务会话并回收相关实例资源。
+// Shut down the specified cloud application service session and revoke the associated instance resources.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request information
 //
 // @param request - StopRenderingSessionRequest
 //
@@ -13647,11 +15009,11 @@ func (client *Client) StopRenderingSessionWithOptions(request *StopRenderingSess
 
 // Summary:
 //
-// 关闭指定的云应用服务会话并回收相关实例资源。
+// Shut down the specified cloud application service session and revoke the associated instance resources.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request information
 //
 // @param request - StopRenderingSessionRequest
 //
@@ -13667,6 +15029,10 @@ func (client *Client) StopRenderingSession(request *StopRenderingSessionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops a stream.
+//
 // @param request - StopStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13719,6 +15085,10 @@ func (client *Client) StopStreamWithOptions(request *StopStreamRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops a stream.
+//
 // @param request - StopStreamRequest
 //
 // @return StopStreamResponse
@@ -13733,6 +15103,10 @@ func (client *Client) StopStream(request *StopStreamRequest) (_result *StopStrea
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops a stream.
+//
 // @param request - StopTransferStreamRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13781,6 +15155,10 @@ func (client *Client) StopTransferStreamWithOptions(request *StopTransferStreamR
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops a stream.
+//
 // @param request - StopTransferStreamRequest
 //
 // @return StopTransferStreamResponse
@@ -13795,6 +15173,10 @@ func (client *Client) StopTransferStream(request *StopTransferStreamRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Synchronizes platform channel information.
+//
 // @param request - SyncCatalogsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13839,6 +15221,10 @@ func (client *Client) SyncCatalogsWithOptions(request *SyncCatalogsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Synchronizes platform channel information.
+//
 // @param request - SyncCatalogsRequest
 //
 // @return SyncCatalogsResponse
@@ -13853,6 +15239,10 @@ func (client *Client) SyncCatalogs(request *SyncCatalogsRequest) (_result *SyncC
 	return _result, _err
 }
 
+// Summary:
+//
+// Detach a device from a folder.
+//
 // @param request - UnbindDirectoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13901,6 +15291,10 @@ func (client *Client) UnbindDirectoryWithOptions(request *UnbindDirectoryRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Detach a device from a folder.
+//
 // @param request - UnbindDirectoryRequest
 //
 // @return UnbindDirectoryResponse
@@ -13915,6 +15309,10 @@ func (client *Client) UnbindDirectory(request *UnbindDirectoryRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Dissociates a device from a parent platform push configuration so that the device is no longer pushed.
+//
 // @param request - UnbindParentPlatformDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13963,6 +15361,10 @@ func (client *Client) UnbindParentPlatformDeviceWithOptions(request *UnbindParen
 	return _result, _err
 }
 
+// Summary:
+//
+// Dissociates a device from a parent platform push configuration so that the device is no longer pushed.
+//
 // @param request - UnbindParentPlatformDeviceRequest
 //
 // @return UnbindParentPlatformDeviceResponse
@@ -13977,6 +15379,10 @@ func (client *Client) UnbindParentPlatformDevice(request *UnbindParentPlatformDe
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds a purchased device from a space.
+//
 // @param request - UnbindPurchasedDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14021,6 +15427,10 @@ func (client *Client) UnbindPurchasedDeviceWithOptions(request *UnbindPurchasedD
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds a purchased device from a space.
+//
 // @param request - UnbindPurchasedDeviceRequest
 //
 // @return UnbindPurchasedDeviceResponse
@@ -14035,6 +15445,14 @@ func (client *Client) UnbindPurchasedDevice(request *UnbindPurchasedDeviceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbind a template from a specified instance, such as a group instance or a stream.
+//
+// Description:
+//
+// > Specify at least one of TemplateId or TemplateType.
+//
 // @param request - UnbindTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14091,6 +15509,14 @@ func (client *Client) UnbindTemplateWithOptions(request *UnbindTemplateRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbind a template from a specified instance, such as a group instance or a stream.
+//
+// Description:
+//
+// > Specify at least one of TemplateId or TemplateType.
+//
 // @param request - UnbindTemplateRequest
 //
 // @return UnbindTemplateResponse
@@ -14107,7 +15533,7 @@ func (client *Client) UnbindTemplate(request *UnbindTemplateRequest) (_result *U
 
 // Summary:
 //
-// 卸载云应用
+// You can uninstall a specified cloud application from a specified cloud application instance. This operation is asynchronous. You can use the ListCloudAppInstallations operation to check the uninstallation progress. After successful uninstallation, the query operation no longer returns related information.
 //
 // @param tmpReq - UninstallCloudAppRequest
 //
@@ -14181,7 +15607,7 @@ func (client *Client) UninstallCloudAppWithOptions(tmpReq *UninstallCloudAppRequ
 
 // Summary:
 //
-// 卸载云应用
+// You can uninstall a specified cloud application from a specified cloud application instance. This operation is asynchronous. You can use the ListCloudAppInstallations operation to check the uninstallation progress. After successful uninstallation, the query operation no longer returns related information.
 //
 // @param request - UninstallCloudAppRequest
 //
@@ -14197,6 +15623,10 @@ func (client *Client) UninstallCloudApp(request *UninstallCloudAppRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Unlock a device.
+//
 // @param request - UnlockDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14241,6 +15671,10 @@ func (client *Client) UnlockDeviceWithOptions(request *UnlockDeviceRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Unlock a device.
+//
 // @param request - UnlockDeviceRequest
 //
 // @return UnlockDeviceResponse
@@ -14257,7 +15691,7 @@ func (client *Client) UnlockDevice(request *UnlockDeviceRequest) (_result *Unloc
 
 // Summary:
 //
-// 更新云应用信息
+// Updates information for a cloud application, such as its description and tags. You can upload patch or hotfix packages and create hotfix packages for the Android cloud application marketplace. A cloud application supports up to 20 patch packages, but only one package can be in the uploading state at a time.
 //
 // @param tmpReq - UpdateCloudAppInfoRequest
 //
@@ -14329,7 +15763,7 @@ func (client *Client) UpdateCloudAppInfoWithOptions(tmpReq *UpdateCloudAppInfoRe
 
 // Summary:
 //
-// 更新云应用信息
+// Updates information for a cloud application, such as its description and tags. You can upload patch or hotfix packages and create hotfix packages for the Android cloud application marketplace. A cloud application supports up to 20 patch packages, but only one package can be in the uploading state at a time.
 //
 // @param request - UpdateCloudAppInfoRequest
 //
@@ -14347,7 +15781,7 @@ func (client *Client) UpdateCloudAppInfo(request *UpdateCloudAppInfoRequest) (_r
 
 // Summary:
 //
-// 更新文件信息。
+// Update basic information for a file, such as its description.
 //
 // @param request - UpdateFileInfoRequest
 //
@@ -14395,7 +15829,7 @@ func (client *Client) UpdateFileInfoWithOptions(request *UpdateFileInfoRequest, 
 
 // Summary:
 //
-// 更新文件信息。
+// Update basic information for a file, such as its description.
 //
 // @param request - UpdateFileInfoRequest
 //
@@ -14413,7 +15847,11 @@ func (client *Client) UpdateFileInfo(request *UpdateFileInfoRequest) (_result *U
 
 // Summary:
 //
-// 更新云渲染实例配置参数
+// This operation updates the configuration parameters of a cloud application service instance. It lets you modify various configurations of the Cloud Android system, such as prop, location, and network, to create a real device simulation.
+//
+// You can retrieve the configured values for the real device simulation by calling the DescribeRenderingInstance API.
+//
+// To query the configuration parameters of the real-time environment, see the DescribeRenderingInstanceConfiguration API.
 //
 // @param tmpReq - UpdateRenderingInstanceConfigurationRequest
 //
@@ -14469,7 +15907,11 @@ func (client *Client) UpdateRenderingInstanceConfigurationWithOptions(tmpReq *Up
 
 // Summary:
 //
-// 更新云渲染实例配置参数
+// This operation updates the configuration parameters of a cloud application service instance. It lets you modify various configurations of the Cloud Android system, such as prop, location, and network, to create a real device simulation.
+//
+// You can retrieve the configured values for the real device simulation by calling the DescribeRenderingInstance API.
+//
+// To query the configuration parameters of the real-time environment, see the DescribeRenderingInstanceConfiguration API.
 //
 // @param request - UpdateRenderingInstanceConfigurationRequest
 //
@@ -14487,7 +15929,7 @@ func (client *Client) UpdateRenderingInstanceConfiguration(request *UpdateRender
 
 // Summary:
 //
-// 更新实例设置
+// Updates the settings of a cloud application service instance.
 //
 // @param tmpReq - UpdateRenderingInstanceSettingsRequest
 //
@@ -14541,7 +15983,7 @@ func (client *Client) UpdateRenderingInstanceSettingsWithOptions(tmpReq *UpdateR
 
 // Summary:
 //
-// 更新实例设置
+// Updates the settings of a cloud application service instance.
 //
 // @param request - UpdateRenderingInstanceSettingsRequest
 //
@@ -14559,7 +16001,7 @@ func (client *Client) UpdateRenderingInstanceSettings(request *UpdateRenderingIn
 
 // Summary:
 //
-// 更新一个项目的属性信息
+// Updates a project’s properties.
 //
 // @param tmpReq - UpdateRenderingProjectRequest
 //
@@ -14621,7 +16063,7 @@ func (client *Client) UpdateRenderingProjectWithOptions(tmpReq *UpdateRenderingP
 
 // Summary:
 //
-// 更新一个项目的属性信息
+// Updates a project’s properties.
 //
 // @param request - UpdateRenderingProjectRequest
 //
@@ -14637,6 +16079,10 @@ func (client *Client) UpdateRenderingProject(request *UpdateRenderingProjectRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the configuration for stream pulling. You can modify the start and end times of origin server addresses in an existing stream pulling task.
+//
 // @param request - UpdateVsPullStreamInfoConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14705,6 +16151,10 @@ func (client *Client) UpdateVsPullStreamInfoConfigWithOptions(request *UpdateVsP
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the configuration for stream pulling. You can modify the start and end times of origin server addresses in an existing stream pulling task.
+//
 // @param request - UpdateVsPullStreamInfoConfigRequest
 //
 // @return UpdateVsPullStreamInfoConfigResponse
@@ -14721,7 +16171,7 @@ func (client *Client) UpdateVsPullStreamInfoConfig(request *UpdateVsPullStreamIn
 
 // Summary:
 //
-// 应用上架
+// Upload or list a cloud application package. This is an asynchronous API. Use the ListCloudApps API to check upload progress.
 //
 // @param tmpReq - UploadCloudAppRequest
 //
@@ -14799,7 +16249,7 @@ func (client *Client) UploadCloudAppWithOptions(tmpReq *UploadCloudAppRequest, r
 
 // Summary:
 //
-// 应用上架
+// Upload or list a cloud application package. This is an asynchronous API. Use the ListCloudApps API to check upload progress.
 //
 // @param request - UploadCloudAppRequest
 //
@@ -14817,7 +16267,7 @@ func (client *Client) UploadCloudApp(request *UploadCloudAppRequest) (_result *U
 
 // Summary:
 //
-// 文件上传
+// Uploads a file from a public URL to local or cloud storage. This is an asynchronous operation. You can call the ListFiles operation to monitor the upload progress.
 //
 // @param request - UploadFileRequest
 //
@@ -14877,7 +16327,7 @@ func (client *Client) UploadFileWithOptions(request *UploadFileRequest, runtime 
 
 // Summary:
 //
-// 文件上传
+// Uploads a file from a public URL to local or cloud storage. This is an asynchronous operation. You can call the ListFiles operation to monitor the upload progress.
 //
 // @param request - UploadFileRequest
 //
@@ -14895,7 +16345,7 @@ func (client *Client) UploadFile(request *UploadFileRequest) (_result *UploadFil
 
 // Summary:
 //
-// 上传公钥，用于安全登陆鉴权。
+// Upload a new public key.
 //
 // @param request - UploadPublicKeyRequest
 //
@@ -14955,7 +16405,7 @@ func (client *Client) UploadPublicKeyWithOptions(request *UploadPublicKeyRequest
 
 // Summary:
 //
-// 上传公钥，用于安全登陆鉴权。
+// Upload a new public key.
 //
 // @param request - UploadPublicKeyRequest
 //
@@ -14971,6 +16421,10 @@ func (client *Client) UploadPublicKey(request *UploadPublicKeyRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// # VerifyVsDomainOwner
+//
 // @param request - VerifyVsDomainOwnerRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15019,6 +16473,10 @@ func (client *Client) VerifyVsDomainOwnerWithOptions(request *VerifyVsDomainOwne
 	return _result, _err
 }
 
+// Summary:
+//
+// # VerifyVsDomainOwner
+//
 // @param request - VerifyVsDomainOwnerRequest
 //
 // @return VerifyVsDomainOwnerResponse

@@ -16,11 +16,14 @@ type iBatchStartStreamsResponseBody interface {
 }
 
 type BatchStartStreamsResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*BatchStartStreamsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Results list.
+	Results []*BatchStartStreamsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s BatchStartStreamsResponseBody) String() string {
@@ -63,14 +66,22 @@ func (s *BatchStartStreamsResponseBody) Validate() error {
 }
 
 type BatchStartStreamsResponseBodyResults struct {
+	// Error message for the stream.
+	//
+	// > This field appears only if the stream fails.
+	//
 	// example:
 	//
 	// stream not found
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// Stream ID.
+	//
 	// example:
 	//
 	// 323*****997-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Stream name.
+	//
 	// example:
 	//
 	// 31000000*****0000002

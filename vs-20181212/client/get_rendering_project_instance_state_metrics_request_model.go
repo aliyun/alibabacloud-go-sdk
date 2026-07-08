@@ -14,6 +14,8 @@ type iGetRenderingProjectInstanceStateMetricsRequest interface {
 }
 
 type GetRenderingProjectInstanceStateMetricsRequest struct {
+	// Project ID
+	//
 	// This parameter is required.
 	//
 	// example:

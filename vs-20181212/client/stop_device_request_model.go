@@ -18,6 +18,8 @@ type iStopDeviceRequest interface {
 }
 
 type StopDeviceRequest struct {
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type StopDeviceRequest struct {
 	// 348*****380-cn-qingdao
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Time to restart the stream.
+	//
 	// example:
 	//
 	// 2021-12-10T10:00:00Z

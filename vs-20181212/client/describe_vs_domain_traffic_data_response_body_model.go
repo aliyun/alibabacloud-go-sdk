@@ -24,22 +24,32 @@ type iDescribeVsDomainTrafficDataResponseBody interface {
 }
 
 type DescribeVsDomainTrafficDataResponseBody struct {
+	// The time interval, in seconds.
+	//
 	// example:
 	//
 	// 3600
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// The domain name of the Visual Edge Computing Service.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 2021-09-20T07:10:42Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The request ID for this task.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2021-10-25T16:00:00Z

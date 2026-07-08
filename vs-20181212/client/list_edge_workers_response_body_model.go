@@ -22,19 +22,28 @@ type iListEdgeWorkersResponseBody interface {
 }
 
 type ListEdgeWorkersResponseBody struct {
+	// The list of payloads.
 	Instances []*ListEdgeWorkersResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The page number of the query. The value starts from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page for a paged query. The maximum value is 100. Default value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxx-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -108,30 +117,44 @@ func (s *ListEdgeWorkersResponseBody) Validate() error {
 }
 
 type ListEdgeWorkersResponseBodyInstances struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-05-14T15:20:37+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 2025-05-14T15:20:37+08:00
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// hive-58mq6jynvgxxmlid3pt39x6gk-0
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// as-d135ca4425c24b99b79cd0b6c552cac9
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The package ID.
+	//
 	// example:
 	//
 	// pk-db3394401cc8403f85e4d72d99b52449
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The specification.
+	//
 	// example:
 	//
 	// crs.xic.s1
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Idle

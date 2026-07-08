@@ -22,14 +22,28 @@ type iInstallCloudAppResponseBody interface {
 }
 
 type InstallCloudAppResponseBody struct {
-	FailedInstanceCount *int32                                        `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
-	FailedInstances     []*InstallCloudAppResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
+	// Number of failed cloud application service instances
+	//
+	// example:
+	//
+	// 0
+	FailedInstanceCount *int32 `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
+	// List of failed cloud application service instances
+	FailedInstances []*InstallCloudAppResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId            *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessInstanceCount *int32                                         `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
-	SuccessInstances     []*InstallCloudAppResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of successful cloud application service instances
+	//
+	// example:
+	//
+	// 5
+	SuccessInstanceCount *int32 `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
+	// List of successful cloud application service instances
+	SuccessInstances []*InstallCloudAppResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
 func (s InstallCloudAppResponseBody) String() string {
@@ -108,8 +122,23 @@ func (s *InstallCloudAppResponseBody) Validate() error {
 }
 
 type InstallCloudAppResponseBodyFailedInstances struct {
-	ErrCode             *int32  `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	ErrMessage          *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// Failure error code
+	//
+	// example:
+	//
+	// 300000
+	ErrCode *int32 `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// Failure reason message
+	//
+	// example:
+	//
+	// Rejected due to timeout
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// Cloud application service instance ID
+	//
+	// example:
+	//
+	// render-b45f28650ffe4591bf4c5c95996a428c
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
 }
 
@@ -153,6 +182,11 @@ func (s *InstallCloudAppResponseBodyFailedInstances) Validate() error {
 }
 
 type InstallCloudAppResponseBodySuccessInstances struct {
+	// Cloud application service instance ID
+	//
+	// example:
+	//
+	// render-5130e2feb23f442fb9456a3d977f03d4
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
 }
 

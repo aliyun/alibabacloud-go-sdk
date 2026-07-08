@@ -16,6 +16,8 @@ type iDescribePresetsRequest interface {
 }
 
 type DescribePresetsRequest struct {
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:

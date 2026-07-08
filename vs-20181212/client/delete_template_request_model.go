@@ -16,6 +16,8 @@ type iDeleteTemplateRequest interface {
 }
 
 type DeleteTemplateRequest struct {
+	// The ID of the template.
+	//
 	// This parameter is required.
 	//
 	// example:

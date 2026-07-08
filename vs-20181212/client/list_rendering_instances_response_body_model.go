@@ -18,11 +18,16 @@ type iListRenderingInstancesResponseBody interface {
 }
 
 type ListRenderingInstancesResponseBody struct {
+	// List of cloud application service instances
 	RenderingInstances []*ListRenderingInstancesResponseBodyRenderingInstances `json:"RenderingInstances,omitempty" xml:"RenderingInstances,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of cloud application service instances
+	//
 	// example:
 	//
 	// 100
@@ -78,19 +83,30 @@ func (s *ListRenderingInstancesResponseBody) Validate() error {
 }
 
 type ListRenderingInstancesResponseBodyRenderingInstances struct {
+	// Creation time of the cloud application service instance
+	//
 	// example:
 	//
 	// 2023-11-17T02:18:04Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// ID of the cloud application service instance
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// Instance type of the cloud application service
+	//
 	// example:
 	//
 	// crs.cp.l1
 	RenderingSpec *string `json:"RenderingSpec,omitempty" xml:"RenderingSpec,omitempty"`
-	StorageSize   *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// Storage capacity, in GB
+	//
+	// example:
+	//
+	// 100
+	StorageSize *int32 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 }
 
 func (s ListRenderingInstancesResponseBodyRenderingInstances) String() string {

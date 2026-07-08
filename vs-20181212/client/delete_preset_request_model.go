@@ -18,6 +18,8 @@ type iDeletePresetRequest interface {
 }
 
 type DeletePresetRequest struct {
+	// The device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type DeletePresetRequest struct {
 	// 348*****380-cn-qingdao
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The preset ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,7 +16,10 @@ type iRefreshRenderingInstanceStreamingShrinkRequest interface {
 }
 
 type RefreshRenderingInstanceStreamingShrinkRequest struct {
+	// Client information.
 	ClientInfoShrink *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	// Cloud application service instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

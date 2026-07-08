@@ -34,40 +34,84 @@ type iDescribePurchasedDevicesRequest interface {
 }
 
 type DescribePurchasedDevicesRequest struct {
+	// Queries by the ID of the group to which the device belongs.
+	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Queries by device ID.
+	//
 	// example:
 	//
 	// 4070*****1132-cn-qingdao
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Queries by device name.
+	//
+	// example:
+	//
+	// xxx路口摄像头
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. The default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. The default is 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field to sort by. Valid value:
+	//
+	// - id (default)
+	//
 	// example:
 	//
 	// id
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The sorting order. The default is ascending. Valid values:
+	//
+	// - asc (ascending)
+	//
+	// - desc (descending)
+	//
 	// example:
 	//
 	// asc
 	SortDirection *string `json:"SortDirection,omitempty" xml:"SortDirection,omitempty"`
+	// Queries by device subtype. Valid values:
+	//
+	// - bullet (bullet camera)
+	//
+	// - dome (dome camera)
+	//
+	// - ptz (PTZ camera)
+	//
 	// example:
 	//
 	// dome
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// Queries by device type. Valid values:
+	//
+	// - ipc (camera)
+	//
+	// - platform (platform)
+	//
+	// - ied (intelligent edge device)
+	//
 	// example:
 	//
 	// ipc
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Queries by device vendor.
+	//
+	// example:
+	//
+	// 公司A
 	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 

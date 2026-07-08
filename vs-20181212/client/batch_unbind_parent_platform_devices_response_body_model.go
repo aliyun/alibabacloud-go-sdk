@@ -16,11 +16,14 @@ type iBatchUnbindParentPlatformDevicesResponseBody interface {
 }
 
 type BatchUnbindParentPlatformDevicesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*BatchUnbindParentPlatformDevicesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of results.
+	Results []*BatchUnbindParentPlatformDevicesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s BatchUnbindParentPlatformDevicesResponseBody) String() string {
@@ -63,14 +66,22 @@ func (s *BatchUnbindParentPlatformDevicesResponseBody) Validate() error {
 }
 
 type BatchUnbindParentPlatformDevicesResponseBodyResults struct {
+	// The device ID.
+	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The error message.
+	//
+	// > This parameter is returned only when an error occurs.
+	//
 	// example:
 	//
 	// some error
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The ID of the parent platform.
+	//
 	// example:
 	//
 	// 361*****212-cn-qingdao

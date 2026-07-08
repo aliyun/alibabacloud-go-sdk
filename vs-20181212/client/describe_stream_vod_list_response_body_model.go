@@ -16,7 +16,10 @@ type iDescribeStreamVodListResponseBody interface {
 }
 
 type DescribeStreamVodListResponseBody struct {
+	// VOD record list
 	Records []*DescribeStreamVodListResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// Request ID of this task.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
@@ -63,10 +66,14 @@ func (s *DescribeStreamVodListResponseBody) Validate() error {
 }
 
 type DescribeStreamVodListResponseBodyRecords struct {
+	// VOD record end time (unix timestamp, unit: seconds)
+	//
 	// example:
 	//
 	// 1634873413
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// VOD record start time (unix timestamp, unit: seconds)
+	//
 	// example:
 	//
 	// 1639077653

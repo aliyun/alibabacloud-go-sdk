@@ -16,10 +16,14 @@ type iDeletePresetResponseBody interface {
 }
 
 type DeletePresetResponseBody struct {
+	// The device ID.
+	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F18FD685-B194-4489-9609-F80A9490A258

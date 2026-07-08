@@ -1,3 +1,7 @@
+2026-07-08 Version: v4.9.0
+- Support API BatchCaptureRenderingInstanceScreenshot.
+
+
 2026-06-05 Version: v4.8.0
 - Support API AddHiveEdgeWorkers.
 - Support API CancelComfyTask.

@@ -26,6 +26,14 @@ type iBatchForbidVsStreamRequest interface {
 }
 
 type BatchForbidVsStreamRequest struct {
+	// The stream name.
+	//
+	// > - Format: AppName/StreamName.
+	//
+	// >
+	//
+	// > - Specify multiple names, separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33,23 +41,41 @@ type BatchForbidVsStreamRequest struct {
 	// live/stream1,live/stream2
 	Channel             *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	ControlStreamAction *string `json:"ControlStreamAction,omitempty" xml:"ControlStreamAction,omitempty"`
+	// Your accelerated domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Specifies whether the operation applies to stream ingest by a streamer or stream pulling by a client. Valid values:
+	//
+	// - publisher (streamer ingest)
+	//
+	// > Only publisher is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// publisher
 	LiveStreamType *string `json:"LiveStreamType,omitempty" xml:"LiveStreamType,omitempty"`
+	// Specifies whether to stop ingest without adding the stream to the blacklist. Valid values:
+	//
+	// - yes
+	//
+	// - no
+	//
 	// example:
 	//
 	// yes
 	Oneshot *string `json:"Oneshot,omitempty" xml:"Oneshot,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The time to resume ingest.
+	//
+	// > Use UTC format. Example: 2015-12-01T17:37:00Z
+	//
 	// example:
 	//
 	// 2015-12-01T17:37:00Z

@@ -14,7 +14,7 @@ type iUpdateRenderingInstanceSettingsResponseBody interface {
 }
 
 type UpdateRenderingInstanceSettingsResponseBody struct {
-	// Id of the request
+	// ID of the request.
 	//
 	// example:
 	//

@@ -18,6 +18,8 @@ type iBatchStopStreamsRequest interface {
 }
 
 type BatchStopStreamsRequest struct {
+	// The stream IDs. To specify multiple IDs, separate them with commas.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type BatchStopStreamsRequest struct {
 	// 323*****997-cn-qingdao
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The time to stop the streams. You can specify a future time to stop the streams.
+	//
 	// example:
 	//
 	// 2021-12-10T10:00:00Z

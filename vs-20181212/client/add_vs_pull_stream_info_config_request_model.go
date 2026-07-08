@@ -29,33 +29,51 @@ type iAddVsPullStreamInfoConfigRequest interface {
 
 type AddVsPullStreamInfoConfigRequest struct {
 	Always *string `json:"Always,omitempty" xml:"Always,omitempty"`
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The accelerated domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end time for stream pulling.
+	//
+	// > The time must be in UTC format. The interval between StartTime and EndTime cannot exceed 7 days. EndTime must be later than the current time.
+	//
 	// example:
 	//
 	// 2017-08-28T09:30:30Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The source URL of the live stream.
+	//
+	// > Multiple source URLs are supported. Separate them with semicolons (;).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// up.******.com.cn
 	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// The start time for stream pulling.
+	//
+	// > The time must be in UTC format. The interval between StartTime and EndTime cannot exceed 7 days.
+	//
 	// example:
 	//
 	// 2017-08-28T07:30:30Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The stream name.
+	//
 	// This parameter is required.
 	//
 	// example:

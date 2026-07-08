@@ -38,39 +38,73 @@ type iDescribeRenderingSessionResponseBody interface {
 }
 
 type DescribeRenderingSessionResponseBody struct {
+	// Additional optional ingress network information
 	AdditionalIngresses []*DescribeRenderingSessionResponseBodyAdditionalIngresses `json:"AdditionalIngresses,omitempty" xml:"AdditionalIngresses,omitempty" type:"Repeated"`
+	// Cloud application ID
+	//
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// End client ID
+	//
 	// example:
 	//
 	// c91263a0-f9ac-45bd-bbe9-6e293ad32d91
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// Instance hostname. Defaults to the EIP address.
+	//
 	// example:
 	//
 	// 111.45.29.96
-	Hostname *string                                       `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	Isp      *string                                       `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Carrier code. Valid values:
+	//
+	// 1. cmcc
+	//
+	// 2. unicom
+	//
+	// 3. telecom
+	//
+	// example:
+	//
+	// telecom
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// Cloud application service instance location
 	Location *DescribeRenderingSessionResponseBodyLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	// Cloud application patch package ID. An empty value means the original version.
+	//
 	// example:
 	//
 	// patch-03fa76e8e13a49b6a966b063d9d309b4
-	PatchId             *string                                             `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	PortMappings        []*DescribeRenderingSessionResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
-	RenderingInstanceId *string                                             `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
+	// Port mapping information
+	PortMappings []*DescribeRenderingSessionResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
+	// Cloud application service instance ID
+	//
+	// example:
+	//
+	// render-9f8c57355d224ad7beaf95e145f22111
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// session-i205217481741918129226
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Start time
+	//
 	// example:
 	//
 	// 2025-05-18T02:20:00Z
-	StartTime *string                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Session state information
 	StateInfo *DescribeRenderingSessionResponseBodyStateInfo `json:"StateInfo,omitempty" xml:"StateInfo,omitempty" type:"Struct"`
 }
 
@@ -232,8 +266,25 @@ func (s *DescribeRenderingSessionResponseBody) Validate() error {
 }
 
 type DescribeRenderingSessionResponseBodyAdditionalIngresses struct {
-	Hostname     *string                                                                `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	Isp          *string                                                                `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// Domain name or IP address of the cloud application service instance
+	//
+	// example:
+	//
+	// 111.45.29.96
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Carrier code. Valid values:
+	//
+	// 1. cmcc
+	//
+	// 2. unicom
+	//
+	// 3. telecom
+	//
+	// example:
+	//
+	// unicom
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// List of port mappings
 	PortMappings []*DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
 }
 
@@ -286,7 +337,17 @@ func (s *DescribeRenderingSessionResponseBodyAdditionalIngresses) Validate() err
 }
 
 type DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings struct {
+	// Public port or port range, such as 22. For a port range, use a forward slash (/) to separate the start and end ports. Example: 10/20.
+	//
+	// example:
+	//
+	// 11060/11079
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	// Private port or port range. Each private port maps one-to-one with a public port. For a port range, use a forward slash (/) to separate the start and end ports. Example: 10/20.
+	//
+	// example:
+	//
+	// 11060/11079
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
 }
 
@@ -321,6 +382,8 @@ func (s *DescribeRenderingSessionResponseBodyAdditionalIngressesPortMappings) Va
 }
 
 type DescribeRenderingSessionResponseBodyLocation struct {
+	// Province code of the cloud application service instance
+	//
 	// example:
 	//
 	// 310000
@@ -349,10 +412,14 @@ func (s *DescribeRenderingSessionResponseBodyLocation) Validate() error {
 }
 
 type DescribeRenderingSessionResponseBodyPortMappings struct {
+	// Public port or port range, such as 22. For a port range, use a forward slash (/) to separate the start and end ports. Example: 10/20.
+	//
 	// example:
 	//
 	// 10013/10020
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	// Private port or port range. Each private port maps one-to-one with a public port. For a port range, use a forward slash (/) to separate the start and end ports. Example: 10/20.
+	//
 	// example:
 	//
 	// 49008/49015
@@ -390,11 +457,34 @@ func (s *DescribeRenderingSessionResponseBodyPortMappings) Validate() error {
 }
 
 type DescribeRenderingSessionResponseBodyStateInfo struct {
+	// State description
+	//
+	// example:
+	//
+	// 已启动
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Session state. Valid values:
+	//
+	// 1. SessionStarting: Starting the session
+	//
+	// 2. SessionStartSuspended: Session start is suspended. Retry by calling Start again.
+	//
+	// 3. SessionStarted: Session started or in use
+	//
+	// 4. SessionStartFailed: Session failed to start
+	//
+	// 5. SessionAbnormal: Session became abnormal after starting successfully
+	//
+	// 6. SessionStopping: Stopping the session
+	//
+	// 7. SessionStopFailed: Session failed to stop
+	//
 	// example:
 	//
 	// SessionStarted
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Time when the state was last updated
+	//
 	// example:
 	//
 	// 2024-10-15T10:05:20+08:00

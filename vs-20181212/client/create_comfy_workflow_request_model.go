@@ -18,10 +18,27 @@ type iCreateComfyWorkflowRequest interface {
 }
 
 type CreateComfyWorkflowRequest struct {
+	// The workflow description.
+	//
+	// example:
+	//
+	// 这是一个图生视频的工作流
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The workflow name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 图生视频的工作流示例
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The JSON definition of the workflow.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {}
 	Workflow *string `json:"Workflow,omitempty" xml:"Workflow,omitempty"`
 }
 

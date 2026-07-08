@@ -16,11 +16,14 @@ type iBatchUnbindPurchasedDevicesResponseBody interface {
 }
 
 type BatchUnbindPurchasedDevicesResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*BatchUnbindPurchasedDevicesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result list.
+	Results []*BatchUnbindPurchasedDevicesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s BatchUnbindPurchasedDevicesResponseBody) String() string {
@@ -63,10 +66,16 @@ func (s *BatchUnbindPurchasedDevicesResponseBody) Validate() error {
 }
 
 type BatchUnbindPurchasedDevicesResponseBodyResults struct {
+	// Device ID.
+	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Error message.
+	//
+	// > This field appears only when an error occurs.
+	//
 	// example:
 	//
 	// some error

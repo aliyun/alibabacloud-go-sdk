@@ -18,15 +18,19 @@ type iCreateComfyUserDataDirResponseBody interface {
 }
 
 type CreateComfyUserDataDirResponseBody struct {
+	// The status code. A value of 0 indicates success.
+	//
 	// example:
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message. If the request fails, this parameter contains the failure reason.
+	//
 	// example:
 	//
 	// conn failed!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

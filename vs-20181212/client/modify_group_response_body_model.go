@@ -16,10 +16,14 @@ type iModifyGroupResponseBody interface {
 }
 
 type ModifyGroupResponseBody struct {
+	// The ID of the space.
+	//
 	// example:
 	//
 	// 32388487739092994-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

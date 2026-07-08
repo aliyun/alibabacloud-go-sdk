@@ -22,19 +22,27 @@ type iStartRecordStreamRequest interface {
 }
 
 type StartRecordStreamRequest struct {
+	// The stream\\"s App name.
+	//
 	// example:
 	//
 	// live
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
+	// Stream ID.
+	//
 	// example:
 	//
 	// 323*****997-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Stream name.
+	//
 	// example:
 	//
 	// 310000*****000002
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The stream\\"s playback domain name.
+	//
 	// example:
 	//
 	// example.com

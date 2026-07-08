@@ -34,39 +34,73 @@ type iModifyParentPlatformRequest interface {
 }
 
 type ModifyParentPlatformRequest struct {
+	// Specifies whether to automatically enable the platform. Valid values:
+	//
+	// - true
+	//
+	// - false (default)
+	//
 	// example:
 	//
 	// false
 	AutoStart *bool `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
+	// Specifies whether to enable local authentication. Valid values:
+	//
+	// - true (default)
+	//
+	// - false
+	//
 	// example:
 	//
 	// true
 	ClientAuth *bool `json:"ClientAuth,omitempty" xml:"ClientAuth,omitempty"`
+	// The local password.
+	//
 	// example:
 	//
 	// admin123
 	ClientPassword *string `json:"ClientPassword,omitempty" xml:"ClientPassword,omitempty"`
+	// The local username.
+	//
 	// example:
 	//
 	// user01
 	ClientUsername *string `json:"ClientUsername,omitempty" xml:"ClientUsername,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the parent platform.
+	//
+	// example:
+	//
+	// 国标级联修改测试
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The GB ID of the parent platform.
+	//
 	// example:
 	//
 	// 31000*****2170123451
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	// The ID of the parent platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 359*****374-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The SIP service IP of the parent platform.
+	//
 	// example:
 	//
 	// 10.10.10.10
-	Ip      *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The name of the parent platform.
+	//
+	// example:
+	//
+	// 国标级联修改测试
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The SIP service port of the parent platform.
+	//
 	// example:
 	//
 	// 5060

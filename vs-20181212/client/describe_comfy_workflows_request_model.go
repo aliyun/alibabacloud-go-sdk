@@ -18,11 +18,20 @@ type iDescribeComfyWorkflowsRequest interface {
 }
 
 type DescribeComfyWorkflowsRequest struct {
+	// The workflow name.
+	//
+	// example:
+	//
+	// 图生视频工作流
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of Comfy workflows per page.
+	//
 	// example:
 	//
 	// 20

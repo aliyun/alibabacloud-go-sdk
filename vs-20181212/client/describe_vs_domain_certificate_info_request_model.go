@@ -16,6 +16,8 @@ type iDescribeVsDomainCertificateInfoRequest interface {
 }
 
 type DescribeVsDomainCertificateInfoRequest struct {
+	// The domain name.
+	//
 	// This parameter is required.
 	//
 	// example:

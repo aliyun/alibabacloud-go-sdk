@@ -16,6 +16,8 @@ type iDeleteDeviceRequest interface {
 }
 
 type DeleteDeviceRequest struct {
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:

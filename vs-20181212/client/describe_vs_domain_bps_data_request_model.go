@@ -26,27 +26,39 @@ type iDescribeVsDomainBpsDataRequest interface {
 }
 
 type DescribeVsDomainBpsDataRequest struct {
+	// Domain Names. If this parameter is empty, the system returns merged data for all accelerated Domain Names. Enter the accelerated Domain Names to query. Separate multiple Domain Names with commas.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end time must be later than the start time. The date format follows ISO8601 notation and uses UTC time. Format: YYYY-MM-DDThh:mm:ssZ.
+	//
 	// example:
 	//
 	// 2021-10-02T02:30:48Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time granularity for query data. Supports 300, 3600, and 86400 seconds. If this parameter is not specified or the specified value is not supported, the system uses 300 seconds by default.
+	//
 	// example:
 	//
 	// 300
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The English name of the carrier (ISP). Obtain this from the DescribeCdnRegionAndIsp interface. If not specified, the system queries all carriers (ISPs).
+	//
 	// example:
 	//
 	// unicom
 	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	// The English name of the region. Obtain this from the DescribeCdnRegionAndIsp interface. If not specified, the system queries all regions.
+	//
 	// example:
 	//
 	// guangdong
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The start time for data retrieval. The date format follows ISO8601 notation and uses UTC time. Format: YYYY-MM-DDThh:mm:ssZ. The minimum data granularity is 5 minutes. If not specified, the system reads data from the past 24 hours.
+	//
 	// example:
 	//
 	// 2021-12-26T16:00:00Z

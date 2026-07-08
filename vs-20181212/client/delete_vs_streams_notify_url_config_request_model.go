@@ -16,6 +16,8 @@ type iDeleteVsStreamsNotifyUrlConfigRequest interface {
 }
 
 type DeleteVsStreamsNotifyUrlConfigRequest struct {
+	// The accelerated domain name.
+	//
 	// This parameter is required.
 	//
 	// example:

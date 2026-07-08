@@ -20,16 +20,22 @@ type iContinuousAdjustRequest interface {
 }
 
 type ContinuousAdjustRequest struct {
+	// Zoom speed parameter. A positive value increases the focal length.<br>Value range: -1.0 to 1.0<br>
+	//
 	// example:
 	//
 	// 0.5
 	Focus *string `json:"Focus,omitempty" xml:"Focus,omitempty"`
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Aperture speed parameter. A positive value increases the aperture.<br>Value range: -1.0 to 1.0<br>
+	//
 	// example:
 	//
 	// 0.5

@@ -16,10 +16,14 @@ type iModifyParentPlatformResponseBody interface {
 }
 
 type ModifyParentPlatformResponseBody struct {
+	// The ID of the parent platform.
+	//
 	// example:
 	//
 	// 359*****374-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

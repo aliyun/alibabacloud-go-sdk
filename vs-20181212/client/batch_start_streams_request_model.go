@@ -16,6 +16,8 @@ type iBatchStartStreamsRequest interface {
 }
 
 type BatchStartStreamsRequest struct {
+	// Stream ID. Separate multiple IDs with commas.
+	//
 	// This parameter is required.
 	//
 	// example:

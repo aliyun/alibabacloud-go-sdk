@@ -124,8 +124,6 @@ type ListSpecificationsResponseBodyItems struct {
 	//
 	// 1
 	Shard *int32 `json:"Shard,omitempty" xml:"Shard,omitempty"`
-	// `RenderingSpec`
-	//
 	// example:
 	//
 	// crs.xic.s1

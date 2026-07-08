@@ -20,13 +20,25 @@ type iModifyDirectoryRequest interface {
 }
 
 type ModifyDirectoryRequest struct {
+	// The description of the directory.
+	//
+	// example:
+	//
+	// 目录2
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the directory.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 399*****488-cn-qingdao
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the directory.
+	//
+	// example:
+	//
+	// 目录2
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }

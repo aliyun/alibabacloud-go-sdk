@@ -24,22 +24,32 @@ type iDescribeVsDomainRegionDataResponseBody interface {
 }
 
 type DescribeVsDomainRegionDataResponseBody struct {
+	// Time interval, in seconds.
+	//
 	// example:
 	//
 	// 3600
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// The domain name that is accelerated by Visual Edge Computing Service.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 2021-10-31T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Start time.
+	//
 	// example:
 	//
 	// 2021-10-30T16:00:00Z

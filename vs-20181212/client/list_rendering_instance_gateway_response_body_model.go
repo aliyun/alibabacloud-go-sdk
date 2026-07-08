@@ -22,19 +22,28 @@ type iListRenderingInstanceGatewayResponseBody interface {
 }
 
 type ListRenderingInstanceGatewayResponseBody struct {
+	// A list of custom gateway information.
 	GatewayConfigurationInfos []*ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos `json:"GatewayConfigurationInfos,omitempty" xml:"GatewayConfigurationInfos,omitempty" type:"Repeated"`
+	// The page number of the query results list
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -108,22 +117,36 @@ func (s *ListRenderingInstanceGatewayResponseBody) Validate() error {
 }
 
 type ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos struct {
+	// The time when the cloud application service instance was created.
+	//
 	// example:
 	//
 	// 2024-10-15 10:19:13
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the custom gateway instance.
+	//
 	// example:
 	//
 	// render-xxx
 	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" xml:"GatewayInstanceId,omitempty"`
+	// The ID of the cloud application service instance.
+	//
 	// example:
 	//
 	// render-342012a227dc4ddf91f024639e43051a
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// The status of the custom gateway. Valid values:
+	//
+	// 1. Transitional states: creating, deleting
+	//
+	// 2. Desired states: available, failed
+	//
 	// example:
 	//
 	// available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the information was last updated.
+	//
 	// example:
 	//
 	// 2024-11-02 12:08:26

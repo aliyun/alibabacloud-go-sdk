@@ -24,23 +24,33 @@ type iDescribeVsDomainPvDataResponseBody interface {
 }
 
 type DescribeVsDomainPvDataResponseBody struct {
+	// This static field defines the time interval for each record, with a value of either 1 hour or 1 day.
+	//
 	// example:
 	//
 	// 3600
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// The domain name for Visual Edge Computing Service.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end of the time range.
+	//
 	// example:
 	//
 	// 2021-11-12T15:59:59Z
 	EndTime        *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PvDataInterval *DescribeVsDomainPvDataResponseBodyPvDataInterval `json:"PvDataInterval,omitempty" xml:"PvDataInterval,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The beginning of the time range.
+	//
 	// example:
 	//
 	// 2021-11-22T00:00:00Z

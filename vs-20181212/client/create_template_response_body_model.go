@@ -16,10 +16,14 @@ type iCreateTemplateResponseBody interface {
 }
 
 type CreateTemplateResponseBody struct {
+	// Template ID.
+	//
 	// example:
 	//
 	// 399*****735-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

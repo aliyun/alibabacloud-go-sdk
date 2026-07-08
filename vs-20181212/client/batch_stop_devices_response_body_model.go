@@ -16,11 +16,14 @@ type iBatchStopDevicesResponseBody interface {
 }
 
 type BatchStopDevicesResponseBody struct {
+	// Request ID for this task.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*BatchStopDevicesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result list.
+	Results []*BatchStopDevicesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s BatchStopDevicesResponseBody) String() string {
@@ -63,10 +66,13 @@ func (s *BatchStopDevicesResponseBody) Validate() error {
 }
 
 type BatchStopDevicesResponseBodyResults struct {
+	// Device ID.
+	//
 	// example:
 	//
 	// 32388487****92996
-	Id      *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Device stream list.
 	Streams []*BatchStopDevicesResponseBodyResultsStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Repeated"`
 }
 
@@ -110,14 +116,20 @@ func (s *BatchStopDevicesResponseBodyResults) Validate() error {
 }
 
 type BatchStopDevicesResponseBodyResultsStreams struct {
+	// Stream error message. (Appears only when an error occurs)
+	//
 	// example:
 	//
 	// Stream not found
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// Stream ID.
+	//
 	// example:
 	//
 	// 323884****9092997
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Name
+	//
 	// example:
 	//
 	// 32388*****39092997

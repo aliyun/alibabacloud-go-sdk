@@ -22,22 +22,32 @@ type iDescribeVsCertificateDetailResponseBody interface {
 }
 
 type DescribeVsCertificateDetailResponseBody struct {
+	// The certificate content.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----xxxxx-----END CERTIFICATE-----
 	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	// The certificate ID.
+	//
 	// example:
 	//
 	// 63000000
 	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The certificate name.
+	//
 	// example:
 	//
 	// cert-539xxxxx
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The key.
+	//
 	// example:
 	//
 	// xxxxx
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The request ID for this operation.
+	//
 	// example:
 	//
 	// D94D0E1E-E71B-562D-8C18-969BB3653FBD

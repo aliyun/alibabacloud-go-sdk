@@ -20,6 +20,8 @@ type iDescribeDeviceChannelsRequest interface {
 }
 
 type DescribeDeviceChannelsRequest struct {
+	// Query by device ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27,10 +29,14 @@ type DescribeDeviceChannelsRequest struct {
 	// 348*****380-cn-qingdao
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. The default value is 20.
+	//
 	// example:
 	//
 	// 20

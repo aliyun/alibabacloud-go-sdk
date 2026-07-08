@@ -17,6 +17,8 @@ type iDescribeVsPullStreamInfoConfigResponseBody interface {
 
 type DescribeVsPullStreamInfoConfigResponseBody struct {
 	LiveAppRecordList *DescribeVsPullStreamInfoConfigResponseBodyLiveAppRecordList `json:"LiveAppRecordList,omitempty" xml:"LiveAppRecordList,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

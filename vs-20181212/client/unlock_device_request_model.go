@@ -16,6 +16,8 @@ type iUnlockDeviceRequest interface {
 }
 
 type UnlockDeviceRequest struct {
+	// Device ID
+	//
 	// This parameter is required.
 	//
 	// example:

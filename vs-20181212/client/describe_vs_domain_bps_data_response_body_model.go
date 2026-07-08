@@ -25,22 +25,32 @@ type iDescribeVsDomainBpsDataResponseBody interface {
 
 type DescribeVsDomainBpsDataResponseBody struct {
 	BpsDataPerInterval *DescribeVsDomainBpsDataResponseBodyBpsDataPerInterval `json:"BpsDataPerInterval,omitempty" xml:"BpsDataPerInterval,omitempty" type:"Struct"`
+	// The time interval for each record. Unit: seconds.
+	//
 	// example:
 	//
 	// 2100
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// Domain name
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// End time
+	//
 	// example:
 	//
 	// 2021-10-01T07:10:48Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Request ID for this operation
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Start time
+	//
 	// example:
 	//
 	// 2021-09-18T16:00:00Z

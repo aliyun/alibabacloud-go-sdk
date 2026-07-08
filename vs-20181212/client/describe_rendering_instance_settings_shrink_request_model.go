@@ -16,7 +16,10 @@ type iDescribeRenderingInstanceSettingsShrinkRequest interface {
 }
 
 type DescribeRenderingInstanceSettingsShrinkRequest struct {
+	// The list of instance configuration names.
 	AttributeNamesShrink *string `json:"AttributeNames,omitempty" xml:"AttributeNames,omitempty"`
+	// The ID of the Cloud Application service instance.
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111

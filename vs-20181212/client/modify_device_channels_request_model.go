@@ -22,16 +22,32 @@ type iModifyDeviceChannelsRequest interface {
 }
 
 type ModifyDeviceChannelsRequest struct {
+	// An array of channels in a JSON-formatted string.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"ChannelId":12333,"Name":"测试","DeviceStatus":"on"}]
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The status of the device. Valid values:
+	//
+	// - on: online
+	//
+	// - off: offline
+	//
 	// example:
 	//
 	// on
 	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	// The device serial number.
+	//
 	// example:
 	//
 	// 210235C3GN32090008286cf17e130d
 	Dsn *string `json:"Dsn,omitempty" xml:"Dsn,omitempty"`
+	// The device ID.
+	//
 	// This parameter is required.
 	//
 	// example:

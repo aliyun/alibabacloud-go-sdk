@@ -20,10 +20,14 @@ type iStartStreamRequest interface {
 }
 
 type StartStreamRequest struct {
+	// For an NVR historical stream, the End Time (UNIX timestamp, in seconds).
+	//
 	// example:
 	//
 	// 1599336385
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Stream ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31,6 +35,8 @@ type StartStreamRequest struct {
 	// 323*****997-cn-qingdao
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// For an NVR historical stream, the Start Time (UNIX timestamp, in seconds).
+	//
 	// example:
 	//
 	// 1589336385

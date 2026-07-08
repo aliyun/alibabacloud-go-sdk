@@ -18,11 +18,16 @@ type iDescribePresetsResponseBody interface {
 }
 
 type DescribePresetsResponseBody struct {
+	// Device ID.
+	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
-	Id      *string                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// List of presets.
 	Presets []*DescribePresetsResponseBodyPresets `json:"Presets,omitempty" xml:"Presets,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 9FE0CA83-BFD3-4EBD-A429-FABB9B9AE772
@@ -78,10 +83,17 @@ func (s *DescribePresetsResponseBody) Validate() error {
 }
 
 type DescribePresetsResponseBodyPresets struct {
+	// Preset ID.
+	//
 	// example:
 	//
 	// 2
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Preset name.
+	//
+	// example:
+	//
+	// 预置位2
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

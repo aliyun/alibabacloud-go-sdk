@@ -16,7 +16,14 @@ type iCreateHiveRequest interface {
 }
 
 type CreateHiveRequest struct {
+	// A description of the cluster.
+	//
+	// example:
+	//
+	// G49单卡集群
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -26,31 +26,44 @@ type iDescribeComfyWorkflowsResponseBody interface {
 }
 
 type DescribeComfyWorkflowsResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of workflows on the current page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of workflows that match the query.
+	//
 	// example:
 	//
 	// 100
-	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Workflows  []*DescribeComfyWorkflowsResponseBodyWorkflows `json:"Workflows,omitempty" xml:"Workflows,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A list of Comfy workflows.
+	Workflows []*DescribeComfyWorkflowsResponseBodyWorkflows `json:"Workflows,omitempty" xml:"Workflows,omitempty" type:"Repeated"`
 }
 
 func (s DescribeComfyWorkflowsResponseBody) String() string {
@@ -138,16 +151,32 @@ func (s *DescribeComfyWorkflowsResponseBody) Validate() error {
 }
 
 type DescribeComfyWorkflowsResponseBodyWorkflows struct {
+	// The time when the workflow was created.
+	//
 	// example:
 	//
 	// 2026-02-03T07:31:45+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The workflow description.
+	//
+	// example:
+	//
+	// 这是一个图生视频工作流
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The workflow name.
+	//
+	// example:
+	//
+	// 图生视频工作流
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the workflow was last updated.
+	//
 	// example:
 	//
 	// 1778897586
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The workflow ID.
+	//
 	// example:
 	//
 	// wf_adb32aed-ccdc-42ae-b4d4-a21181ac8a5f

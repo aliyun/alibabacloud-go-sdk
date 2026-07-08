@@ -26,32 +26,50 @@ type iListCloudAppPatchesRequest interface {
 }
 
 type ListCloudAppPatchesRequest struct {
+	// The ID of the cloud application. This ID corresponds to a unique application package.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The time range for filtering. The time must be in UTC and in the ISO 8601 standard format yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2017-12-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number of the list to return. The value starts from 1.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. The maximum value is 100.
+	//
+	// Default value: 10.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the patch package.
+	//
 	// example:
 	//
 	// patch-03fa76e8e13a49b6a966b063d9d309b4
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
+	// The name of the patch package.
+	//
 	// example:
 	//
 	// patch-1
 	PatchName *string `json:"PatchName,omitempty" xml:"PatchName,omitempty"`
+	// The start of the time range to query. The time is in UTC and follows the ISO 8601 standard. The format is yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2015-11-29T00:00:00Z

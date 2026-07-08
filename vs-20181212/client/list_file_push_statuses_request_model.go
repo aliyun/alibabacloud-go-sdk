@@ -26,28 +26,48 @@ type iListFilePushStatusesRequest interface {
 }
 
 type ListFilePushStatusesRequest struct {
+	// A time range filter parameter. Specify the value in ISO8601 format using UTC time: yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2025-06-23T02:13:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The file ID, which uniquely identifies a file.
+	//
 	// example:
 	//
 	// f-1671accd4dafdag3er256cvgewt13f7141db2f7
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// myfile
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The page number of the results to return. Pages start from 1.Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page in a paged query. Valid values: 1 to 100.Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The cloud application service instance ID. Use this parameter to query files installed on a specific instance.
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// A time range filter parameter. Specify the value in ISO8601 format using UTC time: yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2025-06-17T12:16:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListFilePushStatusesRequest) String() string {

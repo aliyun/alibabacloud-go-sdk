@@ -16,6 +16,8 @@ type iDescribePurchasedDeviceRequest interface {
 }
 
 type DescribePurchasedDeviceRequest struct {
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:

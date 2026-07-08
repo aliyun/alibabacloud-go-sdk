@@ -17,6 +17,8 @@ type iDescribeVodStreamURLRequest interface {
 
 type DescribeVodStreamURLRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The file URL of the VOD video.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -14,6 +14,8 @@ type iBatchSetVsDomainConfigsResponseBody interface {
 }
 
 type BatchSetVsDomainConfigsResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 9BEC5E85-C76B-56EF-A922-860EFDB8B64B

@@ -17,6 +17,8 @@ type iDescribeVsDomainCertificateInfoResponseBody interface {
 
 type DescribeVsDomainCertificateInfoResponseBody struct {
 	CertInfos *DescribeVsDomainCertificateInfoResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

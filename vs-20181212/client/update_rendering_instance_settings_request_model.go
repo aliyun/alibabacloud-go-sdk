@@ -16,11 +16,14 @@ type iUpdateRenderingInstanceSettingsRequest interface {
 }
 
 type UpdateRenderingInstanceSettingsRequest struct {
+	// ID of the cloud application service instance.
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
-	RenderingInstanceId *string                                           `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	Settings            []*UpdateRenderingInstanceSettingsRequestSettings `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Repeated"`
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// List of instance settings.
+	Settings []*UpdateRenderingInstanceSettingsRequestSettings `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRenderingInstanceSettingsRequest) String() string {
@@ -63,10 +66,14 @@ func (s *UpdateRenderingInstanceSettingsRequest) Validate() error {
 }
 
 type UpdateRenderingInstanceSettingsRequestSettings struct {
+	// Name of the instance setting.
+	//
 	// example:
 	//
 	// navbar.hide
 	AttributeName *string `json:"AttributeName,omitempty" xml:"AttributeName,omitempty"`
+	// Value of the instance setting.
+	//
 	// example:
 	//
 	// 1

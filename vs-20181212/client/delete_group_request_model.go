@@ -16,6 +16,8 @@ type iDeleteGroupRequest interface {
 }
 
 type DeleteGroupRequest struct {
+	// Space ID
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,10 +16,14 @@ type iCreateParentPlatformResponseBody interface {
 }
 
 type CreateParentPlatformResponseBody struct {
+	// 上级平台ID。
+	//
 	// example:
 	//
 	// 359*****374-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 请求ID。
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

@@ -18,12 +18,16 @@ type iUnbindDirectoryRequest interface {
 }
 
 type UnbindDirectoryRequest struct {
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 34871************3380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Folder ID.
+	//
 	// This parameter is required.
 	//
 	// example:

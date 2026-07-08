@@ -22,22 +22,32 @@ type iDescribeDeviceGatewayResponseBody interface {
 }
 
 type DescribeDeviceGatewayResponseBody struct {
+	// Alibaba Cloud service endpoint.
+	//
 	// example:
 	//
 	// 192.168.0.1
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// Port number.
+	//
 	// example:
 	//
 	// 8080
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Device registration protocol.
+	//
 	// example:
 	//
 	// gb28181
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Request ID for this task.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Token code.
+	//
 	// example:
 	//
 	// f5578fbc-694c-461d-a2a2-eb090775cef0

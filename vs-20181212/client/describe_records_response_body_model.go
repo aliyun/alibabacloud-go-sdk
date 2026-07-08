@@ -26,27 +26,50 @@ type iDescribeRecordsResponseBody interface {
 }
 
 type DescribeRecordsResponseBody struct {
+	// The start time to query the next record.
+	//
+	// > Applies only to snapshot queries.
+	//
 	// example:
 	//
 	// 2018-12-10T11:00:00Z
 	NextStartTime *string `json:"NextStartTime,omitempty" xml:"NextStartTime,omitempty"`
+	// The total number of pages.
+	//
+	// > Applies only to recording queries.
+	//
 	// example:
 	//
 	// 5
 	PageCount *int64 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The page number.
+	//
+	// > Applies only to recording queries.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size.
+	//
+	// > Applies only to recording queries.
+	//
 	// example:
 	//
 	// 20
-	PageSize *int64                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records  []*DescribeRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of stored records.
+	Records []*DescribeRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of stored records.
+	//
+	// > Applies only to recording queries.
+	//
 	// example:
 	//
 	// 100
@@ -138,54 +161,94 @@ func (s *DescribeRecordsResponseBody) Validate() error {
 }
 
 type DescribeRecordsResponseBodyRecords struct {
+	// The end time of the stored record.
+	//
 	// example:
 	//
 	// 2021-11-23T18:33:48
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The format of the stored file. Valid values:
+	//
+	// - mp4
+	//
+	// - flv
+	//
+	// - hls
+	//
+	// - jpg
+	//
 	// example:
 	//
 	// hls
 	FileFormat *string `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 1080
 	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The ID of the stored record.
+	//
+	// > Applies only to recording queries.
+	//
 	// example:
 	//
 	// 2be2a673-6033-4874-b6f2-f2bc0a1*****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The bucket where the file is stored.
+	//
 	// example:
 	//
 	// my_oss_bucket
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The OSS endpoint.
+	//
 	// example:
 	//
 	// oss-cn-qingdao.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	// The object of the stored file.
+	//
 	// example:
 	//
 	// record/live/310*****007/2021-11-23-18-19-38_2021-11-23-18-33-48.m3u8
 	OssObject *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+	// The start time of the stored record.
+	//
 	// example:
 	//
 	// 2021-11-23T18:19:32
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The stream ID.
+	//
 	// example:
 	//
 	// 323*****997-cn-qingdao
 	StreamId *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 388*****204-cn-qingdao
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The type of the stored record. Valid values:
+	//
+	// - record
+	//
+	// - snapshot
+	//
 	// example:
 	//
 	// record
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL of the stored file.
+	//
 	// example:
 	//
 	// http://my_oss_bucket.oss-cn-qingdao.aliyuncs.com/record/live/310*****007/2021-11-23-18-19-38_2021-11-23-18-33-48.m3u8
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 1920

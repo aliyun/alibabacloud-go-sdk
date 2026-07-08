@@ -24,23 +24,34 @@ type iDescribeStreamsResponseBody interface {
 }
 
 type DescribeStreamsResponseBody struct {
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 5
 	PageCount *int64 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Streams   []*DescribeStreamsResponseBodyStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of streams.
+	Streams []*DescribeStreamsResponseBodyStreams `json:"Streams,omitempty" xml:"Streams,omitempty" type:"Repeated"`
+	// Total number of streams.
+	//
 	// example:
 	//
 	// 100
@@ -123,54 +134,84 @@ func (s *DescribeStreamsResponseBody) Validate() error {
 }
 
 type DescribeStreamsResponseBodyStreams struct {
+	// Application that owns this stream.
+	//
 	// example:
 	//
 	// live
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
+	// Time when the stream was created.
+	//
 	// example:
 	//
 	// 2018-12-10T17:00:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Device ID of this stream.
+	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Indicates whether the stream is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The ID of the group to which the stream belongs.
+	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Video stream height in pixels.
+	//
 	// example:
 	//
 	// 720
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Stream ID.
+	//
 	// example:
 	//
 	// 323*****997-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Stream name.
+	//
 	// example:
 	//
 	// 31000000*****0000002
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Streaming domain for this stream.
+	//
 	// example:
 	//
 	// demo.aliyundoc.com
 	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
+	// Stream protocol.
+	//
 	// example:
 	//
 	// gb28181
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Ingest domain for this stream.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	PushDomain *string `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
+	// Stream status. Valid values:
+	//
+	// - on (online)
+	//
+	// - off (offline)
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Video stream width in pixels.
+	//
 	// example:
 	//
 	// 1280

@@ -28,31 +28,49 @@ type iDescribeTemplatesRequest interface {
 }
 
 type DescribeTemplatesRequest struct {
+	// Template ID.
+	//
 	// example:
 	//
 	// 323434****83423432
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Filter templates by the bound instance ID.
+	//
 	// example:
 	//
 	// 323*****998-cn-qingdao
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Page number. Default: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of entries per page. Default: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Sort results by the specified field. Default: sort by ID.
+	//
 	// example:
 	//
 	// id
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Sort order. Default: ascending. Valid values:
+	//
+	// - asc (ascending)
+	//
+	// - desc (descending)
+	//
 	// example:
 	//
 	// asc
 	SortDirection *string `json:"SortDirection,omitempty" xml:"SortDirection,omitempty"`
+	// Filter templates by template type.
+	//
 	// example:
 	//
 	// record

@@ -16,12 +16,16 @@ type iGetRenderingInstanceCommandsStatusRequest interface {
 }
 
 type GetRenderingInstanceCommandsStatusRequest struct {
+	// Unique ID of the command delivery request
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cmd-81de027b66e442e99c1e0e09a16a0be5
 	CmdId *string `json:"CmdId,omitempty" xml:"CmdId,omitempty"`
+	// Cloud application service instance ID
+	//
 	// This parameter is required.
 	//
 	// example:

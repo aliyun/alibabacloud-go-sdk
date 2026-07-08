@@ -18,10 +18,14 @@ type iDeleteComfyProductionResponseBody interface {
 }
 
 type DeleteComfyProductionResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned.
+	//
 	// example:
 	//
 	// success

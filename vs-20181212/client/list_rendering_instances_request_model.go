@@ -26,25 +26,48 @@ type iListRenderingInstancesRequest interface {
 }
 
 type ListRenderingInstancesRequest struct {
+	// The time range for filtering. The time must be in UTC and specified in the ISO 8601 format yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2021-10-31T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Page number for the paged query. Minimum value: 1. Default value: 1
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page for the paged query. Valid values: 1 to 100. Default value: 10
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// ID of the cloud application service instance
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// Instance type of the cloud application service
+	//
 	// example:
 	//
 	// crs.cp.l1
 	RenderingSpec *string `json:"RenderingSpec,omitempty" xml:"RenderingSpec,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StorageSize   *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// Start time of the time range filter. Specify the time in ISO 8601 format in UTC. Format: yyyy-MM-ddTHH:mm:ssZ
+	//
+	// example:
+	//
+	// 2021-10-31T07:59:59Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Storage capacity of the cloud application service instance
+	//
+	// example:
+	//
+	// 20
+	StorageSize *int32 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 }
 
 func (s ListRenderingInstancesRequest) String() string {

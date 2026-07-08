@@ -18,12 +18,18 @@ type iDescribeVsDomainConfigsRequest interface {
 }
 
 type DescribeVsDomainConfigsRequest struct {
+	// Your accelerated domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// List of feature names.
+	//
+	// > Supports multiple values separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:

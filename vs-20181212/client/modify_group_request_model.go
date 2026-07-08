@@ -36,46 +36,85 @@ type iModifyGroupRequest interface {
 }
 
 type ModifyGroupRequest struct {
+	// Callback URL for device or stream status updates in the group.
+	//
 	// example:
 	//
 	// http://example.com/callback
-	Callback    *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	// Description of the space.
+	//
+	// example:
+	//
+	// 用于测试使用
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the space is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The ID of the space.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 32388487739092994-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Ingest protocol used by the group. Valid values:
+	//
+	// - gb28181
+	//
+	// - rtmp
+	//
 	// example:
 	//
 	// gb28181
 	InProtocol *string `json:"InProtocol,omitempty" xml:"InProtocol,omitempty"`
+	// Whether on-demand stream pulling is enabled. Valid values:
+	//
+	// - false (default)
+	//
+	// - true
+	//
 	// example:
 	//
 	// false
 	LazyPull *bool `json:"LazyPull,omitempty" xml:"LazyPull,omitempty"`
+	// Space name.
+	//
 	// example:
 	//
 	// myGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Playback protocols used by the group. Separate multiple values with commas. Valid values:
+	//
+	// - flv
+	//
+	// - hls
+	//
+	// - rtmp
+	//
 	// example:
 	//
 	// flv,rtmp,hls
 	OutProtocol *string `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Streaming domain used by the group.
+	//
 	// example:
 	//
 	// myplay.com
 	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
+	// Ingest domain used by the group. Applies only to groups that use the RTMP ingest protocol.
+	//
 	// example:
 	//
 	// mypush.com
 	PushDomain *string `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
+	// The region where the space is located. This region serves as the service center.
+	//
 	// example:
 	//
 	// cn-qingdao

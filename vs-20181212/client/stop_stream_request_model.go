@@ -20,17 +20,23 @@ type iStopStreamRequest interface {
 }
 
 type StopStreamRequest struct {
+	// The ID of the stream.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 32388487****92997-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the stream.
+	//
 	// example:
 	//
 	// 31000000*****0000002
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The time to restart the stream.
+	//
 	// example:
 	//
 	// 2021-12-12T10:00:00Z

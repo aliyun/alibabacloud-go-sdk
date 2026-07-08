@@ -24,24 +24,42 @@ type iListRenderingProjectsRequest interface {
 }
 
 type ListRenderingProjectsRequest struct {
+	// A parameter that specifies the time range to filter by. The time must be in UTC and follow the ISO 8601 format: yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2024-10-03T02:18:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Page number. The first page is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Project ID
+	//
 	// example:
 	//
 	// project-422bc38dfgh5eb44149f135ef76304f63b
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Project name
+	//
 	// example:
 	//
 	// idata_content
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Start time of the time range filter. Use ISO 8601 format in UTC, such as yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2024-09-29T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListRenderingProjectsRequest) String() string {

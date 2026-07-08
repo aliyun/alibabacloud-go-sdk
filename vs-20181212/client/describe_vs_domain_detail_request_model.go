@@ -16,6 +16,8 @@ type iDescribeVsDomainDetailRequest interface {
 }
 
 type DescribeVsDomainDetailRequest struct {
+	// Domain name for the Visual Edge Computing Service
+	//
 	// This parameter is required.
 	//
 	// example:

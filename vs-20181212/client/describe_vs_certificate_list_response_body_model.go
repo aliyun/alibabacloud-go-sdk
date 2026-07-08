@@ -16,7 +16,10 @@ type iDescribeVsCertificateListResponseBody interface {
 }
 
 type DescribeVsCertificateListResponseBody struct {
+	// Certificate ID.
 	CertificateListModel *DescribeVsCertificateListResponseBodyCertificateListModel `json:"CertificateListModel,omitempty" xml:"CertificateListModel,omitempty" type:"Struct"`
+	// ID of the request.
+	//
 	// example:
 	//
 	// 6E310519-E035-51AB-80D4-C1CBECD39EB5
@@ -59,7 +62,10 @@ func (s *DescribeVsCertificateListResponseBody) Validate() error {
 }
 
 type DescribeVsCertificateListResponseBodyCertificateListModel struct {
+	// List of certificates.
 	CertList []*DescribeVsCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Repeated"`
+	// Number of certificates.
+	//
 	// example:
 	//
 	// 2
@@ -106,26 +112,38 @@ func (s *DescribeVsCertificateListResponseBodyCertificateListModel) Validate() e
 }
 
 type DescribeVsCertificateListResponseBodyCertificateListModelCertList struct {
+	// ID of the certificate.
+	//
 	// example:
 	//
 	// 6338888
 	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// Name of the certificate.
+	//
 	// example:
 	//
 	// cert-5391062
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// Common Name (CN) field in the certificate. Usually a domain name.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	// Fingerprint of the certificate.
+	//
 	// example:
 	//
 	// 3EB2585309AE5C8F369****7CDA6A8F5CEC8B2D4
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// Issuer of the certificate.
+	//
 	// example:
 	//
 	// xxxxCert Inc
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// Timestamp.
+	//
 	// example:
 	//
 	// 1632462708

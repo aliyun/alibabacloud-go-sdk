@@ -18,6 +18,8 @@ type iGotoPresetRequest interface {
 }
 
 type GotoPresetRequest struct {
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type GotoPresetRequest struct {
 	// 348*****380-cn-qingdao
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Preset ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,12 +22,20 @@ type iBatchUnbindTemplateRequest interface {
 }
 
 type BatchUnbindTemplateRequest struct {
+	// The instance ID. Separate multiple IDs with commas.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 323*****994-cn-qingdao
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance type. Valid values:
+	//
+	// - group
+	//
+	// - stream
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -35,10 +43,18 @@ type BatchUnbindTemplateRequest struct {
 	// group
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The template ID. If omitted, all bindings that match the conditions on the instance are detached.
+	//
 	// example:
 	//
 	// 323*****998-cn-qingdao
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template type. Valid values:
+	//
+	// - record
+	//
+	// - snapshot
+	//
 	// example:
 	//
 	// record

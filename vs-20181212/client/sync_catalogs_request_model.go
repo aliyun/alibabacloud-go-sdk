@@ -16,11 +16,13 @@ type iSyncCatalogsRequest interface {
 }
 
 type SyncCatalogsRequest struct {
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 3238****739092996
+	// 3238****739092996-cn-shenzhen
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }

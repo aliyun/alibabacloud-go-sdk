@@ -22,18 +22,24 @@ type iModifyDeviceAlarmRequest interface {
 }
 
 type ModifyDeviceAlarmRequest struct {
+	// The alarm ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0dGo7jLwwf1000296232
 	AlarmId *string `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// The channel ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	ChannelId *int32 `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41,6 +47,14 @@ type ModifyDeviceAlarmRequest struct {
 	// 348*****380-cn-qingdao
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The alarm status. Valid values:
+	//
+	// - 1 (upload completed)
+	//
+	// - 2 (upload failed)
+	//
+	// - 3 (general error)
+	//
 	// This parameter is required.
 	//
 	// example:

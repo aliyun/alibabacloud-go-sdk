@@ -26,18 +26,26 @@ type iDescribeComfyUserDatasResponseBody interface {
 }
 
 type DescribeComfyUserDatasResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number of the returned list.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The default value is 20.
+	//
 	// example:
 	//
 	// 20
@@ -48,6 +56,8 @@ type DescribeComfyUserDatasResponseBody struct {
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -140,18 +150,26 @@ func (s *DescribeComfyUserDatasResponseBody) Validate() error {
 }
 
 type DescribeComfyUserDatasResponseBodyUserDatas struct {
+	// The name of the file or folder.
+	//
 	// example:
 	//
 	// myfile
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size in bytes.
+	//
 	// example:
 	//
 	// 1024
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The entry type. Valid values are \\`file\\` and \\`dir\\`.
+	//
 	// example:
 	//
 	// file
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time the file was last modified.
+	//
 	// example:
 	//
 	// 1776646928000

@@ -20,12 +20,16 @@ type iBatchBindPurchasedDevicesRequest interface {
 }
 
 type BatchBindPurchasedDevicesRequest struct {
+	// The ID of the device.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The ID of the device group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33,6 +37,8 @@ type BatchBindPurchasedDevicesRequest struct {
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:

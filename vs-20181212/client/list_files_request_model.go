@@ -24,23 +24,41 @@ type iListFilesRequest interface {
 }
 
 type ListFilesRequest struct {
+	// This parameter filters data by time range. It must conform to the ISO 8601 standard and use UTC time in the format yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2021-10-31T06:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// File ID. Each ID corresponds to a unique active file.
+	//
 	// example:
 	//
 	// f-1671accd4dafdag3er256cvgewt13f7141db2f7
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// File name.
+	//
 	// example:
 	//
 	// myfile
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The page number to retrieve. Page numbering starts at 1.Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page for a paged query. The value must be in the range of 1 to 100. The default is 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Start time of the time range filter. Specify in ISO 8601 format using UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2021-10-30T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

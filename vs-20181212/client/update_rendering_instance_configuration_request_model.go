@@ -16,8 +16,12 @@ type iUpdateRenderingInstanceConfigurationRequest interface {
 }
 
 type UpdateRenderingInstanceConfigurationRequest struct {
+	// The configuration content.
+	//
 	// This parameter is required.
 	Configuration []*UpdateRenderingInstanceConfigurationRequestConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Repeated"`
+	// The ID of the cloud application service instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -66,8 +70,30 @@ func (s *UpdateRenderingInstanceConfigurationRequest) Validate() error {
 }
 
 type UpdateRenderingInstanceConfigurationRequestConfiguration struct {
+	// The list of properties for the module.
+	//
 	// This parameter is required.
 	Attributes []*UpdateRenderingInstanceConfigurationRequestConfigurationAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
+	// The name of the real device simulation module. Valid values include the following:
+	//
+	// 1. ctl: control module
+	//
+	// 2. prop: property module
+	//
+	// 3. location: location module
+	//
+	// 4. battery: battery module
+	//
+	// 5. network: network module
+	//
+	// 6. bluetooth: bluetooth module
+	//
+	// 7. sim: SIM card module
+	//
+	// 8. display: device module
+	//
+	// 9. system: basic module
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -116,12 +142,16 @@ func (s *UpdateRenderingInstanceConfigurationRequestConfiguration) Validate() er
 }
 
 type UpdateRenderingInstanceConfigurationRequestConfigurationAttributes struct {
+	// The name of the property.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lon
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the property.
+	//
 	// This parameter is required.
 	//
 	// example:

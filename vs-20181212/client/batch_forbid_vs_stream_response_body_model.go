@@ -17,6 +17,8 @@ type iBatchForbidVsStreamResponseBody interface {
 
 type BatchForbidVsStreamResponseBody struct {
 	ForbidResult *BatchForbidVsStreamResponseBodyForbidResult `json:"ForbidResult,omitempty" xml:"ForbidResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B058D71B-76EA-5DF6-ACAF-A617C1E7937F

@@ -24,23 +24,34 @@ type iDescribeDirectoriesResponseBody interface {
 }
 
 type DescribeDirectoriesResponseBody struct {
+	// List of directories.
 	Directories []*DescribeDirectoriesResponseBodyDirectories `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
 	PageCount *int64 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of directories.
+	//
 	// example:
 	//
 	// 1
@@ -123,20 +134,38 @@ func (s *DescribeDirectoriesResponseBody) Validate() error {
 }
 
 type DescribeDirectoriesResponseBodyDirectories struct {
+	// Directory creation time.
+	//
 	// example:
 	//
 	// 2021-09-10T10:00:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Directory description.
+	//
+	// example:
+	//
+	// 目录2
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// ID of the group to which the directory belongs.
+	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Directory ID.
+	//
 	// example:
 	//
 	// 399*****488-cn-qingdao
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Directory name.
+	//
+	// example:
+	//
+	// 目录2
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Parent directory ID.
+	//
 	// example:
 	//
 	// 399*****774-cn-qingdao

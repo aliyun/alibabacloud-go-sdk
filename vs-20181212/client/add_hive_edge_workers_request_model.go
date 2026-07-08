@@ -16,12 +16,16 @@ type iAddHiveEdgeWorkersRequest interface {
 }
 
 type AddHiveEdgeWorkersRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hive-xxxx-xxx-xxx
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
+	// A list of instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

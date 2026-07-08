@@ -34,45 +34,93 @@ type iDescribeVsStreamsOnlineListRequest interface {
 }
 
 type DescribeVsStreamsOnlineListRequest struct {
+	// The application name.
+	//
 	// example:
 	//
 	// xxxApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The accelerated domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end of the time range to query.
+	//
+	// > - Specify the time in the UTC format. Example: 2016-06-30T19:00:00Z.
+	//
+	// >
+	//
+	// > - The time range between EndTime and StartTime cannot exceed 30 days.
+	//
 	// example:
 	//
 	// 2016-06-30T19:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The sorting method. Valid values:
+	//
+	// - stream_name_desc: sorts by stream name in descending order.
+	//
+	// - stream_name_asc: sorts by stream name in ascending order.
+	//
+	// - publish_time_desc: sorts by ingest time in descending order.
+	//
+	// - publish_time_asc (default): sorts by ingest time in ascending order.
+	//
 	// example:
 	//
 	// publish_time_asc
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: 3000.
+	//
+	// Valid values: 1 to 3000.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to perform a fuzzy match for the stream name. Valid values:
+	//
+	// - fuzzy: fuzzy match
+	//
+	// - strict: exact match
+	//
 	// example:
 	//
 	// fuzzy
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// The start of the time range to query.
+	//
+	// > Specify the time in the UTC format. Example: 2016-06-29T19:00:00Z.
+	//
 	// example:
 	//
 	// 2016-06-29T19:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The stream name.
+	//
 	// example:
 	//
 	// xxxStream
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	// The stream type. Valid values:
+	//
+	// - all (default): all streams
+	//
+	// - raw: raw streams
+	//
+	// - trans: transcoded streams
+	//
 	// example:
 	//
 	// all

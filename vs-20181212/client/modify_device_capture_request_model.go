@@ -20,17 +20,33 @@ type iModifyDeviceCaptureRequest interface {
 }
 
 type ModifyDeviceCaptureRequest struct {
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Image capture control. Valid values:
+	//
+	// - 0 (shutdown)
+	//
+	// - 1 (enable)
+	//
 	// example:
 	//
 	// 0
 	Image   *int32 `json:"Image,omitempty" xml:"Image,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Video recording control. Valid values:
+	//
+	// - 0 (shutdown)
+	//
+	// - 1 (enable short recording)
+	//
+	// - 2 (enable long recording)
+	//
 	// example:
 	//
 	// 1

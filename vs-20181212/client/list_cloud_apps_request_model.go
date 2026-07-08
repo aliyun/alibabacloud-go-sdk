@@ -34,32 +34,96 @@ type iListCloudAppsRequest interface {
 }
 
 type ListCloudAppsRequest struct {
+	// The ID of the cloud application. This ID corresponds to a unique application package.
+	//
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Application name.
+	//
 	// example:
 	//
 	// com.aaa.bbb
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Application version.
+	//
 	// example:
 	//
 	// 1.0
-	AppVersion        *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	LatestVersionOnly *bool   `json:"LatestVersionOnly,omitempty" xml:"LatestVersionOnly,omitempty"`
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The time range filter parameter. Express it in ISO8601 standard format, using UTC time: yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2021-09-30T02:23:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Return only the latest submitted version of the application. Default value: false.
+	//
+	// example:
+	//
+	// false
+	LatestVersionOnly *bool `json:"LatestVersionOnly,omitempty" xml:"LatestVersionOnly,omitempty"`
+	// The page number for the query list. The starting value is 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page for paged queries. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PkgLabel  *string `json:"PkgLabel,omitempty" xml:"PkgLabel,omitempty"`
-	PkgType   *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Valid values:
+	//
+	// 1. Valid values:
+	//
+	//    a. hot
+	//
+	//    b. game
+	//
+	//    c. app
+	//
+	// 2. Special case:a. To list applications that have no tags, enter NULL.
+	//
+	// example:
+	//
+	// app
+	PkgLabel *string `json:"PkgLabel,omitempty" xml:"PkgLabel,omitempty"`
+	// The package type. Valid values:
+	//
+	// 1. android
+	//
+	// 2. win
+	//
+	// 3. android_appmarket
+	//
+	// example:
+	//
+	// android
+	PkgType *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
+	// The time range filter parameter. Express it in ISO8601 standard format, using UTC time: yyyy-MM-ddTHH:mm:ssZ.
+	//
+	// example:
+	//
+	// 2021-09-29T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The application upload status. Valid values:
+	//
+	// 1. Success: The desired state, indicating success.
+	//
+	// 2. Failed: The desired state, indicating failure.
+	//
+	// 3. Created
+	//
+	// 4. Doing
+	//
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCloudAppsRequest) String() string {

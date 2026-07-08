@@ -26,24 +26,44 @@ type iDescribeDirectoryResponseBody interface {
 }
 
 type DescribeDirectoryResponseBody struct {
+	// The time when the directory was created.
+	//
 	// example:
 	//
 	// 2021-09-10T10:00:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The directory description.
+	//
+	// example:
+	//
+	// 目录1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the group that owns the folder.
+	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The directory ID.
+	//
 	// example:
 	//
 	// 399*****488-cn-qingdao
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The directory name.
+	//
+	// example:
+	//
+	// 目录1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parent directory ID.
+	//
 	// example:
 	//
 	// 399*****774-cn-qingdao
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

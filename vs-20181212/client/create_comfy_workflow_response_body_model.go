@@ -24,23 +24,34 @@ type iCreateComfyWorkflowResponseBody interface {
 }
 
 type CreateComfyWorkflowResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message. If `Status` is `Failed`, this parameter provides the reason for the failure.
+	//
 	// example:
 	//
 	// conn failed!
-	Message      *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of missing nodes.
 	MissingNodes []*string `json:"MissingNodes,omitempty" xml:"MissingNodes,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The workflow status.
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The workflow ID.
+	//
 	// example:
 	//
 	// wf_adb32aed-ccdc-42ae-b4d4-a21181ac8a5c

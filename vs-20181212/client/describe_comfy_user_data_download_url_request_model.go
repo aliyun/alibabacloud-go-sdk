@@ -14,6 +14,8 @@ type iDescribeComfyUserDataDownloadUrlRequest interface {
 }
 
 type DescribeComfyUserDataDownloadUrlRequest struct {
+	// The name of the file to download.
+	//
 	// This parameter is required.
 	//
 	// example:

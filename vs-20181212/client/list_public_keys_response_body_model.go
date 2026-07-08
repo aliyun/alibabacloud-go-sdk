@@ -22,19 +22,28 @@ type iListPublicKeysResponseBody interface {
 }
 
 type ListPublicKeysResponseBody struct {
+	// The page number of the returned list.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 10
-	PageSize   *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A list of public keys.
 	PublicKeys []*ListPublicKeysResponseBodyPublicKeys `json:"PublicKeys,omitempty" xml:"PublicKeys,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -108,20 +117,42 @@ func (s *ListPublicKeysResponseBody) Validate() error {
 }
 
 type ListPublicKeysResponseBodyPublicKeys struct {
+	// The content of the public key. The content is encoded in Base64 format by default.
+	//
 	// example:
 	//
 	// verify_30d89ccb0905c8c7882c1d14a991954b
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The description of the public key.
+	//
+	// example:
+	//
+	// 测试使用
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The public key group.
+	//
 	// example:
 	//
 	// mygroup
 	KeyGroup *string `json:"KeyGroup,omitempty" xml:"KeyGroup,omitempty"`
+	// The name of the public key.
+	//
 	// example:
 	//
 	// mykey
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// The type of the public key. Valid values:
+	//
+	// - **adb**: ADB key
+	//
+	// - **ssh**: SSH key
+	//
+	// example:
+	//
+	// ssh
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// The time when the public key was uploaded.
+	//
 	// example:
 	//
 	// 2024-06-11T14:26:48+08:00

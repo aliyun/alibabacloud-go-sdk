@@ -46,61 +46,115 @@ type iDescribeDevicesRequest interface {
 }
 
 type DescribeDevicesRequest struct {
+	// The ID of the directory to which the device belongs.
+	//
 	// example:
 	//
 	// 399*****488-cn-qingdao
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The serial number of the device. The value must be unique.
+	//
 	// example:
 	//
 	// 7D0*****4C0
 	Dsn *string `json:"Dsn,omitempty" xml:"Dsn,omitempty"`
+	// You can query by device national standard ID.
+	//
 	// example:
 	//
 	// 310000000****0000002
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	// Query by device Space ID.
+	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The device ID.
+	//
+	// > Specify multiple IDs. Separate them with commas (,).
+	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Specifies whether to return directory information. Default value: false.
+	//
 	// example:
 	//
 	// false
 	IncludeDirectory *bool `json:"IncludeDirectory,omitempty" xml:"IncludeDirectory,omitempty"`
+	// Specifies whether to return stream statistics. Default value: false.
+	//
 	// example:
 	//
 	// false
-	IncludeStats *bool   `json:"IncludeStats,omitempty" xml:"IncludeStats,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	IncludeStats *bool `json:"IncludeStats,omitempty" xml:"IncludeStats,omitempty"`
+	// The device name.
+	//
+	// > Specify multiple names. Separate them with commas (,).
+	//
+	// example:
+	//
+	// 摄像头A
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the parent device.
+	//
 	// example:
 	//
 	// 399*****774-cn-qingdao
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	SortBy   *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The field by which to sort the results. Valid value:
+	//
+	// > id (default)
+	//
+	// example:
+	//
+	// id
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - asc (ascending) (default)
+	//
+	// - desc (descending)
+	//
 	// example:
 	//
 	// asc
 	SortDirection *string `json:"SortDirection,omitempty" xml:"SortDirection,omitempty"`
+	// Query devices by status.
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The device type. Valid values:
+	//
+	// - ipc (camera)
+	//
+	// - platform
+	//
+	// - ied (intelligent edge device)
+	//
 	// example:
 	//
 	// ipc
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Query by device manufacturer.
+	//
 	// example:
 	//
 	// 8yd*****qem

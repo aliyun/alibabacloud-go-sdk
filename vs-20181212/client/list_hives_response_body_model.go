@@ -82,7 +82,10 @@ type ListHivesResponseBodyHives struct {
 	//
 	// 2025-05-14T15:20:37+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 基础型S1
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// hive-3b506f0868a7451ba15e0e890706033a

@@ -24,23 +24,33 @@ type iDescribeVsDomainPvUvDataResponseBody interface {
 }
 
 type DescribeVsDomainPvUvDataResponseBody struct {
+	// Time interval in seconds.
+	//
 	// example:
 	//
 	// 3600
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// Visual Edge Computing Service domain name.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 2021-11-24T00:00:00Z
 	EndTime       *string                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PvUvDataInfos *DescribeVsDomainPvUvDataResponseBodyPvUvDataInfos `json:"PvUvDataInfos,omitempty" xml:"PvUvDataInfos,omitempty" type:"Struct"`
+	// Request ID for this operation.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Start time.
+	//
 	// example:
 	//
 	// 2021-12-12T10:00:00Z

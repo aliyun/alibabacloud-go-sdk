@@ -22,6 +22,8 @@ type iStopMoveRequest interface {
 }
 
 type StopMoveRequest struct {
+	// The device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29,14 +31,20 @@ type StopMoveRequest struct {
 	// 348*****380-cn-qingdao
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to stop panning. The default value is false.
+	//
 	// example:
 	//
 	// true
 	Pan *bool `json:"Pan,omitempty" xml:"Pan,omitempty"`
+	// Specifies whether to stop tilting. The default value is false.
+	//
 	// example:
 	//
 	// true
 	Tilt *bool `json:"Tilt,omitempty" xml:"Tilt,omitempty"`
+	// Specifies whether to stop zooming. The default value is false.
+	//
 	// example:
 	//
 	// true

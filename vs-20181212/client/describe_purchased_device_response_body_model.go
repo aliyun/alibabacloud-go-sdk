@@ -38,48 +38,92 @@ type iDescribePurchasedDeviceResponseBody interface {
 }
 
 type DescribePurchasedDeviceResponseBody struct {
+	// Device creation time.
+	//
 	// example:
 	//
 	// 2018-12-10T21:00:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Device description.
+	//
+	// example:
+	//
+	// xxx路口摄像头
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Space ID.
+	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Space name.
+	//
+	// example:
+	//
+	// 测试空间
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Device ID.
+	//
 	// example:
 	//
 	// 33763****77224964-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Device name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Order ID.
+	//
 	// example:
 	//
 	// 2117*****0447
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Region where the space belongs, also known as the service center.
+	//
 	// example:
 	//
 	// cn-qingdao
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Device registration code.
+	//
 	// example:
 	//
 	// 12345*****67890
 	RegisterCode *string `json:"RegisterCode,omitempty" xml:"RegisterCode,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Device child type. Valid values:
+	//
+	// - bullet (bullet camera)
+	//
+	// - dome (dome camera)
+	//
+	// - ptz (PTZ)
+	//
 	// example:
 	//
 	// dome
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// Device type. Valid values:
+	//
+	// - ipc (camera)
+	//
+	// - platform
+	//
+	// - ied (intelligent device)
+	//
 	// example:
 	//
 	// ipc
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Device vendor.
+	//
 	// example:
 	//
 	// 8yd*****qem

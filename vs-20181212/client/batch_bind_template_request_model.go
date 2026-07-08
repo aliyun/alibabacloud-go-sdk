@@ -24,16 +24,26 @@ type iBatchBindTemplateRequest interface {
 }
 
 type BatchBindTemplateRequest struct {
+	// Apply to all streams within the scope. Default value: false.
+	//
 	// example:
 	//
 	// false
 	ApplyAll *bool `json:"ApplyAll,omitempty" xml:"ApplyAll,omitempty"`
+	// Instance ID. Separate multiple values with commas.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 323*****994-cn-qingdao
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance type. Valid values:
+	//
+	// - group (space)
+	//
+	// - stream (stream)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41,10 +51,14 @@ type BatchBindTemplateRequest struct {
 	// group
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Replace existing bindings. Default value: false.
+	//
 	// example:
 	//
 	// false
 	Replace *bool `json:"Replace,omitempty" xml:"Replace,omitempty"`
+	// Template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

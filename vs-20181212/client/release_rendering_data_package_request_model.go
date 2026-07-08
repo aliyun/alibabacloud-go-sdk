@@ -14,6 +14,8 @@ type iReleaseRenderingDataPackageRequest interface {
 }
 
 type ReleaseRenderingDataPackageRequest struct {
+	// Cloud application service data pack ID
+	//
 	// This parameter is required.
 	//
 	// example:

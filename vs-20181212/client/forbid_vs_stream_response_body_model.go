@@ -14,6 +14,8 @@ type iForbidVsStreamResponseBody interface {
 }
 
 type ForbidVsStreamResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 119F7639-4646-51A4-B6C1-300D391C0104

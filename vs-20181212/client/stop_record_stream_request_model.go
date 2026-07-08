@@ -22,19 +22,27 @@ type iStopRecordStreamRequest interface {
 }
 
 type StopRecordStreamRequest struct {
+	// App name of the stream.
+	//
 	// example:
 	//
 	// live
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
+	// Stream ID.
+	//
 	// example:
 	//
 	// 323*****997-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Stream name.
+	//
 	// example:
 	//
 	// test
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Playback domain name of the stream.
+	//
 	// example:
 	//
 	// example.com

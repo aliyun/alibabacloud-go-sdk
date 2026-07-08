@@ -20,18 +20,26 @@ type iDescribeComfyTasksRequest interface {
 }
 
 type DescribeComfyTasksRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of tasks per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The task state. If specified, the operation returns only tasks in that state.
+	//
 	// example:
 	//
 	// QUEUED
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	// If you specify this parameter, the operation returns only tasks for the specified workflow.
+	//
 	// example:
 	//
 	// wf_adb32aed-ccdc-42ae-b4d4-a21181ac8a5f

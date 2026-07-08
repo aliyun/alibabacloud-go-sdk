@@ -20,12 +20,16 @@ type iDescribeStreamVodListRequest interface {
 }
 
 type DescribeStreamVodListRequest struct {
+	// VOD record end time (unix timestamp, unit: seconds)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1634873413
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Stream ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33,6 +37,8 @@ type DescribeStreamVodListRequest struct {
 	// 18526049*****219118918-cn-beijing
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// VOD record start time (unix timestamp, unit: seconds)
+	//
 	// This parameter is required.
 	//
 	// example:

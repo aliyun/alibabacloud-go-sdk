@@ -56,75 +56,144 @@ type iDescribeGroupResponseBody interface {
 }
 
 type DescribeGroupResponseBody struct {
+	// Alias for the space ID.
+	//
 	// example:
 	//
 	// 337639*****24964-cn-qingdao
 	AliasId *string `json:"AliasId,omitempty" xml:"AliasId,omitempty"`
+	// The name of the application used by the group.
+	//
 	// example:
 	//
 	// live
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
+	// The callback URL that is used to receive device status updates in the group.
+	//
 	// example:
 	//
 	// http://example.com/callback
 	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	// The time when the group was created.
+	//
 	// example:
 	//
 	// 2019-02-28T17:00:17Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// A description of the group.
+	//
+	// example:
+	//
+	// 上海高速监控
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the group is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The GB/T 28181 ID that is associated with the group.
+	//
+	// > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
+	//
 	// example:
 	//
 	// 3100000*****0000001
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	// The IP address of the GB/T 28181 signaling server that is associated with the group.
+	//
+	// > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
+	//
 	// example:
 	//
 	// 10.10.10.10
 	GbIp *string `json:"GbIp,omitempty" xml:"GbIp,omitempty"`
+	// The port of the GB/T 28181 signaling server that is associated with the group.
+	//
+	// > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
+	//
 	// example:
 	//
 	// 5060
-	GbPort     *int64    `json:"GbPort,omitempty" xml:"GbPort,omitempty"`
+	GbPort *int64 `json:"GbPort,omitempty" xml:"GbPort,omitempty"`
+	// The TCP ports of the GB/T 28181 signaling server that are provided by the group.
+	//
+	// > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
 	GbTcpPorts []*string `json:"GbTcpPorts,omitempty" xml:"GbTcpPorts,omitempty" type:"Repeated"`
+	// The UDP ports of the GB/T 28181 signaling server that are provided by the group.
+	//
+	// > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
 	GbUdpPorts []*string `json:"GbUdpPorts,omitempty" xml:"GbUdpPorts,omitempty" type:"Repeated"`
+	// The ID of the space.
+	//
 	// example:
 	//
 	// 337639****224964-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ingest protocol used by the group. Valid values:
+	//
+	// - gb28181
+	//
+	// - rtmp
+	//
 	// example:
 	//
 	// gb28181
 	InProtocol *string `json:"InProtocol,omitempty" xml:"InProtocol,omitempty"`
+	// Indicates whether on-demand stream pulling is enabled.
+	//
 	// example:
 	//
 	// false
-	LazyPull *bool   `json:"LazyPull,omitempty" xml:"LazyPull,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	LazyPull *bool `json:"LazyPull,omitempty" xml:"LazyPull,omitempty"`
+	// The name of the space.
+	//
+	// example:
+	//
+	// 上海高速监控
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The streaming protocol used by the group. Valid values:
+	//
+	// - flv
+	//
+	// - hls
+	//
+	// - rtmp
+	//
+	// > You can specify multiple protocols. Separate them with commas (,).
+	//
 	// example:
 	//
 	// flv,hls,rtmp
 	OutProtocol *string `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
+	// The streaming domain used by the group.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
+	// The ingest domain used by the group.
+	//
 	// example:
 	//
 	// demo.aliyundoc.com
 	PushDomain *string `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
+	// The region where the space is located, which is the service center.
+	//
 	// example:
 	//
 	// cn-qingdao
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Stats     *DescribeGroupResponseBodyStats `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics of devices in the group.
+	Stats *DescribeGroupResponseBodyStats `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
+	// The status of the group.
+	//
 	// example:
 	//
 	// on
@@ -347,18 +416,26 @@ func (s *DescribeGroupResponseBody) Validate() error {
 }
 
 type DescribeGroupResponseBodyStats struct {
+	// The total number of devices in the group.
+	//
 	// example:
 	//
 	// 200
 	DeviceNum *int64 `json:"DeviceNum,omitempty" xml:"DeviceNum,omitempty"`
+	// The number of intelligent electronic devices (IEDs) in the group.
+	//
 	// example:
 	//
 	// 0
 	IedNum *int64 `json:"IedNum,omitempty" xml:"IedNum,omitempty"`
+	// The number of cameras in the group.
+	//
 	// example:
 	//
 	// 100
 	IpcNum *int64 `json:"IpcNum,omitempty" xml:"IpcNum,omitempty"`
+	// The number of platforms in the group.
+	//
 	// example:
 	//
 	// 100

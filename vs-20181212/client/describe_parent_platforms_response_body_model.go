@@ -24,23 +24,34 @@ type iDescribeParentPlatformsResponseBody interface {
 }
 
 type DescribeParentPlatformsResponseBody struct {
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
 	PageCount *int64 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 20
-	PageSize  *int64                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// List of parent platforms.
 	Platforms []*DescribeParentPlatformsResponseBodyPlatforms `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of parent platforms.
+	//
 	// example:
 	//
 	// 1
@@ -123,60 +134,114 @@ func (s *DescribeParentPlatformsResponseBody) Validate() error {
 }
 
 type DescribeParentPlatformsResponseBodyPlatforms struct {
+	// Whether to enable automatically. Valid values:
+	//
+	// - false (default)
+	//
+	// - true
+	//
 	// example:
 	//
 	// false
 	AutoStart *bool `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
+	// Whether to enable local authentication. Valid values:
+	//
+	// - true (default)
+	//
+	// - false
+	//
 	// example:
 	//
 	// true
 	ClientAuth *bool `json:"ClientAuth,omitempty" xml:"ClientAuth,omitempty"`
+	// Local GB ID.
+	//
 	// example:
 	//
 	// 31010*****317542006
 	ClientGbId *string `json:"ClientGbId,omitempty" xml:"ClientGbId,omitempty"`
+	// Local SIP service IP.
+	//
 	// example:
 	//
 	// 192.168.0.1
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// Local password.
+	//
 	// example:
 	//
 	// admin123
 	ClientPassword *string `json:"ClientPassword,omitempty" xml:"ClientPassword,omitempty"`
+	// Local SIP service port.
+	//
 	// example:
 	//
 	// 5160
 	ClientPort *int64 `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
+	// Local username.
+	//
 	// example:
 	//
 	// user01
 	ClientUsername *string `json:"ClientUsername,omitempty" xml:"ClientUsername,omitempty"`
+	// Parent platform creation time.
+	//
 	// example:
 	//
 	// 2018-12-10T21:00:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Parent platform description.
+	//
+	// example:
+	//
+	// 国标级联平台描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Parent platform GB ID.
+	//
 	// example:
 	//
 	// 31000*****2170123451
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	// Parent platform ID.
+	//
 	// example:
 	//
 	// 359*****374-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Parent platform SIP service IP.
+	//
 	// example:
 	//
 	// 10.10.10.10
-	Ip   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// Parent platform name.
+	//
+	// example:
+	//
+	// 国标级联平台测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Parent platform SIP service port.
+	//
 	// example:
 	//
 	// 5060
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Parent platform protocol. Valid values:
+	//
+	// - gb28181 (GB standard)
+	//
 	// example:
 	//
 	// gb28181
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Parent platform status. Valid values:
+	//
+	// - on (online)
+	//
+	// - off (offline)
+	//
+	// - failed (failed)
+	//
 	// example:
 	//
 	// on

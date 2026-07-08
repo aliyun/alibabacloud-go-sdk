@@ -14,6 +14,8 @@ type iDeleteRenderingInstanceGatewayRequest interface {
 }
 
 type DeleteRenderingInstanceGatewayRequest struct {
+	// Cloud application service instance ID
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111

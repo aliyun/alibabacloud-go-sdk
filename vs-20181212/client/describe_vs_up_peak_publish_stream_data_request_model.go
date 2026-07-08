@@ -22,14 +22,20 @@ type iDescribeVsUpPeakPublishStreamDataRequest interface {
 }
 
 type DescribeVsUpPeakPublishStreamDataRequest struct {
+	// Domain name to query. Returns data at the domain granularity.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Enables or disables domain-level statistics. Valid values: on or off. When set to on, the response shows domain-level data. When set to off or omitted, the response shows user-level data. Default is user-level data.
+	//
 	// example:
 	//
 	// on
 	DomainSwitch *string `json:"DomainSwitch,omitempty" xml:"DomainSwitch,omitempty"`
+	// End time of stream ingest, in UTC format. The time range between StartTime and EndTime must be within 30 days. EndTime must be later than the current time.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -37,6 +43,8 @@ type DescribeVsUpPeakPublishStreamDataRequest struct {
 	// 2017-12-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Start time of stream ingest, in UTC format. The time range between StartTime and EndTime must be within 30 days.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,23 +24,33 @@ type iDescribeVsDomainReqBpsDataResponseBody interface {
 }
 
 type DescribeVsDomainReqBpsDataResponseBody struct {
+	// Time interval between records, in seconds.
+	//
 	// example:
 	//
 	// 3600
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// The domain name of the Visual Edge Computing Service.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 2021-09-24T03:30:46Z
 	EndTime               *string                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ReqBpsDataPerInterval *DescribeVsDomainReqBpsDataResponseBodyReqBpsDataPerInterval `json:"ReqBpsDataPerInterval,omitempty" xml:"ReqBpsDataPerInterval,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Start time.
+	//
 	// example:
 	//
 	// 2021-12-24T16:00:00Z

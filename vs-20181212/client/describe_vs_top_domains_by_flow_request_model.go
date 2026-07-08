@@ -20,15 +20,21 @@ type iDescribeVsTopDomainsByFlowRequest interface {
 }
 
 type DescribeVsTopDomainsByFlowRequest struct {
+	// The end of the time range to query. The end time must be later than the start time. The date format follows the ISO 8601 standard and uses UTC.<br>Format: YYYY-MM-DDThh:mm:ssZ<br>
+	//
 	// example:
 	//
 	// 2018-12-10T18:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of domain names to return. The default value is 20. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 3
 	Limit   *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The start of the time range to query. The date format follows the ISO 8601 standard and uses UTC.<br>Format: YYYY-MM-DDThh:mm:ssZ<br>The minimum data granularity is 5 minutes.<br>If you do not specify this parameter, data for the current month is queried.<br><br><br>
+	//
 	// example:
 	//
 	// 2021-12-12T10:00:00Z

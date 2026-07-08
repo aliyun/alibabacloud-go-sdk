@@ -26,27 +26,43 @@ type iDescribeParentPlatformsRequest interface {
 }
 
 type DescribeParentPlatformsRequest struct {
+	// Query by the GB ID of the parent platform.
+	//
 	// example:
 	//
 	// 31000*****2170123451
 	GbId    *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Page number. Default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Page size. Default value is 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Sort by the specified field. Sorted by id by default.
+	//
 	// example:
 	//
 	// id
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Sort order. Ascending by default. Valid values:
+	//
+	// - asc (ascending)
+	//
+	// - desc (descending)
+	//
 	// example:
 	//
 	// asc
 	SortDirection *string `json:"SortDirection,omitempty" xml:"SortDirection,omitempty"`
+	// Query by the status of the parent platform.
+	//
 	// example:
 	//
 	// on

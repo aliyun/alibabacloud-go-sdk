@@ -20,6 +20,8 @@ type iStartTransferStreamRequest interface {
 }
 
 type StartTransferStreamRequest struct {
+	// Stream ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27,10 +29,14 @@ type StartTransferStreamRequest struct {
 	// 323*****998-cn-qingdao
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the transcoding rule (a transcoding template must be bound first).
+	//
 	// example:
 	//
 	// sd
 	Transcode *string `json:"Transcode,omitempty" xml:"Transcode,omitempty"`
+	// The destination address for stream forwarding.
+	//
 	// This parameter is required.
 	//
 	// example:

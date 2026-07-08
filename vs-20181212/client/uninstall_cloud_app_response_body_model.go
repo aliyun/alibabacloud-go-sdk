@@ -22,14 +22,28 @@ type iUninstallCloudAppResponseBody interface {
 }
 
 type UninstallCloudAppResponseBody struct {
-	FailedInstanceCount *int32                                          `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
-	FailedInstances     []*UninstallCloudAppResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
+	// The number of cloud application service instances that failed.
+	//
+	// example:
+	//
+	// 0
+	FailedInstanceCount *int32 `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
+	// List of failed cloud application service instances
+	FailedInstances []*UninstallCloudAppResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId            *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessInstanceCount *int32                                           `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
-	SuccessInstances     []*UninstallCloudAppResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of successfully uninstalled cloud application instances
+	//
+	// example:
+	//
+	// 5
+	SuccessInstanceCount *int32 `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
+	// A list of service instances for which the cloud application was uninstalled successfully.
+	SuccessInstances []*UninstallCloudAppResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
 func (s UninstallCloudAppResponseBody) String() string {
@@ -108,8 +122,23 @@ func (s *UninstallCloudAppResponseBody) Validate() error {
 }
 
 type UninstallCloudAppResponseBodyFailedInstances struct {
-	ErrCode             *int32  `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	ErrMessage          *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// Error code
+	//
+	// example:
+	//
+	// 300000
+	ErrCode *int32 `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// Rejected due to timeout
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// Cloud application instance ID
+	//
+	// example:
+	//
+	// render-b45f28650ffe4591bf4c5c95996a428c
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
 }
 
@@ -153,6 +182,11 @@ func (s *UninstallCloudAppResponseBodyFailedInstances) Validate() error {
 }
 
 type UninstallCloudAppResponseBodySuccessInstances struct {
+	// Cloud application instance ID
+	//
+	// example:
+	//
+	// render-e6cf423c787e4e43b460a788da254fe3
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
 }
 

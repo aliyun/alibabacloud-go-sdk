@@ -18,13 +18,25 @@ type iModifyComfyWorkflowRequest interface {
 }
 
 type ModifyComfyWorkflowRequest struct {
+	// The new workflow description.
+	//
+	// example:
+	//
+	// 这是一个图生视频的工作流
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the workflow to modify.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// wf_3de1eb6e-1dfe-45aa-8f88-2269d0a30f53
-	WorkflowId   *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	WorkflowId *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The new workflow name.
+	//
+	// example:
+	//
+	// 图生视频工作流示例
 	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 

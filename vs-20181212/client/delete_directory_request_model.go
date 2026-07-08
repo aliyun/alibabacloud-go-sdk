@@ -16,6 +16,8 @@ type iDeleteDirectoryRequest interface {
 }
 
 type DeleteDirectoryRequest struct {
+	// The folder ID.
+	//
 	// This parameter is required.
 	//
 	// example:

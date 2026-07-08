@@ -14,6 +14,8 @@ type iRebootRenderingInstanceRequest interface {
 }
 
 type RebootRenderingInstanceRequest struct {
+	// ID of the cloud application service instance
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -29,20 +29,40 @@ type iDescribeDeviceURLRequest interface {
 
 type DescribeDeviceURLRequest struct {
 	Auth *bool `json:"Auth,omitempty" xml:"Auth,omitempty"`
+	// Authentication validity period, in seconds.
+	//
 	// example:
 	//
 	// 3600
 	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Stream mode. Valid values:
+	//
+	// - play
+	//
+	// - push
+	//
 	// example:
 	//
 	// push
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// Stream protocol. Valid values:
+	//
+	// - rtmp
+	//
+	// - flv
+	//
+	// - hls
+	//
+	// > When Mode is set to push, only rtmp is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -50,6 +70,8 @@ type DescribeDeviceURLRequest struct {
 	// rtmp
 	OutProtocol *string `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Stream name.
+	//
 	// This parameter is required.
 	//
 	// example:

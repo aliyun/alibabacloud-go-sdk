@@ -18,6 +18,8 @@ type iBatchStopDevicesRequest interface {
 }
 
 type BatchStopDevicesRequest struct {
+	// Device ID. Separate multiple values with commas.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type BatchStopDevicesRequest struct {
 	// 32388487****92996
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Stream restart trigger time.
+	//
 	// example:
 	//
 	// 2021-10-14T23:00:00Z

@@ -58,85 +58,156 @@ type iModifyDeviceRequest interface {
 }
 
 type ModifyDeviceRequest struct {
+	// GB-compliant alarm method to subscribe to. Valid values:
+	//
+	// - 0 (all)
+	//
+	// - 5 (video alarm)
+	//
+	// - 7 (other alarms)
+	//
+	// > 	- An empty value means no subscription.
+	//
+	// >
+	//
+	// > 	- Multiple values are supported. Separate them with commas.
+	//
 	// example:
 	//
 	// 0
 	AlarmMethod   *string `json:"AlarmMethod,omitempty" xml:"AlarmMethod,omitempty"`
 	AutoDirectory *bool   `json:"AutoDirectory,omitempty" xml:"AutoDirectory,omitempty"`
+	// Whether to enable location subscription for the device. Default value: false.
+	//
 	// example:
 	//
 	// false
 	AutoPos *bool `json:"AutoPos,omitempty" xml:"AutoPos,omitempty"`
+	// Whether to automatically start the stream. Default value: false.
+	//
 	// example:
 	//
 	// false
-	AutoStart   *bool   `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
+	AutoStart *bool `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
+	// Device description.
+	//
+	// example:
+	//
+	// xxx路口摄像头
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Directory ID for the device.
+	//
 	// example:
 	//
 	// 399*****488-cn-qingdao
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// GB-compliant device ID.
+	//
+	// > This parameter applies only to GB-compliant protocols.
+	//
 	// example:
 	//
 	// 3100000****000000002
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	// Space ID.
+	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// IP address of the device.
+	//
 	// example:
 	//
 	// 10.10.10.10
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The device dimension.
+	//
 	// example:
 	//
 	// 119.20
 	Latitude *string `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	// Longitude of the device.
+	//
 	// example:
 	//
 	// 45.00
 	Longitude *string `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Device name.
+	//
+	// example:
+	//
+	// xxx路口摄像头
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Additional device parameters, formatted as a JSON-serialized string.
+	//
 	// example:
 	//
 	// {}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// Parent device ID.
+	//
 	// example:
 	//
 	// 399*****774-cn-qingdao
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// Password for the device.
+	//
 	// example:
 	//
 	// admin
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Port number of the device.
+	//
 	// example:
 	//
 	// 8080
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Location subscription interval, in seconds.
+	//
 	// example:
 	//
 	// 300
 	PosInterval *int64 `json:"PosInterval,omitempty" xml:"PosInterval,omitempty"`
+	// Device type. Valid values:
+	//
+	// - ipc (camera)
+	//
+	// - platform (platform)
+	//
+	// - ied (intelligent device)
+	//
 	// example:
 	//
 	// ipc
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Stream URL on the device.
+	//
 	// example:
 	//
 	// rtmp://xxx/xxx
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Username for the device.
+	//
 	// example:
 	//
 	// admin
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	Vendor   *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// Device vendor.
+	//
+	// example:
+	//
+	// 公司A
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ModifyDeviceRequest) String() string {

@@ -16,10 +16,18 @@ type iVerifyVsDomainOwnerResponseBody interface {
 }
 
 type VerifyVsDomainOwnerResponseBody struct {
+	// 校验内容。
+	//
+	// >
+	//
+	// 调用成功不返回该参数，调用失败返回校验内容。
+	//
 	// example:
 	//
 	// verify_dffeb6610035dcb77b413a59c32c****
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// 请求ID。
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

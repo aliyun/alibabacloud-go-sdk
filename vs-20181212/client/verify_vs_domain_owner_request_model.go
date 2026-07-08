@@ -18,6 +18,8 @@ type iVerifyVsDomainOwnerRequest interface {
 }
 
 type VerifyVsDomainOwnerRequest struct {
+	// The domain name of Visual Edge Computing Service.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,12 @@ type VerifyVsDomainOwnerRequest struct {
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The verification method. Valid values:
+	//
+	// - **dnsCheck**: DNS verification.
+	//
+	// - **fileCheck**: File verification.
+	//
 	// This parameter is required.
 	//
 	// example:

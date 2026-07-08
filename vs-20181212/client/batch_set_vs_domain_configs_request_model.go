@@ -18,12 +18,18 @@ type iBatchSetVsDomainConfigsRequest interface {
 }
 
 type BatchSetVsDomainConfigsRequest struct {
+	// Your accelerated domain names.
+	//
+	// > Supports multiple domain names separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
+	// List of features.
+	//
 	// This parameter is required.
 	//
 	// example:

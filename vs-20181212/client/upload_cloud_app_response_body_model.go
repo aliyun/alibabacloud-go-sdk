@@ -16,10 +16,14 @@ type iUploadCloudAppResponseBody interface {
 }
 
 type UploadCloudAppResponseBody struct {
+	// The cloud application ID, which uniquely identifies the application package.
+	//
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

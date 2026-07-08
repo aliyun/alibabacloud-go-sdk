@@ -40,58 +40,90 @@ type iDescribeStreamResponseBody interface {
 }
 
 type DescribeStreamResponseBody struct {
+	// The application to which the stream belongs.
+	//
 	// example:
 	//
 	// live
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
+	// The time when the stream was created.
+	//
 	// example:
 	//
 	// 2019-02-28T17:00:17Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The ID of the device to which the stream belongs.
+	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Indicates whether the stream is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The ID of the group to which the stream belongs.
+	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The height of the video stream resolution.
+	//
 	// example:
 	//
 	// 720
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The stream ID.
+	//
 	// example:
 	//
 	// 323*****997-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the stream.
+	//
 	// example:
 	//
 	// 31000000*****0000002
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The streaming domain to which the stream belongs.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
+	// The protocol of the stream.
+	//
 	// example:
 	//
 	// gb28181
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ingest domain to which the stream belongs.
+	//
 	// example:
 	//
 	// demo.aliyundoc.com
 	PushDomain *string `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the stream. Valid values:
+	//
+	// - on (online)
+	//
+	// - off (offline)
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The width of the video stream resolution.
+	//
 	// example:
 	//
 	// 1280

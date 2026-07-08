@@ -76,116 +76,213 @@ type iDescribeDeviceResponseBody interface {
 }
 
 type DescribeDeviceResponseBody struct {
+	// Subscribed GB alarm method. Valid values:
+	//
+	// - 0 (all)
+	//
+	// - 5 (video alarm)
+	//
+	// - 7 (other alarms)
+	//
+	// > 	- An empty value means no subscription.
+	//
+	// >
+	//
+	// > 	- Multiple values are supported, separated by commas (,).
+	//
 	// example:
 	//
 	// 5
 	AlarmMethod   *string `json:"AlarmMethod,omitempty" xml:"AlarmMethod,omitempty"`
 	AutoDirectory *bool   `json:"AutoDirectory,omitempty" xml:"AutoDirectory,omitempty"`
+	// Indicates whether device location subscription is enabled.
+	//
 	// example:
 	//
 	// false
 	AutoPos *bool `json:"AutoPos,omitempty" xml:"AutoPos,omitempty"`
+	// Automatically start the stream.
+	//
 	// example:
 	//
 	// false
 	AutoStart *bool `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
+	// Channel synchronization time.
+	//
 	// example:
 	//
 	// 2019-02-28T17:01:17Z
 	ChannelSyncTime *string `json:"ChannelSyncTime,omitempty" xml:"ChannelSyncTime,omitempty"`
+	// Device creation time.
+	//
 	// example:
 	//
 	// 2019-02-28T17:00:17Z
-	CreatedTime *string                              `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Description *string                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	Directory   *DescribeDeviceResponseBodyDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Device description.
+	//
+	// example:
+	//
+	// xxx路口摄像头
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Directory information.
+	Directory *DescribeDeviceResponseBodyDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	// Directory ID.
+	//
 	// example:
 	//
 	// 3238848****092994-cn-qingdao
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// Device serial number.
+	//
 	// example:
 	//
 	// 7D0*****4C0
 	Dsn *string `json:"Dsn,omitempty" xml:"Dsn,omitempty"`
+	// Whether the device is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// GB device ID.
+	//
+	// > This applies only to GB protocols.
+	//
 	// example:
 	//
 	// 31000000****00000002
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	// Space ID to which the device belongs.
+	//
 	// example:
 	//
 	// 3238848****092994-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Device ID.
+	//
 	// example:
 	//
 	// 3238848****092996-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Device IP address.
+	//
 	// example:
 	//
 	// 10.10.10.10
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// Device latitude.
+	//
 	// example:
 	//
 	// 119.20
 	Latitude *string `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	// Device longitude.
+	//
 	// example:
 	//
 	// 45.00
 	Longitude *string `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Device name.
+	//
+	// example:
+	//
+	// xxx路口摄像头
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Other device parameters.
+	//
 	// example:
 	//
 	// {}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// Parent device ID. For example, the platform ID to which a camera belongs.
+	//
 	// example:
 	//
 	// 3238848****092995-cn-qingdao
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// Device password.
+	//
 	// example:
 	//
 	// admin
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Device port.
+	//
 	// example:
 	//
 	// 8080
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Position subscription interval, in seconds.
+	//
 	// example:
 	//
 	// 300
 	PosInterval *int64 `json:"PosInterval,omitempty" xml:"PosInterval,omitempty"`
+	// Device registration protocol.
+	//
 	// example:
 	//
 	// gb28181
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Device registration time.
+	//
 	// example:
 	//
 	// 2019-02-28T17:00:17Z
 	RegisteredTime *string `json:"RegisteredTime,omitempty" xml:"RegisteredTime,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Stats     *DescribeDeviceResponseBodyStats `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Device stream statistics.
+	Stats *DescribeDeviceResponseBodyStats `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
+	// Device status. Valid values:
+	//
+	// - on (online)
+	//
+	// - off (offline)
+	//
+	// - failed (locked)
+	//
+	// - new (unregistered)
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Device type. Valid values:
+	//
+	// - ipc (camera)
+	//
+	// - platform (platform)
+	//
+	// - ied (intelligent device)
+	//
 	// example:
 	//
 	// ipc
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Stream URL on the device.
+	//
 	// example:
 	//
 	// rtmp://xxx/xxx
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Device username.
+	//
 	// example:
 	//
 	// admin
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	Vendor   *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// Device vendor.
+	//
+	// example:
+	//
+	// 公司A
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s DescribeDeviceResponseBody) String() string {
@@ -499,20 +596,38 @@ func (s *DescribeDeviceResponseBody) Validate() error {
 }
 
 type DescribeDeviceResponseBodyDirectory struct {
+	// Directory creation time.
+	//
 	// example:
 	//
 	// 2019-02-28T17:00:17Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Directory description.
+	//
+	// example:
+	//
+	// 目录1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Space ID to which the directory belongs.
+	//
 	// example:
 	//
 	// 3238848****092994-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Directory ID.
+	//
 	// example:
 	//
 	// 3238848****092994-cn-qingdao
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Directory name.
+	//
+	// example:
+	//
+	// 目录1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Parent directory ID.
+	//
 	// example:
 	//
 	// 3238848****092995-cn-qingdao
@@ -586,22 +701,32 @@ func (s *DescribeDeviceResponseBodyDirectory) Validate() error {
 }
 
 type DescribeDeviceResponseBodyStats struct {
+	// Number of channels.
+	//
 	// example:
 	//
 	// 1
 	ChannelNum *int64 `json:"ChannelNum,omitempty" xml:"ChannelNum,omitempty"`
+	// Number of failed streams.
+	//
 	// example:
 	//
 	// 1
 	FailedNum *int64 `json:"FailedNum,omitempty" xml:"FailedNum,omitempty"`
+	// Number of offline streams.
+	//
 	// example:
 	//
 	// 1
 	OfflineNum *int64 `json:"OfflineNum,omitempty" xml:"OfflineNum,omitempty"`
+	// Number of online streams.
+	//
 	// example:
 	//
 	// 1
 	OnlineNum *int64 `json:"OnlineNum,omitempty" xml:"OnlineNum,omitempty"`
+	// Number of streams.
+	//
 	// example:
 	//
 	// 1

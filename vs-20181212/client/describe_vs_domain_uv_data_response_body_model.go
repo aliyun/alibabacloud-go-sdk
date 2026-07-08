@@ -24,22 +24,32 @@ type iDescribeVsDomainUvDataResponseBody interface {
 }
 
 type DescribeVsDomainUvDataResponseBody struct {
+	// The time interval between data records. Unit: seconds. This is a static field with a value of 3600, which indicates 1 hour.
+	//
 	// example:
 	//
 	// 3600
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// The domain name of Visual Edge Computing Service.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end of the time range.
+	//
 	// example:
 	//
 	// 2015-11-30T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The beginning of the time range.
+	//
 	// example:
 	//
 	// 2015-11-29T00:00:00Z

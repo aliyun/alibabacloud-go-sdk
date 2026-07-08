@@ -17,6 +17,8 @@ type iDescribeVsUpPeakPublishStreamDataResponseBody interface {
 
 type DescribeVsUpPeakPublishStreamDataResponseBody struct {
 	DescribeVsUpPeakPublishStreamDatas *DescribeVsUpPeakPublishStreamDataResponseBodyDescribeVsUpPeakPublishStreamDatas `json:"DescribeVsUpPeakPublishStreamDatas,omitempty" xml:"DescribeVsUpPeakPublishStreamDatas,omitempty" type:"Struct"`
+	// ID of the request.
+	//
 	// example:
 	//
 	// 27A3C548-A699-48F9-97CD-F35D81075AF3

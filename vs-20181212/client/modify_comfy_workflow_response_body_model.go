@@ -28,28 +28,50 @@ type iModifyComfyWorkflowResponseBody interface {
 }
 
 type ModifyComfyWorkflowResponseBody struct {
+	// The error code. This parameter is returned only if the request fails.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-05-07T02:27:06Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The workflow description.
+	//
+	// example:
+	//
+	// 这是一个图生视频的工作流
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The returned message. This parameter provides error details if the request fails.
+	//
 	// example:
 	//
 	// conn failed!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The workflow name.
+	//
+	// example:
+	//
+	// 图生视频工作流示例
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2024-05-07T02:27:06Z
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The workflow ID.
+	//
 	// example:
 	//
 	// wf_adb32aed-ccdc-42ae-b4d4-a21181ac8a5f

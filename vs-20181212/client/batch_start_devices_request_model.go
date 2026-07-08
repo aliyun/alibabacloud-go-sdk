@@ -16,6 +16,8 @@ type iBatchStartDevicesRequest interface {
 }
 
 type BatchStartDevicesRequest struct {
+	// Device ID. Separate multiple IDs with commas.
+	//
 	// This parameter is required.
 	//
 	// example:

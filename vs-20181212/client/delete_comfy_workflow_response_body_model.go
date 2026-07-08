@@ -18,10 +18,14 @@ type iDeleteComfyWorkflowResponseBody interface {
 }
 
 type DeleteComfyWorkflowResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success

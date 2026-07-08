@@ -14,6 +14,8 @@ type iModifyDeviceCaptureResponseBody interface {
 }
 
 type ModifyDeviceCaptureResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

@@ -16,10 +16,14 @@ type iCreateRenderingDataPackageResponseBody interface {
 }
 
 type CreateRenderingDataPackageResponseBody struct {
+	// Cloud application service data pack ID
+	//
 	// example:
 	//
 	// dp-9f8c57355d224ad7beaf95e145f22111
 	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

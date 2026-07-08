@@ -16,7 +16,10 @@ type iRefreshRenderingInstanceStreamingRequest interface {
 }
 
 type RefreshRenderingInstanceStreamingRequest struct {
+	// Client information.
 	ClientInfo *RefreshRenderingInstanceStreamingRequestClientInfo `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty" type:"Struct"`
+	// Cloud application service instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -61,10 +64,14 @@ func (s *RefreshRenderingInstanceStreamingRequest) Validate() error {
 }
 
 type RefreshRenderingInstanceStreamingRequestClientInfo struct {
+	// Client IP address.
+	//
 	// example:
 	//
 	// 172.21.128.110
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// Indicates if the client is new.
+	//
 	// example:
 	//
 	// true

@@ -22,22 +22,32 @@ type iCreateGroupResponseBody interface {
 }
 
 type CreateGroupResponseBody struct {
+	// National standard ID associated with the workspace. (Applies only to workspaces using national standard ingest.)
+	//
 	// example:
 	//
 	// 31000000****00000001
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	// IP address of the national standard signaling gateway server associated with the workspace. (Applies only to workspaces using national standard ingest.)
+	//
 	// example:
 	//
 	// 10.10.10.10
 	GbIp *string `json:"GbIp,omitempty" xml:"GbIp,omitempty"`
+	// National standard signaling server port provided by the workspace. (Applies only to workspaces using national standard ingest.)
+	//
 	// example:
 	//
 	// 5060
 	GbPort *int64 `json:"GbPort,omitempty" xml:"GbPort,omitempty"`
+	// Workspace ID
+	//
 	// example:
 	//
 	// 33763****77224964-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

@@ -22,23 +22,57 @@ type iUploadPublicKeyRequest interface {
 }
 
 type UploadPublicKeyRequest struct {
+	// Base64-encoded public key content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// verify_dffeb6610035dcb77b413a59c3*****
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Description of the public key.
+	//
+	// example:
+	//
+	// 测试使用
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Group for the public key. Used for public key management.
+	//
+	// 1. Length: 0 to 255 characters.
+	//
+	// 2. Valid characters: lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+	//
+	// 3. First character must be a letter or digit.
+	//
 	// example:
 	//
 	// g-test
 	KeyGroup *string `json:"KeyGroup,omitempty" xml:"KeyGroup,omitempty"`
+	// Name of the public key. Must be unique.
+	//
+	// 1. Length: 8 to 255 characters.
+	//
+	// 2. Valid characters: lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+	//
+	// 3. First character must be a letter or digit.
+	//
+	// 4. Prefix cannot be group-.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mykey-v1.0
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// Type of the public key. Valid values:
+	//
+	// - **adb**: ADB key.
+	//
+	// - **ssh**: SSH key.
+	//
+	// example:
+	//
+	// ssh
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
 }
 

@@ -16,10 +16,14 @@ type iModifyDirectoryResponseBody interface {
 }
 
 type ModifyDirectoryResponseBody struct {
+	// The ID of the directory.
+	//
 	// example:
 	//
 	// 399*****488-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

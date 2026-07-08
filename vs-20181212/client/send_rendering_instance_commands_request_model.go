@@ -20,20 +20,44 @@ type iSendRenderingInstanceCommandsRequest interface {
 }
 
 type SendRenderingInstanceCommandsRequest struct {
+	// A shell command string. Enter multiple commands separated by semicolons (;) or line feeds.
+	//
+	// - Dangerous commands such as rm and reboot are disabled.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// date;ls -l /tmp
 	Commands *string `json:"Commands,omitempty" xml:"Commands,omitempty"`
-	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The response pattern for the command. Valid values:
+	//
+	// 1. Sync: The response is returned synchronously. This is the default value.
+	//
+	// 2. Async: The response is returned asynchronously.
+	//
+	// example:
+	//
+	// Async
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The ID of the cloud application service instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	Timeout             *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The timeout period for command execution, in seconds. The value range depends on the Mode parameter:
+	//
+	// 1. If Mode is set to Sync, the value range is 0 to 30. The default value is 30.
+	//
+	// 2. If Mode is set to Async, the value range is 0 to 3600. The default value is 300.
+	//
+	// example:
+	//
+	// 60
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s SendRenderingInstanceCommandsRequest) String() string {

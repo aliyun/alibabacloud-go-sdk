@@ -18,14 +18,20 @@ type iDescribeComfyUserDatasRequest interface {
 }
 
 type DescribeComfyUserDatasRequest struct {
+	// The name of the file to query, or the folder to query. For a folder, provide the path ending with a forward slash (/).
+	//
 	// example:
 	//
 	// myfile
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The page number of the list to query.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20

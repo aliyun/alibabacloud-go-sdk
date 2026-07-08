@@ -18,12 +18,16 @@ type iBindDirectoryRequest interface {
 }
 
 type BindDirectoryRequest struct {
+	// The device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The folder ID.
+	//
 	// This parameter is required.
 	//
 	// example:

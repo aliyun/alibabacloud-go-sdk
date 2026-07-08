@@ -18,11 +18,16 @@ type iListRenderingProjectInstancesResponseBody interface {
 }
 
 type ListRenderingProjectInstancesResponseBody struct {
+	// List of cloud application service instances
 	RenderingInstances []*ListRenderingProjectInstancesResponseBodyRenderingInstances `json:"RenderingInstances,omitempty" xml:"RenderingInstances,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of cloud application service instances
+	//
 	// example:
 	//
 	// 8
@@ -78,15 +83,20 @@ func (s *ListRenderingProjectInstancesResponseBody) Validate() error {
 }
 
 type ListRenderingProjectInstancesResponseBodyRenderingInstances struct {
+	// Time when the instance was associated with the project
+	//
 	// example:
 	//
 	// 2024-09-11T18:19:04+08:00
 	AssociationTime *string `json:"AssociationTime,omitempty" xml:"AssociationTime,omitempty"`
+	// Cloud application service instance
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
-	RenderingInstanceId *string                                                               `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	StateInfo           *ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo `json:"StateInfo,omitempty" xml:"StateInfo,omitempty" type:"Struct"`
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// Status information for the project instance
+	StateInfo *ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo `json:"StateInfo,omitempty" xml:"StateInfo,omitempty" type:"Struct"`
 }
 
 func (s ListRenderingProjectInstancesResponseBodyRenderingInstances) String() string {
@@ -134,11 +144,20 @@ func (s *ListRenderingProjectInstancesResponseBodyRenderingInstances) Validate()
 }
 
 type ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo struct {
+	// Description of the current status
+	//
+	// example:
+	//
+	// 正在会话中
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Instance status
+	//
 	// example:
 	//
 	// InUse
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Time when the status was last updated
+	//
 	// example:
 	//
 	// 2024-11-11T18:19:04+08:00

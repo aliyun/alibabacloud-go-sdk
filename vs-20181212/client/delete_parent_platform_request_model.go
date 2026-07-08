@@ -16,6 +16,8 @@ type iDeleteParentPlatformRequest interface {
 }
 
 type DeleteParentPlatformRequest struct {
+	// The ID of the parent platform.
+	//
 	// This parameter is required.
 	//
 	// example:

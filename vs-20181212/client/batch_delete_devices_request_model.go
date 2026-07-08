@@ -16,6 +16,8 @@ type iBatchDeleteDevicesRequest interface {
 }
 
 type BatchDeleteDevicesRequest struct {
+	// Device ID. Separate multiple values with commas.
+	//
 	// This parameter is required.
 	//
 	// example:

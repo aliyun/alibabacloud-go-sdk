@@ -29,33 +29,51 @@ type iUpdateVsPullStreamInfoConfigRequest interface {
 
 type UpdateVsPullStreamInfoConfigRequest struct {
 	Always *string `json:"Always,omitempty" xml:"Always,omitempty"`
+	// The name of the application to which the live stream belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Your stream pulling domain.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The end time of stream pulling.
+	//
+	// > UTC time format. The interval between StartTime and EndTime must be within 7 days, and EndTime must be later than the current time.
+	//
 	// example:
 	//
 	// 2018-12-10T18:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The origin server of your live stream.
+	//
+	// > Supports multiple values, separated by English semicolons (;).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// up.xxx.com.cn
 	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// The start time of stream pulling.
+	//
+	// > UTC time format. The interval between StartTime and EndTime must be within 7 days.
+	//
 	// example:
 	//
 	// 2021-12-10T10:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the live stream.
+	//
 	// This parameter is required.
 	//
 	// example:

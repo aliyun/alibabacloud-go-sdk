@@ -14,6 +14,8 @@ type iDescribeComfyProductionDownloadUrlRequest interface {
 }
 
 type DescribeComfyProductionDownloadUrlRequest struct {
+	// The ID of the production.
+	//
 	// This parameter is required.
 	//
 	// example:

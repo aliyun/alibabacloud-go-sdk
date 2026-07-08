@@ -24,6 +24,8 @@ type iDescribeParentPlatformDevicesRequest interface {
 }
 
 type DescribeParentPlatformDevicesRequest struct {
+	// Query by parent platform ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31,18 +33,30 @@ type DescribeParentPlatformDevicesRequest struct {
 	// 359*****374-cn-qingdao
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Sort by the specified field. Sorted by id by default.
+	//
 	// example:
 	//
 	// id
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Sort order. Ascending by default. Valid values:
+	//
+	// - asc (ascending)
+	//
+	// - desc (descending)
+	//
 	// example:
 	//
 	// asc

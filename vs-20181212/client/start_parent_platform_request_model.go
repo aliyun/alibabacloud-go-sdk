@@ -16,6 +16,8 @@ type iStartParentPlatformRequest interface {
 }
 
 type StartParentPlatformRequest struct {
+	// The ID of the parent platform.
+	//
 	// This parameter is required.
 	//
 	// example:

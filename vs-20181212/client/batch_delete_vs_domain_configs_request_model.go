@@ -18,12 +18,16 @@ type iBatchDeleteVsDomainConfigsRequest interface {
 }
 
 type BatchDeleteVsDomainConfigsRequest struct {
+	// The accelerated domain names. Separate multiple domain names with commas.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
+	// The feature names. Separate multiple features with commas.
+	//
 	// This parameter is required.
 	//
 	// example:

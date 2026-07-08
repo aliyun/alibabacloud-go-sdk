@@ -16,7 +16,10 @@ type iDeleteRenderingInstanceConfigurationShrinkRequest interface {
 }
 
 type DeleteRenderingInstanceConfigurationShrinkRequest struct {
+	// Configuration content. Purge all configured modules by default.
 	ConfigurationShrink *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	// Cloud application service instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

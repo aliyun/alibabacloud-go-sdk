@@ -16,6 +16,8 @@ type iDescribeStreamRequest interface {
 }
 
 type DescribeStreamRequest struct {
+	// The stream ID.
+	//
 	// This parameter is required.
 	//
 	// example:

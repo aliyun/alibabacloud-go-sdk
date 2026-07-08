@@ -21,8 +21,15 @@ type ResetRenderingInstanceRequest struct {
 	// example:
 	//
 	// Reset
-	ActionName    *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
+	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
+	// Data baseline ID
+	//
+	// example:
+	//
+	// dp-449ea3d16c0841b8bf33ec5bbc86a152
 	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+	// Service instance ID
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,22 +22,32 @@ type iUnbindTemplateResponseBody interface {
 }
 
 type UnbindTemplateResponseBody struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// 323*****994-cn-qingdao
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the instance.
+	//
 	// example:
 	//
 	// group
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the template.
+	//
 	// example:
 	//
 	// 323*****998-cn-qingdao
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The type of the template.
+	//
 	// example:
 	//
 	// record

@@ -18,14 +18,22 @@ type iDescribeStreamURLResponseBody interface {
 }
 
 type DescribeStreamURLResponseBody struct {
+	// The time when the URL expires.<br>
+	//
+	// A UNIX timestamp. Unit: seconds.<br>
+	//
 	// example:
 	//
 	// 1557977029
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The URL of the stream.
+	//
 	// example:
 	//
 	// rtmp://demo.aliyundoc.com/live/310101*****7542007?auth_key=1639130258-0-0-b2b04fe85ece6*****a6b1a42bc7e

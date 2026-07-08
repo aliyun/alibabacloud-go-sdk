@@ -20,12 +20,16 @@ type iBindPurchasedDeviceRequest interface {
 }
 
 type BindPurchasedDeviceRequest struct {
+	// The device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3939*****6580539-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The space ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33,6 +37,8 @@ type BindPurchasedDeviceRequest struct {
 	// 3484*****8732174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region to which the space belongs.
+	//
 	// This parameter is required.
 	//
 	// example:

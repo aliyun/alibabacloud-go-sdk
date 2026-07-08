@@ -24,23 +24,34 @@ type iDescribeGroupsResponseBody interface {
 }
 
 type DescribeGroupsResponseBody struct {
+	// List of groups.
 	Groups []*DescribeGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 10
 	PageCount *int64 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// Page number.
+	//
 	// example:
 	//
 	// 5
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of groups.
+	//
 	// example:
 	//
 	// 200
@@ -123,71 +134,124 @@ func (s *DescribeGroupsResponseBody) Validate() error {
 }
 
 type DescribeGroupsResponseBodyGroups struct {
+	// Alias for the group ID.
+	//
 	// example:
 	//
 	// 337639*****24964-cn-qingdao
 	AliasId *string `json:"AliasId,omitempty" xml:"AliasId,omitempty"`
+	// Application name used by the group.
+	//
 	// example:
 	//
 	// live
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
+	// Callback URL for device status updates in the group.
+	//
 	// example:
 	//
 	// http://example.com/callback
 	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	// Time when the group was created.
+	//
 	// example:
 	//
 	// 2019-02-28T17:00:17Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Group description.
+	//
+	// example:
+	//
+	// 测试视图计算
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether the group is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// GB ID provided by the group.
+	//
+	// > This applies only to groups that use the GB protocol.
+	//
 	// example:
 	//
 	// 31000000000000000001
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	// GB signaling server IP address provided by the group.
+	//
+	// > This applies only to groups that use the GB protocol.
+	//
 	// example:
 	//
 	// 10.10.10.10
 	GbIp *string `json:"GbIp,omitempty" xml:"GbIp,omitempty"`
+	// GB signaling server port associated with the group.
+	//
+	// > This applies only to groups that use the GB protocol.
+	//
 	// example:
 	//
 	// 5060
 	GbPort     *int64    `json:"GbPort,omitempty" xml:"GbPort,omitempty"`
 	GbTcpPorts []*string `json:"GbTcpPorts,omitempty" xml:"GbTcpPorts,omitempty" type:"Repeated"`
 	GbUdpPorts []*string `json:"GbUdpPorts,omitempty" xml:"GbUdpPorts,omitempty" type:"Repeated"`
+	// Group ID.
+	//
 	// example:
 	//
 	// 33763950877224964-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Ingest protocol used by the group.
+	//
 	// example:
 	//
 	// gb28181
 	InProtocol *string `json:"InProtocol,omitempty" xml:"InProtocol,omitempty"`
+	// Whether on-demand stream pulling is enabled.
+	//
 	// example:
 	//
 	// false
-	LazyPull *bool   `json:"LazyPull,omitempty" xml:"LazyPull,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	LazyPull *bool `json:"LazyPull,omitempty" xml:"LazyPull,omitempty"`
+	// Group name.
+	//
+	// example:
+	//
+	// 我的空间
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Playback protocol used by the group.
+	//
 	// example:
 	//
 	// rtmp,flv,hls
 	OutProtocol *string `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
+	// Streaming domain used by the group.
+	//
 	// example:
 	//
 	// demo.aliyundoc.com
 	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
+	// Ingest domain used by the group.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	PushDomain *string `json:"PushDomain,omitempty" xml:"PushDomain,omitempty"`
+	// The region where the space is located. This region serves as the service center.
+	//
 	// example:
 	//
 	// cn-qingdao
-	Region *string                                `json:"Region,omitempty" xml:"Region,omitempty"`
-	Stats  *DescribeGroupsResponseBodyGroupsStats `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Device statistics for the group.
+	Stats *DescribeGroupsResponseBodyGroupsStats `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
+	// Group status. Valid values:
+	//
+	// - on (enabled)
+	//
+	// - off (disabled)
+	//
 	// example:
 	//
 	// on
@@ -401,18 +465,26 @@ func (s *DescribeGroupsResponseBodyGroups) Validate() error {
 }
 
 type DescribeGroupsResponseBodyGroupsStats struct {
+	// Total number of devices in the group.
+	//
 	// example:
 	//
 	// 200
 	DeviceNum *int64 `json:"DeviceNum,omitempty" xml:"DeviceNum,omitempty"`
+	// Number of intelligent devices in the group.
+	//
 	// example:
 	//
 	// 0
 	IedNum *int64 `json:"IedNum,omitempty" xml:"IedNum,omitempty"`
+	// Number of cameras in the group.
+	//
 	// example:
 	//
 	// 200
 	IpcNum *int64 `json:"IpcNum,omitempty" xml:"IpcNum,omitempty"`
+	// Number of platforms in the group.
+	//
 	// example:
 	//
 	// 0

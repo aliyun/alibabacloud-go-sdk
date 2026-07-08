@@ -16,10 +16,14 @@ type iUnlockDeviceResponseBody interface {
 }
 
 type UnlockDeviceResponseBody struct {
+	// Device ID
+	//
 	// example:
 	//
 	// 323884****9092996
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Request ID for this operation.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

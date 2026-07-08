@@ -54,79 +54,161 @@ type iModifyTemplateRequest interface {
 }
 
 type ModifyTemplateRequest struct {
+	// The callback URL that is used after the template is executed.
+	//
 	// example:
 	//
 	// http://example.com/callback
-	Callback    *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	// The description of the template.
+	//
+	// example:
+	//
+	// 录制模板
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The file format for storage. Separate multiple values with commas. Valid values:
+	//
+	// - mp4
+	//
+	// - flv
+	//
+	// - hls
+	//
+	// > Recording in FLV and MP4 formats is not supported in the China (Qingdao) region.
+	//
 	// example:
 	//
 	// hls
 	FileFormat *string `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
+	// The storage path for FLV files. For information about the format, see the description of the Mp4 parameter.
+	//
 	// example:
 	//
 	// osspath/record/{StreamName}/{EscapedStartTime}_{EscapedEndTime}
 	Flv *string `json:"Flv,omitempty" xml:"Flv,omitempty"`
+	// The storage path for HLS M3U8 files. For information about the format, see the description of the Mp4 parameter.
+	//
 	// example:
 	//
 	// osspath/record/{StreamName}/{EscapedStartTime}_{EscapedEndTime}
 	HlsM3u8 *string `json:"HlsM3u8,omitempty" xml:"HlsM3u8,omitempty"`
+	// The storage path for HLS TS files.
+	//
+	// - The path supports variables such as {AppName}, {StreamName}, {UnixTimestamp}, and {Sequence}.
+	//
+	// - You must include the {UnixTimestamp} and {Sequence} variables.
+	//
 	// example:
 	//
 	// osspath/record/{StreamName}/{UnixTimestamp}_{Sequence}
 	HlsTs *string `json:"HlsTs,omitempty" xml:"HlsTs,omitempty"`
+	// The ID of the template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 323*****998-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The operation interval, in seconds.
+	//
 	// example:
 	//
 	// 3600
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The storage path for JPG files. This path is used for on-demand snapshots.
+	//
+	// - Only JPG images are supported.
+	//
+	// - The path supports variables such as {AppName}, {StreamName}, {UnixTimestamp}, and {Sequence}.
+	//
+	// - You must include either {UnixTimestamp} or {Sequence}.
+	//
 	// example:
 	//
 	// osspath/snapshot/{AppName}/{StreamName}/{UnixTimestamp}_ondemand.jpg
 	JpgOnDemand *string `json:"JpgOnDemand,omitempty" xml:"JpgOnDemand,omitempty"`
+	// The storage path for JPG files. This path is used to overwrite snapshots.
+	//
+	// - Only JPG images are supported.
+	//
+	// - The path supports variables such as {AppName} and {StreamName}.
+	//
 	// example:
 	//
 	// osspath/snapshot/{AppName}/{StreamName}.jpg
 	JpgOverwrite *string `json:"JpgOverwrite,omitempty" xml:"JpgOverwrite,omitempty"`
+	// The storage path for JPG files. This path is used for sequence snapshots.
+	//
+	// - Only JPG images are supported.
+	//
+	// - The path supports variables such as {AppName}, {StreamName}, {UnixTimestamp}, and {Sequence}.
+	//
+	// - You must include either {UnixTimestamp} or {Sequence}.
+	//
 	// example:
 	//
 	// osspath/snapshot/{AppName}/{StreamName}/{UnixTimestamp}.jpg
 	JpgSequence *string `json:"JpgSequence,omitempty" xml:"JpgSequence,omitempty"`
+	// The storage path for MP4 files.
+	//
+	// - The path supports variables such as {AppName}, {StreamName}, {Sequence}, {EscapedStartTime}, and {EscapedEndTime}.
+	//
+	// - You must include {EscapedStartTime} and {EscapedEndTime}.
+	//
 	// example:
 	//
 	// osspath/record/{StreamName}/{EscapedStartTime}_{EscapedEndTime}
-	Mp4  *string `json:"Mp4,omitempty" xml:"Mp4,omitempty"`
+	Mp4 *string `json:"Mp4,omitempty" xml:"Mp4,omitempty"`
+	// The name of the template.
+	//
+	// example:
+	//
+	// 录制模板
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The OSS bucket.
+	//
 	// example:
 	//
 	// bucketname
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The domain name of the OSS bucket.
+	//
 	// example:
 	//
 	// oss-cn-qingdao.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	// The prefix of the OSS file.
+	//
 	// example:
 	//
 	// oss-prefix
 	OssFilePrefix *string `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region where the Object Storage Service (OSS) bucket is located.
+	//
 	// example:
 	//
 	// cn-qingdao
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The retention period for time shifting, in days.
+	//
 	// example:
 	//
 	// 3
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// An array of transcoding configurations of the TransConfig type, in a JSON-formatted string.
+	//
 	// example:
 	//
 	// [{"Fps":25,"Gop":50,"Height":720,"VideoCodec":"h264","Width":1280,"Name":"sd","VideoBitrate":800}]
 	TransConfigsJSON *string `json:"TransConfigsJSON,omitempty" xml:"TransConfigsJSON,omitempty"`
+	// The trigger type of the template. The default value is auto. Valid values:
+	//
+	// - auto (automatic)
+	//
+	// - ondemand (on-demand)
+	//
 	// example:
 	//
 	// auto

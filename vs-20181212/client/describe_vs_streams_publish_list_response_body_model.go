@@ -24,23 +24,33 @@ type iDescribeVsStreamsPublishListResponseBody interface {
 }
 
 type DescribeVsStreamsPublishListResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 3000
 	PageSize    *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PublishInfo *DescribeVsStreamsPublishListResponseBodyPublishInfo `json:"PublishInfo,omitempty" xml:"PublishInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 119F7639-4646-51A4-B6C1-300D391C0104
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of matching entries.
+	//
 	// example:
 	//
 	// 200
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1

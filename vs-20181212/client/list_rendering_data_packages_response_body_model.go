@@ -18,6 +18,7 @@ type iListRenderingDataPackagesResponseBody interface {
 }
 
 type ListRenderingDataPackagesResponseBody struct {
+	// A list of data packages for the cloud application service.
 	DataPackages []*ListRenderingDataPackagesResponseBodyDataPackages `json:"DataPackages,omitempty" xml:"DataPackages,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -25,6 +26,8 @@ type ListRenderingDataPackagesResponseBody struct {
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of Graphic Computing Service instances.
+	//
 	// example:
 	//
 	// 100
@@ -80,31 +83,62 @@ func (s *ListRenderingDataPackagesResponseBody) Validate() error {
 }
 
 type ListRenderingDataPackagesResponseBodyDataPackages struct {
+	// The category. Valid values:
+	//
+	// - Package
+	//
+	// - Baseline
+	//
+	// example:
+	//
+	// Package
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The creation time of the Graphic Computing Service instance.
+	//
 	// example:
 	//
 	// 2024-10-15T10:23:06+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the data pack.
+	//
 	// example:
 	//
 	// dp-449ea3d16c0841b8bf33ec5bbc86a152
 	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+	// Remarks.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the Graphic Computing Service instance.
+	//
 	// example:
 	//
 	// render-342012a227dc4ddf91f024639e43051a
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// The size of the data pack.
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The status of the data pack. Valid values:
+	//
+	// available
+	//
+	// packing
+	//
+	// failed
+	//
+	// bonded
+	//
 	// example:
 	//
 	// available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2024-12-06T02:03:59Z

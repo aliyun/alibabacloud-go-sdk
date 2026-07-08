@@ -16,10 +16,14 @@ type iModifyTemplateResponseBody interface {
 }
 
 type ModifyTemplateResponseBody struct {
+	// The ID of the template.
+	//
 	// example:
 	//
 	// 323*****998-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

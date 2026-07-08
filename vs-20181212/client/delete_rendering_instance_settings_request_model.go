@@ -16,7 +16,10 @@ type iDeleteRenderingInstanceSettingsRequest interface {
 }
 
 type DeleteRenderingInstanceSettingsRequest struct {
+	// List of attribute names.
 	AttributeNames []*string `json:"AttributeNames,omitempty" xml:"AttributeNames,omitempty" type:"Repeated"`
+	// ID of the cloud application service instance.
+	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111

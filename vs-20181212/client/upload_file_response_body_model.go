@@ -16,10 +16,14 @@ type iUploadFileResponseBody interface {
 }
 
 type UploadFileResponseBody struct {
+	// The ID of the file. This ID is unique for each file.
+	//
 	// example:
 	//
 	// f-1671330gr7934d4771813f7141d28db2f7
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

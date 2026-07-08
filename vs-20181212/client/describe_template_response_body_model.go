@@ -58,85 +58,168 @@ type iDescribeTemplateResponseBody interface {
 }
 
 type DescribeTemplateResponseBody struct {
+	// Callback URL triggered after template execution.
+	//
 	// example:
 	//
 	// http://example.com/callback
 	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	// Template creation time.
+	//
 	// example:
 	//
 	// 2020-12-10T10:00:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Template description.
+	//
+	// example:
+	//
+	// 录制模板
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Storage file format. Separate multiple values with commas. Valid values: mp4, flv, hls, jpg
+	//
 	// example:
 	//
 	// hls
 	FileFormat *string `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
+	// Storage path for FLV files.
+	//
+	// > Applies only to recording templates.
+	//
 	// example:
 	//
 	// osspath/record/{StreamName}/{EscapedStartTime}_{EscapedEndTime}
 	Flv *string `json:"Flv,omitempty" xml:"Flv,omitempty"`
+	// Storage path for HLS .m3u8 files.
+	//
+	// > Applies only to recording templates.
+	//
 	// example:
 	//
 	// osspath/record/{StreamName}/{EscapedStartTime}_{EscapedEndTime}
 	HlsM3u8 *string `json:"HlsM3u8,omitempty" xml:"HlsM3u8,omitempty"`
+	// Storage path for HLS .ts files.
+	//
+	// > Applies only to recording templates.
+	//
 	// example:
 	//
 	// osspath/record/{StreamName}/{UnixTimestamp}_{Sequence}
 	HlsTs *string `json:"HlsTs,omitempty" xml:"HlsTs,omitempty"`
+	// Template ID.
+	//
 	// example:
 	//
 	// 323*****998-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Operation interval, in seconds.
+	//
 	// example:
 	//
 	// 3600
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// Storage path for JPG files used for on-demand snapshots.
+	//
+	// > Applies only to snapshot templates.
+	//
 	// example:
 	//
 	// osspath/snapshot/{AppName}/{StreamName}/{UnixTimestamp}_ondemand.jpg
 	JpgOnDemand *string `json:"JpgOnDemand,omitempty" xml:"JpgOnDemand,omitempty"`
+	// Storage path for JPG files used to overwrite snapshots.
+	//
+	// > Applies only to snapshot templates.
+	//
 	// example:
 	//
 	// osspath/snapshot/{AppName}/{StreamName}.jpg
 	JpgOverwrite *string `json:"JpgOverwrite,omitempty" xml:"JpgOverwrite,omitempty"`
+	// Storage path for JPG files used for sequential snapshots.
+	//
+	// > Applies only to snapshot templates.
+	//
 	// example:
 	//
 	// osspath/snapshot/{AppName}/{StreamName}/{UnixTimestamp}.jpg
 	JpgSequence *string `json:"JpgSequence,omitempty" xml:"JpgSequence,omitempty"`
+	// Storage path for MP4 files.
+	//
+	// > Applies only to recording templates.
+	//
 	// example:
 	//
 	// osspath/record/{StreamName}/{EscapedStartTime}_{EscapedEndTime}
-	Mp4  *string `json:"Mp4,omitempty" xml:"Mp4,omitempty"`
+	Mp4 *string `json:"Mp4,omitempty" xml:"Mp4,omitempty"`
+	// Template name.
+	//
+	// example:
+	//
+	// 录制模板
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// OSS bucket.
+	//
 	// example:
 	//
 	// my_oss_bucket
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// OSS domain name.
+	//
 	// example:
 	//
 	// oss-cn-qingdao.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	// OSS file prefix.
+	//
 	// example:
 	//
 	// oss-prefix
 	OssFilePrefix *string `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
+	// OSS region, which is the service center.
+	//
 	// example:
 	//
 	// cn-qingdao
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Timeshift retention period, in days.
+	//
+	// > Applies only to timeshift templates.
+	//
 	// example:
 	//
 	// 3
-	Retention    *int64                                      `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// List of transcoding configurations.
+	//
+	// > Applies only to transcoding templates.
 	TransConfigs []*DescribeTemplateResponseBodyTransConfigs `json:"TransConfigs,omitempty" xml:"TransConfigs,omitempty" type:"Repeated"`
+	// Template trigger type. Valid values:
+	//
+	// - auto
+	//
+	// - ondemand
+	//
+	// > Applies only to recording templates.
+	//
 	// example:
 	//
 	// auto
 	Trigger *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+	// Template type. Valid values:
+	//
+	// - record
+	//
+	// - snapshot
+	//
+	// - transcode
+	//
+	// - timeshift
+	//
 	// example:
 	//
 	// record
@@ -372,34 +455,50 @@ func (s *DescribeTemplateResponseBody) Validate() error {
 }
 
 type DescribeTemplateResponseBodyTransConfigs struct {
+	// Video frame rate, in fps.
+	//
 	// example:
 	//
 	// 25
 	Fps *int64 `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Video GOP, in frames.
+	//
 	// example:
 	//
 	// 50
 	Gop *int64 `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	// Video height.
+	//
 	// example:
 	//
 	// 720
 	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Transcoding configuration ID.
+	//
 	// example:
 	//
 	// 399*****430-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Transcoding rule name. The name appears as a suffix in the transcoded stream. We recommend using recognizable suffixes such as sd or 200k. Only letters and digits are supported.
+	//
 	// example:
 	//
 	// sd
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Video bitrate, in kbps.
+	//
 	// example:
 	//
 	// 800
 	VideoBitrate *int64 `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	// Video encoding.
+	//
 	// example:
 	//
 	// h264
 	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
+	// Video width.
+	//
 	// example:
 	//
 	// 1280

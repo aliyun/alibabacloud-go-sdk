@@ -14,6 +14,8 @@ type iRebootRenderingServerRequest interface {
 }
 
 type RebootRenderingServerRequest struct {
+	// List of cloud application service instance IDs
+	//
 	// This parameter is required.
 	RenderingInstanceIds []*string `json:"RenderingInstanceIds,omitempty" xml:"RenderingInstanceIds,omitempty" type:"Repeated"`
 }

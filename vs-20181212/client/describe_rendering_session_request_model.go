@@ -18,16 +18,22 @@ type iDescribeRenderingSessionRequest interface {
 }
 
 type DescribeRenderingSessionRequest struct {
+	// Unique ID of the end client. Specify either SessionId or ClientId.
+	//
 	// example:
 	//
 	// d27c89d6-4fe3-4855-a89c-ea721c708b0b
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// Project ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// project-422bc38dfgh5eb44149f135ef76304f63b
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Session ID. Specify either SessionId or ClientId.
+	//
 	// example:
 	//
 	// session-i205217481741918129226

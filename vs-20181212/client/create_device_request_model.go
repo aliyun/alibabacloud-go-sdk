@@ -58,87 +58,158 @@ type iCreateDeviceRequest interface {
 }
 
 type CreateDeviceRequest struct {
+	// GB-compliant alarm method to subscribe to. Valid values:
+	//
+	// - 0 (all)
+	//
+	// - 5 (video alarm)
+	//
+	// - 7 (other alarms)
+	//
+	// > 	- An empty value means no subscription.
+	//
+	// >
+	//
+	// > 	- You can specify multiple values, separated by commas (,).
+	//
 	// example:
 	//
 	// 0
 	AlarmMethod   *string `json:"AlarmMethod,omitempty" xml:"AlarmMethod,omitempty"`
 	AutoDirectory *bool   `json:"AutoDirectory,omitempty" xml:"AutoDirectory,omitempty"`
+	// Whether to enable location subscription for the device. Default value: false.
+	//
 	// example:
 	//
 	// false
 	AutoPos *bool `json:"AutoPos,omitempty" xml:"AutoPos,omitempty"`
+	// Whether to automatically start the stream. Default value: false.
+	//
 	// example:
 	//
 	// false
-	AutoStart   *bool   `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
+	AutoStart *bool `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
+	// Device description.
+	//
+	// example:
+	//
+	// xxx路口摄像头
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// ID of the folder that contains the device.
+	//
 	// example:
 	//
 	// 399*****488-cn-qingdao
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// Device serial number.
+	//
 	// example:
 	//
 	// 7D0*****4C0
 	Dsn *string `json:"Dsn,omitempty" xml:"Dsn,omitempty"`
+	// GB-compliant device ID.
+	//
+	// > This parameter applies only to GB-compliant protocols.
+	//
 	// example:
 	//
 	// 31000000****00000002
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
+	// ID of the space that contains the device.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Device IP address.
+	//
 	// example:
 	//
 	// 10.10.10.10
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The dimension of the device.
+	//
 	// example:
 	//
 	// 119.20
 	Latitude *string `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	// Device longitude.
+	//
 	// example:
 	//
 	// 45.00
 	Longitude *string `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Device name.
+	//
+	// example:
+	//
+	// xxx路口摄像头
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Additional device parameters, formatted as a JSON string.
+	//
 	// example:
 	//
 	// {}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// ID of the parent device. For example, the ID of the platform that hosts the camera.
+	//
 	// example:
 	//
 	// 399*****774-cn-qingdao
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// Device password.
+	//
 	// example:
 	//
 	// admin
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Device port.
+	//
 	// example:
 	//
 	// 8080
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Location subscription interval, in seconds.
+	//
 	// example:
 	//
 	// 300
 	PosInterval *int64 `json:"PosInterval,omitempty" xml:"PosInterval,omitempty"`
+	// Device type. Valid values:
+	//
+	// - ipc (camera)
+	//
+	// - platform (platform)
+	//
+	// - ied (intelligent device)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ipc
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Stream URL on the device.
+	//
 	// example:
 	//
 	// rtmp://xxx/xxx
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Device username.
+	//
 	// example:
 	//
 	// admin
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	Vendor   *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// Device vendor.
+	//
+	// example:
+	//
+	// 公司A
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s CreateDeviceRequest) String() string {

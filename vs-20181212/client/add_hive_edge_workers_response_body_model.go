@@ -22,20 +22,28 @@ type iAddHiveEdgeWorkersResponseBody interface {
 }
 
 type AddHiveEdgeWorkersResponseBody struct {
+	// The number of instances that failed to be added.
+	//
 	// example:
 	//
 	// 0
-	FailedInstanceCount *int32                                           `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
-	FailedInstances     []*AddHiveEdgeWorkersResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
+	FailedInstanceCount *int32 `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
+	// A list of instances that failed to be added.
+	FailedInstances []*AddHiveEdgeWorkersResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxx-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of instances that were successfully added.
+	//
 	// example:
 	//
 	// 5
-	SuccessInstanceCount *int32                                            `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
-	SuccessInstances     []*AddHiveEdgeWorkersResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
+	SuccessInstanceCount *int32 `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
+	// A list of successfully added instances.
+	SuccessInstances []*AddHiveEdgeWorkersResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
 func (s AddHiveEdgeWorkersResponseBody) String() string {
@@ -114,10 +122,14 @@ func (s *AddHiveEdgeWorkersResponseBody) Validate() error {
 }
 
 type AddHiveEdgeWorkersResponseBodyFailedInstances struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// ew-1226d588c69449209ee963161c067b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Error 1062 (23000): Duplicate entry \\"hive-4fbf3928d40e43948b98acdb4fb5aaed-ew-1226d588c69449209ee9631\\" for key \\"PRIMARY\\"
@@ -155,10 +167,14 @@ func (s *AddHiveEdgeWorkersResponseBodyFailedInstances) Validate() error {
 }
 
 type AddHiveEdgeWorkersResponseBodySuccessInstances struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// ew-1226d588c69449209ee963161c067b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A message indicating the result of the operation.
+	//
 	// example:
 	//
 	// SUCCESS

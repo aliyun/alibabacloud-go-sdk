@@ -22,19 +22,27 @@ type iDescribeVsDomainRecordDataRequest interface {
 }
 
 type DescribeVsDomainRecordDataRequest struct {
+	// Visual Edge Computing Service domain name.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// End time of the data range. Must be later than StartTime. Use ISO 8601 notation in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
+	//
 	// example:
 	//
 	// 2021-11-19T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Region information
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Start time of the data range. Use ISO 8601 notation in UTC. Format: YYYY-MM-DDThh:mm:ssZ. Minimum data granularity is 5 minutes. If you omit this parameter, the API returns data from the last 24 hours.
+	//
 	// example:
 	//
 	// 2021-09-29T16:00:00Z

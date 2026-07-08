@@ -16,7 +16,10 @@ type iDescribeVsDomainDetailResponseBody interface {
 }
 
 type DescribeVsDomainDetailResponseBody struct {
+	// Domain configuration details.
 	DomainConfig *DescribeVsDomainDetailResponseBodyDomainConfig `json:"DomainConfig,omitempty" xml:"DomainConfig,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9BEC5E85-C76B-56EF-A922-860EFDB8B64B
@@ -59,39 +62,80 @@ func (s *DescribeVsDomainDetailResponseBody) Validate() error {
 }
 
 type DescribeVsDomainDetailResponseBodyDomainConfig struct {
+	// The CNAME assigned to the Visual Edge Computing Service domain. You must configure your DNS provider to point your domain to this CNAME.
+	//
 	// example:
 	//
 	// example.aliyundoc.com.*****.com
-	Cname       *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// The domain description.
+	//
+	// example:
+	//
+	// 测试使用
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Visual Edge Computing Service domain name.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The status of the Visual Edge Computing Service accelerated domain. Valid values:
+	//
+	// - **online**: Enabled.
+	//
+	// - **offline**: Disabled.
+	//
+	// - **configuring**: Being configured.
+	//
 	// example:
 	//
 	// online
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	// The domain type.
+	//
+	// > Static value: vs
+	//
 	// example:
 	//
 	// vs
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-07-19T10:27:23Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The most recent modification time.
+	//
 	// example:
 	//
 	// 2021-07-19T10:27:23Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The region where the domain is located.
+	//
 	// example:
 	//
 	// cn-qingdao
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Indicates whether HTTPS is enabled. Valid values:
+	//
+	// - **on**: Enabled.
+	//
+	// - **off*	- (default): Disabled.
+	//
 	// example:
 	//
 	// off
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
+	// The acceleration region. Valid values:
+	//
+	// - **domestic**
+	//
+	// - **overseas**
+	//
+	// - **global**
+	//
 	// example:
 	//
 	// domestic

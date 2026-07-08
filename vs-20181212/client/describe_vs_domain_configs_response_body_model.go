@@ -16,7 +16,10 @@ type iDescribeVsDomainConfigsResponseBody interface {
 }
 
 type DescribeVsDomainConfigsResponseBody struct {
+	// Domain name configurations.
 	DomainConfigs []*DescribeVsDomainConfigsResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D94D0E1E-E71B-562D-8C18-969BB3653FBD
@@ -63,15 +66,30 @@ func (s *DescribeVsDomainConfigsResponseBody) Validate() error {
 }
 
 type DescribeVsDomainConfigsResponseBodyDomainConfigs struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 6295
-	ConfigId     *string                                                         `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Each function.
 	FunctionArgs []*DescribeVsDomainConfigsResponseBodyDomainConfigsFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Repeated"`
+	// The function name.
+	//
 	// example:
 	//
 	// aliauth
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// Status. Valid values:
+	//
+	// - success
+	//
+	// - testing
+	//
+	// - failed
+	//
+	// - configuring
+	//
 	// example:
 	//
 	// success
@@ -136,10 +154,14 @@ func (s *DescribeVsDomainConfigsResponseBodyDomainConfigs) Validate() error {
 }
 
 type DescribeVsDomainConfigsResponseBodyDomainConfigsFunctionArgs struct {
+	// The name of the configuration.
+	//
 	// example:
 	//
 	// auth_type
 	ArgName *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
+	// The argument value.
+	//
 	// example:
 	//
 	// req_auth

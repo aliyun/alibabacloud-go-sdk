@@ -16,10 +16,14 @@ type iStopStreamResponseBody interface {
 }
 
 type StopStreamResponseBody struct {
+	// The ID of the stream.
+	//
 	// example:
 	//
 	// 32388487****92997-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID of this operation.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

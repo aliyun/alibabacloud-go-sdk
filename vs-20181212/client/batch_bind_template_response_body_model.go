@@ -16,7 +16,10 @@ type iBatchBindTemplateResponseBody interface {
 }
 
 type BatchBindTemplateResponseBody struct {
+	// Result list.
 	Bindings []*BatchBindTemplateResponseBodyBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
@@ -63,18 +66,28 @@ func (s *BatchBindTemplateResponseBody) Validate() error {
 }
 
 type BatchBindTemplateResponseBodyBindings struct {
+	// Error message.
+	//
+	// > This field exists only when the operation fails.
+	//
 	// example:
 	//
 	// some error
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// 323*****994-cn-qingdao
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance type.
+	//
 	// example:
 	//
 	// group
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// Template ID.
+	//
 	// example:
 	//
 	// 323*****998-cn-qingdao

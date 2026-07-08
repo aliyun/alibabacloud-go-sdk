@@ -20,18 +20,30 @@ type iManageLoginRequest interface {
 }
 
 type ManageLoginRequest struct {
+	// Name of the management action. Valid values:
+	//
+	// 1. open — Activate the public key. This is the default value.
+	//
+	// 2. close — Deactivate the public key.
+	//
 	// example:
 	//
 	// open
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
+	// Name of the public key group. If you do not specify KeyName, all public keys in this group are applied.
+	//
 	// example:
 	//
 	// mygroup
 	KeyGroup *string `json:"KeyGroup,omitempty" xml:"KeyGroup,omitempty"`
+	// Name of the public key. You must specify either KeyName or KeyGroup.
+	//
 	// example:
 	//
 	// mykey
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// ID of the Cloud Application Service instance.
+	//
 	// This parameter is required.
 	//
 	// example:

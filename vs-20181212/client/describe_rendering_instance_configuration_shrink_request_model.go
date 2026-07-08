@@ -16,7 +16,10 @@ type iDescribeRenderingInstanceConfigurationShrinkRequest interface {
 }
 
 type DescribeRenderingInstanceConfigurationShrinkRequest struct {
+	// The configuration to query. By default, the configurations of all modules are returned.
 	ConfigurationShrink *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	// The ID of the cloud application service instance.
+	//
 	// This parameter is required.
 	//
 	// example:

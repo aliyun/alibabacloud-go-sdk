@@ -16,11 +16,14 @@ type iBatchDeleteDevicesResponseBody interface {
 }
 
 type BatchDeleteDevicesResponseBody struct {
+	// The request ID of this task.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*BatchDeleteDevicesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result list.
+	Results []*BatchDeleteDevicesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s BatchDeleteDevicesResponseBody) String() string {
@@ -63,10 +66,14 @@ func (s *BatchDeleteDevicesResponseBody) Validate() error {
 }
 
 type BatchDeleteDevicesResponseBodyResults struct {
+	// Device error message. (Only present if an error occurs)
+	//
 	// example:
 	//
 	// Device not found
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// Device ID.
+	//
 	// example:
 	//
 	// 323884****9092996

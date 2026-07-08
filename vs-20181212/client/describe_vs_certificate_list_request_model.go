@@ -16,6 +16,8 @@ type iDescribeVsCertificateListRequest interface {
 }
 
 type DescribeVsCertificateListRequest struct {
+	// Domain name.
+	//
 	// example:
 	//
 	// example.aliyundoc.com

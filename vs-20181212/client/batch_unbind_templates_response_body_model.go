@@ -16,11 +16,14 @@ type iBatchUnbindTemplatesResponseBody interface {
 }
 
 type BatchUnbindTemplatesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 90B377DF-C874-5BBD-B957-42C4C06AFECE
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*BatchUnbindTemplatesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of results.
+	Results []*BatchUnbindTemplatesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s BatchUnbindTemplatesResponseBody) String() string {
@@ -63,22 +66,34 @@ func (s *BatchUnbindTemplatesResponseBody) Validate() error {
 }
 
 type BatchUnbindTemplatesResponseBodyResults struct {
+	// The error message.
+	//
+	// > Appears only if the operation fails.
+	//
 	// example:
 	//
 	// some error
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 323*****994-cn-qingdao
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance type.
+	//
 	// example:
 	//
 	// group
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 323*****998-cn-qingdao
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template type.
+	//
 	// example:
 	//
 	// snapshot

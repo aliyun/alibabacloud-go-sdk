@@ -18,14 +18,20 @@ type iStartStreamResponseBody interface {
 }
 
 type StartStreamResponseBody struct {
+	// Stream ID.
+	//
 	// example:
 	//
 	// 323*****997-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Stream name.
+	//
 	// example:
 	//
 	// 31000000000000000002
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

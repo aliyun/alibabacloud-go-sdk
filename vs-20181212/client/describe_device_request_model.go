@@ -20,16 +20,22 @@ type iDescribeDeviceRequest interface {
 }
 
 type DescribeDeviceRequest struct {
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3238848****092996-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Return directory information. Default value: false.
+	//
 	// example:
 	//
 	// false
 	IncludeDirectory *bool `json:"IncludeDirectory,omitempty" xml:"IncludeDirectory,omitempty"`
+	// Return stream statistics. Default value: false.
+	//
 	// example:
 	//
 	// false

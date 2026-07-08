@@ -16,6 +16,11 @@ type iDescribeAccountStatRequest interface {
 }
 
 type DescribeAccountStatRequest struct {
+	// Alibaba Cloud account ID.
+	//
+	// example:
+	//
+	// 1165*****601
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }

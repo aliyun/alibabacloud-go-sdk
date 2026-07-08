@@ -18,6 +18,8 @@ type iStopTransferStreamRequest interface {
 }
 
 type StopTransferStreamRequest struct {
+	// The stream ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type StopTransferStreamRequest struct {
 	// 323434****83423432
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the transcoding rule. You must bind a transcoding template first.
+	//
 	// example:
 	//
 	// sd

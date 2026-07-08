@@ -24,6 +24,8 @@ type iResumeVsStreamRequest interface {
 }
 
 type ResumeVsStreamRequest struct {
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31,12 +33,18 @@ type ResumeVsStreamRequest struct {
 	// xxxxApp
 	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	ControlStreamAction *string `json:"ControlStreamAction,omitempty" xml:"ControlStreamAction,omitempty"`
+	// Your accelerated domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The stream type.
+	//
+	// > Only publisher is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -44,6 +52,8 @@ type ResumeVsStreamRequest struct {
 	// publisher
 	LiveStreamType *string `json:"LiveStreamType,omitempty" xml:"LiveStreamType,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The stream name.
+	//
 	// This parameter is required.
 	//
 	// example:

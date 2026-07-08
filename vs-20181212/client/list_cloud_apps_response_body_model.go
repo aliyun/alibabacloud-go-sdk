@@ -22,19 +22,28 @@ type iListCloudAppsResponseBody interface {
 }
 
 type ListCloudAppsResponseBody struct {
+	// List of cloud application information.
 	CloudApps []*ListCloudAppsResponseBodyCloudApps `json:"CloudApps,omitempty" xml:"CloudApps,omitempty" type:"Repeated"`
+	// Page number of the query list.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of rows per page for paged queries.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of matching cloud application entries.
+	//
 	// example:
 	//
 	// 100
@@ -108,40 +117,76 @@ func (s *ListCloudAppsResponseBody) Validate() error {
 }
 
 type ListCloudAppsResponseBodyCloudApps struct {
+	// Application ID.
+	//
 	// example:
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Application name.
+	//
 	// example:
 	//
 	// com.aaa.bbb
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Application version.
+	//
 	// example:
 	//
 	// 1.5.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// Application description.
+	//
 	// example:
 	//
 	// demo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PkgFormat   *string `json:"PkgFormat,omitempty" xml:"PkgFormat,omitempty"`
-	PkgType     *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
+	// Package format.
+	//
+	// example:
+	//
+	// apk
+	PkgFormat *string `json:"PkgFormat,omitempty" xml:"PkgFormat,omitempty"`
+	// Package type: android/win.
+	//
+	// example:
+	//
+	// android
+	PkgType *string `json:"PkgType,omitempty" xml:"PkgType,omitempty"`
+	// Stable patch package ID.
+	//
 	// example:
 	//
 	// patch-7bdf679812484df08a956b73e0b3bdf6
 	StablePatchId *string `json:"StablePatchId,omitempty" xml:"StablePatchId,omitempty"`
+	// The application upload status. Valid values:
+	//
+	// 1. Created
+	//
+	// 2. Doing
+	//
+	// 3. Success: The desired state.
+	//
+	// 4. Failed: The desired state.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Status description.
+	//
 	// example:
 	//
 	// upload success
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
+	// Latest status update time.
+	//
 	// example:
 	//
 	// 2024-05-28T14:48:34+08:00
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Application upload time.
+	//
 	// example:
 	//
 	// 2024-05-28T14:28:14+08:00

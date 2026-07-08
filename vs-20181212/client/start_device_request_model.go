@@ -16,6 +16,8 @@ type iStartDeviceRequest interface {
 }
 
 type StartDeviceRequest struct {
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:

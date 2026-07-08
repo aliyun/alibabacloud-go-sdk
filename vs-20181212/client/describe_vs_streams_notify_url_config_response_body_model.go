@@ -16,7 +16,10 @@ type iDescribeVsStreamsNotifyUrlConfigResponseBody interface {
 }
 
 type DescribeVsStreamsNotifyUrlConfigResponseBody struct {
+	// Configuration information.
 	LiveStreamsNotifyConfig *DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig `json:"LiveStreamsNotifyConfig,omitempty" xml:"LiveStreamsNotifyConfig,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
@@ -61,11 +64,18 @@ func (s *DescribeVsStreamsNotifyUrlConfigResponseBody) Validate() error {
 type DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig struct {
 	AuthKey  *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Your ingest domain.
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	NotifyUrl  *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	// Webhook address.
+	//
+	// example:
+	//
+	// https://example.com/callback
+	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
 }
 
 func (s DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig) String() string {

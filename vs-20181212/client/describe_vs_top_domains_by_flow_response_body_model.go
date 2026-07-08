@@ -24,22 +24,32 @@ type iDescribeVsTopDomainsByFlowResponseBody interface {
 }
 
 type DescribeVsTopDomainsByFlowResponseBody struct {
+	// The total number of domain names under your account.
+	//
 	// example:
 	//
 	// 20
 	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
+	// The total number of **running*	- domain names under your account.
+	//
 	// example:
 	//
 	// 12
 	DomainOnlineCount *int64 `json:"DomainOnlineCount,omitempty" xml:"DomainOnlineCount,omitempty"`
+	// The end time of the query time range.
+	//
 	// example:
 	//
 	// 2018-12-10T18:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the query.
+	//
 	// example:
 	//
 	// 2021-12-10T10:00:00Z

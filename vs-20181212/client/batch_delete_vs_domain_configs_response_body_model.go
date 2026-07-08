@@ -14,6 +14,8 @@ type iBatchDeleteVsDomainConfigsResponseBody interface {
 }
 
 type BatchDeleteVsDomainConfigsResponseBody struct {
+	// The request ID of this operation.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664

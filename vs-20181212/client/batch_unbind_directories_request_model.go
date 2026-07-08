@@ -18,12 +18,16 @@ type iBatchUnbindDirectoriesRequest interface {
 }
 
 type BatchUnbindDirectoriesRequest struct {
+	// The device ID. Separate multiple values with commas.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The folder ID.
+	//
 	// This parameter is required.
 	//
 	// example:

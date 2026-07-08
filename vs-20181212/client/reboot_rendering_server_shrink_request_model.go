@@ -14,6 +14,8 @@ type iRebootRenderingServerShrinkRequest interface {
 }
 
 type RebootRenderingServerShrinkRequest struct {
+	// List of cloud application service instance IDs
+	//
 	// This parameter is required.
 	RenderingInstanceIdsShrink *string `json:"RenderingInstanceIds,omitempty" xml:"RenderingInstanceIds,omitempty"`
 }

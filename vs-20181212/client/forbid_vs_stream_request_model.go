@@ -28,6 +28,8 @@ type iForbidVsStreamRequest interface {
 }
 
 type ForbidVsStreamRequest struct {
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -35,27 +37,37 @@ type ForbidVsStreamRequest struct {
 	// xxxApp
 	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	ControlStreamAction *string `json:"ControlStreamAction,omitempty" xml:"ControlStreamAction,omitempty"`
+	// The accelerated domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Only "publisher" is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// publisher
 	LiveStreamType *string `json:"LiveStreamType,omitempty" xml:"LiveStreamType,omitempty"`
+	// Specifies whether to only interrupt the stream without adding it to the blacklist. A value of \\`yes\\` indicates that the stream is only interrupted.
+	//
 	// example:
 	//
 	// yes
 	Oneshot *string `json:"Oneshot,omitempty" xml:"Oneshot,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The time to resume the stream. The time is in UTC format.
+	//
 	// example:
 	//
 	// 2015-12-01T17:37:00Z
 	ResumeTime *string `json:"ResumeTime,omitempty" xml:"ResumeTime,omitempty"`
+	// The stream name.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -30,38 +30,55 @@ type iListEdgeWorkersShrinkRequest interface {
 }
 
 type ListEdgeWorkersShrinkRequest struct {
+	// This parameter is required for renewal scenarios.
+	//
 	// example:
 	//
 	// 2025-05-14T15:20:37+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of cluster IDs.
+	//
 	// example:
 	//
 	// ["hive-4fbf3928d40e43948b98acdb4fb5aaed"]
 	HiveIdsShrink *string `json:"HiveIds,omitempty" xml:"HiveIds,omitempty"`
+	// The list of payload IDs.
+	//
 	// example:
 	//
 	// ew-xxxxxx
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The page number of the query. The value starts from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page for a paged query. The maximum value is 100. Default value: 10.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of package IDs.
+	//
 	// example:
 	//
 	// ["pk-4fbf3928d40e43948b98acdb4fb5aaed"]
 	PlanIdsShrink *string `json:"PlanIds,omitempty" xml:"PlanIds,omitempty"`
+	// Specification
+	//
 	// example:
 	//
 	// ew.gn8t6xlarge-rb.x1p
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The parameter for filtering by time range. The time must be in ISO 8601 format and use UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2026-05-25T06:35:26+08:00
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The list of statuses.
 	StatusesShrink *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
 }
 

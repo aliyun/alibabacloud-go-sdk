@@ -22,6 +22,8 @@ type iContinuousMoveRequest interface {
 }
 
 type ContinuousMoveRequest struct {
+	// Device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29,14 +31,26 @@ type ContinuousMoveRequest struct {
 	// 348*****380-cn-qingdao
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Pan speed. A positive value moves the camera left.<br>
+	//
+	// Valid values: -1.0 to 1.0<br>
+	//
 	// example:
 	//
 	// 0.5
 	Pan *string `json:"Pan,omitempty" xml:"Pan,omitempty"`
+	// Tilt speed. A positive value moves the camera up.<br>
+	//
+	// Valid values: -1.0 to 1.0<br>
+	//
 	// example:
 	//
 	// 0.5
 	Tilt *string `json:"Tilt,omitempty" xml:"Tilt,omitempty"`
+	// Zoom speed. A positive value zooms in.<br>
+	//
+	// Valid values: -1.0 to 1.0<br>
+	//
 	// example:
 	//
 	// 0.5

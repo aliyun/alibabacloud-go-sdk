@@ -24,23 +24,33 @@ type iDescribeVsDomainReqTrafficDataResponseBody interface {
 }
 
 type DescribeVsDomainReqTrafficDataResponseBody struct {
+	// Time granularity of the query.
+	//
 	// example:
 	//
 	// 3600
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// Domain name of the Visual Edge Computing Service
+	//
 	// example:
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// End time of the query.
+	//
 	// example:
 	//
 	// 2021-09-22T03:40:41Z
 	EndTime                   *string                                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ReqTrafficDataPerInterval *DescribeVsDomainReqTrafficDataResponseBodyReqTrafficDataPerInterval `json:"ReqTrafficDataPerInterval,omitempty" xml:"ReqTrafficDataPerInterval,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 9BEC5E85-C76B-56EF-A922-860EFDB8B64B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Start time of the query.
+	//
 	// example:
 	//
 	// 2021-09-21T16:00:00Z

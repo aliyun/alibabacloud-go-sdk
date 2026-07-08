@@ -22,21 +22,28 @@ type iListCloudAppPatchesResponseBody interface {
 }
 
 type ListCloudAppPatchesResponseBody struct {
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page.
+	//
 	// example:
 	//
 	// 20
-	PageSize *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Patches  []*ListCloudAppPatchesResponseBodyPatches `json:"Patches,omitempty" xml:"Patches,omitempty" type:"Repeated"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of cloud application patches.
+	Patches []*ListCloudAppPatchesResponseBodyPatches `json:"Patches,omitempty" xml:"Patches,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -110,26 +117,50 @@ func (s *ListCloudAppPatchesResponseBody) Validate() error {
 }
 
 type ListCloudAppPatchesResponseBodyPatches struct {
+	// The ID of the patch package.
+	//
 	// example:
 	//
 	// patch-03fa76e8e13a49b6a966b063d9d309b4
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
+	// The name of the patch package.
+	//
 	// example:
 	//
 	// patch-1
 	PatchName *string `json:"PatchName,omitempty" xml:"PatchName,omitempty"`
+	// The upload status of the application. Valid values:
+	//
+	// 1. Created
+	//
+	// 2. Doing
+	//
+	// 3. Success: A final state.
+	//
+	// 4. Failed: A final state.
+	//
+	// 5. Deleting
+	//
+	// 6. DeleteFailed: A final state.
+	//
 	// example:
 	//
 	// Doing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the status.
+	//
 	// example:
 	//
 	// Uploading
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
+	// The time when the status was last updated.
+	//
 	// example:
 	//
 	// 2024-09-23T02:12:28
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the patch was uploaded.
+	//
 	// example:
 	//
 	// 2025-07-24T14:45:36+08:00

@@ -17,6 +17,8 @@ type iDescribeVsDevicesDataResponseBody interface {
 
 type DescribeVsDevicesDataResponseBody struct {
 	DevicesDataPerInterval *DescribeVsDevicesDataResponseBodyDevicesDataPerInterval `json:"DevicesDataPerInterval,omitempty" xml:"DevicesDataPerInterval,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
