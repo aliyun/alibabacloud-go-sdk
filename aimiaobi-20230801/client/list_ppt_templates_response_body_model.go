@@ -34,43 +34,64 @@ type iListPptTemplatesResponseBody interface {
 }
 
 type ListPptTemplatesResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	Current *int32                              `json:"Current,omitempty" xml:"Current,omitempty"`
-	Data    []*ListPptTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// The returned data.
+	Data []*ListPptTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The maximum number of results returned.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token used to retrieve the next page of results.
+	//
 	// example:
 	//
 	// +CBOXvu2YLxC6DOua8Qupg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries per page. The default value is 10.
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Indicates whether the request was successful. A value of \\`true\\` indicates success and \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -198,11 +219,13 @@ func (s *ListPptTemplatesResponseBody) Validate() error {
 }
 
 type ListPptTemplatesResponseBodyData struct {
+	// The template thumbnail.
+	//
 	// example:
 	//
 	// http://xxx.com/a.png
 	CoverImg *string `json:"CoverImg,omitempty" xml:"CoverImg,omitempty"`
-	// ID
+	// The ID.
 	//
 	// example:
 	//

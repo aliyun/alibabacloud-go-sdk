@@ -34,46 +34,68 @@ type iListAutoClipsTaskRequest interface {
 }
 
 type ListAutoClipsTaskRequest struct {
+	// The task end time.
+	//
 	// example:
 	//
 	// 2023-03-18 02:00:00
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// The start time of the task.
+	//
 	// example:
 	//
 	// 2023-02-19 07:28:11
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// null
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// null
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Number of items per page. Default is 10.
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// null
 	Skip *int32 `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// Task name
+	//
 	// example:
 	//
 	// task001
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Task status
+	//
 	// example:
 	//
 	// 0
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Task type
+	//
 	// example:
 	//
 	// type001
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Model Studio workspace
+	//
 	// example:
 	//
 	// llm-2setzb9x4ewsd

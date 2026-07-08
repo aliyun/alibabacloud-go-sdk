@@ -24,23 +24,34 @@ type iGetPropertiesResponseBody interface {
 }
 
 type GetPropertiesResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *GetPropertiesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
-	// success
+	// 数据不存在
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether successful: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -119,19 +130,31 @@ func (s *GetPropertiesResponseBody) Validate() error {
 }
 
 type GetPropertiesResponseBodyData struct {
-	ChatConfig              map[string]interface{}                                `json:"ChatConfig,omitempty" xml:"ChatConfig,omitempty"`
-	ConsoleConfig           *GetPropertiesResponseBodyDataConsoleConfig           `json:"ConsoleConfig,omitempty" xml:"ConsoleConfig,omitempty" type:"Struct"`
-	GeneralConfigMap        map[string]interface{}                                `json:"GeneralConfigMap,omitempty" xml:"GeneralConfigMap,omitempty"`
+	// Call configuration
+	ChatConfig map[string]interface{} `json:"ChatConfig,omitempty" xml:"ChatConfig,omitempty"`
+	// Console configuration
+	ConsoleConfig *GetPropertiesResponseBodyDataConsoleConfig `json:"ConsoleConfig,omitempty" xml:"ConsoleConfig,omitempty" type:"Struct"`
+	// General configurations map
+	GeneralConfigMap map[string]interface{} `json:"GeneralConfigMap,omitempty" xml:"GeneralConfigMap,omitempty"`
+	// Intelligent search configuration
 	IntelligentSearchConfig *GetPropertiesResponseBodyDataIntelligentSearchConfig `json:"IntelligentSearchConfig,omitempty" xml:"IntelligentSearchConfig,omitempty" type:"Struct"`
-	MiaosouConfig           *GetPropertiesResponseBodyDataMiaosouConfig           `json:"MiaosouConfig,omitempty" xml:"MiaosouConfig,omitempty" type:"Struct"`
-	SearchSourceList        []*GetPropertiesResponseBodyDataSearchSourceList      `json:"SearchSourceList,omitempty" xml:"SearchSourceList,omitempty" type:"Repeated"`
-	SearchSources           []*GetPropertiesResponseBodyDataSearchSources         `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	// Miaosou configuration
+	MiaosouConfig *GetPropertiesResponseBodyDataMiaosouConfig `json:"MiaosouConfig,omitempty" xml:"MiaosouConfig,omitempty" type:"Struct"`
+	// Specified search source list
+	SearchSourceList []*GetPropertiesResponseBodyDataSearchSourceList `json:"SearchSourceList,omitempty" xml:"SearchSourceList,omitempty" type:"Repeated"`
+	// Search source dropdown list
+	SearchSources []*GetPropertiesResponseBodyDataSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	// Whether SLR is authorized
+	//
 	// example:
 	//
 	// true
-	SlrAuthorized            *bool                                                    `json:"SlrAuthorized,omitempty" xml:"SlrAuthorized,omitempty"`
-	UserInfo                 *GetPropertiesResponseBodyDataUserInfo                   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
-	WanxiangImageSizeConfig  []*GetPropertiesResponseBodyDataWanxiangImageSizeConfig  `json:"WanxiangImageSizeConfig,omitempty" xml:"WanxiangImageSizeConfig,omitempty" type:"Repeated"`
+	SlrAuthorized *bool `json:"SlrAuthorized,omitempty" xml:"SlrAuthorized,omitempty"`
+	// User configuration
+	UserInfo *GetPropertiesResponseBodyDataUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+	// Wanxiang images
+	WanxiangImageSizeConfig []*GetPropertiesResponseBodyDataWanxiangImageSizeConfig `json:"WanxiangImageSizeConfig,omitempty" xml:"WanxiangImageSizeConfig,omitempty" type:"Repeated"`
+	// Wanxiang image style configuration
 	WanxiangImageStyleConfig []*GetPropertiesResponseBodyDataWanxiangImageStyleConfig `json:"WanxiangImageStyleConfig,omitempty" xml:"WanxiangImageStyleConfig,omitempty" type:"Repeated"`
 }
 
@@ -303,11 +326,18 @@ func (s *GetPropertiesResponseBodyData) Validate() error {
 }
 
 type GetPropertiesResponseBodyDataConsoleConfig struct {
+	// Prompt content
+	//
 	// example:
 	//
 	// xx
 	TipContent *string `json:"TipContent,omitempty" xml:"TipContent,omitempty"`
-	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Title
+	//
+	// example:
+	//
+	// AI妙笔
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetPropertiesResponseBodyDataConsoleConfig) String() string {
@@ -341,13 +371,18 @@ func (s *GetPropertiesResponseBodyDataConsoleConfig) Validate() error {
 }
 
 type GetPropertiesResponseBodyDataIntelligentSearchConfig struct {
+	// Miaosou: Search source configuration
 	CopilotPreciseSearchSources []*GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources `json:"CopilotPreciseSearchSources,omitempty" xml:"CopilotPreciseSearchSources,omitempty" type:"Repeated"`
+	// Homepage product description
+	//
 	// example:
 	//
 	// xxx
-	ProductDescription *string                                                              `json:"ProductDescription,omitempty" xml:"ProductDescription,omitempty"`
-	SearchSamples      []*GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamples `json:"SearchSamples,omitempty" xml:"SearchSamples,omitempty" type:"Repeated"`
-	SearchSources      []*GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	ProductDescription *string `json:"ProductDescription,omitempty" xml:"ProductDescription,omitempty"`
+	// Intelligent search recommendations
+	SearchSamples []*GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamples `json:"SearchSamples,omitempty" xml:"SearchSamples,omitempty" type:"Repeated"`
+	// Search source list
+	SearchSources []*GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
 }
 
 func (s GetPropertiesResponseBodyDataIntelligentSearchConfig) String() string {
@@ -426,14 +461,20 @@ func (s *GetPropertiesResponseBodyDataIntelligentSearchConfig) Validate() error 
 }
 
 type GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources struct {
+	// Unique identifier for the dataset: code+datasetName
+	//
 	// example:
 	//
 	// x
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Unique identifier for the dataset: code+datasetName
+	//
 	// example:
 	//
 	// x
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// Search source name: Chinese
+	//
 	// example:
 	//
 	// x
@@ -480,11 +521,16 @@ func (s *GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearc
 }
 
 type GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamples struct {
+	// Article list
 	Articles []*GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamplesArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// Prompt
+	//
 	// example:
 	//
 	// xx
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Generated content
+	//
 	// example:
 	//
 	// xxx
@@ -540,18 +586,26 @@ func (s *GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamples) Vali
 }
 
 type GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamplesArticles struct {
+	// Whether manually selected when passed from the frontend
+	//
 	// example:
 	//
 	// true
 	Select *bool `json:"Select,omitempty" xml:"Select,omitempty"`
+	// Whether it is a starred article
+	//
 	// example:
 	//
 	// false
 	Stared *bool `json:"Stared,omitempty" xml:"Stared,omitempty"`
+	// Title
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL
+	//
 	// example:
 	//
 	// http://xxx.com
@@ -607,14 +661,20 @@ func (s *GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamplesArticl
 }
 
 type GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources struct {
+	// Unique identifier for the dataset: code+datasetName
+	//
 	// example:
 	//
 	// xx
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Unique identifier for the dataset: code+datasetName
+	//
 	// example:
 	//
 	// xx
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// Search source name: Chinese
+	//
 	// example:
 	//
 	// xx
@@ -661,11 +721,16 @@ func (s *GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources) Vali
 }
 
 type GetPropertiesResponseBodyDataMiaosouConfig struct {
+	// The number of active documents in the dataset.
+	//
 	// example:
 	//
 	// 1
-	MaxDocSize *int64                                                  `json:"MaxDocSize,omitempty" xml:"MaxDocSize,omitempty"`
+	MaxDocSize *int64 `json:"MaxDocSize,omitempty" xml:"MaxDocSize,omitempty"`
+	// Model list supported by intelligent search
 	ModelInfos []*GetPropertiesResponseBodyDataMiaosouConfigModelInfos `json:"ModelInfos,omitempty" xml:"ModelInfos,omitempty" type:"Repeated"`
+	// Number of documents used in the dataset
+	//
 	// example:
 	//
 	// 1
@@ -721,10 +786,14 @@ func (s *GetPropertiesResponseBodyDataMiaosouConfig) Validate() error {
 }
 
 type GetPropertiesResponseBodyDataMiaosouConfigModelInfos struct {
+	// Model ID
+	//
 	// example:
 	//
 	// quanmiao-max
 	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// Model name
+	//
 	// example:
 	//
 	// 全妙-Max
@@ -762,9 +831,24 @@ func (s *GetPropertiesResponseBodyDataMiaosouConfigModelInfos) Validate() error 
 }
 
 type GetPropertiesResponseBodyDataSearchSourceList struct {
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Search source type: corresponds to (SystemSearch: system-built-in search, CustomSemanticSearch: custom semantic index search, ThirdSearch: third-party API search)
+	//
+	// example:
+	//
+	// SystemSearch
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Unique identifier for the data source
+	//
+	// example:
+	//
+	// QuarkCommonNews
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Search source description
+	//
+	// example:
+	//
+	// 互联网检索
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetPropertiesResponseBodyDataSearchSourceList) String() string {
@@ -807,7 +891,14 @@ func (s *GetPropertiesResponseBodyDataSearchSourceList) Validate() error {
 }
 
 type GetPropertiesResponseBodyDataSearchSources struct {
+	// Search source name
+	//
+	// example:
+	//
+	// 夸克通用搜索
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// Search source code
+	//
 	// example:
 	//
 	// SystemSearch
@@ -845,18 +936,26 @@ func (s *GetPropertiesResponseBodyDataSearchSources) Validate() error {
 }
 
 type GetPropertiesResponseBodyDataUserInfo struct {
+	// Unique identifier for the workspace
+	//
 	// example:
 	//
 	// 1
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// Unique identifier for the tenant
+	//
 	// example:
 	//
 	// 1
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 1
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Username
+	//
 	// example:
 	//
 	// admin
@@ -912,10 +1011,14 @@ func (s *GetPropertiesResponseBodyDataUserInfo) Validate() error {
 }
 
 type GetPropertiesResponseBodyDataWanxiangImageSizeConfig struct {
+	// Image aspect ratio
+	//
 	// example:
 	//
 	// 1:1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Image size in pixels
+	//
 	// example:
 	//
 	// 1024*1024
@@ -953,11 +1056,20 @@ func (s *GetPropertiesResponseBodyDataWanxiangImageSizeConfig) Validate() error 
 }
 
 type GetPropertiesResponseBodyDataWanxiangImageStyleConfig struct {
+	// Style name
+	//
+	// example:
+	//
+	// 默认
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Style image URL
+	//
 	// example:
 	//
 	// https://img.alicdn.com/imgextra/i4/O1CN01RzKicz1W0YWzYkWcK_!!6000000002726-2-tps-132-104.png
 	Pic *string `json:"Pic,omitempty" xml:"Pic,omitempty"`
+	// Style code
+	//
 	// example:
 	//
 	// <auto>

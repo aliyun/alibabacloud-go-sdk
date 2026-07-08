@@ -24,15 +24,22 @@ type iGetBiddingRemainLimitNumResponseBody interface {
 }
 
 type GetBiddingRemainLimitNumResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// successful
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *GetBiddingRemainLimitNumResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Fault message
+	//
 	// example:
 	//
 	// success
@@ -43,6 +50,8 @@ type GetBiddingRemainLimitNumResponseBody struct {
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Is successful: true for success, false for failure
+	//
 	// example:
 	//
 	// True
@@ -121,6 +130,8 @@ func (s *GetBiddingRemainLimitNumResponseBody) Validate() error {
 }
 
 type GetBiddingRemainLimitNumResponseBodyData struct {
+	// Remaining quantity
+	//
 	// example:
 	//
 	// 1

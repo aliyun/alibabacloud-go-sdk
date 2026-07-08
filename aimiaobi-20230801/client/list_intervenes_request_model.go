@@ -24,22 +24,40 @@ type iListIntervenesRequest interface {
 }
 
 type ListIntervenesRequest struct {
+	// The unique identity of the workspace. For more information, see [AgentKey]().
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 33a2658aaabf4c24b45d50e575125311_p_beebot_public
-	AgentKey      *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	InterveneType *int32  `json:"InterveneType,omitempty" xml:"InterveneType,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The intervention type.
+	//
+	// example:
+	//
+	// 干预类型
+	InterveneType *int32 `json:"InterveneType,omitempty" xml:"InterveneType,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Query    *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query.
+	//
+	// example:
+	//
+	// 小猫
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// mqtt_outRule_1679019634514

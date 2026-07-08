@@ -30,29 +30,62 @@ type iCreateGeneratedContentRequest interface {
 }
 
 type CreateGeneratedContentRequest struct {
+	// The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxx_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The body of the content, in rich text format.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 杭州亚运会
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The domain for content generation.
+	//
 	// example:
 	//
 	// government
-	ContentDomain *string   `json:"ContentDomain,omitempty" xml:"ContentDomain,omitempty"`
-	ContentText   *string   `json:"ContentText,omitempty" xml:"ContentText,omitempty"`
-	Keywords      []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
-	Prompt        *string   `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	ContentDomain *string `json:"ContentDomain,omitempty" xml:"ContentDomain,omitempty"`
+	// The body of the content, in plain text format.
+	//
+	// example:
+	//
+	// 杭州亚运会
+	ContentText *string `json:"ContentText,omitempty" xml:"ContentText,omitempty"`
+	// The keywords.
+	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	// The last generated prompt.
+	//
+	// example:
+	//
+	// 创作xxx文章
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The unique identifier of the task.
+	//
+	// > The system automatically generates a task ID. You do not need to specify this parameter. If you specify the same task ID for multiple tasks, they are grouped into a single conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The title.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 杭州亚运会
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The traceability UUID.
+	//
 	// example:
 	//
 	// xxxx

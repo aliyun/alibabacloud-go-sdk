@@ -26,36 +26,63 @@ type iExportHotTopicPlanningProposalsShrinkRequest interface {
 }
 
 type ExportHotTopicPlanningProposalsShrinkRequest struct {
+  // Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // xxxxx_p_efm
   AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+  // Custom viewpoint ID. Use this parameter for custom viewpoint topic planning.
+  // 
   // example:
   // 
   // 025c6cee437741368098b790c90166f8
   CustomViewPointIdsShrink *string `json:"CustomViewPointIds,omitempty" xml:"CustomViewPointIds,omitempty"`
+  // Document export format
+  // 
+  // - word: Export as a Word document
+  // 
+  // - xmind: Export as an XMind file
+  // 
   // example:
   // 
-  // 导出文档类型，word:导出为word,xmind:导处为xmind
+  // word
   ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+  // Filter topic planning documents by title
   TitlesShrink *string `json:"Titles,omitempty" xml:"Titles,omitempty"`
+  // Hot list topic
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 热榜主题
   Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+  // Hot list source
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 热榜源
   TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+  // Topic planning type
+  // 
+  // - CustomViewPoints: Custom viewpoint
+  // 
+  // - HotViewPoints: Popular viewpoint
+  // 
+  // - TimedViewPoints: Time-sensitive viewpoint
+  // 
+  // - WebReviewPoints: Public viewpoint
+  // 
+  // - FreshViewPoints: Fresh viewpoint
+  // 
   // example:
   // 
-  // 选题策划类型：CustomViewPoints:自定义视角，HotViewPoints:热门视角、TimedViewPoints:时效性视角、WebReviewPoints:网友视角、FreshViewPoints:新颖视角
+  // CustomViewPoints
   ViewPointType *string `json:"ViewPointType,omitempty" xml:"ViewPointType,omitempty"`
 }
 

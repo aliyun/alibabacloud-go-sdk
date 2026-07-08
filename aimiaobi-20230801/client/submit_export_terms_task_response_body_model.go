@@ -24,25 +24,34 @@ type iSubmitExportTermsTaskResponseBody interface {
 }
 
 type SubmitExportTermsTaskResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *SubmitExportTermsTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
@@ -121,6 +130,8 @@ func (s *SubmitExportTermsTaskResponseBody) Validate() error {
 }
 
 type SubmitExportTermsTaskResponseBodyData struct {
+	// Task ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21

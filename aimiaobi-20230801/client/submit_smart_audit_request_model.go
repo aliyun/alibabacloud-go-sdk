@@ -26,16 +26,36 @@ type iSubmitSmartAuditRequest interface {
 }
 
 type SubmitSmartAuditRequest struct {
+	// Parameters for image audit
 	ImageUrlList []*SubmitSmartAuditRequestImageUrlList `json:"ImageUrlList,omitempty" xml:"ImageUrlList,omitempty" type:"Repeated"`
-	NoteId       *string                                `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
-	SubCodes     []*string                              `json:"SubCodes,omitempty" xml:"SubCodes,omitempty" type:"Repeated"`
-	TermsName    *string                                `json:"TermsName,omitempty" xml:"TermsName,omitempty"`
-	Text         *string                                `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Rule library ID for rule-based auditing (default: Default)
+	//
+	// example:
+	//
+	// note_1_486
+	NoteId *string `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	// List of sub-audit codes
+	SubCodes []*string `json:"SubCodes,omitempty" xml:"SubCodes,omitempty" type:"Repeated"`
+	// Word library name for dictionary-based auditing (default: Default)
+	//
+	// example:
+	//
+	// Default
+	TermsName *string `json:"TermsName,omitempty" xml:"TermsName,omitempty"`
+	// Content to be audited
+	//
+	// example:
+	//
+	// “你好呀”
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// xxxx
-	WorkspaceId *string                             `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	ImageUrls   []*SubmitSmartAuditRequestImageUrls `json:"imageUrls,omitempty" xml:"imageUrls,omitempty" type:"Repeated"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// Parameters for image audit (deprecated; use ImageUrlList instead)
+	ImageUrls []*SubmitSmartAuditRequestImageUrls `json:"imageUrls,omitempty" xml:"imageUrls,omitempty" type:"Repeated"`
 }
 
 func (s SubmitSmartAuditRequest) String() string {
@@ -132,7 +152,17 @@ func (s *SubmitSmartAuditRequest) Validate() error {
 }
 
 type SubmitSmartAuditRequestImageUrlList struct {
-	Id  *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Unique image identifier
+	//
+	// example:
+	//
+	// xxxx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The URL can be a web link or a base64-encoded string.
+	//
+	// example:
+	//
+	// http://www.example.com/xxx.png
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -167,7 +197,17 @@ func (s *SubmitSmartAuditRequestImageUrlList) Validate() error {
 }
 
 type SubmitSmartAuditRequestImageUrls struct {
-	Id  *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Unique image identifier
+	//
+	// example:
+	//
+	// 3HAZTv62M0vkyz5B
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The URL can be a web link or a base64-encoded string.
+	//
+	// example:
+	//
+	// https://www.example.com/xxx.jpg
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 

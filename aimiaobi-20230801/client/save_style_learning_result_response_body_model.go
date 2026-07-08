@@ -24,26 +24,38 @@ type iSaveStyleLearningResultResponseBody interface {
 }
 
 type SaveStyleLearningResultResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique ID of the request
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates success: true for success, false for failure
+	//
 	// example:
 	//
 	// true

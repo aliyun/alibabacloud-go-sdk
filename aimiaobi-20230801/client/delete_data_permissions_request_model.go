@@ -16,8 +16,12 @@ type iDeleteDataPermissionsRequest interface {
 }
 
 type DeleteDataPermissionsRequest struct {
+	// The permission IDs.
+	//
 	// This parameter is required.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspace ID](https://help.aliyun.com/document_detail/2587495.html).
+	//
 	// This parameter is required.
 	//
 	// example:

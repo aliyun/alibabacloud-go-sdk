@@ -16,12 +16,16 @@ type iRunContinueContentRequest interface {
 }
 
 type RunContinueContentRequest struct {
+	// Content to continue.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 创新政务社交媒体功能。鼓励各地区、各部门结合实际，开发政务社交媒体的特色功能，如在线咨询服务、政策解读、互动问答等，增强政务社交媒体的互动性和实用性，提升公众参与度。
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Unique identifier for the Alibaba Cloud Model Studio workspace. For more information, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

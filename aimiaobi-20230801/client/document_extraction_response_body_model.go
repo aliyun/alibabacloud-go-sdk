@@ -24,23 +24,34 @@ type iDocumentExtractionResponseBody interface {
 }
 
 type DocumentExtractionResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
-	// NoData
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	// successful
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data []*DocumentExtractionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
-	// success
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates success: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -123,42 +134,62 @@ func (s *DocumentExtractionResponseBody) Validate() error {
 }
 
 type DocumentExtractionResponseBodyData struct {
+	// Author
+	//
 	// example:
 	//
 	// 作者
 	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// Content
+	//
 	// example:
 	//
 	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Custom unique ID for the document
+	//
 	// example:
 	//
 	// 文档-自定义的唯一ID
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique identifier for the document
+	//
 	// example:
 	//
 	// 8df2d69d63a247b6b52ff455b2d426b6
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Publication time
+	//
 	// example:
 	//
 	// 2024-05-14 08:54:33
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Source
+	//
 	// example:
 	//
-	// 央视网
+	// 新闻来源
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Article summary
+	//
 	// example:
 	//
 	// 文章摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Tag
+	//
 	// example:
 	//
 	// 文章标签
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Title
+	//
 	// example:
 	//
 	// 文章标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx

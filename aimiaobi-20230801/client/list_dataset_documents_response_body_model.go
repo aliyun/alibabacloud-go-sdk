@@ -32,39 +32,58 @@ type iListDatasetDocumentsResponseBody interface {
 }
 
 type ListDatasetDocumentsResponseBody struct {
+	// The status code for the request.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A list of documents.
 	Data []*ListDatasetDocumentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// A detailed message about the request status.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token used to retrieve the next page of results. This field appears only when more results are available.
+	//
 	// example:
 	//
 	// xxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of `true` indicates success, and `false` indicates failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of matching documents.
+	//
 	// example:
 	//
 	// 100
@@ -183,75 +202,119 @@ func (s *ListDatasetDocumentsResponseBody) Validate() error {
 }
 
 type ListDatasetDocumentsResponseBodyData struct {
+	// The unique ID of the category.
+	//
 	// example:
 	//
 	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// The content of the document.
+	//
 	// example:
 	//
 	// xx
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The creation time of the document.
+	//
 	// example:
 	//
 	// 2025-04-14 19:59:53
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the document.
+	//
+	// example:
+	//
+	// 1
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Indicates whether multimodal indexing is disabled for this document.
+	//
 	// example:
 	//
 	// false
 	DisableHandleMultimodalMedia *bool `json:"DisableHandleMultimodalMedia,omitempty" xml:"DisableHandleMultimodalMedia,omitempty"`
+	// The user-specified unique document ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The type of the document.
+	//
 	// example:
 	//
 	// text
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// The unique internal document ID.
+	//
 	// example:
 	//
 	// 内部文档唯一ID
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1.
+	//
 	// example:
 	//
 	// xx
 	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2.
+	//
 	// example:
 	//
 	// xx
 	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3.
+	//
 	// example:
 	//
 	// xx
-	Extend3          *string                                                 `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// A list of multimodal media items associated with the document.
 	MultimodalMedias []*ListDatasetDocumentsResponseBodyDataMultimodalMedias `json:"MultimodalMedias,omitempty" xml:"MultimodalMedias,omitempty" type:"Repeated"`
+	// The publication time of the document.
+	//
 	// example:
 	//
 	// 2022-01-01 00:00:00
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The source of the document.
+	//
 	// example:
 	//
 	// 来源
 	SourceFrom *string `json:"SourceFrom,omitempty" xml:"SourceFrom,omitempty"`
+	// The build status of the document index.
+	//
 	// example:
 	//
 	// 100
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The summary of the document.
+	//
 	// example:
 	//
 	// xx
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// A list of tags associated with the document.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The title of the document.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The last update time of the document.
+	//
 	// example:
 	//
 	// 2025-04-14 19:59:53
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The user who last updated the document.
+	//
+	// example:
+	//
+	// 1
 	UpdateUser *string `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
-	// url
+	// The URL of the document.
 	//
 	// example:
 	//
@@ -470,14 +533,20 @@ func (s *ListDatasetDocumentsResponseBodyData) Validate() error {
 }
 
 type ListDatasetDocumentsResponseBodyDataMultimodalMedias struct {
+	// The URL of the image or video file.
+	//
 	// example:
 	//
 	// 图片或视频文件地址
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The unique ID of the multimodal media.
+	//
 	// example:
 	//
 	// 多模态数据唯一标识
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The type of the multimodal media.
+	//
 	// example:
 	//
 	// 多模态数据类型

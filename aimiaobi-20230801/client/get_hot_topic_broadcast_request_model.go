@@ -36,35 +36,62 @@ type iGetHotTopicBroadcastRequest interface {
 }
 
 type GetHotTopicBroadcastRequest struct {
+	// Whether to compute the total token count
+	//
 	// example:
 	//
 	// false
 	CalcTotalToken *bool `json:"CalcTotalToken,omitempty" xml:"CalcTotalToken,omitempty"`
+	// categorization Filter
+	//
 	// example:
 	//
 	// 分类筛选
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Current page number
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// hot spot Version
+	//
 	// example:
 	//
 	// 2024-10-11_13
-	HotTopicVersion *string   `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
-	LocationQuery   *string   `json:"LocationQuery,omitempty" xml:"LocationQuery,omitempty"`
-	Locations       []*string `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
-	Query           *string   `json:"Query,omitempty" xml:"Query,omitempty"`
+	HotTopicVersion *string `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
+	// Full-text index for hot spot Regions (when this parameter is present, current does not take effect)
+	//
+	// example:
+	//
+	// 重庆 成都 浙江 杭州
+	LocationQuery *string `json:"LocationQuery,omitempty" xml:"LocationQuery,omitempty"`
+	// List of Regions for news retrieval (keyword filtering)
+	Locations []*string `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
+	// Full-text index (full-text retrieval for title, hot spot summary, and Region) (when this parameter is present, current does not take effect)
+	//
+	// example:
+	//
+	// 重庆新闻
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 5
-	Size                              *int32                                                        `json:"Size,omitempty" xml:"Size,omitempty"`
-	StepForCustomSummaryStyleConfig   *GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig   `json:"StepForCustomSummaryStyleConfig,omitempty" xml:"StepForCustomSummaryStyleConfig,omitempty" type:"Struct"`
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Custom output style configuration
+	StepForCustomSummaryStyleConfig *GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig `json:"StepForCustomSummaryStyleConfig,omitempty" xml:"StepForCustomSummaryStyleConfig,omitempty" type:"Struct"`
+	// Hot Spot News Broadcast Content Configuration
 	StepForNewsBroadcastContentConfig *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig `json:"StepForNewsBroadcastContentConfig,omitempty" xml:"StepForNewsBroadcastContentConfig,omitempty" type:"Struct"`
+	// topic Filter
+	//
 	// example:
 	//
 	// ["主题1","主题2"]
 	Topics []*string `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
+	// UUID of the Alibaba Cloud Model Studio workspace: obtain the [Workspace ID](https://help.aliyun.com/document_detail/2587495.html)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -204,14 +231,20 @@ func (s *GetHotTopicBroadcastRequest) Validate() error {
 }
 
 type GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig struct {
+	// Summary – number of images
+	//
 	// example:
 	//
 	// 90
 	SummaryImageCount *int32 `json:"SummaryImageCount,omitempty" xml:"SummaryImageCount,omitempty"`
+	// Summary model
+	//
 	// example:
 	//
 	// 摘要模型
 	SummaryModel *string `json:"SummaryModel,omitempty" xml:"SummaryModel,omitempty"`
+	// Summary - Custom Prompt
+	//
 	// example:
 	//
 	// 摘要-自定义Prompt
@@ -258,12 +291,18 @@ func (s *GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig) Validate() 
 }
 
 type GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig struct {
+	// List of selected channels
+	//
 	// example:
 	//
 	// ["科技","经济","时政","娱乐"]
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
 	// Deprecated
+	//
+	// Custom hot spot weight
 	CustomHotValueWeights []*GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights `json:"CustomHotValueWeights,omitempty" xml:"CustomHotValueWeights,omitempty" type:"Repeated"`
+	// topic Quantity
+	//
 	// example:
 	//
 	// 10
@@ -319,10 +358,14 @@ func (s *GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig) Validate(
 }
 
 type GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights struct {
+	// Dimension key
+	//
 	// example:
 	//
 	// views
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	// weight
+	//
 	// example:
 	//
 	// 1

@@ -20,12 +20,18 @@ type iRunTopicSelectionMergeResponseBody interface {
 }
 
 type RunTopicSelectionMergeResponseBody struct {
+	// Indicates whether the response packet is complete
+	//
 	// example:
 	//
 	// true
-	End     *bool                                      `json:"End,omitempty" xml:"End,omitempty"`
-	Header  *RunTopicSelectionMergeResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	End *bool `json:"End,omitempty" xml:"End,omitempty"`
+	// Response header
+	Header *RunTopicSelectionMergeResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body
 	Payload *RunTopicSelectionMergeResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
@@ -91,34 +97,50 @@ func (s *RunTopicSelectionMergeResponseBody) Validate() error {
 }
 
 type RunTopicSelectionMergeResponseBodyHeader struct {
+	// Error code
+	//
 	// example:
 	//
 	// 错误码
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// SSE event. Values: task-started, task-finished, or task-failed
+	//
 	// example:
 	//
 	// task-started
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Parent session ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 400
 	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// End-to-end trace ID
+	//
 	// example:
 	//
 	// 全链路ID
@@ -210,8 +232,10 @@ func (s *RunTopicSelectionMergeResponseBodyHeader) Validate() error {
 }
 
 type RunTopicSelectionMergeResponseBodyPayload struct {
+	// Output
 	Output *RunTopicSelectionMergeResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunTopicSelectionMergeResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage
+	Usage *RunTopicSelectionMergeResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunTopicSelectionMergeResponseBodyPayload) String() string {
@@ -255,10 +279,13 @@ func (s *RunTopicSelectionMergeResponseBodyPayload) Validate() error {
 }
 
 type RunTopicSelectionMergeResponseBodyPayloadOutput struct {
+	// Text generation result
+	//
 	// example:
 	//
 	// 文本生成结果
-	Text  *string         `json:"Text,omitempty" xml:"Text,omitempty"`
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Merged topic selection object
 	Topic *TopicSelection `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
@@ -298,15 +325,22 @@ func (s *RunTopicSelectionMergeResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunTopicSelectionMergeResponseBodyPayloadUsage struct {
+	// Number of input tokens
+	//
 	// example:
 	//
 	// 78
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of output tokens used
+	//
 	// example:
 	//
 	// 34
-	OutputTokens *int64            `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
-	TokenMap     map[string]*int64 `json:"TokenMap,omitempty" xml:"TokenMap,omitempty"`
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Detailed token consumption
+	TokenMap map[string]*int64 `json:"TokenMap,omitempty" xml:"TokenMap,omitempty"`
+	// Total number of tokens used in this call
+	//
 	// example:
 	//
 	// 38

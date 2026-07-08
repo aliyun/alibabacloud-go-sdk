@@ -18,16 +18,22 @@ type iExportCustomSourceAnalysisTaskRequest interface {
 }
 
 type ExportCustomSourceAnalysisTaskRequest struct {
+  // Export format type. Default is jsonLine. jsonline: Exports in jsonLine format. excel: Exports in Excel format.
+  // 
   // example:
   // 
   // jsonLine
   ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+  // Unique ID for the task
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // c9f226b02cca4f42a84c5e955c39dfd2
   TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+  // Unique identifier for the workspace: AgentKey
+  // 
   // This parameter is required.
   // 
   // example:

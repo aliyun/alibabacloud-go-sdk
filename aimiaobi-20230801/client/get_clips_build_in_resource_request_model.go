@@ -16,7 +16,16 @@ type iGetClipsBuildInResourceRequest interface {
 }
 
 type GetClipsBuildInResourceRequest struct {
+	// The resource type.
+	//
+	// example:
+	//
+	// 0 - 音色
+	//
+	// 1- 背景音
 	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the Alibaba Cloud Model Studio workspace.
+	//
 	// example:
 	//
 	// llm-az2gglkjauwnnhpq

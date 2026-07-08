@@ -18,14 +18,20 @@ type iQueryAuditTaskRequest interface {
 }
 
 type QueryAuditTaskRequest struct {
+	// Article ID (Choose either task ID or article ID)
+	//
 	// example:
 	//
 	// xxxx
 	ArticleId *string `json:"ArticleId,omitempty" xml:"ArticleId,omitempty"`
+	// Audit task ID (Choose either task ID or article ID)
+	//
 	// example:
 	//
 	// xxx
 	ContentAuditTaskId *string `json:"ContentAuditTaskId,omitempty" xml:"ContentAuditTaskId,omitempty"`
+	// [workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// llm-xxxx

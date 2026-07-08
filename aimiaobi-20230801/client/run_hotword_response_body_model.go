@@ -18,9 +18,11 @@ type iRunHotwordResponseBody interface {
 }
 
 type RunHotwordResponseBody struct {
-	Header  *RunHotwordResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response header.
+	Header *RunHotwordResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body.
 	Payload *RunHotwordResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
-	// Id of the request
+	// Request ID.
 	//
 	// example:
 	//
@@ -78,27 +80,44 @@ func (s *RunHotwordResponseBody) Validate() error {
 }
 
 type RunHotwordResponseBodyHeader struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Event type.
+	//
 	// example:
 	//
 	// finished
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Event description.
+	//
+	// example:
+	//
+	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// 92e16ccb-92b6-4894-abbf-fc6e2929a0df
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Trace ID.
+	//
 	// example:
 	//
 	// 0abb7e3217356108993888059ee72b
@@ -181,8 +200,10 @@ func (s *RunHotwordResponseBodyHeader) Validate() error {
 }
 
 type RunHotwordResponseBodyPayload struct {
+	// Output.
 	Output *RunHotwordResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunHotwordResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage.
+	Usage *RunHotwordResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunHotwordResponseBodyPayload) String() string {
@@ -226,6 +247,11 @@ func (s *RunHotwordResponseBodyPayload) Validate() error {
 }
 
 type RunHotwordResponseBodyPayloadOutput struct {
+	// Hotword content.
+	//
+	// example:
+	//
+	// 全球影响,文化交流,孙悟空,动画改编
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 
@@ -251,14 +277,20 @@ func (s *RunHotwordResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunHotwordResponseBodyPayloadUsage struct {
+	// Number of input tokens.
+	//
 	// example:
 	//
 	// 100
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of output tokens.
+	//
 	// example:
 	//
 	// 1
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens.
+	//
 	// example:
 	//
 	// 101

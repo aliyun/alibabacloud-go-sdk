@@ -26,24 +26,36 @@ type iRunDeepWritingResponseBody interface {
 }
 
 type RunDeepWritingResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// successful
-	Code   *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response header.
 	Header *RunDeepWritingResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
-	Message *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response body.
 	Payload *RunDeepWritingResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 31AC01F1-88FB-5C4D-B6F5-E8BB136CD5A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -136,27 +148,44 @@ func (s *RunDeepWritingResponseBody) Validate() error {
 }
 
 type RunDeepWritingResponseBodyHeader struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 403
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 错误消息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The Server-Sent Event (SSE).
+	//
 	// example:
 	//
 	// response.output_item.done
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// c2e2e991-f96a-4fcc-9ff7-d0df46c6d232
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// b84d31a5-44b2-4a35-9c6d-878d459c93d0
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The trace ID.
+	//
 	// example:
 	//
 	// FAB10D42-F081-557B-8DCB-D6FB7AAF100B
@@ -239,6 +268,7 @@ func (s *RunDeepWritingResponseBodyHeader) Validate() error {
 }
 
 type RunDeepWritingResponseBodyPayload struct {
+	// The output.
 	Output *RunDeepWritingResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
 }
 
@@ -269,17 +299,28 @@ func (s *RunDeepWritingResponseBodyPayload) Validate() error {
 }
 
 type RunDeepWritingResponseBodyPayloadOutput struct {
+	// The new output item for this event.
 	Item *RunDeepWritingResponseBodyPayloadOutputItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Struct"`
+	// The ordinal number of the new output item in this event.
+	//
 	// example:
 	//
 	// 1
-	OutputIndex *int32                                           `json:"OutputIndex,omitempty" xml:"OutputIndex,omitempty"`
-	Response    *RunDeepWritingResponseBodyPayloadOutputResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
+	OutputIndex *int32 `json:"OutputIndex,omitempty" xml:"OutputIndex,omitempty"`
+	// The response body.
+	Response *RunDeepWritingResponseBodyPayloadOutputResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
+	// The ordinal number of the streaming event.
+	//
 	// example:
 	//
 	// 1
 	SequenceNumber *string `json:"SequenceNumber,omitempty" xml:"SequenceNumber,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type.
+	//
+	// example:
+	//
+	// 同上级Event
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s RunDeepWritingResponseBodyPayloadOutput) String() string {
@@ -350,22 +391,46 @@ func (s *RunDeepWritingResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunDeepWritingResponseBodyPayloadOutputItem struct {
+	// The name of the agent that generated this item.
+	//
 	// example:
 	//
 	// ProjectManager
-	Agent     *string                                               `json:"Agent,omitempty" xml:"Agent,omitempty"`
-	Arguments *string                                               `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
-	Content   []*RunDeepWritingResponseBodyPayloadOutputItemContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	Agent *string `json:"Agent,omitempty" xml:"Agent,omitempty"`
+	// Parameter
+	//
+	// example:
+	//
+	// item类型为function_call时，此字段有值，为调用函数的入参
+	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
+	// This field has a value when the item type is \\`message\\`. The value is a list of output content.
+	Content []*RunDeepWritingResponseBodyPayloadOutputItemContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// The unique ID of the item.
+	//
 	// example:
 	//
 	// 88f6ed9e85c4f9377378da23e6a370d1
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the parameter.
+	//
+	// example:
+	//
+	// item类型为function_call时，此字段有值，为调用的函数名字
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The item\\"s result.
+	//
+	// example:
+	//
+	// item类型为function_call时，此字段有值，为调用的函数的输出
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The status of the item.
+	//
 	// example:
 	//
 	// completed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the item.
+	//
 	// example:
 	//
 	// function_call
@@ -466,10 +531,14 @@ func (s *RunDeepWritingResponseBodyPayloadOutputItem) Validate() error {
 }
 
 type RunDeepWritingResponseBodyPayloadOutputItemContent struct {
+	// The text content that is output when the item type is \\`message\\`.
+	//
 	// example:
 	//
 	// <TASK_DONE>
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// When the item type is \\`message\\`, the value of this field is \\`output_text\\`.
+	//
 	// example:
 	//
 	// output_text
@@ -507,10 +576,14 @@ func (s *RunDeepWritingResponseBodyPayloadOutputItemContent) Validate() error {
 }
 
 type RunDeepWritingResponseBodyPayloadOutputResponse struct {
+	// The unique ID of the task.
+	//
 	// example:
 	//
 	// b2dc224b38694e0b668020159a7c5732
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The execution status of the task.
+	//
 	// example:
 	//
 	// in_progress

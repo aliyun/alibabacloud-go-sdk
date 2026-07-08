@@ -22,18 +22,30 @@ type iRunSearchSimilarArticlesShrinkRequest interface {
 }
 
 type RunSearchSimilarArticlesShrinkRequest struct {
+	// Communication configuration parameters.
 	ChatConfigShrink *string `json:"ChatConfig,omitempty" xml:"ChatConfig,omitempty"`
+	// Document type.
+	//
 	// example:
 	//
 	// html
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article title.
+	//
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://xxx/xxx
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Unique identifier of the Alibaba Cloud Model Studio workspace. To get this ID, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

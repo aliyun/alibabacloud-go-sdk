@@ -24,23 +24,34 @@ type iGetInterveneRuleDetailResponseBody interface {
 }
 
 type GetInterveneRuleDetailResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 0
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *GetInterveneRuleDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request ID
+	//
 	// example:
 	//
 	// 428DCC0D-3C63-5306-BD1B-124396AB97BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates success: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -119,7 +130,8 @@ func (s *GetInterveneRuleDetailResponseBody) Validate() error {
 }
 
 type GetInterveneRuleDetailResponseBodyData struct {
-	Code                *int32                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Structure of the rule details
 	InterveneRuleDetail *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail `json:"InterveneRuleDetail,omitempty" xml:"InterveneRuleDetail,omitempty" type:"Struct"`
 }
 
@@ -159,17 +171,29 @@ func (s *GetInterveneRuleDetailResponseBodyData) Validate() error {
 }
 
 type GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail struct {
+	// Answer configuration
 	AnswerConfig []*GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig `json:"AnswerConfig,omitempty" xml:"AnswerConfig,omitempty" type:"Repeated"`
-	EffectConfig *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig   `json:"EffectConfig,omitempty" xml:"EffectConfig,omitempty" type:"Struct"`
+	// Activation configuration
+	EffectConfig *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig `json:"EffectConfig,omitempty" xml:"EffectConfig,omitempty" type:"Struct"`
+	// Intervention type
+	//
 	// example:
 	//
 	// 0
-	InterveneType *int32    `json:"InterveneType,omitempty" xml:"InterveneType,omitempty"`
+	InterveneType *int32 `json:"InterveneType,omitempty" xml:"InterveneType,omitempty"`
+	// Namespace list
 	NamespaceList []*string `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
+	// Rule ID
+	//
 	// example:
 	//
 	// 100418
-	RuleId   *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// Rule name
+	//
+	// example:
+	//
+	// 规则001
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -254,11 +278,20 @@ func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail) Validate() e
 }
 
 type GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig struct {
+	// Answer type
+	//
 	// example:
 	//
 	// 0
-	AnswerType *int32  `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	AnswerType *int32 `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
+	// Answer content
+	//
+	// example:
+	//
+	// 早上好
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Namespace
+	//
 	// example:
 	//
 	// namespace_qa_query
@@ -305,14 +338,20 @@ func (s *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig) 
 }
 
 type GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig struct {
+	// Activation type
+	//
 	// example:
 	//
 	// 0
 	EffectType *int32 `json:"EffectType,omitempty" xml:"EffectType,omitempty"`
+	// End time
+	//
 	// example:
 	//
 	// 2023-11-25 14:21:15
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Start time
+	//
 	// example:
 	//
 	// 2023-11-25 14:21:15

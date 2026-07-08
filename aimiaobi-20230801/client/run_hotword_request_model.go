@@ -24,17 +24,38 @@ type iRunHotwordRequest interface {
 }
 
 type RunHotwordRequest struct {
+	// Document ID.
+	//
 	// example:
 	//
 	// 84ufBYEeLMZOjRFo84HJ7ySL3Efr55
-	DocId            *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
-	ModelName        *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	Prompt           *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Name of the custom model.
+	//
+	// example:
+	//
+	// quanmiao-max、quanmiao-plus
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Prompt.
+	//
+	// example:
+	//
+	// 提示词
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Document content to extract hotwords from. If not empty, extract hotwords from this content. If empty, extract hotwords using the DocId.
+	//
+	// example:
+	//
+	// 关联内容
 	ReferenceContent *string `json:"ReferenceContent,omitempty" xml:"ReferenceContent,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// e32a1a3f-1f7e-41dd-b888-ef1d91b96d1e
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Unique identifier of the Alibaba Cloud Model Studio workspace. To get this ID, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

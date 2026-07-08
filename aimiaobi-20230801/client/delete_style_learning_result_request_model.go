@@ -16,12 +16,16 @@ type iDeleteStyleLearningResultRequest interface {
 }
 
 type DeleteStyleLearningResultRequest struct {
+	// Unique identity of the workspace: AgentKey
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Style learning ID
+	//
 	// This parameter is required.
 	//
 	// example:

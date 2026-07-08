@@ -22,14 +22,30 @@ type iRunQuickWritingRequest interface {
 }
 
 type RunQuickWritingRequest struct {
+	// Referenced articles
+	//
+	// example:
+	//
+	// 集合
 	Articles []*RunQuickWritingRequestArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// Other writing parameters. Choose either prompt or writingParams.
+	//
 	// This parameter is required.
-	Prompt        *string                                `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	//
+	// example:
+	//
+	// 请按英文输出
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Use the specified search source list.
 	SearchSources []*RunQuickWritingRequestSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	// Task ID. Reuse the same task ID for multi-turn conversations.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -114,8 +130,20 @@ func (s *RunQuickWritingRequest) Validate() error {
 }
 
 type RunQuickWritingRequestArticles struct {
+	// Article content
+	//
+	// example:
+	//
+	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article title
+	//
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx
@@ -162,10 +190,14 @@ func (s *RunQuickWritingRequestArticles) Validate() error {
 }
 
 type RunQuickWritingRequestSearchSources struct {
+	// SystemSearch: system-built-in search. CustomSemanticSearch: custom semantic index search. ThirdSearch: third-party API search.
+	//
 	// example:
 	//
 	// SystemSearch
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Unique identifier of the data source
+	//
 	// example:
 	//
 	// QuarkCommonNews

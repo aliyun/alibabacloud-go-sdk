@@ -18,6 +18,8 @@ type iGetPptArtifactExportResultRequest interface {
 }
 
 type GetPptArtifactExportResultRequest struct {
+	// The ID of the export task.
+	//
 	// example:
 	//
 	// 15aeb61b-cdeb-4b70-94d7-99518040647e
@@ -26,6 +28,8 @@ type GetPptArtifactExportResultRequest struct {
 	//
 	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// llm-xxxx

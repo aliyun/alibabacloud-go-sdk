@@ -22,25 +22,35 @@ type iFeedbackDialogueResponseBody interface {
 }
 
 type FeedbackDialogueResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
-	// DataNotExists
+	// successful
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 数据不存在
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` indicates failure.
+	//
 	// example:
 	//
-	// false
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

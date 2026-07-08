@@ -24,23 +24,34 @@ type iGetEnterpriseVocAnalysisTaskResponseBody interface {
 }
 
 type GetEnterpriseVocAnalysisTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the enterprise VOC analysis.
 	Data *GetEnterpriseVocAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,16 +130,22 @@ func (s *GetEnterpriseVocAnalysisTaskResponseBody) Validate() error {
 }
 
 type GetEnterpriseVocAnalysisTaskResponseBodyData struct {
+	// The error message.
+	//
 	// example:
 	//
 	// error
-	ErrorMessage       *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The statistics overview.
 	StatisticsOverview *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview `json:"StatisticsOverview,omitempty" xml:"StatisticsOverview,omitempty" type:"Struct"`
+	// The status of the task. Valid values: \\`PENDING\\` (pending), \\`RUNNING\\` (running), \\`SUCCESSED\\` (successful), \\`FAILED\\` (failed), and \\`CANCELED\\` (canceled).
+	//
 	// example:
 	//
 	// SUCCESSED
-	Status *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	Usage  *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The usage statistics.
+	Usage *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s GetEnterpriseVocAnalysisTaskResponseBodyData) String() string {
@@ -190,12 +207,16 @@ func (s *GetEnterpriseVocAnalysisTaskResponseBodyData) Validate() error {
 }
 
 type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview struct {
+	// The total number of analyzed data entries.
+	//
 	// example:
 	//
 	// 100
-	Count                     *int32                                                                                   `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The statistics of filter tags.
 	FilterDimensionStatistics *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics `json:"FilterDimensionStatistics,omitempty" xml:"FilterDimensionStatistics,omitempty" type:"Struct"`
-	TagDimensionStatistics    *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics    `json:"TagDimensionStatistics,omitempty" xml:"TagDimensionStatistics,omitempty" type:"Struct"`
+	// The statistics of content tags.
+	TagDimensionStatistics *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics `json:"TagDimensionStatistics,omitempty" xml:"TagDimensionStatistics,omitempty" type:"Struct"`
 }
 
 func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) String() string {
@@ -248,6 +269,7 @@ func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) Validat
 }
 
 type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics struct {
+	// The statistics of tag value counts.
 	TagValueCountStatistic []*GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic `json:"TagValueCountStatistic,omitempty" xml:"TagValueCountStatistic,omitempty" type:"Repeated"`
 }
 
@@ -282,14 +304,20 @@ func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDim
 }
 
 type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic struct {
+	// The tag name.
+	//
 	// example:
 	//
 	// xxx
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// The type of the tag mining task. Valid values: \\`singleTagValue\\` (single tag), \\`multiTagValues\\` (multiple tags), and \\`summaryAndOverview\\` (summary and overview).
+	//
 	// example:
 	//
 	// multiTagValues
 	TagTaskType *string `json:"TagTaskType,omitempty" xml:"TagTaskType,omitempty"`
+	// The number of tag values.
+	//
 	// example:
 	//
 	// 100
@@ -336,6 +364,7 @@ func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDim
 }
 
 type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics struct {
+	// The statistics of tag value counts.
 	TagValueCountStatistic []*GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic `json:"TagValueCountStatistic,omitempty" xml:"TagValueCountStatistic,omitempty" type:"Repeated"`
 }
 
@@ -370,14 +399,20 @@ func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimens
 }
 
 type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic struct {
+	// The tag name.
+	//
 	// example:
 	//
 	// xxx
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// The type of the tag mining task. Valid values: \\`singleTagValue\\` (single tag), \\`multiTagValues\\` (multiple tags), and \\`summaryAndOverview\\` (summary and overview).
+	//
 	// example:
 	//
 	// multiTagValues
 	TagTaskType *string `json:"TagTaskType,omitempty" xml:"TagTaskType,omitempty"`
+	// The number of tag values.
+	//
 	// example:
 	//
 	// 100
@@ -424,10 +459,14 @@ func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimens
 }
 
 type GetEnterpriseVocAnalysisTaskResponseBodyDataUsage struct {
+	// The number of input tokens.
+	//
 	// example:
 	//
 	// 200
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The number of output tokens.
+	//
 	// example:
 	//
 	// 100

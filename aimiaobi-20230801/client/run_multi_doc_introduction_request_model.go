@@ -24,17 +24,38 @@ type iRunMultiDocIntroductionRequest interface {
 }
 
 type RunMultiDocIntroductionRequest struct {
+	// Array of document IDs.
+	//
 	// This parameter is required.
-	DocIds         []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
-	KeyPointPrompt *string   `json:"KeyPointPrompt,omitempty" xml:"KeyPointPrompt,omitempty"`
-	ModelName      *string   `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	DocIds []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	// Custom prompt for key points.
+	//
+	// example:
+	//
+	// 请简明扼要
+	KeyPointPrompt *string `json:"KeyPointPrompt,omitempty" xml:"KeyPointPrompt,omitempty"`
+	// Name of the custom model to use.
+	//
+	// example:
+	//
+	// quanmiao-max、quanmiao-plus
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 75bf82fa-b71b-45d7-ae40-0b00e496cd9e
-	SessionId     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Custom prompt for the summary.
+	//
+	// example:
+	//
+	// 请简明扼要
 	SummaryPrompt *string `json:"SummaryPrompt,omitempty" xml:"SummaryPrompt,omitempty"`
+	// Unique identifier of the Alibaba Cloud Model Studio workspace. To get this ID, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

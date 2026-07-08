@@ -24,18 +24,26 @@ type iConfirmAndPostProcessAuditNoteResponseBody interface {
 }
 
 type ConfirmAndPostProcessAuditNoteResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// DataNotExists
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The task ID obtained after confirming the use of this parsing result. It is consistent with the input parameter, returned here for your convenience.
+	//
 	// example:
 	//
 	// 33
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// success
@@ -46,6 +54,8 @@ type ConfirmAndPostProcessAuditNoteResponseBody struct {
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates if the request was successful
+	//
 	// example:
 	//
 	// true

@@ -18,8 +18,12 @@ type iRunSearchGenerationResponseBody interface {
 }
 
 type RunSearchGenerationResponseBody struct {
-	Header  *RunSearchGenerationResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response header.
+	Header *RunSearchGenerationResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body.
 	Payload *RunSearchGenerationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Unique request identifier.
+	//
 	// example:
 	//
 	// xx
@@ -76,38 +80,56 @@ func (s *RunSearchGenerationResponseBody) Validate() error {
 }
 
 type RunSearchGenerationResponseBodyHeader struct {
+	// Error code.
+	//
 	// example:
 	//
 	// AccessForbid
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// xx
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// SSE event.
+	//
 	// example:
 	//
 	// task-failed
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Event description.
+	//
 	// example:
 	//
 	// xx
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// Source session ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// Response time, in milliseconds (ms).
+	//
 	// example:
 	//
 	// 1
 	ResponseTime *int64 `json:"ResponseTime,omitempty" xml:"ResponseTime,omitempty"`
+	// Conversation ID.
+	//
 	// example:
 	//
 	// x
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// x
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Full link ID.
+	//
 	// example:
 	//
 	// xx
@@ -208,8 +230,10 @@ func (s *RunSearchGenerationResponseBodyHeader) Validate() error {
 }
 
 type RunSearchGenerationResponseBodyPayload struct {
+	// Outputs.
 	Output *RunSearchGenerationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunSearchGenerationResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage.
+	Usage *RunSearchGenerationResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunSearchGenerationResponseBodyPayload) String() string {
@@ -253,8 +277,10 @@ func (s *RunSearchGenerationResponseBodyPayload) Validate() error {
 }
 
 type RunSearchGenerationResponseBodyPayloadOutput struct {
+	// Context data.
 	AgentContext *RunSearchGenerationResponseBodyPayloadOutputAgentContext `json:"AgentContext,omitempty" xml:"AgentContext,omitempty" type:"Struct"`
-	Messages     []*RunSearchGenerationResponseBodyPayloadOutputMessages   `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// List of messages in research mode.
+	Messages []*RunSearchGenerationResponseBodyPayloadOutputMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
 }
 
 func (s RunSearchGenerationResponseBodyPayloadOutput) String() string {
@@ -302,6 +328,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContext struct {
+	// Business context.
 	BizContext *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext `json:"BizContext,omitempty" xml:"BizContext,omitempty" type:"Struct"`
 }
 
@@ -332,33 +359,54 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContext) Validate() er
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext struct {
+	// Follow-up question.
+	//
 	// example:
 	//
 	// 您想了解关于xx的哪些信息？
-	AskUser         *string   `json:"AskUser,omitempty" xml:"AskUser,omitempty"`
+	AskUser *string `json:"AskUser,omitempty" xml:"AskUser,omitempty"`
+	// List of recommended keywords for follow-up questions.
 	AskUserKeywords []*string `json:"AskUserKeywords,omitempty" xml:"AskUserKeywords,omitempty" type:"Repeated"`
+	// Current step in the task.
+	//
 	// example:
 	//
 	// start
-	CurrentStep      *string                                                                             `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
+	CurrentStep *string `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
+	// Generated content.
 	GeneratedContent *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent `json:"GeneratedContent,omitempty" xml:"GeneratedContent,omitempty" type:"Struct"`
-	ModelId          *string                                                                             `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// Model ID.
+	//
+	// example:
+	//
+	// xx
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// Next step: think, search, or generate.
+	//
 	// example:
 	//
 	// search
-	NextStep                 *string   `json:"NextStep,omitempty" xml:"NextStep,omitempty"`
+	NextStep *string `json:"NextStep,omitempty" xml:"NextStep,omitempty"`
+	// Generation - list of recommendations.
 	RecommendSearchQueryList []*string `json:"RecommendSearchQueryList,omitempty" xml:"RecommendSearchQueryList,omitempty" type:"Repeated"`
-	SearchKeywords           []*string `json:"SearchKeywords,omitempty" xml:"SearchKeywords,omitempty" type:"Repeated"`
-	SearchQueryList          []*string `json:"SearchQueryList,omitempty" xml:"SearchQueryList,omitempty" type:"Repeated"`
+	// Reasoning - list of query understanding keywords.
+	SearchKeywords []*string `json:"SearchKeywords,omitempty" xml:"SearchKeywords,omitempty" type:"Repeated"`
+	// List of text search queries.
+	SearchQueryList []*string `json:"SearchQueryList,omitempty" xml:"SearchQueryList,omitempty" type:"Repeated"`
+	// Reasoning - data type to supplement: searchQuery.
+	//
 	// example:
 	//
 	// searchQuery
 	SupplementDataType *string `json:"SupplementDataType,omitempty" xml:"SupplementDataType,omitempty"`
+	// Reasoning - whether supplementation is needed.
+	//
 	// example:
 	//
 	// true
-	SupplementEnable *bool                                                                             `json:"SupplementEnable,omitempty" xml:"SupplementEnable,omitempty"`
-	TokenCalculate   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate `json:"TokenCalculate,omitempty" xml:"TokenCalculate,omitempty" type:"Struct"`
+	SupplementEnable *bool `json:"SupplementEnable,omitempty" xml:"SupplementEnable,omitempty"`
+	// Runtime performance statistics.
+	TokenCalculate *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate `json:"TokenCalculate,omitempty" xml:"TokenCalculate,omitempty" type:"Struct"`
 }
 
 func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) String() string {
@@ -492,15 +540,24 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) Val
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent struct {
-	AudioSearchResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult  `json:"AudioSearchResult,omitempty" xml:"AudioSearchResult,omitempty" type:"Struct"`
+	// Voice search result.
+	AudioSearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult `json:"AudioSearchResult,omitempty" xml:"AudioSearchResult,omitempty" type:"Struct"`
+	// Clustering result.
 	ClusterTopicResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult `json:"ClusterTopicResult,omitempty" xml:"ClusterTopicResult,omitempty" type:"Struct"`
-	ExcerptResult      *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult      `json:"ExcerptResult,omitempty" xml:"ExcerptResult,omitempty" type:"Struct"`
-	ImageSearchResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult  `json:"ImageSearchResult,omitempty" xml:"ImageSearchResult,omitempty" type:"Struct"`
-	NewsElementResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult  `json:"NewsElementResult,omitempty" xml:"NewsElementResult,omitempty" type:"Struct"`
+	// Result of answering with original sentences.
+	ExcerptResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult `json:"ExcerptResult,omitempty" xml:"ExcerptResult,omitempty" type:"Struct"`
+	// Image search result.
+	ImageSearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult `json:"ImageSearchResult,omitempty" xml:"ImageSearchResult,omitempty" type:"Struct"`
+	// News extraction result.
+	NewsElementResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult `json:"NewsElementResult,omitempty" xml:"NewsElementResult,omitempty" type:"Struct"`
+	// Summarized answer.
 	TextGenerateResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult `json:"TextGenerateResult,omitempty" xml:"TextGenerateResult,omitempty" type:"Struct"`
-	TextSearchResult   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult   `json:"TextSearchResult,omitempty" xml:"TextSearchResult,omitempty" type:"Struct"`
-	TimelineResult     *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult     `json:"TimelineResult,omitempty" xml:"TimelineResult,omitempty" type:"Struct"`
-	VideoSearchResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult  `json:"VideoSearchResult,omitempty" xml:"VideoSearchResult,omitempty" type:"Struct"`
+	// Text document search result.
+	TextSearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult `json:"TextSearchResult,omitempty" xml:"TextSearchResult,omitempty" type:"Struct"`
+	// Result of summarizing by time.
+	TimelineResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult `json:"TimelineResult,omitempty" xml:"TimelineResult,omitempty" type:"Struct"`
+	// Video search result.
+	VideoSearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult `json:"VideoSearchResult,omitempty" xml:"VideoSearchResult,omitempty" type:"Struct"`
 }
 
 func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) String() string {
@@ -642,6 +699,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult struct {
+	// Voice search result.
 	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
 }
 
@@ -676,16 +734,24 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult struct {
-	Article   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle     `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// Associated document.
+	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// List of matching segments.
 	ClipInfos []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// URL.
+	//
 	// example:
 	//
 	// http://xxx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// ID.
+	//
 	// example:
 	//
 	// xxx
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Unique traceability identifier.
+	//
 	// example:
 	//
 	// 1
@@ -764,31 +830,64 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle struct {
+	// Unique category identifier.
+	//
+	// example:
+	//
+	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// UUID.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1.
+	//
+	// example:
+	//
+	// xx
 	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2.
+	//
+	// example:
+	//
+	// xx
 	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3.
+	//
+	// example:
+	//
+	// xx
 	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Search source.
+	//
 	// example:
 	//
 	// xx
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Summary.
+	//
 	// example:
 	//
 	// xxx
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// List of tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Title.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// URL.
+	//
 	// example:
 	//
 	// http://xxx
@@ -907,22 +1006,32 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos struct {
+	// Start position.
+	//
 	// example:
 	//
 	// 1
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// Threshold.
+	//
 	// example:
 	//
 	// 0.9
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Text content.
+	//
 	// example:
 	//
 	// xx
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// End position.
+	//
 	// example:
 	//
 	// 2
 	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+	// Text type.
+	//
 	// example:
 	//
 	// asr
@@ -987,11 +1096,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult struct {
+	// List of clusters.
 	ClusterTopics []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics `json:"ClusterTopics,omitempty" xml:"ClusterTopics,omitempty" type:"Repeated"`
+	// Indicates whether the current agent has finished generating.
+	//
 	// example:
 	//
 	// true
 	GenerateFinished *bool `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	// Text result.
+	//
 	// example:
 	//
 	// xx
@@ -1047,13 +1161,19 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics struct {
+	// Audio result
 	AudioSearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult `json:"AudioSearchResult,omitempty" xml:"AudioSearchResult,omitempty" type:"Struct"`
+	// Image search result.
 	ImageSearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult `json:"ImageSearchResult,omitempty" xml:"ImageSearchResult,omitempty" type:"Struct"`
-	TextSearchResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult  `json:"TextSearchResult,omitempty" xml:"TextSearchResult,omitempty" type:"Struct"`
+	// Document search results
+	TextSearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult `json:"TextSearchResult,omitempty" xml:"TextSearchResult,omitempty" type:"Struct"`
+	// Topic.
+	//
 	// example:
 	//
 	// xx
-	Topic             *string                                                                                                                             `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// Video search results
 	VideoSearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult `json:"VideoSearchResult,omitempty" xml:"VideoSearchResult,omitempty" type:"Struct"`
 }
 
@@ -1135,15 +1255,22 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult struct {
+	// Current page
+	//
 	// example:
 	//
 	// 1
-	Current      *int32                                                                                                                                          `json:"Current,omitempty" xml:"Current,omitempty"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Audio search results
 	SearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Struct"`
+	// Size
+	//
 	// example:
 	//
 	// 1
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 1
@@ -1204,12 +1331,18 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult struct {
-	Article   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle     `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// Corresponding document
+	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// List of matching information
 	ClipInfos []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// URL
+	//
 	// example:
 	//
 	// http://xx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The ID.
+	//
 	// example:
 	//
 	// xxx
@@ -1279,33 +1412,76 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle struct {
+	// Category identity
+	//
+	// example:
+	//
+	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// docId
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// docUuid
+	//
 	// example:
 	//
 	// xx
-	DocUuid      *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
-	Extend1      *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
-	Extend2      *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
-	Extend3      *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1
+	//
+	// example:
+	//
+	// xx
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2
+	//
+	// example:
+	//
+	// xx
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3
+	//
+	// example:
+	//
+	// xx
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Unique identifier of the dataset
+	//
+	// example:
+	//
+	// xx
 	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// Search source
+	//
 	// example:
 	//
 	// xx
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
-	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// The type of the dataset.
+	//
 	// example:
 	//
 	// xx
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// Summary
+	//
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Tag name
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Title
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the article.
+	//
 	// example:
 	//
 	// http://xx
@@ -1442,22 +1618,32 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos struct {
+	// Start position
+	//
 	// example:
 	//
 	// 1
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// The threshold.
+	//
 	// example:
 	//
 	// 1
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Text content
+	//
 	// example:
 	//
 	// xx
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The end position.
+	//
 	// example:
 	//
 	// 1
 	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+	// Type
+	//
 	// example:
 	//
 	// asr
@@ -1522,15 +1708,22 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	Current      *int32                                                                                                                                            `json:"Current,omitempty" xml:"Current,omitempty"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// List of search results.
 	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	// Records per page.
+	//
 	// example:
 	//
 	// 1
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Total records.
+	//
 	// example:
 	//
 	// 1
@@ -1595,11 +1788,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult struct {
+	// Article.
 	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// File URL.
+	//
 	// example:
 	//
 	// xx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Unique multimodal data identifier.
+	//
 	// example:
 	//
 	// xx
@@ -1651,33 +1849,76 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle struct {
+	// Unique category identifier.
+	//
+	// example:
+	//
+	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// Custom unique document ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
-	DocUuid      *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
-	Extend1      *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
-	Extend2      *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
-	Extend3      *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1.
+	//
+	// example:
+	//
+	// xx
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2.
+	//
+	// example:
+	//
+	// xx
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3.
+	//
+	// example:
+	//
+	// xx
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Dataset unique identifier.
+	//
+	// example:
+	//
+	// xx
 	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// Search source name.
+	//
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
-	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// Dataset type.
+	//
 	// example:
 	//
 	// xx
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// Summary.
+	//
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Title.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL.
+	//
 	// example:
 	//
 	// xx
@@ -1814,15 +2055,22 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult struct {
+	// Current page number
+	//
 	// example:
 	//
 	// 1
-	Current      *int32                                                                                                                                           `json:"Current,omitempty" xml:"Current,omitempty"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Search results list
 	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 1
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -1887,44 +2135,84 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult struct {
+	// Category unique identifier
+	//
+	// example:
+	//
+	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// The custom unique ID of the document.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Unique identifier for internal documents.
+	//
 	// example:
 	//
 	// xx
-	DocUuid          *string                                                                                                                                                          `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
-	Extend1          *string                                                                                                                                                          `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
-	Extend2          *string                                                                                                                                                          `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
-	Extend3          *string                                                                                                                                                          `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1
+	//
+	// example:
+	//
+	// xx
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2
+	//
+	// example:
+	//
+	// xx
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3
+	//
+	// example:
+	//
+	// xx
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// A list of multimodal information.
 	MultimodalMedias []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias `json:"MultimodalMedias,omitempty" xml:"MultimodalMedias,omitempty" type:"Repeated"`
+	// Publication time, in the format yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2023-04-04 08:39:09
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The unique identifier of the search source. This is the same as searchSource.datasetName.
+	//
 	// example:
 	//
 	// QuarkCommonNews
 	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// The name of the search source.
+	//
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Search source type, same as searchSource.code.
+	//
 	// example:
 	//
 	// SystemSearch
 	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// Summary
+	//
 	// example:
 	//
 	// xx
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Tags
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Title
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL
+	//
 	// example:
 	//
 	// xx
@@ -2088,14 +2376,24 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias struct {
+	// The URL of the file.
+	//
 	// example:
 	//
 	// xx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The unique ID of the multimodal data.
+	//
 	// example:
 	//
 	// xx
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Multimodal data file type. Valid values:
+	//
+	// - video: Video.
+	//
+	// - image: Image.
+	//
 	// example:
 	//
 	// image
@@ -2142,15 +2440,22 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	Current      *int32                                                                                                                                            `json:"Current,omitempty" xml:"Current,omitempty"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Search results
 	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 1
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Total records
+	//
 	// example:
 	//
 	// 1
@@ -2215,12 +2520,18 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult struct {
-	Article   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle     `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// Article
+	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// A list of matching information.
 	ClipInfos []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// The URL of the file.
+	//
 	// example:
 	//
 	// xx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Unique identifier for the multimodal data
+	//
 	// example:
 	//
 	// xx
@@ -2290,33 +2601,76 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle struct {
+	// Category
+	//
+	// example:
+	//
+	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// Document: a custom unique ID
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The unique identifier of the internal document.
+	//
 	// example:
 	//
 	// xx
-	DocUuid      *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
-	Extend1      *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
-	Extend2      *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
-	Extend3      *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1
+	//
+	// example:
+	//
+	// xx
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2
+	//
+	// example:
+	//
+	// xx
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3
+	//
+	// example:
+	//
+	// x
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// The unique identifier of the dataset.
+	//
+	// example:
+	//
+	// xx
 	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// The name of the search source.
+	//
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
-	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// Dataset type
+	//
 	// example:
 	//
 	// xx
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// Summary
+	//
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Tags
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Title
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the article.
+	//
 	// example:
 	//
 	// xx
@@ -2453,22 +2807,32 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos struct {
+	// Start time
+	//
 	// example:
 	//
 	// 1
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// Reference confidence level
+	//
 	// example:
 	//
 	// 0.9
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Corresponding text, such as ASR transcription results.
+	//
 	// example:
 	//
 	// xx
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// End time
+	//
 	// example:
 	//
 	// 1
 	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+	// Text type, such as ASR.
+	//
 	// example:
 	//
 	// asr
@@ -2533,16 +2897,32 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult struct {
+	// Indicates whether the current agent has finished generating.
+	//
 	// example:
 	//
 	// true
 	GenerateFinished *bool `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	// Detailedness of the response:
+	//
+	// - concise: Concise (default)
+	//
+	// - enhance: Enhanced
+	//
 	// example:
 	//
 	// concise
-	GenerateLevel      *string                                                                                                        `json:"GenerateLevel,omitempty" xml:"GenerateLevel,omitempty"`
-	ReasonTextGenerate *string                                                                                                        `json:"ReasonTextGenerate,omitempty" xml:"ReasonTextGenerate,omitempty"`
-	SearchResult       []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	GenerateLevel *string `json:"GenerateLevel,omitempty" xml:"GenerateLevel,omitempty"`
+	// Deep thinking content.
+	//
+	// example:
+	//
+	// xx
+	ReasonTextGenerate *string `json:"ReasonTextGenerate,omitempty" xml:"ReasonTextGenerate,omitempty"`
+	// List of search results.
+	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	// Generated text.
+	//
 	// example:
 	//
 	// xx
@@ -2616,66 +2996,118 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult struct {
-	CategoryUuid *string   `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
-	Chunks       []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	// Unique category identifier.
+	//
+	// example:
+	//
+	// xx
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// List of chunks.
+	Chunks []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	// Body.
+	//
 	// example:
 	//
 	// xx
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Custom unique document ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Content answered with original sentences.
+	//
 	// example:
 	//
 	// xx
-	Excerpt          *string                                                                                                                        `json:"Excerpt,omitempty" xml:"Excerpt,omitempty"`
-	Extend1          *string                                                                                                                        `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
-	Extend2          *string                                                                                                                        `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
-	Extend3          *string                                                                                                                        `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	Excerpt *string `json:"Excerpt,omitempty" xml:"Excerpt,omitempty"`
+	// Extension field 1.
+	//
+	// example:
+	//
+	// xx
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2.
+	//
+	// example:
+	//
+	// xx
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3.
+	//
+	// example:
+	//
+	// xx
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// List of multimodal information items.
 	MultimodalMedias []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias `json:"MultimodalMedias,omitempty" xml:"MultimodalMedias,omitempty" type:"Repeated"`
+	// Publication time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2023-04-04 08:39:09
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Confidence score. For reference only.
+	//
 	// example:
 	//
 	// 0.99
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Search source unique identifier. Same as searchSource.datasetName.
+	//
 	// example:
 	//
 	// QuarkCommonNews
 	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// Search source name.
+	//
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Search source type. Same as searchSource.code.
+	//
 	// example:
 	//
 	// SystemSearch
 	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// Indicates whether it is a reference.
+	//
 	// example:
 	//
 	// true
 	Select *bool `json:"Select,omitempty" xml:"Select,omitempty"`
+	// Summary.
+	//
 	// example:
 	//
 	// xx
-	Summary                         *string                                                                                                                                       `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags                            []*string                                                                                                                                     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Tag name.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// List of accompanying images.
 	TextGenerateMultimodalMediaList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList `json:"TextGenerateMultimodalMediaList,omitempty" xml:"TextGenerateMultimodalMediaList,omitempty" type:"Repeated"`
+	// Title.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Traceability ID.
+	//
 	// example:
 	//
 	// 1
 	TraceabilityId *int32 `json:"TraceabilityId,omitempty" xml:"TraceabilityId,omitempty"`
+	// Article URL.
+	//
 	// example:
 	//
 	// xx
@@ -2911,14 +3343,24 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias struct {
+	// File URL.
+	//
 	// example:
 	//
 	// xx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Unique multimodal data identifier.
+	//
 	// example:
 	//
 	// xx
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Multimodal file type. Valid values:
+	//
+	// - video: video
+	//
+	// - image: image
+	//
 	// example:
 	//
 	// image
@@ -2965,15 +3407,22 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList struct {
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// End position.
+	//
 	// example:
 	//
 	// 1
-	End                 *int32                                                                                                                                                           `json:"End,omitempty" xml:"End,omitempty"`
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// List of multimodal data.
 	MultimodalMediaList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList `json:"MultimodalMediaList,omitempty" xml:"MultimodalMediaList,omitempty" type:"Repeated"`
+	// Start position.
+	//
 	// example:
 	//
 	// 1
@@ -3038,15 +3487,22 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList struct {
+	// Article.
 	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// File URL.
+	//
 	// example:
 	//
 	// xx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Unique multimodal data identifier.
+	//
 	// example:
 	//
 	// xx
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Multimodal file type. Valid values: video, image.
+	//
 	// example:
 	//
 	// image
@@ -3107,22 +3563,32 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle struct {
+	// Custom unique document ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Search source name.
+	//
 	// example:
 	//
-	// xxx
+	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Title.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL.
+	//
 	// example:
 	//
 	// xx
@@ -3187,6 +3653,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult struct {
+	// List of search results.
 	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
 }
 
@@ -3221,15 +3688,22 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult struct {
+	// Article.
 	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// File URL.
+	//
 	// example:
 	//
 	// xx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Media data unique identifier.
+	//
 	// example:
 	//
 	// xx
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Unique traceability identifier.
+	//
 	// example:
 	//
 	// 1
@@ -3290,31 +3764,64 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle struct {
+	// Unique category identifier.
+	//
+	// example:
+	//
+	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// Custom unique document ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1.
+	//
+	// example:
+	//
+	// xx
 	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2.
+	//
+	// example:
+	//
+	// xx
 	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3.
+	//
+	// example:
+	//
+	// xx
 	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Search source name.
+	//
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Article summary.
+	//
 	// example:
 	//
 	// xx
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Tag name.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Title.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL.
+	//
 	// example:
 	//
 	// xx
@@ -3433,11 +3940,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult struct {
+	// Indicates whether the current agent has finished generating.
+	//
 	// example:
 	//
 	// true
-	GenerateFinished       *bool                                                                                                                        `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	GenerateFinished *bool `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	// List of news extractions.
 	NewsElementArticleList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList `json:"NewsElementArticleList,omitempty" xml:"NewsElementArticleList,omitempty" type:"Repeated"`
+	// Generated text content.
+	//
 	// example:
 	//
 	// x
@@ -3493,8 +4005,12 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList struct {
-	Article         *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle           `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// Article.
+	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// List of news items.
 	NewsElementList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList `json:"NewsElementList,omitempty" xml:"NewsElementList,omitempty" type:"Repeated"`
+	// Generated text content.
+	//
 	// example:
 	//
 	// xx
@@ -3555,55 +4071,100 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle struct {
+	// Unique category identifier.
+	//
+	// example:
+	//
+	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// Body.
+	//
 	// example:
 	//
 	// xx
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Custom unique document ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1.
+	//
+	// example:
+	//
+	// xx
 	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2.
+	//
+	// example:
+	//
+	// xx
 	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3.
+	//
+	// example:
+	//
+	// xx
 	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Publication time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2023-04-04 08:39:09
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Confidence score. For reference only.
+	//
 	// example:
 	//
 	// 0.99
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Search source unique identifier. Same as searchSource.datasetName.
+	//
 	// example:
 	//
 	// QuarkCommonNews
 	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// Search source name.
+	//
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Search source type. Same as searchSource.code.
+	//
 	// example:
 	//
 	// SystemSearch
 	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// Indicates whether it is a reference.
+	//
 	// example:
 	//
 	// true
 	Select *bool `json:"Select,omitempty" xml:"Select,omitempty"`
+	// Summary.
+	//
 	// example:
 	//
 	// xx
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Tag name.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Title.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL.
+	//
 	// example:
 	//
 	// xx
@@ -3776,18 +4337,26 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList struct {
+	// Event.
+	//
 	// example:
 	//
 	// task-started
 	Event *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent `json:"Event,omitempty" xml:"Event,omitempty" type:"Struct"`
+	// Location.
+	//
 	// example:
 	//
 	// xx
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// People.
+	//
 	// example:
 	//
 	// xx
 	People *string `json:"People,omitempty" xml:"People,omitempty"`
+	// Time.
+	//
 	// example:
 	//
 	// 时间
@@ -3848,9 +4417,12 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent struct {
-	CauseList   []*string `json:"CauseList,omitempty" xml:"CauseList,omitempty" type:"Repeated"`
+	// List of causes.
+	CauseList []*string `json:"CauseList,omitempty" xml:"CauseList,omitempty" type:"Repeated"`
+	// List of processes.
 	ProcessList []*string `json:"ProcessList,omitempty" xml:"ProcessList,omitempty" type:"Repeated"`
-	ResultList  []*string `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
+	// List of results.
+	ResultList []*string `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
 }
 
 func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent) String() string {
@@ -3893,22 +4465,41 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult struct {
+	// Indicates whether the current agent has finished generating.
+	//
 	// example:
 	//
 	// true
 	GenerateFinished *bool `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	// Detailedness of the response:
+	//
+	// - concise: Concise (default)
+	//
+	// - enhance: Enhanced
+	//
 	// example:
 	//
 	// concise
-	GenerateLevel              *string                                                                                                                           `json:"GenerateLevel,omitempty" xml:"GenerateLevel,omitempty"`
-	GenerateTraceability       *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability         `json:"GenerateTraceability,omitempty" xml:"GenerateTraceability,omitempty" type:"Struct"`
+	GenerateLevel *string `json:"GenerateLevel,omitempty" xml:"GenerateLevel,omitempty"`
+	// Traceability information.
+	GenerateTraceability *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability `json:"GenerateTraceability,omitempty" xml:"GenerateTraceability,omitempty" type:"Struct"`
+	// List of multimodal search results.
 	MultimodalSearchResultList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList `json:"MultimodalSearchResultList,omitempty" xml:"MultimodalSearchResultList,omitempty" type:"Repeated"`
-	ReasonTextGenerate         *string                                                                                                                           `json:"ReasonTextGenerate,omitempty" xml:"ReasonTextGenerate,omitempty"`
-	ReferenceList              []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList              `json:"ReferenceList,omitempty" xml:"ReferenceList,omitempty" type:"Repeated"`
+	// Deep thinking content.
+	//
 	// example:
 	//
 	// xx
-	TextGenerate                    *string                                                                                                                                `json:"TextGenerate,omitempty" xml:"TextGenerate,omitempty"`
+	ReasonTextGenerate *string `json:"ReasonTextGenerate,omitempty" xml:"ReasonTextGenerate,omitempty"`
+	// List of reference articles.
+	ReferenceList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList `json:"ReferenceList,omitempty" xml:"ReferenceList,omitempty" type:"Repeated"`
+	// Text generation result.
+	//
+	// example:
+	//
+	// xx
+	TextGenerate *string `json:"TextGenerate,omitempty" xml:"TextGenerate,omitempty"`
+	// List of accompanying images.
 	TextGenerateMultimodalMediaList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList `json:"TextGenerateMultimodalMediaList,omitempty" xml:"TextGenerateMultimodalMediaList,omitempty" type:"Repeated"`
 }
 
@@ -4029,7 +4620,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability struct {
+	// List of traceability locations.
 	Coordinates []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
+	// Overall traceability relevance.
+	//
 	// example:
 	//
 	// 0.9
@@ -4076,8 +4670,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates struct {
+	// Coordinates of the generated document block.
 	GenerateCoordinate *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate `json:"GenerateCoordinate,omitempty" xml:"GenerateCoordinate,omitempty" type:"Struct"`
-	NewsCoordinate     *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate     `json:"NewsCoordinate,omitempty" xml:"NewsCoordinate,omitempty" type:"Struct"`
+	// Coordinates of the reference document block.
+	NewsCoordinate *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate `json:"NewsCoordinate,omitempty" xml:"NewsCoordinate,omitempty" type:"Struct"`
 }
 
 func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates) String() string {
@@ -4121,14 +4717,20 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate struct {
+	// Number, starting from 1.
+	//
 	// example:
 	//
 	// 1
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// Start position.
+	//
 	// example:
 	//
 	// 1
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// End position.
+	//
 	// example:
 	//
 	// 1
@@ -4175,18 +4777,26 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate struct {
+	// Media asset type.
+	//
 	// example:
 	//
 	// image
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Number, starting from 1.
+	//
 	// example:
 	//
 	// 1
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// Start position.
+	//
 	// example:
 	//
 	// 1
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// End position.
+	//
 	// example:
 	//
 	// 1
@@ -4242,27 +4852,40 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList struct {
+	// Current page.
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Search query.
+	//
 	// example:
 	//
 	// xx
-	SearchQuery  *string                                                                                                                                       `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	SearchQuery *string `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	// List of search results.
 	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	// Search type.
+	//
 	// example:
 	//
 	// realtime
 	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
+	// Items per page.
+	//
 	// example:
 	//
 	// 1
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Timeline date.
+	//
 	// example:
 	//
 	// 时间脉络-时间
 	TimelineDateStr *string `json:"TimelineDateStr,omitempty" xml:"TimelineDateStr,omitempty"`
+	// Total items.
+	//
 	// example:
 	//
 	// 1
@@ -4354,16 +4977,24 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult struct {
-	Article   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle     `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// Article.
+	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// List of matching segments.
 	ClipInfos []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// File URL.
+	//
 	// example:
 	//
 	// xx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Media asset ID.
+	//
 	// example:
 	//
 	// xx
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Multimodal file type. Valid values: video, image.
+	//
 	// example:
 	//
 	// image
@@ -4442,26 +5073,38 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle struct {
+	// Custom unique document ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Search source name.
+	//
 	// example:
 	//
 	// xx
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Summary.
+	//
 	// example:
 	//
 	// xx
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Title.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL.
+	//
 	// example:
 	//
 	// xx
@@ -4535,22 +5178,32 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos struct {
+	// Start time.
+	//
 	// example:
 	//
 	// 1
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// Confidence score. For reference only.
+	//
 	// example:
 	//
 	// 0.1
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Corresponding text, such as ASR transcription.
+	//
 	// example:
 	//
 	// xx
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 1
 	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+	// Type. Example: asr.
+	//
 	// example:
 	//
 	// asr
@@ -4615,64 +5268,114 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList struct {
-	CategoryUuid *string   `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
-	Chunks       []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	// Category unique identifier
+	//
+	// example:
+	//
+	// xx
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// List of chunks.
+	Chunks []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	// Body.
+	//
 	// example:
 	//
 	// xx
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Custom unique document ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1.
+	//
+	// example:
+	//
+	// xx
 	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2.
+	//
+	// example:
+	//
+	// xx
 	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3.
+	//
+	// example:
+	//
+	// xx
 	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Publication time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2023-04-04 08:39:09
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Confidence score. For reference only.
+	//
 	// example:
 	//
 	// 0.99
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Search source unique identifier. Same as searchSource.datasetName.
+	//
 	// example:
 	//
 	// QuarkCommonNews
 	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// Search source name.
+	//
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Search source type. Same as searchSource.code.
+	//
 	// example:
 	//
 	// SystemSearch
 	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// Indicates whether it is a reference.
+	//
 	// example:
 	//
 	// true
 	Select *bool `json:"Select,omitempty" xml:"Select,omitempty"`
+	// Source.
+	//
 	// example:
 	//
 	// 新华社
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Summary.
+	//
 	// example:
 	//
 	// xx
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Tag name.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Title.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Traceability ID.
+	//
 	// example:
 	//
 	// 1
 	TraceabilityId *int32 `json:"TraceabilityId,omitempty" xml:"TraceabilityId,omitempty"`
+	// Article URL.
+	//
 	// example:
 	//
 	// xx
@@ -4872,11 +5575,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList struct {
+	// End position.
+	//
 	// example:
 	//
 	// 1
-	End                 *int32                                                                                                                                                    `json:"End,omitempty" xml:"End,omitempty"`
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// List of multimodal data.
 	MultimodalMediaList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList `json:"MultimodalMediaList,omitempty" xml:"MultimodalMediaList,omitempty" type:"Repeated"`
+	// Start position.
+	//
 	// example:
 	//
 	// 1
@@ -4932,15 +5640,22 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList struct {
+	// Article.
 	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// File URL.
+	//
 	// example:
 	//
 	// xx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Media asset ID.
+	//
 	// example:
 	//
 	// xx
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Multimodal file type. Valid values: video, image.
+	//
 	// example:
 	//
 	// image
@@ -5001,26 +5716,38 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle struct {
+	// Custom unique document ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Search source name.
+	//
 	// example:
 	//
 	// xx
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Summary.
+	//
 	// example:
 	//
 	// xx
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Title.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL.
+	//
 	// example:
 	//
 	// xx
@@ -5094,10 +5821,26 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult struct {
-	Current      *int32                                                                                                            `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Current page.
+	//
+	// example:
+	//
+	// 1
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// The structure of the search result.
 	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
-	Size         *int32                                                                                                            `json:"Size,omitempty" xml:"Size,omitempty"`
-	Total        *int32                                                                                                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Current page size.
+	//
+	// example:
+	//
+	// 1
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Total count.
+	//
+	// example:
+	//
+	// 1
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult) String() string {
@@ -5158,51 +5901,94 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult struct {
+	// Unique category identifier.
+	//
+	// example:
+	//
+	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// Body.
+	//
 	// example:
 	//
 	// xx
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Unique document business identifier.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// System internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1.
+	//
+	// example:
+	//
+	// xx
 	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2.
+	//
+	// example:
+	//
+	// xx
 	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3.
+	//
+	// example:
+	//
+	// xx
 	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Publication time.
+	//
 	// example:
 	//
 	// 2024-11-25 14:25:59
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Data source unique identifier.
+	//
 	// example:
 	//
 	// QuarkCommonNews
 	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// Data source description.
+	//
 	// example:
 	//
 	// xxx
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Data source type.
+	//
 	// example:
 	//
 	// SystemSearch
 	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// Summary.
+	//
 	// example:
 	//
 	// xx
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Tag name.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Title.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Unique traceability identifier.
+	//
 	// example:
 	//
 	// 1
 	TraceabilityId *string `json:"TraceabilityId,omitempty" xml:"TraceabilityId,omitempty"`
+	// URL.
+	//
 	// example:
 	//
 	// xx
@@ -5366,18 +6152,31 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult struct {
+	// Indicates whether the current agent has finished generating.
+	//
 	// example:
 	//
 	// true
-	GenerateFinished           *bool                                                                                                                         `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
-	GenerateTraceability       *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability         `json:"GenerateTraceability,omitempty" xml:"GenerateTraceability,omitempty" type:"Struct"`
+	GenerateFinished *bool `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	// Traceability information.
+	GenerateTraceability *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability `json:"GenerateTraceability,omitempty" xml:"GenerateTraceability,omitempty" type:"Struct"`
+	// List of multimodal search results.
 	MultimodalSearchResultList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList `json:"MultimodalSearchResultList,omitempty" xml:"MultimodalSearchResultList,omitempty" type:"Repeated"`
-	ReasonTextGenerate         *string                                                                                                                       `json:"ReasonTextGenerate,omitempty" xml:"ReasonTextGenerate,omitempty"`
-	ReferenceList              []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList              `json:"ReferenceList,omitempty" xml:"ReferenceList,omitempty" type:"Repeated"`
+	// Deep thinking content.
+	//
 	// example:
 	//
 	// xx
-	TextGenerate                    *string                                                                                                                            `json:"TextGenerate,omitempty" xml:"TextGenerate,omitempty"`
+	ReasonTextGenerate *string `json:"ReasonTextGenerate,omitempty" xml:"ReasonTextGenerate,omitempty"`
+	// List of reference articles.
+	ReferenceList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList `json:"ReferenceList,omitempty" xml:"ReferenceList,omitempty" type:"Repeated"`
+	// Text generation result.
+	//
+	// example:
+	//
+	// xx
+	TextGenerate *string `json:"TextGenerate,omitempty" xml:"TextGenerate,omitempty"`
+	// List of accompanying images.
 	TextGenerateMultimodalMediaList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList `json:"TextGenerateMultimodalMediaList,omitempty" xml:"TextGenerateMultimodalMediaList,omitempty" type:"Repeated"`
 }
 
@@ -5489,7 +6288,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability struct {
+	// Traceability location.
 	Coordinates []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
+	// Relevance score.
+	//
 	// example:
 	//
 	// 0.9
@@ -5536,8 +6338,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates struct {
+	// Coordinates of the generated document block.
 	GenerateCoordinate *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate `json:"GenerateCoordinate,omitempty" xml:"GenerateCoordinate,omitempty" type:"Struct"`
-	NewsCoordinate     *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate     `json:"NewsCoordinate,omitempty" xml:"NewsCoordinate,omitempty" type:"Struct"`
+	// Coordinates of the reference article.
+	NewsCoordinate *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate `json:"NewsCoordinate,omitempty" xml:"NewsCoordinate,omitempty" type:"Struct"`
 }
 
 func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates) String() string {
@@ -5581,14 +6385,20 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate struct {
+	// Number, starting from 1.
+	//
 	// example:
 	//
 	// 1
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// Start position.
+	//
 	// example:
 	//
 	// 1
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// End position.
+	//
 	// example:
 	//
 	// 1
@@ -5635,18 +6445,26 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate struct {
+	// Media asset type.
+	//
 	// example:
 	//
 	// image
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Number, starting from 1.
+	//
 	// example:
 	//
 	// 1
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// Start position.
+	//
 	// example:
 	//
 	// 1
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// End position.
+	//
 	// example:
 	//
 	// 1
@@ -5702,7 +6520,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList struct {
+	// List of search results.
 	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	// Date string.
+	//
 	// example:
 	//
 	// 2024-09-11
@@ -5749,16 +6570,24 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult struct {
-	Article   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle     `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// Article.
+	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// List of matching segments.
 	ClipInfos []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// File URL.
+	//
 	// example:
 	//
 	// xx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Unique multimodal data identifier.
+	//
 	// example:
 	//
 	// xx
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Multimodal file type. Valid values: video, image.
+	//
 	// example:
 	//
 	// image
@@ -5837,26 +6666,38 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle struct {
+	// Custom unique document ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Search source name.
+	//
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Summary.
+	//
 	// example:
 	//
 	// xx
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Title.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL.
+	//
 	// example:
 	//
 	// xx
@@ -5930,22 +6771,32 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos struct {
+	// Start time.
+	//
 	// example:
 	//
 	// 1
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// Confidence score. For reference only.
+	//
 	// example:
 	//
 	// 0.99
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Corresponding text, such as ASR transcription.
+	//
 	// example:
 	//
 	// xx
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 1
 	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+	// Type. Example: asr.
+	//
 	// example:
 	//
 	// asr
@@ -6010,64 +6861,114 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList struct {
-	CategoryUuid *string   `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
-	Chunks       []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	// Unique category identifier.
+	//
+	// example:
+	//
+	// xx
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// List of chunks.
+	Chunks []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	// Body.
+	//
 	// example:
 	//
 	// xx
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Custom unique document ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1.
+	//
+	// example:
+	//
+	// xx
 	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2.
+	//
+	// example:
+	//
+	// xx
 	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3.
+	//
+	// example:
+	//
+	// xx
 	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Publication time. Format: yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2023-04-04 08:39:09
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Confidence score. For reference only.
+	//
 	// example:
 	//
 	// 0.99
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Search source unique identifier. Same as searchSource.datasetName.
+	//
 	// example:
 	//
 	// QuarkCommonNews
 	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// Search source name.
+	//
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Search source type. Same as searchSource.code.
+	//
 	// example:
 	//
 	// SystemSearch
 	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// Selection status.
+	//
 	// example:
 	//
 	// true
 	Select *bool `json:"Select,omitempty" xml:"Select,omitempty"`
+	// Source.
+	//
 	// example:
 	//
 	// 新华社
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Summary.
+	//
 	// example:
 	//
 	// xx
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Tag name.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Title.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Traceability ID.
+	//
 	// example:
 	//
 	// 1
 	TraceabilityId *int32 `json:"TraceabilityId,omitempty" xml:"TraceabilityId,omitempty"`
+	// Article URL.
+	//
 	// example:
 	//
 	// xx
@@ -6267,11 +7168,16 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList struct {
+	// End position.
+	//
 	// example:
 	//
 	// 1
-	End                 *int32                                                                                                                                                `json:"End,omitempty" xml:"End,omitempty"`
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// List of multimodal data.
 	MultimodalMediaList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList `json:"MultimodalMediaList,omitempty" xml:"MultimodalMediaList,omitempty" type:"Repeated"`
+	// Start position.
+	//
 	// example:
 	//
 	// 1
@@ -6327,15 +7233,22 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList struct {
+	// Article.
 	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// File URL.
+	//
 	// example:
 	//
 	// xx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Unique multimodal data identifier.
+	//
 	// example:
 	//
 	// xx
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Multimodal file type. Valid values: video, image.
+	//
 	// example:
 	//
 	// image
@@ -6396,26 +7309,38 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle struct {
+	// Custom unique document ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Search source name.
+	//
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Summary.
+	//
 	// example:
 	//
 	// xx
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Title.
+	//
 	// example:
 	//
 	// xxxx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL.
+	//
 	// example:
 	//
 	// xx
@@ -6489,6 +7414,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult struct {
+	// List of search results.
 	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
 }
 
@@ -6523,16 +7449,24 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult struct {
-	Article   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle     `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// Article.
+	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// List of matching segments.
 	ClipInfos []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// File URL.
+	//
 	// example:
 	//
 	// xx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Unique multimodal data identifier.
+	//
 	// example:
 	//
 	// xx
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Unique traceability identifier.
+	//
 	// example:
 	//
 	// 1
@@ -6611,31 +7545,64 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle struct {
+	// Unique category identifier.
+	//
+	// example:
+	//
+	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// Custom unique document ID.
+	//
 	// example:
 	//
 	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1.
+	//
+	// example:
+	//
+	// xx
 	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2.
+	//
+	// example:
+	//
+	// xx
 	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3.
+	//
+	// example:
+	//
+	// xx
 	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Search source name.
+	//
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Summary.
+	//
 	// example:
 	//
 	// xx
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Title.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL.
+	//
 	// example:
 	//
 	// xx
@@ -6754,22 +7721,32 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos struct {
+	// Start time of the segment.
+	//
 	// example:
 	//
 	// 1
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// Confidence score. For reference only.
+	//
 	// example:
 	//
 	// 0.8
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Corresponding text, such as ASR transcription.
+	//
 	// example:
 	//
 	// xx
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 1
 	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+	// Type. Example: asr.
+	//
 	// example:
 	//
 	// asr
@@ -6834,11 +7811,36 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate struct {
+	// First token time.
+	//
+	// example:
+	//
+	// 1
 	FirstTokenTime *float32 `json:"FirstTokenTime,omitempty" xml:"FirstTokenTime,omitempty"`
-	OutputAvgTime  *float32 `json:"OutputAvgTime,omitempty" xml:"OutputAvgTime,omitempty"`
-	SearchTime     *float32 `json:"SearchTime,omitempty" xml:"SearchTime,omitempty"`
-	Time           *float32 `json:"Time,omitempty" xml:"Time,omitempty"`
-	TotalTokens    *int64   `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+	// Average number of tokens output per second.
+	//
+	// example:
+	//
+	// 1
+	OutputAvgTime *float32 `json:"OutputAvgTime,omitempty" xml:"OutputAvgTime,omitempty"`
+	// Search time cost.
+	//
+	// example:
+	//
+	// 1
+	SearchTime *float32 `json:"SearchTime,omitempty" xml:"SearchTime,omitempty"`
+	// Total time cost.
+	//
+	// example:
+	//
+	// 1
+	Time *float32 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// Total number of tokens.
+	//
+	// example:
+	//
+	// 1
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
 }
 
 func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate) String() string {
@@ -6899,25 +7901,49 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextToken
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputMessages struct {
+	// Indicates whether clarification is needed.
 	Clarifications *bool `json:"Clarifications,omitempty" xml:"Clarifications,omitempty"`
+	// Generated text.
+	//
 	// example:
 	//
 	// xx
-	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	GenerateFinished *bool   `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Indicates whether the current node has finished.
+	GenerateFinished *bool `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	// Node ID.
+	//
 	// example:
 	//
 	// xx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Node code:
+	//
+	// - generateStartStatement
+	//
+	// - generateSearchQueries
+	//
+	// - multiSearch
+	//
+	// - readSearchResult
+	//
+	// - reflection
+	//
+	// - generate
+	//
 	// example:
 	//
 	// generateStartStatement
-	NodeCode      *string   `json:"NodeCode,omitempty" xml:"NodeCode,omitempty"`
+	NodeCode *string `json:"NodeCode,omitempty" xml:"NodeCode,omitempty"`
+	// List of search queries.
 	SearchQueries []*string `json:"SearchQueries,omitempty" xml:"SearchQueries,omitempty" type:"Repeated"`
+	// Current node search query.
+	//
 	// example:
 	//
 	// xx
-	SearchQuery  *string                                                             `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	SearchQuery *string `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	// Search result.
 	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
 }
 
@@ -7015,14 +8041,20 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) Validate() error 
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult struct {
+	// List of audio results.
 	Audios []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios `json:"Audios,omitempty" xml:"Audios,omitempty" type:"Repeated"`
+	// List of image searches.
 	Images []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// Multimodal search query.
+	//
 	// example:
 	//
 	// xx
-	MultimodalSearchQuery *string                                                                   `json:"MultimodalSearchQuery,omitempty" xml:"MultimodalSearchQuery,omitempty"`
-	Texts                 []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts  `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
-	Videos                []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos `json:"Videos,omitempty" xml:"Videos,omitempty" type:"Repeated"`
+	MultimodalSearchQuery *string `json:"MultimodalSearchQuery,omitempty" xml:"MultimodalSearchQuery,omitempty"`
+	// List of text searches.
+	Texts []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// List of video results.
+	Videos []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos `json:"Videos,omitempty" xml:"Videos,omitempty" type:"Repeated"`
 }
 
 func (s RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) String() string {
@@ -7119,6 +8151,8 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) Valid
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios struct {
+	// ID.
+	//
 	// example:
 	//
 	// xx
@@ -7147,6 +8181,8 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios)
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages struct {
+	// ID.
+	//
 	// example:
 	//
 	// xx
@@ -7175,6 +8211,8 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages)
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts struct {
+	// ID.
+	//
 	// example:
 	//
 	// xx
@@ -7203,6 +8241,8 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts) 
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos struct {
+	// ID.
+	//
 	// example:
 	//
 	// 1
@@ -7231,14 +8271,20 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos)
 }
 
 type RunSearchGenerationResponseBodyPayloadUsage struct {
+	// The number of input tokens.
+	//
 	// example:
 	//
 	// 1
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The number of output tokens.
+	//
 	// example:
 	//
 	// 2
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total token count
+	//
 	// example:
 	//
 	// 3

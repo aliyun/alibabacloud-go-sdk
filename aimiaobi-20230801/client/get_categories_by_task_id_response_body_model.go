@@ -24,23 +24,34 @@ type iGetCategoriesByTaskIdResponseBody interface {
 }
 
 type GetCategoriesByTaskIdResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A list of classification objects.
 	Data []*GetCategoriesByTaskIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: \\`true\\` and \\`false\\`.
+	//
 	// example:
 	//
 	// true
@@ -123,8 +134,16 @@ func (s *GetCategoriesByTaskIdResponseBody) Validate() error {
 }
 
 type GetCategoriesByTaskIdResponseBodyData struct {
-	Category *string                                          `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The name of the classification.
+	//
+	// example:
+	//
+	// 类别1
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// A list of sub-classifications.
 	Children []*GetCategoriesByTaskIdResponseBodyDataChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	// The number of Voice of the Customer (VOC) entries in this classification.
+	//
 	// example:
 	//
 	// 2
@@ -180,6 +199,11 @@ func (s *GetCategoriesByTaskIdResponseBodyData) Validate() error {
 }
 
 type GetCategoriesByTaskIdResponseBodyDataChildren struct {
+	// The name of the sub-classification.
+	//
+	// example:
+	//
+	// 类别1-1
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 }
 

@@ -24,23 +24,38 @@ type iListHotNewsWithTypeResponseBody interface {
 }
 
 type ListHotNewsWithTypeResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
-	// DataNotExists
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	// successful
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data []*ListHotNewsWithTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
-	// 数据不存在
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -123,12 +138,28 @@ func (s *ListHotNewsWithTypeResponseBody) Validate() error {
 }
 
 type ListHotNewsWithTypeResponseBodyData struct {
+	// The news list.
 	News []*ListHotNewsWithTypeResponseBodyDataNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	// The news category. Valid values:
+	//
+	// - society: social current affairs.
+	//
+	// - person: people news.
+	//
+	// - government: government affairs.
+	//
 	// example:
 	//
 	// society
-	NewsType     *string `json:"NewsType,omitempty" xml:"NewsType,omitempty"`
+	NewsType *string `json:"NewsType,omitempty" xml:"NewsType,omitempty"`
+	// The news category name.
+	//
+	// example:
+	//
+	// 社会时事
 	NewsTypeName *string `json:"NewsTypeName,omitempty" xml:"NewsTypeName,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 77
@@ -193,30 +224,79 @@ func (s *ListHotNewsWithTypeResponseBodyData) Validate() error {
 }
 
 type ListHotNewsWithTypeResponseBodyDataNews struct {
-	Author  *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// The author.
+	//
+	// example:
+	//
+	// 作者名称
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// The content.
+	//
+	// example:
+	//
+	// 新闻内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The unique identifier of the internal document.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
-	DocUuid   *string   `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// The image URLs.
 	ImageUrls []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+	// The publish time.
+	//
 	// example:
 	//
 	// 2023-04-11 06:14:07
-	PubTime          *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
-	SearchSource     *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The search source.
+	//
+	// example:
+	//
+	// 新浪热榜
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// The search source name.
+	//
+	// example:
+	//
+	// 新浪热榜
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
-	Source           *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Summary          *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tag              *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The source.
+	//
+	// example:
+	//
+	// 新浪新闻综合
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The article summary.
+	//
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The tag.
+	//
+	// example:
+	//
+	// 社会
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The title.
+	//
+	// example:
+	//
+	// 新闻标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The system update time.
+	//
 	// example:
 	//
 	// 2023-10-14 14:30:00
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The article URL.
+	//
 	// example:
 	//
-	// http://xxxxx/xxx
+	// http://www.example.com/a.html
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 

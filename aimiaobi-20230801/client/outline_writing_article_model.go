@@ -28,16 +28,50 @@ type iOutlineWritingArticle interface {
 }
 
 type OutlineWritingArticle struct {
-	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Outline        *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// Content
+	//
+	// example:
+	//
+	// 新闻内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The leaf outline this material belongs to
+	//
+	// example:
+	//
+	// 大纲名称
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// The primary outline this material belongs to
+	//
+	// example:
+	//
+	// 一级大纲名称
 	PrimaryOutline *string `json:"PrimaryOutline,omitempty" xml:"PrimaryOutline,omitempty"`
+	// Publish time
+	//
 	// example:
 	//
 	// 2023-04-11 06:14:07
-	PubTime          *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
-	SearchSource     *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Retrieval source encoding
+	//
+	// example:
+	//
+	// 检索源编码
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// Retrieval name
+	//
+	// example:
+	//
+	// 检索源名称
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
-	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// News title
+	//
+	// example:
+	//
+	// 新闻标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// News URL
+	//
 	// example:
 	//
 	// http://www.example.com/xxxx.html

@@ -20,20 +20,28 @@ type iImportInterveneFileRequest interface {
 }
 
 type ImportInterveneFileRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Name of the uploaded file.
+	//
 	// example:
 	//
 	// import.xls
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// OSS key of the file.
+	//
 	// example:
 	//
 	// import.xsl
 	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// URL of the file.
+	//
 	// example:
 	//
 	// http://xxx/xxx.xls

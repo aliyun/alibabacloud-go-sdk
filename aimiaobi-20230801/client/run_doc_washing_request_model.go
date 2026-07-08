@@ -30,23 +30,73 @@ type iRunDocWashingRequest interface {
 }
 
 type RunDocWashingRequest struct {
+	// Model ID
+	//
+	// example:
+	//
+	// quanmiao-max、quanmiao-plus
 	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	Prompt  *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Additional prompt requirements
+	//
+	// example:
+	//
+	// 按英文输出
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The article to rewrite
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 文章内容
 	ReferenceContent *string `json:"ReferenceContent,omitempty" xml:"ReferenceContent,omitempty"`
-	SessionId        *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	Topic            *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// Channel ID
+	//
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Topic of the rewritten article
+	//
+	// example:
+	//
+	// 云南旅游主题
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// Required word count after rewriting
+	//
 	// example:
 	//
 	// 500
 	WordNumber *int32 `json:"WordNumber,omitempty" xml:"WordNumber,omitempty"`
+	// Unique identifier for Alibaba Cloud Model Studio workspace: Get [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// llm-2setzb9x4ewsd
-	WorkspaceId       *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WritingTypeName   *string `json:"WritingTypeName,omitempty" xml:"WritingTypeName,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// Writing style type name
+	//
+	// example:
+	//
+	// 小红书文体
+	//
+	// 朋友圈文体
+	//
+	// 专业新闻文体
+	//
+	// 政府公文文体
+	//
+	// 报纸文章文体
+	//
+	// 意见信文体
+	WritingTypeName *string `json:"WritingTypeName,omitempty" xml:"WritingTypeName,omitempty"`
+	// Example article for writing style
+	//
+	// example:
+	//
+	// 该值若不为空则按该值优先
 	WritingTypeRefDoc *string `json:"WritingTypeRefDoc,omitempty" xml:"WritingTypeRefDoc,omitempty"`
 }
 

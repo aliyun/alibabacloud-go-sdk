@@ -24,23 +24,34 @@ type iListIntervenesResponseBody interface {
 }
 
 type ListIntervenesResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 0
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *ListIntervenesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 428DCC0D-3C63-5306-BD1B-124396AB97BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. True for success, false for failure.
+	//
 	// example:
 	//
 	// true
@@ -119,16 +130,23 @@ func (s *ListIntervenesResponseBody) Validate() error {
 }
 
 type ListIntervenesResponseBodyData struct {
-	Code          *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of intervention items.
 	InterveneList []*ListIntervenesResponseBodyDataInterveneList `json:"InterveneList,omitempty" xml:"InterveneList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -202,12 +220,17 @@ func (s *ListIntervenesResponseBodyData) Validate() error {
 }
 
 type ListIntervenesResponseBodyDataInterveneList struct {
-	// id
+	// The ID.
 	//
 	// example:
 	//
 	// 36559
-	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The intervention query.
+	//
+	// example:
+	//
+	// 伊家楼
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 

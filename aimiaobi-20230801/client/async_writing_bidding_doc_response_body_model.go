@@ -24,15 +24,22 @@ type iAsyncWritingBiddingDocResponseBody interface {
 }
 
 type AsyncWritingBiddingDocResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// successful
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *AsyncWritingBiddingDocResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
@@ -43,6 +50,8 @@ type AsyncWritingBiddingDocResponseBody struct {
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,6 +130,8 @@ func (s *AsyncWritingBiddingDocResponseBody) Validate() error {
 }
 
 type AsyncWritingBiddingDocResponseBodyData struct {
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21

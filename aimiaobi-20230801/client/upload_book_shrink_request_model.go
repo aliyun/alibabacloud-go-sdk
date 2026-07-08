@@ -18,9 +18,18 @@ type iUploadBookShrinkRequest interface {
 }
 
 type UploadBookShrinkRequest struct {
+	// Folder ID
+	//
+	// example:
+	//
+	// default
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Documents
+	//
 	// This parameter is required.
 	DocsShrink *string `json:"Docs,omitempty" xml:"Docs,omitempty"`
+	// Unique identifier of your Alibaba Cloud Model Studio workspace. [Get your workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:

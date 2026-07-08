@@ -60,56 +60,148 @@ type iListDatasetDocumentsShrinkRequest interface {
 }
 
 type ListDatasetDocumentsShrinkRequest struct {
+	// The unique IDs of the categories.
 	CategoryUuidsShrink *string `json:"CategoryUuids,omitempty" xml:"CategoryUuids,omitempty"`
-	CreateTimeEnd       *int64  `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	CreateTimeStart     *int64  `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// The end of the creation time range, specified as a Unix timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 111
+	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// The start of the creation time range, specified as a Unix timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 111
+	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// Deprecated.
+	//
 	// example:
 	//
 	// xx
 	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// The unique ID of the dataset. You must specify either this parameter or `DatasetName`.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// 数据集名称
-	DatasetName  *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// An array of document IDs.
 	DocIdsShrink *string `json:"DocIds,omitempty" xml:"DocIds,omitempty"`
+	// The type of the document. Valid values:
+	//
+	// - `plainText`: Plain text.
+	//
+	// - `richText`: Rich text.
+	//
+	// - `text`: A text file.
+	//
+	// - `pdf`: A PDF file.
+	//
+	// - `word`: A Word file.
+	//
+	// - `image`: An image file.
+	//
+	// - `video`: A video file.
+	//
 	// example:
 	//
 	// text
-	DocType             *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	DocUuidsShrink      *string `json:"DocUuids,omitempty" xml:"DocUuids,omitempty"`
-	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// The unique IDs of the documents.
+	DocUuidsShrink *string `json:"DocUuids,omitempty" xml:"DocUuids,omitempty"`
+	// The end time, specified as a Unix timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1111
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The fields to exclude from the response. Valid value:
+	//
+	// - `content`: The document content.
 	ExcludeFieldsShrink *string `json:"ExcludeFields,omitempty" xml:"ExcludeFields,omitempty"`
-	Extend1             *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
-	Extend2             *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
-	Extend3             *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// A custom extension field.
+	//
+	// example:
+	//
+	// xx
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// A custom extension field.
+	//
+	// example:
+	//
+	// xx
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// A custom extension field.
+	//
+	// example:
+	//
+	// xx
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// The fields to include in the response.
 	IncludeFieldsShrink *string `json:"IncludeFields,omitempty" xml:"IncludeFields,omitempty"`
+	// A token to retrieve the next page of results. This parameter is required when you retrieve more than 10,000 entries.
+	//
 	// example:
 	//
 	// xxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search query.
+	//
 	// example:
 	//
 	// 搜索条件
-	Query     *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The start time, specified as a Unix timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 111
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the document. Valid values:
+	//
+	// - `1`: Document created.
+	//
+	// - `2`: Text index built.
+	//
+	// - `3`: Multimodal index built.
+	//
+	// - `100`: Full build complete.
+	//
+	// - `0`: Build failed.
+	//
 	// example:
 	//
 	// 100
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title.
+	//
+	// example:
+	//
+	// xxx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The unique ID of the Model Studio workspace. For more information, see [Get workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

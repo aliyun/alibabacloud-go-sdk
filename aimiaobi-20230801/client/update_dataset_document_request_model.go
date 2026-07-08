@@ -20,16 +20,24 @@ type iUpdateDatasetDocumentRequest interface {
 }
 
 type UpdateDatasetDocumentRequest struct {
+	// Unique identifier of the dataset.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// Name of the dataset.
+	//
 	// example:
 	//
 	// 数据集名称
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The document to update.
+	//
 	// This parameter is required.
 	Document *UpdateDatasetDocumentRequestDocument `json:"Document,omitempty" xml:"Document,omitempty" type:"Struct"`
+	// Unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// example:
 	//
 	// xxxx
@@ -90,19 +98,46 @@ func (s *UpdateDatasetDocumentRequest) Validate() error {
 }
 
 type UpdateDatasetDocumentRequestDocument struct {
+	// UUID of the category
+	//
+	// example:
+	//
+	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// User-defined unique ID for the document.
+	//
 	// example:
 	//
-	// 用户指定的文档唯一ID
+	// xxx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Unique ID of the document in the system.
+	//
 	// example:
 	//
-	// 内部文档唯一ID
-	DocUuid *string   `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
-	Extend1 *string   `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
-	Extend2 *string   `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
-	Extend3 *string   `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// xxx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1
+	//
+	// example:
+	//
+	// xxx
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2
+	//
+	// example:
+	//
+	// xxxx
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3
+	//
+	// example:
+	//
+	// xxx
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Tags
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Document title.
+	//
 	// example:
 	//
 	// xx

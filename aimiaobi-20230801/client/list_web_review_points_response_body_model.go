@@ -30,35 +30,52 @@ type iListWebReviewPointsResponseBody interface {
 }
 
 type ListWebReviewPointsResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business Data
 	Data []*ListWebReviewPointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Maximum number of return results
+	//
 	// example:
 	//
 	// 79
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Fault description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Token for the next page
+	//
 	// example:
 	//
 	// 下一页的token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request UUID
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded: true for success, false for failure
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 32
@@ -168,19 +185,27 @@ func (s *ListWebReviewPointsResponseBody) Validate() error {
 }
 
 type ListWebReviewPointsResponseBodyData struct {
+	// Current viewpoint
+	//
 	// example:
 	//
 	// 当前观点
 	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// Viewpoint type
+	//
 	// example:
 	//
 	// 观点类型
-	AttitudeType *string                                        `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
-	Comments     []*ListWebReviewPointsResponseBodyDataComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
+	AttitudeType *string `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	// List of user opinions
+	Comments []*ListWebReviewPointsResponseBodyDataComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
+	// Proportion of the current opinion
+	//
 	// example:
 	//
 	// 当前观点占比
-	Ratio      *string                                          `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// List of topic perspectives
 	ViewPoints []*ListWebReviewPointsResponseBodyDataViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
 }
 
@@ -260,25 +285,35 @@ func (s *ListWebReviewPointsResponseBodyData) Validate() error {
 }
 
 type ListWebReviewPointsResponseBodyDataComments struct {
+	// Source
+	//
 	// example:
 	//
 	// 来源
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Content
+	//
 	// example:
 	//
-	// 评论内容
+	// 内容
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// title
+	//
 	// example:
 	//
 	// 标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Current URL
+	//
 	// example:
 	//
-	// 当前评论所属的URL
+	// 当前所属的URL
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// username
+	//
 	// example:
 	//
-	// 评论用户名
+	// 用户名
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -340,11 +375,16 @@ func (s *ListWebReviewPointsResponseBodyDataComments) Validate() error {
 }
 
 type ListWebReviewPointsResponseBodyDataViewPoints struct {
+	// Outline
 	Outlines []*ListWebReviewPointsResponseBodyDataViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// Generated point
+	//
 	// example:
 	//
 	// 视角
 	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// Summary
+	//
 	// example:
 	//
 	// 摘要
@@ -400,10 +440,14 @@ func (s *ListWebReviewPointsResponseBodyDataViewPoints) Validate() error {
 }
 
 type ListWebReviewPointsResponseBodyDataViewPointsOutlines struct {
+	// Outline
+	//
 	// example:
 	//
 	// 大纲
 	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// Outline summary
+	//
 	// example:
 	//
 	// 大纲摘要

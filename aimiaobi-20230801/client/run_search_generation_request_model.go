@@ -28,31 +28,52 @@ type iRunSearchGenerationRequest interface {
 }
 
 type RunSearchGenerationRequest struct {
+	// Context.
 	AgentContext *RunSearchGenerationRequestAgentContext `json:"AgentContext,omitempty" xml:"AgentContext,omitempty" type:"Struct"`
+	// Session configuration.
+	//
 	// example:
 	//
 	// xxx
 	ChatConfig *RunSearchGenerationRequestChatConfig `json:"ChatConfig,omitempty" xml:"ChatConfig,omitempty" type:"Struct"`
+	// Image URL. Used for image search and hybrid text-and-image (prompt) search generation.
+	//
 	// example:
 	//
 	// http://xxxx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Model ID:
+	//
+	// - quanmiao-max: Quanmiao-Max
+	//
+	// - quanmiao-plus: Quanmiao-Plus
+	//
 	// example:
 	//
-	// qwen-max-latest
+	// quanmiao-max
 	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// Original session identifier. Usually empty. When non-empty, it indicates that the current conversation is based on the referenced session. The system loads parameters and search results from that session and replaces the generated result. Use this for re-generation, changing data sources, or adding new agents.
+	//
 	// example:
 	//
 	// xxx
 	OriginalSessionId *string `json:"OriginalSessionId,omitempty" xml:"OriginalSessionId,omitempty"`
+	// Search query.
+	//
 	// example:
 	//
-	// xxx
+	// 杭州亚运会吉祥物是什么
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Unique identifier for the session task.
+	//
+	// > By default, you do not need to provide a TaskId. The system generates one automatically. If you specify the same TaskId in subsequent requests, those tasks are grouped into the same conversation.
+	//
 	// example:
 	//
 	// 7AA2AE16-D873-5C5F-9708-15396C382EB1
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// ID of the Alibaba Cloud Model Studio workspace. To learn how to obtain this ID, see [How to use workspaces](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -156,6 +177,7 @@ func (s *RunSearchGenerationRequest) Validate() error {
 }
 
 type RunSearchGenerationRequestAgentContext struct {
+	// Business context.
 	BizContext *RunSearchGenerationRequestAgentContextBizContext `json:"BizContext,omitempty" xml:"BizContext,omitempty" type:"Struct"`
 }
 
@@ -186,16 +208,54 @@ func (s *RunSearchGenerationRequestAgentContext) Validate() error {
 }
 
 type RunSearchGenerationRequestAgentContextBizContext struct {
-	AskUser                  *string                                                                   `json:"AskUser,omitempty" xml:"AskUser,omitempty"`
-	AskUserKeywords          []*string                                                                 `json:"AskUserKeywords,omitempty" xml:"AskUserKeywords,omitempty" type:"Repeated"`
-	CurrentStep              *string                                                                   `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
+	// Follow-up question.
+	//
+	// example:
+	//
+	// 您想了解关于xx的哪些信息？
+	AskUser *string `json:"AskUser,omitempty" xml:"AskUser,omitempty"`
+	// List of recommended keywords for follow-up questions.
+	AskUserKeywords []*string `json:"AskUserKeywords,omitempty" xml:"AskUserKeywords,omitempty" type:"Repeated"`
+	// Current step.
+	//
+	// example:
+	//
+	// think
+	CurrentStep *string `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
+	// User-provided or selected multimodal data.
 	MultimodalMediaSelection *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection `json:"MultimodalMediaSelection,omitempty" xml:"MultimodalMediaSelection,omitempty" type:"Struct"`
-	NextStep                 *string                                                                   `json:"NextStep,omitempty" xml:"NextStep,omitempty"`
-	SkipCurrentSupplement    *bool                                                                     `json:"SkipCurrentSupplement,omitempty" xml:"SkipCurrentSupplement,omitempty"`
-	SupplementDataType       *string                                                                   `json:"SupplementDataType,omitempty" xml:"SupplementDataType,omitempty"`
-	SupplementEnable         *bool                                                                     `json:"SupplementEnable,omitempty" xml:"SupplementEnable,omitempty"`
-	UserBack                 *string                                                                   `json:"UserBack,omitempty" xml:"UserBack,omitempty"`
-	UserBackKeywords         []*string                                                                 `json:"UserBackKeywords,omitempty" xml:"UserBackKeywords,omitempty" type:"Repeated"`
+	// Next step.
+	//
+	// example:
+	//
+	// generate
+	NextStep *string `json:"NextStep,omitempty" xml:"NextStep,omitempty"`
+	// Skip follow-up questions.
+	//
+	// example:
+	//
+	// false
+	SkipCurrentSupplement *bool `json:"SkipCurrentSupplement,omitempty" xml:"SkipCurrentSupplement,omitempty"`
+	// Data type needed for reasoning: searchQuery.
+	//
+	// example:
+	//
+	// searchQuery
+	SupplementDataType *string `json:"SupplementDataType,omitempty" xml:"SupplementDataType,omitempty"`
+	// Specifies whether supplementation is required.
+	//
+	// example:
+	//
+	// true
+	SupplementEnable *bool `json:"SupplementEnable,omitempty" xml:"SupplementEnable,omitempty"`
+	// User feedback to follow-up questions.
+	//
+	// example:
+	//
+	// 地点
+	UserBack *string `json:"UserBack,omitempty" xml:"UserBack,omitempty"`
+	// List of keywords from user feedback to follow-up questions.
+	UserBackKeywords []*string `json:"UserBackKeywords,omitempty" xml:"UserBackKeywords,omitempty" type:"Repeated"`
 }
 
 func (s RunSearchGenerationRequestAgentContextBizContext) String() string {
@@ -306,26 +366,37 @@ func (s *RunSearchGenerationRequestAgentContextBizContext) Validate() error {
 }
 
 type RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection struct {
+	// Unique identifier for the original session. Used to retrieve full results from that session. Required only for media asset search.
+	//
 	// example:
 	//
 	// 原始会话唯一标识：搜索结果取这个会话中的全量，目前仅媒资搜索场景需要
 	OriginalSessionId *string `json:"OriginalSessionId,omitempty" xml:"OriginalSessionId,omitempty"`
+	// Used only for clustering. Pass ClusterGenerate when performing secondary clustering on cluster subtopics.
+	//
 	// example:
 	//
 	// TextGenerate
 	SearchModel *string `json:"SearchModel,omitempty" xml:"SearchModel,omitempty"`
+	// When SearchModel = ClusterGenerate, enter the topic name for the subtopic. Include quotation marks if the original value has them.
+	//
 	// example:
 	//
 	// 分类1
 	SearchModelDataValue *string `json:"SearchModelDataValue,omitempty" xml:"SearchModelDataValue,omitempty"`
+	// The type of referenced data source. Valid values: ‒ all: Retrieves the full data from historical sessions. This value is supported only in clustering scenarios. ‒ selected: Retrieves data from textSearchResult during generation.
+	//
 	// example:
 	//
 	// all
 	SelectionType *string `json:"SelectionType,omitempty" xml:"SelectionType,omitempty"`
+	// Unique identifier for the session used as reference during generation. Used for clustering in media asset search.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
-	SessionId        *string                                                                                   `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Text search results.
 	TextSearchResult *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResult `json:"TextSearchResult,omitempty" xml:"TextSearchResult,omitempty" type:"Struct"`
 }
 
@@ -401,6 +472,7 @@ func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectio
 }
 
 type RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResult struct {
+	// List of text search results.
 	SearchResult []*RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
 }
 
@@ -435,51 +507,76 @@ func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectio
 }
 
 type RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult struct {
+	// Relevant chunks.
 	Chunks []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	// Content.
+	//
 	// example:
 	//
 	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Custom unique document ID.
+	//
 	// example:
 	//
 	// 文档-自定义的唯一ID
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique document identifier.
+	//
 	// example:
 	//
 	// xxx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Publication time.
+	//
 	// example:
 	//
 	// 2024-11-25 14:25:59
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Relevance score.
+	//
 	// example:
 	//
 	// 1
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// Unique identifier for the search source. Same as searchSource.datasetName.
+	//
 	// example:
 	//
 	// QuarkCommonNews
 	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// Name of the search source.
+	//
 	// example:
 	//
 	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Search source type. Same as searchSource.code.
+	//
 	// example:
 	//
 	// SystemSearch
 	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// Source.
+	//
 	// example:
 	//
 	// 新华社
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Article summary.
+	//
 	// example:
 	//
 	// 文章摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Title.
+	//
 	// example:
 	//
 	// 文章标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL.
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx
@@ -616,26 +713,182 @@ func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectio
 }
 
 type RunSearchGenerationRequestChatConfig struct {
-	EnableThinking         *bool     `json:"EnableThinking,omitempty" xml:"EnableThinking,omitempty"`
+	// Enable deep thinking.
+	//
+	// example:
+	//
+	// false
+	EnableThinking *bool `json:"EnableThinking,omitempty" xml:"EnableThinking,omitempty"`
+	// List of generation options to skip.
 	ExcludeGenerateOptions []*string `json:"ExcludeGenerateOptions,omitempty" xml:"ExcludeGenerateOptions,omitempty" type:"Repeated"`
+	// Detailedness of the response:
+	//
+	// - concise: Concise (default)
+	//
+	// - enhance: Enhanced
+	//
+	// - free: Free-form
+	//
+	// - deepResearch: Research-level
+	//
 	// example:
 	//
 	// concise
 	GenerateLevel *string `json:"GenerateLevel,omitempty" xml:"GenerateLevel,omitempty"`
+	// Generation technology:
+	//
+	// - copilotReference: Q\\&A-style search
+	//
+	// - copilotPrecise: Pure search
+	//
 	// example:
 	//
-	// copilotPrecise
+	// copilotReference
 	GenerateTechnology *string `json:"GenerateTechnology,omitempty" xml:"GenerateTechnology,omitempty"`
+	// Plain-text prompt template for Q\\&A-style search and summary generation. Must include variables {query} and {content}. Example:
+	//
+	// ```text
+	//
+	// # Role
+	//
+	// You are an expert article retrieval and Q&A assistant.
+	//
+	// # Goal
+	//
+	// Answer or explain the user\\"s question "{query}" using the retrieved articles.
+	//
+	// # Constraints
+	//
+	// - Filter by knowledge date if the question mentions a specific date.
+	//
+	// - Structure responses clearly.
+	//
+	// - Keep responses concise.
+	//
+	// - Do not use external data or fabricate answers.
+	//
+	// - If unable to answer, respond in the appropriate language:
+	//
+	//   - Chinese: "Unable to answer based on known information."
+	//
+	//   - English: "Unable to answer based on the known information."
+	//
+	// # Input
+	//
+	// ## Retrieved articles
+	//
+	// {content}
+	//
+	// ```
+	//
 	// example:
 	//
-	// # 角色 你是一个专业的文章检索和问答机器人，擅长文章检索和回答用户问题。  # 任务目标 请你根据检索到的相关文章，回答或表述用户问题“{query}”。  # 任务限制 - 如果用户问题中提到具体日期，请考虑知识日期做筛选。 - 生成内容结构条理。 - 生成内容尽量精简。 - 控制在30字以内 - 不要使用其他数据，不要杜撰。 - 如果不能回答用户问题，请输出对应语言的拒识文案:   - 中文：\\"根据已知信息无法回答。\\"   - 英文：\\"Unable to answer based on the known information.\\"  # 输入数据 ## 检索到的相关文章 {content}
+	// # 角色
+	//
+	// 你是一个专业的文章检索和问答专家，擅长文章检索和回答用户问题。
+	//
+	// # 任务目标
+	//
+	// 请你根据检索到的相关文章，回答或表述用户问题“{query}”。
+	//
+	// # 任务限制
+	//
+	// - 如果用户问题中提到具体日期，请考虑知识日期做筛选。
+	//
+	// - 生成内容结构条理。
+	//
+	// - 生成内容尽量精简。
+	//
+	// - 不要使用其他数据，不要杜撰。
+	//
+	// - 如果不能回答用户问题，请输出对应语言的拒识文案:
+	//
+	//   - 中文："根据已知信息无法回答。"
+	//
+	//   - 英文："Unable to answer based on the known information."
+	//
+	// # 输入数据
+	//
+	// ## 检索到的相关文章
+	//
+	// {content}
 	ModelCustomPromptTemplate *string `json:"ModelCustomPromptTemplate,omitempty" xml:"ModelCustomPromptTemplate,omitempty"`
+	// Plain-text prompt template for Q\\&A-style search and summary generation. Must include variables {query} and {content}. Example:
+	//
+	// ```text
+	//
+	// # Role
+	//
+	// You are an expert article retrieval and Q&A assistant.
+	//
+	// # Goal
+	//
+	// Answer or explain the user\\"s question "{query}" using the retrieved articles and images.
+	//
+	// # Constraints
+	//
+	// - Filter by knowledge date if the question mentions a specific date.
+	//
+	// - Structure responses clearly.
+	//
+	// - Keep responses concise.
+	//
+	// - Ignore article content if image content fully answers the question.
+	//
+	// - Do not use external data or fabricate answers.
+	//
+	// - If unable to answer, respond in the appropriate language:
+	//
+	//     - Chinese: "Unable to answer based on known information."
+	//
+	//     - English: "Unable to answer based on the known information."
+	//
+	// # Input
+	//
+	// ## Retrieved articles
+	//
+	// {content}
+	//
+	// ```
+	//
 	// example:
 	//
-	// # 角色 你是一个专业的文章检索和问答机器人，擅长文章检索和回答用户问题。   # 任务目标 请你根据检索到的相关文章和图片，回答或表述用户问题“{query}”。  # 任务限制  - 如果用户问题中提到具体日期，请考虑知识日期做筛选。  - 生成内容结构条理。  - 生成内容尽量精简。  - 控制在30字以内。 - 如果图片内容可以回答，可以忽略文章内容。 - 不要使用其他数据，不要杜撰。  - 如果不能回答用户问题，请输出对应语言的拒识文案:    	- 中文：\\"根据已知信息无法回答。\\"    	- 英文：\\"Unable to answer based on the known information.\\"    # 输入数据  ## 检索到的相关文章  {content}
-	ModelCustomVlPromptTemplate *string                                          `json:"ModelCustomVlPromptTemplate,omitempty" xml:"ModelCustomVlPromptTemplate,omitempty"`
-	SearchModels                []*string                                        `json:"SearchModels,omitempty" xml:"SearchModels,omitempty" type:"Repeated"`
-	SearchParam                 *RunSearchGenerationRequestChatConfigSearchParam `json:"SearchParam,omitempty" xml:"SearchParam,omitempty" type:"Struct"`
+	// # 角色
+	//
+	// 你是一个专业的文章检索和问答专家，擅长文章检索和回答用户问题。
+	//
+	// # 任务目标
+	//
+	// 请你根据检索到的相关文章和图片，回答或表述用户问题“{query}”。
+	//
+	// # 任务限制
+	//
+	// - 如果用户问题中提到具体日期，请考虑知识日期做筛选。
+	//
+	// - 生成内容结构条理。
+	//
+	// - 生成内容尽量精简。
+	//
+	// - 如果图片内容可以回答，可以忽略文章内容。
+	//
+	// - 不要使用其他数据，不要杜撰。
+	//
+	// - 如果不能回答用户问题，请输出对应语言的拒识文案:
+	//
+	//     - 中文："根据已知信息无法回答。"
+	//
+	//     - 英文："Unable to answer based on the known information."
+	//
+	// # 输入数据
+	//
+	// ## 检索到的相关文章
+	//
+	// {content}
+	ModelCustomVlPromptTemplate *string `json:"ModelCustomVlPromptTemplate,omitempty" xml:"ModelCustomVlPromptTemplate,omitempty"`
+	// List of search types.
+	SearchModels []*string `json:"SearchModels,omitempty" xml:"SearchModels,omitempty" type:"Repeated"`
+	// Search parameters.
+	SearchParam *RunSearchGenerationRequestChatConfigSearchParam `json:"SearchParam,omitempty" xml:"SearchParam,omitempty" type:"Struct"`
 }
 
 func (s RunSearchGenerationRequestChatConfig) String() string {
@@ -728,41 +981,84 @@ func (s *RunSearchGenerationRequestChatConfig) Validate() error {
 }
 
 type RunSearchGenerationRequestChatConfigSearchParam struct {
-	CategoryUuids   []*string `json:"CategoryUuids,omitempty" xml:"CategoryUuids,omitempty" type:"Repeated"`
-	CreateTimeEnd   *int64    `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	CreateTimeStart *int64    `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	DocIds          []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
-	DocUuids        []*string `json:"DocUuids,omitempty" xml:"DocUuids,omitempty" type:"Repeated"`
+	// Unique category identifier.
+	CategoryUuids []*string `json:"CategoryUuids,omitempty" xml:"CategoryUuids,omitempty" type:"Repeated"`
+	// End creation time, in UNIX timestamp format.
+	//
+	// example:
+	//
+	// 111111111111
+	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// Start creation time, in UNIX timestamp format.
+	//
+	// example:
+	//
+	// 111111111111
+	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// Array of document IDs.
+	DocIds []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	// Unique document identifier.
+	DocUuids []*string `json:"DocUuids,omitempty" xml:"DocUuids,omitempty" type:"Repeated"`
+	// End time.
+	//
 	// example:
 	//
 	// 1725983999999
-	EndTime               *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Extend1               *string   `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
-	Extend2               *string   `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
-	Extend3               *string   `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Extension field 1.
+	//
+	// example:
+	//
+	// xxx
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2.
+	//
+	// example:
+	//
+	// xxx
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3.
+	//
+	// example:
+	//
+	// xxx
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Search scope list.
 	MultimodalSearchTypes []*string `json:"MultimodalSearchTypes,omitempty" xml:"MultimodalSearchTypes,omitempty" type:"Repeated"`
+	// Voice search threshold: Applies only to custom data sources (range: 0 to 1).
+	//
 	// example:
 	//
-	// 0.6
+	// 0.66
 	SearchAudioMinScore *float64 `json:"SearchAudioMinScore,omitempty" xml:"SearchAudioMinScore,omitempty"`
+	// Image search threshold: Applies only to custom data sources (range: 0 to 1).
+	//
 	// example:
 	//
-	// 0.6
-	SearchImageMinScore *float64                                                        `json:"SearchImageMinScore,omitempty" xml:"SearchImageMinScore,omitempty"`
-	SearchSources       []*RunSearchGenerationRequestChatConfigSearchParamSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	// 0.66
+	SearchImageMinScore *float64 `json:"SearchImageMinScore,omitempty" xml:"SearchImageMinScore,omitempty"`
+	// List of search sources.
+	SearchSources []*RunSearchGenerationRequestChatConfigSearchParamSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	// Text search threshold: Applies only to custom data sources (range: 0 to 1).
+	//
 	// example:
 	//
-	// 0.6
+	// 0.66
 	SearchTextMinScore *float64 `json:"SearchTextMinScore,omitempty" xml:"SearchTextMinScore,omitempty"`
+	// Video search threshold: Applies only to custom data sources (range: 0 to 1).
+	//
 	// example:
 	//
-	// 0.6
+	// 0.66
 	SearchVideoMinScore *float64 `json:"SearchVideoMinScore,omitempty" xml:"SearchVideoMinScore,omitempty"`
+	// Start time.
+	//
 	// example:
 	//
 	// 1725983999999
-	StartTime *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Tags      []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s RunSearchGenerationRequestChatConfigSearchParam) String() string {
@@ -940,10 +1236,20 @@ func (s *RunSearchGenerationRequestChatConfigSearchParam) Validate() error {
 }
 
 type RunSearchGenerationRequestChatConfigSearchParamSearchSources struct {
+	// Search source type:
+	//
+	// - SystemSearch: Built-in system search
+	//
+	// - CustomSemanticSearch: Custom semantic index search
+	//
+	// - ThirdSearch: Third-party API search
+	//
 	// example:
 	//
 	// SystemSearch
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Unique identifier for the search source: matches the dataset name shown in the console, such as 4cb0eda3fad841758262dbe8d61191.
+	//
 	// example:
 	//
 	// QuarkCommonNews

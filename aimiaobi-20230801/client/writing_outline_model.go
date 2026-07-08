@@ -26,16 +26,36 @@ type iWritingOutline interface {
 }
 
 type WritingOutline struct {
+	// List of articles referenced in the outline
 	Articles []*OutlineWritingArticle `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
-	Children []*WritingOutline        `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	Outline  *string                  `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// List of sub-outlines
+	Children []*WritingOutline `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	// Outline
+	//
+	// example:
+	//
+	// 大纲名称
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// Unique outline identifier
+	//
 	// example:
 	//
 	// xxx
-	OutlineId         *string   `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	OutlineId *string `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	// Outline writing search keyword list
 	SearchKeyWordList []*string `json:"SearchKeyWordList,omitempty" xml:"SearchKeyWordList,omitempty" type:"Repeated"`
-	WordCount         *string   `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
-	WritingTips       *string   `json:"WritingTips,omitempty" xml:"WritingTips,omitempty"`
+	// Description of word count requirements, such as 1K words, 2K words, or no less than 500 words.
+	//
+	// example:
+	//
+	// 写作字数要求的描述
+	WordCount *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+	// Outline writing requirements, writing tips
+	//
+	// example:
+	//
+	// 大纲写作要求、写作提示
+	WritingTips *string `json:"WritingTips,omitempty" xml:"WritingTips,omitempty"`
 }
 
 func (s WritingOutline) String() string {

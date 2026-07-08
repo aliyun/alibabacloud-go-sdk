@@ -24,23 +24,34 @@ type iInsertInterveneRuleResponseBody interface {
 }
 
 type InsertInterveneRuleResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
-	// 0
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *InsertInterveneRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// DD656AF9-0839-521A-A3D2-F320009F9C87
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates success: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -119,7 +130,14 @@ func (s *InsertInterveneRuleResponseBody) Validate() error {
 }
 
 type InsertInterveneRuleResponseBodyData struct {
+	// Status code returned by the intervention service
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Rule ID
+	//
 	// example:
 	//
 	// 12345

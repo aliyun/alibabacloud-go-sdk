@@ -20,16 +20,24 @@ type iAddDatasetDocumentRequest interface {
 }
 
 type AddDatasetDocumentRequest struct {
+	// The unique identifier of the dataset.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// 数据集名称
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The document.
+	//
 	// This parameter is required.
 	Document *AddDatasetDocumentRequestDocument `json:"Document,omitempty" xml:"Document,omitempty" type:"Struct"`
+	// The unique identifier of the Model Studio workspace. For more information, see [Obtain a workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -92,65 +100,119 @@ func (s *AddDatasetDocumentRequest) Validate() error {
 }
 
 type AddDatasetDocumentRequestDocument struct {
-	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// The unique identifier of the category.
+	//
 	// example:
 	//
-	// xxx
+	// xx
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// The content.
+	//
+	// example:
+	//
+	// 正文
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Specifies whether to disable the indexing of multimodal data, such as images and videos, in the current record. The default value is true.
+	//
 	// example:
 	//
 	// false
 	DisableHandleMultimodalMedia *bool `json:"DisableHandleMultimodalMedia,omitempty" xml:"DisableHandleMultimodalMedia,omitempty"`
+	// The unique business ID of the document.
+	//
 	// example:
 	//
-	// 业务文档唯一ID
+	// xx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The type of the document.
+	//
+	// - plainText: plain text. The content parameter is required.
+	//
+	// - richText: rich text in HTML format. The content parameter is required.
+	//
+	// - text: a text file. The url parameter is required.
+	//
+	// - pdf: a PDF file. The url parameter is required.
+	//
+	// - word: a Word document. The url parameter is required.
+	//
+	// - image: an image. The url parameter is required. Most common image formats are supported, such as GIF, PNG, JPG, and JPEG.
+	//
+	// - video: a video. The url parameter is required. Most common video formats are supported, such as MP4, AVI, WMV, and MOV.
+	//
 	// example:
 	//
-	// 文档类型
+	// image
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// The unique system ID of the document. The system automatically generates this ID. You do not need to specify this parameter.
+	//
 	// example:
 	//
-	// 内部文档唯一ID
+	// xxxx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1.
+	//
 	// example:
 	//
-	// 扩展字段1
+	// xxx
 	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2.
+	//
 	// example:
 	//
-	// 扩展字段2
+	// xxxx
 	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3.
+	//
 	// example:
 	//
-	// 扩展字段3
-	Extend3  *string                                    `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// xxx
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// The metadata.
 	Metadata *AddDatasetDocumentRequestDocumentMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	// Deprecated. This parameter is not available.
+	//
 	// example:
 	//
-	// 模型名称 todo 商业化 仅个别账号可传入
-	MultimodalIndexName *string                                              `json:"MultimodalIndexName,omitempty" xml:"MultimodalIndexName,omitempty"`
-	MultimodalMedias    []*AddDatasetDocumentRequestDocumentMultimodalMedias `json:"MultimodalMedias,omitempty" xml:"MultimodalMedias,omitempty" type:"Repeated"`
+	// xxxx
+	MultimodalIndexName *string `json:"MultimodalIndexName,omitempty" xml:"MultimodalIndexName,omitempty"`
+	// A list of multimodal data in the document.
+	//
+	// - If a document, such as a rich text document, contains multimodal data like images or videos, you can pass the data using this parameter. This allows the data to be retrieved in search results.
+	//
+	// - If the document itself is multimodal data, leave this field empty and specify the data using the docType and url parameters.
+	MultimodalMedias []*AddDatasetDocumentRequestDocumentMultimodalMedias `json:"MultimodalMedias,omitempty" xml:"MultimodalMedias,omitempty" type:"Repeated"`
+	// The publishing time.
+	//
 	// example:
 	//
 	// 2024-12-09 13:35:40
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The source.
+	//
 	// example:
 	//
-	// 来源
+	// xxx媒体
 	SourceFrom *string `json:"SourceFrom,omitempty" xml:"SourceFrom,omitempty"`
+	// The summary of the article.
+	//
 	// example:
 	//
 	// 文章摘要
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The tag name.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The title of the document.
+	//
 	// example:
 	//
-	// xxxxx@xxxxx.com
+	// 标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the article. The URL must be accessible over the public network.
+	//
 	// example:
 	//
-	// xxx
+	// http://xxx
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -343,10 +405,18 @@ func (s *AddDatasetDocumentRequestDocument) Validate() error {
 }
 
 type AddDatasetDocumentRequestDocumentMetadata struct {
+	// The speech or caption information.
 	AsrSentences []*AddDatasetDocumentRequestDocumentMetadataAsrSentences `json:"AsrSentences,omitempty" xml:"AsrSentences,omitempty" type:"Repeated"`
-	KeyValues    []*AddDatasetDocumentRequestDocumentMetadataKeyValues    `json:"KeyValues,omitempty" xml:"KeyValues,omitempty" type:"Repeated"`
-	Text         *string                                                  `json:"Text,omitempty" xml:"Text,omitempty"`
-	VideoShots   []*AddDatasetDocumentRequestDocumentMetadataVideoShots   `json:"VideoShots,omitempty" xml:"VideoShots,omitempty" type:"Repeated"`
+	// The metadata in a key-value structure.
+	KeyValues []*AddDatasetDocumentRequestDocumentMetadataKeyValues `json:"KeyValues,omitempty" xml:"KeyValues,omitempty" type:"Repeated"`
+	// The description of the metadata. This field is deprecated.
+	//
+	// example:
+	//
+	// xxx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The video shot information.
+	VideoShots []*AddDatasetDocumentRequestDocumentMetadataVideoShots `json:"VideoShots,omitempty" xml:"VideoShots,omitempty" type:"Repeated"`
 }
 
 func (s AddDatasetDocumentRequestDocumentMetadata) String() string {
@@ -425,9 +495,24 @@ func (s *AddDatasetDocumentRequestDocumentMetadata) Validate() error {
 }
 
 type AddDatasetDocumentRequestDocumentMetadataAsrSentences struct {
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The end time in milliseconds.
+	//
+	// example:
+	//
+	// 2000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time in milliseconds.
+	//
+	// example:
+	//
+	// 1000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The speech or caption information.
+	//
+	// example:
+	//
+	// xxx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s AddDatasetDocumentRequestDocumentMetadataAsrSentences) String() string {
@@ -470,7 +555,17 @@ func (s *AddDatasetDocumentRequestDocumentMetadataAsrSentences) Validate() error
 }
 
 type AddDatasetDocumentRequestDocumentMetadataKeyValues struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// xx
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The parameter value.
+	//
+	// example:
+	//
+	// xx
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -505,9 +600,24 @@ func (s *AddDatasetDocumentRequestDocumentMetadataKeyValues) Validate() error {
 }
 
 type AddDatasetDocumentRequestDocumentMetadataVideoShots struct {
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The end time in milliseconds.
+	//
+	// example:
+	//
+	// 2000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time in milliseconds.
+	//
+	// example:
+	//
+	// 1000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The text information from the video shot analysis.
+	//
+	// example:
+	//
+	// xxx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s AddDatasetDocumentRequestDocumentMetadataVideoShots) String() string {
@@ -550,17 +660,27 @@ func (s *AddDatasetDocumentRequestDocumentMetadataVideoShots) Validate() error {
 }
 
 type AddDatasetDocumentRequestDocumentMultimodalMedias struct {
+	// The URL of the file. The URL must be accessible over the public network.
+	//
 	// example:
 	//
-	// 图片或视频文件地址
+	// http://xxx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The unique identifier of the multimodal data. The system automatically generates this ID. You do not need to specify this parameter.
+	//
 	// example:
 	//
-	// 多模态数据唯一标识
+	// xxxx
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The type of the multimodal data.
+	//
+	// - image: an image
+	//
+	// - video: a video
+	//
 	// example:
 	//
-	// 多模态数据类型
+	// image
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 }
 

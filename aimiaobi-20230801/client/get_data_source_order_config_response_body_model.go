@@ -24,23 +24,34 @@ type iGetDataSourceOrderConfigResponseBody interface {
 }
 
 type GetDataSourceOrderConfigResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
-	// 200
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	// successful
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *GetDataSourceOrderConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 428DCC0D-3C63-5306-BD1B-124396AB97BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Is successful: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -119,10 +130,13 @@ func (s *GetDataSourceOrderConfigResponseBody) Validate() error {
 }
 
 type GetDataSourceOrderConfigResponseBodyData struct {
+	// Maximum total document count
+	//
 	// example:
 	//
 	// 1
-	TotalDocSize             *int32                                                              `json:"TotalDocSize,omitempty" xml:"TotalDocSize,omitempty"`
+	TotalDocSize *int32 `json:"TotalDocSize,omitempty" xml:"TotalDocSize,omitempty"`
+	// List of user-configured data source weights
 	UserConfigDataSourceList []*GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList `json:"UserConfigDataSourceList,omitempty" xml:"UserConfigDataSourceList,omitempty" type:"Repeated"`
 }
 
@@ -166,16 +180,28 @@ func (s *GetDataSourceOrderConfigResponseBodyData) Validate() error {
 }
 
 type GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList struct {
+	// Code description
+	//
 	// example:
 	//
 	// QuarkCommonNews
-	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Enable *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Is enabled
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Display name
+	//
+	// example:
+	//
+	// 夸克通用搜索
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Quantity
+	//
 	// example:
 	//
 	// 20
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
+	// Type
+	//
 	// example:
 	//
 	// SystemSearch

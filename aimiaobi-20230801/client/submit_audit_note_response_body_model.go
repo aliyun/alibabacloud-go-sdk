@@ -24,28 +24,38 @@ type iSubmitAuditNoteResponseBody interface {
 }
 
 type SubmitAuditNoteResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// DataNotExists
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Task ID of this rule library submission. Use this ID in later API calls.
+	//
 	// example:
 	//
 	// xxx_Default_89123748917
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true

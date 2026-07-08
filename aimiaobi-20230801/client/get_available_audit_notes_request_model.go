@@ -16,7 +16,10 @@ type iGetAvailableAuditNotesRequest interface {
 }
 
 type GetAvailableAuditNotesRequest struct {
+	// The rule library ID. If not specified, defaults to Default.
 	NoteId *string `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	// The unique identifier of your Alibaba Cloud Model Studio workspace. Get your [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

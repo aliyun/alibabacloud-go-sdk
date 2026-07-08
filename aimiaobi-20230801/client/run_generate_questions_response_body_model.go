@@ -18,9 +18,11 @@ type iRunGenerateQuestionsResponseBody interface {
 }
 
 type RunGenerateQuestionsResponseBody struct {
-	Header  *RunGenerateQuestionsResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response header
+	Header *RunGenerateQuestionsResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body
 	Payload *RunGenerateQuestionsResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
@@ -78,27 +80,44 @@ func (s *RunGenerateQuestionsResponseBody) Validate() error {
 }
 
 type RunGenerateQuestionsResponseBodyHeader struct {
+	// Error code
+	//
 	// example:
 	//
-	// 200
+	// RateLimit
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message returned when the call fails.
+	//
 	// example:
 	//
 	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Event name
+	//
 	// example:
 	//
 	// finished
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Event description
+	//
+	// example:
+	//
+	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// 3cd10828-0e42-471c-8f1a-931cde20b035
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Trace ID
+	//
 	// example:
 	//
 	// 0bc3b4b417362160345997589e5f6e
@@ -181,8 +200,10 @@ func (s *RunGenerateQuestionsResponseBodyHeader) Validate() error {
 }
 
 type RunGenerateQuestionsResponseBodyPayload struct {
+	// Outputs
 	Output *RunGenerateQuestionsResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunGenerateQuestionsResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage
+	Usage *RunGenerateQuestionsResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunGenerateQuestionsResponseBodyPayload) String() string {
@@ -226,6 +247,11 @@ func (s *RunGenerateQuestionsResponseBodyPayload) Validate() error {
 }
 
 type RunGenerateQuestionsResponseBodyPayloadOutput struct {
+	// Question content
+	//
+	// example:
+	//
+	// 问题1\\n问题2\\n问题3\\n
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 
@@ -251,14 +277,20 @@ func (s *RunGenerateQuestionsResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunGenerateQuestionsResponseBodyPayloadUsage struct {
+	// Number of input tokens used
+	//
 	// example:
 	//
 	// 100
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of output tokens
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens
+	//
 	// example:
 	//
 	// 200

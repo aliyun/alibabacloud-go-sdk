@@ -30,35 +30,52 @@ type iListGeneralConfigsResponseBody interface {
 }
 
 type ListGeneralConfigsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The query results.
 	Data []*ListGeneralConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The fault description.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique identifier of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -168,18 +185,26 @@ func (s *ListGeneralConfigsResponseBody) Validate() error {
 }
 
 type ListGeneralConfigsResponseBodyData struct {
+	// The description of the configuration item.
+	//
 	// example:
 	//
 	// xxx
 	ConfigDesc *string `json:"ConfigDesc,omitempty" xml:"ConfigDesc,omitempty"`
+	// The unique identifier of the configuration item.
+	//
 	// example:
 	//
 	// xxx
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// xxx
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The type of the configuration item.
+	//
 	// example:
 	//
 	// CustomSemanticSearch

@@ -20,13 +20,20 @@ type iSubmitCustomHotTopicBroadcastJobRequest interface {
 }
 
 type SubmitCustomHotTopicBroadcastJobRequest struct {
+	// The configuration for the news broadcast job.
+	//
 	// This parameter is required.
 	HotTopicBroadcastConfig *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig `json:"HotTopicBroadcastConfig,omitempty" xml:"HotTopicBroadcastConfig,omitempty" type:"Struct"`
+	// The version of the hot topic.
+	//
 	// example:
 	//
 	// 热点版本
-	HotTopicVersion *string   `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
-	Topics          []*string `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
+	HotTopicVersion *string `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
+	// The topic filter.
+	Topics []*string `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -89,8 +96,12 @@ func (s *SubmitCustomHotTopicBroadcastJobRequest) Validate() error {
 }
 
 type SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig struct {
+	// The configuration for the custom output style.
+	//
 	// This parameter is required.
 	StepForCustomSummaryStyleConfig *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig `json:"StepForCustomSummaryStyleConfig,omitempty" xml:"StepForCustomSummaryStyleConfig,omitempty" type:"Struct"`
+	// The configuration for the broadcast content.
+	//
 	// This parameter is required.
 	StepForNewsBroadcastContentConfig *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig `json:"StepForNewsBroadcastContentConfig,omitempty" xml:"StepForNewsBroadcastContentConfig,omitempty" type:"Struct"`
 }
@@ -136,14 +147,20 @@ func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig) Validat
 }
 
 type SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig struct {
+	// The number of images in the summary.
+	//
 	// example:
 	//
 	// 3
 	SummaryImageCount *int32 `json:"SummaryImageCount,omitempty" xml:"SummaryImageCount,omitempty"`
+	// The summary model.
+	//
 	// example:
 	//
 	// qwen-max
 	SummaryModel *string `json:"SummaryModel,omitempty" xml:"SummaryModel,omitempty"`
+	// The custom prompt for the summary.
+	//
 	// example:
 	//
 	// xxxx
@@ -190,11 +207,16 @@ func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCu
 }
 
 type SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig struct {
+	// The list of selected channels.
+	//
 	// example:
 	//
 	// ["科技","经济","时政","娱乐"]
-	Categories            []*string                                                                                                               `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The custom weights for hot topics.
 	CustomHotValueWeights []*SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights `json:"CustomHotValueWeights,omitempty" xml:"CustomHotValueWeights,omitempty" type:"Repeated"`
+	// The number of topics.
+	//
 	// example:
 	//
 	// 10
@@ -250,14 +272,20 @@ func (s *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNe
 }
 
 type SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights struct {
+	// The key of the dimension.
+	//
 	// example:
 	//
 	// views
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	// The name of the dimension.
+	//
 	// example:
 	//
 	// 维度名称
 	DimensionName *string `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
+	// The weight.
+	//
 	// example:
 	//
 	// 1

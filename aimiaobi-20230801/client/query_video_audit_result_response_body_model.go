@@ -24,33 +24,33 @@ type iQueryVideoAuditResultResponseBody interface {
 }
 
 type QueryVideoAuditResultResponseBody struct {
-	// 业务处理结果状态码
+	// Business status code
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 视频审校的详细结果
+	// Video audit result data
 	Data *QueryVideoAuditResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP响应状态码
+	// HTTP status code
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 业务处理结果描述信息
+	// Return message
 	//
 	// example:
 	//
 	// 查询成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 本次API请求的唯一标识
+	// Request ID
 	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 请求是否处理成功
+	// Is successful
 	//
 	// example:
 	//
@@ -130,79 +130,83 @@ func (s *QueryVideoAuditResultResponseBody) Validate() error {
 }
 
 type QueryVideoAuditResultResponseBodyData struct {
-	// 视频总时长（秒）
+	// Video duration
 	//
 	// example:
 	//
 	// 120.5
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 任务执行失败时的错误信息
+	// Error message
+	//
+	// example:
+	//
+	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// 视频帧率（FPS）
+	// Video frame rate
 	//
 	// example:
 	//
 	// 30.0
 	Fps *float64 `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// 已经完成审核的帧数
+	// Frames audited
 	//
 	// example:
 	//
 	// 120
 	FrameAudited *int32 `json:"FrameAudited,omitempty" xml:"FrameAudited,omitempty"`
-	// 视频高度（像素）
+	// Video height
 	//
 	// example:
 	//
 	// 1080
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// 抽取的图片URL列表
+	// Image URL list
 	ImageUrls []*QueryVideoAuditResultResponseBodyDataImageUrls `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
-	// 图片审核结果详情
+	// Audit results list
 	Results []*QueryVideoAuditResultResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// 任务状态：PENDING(待执行)、RUNNING(执行中)、SUCCESSED(成功)、FAILED(失败)、CANCELED(取消)
+	// Task status (PENDING: Queued, RUNNING: In progress, SUCCESSED: Successful, FAILED: Failed, CANCELED: Task canceled)
 	//
 	// example:
 	//
 	// SUCCESSED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 视频审校的文本结果
+	// Reviewed text
 	//
 	// example:
 	//
 	// 视频审核完成
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// 需要审核的视频帧总数
+	// Frames to audit
 	//
 	// example:
 	//
 	// 120
 	TotalFrameAudit *int32 `json:"TotalFrameAudit,omitempty" xml:"TotalFrameAudit,omitempty"`
-	// 视频总帧数
+	// Total frames
 	//
 	// example:
 	//
 	// 3615
 	TotalFrames *int32 `json:"TotalFrames,omitempty" xml:"TotalFrames,omitempty"`
-	// 检测到的视频分镜总数
+	// Total shots
 	//
 	// example:
 	//
 	// 15
 	TotalShots *int32 `json:"TotalShots,omitempty" xml:"TotalShots,omitempty"`
-	// 被审核的视频文件Key
+	// Video FileKey
 	//
 	// example:
 	//
 	// video/test.mp4
 	VideoFileKey *string `json:"VideoFileKey,omitempty" xml:"VideoFileKey,omitempty"`
-	// 被审核的视频URL地址
+	// Video URL
 	//
 	// example:
 	//
 	// https://example.com/video.mp4
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
-	// 视频宽度（像素）
+	// Video width
 	//
 	// example:
 	//
@@ -376,16 +380,20 @@ func (s *QueryVideoAuditResultResponseBodyData) Validate() error {
 }
 
 type QueryVideoAuditResultResponseBodyDataImageUrls struct {
-	// 图片ID，与AliyunImageAuditResult中的dataId对应
+	// Image ID (Associate with Results[].DataId to get audit result information)
 	//
 	// example:
 	//
 	// img001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Timestamp (milliseconds)
+	//
 	// example:
 	//
 	// 1000
 	Timestamp *float64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// Image URL
+	//
 	// example:
 	//
 	// https://example.com/image1.jpg
@@ -432,21 +440,29 @@ func (s *QueryVideoAuditResultResponseBodyDataImageUrls) Validate() error {
 }
 
 type QueryVideoAuditResultResponseBodyDataResults struct {
-	// 对应图片的ID，与ImageUrl中的id字段对应
+	// Image ID (Associate with ImageUrls[].Id to get image information)
 	//
 	// example:
 	//
 	// d411ed15e8fc154fd0ef5addabfee04b
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// 审核请求ID
+	// Request ID
 	//
 	// example:
 	//
 	// B5D1CF9E-0404-51E3-A28E-A5C7D95B6C71
 	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
-	// 图片检测的风险标签、置信分等参数结果
+	// Detection results
 	Result []*QueryVideoAuditResultResponseBodyDataResultsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// 风险等级：high(高风险)、medium(中风险)、low(低风险)、none(未检测到风险)
+	// Risk level
+	//
+	// - high: High risk
+	//
+	// - medium: Medium risk
+	//
+	// - low: Low risk
+	//
+	// - none: No risk
 	//
 	// example:
 	//
@@ -512,19 +528,31 @@ func (s *QueryVideoAuditResultResponseBodyDataResults) Validate() error {
 }
 
 type QueryVideoAuditResultResponseBodyDataResultsResult struct {
-	// 0到100分，保留到小数点后2位，部分标签无置信分
+	// From 0 to 100, retained to 2 decimal places. Some labels do not have a confidence score.
 	//
 	// example:
 	//
 	// 99.5
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// Label字段的解释说明
+	// Explanation of the Label field
 	//
 	// example:
 	//
 	// 未检测出风险
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 图片内容检测运算后返回的标签，如：nonLabel（未检测出风险）
+	// Risk label
+	//
+	// The label of the image content review result. For example: nonLabel (no risk detected).
+	//
+	// The label can also be a risk level that is determined by the high-risk and low-risk thresholds that you set. Valid return values are:
+	//
+	// ● high: high risk
+	//
+	// ● medium: medium risk
+	//
+	// ● low: low risk
+	//
+	// ● none: no risk detected
 	//
 	// example:
 	//

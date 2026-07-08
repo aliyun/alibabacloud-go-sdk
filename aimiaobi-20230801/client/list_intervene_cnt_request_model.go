@@ -18,16 +18,22 @@ type iListInterveneCntRequest interface {
 }
 
 type ListInterveneCntRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// fcb14f25c9ee41ccad33a049de8f941b_p_outbound_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10

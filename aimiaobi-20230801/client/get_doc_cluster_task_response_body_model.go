@@ -24,23 +24,34 @@ type iGetDocClusterTaskResponseBody interface {
 }
 
 type GetDocClusterTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *GetDocClusterTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\`: The request was successful. \\`false\\`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -119,14 +130,19 @@ func (s *GetDocClusterTaskResponseBody) Validate() error {
 }
 
 type GetDocClusterTaskResponseBodyData struct {
+	// The error message.
+	//
 	// example:
 	//
 	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The status of the task. Valid values: PENDING (to be executed), RUNNING (executing), SUCCESSED (successful), SUSPENDED (paused), FAILED (failed), and CANCELED (canceled).
+	//
 	// example:
 	//
 	// PENDING
-	Status *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A list of clustering topics.
 	Topics []*GetDocClusterTaskResponseBodyDataTopics `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
 }
 
@@ -179,11 +195,16 @@ func (s *GetDocClusterTaskResponseBodyData) Validate() error {
 }
 
 type GetDocClusterTaskResponseBodyDataTopics struct {
+	// A list of document IDs for the clustering topic.
 	DocIds []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	// The summary of the clustering topic.
+	//
 	// example:
 	//
 	// 聚类主题摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The name of the clustering topic.
+	//
 	// example:
 	//
 	// 聚类主题名

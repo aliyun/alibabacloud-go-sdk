@@ -24,23 +24,34 @@ type iGetGeneratedContentResponseBody interface {
 }
 
 type GetGeneratedContentResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *GetGeneratedContentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded. true indicates success. false indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,45 +130,94 @@ func (s *GetGeneratedContentResponseBody) Validate() error {
 }
 
 type GetGeneratedContentResponseBodyData struct {
+	// Rich text content
+	//
+	// example:
+	//
+	// 杭州亚运会
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Content generation domain. Valid values: media (news) and government (government services)
+	//
 	// example:
 	//
 	// media
 	ContentDomain *string `json:"ContentDomain,omitempty" xml:"ContentDomain,omitempty"`
-	ContentText   *string `json:"ContentText,omitempty" xml:"ContentText,omitempty"`
+	// Plain text content
+	//
+	// example:
+	//
+	// 杭州亚运会
+	ContentText *string `json:"ContentText,omitempty" xml:"ContentText,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2024-01-04 11:46:07
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator
+	//
 	// example:
 	//
-	// 1
+	// "1"
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Device ID
+	//
 	// example:
 	//
 	// xxx
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Document ID
+	//
 	// example:
 	//
 	// 86
-	Id                      *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	IgnoreContentAuditWords *string   `json:"IgnoreContentAuditWords,omitempty" xml:"IgnoreContentAuditWords,omitempty"`
-	KeywordList             []*string `json:"KeywordList,omitempty" xml:"KeywordList,omitempty" type:"Repeated"`
-	Keywords                *string   `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
-	Prompt                  *string   `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// List of words to ignore during content audit (JSON string)
+	//
+	// example:
+	//
+	// "[{}]"
+	IgnoreContentAuditWords *string `json:"IgnoreContentAuditWords,omitempty" xml:"IgnoreContentAuditWords,omitempty"`
+	// Keywords
+	KeywordList []*string `json:"KeywordList,omitempty" xml:"KeywordList,omitempty" type:"Repeated"`
+	// Keywords (string format)
+	//
+	// example:
+	//
+	// [\\"教师\\",\\"乡村\\"]
+	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// Last prompt used to generate this content
+	//
+	// example:
+	//
+	// 创作xxx文章
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Session task ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Title
+	//
+	// example:
+	//
+	// 杭州亚运会
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Update time
+	//
 	// example:
 	//
 	// 2024-01-04 11:46:07
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Updater
+	//
 	// example:
 	//
-	// 1
+	// "1"
 	UpdateUser *string `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
+	// UUID for traceability
+	//
 	// example:
 	//
 	// 0961a514-2e26-4aa6-b22b-f592d145fe47

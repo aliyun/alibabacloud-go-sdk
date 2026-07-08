@@ -20,20 +20,28 @@ type iListTopicViewPointRecommendEventListRequest interface {
 }
 
 type ListTopicViewPointRecommendEventListRequest struct {
+	// Unique identifier for the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Hot spot event ID.
+	//
 	// example:
 	//
 	// xxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Maximum number of results to return. Defaults to 5.
+	//
 	// example:
 	//
 	// 66
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token for the next page.
+	//
 	// example:
 	//
 	// 下一页的token

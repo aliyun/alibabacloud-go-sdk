@@ -22,22 +22,32 @@ type iSubmitDocClusterTaskRequest interface {
 }
 
 type SubmitDocClusterTaskRequest struct {
+	// The unique ID of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// A list of documents.
+	//
 	// This parameter is required.
 	Documents []*SubmitDocClusterTaskRequestDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// The character limit for the generated cluster summary.
+	//
 	// example:
 	//
 	// 49
 	SummaryLength *int32 `json:"SummaryLength,omitempty" xml:"SummaryLength,omitempty"`
+	// The character limit for the generated cluster title.
+	//
 	// example:
 	//
 	// 69
 	TitleLength *int32 `json:"TitleLength,omitempty" xml:"TitleLength,omitempty"`
+	// The maximum number of clusters.
+	//
 	// example:
 	//
 	// 15
@@ -111,16 +121,22 @@ func (s *SubmitDocClusterTaskRequest) Validate() error {
 }
 
 type SubmitDocClusterTaskRequestDocuments struct {
+	// The content of the document.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 文档内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The document ID. It is used to identify the document in the returned cluster results. If you do not provide an ID for any document, the array index is used instead. An error is reported if you provide IDs for only some of the documents.
+	//
 	// example:
 	//
 	// 文档ID。用于在返回聚类文章时标识文章。如果文章列表中都不传则使用数组索引作为ID。如果部分传则会报错
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The title of the document.
+	//
 	// example:
 	//
 	// 文档标题

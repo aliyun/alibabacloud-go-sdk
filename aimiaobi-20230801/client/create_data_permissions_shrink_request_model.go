@@ -20,20 +20,28 @@ type iCreateDataPermissionsShrinkRequest interface {
 }
 
 type CreateDataPermissionsShrinkRequest struct {
+	// A unique identifier for the permission.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SystemSearch.QuarkCommonNews
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The permission type. Currently, only \\`dataset\\` is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The users to whom you want to assign permissions.
+	//
 	// This parameter is required.
 	PermissionUserInfosShrink *string `json:"PermissionUserInfos,omitempty" xml:"PermissionUserInfos,omitempty"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get workspaceId](https://help.aliyun.com/document_detail/2587495.html).
+	//
 	// This parameter is required.
 	//
 	// example:

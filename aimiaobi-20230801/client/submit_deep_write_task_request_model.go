@@ -22,14 +22,29 @@ type iSubmitDeepWriteTaskRequest interface {
 }
 
 type SubmitDeepWriteTaskRequest struct {
+	// The agent orchestration options.
 	AgentOrchestration *SubmitDeepWriteTaskRequestAgentOrchestration `json:"AgentOrchestration,omitempty" xml:"AgentOrchestration,omitempty" type:"Struct"`
-	Files              []*SubmitDeepWriteTaskRequestFiles            `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// A list of attachments.
+	Files []*SubmitDeepWriteTaskRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The user\\"s question.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
 	// false
-	Input        *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	//
+	// example:
+	//
+	// 北京2025年新能源汽车发展趋势
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The instructions.
+	//
+	// example:
+	//
+	// 请根据北京新能源汽车在汽车品牌、新车发布、能源等方面进行分析
 	Instructions *string `json:"Instructions,omitempty" xml:"Instructions,omitempty"`
+	// [The workspace ID.](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// llm-1setzb9xb8m11vrc
@@ -108,9 +123,12 @@ func (s *SubmitDeepWriteTaskRequest) Validate() error {
 }
 
 type SubmitDeepWriteTaskRequestAgentOrchestration struct {
-	DataAnalystAgent   *SubmitDeepWriteTaskRequestAgentOrchestrationDataAnalystAgent   `json:"DataAnalystAgent,omitempty" xml:"DataAnalystAgent,omitempty" type:"Struct"`
+	// The data analysis agent.
+	DataAnalystAgent *SubmitDeepWriteTaskRequestAgentOrchestrationDataAnalystAgent `json:"DataAnalystAgent,omitempty" xml:"DataAnalystAgent,omitempty" type:"Struct"`
+	// The data collection agent.
 	DataCollectorAgent *SubmitDeepWriteTaskRequestAgentOrchestrationDataCollectorAgent `json:"DataCollectorAgent,omitempty" xml:"DataCollectorAgent,omitempty" type:"Struct"`
-	ReporterAgent      *SubmitDeepWriteTaskRequestAgentOrchestrationReporterAgent      `json:"ReporterAgent,omitempty" xml:"ReporterAgent,omitempty" type:"Struct"`
+	// The reporter agent.
+	ReporterAgent *SubmitDeepWriteTaskRequestAgentOrchestrationReporterAgent `json:"ReporterAgent,omitempty" xml:"ReporterAgent,omitempty" type:"Struct"`
 }
 
 func (s SubmitDeepWriteTaskRequestAgentOrchestration) String() string {
@@ -168,8 +186,18 @@ func (s *SubmitDeepWriteTaskRequestAgentOrchestration) Validate() error {
 }
 
 type SubmitDeepWriteTaskRequestAgentOrchestrationDataAnalystAgent struct {
-	EnableSearch *bool   `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether to enable retrieval.
+	//
+	// example:
+	//
+	// true
+	EnableSearch *bool `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// DataAnalystAgent
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s SubmitDeepWriteTaskRequestAgentOrchestrationDataAnalystAgent) String() string {
@@ -203,6 +231,11 @@ func (s *SubmitDeepWriteTaskRequestAgentOrchestrationDataAnalystAgent) Validate(
 }
 
 type SubmitDeepWriteTaskRequestAgentOrchestrationDataCollectorAgent struct {
+	// The name.
+	//
+	// example:
+	//
+	// DataCollectorAgent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -228,8 +261,14 @@ func (s *SubmitDeepWriteTaskRequestAgentOrchestrationDataCollectorAgent) Validat
 }
 
 type SubmitDeepWriteTaskRequestAgentOrchestrationReporterAgent struct {
-	EnableCitation *bool   `json:"EnableCitation,omitempty" xml:"EnableCitation,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether to enable citations.
+	EnableCitation *bool `json:"EnableCitation,omitempty" xml:"EnableCitation,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// ReporterAgent
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s SubmitDeepWriteTaskRequestAgentOrchestrationReporterAgent) String() string {
@@ -263,14 +302,20 @@ func (s *SubmitDeepWriteTaskRequestAgentOrchestrationReporterAgent) Validate() e
 }
 
 type SubmitDeepWriteTaskRequestFiles struct {
+	// A description of the attachment.
+	//
 	// example:
 	//
-	// 附件的备注
+	// 附件的说明
 	FileDescription *string `json:"FileDescription,omitempty" xml:"FileDescription,omitempty"`
+	// The Object Storage Service (OSS) address of the attachment.
+	//
 	// example:
 	//
 	// oss://default/aimiaobi-poc/aimiaobi/deep-write-upload/1_1/xxx.txt
 	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// The name of the attachment.
+	//
 	// example:
 	//
 	// 附件的名称

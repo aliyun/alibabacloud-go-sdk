@@ -24,25 +24,34 @@ type iGetSmartAuditResultResponseBody interface {
 }
 
 type GetSmartAuditResultResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The review result.
 	Data *GetSmartAuditResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,8 +130,16 @@ func (s *GetSmartAuditResultResponseBody) Validate() error {
 }
 
 type GetSmartAuditResultResponseBodyData struct {
+	// The list of review error details.
 	ErrorItemDetails []*GetSmartAuditResultResponseBodyDataErrorItemDetails `json:"ErrorItemDetails,omitempty" xml:"ErrorItemDetails,omitempty" type:"Repeated"`
-	ErrorMessage     *string                                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// If the final status is not SUCCESSED, read this error message to identify the fault.
+	//
+	// example:
+	//
+	// 审核被取消
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The task execution status. Valid values: PENDING, RUNNING, SUCCESSED, SUSPENDED, FAILED, and CANCELLED.
+	//
 	// example:
 	//
 	// SUCCESSED
@@ -178,40 +195,84 @@ func (s *GetSmartAuditResultResponseBodyData) Validate() error {
 }
 
 type GetSmartAuditResultResponseBodyDataErrorItemDetails struct {
+	// The unique ID of the review item.
+	//
+	// example:
+	//
+	// 审核项唯一标识。
 	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	// The original text segment.
+	//
+	// example:
+	//
+	// 原文片段
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// The offset index of the incorrect word within the context.
+	//
 	// example:
 	//
 	// 0
 	ContextOffset *int32 `json:"ContextOffset,omitempty" xml:"ContextOffset,omitempty"`
+	// The error level. 1: critical, 2: warning, 3: notice, 4: suggestion.
+	//
 	// example:
 	//
 	// 2
 	ErrorLevel *int32 `json:"ErrorLevel,omitempty" xml:"ErrorLevel,omitempty"`
+	// The incorrect word.
+	//
 	// example:
 	//
 	// ”xxx“
 	ErrorWord *string `json:"ErrorWord,omitempty" xml:"ErrorWord,omitempty"`
+	// The primary error code.
+	//
 	// example:
 	//
 	// ContentAccuracy
-	MajorCode     *string `json:"MajorCode,omitempty" xml:"MajorCode,omitempty"`
+	MajorCode *string `json:"MajorCode,omitempty" xml:"MajorCode,omitempty"`
+	// The description of the primary error.
+	//
+	// example:
+	//
+	// 内容准确性
 	MajorCodeDesc *string `json:"MajorCodeDesc,omitempty" xml:"MajorCodeDesc,omitempty"`
+	// The offset index of the incorrect word in the full text.
+	//
 	// example:
 	//
 	// 0
-	Offset *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The error description.
+	//
+	// example:
+	//
+	// 中文双引号应成对正确使用，先左双引号，后右双引号
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The suggested correction.
+	//
 	// example:
 	//
 	// “xxx”
 	RightWord *string `json:"RightWord,omitempty" xml:"RightWord,omitempty"`
+	// The sub-error code.
+	//
 	// example:
 	//
 	// PunctuationError
 	SubClassCode *string `json:"SubClassCode,omitempty" xml:"SubClassCode,omitempty"`
+	// The description of the sub-error.
+	//
+	// example:
+	//
+	// 标点符号错误
 	SubClassDesc *string `json:"SubClassDesc,omitempty" xml:"SubClassDesc,omitempty"`
-	Url          *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// In an image review scenario, this is the public URL of the image that triggered the review.
+	//
+	// example:
+	//
+	// http://www.example.com/xxxx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetSmartAuditResultResponseBodyDataErrorItemDetails) String() string {

@@ -24,23 +24,34 @@ type iAddDatasetDocumentResponseBody interface {
 }
 
 type AddDatasetDocumentResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *AddDatasetDocumentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,19 +130,42 @@ func (s *AddDatasetDocumentResponseBody) Validate() error {
 }
 
 type AddDatasetDocumentResponseBodyData struct {
+	// The unique business ID of the document.
+	//
 	// example:
 	//
-	// 文档业务唯一标识
+	// xxx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The unique system ID of the document.
+	//
 	// example:
 	//
 	// 8df2d69d63a247b6b52ff455b2d426b6
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// The error code for the exception.
+	//
 	// example:
 	//
 	// Success
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The status.
+	//
+	// - 1: created
+	//
+	// - 2: text index built
+	//
+	// - 3: multimodal index built
+	//
+	// - 100: full build completed
+	//
+	// - 0: failed
+	//
 	// example:
 	//
 	// 1

@@ -16,7 +16,10 @@ type iSubmitExportTermsTaskRequest interface {
 }
 
 type SubmitExportTermsTaskRequest struct {
+	// Name of the dictionary. Optional. If you do not specify a value, the default name is used.
 	TermsName *string `json:"TermsName,omitempty" xml:"TermsName,omitempty"`
+	// Unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

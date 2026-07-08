@@ -18,8 +18,12 @@ type iRunDocSummaryResponseBody interface {
 }
 
 type RunDocSummaryResponseBody struct {
-	Header  *RunDocSummaryResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// response header
+	Header *RunDocSummaryResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// response body
 	Payload *RunDocSummaryResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 3259D344-E871-5DE0-8FFE-CDA21F8D4382
@@ -76,27 +80,44 @@ func (s *RunDocSummaryResponseBody) Validate() error {
 }
 
 type RunDocSummaryResponseBodyHeader struct {
+	// error code
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// error message
+	//
 	// example:
 	//
 	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Type of management event
+	//
 	// example:
 	//
 	// task-started
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Description of the management event
+	//
+	// example:
+	//
+	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// session ID
+	//
 	// example:
 	//
 	// 92e16ccb-92b6-4894-abbf-fc6e2929a0df
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// b057f2fa-2277-477b-babf-cbc062307828
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// End-to-end trace ID
+	//
 	// example:
 	//
 	// 2150451a17191950923411783e2927
@@ -179,8 +200,10 @@ func (s *RunDocSummaryResponseBodyHeader) Validate() error {
 }
 
 type RunDocSummaryResponseBodyPayload struct {
+	// Outputs
 	Output *RunDocSummaryResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunDocSummaryResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// LLM token usage information
+	Usage *RunDocSummaryResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunDocSummaryResponseBodyPayload) String() string {
@@ -224,6 +247,11 @@ func (s *RunDocSummaryResponseBodyPayload) Validate() error {
 }
 
 type RunDocSummaryResponseBodyPayloadOutput struct {
+	// Summary content
+	//
+	// example:
+	//
+	// 总结内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 
@@ -249,14 +277,20 @@ func (s *RunDocSummaryResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunDocSummaryResponseBodyPayloadUsage struct {
+	// Quantity of tokens used in the input
+	//
 	// example:
 	//
 	// 100
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of output tokens
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens
+	//
 	// example:
 	//
 	// 200

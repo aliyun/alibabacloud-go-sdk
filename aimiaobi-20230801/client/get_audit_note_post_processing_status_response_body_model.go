@@ -24,19 +24,27 @@ type iGetAuditNotePostProcessingStatusResponseBody interface {
 }
 
 type GetAuditNotePostProcessingStatusResponseBody struct {
+	// The status code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DataNotExists
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// if can be null:
 	// true
 	Data *GetAuditNotePostProcessingStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error details.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -51,6 +59,8 @@ type GetAuditNotePostProcessingStatusResponseBody struct {
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -131,30 +141,44 @@ func (s *GetAuditNotePostProcessingStatusResponseBody) Validate() error {
 }
 
 type GetAuditNotePostProcessingStatusResponseBodyData struct {
+	// The time when the post-processing task was completed. The format is YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 1970-01-01 23:34:45
 	CompletionTime *string `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
+	// The time when the post-processing task was created. The format is YYYY-MM-DD HH:mm:ss.
+	//
 	// example:
 	//
 	// 1970-01-01 12:34:56
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message. This is returned only when the post-processing task fails.
+	//
 	// example:
 	//
 	// error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the rule library. The default value in the current version is "Default".
+	//
 	// example:
 	//
 	// Default
 	NoteId *string `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	// The number of lines that have been post-processed.
+	//
 	// example:
 	//
 	// 233
 	ProcessedLines *int32 `json:"ProcessedLines,omitempty" xml:"ProcessedLines,omitempty"`
+	// The status of the post-processing task. Valid values: PENDING, RUNNING, SUCCEEDED, and FAILED.
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of lines in the structured rule library.
+	//
 	// example:
 	//
 	// 666

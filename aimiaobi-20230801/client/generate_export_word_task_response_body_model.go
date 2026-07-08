@@ -24,23 +24,34 @@ type iGenerateExportWordTaskResponseBody interface {
 }
 
 type GenerateExportWordTaskResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response body
 	Data *GenerateExportWordTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates success: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -119,6 +130,8 @@ func (s *GenerateExportWordTaskResponseBody) Validate() error {
 }
 
 type GenerateExportWordTaskResponseBodyData struct {
+	// Task ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21

@@ -26,15 +26,26 @@ type ListPptArtifactsRequest struct {
 	//
 	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// The number of data entries to query in this request (deprecated).
+	//
 	// example:
 	//
 	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page.
+	//
 	// example:
 	//
 	// cEoBWREAXdxaOyjq/cqAbg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Query     *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The search keyword for the work name.
+	//
+	// example:
+	//
+	// 数字时代的营销策划与文案创作
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// llm-az2xxxx

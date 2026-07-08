@@ -20,9 +20,14 @@ type iRunStyleFeatureAnalysisResponseBody interface {
 }
 
 type RunStyleFeatureAnalysisResponseBody struct {
-	End     *bool                                       `json:"End,omitempty" xml:"End,omitempty"`
-	Header  *RunStyleFeatureAnalysisResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Whether the output is complete. True indicates completion.
+	End *bool `json:"End,omitempty" xml:"End,omitempty"`
+	// The streaming output header, containing general return information.
+	Header *RunStyleFeatureAnalysisResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// The payload of the response, in JSON structure
 	Payload *RunStyleFeatureAnalysisResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Unique request ID.
+	//
 	// example:
 	//
 	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
@@ -88,30 +93,44 @@ func (s *RunStyleFeatureAnalysisResponseBody) Validate() error {
 }
 
 type RunStyleFeatureAnalysisResponseBodyHeader struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 403
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// Pop sign mismatch, please check.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Event type.
+	//
 	// example:
 	//
 	// result-generated
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Event description.
+	//
 	// example:
 	//
 	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// 3cd10828-0e42-471c-8f1a-931cde20b035
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Trace ID.
+	//
 	// example:
 	//
 	// 2150451a17191950923411783e2927
@@ -194,8 +213,10 @@ func (s *RunStyleFeatureAnalysisResponseBodyHeader) Validate() error {
 }
 
 type RunStyleFeatureAnalysisResponseBodyPayload struct {
+	// Output content object.
 	Output *RunStyleFeatureAnalysisResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunStyleFeatureAnalysisResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Large Language Model (LLM) token usage information.
+	Usage *RunStyleFeatureAnalysisResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunStyleFeatureAnalysisResponseBodyPayload) String() string {
@@ -239,6 +260,8 @@ func (s *RunStyleFeatureAnalysisResponseBodyPayload) Validate() error {
 }
 
 type RunStyleFeatureAnalysisResponseBodyPayloadOutput struct {
+	// Output content.
+	//
 	// example:
 	//
 	// 这是测试输出
@@ -267,14 +290,20 @@ func (s *RunStyleFeatureAnalysisResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunStyleFeatureAnalysisResponseBodyPayloadUsage struct {
+	// Input Tokens.
+	//
 	// example:
 	//
 	// 100
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Output Tokens.
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total Tokens.
+	//
 	// example:
 	//
 	// 200

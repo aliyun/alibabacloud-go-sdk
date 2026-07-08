@@ -30,35 +30,52 @@ type iListPlanningProposalResponseBody interface {
 }
 
 type ListPlanningProposalResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data.
 	Data []*ListPlanningProposalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Maximum number of returned results.
+	//
 	// example:
 	//
 	// 77
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Fault description.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Token for the next page.
+	//
 	// example:
 	//
 	// 下一页的token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Unique request identity.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Is successful: true for success, false for failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 80
@@ -168,9 +185,20 @@ func (s *ListPlanningProposalResponseBody) Validate() error {
 }
 
 type ListPlanningProposalResponseBodyData struct {
+	// Outline list.
 	Outlines []*ListPlanningProposalResponseBodyDataOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
-	Summary  *string                                         `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Title    *string                                         `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Summary.
+	//
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Title.
+	//
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListPlanningProposalResponseBodyData) String() string {
@@ -222,10 +250,14 @@ func (s *ListPlanningProposalResponseBodyData) Validate() error {
 }
 
 type ListPlanningProposalResponseBodyDataOutlines struct {
+	// Outline.
+	//
 	// example:
 	//
 	// 大纲
 	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// Outline summary.
+	//
 	// example:
 	//
 	// 大纲摘要

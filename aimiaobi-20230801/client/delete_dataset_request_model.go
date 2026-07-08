@@ -16,12 +16,16 @@ type iDeleteDatasetRequest interface {
 }
 
 type DeleteDatasetRequest struct {
+	// Unique identifier of the dataset
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// Unique identifier of Alibaba Cloud Model Studio workspace: [Get workspaceId](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:

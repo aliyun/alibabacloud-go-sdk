@@ -24,28 +24,38 @@ type iExportAuditContentResultResponseBody interface {
 }
 
 type ExportAuditContentResultResponseBody struct {
+  // The error code.
+  // 
   // example:
   // 
   // successful
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // A publicly accessible URL for the exported Word file (.docx). The URL is valid for one hour.
+  // 
   // example:
   // 
   // http://www.example.com/xxx.docx
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // The error message.
+  // 
   // example:
   // 
   // successful
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // Id of the request
+  // The ID of the request.
   // 
   // example:
   // 
   // 94512A33-8EC1-5452-A793-5C91F18ED2F0
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the request was successful.
+  // 
   // example:
   // 
   // true

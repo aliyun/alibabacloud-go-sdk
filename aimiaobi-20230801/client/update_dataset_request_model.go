@@ -27,20 +27,29 @@ type UpdateDatasetRequest struct {
 	// example:
 	//
 	// private
-	AccessLevel   *string                            `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
+	AccessLevel *string `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
+	// The configurations for a third-party search dataset.
 	DatasetConfig *UpdateDatasetRequestDatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty" type:"Struct"`
+	// The description of the dataset.
+	//
 	// example:
 	//
 	// 企业自定义数据集
 	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// Specifies whether to enable search for the dataset.
+	//
 	// example:
 	//
 	// 3
 	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspaceId]().
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -121,7 +130,9 @@ func (s *UpdateDatasetRequest) Validate() error {
 }
 
 type UpdateDatasetRequestDatasetConfig struct {
-	SearchSourceConfig  *UpdateDatasetRequestDatasetConfigSearchSourceConfig    `json:"SearchSourceConfig,omitempty" xml:"SearchSourceConfig,omitempty" type:"Struct"`
+	// The dataset configuration items.
+	SearchSourceConfig *UpdateDatasetRequestDatasetConfigSearchSourceConfig `json:"SearchSourceConfig,omitempty" xml:"SearchSourceConfig,omitempty" type:"Struct"`
+	// Third-party search: API definition.
 	SearchSourceConfigs []*UpdateDatasetRequestDatasetConfigSearchSourceConfigs `json:"SearchSourceConfigs,omitempty" xml:"SearchSourceConfigs,omitempty" type:"Repeated"`
 }
 
@@ -170,10 +181,30 @@ func (s *UpdateDatasetRequestDatasetConfig) Validate() error {
 }
 
 type UpdateDatasetRequestDatasetConfigSearchSourceConfig struct {
+	// Specifies whether the key-value pairs in metadata are used for generation. Default: true.
+	//
+	// example:
+	//
+	// true
 	MetadataKeyValueGenerateEnable *bool `json:"MetadataKeyValueGenerateEnable,omitempty" xml:"MetadataKeyValueGenerateEnable,omitempty"`
-	MetadataKeyValueSearchEnable   *bool `json:"MetadataKeyValueSearchEnable,omitempty" xml:"MetadataKeyValueSearchEnable,omitempty"`
-	TagGenerateEnable              *bool `json:"TagGenerateEnable,omitempty" xml:"TagGenerateEnable,omitempty"`
-	TagSearchEnable                *bool `json:"TagSearchEnable,omitempty" xml:"TagSearchEnable,omitempty"`
+	// Specifies whether the key-value pairs in metadata are included in searches. Default: true.
+	//
+	// example:
+	//
+	// true
+	MetadataKeyValueSearchEnable *bool `json:"MetadataKeyValueSearchEnable,omitempty" xml:"MetadataKeyValueSearchEnable,omitempty"`
+	// Specifies whether tags are used for generation. Default: true.
+	//
+	// example:
+	//
+	// true
+	TagGenerateEnable *bool `json:"TagGenerateEnable,omitempty" xml:"TagGenerateEnable,omitempty"`
+	// Specifies whether tags are included in searches. Default: true.
+	//
+	// example:
+	//
+	// true
+	TagSearchEnable *bool `json:"TagSearchEnable,omitempty" xml:"TagSearchEnable,omitempty"`
 }
 
 func (s UpdateDatasetRequestDatasetConfigSearchSourceConfig) String() string {
@@ -225,12 +256,18 @@ func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfig) Validate() error {
 }
 
 type UpdateDatasetRequestDatasetConfigSearchSourceConfigs struct {
+	// A searchable keyword used to verify availability.
+	//
 	// example:
 	//
 	// 可以搜索到的关键词，用来验证是否可用
-	DemoQuery                  *string                                                                         `json:"DemoQuery,omitempty" xml:"DemoQuery,omitempty"`
-	SearchSourceRequestConfig  *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig  `json:"SearchSourceRequestConfig,omitempty" xml:"SearchSourceRequestConfig,omitempty" type:"Struct"`
+	DemoQuery *string `json:"DemoQuery,omitempty" xml:"DemoQuery,omitempty"`
+	// The API request configuration.
+	SearchSourceRequestConfig *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig `json:"SearchSourceRequestConfig,omitempty" xml:"SearchSourceRequestConfig,omitempty" type:"Struct"`
+	// The API response configuration.
 	SearchSourceResponseConfig *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig `json:"SearchSourceResponseConfig,omitempty" xml:"SearchSourceResponseConfig,omitempty" type:"Struct"`
+	// The default number of data entries for requests and responses.
+	//
 	// example:
 	//
 	// 10
@@ -296,28 +333,42 @@ func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigs) Validate() error 
 }
 
 type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig struct {
+	// The request body.
+	//
 	// example:
 	//
 	// {}
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// The connection timeout period, in milliseconds.
+	//
 	// example:
 	//
 	// 3000
-	ConnectTimeout *int32                                                                                  `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	Headers        []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	ConnectTimeout *int32 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	// The HTTP request headers.
+	Headers []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	// The request method.
+	//
 	// example:
 	//
 	// 请求方式
-	Method *string                                                                                `json:"Method,omitempty" xml:"Method,omitempty"`
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The request path parameters.
 	Params []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Specifies whether to enable path parameters.
+	//
 	// example:
 	//
 	// true
 	PathParamsEnable *bool `json:"PathParamsEnable,omitempty" xml:"PathParamsEnable,omitempty"`
+	// The read timeout period, in milliseconds.
+	//
 	// example:
 	//
 	// 3000
 	SocketTimeout *int32 `json:"SocketTimeout,omitempty" xml:"SocketTimeout,omitempty"`
+	// The API URL.
+	//
 	// example:
 	//
 	// api地址
@@ -427,21 +478,29 @@ func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequest
 }
 
 type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders struct {
+	// The parameter name.
+	//
 	// example:
 	//
 	// 参数名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// 参数值
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is valid only when ValueType is set to time.
+	//
 	// example:
 	//
 	// valueType = time 时有效
 	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
+	// The data type of the parameter value. Default: string.
+	//
 	// example:
 	//
-	// 参数值数据类型: 默认string
+	// 参数值数据类型：默认string
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -494,21 +553,29 @@ func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequest
 }
 
 type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams struct {
+	// The parameter name.
+	//
 	// example:
 	//
 	// 参数名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// 参数值
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is valid only when ValueType is set to time.
+	//
 	// example:
 	//
 	// valueType = time 时有效
 	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
+	// The data type of the parameter value. Default: string.
+	//
 	// example:
 	//
-	// 参数值数据类型: 默认string
+	// 参数值数据类型：默认string
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -561,6 +628,7 @@ func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequest
 }
 
 type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig struct {
+	// The node configuration.
 	JqNodes []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
 }
 
@@ -595,15 +663,22 @@ func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRespons
 }
 
 type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes struct {
+	// The child node configuration.
 	JqNodes []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
+	// The node key.
+	//
 	// example:
 	//
 	// 节点key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The node path.
+	//
 	// example:
 	//
 	// 节点路径
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The data type of the node. Valid values: string, number, list, object, and base.
+	//
 	// example:
 	//
 	// 节点数据类型：string number list object base
@@ -668,15 +743,22 @@ func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRespons
 }
 
 type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes struct {
+	// The child node configuration.
 	JqNodes []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
+	// The node key.
+	//
 	// example:
 	//
 	// title
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The node path.
+	//
 	// example:
 	//
 	// .title
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The type.
+	//
 	// example:
 	//
 	// string
@@ -741,14 +823,20 @@ func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRespons
 }
 
 type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes struct {
+	// The node key.
+	//
 	// example:
 	//
 	// title
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The node path.
+	//
 	// example:
 	//
 	// .title
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The type.
+	//
 	// example:
 	//
 	// string

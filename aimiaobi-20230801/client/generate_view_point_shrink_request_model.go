@@ -16,12 +16,15 @@ type iGenerateViewPointShrinkRequest interface {
 }
 
 type GenerateViewPointShrinkRequest struct {
+	// The unique identifier of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c160c841c8e54295bf2f441432785944_p_efm
-	AgentKey            *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The context data.
 	ReferenceDataShrink *string `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty"`
 }
 

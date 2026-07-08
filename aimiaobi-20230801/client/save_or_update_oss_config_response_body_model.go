@@ -24,25 +24,34 @@ type iSaveOrUpdateOssConfigResponseBody interface {
 }
 
 type SaveOrUpdateOssConfigResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *SaveOrUpdateOssConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -121,14 +130,20 @@ func (s *SaveOrUpdateOssConfigResponseBody) Validate() error {
 }
 
 type SaveOrUpdateOssConfigResponseBodyData struct {
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// xxx
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// Indicates whether the OSS configuration is active. \\`1\\`: The configuration is active. \\`0\\`: The configuration is inactive.
+	//
 	// example:
 	//
 	// 1
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The endpoint of OSS.
+	//
 	// example:
 	//
 	// oss-cn-shanghai.aliyuncs.com

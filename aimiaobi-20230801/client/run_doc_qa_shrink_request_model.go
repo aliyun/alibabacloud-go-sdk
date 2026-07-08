@@ -30,25 +30,50 @@ type iRunDocQaShrinkRequest interface {
 }
 
 type RunDocQaShrinkRequest struct {
-	CategoryIdsShrink          *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
+	// Array of folder IDs for filtering. This parameter takes effect only when SearchSource is set to fromIndexLib.
+	CategoryIdsShrink *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
+	// Array of historical context content
 	ConversationContextsShrink *string `json:"ConversationContexts,omitempty" xml:"ConversationContexts,omitempty"`
-	DocIdsShrink               *string `json:"DocIds,omitempty" xml:"DocIds,omitempty"`
-	ModelName                  *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Array of multiple document IDs
+	DocIdsShrink *string `json:"DocIds,omitempty" xml:"DocIds,omitempty"`
+	// Custom model name defined by the User
+	//
+	// example:
+	//
+	// quanmiao-max、quanmiao-plus
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Question
+	//
 	// This parameter is required.
-	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	//
+	// example:
+	//
+	// 苹果16手机什么时候发布
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Associated content actively provided by the questioner
+	//
+	// example:
+	//
+	// 关联内容
 	ReferenceContent *string `json:"ReferenceContent,omitempty" xml:"ReferenceContent,omitempty"`
+	// Search source
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// fromWeb
 	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// Conversation ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f486c4e2-b773-4d65-88f8-2ba540610456
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Alibaba Cloud Model Studio workspace ID. For details on how to obtain it, see [How to Use Workspaces](https://help.aliyun.com/document_detail/2587495.html).
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,23 +24,34 @@ type iGetInterveneTemplateFileUrlResponseBody interface {
 }
 
 type GetInterveneTemplateFileUrlResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 0
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetInterveneTemplateFileUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// DA021073-17CE-5CCF-9FEB-93226C766887
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -120,6 +131,8 @@ func (s *GetInterveneTemplateFileUrlResponseBody) Validate() error {
 
 type GetInterveneTemplateFileUrlResponseBodyData struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The URL of the template file.
+	//
 	// example:
 	//
 	// http://xxx/xxx.xls

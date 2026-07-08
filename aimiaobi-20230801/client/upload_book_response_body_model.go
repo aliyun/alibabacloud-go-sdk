@@ -24,25 +24,34 @@ type iUploadBookResponseBody interface {
 }
 
 type UploadBookResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// successful
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *UploadBookResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Operation result. Set to true for success. Set to false for failure.
+	//
 	// example:
 	//
 	// true
@@ -121,7 +130,9 @@ func (s *UploadBookResponseBody) Validate() error {
 }
 
 type UploadBookResponseBodyData struct {
-	DocIds     []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	// Document IDs
+	DocIds []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	// IDs of duplicate documents
 	ExistedIds []*string `json:"ExistedIds,omitempty" xml:"ExistedIds,omitempty" type:"Repeated"`
 }
 

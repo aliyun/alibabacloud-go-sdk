@@ -16,12 +16,15 @@ type iInsertInterveneGlobalReplyShrinkRequest interface {
 }
 
 type InsertInterveneGlobalReplyShrinkRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxx_efm
-	AgentKey              *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// List of reply content
 	ReplyMessagListShrink *string `json:"ReplyMessagList,omitempty" xml:"ReplyMessagList,omitempty"`
 }
 

@@ -16,7 +16,10 @@ type iDeleteAuditTermsRequest interface {
 }
 
 type DeleteAuditTermsRequest struct {
+	// List of rule IDs for user logon audit terms to delete.
 	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// Unique identifier for the Alibaba Cloud Model Studio workspace. Get the [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

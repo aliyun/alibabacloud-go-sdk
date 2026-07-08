@@ -24,15 +24,22 @@ type iGetDeepWriteTaskResponseBody interface {
 }
 
 type GetDeepWriteTaskResponseBody struct {
+	// error code
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Task response object
 	Data *GetDeepWriteTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP error code
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// 错误消息
@@ -43,6 +50,8 @@ type GetDeepWriteTaskResponseBody struct {
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,11 +130,20 @@ func (s *GetDeepWriteTaskResponseBody) Validate() error {
 }
 
 type GetDeepWriteTaskResponseBodyData struct {
+	// User\\"s question
+	//
+	// example:
+	//
+	// 北京2025年新能源汽车发展趋势
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// Task status
+	//
 	// example:
 	//
 	// queued
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// a2267372-6042-46a4-aab0-1670dfc38c94

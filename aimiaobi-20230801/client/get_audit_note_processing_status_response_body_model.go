@@ -24,25 +24,34 @@ type iGetAuditNoteProcessingStatusResponseBody interface {
 }
 
 type GetAuditNoteProcessingStatusResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response data
 	Data *GetAuditNoteProcessingStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
@@ -121,26 +130,38 @@ func (s *GetAuditNoteProcessingStatusResponseBody) Validate() error {
 }
 
 type GetAuditNoteProcessingStatusResponseBodyData struct {
+	// OSS path where the parsed rule library is stored
+	//
 	// example:
 	//
 	// oss://default/path/to/audit/note
 	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// Size of the rule library file, in bytes
+	//
 	// example:
 	//
 	// 504
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// Name of the parsed rule library
+	//
 	// example:
 	//
 	// 错题本2025-07-07_解析结果
 	NoteName *string `json:"NoteName,omitempty" xml:"NoteName,omitempty"`
+	// Task status. Valid values: PENDING, RUNNING, SUCCESSED, or FAILED
+	//
 	// example:
 	//
 	// SUCCESSED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Task ID. Unique identifier for this task.
+	//
 	// example:
 	//
 	// 111_Default_20250708142918
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Update time
+	//
 	// example:
 	//
 	// 2024-11-25 11:40:50

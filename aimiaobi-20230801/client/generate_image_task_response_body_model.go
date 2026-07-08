@@ -24,23 +24,34 @@ type iGenerateImageTaskResponseBody interface {
 }
 
 type GenerateImageTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// successful
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *GenerateImageTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. true: The request was successful. false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -119,6 +130,7 @@ func (s *GenerateImageTaskResponseBody) Validate() error {
 }
 
 type GenerateImageTaskResponseBodyData struct {
+	// The information about the paragraph tasks. The tasks are associated based on the input paragraph IDs.
 	TaskList []*GenerateImageTaskResponseBodyDataTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
 }
 
@@ -153,18 +165,26 @@ func (s *GenerateImageTaskResponseBodyData) Validate() error {
 }
 
 type GenerateImageTaskResponseBodyDataTaskList struct {
+	// The content of the paragraph.
+	//
 	// example:
 	//
 	// 一直忧伤的猫
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The paragraph ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The unique ID of the task.
+	//
 	// example:
 	//
 	// e1be065b-adc3-435e-bd01-1c18c5ed75d3
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The current status of the task. Valid values: SUCCEEDED, FAILED, CANCELED, PENDING, SUSPENDED, and RUNNING.
+	//
 	// example:
 	//
 	// SUCCESSED

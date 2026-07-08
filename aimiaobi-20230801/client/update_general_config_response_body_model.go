@@ -24,23 +24,34 @@ type iUpdateGeneralConfigResponseBody interface {
 }
 
 type UpdateGeneralConfigResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The unique identifier of the configuration item.
 	Data *UpdateGeneralConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique identifier of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,18 +130,26 @@ func (s *UpdateGeneralConfigResponseBody) Validate() error {
 }
 
 type UpdateGeneralConfigResponseBodyData struct {
+	// The description of the configuration item.
+	//
 	// example:
 	//
 	// xxx
 	ConfigDesc *string `json:"ConfigDesc,omitempty" xml:"ConfigDesc,omitempty"`
+	// The unique identifier of the configuration.
+	//
 	// example:
 	//
 	// xx
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The value of the configuration.
+	//
 	// example:
 	//
 	// xxx
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The data type of the configuration value.
+	//
 	// example:
 	//
 	// xx

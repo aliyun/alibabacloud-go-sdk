@@ -16,12 +16,16 @@ type iListCustomTextRequest interface {
 }
 
 type ListCustomTextRequest struct {
+	// Unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Commodity code.
+	//
 	// example:
 	//
 	// 商品code

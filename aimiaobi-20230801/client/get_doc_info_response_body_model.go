@@ -24,23 +24,34 @@ type iGetDocInfoResponseBody interface {
 }
 
 type GetDocInfoResponseBody struct {
+	// The internal error code.
+	//
 	// example:
 	//
 	// successful
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *GetDocInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of `true` indicates success, and `false` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,31 +130,44 @@ func (s *GetDocInfoResponseBody) Validate() error {
 }
 
 type GetDocInfoResponseBodyData struct {
+	// The category where the document is stored.
+	//
 	// example:
 	//
 	// default
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The document name.
+	//
 	// example:
 	//
 	// 電視廣播2020年報
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// The document type.
+	//
 	// example:
 	//
 	// pdf
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// The URL of the document.
+	//
 	// example:
 	//
 	// http://xxx/xxx.pdf
 	FileUrl  *string                             `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	PageInfo *GetDocInfoResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The task status.
+	//
 	// example:
 	//
-	// 0
+	// 1和0，当状态为1时 表示获取文档成功，用户可进行生成文档摘要、生脑图等操作
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status message.
+	//
 	// example:
 	//
 	// 导入成功
-	StatusMessage *string   `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	// Text transcripts from the video\\"s audio.
 	VideoContents []*string `json:"VideoContents,omitempty" xml:"VideoContents,omitempty" type:"Repeated"`
 }
 

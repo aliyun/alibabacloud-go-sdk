@@ -24,26 +24,38 @@ type iDeleteCustomTopicByTopicResponseBody interface {
 }
 
 type DeleteCustomTopicByTopicResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
+	//
 	// example:
 	//
 	// 33
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Fault description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request unique identifier
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Is successful: true for success, false for failure
+	//
 	// example:
 	//
 	// true

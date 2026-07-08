@@ -26,32 +26,48 @@ type iRunCustomHotTopicAnalysisRequest interface {
 }
 
 type RunCustomHotTopicAnalysisRequest struct {
+	// The follow-up question from the model.
+	//
 	// example:
 	//
 	// 模型反问
 	AskUser *string `json:"AskUser,omitempty" xml:"AskUser,omitempty"`
+	// Specifies whether to forcibly analyze a duplicate topic and overwrite the existing analysis.
+	//
 	// example:
 	//
 	// false
 	ForceAnalysisExistsTopic *bool `json:"ForceAnalysisExistsTopic,omitempty" xml:"ForceAnalysisExistsTopic,omitempty"`
+	// The user\\"s input prompt.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 用户输入Prompt
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The unique ID for each request.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The unique ID for the entire conversation task.
+	//
+	// > By default, you do not need to specify TaskId. The system automatically generates one. If you specify the same TaskId for subsequent tasks, the tasks are considered part of the same conversation group.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The user\\"s input in response to the model\\"s follow-up question.
+	//
 	// example:
 	//
 	// 用户针对模型反问的输入
 	UserBack *string `json:"UserBack,omitempty" xml:"UserBack,omitempty"`
+	// The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Obtain a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -34,43 +34,64 @@ type iListPptArtifactsResponseBody interface {
 }
 
 type ListPptArtifactsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The current page.
+	//
 	// example:
 	//
 	// 1
-	Current *int32                              `json:"Current,omitempty" xml:"Current,omitempty"`
-	Data    []*ListPptArtifactsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Indicates whether the deletion succeeded.
+	Data []*ListPptArtifactsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The number of entries returned in this response.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token for the next page.
+	//
 	// example:
 	//
 	// cEoBWREAXdxaOyjq/cqAbg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries per page. The default is 10.
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -198,20 +219,34 @@ func (s *ListPptArtifactsResponseBody) Validate() error {
 }
 
 type ListPptArtifactsResponseBodyData struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-01-04 11:46:07
-	CreateTime *string                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FileAttr   *ListPptArtifactsResponseBodyDataFileAttr `json:"FileAttr,omitempty" xml:"FileAttr,omitempty" type:"Struct"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The properties of the work file.
+	FileAttr *ListPptArtifactsResponseBodyDataFileAttr `json:"FileAttr,omitempty" xml:"FileAttr,omitempty" type:"Struct"`
+	// The preview image of the work file.
+	//
 	// example:
 	//
 	// http://www.example.com/xxx.jpg
 	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// The unique ID of the document.
+	//
 	// example:
 	//
 	// 10
-	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The title.
+	//
+	// example:
+	//
+	// 作品标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2025-04-14 19:59:53
@@ -290,15 +325,26 @@ func (s *ListPptArtifactsResponseBodyData) Validate() error {
 }
 
 type ListPptArtifactsResponseBodyDataFileAttr struct {
+	// The file name.
+	//
+	// example:
+	//
+	// 数字时代的营销策划与文案创作
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 500
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The preview image of the work file.
+	//
 	// example:
 	//
 	// http://www.example.com/xxx.jpg
 	TmpUrl *string `json:"TmpUrl,omitempty" xml:"TmpUrl,omitempty"`
+	// The width of the video.
+	//
 	// example:
 	//
 	// 100

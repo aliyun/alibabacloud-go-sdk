@@ -22,16 +22,32 @@ type iRunGenerateQuestionsRequest interface {
 }
 
 type RunGenerateQuestionsRequest struct {
+	// Document ID
+	//
 	// example:
 	//
 	// oOgIwodFANW1u5MnqxysOh1rtld3xn
-	DocId            *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
-	ModelName        *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Name of the custom model
+	//
+	// example:
+	//
+	// quanmiao-max、quanmiao-plus
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Document content to extract questions from. If this field is not empty, use this text. If it is empty, use the document identified by DocId.
+	//
+	// example:
+	//
+	// 关联内容
 	ReferenceContent *string `json:"ReferenceContent,omitempty" xml:"ReferenceContent,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// f486c4e2-b773-4d65-88f8-2ba540610456
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Unique identifier of the Alibaba Cloud Model Studio workspace. To get this ID, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

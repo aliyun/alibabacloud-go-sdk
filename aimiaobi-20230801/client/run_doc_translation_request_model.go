@@ -26,25 +26,64 @@ type iRunDocTranslationRequest interface {
 }
 
 type RunDocTranslationRequest struct {
+	// Clear the current cache?
+	//
+	// example:
+	//
+	// true
 	CleanCache *bool `json:"CleanCache,omitempty" xml:"CleanCache,omitempty"`
+	// Document ID
+	//
 	// example:
 	//
 	// 12345
-	DocId            *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
-	ModelName        *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// User-defined model name
+	//
+	// example:
+	//
+	// quanmiao-max、quanmiao-plus
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Content to be translated
+	//
+	// example:
+	//
+	// 要翻译的内容
 	RecommendContent *string `json:"RecommendContent,omitempty" xml:"RecommendContent,omitempty"`
+	// Session ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2e6b3987-f743-4d4c-8326-d9c41a6af3ee
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Translation type
+	//
 	// example:
 	//
 	// toChinese
 	//
 	// toEnglish
+	//
+	// toJapenese
+	//
+	// toRussian
+	//
+	// toFrench
+	//
+	// toGerman
+	//
+	// toItalian
+	//
+	// toKorean
+	//
+	// toSpanish
+	//
+	// toPortuguese
 	TransType *string `json:"TransType,omitempty" xml:"TransType,omitempty"`
+	// Alibaba Cloud Model Studio workspace unique identifier. For more information, see [Get the Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -26,24 +26,36 @@ type iRunPptOutlineGenerationResponseBody interface {
 }
 
 type RunPptOutlineGenerationResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// success
-	Code   *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response header.
 	Header *RunPptOutlineGenerationResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message.
+	//
 	// example:
 	//
 	// successful
-	Message *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response body.
 	Payload *RunPptOutlineGenerationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\`: The request was successful. \\`false\\`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -136,30 +148,44 @@ func (s *RunPptOutlineGenerationResponseBody) Validate() error {
 }
 
 type RunPptOutlineGenerationResponseBodyHeader struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// xxx
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The SSE event. \\`task-started\\`: The task starts. \\`task-finished\\`: The task is complete. \\`task-failed\\`: The task failed.
+	//
 	// example:
 	//
 	// task-started
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 1a3d7c9f-3a6d-4e49-b176-2d8721a27397
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 8996314ce5514867943c71935e6a45af
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The trace ID.
+	//
 	// example:
 	//
 	// 0bc1ec3a17435601877224179ecc8a
@@ -242,6 +268,7 @@ func (s *RunPptOutlineGenerationResponseBodyHeader) Validate() error {
 }
 
 type RunPptOutlineGenerationResponseBodyPayload struct {
+	// The output.
 	Output *RunPptOutlineGenerationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
 }
 
@@ -272,6 +299,11 @@ func (s *RunPptOutlineGenerationResponseBodyPayload) Validate() error {
 }
 
 type RunPptOutlineGenerationResponseBodyPayloadOutput struct {
+	// The output content.
+	//
+	// example:
+	//
+	// 文本生成结果
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 

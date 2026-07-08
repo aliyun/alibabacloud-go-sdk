@@ -18,12 +18,18 @@ type iUploadDocRequest interface {
 }
 
 type UploadDocRequest struct {
+	// Folder where the document resides. If no value is provided, it defaults to "default".
+	//
 	// example:
 	//
 	// default
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Document
+	//
 	// This parameter is required.
 	Docs []*UploadDocRequestDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
+	// Unique identifier (UUID) of the Alibaba Cloud Model Studio workspace: obtain the [Workspace ID](https://help.aliyun.com/document_detail/2587495.html)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -81,8 +87,16 @@ func (s *UploadDocRequest) Validate() error {
 }
 
 type UploadDocRequestDocs struct {
+	// document Name
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 文档1.pdf
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// file URL
+	//
 	// This parameter is required.
 	//
 	// example:

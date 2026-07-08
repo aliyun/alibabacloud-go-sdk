@@ -24,26 +24,38 @@ type iDeleteCustomTextResponseBody interface {
 }
 
 type DeleteCustomTextResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
-	// NoData
+	// successful
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the text was deleted successfully.
+	//
 	// example:
 	//
-	// false
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
-	// success
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
+	//
 	// example:
 	//
 	// true

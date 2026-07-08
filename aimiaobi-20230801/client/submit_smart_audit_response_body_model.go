@@ -24,25 +24,34 @@ type iSubmitSmartAuditResponseBody interface {
 }
 
 type SubmitSmartAuditResponseBody struct {
+	// Error code
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Task response object
 	Data *SubmitSmartAuditResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// 错误消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -121,6 +130,8 @@ func (s *SubmitSmartAuditResponseBody) Validate() error {
 }
 
 type SubmitSmartAuditResponseBodyData struct {
+	// Task ID
+	//
 	// example:
 	//
 	// xxxx

@@ -22,12 +22,23 @@ type iSubmitSmartClipTaskShrinkRequest interface {
 }
 
 type SubmitSmartClipTaskShrinkRequest struct {
+	// Video editing configuration.
 	EditingConfigShrink *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	ExtendParam         *string `json:"ExtendParam,omitempty" xml:"ExtendParam,omitempty"`
+	// Additional extended parameters. These parameters merge with InputConfig, OutputConfig, and EditingConfig.
+	ExtendParam *string `json:"ExtendParam,omitempty" xml:"ExtendParam,omitempty"`
+	// Input configuration.
+	//
 	// This parameter is required.
-	InputConfigShrink  *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	InputConfigShrink *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// Output configuration.
 	OutputConfigShrink *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	// Alibaba Cloud Model Studio workspace ID. For more information, see [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 业务空间ID
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

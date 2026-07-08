@@ -26,32 +26,48 @@ type iListDialoguesRequest interface {
 }
 
 type ListDialoguesRequest struct {
+	// Unique identifier for the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Page number of the current page.
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Generation type. Valid values: 1 (creation) and 2 (intelligent search). Default value: 2.
+	//
 	// example:
 	//
 	// 2
 	DialogueType *int32 `json:"DialogueType,omitempty" xml:"DialogueType,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 2024-01-04 11:46:07
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Number of items per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Start time.
+	//
 	// example:
 	//
 	// 2024-01-04 11:46:07
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Unique identifier for the task.
+	//
+	// > You do not need to specify TaskId. The system generates it automatically. If you use the same TaskId in later tasks, those tasks belong to the same conversation group.
+	//
 	// example:
 	//
 	// xxx

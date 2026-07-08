@@ -20,19 +20,26 @@ type iSubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest interface {
 }
 
 type SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest struct {
+	// The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
-	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The list of documents to be analyzed.
 	DocumentsShrink *string `json:"Documents,omitempty" xml:"Documents,omitempty"`
+	// The input prompt for custom perspectives.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 自定义观点的输入Prompt
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The name of the topic to be analyzed.
+	//
 	// example:
 	//
 	// 待分析的主题名（documents与topic二者至少传一个）

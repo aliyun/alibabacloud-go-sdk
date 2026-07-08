@@ -22,23 +22,36 @@ type iEditBiddingDocRequest interface {
 }
 
 type EditBiddingDocRequest struct {
+  // The text content.
+  // 
+  // example:
+  // 
+  // 标书内容
   Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+  // The format.
+  // 
   // example:
   // 
   // html
   // 
   // markdown
   ContentFormat *string `json:"ContentFormat,omitempty" xml:"ContentFormat,omitempty"`
+  // The content type.
+  // 
   // example:
   // 
   // outline
   // 
   // bidding
   ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+  // The task ID.
+  // 
   // example:
   // 
   // 0dbf1055f8a2475d99904c3b76a0ffba
   TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+  // [The workspace ID.](https://help.aliyun.com/document_detail/2782167.html)
+  // 
   // example:
   // 
   // llm-xx

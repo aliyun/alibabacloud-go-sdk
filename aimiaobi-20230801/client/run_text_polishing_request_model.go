@@ -22,18 +22,34 @@ type iRunTextPolishingRequest interface {
 }
 
 type RunTextPolishingRequest struct {
+	// Text content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 文本内容
-	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Original article.
+	//
+	// example:
+	//
+	// 原始文章内容
 	OriginContent *string `json:"OriginContent,omitempty" xml:"OriginContent,omitempty"`
-	Prompt        *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Custom polishing requirements.
+	//
+	// example:
+	//
+	// 自定义的润色要求
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The task ID. The same task ID shares a session. The task timeout is 12 hours.
+	//
 	// example:
 	//
 	// taskld-xxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. Obtain the [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

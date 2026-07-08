@@ -34,37 +34,56 @@ type iListDatasetsResponseBody interface {
 }
 
 type ListDatasetsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code                       *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Configuration and usage details for custom semantic search datasets that use uploaded files as data sources.
 	CustomSemanticSearchConfig *ListDatasetsResponseBodyCustomSemanticSearchConfig `json:"CustomSemanticSearchConfig,omitempty" xml:"CustomSemanticSearchConfig,omitempty" type:"Struct"`
-	Data                       []*ListDatasetsResponseBodyData                     `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// An array of dataset objects.
+	Data []*ListDatasetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: `true` (success) and `false` (failure).
+	//
 	// example:
 	//
 	// true
-	Success           *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Configuration and usage details for API-integrated datasets.
 	ThirdSearchConfig *ListDatasetsResponseBodyThirdSearchConfig `json:"ThirdSearchConfig,omitempty" xml:"ThirdSearchConfig,omitempty" type:"Struct"`
+	// The total number of datasets.
+	//
 	// example:
 	//
 	// 100
@@ -202,18 +221,26 @@ func (s *ListDatasetsResponseBody) Validate() error {
 }
 
 type ListDatasetsResponseBodyCustomSemanticSearchConfig struct {
+	// The dataset quota.
+	//
 	// example:
 	//
 	// 3
 	DatasetQuota *int32 `json:"DatasetQuota,omitempty" xml:"DatasetQuota,omitempty"`
+	// The number of datasets created.
+	//
 	// example:
 	//
 	// 1
 	DatasetUsedQuota *int32 `json:"DatasetUsedQuota,omitempty" xml:"DatasetUsedQuota,omitempty"`
+	// The document quota.
+	//
 	// example:
 	//
 	// 1000
 	DocQuota *int64 `json:"DocQuota,omitempty" xml:"DocQuota,omitempty"`
+	// The used document quota.
+	//
 	// example:
 	//
 	// 1
@@ -269,39 +296,58 @@ func (s *ListDatasetsResponseBodyCustomSemanticSearchConfig) Validate() error {
 }
 
 type ListDatasetsResponseBodyData struct {
+	// The dataset access level.
+	//
 	// example:
 	//
 	// private
-	AccessLevel    *string                                       `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
+	AccessLevel *string `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
+	// The administrators of the dataset.
 	Administrators []*ListDatasetsResponseBodyDataAdministrators `json:"Administrators,omitempty" xml:"Administrators,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-11-12 21:46:24
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the dataset.
+	//
 	// example:
 	//
 	// xxx
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The dataset description.
+	//
 	// example:
 	//
 	// xxx
 	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset name.
+	//
 	// example:
 	//
 	// xxx
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The dataset type.
+	//
 	// example:
 	//
 	// CustomSemanticSearch
 	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// The number of documents uploaded to the dataset.
+	//
 	// example:
 	//
 	// 1
 	DocUsedQuota *int64 `json:"DocUsedQuota,omitempty" xml:"DocUsedQuota,omitempty"`
+	// Indicates whether search is enabled for the dataset.
+	//
 	// example:
 	//
 	// 1
@@ -420,10 +466,14 @@ func (s *ListDatasetsResponseBodyData) Validate() error {
 }
 
 type ListDatasetsResponseBodyDataAdministrators struct {
+	// The administrator user ID.
+	//
 	// example:
 	//
 	// xx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The administrator username.
+	//
 	// example:
 	//
 	// xx
@@ -461,10 +511,14 @@ func (s *ListDatasetsResponseBodyDataAdministrators) Validate() error {
 }
 
 type ListDatasetsResponseBodyThirdSearchConfig struct {
+	// The dataset quota.
+	//
 	// example:
 	//
 	// 2
 	DatasetQuota *int32 `json:"DatasetQuota,omitempty" xml:"DatasetQuota,omitempty"`
+	// The number of datasets created.
+	//
 	// example:
 	//
 	// 1

@@ -20,18 +20,26 @@ type iListEnterprisePptTemplatesRequest interface {
 }
 
 type ListEnterprisePptTemplatesRequest struct {
+	// The maximum number of results to return per page. Note: This parameter is not yet in effect.
+	//
 	// example:
 	//
 	// null
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page of results. Note: This parameter is not yet in effect.
+	//
 	// example:
 	//
 	// XXXX
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to skip (the \\"offset\\"). Note: This parameter is not yet in effect.
+	//
 	// example:
 	//
 	// 10
 	Skip *int32 `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// llm-xx

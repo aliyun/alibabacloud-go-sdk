@@ -18,8 +18,12 @@ type iRunDocQaResponseBody interface {
 }
 
 type RunDocQaResponseBody struct {
-	Header  *RunDocQaResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// response header
+	Header *RunDocQaResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// response body
 	Payload *RunDocQaResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
@@ -76,27 +80,44 @@ func (s *RunDocQaResponseBody) Validate() error {
 }
 
 type RunDocQaResponseBodyHeader struct {
+	// error code
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// error message
+	//
 	// example:
 	//
 	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// management event
+	//
 	// example:
 	//
 	// task-started
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Description of the management event
+	//
+	// example:
+	//
+	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// f5517ee8-dbec-4dc8-bd0a-af084b5e3db1
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// End-to-end trace ID
+	//
 	// example:
 	//
 	// 46e5c2b5-0877-4f09-bd91-ab0cf314e48b
@@ -179,8 +200,10 @@ func (s *RunDocQaResponseBodyHeader) Validate() error {
 }
 
 type RunDocQaResponseBodyPayload struct {
+	// Outputs
 	Output *RunDocQaResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunDocQaResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// token usage
+	Usage *RunDocQaResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunDocQaResponseBodyPayload) String() string {
@@ -224,15 +247,30 @@ func (s *RunDocQaResponseBodyPayload) Validate() error {
 }
 
 type RunDocQaResponseBodyPayloadOutput struct {
-	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Content of the response
+	//
+	// example:
+	//
+	// 回答内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Response content after intervention
+	//
+	// example:
+	//
+	// 干预后的回答内容
 	InterveneContent *string `json:"InterveneContent,omitempty" xml:"InterveneContent,omitempty"`
+	// Indicates whether the request is rejected
+	//
 	// example:
 	//
 	// false
-	IsReject     *bool                                            `json:"IsReject,omitempty" xml:"IsReject,omitempty"`
+	IsReject *bool `json:"IsReject,omitempty" xml:"IsReject,omitempty"`
+	// List of multimodal resource information
 	MediaUrlList []*RunDocQaResponseBodyPayloadOutputMediaUrlList `json:"MediaUrlList,omitempty" xml:"MediaUrlList,omitempty" type:"Repeated"`
-	Recommends   []*RunDocQaResponseBodyPayloadOutputRecommends   `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
-	References   []*RunDocQaResponseBodyPayloadOutputReferences   `json:"References,omitempty" xml:"References,omitempty" type:"Repeated"`
+	// Array of recommended content
+	Recommends []*RunDocQaResponseBodyPayloadOutputRecommends `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
+	// Array of sources for the response content
+	References []*RunDocQaResponseBodyPayloadOutputReferences `json:"References,omitempty" xml:"References,omitempty" type:"Repeated"`
 }
 
 func (s RunDocQaResponseBodyPayloadOutput) String() string {
@@ -329,11 +367,16 @@ func (s *RunDocQaResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunDocQaResponseBodyPayloadOutputMediaUrlList struct {
+	// Array of related video time information
 	ClipInfos []*RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// File URL
+	//
 	// example:
 	//
 	// https://gw.alicdn.com/imgextra/i3/2775676850/O1CN01kdeffE20TM0E7wvpq_!!2775676850.jpg_q60.jpg
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Media asset type
+	//
 	// example:
 	//
 	// video
@@ -389,10 +432,14 @@ func (s *RunDocQaResponseBodyPayloadOutputMediaUrlList) Validate() error {
 }
 
 type RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos struct {
+	// Start time of the video segment
+	//
 	// example:
 	//
 	// 0
 	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// End time of the video segment
+	//
 	// example:
 	//
 	// 30
@@ -430,8 +477,18 @@ func (s *RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos) Validate() erro
 }
 
 type RunDocQaResponseBodyPayloadOutputRecommends struct {
+	// Title of the recommended content
+	//
+	// example:
+	//
+	// 标题内容
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// URL of the recommended content
+	//
+	// example:
+	//
+	// 推荐内容url
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s RunDocQaResponseBodyPayloadOutputRecommends) String() string {
@@ -465,16 +522,32 @@ func (s *RunDocQaResponseBodyPayloadOutputRecommends) Validate() error {
 }
 
 type RunDocQaResponseBodyPayloadOutputReferences struct {
+	// Published At
+	//
 	// example:
 	//
 	// 2024-10-08 18:00
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
-	Source  *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Source
+	//
+	// example:
+	//
+	// 新浪新闻
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Source docId
+	//
 	// example:
 	//
 	// 123456
 	SourceDocId *string `json:"SourceDocId,omitempty" xml:"SourceDocId,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Title of the associated content
+	//
+	// example:
+	//
+	// 标题内容
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL
+	//
 	// example:
 	//
 	// http://xxxxx
@@ -539,14 +612,20 @@ func (s *RunDocQaResponseBodyPayloadOutputReferences) Validate() error {
 }
 
 type RunDocQaResponseBodyPayloadUsage struct {
+	// Quantity of input tokens
+	//
 	// example:
 	//
 	// 100
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of tokens used in the output
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens
+	//
 	// example:
 	//
 	// 200

@@ -24,10 +24,14 @@ type iDeleteAuditNoteResponseBody interface {
 }
 
 type DeleteAuditNoteResponseBody struct {
+	// status code
+	//
 	// example:
 	//
 	// DataNotExists
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Deletion result. If deletion is successful, "SUCCESSED" is returned.
+	//
 	// if can be null:
 	// true
 	//
@@ -35,10 +39,14 @@ type DeleteAuditNoteResponseBody struct {
 	//
 	// SUCCESSED
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// success
@@ -49,6 +57,8 @@ type DeleteAuditNoteResponseBody struct {
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether this request was successful.
+	//
 	// example:
 	//
 	// true

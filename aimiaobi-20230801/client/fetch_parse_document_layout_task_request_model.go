@@ -16,12 +16,16 @@ type iFetchParseDocumentLayoutTaskRequest interface {
 }
 
 type FetchParseDocumentLayoutTaskRequest struct {
+	// Content to be formatted
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 29ae0ba84c1c4cc694d0f4f1aead8005
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Unique identifier of the Alibaba Cloud Model Studio workspace: [Get workspaceId](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,13 +18,20 @@ type iExportAnalysisTagDetailByTaskIdRequest interface {
 }
 
 type ExportAnalysisTagDetailByTaskIdRequest struct {
+  // Category filter list.
   Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+  // Unique task ID.
+  // 
+  // > By default, do not specify TaskId. The system automatically generates it. If subsequent tasks use the same TaskId, they belong to the same conversation group.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // xxx
   TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+  // Unique identifier for Alibaba Cloud Model Studio workspace. For more information, see [Get Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+  // 
   // This parameter is required.
   // 
   // example:

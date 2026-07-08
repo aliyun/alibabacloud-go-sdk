@@ -18,11 +18,16 @@ type iDownloadAuditNoteRequest interface {
 }
 
 type DownloadAuditNoteRequest struct {
+	// Rule library ID. If left blank, the default is Default.
 	NoteId *string `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	// The task ID obtained by calling the SubmitAuditNote API. This is the unique identifier for the custom rule library task index. Store it securely when using it. When using this API, if the input parameters include \\`taskId\\`, you can retrieve the structured rule library that you successfully uploaded via the SubmitAuditNote API but has not undergone post-processing by ConfirmAndProcessAuditNote. If the input parameters do not include \\`taskId\\`, you can retrieve the structured rule library that has undergone post-processing and is available for auditing.
+	//
 	// example:
 	//
 	// xxx_Default_1241541251241
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. Get the [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

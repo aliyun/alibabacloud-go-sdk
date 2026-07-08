@@ -16,12 +16,16 @@ type iFetchImportTermsTaskRequest interface {
 }
 
 type FetchImportTermsTaskRequest struct {
+	// The FileKey of the file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://default/oss-bucket-name/aimiaobi/2021/07/01/1625126400000/1.docx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

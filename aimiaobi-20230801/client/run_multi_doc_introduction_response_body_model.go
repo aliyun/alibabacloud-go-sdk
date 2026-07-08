@@ -18,9 +18,11 @@ type iRunMultiDocIntroductionResponseBody interface {
 }
 
 type RunMultiDocIntroductionResponseBody struct {
-	Header  *RunMultiDocIntroductionResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response header.
+	Header *RunMultiDocIntroductionResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body.
 	Payload *RunMultiDocIntroductionResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
-	// Id of the request
+	// ID of the request.
 	//
 	// example:
 	//
@@ -78,27 +80,44 @@ func (s *RunMultiDocIntroductionResponseBody) Validate() error {
 }
 
 type RunMultiDocIntroductionResponseBodyHeader struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// Message does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Server-sent event (SSE) type.
+	//
 	// example:
 	//
 	// finished
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Event description.
+	//
+	// example:
+	//
+	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// 92e16ccb-92b6-4894-abbf-fc6e2929a0df
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// b057f2fa-2277-477b-babf-cbc062307828
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// End-to-end trace ID.
+	//
 	// example:
 	//
 	// 46e5c2b5-0877-4f09-bd91-ab0cf314e48b
@@ -181,8 +200,10 @@ func (s *RunMultiDocIntroductionResponseBodyHeader) Validate() error {
 }
 
 type RunMultiDocIntroductionResponseBodyPayload struct {
+	// Output data.
 	Output *RunMultiDocIntroductionResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunMultiDocIntroductionResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage.
+	Usage *RunMultiDocIntroductionResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunMultiDocIntroductionResponseBodyPayload) String() string {
@@ -226,8 +247,14 @@ func (s *RunMultiDocIntroductionResponseBodyPayload) Validate() error {
 }
 
 type RunMultiDocIntroductionResponseBodyPayloadOutput struct {
+	// Key point information.
 	KeyPoints []*RunMultiDocIntroductionResponseBodyPayloadOutputKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
-	Summary   *string                                                      `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Outline-style summary.
+	//
+	// example:
+	//
+	// 大纲摘要内容
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
 func (s RunMultiDocIntroductionResponseBodyPayloadOutput) String() string {
@@ -270,8 +297,18 @@ func (s *RunMultiDocIntroductionResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunMultiDocIntroductionResponseBodyPayloadOutputKeyPoints struct {
+	// Key point.
+	//
+	// example:
+	//
+	// 关键点信息
 	KeyPoint *string `json:"KeyPoint,omitempty" xml:"KeyPoint,omitempty"`
-	Source   *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Source of the information.
+	//
+	// example:
+	//
+	// 信息来源
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s RunMultiDocIntroductionResponseBodyPayloadOutputKeyPoints) String() string {
@@ -305,14 +342,20 @@ func (s *RunMultiDocIntroductionResponseBodyPayloadOutputKeyPoints) Validate() e
 }
 
 type RunMultiDocIntroductionResponseBodyPayloadUsage struct {
+	// Number of input tokens.
+	//
 	// example:
 	//
 	// 65
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of output tokens.
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens.
+	//
 	// example:
 	//
 	// 165

@@ -24,15 +24,22 @@ type iGetPptTemplateSelectorResponseBody interface {
 }
 
 type GetPptTemplateSelectorResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response object.
 	Data *GetPptTemplateSelectorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误消息
@@ -43,7 +50,8 @@ type GetPptTemplateSelectorResponseBody struct {
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetPptTemplateSelectorResponseBody) String() string {
@@ -118,9 +126,13 @@ func (s *GetPptTemplateSelectorResponseBody) Validate() error {
 }
 
 type GetPptTemplateSelectorResponseBodyData struct {
-	Career    []*GetPptTemplateSelectorResponseBodyDataCareer    `json:"Career,omitempty" xml:"Career,omitempty" type:"Repeated"`
-	Colour    []*GetPptTemplateSelectorResponseBodyDataColour    `json:"Colour,omitempty" xml:"Colour,omitempty" type:"Repeated"`
+	// The careers.
+	Career []*GetPptTemplateSelectorResponseBodyDataCareer `json:"Career,omitempty" xml:"Career,omitempty" type:"Repeated"`
+	// The colors.
+	Colour []*GetPptTemplateSelectorResponseBodyDataColour `json:"Colour,omitempty" xml:"Colour,omitempty" type:"Repeated"`
+	// The scenarios.
 	SuitScene []*GetPptTemplateSelectorResponseBodyDataSuitScene `json:"SuitScene,omitempty" xml:"SuitScene,omitempty" type:"Repeated"`
+	// The styles.
 	SuitStyle []*GetPptTemplateSelectorResponseBodyDataSuitStyle `json:"SuitStyle,omitempty" xml:"SuitStyle,omitempty" type:"Repeated"`
 }
 
@@ -209,14 +221,20 @@ func (s *GetPptTemplateSelectorResponseBodyData) Validate() error {
 }
 
 type GetPptTemplateSelectorResponseBodyDataCareer struct {
+	// The career ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the career is popular.
+	//
 	// example:
 	//
 	// 0
 	IsHot *int64 `json:"IsHot,omitempty" xml:"IsHot,omitempty"`
+	// The career name.
+	//
 	// example:
 	//
 	// 教育培训
@@ -263,14 +281,20 @@ func (s *GetPptTemplateSelectorResponseBodyDataCareer) Validate() error {
 }
 
 type GetPptTemplateSelectorResponseBodyDataColour struct {
+	// The color value.
+	//
 	// example:
 	//
 	// #FCC462
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The color ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The color name.
+	//
 	// example:
 	//
 	// 橙色
@@ -317,10 +341,14 @@ func (s *GetPptTemplateSelectorResponseBodyDataColour) Validate() error {
 }
 
 type GetPptTemplateSelectorResponseBodyDataSuitScene struct {
+	// The scenario ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The scenario name.
+	//
 	// example:
 	//
 	// 教育培训
@@ -358,10 +386,14 @@ func (s *GetPptTemplateSelectorResponseBodyDataSuitScene) Validate() error {
 }
 
 type GetPptTemplateSelectorResponseBodyDataSuitStyle struct {
+	// The style ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The style name.
+	//
 	// example:
 	//
 	// 扁平简约

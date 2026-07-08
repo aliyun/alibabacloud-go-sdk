@@ -30,35 +30,52 @@ type iListTimedViewAttitudeResponseBody interface {
 }
 
 type ListTimedViewAttitudeResponseBody struct {
+	// Status Code
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business Data
 	Data []*ListTimedViewAttitudeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Maximum number of return results
+	//
 	// example:
 	//
 	// 15
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Fault description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Token for the next page
+	//
 	// example:
 	//
 	// 下一页的token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request UUID
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded: true for success, false for failure
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 58
@@ -168,34 +185,49 @@ func (s *ListTimedViewAttitudeResponseBody) Validate() error {
 }
 
 type ListTimedViewAttitudeResponseBodyData struct {
+	// current attitude
+	//
 	// example:
 	//
 	// 当前观点
 	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// Attitude Type
+	//
 	// example:
 	//
 	// 观点类型
 	AttitudeType *string `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	// Published At
+	//
 	// example:
 	//
 	// 2024-01-22 10:29
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Proportion of the current attitude
+	//
 	// example:
 	//
 	// 当前观点占比
 	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// News Source
+	//
 	// example:
 	//
 	// 新浪
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Current attitude, equivalent to the news title
+	//
 	// example:
 	//
 	// 标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// News URL
+	//
 	// example:
 	//
 	// http://www.example.com/news/1.html
-	Url        *string                                            `json:"Url,omitempty" xml:"Url,omitempty"`
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// List of topic perspectives
 	ViewPoints []*ListTimedViewAttitudeResponseBodyDataViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
 }
 
@@ -293,11 +325,16 @@ func (s *ListTimedViewAttitudeResponseBodyData) Validate() error {
 }
 
 type ListTimedViewAttitudeResponseBodyDataViewPoints struct {
+	// outlines
 	Outlines []*ListTimedViewAttitudeResponseBodyDataViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// generated point
+	//
 	// example:
 	//
 	// 视角
 	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// Summary
+	//
 	// example:
 	//
 	// 摘要
@@ -353,10 +390,14 @@ func (s *ListTimedViewAttitudeResponseBodyDataViewPoints) Validate() error {
 }
 
 type ListTimedViewAttitudeResponseBodyDataViewPointsOutlines struct {
+	// outline
+	//
 	// example:
 	//
 	// 大纲
 	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// outline summary
+	//
 	// example:
 	//
 	// 大纲摘要

@@ -18,8 +18,12 @@ type iRunKeywordsExtractionGenerationResponseBody interface {
 }
 
 type RunKeywordsExtractionGenerationResponseBody struct {
-	Header  *RunKeywordsExtractionGenerationResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response header.
+	Header *RunKeywordsExtractionGenerationResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body.
 	Payload *RunKeywordsExtractionGenerationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Unique request identifier.
+	//
 	// example:
 	//
 	// 419F3FBE-5C8D-5949-AC29-E9615235D15A
@@ -76,26 +80,38 @@ func (s *RunKeywordsExtractionGenerationResponseBody) Validate() error {
 }
 
 type RunKeywordsExtractionGenerationResponseBodyHeader struct {
+	// Error code.
+	//
 	// example:
 	//
 	// AccessForbid
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// xx
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// SSE event.
+	//
 	// example:
 	//
 	// task-failed
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// 1a3d7c9f-3a6d-4e49-b176-2d8721a27397
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// 8d55b429d7c6d321fcff54823e8d317b
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Trace ID.
+	//
 	// example:
 	//
 	// 210bc4e817219607963985396de8bd
@@ -169,8 +185,10 @@ func (s *RunKeywordsExtractionGenerationResponseBodyHeader) Validate() error {
 }
 
 type RunKeywordsExtractionGenerationResponseBodyPayload struct {
+	// Outputs.
 	Output *RunKeywordsExtractionGenerationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunKeywordsExtractionGenerationResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage.
+	Usage *RunKeywordsExtractionGenerationResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunKeywordsExtractionGenerationResponseBodyPayload) String() string {
@@ -214,6 +232,8 @@ func (s *RunKeywordsExtractionGenerationResponseBodyPayload) Validate() error {
 }
 
 type RunKeywordsExtractionGenerationResponseBodyPayloadOutput struct {
+	// Text generation result.
+	//
 	// example:
 	//
 	// xxx
@@ -242,14 +262,20 @@ func (s *RunKeywordsExtractionGenerationResponseBodyPayloadOutput) Validate() er
 }
 
 type RunKeywordsExtractionGenerationResponseBodyPayloadUsage struct {
+	// Number of input tokens used.
+	//
 	// example:
 	//
 	// 1
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of output tokens used.
+	//
 	// example:
 	//
 	// 1
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens used in this call.
+	//
 	// example:
 	//
 	// 2

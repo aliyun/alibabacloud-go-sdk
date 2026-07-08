@@ -28,20 +28,28 @@ type iRunBookBrainmapRequest interface {
 }
 
 type RunBookBrainmapRequest struct {
+	// Specifies whether to clear the cache. The default is `false`.
+	//
 	// example:
 	//
 	// true
 	CleanCache *bool `json:"CleanCache,omitempty" xml:"CleanCache,omitempty"`
+	// The document ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The number of nodes on the second level of the mind map.
+	//
 	// example:
 	//
 	// 3
 	NodeNumber *int32 `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
+	// A prompt with additional instructions.
+	//
 	// example:
 	//
 	// 按英文输出
@@ -50,16 +58,22 @@ type RunBookBrainmapRequest struct {
 	//
 	// 0
 	ResponseFormat *int32 `json:"ResponseFormat,omitempty" xml:"ResponseFormat,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The number of words per node.
+	//
 	// example:
 	//
 	// 20
 	WordNumber *int32 `json:"WordNumber,omitempty" xml:"WordNumber,omitempty"`
+	// The unique identifier for the Model Studio workspace. For more information, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

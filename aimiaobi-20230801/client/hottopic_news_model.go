@@ -20,9 +20,22 @@ type iHottopicNews interface {
 }
 
 type HottopicNews struct {
+	// List of news comments
 	Comments []*HottopicNewsComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
-	Content  *string                 `json:"Content,omitempty" xml:"Content,omitempty"`
-	Title    *string                 `json:"Title,omitempty" xml:"Title,omitempty"`
+	// News content
+	//
+	// example:
+	//
+	// 新闻内容xxx
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// News title
+	//
+	// example:
+	//
+	// 新闻标题xxx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// News URL link
+	//
 	// example:
 	//
 	// http://www.example.com/xxx.html
@@ -87,6 +100,11 @@ func (s *HottopicNews) Validate() error {
 }
 
 type HottopicNewsComments struct {
+	// News comment content
+	//
+	// example:
+	//
+	// 新闻评论内容
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 

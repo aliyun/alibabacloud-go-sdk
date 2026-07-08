@@ -24,15 +24,22 @@ type iGetAvailableAuditNotesResponseBody interface {
 }
 
 type GetAvailableAuditNotesResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response data
 	Data *GetAvailableAuditNotesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
@@ -43,6 +50,8 @@ type GetAvailableAuditNotesResponseBody struct {
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -121,22 +130,32 @@ func (s *GetAvailableAuditNotesResponseBody) Validate() error {
 }
 
 type GetAvailableAuditNotesResponseBodyData struct {
+	// Rule library file size in bytes.
+	//
 	// example:
 	//
 	// 23333
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// Primary ID of the rule library storage.
+	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Rule library ID.
+	//
 	// example:
 	//
 	// Default
 	NoteId *string `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	// Parsed rule library name.
+	//
 	// example:
 	//
 	// 错题本2025-07-07_解析结果
 	NoteName *string `json:"NoteName,omitempty" xml:"NoteName,omitempty"`
+	// Rule library update time.
+	//
 	// example:
 	//
 	// 2025-07-07 11:56:30

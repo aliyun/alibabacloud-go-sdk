@@ -20,22 +20,30 @@ type iValidateUploadTemplateRequest interface {
 }
 
 type ValidateUploadTemplateRequest struct {
+	// File key.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Content
 	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// Task type. Valid values: lightAppSass (SaaS page call) or sdkBatchTask (SDK batch task).
+	//
 	// example:
 	//
 	// lightAppSass
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Template type. Valid values: Content (content asset template) or PositiveSample (positive sample template).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Content
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// Unique identifier of your Alibaba Cloud Model Studio workspace. To get this ID, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

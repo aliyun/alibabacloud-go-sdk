@@ -24,23 +24,34 @@ type iSubmitAsyncTaskResponseBody interface {
 }
 
 type SubmitAsyncTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
-	// DataNotExists
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	// successful
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *SubmitAsyncTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// success
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success, and a value of false indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,14 +130,20 @@ func (s *SubmitAsyncTaskResponseBody) Validate() error {
 }
 
 type SubmitAsyncTaskResponseBodyData struct {
+	// The unique task ID.
+	//
 	// example:
 	//
-	// 3f7045e099474ba28ceca1b4eb6d6e21
+	// xxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The intermediate result.
+	//
 	// example:
 	//
 	// {}
 	TaskIntermediateResult interface{} `json:"TaskIntermediateResult,omitempty" xml:"TaskIntermediateResult,omitempty"`
+	// The task name.
+	//
 	// example:
 	//
 	// 任务名称

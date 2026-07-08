@@ -16,12 +16,15 @@ type iGenerateViewPointRequest interface {
 }
 
 type GenerateViewPointRequest struct {
+	// The unique identifier of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c160c841c8e54295bf2f441432785944_p_efm
-	AgentKey      *string                                `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The context data.
 	ReferenceData *GenerateViewPointRequestReferenceData `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty" type:"Struct"`
 }
 
@@ -61,6 +64,7 @@ func (s *GenerateViewPointRequest) Validate() error {
 }
 
 type GenerateViewPointRequestReferenceData struct {
+	// The article snippets.
 	MiniDoc []*string `json:"MiniDoc,omitempty" xml:"MiniDoc,omitempty" type:"Repeated"`
 }
 

@@ -20,20 +20,28 @@ type iImportInterveneFileAsyncRequest interface {
 }
 
 type ImportInterveneFileAsyncRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c160c841c8e54295bf2f441432785944_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Name of the uploaded file
+	//
 	// example:
 	//
 	// import.xls
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// OSS key of the file
+	//
 	// example:
 	//
 	// import.xls
 	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// File URL
+	//
 	// example:
 	//
 	// https://xxx/import.xls

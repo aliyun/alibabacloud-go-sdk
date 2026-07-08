@@ -24,25 +24,34 @@ type iGetPptArtifactResponseBody interface {
 }
 
 type GetPptArtifactResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The task response object.
 	Data *GetPptArtifactResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,20 +130,34 @@ func (s *GetPptArtifactResponseBody) Validate() error {
 }
 
 type GetPptArtifactResponseBodyData struct {
+	// The time when the resource was last updated.
+	//
 	// example:
 	//
 	// 2024-11-25 11:40:50
-	CreateTime *string                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FileAttr   *GetPptArtifactResponseBodyDataFileAttr `json:"FileAttr,omitempty" xml:"FileAttr,omitempty" type:"Struct"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The file properties.
+	FileAttr *GetPptArtifactResponseBodyDataFileAttr `json:"FileAttr,omitempty" xml:"FileAttr,omitempty" type:"Struct"`
+	// The storage path of the file in the backend.
+	//
 	// example:
 	//
 	// oss://default/oss-bucket-name/aimiaobi/2021/07/01/1625126400000/1.docx
 	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// The unique ID of the artifact.
+	//
 	// example:
 	//
 	// 10
-	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The title.
+	//
+	// example:
+	//
+	// 内容标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The time when the artifact was last updated.
+	//
 	// example:
 	//
 	// 2024-11-25 11:40:50
@@ -213,18 +236,26 @@ func (s *GetPptArtifactResponseBodyData) Validate() error {
 }
 
 type GetPptArtifactResponseBodyDataFileAttr struct {
+	// The file name.
+	//
 	// example:
 	//
 	// xxx.pptx
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The height.
+	//
 	// example:
 	//
 	// 600
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The temporary access URL for the file. The URL expires in one hour.
+	//
 	// example:
 	//
 	// http://www.example.com/xxx.pptx
 	TmpUrl *string `json:"TmpUrl,omitempty" xml:"TmpUrl,omitempty"`
+	// The width.
+	//
 	// example:
 	//
 	// 800

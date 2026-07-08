@@ -26,31 +26,45 @@ type iRunWritingRequest interface {
 }
 
 type RunWritingRequest struct {
+	// The ID of the original conversation to use for regeneration.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// The prompt.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 提示词
-	Prompt        *string                         `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The reference article data for writing.
 	ReferenceData *RunWritingRequestReferenceData `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty" type:"Struct"`
+	// The ID of a single-turn conversation.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The ID of the task. You can reuse the same task ID in a multi-turn conversation.
+	//
+	// > You do not need to specify TaskId. The system generates one automatically. If you use the same TaskId for multiple tasks, they are grouped into a single conversation.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxx
-	WorkspaceId   *string                         `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The writing configuration.
 	WritingConfig *RunWritingRequestWritingConfig `json:"WritingConfig,omitempty" xml:"WritingConfig,omitempty" type:"Struct"`
 }
 
@@ -140,6 +154,7 @@ func (s *RunWritingRequest) Validate() error {
 }
 
 type RunWritingRequestReferenceData struct {
+	// The reference article data for writing.
 	Articles []*RunWritingRequestReferenceDataArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
 }
 
@@ -174,42 +189,62 @@ func (s *RunWritingRequestReferenceData) Validate() error {
 }
 
 type RunWritingRequestReferenceDataArticles struct {
+	// The author.
+	//
 	// example:
 	//
 	// 作者
 	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// The content.
+	//
 	// example:
 	//
 	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The custom unique ID of the document.
+	//
 	// example:
 	//
 	// 文档-自定义的唯一ID
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The internal unique ID of the document.
+	//
 	// example:
 	//
 	// 2124ca4d48a542d788aa86151e1a8c8b
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// The publication time.
+	//
 	// example:
 	//
 	// 2024-08-28 11:38:28
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// 央视网
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The article summary.
+	//
 	// example:
 	//
 	// 文章摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The tag.
+	//
 	// example:
 	//
 	// 文章标签
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The title.
+	//
 	// example:
 	//
 	// 文章标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the article.
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx
@@ -319,12 +354,24 @@ func (s *RunWritingRequestReferenceDataArticles) Validate() error {
 }
 
 type RunWritingRequestWritingConfig struct {
+	// The writing domain.
+	//
+	// - media: Media
+	//
+	// - government: Government
+	//
+	// - market: Marketing
+	//
 	// example:
 	//
-	// 写作领域，media:传媒,government:政务,market:营销
-	Domain    *string                                  `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// media
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The prompt assistant.
 	PromptTag *RunWritingRequestWritingConfigPromptTag `json:"PromptTag,omitempty" xml:"PromptTag,omitempty" type:"Struct"`
-	Tags      []*RunWritingRequestWritingConfigTags    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Control parameters for writing, such as the style, length, and output language.
+	Tags []*RunWritingRequestWritingConfigTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Specifies whether to automatically add reference materials.
+	//
 	// example:
 	//
 	// true
@@ -394,18 +441,26 @@ func (s *RunWritingRequestWritingConfig) Validate() error {
 }
 
 type RunWritingRequestWritingConfigPromptTag struct {
+	// Necessary tips.
+	//
 	// example:
 	//
 	// 必要提示
 	NecessaryTips *string `json:"NecessaryTips,omitempty" xml:"NecessaryTips,omitempty"`
+	// The stance.
+	//
 	// example:
 	//
 	// 立场
 	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
+	// Negative keywords.
+	//
 	// example:
 	//
 	// 反向词
 	ReverseWords *string `json:"ReverseWords,omitempty" xml:"ReverseWords,omitempty"`
+	// The theme.
+	//
 	// example:
 	//
 	// 主题
@@ -461,10 +516,14 @@ func (s *RunWritingRequestWritingConfigPromptTag) Validate() error {
 }
 
 type RunWritingRequestWritingConfigTags struct {
+	// The value of the option.
+	//
 	// example:
 	//
 	// 10
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The tag of the option. Example: gcNumberSizeTag=10.
+	//
 	// example:
 	//
 	// gcNumberSizeTag

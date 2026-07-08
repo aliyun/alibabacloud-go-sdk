@@ -30,35 +30,52 @@ type iListStyleLearningResultResponseBody interface {
 }
 
 type ListStyleLearningResultResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
-	Current *int32                                     `json:"Current,omitempty" xml:"Current,omitempty"`
-	Data    []*ListStyleLearningResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// List of style learning analysis results
+	Data []*ListStyleLearningResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request ID
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of items per page
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Indicates success. Returns true on success and false on failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of items
+	//
 	// example:
 	//
 	// 100
@@ -168,22 +185,32 @@ func (s *ListStyleLearningResultResponseBody) Validate() error {
 }
 
 type ListStyleLearningResultResponseBodyData struct {
+	// AIGC-generated content
+	//
 	// example:
 	//
 	// AIGC 生成的内容
 	AigcResult *string `json:"AigcResult,omitempty" xml:"AigcResult,omitempty"`
+	// ID of the style learning analysis result
+	//
 	// example:
 	//
 	// 70
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Revised content
+	//
 	// example:
 	//
 	// 用户修订后内容
 	RewriteResult *string `json:"RewriteResult,omitempty" xml:"RewriteResult,omitempty"`
+	// Style name
+	//
 	// example:
 	//
 	// 文体风格名称
 	StyleName *string `json:"StyleName,omitempty" xml:"StyleName,omitempty"`
+	// Task ID used for style analysis
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21

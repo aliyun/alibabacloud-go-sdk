@@ -26,20 +26,46 @@ type iRunDocSummaryRequest interface {
 }
 
 type RunDocSummaryRequest struct {
+	// Purge the current cache
+	//
+	// example:
+	//
+	// true
 	CleanCache *bool `json:"CleanCache,omitempty" xml:"CleanCache,omitempty"`
+	// Document ID
+	//
 	// example:
 	//
 	// 12345
-	DocId            *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
-	ModelName        *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Custom model name specified by the User
+	//
+	// example:
+	//
+	// quanmiao-max、quanmiao-plus
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Custom requirements
+	//
+	// example:
+	//
+	// 请总结一下这篇文档
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Content to be summarized
+	//
+	// example:
+	//
+	// 要总结的内容
 	RecommendContent *string `json:"RecommendContent,omitempty" xml:"RecommendContent,omitempty"`
+	// Conversation ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0f56f98a-f2d8-47ec-98e9-1cbdcffa9539
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Alibaba Cloud Model Studio workspace ID. For more information about how to obtain it, see [How to use a workspace](https://help.aliyun.com/document_detail/2587495.html).
+	//
 	// This parameter is required.
 	//
 	// example:

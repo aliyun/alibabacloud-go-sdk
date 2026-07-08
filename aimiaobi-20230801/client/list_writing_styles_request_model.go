@@ -20,17 +20,28 @@ type iListWritingStylesRequest interface {
 }
 
 type ListWritingStylesRequest struct {
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 100
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Pagination token
+	//
+	// example:
+	//
+	// 下一页token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Filters by writing scenario.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// media
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// [The workspace ID.](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:

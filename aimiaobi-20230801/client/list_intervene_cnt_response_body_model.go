@@ -24,23 +24,34 @@ type iListInterveneCntResponseBody interface {
 }
 
 type ListInterveneCntResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
-	// 0
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *ListInterveneCntResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates success: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -119,16 +130,28 @@ func (s *ListInterveneCntResponseBody) Validate() error {
 }
 
 type ListInterveneCntResponseBodyData struct {
+	// List of count information
 	CntList []interface{} `json:"CntList,omitempty" xml:"CntList,omitempty" type:"Repeated"`
-	Code    *int32        `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Intervention service status code
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Total number of pages
+	//
 	// example:
 	//
 	// 10
 	PageCnt *int32 `json:"PageCnt,omitempty" xml:"PageCnt,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10

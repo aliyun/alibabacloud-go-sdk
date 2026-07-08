@@ -24,25 +24,34 @@ type iGetPptInfoResponseBody interface {
 }
 
 type GetPptInfoResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *GetPptInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,27 +130,40 @@ func (s *GetPptInfoResponseBody) Validate() error {
 }
 
 type GetPptInfoResponseBodyData struct {
+	// Download links for the exported files.
 	ExportFileLink []*string `json:"ExportFileLink,omitempty" xml:"ExportFileLink,omitempty" type:"Repeated"`
+	// The ID of the export task.
+	//
 	// example:
 	//
 	// xxx-xxx-xx
 	ExportTaskId *string `json:"ExportTaskId,omitempty" xml:"ExportTaskId,omitempty"`
+	// The URL of the cover image for the PPT artifact.
+	//
 	// example:
 	//
 	// http://a.com/xxx.jpeg
 	PptArtifactCover *string `json:"PptArtifactCover,omitempty" xml:"PptArtifactCover,omitempty"`
+	// The ID of the PPT artifact.
+	//
 	// example:
 	//
 	// 5423431
 	PptArtifactId *string `json:"PptArtifactId,omitempty" xml:"PptArtifactId,omitempty"`
+	// The ID of the PPT process.
+	//
 	// example:
 	//
 	// 11231232
 	PptProcessId *string `json:"PptProcessId,omitempty" xml:"PptProcessId,omitempty"`
+	// The query for the PPT task.
+	//
 	// example:
 	//
 	// 关于班会主题的PPT
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// xxx-xxx-xx

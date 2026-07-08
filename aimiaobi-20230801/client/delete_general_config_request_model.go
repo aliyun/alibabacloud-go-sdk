@@ -16,12 +16,16 @@ type iDeleteGeneralConfigRequest interface {
 }
 
 type DeleteGeneralConfigRequest struct {
+	// Unique identifier of the configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xx
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// Unique identifier of the Model Studio workspace. For more information, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

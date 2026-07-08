@@ -36,39 +36,60 @@ type iAsyncUploadVideoShrinkRequest interface {
 }
 
 type AsyncUploadVideoShrinkRequest struct {
+	// Shot segmentation threshold. A smaller value increases sensitivity. Valid range is 1 to 10. Default value is 3.
+	//
 	// example:
 	//
-	// 3
+	// 3.0
 	AdaptiveThreshold *float32 `json:"AdaptiveThreshold,omitempty" xml:"AdaptiveThreshold,omitempty"`
+	// The prompt for video understanding.
+	//
 	// example:
 	//
 	// 重点理解视频中的风景信息
 	AnlysisPrompt *string `json:"AnlysisPrompt,omitempty" xml:"AnlysisPrompt,omitempty"`
+	// The similarity threshold for character recognition.
+	//
 	// example:
 	//
 	// 0.7
 	FaceIdentitySimilarityMinScore *float64 `json:"FaceIdentitySimilarityMinScore,omitempty" xml:"FaceIdentitySimilarityMinScore,omitempty"`
-	ReferenceVideoShrink           *string  `json:"ReferenceVideo,omitempty" xml:"ReferenceVideo,omitempty"`
-	RemoveSubtitle                 *bool    `json:"RemoveSubtitle,omitempty" xml:"RemoveSubtitle,omitempty"`
+	// Information about the reference video.
+	ReferenceVideoShrink *string `json:"ReferenceVideo,omitempty" xml:"ReferenceVideo,omitempty"`
+	// Removes captions from the material.
+	RemoveSubtitle *bool `json:"RemoveSubtitle,omitempty" xml:"RemoveSubtitle,omitempty"`
+	// The structure of the video editing materials.
+	//
 	// This parameter is required.
 	SourceVideosShrink *string `json:"SourceVideos,omitempty" xml:"SourceVideos,omitempty"`
+	// The time interval for video understanding shots.
+	//
 	// example:
 	//
 	// 默认1
 	SplitInterval *int32 `json:"SplitInterval,omitempty" xml:"SplitInterval,omitempty"`
+	// Job name
+	//
 	// example:
 	//
 	// task001
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Task Type
+	//
 	// example:
 	//
 	// type001
-	TaskType         *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Face information of the roles.
 	VideoRolesShrink *string `json:"VideoRoles,omitempty" xml:"VideoRoles,omitempty"`
+	// The number of frames sampled from a single shot for character matching.
+	//
 	// example:
 	//
 	// 2
 	VideoShotFaceIdentityCount *int32 `json:"VideoShotFaceIdentityCount,omitempty" xml:"VideoShotFaceIdentityCount,omitempty"`
+	// [The ID of the Alibaba Cloud Model Studio workspace.](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,6 +20,8 @@ type GetPptConfigRequest struct {
 	//
 	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// llm-az2gglkjauwnnhpq

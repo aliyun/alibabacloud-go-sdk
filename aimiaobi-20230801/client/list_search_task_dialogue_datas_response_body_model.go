@@ -40,50 +40,74 @@ type iListSearchTaskDialogueDatasResponseBody interface {
 }
 
 type ListSearchTaskDialogueDatasResponseBody struct {
+	// The list of articles.
 	Articles []*ListSearchTaskDialogueDatasResponseBodyArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
-	Audios   []*ListSearchTaskDialogueDatasResponseBodyAudios   `json:"Audios,omitempty" xml:"Audios,omitempty" type:"Repeated"`
+	// The list of audio files.
+	Audios []*ListSearchTaskDialogueDatasResponseBodyAudios `json:"Audios,omitempty" xml:"Audios,omitempty" type:"Repeated"`
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Images         []*ListSearchTaskDialogueDatasResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The list of images.
+	Images []*ListSearchTaskDialogueDatasResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The error description.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Indicates whether real-time search is enabled.
+	//
 	// example:
 	//
 	// true
 	RealtimeSearch *bool `json:"RealtimeSearch,omitempty" xml:"RealtimeSearch,omitempty"`
+	// The unique identifier of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The search type.
+	//
 	// example:
 	//
 	// realtime
 	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success, and a value of false indicates failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
-	TotalCount *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Videos     []*ListSearchTaskDialogueDatasResponseBodyVideos `json:"Videos,omitempty" xml:"Videos,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of videos.
+	Videos []*ListSearchTaskDialogueDatasResponseBodyVideos `json:"Videos,omitempty" xml:"Videos,omitempty" type:"Repeated"`
 }
 
 func (s ListSearchTaskDialogueDatasResponseBody) String() string {
@@ -261,59 +285,88 @@ func (s *ListSearchTaskDialogueDatasResponseBody) Validate() error {
 }
 
 type ListSearchTaskDialogueDatasResponseBodyArticles struct {
+	// The author.
+	//
 	// example:
 	//
 	// 作者
 	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// The unique identifier of the category.
+	//
 	// example:
 	//
 	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// The content.
+	//
 	// example:
 	//
 	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The custom unique ID of the document.
+	//
 	// example:
 	//
 	// 文档-自定义的唯一ID
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The document type.
+	//
 	// example:
 	//
 	// text
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// The internal unique identifier of the document.
+	//
 	// example:
 	//
 	// xxx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1.
+	//
 	// example:
 	//
 	// xx
 	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2.
+	//
 	// example:
 	//
 	// xx
 	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3.
+	//
 	// example:
 	//
 	// xx
-	Extend3          *string                                                            `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// The multi-modal information.
 	MultimodalMedias []*ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias `json:"MultimodalMedias,omitempty" xml:"MultimodalMedias,omitempty" type:"Repeated"`
+	// The publication time.
+	//
 	// example:
 	//
 	// 2024-11-25 14:25:59
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// 新华社
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The summary of the article.
+	//
 	// example:
 	//
 	// 文章摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The title.
+	//
 	// example:
 	//
 	// 文章标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the article.
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx
@@ -477,14 +530,20 @@ func (s *ListSearchTaskDialogueDatasResponseBodyArticles) Validate() error {
 }
 
 type ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias struct {
+	// The URL of the image or video file.
+	//
 	// example:
 	//
 	// 图片或视频文件地址
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The unique identifier of the multi-modal data.
+	//
 	// example:
 	//
 	// 多模态数据唯一标识
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The type of the multi-modal data.
+	//
 	// example:
 	//
 	// 多模态数据类型
@@ -531,10 +590,14 @@ func (s *ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias) Valida
 }
 
 type ListSearchTaskDialogueDatasResponseBodyAudios struct {
+	// The URL of the image or video file.
+	//
 	// example:
 	//
 	// http://xxx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The unique identifier of the multi-modal data.
+	//
 	// example:
 	//
 	// xxxx
@@ -572,14 +635,20 @@ func (s *ListSearchTaskDialogueDatasResponseBodyAudios) Validate() error {
 }
 
 type ListSearchTaskDialogueDatasResponseBodyImages struct {
+	// The URL of the image or video file.
+	//
 	// example:
 	//
 	// 图片或视频文件地址
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The unique identifier of the multi-modal data.
+	//
 	// example:
 	//
 	// 多模态数据唯一标识
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The type of the multi-modal data.
+	//
 	// example:
 	//
 	// 多模态数据类型
@@ -626,14 +695,20 @@ func (s *ListSearchTaskDialogueDatasResponseBodyImages) Validate() error {
 }
 
 type ListSearchTaskDialogueDatasResponseBodyVideos struct {
+	// The URL of the image or video file.
+	//
 	// example:
 	//
 	// 图片或视频文件地址
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The unique identifier of the multi-modal data.
+	//
 	// example:
 	//
 	// 多模态数据唯一标识
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The type of the multi-modal data.
+	//
 	// example:
 	//
 	// 多模态数据类型

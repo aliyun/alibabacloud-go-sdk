@@ -18,16 +18,22 @@ type iRunSummaryGenerateRequest interface {
 }
 
 type RunSummaryGenerateRequest struct {
+	// Content to summarize.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 创新政务社交媒体功能。鼓励各地区、各部门结合实际，开发政务社交媒体的特色功能，如在线咨询服务、政策解读、互动问答等，增强政务社交媒体的互动性和实用性，提升公众参与度。
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Custom prompt for summary generation.
+	//
 	// example:
 	//
 	// 请为上述内容生成一段摘要，字数在100~200字以内。
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

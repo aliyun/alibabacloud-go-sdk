@@ -24,23 +24,34 @@ type iUpdateDatasetResponseBody interface {
 }
 
 type UpdateDatasetResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *UpdateDatasetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,31 +130,46 @@ func (s *UpdateDatasetResponseBody) Validate() error {
 }
 
 type UpdateDatasetResponseBodyData struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-11-12 21:46:24
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator.
+	//
 	// example:
 	//
 	// xxx
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The display name of the dataset.
+	//
 	// example:
 	//
 	// xxx
 	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset name.
+	//
 	// example:
 	//
 	// xxx
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The dataset type.
+	//
 	// example:
 	//
 	// CustomSemanticSearch
-	DatasetType        *string                                            `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// The list of articles.
 	NewsArticleResults []*UpdateDatasetResponseBodyDataNewsArticleResults `json:"NewsArticleResults,omitempty" xml:"NewsArticleResults,omitempty" type:"Repeated"`
+	// Indicates whether search is enabled for the dataset.
+	//
 	// example:
 	//
 	// 1
@@ -244,23 +270,34 @@ func (s *UpdateDatasetResponseBodyData) Validate() error {
 }
 
 type UpdateDatasetResponseBodyDataNewsArticleResults struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	Current *int32                                                 `json:"Current,omitempty" xml:"Current,omitempty"`
-	Data    []*UpdateDatasetResponseBodyDataNewsArticleResultsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// The list of articles.
+	Data []*UpdateDatasetResponseBodyDataNewsArticleResultsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -343,26 +380,38 @@ func (s *UpdateDatasetResponseBodyDataNewsArticleResults) Validate() error {
 }
 
 type UpdateDatasetResponseBodyDataNewsArticleResultsData struct {
+	// The content.
+	//
 	// example:
 	//
 	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The publishing time.
+	//
 	// example:
 	//
 	// 2024-11-12 15:12:14
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// 央视网
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The article summary.
+	//
 	// example:
 	//
 	// 文章摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The title.
+	//
 	// example:
 	//
 	// 文章标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The article URL.
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx

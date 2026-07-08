@@ -22,22 +22,32 @@ type iDeleteDocsResponseBody interface {
 }
 
 type DeleteDocsResponseBody struct {
+	// Internal error code.
+	//
 	// example:
 	//
 	// successful
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 2C565EDD-E624-5FED-8565-0A9CB0C8CC46
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true

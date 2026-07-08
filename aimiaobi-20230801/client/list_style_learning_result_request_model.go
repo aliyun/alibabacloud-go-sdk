@@ -18,16 +18,22 @@ type iListStyleLearningResultRequest interface {
 }
 
 type ListStyleLearningResultRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Number of items per page. Default is 10.
+	//
 	// example:
 	//
 	// 10

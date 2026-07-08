@@ -22,20 +22,36 @@ type iRunDocSmartCardRequest interface {
 }
 
 type RunDocSmartCardRequest struct {
+	// The document ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 84ufBYEeLMZOjRFo84HJ7ySL3Efr55
-	DocId     *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The name of the custom model.
+	//
+	// example:
+	//
+	// quanmiao-max、quanmiao-plus
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	Prompt    *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The prompt.
+	//
+	// example:
+	//
+	// 自定义提示词
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

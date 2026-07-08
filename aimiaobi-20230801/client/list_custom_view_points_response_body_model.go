@@ -30,35 +30,52 @@ type iListCustomViewPointsResponseBody interface {
 }
 
 type ListCustomViewPointsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data []*ListCustomViewPointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The maximum number of results returned.
+	//
 	// example:
 	//
 	// 60
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token for the next page of results.
+	//
 	// example:
 	//
 	// 下一页的token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The unique identifier of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\`: The request was successful. \\`false\\`: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 73
@@ -168,38 +185,55 @@ func (s *ListCustomViewPointsResponseBody) Validate() error {
 }
 
 type ListCustomViewPointsResponseBodyData struct {
+	// The ID of the asynchronous task that analyzes the custom viewpoint.
+	//
 	// example:
 	//
 	// 2323ac73e174428a98c91097a59c67e0
 	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
+	// The viewpoint.
+	//
 	// example:
 	//
 	// 观点
 	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// The time when the viewpoint was created.
+	//
 	// example:
 	//
 	// 2024-08-15 16:18:59
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the viewpoint.
+	//
 	// example:
 	//
 	// 1
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The ID of the custom viewpoint.
+	//
 	// example:
 	//
 	// 709806dd051042d5ab9de8bdbb3a64ca
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The task execution status. Valid values: PENDING, RUNNING, SUCCEEDED, SUSPENDED, FAILED, and CANCELED.
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The error message for the task execution.
+	//
 	// example:
 	//
 	// 参数校验失败
 	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
+	// The task execution status. 0: PENDING, 1: RUNNING, 2: SUCCEEDED, 3: PAUSED, 4: FAILED (retriable), 5: FAILED (non-retriable), 6: CANCELED.
+	//
 	// example:
 	//
 	// 1
-	TaskStatus *int32                                            `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// A list of topic selection viewpoints.
 	ViewPoints []*ListCustomViewPointsResponseBodyDataViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
 }
 
@@ -306,11 +340,16 @@ func (s *ListCustomViewPointsResponseBodyData) Validate() error {
 }
 
 type ListCustomViewPointsResponseBodyDataViewPoints struct {
+	// The outline.
 	Outlines []*ListCustomViewPointsResponseBodyDataViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// The generated viewpoint.
+	//
 	// example:
 	//
 	// 视角
 	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// The summary.
+	//
 	// example:
 	//
 	// 摘要
@@ -366,10 +405,14 @@ func (s *ListCustomViewPointsResponseBodyDataViewPoints) Validate() error {
 }
 
 type ListCustomViewPointsResponseBodyDataViewPointsOutlines struct {
+	// The outline.
+	//
 	// example:
 	//
 	// 大纲
 	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// The summary of the outline.
+	//
 	// example:
 	//
 	// 大纲摘要

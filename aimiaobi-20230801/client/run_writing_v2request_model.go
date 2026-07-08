@@ -56,59 +56,131 @@ type iRunWritingV2Request interface {
 }
 
 type RunWritingV2Request struct {
+	// A list of articles to use as references. **Note:*	- When you provide this parameter, web search is disabled, overriding the `UseSearch` and `SearchSources` parameters.
 	Articles []*RunWritingV2RequestArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// Specifies whether to enable step-by-step writing. For more information, see the `Step` parameter description.
+	//
 	// example:
 	//
 	// false
 	DistributeWriting *bool `json:"DistributeWriting,omitempty" xml:"DistributeWriting,omitempty"`
+	// The number of articles to write. If you request multiple articles, the system returns them concurrently, each with a unique session ID.
+	//
 	// example:
 	//
 	// 2
-	GcNumberSize    *int32    `json:"GcNumberSize,omitempty" xml:"GcNumberSize,omitempty"`
-	GcNumberSizeTag *string   `json:"GcNumberSizeTag,omitempty" xml:"GcNumberSizeTag,omitempty"`
-	Keywords        []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	GcNumberSize *int32 `json:"GcNumberSize,omitempty" xml:"GcNumberSize,omitempty"`
+	// A string that specifies the desired article length. Examples: "about 300 words", "about 600 words", "about 1,000 words", or "about 2,000 words".
+	//
+	// example:
+	//
+	// 2000字左右
+	GcNumberSizeTag *string `json:"GcNumberSizeTag,omitempty" xml:"GcNumberSizeTag,omitempty"`
+	// A list of keywords used for both search and writing.
+	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	// The output language for the article.
+	//
+	// - `en`: English
+	//
+	// - `zh`: Chinese
+	//
+	// - Other languages or specific style requirements can also be specified.
+	//
 	// example:
 	//
 	// en
-	Language    *string                        `json:"Language,omitempty" xml:"Language,omitempty"`
-	MiniDocs    []*RunWritingV2RequestMiniDocs `json:"MiniDocs,omitempty" xml:"MiniDocs,omitempty" type:"Repeated"`
-	OutlineList []*WritingOutline              `json:"OutlineList,omitempty" xml:"OutlineList,omitempty" type:"Repeated"`
-	Outlines    []*RunWritingV2RequestOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
-	Prompt      *string                        `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// A list of article snippets.
+	MiniDocs []*RunWritingV2RequestMiniDocs `json:"MiniDocs,omitempty" xml:"MiniDocs,omitempty" type:"Repeated"`
+	// A list of outlines for step-by-step writing.
+	OutlineList []*WritingOutline `json:"OutlineList,omitempty" xml:"OutlineList,omitempty" type:"Repeated"`
+	// A list of outlines for step-by-step writing. This parameter is deprecated. Use `OutlineList` instead.
+	Outlines []*RunWritingV2RequestOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// The writing prompt. You must provide either `Prompt` or `WritingParams`. For more information, see the description of the `PromptMode` parameter.
+	//
+	// example:
+	//
+	// 提示词
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The prompt mode. Valid values: `Template` (template mode) and `PE` (advanced PE mode).
+	//
+	// 1. If this parameter is omitted, you must provide the `Prompt` parameter. We recommend that the prompt includes the topic, length, requirements, and prohibitions.
+	//
+	// 2. If `PromptMode` is set to `Template`, you must provide `WritingParams`, which is a dictionary of string key-value pairs. For the required schema, see the `.Data.TemplateDefine[].Fields` field in the response of the [ListWritingStyles](https://help.aliyun.com/document_detail/2922609.html) operation.
+	//
+	// 3. If `PromptMode` is set to `PE`, you must pass `WritingParams` with the following two fields:
+	//
+	//    1. `topic`: Required. The topic to write about.
+	//
+	//    2. `prompt`: Optional. Any additional custom prompts or writing requirements.
+	//
 	// example:
 	//
 	// Template
-	PromptMode    *string                             `json:"PromptMode,omitempty" xml:"PromptMode,omitempty"`
+	PromptMode *string `json:"PromptMode,omitempty" xml:"PromptMode,omitempty"`
+	// A list of specified search sources to use.
 	SearchSources []*RunWritingV2RequestSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	// The ID of a single-turn conversation. This parameter is deprecated and its use is discouraged.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
-	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The source tracing method. Currently, only `modelSourceTrace` is supported. If set to `modelSourceTrace`, the model adds citation markers (for example, `[[1]]`) to the end of each cited snippet in the generated text. The citation index starts at 1.
+	//
+	// example:
+	//
+	// modelSourceTrace
 	SourceTraceMethod *string `json:"SourceTraceMethod,omitempty" xml:"SourceTraceMethod,omitempty"`
+	// The step for step-by-step writing. Valid values:
+	//
+	// - `OutlineGenerate`: Outline generation
+	//
+	// - `Writing`: Article writing
+	//
+	// When `DistributeWriting` is `true`, the default flow for step-by-step writing is to first generate an outline and then write the content based on it.
+	//
 	// example:
 	//
 	// Writing
-	Step          *string                             `json:"Step,omitempty" xml:"Step,omitempty"`
+	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	// A list of summarization objects, used for step-by-step writing.
 	Summarization []*RunWritingV2RequestSummarization `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Repeated"`
+	// The unique ID of the task. You can reuse the same task ID for a multi-turn conversation.
+	//
+	// > The system automatically generates a `TaskId` if you do not specify one. Reusing the same `TaskId` for subsequent requests groups them into a single conversation.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Specifies whether to enable web search. If `true`, the system uses its built-in web search feature. Default: `false`.
+	//
 	// example:
 	//
 	// true
 	UseSearch *bool `json:"UseSearch,omitempty" xml:"UseSearch,omitempty"`
+	// The unique ID of the Model Studio workspace. For more information, see [Obtain a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxx
-	WorkspaceId   *string            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The parameters for template-based writing, provided as a dictionary of string key-value pairs. You must provide either `Prompt` or `WritingParams`. For more information, see the description of the `PromptMode` parameter.
 	WritingParams map[string]*string `json:"WritingParams,omitempty" xml:"WritingParams,omitempty"`
+	// The writing scene. Valid values: `government` (government affairs), `media`, `market` (marketing), `office`, and `custom`.
+	//
 	// example:
 	//
 	// media
 	WritingScene *string `json:"WritingScene,omitempty" xml:"WritingScene,omitempty"`
+	// The writing style. For a list of supported styles, see [ListWritingStyles](https://help.aliyun.com/document_detail/2922609.html).
+	//
+	// example:
+	//
+	// 新闻评论
 	WritingStyle *string `json:"WritingStyle,omitempty" xml:"WritingStyle,omitempty"`
 }
 
@@ -377,17 +449,38 @@ func (s *RunWritingV2Request) Validate() error {
 }
 
 type RunWritingV2RequestArticles struct {
+	// The content of the article.
+	//
+	// example:
+	//
+	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The publication time.
+	//
 	// example:
 	//
 	// 2024-11-25 14:25:59
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The name of the search source.
+	//
 	// example:
 	//
 	// QuarkCommonNews
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
-	Source           *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The source of the article.
+	//
+	// example:
+	//
+	// 新华社
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The title of the article.
+	//
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the article.
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx
@@ -461,8 +554,20 @@ func (s *RunWritingV2RequestArticles) Validate() error {
 }
 
 type RunWritingV2RequestMiniDocs struct {
+	// The content of the snippet.
+	//
+	// example:
+	//
+	// 片段内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Index   *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The index of the article snippet in the referenced article.
+	//
+	// example:
+	//
+	// 索引
+	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Specifies whether to prioritize this snippet.
+	//
 	// example:
 	//
 	// true
@@ -509,8 +614,14 @@ func (s *RunWritingV2RequestMiniDocs) Validate() error {
 }
 
 type RunWritingV2RequestOutlines struct {
+	// A list of articles referenced by the outline.
 	Articles []*RunWritingV2RequestOutlinesArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
-	Outline  *string                                `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// The outline.
+	//
+	// example:
+	//
+	// 大纲
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
 }
 
 func (s RunWritingV2RequestOutlines) String() string {
@@ -553,9 +664,24 @@ func (s *RunWritingV2RequestOutlines) Validate() error {
 }
 
 type RunWritingV2RequestOutlinesArticles struct {
+	// The content of the article.
+	//
+	// example:
+	//
+	// 正文内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Url     *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The title of the article.
+	//
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the article.
+	//
+	// example:
+	//
+	// 文章URL
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s RunWritingV2RequestOutlinesArticles) String() string {
@@ -598,15 +724,24 @@ func (s *RunWritingV2RequestOutlinesArticles) Validate() error {
 }
 
 type RunWritingV2RequestSearchSources struct {
+	// The type of search source. Valid values: `SystemSearch` (built-in system search), `CustomSemanticSearch` (search of a custom semantic index), and `ThirdSearch` (search through a third-party API).
+	//
 	// example:
 	//
 	// SystemSearch
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The unique identifier of the data source.
+	//
 	// example:
 	//
 	// QuarkCommonNews
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the search source. This parameter is deprecated and has no effect.
+	//
+	// example:
+	//
+	// 互联网搜索
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s RunWritingV2RequestSearchSources) String() string {
@@ -649,7 +784,17 @@ func (s *RunWritingV2RequestSearchSources) Validate() error {
 }
 
 type RunWritingV2RequestSummarization struct {
-	Event   *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The name of the event.
+	//
+	// example:
+	//
+	// 事件名称
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The summary of the event.
+	//
+	// example:
+	//
+	// 事件摘编
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

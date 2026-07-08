@@ -26,31 +26,45 @@ type iRunWritingShrinkRequest interface {
 }
 
 type RunWritingShrinkRequest struct {
+	// The ID of the original conversation to use for regeneration.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// The prompt.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 提示词
-	Prompt              *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The reference article data for writing.
 	ReferenceDataShrink *string `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty"`
+	// The ID of a single-turn conversation.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The ID of the task. You can reuse the same task ID in a multi-turn conversation.
+	//
+	// > You do not need to specify TaskId. The system generates one automatically. If you use the same TaskId for multiple tasks, they are grouped into a single conversation.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxx
-	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The writing configuration.
 	WritingConfigShrink *string `json:"WritingConfig,omitempty" xml:"WritingConfig,omitempty"`
 }
 

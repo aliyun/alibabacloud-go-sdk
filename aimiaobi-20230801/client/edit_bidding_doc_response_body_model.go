@@ -24,15 +24,22 @@ type iEditBiddingDocResponseBody interface {
 }
 
 type EditBiddingDocResponseBody struct {
+  // The status code.
+  // 
   // example:
   // 
   // successful
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The business data.
   Data *EditBiddingDocResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // The error message.
+  // 
   // example:
   // 
   // successful
@@ -43,6 +50,8 @@ type EditBiddingDocResponseBody struct {
   // 
   // 1813ceee-7fe5-41b4-87e5-982a4d18cca5
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the request was successful. A value of \\`true\\` indicates success and \\`false\\` indicates failure.
+  // 
   // example:
   // 
   // true
@@ -121,6 +130,8 @@ func (s *EditBiddingDocResponseBody) Validate() error {
 }
 
 type EditBiddingDocResponseBodyData struct {
+  // The task ID.
+  // 
   // example:
   // 
   // 3f7045e099474ba28ceca1b4eb6d6e21

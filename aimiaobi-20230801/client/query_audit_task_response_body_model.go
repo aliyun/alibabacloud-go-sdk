@@ -24,15 +24,22 @@ type iQueryAuditTaskResponseBody interface {
 }
 
 type QueryAuditTaskResponseBody struct {
+	// error code
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Asynchronous task object
 	Data *QueryAuditTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP error code
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// error message
+	//
 	// example:
 	//
 	// 错误消息
@@ -43,6 +50,8 @@ type QueryAuditTaskResponseBody struct {
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,25 +130,44 @@ func (s *QueryAuditTaskResponseBody) Validate() error {
 }
 
 type QueryAuditTaskResponseBodyData struct {
+	// Audit time.
+	//
 	// example:
 	//
 	// 2025-05-13 12:12:12
 	AuditTime *string `json:"AuditTime,omitempty" xml:"AuditTime,omitempty"`
+	// Original text at the time of audit.
+	//
 	// example:
 	//
 	// 审核时的原文
-	Content     *string                                 `json:"Content,omitempty" xml:"Content,omitempty"`
-	HtmlContent *string                                 `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
-	Response    *QueryAuditTaskResponseBodyDataResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Formatted content at the time of audit.
+	//
+	// example:
+	//
+	// 格式化的审核时的内容
+	HtmlContent *string `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
+	// Audit results.
+	Response *QueryAuditTaskResponseBodyDataResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
+	// Task execution status: PENDING: pending, RUNNING: running, SUCCESSED: successful, SUSPENDED: paused, FAILED: failed, CANCELLED: canceled
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Task execution status: 0: pending, 1: running, 2: successful, 3: paused, 4: failed, 6: canceled
+	//
 	// example:
 	//
 	// 1
-	TaskStatus *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Content title
+	//
+	// example:
+	//
+	// 内容标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s QueryAuditTaskResponseBodyData) String() string {
@@ -223,7 +251,9 @@ func (s *QueryAuditTaskResponseBodyData) Validate() error {
 }
 
 type QueryAuditTaskResponseBodyDataResponse struct {
-	Header  *QueryAuditTaskResponseBodyDataResponseHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Audit response header
+	Header *QueryAuditTaskResponseBodyDataResponseHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// response body
 	Payload *QueryAuditTaskResponseBodyDataResponsePayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
 }
 
@@ -268,22 +298,32 @@ func (s *QueryAuditTaskResponseBodyDataResponse) Validate() error {
 }
 
 type QueryAuditTaskResponseBodyDataResponseHeader struct {
+	// error code
+	//
 	// example:
 	//
 	// DataNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// error message
+	//
 	// example:
 	//
 	// 数据不存在
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Event
+	//
 	// example:
 	//
 	// task-failed
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Unique conversation ID.
+	//
 	// example:
 	//
 	// 49eab783-9172-487a-b9df-c6372c47392c
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Unique multi-turn conversation ID.
+	//
 	// example:
 	//
 	// 896b733535274d28b1a61c78bc145217
@@ -348,8 +388,10 @@ func (s *QueryAuditTaskResponseBodyDataResponseHeader) Validate() error {
 }
 
 type QueryAuditTaskResponseBodyDataResponsePayload struct {
+	// response body
 	Output *QueryAuditTaskResponseBodyDataResponsePayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *QueryAuditTaskResponseBodyDataResponsePayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// usage
+	Usage *QueryAuditTaskResponseBodyDataResponsePayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s QueryAuditTaskResponseBodyDataResponsePayload) String() string {
@@ -393,6 +435,8 @@ func (s *QueryAuditTaskResponseBodyDataResponsePayload) Validate() error {
 }
 
 type QueryAuditTaskResponseBodyDataResponsePayloadOutput struct {
+	// Final response result (JSON array structure)
+	//
 	// example:
 	//
 	// x\\"x\\"x
@@ -421,14 +465,20 @@ func (s *QueryAuditTaskResponseBodyDataResponsePayloadOutput) Validate() error {
 }
 
 type QueryAuditTaskResponseBodyDataResponsePayloadUsage struct {
+	// Input tokens.
+	//
 	// example:
 	//
 	// 200
 	InputTokens *int32 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Output tokens.
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int32 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total tokens.
+	//
 	// example:
 	//
 	// 300

@@ -20,15 +20,26 @@ type iAsyncEditTimelineRequest interface {
 }
 
 type AsyncEditTimelineRequest struct {
+	// Enable automatic clip adjustment
+	//
+	// example:
+	//
+	// false
 	AutoClips *bool `json:"AutoClips,omitempty" xml:"AutoClips,omitempty"`
+	// Unique identifier of the task
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0dbf1055f8a2475d99904c3b76a0ffba
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Array structure of video editing timelines
+	//
 	// This parameter is required.
 	Timelines []*AsyncEditTimelineRequestTimelines `json:"Timelines,omitempty" xml:"Timelines,omitempty" type:"Repeated"`
+	// [Model Studio workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -95,9 +106,18 @@ func (s *AsyncEditTimelineRequest) Validate() error {
 }
 
 type AsyncEditTimelineRequestTimelines struct {
+	// Array of video clips
+	//
 	// This parameter is required.
-	Clips      []*AsyncEditTimelineRequestTimelinesClips `json:"Clips,omitempty" xml:"Clips,omitempty" type:"Repeated"`
-	TimelineId *string                                   `json:"TimelineId,omitempty" xml:"TimelineId,omitempty"`
+	Clips []*AsyncEditTimelineRequestTimelinesClips `json:"Clips,omitempty" xml:"Clips,omitempty" type:"Repeated"`
+	// Timeline ID
+	//
+	// example:
+	//
+	// sdfjhks
+	//
+	// 新增可为空
+	TimelineId *string `json:"TimelineId,omitempty" xml:"TimelineId,omitempty"`
 }
 
 func (s AsyncEditTimelineRequestTimelines) String() string {
@@ -140,14 +160,66 @@ func (s *AsyncEditTimelineRequestTimelines) Validate() error {
 }
 
 type AsyncEditTimelineRequestTimelinesClips struct {
-	ClipId       *string  `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
-	ContentInner *string  `json:"ContentInner,omitempty" xml:"ContentInner,omitempty"`
-	In           *int32   `json:"In,omitempty" xml:"In,omitempty"`
-	InEx         *float32 `json:"InEx,omitempty" xml:"InEx,omitempty"`
-	Out          *int32   `json:"Out,omitempty" xml:"Out,omitempty"`
-	OutEx        *float32 `json:"OutEx,omitempty" xml:"OutEx,omitempty"`
-	VideoId      *string  `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
-	VideoName    *string  `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
+	// Clip ID
+	//
+	// example:
+	//
+	// 123jjdax
+	//
+	// 新增可为空
+	ClipId *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	// Segmented voice-over script
+	//
+	// example:
+	//
+	// 口播文案分段
+	//
+	// 不可为空
+	ContentInner *string `json:"ContentInner,omitempty" xml:"ContentInner,omitempty"`
+	// Start time, in seconds. Deprecated.
+	//
+	// example:
+	//
+	// 0
+	//
+	// 不可为空
+	In *int32 `json:"In,omitempty" xml:"In,omitempty"`
+	// Clip start time, in milliseconds
+	//
+	// example:
+	//
+	// 0.45
+	InEx *float32 `json:"InEx,omitempty" xml:"InEx,omitempty"`
+	// End time, in seconds. Deprecated.
+	//
+	// example:
+	//
+	// 5
+	//
+	// 不可为空
+	Out *int32 `json:"Out,omitempty" xml:"Out,omitempty"`
+	// Clip end time, in milliseconds
+	//
+	// example:
+	//
+	// 3.66
+	OutEx *float32 `json:"OutEx,omitempty" xml:"OutEx,omitempty"`
+	// Video ID
+	//
+	// example:
+	//
+	// 7036227ae3ab71efbb4a6733a68f0102
+	//
+	// 不可为空
+	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// Video name
+	//
+	// example:
+	//
+	// 123.mp4
+	//
+	// 不可为空
+	VideoName *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
 }
 
 func (s AsyncEditTimelineRequestTimelinesClips) String() string {

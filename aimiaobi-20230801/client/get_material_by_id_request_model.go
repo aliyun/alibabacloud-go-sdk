@@ -16,12 +16,16 @@ type iGetMaterialByIdRequest interface {
 }
 
 type GetMaterialByIdRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 67c520d1fa43455ea44fb69fa402d54d_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Primary key ID of the task
+	//
 	// This parameter is required.
 	//
 	// example:

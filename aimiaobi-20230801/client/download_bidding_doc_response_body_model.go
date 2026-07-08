@@ -24,25 +24,34 @@ type iDownloadBiddingDocResponseBody interface {
 }
 
 type DownloadBiddingDocResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// successful
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *DownloadBiddingDocResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Operation result: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -121,10 +130,14 @@ func (s *DownloadBiddingDocResponseBody) Validate() error {
 }
 
 type DownloadBiddingDocResponseBodyData struct {
+	// Task ID
+	//
 	// example:
 	//
 	// 111_Default_20250708142918
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Document URL
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx

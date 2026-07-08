@@ -24,20 +24,34 @@ type iAddAuditTermsRequest interface {
 }
 
 type AddAuditTermsRequest struct {
+	// Exception phrase
 	ExceptionWord []*string `json:"ExceptionWord,omitempty" xml:"ExceptionWord,omitempty" type:"Repeated"`
+	// Keyword
+	//
 	// example:
 	//
 	// 龘
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Suggested word
+	//
 	// example:
 	//
 	// 龘(dá)
 	SuggestWord *string `json:"SuggestWord,omitempty" xml:"SuggestWord,omitempty"`
+	// Audit basis
+	//
 	// example:
 	//
 	// 龙行龘龘出自四库本《玉篇》23龙部第8字，文字释义为群龙腾飞的样子，昂扬而热烈。
 	TermsDesc *string `json:"TermsDesc,omitempty" xml:"TermsDesc,omitempty"`
+	// Name of the dictionary. Optional. If not specified, defaults to Default.
+	//
+	// example:
+	//
+	// Default
 	TermsName *string `json:"TermsName,omitempty" xml:"TermsName,omitempty"`
+	// Unique identifier of the Alibaba Cloud Model Studio workspace. To get this ID, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

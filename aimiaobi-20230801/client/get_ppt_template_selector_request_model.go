@@ -14,6 +14,8 @@ type iGetPptTemplateSelectorRequest interface {
 }
 
 type GetPptTemplateSelectorRequest struct {
+	// The workspace ID.
+	//
 	// example:
 	//
 	// lm-xxxx

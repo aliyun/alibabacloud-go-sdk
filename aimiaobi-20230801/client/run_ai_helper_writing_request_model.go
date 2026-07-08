@@ -26,31 +26,41 @@ type iRunAiHelperWritingRequest interface {
 }
 
 type RunAiHelperWritingRequest struct {
+	// Specifies whether to generate the text step by step.
+	//
 	// example:
 	//
 	// false
 	DistributeWriting *bool `json:"DistributeWriting,omitempty" xml:"DistributeWriting,omitempty"`
+	// The prompt, which specifies the subject for the AI to write about.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 请帮我写一篇关于人工智能发展趋势的文章
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The prompt pattern. For example, PE indicates the advanced pattern and Template indicates the template pattern.
+	//
 	// example:
 	//
 	// Template
 	PromptMode *string `json:"PromptMode,omitempty" xml:"PromptMode,omitempty"`
+	// The [workspace](https://help.aliyun.com/document_detail/2782167.html) ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// llm-xxxxx
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The writing parameters from the previous form, specified as key-value pairs.
+	//
 	// example:
 	//
 	// {"wordCount": "1000", "tone": "formal"}
 	WritingParams map[string]*string `json:"WritingParams,omitempty" xml:"WritingParams,omitempty"`
-	// 写作场景：government(政务)、media(传媒)、market(营销)、office(办公)、custom(自定义)
+	// The writing scenario. Valid values: government, media, market, office, and custom.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +68,13 @@ type RunAiHelperWritingRequest struct {
 	//
 	// media
 	WritingScene *string `json:"WritingScene,omitempty" xml:"WritingScene,omitempty"`
-	// 写作文体唯一标识KEY，可通过ListWritingStyles接口获取对应写作场景下的文体列表
+	// The unique key for the writing style. Call the [ListWritingStyles](https://help.aliyun.com/document_detail/2922609.html) operation to get a list of styles for the specified scenario.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// news_article
+	// 通知
 	WritingStyle *string `json:"WritingStyle,omitempty" xml:"WritingStyle,omitempty"`
 }
 

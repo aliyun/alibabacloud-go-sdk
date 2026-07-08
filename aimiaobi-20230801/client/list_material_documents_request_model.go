@@ -44,56 +44,96 @@ type iListMaterialDocumentsRequest interface {
 }
 
 type ListMaterialDocumentsRequest struct {
+	// Unique identifier for the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 33a2658aaabf4c24b45d50e575125311_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Full-text search of document content
+	//
+	// example:
+	//
+	// 新闻内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Creation time - end range. Format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2023-03-18 02:00:00
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// Creation time - start range. Format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2023-02-19 07:28:11
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Document type (html: web page, plainText: plain text, image: image, pdf: pdf, word: word, excel: excel, csv: csv, jsonLine: jsonLine)
+	//
 	// example:
 	//
 	// jsonLine
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// Document type list (html: web page, plainText: plain text, image: image, pdf: pdf, word: word, excel: excel, csv: csv, jsonLine: jsonLine)
+	//
 	// example:
 	//
 	// excel
 	DocTypeList []*string `json:"DocTypeList,omitempty" xml:"DocTypeList,omitempty" type:"Repeated"`
+	// Generate a public URL for the file.
+	//
 	// example:
 	//
 	// true
 	GeneratePublicUrl *bool `json:"GeneratePublicUrl,omitempty" xml:"GeneratePublicUrl,omitempty"`
+	// Material primary key ID.
+	//
 	// example:
 	//
 	// 69
-	Id       *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Document keywords.
 	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
-	Query    *string   `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Supports comprehensive queries for title, content, and content.
+	//
+	// example:
+	//
+	// 小猫
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Share property: 0: personal private, 1: shared within the workspace.
+	//
 	// example:
 	//
 	// 1
 	ShareAttr *int32 `json:"ShareAttr,omitempty" xml:"ShareAttr,omitempty"`
+	// Number of items per page. Default is 10.
+	//
 	// example:
 	//
 	// 10
-	Size  *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Performs a full-text search on material titles.
+	//
+	// example:
+	//
+	// 新闻标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Update time - end range. Format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2023-03-18 03:00:00
 	UpdateTimeEnd *string `json:"UpdateTimeEnd,omitempty" xml:"UpdateTimeEnd,omitempty"`
+	// Update time - start range. Format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2023-03-18 02:00:00

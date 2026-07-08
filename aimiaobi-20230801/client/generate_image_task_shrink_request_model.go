@@ -22,31 +22,41 @@ type iGenerateImageTaskShrinkRequest interface {
 }
 
 type GenerateImageTaskShrinkRequest struct {
+	// The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e1be065b-adc3-435e-bd01-1c18c5ed75d3
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The task ID of the article. If you do not have one, you can assign a universally unique identifier (UUID).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e1be065b-adc3-435e-bd01-1c18c5ed75d3
 	ArticleTaskId *string `json:"ArticleTaskId,omitempty" xml:"ArticleTaskId,omitempty"`
+	// The content of the paragraphs.
+	//
 	// This parameter is required.
 	ParagraphListShrink *string `json:"ParagraphList,omitempty" xml:"ParagraphList,omitempty"`
+	// The size of the image to generate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1024*1024
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The style.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// <auto>
+	// \\"<auto>\\"
 	Style *string `json:"Style,omitempty" xml:"Style,omitempty"`
 }
 

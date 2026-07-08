@@ -24,23 +24,34 @@ type iImportInterveneFileAsyncResponseBody interface {
 }
 
 type ImportInterveneFileAsyncResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
-	// 0
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *ImportInterveneFileAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 94512A33-8EC1-5452-A793-5C91F18ED2F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded. true means success. false means failure.
+	//
 	// example:
 	//
 	// true
@@ -119,8 +130,16 @@ func (s *ImportInterveneFileAsyncResponseBody) Validate() error {
 }
 
 type ImportInterveneFileAsyncResponseBodyData struct {
-	Code       *int32    `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Status code returned by the intervention service
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of failed index IDs
 	FailIdList []*string `json:"FailIdList,omitempty" xml:"FailIdList,omitempty" type:"Repeated"`
+	// Task ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21

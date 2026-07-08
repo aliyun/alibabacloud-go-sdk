@@ -20,18 +20,28 @@ type iListSearchTaskDialoguesRequest interface {
 }
 
 type ListSearchTaskDialoguesRequest struct {
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of results to return.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique ID of the task.
+	//
+	// > You do not need to specify this parameter. The system generates it automatically. If you specify the same TaskId for multiple tasks, they are grouped into the same conversation.
+	//
 	// example:
 	//
 	// xxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the Model Studio workspace. For more information, see [Obtain a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,23 +24,34 @@ type iGetDatasetDocumentShrinkRequest interface {
 }
 
 type GetDatasetDocumentShrinkRequest struct {
+	// Unique identifier of the dataset.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// Name of the dataset.
+	//
 	// example:
 	//
 	// 数据集名称
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// User-defined unique ID of the document.
+	//
 	// example:
 	//
 	// xxx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique identifier of the document.
+	//
 	// example:
 	//
 	// xxx
-	DocUuid             *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// List of fields to include in the response.
 	IncludeFieldsShrink *string `json:"IncludeFields,omitempty" xml:"IncludeFields,omitempty"`
+	// Unique identifier of your Alibaba Cloud Model Studio workspace. [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:

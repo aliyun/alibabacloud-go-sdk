@@ -22,26 +22,36 @@ type iListWebReviewPointsRequest interface {
 }
 
 type ListWebReviewPointsRequest struct {
+	// UUID of the workspace: AgentKey
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Maximum number of returned results
+	//
 	// example:
 	//
 	// 81
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token for the next page
+	//
 	// example:
 	//
 	// 下一页的token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Hotlist topic
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 热榜主题
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// Hotlist source
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,9 +18,11 @@ type iRunBookIntroductionResponseBody interface {
 }
 
 type RunBookIntroductionResponseBody struct {
-	Header  *RunBookIntroductionResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// The response header.
+	Header *RunBookIntroductionResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// The payload.
 	Payload *RunBookIntroductionResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -78,30 +80,44 @@ func (s *RunBookIntroductionResponseBody) Validate() error {
 }
 
 type RunBookIntroductionResponseBodyHeader struct {
+	// The error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The event type.
+	//
 	// example:
 	//
 	// finished
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The event description.
+	//
 	// example:
 	//
 	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 411c4dfa-2168-4379-a902-675d67f453f8
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The trace ID.
+	//
 	// example:
 	//
 	// 46e5c2b5-0877-4f09-bd91-ab0cf314e48b
@@ -184,8 +200,10 @@ func (s *RunBookIntroductionResponseBodyHeader) Validate() error {
 }
 
 type RunBookIntroductionResponseBodyPayload struct {
+	// The generated content.
 	Output *RunBookIntroductionResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunBookIntroductionResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage details for the request.
+	Usage *RunBookIntroductionResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunBookIntroductionResponseBodyPayload) String() string {
@@ -229,11 +247,16 @@ func (s *RunBookIntroductionResponseBodyPayload) Validate() error {
 }
 
 type RunBookIntroductionResponseBodyPayloadOutput struct {
+	// A list of generated introductions for each part of the book.
 	Introductions []*RunBookIntroductionResponseBodyPayloadOutputIntroductions `json:"Introductions,omitempty" xml:"Introductions,omitempty" type:"Repeated"`
+	// The book\\"s key points.
+	//
 	// example:
 	//
 	// 卖点内容
 	KeyPoint *string `json:"KeyPoint,omitempty" xml:"KeyPoint,omitempty"`
+	// The book summary.
+	//
 	// example:
 	//
 	// 简介内容
@@ -289,11 +312,16 @@ func (s *RunBookIntroductionResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunBookIntroductionResponseBodyPayloadOutputIntroductions struct {
+	// A list of content blocks within this section.
 	Blocks []*RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks `json:"Blocks,omitempty" xml:"Blocks,omitempty" type:"Repeated"`
+	// A summary of this section.
+	//
 	// example:
 	//
 	// 本段摘要内容
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The title of this section.
+	//
 	// example:
 	//
 	// 本段标题内容
@@ -349,30 +377,44 @@ func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductions) Validate() e
 }
 
 type RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks struct {
+	// The start timestamp of the content block.
+	//
 	// example:
 	//
 	// 0
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The end timestamp of the content block.
+	//
 	// example:
 	//
 	// 1200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The height of the content block.
+	//
 	// example:
 	//
 	// 600
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The ID of the page where the content block is located.
+	//
 	// example:
 	//
 	// 10
 	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The width of the content block.
+	//
 	// example:
 	//
 	// 600
 	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate of the content block\\"s top-left corner on the page.
+	//
 	// example:
 	//
 	// 10
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate of the content block\\"s top-left corner on the page.
+	//
 	// example:
 	//
 	// 10
@@ -455,14 +497,20 @@ func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) Valida
 }
 
 type RunBookIntroductionResponseBodyPayloadUsage struct {
+	// The number of input tokens.
+	//
 	// example:
 	//
 	// 100
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The number of output tokens.
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The total number of tokens.
+	//
 	// example:
 	//
 	// 200

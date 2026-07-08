@@ -24,25 +24,34 @@ type iFetchExportTermsTaskResponseBody interface {
 }
 
 type FetchExportTermsTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *FetchExportTermsTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -121,10 +130,14 @@ func (s *FetchExportTermsTaskResponseBody) Validate() error {
 }
 
 type FetchExportTermsTaskResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// https//xxxx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The task execution status.
+	//
 	// example:
 	//
 	// PENDING-待执行、RUNNING-执行中、SUCCESSED-成功、SUSPENDED-暂停、FAILED-失败、CANCELLED-取消

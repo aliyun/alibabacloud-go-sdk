@@ -24,23 +24,34 @@ type iSearchDatasetDocumentsResponseBody interface {
 }
 
 type SearchDatasetDocumentsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *SearchDatasetDocumentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The status message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates if the request succeeded (`true`) or failed (`false`).
+	//
 	// example:
 	//
 	// true
@@ -119,6 +130,7 @@ func (s *SearchDatasetDocumentsResponseBody) Validate() error {
 }
 
 type SearchDatasetDocumentsResponseBodyData struct {
+	// The document list.
 	Documents []*SearchDatasetDocumentsResponseBodyDataDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
 }
 
@@ -153,46 +165,114 @@ func (s *SearchDatasetDocumentsResponseBodyData) Validate() error {
 }
 
 type SearchDatasetDocumentsResponseBodyDataDocuments struct {
-	CategoryUuid *string                                                      `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
-	Chunk        *string                                                      `json:"Chunk,omitempty" xml:"Chunk,omitempty"`
-	ChunkInfos   []*SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos `json:"ChunkInfos,omitempty" xml:"ChunkInfos,omitempty" type:"Repeated"`
+	// The unique identifier for the category.
+	//
+	// example:
+	//
+	// xx
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// The content of the relevant chunk. This field is returned only in `chunk` mode.
+	//
+	// example:
+	//
+	// xx
+	Chunk *string `json:"Chunk,omitempty" xml:"Chunk,omitempty"`
+	// A list of relevant chunks from the document. This field is returned only in `document` mode.
+	ChunkInfos []*SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos `json:"ChunkInfos,omitempty" xml:"ChunkInfos,omitempty" type:"Repeated"`
+	// The content of the document.
+	//
 	// example:
 	//
 	// xx
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The user-defined unique ID for the document.
+	//
 	// example:
 	//
-	// 用户指定的文档唯一ID
-	DocId   *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The document type.
+	//
+	// example:
+	//
+	// text
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// The unique system ID of the document.
+	//
 	// example:
 	//
-	// 内部文档唯一ID
+	// xxx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Custom extension field 1.
+	//
+	// example:
+	//
+	// xx
 	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Custom extension field 2.
+	//
+	// example:
+	//
+	// xx
 	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Custom extension field 3.
+	//
+	// example:
+	//
+	// xx
 	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// The publication time, in `yyyy-MM-dd HH:mm:ss` format.
+	//
 	// example:
 	//
 	// 2024-12-09 17:09:40
-	PubTime          *string  `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
-	Score            *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	SearchSource     *string  `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
-	SearchSourceName *string  `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
-	SearchSourceType *string  `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The relevance score.
+	//
+	// example:
+	//
+	// 0.5
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The unique identifier for the dataset.
+	//
+	// example:
+	//
+	// xx
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// The name of the dataset.
+	//
+	// example:
+	//
+	// xx
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// The dataset type.
+	//
+	// example:
+	//
+	// xx
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// The source of the document.
+	//
 	// example:
 	//
 	// 来源
 	SourceFrom *string `json:"SourceFrom,omitempty" xml:"SourceFrom,omitempty"`
+	// The summary of the document.
+	//
 	// example:
 	//
 	// 文章摘要
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// A list of tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The title of the document.
+	//
 	// example:
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the document.
+	//
 	// example:
 	//
 	// xx
@@ -401,7 +481,17 @@ func (s *SearchDatasetDocumentsResponseBodyDataDocuments) Validate() error {
 }
 
 type SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos struct {
-	Chunk *string  `json:"Chunk,omitempty" xml:"Chunk,omitempty"`
+	// The content of the chunk.
+	//
+	// example:
+	//
+	// xx
+	Chunk *string `json:"Chunk,omitempty" xml:"Chunk,omitempty"`
+	// The relevance score of the chunk.
+	//
+	// example:
+	//
+	// 0.77
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
 }
 

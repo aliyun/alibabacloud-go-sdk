@@ -16,10 +16,14 @@ type iDownloadBiddingDocRequest interface {
 }
 
 type DownloadBiddingDocRequest struct {
+	// Task ID
+	//
 	// example:
 	//
 	// 7AA2AE16-D873-5C5F-9708-15396C382EB1
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// llm-az2gglkjauwnnhpq

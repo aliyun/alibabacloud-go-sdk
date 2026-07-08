@@ -24,23 +24,34 @@ type iGetMaterialByIdResponseBody interface {
 }
 
 type GetMaterialByIdResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *GetMaterialByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// 数据不存在
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates success: true for success, false for failure
+	//
 	// example:
 	//
 	// false
@@ -119,57 +130,112 @@ func (s *GetMaterialByIdResponseBody) Validate() error {
 }
 
 type GetMaterialByIdResponseBodyData struct {
+	// Author
+	//
+	// example:
+	//
+	// 文档作者
 	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2023-03-21 11:34:19
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator user ID
+	//
 	// example:
 	//
 	// 1
-	CreateUser  *string   `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Document tags used for classification and other purposes. Separate multiple keywords with commas.
 	DocKeywords []*string `json:"DocKeywords,omitempty" xml:"DocKeywords,omitempty" type:"Repeated"`
+	// Document type, such as pdf, word, url, or image
+	//
 	// example:
 	//
 	// pdf
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// URL uploaded by an external customer. Used only for record keeping.
+	//
 	// example:
 	//
 	// https://www.example.com
 	ExternalUrl *string `json:"ExternalUrl,omitempty" xml:"ExternalUrl,omitempty"`
+	// Web page content
+	//
+	// example:
+	//
+	// 网页内容
 	HtmlContent *string `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
+	// Primary key
+	//
 	// example:
 	//
 	// 32
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Publication time
+	//
 	// example:
 	//
 	// 2023-04-11 06:14:07
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Temporary public URL
+	//
 	// example:
 	//
 	// https://www.example.com
 	PublicUrl *string `json:"PublicUrl,omitempty" xml:"PublicUrl,omitempty"`
+	// Sharing attribute stored as bit flags. The first bit indicates sharing within the workspace, the second bit indicates sharing within the tenant, and the third bit indicates system-wide sharing.
+	//
 	// example:
 	//
 	// 1
 	ShareAttr *int32 `json:"ShareAttr,omitempty" xml:"ShareAttr,omitempty"`
+	// Document source, such as user_upload, search, or viewpoint
+	//
 	// example:
 	//
 	// user_upload
-	SrcFrom           *string `json:"SrcFrom,omitempty" xml:"SrcFrom,omitempty"`
-	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	TextContent       *string `json:"TextContent,omitempty" xml:"TextContent,omitempty"`
+	SrcFrom *string `json:"SrcFrom,omitempty" xml:"SrcFrom,omitempty"`
+	// Document summary
+	//
+	// example:
+	//
+	// 文档摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Parsed text content. Empty for images.
+	//
+	// example:
+	//
+	// 文本内容
+	TextContent *string `json:"TextContent,omitempty" xml:"TextContent,omitempty"`
+	// Base64-encoded thumbnail for image documents
+	//
+	// example:
+	//
+	// Base64编码的缩略图
 	ThumbnailInBase64 *string `json:"ThumbnailInBase64,omitempty" xml:"ThumbnailInBase64,omitempty"`
-	Title             *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Document title
+	//
+	// example:
+	//
+	// 文档标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Modification time
+	//
 	// example:
 	//
 	// 2022-04-08 19:33:01
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Modifier user ID
+	//
 	// example:
 	//
 	// 1
 	UpdateUser *string `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
+	// Internal document storage URL
+	//
 	// example:
 	//
 	// https://www.example.com

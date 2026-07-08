@@ -50,44 +50,70 @@ type iSearchDatasetDocumentsShrinkRequest interface {
 }
 
 type SearchDatasetDocumentsShrinkRequest struct {
+	// A list of category UUIDs for filtering.
 	CategoryUuidsShrink *string `json:"CategoryUuids,omitempty" xml:"CategoryUuids,omitempty"`
-	CreateTimeEnd       *int64  `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	CreateTimeStart     *int64  `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// The end time for document creation, specified as a Unix timestamp.
+	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// The start time for document creation, specified as a Unix timestamp.
+	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// The ID of the dataset. You must specify either `DatasetId` or `DatasetName`.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// 数据集名称
-	DatasetName    *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	DocIdsShrink   *string `json:"DocIds,omitempty" xml:"DocIds,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// A list of document IDs for filtering.
+	DocIdsShrink *string `json:"DocIds,omitempty" xml:"DocIds,omitempty"`
+	// A list of document types for filtering.
 	DocTypesShrink *string `json:"DocTypes,omitempty" xml:"DocTypes,omitempty"`
+	// A list of document UUIDs for filtering.
 	DocUuidsShrink *string `json:"DocUuids,omitempty" xml:"DocUuids,omitempty"`
-	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range for filtering, specified as a Unix timestamp.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// A business parameter.
+	//
 	// example:
 	//
 	// 业务参数
 	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// A reserved business parameter.
 	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// A reserved business parameter.
 	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Specifies whether to include the document content in the search results. The default value is `false`.
+	//
 	// example:
 	//
 	// false
 	IncludeContent *bool `json:"IncludeContent,omitempty" xml:"IncludeContent,omitempty"`
+	// The number of documents to return per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 搜索内容
-	Query      *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The search mode.
 	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start of the time range for filtering, specified as a Unix timestamp.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// A list of tags for filtering.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the Model Studio workspace. For more information, see [Get workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

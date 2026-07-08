@@ -20,13 +20,22 @@ type iRunKeywordsExtractionGenerationShrinkRequest interface {
 }
 
 type RunKeywordsExtractionGenerationShrinkRequest struct {
+	// Custom prompt.
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Data required for generation.
+	//
 	// This parameter is required.
 	ReferenceDataShrink *string `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty"`
+	// The unique identifier for the associated creation article.
+	//
+	// > TaskId is not required by default; the system automatically generates it. If subsequent tasks use the same TaskId, they belong to the same conversation group.
+	//
 	// example:
 	//
 	// xxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique identifier for the Alibaba Cloud Model Studio workspace. Obtain the [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

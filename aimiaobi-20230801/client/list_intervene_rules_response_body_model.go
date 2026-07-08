@@ -24,23 +24,34 @@ type iListInterveneRulesResponseBody interface {
 }
 
 type ListInterveneRulesResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
-	// 0
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *ListInterveneRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// DA021073-17CE-5CCF-9FEB-93226C766887
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -119,16 +130,28 @@ func (s *ListInterveneRulesResponseBody) Validate() error {
 }
 
 type ListInterveneRulesResponseBodyData struct {
+	// Status code returned by the intervention service
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Number of items
+	//
 	// example:
 	//
 	// 1
-	Count             *int64                                                 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// List of rules
 	InterveneRuleList []*ListInterveneRulesResponseBodyDataInterveneRuleList `json:"InterveneRuleList,omitempty" xml:"InterveneRuleList,omitempty" type:"Repeated"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
@@ -202,24 +225,36 @@ func (s *ListInterveneRulesResponseBodyData) Validate() error {
 }
 
 type ListInterveneRulesResponseBodyDataInterveneRuleList struct {
+	// Answer configuration
 	AnswerConfig []*ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig `json:"AnswerConfig,omitempty" xml:"AnswerConfig,omitempty" type:"Repeated"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2023-06-05 15:17:01
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Effective time
+	//
 	// example:
 	//
 	// 2023-04-03 02:42:01
 	EffectTime *string `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	// Intervention type
+	//
 	// example:
 	//
 	// 0
-	InterveneType *int32    `json:"InterveneType,omitempty" xml:"InterveneType,omitempty"`
+	InterveneType *int32 `json:"InterveneType,omitempty" xml:"InterveneType,omitempty"`
+	// List of namespaces
 	NamespaceList []*string `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
+	// Rule ID
+	//
 	// example:
 	//
 	// mr-iuo9pi9w555phfbb
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// Rule name
+	//
 	// example:
 	//
 	// ruletest
@@ -311,11 +346,20 @@ func (s *ListInterveneRulesResponseBodyDataInterveneRuleList) Validate() error {
 }
 
 type ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig struct {
+	// Answer type
+	//
 	// example:
 	//
 	// 0
-	AnswerType *int32  `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	AnswerType *int32 `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
+	// Answer content
+	//
+	// example:
+	//
+	// 抱歉我无法回答
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Namespace
+	//
 	// example:
 	//
 	// namespace_qa_query

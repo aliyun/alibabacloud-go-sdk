@@ -24,26 +24,38 @@ type iSaveCustomTextResponseBody interface {
 }
 
 type SaveCustomTextResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
-	// NoData
+	// successful
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// 5
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// success
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true

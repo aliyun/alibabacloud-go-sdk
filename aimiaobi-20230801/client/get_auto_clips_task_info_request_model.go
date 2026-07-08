@@ -20,15 +20,33 @@ type iGetAutoClipsTaskInfoRequest interface {
 }
 
 type GetAutoClipsTaskInfoRequest struct {
+	// Show video understanding results.
+	//
+	// example:
+	//
+	// false
 	ShowAnalysisResults *bool `json:"ShowAnalysisResults,omitempty" xml:"ShowAnalysisResults,omitempty"`
-	ShowResourceInfo    *bool `json:"ShowResourceInfo,omitempty" xml:"ShowResourceInfo,omitempty"`
+	// Show video source information.
+	//
+	// example:
+	//
+	// false
+	ShowResourceInfo *bool `json:"ShowResourceInfo,omitempty" xml:"ShowResourceInfo,omitempty"`
+	// Unique ID of the task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0dbf1055f8a2475d99904c3b76a0ffba
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// [Workspace](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 百炼工作空间Id
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

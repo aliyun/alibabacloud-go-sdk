@@ -36,46 +36,70 @@ type iListHotTopicsShrinkRequest interface {
 }
 
 type ListHotTopicsShrinkRequest struct {
+	// The unique identifier of the business space.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The end of the creation time filter range (inclusive). The value must be in the `yyyy-MM-dd HH:mm:ss` format.
+	//
 	// example:
 	//
 	// 2026-06-04 23:59:59
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// The start of the creation time filter range (inclusive). The value must be in the `yyyy-MM-dd HH:mm:ss` format.
+	//
 	// example:
 	//
 	// 2026-06-01 00:00:00
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// Filters the results by a custom business field. The service performs an exact keyword match on this field. The value can be up to 255 characters long.
+	//
 	// example:
 	//
 	// biz-tag-001
 	CustomField *string `json:"CustomField,omitempty" xml:"CustomField,omitempty"`
+	// The maximum number of results to return for a single request. If this parameter is not specified, the service uses a default value.
+	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to retrieve the next page of results. If you do not specify this parameter, the service returns the first page of results. You can get this token from the `NextToken` response parameter of the previous request.
+	//
 	// example:
 	//
 	// 下一页的token
-	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// A list of topic IDs.
 	TopicIdsShrink *string `json:"TopicIds,omitempty" xml:"TopicIds,omitempty"`
+	// The keywords for a full-text search on hot topics.
+	//
 	// example:
 	//
 	// 根据热榜主题全文检索
 	TopicQuery *string `json:"TopicQuery,omitempty" xml:"TopicQuery,omitempty"`
+	// Filters the results by hot topic source. For a list of supported hot topic sources, call the `ListHotSources` operation.
+	//
+	// `Aggregation`: represents the aggregated list of national hot topics.
+	//
 	// example:
 	//
-	// 热榜源筛选，支持的热榜源。热榜源详见API：ListHotSources
+	// Quark
 	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// Filters the results by data version.
+	//
 	// example:
 	//
 	// 数据版本筛选
 	TopicVersion *string `json:"TopicVersion,omitempty" xml:"TopicVersion,omitempty"`
+	// Filters the results by hot topic.
 	TopicsShrink *string `json:"Topics,omitempty" xml:"Topics,omitempty"`
+	// Specifies whether to include news in the response.
+	//
 	// example:
 	//
 	// true

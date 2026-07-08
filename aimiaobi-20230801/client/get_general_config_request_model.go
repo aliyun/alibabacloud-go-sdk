@@ -16,12 +16,16 @@ type iGetGeneralConfigRequest interface {
 }
 
 type GetGeneralConfigRequest struct {
+	// The unique identifier of the configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xx
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The unique identifier of the Model Studio workspace. For more information, see [Get workspaceId]().
+	//
 	// This parameter is required.
 	//
 	// example:

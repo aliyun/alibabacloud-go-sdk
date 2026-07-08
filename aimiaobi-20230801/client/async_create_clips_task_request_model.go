@@ -9,6 +9,10 @@ type iAsyncCreateClipsTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAdaptMode(v string) *AsyncCreateClipsTaskRequest
+	GetAdaptMode() *string
+	SetAlignment(v string) *AsyncCreateClipsTaskRequest
+	GetAlignment() *string
 	SetCloseMusic(v bool) *AsyncCreateClipsTaskRequest
 	GetCloseMusic() *bool
 	SetCloseSubtitle(v bool) *AsyncCreateClipsTaskRequest
@@ -47,6 +51,8 @@ type iAsyncCreateClipsTaskRequest interface {
 	GetSubtitleFontSize() *int32
 	SetTaskId(v string) *AsyncCreateClipsTaskRequest
 	GetTaskId() *string
+	SetTextWidth(v string) *AsyncCreateClipsTaskRequest
+	GetTextWidth() *string
 	SetVoiceStyle(v string) *AsyncCreateClipsTaskRequest
 	GetVoiceStyle() *string
 	SetVoiceVolume(v int32) *AsyncCreateClipsTaskRequest
@@ -58,48 +64,192 @@ type iAsyncCreateClipsTaskRequest interface {
 }
 
 type AsyncCreateClipsTaskRequest struct {
-	CloseMusic        *bool                                    `json:"CloseMusic,omitempty" xml:"CloseMusic,omitempty"`
-	CloseSubtitle     *bool                                    `json:"CloseSubtitle,omitempty" xml:"CloseSubtitle,omitempty"`
-	CloseVoice        *bool                                    `json:"CloseVoice,omitempty" xml:"CloseVoice,omitempty"`
-	ClosingCreditsUrl *string                                  `json:"ClosingCreditsUrl,omitempty" xml:"ClosingCreditsUrl,omitempty"`
-	ColorWords        []*AsyncCreateClipsTaskRequestColorWords `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
-	CosyVoiceAppKey   *string                                  `json:"CosyVoiceAppKey,omitempty" xml:"CosyVoiceAppKey,omitempty"`
-	CosyVoiceToken    *string                                  `json:"CosyVoiceToken,omitempty" xml:"CosyVoiceToken,omitempty"`
-	CustomVoiceStyle  *string                                  `json:"CustomVoiceStyle,omitempty" xml:"CustomVoiceStyle,omitempty"`
+	// example:
+	//
+	// AutoWrap：自动换行
+	//
+	// AutoScale：自动缩放
+	//
+	// AutoWrapAtSpaces：只在空格位置自动换行（适用于纯英文字幕自动换行场景）
+	AdaptMode *string `json:"AdaptMode,omitempty" xml:"AdaptMode,omitempty"`
+	// example:
+	//
+	// 支持设置：
+	//
+	// TopLeft：视频左上角
+	//
+	// TopCenter：视频竖直中轴线上侧
+	//
+	// TopRight：视频右上角
+	//
+	// CenterLeft：视频水平中轴线左侧
+	//
+	// CenterCenter：视频中心位置
+	//
+	// CenterRight：视频水平中轴线右侧
+	//
+	// BottomLeft：视频左下角
+	//
+	// BottomCenter：视频竖直中轴线下侧
+	//
+	// BottomRight：视频右下角
+	//
+	// 若需要在不同对齐方式下准确定位字幕位置，建议设置以下对齐方式：
+	//
+	// Left，左对齐，X、Y传入字幕左上角顶点相对于视频左上角的坐标
+	//
+	// Center，居中对齐，X、Y传入字幕中轴线上边界交点相对于视频左上角的坐标
+	//
+	// Right，右对齐，X、Y传入字幕右上角顶点相对于视频左上角的坐标
+	Alignment *string `json:"Alignment,omitempty" xml:"Alignment,omitempty"`
+	// Specifies whether to disable the background music.
+	//
+	// example:
+	//
+	// true
+	CloseMusic *bool `json:"CloseMusic,omitempty" xml:"CloseMusic,omitempty"`
+	// Specifies whether to disable the subtitles.
+	CloseSubtitle *bool `json:"CloseSubtitle,omitempty" xml:"CloseSubtitle,omitempty"`
+	// Specifies whether to disable the narration voice.
+	//
+	// example:
+	//
+	// false
+	CloseVoice *bool `json:"CloseVoice,omitempty" xml:"CloseVoice,omitempty"`
+	// The URL of the closing credits video.
+	//
+	// example:
+	//
+	// http://xxx/xxx.mp4
+	ClosingCreditsUrl *string `json:"ClosingCreditsUrl,omitempty" xml:"ClosingCreditsUrl,omitempty"`
+	// The array of animated text elements.
+	ColorWords []*AsyncCreateClipsTaskRequestColorWords `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
+	// The AppKey of CosyVoice.
+	//
+	// example:
+	//
+	// ddgsase
+	CosyVoiceAppKey *string `json:"CosyVoiceAppKey,omitempty" xml:"CosyVoiceAppKey,omitempty"`
+	// The token of CosyVoice.
+	//
+	// example:
+	//
+	// xxsfazs
+	CosyVoiceToken *string `json:"CosyVoiceToken,omitempty" xml:"CosyVoiceToken,omitempty"`
+	// The voice tone of CosyVoice.
+	//
+	// example:
+	//
+	// longxian_normal
+	CustomVoiceStyle *string `json:"CustomVoiceStyle,omitempty" xml:"CustomVoiceStyle,omitempty"`
+	// The URL of the custom audio track.
+	//
 	// example:
 	//
 	// http://xxx/xxx.mp4
 	CustomVoiceUrl *string `json:"CustomVoiceUrl,omitempty" xml:"CustomVoiceUrl,omitempty"`
+	// The volume of the custom audio track.
+	//
 	// example:
 	//
 	// 0
 	CustomVoiceVolume *int32 `json:"CustomVoiceVolume,omitempty" xml:"CustomVoiceVolume,omitempty"`
+	// The height of the video.
+	//
 	// example:
 	//
 	// 1920
-	Height              *int32                                            `json:"Height,omitempty" xml:"Height,omitempty"`
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The list of high-definition video structures.
 	HighDefSourceVideos []*AsyncCreateClipsTaskRequestHighDefSourceVideos `json:"HighDefSourceVideos,omitempty" xml:"HighDefSourceVideos,omitempty" type:"Repeated"`
-	MusicStyle          *string                                           `json:"MusicStyle,omitempty" xml:"MusicStyle,omitempty"`
+	// The type of recommended music.
+	//
+	// example:
+	//
+	// 浪漫, 美食,国风,轻快,动感,舒缓,搞怪,时尚
+	MusicStyle *string `json:"MusicStyle,omitempty" xml:"MusicStyle,omitempty"`
+	// The URL of the background music.
+	//
 	// example:
 	//
 	// http://music.mp4
-	MusicUrl          *string                                `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
-	MusicVolume       *int32                                 `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
-	OpeningCreditsUrl *string                                `json:"OpeningCreditsUrl,omitempty" xml:"OpeningCreditsUrl,omitempty"`
-	Stickers          []*AsyncCreateClipsTaskRequestStickers `json:"Stickers,omitempty" xml:"Stickers,omitempty" type:"Repeated"`
-	SubtitleFontSize  *int32                                 `json:"SubtitleFontSize,omitempty" xml:"SubtitleFontSize,omitempty"`
+	MusicUrl *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
+	// The volume of the background music.
+	//
+	// example:
+	//
+	// 0-10，默认5
+	MusicVolume *int32 `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
+	// The URL of the opening credits video.
+	//
+	// example:
+	//
+	// http://xxx/xxx.mp4
+	OpeningCreditsUrl *string `json:"OpeningCreditsUrl,omitempty" xml:"OpeningCreditsUrl,omitempty"`
+	// The array of sticker structures.
+	Stickers []*AsyncCreateClipsTaskRequestStickers `json:"Stickers,omitempty" xml:"Stickers,omitempty" type:"Repeated"`
+	// The font size of the subtitles.
+	//
+	// example:
+	//
+	// 默认120
+	SubtitleFontSize *int32 `json:"SubtitleFontSize,omitempty" xml:"SubtitleFontSize,omitempty"`
+	// The unique ID of the task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 17a299a9-f223-4707-b0dd-4c22519bddf5
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	VoiceStyle  *string `json:"VoiceStyle,omitempty" xml:"VoiceStyle,omitempty"`
-	VoiceVolume *int32  `json:"VoiceVolume,omitempty" xml:"VoiceVolume,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 将按照该值设置文本框宽度进行自动换行或缩放。不填写时，会按照视频宽度进行自动换行或缩放。当值大于0小于等于1时，表示相对输出视频的宽度，当值大于1时，表示绝对像素值。
+	TextWidth *string `json:"TextWidth,omitempty" xml:"TextWidth,omitempty"`
+	// The type of narration voice.
+	//
+	// example:
+	//
+	// 甜美女声
+	//
+	// 中国台湾话女声
+	//
+	// 舌尖男声
+	//
+	// 新闻男声
+	//
+	// 激昂解说
+	//
+	// 标准女声
+	//
+	// 悬疑解说
+	//
+	// 广告男声
+	//
+	// 温柔女声
+	//
+	// 资讯女声
+	//
+	// 新闻女声
+	//
+	// 萝莉女声
+	//
+	// 磁性男声
+	VoiceStyle *string `json:"VoiceStyle,omitempty" xml:"VoiceStyle,omitempty"`
+	// The volume of the narration voice.
+	//
+	// example:
+	//
+	// 0-10，默认5
+	VoiceVolume *int32 `json:"VoiceVolume,omitempty" xml:"VoiceVolume,omitempty"`
+	// The width of the video.
+	//
 	// example:
 	//
 	// 1080
 	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The [Bailian workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -114,6 +264,14 @@ func (s AsyncCreateClipsTaskRequest) String() string {
 
 func (s AsyncCreateClipsTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AsyncCreateClipsTaskRequest) GetAdaptMode() *string {
+	return s.AdaptMode
+}
+
+func (s *AsyncCreateClipsTaskRequest) GetAlignment() *string {
+	return s.Alignment
 }
 
 func (s *AsyncCreateClipsTaskRequest) GetCloseMusic() *bool {
@@ -192,6 +350,10 @@ func (s *AsyncCreateClipsTaskRequest) GetTaskId() *string {
 	return s.TaskId
 }
 
+func (s *AsyncCreateClipsTaskRequest) GetTextWidth() *string {
+	return s.TextWidth
+}
+
 func (s *AsyncCreateClipsTaskRequest) GetVoiceStyle() *string {
 	return s.VoiceStyle
 }
@@ -206,6 +368,16 @@ func (s *AsyncCreateClipsTaskRequest) GetWidth() *int32 {
 
 func (s *AsyncCreateClipsTaskRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetAdaptMode(v string) *AsyncCreateClipsTaskRequest {
+	s.AdaptMode = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTaskRequest) SetAlignment(v string) *AsyncCreateClipsTaskRequest {
+	s.Alignment = &v
+	return s
 }
 
 func (s *AsyncCreateClipsTaskRequest) SetCloseMusic(v bool) *AsyncCreateClipsTaskRequest {
@@ -303,6 +475,11 @@ func (s *AsyncCreateClipsTaskRequest) SetTaskId(v string) *AsyncCreateClipsTaskR
 	return s
 }
 
+func (s *AsyncCreateClipsTaskRequest) SetTextWidth(v string) *AsyncCreateClipsTaskRequest {
+	s.TextWidth = &v
+	return s
+}
+
 func (s *AsyncCreateClipsTaskRequest) SetVoiceStyle(v string) *AsyncCreateClipsTaskRequest {
 	s.VoiceStyle = &v
 	return s
@@ -355,21 +532,46 @@ func (s *AsyncCreateClipsTaskRequest) Validate() error {
 }
 
 type AsyncCreateClipsTaskRequestColorWords struct {
-	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content of the animated text.
+	//
+	// example:
+	//
+	// 花字内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The style of the animated text.
+	//
+	// example:
+	//
+	// CS0002-000007
+	//
+	// 参考：https://help.aliyun.com/zh/ims/developer-reference/flower-effect-example?spm=a2c4g.11186623.0.0.6ee43d29lo1EWu#88bc5f6046mg2
 	EffectColorStyle *string `json:"EffectColorStyle,omitempty" xml:"EffectColorStyle,omitempty"`
-	FontSize         *int32  `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// The font size of the animated text.
+	//
+	// example:
+	//
+	// 默认120
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// The start time of the animated text, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TimelineIn *int32 `json:"TimelineIn,omitempty" xml:"TimelineIn,omitempty"`
+	// The end time of the animated text, in seconds.
+	//
 	// example:
 	//
 	// 5
 	TimelineOut *int32 `json:"TimelineOut,omitempty" xml:"TimelineOut,omitempty"`
+	// The X coordinate of the animated text position.
+	//
 	// example:
 	//
 	// 0.2
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y coordinate of the animated text position.
+	//
 	// example:
 	//
 	// 0.5
@@ -452,9 +654,24 @@ func (s *AsyncCreateClipsTaskRequestColorWords) Validate() error {
 }
 
 type AsyncCreateClipsTaskRequestHighDefSourceVideos struct {
-	VideoId   *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// The ID of the video.
+	//
+	// example:
+	//
+	// 00d59b6de13971f0bcd84531949c0102
+	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// The name of the video.
+	//
+	// example:
+	//
+	// video001.mp4
 	VideoName *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
-	VideoUrl  *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	// The URL of the video.
+	//
+	// example:
+	//
+	// http://fotor-cn-cutout.oss-cn-shanghai.aliyuncs.com/cutout_tmp/01ba219486f043b4b339e7080e5cf11d.mp4
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s AsyncCreateClipsTaskRequestHighDefSourceVideos) String() string {
@@ -497,34 +714,50 @@ func (s *AsyncCreateClipsTaskRequestHighDefSourceVideos) Validate() error {
 }
 
 type AsyncCreateClipsTaskRequestStickers struct {
+	// The display duration of the sticker, in seconds.
+	//
 	// example:
 	//
 	// 10
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The number of dynamic frames in the GIF file.
+	//
 	// example:
 	//
 	// 8
 	DyncFrames *int32 `json:"DyncFrames,omitempty" xml:"DyncFrames,omitempty"`
+	// The height of the sticker.
+	//
 	// example:
 	//
 	// 100
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The start time of the sticker, in seconds.
+	//
 	// example:
 	//
 	// 5
 	TimelineIn *int32 `json:"TimelineIn,omitempty" xml:"TimelineIn,omitempty"`
+	// The public URL of the GIF file.
+	//
 	// example:
 	//
 	// http://xxx/xxx.gif
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width of the sticker.
+	//
 	// example:
 	//
 	// 100
 	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The X coordinate of the sticker position.
+	//
 	// example:
 	//
 	// 200
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y coordinate of the sticker position.
+	//
 	// example:
 	//
 	// 200

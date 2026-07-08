@@ -24,23 +24,34 @@ type iEditAuditTermsShrinkRequest interface {
 }
 
 type EditAuditTermsShrinkRequest struct {
+  // Exception statements
   ExceptionWordShrink *string `json:"ExceptionWord,omitempty" xml:"ExceptionWord,omitempty"`
+  // Primary key ID
+  // 
   // example:
   // 
   // 20103
   Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+  // Keyword
+  // 
   // example:
   // 
   // 龘
   Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+  // Suggested word
+  // 
   // example:
   // 
   // 龘(dá)
   SuggestWord *string `json:"SuggestWord,omitempty" xml:"SuggestWord,omitempty"`
+  // Audit rationale
+  // 
   // example:
   // 
   // 龙行龘龘出自四库本《玉篇》23龙部第8字，文字释义为群龙腾飞的样子，昂扬而热烈。
   TermsDesc *string `json:"TermsDesc,omitempty" xml:"TermsDesc,omitempty"`
+  // The unique identifier of your Alibaba Cloud Model Studio workspace. Get your [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+  // 
   // This parameter is required.
   // 
   // example:

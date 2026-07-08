@@ -30,42 +30,60 @@ type iListCustomViewPointsShrinkRequest interface {
 }
 
 type ListCustomViewPointsShrinkRequest struct {
+	// The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The viewpoint to filter by.
+	//
 	// example:
 	//
 	// 观点
 	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// A list of viewpoints to filter by.
+	//
 	// example:
 	//
 	// 观点
 	//
 	//      *
 	AttitudesShrink *string `json:"Attitudes,omitempty" xml:"Attitudes,omitempty"`
+	// The ID of the custom viewpoint.
+	//
 	// example:
 	//
 	// 461591f4880747f890702c1b90494d1a
 	CustomViewPointId *string `json:"CustomViewPointId,omitempty" xml:"CustomViewPointId,omitempty"`
+	// A list of custom viewpoint IDs.
+	//
 	// example:
 	//
 	// 7ece3d1212e04c9ca716ae2486228f3f
 	CustomViewPointIdsShrink *string `json:"CustomViewPointIds,omitempty" xml:"CustomViewPointIds,omitempty"`
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 52
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page of results.
+	//
 	// example:
 	//
 	// 下一页的token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The topic of the hot list.
+	//
 	// example:
 	//
 	// 热榜主题
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The topic ID.
+	//
 	// example:
 	//
 	// 1d20ed14db0840efb1c7eaaf4d46352b

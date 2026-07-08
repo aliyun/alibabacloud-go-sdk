@@ -30,35 +30,52 @@ type iListFreshViewPointsResponseBody interface {
 }
 
 type ListFreshViewPointsResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business Data
 	Data []*ListFreshViewPointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Maximum number of return results
+	//
 	// example:
 	//
 	// 94
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Fault description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Token for the next page
+	//
 	// example:
 	//
 	// 下一页的token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request UUID
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded: true for success, false for failure
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 26
@@ -168,11 +185,16 @@ func (s *ListFreshViewPointsResponseBody) Validate() error {
 }
 
 type ListFreshViewPointsResponseBodyData struct {
+	// Outlines
 	Outlines []*ListFreshViewPointsResponseBodyDataOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// Generated perspective
+	//
 	// example:
 	//
 	// 视角
 	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// Summary
+	//
 	// example:
 	//
 	// 摘要
@@ -228,10 +250,14 @@ func (s *ListFreshViewPointsResponseBodyData) Validate() error {
 }
 
 type ListFreshViewPointsResponseBodyDataOutlines struct {
+	// Outline
+	//
 	// example:
 	//
 	// 大纲
 	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// Outline summary
+	//
 	// example:
 	//
 	// 大纲摘要

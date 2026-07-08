@@ -30,35 +30,52 @@ type iListDataPermissionsResponseBody interface {
 }
 
 type ListDataPermissionsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*ListDataPermissionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\` indicates success and \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -168,34 +185,54 @@ func (s *ListDataPermissionsResponseBody) Validate() error {
 }
 
 type ListDataPermissionsResponseBodyData struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-11-12 21:46:24
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator.
+	//
 	// example:
 	//
 	// xxx
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The unique ID of the data.
+	//
+	// - Example for a dataset: SystemSearch.QuarkCommonNews
+	//
 	// example:
 	//
 	// SystemSearch.QuarkCommonNews
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The data type.
+	//
+	// - dataset: a dataset
+	//
 	// example:
 	//
 	// xxx
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The primary key ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The permission type. The default value is \\`read\\`, which means read-only.
+	//
 	// example:
 	//
 	// read
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// The unique ID of the user with the permission.
+	//
 	// example:
 	//
 	// CustomSemanticSearch
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the user with the permission.
+	//
 	// example:
 	//
 	// xxx

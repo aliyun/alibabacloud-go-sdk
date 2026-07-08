@@ -16,10 +16,14 @@ type iGetSmartAuditResultRequest interface {
 }
 
 type GetSmartAuditResultRequest struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// example:
 	//
 	// llm-xx

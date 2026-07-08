@@ -24,23 +24,34 @@ type iListInterveneImportTasksResponseBody interface {
 }
 
 type ListInterveneImportTasksResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
-	// DataNotExists
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *ListInterveneImportTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -119,16 +130,28 @@ func (s *ListInterveneImportTasksResponseBody) Validate() error {
 }
 
 type ListInterveneImportTasksResponseBodyData struct {
+	// Status code returned by the intervention service
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
-	PageSize   *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Task status information
 	StatusList []*ListInterveneImportTasksResponseBodyDataStatusList `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
+	// Total number of pages
+	//
 	// example:
 	//
 	// 0
@@ -202,22 +225,32 @@ func (s *ListInterveneImportTasksResponseBodyData) Validate() error {
 }
 
 type ListInterveneImportTasksResponseBodyDataStatusList struct {
+	// Task message
+	//
 	// example:
 	//
 	// Success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Completion percentage
+	//
 	// example:
 	//
 	// 5
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// Task status
+	//
 	// example:
 	//
 	// Success
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// 4854
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task name
+	//
 	// example:
 	//
 	// 12344454

@@ -30,35 +30,52 @@ type iListDocsResponseBody interface {
 }
 
 type ListDocsResponseBody struct {
+	// Return code.
+	//
 	// example:
 	//
 	// successful
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of returned data results.
 	Data []*ListDocsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Maximum number of results returned.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Next page token.
+	//
 	// example:
 	//
 	// CAESGgoSChAKDGNvbXBsZXRlVGltZRABCgQiAggAGAAiQAoJANEQ4mYAAAAACjMDLgAAADFTNzMyZDMwMzAzMDM4NzA3MjZjN2E2NDYyNzUzODMxMzY3ODM0NmIzNTZkNjc=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 70
@@ -168,27 +185,47 @@ func (s *ListDocsResponseBody) Validate() error {
 }
 
 type ListDocsResponseBodyData struct {
+	// Document folder.
+	//
 	// example:
 	//
 	// default
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2024-01-04 11:46:07
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Document ID.
+	//
 	// example:
 	//
 	// 12345
-	DocId   *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Document name.
+	//
+	// example:
+	//
+	// 标题093
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// Document type.
+	//
 	// example:
 	//
 	// pdf
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// Status.
+	//
 	// example:
 	//
 	// 0
-	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Status message.
+	//
+	// example:
+	//
+	// 导入完成
 	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 }
 

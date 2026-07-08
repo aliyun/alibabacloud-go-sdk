@@ -24,25 +24,34 @@ type iGetPptArtifactExportResultResponseBody interface {
 }
 
 type GetPptArtifactExportResultResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetPptArtifactExportResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,6 +130,7 @@ func (s *GetPptArtifactExportResultResponseBody) Validate() error {
 }
 
 type GetPptArtifactExportResultResponseBodyData struct {
+	// The links to the exported files.
 	ExportFileLink []*string `json:"ExportFileLink,omitempty" xml:"ExportFileLink,omitempty" type:"Repeated"`
 }
 

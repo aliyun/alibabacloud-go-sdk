@@ -24,15 +24,22 @@ type iGetBiddingDocInfoResponseBody interface {
 }
 
 type GetBiddingDocInfoResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// successful
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *GetBiddingDocInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// success
@@ -43,6 +50,8 @@ type GetBiddingDocInfoResponseBody struct {
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful
+	//
 	// example:
 	//
 	// true
@@ -121,37 +130,56 @@ func (s *GetBiddingDocInfoResponseBody) Validate() error {
 }
 
 type GetBiddingDocInfoResponseBodyData struct {
+	// Bidding document content
+	//
+	// example:
+	//
+	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Format
+	//
 	// example:
 	//
 	// markdown
 	//
 	// html
 	ContentFormat *string `json:"ContentFormat,omitempty" xml:"ContentFormat,omitempty"`
+	// File type.
+	//
 	// example:
 	//
 	// outline
 	//
 	// bidding
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// Task status
+	//
 	// example:
 	//
 	// 0-waiting、1-running、2-success、3-pause、4-fail
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Current status
+	//
 	// example:
 	//
 	// analysis
 	//
 	// writing
 	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Tender document URL
+	//
 	// example:
 	//
 	// http://xxx
 	TenderDocUrl *string `json:"TenderDocUrl,omitempty" xml:"TenderDocUrl,omitempty"`
+	// Tender document file type
+	//
 	// example:
 	//
 	// pdf

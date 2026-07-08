@@ -36,49 +36,70 @@ type iListAutoClipsTaskResponseBody interface {
 }
 
 type ListAutoClipsTaskResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
-	Current *int32                               `json:"Current,omitempty" xml:"Current,omitempty"`
-	Data    []*ListAutoClipsTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Business data
+	Data []*ListAutoClipsTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// null
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// null
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of items per page
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Indicates whether the request succeeded. true means success. false means failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 20
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// null
@@ -215,15 +236,26 @@ func (s *ListAutoClipsTaskResponseBody) Validate() error {
 }
 
 type ListAutoClipsTaskResponseBodyData struct {
+	// Start time of task creation
+	//
 	// example:
 	//
 	// 2023-03-18 02:00:00
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task name
+	//
+	// example:
+	//
+	// 任务名称
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Task status
+	//
 	// example:
 	//
 	// 0
@@ -238,6 +270,8 @@ type ListAutoClipsTaskResponseBodyData struct {
 	//
 	// generate
 	TaskStep *string `json:"TaskStep,omitempty" xml:"TaskStep,omitempty"`
+	// Task type
+	//
 	// example:
 	//
 	// type001

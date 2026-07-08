@@ -30,35 +30,52 @@ type iSearchNewsResponseBody interface {
 }
 
 type SearchNewsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
-	// NoData
+	// successful
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	Current *int32                        `json:"Current,omitempty" xml:"Current,omitempty"`
-	Data    []*SearchNewsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// The data returned.
+	Data []*SearchNewsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// success
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of records on each page.
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Indicates whether the request was successful. A value of \\`true\\` indicates success and a value of \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -168,51 +185,76 @@ func (s *SearchNewsResponseBody) Validate() error {
 }
 
 type SearchNewsResponseBodyData struct {
+	// The author of the article. This parameter may not be returned for some articles.
+	//
 	// example:
 	//
 	// 作者
 	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// The content of the article. This parameter is always returned.
+	//
 	// example:
 	//
 	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The unique ID of the internal document. This parameter is always returned.
+	//
 	// example:
 	//
 	// 9a598b44c6444da5907b8ea68a5f82c4
-	DocUuid   *string   `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// The URLs of the images. This parameter is deprecated and is no longer returned. Do not use it.
 	ImageUrls []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+	// The time when the article was published. This parameter is always returned.
+	//
 	// example:
 	//
 	// 2024-01-18 06:46:22
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The ID of the internal search source. This parameter is always returned.
+	//
 	// example:
 	//
 	// QuarkCommonNews
 	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// The name of the internal search source. This parameter is always returned.
+	//
 	// example:
 	//
 	// 夸克检索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// The source of the article. This parameter may not be returned for some articles.
+	//
 	// example:
 	//
 	// 央视网
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The summary of the article. This parameter may not be returned for some articles.
+	//
 	// example:
 	//
 	// 文章摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The tag of the article. This parameter may not be returned for some articles.
+	//
 	// example:
 	//
 	// 文章标签
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The title of the article. This parameter is always returned.
+	//
 	// example:
 	//
 	// 文章标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The time when the system was updated. This parameter is deprecated and is no longer returned. Do not use it.
+	//
 	// example:
 	//
 	// 2024-01-18 06:46:22
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The URL of the article. This parameter is always returned.
+	//
 	// example:
 	//
 	// 文章URL

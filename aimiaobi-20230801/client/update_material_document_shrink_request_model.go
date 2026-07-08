@@ -42,47 +42,89 @@ type iUpdateMaterialDocumentShrinkRequest interface {
 }
 
 type UpdateMaterialDocumentShrinkRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 67c520d1fa43455ea44fb69fa402d54d_p_beebot_public
-	AgentKey          *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Author            *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Author
+	//
+	// example:
+	//
+	// 作者名称
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// Document tags for categorization
 	DocKeywordsShrink *string `json:"DocKeywords,omitempty" xml:"DocKeywords,omitempty"`
+	// Document type. Valid values: html, plainText, image, pdf, word, excel, csv, jsonLine
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// image
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// URL uploaded by an external customer. Used only for record keeping
+	//
 	// example:
 	//
 	// http://xxxxx/xxx
 	ExternalUrl *string `json:"ExternalUrl,omitempty" xml:"ExternalUrl,omitempty"`
+	// Formatted content
+	//
+	// example:
+	//
+	// 网页内容
 	HtmlContent *string `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
+	// Primary key
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 44
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Publication time in yyyy-MM-dd HH:mm:ss format
+	//
 	// example:
 	//
 	// 2023-04-11 06:14:07
 	PubTime  *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Sharing attribute. Valid values: 0 (private), 1 (shared within the workspace)
+	//
 	// example:
 	//
 	// 1
 	ShareAttr *int32 `json:"ShareAttr,omitempty" xml:"ShareAttr,omitempty"`
+	// Source of the document. Valid values: UserUpload, IntellijSearch, HotViewPoint
+	//
 	// example:
 	//
 	// UserUpload
-	SrcFrom     *string `json:"SrcFrom,omitempty" xml:"SrcFrom,omitempty"`
-	Summary     *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	SrcFrom *string `json:"SrcFrom,omitempty" xml:"SrcFrom,omitempty"`
+	// Summary
+	//
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Parsed text content. Empty for images
+	//
+	// example:
+	//
+	// 文本内容
 	TextContent *string `json:"TextContent,omitempty" xml:"TextContent,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Document title
+	//
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// URL of the material
+	//
 	// example:
 	//
 	// http://xxxxx/xxx

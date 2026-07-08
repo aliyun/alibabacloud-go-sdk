@@ -18,12 +18,18 @@ type iUploadDocShrinkRequest interface {
 }
 
 type UploadDocShrinkRequest struct {
+	// Folder where the document resides. If no value is provided, it defaults to "default".
+	//
 	// example:
 	//
 	// default
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Document
+	//
 	// This parameter is required.
 	DocsShrink *string `json:"Docs,omitempty" xml:"Docs,omitempty"`
+	// Unique identifier (UUID) of the Alibaba Cloud Model Studio workspace: obtain the [Workspace ID](https://help.aliyun.com/document_detail/2587495.html)
+	//
 	// This parameter is required.
 	//
 	// example:

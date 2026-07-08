@@ -16,12 +16,16 @@ type iFetchExportWordTaskRequest interface {
 }
 
 type FetchExportWordTaskRequest struct {
+	// The unique identifier of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 2e27abb32cb64f80a0c6e829b6c87a09

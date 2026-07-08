@@ -24,15 +24,22 @@ type iGetDeepWriteTaskResultResponseBody interface {
 }
 
 type GetDeepWriteTaskResultResponseBody struct {
+	// Error code.
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The task response object.
 	Data *GetDeepWriteTaskResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// 错误消息
@@ -43,7 +50,8 @@ type GetDeepWriteTaskResultResponseBody struct {
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDeepWriteTaskResultResponseBody) String() string {
@@ -118,10 +126,14 @@ func (s *GetDeepWriteTaskResultResponseBody) Validate() error {
 }
 
 type GetDeepWriteTaskResultResponseBodyData struct {
+	// The download URL for the task result.
+	//
 	// example:
 	//
 	// https://aimiaobi-service-pre-hangzhou.oss-cn-hangzhou.aliyuncs.com/aimiaobi/deep-write-workspace/142***1/dbaaebd1-eb1b-41e8-9b99-******-result.zip?Expire=1111
 	ArtifactUrl *string `json:"ArtifactUrl,omitempty" xml:"ArtifactUrl,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// f8707efa-c30e-407f-a611-50871aa68952

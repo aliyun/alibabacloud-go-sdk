@@ -24,25 +24,33 @@ type iExportPptArtifactResponseBody interface {
 }
 
 type ExportPptArtifactResponseBody struct {
+  // The error code.
+  // 
   // example:
   // 
   // DataNotExists
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The export task details.
   Data *ExportPptArtifactResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 400
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // The error message.
+  // 
   // example:
   // 
   // 错误消息
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // Id of the request
+  // The ID of the request.
   // 
   // example:
   // 
   // xxxxx
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Whether the request succeeded.
   Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -118,6 +126,8 @@ func (s *ExportPptArtifactResponseBody) Validate() error {
 }
 
 type ExportPptArtifactResponseBodyData struct {
+  // The ID of the export task.
+  // 
   // example:
   // 
   // adb8146b-146b-4206-bd40-19f591e85293

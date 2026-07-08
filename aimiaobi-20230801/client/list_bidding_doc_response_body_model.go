@@ -36,27 +36,40 @@ type iListBiddingDocResponseBody interface {
 }
 
 type ListBiddingDocResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Current page number
+	//
 	// example:
 	//
 	// 1
-	Current *int32                            `json:"Current,omitempty" xml:"Current,omitempty"`
-	Data    []*ListBiddingDocResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Returned data
+	Data []*ListBiddingDocResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// null
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// null
@@ -67,18 +80,26 @@ type ListBiddingDocResponseBody struct {
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of items per page
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Whether the operation was successful: true for success, false for failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total records
+	//
 	// example:
 	//
 	// 10
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// null
@@ -215,19 +236,32 @@ func (s *ListBiddingDocResponseBody) Validate() error {
 }
 
 type ListBiddingDocResponseBodyData struct {
+	// Creation time - start range, format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2023-03-18 02:00:00
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task name
+	//
+	// example:
+	//
+	// 任务名称
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Task status
+	//
 	// example:
 	//
 	// 1
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Task step
+	//
 	// example:
 	//
 	// analysis

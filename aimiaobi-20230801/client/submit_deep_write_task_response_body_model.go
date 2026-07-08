@@ -24,25 +24,34 @@ type iSubmitDeepWriteTaskResponseBody interface {
 }
 
 type SubmitDeepWriteTaskResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The task response object.
 	Data *SubmitDeepWriteTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,10 +130,14 @@ func (s *SubmitDeepWriteTaskResponseBody) Validate() error {
 }
 
 type SubmitDeepWriteTaskResponseBodyData struct {
+	// The status of the task.
+	//
 	// example:
 	//
 	// queued
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// xbabac91-fdad-44d6-95ce-******

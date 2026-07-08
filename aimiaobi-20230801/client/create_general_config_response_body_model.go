@@ -24,23 +24,34 @@ type iCreateGeneralConfigResponseBody interface {
 }
 
 type CreateGeneralConfigResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response data
 	Data *CreateGeneralConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// 数据不存在
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates success: true for success, false for failure
+	//
 	// example:
 	//
 	// false
@@ -119,18 +130,26 @@ func (s *CreateGeneralConfigResponseBody) Validate() error {
 }
 
 type CreateGeneralConfigResponseBodyData struct {
+	// Configuration description
+	//
 	// example:
 	//
 	// xx
 	ConfigDesc *string `json:"ConfigDesc,omitempty" xml:"ConfigDesc,omitempty"`
+	// Unique identifier of the configuration item
+	//
 	// example:
 	//
 	// xx
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// Configuration value
+	//
 	// example:
 	//
 	// xx
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// Configuration type
+	//
 	// example:
 	//
 	// xx

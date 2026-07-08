@@ -26,16 +26,40 @@ type iRunTitleGenerationResponseBody interface {
 }
 
 type RunTitleGenerationResponseBody struct {
-	Code           *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Header         *RunTitleGenerationResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
-	HttpStatusCode *string                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Payload        *RunTitleGenerationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Status code.
+	//
+	// example:
+	//
+	// AccessForbid
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response header.
+	Header *RunTitleGenerationResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description.
+	//
+	// example:
+	//
+	// 数据不存在
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Response body.
+	Payload *RunTitleGenerationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Unique request identifier.
+	//
 	// example:
 	//
 	// 94512A33-8EC1-5452-A793-5C91F18ED2F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the operation was successful: true for success, false for failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RunTitleGenerationResponseBody) String() string {
@@ -124,27 +148,44 @@ func (s *RunTitleGenerationResponseBody) Validate() error {
 }
 
 type RunTitleGenerationResponseBodyHeader struct {
+	// Error code.
+	//
 	// example:
 	//
 	// AccessForbid
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error code message.
+	//
 	// example:
 	//
 	// xxx
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// SSE event.
+	//
 	// example:
 	//
 	// task-failed
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
-	SessionId  *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	StatusCode *int32  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Status code.
+	//
+	// example:
+	//
+	// 400
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// 50a1cc8e-717e-4a2b-a76b-dc9734a8564b
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Full link ID.
+	//
 	// example:
 	//
 	// 0a3d448f17000139741898287e0eb3
@@ -227,8 +268,10 @@ func (s *RunTitleGenerationResponseBodyHeader) Validate() error {
 }
 
 type RunTitleGenerationResponseBodyPayload struct {
+	// Outputs.
 	Output *RunTitleGenerationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunTitleGenerationResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage.
+	Usage *RunTitleGenerationResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunTitleGenerationResponseBodyPayload) String() string {
@@ -272,6 +315,8 @@ func (s *RunTitleGenerationResponseBodyPayload) Validate() error {
 }
 
 type RunTitleGenerationResponseBodyPayloadOutput struct {
+	// Article title.
+	//
 	// example:
 	//
 	// xxx
@@ -300,14 +345,20 @@ func (s *RunTitleGenerationResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunTitleGenerationResponseBodyPayloadUsage struct {
+	// Number of tokens used for input.
+	//
 	// example:
 	//
 	// 1
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of tokens used for output.
+	//
 	// example:
 	//
 	// 1
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens used for this call.
+	//
 	// example:
 	//
 	// 2

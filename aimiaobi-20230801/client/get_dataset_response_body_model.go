@@ -24,23 +24,34 @@ type iGetDatasetResponseBody interface {
 }
 
 type GetDatasetResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *GetDatasetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned if the request fails.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -123,32 +134,48 @@ type GetDatasetResponseBodyData struct {
 	//
 	// private
 	AccessLevel *string `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
+	// The time when the dataset was created.
+	//
 	// example:
 	//
 	// 2024-11-12 21:46:24
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user who created the dataset.
+	//
 	// example:
 	//
 	// xxx
-	CreateUser    *string                                  `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The search configuration of the dataset.
 	DatasetConfig *GetDatasetResponseBodyDataDatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty" type:"Struct"`
+	// The display name of the dataset.
+	//
 	// example:
 	//
 	// xxx
 	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// The ID of the dataset.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// xxx
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The type of the dataset.
+	//
 	// example:
 	//
 	// CustomSemanticSearch
-	DatasetType          *string                                         `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// The document processing configuration.
 	DocumentHandleConfig *GetDatasetResponseBodyDataDocumentHandleConfig `json:"DocumentHandleConfig,omitempty" xml:"DocumentHandleConfig,omitempty" type:"Struct"`
+	// The switch that enables or disables search for the dataset.
+	//
 	// example:
 	//
 	// 1
@@ -268,7 +295,9 @@ func (s *GetDatasetResponseBodyData) Validate() error {
 }
 
 type GetDatasetResponseBodyDataDatasetConfig struct {
-	SearchSourceConfig  *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig    `json:"SearchSourceConfig,omitempty" xml:"SearchSourceConfig,omitempty" type:"Struct"`
+	// The configuration items for the dataset.
+	SearchSourceConfig *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig `json:"SearchSourceConfig,omitempty" xml:"SearchSourceConfig,omitempty" type:"Struct"`
+	// Third-party search: API definition.
 	SearchSourceConfigs []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs `json:"SearchSourceConfigs,omitempty" xml:"SearchSourceConfigs,omitempty" type:"Repeated"`
 }
 
@@ -317,10 +346,30 @@ func (s *GetDatasetResponseBodyDataDatasetConfig) Validate() error {
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig struct {
+	// Specifies whether to include the key-value pairs of metadata in the generation. Default value: true.
+	//
+	// example:
+	//
+	// true
 	MetadataKeyValueGenerateEnable *string `json:"MetadataKeyValueGenerateEnable,omitempty" xml:"MetadataKeyValueGenerateEnable,omitempty"`
-	MetadataKeyValueSearchEnable   *string `json:"MetadataKeyValueSearchEnable,omitempty" xml:"MetadataKeyValueSearchEnable,omitempty"`
-	TagGenerateEnable              *string `json:"TagGenerateEnable,omitempty" xml:"TagGenerateEnable,omitempty"`
-	TagSearchEnable                *string `json:"TagSearchEnable,omitempty" xml:"TagSearchEnable,omitempty"`
+	// Specifies whether to include the key-value pairs of metadata in the search. Default value: true.
+	//
+	// example:
+	//
+	// true
+	MetadataKeyValueSearchEnable *string `json:"MetadataKeyValueSearchEnable,omitempty" xml:"MetadataKeyValueSearchEnable,omitempty"`
+	// Specifies whether to include tags in the generation. Default value: true.
+	//
+	// example:
+	//
+	// true
+	TagGenerateEnable *string `json:"TagGenerateEnable,omitempty" xml:"TagGenerateEnable,omitempty"`
+	// Specifies whether to include tags in the search. Default value: true.
+	//
+	// example:
+	//
+	// true
+	TagSearchEnable *string `json:"TagSearchEnable,omitempty" xml:"TagSearchEnable,omitempty"`
 }
 
 func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) String() string {
@@ -372,12 +421,18 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig) Validate() e
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs struct {
+	// A sample query keyword. This keyword is used to test whether the search source is available.
+	//
 	// example:
 	//
 	// 可以搜索到的关键词，用来验证是否可用
-	DemoQuery                  *string                                                                               `json:"DemoQuery,omitempty" xml:"DemoQuery,omitempty"`
-	SearchSourceRequestConfig  *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig  `json:"SearchSourceRequestConfig,omitempty" xml:"SearchSourceRequestConfig,omitempty" type:"Struct"`
+	DemoQuery *string `json:"DemoQuery,omitempty" xml:"DemoQuery,omitempty"`
+	// The API request configuration.
+	SearchSourceRequestConfig *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig `json:"SearchSourceRequestConfig,omitempty" xml:"SearchSourceRequestConfig,omitempty" type:"Struct"`
+	// The API response configuration.
 	SearchSourceResponseConfig *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfig `json:"SearchSourceResponseConfig,omitempty" xml:"SearchSourceResponseConfig,omitempty" type:"Struct"`
+	// The default number of data entries for requests and responses.
+	//
 	// example:
 	//
 	// 10
@@ -443,28 +498,42 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs) Validate() 
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig struct {
+	// The request body.
+	//
 	// example:
 	//
-	// {}
+	// 请求body
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// The connection timeout period.
+	//
 	// example:
 	//
 	// 30
-	ConnectTimeout *int32                                                                                        `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	Headers        []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	ConnectTimeout *int32 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	// The HTTP request headers.
+	Headers []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	// The request method.
+	//
 	// example:
 	//
 	// 请求方式
-	Method *string                                                                                      `json:"Method,omitempty" xml:"Method,omitempty"`
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The request path parameters.
 	Params []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Specifies whether to enable path parameters.
+	//
 	// example:
 	//
 	// true
 	PathParamsEnable *bool `json:"PathParamsEnable,omitempty" xml:"PathParamsEnable,omitempty"`
+	// The read timeout period.
+	//
 	// example:
 	//
 	// 78
 	SocketTimeout *int32 `json:"SocketTimeout,omitempty" xml:"SocketTimeout,omitempty"`
+	// The API URL.
+	//
 	// example:
 	//
 	// api地址
@@ -574,21 +643,29 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceR
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders struct {
+	// The name of the parameter.
+	//
 	// example:
 	//
 	// 参数名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the parameter.
+	//
 	// example:
 	//
 	// 参数值
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is valid only when \\`ValueType\\` is set to \\`time\\`.
+	//
 	// example:
 	//
 	// valueType = time 时有效
 	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
+	// The data type of the parameter value. Default value: string.
+	//
 	// example:
 	//
-	// 参数值数据类型: 默认string
+	// 参数值数据类型：默认string
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -641,21 +718,29 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceR
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams struct {
+	// The name of the parameter.
+	//
 	// example:
 	//
 	// 参数名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the parameter.
+	//
 	// example:
 	//
 	// 参数值
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is valid only when \\`ValueType\\` is set to \\`time\\`.
+	//
 	// example:
 	//
 	// valueType = time 时有效
 	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
+	// The data type of the parameter value. Default value: string.
+	//
 	// example:
 	//
-	// 参数值数据类型: 默认string
+	// 参数值数据类型：默认string
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -708,6 +793,7 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceR
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfig struct {
+	// The node configurations.
 	JqNodes []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
 }
 
@@ -742,15 +828,22 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceR
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes struct {
+	// The child node configurations.
 	JqNodes []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
+	// The key of the node.
+	//
 	// example:
 	//
 	// 节点key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The path of the node.
+	//
 	// example:
 	//
 	// 节点路径
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The data type of the node. Valid values: string, number, list, object, and base.
+	//
 	// example:
 	//
 	// 节点数据类型：string number list object base
@@ -815,15 +908,22 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceR
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes struct {
+	// The child node configurations.
 	JqNodes []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
+	// The key of the node.
+	//
 	// example:
 	//
 	// title
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The path of the node.
+	//
 	// example:
 	//
 	// .title
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The data type of the node. Valid values: string, number, list, object, and base.
+	//
 	// example:
 	//
 	// string
@@ -888,14 +988,20 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceR
 }
 
 type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes struct {
+	// The key of the node.
+	//
 	// example:
 	//
 	// title
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The path of the node.
+	//
 	// example:
 	//
 	// .title
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The data type of the node. Valid values: string, number, list, object, and base.
+	//
 	// example:
 	//
 	// string
@@ -942,6 +1048,8 @@ func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceR
 }
 
 type GetDatasetResponseBodyDataDocumentHandleConfig struct {
+	// Specifies whether to disable the processing logic for multimedia files. Default value: false.
+	//
 	// example:
 	//
 	// true

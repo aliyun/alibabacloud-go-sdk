@@ -26,31 +26,45 @@ type iRunStepByStepWritingRequest interface {
 }
 
 type RunStepByStepWritingRequest struct {
+	// The ID of the original conversation when regenerating content.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// The prompt.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 提示词
-	Prompt        *string                                   `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The reference article data for writing.
 	ReferenceData *RunStepByStepWritingRequestReferenceData `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty" type:"Struct"`
+	// The ID of a single-turn conversation.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The task ID. You can reuse the same task ID for a multi-turn conversation.
+	//
+	// > By default, you do not need to specify this parameter. The system automatically generates a task ID. If you specify the same TaskId for subsequent tasks, the tasks are considered part of the same conversation group.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Obtain a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxx
-	WorkspaceId   *string                                   `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The writing configuration.
 	WritingConfig *RunStepByStepWritingRequestWritingConfig `json:"WritingConfig,omitempty" xml:"WritingConfig,omitempty" type:"Struct"`
 }
 
@@ -140,10 +154,14 @@ func (s *RunStepByStepWritingRequest) Validate() error {
 }
 
 type RunStepByStepWritingRequestReferenceData struct {
-	Articles      []*RunStepByStepWritingRequestReferenceDataArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
-	MiniDoc       []*string                                           `json:"MiniDoc,omitempty" xml:"MiniDoc,omitempty" type:"Repeated"`
-	Outlines      []*RunStepByStepWritingRequestReferenceDataOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
-	Summarization []*string                                           `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Repeated"`
+	// The reference article data for writing.
+	Articles []*RunStepByStepWritingRequestReferenceDataArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// The ranked article segments for subsequent model generation.
+	MiniDoc []*string `json:"MiniDoc,omitempty" xml:"MiniDoc,omitempty" type:"Repeated"`
+	// The outline. You can specify a data source to generate the outline.
+	Outlines []*RunStepByStepWritingRequestReferenceDataOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// The summary result from the Large Language Model (LLM).
+	Summarization []*string `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Repeated"`
 }
 
 func (s RunStepByStepWritingRequestReferenceData) String() string {
@@ -213,46 +231,68 @@ func (s *RunStepByStepWritingRequestReferenceData) Validate() error {
 }
 
 type RunStepByStepWritingRequestReferenceDataArticles struct {
+	// The author.
+	//
 	// example:
 	//
 	// 作者
 	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// The content.
+	//
 	// example:
 	//
 	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The custom unique ID of the document.
+	//
 	// example:
 	//
 	// 文档-自定义的唯一ID
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The internal unique ID of the document.
+	//
 	// example:
 	//
 	// 8a20e007a6174522af4d6a2657d5526f
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// The URL of the original material.
+	//
 	// example:
 	//
 	// http://www.example.com
 	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
+	// The publication time.
+	//
 	// example:
 	//
 	// 2024-09-10 14:17:54
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// 央视网
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The article summary.
+	//
 	// example:
 	//
 	// 文章摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The tag.
+	//
 	// example:
 	//
 	// 文章标签
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The title.
+	//
 	// example:
 	//
 	// 文章标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the article.
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx
@@ -371,7 +411,10 @@ func (s *RunStepByStepWritingRequestReferenceDataArticles) Validate() error {
 }
 
 type RunStepByStepWritingRequestReferenceDataOutlines struct {
+	// The specified data source for the outline.
 	Articles []*RunStepByStepWritingRequestReferenceDataOutlinesArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// The outline.
+	//
 	// example:
 	//
 	// 大纲
@@ -418,14 +461,20 @@ func (s *RunStepByStepWritingRequestReferenceDataOutlines) Validate() error {
 }
 
 type RunStepByStepWritingRequestReferenceDataOutlinesArticles struct {
+	// The article content.
+	//
 	// example:
 	//
 	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The article title.
+	//
 	// example:
 	//
 	// 文章标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The article URL.
+	//
 	// example:
 	//
 	// 文章链接
@@ -472,22 +521,69 @@ func (s *RunStepByStepWritingRequestReferenceDataOutlinesArticles) Validate() er
 }
 
 type RunStepByStepWritingRequestWritingConfig struct {
+	// The writing domain.
+	//
+	// - media (default): Media writing.
+	//
+	// - government: Official document writing.
+	//
 	// example:
 	//
 	// media
-	Domain    *string                                            `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Keywords  []*string                                          `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The keywords. This affects article retrieval.
+	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	// The prompt assistant.
 	PromptTag *RunStepByStepWritingRequestWritingConfigPromptTag `json:"PromptTag,omitempty" xml:"PromptTag,omitempty" type:"Struct"`
+	// The step-by-step writing scenario.
+	//
+	// - Scenarios supported for media writing: News Writing (default), News Commentary, and General Style.
+	//
+	// - Scenarios supported for official document writing: Notification (default), Announcement, Bulletin, Request for Instruction, Decision, Letter, and General Style.
+	//
 	// example:
 	//
-	// 分步骤写作场景，传媒写作支持的写作场景:新闻写作(默认),新闻评论,通用文体，公文写作支持的写作场景:通知(默认),通告,通报,请示,决定,函,通用文体
+	// 新闻写作
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The writing step.
+	//
+	// - Generate outline: OutlineGenerate
+	//
+	// - Generate summary: MiniDocSummary
+	//
+	// - Writing (default): Generate article
+	//
 	// example:
 	//
 	// Writing
-	Step              *string                                         `json:"Step,omitempty" xml:"Step,omitempty"`
-	SummaryReturnType *string                                         `json:"SummaryReturnType,omitempty" xml:"SummaryReturnType,omitempty"`
-	Tags              []*RunStepByStepWritingRequestWritingConfigTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	// The return type of the summary result.<br>
+	//
+	// - Structure:
+	//
+	//   Returns a JSON string in payload.output.text. Example format: `{"event":"{outline}","message":"{message}"}`
+	//
+	// - Content: Returns only the plain text summary content in payload.output.text. Example format:
+	//
+	//   `Outline: {outline}
+	//
+	// {message}
+	//
+	//
+	//  Outline: {outline}
+	//
+	// {message}`
+	//
+	// - Event: Returns only the outline content itself in payload.output.text each time an outline is completed. Typically, six describes are returned.
+	//
+	// example:
+	//
+	// Structure
+	SummaryReturnType *string `json:"SummaryReturnType,omitempty" xml:"SummaryReturnType,omitempty"`
+	// Control parameters for writing, such as style, length, and output language.
+	Tags []*RunStepByStepWritingRequestWritingConfigTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Specifies whether to automatically supplement materials.
+	//
 	// example:
 	//
 	// true
@@ -593,18 +689,26 @@ func (s *RunStepByStepWritingRequestWritingConfig) Validate() error {
 }
 
 type RunStepByStepWritingRequestWritingConfigPromptTag struct {
+	// Necessary tips.
+	//
 	// example:
 	//
 	// 必要提示
 	NecessaryTips *string `json:"NecessaryTips,omitempty" xml:"NecessaryTips,omitempty"`
+	// The position or stance.
+	//
 	// example:
 	//
 	// 立场
 	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
+	// Reverse the words.
+	//
 	// example:
 	//
 	// 反向词
 	ReverseWords *string `json:"ReverseWords,omitempty" xml:"ReverseWords,omitempty"`
+	// The theme.
+	//
 	// example:
 	//
 	// 主题
@@ -660,10 +764,14 @@ func (s *RunStepByStepWritingRequestWritingConfigPromptTag) Validate() error {
 }
 
 type RunStepByStepWritingRequestWritingConfigTags struct {
+	// The value of the option.
+	//
 	// example:
 	//
 	// 10
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The tag of the option. For example, gcNumberSizeTag=10.
+	//
 	// example:
 	//
 	// gcNumberSizeTag

@@ -26,15 +26,35 @@ type iSubmitSmartAuditShrinkRequest interface {
 }
 
 type SubmitSmartAuditShrinkRequest struct {
+	// Parameters for image audit
 	ImageUrlListShrink *string `json:"ImageUrlList,omitempty" xml:"ImageUrlList,omitempty"`
-	NoteId             *string `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
-	SubCodesShrink     *string `json:"SubCodes,omitempty" xml:"SubCodes,omitempty"`
-	TermsName          *string `json:"TermsName,omitempty" xml:"TermsName,omitempty"`
-	Text               *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Rule library ID for rule-based auditing (default: Default)
+	//
+	// example:
+	//
+	// note_1_486
+	NoteId *string `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	// List of sub-audit codes
+	SubCodesShrink *string `json:"SubCodes,omitempty" xml:"SubCodes,omitempty"`
+	// Word library name for dictionary-based auditing (default: Default)
+	//
+	// example:
+	//
+	// Default
+	TermsName *string `json:"TermsName,omitempty" xml:"TermsName,omitempty"`
+	// Content to be audited
+	//
+	// example:
+	//
+	// “你好呀”
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// xxxx
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// Parameters for image audit (deprecated; use ImageUrlList instead)
 	ImageUrlsShrink *string `json:"imageUrls,omitempty" xml:"imageUrls,omitempty"`
 }
 

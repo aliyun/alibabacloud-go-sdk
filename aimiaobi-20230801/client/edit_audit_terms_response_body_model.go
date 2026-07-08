@@ -24,18 +24,26 @@ type iEditAuditTermsResponseBody interface {
 }
 
 type EditAuditTermsResponseBody struct {
+  // Status code
+  // 
   // example:
   // 
   // DataNotExists
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // Business data
+  // 
   // example:
   // 
   // true
   Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+  // HTTP status code
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // Error message
+  // 
   // example:
   // 
   // success
@@ -46,6 +54,8 @@ type EditAuditTermsResponseBody struct {
   // 
   // F2F366D6-E9FE-1006-BB70-2C650896AAB5
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Indicates whether the request succeeded.
+  // 
   // example:
   // 
   // true

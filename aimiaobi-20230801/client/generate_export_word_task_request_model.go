@@ -16,12 +16,16 @@ type iGenerateExportWordTaskRequest interface {
 }
 
 type GenerateExportWordTaskRequest struct {
+	// Unique identifier of the workspace: AgentKey
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Unique identifier of the document
+	//
 	// This parameter is required.
 	//
 	// example:

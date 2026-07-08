@@ -24,26 +24,38 @@ type iCreateGeneratedContentResponseBody interface {
 }
 
 type CreateGeneratedContentResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
-	// DataNotExists
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// 42
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 数据不存在
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique identifier of the request.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// false

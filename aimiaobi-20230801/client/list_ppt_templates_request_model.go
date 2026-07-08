@@ -26,27 +26,44 @@ type iListPptTemplatesRequest interface {
 }
 
 type ListPptTemplatesRequest struct {
+	// The career ID.
+	//
 	// example:
 	//
 	// 1
 	CareerId *int32 `json:"CareerId,omitempty" xml:"CareerId,omitempty"`
+	// The color ID.
+	//
 	// example:
 	//
 	// 1
-	ColourId   *int32 `json:"ColourId,omitempty" xml:"ColourId,omitempty"`
+	ColourId *int32 `json:"ColourId,omitempty" xml:"ColourId,omitempty"`
+	// The maximum number of results to return.
+	//
+	// example:
+	//
+	// 暂不支持修改，固定为10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used to retrieve the next page of results.
+	//
 	// example:
 	//
 	// +CBOXvu2YLxC6DOua8Qupg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The template scenario ID.
+	//
 	// example:
 	//
 	// 7
 	SceneId *int32 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// The style ID.
+	//
 	// example:
 	//
 	// 1
 	StyleId *int32 `json:"StyleId,omitempty" xml:"StyleId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// llm-xx

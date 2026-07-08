@@ -30,25 +30,50 @@ type iRunDocQaRequest interface {
 }
 
 type RunDocQaRequest struct {
-	CategoryIds          []*string                              `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	// Array of folder IDs for filtering. This parameter takes effect only when SearchSource is set to fromIndexLib.
+	CategoryIds []*string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	// Array of historical context content
 	ConversationContexts []*RunDocQaRequestConversationContexts `json:"ConversationContexts,omitempty" xml:"ConversationContexts,omitempty" type:"Repeated"`
-	DocIds               []*string                              `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
-	ModelName            *string                                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Array of multiple document IDs
+	DocIds []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	// Custom model name defined by the User
+	//
+	// example:
+	//
+	// quanmiao-max、quanmiao-plus
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Question
+	//
 	// This parameter is required.
-	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	//
+	// example:
+	//
+	// 苹果16手机什么时候发布
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Associated content actively provided by the questioner
+	//
+	// example:
+	//
+	// 关联内容
 	ReferenceContent *string `json:"ReferenceContent,omitempty" xml:"ReferenceContent,omitempty"`
+	// Search source
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// fromWeb
 	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// Conversation ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f486c4e2-b773-4d65-88f8-2ba540610456
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Alibaba Cloud Model Studio workspace ID. For details on how to obtain it, see [How to Use Workspaces](https://help.aliyun.com/document_detail/2587495.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -160,7 +185,14 @@ func (s *RunDocQaRequest) Validate() error {
 }
 
 type RunDocQaRequestConversationContexts struct {
+	// Q&A pair content
+	//
+	// example:
+	//
+	// 问答内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Role
+	//
 	// example:
 	//
 	// user

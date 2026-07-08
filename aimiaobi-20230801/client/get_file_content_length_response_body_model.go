@@ -24,23 +24,34 @@ type iGetFileContentLengthResponseBody interface {
 }
 
 type GetFileContentLengthResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// successful
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *GetFileContentLengthResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// DD656AF9-0839-521A-A3D2-F320009F9C87
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded. true means success. false means failure.
+	//
 	// example:
 	//
 	// True
@@ -119,6 +130,8 @@ func (s *GetFileContentLengthResponseBody) Validate() error {
 }
 
 type GetFileContentLengthResponseBodyData struct {
+	// File length
+	//
 	// example:
 	//
 	// 1024

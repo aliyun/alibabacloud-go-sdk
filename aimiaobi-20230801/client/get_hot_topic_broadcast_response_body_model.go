@@ -24,23 +24,34 @@ type iGetHotTopicBroadcastResponseBody interface {
 }
 
 type GetHotTopicBroadcastResponseBody struct {
+	// status code
+	//
 	// example:
 	//
 	// NoData
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business Data
 	Data *GetHotTopicBroadcastResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Fault description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request UUID
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// is successful: true indicates Succeeded, false indicates failed
+	//
 	// example:
 	//
 	// true
@@ -119,11 +130,15 @@ func (s *GetHotTopicBroadcastResponseBody) Validate() error {
 }
 
 type GetHotTopicBroadcastResponseBodyData struct {
+	// List of hot spot bulletins
 	Data []*GetHotTopicBroadcastResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Total count
+	//
 	// example:
 	//
 	// 100
-	TotalCount     *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Estimated total number of tokens required for generation
 	TotalTokenInfo *GetHotTopicBroadcastResponseBodyDataTotalTokenInfo `json:"TotalTokenInfo,omitempty" xml:"TotalTokenInfo,omitempty" type:"Struct"`
 }
 
@@ -181,56 +196,92 @@ func (s *GetHotTopicBroadcastResponseBodyData) Validate() error {
 }
 
 type GetHotTopicBroadcastResponseBodyDataData struct {
+	// Hot topic category
+	//
 	// example:
 	//
 	// 热点话题分类
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Creation Time
+	//
 	// example:
 	//
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Custom hotness value
+	//
 	// example:
 	//
 	// 34.7905341705522
 	CustomHotValue *float64 `json:"CustomHotValue,omitempty" xml:"CustomHotValue,omitempty"`
+	// Custom text summarization of the hot spot topic
+	//
 	// example:
 	//
 	// 自定义热点话题文本摘要
 	CustomTextSummary *string `json:"CustomTextSummary,omitempty" xml:"CustomTextSummary,omitempty"`
+	// Name of the hot spot topic
+	//
 	// example:
 	//
 	// 热点话题名称
 	HotTopic *string `json:"HotTopic,omitempty" xml:"HotTopic,omitempty"`
+	// hot spot topic summary Version
+	//
 	// example:
 	//
 	// 热点话题摘要版本
 	HotTopicVersion *string `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
+	// Hotness value
+	//
 	// example:
 	//
 	// 1.4120480606282884
 	HotValue *float64 `json:"HotValue,omitempty" xml:"HotValue,omitempty"`
+	// hot spot topic ID
+	//
 	// example:
 	//
 	// 热点话题ID
-	Id     *string                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// List of hot spot topic images
 	Images []*GetHotTopicBroadcastResponseBodyDataDataImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// Input Token
+	//
 	// example:
 	//
 	// 29
-	InputToken *int32                                          `json:"InputToken,omitempty" xml:"InputToken,omitempty"`
-	Locations  []*string                                       `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
-	News       []*GetHotTopicBroadcastResponseBodyDataDataNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	InputToken *int32 `json:"InputToken,omitempty" xml:"InputToken,omitempty"`
+	// List of Regions associated with the hot spot
+	Locations []*string `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
+	// Article List
+	News []*GetHotTopicBroadcastResponseBodyDataDataNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	// Output Token
+	//
 	// example:
 	//
 	// 22
-	OutputToken *int32                                           `json:"OutputToken,omitempty" xml:"OutputToken,omitempty"`
-	PubTime     *string                                          `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
-	Summary     *GetHotTopicBroadcastResponseBodyDataDataSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Struct"`
+	OutputToken *int32 `json:"OutputToken,omitempty" xml:"OutputToken,omitempty"`
+	// Published At
+	//
+	// example:
+	//
+	// 2025-08-01 12:00:00
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Structured summary of hot spot topics
+	Summary *GetHotTopicBroadcastResponseBodyDataDataSummary `json:"Summary,omitempty" xml:"Summary,omitempty" type:"Struct"`
+	// Text summary of the hot topic
+	//
 	// example:
 	//
 	// 热点话题文本摘要
 	TextSummary *string `json:"TextSummary,omitempty" xml:"TextSummary,omitempty"`
-	Url         *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Hot list URL
+	//
+	// example:
+	//
+	// http://www.example.com/a.html
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetHotTopicBroadcastResponseBodyDataData) String() string {
@@ -422,6 +473,8 @@ func (s *GetHotTopicBroadcastResponseBodyDataData) Validate() error {
 }
 
 type GetHotTopicBroadcastResponseBodyDataDataImages struct {
+	// URL link
+	//
 	// example:
 	//
 	// http://www.example.com/a.png
@@ -450,52 +503,98 @@ func (s *GetHotTopicBroadcastResponseBodyDataDataImages) Validate() error {
 }
 
 type GetHotTopicBroadcastResponseBodyDataDataNews struct {
+	// Model categorization result
+	//
+	// example:
+	//
+	// 科技
 	AnalysisCategory *string `json:"AnalysisCategory,omitempty" xml:"AnalysisCategory,omitempty"`
+	// aggregated hot spot name
+	//
 	// example:
 	//
 	// 聚合后热点名称
-	AnalysisTopic *string                                                 `json:"AnalysisTopic,omitempty" xml:"AnalysisTopic,omitempty"`
-	Author        *string                                                 `json:"Author,omitempty" xml:"Author,omitempty"`
-	Category      []*string                                               `json:"Category,omitempty" xml:"Category,omitempty" type:"Repeated"`
-	Comments      []*GetHotTopicBroadcastResponseBodyDataDataNewsComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
-	Content       *string                                                 `json:"Content,omitempty" xml:"Content,omitempty"`
+	AnalysisTopic *string `json:"AnalysisTopic,omitempty" xml:"AnalysisTopic,omitempty"`
+	// Author
+	//
+	// example:
+	//
+	// 作者
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// Categorization
+	Category []*string `json:"Category,omitempty" xml:"Category,omitempty" type:"Repeated"`
+	// News content
+	Comments []*GetHotTopicBroadcastResponseBodyDataDataNewsComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
+	// News content
+	//
+	// example:
+	//
+	// 新闻内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Ingestion time
+	//
 	// example:
 	//
 	// 2024-06-13 08:45:05
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Source
+	//
+	// example:
+	//
+	// 夸克
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Date of entry
+	//
 	// example:
 	//
 	// 2024111110
 	Dt *string `json:"Dt,omitempty" xml:"Dt,omitempty"`
+	// original hot spot name
+	//
 	// example:
 	//
 	// 原始热点名称
-	HotTopic *string   `json:"HotTopic,omitempty" xml:"HotTopic,omitempty"`
-	ImgList  []*string `json:"ImgList,omitempty" xml:"ImgList,omitempty" type:"Repeated"`
+	HotTopic *string `json:"HotTopic,omitempty" xml:"HotTopic,omitempty"`
+	// Image list
+	ImgList []*string `json:"ImgList,omitempty" xml:"ImgList,omitempty" type:"Repeated"`
 	// logo
 	//
 	// example:
 	//
 	// https://www.example.com/a.png
 	Logo *string `json:"Logo,omitempty" xml:"Logo,omitempty"`
+	// Published At
+	//
 	// example:
 	//
 	// 2024-10-10 12:12:00
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Summary
+	//
 	// example:
 	//
 	// 摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// title
+	//
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// news URL
+	//
 	// example:
 	//
 	// http://www.example.com/a.png
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Primary key ID
+	//
 	// example:
 	//
 	// 主键ID
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// website
+	//
 	// example:
 	//
 	// 网站
@@ -686,13 +785,17 @@ func (s *GetHotTopicBroadcastResponseBodyDataDataNews) Validate() error {
 }
 
 type GetHotTopicBroadcastResponseBodyDataDataNewsComments struct {
+	// Content
+	//
 	// example:
 	//
-	// 评论内容
+	// 内容
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Username
+	//
 	// example:
 	//
-	// 评论用户名
+	// 用户名
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -727,15 +830,20 @@ func (s *GetHotTopicBroadcastResponseBodyDataDataNewsComments) Validate() error 
 }
 
 type GetHotTopicBroadcastResponseBodyDataDataSummary struct {
+	// Number of input tokens used to generate this summary
+	//
 	// example:
 	//
 	// 17
 	InputToken *int32 `json:"InputToken,omitempty" xml:"InputToken,omitempty"`
+	// Number of output tokens used to generate this summary
+	//
 	// example:
 	//
 	// 41
-	OutputToken *int32                                                      `json:"OutputToken,omitempty" xml:"OutputToken,omitempty"`
-	Summaries   []*GetHotTopicBroadcastResponseBodyDataDataSummarySummaries `json:"Summaries,omitempty" xml:"Summaries,omitempty" type:"Repeated"`
+	OutputToken *int32 `json:"OutputToken,omitempty" xml:"OutputToken,omitempty"`
+	// List of structured summaries
+	Summaries []*GetHotTopicBroadcastResponseBodyDataDataSummarySummaries `json:"Summaries,omitempty" xml:"Summaries,omitempty" type:"Repeated"`
 }
 
 func (s GetHotTopicBroadcastResponseBodyDataDataSummary) String() string {
@@ -787,10 +895,14 @@ func (s *GetHotTopicBroadcastResponseBodyDataDataSummary) Validate() error {
 }
 
 type GetHotTopicBroadcastResponseBodyDataDataSummarySummaries struct {
+	// Summary
+	//
 	// example:
 	//
 	// 摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// title
+	//
 	// example:
 	//
 	// 标题
@@ -828,18 +940,26 @@ func (s *GetHotTopicBroadcastResponseBodyDataDataSummarySummaries) Validate() er
 }
 
 type GetHotTopicBroadcastResponseBodyDataTotalTokenInfo struct {
+	// Total number of hot spots
+	//
 	// example:
 	//
 	// 100
 	HotTopicCount *int32 `json:"HotTopicCount,omitempty" xml:"HotTopicCount,omitempty"`
+	// Estimated number of input tokens
+	//
 	// example:
 	//
 	// 100
 	InputTokens *int32 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Estimated number of output tokens
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int32 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Estimated total word count
+	//
 	// example:
 	//
 	// 100

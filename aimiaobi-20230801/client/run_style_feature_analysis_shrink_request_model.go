@@ -18,8 +18,12 @@ type iRunStyleFeatureAnalysisShrinkRequest interface {
 }
 
 type RunStyleFeatureAnalysisShrinkRequest struct {
-	ContentsShrink    *string `json:"Contents,omitempty" xml:"Contents,omitempty"`
+	// A collection of custom content texts.
+	ContentsShrink *string `json:"Contents,omitempty" xml:"Contents,omitempty"`
+	// A collection of Material Library IDs.
 	MaterialIdsShrink *string `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. Get the [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -28,26 +28,36 @@ type RunBookIntroductionRequest struct {
 	//
 	// true
 	CleanCache *bool `json:"CleanCache,omitempty" xml:"CleanCache,omitempty"`
+	// The document ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3YQRatoe8phnpIsIE6z7DTPknhG8Fj
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// A custom prompt for extracting key points.
+	//
 	// example:
 	//
 	// 用英文输出
 	KeyPointPrompt *string `json:"KeyPointPrompt,omitempty" xml:"KeyPointPrompt,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0f56f98a-f2d8-47ec-98e9-1cbdcffa9539
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// A custom prompt for generating the summary.
+	//
 	// example:
 	//
 	// 用英文输出
 	SummaryPrompt *string `json:"SummaryPrompt,omitempty" xml:"SummaryPrompt,omitempty"`
+	// The unique ID of the workspace in Model Studio (Bailian). For more information, see [Get your workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

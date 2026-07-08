@@ -20,18 +20,26 @@ type iListSearchTasksRequest interface {
 }
 
 type ListSearchTasksRequest struct {
+	// Task type
+	//
 	// example:
 	//
 	// 24
 	DialogueTypes []*int32 `json:"DialogueTypes,omitempty" xml:"DialogueTypes,omitempty" type:"Repeated"`
+	// Current page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of items per page. Default is 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Obtain workspaceId]().
+	//
 	// This parameter is required.
 	//
 	// example:

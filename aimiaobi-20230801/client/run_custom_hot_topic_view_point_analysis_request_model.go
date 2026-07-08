@@ -32,44 +32,64 @@ type iRunCustomHotTopicViewPointAnalysisRequest interface {
 }
 
 type RunCustomHotTopicViewPointAnalysisRequest struct {
+	// Model follow-up question
+	//
 	// example:
 	//
 	// 模型反问
 	AskUser *string `json:"AskUser,omitempty" xml:"AskUser,omitempty"`
+	// Prompt for custom hot topic viewpoint analysis
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 自定义选题视角的Prompt
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Rewritten query
+	//
 	// example:
 	//
 	// 改写后的Query
 	SearchQuery *string `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	// Set to true to skip the follow-up question
+	//
 	// example:
 	//
 	// true
 	SkipAskUser *bool `json:"SkipAskUser,omitempty" xml:"SkipAskUser,omitempty"`
+	// The hot topic for analysis
+	//
 	// example:
 	//
 	// 热点主题
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// Hot topic ID
+	//
 	// example:
 	//
 	// 热点主题ID
 	TopicId *string `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+	// Hot topic source
+	//
 	// example:
 	//
 	// 热点主题来源
 	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// Hot topic version
+	//
 	// example:
 	//
 	// 热点主题版本
 	TopicVersion *string `json:"TopicVersion,omitempty" xml:"TopicVersion,omitempty"`
+	// User feedback
+	//
 	// example:
 	//
 	// 用户反馈
 	UserBack *string `json:"UserBack,omitempty" xml:"UserBack,omitempty"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get the Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

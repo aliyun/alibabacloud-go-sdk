@@ -22,22 +22,32 @@ type iSubmitDocClusterTaskShrinkRequest interface {
 }
 
 type SubmitDocClusterTaskShrinkRequest struct {
+	// The unique ID of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// A list of documents.
+	//
 	// This parameter is required.
 	DocumentsShrink *string `json:"Documents,omitempty" xml:"Documents,omitempty"`
+	// The character limit for the generated cluster summary.
+	//
 	// example:
 	//
 	// 49
 	SummaryLength *int32 `json:"SummaryLength,omitempty" xml:"SummaryLength,omitempty"`
+	// The character limit for the generated cluster title.
+	//
 	// example:
 	//
 	// 69
 	TitleLength *int32 `json:"TitleLength,omitempty" xml:"TitleLength,omitempty"`
+	// The maximum number of clusters.
+	//
 	// example:
 	//
 	// 15

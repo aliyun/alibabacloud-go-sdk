@@ -30,35 +30,52 @@ type iListAnalysisTagDetailByTaskIdResponseBody interface {
 }
 
 type ListAnalysisTagDetailByTaskIdResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A list of classification details from the tag mining task.
 	Data []*ListAnalysisTagDetailByTaskIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The maximum number of entries returned on each page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token for the next page of results.
+	//
 	// example:
 	//
 	// token-xxxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -168,19 +185,28 @@ func (s *ListAnalysisTagDetailByTaskIdResponseBody) Validate() error {
 }
 
 type ListAnalysisTagDetailByTaskIdResponseBodyData struct {
+	// The content of the tag.
+	//
 	// example:
 	//
 	// xxx
-	Content     *string                                                     `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// A list of tags applied to the content.
 	ContentTags []*ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags `json:"ContentTags,omitempty" xml:"ContentTags,omitempty" type:"Repeated"`
+	// The primary key ID of the data.
+	//
 	// example:
 	//
 	// 112
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of the tag mining task. Valid values: \\`singleTagValue\\`, \\`multiTagValues\\`, and \\`summaryAndOverview\\`.
+	//
 	// example:
 	//
 	// summaryAndOverview
 	TagTaskType *string `json:"TagTaskType,omitempty" xml:"TagTaskType,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// xxx
@@ -254,15 +280,20 @@ func (s *ListAnalysisTagDetailByTaskIdResponseBodyData) Validate() error {
 }
 
 type ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags struct {
+	// The summary.
+	//
 	// example:
 	//
 	// xxx
 	SummaryOverview *string `json:"SummaryOverview,omitempty" xml:"SummaryOverview,omitempty"`
+	// The name of the tag.
+	//
 	// example:
 	//
 	// xxx
-	TagName *string   `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// A list of tag values.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags) String() string {

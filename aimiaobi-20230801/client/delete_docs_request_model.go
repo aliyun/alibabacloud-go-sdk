@@ -16,8 +16,12 @@ type iDeleteDocsRequest interface {
 }
 
 type DeleteDocsRequest struct {
+	// Document ID array.
+	//
 	// This parameter is required.
 	DocIds []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	// Unique identifier for the Alibaba Cloud Model Studio workspace. Get the [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

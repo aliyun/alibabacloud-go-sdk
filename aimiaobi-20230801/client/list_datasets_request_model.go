@@ -34,43 +34,64 @@ type iListDatasetsRequest interface {
 }
 
 type ListDatasetsRequest struct {
+	// A keyword within the dataset description to filter results.
+	//
 	// example:
 	//
 	// xx
 	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset name. The name must be globally unique.
+	//
 	// example:
 	//
 	// businessDataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The dataset type.
+	//
 	// example:
 	//
 	// CustomSemanticSearch
 	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// The end of the creation time range.
+	//
 	// example:
 	//
 	// 创建时间-结束
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	IncludeConfig *bool   `json:"IncludeConfig,omitempty" xml:"IncludeConfig,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Specifies whether to return configuration and usage information. Default value: false.
+	IncludeConfig *bool `json:"IncludeConfig,omitempty" xml:"IncludeConfig,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies the dataset search setting.
+	//
 	// example:
 	//
 	// 3
 	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
+	// The start of the creation time range.
+	//
 	// example:
 	//
 	// 创建时间-开始
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The unique ID of the Model Studio workspace. For more information, see [Get workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

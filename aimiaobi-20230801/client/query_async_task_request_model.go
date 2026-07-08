@@ -16,12 +16,18 @@ type iQueryAsyncTaskRequest interface {
 }
 
 type QueryAsyncTaskRequest struct {
+	// Unique ID of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 33a2658aaabf4c24b45d50e575125311_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Unique task ID
+	//
+	// > The system automatically generates the TaskId by default. If subsequent tasks use the same TaskId, they belong to the same conversation group.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21

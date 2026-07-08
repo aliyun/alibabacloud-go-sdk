@@ -24,23 +24,34 @@ type iSubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody interface {
 }
 
 type SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,6 +130,8 @@ func (s *SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) Validate
 }
 
 type SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData struct {
+	// The unique ID of the task.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21

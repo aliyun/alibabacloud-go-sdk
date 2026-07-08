@@ -26,32 +26,44 @@ type iAddAuditTermsResponseBody interface {
 }
 
 type AddAuditTermsResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// DataNotExists
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data (whether the update succeeded). This field is deprecated. Use DataV1 to get the primary key ID instead.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// ID of the added dictionary term
+	//
 	// example:
 	//
 	// 返回添加的实体信息
 	DataV1 *AddAuditTermsResponseBodyDataV1 `json:"DataV1,omitempty" xml:"DataV1,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request succeeded
+	//
 	// example:
 	//
 	// true
@@ -139,6 +151,8 @@ func (s *AddAuditTermsResponseBody) Validate() error {
 }
 
 type AddAuditTermsResponseBodyDataV1 struct {
+	// ID
+	//
 	// example:
 	//
 	// 562fe4163a59d7bcb44bfdde4e3d5046

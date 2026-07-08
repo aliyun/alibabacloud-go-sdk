@@ -22,14 +22,29 @@ type iSubmitDeepWriteTaskShrinkRequest interface {
 }
 
 type SubmitDeepWriteTaskShrinkRequest struct {
+	// The agent orchestration options.
 	AgentOrchestrationShrink *string `json:"AgentOrchestration,omitempty" xml:"AgentOrchestration,omitempty"`
-	FilesShrink              *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	// A list of attachments.
+	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	// The user\\"s question.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
 	// false
-	Input        *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	//
+	// example:
+	//
+	// 北京2025年新能源汽车发展趋势
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The instructions.
+	//
+	// example:
+	//
+	// 请根据北京新能源汽车在汽车品牌、新车发布、能源等方面进行分析
 	Instructions *string `json:"Instructions,omitempty" xml:"Instructions,omitempty"`
+	// [The workspace ID.](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// llm-1setzb9xb8m11vrc

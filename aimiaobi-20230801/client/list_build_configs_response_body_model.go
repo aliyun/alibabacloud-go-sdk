@@ -24,23 +24,34 @@ type iListBuildConfigsResponseBody interface {
 }
 
 type ListBuildConfigsResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// 200
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data []*ListBuildConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request ID
+	//
 	// example:
 	//
 	// DA021073-17CE-5CCF-9FEB-93226C766887
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded. true indicates success. false indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -123,33 +134,58 @@ func (s *ListBuildConfigsResponseBody) Validate() error {
 }
 
 type ListBuildConfigsResponseBodyData struct {
+	// Indicates whether the preset is built-in
+	//
 	// example:
 	//
 	// true
 	BuildIn *bool `json:"BuildIn,omitempty" xml:"BuildIn,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2023-04-11 06:14:07
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator
+	//
 	// example:
 	//
 	// 1
-	CreateUser *string                                     `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	Id         *int64                                      `json:"Id,omitempty" xml:"Id,omitempty"`
-	Keywords   []*ListBuildConfigsResponseBodyDataKeywords `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Primary key ID
+	//
+	// example:
+	//
+	// 主键ID，内置配置（buildIn=true）无该字段
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// List of available values for the tag
+	Keywords []*ListBuildConfigsResponseBodyDataKeywords `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	// Tag key
+	//
 	// example:
 	//
 	// writingStyle
-	Tag            *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Tag description
+	//
+	// example:
+	//
+	// 文体
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
+	// Content category. Valid values: media or government.
+	//
 	// example:
 	//
 	// media
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Last update time
+	//
 	// example:
 	//
 	// 2023-04-11 06:14:07
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Last updater
+	//
 	// example:
 	//
 	// 1
@@ -268,8 +304,18 @@ func (s *ListBuildConfigsResponseBodyData) Validate() error {
 }
 
 type ListBuildConfigsResponseBodyDataKeywords struct {
+	// Description of the preset tag
+	//
+	// example:
+	//
+	// 新闻内容
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Key         *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Key of the preset tag
+	//
+	// example:
+	//
+	// 新闻内容
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
 func (s ListBuildConfigsResponseBodyDataKeywords) String() string {

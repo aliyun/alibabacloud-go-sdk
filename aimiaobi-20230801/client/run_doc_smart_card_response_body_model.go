@@ -18,7 +18,9 @@ type iRunDocSmartCardResponseBody interface {
 }
 
 type RunDocSmartCardResponseBody struct {
-	Header  *RunDocSmartCardResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// The response header.
+	Header *RunDocSmartCardResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// The response body.
 	Payload *RunDocSmartCardResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -78,27 +80,44 @@ func (s *RunDocSmartCardResponseBody) Validate() error {
 }
 
 type RunDocSmartCardResponseBodyHeader struct {
+	// The error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The event type.
+	//
 	// example:
 	//
 	// finished
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The event description.
+	//
+	// example:
+	//
+	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// The unique ID of the session.
+	//
 	// example:
 	//
 	// 07181f55-2311-48af-8048-132a77dee020
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 8d55b429d7c6d321fcff54823e8d317b
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The trace ID.
+	//
 	// example:
 	//
 	// 0abb781c17337107444473701ed7c3
@@ -181,8 +200,10 @@ func (s *RunDocSmartCardResponseBodyHeader) Validate() error {
 }
 
 type RunDocSmartCardResponseBodyPayload struct {
+	// The output object.
 	Output *RunDocSmartCardResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunDocSmartCardResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// The token usage.
+	Usage *RunDocSmartCardResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunDocSmartCardResponseBodyPayload) String() string {
@@ -226,8 +247,14 @@ func (s *RunDocSmartCardResponseBodyPayload) Validate() error {
 }
 
 type RunDocSmartCardResponseBodyPayloadOutput struct {
-	Content *string   `json:"Content,omitempty" xml:"Content,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The title of the card.
+	//
+	// example:
+	//
+	// 标题内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// An array of card tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s RunDocSmartCardResponseBodyPayloadOutput) String() string {
@@ -261,14 +288,20 @@ func (s *RunDocSmartCardResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunDocSmartCardResponseBodyPayloadUsage struct {
+	// The number of tokens used for the input.
+	//
 	// example:
 	//
 	// 1
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The number of tokens for the output.
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The total number of tokens.
+	//
 	// example:
 	//
 	// 101

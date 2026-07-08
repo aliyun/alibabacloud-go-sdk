@@ -20,13 +20,20 @@ type iSubmitCustomHotTopicBroadcastJobShrinkRequest interface {
 }
 
 type SubmitCustomHotTopicBroadcastJobShrinkRequest struct {
+	// The configuration for the news broadcast job.
+	//
 	// This parameter is required.
 	HotTopicBroadcastConfigShrink *string `json:"HotTopicBroadcastConfig,omitempty" xml:"HotTopicBroadcastConfig,omitempty"`
+	// The version of the hot topic.
+	//
 	// example:
 	//
 	// 热点版本
 	HotTopicVersion *string `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
-	TopicsShrink    *string `json:"Topics,omitempty" xml:"Topics,omitempty"`
+	// The topic filter.
+	TopicsShrink *string `json:"Topics,omitempty" xml:"Topics,omitempty"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -32,36 +32,102 @@ type iListGeneratedContentsRequest interface {
 }
 
 type ListGeneratedContentsRequest struct {
+	// Workspace ID: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Content domain (content category)
+	//
+	// - media: Media writing
+	//
+	// - government: Government document writing
+	//
+	// - office: Office writing
+	//
+	// - market: Marketing writing
+	//
+	// - custom: Custom writing
+	//
+	// - commentGenerate: Opinion generation
+	//
 	// example:
 	//
 	// media
 	ContentDomain *string `json:"ContentDomain,omitempty" xml:"ContentDomain,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
-	Current  *int32  `json:"Current,omitempty" xml:"Current,omitempty"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Data type filter
+	//
+	// - plainText: Plain text
+	//
+	// - richText: Rich text
+	//
+	// - html: HTML
+	//
+	// - pdf: PDF
+	//
+	// - word: Word
+	//
+	// - excel: Excel
+	//
+	// - csv: CSV
+	//
+	// - image: Image
+	//
+	// - video: Video
+	//
+	// - audio: Audio
+	//
+	// example:
+	//
+	// plainText
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// End time
+	//
 	// example:
 	//
 	// 2024-01-04 11:46:07
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Query   *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Search keyword: Supports fuzzy search on titles and content
+	//
+	// example:
+	//
+	// 检索Query
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Items per page. Default is 10.
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Start time
+	//
 	// example:
 	//
 	// 2024-01-04 11:46:07
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Task ID
+	//
+	// > You do not need to specify TaskId. The system generates it automatically. If you use the same TaskId for multiple tasks, those tasks belong to the same conversation.
+	//
+	// example:
+	//
+	// task-03d46184ee7d8749
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Title text
+	//
+	// example:
+	//
+	// 杭州亚运会
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListGeneratedContentsRequest) String() string {

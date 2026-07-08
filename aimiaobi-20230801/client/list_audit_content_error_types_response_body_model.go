@@ -30,23 +30,37 @@ type iListAuditContentErrorTypesResponseBody interface {
 }
 
 type ListAuditContentErrorTypesResponseBody struct {
+	// Error code
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of audit dimensions
 	Data []*ListAuditContentErrorTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Maximum number of records returned in this response
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Token for the next page
+	//
+	// example:
+	//
+	// 下一页的token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Id of the request
 	//
@@ -54,10 +68,14 @@ type ListAuditContentErrorTypesResponseBody struct {
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 20
@@ -167,12 +185,20 @@ func (s *ListAuditContentErrorTypesResponseBody) Validate() error {
 }
 
 type ListAuditContentErrorTypesResponseBodyData struct {
+	// Main audit dimension code
+	//
 	// example:
 	//
 	// ContentAccuracy
-	MajorClassCode *string                                                 `json:"MajorClassCode,omitempty" xml:"MajorClassCode,omitempty"`
-	MajorClassName *string                                                 `json:"MajorClassName,omitempty" xml:"MajorClassName,omitempty"`
-	SubClasses     []*ListAuditContentErrorTypesResponseBodyDataSubClasses `json:"SubClasses,omitempty" xml:"SubClasses,omitempty" type:"Repeated"`
+	MajorClassCode *string `json:"MajorClassCode,omitempty" xml:"MajorClassCode,omitempty"`
+	// Sub-audit dimension name
+	//
+	// example:
+	//
+	// 内容准确性
+	MajorClassName *string `json:"MajorClassName,omitempty" xml:"MajorClassName,omitempty"`
+	// List of sub-audit dimensions
+	SubClasses []*ListAuditContentErrorTypesResponseBodyDataSubClasses `json:"SubClasses,omitempty" xml:"SubClasses,omitempty" type:"Repeated"`
 }
 
 func (s ListAuditContentErrorTypesResponseBodyData) String() string {
@@ -224,10 +250,17 @@ func (s *ListAuditContentErrorTypesResponseBodyData) Validate() error {
 }
 
 type ListAuditContentErrorTypesResponseBodyDataSubClasses struct {
+	// Sub-audit dimension code
+	//
 	// example:
 	//
 	// PunctuationError
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	// Sub-audit dimension name
+	//
+	// example:
+	//
+	// 标点符号错误
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
 }
 

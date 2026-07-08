@@ -18,8 +18,12 @@ type iRunCustomHotTopicAnalysisResponseBody interface {
 }
 
 type RunCustomHotTopicAnalysisResponseBody struct {
-	Header  *RunCustomHotTopicAnalysisResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// The response header.
+	Header *RunCustomHotTopicAnalysisResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// The response body.
 	Payload *RunCustomHotTopicAnalysisResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
@@ -76,30 +80,44 @@ func (s *RunCustomHotTopicAnalysisResponseBody) Validate() error {
 }
 
 type RunCustomHotTopicAnalysisResponseBodyHeader struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 错误码
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The Server-Sent Events (SSE) event. Valid values: task-started: The task starts. task-finished: The task is complete. task-failed: The task failed.
+	//
 	// example:
 	//
 	// task-started
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The parent session ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The trace ID.
+	//
 	// example:
 	//
 	// 全链路ID
@@ -182,8 +200,10 @@ func (s *RunCustomHotTopicAnalysisResponseBodyHeader) Validate() error {
 }
 
 type RunCustomHotTopicAnalysisResponseBodyPayload struct {
+	// The output.
 	Output *RunCustomHotTopicAnalysisResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunCustomHotTopicAnalysisResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// The token usage.
+	Usage *RunCustomHotTopicAnalysisResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunCustomHotTopicAnalysisResponseBodyPayload) String() string {
@@ -227,24 +247,36 @@ func (s *RunCustomHotTopicAnalysisResponseBodyPayload) Validate() error {
 }
 
 type RunCustomHotTopicAnalysisResponseBodyPayloadOutput struct {
+	// The reference articles.
 	Articles []*RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
-	AskUser  []*string                                                     `json:"AskUser,omitempty" xml:"AskUser,omitempty" type:"Repeated"`
+	// The list of follow-up questions.
+	AskUser []*string `json:"AskUser,omitempty" xml:"AskUser,omitempty" type:"Repeated"`
+	// The ID of the asynchronous task.
+	//
 	// example:
 	//
 	// 异步任务ID
 	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
+	// The custom perspective for topic selection.
+	//
 	// example:
 	//
 	// 自定义选题视角
 	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// The rewritten query.
+	//
 	// example:
 	//
 	// 大模型改变世界
 	SearchQuery *string `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	// The text generation result.
+	//
 	// example:
 	//
 	// 文本生成结果
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The topic ID.
+	//
 	// example:
 	//
 	// 话题ID
@@ -336,42 +368,62 @@ func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles struct {
+	// The author.
+	//
 	// example:
 	//
 	// 作者
 	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// The content.
+	//
 	// example:
 	//
 	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The custom unique ID of the document.
+	//
 	// example:
 	//
 	// 文档-自定义的唯一ID
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The internal unique ID of the document.
+	//
 	// example:
 	//
 	// a2103fcfbd5441f1991c72f8834833e3
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// The publication time.
+	//
 	// example:
 	//
 	// 2024-08-27 14:50:47
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// 央视网
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The article summary.
+	//
 	// example:
 	//
 	// 文章摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The tag.
+	//
 	// example:
 	//
 	// 文章标签
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The title.
+	//
 	// example:
 	//
 	// 文章标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the article.
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx
@@ -481,14 +533,20 @@ func (s *RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles) Validate() 
 }
 
 type RunCustomHotTopicAnalysisResponseBodyPayloadUsage struct {
+	// The number of tokens used for the input.
+	//
 	// example:
 	//
 	// 60
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The number of tokens for the output.
+	//
 	// example:
 	//
 	// 13
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The total number of tokens.
+	//
 	// example:
 	//
 	// 73

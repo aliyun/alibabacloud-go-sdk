@@ -16,10 +16,14 @@ type iGetBiddingRemainLimitNumRequest interface {
 }
 
 type GetBiddingRemainLimitNumRequest struct {
+	// API name
+	//
 	// example:
 	//
 	// asyncUploadTenderDoc
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// llm-xx

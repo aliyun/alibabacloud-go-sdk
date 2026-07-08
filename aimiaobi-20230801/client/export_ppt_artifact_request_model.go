@@ -24,10 +24,14 @@ type iExportPptArtifactRequest interface {
 }
 
 type ExportPptArtifactRequest struct {
+  // Indicates if the exported artifact is editable.
+  // 
   // example:
   // 
   // true
   Edit *bool `json:"Edit,omitempty" xml:"Edit,omitempty"`
+  // The export file type.
+  // 
   // example:
   // 
   // ppt
@@ -36,16 +40,22 @@ type ExportPptArtifactRequest struct {
   // 
   // abc
   ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+  // The ID of the PPT artifact.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 123123
   PptArtifactId *int64 `json:"PptArtifactId,omitempty" xml:"PptArtifactId,omitempty"`
+  // The workspace ID.
+  // 
   // example:
   // 
   // llm-xxxx
   WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+  // Indicates if the exported file is compressed into a ZIP package.
+  // 
   // example:
   // 
   // true

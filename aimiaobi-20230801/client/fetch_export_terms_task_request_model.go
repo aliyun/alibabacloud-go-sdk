@@ -16,12 +16,16 @@ type iFetchExportTermsTaskRequest interface {
 }
 
 type FetchExportTermsTaskRequest struct {
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique identifier of your Alibaba Cloud Model Studio workspace. To get your [Workspace ID](https://help.aliyun.com/document_detail/2782167.html), see the referenced document.
+	//
 	// This parameter is required.
 	//
 	// example:

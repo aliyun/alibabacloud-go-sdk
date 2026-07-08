@@ -24,23 +24,34 @@ type iValidateUploadTemplateResponseBody interface {
 }
 
 type ValidateUploadTemplateResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Template validation result.
 	Data *ValidateUploadTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Operation status. Returns true on success. Returns false on failure.
+	//
 	// example:
 	//
 	// true
@@ -119,14 +130,20 @@ func (s *ValidateUploadTemplateResponseBody) Validate() error {
 }
 
 type ValidateUploadTemplateResponseBodyData struct {
+	// Number of comments.
+	//
 	// example:
 	//
 	// 50
 	CommentCount *int32 `json:"CommentCount,omitempty" xml:"CommentCount,omitempty"`
+	// Number of dialogues.
+	//
 	// example:
 	//
 	// 50
 	DialogueCount *int32 `json:"DialogueCount,omitempty" xml:"DialogueCount,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 50

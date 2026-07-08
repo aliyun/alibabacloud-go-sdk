@@ -18,8 +18,12 @@ type iRunWriteToneGenerationResponseBody interface {
 }
 
 type RunWriteToneGenerationResponseBody struct {
-	Header  *RunWriteToneGenerationResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response headers.
+	Header *RunWriteToneGenerationResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body.
 	Payload *RunWriteToneGenerationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Unique request ID.
+	//
 	// example:
 	//
 	// FB698445-61DA-5361-BF73-1C5F1157E888
@@ -76,26 +80,38 @@ func (s *RunWriteToneGenerationResponseBody) Validate() error {
 }
 
 type RunWriteToneGenerationResponseBodyHeader struct {
+	// Error code.
+	//
 	// example:
 	//
 	// AccessForbid
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message returned when the call fails.
+	//
 	// example:
 	//
 	// xxx
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Server-sent event (SSE).
+	//
 	// example:
 	//
 	// task-failed
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// F1953EE6-157C-40DC-BBF1-87C98AC27C51
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// F1953EE6-157C-40DC-BBF1-87C98AC27C51
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// End-to-end trace ID.
+	//
 	// example:
 	//
 	// F1953EE6-157C-40DC-BBF1-87C98AC27C51
@@ -169,8 +185,10 @@ func (s *RunWriteToneGenerationResponseBodyHeader) Validate() error {
 }
 
 type RunWriteToneGenerationResponseBodyPayload struct {
+	// Output data.
 	Output *RunWriteToneGenerationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunWriteToneGenerationResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage.
+	Usage *RunWriteToneGenerationResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunWriteToneGenerationResponseBodyPayload) String() string {
@@ -214,6 +232,8 @@ func (s *RunWriteToneGenerationResponseBodyPayload) Validate() error {
 }
 
 type RunWriteToneGenerationResponseBodyPayloadOutput struct {
+	// Generated text.
+	//
 	// example:
 	//
 	// xxx
@@ -242,14 +262,20 @@ func (s *RunWriteToneGenerationResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunWriteToneGenerationResponseBodyPayloadUsage struct {
+	// Number of input tokens used.
+	//
 	// example:
 	//
 	// 1
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of output tokens used.
+	//
 	// example:
 	//
 	// 1
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens used in this call.
+	//
 	// example:
 	//
 	// 2

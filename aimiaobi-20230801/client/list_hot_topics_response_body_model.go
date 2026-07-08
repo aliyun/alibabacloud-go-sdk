@@ -30,35 +30,52 @@ type iListHotTopicsResponseBody interface {
 }
 
 type ListHotTopicsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*ListHotTopicsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The maximum number of results returned on this page.
+	//
 	// example:
 	//
 	// 94
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The result message for the request.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token to retrieve the next page of results.
+	//
 	// example:
 	//
 	// 下一页的token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The unique ID for the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of `true` indicates success; `false` indicates failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of topics found.
+	//
 	// example:
 	//
 	// 23
@@ -168,59 +185,100 @@ func (s *ListHotTopicsResponseBody) Validate() error {
 }
 
 type ListHotTopicsResponseBodyData struct {
+	// The asynchronous task ID. This parameter is returned only when `TopicSource` is `Custom`.
+	//
 	// example:
 	//
 	// 异步任务ID（自定义主题场景下使用）
 	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
+	// The time the topic was created, in `yyyy-MM-dd HH:mm:ss` format.
+	//
 	// example:
 	//
 	// 2026-06-04 12:34:56
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the topic. This parameter is returned only when `TopicSource` is `Custom`.
+	//
 	// example:
 	//
 	// 创建用户ID（自定义主题场景下使用）
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// A custom field for business-specific data, such as a keyword.
+	//
 	// example:
 	//
 	// biz-tag-001
 	CustomField *string `json:"CustomField,omitempty" xml:"CustomField,omitempty"`
+	// The popularity score of the topic.
+	//
 	// example:
 	//
 	// 61
 	HotValue *int64 `json:"HotValue,omitempty" xml:"HotValue,omitempty"`
+	// The ID of the hot topic.
+	//
 	// example:
 	//
 	// 热榜ID
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The asynchronous task status. This parameter is returned only when `TopicSource` is `Custom`. Valid values: `PENDING`, `RUNNING`, `SUCCEEDED`, `SUSPENDED`, `FAILED`, and `CANCELED`.
+	//
 	// example:
 	//
 	// FAILED
-	Status           *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A list of structured topic summaries.
 	StructureSummary []*ListHotTopicsResponseBodyDataStructureSummary `json:"StructureSummary,omitempty" xml:"StructureSummary,omitempty" type:"Repeated"`
+	// The hot topic summary.
+	//
 	// example:
 	//
 	// 热榜摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The error message returned when the asynchronous task fails.
+	//
 	// example:
 	//
 	// 异步任务失败错误信息
 	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
+	// The asynchronous task status. This parameter is returned only when `TopicSource` is `Custom`. Valid values: `0` (Pending), `1` (Running), `2` (Succeeded), `3` (Suspended, not currently in use), `4` (Failed), and `6` (Canceled).
+	//
 	// example:
 	//
 	// 26
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The unique topic name.
+	//
 	// example:
 	//
 	// 主题唯一名称
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The source of the hot topic. Valid values:
+	//
+	// - `Toutiao`
+	//
+	// - `Quark`
+	//
+	// - `Baidu`
+	//
+	// - `Sina`
+	//
+	// - `Custom`
+	//
+	// - `Aggregation`
+	//
 	// example:
 	//
-	// 热榜源，目前支持的热榜源: Toutiao：头条、Quark：夸克、Baidu：百度、Sina：新浪。Custom：自定义、Aggregation：热点话题榜
+	// Toutiao
 	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// The URL of the original topic.
+	//
 	// example:
 	//
 	// https://www.example.com/topic/123
 	TopicUrl *string `json:"TopicUrl,omitempty" xml:"TopicUrl,omitempty"`
+	// The data version.
+	//
 	// example:
 	//
 	// 数据版本
@@ -384,11 +442,16 @@ func (s *ListHotTopicsResponseBodyData) Validate() error {
 }
 
 type ListHotTopicsResponseBodyDataStructureSummary struct {
+	// A list of articles used to generate the title and summary.
 	DocList []*ListHotTopicsResponseBodyDataStructureSummaryDocList `json:"DocList,omitempty" xml:"DocList,omitempty" type:"Repeated"`
+	// The generated summary.
+	//
 	// example:
 	//
 	// 摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The generated title.
+	//
 	// example:
 	//
 	// 标题
@@ -444,11 +507,20 @@ func (s *ListHotTopicsResponseBodyDataStructureSummary) Validate() error {
 }
 
 type ListHotTopicsResponseBodyDataStructureSummaryDocList struct {
+	// The source of the article.
+	//
+	// example:
+	//
+	// 夸克
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The article title.
+	//
 	// example:
 	//
 	// xxxxx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The article URL.
+	//
 	// example:
 	//
 	// http://www.example.com

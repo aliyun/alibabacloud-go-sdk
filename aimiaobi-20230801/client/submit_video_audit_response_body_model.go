@@ -24,33 +24,33 @@ type iSubmitVideoAuditResponseBody interface {
 }
 
 type SubmitVideoAuditResponseBody struct {
-	// 业务处理结果状态码
+	// Business status code
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 视频审校任务提交后的返回数据
+	// Submitted task result data
 	Data *SubmitVideoAuditResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP响应状态码
+	// HTTP status code
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 业务处理结果描述信息
+	// Return message
 	//
 	// example:
 	//
 	// 任务提交成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 本次API请求的唯一标识
+	// Request ID
 	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 请求是否处理成功
+	// Is successful
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *SubmitVideoAuditResponseBody) Validate() error {
 }
 
 type SubmitVideoAuditResponseBodyData struct {
-	// 视频审校任务的唯一标识，可用于后续查询任务状态和结果
+	// Task ID
 	//
 	// example:
 	//

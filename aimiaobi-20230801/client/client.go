@@ -24,7 +24,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-beijing": dara.String("aimiaobi.cn-beijing.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +61,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 添加审核自定义词库记录
+// Add a custom term to the audit dictionary.
 //
 // @param tmpReq - AddAuditTermsRequest
 //
@@ -128,7 +131,7 @@ func (client *Client) AddAuditTermsWithOptions(tmpReq *AddAuditTermsRequest, run
 
 // Summary:
 //
-// 添加审核自定义词库记录
+// Add a custom term to the audit dictionary.
 //
 // @param request - AddAuditTermsRequest
 //
@@ -146,7 +149,7 @@ func (client *Client) AddAuditTerms(request *AddAuditTermsRequest) (_result *Add
 
 // Summary:
 //
-// 添加文档到数据集
+// Adds a document to a data source.
 //
 // @param tmpReq - AddDatasetDocumentRequest
 //
@@ -208,7 +211,7 @@ func (client *Client) AddDatasetDocumentWithOptions(tmpReq *AddDatasetDocumentRe
 
 // Summary:
 //
-// 添加文档到数据集
+// Adds a document to a data source.
 //
 // @param request - AddDatasetDocumentRequest
 //
@@ -226,7 +229,7 @@ func (client *Client) AddDatasetDocument(request *AddDatasetDocumentRequest) (_r
 
 // Summary:
 //
-// 生成剪辑视频任务
+// Generates a video clip.
 //
 // @param tmpReq - AsyncCreateClipsTaskRequest
 //
@@ -255,6 +258,14 @@ func (client *Client) AsyncCreateClipsTaskWithOptions(tmpReq *AsyncCreateClipsTa
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AdaptMode) {
+		body["AdaptMode"] = request.AdaptMode
+	}
+
+	if !dara.IsNil(request.Alignment) {
+		body["Alignment"] = request.Alignment
+	}
+
 	if !dara.IsNil(request.CloseMusic) {
 		body["CloseMusic"] = request.CloseMusic
 	}
@@ -331,6 +342,10 @@ func (client *Client) AsyncCreateClipsTaskWithOptions(tmpReq *AsyncCreateClipsTa
 		body["TaskId"] = request.TaskId
 	}
 
+	if !dara.IsNil(request.TextWidth) {
+		body["TextWidth"] = request.TextWidth
+	}
+
 	if !dara.IsNil(request.VoiceStyle) {
 		body["VoiceStyle"] = request.VoiceStyle
 	}
@@ -372,7 +387,7 @@ func (client *Client) AsyncCreateClipsTaskWithOptions(tmpReq *AsyncCreateClipsTa
 
 // Summary:
 //
-// 生成剪辑视频任务
+// Generates a video clip.
 //
 // @param request - AsyncCreateClipsTaskRequest
 //
@@ -390,7 +405,7 @@ func (client *Client) AsyncCreateClipsTask(request *AsyncCreateClipsTaskRequest)
 
 // Summary:
 //
-// 智能剪辑timeline
+// Creates a timeline for smart video editing.
 //
 // @param tmpReq - AsyncCreateClipsTimeLineRequest
 //
@@ -472,7 +487,7 @@ func (client *Client) AsyncCreateClipsTimeLineWithOptions(tmpReq *AsyncCreateCli
 
 // Summary:
 //
-// 智能剪辑timeline
+// Creates a timeline for smart video editing.
 //
 // @param request - AsyncCreateClipsTimeLineRequest
 //
@@ -490,7 +505,7 @@ func (client *Client) AsyncCreateClipsTimeLine(request *AsyncCreateClipsTimeLine
 
 // Summary:
 //
-// 编辑剪辑任务的timeline
+// Edits the timeline of a video editing task.
 //
 // @param tmpReq - AsyncEditTimelineRequest
 //
@@ -552,7 +567,7 @@ func (client *Client) AsyncEditTimelineWithOptions(tmpReq *AsyncEditTimelineRequ
 
 // Summary:
 //
-// 编辑剪辑任务的timeline
+// Edits the timeline of a video editing task.
 //
 // @param request - AsyncEditTimelineRequest
 //
@@ -570,7 +585,7 @@ func (client *Client) AsyncEditTimeline(request *AsyncEditTimelineRequest) (_res
 
 // Summary:
 //
-// 上传招标书文件
+// Upload a tender document.
 //
 // @param request - AsyncUploadTenderDocRequest
 //
@@ -622,7 +637,7 @@ func (client *Client) AsyncUploadTenderDocWithOptions(request *AsyncUploadTender
 
 // Summary:
 //
-// 上传招标书文件
+// Upload a tender document.
 //
 // @param request - AsyncUploadTenderDocRequest
 //
@@ -640,7 +655,7 @@ func (client *Client) AsyncUploadTenderDoc(request *AsyncUploadTenderDocRequest)
 
 // Summary:
 //
-// 上传剪辑素材
+// Uploads video assets for editing.
 //
 // @param tmpReq - AsyncUploadVideoRequest
 //
@@ -742,7 +757,7 @@ func (client *Client) AsyncUploadVideoWithOptions(tmpReq *AsyncUploadVideoReques
 
 // Summary:
 //
-// 上传剪辑素材
+// Uploads video assets for editing.
 //
 // @param request - AsyncUploadVideoRequest
 //
@@ -760,7 +775,7 @@ func (client *Client) AsyncUploadVideo(request *AsyncUploadVideoRequest) (_resul
 
 // Summary:
 //
-// 标书写作接口
+// An API for writing bidding documents.
 //
 // @param request - AsyncWritingBiddingDocRequest
 //
@@ -816,7 +831,7 @@ func (client *Client) AsyncWritingBiddingDocWithOptions(request *AsyncWritingBid
 
 // Summary:
 //
-// 标书写作接口
+// An API for writing bidding documents.
 //
 // @param request - AsyncWritingBiddingDocRequest
 //
@@ -834,7 +849,7 @@ func (client *Client) AsyncWritingBiddingDoc(request *AsyncWritingBiddingDocRequ
 
 // Summary:
 //
-// 绑定PPT作品信息
+// Binds a PowerPoint (PPT) artifact.
 //
 // @param request - BindPptArtifactRequest
 //
@@ -890,7 +905,7 @@ func (client *Client) BindPptArtifactWithOptions(request *BindPptArtifactRequest
 
 // Summary:
 //
-// 绑定PPT作品信息
+// Binds a PowerPoint (PPT) artifact.
 //
 // @param request - BindPptArtifactRequest
 //
@@ -908,7 +923,7 @@ func (client *Client) BindPptArtifact(request *BindPptArtifactRequest) (_result 
 
 // Summary:
 //
-// 取消异步任务
+// Cancels pending asynchronous tasks.
 //
 // @param request - CancelAsyncTaskRequest
 //
@@ -958,7 +973,7 @@ func (client *Client) CancelAsyncTaskWithOptions(request *CancelAsyncTaskRequest
 
 // Summary:
 //
-// 取消异步任务
+// Cancels pending asynchronous tasks.
 //
 // @param request - CancelAsyncTaskRequest
 //
@@ -976,7 +991,7 @@ func (client *Client) CancelAsyncTask(request *CancelAsyncTaskRequest) (_result 
 
 // Summary:
 //
-// 取消审核任务
+// Cancel an audit task.
 //
 // @param request - CancelAuditTaskRequest
 //
@@ -1028,7 +1043,7 @@ func (client *Client) CancelAuditTaskWithOptions(request *CancelAuditTaskRequest
 
 // Summary:
 //
-// 取消审核任务
+// Cancel an audit task.
 //
 // @param request - CancelAuditTaskRequest
 //
@@ -1046,7 +1061,7 @@ func (client *Client) CancelAuditTask(request *CancelAuditTaskRequest) (_result 
 
 // Summary:
 //
-// 取消深度写作任务
+// Cancels a deep writing task.
 //
 // @param request - CancelDeepWriteTaskRequest
 //
@@ -1094,7 +1109,7 @@ func (client *Client) CancelDeepWriteTaskWithOptions(request *CancelDeepWriteTas
 
 // Summary:
 //
-// 取消深度写作任务
+// Cancels a deep writing task.
 //
 // @param request - CancelDeepWriteTaskRequest
 //
@@ -1112,7 +1127,7 @@ func (client *Client) CancelDeepWriteTask(request *CancelDeepWriteTaskRequest) (
 
 // Summary:
 //
-// 清除所有干预内容
+// Clears all intervention content.
 //
 // @param request - ClearIntervenesRequest
 //
@@ -1156,7 +1171,7 @@ func (client *Client) ClearIntervenesWithOptions(request *ClearIntervenesRequest
 
 // Summary:
 //
-// 清除所有干预内容
+// Clears all intervention content.
 //
 // @param request - ClearIntervenesRequest
 //
@@ -1174,7 +1189,7 @@ func (client *Client) ClearIntervenes(request *ClearIntervenesRequest) (_result 
 
 // Summary:
 //
-// 是否将本次提交自定义规则库得到的解析结果用于审核任务。由于解析结果可能不满足用户需求，因此我们为您提供了该接口用于二次确认。如果对提交的规则库解析满意，则可以直接将本次提交任务的 TaskId 作为入参，系统会对您上传的规则库做后处理，使它可以被用于审核。反之，您可以重新调用 SubmitAuditNote 接口上传修改之后的规则库。
+// This interface confirms whether the parsing results from your custom rule library submission are used for audit tasks. Because parsing results may not meet your requirements, use this interface to perform a second confirmation. If you are satisfied with the parsing of your submitted rule library, provide the TaskId from that submission as an input parameter. The system then post-processes your uploaded rule library and makes it available for auditing. Otherwise, invoke the SubmitAuditNote interface again to upload the modified rule library.
 //
 // @param request - ConfirmAndPostProcessAuditNoteRequest
 //
@@ -1222,7 +1237,7 @@ func (client *Client) ConfirmAndPostProcessAuditNoteWithOptions(request *Confirm
 
 // Summary:
 //
-// 是否将本次提交自定义规则库得到的解析结果用于审核任务。由于解析结果可能不满足用户需求，因此我们为您提供了该接口用于二次确认。如果对提交的规则库解析满意，则可以直接将本次提交任务的 TaskId 作为入参，系统会对您上传的规则库做后处理，使它可以被用于审核。反之，您可以重新调用 SubmitAuditNote 接口上传修改之后的规则库。
+// This interface confirms whether the parsing results from your custom rule library submission are used for audit tasks. Because parsing results may not meet your requirements, use this interface to perform a second confirmation. If you are satisfied with the parsing of your submitted rule library, provide the TaskId from that submission as an input parameter. The system then post-processes your uploaded rule library and makes it available for auditing. Otherwise, invoke the SubmitAuditNote interface again to upload the modified rule library.
 //
 // @param request - ConfirmAndPostProcessAuditNoteRequest
 //
@@ -1240,7 +1255,9 @@ func (client *Client) ConfirmAndPostProcessAuditNote(request *ConfirmAndPostProc
 
 // Summary:
 //
-// 用户数据集权限-批量添加
+// Batch add permissions:\\
+//
+// \\- Dataset permissions\\
 //
 // @param tmpReq - CreateDataPermissionsRequest
 //
@@ -1302,7 +1319,9 @@ func (client *Client) CreateDataPermissionsWithOptions(tmpReq *CreateDataPermiss
 
 // Summary:
 //
-// 用户数据集权限-批量添加
+// Batch add permissions:\\
+//
+// \\- Dataset permissions\\
 //
 // @param request - CreateDataPermissionsRequest
 //
@@ -1320,7 +1339,7 @@ func (client *Client) CreateDataPermissions(request *CreateDataPermissionsReques
 
 // Summary:
 //
-// 数据集管理-创建
+// Creates a dataset.
 //
 // @param tmpReq - CreateDatasetRequest
 //
@@ -1406,7 +1425,7 @@ func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, run
 
 // Summary:
 //
-// 数据集管理-创建
+// Creates a dataset.
 //
 // @param request - CreateDatasetRequest
 //
@@ -1424,7 +1443,7 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 
 // Summary:
 //
-// 通用配置-创建
+// # General configurations — Create
 //
 // @param request - CreateGeneralConfigRequest
 //
@@ -1476,7 +1495,7 @@ func (client *Client) CreateGeneralConfigWithOptions(request *CreateGeneralConfi
 
 // Summary:
 //
-// 通用配置-创建
+// # General configurations — Create
 //
 // @param request - CreateGeneralConfigRequest
 //
@@ -1494,7 +1513,7 @@ func (client *Client) CreateGeneralConfig(request *CreateGeneralConfigRequest) (
 
 // Summary:
 //
-// 文档管理-创建
+// Saves an article created in Miaobi. This operation supports rich text.
 //
 // @param tmpReq - CreateGeneratedContentRequest
 //
@@ -1578,7 +1597,7 @@ func (client *Client) CreateGeneratedContentWithOptions(tmpReq *CreateGeneratedC
 
 // Summary:
 //
-// 文档管理-创建
+// Saves an article created in Miaobi. This operation supports rich text.
 //
 // @param request - CreateGeneratedContentRequest
 //
@@ -1596,7 +1615,7 @@ func (client *Client) CreateGeneratedContent(request *CreateGeneratedContentRequ
 
 // Summary:
 //
-// 获取授权token
+// Creates a temporary token for the online inference API.
 //
 // @param request - CreateTokenRequest
 //
@@ -1640,7 +1659,7 @@ func (client *Client) CreateTokenWithOptions(request *CreateTokenRequest, runtim
 
 // Summary:
 //
-// 获取授权token
+// Creates a temporary token for the online inference API.
 //
 // @param request - CreateTokenRequest
 //
@@ -1658,7 +1677,7 @@ func (client *Client) CreateToken(request *CreateTokenRequest) (_result *CreateT
 
 // Summary:
 //
-// 删除用户账户下所有可供审核使用的自定义规则库。删除后无法找回，如果您有对规则库存档的需求，请预先使用 DownloadAuditNote 接口保存需要的规则库。
+// Deletes all custom rule libraries available for audit under the user account. This operation is irreversible. To archive rule libraries, use the DownloadAuditNote API to save them before deletion.
 //
 // @param request - DeleteAuditNoteRequest
 //
@@ -1706,7 +1725,7 @@ func (client *Client) DeleteAuditNoteWithOptions(request *DeleteAuditNoteRequest
 
 // Summary:
 //
-// 删除用户账户下所有可供审核使用的自定义规则库。删除后无法找回，如果您有对规则库存档的需求，请预先使用 DownloadAuditNote 接口保存需要的规则库。
+// Deletes all custom rule libraries available for audit under the user account. This operation is irreversible. To archive rule libraries, use the DownloadAuditNote API to save them before deletion.
 //
 // @param request - DeleteAuditNoteRequest
 //
@@ -1724,7 +1743,7 @@ func (client *Client) DeleteAuditNote(request *DeleteAuditNoteRequest) (_result 
 
 // Summary:
 //
-// 删除指定的词库记录
+// Deletes specified term records.
 //
 // @param tmpReq - DeleteAuditTermsRequest
 //
@@ -1778,7 +1797,7 @@ func (client *Client) DeleteAuditTermsWithOptions(tmpReq *DeleteAuditTermsReques
 
 // Summary:
 //
-// 删除指定的词库记录
+// Deletes specified term records.
 //
 // @param request - DeleteAuditTermsRequest
 //
@@ -1796,7 +1815,7 @@ func (client *Client) DeleteAuditTerms(request *DeleteAuditTermsRequest) (_resul
 
 // Summary:
 //
-// 删除自定义文本
+// Deletes a custom text.
 //
 // @param request - DeleteCustomTextRequest
 //
@@ -1850,7 +1869,7 @@ func (client *Client) DeleteCustomTextWithOptions(request *DeleteCustomTextReque
 
 // Summary:
 //
-// 删除自定义文本
+// Deletes a custom text.
 //
 // @param request - DeleteCustomTextRequest
 //
@@ -1868,7 +1887,7 @@ func (client *Client) DeleteCustomText(request *DeleteCustomTextRequest) (_resul
 
 // Summary:
 //
-// 根据主题删除自定义主题事件
+// Delete a custom hot spot event by topic name.
 //
 // @param request - DeleteCustomTopicByTopicRequest
 //
@@ -1918,7 +1937,7 @@ func (client *Client) DeleteCustomTopicByTopicWithOptions(request *DeleteCustomT
 
 // Summary:
 //
-// 根据主题删除自定义主题事件
+// Delete a custom hot spot event by topic name.
 //
 // @param request - DeleteCustomTopicByTopicRequest
 //
@@ -1936,7 +1955,7 @@ func (client *Client) DeleteCustomTopicByTopic(request *DeleteCustomTopicByTopic
 
 // Summary:
 //
-// 根据自定义观点ID删除自定义观点
+// Deletes a custom topic viewpoint by its ID.
 //
 // @param request - DeleteCustomTopicViewPointByIdRequest
 //
@@ -1986,7 +2005,7 @@ func (client *Client) DeleteCustomTopicViewPointByIdWithOptions(request *DeleteC
 
 // Summary:
 //
-// 根据自定义观点ID删除自定义观点
+// Deletes a custom topic viewpoint by its ID.
 //
 // @param request - DeleteCustomTopicViewPointByIdRequest
 //
@@ -2004,7 +2023,7 @@ func (client *Client) DeleteCustomTopicViewPointById(request *DeleteCustomTopicV
 
 // Summary:
 //
-// 用户数据集权限-批量删除
+// # Batch delete dataset permissions
 //
 // @param tmpReq - DeleteDataPermissionsRequest
 //
@@ -2058,7 +2077,7 @@ func (client *Client) DeleteDataPermissionsWithOptions(tmpReq *DeleteDataPermiss
 
 // Summary:
 //
-// 用户数据集权限-批量删除
+// # Batch delete dataset permissions
 //
 // @param request - DeleteDataPermissionsRequest
 //
@@ -2076,7 +2095,7 @@ func (client *Client) DeleteDataPermissions(request *DeleteDataPermissionsReques
 
 // Summary:
 //
-// 数据集管理-删除
+// Deletes a dataset from the data source.
 //
 // @param request - DeleteDatasetRequest
 //
@@ -2124,7 +2143,7 @@ func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, ru
 
 // Summary:
 //
-// 数据集管理-删除
+// Deletes a dataset from the data source.
 //
 // @param request - DeleteDatasetRequest
 //
@@ -2142,7 +2161,7 @@ func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *Del
 
 // Summary:
 //
-// 删除数据集文档
+// Delete source documents.
 //
 // @param request - DeleteDatasetDocumentRequest
 //
@@ -2202,7 +2221,7 @@ func (client *Client) DeleteDatasetDocumentWithOptions(request *DeleteDatasetDoc
 
 // Summary:
 //
-// 删除数据集文档
+// Delete source documents.
 //
 // @param request - DeleteDatasetDocumentRequest
 //
@@ -2220,7 +2239,7 @@ func (client *Client) DeleteDatasetDocument(request *DeleteDatasetDocumentReques
 
 // Summary:
 //
-// 妙读删除多个文档
+// Deletes multiple documents.
 //
 // @param tmpReq - DeleteDocsRequest
 //
@@ -2274,7 +2293,7 @@ func (client *Client) DeleteDocsWithOptions(tmpReq *DeleteDocsRequest, runtime *
 
 // Summary:
 //
-// 妙读删除多个文档
+// Deletes multiple documents.
 //
 // @param request - DeleteDocsRequest
 //
@@ -2292,7 +2311,7 @@ func (client *Client) DeleteDocs(request *DeleteDocsRequest) (_result *DeleteDoc
 
 // Summary:
 //
-// 删除指定的用于事实性审核的 URL。
+// Deletes the specified URL used for factuality audit.
 //
 // @param request - DeleteFactAuditUrlRequest
 //
@@ -2340,7 +2359,7 @@ func (client *Client) DeleteFactAuditUrlWithOptions(request *DeleteFactAuditUrlR
 
 // Summary:
 //
-// 删除指定的用于事实性审核的 URL。
+// Deletes the specified URL used for factuality audit.
 //
 // @param request - DeleteFactAuditUrlRequest
 //
@@ -2358,7 +2377,7 @@ func (client *Client) DeleteFactAuditUrl(request *DeleteFactAuditUrlRequest) (_r
 
 // Summary:
 //
-// 通用配置-删除
+// Deletes general configurations.
 //
 // @param request - DeleteGeneralConfigRequest
 //
@@ -2406,7 +2425,7 @@ func (client *Client) DeleteGeneralConfigWithOptions(request *DeleteGeneralConfi
 
 // Summary:
 //
-// 通用配置-删除
+// Deletes general configurations.
 //
 // @param request - DeleteGeneralConfigRequest
 //
@@ -2424,7 +2443,7 @@ func (client *Client) DeleteGeneralConfig(request *DeleteGeneralConfigRequest) (
 
 // Summary:
 //
-// 文档管理-删除。
+// Deletes an article created in MiaoBi.
 //
 // @param request - DeleteGeneratedContentRequest
 //
@@ -2478,7 +2497,7 @@ func (client *Client) DeleteGeneratedContentWithOptions(request *DeleteGenerated
 
 // Summary:
 //
-// 文档管理-删除。
+// Deletes an article created in MiaoBi.
 //
 // @param request - DeleteGeneratedContentRequest
 //
@@ -2496,7 +2515,7 @@ func (client *Client) DeleteGeneratedContent(request *DeleteGeneratedContentRequ
 
 // Summary:
 //
-// 删除干预规则
+// Deletes an intervention rule.
 //
 // @param request - DeleteInterveneRuleRequest
 //
@@ -2546,7 +2565,7 @@ func (client *Client) DeleteInterveneRuleWithOptions(request *DeleteInterveneRul
 
 // Summary:
 //
-// 删除干预规则
+// Deletes an intervention rule.
 //
 // @param request - DeleteInterveneRuleRequest
 //
@@ -2564,7 +2583,7 @@ func (client *Client) DeleteInterveneRule(request *DeleteInterveneRuleRequest) (
 
 // Summary:
 //
-// 根据ID删除素材
+// Deletes a material from the material library.
 //
 // @param request - DeleteMaterialByIdRequest
 //
@@ -2614,7 +2633,7 @@ func (client *Client) DeleteMaterialByIdWithOptions(request *DeleteMaterialByIdR
 
 // Summary:
 //
-// 根据ID删除素材
+// Deletes a material from the material library.
 //
 // @param request - DeleteMaterialByIdRequest
 //
@@ -2632,7 +2651,15 @@ func (client *Client) DeleteMaterialById(request *DeleteMaterialByIdRequest) (_r
 
 // Summary:
 //
-// 删除PPT作品
+// # Delete a PPT work
+//
+// Description:
+//
+// - This API operation uses the HTTP Server-Sent Events (SSE) protocol.
+//
+// - The OpenAPI portal is not compatible with the SSE inference protocol. You cannot directly test this API operation in the portal. For more information about how to call this API operation using the software development kit (SDK) for Java or Python, see [PPT Generation Best practices](https://help.aliyun.com/zh/model-studio/ppt-generation-best-practices).
+//
+// - To obtain the latest version of the asynchronous Java SDK, see [this link](https://api.aliyun.com/api-tools/sdk/AiMiaoBi?spm=a2c4g.11186623.0.0.4cd3170d7rccDC\\&version=2023-08-01\\&language=java-async-tea\\&tab=primer-doc).
 //
 // @param request - DeletePptArtifactRequest
 //
@@ -2684,7 +2711,15 @@ func (client *Client) DeletePptArtifactWithOptions(request *DeletePptArtifactReq
 
 // Summary:
 //
-// 删除PPT作品
+// # Delete a PPT work
+//
+// Description:
+//
+// - This API operation uses the HTTP Server-Sent Events (SSE) protocol.
+//
+// - The OpenAPI portal is not compatible with the SSE inference protocol. You cannot directly test this API operation in the portal. For more information about how to call this API operation using the software development kit (SDK) for Java or Python, see [PPT Generation Best practices](https://help.aliyun.com/zh/model-studio/ppt-generation-best-practices).
+//
+// - To obtain the latest version of the asynchronous Java SDK, see [this link](https://api.aliyun.com/api-tools/sdk/AiMiaoBi?spm=a2c4g.11186623.0.0.4cd3170d7rccDC\\&version=2023-08-01\\&language=java-async-tea\\&tab=primer-doc).
 //
 // @param request - DeletePptArtifactRequest
 //
@@ -2702,7 +2737,7 @@ func (client *Client) DeletePptArtifact(request *DeletePptArtifactRequest) (_res
 
 // Summary:
 //
-// 删除指定自定义文体
+// Deletes a specified custom style.
 //
 // @param request - DeleteStyleLearningResultRequest
 //
@@ -2752,7 +2787,7 @@ func (client *Client) DeleteStyleLearningResultWithOptions(request *DeleteStyleL
 
 // Summary:
 //
-// 删除指定自定义文体
+// Deletes a specified custom style.
 //
 // @param request - DeleteStyleLearningResultRequest
 //
@@ -2770,7 +2805,7 @@ func (client *Client) DeleteStyleLearningResult(request *DeleteStyleLearningResu
 
 // Summary:
 //
-// 从链接中提取文档内容
+// Extracts the content of documents from URLs.
 //
 // @param tmpReq - DocumentExtractionRequest
 //
@@ -2826,7 +2861,7 @@ func (client *Client) DocumentExtractionWithOptions(tmpReq *DocumentExtractionRe
 
 // Summary:
 //
-// 从链接中提取文档内容
+// Extracts the content of documents from URLs.
 //
 // @param request - DocumentExtractionRequest
 //
@@ -2844,7 +2879,7 @@ func (client *Client) DocumentExtraction(request *DocumentExtractionRequest) (_r
 
 // Summary:
 //
-// 您可以通过调用该接口下载结构化后的规则库，供您进行进一步处理。该接口同时拥有两个功能：下载未后处理的结构化规则库，或下载当前可用于审核的结构化规则库。具体使用方法，请参考入参说明。
+// Call this API to download the structured rule library for further processing. You can use this API to download either the structured rule library before post-processing or the structured rule library currently available for auditing. For specific usage, see the input parameter descriptions.
 //
 // @param request - DownloadAuditNoteRequest
 //
@@ -2896,7 +2931,7 @@ func (client *Client) DownloadAuditNoteWithOptions(request *DownloadAuditNoteReq
 
 // Summary:
 //
-// 您可以通过调用该接口下载结构化后的规则库，供您进行进一步处理。该接口同时拥有两个功能：下载未后处理的结构化规则库，或下载当前可用于审核的结构化规则库。具体使用方法，请参考入参说明。
+// Call this API to download the structured rule library for further processing. You can use this API to download either the structured rule library before post-processing or the structured rule library currently available for auditing. For specific usage, see the input parameter descriptions.
 //
 // @param request - DownloadAuditNoteRequest
 //
@@ -2914,7 +2949,7 @@ func (client *Client) DownloadAuditNote(request *DownloadAuditNoteRequest) (_res
 
 // Summary:
 //
-// 标书下载接口
+// # API for downloading bidding documents
 //
 // @param request - DownloadBiddingDocRequest
 //
@@ -2962,7 +2997,7 @@ func (client *Client) DownloadBiddingDocWithOptions(request *DownloadBiddingDocR
 
 // Summary:
 //
-// 标书下载接口
+// # API for downloading bidding documents
 //
 // @param request - DownloadBiddingDocRequest
 //
@@ -2980,7 +3015,7 @@ func (client *Client) DownloadBiddingDoc(request *DownloadBiddingDocRequest) (_r
 
 // Summary:
 //
-// 编辑审核自定义词库记录
+// Edit custom audit term records.
 //
 // @param tmpReq - EditAuditTermsRequest
 //
@@ -3050,7 +3085,7 @@ func (client *Client) EditAuditTermsWithOptions(tmpReq *EditAuditTermsRequest, r
 
 // Summary:
 //
-// 编辑审核自定义词库记录
+// Edit custom audit term records.
 //
 // @param request - EditAuditTermsRequest
 //
@@ -3068,7 +3103,7 @@ func (client *Client) EditAuditTerms(request *EditAuditTermsRequest) (_result *E
 
 // Summary:
 //
-// 编辑标书内容接口
+// Edits the content of a bidding document.
 //
 // @param request - EditBiddingDocRequest
 //
@@ -3128,7 +3163,7 @@ func (client *Client) EditBiddingDocWithOptions(request *EditBiddingDocRequest, 
 
 // Summary:
 //
-// 编辑标书内容接口
+// Edits the content of a bidding document.
 //
 // @param request - EditBiddingDocRequest
 //
@@ -3146,7 +3181,7 @@ func (client *Client) EditBiddingDoc(request *EditBiddingDocRequest) (_result *E
 
 // Summary:
 //
-// 导出企业VOC分析任务明细列表
+// Exports the tag details for a specified enterprise VOC analysis task.
 //
 // @param tmpReq - ExportAnalysisTagDetailByTaskIdRequest
 //
@@ -3204,7 +3239,7 @@ func (client *Client) ExportAnalysisTagDetailByTaskIdWithOptions(tmpReq *ExportA
 
 // Summary:
 //
-// 导出企业VOC分析任务明细列表
+// Exports the tag details for a specified enterprise VOC analysis task.
 //
 // @param request - ExportAnalysisTagDetailByTaskIdRequest
 //
@@ -3222,7 +3257,7 @@ func (client *Client) ExportAnalysisTagDetailByTaskId(request *ExportAnalysisTag
 
 // Summary:
 //
-// 导出智能审核报告
+// Exports an automated review report.
 //
 // @param request - ExportAuditContentResultRequest
 //
@@ -3270,7 +3305,7 @@ func (client *Client) ExportAuditContentResultWithOptions(request *ExportAuditCo
 
 // Summary:
 //
-// 导出智能审核报告
+// Exports an automated review report.
 //
 // @param request - ExportAuditContentResultRequest
 //
@@ -3288,7 +3323,7 @@ func (client *Client) ExportAuditContentResult(request *ExportAuditContentResult
 
 // Summary:
 //
-// 导出-自定义数据源-选题视角分析任务结果
+// Exports custom data source topic perspective analysis task results.
 //
 // @param request - ExportCustomSourceAnalysisTaskRequest
 //
@@ -3340,7 +3375,7 @@ func (client *Client) ExportCustomSourceAnalysisTaskWithOptions(request *ExportC
 
 // Summary:
 //
-// 导出-自定义数据源-选题视角分析任务结果
+// Exports custom data source topic perspective analysis task results.
 //
 // @param request - ExportCustomSourceAnalysisTaskRequest
 //
@@ -3358,7 +3393,7 @@ func (client *Client) ExportCustomSourceAnalysisTask(request *ExportCustomSource
 
 // Summary:
 //
-// 文档管理-导出。
+// Exports the history of articles created in MiaoBi.
 //
 // @param request - ExportGeneratedContentRequest
 //
@@ -3408,7 +3443,7 @@ func (client *Client) ExportGeneratedContentWithOptions(request *ExportGenerated
 
 // Summary:
 //
-// 文档管理-导出。
+// Exports the history of articles created in MiaoBi.
 //
 // @param request - ExportGeneratedContentRequest
 //
@@ -3426,7 +3461,7 @@ func (client *Client) ExportGeneratedContent(request *ExportGeneratedContentRequ
 
 // Summary:
 //
-// 导出选题策划文档，响应为一个可公开访问的URL。一小时后失效
+// Exports topic planning documents and provides a publicly accessible URL that expires in one hour.
 //
 // @param tmpReq - ExportHotTopicPlanningProposalsRequest
 //
@@ -3506,7 +3541,7 @@ func (client *Client) ExportHotTopicPlanningProposalsWithOptions(tmpReq *ExportH
 
 // Summary:
 //
-// 导出选题策划文档，响应为一个可公开访问的URL。一小时后失效
+// Exports topic planning documents and provides a publicly accessible URL that expires in one hour.
 //
 // @param request - ExportHotTopicPlanningProposalsRequest
 //
@@ -3524,7 +3559,7 @@ func (client *Client) ExportHotTopicPlanningProposals(request *ExportHotTopicPla
 
 // Summary:
 //
-// 导出所有干预内容
+// Exports all interventions.
 //
 // @param request - ExportIntervenesRequest
 //
@@ -3568,7 +3603,7 @@ func (client *Client) ExportIntervenesWithOptions(request *ExportIntervenesReque
 
 // Summary:
 //
-// 导出所有干预内容
+// Exports all interventions.
 //
 // @param request - ExportIntervenesRequest
 //
@@ -3586,7 +3621,7 @@ func (client *Client) ExportIntervenes(request *ExportIntervenesRequest) (_resul
 
 // Summary:
 //
-// 导出PPT作品
+// Exports a PPT artifact.
 //
 // @param request - ExportPptArtifactRequest
 //
@@ -3650,7 +3685,7 @@ func (client *Client) ExportPptArtifactWithOptions(request *ExportPptArtifactReq
 
 // Summary:
 //
-// 导出PPT作品
+// Exports a PPT artifact.
 //
 // @param request - ExportPptArtifactRequest
 //
@@ -3668,7 +3703,7 @@ func (client *Client) ExportPptArtifact(request *ExportPptArtifactRequest) (_res
 
 // Summary:
 //
-// 反馈某次生成的结果
+// Provides feedback on the quality of the content that the model generates.
 //
 // @param tmpReq - FeedbackDialogueRequest
 //
@@ -3748,7 +3783,7 @@ func (client *Client) FeedbackDialogueWithOptions(tmpReq *FeedbackDialogueReques
 
 // Summary:
 //
-// 反馈某次生成的结果
+// Provides feedback on the quality of the content that the model generates.
 //
 // @param request - FeedbackDialogueRequest
 //
@@ -3766,7 +3801,7 @@ func (client *Client) FeedbackDialogue(request *FeedbackDialogueRequest) (_resul
 
 // Summary:
 //
-// 获取词库导出任务结果
+// Retrieves the results of a term library export task.
 //
 // @param request - FetchExportTermsTaskRequest
 //
@@ -3814,7 +3849,7 @@ func (client *Client) FetchExportTermsTaskWithOptions(request *FetchExportTermsT
 
 // Summary:
 //
-// 获取词库导出任务结果
+// Retrieves the results of a term library export task.
 //
 // @param request - FetchExportTermsTaskRequest
 //
@@ -3832,7 +3867,7 @@ func (client *Client) FetchExportTermsTask(request *FetchExportTermsTaskRequest)
 
 // Summary:
 //
-// 获取异步导出文档任务结果
+// Fetches the result of an asynchronous document export task.
 //
 // @param request - FetchExportWordTaskRequest
 //
@@ -3882,7 +3917,7 @@ func (client *Client) FetchExportWordTaskWithOptions(request *FetchExportWordTas
 
 // Summary:
 //
-// 获取异步导出文档任务结果
+// Fetches the result of an asynchronous document export task.
 //
 // @param request - FetchExportWordTaskRequest
 //
@@ -3900,7 +3935,7 @@ func (client *Client) FetchExportWordTask(request *FetchExportWordTaskRequest) (
 
 // Summary:
 //
-// 获取图片任务执行结果
+// Retrieve the results of image generation tasks.
 //
 // @param tmpReq - FetchImageTaskRequest
 //
@@ -3960,7 +3995,7 @@ func (client *Client) FetchImageTaskWithOptions(tmpReq *FetchImageTaskRequest, r
 
 // Summary:
 //
-// 获取图片任务执行结果
+// Retrieve the results of image generation tasks.
 //
 // @param request - FetchImageTaskRequest
 //
@@ -3978,7 +4013,7 @@ func (client *Client) FetchImageTask(request *FetchImageTaskRequest) (_result *F
 
 // Summary:
 //
-// 获取导入词库任务结果
+// Retrieves the result of a term import task.
 //
 // @param request - FetchImportTermsTaskRequest
 //
@@ -4026,7 +4061,7 @@ func (client *Client) FetchImportTermsTaskWithOptions(request *FetchImportTermsT
 
 // Summary:
 //
-// 获取导入词库任务结果
+// Retrieves the result of a term import task.
 //
 // @param request - FetchImportTermsTaskRequest
 //
@@ -4044,7 +4079,7 @@ func (client *Client) FetchImportTermsTask(request *FetchImportTermsTaskRequest)
 
 // Summary:
 //
-// 获取排版任务结果
+// Retrieve the layout task result.
 //
 // @param request - FetchParseDocumentLayoutTaskRequest
 //
@@ -4092,7 +4127,7 @@ func (client *Client) FetchParseDocumentLayoutTaskWithOptions(request *FetchPars
 
 // Summary:
 //
-// 获取排版任务结果
+// Retrieve the layout task result.
 //
 // @param request - FetchParseDocumentLayoutTaskRequest
 //
@@ -4110,7 +4145,11 @@ func (client *Client) FetchParseDocumentLayoutTask(request *FetchParseDocumentLa
 
 // Summary:
 //
-// 生成内容导出文档任务
+// Start a task to export content as a Word document.
+//
+// Description:
+//
+// The Quanmiao product supports iframe embedding. For details, see [Customer Integration: Quanmiao Public Cloud iframe Customization Guide](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - GenerateExportWordTaskRequest
 //
@@ -4160,7 +4199,11 @@ func (client *Client) GenerateExportWordTaskWithOptions(request *GenerateExportW
 
 // Summary:
 //
-// 生成内容导出文档任务
+// Start a task to export content as a Word document.
+//
+// Description:
+//
+// The Quanmiao product supports iframe embedding. For details, see [Customer Integration: Quanmiao Public Cloud iframe Customization Guide](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - GenerateExportWordTaskRequest
 //
@@ -4178,7 +4221,7 @@ func (client *Client) GenerateExportWordTask(request *GenerateExportWordTaskRequ
 
 // Summary:
 //
-// 生成临时可访问的公开url
+// Generate a temporary public URL.
 //
 // @param request - GenerateFileUrlByKeyRequest
 //
@@ -4232,7 +4275,7 @@ func (client *Client) GenerateFileUrlByKeyWithOptions(request *GenerateFileUrlBy
 
 // Summary:
 //
-// 生成临时可访问的公开url
+// Generate a temporary public URL.
 //
 // @param request - GenerateFileUrlByKeyRequest
 //
@@ -4250,7 +4293,7 @@ func (client *Client) GenerateFileUrlByKey(request *GenerateFileUrlByKeyRequest)
 
 // Summary:
 //
-// 智能配图，图片生成任务
+// Asynchronously generates an image from text.
 //
 // @param tmpReq - GenerateImageTaskRequest
 //
@@ -4318,7 +4361,7 @@ func (client *Client) GenerateImageTaskWithOptions(tmpReq *GenerateImageTaskRequ
 
 // Summary:
 //
-// 智能配图，图片生成任务
+// Asynchronously generates an image from text.
 //
 // @param request - GenerateImageTaskRequest
 //
@@ -4336,7 +4379,17 @@ func (client *Client) GenerateImageTask(request *GenerateImageTaskRequest) (_res
 
 // Summary:
 //
-// 生成上传配置
+// Generates a file upload configuration.
+//
+// 1\\. Call this API to obtain the upload configuration. The API returns the `PostUrl` (an internal OSS address for AI Writing Assistant), temporary OSS authentication information (`key`, `OSSAccessKeyId`, `Signature`, and `policy`), and the unique file identifier `fileKey`.
+//
+// 2\\. The client uses the `PostUrl` and the temporary authentication information (`key`, `OSSAccessKeyId`, `Signature`, and `policy`) to upload the file.
+//
+// 3\\. Use the `fileKey` to call subsequent APIs that require a `fileKey`, such as `GenerateFileUrlByKey`.
+//
+// Description:
+//
+// This API returns the address and credentials for file uploads. For more information, see [OSS Form Upload](https://help.aliyun.com/zh/oss/user-guide/form-upload?scm=20140722.H_31849._.OR_help-T_cn~zh-V_1).
 //
 // @param request - GenerateUploadConfigRequest
 //
@@ -4390,7 +4443,17 @@ func (client *Client) GenerateUploadConfigWithOptions(request *GenerateUploadCon
 
 // Summary:
 //
-// 生成上传配置
+// Generates a file upload configuration.
+//
+// 1\\. Call this API to obtain the upload configuration. The API returns the `PostUrl` (an internal OSS address for AI Writing Assistant), temporary OSS authentication information (`key`, `OSSAccessKeyId`, `Signature`, and `policy`), and the unique file identifier `fileKey`.
+//
+// 2\\. The client uses the `PostUrl` and the temporary authentication information (`key`, `OSSAccessKeyId`, `Signature`, and `policy`) to upload the file.
+//
+// 3\\. Use the `fileKey` to call subsequent APIs that require a `fileKey`, such as `GenerateFileUrlByKey`.
+//
+// Description:
+//
+// This API returns the address and credentials for file uploads. For more information, see [OSS Form Upload](https://help.aliyun.com/zh/oss/user-guide/form-upload?scm=20140722.H_31849._.OR_help-T_cn~zh-V_1).
 //
 // @param request - GenerateUploadConfigRequest
 //
@@ -4408,7 +4471,7 @@ func (client *Client) GenerateUploadConfig(request *GenerateUploadConfigRequest)
 
 // Summary:
 //
-// 视角生成
+// Generates viewpoints from article snippets.
 //
 // @param tmpReq - GenerateViewPointRequest
 //
@@ -4464,7 +4527,7 @@ func (client *Client) GenerateViewPointWithOptions(tmpReq *GenerateViewPointRequ
 
 // Summary:
 //
-// 视角生成
+// Generates viewpoints from article snippets.
 //
 // @param request - GenerateViewPointRequest
 //
@@ -4482,7 +4545,7 @@ func (client *Client) GenerateViewPoint(request *GenerateViewPointRequest) (_res
 
 // Summary:
 //
-// 查询规则库后处理的进度。与 ConfirmAndPostProcessAuditNote 接口配合使用，供您查询当前后处理任务的状态。
+// Queries the progress of a post-processing task for a rule library. Use this operation together with the ConfirmAndPostProcessAuditNote operation to check the status of the current post-processing task.
 //
 // @param request - GetAuditNotePostProcessingStatusRequest
 //
@@ -4530,7 +4593,7 @@ func (client *Client) GetAuditNotePostProcessingStatusWithOptions(request *GetAu
 
 // Summary:
 //
-// 查询规则库后处理的进度。与 ConfirmAndPostProcessAuditNote 接口配合使用，供您查询当前后处理任务的状态。
+// Queries the progress of a post-processing task for a rule library. Use this operation together with the ConfirmAndPostProcessAuditNote operation to check the status of the current post-processing task.
 //
 // @param request - GetAuditNotePostProcessingStatusRequest
 //
@@ -4548,7 +4611,7 @@ func (client *Client) GetAuditNotePostProcessingStatus(request *GetAuditNotePost
 
 // Summary:
 //
-// 查询用户上传规则库的处理状态。通过该接口，用户可以查询到当前规则库上传任务的状态，并获取到解析后的规则库文件大小、存储路径等信息。
+// Checks the processing status of an uploaded rule library. This operation returns the current status of the upload task, the size of the parsed rule library file, and its storage path.
 //
 // @param request - GetAuditNoteProcessingStatusRequest
 //
@@ -4596,7 +4659,7 @@ func (client *Client) GetAuditNoteProcessingStatusWithOptions(request *GetAuditN
 
 // Summary:
 //
-// 查询用户上传规则库的处理状态。通过该接口，用户可以查询到当前规则库上传任务的状态，并获取到解析后的规则库文件大小、存储路径等信息。
+// Checks the processing status of an uploaded rule library. This operation returns the current status of the upload task, the size of the parsed rule library file, and its storage path.
 //
 // @param request - GetAuditNoteProcessingStatusRequest
 //
@@ -4614,7 +4677,7 @@ func (client *Client) GetAuditNoteProcessingStatus(request *GetAuditNoteProcessi
 
 // Summary:
 //
-// 获得剪辑任务状态
+// Retrieves the status of a video editing task.
 //
 // @param request - GetAutoClipsTaskInfoRequest
 //
@@ -4670,7 +4733,7 @@ func (client *Client) GetAutoClipsTaskInfoWithOptions(request *GetAutoClipsTaskI
 
 // Summary:
 //
-// 获得剪辑任务状态
+// Retrieves the status of a video editing task.
 //
 // @param request - GetAutoClipsTaskInfoRequest
 //
@@ -4688,7 +4751,7 @@ func (client *Client) GetAutoClipsTaskInfo(request *GetAutoClipsTaskInfoRequest)
 
 // Summary:
 //
-// 查询用户当前可供审核的规则库信息，只能查询到当前可用于审核的规则库。如果您想看到自定义规则库的具体内容，请使用 DownloadAuditNote 接口。
+// Query the rule libraries that are currently available for audit. This operation returns only rule libraries that are active for auditing. To view the contents of a custom rule library, use the DownloadAuditNote API.
 //
 // @param request - GetAvailableAuditNotesRequest
 //
@@ -4736,7 +4799,7 @@ func (client *Client) GetAvailableAuditNotesWithOptions(request *GetAvailableAud
 
 // Summary:
 //
-// 查询用户当前可供审核的规则库信息，只能查询到当前可用于审核的规则库。如果您想看到自定义规则库的具体内容，请使用 DownloadAuditNote 接口。
+// Query the rule libraries that are currently available for audit. This operation returns only rule libraries that are active for auditing. To view the contents of a custom rule library, use the DownloadAuditNote API.
 //
 // @param request - GetAvailableAuditNotesRequest
 //
@@ -4754,7 +4817,7 @@ func (client *Client) GetAvailableAuditNotes(request *GetAvailableAuditNotesRequ
 
 // Summary:
 //
-// 获得标书写作结果接口
+// Retrieves the generation results of a bidding document.
 //
 // @param request - GetBiddingDocInfoRequest
 //
@@ -4802,7 +4865,7 @@ func (client *Client) GetBiddingDocInfoWithOptions(request *GetBiddingDocInfoReq
 
 // Summary:
 //
-// 获得标书写作结果接口
+// Retrieves the generation results of a bidding document.
 //
 // @param request - GetBiddingDocInfoRequest
 //
@@ -4820,7 +4883,7 @@ func (client *Client) GetBiddingDocInfo(request *GetBiddingDocInfoRequest) (_res
 
 // Summary:
 //
-// 获得标书功能剩余额度
+// Retrieve the remaining limit for the bidding feature.
 //
 // @param request - GetBiddingRemainLimitNumRequest
 //
@@ -4868,7 +4931,7 @@ func (client *Client) GetBiddingRemainLimitNumWithOptions(request *GetBiddingRem
 
 // Summary:
 //
-// 获得标书功能剩余额度
+// Retrieve the remaining limit for the bidding feature.
 //
 // @param request - GetBiddingRemainLimitNumRequest
 //
@@ -4886,7 +4949,7 @@ func (client *Client) GetBiddingRemainLimitNum(request *GetBiddingRemainLimitNum
 
 // Summary:
 //
-// 获取某次标签挖掘结果分类
+// Retrieves the classifications from a tag mining task.
 //
 // @param request - GetCategoriesByTaskIdRequest
 //
@@ -4934,7 +4997,7 @@ func (client *Client) GetCategoriesByTaskIdWithOptions(request *GetCategoriesByT
 
 // Summary:
 //
-// 获取某次标签挖掘结果分类
+// Retrieves the classifications from a tag mining task.
 //
 // @param request - GetCategoriesByTaskIdRequest
 //
@@ -4952,7 +5015,7 @@ func (client *Client) GetCategoriesByTaskId(request *GetCategoriesByTaskIdReques
 
 // Summary:
 //
-// 获得智能混剪内置资源
+// Retrieves the built-in resources for smart clipping.
 //
 // @param request - GetClipsBuildInResourceRequest
 //
@@ -5000,7 +5063,7 @@ func (client *Client) GetClipsBuildInResourceWithOptions(request *GetClipsBuildI
 
 // Summary:
 //
-// 获得智能混剪内置资源
+// Retrieves the built-in resources for smart clipping.
 //
 // @param request - GetClipsBuildInResourceRequest
 //
@@ -5018,7 +5081,7 @@ func (client *Client) GetClipsBuildInResource(request *GetClipsBuildInResourceRe
 
 // Summary:
 //
-// 获取自定义播报单任务结果
+// Retrieves the result of a custom hot topic broadcast job.
 //
 // @param request - GetCustomHotTopicBroadcastJobRequest
 //
@@ -5066,7 +5129,7 @@ func (client *Client) GetCustomHotTopicBroadcastJobWithOptions(request *GetCusto
 
 // Summary:
 //
-// 获取自定义播报单任务结果
+// Retrieves the result of a custom hot topic broadcast job.
 //
 // @param request - GetCustomHotTopicBroadcastJobRequest
 //
@@ -5084,7 +5147,7 @@ func (client *Client) GetCustomHotTopicBroadcastJob(request *GetCustomHotTopicBr
 
 // Summary:
 //
-// 获取自定义数据源-选题视角分析任务结果
+// Retrieves the results of a topic analysis task for a custom data source.
 //
 // @param request - GetCustomSourceTopicAnalysisTaskRequest
 //
@@ -5132,7 +5195,7 @@ func (client *Client) GetCustomSourceTopicAnalysisTaskWithOptions(request *GetCu
 
 // Summary:
 //
-// 获取自定义数据源-选题视角分析任务结果
+// Retrieves the results of a topic analysis task for a custom data source.
 //
 // @param request - GetCustomSourceTopicAnalysisTaskRequest
 //
@@ -5150,7 +5213,7 @@ func (client *Client) GetCustomSourceTopicAnalysisTask(request *GetCustomSourceT
 
 // Summary:
 //
-// 获取自定义文本
+// Retrieve custom text.
 //
 // @param request - GetCustomTextRequest
 //
@@ -5204,7 +5267,7 @@ func (client *Client) GetCustomTextWithOptions(request *GetCustomTextRequest, ru
 
 // Summary:
 //
-// 获取自定义文本
+// Retrieve custom text.
 //
 // @param request - GetCustomTextRequest
 //
@@ -5222,7 +5285,7 @@ func (client *Client) GetCustomText(request *GetCustomTextRequest) (_result *Get
 
 // Summary:
 //
-// 获取自定义选题视角分析任务结果
+// Retrieve the result of a custom topic selection perspective analysis task.
 //
 // @param request - GetCustomTopicSelectionPerspectiveAnalysisTaskRequest
 //
@@ -5272,7 +5335,7 @@ func (client *Client) GetCustomTopicSelectionPerspectiveAnalysisTaskWithOptions(
 
 // Summary:
 //
-// 获取自定义选题视角分析任务结果
+// Retrieve the result of a custom topic selection perspective analysis task.
 //
 // @param request - GetCustomTopicSelectionPerspectiveAnalysisTaskRequest
 //
@@ -5290,7 +5353,7 @@ func (client *Client) GetCustomTopicSelectionPerspectiveAnalysisTask(request *Ge
 
 // Summary:
 //
-// 获取系统数据源配置和个人配置
+// Retrieves configuration information for write data sources and general search data sources.
 //
 // @param request - GetDataSourceOrderConfigRequest
 //
@@ -5344,7 +5407,7 @@ func (client *Client) GetDataSourceOrderConfigWithOptions(request *GetDataSource
 
 // Summary:
 //
-// 获取系统数据源配置和个人配置
+// Retrieves configuration information for write data sources and general search data sources.
 //
 // @param request - GetDataSourceOrderConfigRequest
 //
@@ -5362,7 +5425,7 @@ func (client *Client) GetDataSourceOrderConfig(request *GetDataSourceOrderConfig
 
 // Summary:
 //
-// 数据集管理-详情
+// Data source management details.
 //
 // @param request - GetDatasetRequest
 //
@@ -5414,7 +5477,7 @@ func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime 
 
 // Summary:
 //
-// 数据集管理-详情
+// Data source management details.
 //
 // @param request - GetDatasetRequest
 //
@@ -5432,7 +5495,7 @@ func (client *Client) GetDataset(request *GetDatasetRequest) (_result *GetDatase
 
 // Summary:
 //
-// 获取数据集文档
+// Retrieve the data source document.
 //
 // @param tmpReq - GetDatasetDocumentRequest
 //
@@ -5502,7 +5565,7 @@ func (client *Client) GetDatasetDocumentWithOptions(tmpReq *GetDatasetDocumentRe
 
 // Summary:
 //
-// 获取数据集文档
+// Retrieve the data source document.
 //
 // @param request - GetDatasetDocumentRequest
 //
@@ -5520,7 +5583,7 @@ func (client *Client) GetDatasetDocument(request *GetDatasetDocumentRequest) (_r
 
 // Summary:
 //
-// 查询深度写作任务
+// Queries deep writing tasks. You can use it to check the running status of a specific task.
 //
 // @param request - GetDeepWriteTaskRequest
 //
@@ -5568,7 +5631,7 @@ func (client *Client) GetDeepWriteTaskWithOptions(request *GetDeepWriteTaskReque
 
 // Summary:
 //
-// 查询深度写作任务
+// Queries deep writing tasks. You can use it to check the running status of a specific task.
 //
 // @param request - GetDeepWriteTaskRequest
 //
@@ -5586,7 +5649,7 @@ func (client *Client) GetDeepWriteTask(request *GetDeepWriteTaskRequest) (_resul
 
 // Summary:
 //
-// 查询深度写作任务的结果
+// Queries the result of a deep writing task. If the task is not complete, the operation returns its current status—such as queued, running, failed, or canceled. If the task is complete, the operation returns a URL that points to a compressed package of the task output that you can download.
 //
 // @param request - GetDeepWriteTaskResultRequest
 //
@@ -5634,7 +5697,7 @@ func (client *Client) GetDeepWriteTaskResultWithOptions(request *GetDeepWriteTas
 
 // Summary:
 //
-// 查询深度写作任务的结果
+// Queries the result of a deep writing task. If the task is not complete, the operation returns its current status—such as queued, running, failed, or canceled. If the task is complete, the operation returns a URL that points to a compressed package of the task output that you can download.
 //
 // @param request - GetDeepWriteTaskResultRequest
 //
@@ -5652,7 +5715,7 @@ func (client *Client) GetDeepWriteTaskResult(request *GetDeepWriteTaskResultRequ
 
 // Summary:
 //
-// 获取文档聚合任务结果
+// Retrieves the result of a content aggregation task.
 //
 // @param request - GetDocClusterTaskRequest
 //
@@ -5702,7 +5765,7 @@ func (client *Client) GetDocClusterTaskWithOptions(request *GetDocClusterTaskReq
 
 // Summary:
 //
-// 获取文档聚合任务结果
+// Retrieves the result of a content aggregation task.
 //
 // @param request - GetDocClusterTaskRequest
 //
@@ -5720,7 +5783,7 @@ func (client *Client) GetDocClusterTask(request *GetDocClusterTaskRequest) (_res
 
 // Summary:
 //
-// 妙读获取文档信息
+// Retrieves information about a document.
 //
 // @param request - GetDocInfoRequest
 //
@@ -5772,7 +5835,7 @@ func (client *Client) GetDocInfoWithOptions(request *GetDocInfoRequest, runtime 
 
 // Summary:
 //
-// 妙读获取文档信息
+// Retrieves information about a document.
 //
 // @param request - GetDocInfoRequest
 //
@@ -5790,7 +5853,7 @@ func (client *Client) GetDocInfo(request *GetDocInfoRequest) (_result *GetDocInf
 
 // Summary:
 //
-// 获取企业VOC分析任务结果
+// Retrieves the result of an enterprise Voice of the Customer (VOC) analysis task.
 //
 // @param request - GetEnterpriseVocAnalysisTaskRequest
 //
@@ -5838,7 +5901,7 @@ func (client *Client) GetEnterpriseVocAnalysisTaskWithOptions(request *GetEnterp
 
 // Summary:
 //
-// 获取企业VOC分析任务结果
+// Retrieves the result of an enterprise Voice of the Customer (VOC) analysis task.
 //
 // @param request - GetEnterpriseVocAnalysisTaskRequest
 //
@@ -5856,7 +5919,7 @@ func (client *Client) GetEnterpriseVocAnalysisTask(request *GetEnterpriseVocAnal
 
 // Summary:
 //
-// 获取当前正用于事实性审核的信源 URL。
+// Retrieves the source URL that is currently used for factuality audit.
 //
 // @param request - GetFactAuditUrlRequest
 //
@@ -5900,7 +5963,7 @@ func (client *Client) GetFactAuditUrlWithOptions(request *GetFactAuditUrlRequest
 
 // Summary:
 //
-// 获取当前正用于事实性审核的信源 URL。
+// Retrieves the source URL that is currently used for factuality audit.
 //
 // @param request - GetFactAuditUrlRequest
 //
@@ -5918,7 +5981,7 @@ func (client *Client) GetFactAuditUrl(request *GetFactAuditUrlRequest) (_result 
 
 // Summary:
 //
-// 妙读获得文档字数
+// MiaoRead calculates the word count for a document.
 //
 // @param request - GetFileContentLengthRequest
 //
@@ -5970,7 +6033,7 @@ func (client *Client) GetFileContentLengthWithOptions(request *GetFileContentLen
 
 // Summary:
 //
-// 妙读获得文档字数
+// MiaoRead calculates the word count for a document.
 //
 // @param request - GetFileContentLengthRequest
 //
@@ -5988,7 +6051,7 @@ func (client *Client) GetFileContentLength(request *GetFileContentLengthRequest)
 
 // Summary:
 //
-// 通用配置-查询
+// Queries general configurations.
 //
 // @param request - GetGeneralConfigRequest
 //
@@ -6036,7 +6099,7 @@ func (client *Client) GetGeneralConfigWithOptions(request *GetGeneralConfigReque
 
 // Summary:
 //
-// 通用配置-查询
+// Queries general configurations.
 //
 // @param request - GetGeneralConfigRequest
 //
@@ -6054,7 +6117,7 @@ func (client *Client) GetGeneralConfig(request *GetGeneralConfigRequest) (_resul
 
 // Summary:
 //
-// 文档管理-查询详情。
+// Get generated content. Queries the history of articles generated in MiaoBi.
 //
 // @param request - GetGeneratedContentRequest
 //
@@ -6104,7 +6167,7 @@ func (client *Client) GetGeneratedContentWithOptions(request *GetGeneratedConten
 
 // Summary:
 //
-// 文档管理-查询详情。
+// Get generated content. Queries the history of articles generated in MiaoBi.
 //
 // @param request - GetGeneratedContentRequest
 //
@@ -6122,7 +6185,7 @@ func (client *Client) GetGeneratedContent(request *GetGeneratedContentRequest) (
 
 // Summary:
 //
-// 查询新闻播报单
+// Query news broadcast orders.
 //
 // @param tmpReq - GetHotTopicBroadcastRequest
 //
@@ -6228,7 +6291,7 @@ func (client *Client) GetHotTopicBroadcastWithOptions(tmpReq *GetHotTopicBroadca
 
 // Summary:
 //
-// 查询新闻播报单
+// Query news broadcast orders.
 //
 // @param request - GetHotTopicBroadcastRequest
 //
@@ -6246,7 +6309,7 @@ func (client *Client) GetHotTopicBroadcast(request *GetHotTopicBroadcastRequest)
 
 // Summary:
 //
-// 获得干预全局回复
+// Retrieve the global intervention reply.
 //
 // @param request - GetInterveneGlobalReplyRequest
 //
@@ -6290,7 +6353,7 @@ func (client *Client) GetInterveneGlobalReplyWithOptions(request *GetInterveneGl
 
 // Summary:
 //
-// 获得干预全局回复
+// Retrieve the global intervention reply.
 //
 // @param request - GetInterveneGlobalReplyRequest
 //
@@ -6308,7 +6371,7 @@ func (client *Client) GetInterveneGlobalReply(request *GetInterveneGlobalReplyRe
 
 // Summary:
 //
-// 获得导入任务信息
+// Gets information about an import task.
 //
 // @param request - GetInterveneImportTaskInfoRequest
 //
@@ -6358,7 +6421,7 @@ func (client *Client) GetInterveneImportTaskInfoWithOptions(request *GetInterven
 
 // Summary:
 //
-// 获得导入任务信息
+// Gets information about an import task.
 //
 // @param request - GetInterveneImportTaskInfoRequest
 //
@@ -6376,7 +6439,7 @@ func (client *Client) GetInterveneImportTaskInfo(request *GetInterveneImportTask
 
 // Summary:
 //
-// 获得干预项规则详情
+// Retrieves the details of an intervention rule.
 //
 // @param request - GetInterveneRuleDetailRequest
 //
@@ -6426,7 +6489,7 @@ func (client *Client) GetInterveneRuleDetailWithOptions(request *GetInterveneRul
 
 // Summary:
 //
-// 获得干预项规则详情
+// Retrieves the details of an intervention rule.
 //
 // @param request - GetInterveneRuleDetailRequest
 //
@@ -6444,7 +6507,7 @@ func (client *Client) GetInterveneRuleDetail(request *GetInterveneRuleDetailRequ
 
 // Summary:
 //
-// 获得干预导入模版文件下载地址
+// Retrieves the download URL for the intervention import template.
 //
 // @param request - GetInterveneTemplateFileUrlRequest
 //
@@ -6488,7 +6551,7 @@ func (client *Client) GetInterveneTemplateFileUrlWithOptions(request *GetInterve
 
 // Summary:
 //
-// 获得干预导入模版文件下载地址
+// Retrieves the download URL for the intervention import template.
 //
 // @param request - GetInterveneTemplateFileUrlRequest
 //
@@ -6506,7 +6569,7 @@ func (client *Client) GetInterveneTemplateFileUrl(request *GetInterveneTemplateF
 
 // Summary:
 //
-// 根据ID获取素材内容
+// Retrieves detailed information about a material from the Material Library.
 //
 // @param request - GetMaterialByIdRequest
 //
@@ -6556,7 +6619,7 @@ func (client *Client) GetMaterialByIdWithOptions(request *GetMaterialByIdRequest
 
 // Summary:
 //
-// 根据ID获取素材内容
+// Retrieves detailed information about a material from the Material Library.
 //
 // @param request - GetMaterialByIdRequest
 //
@@ -6574,7 +6637,17 @@ func (client *Client) GetMaterialById(request *GetMaterialByIdRequest) (_result 
 
 // Summary:
 //
-// 查询PPT作品信息
+// Queries information about a PPT artifact.
+//
+// Description:
+//
+// Usage notes:
+//
+// - This API uses the HTTP Server-Sent Events (SSE) protocol.
+//
+// - The OpenAPI portal is not compatible with the SSE protocol and cannot be used for direct debugging. For examples of how to call the API using an SDK for Java or Python, see [PPT Generation Best practices](https://help.aliyun.com/zh/model-studio/ppt-generation-best-practices).
+//
+// - To obtain the latest version of the asynchronous Java SDK, [download it from the API portal](https://api.aliyun.com/api-tools/sdk/AiMiaoBi?spm=a2c4g.11186623.0.0.4cd3170d7rccDC\\&version=2023-08-01\\&language=java-async-tea\\&tab=primer-doc).
 //
 // @param request - GetPptArtifactRequest
 //
@@ -6626,7 +6699,17 @@ func (client *Client) GetPptArtifactWithOptions(request *GetPptArtifactRequest, 
 
 // Summary:
 //
-// 查询PPT作品信息
+// Queries information about a PPT artifact.
+//
+// Description:
+//
+// Usage notes:
+//
+// - This API uses the HTTP Server-Sent Events (SSE) protocol.
+//
+// - The OpenAPI portal is not compatible with the SSE protocol and cannot be used for direct debugging. For examples of how to call the API using an SDK for Java or Python, see [PPT Generation Best practices](https://help.aliyun.com/zh/model-studio/ppt-generation-best-practices).
+//
+// - To obtain the latest version of the asynchronous Java SDK, [download it from the API portal](https://api.aliyun.com/api-tools/sdk/AiMiaoBi?spm=a2c4g.11186623.0.0.4cd3170d7rccDC\\&version=2023-08-01\\&language=java-async-tea\\&tab=primer-doc).
 //
 // @param request - GetPptArtifactRequest
 //
@@ -6644,7 +6727,7 @@ func (client *Client) GetPptArtifact(request *GetPptArtifactRequest) (_result *G
 
 // Summary:
 //
-// 查询PPT导出任务的结果
+// Retrieves the result of a PPT export task.
 //
 // @param request - GetPptArtifactExportResultRequest
 //
@@ -6696,7 +6779,7 @@ func (client *Client) GetPptArtifactExportResultWithOptions(request *GetPptArtif
 
 // Summary:
 //
-// 查询PPT导出任务的结果
+// Retrieves the result of a PPT export task.
 //
 // @param request - GetPptArtifactExportResultRequest
 //
@@ -6714,7 +6797,7 @@ func (client *Client) GetPptArtifactExportResult(request *GetPptArtifactExportRe
 
 // Summary:
 //
-// 获取PPT组件的配置
+// Retrieves the configuration of a PPT component.
 //
 // @param request - GetPptConfigRequest
 //
@@ -6762,7 +6845,7 @@ func (client *Client) GetPptConfigWithOptions(request *GetPptConfigRequest, runt
 
 // Summary:
 //
-// 获取PPT组件的配置
+// Retrieves the configuration of a PPT component.
 //
 // @param request - GetPptConfigRequest
 //
@@ -6780,7 +6863,7 @@ func (client *Client) GetPptConfig(request *GetPptConfigRequest) (_result *GetPp
 
 // Summary:
 //
-// 查询PPT任务信息
+// Gets information about a PPT task.
 //
 // @param request - GetPptInfoRequest
 //
@@ -6832,7 +6915,7 @@ func (client *Client) GetPptInfoWithOptions(request *GetPptInfoRequest, runtime 
 
 // Summary:
 //
-// 查询PPT任务信息
+// Gets information about a PPT task.
 //
 // @param request - GetPptInfoRequest
 //
@@ -6850,7 +6933,7 @@ func (client *Client) GetPptInfo(request *GetPptInfoRequest) (_result *GetPptInf
 
 // Summary:
 //
-// 查询PPT模板筛选器
+// Retrieves the filters for PowerPoint (PPT) templates.
 //
 // @param request - GetPptTemplateSelectorRequest
 //
@@ -6894,7 +6977,7 @@ func (client *Client) GetPptTemplateSelectorWithOptions(request *GetPptTemplateS
 
 // Summary:
 //
-// 查询PPT模板筛选器
+// Retrieves the filters for PowerPoint (PPT) templates.
 //
 // @param request - GetPptTemplateSelectorRequest
 //
@@ -6912,7 +6995,7 @@ func (client *Client) GetPptTemplateSelector(request *GetPptTemplateSelectorRequ
 
 // Summary:
 //
-// 获取当前用户的配置
+// Retrieves configuration information, such as intelligent configuration styles and inference-related metadata configurations.
 //
 // @param request - GetPropertiesRequest
 //
@@ -6956,7 +7039,7 @@ func (client *Client) GetPropertiesWithOptions(request *GetPropertiesRequest, ru
 
 // Summary:
 //
-// 获取当前用户的配置
+// Retrieves configuration information, such as intelligent configuration styles and inference-related metadata configurations.
 //
 // @param request - GetPropertiesRequest
 //
@@ -6974,7 +7057,7 @@ func (client *Client) GetProperties(request *GetPropertiesRequest) (_result *Get
 
 // Summary:
 //
-// 查询智能审核结果
+// Queries the result of an automated review.
 //
 // @param request - GetSmartAuditResultRequest
 //
@@ -7022,7 +7105,7 @@ func (client *Client) GetSmartAuditResultWithOptions(request *GetSmartAuditResul
 
 // Summary:
 //
-// 查询智能审核结果
+// Queries the result of an automated review.
 //
 // @param request - GetSmartAuditResultRequest
 //
@@ -7040,7 +7123,7 @@ func (client *Client) GetSmartAuditResult(request *GetSmartAuditResultRequest) (
 
 // Summary:
 //
-// 查询一键成片剪辑任务
+// Queries a one-click video editing task.
 //
 // @param request - GetSmartClipTaskRequest
 //
@@ -7088,7 +7171,7 @@ func (client *Client) GetSmartClipTaskWithOptions(request *GetSmartClipTaskReque
 
 // Summary:
 //
-// 查询一键成片剪辑任务
+// Queries a one-click video editing task.
 //
 // @param request - GetSmartClipTaskRequest
 //
@@ -7106,7 +7189,7 @@ func (client *Client) GetSmartClipTask(request *GetSmartClipTaskRequest) (_resul
 
 // Summary:
 //
-// 获取文体学习分析结果
+// Retrieves the analysis result of a style learning task.
 //
 // @param request - GetStyleLearningResultRequest
 //
@@ -7156,7 +7239,7 @@ func (client *Client) GetStyleLearningResultWithOptions(request *GetStyleLearnin
 
 // Summary:
 //
-// 获取文体学习分析结果
+// Retrieves the analysis result of a style learning task.
 //
 // @param request - GetStyleLearningResultRequest
 //
@@ -7174,7 +7257,7 @@ func (client *Client) GetStyleLearningResult(request *GetStyleLearningResultRequ
 
 // Summary:
 //
-// 根据ID获取热点事件信息
+// Retrieve hot topic event information by ID.
 //
 // @param request - GetTopicByIdRequest
 //
@@ -7224,7 +7307,7 @@ func (client *Client) GetTopicByIdWithOptions(request *GetTopicByIdRequest, runt
 
 // Summary:
 //
-// 根据ID获取热点事件信息
+// Retrieve hot topic event information by ID.
 //
 // @param request - GetTopicByIdRequest
 //
@@ -7242,7 +7325,7 @@ func (client *Client) GetTopicById(request *GetTopicByIdRequest) (_result *GetTo
 
 // Summary:
 //
-// 获取选题视角分析任务结果
+// Retrieves the result of a topic selection perspective analysis task.
 //
 // @param request - GetTopicSelectionPerspectiveAnalysisTaskRequest
 //
@@ -7292,7 +7375,7 @@ func (client *Client) GetTopicSelectionPerspectiveAnalysisTaskWithOptions(reques
 
 // Summary:
 //
-// 获取选题视角分析任务结果
+// Retrieves the result of a topic selection perspective analysis task.
 //
 // @param request - GetTopicSelectionPerspectiveAnalysisTaskRequest
 //
@@ -7310,7 +7393,7 @@ func (client *Client) GetTopicSelectionPerspectiveAnalysisTask(request *GetTopic
 
 // Summary:
 //
-// 导入干预文件
+// Imports an intervention file.
 //
 // @param request - ImportInterveneFileRequest
 //
@@ -7368,7 +7451,7 @@ func (client *Client) ImportInterveneFileWithOptions(request *ImportInterveneFil
 
 // Summary:
 //
-// 导入干预文件
+// Imports an intervention file.
 //
 // @param request - ImportInterveneFileRequest
 //
@@ -7386,7 +7469,7 @@ func (client *Client) ImportInterveneFile(request *ImportInterveneFileRequest) (
 
 // Summary:
 //
-// 异步导入干预文件
+// Asynchronously import an intervention file.
 //
 // @param request - ImportInterveneFileAsyncRequest
 //
@@ -7444,7 +7527,7 @@ func (client *Client) ImportInterveneFileAsyncWithOptions(request *ImportInterve
 
 // Summary:
 //
-// 异步导入干预文件
+// Asynchronously import an intervention file.
 //
 // @param request - ImportInterveneFileAsyncRequest
 //
@@ -7462,7 +7545,13 @@ func (client *Client) ImportInterveneFileAsync(request *ImportInterveneFileAsync
 
 // Summary:
 //
-// 初始化PPT创建操作
+// Important: This is a billable API operation.
+//
+// This API performs two operations:
+//
+// 1\\. Returns the initialization code for the "PPT Generation" frontend component.
+//
+// 2\\. Performs billing.
 //
 // @param request - InitiatePptCreationRequest
 //
@@ -7518,7 +7607,13 @@ func (client *Client) InitiatePptCreationWithOptions(request *InitiatePptCreatio
 
 // Summary:
 //
-// 初始化PPT创建操作
+// Important: This is a billable API operation.
+//
+// This API performs two operations:
+//
+// 1\\. Returns the initialization code for the "PPT Generation" frontend component.
+//
+// 2\\. Performs billing.
 //
 // @param request - InitiatePptCreationRequest
 //
@@ -7536,7 +7631,7 @@ func (client *Client) InitiatePptCreation(request *InitiatePptCreationRequest) (
 
 // Summary:
 //
-// 初始化PPT创建操作V2
+// Starts a task to create a presentation.
 //
 // @param request - InitiatePptCreationV2Request
 //
@@ -7612,7 +7707,7 @@ func (client *Client) InitiatePptCreationV2WithOptions(request *InitiatePptCreat
 
 // Summary:
 //
-// 初始化PPT创建操作V2
+// Starts a task to create a presentation.
 //
 // @param request - InitiatePptCreationV2Request
 //
@@ -7630,7 +7725,7 @@ func (client *Client) InitiatePptCreationV2(request *InitiatePptCreationV2Reques
 
 // Summary:
 //
-// 设置干预全局回复
+// Sets global intervention replies.
 //
 // @param tmpReq - InsertInterveneGlobalReplyRequest
 //
@@ -7686,7 +7781,7 @@ func (client *Client) InsertInterveneGlobalReplyWithOptions(tmpReq *InsertInterv
 
 // Summary:
 //
-// 设置干预全局回复
+// Sets global intervention replies.
 //
 // @param request - InsertInterveneGlobalReplyRequest
 //
@@ -7704,7 +7799,7 @@ func (client *Client) InsertInterveneGlobalReply(request *InsertInterveneGlobalR
 
 // Summary:
 //
-// 插入干预规则
+// Insert an intervention rule.
 //
 // @param tmpReq - InsertInterveneRuleRequest
 //
@@ -7760,7 +7855,7 @@ func (client *Client) InsertInterveneRuleWithOptions(tmpReq *InsertInterveneRule
 
 // Summary:
 //
-// 插入干预规则
+// Insert an intervention rule.
 //
 // @param request - InsertInterveneRuleRequest
 //
@@ -7778,7 +7873,7 @@ func (client *Client) InsertInterveneRule(request *InsertInterveneRuleRequest) (
 
 // Summary:
 //
-// 分页获取企业VOC分析任务明细列表
+// Retrieves a paginated list of details for an enterprise Voice of the Customer (VOC) analysis task.
 //
 // @param tmpReq - ListAnalysisTagDetailByTaskIdRequest
 //
@@ -7852,7 +7947,7 @@ func (client *Client) ListAnalysisTagDetailByTaskIdWithOptions(tmpReq *ListAnaly
 
 // Summary:
 //
-// 分页获取企业VOC分析任务明细列表
+// Retrieves a paginated list of details for an enterprise Voice of the Customer (VOC) analysis task.
 //
 // @param request - ListAnalysisTagDetailByTaskIdRequest
 //
@@ -7870,7 +7965,7 @@ func (client *Client) ListAnalysisTagDetailByTaskId(request *ListAnalysisTagDeta
 
 // Summary:
 //
-// 查询任务列表
+// Retrieves a list of asynchronous tasks.
 //
 // @param tmpReq - ListAsyncTasksRequest
 //
@@ -7966,7 +8061,7 @@ func (client *Client) ListAsyncTasksWithOptions(tmpReq *ListAsyncTasksRequest, r
 
 // Summary:
 //
-// 查询任务列表
+// Retrieves a list of asynchronous tasks.
 //
 // @param request - ListAsyncTasksRequest
 //
@@ -7984,7 +8079,7 @@ func (client *Client) ListAsyncTasks(request *ListAsyncTasksRequest) (_result *L
 
 // Summary:
 //
-// 获取审核维度列表
+// Retrieves a list of audit dimensions.
 //
 // @param request - ListAuditContentErrorTypesRequest
 //
@@ -8036,7 +8131,7 @@ func (client *Client) ListAuditContentErrorTypesWithOptions(request *ListAuditCo
 
 // Summary:
 //
-// 获取审核维度列表
+// Retrieves a list of audit dimensions.
 //
 // @param request - ListAuditContentErrorTypesRequest
 //
@@ -8054,7 +8149,7 @@ func (client *Client) ListAuditContentErrorTypes(request *ListAuditContentErrorT
 
 // Summary:
 //
-// 获取词库列表
+// Retrieve a list of term libraries.
 //
 // @param request - ListAuditTermsRequest
 //
@@ -8110,7 +8205,7 @@ func (client *Client) ListAuditTermsWithOptions(request *ListAuditTermsRequest, 
 
 // Summary:
 //
-// 获取词库列表
+// Retrieve a list of term libraries.
 //
 // @param request - ListAuditTermsRequest
 //
@@ -8128,7 +8223,7 @@ func (client *Client) ListAuditTerms(request *ListAuditTermsRequest) (_result *L
 
 // Summary:
 //
-// 列出智能混剪任务列表
+// Lists smart video editing tasks.
 //
 // @param request - ListAutoClipsTaskRequest
 //
@@ -8212,7 +8307,7 @@ func (client *Client) ListAutoClipsTaskWithOptions(request *ListAutoClipsTaskReq
 
 // Summary:
 //
-// 列出智能混剪任务列表
+// Lists smart video editing tasks.
 //
 // @param request - ListAutoClipsTaskRequest
 //
@@ -8230,7 +8325,7 @@ func (client *Client) ListAutoClipsTask(request *ListAutoClipsTaskRequest) (_res
 
 // Summary:
 //
-// 获得标书写作任务列表
+// Retrieves the list of bidding document writing tasks.
 //
 // @param request - ListBiddingDocRequest
 //
@@ -8310,7 +8405,7 @@ func (client *Client) ListBiddingDocWithOptions(request *ListBiddingDocRequest, 
 
 // Summary:
 //
-// 获得标书写作任务列表
+// Retrieves the list of bidding document writing tasks.
 //
 // @param request - ListBiddingDocRequest
 //
@@ -8328,7 +8423,7 @@ func (client *Client) ListBiddingDoc(request *ListBiddingDocRequest) (_result *L
 
 // Summary:
 //
-// 获取系统自定义预设
+// Retrieves the system-defined presets for the Generate Content workflow. These presets include options such as writing style, article length, output language, and the number of articles to generate.
 //
 // @param request - ListBuildConfigsRequest
 //
@@ -8382,7 +8477,7 @@ func (client *Client) ListBuildConfigsWithOptions(request *ListBuildConfigsReque
 
 // Summary:
 //
-// 获取系统自定义预设
+// Retrieves the system-defined presets for the Generate Content workflow. These presets include options such as writing style, article length, output language, and the number of articles to generate.
 //
 // @param request - ListBuildConfigsRequest
 //
@@ -8400,7 +8495,7 @@ func (client *Client) ListBuildConfigs(request *ListBuildConfigsRequest) (_resul
 
 // Summary:
 //
-// 自定义文本列表
+// Retrieve a list of custom texts.
 //
 // @param request - ListCustomTextRequest
 //
@@ -8450,7 +8545,7 @@ func (client *Client) ListCustomTextWithOptions(request *ListCustomTextRequest, 
 
 // Summary:
 //
-// 自定义文本列表
+// Retrieve a list of custom texts.
 //
 // @param request - ListCustomTextRequest
 //
@@ -8468,7 +8563,7 @@ func (client *Client) ListCustomText(request *ListCustomTextRequest) (_result *L
 
 // Summary:
 //
-// 自定义视角列表
+// Lists custom viewpoints.
 //
 // @param tmpReq - ListCustomViewPointsRequest
 //
@@ -8556,7 +8651,7 @@ func (client *Client) ListCustomViewPointsWithOptions(tmpReq *ListCustomViewPoin
 
 // Summary:
 //
-// 自定义视角列表
+// Lists custom viewpoints.
 //
 // @param request - ListCustomViewPointsRequest
 //
@@ -8574,7 +8669,7 @@ func (client *Client) ListCustomViewPoints(request *ListCustomViewPointsRequest)
 
 // Summary:
 //
-// 用户数据集权限-列表
+// # Permission to list datasets
 //
 // @param request - ListDataPermissionsRequest
 //
@@ -8634,7 +8729,7 @@ func (client *Client) ListDataPermissionsWithOptions(request *ListDataPermission
 
 // Summary:
 //
-// 用户数据集权限-列表
+// # Permission to list datasets
 //
 // @param request - ListDataPermissionsRequest
 //
@@ -8652,7 +8747,7 @@ func (client *Client) ListDataPermissions(request *ListDataPermissionsRequest) (
 
 // Summary:
 //
-// 查询数据集文档列表
+// Lists data source documents.
 //
 // @param tmpReq - ListDatasetDocumentsRequest
 //
@@ -8814,7 +8909,7 @@ func (client *Client) ListDatasetDocumentsWithOptions(tmpReq *ListDatasetDocumen
 
 // Summary:
 //
-// 查询数据集文档列表
+// Lists data source documents.
 //
 // @param request - ListDatasetDocumentsRequest
 //
@@ -8832,7 +8927,7 @@ func (client *Client) ListDatasetDocuments(request *ListDatasetDocumentsRequest)
 
 // Summary:
 //
-// 数据集管理-查询
+// # Data source management - query
 //
 // @param request - ListDatasetsRequest
 //
@@ -8916,7 +9011,7 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, runt
 
 // Summary:
 //
-// 数据集管理-查询
+// # Data source management - query
 //
 // @param request - ListDatasetsRequest
 //
@@ -8934,7 +9029,7 @@ func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListD
 
 // Summary:
 //
-// 生成历史列表
+// History of online inference scenarios.
 //
 // @param request - ListDialoguesRequest
 //
@@ -9004,7 +9099,7 @@ func (client *Client) ListDialoguesWithOptions(request *ListDialoguesRequest, ru
 
 // Summary:
 //
-// 生成历史列表
+// History of online inference scenarios.
 //
 // @param request - ListDialoguesRequest
 //
@@ -9022,7 +9117,7 @@ func (client *Client) ListDialogues(request *ListDialoguesRequest) (_result *Lis
 
 // Summary:
 //
-// 妙读获取文档列表
+// Miàodú retrieves the list of documents.
 //
 // @param tmpReq - ListDocsRequest
 //
@@ -9100,7 +9195,7 @@ func (client *Client) ListDocsWithOptions(tmpReq *ListDocsRequest, runtime *dara
 
 // Summary:
 //
-// 妙读获取文档列表
+// Miàodú retrieves the list of documents.
 //
 // @param request - ListDocsRequest
 //
@@ -9118,7 +9213,11 @@ func (client *Client) ListDocs(request *ListDocsRequest) (_result *ListDocsRespo
 
 // Summary:
 //
-// 公文检索
+// Searches government document libraries based on complex conditions.
+//
+// Description:
+//
+// The Quanmiao product supports iframe embedding. For more information, see [Customer Integration: Quanmiao Public Cloud iframe Customization Plan](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - ListDocumentRetrieveRequest
 //
@@ -9214,7 +9313,11 @@ func (client *Client) ListDocumentRetrieveWithOptions(request *ListDocumentRetri
 
 // Summary:
 //
-// 公文检索
+// Searches government document libraries based on complex conditions.
+//
+// Description:
+//
+// The Quanmiao product supports iframe embedding. For more information, see [Customer Integration: Quanmiao Public Cloud iframe Customization Plan](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - ListDocumentRetrieveRequest
 //
@@ -9232,7 +9335,11 @@ func (client *Client) ListDocumentRetrieve(request *ListDocumentRetrieveRequest)
 
 // Summary:
 //
-// 查询PPT模板列表
+// Lists the enterprise-specific PPT templates.
+//
+// Description:
+//
+// Quanmiao supports iframe integration. For details, see the [Quanmiao Public Cloud iframe Customization Guide](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - ListEnterprisePptTemplatesRequest
 //
@@ -9290,7 +9397,11 @@ func (client *Client) ListEnterprisePptTemplatesWithOptions(request *ListEnterpr
 
 // Summary:
 //
-// 查询PPT模板列表
+// Lists the enterprise-specific PPT templates.
+//
+// Description:
+//
+// Quanmiao supports iframe integration. For details, see the [Quanmiao Public Cloud iframe Customization Guide](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - ListEnterprisePptTemplatesRequest
 //
@@ -9308,7 +9419,7 @@ func (client *Client) ListEnterprisePptTemplates(request *ListEnterprisePptTempl
 
 // Summary:
 //
-// 新颖视角列表
+// List of novel perspectives.
 //
 // @param request - ListFreshViewPointsRequest
 //
@@ -9370,7 +9481,7 @@ func (client *Client) ListFreshViewPointsWithOptions(request *ListFreshViewPoint
 
 // Summary:
 //
-// 新颖视角列表
+// List of novel perspectives.
 //
 // @param request - ListFreshViewPointsRequest
 //
@@ -9388,7 +9499,7 @@ func (client *Client) ListFreshViewPoints(request *ListFreshViewPointsRequest) (
 
 // Summary:
 //
-// 通用配置-列表
+// Lists the general configurations.
 //
 // @param request - ListGeneralConfigsRequest
 //
@@ -9440,7 +9551,7 @@ func (client *Client) ListGeneralConfigsWithOptions(request *ListGeneralConfigsR
 
 // Summary:
 //
-// 通用配置-列表
+// Lists the general configurations.
 //
 // @param request - ListGeneralConfigsRequest
 //
@@ -9458,7 +9569,7 @@ func (client *Client) ListGeneralConfigs(request *ListGeneralConfigsRequest) (_r
 
 // Summary:
 //
-// 文档管理-列表。
+// Retrieve a list of documents: Query the history of articles created in MiaoBi.
 //
 // @param request - ListGeneratedContentsRequest
 //
@@ -9540,7 +9651,7 @@ func (client *Client) ListGeneratedContentsWithOptions(request *ListGeneratedCon
 
 // Summary:
 //
-// 文档管理-列表。
+// Retrieve a list of documents: Query the history of articles created in MiaoBi.
 //
 // @param request - ListGeneratedContentsRequest
 //
@@ -9558,7 +9669,7 @@ func (client *Client) ListGeneratedContents(request *ListGeneratedContentsReques
 
 // Summary:
 //
-// 获取分类的热点新闻
+// Retrieves the list of trending topic hotspots.
 //
 // @param tmpReq - ListHotNewsWithTypeRequest
 //
@@ -9626,7 +9737,7 @@ func (client *Client) ListHotNewsWithTypeWithOptions(tmpReq *ListHotNewsWithType
 
 // Summary:
 //
-// 获取分类的热点新闻
+// Retrieves the list of trending topic hotspots.
 //
 // @param request - ListHotNewsWithTypeRequest
 //
@@ -9644,7 +9755,7 @@ func (client *Client) ListHotNewsWithType(request *ListHotNewsWithTypeRequest) (
 
 // Summary:
 //
-// 获取所有平台热榜源列表
+// Retrieve the list of hot ranking sources for all platforms.
 //
 // @param request - ListHotSourcesRequest
 //
@@ -9698,7 +9809,7 @@ func (client *Client) ListHotSourcesWithOptions(request *ListHotSourcesRequest, 
 
 // Summary:
 //
-// 获取所有平台热榜源列表
+// Retrieve the list of hot ranking sources for all platforms.
 //
 // @param request - ListHotSourcesRequest
 //
@@ -9716,7 +9827,7 @@ func (client *Client) ListHotSources(request *ListHotSourcesRequest) (_result *L
 
 // Summary:
 //
-// 获取热点事件列表
+// Retrieves a list of trending topics.
 //
 // @param tmpReq - ListHotTopicsRequest
 //
@@ -9816,7 +9927,7 @@ func (client *Client) ListHotTopicsWithOptions(tmpReq *ListHotTopicsRequest, run
 
 // Summary:
 //
-// 获取热点事件列表
+// Retrieves a list of trending topics.
 //
 // @param request - ListHotTopicsRequest
 //
@@ -9834,7 +9945,7 @@ func (client *Client) ListHotTopics(request *ListHotTopicsRequest) (_result *Lis
 
 // Summary:
 //
-// 热门视角列表
+// List of popular viewpoints.
 //
 // @param request - ListHotViewPointsRequest
 //
@@ -9896,7 +10007,7 @@ func (client *Client) ListHotViewPointsWithOptions(request *ListHotViewPointsReq
 
 // Summary:
 //
-// 热门视角列表
+// List of popular viewpoints.
 //
 // @param request - ListHotViewPointsRequest
 //
@@ -9914,7 +10025,7 @@ func (client *Client) ListHotViewPoints(request *ListHotViewPointsRequest) (_res
 
 // Summary:
 //
-// 获得干预项目数量列表
+// Lists the number of intervention projects.
 //
 // @param request - ListInterveneCntRequest
 //
@@ -9968,7 +10079,7 @@ func (client *Client) ListInterveneCntWithOptions(request *ListInterveneCntReque
 
 // Summary:
 //
-// 获得干预项目数量列表
+// Lists the number of intervention projects.
 //
 // @param request - ListInterveneCntRequest
 //
@@ -9986,7 +10097,7 @@ func (client *Client) ListInterveneCnt(request *ListInterveneCntRequest) (_resul
 
 // Summary:
 //
-// 获得导入任务列表
+// Retrieve a list of import tasks.
 //
 // @param request - ListInterveneImportTasksRequest
 //
@@ -10040,7 +10151,7 @@ func (client *Client) ListInterveneImportTasksWithOptions(request *ListIntervene
 
 // Summary:
 //
-// 获得导入任务列表
+// Retrieve a list of import tasks.
 //
 // @param request - ListInterveneImportTasksRequest
 //
@@ -10058,7 +10169,7 @@ func (client *Client) ListInterveneImportTasks(request *ListInterveneImportTasks
 
 // Summary:
 //
-// 获得干预规则列表
+// Retrieves a list of intervention rules.
 //
 // @param request - ListInterveneRulesRequest
 //
@@ -10112,7 +10223,7 @@ func (client *Client) ListInterveneRulesWithOptions(request *ListInterveneRulesR
 
 // Summary:
 //
-// 获得干预规则列表
+// Retrieves a list of intervention rules.
 //
 // @param request - ListInterveneRulesRequest
 //
@@ -10130,7 +10241,7 @@ func (client *Client) ListInterveneRules(request *ListInterveneRulesRequest) (_r
 
 // Summary:
 //
-// 获得干预项列表
+// Retrieves the list of intervention items.
 //
 // @param request - ListIntervenesRequest
 //
@@ -10196,7 +10307,7 @@ func (client *Client) ListIntervenesWithOptions(request *ListIntervenesRequest, 
 
 // Summary:
 //
-// 获得干预项列表
+// Retrieves the list of intervention items.
 //
 // @param request - ListIntervenesRequest
 //
@@ -10214,7 +10325,7 @@ func (client *Client) ListIntervenes(request *ListIntervenesRequest) (_result *L
 
 // Summary:
 //
-// 查询素材列表
+// Retrieve the list of materials from the Material Library.
 //
 // @param tmpReq - ListMaterialDocumentsRequest
 //
@@ -10330,7 +10441,7 @@ func (client *Client) ListMaterialDocumentsWithOptions(tmpReq *ListMaterialDocum
 
 // Summary:
 //
-// 查询素材列表
+// Retrieve the list of materials from the Material Library.
 //
 // @param request - ListMaterialDocumentsRequest
 //
@@ -10348,7 +10459,7 @@ func (client *Client) ListMaterialDocuments(request *ListMaterialDocumentsReques
 
 // Summary:
 //
-// 获取选题策划列表
+// Retrieves a list of planning proposals.
 //
 // @param tmpReq - ListPlanningProposalRequest
 //
@@ -10440,7 +10551,7 @@ func (client *Client) ListPlanningProposalWithOptions(tmpReq *ListPlanningPropos
 
 // Summary:
 //
-// 获取选题策划列表
+// Retrieves a list of planning proposals.
 //
 // @param request - ListPlanningProposalRequest
 //
@@ -10458,7 +10569,7 @@ func (client *Client) ListPlanningProposal(request *ListPlanningProposalRequest)
 
 // Summary:
 //
-// # PPT作品-列表
+// Queries a list of PPT artifacts.
 //
 // @param request - ListPptArtifactsRequest
 //
@@ -10520,7 +10631,7 @@ func (client *Client) ListPptArtifactsWithOptions(request *ListPptArtifactsReque
 
 // Summary:
 //
-// # PPT作品-列表
+// Queries a list of PPT artifacts.
 //
 // @param request - ListPptArtifactsRequest
 //
@@ -10538,7 +10649,7 @@ func (client *Client) ListPptArtifacts(request *ListPptArtifactsRequest) (_resul
 
 // Summary:
 //
-// 查询PPT模板列表
+// Queries a list of PowerPoint templates.
 //
 // @param request - ListPptTemplatesRequest
 //
@@ -10608,7 +10719,7 @@ func (client *Client) ListPptTemplatesWithOptions(request *ListPptTemplatesReque
 
 // Summary:
 //
-// 查询PPT模板列表
+// Queries a list of PowerPoint templates.
 //
 // @param request - ListPptTemplatesRequest
 //
@@ -10626,7 +10737,7 @@ func (client *Client) ListPptTemplates(request *ListPptTemplatesRequest) (_resul
 
 // Summary:
 //
-// 查询搜索生成任务对话详情中数据列表
+// Lists the dialogue data for a search generation task.
 //
 // @param request - ListSearchTaskDialogueDatasRequest
 //
@@ -10710,7 +10821,7 @@ func (client *Client) ListSearchTaskDialogueDatasWithOptions(request *ListSearch
 
 // Summary:
 //
-// 查询搜索生成任务对话详情中数据列表
+// Lists the dialogue data for a search generation task.
 //
 // @param request - ListSearchTaskDialogueDatasRequest
 //
@@ -10728,7 +10839,7 @@ func (client *Client) ListSearchTaskDialogueDatas(request *ListSearchTaskDialogu
 
 // Summary:
 //
-// 查询妙搜搜索生成任务详情列表
+// Retrieves the task details for MiaoSou search generation tasks.
 //
 // @param request - ListSearchTaskDialoguesRequest
 //
@@ -10784,7 +10895,7 @@ func (client *Client) ListSearchTaskDialoguesWithOptions(request *ListSearchTask
 
 // Summary:
 //
-// 查询妙搜搜索生成任务详情列表
+// Retrieves the task details for MiaoSou search generation tasks.
 //
 // @param request - ListSearchTaskDialoguesRequest
 //
@@ -10802,7 +10913,7 @@ func (client *Client) ListSearchTaskDialogues(request *ListSearchTaskDialoguesRe
 
 // Summary:
 //
-// 查询妙搜搜索生成历史任务列表
+// Queries the list of historical tasks generated by Miaosou Search.
 //
 // @param tmpReq - ListSearchTasksRequest
 //
@@ -10864,7 +10975,7 @@ func (client *Client) ListSearchTasksWithOptions(tmpReq *ListSearchTasksRequest,
 
 // Summary:
 //
-// 查询妙搜搜索生成历史任务列表
+// Queries the list of historical tasks generated by Miaosou Search.
 //
 // @param request - ListSearchTasksRequest
 //
@@ -10882,7 +10993,11 @@ func (client *Client) ListSearchTasks(request *ListSearchTasksRequest) (_result 
 
 // Summary:
 //
-// 获取文体学习分析结果列表
+// Retrieves the list of style learning analysis results.
+//
+// Description:
+//
+// The Quanmiao product supports iframe embedding. For details, see [Customer Integration: Quanmiao Public Cloud iframe Customization Plan](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - ListStyleLearningResultRequest
 //
@@ -10936,7 +11051,11 @@ func (client *Client) ListStyleLearningResultWithOptions(request *ListStyleLearn
 
 // Summary:
 //
-// 获取文体学习分析结果列表
+// Retrieves the list of style learning analysis results.
+//
+// Description:
+//
+// The Quanmiao product supports iframe embedding. For details, see [Customer Integration: Quanmiao Public Cloud iframe Customization Plan](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - ListStyleLearningResultRequest
 //
@@ -10954,7 +11073,7 @@ func (client *Client) ListStyleLearningResult(request *ListStyleLearningResultRe
 
 // Summary:
 //
-// 时效性视角列表
+// List of timeliness perspectives.
 //
 // @param request - ListTimedViewAttitudeRequest
 //
@@ -11016,7 +11135,7 @@ func (client *Client) ListTimedViewAttitudeWithOptions(request *ListTimedViewAtt
 
 // Summary:
 //
-// 时效性视角列表
+// List of timeliness perspectives.
 //
 // @param request - ListTimedViewAttitudeRequest
 //
@@ -11034,7 +11153,7 @@ func (client *Client) ListTimedViewAttitude(request *ListTimedViewAttitudeReques
 
 // Summary:
 //
-// 获取热点推荐事件
+// Retrieve hot spot recommendation events.
 //
 // @param request - ListTopicRecommendEventListRequest
 //
@@ -11088,7 +11207,7 @@ func (client *Client) ListTopicRecommendEventListWithOptions(request *ListTopicR
 
 // Summary:
 //
-// 获取热点推荐事件
+// Retrieve hot spot recommendation events.
 //
 // @param request - ListTopicRecommendEventListRequest
 //
@@ -11106,7 +11225,7 @@ func (client *Client) ListTopicRecommendEventList(request *ListTopicRecommendEve
 
 // Summary:
 //
-// 获取主题事件推荐观点列表
+// Retrieves recommended viewpoints for hot spot events.
 //
 // @param request - ListTopicViewPointRecommendEventListRequest
 //
@@ -11164,7 +11283,7 @@ func (client *Client) ListTopicViewPointRecommendEventListWithOptions(request *L
 
 // Summary:
 //
-// 获取主题事件推荐观点列表
+// Retrieves recommended viewpoints for hot spot events.
 //
 // @param request - ListTopicViewPointRecommendEventListRequest
 //
@@ -11182,7 +11301,7 @@ func (client *Client) ListTopicViewPointRecommendEventList(request *ListTopicVie
 
 // Summary:
 //
-// 获取系统所有实例信息
+// Retrieve version information for your purchased services.
 //
 // @param request - ListVersionsRequest
 //
@@ -11226,7 +11345,7 @@ func (client *Client) ListVersionsWithOptions(request *ListVersionsRequest, runt
 
 // Summary:
 //
-// 获取系统所有实例信息
+// Retrieve version information for your purchased services.
 //
 // @param request - ListVersionsRequest
 //
@@ -11244,7 +11363,7 @@ func (client *Client) ListVersions(request *ListVersionsRequest) (_result *ListV
 
 // Summary:
 //
-// 网友视角列表
+// List of viewpoints from netizens.
 //
 // @param request - ListWebReviewPointsRequest
 //
@@ -11306,7 +11425,7 @@ func (client *Client) ListWebReviewPointsWithOptions(request *ListWebReviewPoint
 
 // Summary:
 //
-// 网友视角列表
+// List of viewpoints from netizens.
 //
 // @param request - ListWebReviewPointsRequest
 //
@@ -11324,7 +11443,7 @@ func (client *Client) ListWebReviewPoints(request *ListWebReviewPointsRequest) (
 
 // Summary:
 //
-// 获取文体列表
+// Retrieves the list of writing styles.
 //
 // @param request - ListWritingStylesRequest
 //
@@ -11382,7 +11501,7 @@ func (client *Client) ListWritingStylesWithOptions(request *ListWritingStylesReq
 
 // Summary:
 //
-// 获取文体列表
+// Retrieves the list of writing styles.
 //
 // @param request - ListWritingStylesRequest
 //
@@ -11400,7 +11519,7 @@ func (client *Client) ListWritingStyles(request *ListWritingStylesRequest) (_res
 
 // Summary:
 //
-// 根据taskId查询异步任务状态
+// Queries the details of submitted asynchronous task executions.
 //
 // @param request - QueryAsyncTaskRequest
 //
@@ -11450,7 +11569,7 @@ func (client *Client) QueryAsyncTaskWithOptions(request *QueryAsyncTaskRequest, 
 
 // Summary:
 //
-// 根据taskId查询异步任务状态
+// Queries the details of submitted asynchronous task executions.
 //
 // @param request - QueryAsyncTaskRequest
 //
@@ -11468,7 +11587,7 @@ func (client *Client) QueryAsyncTask(request *QueryAsyncTaskRequest) (_result *Q
 
 // Summary:
 //
-// 查询审核结果
+// Queries the results of an audit task.
 //
 // @param request - QueryAuditTaskRequest
 //
@@ -11520,7 +11639,7 @@ func (client *Client) QueryAuditTaskWithOptions(request *QueryAuditTaskRequest, 
 
 // Summary:
 //
-// 查询审核结果
+// Queries the results of an audit task.
 //
 // @param request - QueryAuditTaskRequest
 //
@@ -11538,11 +11657,11 @@ func (client *Client) QueryAuditTask(request *QueryAuditTaskRequest) (_result *Q
 
 // Summary:
 //
-// 查询视频审校结果
+// Queries video audit results.
 //
 // Description:
 //
-// 根据任务ID查询视频审校结果，包含视频信息、分镜信息和审核结果
+// Queries video audit results by task ID. The response includes video information, shot information, and audit results.
 //
 // @param request - QueryVideoAuditResultRequest
 //
@@ -11590,11 +11709,11 @@ func (client *Client) QueryVideoAuditResultWithOptions(request *QueryVideoAuditR
 
 // Summary:
 //
-// 查询视频审校结果
+// Queries video audit results.
 //
 // Description:
 //
-// 根据任务ID查询视频审校结果，包含视频信息、分镜信息和审核结果
+// Queries video audit results by task ID. The response includes video information, shot information, and audit results.
 //
 // @param request - QueryVideoAuditResultRequest
 //
@@ -11612,7 +11731,7 @@ func (client *Client) QueryVideoAuditResult(request *QueryVideoAuditResultReques
 
 // Summary:
 //
-// 内容缩写
+// Abbreviates the specified content.
 //
 // @param request - RunAbbreviationContentRequest
 //
@@ -11627,7 +11746,7 @@ func (client *Client) RunAbbreviationContentWithSSE(request *RunAbbreviationCont
 
 // Summary:
 //
-// 内容缩写
+// Abbreviates the specified content.
 //
 // @param request - RunAbbreviationContentRequest
 //
@@ -11679,7 +11798,7 @@ func (client *Client) RunAbbreviationContentWithOptions(request *RunAbbreviation
 
 // Summary:
 //
-// 内容缩写
+// Abbreviates the specified content.
 //
 // @param request - RunAbbreviationContentRequest
 //
@@ -11697,7 +11816,11 @@ func (client *Client) RunAbbreviationContent(request *RunAbbreviationContentRequ
 
 // Summary:
 //
-// 妙笔：AI助手写作
+// MiaoBi: AI-assisted writing
+//
+// Description:
+//
+// QuanMiao products support iframe embedding. For more information, see [QuanMiao Public Cloud iframe Customization for Customer Onboarding](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param tmpReq - RunAiHelperWritingRequest
 //
@@ -11712,7 +11835,11 @@ func (client *Client) RunAiHelperWritingWithSSE(tmpReq *RunAiHelperWritingReques
 
 // Summary:
 //
-// 妙笔：AI助手写作
+// MiaoBi: AI-assisted writing
+//
+// Description:
+//
+// QuanMiao products support iframe embedding. For more information, see [QuanMiao Public Cloud iframe Customization for Customer Onboarding](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param tmpReq - RunAiHelperWritingRequest
 //
@@ -11786,7 +11913,11 @@ func (client *Client) RunAiHelperWritingWithOptions(tmpReq *RunAiHelperWritingRe
 
 // Summary:
 //
-// 妙笔：AI助手写作
+// MiaoBi: AI-assisted writing
+//
+// Description:
+//
+// QuanMiao products support iframe embedding. For more information, see [QuanMiao Public Cloud iframe Customization for Customer Onboarding](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - RunAiHelperWritingRequest
 //
@@ -11804,7 +11935,7 @@ func (client *Client) RunAiHelperWriting(request *RunAiHelperWritingRequest) (_r
 
 // Summary:
 //
-// 妙读生成书籍脑图
+// Miaodu generates mind maps of books.
 //
 // @param request - RunBookBrainmapRequest
 //
@@ -11819,7 +11950,7 @@ func (client *Client) RunBookBrainmapWithSSE(request *RunBookBrainmapRequest, ru
 
 // Summary:
 //
-// 妙读生成书籍脑图
+// Miaodu generates mind maps of books.
 //
 // @param request - RunBookBrainmapRequest
 //
@@ -11891,7 +12022,7 @@ func (client *Client) RunBookBrainmapWithOptions(request *RunBookBrainmapRequest
 
 // Summary:
 //
-// 妙读生成书籍脑图
+// Miaodu generates mind maps of books.
 //
 // @param request - RunBookBrainmapRequest
 //
@@ -11909,7 +12040,7 @@ func (client *Client) RunBookBrainmap(request *RunBookBrainmapRequest) (_result 
 
 // Summary:
 //
-// 书籍导读接口
+// Extracts a summary, structured selling points, and hotwords from a book.
 //
 // @param request - RunBookIntroductionRequest
 //
@@ -11924,7 +12055,7 @@ func (client *Client) RunBookIntroductionWithSSE(request *RunBookIntroductionReq
 
 // Summary:
 //
-// 书籍导读接口
+// Extracts a summary, structured selling points, and hotwords from a book.
 //
 // @param request - RunBookIntroductionRequest
 //
@@ -11988,7 +12119,7 @@ func (client *Client) RunBookIntroductionWithOptions(request *RunBookIntroductio
 
 // Summary:
 //
-// 书籍导读接口
+// Extracts a summary, structured selling points, and hotwords from a book.
 //
 // @param request - RunBookIntroductionRequest
 //
@@ -12006,7 +12137,7 @@ func (client *Client) RunBookIntroduction(request *RunBookIntroductionRequest) (
 
 // Summary:
 //
-// 书籍智能卡片接口
+// A smart card interface for books.
 //
 // @param request - RunBookSmartCardRequest
 //
@@ -12021,7 +12152,7 @@ func (client *Client) RunBookSmartCardWithSSE(request *RunBookSmartCardRequest, 
 
 // Summary:
 //
-// 书籍智能卡片接口
+// A smart card interface for books.
 //
 // @param request - RunBookSmartCardRequest
 //
@@ -12073,7 +12204,7 @@ func (client *Client) RunBookSmartCardWithOptions(request *RunBookSmartCardReque
 
 // Summary:
 //
-// 书籍智能卡片接口
+// A smart card interface for books.
 //
 // @param request - RunBookSmartCardRequest
 //
@@ -12091,7 +12222,7 @@ func (client *Client) RunBookSmartCard(request *RunBookSmartCardRequest) (_resul
 
 // Summary:
 //
-// 客户之声预测
+// Predicts user comments for a specified article.
 //
 // @param tmpReq - RunCommentGenerationRequest
 //
@@ -12106,7 +12237,7 @@ func (client *Client) RunCommentGenerationWithSSE(tmpReq *RunCommentGenerationRe
 
 // Summary:
 //
-// 客户之声预测
+// Predicts user comments for a specified article.
 //
 // @param tmpReq - RunCommentGenerationRequest
 //
@@ -12208,7 +12339,7 @@ func (client *Client) RunCommentGenerationWithOptions(tmpReq *RunCommentGenerati
 
 // Summary:
 //
-// 客户之声预测
+// Predicts user comments for a specified article.
 //
 // @param request - RunCommentGenerationRequest
 //
@@ -12226,7 +12357,7 @@ func (client *Client) RunCommentGeneration(request *RunCommentGenerationRequest)
 
 // Summary:
 //
-// 内容续写
+// Continues generating content.
 //
 // @param request - RunContinueContentRequest
 //
@@ -12241,7 +12372,7 @@ func (client *Client) RunContinueContentWithSSE(request *RunContinueContentReque
 
 // Summary:
 //
-// 内容续写
+// Continues generating content.
 //
 // @param request - RunContinueContentRequest
 //
@@ -12289,7 +12420,7 @@ func (client *Client) RunContinueContentWithOptions(request *RunContinueContentR
 
 // Summary:
 //
-// 内容续写
+// Continues generating content.
 //
 // @param request - RunContinueContentRequest
 //
@@ -12307,7 +12438,7 @@ func (client *Client) RunContinueContent(request *RunContinueContentRequest) (_r
 
 // Summary:
 //
-// 自定义热点话题分析
+// Analyzes custom hot topics.
 //
 // @param request - RunCustomHotTopicAnalysisRequest
 //
@@ -12322,7 +12453,7 @@ func (client *Client) RunCustomHotTopicAnalysisWithSSE(request *RunCustomHotTopi
 
 // Summary:
 //
-// 自定义热点话题分析
+// Analyzes custom hot topics.
 //
 // @param request - RunCustomHotTopicAnalysisRequest
 //
@@ -12390,7 +12521,7 @@ func (client *Client) RunCustomHotTopicAnalysisWithOptions(request *RunCustomHot
 
 // Summary:
 //
-// 自定义热点话题分析
+// Analyzes custom hot topics.
 //
 // @param request - RunCustomHotTopicAnalysisRequest
 //
@@ -12408,7 +12539,7 @@ func (client *Client) RunCustomHotTopicAnalysis(request *RunCustomHotTopicAnalys
 
 // Summary:
 //
-// 自定义选题视角分析
+// Perspective analysis of custom topics.
 //
 // @param request - RunCustomHotTopicViewPointAnalysisRequest
 //
@@ -12423,7 +12554,7 @@ func (client *Client) RunCustomHotTopicViewPointAnalysisWithSSE(request *RunCust
 
 // Summary:
 //
-// 自定义选题视角分析
+// Perspective analysis of custom topics.
 //
 // @param request - RunCustomHotTopicViewPointAnalysisRequest
 //
@@ -12503,7 +12634,7 @@ func (client *Client) RunCustomHotTopicViewPointAnalysisWithOptions(request *Run
 
 // Summary:
 //
-// 自定义选题视角分析
+// Perspective analysis of custom topics.
 //
 // @param request - RunCustomHotTopicViewPointAnalysisRequest
 //
@@ -12521,7 +12652,7 @@ func (client *Client) RunCustomHotTopicViewPointAnalysis(request *RunCustomHotTo
 
 // Summary:
 //
-// 流式输出深度写作事件
+// Queries deep writing events. The system returns detailed information about the task execution as a stream of Server-Sent Events (SSE).
 //
 // @param request - RunDeepWritingRequest
 //
@@ -12536,7 +12667,7 @@ func (client *Client) RunDeepWritingWithSSE(request *RunDeepWritingRequest, runt
 
 // Summary:
 //
-// 流式输出深度写作事件
+// Queries deep writing events. The system returns detailed information about the task execution as a stream of Server-Sent Events (SSE).
 //
 // @param request - RunDeepWritingRequest
 //
@@ -12588,7 +12719,7 @@ func (client *Client) RunDeepWritingWithOptions(request *RunDeepWritingRequest, 
 
 // Summary:
 //
-// 流式输出深度写作事件
+// Queries deep writing events. The system returns detailed information about the task execution as a stream of Server-Sent Events (SSE).
 //
 // @param request - RunDeepWritingRequest
 //
@@ -12606,7 +12737,7 @@ func (client *Client) RunDeepWriting(request *RunDeepWritingRequest) (_result *R
 
 // Summary:
 //
-// 妙读脑图生成接口
+// Generate a three-level, multilingual mind map from an article or a book, with control over the number of second-level nodes and the word count of leaf nodes.
 //
 // @param request - RunDocBrainmapRequest
 //
@@ -12621,7 +12752,7 @@ func (client *Client) RunDocBrainmapWithSSE(request *RunDocBrainmapRequest, runt
 
 // Summary:
 //
-// 妙读脑图生成接口
+// Generate a three-level, multilingual mind map from an article or a book, with control over the number of second-level nodes and the word count of leaf nodes.
 //
 // @param request - RunDocBrainmapRequest
 //
@@ -12701,7 +12832,7 @@ func (client *Client) RunDocBrainmapWithOptions(request *RunDocBrainmapRequest, 
 
 // Summary:
 //
-// 妙读脑图生成接口
+// Generate a three-level, multilingual mind map from an article or a book, with control over the number of second-level nodes and the word count of leaf nodes.
 //
 // @param request - RunDocBrainmapRequest
 //
@@ -12719,7 +12850,7 @@ func (client *Client) RunDocBrainmap(request *RunDocBrainmapRequest) (_result *R
 
 // Summary:
 //
-// 妙读文档导读接口
+// Generates a summary for an article, video, or URL, including a full-text summary, key points, and a chapter overview (i.e., segmented content with summaries and abstracts for each segment). It also supports multilingual input and output. If the user only requires a full-text summary of an article, they can use the RunDocSummary API. For details, see https://help.aliyun.com/zh/model-studio/api-aimiaobi-2023-08-01-rundocsummary.
 //
 // @param request - RunDocIntroductionRequest
 //
@@ -12734,7 +12865,7 @@ func (client *Client) RunDocIntroductionWithSSE(request *RunDocIntroductionReque
 
 // Summary:
 //
-// 妙读文档导读接口
+// Generates a summary for an article, video, or URL, including a full-text summary, key points, and a chapter overview (i.e., segmented content with summaries and abstracts for each segment). It also supports multilingual input and output. If the user only requires a full-text summary of an article, they can use the RunDocSummary API. For details, see https://help.aliyun.com/zh/model-studio/api-aimiaobi-2023-08-01-rundocsummary.
 //
 // @param request - RunDocIntroductionRequest
 //
@@ -12810,7 +12941,7 @@ func (client *Client) RunDocIntroductionWithOptions(request *RunDocIntroductionR
 
 // Summary:
 //
-// 妙读文档导读接口
+// Generates a summary for an article, video, or URL, including a full-text summary, key points, and a chapter overview (i.e., segmented content with summaries and abstracts for each segment). It also supports multilingual input and output. If the user only requires a full-text summary of an article, they can use the RunDocSummary API. For details, see https://help.aliyun.com/zh/model-studio/api-aimiaobi-2023-08-01-rundocsummary.
 //
 // @param request - RunDocIntroductionRequest
 //
@@ -12828,7 +12959,9 @@ func (client *Client) RunDocIntroduction(request *RunDocIntroductionRequest) (_r
 
 // Summary:
 //
-// 妙读问答接口
+// Article Q&A: For a natural language query, provide a textual answer within the specified article scope (accompanied by images if available) and display source attribution information.
+//
+// Multimodal File Q&A: For a natural language query, provide a textual answer within the specified multimodal file scope, along with relevant images, video segments, or text, and display source attribution information.
 //
 // @param tmpReq - RunDocQaRequest
 //
@@ -12843,7 +12976,9 @@ func (client *Client) RunDocQaWithSSE(tmpReq *RunDocQaRequest, runtime *dara.Run
 
 // Summary:
 //
-// 妙读问答接口
+// Article Q&A: For a natural language query, provide a textual answer within the specified article scope (accompanied by images if available) and display source attribution information.
+//
+// Multimodal File Q&A: For a natural language query, provide a textual answer within the specified multimodal file scope, along with relevant images, video segments, or text, and display source attribution information.
 //
 // @param tmpReq - RunDocQaRequest
 //
@@ -12933,7 +13068,9 @@ func (client *Client) RunDocQaWithOptions(tmpReq *RunDocQaRequest, runtime *dara
 
 // Summary:
 //
-// 妙读问答接口
+// Article Q&A: For a natural language query, provide a textual answer within the specified article scope (accompanied by images if available) and display source attribution information.
+//
+// Multimodal File Q&A: For a natural language query, provide a textual answer within the specified multimodal file scope, along with relevant images, video segments, or text, and display source attribution information.
 //
 // @param request - RunDocQaRequest
 //
@@ -12951,7 +13088,7 @@ func (client *Client) RunDocQa(request *RunDocQaRequest) (_result *RunDocQaRespo
 
 // Summary:
 //
-// 文档智能卡片接口
+// Automatically adds tags to selected text or a specified chat and generates a smart card note.
 //
 // @param request - RunDocSmartCardRequest
 //
@@ -12966,7 +13103,7 @@ func (client *Client) RunDocSmartCardWithSSE(request *RunDocSmartCardRequest, ru
 
 // Summary:
 //
-// 文档智能卡片接口
+// Automatically adds tags to selected text or a specified chat and generates a smart card note.
 //
 // @param request - RunDocSmartCardRequest
 //
@@ -13026,7 +13163,7 @@ func (client *Client) RunDocSmartCardWithOptions(request *RunDocSmartCardRequest
 
 // Summary:
 //
-// 文档智能卡片接口
+// Automatically adds tags to selected text or a specified chat and generates a smart card note.
 //
 // @param request - RunDocSmartCardRequest
 //
@@ -13044,7 +13181,7 @@ func (client *Client) RunDocSmartCard(request *RunDocSmartCardRequest) (_result 
 
 // Summary:
 //
-// 妙读文档总结摘要接口
+// Generates a summary of an article, video, or URL—that is, a concise overview of the entire content. It also supports multilingual input and output.
 //
 // @param request - RunDocSummaryRequest
 //
@@ -13059,7 +13196,7 @@ func (client *Client) RunDocSummaryWithSSE(request *RunDocSummaryRequest, runtim
 
 // Summary:
 //
-// 妙读文档总结摘要接口
+// Generates a summary of an article, video, or URL—that is, a concise overview of the entire content. It also supports multilingual input and output.
 //
 // @param request - RunDocSummaryRequest
 //
@@ -13127,7 +13264,7 @@ func (client *Client) RunDocSummaryWithOptions(request *RunDocSummaryRequest, ru
 
 // Summary:
 //
-// 妙读文档总结摘要接口
+// Generates a summary of an article, video, or URL—that is, a concise overview of the entire content. It also supports multilingual input and output.
 //
 // @param request - RunDocSummaryRequest
 //
@@ -13145,7 +13282,7 @@ func (client *Client) RunDocSummary(request *RunDocSummaryRequest) (_result *Run
 
 // Summary:
 //
-// 妙读文档翻译接口
+// An API for document translation between English and Chinese.
 //
 // @param request - RunDocTranslationRequest
 //
@@ -13160,7 +13297,7 @@ func (client *Client) RunDocTranslationWithSSE(request *RunDocTranslationRequest
 
 // Summary:
 //
-// 妙读文档翻译接口
+// An API for document translation between English and Chinese.
 //
 // @param request - RunDocTranslationRequest
 //
@@ -13228,7 +13365,7 @@ func (client *Client) RunDocTranslationWithOptions(request *RunDocTranslationReq
 
 // Summary:
 //
-// 妙读文档翻译接口
+// An API for document translation between English and Chinese.
 //
 // @param request - RunDocTranslationRequest
 //
@@ -13246,7 +13383,7 @@ func (client *Client) RunDocTranslation(request *RunDocTranslationRequest) (_res
 
 // Summary:
 //
-// 文档改写
+// Rewrites an article in a specified style.
 //
 // @param request - RunDocWashingRequest
 //
@@ -13261,7 +13398,7 @@ func (client *Client) RunDocWashingWithSSE(request *RunDocWashingRequest, runtim
 
 // Summary:
 //
-// 文档改写
+// Rewrites an article in a specified style.
 //
 // @param request - RunDocWashingRequest
 //
@@ -13337,7 +13474,7 @@ func (client *Client) RunDocWashingWithOptions(request *RunDocWashingRequest, ru
 
 // Summary:
 //
-// 文档改写
+// Rewrites an article in a specified style.
 //
 // @param request - RunDocWashingRequest
 //
@@ -13355,7 +13492,7 @@ func (client *Client) RunDocWashing(request *RunDocWashingRequest) (_result *Run
 
 // Summary:
 //
-// 内容扩写
+// Expands content.
 //
 // @param request - RunExpandContentRequest
 //
@@ -13370,7 +13507,7 @@ func (client *Client) RunExpandContentWithSSE(request *RunExpandContentRequest, 
 
 // Summary:
 //
-// 内容扩写
+// Expands content.
 //
 // @param request - RunExpandContentRequest
 //
@@ -13422,7 +13559,7 @@ func (client *Client) RunExpandContentWithOptions(request *RunExpandContentReque
 
 // Summary:
 //
-// 内容扩写
+// Expands content.
 //
 // @param request - RunExpandContentRequest
 //
@@ -13440,7 +13577,7 @@ func (client *Client) RunExpandContent(request *RunExpandContentRequest) (_resul
 
 // Summary:
 //
-// 妙读猜你想问接口
+// Submits a query and returns several related queries.
 //
 // @param request - RunGenerateQuestionsRequest
 //
@@ -13455,7 +13592,7 @@ func (client *Client) RunGenerateQuestionsWithSSE(request *RunGenerateQuestionsR
 
 // Summary:
 //
-// 妙读猜你想问接口
+// Submits a query and returns several related queries.
 //
 // @param request - RunGenerateQuestionsRequest
 //
@@ -13515,7 +13652,7 @@ func (client *Client) RunGenerateQuestionsWithOptions(request *RunGenerateQuesti
 
 // Summary:
 //
-// 妙读猜你想问接口
+// Submits a query and returns several related queries.
 //
 // @param request - RunGenerateQuestionsRequest
 //
@@ -13533,7 +13670,7 @@ func (client *Client) RunGenerateQuestions(request *RunGenerateQuestionsRequest)
 
 // Summary:
 //
-// 妙读文档关键词抽取接口
+// Extract keywords from a specified document. Keywords are domain-specific professional terms or concepts that represent and identify a particular industry or field. They accurately describe and summarize the core content, key people, major events, or technical terms in that domain.
 //
 // @param request - RunHotwordRequest
 //
@@ -13548,7 +13685,7 @@ func (client *Client) RunHotwordWithSSE(request *RunHotwordRequest, runtime *dar
 
 // Summary:
 //
-// 妙读文档关键词抽取接口
+// Extract keywords from a specified document. Keywords are domain-specific professional terms or concepts that represent and identify a particular industry or field. They accurately describe and summarize the core content, key people, major events, or technical terms in that domain.
 //
 // @param request - RunHotwordRequest
 //
@@ -13612,7 +13749,7 @@ func (client *Client) RunHotwordWithOptions(request *RunHotwordRequest, runtime 
 
 // Summary:
 //
-// 妙读文档关键词抽取接口
+// Extract keywords from a specified document. Keywords are domain-specific professional terms or concepts that represent and identify a particular industry or field. They accurately describe and summarize the core content, key people, major events, or technical terms in that domain.
 //
 // @param request - RunHotwordRequest
 //
@@ -13630,7 +13767,7 @@ func (client *Client) RunHotword(request *RunHotwordRequest) (_result *RunHotwor
 
 // Summary:
 //
-// # AI妙笔-创作-抽取关键词
+// Extracts and generates keywords using AMB.
 //
 // @param tmpReq - RunKeywordsExtractionGenerationRequest
 //
@@ -13645,7 +13782,7 @@ func (client *Client) RunKeywordsExtractionGenerationWithSSE(tmpReq *RunKeywords
 
 // Summary:
 //
-// # AI妙笔-创作-抽取关键词
+// Extracts and generates keywords using AMB.
 //
 // @param tmpReq - RunKeywordsExtractionGenerationRequest
 //
@@ -13707,7 +13844,7 @@ func (client *Client) RunKeywordsExtractionGenerationWithOptions(tmpReq *RunKeyw
 
 // Summary:
 //
-// # AI妙笔-创作-抽取关键词
+// Extracts and generates keywords using AMB.
 //
 // @param request - RunKeywordsExtractionGenerationRequest
 //
@@ -13725,7 +13862,7 @@ func (client *Client) RunKeywordsExtractionGeneration(request *RunKeywordsExtrac
 
 // Summary:
 //
-// 文档批量导读
+// Generate an outline-style summary for multiple documents, videos, or URLs. The summary includes a consolidated overview and key points. This operation supports multiple input and output languages.
 //
 // @param tmpReq - RunMultiDocIntroductionRequest
 //
@@ -13740,7 +13877,7 @@ func (client *Client) RunMultiDocIntroductionWithSSE(tmpReq *RunMultiDocIntroduc
 
 // Summary:
 //
-// 文档批量导读
+// Generate an outline-style summary for multiple documents, videos, or URLs. The summary includes a consolidated overview and key points. This operation supports multiple input and output languages.
 //
 // @param tmpReq - RunMultiDocIntroductionRequest
 //
@@ -13810,7 +13947,7 @@ func (client *Client) RunMultiDocIntroductionWithOptions(tmpReq *RunMultiDocIntr
 
 // Summary:
 //
-// 文档批量导读
+// Generate an outline-style summary for multiple documents, videos, or URLs. The summary includes a consolidated overview and key points. This operation supports multiple input and output languages.
 //
 // @param request - RunMultiDocIntroductionRequest
 //
@@ -13828,7 +13965,17 @@ func (client *Client) RunMultiDocIntroduction(request *RunMultiDocIntroductionRe
 
 // Summary:
 //
-// 流式输出PPT大纲
+// Generates a PowerPoint outline.
+//
+// Description:
+//
+// Instructions:
+//
+// - This API uses the HTTP Server-Sent Events (SSE) protocol.
+//
+// - You cannot test this API directly in the OpenAPI Portal because the portal is not compatible with the SSE inference protocol. For examples of how to call the API using the SDK for Java or Python, see [PPT Generation Best practices](https://help.aliyun.com/en/model-studio/ppt-generation-best-practices).
+//
+// - To obtain the latest version of the asynchronous Java SDK, [click this link](https://api.aliyun.com/api-tools/sdk/AiMiaoBi?spm=a2c4g.11186623.0.0.4cd3170d7rccDC\\&version=2023-08-01\\&language=java-async-tea\\&tab=primer-doc).
 //
 // @param request - RunPptOutlineGenerationRequest
 //
@@ -13843,7 +13990,17 @@ func (client *Client) RunPptOutlineGenerationWithSSE(request *RunPptOutlineGener
 
 // Summary:
 //
-// 流式输出PPT大纲
+// Generates a PowerPoint outline.
+//
+// Description:
+//
+// Instructions:
+//
+// - This API uses the HTTP Server-Sent Events (SSE) protocol.
+//
+// - You cannot test this API directly in the OpenAPI Portal because the portal is not compatible with the SSE inference protocol. For examples of how to call the API using the SDK for Java or Python, see [PPT Generation Best practices](https://help.aliyun.com/en/model-studio/ppt-generation-best-practices).
+//
+// - To obtain the latest version of the asynchronous Java SDK, [click this link](https://api.aliyun.com/api-tools/sdk/AiMiaoBi?spm=a2c4g.11186623.0.0.4cd3170d7rccDC\\&version=2023-08-01\\&language=java-async-tea\\&tab=primer-doc).
 //
 // @param request - RunPptOutlineGenerationRequest
 //
@@ -13895,7 +14052,17 @@ func (client *Client) RunPptOutlineGenerationWithOptions(request *RunPptOutlineG
 
 // Summary:
 //
-// 流式输出PPT大纲
+// Generates a PowerPoint outline.
+//
+// Description:
+//
+// Instructions:
+//
+// - This API uses the HTTP Server-Sent Events (SSE) protocol.
+//
+// - You cannot test this API directly in the OpenAPI Portal because the portal is not compatible with the SSE inference protocol. For examples of how to call the API using the SDK for Java or Python, see [PPT Generation Best practices](https://help.aliyun.com/en/model-studio/ppt-generation-best-practices).
+//
+// - To obtain the latest version of the asynchronous Java SDK, [click this link](https://api.aliyun.com/api-tools/sdk/AiMiaoBi?spm=a2c4g.11186623.0.0.4cd3170d7rccDC\\&version=2023-08-01\\&language=java-async-tea\\&tab=primer-doc).
 //
 // @param request - RunPptOutlineGenerationRequest
 //
@@ -13913,7 +14080,15 @@ func (client *Client) RunPptOutlineGeneration(request *RunPptOutlineGenerationRe
 
 // Summary:
 //
-// 快速写作
+// Enter writing instructions to quickly generate content.
+//
+// Description:
+//
+// ### Access Instructions:
+//
+// - The OpenAPI portal is incompatible with the Server-Sent Events (SSE) inference protocol. Therefore, you cannot directly debug this operation. For an example of how to call the API using an SDK, see [Miaobi Best Practices](https://help.aliyun.com/zh/model-studio/best-practices-for-miaobi-api?spm=a2c4g.11186623.help-menu-2400256.d_1_12_6_2_1_0.39892421FntuI2\\&scm=20140722.H_2844289._.OR_help-T_cn~zh-V_1).
+//
+// - Click this [link](https://api.aliyun.com/api-tools/sdk/AiMiaoBi?version=2023-08-01\\&language=java-async-tea\\&tab=primer-doc) to download the latest version of the Java asynchronous SDK.
 //
 // @param tmpReq - RunQuickWritingRequest
 //
@@ -13928,7 +14103,15 @@ func (client *Client) RunQuickWritingWithSSE(tmpReq *RunQuickWritingRequest, run
 
 // Summary:
 //
-// 快速写作
+// Enter writing instructions to quickly generate content.
+//
+// Description:
+//
+// ### Access Instructions:
+//
+// - The OpenAPI portal is incompatible with the Server-Sent Events (SSE) inference protocol. Therefore, you cannot directly debug this operation. For an example of how to call the API using an SDK, see [Miaobi Best Practices](https://help.aliyun.com/zh/model-studio/best-practices-for-miaobi-api?spm=a2c4g.11186623.help-menu-2400256.d_1_12_6_2_1_0.39892421FntuI2\\&scm=20140722.H_2844289._.OR_help-T_cn~zh-V_1).
+//
+// - Click this [link](https://api.aliyun.com/api-tools/sdk/AiMiaoBi?version=2023-08-01\\&language=java-async-tea\\&tab=primer-doc) to download the latest version of the Java asynchronous SDK.
 //
 // @param tmpReq - RunQuickWritingRequest
 //
@@ -13998,7 +14181,15 @@ func (client *Client) RunQuickWritingWithOptions(tmpReq *RunQuickWritingRequest,
 
 // Summary:
 //
-// 快速写作
+// Enter writing instructions to quickly generate content.
+//
+// Description:
+//
+// ### Access Instructions:
+//
+// - The OpenAPI portal is incompatible with the Server-Sent Events (SSE) inference protocol. Therefore, you cannot directly debug this operation. For an example of how to call the API using an SDK, see [Miaobi Best Practices](https://help.aliyun.com/zh/model-studio/best-practices-for-miaobi-api?spm=a2c4g.11186623.help-menu-2400256.d_1_12_6_2_1_0.39892421FntuI2\\&scm=20140722.H_2844289._.OR_help-T_cn~zh-V_1).
+//
+// - Click this [link](https://api.aliyun.com/api-tools/sdk/AiMiaoBi?version=2023-08-01\\&language=java-async-tea\\&tab=primer-doc) to download the latest version of the Java asynchronous SDK.
 //
 // @param request - RunQuickWritingRequest
 //
@@ -14016,7 +14207,31 @@ func (client *Client) RunQuickWriting(request *RunQuickWritingRequest) (_result 
 
 // Summary:
 //
-// # AI妙搜-智能搜索生成
+// AI Miaosou – Intelligent Search Generation: This API delivers the search and generation capabilities of the Miaosou homepage. It supports general search and media asset search, along with features such as user query clarification, multimodal knowledge search, and multi-agent generation.
+//
+// – General Search: Performs semantic retrieval on centralized knowledge data and applies multi-agent post-processing to the results, such as summary generation, abstracting, and timeline summarization.
+//
+// – Media Asset Search: Conducts an exhaustive full-text search to retrieve highly relevant knowledge and supports multi-agent post-processing, such as clustering and news extraction.
+//
+// Description:
+//
+// ### Integration notes:
+//
+// - This API uses the HTTP Server-Sent Events (SSE) protocol.
+//
+// - The OpenAPI console does not support SSE inference protocols and cannot be used for direct testing. For SDK-based integration examples (Java and Python), see the [Miaosou Best Practices](https://help.aliyun.com/zh/model-studio/user-guide/best-practices-for-miaosou-api/?spm=a2c4g.11186623.help-menu-2400256.d_1_3_3_2_1_2.42a64a34eIyBhn) documentation.
+//
+// - To obtain the latest version of the Java asynchronous SDK, click [this link](https://api.aliyun.com/api-tools/sdk/AiMiaoBi?version=2023-08-01\\&language=java-async-tea\\&tab=primer-doc).
+//
+// ### Data sources for search:
+//
+// Supports three dataset types. See the [Miaosou Best Practices](https://help.aliyun.com/zh/model-studio/user-guide/best-practices-for-miaosou-api/?spm=a2c4g.11186623.help-menu-2400256.d_1_3_3_2_1_2.42a64a34eIyBhn) documentation for details.
+//
+// - Built-in “Internet search” dataset: Supports open-domain text, images, and video (video is not yet available) from the Internet.
+//
+// - Semantic (RAG) dataset: Manages enterprise private knowledge bases and supports text, images, video, and voice (voice is not yet available).
+//
+// - Third-party API dataset: Integrates directly with your own enterprise search APIs.
 //
 // @param tmpReq - RunSearchGenerationRequest
 //
@@ -14031,7 +14246,31 @@ func (client *Client) RunSearchGenerationWithSSE(tmpReq *RunSearchGenerationRequ
 
 // Summary:
 //
-// # AI妙搜-智能搜索生成
+// AI Miaosou – Intelligent Search Generation: This API delivers the search and generation capabilities of the Miaosou homepage. It supports general search and media asset search, along with features such as user query clarification, multimodal knowledge search, and multi-agent generation.
+//
+// – General Search: Performs semantic retrieval on centralized knowledge data and applies multi-agent post-processing to the results, such as summary generation, abstracting, and timeline summarization.
+//
+// – Media Asset Search: Conducts an exhaustive full-text search to retrieve highly relevant knowledge and supports multi-agent post-processing, such as clustering and news extraction.
+//
+// Description:
+//
+// ### Integration notes:
+//
+// - This API uses the HTTP Server-Sent Events (SSE) protocol.
+//
+// - The OpenAPI console does not support SSE inference protocols and cannot be used for direct testing. For SDK-based integration examples (Java and Python), see the [Miaosou Best Practices](https://help.aliyun.com/zh/model-studio/user-guide/best-practices-for-miaosou-api/?spm=a2c4g.11186623.help-menu-2400256.d_1_3_3_2_1_2.42a64a34eIyBhn) documentation.
+//
+// - To obtain the latest version of the Java asynchronous SDK, click [this link](https://api.aliyun.com/api-tools/sdk/AiMiaoBi?version=2023-08-01\\&language=java-async-tea\\&tab=primer-doc).
+//
+// ### Data sources for search:
+//
+// Supports three dataset types. See the [Miaosou Best Practices](https://help.aliyun.com/zh/model-studio/user-guide/best-practices-for-miaosou-api/?spm=a2c4g.11186623.help-menu-2400256.d_1_3_3_2_1_2.42a64a34eIyBhn) documentation for details.
+//
+// - Built-in “Internet search” dataset: Supports open-domain text, images, and video (video is not yet available) from the Internet.
+//
+// - Semantic (RAG) dataset: Manages enterprise private knowledge bases and supports text, images, video, and voice (voice is not yet available).
+//
+// - Third-party API dataset: Integrates directly with your own enterprise search APIs.
 //
 // @param tmpReq - RunSearchGenerationRequest
 //
@@ -14113,7 +14352,31 @@ func (client *Client) RunSearchGenerationWithOptions(tmpReq *RunSearchGeneration
 
 // Summary:
 //
-// # AI妙搜-智能搜索生成
+// AI Miaosou – Intelligent Search Generation: This API delivers the search and generation capabilities of the Miaosou homepage. It supports general search and media asset search, along with features such as user query clarification, multimodal knowledge search, and multi-agent generation.
+//
+// – General Search: Performs semantic retrieval on centralized knowledge data and applies multi-agent post-processing to the results, such as summary generation, abstracting, and timeline summarization.
+//
+// – Media Asset Search: Conducts an exhaustive full-text search to retrieve highly relevant knowledge and supports multi-agent post-processing, such as clustering and news extraction.
+//
+// Description:
+//
+// ### Integration notes:
+//
+// - This API uses the HTTP Server-Sent Events (SSE) protocol.
+//
+// - The OpenAPI console does not support SSE inference protocols and cannot be used for direct testing. For SDK-based integration examples (Java and Python), see the [Miaosou Best Practices](https://help.aliyun.com/zh/model-studio/user-guide/best-practices-for-miaosou-api/?spm=a2c4g.11186623.help-menu-2400256.d_1_3_3_2_1_2.42a64a34eIyBhn) documentation.
+//
+// - To obtain the latest version of the Java asynchronous SDK, click [this link](https://api.aliyun.com/api-tools/sdk/AiMiaoBi?version=2023-08-01\\&language=java-async-tea\\&tab=primer-doc).
+//
+// ### Data sources for search:
+//
+// Supports three dataset types. See the [Miaosou Best Practices](https://help.aliyun.com/zh/model-studio/user-guide/best-practices-for-miaosou-api/?spm=a2c4g.11186623.help-menu-2400256.d_1_3_3_2_1_2.42a64a34eIyBhn) documentation for details.
+//
+// - Built-in “Internet search” dataset: Supports open-domain text, images, and video (video is not yet available) from the Internet.
+//
+// - Semantic (RAG) dataset: Manages enterprise private knowledge bases and supports text, images, video, and voice (voice is not yet available).
+//
+// - Third-party API dataset: Integrates directly with your own enterprise search APIs.
 //
 // @param request - RunSearchGenerationRequest
 //
@@ -14131,7 +14394,7 @@ func (client *Client) RunSearchGeneration(request *RunSearchGenerationRequest) (
 
 // Summary:
 //
-// 妙搜-文搜文
+// Miao Search enables text-to-text search.
 //
 // @param tmpReq - RunSearchSimilarArticlesRequest
 //
@@ -14146,7 +14409,7 @@ func (client *Client) RunSearchSimilarArticlesWithSSE(tmpReq *RunSearchSimilarAr
 
 // Summary:
 //
-// 妙搜-文搜文
+// Miao Search enables text-to-text search.
 //
 // @param tmpReq - RunSearchSimilarArticlesRequest
 //
@@ -14212,7 +14475,7 @@ func (client *Client) RunSearchSimilarArticlesWithOptions(tmpReq *RunSearchSimil
 
 // Summary:
 //
-// 妙搜-文搜文
+// Miao Search enables text-to-text search.
 //
 // @param request - RunSearchSimilarArticlesRequest
 //
@@ -14230,7 +14493,11 @@ func (client *Client) RunSearchSimilarArticles(request *RunSearchSimilarArticles
 
 // Summary:
 //
-// 创作-分步骤写作
+// Writes content in a step-by-step pattern using an outline and summaries.
+//
+// Description:
+//
+// The Quanmiao product supports iframe embedding. For more information, see [Customer Onboarding: Quanmiao Public Cloud iframe Customization](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param tmpReq - RunStepByStepWritingRequest
 //
@@ -14245,7 +14512,11 @@ func (client *Client) RunStepByStepWritingWithSSE(tmpReq *RunStepByStepWritingRe
 
 // Summary:
 //
-// 创作-分步骤写作
+// Writes content in a step-by-step pattern using an outline and summaries.
+//
+// Description:
+//
+// The Quanmiao product supports iframe embedding. For more information, see [Customer Onboarding: Quanmiao Public Cloud iframe Customization](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param tmpReq - RunStepByStepWritingRequest
 //
@@ -14323,7 +14594,11 @@ func (client *Client) RunStepByStepWritingWithOptions(tmpReq *RunStepByStepWriti
 
 // Summary:
 //
-// 创作-分步骤写作
+// Writes content in a step-by-step pattern using an outline and summaries.
+//
+// Description:
+//
+// The Quanmiao product supports iframe embedding. For more information, see [Customer Onboarding: Quanmiao Public Cloud iframe Customization](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - RunStepByStepWritingRequest
 //
@@ -14341,7 +14616,11 @@ func (client *Client) RunStepByStepWriting(request *RunStepByStepWritingRequest)
 
 // Summary:
 //
-// 内容特点分析
+// Analyzes the stylistic features of content.
+//
+// Description:
+//
+// Quanmiao products support iframe embedding. For more information, see [Customer Integration: Quanmiao Public Cloud iframe Customization Solution](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param tmpReq - RunStyleFeatureAnalysisRequest
 //
@@ -14356,7 +14635,11 @@ func (client *Client) RunStyleFeatureAnalysisWithSSE(tmpReq *RunStyleFeatureAnal
 
 // Summary:
 //
-// 内容特点分析
+// Analyzes the stylistic features of content.
+//
+// Description:
+//
+// Quanmiao products support iframe embedding. For more information, see [Customer Integration: Quanmiao Public Cloud iframe Customization Solution](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param tmpReq - RunStyleFeatureAnalysisRequest
 //
@@ -14418,7 +14701,11 @@ func (client *Client) RunStyleFeatureAnalysisWithOptions(tmpReq *RunStyleFeature
 
 // Summary:
 //
-// 内容特点分析
+// Analyzes the stylistic features of content.
+//
+// Description:
+//
+// Quanmiao products support iframe embedding. For more information, see [Customer Integration: Quanmiao Public Cloud iframe Customization Solution](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - RunStyleFeatureAnalysisRequest
 //
@@ -14436,7 +14723,7 @@ func (client *Client) RunStyleFeatureAnalysis(request *RunStyleFeatureAnalysisRe
 
 // Summary:
 //
-// 内容摘要生成
+// Generates a summary of content.
 //
 // @param request - RunSummaryGenerateRequest
 //
@@ -14451,7 +14738,7 @@ func (client *Client) RunSummaryGenerateWithSSE(request *RunSummaryGenerateReque
 
 // Summary:
 //
-// 内容摘要生成
+// Generates a summary of content.
 //
 // @param request - RunSummaryGenerateRequest
 //
@@ -14503,7 +14790,7 @@ func (client *Client) RunSummaryGenerateWithOptions(request *RunSummaryGenerateR
 
 // Summary:
 //
-// 内容摘要生成
+// Generates a summary of content.
 //
 // @param request - RunSummaryGenerateRequest
 //
@@ -14521,7 +14808,7 @@ func (client *Client) RunSummaryGenerate(request *RunSummaryGenerateRequest) (_r
 
 // Summary:
 //
-// 创作-文本润色
+// Polishes the specified text.
 //
 // @param request - RunTextPolishingRequest
 //
@@ -14536,7 +14823,7 @@ func (client *Client) RunTextPolishingWithSSE(request *RunTextPolishingRequest, 
 
 // Summary:
 //
-// 创作-文本润色
+// Polishes the specified text.
 //
 // @param request - RunTextPolishingRequest
 //
@@ -14596,7 +14883,7 @@ func (client *Client) RunTextPolishingWithOptions(request *RunTextPolishingReque
 
 // Summary:
 //
-// 创作-文本润色
+// Polishes the specified text.
 //
 // @param request - RunTextPolishingRequest
 //
@@ -14614,7 +14901,7 @@ func (client *Client) RunTextPolishing(request *RunTextPolishingRequest) (_resul
 
 // Summary:
 //
-// 妙笔：标题生成
+// Miaobi generates titles.
 //
 // @param tmpReq - RunTitleGenerationRequest
 //
@@ -14629,7 +14916,7 @@ func (client *Client) RunTitleGenerationWithSSE(tmpReq *RunTitleGenerationReques
 
 // Summary:
 //
-// 妙笔：标题生成
+// Miaobi generates titles.
 //
 // @param tmpReq - RunTitleGenerationRequest
 //
@@ -14699,7 +14986,7 @@ func (client *Client) RunTitleGenerationWithOptions(tmpReq *RunTitleGenerationRe
 
 // Summary:
 //
-// 妙笔：标题生成
+// Miaobi generates titles.
 //
 // @param request - RunTitleGenerationRequest
 //
@@ -14717,7 +15004,11 @@ func (client *Client) RunTitleGeneration(request *RunTitleGenerationRequest) (_r
 
 // Summary:
 //
-// 妙策选题策划聚合
+// Selects and aggregates topics for MiaoCe.
+//
+// Description:
+//
+// All Miao products support iframe embedding. For more information, see [Customer Integration: Miao Public Cloud iFrame Customization Plan](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param tmpReq - RunTopicSelectionMergeRequest
 //
@@ -14732,7 +15023,11 @@ func (client *Client) RunTopicSelectionMergeWithSSE(tmpReq *RunTopicSelectionMer
 
 // Summary:
 //
-// 妙策选题策划聚合
+// Selects and aggregates topics for MiaoCe.
+//
+// Description:
+//
+// All Miao products support iframe embedding. For more information, see [Customer Integration: Miao Public Cloud iFrame Customization Plan](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param tmpReq - RunTopicSelectionMergeRequest
 //
@@ -14790,7 +15085,11 @@ func (client *Client) RunTopicSelectionMergeWithOptions(tmpReq *RunTopicSelectio
 
 // Summary:
 //
-// 妙策选题策划聚合
+// Selects and aggregates topics for MiaoCe.
+//
+// Description:
+//
+// All Miao products support iframe embedding. For more information, see [Customer Integration: Miao Public Cloud iFrame Customization Plan](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - RunTopicSelectionMergeRequest
 //
@@ -14808,7 +15107,7 @@ func (client *Client) RunTopicSelectionMerge(request *RunTopicSelectionMergeRequ
 
 // Summary:
 //
-// # AI妙笔-创作-中英文翻译
+// Translates text for content creation using AMB.
 //
 // @param tmpReq - RunTranslateGenerationRequest
 //
@@ -14823,7 +15122,7 @@ func (client *Client) RunTranslateGenerationWithSSE(tmpReq *RunTranslateGenerati
 
 // Summary:
 //
-// # AI妙笔-创作-中英文翻译
+// Translates text for content creation using AMB.
 //
 // @param tmpReq - RunTranslateGenerationRequest
 //
@@ -14885,7 +15184,7 @@ func (client *Client) RunTranslateGenerationWithOptions(tmpReq *RunTranslateGene
 
 // Summary:
 //
-// # AI妙笔-创作-中英文翻译
+// Translates text for content creation using AMB.
 //
 // @param request - RunTranslateGenerationRequest
 //
@@ -14903,7 +15202,7 @@ func (client *Client) RunTranslateGeneration(request *RunTranslateGenerationRequ
 
 // Summary:
 //
-// # AI生成视频剪辑脚本
+// Generates video clip scripts using AI.
 //
 // @param request - RunVideoScriptGenerateRequest
 //
@@ -14918,7 +15217,7 @@ func (client *Client) RunVideoScriptGenerateWithSSE(request *RunVideoScriptGener
 
 // Summary:
 //
-// # AI生成视频剪辑脚本
+// Generates video clip scripts using AI.
 //
 // @param request - RunVideoScriptGenerateRequest
 //
@@ -14982,7 +15281,7 @@ func (client *Client) RunVideoScriptGenerateWithOptions(request *RunVideoScriptG
 
 // Summary:
 //
-// # AI生成视频剪辑脚本
+// Generates video clip scripts using AI.
 //
 // @param request - RunVideoScriptGenerateRequest
 //
@@ -15000,7 +15299,7 @@ func (client *Client) RunVideoScriptGenerate(request *RunVideoScriptGenerateRequ
 
 // Summary:
 //
-// # AI妙笔-创作-文风改写
+// Calls AMB to rewrite text in a new tone.
 //
 // @param tmpReq - RunWriteToneGenerationRequest
 //
@@ -15015,7 +15314,7 @@ func (client *Client) RunWriteToneGenerationWithSSE(tmpReq *RunWriteToneGenerati
 
 // Summary:
 //
-// # AI妙笔-创作-文风改写
+// Calls AMB to rewrite text in a new tone.
 //
 // @param tmpReq - RunWriteToneGenerationRequest
 //
@@ -15077,7 +15376,7 @@ func (client *Client) RunWriteToneGenerationWithOptions(tmpReq *RunWriteToneGene
 
 // Summary:
 //
-// # AI妙笔-创作-文风改写
+// Calls AMB to rewrite text in a new tone.
 //
 // @param request - RunWriteToneGenerationRequest
 //
@@ -15095,7 +15394,13 @@ func (client *Client) RunWriteToneGeneration(request *RunWriteToneGenerationRequ
 
 // Summary:
 //
-// 直接写作
+// Direct writing.
+//
+// Description:
+//
+// This API is deprecated. For more information, see [RunWritingV2](https://help.aliyun.com/document_detail/2922606.html).
+//
+// The Quanmiao product supports iframe embedding. For more information, see [Customer integration: Quanmiao Public Cloud iframe customization](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param tmpReq - RunWritingRequest
 //
@@ -15110,7 +15415,13 @@ func (client *Client) RunWritingWithSSE(tmpReq *RunWritingRequest, runtime *dara
 
 // Summary:
 //
-// 直接写作
+// Direct writing.
+//
+// Description:
+//
+// This API is deprecated. For more information, see [RunWritingV2](https://help.aliyun.com/document_detail/2922606.html).
+//
+// The Quanmiao product supports iframe embedding. For more information, see [Customer integration: Quanmiao Public Cloud iframe customization](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param tmpReq - RunWritingRequest
 //
@@ -15188,7 +15499,13 @@ func (client *Client) RunWritingWithOptions(tmpReq *RunWritingRequest, runtime *
 
 // Summary:
 //
-// 直接写作
+// Direct writing.
+//
+// Description:
+//
+// This API is deprecated. For more information, see [RunWritingV2](https://help.aliyun.com/document_detail/2922606.html).
+//
+// The Quanmiao product supports iframe embedding. For more information, see [Customer integration: Quanmiao Public Cloud iframe customization](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - RunWritingRequest
 //
@@ -15206,7 +15523,11 @@ func (client *Client) RunWriting(request *RunWritingRequest) (_result *RunWritin
 
 // Summary:
 //
-// 直接写作
+// # AI writing
+//
+// Description:
+//
+// For instructions on embedding Quanmiao products using an iframe, see [Customer integration_Quanmiao public cloud iframe customized solution](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param tmpReq - RunWritingV2Request
 //
@@ -15221,7 +15542,11 @@ func (client *Client) RunWritingV2WithSSE(tmpReq *RunWritingV2Request, runtime *
 
 // Summary:
 //
-// 直接写作
+// # AI writing
+//
+// Description:
+//
+// For instructions on embedding Quanmiao products using an iframe, see [Customer integration_Quanmiao public cloud iframe customized solution](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param tmpReq - RunWritingV2Request
 //
@@ -15383,7 +15708,11 @@ func (client *Client) RunWritingV2WithOptions(tmpReq *RunWritingV2Request, runti
 
 // Summary:
 //
-// 直接写作
+// # AI writing
+//
+// Description:
+//
+// For instructions on embedding Quanmiao products using an iframe, see [Customer integration_Quanmiao public cloud iframe customized solution](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - RunWritingV2Request
 //
@@ -15401,7 +15730,7 @@ func (client *Client) RunWritingV2(request *RunWritingV2Request) (_result *RunWr
 
 // Summary:
 //
-// 保存自定义文本
+// Saves custom text.
 //
 // @param request - SaveCustomTextRequest
 //
@@ -15459,7 +15788,7 @@ func (client *Client) SaveCustomTextWithOptions(request *SaveCustomTextRequest, 
 
 // Summary:
 //
-// 保存自定义文本
+// Saves custom text.
 //
 // @param request - SaveCustomTextRequest
 //
@@ -15477,7 +15806,7 @@ func (client *Client) SaveCustomText(request *SaveCustomTextRequest) (_result *S
 
 // Summary:
 //
-// 保存用户的信源配置
+// Saves the data source configuration for content creation and general search.
 //
 // @param tmpReq - SaveDataSourceOrderConfigRequest
 //
@@ -15541,7 +15870,7 @@ func (client *Client) SaveDataSourceOrderConfigWithOptions(tmpReq *SaveDataSourc
 
 // Summary:
 //
-// 保存用户的信源配置
+// Saves the data source configuration for content creation and general search.
 //
 // @param request - SaveDataSourceOrderConfigRequest
 //
@@ -15559,7 +15888,7 @@ func (client *Client) SaveDataSourceOrderConfig(request *SaveDataSourceOrderConf
 
 // Summary:
 //
-// 保存素材
+// Save material: Save material to the Material Library.
 //
 // @param tmpReq - SaveMaterialDocumentRequest
 //
@@ -15663,7 +15992,7 @@ func (client *Client) SaveMaterialDocumentWithOptions(tmpReq *SaveMaterialDocume
 
 // Summary:
 //
-// 保存素材
+// Save material: Save material to the Material Library.
 //
 // @param request - SaveMaterialDocumentRequest
 //
@@ -15681,7 +16010,7 @@ func (client *Client) SaveMaterialDocument(request *SaveMaterialDocumentRequest)
 
 // Summary:
 //
-// 配置oss访问参数
+// Configuration: Cloud storage parameter settings
 //
 // @param request - SaveOrUpdateOssConfigRequest
 //
@@ -15733,7 +16062,7 @@ func (client *Client) SaveOrUpdateOssConfigWithOptions(request *SaveOrUpdateOssC
 
 // Summary:
 //
-// 配置oss访问参数
+// Configuration: Cloud storage parameter settings
 //
 // @param request - SaveOrUpdateOssConfigRequest
 //
@@ -15751,7 +16080,7 @@ func (client *Client) SaveOrUpdateOssConfig(request *SaveOrUpdateOssConfigReques
 
 // Summary:
 //
-// 保存自定义文体
+// Saves a custom writing style.
 //
 // @param tmpReq - SaveStyleLearningResultRequest
 //
@@ -15829,7 +16158,7 @@ func (client *Client) SaveStyleLearningResultWithOptions(tmpReq *SaveStyleLearni
 
 // Summary:
 //
-// 保存自定义文体
+// Saves a custom writing style.
 //
 // @param request - SaveStyleLearningResultRequest
 //
@@ -15847,7 +16176,7 @@ func (client *Client) SaveStyleLearningResult(request *SaveStyleLearningResultRe
 
 // Summary:
 //
-// 搜索数据集文档
+// Searches documents in a data source.
 //
 // @param tmpReq - SearchDatasetDocumentsRequest
 //
@@ -15985,7 +16314,7 @@ func (client *Client) SearchDatasetDocumentsWithOptions(tmpReq *SearchDatasetDoc
 
 // Summary:
 //
-// 搜索数据集文档
+// Searches documents in a data source.
 //
 // @param request - SearchDatasetDocumentsRequest
 //
@@ -16003,7 +16332,7 @@ func (client *Client) SearchDatasetDocuments(request *SearchDatasetDocumentsRequ
 
 // Summary:
 //
-// 新闻检索
+// Searches for news based on your input. This feature is currently limited to web search.
 //
 // @param tmpReq - SearchNewsRequest
 //
@@ -16079,7 +16408,7 @@ func (client *Client) SearchNewsWithOptions(tmpReq *SearchNewsRequest, runtime *
 
 // Summary:
 //
-// 新闻检索
+// Searches for news based on your input. This feature is currently limited to web search.
 //
 // @param request - SearchNewsRequest
 //
@@ -16097,7 +16426,7 @@ func (client *Client) SearchNews(request *SearchNewsRequest) (_result *SearchNew
 
 // Summary:
 //
-// 提交异步任务
+// Executes predefined asynchronous tasks.
 //
 // @param request - SubmitAsyncTaskRequest
 //
@@ -16159,7 +16488,7 @@ func (client *Client) SubmitAsyncTaskWithOptions(request *SubmitAsyncTaskRequest
 
 // Summary:
 //
-// 提交异步任务
+// Executes predefined asynchronous tasks.
 //
 // @param request - SubmitAsyncTaskRequest
 //
@@ -16177,7 +16506,11 @@ func (client *Client) SubmitAsyncTask(request *SubmitAsyncTaskRequest) (_result 
 
 // Summary:
 //
-// 妙笔为您提供了与公有云“智能审校”模块中相同的上传自定义规则库的功能。由于鉴权限制，用户需要开通阿里云 OSS 服务后，将自定义规则库文件上传到 OSS 中，再使用该文件的 fileKey 作为入参才能顺利调用本接口。该接口在被调用后，会对用户的自定义规则库进行结构化处理，并生成一个 xlsx 格式的结构化解析结果。您可以调用 GetAuditNoteProcessingStatus 接口查询结构化处理状态，也可以调用 DownloadAuditNote 接口获取结构化之后的规则库。接口功能正在迭代中，预计会在未来使用可访问的文件 URL 作为入参。
+// Model Studio provides the same feature as the Intelligent Proofreading module in Alibaba Cloud public cloud: uploading a custom rule library. Due to authentication restrictions, you must pass the file key (FileKey) of your custom rule library file as an input parameter to successfully call this API. After you call this API, Model Studio processes your custom rule library and returns a structured result in XLSX format. You can call GetAuditNoteProcessingStatus to check the processing status or call DownloadAuditNote to download the processed rule library. This API is under active development and will eventually accept a publicly accessible file URL instead of a FileKey.
+//
+// Description:
+//
+// All Model Studio products support iframe embedding. For details, see [Customer Integration: Model Studio Public Cloud iFrame Customization Guide](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - SubmitAuditNoteRequest
 //
@@ -16229,7 +16562,11 @@ func (client *Client) SubmitAuditNoteWithOptions(request *SubmitAuditNoteRequest
 
 // Summary:
 //
-// 妙笔为您提供了与公有云“智能审校”模块中相同的上传自定义规则库的功能。由于鉴权限制，用户需要开通阿里云 OSS 服务后，将自定义规则库文件上传到 OSS 中，再使用该文件的 fileKey 作为入参才能顺利调用本接口。该接口在被调用后，会对用户的自定义规则库进行结构化处理，并生成一个 xlsx 格式的结构化解析结果。您可以调用 GetAuditNoteProcessingStatus 接口查询结构化处理状态，也可以调用 DownloadAuditNote 接口获取结构化之后的规则库。接口功能正在迭代中，预计会在未来使用可访问的文件 URL 作为入参。
+// Model Studio provides the same feature as the Intelligent Proofreading module in Alibaba Cloud public cloud: uploading a custom rule library. Due to authentication restrictions, you must pass the file key (FileKey) of your custom rule library file as an input parameter to successfully call this API. After you call this API, Model Studio processes your custom rule library and returns a structured result in XLSX format. You can call GetAuditNoteProcessingStatus to check the processing status or call DownloadAuditNote to download the processed rule library. This API is under active development and will eventually accept a publicly accessible file URL instead of a FileKey.
+//
+// Description:
+//
+// All Model Studio products support iframe embedding. For details, see [Customer Integration: Model Studio Public Cloud iFrame Customization Guide](https://help.aliyun.com/document_detail/3000990.html).
 //
 // @param request - SubmitAuditNoteRequest
 //
@@ -16247,7 +16584,11 @@ func (client *Client) SubmitAuditNote(request *SubmitAuditNoteRequest) (_result 
 
 // Summary:
 //
-// 提交审核任务
+// Submits an audit task.
+//
+// Description:
+//
+// The Quanmiao product supports iframe embedding. For more information, see [Customer Integration: Quanmiao Public Cloud iframe Customization Plan](https://alidocs.dingtalk.com/i/nodes/m9bN7RYPWdyrPBREcyM6jDQ2VZd1wyK0?cid=116617178%3A898142682\\&utm_source=im\\&utm_scene=team_space\\&iframeQuery=utm_medium%3Dim_card%26utm_source%3Dim\\&utm_medium=im_card\\&corpId=dingd8e1123006514592).
 //
 // @param request - SubmitAuditTaskRequest
 //
@@ -16307,7 +16648,11 @@ func (client *Client) SubmitAuditTaskWithOptions(request *SubmitAuditTaskRequest
 
 // Summary:
 //
-// 提交审核任务
+// Submits an audit task.
+//
+// Description:
+//
+// The Quanmiao product supports iframe embedding. For more information, see [Customer Integration: Quanmiao Public Cloud iframe Customization Plan](https://alidocs.dingtalk.com/i/nodes/m9bN7RYPWdyrPBREcyM6jDQ2VZd1wyK0?cid=116617178%3A898142682\\&utm_source=im\\&utm_scene=team_space\\&iframeQuery=utm_medium%3Dim_card%26utm_source%3Dim\\&utm_medium=im_card\\&corpId=dingd8e1123006514592).
 //
 // @param request - SubmitAuditTaskRequest
 //
@@ -16325,7 +16670,7 @@ func (client *Client) SubmitAuditTask(request *SubmitAuditTaskRequest) (_result 
 
 // Summary:
 //
-// 提交自定义播报单任务
+// You can submit a custom broadcast list job.
 //
 // @param tmpReq - SubmitCustomHotTopicBroadcastJobRequest
 //
@@ -16391,7 +16736,7 @@ func (client *Client) SubmitCustomHotTopicBroadcastJobWithOptions(tmpReq *Submit
 
 // Summary:
 //
-// 提交自定义播报单任务
+// You can submit a custom broadcast list job.
 //
 // @param request - SubmitCustomHotTopicBroadcastJobRequest
 //
@@ -16409,7 +16754,7 @@ func (client *Client) SubmitCustomHotTopicBroadcastJob(request *SubmitCustomHotT
 
 // Summary:
 //
-// 从自定义数据源提交选题热点分析
+// # Submit topic trend analysis using a custom data source
 //
 // @param tmpReq - SubmitCustomSourceTopicAnalysisRequest
 //
@@ -16495,7 +16840,7 @@ func (client *Client) SubmitCustomSourceTopicAnalysisWithOptions(tmpReq *SubmitC
 
 // Summary:
 //
-// 从自定义数据源提交选题热点分析
+// # Submit topic trend analysis using a custom data source
 //
 // @param request - SubmitCustomSourceTopicAnalysisRequest
 //
@@ -16513,7 +16858,7 @@ func (client *Client) SubmitCustomSourceTopicAnalysis(request *SubmitCustomSourc
 
 // Summary:
 //
-// 提交自定义热点选题视角分析任务
+// Submits a custom analysis task to analyze hot topic perspectives.
 //
 // @param tmpReq - SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest
 //
@@ -16577,7 +16922,7 @@ func (client *Client) SubmitCustomTopicSelectionPerspectiveAnalysisTaskWithOptio
 
 // Summary:
 //
-// 提交自定义热点选题视角分析任务
+// Submits a custom analysis task to analyze hot topic perspectives.
 //
 // @param request - SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest
 //
@@ -16595,7 +16940,7 @@ func (client *Client) SubmitCustomTopicSelectionPerspectiveAnalysisTask(request 
 
 // Summary:
 //
-// 提交深度写作任务
+// You can submit a deep writing task. You can provide information such as questions, instructions, and attachments, based on the topic you want to research or analyze. The system schedules and executes this task in the background.
 //
 // @param tmpReq - SubmitDeepWriteTaskRequest
 //
@@ -16667,7 +17012,7 @@ func (client *Client) SubmitDeepWriteTaskWithOptions(tmpReq *SubmitDeepWriteTask
 
 // Summary:
 //
-// 提交深度写作任务
+// You can submit a deep writing task. You can provide information such as questions, instructions, and attachments, based on the topic you want to research or analyze. The system schedules and executes this task in the background.
 //
 // @param request - SubmitDeepWriteTaskRequest
 //
@@ -16685,7 +17030,7 @@ func (client *Client) SubmitDeepWriteTask(request *SubmitDeepWriteTaskRequest) (
 
 // Summary:
 //
-// 提交文档聚合任务
+// Submits a content clustering task.
 //
 // @param tmpReq - SubmitDocClusterTaskRequest
 //
@@ -16753,7 +17098,7 @@ func (client *Client) SubmitDocClusterTaskWithOptions(tmpReq *SubmitDocClusterTa
 
 // Summary:
 //
-// 提交文档聚合任务
+// Submits a content clustering task.
 //
 // @param request - SubmitDocClusterTaskRequest
 //
@@ -16771,7 +17116,7 @@ func (client *Client) SubmitDocClusterTask(request *SubmitDocClusterTaskRequest)
 
 // Summary:
 //
-// 提交VOC异步任务
+// Submits a Voice of the Customer (VOC) asynchronous task.
 //
 // @param tmpReq - SubmitEnterpriseVocAnalysisTaskRequest
 //
@@ -16869,7 +17214,7 @@ func (client *Client) SubmitEnterpriseVocAnalysisTaskWithOptions(tmpReq *SubmitE
 
 // Summary:
 //
-// 提交VOC异步任务
+// Submits a Voice of the Customer (VOC) asynchronous task.
 //
 // @param request - SubmitEnterpriseVocAnalysisTaskRequest
 //
@@ -16887,7 +17232,7 @@ func (client *Client) SubmitEnterpriseVocAnalysisTask(request *SubmitEnterpriseV
 
 // Summary:
 //
-// 导出词库任务
+// # Export task for a thesaurus
 //
 // @param request - SubmitExportTermsTaskRequest
 //
@@ -16935,7 +17280,7 @@ func (client *Client) SubmitExportTermsTaskWithOptions(request *SubmitExportTerm
 
 // Summary:
 //
-// 导出词库任务
+// # Export task for a thesaurus
 //
 // @param request - SubmitExportTermsTaskRequest
 //
@@ -16953,7 +17298,7 @@ func (client *Client) SubmitExportTermsTask(request *SubmitExportTermsTaskReques
 
 // Summary:
 //
-// 妙笔为您提供了新的事实性审核能力，在联网搜索并判断正误的前提下，还支持用户自定义配置搜索来源 URL。
+// MiaoBi provides a factuality audit capability that verifies facts using web search and supports custom configuration of search source URLs.
 //
 // @param request - SubmitFactAuditUrlRequest
 //
@@ -17001,7 +17346,7 @@ func (client *Client) SubmitFactAuditUrlWithOptions(request *SubmitFactAuditUrlR
 
 // Summary:
 //
-// 妙笔为您提供了新的事实性审核能力，在联网搜索并判断正误的前提下，还支持用户自定义配置搜索来源 URL。
+// MiaoBi provides a factuality audit capability that verifies facts using web search and supports custom configuration of search source URLs.
 //
 // @param request - SubmitFactAuditUrlRequest
 //
@@ -17019,7 +17364,7 @@ func (client *Client) SubmitFactAuditUrl(request *SubmitFactAuditUrlRequest) (_r
 
 // Summary:
 //
-// 提交导入自定义词库任务
+// Submit a custom dictionary import task.
 //
 // @param request - SubmitImportTermsTaskRequest
 //
@@ -17071,7 +17416,7 @@ func (client *Client) SubmitImportTermsTaskWithOptions(request *SubmitImportTerm
 
 // Summary:
 //
-// 提交导入自定义词库任务
+// Submit a custom dictionary import task.
 //
 // @param request - SubmitImportTermsTaskRequest
 //
@@ -17157,7 +17502,215 @@ func (client *Client) SubmitParseDocumentLayoutTask(request *SubmitParseDocument
 
 // Summary:
 //
-// 提交智能审核
+// Submit a smart audit request.
+//
+// Description:
+//
+// The Quanmiao product supports iframe embedding. For more information, see [Customer integration: Quanmiao public cloud iframe customization guide](https://help.aliyun.com/document_detail/3000990.html).
+//
+// # Supported audit types
+//
+// ## Audit category overview
+//
+// | Audit category                 | Description                                                                                                                                                                                                                                                               |
+//
+// | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+//
+// | Content accuracy               | Errors due to phonetic or visual similarity; punctuation errors; misuse of Chinese structural particles (的/地/得); inappropriate word choice or syntax errors; incorrect personal names; incorrect place names; incorrect references; errors in proper nouns or terminology |
+//
+// | Formatting issues              | Inconsistent capitalization; numeric errors; nonstandard units of measurement; use of traditional Chinese characters                                                                                                                                                      |
+//
+// | Content structure issues       | Redundant text; repeated segments; logical contradictions; unfilled placeholders                                                                                                                                                                                          |
+//
+// | Political sensitivity issues   | Sensitive content or directional risks; name or sorting errors; conventional phrasing errors; nonstandard institutional names; misquoting important speeches; references to disgraced officials; mismatched name-title pairings; incorrect title expressions              |
+//
+// | Security and compliance issues | Violence or terrorism; pornography; prohibited content; insults; disgraced celebrities; personal privacy violations; reporting standard violations                                                                                                                        |
+//
+// | Legal errors                   | Incorrect citation of laws and regulations; errors in legal provisions                                                                                                                                                                                                    |
+//
+// | Other domain-specific errors   | Violations of advertising law; financial information errors; scientific or technical term errors                                                                                                                                                                          |
+//
+// | Factuality check               | Factuality verification: correct or incorrect items                                                                                                                                                                                                                       |
+//
+// | Image audit                    | Image content moderation                                                                                                                                                                                                                                                  |
+//
+// | Custom word library            | Custom word library audit                                                                                                                                                                                                                                                 |
+//
+// | Rule library audit             | Rule library audit                                                                                                                                                                                                                                                        |
+//
+// | English proofreading           | Terminology standardization; verb tense accuracy; punctuation and quotation marks; spelling and language variants; sentence structure and clarity; numeric and percentage formatting; standardized phrasing                                                               |
+//
+// ***
+//
+// ## Sub-audit code values
+//
+// ### 1. Content accuracy
+//
+// | Description                                    | Code                 |
+//
+// | ---------------------------------------------- | -------------------- |
+//
+// | Phonetic or visual similarity errors           | PhoneticSimilarError |
+//
+// | Punctuation errors                             | PunctuationError     |
+//
+// | Misuse of Chinese structural particles (的/地/得) | ParticleUsageError   |
+//
+// | Inappropriate word choice or syntax errors     | WordError            |
+//
+// | Incorrect personal names                       | PersonNameError      |
+//
+// | Incorrect place names                          | LocationError        |
+//
+// | Incorrect references                           | ReferenceError       |
+//
+// | Errors in proper nouns or terminology          | NounItemError        |
+//
+// ### 2. Formatting issues
+//
+// | Description                           | Code                    |
+//
+// | ------------------------------------- | ----------------------- |
+//
+// | Inconsistent capitalization           | CapitalizationError     |
+//
+// | Numeric errors                        | NumberError             |
+//
+// | Nonstandard units of measurement      | UnitError               |
+//
+// | Use of traditional Chinese characters | TraditionalChineseError |
+//
+// ### 3. Content structure issues
+//
+// | Description            | Code                 |
+//
+// | ---------------------- | -------------------- |
+//
+// | Redundant text         | WordRedundancy       |
+//
+// | Repeated segments      | DuplicateError       |
+//
+// | Logical contradictions | LogicContradiction   |
+//
+// | Unfilled placeholders  | PlaceholderNotFilled |
+//
+// ### 4. Political sensitivity issues
+//
+// | Description                            | Code                        |
+//
+// | -------------------------------------- | --------------------------- |
+//
+// | Sensitive content or directional risks | SensitiveContentRisk        |
+//
+// | Name or sorting errors                 | NameOrderError              |
+//
+// | Conventional phrasing errors           | ConventionalExpressionError |
+//
+// | Nonstandard institutional names        | DepartmentNameError         |
+//
+// | Misquoting important speeches          | ImportantSpeechError        |
+//
+// | References to disgraced officials      | FallenOfficialError         |
+//
+// | Mismatched name-title pairings         | LeaderTitleMatchError       |
+//
+// | Incorrect title expressions            | TitleError                  |
+//
+// ### 5. Security and compliance issues
+//
+// | Description                   | Code                   |
+//
+// | ----------------------------- | ---------------------- |
+//
+// | Violence or terrorism         | ViolenceTerrorismError |
+//
+// | Pornography                   | PornographyError       |
+//
+// | Prohibited content            | ProhibitedContentError |
+//
+// | Insults                       | InsultError            |
+//
+// | Disgraced celebrities         | DisgracedArtistError   |
+//
+// | Personal privacy violations   | PersonalPrivacyError   |
+//
+// | Reporting standard violations | ReportingStandardError |
+//
+// ### 6. Legal errors
+//
+// | Description                                | Code                 |
+//
+// | ------------------------------------------ | -------------------- |
+//
+// | Incorrect citation of laws and regulations | LegalReferenceError  |
+//
+// | Errors in legal provisions                 | LegalProvisionsError |
+//
+// ### 7. Other domain-specific errors
+//
+// | Description                         | Code                            |
+//
+// | ----------------------------------- | ------------------------------- |
+//
+// | Violations of advertising law       | AdvertisingProhibitedWordsError |
+//
+// | Financial information errors        | FinancialInformationError       |
+//
+// | Scientific or technical term errors | TechnicalTermError              |
+//
+// ### 8. Factuality check
+//
+// | Description                              | Code           |
+//
+// | ---------------------------------------- | -------------- |
+//
+// | Factuality verification – correct item   | CorrectFact    |
+//
+// | Factuality verification – incorrect item | WrongFactError |
+//
+// ### 9. Image audit
+//
+// | Description | Code       |
+//
+// | ----------- | ---------- |
+//
+// | Image audit | ImageAudit |
+//
+// ### 10. Custom word library
+//
+// | Description         | Code        |
+//
+// | ------------------- | ----------- |
+//
+// | Custom word library | WordLibrary |
+//
+// ### 11. Rule library audit
+//
+// | Description        | Code              |
+//
+// | ------------------ | ----------------- |
+//
+// | Rule library audit | WrongQuestionBook |
+//
+// ### 12. English proofreading
+//
+// | Description                       | Code                         |
+//
+// | --------------------------------- | ---------------------------- |
+//
+// | Terminology standardization       | TerminologyNormalisation     |
+//
+// | Verb tense accuracy               | VerbTenseAccuracy            |
+//
+// | Punctuation and quotation marks   | PunctuationAndQuotationMarks |
+//
+// | Spelling and language variants    | SpellingAndLanguageVariety   |
+//
+// | Sentence structure and clarity    | SentenceStructureAndClarity  |
+//
+// | Numeric and percentage formatting | NumericAndPercentageStyle    |
+//
+// | Other standardized phrasing       | Others                       |
 //
 // @param tmpReq - SubmitSmartAuditRequest
 //
@@ -17239,7 +17792,215 @@ func (client *Client) SubmitSmartAuditWithOptions(tmpReq *SubmitSmartAuditReques
 
 // Summary:
 //
-// 提交智能审核
+// Submit a smart audit request.
+//
+// Description:
+//
+// The Quanmiao product supports iframe embedding. For more information, see [Customer integration: Quanmiao public cloud iframe customization guide](https://help.aliyun.com/document_detail/3000990.html).
+//
+// # Supported audit types
+//
+// ## Audit category overview
+//
+// | Audit category                 | Description                                                                                                                                                                                                                                                               |
+//
+// | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+//
+// | Content accuracy               | Errors due to phonetic or visual similarity; punctuation errors; misuse of Chinese structural particles (的/地/得); inappropriate word choice or syntax errors; incorrect personal names; incorrect place names; incorrect references; errors in proper nouns or terminology |
+//
+// | Formatting issues              | Inconsistent capitalization; numeric errors; nonstandard units of measurement; use of traditional Chinese characters                                                                                                                                                      |
+//
+// | Content structure issues       | Redundant text; repeated segments; logical contradictions; unfilled placeholders                                                                                                                                                                                          |
+//
+// | Political sensitivity issues   | Sensitive content or directional risks; name or sorting errors; conventional phrasing errors; nonstandard institutional names; misquoting important speeches; references to disgraced officials; mismatched name-title pairings; incorrect title expressions              |
+//
+// | Security and compliance issues | Violence or terrorism; pornography; prohibited content; insults; disgraced celebrities; personal privacy violations; reporting standard violations                                                                                                                        |
+//
+// | Legal errors                   | Incorrect citation of laws and regulations; errors in legal provisions                                                                                                                                                                                                    |
+//
+// | Other domain-specific errors   | Violations of advertising law; financial information errors; scientific or technical term errors                                                                                                                                                                          |
+//
+// | Factuality check               | Factuality verification: correct or incorrect items                                                                                                                                                                                                                       |
+//
+// | Image audit                    | Image content moderation                                                                                                                                                                                                                                                  |
+//
+// | Custom word library            | Custom word library audit                                                                                                                                                                                                                                                 |
+//
+// | Rule library audit             | Rule library audit                                                                                                                                                                                                                                                        |
+//
+// | English proofreading           | Terminology standardization; verb tense accuracy; punctuation and quotation marks; spelling and language variants; sentence structure and clarity; numeric and percentage formatting; standardized phrasing                                                               |
+//
+// ***
+//
+// ## Sub-audit code values
+//
+// ### 1. Content accuracy
+//
+// | Description                                    | Code                 |
+//
+// | ---------------------------------------------- | -------------------- |
+//
+// | Phonetic or visual similarity errors           | PhoneticSimilarError |
+//
+// | Punctuation errors                             | PunctuationError     |
+//
+// | Misuse of Chinese structural particles (的/地/得) | ParticleUsageError   |
+//
+// | Inappropriate word choice or syntax errors     | WordError            |
+//
+// | Incorrect personal names                       | PersonNameError      |
+//
+// | Incorrect place names                          | LocationError        |
+//
+// | Incorrect references                           | ReferenceError       |
+//
+// | Errors in proper nouns or terminology          | NounItemError        |
+//
+// ### 2. Formatting issues
+//
+// | Description                           | Code                    |
+//
+// | ------------------------------------- | ----------------------- |
+//
+// | Inconsistent capitalization           | CapitalizationError     |
+//
+// | Numeric errors                        | NumberError             |
+//
+// | Nonstandard units of measurement      | UnitError               |
+//
+// | Use of traditional Chinese characters | TraditionalChineseError |
+//
+// ### 3. Content structure issues
+//
+// | Description            | Code                 |
+//
+// | ---------------------- | -------------------- |
+//
+// | Redundant text         | WordRedundancy       |
+//
+// | Repeated segments      | DuplicateError       |
+//
+// | Logical contradictions | LogicContradiction   |
+//
+// | Unfilled placeholders  | PlaceholderNotFilled |
+//
+// ### 4. Political sensitivity issues
+//
+// | Description                            | Code                        |
+//
+// | -------------------------------------- | --------------------------- |
+//
+// | Sensitive content or directional risks | SensitiveContentRisk        |
+//
+// | Name or sorting errors                 | NameOrderError              |
+//
+// | Conventional phrasing errors           | ConventionalExpressionError |
+//
+// | Nonstandard institutional names        | DepartmentNameError         |
+//
+// | Misquoting important speeches          | ImportantSpeechError        |
+//
+// | References to disgraced officials      | FallenOfficialError         |
+//
+// | Mismatched name-title pairings         | LeaderTitleMatchError       |
+//
+// | Incorrect title expressions            | TitleError                  |
+//
+// ### 5. Security and compliance issues
+//
+// | Description                   | Code                   |
+//
+// | ----------------------------- | ---------------------- |
+//
+// | Violence or terrorism         | ViolenceTerrorismError |
+//
+// | Pornography                   | PornographyError       |
+//
+// | Prohibited content            | ProhibitedContentError |
+//
+// | Insults                       | InsultError            |
+//
+// | Disgraced celebrities         | DisgracedArtistError   |
+//
+// | Personal privacy violations   | PersonalPrivacyError   |
+//
+// | Reporting standard violations | ReportingStandardError |
+//
+// ### 6. Legal errors
+//
+// | Description                                | Code                 |
+//
+// | ------------------------------------------ | -------------------- |
+//
+// | Incorrect citation of laws and regulations | LegalReferenceError  |
+//
+// | Errors in legal provisions                 | LegalProvisionsError |
+//
+// ### 7. Other domain-specific errors
+//
+// | Description                         | Code                            |
+//
+// | ----------------------------------- | ------------------------------- |
+//
+// | Violations of advertising law       | AdvertisingProhibitedWordsError |
+//
+// | Financial information errors        | FinancialInformationError       |
+//
+// | Scientific or technical term errors | TechnicalTermError              |
+//
+// ### 8. Factuality check
+//
+// | Description                              | Code           |
+//
+// | ---------------------------------------- | -------------- |
+//
+// | Factuality verification – correct item   | CorrectFact    |
+//
+// | Factuality verification – incorrect item | WrongFactError |
+//
+// ### 9. Image audit
+//
+// | Description | Code       |
+//
+// | ----------- | ---------- |
+//
+// | Image audit | ImageAudit |
+//
+// ### 10. Custom word library
+//
+// | Description         | Code        |
+//
+// | ------------------- | ----------- |
+//
+// | Custom word library | WordLibrary |
+//
+// ### 11. Rule library audit
+//
+// | Description        | Code              |
+//
+// | ------------------ | ----------------- |
+//
+// | Rule library audit | WrongQuestionBook |
+//
+// ### 12. English proofreading
+//
+// | Description                       | Code                         |
+//
+// | --------------------------------- | ---------------------------- |
+//
+// | Terminology standardization       | TerminologyNormalisation     |
+//
+// | Verb tense accuracy               | VerbTenseAccuracy            |
+//
+// | Punctuation and quotation marks   | PunctuationAndQuotationMarks |
+//
+// | Spelling and language variants    | SpellingAndLanguageVariety   |
+//
+// | Sentence structure and clarity    | SentenceStructureAndClarity  |
+//
+// | Numeric and percentage formatting | NumericAndPercentageStyle    |
+//
+// | Other standardized phrasing       | Others                       |
 //
 // @param request - SubmitSmartAuditRequest
 //
@@ -17257,7 +18018,7 @@ func (client *Client) SubmitSmartAudit(request *SubmitSmartAuditRequest) (_resul
 
 // Summary:
 //
-// 提交一键成片剪辑任务
+// Submits a one-click video editing task.
 //
 // @param tmpReq - SubmitSmartClipTaskRequest
 //
@@ -17331,7 +18092,7 @@ func (client *Client) SubmitSmartClipTaskWithOptions(tmpReq *SubmitSmartClipTask
 
 // Summary:
 //
-// 提交一键成片剪辑任务
+// Submits a one-click video editing task.
 //
 // @param request - SubmitSmartClipTaskRequest
 //
@@ -17349,7 +18110,7 @@ func (client *Client) SubmitSmartClipTask(request *SubmitSmartClipTaskRequest) (
 
 // Summary:
 //
-// 提交选题热点分析任务
+// Submits a hot spot analysis task for topic selection.
 //
 // @param tmpReq - SubmitTopicSelectionPerspectiveAnalysisTaskRequest
 //
@@ -17417,7 +18178,7 @@ func (client *Client) SubmitTopicSelectionPerspectiveAnalysisTaskWithOptions(tmp
 
 // Summary:
 //
-// 提交选题热点分析任务
+// Submits a hot spot analysis task for topic selection.
 //
 // @param request - SubmitTopicSelectionPerspectiveAnalysisTaskRequest
 //
@@ -17435,11 +18196,11 @@ func (client *Client) SubmitTopicSelectionPerspectiveAnalysisTask(request *Submi
 
 // Summary:
 //
-// 提交视频审校
+// Submits a video for review.
 //
 // Description:
 //
-// 提交视频审校任务，支持传入fileKey或url，系统会对视频进行分镜检测、抽帧审核，返回任务ID
+// Quanmiao products support iframe embedding. For more information, see [Customer Integration_Quanmiao Public Cloud iframe Customization Solution](https://alidocs.dingtalk.com/i/nodes/m9bN7RYPWdyrPBREcyM6jDQ2VZd1wyK0?cid=116617178%3A898142682\\&utm_source=im\\&utm_scene=team_space\\&iframeQuery=utm_medium%3Dim_card%26utm_source%3Dim\\&utm_medium=im_card\\&corpId=dingd8e1123006514592).
 //
 // @param request - SubmitVideoAuditRequest
 //
@@ -17499,11 +18260,11 @@ func (client *Client) SubmitVideoAuditWithOptions(request *SubmitVideoAuditReque
 
 // Summary:
 //
-// 提交视频审校
+// Submits a video for review.
 //
 // Description:
 //
-// 提交视频审校任务，支持传入fileKey或url，系统会对视频进行分镜检测、抽帧审核，返回任务ID
+// Quanmiao products support iframe embedding. For more information, see [Customer Integration_Quanmiao Public Cloud iframe Customization Solution](https://alidocs.dingtalk.com/i/nodes/m9bN7RYPWdyrPBREcyM6jDQ2VZd1wyK0?cid=116617178%3A898142682\\&utm_source=im\\&utm_scene=team_space\\&iframeQuery=utm_medium%3Dim_card%26utm_source%3Dim\\&utm_medium=im_card\\&corpId=dingd8e1123006514592).
 //
 // @param request - SubmitVideoAuditRequest
 //
@@ -17521,7 +18282,7 @@ func (client *Client) SubmitVideoAudit(request *SubmitVideoAuditRequest) (_resul
 
 // Summary:
 //
-// 更新自定义文本
+// Updates custom text.
 //
 // @param request - UpdateCustomTextRequest
 //
@@ -17583,7 +18344,7 @@ func (client *Client) UpdateCustomTextWithOptions(request *UpdateCustomTextReque
 
 // Summary:
 //
-// 更新自定义文本
+// Updates custom text.
 //
 // @param request - UpdateCustomTextRequest
 //
@@ -17601,7 +18362,7 @@ func (client *Client) UpdateCustomText(request *UpdateCustomTextRequest) (_resul
 
 // Summary:
 //
-// 数据集管理-更新
+// This operation updates a data source.
 //
 // @param tmpReq - UpdateDatasetRequest
 //
@@ -17671,7 +18432,7 @@ func (client *Client) UpdateDatasetWithOptions(tmpReq *UpdateDatasetRequest, run
 
 // Summary:
 //
-// 数据集管理-更新
+// This operation updates a data source.
 //
 // @param request - UpdateDatasetRequest
 //
@@ -17689,7 +18450,7 @@ func (client *Client) UpdateDataset(request *UpdateDatasetRequest) (_result *Upd
 
 // Summary:
 //
-// 修改数据集文档
+// Updates a document in a dataset.
 //
 // @param tmpReq - UpdateDatasetDocumentRequest
 //
@@ -17751,7 +18512,7 @@ func (client *Client) UpdateDatasetDocumentWithOptions(tmpReq *UpdateDatasetDocu
 
 // Summary:
 //
-// 修改数据集文档
+// Updates a document in a dataset.
 //
 // @param request - UpdateDatasetDocumentRequest
 //
@@ -17769,7 +18530,7 @@ func (client *Client) UpdateDatasetDocument(request *UpdateDatasetDocumentReques
 
 // Summary:
 //
-// 通用配置-更新
+// Updates general configurations.
 //
 // @param request - UpdateGeneralConfigRequest
 //
@@ -17821,7 +18582,7 @@ func (client *Client) UpdateGeneralConfigWithOptions(request *UpdateGeneralConfi
 
 // Summary:
 //
-// 通用配置-更新
+// Updates general configurations.
 //
 // @param request - UpdateGeneralConfigRequest
 //
@@ -17839,7 +18600,7 @@ func (client *Client) UpdateGeneralConfig(request *UpdateGeneralConfigRequest) (
 
 // Summary:
 //
-// 文档管理-更新。
+// Updates the history of an article created in AiMiaoBi.
 //
 // @param tmpReq - UpdateGeneratedContentRequest
 //
@@ -17915,7 +18676,7 @@ func (client *Client) UpdateGeneratedContentWithOptions(tmpReq *UpdateGeneratedC
 
 // Summary:
 //
-// 文档管理-更新。
+// Updates the history of an article created in AiMiaoBi.
 //
 // @param request - UpdateGeneratedContentRequest
 //
@@ -17933,7 +18694,7 @@ func (client *Client) UpdateGeneratedContent(request *UpdateGeneratedContentRequ
 
 // Summary:
 //
-// 根据ID更新素材
+// Update a material in the Material Library.
 //
 // @param tmpReq - UpdateMaterialDocumentRequest
 //
@@ -18041,7 +18802,7 @@ func (client *Client) UpdateMaterialDocumentWithOptions(tmpReq *UpdateMaterialDo
 
 // Summary:
 //
-// 根据ID更新素材
+// Update a material in the Material Library.
 //
 // @param request - UpdateMaterialDocumentRequest
 //
@@ -18059,7 +18820,7 @@ func (client *Client) UpdateMaterialDocument(request *UpdateMaterialDocumentRequ
 
 // Summary:
 //
-// 妙读上传书籍
+// Use MiaoDu to upload books.
 //
 // @param tmpReq - UploadBookRequest
 //
@@ -18117,7 +18878,7 @@ func (client *Client) UploadBookWithOptions(tmpReq *UploadBookRequest, runtime *
 
 // Summary:
 //
-// 妙读上传书籍
+// Use MiaoDu to upload books.
 //
 // @param request - UploadBookRequest
 //
@@ -18135,7 +18896,11 @@ func (client *Client) UploadBook(request *UploadBookRequest) (_result *UploadBoo
 
 // Summary:
 //
-// 妙读上传文档接口
+// Upload document API for Miaodu.
+//
+// Description:
+//
+// Document upload is implemented through asynchronous invocation. After the invocation, you must use the getDocInfo API to periodically check the document status. Only when the document status becomes 1 can you proceed with subsequent operations such as generating a document summary, creating a full-text mind map, summarizing Q&A content, extracting keywords, or rewriting.
 //
 // @param tmpReq - UploadDocRequest
 //
@@ -18193,7 +18958,11 @@ func (client *Client) UploadDocWithOptions(tmpReq *UploadDocRequest, runtime *da
 
 // Summary:
 //
-// 妙读上传文档接口
+// Upload document API for Miaodu.
+//
+// Description:
+//
+// Document upload is implemented through asynchronous invocation. After the invocation, you must use the getDocInfo API to periodically check the document status. Only when the document status becomes 1 can you proceed with subsequent operations such as generating a document summary, creating a full-text mind map, summarizing Q&A content, extracting keywords, or rewriting.
 //
 // @param request - UploadDocRequest
 //
@@ -18211,7 +18980,7 @@ func (client *Client) UploadDoc(request *UploadDocRequest) (_result *UploadDocRe
 
 // Summary:
 //
-// 校验企业VOC上传模板
+// Validates an enterprise VOC upload template.
 //
 // @param request - ValidateUploadTemplateRequest
 //
@@ -18267,7 +19036,7 @@ func (client *Client) ValidateUploadTemplateWithOptions(request *ValidateUploadT
 
 // Summary:
 //
-// 校验企业VOC上传模板
+// Validates an enterprise VOC upload template.
 //
 // @param request - ValidateUploadTemplateRequest
 //

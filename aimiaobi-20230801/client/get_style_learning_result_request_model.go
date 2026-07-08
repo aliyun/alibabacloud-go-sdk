@@ -16,12 +16,16 @@ type iGetStyleLearningResultRequest interface {
 }
 
 type GetStyleLearningResultRequest struct {
+	// The unique identifier of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The ID of the style learning task.
+	//
 	// This parameter is required.
 	//
 	// example:

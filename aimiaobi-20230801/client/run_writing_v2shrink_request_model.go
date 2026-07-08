@@ -56,59 +56,131 @@ type iRunWritingV2ShrinkRequest interface {
 }
 
 type RunWritingV2ShrinkRequest struct {
+	// A list of articles to use as references. **Note:*	- When you provide this parameter, web search is disabled, overriding the `UseSearch` and `SearchSources` parameters.
 	ArticlesShrink *string `json:"Articles,omitempty" xml:"Articles,omitempty"`
+	// Specifies whether to enable step-by-step writing. For more information, see the `Step` parameter description.
+	//
 	// example:
 	//
 	// false
 	DistributeWriting *bool `json:"DistributeWriting,omitempty" xml:"DistributeWriting,omitempty"`
+	// The number of articles to write. If you request multiple articles, the system returns them concurrently, each with a unique session ID.
+	//
 	// example:
 	//
 	// 2
-	GcNumberSize    *int32  `json:"GcNumberSize,omitempty" xml:"GcNumberSize,omitempty"`
+	GcNumberSize *int32 `json:"GcNumberSize,omitempty" xml:"GcNumberSize,omitempty"`
+	// A string that specifies the desired article length. Examples: "about 300 words", "about 600 words", "about 1,000 words", or "about 2,000 words".
+	//
+	// example:
+	//
+	// 2000字左右
 	GcNumberSizeTag *string `json:"GcNumberSizeTag,omitempty" xml:"GcNumberSizeTag,omitempty"`
-	KeywordsShrink  *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// A list of keywords used for both search and writing.
+	KeywordsShrink *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// The output language for the article.
+	//
+	// - `en`: English
+	//
+	// - `zh`: Chinese
+	//
+	// - Other languages or specific style requirements can also be specified.
+	//
 	// example:
 	//
 	// en
-	Language          *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	MiniDocsShrink    *string `json:"MiniDocs,omitempty" xml:"MiniDocs,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// A list of article snippets.
+	MiniDocsShrink *string `json:"MiniDocs,omitempty" xml:"MiniDocs,omitempty"`
+	// A list of outlines for step-by-step writing.
 	OutlineListShrink *string `json:"OutlineList,omitempty" xml:"OutlineList,omitempty"`
-	OutlinesShrink    *string `json:"Outlines,omitempty" xml:"Outlines,omitempty"`
-	Prompt            *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// A list of outlines for step-by-step writing. This parameter is deprecated. Use `OutlineList` instead.
+	OutlinesShrink *string `json:"Outlines,omitempty" xml:"Outlines,omitempty"`
+	// The writing prompt. You must provide either `Prompt` or `WritingParams`. For more information, see the description of the `PromptMode` parameter.
+	//
+	// example:
+	//
+	// 提示词
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The prompt mode. Valid values: `Template` (template mode) and `PE` (advanced PE mode).
+	//
+	// 1. If this parameter is omitted, you must provide the `Prompt` parameter. We recommend that the prompt includes the topic, length, requirements, and prohibitions.
+	//
+	// 2. If `PromptMode` is set to `Template`, you must provide `WritingParams`, which is a dictionary of string key-value pairs. For the required schema, see the `.Data.TemplateDefine[].Fields` field in the response of the [ListWritingStyles](https://help.aliyun.com/document_detail/2922609.html) operation.
+	//
+	// 3. If `PromptMode` is set to `PE`, you must pass `WritingParams` with the following two fields:
+	//
+	//    1. `topic`: Required. The topic to write about.
+	//
+	//    2. `prompt`: Optional. Any additional custom prompts or writing requirements.
+	//
 	// example:
 	//
 	// Template
-	PromptMode          *string `json:"PromptMode,omitempty" xml:"PromptMode,omitempty"`
+	PromptMode *string `json:"PromptMode,omitempty" xml:"PromptMode,omitempty"`
+	// A list of specified search sources to use.
 	SearchSourcesShrink *string `json:"SearchSources,omitempty" xml:"SearchSources,omitempty"`
+	// The ID of a single-turn conversation. This parameter is deprecated and its use is discouraged.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
-	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The source tracing method. Currently, only `modelSourceTrace` is supported. If set to `modelSourceTrace`, the model adds citation markers (for example, `[[1]]`) to the end of each cited snippet in the generated text. The citation index starts at 1.
+	//
+	// example:
+	//
+	// modelSourceTrace
 	SourceTraceMethod *string `json:"SourceTraceMethod,omitempty" xml:"SourceTraceMethod,omitempty"`
+	// The step for step-by-step writing. Valid values:
+	//
+	// - `OutlineGenerate`: Outline generation
+	//
+	// - `Writing`: Article writing
+	//
+	// When `DistributeWriting` is `true`, the default flow for step-by-step writing is to first generate an outline and then write the content based on it.
+	//
 	// example:
 	//
 	// Writing
-	Step                *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	// A list of summarization objects, used for step-by-step writing.
 	SummarizationShrink *string `json:"Summarization,omitempty" xml:"Summarization,omitempty"`
+	// The unique ID of the task. You can reuse the same task ID for a multi-turn conversation.
+	//
+	// > The system automatically generates a `TaskId` if you do not specify one. Reusing the same `TaskId` for subsequent requests groups them into a single conversation.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Specifies whether to enable web search. If `true`, the system uses its built-in web search feature. Default: `false`.
+	//
 	// example:
 	//
 	// true
 	UseSearch *bool `json:"UseSearch,omitempty" xml:"UseSearch,omitempty"`
+	// The unique ID of the Model Studio workspace. For more information, see [Obtain a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxx
-	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The parameters for template-based writing, provided as a dictionary of string key-value pairs. You must provide either `Prompt` or `WritingParams`. For more information, see the description of the `PromptMode` parameter.
 	WritingParamsShrink *string `json:"WritingParams,omitempty" xml:"WritingParams,omitempty"`
+	// The writing scene. Valid values: `government` (government affairs), `media`, `market` (marketing), `office`, and `custom`.
+	//
 	// example:
 	//
 	// media
 	WritingScene *string `json:"WritingScene,omitempty" xml:"WritingScene,omitempty"`
+	// The writing style. For a list of supported styles, see [ListWritingStyles](https://help.aliyun.com/document_detail/2922609.html).
+	//
+	// example:
+	//
+	// 新闻评论
 	WritingStyle *string `json:"WritingStyle,omitempty" xml:"WritingStyle,omitempty"`
 }
 

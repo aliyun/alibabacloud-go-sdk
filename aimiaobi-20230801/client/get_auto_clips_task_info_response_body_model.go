@@ -24,20 +24,38 @@ type iGetAutoClipsTaskInfoResponseBody interface {
 }
 
 type GetAutoClipsTaskInfoResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// successful
-	Code           *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *GetAutoClipsTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data.
+	Data *GetAutoClipsTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// ID of the request.
 	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the operation succeeded. A value of true indicates success. A value of false indicates failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAutoClipsTaskInfoResponseBody) String() string {
@@ -112,57 +130,134 @@ func (s *GetAutoClipsTaskInfoResponseBody) Validate() error {
 }
 
 type GetAutoClipsTaskInfoResponseBodyData struct {
-	AnalysisResults   []*GetAutoClipsTaskInfoResponseBodyDataAnalysisResults `json:"AnalysisResults,omitempty" xml:"AnalysisResults,omitempty" type:"Repeated"`
-	CloseMusic        *bool                                                  `json:"CloseMusic,omitempty" xml:"CloseMusic,omitempty"`
-	CloseSubtitle     *bool                                                  `json:"CloseSubtitle,omitempty" xml:"CloseSubtitle,omitempty"`
-	CloseVoice        *bool                                                  `json:"CloseVoice,omitempty" xml:"CloseVoice,omitempty"`
-	ClosingCreditsUrl *string                                                `json:"ClosingCreditsUrl,omitempty" xml:"ClosingCreditsUrl,omitempty"`
-	ColorWords        []*GetAutoClipsTaskInfoResponseBodyDataColorWords      `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
-	Content           *string                                                `json:"Content,omitempty" xml:"Content,omitempty"`
-	CustomVoiceStyle  *string                                                `json:"CustomVoiceStyle,omitempty" xml:"CustomVoiceStyle,omitempty"`
+	// List of video understanding results.
+	AnalysisResults []*GetAutoClipsTaskInfoResponseBodyDataAnalysisResults `json:"AnalysisResults,omitempty" xml:"AnalysisResults,omitempty" type:"Repeated"`
+	// Disable background music.
+	CloseMusic *bool `json:"CloseMusic,omitempty" xml:"CloseMusic,omitempty"`
+	// Disable subtitles.
+	CloseSubtitle *bool `json:"CloseSubtitle,omitempty" xml:"CloseSubtitle,omitempty"`
+	// Disable voiceover.
+	CloseVoice *bool `json:"CloseVoice,omitempty" xml:"CloseVoice,omitempty"`
+	// URL of the closing credits video.
+	//
+	// example:
+	//
+	// http://xxx/xxx.mp4
+	ClosingCreditsUrl *string `json:"ClosingCreditsUrl,omitempty" xml:"ClosingCreditsUrl,omitempty"`
+	// Array of decorative text elements.
+	ColorWords []*GetAutoClipsTaskInfoResponseBodyDataColorWords `json:"ColorWords,omitempty" xml:"ColorWords,omitempty" type:"Repeated"`
+	// Full voiceover script.
+	//
+	// example:
+	//
+	// 口播内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Voice style for CosyVoice.
+	//
+	// example:
+	//
+	// longxian_normal
+	CustomVoiceStyle *string `json:"CustomVoiceStyle,omitempty" xml:"CustomVoiceStyle,omitempty"`
+	// URL of the custom audio track file.
+	//
 	// example:
 	//
 	// http://xxx/xxx.mp4
 	CustomVoiceUrl *string `json:"CustomVoiceUrl,omitempty" xml:"CustomVoiceUrl,omitempty"`
+	// Volume of the custom audio track.
+	//
 	// example:
 	//
 	// 0
-	CustomVoiceVolume  *int32  `json:"CustomVoiceVolume,omitempty" xml:"CustomVoiceVolume,omitempty"`
-	ErrorMessage       *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	CustomVoiceVolume *int32 `json:"CustomVoiceVolume,omitempty" xml:"CustomVoiceVolume,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// ApsaraVideo timeline.
+	//
+	// example:
+	//
+	// 视频云格式timeline
 	MediaCloudTimeline *string `json:"MediaCloudTimeline,omitempty" xml:"MediaCloudTimeline,omitempty"`
-	MusicStyle         *string `json:"MusicStyle,omitempty" xml:"MusicStyle,omitempty"`
+	// Recommended music style.
+	//
+	// example:
+	//
+	// 国风
+	MusicStyle *string `json:"MusicStyle,omitempty" xml:"MusicStyle,omitempty"`
+	// URL of the background music.
+	//
 	// example:
 	//
 	// http://music.mp4
 	MusicUrl *string `json:"MusicUrl,omitempty" xml:"MusicUrl,omitempty"`
+	// Volume of the background music.
+	//
 	// example:
 	//
 	// 5
-	MusicVolume        *int32  `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
-	OpeningCreditsUrl  *string `json:"OpeningCreditsUrl,omitempty" xml:"OpeningCreditsUrl,omitempty"`
+	MusicVolume *int32 `json:"MusicVolume,omitempty" xml:"MusicVolume,omitempty"`
+	// URL of the opening credits video.
+	//
+	// example:
+	//
+	// http://xxx/xxx.mp4
+	OpeningCreditsUrl *string `json:"OpeningCreditsUrl,omitempty" xml:"OpeningCreditsUrl,omitempty"`
+	// File key of the output video.
+	//
+	// example:
+	//
+	// oss://xxx/xxx.mp4
 	OutputVideoFileKey *string `json:"OutputVideoFileKey,omitempty" xml:"OutputVideoFileKey,omitempty"`
+	// URL of the final video.
+	//
 	// example:
 	//
 	// http://output.mp4
-	OutputVideoUrl *string                                             `json:"OutputVideoUrl,omitempty" xml:"OutputVideoUrl,omitempty"`
+	OutputVideoUrl *string `json:"OutputVideoUrl,omitempty" xml:"OutputVideoUrl,omitempty"`
+	// Reference video information.
 	ReferenceVideo *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo `json:"ReferenceVideo,omitempty" xml:"ReferenceVideo,omitempty" type:"Struct"`
-	SourceVideos   []*GetAutoClipsTaskInfoResponseBodyDataSourceVideos `json:"SourceVideos,omitempty" xml:"SourceVideos,omitempty" type:"Repeated"`
-	Status         *int32                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	// List of video sources used for editing.
+	SourceVideos []*GetAutoClipsTaskInfoResponseBodyDataSourceVideos `json:"SourceVideos,omitempty" xml:"SourceVideos,omitempty" type:"Repeated"`
+	// Status
+	//
+	// example:
+	//
+	// 0-待执行、1-执行中、2-执行成功、3-暂停、4-执行失败-可重试、5-执行失败-不可重试,6-任务取消
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Current step.
+	//
 	// example:
 	//
 	// clips
-	Step     *string                                         `json:"Step,omitempty" xml:"Step,omitempty"`
+	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	// Array of stickers.
 	Stickers []*GetAutoClipsTaskInfoResponseBodyDataStickers `json:"Stickers,omitempty" xml:"Stickers,omitempty" type:"Repeated"`
+	// Font size of subtitles.
+	//
 	// example:
 	//
 	// 5
 	SubtitleFontSize *int32 `json:"SubtitleFontSize,omitempty" xml:"SubtitleFontSize,omitempty"`
+	// Unique ID of the task.
+	//
 	// example:
 	//
 	// e5a1a59c82d0454fad6454e8a04d0093
-	TaskId     *string                                          `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Timelines  []*GetAutoClipsTaskInfoResponseBodyDataTimelines `json:"Timelines,omitempty" xml:"Timelines,omitempty" type:"Repeated"`
-	VoiceStyle *string                                          `json:"VoiceStyle,omitempty" xml:"VoiceStyle,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Array of voiceover timelines.
+	Timelines []*GetAutoClipsTaskInfoResponseBodyDataTimelines `json:"Timelines,omitempty" xml:"Timelines,omitempty" type:"Repeated"`
+	// Voice style for voiceover.
+	//
+	// example:
+	//
+	// 温柔女声
+	VoiceStyle *string `json:"VoiceStyle,omitempty" xml:"VoiceStyle,omitempty"`
+	// Volume of the voiceover.
+	//
 	// example:
 	//
 	// 5
@@ -484,10 +579,26 @@ func (s *GetAutoClipsTaskInfoResponseBodyData) Validate() error {
 }
 
 type GetAutoClipsTaskInfoResponseBodyDataAnalysisResults struct {
+	// List of shot information.
 	LensInfos []*GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos `json:"LensInfos,omitempty" xml:"LensInfos,omitempty" type:"Repeated"`
-	MediaId   *string                                                         `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaName *string                                                         `json:"MediaName,omitempty" xml:"MediaName,omitempty"`
-	MediaUrl  *string                                                         `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
+	// Video ID.
+	//
+	// example:
+	//
+	// 975e1d91a8d057e132cc5d88e4d5b360
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Video name.
+	//
+	// example:
+	//
+	// video001.mp4
+	MediaName *string `json:"MediaName,omitempty" xml:"MediaName,omitempty"`
+	// Video URL.
+	//
+	// example:
+	//
+	// http://xxx/xxx.mp4
+	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
 }
 
 func (s GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) String() string {
@@ -548,9 +659,16 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResults) Validate() error {
 }
 
 type GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos struct {
-	AnalysisContent *string                                                                `json:"AnalysisContent,omitempty" xml:"AnalysisContent,omitempty"`
-	EndTime         *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime   `json:"EndTime,omitempty" xml:"EndTime,omitempty" type:"Struct"`
-	StartTime       *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime `json:"StartTime,omitempty" xml:"StartTime,omitempty" type:"Struct"`
+	// Content analysis
+	//
+	// example:
+	//
+	// 视频理解内容
+	AnalysisContent *string `json:"AnalysisContent,omitempty" xml:"AnalysisContent,omitempty"`
+	// End time.
+	EndTime *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime `json:"EndTime,omitempty" xml:"EndTime,omitempty" type:"Struct"`
+	// Start time.
+	StartTime *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime `json:"StartTime,omitempty" xml:"StartTime,omitempty" type:"Struct"`
 }
 
 func (s GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos) String() string {
@@ -603,10 +721,30 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos) Validate(
 }
 
 type GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime struct {
-	Hour       *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// Hour.
+	//
+	// example:
+	//
+	// 2
+	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// Millisecond.
+	//
+	// example:
+	//
+	// 100
 	MillSecond *int32 `json:"MillSecond,omitempty" xml:"MillSecond,omitempty"`
-	Minute     *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
-	Second     *int32 `json:"Second,omitempty" xml:"Second,omitempty"`
+	// Minute.
+	//
+	// example:
+	//
+	// 1
+	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// Second.
+	//
+	// example:
+	//
+	// 30
+	Second *int32 `json:"Second,omitempty" xml:"Second,omitempty"`
 }
 
 func (s GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) String() string {
@@ -658,10 +796,30 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime) Va
 }
 
 type GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime struct {
-	Hour       *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// Hour.
+	//
+	// example:
+	//
+	// 2
+	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// Millisecond.
+	//
+	// example:
+	//
+	// 100
 	MillSecond *int32 `json:"MillSecond,omitempty" xml:"MillSecond,omitempty"`
-	Minute     *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
-	Second     *int32 `json:"Second,omitempty" xml:"Second,omitempty"`
+	// Minute.
+	//
+	// example:
+	//
+	// 1
+	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// Second.
+	//
+	// example:
+	//
+	// 30
+	Second *int32 `json:"Second,omitempty" xml:"Second,omitempty"`
 }
 
 func (s GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) String() string {
@@ -713,27 +871,44 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime) 
 }
 
 type GetAutoClipsTaskInfoResponseBodyDataColorWords struct {
+	// Text content.
+	//
+	// example:
+	//
+	// 花字内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Visual effect of the decorative text.
+	//
 	// example:
 	//
 	// CS0002-000008
 	EffectColorStyle *string `json:"EffectColorStyle,omitempty" xml:"EffectColorStyle,omitempty"`
+	// Font size of the decorative text.
+	//
 	// example:
 	//
 	// 5
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// Start time of the decorative text in seconds.
+	//
 	// example:
 	//
 	// 0
 	TimelineIn *int32 `json:"TimelineIn,omitempty" xml:"TimelineIn,omitempty"`
+	// End time of the decorative text in seconds.
+	//
 	// example:
 	//
 	// 5
 	TimelineOut *int32 `json:"TimelineOut,omitempty" xml:"TimelineOut,omitempty"`
+	// X-coordinate of the decorative text.
+	//
 	// example:
 	//
 	// 0.2
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// Y-coordinate of the decorative text.
+	//
 	// example:
 	//
 	// 0.5
@@ -816,9 +991,24 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataColorWords) Validate() error {
 }
 
 type GetAutoClipsTaskInfoResponseBodyDataReferenceVideo struct {
-	VideoId   *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// Video ID.
+	//
+	// example:
+	//
+	// 90ca686b11c371f08339752281ed0102
+	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// Video name.
+	//
+	// example:
+	//
+	// video001.mp4
 	VideoName *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
-	VideoUrl  *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	// Video URL.
+	//
+	// example:
+	//
+	// http://xxx/xxx.mp4
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s GetAutoClipsTaskInfoResponseBodyDataReferenceVideo) String() string {
@@ -861,9 +1051,24 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataReferenceVideo) Validate() error {
 }
 
 type GetAutoClipsTaskInfoResponseBodyDataSourceVideos struct {
-	VideoId   *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// Video ID.
+	//
+	// example:
+	//
+	// fdaswe
+	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// Video name.
+	//
+	// example:
+	//
+	// video001.mp4
 	VideoName *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
-	VideoUrl  *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	// Video URL.
+	//
+	// example:
+	//
+	// http://xxx/xxx.mp4
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s GetAutoClipsTaskInfoResponseBodyDataSourceVideos) String() string {
@@ -906,34 +1111,50 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataSourceVideos) Validate() error {
 }
 
 type GetAutoClipsTaskInfoResponseBodyDataStickers struct {
+	// Duration of the sticker display.
+	//
 	// example:
 	//
 	// 10
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Height of the sticker
+	//
 	// example:
 	//
 	// 8
 	DyncFrames *int32 `json:"DyncFrames,omitempty" xml:"DyncFrames,omitempty"`
+	// Height of the sticker.
+	//
 	// example:
 	//
 	// 200
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Start time of the sticker in seconds.
+	//
 	// example:
 	//
 	// 10
 	TimelineIn *int32 `json:"TimelineIn,omitempty" xml:"TimelineIn,omitempty"`
+	// URL of the sticker GIF file.
+	//
 	// example:
 	//
 	// http://xxx/xxx.gif
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Width of the sticker.
+	//
 	// example:
 	//
 	// 200
 	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// X-coordinate of the sticker position.
+	//
 	// example:
 	//
 	// 100
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// Y-coordinate of the sticker position.
+	//
 	// example:
 	//
 	// 100
@@ -1025,8 +1246,16 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataStickers) Validate() error {
 }
 
 type GetAutoClipsTaskInfoResponseBodyDataTimelines struct {
-	Clips   []*GetAutoClipsTaskInfoResponseBodyDataTimelinesClips `json:"Clips,omitempty" xml:"Clips,omitempty" type:"Repeated"`
-	Content *string                                               `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Array of video clips.
+	Clips []*GetAutoClipsTaskInfoResponseBodyDataTimelinesClips `json:"Clips,omitempty" xml:"Clips,omitempty" type:"Repeated"`
+	// Voiceover script.
+	//
+	// example:
+	//
+	// 口播内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// ID of the timeline.
+	//
 	// example:
 	//
 	// 20774ebd9abc71ef80486632b68f0102
@@ -1082,25 +1311,50 @@ func (s *GetAutoClipsTaskInfoResponseBodyDataTimelines) Validate() error {
 }
 
 type GetAutoClipsTaskInfoResponseBodyDataTimelinesClips struct {
+	// ID of the clip.
+	//
 	// example:
 	//
 	// 20774ebd9abc71ef80486632b68f0102
-	ClipId       *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	ClipId *string `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	// Segmented voiceover script.
+	//
+	// example:
+	//
+	// 口播分段内容
 	ContentInner *string `json:"ContentInner,omitempty" xml:"ContentInner,omitempty"`
+	// Start time of the clip in seconds. This field is deprecated.
+	//
 	// example:
 	//
 	// 0
-	In   *int32   `json:"In,omitempty" xml:"In,omitempty"`
+	In *int32 `json:"In,omitempty" xml:"In,omitempty"`
+	// Start time of the clip in milliseconds.
+	//
+	// example:
+	//
+	// 0.33
 	InEx *float32 `json:"InEx,omitempty" xml:"InEx,omitempty"`
+	// End time of the clip in seconds. This field is deprecated.
+	//
 	// example:
 	//
 	// 5
-	Out   *int32   `json:"Out,omitempty" xml:"Out,omitempty"`
+	Out *int32 `json:"Out,omitempty" xml:"Out,omitempty"`
+	// End time of the clip in milliseconds.
+	//
+	// example:
+	//
+	// 3.45
 	OutEx *float32 `json:"OutEx,omitempty" xml:"OutEx,omitempty"`
+	// ID of the video.
+	//
 	// example:
 	//
 	// 20774ebd9abc71ef80486632b68f0102
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// Name of the video.
+	//
 	// example:
 	//
 	// 123.mp4

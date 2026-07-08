@@ -22,21 +22,42 @@ type iListHotNewsWithTypeRequest interface {
 }
 
 type ListHotNewsWithTypeRequest struct {
+	// The unique identifier of the business space: [AgentKey](https://help.aliyun.com/document_detail/3027170.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c160c841c8e54295bf2f441432785944_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// The news category. Valid values:
+	//
+	// - society: social current affairs.
+	//
+	// - person: people news.
+	//
+	// - government: government affairs.
+	//
 	// example:
 	//
 	// society
-	NewsType  *string   `json:"NewsType,omitempty" xml:"NewsType,omitempty"`
+	NewsType *string `json:"NewsType,omitempty" xml:"NewsType,omitempty"`
+	// The list of news categories for multi-selection. Valid values:
+	//
+	// - society: social current affairs.
+	//
+	// - person: people news.
+	//
+	// - government: government affairs.
 	NewsTypes []*string `json:"NewsTypes,omitempty" xml:"NewsTypes,omitempty" type:"Repeated"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10

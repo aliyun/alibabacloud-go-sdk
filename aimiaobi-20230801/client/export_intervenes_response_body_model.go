@@ -24,23 +24,34 @@ type iExportIntervenesResponseBody interface {
 }
 
 type ExportIntervenesResponseBody struct {
+  // Status code
+  // 
   // example:
   // 
   // 0
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // Business data
   Data *ExportIntervenesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+  // HTTP status code
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // Error message
+  // 
   // example:
   // 
   // success
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // Unique request identifier
+  // 
   // example:
   // 
   // 1813ceee-7fe5-41b4-87e5-982a4d18cca5
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // Success status: true for success, false for failure
+  // 
   // example:
   // 
   // true
@@ -120,6 +131,8 @@ func (s *ExportIntervenesResponseBody) Validate() error {
 
 type ExportIntervenesResponseBodyData struct {
   Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+  // File URL
+  // 
   // example:
   // 
   // http://xxx/xxx.xls

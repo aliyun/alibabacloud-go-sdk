@@ -18,14 +18,20 @@ type iGetFileContentLengthRequest interface {
 }
 
 type GetFileContentLengthRequest struct {
+	// Document name
+	//
 	// example:
 	//
 	// test.pdf
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// File URL
+	//
 	// example:
 	//
 	// https://xxx/test.pdf
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The unique identifier of an Alibaba Cloud Model Studio workspace. Get your [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

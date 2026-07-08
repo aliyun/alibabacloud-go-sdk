@@ -24,23 +24,34 @@ type iCreateDatasetResponseBody interface {
 }
 
 type CreateDatasetResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *CreateDatasetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,30 +130,44 @@ func (s *CreateDatasetResponseBody) Validate() error {
 }
 
 type CreateDatasetResponseBodyData struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2024-11-12 21:46:24
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator.
+	//
 	// example:
 	//
 	// xxx
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The display name of the dataset.
+	//
 	// example:
 	//
 	// xxx
 	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset name.
+	//
 	// example:
 	//
 	// xxx
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The dataset type.
+	//
 	// example:
 	//
 	// CustomSemanticSearch
 	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// The dataset search switch.
+	//
 	// example:
 	//
 	// 1

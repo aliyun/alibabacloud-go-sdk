@@ -18,16 +18,22 @@ type iGetDocInfoRequest interface {
 }
 
 type GetDocInfoRequest struct {
+	// The category where the document is stored.
+	//
 	// example:
 	//
 	// default
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The document ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The unique identifier of the workspace in Alibaba Cloud Model Studio. For instructions on how to obtain a workspace ID, see [Obtain a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,16 @@ type iGetAuditNoteProcessingStatusRequest interface {
 }
 
 type GetAuditNoteProcessingStatusRequest struct {
+	// Task ID returned by the SubmitAuditNote operation. Save this ID securely. It uniquely identifies your custom rule library task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxx_Default_129873419274
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Unique identifier of your Model Studio workspace. To get this ID, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

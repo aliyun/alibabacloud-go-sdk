@@ -18,14 +18,20 @@ type iCancelAuditTaskRequest interface {
 }
 
 type CancelAuditTaskRequest struct {
+	// Article ID. Specify either this parameter or ContentAuditTaskId.
+	//
 	// example:
 	//
 	// xxxx
 	ArticleId *string `json:"ArticleId,omitempty" xml:"ArticleId,omitempty"`
+	// Audit task ID. Specify either this parameter or ArticleId.
+	//
 	// example:
 	//
 	// xxx
 	ContentAuditTaskId *string `json:"ContentAuditTaskId,omitempty" xml:"ContentAuditTaskId,omitempty"`
+	// [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// llm-xxx

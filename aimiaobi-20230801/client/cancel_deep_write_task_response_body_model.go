@@ -24,25 +24,34 @@ type iCancelDeepWriteTaskResponseBody interface {
 }
 
 type CancelDeepWriteTaskResponseBody struct {
+	// Error code
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Task response object
 	Data *CancelDeepWriteTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// 错误消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded
+	//
 	// example:
 	//
 	// true
@@ -121,11 +130,20 @@ func (s *CancelDeepWriteTaskResponseBody) Validate() error {
 }
 
 type CancelDeepWriteTaskResponseBodyData struct {
+	// User query
+	//
+	// example:
+	//
+	// 北京2025年新能源汽车发展趋势
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// Task status
+	//
 	// example:
 	//
 	// cancelled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// xbabac91-fdad-44d6-95ce-******

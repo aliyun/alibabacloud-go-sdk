@@ -16,12 +16,16 @@ type iDeleteMaterialByIdRequest interface {
 }
 
 type DeleteMaterialByIdRequest struct {
+	// The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cd327c3d5d5e44159cc716e23bfa530e_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The primary key ID.
+	//
 	// This parameter is required.
 	//
 	// example:

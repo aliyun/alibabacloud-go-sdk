@@ -18,8 +18,12 @@ type iRunDocBrainmapResponseBody interface {
 }
 
 type RunDocBrainmapResponseBody struct {
-	Header  *RunDocBrainmapResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response header.
+	Header *RunDocBrainmapResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response payload.
 	Payload *RunDocBrainmapResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
@@ -76,27 +80,44 @@ func (s *RunDocBrainmapResponseBody) Validate() error {
 }
 
 type RunDocBrainmapResponseBodyHeader struct {
+	// Error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Event type.
+	//
 	// example:
 	//
 	// task-failed
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Event description.
+	//
+	// example:
+	//
+	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// 07181f55-2311-48af-8048-132a77dee020
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// 161816
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Trace ID.
+	//
 	// example:
 	//
 	// 6427cdf4-2ffe-4d05-b0ef-c4adceea90f4
@@ -179,8 +200,10 @@ func (s *RunDocBrainmapResponseBodyHeader) Validate() error {
 }
 
 type RunDocBrainmapResponseBodyPayload struct {
+	// Output data.
 	Output *RunDocBrainmapResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunDocBrainmapResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage statistics.
+	Usage *RunDocBrainmapResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunDocBrainmapResponseBodyPayload) String() string {
@@ -224,6 +247,8 @@ func (s *RunDocBrainmapResponseBodyPayload) Validate() error {
 }
 
 type RunDocBrainmapResponseBodyPayloadOutput struct {
+	// Mind map content in JSON format.
+	//
 	// example:
 	//
 	// {"xxxx":"xxx"}
@@ -252,14 +277,20 @@ func (s *RunDocBrainmapResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunDocBrainmapResponseBodyPayloadUsage struct {
+	// Number of input tokens.
+	//
 	// example:
 	//
 	// 65
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of output tokens.
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens.
+	//
 	// example:
 	//
 	// 165

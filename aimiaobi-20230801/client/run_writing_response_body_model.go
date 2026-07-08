@@ -20,9 +20,18 @@ type iRunWritingResponseBody interface {
 }
 
 type RunWritingResponseBody struct {
-	End     *bool                          `json:"End,omitempty" xml:"End,omitempty"`
-	Header  *RunWritingResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Indicates whether the current request is complete.
+	//
+	// example:
+	//
+	// true
+	End *bool `json:"End,omitempty" xml:"End,omitempty"`
+	// The response header.
+	Header *RunWritingResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// The response body.
 	Payload *RunWritingResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
@@ -88,34 +97,50 @@ func (s *RunWritingResponseBody) Validate() error {
 }
 
 type RunWritingResponseBodyHeader struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 错误码
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The Server-Sent Events (SSE) event. Valid values: task-started (the task starts), task-finished (the task is complete), and task-failed (the task failed).
+	//
 	// example:
 	//
 	// task-started
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The parent session ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 400
 	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The trace ID.
+	//
 	// example:
 	//
 	// 全链路ID
@@ -207,8 +232,10 @@ func (s *RunWritingResponseBodyHeader) Validate() error {
 }
 
 type RunWritingResponseBodyPayload struct {
+	// The output.
 	Output *RunWritingResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunWritingResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// The token usage.
+	Usage *RunWritingResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunWritingResponseBodyPayload) String() string {
@@ -252,15 +279,22 @@ func (s *RunWritingResponseBodyPayload) Validate() error {
 }
 
 type RunWritingResponseBodyPayloadOutput struct {
+	// The reference articles.
 	Articles []*RunWritingResponseBodyPayloadOutputArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// A list of refined segments from the article.
+	//
 	// example:
 	//
 	// 文章精排之后的片段
 	MiniDoc []*string `json:"MiniDoc,omitempty" xml:"MiniDoc,omitempty" type:"Repeated"`
+	// The rewritten query.
+	//
 	// example:
 	//
 	// 大模型改变世界
 	SearchQuery *string `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	// The generated text.
+	//
 	// example:
 	//
 	// 文本生成结果
@@ -325,42 +359,62 @@ func (s *RunWritingResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunWritingResponseBodyPayloadOutputArticles struct {
+	// The author.
+	//
 	// example:
 	//
 	// 作者
 	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// The content.
+	//
 	// example:
 	//
 	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The custom unique ID of the document.
+	//
 	// example:
 	//
 	// 文档-自定义的唯一ID
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The internal unique ID of the document.
+	//
 	// example:
 	//
 	// 98229f6001cf4deeb1668191d4eccc75
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// The publication time.
+	//
 	// example:
 	//
 	// 2024-08-28 11:38:28
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// 央视网
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The article summary.
+	//
 	// example:
 	//
 	// 文章摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The tag.
+	//
 	// example:
 	//
 	// 文章标签
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The title.
+	//
 	// example:
 	//
 	// 文章标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the article.
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx
@@ -470,15 +524,22 @@ func (s *RunWritingResponseBodyPayloadOutputArticles) Validate() error {
 }
 
 type RunWritingResponseBodyPayloadUsage struct {
+	// The number of tokens used for the input.
+	//
 	// example:
 	//
 	// 1
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The number of tokens used for the output.
+	//
 	// example:
 	//
 	// 1
-	OutputTokens *int64            `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
-	TokenMap     map[string]*int64 `json:"TokenMap,omitempty" xml:"TokenMap,omitempty"`
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The detailed token usage.
+	TokenMap map[string]*int64 `json:"TokenMap,omitempty" xml:"TokenMap,omitempty"`
+	// The total number of tokens used in the current call.
+	//
 	// example:
 	//
 	// 2

@@ -18,16 +18,22 @@ type iListHotSourcesRequest interface {
 }
 
 type ListHotSourcesRequest struct {
+	// UUID of the workspace: AgentKey
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Maximum number of returned results
+	//
 	// example:
 	//
 	// 66
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token for the next page
+	//
 	// example:
 	//
 	// 下一页的token

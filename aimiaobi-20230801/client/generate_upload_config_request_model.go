@@ -18,21 +18,35 @@ type iGenerateUploadConfigRequest interface {
 }
 
 type GenerateUploadConfigRequest struct {
+	// The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// test.docx
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The parent folder.
+	//
+	// - materialDocument: The Material Library for AI Writing Assistant.
+	//
+	// - datasetUpload: The dataset for AI Search.
+	//
+	// - intervenes: Interventions.
+	//
+	// - temp: A temporary upload folder. Files in this folder are released periodically.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// datasetUpload
+	// dataset
 	ParentDir *string `json:"ParentDir,omitempty" xml:"ParentDir,omitempty"`
 }
 

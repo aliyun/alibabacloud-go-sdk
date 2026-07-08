@@ -36,39 +36,60 @@ type iAsyncUploadVideoRequest interface {
 }
 
 type AsyncUploadVideoRequest struct {
+	// Shot segmentation threshold. A smaller value increases sensitivity. Valid range is 1 to 10. Default value is 3.
+	//
 	// example:
 	//
-	// 3
+	// 3.0
 	AdaptiveThreshold *float32 `json:"AdaptiveThreshold,omitempty" xml:"AdaptiveThreshold,omitempty"`
+	// The prompt for video understanding.
+	//
 	// example:
 	//
 	// 重点理解视频中的风景信息
 	AnlysisPrompt *string `json:"AnlysisPrompt,omitempty" xml:"AnlysisPrompt,omitempty"`
+	// The similarity threshold for character recognition.
+	//
 	// example:
 	//
 	// 0.7
-	FaceIdentitySimilarityMinScore *float64                               `json:"FaceIdentitySimilarityMinScore,omitempty" xml:"FaceIdentitySimilarityMinScore,omitempty"`
-	ReferenceVideo                 *AsyncUploadVideoRequestReferenceVideo `json:"ReferenceVideo,omitempty" xml:"ReferenceVideo,omitempty" type:"Struct"`
-	RemoveSubtitle                 *bool                                  `json:"RemoveSubtitle,omitempty" xml:"RemoveSubtitle,omitempty"`
+	FaceIdentitySimilarityMinScore *float64 `json:"FaceIdentitySimilarityMinScore,omitempty" xml:"FaceIdentitySimilarityMinScore,omitempty"`
+	// Information about the reference video.
+	ReferenceVideo *AsyncUploadVideoRequestReferenceVideo `json:"ReferenceVideo,omitempty" xml:"ReferenceVideo,omitempty" type:"Struct"`
+	// Removes captions from the material.
+	RemoveSubtitle *bool `json:"RemoveSubtitle,omitempty" xml:"RemoveSubtitle,omitempty"`
+	// The structure of the video editing materials.
+	//
 	// This parameter is required.
 	SourceVideos []*AsyncUploadVideoRequestSourceVideos `json:"SourceVideos,omitempty" xml:"SourceVideos,omitempty" type:"Repeated"`
+	// The time interval for video understanding shots.
+	//
 	// example:
 	//
 	// 默认1
 	SplitInterval *int32 `json:"SplitInterval,omitempty" xml:"SplitInterval,omitempty"`
+	// Job name
+	//
 	// example:
 	//
 	// task001
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Task Type
+	//
 	// example:
 	//
 	// type001
-	TaskType   *string                              `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// Face information of the roles.
 	VideoRoles []*AsyncUploadVideoRequestVideoRoles `json:"VideoRoles,omitempty" xml:"VideoRoles,omitempty" type:"Repeated"`
+	// The number of frames sampled from a single shot for character matching.
+	//
 	// example:
 	//
 	// 2
 	VideoShotFaceIdentityCount *int32 `json:"VideoShotFaceIdentityCount,omitempty" xml:"VideoShotFaceIdentityCount,omitempty"`
+	// [The ID of the Alibaba Cloud Model Studio workspace.](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -221,14 +242,20 @@ func (s *AsyncUploadVideoRequest) Validate() error {
 }
 
 type AsyncUploadVideoRequestReferenceVideo struct {
+	// Additional information for video understanding.
+	//
 	// example:
 	//
 	// 手机cpu采用3纳米技术
 	VideoExtraInfo *string `json:"VideoExtraInfo,omitempty" xml:"VideoExtraInfo,omitempty"`
+	// The name of the reference video.
+	//
 	// example:
 	//
 	// refvideo.mp4
 	VideoName *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
+	// The URL of the video.
+	//
 	// example:
 	//
 	// http://viapi-customer-pop.oss-cn-shanghai.aliyuncs.com/d71e_208334498220521996_51298e0a909d457693166eb883768c7a
@@ -275,16 +302,22 @@ func (s *AsyncUploadVideoRequestReferenceVideo) Validate() error {
 }
 
 type AsyncUploadVideoRequestSourceVideos struct {
+	// Additional description of the video.
+	//
 	// example:
 	//
 	// 视频中有一个房子
 	VideoExtraInfo *string `json:"VideoExtraInfo,omitempty" xml:"VideoExtraInfo,omitempty"`
+	// The name of the video.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123.mp4
 	VideoName *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
+	// The URL of the video.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -335,14 +368,19 @@ func (s *AsyncUploadVideoRequestSourceVideos) Validate() error {
 }
 
 type AsyncUploadVideoRequestVideoRoles struct {
+	// Information about the role.
+	//
 	// example:
 	//
 	// 李晓明是一位警察
 	RoleInfo *string `json:"RoleInfo,omitempty" xml:"RoleInfo,omitempty"`
+	// The name of the role.
+	//
 	// example:
 	//
 	// 李晓明
-	RoleName *string                                      `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The URLs of the role photos.
 	RoleUrls []*AsyncUploadVideoRequestVideoRolesRoleUrls `json:"RoleUrls,omitempty" xml:"RoleUrls,omitempty" type:"Repeated"`
 }
 
@@ -395,10 +433,14 @@ func (s *AsyncUploadVideoRequestVideoRoles) Validate() error {
 }
 
 type AsyncUploadVideoRequestVideoRolesRoleUrls struct {
+	// The file name of the role\\"s facial image.
+	//
 	// example:
 	//
 	// 王小明.jpeg
 	RoleFileName *string `json:"RoleFileName,omitempty" xml:"RoleFileName,omitempty"`
+	// The public URL of the role\\"s facial image.
+	//
 	// example:
 	//
 	// http://xxx/xxx.jpeg

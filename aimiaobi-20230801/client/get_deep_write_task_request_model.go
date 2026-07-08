@@ -16,10 +16,14 @@ type iGetDeepWriteTaskRequest interface {
 }
 
 type GetDeepWriteTaskRequest struct {
+	// Task ID
+	//
 	// example:
 	//
 	// 6d3c0bc9-7561-41a4-be4c-d906abdb40a9
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// [workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// llm-odl2p61i4vfbph4g

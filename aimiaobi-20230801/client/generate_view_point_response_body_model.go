@@ -24,20 +24,34 @@ type iGenerateViewPointResponseBody interface {
 }
 
 type GenerateViewPointResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data []*GenerateViewPointResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message. The value is `successful` on success, or an error message on failure.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 94512A33-8EC1-5452-A793-5C91F18ED2F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of `true` indicates success, and `false` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -120,6 +134,11 @@ func (s *GenerateViewPointResponseBody) Validate() error {
 }
 
 type GenerateViewPointResponseBodyData struct {
+	// The viewpoint text.
+	//
+	// example:
+	//
+	// 视角
 	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
 }
 

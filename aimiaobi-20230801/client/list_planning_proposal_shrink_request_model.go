@@ -32,50 +32,80 @@ type iListPlanningProposalShrinkRequest interface {
 }
 
 type ListPlanningProposalShrinkRequest struct {
+	// The unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Custom viewpoint ID (used for custom viewpoint planning proposal scenarios).
+	//
 	// example:
 	//
 	// e7b26a9e1211444db8f0a984361a5e0f
 	CustomViewPointId *string `json:"CustomViewPointId,omitempty" xml:"CustomViewPointId,omitempty"`
+	// List of custom viewpoint IDs (used for custom viewpoint planning proposal scenarios).
+	//
 	// example:
 	//
 	// 27971fc8f3ce4ed58c7e7fc4b503e432
 	CustomViewPointIdsShrink *string `json:"CustomViewPointIds,omitempty" xml:"CustomViewPointIds,omitempty"`
+	// Maximum number of returned results.
+	//
 	// example:
 	//
 	// 73
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token for the next page.
+	//
 	// example:
 	//
-	// 下一页的token
+	// 下一页的Token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Filter planning proposal titles, corresponding to the viewpoint names of each planning proposal type.
+	//
 	// example:
 	//
 	// 标题
 	//
 	//      *
 	TitlesShrink *string `json:"Titles,omitempty" xml:"Titles,omitempty"`
+	// Hot topic subject.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 热榜主题
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// Hot topic source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 热榜源
 	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// Hot spot event data version.
+	//
 	// example:
 	//
 	// 2024-09-10_08
 	TopicVersion *string `json:"TopicVersion,omitempty" xml:"TopicVersion,omitempty"`
+	// Planning proposal type
+	//
+	// - CustomViewPoints: Custom viewpoint
+	//
+	// - HotViewPoints: Hot viewpoint
+	//
+	// - TimedViewPoints: Time-sensitive viewpoint
+	//
+	// - WebReviewPoints: User viewpoint
+	//
+	// - FreshViewPoints: Fresh viewpoint
+	//
 	// This parameter is required.
 	//
 	// example:

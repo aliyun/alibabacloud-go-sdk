@@ -24,26 +24,37 @@ type iQueryAsyncTaskResponseBody interface {
 }
 
 type QueryAsyncTaskResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
-	// Success
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *QueryAsyncTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request ID
+	//
 	// example:
 	//
 	// 867C4ABE-4381-5BC2-9810-5A5F334F71CF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success status: true for success, false for failure.
+	//
 	// example:
 	//
-	// True
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -119,58 +130,89 @@ func (s *QueryAsyncTaskResponseBody) Validate() error {
 }
 
 type QueryAsyncTaskResponseBodyData struct {
+	// Creation date
+	//
 	// example:
 	//
 	// 2021-07-25 14:34:33
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator
+	//
 	// example:
 	//
-	// 12121
+	// "12121"
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Task ID, indicates the specific task.
+	//
 	// example:
 	//
 	// MaterialDocumentUpload
 	TaskCode *string `json:"TaskCode,omitempty" xml:"TaskCode,omitempty"`
+	// Task execution error message
+	//
 	// example:
 	//
 	// error
 	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
+	// Unique task ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Intermediate task execution result. When a task has multiple steps, save the output of each step here. When resuming from a pause, read the intermediate result and continue from there.
+	//
 	// example:
 	//
-	// {}
+	// "{}"
 	TaskIntermediateResult *string `json:"TaskIntermediateResult,omitempty" xml:"TaskIntermediateResult,omitempty"`
-	TaskName               *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Task name
+	//
 	// example:
 	//
-	// {"fileKey":"oss://default/xxxx/xxxx/xxx","fileName":"xxxxx.doc"}
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Task execution input parameters, JSON format
+	//
+	// example:
+	//
+	// "{\\"fileKey\\":\\"oss://default/xxxx/xxxx/xxx\\",\\"fileName\\":\\"xxxxx.doc\\"}"
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
+	// Task execution progress message
+	//
 	// example:
 	//
-	// {}
+	// "{}"
 	TaskProgressMessage *string `json:"TaskProgressMessage,omitempty" xml:"TaskProgressMessage,omitempty"`
+	// Task execution result message
+	//
 	// example:
 	//
-	// {}
+	// "{}"
 	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
+	// Number of task retries
+	//
 	// example:
 	//
-	// 3
+	// "3"
 	TaskRetryCount *string `json:"TaskRetryCount,omitempty" xml:"TaskRetryCount,omitempty"`
+	// Task execution status: 0-Pending, 1-Executing, 2-Execution successful, 3-Paused, 4-Execution failed (retryable), 5-Execution failed (not retryable), 6-Task canceled.
+	//
 	// example:
 	//
 	// 1
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Update date
+	//
 	// example:
 	//
 	// 2023-04-27 18:07:43
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Updater
+	//
 	// example:
 	//
-	// 12121
+	// "12121"
 	UpdateUser *string `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
 }
 

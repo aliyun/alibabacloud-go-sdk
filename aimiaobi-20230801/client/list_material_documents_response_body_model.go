@@ -30,35 +30,52 @@ type iListMaterialDocumentsResponseBody interface {
 }
 
 type ListMaterialDocumentsResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// DataNotExists
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	Current *int32                                   `json:"Current,omitempty" xml:"Current,omitempty"`
-	Data    []*ListMaterialDocumentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// List object.
+	Data []*ListMaterialDocumentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description.
+	//
 	// example:
 	//
 	// 数据不存在
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identity.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of records per page.
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Is successful: true for success, false for failure.
+	//
 	// example:
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -168,61 +185,132 @@ func (s *ListMaterialDocumentsResponseBody) Validate() error {
 }
 
 type ListMaterialDocumentsResponseBodyData struct {
+	// Author.
+	//
+	// example:
+	//
+	// 作者
 	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2023-03-18 02:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator user ID.
+	//
 	// example:
 	//
-	// 1
-	CreateUser     *string   `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	CreateUserName *string   `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	DocKeywords    []*string `json:"DocKeywords,omitempty" xml:"DocKeywords,omitempty" type:"Repeated"`
+	// "1"
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Creator username.
+	//
+	// example:
+	//
+	// 创建用户名
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// Document tags used for categorization. Separate keywords with commas.
+	DocKeywords []*string `json:"DocKeywords,omitempty" xml:"DocKeywords,omitempty" type:"Repeated"`
+	// Document type: pdf, word, url, or image.
+	//
 	// example:
 	//
 	// pdf
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// URL uploaded by an external customer, used only for record keeping.
+	//
 	// example:
 	//
 	// https://www.example.com
-	ExternalUrl *string                                        `json:"ExternalUrl,omitempty" xml:"ExternalUrl,omitempty"`
-	FileAttr    *ListMaterialDocumentsResponseBodyDataFileAttr `json:"FileAttr,omitempty" xml:"FileAttr,omitempty" type:"Struct"`
-	FileKey     *string                                        `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
-	HtmlContent *string                                        `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
+	ExternalUrl *string `json:"ExternalUrl,omitempty" xml:"ExternalUrl,omitempty"`
+	// Media file properties.
+	FileAttr *ListMaterialDocumentsResponseBodyDataFileAttr `json:"FileAttr,omitempty" xml:"FileAttr,omitempty" type:"Struct"`
+	// Unique file identity.
+	//
+	// example:
+	//
+	// oss://default/oss-bucket-name/aimiaobi/2021/07/01/1625126400000/1.docx
+	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// Web page content.
+	//
+	// example:
+	//
+	// 网页内容
+	HtmlContent *string `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
+	// Primary key.
+	//
 	// example:
 	//
 	// 35
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Publish time. Format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2023-03-18 02:00:00
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Temporary public URL.
+	//
 	// example:
 	//
 	// https://www.example.com
 	PublicUrl *string `json:"PublicUrl,omitempty" xml:"PublicUrl,omitempty"`
+	// Public property, stored by bit. The first bit indicates if it is shared within the workspace, the second bit indicates if it is shared within the tenant, and the third bit indicates if it is shared system-wide.
+	//
 	// example:
 	//
 	// 1
 	ShareAttr *int32 `json:"ShareAttr,omitempty" xml:"ShareAttr,omitempty"`
+	// Document source: user_upload, search, or viewpoint.
+	//
 	// example:
 	//
 	// user_upload
-	SrcFrom           *string `json:"SrcFrom,omitempty" xml:"SrcFrom,omitempty"`
-	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	TextContent       *string `json:"TextContent,omitempty" xml:"TextContent,omitempty"`
+	SrcFrom *string `json:"SrcFrom,omitempty" xml:"SrcFrom,omitempty"`
+	// Document summary.
+	//
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Parsed text content. This is empty for images.
+	//
+	// example:
+	//
+	// 文档内容
+	TextContent *string `json:"TextContent,omitempty" xml:"TextContent,omitempty"`
+	// Base64 thumbnail for image document types.
+	//
+	// example:
+	//
+	// base64编码的图像二进制数据
 	ThumbnailInBase64 *string `json:"ThumbnailInBase64,omitempty" xml:"ThumbnailInBase64,omitempty"`
-	Title             *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Document title.
+	//
+	// example:
+	//
+	// 文档标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Modification time.
+	//
 	// example:
 	//
 	// 2023-03-18 02:00:00
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Modifier user ID.
+	//
 	// example:
 	//
-	// 1
-	UpdateUser     *string `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
+	// "1"
+	UpdateUser *string `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
+	// The name of the user who updated the document.
+	//
+	// example:
+	//
+	// 更新用户名
 	UpdateUserName *string `json:"UpdateUserName,omitempty" xml:"UpdateUserName,omitempty"`
+	// URL for internal document storage. Supports multiple protocols (http\\://, file://, ftp\\://). This URL is saved to internal storage when a customer uploads a file, stored long-term, and deleted upon expiration.
+	//
 	// example:
 	//
 	// https://www.example.com
@@ -454,12 +542,42 @@ func (s *ListMaterialDocumentsResponseBodyData) Validate() error {
 }
 
 type ListMaterialDocumentsResponseBodyDataFileAttr struct {
-	Duration   *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	FileLength *int64   `json:"FileLength,omitempty" xml:"FileLength,omitempty"`
-	FileName   *string  `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Height     *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
-	MimeType   *string  `json:"MimeType,omitempty" xml:"MimeType,omitempty"`
-	Width      *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
+	// Duration.
+	//
+	// example:
+	//
+	// 120
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// File content length.
+	//
+	// example:
+	//
+	// 1048576
+	FileLength *int64 `json:"FileLength,omitempty" xml:"FileLength,omitempty"`
+	// File name.
+	//
+	// example:
+	//
+	// xxx.mp4
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// Video height.
+	//
+	// example:
+	//
+	// 1024
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// File MIME type.
+	//
+	// example:
+	//
+	// image/png
+	MimeType *string `json:"MimeType,omitempty" xml:"MimeType,omitempty"`
+	// Video width.
+	//
+	// example:
+	//
+	// 100
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s ListMaterialDocumentsResponseBodyDataFileAttr) String() string {

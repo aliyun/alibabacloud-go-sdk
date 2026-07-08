@@ -20,15 +20,26 @@ type iAsyncWritingBiddingDocRequest interface {
 }
 
 type AsyncWritingBiddingDocRequest struct {
+	// The name of the bidding company.
+	//
 	// example:
 	//
 	// comany name
 	CompanyKeyword *string `json:"CompanyKeyword,omitempty" xml:"CompanyKeyword,omitempty"`
-	Prompt         *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The prompt.
+	//
+	// example:
+	//
+	// 自定义观点的输入Prompt
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The unique ID of the task.
+	//
 	// example:
 	//
 	// 7AA2AE16-D873-5C5F-9708-15396C382EB1
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// [The ID of the workspace.](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// llm-xx

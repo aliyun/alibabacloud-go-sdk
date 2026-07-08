@@ -24,23 +24,34 @@ type iDeleteInterveneRuleResponseBody interface {
 }
 
 type DeleteInterveneRuleResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
-	// 0
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *DeleteInterveneRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request ID
+	//
 	// example:
 	//
 	// 94512A33-8EC1-5452-A793-5C91F18ED2F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the operation was successful: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -119,8 +130,16 @@ func (s *DeleteInterveneRuleResponseBody) Validate() error {
 }
 
 type DeleteInterveneRuleResponseBodyData struct {
-	Code       *int32    `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Status code returned by the intervention service
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of failed index IDs
 	FailIdList []*string `json:"FailIdList,omitempty" xml:"FailIdList,omitempty" type:"Repeated"`
+	// Task ID
+	//
 	// example:
 	//
 	// dt-s50ntwtywb4y

@@ -28,25 +28,48 @@ type iSubmitCustomSourceTopicAnalysisRequest interface {
 }
 
 type SubmitCustomSourceTopicAnalysisRequest struct {
+	// The types of analysis for hot topic selection. Multiple values are supported. If you omit this parameter, the service analyzes all types by default. If you pass an empty array, the service performs only clustering and skips the analysis of hot topics for selection.
+	//
+	// `HotViewPoints`: Analyzes perspectives on hot topics.
+	//
+	// `WebReviewPoints`: Analyzes user viewpoints. This requires comments.
+	//
+	// `TimedViewPoints`: Analyzes perspectives on timeliness.
+	//
+	// `FreshViewPoints`: Analyzes novel perspectives.
+	//
+	// `TopicSummary`: Summarizes news content.
 	AnalysisTypes []*string `json:"AnalysisTypes,omitempty" xml:"AnalysisTypes,omitempty" type:"Repeated"`
+	// The file type. Valid values: `json` (JSON array) and `jsonLine` (JSON Lines).
+	//
 	// example:
 	//
 	// json
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The file URL. You must specify either `FileUrl` or `News`. For details on the file structure, see the description of the `News` parameter.
+	//
 	// example:
 	//
 	// http://www.example.com/xxx.json
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The maximum number of topics to analyze. By default, the service sorts clustered news by count in descending order and analyzes the top 50 topics. The maximum value is 200.
+	//
 	// example:
 	//
 	// 50
-	MaxTopicSize *int32                                          `json:"MaxTopicSize,omitempty" xml:"MaxTopicSize,omitempty"`
-	News         []*SubmitCustomSourceTopicAnalysisRequestNews   `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
-	Topics       []*SubmitCustomSourceTopicAnalysisRequestTopics `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
+	MaxTopicSize *int32 `json:"MaxTopicSize,omitempty" xml:"MaxTopicSize,omitempty"`
+	// A list of news articles. You must specify either `News` or `FileUrl`.
+	News []*SubmitCustomSourceTopicAnalysisRequestNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	// A list of topics.
+	Topics []*SubmitCustomSourceTopicAnalysisRequestTopics `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
+	// The URL of the file that contains the topic list. The file must be in JSON Lines format, with each line representing a single JSON object.
+	//
 	// example:
 	//
 	// http://www.example.com/xxx.jsonline
 	TopicsFileUrl *string `json:"TopicsFileUrl,omitempty" xml:"TopicsFileUrl,omitempty"`
+	// [The Model Studio workspace ID.](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -158,14 +181,34 @@ func (s *SubmitCustomSourceTopicAnalysisRequest) Validate() error {
 }
 
 type SubmitCustomSourceTopicAnalysisRequestNews struct {
+	// A list of comments.
 	Comments []*SubmitCustomSourceTopicAnalysisRequestNewsComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
-	Content  *string                                               `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content of the news article.
+	//
+	// example:
+	//
+	// 新闻正文
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The publication time. The format must be `YYYY-MM-dd HH:mm:ss`.
+	//
 	// example:
 	//
 	// 2024-01-22 10:29:00
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
-	Source  *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The source of the news article.
+	//
+	// example:
+	//
+	// 百度
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The title of the news article.
+	//
+	// example:
+	//
+	// 新闻标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the news article.
+	//
 	// example:
 	//
 	// http://www.example.com/xxx.html
@@ -248,6 +291,11 @@ func (s *SubmitCustomSourceTopicAnalysisRequestNews) Validate() error {
 }
 
 type SubmitCustomSourceTopicAnalysisRequestNewsComments struct {
+	// The comment text.
+	//
+	// example:
+	//
+	// 评论内容
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
@@ -273,15 +321,22 @@ func (s *SubmitCustomSourceTopicAnalysisRequestNewsComments) Validate() error {
 }
 
 type SubmitCustomSourceTopicAnalysisRequestTopics struct {
+	// A custom field. You can use this field to filter results when you call the `ListHotTopics` operation.
+	//
 	// example:
 	//
-	// biz-tag-001
-	CustomField *string         `json:"CustomField,omitempty" xml:"CustomField,omitempty"`
-	News        []*HottopicNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	// xxx
+	CustomField *string `json:"CustomField,omitempty" xml:"CustomField,omitempty"`
+	// A list of news articles.
+	News []*HottopicNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	// The topic name.
+	//
 	// example:
 	//
 	// 话题名称
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The URL of the topic. This value is passed through to the `ListHotTopics` response without being processed.
+	//
 	// example:
 	//
 	// https://www.example.com/topic/123

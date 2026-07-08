@@ -18,9 +18,11 @@ type iRunBookSmartCardResponseBody interface {
 }
 
 type RunBookSmartCardResponseBody struct {
-	Header  *RunBookSmartCardResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response header.
+	Header *RunBookSmartCardResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body.
 	Payload *RunBookSmartCardResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
-	// Id of the request
+	// Request ID.
 	//
 	// example:
 	//
@@ -78,27 +80,44 @@ func (s *RunBookSmartCardResponseBody) Validate() error {
 }
 
 type RunBookSmartCardResponseBodyHeader struct {
+	// Error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Event type.
+	//
 	// example:
 	//
 	// finished
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Event description.
+	//
+	// example:
+	//
+	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Trace ID.
+	//
 	// example:
 	//
 	// 1a0e898717105546647125853d4f54
@@ -181,8 +200,10 @@ func (s *RunBookSmartCardResponseBodyHeader) Validate() error {
 }
 
 type RunBookSmartCardResponseBodyPayload struct {
+	// Output object.
 	Output *RunBookSmartCardResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunBookSmartCardResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage.
+	Usage *RunBookSmartCardResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunBookSmartCardResponseBodyPayload) String() string {
@@ -226,8 +247,14 @@ func (s *RunBookSmartCardResponseBodyPayload) Validate() error {
 }
 
 type RunBookSmartCardResponseBodyPayloadOutput struct {
-	Content *string   `json:"Content,omitempty" xml:"Content,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Card title.
+	//
+	// example:
+	//
+	// 卡片标题内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Array of card tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s RunBookSmartCardResponseBodyPayloadOutput) String() string {
@@ -261,14 +288,20 @@ func (s *RunBookSmartCardResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunBookSmartCardResponseBodyPayloadUsage struct {
+	// Number of input tokens.
+	//
 	// example:
 	//
 	// 1
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of output tokens used.
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens.
+	//
 	// example:
 	//
 	// 101

@@ -32,24 +32,34 @@ type iRunDocBrainmapRequest interface {
 }
 
 type RunDocBrainmapRequest struct {
+	// Indicates whether to clear the previous cache.
+	//
 	// example:
 	//
 	// true
 	CleanCache *bool `json:"CleanCache,omitempty" xml:"CleanCache,omitempty"`
+	// The document ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The name of the model to use.
+	//
 	// example:
 	//
 	// quanmiao-max、quanmiao-plus
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The number of nodes to generate at the second level of the mind map.
+	//
 	// example:
 	//
 	// 3
 	NodeNumber *int32 `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
+	// A custom prompt to guide the mind map generation.
+	//
 	// example:
 	//
 	// 请按英文输出
@@ -58,20 +68,28 @@ type RunDocBrainmapRequest struct {
 	//
 	// 0
 	ResponseFormat *int32 `json:"ResponseFormat,omitempty" xml:"ResponseFormat,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The maximum number of words in each node.
+	//
 	// example:
 	//
 	// 20
 	WordNumber *int32 `json:"WordNumber,omitempty" xml:"WordNumber,omitempty"`
+	// The ID of the Model Studio workspace. For more information, see [How to use a workspace](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// example:
 	//
 	// llm-xxx
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The source content for generating the mind map. This parameter takes precedence over `DocId`.
+	//
 	// example:
 	//
 	// 要生成脑图的内容

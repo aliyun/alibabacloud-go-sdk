@@ -24,20 +24,42 @@ type iAsyncCreateClipsTaskResponseBody interface {
 }
 
 type AsyncCreateClipsTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// successful
-	Code           *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *AsyncCreateClipsTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
+	Data *AsyncCreateClipsTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: Succeeded.
+	//
+	// - false: Failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AsyncCreateClipsTaskResponseBody) String() string {
@@ -112,6 +134,8 @@ func (s *AsyncCreateClipsTaskResponseBody) Validate() error {
 }
 
 type AsyncCreateClipsTaskResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21

@@ -24,23 +24,34 @@ type iGetSmartClipTaskResponseBody interface {
 }
 
 type GetSmartClipTaskResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Task response
 	Data *GetSmartClipTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique identifier of the request
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded. true indicates success. false indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,11 +130,29 @@ func (s *GetSmartClipTaskResponseBody) Validate() error {
 }
 
 type GetSmartClipTaskResponseBodyData struct {
+	// Error message
+	//
+	// example:
+	//
+	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Task status:
+	//
+	// PENDING: Pending
+	//
+	// RUNNING: Running
+	//
+	// SUCCESSED: Succeeded
+	//
+	// FAILED: Failed
+	//
+	// CANCELED: Canceled
+	//
 	// example:
 	//
 	// RUNNING
-	Status  *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// List of subtasks
 	SubJobs []*GetSmartClipTaskResponseBodyDataSubJobs `json:"SubJobs,omitempty" xml:"SubJobs,omitempty" type:"Repeated"`
 }
 
@@ -176,19 +205,38 @@ func (s *GetSmartClipTaskResponseBodyData) Validate() error {
 }
 
 type GetSmartClipTaskResponseBodyDataSubJobs struct {
+	// Error message
+	//
 	// example:
 	//
-	// x\\"x\\"x\\"x
-	ErrorMessage *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	FileAttr     *GetSmartClipTaskResponseBodyDataSubJobsFileAttr `json:"FileAttr,omitempty" xml:"FileAttr,omitempty" type:"Struct"`
+	// 文件名错误
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// File attributes
+	FileAttr *GetSmartClipTaskResponseBodyDataSubJobsFileAttr `json:"FileAttr,omitempty" xml:"FileAttr,omitempty" type:"Struct"`
+	// File key
+	//
 	// example:
 	//
 	// oss://default/bucket-name/path-xxx/xxx-1.mp4
 	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// Subtask status:
+	//
+	// PENDING: Pending
+	//
+	// RUNNING: Running
+	//
+	// SUCCESSED: Succeeded
+	//
+	// FAILED: Failed
+	//
+	// CANCELED: Canceled
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Subtask ID
+	//
 	// example:
 	//
 	// xxxxx
@@ -258,26 +306,38 @@ func (s *GetSmartClipTaskResponseBodyDataSubJobs) Validate() error {
 }
 
 type GetSmartClipTaskResponseBodyDataSubJobsFileAttr struct {
+	// Video duration in seconds
+	//
 	// example:
 	//
 	// 120
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Video file size
+	//
 	// example:
 	//
 	// 290804
 	FileLength *string `json:"FileLength,omitempty" xml:"FileLength,omitempty"`
+	// Video file name
+	//
 	// example:
 	//
 	// 2024-12-12.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// Video height
+	//
 	// example:
 	//
 	// 1080
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Temporary URL to access the video file. Expires in one hour.
+	//
 	// example:
 	//
 	// http://www.example.com/tmp.mp4
 	TmpUrl *string `json:"TmpUrl,omitempty" xml:"TmpUrl,omitempty"`
+	// Video width
+	//
 	// example:
 	//
 	// 1920

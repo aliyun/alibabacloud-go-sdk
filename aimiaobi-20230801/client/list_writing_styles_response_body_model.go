@@ -28,27 +28,46 @@ type iListWritingStylesResponseBody interface {
 }
 
 type ListWritingStylesResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// successful
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of writing styles.
 	Data []*ListWritingStylesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The maximum number of results returned.
+	//
 	// example:
 	//
 	// 100
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 数据不存在
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The next token.
+	//
+	// example:
+	//
+	// 下一页token
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 58
@@ -149,17 +168,46 @@ func (s *ListWritingStylesResponseBody) Validate() error {
 }
 
 type ListWritingStylesResponseBodyData struct {
+	// The template definition for step-by-step writing.
 	DistributeStepTemplateDefine *WritingStyleTemplateDefine `json:"DistributeStepTemplateDefine,omitempty" xml:"DistributeStepTemplateDefine,omitempty"`
+	// Indicates whether step-by-step writing is supported.
+	//
 	// example:
 	//
 	// false
-	DistributeWriting *bool                       `json:"DistributeWriting,omitempty" xml:"DistributeWriting,omitempty"`
-	Emoji             *string                     `json:"Emoji,omitempty" xml:"Emoji,omitempty"`
-	StyleDescription  *string                     `json:"StyleDescription,omitempty" xml:"StyleDescription,omitempty"`
-	StyleImage        *string                     `json:"StyleImage,omitempty" xml:"StyleImage,omitempty"`
-	StyleKey          *string                     `json:"StyleKey,omitempty" xml:"StyleKey,omitempty"`
-	StyleName         *string                     `json:"StyleName,omitempty" xml:"StyleName,omitempty"`
-	TemplateDefine    *WritingStyleTemplateDefine `json:"TemplateDefine,omitempty" xml:"TemplateDefine,omitempty"`
+	DistributeWriting *bool `json:"DistributeWriting,omitempty" xml:"DistributeWriting,omitempty"`
+	// The icon for the writing style, represented by a character.
+	//
+	// example:
+	//
+	// 小图标
+	Emoji *string `json:"Emoji,omitempty" xml:"Emoji,omitempty"`
+	// The description of the writing style.
+	//
+	// example:
+	//
+	// 文体描述
+	StyleDescription *string `json:"StyleDescription,omitempty" xml:"StyleDescription,omitempty"`
+	// The image for the writing style.
+	//
+	// example:
+	//
+	// 文体图片
+	StyleImage *string `json:"StyleImage,omitempty" xml:"StyleImage,omitempty"`
+	// The unique key of the writing style.
+	//
+	// example:
+	//
+	// 文体唯一标识
+	StyleKey *string `json:"StyleKey,omitempty" xml:"StyleKey,omitempty"`
+	// The name of the writing style.
+	//
+	// example:
+	//
+	// 文体名称
+	StyleName *string `json:"StyleName,omitempty" xml:"StyleName,omitempty"`
+	// The template definition for the writing style.
+	TemplateDefine *WritingStyleTemplateDefine `json:"TemplateDefine,omitempty" xml:"TemplateDefine,omitempty"`
 }
 
 func (s ListWritingStylesResponseBodyData) String() string {

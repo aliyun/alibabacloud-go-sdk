@@ -26,34 +26,47 @@ type iUpdateGeneratedContentShrinkRequest interface {
 }
 
 type UpdateGeneratedContentShrinkRequest struct {
+	// The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The body of the article in rich text format.
+	//
 	// example:
 	//
 	// 正文
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The body of the article in plain text format.
+	//
 	// example:
 	//
 	// 正文
 	ContentText *string `json:"ContentText,omitempty" xml:"ContentText,omitempty"`
+	// The unique identifier of the document.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 36
-	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The keywords.
 	KeywordsShrink *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// The last prompt that was used to generate the content.
+	//
 	// example:
 	//
 	// 创作xx文章
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The title.
+	//
 	// example:
 	//
-	// 评论类文章
+	// 文章名称
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

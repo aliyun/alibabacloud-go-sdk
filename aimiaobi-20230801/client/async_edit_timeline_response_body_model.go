@@ -24,20 +24,38 @@ type iAsyncEditTimelineResponseBody interface {
 }
 
 type AsyncEditTimelineResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// successful
-	Code           *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *AsyncEditTimelineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
+	Data *AsyncEditTimelineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
 	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request succeeded
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AsyncEditTimelineResponseBody) String() string {
@@ -112,7 +130,14 @@ func (s *AsyncEditTimelineResponseBody) Validate() error {
 }
 
 type AsyncEditTimelineResponseBodyData struct {
+	// Response message
+	//
+	// example:
+	//
+	// 一些建议信息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique task ID
+	//
 	// example:
 	//
 	// 51e4efd1908242eb93ca9bbb7fc4359d

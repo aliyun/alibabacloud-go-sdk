@@ -24,23 +24,34 @@ type iGetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody interface {
 }
 
 type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates success: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -119,11 +130,16 @@ func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody) Validate() 
 }
 
 type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData struct {
+	// Result of the custom topic selection analysis task
 	CustomViewPointsResult *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult `json:"CustomViewPointsResult,omitempty" xml:"CustomViewPointsResult,omitempty" type:"Struct"`
+	// Error message
+	//
 	// example:
 	//
 	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Task status (PENDING: pending, RUNNING: running, SUCCESSED: succeeded, SUSPENDED: suspended, FAILED: failed, CANCELED: canceled)
+	//
 	// example:
 	//
 	// FAILED
@@ -175,7 +191,10 @@ func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData) Validat
 }
 
 type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult struct {
+	// List of custom viewpoints. By default, the system generates one viewpoint based on the prompt input.
 	Attitudes []*GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes `json:"Attitudes,omitempty" xml:"Attitudes,omitempty" type:"Repeated"`
+	// Hot topic event
+	//
 	// example:
 	//
 	// 热点主题事件
@@ -222,18 +241,25 @@ func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomVie
 }
 
 type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes struct {
+	// Current viewpoint
+	//
 	// example:
 	//
 	// 当前观点
 	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// Viewpoint type
+	//
 	// example:
 	//
 	// 观点类型
 	AttitudeType *string `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	// Proportion of the current viewpoint
+	//
 	// example:
 	//
 	// 当前观点占比
-	Ratio      *string                                                                                                    `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// List of topic selection perspectives
 	ViewPoints []*GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
 }
 
@@ -295,11 +321,16 @@ func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomVie
 }
 
 type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints struct {
+	// Outline
 	Outlines []*GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// Generated perspective
+	//
 	// example:
 	//
 	// 视角
 	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// Summary
+	//
 	// example:
 	//
 	// 摘要
@@ -355,10 +386,14 @@ func (s *GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomVie
 }
 
 type GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines struct {
+	// Outline
+	//
 	// example:
 	//
 	// 大纲
 	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// Outline summary
+	//
 	// example:
 	//
 	// 大纲摘要

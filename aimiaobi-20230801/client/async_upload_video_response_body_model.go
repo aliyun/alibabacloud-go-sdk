@@ -24,15 +24,22 @@ type iAsyncUploadVideoResponseBody interface {
 }
 
 type AsyncUploadVideoResponseBody struct {
+	// The status code returned for the request.
+	//
 	// example:
 	//
 	// successful
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *AsyncUploadVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
@@ -43,6 +50,8 @@ type AsyncUploadVideoResponseBody struct {
 	//
 	// 94512A33-8EC1-5452-A793-5C91F18ED2F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -121,10 +130,13 @@ func (s *AsyncUploadVideoResponseBody) Validate() error {
 }
 
 type AsyncUploadVideoResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
-	TaskId     *string                                       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Information about the videos.
 	VideoInfos []*AsyncUploadVideoResponseBodyDataVideoInfos `json:"VideoInfos,omitempty" xml:"VideoInfos,omitempty" type:"Repeated"`
 }
 
@@ -168,18 +180,26 @@ func (s *AsyncUploadVideoResponseBodyData) Validate() error {
 }
 
 type AsyncUploadVideoResponseBodyDataVideoInfos struct {
+	// Additional information about the video.
+	//
 	// example:
 	//
 	// 视频中有一个房子
 	VideoExtraInfo *string `json:"VideoExtraInfo,omitempty" xml:"VideoExtraInfo,omitempty"`
+	// The video ID.
+	//
 	// example:
 	//
 	// 60616fad41b171f0bb4b4531948c0102
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// The name of the video.
+	//
 	// example:
 	//
 	// 123.mp4
 	VideoName *string `json:"VideoName,omitempty" xml:"VideoName,omitempty"`
+	// The video URL.
+	//
 	// example:
 	//
 	// http://123.mp4

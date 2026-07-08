@@ -24,23 +24,34 @@ type iUpdateDatasetDocumentResponseBody interface {
 }
 
 type UpdateDatasetDocumentResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data.
 	Data *UpdateDatasetDocumentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded. A value of true indicates success. A value of false indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,20 +130,50 @@ func (s *UpdateDatasetDocumentResponseBody) Validate() error {
 }
 
 type UpdateDatasetDocumentResponseBodyData struct {
+	// Category UUID
+	//
+	// example:
+	//
+	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// User-defined unique ID for the document.
+	//
 	// example:
 	//
 	// 用户指定的文档唯一ID
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Internal unique ID of the document.
+	//
 	// example:
 	//
 	// 内部文档唯一ID
-	DocUuid *string   `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
-	Extend1 *string   `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
-	Extend2 *string   `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
-	Extend3 *string   `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Title   *string   `json:"Title,omitempty" xml:"Title,omitempty"`
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1
+	//
+	// example:
+	//
+	// xx
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2
+	//
+	// example:
+	//
+	// xx
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3
+	//
+	// example:
+	//
+	// xx
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Document title.
+	//
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateDatasetDocumentResponseBodyData) String() string {

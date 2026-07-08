@@ -17,6 +17,10 @@ type iSubmitParseDocumentLayoutTaskRequest interface {
 
 type SubmitParseDocumentLayoutTaskRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 正文
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// This parameter is required.
 	//

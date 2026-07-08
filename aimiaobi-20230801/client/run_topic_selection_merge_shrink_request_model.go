@@ -18,9 +18,18 @@ type iRunTopicSelectionMergeShrinkRequest interface {
 }
 
 type RunTopicSelectionMergeShrinkRequest struct {
+	// Custom merge prompt
+	//
+	// example:
+	//
+	// 请从xxxx的角度，分析xxxx事件
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// List of topic perspectives to merge
+	//
 	// This parameter is required.
 	TopicsShrink *string `json:"Topics,omitempty" xml:"Topics,omitempty"`
+	// [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,8 +16,12 @@ type iDeleteDocsShrinkRequest interface {
 }
 
 type DeleteDocsShrinkRequest struct {
+	// Document ID array.
+	//
 	// This parameter is required.
 	DocIdsShrink *string `json:"DocIds,omitempty" xml:"DocIds,omitempty"`
+	// Unique identifier for the Alibaba Cloud Model Studio workspace. Get the [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

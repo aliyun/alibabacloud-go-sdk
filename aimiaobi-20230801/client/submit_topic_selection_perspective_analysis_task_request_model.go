@@ -20,17 +20,24 @@ type iSubmitTopicSelectionPerspectiveAnalysisTaskRequest interface {
 }
 
 type SubmitTopicSelectionPerspectiveAnalysisTaskRequest struct {
+	// The unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
-	AgentKey  *string                                                        `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The list of documents to be analyzed. (Provide at least one of documents or topic)
 	Documents []*SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// The topic selection perspective tasks to be analyzed. By default, this parameter is empty, which means all tasks are analyzed. (TopicSummary: Topic event summary, HotViewPoints: Hot topic selection perspectives, TimedViewPoints: Timeliness topic selection perspectives, WebReviewPoints: Online review topic selection perspectives, FreshViewPoints: Novel topic selection perspectives)
+	//
 	// example:
 	//
 	// TimedViewPoints
 	PerspectiveTypes []*string `json:"PerspectiveTypes,omitempty" xml:"PerspectiveTypes,omitempty" type:"Repeated"`
+	// The name of the topic to be analyzed. (Provide at least one of documents or topic)
+	//
 	// example:
 	//
 	// 待分析的主题名（documents与topic二者至少传一个）
@@ -95,33 +102,48 @@ func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequest) Validate() error {
 }
 
 type SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments struct {
+	// Author
+	//
 	// example:
 	//
 	// 作者
-	Author   *string                                                                `json:"Author,omitempty" xml:"Author,omitempty"`
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// Content list
 	Comments []*SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
+	// Content
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Publication time. Format: YYYY-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2024-01-22 10:29:00
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Article source
+	//
 	// example:
 	//
 	// 新浪
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Summary
+	//
 	// example:
 	//
 	// 文章摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Title
+	//
 	// example:
 	//
 	// 文章标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx
@@ -222,7 +244,17 @@ func (s *SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments) Validate()
 }
 
 type SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments struct {
-	Text     *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Content
+	//
+	// example:
+	//
+	// 内容
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Username
+	//
+	// example:
+	//
+	// 用户名
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

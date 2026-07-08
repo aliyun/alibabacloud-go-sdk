@@ -30,32 +30,52 @@ type iListAsyncTasksResponseBody interface {
 }
 
 type ListAsyncTasksResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
-	// 200
+	// successful
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The current page.
+	//
 	// example:
 	//
 	// 1
-	Current *int32                            `json:"Current,omitempty" xml:"Current,omitempty"`
-	Data    []*ListAsyncTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// The returned data.
+	Data []*ListAsyncTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error description.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 428DCC0D-3C63-5306-BD1B-124396AB97BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Indicates whether the request was successful. true: The request was successful. false: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 20
@@ -165,77 +185,128 @@ func (s *ListAsyncTasksResponseBody) Validate() error {
 }
 
 type ListAsyncTasksResponseBodyData struct {
+	// The creation date.
+	//
 	// example:
 	//
 	// 2020-12-23 15:41:58
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator.
+	//
 	// example:
 	//
 	// 1111
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The primary key ID of the task.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The task identifier, which specifies the task.
+	//
 	// example:
 	//
 	// MaterialDocumentUpload
 	TaskCode *string `json:"TaskCode,omitempty" xml:"TaskCode,omitempty"`
+	// The optional task definition configuration in JSON format. These parameters overwrite the system\\"s default configuration.
+	//
 	// example:
 	//
 	// {}
 	TaskDefinition *string `json:"TaskDefinition,omitempty" xml:"TaskDefinition,omitempty"`
+	// The actual end time of the task.
+	//
 	// example:
 	//
 	// 2023-03-09 00:00:00
-	TaskEndTime      *string `json:"TaskEndTime,omitempty" xml:"TaskEndTime,omitempty"`
+	TaskEndTime *string `json:"TaskEndTime,omitempty" xml:"TaskEndTime,omitempty"`
+	// The error message from the task execution for the client.
+	//
+	// example:
+	//
+	// 系统内部错误
 	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
+	// The time when the task is scheduled to run. The system polls only for tasks that are due. If this parameter is empty, the task runs immediately.
+	//
 	// example:
 	//
 	// 2023-10-14 14:30:00
 	TaskExecuteTime *string `json:"TaskExecuteTime,omitempty" xml:"TaskExecuteTime,omitempty"`
+	// The unique task ID. It is equivalent to the Id parameter.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
-	TaskId                *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The internal error message from the task execution. Sensitive information, such as exception stacks and internal thread stacks, is recorded here.
+	//
+	// example:
+	//
+	// 系统错误
 	TaskInnerErrorMessage *string `json:"TaskInnerErrorMessage,omitempty" xml:"TaskInnerErrorMessage,omitempty"`
+	// The intermediate result of the task execution. If a task consists of multiple steps, the output of each step can be saved here. When the task resumes from a paused state, it can read this intermediate result and continue execution.
+	//
 	// example:
 	//
 	// {}
 	TaskIntermediateResult *string `json:"TaskIntermediateResult,omitempty" xml:"TaskIntermediateResult,omitempty"`
-	TaskName               *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// 任务名
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The input parameters for the task execution, in JSON format.
+	//
 	// example:
 	//
 	// {}
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
+	// The progress information of the task execution.
+	//
 	// example:
 	//
 	// {}
 	TaskProgressMessage *string `json:"TaskProgressMessage,omitempty" xml:"TaskProgressMessage,omitempty"`
+	// The result information of the task execution.
+	//
 	// example:
 	//
 	// {}
 	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
+	// The number of times the task has been retried.
+	//
 	// example:
 	//
 	// 1
 	TaskRetryCount *string `json:"TaskRetryCount,omitempty" xml:"TaskRetryCount,omitempty"`
+	// The actual start time of the task.
+	//
 	// example:
 	//
 	// 2023-03-20 10:53:00
 	TaskStartTime *string `json:"TaskStartTime,omitempty" xml:"TaskStartTime,omitempty"`
+	// The execution status of the task. Valid values: 0 (Pending), 1 (Running), 2 (Succeeded), 3 (Paused), 4 (Failed and retriable), 5 (Failed and not retriable), 6 (Canceled).
+	//
 	// example:
 	//
 	// 1
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The task categories. Multiple categories are separated by commas.
+	//
 	// example:
 	//
 	// test
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The update date.
+	//
 	// example:
 	//
 	// 2023-02-16 10:29:16
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The user who performed the update.
+	//
 	// example:
 	//
 	// 111

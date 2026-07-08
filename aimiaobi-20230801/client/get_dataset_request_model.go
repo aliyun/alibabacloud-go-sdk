@@ -18,14 +18,20 @@ type iGetDatasetRequest interface {
 }
 
 type GetDatasetRequest struct {
+	// The ID of the dataset. You must specify either this parameter or \\`DatasetName\\`.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The name of the dataset. The name must be globally unique.
+	//
 	// example:
 	//
 	// businessDataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Obtain a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

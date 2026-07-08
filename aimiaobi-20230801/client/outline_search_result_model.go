@@ -22,14 +22,32 @@ type iOutlineSearchResult interface {
 }
 
 type OutlineSearchResult struct {
+	// A list of retrieved materials.
 	Articles []*OutlineWritingArticle `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
-	Outline  *string                  `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// The retrieved outline.
+	//
+	// example:
+	//
+	// 晨光中的自律：清晨6:30的校园
+	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// The unique identifier of the outline.
+	//
 	// example:
 	//
 	// xxxxxx
-	OutlineId      *string `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	OutlineId *string `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	// The primary outline.
+	//
+	// example:
+	//
+	// 大学生正能量的一天
 	PrimaryOutline *string `json:"PrimaryOutline,omitempty" xml:"PrimaryOutline,omitempty"`
-	Query          *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The retrieval query.
+	//
+	// example:
+	//
+	// 高校环保义卖案例 大学生旧物循环利用率的文章
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
 func (s OutlineSearchResult) String() string {

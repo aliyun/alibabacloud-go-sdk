@@ -30,35 +30,52 @@ type iListDialoguesResponseBody interface {
 }
 
 type ListDialoguesResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
-	// NoData
+	// successful
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Page number of the current page.
+	//
 	// example:
 	//
 	// 1
-	Current *int32                           `json:"Current,omitempty" xml:"Current,omitempty"`
-	Data    []*ListDialoguesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// List of generation history records.
+	Data []*ListDialoguesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
-	// success
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique identifier for the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Indicates whether the operation succeeded. A value of true indicates success. A value of false indicates failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -168,26 +185,38 @@ func (s *ListDialoguesResponseBody) Validate() error {
 }
 
 type ListDialoguesResponseBodyData struct {
+	// Model output.
+	//
 	// example:
 	//
 	// xx
 	Bot *string `json:"Bot,omitempty" xml:"Bot,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2024-01-04 11:46:07
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator.
+	//
 	// example:
 	//
 	// xx
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Generation type. Valid values: 1 (creation) and 2 (intelligent search). Default value: 2.
+	//
 	// example:
 	//
 	// 2
 	DialogueType *int32 `json:"DialogueType,omitempty" xml:"DialogueType,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// xx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// User input.
+	//
 	// example:
 	//
 	// x

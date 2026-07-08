@@ -18,16 +18,22 @@ type iListTopicRecommendEventListRequest interface {
 }
 
 type ListTopicRecommendEventListRequest struct {
+	// Unique identifier for the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Maximum number of results to return
+	//
 	// example:
 	//
 	// 72
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token for the next page
+	//
 	// example:
 	//
 	// 下一页的token

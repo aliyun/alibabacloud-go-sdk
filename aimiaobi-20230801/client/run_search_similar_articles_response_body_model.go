@@ -18,8 +18,12 @@ type iRunSearchSimilarArticlesResponseBody interface {
 }
 
 type RunSearchSimilarArticlesResponseBody struct {
-	Header  *RunSearchSimilarArticlesResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response header.
+	Header *RunSearchSimilarArticlesResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body.
 	Payload *RunSearchSimilarArticlesResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
@@ -76,23 +80,33 @@ func (s *RunSearchSimilarArticlesResponseBody) Validate() error {
 }
 
 type RunSearchSimilarArticlesResponseBodyHeader struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 错误码
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Server-sent event. Valid values: task-started, task-finished, and task-failed.
+	//
 	// example:
 	//
 	// task-started
 	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
@@ -166,8 +180,12 @@ func (s *RunSearchSimilarArticlesResponseBodyHeader) Validate() error {
 }
 
 type RunSearchSimilarArticlesResponseBodyPayload struct {
+	// Output.
 	Output *RunSearchSimilarArticlesResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunSearchSimilarArticlesResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// instance: The image is running and used by an ECS instance.
+	//
+	// none: The image is idle and not used by any ECS instance.
+	Usage *RunSearchSimilarArticlesResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunSearchSimilarArticlesResponseBodyPayload) String() string {
@@ -211,7 +229,10 @@ func (s *RunSearchSimilarArticlesResponseBodyPayload) Validate() error {
 }
 
 type RunSearchSimilarArticlesResponseBodyPayloadOutput struct {
+	// Article list.
 	Articles []*RunSearchSimilarArticlesResponseBodyPayloadOutputArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// Text generation result.
+	//
 	// example:
 	//
 	// 文本生成结果
@@ -258,33 +279,108 @@ func (s *RunSearchSimilarArticlesResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunSearchSimilarArticlesResponseBodyPayloadOutputArticles struct {
+	// UUID of the category
+	//
+	// example:
+	//
+	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
-	DocId        *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
-	DocType      *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// Custom unique document ID.
+	//
+	// example:
+	//
+	// xxx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Document Type:
+	//
+	// - plainText: plain text; content is required
+	//
+	// - richText: rich text in HTML format; content is required
+	//
+	// - text: text file; url is required
+	//
+	// - pdf: url is required
+	//
+	// - word: url is required
+	//
+	// - image: Image; url is required. Supports most common image formats such as GIF, PNG, JPG, and JPEG
+	//
+	// - video: Video; url is required. Supports most common video formats such as MP4, AVI, WMV, and MOV
+	//
+	// example:
+	//
+	// text
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// Article ID.
+	//
 	// example:
 	//
 	// a26c2c1
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1
+	//
+	// example:
+	//
+	// xx
 	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2
+	//
+	// example:
+	//
+	// xx
 	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3
+	//
+	// example:
+	//
+	// xx
 	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Publication time.
+	//
 	// example:
 	//
 	// 2025-01-16 18:07:22
-	PubTime          *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
-	SearchSource     *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Search source
+	//
+	// example:
+	//
+	// QuarkCommonNews
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// Search source name.
+	//
+	// example:
+	//
+	// 互联网搜索
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// Type of dataset
+	//
+	// example:
+	//
+	// xx
 	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// Source website.
+	//
 	// example:
 	//
 	// xxx.com
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Summary.
+	//
 	// example:
 	//
 	// xxx
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Title   *string   `json:"Title,omitempty" xml:"Title,omitempty"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// label
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Title.
+	//
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// URL.
+	//
 	// example:
 	//
 	// https://xxx
@@ -448,14 +544,20 @@ func (s *RunSearchSimilarArticlesResponseBodyPayloadOutputArticles) Validate() e
 }
 
 type RunSearchSimilarArticlesResponseBodyPayloadUsage struct {
+	// Number of input tokens.
+	//
 	// example:
 	//
 	// 81
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of output tokens.
+	//
 	// example:
 	//
 	// 9
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens.
+	//
 	// example:
 	//
 	// 50

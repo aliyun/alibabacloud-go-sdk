@@ -18,14 +18,20 @@ type iListAuditContentErrorTypesRequest interface {
 }
 
 type ListAuditContentErrorTypesRequest struct {
+	// Maximum number of records
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token for the next page
+	//
 	// example:
 	//
 	// cEoBWREAXdxaOyjq/cqAbg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// xxxx

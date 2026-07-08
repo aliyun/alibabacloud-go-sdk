@@ -22,18 +22,30 @@ type iRunSearchSimilarArticlesRequest interface {
 }
 
 type RunSearchSimilarArticlesRequest struct {
+	// Communication configuration parameters.
 	ChatConfig *RunSearchSimilarArticlesRequestChatConfig `json:"ChatConfig,omitempty" xml:"ChatConfig,omitempty" type:"Struct"`
+	// Document type.
+	//
 	// example:
 	//
 	// html
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article title.
+	//
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://xxx/xxx
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Unique identifier of the Alibaba Cloud Model Studio workspace. To get this ID, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -105,6 +117,7 @@ func (s *RunSearchSimilarArticlesRequest) Validate() error {
 }
 
 type RunSearchSimilarArticlesRequestChatConfig struct {
+	// Search configuration parameters.
 	SearchParam *RunSearchSimilarArticlesRequestChatConfigSearchParam `json:"SearchParam,omitempty" xml:"SearchParam,omitempty" type:"Struct"`
 }
 
@@ -135,19 +148,60 @@ func (s *RunSearchSimilarArticlesRequestChatConfig) Validate() error {
 }
 
 type RunSearchSimilarArticlesRequestChatConfigSearchParam struct {
-	CategoryUuids   []*string                                                            `json:"CategoryUuids,omitempty" xml:"CategoryUuids,omitempty" type:"Repeated"`
-	CreateTimeEnd   *int64                                                               `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	CreateTimeStart *int64                                                               `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	DocIds          []*string                                                            `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
-	DocTypes        []*string                                                            `json:"DocTypes,omitempty" xml:"DocTypes,omitempty" type:"Repeated"`
-	DocUuids        []*string                                                            `json:"DocUuids,omitempty" xml:"DocUuids,omitempty" type:"Repeated"`
-	EndTime         *int64                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Extend1         *string                                                              `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
-	Extend2         *string                                                              `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
-	Extend3         *string                                                              `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
-	SearchSources   []*RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
-	StartTime       *int64                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Tags            []*string                                                            `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Category UUID
+	CategoryUuids []*string `json:"CategoryUuids,omitempty" xml:"CategoryUuids,omitempty" type:"Repeated"`
+	// Creation Time cutoff, in UNIX timestamp format.
+	//
+	// example:
+	//
+	// 111
+	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// Start Creation Time.
+	//
+	// example:
+	//
+	// 111
+	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// Document ID
+	DocIds []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	// Document types: text, image, video, audio, pdf, word, ppt, etc.
+	DocTypes []*string `json:"DocTypes,omitempty" xml:"DocTypes,omitempty" type:"Repeated"`
+	// Document UUID
+	DocUuids []*string `json:"DocUuids,omitempty" xml:"DocUuids,omitempty" type:"Repeated"`
+	// End Time
+	//
+	// example:
+	//
+	// 111
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Extension Field 1
+	//
+	// example:
+	//
+	// xx
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension Field 2
+	//
+	// example:
+	//
+	// xx
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension Field 3
+	//
+	// example:
+	//
+	// xx
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Search sources.
+	SearchSources []*RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	// Start Time
+	//
+	// example:
+	//
+	// 1725983999999
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Tag Name
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s RunSearchSimilarArticlesRequestChatConfigSearchParam) String() string {
@@ -289,12 +343,30 @@ func (s *RunSearchSimilarArticlesRequestChatConfigSearchParam) Validate() error 
 }
 
 type RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources struct {
+	// Search source type:
+	//
+	// - SystemSearch: Built-in system search.
+	//
+	// - CustomSemanticSearch: Custom semantic index search.
+	//
+	// - ThirdSearch: Third-party API search.
+	//
 	// example:
 	//
 	// SystemSearch
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Unique identifier of the search source.
+	//
+	// example:
+	//
+	// QuarkCommonNews
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Search source name (optional).
+	//
+	// example:
+	//
+	// 互联网搜索
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources) String() string {

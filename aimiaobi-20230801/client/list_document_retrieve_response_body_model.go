@@ -30,40 +30,56 @@ type iListDocumentRetrieveResponseBody interface {
 }
 
 type ListDocumentRetrieveResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// successful
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data.
+	//
 	// example:
 	//
 	// data
 	Data []*ListDocumentRetrieveResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Maximum number of records returned.
+	//
 	// example:
 	//
 	// 71
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Token for the next page.
+	//
 	// example:
 	//
 	// cEoBWREAXdxaOyjq/cqAbg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// ID of the request.
 	//
 	// example:
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded. A value of true indicates success. A value of false indicates failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 100
@@ -173,22 +189,32 @@ func (s *ListDocumentRetrieveResponseBody) Validate() error {
 }
 
 type ListDocumentRetrieveResponseBodyData struct {
+	// Main text.
+	//
 	// example:
 	//
 	// 文章正文
 	Essay *string `json:"Essay,omitempty" xml:"Essay,omitempty"`
+	// Issuing agency.
+	//
 	// example:
 	//
 	// 发布机构
 	IssuingAuthority *string `json:"IssuingAuthority,omitempty" xml:"IssuingAuthority,omitempty"`
+	// URL.
+	//
 	// example:
 	//
 	// 文章链接
 	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
+	// Publication date.
+	//
 	// example:
 	//
 	// 2023-02-01
 	PublicationDate *string `json:"PublicationDate,omitempty" xml:"PublicationDate,omitempty"`
+	// Title.
+	//
 	// example:
 	//
 	// 文章标题

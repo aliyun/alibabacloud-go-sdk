@@ -18,8 +18,12 @@ type iRunDocTranslationResponseBody interface {
 }
 
 type RunDocTranslationResponseBody struct {
-	Header  *RunDocTranslationResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response header
+	Header *RunDocTranslationResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body
 	Payload *RunDocTranslationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
@@ -76,27 +80,44 @@ func (s *RunDocTranslationResponseBody) Validate() error {
 }
 
 type RunDocTranslationResponseBodyHeader struct {
+	// Error code
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error code message
+	//
 	// example:
 	//
 	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Event type
+	//
 	// example:
 	//
 	// task-started
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Event description
+	//
+	// example:
+	//
+	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// 411c4dfa-2168-4379-a902-675d67f453f8
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// 50a1cc8e-717e-4a2b-a76b-dc9734a8564b
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Trace ID
+	//
 	// example:
 	//
 	// ebd19b12-0cae-488f-9e41-5a1c825f545b
@@ -179,8 +200,10 @@ func (s *RunDocTranslationResponseBodyHeader) Validate() error {
 }
 
 type RunDocTranslationResponseBodyPayload struct {
+	// Outputs
 	Output *RunDocTranslationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunDocTranslationResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage
+	Usage *RunDocTranslationResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunDocTranslationResponseBodyPayload) String() string {
@@ -224,6 +247,11 @@ func (s *RunDocTranslationResponseBodyPayload) Validate() error {
 }
 
 type RunDocTranslationResponseBodyPayloadOutput struct {
+	// Translated content
+	//
+	// example:
+	//
+	// 翻译内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 
@@ -249,14 +277,20 @@ func (s *RunDocTranslationResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunDocTranslationResponseBodyPayloadUsage struct {
+	// Number of tokens used for input
+	//
 	// example:
 	//
 	// 100
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of tokens used for output
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens used for this call
+	//
 	// example:
 	//
 	// 200

@@ -24,15 +24,22 @@ type iFetchParseDocumentLayoutTaskResponseBody interface {
 }
 
 type FetchParseDocumentLayoutTaskResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// successful
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *FetchParseDocumentLayoutTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// successful
@@ -43,6 +50,8 @@ type FetchParseDocumentLayoutTaskResponseBody struct {
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call succeeded.
+	//
 	// example:
 	//
 	// true
@@ -121,8 +130,14 @@ func (s *FetchParseDocumentLayoutTaskResponseBody) Validate() error {
 }
 
 type FetchParseDocumentLayoutTaskResponseBodyData struct {
+	// Structured content after formatting
 	LayoutResult *FetchParseDocumentLayoutTaskResponseBodyDataLayoutResult `json:"LayoutResult,omitempty" xml:"LayoutResult,omitempty" type:"Struct"`
-	TaskStats    *string                                                   `json:"TaskStats,omitempty" xml:"TaskStats,omitempty"`
+	// Task status
+	//
+	// example:
+	//
+	// PENDING-待执行、RUNNING-执行中、SUCCESSED-成功、SUSPENDED-暂停、FAILED-失败、CANCELLED-取消
+	TaskStats *string `json:"TaskStats,omitempty" xml:"TaskStats,omitempty"`
 }
 
 func (s FetchParseDocumentLayoutTaskResponseBodyData) String() string {
@@ -161,6 +176,7 @@ func (s *FetchParseDocumentLayoutTaskResponseBodyData) Validate() error {
 }
 
 type FetchParseDocumentLayoutTaskResponseBodyDataLayoutResult struct {
+	// Returned element data
 	Elements []*FetchParseDocumentLayoutTaskResponseBodyDataLayoutResultElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
 }
 
@@ -195,13 +211,58 @@ func (s *FetchParseDocumentLayoutTaskResponseBodyDataLayoutResult) Validate() er
 }
 
 type FetchParseDocumentLayoutTaskResponseBodyDataLayoutResultElements struct {
-	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Content
+	//
+	// example:
+	//
+	// 一、本月主要工作进展\\n
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// For headings, content with heading numbers removed
+	//
+	// example:
+	//
+	// 本月主要工作进展
 	FormatContent *string `json:"FormatContent,omitempty" xml:"FormatContent,omitempty"`
+	// Index order of each element
+	//
 	// example:
 	//
 	// 1
 	Index *float32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	Type  *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Type
+	//
+	// example:
+	//
+	// 支持的类型如下
+	//
+	//     HEADING("标题"),
+	//
+	//     H1("一级标题"),
+	//
+	//     H2("二级标题"),
+	//
+	//     H3("三级标题"),
+	//
+	//     H4("四级标题"),
+	//
+	//     H5("五级标题"),
+	//
+	//     H6("六级标题"),
+	//
+	//     PARAGRAPH("段落"),
+	//
+	//     SIGNATURE("落款"),
+	//
+	//     FOOTNOTE("脚注"),
+	//
+	//     TABLE("表格"),
+	//
+	//     CODE_BLOCK("代码块"),
+	//
+	//     ATTACHMENT("附件"),
+	//
+	//     BLOCKQUOTE("引用");
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s FetchParseDocumentLayoutTaskResponseBodyDataLayoutResultElements) String() string {

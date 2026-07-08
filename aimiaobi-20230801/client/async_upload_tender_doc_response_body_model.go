@@ -24,15 +24,22 @@ type iAsyncUploadTenderDocResponseBody interface {
 }
 
 type AsyncUploadTenderDocResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// successful
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *AsyncUploadTenderDocResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// success
@@ -43,6 +50,8 @@ type AsyncUploadTenderDocResponseBody struct {
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -121,6 +130,8 @@ func (s *AsyncUploadTenderDocResponseBody) Validate() error {
 }
 
 type AsyncUploadTenderDocResponseBodyData struct {
+	// Task ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21

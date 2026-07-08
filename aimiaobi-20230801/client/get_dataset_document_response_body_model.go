@@ -24,23 +24,34 @@ type iGetDatasetDocumentResponseBody interface {
 }
 
 type GetDatasetDocumentResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data.
 	Data *GetDatasetDocumentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique identifier of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded. true means success. false means failure.
+	//
 	// example:
 	//
 	// true
@@ -119,40 +130,96 @@ func (s *GetDatasetDocumentResponseBody) Validate() error {
 }
 
 type GetDatasetDocumentResponseBodyData struct {
+	// Category UUID
+	//
+	// example:
+	//
+	// xx
 	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Content of the article.
+	//
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Whether this record is indexed in the multimodal index library.
+	//
 	// example:
 	//
 	// true
 	DisableHandleMultimodalMedia *bool `json:"DisableHandleMultimodalMedia,omitempty" xml:"DisableHandleMultimodalMedia,omitempty"`
+	// User-side unique ID of the document.
+	//
 	// example:
 	//
-	// 用户指定的文档唯一ID
-	DocId   *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// xxx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Document type. For example, video or image.
+	//
+	// example:
+	//
+	// video
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// Unique ID of the document in the document system.
+	//
 	// example:
 	//
-	// 内部文档唯一ID
-	DocUuid  *string                                     `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
-	Extend1  *string                                     `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
-	Extend2  *string                                     `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
-	Extend3  *string                                     `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// xxx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// Extension field 1
+	//
+	// example:
+	//
+	// xx
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// Extension field 2
+	//
+	// example:
+	//
+	// xx
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// Extension field 3
+	//
+	// example:
+	//
+	// xx
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// Dictionary information.
 	Metadata *GetDatasetDocumentResponseBodyDataMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	// Publication time in yyyy-MM-dd HH:mm:ss format.
+	//
 	// example:
 	//
 	// 2024-05-14 08:54:33
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Source of the document.
+	//
 	// example:
 	//
 	// 来源
 	SourceFrom *string `json:"SourceFrom,omitempty" xml:"SourceFrom,omitempty"`
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Document status. 100 means success. 0 means failure. 1 means indexing or queued.
+	//
+	// example:
+	//
+	// 100
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Summary of the article.
+	//
 	// example:
 	//
 	// 文章摘要
-	Summary *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Title   *string   `json:"Title,omitempty" xml:"Title,omitempty"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Tags.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Title of the document.
+	//
+	// example:
+	//
+	// 文档标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// URL of the article.
+	//
 	// example:
 	//
 	// https://www.aliyun.com
@@ -330,10 +397,18 @@ func (s *GetDatasetDocumentResponseBodyData) Validate() error {
 }
 
 type GetDatasetDocumentResponseBodyDataMetadata struct {
+	// ASR results.
 	AsrSentences []*GetDatasetDocumentResponseBodyDataMetadataAsrSentences `json:"AsrSentences,omitempty" xml:"AsrSentences,omitempty" type:"Repeated"`
-	KeyValues    []*GetDatasetDocumentResponseBodyDataMetadataKeyValues    `json:"KeyValues,omitempty" xml:"KeyValues,omitempty" type:"Repeated"`
-	Text         *string                                                   `json:"Text,omitempty" xml:"Text,omitempty"`
-	VideoShots   []*GetDatasetDocumentResponseBodyDataMetadataVideoShots   `json:"VideoShots,omitempty" xml:"VideoShots,omitempty" type:"Repeated"`
+	// Key-value structure metadata
+	KeyValues []*GetDatasetDocumentResponseBodyDataMetadataKeyValues `json:"KeyValues,omitempty" xml:"KeyValues,omitempty" type:"Repeated"`
+	// Metadata for the document dimension.
+	//
+	// example:
+	//
+	// xx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Video sharding information.
+	VideoShots []*GetDatasetDocumentResponseBodyDataMetadataVideoShots `json:"VideoShots,omitempty" xml:"VideoShots,omitempty" type:"Repeated"`
 }
 
 func (s GetDatasetDocumentResponseBodyDataMetadata) String() string {
@@ -412,9 +487,24 @@ func (s *GetDatasetDocumentResponseBodyDataMetadata) Validate() error {
 }
 
 type GetDatasetDocumentResponseBodyDataMetadataAsrSentences struct {
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// End time in milliseconds.
+	//
+	// example:
+	//
+	// 2000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Start time in milliseconds.
+	//
+	// example:
+	//
+	// 1000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// ASR text content.
+	//
+	// example:
+	//
+	// xxx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetDatasetDocumentResponseBodyDataMetadataAsrSentences) String() string {
@@ -457,7 +547,17 @@ func (s *GetDatasetDocumentResponseBodyDataMetadataAsrSentences) Validate() erro
 }
 
 type GetDatasetDocumentResponseBodyDataMetadataKeyValues struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Parameter Name
+	//
+	// example:
+	//
+	// xx
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Parameter value
+	//
+	// example:
+	//
+	// xx
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -492,9 +592,24 @@ func (s *GetDatasetDocumentResponseBodyDataMetadataKeyValues) Validate() error {
 }
 
 type GetDatasetDocumentResponseBodyDataMetadataVideoShots struct {
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// End time of the video shard in milliseconds.
+	//
+	// example:
+	//
+	// 2000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Start time of the video shard in milliseconds.
+	//
+	// example:
+	//
+	// 1000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Content of the video shard.
+	//
+	// example:
+	//
+	// xxx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetDatasetDocumentResponseBodyDataMetadataVideoShots) String() string {

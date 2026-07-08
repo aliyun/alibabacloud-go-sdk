@@ -30,35 +30,52 @@ type iListHotSourcesResponseBody interface {
 }
 
 type ListHotSourcesResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Third-party source list
 	Data []*ListHotSourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Maximum number of results returned
+	//
 	// example:
 	//
 	// 4
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Fault description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Next page token
+	//
 	// example:
 	//
 	// xxxxxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request UUID
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded: true for success, false for failure
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 30
@@ -168,18 +185,26 @@ func (s *ListHotSourcesResponseBody) Validate() error {
 }
 
 type ListHotSourcesResponseBodyData struct {
+	// Hot ranking source description
+	//
 	// example:
 	//
 	// 热榜源描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether to display in the console
+	//
 	// example:
 	//
 	// true
 	Show *bool `json:"Show,omitempty" xml:"Show,omitempty"`
+	// Sorting value
+	//
 	// example:
 	//
 	// 86
 	Sort *int32 `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// Hot ranking source identity
+	//
 	// example:
 	//
 	// 热榜源标识

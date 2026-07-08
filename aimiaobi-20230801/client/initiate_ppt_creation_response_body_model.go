@@ -24,15 +24,22 @@ type iInitiatePptCreationResponseBody interface {
 }
 
 type InitiatePptCreationResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *InitiatePptCreationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误消息
@@ -43,6 +50,8 @@ type InitiatePptCreationResponseBody struct {
 	//
 	// 11AC01F1-88FB-5C4D-B6F5-E8BB136CD5A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,13 +130,13 @@ func (s *InitiatePptCreationResponseBody) Validate() error {
 }
 
 type InitiatePptCreationResponseBodyData struct {
-	// AppKey
+	// The AppKey.
 	//
 	// example:
 	//
 	// S1X5ecouBztZelaQ
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// Code
+	// The code.
 	//
 	// example:
 	//

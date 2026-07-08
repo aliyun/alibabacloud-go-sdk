@@ -18,8 +18,12 @@ type iRunTextPolishingResponseBody interface {
 }
 
 type RunTextPolishingResponseBody struct {
-	Header  *RunTextPolishingResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response header.
+	Header *RunTextPolishingResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body.
 	Payload *RunTextPolishingResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Unique request identifier.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
@@ -76,30 +80,44 @@ func (s *RunTextPolishingResponseBody) Validate() error {
 }
 
 type RunTextPolishingResponseBodyHeader struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 错误码
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The SSE event. \\`task-started\\`: started. \\`task-finished\\`: finished. \\`task-failed\\`: failed.
+	//
 	// example:
 	//
 	// task-started
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Parent session ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// End-to-end trace ID.
+	//
 	// example:
 	//
 	// 全链路ID
@@ -182,8 +200,10 @@ func (s *RunTextPolishingResponseBodyHeader) Validate() error {
 }
 
 type RunTextPolishingResponseBodyPayload struct {
+	// Output.
 	Output *RunTextPolishingResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunTextPolishingResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token consumption.
+	Usage *RunTextPolishingResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunTextPolishingResponseBodyPayload) String() string {
@@ -227,6 +247,8 @@ func (s *RunTextPolishingResponseBodyPayload) Validate() error {
 }
 
 type RunTextPolishingResponseBodyPayloadOutput struct {
+	// Text generation result.
+	//
 	// example:
 	//
 	// 文本生成结果
@@ -255,14 +277,20 @@ func (s *RunTextPolishingResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunTextPolishingResponseBodyPayloadUsage struct {
+	// Number of tokens used for input.
+	//
 	// example:
 	//
 	// 1
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of tokens used for output.
+	//
 	// example:
 	//
 	// 1
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens used for this call.
+	//
 	// example:
 	//
 	// 2

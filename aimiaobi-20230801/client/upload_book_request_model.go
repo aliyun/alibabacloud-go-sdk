@@ -18,9 +18,18 @@ type iUploadBookRequest interface {
 }
 
 type UploadBookRequest struct {
+	// Folder ID
+	//
+	// example:
+	//
+	// default
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Documents
+	//
 	// This parameter is required.
 	Docs []*UploadBookRequestDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
+	// Unique identifier of your Alibaba Cloud Model Studio workspace. [Get your workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -78,7 +87,14 @@ func (s *UploadBookRequest) Validate() error {
 }
 
 type UploadBookRequestDocs struct {
+	// Document name
+	//
+	// example:
+	//
+	// 文档1.pdf
 	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// File URL
+	//
 	// example:
 	//
 	// http://xxx/ccc.pdf

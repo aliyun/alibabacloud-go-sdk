@@ -16,12 +16,16 @@ type iGetCustomSourceTopicAnalysisTaskRequest interface {
 }
 
 type GetCustomSourceTopicAnalysisTaskRequest struct {
+	// The unique ID of the task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c9f226b02cca4f42a84c5e955c39dfd2
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique identifier of the workspace. It is the AgentKey.
+	//
 	// This parameter is required.
 	//
 	// example:

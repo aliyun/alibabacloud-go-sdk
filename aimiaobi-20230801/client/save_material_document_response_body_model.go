@@ -24,26 +24,38 @@ type iSaveMaterialDocumentResponseBody interface {
 }
 
 type SaveMaterialDocumentResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// DataNotExists
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
+	//
 	// example:
 	//
 	// 12
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// 数据不存在
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Is successful: true for success, false for failure
+	//
 	// example:
 	//
 	// false

@@ -24,23 +24,34 @@ type iGetTopicByIdResponseBody interface {
 }
 
 type GetTopicByIdResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *GetTopicByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -119,47 +130,82 @@ func (s *GetTopicByIdResponseBody) Validate() error {
 }
 
 type GetTopicByIdResponseBodyData struct {
+	// Asynchronous task ID (used in custom topic scenarios)
+	//
 	// example:
 	//
 	// 异步任务ID（自定义主题场景下使用）
 	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
+	// Creator user ID (used in custom topic scenarios)
+	//
 	// example:
 	//
 	// 创建用户ID（自定义主题场景下使用）
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Hotness value
+	//
 	// example:
 	//
 	// 43
 	HotValue *int64 `json:"HotValue,omitempty" xml:"HotValue,omitempty"`
+	// Hot topic ID
+	//
 	// example:
 	//
 	// 热榜ID
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Asynchronous task status (used in custom event scenarios) (PENDING: pending, RUNNING: running, SUCCESSED: succeeded, SUSPENDED: suspended, FAILED: failed, CANCELED: canceled)
+	//
 	// example:
 	//
 	// PENDING
-	Status           *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// List of structured topic summaries
 	StructureSummary []*GetTopicByIdResponseBodyDataStructureSummary `json:"StructureSummary,omitempty" xml:"StructureSummary,omitempty" type:"Repeated"`
+	// Hot topic summary
+	//
 	// example:
 	//
 	// 热榜摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Error message for asynchronous task failure
+	//
 	// example:
 	//
 	// 异步任务失败错误信息
 	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
+	// Asynchronous task status. 0: pending, 1: running, 2: succeeded, 3: suspended (not used), 4: failed, 6: canceled (used in custom event scenarios).
+	//
 	// example:
 	//
 	// 14
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// Unique topic name
+	//
 	// example:
 	//
 	// 主题唯一名称
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// Hot topic source. Supported sources:
+	//
+	// - Toutiao: Toutiao
+	//
+	// - Quark: Quark
+	//
+	// - Baidu: Baidu
+	//
+	// - Sina: Sina
+	//
+	// - Custom: Custom
+	//
+	// - Aggregation: Hot Topic List
+	//
 	// example:
 	//
-	// 热榜源，目前支持的热榜源: Toutiao：头条、Quark：夸克、Baidu：百度、Sina：新浪。Custom：自定义、Aggregation：热点话题榜
+	// Toutiao
 	TopicSource *string `json:"TopicSource,omitempty" xml:"TopicSource,omitempty"`
+	// Data version
+	//
 	// example:
 	//
 	// 数据版本
@@ -296,11 +342,16 @@ func (s *GetTopicByIdResponseBodyData) Validate() error {
 }
 
 type GetTopicByIdResponseBodyDataStructureSummary struct {
+	// Articles referenced to generate the title summary
 	DocList []*GetTopicByIdResponseBodyDataStructureSummaryDocList `json:"DocList,omitempty" xml:"DocList,omitempty" type:"Repeated"`
+	// Summary
+	//
 	// example:
 	//
 	// 摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Title
+	//
 	// example:
 	//
 	// 标题
@@ -356,8 +407,20 @@ func (s *GetTopicByIdResponseBodyDataStructureSummary) Validate() error {
 }
 
 type GetTopicByIdResponseBodyDataStructureSummaryDocList struct {
+	// Article source
+	//
+	// example:
+	//
+	// 头条
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article title
+	//
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Article URL
+	//
 	// example:
 	//
 	// http://www.example.com

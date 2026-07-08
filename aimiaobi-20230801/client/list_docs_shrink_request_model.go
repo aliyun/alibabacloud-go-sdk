@@ -28,28 +28,46 @@ type iListDocsShrinkRequest interface {
 }
 
 type ListDocsShrinkRequest struct {
+	// Document folder.
+	//
 	// example:
 	//
 	// default
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	DocName    *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// Document name.
+	//
+	// example:
+	//
+	// 企业2022年報
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// Document type.
+	//
 	// example:
 	//
 	// pdf
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// Maximum number of results returned.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Next page token.
+	//
 	// example:
 	//
 	// 52a33dc83779f63641e16f5146cd7125
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Skip n records for paging.
+	//
 	// example:
 	//
 	// 10
-	Skip           *int32  `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	Skip *int32 `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// Document status list.
 	StatusesShrink *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
+	// Alibaba Cloud Model Studio workspace ID. For more information, see [How to Use Workspaces](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

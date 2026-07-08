@@ -24,23 +24,34 @@ type iCreateTokenResponseBody interface {
 }
 
 type CreateTokenResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
-	// NoData
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	// successful
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *CreateTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
-	// success
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\` indicates success and \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,10 +130,14 @@ func (s *CreateTokenResponseBody) Validate() error {
 }
 
 type CreateTokenResponseBodyData struct {
+	// The expiration time.
+	//
 	// example:
 	//
 	// 1705388704855
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The access token.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5

@@ -24,23 +24,34 @@ type iFetchExportWordTaskResponseBody interface {
 }
 
 type FetchExportWordTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *FetchExportWordTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\`: successful. \\`false\\`: failed.
+	//
 	// example:
 	//
 	// true
@@ -119,10 +130,17 @@ func (s *FetchExportWordTaskResponseBody) Validate() error {
 }
 
 type FetchExportWordTaskResponseBodyData struct {
+	// The file URL.
+	//
 	// example:
 	//
 	// http://xxx/xxx.xls
-	FileUrl   *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The status of the task.
+	//
+	// example:
+	//
+	// PENDING-待执行、RUNNING-执行中、SUCCESSED-成功、SUSPENDED-暂停、FAILED-失败、CANCELLED-取消
 	TaskStats *string `json:"TaskStats,omitempty" xml:"TaskStats,omitempty"`
 }
 

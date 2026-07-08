@@ -16,12 +16,15 @@ type iInsertInterveneRuleRequest interface {
 }
 
 type InsertInterveneRuleRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
-	AgentKey            *string                                        `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Intervention rule configuration
 	InterveneRuleConfig *InsertInterveneRuleRequestInterveneRuleConfig `json:"InterveneRuleConfig,omitempty" xml:"InterveneRuleConfig,omitempty" type:"Struct"`
 }
 
@@ -61,18 +64,28 @@ func (s *InsertInterveneRuleRequest) Validate() error {
 }
 
 type InsertInterveneRuleRequestInterveneRuleConfig struct {
-	AnswerConfig        []*InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig        `json:"AnswerConfig,omitempty" xml:"AnswerConfig,omitempty" type:"Repeated"`
-	EffectConfig        *InsertInterveneRuleRequestInterveneRuleConfigEffectConfig          `json:"EffectConfig,omitempty" xml:"EffectConfig,omitempty" type:"Struct"`
+	// Answer configuration
+	AnswerConfig []*InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig `json:"AnswerConfig,omitempty" xml:"AnswerConfig,omitempty" type:"Repeated"`
+	// Activation configuration
+	EffectConfig *InsertInterveneRuleRequestInterveneRuleConfigEffectConfig `json:"EffectConfig,omitempty" xml:"EffectConfig,omitempty" type:"Struct"`
+	// Intervention configuration list
 	InterveneConfigList []*InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList `json:"InterveneConfigList,omitempty" xml:"InterveneConfigList,omitempty" type:"Repeated"`
+	// Intervention type
+	//
 	// example:
 	//
 	// 0
-	InterveneType *int32    `json:"InterveneType,omitempty" xml:"InterveneType,omitempty"`
+	InterveneType *int32 `json:"InterveneType,omitempty" xml:"InterveneType,omitempty"`
+	// Namespace list
 	NamespaceList []*string `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
+	// Rule ID
+	//
 	// example:
 	//
 	// 2
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// Rule name
+	//
 	// example:
 	//
 	// tf-test-rule
@@ -178,11 +191,20 @@ func (s *InsertInterveneRuleRequestInterveneRuleConfig) Validate() error {
 }
 
 type InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig struct {
+	// Answer type
+	//
 	// example:
 	//
 	// 0
-	AnswerType *int32  `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	AnswerType *int32 `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
+	// Answer content
+	//
+	// example:
+	//
+	// 抱歉我无法回答
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Namespace
+	//
 	// example:
 	//
 	// namespace_qa_query
@@ -229,14 +251,20 @@ func (s *InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig) Validate() e
 }
 
 type InsertInterveneRuleRequestInterveneRuleConfigEffectConfig struct {
+	// Activation type
+	//
 	// example:
 	//
 	// 0
 	EffectType *int32 `json:"EffectType,omitempty" xml:"EffectType,omitempty"`
+	// End time
+	//
 	// example:
 	//
 	// 2023-03-28 06:04:29
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Start time
+	//
 	// example:
 	//
 	// 2023-03-28 06:04:29
@@ -283,17 +311,24 @@ func (s *InsertInterveneRuleRequestInterveneRuleConfigEffectConfig) Validate() e
 }
 
 type InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList struct {
-	// id
+	// ID
 	//
 	// example:
 	//
 	// 37249
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Operation type
+	//
 	// example:
 	//
 	// 0
-	OperationType *int32  `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	Query         *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	OperationType *int32 `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// Intervention query configuration
+	//
+	// example:
+	//
+	// 早上好
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
 func (s InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList) String() string {

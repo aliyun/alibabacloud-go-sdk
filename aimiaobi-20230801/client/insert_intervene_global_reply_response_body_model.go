@@ -24,23 +24,34 @@ type iInsertInterveneGlobalReplyResponseBody interface {
 }
 
 type InsertInterveneGlobalReplyResponseBody struct {
+	// status code
+	//
 	// example:
 	//
 	// 0
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data *InsertInterveneGlobalReplyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether successful: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -119,8 +130,11 @@ func (s *InsertInterveneGlobalReplyResponseBody) Validate() error {
 }
 
 type InsertInterveneGlobalReplyResponseBodyData struct {
-	Code       *int32    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of failed index IDs
 	FailIdList []*string `json:"FailIdList,omitempty" xml:"FailIdList,omitempty" type:"Repeated"`
+	// Task ID
+	//
 	// example:
 	//
 	// 4829

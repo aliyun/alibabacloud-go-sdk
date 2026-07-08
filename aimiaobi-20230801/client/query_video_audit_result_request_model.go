@@ -16,7 +16,7 @@ type iQueryVideoAuditResultRequest interface {
 }
 
 type QueryVideoAuditResultRequest struct {
-	// 视频审校任务的唯一标识，长度固定32位
+	// Task ID
 	//
 	// This parameter is required.
 	//
@@ -24,6 +24,8 @@ type QueryVideoAuditResultRequest struct {
 	//
 	// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Workspace ID
+	//
 	// This parameter is required.
 	//
 	// example:

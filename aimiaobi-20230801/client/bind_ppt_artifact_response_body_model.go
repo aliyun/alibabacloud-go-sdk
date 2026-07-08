@@ -24,15 +24,22 @@ type iBindPptArtifactResponseBody interface {
 }
 
 type BindPptArtifactResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response object of the task.
 	Data *BindPptArtifactResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误消息
@@ -43,6 +50,8 @@ type BindPptArtifactResponseBody struct {
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,6 +130,8 @@ func (s *BindPptArtifactResponseBody) Validate() error {
 }
 
 type BindPptArtifactResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// 110f8401-e5ba-42db-addb-4f70196000c1

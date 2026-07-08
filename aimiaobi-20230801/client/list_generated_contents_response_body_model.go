@@ -30,35 +30,52 @@ type iListGeneratedContentsResponseBody interface {
 }
 
 type ListGeneratedContentsResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Page number
+	//
 	// example:
 	//
 	// 1
-	Current *int32                                   `json:"Current,omitempty" xml:"Current,omitempty"`
-	Data    []*ListGeneratedContentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// Document list
+	Data []*ListGeneratedContentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of items per page
+	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Operation status: true means success. false means failure.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of items
+	//
 	// example:
 	//
 	// 100
@@ -168,46 +185,108 @@ func (s *ListGeneratedContentsResponseBody) Validate() error {
 }
 
 type ListGeneratedContentsResponseBodyData struct {
+	// Content: rich text
+	//
+	// example:
+	//
+	// 杭州亚运会
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Content domain (content category)
+	//
+	// - media: Media writing
+	//
+	// - government: Government document writing
+	//
+	// - office: Office writing
+	//
+	// - market: Marketing writing
+	//
+	// - custom: Custom writing
+	//
+	// - commentGenerate: Opinion generation
+	//
 	// example:
 	//
 	// media
 	ContentDomain *string `json:"ContentDomain,omitempty" xml:"ContentDomain,omitempty"`
-	ContentText   *string `json:"ContentText,omitempty" xml:"ContentText,omitempty"`
+	// Content: plain text
+	//
+	// example:
+	//
+	// 杭州亚运会
+	ContentText *string `json:"ContentText,omitempty" xml:"ContentText,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 2024-01-04 11:46:07
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator
+	//
 	// example:
 	//
-	// 123
+	// "123"
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Device ID
+	//
 	// example:
 	//
 	// xxx
-	DeviceId *string                                        `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// File attributes
 	FileAttr *ListGeneratedContentsResponseBodyDataFileAttr `json:"FileAttr,omitempty" xml:"FileAttr,omitempty" type:"Struct"`
-	FileKey  *string                                        `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// File ID
+	//
+	// example:
+	//
+	// oss://default/oss-bucket-name/aimiaobi/2021/07/01/1625126400000/1.docx
+	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// Document ID
+	//
 	// example:
 	//
 	// 10
-	Id          *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Keywords
 	KeywordList []*string `json:"KeywordList,omitempty" xml:"KeywordList,omitempty" type:"Repeated"`
-	Keywords    *string   `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
-	Prompt      *string   `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Keywords (string)
+	//
+	// example:
+	//
+	// 观点
+	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// Last prompt used to generate this document
+	//
+	// example:
+	//
+	// 创作xxx文章
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Conversation task ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Title
+	//
+	// example:
+	//
+	// 杭州亚运会
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Update time
+	//
 	// example:
 	//
 	// 2024-01-04 11:46:07
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Updater
+	//
 	// example:
 	//
-	// 1111
+	// "1111"
 	UpdateUser *string `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
+	// UUID traceability ID
+	//
 	// example:
 	//
 	// xxx
@@ -385,10 +464,30 @@ func (s *ListGeneratedContentsResponseBodyData) Validate() error {
 }
 
 type ListGeneratedContentsResponseBodyDataFileAttr struct {
+	// File name
+	//
+	// example:
+	//
+	// homedepothp.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	TmpUrl   *string `json:"TmpUrl,omitempty" xml:"TmpUrl,omitempty"`
-	Width    *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	// Video height
+	//
+	// example:
+	//
+	// 500
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Temporary URL for video file access. Expires in one hour.
+	//
+	// example:
+	//
+	// http://www.example.com/xxx.mp4
+	TmpUrl *string `json:"TmpUrl,omitempty" xml:"TmpUrl,omitempty"`
+	// Video width
+	//
+	// example:
+	//
+	// 800
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s ListGeneratedContentsResponseBodyDataFileAttr) String() string {

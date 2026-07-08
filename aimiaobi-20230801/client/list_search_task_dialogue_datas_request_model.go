@@ -34,48 +34,72 @@ type iListSearchTaskDialogueDatasRequest interface {
 }
 
 type ListSearchTaskDialogueDatasRequest struct {
+	// Indicates whether to include the main content.
+	//
 	// example:
 	//
 	// true
 	IncludeContent *bool `json:"IncludeContent,omitempty" xml:"IncludeContent,omitempty"`
+	// The type of data to search.
+	//
 	// example:
 	//
 	// text
 	MultimodalSearchType *string `json:"MultimodalSearchType,omitempty" xml:"MultimodalSearchType,omitempty"`
+	// The unique identifier of the historical dialogue. This is the source of all original materials.
+	//
 	// example:
 	//
 	// xx
 	OriginalSessionId *string `json:"OriginalSessionId,omitempty" xml:"OriginalSessionId,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The default value is 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query conditions.
+	//
 	// example:
 	//
 	// xx
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The type of search agent.
+	//
 	// example:
 	//
 	// ClusterGenerate
 	SearchModel *string `json:"SearchModel,omitempty" xml:"SearchModel,omitempty"`
+	// The data under the search agent classification.
+	//
 	// example:
 	//
 	// xxx
 	SearchModelDataValue *string `json:"SearchModelDataValue,omitempty" xml:"SearchModelDataValue,omitempty"`
+	// The unique identifier of the historical dialogue. This is the source of reference materials.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xx
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The unique identifier of the task.
+	//
+	// > You do not need to specify this parameter. The system automatically generates a task ID. If you specify the same task ID for multiple tasks, the tasks are considered part of the same dialogue group.
+	//
 	// example:
 	//
 	// xxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

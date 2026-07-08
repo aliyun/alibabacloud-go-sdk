@@ -18,8 +18,12 @@ type iRunTranslateGenerationResponseBody interface {
 }
 
 type RunTranslateGenerationResponseBody struct {
-	Header  *RunTranslateGenerationResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response header
+	Header *RunTranslateGenerationResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body
 	Payload *RunTranslateGenerationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// DA021073-17CE-5CCF-9FEB-93226C766887
@@ -76,26 +80,38 @@ func (s *RunTranslateGenerationResponseBody) Validate() error {
 }
 
 type RunTranslateGenerationResponseBodyHeader struct {
+	// The error code.
+	//
 	// example:
 	//
 	// AccessForbid
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// xx
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The Server-Sent Events (SSE) event.
+	//
 	// example:
 	//
 	// task-failed
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 91C2B2B8-7D12-4A8D-A724-1E576D30C096
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The trace ID.
+	//
 	// example:
 	//
 	// 0abb781d17146157564845243e20b5
@@ -169,8 +185,10 @@ func (s *RunTranslateGenerationResponseBodyHeader) Validate() error {
 }
 
 type RunTranslateGenerationResponseBodyPayload struct {
+	// Output data
 	Output *RunTranslateGenerationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunTranslateGenerationResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage information
+	Usage *RunTranslateGenerationResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunTranslateGenerationResponseBodyPayload) String() string {
@@ -214,6 +232,8 @@ func (s *RunTranslateGenerationResponseBodyPayload) Validate() error {
 }
 
 type RunTranslateGenerationResponseBodyPayloadOutput struct {
+	// The text generation result.
+	//
 	// example:
 	//
 	// xx
@@ -242,14 +262,20 @@ func (s *RunTranslateGenerationResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunTranslateGenerationResponseBodyPayloadUsage struct {
+	// The number of tokens used for the input.
+	//
 	// example:
 	//
 	// 1
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The number of tokens used for the output.
+	//
 	// example:
 	//
 	// 1
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The total number of tokens used in the call.
+	//
 	// example:
 	//
 	// 2

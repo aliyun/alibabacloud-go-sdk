@@ -22,7 +22,14 @@ type DeletePptArtifactRequest struct {
 	//
 	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
-	PptArtifactId  *string `json:"PptArtifactId,omitempty" xml:"PptArtifactId,omitempty"`
+	// The ID of the PPT work.
+	//
+	// example:
+	//
+	// 53245
+	PptArtifactId *string `json:"PptArtifactId,omitempty" xml:"PptArtifactId,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// llm-xx

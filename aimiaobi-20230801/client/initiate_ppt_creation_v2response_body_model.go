@@ -24,25 +24,34 @@ type iInitiatePptCreationV2ResponseBody interface {
 }
 
 type InitiatePptCreationV2ResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *InitiatePptCreationV2ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误消息
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -121,30 +130,44 @@ func (s *InitiatePptCreationV2ResponseBody) Validate() error {
 }
 
 type InitiatePptCreationV2ResponseBodyData struct {
+	// An alert message related to service usage or status.
+	//
 	// example:
 	//
 	// 本月版本内的配送额度已经用尽，超额使用将走按量后付费，下个月配送额度将重新下发；请知晓
 	Alert *string `json:"Alert,omitempty" xml:"Alert,omitempty"`
+	// The AppKey for initializing the front-end component.
+	//
 	// example:
 	//
 	// S1X5ecouBztZelaQ
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The ID of the export task.
+	//
 	// example:
 	//
 	// 66b25058-d735-47e5-a534-5da93453d3df
 	ExportTaskId *string `json:"ExportTaskId,omitempty" xml:"ExportTaskId,omitempty"`
+	// The URL of the artifact cover.
+	//
 	// example:
 	//
 	// http://a.com/xxx.png
 	PptArtifactCover *string `json:"PptArtifactCover,omitempty" xml:"PptArtifactCover,omitempty"`
+	// The artifact ID. Use this ID to edit the artifact.
+	//
 	// example:
 	//
 	// 53059801
 	PptArtifactId *string `json:"PptArtifactId,omitempty" xml:"PptArtifactId,omitempty"`
+	// The process ID for creating the PPT, used to initialize the front-end component for artifact creation.
+	//
 	// example:
 	//
 	// 8485143
 	PptProcessId *string `json:"PptProcessId,omitempty" xml:"PptProcessId,omitempty"`
+	// The signature for initializing the front-end component.
+	//
 	// example:
 	//
 	// dBBGvT0Toje5887Qw+/IwwMNYfk=

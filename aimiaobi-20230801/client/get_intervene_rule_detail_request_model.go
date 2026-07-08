@@ -16,12 +16,16 @@ type iGetInterveneRuleDetailRequest interface {
 }
 
 type GetInterveneRuleDetailRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2daaa2e0c209xb26acb97009ea77bd4b_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Rule ID
+	//
 	// example:
 	//
 	// 12345

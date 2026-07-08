@@ -20,15 +20,22 @@ type iListAuditTermsRequest interface {
 }
 
 type ListAuditTermsRequest struct {
+	// Maximum number of records to return.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token for the next page.
+	//
 	// example:
 	//
 	// XXXX
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Dictionary name. Optional. Defaults to Default if not specified.
 	TermsName *string `json:"TermsName,omitempty" xml:"TermsName,omitempty"`
+	// Unique identifier of the Alibaba Cloud Model Studio workspace. Get your [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

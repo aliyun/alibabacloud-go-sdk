@@ -20,16 +20,24 @@ type iAddDatasetDocumentShrinkRequest interface {
 }
 
 type AddDatasetDocumentShrinkRequest struct {
+	// The unique identifier of the dataset.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The name of the dataset.
+	//
 	// example:
 	//
 	// 数据集名称
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The document.
+	//
 	// This parameter is required.
 	DocumentShrink *string `json:"Document,omitempty" xml:"Document,omitempty"`
+	// The unique identifier of the Model Studio workspace. For more information, see [Obtain a workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

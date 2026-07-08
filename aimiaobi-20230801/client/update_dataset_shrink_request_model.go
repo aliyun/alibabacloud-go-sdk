@@ -27,20 +27,29 @@ type UpdateDatasetShrinkRequest struct {
 	// example:
 	//
 	// private
-	AccessLevel         *string `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
+	AccessLevel *string `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
+	// The configurations for a third-party search dataset.
 	DatasetConfigShrink *string `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
+	// The description of the dataset.
+	//
 	// example:
 	//
 	// 企业自定义数据集
 	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// Specifies whether to enable search for the dataset.
+	//
 	// example:
 	//
 	// 3
 	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspaceId]().
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,13 +22,32 @@ type iSubmitAuditTaskRequest interface {
 }
 
 type SubmitAuditTaskRequest struct {
+	// The ID of the article to be audited.
+	//
 	// example:
 	//
 	// xxxx
-	ArticleId   *string `json:"ArticleId,omitempty" xml:"ArticleId,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ArticleId *string `json:"ArticleId,omitempty" xml:"ArticleId,omitempty"`
+	// The content to be audited.
+	//
+	// example:
+	//
+	// 待审核的内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content to be audited, in HTML format.
+	//
+	// example:
+	//
+	// 待审核的内容（HTML格式）
 	HtmlContent *string `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title of the article to be audited.
+	//
+	// example:
+	//
+	// 审核时的文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// xxxx

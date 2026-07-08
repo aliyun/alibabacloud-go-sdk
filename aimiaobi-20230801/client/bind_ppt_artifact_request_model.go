@@ -20,6 +20,8 @@ type iBindPptArtifactRequest interface {
 }
 
 type BindPptArtifactRequest struct {
+	// The artifact ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30,6 +32,8 @@ type BindPptArtifactRequest struct {
 	//
 	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -39,6 +43,8 @@ type BindPptArtifactRequest struct {
 	//
 	// 85da2bfe-6f05-41af-9841-d73c5bbf43a2
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// [The workspace ID.](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// example:
 	//
 	// llm-xgpt3m25qdosdjr3

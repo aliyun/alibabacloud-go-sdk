@@ -18,6 +18,8 @@ type iListBuildConfigsRequest interface {
 }
 
 type ListBuildConfigsRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type ListBuildConfigsRequest struct {
 	// cd327c3d5d5e44159cc716e23bfa530e_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Content category. Valid values: media or government.
+	//
 	// example:
 	//
 	// media

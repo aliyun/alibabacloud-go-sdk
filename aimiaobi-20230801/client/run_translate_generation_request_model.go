@@ -20,18 +20,50 @@ type iRunTranslateGenerationRequest interface {
 }
 
 type RunTranslateGenerationRequest struct {
+	// The target language for translation. The source language is automatically detected.
+	//
+	// | Language           | Prompt value |
+	//
+	// | ------------------ | ------------ |
+	//
+	// | English            | English      |
+	//
+	// | Simplified Chinese | Chinese      |
+	//
+	// | Japanese           | Japanese     |
+	//
+	// | Korean             | Korean       |
+	//
+	// | Spanish            | Spanish      |
+	//
+	// | French             | French       |
+	//
+	// | Portuguese         | Portuguese   |
+	//
+	// | German             | German       |
+	//
+	// | Italian            | Italian      |
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// toEnglish
+	// English
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The data required for generation.
+	//
 	// This parameter is required.
 	ReferenceData *RunTranslateGenerationRequestReferenceData `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty" type:"Struct"`
+	// Optional. The unique ID of the associated creative article.
+	//
+	// > You do not need to specify TaskId. The system generates one automatically. If subsequent tasks use the same TaskId, they belong to the same conversation group.
+	//
 	// example:
 	//
 	// xxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -94,6 +126,8 @@ func (s *RunTranslateGenerationRequest) Validate() error {
 }
 
 type RunTranslateGenerationRequestReferenceData struct {
+	// A list of content.
+	//
 	// This parameter is required.
 	Contents []*string `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
 }

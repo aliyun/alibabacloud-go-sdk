@@ -18,16 +18,25 @@ type iGenerateFileUrlByKeyRequest interface {
 }
 
 type GenerateFileUrlByKeyRequest struct {
+	// Unique workspace identity: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// File key. Format: protocol://serverInstance/bucketPath/fileKey
+	//
 	// example:
 	//
 	// oss://default/oss-bucket-name/aimiaobi/2021/07/01/1625126400000/1.docx
-	FileKey  *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// File name
+	//
+	// example:
+	//
+	// test.docx
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 }
 

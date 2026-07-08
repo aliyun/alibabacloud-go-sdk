@@ -14,6 +14,7 @@ type iGenerateTraceability interface {
 }
 
 type GenerateTraceability struct {
+	// The list of traceability news.
 	News []*GenerateTraceabilityNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
 }
 
@@ -48,18 +49,37 @@ func (s *GenerateTraceability) Validate() error {
 }
 
 type GenerateTraceabilityNews struct {
+	// The index \\`n\\` that corresponds to the \\`[[n]]\\` marker in the original article. The index starts from 1.
+	//
 	// example:
 	//
 	// 2
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The publish time.
+	//
 	// example:
 	//
 	// 2024-01-22 10:29:00
-	PubTime          *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
-	SearchSource     *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The unique identity of the retrieval source.
+	//
+	// example:
+	//
+	// 检索源唯一标识
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// The name of the retrieval source.
+	//
+	// example:
+	//
+	// 检索源编码
 	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
-	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// URL
+	// The title.
+	//
+	// example:
+	//
+	// 新闻标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL.
 	//
 	// example:
 	//

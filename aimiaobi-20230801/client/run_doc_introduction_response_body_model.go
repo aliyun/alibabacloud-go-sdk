@@ -18,8 +18,12 @@ type iRunDocIntroductionResponseBody interface {
 }
 
 type RunDocIntroductionResponseBody struct {
-	Header  *RunDocIntroductionResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// response header
+	Header *RunDocIntroductionResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// response body
 	Payload *RunDocIntroductionResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// C9B5BEA6-E8C4-5861-BE37-D906D516510E
@@ -76,27 +80,44 @@ func (s *RunDocIntroductionResponseBody) Validate() error {
 }
 
 type RunDocIntroductionResponseBodyHeader struct {
+	// error code
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// error message.
+	//
 	// example:
 	//
 	// success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Type of management event
+	//
 	// example:
 	//
 	// task-started
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Description of the management event
+	//
+	// example:
+	//
+	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// session ID
+	//
 	// example:
 	//
 	// 20247a52-23e2-46fb-943d-309cdee2bc6d
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Job ID
+	//
 	// example:
 	//
 	// 8a9cecb7-6d20-32db-8823-5882c217b647
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// End-to-end trace ID
+	//
 	// example:
 	//
 	// 0bd58ea2-dc38-45da-ac02-17f05cb9040b
@@ -179,8 +200,10 @@ func (s *RunDocIntroductionResponseBodyHeader) Validate() error {
 }
 
 type RunDocIntroductionResponseBodyPayload struct {
+	// Outputs
 	Output *RunDocIntroductionResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunDocIntroductionResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// token usage
+	Usage *RunDocIntroductionResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunDocIntroductionResponseBodyPayload) String() string {
@@ -224,9 +247,20 @@ func (s *RunDocIntroductionResponseBodyPayload) Validate() error {
 }
 
 type RunDocIntroductionResponseBodyPayloadOutput struct {
+	// Array of segment introductions
 	Introductions []*RunDocIntroductionResponseBodyPayloadOutputIntroductions `json:"Introductions,omitempty" xml:"Introductions,omitempty" type:"Repeated"`
-	KeyPoint      *string                                                     `json:"KeyPoint,omitempty" xml:"KeyPoint,omitempty"`
-	Summary       *string                                                     `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Key point content
+	//
+	// example:
+	//
+	// 要点1；要点2；
+	KeyPoint *string `json:"KeyPoint,omitempty" xml:"KeyPoint,omitempty"`
+	// Outline summary
+	//
+	// example:
+	//
+	// 大纲摘要内容
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
 func (s RunDocIntroductionResponseBodyPayloadOutput) String() string {
@@ -278,13 +312,26 @@ func (s *RunDocIntroductionResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunDocIntroductionResponseBodyPayloadOutputIntroductions struct {
+	// Array of position information
 	Blocks []*RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks `json:"Blocks,omitempty" xml:"Blocks,omitempty" type:"Repeated"`
+	// Starting page number of multiple text blocks
+	//
 	// example:
 	//
 	// 10
-	StartPageId *int32  `json:"StartPageId,omitempty" xml:"StartPageId,omitempty"`
-	Summary     *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	StartPageId *int32 `json:"StartPageId,omitempty" xml:"StartPageId,omitempty"`
+	// Summary of this segment
+	//
+	// example:
+	//
+	// 本段摘要内容
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Title of this segment
+	//
+	// example:
+	//
+	// 本段标题内容
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s RunDocIntroductionResponseBodyPayloadOutputIntroductions) String() string {
@@ -345,30 +392,44 @@ func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductions) Validate() er
 }
 
 type RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks struct {
+	// Start Time of the segment
+	//
 	// example:
 	//
 	// 0
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// End Time of the segment
+	//
 	// example:
 	//
 	// 1200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Height of the text block
+	//
 	// example:
 	//
 	// 600
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Page number where the text block is located
+	//
 	// example:
 	//
 	// 10
 	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// Width of the text block
+	//
 	// example:
 	//
 	// 600
 	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// X coordinate of the top-left corner of the block
+	//
 	// example:
 	//
 	// 10
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// Y coordinate of the top-left corner of the block
+	//
 	// example:
 	//
 	// 10
@@ -451,14 +512,20 @@ func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks) Validat
 }
 
 type RunDocIntroductionResponseBodyPayloadUsage struct {
+	// Input token quantity
+	//
 	// example:
 	//
 	// 100
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Output token quantity
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total token quantity
+	//
 	// example:
 	//
 	// 200

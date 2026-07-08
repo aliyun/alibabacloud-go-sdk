@@ -22,10 +22,14 @@ type GetPptInfoRequest struct {
 	//
 	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 1f178f22-ec52-467d-8489-eef4468x0240
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
 	// llm-2setzb9xb8mx6vss

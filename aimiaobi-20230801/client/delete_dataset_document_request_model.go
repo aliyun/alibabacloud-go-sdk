@@ -22,22 +22,32 @@ type iDeleteDatasetDocumentRequest interface {
 }
 
 type DeleteDatasetDocumentRequest struct {
+	// The unique identifier of the dataset. Choose either DatasetId or DatasetName.
+	//
 	// example:
 	//
 	// 1
 	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// Dataset name
+	//
 	// example:
 	//
 	// 数据集名称
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The user-specified unique ID of the document.
+	//
 	// example:
 	//
 	// xxx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The internal unique identifier of the document.
+	//
 	// example:
 	//
 	// xxx
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

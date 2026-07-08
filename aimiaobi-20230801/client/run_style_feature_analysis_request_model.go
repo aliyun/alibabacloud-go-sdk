@@ -18,8 +18,12 @@ type iRunStyleFeatureAnalysisRequest interface {
 }
 
 type RunStyleFeatureAnalysisRequest struct {
-	Contents    []*string `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
-	MaterialIds []*int64  `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty" type:"Repeated"`
+	// A collection of custom content texts.
+	Contents []*string `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	// A collection of Material Library IDs.
+	MaterialIds []*int64 `json:"MaterialIds,omitempty" xml:"MaterialIds,omitempty" type:"Repeated"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. Get the [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

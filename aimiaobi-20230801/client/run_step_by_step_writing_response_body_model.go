@@ -18,8 +18,12 @@ type iRunStepByStepWritingResponseBody interface {
 }
 
 type RunStepByStepWritingResponseBody struct {
-	Header  *RunStepByStepWritingResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// The response header.
+	Header *RunStepByStepWritingResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// The response body.
 	Payload *RunStepByStepWritingResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
@@ -76,30 +80,44 @@ func (s *RunStepByStepWritingResponseBody) Validate() error {
 }
 
 type RunStepByStepWritingResponseBodyHeader struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 错误码
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The Server-Sent Events (SSE) event. \\`task-started\\`: The task begins. \\`task-finished\\`: The task is complete. \\`task-failed\\`: The task failed.
+	//
 	// example:
 	//
 	// task-started
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The parent session ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The full-link trace ID.
+	//
 	// example:
 	//
 	// 全链路ID
@@ -182,8 +200,10 @@ func (s *RunStepByStepWritingResponseBodyHeader) Validate() error {
 }
 
 type RunStepByStepWritingResponseBodyPayload struct {
+	// The output.
 	Output *RunStepByStepWritingResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunStepByStepWritingResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Information about token usage.
+	Usage *RunStepByStepWritingResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunStepByStepWritingResponseBodyPayload) String() string {
@@ -227,16 +247,24 @@ func (s *RunStepByStepWritingResponseBodyPayload) Validate() error {
 }
 
 type RunStepByStepWritingResponseBodyPayloadOutput struct {
-	Articles    []*RunStepByStepWritingResponseBodyPayloadOutputArticles  `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// The reference articles.
+	Articles []*RunStepByStepWritingResponseBodyPayloadOutputArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// Extra output fields.
 	ExtraOutput *RunStepByStepWritingResponseBodyPayloadOutputExtraOutput `json:"ExtraOutput,omitempty" xml:"ExtraOutput,omitempty" type:"Struct"`
+	// A list of segments after the article layout has been optimized.
+	//
 	// example:
 	//
 	// 文章精排之后的片段
 	MiniDoc []*string `json:"MiniDoc,omitempty" xml:"MiniDoc,omitempty" type:"Repeated"`
+	// The rewritten query.
+	//
 	// example:
 	//
 	// 大模型改变世界
 	SearchQuery *string `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	// The text generation result.
+	//
 	// example:
 	//
 	// 文本生成结果
@@ -315,46 +343,68 @@ func (s *RunStepByStepWritingResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunStepByStepWritingResponseBodyPayloadOutputArticles struct {
+	// The author.
+	//
 	// example:
 	//
 	// 作者
 	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// The content.
+	//
 	// example:
 	//
 	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The custom unique ID of the document.
+	//
 	// example:
 	//
 	// 文档-自定义的唯一ID
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The internal unique ID of the document.
+	//
 	// example:
 	//
 	// f1da53894e784759946d22e2cb2b522a
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// The URL of the original material.
+	//
 	// example:
 	//
 	// http://www.example.com
 	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
+	// The publication time.
+	//
 	// example:
 	//
 	// 2024-09-10 14:17:53
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The source.
+	//
 	// example:
 	//
 	// 央视网
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The article summary.
+	//
 	// example:
 	//
 	// 文章摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The tag.
+	//
 	// example:
 	//
 	// 文章标签
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The title.
+	//
 	// example:
 	//
 	// 文章标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the article.
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx
@@ -473,6 +523,7 @@ func (s *RunStepByStepWritingResponseBodyPayloadOutputArticles) Validate() error
 }
 
 type RunStepByStepWritingResponseBodyPayloadOutputExtraOutput struct {
+	// The list of summaries. This field is returned when summaries are generated step-by-step.
 	Summarization []*string `json:"summarization,omitempty" xml:"summarization,omitempty" type:"Repeated"`
 }
 
@@ -498,14 +549,20 @@ func (s *RunStepByStepWritingResponseBodyPayloadOutputExtraOutput) Validate() er
 }
 
 type RunStepByStepWritingResponseBodyPayloadUsage struct {
+	// The number of input tokens.
+	//
 	// example:
 	//
 	// 65
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The number of output tokens.
+	//
 	// example:
 	//
 	// 80
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The total number of tokens.
+	//
 	// example:
 	//
 	// 32

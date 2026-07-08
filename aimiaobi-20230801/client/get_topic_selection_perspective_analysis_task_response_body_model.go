@@ -24,23 +24,34 @@ type iGetTopicSelectionPerspectiveAnalysisTaskResponseBody interface {
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error description.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,22 +130,33 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBody) Validate() error 
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData struct {
+	// The error message.
+	//
 	// example:
 	//
 	// 错误信息
-	ErrorMessage          *string                                                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The analysis result of novel topic selection perspectives.
 	FreshViewPointsResult *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult `json:"FreshViewPointsResult,omitempty" xml:"FreshViewPointsResult,omitempty" type:"Struct"`
-	HotViewPointsResult   *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult   `json:"HotViewPointsResult,omitempty" xml:"HotViewPointsResult,omitempty" type:"Struct"`
+	// The analysis result of hot topic selection perspectives.
+	HotViewPointsResult *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult `json:"HotViewPointsResult,omitempty" xml:"HotViewPointsResult,omitempty" type:"Struct"`
+	// The status of the task. Valid values: PENDING, RUNNING, SUCCESSED, SUSPENDED, FAILED, and CANCELED.
+	//
 	// example:
 	//
 	// SUSPENDED
-	Status                *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The analysis result of time-sensitive topic selection perspectives.
 	TimedViewPointsResult *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResult `json:"TimedViewPointsResult,omitempty" xml:"TimedViewPointsResult,omitempty" type:"Struct"`
+	// The hot spot topic event.
+	//
 	// example:
 	//
 	// 热点主题事件
-	Topic                 *string                                                                        `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	TopicSummaryResult    *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult    `json:"TopicSummaryResult,omitempty" xml:"TopicSummaryResult,omitempty" type:"Struct"`
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The summary of the hot spot topic event.
+	TopicSummaryResult *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult `json:"TopicSummaryResult,omitempty" xml:"TopicSummaryResult,omitempty" type:"Struct"`
+	// The analysis result of online review topic selection perspectives.
 	WebReviewPointsResult *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult `json:"WebReviewPointsResult,omitempty" xml:"WebReviewPointsResult,omitempty" type:"Struct"`
 }
 
@@ -248,6 +270,7 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData) Validate() er
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult struct {
+	// A list of viewpoints for novel topic selection perspectives.
 	Attitudes []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes `json:"Attitudes,omitempty" xml:"Attitudes,omitempty" type:"Repeated"`
 }
 
@@ -282,18 +305,25 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPoints
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes struct {
+	// The current viewpoint.
+	//
 	// example:
 	//
 	// 当前观点
 	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// The type of the viewpoint.
+	//
 	// example:
 	//
 	// 观点类型
 	AttitudeType *string `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	// The proportion of the current viewpoint.
+	//
 	// example:
 	//
 	// 当前观点占比
-	Ratio      *string                                                                                             `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// A list of topic selection perspectives.
 	ViewPoints []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
 }
 
@@ -355,11 +385,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPoints
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints struct {
+	// The outline.
 	Outlines []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// The generated perspective.
+	//
 	// example:
 	//
 	// 视角
 	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// The summary.
+	//
 	// example:
 	//
 	// 摘要
@@ -415,10 +450,14 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPoints
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines struct {
+	// The outline.
+	//
 	// example:
 	//
 	// 大纲
 	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// The summary of the outline.
+	//
 	// example:
 	//
 	// 大纲摘要
@@ -456,6 +495,7 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPoints
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult struct {
+	// A list of viewpoints for hot topic selection perspectives.
 	Attitudes []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes `json:"Attitudes,omitempty" xml:"Attitudes,omitempty" type:"Repeated"`
 }
 
@@ -490,19 +530,27 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRe
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes struct {
+	// The current viewpoint.
+	//
 	// example:
 	//
 	// 当前观点
 	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// The type of the viewpoint.
+	//
 	// example:
 	//
 	// 观点类型
-	AttitudeType *string                                                                                     `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
-	News         []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	AttitudeType *string `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	// A list of related news.
+	News []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	// The proportion of the current viewpoint.
+	//
 	// example:
 	//
 	// 当前观点占比
-	Ratio      *string                                                                                           `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// A list of topic selection perspectives.
 	ViewPoints []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
 }
 
@@ -582,33 +630,78 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRe
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews struct {
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The news content.
+	//
+	// example:
+	//
+	// Content
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The time when the article was created.
+	//
+	// example:
+	//
+	// 2024-05-08 02:23:01
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The custom unique ID of the document.
+	//
 	// example:
 	//
 	// 9957175DEDCF49C5ACF7A956B4FD67B2
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// The unique ID of the article.
+	//
 	// example:
 	//
-	// 123456
+	// "123456"
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// The URLs of the images in the article.
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.png
 	ImageUrls []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
-	PubTime   *string   `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
-	Source    *string   `json:"Source,omitempty" xml:"Source,omitempty"`
-	Summary   *string   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The time when the article was published.
+	//
+	// example:
+	//
+	// 2024-05-08 02:23:02
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The source of the news.
+	//
+	// example:
+	//
+	// 夸克
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The summary of the news.
+	//
+	// example:
+	//
+	// 新闻摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The tags.
+	//
 	// example:
 	//
 	// ["标签1","标签2"]
-	Tags  []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Title *string   `json:"Title,omitempty" xml:"Title,omitempty"`
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The title of the news.
+	//
+	// example:
+	//
+	// 新闻标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The topic of the article.
+	//
 	// example:
 	//
 	// 文章主题
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The URL of the news.
+	//
+	// example:
+	//
+	// http://www.example.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews) String() string {
@@ -732,11 +825,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRe
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints struct {
+	// The outline.
 	Outlines []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// The generated perspective.
+	//
 	// example:
 	//
 	// 视角
 	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// The summary.
+	//
 	// example:
 	//
 	// 摘要
@@ -792,10 +890,14 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRe
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines struct {
+	// The outline.
+	//
 	// example:
 	//
 	// 大纲
 	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// The summary of the outline.
+	//
 	// example:
 	//
 	// 大纲摘要
@@ -833,6 +935,7 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsRe
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResult struct {
+	// A list of viewpoints for time-sensitive topic selection perspectives.
 	Attitudes []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes `json:"Attitudes,omitempty" xml:"Attitudes,omitempty" type:"Repeated"`
 }
 
@@ -867,34 +970,49 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPoints
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes struct {
+	// The current viewpoint.
+	//
 	// example:
 	//
 	// 当前观点
 	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// The type of the viewpoint.
+	//
 	// example:
 	//
 	// 观点类型
 	AttitudeType *string `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	// The time when the viewpoint was published.
+	//
 	// example:
 	//
 	// 2024-01-22 10:29
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// The proportion of the current viewpoint.
+	//
 	// example:
 	//
 	// 当前观点占比
 	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// The source of the news.
+	//
 	// example:
 	//
 	// 新浪
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The current viewpoint. This is the same as the news title.
+	//
 	// example:
 	//
 	// 标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the news.
+	//
 	// example:
 	//
 	// http://www.example.com/news/1.html
-	Url        *string                                                                                             `json:"Url,omitempty" xml:"Url,omitempty"`
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// A list of topic selection perspectives.
 	ViewPoints []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
 }
 
@@ -992,11 +1110,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPoints
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints struct {
+	// The outline.
 	Outlines []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// The generated perspective.
+	//
 	// example:
 	//
 	// 视角
 	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// The summary.
+	//
 	// example:
 	//
 	// 摘要
@@ -1052,10 +1175,14 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPoints
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines struct {
+	// The outline.
+	//
 	// example:
 	//
 	// 大纲
 	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// The summary of the outline.
+	//
 	// example:
 	//
 	// 大纲摘要
@@ -1093,6 +1220,7 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPoints
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult struct {
+	// A list of summaries.
 	Summaries []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries `json:"Summaries,omitempty" xml:"Summaries,omitempty" type:"Repeated"`
 }
 
@@ -1127,11 +1255,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryRes
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries struct {
+	// The articles referenced to generate the summary for this title.
 	DocList []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList `json:"DocList,omitempty" xml:"DocList,omitempty" type:"Repeated"`
+	// The summary.
+	//
 	// example:
 	//
 	// 摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The title.
+	//
 	// example:
 	//
 	// 标题
@@ -1187,8 +1320,20 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryRes
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList struct {
+	// The source of the article.
+	//
+	// example:
+	//
+	// 头条
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title of the article.
+	//
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the article.
+	//
 	// example:
 	//
 	// http://www.example.com
@@ -1235,6 +1380,7 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryRes
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult struct {
+	// A list of viewpoints from online reviews for topic selection.
 	Attitudes []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes `json:"Attitudes,omitempty" xml:"Attitudes,omitempty" type:"Repeated"`
 }
 
@@ -1269,19 +1415,27 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPoints
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes struct {
+	// The current viewpoint.
+	//
 	// example:
 	//
 	// 当前观点
 	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// The type of the viewpoint.
+	//
 	// example:
 	//
 	// 观点类型
-	AttitudeType *string                                                                                           `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
-	Comments     []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
+	AttitudeType *string `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	// A list of user comments.
+	Comments []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments `json:"Comments,omitempty" xml:"Comments,omitempty" type:"Repeated"`
+	// The proportion of the current viewpoint.
+	//
 	// example:
 	//
 	// 当前观点占比
-	Ratio      *string                                                                                             `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// A list of topic selection perspectives.
 	ViewPoints []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
 }
 
@@ -1361,25 +1515,35 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPoints
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments struct {
+	// The source.
+	//
 	// example:
 	//
 	// 来源
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The content.
+	//
 	// example:
 	//
-	// 评论内容
+	// 内容
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The title.
+	//
 	// example:
 	//
 	// 标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL where the comment is located.
+	//
 	// example:
 	//
-	// 当前评论所属的URL
+	// 当前所属的URL
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The username.
+	//
 	// example:
 	//
-	// 评论用户名
+	// 用户名
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -1441,11 +1605,16 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPoints
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints struct {
+	// The outline.
 	Outlines []*GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// The generated perspective.
+	//
 	// example:
 	//
 	// 视角
 	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// The summary.
+	//
 	// example:
 	//
 	// 摘要
@@ -1501,10 +1670,14 @@ func (s *GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPoints
 }
 
 type GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines struct {
+	// The outline.
+	//
 	// example:
 	//
 	// 大纲
 	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// The summary of the outline.
+	//
 	// example:
 	//
 	// 大纲摘要

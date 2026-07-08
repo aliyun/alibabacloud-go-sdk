@@ -28,35 +28,50 @@ type iFeedbackDialogueShrinkRequest interface {
 }
 
 type FeedbackDialogueShrinkRequest struct {
+	// The unique ID of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// fcb14f25c9ee41ccad33a049de8f941b_p_outbound_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The feedback.
+	//
 	// example:
 	//
 	// test
 	CustomerResponse *string `json:"CustomerResponse,omitempty" xml:"CustomerResponse,omitempty"`
+	// The generated content that is considered good.
+	//
 	// example:
 	//
 	// test
 	GoodText *string `json:"GoodText,omitempty" xml:"GoodText,omitempty"`
+	// The modified generated result.
+	//
 	// example:
 	//
 	// test
 	ModifiedResponse *string `json:"ModifiedResponse,omitempty" xml:"ModifiedResponse,omitempty"`
+	// thumbsDown: Dislike, thumbsUp: Like
+	//
 	// example:
 	//
 	// thumbsDown
-	Rating           *string `json:"Rating,omitempty" xml:"Rating,omitempty"`
+	Rating *string `json:"Rating,omitempty" xml:"Rating,omitempty"`
+	// The tags.
 	RatingTagsShrink *string `json:"RatingTags,omitempty" xml:"RatingTags,omitempty"`
+	// The ID of a single-turn conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 75bf82fa-b71b-45d7-ae40-0b00e496cd9e
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The ID of the page.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21

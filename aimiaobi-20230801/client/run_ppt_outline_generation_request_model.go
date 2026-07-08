@@ -22,8 +22,16 @@ type RunPptOutlineGenerationRequest struct {
 	//
 	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// The user\\"s prompt.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 帮我生成一个消防安全主题的PPT
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -30,29 +30,65 @@ type iRunDocIntroductionRequest interface {
 }
 
 type RunDocIntroductionRequest struct {
+	// Purge cache
+	//
+	// example:
+	//
+	// true
 	CleanCache *bool `json:"CleanCache,omitempty" xml:"CleanCache,omitempty"`
+	// Document ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
-	DocId              *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Custom requirements for the document summary
+	//
+	// example:
+	//
+	// 用英文输出
 	IntroductionPrompt *string `json:"IntroductionPrompt,omitempty" xml:"IntroductionPrompt,omitempty"`
-	KeyPointPrompt     *string `json:"KeyPointPrompt,omitempty" xml:"KeyPointPrompt,omitempty"`
-	ModelName          *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Custom requirements for key points
+	//
+	// example:
+	//
+	// 用英文输出
+	KeyPointPrompt *string `json:"KeyPointPrompt,omitempty" xml:"KeyPointPrompt,omitempty"`
+	// User-defined model name
+	//
+	// example:
+	//
+	// quanmiao-max、quanmiao-plus
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Conversation ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a3b5eb35-6b28-4cf9-ac09-1dec25ab4df6
-	SessionId     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Custom requirements for the summary content
+	//
+	// example:
+	//
+	// 用英文输出
 	SummaryPrompt *string `json:"SummaryPrompt,omitempty" xml:"SummaryPrompt,omitempty"`
+	// Unique identifier (UUID) of the Alibaba Cloud Model Studio workspace. For more information, see [Workspace ID](https://help.aliyun.com/document_detail/2587495.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxx
-	WorkspaceId      *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// Content to generate the summary from. If not empty, this value takes precedence over docId.
+	//
+	// example:
+	//
+	// 要进行导读的内容
 	ReferenceContent *string `json:"referenceContent,omitempty" xml:"referenceContent,omitempty"`
 }
 

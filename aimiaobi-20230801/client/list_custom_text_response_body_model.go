@@ -24,23 +24,34 @@ type iListCustomTextResponseBody interface {
 }
 
 type ListCustomTextResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
-	// NoData
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	// successful
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data.
 	Data []*ListCustomTextResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description.
+	//
 	// example:
 	//
-	// success
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Unique request ID.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. true: successful, false: failed.
+	//
 	// example:
 	//
 	// true
@@ -123,30 +134,44 @@ func (s *ListCustomTextResponseBody) Validate() error {
 }
 
 type ListCustomTextResponseBodyData struct {
+	// Content.
+	//
 	// example:
 	//
 	// 内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The user who created the custom text.
+	//
 	// example:
 	//
 	// 创建用户
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Primary key ID.
+	//
 	// example:
 	//
 	// 40
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Title.
+	//
 	// example:
 	//
 	// 标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Update time.
+	//
 	// example:
 	//
 	// 修改时间
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Modifier.
+	//
 	// example:
 	//
 	// 修改用户

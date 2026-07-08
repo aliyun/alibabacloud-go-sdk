@@ -22,26 +22,36 @@ type iUpdateCustomTextRequest interface {
 }
 
 type UpdateCustomTextRequest struct {
+	// Workspace unique identifier: AgentKey
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Commodity code
+	//
 	// example:
 	//
 	// 商品code
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// Content
+	//
 	// example:
 	//
 	// 内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Primary key ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 96
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Title
+	//
 	// example:
 	//
 	// 标题

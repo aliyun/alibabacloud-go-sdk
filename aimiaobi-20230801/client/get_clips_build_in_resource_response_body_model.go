@@ -24,15 +24,22 @@ type iGetClipsBuildInResourceResponseBody interface {
 }
 
 type GetClipsBuildInResourceResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// successful
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *GetClipsBuildInResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned for the request.
+	//
 	// example:
 	//
 	// successful
@@ -43,6 +50,8 @@ type GetClipsBuildInResourceResponseBody struct {
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true means the request was successful. A value of false means the request failed.
+	//
 	// example:
 	//
 	// true
@@ -121,8 +130,16 @@ func (s *GetClipsBuildInResourceResponseBody) Validate() error {
 }
 
 type GetClipsBuildInResourceResponseBodyData struct {
+	// The list of resources.
 	ResourceList []*string `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
-	ResourceType *int32    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The resource type.
+	//
+	// example:
+	//
+	// 0 - 音色
+	//
+	// 1- 背景音
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetClipsBuildInResourceResponseBodyData) String() string {

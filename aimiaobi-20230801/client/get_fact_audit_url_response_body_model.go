@@ -24,16 +24,24 @@ type iGetFactAuditUrlResponseBody interface {
 }
 
 type GetFactAuditUrlResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// DataNotExists
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of source URLs currently used for factuality audit. If the list is empty, the retrieval source is the entire network. If URLs are present, information is retrieved only from the configured URLs. To delete unnecessary source URLs, use the URLs from the response parameter as input for the DeleteFactAuditUrl API.
+	//
 	// This parameter is required.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error description.
+	//
 	// example:
 	//
 	// success
@@ -44,6 +52,8 @@ type GetFactAuditUrlResponseBody struct {
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether this request was successful.
+	//
 	// example:
 	//
 	// true

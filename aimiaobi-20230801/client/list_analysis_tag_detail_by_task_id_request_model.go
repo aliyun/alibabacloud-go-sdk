@@ -26,29 +26,44 @@ type iListAnalysisTagDetailByTaskIdRequest interface {
 }
 
 type ListAnalysisTagDetailByTaskIdRequest struct {
+	// A list of categories for filtering.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// The maximum number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page of results.
+	//
 	// example:
 	//
 	// token-xxxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of records to request.
+	//
 	// example:
 	//
 	// 3
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The unique ID of the task.
+	//
+	// > This parameter is optional. The system automatically generates a task ID. If you specify the same TaskId for multiple tasks, the tasks are considered part of the same conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,15 +24,22 @@ type iDeletePptArtifactResponseBody interface {
 }
 
 type DeletePptArtifactResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response object.
 	Data *DeletePptArtifactResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误消息
@@ -43,6 +50,8 @@ type DeletePptArtifactResponseBody struct {
 	//
 	// xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -121,6 +130,8 @@ func (s *DeletePptArtifactResponseBody) Validate() error {
 }
 
 type DeletePptArtifactResponseBodyData struct {
+	// The ID of the PPT work.
+	//
 	// example:
 	//
 	// 5233498

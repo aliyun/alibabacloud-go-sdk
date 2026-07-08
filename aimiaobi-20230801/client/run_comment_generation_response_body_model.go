@@ -20,10 +20,13 @@ type iRunCommentGenerationResponseBody interface {
 }
 
 type RunCommentGenerationResponseBody struct {
-	End     *bool                                    `json:"End,omitempty" xml:"End,omitempty"`
-	Header  *RunCommentGenerationResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Indicates whether the response is complete.
+	End *bool `json:"End,omitempty" xml:"End,omitempty"`
+	// Response header.
+	Header *RunCommentGenerationResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body.
 	Payload *RunCommentGenerationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
-	// Id of the request
+	// Request ID.
 	//
 	// example:
 	//
@@ -90,23 +93,38 @@ func (s *RunCommentGenerationResponseBody) Validate() error {
 }
 
 type RunCommentGenerationResponseBodyHeader struct {
+	// Event name.
+	//
 	// example:
 	//
 	// result-generated
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Event description.
+	//
+	// example:
+	//
+	// 可空
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Trace ID.
+	//
 	// example:
 	//
 	// 0bd58ea2-dc38-45da-ac02-17f05cb9040b
@@ -180,8 +198,10 @@ func (s *RunCommentGenerationResponseBodyHeader) Validate() error {
 }
 
 type RunCommentGenerationResponseBodyPayload struct {
+	// Output data.
 	Output *RunCommentGenerationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunCommentGenerationResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token usage.
+	Usage *RunCommentGenerationResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunCommentGenerationResponseBodyPayload) String() string {
@@ -225,6 +245,11 @@ func (s *RunCommentGenerationResponseBodyPayload) Validate() error {
 }
 
 type RunCommentGenerationResponseBodyPayloadOutput struct {
+	// Generated comment text.
+	//
+	// example:
+	//
+	// 评论内容
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
@@ -250,14 +275,20 @@ func (s *RunCommentGenerationResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunCommentGenerationResponseBodyPayloadUsage struct {
+	// Number of input tokens used.
+	//
 	// example:
 	//
 	// 1
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of output tokens used.
+	//
 	// example:
 	//
 	// 2
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens used.
+	//
 	// example:
 	//
 	// 3

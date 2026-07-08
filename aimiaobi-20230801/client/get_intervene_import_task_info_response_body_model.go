@@ -24,23 +24,34 @@ type iGetInterveneImportTaskInfoResponseBody interface {
 }
 
 type GetInterveneImportTaskInfoResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 0
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetInterveneImportTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of \\`true\\` indicates success, and a value of \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,7 +130,8 @@ func (s *GetInterveneImportTaskInfoResponseBody) Validate() error {
 }
 
 type GetInterveneImportTaskInfoResponseBodyData struct {
-	Code   *int32                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The status information of the task.
 	Status *GetInterveneImportTaskInfoResponseBodyDataStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
 }
 
@@ -159,22 +171,32 @@ func (s *GetInterveneImportTaskInfoResponseBodyData) Validate() error {
 }
 
 type GetInterveneImportTaskInfoResponseBodyDataStatus struct {
+	// The information about the task.
+	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The completion percentage.
+	//
 	// example:
 	//
 	// 80
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The status of the task.
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 41405255
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task.
+	//
 	// example:
 	//
 	// ft-task-20190101m8rnK

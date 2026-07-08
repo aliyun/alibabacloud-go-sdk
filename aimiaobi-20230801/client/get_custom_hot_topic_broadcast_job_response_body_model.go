@@ -24,23 +24,34 @@ type iGetCustomHotTopicBroadcastJobResponseBody interface {
 }
 
 type GetCustomHotTopicBroadcastJobResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *GetCustomHotTopicBroadcastJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error details.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -119,14 +130,32 @@ func (s *GetCustomHotTopicBroadcastJobResponseBody) Validate() error {
 }
 
 type GetCustomHotTopicBroadcastJobResponseBodyData struct {
+	// The error message.
+	//
 	// example:
 	//
 	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The version number of the hot topic.
+	//
 	// example:
 	//
 	// 热点话题版本号标识
 	HotTopicVersion *string `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
+	// The status of the task.
+	//
+	// - PENDING: The task is pending.
+	//
+	// - RUNNING: The task is running.
+	//
+	// - SUCCESSED: The task is successful.
+	//
+	// - SUSPENDED: The task is paused.
+	//
+	// - FAILED: The task failed.
+	//
+	// - CANCELED: The task is canceled.
+	//
 	// example:
 	//
 	// RUNNING

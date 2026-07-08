@@ -18,18 +18,24 @@ type iFetchImageTaskRequest interface {
 }
 
 type FetchImageTaskRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cd327c3d5d5e44159cc716e23bfa530e_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Article task ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e1be065b-adc3-435e-bd01-1c18c5ed75d3
 	ArticleTaskId *string `json:"ArticleTaskId,omitempty" xml:"ArticleTaskId,omitempty"`
+	// List of task IDs
+	//
 	// This parameter is required.
 	//
 	// example:

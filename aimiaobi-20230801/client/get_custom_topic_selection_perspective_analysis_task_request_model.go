@@ -16,12 +16,18 @@ type iGetCustomTopicSelectionPerspectiveAnalysisTaskRequest interface {
 }
 
 type GetCustomTopicSelectionPerspectiveAnalysisTaskRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Unique ID of the task.
+	//
+	// > The system generates a TaskId by default. If you specify the same TaskId for multiple tasks, those tasks belong to the same conversation group.
+	//
 	// This parameter is required.
 	//
 	// example:

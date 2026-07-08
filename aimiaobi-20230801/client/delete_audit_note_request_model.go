@@ -16,7 +16,10 @@ type iDeleteAuditNoteRequest interface {
 }
 
 type DeleteAuditNoteRequest struct {
+	// Rule library ID. If left blank, the default is used.
 	NoteId *string `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	// The unique identifier for an Alibaba Cloud Model Studio workspace: Get the [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:

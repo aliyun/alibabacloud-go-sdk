@@ -26,32 +26,45 @@ type iSearchNewsRequest interface {
 }
 
 type SearchNewsRequest struct {
+	// The unique ID of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/3027170.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Specifies whether to filter out results with empty content.
+	//
 	// example:
 	//
 	// false
 	FilterNotNull *bool `json:"FilterNotNull,omitempty" xml:"FilterNotNull,omitempty"`
+	// Specifies whether to include the full text of the article.
+	//
 	// example:
 	//
 	// false
 	IncludeContent *bool `json:"IncludeContent,omitempty" xml:"IncludeContent,omitempty"`
+	// The page number. The default value is 1.
+	//
 	// example:
 	//
-	// 81
+	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of records to return on each page. The default value is 10.
+	//
 	// example:
 	//
-	// 35
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search query.
+	//
 	// example:
 	//
 	// 检索Query
-	Query         *string   `json:"Query,omitempty" xml:"Query,omitempty"`
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// A list of search sources.
 	SearchSources []*string `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
 }
 

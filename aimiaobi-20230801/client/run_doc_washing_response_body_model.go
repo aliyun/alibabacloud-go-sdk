@@ -20,11 +20,15 @@ type iRunDocWashingResponseBody interface {
 }
 
 type RunDocWashingResponseBody struct {
+	// Is the response package finished?
+	//
 	// example:
 	//
 	// false
-	End     *bool                             `json:"End,omitempty" xml:"End,omitempty"`
-	Header  *RunDocWashingResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	End *bool `json:"End,omitempty" xml:"End,omitempty"`
+	// Response header
+	Header *RunDocWashingResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// Response body
 	Payload *RunDocWashingResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -93,23 +97,38 @@ func (s *RunDocWashingResponseBody) Validate() error {
 }
 
 type RunDocWashingResponseBodyHeader struct {
+	// Event type
+	//
 	// example:
 	//
 	// task-finished
-	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Event description
+	//
+	// example:
+	//
+	// 模型生成事件
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Session ID
+	//
 	// example:
 	//
 	// 20247a52-23e2-46fb-943d-309cdee2bc6d
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Full link ID
+	//
 	// example:
 	//
 	// 2150451a17191950923411783e2927
@@ -183,8 +202,10 @@ func (s *RunDocWashingResponseBodyHeader) Validate() error {
 }
 
 type RunDocWashingResponseBodyPayload struct {
+	// Output
 	Output *RunDocWashingResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	Usage  *RunDocWashingResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// Token consumption
+	Usage *RunDocWashingResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
 func (s RunDocWashingResponseBodyPayload) String() string {
@@ -228,6 +249,11 @@ func (s *RunDocWashingResponseBodyPayload) Validate() error {
 }
 
 type RunDocWashingResponseBodyPayloadOutput struct {
+	// Output content
+	//
+	// example:
+	//
+	// 文本生成结果
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
@@ -253,14 +279,20 @@ func (s *RunDocWashingResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunDocWashingResponseBodyPayloadUsage struct {
+	// Number of input tokens
+	//
 	// example:
 	//
 	// 100
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// Number of output tokens
+	//
 	// example:
 	//
 	// 100
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// Total number of tokens
+	//
 	// example:
 	//
 	// 200

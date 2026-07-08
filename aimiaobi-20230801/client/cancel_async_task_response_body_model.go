@@ -24,26 +24,38 @@ type iCancelAsyncTaskResponseBody interface {
 }
 
 type CancelAsyncTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
-	// 200
+	// successful
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business-related data
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// A description of the error.
+	//
 	// example:
 	//
-	// Success
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// FB698445-61DA-5361-BF73-1C5F1157E888
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates that the request was successful. A value of false indicates that the request failed.
+	//
 	// example:
 	//
 	// True

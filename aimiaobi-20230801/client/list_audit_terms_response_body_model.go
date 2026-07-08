@@ -30,23 +30,34 @@ type iListAuditTermsResponseBody interface {
 }
 
 type ListAuditTermsResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data []*ListAuditTermsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Maximum number of results returned
+	//
 	// example:
 	//
 	// 77
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Token for the next page
+	//
 	// example:
 	//
 	// x\\"x\\"x
@@ -57,10 +68,14 @@ type ListAuditTermsResponseBody struct {
 	//
 	// F2F366D6-E9FE-1006-BB70-2C650896AAB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 58
@@ -170,23 +185,33 @@ func (s *ListAuditTermsResponseBody) Validate() error {
 }
 
 type ListAuditTermsResponseBodyData struct {
+	// Exception statements
 	ExceptionWord []*string `json:"ExceptionWord,omitempty" xml:"ExceptionWord,omitempty" type:"Repeated"`
+	// Task primary key ID
+	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Keyword
+	//
 	// example:
 	//
 	// 龘
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// Suggested word
+	//
 	// example:
 	//
 	// 龘(dá)
 	SuggestWord *string `json:"SuggestWord,omitempty" xml:"SuggestWord,omitempty"`
+	// Audit basis
+	//
 	// example:
 	//
 	// 龙行龘龘出自四库本《玉篇》23龙部第8字，文字释义为群龙腾飞的样子，昂扬而热烈。
 	TermsDesc *string `json:"TermsDesc,omitempty" xml:"TermsDesc,omitempty"`
+	// Dictionary name
 	TermsName *string `json:"TermsName,omitempty" xml:"TermsName,omitempty"`
 }
 

@@ -20,20 +20,28 @@ type iSaveCustomTextRequest interface {
 }
 
 type SaveCustomTextRequest struct {
+	// The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// 商品code
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The content.
+	//
 	// example:
 	//
 	// 内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The title.
+	//
 	// example:
 	//
 	// 标题

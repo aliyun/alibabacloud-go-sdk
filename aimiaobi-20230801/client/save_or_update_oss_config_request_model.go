@@ -18,14 +18,20 @@ type iSaveOrUpdateOssConfigRequest interface {
 }
 
 type SaveOrUpdateOssConfigRequest struct {
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// xxx
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The endpoint of OSS.
+	//
 	// example:
 	//
 	// oss-cn-shanghai.aliyuncs.com
 	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	// The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+	//
 	// This parameter is required.
 	//
 	// example:

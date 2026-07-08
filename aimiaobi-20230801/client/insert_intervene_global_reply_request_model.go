@@ -16,12 +16,15 @@ type iInsertInterveneGlobalReplyRequest interface {
 }
 
 type InsertInterveneGlobalReplyRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxx_efm
-	AgentKey        *string                                             `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// List of reply content
 	ReplyMessagList []*InsertInterveneGlobalReplyRequestReplyMessagList `json:"ReplyMessagList,omitempty" xml:"ReplyMessagList,omitempty" type:"Repeated"`
 }
 
@@ -65,7 +68,17 @@ func (s *InsertInterveneGlobalReplyRequest) Validate() error {
 }
 
 type InsertInterveneGlobalReplyRequestReplyMessagList struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Reply content
+	//
+	// example:
+	//
+	// 抱歉，问题我无法回答
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Reply type
+	//
+	// example:
+	//
+	// 全局回复的类型
 	ReplyType *string `json:"ReplyType,omitempty" xml:"ReplyType,omitempty"`
 }
 

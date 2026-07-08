@@ -24,23 +24,34 @@ type iGenerateUploadConfigResponseBody interface {
 }
 
 type GenerateUploadConfigResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
-	// NoData
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	// successful
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
 	Data *GenerateUploadConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// success
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,14 +130,37 @@ func (s *GenerateUploadConfigResponseBody) Validate() error {
 }
 
 type GenerateUploadConfigResponseBodyData struct {
+	// The unique identifier of the file. You can use this value as a URL for AI Writing Assistant.
+	//
 	// example:
 	//
 	// oss://default/oss-bucket-name/aimiaobi/2021/07/01/1625126400000/1.docx
-	FileKey   *string            `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// The credentials for uploading the file to OSS.
+	//
+	// ```json
+	//
+	// {
+	//
+	//   "OSSAccessKeyId": "xxx",
+	//
+	//   "Signature": "xxx+xxx=",
+	//
+	//   "MaxSize": 31457280,
+	//
+	//   "key": "aimiaobi/dataset/2_2/xx.txt",
+	//
+	//   "policy": "xxx=="
+	//
+	// }
+	//
+	// ```
 	FormDatas map[string]*string `json:"FormDatas,omitempty" xml:"FormDatas,omitempty"`
+	// The address for uploading the file to OSS. This is a dedicated OSS domain name for AI Writing Assistant. The value is fixed to \\`https\\://aimiaobi-service-prod.oss-cn-beijing.aliyuncs.com/\\`.
+	//
 	// example:
 	//
-	// https://bucket-name.oss-cn-hangzhou.aliyuncs.com
+	// https://aimiaobi-service-prod.oss-cn-beijing.aliyuncs.com/
 	PostUrl *string `json:"PostUrl,omitempty" xml:"PostUrl,omitempty"`
 }
 

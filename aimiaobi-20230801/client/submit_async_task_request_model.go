@@ -22,29 +22,39 @@ type iSubmitAsyncTaskRequest interface {
 }
 
 type SubmitAsyncTaskRequest struct {
+	// The unique ID of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2daaa2e0c209xb26acb97009ea77bd4b_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// For details on the task definition, see the task definition table.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MaterialDocumentUpload
 	TaskCode *string `json:"TaskCode,omitempty" xml:"TaskCode,omitempty"`
+	// The time to run the task. By default, the task runs immediately. Format: YYYY-MM-DD HH:mm:ss
+	//
 	// example:
 	//
 	// 2023-10-14 14:30:00
 	TaskExecuteTime *string `json:"TaskExecuteTime,omitempty" xml:"TaskExecuteTime,omitempty"`
+	// The name of the task.
+	//
 	// example:
 	//
 	// 任务名称
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The task parameters.
+	//
 	// example:
 	//
-	// 任务提交参数
+	// {"fileUrl":"https://www.example.com/aaa.doc","fileName":"文件名称","shareAttr":1}
 	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
 }
 

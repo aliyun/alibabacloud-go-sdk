@@ -20,22 +20,40 @@ type iSaveDataSourceOrderConfigRequest interface {
 }
 
 type SaveDataSourceOrderConfigRequest struct {
+	// The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c160c841c8e54295bf2f441432785944_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The generation technology for Miaosou. This parameter is valid only when \\`ProductCode\\` is set to \\`miaosou\\`.
+	//
+	// Valid values:
+	//
+	// - copilotPrecise
+	//
+	// - copilotReference
+	//
 	// example:
 	//
 	// copilotReference
 	GenerateTechnology *string `json:"GenerateTechnology,omitempty" xml:"GenerateTechnology,omitempty"`
+	// The product type. Valid values:
+	//
+	// - miaobi
+	//
+	// - miaosou
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// miaobi
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The data source configuration.
+	//
 	// This parameter is required.
 	UserConfigDataSourceList []*SaveDataSourceOrderConfigRequestUserConfigDataSourceList `json:"UserConfigDataSourceList,omitempty" xml:"UserConfigDataSourceList,omitempty" type:"Repeated"`
 }
@@ -98,20 +116,32 @@ func (s *SaveDataSourceOrderConfigRequest) Validate() error {
 }
 
 type SaveDataSourceOrderConfigRequestUserConfigDataSourceList struct {
+	// Code description
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// QuarkCommonNews
-	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Enable *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Specifies whether to enable the data source.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// 夸克通用搜索
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Quantity
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
+	// The type of the data source.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,16 +18,22 @@ type iGetCustomTextRequest interface {
 }
 
 type GetCustomTextRequest struct {
+	// Workspace unique identifier: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Product code
+	//
 	// example:
 	//
 	// 商品code
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// Primary key ID
+	//
 	// This parameter is required.
 	//
 	// example:

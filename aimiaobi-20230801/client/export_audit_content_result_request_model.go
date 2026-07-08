@@ -16,10 +16,14 @@ type iExportAuditContentResultRequest interface {
 }
 
 type ExportAuditContentResultRequest struct {
+  // The ID of the task.
+  // 
   // example:
   // 
   // 7AA2AE16-D873-5C5F-9708-15396C382EB1
   TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+  // [The ID of the workspace.](https://help.aliyun.com/document_detail/2782167.html)
+  // 
   // example:
   // 
   // xxxx

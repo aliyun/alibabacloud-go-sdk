@@ -40,44 +40,86 @@ type iSaveMaterialDocumentShrinkRequest interface {
 }
 
 type SaveMaterialDocumentShrinkRequest struct {
+	// Unique identifier for the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c160c841c8e54295bf2f441432785944_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Author   *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// Author
+	//
+	// example:
+	//
+	// 作者名称
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// Is the material saved to both the private library and the shared library?
+	//
 	// example:
 	//
 	// false
-	BothSavePrivateAndShare *bool   `json:"BothSavePrivateAndShare,omitempty" xml:"BothSavePrivateAndShare,omitempty"`
-	DocKeywordsShrink       *string `json:"DocKeywords,omitempty" xml:"DocKeywords,omitempty"`
+	BothSavePrivateAndShare *bool `json:"BothSavePrivateAndShare,omitempty" xml:"BothSavePrivateAndShare,omitempty"`
+	// Document tags used for classification, etc.
+	DocKeywordsShrink *string `json:"DocKeywords,omitempty" xml:"DocKeywords,omitempty"`
+	// Document type (html: web page, plainText: plain text, image: image, pdf: pdf, word: word, excel: excel, csv: csv, jsonLine: jsonLine)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// excel
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// URL uploaded by external customers, used only for record keeping
+	//
 	// example:
 	//
 	// http://xxxxx/xxx
 	ExternalUrl *string `json:"ExternalUrl,omitempty" xml:"ExternalUrl,omitempty"`
+	// Formatted content
+	//
+	// example:
+	//
+	// 网页内容
 	HtmlContent *string `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
+	// Publication time, format: yyyy-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2023-04-11 06:14:07
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Sharing attribute: 0: private, 1: shared within the workspace
+	//
 	// example:
 	//
 	// 1
 	ShareAttr *int32 `json:"ShareAttr,omitempty" xml:"ShareAttr,omitempty"`
+	// Document source (UserUpload: User Upload, IntellijSearch: Intelligent Search, HotViewPoint: Hot Viewpoint)
+	//
 	// example:
 	//
 	// IntellijSearch
-	SrcFrom     *string `json:"SrcFrom,omitempty" xml:"SrcFrom,omitempty"`
-	Summary     *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	SrcFrom *string `json:"SrcFrom,omitempty" xml:"SrcFrom,omitempty"`
+	// Summary
+	//
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Parsed text content, empty for images
+	//
+	// example:
+	//
+	// 文本内容
 	TextContent *string `json:"TextContent,omitempty" xml:"TextContent,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Document title
+	//
+	// example:
+	//
+	// 新闻标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// URL of the material
+	//
 	// example:
 	//
 	// http://xxxxx/xxx

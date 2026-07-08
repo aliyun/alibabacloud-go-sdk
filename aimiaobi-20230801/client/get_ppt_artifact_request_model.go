@@ -22,10 +22,14 @@ type GetPptArtifactRequest struct {
 	//
 	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// The ID of the PPT artifact.
+	//
 	// example:
 	//
 	// 5232136
 	PptArtifactId *int32 `json:"PptArtifactId,omitempty" xml:"PptArtifactId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// llm-az2gglxxxx

@@ -16,12 +16,16 @@ type iConfirmAndPostProcessAuditNoteRequest interface {
 }
 
 type ConfirmAndPostProcessAuditNoteRequest struct {
+	// The TaskId obtained from the SubmitAuditNote interface. This is the unique identifier for the custom rule library task index. Store it securely when using it.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxx_Default_1241541251241
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Alibaba Cloud Model Studio workspace unique identifier: Get [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:

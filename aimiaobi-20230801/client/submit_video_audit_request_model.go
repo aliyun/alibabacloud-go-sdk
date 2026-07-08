@@ -22,30 +22,32 @@ type iSubmitVideoAuditRequest interface {
 }
 
 type SubmitVideoAuditRequest struct {
-	// 扩展参数JSON字符串
+	// Extension parameters
 	//
 	// example:
 	//
 	// {}
 	Ext *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// OSS文件Key，与url参数二选一
+	// Unique file identity within the Miaobi system (choose either FileKey or URL)
 	//
 	// example:
 	//
-	// video/test.mp4
+	// oss://default/xxx/video/test.mp4
 	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
-	// 抽帧间隔时间（秒）
+	// Snapshot interval
 	//
 	// example:
 	//
 	// 1.0
 	SnapshotInterval *float64 `json:"SnapshotInterval,omitempty" xml:"SnapshotInterval,omitempty"`
-	// 视频URL地址，与fileKey参数二选一
+	// Video URL (choose either FileKey or URL)
 	//
 	// example:
 	//
 	// https://example.com/video.mp4
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Workspace ID
+	//
 	// This parameter is required.
 	//
 	// example:

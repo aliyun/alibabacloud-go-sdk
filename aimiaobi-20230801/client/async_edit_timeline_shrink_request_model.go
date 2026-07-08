@@ -20,15 +20,26 @@ type iAsyncEditTimelineShrinkRequest interface {
 }
 
 type AsyncEditTimelineShrinkRequest struct {
+	// Enable automatic clip adjustment
+	//
+	// example:
+	//
+	// false
 	AutoClips *bool `json:"AutoClips,omitempty" xml:"AutoClips,omitempty"`
+	// Unique identifier of the task
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0dbf1055f8a2475d99904c3b76a0ffba
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Array structure of video editing timelines
+	//
 	// This parameter is required.
 	TimelinesShrink *string `json:"Timelines,omitempty" xml:"Timelines,omitempty"`
+	// [Model Studio workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:

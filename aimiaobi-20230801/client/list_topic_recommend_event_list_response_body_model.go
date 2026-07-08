@@ -30,35 +30,52 @@ type iListTopicRecommendEventListResponseBody interface {
 }
 
 type ListTopicRecommendEventListResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
-	Code *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of hot spot events
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Maximum number of records returned
+	//
 	// example:
 	//
 	// 71
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Error description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Next page token
+	//
 	// example:
 	//
 	// x\\"x\\"x
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request was successful: true for success, false for failure
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 60

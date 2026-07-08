@@ -24,23 +24,34 @@ type iListVersionsResponseBody interface {
 }
 
 type ListVersionsResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// DataNotExists
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data []*ListVersionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// 数据不存在
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates success: true for success, false for failure
+	//
 	// example:
 	//
 	// true
@@ -123,47 +134,74 @@ func (s *ListVersionsResponseBody) Validate() error {
 }
 
 type ListVersionsResponseBodyData struct {
+	// Concurrency
+	//
 	// example:
 	//
 	// 43
 	ConcurrentCount *int32 `json:"ConcurrentCount,omitempty" xml:"ConcurrentCount,omitempty"`
+	// Service expiration time
+	//
 	// example:
 	//
 	// 2023-04-23 02:00:34
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Number of instances
+	//
 	// example:
 	//
 	// 55
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// ga-bp12pismsw4v3tzhf62p1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Order ID
+	//
 	// example:
 	//
 	// 7
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Version type (TRIAL: trial edition, STANDARD: Standard Edition, CUSTOMIZE: custom edition)
+	//
 	// example:
 	//
 	// CUSTOMIZE
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// Trial edition quota
+	//
 	// example:
 	//
 	// 13
 	Quota *int32 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// Service start time
+	//
 	// example:
 	//
 	// 2023-05-27 04:11:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Trial edition usage count
+	//
 	// example:
 	//
 	// 65
-	UseQuota      *int32  `json:"UseQuota,omitempty" xml:"UseQuota,omitempty"`
+	UseQuota *int32 `json:"UseQuota,omitempty" xml:"UseQuota,omitempty"`
+	// Version details
+	//
+	// example:
+	//
+	// 标准版-公共并发：1并发
 	VersionDetail *string `json:"VersionDetail,omitempty" xml:"VersionDetail,omitempty"`
+	// Version
+	//
 	// example:
 	//
 	// 试用版
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// Validity status: 0 indicates active, 1 indicates expired (go to the renewal page), and 2 indicates unavailable (go to the purchase page)
+	//
 	// example:
 	//
 	// 87

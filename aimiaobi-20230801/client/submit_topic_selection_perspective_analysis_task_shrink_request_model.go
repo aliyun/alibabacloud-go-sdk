@@ -20,17 +20,24 @@ type iSubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest interface {
 }
 
 type SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest struct {
+	// The unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
-	AgentKey        *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// The list of documents to be analyzed. (Provide at least one of documents or topic)
 	DocumentsShrink *string `json:"Documents,omitempty" xml:"Documents,omitempty"`
+	// The topic selection perspective tasks to be analyzed. By default, this parameter is empty, which means all tasks are analyzed. (TopicSummary: Topic event summary, HotViewPoints: Hot topic selection perspectives, TimedViewPoints: Timeliness topic selection perspectives, WebReviewPoints: Online review topic selection perspectives, FreshViewPoints: Novel topic selection perspectives)
+	//
 	// example:
 	//
 	// TimedViewPoints
 	PerspectiveTypesShrink *string `json:"PerspectiveTypes,omitempty" xml:"PerspectiveTypes,omitempty"`
+	// The name of the topic to be analyzed. (Provide at least one of documents or topic)
+	//
 	// example:
 	//
 	// 待分析的主题名（documents与topic二者至少传一个）

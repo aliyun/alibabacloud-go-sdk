@@ -26,35 +26,35 @@ type iRunAiHelperWritingResponseBody interface {
 }
 
 type RunAiHelperWritingResponseBody struct {
-	// 业务处理结果状态码
+	// The business status code.
 	//
 	// example:
 	//
 	// successful
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 流式响应的头部信息，包含事件类型、状态码等元数据
+	// The Server-Sent Events (SSE) response header.
 	Header *RunAiHelperWritingResponseBodyHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
-	// HTTP响应状态码
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 业务处理结果描述信息
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 包含写作输出内容和Token使用量统计
+	// The response payload.
 	Payload *RunAiHelperWritingResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
-	// 本次API请求的唯一标识
+	// The request ID.
 	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 请求是否处理成功
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -148,43 +148,43 @@ func (s *RunAiHelperWritingResponseBody) Validate() error {
 }
 
 type RunAiHelperWritingResponseBodyHeader struct {
-	// 请求错误时的错误码
+	// The error code.
 	//
 	// example:
 	//
 	// InvalidParameter
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// 请求错误时的详细错误信息
+	// The error message.
 	//
 	// example:
 	//
 	// 参数错误
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// SSE事件类型，如：result-generated(生成结果)、task-finished(任务完成)
+	// The event type.
 	//
 	// example:
 	//
 	// result-generated
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// 当前写作会话的唯一标识
+	// The session ID.
 	//
 	// example:
 	//
 	// session-xxxxx
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// HTTP状态码
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// 写作任务的唯一标识
+	// The task ID.
 	//
 	// example:
 	//
 	// task-xxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// 用于问题排查的链路追踪标识
+	// Trace ID
 	//
 	// example:
 	//
@@ -268,9 +268,9 @@ func (s *RunAiHelperWritingResponseBodyHeader) Validate() error {
 }
 
 type RunAiHelperWritingResponseBodyPayload struct {
-	// AI生成的写作内容
+	// The output content.
 	Output *RunAiHelperWritingResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
-	// 本次请求的Token消耗统计
+	// The token usage.
 	Usage *RunAiHelperWritingResponseBodyPayloadUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
@@ -315,13 +315,13 @@ func (s *RunAiHelperWritingResponseBodyPayload) Validate() error {
 }
 
 type RunAiHelperWritingResponseBodyPayloadOutput struct {
-	// AI生成的文章内容，流式返回时为增量文本
+	// The generated text.
 	//
 	// example:
 	//
 	// 人工智能正在深刻改变我们的生活...
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// 返回的写作参数键值对
+	// The writing parameters for the AI-assisted writing.
 	//
 	// example:
 	//
@@ -360,19 +360,19 @@ func (s *RunAiHelperWritingResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunAiHelperWritingResponseBodyPayloadUsage struct {
-	// 输入内容消耗的Token数量
+	// The number of input tokens.
 	//
 	// example:
 	//
 	// 256
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
-	// 生成内容消耗的Token数量
+	// The number of output tokens.
 	//
 	// example:
 	//
 	// 1024
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
-	// 输入和输出Token的总和
+	// The total number of tokens.
 	//
 	// example:
 	//

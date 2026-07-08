@@ -18,9 +18,20 @@ type iTopicSelection interface {
 }
 
 type TopicSelection struct {
+	// A list of topic outlines.
 	Outlines []*TopicSelectionOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
-	Point    *string                   `json:"Point,omitempty" xml:"Point,omitempty"`
-	Summary  *string                   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The perspective of the topic.
+	//
+	// example:
+	//
+	// 选题视角
+	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// The summary of the topic.
+	//
+	// example:
+	//
+	// 摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
 func (s TopicSelection) String() string {
@@ -72,7 +83,17 @@ func (s *TopicSelection) Validate() error {
 }
 
 type TopicSelectionOutlines struct {
+	// The topic outline.
+	//
+	// example:
+	//
+	// 大纲
 	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// The summary of the outline.
+	//
+	// example:
+	//
+	// 摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 

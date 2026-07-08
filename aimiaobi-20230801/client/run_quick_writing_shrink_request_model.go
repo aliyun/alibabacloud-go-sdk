@@ -22,14 +22,30 @@ type iRunQuickWritingShrinkRequest interface {
 }
 
 type RunQuickWritingShrinkRequest struct {
+	// Referenced articles
+	//
+	// example:
+	//
+	// 集合
 	ArticlesShrink *string `json:"Articles,omitempty" xml:"Articles,omitempty"`
+	// Other writing parameters. Choose either prompt or writingParams.
+	//
 	// This parameter is required.
-	Prompt              *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	//
+	// example:
+	//
+	// 请按英文输出
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Use the specified search source list.
 	SearchSourcesShrink *string `json:"SearchSources,omitempty" xml:"SearchSources,omitempty"`
+	// Task ID. Reuse the same task ID for multi-turn conversations.
+	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+	//
 	// This parameter is required.
 	//
 	// example:

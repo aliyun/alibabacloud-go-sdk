@@ -18,16 +18,32 @@ type iGetDataSourceOrderConfigRequest interface {
 }
 
 type GetDataSourceOrderConfigRequest struct {
+	// Unique identifier for the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// d9a1f6146a37446495d9985c2e7b267e_p_outbound_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// When productCode=miaosou, this corresponds to Miaosou: generation technology. Possible values:
+	//
+	// Valid values:
+	//
+	// - copilotPrecise
+	//
+	// - copilotReference
+	//
 	// example:
 	//
 	// copilotPrecise
 	GenerateTechnology *string `json:"GenerateTechnology,omitempty" xml:"GenerateTechnology,omitempty"`
+	// Configuration type. Possible values:
+	//
+	// - miaobi
+	//
+	// - miaosou
+	//
 	// This parameter is required.
 	//
 	// example:

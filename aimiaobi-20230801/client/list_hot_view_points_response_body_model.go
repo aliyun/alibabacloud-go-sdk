@@ -30,35 +30,52 @@ type iListHotViewPointsResponseBody interface {
 }
 
 type ListHotViewPointsResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business Data
 	Data []*ListHotViewPointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Maximum number of return results
+	//
 	// example:
 	//
 	// 67
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Fault description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Token for the next page
+	//
 	// example:
 	//
 	// 下一页的token
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request UUID
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded: true for success, false for failure
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count
+	//
 	// example:
 	//
 	// 70
@@ -168,19 +185,27 @@ func (s *ListHotViewPointsResponseBody) Validate() error {
 }
 
 type ListHotViewPointsResponseBodyData struct {
+	// Current viewpoint
+	//
 	// example:
 	//
 	// 当前观点
 	Attitude *string `json:"Attitude,omitempty" xml:"Attitude,omitempty"`
+	// Attitude Type
+	//
 	// example:
 	//
 	// 观点类型
-	AttitudeType *string                                  `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
-	News         []*ListHotViewPointsResponseBodyDataNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	AttitudeType *string `json:"AttitudeType,omitempty" xml:"AttitudeType,omitempty"`
+	// List of related news articles
+	News []*ListHotViewPointsResponseBodyDataNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
+	// Current viewpoint ratio
+	//
 	// example:
 	//
 	// 当前观点占比
-	Ratio      *string                                        `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// List of topic viewpoints
 	ViewPoints []*ListHotViewPointsResponseBodyDataViewPoints `json:"ViewPoints,omitempty" xml:"ViewPoints,omitempty" type:"Repeated"`
 }
 
@@ -260,50 +285,74 @@ func (s *ListHotViewPointsResponseBodyData) Validate() error {
 }
 
 type ListHotViewPointsResponseBodyDataNews struct {
+	// Author
+	//
 	// example:
 	//
 	// 作者
 	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// Content
+	//
 	// example:
 	//
 	// 文章内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// External UUID of the article
+	//
 	// example:
 	//
 	// xxxxx
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// Unique ID of the article
+	//
 	// example:
 	//
 	// 123456
 	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// URLs of article images
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.png
 	ImageUrls []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
+	// Published At. Format: YYYY-MM-dd HH:mm:ss
+	//
 	// example:
 	//
 	// 2024-01-22 10:29:00
 	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// 新浪
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// summary
+	//
 	// example:
 	//
 	// 文章摘要
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// tags
+	//
 	// example:
 	//
 	// ["标签1","标签2"]
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// title
+	//
 	// example:
 	//
 	// 文章标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// topic
+	//
 	// example:
 	//
 	// 文章主题
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// Article URL
+	//
 	// example:
 	//
 	// https://www.example.com/aaa.docx
@@ -431,11 +480,16 @@ func (s *ListHotViewPointsResponseBodyDataNews) Validate() error {
 }
 
 type ListHotViewPointsResponseBodyDataViewPoints struct {
+	// Outline
 	Outlines []*ListHotViewPointsResponseBodyDataViewPointsOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	// Generated point
+	//
 	// example:
 	//
 	// 视角
 	Point *string `json:"Point,omitempty" xml:"Point,omitempty"`
+	// Summary
+	//
 	// example:
 	//
 	// 摘要
@@ -491,10 +545,14 @@ func (s *ListHotViewPointsResponseBodyDataViewPoints) Validate() error {
 }
 
 type ListHotViewPointsResponseBodyDataViewPointsOutlines struct {
+	// Outline
+	//
 	// example:
 	//
 	// 大纲
 	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	// Outline summary
+	//
 	// example:
 	//
 	// 大纲摘要

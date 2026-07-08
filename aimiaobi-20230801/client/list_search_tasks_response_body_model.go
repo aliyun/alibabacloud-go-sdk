@@ -30,35 +30,52 @@ type iListSearchTasksResponseBody interface {
 }
 
 type ListSearchTasksResponseBody struct {
+	// Status code
+	//
 	// example:
 	//
 	// NoData
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Business data
 	Data []*ListSearchTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Fault description
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Current page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records per page
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Unique request identifier
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. True for success, false for failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 100
@@ -168,26 +185,38 @@ func (s *ListSearchTasksResponseBody) Validate() error {
 }
 
 type ListSearchTasksResponseBodyData struct {
+	// Creation time
+	//
 	// example:
 	//
 	// 2024-11-25 11:40:50
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Task type
+	//
 	// example:
 	//
 	// 24
 	DialogueType *int32 `json:"DialogueType,omitempty" xml:"DialogueType,omitempty"`
+	// Unique task identifier
+	//
 	// example:
 	//
 	// xxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task name
+	//
 	// example:
 	//
 	// xxx
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// Modification time
+	//
 	// example:
 	//
 	// 2024-11-25 11:40:50
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Creator name
+	//
 	// example:
 	//
 	// xxxx

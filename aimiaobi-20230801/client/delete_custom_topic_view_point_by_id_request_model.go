@@ -16,12 +16,16 @@ type iDeleteCustomTopicViewPointByIdRequest interface {
 }
 
 type DeleteCustomTopicViewPointByIdRequest struct {
+	// Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxxx_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// Custom viewpoint ID
+	//
 	// This parameter is required.
 	//
 	// example:

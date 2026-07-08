@@ -24,23 +24,34 @@ type iGetCustomSourceTopicAnalysisTaskResponseBody interface {
 }
 
 type GetCustomSourceTopicAnalysisTaskResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// NoData
-	Code *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *GetCustomSourceTopicAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique ID of the request.
+	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. \\`true\\` indicates success and \\`false\\` indicates failure.
+	//
 	// example:
 	//
 	// true
@@ -119,28 +130,47 @@ func (s *GetCustomSourceTopicAnalysisTaskResponseBody) Validate() error {
 }
 
 type GetCustomSourceTopicAnalysisTaskResponseBodyData struct {
+	// The number of documents after clustering.
+	//
 	// example:
 	//
 	// 5
-	ClusterCount   *int32                                                            `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
+	ClusterCount *int32 `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
+	// A list of news aggregation results.
 	ClusterResults []*GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults `json:"ClusterResults,omitempty" xml:"ClusterResults,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// 错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The maximum number of news articles in a cluster after aggregation.
+	//
 	// example:
 	//
 	// 8
 	MaxClusteredTopicNewsSize *int32 `json:"MaxClusteredTopicNewsSize,omitempty" xml:"MaxClusteredTopicNewsSize,omitempty"`
+	// The number of news articles after the file is parsed.
+	//
 	// example:
 	//
 	// 10
 	ParsedNewsSize *int32 `json:"ParsedNewsSize,omitempty" xml:"ParsedNewsSize,omitempty"`
+	// The status of the task. Valid values: \\`PENDING\\`, \\`RUNNING\\`, \\`SUCCESSED\\`, \\`FAILED\\`, and \\`CANCELED\\`.
+	//
 	// example:
 	//
 	// SUCCESSED
-	Status *string           `json:"Status,omitempty" xml:"Status,omitempty"`
-	Rt     *int64            `json:"rt,omitempty" xml:"rt,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total runtime in milliseconds.
+	//
+	// example:
+	//
+	// 1000
+	Rt *int64 `json:"rt,omitempty" xml:"rt,omitempty"`
+	// The token usage. The possible billable items are:
+	//
+	// quanmiaoMax, quanmiaoPlus
 	Usages map[string]*int64 `json:"usages,omitempty" xml:"usages,omitempty"`
 }
 
@@ -238,8 +268,14 @@ func (s *GetCustomSourceTopicAnalysisTaskResponseBodyData) Validate() error {
 }
 
 type GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults struct {
+	// A list of aggregated news articles. The body text is not included.
 	ClusterNews []*GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews `json:"ClusterNews,omitempty" xml:"ClusterNews,omitempty" type:"Repeated"`
-	Topic       *string                                                                      `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The name of the aggregated topic.
+	//
+	// example:
+	//
+	// 话题名称
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults) String() string {
@@ -282,7 +318,14 @@ func (s *GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults) Validat
 }
 
 type GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews struct {
+	// The title of the news article.
+	//
+	// example:
+	//
+	// 新闻标题
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the news article.
+	//
 	// example:
 	//
 	// http://www.example.com/xxx.html
