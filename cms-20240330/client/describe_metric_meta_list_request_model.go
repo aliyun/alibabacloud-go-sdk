@@ -32,7 +32,7 @@ type DescribeMetricMetaListRequest struct {
 	//
 	// 实例理论
 	Keywords *string `json:"keywords,omitempty" xml:"keywords,omitempty"`
-	// Filters resources by label. The following labels are supported:
+	// Filters resources by label. The following labels are available:
 	//
 	// - metricCategory: the metric category description.
 	//
@@ -50,7 +50,7 @@ type DescribeMetricMetaListRequest struct {
 	//
 	// - CMS: CloudMonitor Basic monitoring metrics.
 	//
-	// - PROM_BASIC: Managed Service for Prometheus monitoring metrics.
+	// - PROM_BASIC: Prometheus CloudMonitor basic monitoring metrics.
 	//
 	// example:
 	//

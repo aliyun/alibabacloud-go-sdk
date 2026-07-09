@@ -16,7 +16,7 @@ type iGetDeliveryTaskResponseBody interface {
 }
 
 type GetDeliveryTaskResponseBody struct {
-	// The details of the delivery task.
+	// The delivery task details.
 	DeliveryTask *GetDeliveryTaskResponseBodyDeliveryTask `json:"deliveryTask,omitempty" xml:"deliveryTask,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *GetDeliveryTaskResponseBody) Validate() error {
 }
 
 type GetDeliveryTaskResponseBodyDeliveryTask struct {
-	// The time when the task was created.
+	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -100,9 +100,9 @@ type GetDeliveryTaskResponseBodyDeliveryTask struct {
 	//
 	// example:
 	//
-	// Pending2Running
+	// Enable
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The resource tags.
+	// The resource group tags.
 	Tags []*GetDeliveryTaskResponseBodyDeliveryTaskTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The task description.
 	//
@@ -122,7 +122,7 @@ type GetDeliveryTaskResponseBodyDeliveryTask struct {
 	//
 	// test-task
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// The time when the task was last updated.
+	// The update time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -294,7 +294,7 @@ func (s *GetDeliveryTaskResponseBodyDeliveryTask) Validate() error {
 }
 
 type GetDeliveryTaskResponseBodyDeliveryTaskExtraInfo struct {
-	// The list of EventBridge tasks.
+	// The EventBridge task list.
 	TaskNameList []*string `json:"taskNameList,omitempty" xml:"taskNameList,omitempty" type:"Repeated"`
 }
 
@@ -320,9 +320,9 @@ func (s *GetDeliveryTaskResponseBodyDeliveryTaskExtraInfo) Validate() error {
 }
 
 type GetDeliveryTaskResponseBodyDeliveryTaskSinkList struct {
-	// The detailed configuration of the delivery target. The meaning of key/value pairs varies depending on the sinkType. For more information, see [CreateDeliveryTask](~~CreateDeliveryTask~~).
+	// The detailed configuration of the delivery target. The meanings of key/value pairs vary depending on the sinkType. For more information, see CreateDeliveryTask.
 	SinkConfigs map[string]*string `json:"sinkConfigs,omitempty" xml:"sinkConfigs,omitempty"`
-	// The type of the delivery target.
+	// The delivery target type.
 	//
 	// example:
 	//
@@ -361,13 +361,13 @@ func (s *GetDeliveryTaskResponseBodyDeliveryTaskSinkList) Validate() error {
 }
 
 type GetDeliveryTaskResponseBodyDeliveryTaskTags struct {
-	// The tag key.
+	// The tag key of the resource group.
 	//
 	// example:
 	//
 	// sourcetype
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The tag value.
+	// The tag value of the resource group.
 	//
 	// example:
 	//

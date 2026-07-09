@@ -117,7 +117,7 @@ func (s *ListDeliveryTasksResponseBody) Validate() error {
 }
 
 type ListDeliveryTasksResponseBodyDeliveryTasks struct {
-	// The time when the task was created.
+	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -177,7 +177,7 @@ type ListDeliveryTasksResponseBodyDeliveryTasks struct {
 	//
 	// test-task
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// The time when the task was last updated.
+	// The update time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -375,7 +375,7 @@ func (s *ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo) Validate() error {
 }
 
 type ListDeliveryTasksResponseBodyDeliveryTasksSinkList struct {
-	// The detailed configuration of the delivery target. The meanings of the key/value pairs vary depending on the sinkType.
+	// The detailed configuration of the delivery target. The meanings of key/value pairs vary depending on the sinkType.
 	SinkConfigs map[string]*string `json:"sinkConfigs,omitempty" xml:"sinkConfigs,omitempty"`
 	// The type of the delivery target.
 	//

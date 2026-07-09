@@ -1939,6 +1939,76 @@ func (client *Client) CreateServiceObservability(workspace *string, _type *strin
 
 // Summary:
 //
+// Creates a service-linked entry for associating configurations with the application monitoring service, such as log association.
+//
+// @param request - CreateServiceRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceRecordResponse
+func (client *Client) CreateServiceRecordWithOptions(workspace *string, serviceId *string, request *CreateServiceRecordRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RecordContent) {
+		body["recordContent"] = request.RecordContent
+	}
+
+	if !dara.IsNil(request.RecordType) {
+		body["recordType"] = request.RecordType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateServiceRecord"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/service/" + dara.PercentEncode(dara.StringValue(serviceId)) + "/record"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateServiceRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a service-linked entry for associating configurations with the application monitoring service, such as log association.
+//
+// @param request - CreateServiceRecordRequest
+//
+// @return CreateServiceRecordResponse
+func (client *Client) CreateServiceRecord(workspace *string, serviceId *string, request *CreateServiceRecordRequest) (_result *CreateServiceRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateServiceRecordResponse{}
+	_body, _err := client.CreateServiceRecordWithOptions(workspace, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // To share a console page or embed it into a third-party system without requiring a password, you can call the CreateTicket operation to generate a ticket. You can then use the ticket to create a password-free link.
 //
 // @param request - CreateTicketRequest
@@ -3400,6 +3470,80 @@ func (client *Client) DeleteService(workspace *string, serviceId *string, reques
 	headers := make(map[string]*string)
 	_result = &DeleteServiceResponse{}
 	_body, _err := client.DeleteServiceWithOptions(workspace, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a service association entry.
+//
+// Description:
+//
+// Deletes a created service association entry.
+//
+// @param request - DeleteServiceRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceRecordResponse
+func (client *Client) DeleteServiceRecordWithOptions(workspace *string, serviceId *string, request *DeleteServiceRecordRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RecordType) {
+		query["recordType"] = request.RecordType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteServiceRecord"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/service/" + dara.PercentEncode(dara.StringValue(serviceId)) + "/record"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteServiceRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a service association entry.
+//
+// Description:
+//
+// Deletes a created service association entry.
+//
+// @param request - DeleteServiceRecordRequest
+//
+// @return DeleteServiceRecordResponse
+func (client *Client) DeleteServiceRecord(workspace *string, serviceId *string, request *DeleteServiceRecordRequest) (_result *DeleteServiceRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteServiceRecordResponse{}
+	_body, _err := client.DeleteServiceRecordWithOptions(workspace, serviceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5800,6 +5944,80 @@ func (client *Client) GetServiceObservability(workspace *string, _type *string, 
 
 // Summary:
 //
+// Queries a service-linked entry.
+//
+// Description:
+//
+// Retrieves a service-linked entry.
+//
+// @param request - GetServiceRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceRecordResponse
+func (client *Client) GetServiceRecordWithOptions(workspace *string, serviceId *string, request *GetServiceRecordRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RecordType) {
+		query["recordType"] = request.RecordType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetServiceRecord"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/service/" + dara.PercentEncode(dara.StringValue(serviceId)) + "/record"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetServiceRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a service-linked entry.
+//
+// Description:
+//
+// Retrieves a service-linked entry.
+//
+// @param request - GetServiceRecordRequest
+//
+// @return GetServiceRecordResponse
+func (client *Client) GetServiceRecord(workspace *string, serviceId *string, request *GetServiceRecordRequest) (_result *GetServiceRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetServiceRecordResponse{}
+	_body, _err := client.GetServiceRecordWithOptions(workspace, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the configuration of a Umodel.
 //
 // Description:
@@ -7100,7 +7318,11 @@ func (client *Client) ListDatasets(workspace *string, request *ListDatasetsReque
 
 // Summary:
 //
-// Retrieves a list of data delivery tasks.
+// Retrieves the list of data delivery tasks.
+//
+// Description:
+//
+// Deletes a specified site monitoring task.
 //
 // @param tmpReq - ListDeliveryTasksRequest
 //
@@ -7169,7 +7391,11 @@ func (client *Client) ListDeliveryTasksWithOptions(tmpReq *ListDeliveryTasksRequ
 
 // Summary:
 //
-// Retrieves a list of data delivery tasks.
+// Retrieves the list of data delivery tasks.
+//
+// Description:
+//
+// Deletes a specified site monitoring task.
 //
 // @param request - ListDeliveryTasksRequest
 //
@@ -8387,6 +8613,92 @@ func (client *Client) ListPrometheusVirtualInstances(request *ListPrometheusVirt
 	headers := make(map[string]*string)
 	_result = &ListPrometheusVirtualInstancesResponse{}
 	_body, _err := client.ListPrometheusVirtualInstancesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists service-linked entries.
+//
+// Description:
+//
+// Queries a paginated list of service-linked entries.
+//
+// @param request - ListServiceRecordsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceRecordsResponse
+func (client *Client) ListServiceRecordsWithOptions(workspace *string, request *ListServiceRecordsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServiceRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RecordType) {
+		query["recordType"] = request.RecordType
+	}
+
+	if !dara.IsNil(request.Search) {
+		query["search"] = request.Search
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListServiceRecords"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/service-records"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListServiceRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists service-linked entries.
+//
+// Description:
+//
+// Queries a paginated list of service-linked entries.
+//
+// @param request - ListServiceRecordsRequest
+//
+// @return ListServiceRecordsResponse
+func (client *Client) ListServiceRecords(workspace *string, request *ListServiceRecordsRequest) (_result *ListServiceRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListServiceRecordsResponse{}
+	_body, _err := client.ListServiceRecordsWithOptions(workspace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10834,6 +11146,84 @@ func (client *Client) UpdateService(workspace *string, serviceId *string, reques
 	headers := make(map[string]*string)
 	_result = &UpdateServiceResponse{}
 	_body, _err := client.UpdateServiceWithOptions(workspace, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a service-linked entry.
+//
+// Description:
+//
+// Updates an existing service-linked entry.
+//
+// @param request - UpdateServiceRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceRecordResponse
+func (client *Client) UpdateServiceRecordWithOptions(workspace *string, serviceId *string, request *UpdateServiceRecordRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateServiceRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RecordContent) {
+		body["recordContent"] = request.RecordContent
+	}
+
+	if !dara.IsNil(request.RecordType) {
+		body["recordType"] = request.RecordType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateServiceRecord"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/service/" + dara.PercentEncode(dara.StringValue(serviceId)) + "/record"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateServiceRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a service-linked entry.
+//
+// Description:
+//
+// Updates an existing service-linked entry.
+//
+// @param request - UpdateServiceRecordRequest
+//
+// @return UpdateServiceRecordResponse
+func (client *Client) UpdateServiceRecord(workspace *string, serviceId *string, request *UpdateServiceRecordRequest) (_result *UpdateServiceRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateServiceRecordResponse{}
+	_body, _err := client.UpdateServiceRecordWithOptions(workspace, serviceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

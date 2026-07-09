@@ -129,11 +129,7 @@ type DescribeMetricMetaListResponseBodyResources struct {
 	Dimensions []*string `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
 	// The CloudMonitor labels. This parameter is returned only when metaFormat is set to CMS.
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The metadata source. Valid values:
-	//
-	// - CMS: CloudMonitor Basic monitoring metrics.
-	//
-	// - PROM_BASIC: Managed Service for Prometheus monitoring metrics.
+	// The metadata source. CMS indicates CloudMonitor Basic monitoring metrics. PROM_BASIC indicates Prometheus CloudMonitor basic monitoring metrics.
 	//
 	// Sample value:
 	//
