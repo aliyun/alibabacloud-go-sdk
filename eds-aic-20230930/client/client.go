@@ -6212,7 +6212,7 @@ func (client *Client) ListInstanceAdbAttributes(request *ListInstanceAdbAttribut
 
 // Summary:
 //
-// Queries policies.
+// Queries the details of a policy.
 //
 // @param request - ListPolicyGroupsRequest
 //
@@ -6272,7 +6272,7 @@ func (client *Client) ListPolicyGroupsWithOptions(request *ListPolicyGroupsReque
 
 // Summary:
 //
-// Queries policies.
+// Queries the details of a policy.
 //
 // @param request - ListPolicyGroupsRequest
 //

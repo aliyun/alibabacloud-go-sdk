@@ -20,21 +20,21 @@ type iListPolicyGroupsResponseBody interface {
 }
 
 type ListPolicyGroupsResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token that indicates the position up to which data has been read in the current call. An empty value indicates that all data has been read.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The policies.
+	// The policy information.
 	PolicyGroupModel []*ListPolicyGroupsResponseBodyPolicyGroupModel `json:"PolicyGroupModel,omitempty" xml:"PolicyGroupModel,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7B9EFA4F-4305-5968-BAEE-BD8B8DE5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -100,51 +100,52 @@ func (s *ListPolicyGroupsResponseBody) Validate() error {
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
-	// Specifies whether to enable the webcam redirection feature.
+	AccessPolicies []*ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies `json:"AccessPolicies,omitempty" xml:"AccessPolicies,omitempty" type:"Repeated"`
+	// Indicates whether local camera redirection is enabled.
 	//
 	// example:
 	//
 	// on
 	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
-	// The read/write permissions on the clipboard.
+	// The clipboard permission.
 	//
 	// example:
 	//
 	// readwrite
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	// The time when the policy was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-06-04 10:28:54
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The file transfer policy of the HTML5 client.
+	// The file transfer policy for the HTML5 client.
 	//
 	// example:
 	//
 	// download
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
-	// The read/write permissions on the on-premises drive.
+	// The local disk mapping permission.
 	//
 	// example:
 	//
 	// off
 	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
-	// Identifies whether the resolution is locked.
+	// The locked resolution.
 	//
 	// example:
 	//
 	// off
 	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
-	// The network redirection policy.
+	// The network redirection settings.
 	NetRedirectPolicy *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy `json:"NetRedirectPolicy,omitempty" xml:"NetRedirectPolicy,omitempty" type:"Struct"`
-	// The ID of the policy.
+	// The policy ID.
 	//
 	// example:
 	//
 	// pg-9q6o8qpiy8opkj****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The name of the policy.
+	// The policy name.
 	//
 	// example:
 	//
@@ -164,7 +165,7 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	//
 	// 1920
 	SessionResolutionWidth *int32 `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
-	// The screen watermark.
+	// The screen watermark settings.
 	Watermark *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty" type:"Struct"`
 }
 
@@ -174,6 +175,10 @@ func (s ListPolicyGroupsResponseBodyPolicyGroupModel) String() string {
 
 func (s ListPolicyGroupsResponseBodyPolicyGroupModel) GoString() string {
 	return s.String()
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) GetAccessPolicies() []*ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies {
+	return s.AccessPolicies
 }
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) GetCameraRedirect() *string {
@@ -226,6 +231,11 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) GetSessionResolutionWidth
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) GetWatermark() *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark {
 	return s.Watermark
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetAccessPolicies(v []*ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) *ListPolicyGroupsResponseBodyPolicyGroupModel {
+	s.AccessPolicies = v
+	return s
 }
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetCameraRedirect(v string) *ListPolicyGroupsResponseBodyPolicyGroupModel {
@@ -294,6 +304,15 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetWatermark(v *ListPolic
 }
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) Validate() error {
+	if s.AccessPolicies != nil {
+		for _, item := range s.AccessPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.NetRedirectPolicy != nil {
 		if err := s.NetRedirectPolicy.Validate(); err != nil {
 			return err
@@ -312,50 +331,115 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) Validate() error {
 	return nil
 }
 
+type ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies struct {
+	AccessPolicyRuleId *int64  `json:"AccessPolicyRuleId,omitempty" xml:"AccessPolicyRuleId,omitempty"`
+	CidrIp             *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Policy             *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Priority           *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+}
+
+func (s ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) GetAccessPolicyRuleId() *int64 {
+	return s.AccessPolicyRuleId
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) GetCidrIp() *string {
+	return s.CidrIp
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) GetDescription() *string {
+	return s.Description
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) GetPolicy() *string {
+	return s.Policy
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) GetPriority() *int32 {
+	return s.Priority
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) SetAccessPolicyRuleId(v int64) *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies {
+	s.AccessPolicyRuleId = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) SetCidrIp(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies {
+	s.CidrIp = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) SetDescription(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies {
+	s.Description = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) SetPolicy(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies {
+	s.Policy = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) SetPriority(v int32) *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy struct {
-	// Indicates whether to manually configure a custom proxy.
+	// Indicates whether a transparent proxy is manually configured.
 	//
 	// example:
 	//
 	// off
 	CustomProxy *string `json:"CustomProxy,omitempty" xml:"CustomProxy,omitempty"`
-	// The IPv4 address of the custom proxy.
+	// The proxy IP address of the transparent proxy. The value must be in IPv4 format.
 	//
 	// example:
 	//
 	// 47.100.XX.XX
 	HostAddr *string `json:"HostAddr,omitempty" xml:"HostAddr,omitempty"`
-	// Indicates whether the network redirection feature is enabled. When this feature is enabled, network traffic is automatically redirected to the on-premises network by default.
+	// Indicates whether network redirection is enabled. After this feature is enabled, traffic is redirected to the client-side network by default.
 	//
 	// example:
 	//
 	// off
 	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
-	// The port of the custom proxy. Valid values: 1 to 65535.
+	// The port of the transparent proxy. Valid values: 1 to 65535.
 	//
 	// example:
 	//
 	// 1145
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The password of the proxy. The password must be 1 to 256 in length and cannot contain Chinese character or space characters.
+	// The proxy password. The value must be 1 to 256 characters in length and cannot contain Chinese characters or whitespace characters.
 	//
 	// example:
 	//
 	// password
 	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
-	// The type of the proxy protocol.
+	// The proxy protocol type.
 	//
 	// example:
 	//
 	// socks5
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	// The username of the proxy. The name must be 1 to 256 in length and cannot contain Chinese character or space characters.
+	// The proxy username. The value must be 1 to 256 characters in length and cannot contain Chinese characters or whitespace characters.
 	//
 	// example:
 	//
 	// username
 	ProxyUserName *string `json:"ProxyUserName,omitempty" xml:"ProxyUserName,omitempty"`
-	// The proxy rules.
+	// The list of proxy rules.
 	Rules []*ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -453,13 +537,13 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy) Validate
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules struct {
-	// The type of the rule.
+	// The rule type.
 	//
 	// example:
 	//
 	// domain
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The name of the application package or domain name.
+	// The application package name or domain name.
 	//
 	// example:
 	//
@@ -498,9 +582,9 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules) Val
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources struct {
-	// The instance group IDs.
+	// The list of instance group IDs.
 	AndroidInstanceGroupIds []*string `json:"AndroidInstanceGroupIds,omitempty" xml:"AndroidInstanceGroupIds,omitempty" type:"Repeated"`
-	// The matrix IDs.
+	// The list of matrix IDs.
 	CloudPhoneMatrixIds []*string `json:"CloudPhoneMatrixIds,omitempty" xml:"CloudPhoneMatrixIds,omitempty" type:"Repeated"`
 }
 
@@ -535,37 +619,37 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources) Val
 }
 
 type ListPolicyGroupsResponseBodyPolicyGroupModelWatermark struct {
-	// The font color of the watermark. Valid values: 0 to 16777215.
+	// The watermark font color. Valid values: 0 to 16777215.
 	//
 	// example:
 	//
 	// 0
 	WatermarkColor *int32 `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
-	// The custom text for the watermark. The text can be up to 10 characters in length and cannot contain emoji characters.
+	// The custom watermark content. The value can be up to 10 characters in length and does not support emoji characters.
 	//
 	// example:
 	//
 	// custom text
 	WatermarkCustomText *string `json:"WatermarkCustomText,omitempty" xml:"WatermarkCustomText,omitempty"`
-	// The font size of the watermark. Valid values: 10 to 20.
+	// The watermark font size. Valid values: 10 to 20.
 	//
 	// example:
 	//
 	// 12
 	WatermarkFontSize *int32 `json:"WatermarkFontSize,omitempty" xml:"WatermarkFontSize,omitempty"`
-	// Specifies whether to enable the screen watermark.
+	// The screen watermark switch.
 	//
 	// example:
 	//
 	// off
 	WatermarkSwitch *string `json:"WatermarkSwitch,omitempty" xml:"WatermarkSwitch,omitempty"`
-	// The opacity of the watermark. A larger value makes the watermark more opaque. Valid values: 10 to 100.
+	// The watermark opacity. A larger value indicates lower transparency. Valid values: 10 to 100.
 	//
 	// example:
 	//
 	// 25
 	WatermarkTransparencyValue *int32 `json:"WatermarkTransparencyValue,omitempty" xml:"WatermarkTransparencyValue,omitempty"`
-	// The content of the screen watermark.
+	// The screen watermark content.
 	WatermarkTypes []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
 }
 

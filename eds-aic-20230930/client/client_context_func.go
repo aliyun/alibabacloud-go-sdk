@@ -4689,7 +4689,7 @@ func (client *Client) ListInstanceAdbAttributesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries policies.
+// Queries the details of a policy.
 //
 // @param request - ListPolicyGroupsRequest
 //
