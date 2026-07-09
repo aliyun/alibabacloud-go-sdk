@@ -14,6 +14,11 @@ type iDeleteAgentSpaceResponseBody interface {
 }
 
 type DeleteAgentSpaceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D0173835-9E0F-508F-8BFA-9F556E59C302
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

@@ -14,6 +14,11 @@ type iCreateDatasetResponseBody interface {
 }
 
 type CreateDatasetResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// EB27D183-8F6C-5C5A-A6A3-E0508AF54F78
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

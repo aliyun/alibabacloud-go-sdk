@@ -22,11 +22,34 @@ type iListDatasetsResponseBody interface {
 }
 
 type ListDatasetsResponseBody struct {
-	Datasets   []*ListDatasetsResponseBodyDatasets `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
-	MaxResults *int32                              `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string                             `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	RequestId  *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Total      *int32                              `json:"total,omitempty" xml:"total,omitempty"`
+	// The result set.
+	Datasets []*ListDatasetsResponseBodyDatasets `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
+	// The maximum number of results specified in this request.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token for the next page of results.
+	//
+	// If the total number of results exceeds the maxResults limit, the results are truncated. You can use this token to query the next page of results.
+	//
+	// example:
+	//
+	// umaQfI7x758Ns4TgWrj8yA3fYlnk7dJgsfhMrSViRY8=
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 90F52F93-8800-5A71-8737-18F34BA90166
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of records.
+	//
+	// example:
+	//
+	// 33
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListDatasetsResponseBody) String() string {
@@ -96,13 +119,45 @@ func (s *ListDatasetsResponseBody) Validate() error {
 }
 
 type ListDatasetsResponseBodyDatasets struct {
+	// The name of the agent space.
+	//
+	// example:
+	//
+	// sop-agent
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The time when the dataset was created.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
-	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	//
+	// example:
+	//
+	// 2026-01-19T02:11:02Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The name of the dataset.
+	//
+	// example:
+	//
+	// product_faq_dataset
 	DatasetName *string `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
+	// The description of the dataset.
+	//
+	// example:
+	//
+	// Product FAQ dataset for semantic search
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	RegionId    *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The time when the dataset was last updated.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
+	//
+	// example:
+	//
+	// 2026-05-18T02:21:32Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 

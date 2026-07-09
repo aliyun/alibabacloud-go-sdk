@@ -28,15 +28,53 @@ type iGetDatasetResponseBody interface {
 }
 
 type GetDatasetResponseBody struct {
+	// The agent space name.
+	//
+	// example:
+	//
+	// sop-agent
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
-	CreateTime  *string              `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DatasetName *string              `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
-	Description *string              `json:"description,omitempty" xml:"description,omitempty"`
-	RegionId    *string              `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	RequestId   *string              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Schema      map[string]*IndexKey `json:"schema,omitempty" xml:"schema,omitempty"`
+	//
+	// example:
+	//
+	// 2026-06-15T10:30:00Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The dataset name.
+	//
+	// example:
+	//
+	// product_faq_dataset
+	DatasetName *string `json:"datasetName,omitempty" xml:"datasetName,omitempty"`
+	// The dataset description.
+	//
+	// example:
+	//
+	// Product FAQ dataset for semantic search
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D17DE39E-6C62-50E3-9EB7-FDE41BB0D43D
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The table schema of the dataset.
+	Schema map[string]*IndexKey `json:"schema,omitempty" xml:"schema,omitempty"`
+	// The update time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
+	//
+	// example:
+	//
+	// 2026-06-15T11:20:00Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 

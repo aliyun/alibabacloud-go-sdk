@@ -24,28 +24,40 @@ type iSearchContextRequest interface {
 }
 
 type SearchContextRequest struct {
+	// The structured filter conditions. The key is the field name, and the value is the expected matching value.
+	//
 	// example:
 	//
 	// {"userId":"alice"}
 	Filter map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
+	// Specifies whether to apply structured formatting to the returned results.
+	//
 	// example:
 	//
 	// true
 	Formatted *bool `json:"formatted,omitempty" xml:"formatted,omitempty"`
+	// The maximum number of returned results (similarity Top-N).
+	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The retrieval query text. Natural language is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 用户最近的偏好设置
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The retrieval options that control the retrieval strategy.
+	//
 	// example:
 	//
 	// semantic
 	RetrievalOption *string `json:"retrievalOption,omitempty" xml:"retrievalOption,omitempty"`
+	// The similarity threshold. Results with a similarity score lower than this value are filtered out. Valid values: 0 to 1.
+	//
 	// example:
 	//
 	// 0.5

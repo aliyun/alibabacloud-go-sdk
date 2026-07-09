@@ -9,8 +9,6 @@ type iDataFilter interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetEndTime(v int64) *DataFilter
-	GetEndTime() *int64
 	SetMaxRecords(v int32) *DataFilter
 	GetMaxRecords() *int32
 	SetProvided(v map[string]interface{}) *DataFilter
@@ -19,17 +17,33 @@ type iDataFilter interface {
 	GetQuery() *string
 	SetSamplingRate(v int32) *DataFilter
 	GetSamplingRate() *int32
-	SetStartTime(v int64) *DataFilter
-	GetStartTime() *int64
 }
 
 type DataFilter struct {
-	EndTime      *int64                 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	MaxRecords   *int32                 `json:"maxRecords,omitempty" xml:"maxRecords,omitempty"`
-	Provided     map[string]interface{} `json:"provided,omitempty" xml:"provided,omitempty"`
-	Query        *string                `json:"query,omitempty" xml:"query,omitempty"`
-	SamplingRate *int32                 `json:"samplingRate,omitempty" xml:"samplingRate,omitempty"`
-	StartTime    *int64                 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The maximum number of evaluation records. This takes effect for both backfill and continuous runs. If not specified, the backend does not write a default value.
+	//
+	// example:
+	//
+	// 10
+	MaxRecords *int32 `json:"maxRecords,omitempty" xml:"maxRecords,omitempty"`
+	// The one-time temporary evaluation input content, primarily used for oneshot tasks. The value is stored as a string. Object or array values are serialized to a JSON string.
+	//
+	// example:
+	//
+	// {"input":"用户查询订单状态","output":"已查询到订单状态"}
+	Provided map[string]interface{} `json:"provided,omitempty" xml:"provided,omitempty"`
+	// The data query filter condition. This takes effect together with the evaluator-level filters.query. In Trace scenarios, you can specify filter expressions such as service name, environment, or labels.
+	//
+	// example:
+	//
+	// serviceName=\\"checkout-service\\"
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The sampling rate percentage. Valid values: 0 to 100. A value of 0 or not specified indicates no sampling. A value of 100 indicates full data. If the value is less than 100, random sampling is applied first, and then the maxRecords limit is applied.
+	//
+	// example:
+	//
+	// 100
+	SamplingRate *int32 `json:"samplingRate,omitempty" xml:"samplingRate,omitempty"`
 }
 
 func (s DataFilter) String() string {
@@ -38,10 +52,6 @@ func (s DataFilter) String() string {
 
 func (s DataFilter) GoString() string {
 	return s.String()
-}
-
-func (s *DataFilter) GetEndTime() *int64 {
-	return s.EndTime
 }
 
 func (s *DataFilter) GetMaxRecords() *int32 {
@@ -58,15 +68,6 @@ func (s *DataFilter) GetQuery() *string {
 
 func (s *DataFilter) GetSamplingRate() *int32 {
 	return s.SamplingRate
-}
-
-func (s *DataFilter) GetStartTime() *int64 {
-	return s.StartTime
-}
-
-func (s *DataFilter) SetEndTime(v int64) *DataFilter {
-	s.EndTime = &v
-	return s
 }
 
 func (s *DataFilter) SetMaxRecords(v int32) *DataFilter {
@@ -86,11 +87,6 @@ func (s *DataFilter) SetQuery(v string) *DataFilter {
 
 func (s *DataFilter) SetSamplingRate(v int32) *DataFilter {
 	s.SamplingRate = &v
-	return s
-}
-
-func (s *DataFilter) SetStartTime(v int64) *DataFilter {
-	s.StartTime = &v
 	return s
 }
 

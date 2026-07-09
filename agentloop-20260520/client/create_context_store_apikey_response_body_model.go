@@ -18,14 +18,20 @@ type iCreateContextStoreAPIKeyResponseBody interface {
 }
 
 type CreateContextStoreAPIKeyResponseBody struct {
+	// The complete API key value.
+	//
 	// example:
 	//
 	// sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// The name of the API key.
+	//
 	// example:
 	//
 	// my-api-key
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M

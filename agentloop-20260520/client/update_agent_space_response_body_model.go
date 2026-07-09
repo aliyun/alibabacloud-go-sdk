@@ -14,6 +14,11 @@ type iUpdateAgentSpaceResponseBody interface {
 }
 
 type UpdateAgentSpaceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// AA689779-61AB-5077-BD91-9F7EA1205D68
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

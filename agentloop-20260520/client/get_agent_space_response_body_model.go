@@ -32,17 +32,65 @@ type iGetAgentSpaceResponseBody interface {
 }
 
 type GetAgentSpaceResponseBody struct {
-	AgentSpace           *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
-	CmsWorkspace         *string `json:"cmsWorkspace,omitempty" xml:"cmsWorkspace,omitempty"`
+	// The name of the AgentSpace.
+	//
+	// example:
+	//
+	// test-agent-space
+	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The CloudMonitor workspace.
+	//
+	// example:
+	//
+	// test-cms-workspace
+	CmsWorkspace *string `json:"cmsWorkspace,omitempty" xml:"cmsWorkspace,omitempty"`
+	// The binding type of the CloudMonitor 2.0 workspace.
+	//
+	// example:
+	//
+	// AutoCreated
 	CmsWorkspaceBindType *string `json:"cmsWorkspaceBindType,omitempty" xml:"cmsWorkspaceBindType,omitempty"`
+	// The time when the AgentSpace was created.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
-	CreateTime   *string                                `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description  *string                                `json:"description,omitempty" xml:"description,omitempty"`
+	//
+	// example:
+	//
+	// 2026-05-05T12:39:36Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The Microservices Engine (MSE) namespace.
 	MseNamespace *GetAgentSpaceResponseBodyMseNamespace `json:"mseNamespace,omitempty" xml:"mseNamespace,omitempty" type:"Struct"`
-	RegionId     *string                                `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	RequestId    *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	SlsProject   *string                                `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D0173835-9E0F-508F-8BFA-9F556E59C302
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The name of the Simple Log Service project.
+	//
+	// example:
+	//
+	// default-cms-1837787111545040-cn-beijing
+	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
+	// The time when the AgentSpace was last updated.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
+	//
+	// example:
+	//
+	// 2025-10-20T02:28:14Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
@@ -154,7 +202,17 @@ func (s *GetAgentSpaceResponseBody) Validate() error {
 }
 
 type GetAgentSpaceResponseBodyMseNamespace struct {
-	NamespaceId   *string `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	// The ID of the MSE namespace.
+	//
+	// example:
+	//
+	// emr-dataware
+	NamespaceId *string `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	// The name of the MSE namespace.
+	//
+	// example:
+	//
+	// terraform-alicloud-modules
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
 }
 

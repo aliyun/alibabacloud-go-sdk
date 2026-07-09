@@ -14,6 +14,11 @@ type iDeleteDatasetResponseBody interface {
 }
 
 type DeleteDatasetResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

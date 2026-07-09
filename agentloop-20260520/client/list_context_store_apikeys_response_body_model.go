@@ -22,19 +22,28 @@ type iListContextStoreAPIKeysResponseBody interface {
 }
 
 type ListContextStoreAPIKeysResponseBody struct {
+	// The maximum number of entries per page that was specified in the request. This value is echoed back.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token for the next page. An empty string indicates that the current page is the last page.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg5MA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
-	RequestId *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []*ListContextStoreAPIKeysResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of API keys.
+	Results []*ListContextStoreAPIKeysResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// The total number of API keys that match the query conditions.
+	//
 	// example:
 	//
 	// 3
@@ -108,24 +117,34 @@ func (s *ListContextStoreAPIKeysResponseBody) Validate() error {
 }
 
 type ListContextStoreAPIKeysResponseBodyResults struct {
+	// The name of the AgentSpace to which the API key belongs.
+	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The full value of the API key. The plaintext value is returned only when the API key is created. In list scenarios, the value is masked based on business rules.
+	//
 	// example:
 	//
 	// sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// The name of the context store to which the API key belongs.
+	//
 	// example:
 	//
 	// my-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
+	// The time when the API key was created, in ISO 8601 UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-01-01T00:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The display name of the API key.
+	//
 	// example:
 	//
 	// my-api-key

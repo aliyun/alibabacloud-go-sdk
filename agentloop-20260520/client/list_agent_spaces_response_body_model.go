@@ -22,11 +22,32 @@ type iListAgentSpacesResponseBody interface {
 }
 
 type ListAgentSpacesResponseBody struct {
+	// The AgentSpaces information.
 	AgentSpaces []*ListAgentSpacesResponseBodyAgentSpaces `json:"agentSpaces,omitempty" xml:"agentSpaces,omitempty" type:"Repeated"`
-	MaxResults  *int32                                    `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken   *string                                   `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	RequestId   *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Total       *int32                                    `json:"total,omitempty" xml:"total,omitempty"`
+	// The maximum number of results returned.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. This parameter is empty if no more pages are available.
+	//
+	// example:
+	//
+	// b5754ef15c784abc8696d82790d2985c
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 4E4AC775-2358-5B52-B6FB-171459D7B14B
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 13
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListAgentSpacesResponseBody) String() string {
@@ -96,15 +117,53 @@ func (s *ListAgentSpacesResponseBody) Validate() error {
 }
 
 type ListAgentSpacesResponseBodyAgentSpaces struct {
-	AgentSpace   *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The AgentSpace name.
+	//
+	// example:
+	//
+	// test-agent-space
+	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The CMS workspace.
+	//
+	// example:
+	//
+	// test-cms-workspace
 	CmsWorkspace *string `json:"cmsWorkspace,omitempty" xml:"cmsWorkspace,omitempty"`
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
-	CreateTime   *string                                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description  *string                                             `json:"description,omitempty" xml:"description,omitempty"`
+	//
+	// example:
+	//
+	// 2023-08-23T04:06:06Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The MSE namespace.
 	MseNamespace *ListAgentSpacesResponseBodyAgentSpacesMseNamespace `json:"mseNamespace,omitempty" xml:"mseNamespace,omitempty" type:"Struct"`
-	RegionId     *string                                             `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	SlsProject   *string                                             `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The Simple Log Service project name.
+	//
+	// example:
+	//
+	// default-cms-1152309027070167-cn-beijing
+	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
+	// The update time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
+	//
+	// example:
+	//
+	// 2026-02-11T08:40:23Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
@@ -198,7 +257,17 @@ func (s *ListAgentSpacesResponseBodyAgentSpaces) Validate() error {
 }
 
 type ListAgentSpacesResponseBodyAgentSpacesMseNamespace struct {
-	NamespaceId   *string `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	// The MSE namespace ID.
+	//
+	// example:
+	//
+	// phoenixcloud-raw-logs
+	NamespaceId *string `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	// The MSE namespace name.
+	//
+	// example:
+	//
+	// terraform-alicloud-modules
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
 }
 

@@ -18,9 +18,24 @@ type iDeleteAgentSpaceRequest interface {
 }
 
 type DeleteAgentSpaceRequest struct {
+	// Specifies whether to delete the associated Hybrid Cloud Monitoring workspace.
+	//
+	// example:
+	//
+	// false
 	DeleteCmsWorkspace *bool `json:"deleteCmsWorkspace,omitempty" xml:"deleteCmsWorkspace,omitempty"`
+	// Specifies whether to delete the associated MSE namespace.
+	//
+	// example:
+	//
+	// false
 	DeleteMseNamespace *bool `json:"deleteMseNamespace,omitempty" xml:"deleteMseNamespace,omitempty"`
-	DeleteSlsProject   *bool `json:"deleteSlsProject,omitempty" xml:"deleteSlsProject,omitempty"`
+	// Specifies whether to delete the associated SLS project.
+	//
+	// example:
+	//
+	// false
+	DeleteSlsProject *bool `json:"deleteSlsProject,omitempty" xml:"deleteSlsProject,omitempty"`
 }
 
 func (s DeleteAgentSpaceRequest) String() string {

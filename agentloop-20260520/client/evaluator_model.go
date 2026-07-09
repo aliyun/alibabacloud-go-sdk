@@ -28,13 +28,53 @@ type iEvaluator interface {
 }
 
 type Evaluator struct {
+  // The evaluator runtime configuration. For inline LLM evaluators, this must include configurations such as prompt. When referencing an existing evaluator, this parameter is typically not required and is only specified when runtime parameters such as version need to be set.
+  // 
+  // example:
+  // 
+  // {"version":"1.0.0"}
   Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
+  // The reference name of a registered evaluator. When specified, the evaluator definition is loaded by this reference with higher priority. Both built-in evaluators and custom evaluators are supported.
+  // 
+  // example:
+  // 
+  // Builtin.agent_task_completion
   EvaluatorRef *string `json:"evaluatorRef,omitempty" xml:"evaluatorRef,omitempty"`
+  // The evaluator-level data filter conditions. These take effect together with the task-level dataFilter.query.
+  // 
+  // example:
+  // 
+  // {"query":"serviceName=\\"checkout-service\\""}
   Filters map[string]interface{} `json:"filters,omitempty" xml:"filters,omitempty"`
+  // The evaluator name. Required for inline evaluators when evaluatorRef is not specified. The evaluatorRef or name must be unique within the same task.
+  // 
+  // example:
+  // 
+  // agent_task_completion
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
+  // The field name for the evaluation result. Required for inline evaluators. When referencing an existing evaluator, the metricName defined in the evaluator definition is used if this parameter is not specified.
+  // 
+  // example:
+  // 
+  // agent_task_completion
   ResultName *string `json:"resultName,omitempty" xml:"resultName,omitempty"`
+  // The evaluation result type. Required for inline evaluators. Defaults to score when referencing an existing evaluator and this parameter is not specified.
+  // 
+  // example:
+  // 
+  // score
   ResultType *string `json:"resultType,omitempty" xml:"resultType,omitempty"`
+  // The evaluator type. Defaults to LLM if not specified. Inline CODE evaluators are currently not supported. For CODE type evaluators, reference a previously created evaluator by using evaluatorRef.
+  // 
+  // example:
+  // 
+  // AGENT
   Type *string `json:"type,omitempty" xml:"type,omitempty"`
+  // The variable mapping that maps evaluator variables to evaluation data fields. Required for LLM/AGENT inline evaluators. When referencing an existing evaluator, the variable names must exist in the evaluator definition.
+  // 
+  // example:
+  // 
+  // {"input":"trace.input","output":"trace.output","agent_trajectory":"trace.agent_trajectory"}
   VariableMapping map[string]*string `json:"variableMapping,omitempty" xml:"variableMapping,omitempty"`
 }
 

@@ -18,10 +18,30 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
+	// The language. Valid values:
+	//
+	// - zh: Chinese
+	//
+	// - en: English
+	//
 	// This parameter is required.
-	Language   *string `json:"language,omitempty" xml:"language,omitempty"`
-	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	//
+	// example:
+	//
+	// zh
+	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// The maximum number of entries to return in a single request.
+	//
+	// example:
+	//
+	// 50
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token.
+	//
+	// example:
+	//
+	// dXkC1NeQkVKHWkVfOvIVEp4dD+2BRJj42DLT6GrZysw=
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {

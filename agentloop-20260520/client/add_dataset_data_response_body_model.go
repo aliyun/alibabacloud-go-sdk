@@ -16,10 +16,14 @@ type iAddDatasetDataResponseBody interface {
 }
 
 type AddDatasetDataResponseBody struct {
+	// The number of log rows scanned or processed.
+	//
 	// example:
 	//
 	// 100
 	AffectedRows *int32 `json:"affectedRows,omitempty" xml:"affectedRows,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// D0173835-9E0F-508F-8BFA-9F556E59C302

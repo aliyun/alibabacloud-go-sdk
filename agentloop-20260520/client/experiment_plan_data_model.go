@@ -17,10 +17,14 @@ type iExperimentPlanData interface {
   GetDescription() *string 
   SetExperimentCount(v int32) *ExperimentPlanData
   GetExperimentCount() *int32 
+  SetExperimentType(v string) *ExperimentPlanData
+  GetExperimentType() *string 
   SetPlanId(v string) *ExperimentPlanData
   GetPlanId() *string 
   SetPlanName(v string) *ExperimentPlanData
   GetPlanName() *string 
+  SetQuerySql(v string) *ExperimentPlanData
+  GetQuerySql() *string 
   SetStatus(v string) *ExperimentPlanData
   GetStatus() *string 
   SetUpdatedAt(v int64) *ExperimentPlanData
@@ -32,8 +36,10 @@ type ExperimentPlanData struct {
   DatasetId *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   ExperimentCount *int32 `json:"experimentCount,omitempty" xml:"experimentCount,omitempty"`
+  ExperimentType *string `json:"experimentType,omitempty" xml:"experimentType,omitempty"`
   PlanId *string `json:"planId,omitempty" xml:"planId,omitempty"`
   PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
+  QuerySql *string `json:"querySql,omitempty" xml:"querySql,omitempty"`
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
   UpdatedAt *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
@@ -62,12 +68,20 @@ func (s *ExperimentPlanData) GetExperimentCount() *int32  {
   return s.ExperimentCount
 }
 
+func (s *ExperimentPlanData) GetExperimentType() *string  {
+  return s.ExperimentType
+}
+
 func (s *ExperimentPlanData) GetPlanId() *string  {
   return s.PlanId
 }
 
 func (s *ExperimentPlanData) GetPlanName() *string  {
   return s.PlanName
+}
+
+func (s *ExperimentPlanData) GetQuerySql() *string  {
+  return s.QuerySql
 }
 
 func (s *ExperimentPlanData) GetStatus() *string  {
@@ -98,6 +112,11 @@ func (s *ExperimentPlanData) SetExperimentCount(v int32) *ExperimentPlanData {
   return s
 }
 
+func (s *ExperimentPlanData) SetExperimentType(v string) *ExperimentPlanData {
+  s.ExperimentType = &v
+  return s
+}
+
 func (s *ExperimentPlanData) SetPlanId(v string) *ExperimentPlanData {
   s.PlanId = &v
   return s
@@ -105,6 +124,11 @@ func (s *ExperimentPlanData) SetPlanId(v string) *ExperimentPlanData {
 
 func (s *ExperimentPlanData) SetPlanName(v string) *ExperimentPlanData {
   s.PlanName = &v
+  return s
+}
+
+func (s *ExperimentPlanData) SetQuerySql(v string) *ExperimentPlanData {
+  s.QuerySql = &v
   return s
 }
 

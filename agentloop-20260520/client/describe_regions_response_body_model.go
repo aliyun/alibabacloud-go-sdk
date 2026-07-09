@@ -20,10 +20,26 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	MaxResults *int32                                `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string                               `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Regions    []*DescribeRegionsResponseBodyRegions `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
-	RequestId  *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The maximum number of entries returned per request.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. If no more pages are available, this parameter is empty.
+	//
+	// example:
+	//
+	// ydx438PDAW1lYRJZbBn9
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The region information.
+	Regions []*DescribeRegionsResponseBodyRegions `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 4FDD8668-516C-5183-9BCF-4CAD8E3CF327
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -84,10 +100,30 @@ func (s *DescribeRegionsResponseBody) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	// The public endpoint.
+	//
+	// example:
+	//
+	// agentloop.cn-hangzhou.aliyuncs.com
 	InternetEndpoint *string `json:"internetEndpoint,omitempty" xml:"internetEndpoint,omitempty"`
-	LocalName        *string `json:"localName,omitempty" xml:"localName,omitempty"`
-	RegionId         *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	VpcEndpoint      *string `json:"vpcEndpoint,omitempty" xml:"vpcEndpoint,omitempty"`
+	// The region name.
+	//
+	// example:
+	//
+	// 华东1（杭州）
+	LocalName *string `json:"localName,omitempty" xml:"localName,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The internal endpoint.
+	//
+	// example:
+	//
+	// agentloop.cn-hangzhou.aliyuncs.com
+	VpcEndpoint *string `json:"vpcEndpoint,omitempty" xml:"vpcEndpoint,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {

@@ -26,32 +26,46 @@ type iGetContextStoreAPIKeyResponseBody interface {
 }
 
 type GetContextStoreAPIKeyResponseBody struct {
+	// The name of the AgentSpace to which the API key belongs.
+	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The masked prefix of the API key (for example, sk-abcd****). For security purposes, the full plaintext is not returned.
+	//
 	// example:
 	//
 	// sk-abcd****
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// The name of the context store to which the API key belongs.
+	//
 	// example:
 	//
 	// my-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
+	// The creation time of the API key, in ISO 8601 UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-01-01T00:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The display name of the API key.
+	//
 	// example:
 	//
 	// my-api-key
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The region ID of the API key.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M

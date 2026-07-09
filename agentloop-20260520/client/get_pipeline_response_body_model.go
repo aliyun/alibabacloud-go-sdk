@@ -9,12 +9,16 @@ type iGetPipelineResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCommittedWatermark(v int64) *GetPipelineResponseBody
+	GetCommittedWatermark() *int64
 	SetCreateTime(v string) *GetPipelineResponseBody
 	GetCreateTime() *string
 	SetDescription(v string) *GetPipelineResponseBody
 	GetDescription() *string
 	SetExecutePolicy(v *GetPipelineResponseBodyExecutePolicy) *GetPipelineResponseBody
 	GetExecutePolicy() *GetPipelineResponseBodyExecutePolicy
+	SetNextTriggerTime(v int64) *GetPipelineResponseBody
+	GetNextTriggerTime() *int64
 	SetPipeline(v *GetPipelineResponseBodyPipeline) *GetPipelineResponseBody
 	GetPipeline() *GetPipelineResponseBodyPipeline
 	SetPipelineName(v string) *GetPipelineResponseBody
@@ -23,6 +27,8 @@ type iGetPipelineResponseBody interface {
 	GetRegionId() *string
 	SetRequestId(v string) *GetPipelineResponseBody
 	GetRequestId() *string
+	SetScheduleStatus(v string) *GetPipelineResponseBody
+	GetScheduleStatus() *string
 	SetSink(v *GetPipelineResponseBodySink) *GetPipelineResponseBody
 	GetSink() *GetPipelineResponseBodySink
 	SetSource(v *GetPipelineResponseBodySource) *GetPipelineResponseBody
@@ -34,6 +40,10 @@ type iGetPipelineResponseBody interface {
 }
 
 type GetPipelineResponseBody struct {
+	// example:
+	//
+	// 1735660800
+	CommittedWatermark *int64 `json:"committedWatermark,omitempty" xml:"committedWatermark,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -45,7 +55,11 @@ type GetPipelineResponseBody struct {
 	// 我的流水线
 	Description   *string                               `json:"description,omitempty" xml:"description,omitempty"`
 	ExecutePolicy *GetPipelineResponseBodyExecutePolicy `json:"executePolicy,omitempty" xml:"executePolicy,omitempty" type:"Struct"`
-	Pipeline      *GetPipelineResponseBodyPipeline      `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1735661100
+	NextTriggerTime *int64                           `json:"nextTriggerTime,omitempty" xml:"nextTriggerTime,omitempty"`
+	Pipeline        *GetPipelineResponseBodyPipeline `json:"pipeline,omitempty" xml:"pipeline,omitempty" type:"Struct"`
 	// example:
 	//
 	// my-pipeline
@@ -57,9 +71,13 @@ type GetPipelineResponseBody struct {
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
-	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Sink      *GetPipelineResponseBodySink   `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	Source    *GetPipelineResponseBodySource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// Active
+	ScheduleStatus *string                        `json:"scheduleStatus,omitempty" xml:"scheduleStatus,omitempty"`
+	Sink           *GetPipelineResponseBodySink   `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
+	Source         *GetPipelineResponseBodySource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -80,6 +98,10 @@ func (s GetPipelineResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetPipelineResponseBody) GetCommittedWatermark() *int64 {
+	return s.CommittedWatermark
+}
+
 func (s *GetPipelineResponseBody) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -90,6 +112,10 @@ func (s *GetPipelineResponseBody) GetDescription() *string {
 
 func (s *GetPipelineResponseBody) GetExecutePolicy() *GetPipelineResponseBodyExecutePolicy {
 	return s.ExecutePolicy
+}
+
+func (s *GetPipelineResponseBody) GetNextTriggerTime() *int64 {
+	return s.NextTriggerTime
 }
 
 func (s *GetPipelineResponseBody) GetPipeline() *GetPipelineResponseBodyPipeline {
@@ -108,6 +134,10 @@ func (s *GetPipelineResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *GetPipelineResponseBody) GetScheduleStatus() *string {
+	return s.ScheduleStatus
+}
+
 func (s *GetPipelineResponseBody) GetSink() *GetPipelineResponseBodySink {
 	return s.Sink
 }
@@ -124,6 +154,11 @@ func (s *GetPipelineResponseBody) GetWorkspace() *string {
 	return s.Workspace
 }
 
+func (s *GetPipelineResponseBody) SetCommittedWatermark(v int64) *GetPipelineResponseBody {
+	s.CommittedWatermark = &v
+	return s
+}
+
 func (s *GetPipelineResponseBody) SetCreateTime(v string) *GetPipelineResponseBody {
 	s.CreateTime = &v
 	return s
@@ -136,6 +171,11 @@ func (s *GetPipelineResponseBody) SetDescription(v string) *GetPipelineResponseB
 
 func (s *GetPipelineResponseBody) SetExecutePolicy(v *GetPipelineResponseBodyExecutePolicy) *GetPipelineResponseBody {
 	s.ExecutePolicy = v
+	return s
+}
+
+func (s *GetPipelineResponseBody) SetNextTriggerTime(v int64) *GetPipelineResponseBody {
+	s.NextTriggerTime = &v
 	return s
 }
 
@@ -156,6 +196,11 @@ func (s *GetPipelineResponseBody) SetRegionId(v string) *GetPipelineResponseBody
 
 func (s *GetPipelineResponseBody) SetRequestId(v string) *GetPipelineResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetPipelineResponseBody) SetScheduleStatus(v string) *GetPipelineResponseBody {
+	s.ScheduleStatus = &v
 	return s
 }
 

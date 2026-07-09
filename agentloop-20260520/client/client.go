@@ -27,10 +27,14 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-zhangjiakou": dara.String("agentloop.cn-zhangjiakou.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("agentloop.cn-shenzhen.aliyuncs.com"),
 		"cn-shanghai":    dara.String("agentloop.cn-shanghai.aliyuncs.com"),
 		"cn-hongkong":    dara.String("agentloop.cn-hongkong.aliyuncs.com"),
 		"cn-hangzhou":    dara.String("agentloop.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":   dara.String("agentloop.cn-guangzhou.aliyuncs.com"),
+		"cn-chengdu":     dara.String("agentloop.cn-chengdu.aliyuncs.com"),
 		"cn-beijing":     dara.String("agentloop.cn-beijing.aliyuncs.com"),
+		"ap-southeast-1": dara.String("agentloop.ap-southeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -65,7 +69,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 向指定 Dataset 追加结构化数据行，避免客户端拼接 SQL。
+// Appends structured data rows to a specified dataset without requiring the client to construct SQL statements.
 //
 // @param request - AddDatasetDataRequest
 //
@@ -118,7 +122,7 @@ func (client *Client) AddDatasetDataWithOptions(agentSpace *string, datasetName 
 
 // Summary:
 //
-// 向指定 Dataset 追加结构化数据行，避免客户端拼接 SQL。
+// Appends structured data rows to a specified dataset without requiring the client to construct SQL statements.
 //
 // @param request - AddDatasetDataRequest
 //
@@ -137,7 +141,67 @@ func (client *Client) AddDatasetData(agentSpace *string, datasetName *string, re
 
 // Summary:
 //
-// 创建AgentSpace
+// Cancels a pipeline run.
+//
+// @param request - CancelPipelineRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelPipelineRunResponse
+func (client *Client) CancelPipelineRunWithOptions(agentSpace *string, pipelineName *string, runId *string, request *CancelPipelineRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelPipelineRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelPipelineRun"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/pipeline/" + dara.PercentEncode(dara.StringValue(pipelineName)) + "/runs/" + dara.PercentEncode(dara.StringValue(runId)) + "/cancel"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelPipelineRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels a pipeline run.
+//
+// @param request - CancelPipelineRunRequest
+//
+// @return CancelPipelineRunResponse
+func (client *Client) CancelPipelineRun(agentSpace *string, pipelineName *string, runId *string, request *CancelPipelineRunRequest) (_result *CancelPipelineRunResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelPipelineRunResponse{}
+	_body, _err := client.CancelPipelineRunWithOptions(agentSpace, pipelineName, runId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an AgentSpace.
 //
 // @param request - CreateAgentSpaceRequest
 //
@@ -171,6 +235,10 @@ func (client *Client) CreateAgentSpaceWithOptions(request *CreateAgentSpaceReque
 		body["description"] = request.Description
 	}
 
+	if !dara.IsNil(request.TrajectoryStoreEnabled) {
+		body["trajectoryStoreEnabled"] = request.TrajectoryStoreEnabled
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -198,7 +266,7 @@ func (client *Client) CreateAgentSpaceWithOptions(request *CreateAgentSpaceReque
 
 // Summary:
 //
-// 创建AgentSpace
+// Creates an AgentSpace.
 //
 // @param request - CreateAgentSpaceRequest
 //
@@ -217,7 +285,7 @@ func (client *Client) CreateAgentSpace(request *CreateAgentSpaceRequest) (_resul
 
 // Summary:
 //
-// 创建上下文库
+// Creates a context store.
 //
 // @param request - CreateContextStoreRequest
 //
@@ -282,7 +350,7 @@ func (client *Client) CreateContextStoreWithOptions(agentSpace *string, request 
 
 // Summary:
 //
-// 创建上下文库
+// Creates a context store.
 //
 // @param request - CreateContextStoreRequest
 //
@@ -301,7 +369,7 @@ func (client *Client) CreateContextStore(agentSpace *string, request *CreateCont
 
 // Summary:
 //
-// 创建 API Key
+// Creates an API key.
 //
 // @param request - CreateContextStoreAPIKeyRequest
 //
@@ -354,7 +422,7 @@ func (client *Client) CreateContextStoreAPIKeyWithOptions(agentSpace *string, co
 
 // Summary:
 //
-// 创建 API Key
+// Creates an API key.
 //
 // @param request - CreateContextStoreAPIKeyRequest
 //
@@ -373,7 +441,7 @@ func (client *Client) CreateContextStoreAPIKey(agentSpace *string, contextStoreN
 
 // Summary:
 //
-// 创建数据集
+// Creates a dataset.
 //
 // @param request - CreateDatasetRequest
 //
@@ -434,7 +502,7 @@ func (client *Client) CreateDatasetWithOptions(agentSpace *string, request *Crea
 
 // Summary:
 //
-// 创建数据集
+// Creates a dataset.
 //
 // @param request - CreateDatasetRequest
 //
@@ -453,7 +521,327 @@ func (client *Client) CreateDataset(agentSpace *string, request *CreateDatasetRe
 
 // Summary:
 //
-// 删除AgentSpace
+// Creates an evaluation task.
+//
+// Description:
+//
+// Calls the CreateEvaluationTask operation to create an evaluation task in a specified AgentSpace. The server verifies AgentSpace permissions, initializes evaluation result storage, checks the uniqueness of the task name, and asynchronously creates and executes an EvaluationRun based on `taskMode` and `runStrategies`.
+//
+// This operation is applicable to running built-in or custom evaluators on Trace, Dataset, or SLS Log data. It supports two execution strategies: historical backfill and continuous evaluation.
+//
+// @param request - CreateEvaluationTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEvaluationTaskResponse
+func (client *Client) CreateEvaluationTaskWithOptions(agentSpace *string, request *CreateEvaluationTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEvaluationTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Channel) {
+		body["channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.Config) {
+		body["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.DataFilter) {
+		body["dataFilter"] = request.DataFilter
+	}
+
+	if !dara.IsNil(request.DataType) {
+		body["dataType"] = request.DataType
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Evaluators) {
+		body["evaluators"] = request.Evaluators
+	}
+
+	if !dara.IsNil(request.RunStrategies) {
+		body["runStrategies"] = request.RunStrategies
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.TaskMode) {
+		body["taskMode"] = request.TaskMode
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		body["taskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateEvaluationTask"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluation-task/" + dara.PercentEncode(dara.StringValue(agentSpace))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateEvaluationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an evaluation task.
+//
+// Description:
+//
+// Calls the CreateEvaluationTask operation to create an evaluation task in a specified AgentSpace. The server verifies AgentSpace permissions, initializes evaluation result storage, checks the uniqueness of the task name, and asynchronously creates and executes an EvaluationRun based on `taskMode` and `runStrategies`.
+//
+// This operation is applicable to running built-in or custom evaluators on Trace, Dataset, or SLS Log data. It supports two execution strategies: historical backfill and continuous evaluation.
+//
+// @param request - CreateEvaluationTaskRequest
+//
+// @return CreateEvaluationTaskResponse
+func (client *Client) CreateEvaluationTask(agentSpace *string, request *CreateEvaluationTaskRequest) (_result *CreateEvaluationTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateEvaluationTaskResponse{}
+	_body, _err := client.CreateEvaluationTaskWithOptions(agentSpace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an evaluator.
+//
+// @param request - CreateEvaluatorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEvaluatorResponse
+func (client *Client) CreateEvaluatorWithOptions(agentSpace *string, request *CreateEvaluatorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEvaluatorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Annotations) {
+		body["annotations"] = request.Annotations
+	}
+
+	if !dara.IsNil(request.Config) {
+		body["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.MetricName) {
+		body["metricName"] = request.MetricName
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Properties) {
+		body["properties"] = request.Properties
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	if !dara.IsNil(request.VersionDescription) {
+		body["versionDescription"] = request.VersionDescription
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateEvaluator"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluators/" + dara.PercentEncode(dara.StringValue(agentSpace))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateEvaluatorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an evaluator.
+//
+// @param request - CreateEvaluatorRequest
+//
+// @return CreateEvaluatorResponse
+func (client *Client) CreateEvaluator(agentSpace *string, request *CreateEvaluatorRequest) (_result *CreateEvaluatorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateEvaluatorResponse{}
+	_body, _err := client.CreateEvaluatorWithOptions(agentSpace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an evaluator skill.
+//
+// @param request - CreateEvaluatorSkillRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEvaluatorSkillResponse
+func (client *Client) CreateEvaluatorSkillWithOptions(name *string, request *CreateEvaluatorSkillRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEvaluatorSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentSpace) {
+		query["agentSpace"] = request.AgentSpace
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.Enable) {
+		body["enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.Files) {
+		body["files"] = request.Files
+	}
+
+	if !dara.IsNil(request.SkillName) {
+		body["skillName"] = request.SkillName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateEvaluatorSkill"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluator/" + dara.PercentEncode(dara.StringValue(name)) + "/skill"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateEvaluatorSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an evaluator skill.
+//
+// @param request - CreateEvaluatorSkillRequest
+//
+// @return CreateEvaluatorSkillResponse
+func (client *Client) CreateEvaluatorSkill(name *string, request *CreateEvaluatorSkillRequest) (_result *CreateEvaluatorSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateEvaluatorSkillResponse{}
+	_body, _err := client.CreateEvaluatorSkillWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an AgentSpace.
 //
 // @param request - DeleteAgentSpaceRequest
 //
@@ -508,7 +896,7 @@ func (client *Client) DeleteAgentSpaceWithOptions(agentSpace *string, request *D
 
 // Summary:
 //
-// 删除AgentSpace
+// Deletes an AgentSpace.
 //
 // @param request - DeleteAgentSpaceRequest
 //
@@ -527,7 +915,7 @@ func (client *Client) DeleteAgentSpace(agentSpace *string, request *DeleteAgentS
 
 // Summary:
 //
-// 删除上下文库
+// Deletes a context store.
 //
 // @param request - DeleteContextStoreRequest
 //
@@ -568,7 +956,7 @@ func (client *Client) DeleteContextStoreWithOptions(agentSpace *string, contextS
 
 // Summary:
 //
-// 删除上下文库
+// Deletes a context store.
 //
 // @param request - DeleteContextStoreRequest
 //
@@ -587,7 +975,7 @@ func (client *Client) DeleteContextStore(agentSpace *string, contextStoreName *s
 
 // Summary:
 //
-// 删除 API Key
+// Deletes an API key.
 //
 // @param request - DeleteContextStoreAPIKeyRequest
 //
@@ -628,7 +1016,7 @@ func (client *Client) DeleteContextStoreAPIKeyWithOptions(agentSpace *string, co
 
 // Summary:
 //
-// 删除 API Key
+// Deletes an API key.
 //
 // @param request - DeleteContextStoreAPIKeyRequest
 //
@@ -647,7 +1035,7 @@ func (client *Client) DeleteContextStoreAPIKey(agentSpace *string, contextStoreN
 
 // Summary:
 //
-// 删除数据集
+// Deletes a dataset.
 //
 // @param request - DeleteDatasetRequest
 //
@@ -688,7 +1076,7 @@ func (client *Client) DeleteDatasetWithOptions(agentSpace *string, datasetName *
 
 // Summary:
 //
-// 删除数据集
+// Deletes a dataset.
 //
 // @param request - DeleteDatasetRequest
 //
@@ -707,7 +1095,259 @@ func (client *Client) DeleteDataset(agentSpace *string, datasetName *string, req
 
 // Summary:
 //
-// 删除流水线
+// Deletes an evaluation run.
+//
+// @param request - DeleteEvaluationRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEvaluationRunResponse
+func (client *Client) DeleteEvaluationRunWithOptions(agentSpace *string, taskId *string, runId *string, request *DeleteEvaluationRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEvaluationRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteEvaluationRun"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluation-task/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/" + dara.PercentEncode(dara.StringValue(taskId)) + "/run/" + dara.PercentEncode(dara.StringValue(runId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteEvaluationRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an evaluation run.
+//
+// @param request - DeleteEvaluationRunRequest
+//
+// @return DeleteEvaluationRunResponse
+func (client *Client) DeleteEvaluationRun(agentSpace *string, taskId *string, runId *string, request *DeleteEvaluationRunRequest) (_result *DeleteEvaluationRunResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEvaluationRunResponse{}
+	_body, _err := client.DeleteEvaluationRunWithOptions(agentSpace, taskId, runId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an evaluation task.
+//
+// @param request - DeleteEvaluationTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEvaluationTaskResponse
+func (client *Client) DeleteEvaluationTaskWithOptions(agentSpace *string, taskId *string, request *DeleteEvaluationTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEvaluationTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteEvaluationTask"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluation-task/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteEvaluationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an evaluation task.
+//
+// @param request - DeleteEvaluationTaskRequest
+//
+// @return DeleteEvaluationTaskResponse
+func (client *Client) DeleteEvaluationTask(agentSpace *string, taskId *string, request *DeleteEvaluationTaskRequest) (_result *DeleteEvaluationTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEvaluationTaskResponse{}
+	_body, _err := client.DeleteEvaluationTaskWithOptions(agentSpace, taskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an evaluator.
+//
+// @param request - DeleteEvaluatorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEvaluatorResponse
+func (client *Client) DeleteEvaluatorWithOptions(agentSpace *string, name *string, request *DeleteEvaluatorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEvaluatorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteEvaluator"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluators/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/" + dara.PercentEncode(dara.StringValue(name))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteEvaluatorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an evaluator.
+//
+// @param request - DeleteEvaluatorRequest
+//
+// @return DeleteEvaluatorResponse
+func (client *Client) DeleteEvaluator(agentSpace *string, name *string, request *DeleteEvaluatorRequest) (_result *DeleteEvaluatorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEvaluatorResponse{}
+	_body, _err := client.DeleteEvaluatorWithOptions(agentSpace, name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an evaluator skill.
+//
+// @param request - DeleteEvaluatorSkillRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEvaluatorSkillResponse
+func (client *Client) DeleteEvaluatorSkillWithOptions(name *string, skillName *string, request *DeleteEvaluatorSkillRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEvaluatorSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentSpace) {
+		query["agentSpace"] = request.AgentSpace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteEvaluatorSkill"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluator/" + dara.PercentEncode(dara.StringValue(name)) + "/skill/" + dara.PercentEncode(dara.StringValue(skillName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteEvaluatorSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an evaluator skill.
+//
+// @param request - DeleteEvaluatorSkillRequest
+//
+// @return DeleteEvaluatorSkillResponse
+func (client *Client) DeleteEvaluatorSkill(name *string, skillName *string, request *DeleteEvaluatorSkillRequest) (_result *DeleteEvaluatorSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEvaluatorSkillResponse{}
+	_body, _err := client.DeleteEvaluatorSkillWithOptions(name, skillName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a pipeline.
 //
 // @param request - DeletePipelineRequest
 //
@@ -748,7 +1388,7 @@ func (client *Client) DeletePipelineWithOptions(agentSpace *string, pipelineName
 
 // Summary:
 //
-// 删除流水线
+// Deletes a pipeline.
 //
 // @param request - DeletePipelineRequest
 //
@@ -767,7 +1407,7 @@ func (client *Client) DeletePipeline(agentSpace *string, pipelineName *string, r
 
 // Summary:
 //
-// 查询Regions
+// Queries regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -822,7 +1462,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// 查询Regions
+// Queries regions.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -841,7 +1481,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// 执行查询语句
+// Executes a query statement.
 //
 // @param request - ExecuteQueryRequest
 //
@@ -858,8 +1498,28 @@ func (client *Client) ExecuteQueryWithOptions(agentSpace *string, datasetName *s
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.From) {
+		body["from"] = request.From
+	}
+
+	if !dara.IsNil(request.Length) {
+		body["length"] = request.Length
+	}
+
+	if !dara.IsNil(request.MaxOutputLength) {
+		body["maxOutputLength"] = request.MaxOutputLength
+	}
+
+	if !dara.IsNil(request.Offset) {
+		body["offset"] = request.Offset
+	}
+
 	if !dara.IsNil(request.Query) {
 		body["query"] = request.Query
+	}
+
+	if !dara.IsNil(request.To) {
+		body["to"] = request.To
 	}
 
 	if !dara.IsNil(request.Type) {
@@ -892,7 +1552,7 @@ func (client *Client) ExecuteQueryWithOptions(agentSpace *string, datasetName *s
 
 // Summary:
 //
-// 执行查询语句
+// Executes a query statement.
 //
 // @param request - ExecuteQueryRequest
 //
@@ -911,7 +1571,7 @@ func (client *Client) ExecuteQuery(agentSpace *string, datasetName *string, requ
 
 // Summary:
 //
-// 查询AgentSpace
+// Queries an AgentSpace.
 //
 // @param request - GetAgentSpaceRequest
 //
@@ -952,7 +1612,7 @@ func (client *Client) GetAgentSpaceWithOptions(agentSpace *string, request *GetA
 
 // Summary:
 //
-// 查询AgentSpace
+// Queries an AgentSpace.
 //
 // @param request - GetAgentSpaceRequest
 //
@@ -971,7 +1631,7 @@ func (client *Client) GetAgentSpace(agentSpace *string, request *GetAgentSpaceRe
 
 // Summary:
 //
-// 查询上下文库
+// Queries a context store.
 //
 // @param request - GetContextStoreRequest
 //
@@ -1012,7 +1672,7 @@ func (client *Client) GetContextStoreWithOptions(agentSpace *string, contextStor
 
 // Summary:
 //
-// 查询上下文库
+// Queries a context store.
 //
 // @param request - GetContextStoreRequest
 //
@@ -1031,7 +1691,7 @@ func (client *Client) GetContextStore(agentSpace *string, contextStoreName *stri
 
 // Summary:
 //
-// 获取 API Key
+// Retrieves an API key.
 //
 // @param request - GetContextStoreAPIKeyRequest
 //
@@ -1072,7 +1732,7 @@ func (client *Client) GetContextStoreAPIKeyWithOptions(agentSpace *string, conte
 
 // Summary:
 //
-// 获取 API Key
+// Retrieves an API key.
 //
 // @param request - GetContextStoreAPIKeyRequest
 //
@@ -1091,7 +1751,7 @@ func (client *Client) GetContextStoreAPIKey(agentSpace *string, contextStoreName
 
 // Summary:
 //
-// 查询数据集
+// Queries a dataset.
 //
 // @param request - GetDatasetRequest
 //
@@ -1132,7 +1792,7 @@ func (client *Client) GetDatasetWithOptions(agentSpace *string, datasetName *str
 
 // Summary:
 //
-// 查询数据集
+// Queries a dataset.
 //
 // @param request - GetDatasetRequest
 //
@@ -1151,7 +1811,263 @@ func (client *Client) GetDataset(agentSpace *string, datasetName *string, reques
 
 // Summary:
 //
-// 查询流水线
+// Retrieves the details of an evaluation run.
+//
+// @param request - GetEvaluationRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEvaluationRunResponse
+func (client *Client) GetEvaluationRunWithOptions(agentSpace *string, taskId *string, runId *string, request *GetEvaluationRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEvaluationRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetEvaluationRun"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluation-task/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/" + dara.PercentEncode(dara.StringValue(taskId)) + "/run/" + dara.PercentEncode(dara.StringValue(runId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetEvaluationRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an evaluation run.
+//
+// @param request - GetEvaluationRunRequest
+//
+// @return GetEvaluationRunResponse
+func (client *Client) GetEvaluationRun(agentSpace *string, taskId *string, runId *string, request *GetEvaluationRunRequest) (_result *GetEvaluationRunResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEvaluationRunResponse{}
+	_body, _err := client.GetEvaluationRunWithOptions(agentSpace, taskId, runId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an evaluation task.
+//
+// @param request - GetEvaluationTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEvaluationTaskResponse
+func (client *Client) GetEvaluationTaskWithOptions(agentSpace *string, taskId *string, request *GetEvaluationTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEvaluationTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetEvaluationTask"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluation-task/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetEvaluationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an evaluation task.
+//
+// @param request - GetEvaluationTaskRequest
+//
+// @return GetEvaluationTaskResponse
+func (client *Client) GetEvaluationTask(agentSpace *string, taskId *string, request *GetEvaluationTaskRequest) (_result *GetEvaluationTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEvaluationTaskResponse{}
+	_body, _err := client.GetEvaluationTaskWithOptions(agentSpace, taskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an evaluator.
+//
+// @param request - GetEvaluatorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEvaluatorResponse
+func (client *Client) GetEvaluatorWithOptions(agentSpace *string, name *string, request *GetEvaluatorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEvaluatorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetEvaluator"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluators/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/" + dara.PercentEncode(dara.StringValue(name))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetEvaluatorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an evaluator.
+//
+// @param request - GetEvaluatorRequest
+//
+// @return GetEvaluatorResponse
+func (client *Client) GetEvaluator(agentSpace *string, name *string, request *GetEvaluatorRequest) (_result *GetEvaluatorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEvaluatorResponse{}
+	_body, _err := client.GetEvaluatorWithOptions(agentSpace, name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an evaluator skill.
+//
+// @param request - GetEvaluatorSkillRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEvaluatorSkillResponse
+func (client *Client) GetEvaluatorSkillWithOptions(name *string, skillName *string, request *GetEvaluatorSkillRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEvaluatorSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentSpace) {
+		query["agentSpace"] = request.AgentSpace
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetEvaluatorSkill"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluator/" + dara.PercentEncode(dara.StringValue(name)) + "/skill/" + dara.PercentEncode(dara.StringValue(skillName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetEvaluatorSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an evaluator skill.
+//
+// @param request - GetEvaluatorSkillRequest
+//
+// @return GetEvaluatorSkillResponse
+func (client *Client) GetEvaluatorSkill(name *string, skillName *string, request *GetEvaluatorSkillRequest) (_result *GetEvaluatorSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEvaluatorSkillResponse{}
+	_body, _err := client.GetEvaluatorSkillWithOptions(name, skillName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a CI/CD pipeline.
 //
 // @param request - GetPipelineRequest
 //
@@ -1192,7 +2108,7 @@ func (client *Client) GetPipelineWithOptions(agentSpace *string, pipelineName *s
 
 // Summary:
 //
-// 查询流水线
+// Queries a CI/CD pipeline.
 //
 // @param request - GetPipelineRequest
 //
@@ -1211,7 +2127,141 @@ func (client *Client) GetPipeline(agentSpace *string, pipelineName *string, requ
 
 // Summary:
 //
-// 查询AgentSpace列表
+// Queries the details of a single pipeline run.
+//
+// @param request - GetPipelineRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPipelineRunResponse
+func (client *Client) GetPipelineRunWithOptions(agentSpace *string, pipelineName *string, runId *string, request *GetPipelineRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPipelineRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPipelineRun"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/pipeline/" + dara.PercentEncode(dara.StringValue(pipelineName)) + "/runs/" + dara.PercentEncode(dara.StringValue(runId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPipelineRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a single pipeline run.
+//
+// @param request - GetPipelineRunRequest
+//
+// @return GetPipelineRunResponse
+func (client *Client) GetPipelineRun(agentSpace *string, pipelineName *string, runId *string, request *GetPipelineRunRequest) (_result *GetPipelineRunResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPipelineRunResponse{}
+	_body, _err := client.GetPipelineRunWithOptions(agentSpace, pipelineName, runId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries pipeline run statistics.
+//
+// @param request - GetPipelineStatsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPipelineStatsResponse
+func (client *Client) GetPipelineStatsWithOptions(agentSpace *string, pipelineName *string, request *GetPipelineStatsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPipelineStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Granularity) {
+		query["granularity"] = request.Granularity
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPipelineStats"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/pipeline/" + dara.PercentEncode(dara.StringValue(pipelineName)) + "/stats"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPipelineStatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries pipeline run statistics.
+//
+// @param request - GetPipelineStatsRequest
+//
+// @return GetPipelineStatsResponse
+func (client *Client) GetPipelineStats(agentSpace *string, pipelineName *string, request *GetPipelineStatsRequest) (_result *GetPipelineStatsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPipelineStatsResponse{}
+	_body, _err := client.GetPipelineStatsWithOptions(agentSpace, pipelineName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of AgentSpaces.
 //
 // @param request - ListAgentSpacesRequest
 //
@@ -1240,6 +2290,10 @@ func (client *Client) ListAgentSpacesWithOptions(request *ListAgentSpacesRequest
 		query["nextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -1266,7 +2320,7 @@ func (client *Client) ListAgentSpacesWithOptions(request *ListAgentSpacesRequest
 
 // Summary:
 //
-// 查询AgentSpace列表
+// Queries a list of AgentSpaces.
 //
 // @param request - ListAgentSpacesRequest
 //
@@ -1285,7 +2339,7 @@ func (client *Client) ListAgentSpaces(request *ListAgentSpacesRequest) (_result 
 
 // Summary:
 //
-// 获取 API Key 列表
+// Retrieves a list of API keys.
 //
 // @param request - ListContextStoreAPIKeysRequest
 //
@@ -1336,7 +2390,7 @@ func (client *Client) ListContextStoreAPIKeysWithOptions(agentSpace *string, con
 
 // Summary:
 //
-// 获取 API Key 列表
+// Retrieves a list of API keys.
 //
 // @param request - ListContextStoreAPIKeysRequest
 //
@@ -1355,7 +2409,7 @@ func (client *Client) ListContextStoreAPIKeys(agentSpace *string, contextStoreNa
 
 // Summary:
 //
-// 查询上下文库列表
+// Queries a list of context stores.
 //
 // @param request - ListContextStoresRequest
 //
@@ -1414,7 +2468,7 @@ func (client *Client) ListContextStoresWithOptions(agentSpace *string, request *
 
 // Summary:
 //
-// 查询上下文库列表
+// Queries a list of context stores.
 //
 // @param request - ListContextStoresRequest
 //
@@ -1433,7 +2487,7 @@ func (client *Client) ListContextStores(agentSpace *string, request *ListContext
 
 // Summary:
 //
-// 查询数据集列表
+// Queries a list of datasets.
 //
 // @param request - ListDatasetsRequest
 //
@@ -1488,7 +2542,7 @@ func (client *Client) ListDatasetsWithOptions(agentSpace *string, request *ListD
 
 // Summary:
 //
-// 查询数据集列表
+// Queries a list of datasets.
 //
 // @param request - ListDatasetsRequest
 //
@@ -1507,7 +2561,425 @@ func (client *Client) ListDatasets(agentSpace *string, request *ListDatasetsRequ
 
 // Summary:
 //
-// 查询流水线列表
+// Queries the list of evaluation runs.
+//
+// @param request - ListEvaluationRunsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEvaluationRunsResponse
+func (client *Client) ListEvaluationRunsWithOptions(agentSpace *string, taskId *string, request *ListEvaluationRunsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEvaluationRunsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RunType) {
+		query["runType"] = request.RunType
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListEvaluationRuns"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluation-task/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/" + dara.PercentEncode(dara.StringValue(taskId)) + "/runs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListEvaluationRunsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of evaluation runs.
+//
+// @param request - ListEvaluationRunsRequest
+//
+// @return ListEvaluationRunsResponse
+func (client *Client) ListEvaluationRuns(agentSpace *string, taskId *string, request *ListEvaluationRunsRequest) (_result *ListEvaluationRunsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEvaluationRunsResponse{}
+	_body, _err := client.ListEvaluationRunsWithOptions(agentSpace, taskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of evaluation tasks.
+//
+// @param request - ListEvaluationTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEvaluationTasksResponse
+func (client *Client) ListEvaluationTasksWithOptions(request *ListEvaluationTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEvaluationTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentSpace) {
+		query["agentSpace"] = request.AgentSpace
+	}
+
+	if !dara.IsNil(request.Channel) {
+		query["channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.DataType) {
+		query["dataType"] = request.DataType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskMode) {
+		query["taskMode"] = request.TaskMode
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["taskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListEvaluationTasks"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluation-tasks"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListEvaluationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of evaluation tasks.
+//
+// @param request - ListEvaluationTasksRequest
+//
+// @return ListEvaluationTasksResponse
+func (client *Client) ListEvaluationTasks(request *ListEvaluationTasksRequest) (_result *ListEvaluationTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEvaluationTasksResponse{}
+	_body, _err := client.ListEvaluationTasksWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the skill list of an evaluator.
+//
+// @param request - ListEvaluatorSkillsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEvaluatorSkillsResponse
+func (client *Client) ListEvaluatorSkillsWithOptions(name *string, request *ListEvaluatorSkillsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEvaluatorSkillsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentSpace) {
+		query["agentSpace"] = request.AgentSpace
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListEvaluatorSkills"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluator/" + dara.PercentEncode(dara.StringValue(name)) + "/skills"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListEvaluatorSkillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the skill list of an evaluator.
+//
+// @param request - ListEvaluatorSkillsRequest
+//
+// @return ListEvaluatorSkillsResponse
+func (client *Client) ListEvaluatorSkills(name *string, request *ListEvaluatorSkillsRequest) (_result *ListEvaluatorSkillsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEvaluatorSkillsResponse{}
+	_body, _err := client.ListEvaluatorSkillsWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of evaluators.
+//
+// @param request - ListEvaluatorsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEvaluatorsResponse
+func (client *Client) ListEvaluatorsWithOptions(request *ListEvaluatorsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEvaluatorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentSpace) {
+		query["agentSpace"] = request.AgentSpace
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["source"] = request.Source
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListEvaluators"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluators"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListEvaluatorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of evaluators.
+//
+// @param request - ListEvaluatorsRequest
+//
+// @return ListEvaluatorsResponse
+func (client *Client) ListEvaluators(request *ListEvaluatorsRequest) (_result *ListEvaluatorsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEvaluatorsResponse{}
+	_body, _err := client.ListEvaluatorsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution history list of a pipeline.
+//
+// @param request - ListPipelineRunsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPipelineRunsResponse
+func (client *Client) ListPipelineRunsWithOptions(agentSpace *string, pipelineName *string, request *ListPipelineRunsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPipelineRunsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TriggerType) {
+		query["triggerType"] = request.TriggerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPipelineRuns"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/pipeline/" + dara.PercentEncode(dara.StringValue(pipelineName)) + "/runs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPipelineRunsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution history list of a pipeline.
+//
+// @param request - ListPipelineRunsRequest
+//
+// @return ListPipelineRunsResponse
+func (client *Client) ListPipelineRuns(agentSpace *string, pipelineName *string, request *ListPipelineRunsRequest) (_result *ListPipelineRunsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPipelineRunsResponse{}
+	_body, _err := client.ListPipelineRunsWithOptions(agentSpace, pipelineName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists CI/CD pipelines.
 //
 // @param request - ListPipelinesRequest
 //
@@ -1536,6 +3008,14 @@ func (client *Client) ListPipelinesWithOptions(agentSpace *string, request *List
 		query["pipelineName"] = request.PipelineName
 	}
 
+	if !dara.IsNil(request.ScheduleStatus) {
+		query["scheduleStatus"] = request.ScheduleStatus
+	}
+
+	if !dara.IsNil(request.ScheduleType) {
+		query["scheduleType"] = request.ScheduleType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -1562,7 +3042,7 @@ func (client *Client) ListPipelinesWithOptions(agentSpace *string, request *List
 
 // Summary:
 //
-// 查询流水线列表
+// Lists CI/CD pipelines.
 //
 // @param request - ListPipelinesRequest
 //
@@ -1581,7 +3061,207 @@ func (client *Client) ListPipelines(agentSpace *string, request *ListPipelinesRe
 
 // Summary:
 //
-// 搜索上下文
+// Pauses a pipeline.
+//
+// @param request - PausePipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PausePipelineResponse
+func (client *Client) PausePipelineWithOptions(agentSpace *string, pipelineName *string, request *PausePipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PausePipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Reason) {
+		body["reason"] = request.Reason
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PausePipeline"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/pipeline/" + dara.PercentEncode(dara.StringValue(pipelineName)) + "/pause"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PausePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Pauses a pipeline.
+//
+// @param request - PausePipelineRequest
+//
+// @return PausePipelineResponse
+func (client *Client) PausePipeline(agentSpace *string, pipelineName *string, request *PausePipelineRequest) (_result *PausePipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PausePipelineResponse{}
+	_body, _err := client.PausePipelineWithOptions(agentSpace, pipelineName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Resumes a pipeline.
+//
+// @param request - ResumePipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumePipelineResponse
+func (client *Client) ResumePipelineWithOptions(agentSpace *string, pipelineName *string, request *ResumePipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResumePipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumePipeline"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/pipeline/" + dara.PercentEncode(dara.StringValue(pipelineName)) + "/resume"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResumePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Resumes a pipeline.
+//
+// @param request - ResumePipelineRequest
+//
+// @return ResumePipelineResponse
+func (client *Client) ResumePipeline(agentSpace *string, pipelineName *string, request *ResumePipelineRequest) (_result *ResumePipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResumePipelineResponse{}
+	_body, _err := client.ResumePipelineWithOptions(agentSpace, pipelineName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Manually triggers a pipeline execution.
+//
+// @param request - RunPipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunPipelineResponse
+func (client *Client) RunPipelineWithOptions(agentSpace *string, pipelineName *string, request *RunPipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunPipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FromTime) {
+		body["fromTime"] = request.FromTime
+	}
+
+	if !dara.IsNil(request.Output) {
+		body["output"] = request.Output
+	}
+
+	if !dara.IsNil(request.ToTime) {
+		body["toTime"] = request.ToTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunPipeline"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/pipeline/" + dara.PercentEncode(dara.StringValue(pipelineName)) + "/run"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunPipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Manually triggers a pipeline execution.
+//
+// @param request - RunPipelineRequest
+//
+// @return RunPipelineResponse
+func (client *Client) RunPipeline(agentSpace *string, pipelineName *string, request *RunPipelineRequest) (_result *RunPipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunPipelineResponse{}
+	_body, _err := client.RunPipelineWithOptions(agentSpace, pipelineName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Searches contexts.
 //
 // @param request - SearchContextRequest
 //
@@ -1648,7 +3328,7 @@ func (client *Client) SearchContextWithOptions(agentSpace *string, contextStoreN
 
 // Summary:
 //
-// 搜索上下文
+// Searches contexts.
 //
 // @param request - SearchContextRequest
 //
@@ -1667,7 +3347,73 @@ func (client *Client) SearchContext(agentSpace *string, contextStoreName *string
 
 // Summary:
 //
-// 更新AgentSpace
+// Stops a pipeline.
+//
+// @param request - TerminatePipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TerminatePipelineResponse
+func (client *Client) TerminatePipelineWithOptions(agentSpace *string, pipelineName *string, request *TerminatePipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TerminatePipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Reason) {
+		body["reason"] = request.Reason
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TerminatePipeline"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/agentspace/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/pipeline/" + dara.PercentEncode(dara.StringValue(pipelineName)) + "/terminate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TerminatePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops a pipeline.
+//
+// @param request - TerminatePipelineRequest
+//
+// @return TerminatePipelineResponse
+func (client *Client) TerminatePipeline(agentSpace *string, pipelineName *string, request *TerminatePipelineRequest) (_result *TerminatePipelineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TerminatePipelineResponse{}
+	_body, _err := client.TerminatePipelineWithOptions(agentSpace, pipelineName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an AgentSpace.
 //
 // @param request - UpdateAgentSpaceRequest
 //
@@ -1724,7 +3470,7 @@ func (client *Client) UpdateAgentSpaceWithOptions(agentSpace *string, request *U
 
 // Summary:
 //
-// 更新AgentSpace
+// Updates an AgentSpace.
 //
 // @param request - UpdateAgentSpaceRequest
 //
@@ -1743,7 +3489,7 @@ func (client *Client) UpdateAgentSpace(agentSpace *string, request *UpdateAgentS
 
 // Summary:
 //
-// 修改上下文库配置
+// Modifies the configuration of a context store.
 //
 // @param request - UpdateContextStoreRequest
 //
@@ -1804,7 +3550,7 @@ func (client *Client) UpdateContextStoreWithOptions(agentSpace *string, contextS
 
 // Summary:
 //
-// 修改上下文库配置
+// Modifies the configuration of a context store.
 //
 // @param request - UpdateContextStoreRequest
 //
@@ -1823,7 +3569,7 @@ func (client *Client) UpdateContextStore(agentSpace *string, contextStoreName *s
 
 // Summary:
 //
-// 更新数据集
+// Updates a dataset.
 //
 // @param request - UpdateDatasetRequest
 //
@@ -1880,7 +3626,7 @@ func (client *Client) UpdateDatasetWithOptions(agentSpace *string, datasetName *
 
 // Summary:
 //
-// 更新数据集
+// Updates a dataset.
 //
 // @param request - UpdateDatasetRequest
 //
@@ -1899,7 +3645,353 @@ func (client *Client) UpdateDataset(agentSpace *string, datasetName *string, req
 
 // Summary:
 //
-// 更新流水线
+// Updates an evaluation run.
+//
+// @param request - UpdateEvaluationRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEvaluationRunResponse
+func (client *Client) UpdateEvaluationRunWithOptions(agentSpace *string, taskId *string, runId *string, request *UpdateEvaluationRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateEvaluationRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateEvaluationRun"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluation-task/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/" + dara.PercentEncode(dara.StringValue(taskId)) + "/run/" + dara.PercentEncode(dara.StringValue(runId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateEvaluationRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an evaluation run.
+//
+// @param request - UpdateEvaluationRunRequest
+//
+// @return UpdateEvaluationRunResponse
+func (client *Client) UpdateEvaluationRun(agentSpace *string, taskId *string, runId *string, request *UpdateEvaluationRunRequest) (_result *UpdateEvaluationRunResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateEvaluationRunResponse{}
+	_body, _err := client.UpdateEvaluationRunWithOptions(agentSpace, taskId, runId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an evaluation task.
+//
+// @param request - UpdateEvaluationTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEvaluationTaskResponse
+func (client *Client) UpdateEvaluationTaskWithOptions(agentSpace *string, taskId *string, request *UpdateEvaluationTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateEvaluationTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.DataFilter) {
+		body["dataFilter"] = request.DataFilter
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Evaluators) {
+		body["evaluators"] = request.Evaluators
+	}
+
+	if !dara.IsNil(request.RunStrategies) {
+		body["runStrategies"] = request.RunStrategies
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateEvaluationTask"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluation-task/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateEvaluationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an evaluation task.
+//
+// @param request - UpdateEvaluationTaskRequest
+//
+// @return UpdateEvaluationTaskResponse
+func (client *Client) UpdateEvaluationTask(agentSpace *string, taskId *string, request *UpdateEvaluationTaskRequest) (_result *UpdateEvaluationTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateEvaluationTaskResponse{}
+	_body, _err := client.UpdateEvaluationTaskWithOptions(agentSpace, taskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an evaluator.
+//
+// @param request - UpdateEvaluatorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEvaluatorResponse
+func (client *Client) UpdateEvaluatorWithOptions(agentSpace *string, name *string, request *UpdateEvaluatorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateEvaluatorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Annotations) {
+		body["annotations"] = request.Annotations
+	}
+
+	if !dara.IsNil(request.Config) {
+		body["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.Properties) {
+		body["properties"] = request.Properties
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	if !dara.IsNil(request.VersionDescription) {
+		body["versionDescription"] = request.VersionDescription
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateEvaluator"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluators/" + dara.PercentEncode(dara.StringValue(agentSpace)) + "/" + dara.PercentEncode(dara.StringValue(name))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateEvaluatorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an evaluator.
+//
+// @param request - UpdateEvaluatorRequest
+//
+// @return UpdateEvaluatorResponse
+func (client *Client) UpdateEvaluator(agentSpace *string, name *string, request *UpdateEvaluatorRequest) (_result *UpdateEvaluatorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateEvaluatorResponse{}
+	_body, _err := client.UpdateEvaluatorWithOptions(agentSpace, name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an evaluator skill.
+//
+// @param request - UpdateEvaluatorSkillRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEvaluatorSkillResponse
+func (client *Client) UpdateEvaluatorSkillWithOptions(name *string, skillName *string, request *UpdateEvaluatorSkillRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateEvaluatorSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentSpace) {
+		query["agentSpace"] = request.AgentSpace
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.Enable) {
+		body["enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.Files) {
+		body["files"] = request.Files
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateEvaluatorSkill"),
+		Version:     dara.String("2026-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/evaluator/" + dara.PercentEncode(dara.StringValue(name)) + "/skill/" + dara.PercentEncode(dara.StringValue(skillName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateEvaluatorSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an evaluator skill.
+//
+// @param request - UpdateEvaluatorSkillRequest
+//
+// @return UpdateEvaluatorSkillResponse
+func (client *Client) UpdateEvaluatorSkill(name *string, skillName *string, request *UpdateEvaluatorSkillRequest) (_result *UpdateEvaluatorSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateEvaluatorSkillResponse{}
+	_body, _err := client.UpdateEvaluatorSkillWithOptions(name, skillName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a pipeline.
 //
 // @param request - UpdatePipelineRequest
 //
@@ -1968,7 +4060,7 @@ func (client *Client) UpdatePipelineWithOptions(agentSpace *string, pipelineName
 
 // Summary:
 //
-// 更新流水线
+// Updates a pipeline.
 //
 // @param request - UpdatePipelineRequest
 //

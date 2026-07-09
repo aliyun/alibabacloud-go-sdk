@@ -32,41 +32,66 @@ type iGetContextStoreResponseBody interface {
 }
 
 type GetContextStoreResponseBody struct {
+	// The name of the AgentSpace to which the context store belongs.
+	//
 	// example:
 	//
 	// my-agent-space
-	AgentSpace *string                            `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
-	Config     *GetContextStoreResponseBodyConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The configuration of the context store.
+	Config *GetContextStoreResponseBodyConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The context store name.
+	//
 	// example:
 	//
 	// my-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
+	// The type of the context store, such as experience or memory.
+	//
 	// example:
 	//
 	// experience
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
+	// The time when the context store was created, in ISO 8601 UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-01-01T00:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the context store.
+	//
 	// example:
 	//
 	// 我的上下文库
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The region ID of the context store.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The status of the context store. Valid values:
+	//
+	// - ACTIVE
+	//
+	// - INITIALIZING
+	//
+	// - FAILED
+	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The time when the context store was last updated, in ISO 8601 UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -183,19 +208,26 @@ func (s *GetContextStoreResponseBody) Validate() error {
 }
 
 type GetContextStoreResponseBodyConfig struct {
+	// The metadata field mapping. The key is the business field and the value is the storage field.
+	//
 	// example:
 	//
 	// {"userId":"user_id","sessionId":"session_id"}
 	MetadataField map[string]*string `json:"metadataField,omitempty" xml:"metadataField,omitempty"`
+	// The experience mining interval. Valid values: 1h, 6h, 12h, and 1d. Default value: 1d.
+	//
 	// example:
 	//
 	// 1d
 	MiningInterval *string `json:"miningInterval,omitempty" xml:"miningInterval,omitempty"`
+	// The list of service names. This works together with source.agentSpace to locate the trace data source. This value cannot be changed in the current version.
+	//
 	// example:
 	//
 	// ["order-service","payment-service"]
-	ServiceNames []*string                                `json:"serviceNames,omitempty" xml:"serviceNames,omitempty" type:"Repeated"`
-	Source       *GetContextStoreResponseBodyConfigSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	ServiceNames []*string `json:"serviceNames,omitempty" xml:"serviceNames,omitempty" type:"Repeated"`
+	// The datasource config passed in by the user. This serves only as the root identifier of the data source.
+	Source *GetContextStoreResponseBodyConfigSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
 }
 
 func (s GetContextStoreResponseBodyConfig) String() string {
@@ -252,10 +284,14 @@ func (s *GetContextStoreResponseBodyConfig) Validate() error {
 }
 
 type GetContextStoreResponseBodyConfigSource struct {
+	// The AgentSpace where the trace data source resides. This is the same as the AgentSpace specified during creation.
+	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The start time for data backfill, in ISO 8601 UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:

@@ -20,18 +20,26 @@ type iListContextStoresRequest interface {
 }
 
 type ListContextStoresRequest struct {
+	// Filters context stores by name. Exact match is supported. If this parameter is not specified, no filtering is applied.
+	//
 	// example:
 	//
 	// my-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
+	// Filters context stores by type, such as experience or memory. If this parameter is not specified, no filtering is applied.
+	//
 	// example:
 	//
 	// experience
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
+	// The maximum number of context stores to return. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. Set this parameter to the nextToken value returned in the previous response to retrieve the next page. Do not specify this parameter for the first request.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg5MA==

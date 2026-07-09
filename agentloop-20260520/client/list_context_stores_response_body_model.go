@@ -22,19 +22,28 @@ type iListContextStoresResponseBody interface {
 }
 
 type ListContextStoresResponseBody struct {
+	// The maximum number of entries per page that was specified in the request. This value is echoed back.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token for the next page. An empty string indicates that the current page is the last page.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg5MA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID. You can use this ID to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
-	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []*ListContextStoresResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of context stores.
+	Results []*ListContextStoresResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// The total number of context stores that match the query conditions.
+	//
 	// example:
 	//
 	// 5
@@ -108,40 +117,58 @@ func (s *ListContextStoresResponseBody) Validate() error {
 }
 
 type ListContextStoresResponseBodyResults struct {
+	// The name of the AgentSpace to which the context store belongs.
+	//
 	// example:
 	//
 	// my-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// The name of the context store.
+	//
 	// example:
 	//
 	// my-context-store
 	ContextStoreName *string `json:"contextStoreName,omitempty" xml:"contextStoreName,omitempty"`
+	// The type of the context store, such as experience or memory.
+	//
 	// example:
 	//
 	// experience
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
+	// The time when the context store was created, in ISO 8601 UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-01-01T00:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the context store.
+	//
 	// example:
 	//
 	// 我的上下文库
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The region ID of the context store.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The list of service names. This parameter has a value only for context stores of the experience type. The service names are used together with the data source AgentSpace to locate trace data sources.
+	//
 	// example:
 	//
 	// ["order-service","payment-service"]
 	ServiceNames []*string `json:"serviceNames,omitempty" xml:"serviceNames,omitempty" type:"Repeated"`
+	// The status of the context store. Valid values: ACTIVE, INITIALIZING, and FAILED.
+	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The time when the context store was last updated, in ISO 8601 UTC format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
