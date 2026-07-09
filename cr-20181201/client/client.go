@@ -1111,6 +1111,84 @@ func (client *Client) CreateChartRepository(request *CreateChartRepositoryReques
 
 // Summary:
 //
+// Creates a custom domain name for an instance.
+//
+// @param request - CreateInstanceCustomizedDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceCustomizedDomainResponse
+func (client *Client) CreateInstanceCustomizedDomainWithOptions(request *CreateInstanceCustomizedDomainRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceCustomizedDomainResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertId) {
+		query["CertId"] = request.CertId
+	}
+
+	if !dara.IsNil(request.CertRegionId) {
+		query["CertRegionId"] = request.CertRegionId
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ModuleName) {
+		query["ModuleName"] = request.ModuleName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInstanceCustomizedDomain"),
+		Version:     dara.String("2018-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInstanceCustomizedDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a custom domain name for an instance.
+//
+// @param request - CreateInstanceCustomizedDomainRequest
+//
+// @return CreateInstanceCustomizedDomainResponse
+func (client *Client) CreateInstanceCustomizedDomain(request *CreateInstanceCustomizedDomainRequest) (_result *CreateInstanceCustomizedDomainResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateInstanceCustomizedDomainResponse{}
+	_body, _err := client.CreateInstanceCustomizedDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a whitelist policy for an instance access endpoint (public network only).
 //
 // @param tmpReq - CreateInstanceEndpointAclPolicyRequest
@@ -2841,6 +2919,76 @@ func (client *Client) DeleteEventCenterRule(request *DeleteEventCenterRuleReques
 
 // Summary:
 //
+// 删除实例自定义域名
+//
+// @param request - DeleteInstanceCustomizedDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceCustomizedDomainResponse
+func (client *Client) DeleteInstanceCustomizedDomainWithOptions(request *DeleteInstanceCustomizedDomainRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceCustomizedDomainResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ModuleName) {
+		query["ModuleName"] = request.ModuleName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteInstanceCustomizedDomain"),
+		Version:     dara.String("2018-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteInstanceCustomizedDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实例自定义域名
+//
+// @param request - DeleteInstanceCustomizedDomainRequest
+//
+// @return DeleteInstanceCustomizedDomainResponse
+func (client *Client) DeleteInstanceCustomizedDomain(request *DeleteInstanceCustomizedDomainRequest) (_result *DeleteInstanceCustomizedDomainResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteInstanceCustomizedDomainResponse{}
+	_body, _err := client.DeleteInstanceCustomizedDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a whitelist policy from the public access endpoint of an instance.
 //
 // @param tmpReq - DeleteInstanceEndpointAclPolicyRequest
@@ -4309,6 +4457,68 @@ func (client *Client) GetInstanceCount() (_result *GetInstanceCountResponse, _er
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetInstanceCountResponse{}
 	_body, _err := client.GetInstanceCountWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetInstanceCustomizedDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceCustomizedDomainResponse
+func (client *Client) GetInstanceCustomizedDomainWithOptions(request *GetInstanceCustomizedDomainRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceCustomizedDomainResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ModuleName) {
+		query["ModuleName"] = request.ModuleName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceCustomizedDomain"),
+		Version:     dara.String("2018-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceCustomizedDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetInstanceCustomizedDomainRequest
+//
+// @return GetInstanceCustomizedDomainResponse
+func (client *Client) GetInstanceCustomizedDomain(request *GetInstanceCustomizedDomainRequest) (_result *GetInstanceCustomizedDomainResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetInstanceCustomizedDomainResponse{}
+	_body, _err := client.GetInstanceCustomizedDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8109,6 +8319,84 @@ func (client *Client) UpdateEventCenterRule(request *UpdateEventCenterRuleReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateEventCenterRuleResponse{}
 	_body, _err := client.UpdateEventCenterRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实例自定义域名
+//
+// @param request - UpdateInstanceCustomizedDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceCustomizedDomainResponse
+func (client *Client) UpdateInstanceCustomizedDomainWithOptions(request *UpdateInstanceCustomizedDomainRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceCustomizedDomainResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertId) {
+		query["CertId"] = request.CertId
+	}
+
+	if !dara.IsNil(request.CertRegionId) {
+		query["CertRegionId"] = request.CertRegionId
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ModuleName) {
+		query["ModuleName"] = request.ModuleName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateInstanceCustomizedDomain"),
+		Version:     dara.String("2018-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateInstanceCustomizedDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实例自定义域名
+//
+// @param request - UpdateInstanceCustomizedDomainRequest
+//
+// @return UpdateInstanceCustomizedDomainResponse
+func (client *Client) UpdateInstanceCustomizedDomain(request *UpdateInstanceCustomizedDomainRequest) (_result *UpdateInstanceCustomizedDomainResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateInstanceCustomizedDomainResponse{}
+	_body, _err := client.UpdateInstanceCustomizedDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
