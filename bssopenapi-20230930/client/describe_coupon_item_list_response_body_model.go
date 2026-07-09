@@ -22,19 +22,28 @@ type iDescribeCouponItemListResponseBody interface {
 }
 
 type DescribeCouponItemListResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        []*DescribeCouponItemListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The data list.
+	Data []*DescribeCouponItemListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EAE08A27-386C-579E-966D-8853EC3C5D0E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 5
@@ -108,10 +117,17 @@ func (s *DescribeCouponItemListResponseBody) Validate() error {
 }
 
 type DescribeCouponItemListResponseBodyData struct {
+	// The product code.
+	//
 	// example:
 	//
 	// vm
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The product name.
+	//
+	// example:
+	//
+	// 云服务器ECS
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

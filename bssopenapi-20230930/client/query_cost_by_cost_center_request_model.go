@@ -22,26 +22,36 @@ type iQueryCostByCostCenterRequest interface {
 }
 
 type QueryCostByCostCenterRequest struct {
+	// Billing month (format: YYYYMM)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 202506
 	BillingMonth *int32 `json:"BillingMonth,omitempty" xml:"BillingMonth,omitempty"`
+	// Whether to display data rows with zero payable amount
+	//
 	// example:
 	//
 	// false
 	DisplayZeroAmountBills *bool `json:"DisplayZeroAmountBills,omitempty" xml:"DisplayZeroAmountBills,omitempty"`
+	// Whether to aggregate and display by cost center level
+	//
 	// example:
 	//
 	// false
 	GroupByCostCenterLevel *bool `json:"GroupByCostCenterLevel,omitempty" xml:"GroupByCostCenterLevel,omitempty"`
+	// Cost type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// REQUIRE_AMOUNT
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// Account ID that owns the resource
+	//
 	// example:
 	//
 	// 1374729705039203

@@ -56,81 +56,126 @@ type iGetFundAccountAvailableAmountResponseBody interface {
 }
 
 type GetFundAccountAvailableAmountResponseBody struct {
+	// Available amount
+	//
 	// example:
 	//
 	// 100
 	AvailableAmount *string `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
+	// Available credit amount
+	//
 	// example:
 	//
 	// 50
 	AvailableCreditAmount *string `json:"AvailableCreditAmount,omitempty" xml:"AvailableCreditAmount,omitempty"`
+	// Bank acceptance bill amount
+	//
 	// example:
 	//
 	// 0
 	BankAcceptanceAmount *string `json:"BankAcceptanceAmount,omitempty" xml:"BankAcceptanceAmount,omitempty"`
+	// Cash balance
+	//
 	// example:
 	//
 	// 50
 	CashAmount *string `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	// Credit quota
+	//
 	// example:
 	//
 	// 100
 	CreditAmount *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
+	// Credit refund balance
+	//
 	// example:
 	//
 	// 0
 	CreditRefundAmount *string `json:"CreditRefundAmount,omitempty" xml:"CreditRefundAmount,omitempty"`
-	CreditUser         *bool   `json:"CreditUser,omitempty" xml:"CreditUser,omitempty"`
+	// Indicates whether credit control is enabled
+	CreditUser *bool `json:"CreditUser,omitempty" xml:"CreditUser,omitempty"`
+	// Currency
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// Current month uncleared amount
+	//
 	// example:
 	//
 	// 20
-	CurrentMonthUnclearedAmount *string                                                      `json:"CurrentMonthUnclearedAmount,omitempty" xml:"CurrentMonthUnclearedAmount,omitempty"`
-	ExtendLedgerList            []*GetFundAccountAvailableAmountResponseBodyExtendLedgerList `json:"ExtendLedgerList,omitempty" xml:"ExtendLedgerList,omitempty" type:"Repeated"`
+	CurrentMonthUnclearedAmount *string `json:"CurrentMonthUnclearedAmount,omitempty" xml:"CurrentMonthUnclearedAmount,omitempty"`
+	// Extended ledger list
+	ExtendLedgerList []*GetFundAccountAvailableAmountResponseBodyExtendLedgerList `json:"ExtendLedgerList,omitempty" xml:"ExtendLedgerList,omitempty" type:"Repeated"`
+	// Account ID
+	//
 	// example:
 	//
 	// 12332112
 	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// Account ID of the fund account owner
+	//
 	// example:
 	//
 	// 1344312434
 	FundAccountOwnerAccountId *string `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
+	// Account status
+	//
 	// example:
 	//
 	// valid
 	FundAccountStatus *string `json:"FundAccountStatus,omitempty" xml:"FundAccountStatus,omitempty"`
+	// Fund account type. Valid values:
+	//
+	// DIRECT_USER: Alibaba Cloud direct customer account.
+	//
+	// RESELLER_QUOTA: ecosystem account.
+	//
 	// example:
 	//
 	// REDIRECT_USER
 	FundAccountType *string `json:"FundAccountType,omitempty" xml:"FundAccountType,omitempty"`
+	// Historical months uncleared amount
+	//
 	// example:
 	//
 	// 30
 	HistoryMonthUnclearedAmount *string `json:"HistoryMonthUnclearedAmount,omitempty" xml:"HistoryMonthUnclearedAmount,omitempty"`
+	// Response metadata
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Negative bill amount
+	//
 	// example:
 	//
 	// 0
-	NegativeBillAmount     *string                                                            `json:"NegativeBillAmount,omitempty" xml:"NegativeBillAmount,omitempty"`
+	NegativeBillAmount *string `json:"NegativeBillAmount,omitempty" xml:"NegativeBillAmount,omitempty"`
+	// Original cash ledger list. International site users may have cash ledgers in multiple currencies.
 	OriginalCashAmountList []*GetFundAccountAvailableAmountResponseBodyOriginalCashAmountList `json:"OriginalCashAmountList,omitempty" xml:"OriginalCashAmountList,omitempty" type:"Repeated"`
+	// Ecosystem end customer quota
+	//
 	// example:
 	//
 	// 20
 	QuotaAmount *string `json:"QuotaAmount,omitempty" xml:"QuotaAmount,omitempty"`
+	// Consumed quota of ecosystem end customer
+	//
 	// example:
 	//
 	// 10
 	QuotaConsumedAmount *string `json:"QuotaConsumedAmount,omitempty" xml:"QuotaConsumedAmount,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// F96A2D13-7509-5DF9-A60E-E7E3A3CB68E8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Uncleared amount (current month uncleared + historical months uncleared)
+	//
 	// example:
 	//
 	// 50
@@ -366,14 +411,20 @@ func (s *GetFundAccountAvailableAmountResponseBody) Validate() error {
 }
 
 type GetFundAccountAvailableAmountResponseBodyExtendLedgerList struct {
+	// Currency of the ledger amount, such as CNY and USD.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// Ledger name
+	//
 	// example:
 	//
 	// 应付对冲账本
 	LedgerName *string `json:"LedgerName,omitempty" xml:"LedgerName,omitempty"`
+	// Ledger balance
+	//
 	// example:
 	//
 	// 50
@@ -420,10 +471,14 @@ func (s *GetFundAccountAvailableAmountResponseBodyExtendLedgerList) Validate() e
 }
 
 type GetFundAccountAvailableAmountResponseBodyOriginalCashAmountList struct {
+	// Amount
+	//
 	// example:
 	//
 	// 10
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Currency
+	//
 	// example:
 	//
 	// USD

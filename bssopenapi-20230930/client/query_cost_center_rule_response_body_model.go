@@ -34,45 +34,72 @@ type iQueryCostCenterRuleResponseBody interface {
 }
 
 type QueryCostCenterRuleResponseBody struct {
+	// The cost center ID.
+	//
 	// example:
 	//
 	// 597745
-	CostCenterId     *int64                                           `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// The rule expression.
 	FilterExpression *QueryCostCenterRuleResponseBodyFilterExpression `json:"FilterExpression,omitempty" xml:"FilterExpression,omitempty" type:"Struct"`
+	// The creation time.
+	//
 	// example:
 	//
 	// Tue Nov 12 14:49:43 CST 2024
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// Wed Oct 16 10:15:37 CST 2024
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the cost center auto-allocation rule.
+	//
 	// example:
 	//
 	// 32048
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The deletion status. Valid values:
+	//
+	// 	- **0**: active.
+	//
+	// 	- **1**: inactive.
+	//
 	// example:
 	//
 	// false
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	// Response structure metadata.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The owner user of the cost center.
+	//
 	// example:
 	//
 	// 1977800748053695
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// UUID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The root cost center ID.
+	//
 	// example:
 	//
 	// 0
 	RootCostCenterId *int64 `json:"RootCostCenterId,omitempty" xml:"RootCostCenterId,omitempty"`
+	// The status. Valid values:
+	//
+	// - on: active.
+	//
+	// - off: inactive.
+	//
 	// example:
 	//
 	// on
@@ -196,13 +223,24 @@ func (s *QueryCostCenterRuleResponseBody) Validate() error {
 }
 
 type QueryCostCenterRuleResponseBodyFilterExpression struct {
+	// The operation type.
+	//
 	// example:
 	//
 	// NARY
-	ExpressionType *string                                                      `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
-	FilterValues   *QueryCostCenterRuleResponseBodyFilterExpressionFilterValues `json:"FilterValues,omitempty" xml:"FilterValues,omitempty" type:"Struct"`
-	Operand        interface{}                                                  `json:"Operand,omitempty" xml:"Operand,omitempty"`
-	Operands       []interface{}                                                `json:"Operands,omitempty" xml:"Operands,omitempty" type:"Repeated"`
+	ExpressionType *string `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
+	// The sub-condition filter.
+	FilterValues *QueryCostCenterRuleResponseBodyFilterExpressionFilterValues `json:"FilterValues,omitempty" xml:"FilterValues,omitempty" type:"Struct"`
+	// The filter condition (deprecated).
+	//
+	// example:
+	//
+	// 无
+	Operand interface{} `json:"Operand,omitempty" xml:"Operand,omitempty"`
+	// The condition expression.
+	Operands []interface{} `json:"Operands,omitempty" xml:"Operands,omitempty" type:"Repeated"`
+	// The relational expression.
+	//
 	// example:
 	//
 	// AND
@@ -272,16 +310,30 @@ func (s *QueryCostCenterRuleResponseBodyFilterExpression) Validate() error {
 }
 
 type QueryCostCenterRuleResponseBodyFilterExpressionFilterValues struct {
+	// The condition filter key.
+	//
 	// example:
 	//
 	// TAG-test-xxx-key
-	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The condition filter key name (deprecated).
+	//
+	// example:
+	//
+	// 无
 	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
+	// The association between code and value.
+	//
 	// example:
 	//
 	// IN
-	SelectType *string   `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
-	Values     []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+	// The attribute value types corresponding to the module code. Valid values:
+	//
+	// - single_float: single value type.
+	//
+	// - range_float: range value type.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s QueryCostCenterRuleResponseBodyFilterExpressionFilterValues) String() string {

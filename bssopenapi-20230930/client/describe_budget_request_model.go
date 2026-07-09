@@ -16,13 +16,20 @@ type iDescribeBudgetRequest interface {
 }
 
 type DescribeBudgetRequest struct {
+	// Budget name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// department1
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
-	Nbid       *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// Primary marketplace ID. If left empty, the marketplace ID of the current user is used by default.
+	//
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
 }
 
 func (s DescribeBudgetRequest) String() string {

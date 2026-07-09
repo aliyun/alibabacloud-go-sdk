@@ -22,20 +22,38 @@ type iAllocateCostCenterResourceShrinkRequest interface {
 }
 
 type AllocateCostCenterResourceShrinkRequest struct {
+	// The ID of the source cost center. This parameter is required.
+	//
+	// - 0 indicates that the cost center is unallocated.
+	//
+	// - A value greater than 0 indicates an allocated cost center ID.
+	//
 	// example:
 	//
 	// 637180
 	FromCostCenterId *int64 `json:"FromCostCenterId,omitempty" xml:"FromCostCenterId,omitempty"`
+	// The ID of the owner of the source cost center.
+	//
 	// example:
 	//
 	// 1529600453335198
 	FromOwnerAccountId *int64 `json:"FromOwnerAccountId,omitempty" xml:"FromOwnerAccountId,omitempty"`
+	// The primary sales channel ID. If this parameter is left empty, the sales channel ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The list of resource instances.
+	//
 	// This parameter is required.
 	ResourceInstanceListShrink *string `json:"ResourceInstanceList,omitempty" xml:"ResourceInstanceList,omitempty"`
+	// The ID of the destination cost center. Valid values:
+	//
+	// - -1: moves the allocated resource to the unallocated state.
+	//
+	// - A value greater than 0: allocates the resource to the specified cost center.
+	//
 	// example:
 	//
 	// 638288

@@ -17,6 +17,8 @@ type iUpdateBudgetResponseBody interface {
 
 type UpdateBudgetResponseBody struct {
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 03A59CD4-6C6B-1A62-B64C-F1F2AF7830F3

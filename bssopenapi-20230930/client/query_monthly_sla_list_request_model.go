@@ -28,28 +28,42 @@ type iQueryMonthlySlaListRequest interface {
 }
 
 type QueryMonthlySlaListRequest struct {
+	// The current page number. Default value: 1, which indicates the first page.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage    *int32                                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of enterprise entities and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIds []*QueryMonthlySlaListRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	// Optional. Filter by instance ID.
+	//
 	// example:
 	//
 	// ["instance_1","instance_2"]
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// Optional. Month list in yyyyMM format.
+	//
 	// example:
 	//
 	// [202602,202603]
 	Months []*int32 `json:"Months,omitempty" xml:"Months,omitempty" type:"Repeated"`
+	// The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize    *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Optional. Filter by compensation status. Valid values: 0 and 1.
 	PayStatuses []*int32 `json:"PayStatuses,omitempty" xml:"PayStatuses,omitempty" type:"Repeated"`
+	// Optional. Filter by product code.
+	//
 	// example:
 	//
 	// ["ecs","oss"]
@@ -150,7 +164,10 @@ func (s *QueryMonthlySlaListRequest) Validate() error {
 }
 
 type QueryMonthlySlaListRequestEcIdAccountIds struct {
+	// The list of accounts to query. If this parameter is left empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// The enterprise entity ID.
+	//
 	// example:
 	//
 	// 1501603440974415

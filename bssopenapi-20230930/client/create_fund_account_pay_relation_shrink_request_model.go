@@ -18,14 +18,20 @@ type iCreateFundAccountPayRelationShrinkRequest interface {
 }
 
 type CreateFundAccountPayRelationShrinkRequest struct {
+	// List of enterprises and accounts.
+	//
 	// This parameter is required.
 	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	// Fund account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12332112
 	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// Primary marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001

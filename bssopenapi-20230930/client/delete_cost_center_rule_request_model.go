@@ -18,11 +18,18 @@ type iDeleteCostCenterRuleRequest interface {
 }
 
 type DeleteCostCenterRuleRequest struct {
+	// Financial unit ID.
+	//
 	// example:
 	//
 	// 637127
-	CostCenterId     *int64                                       `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// Rule expression.
+	//
+	// **This field does not need to be entered during the delete operation.**
 	FilterExpression *DeleteCostCenterRuleRequestFilterExpression `json:"FilterExpression,omitempty" xml:"FilterExpression,omitempty" type:"Struct"`
+	// Level-1 marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
@@ -74,13 +81,24 @@ func (s *DeleteCostCenterRuleRequest) Validate() error {
 }
 
 type DeleteCostCenterRuleRequestFilterExpression struct {
+	// The operation type.
+	//
 	// example:
 	//
 	// NARY
-	ExpressionType *string                                                  `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
-	FilterValues   *DeleteCostCenterRuleRequestFilterExpressionFilterValues `json:"FilterValues,omitempty" xml:"FilterValues,omitempty" type:"Struct"`
-	Operand        interface{}                                              `json:"Operand,omitempty" xml:"Operand,omitempty"`
-	Operands       []interface{}                                            `json:"Operands,omitempty" xml:"Operands,omitempty" type:"Repeated"`
+	ExpressionType *string `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
+	// The sub-expression filter conditions.
+	FilterValues *DeleteCostCenterRuleRequestFilterExpressionFilterValues `json:"FilterValues,omitempty" xml:"FilterValues,omitempty" type:"Struct"`
+	// The filter condition (no longer used).
+	//
+	// example:
+	//
+	// 无
+	Operand interface{} `json:"Operand,omitempty" xml:"Operand,omitempty"`
+	// The conditional expressions.
+	Operands []interface{} `json:"Operands,omitempty" xml:"Operands,omitempty" type:"Repeated"`
+	// The relational expression.
+	//
 	// example:
 	//
 	// AND
@@ -150,16 +168,26 @@ func (s *DeleteCostCenterRuleRequestFilterExpression) Validate() error {
 }
 
 type DeleteCostCenterRuleRequestFilterExpressionFilterValues struct {
+	// The condition filter key.
+	//
 	// example:
 	//
 	// TAG-test-xxx-key
-	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The condition filter key name.
+	//
+	// example:
+	//
+	// 无
 	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
+	// The association between Code and value.
+	//
 	// example:
 	//
 	// IN
-	SelectType *string   `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
-	Values     []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+	// The condition filter values.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s DeleteCostCenterRuleRequestFilterExpressionFilterValues) String() string {

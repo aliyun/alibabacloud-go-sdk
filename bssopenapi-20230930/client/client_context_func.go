@@ -75,7 +75,7 @@ func (client *Client) AddCouponDeductTagWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 财务单元实例重分配
+// Allocates resource instances (instance-based and attached-resource-based) from a source cost center to a destination cost center.
 //
 // @param tmpReq - AllocateCostCenterResourceRequest
 //
@@ -143,7 +143,11 @@ func (client *Client) AllocateCostCenterResourceWithContext(ctx context.Context,
 
 // Summary:
 //
-// 取消资金账户低额预警
+// Cancels the low balance alert for a fund account.
+//
+// Description:
+//
+// Cancels the low balance alert for a fund account.
 //
 // @param request - CancelFundAccountLowAvailableAmountAlarmRequest
 //
@@ -245,7 +249,7 @@ func (client *Client) CheckAccountExistWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Check whether budgetName exists
+// Checks whether a specified budgetName exists.
 //
 // @param request - CheckBudgetNameExistsRequest
 //
@@ -295,7 +299,7 @@ func (client *Client) CheckBudgetNameExistsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Create Budget
+// Creates a budget.
 //
 // @param tmpReq - CreateBudgetRequest
 //
@@ -411,7 +415,11 @@ func (client *Client) CreateBudgetWithContext(ctx context.Context, tmpReq *Creat
 
 // Summary:
 //
-// 创建财务单元
+// # Create Cost Center
+//
+// Description:
+//
+// Creates one or more cost centers.
 //
 // @param tmpReq - CreateCostCenterRequest
 //
@@ -465,7 +473,7 @@ func (client *Client) CreateCostCenterWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// 新建财务单元规则
+// # Create a financial unit auto-allocation rule
 //
 // @param tmpReq - CreateCostCenterRuleRequest
 //
@@ -525,7 +533,7 @@ func (client *Client) CreateCostCenterRuleWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 创建资金账户付款关系
+// # Create payment relationships for a fund account
 //
 // @param tmpReq - CreateFundAccountPayRelationRequest
 //
@@ -585,7 +593,7 @@ func (client *Client) CreateFundAccountPayRelationWithContext(ctx context.Contex
 
 // Summary:
 //
-// 创建资金账户划拨/回收
+// Creates an account transfer or revocation.
 //
 // @param request - CreateFundAccountTransferRequest
 //
@@ -653,7 +661,7 @@ func (client *Client) CreateFundAccountTransferWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 申请发票
+// # Apply for Invoice
 //
 // @param tmpReq - CreateInvoiceRequest
 //
@@ -744,6 +752,42 @@ func (client *Client) CreateInvoiceWithContext(ctx context.Context, tmpReq *Crea
 // Summary:
 //
 // Creates a billing report subscription.
+//
+// Description:
+//
+// When you call this API operation, note the following information:
+//
+// - You can subscribe to one type of billing file at a time.
+//
+// - Except for monthly bill PDFs, starting from the day after the subscription, the system pushes daily billing files that contain full detailed data from the beginning of the current month to the present. Before the 4th of each month, the system pushes full billing files for the complete billing cycle of the previous month.
+//
+// - Monthly bill PDFs are pushed before the 4th of each month for the previous month.
+//
+// - Billing files generated on a daily basis may have delays. Delayed billing files are pushed on the day after they are generated and may also contain bills that were delayed from before the previous day and generated on the previous day. We recommend that you pull the full files for the previous month at the beginning of each month.
+//
+// > Apply for the required permissions by following the procedure described in the documentation: [Billing Subscription](https://help.aliyun.com/zh/user-center/user-guide/billing-subscription?spm=5176.21213303.J_v8LsmxMG6alneH-O7TCPa.1.3ef82f3d5ZIf08&scm=20140722.S_help@@%E6%96%87%E6%A1%A3@@2861820._.ID_help@@%E6%96%87%E6%A1%A3@@2861820-RL_%E8%B4%A6%E5%8D%95%E8%AE%A2%E9%98%85-LOC_2024SPHelpResult-OR_ser-PAR1_2150419517478292121114501eaee8-V_4-RE_new5-P0_0-P1_0)
+//
+// - This subscription and the Expenses and Costs - Billing Subscription are the same feature, and subscriptions are interchangeable.
+//
+// - When subscribing to a directory under a bucket, follow the directory naming conventions:
+//
+//   - Emojis are not allowed. Use compliant UTF-8 characters.
+//
+//   - Forward slashes (/) are used to separate paths and can quickly create subdirectories. However, do not start with / or \\, and do not use consecutive forward slashes (/).
+//
+//   - Subdirectories named .. are not allowed.
+//
+//   - The total length must be 1 to 254 characters.
+//
+// - File names:
+//
+//   - Example: **consumeDetailBillV2*	- (billing item details)
+//
+//   - Daily push file name format: `{Account UID}_{Site ID}_{Bill type}_{YYYYMM|YYYYMMDD}`, for example: `169**_2688801000001_consumeDetailBillV2_20190312`.
+//
+//   - Full file name format at the beginning of the next month: `{Account UID}_{Site ID}_{Bill type}_{YYYYMM|YYYYMM}`, for example: `169**_2688801000001_consumeDetailBillV2_201903`.
+//
+// - Monthly bill PDF files are in .pdf format, and other file types are in .csv format. When the data volume is large, the system automatically splits the exported bills into multiple files and compresses them into one or more .zip files. The .zip file name format is the same.
 //
 // @param request - CreateReportDefinitionRequest
 //
@@ -837,7 +881,7 @@ func (client *Client) CreateReportDefinitionWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除预算
+// Deletes a budget.
 //
 // @param request - DeleteBudgetRequest
 //
@@ -887,7 +931,11 @@ func (client *Client) DeleteBudgetWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// 删除财务单元
+// # Delete Cost Center
+//
+// Description:
+//
+// This API is in canary release and is only available to whitelisted users. Excessive calls may cause performance issues such as response timeouts.
 //
 // @param request - DeleteCostCenterRequest
 //
@@ -939,7 +987,11 @@ func (client *Client) DeleteCostCenterWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除财务单元规则
+// # Delete financial unit automatic allocation rule
+//
+// Description:
+//
+// This API is in canary release and is only available to whitelisted users. Excessive calls may cause performance issues such as response timeouts.
 //
 // @param tmpReq - DeleteCostCenterRuleRequest
 //
@@ -1065,7 +1117,7 @@ func (client *Client) DeleteCouponDeductTagWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 取消账单订阅
+// Deletes a bill report export subscription.
 //
 // @param request - DeleteReportDefinitionRequest
 //
@@ -1229,7 +1281,7 @@ func (client *Client) DescribeBudgetsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the list of coupons.
+// Queries a list of coupons.
 //
 // @param tmpReq - DescribeCouponRequest
 //
@@ -1347,7 +1399,7 @@ func (client *Client) DescribeCouponWithContext(ctx context.Context, tmpReq *Des
 
 // Summary:
 //
-// Query the list of products for which a coupon is applicable.
+// Queries the list of products available for a coupon.
 //
 // @param tmpReq - DescribeCouponItemListRequest
 //
@@ -1417,6 +1469,226 @@ func (client *Client) DescribeCouponItemListWithContext(ctx context.Context, tmp
 
 // Summary:
 //
+// Queries resource plan deduction records.
+//
+// @param tmpReq - DescribeDeductLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDeductLogsResponse
+func (client *Client) DescribeDeductLogsWithContext(ctx context.Context, tmpReq *DescribeDeductLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDeductLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeDeductLogsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EcIdAccountIds) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, dara.String("EcIdAccountIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RelationAccountIds) {
+		request.RelationAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelationAccountIds, dara.String("RelationAccountIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BillInstanceId) {
+		query["BillInstanceId"] = request.BillInstanceId
+	}
+
+	if !dara.IsNil(request.EcIdAccountIdsShrink) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !dara.IsNil(request.Nbid) {
+		query["Nbid"] = request.Nbid
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BillingCommodityCode) {
+		body["BillingCommodityCode"] = request.BillingCommodityCode
+	}
+
+	if !dara.IsNil(request.BillingEndTime) {
+		body["BillingEndTime"] = request.BillingEndTime
+	}
+
+	if !dara.IsNil(request.BillingStartTime) {
+		body["BillingStartTime"] = request.BillingStartTime
+	}
+
+	if !dara.IsNil(request.CommodityCode) {
+		body["CommodityCode"] = request.CommodityCode
+	}
+
+	if !dara.IsNil(request.Group) {
+		body["Group"] = request.Group
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		body["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RelationAccountIdsShrink) {
+		body["RelationAccountIds"] = request.RelationAccountIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDeductLogs"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDeductLogsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries resource plan instances.
+//
+// @param tmpReq - DescribeFrInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFrInstancesResponse
+func (client *Client) DescribeFrInstancesWithContext(ctx context.Context, tmpReq *DescribeFrInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeFrInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeFrInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EcIdAccountIds) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, dara.String("EcIdAccountIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EcIdAccountIdsShrink) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !dara.IsNil(request.InstanceTag) {
+		query["InstanceTag"] = request.InstanceTag
+	}
+
+	if !dara.IsNil(request.Nbid) {
+		query["Nbid"] = request.Nbid
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CapacityType) {
+		body["CapacityType"] = request.CapacityType
+	}
+
+	if !dara.IsNil(request.CommodityCode) {
+		body["CommodityCode"] = request.CommodityCode
+	}
+
+	if !dara.IsNil(request.CycleType) {
+		body["CycleType"] = request.CycleType
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Group) {
+		body["Group"] = request.Group
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		body["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SortField) {
+		body["SortField"] = request.SortField
+	}
+
+	if !dara.IsNil(request.SortRule) {
+		body["SortRule"] = request.SortRule
+	}
+
+	if !dara.IsNil(request.Spec) {
+		body["Spec"] = request.Spec
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TemplateCode) {
+		body["TemplateCode"] = request.TemplateCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFrInstances"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeFrInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取客户使用SPN的概述信息
 //
 // @param tmpReq - DescribeUserSpnSummaryInfoRequest
@@ -1471,7 +1743,7 @@ func (client *Client) DescribeUserSpnSummaryInfoWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询资金账户可用金
+// # Query available balance of fund account
 //
 // @param request - GetFundAccountAvailableAmountRequest
 //
@@ -1515,7 +1787,7 @@ func (client *Client) GetFundAccountAvailableAmountWithContext(ctx context.Conte
 
 // Summary:
 //
-// 查询资金账户可分配信控额度
+// # Query allocatable credit limit of a fund account
 //
 // @param request - GetFundAccountCanAllocateCreditAmountRequest
 //
@@ -1559,7 +1831,7 @@ func (client *Client) GetFundAccountCanAllocateCreditAmountWithContext(ctx conte
 
 // Summary:
 //
-// 查询资金账户可回收金额
+// Queries the reclaimable amount of a fund account.
 //
 // @param request - GetFundAccountCanRecycleAmountRequest
 //
@@ -1607,7 +1879,7 @@ func (client *Client) GetFundAccountCanRecycleAmountWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询资金账户的可转出金额
+// # Query the transferable amount of a fund account
 //
 // @param request - GetFundAccountCanTransferAmountRequest
 //
@@ -1655,7 +1927,7 @@ func (client *Client) GetFundAccountCanTransferAmountWithContext(ctx context.Con
 
 // Summary:
 //
-// 查询资金账户可提现金额
+// # Query Withdrawable Amount of Fund Account
 //
 // @param request - GetFundAccountCanWithdrawAmountRequest
 //
@@ -1699,7 +1971,7 @@ func (client *Client) GetFundAccountCanWithdrawAmountWithContext(ctx context.Con
 
 // Summary:
 //
-// 查询资金账户低额预警
+// # Query Fund Account Low Balance Alert
 //
 // @param request - GetFundAccountLowAvailableAmountAlarmRequest
 //
@@ -1743,7 +2015,7 @@ func (client *Client) GetFundAccountLowAvailableAmountAlarmWithContext(ctx conte
 
 // Summary:
 //
-// 查询资金账户收支明细
+// # Query fund account transaction details
 //
 // @param tmpReq - GetFundAccountTransactionDetailsRequest
 //
@@ -1843,7 +2115,7 @@ func (client *Client) GetFundAccountTransactionDetailsWithContext(ctx context.Co
 
 // Summary:
 //
-// 订单详情查询
+// Queries the details of a specific order for a user or a reseller\\"s customer.
 //
 // @param request - GetOrderDetailRequest
 //
@@ -1895,7 +2167,7 @@ func (client *Client) GetOrderDetailWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 订单列表查询
+// Queries the order list of a user or a reseller customer. By default, this operation queries orders created within the most recent hour. To query orders over a longer time range, set the CreateTimeStart and CreateTimeEnd parameters.
 //
 // @param request - GetOrdersRequest
 //
@@ -2223,7 +2495,7 @@ func (client *Client) ListCouponDeductTagWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 查询资金账户列表
+// # Query fund account list
 //
 // @param request - ListFundAccountRequest
 //
@@ -2277,7 +2549,7 @@ func (client *Client) ListFundAccountWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 查询资金账户的付款关系
+// # Query payment relationships of an account
 //
 // @param request - ListFundAccountPayRelationRequest
 //
@@ -2339,7 +2611,7 @@ func (client *Client) ListFundAccountPayRelationWithContext(ctx context.Context,
 
 // Summary:
 //
-// 对客OpenAPI开票对象查询
+// Query invoice candidate data, which can be used for invoicing.
 //
 // @param tmpReq - ListInvoiceCandidateRequest
 //
@@ -2449,7 +2721,7 @@ func (client *Client) ListInvoiceCandidateWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 查看已订阅的报告列表
+// Queries the list of subscribed reports.
 //
 // @param request - ListReportDefinitionsRequest
 //
@@ -2493,7 +2765,11 @@ func (client *Client) ListReportDefinitionsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改财务单元
+// # Modify cost centers
+//
+// Description:
+//
+// Modifies one or more cost centers.
 //
 // @param tmpReq - ModifyCostCenterRequest
 //
@@ -2547,7 +2823,11 @@ func (client *Client) ModifyCostCenterWithContext(ctx context.Context, tmpReq *M
 
 // Summary:
 //
-// 修改财务单元规则
+// # Modify financial unit rules
+//
+// Description:
+//
+// # Modify one or more financial units
 //
 // @param tmpReq - ModifyCostCenterRuleRequest
 //
@@ -2679,7 +2959,11 @@ func (client *Client) PayOrderWithContext(ctx context.Context, request *PayOrder
 
 // Summary:
 //
-// # Query Cost Overview of a Cost Center
+// # Query cost center expense overview
+//
+// Description:
+//
+// # Query cost center expense overview results for a specified billing period
 //
 // @param request - QueryCostByCostCenterRequest
 //
@@ -2739,7 +3023,11 @@ func (client *Client) QueryCostByCostCenterWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询财务单元
+// Queries financial units.
+//
+// Description:
+//
+// Queries a parent financial unit and its child financial units.
 //
 // @param tmpReq - QueryCostCenterRequest
 //
@@ -2809,7 +3097,7 @@ func (client *Client) QueryCostCenterWithContext(ctx context.Context, tmpReq *Qu
 
 // Summary:
 //
-// 查询财务单元下资源信息
+// Queries the list of resource instances that belong to a cost center of the user. When CostCenterId is 0, it queries unallocated primary and sub-resource instances.
 //
 // @param request - QueryCostCenterResourceRequest
 //
@@ -2875,7 +3163,11 @@ func (client *Client) QueryCostCenterResourceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询财务单元规则
+// # Query cost center rules
+//
+// Description:
+//
+// Query parent cost center and its child cost centers.
 //
 // @param request - QueryCostCenterRuleRequest
 //
@@ -2929,7 +3221,11 @@ func (client *Client) QueryCostCenterRuleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询财务单元分摊规则
+// # Query cost center sharing rules
+//
+// Description:
+//
+// Queries the sharing rules of user cost centers.
 //
 // @param request - QueryCostCenterShareRuleRequest
 //
@@ -2989,7 +3285,11 @@ func (client *Client) QueryCostCenterShareRuleWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询SLA优惠券
+// Queries the SLA compensation list of a user.
+//
+// Description:
+//
+// Queries the SLA compensation details list of a user. Only data from the last two months is available.
 //
 // @param request - QueryMonthlySlaListRequest
 //
@@ -3063,7 +3363,7 @@ func (client *Client) QueryMonthlySlaListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Modify cost center allocation rules, including creating, modifying, and deleting allocation rules
+// Modifies cost center sharing rules, including creating, modifying, and deleting sharing rules.
 //
 // @param tmpReq - SaveCostCenterShareRuleRequest
 //
@@ -3137,7 +3437,7 @@ func (client *Client) SaveCostCenterShareRuleWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 设置资金账户的信控限额
+// # Set the credit control limit for a fund account
 //
 // @param request - SetFundAccountCreditAmountRequest
 //
@@ -3189,7 +3489,7 @@ func (client *Client) SetFundAccountCreditAmountWithContext(ctx context.Context,
 
 // Summary:
 //
-// 设置资金账户低额预警
+// # Set Fund Account Low Balance Alert
 //
 // @param request - SetFundAccountLowAvailableAmountAlarmRequest
 //
@@ -3305,7 +3605,15 @@ func (client *Client) SetSavingPlanUserDeductRuleWithContext(ctx context.Context
 
 // Summary:
 //
-// # SLA优惠券申领
+// User claims coupons for the last two months.
+//
+// Description:
+//
+// 1. Call QueryMonthlySlaList to obtain the claimable months and records.
+//
+// 2. Claim by month or by record.
+//
+// Note: Only compensation for the last two months can be claimed. Historical compensation has been automatically issued.
 //
 // @param request - SubmitSlaCouponApplyRequest
 //
@@ -3363,7 +3671,7 @@ func (client *Client) SubmitSlaCouponApplyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 更新预算
+// Updates a budget.
 //
 // @param tmpReq - UpdateBudgetRequest
 //

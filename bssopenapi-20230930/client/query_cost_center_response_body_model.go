@@ -24,15 +24,22 @@ type iQueryCostCenterResponseBody interface {
 }
 
 type QueryCostCenterResponseBody struct {
+	// The list of financial unit data.
 	CostCenterDtoList []*QueryCostCenterResponseBodyCostCenterDtoList `json:"CostCenterDtoList,omitempty" xml:"CostCenterDtoList,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The metadata of the response struct.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
@@ -43,6 +50,8 @@ type QueryCostCenterResponseBody struct {
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 30
@@ -125,31 +134,49 @@ func (s *QueryCostCenterResponseBody) Validate() error {
 }
 
 type QueryCostCenterResponseBodyCostCenterDtoList struct {
+	// The code of the financial unit.
+	//
 	// example:
 	//
 	// 15945703968#
 	CostCenterCode *string `json:"CostCenterCode,omitempty" xml:"CostCenterCode,omitempty"`
+	// The ID of the financial unit.
+	//
 	// example:
 	//
 	// 485938
-	CostCenterId   *int64  `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// The name of the financial unit. The name must be unique within the same account.
+	//
+	// example:
+	//
+	// 资源组
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
+	// The level of the financial unit node.
+	//
 	// example:
 	//
 	// loose
 	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The ID of the user who owns the financial unit.
+	//
 	// example:
 	//
 	// 1314839403940987
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// The ID of the parent financial unit.
+	//
 	// example:
 	//
 	// -1
 	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
+	// The ID of the previous financial unit.
+	//
 	// example:
 	//
 	// 485996
 	PrevCostCenterId *int64 `json:"PrevCostCenterId,omitempty" xml:"PrevCostCenterId,omitempty"`
+	Priority         *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
 func (s QueryCostCenterResponseBodyCostCenterDtoList) String() string {
@@ -188,6 +215,10 @@ func (s *QueryCostCenterResponseBodyCostCenterDtoList) GetPrevCostCenterId() *in
 	return s.PrevCostCenterId
 }
 
+func (s *QueryCostCenterResponseBodyCostCenterDtoList) GetPriority() *int32 {
+	return s.Priority
+}
+
 func (s *QueryCostCenterResponseBodyCostCenterDtoList) SetCostCenterCode(v string) *QueryCostCenterResponseBodyCostCenterDtoList {
 	s.CostCenterCode = &v
 	return s
@@ -220,6 +251,11 @@ func (s *QueryCostCenterResponseBodyCostCenterDtoList) SetParentCostCenterId(v i
 
 func (s *QueryCostCenterResponseBodyCostCenterDtoList) SetPrevCostCenterId(v int64) *QueryCostCenterResponseBodyCostCenterDtoList {
 	s.PrevCostCenterId = &v
+	return s
+}
+
+func (s *QueryCostCenterResponseBodyCostCenterDtoList) SetPriority(v int32) *QueryCostCenterResponseBodyCostCenterDtoList {
+	s.Priority = &v
 	return s
 }
 

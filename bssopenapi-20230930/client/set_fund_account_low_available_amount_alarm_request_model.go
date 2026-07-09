@@ -16,10 +16,14 @@ type iSetFundAccountLowAvailableAmountAlarmRequest interface {
 }
 
 type SetFundAccountLowAvailableAmountAlarmRequest struct {
+	// Fund account ID. If not specified, the account ID owned by the current account (owner) is used by default.
+	//
 	// example:
 	//
 	// 12321213
 	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// Low balance alert threshold.
+	//
 	// This parameter is required.
 	//
 	// example:

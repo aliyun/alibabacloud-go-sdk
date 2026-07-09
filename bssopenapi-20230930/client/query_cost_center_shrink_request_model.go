@@ -24,29 +24,40 @@ type iQueryCostCenterShrinkRequest interface {
 }
 
 type QueryCostCenterShrinkRequest struct {
+	// The current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	CurrentPage          *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	// The ID of the primary sales channel. If this parameter is left empty, the sales channel ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The ID of the user who owns the financial unit.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1314839403940987
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the parent financial unit. A value of -1 indicates the root financial unit.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,24 +22,38 @@ type iListFundAccountPayRelationRequest interface {
 }
 
 type ListFundAccountPayRelationRequest struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Fund account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12323123
 	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// The primary marketplace ID. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The relationship status.
+	//
+	// valid: valid.
+	//
+	// expired: invalid.
+	//
 	// example:
 	//
 	// valid

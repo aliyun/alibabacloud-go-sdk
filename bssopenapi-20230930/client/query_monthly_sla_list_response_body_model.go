@@ -24,23 +24,34 @@ type iQueryMonthlySlaListResponseBody interface {
 }
 
 type QueryMonthlySlaListResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        []*QueryMonthlySlaListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The data list.
+	Data []*QueryMonthlySlaListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The response metadata.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 5
@@ -123,42 +134,62 @@ func (s *QueryMonthlySlaListResponseBody) Validate() error {
 }
 
 type QueryMonthlySlaListResponseBodyData struct {
+	// The service availability.
+	//
 	// example:
 	//
 	// 99.9155
 	AvailableRate *float64 `json:"AvailableRate,omitempty" xml:"AvailableRate,omitempty"`
+	// The unique identifier of the damage record, which is used for targeted compensation application.
+	//
 	// example:
 	//
 	// 9b7***9413
 	DamagedId *string `json:"DamagedId,omitempty" xml:"DamagedId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// OSSBAG-cn-0xl0n****003
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The month in yyyyMM format.
+	//
 	// example:
 	//
 	// 202603
 	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	// The monthly service charge.
+	//
 	// example:
 	//
 	// 365.00
 	MonthlyServiceCharge *float64 `json:"MonthlyServiceCharge,omitempty" xml:"MonthlyServiceCharge,omitempty"`
+	// The compensation description.
+	//
 	// example:
 	//
-	// SLApei f
+	// SLA赔付
 	PayDescription *string `json:"PayDescription,omitempty" xml:"PayDescription,omitempty"`
+	// The compensation ratio. Unit: %.
+	//
 	// example:
 	//
 	// 10
 	PayRate *float64 `json:"PayRate,omitempty" xml:"PayRate,omitempty"`
+	// The compensation status. Valid values: 0 (uncompensated) and 1 (compensated).
+	//
 	// example:
 	//
 	// 1
 	PayStatus *int32 `json:"PayStatus,omitempty" xml:"PayStatus,omitempty"`
+	// The product code.
+	//
 	// example:
 	//
 	// oss
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The compensation amount.
+	//
 	// example:
 	//
 	// 36.5

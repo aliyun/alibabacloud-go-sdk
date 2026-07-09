@@ -22,22 +22,32 @@ type iDeleteCostCenterResponseBody interface {
 }
 
 type DeleteCostCenterResponseBody struct {
+	// Cost center ID.
+	//
 	// example:
 	//
 	// 485938
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// Response metadata.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// User ID of the cost center owner.
+	//
 	// example:
 	//
 	// 1314839403940987
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// C1BD134E-D914-6AE0-1901-AEB2A99FA205

@@ -18,11 +18,16 @@ type iModifyCostCenterResponseBody interface {
 }
 
 type ModifyCostCenterResponseBody struct {
+	// The list of data entries.
 	CostCenterOperateDto []*ModifyCostCenterResponseBodyCostCenterOperateDto `json:"CostCenterOperateDto,omitempty" xml:"CostCenterOperateDto,omitempty" type:"Repeated"`
+	// The metadata of the response.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
@@ -78,14 +83,20 @@ func (s *ModifyCostCenterResponseBody) Validate() error {
 }
 
 type ModifyCostCenterResponseBodyCostCenterOperateDto struct {
+	// The ID of the cost center.
+	//
 	// example:
 	//
 	// 485938
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The ID of the owner to which the cost center belongs.
+	//
 	// example:
 	//
 	// 1314839403940987

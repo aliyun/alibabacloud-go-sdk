@@ -16,10 +16,14 @@ type iCreateBudgetResponseBody interface {
 }
 
 type CreateBudgetResponseBody struct {
+	// The budget name.
+	//
 	// example:
 	//
 	// Department_dev_budget
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 39EDD65E-68C5-1B17-8440-C729C7591D74

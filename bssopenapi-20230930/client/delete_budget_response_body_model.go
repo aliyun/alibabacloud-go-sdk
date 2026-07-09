@@ -16,10 +16,14 @@ type iDeleteBudgetResponseBody interface {
 }
 
 type DeleteBudgetResponseBody struct {
+	// The budget name.
+	//
 	// example:
 	//
 	// department1
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7EA6C02D-06D0-4213-9C3B-E67910F7D1EB

@@ -18,11 +18,16 @@ type iCreateInvoiceResponseBody interface {
 }
 
 type CreateInvoiceResponseBody struct {
+	// Data list.
 	Data []*CreateInvoiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Response metadata.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
@@ -78,23 +83,36 @@ func (s *CreateInvoiceResponseBody) Validate() error {
 }
 
 type CreateInvoiceResponseBodyData struct {
+	// Account ID.
+	//
 	// example:
 	//
 	// 1990699401005016
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Invoice amount.
+	//
 	// example:
 	//
 	// 0.01
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Error code.
+	//
 	// example:
 	//
 	// 1001
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Invoice issuer.
+	//
 	// example:
 	//
 	// ALIYUN_SERVICE
 	InvoiceIssuer *string `json:"InvoiceIssuer,omitempty" xml:"InvoiceIssuer,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 不可开票
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s CreateInvoiceResponseBodyData) String() string {

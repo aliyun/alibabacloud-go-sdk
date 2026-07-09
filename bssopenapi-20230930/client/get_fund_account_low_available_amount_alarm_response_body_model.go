@@ -20,15 +20,22 @@ type iGetFundAccountLowAvailableAmountAlarmResponseBody interface {
 }
 
 type GetFundAccountLowAvailableAmountAlarmResponseBody struct {
+	// Whether the alert is enabled
 	AlarmEnabled *bool `json:"AlarmEnabled,omitempty" xml:"AlarmEnabled,omitempty"`
+	// Response structure metadata
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Alert threshold
+	//
 	// example:
 	//
 	// 100

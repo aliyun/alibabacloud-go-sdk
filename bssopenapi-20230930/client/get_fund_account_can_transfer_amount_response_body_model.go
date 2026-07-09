@@ -38,54 +38,80 @@ type iGetFundAccountCanTransferAmountResponseBody interface {
 }
 
 type GetFundAccountCanTransferAmountResponseBody struct {
+	// Available amount
+	//
 	// example:
 	//
 	// 100
 	AvailableAmount *string `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
+	// Cash ledger balance
+	//
 	// example:
 	//
 	// 500
 	CashAmount *string `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	// Currency
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// Enterprise entity ID of the account owner
+	//
 	// example:
 	//
 	// 2032121324
 	FundAccountEcid *string `json:"FundAccountEcid,omitempty" xml:"FundAccountEcid,omitempty"`
+	// Account ID
+	//
 	// example:
 	//
 	// 12332112
 	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// Account name
+	//
 	// example:
 	//
 	// 云某的账户
 	FundAccountName *string `json:"FundAccountName,omitempty" xml:"FundAccountName,omitempty"`
+	// Alibaba Cloud account ID of the fund account owner
+	//
 	// example:
 	//
 	// 154738212323
 	FundAccountOwnerAccountId *int64 `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
+	// Transferable amount
+	//
 	// example:
 	//
 	// 100
 	MaxTransferableAmount *string `json:"MaxTransferableAmount,omitempty" xml:"MaxTransferableAmount,omitempty"`
+	// Response metadata
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Primary marketplace
+	//
 	// example:
 	//
 	// 2684210001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Site
+	//
 	// example:
 	//
 	// 26842
 	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	// Transfer ledger balance
+	//
 	// example:
 	//
 	// 100

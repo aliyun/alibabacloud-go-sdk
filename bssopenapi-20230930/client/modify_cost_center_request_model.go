@@ -16,8 +16,12 @@ type iModifyCostCenterRequest interface {
 }
 
 type ModifyCostCenterRequest struct {
+	// The list of cost center entities.
+	//
 	// This parameter is required.
 	CostCenterEntityList []*ModifyCostCenterRequestCostCenterEntityList `json:"CostCenterEntityList,omitempty" xml:"CostCenterEntityList,omitempty" type:"Repeated"`
+	// The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
@@ -64,14 +68,24 @@ func (s *ModifyCostCenterRequest) Validate() error {
 }
 
 type ModifyCostCenterRequestCostCenterEntityList struct {
+	// The ID of the cost center.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 485938
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// The new name of the cost center. The name must be unique within the same account.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 资源组
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
+	// The ID of the owner to which the cost center belongs.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,23 +24,38 @@ type iDescribeBudgetsRequest interface {
 }
 
 type DescribeBudgetsRequest struct {
+	// The budget name. Fuzzy search is supported.
+	//
 	// example:
 	//
 	// department1
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
+	// The budget type.
+	//
 	// example:
 	//
 	// CONSUME
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
+	// The expiration status.
+	//
 	// example:
 	//
 	// NOT_EXPIRED
 	ExpireStatus *string `json:"ExpireStatus,omitempty" xml:"ExpireStatus,omitempty"`
-	Nbid         *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The primary marketplace ID. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
+	//
+	// example:
+	//
+	// 2688801000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

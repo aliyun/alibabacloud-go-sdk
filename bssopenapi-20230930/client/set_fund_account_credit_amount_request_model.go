@@ -18,18 +18,24 @@ type iSetFundAccountCreditAmountRequest interface {
 }
 
 type SetFundAccountCreditAmountRequest struct {
+	// Credit limit
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 500
 	CreditAmount *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
+	// Currency for the credit control limit. Currently, only CNY is supported in mainland China, and only USD is supported for international use.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// Fund account ID. If not specified, the account owned by the current account (owner) is used by default.
+	//
 	// example:
 	//
 	// 1232312

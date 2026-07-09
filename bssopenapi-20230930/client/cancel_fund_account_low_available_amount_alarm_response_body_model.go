@@ -18,14 +18,20 @@ type iCancelFundAccountLowAvailableAmountAlarmResponseBody interface {
 }
 
 type CancelFundAccountLowAvailableAmountAlarmResponseBody struct {
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The metadata of the response struct.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DFC1F7F9-3BA9-BA4D-2F2E653

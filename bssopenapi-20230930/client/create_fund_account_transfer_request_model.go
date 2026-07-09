@@ -26,42 +26,62 @@ type iCreateFundAccountTransferRequest interface {
 }
 
 type CreateFundAccountTransferRequest struct {
+	// The transfer amount.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The currency.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The asset type. Currently, only cash is supported. Valid values:
+	//
+	// - cash: cash.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cash
 	FinanceType *string `json:"FinanceType,omitempty" xml:"FinanceType,omitempty"`
+	// The ID of the source account (payer account ID).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123212323
 	FromFundAccountId *int64 `json:"FromFundAccountId,omitempty" xml:"FromFundAccountId,omitempty"`
+	// The remarks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 转账的备注
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the destination account (payee account ID).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 11112231
 	ToFundAccountId *int64 `json:"ToFundAccountId,omitempty" xml:"ToFundAccountId,omitempty"`
+	// The transfer type. Valid values:
+	//
+	// - grant: transfer.
+	//
+	// - recycle: revocation.
+	//
 	// This parameter is required.
 	//
 	// example:

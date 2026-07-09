@@ -22,16 +22,23 @@ type iSaveCostCenterShareRuleRequest interface {
 }
 
 type SaveCostCenterShareRuleRequest struct {
+	// The list of sharing rules to create.
 	CreateShareRuleList []*SaveCostCenterShareRuleRequestCreateShareRuleList `json:"CreateShareRuleList,omitempty" xml:"CreateShareRuleList,omitempty" type:"Repeated"`
+	// The list of sharing rules to modify.
 	ModifyShareRuleList []*SaveCostCenterShareRuleRequestModifyShareRuleList `json:"ModifyShareRuleList,omitempty" xml:"ModifyShareRuleList,omitempty" type:"Repeated"`
+	// The primary marketplace ID. If left empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The user ID of the cost center owner.
+	//
 	// example:
 	//
 	// 1977800748053695
-	OwnerAccountId      *int64   `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// The list of sharing rules to delete.
 	RemoveShareRuleList []*int64 `json:"RemoveShareRuleList,omitempty" xml:"RemoveShareRuleList,omitempty" type:"Repeated"`
 }
 
@@ -111,18 +118,25 @@ func (s *SaveCostCenterShareRuleRequest) Validate() error {
 }
 
 type SaveCostCenterShareRuleRequestCreateShareRuleList struct {
-	FromCostCenterList []*int64   `json:"FromCostCenterList,omitempty" xml:"FromCostCenterList,omitempty" type:"Repeated"`
-	ShareRatioList     []*float64 `json:"ShareRatioList,omitempty" xml:"ShareRatioList,omitempty" type:"Repeated"`
+	// The list of source cost centers.
+	FromCostCenterList []*int64 `json:"FromCostCenterList,omitempty" xml:"FromCostCenterList,omitempty" type:"Repeated"`
+	// The list of sharing ratios.
+	ShareRatioList []*float64 `json:"ShareRatioList,omitempty" xml:"ShareRatioList,omitempty" type:"Repeated"`
+	// The name of the sharing rule.
+	//
 	// example:
 	//
 	// test
 	ShareRuleName *string `json:"ShareRuleName,omitempty" xml:"ShareRuleName,omitempty"`
+	// The type of the sharing rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// RATIO
-	ShareType        *string  `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The list of target cost centers.
 	ToCostCenterList []*int64 `json:"ToCostCenterList,omitempty" xml:"ToCostCenterList,omitempty" type:"Repeated"`
 }
 
@@ -184,24 +198,33 @@ func (s *SaveCostCenterShareRuleRequestCreateShareRuleList) Validate() error {
 }
 
 type SaveCostCenterShareRuleRequestModifyShareRuleList struct {
-	FromCostCenterList []*int64   `json:"FromCostCenterList,omitempty" xml:"FromCostCenterList,omitempty" type:"Repeated"`
-	ShareRatioList     []*float64 `json:"ShareRatioList,omitempty" xml:"ShareRatioList,omitempty" type:"Repeated"`
+	// The list of source cost centers.
+	FromCostCenterList []*int64 `json:"FromCostCenterList,omitempty" xml:"FromCostCenterList,omitempty" type:"Repeated"`
+	// The list of sharing ratios.
+	ShareRatioList []*float64 `json:"ShareRatioList,omitempty" xml:"ShareRatioList,omitempty" type:"Repeated"`
+	// The ID of the sharing rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1828
 	ShareRuleId *int64 `json:"ShareRuleId,omitempty" xml:"ShareRuleId,omitempty"`
+	// The name of the sharing rule.
+	//
 	// example:
 	//
 	// test
 	ShareRuleName *string `json:"ShareRuleName,omitempty" xml:"ShareRuleName,omitempty"`
+	// The type of the sharing rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CUSTOM
-	ShareType        *string  `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The list of target cost centers.
 	ToCostCenterList []*int64 `json:"ToCostCenterList,omitempty" xml:"ToCostCenterList,omitempty" type:"Repeated"`
 }
 

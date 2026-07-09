@@ -40,57 +40,87 @@ type iCreateBudgetRequest interface {
 }
 
 type CreateBudgetRequest struct {
+	// The budget name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Department_dev_budget
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
+	// The budget type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CONSUME
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
-	Comment    *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The end cycle.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2026-12
-	CycleEndPeriod *string                          `json:"CycleEndPeriod,omitempty" xml:"CycleEndPeriod,omitempty"`
-	CycleQuota     []*CreateBudgetRequestCycleQuota `json:"CycleQuota,omitempty" xml:"CycleQuota,omitempty" type:"Repeated"`
+	CycleEndPeriod *string `json:"CycleEndPeriod,omitempty" xml:"CycleEndPeriod,omitempty"`
+	// The per-cycle specified quota. This parameter is required when QuotaType is set to `SPECIFY`.
+	CycleQuota []*CreateBudgetRequestCycleQuota `json:"CycleQuota,omitempty" xml:"CycleQuota,omitempty" type:"Repeated"`
+	// The start cycle.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2026-01
 	CycleStartPeriod *string `json:"CycleStartPeriod,omitempty" xml:"CycleStartPeriod,omitempty"`
+	// The cycle type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MONTHLY
-	CycleType      *string                              `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// The list of enterprises and accounts. An empty value indicates the current account.
 	EcIdAccountIds []*CreateBudgetRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	// The budget metric.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// REQUIRE_AMOUNT
-	Metric      *string                           `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	Nbid        *string                           `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The level-1 marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	//
+	// example:
+	//
+	// 26842
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The filter conditions.
 	QueryFilter []*CreateBudgetRequestQueryFilter `json:"QueryFilter,omitempty" xml:"QueryFilter,omitempty" type:"Repeated"`
+	// The fixed quota value. If the type is quota, the unit is percentage.
+	//
 	// example:
 	//
 	// 1000
 	Quota *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// The quota type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FIXED
-	QuotaType *string                         `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	// The alert configurations.
 	WarnConfs []*CreateBudgetRequestWarnConfs `json:"WarnConfs,omitempty" xml:"WarnConfs,omitempty" type:"Repeated"`
 }
 
@@ -269,8 +299,18 @@ func (s *CreateBudgetRequest) Validate() error {
 }
 
 type CreateBudgetRequestCycleQuota struct {
+	// The cycle.
+	//
+	// example:
+	//
+	// 2026-01
 	CyclePeriod *string `json:"CyclePeriod,omitempty" xml:"CyclePeriod,omitempty"`
-	Quota       *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// The quota.
+	//
+	// example:
+	//
+	// 1000
+	Quota *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
 }
 
 func (s CreateBudgetRequestCycleQuota) String() string {
@@ -304,8 +344,14 @@ func (s *CreateBudgetRequestCycleQuota) Validate() error {
 }
 
 type CreateBudgetRequestEcIdAccountIds struct {
+	// The list of accounts to access. An empty value indicates all accounts under the current entity ID.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	EcId       *string  `json:"EcId,omitempty" xml:"EcId,omitempty"`
+	// The enterprise entity ID.
+	//
+	// example:
+	//
+	// 1
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
 }
 
 func (s CreateBudgetRequestEcIdAccountIds) String() string {
@@ -339,15 +385,20 @@ func (s *CreateBudgetRequestEcIdAccountIds) Validate() error {
 }
 
 type CreateBudgetRequestQueryFilter struct {
+	// The parameter code.
+	//
 	// example:
 	//
 	// RESOURCE_OWNER_ACCOUNT
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The selection mode.
+	//
 	// example:
 	//
 	// IN
-	SelectType *string   `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
-	Values     []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+	// The list of filter values.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s CreateBudgetRequestQueryFilter) String() string {
@@ -390,25 +441,42 @@ func (s *CreateBudgetRequestQueryFilter) Validate() error {
 }
 
 type CreateBudgetRequestWarnConfs struct {
+	// The remarks.
+	//
+	// example:
+	//
+	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Specifies whether to enable EventBridge.
+	//
 	// example:
 	//
 	// true
-	EventBridge *bool     `json:"EventBridge,omitempty" xml:"EventBridge,omitempty"`
+	EventBridge *bool `json:"EventBridge,omitempty" xml:"EventBridge,omitempty"`
+	// The list of Message Center notification channels.
 	MscChannels []*string `json:"MscChannels,omitempty" xml:"MscChannels,omitempty" type:"Repeated"`
+	// The list of Message Center contacts.
 	MscContacts []*string `json:"MscContacts,omitempty" xml:"MscContacts,omitempty" type:"Repeated"`
+	// The alert name. This is a user-defined optional field. If not specified, the backend automatically generates a name.
+	//
 	// example:
 	//
 	// Alter-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The threshold type.
+	//
 	// example:
 	//
 	// FIXED
 	ThresholdType *string `json:"ThresholdType,omitempty" xml:"ThresholdType,omitempty"`
+	// The threshold value.
+	//
 	// example:
 	//
 	// 2000
 	ThresholdValue *string `json:"ThresholdValue,omitempty" xml:"ThresholdValue,omitempty"`
+	// The alert target.
+	//
 	// example:
 	//
 	// FORECAST

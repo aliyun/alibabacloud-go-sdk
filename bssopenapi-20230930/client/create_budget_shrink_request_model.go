@@ -40,57 +40,87 @@ type iCreateBudgetShrinkRequest interface {
 }
 
 type CreateBudgetShrinkRequest struct {
+	// The budget name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Department_dev_budget
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
+	// The budget type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CONSUME
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
-	Comment    *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The end cycle.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2026-12
-	CycleEndPeriod   *string `json:"CycleEndPeriod,omitempty" xml:"CycleEndPeriod,omitempty"`
+	CycleEndPeriod *string `json:"CycleEndPeriod,omitempty" xml:"CycleEndPeriod,omitempty"`
+	// The per-cycle specified quota. This parameter is required when QuotaType is set to `SPECIFY`.
 	CycleQuotaShrink *string `json:"CycleQuota,omitempty" xml:"CycleQuota,omitempty"`
+	// The start cycle.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2026-01
 	CycleStartPeriod *string `json:"CycleStartPeriod,omitempty" xml:"CycleStartPeriod,omitempty"`
+	// The cycle type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MONTHLY
-	CycleType            *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// The list of enterprises and accounts. An empty value indicates the current account.
 	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	// The budget metric.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// REQUIRE_AMOUNT
-	Metric            *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	Nbid              *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The level-1 marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	//
+	// example:
+	//
+	// 26842
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The filter conditions.
 	QueryFilterShrink *string `json:"QueryFilter,omitempty" xml:"QueryFilter,omitempty"`
+	// The fixed quota value. If the type is quota, the unit is percentage.
+	//
 	// example:
 	//
 	// 1000
 	Quota *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// The quota type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FIXED
-	QuotaType       *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	// The alert configurations.
 	WarnConfsShrink *string `json:"WarnConfs,omitempty" xml:"WarnConfs,omitempty"`
 }
 

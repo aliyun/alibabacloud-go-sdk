@@ -16,8 +16,12 @@ type iModifyCostCenterShrinkRequest interface {
 }
 
 type ModifyCostCenterShrinkRequest struct {
+	// The list of cost center entities.
+	//
 	// This parameter is required.
 	CostCenterEntityListShrink *string `json:"CostCenterEntityList,omitempty" xml:"CostCenterEntityList,omitempty"`
+	// The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001

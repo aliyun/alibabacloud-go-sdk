@@ -16,10 +16,14 @@ type iCreateFundAccountTransferResponseBody interface {
 }
 
 type CreateFundAccountTransferResponseBody struct {
+	// The metadata of the response struct.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1BB79-5B23-3EA-BB4F-352F93E

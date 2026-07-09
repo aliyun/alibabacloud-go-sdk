@@ -24,23 +24,34 @@ type iQueryCostCenterResourceRequest interface {
 }
 
 type QueryCostCenterResourceRequest struct {
+	// The ID of the cost center.
+	//
 	// example:
 	//
 	// 123456
-	CostCenterId   *int64                                          `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// The list of enterprises and accounts. An empty value indicates querying the current account.
 	EcIdAccountIds []*QueryCostCenterResourceRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	// The maximum number of records per query.
+	//
 	// example:
 	//
 	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The first-level marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The token for the next query. An empty NextToken indicates that there are no more results.
+	//
 	// example:
 	//
 	// CAESEgoQCg4KCmd
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The owner user ID of the cost center.
+	//
 	// example:
 	//
 	// 1234567812345678
@@ -123,7 +134,10 @@ func (s *QueryCostCenterResourceRequest) Validate() error {
 }
 
 type QueryCostCenterResourceRequestEcIdAccountIds struct {
+	// The list of accessed accounts. An empty value indicates that all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// The enterprise entity ID.
+	//
 	// This parameter is required.
 	//
 	// example:

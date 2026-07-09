@@ -42,63 +42,95 @@ type iUpdateBudgetShrinkRequest interface {
 }
 
 type UpdateBudgetShrinkRequest struct {
+	// The budget name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// NewBudgetName
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
+	// The budget type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CONSUME
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
-	Comment    *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The comment.
+	//
+	// example:
+	//
+	// comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The end period of the cycle.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2026-12
-	CycleEndPeriod   *string `json:"CycleEndPeriod,omitempty" xml:"CycleEndPeriod,omitempty"`
+	CycleEndPeriod *string `json:"CycleEndPeriod,omitempty" xml:"CycleEndPeriod,omitempty"`
+	// The quota specified for each cycle.
 	CycleQuotaShrink *string `json:"CycleQuota,omitempty" xml:"CycleQuota,omitempty"`
+	// The start period of the cycle.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2026-01
 	CycleStartPeriod *string `json:"CycleStartPeriod,omitempty" xml:"CycleStartPeriod,omitempty"`
+	// The cycle type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MONTHLY
-	CycleType            *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// The list of enterprise entities and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	// The budget metric.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// REQUIRE_AMOUNT
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	Nbid   *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The primary sales channel ID. If this parameter is left empty, the sales channel ID of the current user is used by default.
+	//
+	// example:
+	//
+	// 26842
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The original budget name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OriginalBudgetName
 	OriginalBudgetName *string `json:"OriginalBudgetName,omitempty" xml:"OriginalBudgetName,omitempty"`
-	QueryFilterShrink  *string `json:"QueryFilter,omitempty" xml:"QueryFilter,omitempty"`
+	// The filter conditions.
+	QueryFilterShrink *string `json:"QueryFilter,omitempty" xml:"QueryFilter,omitempty"`
+	// The fixed quota value.
+	//
 	// example:
 	//
 	// 1000
 	Quota *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// The quota type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FIXED
-	QuotaType       *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	// The alert configurations.
 	WarnConfsShrink *string `json:"WarnConfs,omitempty" xml:"WarnConfs,omitempty"`
 }
 

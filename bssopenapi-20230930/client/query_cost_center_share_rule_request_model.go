@@ -22,19 +22,28 @@ type iQueryCostCenterShareRuleRequest interface {
 }
 
 type QueryCostCenterShareRuleRequest struct {
+	// The list of enterprises and accounts. If empty, the current account is queried.
 	EcIdAccountIds []*QueryCostCenterShareRuleRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	// Reserved field.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// Reserved field.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nYCisJwqt18pP5E9yb47iu
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The owner account ID of the cost center.
+	//
 	// example:
 	//
 	// 1529600453335198
@@ -108,7 +117,10 @@ func (s *QueryCostCenterShareRuleRequest) Validate() error {
 }
 
 type QueryCostCenterShareRuleRequestEcIdAccountIds struct {
+	// The list of accounts to access. If empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// The enterprise entity ID.
+	//
 	// This parameter is required.
 	//
 	// example:

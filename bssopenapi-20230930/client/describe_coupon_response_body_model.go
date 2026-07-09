@@ -22,19 +22,28 @@ type iDescribeCouponResponseBody interface {
 }
 
 type DescribeCouponResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        []*DescribeCouponResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The data list.
+	Data []*DescribeCouponResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C880B065-A781-4F19-B6DD-3E0E3B715C64
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 2
@@ -108,76 +117,135 @@ func (s *DescribeCouponResponseBody) Validate() error {
 }
 
 type DescribeCouponResponseBodyData struct {
+	// The face value.
+	//
 	// example:
 	//
 	// 9929.750000
 	Amount        *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	CertainAmount *string `json:"CertainAmount,omitempty" xml:"CertainAmount,omitempty"`
+	// The coupon ID.
+	//
 	// example:
 	//
 	// 59243658
 	CouponId *int64 `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	// The coupon code.
+	//
 	// example:
 	//
 	// 731074910070
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// The coupon type.
+	//
 	// example:
 	//
 	// CERTAIN
-	CouponType     *string `json:"CouponType,omitempty" xml:"CouponType,omitempty"`
+	CouponType *string `json:"CouponType,omitempty" xml:"CouponType,omitempty"`
+	// The coupon type name.
+	//
+	// example:
+	//
+	// 满减券
 	CouponTypeName *string `json:"CouponTypeName,omitempty" xml:"CouponTypeName,omitempty"`
+	// The currency.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 2021-03-06T15:12Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FirstBuy *bool   `json:"FirstBuy,omitempty" xml:"FirstBuy,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates whether there is a first purchase restriction.
+	FirstBuy *bool `json:"FirstBuy,omitempty" xml:"FirstBuy,omitempty"`
+	// The coupon issuance time.
+	//
 	// example:
 	//
 	// 2021-03-02T15:12Z
-	GmtCreate     *string   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	ItemNames     []*string `json:"ItemNames,omitempty" xml:"ItemNames,omitempty" type:"Repeated"`
-	MoneyLimit    *string   `json:"MoneyLimit,omitempty" xml:"MoneyLimit,omitempty"`
-	OrderTimeRule *string   `json:"OrderTimeRule,omitempty" xml:"OrderTimeRule,omitempty"`
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The product code list.
+	ItemNames []*string `json:"ItemNames,omitempty" xml:"ItemNames,omitempty" type:"Repeated"`
+	// The amount limit.
+	//
+	// example:
+	//
+	// 无订单金额限制
+	MoneyLimit *string `json:"MoneyLimit,omitempty" xml:"MoneyLimit,omitempty"`
+	// The order duration limit rule.
+	//
+	// example:
+	//
+	// 预付费规则：购买订单时长大于3600s才能使用
+	OrderTimeRule *string `json:"OrderTimeRule,omitempty" xml:"OrderTimeRule,omitempty"`
+	// The remaining amount.
+	//
 	// example:
 	//
 	// 100.00
-	RemainAmount *string                                       `json:"RemainAmount,omitempty" xml:"RemainAmount,omitempty"`
-	Remark       *string                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RemainAmount *string `json:"RemainAmount,omitempty" xml:"RemainAmount,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// 新买28号
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The shared account list.
 	ShareUidList []*DescribeCouponResponseBodyDataShareUidList `json:"ShareUidList,omitempty" xml:"ShareUidList,omitempty" type:"Repeated"`
+	// Indicates whether to display the tag deduction button.
+	//
 	// example:
 	//
 	// true
 	ShowSetDeductTagButton *bool `json:"ShowSetDeductTagButton,omitempty" xml:"ShowSetDeductTagButton,omitempty"`
+	// The site.
+	//
 	// example:
 	//
 	// CHINA
-	Site     *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	// The site name.
+	//
+	// example:
+	//
+	// 官网自营
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2021-03-02T15:12Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The applicable account.
+	//
 	// example:
 	//
 	// 1902671110151254
 	SuitAccount *string `json:"SuitAccount,omitempty" xml:"SuitAccount,omitempty"`
+	// The applicable product type. Valid values: all, which indicates that the coupon is applicable to all products. white, which indicates that the coupon is applicable to specified products. black, which indicates that the coupon is not applicable to specified products.
+	//
 	// example:
 	//
 	// all
 	SuitItemType *string `json:"SuitItemType,omitempty" xml:"SuitItemType,omitempty"`
+	// The coupon applicable scope.
+	//
 	// example:
 	//
 	// UNIVERSAL
-	UniversalType *string   `json:"UniversalType,omitempty" xml:"UniversalType,omitempty"`
-	YhOrderTypes  []*string `json:"YhOrderTypes,omitempty" xml:"YhOrderTypes,omitempty" type:"Repeated"`
+	UniversalType *string `json:"UniversalType,omitempty" xml:"UniversalType,omitempty"`
+	// The list of order types applicable to the coupon.
+	YhOrderTypes []*string `json:"YhOrderTypes,omitempty" xml:"YhOrderTypes,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCouponResponseBodyData) String() string {
@@ -427,10 +495,17 @@ func (s *DescribeCouponResponseBodyData) Validate() error {
 }
 
 type DescribeCouponResponseBodyDataShareUidList struct {
+	// The Alibaba Cloud UID.
+	//
 	// example:
 	//
 	// 1902671110151254
-	Uid      *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 阿里云计算有限公司
 	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 

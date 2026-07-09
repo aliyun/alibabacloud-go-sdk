@@ -18,14 +18,20 @@ type iCreateFundAccountPayRelationRequest interface {
 }
 
 type CreateFundAccountPayRelationRequest struct {
+	// List of enterprises and accounts.
+	//
 	// This parameter is required.
 	EcIdAccountIds []*CreateFundAccountPayRelationRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	// Fund account ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12332112
 	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// Primary marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
@@ -81,8 +87,12 @@ func (s *CreateFundAccountPayRelationRequest) Validate() error {
 }
 
 type CreateFundAccountPayRelationRequestEcIdAccountIds struct {
+	// List of Alibaba Cloud accounts for delegated payment.
+	//
 	// This parameter is required.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// Enterprise entity ID.
+	//
 	// example:
 	//
 	// 1501603440974415

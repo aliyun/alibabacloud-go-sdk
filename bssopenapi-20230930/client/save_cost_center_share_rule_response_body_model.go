@@ -18,14 +18,20 @@ type iSaveCostCenterShareRuleResponseBody interface {
 }
 
 type SaveCostCenterShareRuleResponseBody struct {
+	// The metadata of the response.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true

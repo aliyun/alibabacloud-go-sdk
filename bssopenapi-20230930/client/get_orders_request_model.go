@@ -34,43 +34,99 @@ type iGetOrdersRequest interface {
 }
 
 type GetOrdersRequest struct {
+	// The end of the order creation time range. If not specified, orders created within the most recent hour are queried. Format: YYYY-MM-ddTHH:mm:ssZ. Time zone: UTC.
+	//
 	// example:
 	//
 	// 2016-05-23T12:00:00Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// The start of the order creation time range. If not specified, orders created within the most recent hour are queried. Format: YYYY-MM-ddTHH:mm:ssZ. Time zone: UTC.
+	//
 	// example:
 	//
 	// 2016-05-23T13:00:00Z
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// The UID of a member account in an enterprise with multiple member accounts. Leave this parameter empty if this scenario does not apply.
+	//
 	// example:
 	//
 	// 1779628988149763
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The order type. Valid values:
+	//
+	// - New: new purchase.
+	//
+	// - Renew: renewal.
+	//
+	// - Upgrade: upgrade.
+	//
+	// - TempUpgrade: temporary upgrade.
+	//
+	// - Downgrade: downgrade.
+	//
+	// - Refund: refund.
+	//
+	// - Convert: billing method conversion.
+	//
+	// - ResizeDisk: cloud disk resizing.
+	//
+	// - CompensatoryRenew: compensatory renewal.
+	//
+	// - IncreaseUpgrade: bandwidth upgrade.
+	//
+	// - Exchange: exchange.
+	//
+	// - ChangeOperatingSystem: operating system change.
+	//
 	// example:
 	//
 	// New
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The payment status. For non-refund orders, valid values:
+	//
+	// - Unpaid: unpaid.
+	//
+	// - Paid: paid.
+	//
+	// - Cancelled: canceled.
+	//
+	// > For refund orders, set this parameter to NULL.
+	//
 	// example:
 	//
 	// Paid
 	PaymentStatus *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
+	// The product code.
+	//
 	// example:
 	//
 	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The product type.
+	//
 	// example:
 	//
 	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The subscription type. Valid values:
+	//
+	// - Subscription: upfront.
+	//
+	// - PayAsYouGo: pay-as-you-go.
+	//
 	// example:
 	//
 	// Subscription

@@ -14,6 +14,8 @@ type iGetFundAccountAvailableAmountRequest interface {
 }
 
 type GetFundAccountAvailableAmountRequest struct {
+	// Account ID. If not specified, the account ID owned by the current account (owner) is used by default.
+	//
 	// example:
 	//
 	// 12332112

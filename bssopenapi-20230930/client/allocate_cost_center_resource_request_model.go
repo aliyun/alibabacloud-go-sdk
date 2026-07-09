@@ -22,20 +22,38 @@ type iAllocateCostCenterResourceRequest interface {
 }
 
 type AllocateCostCenterResourceRequest struct {
+	// The ID of the source cost center. This parameter is required.
+	//
+	// - 0 indicates that the cost center is unallocated.
+	//
+	// - A value greater than 0 indicates an allocated cost center ID.
+	//
 	// example:
 	//
 	// 637180
 	FromCostCenterId *int64 `json:"FromCostCenterId,omitempty" xml:"FromCostCenterId,omitempty"`
+	// The ID of the owner of the source cost center.
+	//
 	// example:
 	//
 	// 1529600453335198
 	FromOwnerAccountId *int64 `json:"FromOwnerAccountId,omitempty" xml:"FromOwnerAccountId,omitempty"`
+	// The primary sales channel ID. If this parameter is left empty, the sales channel ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The list of resource instances.
+	//
 	// This parameter is required.
 	ResourceInstanceList []*AllocateCostCenterResourceRequestResourceInstanceList `json:"ResourceInstanceList,omitempty" xml:"ResourceInstanceList,omitempty" type:"Repeated"`
+	// The ID of the destination cost center. Valid values:
+	//
+	// - -1: moves the allocated resource to the unallocated state.
+	//
+	// - A value greater than 0: allocates the resource to the specified cost center.
+	//
 	// example:
 	//
 	// 638288
@@ -109,63 +127,106 @@ func (s *AllocateCostCenterResourceRequest) Validate() error {
 }
 
 type AllocateCostCenterResourceRequestResourceInstanceList struct {
+	// The attached resource type of the attached-resource instance. This parameter is required only for attached-resource product instances.
+	//
+	// - Currently, eight commodities support attached resources. The commodity codes are oss, dcdn, snapshot, vod, cdn, live, and cbwp.
+	//
+	// - You can call the QueryCostUnitResource operation to obtain all billing instances (including attached-resource instances with their attached resources) under a specific cost center (including the unallocated cost center) of a user.
+	//
 	// example:
 	//
 	// qwer1-cn-beijing
 	ApportionCode *string `json:"ApportionCode,omitempty" xml:"ApportionCode,omitempty"`
+	// The attached resource name.
+	//
 	// example:
 	//
 	// split-item-test1
 	ApportionName *string `json:"ApportionName,omitempty" xml:"ApportionName,omitempty"`
+	// The commodity code of the billing instance. This parameter is required.
+	//
 	// example:
 	//
 	// oss
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The commodity name of the resource.
+	//
 	// example:
 	//
 	// RESOURCE_UDR
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The billing granularity ID. This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou;standard
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The product code, which is the same as the product code in User Center bills.
+	//
 	// example:
 	//
 	// ecs
 	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	// The resources related to the resource instance.
+	//
 	// example:
 	//
 	// related-resource
 	RelatedResources *string `json:"RelatedResources,omitempty" xml:"RelatedResources,omitempty"`
+	// The resource group.
+	//
 	// example:
 	//
 	// xihe_mpp
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
-	// cn-hangzhou;standard
+	// cn-hangzhou;standard:app
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The custom nickname of the resource.
+	//
 	// example:
 	//
 	// ecs-test-1
 	ResourceNick *string `json:"ResourceNick,omitempty" xml:"ResourceNick,omitempty"`
+	// The resource source. Valid values:
+	//
+	// - AUTO_ALLOCATE: automatic allocation.
+	//
+	// - MANUAL_ALLOCATE: manual allocation.
+	//
 	// example:
 	//
 	// AUTO_ALLOCATE
 	ResourceSource *string `json:"ResourceSource,omitempty" xml:"ResourceSource,omitempty"`
+	// The resource status.
+	//
 	// example:
 	//
 	// 0
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// The tag of the resource.
+	//
 	// example:
 	//
 	// tag-test1
 	ResourceTag *string `json:"ResourceTag,omitempty" xml:"ResourceTag,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// SCU
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the owner of the billing instance. This parameter is required.
+	//
 	// example:
 	//
 	// 273394581313325532
 	ResourceUserId *int64 `json:"ResourceUserId,omitempty" xml:"ResourceUserId,omitempty"`
+	// The resource ownership username.
+	//
 	// example:
 	//
 	// test

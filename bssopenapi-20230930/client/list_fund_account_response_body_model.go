@@ -18,11 +18,16 @@ type iListFundAccountResponseBody interface {
 }
 
 type ListFundAccountResponseBody struct {
+	// Data list
 	Data []*ListFundAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Response metadata
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
@@ -78,43 +83,80 @@ func (s *ListFundAccountResponseBody) Validate() error {
 }
 
 type ListFundAccountResponseBodyData struct {
+	// Account creation time
+	//
 	// example:
 	//
 	// 2024-12-30 12:00:00
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// Account ID of the MA user associated with the account
+	//
 	// example:
 	//
 	// 1232121
 	FundAccountAdminAccountId *string `json:"FundAccountAdminAccountId,omitempty" xml:"FundAccountAdminAccountId,omitempty"`
+	// Name of the MA user associated with the account
+	//
 	// example:
 	//
 	// 云某的账户
 	FundAccountAdminAccountName *string `json:"FundAccountAdminAccountName,omitempty" xml:"FundAccountAdminAccountName,omitempty"`
+	// Account ID
+	//
 	// example:
 	//
 	// 1022231
 	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// Account name
+	//
 	// example:
 	//
 	// 云某的账户
 	FundAccountName *string `json:"FundAccountName,omitempty" xml:"FundAccountName,omitempty"`
+	// Account ID of the fund account owner
+	//
 	// example:
 	//
 	// 132123211
 	FundAccountOwnerAccountId *string `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
+	// Account status.
+	//
+	// VALID: valid.
+	//
+	// FROZEN: frozen.
+	//
+	// CLOSED: closed.
+	//
 	// example:
 	//
 	// VALID
 	FundAccountStatus *string `json:"FundAccountStatus,omitempty" xml:"FundAccountStatus,omitempty"`
+	// Account type.
+	//
+	// DIRECT_USER: Alibaba Cloud direct customer account.
+	//
+	// RESELLER_QUOTA: ecosystem account.
+	//
 	// example:
 	//
 	// DIRECT_USER
 	FundAccountType *string `json:"FundAccountType,omitempty" xml:"FundAccountType,omitempty"`
+	// Level-1 marketplace
+	//
 	// example:
 	//
 	// 2684210001
-	Nbid        *string   `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// Set of account permissions that the user has.
+	//
+	// using: use.
+	//
+	// manage: manage.
+	//
+	// owner: own.
 	Permissions []*string `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	// Site
+	//
 	// example:
 	//
 	// 26842

@@ -18,14 +18,20 @@ type iSetFundAccountLowAvailableAmountAlarmResponseBody interface {
 }
 
 type SetFundAccountLowAvailableAmountAlarmResponseBody struct {
+	// The returned data.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response metadata.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 08108BF5-1AA3-518E-9986-95A3616E8DA9

@@ -34,46 +34,68 @@ type iGetFundAccountCanWithdrawAmountResponseBody interface {
 }
 
 type GetFundAccountCanWithdrawAmountResponseBody struct {
+	// Amount withdrawable via original payment method
+	//
 	// example:
 	//
 	// 400
 	CanOriginalWithdrawAmount *string `json:"CanOriginalWithdrawAmount,omitempty" xml:"CanOriginalWithdrawAmount,omitempty"`
+	// Withdrawable amount = Cash balance - Transfer ledger amount - (Outstanding invoice amount + Historical months unsettled amount + Current month unsettled amount - Transfer ledger amount) - Pay-as-you-go reserved amount
+	//
 	// example:
 	//
 	// 500
 	CanWithdrawAmount *string `json:"CanWithdrawAmount,omitempty" xml:"CanWithdrawAmount,omitempty"`
+	// Amount not withdrawable via original payment method
+	//
 	// example:
 	//
 	// 100
 	CannotOriginalWithdrawAmount *string `json:"CannotOriginalWithdrawAmount,omitempty" xml:"CannotOriginalWithdrawAmount,omitempty"`
+	// Cash balance
+	//
 	// example:
 	//
 	// 1000
 	CashAmount *string `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	// Outstanding invoice amount
+	//
 	// example:
 	//
 	// 100
 	CreditMemoAmount *string `json:"CreditMemoAmount,omitempty" xml:"CreditMemoAmount,omitempty"`
+	// Current month unsettled amount
+	//
 	// example:
 	//
 	// 200
 	CurrentMonthUnclearedAmount *string `json:"CurrentMonthUnclearedAmount,omitempty" xml:"CurrentMonthUnclearedAmount,omitempty"`
+	// Historical months unsettled amount
+	//
 	// example:
 	//
 	// 100
 	HistoryMonthUnclearedAmount *string `json:"HistoryMonthUnclearedAmount,omitempty" xml:"HistoryMonthUnclearedAmount,omitempty"`
+	// Response structure metadata
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Pay-as-you-go reserved amount
+	//
 	// example:
 	//
 	// 100
 	PayAsYouGoReversedAmount *string `json:"PayAsYouGoReversedAmount,omitempty" xml:"PayAsYouGoReversedAmount,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// DF58589C-A06C-4224-8615-7797E6474FA3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Transfer amount
+	//
 	// example:
 	//
 	// 0

@@ -24,23 +24,34 @@ type iQueryCostCenterShareRuleResponseBody interface {
 }
 
 type QueryCostCenterShareRuleResponseBody struct {
+	// The returned data list.
 	Data []*QueryCostCenterShareRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Reserved field.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The response metadata.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Reserved field.
+	//
 	// example:
 	//
 	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6NH0=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 20
@@ -123,27 +134,37 @@ func (s *QueryCostCenterShareRuleResponseBody) Validate() error {
 }
 
 type QueryCostCenterShareRuleResponseBodyData struct {
+	// The source cost center rule details.
 	FromCostCenterShareRuleDetails []*QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails `json:"FromCostCenterShareRuleDetails,omitempty" xml:"FromCostCenterShareRuleDetails,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2026-01-01 00:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The owner account ID of the cost center.
+	//
 	// example:
 	//
 	// 1529600453335198
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// The sharing rule ID.
+	//
 	// example:
 	//
 	// 1826
 	ShareRuleId *int64 `json:"ShareRuleId,omitempty" xml:"ShareRuleId,omitempty"`
+	// The sharing rule name.
+	//
 	// example:
 	//
 	// test
 	ShareRuleName *string `json:"ShareRuleName,omitempty" xml:"ShareRuleName,omitempty"`
+	// The sharing rule type.
+	//
 	// example:
 	//
 	// AVERAGE
-	ShareRuleType                *string                                                                 `json:"ShareRuleType,omitempty" xml:"ShareRuleType,omitempty"`
+	ShareRuleType *string `json:"ShareRuleType,omitempty" xml:"ShareRuleType,omitempty"`
+	// The target cost center rule details.
 	ToCostCenterShareRuleDetails []*QueryCostCenterShareRuleResponseBodyDataToCostCenterShareRuleDetails `json:"ToCostCenterShareRuleDetails,omitempty" xml:"ToCostCenterShareRuleDetails,omitempty" type:"Repeated"`
 }
 
@@ -241,35 +262,56 @@ func (s *QueryCostCenterShareRuleResponseBodyData) Validate() error {
 }
 
 type QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails struct {
+	// The cost center code.
+	//
 	// example:
 	//
 	// 970354711219#
 	CostCenterCode *string `json:"CostCenterCode,omitempty" xml:"CostCenterCode,omitempty"`
+	// The cost center ID.
+	//
 	// example:
 	//
 	// 637127
-	CostCenterId   *int64  `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// The cost center name.
+	//
+	// example:
+	//
+	// 成本计划
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-07-16 13:49:59
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2025-07-16 13:49:59
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The owner account ID of the cost center.
+	//
 	// example:
 	//
 	// 1529600453335198
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// The parent cost center ID.
+	//
 	// example:
 	//
 	// 637537
 	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
+	// The previous cost center ID.
+	//
 	// example:
 	//
 	// 583059
 	PrevCostCenterId *int64 `json:"PrevCostCenterId,omitempty" xml:"PrevCostCenterId,omitempty"`
+	// The root cost center ID.
+	//
 	// example:
 	//
 	// 583050
@@ -370,39 +412,62 @@ func (s *QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails)
 }
 
 type QueryCostCenterShareRuleResponseBodyDataToCostCenterShareRuleDetails struct {
+	// The cost center code.
+	//
 	// example:
 	//
 	// 970354711215#
 	CostCenterCode *string `json:"CostCenterCode,omitempty" xml:"CostCenterCode,omitempty"`
+	// The cost center ID.
+	//
 	// example:
 	//
 	// 637127
-	CostCenterId   *int64  `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// The cost center name.
+	//
+	// example:
+	//
+	// 成本分摊
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-07-16 13:49:59
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2025-07-16 13:49:59
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The owner account ID of the cost center.
+	//
 	// example:
 	//
 	// 1529600453335198
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// The parent cost center ID.
+	//
 	// example:
 	//
 	// 637537
 	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
+	// The previous cost center ID.
+	//
 	// example:
 	//
 	// 583055
 	PrevCostCenterId *int64 `json:"PrevCostCenterId,omitempty" xml:"PrevCostCenterId,omitempty"`
+	// The root cost center ID.
+	//
 	// example:
 	//
 	// 583050
 	RootCostCenterId *int64 `json:"RootCostCenterId,omitempty" xml:"RootCostCenterId,omitempty"`
+	// The sharing ratio.
+	//
 	// example:
 	//
 	// 0.2

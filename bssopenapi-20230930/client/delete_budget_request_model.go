@@ -16,12 +16,16 @@ type iDeleteBudgetRequest interface {
 }
 
 type DeleteBudgetRequest struct {
+	// The budget name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// department1
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
+	// The ID of the primary marketplace. If this parameter is left empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001

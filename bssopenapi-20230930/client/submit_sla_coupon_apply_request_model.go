@@ -20,14 +20,20 @@ type iSubmitSlaCouponApplyRequest interface {
 }
 
 type SubmitSlaCouponApplyRequest struct {
-	DamagedIds     []*string                                    `json:"DamagedIds,omitempty" xml:"DamagedIds,omitempty" type:"Repeated"`
+	// Optional. Damaged record IDs.
+	DamagedIds []*string `json:"DamagedIds,omitempty" xml:"DamagedIds,omitempty" type:"Repeated"`
+	// Enterprise and account list. If empty, the current account itself is queried.
 	EcIdAccountIds []*SubmitSlaCouponApplyRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	// Required. Application month in the yyyyMM format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 202603
 	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	// Primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2084210001
@@ -92,7 +98,10 @@ func (s *SubmitSlaCouponApplyRequest) Validate() error {
 }
 
 type SubmitSlaCouponApplyRequestEcIdAccountIds struct {
+	// List of accounts to access. If empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// Enterprise entity ID.
+	//
 	// example:
 	//
 	// 1501603440974415

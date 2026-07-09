@@ -38,54 +38,80 @@ type iGetFundAccountCanAllocateCreditAmountResponseBody interface {
 }
 
 type GetFundAccountCanAllocateCreditAmountResponseBody struct {
+	// The enterprise entity ID.
+	//
 	// example:
 	//
 	// 2032123221
 	Ecid *string `json:"Ecid,omitempty" xml:"Ecid,omitempty"`
+	// The allocated credit limit of the enterprise.
+	//
 	// example:
 	//
 	// 300
 	EcidAllocatedCreditAmount *string `json:"EcidAllocatedCreditAmount,omitempty" xml:"EcidAllocatedCreditAmount,omitempty"`
+	// The enterprise credit quota.
+	//
 	// example:
 	//
 	// 1000
 	EcidCreditAmount *string `json:"EcidCreditAmount,omitempty" xml:"EcidCreditAmount,omitempty"`
+	// The account ECID.
+	//
 	// example:
 	//
 	// 202321232
 	FundAccountEcid *string `json:"FundAccountEcid,omitempty" xml:"FundAccountEcid,omitempty"`
+	// The account ID.
+	//
 	// example:
 	//
 	// 12332112
 	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// The account name.
+	//
 	// example:
 	//
 	// 云某的名称
 	FundAccountName *string `json:"FundAccountName,omitempty" xml:"FundAccountName,omitempty"`
+	// The Alibaba Cloud account ID of the account owner.
+	//
 	// example:
 	//
 	// 123433121
 	FundAccountOwnerAccountId *int64 `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
+	// The maximum allocatable credit limit of the current account.
+	//
 	// example:
 	//
 	// 1500
 	MaxCanAllocateCreditAmount *string `json:"MaxCanAllocateCreditAmount,omitempty" xml:"MaxCanAllocateCreditAmount,omitempty"`
+	// Response structure metadata.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The minimum allocatable credit limit of the current account.
+	//
 	// example:
 	//
 	// 200
 	MinCanAllocateCreditAmount *string `json:"MinCanAllocateCreditAmount,omitempty" xml:"MinCanAllocateCreditAmount,omitempty"`
+	// The primary marketplace.
+	//
 	// example:
 	//
 	// 2684210001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CC706AAC-75A6-55B5-9AB7-7D171C6C7655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The site.
+	//
 	// example:
 	//
 	// 26842

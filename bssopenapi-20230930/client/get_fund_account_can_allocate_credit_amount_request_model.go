@@ -14,6 +14,8 @@ type iGetFundAccountCanAllocateCreditAmountRequest interface {
 }
 
 type GetFundAccountCanAllocateCreditAmountRequest struct {
+	// Fund account ID. If not specified, the account owned by the current account is used by default.
+	//
 	// example:
 	//
 	// 1233231

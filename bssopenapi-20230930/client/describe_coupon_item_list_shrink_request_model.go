@@ -24,20 +24,34 @@ type iDescribeCouponItemListShrinkRequest interface {
 }
 
 type DescribeCouponItemListShrinkRequest struct {
+	// The coupon ID.
+	//
 	// example:
 	//
 	// 59104570
 	CouponId *int64 `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage          *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of enterprise entities and accounts. If this parameter is left empty, the current account is queried.
 	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The product name. Fuzzy matching is supported.
+	//
+	// example:
+	//
+	// 云服务器ECS
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The level-1 sales channel ID. If this parameter is left empty, the channel ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20

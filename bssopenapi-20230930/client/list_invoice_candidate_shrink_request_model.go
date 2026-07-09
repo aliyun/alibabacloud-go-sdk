@@ -34,32 +34,48 @@ type iListInvoiceCandidateShrinkRequest interface {
 }
 
 type ListInvoiceCandidateShrinkRequest struct {
+	// List of billing cycles.
 	BillingCyclesShrink *string `json:"BillingCycles,omitempty" xml:"BillingCycles,omitempty"`
-	BusinessIdsShrink   *string `json:"BusinessIds,omitempty" xml:"BusinessIds,omitempty"`
+	// List of business document numbers.
+	BusinessIdsShrink *string `json:"BusinessIds,omitempty" xml:"BusinessIds,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage          *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// List of enterprises and accounts. If empty, the current account itself is queried.
 	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	// The end time. Format: yyyy-mm-dd hh:mm:ss.
+	//
 	// example:
 	//
 	// 2025-07-01 00:00:00
-	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// List of invoice issuers.
 	InvoiceIssuersShrink *string `json:"InvoiceIssuers,omitempty" xml:"InvoiceIssuers,omitempty"`
+	// Primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time. Format: yyyy-mm-dd hh:mm:ss.
+	//
 	// example:
 	//
 	// 2025-06-01 00:00:00
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// List of invoice candidate statuses.
 	StatusShrink *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TypesShrink  *string `json:"Types,omitempty" xml:"Types,omitempty"`
+	// List of invoice candidate types.
+	TypesShrink *string `json:"Types,omitempty" xml:"Types,omitempty"`
 }
 
 func (s ListInvoiceCandidateShrinkRequest) String() string {

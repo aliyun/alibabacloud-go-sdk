@@ -16,12 +16,16 @@ type iGetFundAccountCanRecycleAmountRequest interface {
 }
 
 type GetFundAccountCanRecycleAmountRequest struct {
+	// The currency.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The ID of the source account (payer account) from which funds are reclaimed. If not specified, the account ID owned by the current account is used by default.
+	//
 	// example:
 	//
 	// 122321223

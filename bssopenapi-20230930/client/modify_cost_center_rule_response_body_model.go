@@ -18,14 +18,20 @@ type iModifyCostCenterRuleResponseBody interface {
 }
 
 type ModifyCostCenterRuleResponseBody struct {
+	// Financial unit allocation rule ID
+	//
 	// example:
 	//
 	// 5632
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Response metadata
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4

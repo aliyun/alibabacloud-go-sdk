@@ -18,11 +18,16 @@ type iCreateFundAccountPayRelationResponseBody interface {
 }
 
 type CreateFundAccountPayRelationResponseBody struct {
+	// Data list.
 	Data []*CreateFundAccountPayRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Response metadata.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999
@@ -78,22 +83,32 @@ func (s *CreateFundAccountPayRelationResponseBody) Validate() error {
 }
 
 type CreateFundAccountPayRelationResponseBodyData struct {
+	// AccountId of the user who pays with the account.
+	//
 	// example:
 	//
 	// 1501603440974415
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Name of the user who pays with the account.
+	//
 	// example:
 	//
 	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Account ID.
+	//
 	// example:
 	//
 	// 12332112
 	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// Result code.
+	//
 	// example:
 	//
 	// Success
 	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// Result message.
+	//
 	// example:
 	//
 	// Successful

@@ -18,11 +18,16 @@ type iListInvoiceTitleResponseBody interface {
 }
 
 type ListInvoiceTitleResponseBody struct {
+	// Invoice title list
 	Data []*ListInvoiceTitleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Response metadata.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
@@ -78,29 +83,56 @@ func (s *ListInvoiceTitleResponseBody) Validate() error {
 }
 
 type ListInvoiceTitleResponseBodyData struct {
+	// Bank name.
+	//
+	// example:
+	//
+	// 招商银行
 	AccountBankName *string `json:"AccountBankName,omitempty" xml:"AccountBankName,omitempty"`
+	// Account ID.
+	//
 	// example:
 	//
 	// 1990699401005016
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Basic bank account number.
+	//
 	// example:
 	//
 	// 1234567890
 	BankAccountNumber *string `json:"BankAccountNumber,omitempty" xml:"BankAccountNumber,omitempty"`
+	// The time when the invoice title was created.
+	//
 	// example:
 	//
 	// 2025-06-01 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Invoice title ID.
+	//
 	// example:
 	//
 	// 123456
-	Id                *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InvoiceTitle      *string `json:"InvoiceTitle,omitempty" xml:"InvoiceTitle,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Invoice title.
+	//
+	// example:
+	//
+	// xx公司
+	InvoiceTitle *string `json:"InvoiceTitle,omitempty" xml:"InvoiceTitle,omitempty"`
+	// Registered address.
+	//
+	// example:
+	//
+	// 北京市朝阳区
 	RegisteredAddress *string `json:"RegisteredAddress,omitempty" xml:"RegisteredAddress,omitempty"`
+	// Registered landline number.
+	//
 	// example:
 	//
 	// 010-12345678
 	RegisteredLandline *string `json:"RegisteredLandline,omitempty" xml:"RegisteredLandline,omitempty"`
+	// Unified social credit code. 15, 17, 18, or 20 characters.
+	//
 	// example:
 	//
 	// 111111111111111

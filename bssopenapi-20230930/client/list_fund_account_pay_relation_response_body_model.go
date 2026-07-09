@@ -24,23 +24,34 @@ type iListFundAccountPayRelationResponseBody interface {
 }
 
 type ListFundAccountPayRelationResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        []*ListFundAccountPayRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The data list.
+	Data []*ListFundAccountPayRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The response metadata.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 50
@@ -123,58 +134,100 @@ func (s *ListFundAccountPayRelationResponseBody) Validate() error {
 }
 
 type ListFundAccountPayRelationResponseBodyData struct {
+	// The account ID of the user associated with the payment relationship, that is, the account that uses this account for payment.
+	//
 	// example:
 	//
 	// 32812132121
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The user name.
+	//
 	// example:
 	//
 	// 云某的名称
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The enterprise entity ID of the user associated with the payment relationship.
+	//
 	// example:
 	//
 	// 213231232
 	Ecid *string `json:"Ecid,omitempty" xml:"Ecid,omitempty"`
+	// The time when the payment relationship takes effect.
+	//
 	// example:
 	//
 	// 2024-12-01 12:00:10
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	// The account ID.
+	//
 	// example:
 	//
 	// 123231213
 	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// The Alibaba Cloud account ID of the account owner.
+	//
 	// example:
 	//
 	// 312328912
 	FundAccountOwnerAccountId *string `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
+	// The time when the payment relationship expires.
+	//
 	// example:
 	//
 	// 2025-01-01 12:12:12
 	IneffectiveTime *string `json:"IneffectiveTime,omitempty" xml:"IneffectiveTime,omitempty"`
+	// The primary marketplace.
+	//
 	// example:
 	//
 	// 2684210001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The operator name.
+	//
+	// When the operator type is aliyun_pk, the operator name is the Alibaba Cloud nickname.
+	//
+	// When the operator type is system, the operator name is "Alibaba Cloud assistant".
+	//
 	// example:
 	//
 	// 云某的名称
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// The authorized operator.
+	//
+	// When the operator type is aliyun_pk, operatorNo is the Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 1232343423
 	OperatorNo *string `json:"OperatorNo,omitempty" xml:"OperatorNo,omitempty"`
+	// The type of the authorized operator.
+	//
+	// aliyun_pk: user.
+	//
+	// system: Alibaba Cloud system.
+	//
 	// example:
 	//
 	// aliyun_pk
 	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	// The relationship type, which can be collection relationship or payment relationship.
+	//
 	// example:
 	//
 	// PAYMENT
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	// The site.
+	//
 	// example:
 	//
 	// 26842
 	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	// The relationship status.
+	//
+	// valid: valid.
+	//
+	// expired: invalid.
+	//
 	// example:
 	//
 	// valid

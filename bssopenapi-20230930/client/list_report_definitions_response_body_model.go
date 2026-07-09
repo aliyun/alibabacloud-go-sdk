@@ -18,8 +18,12 @@ type iListReportDefinitionsResponseBody interface {
 }
 
 type ListReportDefinitionsResponseBody struct {
-	Metadata          interface{}                                           `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The metadata of the response struct.
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The data list.
 	ReportDefinitions []*ListReportDefinitionsResponseBodyReportDefinitions `json:"ReportDefinitions,omitempty" xml:"ReportDefinitions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
@@ -75,38 +79,62 @@ func (s *ListReportDefinitionsResponseBody) Validate() error {
 }
 
 type ListReportDefinitionsResponseBodyReportDefinitions struct {
+	// The start billing cycle for push. After the subscription is created, the system automatically pushes data from the start billing cycle to the current time. This parameter does not take effect for monthly bill PDF subscriptions, and historical data is not re-pushed. Data within the last year can be pushed.
+	//
 	// example:
 	//
 	// 2025-05
 	BeginBillingCycle *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
+	// The name of the OSS bucket that stores the files.
+	//
 	// example:
 	//
 	// oss-bill
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// The UID of the OSS bucket owner that stores the files. Specify this parameter when a Bid/Reseller subscription needs to push data to the OSS bucket of a sub-account. The specified account must be a sub-account of the calling account and must be granted the AliyunConsumeDump2OSSRole permission. Regular users do not need to specify this parameter. The calling account is used by default.
+	//
 	// example:
 	//
 	// 1234567812345678
 	OssBucketOwnerAccountId *int64 `json:"OssBucketOwnerAccountId,omitempty" xml:"OssBucketOwnerAccountId,omitempty"`
+	// The storage path of the OSS bucket.
+	//
 	// example:
 	//
 	// bill/
 	OssBucketPath *string `json:"OssBucketPath,omitempty" xml:"OssBucketPath,omitempty"`
+	// The subscription source name.
+	//
 	// example:
 	//
 	// OSS
 	ReportSourceName *string `json:"ReportSourceName,omitempty" xml:"ReportSourceName,omitempty"`
+	// The subscription source. Valid values: OSS and MC.
+	//
 	// example:
 	//
 	// OSS
 	ReportSourceType *string `json:"ReportSourceType,omitempty" xml:"ReportSourceType,omitempty"`
+	// The bill subscription task ID.
+	//
 	// example:
 	//
 	// 123321
 	ReportTaskId *int64 `json:"ReportTaskId,omitempty" xml:"ReportTaskId,omitempty"`
+	// The subscription type. Valid values:
+	//
+	// - BillingItemDetailForBillingPeriod: billable item consumption details.
+	//
+	// - InstanceDetailForBillingPeriod: instance consumption details.
+	//
+	// - BillingItemDetailMonthly: billable item consumption summary by billing cycle.
+	//
 	// example:
 	//
 	// BillingItemDetailForBillingPeriod
 	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// The time when the subscription was created.
+	//
 	// example:
 	//
 	// 2025-05-21 10:36:31

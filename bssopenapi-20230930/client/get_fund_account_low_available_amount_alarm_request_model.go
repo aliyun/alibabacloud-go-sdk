@@ -14,6 +14,8 @@ type iGetFundAccountLowAvailableAmountAlarmRequest interface {
 }
 
 type GetFundAccountLowAvailableAmountAlarmRequest struct {
+	// Fund account ID. If not specified, the account ID owned by the current account is used by default.
+	//
 	// example:
 	//
 	// 12332112

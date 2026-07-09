@@ -22,16 +22,23 @@ type iSaveCostCenterShareRuleShrinkRequest interface {
 }
 
 type SaveCostCenterShareRuleShrinkRequest struct {
+	// The list of sharing rules to create.
 	CreateShareRuleListShrink *string `json:"CreateShareRuleList,omitempty" xml:"CreateShareRuleList,omitempty"`
+	// The list of sharing rules to modify.
 	ModifyShareRuleListShrink *string `json:"ModifyShareRuleList,omitempty" xml:"ModifyShareRuleList,omitempty"`
+	// The primary marketplace ID. If left empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The user ID of the cost center owner.
+	//
 	// example:
 	//
 	// 1977800748053695
-	OwnerAccountId            *int64  `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// The list of sharing rules to delete.
 	RemoveShareRuleListShrink *string `json:"RemoveShareRuleList,omitempty" xml:"RemoveShareRuleList,omitempty"`
 }
 

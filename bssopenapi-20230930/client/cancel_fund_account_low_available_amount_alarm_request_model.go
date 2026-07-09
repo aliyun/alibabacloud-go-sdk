@@ -14,6 +14,8 @@ type iCancelFundAccountLowAvailableAmountAlarmRequest interface {
 }
 
 type CancelFundAccountLowAvailableAmountAlarmRequest struct {
+	// The ID of the fund account. If this parameter is not specified, the ID of the account owned by the current account is used by default.
+	//
 	// example:
 	//
 	// 123321123

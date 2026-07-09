@@ -18,14 +18,20 @@ type iCheckBudgetNameExistsResponseBody interface {
 }
 
 type CheckBudgetNameExistsResponseBody struct {
+	// The budget name.
+	//
 	// example:
 	//
 	// department1
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
+	// Indicates whether the budget name already exists.
+	//
 	// example:
 	//
 	// true
 	Exists *bool `json:"Exists,omitempty" xml:"Exists,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F1E2D3C4-B5A6-7890-1234-567890ABCDEF

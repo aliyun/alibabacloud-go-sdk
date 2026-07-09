@@ -22,19 +22,28 @@ type iDescribeBudgetsResponseBody interface {
 }
 
 type DescribeBudgetsResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        []*DescribeBudgetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The data list.
+	Data []*DescribeBudgetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DB2A9097-289C-11CE-AA74-235FCFD39204
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -108,46 +117,73 @@ func (s *DescribeBudgetsResponseBody) Validate() error {
 }
 
 type DescribeBudgetsResponseBodyData struct {
+	// The budget name.
+	//
 	// example:
 	//
 	// department1-test
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
+	// The budget type.
+	//
 	// example:
 	//
 	// CONSUME
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
-	Comment    *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// budget-1
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The end period.
+	//
 	// example:
 	//
 	// 2026-12
-	CycleEndPeriod *string                                      `json:"CycleEndPeriod,omitempty" xml:"CycleEndPeriod,omitempty"`
-	CycleQuota     []*DescribeBudgetsResponseBodyDataCycleQuota `json:"CycleQuota,omitempty" xml:"CycleQuota,omitempty" type:"Repeated"`
+	CycleEndPeriod *string `json:"CycleEndPeriod,omitempty" xml:"CycleEndPeriod,omitempty"`
+	// The specified quota per cycle.
+	CycleQuota []*DescribeBudgetsResponseBodyDataCycleQuota `json:"CycleQuota,omitempty" xml:"CycleQuota,omitempty" type:"Repeated"`
+	// The start period.
+	//
 	// example:
 	//
 	// 2025-10
 	CycleStartPeriod *string `json:"CycleStartPeriod,omitempty" xml:"CycleStartPeriod,omitempty"`
+	// The cycle type.
+	//
 	// example:
 	//
 	// MONTHLY
-	CycleType            *string                                              `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// The enterprise multi-account filter conditions.
 	EcIdAccountIdsFilter *DescribeBudgetsResponseBodyDataEcIdAccountIdsFilter `json:"EcIdAccountIdsFilter,omitempty" xml:"EcIdAccountIdsFilter,omitempty" type:"Struct"`
+	// The expiration status.
+	//
 	// example:
 	//
 	// NOT_EXPIRED
 	ExpireStatus *string `json:"ExpireStatus,omitempty" xml:"ExpireStatus,omitempty"`
+	// The budget metric.
+	//
 	// example:
 	//
 	// REQUIRE_AMOUNT
-	Metric      *string                                       `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The filter conditions.
 	QueryFilter []*DescribeBudgetsResponseBodyDataQueryFilter `json:"QueryFilter,omitempty" xml:"QueryFilter,omitempty" type:"Repeated"`
+	// The fixed quota value.
+	//
 	// example:
 	//
 	// 10000
 	Quota *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// The quota type.
+	//
 	// example:
 	//
 	// FIXED
-	QuotaType *string                                     `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	// The alert configurations.
 	WarnConfs []*DescribeBudgetsResponseBodyDataWarnConfs `json:"WarnConfs,omitempty" xml:"WarnConfs,omitempty" type:"Repeated"`
 }
 
@@ -322,8 +358,18 @@ func (s *DescribeBudgetsResponseBodyData) Validate() error {
 }
 
 type DescribeBudgetsResponseBodyDataCycleQuota struct {
+	// The cycle period.
+	//
+	// example:
+	//
+	// 202601
 	CyclePeriod *string `json:"CyclePeriod,omitempty" xml:"CyclePeriod,omitempty"`
-	Quota       *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// The quota.
+	//
+	// example:
+	//
+	// 100
+	Quota *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
 }
 
 func (s DescribeBudgetsResponseBodyDataCycleQuota) String() string {
@@ -357,8 +403,14 @@ func (s *DescribeBudgetsResponseBodyDataCycleQuota) Validate() error {
 }
 
 type DescribeBudgetsResponseBodyDataEcIdAccountIdsFilter struct {
+	// The member account IDs.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	EcId       *string  `json:"EcId,omitempty" xml:"EcId,omitempty"`
+	// The enterprise entity ID.
+	//
+	// example:
+	//
+	// E2024112210463400001
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
 }
 
 func (s DescribeBudgetsResponseBodyDataEcIdAccountIdsFilter) String() string {
@@ -392,9 +444,20 @@ func (s *DescribeBudgetsResponseBodyDataEcIdAccountIdsFilter) Validate() error {
 }
 
 type DescribeBudgetsResponseBodyDataQueryFilter struct {
-	Code       *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	SelectType *string   `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
-	Values     []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The parameter code.
+	//
+	// example:
+	//
+	// RESOURCE_OWNER_ACCOUNT
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The selection mode.
+	//
+	// example:
+	//
+	// IN
+	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+	// The filter value list.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s DescribeBudgetsResponseBodyDataQueryFilter) String() string {
@@ -437,15 +500,48 @@ func (s *DescribeBudgetsResponseBodyDataQueryFilter) Validate() error {
 }
 
 type DescribeBudgetsResponseBodyDataWarnConfs struct {
-	Comment        *string   `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	EventBridge    *bool     `json:"EventBridge,omitempty" xml:"EventBridge,omitempty"`
-	MscChannels    []*string `json:"MscChannels,omitempty" xml:"MscChannels,omitempty" type:"Repeated"`
-	MscContacts    []*string `json:"MscContacts,omitempty" xml:"MscContacts,omitempty" type:"Repeated"`
-	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Sequence       *int32    `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	ThresholdType  *string   `json:"ThresholdType,omitempty" xml:"ThresholdType,omitempty"`
-	ThresholdValue *string   `json:"ThresholdValue,omitempty" xml:"ThresholdValue,omitempty"`
-	WarnTarget     *string   `json:"WarnTarget,omitempty" xml:"WarnTarget,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// comment1
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Indicates whether EventBridge is enabled.
+	EventBridge *bool `json:"EventBridge,omitempty" xml:"EventBridge,omitempty"`
+	// The list of message center notification channels.
+	MscChannels []*string `json:"MscChannels,omitempty" xml:"MscChannels,omitempty" type:"Repeated"`
+	// The list of message center contacts.
+	MscContacts []*string `json:"MscContacts,omitempty" xml:"MscContacts,omitempty" type:"Repeated"`
+	// The alert name. This parameter is user-defined and optional. If not specified, the backend automatically generates a name.
+	//
+	// example:
+	//
+	// Alert-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The sort sequence number. This parameter is present only in responses. Alerts are numbered in ascending order by alert ID, starting from 1.
+	//
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The threshold type.
+	//
+	// example:
+	//
+	// FIXED
+	ThresholdType *string `json:"ThresholdType,omitempty" xml:"ThresholdType,omitempty"`
+	// The threshold value.
+	//
+	// example:
+	//
+	// 100
+	ThresholdValue *string `json:"ThresholdValue,omitempty" xml:"ThresholdValue,omitempty"`
+	// The alert target.
+	//
+	// example:
+	//
+	// ACTUAL
+	WarnTarget *string `json:"WarnTarget,omitempty" xml:"WarnTarget,omitempty"`
 }
 
 func (s DescribeBudgetsResponseBodyDataWarnConfs) String() string {

@@ -18,11 +18,16 @@ type iCreateCostCenterResponseBody interface {
 }
 
 type CreateCostCenterResponseBody struct {
+	// Data list
 	CostCenterDtoList []*CreateCostCenterResponseBodyCostCenterDtoList `json:"CostCenterDtoList,omitempty" xml:"CostCenterDtoList,omitempty" type:"Repeated"`
+	// Response metadata
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// C1BD134E-D914-6AE0-1901-AEB2A99FA205
@@ -78,15 +83,26 @@ func (s *CreateCostCenterResponseBody) Validate() error {
 }
 
 type CreateCostCenterResponseBodyCostCenterDtoList struct {
+	// Cost center ID
+	//
 	// example:
 	//
 	// 485938
-	CostCenterId   *int64  `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// Cost center name (must be unique within the same account)
+	//
+	// example:
+	//
+	// 资源组
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
+	// Owner user ID of the cost center
+	//
 	// example:
 	//
 	// 1314839403940987
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// Parent cost center ID
+	//
 	// example:
 	//
 	// -1

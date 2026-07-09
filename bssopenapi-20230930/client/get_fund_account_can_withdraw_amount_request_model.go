@@ -14,6 +14,8 @@ type iGetFundAccountCanWithdrawAmountRequest interface {
 }
 
 type GetFundAccountCanWithdrawAmountRequest struct {
+	// Fund account ID. If not specified, the account ID owned by the current account (owner) is used by default.
+	//
 	// example:
 	//
 	// 123212232

@@ -46,49 +46,70 @@ type iDescribeCouponRequest interface {
 }
 
 type DescribeCouponRequest struct {
+	// The coupon ID.
+	//
 	// example:
 	//
 	// 351430260343
 	CouponId *int64 `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	// The coupon code.
+	//
 	// example:
 	//
 	// 554863270150
 	CouponNo             *string  `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	CouponTemplateIdList []*int64 `json:"CouponTemplateIdList,omitempty" xml:"CouponTemplateIdList,omitempty" type:"Repeated"`
+	// The coupon type.
+	//
 	// example:
 	//
 	// CERTAIN
 	CouponType *string `json:"CouponType,omitempty" xml:"CouponType,omitempty"`
+	// The current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	CurrentPage    *int32                                 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The enterprise and account list. If this parameter is left empty, the current account is queried.
 	EcIdAccountIds []*DescribeCouponRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	// The effective end time.
+	//
 	// example:
 	//
 	// 1708423156000
 	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
+	// The effective start time.
+	//
 	// example:
 	//
 	// 1684750028000
 	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
+	// The expiration end time.
+	//
 	// example:
 	//
 	// 1708423156000
 	ExpireEndDate *int64 `json:"ExpireEndDate,omitempty" xml:"ExpireEndDate,omitempty"`
+	// The expiration start time.
+	//
 	// example:
 	//
 	// 1684750028000
 	ExpireStartDate *int64 `json:"ExpireStartDate,omitempty" xml:"ExpireStartDate,omitempty"`
 	IncludeShare    *bool  `json:"IncludeShare,omitempty" xml:"IncludeShare,omitempty"`
 	MaxResults      *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The primary campaign information.
+	//
 	// example:
 	//
 	// 2684201000001
 	Nbid      *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -96,6 +117,8 @@ type DescribeCouponRequest struct {
 	// 20
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// AVAILABLE
@@ -277,8 +300,9 @@ func (s *DescribeCouponRequest) Validate() error {
 }
 
 type DescribeCouponRequestEcIdAccountIds struct {
+	// The list of accessed accounts. If this parameter is left empty, all accounts under the current entity ID are selected.
 	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	// This parameter is required.
+	// The enterprise entity ID.
 	//
 	// example:
 	//

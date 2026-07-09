@@ -18,11 +18,16 @@ type iCreateCostCenterRuleRequest interface {
 }
 
 type CreateCostCenterRuleRequest struct {
+	// Financial unit ID
+	//
 	// example:
 	//
 	// 485938
-	CostCenterId     *int64                                       `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// Rule expression
 	FilterExpression *CreateCostCenterRuleRequestFilterExpression `json:"FilterExpression,omitempty" xml:"FilterExpression,omitempty" type:"Struct"`
+	// First-level marketplace ID. If left empty, the ID of the marketplace to which the current user belongs is used by default.
+	//
 	// example:
 	//
 	// 2084210001
@@ -74,13 +79,24 @@ func (s *CreateCostCenterRuleRequest) Validate() error {
 }
 
 type CreateCostCenterRuleRequestFilterExpression struct {
+	// Operation type
+	//
 	// example:
 	//
 	// NARY
-	ExpressionType *string                                                  `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
-	FilterValues   *CreateCostCenterRuleRequestFilterExpressionFilterValues `json:"FilterValues,omitempty" xml:"FilterValues,omitempty" type:"Struct"`
-	Operand        interface{}                                              `json:"Operand,omitempty" xml:"Operand,omitempty"`
-	Operands       []interface{}                                            `json:"Operands,omitempty" xml:"Operands,omitempty" type:"Repeated"`
+	ExpressionType *string `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
+	// Sub-condition filter
+	FilterValues *CreateCostCenterRuleRequestFilterExpressionFilterValues `json:"FilterValues,omitempty" xml:"FilterValues,omitempty" type:"Struct"`
+	// Filter condition (deprecated)
+	//
+	// example:
+	//
+	// 无
+	Operand interface{} `json:"Operand,omitempty" xml:"Operand,omitempty"`
+	// Condition expression
+	Operands []interface{} `json:"Operands,omitempty" xml:"Operands,omitempty" type:"Repeated"`
+	// Relational expression
+	//
 	// example:
 	//
 	// AND
@@ -150,16 +166,26 @@ func (s *CreateCostCenterRuleRequestFilterExpression) Validate() error {
 }
 
 type CreateCostCenterRuleRequestFilterExpressionFilterValues struct {
+	// Condition filter key
+	//
 	// example:
 	//
 	// TAG-test-xxx-key
-	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Condition filter key name (deprecated)
+	//
+	// example:
+	//
+	// 无
 	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
+	// Association relationship between code and value
+	//
 	// example:
 	//
 	// IN
-	SelectType *string   `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
-	Values     []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
+	// Condition filter value list
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s CreateCostCenterRuleRequestFilterExpressionFilterValues) String() string {

@@ -20,15 +20,22 @@ type iQueryCostByCostCenterResponseBody interface {
 }
 
 type QueryCostByCostCenterResponseBody struct {
+	// Cost center consumption amount details list
 	ConsumeAmountList []*QueryCostByCostCenterResponseBodyConsumeAmountList `json:"ConsumeAmountList,omitempty" xml:"ConsumeAmountList,omitempty" type:"Repeated"`
+	// Response structure metadata
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Sum of totalAllocatedAmount across all cost centers
+	//
 	// example:
 	//
 	// 130296.64
@@ -93,44 +100,74 @@ func (s *QueryCostByCostCenterResponseBody) Validate() error {
 }
 
 type QueryCostByCostCenterResponseBodyConsumeAmountList struct {
+	// Shared allocation amount
+	//
 	// example:
 	//
 	// 20
 	AllocatedAmount *string `json:"AllocatedAmount,omitempty" xml:"AllocatedAmount,omitempty"`
+	// Cost center code
+	//
 	// example:
 	//
 	// 15945703968#
 	CostCenterCode *string `json:"CostCenterCode,omitempty" xml:"CostCenterCode,omitempty"`
+	// Cost center ID
+	//
 	// example:
 	//
 	// 530658
-	CostCenterId   *int64  `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// Cost center name
+	//
+	// example:
+	//
+	// 项目组A
 	CostCenterName *string `json:"CostCenterName,omitempty" xml:"CostCenterName,omitempty"`
+	// Cost type amount
+	//
 	// example:
 	//
 	// 80
 	DirectAmount *string `json:"DirectAmount,omitempty" xml:"DirectAmount,omitempty"`
+	// Level
+	//
 	// example:
 	//
 	// 1
 	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// Account ID that owns the resource
+	//
 	// example:
 	//
 	// 1857464601594004
-	OwnerAccountId   *int64  `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// Account name that owns the resource
+	//
+	// example:
+	//
+	// 研发团队测试账号
 	OwnerAccountName *string `json:"OwnerAccountName,omitempty" xml:"OwnerAccountName,omitempty"`
+	// Parent cost center ID
+	//
 	// example:
 	//
 	// 637537
 	ParentCostCenterId *int64 `json:"ParentCostCenterId,omitempty" xml:"ParentCostCenterId,omitempty"`
+	// Previous cost center ID
+	//
 	// example:
 	//
 	// 6375371
 	PreCostCenterId *int64 `json:"PreCostCenterId,omitempty" xml:"PreCostCenterId,omitempty"`
+	// Total (sum of cost type amount and shared allocation amount)
+	//
 	// example:
 	//
 	// 100
 	TotalAllocatedAmount *string `json:"TotalAllocatedAmount,omitempty" xml:"TotalAllocatedAmount,omitempty"`
+	// Cost type amount percentage
+	//
 	// example:
 	//
 	// 0.01

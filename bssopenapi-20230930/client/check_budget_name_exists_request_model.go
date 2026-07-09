@@ -16,13 +16,20 @@ type iCheckBudgetNameExistsRequest interface {
 }
 
 type CheckBudgetNameExistsRequest struct {
+	// The budget name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// department1
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
-	Nbid       *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// The primary sales channel ID. If this parameter is left empty, the channel ID of the current user is used by default.
+	//
+	// example:
+	//
+	// 2688801000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
 }
 
 func (s CheckBudgetNameExistsRequest) String() string {

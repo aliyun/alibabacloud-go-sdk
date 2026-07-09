@@ -20,15 +20,22 @@ type iModifyCostCenterRuleShrinkRequest interface {
 }
 
 type ModifyCostCenterRuleShrinkRequest struct {
+	// Financial unit ID
+	//
 	// example:
 	//
 	// 485938
-	CostCenterId           *int64  `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// Rule expression
 	FilterExpressionShrink *string `json:"FilterExpression,omitempty" xml:"FilterExpression,omitempty"`
+	// Level-1 marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2684201000001
 	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// Owner of the financial unit (deprecated)
+	//
 	// example:
 	//
 	// 1234567812345678

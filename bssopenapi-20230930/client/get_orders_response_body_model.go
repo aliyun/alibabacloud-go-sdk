@@ -22,19 +22,28 @@ type iGetOrdersResponseBody interface {
 }
 
 type GetOrdersResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,19 +113,27 @@ func (s *GetOrdersResponseBody) Validate() error {
 }
 
 type GetOrdersResponseBodyData struct {
+	// The hostname.
+	//
 	// example:
 	//
 	// test
 	HostName  *string                             `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	OrderList *GetOrdersResponseBodyDataOrderList `json:"OrderList,omitempty" xml:"OrderList,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. A maximum of 20 entries per page is recommended. A larger number may cause a timeout.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1

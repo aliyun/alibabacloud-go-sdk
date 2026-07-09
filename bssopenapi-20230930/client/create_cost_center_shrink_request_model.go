@@ -16,8 +16,12 @@ type iCreateCostCenterShrinkRequest interface {
 }
 
 type CreateCostCenterShrinkRequest struct {
+	// Cost center entity list
+	//
 	// This parameter is required.
 	CostCenterEntityListShrink *string `json:"CostCenterEntityList,omitempty" xml:"CostCenterEntityList,omitempty"`
+	// Primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
+	//
 	// example:
 	//
 	// 2084210001

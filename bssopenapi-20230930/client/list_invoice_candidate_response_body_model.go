@@ -24,23 +24,34 @@ type iListInvoiceCandidateResponseBody interface {
 }
 
 type ListInvoiceCandidateResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        []*ListInvoiceCandidateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of data entries.
+	Data []*ListInvoiceCandidateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The metadata of the response.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -123,74 +134,128 @@ func (s *ListInvoiceCandidateResponseBody) Validate() error {
 }
 
 type ListInvoiceCandidateResponseBodyData struct {
+	// The accepted offset amount.
+	//
 	// example:
 	//
 	// 0.01
 	AcceptedOffsetAmount *string `json:"AcceptedOffsetAmount,omitempty" xml:"AcceptedOffsetAmount,omitempty"`
+	// The account ID.
+	//
 	// example:
 	//
 	// 1990699401005016
-	AccountId   *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The account name.
+	//
+	// example:
+	//
+	// 测试账号
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The billing cycle.
+	//
 	// example:
 	//
 	// 202506
 	BillingCycle *int32 `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The business document number.
+	//
 	// example:
 	//
 	// 202506
 	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// The time when the business event occurred.
+	//
 	// example:
 	//
 	// 2025-06-01 00:00:00
 	BusinessTime *string `json:"BusinessTime,omitempty" xml:"BusinessTime,omitempty"`
+	// The commodity code.
+	//
 	// example:
 	//
 	// pts
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The commodity name.
+	//
+	// example:
+	//
+	// 性能测试
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-06-91 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the invoice candidate.
+	//
 	// example:
 	//
 	// 12345
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The invoice issuer.
+	//
 	// example:
 	//
 	// ALIYUN_SERVICE
 	InvoiceIssuer *string `json:"InvoiceIssuer,omitempty" xml:"InvoiceIssuer,omitempty"`
+	// The invoiceable amount.
+	//
 	// example:
 	//
 	// 0.01
 	InvoiceableAmount *string `json:"InvoiceableAmount,omitempty" xml:"InvoiceableAmount,omitempty"`
+	// The invoiced amount.
+	//
 	// example:
 	//
 	// 0
 	InvoicedAmount *string `json:"InvoicedAmount,omitempty" xml:"InvoicedAmount,omitempty"`
+	// The offset amount.
+	//
 	// example:
 	//
 	// 0
 	OffsetAmount *string `json:"OffsetAmount,omitempty" xml:"OffsetAmount,omitempty"`
+	// The product code.
+	//
 	// example:
 	//
 	// pts
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The product name.
+	//
+	// example:
+	//
+	// 性能测试
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The ID of the resource owner account.
+	//
 	// example:
 	//
 	// 1990699401005016
-	ResourceOwnerAccountId   *int64  `json:"ResourceOwnerAccountId,omitempty" xml:"ResourceOwnerAccountId,omitempty"`
+	ResourceOwnerAccountId *int64 `json:"ResourceOwnerAccountId,omitempty" xml:"ResourceOwnerAccountId,omitempty"`
+	// The name of the resource owner account.
+	//
+	// example:
+	//
+	// 测试账号
 	ResourceOwnerAccountName *string `json:"ResourceOwnerAccountName,omitempty" xml:"ResourceOwnerAccountName,omitempty"`
+	// The status of the invoice candidate.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total amount.
+	//
 	// example:
 	//
 	// 0.01
 	TotalAmount *string `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
+	// The type of the invoice candidate.
+	//
 	// example:
 	//
 	// 1

@@ -22,22 +22,32 @@ type iAllocateCostCenterResourceResponseBody interface {
 }
 
 type AllocateCostCenterResourceResponseBody struct {
+	// The cost center ID.
+	//
 	// example:
 	//
 	// 640403
 	CostCenterId *int64 `json:"CostCenterId,omitempty" xml:"CostCenterId,omitempty"`
+	// Indicates whether the operation was successful.
+	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The metadata of the response struct.
+	//
 	// example:
 	//
 	// {}
 	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The owner of the cost center.
+	//
 	// example:
 	//
 	// 1529600453335198
 	OwnerAccountId *int64 `json:"OwnerAccountId,omitempty" xml:"OwnerAccountId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// UUID
