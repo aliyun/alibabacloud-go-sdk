@@ -62,7 +62,7 @@ func (s *GetAuthCodeResponseBody) Validate() error {
 }
 
 type GetAuthCodeResponseBodyAuthModel struct {
-	// The authorization code. The authorization code is valid for 3 minutes and can be used only once regardless of whether the verification succeeds or fails. When multiple authorization codes are generated for a user, only the last generated code is valid.
+	// The authorization code. The authorization code is valid for 3 minutes and can be used only once regardless of whether the verification succeeds or fails. If multiple authorization codes are generated for a user, only the last generated authorization code is valid.
 	//
 	// example:
 	//

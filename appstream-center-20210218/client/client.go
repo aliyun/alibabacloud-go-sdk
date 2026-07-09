@@ -164,6 +164,10 @@ func (client *Client) GetAuthCodeWithOptions(request *GetAuthCodeRequest, runtim
 		body["AdDomain"] = request.AdDomain
 	}
 
+	if !dara.IsNil(request.AdPassword) {
+		body["AdPassword"] = request.AdPassword
+	}
+
 	if !dara.IsNil(request.AutoCreateUser) {
 		body["AutoCreateUser"] = request.AutoCreateUser
 	}

@@ -93,6 +93,10 @@ func (client *Client) GetAuthCodeWithContext(ctx context.Context, request *GetAu
 		body["AdDomain"] = request.AdDomain
 	}
 
+	if !dara.IsNil(request.AdPassword) {
+		body["AdPassword"] = request.AdPassword
+	}
+
 	if !dara.IsNil(request.AutoCreateUser) {
 		body["AutoCreateUser"] = request.AutoCreateUser
 	}

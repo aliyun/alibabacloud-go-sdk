@@ -13,6 +13,8 @@ type iGetAuthCodeRequest interface {
 	GetAccountType() *string
 	SetAdDomain(v string) *GetAuthCodeRequest
 	GetAdDomain() *string
+	SetAdPassword(v string) *GetAuthCodeRequest
+	GetAdPassword() *string
 	SetAutoCreateUser(v bool) *GetAuthCodeRequest
 	GetAutoCreateUser() *bool
 	SetEndUserId(v string) *GetAuthCodeRequest
@@ -28,25 +30,26 @@ type iGetAuthCodeRequest interface {
 type GetAuthCodeRequest struct {
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	AdDomain    *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
-	// Specifies whether to synchronously create an EndUserId based on `ExternalUserId`. This parameter takes effect only when `EndUserId` is empty.
+	AdPassword  *string `json:"AdPassword,omitempty" xml:"AdPassword,omitempty"`
+	// Specifies whether to synchronously create an EndUserId based on ExternalUserId. This parameter takes effect only when EndUserId is empty.
 	//
 	// example:
 	//
 	// false
 	AutoCreateUser *bool `json:"AutoCreateUser,omitempty" xml:"AutoCreateUser,omitempty"`
-	// The username of the China Desktop Service (China Desktop Service) convenience account, which is unique within an Alibaba Cloud account. This parameter and `ExternalUserId` cannot both be empty.
+	// The username of the China Desktop Service (China Desktop Service) convenience account. The username must be unique within an Alibaba Cloud account. This parameter and ExternalUserId cannot both be empty.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The external user ID. This ID is defined by the caller and must be unique within an Alibaba Cloud account. This parameter and `EndUserId` cannot both be empty.
+	// The external user ID. This ID is defined by the caller and must be unique within an Alibaba Cloud account. This parameter and EndUserId cannot both be empty.
 	//
 	// example:
 	//
 	// alice
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
-	// The access policy that restricts the access permissions of the authorization code. An empty value indicates no restrictions.
+	// The access policy that restricts the access permissions of the authorization code. If this parameter is left empty, no restrictions are applied.
 	//
 	// Syntax:
 	//
@@ -111,6 +114,10 @@ func (s *GetAuthCodeRequest) GetAdDomain() *string {
 	return s.AdDomain
 }
 
+func (s *GetAuthCodeRequest) GetAdPassword() *string {
+	return s.AdPassword
+}
+
 func (s *GetAuthCodeRequest) GetAutoCreateUser() *bool {
 	return s.AutoCreateUser
 }
@@ -138,6 +145,11 @@ func (s *GetAuthCodeRequest) SetAccountType(v string) *GetAuthCodeRequest {
 
 func (s *GetAuthCodeRequest) SetAdDomain(v string) *GetAuthCodeRequest {
 	s.AdDomain = &v
+	return s
+}
+
+func (s *GetAuthCodeRequest) SetAdPassword(v string) *GetAuthCodeRequest {
+	s.AdPassword = &v
 	return s
 }
 
