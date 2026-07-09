@@ -20,21 +20,21 @@ type iQueryAlertRulesShrinkRequest interface {
 }
 
 type QueryAlertRulesShrinkRequest struct {
-	// The request parameters for querying alert rules.
+	// The request body for querying alert rules.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The client token used to ensure the idempotency of the request.
+	// The idempotency token.
 	//
 	// example:
 	//
 	// xxxxx-xxxx-xxxx
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The maximum number of results to return per page.
+	// The maximum number of data records to read in this request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token used to retrieve the next page of results. If you do not specify this parameter, the query starts from the beginning.
+	// The token that marks the position from which you want to start reading data. If you leave this parameter empty, data is read from the beginning.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iOpenCmsServiceResponseBody interface {
 }
 
 type OpenCmsServiceResponseBody struct {
-	// Whether the specified monitoring services are enabled.
+	// Indicates whether the service or commodity is activated.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

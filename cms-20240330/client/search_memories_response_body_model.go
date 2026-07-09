@@ -18,7 +18,7 @@ type iSearchMemoriesResponseBody interface {
 }
 
 type SearchMemoriesResponseBody struct {
-	// A list of relationships.
+	// The relations.
 	Relations []*SearchMemoriesResponseBodyRelations `json:"relations,omitempty" xml:"relations,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type SearchMemoriesResponseBody struct {
 	//
 	// 0CEC5375-C554-562B-A65F-9A629907C1F0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// A list of search results.
+	// The returned results.
 	Results []*SearchMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
@@ -94,7 +94,7 @@ type SearchMemoriesResponseBodyRelations struct {
 	//
 	// test
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
-	// The relationship.
+	// The relations.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type SearchMemoriesResponseBodyResults struct {
 	//
 	// {"__strategy_type__":"Fact"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The sender\\"s role.
+	// The role that initiated the message.
 	//
 	// example:
 	//

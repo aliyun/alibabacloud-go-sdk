@@ -23,6 +23,8 @@ type iSubscriptionForView interface {
 	GetNotifyStrategyId() *string
 	SetPushingSetting(v *SubscriptionForViewPushingSetting) *SubscriptionForView
 	GetPushingSetting() *SubscriptionForViewPushingSetting
+	SetSubscribeLegacyEvent(v bool) *SubscriptionForView
+	GetSubscribeLegacyEvent() *bool
 	SetSubscriptionId(v string) *SubscriptionForView
 	GetSubscriptionId() *string
 	SetSubscriptionName(v string) *SubscriptionForView
@@ -71,7 +73,13 @@ type SubscriptionForView struct {
 	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
 	// The push settings.
 	PushingSetting *SubscriptionForViewPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	// The UUID.
+	// Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values:
+	//
+	// - true: Subscribe.
+	//
+	// - false or null: Do not subscribe.
+	SubscribeLegacyEvent *bool `json:"subscribeLegacyEvent,omitempty" xml:"subscribeLegacyEvent,omitempty"`
+	// UUID
 	//
 	// example:
 	//
@@ -107,7 +115,7 @@ type SubscriptionForView struct {
 	//
 	// 123123123
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// Specifies the workspace.
+	// workspace
 	//
 	// example:
 	//
@@ -150,6 +158,10 @@ func (s *SubscriptionForView) GetNotifyStrategyId() *string {
 
 func (s *SubscriptionForView) GetPushingSetting() *SubscriptionForViewPushingSetting {
 	return s.PushingSetting
+}
+
+func (s *SubscriptionForView) GetSubscribeLegacyEvent() *bool {
+	return s.SubscribeLegacyEvent
 }
 
 func (s *SubscriptionForView) GetSubscriptionId() *string {
@@ -216,6 +228,11 @@ func (s *SubscriptionForView) SetNotifyStrategyId(v string) *SubscriptionForView
 
 func (s *SubscriptionForView) SetPushingSetting(v *SubscriptionForViewPushingSetting) *SubscriptionForView {
 	s.PushingSetting = v
+	return s
+}
+
+func (s *SubscriptionForView) SetSubscribeLegacyEvent(v bool) *SubscriptionForView {
+	s.SubscribeLegacyEvent = &v
 	return s
 }
 
@@ -328,7 +345,7 @@ func (s *SubscriptionForViewAgentConfig) Validate() error {
 }
 
 type SubscriptionForViewPushingSetting struct {
-	// A list of action integration IDs for alert pushes.
+	// The list of action integration IDs for alert pushing.
 	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
 	// The action plan ID.
 	//
@@ -336,9 +353,9 @@ type SubscriptionForViewPushingSetting struct {
 	//
 	// 123123123
 	ResponsePlanId *string `json:"responsePlanId,omitempty" xml:"responsePlanId,omitempty"`
-	// A list of action integration IDs for recovery pushes.
+	// The list of action integration IDs for recovery pushing.
 	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
-	// The template UUID.
+	// The UUID of the template.
 	//
 	// example:
 	//

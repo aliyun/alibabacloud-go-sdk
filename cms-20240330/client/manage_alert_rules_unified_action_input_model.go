@@ -31,6 +31,10 @@ type iManageAlertRulesUnifiedActionInput interface {
 	GetLabels() map[string]*string
 	SetNotifyConfig(v *NotifyConfigUnified) *ManageAlertRulesUnifiedActionInput
 	GetNotifyConfig() *NotifyConfigUnified
+	SetObserveResourceInstanceId(v string) *ManageAlertRulesUnifiedActionInput
+	GetObserveResourceInstanceId() *string
+	SetObserveResourceType(v string) *ManageAlertRulesUnifiedActionInput
+	GetObserveResourceType() *string
 	SetQueryConfig(v *QueryConfigUnified) *ManageAlertRulesUnifiedActionInput
 	GetQueryConfig() *QueryConfigUnified
 	SetScheduleConfig(v *ScheduleConfigUnified) *ManageAlertRulesUnifiedActionInput
@@ -44,40 +48,25 @@ type iManageAlertRulesUnifiedActionInput interface {
 }
 
 type ManageAlertRulesUnifiedActionInput struct {
-	// The action to perform on the alert rule. For example, `create` or `update`.
-	//
 	// This parameter is required.
-	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The action integration configuration for triggering automated workflows or actions in external systems.
-	ActionIntegrationConfig *ActionIntegrationConfig `json:"actionIntegrationConfig,omitempty" xml:"actionIntegrationConfig,omitempty"`
-	// A collection of key-value pairs attached to the alert as annotations. Use annotations to provide additional, non-identifying information, such as descriptions or runbook links.
-	Annotations map[string]*string `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	// Configuration for integrating with Application Real-Time Monitoring Service (ARMS).
-	ArmsIntegrationConfig *ArmsIntegrationConfig `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
-	// The condition configuration that specifies the trigger criteria for the alert.
-	ConditionConfig *ConditionConfigUnified `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
-	// The content template for the alert notification. You can use variables to customize the message.
-	ContentTemplate *string `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
-	// The data source configuration for the alert rule.
-	DatasourceConfig *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
-	// The display name of the alert rule, as shown in the console.
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Specifies whether the alert rule is enabled. A value of `true` indicates the rule is active, and `false` indicates it is inactive. Default: `true`.
-	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// A collection of key-value pairs attached to the alert rule as labels. Use labels for categorization and filtering.
-	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The notification configuration that specifies how and where to send alert notifications.
-	NotifyConfig *NotifyConfigUnified `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
-	// The query configuration that defines the data for rule evaluation.
-	QueryConfig *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
-	// The schedule configuration that determines how often the system evaluates the rule.
-	ScheduleConfig *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
-	// The unique identifier (UUID) of the alert rule. This parameter is required when you update or delete an existing rule.
-	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	// A list of UUIDs. Use this parameter to perform bulk actions on multiple rules, such as batch deletion.
-	UuidList []*string `json:"uuidList,omitempty" xml:"uuidList,omitempty" type:"Repeated"`
-	// The ID of the workspace that contains the alert rule.
-	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	Action                    *string                  `json:"action,omitempty" xml:"action,omitempty"`
+	ActionIntegrationConfig   *ActionIntegrationConfig `json:"actionIntegrationConfig,omitempty" xml:"actionIntegrationConfig,omitempty"`
+	Annotations               map[string]*string       `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	ArmsIntegrationConfig     *ArmsIntegrationConfig   `json:"armsIntegrationConfig,omitempty" xml:"armsIntegrationConfig,omitempty"`
+	ConditionConfig           *ConditionConfigUnified  `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
+	ContentTemplate           *string                  `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
+	DatasourceConfig          *DatasourceConfigUnified `json:"datasourceConfig,omitempty" xml:"datasourceConfig,omitempty"`
+	DisplayName               *string                  `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Enabled                   *bool                    `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Labels                    map[string]*string       `json:"labels,omitempty" xml:"labels,omitempty"`
+	NotifyConfig              *NotifyConfigUnified     `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
+	ObserveResourceInstanceId *string                  `json:"observeResourceInstanceId,omitempty" xml:"observeResourceInstanceId,omitempty"`
+	ObserveResourceType       *string                  `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
+	QueryConfig               *QueryConfigUnified      `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
+	ScheduleConfig            *ScheduleConfigUnified   `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
+	Uuid                      *string                  `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	UuidList                  []*string                `json:"uuidList,omitempty" xml:"uuidList,omitempty" type:"Repeated"`
+	Workspace                 *string                  `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ManageAlertRulesUnifiedActionInput) String() string {
@@ -130,6 +119,14 @@ func (s *ManageAlertRulesUnifiedActionInput) GetLabels() map[string]*string {
 
 func (s *ManageAlertRulesUnifiedActionInput) GetNotifyConfig() *NotifyConfigUnified {
 	return s.NotifyConfig
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) GetObserveResourceInstanceId() *string {
+	return s.ObserveResourceInstanceId
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) GetObserveResourceType() *string {
+	return s.ObserveResourceType
 }
 
 func (s *ManageAlertRulesUnifiedActionInput) GetQueryConfig() *QueryConfigUnified {
@@ -204,6 +201,16 @@ func (s *ManageAlertRulesUnifiedActionInput) SetLabels(v map[string]*string) *Ma
 
 func (s *ManageAlertRulesUnifiedActionInput) SetNotifyConfig(v *NotifyConfigUnified) *ManageAlertRulesUnifiedActionInput {
 	s.NotifyConfig = v
+	return s
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) SetObserveResourceInstanceId(v string) *ManageAlertRulesUnifiedActionInput {
+	s.ObserveResourceInstanceId = &v
+	return s
+}
+
+func (s *ManageAlertRulesUnifiedActionInput) SetObserveResourceType(v string) *ManageAlertRulesUnifiedActionInput {
+	s.ObserveResourceType = &v
 	return s
 }
 

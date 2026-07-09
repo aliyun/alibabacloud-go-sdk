@@ -22,7 +22,7 @@ type iListPrometheusInstancesResponseBody interface {
 }
 
 type ListPrometheusInstancesResponseBody struct {
-	// The maximum number of records returned.
+	// The maximum number of records to return.
 	//
 	// if can be null:
 	// true
@@ -39,7 +39,7 @@ type ListPrometheusInstancesResponseBody struct {
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The list of Prometheus instances.
 	PrometheusInstances []*ListPrometheusInstancesResponseBodyPrometheusInstances `json:"prometheusInstances,omitempty" xml:"prometheusInstances,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -120,13 +120,19 @@ func (s *ListPrometheusInstancesResponseBody) Validate() error {
 }
 
 type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
-	// The permission type. Valid values: readWrite, readOnly, and httpReadOnly.
+	// The access type. Valid values:
+	//
+	// - readWrite
+	//
+	// - readOnly
+	//
+	// - httpReadOnly
 	//
 	// example:
 	//
 	// readWrite
 	AccessType *string `json:"accessType,omitempty" xml:"accessType,omitempty"`
-	// The time when the instance was created. The time is in UTC and the format is yyyy-MM-ddTHH:mmZ.
+	// The instance creation time in UTC+0, in the format of yyyy-MM-ddTHH:mmZ.
 	//
 	// example:
 	//
@@ -138,13 +144,15 @@ type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
 	//
 	// remote-write
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// POSTPAY: Pay-as-you-go, billed by metrics.
+	// The billing method. Valid values:
 	//
-	// POSTPAY_GB: Pay-as-you-go, billed by data written.
+	// - POSTPAY: pay-as-you-go by metric volume.
 	//
-	// PREPAY: Subscription.
+	// - POSTPAY_GB: pay-as-you-go by write volume.
 	//
-	// FREE: Free.
+	// - PREPAY: subscription.
+	//
+	// - FREE: free.
 	//
 	// example:
 	//
@@ -174,13 +182,19 @@ type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
 	//
 	// cn-nanjing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aek2bhocin5e2na
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The resource type.
 	//
 	// example:
 	//
 	// Prometheus
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The status of the backend data storage.
+	// The backend data storage status.
 	//
 	// example:
 	//
@@ -248,6 +262,10 @@ func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) GetRegionId() *
 	return s.RegionId
 }
 
+func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) GetResourceType() *string {
 	return s.ResourceType
 }
@@ -309,6 +327,11 @@ func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) SetPrometheusIn
 
 func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) SetRegionId(v string) *ListPrometheusInstancesResponseBodyPrometheusInstances {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) SetResourceGroupId(v string) *ListPrometheusInstancesResponseBodyPrometheusInstances {
+	s.ResourceGroupId = &v
 	return s
 }
 

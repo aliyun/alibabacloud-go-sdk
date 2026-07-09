@@ -20,16 +20,17 @@ type iGetCloudResourceDataResponseBody interface {
 }
 
 type GetCloudResourceDataResponseBody struct {
-	// The returned data.
+	// The total list of returned data.
 	Data [][]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The list of column headers.
+	// The list of headers.
 	Header []*string `json:"header,omitempty" xml:"header,omitempty" type:"Repeated"`
 	// The request ID.
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
-	RequestId      *string                                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result status.
 	ResponseStatus *GetCloudResourceDataResponseBodyResponseStatus `json:"responseStatus,omitempty" xml:"responseStatus,omitempty" type:"Struct"`
 }
 
@@ -87,11 +88,32 @@ func (s *GetCloudResourceDataResponseBody) Validate() error {
 }
 
 type GetCloudResourceDataResponseBodyResponseStatus struct {
-	ExecutionStates *string                                                     `json:"executionStates,omitempty" xml:"executionStates,omitempty"`
-	Level           *string                                                     `json:"level,omitempty" xml:"level,omitempty"`
-	Result          *string                                                     `json:"result,omitempty" xml:"result,omitempty"`
-	RetryPolicy     *string                                                     `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
-	StatusItem      []*GetCloudResourceDataResponseBodyResponseStatusStatusItem `json:"statusItem,omitempty" xml:"statusItem,omitempty" type:"Repeated"`
+	// The information during execution.
+	//
+	// example:
+	//
+	// {}
+	ExecutionStates *string `json:"executionStates,omitempty" xml:"executionStates,omitempty"`
+	// The status level.
+	//
+	// example:
+	//
+	// Info,Warn,Error
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// The execution result.
+	//
+	// example:
+	//
+	// Success,PartialSuccess,Error
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+	// The retry policy.
+	//
+	// example:
+	//
+	// None,Once,Continuous
+	RetryPolicy *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
+	// The detailed status information.
+	StatusItem []*GetCloudResourceDataResponseBodyResponseStatusStatusItem `json:"statusItem,omitempty" xml:"statusItem,omitempty" type:"Repeated"`
 }
 
 func (s GetCloudResourceDataResponseBodyResponseStatus) String() string {
@@ -161,9 +183,29 @@ func (s *GetCloudResourceDataResponseBodyResponseStatus) Validate() error {
 }
 
 type GetCloudResourceDataResponseBodyResponseStatusStatusItem struct {
-	Code       *string `json:"code,omitempty" xml:"code,omitempty"`
-	Level      *string `json:"level,omitempty" xml:"level,omitempty"`
-	Message    *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The status code.
+	//
+	// example:
+	//
+	// Success,ExecuteTimeout,UModelNotExist
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The status level.
+	//
+	// example:
+	//
+	// Info,Warn,Error
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// The message content.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The suggestion when an execution error occurs.
+	//
+	// example:
+	//
+	// Try to reduce the query scope or increase timeout limit, then retry
 	Suggestion *string `json:"suggestion,omitempty" xml:"suggestion,omitempty"`
 }
 

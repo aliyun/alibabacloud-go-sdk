@@ -38,7 +38,7 @@ type iGetMemoryStoreResponseBody interface {
 }
 
 type GetMemoryStoreResponseBody struct {
-	// The Unix timestamp (in milliseconds) when the memory store was created.
+	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -46,17 +46,17 @@ type GetMemoryStoreResponseBody struct {
 	//
 	// 1764556182850
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// A list of custom extraction strategies.
+	// The custom extraction strategies.
 	CustomExtractionStrategies []*CustomExtractionStrategy `json:"customExtractionStrategies,omitempty" xml:"customExtractionStrategies,omitempty" type:"Repeated"`
-	// The description of the memory store.
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The built-in extraction strategies. Valid values are `Episodic`, `Summary`, and `Fact`.
+	// The extraction strategies. Valid values: Episodic, Summary, and Fact.
 	ExtractionStrategies []*string `json:"extractionStrategies,omitempty" xml:"extractionStrategies,omitempty" type:"Repeated"`
-	// The name of the memory store.
+	// The memory store name.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type GetMemoryStoreResponseBody struct {
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-A01D6CC3F4B8
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The configuration for short-term memory storage.
+	// The short-term memory storage.
 	ShortTermStorage *GetMemoryStoreResponseBodyShortTermStorage `json:"shortTermStorage,omitempty" xml:"shortTermStorage,omitempty" type:"Struct"`
-	// The short-term memory retention time, in seconds.
+	// The retention period of short-term memory.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type GetMemoryStoreResponseBody struct {
 	//
 	// Trace
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The configuration for the trace source. This parameter is returned only when `sourceType` is set to `Trace`.
+	// The configuration used when sourceType is set to Trace.
 	TraceSourceConfig *GetMemoryStoreResponseBodyTraceSourceConfig `json:"traceSourceConfig,omitempty" xml:"traceSourceConfig,omitempty" type:"Struct"`
-	// The Unix timestamp (in milliseconds) when the memory store was last updated.
+	// The update time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -98,7 +98,7 @@ type GetMemoryStoreResponseBody struct {
 	//
 	// 1764556182850
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The name of the workspace.
+	// The workspace name.
 	//
 	// example:
 	//
@@ -255,13 +255,13 @@ func (s *GetMemoryStoreResponseBody) Validate() error {
 }
 
 type GetMemoryStoreResponseBodyShortTermStorage struct {
-	// The name of the Simple Log Service Logstore.
+	// The Simple Log Service Logstore name.
 	//
 	// example:
 	//
 	// memory-store
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the Simple Log Service Project.
+	// The Simple Log Service project name.
 	//
 	// example:
 	//
@@ -300,15 +300,15 @@ func (s *GetMemoryStoreResponseBodyShortTermStorage) Validate() error {
 }
 
 type GetMemoryStoreResponseBodyTraceSourceConfig struct {
-	// Indicates whether to include Large Language Model (LLM) output in the memory extraction.
+	// Specifies whether to include LLM output in memory extraction.
 	IncludeOutput *bool `json:"includeOutput,omitempty" xml:"includeOutput,omitempty"`
-	// The query to filter traces from Simple Log Service.
+	// The Simple Log Service query statement used to filter traces.
 	//
 	// example:
 	//
 	// (serviceName : "langchain-rag" or serviceName : "agentscope-code-correction") and hostname = frontend-proxy-999c48c8d-hvk6c
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The workspace where the trace is located.
+	// The workspace where the trace resides.
 	//
 	// example:
 	//

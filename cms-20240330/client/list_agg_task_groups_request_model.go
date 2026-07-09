@@ -28,45 +28,51 @@ type iListAggTaskGroupsRequest interface {
 }
 
 type ListAggTaskGroupsRequest struct {
-	// A list of aggregation task group IDs. The value must be a string that can be parsed as a JSON array.
+	// The list of aggregation task group IDs. The value must be a JSON-parsable string.
 	//
 	// example:
 	//
 	// ["aggTaskGroup-xxx"]
 	FilterAggTaskGroupIds *string `json:"filterAggTaskGroupIds,omitempty" xml:"filterAggTaskGroupIds,omitempty"`
-	// A list of aggregation task group names. The value must be a string that can be parsed as a JSON array.
+	// The list of aggregation task group names. The value must be a JSON-parsable string.
 	//
 	// example:
 	//
 	// ["apiserver_request_total"]
 	FilterAggTaskGroupNames *string `json:"filterAggTaskGroupNames,omitempty" xml:"filterAggTaskGroupNames,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The maximum number of records to return.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The query token.
 	//
 	// example:
 	//
 	// 28036394xxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The name to search for. Fuzzy search is supported.
+	// The name to search for. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// test
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The status of the aggregation task group. Valid values are \\`Running\\` and \\`Stopped\\`. The default value is \\`Running\\`.
+	// The status of the aggregation task group. Valid values:
+	//
+	// - Running
+	//
+	// - Stopped
+	//
+	// Default value: Running.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tags of the resource group.
+	// The resource group tags.
 	Tags []*ListAggTaskGroupsRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The ID of the target Prometheus instance for the aggregation task group.
+	// The instance ID of the target Managed Service for Prometheus instance for the aggregation node group.
 	//
 	// example:
 	//

@@ -19,6 +19,8 @@ type iSubscriptionForModify interface {
 	GetNotifyStrategyId() *string
 	SetPushingSetting(v *SubscriptionForModifyPushingSetting) *SubscriptionForModify
 	GetPushingSetting() *SubscriptionForModifyPushingSetting
+	SetSubscribeLegacyEvent(v bool) *SubscriptionForModify
+	GetSubscribeLegacyEvent() *bool
 	SetSubscriptionName(v string) *SubscriptionForModify
 	GetSubscriptionName() *string
 	SetWorkspaceFilterSetting(v *WorkspaceFilterSetting) *SubscriptionForModify
@@ -27,23 +29,29 @@ type iSubscriptionForModify interface {
 
 type SubscriptionForModify struct {
 	AgentConfig *SubscriptionForModifyAgentConfig `json:"agentConfig,omitempty" xml:"agentConfig,omitempty" type:"Struct"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Filter settings.
+	// The filter settings.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// Notification policy UUID.
+	// The UUID of the notification policy.
 	//
 	// example:
 	//
 	// 123123
 	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
-	// Push settings.
+	// The push settings.
 	PushingSetting *SubscriptionForModifyPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	// Name.
+	// Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values:
+	//
+	// - true: Subscribe.
+	//
+	// - false or null: Do not subscribe.
+	SubscribeLegacyEvent *bool `json:"subscribeLegacyEvent,omitempty" xml:"subscribeLegacyEvent,omitempty"`
+	// The name.
 	//
 	// This parameter is required.
 	//
@@ -82,6 +90,10 @@ func (s *SubscriptionForModify) GetPushingSetting() *SubscriptionForModifyPushin
 	return s.PushingSetting
 }
 
+func (s *SubscriptionForModify) GetSubscribeLegacyEvent() *bool {
+	return s.SubscribeLegacyEvent
+}
+
 func (s *SubscriptionForModify) GetSubscriptionName() *string {
 	return s.SubscriptionName
 }
@@ -112,6 +124,11 @@ func (s *SubscriptionForModify) SetNotifyStrategyId(v string) *SubscriptionForMo
 
 func (s *SubscriptionForModify) SetPushingSetting(v *SubscriptionForModifyPushingSetting) *SubscriptionForModify {
 	s.PushingSetting = v
+	return s
+}
+
+func (s *SubscriptionForModify) SetSubscribeLegacyEvent(v bool) *SubscriptionForModify {
+	s.SubscribeLegacyEvent = &v
 	return s
 }
 
@@ -194,17 +211,17 @@ func (s *SubscriptionForModifyAgentConfig) Validate() error {
 }
 
 type SubscriptionForModifyPushingSetting struct {
-	// A list of alert push action plan IDs.
+	// The list of action plan IDs for alert pushing.
 	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
-	// Action plan ID.
+	// The action plan ID.
 	//
 	// example:
 	//
 	// 123123123
 	ResponsePlanId *string `json:"responsePlanId,omitempty" xml:"responsePlanId,omitempty"`
-	// A list of action integration plan IDs.
+	// The list of action integration plan IDs for recovery pushing.
 	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
-	// Template UUID.
+	// The UUID of the template.
 	//
 	// example:
 	//

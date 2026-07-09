@@ -40,9 +40,9 @@ type ListAlertRobotsResponseBody struct {
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The ID of the robot.
+	// The chatbot ID.
 	Robots []*ListAlertRobotsResponseBodyRobots `json:"robots,omitempty" xml:"robots,omitempty" type:"Repeated"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -124,25 +124,26 @@ type ListAlertRobotsResponseBodyRobots struct {
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// The name of the robot.
+	// The chatbot name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The unique robot ID.
+	// The unique ID of the chatbot.
 	//
 	// example:
 	//
 	// test
-	RobotId *string `json:"robotId,omitempty" xml:"robotId,omitempty"`
-	// The robot type.
+	RobotId      *string `json:"robotId,omitempty" xml:"robotId,omitempty"`
+	RobotSignKey *string `json:"robotSignKey,omitempty" xml:"robotSignKey,omitempty"`
+	// The chatbot type.
 	//
 	// example:
 	//
 	// DING
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The webhook URL.
+	// The webhook URL of the chatbot.
 	//
 	// example:
 	//
@@ -175,6 +176,10 @@ func (s *ListAlertRobotsResponseBodyRobots) GetRobotId() *string {
 	return s.RobotId
 }
 
+func (s *ListAlertRobotsResponseBodyRobots) GetRobotSignKey() *string {
+	return s.RobotSignKey
+}
+
 func (s *ListAlertRobotsResponseBodyRobots) GetType() *string {
 	return s.Type
 }
@@ -204,6 +209,11 @@ func (s *ListAlertRobotsResponseBodyRobots) SetName(v string) *ListAlertRobotsRe
 
 func (s *ListAlertRobotsResponseBodyRobots) SetRobotId(v string) *ListAlertRobotsResponseBodyRobots {
 	s.RobotId = &v
+	return s
+}
+
+func (s *ListAlertRobotsResponseBodyRobots) SetRobotSignKey(v string) *ListAlertRobotsResponseBodyRobots {
+	s.RobotSignKey = &v
 	return s
 }
 

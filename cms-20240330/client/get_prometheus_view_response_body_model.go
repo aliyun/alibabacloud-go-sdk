@@ -18,7 +18,7 @@ type iGetPrometheusViewResponseBody interface {
 type GetPrometheusViewResponseBody struct {
 	// The view instance.
 	PrometheusView *GetPrometheusViewResponseBodyPrometheusView `json:"prometheusView,omitempty" xml:"prometheusView,omitempty" type:"Struct"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetPrometheusViewResponseBody) Validate() error {
 }
 
 type GetPrometheusViewResponseBodyPrometheusView struct {
-	// The password-free read policy. It supports IP address segments and VPC IDs.
+	// The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
 	//
 	// example:
 	//
@@ -86,68 +86,73 @@ type GetPrometheusViewResponseBodyPrometheusView struct {
 	//
 	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
-	// The authToken string.
+	// The authentication token string.
 	//
 	// example:
 	//
 	// eJxxxxxx
 	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
-	// The time when the instance was created. The time is in UTC and follows the yyyy-MM-ddTHH:mmZ format.
+	// The time when the instance was created. The time is in UTC+0 and in the yyyy-MM-ddTHH:mmZ format.
 	//
 	// example:
 	//
 	// 2025-08-10T02:07:53Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Indicates whether password-free read is enabled.
+	// Indicates whether authentication-free read is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
-	// Indicates whether authToken is enabled.
+	// Indicates whether the authentication token is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
-	// The URL of the observability dashboard.
+	// The dashboard URL.
 	//
 	// example:
 	//
 	// https://xxxx
 	FolderUrl *string `json:"folderUrl,omitempty" xml:"folderUrl,omitempty"`
-	// The ID of the attached managed Grafana instance.
+	// The instance ID of the attached managed Grafana instance.
 	//
 	// example:
 	//
 	// g-xxx
 	GrafanaInstanceId *string `json:"grafanaInstanceId,omitempty" xml:"grafanaInstanceId,omitempty"`
-	// The name of the attached managed Grafana instance.
+	// The name of the associated managed Grafana instance.
 	//
 	// example:
 	//
 	// gxxx
 	GrafanaInstanceName *string `json:"grafanaInstanceName,omitempty" xml:"grafanaInstanceName,omitempty"`
-	// The HTTP API endpoint for the Internet.
+	// The public HTTP URL.
 	//
 	// example:
 	//
 	// http://xxxxxxxx
-	HttpApiInterUrl    *string `json:"httpApiInterUrl,omitempty" xml:"httpApiInterUrl,omitempty"`
+	HttpApiInterUrl *string `json:"httpApiInterUrl,omitempty" xml:"httpApiInterUrl,omitempty"`
+	// The internal HTTP URL.
+	//
+	// example:
+	//
+	// https://workspace-xxx.cn-hangzhou-internal.log.aliyuncs.com/prometheus/workspace-xxx/aliyun-prom-rw-xxx
 	HttpApiInternalUrl *string `json:"httpApiInternalUrl,omitempty" xml:"httpApiInternalUrl,omitempty"`
-	// The HTTP API endpoint for the internal network.
+	// The internal HTTP URL.
 	//
 	// example:
 	//
 	// http://xxxxxxxx
 	HttpApiIntraUrl *string `json:"httpApiIntraUrl,omitempty" xml:"httpApiIntraUrl,omitempty"`
-	// The instance type. The value is fixed to prom-view.
+	// The instance type. The value is fixed as prom-view.
 	//
 	// example:
 	//
 	// prom-view
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The billing method. The value is fixed to FREE.
+	// The billing type. The value is currently fixed as FREE.
 	//
 	// example:
 	//
@@ -159,15 +164,15 @@ type GetPrometheusViewResponseBodyPrometheusView struct {
 	//
 	// cms
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
-	// A list of Prometheus instances.
+	// The list of Prometheus instances.
 	PrometheusInstances []*GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances `json:"prometheusInstances,omitempty" xml:"prometheusInstances,omitempty" type:"Repeated"`
-	// The ID of the Prometheus view.
+	// The Prometheus view ID.
 	//
 	// example:
 	//
 	// view-xxx
 	PrometheusViewId *string `json:"prometheusViewId,omitempty" xml:"prometheusViewId,omitempty"`
-	// The name of the Prometheus view.
+	// The Prometheus view name.
 	//
 	// example:
 	//
@@ -179,14 +184,19 @@ type GetPrometheusViewResponseBodyPrometheusView struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The remote read URL for the Internet.
+	// The public URL for remote read.
 	//
 	// example:
 	//
 	// http://workspace-default-cms-xxx-cn-hangzhou.cn-hangzhou.log.aliyuncs.com/prometheus/workspace-default-cms-xxx-cn-hangzhou/xxx/api/v1/read
-	RemoteReadInterUrl    *string `json:"remoteReadInterUrl,omitempty" xml:"remoteReadInterUrl,omitempty"`
+	RemoteReadInterUrl *string `json:"remoteReadInterUrl,omitempty" xml:"remoteReadInterUrl,omitempty"`
+	// The internal endpoint for remote read.
+	//
+	// example:
+	//
+	// http://workspace-default-cms-xxx-cn-hangzhou.cn-hangzhou-internal.log.aliyuncs.com/prometheus/workspace-default-cms-xxx-cn-hangzhou/xxx/api/v1/read
 	RemoteReadInternalUrl *string `json:"remoteReadInternalUrl,omitempty" xml:"remoteReadInternalUrl,omitempty"`
-	// The remote read URL for the internal network.
+	// The internal URL for remote read.
 	//
 	// example:
 	//
@@ -198,7 +208,7 @@ type GetPrometheusViewResponseBodyPrometheusView struct {
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The value is fixed to PrometheusView.
+	// The resource type. The value is fixed as PrometheusView.
 	//
 	// example:
 	//
@@ -212,7 +222,7 @@ type GetPrometheusViewResponseBodyPrometheusView struct {
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The supported authentication types.
 	SupportAuthTypes []*string `json:"supportAuthTypes,omitempty" xml:"supportAuthTypes,omitempty" type:"Repeated"`
-	// The tags of the instance.
+	// The tag keys of the instance.
 	Tags []*GetPrometheusViewResponseBodyPrometheusViewTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The user ID.
 	//
@@ -586,7 +596,7 @@ func (s *GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances) Validat
 }
 
 type GetPrometheusViewResponseBodyPrometheusViewTags struct {
-	// The integration key for PagerDuty.
+	// The integration key of PagerDuty.
 	//
 	// example:
 	//

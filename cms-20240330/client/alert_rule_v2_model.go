@@ -19,8 +19,6 @@ type iAlertRuleV2 interface {
 	GetConditionConfig() *ConditionConfigUnified
 	SetContentTemplate(v string) *AlertRuleV2
 	GetContentTemplate() *string
-	SetCoveredSeverityLevels(v string) *AlertRuleV2
-	GetCoveredSeverityLevels() *string
 	SetCreatedAt(v string) *AlertRuleV2
 	GetCreatedAt() *string
 	SetDatasourceConfig(v *DatasourceConfigUnified) *AlertRuleV2
@@ -35,16 +33,22 @@ type iAlertRuleV2 interface {
 	GetLabels() map[string]*string
 	SetNotifyConfig(v *NotifyConfigUnified) *AlertRuleV2
 	GetNotifyConfig() *NotifyConfigUnified
+	SetNotifyStrategyId(v string) *AlertRuleV2
+	GetNotifyStrategyId() *string
 	SetObserveResourceGlobalScope(v bool) *AlertRuleV2
 	GetObserveResourceGlobalScope() *bool
-	SetObserveResourceList(v string) *AlertRuleV2
-	GetObserveResourceList() *string
+	SetObserveResourceList(v []*string) *AlertRuleV2
+	GetObserveResourceList() []*string
 	SetObserveResourceType(v string) *AlertRuleV2
 	GetObserveResourceType() *string
+	SetPartitionKey(v string) *AlertRuleV2
+	GetPartitionKey() *string
 	SetQueryConfig(v *QueryConfigUnified) *AlertRuleV2
 	GetQueryConfig() *QueryConfigUnified
 	SetScheduleConfig(v *ScheduleConfigUnified) *AlertRuleV2
 	GetScheduleConfig() *ScheduleConfigUnified
+	SetSeverityLevels(v string) *AlertRuleV2
+	GetSeverityLevels() *string
 	SetStatus(v string) *AlertRuleV2
 	GetStatus() *string
 	SetUpdatedAt(v string) *AlertRuleV2
@@ -65,8 +69,7 @@ type AlertRuleV2 struct {
 	// The configuration for the conditions that trigger an alert.
 	ConditionConfig *ConditionConfigUnified `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
 	// The template for the alert notification content.
-	ContentTemplate       *string `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
-	CoveredSeverityLevels *string `json:"coveredSeverityLevels,omitempty" xml:"coveredSeverityLevels,omitempty"`
+	ContentTemplate *string `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
 	// The time the alert rule was created.
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	// The configuration for the data source to be evaluated.
@@ -81,16 +84,22 @@ type AlertRuleV2 struct {
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
 	// The configuration for sending notifications when an alert is triggered.
 	NotifyConfig *NotifyConfigUnified `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty"`
+	// The ID of the notification strategy to use for this alert rule.
+	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
 	// Indicates whether the alert rule monitors all resources of the specified type. If `true`, the rule applies globally within the workspace.
 	ObserveResourceGlobalScope *bool `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
 	// A list of specific resource IDs to monitor, used only when `observeResourceGlobalScope` is `false`.
-	ObserveResourceList *string `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty"`
+	ObserveResourceList []*string `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty" type:"Repeated"`
 	// The type of resource that the alert rule monitors.
 	ObserveResourceType *string `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
+	// The partition key used to group alerts. Alerts with the same partition key are treated as a single incident.
+	PartitionKey *string `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
 	// The configuration for querying and processing data from the data source.
 	QueryConfig *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`
 	// The configuration for how often the alert rule is evaluated.
 	ScheduleConfig *ScheduleConfigUnified `json:"scheduleConfig,omitempty" xml:"scheduleConfig,omitempty"`
+	// The severity level of the alert. Examples: `critical`, `warning`.
+	SeverityLevels *string `json:"severityLevels,omitempty" xml:"severityLevels,omitempty"`
 	// The current status of the alert rule. Examples: `RUNNING`, `STOPPED`.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The time the alert rule was last updated.
@@ -129,10 +138,6 @@ func (s *AlertRuleV2) GetContentTemplate() *string {
 	return s.ContentTemplate
 }
 
-func (s *AlertRuleV2) GetCoveredSeverityLevels() *string {
-	return s.CoveredSeverityLevels
-}
-
 func (s *AlertRuleV2) GetCreatedAt() *string {
 	return s.CreatedAt
 }
@@ -161,16 +166,24 @@ func (s *AlertRuleV2) GetNotifyConfig() *NotifyConfigUnified {
 	return s.NotifyConfig
 }
 
+func (s *AlertRuleV2) GetNotifyStrategyId() *string {
+	return s.NotifyStrategyId
+}
+
 func (s *AlertRuleV2) GetObserveResourceGlobalScope() *bool {
 	return s.ObserveResourceGlobalScope
 }
 
-func (s *AlertRuleV2) GetObserveResourceList() *string {
+func (s *AlertRuleV2) GetObserveResourceList() []*string {
 	return s.ObserveResourceList
 }
 
 func (s *AlertRuleV2) GetObserveResourceType() *string {
 	return s.ObserveResourceType
+}
+
+func (s *AlertRuleV2) GetPartitionKey() *string {
+	return s.PartitionKey
 }
 
 func (s *AlertRuleV2) GetQueryConfig() *QueryConfigUnified {
@@ -179,6 +192,10 @@ func (s *AlertRuleV2) GetQueryConfig() *QueryConfigUnified {
 
 func (s *AlertRuleV2) GetScheduleConfig() *ScheduleConfigUnified {
 	return s.ScheduleConfig
+}
+
+func (s *AlertRuleV2) GetSeverityLevels() *string {
+	return s.SeverityLevels
 }
 
 func (s *AlertRuleV2) GetStatus() *string {
@@ -222,11 +239,6 @@ func (s *AlertRuleV2) SetContentTemplate(v string) *AlertRuleV2 {
 	return s
 }
 
-func (s *AlertRuleV2) SetCoveredSeverityLevels(v string) *AlertRuleV2 {
-	s.CoveredSeverityLevels = &v
-	return s
-}
-
 func (s *AlertRuleV2) SetCreatedAt(v string) *AlertRuleV2 {
 	s.CreatedAt = &v
 	return s
@@ -262,18 +274,28 @@ func (s *AlertRuleV2) SetNotifyConfig(v *NotifyConfigUnified) *AlertRuleV2 {
 	return s
 }
 
+func (s *AlertRuleV2) SetNotifyStrategyId(v string) *AlertRuleV2 {
+	s.NotifyStrategyId = &v
+	return s
+}
+
 func (s *AlertRuleV2) SetObserveResourceGlobalScope(v bool) *AlertRuleV2 {
 	s.ObserveResourceGlobalScope = &v
 	return s
 }
 
-func (s *AlertRuleV2) SetObserveResourceList(v string) *AlertRuleV2 {
-	s.ObserveResourceList = &v
+func (s *AlertRuleV2) SetObserveResourceList(v []*string) *AlertRuleV2 {
+	s.ObserveResourceList = v
 	return s
 }
 
 func (s *AlertRuleV2) SetObserveResourceType(v string) *AlertRuleV2 {
 	s.ObserveResourceType = &v
+	return s
+}
+
+func (s *AlertRuleV2) SetPartitionKey(v string) *AlertRuleV2 {
+	s.PartitionKey = &v
 	return s
 }
 
@@ -284,6 +306,11 @@ func (s *AlertRuleV2) SetQueryConfig(v *QueryConfigUnified) *AlertRuleV2 {
 
 func (s *AlertRuleV2) SetScheduleConfig(v *ScheduleConfigUnified) *AlertRuleV2 {
 	s.ScheduleConfig = v
+	return s
+}
+
+func (s *AlertRuleV2) SetSeverityLevels(v string) *AlertRuleV2 {
+	s.SeverityLevels = &v
 	return s
 }
 

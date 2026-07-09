@@ -24,27 +24,27 @@ type iListAlertRobotsRequest interface {
 }
 
 type ListAlertRobotsRequest struct {
-	// The name of the robot. Fuzzy search by prefix is supported.
+	// The chatbot name. Prefix fuzzy match is supported.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 100.
+	// The number of entries per page. Default value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The robot IDs.
+	// The chatbot ID.
 	RobotIds []*string `json:"robotIds,omitempty" xml:"robotIds,omitempty" type:"Repeated"`
-	// The robot types.
+	// The chatbot type.
 	Types     []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
 	Workspace *string   `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }

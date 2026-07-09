@@ -32,7 +32,7 @@ type iListPrometheusViewsShrinkRequest interface {
 }
 
 type ListPrometheusViewsShrinkRequest struct {
-	// The region IDs by which to filter the results.
+	// Filters by region ID.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type ListPrometheusViewsShrinkRequest struct {
 	//
 	// 44ANBjKZmQeKnaB1fXRq06w7sFYK3MUcCALMD9qQbmEiE
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The IDs of the Prometheus view instances.
+	// The list of Prometheus view instance IDs.
 	//
 	// example:
 	//
 	// view-xxx
 	PrometheusViewIds *string `json:"prometheusViewIds,omitempty" xml:"prometheusViewIds,omitempty"`
-	// The name of the Prometheus view.
+	// The Prometheus view name.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type ListPrometheusViewsShrinkRequest struct {
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The list of tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The instance version. Valid values: V1 and V2.
+	// The instance version: V1 or V2.
 	//
 	// example:
 	//
 	// V2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The name of the workspace.
+	// The workspace name.
 	//
 	// example:
 	//

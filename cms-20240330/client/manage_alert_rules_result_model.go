@@ -15,6 +15,10 @@ type iManageAlertRulesResult interface {
 	GetDeletedCount() *int32
 	SetDeletedUuidList(v []*string) *ManageAlertRulesResult
 	GetDeletedUuidList() []*string
+	SetUpdatedCount(v int32) *ManageAlertRulesResult
+	GetUpdatedCount() *int32
+	SetUpdatedUuidList(v []*string) *ManageAlertRulesResult
+	GetUpdatedUuidList() []*string
 }
 
 type ManageAlertRulesResult struct {
@@ -24,6 +28,10 @@ type ManageAlertRulesResult struct {
 	DeletedCount *int32 `json:"deletedCount,omitempty" xml:"deletedCount,omitempty"`
 	// A list of UUIDs of deleted alert rules.
 	DeletedUuidList []*string `json:"deletedUuidList,omitempty" xml:"deletedUuidList,omitempty" type:"Repeated"`
+	// The number of updated alert rules.
+	UpdatedCount *int32 `json:"updatedCount,omitempty" xml:"updatedCount,omitempty"`
+	// A list of UUIDs of updated alert rules.
+	UpdatedUuidList []*string `json:"updatedUuidList,omitempty" xml:"updatedUuidList,omitempty" type:"Repeated"`
 }
 
 func (s ManageAlertRulesResult) String() string {
@@ -46,6 +54,14 @@ func (s *ManageAlertRulesResult) GetDeletedUuidList() []*string {
 	return s.DeletedUuidList
 }
 
+func (s *ManageAlertRulesResult) GetUpdatedCount() *int32 {
+	return s.UpdatedCount
+}
+
+func (s *ManageAlertRulesResult) GetUpdatedUuidList() []*string {
+	return s.UpdatedUuidList
+}
+
 func (s *ManageAlertRulesResult) SetAlertRule(v *AlertRuleV2) *ManageAlertRulesResult {
 	s.AlertRule = v
 	return s
@@ -58,6 +74,16 @@ func (s *ManageAlertRulesResult) SetDeletedCount(v int32) *ManageAlertRulesResul
 
 func (s *ManageAlertRulesResult) SetDeletedUuidList(v []*string) *ManageAlertRulesResult {
 	s.DeletedUuidList = v
+	return s
+}
+
+func (s *ManageAlertRulesResult) SetUpdatedCount(v int32) *ManageAlertRulesResult {
+	s.UpdatedCount = &v
+	return s
+}
+
+func (s *ManageAlertRulesResult) SetUpdatedUuidList(v []*string) *ManageAlertRulesResult {
+	s.UpdatedUuidList = v
 	return s
 }
 

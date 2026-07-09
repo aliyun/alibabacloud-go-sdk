@@ -40,37 +40,37 @@ type iListIntegrationPoliciesShrinkRequest interface {
 }
 
 type ListIntegrationPoliciesShrinkRequest struct {
-	// The add-on name.
+	// The addon name.
 	//
 	// example:
 	//
 	// cs-default
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The ID of the attached resource.
+	// The ID of the bound resource.
 	//
 	// example:
 	//
 	// 622d27c2e87d49debceeebc7c642610e
 	BindResourceId *string `json:"bindResourceId,omitempty" xml:"bindResourceId,omitempty"`
-	// The IDs of the entity groups to filter by. Separate multiple IDs with commas.
+	// The entity IDs used for filtering, separated by commas.
 	//
 	// example:
 	//
 	// eg-1,eg-2,eg-3
 	EntityGroupIds *string `json:"entityGroupIds,omitempty" xml:"entityGroupIds,omitempty"`
-	// The IDs of the regions to query. Separate multiple region IDs with commas.
+	// The region IDs used for filtering, separated by commas.
 	//
 	// example:
 	//
 	// cn-beijing,cn-hangzhou
 	FilterRegionIds *string `json:"filterRegionIds,omitempty" xml:"filterRegionIds,omitempty"`
-	// The maximum number of entries to return on each page. The default value is 30. The maximum value is 100.
+	// The maximum number of results to return. Default value: 30. Maximum value: 100.
 	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first request. You can obtain the token from the response to the previous request.
+	// The token used to retrieve more results. You do not need to specify this parameter for the first request. Use the token returned from the previous query for subsequent requests.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type ListIntegrationPoliciesShrinkRequest struct {
 	//
 	// policy-93817a401f78435596d745a97d2e85a1
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
-	// The policy name.
+	// The rule name.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type ListIntegrationPoliciesShrinkRequest struct {
 	//
 	// cmee-622d27c2e87d49debceeebc7c642610e
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
-	// A general-purpose query string.
+	// The keyword used for general queries.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type ListIntegrationPoliciesShrinkRequest struct {
 	//
 	// rg-xxxxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The list of tags.
+	// The tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The workspace.
 	//

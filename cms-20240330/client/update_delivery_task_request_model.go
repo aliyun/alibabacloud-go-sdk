@@ -30,15 +30,15 @@ type iUpdateDeliveryTaskRequest interface {
 }
 
 type UpdateDeliveryTaskRequest struct {
-	// The data source ID (Prometheus instance ID).
+	// The data source ID, which is the Managed Service for Prometheus instance ID.
 	//
 	// example:
 	//
 	// rw-5f2b4sc7es4d66
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	// Additional labels to attach to all delivered metrics, specified as key-value pairs.
+	// The additional labels attached to all delivered metrics. The key is the label name and the value is the label value.
 	ExternalLabels map[string]*string `json:"externalLabels,omitempty" xml:"externalLabels,omitempty"`
-	// The labels for filtering metrics. This operation replaces the entire existing filter; incremental updates are not supported.
+	// The metric filter conditions. The entire value is replaced rather than incrementally merged.
 	LabelFilters map[string]*string `json:"labelFilters,omitempty" xml:"labelFilters,omitempty"`
 	// The metric filtering mode.
 	//
@@ -52,9 +52,9 @@ type UpdateDeliveryTaskRequest struct {
 	//
 	// rg-aekzoiafjtr7zyq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The list of sinks.
+	// The list of delivery targets.
 	SinkList []*UpdateDeliveryTaskRequestSinkList `json:"sinkList,omitempty" xml:"sinkList,omitempty" type:"Repeated"`
-	// The status of the delivery task.
+	// The task status. This parameter is used to enable or disable the task.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type UpdateDeliveryTaskRequest struct {
 	//
 	// updated desc
 	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
-	// The name of the delivery task. The name can include Chinese characters, English letters, underscores (_), and hyphens (-).
+	// The task name. The name can contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -177,9 +177,9 @@ func (s *UpdateDeliveryTaskRequest) Validate() error {
 }
 
 type UpdateDeliveryTaskRequestSinkList struct {
-	// The detailed configuration of the sink. The meaning of the key-value pairs depends on the specified sinkType.
+	// The detailed configuration of the delivery target. The meanings of keys and values vary depending on the sinkType.
 	SinkConfigs map[string]*string `json:"sinkConfigs,omitempty" xml:"sinkConfigs,omitempty"`
-	// The sink type.
+	// The delivery target type.
 	//
 	// if can be null:
 	// true

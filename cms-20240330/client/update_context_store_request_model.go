@@ -20,7 +20,7 @@ type iUpdateContextStoreRequest interface {
 }
 
 type UpdateContextStoreRequest struct {
-	// The configuration.
+	// The configuration information.
 	Config *UpdateContextStoreRequestConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
 	// The context type.
 	//
@@ -28,7 +28,7 @@ type UpdateContextStoreRequest struct {
 	//
 	// memory
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
-	// The dataset.
+	// The dataset information.
 	Dataset *UpdateContextStoreRequestDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
 	// The description.
 	//
@@ -99,7 +99,7 @@ func (s *UpdateContextStoreRequest) Validate() error {
 type UpdateContextStoreRequestConfig struct {
 	// The metadata field.
 	MetadataField map[string]*string `json:"metadataField,omitempty" xml:"metadataField,omitempty"`
-	// The data source.
+	// The reference path.
 	Source *UpdateContextStoreRequestConfigSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
 }
 
@@ -139,13 +139,13 @@ func (s *UpdateContextStoreRequestConfig) Validate() error {
 }
 
 type UpdateContextStoreRequestConfigSource struct {
-	// The Log Service Logstore name.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// sls-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The Log Service Project name.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ func (s *UpdateContextStoreRequestConfigSource) Validate() error {
 }
 
 type UpdateContextStoreRequestDataset struct {
-	// The dataset name.
+	// The name of the dataset.
 	//
 	// example:
 	//

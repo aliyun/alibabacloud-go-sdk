@@ -24,7 +24,52 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"us-west-1":             dara.String("metrics.us-west-1.aliyuncs.com"),
+		"us-southeast-1":        dara.String("metrics.us-southeast-1.aliyuncs.com"),
+		"us-east-1":             dara.String("metrics.us-east-1.aliyuncs.com"),
+		"na-south-1":            dara.String("metrics.na-south-1.aliyuncs.com"),
+		"me-east-1":             dara.String("metrics.me-east-1.aliyuncs.com"),
+		"me-central-1":          dara.String("metrics.me-central-1.aliyuncs.com"),
+		"eu-west-2":             dara.String("metrics.eu-west-2.aliyuncs.com"),
+		"eu-west-1":             dara.String("metrics.eu-west-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("metrics.eu-central-1.aliyuncs.com"),
+		"cn-zhongwei":           dara.String("metrics.cn-zhongwei.aliyuncs.com"),
+		"cn-zhengzhou-jva":      dara.String("metrics.cn-zhengzhou-jva.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("metrics.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu-gic-1":   dara.String("metrics.cn-wulanchabu-gic-1.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("metrics.cn-wulanchabu.aliyuncs.com"),
+		"cn-wuhan-lr":           dara.String("metrics.cn-wuhan-lr.aliyuncs.com"),
+		"cn-shenzhen-finance-1": dara.String("metrics.cn-shenzhen-finance-1.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("metrics.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("metrics.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shanghai":           dara.String("metrics.cn-shanghai.aliyuncs.com"),
+		"cn-qingdao":            dara.String("metrics.cn-qingdao.aliyuncs.com"),
+		"cn-north-2-gov-1":      dara.String("metrics.cn-north-2-gov-1.aliyuncs.com"),
+		"cn-nanjing":            dara.String("metrics.cn-nanjing.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("metrics.cn-huhehaote.aliyuncs.com"),
+		"cn-hongkong":           dara.String("metrics.cn-hongkong.aliyuncs.com"),
+		"cn-heyuan-acdr-1":      dara.String("metrics.cn-heyuan-acdr-1.aliyuncs.com"),
+		"cn-heyuan":             dara.String("metrics.cn-heyuan.aliyuncs.com"),
+		"cn-hangzhou-finance":   dara.String("metrics.cn-hangzhou-finance.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("metrics.cn-hangzhou.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("metrics.cn-guangzhou.aliyuncs.com"),
+		"cn-fuzhou":             dara.String("metrics.cn-fuzhou.aliyuncs.com"),
+		"cn-chengdu":            dara.String("metrics.cn-chengdu.aliyuncs.com"),
+		"cn-beijing-finance-1":  dara.String("metrics.cn-beijing-finance-1.aliyuncs.com"),
+		"cn-beijing":            dara.String("metrics.cn-beijing.aliyuncs.com"),
+		"ap-southeast-8":        dara.String("metrics.ap-southeast-8.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("metrics.ap-southeast-7.aliyuncs.com"),
+		"ap-southeast-6":        dara.String("metrics.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("metrics.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("metrics.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-2":        dara.String("metrics.ap-southeast-2.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("metrics.ap-southeast-1.aliyuncs.com"),
+		"ap-south-1":            dara.String("metrics.ap-south-1.aliyuncs.com"),
+		"ap-northeast-2":        dara.String("metrics.ap-northeast-2.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("metrics.ap-northeast-1.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -418,7 +463,7 @@ func (client *Client) CreateAddonRelease(policyId *string, request *CreateAddonR
 
 // Summary:
 //
-// Creates an aggregation task group.
+// Create an aggregation task group.
 //
 // @param request - CreateAggTaskGroupRequest
 //
@@ -531,7 +576,7 @@ func (client *Client) CreateAggTaskGroupWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// Creates an aggregation task group.
+// Create an aggregation task group.
 //
 // @param request - CreateAggTaskGroupRequest
 //
@@ -1434,7 +1479,7 @@ func (client *Client) CreatePipeline(workspace *string, request *CreatePipelineR
 
 // Summary:
 //
-// Creates a Prometheus instance for monitoring.
+// Creates a Managed Service for Prometheus instance.
 //
 // @param request - CreatePrometheusInstanceRequest
 //
@@ -1483,6 +1528,10 @@ func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometh
 		body["prometheusInstanceName"] = request.PrometheusInstanceName
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.Status) {
 		body["status"] = request.Status
 	}
@@ -1525,7 +1574,7 @@ func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometh
 
 // Summary:
 //
-// Creates a Prometheus instance for monitoring.
+// Creates a Managed Service for Prometheus instance.
 //
 // @param request - CreatePrometheusInstanceRequest
 //
@@ -1548,7 +1597,7 @@ func (client *Client) CreatePrometheusInstance(request *CreatePrometheusInstance
 //
 // Description:
 //
-// 用于创建一个站点监控任务
+// Creates a site monitoring task.
 //
 // @param request - CreatePrometheusViewRequest
 //
@@ -1635,7 +1684,7 @@ func (client *Client) CreatePrometheusViewWithOptions(request *CreatePrometheusV
 //
 // Description:
 //
-// 用于创建一个站点监控任务
+// Creates a site monitoring task.
 //
 // @param request - CreatePrometheusViewRequest
 //
@@ -3636,11 +3685,11 @@ func (client *Client) DeleteWorkspace(workspaceName *string, request *DeleteWork
 
 // Summary:
 //
-// # Query metadata
+// Queries metric metadata.
 //
 // Description:
 //
-// Queries the details of CloudMonitor metric metadata.
+// Queries the details of CloudMonitor monitoring metrics metadata.
 //
 // @param tmpReq - DescribeMetricMetaListRequest
 //
@@ -3717,11 +3766,11 @@ func (client *Client) DescribeMetricMetaListWithOptions(tmpReq *DescribeMetricMe
 
 // Summary:
 //
-// # Query metadata
+// Queries metric metadata.
 //
 // Description:
 //
-// Queries the details of CloudMonitor metric metadata.
+// Queries the details of CloudMonitor monitoring metrics metadata.
 //
 // @param request - DescribeMetricMetaListRequest
 //
@@ -4348,7 +4397,21 @@ func (client *Client) GetCloudResource() (_result *GetCloudResourceResponse, _er
 
 // Summary:
 //
-// Queries data from the Cloud Resource Center.
+// Queries all entity information of a specific cloud service within a specified time range.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation queries all entities of a specific cloud service within a specified time range.
+//
+// - The `from` and `to` parameters specify the time range of the query in seconds-level timestamps.
+//
+// - The `spl` parameter supports entityStore query statements to filter or select the required entities and their properties.
+//
+// - If you need only specific fields, use the `project` clause in `spl` to filter them.
+//
+// - The response contains the specific property values of each entity and the corresponding list of property names for easy parsing and processing.
 //
 // @param request - GetCloudResourceDataRequest
 //
@@ -4403,7 +4466,21 @@ func (client *Client) GetCloudResourceDataWithOptions(request *GetCloudResourceD
 
 // Summary:
 //
-// Queries data from the Cloud Resource Center.
+// Queries all entity information of a specific cloud service within a specified time range.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation queries all entities of a specific cloud service within a specified time range.
+//
+// - The `from` and `to` parameters specify the time range of the query in seconds-level timestamps.
+//
+// - The `spl` parameter supports entityStore query statements to filter or select the required entities and their properties.
+//
+// - If you need only specific fields, use the `project` clause in `spl` to filter them.
+//
+// - The response contains the specific property values of each entity and the corresponding list of property names for easy parsing and processing.
 //
 // @param request - GetCloudResourceDataRequest
 //
@@ -4686,7 +4763,11 @@ func (client *Client) GetDataset(workspace *string, datasetName *string, request
 
 // Summary:
 //
-// # View data delivery task details
+// Retrieves the details of a data delivery task.
+//
+// Description:
+//
+// Deletes a specified site monitoring task.
 //
 // @param request - GetDeliveryTaskRequest
 //
@@ -4727,7 +4808,11 @@ func (client *Client) GetDeliveryTaskWithOptions(taskId *string, request *GetDel
 
 // Summary:
 //
-// # View data delivery task details
+// Retrieves the details of a data delivery task.
+//
+// Description:
+//
+// Deletes a specified site monitoring task.
 //
 // @param request - GetDeliveryTaskRequest
 //
@@ -4889,7 +4974,7 @@ func (client *Client) GetEntityStoreData(workspace *string, request *GetEntitySt
 
 // Summary:
 //
-// Retrieves the details of an Integration Center policy.
+// Query integration center policy information.
 //
 // @param request - GetIntegrationPolicyRequest
 //
@@ -4930,7 +5015,7 @@ func (client *Client) GetIntegrationPolicyWithOptions(policyId *string, request 
 
 // Summary:
 //
-// Retrieves the details of an Integration Center policy.
+// Query integration center policy information.
 //
 // @param request - GetIntegrationPolicyRequest
 //
@@ -5237,7 +5322,15 @@ func (client *Client) GetMemoryHistory(workspace *string, memoryStoreName *strin
 
 // Summary:
 //
-// Query a memory store.
+// Queries a memory store.
+//
+// Description:
+//
+// Typically used together with the QueryMetricMeta operation for querying metrics and the QueryMetricList/QueryMetricLast operation for querying monitoring data.
+//
+// ## Request type
+//
+// POST|GET.
 //
 // @param request - GetMemoryStoreRequest
 //
@@ -5278,7 +5371,15 @@ func (client *Client) GetMemoryStoreWithOptions(workspace *string, memoryStoreNa
 
 // Summary:
 //
-// Query a memory store.
+// Queries a memory store.
+//
+// Description:
+//
+// Typically used together with the QueryMetricMeta operation for querying metrics and the QueryMetricList/QueryMetricLast operation for querying monitoring data.
+//
+// ## Request type
+//
+// POST|GET.
 //
 // @param request - GetMemoryStoreRequest
 //
@@ -5357,11 +5458,11 @@ func (client *Client) GetPipeline(workspace *string, pipelineName *string, reque
 
 // Summary:
 //
-// Retrieves the details of a specific Prometheus instance.
+// Queries the details of a specified Managed Service for Prometheus instance.
 //
 // Description:
 //
-// Gets the details of a Prometheus instance.
+// Retrieves the details of a Managed Service for Prometheus instance.
 //
 // @param request - GetPrometheusInstanceRequest
 //
@@ -5412,11 +5513,11 @@ func (client *Client) GetPrometheusInstanceWithOptions(prometheusInstanceId *str
 
 // Summary:
 //
-// Retrieves the details of a specific Prometheus instance.
+// Queries the details of a specified Managed Service for Prometheus instance.
 //
 // Description:
 //
-// Gets the details of a Prometheus instance.
+// Retrieves the details of a Managed Service for Prometheus instance.
 //
 // @param request - GetPrometheusInstanceRequest
 //
@@ -5501,11 +5602,11 @@ func (client *Client) GetPrometheusUserSetting(request *GetPrometheusUserSetting
 
 // Summary:
 //
-// Retrieves the details of a specified Prometheus view instance.
+// Queries the details of a specified Prometheus view instance.
 //
 // Description:
 //
-// Retrieves the details of a specified Prometheus view instance.
+// Queries a specified Prometheus view instance.
 //
 // @param request - GetPrometheusViewRequest
 //
@@ -5556,11 +5657,11 @@ func (client *Client) GetPrometheusViewWithOptions(prometheusViewId *string, req
 
 // Summary:
 //
-// Retrieves the details of a specified Prometheus view instance.
+// Queries the details of a specified Prometheus view instance.
 //
 // Description:
 //
-// Retrieves the details of a specified Prometheus view instance.
+// Queries a specified Prometheus view instance.
 //
 // @param request - GetPrometheusViewRequest
 //
@@ -6139,7 +6240,7 @@ func (client *Client) ListAddons(request *ListAddonsRequest) (_result *ListAddon
 
 // Summary:
 //
-// Queries a list of aggregation task groups.
+// Queries the list of aggregation task groups.
 //
 // @param tmpReq - ListAggTaskGroupsRequest
 //
@@ -6220,7 +6321,7 @@ func (client *Client) ListAggTaskGroupsWithOptions(instanceId *string, tmpReq *L
 
 // Summary:
 //
-// Queries a list of aggregation task groups.
+// Queries the list of aggregation task groups.
 //
 // @param request - ListAggTaskGroupsRequest
 //
@@ -6327,7 +6428,7 @@ func (client *Client) ListAlertActions(request *ListAlertActionsRequest) (_resul
 
 // Summary:
 //
-// Queries a list of alert webhooks.
+// Queries alert chatbots.
 //
 // @param tmpReq - ListAlertRobotsRequest
 //
@@ -6404,7 +6505,7 @@ func (client *Client) ListAlertRobotsWithOptions(tmpReq *ListAlertRobotsRequest,
 
 // Summary:
 //
-// Queries a list of alert webhooks.
+// Queries alert chatbots.
 //
 // @param request - ListAlertRobotsRequest
 //
@@ -7087,11 +7188,11 @@ func (client *Client) ListDeliveryTasks(request *ListDeliveryTasksRequest) (_res
 
 // Summary:
 //
-// Queries a list of policies in the Integration Center.
+// Queries the list of access center policies.
 //
 // Description:
 //
-// Queries a list of integrations.
+// Queries the integration list.
 //
 // @param tmpReq - ListIntegrationPoliciesRequest
 //
@@ -7196,11 +7297,11 @@ func (client *Client) ListIntegrationPoliciesWithOptions(tmpReq *ListIntegration
 
 // Summary:
 //
-// Queries a list of policies in the Integration Center.
+// Queries the list of access center policies.
 //
 // Description:
 //
-// Queries a list of integrations.
+// Queries the integration list.
 //
 // @param request - ListIntegrationPoliciesRequest
 //
@@ -7833,7 +7934,7 @@ func (client *Client) ListMemoryStores(workspace *string, request *ListMemorySto
 
 // Summary:
 //
-// Queries a list of pipelines in a workspace.
+// Lists pipelines.
 //
 // @param request - ListPipelinesRequest
 //
@@ -7888,7 +7989,7 @@ func (client *Client) ListPipelinesWithOptions(workspace *string, request *ListP
 
 // Summary:
 //
-// Queries a list of pipelines in a workspace.
+// Lists pipelines.
 //
 // @param request - ListPipelinesRequest
 //
@@ -7985,11 +8086,11 @@ func (client *Client) ListPrometheusDashboards(prometheusInstanceId *string, req
 
 // Summary:
 //
-// Lists Prometheus instances.
+// Retrieves a list of Managed Service for Prometheus instances.
 //
 // Description:
 //
-// Lists Prometheus instances.
+// Retrieves a list of Managed Service for Prometheus instances.
 //
 // @param tmpReq - ListPrometheusInstancesRequest
 //
@@ -8078,11 +8179,11 @@ func (client *Client) ListPrometheusInstancesWithOptions(tmpReq *ListPrometheusI
 
 // Summary:
 //
-// Lists Prometheus instances.
+// Retrieves a list of Managed Service for Prometheus instances.
 //
 // Description:
 //
-// Lists Prometheus instances.
+// Retrieves a list of Managed Service for Prometheus instances.
 //
 // @param request - ListPrometheusInstancesRequest
 //
@@ -8101,11 +8202,11 @@ func (client *Client) ListPrometheusInstances(request *ListPrometheusInstancesRe
 
 // Summary:
 //
-// Lists the Prometheus view instances.
+// Queries the list of Prometheus view instances.
 //
 // Description:
 //
-// Lists the Prometheus view instances.
+// Queries the list of Prometheus view instances.
 //
 // @param tmpReq - ListPrometheusViewsRequest
 //
@@ -8194,11 +8295,11 @@ func (client *Client) ListPrometheusViewsWithOptions(tmpReq *ListPrometheusViews
 
 // Summary:
 //
-// Lists the Prometheus view instances.
+// Queries the list of Prometheus view instances.
 //
 // Description:
 //
-// Lists the Prometheus view instances.
+// Queries the list of Prometheus view instances.
 //
 // @param request - ListPrometheusViewsRequest
 //
@@ -8639,7 +8740,7 @@ func (client *Client) ManageAlertRules(request *ManageAlertRulesRequest) (_resul
 
 // Summary:
 //
-// This operation enables monitoring services, including CloudMonitor Enterprise, Managed Service for Prometheus, and Log Service.
+// Activates CloudMonitor services, including Hybrid Cloud Monitoring, Managed Service for Prometheus, and Simple Log Service (SLS).
 //
 // @param request - OpenCmsServiceRequest
 //
@@ -8680,7 +8781,7 @@ func (client *Client) OpenCmsServiceWithOptions(request *OpenCmsServiceRequest, 
 
 // Summary:
 //
-// This operation enables monitoring services, including CloudMonitor Enterprise, Managed Service for Prometheus, and Log Service.
+// Activates CloudMonitor services, including Hybrid Cloud Monitoring, Managed Service for Prometheus, and Simple Log Service (SLS).
 //
 // @param request - OpenCmsServiceRequest
 //
@@ -8773,11 +8874,11 @@ func (client *Client) PutWorkspace(workspaceName *string, request *PutWorkspaceR
 
 // Summary:
 //
-// Retrieves a list of alert rules.
+// Queries alert rules.
 //
 // Description:
 //
-// This topic provides an example of how to retrieve a list of alert rules. In this example, a successful response returns two alert rules: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example on how to query a list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param tmpReq - QueryAlertRulesRequest
 //
@@ -8844,11 +8945,11 @@ func (client *Client) QueryAlertRulesWithOptions(tmpReq *QueryAlertRulesRequest,
 
 // Summary:
 //
-// Retrieves a list of alert rules.
+// Queries alert rules.
 //
 // Description:
 //
-// This topic provides an example of how to retrieve a list of alert rules. In this example, a successful response returns two alert rules: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example on how to query a list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - QueryAlertRulesRequest
 //
@@ -8953,7 +9054,13 @@ func (client *Client) SearchContext(workspace *string, contextStoreName *string,
 
 // Summary:
 //
-// Search memories using query conditions and filters.
+// Searches for memories based on query conditions and filters.
+//
+// Description:
+//
+// This topic provides an example on how to create a threshold alert rule for the cpu_total metric of the Elastic Computing Service `acs_ecs_dashboard` instance `i-uf6j91r34rnwawoo****`. The alert contact group of the alert rule is `ECS_Group`, the alert rule name is `test123`, the alert rule ID is `a151cd6023eacee2f0978e03863cc1697c89508****`, the statistical method for the Critical level is `Average`, the comparison operator for the Critical level is `GreaterThanOrEqualToThreshold`, the threshold for the Critical level is `90`, and the retry count for the Critical level is `3`.
+//
+// > 2024-08-15: Statistics validation is added. Only the Statistics value that corresponds to the metric can be specified. For information about how to obtain the value of this parameter, see [Cloud service monitoring metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
 //
 // @param request - SearchMemoriesRequest
 //
@@ -9040,7 +9147,13 @@ func (client *Client) SearchMemoriesWithOptions(workspace *string, memoryStoreNa
 
 // Summary:
 //
-// Search memories using query conditions and filters.
+// Searches for memories based on query conditions and filters.
+//
+// Description:
+//
+// This topic provides an example on how to create a threshold alert rule for the cpu_total metric of the Elastic Computing Service `acs_ecs_dashboard` instance `i-uf6j91r34rnwawoo****`. The alert contact group of the alert rule is `ECS_Group`, the alert rule name is `test123`, the alert rule ID is `a151cd6023eacee2f0978e03863cc1697c89508****`, the statistical method for the Critical level is `Average`, the comparison operator for the Critical level is `GreaterThanOrEqualToThreshold`, the threshold for the Critical level is `90`, and the retry count for the Critical level is `3`.
+//
+// > 2024-08-15: Statistics validation is added. Only the Statistics value that corresponds to the metric can be specified. For information about how to obtain the value of this parameter, see [Cloud service monitoring metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
 //
 // @param request - SearchMemoriesRequest
 //
@@ -9737,7 +9850,13 @@ func (client *Client) UpdateContext(workspace *string, contextStoreName *string,
 
 // Summary:
 //
-// Updates the configuration of a context store.
+// Modifies the configuration of a context store.
+//
+// Description:
+//
+// Only Alibaba Cloud accounts that have activated Network Analysis and Monitoring can create one-time detection tasks.
+//
+// This topic provides an example of how to create a one-time detection task. The detection task is named `task1`, the detection address is `http://www.aliyun.com`, the detection type is `HTTP`, and the number of detection points is `1`.
 //
 // @param request - UpdateContextStoreRequest
 //
@@ -9796,7 +9915,13 @@ func (client *Client) UpdateContextStoreWithOptions(workspace *string, contextSt
 
 // Summary:
 //
-// Updates the configuration of a context store.
+// Modifies the configuration of a context store.
+//
+// Description:
+//
+// Only Alibaba Cloud accounts that have activated Network Analysis and Monitoring can create one-time detection tasks.
+//
+// This topic provides an example of how to create a one-time detection task. The detection task is named `task1`, the detection address is `http://www.aliyun.com`, the detection type is `HTTP`, and the number of detection points is `1`.
 //
 // @param request - UpdateContextStoreRequest
 //
@@ -9881,7 +10006,11 @@ func (client *Client) UpdateDataset(workspace *string, datasetName *string, requ
 
 // Summary:
 //
-// Updates a delivery task. This operation uses PATCH semantics, meaning unspecified fields in the request body remain unchanged.
+// Updates a data delivery task. The update uses patch semantics: fields that are not specified remain unchanged.
+//
+// Description:
+//
+// Deletes a specified site monitoring task.
 //
 // @param request - UpdateDeliveryTaskRequest
 //
@@ -9960,7 +10089,11 @@ func (client *Client) UpdateDeliveryTaskWithOptions(taskId *string, request *Upd
 
 // Summary:
 //
-// Updates a delivery task. This operation uses PATCH semantics, meaning unspecified fields in the request body remain unchanged.
+// Updates a data delivery task. The update uses patch semantics: fields that are not specified remain unchanged.
+//
+// Description:
+//
+// Deletes a specified site monitoring task.
 //
 // @param request - UpdateDeliveryTaskRequest
 //
@@ -10354,11 +10487,11 @@ func (client *Client) UpdatePipeline(workspace *string, pipelineName *string, re
 
 // Summary:
 //
-// Updates the information of a Prometheus instance.
+// Updates the information of a Managed Service for Prometheus instance.
 //
 // Description:
 //
-// This topic describes how to update a Prometheus instance.
+// Updates the information of a Managed Service for Prometheus instance.
 //
 // @param request - UpdatePrometheusInstanceRequest
 //
@@ -10445,11 +10578,11 @@ func (client *Client) UpdatePrometheusInstanceWithOptions(prometheusInstanceId *
 
 // Summary:
 //
-// Updates the information of a Prometheus instance.
+// Updates the information of a Managed Service for Prometheus instance.
 //
 // Description:
 //
-// This topic describes how to update a Prometheus instance.
+// Updates the information of a Managed Service for Prometheus instance.
 //
 // @param request - UpdatePrometheusInstanceRequest
 //

@@ -20,21 +20,21 @@ type iListPipelinesResponseBody interface {
 }
 
 type ListPipelinesResponseBody struct {
-	// The number of results returned on the current page.
+	// The maximum number of results to return.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// A pagination token. If this parameter is not empty, use it in a subsequent request to get the next page of results. If this parameter is empty, all results have been returned.
+	// The pagination token.
 	//
 	// example:
 	//
 	// 3f0d6785770d5fb308f0605d718d422a227c38f96117633678f029842acd19039329e8281583b3da7bc598dfc4c1973e
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// A list of pipelines.
+	// The pipelines.
 	Pipelines []*ListPipelinesResponseBodyPipelines `json:"pipelines,omitempty" xml:"pipelines,omitempty" type:"Repeated"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type ListPipelinesResponseBodyPipelines struct {
 	//
 	// 2026-02-28T07:14:17Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the pipeline.
+	// The description.
 	//
 	// example:
 	//
 	// test pipeline
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The pipeline name.
+	// The name of the pipeline.
 	//
 	// example:
 	//

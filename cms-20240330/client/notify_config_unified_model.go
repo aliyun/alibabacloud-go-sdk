@@ -17,6 +17,8 @@ type iNotifyConfigUnified interface {
 	GetActiveStartTime() *string
 	SetChannels(v []*DirectNotifyChannel) *NotifyConfigUnified
 	GetChannels() []*DirectNotifyChannel
+	SetNotifyStrategies(v []*string) *NotifyConfigUnified
+	GetNotifyStrategies() []*string
 	SetSilenceTimeSecs(v int32) *NotifyConfigUnified
 	GetSilenceTimeSecs() *int32
 	SetType(v string) *NotifyConfigUnified
@@ -26,23 +28,14 @@ type iNotifyConfigUnified interface {
 }
 
 type NotifyConfigUnified struct {
-	// The active days of the week.
-	ActiveDays []*int32 `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
-	// The end of the daily active time window. On active days, the system sends notifications only before this time. Format: `HH:mm`.
-	ActiveEndTime *string `json:"activeEndTime,omitempty" xml:"activeEndTime,omitempty"`
-	// The start of the daily active time window. On active days, the system sends notifications only after this time. Format: `HH:mm`.
-	ActiveStartTime *string `json:"activeStartTime,omitempty" xml:"activeStartTime,omitempty"`
-	// The notification channels that receive alerts.
-	//
+	ActiveDays       []*int32               `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
+	ActiveEndTime    *string                `json:"activeEndTime,omitempty" xml:"activeEndTime,omitempty"`
+	ActiveStartTime  *string                `json:"activeStartTime,omitempty" xml:"activeStartTime,omitempty"`
+	Channels         []*DirectNotifyChannel `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
+	NotifyStrategies []*string              `json:"notifyStrategies,omitempty" xml:"notifyStrategies,omitempty" type:"Repeated"`
+	SilenceTimeSecs  *int32                 `json:"silenceTimeSecs,omitempty" xml:"silenceTimeSecs,omitempty"`
 	// This parameter is required.
-	Channels []*DirectNotifyChannel `json:"channels,omitempty" xml:"channels,omitempty" type:"Repeated"`
-	// The silence time in seconds. After sending a notification, the system suppresses new notifications for the same alert for this duration.
-	SilenceTimeSecs *int32 `json:"silenceTimeSecs,omitempty" xml:"silenceTimeSecs,omitempty"`
-	// The type of the notification configuration.
-	//
-	// This parameter is required.
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The UTC offset for `activeStartTime` and `activeEndTime`. The format is `[+/-]HH:mm`. For example, `+08:00` represents the UTC+8 time zone.
+	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
 	UtcOffset *string `json:"utcOffset,omitempty" xml:"utcOffset,omitempty"`
 }
 
@@ -68,6 +61,10 @@ func (s *NotifyConfigUnified) GetActiveStartTime() *string {
 
 func (s *NotifyConfigUnified) GetChannels() []*DirectNotifyChannel {
 	return s.Channels
+}
+
+func (s *NotifyConfigUnified) GetNotifyStrategies() []*string {
+	return s.NotifyStrategies
 }
 
 func (s *NotifyConfigUnified) GetSilenceTimeSecs() *int32 {
@@ -99,6 +96,11 @@ func (s *NotifyConfigUnified) SetActiveStartTime(v string) *NotifyConfigUnified 
 
 func (s *NotifyConfigUnified) SetChannels(v []*DirectNotifyChannel) *NotifyConfigUnified {
 	s.Channels = v
+	return s
+}
+
+func (s *NotifyConfigUnified) SetNotifyStrategies(v []*string) *NotifyConfigUnified {
+	s.NotifyStrategies = v
 	return s
 }
 

@@ -26,46 +26,55 @@ type iDescribeMetricMetaListRequest interface {
 }
 
 type DescribeMetricMetaListRequest struct {
+	// The keyword.
+	//
+	// example:
+	//
+	// 实例理论
 	Keywords *string `json:"keywords,omitempty" xml:"keywords,omitempty"`
-	// The labels used to filter resources. The following labels are supported:
+	// Filters resources by label. The following labels are supported:
 	//
-	// - `metricCategory`: The metric category.
+	// - metricCategory: the metric category description.
 	//
-	// - `alertEnable`: Indicates whether to enable alerts.
+	// - alertEnable: specifies whether alerting is required.
 	//
-	// - `alertUnit`: The recommended unit for alerts.
+	// - alertUnit: the recommended alert unit.
 	//
-	// - `unitFactor`: The unit conversion factor.
+	// - unitFactor: the unit conversion factor.
 	//
-	// - `minAlertPeriod`: The minimum alert period.
+	// - minAlertPeriod: the minimum alert period.
 	//
-	// - `productCategory`: The product category.
+	// - productCategory: the service type category.
 	Labels []*DescribeMetricMetaListRequestLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	// The source of the metadata. Valid values: `CMS` for CloudMonitor metrics and `PROM_BASIC` for basic Prometheus metrics.
+	// The metadata source. Valid values:
+	//
+	// - CMS: CloudMonitor Basic monitoring metrics.
+	//
+	// - PROM_BASIC: Managed Service for Prometheus monitoring metrics.
 	//
 	// example:
 	//
 	// CMS
 	MetaFormat *string `json:"metaFormat,omitempty" xml:"metaFormat,omitempty"`
-	// The name of the metric.
+	// The metric name.
 	//
 	// example:
 	//
 	// CPUUtilization
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	// The namespace of the product.
+	// The namespace, which is used to distinguish between services.
 	//
 	// example:
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The number of the page to return. Default value: `1`.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: `2000`.
+	// The number of entries per page. Default value: 2000.
 	//
 	// example:
 	//
@@ -158,13 +167,13 @@ func (s *DescribeMetricMetaListRequest) Validate() error {
 }
 
 type DescribeMetricMetaListRequestLabels struct {
-	// The key of the label.
+	// The label name.
 	//
 	// example:
 	//
 	// productCategory
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The value of the label.
+	// The label value.
 	//
 	// example:
 	//

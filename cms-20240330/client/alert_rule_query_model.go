@@ -9,6 +9,8 @@ type iAlertRuleQuery interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAggregate(v string) *AlertRuleQuery
+	GetAggregate() *string
 	SetCheckAfterDataComplete(v bool) *AlertRuleQuery
 	GetCheckAfterDataComplete() *bool
 	SetDimensions(v []map[string]*string) *AlertRuleQuery
@@ -33,6 +35,8 @@ type iAlertRuleQuery interface {
 	GetGroupType() *string
 	SetLabelFilters(v []*AlertRuleQueryLabelFilters) *AlertRuleQuery
 	GetLabelFilters() []*AlertRuleQueryLabelFilters
+	SetLogSet(v string) *AlertRuleQuery
+	GetLogSet() *string
 	SetMarkTags(v []*AlertRuleQueryMarkTags) *AlertRuleQuery
 	GetMarkTags() []*AlertRuleQueryMarkTags
 	SetMetric(v string) *AlertRuleQuery
@@ -41,6 +45,8 @@ type iAlertRuleQuery interface {
 	GetMetricSet() *string
 	SetNamespace(v string) *AlertRuleQuery
 	GetNamespace() *string
+	SetOffsetSecs(v int64) *AlertRuleQuery
+	GetOffsetSecs() *int64
 	SetQueries(v []*AlertRuleQueryQueries) *AlertRuleQuery
 	GetQueries() []*AlertRuleQueryQueries
 	SetRelationType(v string) *AlertRuleQuery
@@ -51,12 +57,15 @@ type iAlertRuleQuery interface {
 	GetServiceIds() []*string
 	SetType(v string) *AlertRuleQuery
 	GetType() *string
+	SetWindowSecs(v int64) *AlertRuleQuery
+	GetWindowSecs() *int64
 }
 
 type AlertRuleQuery struct {
+	Aggregate *string `json:"aggregate,omitempty" xml:"aggregate,omitempty"`
 	// Applicable query type: PROMQL_QUERY.
 	//
-	// Specifies whether to run the alert check only after the data is complete.
+	// Specifies whether to perform alert detection only after data is complete.
 	//
 	// example:
 	//
@@ -64,9 +73,9 @@ type AlertRuleQuery struct {
 	CheckAfterDataComplete *bool `json:"checkAfterDataComplete,omitempty" xml:"checkAfterDataComplete,omitempty"`
 	// Applicable query type: CMS_BASIC_QUERY.
 	//
-	// A list of filter dimensions for the resource.
+	// The list of filter dimensions for the resource.
 	Dimensions []map[string]*string `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
-	// The realm to which the resource belongs.
+	// The domain to which the resource belongs.
 	//
 	// example:
 	//
@@ -74,15 +83,15 @@ type AlertRuleQuery struct {
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	// Applicable query type: PROMQL_QUERY.
 	//
-	// The duration for which the alert data persists, in seconds.
+	// The duration for which alert data persists. Unit: seconds.
 	//
 	// example:
 	//
 	// 60
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// An array of entity field filters.
+	// The array of entity field filters.
 	EntityFields []*AlertRuleQueryEntityFields `json:"entityFields,omitempty" xml:"entityFields,omitempty" type:"Repeated"`
-	// A resource filter used to screen target resources.
+	// The resource filter used to filter target resources.
 	EntityFilter *AlertRuleQueryEntityFilter `json:"entityFilter,omitempty" xml:"entityFilter,omitempty" type:"Struct"`
 	// Applicable query type: PROMQL_QUERY.
 	//
@@ -94,15 +103,15 @@ type AlertRuleQuery struct {
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
 	// Applicable query type: SLS_MULTI_QUERY.
 	//
-	// The configuration for the join operation on the result sets of subquery 1 (queries[0]) and subquery 2 (queries[1]).
+	// The set join operation configuration for the results of subquery 1 (queries[0]) and subquery 2 (queries[1]).
 	FirstJoin *AlertRuleSlsQueryJoin `json:"firstJoin,omitempty" xml:"firstJoin,omitempty"`
 	// Applicable query type: SLS_MULTI_QUERY.
 	//
-	// A list of grouping field names.
+	// The list of group field names.
 	GroupFieldList []*string `json:"groupFieldList,omitempty" xml:"groupFieldList,omitempty" type:"Repeated"`
 	// Applicable query type: CMS_BASIC_QUERY.
 	//
-	// The ID of the associated application group. This parameter is valid only when relationType is set to GROUP.
+	// The ID of the associated application group. This parameter takes effect only when relationType is set to GROUP.
 	//
 	// example:
 	//
@@ -110,28 +119,29 @@ type AlertRuleQuery struct {
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
 	// Applicable query type: SLS_MULTI_QUERY.
 	//
-	// The grouping type. Valid values:
+	// The group type. Valid values:
 	//
-	// - none: No grouping.
+	// - none: no grouping.
 	//
-	// - label: Automatic grouping by tag.
+	// - label: automatic label-based grouping.
 	//
-	// - custom: Custom grouping by tag.
+	// - custom: custom label-based grouping.
 	//
 	// example:
 	//
 	// label
 	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	// An array of label filters.
+	// The array of label filters.
 	LabelFilters []*AlertRuleQueryLabelFilters `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
+	LogSet       *string                       `json:"logSet,omitempty" xml:"logSet,omitempty"`
 	MarkTags     []*AlertRuleQueryMarkTags     `json:"markTags,omitempty" xml:"markTags,omitempty" type:"Repeated"`
-	// The name of the metric.
+	// The metric name.
 	//
 	// example:
 	//
 	// memory
 	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
-	// The collection of metrics.
+	// The collection of monitoring metrics.
 	//
 	// example:
 	//
@@ -144,22 +154,23 @@ type AlertRuleQuery struct {
 	// example:
 	//
 	// acs_ecs_dashboard
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Namespace  *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	OffsetSecs *int64  `json:"offsetSecs,omitempty" xml:"offsetSecs,omitempty"`
 	// Applicable query types: SLS_MULTI_QUERY and APM_MULTI_QUERY.
 	//
-	// A list of subqueries.
+	// The list of subqueries.
 	//
-	// For the SLS_MULTI_QUERY type, you can include up to three subqueries. The number and order of subqueries must match the sub-datasource configurations in datasource.dsList.
+	// For the SLS_MULTI_QUERY query type, a maximum of three subqueries are supported. The number and order of subqueries must match the sub-datasource config in datasource.dsList.
 	Queries []*AlertRuleQueryQueries `json:"queries,omitempty" xml:"queries,omitempty" type:"Repeated"`
 	// Applicable query type: CMS_BASIC_QUERY.
 	//
-	// The resource scope for the rule query. Valid values:
+	// The resource scope of the rule query. Valid values:
 	//
-	// - USER: All resources under the user ID.
+	// - USER: all resources under the user UID.
 	//
-	// - GROUP: An application group.
+	// - GROUP: application group.
 	//
-	// - INSTANCE: A list of specified instances.
+	// - INSTANCE: specified instance list.
 	//
 	// example:
 	//
@@ -167,23 +178,23 @@ type AlertRuleQuery struct {
 	RelationType *string `json:"relationType,omitempty" xml:"relationType,omitempty"`
 	// Applicable query type: SLS_MULTI_QUERY.
 	//
-	// The configuration for the join operation on the result sets of subquery 2 (queries[2]) and subquery 3 (queries[3]).
+	// The set join operation configuration for the results of subquery 2 (queries[2]) and subquery 3 (queries[3]).
 	SecondJoin *AlertRuleSlsQueryJoin `json:"secondJoin,omitempty" xml:"secondJoin,omitempty"`
-	// A list of service IDs.
+	// The list of service IDs.
 	ServiceIds []*string `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
 	// The query type.
 	//
 	// Valid values:
 	//
-	// - PROMQL_QUERY: A PromQL query.
+	// - PROMQL_QUERY: PromQL query.
 	//
-	// - SLS_MULTI_QUERY: A Simple Log Service (SLS) query.
+	// - SLS_MULTI_QUERY: SLS query.
 	//
-	// - APM_MULTI_QUERY: An APM query.
+	// - APM_MULTI_QUERY: APM query.
 	//
-	// - CMS_BASIC_QUERY: A basic CloudMonitor query.
+	// - CMS_BASIC_QUERY: basic cloud service monitoring query.
 	//
-	// Different query types have different valid parameters in the query object. For more information, see the "Applicable query type" description for each parameter.
+	// Different query types use different valid fields in the query object. For more information, see the "Applicable query type" description of each field.
 	//
 	// The query type must match the data source type. The mappings are as follows:
 	//
@@ -193,14 +204,15 @@ type AlertRuleQuery struct {
 	//
 	// - SLS data source (SLS_MULTI_DS): SLS_MULTI_QUERY
 	//
-	// - Basic CloudMonitor data source (CMS_BASIC_DS): CMS_BASIC_QUERY
+	// - Basic cloud service monitoring data source (CMS_BASIC_DS): CMS_BASIC_QUERY
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROMQL_QUERY
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	WindowSecs *int64  `json:"windowSecs,omitempty" xml:"windowSecs,omitempty"`
 }
 
 func (s AlertRuleQuery) String() string {
@@ -209,6 +221,10 @@ func (s AlertRuleQuery) String() string {
 
 func (s AlertRuleQuery) GoString() string {
 	return s.String()
+}
+
+func (s *AlertRuleQuery) GetAggregate() *string {
+	return s.Aggregate
 }
 
 func (s *AlertRuleQuery) GetCheckAfterDataComplete() *bool {
@@ -259,6 +275,10 @@ func (s *AlertRuleQuery) GetLabelFilters() []*AlertRuleQueryLabelFilters {
 	return s.LabelFilters
 }
 
+func (s *AlertRuleQuery) GetLogSet() *string {
+	return s.LogSet
+}
+
 func (s *AlertRuleQuery) GetMarkTags() []*AlertRuleQueryMarkTags {
 	return s.MarkTags
 }
@@ -273,6 +293,10 @@ func (s *AlertRuleQuery) GetMetricSet() *string {
 
 func (s *AlertRuleQuery) GetNamespace() *string {
 	return s.Namespace
+}
+
+func (s *AlertRuleQuery) GetOffsetSecs() *int64 {
+	return s.OffsetSecs
 }
 
 func (s *AlertRuleQuery) GetQueries() []*AlertRuleQueryQueries {
@@ -293,6 +317,15 @@ func (s *AlertRuleQuery) GetServiceIds() []*string {
 
 func (s *AlertRuleQuery) GetType() *string {
 	return s.Type
+}
+
+func (s *AlertRuleQuery) GetWindowSecs() *int64 {
+	return s.WindowSecs
+}
+
+func (s *AlertRuleQuery) SetAggregate(v string) *AlertRuleQuery {
+	s.Aggregate = &v
+	return s
 }
 
 func (s *AlertRuleQuery) SetCheckAfterDataComplete(v bool) *AlertRuleQuery {
@@ -355,6 +388,11 @@ func (s *AlertRuleQuery) SetLabelFilters(v []*AlertRuleQueryLabelFilters) *Alert
 	return s
 }
 
+func (s *AlertRuleQuery) SetLogSet(v string) *AlertRuleQuery {
+	s.LogSet = &v
+	return s
+}
+
 func (s *AlertRuleQuery) SetMarkTags(v []*AlertRuleQueryMarkTags) *AlertRuleQuery {
 	s.MarkTags = v
 	return s
@@ -372,6 +410,11 @@ func (s *AlertRuleQuery) SetMetricSet(v string) *AlertRuleQuery {
 
 func (s *AlertRuleQuery) SetNamespace(v string) *AlertRuleQuery {
 	s.Namespace = &v
+	return s
+}
+
+func (s *AlertRuleQuery) SetOffsetSecs(v int64) *AlertRuleQuery {
+	s.OffsetSecs = &v
 	return s
 }
 
@@ -397,6 +440,11 @@ func (s *AlertRuleQuery) SetServiceIds(v []*string) *AlertRuleQuery {
 
 func (s *AlertRuleQuery) SetType(v string) *AlertRuleQuery {
 	s.Type = &v
+	return s
+}
+
+func (s *AlertRuleQuery) SetWindowSecs(v int64) *AlertRuleQuery {
+	s.WindowSecs = &v
 	return s
 }
 
@@ -456,13 +504,13 @@ func (s *AlertRuleQuery) Validate() error {
 }
 
 type AlertRuleQueryEntityFields struct {
-	// The name of the entity field.
+	// The entity field name.
 	//
 	// example:
 	//
 	// instanceId
 	Field *string `json:"field,omitempty" xml:"field,omitempty"`
-	// The value of the field.
+	// The field value.
 	//
 	// example:
 	//
@@ -501,13 +549,13 @@ func (s *AlertRuleQueryEntityFields) Validate() error {
 }
 
 type AlertRuleQueryEntityFilter struct {
-	// The domain of the resource type.
+	// The resource type domain.
 	//
 	// example:
 	//
 	// rum
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// A list of filter conditions to further screen resources.
+	// The list of filter conditions used to further filter resources.
 	Filters []*AlertRuleQueryEntityFilterFilters `json:"filters,omitempty" xml:"filters,omitempty" type:"Repeated"`
 	// The resource type.
 	//
@@ -578,7 +626,7 @@ type AlertRuleQueryEntityFilterFilters struct {
 	//
 	// =
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The value to match.
+	// The matched value.
 	//
 	// example:
 	//
@@ -626,7 +674,7 @@ func (s *AlertRuleQueryEntityFilterFilters) Validate() error {
 }
 
 type AlertRuleQueryLabelFilters struct {
-	// The name of the label.
+	// The label name.
 	//
 	// example:
 	//
@@ -638,7 +686,7 @@ type AlertRuleQueryLabelFilters struct {
 	//
 	// =
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The value of the label.
+	// The label value.
 	//
 	// example:
 	//
@@ -723,7 +771,7 @@ func (s *AlertRuleQueryMarkTags) Validate() error {
 type AlertRuleQueryQueries struct {
 	// Applicable query type: APM_MULTI_QUERY.
 	//
-	// The ID of the predefined Application Performance Management (APM) metric.
+	// The ID of the APM predefined metric.
 	//
 	// example:
 	//
@@ -731,15 +779,15 @@ type AlertRuleQueryQueries struct {
 	ApmAlertMetricId *string `json:"apmAlertMetricId,omitempty" xml:"apmAlertMetricId,omitempty"`
 	// Applicable query type: ARMS_MULTI_QUERY.
 	//
-	// The dimension filter configuration for the APM metric. This parameter must be used with apmAlertMetricId.
+	// The dimension filter configuration for the APM metric. Must be used together with apmAlertMetricId.
 	ApmFilters []*AlertRuleQueryQueriesApmFilters `json:"apmFilters,omitempty" xml:"apmFilters,omitempty" type:"Repeated"`
 	// Applicable query type: ARMS_MULTI_QUERY.
 	//
-	// A list of aggregation dimensions for the query. This specifies the metric dimensions to use for aggregation.
+	// The list of aggregation dimensions for the query, specifying which metric dimensions to aggregate by.
 	ApmGroupBy []*string `json:"apmGroupBy,omitempty" xml:"apmGroupBy,omitempty" type:"Repeated"`
 	// Applicable query type: ARMS_MULTI_QUERY.
 	//
-	// The duration of the alert data.
+	// The alert data duration.
 	//
 	// example:
 	//
@@ -747,33 +795,36 @@ type AlertRuleQueryQueries struct {
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
 	// Applicable query type: SLS_MULTI_QUERY.
 	//
-	// The relative end time of the time offset.
+	// The relative time offset end time.
 	//
-	// If you specify start and end, do not specify window.
+	// If start and end are specified, do not specify window.
 	//
 	// example:
 	//
 	// 0
 	End *int64 `json:"end,omitempty" xml:"end,omitempty"`
-	// Applicable query types: APM_MULTI_QUERY and SLS_MULTI_QUERY.
+	// Applicable query types: APM_MULTI_QUERY, SLS_MULTI_QUERY.
 	//
 	// The query expression.
 	//
-	// - For APM_MULTI_QUERY, this parameter is optional. It is the PromQL expression generated for a predefined metric, used for data preview.
+	// - For APM_MULTI_QUERY, this field is optional and contains the PromQL generated for predefined metrics (used for data preview).
 	//
-	// - For SLS_MULTI_QUERY, this parameter is the SQL search statement.
+	// - For SLS_MULTI_QUERY, this field contains the SQL query statement.
 	//
 	// example:
 	//
 	// sum by (rpc,acs_arms_service_id,pid,rpcType) (sum_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_parent_ppid_prpc{callKind=~\\"http|rpc|custom_entry|server|consumer\\",pid=\\"gaddp9ap8q@cb005ffdf44b8ac\\",source=\\"apm\\"}[1m]))
-	Expr   *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
-	PromQl *string `json:"promQl,omitempty" xml:"promQl,omitempty"`
+	Expr         *string                              `json:"expr,omitempty" xml:"expr,omitempty"`
+	LabelFilters []*AlertRuleQueryQueriesLabelFilters `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
+	Metric       *string                              `json:"metric,omitempty" xml:"metric,omitempty"`
+	MetricSet    *string                              `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
+	Name         *string                              `json:"name,omitempty" xml:"name,omitempty"`
+	PromQl       *string                              `json:"promQl,omitempty" xml:"promQl,omitempty"`
 	// Applicable query type: SLS_MULTI_QUERY.
 	//
-	// The relative start time of the time offset for an SLS query.
+	// The relative time offset start time for the SLS query.
 	//
-	// If you specify start and end, do not specify window. For example, if start is 15 and timeUnit is minute, the time offset starts 15 minutes ago.
+	// If start and end are specified, do not specify window. Example: start=15, timeUnit=minute indicates 15 minutes ago.
 	//
 	// example:
 	//
@@ -781,7 +832,7 @@ type AlertRuleQueryQueries struct {
 	Start *int64 `json:"start,omitempty" xml:"start,omitempty"`
 	// Applicable query type: SLS_MULTI_QUERY.
 	//
-	// The time unit for the start, end, and window parameters. Valid values: day, hour, minute, and second.
+	// The time unit for the start, end, and window parameters: day/hour/minute/second.
 	//
 	// example:
 	//
@@ -789,7 +840,7 @@ type AlertRuleQueryQueries struct {
 	TimeUnit *string `json:"timeUnit,omitempty" xml:"timeUnit,omitempty"`
 	// Applicable query type: SLS_MULTI_QUERY.
 	//
-	// The query interval for a time frame. If you specify window, do not specify start and end.
+	// The time frame query interval. If window is specified, do not specify start or end.
 	//
 	// example:
 	//
@@ -827,6 +878,18 @@ func (s *AlertRuleQueryQueries) GetEnd() *int64 {
 
 func (s *AlertRuleQueryQueries) GetExpr() *string {
 	return s.Expr
+}
+
+func (s *AlertRuleQueryQueries) GetLabelFilters() []*AlertRuleQueryQueriesLabelFilters {
+	return s.LabelFilters
+}
+
+func (s *AlertRuleQueryQueries) GetMetric() *string {
+	return s.Metric
+}
+
+func (s *AlertRuleQueryQueries) GetMetricSet() *string {
+	return s.MetricSet
 }
 
 func (s *AlertRuleQueryQueries) GetName() *string {
@@ -879,6 +942,21 @@ func (s *AlertRuleQueryQueries) SetExpr(v string) *AlertRuleQueryQueries {
 	return s
 }
 
+func (s *AlertRuleQueryQueries) SetLabelFilters(v []*AlertRuleQueryQueriesLabelFilters) *AlertRuleQueryQueries {
+	s.LabelFilters = v
+	return s
+}
+
+func (s *AlertRuleQueryQueries) SetMetric(v string) *AlertRuleQueryQueries {
+	s.Metric = &v
+	return s
+}
+
+func (s *AlertRuleQueryQueries) SetMetricSet(v string) *AlertRuleQueryQueries {
+	s.MetricSet = &v
+	return s
+}
+
 func (s *AlertRuleQueryQueries) SetName(v string) *AlertRuleQueryQueries {
 	s.Name = &v
 	return s
@@ -914,6 +992,15 @@ func (s *AlertRuleQueryQueries) Validate() error {
 			}
 		}
 	}
+	if s.LabelFilters != nil {
+		for _, item := range s.LabelFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
@@ -924,21 +1011,21 @@ type AlertRuleQueryQueriesApmFilters struct {
 	//
 	// rpcType
 	Dim *string `json:"dim,omitempty" xml:"dim,omitempty"`
-	// The filter operation type:
+	// The filter operation type. Valid values:
 	//
-	// - eq: Equal to
+	// - eq: equal to
 	//
-	// - neq: Not equal to
+	// - neq: not equal to
 	//
-	// - match: Regular expression match
+	// - match: regex match
 	//
-	// - nmatch: Regular expression non-match
+	// - nmatch: regex not match
 	//
 	// example:
 	//
 	// eq
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value that corresponds to the filter operation.
+	// The value corresponding to the filter operation.
 	//
 	// example:
 	//
@@ -982,5 +1069,50 @@ func (s *AlertRuleQueryQueriesApmFilters) SetValue(v string) *AlertRuleQueryQuer
 }
 
 func (s *AlertRuleQueryQueriesApmFilters) Validate() error {
+	return dara.Validate(s)
+}
+
+type AlertRuleQueryQueriesLabelFilters struct {
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s AlertRuleQueryQueriesLabelFilters) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AlertRuleQueryQueriesLabelFilters) GoString() string {
+	return s.String()
+}
+
+func (s *AlertRuleQueryQueriesLabelFilters) GetName() *string {
+	return s.Name
+}
+
+func (s *AlertRuleQueryQueriesLabelFilters) GetOperator() *string {
+	return s.Operator
+}
+
+func (s *AlertRuleQueryQueriesLabelFilters) GetValue() *string {
+	return s.Value
+}
+
+func (s *AlertRuleQueryQueriesLabelFilters) SetName(v string) *AlertRuleQueryQueriesLabelFilters {
+	s.Name = &v
+	return s
+}
+
+func (s *AlertRuleQueryQueriesLabelFilters) SetOperator(v string) *AlertRuleQueryQueriesLabelFilters {
+	s.Operator = &v
+	return s
+}
+
+func (s *AlertRuleQueryQueriesLabelFilters) SetValue(v string) *AlertRuleQueryQueriesLabelFilters {
+	s.Value = &v
+	return s
+}
+
+func (s *AlertRuleQueryQueriesLabelFilters) Validate() error {
 	return dara.Validate(s)
 }

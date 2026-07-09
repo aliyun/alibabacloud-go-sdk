@@ -289,7 +289,7 @@ func (client *Client) CreateAddonReleaseWithContext(ctx context.Context, policyI
 
 // Summary:
 //
-// Creates an aggregation task group.
+// Create an aggregation task group.
 //
 // @param request - CreateAggTaskGroupRequest
 //
@@ -1071,7 +1071,7 @@ func (client *Client) CreatePipelineWithContext(ctx context.Context, workspace *
 
 // Summary:
 //
-// Creates a Prometheus instance for monitoring.
+// Creates a Managed Service for Prometheus instance.
 //
 // @param request - CreatePrometheusInstanceRequest
 //
@@ -1120,6 +1120,10 @@ func (client *Client) CreatePrometheusInstanceWithContext(ctx context.Context, r
 		body["prometheusInstanceName"] = request.PrometheusInstanceName
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.Status) {
 		body["status"] = request.Status
 	}
@@ -1166,7 +1170,7 @@ func (client *Client) CreatePrometheusInstanceWithContext(ctx context.Context, r
 //
 // Description:
 //
-// 用于创建一个站点监控任务
+// Creates a site monitoring task.
 //
 // @param request - CreatePrometheusViewRequest
 //
@@ -2639,11 +2643,11 @@ func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, workspaceN
 
 // Summary:
 //
-// # Query metadata
+// Queries metric metadata.
 //
 // Description:
 //
-// Queries the details of CloudMonitor metric metadata.
+// Queries the details of CloudMonitor monitoring metrics metadata.
 //
 // @param tmpReq - DescribeMetricMetaListRequest
 //
@@ -3147,7 +3151,21 @@ func (client *Client) GetCloudResourceWithContext(ctx context.Context, headers m
 
 // Summary:
 //
-// Queries data from the Cloud Resource Center.
+// Queries all entity information of a specific cloud service within a specified time range.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation queries all entities of a specific cloud service within a specified time range.
+//
+// - The `from` and `to` parameters specify the time range of the query in seconds-level timestamps.
+//
+// - The `spl` parameter supports entityStore query statements to filter or select the required entities and their properties.
+//
+// - If you need only specific fields, use the `project` clause in `spl` to filter them.
+//
+// - The response contains the specific property values of each entity and the corresponding list of property names for easy parsing and processing.
 //
 // @param request - GetCloudResourceDataRequest
 //
@@ -3386,7 +3404,11 @@ func (client *Client) GetDatasetWithContext(ctx context.Context, workspace *stri
 
 // Summary:
 //
-// # View data delivery task details
+// Retrieves the details of a data delivery task.
+//
+// Description:
+//
+// Deletes a specified site monitoring task.
 //
 // @param request - GetDeliveryTaskRequest
 //
@@ -3532,7 +3554,7 @@ func (client *Client) GetEntityStoreDataWithContext(ctx context.Context, workspa
 
 // Summary:
 //
-// Retrieves the details of an Integration Center policy.
+// Query integration center policy information.
 //
 // @param request - GetIntegrationPolicyRequest
 //
@@ -3781,7 +3803,15 @@ func (client *Client) GetMemoryHistoryWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Query a memory store.
+// Queries a memory store.
+//
+// Description:
+//
+// Typically used together with the QueryMetricMeta operation for querying metrics and the QueryMetricList/QueryMetricLast operation for querying monitoring data.
+//
+// ## Request type
+//
+// POST|GET.
 //
 // @param request - GetMemoryStoreRequest
 //
@@ -3863,11 +3893,11 @@ func (client *Client) GetPipelineWithContext(ctx context.Context, workspace *str
 
 // Summary:
 //
-// Retrieves the details of a specific Prometheus instance.
+// Queries the details of a specified Managed Service for Prometheus instance.
 //
 // Description:
 //
-// Gets the details of a Prometheus instance.
+// Retrieves the details of a Managed Service for Prometheus instance.
 //
 // @param request - GetPrometheusInstanceRequest
 //
@@ -3965,11 +3995,11 @@ func (client *Client) GetPrometheusUserSettingWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the details of a specified Prometheus view instance.
+// Queries the details of a specified Prometheus view instance.
 //
 // Description:
 //
-// Retrieves the details of a specified Prometheus view instance.
+// Queries a specified Prometheus view instance.
 //
 // @param request - GetPrometheusViewRequest
 //
@@ -4412,7 +4442,7 @@ func (client *Client) ListAddonsWithContext(ctx context.Context, request *ListAd
 
 // Summary:
 //
-// Queries a list of aggregation task groups.
+// Queries the list of aggregation task groups.
 //
 // @param tmpReq - ListAggTaskGroupsRequest
 //
@@ -4562,7 +4592,7 @@ func (client *Client) ListAlertActionsWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// Queries a list of alert webhooks.
+// Queries alert chatbots.
 //
 // @param tmpReq - ListAlertRobotsRequest
 //
@@ -5151,11 +5181,11 @@ func (client *Client) ListDeliveryTasksWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Queries a list of policies in the Integration Center.
+// Queries the list of access center policies.
 //
 // Description:
 //
-// Queries a list of integrations.
+// Queries the integration list.
 //
 // @param tmpReq - ListIntegrationPoliciesRequest
 //
@@ -5704,7 +5734,7 @@ func (client *Client) ListMemoryStoresWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Queries a list of pipelines in a workspace.
+// Lists pipelines.
 //
 // @param request - ListPipelinesRequest
 //
@@ -5814,11 +5844,11 @@ func (client *Client) ListPrometheusDashboardsWithContext(ctx context.Context, p
 
 // Summary:
 //
-// Lists Prometheus instances.
+// Retrieves a list of Managed Service for Prometheus instances.
 //
 // Description:
 //
-// Lists Prometheus instances.
+// Retrieves a list of Managed Service for Prometheus instances.
 //
 // @param tmpReq - ListPrometheusInstancesRequest
 //
@@ -5907,11 +5937,11 @@ func (client *Client) ListPrometheusInstancesWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Lists the Prometheus view instances.
+// Queries the list of Prometheus view instances.
 //
 // Description:
 //
-// Lists the Prometheus view instances.
+// Queries the list of Prometheus view instances.
 //
 // @param tmpReq - ListPrometheusViewsRequest
 //
@@ -6327,7 +6357,7 @@ func (client *Client) ManageAlertRulesWithContext(ctx context.Context, tmpReq *M
 
 // Summary:
 //
-// This operation enables monitoring services, including CloudMonitor Enterprise, Managed Service for Prometheus, and Log Service.
+// Activates CloudMonitor services, including Hybrid Cloud Monitoring, Managed Service for Prometheus, and Simple Log Service (SLS).
 //
 // @param request - OpenCmsServiceRequest
 //
@@ -6423,11 +6453,11 @@ func (client *Client) PutWorkspaceWithContext(ctx context.Context, workspaceName
 
 // Summary:
 //
-// Retrieves a list of alert rules.
+// Queries alert rules.
 //
 // Description:
 //
-// This topic provides an example of how to retrieve a list of alert rules. In this example, a successful response returns two alert rules: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example on how to query a list of alert templates. The response shows that the alert template list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param tmpReq - QueryAlertRulesRequest
 //
@@ -6561,7 +6591,13 @@ func (client *Client) SearchContextWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
-// Search memories using query conditions and filters.
+// Searches for memories based on query conditions and filters.
+//
+// Description:
+//
+// This topic provides an example on how to create a threshold alert rule for the cpu_total metric of the Elastic Computing Service `acs_ecs_dashboard` instance `i-uf6j91r34rnwawoo****`. The alert contact group of the alert rule is `ECS_Group`, the alert rule name is `test123`, the alert rule ID is `a151cd6023eacee2f0978e03863cc1697c89508****`, the statistical method for the Critical level is `Average`, the comparison operator for the Critical level is `GreaterThanOrEqualToThreshold`, the threshold for the Critical level is `90`, and the retry count for the Critical level is `3`.
+//
+// > 2024-08-15: Statistics validation is added. Only the Statistics value that corresponds to the metric can be specified. For information about how to obtain the value of this parameter, see [Cloud service monitoring metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
 //
 // @param request - SearchMemoriesRequest
 //
@@ -7174,7 +7210,13 @@ func (client *Client) UpdateContextWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
-// Updates the configuration of a context store.
+// Modifies the configuration of a context store.
+//
+// Description:
+//
+// Only Alibaba Cloud accounts that have activated Network Analysis and Monitoring can create one-time detection tasks.
+//
+// This topic provides an example of how to create a one-time detection task. The detection task is named `task1`, the detection address is `http://www.aliyun.com`, the detection type is `HTTP`, and the number of detection points is `1`.
 //
 // @param request - UpdateContextStoreRequest
 //
@@ -7280,7 +7322,11 @@ func (client *Client) UpdateDatasetWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
-// Updates a delivery task. This operation uses PATCH semantics, meaning unspecified fields in the request body remain unchanged.
+// Updates a data delivery task. The update uses patch semantics: fields that are not specified remain unchanged.
+//
+// Description:
+//
+// Deletes a specified site monitoring task.
 //
 // @param request - UpdateDeliveryTaskRequest
 //
@@ -7639,11 +7685,11 @@ func (client *Client) UpdatePipelineWithContext(ctx context.Context, workspace *
 
 // Summary:
 //
-// Updates the information of a Prometheus instance.
+// Updates the information of a Managed Service for Prometheus instance.
 //
 // Description:
 //
-// This topic describes how to update a Prometheus instance.
+// Updates the information of a Managed Service for Prometheus instance.
 //
 // @param request - UpdatePrometheusInstanceRequest
 //

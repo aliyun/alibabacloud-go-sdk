@@ -15,6 +15,10 @@ type iApmCompositeCompareConfig interface {
 	GetOperator() *string
 	SetThreshold(v float32) *ApmCompositeCompareConfig
 	GetThreshold() *float32
+	SetYoyTimeUnit(v string) *ApmCompositeCompareConfig
+	GetYoyTimeUnit() *string
+	SetYoyTimeValue(v int32) *ApmCompositeCompareConfig
+	GetYoyTimeValue() *int32
 }
 
 type ApmCompositeCompareConfig struct {
@@ -30,6 +34,10 @@ type ApmCompositeCompareConfig struct {
 	//
 	// This parameter is required.
 	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	// The time unit for the year-over-year (YoY) comparison. Use this parameter with `yoyTimeValue` to define the comparison period. Valid values are `day` and `week`.
+	YoyTimeUnit *string `json:"yoyTimeUnit,omitempty" xml:"yoyTimeUnit,omitempty"`
+	// The time value for the YoY comparison. For example, if `yoyTimeUnit` is `day` and `yoyTimeValue` is `7`, the system compares current data with data from 7 days ago.
+	YoyTimeValue *int32 `json:"yoyTimeValue,omitempty" xml:"yoyTimeValue,omitempty"`
 }
 
 func (s ApmCompositeCompareConfig) String() string {
@@ -52,6 +60,14 @@ func (s *ApmCompositeCompareConfig) GetThreshold() *float32 {
 	return s.Threshold
 }
 
+func (s *ApmCompositeCompareConfig) GetYoyTimeUnit() *string {
+	return s.YoyTimeUnit
+}
+
+func (s *ApmCompositeCompareConfig) GetYoyTimeValue() *int32 {
+	return s.YoyTimeValue
+}
+
 func (s *ApmCompositeCompareConfig) SetAggregate(v string) *ApmCompositeCompareConfig {
 	s.Aggregate = &v
 	return s
@@ -64,6 +80,16 @@ func (s *ApmCompositeCompareConfig) SetOperator(v string) *ApmCompositeCompareCo
 
 func (s *ApmCompositeCompareConfig) SetThreshold(v float32) *ApmCompositeCompareConfig {
 	s.Threshold = &v
+	return s
+}
+
+func (s *ApmCompositeCompareConfig) SetYoyTimeUnit(v string) *ApmCompositeCompareConfig {
+	s.YoyTimeUnit = &v
+	return s
+}
+
+func (s *ApmCompositeCompareConfig) SetYoyTimeValue(v int32) *ApmCompositeCompareConfig {
+	s.YoyTimeValue = &v
 	return s
 }
 

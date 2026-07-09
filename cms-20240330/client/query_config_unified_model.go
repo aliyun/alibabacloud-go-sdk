@@ -9,6 +9,10 @@ type iQueryConfigUnified interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAggregate(v string) *QueryConfigUnified
+	GetAggregate() *string
+	SetDimensions(v []map[string]*string) *QueryConfigUnified
+	GetDimensions() []map[string]*string
 	SetEnableDataCompleteCheck(v bool) *QueryConfigUnified
 	GetEnableDataCompleteCheck() *bool
 	SetEntityDomain(v string) *QueryConfigUnified
@@ -23,53 +27,68 @@ type iQueryConfigUnified interface {
 	GetExpr() *string
 	SetFilterList(v []*ApmFilterConfig) *QueryConfigUnified
 	GetFilterList() []*ApmFilterConfig
+	SetGroupId(v string) *QueryConfigUnified
+	GetGroupId() *string
 	SetLabelFilters(v []*UmodelLabelFilter) *QueryConfigUnified
 	GetLabelFilters() []*UmodelLabelFilter
+	SetLegacyRaw(v string) *QueryConfigUnified
+	GetLegacyRaw() *string
+	SetLegacyType(v string) *QueryConfigUnified
+	GetLegacyType() *string
+	SetLogSet(v string) *QueryConfigUnified
+	GetLogSet() *string
 	SetMeasureList(v []*ApmMeasureConfig) *QueryConfigUnified
 	GetMeasureList() []*ApmMeasureConfig
 	SetMetric(v string) *QueryConfigUnified
 	GetMetric() *string
 	SetMetricSet(v string) *QueryConfigUnified
 	GetMetricSet() *string
+	SetNamespace(v string) *QueryConfigUnified
+	GetNamespace() *string
+	SetOffsetSecs(v int64) *QueryConfigUnified
+	GetOffsetSecs() *int64
 	SetPromQl(v string) *QueryConfigUnified
 	GetPromQl() *string
+	SetQueries(v []*MetricSetNamedQueryEntry) *QueryConfigUnified
+	GetQueries() []*MetricSetNamedQueryEntry
+	SetRelationType(v string) *QueryConfigUnified
+	GetRelationType() *string
 	SetServiceIdList(v []*string) *QueryConfigUnified
 	GetServiceIdList() []*string
 	SetType(v string) *QueryConfigUnified
 	GetType() *string
+	SetWindowSecs(v int64) *QueryConfigUnified
+	GetWindowSecs() *int64
 }
 
 type QueryConfigUnified struct {
-	// Specifies whether to check for data completeness. A value of `true` enables the check.
-	EnableDataCompleteCheck *bool `json:"enableDataCompleteCheck,omitempty" xml:"enableDataCompleteCheck,omitempty"`
-	// Specifies the domain of the entity, such as `acs` for Alibaba Cloud services.
-	EntityDomain *string `json:"entityDomain,omitempty" xml:"entityDomain,omitempty"`
-	// A list of entity fields to include in the response.
-	EntityFields []*UmodelEntityField `json:"entityFields,omitempty" xml:"entityFields,omitempty" type:"Repeated"`
-	// A list of filters for selecting specific entities.
-	EntityFilters []*UmodelEntityFilter `json:"entityFilters,omitempty" xml:"entityFilters,omitempty" type:"Repeated"`
-	// Specifies the type of the entity, such as `EcsInstance`.
-	EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
-	// Specifies the expression to post-process query results.
-	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// A list of Application Performance Monitoring (APM) filter configurations.
-	FilterList []*ApmFilterConfig `json:"filterList,omitempty" xml:"filterList,omitempty" type:"Repeated"`
-	// A list of filters that match labels.
-	LabelFilters []*UmodelLabelFilter `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
-	// A list of APM measure configurations.
-	MeasureList []*ApmMeasureConfig `json:"measureList,omitempty" xml:"measureList,omitempty" type:"Repeated"`
-	// Specifies the name of the metric to query.
-	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
-	// Specifies the metric set that contains the metric.
-	MetricSet *string `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
-	// Specifies the query string in Prometheus Query Language (PromQL).
-	PromQl *string `json:"promQl,omitempty" xml:"promQl,omitempty"`
-	// A list of service IDs to query.
-	ServiceIdList []*string `json:"serviceIdList,omitempty" xml:"serviceIdList,omitempty" type:"Repeated"`
-	// The query type.
-	//
+	Aggregate               *string               `json:"aggregate,omitempty" xml:"aggregate,omitempty"`
+	Dimensions              []map[string]*string  `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
+	EnableDataCompleteCheck *bool                 `json:"enableDataCompleteCheck,omitempty" xml:"enableDataCompleteCheck,omitempty"`
+	EntityDomain            *string               `json:"entityDomain,omitempty" xml:"entityDomain,omitempty"`
+	EntityFields            []*UmodelEntityField  `json:"entityFields,omitempty" xml:"entityFields,omitempty" type:"Repeated"`
+	EntityFilters           []*UmodelEntityFilter `json:"entityFilters,omitempty" xml:"entityFilters,omitempty" type:"Repeated"`
+	EntityType              *string               `json:"entityType,omitempty" xml:"entityType,omitempty"`
+	Expr                    *string               `json:"expr,omitempty" xml:"expr,omitempty"`
+	FilterList              []*ApmFilterConfig    `json:"filterList,omitempty" xml:"filterList,omitempty" type:"Repeated"`
+	GroupId                 *string               `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	LabelFilters            []*UmodelLabelFilter  `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`
+	LegacyRaw               *string               `json:"legacyRaw,omitempty" xml:"legacyRaw,omitempty"`
+	LegacyType              *string               `json:"legacyType,omitempty" xml:"legacyType,omitempty"`
+	LogSet                  *string               `json:"logSet,omitempty" xml:"logSet,omitempty"`
+	MeasureList             []*ApmMeasureConfig   `json:"measureList,omitempty" xml:"measureList,omitempty" type:"Repeated"`
+	Metric                  *string               `json:"metric,omitempty" xml:"metric,omitempty"`
+	MetricSet               *string               `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
+	Namespace               *string               `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	OffsetSecs              *int64                `json:"offsetSecs,omitempty" xml:"offsetSecs,omitempty"`
+	// Deprecated
+	PromQl        *string                     `json:"promQl,omitempty" xml:"promQl,omitempty"`
+	Queries       []*MetricSetNamedQueryEntry `json:"queries,omitempty" xml:"queries,omitempty" type:"Repeated"`
+	RelationType  *string                     `json:"relationType,omitempty" xml:"relationType,omitempty"`
+	ServiceIdList []*string                   `json:"serviceIdList,omitempty" xml:"serviceIdList,omitempty" type:"Repeated"`
 	// This parameter is required.
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	WindowSecs *int64  `json:"windowSecs,omitempty" xml:"windowSecs,omitempty"`
 }
 
 func (s QueryConfigUnified) String() string {
@@ -78,6 +97,14 @@ func (s QueryConfigUnified) String() string {
 
 func (s QueryConfigUnified) GoString() string {
 	return s.String()
+}
+
+func (s *QueryConfigUnified) GetAggregate() *string {
+	return s.Aggregate
+}
+
+func (s *QueryConfigUnified) GetDimensions() []map[string]*string {
+	return s.Dimensions
 }
 
 func (s *QueryConfigUnified) GetEnableDataCompleteCheck() *bool {
@@ -108,8 +135,24 @@ func (s *QueryConfigUnified) GetFilterList() []*ApmFilterConfig {
 	return s.FilterList
 }
 
+func (s *QueryConfigUnified) GetGroupId() *string {
+	return s.GroupId
+}
+
 func (s *QueryConfigUnified) GetLabelFilters() []*UmodelLabelFilter {
 	return s.LabelFilters
+}
+
+func (s *QueryConfigUnified) GetLegacyRaw() *string {
+	return s.LegacyRaw
+}
+
+func (s *QueryConfigUnified) GetLegacyType() *string {
+	return s.LegacyType
+}
+
+func (s *QueryConfigUnified) GetLogSet() *string {
+	return s.LogSet
 }
 
 func (s *QueryConfigUnified) GetMeasureList() []*ApmMeasureConfig {
@@ -124,8 +167,24 @@ func (s *QueryConfigUnified) GetMetricSet() *string {
 	return s.MetricSet
 }
 
+func (s *QueryConfigUnified) GetNamespace() *string {
+	return s.Namespace
+}
+
+func (s *QueryConfigUnified) GetOffsetSecs() *int64 {
+	return s.OffsetSecs
+}
+
 func (s *QueryConfigUnified) GetPromQl() *string {
 	return s.PromQl
+}
+
+func (s *QueryConfigUnified) GetQueries() []*MetricSetNamedQueryEntry {
+	return s.Queries
+}
+
+func (s *QueryConfigUnified) GetRelationType() *string {
+	return s.RelationType
 }
 
 func (s *QueryConfigUnified) GetServiceIdList() []*string {
@@ -134,6 +193,20 @@ func (s *QueryConfigUnified) GetServiceIdList() []*string {
 
 func (s *QueryConfigUnified) GetType() *string {
 	return s.Type
+}
+
+func (s *QueryConfigUnified) GetWindowSecs() *int64 {
+	return s.WindowSecs
+}
+
+func (s *QueryConfigUnified) SetAggregate(v string) *QueryConfigUnified {
+	s.Aggregate = &v
+	return s
+}
+
+func (s *QueryConfigUnified) SetDimensions(v []map[string]*string) *QueryConfigUnified {
+	s.Dimensions = v
+	return s
 }
 
 func (s *QueryConfigUnified) SetEnableDataCompleteCheck(v bool) *QueryConfigUnified {
@@ -171,8 +244,28 @@ func (s *QueryConfigUnified) SetFilterList(v []*ApmFilterConfig) *QueryConfigUni
 	return s
 }
 
+func (s *QueryConfigUnified) SetGroupId(v string) *QueryConfigUnified {
+	s.GroupId = &v
+	return s
+}
+
 func (s *QueryConfigUnified) SetLabelFilters(v []*UmodelLabelFilter) *QueryConfigUnified {
 	s.LabelFilters = v
+	return s
+}
+
+func (s *QueryConfigUnified) SetLegacyRaw(v string) *QueryConfigUnified {
+	s.LegacyRaw = &v
+	return s
+}
+
+func (s *QueryConfigUnified) SetLegacyType(v string) *QueryConfigUnified {
+	s.LegacyType = &v
+	return s
+}
+
+func (s *QueryConfigUnified) SetLogSet(v string) *QueryConfigUnified {
+	s.LogSet = &v
 	return s
 }
 
@@ -191,8 +284,28 @@ func (s *QueryConfigUnified) SetMetricSet(v string) *QueryConfigUnified {
 	return s
 }
 
+func (s *QueryConfigUnified) SetNamespace(v string) *QueryConfigUnified {
+	s.Namespace = &v
+	return s
+}
+
+func (s *QueryConfigUnified) SetOffsetSecs(v int64) *QueryConfigUnified {
+	s.OffsetSecs = &v
+	return s
+}
+
 func (s *QueryConfigUnified) SetPromQl(v string) *QueryConfigUnified {
 	s.PromQl = &v
+	return s
+}
+
+func (s *QueryConfigUnified) SetQueries(v []*MetricSetNamedQueryEntry) *QueryConfigUnified {
+	s.Queries = v
+	return s
+}
+
+func (s *QueryConfigUnified) SetRelationType(v string) *QueryConfigUnified {
+	s.RelationType = &v
 	return s
 }
 
@@ -203,6 +316,11 @@ func (s *QueryConfigUnified) SetServiceIdList(v []*string) *QueryConfigUnified {
 
 func (s *QueryConfigUnified) SetType(v string) *QueryConfigUnified {
 	s.Type = &v
+	return s
+}
+
+func (s *QueryConfigUnified) SetWindowSecs(v int64) *QueryConfigUnified {
+	s.WindowSecs = &v
 	return s
 }
 
@@ -245,6 +363,15 @@ func (s *QueryConfigUnified) Validate() error {
 	}
 	if s.MeasureList != nil {
 		for _, item := range s.MeasureList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Queries != nil {
+		for _, item := range s.Queries {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err

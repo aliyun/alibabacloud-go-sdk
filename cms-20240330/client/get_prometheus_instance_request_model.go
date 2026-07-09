@@ -16,13 +16,13 @@ type iGetPrometheusInstanceRequest interface {
 }
 
 type GetPrometheusInstanceRequest struct {
-	// The language of the response. Valid values: `zh` (Chinese) and `en` (English). Default value: `zh`.
+	// The language. Default value: zh. Valid values: zh, en.
 	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type iListPrometheusInstancesRequest interface {
 }
 
 type ListPrometheusInstancesRequest struct {
-	// A list of region IDs to filter by, separated by commas.
+	// The region IDs for filtering, separated by commas.
 	//
 	// if can be null:
 	// true
@@ -59,7 +59,7 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// A list of instance IDs, separated by commas.
+	// The instance IDs, separated by commas.
 	//
 	// if can be null:
 	// true
@@ -68,7 +68,7 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// rw-00001,rw-00002,rw-00003
 	PrometheusInstanceIds *string `json:"prometheusInstanceIds,omitempty" xml:"prometheusInstanceIds,omitempty"`
-	// The instance name. Partial match is supported.
+	// The instance name. Fuzzy match is supported.
 	//
 	// if can be null:
 	// true
@@ -92,9 +92,13 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// Prometheus
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The list of tags.
+	// The tags.
 	Tag []*ListPrometheusInstancesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The instance version. Valid values: V1 and V2.
+	// The instance version. Valid values:
+	//
+	// - V1: V1 version.
+	//
+	// - V2: V2 version.
 	//
 	// if can be null:
 	// true
@@ -103,8 +107,14 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// V2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The workspace to which the instance belongs.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// workspace-test
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

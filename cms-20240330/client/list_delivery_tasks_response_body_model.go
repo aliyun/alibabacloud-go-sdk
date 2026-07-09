@@ -22,21 +22,21 @@ type iListDeliveryTasksResponseBody interface {
 }
 
 type ListDeliveryTasksResponseBody struct {
-	// A list of delivery tasks.
+	// The list of delivery tasks.
 	DeliveryTasks []*ListDeliveryTasksResponseBodyDeliveryTasks `json:"deliveryTasks,omitempty" xml:"deliveryTasks,omitempty" type:"Repeated"`
-	// The maximum number of results to return. The maximum value is 100.
+	// The maximum number of entries returned. Maximum value: 100.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token used to retrieve the next page of results. If this parameter is not returned, no more results are available.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
 	// 2-ba4d-4b9f-aa24-dcb067a30f1c
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The unique ID for the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListDeliveryTasksResponseBody) Validate() error {
 }
 
 type ListDeliveryTasksResponseBodyDeliveryTasks struct {
-	// The time when the delivery task was created.
+	// The time when the task was created.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -125,53 +125,53 @@ type ListDeliveryTasksResponseBodyDeliveryTasks struct {
 	//
 	// 2026-01-22T09:02:01Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the Prometheus instance that serves as the data source.
+	// The data source ID (Prometheus instance ID).
 	//
 	// example:
 	//
 	// rw-5f2b4c7e66342s
 	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
-	// A key-value map of additional labels to attach to all delivered metrics.
+	// The additional labels attached to all delivered metrics. The key is the label name and the value is the label value.
 	ExternalLabels map[string]*string `json:"externalLabels,omitempty" xml:"externalLabels,omitempty"`
-	// Additional information.
+	// The extended information.
 	ExtraInfo *ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo `json:"extraInfo,omitempty" xml:"extraInfo,omitempty" type:"Struct"`
-	// A key-value map of metric label filters. These filters are used with `labelFiltersType` to determine which metrics to deliver.
+	// The metric filter conditions. Used together with labelFiltersType. The key is the metric label name and the value is the match value.
 	LabelFilters map[string]*string `json:"labelFilters,omitempty" xml:"labelFilters,omitempty"`
-	// The filtering mode for metric labels.
+	// The metric filtering mode.
 	//
 	// example:
 	//
 	// Allow
 	LabelFiltersType *string `json:"labelFiltersType,omitempty" xml:"labelFiltersType,omitempty"`
-	// The ID of the resource group to which the task belongs.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// A list of sinks.
+	// The list of delivery targets. Multiple sinks can be configured.
 	SinkList []*ListDeliveryTasksResponseBodyDeliveryTasksSinkList `json:"sinkList,omitempty" xml:"sinkList,omitempty" type:"Repeated"`
-	// The current status of the delivery task.
+	// The current status of the task.
 	//
 	// example:
 	//
 	// Enable
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The resource tags attached to the task.
+	// The tags.
 	Tags []*ListDeliveryTasksResponseBodyDeliveryTasksTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The description of the delivery task.
+	// The task description.
 	//
 	// example:
 	//
 	// my delivery task
 	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
-	// The ID of the delivery task.
+	// The task ID.
 	//
 	// example:
 	//
 	// db21f8a126d96953
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The name of the delivery task.
+	// The task name.
 	//
 	// example:
 	//
@@ -349,7 +349,7 @@ func (s *ListDeliveryTasksResponseBodyDeliveryTasks) Validate() error {
 }
 
 type ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo struct {
-	// A list of EventBridge tasks.
+	// The list of EventBridge tasks.
 	TaskNameList []*string `json:"taskNameList,omitempty" xml:"taskNameList,omitempty" type:"Repeated"`
 }
 
@@ -375,9 +375,9 @@ func (s *ListDeliveryTasksResponseBodyDeliveryTasksExtraInfo) Validate() error {
 }
 
 type ListDeliveryTasksResponseBodyDeliveryTasksSinkList struct {
-	// Detailed configuration for the sink. The available key-value pairs depend on the specified `sinkType`.
+	// The detailed configuration of the delivery target. The meanings of the key/value pairs vary depending on the sinkType.
 	SinkConfigs map[string]*string `json:"sinkConfigs,omitempty" xml:"sinkConfigs,omitempty"`
-	// The type of the sink.
+	// The type of the delivery target.
 	//
 	// example:
 	//
@@ -416,13 +416,13 @@ func (s *ListDeliveryTasksResponseBodyDeliveryTasksSinkList) Validate() error {
 }
 
 type ListDeliveryTasksResponseBodyDeliveryTasksTags struct {
-	// The key of the resource tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the resource tag.
+	// The tag value.
 	//
 	// example:
 	//

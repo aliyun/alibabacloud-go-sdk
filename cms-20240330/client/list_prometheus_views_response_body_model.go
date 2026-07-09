@@ -22,7 +22,7 @@ type iListPrometheusViewsResponseBody interface {
 }
 
 type ListPrometheusViewsResponseBody struct {
-	// The maximum number of records returned.
+	// The maximum number of records to return.
 	//
 	// if can be null:
 	// true
@@ -39,7 +39,7 @@ type ListPrometheusViewsResponseBody struct {
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The list of Prometheus view instances.
 	PrometheusViews []*ListPrometheusViewsResponseBodyPrometheusViews `json:"prometheusViews,omitempty" xml:"prometheusViews,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -120,31 +120,35 @@ func (s *ListPrometheusViewsResponseBody) Validate() error {
 }
 
 type ListPrometheusViewsResponseBodyPrometheusViews struct {
-	// The time when the instance was created. The time is in UTC and in the \\`yyyy-MM-ddTHH:mmZ\\` format.
+	// The instance creation time in UTC+0, in the format of yyyy-MM-ddTHH:mmZ.
 	//
 	// example:
 	//
 	// 2025-07-12T02:18:36Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The instance type. Valid values are \\`prom-view\\` for a new-version aggregation view and \\`global-view\\` for an old-version aggregation view.
+	// The instance type:
+	//
+	// prom-view: aggregated view of the new version.
+	//
+	// global-view: aggregated view of the legacy version.
 	//
 	// example:
 	//
 	// prom-view
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The billing method. The value is fixed to \\`FREE\\`.
+	// The billing type. Currently, the fixed value is FREE.
 	//
 	// example:
 	//
 	// FREE
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The product to which the Prometheus instance belongs. Valid values: \\`arms\\` and \\`cms\\`.
+	// The product to which the Prometheus instance belongs (arms or cms).
 	//
 	// example:
 	//
 	// cms
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
-	// The number of Prometheus instances in the view.
+	// The number of Prometheus instances included in the view.
 	//
 	// example:
 	//
@@ -156,7 +160,7 @@ type ListPrometheusViewsResponseBodyPrometheusViews struct {
 	//
 	// view-xxx
 	PrometheusViewId *string `json:"prometheusViewId,omitempty" xml:"prometheusViewId,omitempty"`
-	// The name of the Prometheus view.
+	// The Prometheus view name.
 	//
 	// example:
 	//
@@ -168,13 +172,19 @@ type ListPrometheusViewsResponseBodyPrometheusViews struct {
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The resource type. The value is fixed to \\`PrometheusView\\`.
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfm3gn5i6bigbi
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The fixed value: PrometheusView.
 	//
 	// example:
 	//
 	// PrometheusView
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The status of the backend data storage.
+	// The backend data storage status.
 	//
 	// example:
 	//
@@ -240,6 +250,10 @@ func (s *ListPrometheusViewsResponseBodyPrometheusViews) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ListPrometheusViewsResponseBodyPrometheusViews) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListPrometheusViewsResponseBodyPrometheusViews) GetResourceType() *string {
 	return s.ResourceType
 }
@@ -297,6 +311,11 @@ func (s *ListPrometheusViewsResponseBodyPrometheusViews) SetPrometheusViewName(v
 
 func (s *ListPrometheusViewsResponseBodyPrometheusViews) SetRegionId(v string) *ListPrometheusViewsResponseBodyPrometheusViews {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListPrometheusViewsResponseBodyPrometheusViews) SetResourceGroupId(v string) *ListPrometheusViewsResponseBodyPrometheusViews {
+	s.ResourceGroupId = &v
 	return s
 }
 

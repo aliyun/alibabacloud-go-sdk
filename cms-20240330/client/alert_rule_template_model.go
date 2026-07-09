@@ -13,6 +13,10 @@ type iAlertRuleTemplate interface {
 	GetAlertType() *string
 	SetApplyCount(v int64) *AlertRuleTemplate
 	GetApplyCount() *int64
+	SetBizType(v string) *AlertRuleTemplate
+	GetBizType() *string
+	SetDatasource(v string) *AlertRuleTemplate
+	GetDatasource() *string
 	SetDescription(v string) *AlertRuleTemplate
 	GetDescription() *string
 	SetGmtCreate(v int64) *AlertRuleTemplate
@@ -27,6 +31,12 @@ type iAlertRuleTemplate interface {
 	GetLabels() *string
 	SetRuleConfigs(v string) *AlertRuleTemplate
 	GetRuleConfigs() *string
+	SetScenes(v string) *AlertRuleTemplate
+	GetScenes() *string
+	SetSchemaVersion(v string) *AlertRuleTemplate
+	GetSchemaVersion() *string
+	SetSourceType(v string) *AlertRuleTemplate
+	GetSourceType() *string
 	SetStatus(v int32) *AlertRuleTemplate
 	GetStatus() *int32
 	SetSubType(v string) *AlertRuleTemplate
@@ -40,34 +50,25 @@ type iAlertRuleTemplate interface {
 }
 
 type AlertRuleTemplate struct {
-	// The type of the alert.
-	AlertType *string `json:"alertType,omitempty" xml:"alertType,omitempty"`
-	// The number of alert rules created from this template.
-	ApplyCount *int64 `json:"applyCount,omitempty" xml:"applyCount,omitempty"`
-	// The description of the template.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The creation time of the template, as a UNIX timestamp.
-	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The time the template was last modified, as a UNIX timestamp.
-	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The ID of the alert rule template.
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Indicates whether the template is system-defined. Valid values: `0` (user-defined) and `1` (system-defined).
-	IsSystem *int32 `json:"isSystem,omitempty" xml:"isSystem,omitempty"`
-	// The labels associated with the template, formatted as a JSON string.
-	Labels *string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The rule configuration, formatted as a JSON string.
-	RuleConfigs *string `json:"ruleConfigs,omitempty" xml:"ruleConfigs,omitempty"`
-	// The status of the template.
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// The subtype of the alert.
-	SubType *string `json:"subType,omitempty" xml:"subType,omitempty"`
-	// The name of the alert rule template.
-	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
-	// The ID of the user who owns the template.
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The universally unique identifier (UUID) of the template.
-	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	AlertType     *string `json:"alertType,omitempty" xml:"alertType,omitempty"`
+	ApplyCount    *int64  `json:"applyCount,omitempty" xml:"applyCount,omitempty"`
+	BizType       *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	Datasource    *string `json:"datasource,omitempty" xml:"datasource,omitempty"`
+	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreate     *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified   *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	Id            *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	IsSystem      *int32  `json:"isSystem,omitempty" xml:"isSystem,omitempty"`
+	Labels        *string `json:"labels,omitempty" xml:"labels,omitempty"`
+	RuleConfigs   *string `json:"ruleConfigs,omitempty" xml:"ruleConfigs,omitempty"`
+	Scenes        *string `json:"scenes,omitempty" xml:"scenes,omitempty"`
+	SchemaVersion *string `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
+	SourceType    *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	Status        *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	SubType       *string `json:"subType,omitempty" xml:"subType,omitempty"`
+	TemplateName  *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
+	UserId        *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	Uuid          *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
 func (s AlertRuleTemplate) String() string {
@@ -84,6 +85,14 @@ func (s *AlertRuleTemplate) GetAlertType() *string {
 
 func (s *AlertRuleTemplate) GetApplyCount() *int64 {
 	return s.ApplyCount
+}
+
+func (s *AlertRuleTemplate) GetBizType() *string {
+	return s.BizType
+}
+
+func (s *AlertRuleTemplate) GetDatasource() *string {
+	return s.Datasource
 }
 
 func (s *AlertRuleTemplate) GetDescription() *string {
@@ -114,6 +123,18 @@ func (s *AlertRuleTemplate) GetRuleConfigs() *string {
 	return s.RuleConfigs
 }
 
+func (s *AlertRuleTemplate) GetScenes() *string {
+	return s.Scenes
+}
+
+func (s *AlertRuleTemplate) GetSchemaVersion() *string {
+	return s.SchemaVersion
+}
+
+func (s *AlertRuleTemplate) GetSourceType() *string {
+	return s.SourceType
+}
+
 func (s *AlertRuleTemplate) GetStatus() *int32 {
 	return s.Status
 }
@@ -141,6 +162,16 @@ func (s *AlertRuleTemplate) SetAlertType(v string) *AlertRuleTemplate {
 
 func (s *AlertRuleTemplate) SetApplyCount(v int64) *AlertRuleTemplate {
 	s.ApplyCount = &v
+	return s
+}
+
+func (s *AlertRuleTemplate) SetBizType(v string) *AlertRuleTemplate {
+	s.BizType = &v
+	return s
+}
+
+func (s *AlertRuleTemplate) SetDatasource(v string) *AlertRuleTemplate {
+	s.Datasource = &v
 	return s
 }
 
@@ -176,6 +207,21 @@ func (s *AlertRuleTemplate) SetLabels(v string) *AlertRuleTemplate {
 
 func (s *AlertRuleTemplate) SetRuleConfigs(v string) *AlertRuleTemplate {
 	s.RuleConfigs = &v
+	return s
+}
+
+func (s *AlertRuleTemplate) SetScenes(v string) *AlertRuleTemplate {
+	s.Scenes = &v
+	return s
+}
+
+func (s *AlertRuleTemplate) SetSchemaVersion(v string) *AlertRuleTemplate {
+	s.SchemaVersion = &v
+	return s
+}
+
+func (s *AlertRuleTemplate) SetSourceType(v string) *AlertRuleTemplate {
+	s.SourceType = &v
 	return s
 }
 

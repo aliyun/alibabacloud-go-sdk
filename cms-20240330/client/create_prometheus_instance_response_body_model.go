@@ -22,7 +22,7 @@ type CreatePrometheusInstanceResponseBody struct {
 	//
 	// rw-abc123
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

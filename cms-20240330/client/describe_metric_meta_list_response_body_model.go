@@ -22,25 +22,25 @@ type iDescribeMetricMetaListResponseBody interface {
 }
 
 type DescribeMetricMetaListResponseBody struct {
-	// The page number. The default value is `1`.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 2000
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The configurations of the metrics in the resource.
+	// The metric configuration information of the resources.
 	Resources []*DescribeMetricMetaListResponseBodyResources `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -123,13 +123,31 @@ type DescribeMetricMetaListResponseBodyResources struct {
 	//
 	// ECS CPU Utilization
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The descriptions of the dimensions.
+	// The dimension description.
 	DimensionDescription []*DescribeMetricMetaListResponseBodyResourcesDimensionDescription `json:"dimensionDescription,omitempty" xml:"dimensionDescription,omitempty" type:"Repeated"`
-	// The dimensions for filtering resources in CloudMonitor.
+	// The resource filtering dimensions of CloudMonitor Basic.
 	Dimensions []*string `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
-	// The CloudMonitor labels. This parameter is returned only when `metaFormat` is set to `CMS`.
+	// The CloudMonitor labels. This parameter is returned only when metaFormat is set to CMS.
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The metadata format.
+	// The metadata source. Valid values:
+	//
+	// - CMS: CloudMonitor Basic monitoring metrics.
+	//
+	// - PROM_BASIC: Managed Service for Prometheus monitoring metrics.
+	//
+	// Sample value:
+	//
+	// CMS
+	//
+	// Valid values:
+	//
+	// CMS
+	//
+	// PROM_BASIC.
+	//
+	// example:
+	//
+	// PROM_BASIC
 	MetaFormat *string `json:"metaFormat,omitempty" xml:"metaFormat,omitempty"`
 	// The metric name.
 	//
@@ -143,19 +161,19 @@ type DescribeMetricMetaListResponseBodyResources struct {
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The aggregation period.
+	// The period.
 	//
 	// example:
 	//
 	// 60
 	Periods *string `json:"periods,omitempty" xml:"periods,omitempty"`
-	// The statistic of the metric. Examples:
+	// The statistical method of the metric. Example values:
 	//
-	// - `Maximum`: the maximum value.
+	// - Maximum: the maximum value.
 	//
-	// - `Minimum`: the minimum value.
+	// - Minimum: the minimum value.
 	//
-	// - `Average`: the average value.
+	// - Average: the average value.
 	//
 	// example:
 	//
@@ -296,7 +314,7 @@ func (s *DescribeMetricMetaListResponseBodyResources) Validate() error {
 }
 
 type DescribeMetricMetaListResponseBodyResourcesDimensionDescription struct {
-	// The name of the dimension.
+	// The name.
 	//
 	// example:
 	//

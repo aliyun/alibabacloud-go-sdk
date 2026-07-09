@@ -16,7 +16,7 @@ type iUpdateSubscriptionResponseBody interface {
 }
 
 type UpdateSubscriptionResponseBody struct {
-	// The unique ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//

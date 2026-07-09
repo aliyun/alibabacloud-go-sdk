@@ -32,7 +32,7 @@ type iCreatePrometheusViewRequest interface {
 }
 
 type CreatePrometheusViewRequest struct {
-	// This parameter is not in use.
+	// Not in use.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type CreatePrometheusViewRequest struct {
 	//
 	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
-	// Specifies whether to enable password-free read access.
+	// Specifies whether anonymous read is supported.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
-	// Specifies whether to enable an authentication token.
+	// Specifies whether authToken is supported.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type CreatePrometheusViewRequest struct {
 	//
 	// This parameter is required.
 	PrometheusInstances []*CreatePrometheusViewRequestPrometheusInstances `json:"prometheusInstances,omitempty" xml:"prometheusInstances,omitempty" type:"Repeated"`
-	// The name of the Prometheus view.
+	// The Prometheus view name.
 	//
 	// This parameter is required.
 	//
@@ -86,17 +86,19 @@ type CreatePrometheusViewRequest struct {
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// This parameter is not in use.
+	// Not in use.
 	//
 	// example:
 	//
 	// null
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Specifies the operation to execute.
+	// The tags.
 	Tags []*CreatePrometheusViewRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// - V1: The old version.
+	// Valid values:
 	//
-	// - V2: The new version.
+	// - V1: legacy version
+	//
+	// - V2: new version.
 	//
 	// This parameter is required.
 	//
@@ -104,7 +106,7 @@ type CreatePrometheusViewRequest struct {
 	//
 	// V2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The default value is default-cms-{userId}-{regionId}.
+	// Default value: default-cms-{userId}-{regionId}.
 	//
 	// example:
 	//
@@ -293,13 +295,13 @@ func (s *CreatePrometheusViewRequestPrometheusInstances) Validate() error {
 }
 
 type CreatePrometheusViewRequestTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// test-key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

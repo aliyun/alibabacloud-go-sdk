@@ -40,7 +40,7 @@ type SearchMemoriesRequest struct {
 	//
 	// 972772996913709056
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The app ID assigned by the merchant.
+	// The app key of the project assigned by the merchant.
 	//
 	// example:
 	//
@@ -48,18 +48,20 @@ type SearchMemoriesRequest struct {
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
 	// The filter conditions.
 	Filters map[string]interface{} `json:"filters,omitempty" xml:"filters,omitempty"`
-	// The query text.
+	// The query content.
 	//
 	// example:
 	//
 	// What I like
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// Specifies whether to rerank the search results.
+	// Specifies whether to enable reranking.
 	//
 	// example:
 	//
 	// true
 	Rerank *bool `json:"rerank,omitempty" xml:"rerank,omitempty"`
+	// The retrieval option.
+	//
 	// example:
 	//
 	// reranker,llm_rank
@@ -82,7 +84,7 @@ type SearchMemoriesRequest struct {
 	//
 	// 0.3
 	Threshold *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	// The number of top-K results to return.
+	// The top-K entries to return in the results.
 	//
 	// example:
 	//

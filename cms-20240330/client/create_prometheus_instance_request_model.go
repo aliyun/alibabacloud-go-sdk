@@ -25,6 +25,8 @@ type iCreatePrometheusInstanceRequest interface {
 	GetPaymentType() *string
 	SetPrometheusInstanceName(v string) *CreatePrometheusInstanceRequest
 	GetPrometheusInstanceName() *string
+	SetResourceGroupId(v string) *CreatePrometheusInstanceRequest
+	GetResourceGroupId() *string
 	SetStatus(v string) *CreatePrometheusInstanceRequest
 	GetStatus() *string
 	SetStorageDuration(v int32) *CreatePrometheusInstanceRequest
@@ -36,11 +38,11 @@ type iCreatePrometheusInstanceRequest interface {
 }
 
 type CreatePrometheusInstanceRequest struct {
-	// The number of days that data is automatically archived after the storage duration expires. A value of 0 indicates that data is not archived. Valid values:
+	// The number of days that data is automatically archived after the storage period expires. A value of 0 indicates that data is not archived. Valid values for the archive duration:
 	//
-	// - V1 instances: 60 to 365.
+	// 	- V1: 60 to 365 days.
 	//
-	// - V2 instances: 60 to 3650. A value of 3650 indicates that the data is permanently stored.
+	// 	- V2: 60 to 3650 days (3650 indicates permanent retention).
 	//
 	// if can be null:
 	// true
@@ -49,7 +51,7 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// 60
 	ArchiveDuration *int32 `json:"archiveDuration,omitempty" xml:"archiveDuration,omitempty"`
-	// The policy for password-free read access. IP address ranges and VPC IDs are supported.
+	// The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
 	//
 	// example:
 	//
@@ -73,7 +75,7 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
-	// The policy for password-free write access.
+	// The authentication-free write policy.
 	//
 	// example:
 	//
@@ -97,35 +99,37 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// }
 	AuthFreeWritePolicy *string `json:"authFreeWritePolicy,omitempty" xml:"authFreeWritePolicy,omitempty"`
-	// Specifies whether to enable password-free read access. This feature is supported only for V2 instances.
+	// Specifies whether to enable authentication-free read. This parameter is supported only for V2 instances.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
-	// Specifies whether to enable password-free write access. This feature is supported only for V2 instances.
+	// Specifies whether to enable authentication-free write. This parameter is supported only for V2 instances.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeWrite *bool `json:"enableAuthFreeWrite,omitempty" xml:"enableAuthFreeWrite,omitempty"`
-	// Specifies whether to enable an authorization token. This feature is supported only for V1 instances.
+	// Specifies whether to enable the authorization token. This parameter is supported only for V1 instances.
 	//
 	// example:
 	//
 	// true
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
-	// The billing method.
+	// The billable methods. Valid values:
 	//
-	// - POSTPAY: pay-as-you-go based on the volume of reported metrics.
+	// 	- POSTPAY: pay-as-you-go by metric reporting volume.
 	//
-	// - Note: If you leave this parameter empty, the default billing method is used. If a default billing method is not configured, POSTPAY is used.
+	// 	- POSTPAY_GB: pay-as-you-go by metric write volume.
+	//
+	// If this parameter is left empty, the default billing method configured by the user is used. If the user has not configured a default billing method, the system uses pay-as-you-go by metric reporting volume.
 	//
 	// example:
 	//
 	// POSTPAY
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// This parameter is required.
 	//
@@ -133,17 +137,23 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// name1
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aekz5qqvjyatgoy
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The instance status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The storage duration of the instance in days. The valid values depend on the billing method:
+	// The storage duration (in days):
 	//
-	// - For instances billed based on data written: 90 and 180.
+	// 	- By write volume: 90 or 180.
 	//
-	// - For instances billed based on reported metrics: 15, 30, 60, 90, and 180.
+	// 	- By metric reporting volume: 15, 30, 60, 90, or 180.
 	//
 	// example:
 	//
@@ -151,7 +161,7 @@ type CreatePrometheusInstanceRequest struct {
 	StorageDuration *int32 `json:"storageDuration,omitempty" xml:"storageDuration,omitempty"`
 	// The tags.
 	Tags []*CreatePrometheusInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The workspace to which the instance belongs. The default value is default-cms-{userId}-{regionId}.
+	// The workspace to which the instance belongs. Default value: default-cms-{userId}-{regionId}.
 	//
 	// example:
 	//
@@ -197,6 +207,10 @@ func (s *CreatePrometheusInstanceRequest) GetPaymentType() *string {
 
 func (s *CreatePrometheusInstanceRequest) GetPrometheusInstanceName() *string {
 	return s.PrometheusInstanceName
+}
+
+func (s *CreatePrometheusInstanceRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
 }
 
 func (s *CreatePrometheusInstanceRequest) GetStatus() *string {
@@ -252,6 +266,11 @@ func (s *CreatePrometheusInstanceRequest) SetPaymentType(v string) *CreatePromet
 
 func (s *CreatePrometheusInstanceRequest) SetPrometheusInstanceName(v string) *CreatePrometheusInstanceRequest {
 	s.PrometheusInstanceName = &v
+	return s
+}
+
+func (s *CreatePrometheusInstanceRequest) SetResourceGroupId(v string) *CreatePrometheusInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
