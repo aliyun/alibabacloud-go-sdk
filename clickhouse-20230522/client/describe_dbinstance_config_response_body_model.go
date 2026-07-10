@@ -16,8 +16,9 @@ type iDescribeDBInstanceConfigResponseBody interface {
 }
 
 type DescribeDBInstanceConfigResponseBody struct {
+	// The returned results.
 	Data *DescribeDBInstanceConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+	// The ID of the request
 	//
 	// example:
 	//
@@ -61,11 +62,14 @@ func (s *DescribeDBInstanceConfigResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceConfigResponseBodyData struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
-	DBInstanceId *string                                           `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Params       []*DescribeDBInstanceConfigResponseBodyDataParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The user parameters.
+	Params []*DescribeDBInstanceConfigResponseBodyDataParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBInstanceConfigResponseBodyData) String() string {
@@ -108,34 +112,50 @@ func (s *DescribeDBInstanceConfigResponseBodyData) Validate() error {
 }
 
 type DescribeDBInstanceConfigResponseBodyDataParams struct {
+	// The parameter description.
+	//
 	// example:
 	//
 	// Maximum number of concurrently executed queries. Zero means unlimited.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The default value of the parameter.
+	//
 	// example:
 	//
 	// 1
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Indicates whether the parameter takes effect dynamically (without requiring a restart).
+	//
 	// example:
 	//
 	// 1
 	IsDynamic *int32 `json:"IsDynamic,omitempty" xml:"IsDynamic,omitempty"`
+	// Indicates whether the parameter can be modified by users.
+	//
 	// example:
 	//
 	// 1
 	IsUserModifiable *int32 `json:"IsUserModifiable,omitempty" xml:"IsUserModifiable,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// max_concurrent_queries
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The valid values of the parameter.
+	//
 	// example:
 	//
 	// [0-100]
 	Optional *string `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// The parameter dependencies.
+	//
 	// example:
 	//
 	// 0
 	ParamRelyRule *string `json:"ParamRelyRule,omitempty" xml:"ParamRelyRule,omitempty"`
+	// The value of the parameter.
+	//
 	// example:
 	//
 	// 100

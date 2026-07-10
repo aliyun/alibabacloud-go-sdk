@@ -148,7 +148,7 @@ type DescribeDBInstanceDataSourcesResponseBodyDataColumns struct {
 	//
 	// example:
 	//
-	// Used for test
+	// Test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The database name.
 	//
@@ -158,9 +158,9 @@ type DescribeDBInstanceDataSourcesResponseBodyDataColumns struct {
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// Indicates whether the column is the primary key of the table. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

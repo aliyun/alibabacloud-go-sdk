@@ -34,7 +34,7 @@ type DescribeAccountAuthorityRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region ID
+	// The region ID.
 	//
 	// This parameter is required.
 	//

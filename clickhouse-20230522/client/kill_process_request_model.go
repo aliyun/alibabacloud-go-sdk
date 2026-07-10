@@ -20,6 +20,11 @@ type iKillProcessRequest interface {
 }
 
 type KillProcessRequest struct {
+	// The computing group ID.
+	//
+	// example:
+	//
+	// cc-gs5j3sua77******-clickhouse
 	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The cluster ID.
 	//

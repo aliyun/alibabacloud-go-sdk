@@ -20,15 +20,19 @@ type iListWhitelistTemplatesRequest interface {
 }
 
 type ListWhitelistTemplatesRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 25
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// RegionId
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -36,6 +40,8 @@ type ListWhitelistTemplatesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The whitelist template name. Fuzzy search is supported.
+	//
 	// example:
 	//
 	// default

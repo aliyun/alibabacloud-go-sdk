@@ -18,13 +18,15 @@ type iAttachWhitelistTemplateToInstanceRequest interface {
 }
 
 type AttachWhitelistTemplateToInstanceRequest struct {
+	// The ClickHouse instance ID. Separate multiple instance IDs with commas. A maximum of 20 instances can be attached at a time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-nkhdbf1d,cc-nkhdbf1s
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// RegionId
+	// Region ID.
 	//
 	// This parameter is required.
 	//
@@ -32,6 +34,8 @@ type AttachWhitelistTemplateToInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the whitelist template.
+	//
 	// This parameter is required.
 	//
 	// example:

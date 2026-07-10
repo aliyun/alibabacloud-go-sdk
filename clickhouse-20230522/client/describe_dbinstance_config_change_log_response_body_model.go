@@ -16,6 +16,7 @@ type iDescribeDBInstanceConfigChangeLogResponseBody interface {
 }
 
 type DescribeDBInstanceConfigChangeLogResponseBody struct {
+	// The result set.
 	Data *DescribeDBInstanceConfigChangeLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,10 +62,13 @@ func (s *DescribeDBInstanceConfigChangeLogResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceConfigChangeLogResponseBodyData struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
-	DBInstanceId    *string                                                             `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The parameter change records.
 	ParamChangeLogs []*DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs `json:"ParamChangeLogs,omitempty" xml:"ParamChangeLogs,omitempty" type:"Repeated"`
 }
 
@@ -108,27 +112,44 @@ func (s *DescribeDBInstanceConfigChangeLogResponseBodyData) Validate() error {
 }
 
 type DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs struct {
+	// Indicates whether the configuration takes effect:
+	//
+	// - true: The execution plan takes effect.
+	//
+	// - false: The execution plan does not take effect.
 	Applied *bool `json:"Applied,omitempty" xml:"Applied,omitempty"`
+	// The time when the change was created.
+	//
 	// example:
 	//
 	// 2025-06-25 13:46:06
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the change was modified.
+	//
 	// example:
 	//
 	// 2025-06-25 13:46:06
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The operation ID.
+	//
 	// example:
 	//
 	// 1
 	ID *int64 `json:"ID,omitempty" xml:"ID,omitempty"`
+	// The name of the parameter.
+	//
 	// example:
 	//
 	// max_concurrent_queries
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The new parameter value.
+	//
 	// example:
 	//
 	// 100
 	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
+	// The old parameter value.
+	//
 	// example:
 	//
 	// 50

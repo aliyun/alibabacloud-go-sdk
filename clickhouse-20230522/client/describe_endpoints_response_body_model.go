@@ -16,7 +16,7 @@ type iDescribeEndpointsResponseBody interface {
 }
 
 type DescribeEndpointsResponseBody struct {
-	// The returned result.
+	// The response data.
 	Data *DescribeEndpointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,13 +62,13 @@ func (s *DescribeEndpointsResponseBody) Validate() error {
 }
 
 type DescribeEndpointsResponseBodyData struct {
-	// The details of the endpoints.
+	// The endpoints.
 	Endpoints []*DescribeEndpointsResponseBodyDataEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// The network type of the cluster. Valid values:
+	// The network type of the instance. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**
 	//
-	// 	- **PUBLIC**
+	// - **PUBLIC**: Internet.
 	//
 	// example:
 	//
@@ -116,16 +116,20 @@ func (s *DescribeEndpointsResponseBodyData) Validate() error {
 }
 
 type DescribeEndpointsResponseBodyDataEndpoints struct {
+	// The computing group ID.
+	//
 	// example:
 	//
 	// cc-ad321**-clickhouse
 	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
-	// The endpoint of the cluster.
+	// The instance connection string.
 	//
 	// example:
 	//
 	// cc-****-clickhouse.clickhouseserver.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The endpoint name.
+	//
 	// example:
 	//
 	// cc-*****-clickhouse
@@ -138,17 +142,17 @@ type DescribeEndpointsResponseBodyDataEndpoints struct {
 	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	// The network type of the endpoint. Valid values:
 	//
-	// 	- VPC
+	// - VPC
 	//
-	// 	- PUBLIC
+	// - PUBLIC: Internet.
 	//
 	// example:
 	//
 	// VPC
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The details of the ports.
+	// The ports.
 	Ports []*DescribeEndpointsResponseBodyDataEndpointsPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	// The state of the cluster.
+	// The status of the endpoint.
 	//
 	// example:
 	//
@@ -160,13 +164,13 @@ type DescribeEndpointsResponseBodyDataEndpoints struct {
 	//
 	// vsw-0xi8829****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-uf61z****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC ID.
+	// The VPC instance ID.
 	//
 	// example:
 	//
@@ -286,13 +290,13 @@ func (s *DescribeEndpointsResponseBodyDataEndpoints) Validate() error {
 }
 
 type DescribeEndpointsResponseBodyDataEndpointsPorts struct {
-	// The port used to connect to the cluster. Valid values:
+	// The port number. The value varies based on the protocol type. For example:
 	//
-	// 	- 8123: This value is returned when the value of Protocol is HttpPort.
+	// - HttpPort: 8123
 	//
-	// 	- 8443: This value is returned when the value of Protocol is HttpsPort.
+	// - HttpsPort: 8443
 	//
-	// 	- 9000: This value is returned when the value of Protocol is TcpPort.
+	// - TcpPort: 9000
 	//
 	// example:
 	//
@@ -300,11 +304,11 @@ type DescribeEndpointsResponseBodyDataEndpointsPorts struct {
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// 	- HttpPort
+	// - HttpPort: HTTP port.
 	//
-	// 	- HttpsPort
+	// - HttpsPort: HTTPS port.
 	//
-	// 	- TcpPort
+	// - TcpPort: TCP port.
 	//
 	// example:
 	//

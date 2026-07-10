@@ -24,32 +24,50 @@ type iDescribeDBInstanceConfigChangeLogRequest interface {
 }
 
 type DescribeDBInstanceConfigChangeLogRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-uf6lkzf*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The end time of the query. Format: yyyy-MM-dd hh:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-01-01 10:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number to return.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page. Default value: 30. Valid values:
+	//
+	// - **30*	- (default)
+	//
+	// - **50**
+	//
+	// - **100**
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time of the query. Format: yyyy-MM-dd hh:mm:ss.
+	//
 	// This parameter is required.
 	//
 	// example:

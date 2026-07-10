@@ -30,19 +30,19 @@ type iDescribeDBInstancesRequest interface {
 }
 
 type DescribeDBInstancesRequest struct {
-	// The cluster IDs. Separate multiple cluster IDs with commas (,).
+	// A comma-separated list of instance IDs.
 	//
 	// example:
 	//
 	// cc-xxxxx,cx-xxxx
 	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
-	// The cluster status.
+	// The instance status.
 	//
 	// example:
 	//
 	// active
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The cluster description.
+	// The instance description.
 	//
 	// example:
 	//
@@ -71,8 +71,15 @@ type DescribeDBInstancesRequest struct {
 	// example:
 	//
 	// rg-4690g37929****
-	ResourceGroupId *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*DescribeDBInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags for filtering instances.
+	//
+	// example:
+	//
+	// DescribeDBInstances
+	Tags []*DescribeDBInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// A comma-separated list of VPC IDs.
+	//
 	// example:
 	//
 	// vpc-2ze4ee9z******,vpc-2ze4ee9z5l******
@@ -182,13 +189,17 @@ func (s *DescribeDBInstancesRequest) Validate() error {
 }
 
 type DescribeDBInstancesRequestTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// user_123
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
-	// 示例值
+	// example value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

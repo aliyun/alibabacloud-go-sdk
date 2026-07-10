@@ -18,7 +18,7 @@ type iCreateWhitelistTemplateRequest interface {
 }
 
 type CreateWhitelistTemplateRequest struct {
-	// RegionId
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -26,12 +26,16 @@ type CreateWhitelistTemplateRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IP addresses in the whitelist. Separate multiple IP addresses with commas (,). You can add up to 100 IP addresses.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 192.168.1.1,10.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The name of the whitelist template.
+	//
 	// This parameter is required.
 	//
 	// example:

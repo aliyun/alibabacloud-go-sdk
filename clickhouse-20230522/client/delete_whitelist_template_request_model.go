@@ -18,18 +18,24 @@ type iDeleteWhitelistTemplateRequest interface {
 }
 
 type DeleteWhitelistTemplateRequest struct {
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The whitelist template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 98a6d3db05984dca
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the whitelist template.
+	//
 	// example:
 	//
 	// 98a6d3db05984dca

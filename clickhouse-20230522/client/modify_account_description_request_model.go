@@ -34,7 +34,7 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// example:
 	//
-	// cc-xxxxxxx
+	// cc-bp1anv7jo84t****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The description of the account.
 	//

@@ -16,8 +16,9 @@ type iCreateWhitelistTemplateResponseBody interface {
 }
 
 type CreateWhitelistTemplateResponseBody struct {
+	// The returned data.
 	Data *CreateWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,6 +62,7 @@ func (s *CreateWhitelistTemplateResponseBody) Validate() error {
 }
 
 type CreateWhitelistTemplateResponseBodyData struct {
+	// The list of whitelist templates.
 	Templates []*CreateWhitelistTemplateResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 }
 
@@ -95,14 +97,20 @@ func (s *CreateWhitelistTemplateResponseBodyData) Validate() error {
 }
 
 type CreateWhitelistTemplateResponseBodyDataTemplates struct {
+	// The list of IP addresses in the whitelist.
+	//
 	// example:
 	//
 	// 192.168.1.1,10.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The ID of the whitelist template.
+	//
 	// example:
 	//
 	// g-asdfwem
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the whitelist template.
+	//
 	// example:
 	//
 	// demo_template

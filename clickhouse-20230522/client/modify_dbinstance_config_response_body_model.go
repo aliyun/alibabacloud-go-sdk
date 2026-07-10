@@ -16,6 +16,7 @@ type iModifyDBInstanceConfigResponseBody interface {
 }
 
 type ModifyDBInstanceConfigResponseBody struct {
+	// The returned data.
 	Data *ModifyDBInstanceConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -61,6 +62,8 @@ func (s *ModifyDBInstanceConfigResponseBody) Validate() error {
 }
 
 type ModifyDBInstanceConfigResponseBodyData struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// cc-uf6lkzf*****

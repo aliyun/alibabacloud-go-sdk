@@ -18,6 +18,8 @@ type iDescribeEndpointsRequest interface {
 }
 
 type DescribeEndpointsRequest struct {
+	// The computing group ID.
+	//
 	// example:
 	//
 	// cc-*****-clickhouse

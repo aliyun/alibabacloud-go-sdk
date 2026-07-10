@@ -16,8 +16,9 @@ type iUpdateWhitelistTemplateResponseBody interface {
 }
 
 type UpdateWhitelistTemplateResponseBody struct {
+	// The details of the whitelist template.
 	Data *UpdateWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Request ID。
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,6 +62,7 @@ func (s *UpdateWhitelistTemplateResponseBody) Validate() error {
 }
 
 type UpdateWhitelistTemplateResponseBodyData struct {
+	// The list of whitelist templates.
 	Templates []*UpdateWhitelistTemplateResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 }
 
@@ -95,11 +97,16 @@ func (s *UpdateWhitelistTemplateResponseBodyData) Validate() error {
 }
 
 type UpdateWhitelistTemplateResponseBodyDataTemplates struct {
+	// The list of associated instances.
 	DbInstances []*UpdateWhitelistTemplateResponseBodyDataTemplatesDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Repeated"`
+	// The IP address whitelist.
+	//
 	// example:
 	//
 	// 192.168.1.1,10.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The whitelist template ID.
+	//
 	// example:
 	//
 	// g-asdfwem
@@ -155,6 +162,8 @@ func (s *UpdateWhitelistTemplateResponseBodyDataTemplates) Validate() error {
 }
 
 type UpdateWhitelistTemplateResponseBodyDataTemplatesDbInstances struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// asdfwef

@@ -16,7 +16,7 @@ type iDeleteDBInstanceResponseBody interface {
 }
 
 type DeleteDBInstanceResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *DeleteDBInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//

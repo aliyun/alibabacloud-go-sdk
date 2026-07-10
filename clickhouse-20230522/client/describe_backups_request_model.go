@@ -26,36 +26,50 @@ type iDescribeBackupsRequest interface {
 }
 
 type DescribeBackupsRequest struct {
+	// The backup record ID.
+	//
 	// example:
 	//
 	// 117403****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-bp1v9kq45u0o80cvh
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The end of the time range to query. The time is in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2021-11-25T16:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. The time is in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -17,6 +17,8 @@ type iDescribeRegionsResponseBody interface {
 
 type DescribeRegionsResponseBody struct {
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F5178C10-1407-4987-9133-DE4DC9119F75

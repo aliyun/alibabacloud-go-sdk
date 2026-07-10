@@ -16,7 +16,7 @@ type iCreateDBResponseBody interface {
 }
 
 type CreateDBResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *CreateDBResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,7 +68,7 @@ type CreateDBResponseBodyData struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//

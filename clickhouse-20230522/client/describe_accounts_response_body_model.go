@@ -72,11 +72,11 @@ type DescribeAccountsResponseBodyData struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
@@ -156,27 +156,27 @@ type DescribeAccountsResponseBodyDataAccounts struct {
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
 	// The type of the database account. Valid values:
 	//
-	// 	- **1**: standard account
+	// - **1**: standard account
 	//
-	// 	- **6**: privileged account
+	// - **6**: privileged account
 	//
 	// example:
 	//
-	// NormalAccount
+	// 1
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The description.
 	//
 	// example:
 	//
-	// Used for test
+	// For testing
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The state of the database account. Valid values:
 	//
-	// 	- **0**: The database account is being created.
+	// - **0**: The database account is being created.
 	//
-	// 	- **1**: The database account is in use.
+	// - **1**: The database account is in use.
 	//
-	// 	- **3**: The database account is being deleted.
+	// - **3**: The database account is being deleted.
 	//
 	// example:
 	//

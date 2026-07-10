@@ -16,7 +16,7 @@ type iModifyDBInstanceConnectionStringResponseBody interface {
 }
 
 type ModifyDBInstanceConnectionStringResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *ModifyDBInstanceConnectionStringResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ModifyDBInstanceConnectionStringResponseBody) Validate() error {
 }
 
 type ModifyDBInstanceConnectionStringResponseBodyData struct {
-	// The endpoint of the cluster.
+	// The connection string.
 	//
 	// example:
 	//

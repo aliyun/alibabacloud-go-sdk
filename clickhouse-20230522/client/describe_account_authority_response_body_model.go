@@ -16,13 +16,13 @@ type iDescribeAccountAuthorityResponseBody interface {
 }
 
 type DescribeAccountAuthorityResponseBody struct {
-	// The returned result.
+	// The returned data.
 	Data *DescribeAccountAuthorityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
 	//
-	// F5178C10-1407-4987-9133-DE4DC9119F75
+	// F5178C10-1407-4987-9133-DE4DC911****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -68,9 +68,9 @@ type DescribeAccountAuthorityResponseBodyData struct {
 	//
 	// test1
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The databases on which permissions are granted.
+	// A list of authorized databases.
 	AllowDatabases []*string `json:"AllowDatabases,omitempty" xml:"AllowDatabases,omitempty" type:"Repeated"`
-	// The dictionaries on which permissions are granted.
+	// A list of authorized dictionaries.
 	AllowDictionaries []*string `json:"AllowDictionaries,omitempty" xml:"AllowDictionaries,omitempty" type:"Repeated"`
 	// The cluster ID.
 	//
@@ -78,29 +78,29 @@ type DescribeAccountAuthorityResponseBodyData struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Indicates whether the DDL permissions are granted to the database account. Valid values:
+	// Indicates whether DDL permissions are granted to the database account. Valid values:
 	//
-	// 	- **true**: The account has the permissions to execute DDL statements.
+	// - **true**: DDL operations are allowed.
 	//
-	// 	- **false**: The account does not have the permissions to execute DDL statements.
+	// - **false**: DDL operations are prohibited.
 	//
 	// example:
 	//
 	// true
 	DdlAuthority *bool `json:"DdlAuthority,omitempty" xml:"DdlAuthority,omitempty"`
-	// Indicates whether the DML permissions are granted to the database account. Valid values:
+	// The DML permissions that are granted to the database account. Valid values:
 	//
-	// 	- 0: The account has the permissions to read data from the database, write data to the database, and modify the settings of the database.
+	// - 0: Read, write, and change settings queries are allowed.
 	//
-	// 	- 1: The account only has the permissions to read data from the database.
+	// - 1: Only read data queries are allowed.
 	//
-	// 	- 2: The account only has the permissions to read data from the database and modify the settings of the database.
+	// - 2: Read data and change settings queries are allowed.
 	//
 	// example:
 	//
 	// 0
 	DmlAuthority *int32 `json:"DmlAuthority,omitempty" xml:"DmlAuthority,omitempty"`
-	// All databases.
+	// A list of all databases.
 	TotalDatabases []*string `json:"TotalDatabases,omitempty" xml:"TotalDatabases,omitempty" type:"Repeated"`
 	// The database.
 	TotalDictionaries []*string `json:"TotalDictionaries,omitempty" xml:"TotalDictionaries,omitempty" type:"Repeated"`

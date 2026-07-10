@@ -24,11 +24,7 @@ type DescribeDBInstanceAttributeRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region ID.
-	//
-	// Valid values:
-	//
-	// 	- cn-beijing
+	// The region ID. You can call the [~~DescribeRegions~~](cdb.doc.dita#doc-api-clickhouse-DescribeRegions) operation to query the most recent region list.
 	//
 	// example:
 	//

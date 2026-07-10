@@ -16,13 +16,15 @@ type iListInstanceLinkedWhitelistTemplatesRequest interface {
 }
 
 type ListInstanceLinkedWhitelistTemplatesRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-exadfas
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// RegionId
+	// The region ID.
 	//
 	// This parameter is required.
 	//

@@ -70,6 +70,18 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"rus-west-1-pop":              dara.String("clickhouse.aliyuncs.com"),
 		"us-east-1":                   dara.String("clickhouse.aliyuncs.com"),
 		"us-west-1":                   dara.String("clickhouse.aliyuncs.com"),
+		"me-central-1":                dara.String("clickhouse.me-central-1.aliyuncs.com"),
+		"eu-west-1":                   dara.String("clickhouse.eu-west-1.aliyuncs.com"),
+		"eu-central-1":                dara.String("clickhouse.eu-central-1.aliyuncs.com"),
+		"cn-zhangjiakou":              dara.String("clickhouse.cn-zhangjiakou.aliyuncs.com"),
+		"cn-wulanchabu":               dara.String("clickhouse.aliyuncs.com"),
+		"cn-huhehaote":                dara.String("clickhouse.cn-huhehaote.aliyuncs.com"),
+		"cn-guangzhou":                dara.String("clickhouse.cn-guangzhou.aliyuncs.com"),
+		"cn-chengdu":                  dara.String("clickhouse.cn-chengdu.aliyuncs.com"),
+		"ap-southeast-6":              dara.String("clickhouse.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-5":              dara.String("clickhouse.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-3":              dara.String("clickhouse.aliyuncs.com"),
+		"ap-northeast-1":              dara.String("clickhouse.ap-northeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -104,7 +116,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 白名单模板关联实例
+// Attaches a whitelist template to instances.
 //
 // @param request - AttachWhitelistTemplateToInstanceRequest
 //
@@ -156,7 +168,7 @@ func (client *Client) AttachWhitelistTemplateToInstanceWithOptions(request *Atta
 
 // Summary:
 //
-// 白名单模板关联实例
+// Attaches a whitelist template to instances.
 //
 // @param request - AttachWhitelistTemplateToInstanceRequest
 //
@@ -174,7 +186,7 @@ func (client *Client) AttachWhitelistTemplateToInstance(request *AttachWhitelist
 
 // Summary:
 //
-// 资源转组
+// Changes the resource group of a ClickHouse Enterprise instance.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -230,7 +242,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 资源转组
+// Changes the resource group of a ClickHouse Enterprise instance.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -344,7 +356,7 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Creates a backup policy for a specified ClickHouse Enterprise Edition cluster.
 //
 // @param request - CreateBackupPolicyRequest
 //
@@ -404,7 +416,7 @@ func (client *Client) CreateBackupPolicyWithOptions(request *CreateBackupPolicyR
 
 // Summary:
 //
-// Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Creates a backup policy for a specified ClickHouse Enterprise Edition cluster.
 //
 // @param request - CreateBackupPolicyRequest
 //
@@ -422,7 +434,7 @@ func (client *Client) CreateBackupPolicy(request *CreateBackupPolicyRequest) (_r
 
 // Summary:
 //
-// Creates an ApsaraDB for ClickHouse database.
+// Creates a database.
 //
 // @param request - CreateDBRequest
 //
@@ -478,7 +490,7 @@ func (client *Client) CreateDBWithOptions(request *CreateDBRequest, runtime *dar
 
 // Summary:
 //
-// Creates an ApsaraDB for ClickHouse database.
+// Creates a database.
 //
 // @param request - CreateDBRequest
 //
@@ -496,7 +508,7 @@ func (client *Client) CreateDB(request *CreateDBRequest) (_result *CreateDBRespo
 
 // Summary:
 //
-// Creates an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// To create a ClickHouse Enterprise Edition cluster, call the `CreateDBInstance` API.
 //
 // @param tmpReq - CreateDBInstanceRequest
 //
@@ -634,7 +646,7 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 // Summary:
 //
-// Creates an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// To create a ClickHouse Enterprise Edition cluster, call the `CreateDBInstance` API.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -652,7 +664,7 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 
 // Summary:
 //
-// Applies for a public endpoint.
+// Creates a public endpoint that provides a public address to access a cluster.
 //
 // @param request - CreateEndpointRequest
 //
@@ -712,7 +724,7 @@ func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, 
 
 // Summary:
 //
-// Applies for a public endpoint.
+// Creates a public endpoint that provides a public address to access a cluster.
 //
 // @param request - CreateEndpointRequest
 //
@@ -730,7 +742,319 @@ func (client *Client) CreateEndpoint(request *CreateEndpointRequest) (_result *C
 
 // Summary:
 //
-// 新增白名单模板
+// Creates a Langfuse organization.
+//
+// @param request - CreateLangfuseOrgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLangfuseOrgResponse
+func (client *Client) CreateLangfuseOrgWithOptions(request *CreateLangfuseOrgRequest, runtime *dara.RuntimeOptions) (_result *CreateLangfuseOrgResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerEmail) {
+		query["OwnerEmail"] = request.OwnerEmail
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLangfuseOrg"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLangfuseOrgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a Langfuse organization.
+//
+// @param request - CreateLangfuseOrgRequest
+//
+// @return CreateLangfuseOrgResponse
+func (client *Client) CreateLangfuseOrg(request *CreateLangfuseOrgRequest) (_result *CreateLangfuseOrgResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateLangfuseOrgResponse{}
+	_body, _err := client.CreateLangfuseOrgWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds a user to a Langfuse organization.
+//
+// @param request - CreateLangfuseOrgMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLangfuseOrgMemberResponse
+func (client *Client) CreateLangfuseOrgMemberWithOptions(request *CreateLangfuseOrgMemberRequest, runtime *dara.RuntimeOptions) (_result *CreateLangfuseOrgMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLangfuseOrgMember"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLangfuseOrgMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds a user to a Langfuse organization.
+//
+// @param request - CreateLangfuseOrgMemberRequest
+//
+// @return CreateLangfuseOrgMemberResponse
+func (client *Client) CreateLangfuseOrgMember(request *CreateLangfuseOrgMemberRequest) (_result *CreateLangfuseOrgMemberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateLangfuseOrgMemberResponse{}
+	_body, _err := client.CreateLangfuseOrgMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a Langfuse project.
+//
+// @param request - CreateLangfuseProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLangfuseProjectResponse
+func (client *Client) CreateLangfuseProjectWithOptions(request *CreateLangfuseProjectRequest, runtime *dara.RuntimeOptions) (_result *CreateLangfuseProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLangfuseProject"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLangfuseProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a Langfuse project.
+//
+// @param request - CreateLangfuseProjectRequest
+//
+// @return CreateLangfuseProjectResponse
+func (client *Client) CreateLangfuseProject(request *CreateLangfuseProjectRequest) (_result *CreateLangfuseProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateLangfuseProjectResponse{}
+	_body, _err := client.CreateLangfuseProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a Langfuse user.
+//
+// @param request - CreateLangfuseUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLangfuseUserResponse
+func (client *Client) CreateLangfuseUserWithOptions(request *CreateLangfuseUserRequest, runtime *dara.RuntimeOptions) (_result *CreateLangfuseUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OrgRole) {
+		query["OrgRole"] = request.OrgRole
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLangfuseUser"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLangfuseUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a Langfuse user.
+//
+// @param request - CreateLangfuseUserRequest
+//
+// @return CreateLangfuseUserResponse
+func (client *Client) CreateLangfuseUser(request *CreateLangfuseUserRequest) (_result *CreateLangfuseUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateLangfuseUserResponse{}
+	_body, _err := client.CreateLangfuseUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a whitelist template.
 //
 // @param request - CreateWhitelistTemplateRequest
 //
@@ -784,7 +1108,7 @@ func (client *Client) CreateWhitelistTemplateWithOptions(request *CreateWhitelis
 
 // Summary:
 //
-// 新增白名单模板
+// Creates a whitelist template.
 //
 // @param request - CreateWhitelistTemplateRequest
 //
@@ -876,7 +1200,7 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
-// Deletes the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Deletes the backup policy for a ClickHouse Enterprise Edition cluster.
 //
 // @param request - DeleteBackupPolicyRequest
 //
@@ -924,7 +1248,7 @@ func (client *Client) DeleteBackupPolicyWithOptions(request *DeleteBackupPolicyR
 
 // Summary:
 //
-// Deletes the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Deletes the backup policy for a ClickHouse Enterprise Edition cluster.
 //
 // @param request - DeleteBackupPolicyRequest
 //
@@ -942,7 +1266,7 @@ func (client *Client) DeleteBackupPolicy(request *DeleteBackupPolicyRequest) (_r
 
 // Summary:
 //
-// Deletes an ApsaraDB for ClickHouse database.
+// Call this operation to delete a database.
 //
 // @param request - DeleteDBRequest
 //
@@ -994,7 +1318,7 @@ func (client *Client) DeleteDBWithOptions(request *DeleteDBRequest, runtime *dar
 
 // Summary:
 //
-// Deletes an ApsaraDB for ClickHouse database.
+// Call this operation to delete a database.
 //
 // @param request - DeleteDBRequest
 //
@@ -1012,7 +1336,7 @@ func (client *Client) DeleteDB(request *DeleteDBRequest) (_result *DeleteDBRespo
 
 // Summary:
 //
-// Releases an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// The DeleteDBInstance operation releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -1060,7 +1384,7 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 
 // Summary:
 //
-// Releases an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// The DeleteDBInstance operation releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -1078,7 +1402,7 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 
 // Summary:
 //
-// Releases a public endpoint.
+// Deletes a public endpoint.
 //
 // @param request - DeleteEndpointRequest
 //
@@ -1138,7 +1462,7 @@ func (client *Client) DeleteEndpointWithOptions(request *DeleteEndpointRequest, 
 
 // Summary:
 //
-// Releases a public endpoint.
+// Deletes a public endpoint.
 //
 // @param request - DeleteEndpointRequest
 //
@@ -1156,7 +1480,361 @@ func (client *Client) DeleteEndpoint(request *DeleteEndpointRequest) (_result *D
 
 // Summary:
 //
-// 删除白名单模板
+// Releases a Langfuse instance.
+//
+// @param request - DeleteLangfuseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLangfuseInstanceResponse
+func (client *Client) DeleteLangfuseInstanceWithOptions(request *DeleteLangfuseInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteLangfuseInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLangfuseInstance"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLangfuseInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Releases a Langfuse instance.
+//
+// @param request - DeleteLangfuseInstanceRequest
+//
+// @return DeleteLangfuseInstanceResponse
+func (client *Client) DeleteLangfuseInstance(request *DeleteLangfuseInstanceRequest) (_result *DeleteLangfuseInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteLangfuseInstanceResponse{}
+	_body, _err := client.DeleteLangfuseInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a Langfuse organization.
+//
+// @param request - DeleteLangfuseOrgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLangfuseOrgResponse
+func (client *Client) DeleteLangfuseOrgWithOptions(request *DeleteLangfuseOrgRequest, runtime *dara.RuntimeOptions) (_result *DeleteLangfuseOrgResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLangfuseOrg"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLangfuseOrgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a Langfuse organization.
+//
+// @param request - DeleteLangfuseOrgRequest
+//
+// @return DeleteLangfuseOrgResponse
+func (client *Client) DeleteLangfuseOrg(request *DeleteLangfuseOrgRequest) (_result *DeleteLangfuseOrgResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteLangfuseOrgResponse{}
+	_body, _err := client.DeleteLangfuseOrgWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes a user from a Langfuse organization.
+//
+// @param request - DeleteLangfuseOrgMembershipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLangfuseOrgMembershipResponse
+func (client *Client) DeleteLangfuseOrgMembershipWithOptions(request *DeleteLangfuseOrgMembershipRequest, runtime *dara.RuntimeOptions) (_result *DeleteLangfuseOrgMembershipResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLangfuseOrgMembership"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLangfuseOrgMembershipResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes a user from a Langfuse organization.
+//
+// @param request - DeleteLangfuseOrgMembershipRequest
+//
+// @return DeleteLangfuseOrgMembershipResponse
+func (client *Client) DeleteLangfuseOrgMembership(request *DeleteLangfuseOrgMembershipRequest) (_result *DeleteLangfuseOrgMembershipResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteLangfuseOrgMembershipResponse{}
+	_body, _err := client.DeleteLangfuseOrgMembershipWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a Langfuse project.
+//
+// @param request - DeleteLangfuseProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLangfuseProjectResponse
+func (client *Client) DeleteLangfuseProjectWithOptions(request *DeleteLangfuseProjectRequest, runtime *dara.RuntimeOptions) (_result *DeleteLangfuseProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLangfuseProject"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLangfuseProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a Langfuse project.
+//
+// @param request - DeleteLangfuseProjectRequest
+//
+// @return DeleteLangfuseProjectResponse
+func (client *Client) DeleteLangfuseProject(request *DeleteLangfuseProjectRequest) (_result *DeleteLangfuseProjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteLangfuseProjectResponse{}
+	_body, _err := client.DeleteLangfuseProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a Langfuse user.
+//
+// @param request - DeleteLangfuseUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLangfuseUserResponse
+func (client *Client) DeleteLangfuseUserWithOptions(request *DeleteLangfuseUserRequest, runtime *dara.RuntimeOptions) (_result *DeleteLangfuseUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLangfuseUser"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLangfuseUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a Langfuse user.
+//
+// @param request - DeleteLangfuseUserRequest
+//
+// @return DeleteLangfuseUserResponse
+func (client *Client) DeleteLangfuseUser(request *DeleteLangfuseUserRequest) (_result *DeleteLangfuseUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteLangfuseUserResponse{}
+	_body, _err := client.DeleteLangfuseUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a whitelist template.
 //
 // @param request - DeleteWhitelistTemplateRequest
 //
@@ -1208,7 +1886,7 @@ func (client *Client) DeleteWhitelistTemplateWithOptions(request *DeleteWhitelis
 
 // Summary:
 //
-// 删除白名单模板
+// Deletes a whitelist template.
 //
 // @param request - DeleteWhitelistTemplateRequest
 //
@@ -1226,7 +1904,7 @@ func (client *Client) DeleteWhitelistTemplate(request *DeleteWhitelistTemplateRe
 
 // Summary:
 //
-// Queries the permissions of a database account.
+// Call the DescribeAccountAuthority operation to query the permissions of an account.
 //
 // @param request - DescribeAccountAuthorityRequest
 //
@@ -1278,7 +1956,7 @@ func (client *Client) DescribeAccountAuthorityWithOptions(request *DescribeAccou
 
 // Summary:
 //
-// Queries the permissions of a database account.
+// Call the DescribeAccountAuthority operation to query the permissions of an account.
 //
 // @param request - DescribeAccountAuthorityRequest
 //
@@ -1374,7 +2052,7 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 
 // Summary:
 //
-// View the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Queries the backup policy of a ClickHouse Enterprise Edition cluster.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -1422,7 +2100,7 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 
 // Summary:
 //
-// View the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Queries the backup policy of a ClickHouse Enterprise Edition cluster.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -1440,7 +2118,7 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 
 // Summary:
 //
-// Queries the backup sets of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Queries the backup sets of a ClickHouse Enterprise Edition cluster.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -1508,7 +2186,7 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 
 // Summary:
 //
-// Queries the backup sets of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Queries the backup sets of a ClickHouse Enterprise Edition cluster.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -1526,7 +2204,7 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 
 // Summary:
 //
-// Queries the details of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Call DescribeDBInstanceAttribute to query the details of an ApsaraDB for ClickHouse enterprise edition cluster.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -1574,7 +2252,7 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 
 // Summary:
 //
-// Queries the details of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Call DescribeDBInstanceAttribute to query the details of an ApsaraDB for ClickHouse enterprise edition cluster.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -1592,7 +2270,7 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 
 // Summary:
 //
-// 查询实例参数配置
+// # Queries the parameter configuration of an instance
 //
 // @param request - DescribeDBInstanceConfigRequest
 //
@@ -1632,7 +2310,7 @@ func (client *Client) DescribeDBInstanceConfigWithOptions(request *DescribeDBIns
 
 // Summary:
 //
-// 查询实例参数配置
+// # Queries the parameter configuration of an instance
 //
 // @param request - DescribeDBInstanceConfigRequest
 //
@@ -1650,7 +2328,7 @@ func (client *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfig
 
 // Summary:
 //
-// 查询实例参数配置记录
+// # Queries the parameter configuration records of an instance
 //
 // @param request - DescribeDBInstanceConfigChangeLogRequest
 //
@@ -1690,7 +2368,7 @@ func (client *Client) DescribeDBInstanceConfigChangeLogWithOptions(request *Desc
 
 // Summary:
 //
-// 查询实例参数配置记录
+// # Queries the parameter configuration records of an instance
 //
 // @param request - DescribeDBInstanceConfigChangeLogRequest
 //
@@ -1782,7 +2460,7 @@ func (client *Client) DescribeDBInstanceDataSources(request *DescribeDBInstanceD
 
 // Summary:
 //
-// Queries a list of ApsaraDB for ClickHouse clusters.
+// Call the DescribeDBInstances API to query a list of DB instances.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -1858,7 +2536,7 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 
 // Summary:
 //
-// Queries a list of ApsaraDB for ClickHouse clusters.
+// Call the DescribeDBInstances API to query a list of DB instances.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -1876,7 +2554,7 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 
 // Summary:
 //
-// Queries the endpoint of an ApsaraDB for ClickHouse cluster.
+// To retrieve the cluster endpoints, call DescribeEndpoints.
 //
 // @param request - DescribeEndpointsRequest
 //
@@ -1928,7 +2606,7 @@ func (client *Client) DescribeEndpointsWithOptions(request *DescribeEndpointsReq
 
 // Summary:
 //
-// Queries the endpoint of an ApsaraDB for ClickHouse cluster.
+// To retrieve the cluster endpoints, call DescribeEndpoints.
 //
 // @param request - DescribeEndpointsRequest
 //
@@ -1946,7 +2624,595 @@ func (client *Client) DescribeEndpoints(request *DescribeEndpointsRequest) (_res
 
 // Summary:
 //
-// Views running queries.
+// Queries the access endpoint of a Langfuse instance.
+//
+// @param request - DescribeLangfuseEndpointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseEndpointsResponse
+func (client *Client) DescribeLangfuseEndpointsWithOptions(request *DescribeLangfuseEndpointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseEndpointsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseEndpoints"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the access endpoint of a Langfuse instance.
+//
+// @param request - DescribeLangfuseEndpointsRequest
+//
+// @return DescribeLangfuseEndpointsResponse
+func (client *Client) DescribeLangfuseEndpoints(request *DescribeLangfuseEndpointsRequest) (_result *DescribeLangfuseEndpointsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLangfuseEndpointsResponse{}
+	_body, _err := client.DescribeLangfuseEndpointsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the member information of a Langfuse organization.
+//
+// @param request - DescribeLangfuseOrgMembershipsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseOrgMembershipsResponse
+func (client *Client) DescribeLangfuseOrgMembershipsWithOptions(request *DescribeLangfuseOrgMembershipsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseOrgMembershipsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseOrgMemberships"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseOrgMembershipsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the member information of a Langfuse organization.
+//
+// @param request - DescribeLangfuseOrgMembershipsRequest
+//
+// @return DescribeLangfuseOrgMembershipsResponse
+func (client *Client) DescribeLangfuseOrgMemberships(request *DescribeLangfuseOrgMembershipsRequest) (_result *DescribeLangfuseOrgMembershipsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLangfuseOrgMembershipsResponse{}
+	_body, _err := client.DescribeLangfuseOrgMembershipsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Langfuse实例组织列表
+//
+// @param request - DescribeLangfuseOrgsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseOrgsResponse
+func (client *Client) DescribeLangfuseOrgsWithOptions(request *DescribeLangfuseOrgsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseOrgsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseOrgs"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseOrgsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Langfuse实例组织列表
+//
+// @param request - DescribeLangfuseOrgsRequest
+//
+// @return DescribeLangfuseOrgsResponse
+func (client *Client) DescribeLangfuseOrgs(request *DescribeLangfuseOrgsRequest) (_result *DescribeLangfuseOrgsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLangfuseOrgsResponse{}
+	_body, _err := client.DescribeLangfuseOrgsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries user roles in a Langfuse project.
+//
+// @param request - DescribeLangfuseProjectMembershipsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseProjectMembershipsResponse
+func (client *Client) DescribeLangfuseProjectMembershipsWithOptions(request *DescribeLangfuseProjectMembershipsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseProjectMembershipsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseProjectMemberships"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseProjectMembershipsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries user roles in a Langfuse project.
+//
+// @param request - DescribeLangfuseProjectMembershipsRequest
+//
+// @return DescribeLangfuseProjectMembershipsResponse
+func (client *Client) DescribeLangfuseProjectMemberships(request *DescribeLangfuseProjectMembershipsRequest) (_result *DescribeLangfuseProjectMembershipsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLangfuseProjectMembershipsResponse{}
+	_body, _err := client.DescribeLangfuseProjectMembershipsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of Langfuse projects.
+//
+// @param request - DescribeLangfuseProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseProjectsResponse
+func (client *Client) DescribeLangfuseProjectsWithOptions(request *DescribeLangfuseProjectsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseProjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseProjects"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of Langfuse projects.
+//
+// @param request - DescribeLangfuseProjectsRequest
+//
+// @return DescribeLangfuseProjectsResponse
+func (client *Client) DescribeLangfuseProjects(request *DescribeLangfuseProjectsRequest) (_result *DescribeLangfuseProjectsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLangfuseProjectsResponse{}
+	_body, _err := client.DescribeLangfuseProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Langfuse whitelist.
+//
+// @param request - DescribeLangfuseSecurityIPListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseSecurityIPListResponse
+func (client *Client) DescribeLangfuseSecurityIPListWithOptions(request *DescribeLangfuseSecurityIPListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseSecurityIPListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseSecurityIPList"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseSecurityIPListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Langfuse whitelist.
+//
+// @param request - DescribeLangfuseSecurityIPListRequest
+//
+// @return DescribeLangfuseSecurityIPListResponse
+func (client *Client) DescribeLangfuseSecurityIPList(request *DescribeLangfuseSecurityIPListRequest) (_result *DescribeLangfuseSecurityIPListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLangfuseSecurityIPListResponse{}
+	_body, _err := client.DescribeLangfuseSecurityIPListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a Langfuse user.
+//
+// @param request - DescribeLangfuseUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseUserResponse
+func (client *Client) DescribeLangfuseUserWithOptions(request *DescribeLangfuseUserRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseUser"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a Langfuse user.
+//
+// @param request - DescribeLangfuseUserRequest
+//
+// @return DescribeLangfuseUserResponse
+func (client *Client) DescribeLangfuseUser(request *DescribeLangfuseUserRequest) (_result *DescribeLangfuseUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLangfuseUserResponse{}
+	_body, _err := client.DescribeLangfuseUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of Langfuse users.
+//
+// @param request - DescribeLangfuseUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseUsersResponse
+func (client *Client) DescribeLangfuseUsersWithOptions(request *DescribeLangfuseUsersRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseUsersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseUsers"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of Langfuse users.
+//
+// @param request - DescribeLangfuseUsersRequest
+//
+// @return DescribeLangfuseUsersResponse
+func (client *Client) DescribeLangfuseUsers(request *DescribeLangfuseUsersRequest) (_result *DescribeLangfuseUsersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLangfuseUsersResponse{}
+	_body, _err := client.DescribeLangfuseUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Describes currently running queries.
 //
 // @param request - DescribeProcessListRequest
 //
@@ -2026,7 +3292,7 @@ func (client *Client) DescribeProcessListWithOptions(request *DescribeProcessLis
 
 // Summary:
 //
-// Views running queries.
+// Describes currently running queries.
 //
 // @param request - DescribeProcessListRequest
 //
@@ -2044,7 +3310,7 @@ func (client *Client) DescribeProcessList(request *DescribeProcessListRequest) (
 
 // Summary:
 //
-// 查询云数据库ClickHouse所有地域和可用区的信息
+// Returns information about the available regions and zones for ApsaraDB for ClickHouse.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2073,7 +3339,7 @@ func (client *Client) DescribeRegionsWithOptions(runtime *dara.RuntimeOptions) (
 
 // Summary:
 //
-// 查询云数据库ClickHouse所有地域和可用区的信息
+// Returns information about the available regions and zones for ApsaraDB for ClickHouse.
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
@@ -2089,7 +3355,7 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// Queries the whitelist of an ApsaraDB for ClickHouse cluster.
+// Queries a whitelist.
 //
 // @param request - DescribeSecurityIPListRequest
 //
@@ -2137,7 +3403,7 @@ func (client *Client) DescribeSecurityIPListWithOptions(request *DescribeSecurit
 
 // Summary:
 //
-// Queries the whitelist of an ApsaraDB for ClickHouse cluster.
+// Queries a whitelist.
 //
 // @param request - DescribeSecurityIPListRequest
 //
@@ -2155,7 +3421,7 @@ func (client *Client) DescribeSecurityIPList(request *DescribeSecurityIPListRequ
 
 // Summary:
 //
-// Queries the details of slow query logs.
+// Call DescribeSlowLogRecords to query slow log records.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -2227,7 +3493,7 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 
 // Summary:
 //
-// Queries the details of slow query logs.
+// Call DescribeSlowLogRecords to query slow log records.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -2245,7 +3511,7 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 
 // Summary:
 //
-// Queries the trend of slow query logs.
+// Queries the slow log trend.
 //
 // @param request - DescribeSlowLogTrendRequest
 //
@@ -2313,7 +3579,7 @@ func (client *Client) DescribeSlowLogTrendWithOptions(request *DescribeSlowLogTr
 
 // Summary:
 //
-// Queries the trend of slow query logs.
+// Queries the slow log trend.
 //
 // @param request - DescribeSlowLogTrendRequest
 //
@@ -2331,7 +3597,7 @@ func (client *Client) DescribeSlowLogTrend(request *DescribeSlowLogTrendRequest)
 
 // Summary:
 //
-// 取消白名单模板和实例关联关系
+// Disassociate a whitelist template from an instance.
 //
 // @param request - DetachWhitelistTemplateToInstanceRequest
 //
@@ -2383,7 +3649,7 @@ func (client *Client) DetachWhitelistTemplateToInstanceWithOptions(request *Deta
 
 // Summary:
 //
-// 取消白名单模板和实例关联关系
+// Disassociate a whitelist template from an instance.
 //
 // @param request - DetachWhitelistTemplateToInstanceRequest
 //
@@ -2401,7 +3667,7 @@ func (client *Client) DetachWhitelistTemplateToInstance(request *DetachWhitelist
 
 // Summary:
 //
-// 查询白名单模板详情
+// Queries the details of a whitelist template.
 //
 // @param request - GetWhitelistTemplateRequest
 //
@@ -2449,7 +3715,7 @@ func (client *Client) GetWhitelistTemplateWithOptions(request *GetWhitelistTempl
 
 // Summary:
 //
-// 查询白名单模板详情
+// Queries the details of a whitelist template.
 //
 // @param request - GetWhitelistTemplateRequest
 //
@@ -2467,7 +3733,7 @@ func (client *Client) GetWhitelistTemplate(request *GetWhitelistTemplateRequest)
 
 // Summary:
 //
-// Terminates an ongoing query.
+// Terminates a running task.
 //
 // @param request - KillProcessRequest
 //
@@ -2523,7 +3789,7 @@ func (client *Client) KillProcessWithOptions(request *KillProcessRequest, runtim
 
 // Summary:
 //
-// Terminates an ongoing query.
+// Terminates a running task.
 //
 // @param request - KillProcessRequest
 //
@@ -2541,7 +3807,7 @@ func (client *Client) KillProcess(request *KillProcessRequest) (_result *KillPro
 
 // Summary:
 //
-// 列举ClickHouse时区参数枚举值
+// Lists the available time zones for ClickHouse.
 //
 // @param request - ListClickHouseDBTimezonesRequest
 //
@@ -2589,7 +3855,7 @@ func (client *Client) ListClickHouseDBTimezonesWithOptions(request *ListClickHou
 
 // Summary:
 //
-// 列举ClickHouse时区参数枚举值
+// Lists the available time zones for ClickHouse.
 //
 // @param request - ListClickHouseDBTimezonesRequest
 //
@@ -2607,7 +3873,7 @@ func (client *Client) ListClickHouseDBTimezones(request *ListClickHouseDBTimezon
 
 // Summary:
 //
-// 查询实例关联的白名单模板清单
+// Lists the IP address whitelist templates linked to an instance.
 //
 // @param request - ListInstanceLinkedWhitelistTemplatesRequest
 //
@@ -2655,7 +3921,7 @@ func (client *Client) ListInstanceLinkedWhitelistTemplatesWithOptions(request *L
 
 // Summary:
 //
-// 查询实例关联的白名单模板清单
+// Lists the IP address whitelist templates linked to an instance.
 //
 // @param request - ListInstanceLinkedWhitelistTemplatesRequest
 //
@@ -2673,7 +3939,7 @@ func (client *Client) ListInstanceLinkedWhitelistTemplates(request *ListInstance
 
 // Summary:
 //
-// 查询白名单模板清单
+// Queries the whitelist templates associated with an instance.
 //
 // @param request - ListWhitelistTemplatesRequest
 //
@@ -2729,7 +3995,7 @@ func (client *Client) ListWhitelistTemplatesWithOptions(request *ListWhitelistTe
 
 // Summary:
 //
-// 查询白名单模板清单
+// Queries the whitelist templates associated with an instance.
 //
 // @param request - ListWhitelistTemplatesRequest
 //
@@ -2901,7 +4167,11 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 
 // Summary:
 //
-// Modifies the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Modifies the backup policy of an ApsaraDB for ClickHouse cluster.
+//
+// Description:
+//
+// > Data backup is supported only for ApsaraDB for ClickHouse clusters that run version 20.3, 20.8, or 21.8.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -2961,7 +4231,11 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 
 // Summary:
 //
-// Modifies the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Modifies the backup policy of an ApsaraDB for ClickHouse cluster.
+//
+// Description:
+//
+// > Data backup is supported only for ApsaraDB for ClickHouse clusters that run version 20.3, 20.8, or 21.8.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -2979,7 +4253,7 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 
 // Summary:
 //
-// Modifies the configurations of an ApsaraDB for ClickHouse cluster.
+// You can call the ModifyDBInstanceAttribute operation to modify the configuration of a cluster.
 //
 // @param request - ModifyDBInstanceAttributeRequest
 //
@@ -3039,7 +4313,7 @@ func (client *Client) ModifyDBInstanceAttributeWithOptions(request *ModifyDBInst
 
 // Summary:
 //
-// Modifies the configurations of an ApsaraDB for ClickHouse cluster.
+// You can call the ModifyDBInstanceAttribute operation to modify the configuration of a cluster.
 //
 // @param request - ModifyDBInstanceAttributeRequest
 //
@@ -3057,21 +4331,35 @@ func (client *Client) ModifyDBInstanceAttribute(request *ModifyDBInstanceAttribu
 
 // Summary:
 //
-// Modifies the elastic scaling settings of an ApsaraDB for ClickHouse cluster.
+// Use `ModifyDBInstanceClass` to modify the scaling configuration of a cluster.
 //
-// @param request - ModifyDBInstanceClassRequest
+// Description:
+//
+// Before you call this API, make sure that you understand the billing method and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
+//
+// @param tmpReq - ModifyDBInstanceClassRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDBInstanceClassResponse
-func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstanceClassRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceClassResponse, _err error) {
+func (client *Client) ModifyDBInstanceClassWithOptions(tmpReq *ModifyDBInstanceClassRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceClassResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ModifyDBInstanceClassShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AutoScaleConfig) {
+		request.AutoScaleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AutoScaleConfig, dara.String("AutoScaleConfig"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoScaleConfigShrink) {
+		query["AutoScaleConfig"] = request.AutoScaleConfigShrink
+	}
+
 	if !dara.IsNil(request.ComputingGroupId) {
 		query["ComputingGroupId"] = request.ComputingGroupId
 	}
@@ -3137,7 +4425,11 @@ func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstance
 
 // Summary:
 //
-// Modifies the elastic scaling settings of an ApsaraDB for ClickHouse cluster.
+// Use `ModifyDBInstanceClass` to modify the scaling configuration of a cluster.
+//
+// Description:
+//
+// Before you call this API, make sure that you understand the billing method and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
 //
 // @param request - ModifyDBInstanceClassRequest
 //
@@ -3155,7 +4447,7 @@ func (client *Client) ModifyDBInstanceClass(request *ModifyDBInstanceClassReques
 
 // Summary:
 //
-// 修改实例参数配置
+// Modifies the parameter settings for a DB instance.
 //
 // @param request - ModifyDBInstanceConfigRequest
 //
@@ -3207,7 +4499,7 @@ func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanc
 
 // Summary:
 //
-// 修改实例参数配置
+// Modifies the parameter settings for a DB instance.
 //
 // @param request - ModifyDBInstanceConfigRequest
 //
@@ -3225,7 +4517,7 @@ func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequ
 
 // Summary:
 //
-// Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
+// Modifies the connection string of a cluster.
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -3293,7 +4585,7 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 
 // Summary:
 //
-// Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
+// Modifies the connection string of a cluster.
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -3302,6 +4594,166 @@ func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstance
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyDBInstanceConnectionStringResponse{}
 	_body, _err := client.ModifyDBInstanceConnectionStringWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the permissions of a user in a Langfuse organization.
+//
+// @param request - ModifyLangfuseOrgMembershipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLangfuseOrgMembershipResponse
+func (client *Client) ModifyLangfuseOrgMembershipWithOptions(request *ModifyLangfuseOrgMembershipRequest, runtime *dara.RuntimeOptions) (_result *ModifyLangfuseOrgMembershipResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyLangfuseOrgMembership"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyLangfuseOrgMembershipResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the permissions of a user in a Langfuse organization.
+//
+// @param request - ModifyLangfuseOrgMembershipRequest
+//
+// @return ModifyLangfuseOrgMembershipResponse
+func (client *Client) ModifyLangfuseOrgMembership(request *ModifyLangfuseOrgMembershipRequest) (_result *ModifyLangfuseOrgMembershipResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyLangfuseOrgMembershipResponse{}
+	_body, _err := client.ModifyLangfuseOrgMembershipWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the permissions of a user in a Langfuse project.
+//
+// @param request - ModifyLangfuseProjectMembershipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLangfuseProjectMembershipResponse
+func (client *Client) ModifyLangfuseProjectMembershipWithOptions(request *ModifyLangfuseProjectMembershipRequest, runtime *dara.RuntimeOptions) (_result *ModifyLangfuseProjectMembershipResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyLangfuseProjectMembership"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyLangfuseProjectMembershipResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the permissions of a user in a Langfuse project.
+//
+// @param request - ModifyLangfuseProjectMembershipRequest
+//
+// @return ModifyLangfuseProjectMembershipResponse
+func (client *Client) ModifyLangfuseProjectMembership(request *ModifyLangfuseProjectMembershipRequest) (_result *ModifyLangfuseProjectMembershipResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyLangfuseProjectMembershipResponse{}
+	_body, _err := client.ModifyLangfuseProjectMembershipWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3458,6 +4910,80 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &ResetAccountPasswordResponse{}
 	_body, _err := client.ResetAccountPasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Resets the password of a Langfuse user.
+//
+// @param request - ResetLangfuseUserPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetLangfuseUserPasswordResponse
+func (client *Client) ResetLangfuseUserPasswordWithOptions(request *ResetLangfuseUserPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetLangfuseUserPasswordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.NewPassword) {
+		query["NewPassword"] = request.NewPassword
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetLangfuseUserPassword"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetLangfuseUserPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Resets the password of a Langfuse user.
+//
+// @param request - ResetLangfuseUserPasswordRequest
+//
+// @return ResetLangfuseUserPasswordResponse
+func (client *Client) ResetLangfuseUserPassword(request *ResetLangfuseUserPasswordRequest) (_result *ResetLangfuseUserPasswordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ResetLangfuseUserPasswordResponse{}
+	_body, _err := client.ResetLangfuseUserPasswordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3665,7 +5191,7 @@ func (client *Client) StopDBInstance(request *StopDBInstanceRequest) (_result *S
 
 // Summary:
 //
-// 更新白名单模板
+// Updates a whitelist template.
 //
 // @param request - UpdateWhitelistTemplateRequest
 //
@@ -3721,7 +5247,7 @@ func (client *Client) UpdateWhitelistTemplateWithOptions(request *UpdateWhitelis
 
 // Summary:
 //
-// 更新白名单模板
+// Updates a whitelist template.
 //
 // @param request - UpdateWhitelistTemplateRequest
 //

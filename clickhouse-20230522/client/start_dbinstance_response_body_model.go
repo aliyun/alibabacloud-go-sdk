@@ -72,7 +72,7 @@ type StartDBInstanceResponseBodyData struct {
 	//
 	// example:
 	//
-	// test1
+	// Enterprise edition cluster test
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// The task ID.
 	//

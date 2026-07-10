@@ -16,12 +16,16 @@ type iGetWhitelistTemplateRequest interface {
 }
 
 type GetWhitelistTemplateRequest struct {
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the whitelist template.
+	//
 	// This parameter is required.
 	//
 	// example:

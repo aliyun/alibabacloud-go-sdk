@@ -16,8 +16,9 @@ type iGetWhitelistTemplateResponseBody interface {
 }
 
 type GetWhitelistTemplateResponseBody struct {
+	// The whitelist template details.
 	Data *GetWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Request ID。
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,6 +62,7 @@ func (s *GetWhitelistTemplateResponseBody) Validate() error {
 }
 
 type GetWhitelistTemplateResponseBodyData struct {
+	// The list of whitelist templates.
 	Templates []*GetWhitelistTemplateResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 }
 
@@ -95,15 +97,22 @@ func (s *GetWhitelistTemplateResponseBodyData) Validate() error {
 }
 
 type GetWhitelistTemplateResponseBodyDataTemplates struct {
+	// The list of associated instances.
 	DbInstances []*GetWhitelistTemplateResponseBodyDataTemplatesDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Repeated"`
+	// The IP whitelist.
+	//
 	// example:
 	//
 	// 192.168.1.1,10.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The ID of the whitelist template.
+	//
 	// example:
 	//
 	// g-asdfwem
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the whitelist template.
+	//
 	// example:
 	//
 	// demo_template
@@ -168,6 +177,8 @@ func (s *GetWhitelistTemplateResponseBodyDataTemplates) Validate() error {
 }
 
 type GetWhitelistTemplateResponseBodyDataTemplatesDbInstances struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// cc-asdfwef

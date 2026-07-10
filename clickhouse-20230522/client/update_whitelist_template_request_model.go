@@ -20,7 +20,7 @@ type iUpdateWhitelistTemplateRequest interface {
 }
 
 type UpdateWhitelistTemplateRequest struct {
-	// RegionId
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -28,18 +28,24 @@ type UpdateWhitelistTemplateRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IP address whitelist. You can add up to 100 IP addresses, separated by commas.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 192.168.1.1,10.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The whitelist template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 98a6d3db05984dca
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The whitelist template name.
+	//
 	// This parameter is required.
 	//
 	// example:

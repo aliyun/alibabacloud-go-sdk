@@ -16,8 +16,9 @@ type iDetachWhitelistTemplateToInstanceResponseBody interface {
 }
 
 type DetachWhitelistTemplateToInstanceResponseBody struct {
+	// The returned data.
 	Data *DetachWhitelistTemplateToInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Request ID。
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,8 +62,12 @@ func (s *DetachWhitelistTemplateToInstanceResponseBody) Validate() error {
 }
 
 type DetachWhitelistTemplateToInstanceResponseBodyData struct {
-	DetachFailList      []*DetachWhitelistTemplateToInstanceResponseBodyDataDetachFailList      `json:"DetachFailList,omitempty" xml:"DetachFailList,omitempty" type:"Repeated"`
+	// A list of instances that failed to detach.
+	DetachFailList []*DetachWhitelistTemplateToInstanceResponseBodyDataDetachFailList `json:"DetachFailList,omitempty" xml:"DetachFailList,omitempty" type:"Repeated"`
+	// A list of successfully detached instances.
 	DetachSuccessedList []*DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedList `json:"DetachSuccessedList,omitempty" xml:"DetachSuccessedList,omitempty" type:"Repeated"`
+	// The status of the operation. A value of `ok` indicates success.
+	//
 	// example:
 	//
 	// ok
@@ -127,10 +132,14 @@ func (s *DetachWhitelistTemplateToInstanceResponseBodyData) Validate() error {
 }
 
 type DetachWhitelistTemplateToInstanceResponseBodyDataDetachFailList struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// my-database
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The reason the detach operation failed.
+	//
 	// example:
 	//
 	// 处理异常
@@ -168,11 +177,14 @@ func (s *DetachWhitelistTemplateToInstanceResponseBodyDataDetachFailList) Valida
 }
 
 type DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedList struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// my-database
-	DBInstanceId *string                                                                          `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Templates    []*DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// A list of whitelist templates.
+	Templates []*DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 }
 
 func (s DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedList) String() string {
@@ -215,15 +227,22 @@ func (s *DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedList) V
 }
 
 type DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplates struct {
+	// A list of associated instances.
 	DbInstances []*DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplatesDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Repeated"`
+	// The IP whitelist.
+	//
 	// example:
 	//
 	// 192.168.1.1,10.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The whitelist template ID.
+	//
 	// example:
 	//
 	// g-asdfwem
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The whitelist template name.
+	//
 	// example:
 	//
 	// demo_template
@@ -288,6 +307,8 @@ func (s *DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTem
 }
 
 type DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplatesDbInstances struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// asdfwef

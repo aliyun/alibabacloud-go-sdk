@@ -16,7 +16,7 @@ type iDescribeProcessListResponseBody interface {
 }
 
 type DescribeProcessListResponseBody struct {
-	// The data returned.
+	// The data object.
 	Data *DescribeProcessListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -72,11 +72,11 @@ type DescribeProcessListResponseBodyData struct {
 	//
 	// example:
 	//
-	// test
+	// For testing
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The result sets.
+	// The result set.
 	ResultSet []*DescribeProcessListResponseBodyDataResultSet `json:"ResultSet,omitempty" xml:"ResultSet,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries that match the filter criteria.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ func (s *DescribeProcessListResponseBodyData) Validate() error {
 }
 
 type DescribeProcessListResponseBodyDataResultSet struct {
-	// The address to which the query statement is sent.
+	// The address from which the query was initiated.
 	//
 	// example:
 	//
@@ -154,25 +154,25 @@ type DescribeProcessListResponseBodyDataResultSet struct {
 	//
 	// \\"79f7e40b-87e2-4ef4-b6df-21889a3a030e\\"
 	InitialQueryId *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
-	// The user who executes the query statement.
+	// The user who initiated the query.
 	//
 	// example:
 	//
 	// bany
 	InitialUser *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
-	// The query statement that is running.
+	// The query statement.
 	//
 	// example:
 	//
 	// select 	- from test
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The minimum query duration. Minimum value: **1000**. Unit: milliseconds.
+	// The execution duration of the query, in milliseconds (ms).
 	//
 	// example:
 	//
 	// 1000
 	QueryDurationMs *int64 `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
-	// The beginning of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The start time of the query. The time is in UTC and follows the `yyyy-MM-ddTHH:mm:ssZ` format.
 	//
 	// example:
 	//

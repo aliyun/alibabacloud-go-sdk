@@ -9,6 +9,8 @@ type iModifyDBInstanceClassRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoScaleConfig(v *ModifyDBInstanceClassRequestAutoScaleConfig) *ModifyDBInstanceClassRequest
+	GetAutoScaleConfig() *ModifyDBInstanceClassRequestAutoScaleConfig
 	SetComputingGroupId(v string) *ModifyDBInstanceClassRequest
 	GetComputingGroupId() *string
 	SetDBInstanceId(v string) *ModifyDBInstanceClassRequest
@@ -32,6 +34,16 @@ type iModifyDBInstanceClassRequest interface {
 }
 
 type ModifyDBInstanceClassRequest struct {
+	// The autoscaling configuration for the compute group.
+	//
+	// if can be null:
+	// true
+	AutoScaleConfig *ModifyDBInstanceClassRequestAutoScaleConfig `json:"AutoScaleConfig,omitempty" xml:"AutoScaleConfig,omitempty" type:"Struct"`
+	// The compute group ID.
+	//
+	// example:
+	//
+	// cc-gs5j3sua77*******-clickhouse
 	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The cluster ID.
 	//
@@ -39,16 +51,22 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// example:
 	//
-	// cc-xxxxxxx
+	// cc-gs5j3sua77*******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The number of nodes. Valid values: 2 to 16.
+	//
 	// example:
 	//
 	// 2
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// The maximum capacity per node for serverless autoscaling. Valid values: 4 to 32. This value must be greater than the minimum value.
+	//
 	// example:
 	//
 	// 4
 	NodeScaleMax *int32 `json:"NodeScaleMax,omitempty" xml:"NodeScaleMax,omitempty"`
+	// The minimum capacity per node for serverless autoscaling. Valid values: 4 to 32.
+	//
 	// example:
 	//
 	// 32
@@ -59,22 +77,26 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The maximum capacity for elastic scaling.
+	// The maximum capacity for serverless autoscaling.
 	//
 	// example:
 	//
 	// 32
 	ScaleMax *int64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum capacity for elastic scaling.
+	// The minimum capacity for serverless autoscaling.
 	//
 	// example:
 	//
-	// 2
+	// 8
 	ScaleMin *int64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	// The pre-purchased storage capacity in GB.
+	//
 	// example:
 	//
 	// 100
 	StorageQuota *int64 `json:"StorageQuota,omitempty" xml:"StorageQuota,omitempty"`
+	// The storage type.
+	//
 	// example:
 	//
 	// OSS
@@ -87,6 +109,10 @@ func (s ModifyDBInstanceClassRequest) String() string {
 
 func (s ModifyDBInstanceClassRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBInstanceClassRequest) GetAutoScaleConfig() *ModifyDBInstanceClassRequestAutoScaleConfig {
+	return s.AutoScaleConfig
 }
 
 func (s *ModifyDBInstanceClassRequest) GetComputingGroupId() *string {
@@ -127,6 +153,11 @@ func (s *ModifyDBInstanceClassRequest) GetStorageQuota() *int64 {
 
 func (s *ModifyDBInstanceClassRequest) GetStorageType() *string {
 	return s.StorageType
+}
+
+func (s *ModifyDBInstanceClassRequest) SetAutoScaleConfig(v *ModifyDBInstanceClassRequestAutoScaleConfig) *ModifyDBInstanceClassRequest {
+	s.AutoScaleConfig = v
+	return s
 }
 
 func (s *ModifyDBInstanceClassRequest) SetComputingGroupId(v string) *ModifyDBInstanceClassRequest {
@@ -180,5 +211,116 @@ func (s *ModifyDBInstanceClassRequest) SetStorageType(v string) *ModifyDBInstanc
 }
 
 func (s *ModifyDBInstanceClassRequest) Validate() error {
+	if s.AutoScaleConfig != nil {
+		if err := s.AutoScaleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ModifyDBInstanceClassRequestAutoScaleConfig struct {
+	// The number of burstable nodes for autoscaling.
+	//
+	// example:
+	//
+	// 2
+	BurstNum *int32 `json:"BurstNum,omitempty" xml:"BurstNum,omitempty"`
+	// Specifies whether to enable or disable autoscaling. Valid values: `enable` and `disable`.
+	//
+	// example:
+	//
+	// enable
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Information about the VSwitches.
+	VSwitchInfos []*ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos `json:"VSwitchInfos,omitempty" xml:"VSwitchInfos,omitempty" type:"Repeated"`
+}
+
+func (s ModifyDBInstanceClassRequestAutoScaleConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyDBInstanceClassRequestAutoScaleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceClassRequestAutoScaleConfig) GetBurstNum() *int32 {
+	return s.BurstNum
+}
+
+func (s *ModifyDBInstanceClassRequestAutoScaleConfig) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ModifyDBInstanceClassRequestAutoScaleConfig) GetVSwitchInfos() []*ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos {
+	return s.VSwitchInfos
+}
+
+func (s *ModifyDBInstanceClassRequestAutoScaleConfig) SetBurstNum(v int32) *ModifyDBInstanceClassRequestAutoScaleConfig {
+	s.BurstNum = &v
+	return s
+}
+
+func (s *ModifyDBInstanceClassRequestAutoScaleConfig) SetStatus(v string) *ModifyDBInstanceClassRequestAutoScaleConfig {
+	s.Status = &v
+	return s
+}
+
+func (s *ModifyDBInstanceClassRequestAutoScaleConfig) SetVSwitchInfos(v []*ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos) *ModifyDBInstanceClassRequestAutoScaleConfig {
+	s.VSwitchInfos = v
+	return s
+}
+
+func (s *ModifyDBInstanceClassRequestAutoScaleConfig) Validate() error {
+	if s.VSwitchInfos != nil {
+		for _, item := range s.VSwitchInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos struct {
+	// The VSwitch IDs.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-beijing-XXX
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos) GetVSwitchIds() []*string {
+	return s.VSwitchIds
+}
+
+func (s *ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos) GetZoneId() *string {
+	return s.ZoneId
+}
+
+func (s *ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos) SetVSwitchIds(v []*string) *ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos) SetZoneId(v string) *ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos) Validate() error {
 	return dara.Validate(s)
 }

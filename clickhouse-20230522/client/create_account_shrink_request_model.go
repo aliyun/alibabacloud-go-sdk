@@ -38,9 +38,9 @@ type CreateAccountShrinkRequest struct {
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
 	// The type of the database account. Valid values:
 	//
-	// 	- **NormalAccount**: standard account
+	// - **NormalAccount**: standard account
 	//
-	// 	- **SuperAccount**: privileged account
+	// - **SuperAccount**: privileged account
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreateAccountShrinkRequest struct {
 	//
 	// example:
 	//
-	// Used for account
+	// For testing
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The information about permissions.
 	DmlAuthSettingShrink *string `json:"DmlAuthSetting,omitempty" xml:"DmlAuthSetting,omitempty"`
@@ -68,7 +68,7 @@ type CreateAccountShrinkRequest struct {
 	//
 	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// - The following special characters are supported: ! @ # $ % ^ & 	- ( ) _ + - =
+	// - The following special characters are supported: ! @ # $ % ^ & \\	- ( ) _ + - =
 	//
 	// - The password must be 8 to 32 characters in length.
 	//

@@ -16,7 +16,7 @@ type iModifyDBInstanceClassResponseBody interface {
 }
 
 type ModifyDBInstanceClassResponseBody struct {
-	// The returned result.
+	// The response data.
 	Data *ModifyDBInstanceClassResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,26 +62,31 @@ func (s *ModifyDBInstanceClassResponseBody) Validate() error {
 }
 
 type ModifyDBInstanceClassResponseBodyData struct {
+	// The compute group ID.
+	//
+	// example:
+	//
+	// cc-gs5j3sua77*******-clickhouse
 	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The cluster ID.
 	//
 	// example:
 	//
-	// cc-xxxxxxx
+	// cc-gs5j3sua77*******
 	DBInstanceID *int64 `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
 	// The cluster name.
 	//
 	// example:
 	//
-	// cc-xxxxxxx
+	// cc-gs5j3sua77*******
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The maximum capacity for elastic scaling.
+	// The maximum capacity for serverless autoscaling.
 	//
 	// example:
 	//
 	// 32
 	ScaleMax *int64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum capacity for elastic scaling.
+	// The minimum capacity for serverless autoscaling.
 	//
 	// example:
 	//

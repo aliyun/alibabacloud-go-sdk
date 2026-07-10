@@ -22,19 +22,28 @@ type iDescribeBackupsResponseBody interface {
 }
 
 type DescribeBackupsResponseBody struct {
+	// The list of backup sets.
 	Items []*DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F5178C10-1407-4987-9133-DE4DC9119F75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of backups.
+	//
 	// example:
 	//
 	// 1
@@ -108,42 +117,68 @@ func (s *DescribeBackupsResponseBody) Validate() error {
 }
 
 type DescribeBackupsResponseBodyItems struct {
+	// The end time of the backup. The time is in UTC.
+	//
 	// example:
 	//
 	// 2021-11-22T18:28:41Z
 	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	// The backup record ID.
+	//
 	// example:
 	//
 	// 117403****
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The backup method.
+	//
 	// example:
 	//
 	// Physical
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	// The information about the backup set.
+	//
 	// example:
 	//
-	// {"shard_count"：4}
+	// {"shard_count": 4}
 	BackupSetInfo *string `json:"BackupSetInfo,omitempty" xml:"BackupSetInfo,omitempty"`
+	// The size of the backup file in MB.
+	//
 	// example:
 	//
 	// 131072
 	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	// The start time of the backup.
+	//
 	// example:
 	//
 	// 2021-11-22T18:28:22Z
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	// The status of the backup set.
+	//
 	// example:
 	//
 	// Success
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// The backup type.
+	//
+	// Valid values:
+	//
+	// - **FullBackup**: full backup.
+	//
+	// - **IncrementalBackup**: incremental backup.
+	//
 	// example:
 	//
 	// IncrementalBackup
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cc-bp179i5956tih2m93
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The expiration time of the backup set.
+	//
 	// example:
 	//
 	// 2022-07-22T18:28:41Z

@@ -16,7 +16,7 @@ type iDescribeDBInstancesResponseBody interface {
 }
 
 type DescribeDBInstancesResponseBody struct {
-	// The returned result.
+	// The response data.
 	Data *DescribeDBInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *DescribeDBInstancesResponseBody) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyData struct {
-	// The clusters.
+	// The list of instance details.
 	DBInstances []*DescribeDBInstancesResponseBodyDataDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -76,7 +76,7 @@ type DescribeDBInstancesResponseBodyData struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ func (s *DescribeDBInstancesResponseBodyData) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyDataDBInstances struct {
-	// The user ID.
+	// The account ID.
 	//
 	// example:
 	//
@@ -154,41 +154,41 @@ type DescribeDBInstancesResponseBodyDataDBInstances struct {
 	//
 	// 186681****
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	// The billing method. Valid values:
+	// The billing method for the instance. Valid values:
 	//
-	// 	- PrePaid: subscription
+	// - `PrePaid`: subscription.
 	//
-	// 	- PostPaid: pay-as-you-go
+	// - `PostPaid`: pay-as-you-go.
 	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the cluster was created.
+	// The instance creation time.
 	//
 	// example:
 	//
 	// 2022-12-04 21:16:15
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cluster ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// cc-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Indicates whether the release protection feature is enabled for the cluster.
+	// Indicates whether deletion protection is enabled.
 	//
 	// example:
 	//
 	// False
 	DeletionProtection *string `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The cluster description.
+	// The instance description.
 	//
 	// example:
 	//
 	// test_desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The engine type.
+	// The engine.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ type DescribeDBInstancesResponseBodyDataDBInstances struct {
 	//
 	// 22.8
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The time when the cluster expires.
+	// The expiration time.
 	//
 	// example:
 	//
@@ -212,19 +212,19 @@ type DescribeDBInstancesResponseBodyDataDBInstances struct {
 	//
 	// 0
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The reason why the cluster was locked.
+	// The reason for the lock.
 	//
 	// example:
 	//
 	// null
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The end time of the maintenance window.
+	// The maintenance window end time.
 	//
 	// example:
 	//
 	// 04:00:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window.
+	// The maintenance window start time.
 	//
 	// example:
 	//
@@ -242,29 +242,31 @@ type DescribeDBInstancesResponseBodyDataDBInstances struct {
 	//
 	// rg-acfmzy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The maximum capacity for elastic scaling.
+	// The maximum compute capacity for serverless elastic scaling.
 	//
 	// example:
 	//
 	// 13
 	ScaleMax *int32 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum capacity for elastic scaling.
+	// The minimum compute capacity for serverless elastic scaling.
 	//
 	// example:
 	//
 	// 1
 	ScaleMin *int32 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The cluster status.
+	// The instance status.
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The instance storage type.
+	//
 	// example:
 	//
 	// oss
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The tags.
+	// The tags attached to the instance.
 	Tags []*DescribeDBInstancesResponseBodyDataDBInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The vSwitch ID.
 	//
@@ -272,7 +274,7 @@ type DescribeDBInstancesResponseBodyDataDBInstances struct {
 	//
 	// vsw-8vb5mw****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//

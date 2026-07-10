@@ -26,6 +26,11 @@ type iDescribeSlowLogTrendRequest interface {
 }
 
 type DescribeSlowLogTrendRequest struct {
+	// The computing group ID.
+	//
+	// example:
+	//
+	// cc-bp100p4q1g9z3****-clickhouse
 	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The cluster ID.
 	//
@@ -35,19 +40,19 @@ type DescribeSlowLogTrendRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
+	// The end of the time range to query. The time is in UTC and uses the yyyy-MM-dd hh:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-06-07 10:03:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The code of the cloud service.
+	// The product code.
 	//
 	// example:
 	//
 	// clickhouse
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
+	// The minimum execution duration of a slow SQL query, in milliseconds. The minimum value is **1000**.
 	//
 	// example:
 	//
@@ -59,7 +64,7 @@ type DescribeSlowLogTrendRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
+	// The start of the time range to query. The time is in UTC and uses the yyyy-MM-dd hh:mm:ss format.
 	//
 	// example:
 	//

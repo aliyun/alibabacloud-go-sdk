@@ -14,7 +14,7 @@ type iModifyBackupPolicyResponseBody interface {
 }
 
 type ModifyBackupPolicyResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

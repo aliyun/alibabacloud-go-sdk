@@ -22,28 +22,38 @@ type iModifyBackupPolicyRequest interface {
 }
 
 type ModifyBackupPolicyRequest struct {
+	// The number of days to retain backups.
+	//
 	// example:
 	//
 	// 7
 	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-xxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The backup cycle.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Monday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// The backup time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 15:00Z-16:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -32,6 +32,11 @@ type iDescribeProcessListRequest interface {
 }
 
 type DescribeProcessListRequest struct {
+	// The computing group ID.
+	//
+	// example:
+	//
+	// cc-gs5j3sua77******-clickhouse
 	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The cluster ID.
 	//
@@ -47,13 +52,13 @@ type DescribeProcessListRequest struct {
 	//
 	// 1
 	InitialQueryId *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
-	// The user who executes the query statement.
+	// The query user.
 	//
 	// example:
 	//
 	// testuser
 	InitialUser *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
-	// The keyword of the query statement.
+	// The keyword in the query statement.
 	//
 	// example:
 	//
@@ -65,29 +70,29 @@ type DescribeProcessListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The execution duration of slow SQL queries. Minimum value: 1000. Unit: milliseconds.
+	// The minimum query execution duration, in milliseconds (ms). Only queries that run for this duration or longer are returned. The minimum value is 1,000.
 	//
 	// example:
 	//
 	// 1000
 	QueryDurationMs *string `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
-	// Specifies the columns by which the query results are sorted in descending order.
+	// The criteria by which to sort the results. The results are sorted in descending order. Valid values:
 	//
-	// 	- 0: The query results are sorted by the query_duration_ms column.
+	// - 0: Sorts by `query_duration_ms`.
 	//
-	// 	- 1: The query results are sorted by the query_duration_ms and query_start_time columns.
+	// - 1: Sorts by `query_duration_ms` and `query_start_time`.
 	//
-	// 	- 2: The query results are sorted by the query_duration_ms, query_start_time, and user columns.
+	// - 2: Sorts by `query_duration_ms`, `query_start_time`, and `user`.
 	//
 	// example:
 	//
-	// id
+	// 0
 	QueryOrder *int64 `json:"QueryOrder,omitempty" xml:"QueryOrder,omitempty"`
 	// The region ID.
 	//

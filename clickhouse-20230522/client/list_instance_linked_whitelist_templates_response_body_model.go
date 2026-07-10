@@ -16,8 +16,9 @@ type iListInstanceLinkedWhitelistTemplatesResponseBody interface {
 }
 
 type ListInstanceLinkedWhitelistTemplatesResponseBody struct {
+	// The response data.
 	Data *ListInstanceLinkedWhitelistTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,6 +62,7 @@ func (s *ListInstanceLinkedWhitelistTemplatesResponseBody) Validate() error {
 }
 
 type ListInstanceLinkedWhitelistTemplatesResponseBodyData struct {
+	// A list of IP address whitelist templates.
 	Templates []*ListInstanceLinkedWhitelistTemplatesResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 }
 
@@ -95,14 +97,20 @@ func (s *ListInstanceLinkedWhitelistTemplatesResponseBodyData) Validate() error 
 }
 
 type ListInstanceLinkedWhitelistTemplatesResponseBodyDataTemplates struct {
+	// The comma-separated IP addresses in the whitelist.
+	//
 	// example:
 	//
 	// 192.168.1.1,10.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The IP address whitelist template ID.
+	//
 	// example:
 	//
 	// g-asdfwem
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The IP address whitelist template name.
+	//
 	// example:
 	//
 	// demo_template

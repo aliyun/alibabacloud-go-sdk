@@ -28,6 +28,11 @@ type iDescribeSlowLogRecordsRequest interface {
 }
 
 type DescribeSlowLogRecordsRequest struct {
+	// The computing group ID.
+	//
+	// example:
+	//
+	// cc-wz9v6y29y3******-clickhouse
 	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
 	// The cluster ID.
 	//
@@ -37,7 +42,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
+	// The end time of the query. The time must be in UTC and in `yyyy-MM-dd HH:mm:ss` format.
 	//
 	// example:
 	//
@@ -51,17 +56,17 @@ type DescribeSlowLogRecordsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- 30 (default)
+	// - 30 (default)
 	//
-	// 	- 50
+	// - 50
 	//
-	// 	- 100
+	// - 100
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
+	// The minimum duration, in milliseconds, for a slow SQL query to be returned. The minimum value is **1000**.
 	//
 	// example:
 	//
@@ -73,7 +78,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
+	// The start time of the query. The time must be in UTC and in `yyyy-MM-dd HH:mm:ss` format.
 	//
 	// example:
 	//

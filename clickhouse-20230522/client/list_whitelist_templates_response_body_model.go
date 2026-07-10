@@ -16,8 +16,9 @@ type iListWhitelistTemplatesResponseBody interface {
 }
 
 type ListWhitelistTemplatesResponseBody struct {
+	// The query results.
 	Data *ListWhitelistTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -61,27 +62,40 @@ func (s *ListWhitelistTemplatesResponseBody) Validate() error {
 }
 
 type ListWhitelistTemplatesResponseBodyData struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrPageNumbers *int32 `json:"CurrPageNumbers,omitempty" xml:"CurrPageNumbers,omitempty"`
+	// Whether a next page exists.
+	//
 	// example:
 	//
 	// true
 	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// Whether a previous page exists.
+	//
 	// example:
 	//
 	// false
 	HasPrev *bool `json:"HasPrev,omitempty" xml:"HasPrev,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
-	PageSize  *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of whitelist templates.
 	Templates []*ListWhitelistTemplatesResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	// The total number of templates.
+	//
 	// example:
 	//
 	// 30
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 2
@@ -173,15 +187,22 @@ func (s *ListWhitelistTemplatesResponseBodyData) Validate() error {
 }
 
 type ListWhitelistTemplatesResponseBodyDataTemplates struct {
+	// The list of associated instances.
 	DbInstances []*ListWhitelistTemplatesResponseBodyDataTemplatesDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Repeated"`
+	// The IP address whitelist.
+	//
 	// example:
 	//
 	// 192.168.1.1,10.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The whitelist template ID.
+	//
 	// example:
 	//
 	// g-asdfwem
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The whitelist template name.
+	//
 	// example:
 	//
 	// g-asdfwem
@@ -246,6 +267,8 @@ func (s *ListWhitelistTemplatesResponseBodyDataTemplates) Validate() error {
 }
 
 type ListWhitelistTemplatesResponseBodyDataTemplatesDbInstances struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// cc-asdfwef

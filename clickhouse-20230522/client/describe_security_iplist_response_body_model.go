@@ -72,9 +72,9 @@ type DescribeSecurityIPListResponseBodyData struct {
 	//
 	// example:
 	//
-	// TestCluster
+	// Cluster test
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The details about the whitelists.
+	// The whitelist groups.
 	GroupItems []*DescribeSecurityIPListResponseBodyDataGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
 }
 
@@ -127,19 +127,19 @@ func (s *DescribeSecurityIPListResponseBodyData) Validate() error {
 }
 
 type DescribeSecurityIPListResponseBodyDataGroupItems struct {
-	// The name of the whitelist.
+	// The name of the whitelist group.
 	//
 	// example:
 	//
 	// default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The tag of the whitelist.
+	// The group tag.
 	//
 	// example:
 	//
 	// test
 	GroupTag *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
-	// The IP addresses and CIDR blocks in the whitelist.
+	// The IP addresses in the whitelist group.
 	//
 	// example:
 	//

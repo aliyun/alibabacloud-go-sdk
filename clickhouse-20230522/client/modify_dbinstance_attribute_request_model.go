@@ -22,11 +22,11 @@ type iModifyDBInstanceAttributeRequest interface {
 }
 
 type ModifyDBInstanceAttributeRequest struct {
-	// The configuration that you want to modify.
+	// The type of attribute to modify. Valid values:
 	//
-	// 	- MaintainTime: the O\\&M time
+	// - MaintainTime: Modify the O\\&M window.
 	//
-	// 	- DBInstanceDescription: the cluster name
+	// - DBInstanceDescription: Modify the instance name.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ModifyDBInstanceAttributeRequest struct {
 	//
 	// DBInstanceDescription
 	AttributeType *string `json:"AttributeType,omitempty" xml:"AttributeType,omitempty"`
-	// The new value of the configuration.
+	// The new value for the attribute.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ModifyDBInstanceAttributeRequest struct {
 	//
 	// cc-xxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The code of the cloud service.
+	// The product code.
 	//
 	// example:
 	//

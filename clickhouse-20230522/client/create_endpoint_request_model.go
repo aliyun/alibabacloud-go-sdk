@@ -22,8 +22,13 @@ type iCreateEndpointRequest interface {
 }
 
 type CreateEndpointRequest struct {
+	// The computing group ID.
+	//
+	// example:
+	//
+	// cc-bp100p4q1g9z3****-clickhouse
 	ComputingGroupId *string `json:"ComputingGroupId,omitempty" xml:"ComputingGroupId,omitempty"`
-	// The prefix of the new endpoint. The prefix of the ConnectionString parameter.
+	// The prefix for the connection string.
 	//
 	// example:
 	//
@@ -37,11 +42,7 @@ type CreateEndpointRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The network type.
-	//
-	// Valid values:
-	//
-	// 	- Public
+	// The network type. Set this value to Public to create a public endpoint.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iCreateDBRequest interface {
 }
 
 type CreateDBRequest struct {
-	// Database remark information.
+	// The description of the database.
 	//
 	// example:
 	//
@@ -34,15 +34,17 @@ type CreateDBRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database name. The name must meet the following requirements:
+	// The name of the database. The name must meet the following requirements:
 	//
-	// 	- The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	// - Consist of lowercase letters, digits, underscores (_), and hyphens (-).
 	//
-	// 	- The name must start with a lowercase letter and end with a lowercase letter or digit.
+	// - Start with a lowercase letter and end with a lowercase letter or a digit.
 	//
-	// 	- The name can be up to 64 characters in length.
+	// - Be up to 64 characters in length.
 	//
-	// >  An underscore (_) is counted as two characters.
+	// 	Notice:
+	//
+	// An underscore (_) is counted as two characters.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iDescribeSlowLogTrendResponseBody interface {
 }
 
 type DescribeSlowLogTrendResponseBody struct {
-	// The returned result.
+	// The data returned.
 	Data *DescribeSlowLogTrendResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -72,9 +72,9 @@ type DescribeSlowLogTrendResponseBodyData struct {
 	//
 	// example:
 	//
-	// clusterTest
+	// Cluster test
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The result sets.
+	// The result set.
 	ResultSet []*DescribeSlowLogTrendResponseBodyDataResultSet `json:"ResultSet,omitempty" xml:"ResultSet,omitempty" type:"Repeated"`
 }
 
@@ -127,31 +127,31 @@ func (s *DescribeSlowLogTrendResponseBodyData) Validate() error {
 }
 
 type DescribeSlowLogTrendResponseBodyDataResultSet struct {
-	// The average execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
+	// The average execution duration, in milliseconds, of slow SQL queries within the time interval.
 	//
 	// example:
 	//
 	// 2000
 	AvgQueryDurationMs *int64 `json:"AvgQueryDurationMs,omitempty" xml:"AvgQueryDurationMs,omitempty"`
-	// The total number of SQL queries within the specified time range.
+	// The number of slow SQL queries in the time interval.
 	//
 	// example:
 	//
 	// 1
 	Cnt *int64 `json:"Cnt,omitempty" xml:"Cnt,omitempty"`
-	// The maximum execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
+	// The maximum execution duration, in milliseconds, of slow SQL queries within the time interval.
 	//
 	// example:
 	//
 	// 3000
 	MaxQueryDurationMs *int64 `json:"MaxQueryDurationMs,omitempty" xml:"MaxQueryDurationMs,omitempty"`
-	// The minimum execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
+	// The minimum execution duration, in milliseconds, of slow SQL queries within the time interval.
 	//
 	// example:
 	//
 	// 1000
 	MinQueryDurationMs *int64 `json:"MinQueryDurationMs,omitempty" xml:"MinQueryDurationMs,omitempty"`
-	// The beginning of the time range to query. The time is in the yyyy-MM-dd hh:mm:ss format. The time is displayed in UTC.
+	// The start of the time interval for the data point. The time is in UTC and uses the yyyy-MM-dd hh:mm:ss format.
 	//
 	// example:
 	//

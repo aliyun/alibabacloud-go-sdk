@@ -21,7 +21,8 @@ type ListClickHouseDBTimezonesResponseBody struct {
 	// example:
 	//
 	// D0CEC6AC-7760-409A-A0D5-E6CD8660E9CC
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of time zones that ClickHouse supports.
 	TimeZones []*ListClickHouseDBTimezonesResponseBodyTimeZones `json:"TimeZones,omitempty" xml:"TimeZones,omitempty" type:"Repeated"`
 }
 
@@ -65,6 +66,8 @@ func (s *ListClickHouseDBTimezonesResponseBody) Validate() error {
 }
 
 type ListClickHouseDBTimezonesResponseBodyTimeZones struct {
+	// The enumeration value for the time zone.
+	//
 	// example:
 	//
 	// Asia/Shanghai

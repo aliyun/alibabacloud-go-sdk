@@ -18,16 +18,22 @@ type iModifyDBInstanceConfigRequest interface {
 }
 
 type ModifyDBInstanceConfigRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-uf6lkzf*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The API data parameter settings in JSON format.
+	//
 	// example:
 	//
 	// {"max_concurrent_queries":"100"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

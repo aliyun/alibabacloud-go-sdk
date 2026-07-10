@@ -14,6 +14,8 @@ type iDeleteBackupPolicyResponseBody interface {
 }
 
 type DeleteBackupPolicyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 60DDD29D-E5A8-563C-88FB-06D3A1F1C609

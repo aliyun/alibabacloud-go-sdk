@@ -24,26 +24,56 @@ type iDescribeBackupPolicyResponseBody interface {
 }
 
 type DescribeBackupPolicyResponseBody struct {
+	// The number of days for which the backup files are retained.
+	//
 	// example:
 	//
 	// 7
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// The size of the backup file. Unit: MB.
+	//
 	// example:
 	//
 	// 123124
 	BackupSize *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	// The backup cycle. Valid values:
+	//
+	// - **Monday**
+	//
+	// - **Tuesday**
+	//
+	// - **Wednesday**
+	//
+	// - **Thursday**
+	//
+	// - **Friday**
+	//
+	// - **Saturday**
+	//
+	// - **Sunday**
+	//
 	// example:
 	//
 	// Monday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// The backup time. The time is in UTC.
+	//
 	// example:
 	//
 	// 15:00Z-16:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F5178C10-1407-4987-9133-DE4DC9119F75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the backup feature is enabled. Valid values:
+	//
+	// - **true**: The backup feature is enabled.
+	//
+	// - **false**: The backup feature is disabled.
+	//
 	// example:
 	//
 	// true

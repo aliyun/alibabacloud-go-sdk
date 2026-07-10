@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 白名单模板关联实例
+// Attaches a whitelist template to instances.
 //
 // @param request - AttachWhitelistTemplateToInstanceRequest
 //
@@ -61,7 +61,7 @@ func (client *Client) AttachWhitelistTemplateToInstanceWithContext(ctx context.C
 
 // Summary:
 //
-// 资源转组
+// Changes the resource group of a ClickHouse Enterprise instance.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -195,7 +195,7 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// Creates a backup policy for a specified ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Creates a backup policy for a specified ClickHouse Enterprise Edition cluster.
 //
 // @param request - CreateBackupPolicyRequest
 //
@@ -255,7 +255,7 @@ func (client *Client) CreateBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates an ApsaraDB for ClickHouse database.
+// Creates a database.
 //
 // @param request - CreateDBRequest
 //
@@ -311,7 +311,7 @@ func (client *Client) CreateDBWithContext(ctx context.Context, request *CreateDB
 
 // Summary:
 //
-// Creates an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// To create a ClickHouse Enterprise Edition cluster, call the `CreateDBInstance` API.
 //
 // @param tmpReq - CreateDBInstanceRequest
 //
@@ -449,7 +449,7 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// Applies for a public endpoint.
+// Creates a public endpoint that provides a public address to access a cluster.
 //
 // @param request - CreateEndpointRequest
 //
@@ -509,7 +509,247 @@ func (client *Client) CreateEndpointWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 新增白名单模板
+// Creates a Langfuse organization.
+//
+// @param request - CreateLangfuseOrgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLangfuseOrgResponse
+func (client *Client) CreateLangfuseOrgWithContext(ctx context.Context, request *CreateLangfuseOrgRequest, runtime *dara.RuntimeOptions) (_result *CreateLangfuseOrgResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerEmail) {
+		query["OwnerEmail"] = request.OwnerEmail
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLangfuseOrg"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLangfuseOrgResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds a user to a Langfuse organization.
+//
+// @param request - CreateLangfuseOrgMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLangfuseOrgMemberResponse
+func (client *Client) CreateLangfuseOrgMemberWithContext(ctx context.Context, request *CreateLangfuseOrgMemberRequest, runtime *dara.RuntimeOptions) (_result *CreateLangfuseOrgMemberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLangfuseOrgMember"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLangfuseOrgMemberResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a Langfuse project.
+//
+// @param request - CreateLangfuseProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLangfuseProjectResponse
+func (client *Client) CreateLangfuseProjectWithContext(ctx context.Context, request *CreateLangfuseProjectRequest, runtime *dara.RuntimeOptions) (_result *CreateLangfuseProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLangfuseProject"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLangfuseProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a Langfuse user.
+//
+// @param request - CreateLangfuseUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLangfuseUserResponse
+func (client *Client) CreateLangfuseUserWithContext(ctx context.Context, request *CreateLangfuseUserRequest, runtime *dara.RuntimeOptions) (_result *CreateLangfuseUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OrgRole) {
+		query["OrgRole"] = request.OrgRole
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLangfuseUser"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLangfuseUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a whitelist template.
 //
 // @param request - CreateWhitelistTemplateRequest
 //
@@ -619,7 +859,7 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Deletes the backup policy for a ClickHouse Enterprise Edition cluster.
 //
 // @param request - DeleteBackupPolicyRequest
 //
@@ -667,7 +907,7 @@ func (client *Client) DeleteBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes an ApsaraDB for ClickHouse database.
+// Call this operation to delete a database.
 //
 // @param request - DeleteDBRequest
 //
@@ -719,7 +959,7 @@ func (client *Client) DeleteDBWithContext(ctx context.Context, request *DeleteDB
 
 // Summary:
 //
-// Releases an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// The DeleteDBInstance operation releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -767,7 +1007,7 @@ func (client *Client) DeleteDBInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Releases a public endpoint.
+// Deletes a public endpoint.
 //
 // @param request - DeleteEndpointRequest
 //
@@ -827,7 +1067,271 @@ func (client *Client) DeleteEndpointWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除白名单模板
+// Releases a Langfuse instance.
+//
+// @param request - DeleteLangfuseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLangfuseInstanceResponse
+func (client *Client) DeleteLangfuseInstanceWithContext(ctx context.Context, request *DeleteLangfuseInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteLangfuseInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLangfuseInstance"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLangfuseInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a Langfuse organization.
+//
+// @param request - DeleteLangfuseOrgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLangfuseOrgResponse
+func (client *Client) DeleteLangfuseOrgWithContext(ctx context.Context, request *DeleteLangfuseOrgRequest, runtime *dara.RuntimeOptions) (_result *DeleteLangfuseOrgResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLangfuseOrg"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLangfuseOrgResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes a user from a Langfuse organization.
+//
+// @param request - DeleteLangfuseOrgMembershipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLangfuseOrgMembershipResponse
+func (client *Client) DeleteLangfuseOrgMembershipWithContext(ctx context.Context, request *DeleteLangfuseOrgMembershipRequest, runtime *dara.RuntimeOptions) (_result *DeleteLangfuseOrgMembershipResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLangfuseOrgMembership"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLangfuseOrgMembershipResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a Langfuse project.
+//
+// @param request - DeleteLangfuseProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLangfuseProjectResponse
+func (client *Client) DeleteLangfuseProjectWithContext(ctx context.Context, request *DeleteLangfuseProjectRequest, runtime *dara.RuntimeOptions) (_result *DeleteLangfuseProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLangfuseProject"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLangfuseProjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a Langfuse user.
+//
+// @param request - DeleteLangfuseUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLangfuseUserResponse
+func (client *Client) DeleteLangfuseUserWithContext(ctx context.Context, request *DeleteLangfuseUserRequest, runtime *dara.RuntimeOptions) (_result *DeleteLangfuseUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLangfuseUser"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLangfuseUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a whitelist template.
 //
 // @param request - DeleteWhitelistTemplateRequest
 //
@@ -879,7 +1383,7 @@ func (client *Client) DeleteWhitelistTemplateWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the permissions of a database account.
+// Call the DescribeAccountAuthority operation to query the permissions of an account.
 //
 // @param request - DescribeAccountAuthorityRequest
 //
@@ -991,7 +1495,7 @@ func (client *Client) DescribeAccountsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// View the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Queries the backup policy of a ClickHouse Enterprise Edition cluster.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -1039,7 +1543,7 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the backup sets of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Queries the backup sets of a ClickHouse Enterprise Edition cluster.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -1107,7 +1611,7 @@ func (client *Client) DescribeBackupsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the details of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Call DescribeDBInstanceAttribute to query the details of an ApsaraDB for ClickHouse enterprise edition cluster.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -1155,7 +1659,7 @@ func (client *Client) DescribeDBInstanceAttributeWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询实例参数配置
+// # Queries the parameter configuration of an instance
 //
 // @param request - DescribeDBInstanceConfigRequest
 //
@@ -1195,7 +1699,7 @@ func (client *Client) DescribeDBInstanceConfigWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询实例参数配置记录
+// # Queries the parameter configuration records of an instance
 //
 // @param request - DescribeDBInstanceConfigChangeLogRequest
 //
@@ -1291,7 +1795,7 @@ func (client *Client) DescribeDBInstanceDataSourcesWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries a list of ApsaraDB for ClickHouse clusters.
+// Call the DescribeDBInstances API to query a list of DB instances.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -1367,7 +1871,7 @@ func (client *Client) DescribeDBInstancesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the endpoint of an ApsaraDB for ClickHouse cluster.
+// To retrieve the cluster endpoints, call DescribeEndpoints.
 //
 // @param request - DescribeEndpointsRequest
 //
@@ -1419,7 +1923,451 @@ func (client *Client) DescribeEndpointsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Views running queries.
+// Queries the access endpoint of a Langfuse instance.
+//
+// @param request - DescribeLangfuseEndpointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseEndpointsResponse
+func (client *Client) DescribeLangfuseEndpointsWithContext(ctx context.Context, request *DescribeLangfuseEndpointsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseEndpointsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseEndpoints"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseEndpointsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the member information of a Langfuse organization.
+//
+// @param request - DescribeLangfuseOrgMembershipsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseOrgMembershipsResponse
+func (client *Client) DescribeLangfuseOrgMembershipsWithContext(ctx context.Context, request *DescribeLangfuseOrgMembershipsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseOrgMembershipsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseOrgMemberships"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseOrgMembershipsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Langfuse实例组织列表
+//
+// @param request - DescribeLangfuseOrgsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseOrgsResponse
+func (client *Client) DescribeLangfuseOrgsWithContext(ctx context.Context, request *DescribeLangfuseOrgsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseOrgsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseOrgs"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseOrgsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries user roles in a Langfuse project.
+//
+// @param request - DescribeLangfuseProjectMembershipsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseProjectMembershipsResponse
+func (client *Client) DescribeLangfuseProjectMembershipsWithContext(ctx context.Context, request *DescribeLangfuseProjectMembershipsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseProjectMembershipsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseProjectMemberships"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseProjectMembershipsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of Langfuse projects.
+//
+// @param request - DescribeLangfuseProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseProjectsResponse
+func (client *Client) DescribeLangfuseProjectsWithContext(ctx context.Context, request *DescribeLangfuseProjectsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseProjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseProjects"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseProjectsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Langfuse whitelist.
+//
+// @param request - DescribeLangfuseSecurityIPListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseSecurityIPListResponse
+func (client *Client) DescribeLangfuseSecurityIPListWithContext(ctx context.Context, request *DescribeLangfuseSecurityIPListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseSecurityIPListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseSecurityIPList"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseSecurityIPListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a Langfuse user.
+//
+// @param request - DescribeLangfuseUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseUserResponse
+func (client *Client) DescribeLangfuseUserWithContext(ctx context.Context, request *DescribeLangfuseUserRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseUser"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of Langfuse users.
+//
+// @param request - DescribeLangfuseUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLangfuseUsersResponse
+func (client *Client) DescribeLangfuseUsersWithContext(ctx context.Context, request *DescribeLangfuseUsersRequest, runtime *dara.RuntimeOptions) (_result *DescribeLangfuseUsersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLangfuseUsers"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLangfuseUsersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Describes currently running queries.
 //
 // @param request - DescribeProcessListRequest
 //
@@ -1499,7 +2447,7 @@ func (client *Client) DescribeProcessListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the whitelist of an ApsaraDB for ClickHouse cluster.
+// Queries a whitelist.
 //
 // @param request - DescribeSecurityIPListRequest
 //
@@ -1547,7 +2495,7 @@ func (client *Client) DescribeSecurityIPListWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the details of slow query logs.
+// Call DescribeSlowLogRecords to query slow log records.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -1619,7 +2567,7 @@ func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the trend of slow query logs.
+// Queries the slow log trend.
 //
 // @param request - DescribeSlowLogTrendRequest
 //
@@ -1687,7 +2635,7 @@ func (client *Client) DescribeSlowLogTrendWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 取消白名单模板和实例关联关系
+// Disassociate a whitelist template from an instance.
 //
 // @param request - DetachWhitelistTemplateToInstanceRequest
 //
@@ -1739,7 +2687,7 @@ func (client *Client) DetachWhitelistTemplateToInstanceWithContext(ctx context.C
 
 // Summary:
 //
-// 查询白名单模板详情
+// Queries the details of a whitelist template.
 //
 // @param request - GetWhitelistTemplateRequest
 //
@@ -1787,7 +2735,7 @@ func (client *Client) GetWhitelistTemplateWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Terminates an ongoing query.
+// Terminates a running task.
 //
 // @param request - KillProcessRequest
 //
@@ -1843,7 +2791,7 @@ func (client *Client) KillProcessWithContext(ctx context.Context, request *KillP
 
 // Summary:
 //
-// 列举ClickHouse时区参数枚举值
+// Lists the available time zones for ClickHouse.
 //
 // @param request - ListClickHouseDBTimezonesRequest
 //
@@ -1891,7 +2839,7 @@ func (client *Client) ListClickHouseDBTimezonesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询实例关联的白名单模板清单
+// Lists the IP address whitelist templates linked to an instance.
 //
 // @param request - ListInstanceLinkedWhitelistTemplatesRequest
 //
@@ -1939,7 +2887,7 @@ func (client *Client) ListInstanceLinkedWhitelistTemplatesWithContext(ctx contex
 
 // Summary:
 //
-// 查询白名单模板清单
+// Queries the whitelist templates associated with an instance.
 //
 // @param request - ListWhitelistTemplatesRequest
 //
@@ -2113,7 +3061,11 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
+// Modifies the backup policy of an ApsaraDB for ClickHouse cluster.
+//
+// Description:
+//
+// > Data backup is supported only for ApsaraDB for ClickHouse clusters that run version 20.3, 20.8, or 21.8.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -2173,7 +3125,7 @@ func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the configurations of an ApsaraDB for ClickHouse cluster.
+// You can call the ModifyDBInstanceAttribute operation to modify the configuration of a cluster.
 //
 // @param request - ModifyDBInstanceAttributeRequest
 //
@@ -2233,21 +3185,35 @@ func (client *Client) ModifyDBInstanceAttributeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies the elastic scaling settings of an ApsaraDB for ClickHouse cluster.
+// Use `ModifyDBInstanceClass` to modify the scaling configuration of a cluster.
 //
-// @param request - ModifyDBInstanceClassRequest
+// Description:
+//
+// Before you call this API, make sure that you understand the billing method and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
+//
+// @param tmpReq - ModifyDBInstanceClassRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDBInstanceClassResponse
-func (client *Client) ModifyDBInstanceClassWithContext(ctx context.Context, request *ModifyDBInstanceClassRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceClassResponse, _err error) {
+func (client *Client) ModifyDBInstanceClassWithContext(ctx context.Context, tmpReq *ModifyDBInstanceClassRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceClassResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ModifyDBInstanceClassShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AutoScaleConfig) {
+		request.AutoScaleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AutoScaleConfig, dara.String("AutoScaleConfig"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoScaleConfigShrink) {
+		query["AutoScaleConfig"] = request.AutoScaleConfigShrink
+	}
+
 	if !dara.IsNil(request.ComputingGroupId) {
 		query["ComputingGroupId"] = request.ComputingGroupId
 	}
@@ -2313,7 +3279,7 @@ func (client *Client) ModifyDBInstanceClassWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改实例参数配置
+// Modifies the parameter settings for a DB instance.
 //
 // @param request - ModifyDBInstanceConfigRequest
 //
@@ -2365,7 +3331,7 @@ func (client *Client) ModifyDBInstanceConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
+// Modifies the connection string of a cluster.
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -2423,6 +3389,130 @@ func (client *Client) ModifyDBInstanceConnectionStringWithContext(ctx context.Co
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDBInstanceConnectionStringResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the permissions of a user in a Langfuse organization.
+//
+// @param request - ModifyLangfuseOrgMembershipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLangfuseOrgMembershipResponse
+func (client *Client) ModifyLangfuseOrgMembershipWithContext(ctx context.Context, request *ModifyLangfuseOrgMembershipRequest, runtime *dara.RuntimeOptions) (_result *ModifyLangfuseOrgMembershipResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyLangfuseOrgMembership"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyLangfuseOrgMembershipResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the permissions of a user in a Langfuse project.
+//
+// @param request - ModifyLangfuseProjectMembershipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLangfuseProjectMembershipResponse
+func (client *Client) ModifyLangfuseProjectMembershipWithContext(ctx context.Context, request *ModifyLangfuseProjectMembershipRequest, runtime *dara.RuntimeOptions) (_result *ModifyLangfuseProjectMembershipResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyLangfuseProjectMembership"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyLangfuseProjectMembershipResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2543,6 +3633,62 @@ func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetAccountPasswordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Resets the password of a Langfuse user.
+//
+// @param request - ResetLangfuseUserPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetLangfuseUserPasswordResponse
+func (client *Client) ResetLangfuseUserPasswordWithContext(ctx context.Context, request *ResetLangfuseUserPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetLangfuseUserPasswordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["Email"] = request.Email
+	}
+
+	if !dara.IsNil(request.NewPassword) {
+		query["NewPassword"] = request.NewPassword
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetLangfuseUserPassword"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetLangfuseUserPasswordResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2697,7 +3843,7 @@ func (client *Client) StopDBInstanceWithContext(ctx context.Context, request *St
 
 // Summary:
 //
-// 更新白名单模板
+// Updates a whitelist template.
 //
 // @param request - UpdateWhitelistTemplateRequest
 //

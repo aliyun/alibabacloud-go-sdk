@@ -26,7 +26,7 @@ type DeleteDBRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the destination database.
+	// The name of the target database.
 	//
 	// This parameter is required.
 	//

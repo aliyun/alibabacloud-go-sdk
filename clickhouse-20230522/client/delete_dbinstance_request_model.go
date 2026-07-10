@@ -16,7 +16,7 @@ type iDeleteDBInstanceRequest interface {
 }
 
 type DeleteDBInstanceRequest struct {
-	// The ID of the destination cluster.
+	// The ID of the target cluster.
 	//
 	// This parameter is required.
 	//
