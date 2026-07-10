@@ -1250,7 +1250,7 @@ func (client *Client) CreateClusterInspectConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// A node pool is a logical collection of nodes with the same attributes, allowing unified management and O&M of nodes, such as node upgrades and auto scaling. You can further leverage the automated O&M capabilities of node pools to use features such as automatic OS CVE vulnerability patching, automatic faulty node recovery, and automatic kubelet and containerd version upgrades, reducing O&M costs. You can call CreateClusterNodePool to create a node pool for a cluster.
+// A node pool is a logical collection of nodes that share the same attributes, allowing unified management and operations such as node upgrades and elastic scaling. You can further use the automated O&M capabilities of node pools, including automatic OS CVE vulnerability patching, automatic faulty node recovery, and automatic kubelet and containerd version upgrades, to reduce O&M costs. You can call CreateClusterNodePool to create a node pool for a cluster.
 //
 // @param request - CreateClusterNodePoolRequest
 //
@@ -2708,7 +2708,7 @@ func (client *Client) DescribeClusterLogsWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
-// You can call the DescribeClusterNodePoolDetail operation to query the configuration of a specified node pool in a cluster by node pool ID.
+// Queries the configuration of a specified node pool in a cluster by node pool ID.
 //
 // @param headers - map
 //
@@ -2741,7 +2741,7 @@ func (client *Client) DescribeClusterNodePoolDetailWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the list of all node pools in a cluster.
+// Queries all node pools in a cluster.
 //
 // @param request - DescribeClusterNodePoolsRequest
 //
@@ -5729,7 +5729,7 @@ func (client *Client) ModifyClusterAddonWithContext(ctx context.Context, cluster
 
 // Summary:
 //
-// You can call the ModifyClusterNodePool API to update the configuration of a target node pool by specifying its node pool ID.
+// Updates the configuration of a node pool based on the node pool ID by calling the ModifyClusterNodePool operation.
 //
 // @param request - ModifyClusterNodePoolRequest
 //
@@ -5752,6 +5752,10 @@ func (client *Client) ModifyClusterNodePoolWithContext(ctx context.Context, Clus
 
 	if !dara.IsNil(request.Concurrency) {
 		body["concurrency"] = request.Concurrency
+	}
+
+	if !dara.IsNil(request.EfloNodeGroup) {
+		body["eflo_node_group"] = request.EfloNodeGroup
 	}
 
 	if !dara.IsNil(request.KubernetesConfig) {
@@ -5850,11 +5854,11 @@ func (client *Client) ModifyClusterTagsWithContext(ctx context.Context, ClusterI
 
 // Summary:
 //
-// You can call the ModifyNodePoolNodeConfig operation to modify the node configuration in a cluster node pool, such as kubelet configuration and node rolling update configuration. Modifying node configuration changes the node configuration in batches and restarts kubelet, which may affect node operations and workload operations. We recommend that you perform this operation during off-peak hours.
+// Modifies the node configurations in a cluster node pool, such as kubelet configurations and rolling update configurations. Modifying node configurations applies changes in batches and restarts kubelet, which may affect node operations and workload execution. Perform this operation during off-peak hours.
 //
 // Description:
 //
-// > ACK allows you to modify the kubelet configuration of nodes in a node pool. After the modification is complete, the changes automatically take effect on the nodes in the node pool, and newly added nodes in the node pool also use the new configuration.
+// > ACK supports modifying the kubelet configurations of nodes in a node pool. After the modification, the new configurations automatically take effect on existing nodes in the node pool. New nodes added to the node pool also use the new configurations.
 //
 // @param request - ModifyNodePoolNodeConfigRequest
 //

@@ -18,19 +18,19 @@ type iModifyClusterNodePoolResponseBody interface {
 }
 
 type ModifyClusterNodePoolResponseBody struct {
-	// Node pool ID.
+	// The node pool ID.
 	//
 	// example:
 	//
 	// np737c3ac1ac684703b9e10673aa2c****
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 687C5BAA-D103-4993-884B-C35E4314****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// Task ID.
+	// The task ID.
 	//
 	// example:
 	//
