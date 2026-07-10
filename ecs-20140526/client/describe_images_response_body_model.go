@@ -25,31 +25,31 @@ type iDescribeImagesResponseBody interface {
 
 type DescribeImagesResponseBody struct {
 	Images *DescribeImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of entries on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID to which the image belongs.
+	// The region ID of the image.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 66189103-EDB2-43E2-BB60-BFF2B62F4EB8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of images.
+	// The total number of images.
 	//
 	// example:
 	//

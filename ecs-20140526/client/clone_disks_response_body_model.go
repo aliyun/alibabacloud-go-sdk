@@ -16,13 +16,13 @@ type iCloneDisksResponseBody interface {
 }
 
 type CloneDisksResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the disk clone task group. You can call the [DescribeTasks](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describetasks) operation to query the execution result.
+	// The task group ID of the disk cloning operation. You can call [DescribeTasks](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-describetasks) to query the task execution result.
 	//
 	// example:
 	//

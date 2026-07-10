@@ -34,42 +34,18 @@ type iCreateVSwitchRequest interface {
 }
 
 type CreateVSwitchRequest struct {
-	// The CIDR block for the vSwitch.\\
-	//
-	// It must be a subnet of the VPC\\"s CIDR block and must not overlap with the CIDR blocks of other vSwitches in the same VPC.\\
-	//
 	// This parameter is required.
-	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// A client token to ensure the idempotence of the request. The token must be unique across requests, contain only ASCII characters, and not exceed 64 characters in length.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description for the vSwitch.\\
-	//
-	// It must be 2 to 256 characters long and must not start with `http://` or `https://`.\\
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region in which to create the vSwitch.\\
-	//
-	// Call the `DescribeRegions` operation to get a list of available regions.\\
+	CidrBlock            *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The name for the vSwitch.\\
-	//
-	// The name must be 2 to 128 characters long, start with a letter, and contain only letters, digits, underscores (_), and hyphens (-).\\
-	//
-	// If unspecified, the name defaults to the vSwitch ID.\\
-	//
-	// \\
-	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	// The ID of the VPC in which to create the vSwitch.
-	//
+	VSwitchName          *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 	// This parameter is required.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone in which to create the vSwitch.\\
-	//
-	// Call the `DescribeZones` operation to get a list of available zones.\\
-	//
 	// This parameter is required.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }

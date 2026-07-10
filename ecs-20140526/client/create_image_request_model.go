@@ -54,13 +54,13 @@ type iCreateImageRequest interface {
 }
 
 type CreateImageRequest struct {
-	// The system disk architecture. If you create the image\\"s system disk from a data disk snapshot, you must specify this parameter to identify the system disk architecture. Valid values:
+	// The system architecture. After a data disk snapshot is specified as the system disk of the image, use this parameter to specify the system architecture of the system disk. Valid values:
 	//
-	// - i386
+	// - i386.
 	//
-	// - x86_64
+	// - x86_64.
 	//
-	// - arm64
+	// - arm64.
 	//
 	// Default value: x86_64.
 	//
@@ -74,69 +74,64 @@ type CreateImageRequest struct {
 	//
 	// - UEFI: UEFI boot mode.
 	//
-	// - UEFI-Preferred: The image supports both BIOS and UEFI boot modes. The UEFI boot mode is preferred. This is the default value.
+	// - (Default) UEFI-Preferred: dual boot mode.
 	//
-	// 	Notice:
+	// <notice>
 	//
-	// If you specify a boot mode that the image does not support, instances created from the image may fail to start. Before you specify this parameter, ensure you know the boot modes that the image supports. For more information, see [Boot modes](~~2244655#b9caa9b8bb1wf~~).
+	// To prevent instances from failing to start due to an unsupported boot mode, make sure that you understand the boot modes supported by the target image before specifying this parameter. For more information about image boot modes, see [Image boot modes](~~2244655#b9caa9b8bb1wf~~).
+	//
+	// </notice>
 	//
 	// example:
 	//
 	// BIOS
 	BootMode *string `json:"BootMode,omitempty" xml:"BootMode,omitempty"`
-	// A client-generated token to ensure the request is idempotent. You must ensure that the token is unique across different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters. For more information, see [How to ensure idempotency](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. **ClientToken*	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The image description. It must be 2 to 256 characters long and cannot start with http\\:// or https\\://.
+	// The description of the image. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// ImageTestDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The image check policy. If you do not specify this parameter, no check is performed. Only the Standard mode is supported.
+	// The image detection strategy. If this parameter is not specified, detection is not triggered. Only the Standard detection mode is supported.
 	//
-	// > This feature is supported for most Linux and Windows versions. For more information about the check items and the operating systems that support this feature, see [Overview of image check](https://help.aliyun.com/document_detail/439819.html) and [Operating systems that support image check](https://help.aliyun.com/document_detail/475800.html).
+	// > Most Linux and Windows versions are supported. For more information about image detection items and operating system limitations, see [Image detection overview](https://help.aliyun.com/document_detail/439819.html) and [Operating system limitations for image detection](https://help.aliyun.com/document_detail/475800.html).
 	//
 	// example:
 	//
 	// Standard
 	DetectionStrategy *string `json:"DetectionStrategy,omitempty" xml:"DetectionStrategy,omitempty"`
-	// The mappings between disks and snapshots used to create the custom image. If you need to create a custom image from a system disk snapshot and data disk snapshots, specify this parameter.
+	// The disk and snapshot information used to create the custom image. Use this parameter to specify snapshots when you want to create a custom image from system disk and data disk snapshots.
 	DiskDeviceMapping []*CreateImageRequestDiskDeviceMapping `json:"DiskDeviceMapping,omitempty" xml:"DiskDeviceMapping,omitempty" type:"Repeated"`
-	// Specifies whether to perform a dry run to check the request. Valid values:
-	//
-	// - true: performs a dry run but does not create the image. The system checks whether your AccessKey pair is valid, whether RAM users are granted permissions, and whether the required parameters are specified. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	//
-	// - false: Sends the request to perform the operation. If the request is valid, a 2xx HTTP status code is returned and the image is created.
-	//
-	// Default value: false.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The image attributes.
+	DryRun            *bool                                  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The image feature properties.
 	Features *CreateImageRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Struct"`
-	// The name of the image family. The name must be 2 to 128 characters long and start with a letter or a Chinese character. It cannot start with aliyun or acs:, nor contain http\\:// or https\\://. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+	// The image family name. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with aliyun or acs:. It cannot contain http:// or https://. It can contain digits, colons (:), underscores (_), or hyphens (-).
 	//
 	// example:
 	//
 	// hangzhou-daily-update
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
-	// The name of the image. The name must be 2 to 128 characters long. It must start with a letter or a Chinese character and must not start with http\\:// or https\\://. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+	// The image name. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with http:// or https://. It can contain digits, colons (:), underscores (_), or hyphens (-).
 	//
 	// example:
 	//
 	// TestCentOS
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The version of the image.
+	// The image version.
 	//
-	// > If you specify an instance ID (`InstanceId`) and the instance was created from an Alibaba Cloud Marketplace image (or a custom image based on a Marketplace image), this parameter must match the `ImageVersion` of the instance\\"s image or be left empty.
+	// > If you specify an instance ID (`InstanceId`) and the image of the instance is an Alibaba Cloud Marketplace image or a custom image created from an Alibaba Cloud Marketplace image, this parameter must be the same as the `ImageVersion` of the current instance image or left empty.
 	//
 	// example:
 	//
 	// 2017011017
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	// The ID of the instance. This parameter is required when you create a custom image from an instance.
+	// The instance ID. This parameter is required when you create a custom image from an instance.
 	//
 	// example:
 	//
@@ -144,7 +139,7 @@ type CreateImageRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The operating system distribution. You must specify this parameter to identify the operating system distribution when you use a data disk snapshot to create the image\\"s system disk. Valid values:
+	// The operating system distribution. After a data disk snapshot is specified as the system disk of the image, use this parameter to specify the operating system distribution of the system disk. Valid values:
 	//
 	// - Aliyun
 	//
@@ -204,7 +199,7 @@ type CreateImageRequest struct {
 	//
 	// CentOS
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The ID of the region where the image will be created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to get the latest list of Alibaba Cloud regions.
+	// The region ID of the image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -212,9 +207,9 @@ type CreateImageRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which to add the custom image. If you do not specify this parameter, the image is added to the default resource group.
+	// The ID of the resource group to which the custom image belongs. If this parameter is not set, the created image belongs to the default resource group.
 	//
-	// > As a RAM user, you must have the required permissions to call this operation. If you leave `ResourceGroupId` empty, the `Forbidden: User not authorized to operate on the specified resource` error is returned if you lack permissions on the default resource group. To resolve this issue, specify the ID of a resource group for which you have permissions, or ask an administrator to grant you permissions on the default resource group.
+	// > If you invoke this operation as a Resource Access Management (RAM) user and `ResourceGroupId` is left empty, note that when the RAM user does not have permissions on the default resource group, the error message `Forbidden: User not authorized to operate on the specified resource` is returned. Set a resource group ID that the RAM user has permissions on, or grant the RAM user permissions on the default resource group before invoking this operation again.
 	//
 	// example:
 	//
@@ -222,15 +217,15 @@ type CreateImageRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the snapshot used to create the custom image.
+	// The snapshot ID used to create the custom image.
 	//
-	// > If you create a custom image from only a system disk snapshot, you can use either this parameter or the `DiskDeviceMapping.N.SnapshotId` parameter. If you want to include data disk snapshots, you must use the `DiskDeviceMapping.N.SnapshotId` parameter to specify the snapshots.
+	// > If you want to create a custom image only from the system disk snapshot of an instance, you can use this parameter or the `DiskDeviceMapping.N.SnapshotId` parameter. To include data disk snapshots, use only the `DiskDeviceMapping.N.SnapshotId` parameter to specify snapshots.
 	//
 	// example:
 	//
 	// s-bp17441ohwkdca0****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The tags to add to the image.
+	// The tags.
 	Tag []*CreateImageRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -459,41 +454,41 @@ func (s *CreateImageRequest) Validate() error {
 }
 
 type CreateImageRequestDiskDeviceMapping struct {
-	// The device name of the disk in the custom image. Valid values:
+	// The device name in the custom image. Valid values:
 	//
 	// - The device name of the system disk must be /dev/xvda.
 	//
-	// - The device names of data disks are assigned in sequence from /dev/xvdb to /dev/xvdz and cannot be repeated.
+	// - Data disk device names are sequentially ordered from /dev/xvdb to /dev/xvdz and cannot be duplicated.
 	//
 	// example:
 	//
 	// /dev/xvdb
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	// The type of the disk in the image. You can specify this parameter to use a data disk snapshot as the system disk of the image. If you do not specify this parameter, the disk type is determined by the type of the source snapshot. Valid values:
+	// The type of the disk in the new image. You can use this parameter to specify a data disk snapshot as the system disk of the image. If this parameter is not specified, the disk type defaults to the type of the disk corresponding to the snapshot. Valid values:
 	//
-	// - system: system disk. You can specify only one system disk snapshot.
+	// - system: system disk. Only one system disk snapshot can be specified.
 	//
-	// - data: data disk. You can specify a maximum of 16 data disk snapshots.
+	// - data: data disk. Up to 16 data disk snapshots can be specified.
 	//
 	// example:
 	//
 	// system
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The size of the cloud disk, in GiB. The valid values and default value of `DiskDeviceMapping.N.Size` vary based on whether `DiskDeviceMapping.N.SnapshotId` is specified.
+	// The size of the disk, in GiB. The valid values and default value of DiskDeviceMapping.N.Size depend on DiskDeviceMapping.N.SnapshotId:
 	//
-	// - If `DiskDeviceMapping.N.SnapshotId` is not specified, the value of this parameter depends on the disk type:
+	// - If SnapshotId is not specified, the valid values and default value of Size are:
 	//
-	//   - For basic disks, the value range is 5 to 2,000 and the default value is 5.
+	//     - Basic disk: 5 to 2000 GiB. Default value: 5.
 	//
-	//   - For other disk types, the value range is 20 to 32,768 and the default value is 20.
+	//     - Other disk types: 20 to 32768 GiB. Default value: 20.
 	//
-	// - If `DiskDeviceMapping.N.SnapshotId` is specified, the value of `DiskDeviceMapping.N.Size` must be greater than or equal to the snapshot\\"s size. The default value is the snapshot\\"s size.
+	// - If SnapshotId is specified, the value of Size must be greater than or equal to the size of the snapshot. Default value: the size of the snapshot.
 	//
 	// example:
 	//
 	// 2000
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot.
+	// The snapshot ID.
 	//
 	// example:
 	//
@@ -550,13 +545,13 @@ func (s *CreateImageRequestDiskDeviceMapping) Validate() error {
 }
 
 type CreateImageRequestFeatures struct {
-	// The instance metadata access mode. Valid values:
+	// The metadata access mode of the image. Valid values:
 	//
-	// - v1: The normal mode. When you create an ECS instance from an image that has the metadata access mode set to this value, you cannot configure the instance metadata access mode as Enforced.
+	// - v1: When you create an ECS instance from this image, you cannot set the metadata access mode to "security hardening mode only".
 	//
-	// - v2: The enforced mode. When you create an ECS instance from an image that has the metadata access mode set to this value, you can configure the instance metadata access mode as Enforced.
+	// - v2: When you create an ECS instance from this image, you can set the metadata access mode to "security hardening mode only".
 	//
-	// Default value: v1 if you create the image from a snapshot. If you create the image from an instance, the value is inherited from the source instance\\"s image.
+	// Default value: When creating an image from a snapshot, the default is v1. When creating an image from an instance, the default is the ImdsSupport value of the image used when the instance was created.
 	//
 	// example:
 	//
@@ -586,15 +581,13 @@ func (s *CreateImageRequestFeatures) Validate() error {
 }
 
 type CreateImageRequestTag struct {
-	// The key of tag N to add to the image.
-	//
-	// > For compatibility, we recommend that you use the `Tag.N.Key` parameter.
+	// The tag key of the image. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// KeyTest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the image. Valid values of N: 1 to 20. The tag value can be an empty string, up to 128 characters long, and cannot start with `acs:` or contain `http://` or `https://`.
+	// The tag value of the image. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

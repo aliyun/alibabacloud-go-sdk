@@ -16,9 +16,7 @@ type iCreateVSwitchResponseBody interface {
 }
 
 type CreateVSwitchResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the created VSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 

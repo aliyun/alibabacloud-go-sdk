@@ -92,7 +92,7 @@ type DescribeRecommendInstanceTypeRequest struct {
 	//
 	// ecs.hfg6.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The collection of alternative instance families from which alternative instance types are selected. You can set up to 10 instance families in this parameter.
+	// Settings for the collection of alternative instance families from which alternative instance types are selected. You can specify up to 10 instance families.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type DescribeRecommendInstanceTypeRequest struct {
 	//
 	// - vpc: virtual private cloud (VPC).
 	//
-	// - classic: classic network. The classic network is no longer available. For more information, see [Retirement notice](https://help.aliyun.com/document_detail/2833134.html).
+	// - classic: classic network. The classic network is no longer available. For more information, see [Discontinuation notice](https://help.aliyun.com/document_detail/2833134.html).
 	//
 	// Default value: vpc.
 	//
@@ -144,7 +144,7 @@ type DescribeRecommendInstanceTypeRequest struct {
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The priority recommendation strategy. Valid values:
+	// The priority-based recommendation strategy. Valid values:
 	//
 	// - InventoryFirst: inventory first.
 	//
@@ -188,7 +188,7 @@ type DescribeRecommendInstanceTypeRequest struct {
 	//
 	// - SpotAsPriceGo: a spot instance for which the system automatically bids at up to the pay-as-you-go price.
 	//
-	// > When you use SpotStrategy, set InstanceChargeType to PostPaid.
+	// > When you use SpotStrategy, set InstanceChargerType to PostPaid.
 	//
 	// Default value: NoSpot.
 	//
