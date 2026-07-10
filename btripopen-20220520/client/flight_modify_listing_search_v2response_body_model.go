@@ -24,29 +24,12 @@ type iFlightModifyListingSearchV2ResponseBody interface {
 }
 
 type FlightModifyListingSearchV2ResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module
-	Module *FlightModifyListingSearchV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// requestId
-	//
-	// example:
-	//
-	// A5009956-1077-52FB-B520-EA8C7E91D722
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// requestId
-	//
-	// example:
-	//
-	// 2136019116915615924561621e06ee
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                        `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                        `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *FlightModifyListingSearchV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                          `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                        `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBody) String() string {
@@ -121,13 +104,10 @@ func (s *FlightModifyListingSearchV2ResponseBody) Validate() error {
 }
 
 type FlightModifyListingSearchV2ResponseBodyModule struct {
-	DirectFlightList []*FlightModifyListingSearchV2ResponseBodyModuleDirectFlightList `json:"direct_flight_list,omitempty" xml:"direct_flight_list,omitempty" type:"Repeated"`
-	NextReqWaitTime  *int64                                                           `json:"next_req_wait_time,omitempty" xml:"next_req_wait_time,omitempty"`
-	Retry            *bool                                                            `json:"retry,omitempty" xml:"retry,omitempty"`
-	SearchRetryToken *string                                                          `json:"search_retry_token,omitempty" xml:"search_retry_token,omitempty"`
-	// example:
-	//
-	// a2ffebfe733742aab5c491d960ba3d59
+	DirectFlightList   []*FlightModifyListingSearchV2ResponseBodyModuleDirectFlightList   `json:"direct_flight_list,omitempty" xml:"direct_flight_list,omitempty" type:"Repeated"`
+	NextReqWaitTime    *int64                                                             `json:"next_req_wait_time,omitempty" xml:"next_req_wait_time,omitempty"`
+	Retry              *bool                                                              `json:"retry,omitempty" xml:"retry,omitempty"`
+	SearchRetryToken   *string                                                            `json:"search_retry_token,omitempty" xml:"search_retry_token,omitempty"`
 	SessionId          *string                                                            `json:"session_id,omitempty" xml:"session_id,omitempty"`
 	TransferFlightList []*FlightModifyListingSearchV2ResponseBodyModuleTransferFlightList `json:"transfer_flight_list,omitempty" xml:"transfer_flight_list,omitempty" type:"Repeated"`
 	TransferTitle      *string                                                            `json:"transfer_title,omitempty" xml:"transfer_title,omitempty"`
@@ -227,72 +207,33 @@ func (s *FlightModifyListingSearchV2ResponseBodyModule) Validate() error {
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightList struct {
-	AirlineInfo    *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListAirlineInfo    `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
-	ArrAirportInfo *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListArrAirportInfo `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// BJS
-	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	// example:
-	//
-	// 2023-09-18 10:25:00
-	ArrTime        *string                                                                      `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	CabinClass     *string                                                                      `json:"cabinClass,omitempty" xml:"cabinClass,omitempty"`
-	CabinClassName *string                                                                      `json:"cabinClassName,omitempty" xml:"cabinClassName,omitempty"`
-	DepAirportInfo *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListDepAirportInfo `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// XIL
-	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	// example:
-	//
-	// 2023-09-18 09:10:00
-	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	// example:
-	//
-	// 240
-	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// example:
-	//
-	// CA1110
+	AirlineInfo        *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListAirlineInfo        `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
+	ArrAirportInfo     *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListArrAirportInfo     `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
+	ArrCityCode        *string                                                                          `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrTime            *string                                                                          `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	CabinClass         *string                                                                          `json:"cabinClass,omitempty" xml:"cabinClass,omitempty"`
+	CabinClassName     *string                                                                          `json:"cabinClassName,omitempty" xml:"cabinClassName,omitempty"`
+	DepAirportInfo     *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListDepAirportInfo     `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
+	DepCityCode        *string                                                                          `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepTime            *string                                                                          `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	Duration           *int32                                                                           `json:"duration,omitempty" xml:"duration,omitempty"`
 	FlightNo           *string                                                                          `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
 	FlightShareInfo    *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightShareInfo    `json:"flight_share_info,omitempty" xml:"flight_share_info,omitempty" type:"Struct"`
 	FlightSize         *string                                                                          `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
 	FlightStopInfo     *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightStopInfo     `json:"flight_stop_info,omitempty" xml:"flight_stop_info,omitempty" type:"Struct"`
 	FlightTransferInfo *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightTransferInfo `json:"flight_transfer_info,omitempty" xml:"flight_transfer_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// ARJ
-	FlightType *string `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
-	// example:
-	//
-	// 0
-	JourneySeq *int32 `json:"journey_seq,omitempty" xml:"journey_seq,omitempty"`
-	// example:
-	//
-	// 8
-	LeftNum      *string                                                                    `json:"left_num,omitempty" xml:"left_num,omitempty"`
-	Manufacturer *string                                                                    `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
-	MealDesc     *string                                                                    `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
-	PriceInfoDTO *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListPriceInfoDTO `json:"price_info_d_t_o,omitempty" xml:"price_info_d_t_o,omitempty" type:"Struct"`
-	// example:
-	//
-	// 0
-	SegmentSeq *int32 `json:"segment_seq,omitempty" xml:"segment_seq,omitempty"`
-	// example:
-	//
-	// false
-	Share           *bool   `json:"share,omitempty" xml:"share,omitempty"`
-	ShortFlightSize *string `json:"short_flight_size,omitempty" xml:"short_flight_size,omitempty"`
-	SpanDay         *string `json:"span_day,omitempty" xml:"span_day,omitempty"`
-	// example:
-	//
-	// false
-	Stop *bool `json:"stop,omitempty" xml:"stop,omitempty"`
-	// example:
-	//
-	// false
-	Transfer *bool `json:"transfer,omitempty" xml:"transfer,omitempty"`
+	FlightType         *string                                                                          `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
+	JourneySeq         *int32                                                                           `json:"journey_seq,omitempty" xml:"journey_seq,omitempty"`
+	LeftNum            *string                                                                          `json:"left_num,omitempty" xml:"left_num,omitempty"`
+	Manufacturer       *string                                                                          `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
+	MealDesc           *string                                                                          `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	PriceInfoDTO       *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListPriceInfoDTO       `json:"price_info_d_t_o,omitempty" xml:"price_info_d_t_o,omitempty" type:"Struct"`
+	SegmentSeq         *int32                                                                           `json:"segment_seq,omitempty" xml:"segment_seq,omitempty"`
+	Share              *bool                                                                            `json:"share,omitempty" xml:"share,omitempty"`
+	ShortFlightSize    *string                                                                          `json:"short_flight_size,omitempty" xml:"short_flight_size,omitempty"`
+	SpanDay            *string                                                                          `json:"span_day,omitempty" xml:"span_day,omitempty"`
+	Stop               *bool                                                                            `json:"stop,omitempty" xml:"stop,omitempty"`
+	Transfer           *bool                                                                            `json:"transfer,omitempty" xml:"transfer,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBodyModuleDirectFlightList) String() string {
@@ -588,18 +529,9 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightList) Validate
 type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListAirlineInfo struct {
 	AirlineChineseName      *string `json:"airline_chinese_name,omitempty" xml:"airline_chinese_name,omitempty"`
 	AirlineChineseShortName *string `json:"airline_chinese_short_name,omitempty" xml:"airline_chinese_short_name,omitempty"`
-	// example:
-	//
-	// CA
-	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
-	// example:
-	//
-	// //gw.alicdn.com/tfs/TB12fJAFHr1gK0jSZR0XXbP8XXa-450-450.png_80x80.jpg
-	AirlineIcon *string `json:"airline_icon,omitempty" xml:"airline_icon,omitempty"`
-	// example:
-	//
-	// false
-	CheapFlight *bool `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
+	AirlineCode             *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	AirlineIcon             *string `json:"airline_icon,omitempty" xml:"airline_icon,omitempty"`
+	CheapFlight             *bool   `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListAirlineInfo) String() string {
@@ -660,16 +592,10 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListAirlineInf
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListArrAirportInfo struct {
-	// example:
-	//
-	// XIL
 	AirportCode      *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
 	AirportName      *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
 	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
-	// example:
-	//
-	// T3
-	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	Terminal         *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListArrAirportInfo) String() string {
@@ -721,16 +647,10 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListArrAirport
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListDepAirportInfo struct {
-	// example:
-	//
-	// PEK
 	AirportCode      *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
 	AirportName      *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
 	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
-	// example:
-	//
-	// T2
-	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	Terminal         *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListDepAirportInfo) String() string {
@@ -826,10 +746,7 @@ type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightShareInf
 	AirlineChineseShortName *string `json:"airline_chinese_short_name,omitempty" xml:"airline_chinese_short_name,omitempty"`
 	AirlineCode             *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	AirlineIcon             *string `json:"airline_icon,omitempty" xml:"airline_icon,omitempty"`
-	// example:
-	//
-	// false
-	CheapFlight *bool `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
+	CheapFlight             *bool   `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightShareInfoOperatingAirlineInfo) String() string {
@@ -981,14 +898,8 @@ type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightTransfer
 	TransferDepTime     *string                                                                                             `json:"transfer_dep_time,omitempty" xml:"transfer_dep_time,omitempty"`
 	TransferFlightNo    *string                                                                                             `json:"transfer_flight_no,omitempty" xml:"transfer_flight_no,omitempty"`
 	TransferFlightSize  *string                                                                                             `json:"transfer_flight_size,omitempty" xml:"transfer_flight_size,omitempty"`
-	// example:
-	//
-	// false
-	TransferShare *bool `json:"transfer_share,omitempty" xml:"transfer_share,omitempty"`
-	// example:
-	//
-	// 60
-	TransferStopTime *int32 `json:"transfer_stop_time,omitempty" xml:"transfer_stop_time,omitempty"`
+	TransferShare       *bool                                                                                               `json:"transfer_share,omitempty" xml:"transfer_share,omitempty"`
+	TransferStopTime    *int32                                                                                              `json:"transfer_stop_time,omitempty" xml:"transfer_stop_time,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightTransferInfo) String() string {
@@ -1085,10 +996,7 @@ type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightTransfer
 	AirlineChineseShortName *string `json:"airline_chinese_short_name,omitempty" xml:"airline_chinese_short_name,omitempty"`
 	AirlineCode             *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	AirlineIcon             *string `json:"airline_icon,omitempty" xml:"airline_icon,omitempty"`
-	// example:
-	//
-	// false
-	CheapFlight *bool `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
+	CheapFlight             *bool   `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightTransferInfoTransferAirlineInfo) String() string {
@@ -1149,53 +1057,17 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListFlightTran
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListPriceInfoDTO struct {
-	// example:
-	//
-	// 126000
-	AdultPrice *int32 `json:"adult_price,omitempty" xml:"adult_price,omitempty"`
-	// example:
-	//
-	// 11000
-	AdultTax *int32 `json:"adult_tax,omitempty" xml:"adult_tax,omitempty"`
-	// example:
-	//
-	// 137000
-	AdultTotalPrice *int32 `json:"adult_total_price,omitempty" xml:"adult_total_price,omitempty"`
-	// example:
-	//
-	// 126000
-	BeforeControlPrice *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
-	// example:
-	//
-	// 64000
-	ChildPrice *int32 `json:"child_price,omitempty" xml:"child_price,omitempty"`
-	// example:
-	//
-	// 2000
-	ChildTax *int32 `json:"child_tax,omitempty" xml:"child_tax,omitempty"`
-	// example:
-	//
-	// 66000
-	ChildTotalPrice *int32 `json:"child_total_price,omitempty" xml:"child_total_price,omitempty"`
-	// example:
-	//
-	// 12000
-	InfantPrice *int32 `json:"infant_price,omitempty" xml:"infant_price,omitempty"`
-	// example:
-	//
-	// 0
-	InfantTax *int32 `json:"infant_tax,omitempty" xml:"infant_tax,omitempty"`
-	// example:
-	//
-	// 12000
-	InfantTotalPrice *int32 `json:"infant_total_price,omitempty" xml:"infant_total_price,omitempty"`
-	// example:
-	//
-	// 1300
-	OriginalAdultPrice *int32 `json:"original_adult_price,omitempty" xml:"original_adult_price,omitempty"`
-	// example:
-	//
-	// 12300
+	AdultPrice              *int32                                                                                       `json:"adult_price,omitempty" xml:"adult_price,omitempty"`
+	AdultTax                *int32                                                                                       `json:"adult_tax,omitempty" xml:"adult_tax,omitempty"`
+	AdultTotalPrice         *int32                                                                                       `json:"adult_total_price,omitempty" xml:"adult_total_price,omitempty"`
+	BeforeControlPrice      *int32                                                                                       `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	ChildPrice              *int32                                                                                       `json:"child_price,omitempty" xml:"child_price,omitempty"`
+	ChildTax                *int32                                                                                       `json:"child_tax,omitempty" xml:"child_tax,omitempty"`
+	ChildTotalPrice         *int32                                                                                       `json:"child_total_price,omitempty" xml:"child_total_price,omitempty"`
+	InfantPrice             *int32                                                                                       `json:"infant_price,omitempty" xml:"infant_price,omitempty"`
+	InfantTax               *int32                                                                                       `json:"infant_tax,omitempty" xml:"infant_tax,omitempty"`
+	InfantTotalPrice        *int32                                                                                       `json:"infant_total_price,omitempty" xml:"infant_total_price,omitempty"`
+	OriginalAdultPrice      *int32                                                                                       `json:"original_adult_price,omitempty" xml:"original_adult_price,omitempty"`
 	OriginalAdultTotalPrice *int32                                                                                       `json:"original_adult_total_price,omitempty" xml:"original_adult_total_price,omitempty"`
 	ReShopPriceInfoDTO      *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListPriceInfoDTOReShopPriceInfoDTO `json:"re_shop_price_info_d_t_o,omitempty" xml:"re_shop_price_info_d_t_o,omitempty" type:"Struct"`
 }
@@ -1335,42 +1207,15 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListPriceInfoD
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListPriceInfoDTOReShopPriceInfoDTO struct {
-	// example:
-	//
-	// -1
 	ReShopAdultChangeFee *int32 `json:"re_shop_adult_change_fee,omitempty" xml:"re_shop_adult_change_fee,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopAdultPrice *int32 `json:"re_shop_adult_price,omitempty" xml:"re_shop_adult_price,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopAdultPriceGap *int32 `json:"re_shop_adult_price_gap,omitempty" xml:"re_shop_adult_price_gap,omitempty"`
-	// example:
-	//
-	// -1
+	ReShopAdultPrice     *int32 `json:"re_shop_adult_price,omitempty" xml:"re_shop_adult_price,omitempty"`
+	ReShopAdultPriceGap  *int32 `json:"re_shop_adult_price_gap,omitempty" xml:"re_shop_adult_price_gap,omitempty"`
 	ReShopChildChangeFee *int32 `json:"re_shop_child_change_fee,omitempty" xml:"re_shop_child_change_fee,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopChildPrice *int32 `json:"re_shop_child_price,omitempty" xml:"re_shop_child_price,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopChildPriceGap *int32 `json:"re_shop_child_price_gap,omitempty" xml:"re_shop_child_price_gap,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopInfChangeFee *int32 `json:"re_shop_inf_change_fee,omitempty" xml:"re_shop_inf_change_fee,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopInfPrice *int32 `json:"re_shop_inf_price,omitempty" xml:"re_shop_inf_price,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopInfPriceGap *int32 `json:"re_shop_inf_price_gap,omitempty" xml:"re_shop_inf_price_gap,omitempty"`
+	ReShopChildPrice     *int32 `json:"re_shop_child_price,omitempty" xml:"re_shop_child_price,omitempty"`
+	ReShopChildPriceGap  *int32 `json:"re_shop_child_price_gap,omitempty" xml:"re_shop_child_price_gap,omitempty"`
+	ReShopInfChangeFee   *int32 `json:"re_shop_inf_change_fee,omitempty" xml:"re_shop_inf_change_fee,omitempty"`
+	ReShopInfPrice       *int32 `json:"re_shop_inf_price,omitempty" xml:"re_shop_inf_price,omitempty"`
+	ReShopInfPriceGap    *int32 `json:"re_shop_inf_price_gap,omitempty" xml:"re_shop_inf_price_gap,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListPriceInfoDTOReShopPriceInfoDTO) String() string {
@@ -1467,18 +1312,15 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleDirectFlightListPriceInfoD
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleTransferFlightList struct {
-	AirlineInfo    *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListAirlineInfo    `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
-	ArrAirportInfo *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListArrAirportInfo `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
-	ArrCityCode    *string                                                                        `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrTime        *string                                                                        `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	CabinClass     *string                                                                        `json:"cabinClass,omitempty" xml:"cabinClass,omitempty"`
-	CabinClassName *string                                                                        `json:"cabinClassName,omitempty" xml:"cabinClassName,omitempty"`
-	DepAirportInfo *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListDepAirportInfo `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
-	DepCityCode    *string                                                                        `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepTime        *string                                                                        `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	// example:
-	//
-	// 240
+	AirlineInfo        *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListAirlineInfo        `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
+	ArrAirportInfo     *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListArrAirportInfo     `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
+	ArrCityCode        *string                                                                            `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrTime            *string                                                                            `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	CabinClass         *string                                                                            `json:"cabinClass,omitempty" xml:"cabinClass,omitempty"`
+	CabinClassName     *string                                                                            `json:"cabinClassName,omitempty" xml:"cabinClassName,omitempty"`
+	DepAirportInfo     *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListDepAirportInfo     `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
+	DepCityCode        *string                                                                            `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepTime            *string                                                                            `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
 	Duration           *int32                                                                             `json:"duration,omitempty" xml:"duration,omitempty"`
 	FlightNo           *string                                                                            `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
 	FlightShareInfo    *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightShareInfo    `json:"flight_share_info,omitempty" xml:"flight_share_info,omitempty" type:"Struct"`
@@ -1486,35 +1328,17 @@ type FlightModifyListingSearchV2ResponseBodyModuleTransferFlightList struct {
 	FlightStopInfo     *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightStopInfo     `json:"flight_stop_info,omitempty" xml:"flight_stop_info,omitempty" type:"Struct"`
 	FlightTransferInfo *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightTransferInfo `json:"flight_transfer_info,omitempty" xml:"flight_transfer_info,omitempty" type:"Struct"`
 	FlightType         *string                                                                            `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
-	// example:
-	//
-	// 0
-	JourneySeq *int32 `json:"journey_seq,omitempty" xml:"journey_seq,omitempty"`
-	// example:
-	//
-	// 7
-	LeftNum      *string                                                                      `json:"left_num,omitempty" xml:"left_num,omitempty"`
-	Manufacturer *string                                                                      `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
-	MealDesc     *string                                                                      `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
-	PriceInfoDTO *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListPriceInfoDTO `json:"price_info_d_t_o,omitempty" xml:"price_info_d_t_o,omitempty" type:"Struct"`
-	// example:
-	//
-	// 0
-	SegmentSeq *int32 `json:"segment_seq,omitempty" xml:"segment_seq,omitempty"`
-	// example:
-	//
-	// false
-	Share           *bool   `json:"share,omitempty" xml:"share,omitempty"`
-	ShortFlightSize *string `json:"short_flight_size,omitempty" xml:"short_flight_size,omitempty"`
-	SpanDay         *string `json:"span_day,omitempty" xml:"span_day,omitempty"`
-	// example:
-	//
-	// false
-	Stop *bool `json:"stop,omitempty" xml:"stop,omitempty"`
-	// example:
-	//
-	// false
-	Transfer *bool `json:"transfer,omitempty" xml:"transfer,omitempty"`
+	JourneySeq         *int32                                                                             `json:"journey_seq,omitempty" xml:"journey_seq,omitempty"`
+	LeftNum            *string                                                                            `json:"left_num,omitempty" xml:"left_num,omitempty"`
+	Manufacturer       *string                                                                            `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
+	MealDesc           *string                                                                            `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	PriceInfoDTO       *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListPriceInfoDTO       `json:"price_info_d_t_o,omitempty" xml:"price_info_d_t_o,omitempty" type:"Struct"`
+	SegmentSeq         *int32                                                                             `json:"segment_seq,omitempty" xml:"segment_seq,omitempty"`
+	Share              *bool                                                                              `json:"share,omitempty" xml:"share,omitempty"`
+	ShortFlightSize    *string                                                                            `json:"short_flight_size,omitempty" xml:"short_flight_size,omitempty"`
+	SpanDay            *string                                                                            `json:"span_day,omitempty" xml:"span_day,omitempty"`
+	Stop               *bool                                                                              `json:"stop,omitempty" xml:"stop,omitempty"`
+	Transfer           *bool                                                                              `json:"transfer,omitempty" xml:"transfer,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBodyModuleTransferFlightList) String() string {
@@ -2027,10 +1851,7 @@ type FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightShareI
 	AirlineChineseShortName *string `json:"airline_chinese_short_name,omitempty" xml:"airline_chinese_short_name,omitempty"`
 	AirlineCode             *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	AirlineIcon             *string `json:"airline_icon,omitempty" xml:"airline_icon,omitempty"`
-	// example:
-	//
-	// false
-	CheapFlight *bool `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
+	CheapFlight             *bool   `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightShareInfoOperatingAirlineInfo) String() string {
@@ -2182,14 +2003,8 @@ type FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightTransf
 	TransferDepTime     *string                                                                                               `json:"transfer_dep_time,omitempty" xml:"transfer_dep_time,omitempty"`
 	TransferFlightNo    *string                                                                                               `json:"transfer_flight_no,omitempty" xml:"transfer_flight_no,omitempty"`
 	TransferFlightSize  *string                                                                                               `json:"transfer_flight_size,omitempty" xml:"transfer_flight_size,omitempty"`
-	// example:
-	//
-	// false
-	TransferShare *bool `json:"transfer_share,omitempty" xml:"transfer_share,omitempty"`
-	// example:
-	//
-	// 20
-	TransferStopTime *int32 `json:"transfer_stop_time,omitempty" xml:"transfer_stop_time,omitempty"`
+	TransferShare       *bool                                                                                                 `json:"transfer_share,omitempty" xml:"transfer_share,omitempty"`
+	TransferStopTime    *int32                                                                                                `json:"transfer_stop_time,omitempty" xml:"transfer_stop_time,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightTransferInfo) String() string {
@@ -2286,10 +2101,7 @@ type FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightTransf
 	AirlineChineseShortName *string `json:"airline_chinese_short_name,omitempty" xml:"airline_chinese_short_name,omitempty"`
 	AirlineCode             *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	AirlineIcon             *string `json:"airline_icon,omitempty" xml:"airline_icon,omitempty"`
-	// example:
-	//
-	// false
-	CheapFlight *bool `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
+	CheapFlight             *bool   `json:"cheap_flight,omitempty" xml:"cheap_flight,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightTransferInfoTransferAirlineInfo) String() string {
@@ -2350,53 +2162,17 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListFlightTr
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListPriceInfoDTO struct {
-	// example:
-	//
-	// 1000
-	AdultPrice *int32 `json:"adult_price,omitempty" xml:"adult_price,omitempty"`
-	// example:
-	//
-	// 1000
-	AdultTax *int32 `json:"adult_tax,omitempty" xml:"adult_tax,omitempty"`
-	// example:
-	//
-	// 1000
-	AdultTotalPrice *int32 `json:"adult_total_price,omitempty" xml:"adult_total_price,omitempty"`
-	// example:
-	//
-	// 1000
-	BeforeControlPrice *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
-	// example:
-	//
-	// 1000
-	ChildPrice *int32 `json:"child_price,omitempty" xml:"child_price,omitempty"`
-	// example:
-	//
-	// 1000
-	ChildTax *int32 `json:"child_tax,omitempty" xml:"child_tax,omitempty"`
-	// example:
-	//
-	// 1000
-	ChildTotalPrice *int32 `json:"child_total_price,omitempty" xml:"child_total_price,omitempty"`
-	// example:
-	//
-	// 1000
-	InfantPrice *int32 `json:"infant_price,omitempty" xml:"infant_price,omitempty"`
-	// example:
-	//
-	// 1000
-	InfantTax *int32 `json:"infant_tax,omitempty" xml:"infant_tax,omitempty"`
-	// example:
-	//
-	// 1000
-	InfantTotalPrice *int32 `json:"infant_total_price,omitempty" xml:"infant_total_price,omitempty"`
-	// example:
-	//
-	// 1000
-	OriginalAdultPrice *int32 `json:"original_adult_price,omitempty" xml:"original_adult_price,omitempty"`
-	// example:
-	//
-	// 1000
+	AdultPrice              *int32                                                                                         `json:"adult_price,omitempty" xml:"adult_price,omitempty"`
+	AdultTax                *int32                                                                                         `json:"adult_tax,omitempty" xml:"adult_tax,omitempty"`
+	AdultTotalPrice         *int32                                                                                         `json:"adult_total_price,omitempty" xml:"adult_total_price,omitempty"`
+	BeforeControlPrice      *int32                                                                                         `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	ChildPrice              *int32                                                                                         `json:"child_price,omitempty" xml:"child_price,omitempty"`
+	ChildTax                *int32                                                                                         `json:"child_tax,omitempty" xml:"child_tax,omitempty"`
+	ChildTotalPrice         *int32                                                                                         `json:"child_total_price,omitempty" xml:"child_total_price,omitempty"`
+	InfantPrice             *int32                                                                                         `json:"infant_price,omitempty" xml:"infant_price,omitempty"`
+	InfantTax               *int32                                                                                         `json:"infant_tax,omitempty" xml:"infant_tax,omitempty"`
+	InfantTotalPrice        *int32                                                                                         `json:"infant_total_price,omitempty" xml:"infant_total_price,omitempty"`
+	OriginalAdultPrice      *int32                                                                                         `json:"original_adult_price,omitempty" xml:"original_adult_price,omitempty"`
 	OriginalAdultTotalPrice *int32                                                                                         `json:"original_adult_total_price,omitempty" xml:"original_adult_total_price,omitempty"`
 	ReShopPriceInfoDTO      *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListPriceInfoDTOReShopPriceInfoDTO `json:"re_shop_price_info_d_t_o,omitempty" xml:"re_shop_price_info_d_t_o,omitempty" type:"Struct"`
 }
@@ -2536,42 +2312,15 @@ func (s *FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListPriceInf
 }
 
 type FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListPriceInfoDTOReShopPriceInfoDTO struct {
-	// example:
-	//
-	// -1
 	ReShopAdultChangeFee *int32 `json:"re_shop_adult_change_fee,omitempty" xml:"re_shop_adult_change_fee,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopAdultPrice *int32 `json:"re_shop_adult_price,omitempty" xml:"re_shop_adult_price,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopAdultPriceGap *int32 `json:"re_shop_adult_price_gap,omitempty" xml:"re_shop_adult_price_gap,omitempty"`
-	// example:
-	//
-	// -1
+	ReShopAdultPrice     *int32 `json:"re_shop_adult_price,omitempty" xml:"re_shop_adult_price,omitempty"`
+	ReShopAdultPriceGap  *int32 `json:"re_shop_adult_price_gap,omitempty" xml:"re_shop_adult_price_gap,omitempty"`
 	ReShopChildChangeFee *int32 `json:"re_shop_child_change_fee,omitempty" xml:"re_shop_child_change_fee,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopChildPrice *int32 `json:"re_shop_child_price,omitempty" xml:"re_shop_child_price,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopChildPriceGap *int32 `json:"re_shop_child_price_gap,omitempty" xml:"re_shop_child_price_gap,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopInfChangeFee *int32 `json:"re_shop_inf_change_fee,omitempty" xml:"re_shop_inf_change_fee,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopInfPrice *int32 `json:"re_shop_inf_price,omitempty" xml:"re_shop_inf_price,omitempty"`
-	// example:
-	//
-	// -1
-	ReShopInfPriceGap *int32 `json:"re_shop_inf_price_gap,omitempty" xml:"re_shop_inf_price_gap,omitempty"`
+	ReShopChildPrice     *int32 `json:"re_shop_child_price,omitempty" xml:"re_shop_child_price,omitempty"`
+	ReShopChildPriceGap  *int32 `json:"re_shop_child_price_gap,omitempty" xml:"re_shop_child_price_gap,omitempty"`
+	ReShopInfChangeFee   *int32 `json:"re_shop_inf_change_fee,omitempty" xml:"re_shop_inf_change_fee,omitempty"`
+	ReShopInfPrice       *int32 `json:"re_shop_inf_price,omitempty" xml:"re_shop_inf_price,omitempty"`
+	ReShopInfPriceGap    *int32 `json:"re_shop_inf_price_gap,omitempty" xml:"re_shop_inf_price_gap,omitempty"`
 }
 
 func (s FlightModifyListingSearchV2ResponseBodyModuleTransferFlightListPriceInfoDTOReShopPriceInfoDTO) String() string {

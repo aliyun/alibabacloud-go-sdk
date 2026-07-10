@@ -24,27 +24,12 @@ type iTripTaskQueryResponseBody interface {
 }
 
 type TripTaskQueryResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module。
-	Module *TripTaskQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 2FB0D7A8-BA41-5D04-BEFC-CADA5481AC53
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                          `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                          `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TripTaskQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                            `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                          `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TripTaskQueryResponseBody) String() string {
@@ -119,9 +104,6 @@ func (s *TripTaskQueryResponseBody) Validate() error {
 }
 
 type TripTaskQueryResponseBodyModule struct {
-	// example:
-	//
-	// true
 	NeedRefresh  *bool                                          `json:"needRefresh,omitempty" xml:"needRefresh,omitempty"`
 	RecordTasks  []*TripTaskQueryResponseBodyModuleRecordTasks  `json:"record_tasks,omitempty" xml:"record_tasks,omitempty" type:"Repeated"`
 	RunningTasks []*TripTaskQueryResponseBodyModuleRunningTasks `json:"running_tasks,omitempty" xml:"running_tasks,omitempty" type:"Repeated"`
@@ -185,39 +167,15 @@ func (s *TripTaskQueryResponseBodyModule) Validate() error {
 }
 
 type TripTaskQueryResponseBodyModuleRecordTasks struct {
-	// example:
-	//
-	// 123
-	Actioner   *string `json:"actioner,omitempty" xml:"actioner,omitempty"`
-	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// example:
-	//
-	// 1525104000
-	GmtCreate *int64 `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	// example:
-	//
-	// 1525104000
-	GmtFinished *int64 `json:"gmt_finished,omitempty" xml:"gmt_finished,omitempty"`
-	// example:
-	//
-	// 34360
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// 575003
-	NodeId *string `json:"node_id,omitempty" xml:"node_id,omitempty"`
-	// example:
-	//
-	// agree
-	OutResult *string `json:"out_result,omitempty" xml:"out_result,omitempty"`
-	// example:
-	//
-	// 123
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// example:
-	//
-	// RUNNING
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Actioner    *string `json:"actioner,omitempty" xml:"actioner,omitempty"`
+	Attributes  *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	GmtCreate   *int64  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtFinished *int64  `json:"gmt_finished,omitempty" xml:"gmt_finished,omitempty"`
+	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	NodeId      *string `json:"node_id,omitempty" xml:"node_id,omitempty"`
+	OutResult   *string `json:"out_result,omitempty" xml:"out_result,omitempty"`
+	Owner       *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s TripTaskQueryResponseBodyModuleRecordTasks) String() string {
@@ -314,39 +272,15 @@ func (s *TripTaskQueryResponseBodyModuleRecordTasks) Validate() error {
 }
 
 type TripTaskQueryResponseBodyModuleRunningTasks struct {
-	// example:
-	//
-	// 123
-	Actioner   *string `json:"actioner,omitempty" xml:"actioner,omitempty"`
-	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// example:
-	//
-	// 1525104000
-	GmtCreate *int64 `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	// example:
-	//
-	// 1525104000
-	GmtFinished *int64 `json:"gmt_finished,omitempty" xml:"gmt_finished,omitempty"`
-	// example:
-	//
-	// 34360
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// 575003
-	NodeId *string `json:"node_id,omitempty" xml:"node_id,omitempty"`
-	// example:
-	//
-	// agree
-	OutResult *string `json:"out_result,omitempty" xml:"out_result,omitempty"`
-	// example:
-	//
-	// 123
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// example:
-	//
-	// RUNNING
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Actioner    *string `json:"actioner,omitempty" xml:"actioner,omitempty"`
+	Attributes  *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	GmtCreate   *int64  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtFinished *int64  `json:"gmt_finished,omitempty" xml:"gmt_finished,omitempty"`
+	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	NodeId      *string `json:"node_id,omitempty" xml:"node_id,omitempty"`
+	OutResult   *string `json:"out_result,omitempty" xml:"out_result,omitempty"`
+	Owner       *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s TripTaskQueryResponseBodyModuleRunningTasks) String() string {

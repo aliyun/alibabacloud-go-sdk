@@ -24,24 +24,12 @@ type iTicketChangingPayResponseBody interface {
 }
 
 type TicketChangingPayResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                              `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *TicketChangingPayResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TicketChangingPayResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TicketChangingPayResponseBody) String() string {
@@ -116,23 +104,11 @@ func (s *TicketChangingPayResponseBody) Validate() error {
 }
 
 type TicketChangingPayResponseBodyModule struct {
-	// example:
-	//
-	// true
-	CanRetry *bool `json:"can_retry,omitempty" xml:"can_retry,omitempty"`
-	// example:
-	//
-	// 1000
-	PayPrice  *int64 `json:"pay_price,omitempty" xml:"pay_price,omitempty"`
-	PayStatus *int32 `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
-	// example:
-	//
-	// 0000-00-00 00:00:00
-	PayTime *string `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
-	// example:
-	//
-	// 23098276578908765
-	TradeNo *string `json:"trade_no,omitempty" xml:"trade_no,omitempty"`
+	CanRetry  *bool   `json:"can_retry,omitempty" xml:"can_retry,omitempty"`
+	PayPrice  *int64  `json:"pay_price,omitempty" xml:"pay_price,omitempty"`
+	PayStatus *int32  `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	PayTime   *string `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
+	TradeNo   *string `json:"trade_no,omitempty" xml:"trade_no,omitempty"`
 }
 
 func (s TicketChangingPayResponseBodyModule) String() string {

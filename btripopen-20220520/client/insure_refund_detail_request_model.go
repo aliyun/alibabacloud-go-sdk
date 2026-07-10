@@ -26,30 +26,12 @@ type iInsureRefundDetailRequest interface {
 }
 
 type InsureRefundDetailRequest struct {
-	// example:
-	//
-	// 1423052318072952023
-	ApplyId *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	// example:
-	//
-	// 1000000001
-	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
-	// example:
-	//
-	// 1000003000000490
-	InsOrderId *string `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
-	// example:
-	//
-	// PostalSavingsBank
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	// example:
-	//
-	// 1021000196440356908
-	OutApplyId *string `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
-	// example:
-	//
-	// fliggy
+	ApplyId      *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BtripUserId  *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName    *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	InsOrderId   *string `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	IsvName      *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OutApplyId   *string `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
 	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
 }
 

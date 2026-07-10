@@ -24,7 +24,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -567,6 +567,95 @@ func (client *Client) AddInvoiceEntity(request *AddInvoiceEntityRequest) (_resul
 	headers := &AddInvoiceEntityHeaders{}
 	_result = &AddInvoiceEntityResponse{}
 	_body, _err := client.AddInvoiceEntityWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增项目负责人
+//
+// @param tmpReq - AddProjectManagerRequest
+//
+// @param headers - AddProjectManagerHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddProjectManagerResponse
+func (client *Client) AddProjectManagerWithOptions(tmpReq *AddProjectManagerRequest, headers *AddProjectManagerHeaders, runtime *dara.RuntimeOptions) (_result *AddProjectManagerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddProjectManagerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.OrgEntities) {
+		request.OrgEntitiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OrgEntities, dara.String("org_entities"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OrgEntitiesShrink) {
+		body["org_entities"] = request.OrgEntitiesShrink
+	}
+
+	if !dara.IsNil(request.OutProjectId) {
+		body["out_project_id"] = request.OutProjectId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["project_id"] = request.ProjectId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripCorpToken) {
+		realHeaders["x-acs-btrip-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddProjectManager"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cost/v1/project/manager/add"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddProjectManagerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增项目负责人
+//
+// @param request - AddProjectManagerRequest
+//
+// @return AddProjectManagerResponse
+func (client *Client) AddProjectManager(request *AddProjectManagerRequest) (_result *AddProjectManagerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &AddProjectManagerHeaders{}
+	_result = &AddProjectManagerResponse{}
+	_body, _err := client.AddProjectManagerWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2048,6 +2137,190 @@ func (client *Client) BaseCityInfoSearch(request *BaseCityInfoSearchRequest) (_r
 
 // Summary:
 //
+// 批量/单个查询部门
+//
+// @param request - BatchQueryDepartmentRequest
+//
+// @param headers - BatchQueryDepartmentHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchQueryDepartmentResponse
+func (client *Client) BatchQueryDepartmentWithOptions(request *BatchQueryDepartmentRequest, headers *BatchQueryDepartmentHeaders, runtime *dara.RuntimeOptions) (_result *BatchQueryDepartmentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModifiedTimeGreaterOrEqualThan) {
+		body["modified_time_greater_or_equal_than"] = request.ModifiedTimeGreaterOrEqualThan
+	}
+
+	if !dara.IsNil(request.OutDeptId) {
+		body["out_dept_id"] = request.OutDeptId
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["page_size"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PageToken) {
+		body["page_token"] = request.PageToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripCorpToken) {
+		realHeaders["x-acs-btrip-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchQueryDepartment"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/department/v2/batch_query"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchQueryDepartmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量/单个查询部门
+//
+// @param request - BatchQueryDepartmentRequest
+//
+// @return BatchQueryDepartmentResponse
+func (client *Client) BatchQueryDepartment(request *BatchQueryDepartmentRequest) (_result *BatchQueryDepartmentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &BatchQueryDepartmentHeaders{}
+	_result = &BatchQueryDepartmentResponse{}
+	_body, _err := client.BatchQueryDepartmentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a batch.
+//
+// @param tmpReq - BatchSubmitPreBillRequest
+//
+// @param headers - BatchSubmitPreBillHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchSubmitPreBillResponse
+func (client *Client) BatchSubmitPreBillWithOptions(tmpReq *BatchSubmitPreBillRequest, headers *BatchSubmitPreBillHeaders, runtime *dara.RuntimeOptions) (_result *BatchSubmitPreBillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchSubmitPreBillShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Values) {
+		request.ValuesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Values, dara.String("values"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppIp) {
+		query["app_ip"] = request.AppIp
+	}
+
+	if !dara.IsNil(request.BillBatch) {
+		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.CustomerDecision) {
+		query["customer_decision"] = request.CustomerDecision
+	}
+
+	if !dara.IsNil(request.Dimension) {
+		query["dimension"] = request.Dimension
+	}
+
+	if !dara.IsNil(request.ValuesShrink) {
+		query["values"] = request.ValuesShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripSoCorpToken) {
+		realHeaders["x-acs-btrip-so-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripSoCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchSubmitPreBill"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prebill/v1/batchSubmit"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchSubmitPreBillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a batch.
+//
+// @param request - BatchSubmitPreBillRequest
+//
+// @return BatchSubmitPreBillResponse
+func (client *Client) BatchSubmitPreBill(request *BatchSubmitPreBillRequest) (_result *BatchSubmitPreBillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &BatchSubmitPreBillHeaders{}
+	_result = &BatchSubmitPreBillResponse{}
+	_body, _err := client.BatchSubmitPreBillWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 商旅账单内容修改
 //
 // @param request - BtripBillInfoAdjustRequest
@@ -2143,7 +2416,15 @@ func (client *Client) BtripBillInfoAdjust(request *BtripBillInfoAdjustRequest) (
 
 // Summary:
 //
-// 同步市内用车审批单
+// Synchronizes an intra-city car service approval form.
+//
+// Description:
+//
+// Synchronizes an intra-city car service approval form for a specified enterprise.
+//
+// 1. To use this operation, enable the permission to synchronize intra-city car service approvals in your application. For more information about how to apply for data permissions, see [API Permission Application Process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
+//
+// 2. To use this operation, include the enterprise access credential (x-acs-btrip-so-corp-token) in the request header. For more information about how to obtain the enterprise access credential, see [Enterprise Access Credential](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
 //
 // @param tmpReq - CarApplyAddRequest
 //
@@ -2161,6 +2442,10 @@ func (client *Client) CarApplyAddWithOptions(tmpReq *CarApplyAddRequest, headers
 	}
 	request := &CarApplyAddShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ItineraryList) {
+		request.ItineraryListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItineraryList, dara.String("itinerary_list"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.TravelerStandard) {
 		request.TravelerStandardShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TravelerStandard, dara.String("traveler_standard"), dara.String("json"))
 	}
@@ -2184,6 +2469,10 @@ func (client *Client) CarApplyAddWithOptions(tmpReq *CarApplyAddRequest, headers
 
 	if !dara.IsNil(request.FinishedDate) {
 		body["finished_date"] = request.FinishedDate
+	}
+
+	if !dara.IsNil(request.ItineraryListShrink) {
+		body["itinerary_list"] = request.ItineraryListShrink
 	}
 
 	if !dara.IsNil(request.ProjectCode) {
@@ -2269,7 +2558,15 @@ func (client *Client) CarApplyAddWithOptions(tmpReq *CarApplyAddRequest, headers
 
 // Summary:
 //
-// 同步市内用车审批单
+// Synchronizes an intra-city car service approval form.
+//
+// Description:
+//
+// Synchronizes an intra-city car service approval form for a specified enterprise.
+//
+// 1. To use this operation, enable the permission to synchronize intra-city car service approvals in your application. For more information about how to apply for data permissions, see [API Permission Application Process](https://openapi.alibtrip.com/doc/toDocDetail?docId=3771435).
+//
+// 2. To use this operation, include the enterprise access credential (x-acs-btrip-so-corp-token) in the request header. For more information about how to obtain the enterprise access credential, see [Enterprise Access Credential](https://openapi.alibtrip.com/doc/toDocDetail?docId=3769985).
 //
 // @param request - CarApplyAddRequest
 //
@@ -2491,6 +2788,10 @@ func (client *Client) CarBillSettlementQueryWithOptions(request *CarBillSettleme
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyId) {
+		query["apply_id"] = request.ApplyId
+	}
+
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
 	}
@@ -2855,6 +3156,10 @@ func (client *Client) ChannelCorpCreateWithOptions(request *ChannelCorpCreateReq
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AdministratorEmail) {
+		body["administrator_email"] = request.AdministratorEmail
+	}
+
 	if !dara.IsNil(request.AdministratorName) {
 		body["administrator_name"] = request.AdministratorName
 	}
@@ -2863,12 +3168,28 @@ func (client *Client) ChannelCorpCreateWithOptions(request *ChannelCorpCreateReq
 		body["administrator_phone"] = request.AdministratorPhone
 	}
 
+	if !dara.IsNil(request.BaseCurrency) {
+		body["base_currency"] = request.BaseCurrency
+	}
+
+	if !dara.IsNil(request.BtripRegion) {
+		body["btrip_region"] = request.BtripRegion
+	}
+
 	if !dara.IsNil(request.City) {
 		body["city"] = request.City
 	}
 
 	if !dara.IsNil(request.CorpName) {
 		body["corp_name"] = request.CorpName
+	}
+
+	if !dara.IsNil(request.CorpNameEn) {
+		body["corp_name_en"] = request.CorpNameEn
+	}
+
+	if !dara.IsNil(request.ExtendField) {
+		body["extend_field"] = request.ExtendField
 	}
 
 	if !dara.IsNil(request.Province) {
@@ -3198,6 +3519,81 @@ func (client *Client) CommonApplySync(request *CommonApplySyncRequest) (_result 
 
 // Summary:
 //
+// Confirms a pre-billing bill.
+//
+// @param request - ConfirmPreBillRequest
+//
+// @param headers - ConfirmPreBillHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfirmPreBillResponse
+func (client *Client) ConfirmPreBillWithOptions(request *ConfirmPreBillRequest, headers *ConfirmPreBillHeaders, runtime *dara.RuntimeOptions) (_result *ConfirmPreBillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BillBatch) {
+		query["bill_batch"] = request.BillBatch
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripSoCorpToken) {
+		realHeaders["x-acs-btrip-so-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripSoCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfirmPreBill"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prebill/v1/confirm"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfirmPreBillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Confirms a pre-billing bill.
+//
+// @param request - ConfirmPreBillRequest
+//
+// @return ConfirmPreBillResponse
+func (client *Client) ConfirmPreBill(request *ConfirmPreBillRequest) (_result *ConfirmPreBillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &ConfirmPreBillHeaders{}
+	_result = &ConfirmPreBillResponse{}
+	_body, _err := client.ConfirmPreBillWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询服务商机票记账数据
 //
 // @param request - CooperatorFlightBillSettlementQueryRequest
@@ -3215,6 +3611,10 @@ func (client *Client) CooperatorFlightBillSettlementQueryWithOptions(request *Co
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyId) {
+		query["apply_id"] = request.ApplyId
+	}
+
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
 	}
@@ -3330,6 +3730,10 @@ func (client *Client) CooperatorHotelBillSettlementQueryWithOptions(request *Coo
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyId) {
+		query["apply_id"] = request.ApplyId
+	}
+
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
 	}
@@ -5638,6 +6042,10 @@ func (client *Client) FlightBillSettlementQueryWithOptions(request *FlightBillSe
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyId) {
+		query["apply_id"] = request.ApplyId
+	}
+
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
 	}
@@ -7402,7 +7810,7 @@ func (client *Client) FlightOrderDetailV2(request *FlightOrderDetailV2Request) (
 
 // Summary:
 //
-// 查询机票订单列表
+// 国内查询机票订单列表
 //
 // @param request - FlightOrderListQueryRequest
 //
@@ -7498,7 +7906,7 @@ func (client *Client) FlightOrderListQueryWithOptions(request *FlightOrderListQu
 
 // Summary:
 //
-// 查询机票订单列表
+// 国内查询机票订单列表
 //
 // @param request - FlightOrderListQueryRequest
 //
@@ -7517,7 +7925,7 @@ func (client *Client) FlightOrderListQuery(request *FlightOrderListQueryRequest)
 
 // Summary:
 //
-// 机票订单列表查询
+// 国内机票订单列表查询
 //
 // @param tmpReq - FlightOrderListQueryV2Request
 //
@@ -7635,7 +8043,7 @@ func (client *Client) FlightOrderListQueryV2WithOptions(tmpReq *FlightOrderListQ
 
 // Summary:
 //
-// 机票订单列表查询
+// 国内机票订单列表查询
 //
 // @param request - FlightOrderListQueryV2Request
 //
@@ -7654,7 +8062,7 @@ func (client *Client) FlightOrderListQueryV2(request *FlightOrderListQueryV2Requ
 
 // Summary:
 //
-// 查询机票订单详情（含票信息）
+// 国内查询机票订单详情（含票信息）
 //
 // @param request - FlightOrderQueryRequest
 //
@@ -7714,7 +8122,7 @@ func (client *Client) FlightOrderQueryWithOptions(request *FlightOrderQueryReque
 
 // Summary:
 //
-// 查询机票订单详情（含票信息）
+// 国内查询机票订单详情（含票信息）
 //
 // @param request - FlightOrderQueryRequest
 //
@@ -8998,6 +9406,10 @@ func (client *Client) FuPointBillSettlementQueryWithOptions(request *FuPointBill
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyId) {
+		query["apply_id"] = request.ApplyId
+	}
+
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
 	}
@@ -9547,6 +9959,10 @@ func (client *Client) HotelBillSettlementQueryWithOptions(request *HotelBillSett
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyId) {
+		query["apply_id"] = request.ApplyId
+	}
+
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
 	}
@@ -9939,6 +10355,10 @@ func (client *Client) HotelIndexInfoWithOptions(request *HotelIndexInfoRequest, 
 		query["hotel_status"] = request.HotelStatus
 	}
 
+	if !dara.IsNil(request.Internation) {
+		query["internation"] = request.Internation
+	}
+
 	if !dara.IsNil(request.PageSize) {
 		query["page_size"] = request.PageSize
 	}
@@ -10299,6 +10719,10 @@ func (client *Client) HotelOrderCreateWithOptions(tmpReq *HotelOrderCreateReques
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ArrivalTime) {
+		body["arrival_time"] = request.ArrivalTime
+	}
+
 	if !dara.IsNil(request.BtripUserId) {
 		body["btrip_user_id"] = request.BtripUserId
 	}
@@ -10347,6 +10771,10 @@ func (client *Client) HotelOrderCreateWithOptions(tmpReq *HotelOrderCreateReques
 		body["itinerary_no"] = request.ItineraryNo
 	}
 
+	if !dara.IsNil(request.LeaveTime) {
+		body["leave_time"] = request.LeaveTime
+	}
+
 	if !dara.IsNil(request.MemberInfoShrink) {
 		body["member_info"] = request.MemberInfoShrink
 	}
@@ -10373,6 +10801,10 @@ func (client *Client) HotelOrderCreateWithOptions(tmpReq *HotelOrderCreateReques
 
 	if !dara.IsNil(request.RoomNum) {
 		body["room_num"] = request.RoomNum
+	}
+
+	if !dara.IsNil(request.RpType) {
+		body["rp_type"] = request.RpType
 	}
 
 	if !dara.IsNil(request.SellerId) {
@@ -10872,6 +11304,10 @@ func (client *Client) HotelOrderPreValidateWithOptions(tmpReq *HotelOrderPreVali
 		query["room_num"] = request.RoomNum
 	}
 
+	if !dara.IsNil(request.RpType) {
+		query["rp_type"] = request.RpType
+	}
+
 	if !dara.IsNil(request.SearchRoomPrice) {
 		query["search_room_price"] = request.SearchRoomPrice
 	}
@@ -11298,6 +11734,10 @@ func (client *Client) HotelSearchWithOptions(tmpReq *HotelSearchRequest, headers
 		query["payment_type"] = request.PaymentType
 	}
 
+	if !dara.IsNil(request.Poi) {
+		query["poi"] = request.Poi
+	}
+
 	if !dara.IsNil(request.ShidsShrink) {
 		query["shids"] = request.ShidsShrink
 	}
@@ -11540,7 +11980,7 @@ func (client *Client) HotelSuggestV2(request *HotelSuggestV2Request) (_result *H
 
 // Summary:
 //
-// # International Flight Order Details
+// 国际机票订单详情
 //
 // @param request - IFlightOrderDetailQueryRequest
 //
@@ -11596,7 +12036,7 @@ func (client *Client) IFlightOrderDetailQueryWithOptions(request *IFlightOrderDe
 
 // Summary:
 //
-// # International Flight Order Details
+// 国际机票订单详情
 //
 // @param request - IFlightOrderDetailQueryRequest
 //
@@ -11753,6 +12193,10 @@ func (client *Client) IeCarBillSettlementQueryWithOptions(request *IeCarBillSett
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyId) {
+		query["apply_id"] = request.ApplyId
+	}
+
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
 	}
@@ -11864,6 +12308,10 @@ func (client *Client) IeFlightBillSettlementQueryWithOptions(request *IeFlightBi
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyId) {
+		query["apply_id"] = request.ApplyId
+	}
+
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
 	}
@@ -11975,6 +12423,10 @@ func (client *Client) IeHotelBillSettlementQueryWithOptions(request *IeHotelBill
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyId) {
+		query["apply_id"] = request.ApplyId
+	}
+
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
 	}
@@ -15727,6 +16179,139 @@ func (client *Client) MealApplyApprove(request *MealApplyApproveRequest) (_resul
 
 // Summary:
 //
+// 修改用餐审批单
+//
+// @param tmpReq - MealApplyModifyRequest
+//
+// @param headers - MealApplyModifyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MealApplyModifyResponse
+func (client *Client) MealApplyModifyWithOptions(tmpReq *MealApplyModifyRequest, headers *MealApplyModifyHeaders, runtime *dara.RuntimeOptions) (_result *MealApplyModifyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &MealApplyModifyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ApplyUser) {
+		request.ApplyUserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplyUser, dara.String("apply_user"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ItineraryList) {
+		request.ItineraryListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItineraryList, dara.String("itinerary_list"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyUserShrink) {
+		body["apply_user"] = request.ApplyUserShrink
+	}
+
+	if !dara.IsNil(request.CostCenterId) {
+		body["cost_center_id"] = request.CostCenterId
+	}
+
+	if !dara.IsNil(request.ExtendField) {
+		body["extend_field"] = request.ExtendField
+	}
+
+	if !dara.IsNil(request.InvoiceId) {
+		body["invoice_id"] = request.InvoiceId
+	}
+
+	if !dara.IsNil(request.ItineraryListShrink) {
+		body["itinerary_list"] = request.ItineraryListShrink
+	}
+
+	if !dara.IsNil(request.MealAmount) {
+		body["meal_amount"] = request.MealAmount
+	}
+
+	if !dara.IsNil(request.MealCause) {
+		body["meal_cause"] = request.MealCause
+	}
+
+	if !dara.IsNil(request.ProjectCode) {
+		body["project_code"] = request.ProjectCode
+	}
+
+	if !dara.IsNil(request.ProjectTitle) {
+		body["project_title"] = request.ProjectTitle
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.ThirdPartApplyId) {
+		body["third_part_apply_id"] = request.ThirdPartApplyId
+	}
+
+	if !dara.IsNil(request.ThirdPartCostCenterId) {
+		body["third_part_cost_center_id"] = request.ThirdPartCostCenterId
+	}
+
+	if !dara.IsNil(request.ThirdPartInvoiceId) {
+		body["third_part_invoice_id"] = request.ThirdPartInvoiceId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripCorpToken) {
+		realHeaders["x-acs-btrip-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MealApplyModify"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/apply/v1/meal/modify"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MealApplyModifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改用餐审批单
+//
+// @param request - MealApplyModifyRequest
+//
+// @return MealApplyModifyResponse
+func (client *Client) MealApplyModify(request *MealApplyModifyRequest) (_result *MealApplyModifyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &MealApplyModifyHeaders{}
+	_result = &MealApplyModifyResponse{}
+	_body, _err := client.MealApplyModifyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询用餐申请单
 //
 // @param request - MealApplyQueryRequest
@@ -15819,6 +16404,10 @@ func (client *Client) MealBillSettlementQueryWithOptions(request *MealBillSettle
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyId) {
+		query["apply_id"] = request.ApplyId
+	}
+
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
 	}
@@ -16314,6 +16903,85 @@ func (client *Client) MonthBillSplitGet(request *MonthBillSplitGetRequest) (_res
 
 // Summary:
 //
+// 查询企业预出账月账单
+//
+// @param request - MonthPreBillGetRequest
+//
+// @param headers - MonthPreBillGetHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MonthPreBillGetResponse
+func (client *Client) MonthPreBillGetWithOptions(request *MonthPreBillGetRequest, headers *MonthPreBillGetHeaders, runtime *dara.RuntimeOptions) (_result *MonthPreBillGetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BillBatch) {
+		query["bill_batch"] = request.BillBatch
+	}
+
+	if !dara.IsNil(request.BillMonth) {
+		query["bill_month"] = request.BillMonth
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripSoCorpToken) {
+		realHeaders["x-acs-btrip-so-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripSoCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MonthPreBillGet"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/open/v1/month-pre-bill"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MonthPreBillGetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询企业预出账月账单
+//
+// @param request - MonthPreBillGetRequest
+//
+// @return MonthPreBillGetResponse
+func (client *Client) MonthPreBillGet(request *MonthPreBillGetRequest) (_result *MonthPreBillGetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &MonthPreBillGetHeaders{}
+	_result = &MonthPreBillGetResponse{}
+	_body, _err := client.MonthPreBillGetWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询订单退款明细
 //
 // @param request - OrderRefundDetailQueryRequest
@@ -16412,6 +17080,10 @@ func (client *Client) ProjectAddWithOptions(request *ProjectAddRequest, headers 
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Code) {
 		body["code"] = request.Code
+	}
+
+	if !dara.IsNil(request.HasManager) {
+		body["has_manager"] = request.HasManager
 	}
 
 	if !dara.IsNil(request.ProjectName) {
@@ -16578,6 +17250,10 @@ func (client *Client) ProjectModifyWithOptions(request *ProjectModifyRequest, he
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Code) {
 		body["code"] = request.Code
+	}
+
+	if !dara.IsNil(request.HasManager) {
+		body["has_manager"] = request.HasManager
 	}
 
 	if !dara.IsNil(request.ProjectName) {
@@ -17036,6 +17712,99 @@ func (client *Client) QueryReimbursementOrder(request *QueryReimbursementOrderRe
 	headers := &QueryReimbursementOrderHeaders{}
 	_result = &QueryReimbursementOrderResponse{}
 	_body, _err := client.QueryReimbursementOrderWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除项目负责人
+//
+// @param tmpReq - RemoveProjectManagerRequest
+//
+// @param headers - RemoveProjectManagerHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveProjectManagerResponse
+func (client *Client) RemoveProjectManagerWithOptions(tmpReq *RemoveProjectManagerRequest, headers *RemoveProjectManagerHeaders, runtime *dara.RuntimeOptions) (_result *RemoveProjectManagerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RemoveProjectManagerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.OrgEntities) {
+		request.OrgEntitiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OrgEntities, dara.String("org_entities"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OrgEntitiesShrink) {
+		body["org_entities"] = request.OrgEntitiesShrink
+	}
+
+	if !dara.IsNil(request.OutProjectId) {
+		body["out_project_id"] = request.OutProjectId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["project_id"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RemoveAll) {
+		body["remove_all"] = request.RemoveAll
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsBtripCorpToken) {
+		realHeaders["x-acs-btrip-corp-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsBtripCorpToken)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveProjectManager"),
+		Version:     dara.String("2022-05-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/cost/v1/project/manager/remove"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveProjectManagerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除项目负责人
+//
+// @param request - RemoveProjectManagerRequest
+//
+// @return RemoveProjectManagerResponse
+func (client *Client) RemoveProjectManager(request *RemoveProjectManagerRequest) (_result *RemoveProjectManagerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &RemoveProjectManagerHeaders{}
+	_result = &RemoveProjectManagerResponse{}
+	_body, _err := client.RemoveProjectManagerWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18156,6 +18925,10 @@ func (client *Client) TrainBillSettlementQueryWithOptions(request *TrainBillSett
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyId) {
+		query["apply_id"] = request.ApplyId
+	}
+
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
 	}
@@ -21035,6 +21808,10 @@ func (client *Client) VasBillSettlementQueryWithOptions(request *VasBillSettleme
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyId) {
+		query["apply_id"] = request.ApplyId
+	}
+
 	if !dara.IsNil(request.BillBatch) {
 		query["bill_batch"] = request.BillBatch
 	}

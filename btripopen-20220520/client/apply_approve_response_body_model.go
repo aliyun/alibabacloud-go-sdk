@@ -24,29 +24,12 @@ type iApplyApproveResponseBody interface {
 }
 
 type ApplyApproveResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module。
-	//
-	// example:
-	//
-	// module
-	Module *string `json:"module,omitempty" xml:"module,omitempty"`
-	// example:
-	//
-	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *string `json:"module,omitempty" xml:"module,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s ApplyApproveResponseBody) String() string {

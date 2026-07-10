@@ -24,27 +24,12 @@ type iHotelSearchResponseBody interface {
 }
 
 type HotelSearchResponseBody struct {
-	// example:
-	//
-	// 0
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// None
-	Message *string                        `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *HotelSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                        `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                        `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *HotelSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                          `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                        `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelSearchResponseBody) String() string {
@@ -163,67 +148,25 @@ func (s *HotelSearchResponseBodyModule) Validate() error {
 }
 
 type HotelSearchResponseBodyModuleItems struct {
-	BrandName *string `json:"brand_name,omitempty" xml:"brand_name,omitempty"`
-	// example:
-	//
-	// 1902
-	BtandCode *string `json:"btand_code,omitempty" xml:"btand_code,omitempty"`
-	// example:
-	//
-	// 330100
-	CityCode     *string                                         `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	DiscountDesc *HotelSearchResponseBodyModuleItemsDiscountDesc `json:"discount_desc,omitempty" xml:"discount_desc,omitempty" type:"Struct"`
-	// example:
-	//
-	// 100
-	Distance *int32 `json:"distance,omitempty" xml:"distance,omitempty"`
-	// example:
-	//
-	// 330100
-	DistrictCode *string `json:"district_code,omitempty" xml:"district_code,omitempty"`
-	HotelAddress *string `json:"hotel_address,omitempty" xml:"hotel_address,omitempty"`
-	// example:
-	//
-	// 55335212
-	HotelCode *string `json:"hotel_code,omitempty" xml:"hotel_code,omitempty"`
-	// example:
-	//
-	// Business travel hotel
-	HotelEnName *string `json:"hotel_en_name,omitempty" xml:"hotel_en_name,omitempty"`
-	HotelName   *string `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
-	// example:
-	//
-	// 3
-	HotelStar *string `json:"hotel_star,omitempty" xml:"hotel_star,omitempty"`
-	// example:
-	//
-	// https://img.alicdn.com/imgextra/i3/6000000000003/O1CN01xkZQR41BtPxK1PQCb_!!6000000000003-0-hotel.jpg
-	ImageUrl *string `json:"image_url,omitempty" xml:"image_url,omitempty"`
-	// example:
-	//
-	// true
-	IsProtocol *bool `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
-	// example:
-	//
-	// 119.844005,30.054384
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// example:
-	//
-	// 100
-	MinPrice         *float64 `json:"min_price,omitempty" xml:"min_price,omitempty"`
-	OriginalMinPrice *float64 `json:"original_min_price,omitempty" xml:"original_min_price,omitempty"`
-	// example:
-	//
-	// 3.2
-	Score *string `json:"score,omitempty" xml:"score,omitempty"`
-	// example:
-	//
-	// 0
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 0571-88886784-8888
-	Tel *string `json:"tel,omitempty" xml:"tel,omitempty"`
+	BrandName        *string                                         `json:"brand_name,omitempty" xml:"brand_name,omitempty"`
+	BtandCode        *string                                         `json:"btand_code,omitempty" xml:"btand_code,omitempty"`
+	CityCode         *string                                         `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	DiscountDesc     *HotelSearchResponseBodyModuleItemsDiscountDesc `json:"discount_desc,omitempty" xml:"discount_desc,omitempty" type:"Struct"`
+	Distance         *int32                                          `json:"distance,omitempty" xml:"distance,omitempty"`
+	DistrictCode     *string                                         `json:"district_code,omitempty" xml:"district_code,omitempty"`
+	HotelAddress     *string                                         `json:"hotel_address,omitempty" xml:"hotel_address,omitempty"`
+	HotelCode        *string                                         `json:"hotel_code,omitempty" xml:"hotel_code,omitempty"`
+	HotelEnName      *string                                         `json:"hotel_en_name,omitempty" xml:"hotel_en_name,omitempty"`
+	HotelName        *string                                         `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
+	HotelStar        *string                                         `json:"hotel_star,omitempty" xml:"hotel_star,omitempty"`
+	ImageUrl         *string                                         `json:"image_url,omitempty" xml:"image_url,omitempty"`
+	IsProtocol       *bool                                           `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	Location         *string                                         `json:"location,omitempty" xml:"location,omitempty"`
+	MinPrice         *float64                                        `json:"min_price,omitempty" xml:"min_price,omitempty"`
+	OriginalMinPrice *float64                                        `json:"original_min_price,omitempty" xml:"original_min_price,omitempty"`
+	Score            *string                                         `json:"score,omitempty" xml:"score,omitempty"`
+	Status           *int32                                          `json:"status,omitempty" xml:"status,omitempty"`
+	Tel              *string                                         `json:"tel,omitempty" xml:"tel,omitempty"`
 }
 
 func (s HotelSearchResponseBodyModuleItems) String() string {

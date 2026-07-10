@@ -17,10 +17,6 @@ type iTrainOrderQueryRequest interface {
 
 type TrainOrderQueryRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2627694109810885616
 	OrderId *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	UserId  *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }

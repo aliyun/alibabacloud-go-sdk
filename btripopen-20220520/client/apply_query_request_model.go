@@ -22,26 +22,11 @@ type iApplyQueryRequest interface {
 }
 
 type ApplyQueryRequest struct {
-	// example:
-	//
-	// 123
-	ApplyId *int32 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	// example:
-	//
-	// 201710111505000464651
-	ApplyShowId *string `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
-	// example:
-	//
-	// btrip123
-	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
-	// example:
-	//
-	// adczd
+	ApplyId          *int32  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApplyShowId      *string `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
+	SubCorpId        *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Type             *int32  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ApplyQueryRequest) String() string {

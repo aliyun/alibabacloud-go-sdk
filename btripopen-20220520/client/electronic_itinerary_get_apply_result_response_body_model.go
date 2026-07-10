@@ -24,27 +24,11 @@ type iElectronicItineraryGetApplyResultResponseBody interface {
 }
 
 type ElectronicItineraryGetApplyResultResponseBody struct {
-  // example:
-  // 
-  // 200
   Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
   Module *ElectronicItineraryGetApplyResultResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-  // requestId
-  // 
-  // example:
-  // 
-  // B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // example:
-  // 
-  // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-  // traceId
-  // 
-  // example:
-  // 
-  // 21041ce316577904808056433edbb2
   TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -164,16 +148,10 @@ func (s *ElectronicItineraryGetApplyResultResponseBodyModule) Validate() error {
 }
 
 type ElectronicItineraryGetApplyResultResponseBodyModuleApplyTicketList struct {
-  // example:
-  // 
-  // 5001
   FailedCode *int32 `json:"failed_code,omitempty" xml:"failed_code,omitempty"`
   FailedReason *string `json:"failed_reason,omitempty" xml:"failed_reason,omitempty"`
   ItineraryStatus *int32 `json:"itinerary_status,omitempty" xml:"itinerary_status,omitempty"`
   Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-  // example:
-  // 
-  // 781-6605285563
   TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 }
 

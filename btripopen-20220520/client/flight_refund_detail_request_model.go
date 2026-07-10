@@ -17,16 +17,8 @@ type iFlightRefundDetailRequest interface {
 
 type FlightRefundDetailRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dis123
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// refun123
 	DisSubOrderId *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
 }
 

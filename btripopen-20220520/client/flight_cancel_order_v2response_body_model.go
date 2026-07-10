@@ -24,29 +24,12 @@ type iFlightCancelOrderV2ResponseBody interface {
 }
 
 type FlightCancelOrderV2ResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module
-	Module *FlightCancelOrderV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// requestId
-	//
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *FlightCancelOrderV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightCancelOrderV2ResponseBody) String() string {
@@ -121,9 +104,6 @@ func (s *FlightCancelOrderV2ResponseBody) Validate() error {
 }
 
 type FlightCancelOrderV2ResponseBodyModule struct {
-	// example:
-	//
-	// 2023-08-10 17:45:32
 	CancelTime *string `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
 }
 

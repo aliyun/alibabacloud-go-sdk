@@ -24,29 +24,12 @@ type iFlightModifyApplyV2ResponseBody interface {
 }
 
 type FlightModifyApplyV2ResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module
-	Module *FlightModifyApplyV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// requestId
-	//
-	// example:
-	//
-	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 212a8b8216915622178333839e665d
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *FlightModifyApplyV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightModifyApplyV2ResponseBody) String() string {
@@ -121,22 +104,10 @@ func (s *FlightModifyApplyV2ResponseBody) Validate() error {
 }
 
 type FlightModifyApplyV2ResponseBodyModule struct {
-	// example:
-	//
-	// 1017002195370467138
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 1017002195370467137
-	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	// example:
-	//
-	// 1019195786853020
+	OrderId       *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId    *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	OutSubOrderId *string `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
-	// example:
-	//
-	// 1019195786853020
-	SubOrderId *string `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
+	SubOrderId    *string `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
 }
 
 func (s FlightModifyApplyV2ResponseBodyModule) String() string {

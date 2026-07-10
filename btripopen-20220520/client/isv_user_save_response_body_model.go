@@ -24,26 +24,12 @@ type iIsvUserSaveResponseBody interface {
 }
 
 type IsvUserSaveResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *string `json:"module,omitempty" xml:"module,omitempty"`
-	// example:
-	//
-	// A5009956-1077-52FB-B520-EA8C7E91D722
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *string `json:"module,omitempty" xml:"module,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 707c9fd116393792883244141e4e7d
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s IsvUserSaveResponseBody) String() string {

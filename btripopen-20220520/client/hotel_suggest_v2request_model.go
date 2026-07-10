@@ -24,28 +24,12 @@ type iHotelSuggestV2Request interface {
 }
 
 type HotelSuggestV2Request struct {
-	// example:
-	//
-	// 1000
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	// example:
-	//
-	// 2024-05-15
-	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
-	// example:
-	//
-	// 2024-06-04
-	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
-	// example:
-	//
-	// 330100
-	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	Keyword  *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	CheckIn     *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	CheckOut    *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	Keyword     *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	SearchType *int32 `json:"search_type,omitempty" xml:"search_type,omitempty"`
 }
 

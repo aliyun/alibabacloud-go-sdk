@@ -24,29 +24,12 @@ type iCarApplyModifyResponseBody interface {
 }
 
 type CarApplyModifyResponseBody struct {
-	// example:
-	//
-	// 0
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module。
-	//
-	// example:
-	//
-	// {\\"list\\": [], \\"pageSize\\": 20, \\"pageNo\\": 1}
-	Module *bool `json:"module,omitempty" xml:"module,omitempty"`
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CarApplyModifyResponseBody) String() string {

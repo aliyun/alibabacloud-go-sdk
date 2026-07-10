@@ -19,18 +19,10 @@ type iCreateSubCorpRequest interface {
 
 type CreateSubCorpRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// corp123
 	OuterCorpId *string `json:"outer_corp_id,omitempty" xml:"outer_corp_id,omitempty"`
 	// This parameter is required.
 	OuterCorpName *string `json:"outer_corp_name,omitempty" xml:"outer_corp_name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

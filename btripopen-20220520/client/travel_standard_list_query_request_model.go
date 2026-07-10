@@ -20,21 +20,10 @@ type iTravelStandardListQueryRequest interface {
 }
 
 type TravelStandardListQueryRequest struct {
-	// example:
-	//
-	// false
 	FromGroup *bool `json:"from_group,omitempty" xml:"from_group,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 10
 	PageSize *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
 	RuleName *string `json:"rule_name,omitempty" xml:"rule_name,omitempty"`
 }

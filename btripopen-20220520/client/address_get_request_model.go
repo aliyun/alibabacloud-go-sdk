@@ -51,37 +51,24 @@ type iAddressGetRequest interface {
 
 type AddressGetRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	ActionType    *int32  `json:"action_type,omitempty" xml:"action_type,omitempty"`
-	ArrCityCode   *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrCityName   *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	CarScenesCode *string `json:"car_scenes_code,omitempty" xml:"car_scenes_code,omitempty"`
-	DepCityCode   *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepCityName   *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	DepDate       *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	// example:
-	//
-	// 460e254b5a5b4bd0801744a2790e5d78
+	ActionType        *int32  `json:"action_type,omitempty" xml:"action_type,omitempty"`
+	ArrCityCode       *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCityName       *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	CarScenesCode     *string `json:"car_scenes_code,omitempty" xml:"car_scenes_code,omitempty"`
+	DepCityCode       *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepCityName       *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepDate           *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	ItineraryId       *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
 	MiddlePage        *int32  `json:"middle_page,omitempty" xml:"middle_page,omitempty"`
 	OrderId           *string `json:"order_Id,omitempty" xml:"order_Id,omitempty"`
 	Phone             *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	SessionParameters *string `json:"session_parameters,omitempty" xml:"session_parameters,omitempty"`
 	SubCorpId         *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
-	// example:
-	//
-	// https://alibtrip.open.com
 	TaobaoCallbackUrl *string `json:"taobao_callback_url,omitempty" xml:"taobao_callback_url,omitempty"`
 	ThirdpartApplyId  *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	TravelerId        *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	// example:
-	//
-	// 1
-	Type            *int32 `json:"type,omitempty" xml:"type,omitempty"`
-	UseBookingProxy *int32 `json:"use_booking_proxy,omitempty" xml:"use_booking_proxy,omitempty"`
+	Type              *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	UseBookingProxy   *int32  `json:"use_booking_proxy,omitempty" xml:"use_booking_proxy,omitempty"`
 	// This parameter is required.
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }

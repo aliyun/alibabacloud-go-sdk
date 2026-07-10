@@ -27,30 +27,12 @@ type iIntlFlightRefundApplyShrinkRequest interface {
 
 type IntlFlightRefundApplyShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1002145190081005400
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 3750656668336001024
-	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	// example:
-	//
-	// 202503251022170001
+	OrderId          *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId       *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	OutRefundApplyId *string `json:"out_refund_apply_id,omitempty" xml:"out_refund_apply_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// edcac4f4c79d40ccb141ddb6da567e65
 	PassengerJourneyGroupKey *string `json:"passenger_journey_group_key,omitempty" xml:"passenger_journey_group_key,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	RefundReasonCode *string `json:"refund_reason_code,omitempty" xml:"refund_reason_code,omitempty"`
 	// This parameter is required.
 	RefundSegmentListShrink *string `json:"refund_segment_list,omitempty" xml:"refund_segment_list,omitempty"`

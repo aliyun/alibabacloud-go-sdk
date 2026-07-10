@@ -24,25 +24,12 @@ type iTrainStationSearchResponseBody interface {
 }
 
 type TrainStationSearchResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module
-	Module *TrainStationSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 210e847f16611516748613869de4f6
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TrainStationSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                               `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TrainStationSearchResponseBody) String() string {
@@ -151,9 +138,6 @@ func (s *TrainStationSearchResponseBodyModule) Validate() error {
 }
 
 type TrainStationSearchResponseBodyModuleCities struct {
-	// example:
-	//
-	// hz
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }

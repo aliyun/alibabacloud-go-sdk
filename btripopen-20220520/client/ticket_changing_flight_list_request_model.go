@@ -24,25 +24,11 @@ type iTicketChangingFlightListRequest interface {
 }
 
 type TicketChangingFlightListRequest struct {
-	// example:
-	//
-	// BJS
 	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	// example:
-	//
-	// HGH
 	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2000-00-00 00:00:00
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dis123
 	DisOrderId       *string                                            `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	IsVoluntary      *int32                                             `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
 	TravelerInfoList []*TicketChangingFlightListRequestTravelerInfoList `json:"traveler_info_list,omitempty" xml:"traveler_info_list,omitempty" type:"Repeated"`
@@ -125,27 +111,12 @@ func (s *TicketChangingFlightListRequest) Validate() error {
 
 type TicketChangingFlightListRequestTravelerInfoList struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BJS
 	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// HGH
 	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
 	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// ADULT
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 23231
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

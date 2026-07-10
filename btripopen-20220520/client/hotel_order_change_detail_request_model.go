@@ -20,22 +20,10 @@ type iHotelOrderChangeDetailRequest interface {
 }
 
 type HotelOrderChangeDetailRequest struct {
-	// example:
-	//
-	// 123455
-	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	// example:
-	//
-	// 21351235134
+	BtripUserId   *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	ChangeOrderId *string `json:"change_order_id,omitempty" xml:"change_order_id,omitempty"`
-	// example:
-	//
-	// dis123
-	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
-	// example:
-	//
-	// 1402002197440511306
-	SaleOrderId *string `json:"sale_order_id,omitempty" xml:"sale_order_id,omitempty"`
+	DisOrderId    *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	SaleOrderId   *string `json:"sale_order_id,omitempty" xml:"sale_order_id,omitempty"`
 }
 
 func (s HotelOrderChangeDetailRequest) String() string {

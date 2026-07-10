@@ -31,6 +31,8 @@ type iHotelOrderPreValidateRequest interface {
 	GetRoomId() *int64
 	SetRoomNum(v int32) *HotelOrderPreValidateRequest
 	GetRoomNum() *int32
+	SetRpType(v int32) *HotelOrderPreValidateRequest
+	GetRpType() *int32
 	SetSearchRoomPrice(v int64) *HotelOrderPreValidateRequest
 	GetSearchRoomPrice() *int64
 	SetSellerId(v int64) *HotelOrderPreValidateRequest
@@ -41,72 +43,30 @@ type iHotelOrderPreValidateRequest interface {
 
 type HotelOrderPreValidateRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 23141
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2022-05-15
 	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2022-05-15
 	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
 	// This parameter is required.
 	DailyList []*HotelOrderPreValidateRequestDailyList `json:"daily_list,omitempty" xml:"daily_list,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 612673015638
-	ItemId *int64 `json:"item_id,omitempty" xml:"item_id,omitempty"`
-	// example:
-	//
-	// 1
+	ItemId                *int64                                          `json:"item_id,omitempty" xml:"item_id,omitempty"`
 	NumberOfAdultsPerRoom *int32                                          `json:"number_of_adults_per_room,omitempty" xml:"number_of_adults_per_room,omitempty"`
 	OccupantInfoList      []*HotelOrderPreValidateRequestOccupantInfoList `json:"occupant_info_list,omitempty" xml:"occupant_info_list,omitempty" type:"Repeated"`
 	RateKey               *string                                         `json:"rate_key,omitempty" xml:"rate_key,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 239872781
 	RatePlanId *int64 `json:"rate_plan_id,omitempty" xml:"rate_plan_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 71652158
 	RoomId *int64 `json:"room_id,omitempty" xml:"room_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	RoomNum *int32 `json:"room_num,omitempty" xml:"room_num,omitempty"`
+	RpType  *int32 `json:"rp_type,omitempty" xml:"rp_type,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1000
 	SearchRoomPrice *int64 `json:"search_room_price,omitempty" xml:"search_room_price,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2088441675613762
 	SellerId *int64 `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 52302073
 	Shid *int64 `json:"shid,omitempty" xml:"shid,omitempty"`
 }
 
@@ -160,6 +120,10 @@ func (s *HotelOrderPreValidateRequest) GetRoomId() *int64 {
 
 func (s *HotelOrderPreValidateRequest) GetRoomNum() *int32 {
 	return s.RoomNum
+}
+
+func (s *HotelOrderPreValidateRequest) GetRpType() *int32 {
+	return s.RpType
 }
 
 func (s *HotelOrderPreValidateRequest) GetSearchRoomPrice() *int64 {
@@ -229,6 +193,11 @@ func (s *HotelOrderPreValidateRequest) SetRoomNum(v int32) *HotelOrderPreValidat
 	return s
 }
 
+func (s *HotelOrderPreValidateRequest) SetRpType(v int32) *HotelOrderPreValidateRequest {
+	s.RpType = &v
+	return s
+}
+
 func (s *HotelOrderPreValidateRequest) SetSearchRoomPrice(v int64) *HotelOrderPreValidateRequest {
 	s.SearchRoomPrice = &v
 	return s
@@ -267,22 +236,10 @@ func (s *HotelOrderPreValidateRequest) Validate() error {
 }
 
 type HotelOrderPreValidateRequestDailyList struct {
-	// example:
-	//
-	// 1
-	Board *string `json:"board,omitempty" xml:"board,omitempty"`
-	// example:
-	//
-	// 100
-	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
-	// example:
-	//
-	// 2022-05-15
+	Board         *string `json:"board,omitempty" xml:"board,omitempty"`
+	Price         *int64  `json:"price,omitempty" xml:"price,omitempty"`
 	RateStartTime *string `json:"rate_start_time,omitempty" xml:"rate_start_time,omitempty"`
-	// example:
-	//
-	// 10
-	RoomCount *int32 `json:"room_count,omitempty" xml:"room_count,omitempty"`
+	RoomCount     *int32  `json:"room_count,omitempty" xml:"room_count,omitempty"`
 }
 
 func (s HotelOrderPreValidateRequestDailyList) String() string {
@@ -334,27 +291,12 @@ func (s *HotelOrderPreValidateRequestDailyList) Validate() error {
 }
 
 type HotelOrderPreValidateRequestOccupantInfoList struct {
-	// example:
-	//
-	// 232871871822
-	CardNo *string `json:"card_no,omitempty" xml:"card_no,omitempty"`
-	// example:
-	//
-	// 1
+	CardNo   *string `json:"card_no,omitempty" xml:"card_no,omitempty"`
 	CardType *int32  `json:"card_type,omitempty" xml:"card_type,omitempty"`
 	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// 12392827121
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// example:
-	//
-	// 128918
-	StaffNo *string `json:"staff_no,omitempty" xml:"staff_no,omitempty"`
-	// example:
-	//
-	// 1
-	UserType *int32 `json:"user_type,omitempty" xml:"user_type,omitempty"`
+	Phone    *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	StaffNo  *string `json:"staff_no,omitempty" xml:"staff_no,omitempty"`
+	UserType *int32  `json:"user_type,omitempty" xml:"user_type,omitempty"`
 }
 
 func (s HotelOrderPreValidateRequestOccupantInfoList) String() string {

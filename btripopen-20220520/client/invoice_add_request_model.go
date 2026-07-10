@@ -32,37 +32,17 @@ type iInvoiceAddRequest interface {
 }
 
 type InvoiceAddRequest struct {
-	// example:
-	//
-	// xxx
-	Address  *string `json:"address,omitempty" xml:"address,omitempty"`
-	BankName *string `json:"bank_name,omitempty" xml:"bank_name,omitempty"`
-	// example:
-	//
-	// 123456
+	Address         *string `json:"address,omitempty" xml:"address,omitempty"`
+	BankName        *string `json:"bank_name,omitempty" xml:"bank_name,omitempty"`
 	BankNo          *string `json:"bank_no,omitempty" xml:"bank_no,omitempty"`
 	MailThirdPartId *string `json:"mail_third_part_id,omitempty" xml:"mail_third_part_id,omitempty"`
-	// example:
-	//
-	// 12345
-	TaxNo *string `json:"tax_no,omitempty" xml:"tax_no,omitempty"`
-	// example:
-	//
-	// 123
-	Tel *string `json:"tel,omitempty" xml:"tel,omitempty"`
+	TaxNo           *string `json:"tax_no,omitempty" xml:"tax_no,omitempty"`
+	Tel             *string `json:"tel,omitempty" xml:"tel,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 340049
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 	// This parameter is required.
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	Type     *int32 `json:"type,omitempty" xml:"type,omitempty"`
 	UnitType *int32 `json:"unit_type,omitempty" xml:"unit_type,omitempty"`
 }

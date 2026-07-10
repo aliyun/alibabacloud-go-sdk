@@ -48,55 +48,24 @@ func (s *IsvUserSaveRequest) Validate() error {
 }
 
 type IsvUserSaveRequestUserList struct {
-	BaseCityCode *string                               `json:"base_city_code,omitempty" xml:"base_city_code,omitempty"`
-	Birthday     *string                               `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	CertList     []*IsvUserSaveRequestUserListCertList `json:"cert_list,omitempty" xml:"cert_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 10
-	DepartId *int64 `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	// example:
-	//
-	// 123@163.com
-	Email   *string `json:"email,omitempty" xml:"email,omitempty"`
-	Gender  *string `json:"gender,omitempty" xml:"gender,omitempty"`
-	IsAdmin *bool   `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
-	// example:
-	//
-	// 8797
-	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
-	// example:
-	//
-	// 0
-	LeaveStatus *int32 `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
-	// example:
-	//
-	// 123456
-	ManagerUserId *string `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
-	// example:
-	//
-	// 15364762829
-	Phone    *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	Position *string `json:"position,omitempty" xml:"position,omitempty"`
-	// example:
-	//
-	// 20
-	PositionLevel *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
-	// example:
-	//
-	// ceshi
-	RealNameEn *string   `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
-	RoleIdList []*string `json:"role_id_list,omitempty" xml:"role_id_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 123
-	ThirdDepartId     *string   `json:"third_depart_id,omitempty" xml:"third_depart_id,omitempty"`
-	ThirdDepartIdList []*string `json:"third_depart_id_list,omitempty" xml:"third_depart_id_list,omitempty" type:"Repeated"`
+	BaseCityCode      *string                               `json:"base_city_code,omitempty" xml:"base_city_code,omitempty"`
+	Birthday          *string                               `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertList          []*IsvUserSaveRequestUserListCertList `json:"cert_list,omitempty" xml:"cert_list,omitempty" type:"Repeated"`
+	DepartId          *int64                                `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	Email             *string                               `json:"email,omitempty" xml:"email,omitempty"`
+	Gender            *string                               `json:"gender,omitempty" xml:"gender,omitempty"`
+	IsAdmin           *bool                                 `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
+	JobNo             *string                               `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	LeaveStatus       *int32                                `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
+	ManagerUserId     *string                               `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	Phone             *string                               `json:"phone,omitempty" xml:"phone,omitempty"`
+	Position          *string                               `json:"position,omitempty" xml:"position,omitempty"`
+	PositionLevel     *string                               `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	RealNameEn        *string                               `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	RoleIdList        []*string                             `json:"role_id_list,omitempty" xml:"role_id_list,omitempty" type:"Repeated"`
+	ThirdDepartId     *string                               `json:"third_depart_id,omitempty" xml:"third_depart_id,omitempty"`
+	ThirdDepartIdList []*string                             `json:"third_depart_id_list,omitempty" xml:"third_depart_id_list,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	// This parameter is required.
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`

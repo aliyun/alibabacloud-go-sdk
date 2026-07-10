@@ -22,31 +22,13 @@ type iFlightListingSearchRequest interface {
 }
 
 type FlightListingSearchRequest struct {
-	// example:
-	//
-	// MU
 	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// HGH
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	// example:
-	//
-	// Y
-	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinClass  *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-02-26
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 }
 

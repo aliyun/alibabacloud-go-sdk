@@ -25,19 +25,12 @@ type TrainNoListSearchShrinkRequest struct {
 	// This parameter is required.
 	ArrLocation *string `json:"arr_location,omitempty" xml:"arr_location,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2024-05-16
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	// This parameter is required.
 	DepLocation *string `json:"dep_location,omitempty" xml:"dep_location,omitempty"`
 	// This parameter is required.
 	OptionShrink *string `json:"option,omitempty" xml:"option,omitempty"`
-	// example:
-	//
-	// null
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderId      *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 }
 
 func (s TrainNoListSearchShrinkRequest) String() string {

@@ -19,16 +19,8 @@ type iTrainFeeCalculateRefundRequest interface {
 
 type TrainFeeCalculateRefundRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12345
 	DistributeOrderId *string `json:"distribute_order_id,omitempty" xml:"distribute_order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1002145190081005400
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
 	RefundTrainInfos []*TrainFeeCalculateRefundRequestRefundTrainInfos `json:"refund_train_infos,omitempty" xml:"refund_train_infos,omitempty" type:"Repeated"`
@@ -84,30 +76,14 @@ func (s *TrainFeeCalculateRefundRequest) Validate() error {
 
 type TrainFeeCalculateRefundRequestRefundTrainInfos struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BDC
 	ArrStationCode *string `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BTC
 	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2024-05-06 15:19:01
 	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
 	// This parameter is required.
 	RefundPassengerInfos []*TrainFeeCalculateRefundRequestRefundTrainInfosRefundPassengerInfos `json:"refund_passenger_infos,omitempty" xml:"refund_passenger_infos,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// K1234
 	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 
@@ -179,28 +155,12 @@ func (s *TrainFeeCalculateRefundRequestRefundTrainInfos) Validate() error {
 
 type TrainFeeCalculateRefundRequestRefundTrainInfosRefundPassengerInfos struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
 	PassengerCertNo *string `json:"passenger_cert_no,omitempty" xml:"passenger_cert_no,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 170d9ac6f8807f9ec603c688f45f78a41
 	PassengerCertType *string `json:"passenger_cert_type,omitempty" xml:"passenger_cert_type,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 949c9f34f677a0e5d249dfc94f5e62cc7
 	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
 }
 

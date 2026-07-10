@@ -24,24 +24,12 @@ type iTicketChangingCancelResponseBody interface {
 }
 
 type TicketChangingCancelResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                                 `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                 `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *TicketChangingCancelResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 210f079e16603757182131635d866a
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TicketChangingCancelResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                 `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TicketChangingCancelResponseBody) String() string {
@@ -116,13 +104,7 @@ func (s *TicketChangingCancelResponseBody) Validate() error {
 }
 
 type TicketChangingCancelResponseBodyModule struct {
-	// example:
-	//
-	// 0000-00-00 00:00:00
-	CancelTime *string `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
-	// example:
-	//
-	// mid1243
+	CancelTime    *string `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
 	DisSubOrderId *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
 	Status        *string `json:"status,omitempty" xml:"status,omitempty"`
 }

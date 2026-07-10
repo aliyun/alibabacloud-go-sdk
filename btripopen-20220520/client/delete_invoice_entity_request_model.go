@@ -18,16 +18,9 @@ type iDeleteInvoiceEntityRequest interface {
 }
 
 type DeleteInvoiceEntityRequest struct {
-	// example:
-	//
-	// false
 	DelAll   *bool                                 `json:"del_all,omitempty" xml:"del_all,omitempty"`
 	Entities []*DeleteInvoiceEntityRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 340049
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 
@@ -80,13 +73,7 @@ func (s *DeleteInvoiceEntityRequest) Validate() error {
 }
 
 type DeleteInvoiceEntityRequestEntities struct {
-	// example:
-	//
-	// 12345
-	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
-	// example:
-	//
-	// 1
+	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
 }
 

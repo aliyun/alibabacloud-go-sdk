@@ -13,6 +13,8 @@ type iHotelIndexInfoRequest interface {
 	GetCityCode() *string
 	SetHotelStatus(v int32) *HotelIndexInfoRequest
 	GetHotelStatus() *int32
+	SetInternation(v bool) *HotelIndexInfoRequest
+	GetInternation() *bool
 	SetPageSize(v int32) *HotelIndexInfoRequest
 	GetPageSize() *int32
 	SetPageToken(v string) *HotelIndexInfoRequest
@@ -20,23 +22,11 @@ type iHotelIndexInfoRequest interface {
 }
 
 type HotelIndexInfoRequest struct {
-	// example:
-	//
-	// 330000
-	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	// example:
-	//
-	// 0
-	HotelStatus *int32 `json:"hotel_status,omitempty" xml:"hotel_status,omitempty"`
+	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	HotelStatus *int32  `json:"hotel_status,omitempty" xml:"hotel_status,omitempty"`
+	Internation *bool   `json:"internation,omitempty" xml:"internation,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// example:
-	//
-	// 1038882
+	PageSize  *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
 	PageToken *string `json:"page_token,omitempty" xml:"page_token,omitempty"`
 }
 
@@ -56,6 +46,10 @@ func (s *HotelIndexInfoRequest) GetHotelStatus() *int32 {
 	return s.HotelStatus
 }
 
+func (s *HotelIndexInfoRequest) GetInternation() *bool {
+	return s.Internation
+}
+
 func (s *HotelIndexInfoRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -71,6 +65,11 @@ func (s *HotelIndexInfoRequest) SetCityCode(v string) *HotelIndexInfoRequest {
 
 func (s *HotelIndexInfoRequest) SetHotelStatus(v int32) *HotelIndexInfoRequest {
 	s.HotelStatus = &v
+	return s
+}
+
+func (s *HotelIndexInfoRequest) SetInternation(v bool) *HotelIndexInfoRequest {
+	s.Internation = &v
 	return s
 }
 

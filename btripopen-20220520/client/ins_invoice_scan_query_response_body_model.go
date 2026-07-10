@@ -24,28 +24,12 @@ type iInsInvoiceScanQueryResponseBody interface {
 }
 
 type InsInvoiceScanQueryResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *InsInvoiceScanQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// requestId
-	//
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 210e847f16611516748613869de4f6
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *InsInvoiceScanQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s InsInvoiceScanQueryResponseBody) String() string {
@@ -120,23 +104,11 @@ func (s *InsInvoiceScanQueryResponseBody) Validate() error {
 }
 
 type InsInvoiceScanQueryResponseBodyModule struct {
-	Items []*InsInvoiceScanQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// example:
-	//
-	// 2
-	TotalPage *int32 `json:"total_page,omitempty" xml:"total_page,omitempty"`
-	// example:
-	//
-	// 30
-	TotalSize *int32 `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	Items     []*InsInvoiceScanQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	PageNo    *int32                                        `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize  *int32                                        `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	TotalPage *int32                                        `json:"total_page,omitempty" xml:"total_page,omitempty"`
+	TotalSize *int32                                        `json:"total_size,omitempty" xml:"total_size,omitempty"`
 }
 
 func (s InsInvoiceScanQueryResponseBodyModule) String() string {
@@ -206,124 +178,48 @@ func (s *InsInvoiceScanQueryResponseBodyModule) Validate() error {
 }
 
 type InsInvoiceScanQueryResponseBodyModuleItems struct {
-	// example:
-	//
-	// 20
-	AmountWithTax *string `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
-	// example:
-	//
-	// 18.87
-	AmountWithoutTax *string `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
-	// example:
-	//
-	// 2022-12-01
-	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
-	Category *int32  `json:"category,omitempty" xml:"category,omitempty"`
-	// 校验码
-	//
-	// example:
-	//
-	// 07122942791187744475
-	CheckCode  *string `json:"check_code,omitempty" xml:"check_code,omitempty"`
-	CostCenter *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
-	Department *string `json:"department,omitempty" xml:"department,omitempty"`
-	// 开票人
-	Drawer *string `json:"drawer,omitempty" xml:"drawer,omitempty"`
-	// 应用ID
-	//
-	// example:
-	//
-	// 566
-	Id               *string `json:"id,omitempty" xml:"id,omitempty"`
-	InsuranceCompany *string `json:"insurance_company,omitempty" xml:"insurance_company,omitempty"`
-	// example:
-	//
-	// T123343234242323232
-	InsuranceOrderId *string `json:"insurance_order_id,omitempty" xml:"insurance_order_id,omitempty"`
-	InsuranceType    *string `json:"insurance_type,omitempty" xml:"insurance_type,omitempty"`
-	// example:
-	//
-	// 3300111303
-	InvoiceCode *string `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
-	// example:
-	//
-	// 2022-12-01
-	InvoiceDay *string `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
-	// 发票明细
-	InvoiceDetails []*InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails `json:"invoice_details,omitempty" xml:"invoice_details,omitempty" type:"Repeated"`
-	// 发票地区
-	InvoiceLocation *string `json:"invoice_location,omitempty" xml:"invoice_location,omitempty"`
-	// example:
-	//
-	// 24021111
-	InvoiceNo *string `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
-	// 发票抬头
-	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	InvoiceType  *int32  `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
-	// 机器码
-	//
-	// example:
-	//
-	// 661619906841
-	MachineCode *string `json:"machine_code,omitempty" xml:"machine_code,omitempty"`
-	OfdOssUrl   *string `json:"ofd_oss_url,omitempty" xml:"ofd_oss_url,omitempty"`
-	// example:
-	//
-	// 3137168772101111000
-	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// https://www.testurl.com
-	OssUrl    *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
-	Passenger *string `json:"passenger,omitempty" xml:"passenger,omitempty"`
-	// 密码区
-	//
-	// example:
-	//
-	// <87*>>53>5023>-446>/4+83/5	- *>5/81<75/1931>4>>
-	PasswordArea *string `json:"password_area,omitempty" xml:"password_area,omitempty"`
-	Project      *string `json:"project,omitempty" xml:"project,omitempty"`
-	// 购方银行信息
-	PurchaserBankAccountInfo *string `json:"purchaser_bank_account_info,omitempty" xml:"purchaser_bank_account_info,omitempty"`
-	// 购方联系方式
-	PurchaserContactInfo *string `json:"purchaser_contact_info,omitempty" xml:"purchaser_contact_info,omitempty"`
-	PurchaserName        *string `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
-	// example:
-	//
-	// 91441111111111111S
-	PurchaserTaxNo *string `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
-	// 收款人
-	Recipient *string `json:"recipient,omitempty" xml:"recipient,omitempty"`
-	// 备注
-	Remarks *string `json:"remarks,omitempty" xml:"remarks,omitempty"`
-	// 复核人
-	Reviewer *string `json:"reviewer,omitempty" xml:"reviewer,omitempty"`
-	// 销售方银行信息
-	SellerBankAccountInfo *string `json:"seller_bank_account_info,omitempty" xml:"seller_bank_account_info,omitempty"`
-	// 销售方联系方式
-	SellerContactInfo *string `json:"seller_contact_info,omitempty" xml:"seller_contact_info,omitempty"`
-	SellerName        *string `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
-	// example:
-	//
-	// 91441111111111111N
-	SellerTaxNo *string `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
-	// 校验码
-	//
-	// example:
-	//
-	// 4475
-	SmartCheckCode *string `json:"smart_check_code,omitempty" xml:"smart_check_code,omitempty"`
-	// example:
-	//
-	// 1.13
-	TaxAmount *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
-	// example:
-	//
-	// 6%
-	TaxRate *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	// 大写金额
-	TotalAmountInWords *string `json:"total_amount_in_words,omitempty" xml:"total_amount_in_words,omitempty"`
-	XmlOssUrl          *string `json:"xml_oss_url,omitempty" xml:"xml_oss_url,omitempty"`
+	AmountWithTax            *string                                                     `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
+	AmountWithoutTax         *string                                                     `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
+	BillDate                 *string                                                     `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	Category                 *int32                                                      `json:"category,omitempty" xml:"category,omitempty"`
+	CheckCode                *string                                                     `json:"check_code,omitempty" xml:"check_code,omitempty"`
+	CostCenter               *string                                                     `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	Department               *string                                                     `json:"department,omitempty" xml:"department,omitempty"`
+	Drawer                   *string                                                     `json:"drawer,omitempty" xml:"drawer,omitempty"`
+	Id                       *string                                                     `json:"id,omitempty" xml:"id,omitempty"`
+	InsuranceCompany         *string                                                     `json:"insurance_company,omitempty" xml:"insurance_company,omitempty"`
+	InsuranceOrderId         *string                                                     `json:"insurance_order_id,omitempty" xml:"insurance_order_id,omitempty"`
+	InsuranceType            *string                                                     `json:"insurance_type,omitempty" xml:"insurance_type,omitempty"`
+	InvoiceCode              *string                                                     `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
+	InvoiceDay               *string                                                     `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
+	InvoiceDetails           []*InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails `json:"invoice_details,omitempty" xml:"invoice_details,omitempty" type:"Repeated"`
+	InvoiceLocation          *string                                                     `json:"invoice_location,omitempty" xml:"invoice_location,omitempty"`
+	InvoiceNo                *string                                                     `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
+	InvoiceTitle             *string                                                     `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	InvoiceType              *int32                                                      `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	MachineCode              *string                                                     `json:"machine_code,omitempty" xml:"machine_code,omitempty"`
+	OfdOssUrl                *string                                                     `json:"ofd_oss_url,omitempty" xml:"ofd_oss_url,omitempty"`
+	OrderId                  *int64                                                      `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OssUrl                   *string                                                     `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	Passenger                *string                                                     `json:"passenger,omitempty" xml:"passenger,omitempty"`
+	PasswordArea             *string                                                     `json:"password_area,omitempty" xml:"password_area,omitempty"`
+	Project                  *string                                                     `json:"project,omitempty" xml:"project,omitempty"`
+	PurchaserBankAccountInfo *string                                                     `json:"purchaser_bank_account_info,omitempty" xml:"purchaser_bank_account_info,omitempty"`
+	PurchaserContactInfo     *string                                                     `json:"purchaser_contact_info,omitempty" xml:"purchaser_contact_info,omitempty"`
+	PurchaserName            *string                                                     `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
+	PurchaserTaxNo           *string                                                     `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
+	Recipient                *string                                                     `json:"recipient,omitempty" xml:"recipient,omitempty"`
+	Remarks                  *string                                                     `json:"remarks,omitempty" xml:"remarks,omitempty"`
+	Reviewer                 *string                                                     `json:"reviewer,omitempty" xml:"reviewer,omitempty"`
+	SellerBankAccountInfo    *string                                                     `json:"seller_bank_account_info,omitempty" xml:"seller_bank_account_info,omitempty"`
+	SellerContactInfo        *string                                                     `json:"seller_contact_info,omitempty" xml:"seller_contact_info,omitempty"`
+	SellerName               *string                                                     `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
+	SellerTaxNo              *string                                                     `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
+	SmartCheckCode           *string                                                     `json:"smart_check_code,omitempty" xml:"smart_check_code,omitempty"`
+	TaxAmount                *string                                                     `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	TaxRate                  *string                                                     `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	TotalAmountInWords       *string                                                     `json:"total_amount_in_words,omitempty" xml:"total_amount_in_words,omitempty"`
+	XmlOssUrl                *string                                                     `json:"xml_oss_url,omitempty" xml:"xml_oss_url,omitempty"`
 }
 
 func (s InsInvoiceScanQueryResponseBodyModuleItems) String() string {
@@ -726,52 +622,15 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) Validate() error {
 }
 
 type InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails struct {
-	// 金额
-	//
-	// example:
-	//
-	// 75.21
-	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	// 行号
-	//
-	// example:
-	//
-	// 0
-	Index *string `json:"index,omitempty" xml:"index,omitempty"`
-	// 货物或应税劳务、服务名称
-	ItemName *string `json:"item_name,omitempty" xml:"item_name,omitempty"`
-	// 数量
-	//
-	// example:
-	//
-	// 1
-	Quantity *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
-	// 规格型号
-	//
-	// example:
-	//
-	// 66PT11230069
+	Amount        *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	Index         *string `json:"index,omitempty" xml:"index,omitempty"`
+	ItemName      *string `json:"item_name,omitempty" xml:"item_name,omitempty"`
+	Quantity      *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	// 税额
-	//
-	// example:
-	//
-	// 12.79
-	Tax *string `json:"tax,omitempty" xml:"tax,omitempty"`
-	// 税率
-	//
-	// example:
-	//
-	// 17%
-	TaxRate *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	// 单位
-	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
-	// 单价
-	//
-	// example:
-	//
-	// 75.21
-	UnitPrice *string `json:"unit_price,omitempty" xml:"unit_price,omitempty"`
+	Tax           *string `json:"tax,omitempty" xml:"tax,omitempty"`
+	TaxRate       *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	Unit          *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	UnitPrice     *string `json:"unit_price,omitempty" xml:"unit_price,omitempty"`
 }
 
 func (s InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) String() string {

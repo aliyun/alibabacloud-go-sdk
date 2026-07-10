@@ -24,29 +24,12 @@ type iHotelRoomInfoResponseBody interface {
 }
 
 type HotelRoomInfoResponseBody struct {
-	// example:
-	//
-	// 0
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// operation success.
-	Message *string                            `json:"message,omitempty" xml:"message,omitempty"`
-	Module  []*HotelRoomInfoResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	// requestId
-	//
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                            `json:"message,omitempty" xml:"message,omitempty"`
+	Module    []*HotelRoomInfoResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                            `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelRoomInfoResponseBody) String() string {
@@ -127,58 +110,25 @@ func (s *HotelRoomInfoResponseBody) Validate() error {
 type HotelRoomInfoResponseBodyModule struct {
 	BedInfoGroupList []*HotelRoomInfoResponseBodyModuleBedInfoGroupList `json:"bed_info_group_list,omitempty" xml:"bed_info_group_list,omitempty" type:"Repeated"`
 	BedInfos         []*HotelRoomInfoResponseBodyModuleBedInfos         `json:"bed_infos,omitempty" xml:"bed_infos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	ExtraBed *int32 `json:"extra_bed,omitempty" xml:"extra_bed,omitempty"`
-	// example:
-	//
-	// demo
-	ExtraBedDesc *string `json:"extra_bed_desc,omitempty" xml:"extra_bed_desc,omitempty"`
-	// example:
-	//
-	// 2
-	Floor *string `json:"floor,omitempty" xml:"floor,omitempty"`
-	// example:
-	//
-	// 0
-	InternetWay *string `json:"internet_way,omitempty" xml:"internet_way,omitempty"`
-	// example:
-	//
-	// 3
-	MaxOccupancy     *int32    `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
-	RoomDesc         *string   `json:"room_desc,omitempty" xml:"room_desc,omitempty"`
-	RoomFacilities   *string   `json:"room_facilities,omitempty" xml:"room_facilities,omitempty"`
-	RoomFacilityList []*string `json:"room_facility_list,omitempty" xml:"room_facility_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 84536009
-	RoomId *string `json:"room_id,omitempty" xml:"room_id,omitempty"`
-	// example:
-	//
-	// //img.alicdn.com/imgextra/i2/6000000007493/O1CN010Vmxaz25DqUblX82A_!!6000000007493-2-hotel.png
-	RoomImage  *string                                      `json:"room_image,omitempty" xml:"room_image,omitempty"`
-	RoomImages []*HotelRoomInfoResponseBodyModuleRoomImages `json:"room_images,omitempty" xml:"room_images,omitempty" type:"Repeated"`
-	RoomName   *string                                      `json:"room_name,omitempty" xml:"room_name,omitempty"`
-	RoomType   *int32                                       `json:"room_type,omitempty" xml:"room_type,omitempty"`
-	Roomarea   *string                                      `json:"roomarea,omitempty" xml:"roomarea,omitempty"`
-	// example:
-	//
-	// 3
-	Rooms *int32  `json:"rooms,omitempty" xml:"rooms,omitempty"`
-	Smoke *string `json:"smoke,omitempty" xml:"smoke,omitempty"`
-	// example:
-	//
-	// 2
-	Window *string `json:"window,omitempty" xml:"window,omitempty"`
-	// example:
-	//
-	// 0
-	WindowBad *string `json:"window_bad,omitempty" xml:"window_bad,omitempty"`
-	// example:
-	//
-	// demo
-	WindowView *string `json:"window_view,omitempty" xml:"window_view,omitempty"`
+	ExtraBed         *int32                                             `json:"extra_bed,omitempty" xml:"extra_bed,omitempty"`
+	ExtraBedDesc     *string                                            `json:"extra_bed_desc,omitempty" xml:"extra_bed_desc,omitempty"`
+	Floor            *string                                            `json:"floor,omitempty" xml:"floor,omitempty"`
+	InternetWay      *string                                            `json:"internet_way,omitempty" xml:"internet_way,omitempty"`
+	MaxOccupancy     *int32                                             `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
+	RoomDesc         *string                                            `json:"room_desc,omitempty" xml:"room_desc,omitempty"`
+	RoomFacilities   *string                                            `json:"room_facilities,omitempty" xml:"room_facilities,omitempty"`
+	RoomFacilityList []*string                                          `json:"room_facility_list,omitempty" xml:"room_facility_list,omitempty" type:"Repeated"`
+	RoomId           *string                                            `json:"room_id,omitempty" xml:"room_id,omitempty"`
+	RoomImage        *string                                            `json:"room_image,omitempty" xml:"room_image,omitempty"`
+	RoomImages       []*HotelRoomInfoResponseBodyModuleRoomImages       `json:"room_images,omitempty" xml:"room_images,omitempty" type:"Repeated"`
+	RoomName         *string                                            `json:"room_name,omitempty" xml:"room_name,omitempty"`
+	RoomType         *int32                                             `json:"room_type,omitempty" xml:"room_type,omitempty"`
+	Roomarea         *string                                            `json:"roomarea,omitempty" xml:"roomarea,omitempty"`
+	Rooms            *int32                                             `json:"rooms,omitempty" xml:"rooms,omitempty"`
+	Smoke            *string                                            `json:"smoke,omitempty" xml:"smoke,omitempty"`
+	Window           *string                                            `json:"window,omitempty" xml:"window,omitempty"`
+	WindowBad        *string                                            `json:"window_bad,omitempty" xml:"window_bad,omitempty"`
+	WindowView       *string                                            `json:"window_view,omitempty" xml:"window_view,omitempty"`
 }
 
 func (s HotelRoomInfoResponseBodyModule) String() string {
@@ -520,17 +470,8 @@ func (s *HotelRoomInfoResponseBodyModuleBedInfoGroupListBedInfos) Validate() err
 
 type HotelRoomInfoResponseBodyModuleBedInfos struct {
 	BedDesc *string `json:"bed_desc,omitempty" xml:"bed_desc,omitempty"`
-	// example:
-	//
-	// 2
-	BedNum *int32 `json:"bed_num,omitempty" xml:"bed_num,omitempty"`
-	// example:
-	//
-	// 1.8*2.0m
+	BedNum  *int32  `json:"bed_num,omitempty" xml:"bed_num,omitempty"`
 	BedSize *string `json:"bed_size,omitempty" xml:"bed_size,omitempty"`
-	// example:
-	//
-	// 1
 	BedType *string `json:"bed_type,omitempty" xml:"bed_type,omitempty"`
 	Length  *string `json:"length,omitempty" xml:"length,omitempty"`
 	Width   *string `json:"width,omitempty" xml:"width,omitempty"`
@@ -605,10 +546,7 @@ func (s *HotelRoomInfoResponseBodyModuleBedInfos) Validate() error {
 type HotelRoomInfoResponseBodyModuleRoomImages struct {
 	BedInfos2 *string `json:"bed_infos2,omitempty" xml:"bed_infos2,omitempty"`
 	Tag       *int32  `json:"tag,omitempty" xml:"tag,omitempty"`
-	// example:
-	//
-	// https://img.alicdn.com/imgextra/i3/6000000000003/O1CN01xkZQR41BtPxK1PQCb_!!6000000000003-0-hotel.jpg
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s HotelRoomInfoResponseBodyModuleRoomImages) String() string {

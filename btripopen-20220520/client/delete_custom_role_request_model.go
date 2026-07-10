@@ -15,10 +15,6 @@ type iDeleteCustomRoleRequest interface {
 
 type DeleteCustomRoleRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12345
 	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
 }
 

@@ -24,24 +24,12 @@ type iFlightSearchListResponseBody interface {
 }
 
 type FlightSearchListResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                             `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                             `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *FlightSearchListResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// A5009956-1077-52FB-B520-EA8C7E91D722
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *FlightSearchListResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightSearchListResponseBody) String() string {
@@ -116,11 +104,8 @@ func (s *FlightSearchListResponseBody) Validate() error {
 }
 
 type FlightSearchListResponseBodyModule struct {
-	FlightList []*FlightSearchListResponseBodyModuleFlightList `json:"flight_list,omitempty" xml:"flight_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// false
-	IsReplacePnr *bool `json:"is_replace_pnr,omitempty" xml:"is_replace_pnr,omitempty"`
+	FlightList   []*FlightSearchListResponseBodyModuleFlightList `json:"flight_list,omitempty" xml:"flight_list,omitempty" type:"Repeated"`
+	IsReplacePnr *bool                                           `json:"is_replace_pnr,omitempty" xml:"is_replace_pnr,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModule) String() string {
@@ -163,145 +148,49 @@ func (s *FlightSearchListResponseBodyModule) Validate() error {
 }
 
 type FlightSearchListResponseBodyModuleFlightList struct {
-	AirlineInfo    *FlightSearchListResponseBodyModuleFlightListAirlineInfo    `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
-	ArrAirportInfo *FlightSearchListResponseBodyModuleFlightListArrAirportInfo `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// yyyy-MM-dd HH:mm:ss
-	ArrDate         *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	BasicCabinPrice *int32  `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
-	// example:
-	//
-	// 100
-	BuildPrice *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
-	// example:
-	//
-	// Y
-	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	// example:
-	//
-	// 2
-	CabinClass    *string                                                      `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	CabinInfoList []*FlightSearchListResponseBodyModuleFlightListCabinInfoList `json:"cabin_info_list,omitempty" xml:"cabin_info_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// FM
-	CarrierAirline *string `json:"carrier_airline,omitempty" xml:"carrier_airline,omitempty"`
-	// example:
-	//
-	// FM9152
-	CarrierNo      *string                                                     `json:"carrier_no,omitempty" xml:"carrier_no,omitempty"`
-	ClassRule      *string                                                     `json:"class_rule,omitempty" xml:"class_rule,omitempty"`
-	DepAirportInfo *FlightSearchListResponseBodyModuleFlightListDepAirportInfo `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// BJS
-	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	// example:
-	//
-	// yyyy-MM-dd HH:mm:ss
-	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	// example:
-	//
-	// 1
-	Discount *int32 `json:"discount,omitempty" xml:"discount,omitempty"`
-	// example:
-	//
-	// CA1234
-	FlightNo       *string                                                       `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	FlightRuleList []*FlightSearchListResponseBodyModuleFlightListFlightRuleList `json:"flight_rule_list,omitempty" xml:"flight_rule_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// demo
-	FlightRuleListStr *string `json:"flight_rule_list_str,omitempty" xml:"flight_rule_list_str,omitempty"`
-	FlightSize        *string `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
-	// example:
-	//
-	// demo
-	FlightType *string `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
-	// example:
-	//
-	// 1
-	InvoiceType *int32 `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
-	// example:
-	//
-	// true
-	IsProtocol *bool `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
-	// example:
-	//
-	// false
-	IsShare *bool `json:"is_share,omitempty" xml:"is_share,omitempty"`
-	// example:
-	//
-	// false
-	IsStop *bool `json:"is_stop,omitempty" xml:"is_stop,omitempty"`
-	// example:
-	//
-	// false
-	IsTransfer *bool   `json:"is_transfer,omitempty" xml:"is_transfer,omitempty"`
-	MealDesc   *string `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
-	// example:
-	//
-	// {"key":"value"}
-	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// example:
-	//
-	// 100
-	OilPrice *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
-	// example:
-	//
-	// wisdiii2ii22ii2
-	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
-	// example:
-	//
-	// 100
-	Price *int32 `json:"price,omitempty" xml:"price,omitempty"`
-	// example:
-	//
-	// 1
-	ProductType     *int64  `json:"product_type,omitempty" xml:"product_type,omitempty"`
-	ProductTypeDesc *string `json:"product_type_desc,omitempty" xml:"product_type_desc,omitempty"`
-	// example:
-	//
-	// 100
-	PromotionPrice *string `json:"promotion_price,omitempty" xml:"promotion_price,omitempty"`
-	// example:
-	//
-	// 1
-	RemainedSeatCount *string `json:"remained_seat_count,omitempty" xml:"remained_seat_count,omitempty"`
-	// example:
-	//
-	// 1000_1_0
-	SecretParams *string `json:"secret_params,omitempty" xml:"secret_params,omitempty"`
-	// example:
-	//
-	// 1
-	SegmentNumber *string `json:"segment_number,omitempty" xml:"segment_number,omitempty"`
-	// example:
-	//
-	// yyyy-MM-dd HH:mm:ss
-	StopArrTime *string `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
-	// example:
-	//
-	// HGH
-	StopCity *string `json:"stop_city,omitempty" xml:"stop_city,omitempty"`
-	// example:
-	//
-	// yyyy-MM-dd HH:mm:ss
-	StopDepTime *string `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
-	// example:
-	//
-	// 100
-	TicketPrice *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	// example:
-	//
-	// 100
-	TotalPrice   *string                                                   `json:"total_price,omitempty" xml:"total_price,omitempty"`
-	TransferInfo *FlightSearchListResponseBodyModuleFlightListTransferInfo `json:"transfer_info,omitempty" xml:"transfer_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1
-	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+	AirlineInfo       *FlightSearchListResponseBodyModuleFlightListAirlineInfo      `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
+	ArrAirportInfo    *FlightSearchListResponseBodyModuleFlightListArrAirportInfo   `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
+	ArrDate           *string                                                       `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	BasicCabinPrice   *int32                                                        `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice        *int32                                                        `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	Cabin             *string                                                       `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass        *string                                                       `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinInfoList     []*FlightSearchListResponseBodyModuleFlightListCabinInfoList  `json:"cabin_info_list,omitempty" xml:"cabin_info_list,omitempty" type:"Repeated"`
+	CarrierAirline    *string                                                       `json:"carrier_airline,omitempty" xml:"carrier_airline,omitempty"`
+	CarrierNo         *string                                                       `json:"carrier_no,omitempty" xml:"carrier_no,omitempty"`
+	ClassRule         *string                                                       `json:"class_rule,omitempty" xml:"class_rule,omitempty"`
+	DepAirportInfo    *FlightSearchListResponseBodyModuleFlightListDepAirportInfo   `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
+	DepCityCode       *string                                                       `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepDate           *string                                                       `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	Discount          *int32                                                        `json:"discount,omitempty" xml:"discount,omitempty"`
+	FlightNo          *string                                                       `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FlightRuleList    []*FlightSearchListResponseBodyModuleFlightListFlightRuleList `json:"flight_rule_list,omitempty" xml:"flight_rule_list,omitempty" type:"Repeated"`
+	FlightRuleListStr *string                                                       `json:"flight_rule_list_str,omitempty" xml:"flight_rule_list_str,omitempty"`
+	FlightSize        *string                                                       `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
+	FlightType        *string                                                       `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
+	InvoiceType       *int32                                                        `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	IsProtocol        *bool                                                         `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	IsShare           *bool                                                         `json:"is_share,omitempty" xml:"is_share,omitempty"`
+	IsStop            *bool                                                         `json:"is_stop,omitempty" xml:"is_stop,omitempty"`
+	IsTransfer        *bool                                                         `json:"is_transfer,omitempty" xml:"is_transfer,omitempty"`
+	MealDesc          *string                                                       `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	Memo              *string                                                       `json:"memo,omitempty" xml:"memo,omitempty"`
+	OilPrice          *int32                                                        `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	OtaItemId         *string                                                       `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	Price             *int32                                                        `json:"price,omitempty" xml:"price,omitempty"`
+	ProductType       *int64                                                        `json:"product_type,omitempty" xml:"product_type,omitempty"`
+	ProductTypeDesc   *string                                                       `json:"product_type_desc,omitempty" xml:"product_type_desc,omitempty"`
+	PromotionPrice    *string                                                       `json:"promotion_price,omitempty" xml:"promotion_price,omitempty"`
+	RemainedSeatCount *string                                                       `json:"remained_seat_count,omitempty" xml:"remained_seat_count,omitempty"`
+	SecretParams      *string                                                       `json:"secret_params,omitempty" xml:"secret_params,omitempty"`
+	SegmentNumber     *string                                                       `json:"segment_number,omitempty" xml:"segment_number,omitempty"`
+	StopArrTime       *string                                                       `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
+	StopCity          *string                                                       `json:"stop_city,omitempty" xml:"stop_city,omitempty"`
+	StopDepTime       *string                                                       `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
+	TicketPrice       *int32                                                        `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TotalPrice        *string                                                       `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	TransferInfo      *FlightSearchListResponseBodyModuleFlightListTransferInfo     `json:"transfer_info,omitempty" xml:"transfer_info,omitempty" type:"Struct"`
+	TripType          *int32                                                        `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightList) String() string {
@@ -742,9 +631,6 @@ func (s *FlightSearchListResponseBodyModuleFlightList) Validate() error {
 }
 
 type FlightSearchListResponseBodyModuleFlightListAirlineInfo struct {
-	// example:
-	//
-	// CA
 	AirlineCode       *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	AirlineName       *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
 	AirlineSimpleName *string `json:"airline_simple_name,omitempty" xml:"airline_simple_name,omitempty"`
@@ -790,20 +676,11 @@ func (s *FlightSearchListResponseBodyModuleFlightListAirlineInfo) Validate() err
 }
 
 type FlightSearchListResponseBodyModuleFlightListArrAirportInfo struct {
-	// example:
-	//
-	// HGH
 	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
 	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
-	// example:
-	//
-	// HGH
-	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	// example:
-	//
-	// T3
-	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Terminal    *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListArrAirportInfo) String() string {
@@ -864,91 +741,31 @@ func (s *FlightSearchListResponseBodyModuleFlightListArrAirportInfo) Validate() 
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoList struct {
-	AgentId         *int64 `json:"agent_id,omitempty" xml:"agent_id,omitempty"`
-	BasicCabinPrice *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
-	// example:
-	//
-	// 100
-	BuildPrice *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
-	// example:
-	//
-	// G
-	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	// example:
-	//
-	// Y
-	CabinClass     *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	CabinClassName *string `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
-	// example:
-	//
-	// G
-	ChildCabin *string `json:"child_cabin,omitempty" xml:"child_cabin,omitempty"`
-	ClassName  *string `json:"class_name,omitempty" xml:"class_name,omitempty"`
-	// example:
-	//
-	// demo
-	ClassRule *string `json:"class_rule,omitempty" xml:"class_rule,omitempty"`
-	// example:
-	//
-	// 10
-	Discount       *string                                                                    `json:"discount,omitempty" xml:"discount,omitempty"`
-	FlightRuleList []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList `json:"flight_rule_list,omitempty" xml:"flight_rule_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// demo
-	FlightRuleListStr *string `json:"flight_rule_list_str,omitempty" xml:"flight_rule_list_str,omitempty"`
-	// example:
-	//
-	// 1
-	InvoiceType *int32 `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
-	// example:
-	//
-	// true
-	IsProtocol *bool `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
-	// example:
-	//
-	// {"key":"value"}
-	Memo *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// example:
-	//
-	// 100
-	OilPrice *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
-	// example:
-	//
-	// 1000_1_0
-	OrderParams *string `json:"order_params,omitempty" xml:"order_params,omitempty"`
-	// example:
-	//
-	// wisdiii2ii22ii2
-	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
-	// example:
-	//
-	// 100
-	Price *int32 `json:"price,omitempty" xml:"price,omitempty"`
-	// example:
-	//
-	// 1
-	ProductType *int64 `json:"product_type,omitempty" xml:"product_type,omitempty"`
-	// example:
-	//
-	// demo
-	ProductTypeDesc *string `json:"product_type_desc,omitempty" xml:"product_type_desc,omitempty"`
-	// example:
-	//
-	// 100
-	PromotionPrice *string `json:"promotion_price,omitempty" xml:"promotion_price,omitempty"`
-	// example:
-	//
-	// 1
-	RemainedSeatCount *string `json:"remained_seat_count,omitempty" xml:"remained_seat_count,omitempty"`
-	// example:
-	//
-	// 100
-	TicketPrice *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	// example:
-	//
-	// 100
-	TotalPrice *int32 `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	AgentId           *int64                                                                     `json:"agent_id,omitempty" xml:"agent_id,omitempty"`
+	BasicCabinPrice   *int32                                                                     `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice        *int32                                                                     `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	Cabin             *string                                                                    `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass        *string                                                                    `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinClassName    *string                                                                    `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
+	ChildCabin        *string                                                                    `json:"child_cabin,omitempty" xml:"child_cabin,omitempty"`
+	ClassName         *string                                                                    `json:"class_name,omitempty" xml:"class_name,omitempty"`
+	ClassRule         *string                                                                    `json:"class_rule,omitempty" xml:"class_rule,omitempty"`
+	Discount          *string                                                                    `json:"discount,omitempty" xml:"discount,omitempty"`
+	FlightRuleList    []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList `json:"flight_rule_list,omitempty" xml:"flight_rule_list,omitempty" type:"Repeated"`
+	FlightRuleListStr *string                                                                    `json:"flight_rule_list_str,omitempty" xml:"flight_rule_list_str,omitempty"`
+	InvoiceType       *int32                                                                     `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	IsProtocol        *bool                                                                      `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	Memo              *string                                                                    `json:"memo,omitempty" xml:"memo,omitempty"`
+	OilPrice          *int32                                                                     `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	OrderParams       *string                                                                    `json:"order_params,omitempty" xml:"order_params,omitempty"`
+	OtaItemId         *string                                                                    `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	Price             *int32                                                                     `json:"price,omitempty" xml:"price,omitempty"`
+	ProductType       *int64                                                                     `json:"product_type,omitempty" xml:"product_type,omitempty"`
+	ProductTypeDesc   *string                                                                    `json:"product_type_desc,omitempty" xml:"product_type_desc,omitempty"`
+	PromotionPrice    *string                                                                    `json:"promotion_price,omitempty" xml:"promotion_price,omitempty"`
+	RemainedSeatCount *string                                                                    `json:"remained_seat_count,omitempty" xml:"remained_seat_count,omitempty"`
+	TicketPrice       *int32                                                                     `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TotalPrice        *int32                                                                     `json:"total_price,omitempty" xml:"total_price,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoList) String() string {
@@ -1198,16 +1015,10 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoList) Validate() e
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList struct {
-	// example:
-	//
-	// demo
 	BaggageInfo    *string                                                                                `json:"baggage_info,omitempty" xml:"baggage_info,omitempty"`
 	BaggageItem    *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem    `json:"baggage_item,omitempty" xml:"baggage_item,omitempty" type:"Struct"`
 	ChangeRule     *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRule     `json:"change_rule,omitempty" xml:"change_rule,omitempty" type:"Struct"`
 	ChangeRuleItem *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem `json:"change_rule_item,omitempty" xml:"change_rule_item,omitempty" type:"Struct"`
-	// example:
-	//
-	// {}
 	Extra          *string                                                                                `json:"extra,omitempty" xml:"extra,omitempty"`
 	RefundRule     *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRule     `json:"refund_rule,omitempty" xml:"refund_rule,omitempty" type:"Struct"`
 	RefundRuleItem *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem `json:"refund_rule_item,omitempty" xml:"refund_rule_item,omitempty" type:"Struct"`
@@ -1355,17 +1166,11 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem struct {
 	BaggageSubItems []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems `json:"baggage_sub_items,omitempty" xml:"baggage_sub_items,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	Index     *int32                                                                                  `json:"index,omitempty" xml:"index,omitempty"`
-	TableHead *string                                                                                 `json:"table_head,omitempty" xml:"table_head,omitempty"`
-	Tips      *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips `json:"tips,omitempty" xml:"tips,omitempty" type:"Struct"`
-	Title     *string                                                                                 `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Index           *int32                                                                                               `json:"index,omitempty" xml:"index,omitempty"`
+	TableHead       *string                                                                                              `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Tips            *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips              `json:"tips,omitempty" xml:"tips,omitempty" type:"Struct"`
+	Title           *string                                                                                              `json:"title,omitempty" xml:"title,omitempty"`
+	Type            *int32                                                                                               `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem) String() string {
@@ -1451,17 +1256,9 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems struct {
 	BaggageSubContentVisualizes []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes `json:"baggage_sub_content_visualizes,omitempty" xml:"baggage_sub_content_visualizes,omitempty" type:"Repeated"`
 	ExtraContentVisualizes      []interface{}                                                                                                                   `json:"extra_content_visualizes,omitempty" xml:"extra_content_visualizes,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	IsStruct *bool `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
-	// PTC
-	//
-	// example:
-	//
-	// ADT
-	Ptc   *string `json:"ptc,omitempty" xml:"ptc,omitempty"`
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	IsStruct                    *bool                                                                                                                           `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc                         *string                                                                                                                         `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	Title                       *string                                                                                                                         `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems) String() string {
@@ -1531,18 +1328,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes struct {
-	BaggageDesc []*string `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 0
+	BaggageDesc           []*string                                                                                                                                `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty" type:"Repeated"`
 	BaggageSubContentType *int32                                                                                                                                   `json:"baggage_sub_content_type,omitempty" xml:"baggage_sub_content_type,omitempty"`
 	Description           *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription `json:"description,omitempty" xml:"description,omitempty" type:"Struct"`
 	ImageDO               *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO     `json:"image_d_o,omitempty" xml:"image_d_o,omitempty" type:"Struct"`
-	// example:
-	//
-	// true
-	IsHighlight *bool   `json:"is_highlight,omitempty" xml:"is_highlight,omitempty"`
-	SubTitle    *string `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
+	IsHighlight           *bool                                                                                                                                    `json:"is_highlight,omitempty" xml:"is_highlight,omitempty"`
+	SubTitle              *string                                                                                                                                  `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) String() string {
@@ -1622,14 +1413,8 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription struct {
-	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i4/O1CN01UynXG31pjsEtA3tMF_!!6000000005397-2-tps-36-36.png
-	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i1/O1CN01qe7wL21gJ0SmEXXL7_!!6000000004120-2-tps-1206-768.png
+	Desc  *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
 	Image *string `json:"image,omitempty" xml:"image,omitempty"`
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
@@ -1683,21 +1468,9 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO struct {
-	// example:
-	//
-	// demo
-	Image *string `json:"image,omitempty" xml:"image,omitempty"`
-	// example:
-	//
-	// 50
-	Largest *string `json:"largest,omitempty" xml:"largest,omitempty"`
-	// example:
-	//
-	// 40
-	Middle *string `json:"middle,omitempty" xml:"middle,omitempty"`
-	// example:
-	//
-	// 20
+	Image    *string `json:"image,omitempty" xml:"image,omitempty"`
+	Largest  *string `json:"largest,omitempty" xml:"largest,omitempty"`
+	Middle   *string `json:"middle,omitempty" xml:"middle,omitempty"`
 	Smallest *string `json:"smallest,omitempty" xml:"smallest,omitempty"`
 }
 
@@ -1750,14 +1523,8 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips struct {
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i1/O1CN019zl3WZ22fNLxzx2cR_!!6000000007147-2-tps-125-45.png
-	Logo     *string `json:"logo,omitempty" xml:"logo,omitempty"`
-	TipsDesc *string `json:"tips_desc,omitempty" xml:"tips_desc,omitempty"`
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i3/O1CN01rJxjw61f3bXNHAmlk_!!6000000003951-2-tps-1050-675.png
+	Logo      *string `json:"logo,omitempty" xml:"logo,omitempty"`
+	TipsDesc  *string `json:"tips_desc,omitempty" xml:"tips_desc,omitempty"`
 	TipsImage *string `json:"tips_image,omitempty" xml:"tips_image,omitempty"`
 }
 
@@ -1801,9 +1568,6 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRule struct {
-	// example:
-	//
-	// true
 	Able *bool                                                                                    `json:"able,omitempty" xml:"able,omitempty"`
 	Info []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
 }
@@ -1848,24 +1612,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo struct {
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 100
-	Cost *int32 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// 10
-	CostPercent *int32 `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
-	// example:
-	//
-	// 1675036500000
-	TimeStamp *int32 `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
-	// example:
-	//
-	// demo
-	TimeType *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo) String() string {
@@ -1935,19 +1687,13 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem struct {
-	ExtraContents []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemExtraContents `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 0
+	ExtraContents  []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
 	Index          *int32                                                                                                 `json:"index,omitempty" xml:"index,omitempty"`
 	RefundSubItems []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
 	SubTableHead   []*string                                                                                              `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
 	TableHead      *string                                                                                                `json:"table_head,omitempty" xml:"table_head,omitempty"`
 	Title          *string                                                                                                `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// 0
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Type           *int32                                                                                                 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem) String() string {
@@ -2044,14 +1790,8 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemExtraContents struct {
-	// example:
-	//
-	// demo
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// demo
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemExtraContents) String() string {
@@ -2085,15 +1825,7 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems struct {
-	// example:
-	//
-	// true
-	IsStruct *bool `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
-	// PTC
-	//
-	// example:
-	//
-	// ADT
+	IsStruct          *bool                                                                                                                   `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
 	Ptc               *string                                                                                                                 `json:"ptc,omitempty" xml:"ptc,omitempty"`
 	RefundSubContents []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
 	Title             *string                                                                                                                 `json:"title,omitempty" xml:"title,omitempty"`
@@ -2159,10 +1891,7 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents struct {
 	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
 	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
-	// example:
-	//
-	// 1
-	Style *int32 `json:"style,omitempty" xml:"style,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) String() string {
@@ -2205,9 +1934,6 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRule struct {
-	// example:
-	//
-	// true
 	Able *bool                                                                                    `json:"able,omitempty" xml:"able,omitempty"`
 	Info []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
 }
@@ -2252,24 +1978,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo struct {
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 100
-	Cost *int32 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// 10
-	CostPercent *int32 `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
-	// example:
-	//
-	// 1675036500000
-	TimeStamp *int32 `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
-	// example:
-	//
-	// demo
-	TimeType *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo) String() string {
@@ -2339,22 +2053,13 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem struct {
-	ExtraContents []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemExtraContents `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
+	ExtraContents  []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
 	Index          *int32                                                                                                 `json:"index,omitempty" xml:"index,omitempty"`
 	RefundSubItems []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
 	SubTableHead   []*string                                                                                              `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
 	TableHead      *string                                                                                                `json:"table_head,omitempty" xml:"table_head,omitempty"`
-	// example:
-	//
-	// demo
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Title          *string                                                                                                `json:"title,omitempty" xml:"title,omitempty"`
+	Type           *int32                                                                                                 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem) String() string {
@@ -2451,14 +2156,8 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemExtraContents struct {
-	// example:
-	//
-	// demo
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// demo
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemExtraContents) String() string {
@@ -2492,15 +2191,7 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems struct {
-	// example:
-	//
-	// true
-	IsStruct *bool `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
-	// PTC
-	//
-	// example:
-	//
-	// ADT
+	IsStruct          *bool                                                                                                                   `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
 	Ptc               *string                                                                                                                 `json:"ptc,omitempty" xml:"ptc,omitempty"`
 	RefundSubContents []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
 	Title             *string                                                                                                                 `json:"title,omitempty" xml:"title,omitempty"`
@@ -2566,10 +2257,7 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents struct {
 	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
 	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
-	// example:
-	//
-	// 1
-	Style *int32 `json:"style,omitempty" xml:"style,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) String() string {
@@ -2612,9 +2300,6 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRule struct {
-	// example:
-	//
-	// true
 	Able *bool                                                                                  `json:"able,omitempty" xml:"able,omitempty"`
 	Info []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
 }
@@ -2659,24 +2344,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo struct {
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 100
-	Cost *int32 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// 10
-	CostPercent *int32 `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
-	// example:
-	//
-	// 1675036500000
-	TimeStamp *int32 `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
-	// example:
-	//
-	// demo
-	TimeType *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo) String() string {
@@ -2746,9 +2419,6 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRule struct {
-	// example:
-	//
-	// true
 	Able *bool                                                                                     `json:"able,omitempty" xml:"able,omitempty"`
 	Info []*FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
 }
@@ -2793,24 +2463,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo struct {
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 100
-	Cost *int32 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// 10
-	CostPercent *int32 `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
-	// example:
-	//
-	// 1675036500000
-	TimeStamp *int32 `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
-	// example:
-	//
-	// demo
-	TimeType *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo) String() string {
@@ -2880,20 +2538,11 @@ func (s *FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleList
 }
 
 type FlightSearchListResponseBodyModuleFlightListDepAirportInfo struct {
-	// example:
-	//
-	// PEK
 	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
 	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
-	// example:
-	//
-	// BJS
-	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	// example:
-	//
-	// T3
-	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Terminal    *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListDepAirportInfo) String() string {
@@ -2954,16 +2603,10 @@ func (s *FlightSearchListResponseBodyModuleFlightListDepAirportInfo) Validate() 
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleList struct {
-	// example:
-	//
-	// demo
 	BaggageInfo    *string                                                                   `json:"baggage_info,omitempty" xml:"baggage_info,omitempty"`
 	BaggageItem    *FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItem    `json:"baggage_item,omitempty" xml:"baggage_item,omitempty" type:"Struct"`
 	ChangeRule     *FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRule     `json:"change_rule,omitempty" xml:"change_rule,omitempty" type:"Struct"`
 	ChangeRuleItem *FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleItem `json:"change_rule_item,omitempty" xml:"change_rule_item,omitempty" type:"Struct"`
-	// example:
-	//
-	// {}
 	Extra          *string                                                                   `json:"extra,omitempty" xml:"extra,omitempty"`
 	RefundRule     *FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRule     `json:"refund_rule,omitempty" xml:"refund_rule,omitempty" type:"Struct"`
 	RefundRuleItem *FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleItem `json:"refund_rule_item,omitempty" xml:"refund_rule_item,omitempty" type:"Struct"`
@@ -3111,17 +2754,11 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleList) Validate() 
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItem struct {
 	BaggageSubItems []*FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems `json:"baggage_sub_items,omitempty" xml:"baggage_sub_items,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	Index     *int32                                                                     `json:"index,omitempty" xml:"index,omitempty"`
-	TableHead *string                                                                    `json:"table_head,omitempty" xml:"table_head,omitempty"`
-	Tips      *FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemTips `json:"tips,omitempty" xml:"tips,omitempty" type:"Struct"`
-	Title     *string                                                                    `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Index           *int32                                                                                  `json:"index,omitempty" xml:"index,omitempty"`
+	TableHead       *string                                                                                 `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Tips            *FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemTips              `json:"tips,omitempty" xml:"tips,omitempty" type:"Struct"`
+	Title           *string                                                                                 `json:"title,omitempty" xml:"title,omitempty"`
+	Type            *int32                                                                                  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItem) String() string {
@@ -3207,17 +2844,9 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItem) 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems struct {
 	BaggageSubContentVisualizes []*FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes `json:"baggage_sub_content_visualizes,omitempty" xml:"baggage_sub_content_visualizes,omitempty" type:"Repeated"`
 	ExtraContentVisualizes      []interface{}                                                                                                      `json:"extra_content_visualizes,omitempty" xml:"extra_content_visualizes,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	IsStruct *bool `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
-	// PTC
-	//
-	// example:
-	//
-	// ADT
-	Ptc   *string `json:"ptc,omitempty" xml:"ptc,omitempty"`
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	IsStruct                    *bool                                                                                                              `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc                         *string                                                                                                            `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	Title                       *string                                                                                                            `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) String() string {
@@ -3287,18 +2916,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBa
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes struct {
-	BaggageDesc []*string `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
+	BaggageDesc           []*string                                                                                                                   `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty" type:"Repeated"`
 	BaggageSubContentType *int32                                                                                                                      `json:"baggage_sub_content_type,omitempty" xml:"baggage_sub_content_type,omitempty"`
 	Description           *FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription `json:"description,omitempty" xml:"description,omitempty" type:"Struct"`
 	ImageDO               *FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO     `json:"image_d_o,omitempty" xml:"image_d_o,omitempty" type:"Struct"`
-	// example:
-	//
-	// true
-	IsHighlight *bool   `json:"is_highlight,omitempty" xml:"is_highlight,omitempty"`
-	SubTitle    *string `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
+	IsHighlight           *bool                                                                                                                       `json:"is_highlight,omitempty" xml:"is_highlight,omitempty"`
+	SubTitle              *string                                                                                                                     `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) String() string {
@@ -3378,14 +3001,8 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBa
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription struct {
-	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i4/O1CN01UynXG31pjsEtA3tMF_!!6000000005397-2-tps-36-36.png
-	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i1/O1CN01qe7wL21gJ0SmEXXL7_!!6000000004120-2-tps-1206-768.png
+	Desc  *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
 	Image *string `json:"image,omitempty" xml:"image,omitempty"`
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
@@ -3439,21 +3056,9 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBa
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO struct {
-	// example:
-	//
-	// demo
-	Image *string `json:"image,omitempty" xml:"image,omitempty"`
-	// example:
-	//
-	// 50
-	Largest *string `json:"largest,omitempty" xml:"largest,omitempty"`
-	// example:
-	//
-	// 40
-	Middle *string `json:"middle,omitempty" xml:"middle,omitempty"`
-	// example:
-	//
-	// 20
+	Image    *string `json:"image,omitempty" xml:"image,omitempty"`
+	Largest  *string `json:"largest,omitempty" xml:"largest,omitempty"`
+	Middle   *string `json:"middle,omitempty" xml:"middle,omitempty"`
 	Smallest *string `json:"smallest,omitempty" xml:"smallest,omitempty"`
 }
 
@@ -3506,14 +3111,8 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBa
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemTips struct {
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i1/O1CN019zl3WZ22fNLxzx2cR_!!6000000007147-2-tps-125-45.png
-	Logo     *string `json:"logo,omitempty" xml:"logo,omitempty"`
-	TipsDesc *string `json:"tips_desc,omitempty" xml:"tips_desc,omitempty"`
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i3/O1CN01rJxjw61f3bXNHAmlk_!!6000000003951-2-tps-1050-675.png
+	Logo      *string `json:"logo,omitempty" xml:"logo,omitempty"`
+	TipsDesc  *string `json:"tips_desc,omitempty" xml:"tips_desc,omitempty"`
 	TipsImage *string `json:"tips_image,omitempty" xml:"tips_image,omitempty"`
 }
 
@@ -3557,9 +3156,6 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemTi
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRule struct {
-	// example:
-	//
-	// false
 	Able *bool                                                                       `json:"able,omitempty" xml:"able,omitempty"`
 	Info []*FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
 }
@@ -3604,24 +3200,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRule) V
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleInfo struct {
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 100
-	Cost *int32 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// 10
-	CostPercent *int32 `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
-	// example:
-	//
-	// 1675036500000
-	TimeStamp *int32 `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
-	// example:
-	//
-	// demo
-	TimeType *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) String() string {
@@ -3691,19 +3275,13 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleInf
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleItem struct {
-	ExtraContents []*FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 0
+	ExtraContents  []*FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
 	Index          *int32                                                                                    `json:"index,omitempty" xml:"index,omitempty"`
 	RefundSubItems []*FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
 	SubTableHead   []*string                                                                                 `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
 	TableHead      *string                                                                                   `json:"table_head,omitempty" xml:"table_head,omitempty"`
 	Title          *string                                                                                   `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Type           *int32                                                                                    `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleItem) String() string {
@@ -3835,15 +3413,7 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleIte
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems struct {
-	// example:
-	//
-	// true
-	IsStruct *bool `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
-	// PTC
-	//
-	// example:
-	//
-	// ADT
+	IsStruct          *bool                                                                                                      `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
 	Ptc               *string                                                                                                    `json:"ptc,omitempty" xml:"ptc,omitempty"`
 	RefundSubContents []*FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
 	Title             *string                                                                                                    `json:"title,omitempty" xml:"title,omitempty"`
@@ -3909,10 +3479,7 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleIte
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents struct {
 	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
 	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
-	// example:
-	//
-	// 1
-	Style *int32 `json:"style,omitempty" xml:"style,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) String() string {
@@ -3955,9 +3522,6 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleIte
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRule struct {
-	// example:
-	//
-	// false
 	Able *bool                                                                       `json:"able,omitempty" xml:"able,omitempty"`
 	Info []*FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
 }
@@ -4002,24 +3566,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRule) V
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleInfo struct {
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 100
-	Cost *int32 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// 10
-	CostPercent *int32 `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
-	// example:
-	//
-	// 1675036500000
-	TimeStamp *int32 `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
-	// example:
-	//
-	// demo
-	TimeType *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) String() string {
@@ -4089,19 +3641,13 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleInf
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleItem struct {
-	ExtraContents []*FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
+	ExtraContents  []*FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
 	Index          *int32                                                                                    `json:"index,omitempty" xml:"index,omitempty"`
 	RefundSubItems []*FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
 	SubTableHead   []*string                                                                                 `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
 	TableHead      *string                                                                                   `json:"table_head,omitempty" xml:"table_head,omitempty"`
 	Title          *string                                                                                   `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Type           *int32                                                                                    `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleItem) String() string {
@@ -4198,14 +3744,8 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleIte
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents struct {
-	// example:
-	//
-	// demo
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// demo
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents) String() string {
@@ -4239,15 +3779,7 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleIte
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems struct {
-	// example:
-	//
-	// true
-	IsStruct *bool `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
-	// PTC
-	//
-	// example:
-	//
-	// ADT
+	IsStruct          *bool                                                                                                      `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
 	Ptc               *string                                                                                                    `json:"ptc,omitempty" xml:"ptc,omitempty"`
 	RefundSubContents []*FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
 	Title             *string                                                                                                    `json:"title,omitempty" xml:"title,omitempty"`
@@ -4313,10 +3845,7 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleIte
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents struct {
 	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
 	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
-	// example:
-	//
-	// 1
-	Style *int32 `json:"style,omitempty" xml:"style,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) String() string {
@@ -4359,9 +3888,6 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleIte
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListSignRule struct {
-	// example:
-	//
-	// false
 	Able *bool                                                                     `json:"able,omitempty" xml:"able,omitempty"`
 	Info []*FlightSearchListResponseBodyModuleFlightListFlightRuleListSignRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
 }
@@ -4406,24 +3932,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListSignRule) Val
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListSignRuleInfo struct {
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 100
-	Cost *int32 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// 10
-	CostPercent *int32 `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
-	// example:
-	//
-	// 1675036500000
-	TimeStamp *int32 `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
-	// example:
-	//
-	// demo
-	TimeType *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListFlightRuleListSignRuleInfo) String() string {
@@ -4493,9 +4007,6 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListSignRuleInfo)
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListUpgradeRule struct {
-	// example:
-	//
-	// false
 	Able *bool                                                                        `json:"able,omitempty" xml:"able,omitempty"`
 	Info []*FlightSearchListResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
 }
@@ -4540,24 +4051,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListUpgradeRule) 
 }
 
 type FlightSearchListResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo struct {
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 100
-	Cost *int32 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// 10
-	CostPercent *int32 `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
-	// example:
-	//
-	// 1675036500000
-	TimeStamp *int32 `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
-	// example:
-	//
-	// demo
-	TimeType *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) String() string {
@@ -4627,25 +4126,13 @@ func (s *FlightSearchListResponseBodyModuleFlightListFlightRuleListUpgradeRuleIn
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfo struct {
-	FlightSize *string `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
-	// example:
-	//
-	// demo
-	FlightType             *string                                                                         `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
-	TransferAirlineInfo    *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferAirlineInfo    `json:"transfer_airline_info,omitempty" xml:"transfer_airline_info,omitempty" type:"Struct"`
-	TransferArrAirportInfo *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferArrAirportInfo `json:"transfer_arr_airport_info,omitempty" xml:"transfer_arr_airport_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// yyyy-MM-dd HH:mm:ss
-	TransferArrDate        *string                                                                         `json:"transfer_arr_date,omitempty" xml:"transfer_arr_date,omitempty"`
-	TransferDepAirportInfo *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferDepAirportInfo `json:"transfer_dep_airport_info,omitempty" xml:"transfer_dep_airport_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// yyyy-MM-dd HH:mm:ss
-	TransferDepDate *string `json:"transfer_dep_date,omitempty" xml:"transfer_dep_date,omitempty"`
-	// example:
-	//
-	// CA1234
+	FlightSize             *string                                                                           `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
+	FlightType             *string                                                                           `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
+	TransferAirlineInfo    *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferAirlineInfo      `json:"transfer_airline_info,omitempty" xml:"transfer_airline_info,omitempty" type:"Struct"`
+	TransferArrAirportInfo *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferArrAirportInfo   `json:"transfer_arr_airport_info,omitempty" xml:"transfer_arr_airport_info,omitempty" type:"Struct"`
+	TransferArrDate        *string                                                                           `json:"transfer_arr_date,omitempty" xml:"transfer_arr_date,omitempty"`
+	TransferDepAirportInfo *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferDepAirportInfo   `json:"transfer_dep_airport_info,omitempty" xml:"transfer_dep_airport_info,omitempty" type:"Struct"`
+	TransferDepDate        *string                                                                           `json:"transfer_dep_date,omitempty" xml:"transfer_dep_date,omitempty"`
 	TransferFlightNo       *string                                                                           `json:"transfer_flight_no,omitempty" xml:"transfer_flight_no,omitempty"`
 	TransferFlightRuleList []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleList `json:"transfer_flight_rule_list,omitempty" xml:"transfer_flight_rule_list,omitempty" type:"Repeated"`
 }
@@ -4768,9 +4255,6 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfo) Validate() er
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferAirlineInfo struct {
-	// example:
-	//
-	// ZH
 	AirlineCode       *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	AirlineName       *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
 	AirlineSimpleName *string `json:"airline_simple_name,omitempty" xml:"airline_simple_name,omitempty"`
@@ -4816,20 +4300,11 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferAirline
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferArrAirportInfo struct {
-	// example:
-	//
-	// HGH
 	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
 	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
-	// example:
-	//
-	// HGH
-	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	// example:
-	//
-	// T4
-	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Terminal    *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferArrAirportInfo) String() string {
@@ -4890,20 +4365,11 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferArrAirp
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferDepAirportInfo struct {
-	// example:
-	//
-	// PEK
 	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
 	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
-	// example:
-	//
-	// BJS
-	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	// example:
-	//
-	// T3
-	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Terminal    *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferDepAirportInfo) String() string {
@@ -4964,25 +4430,16 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferDepAirp
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleList struct {
-	// example:
-	//
-	// demo
 	BaggageInfo    *string                                                                                       `json:"baggage_info,omitempty" xml:"baggage_info,omitempty"`
 	BaggageItem    *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItem    `json:"baggage_item,omitempty" xml:"baggage_item,omitempty" type:"Struct"`
 	ChangeRule     *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRule     `json:"change_rule,omitempty" xml:"change_rule,omitempty" type:"Struct"`
 	ChangeRuleItem *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleItem `json:"change_rule_item,omitempty" xml:"change_rule_item,omitempty" type:"Struct"`
-	// example:
-	//
-	// {}
 	Extra          *string                                                                                       `json:"extra,omitempty" xml:"extra,omitempty"`
 	RefundRule     *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRule     `json:"refund_rule,omitempty" xml:"refund_rule,omitempty" type:"Struct"`
 	RefundRuleItem *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleItem `json:"refund_rule_item,omitempty" xml:"refund_rule_item,omitempty" type:"Struct"`
 	SignRule       *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListSignRule       `json:"sign_rule,omitempty" xml:"sign_rule,omitempty" type:"Struct"`
-	// example:
-	//
-	// demo
-	TuigaiqianInfo *string                                                                                    `json:"tuigaiqian_info,omitempty" xml:"tuigaiqian_info,omitempty"`
-	UpgradeRule    *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListUpgradeRule `json:"upgrade_rule,omitempty" xml:"upgrade_rule,omitempty" type:"Struct"`
+	TuigaiqianInfo *string                                                                                       `json:"tuigaiqian_info,omitempty" xml:"tuigaiqian_info,omitempty"`
+	UpgradeRule    *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListUpgradeRule    `json:"upgrade_rule,omitempty" xml:"upgrade_rule,omitempty" type:"Struct"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleList) String() string {
@@ -5124,17 +4581,11 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItem struct {
 	BaggageSubItems []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItemBaggageSubItems `json:"baggage_sub_items,omitempty" xml:"baggage_sub_items,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	Index     *int32                                                                                         `json:"index,omitempty" xml:"index,omitempty"`
-	TableHead *string                                                                                        `json:"table_head,omitempty" xml:"table_head,omitempty"`
-	Tips      *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItemTips `json:"tips,omitempty" xml:"tips,omitempty" type:"Struct"`
-	Title     *string                                                                                        `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Index           *int32                                                                                                      `json:"index,omitempty" xml:"index,omitempty"`
+	TableHead       *string                                                                                                     `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Tips            *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItemTips              `json:"tips,omitempty" xml:"tips,omitempty" type:"Struct"`
+	Title           *string                                                                                                     `json:"title,omitempty" xml:"title,omitempty"`
+	Type            *int32                                                                                                      `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItem) String() string {
@@ -5220,20 +4671,9 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItemBaggageSubItems struct {
 	BaggageSubContentVisualizes []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes `json:"baggage_sub_content_visualizes,omitempty" xml:"baggage_sub_content_visualizes,omitempty" type:"Repeated"`
 	ExtraContentVisualizes      []interface{}                                                                                                                          `json:"extra_content_visualizes,omitempty" xml:"extra_content_visualizes,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	IsStruct *bool `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
-	// PTC
-	//
-	// example:
-	//
-	// ADT
-	Ptc *string `json:"ptc,omitempty" xml:"ptc,omitempty"`
-	// example:
-	//
-	// 1
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	IsStruct                    *bool                                                                                                                                  `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc                         *string                                                                                                                                `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	Title                       *string                                                                                                                                `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItemBaggageSubItems) String() string {
@@ -5303,18 +4743,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes struct {
-	BaggageDesc []*string `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
+	BaggageDesc           []*string                                                                                                                                       `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty" type:"Repeated"`
 	BaggageSubContentType *int32                                                                                                                                          `json:"baggage_sub_content_type,omitempty" xml:"baggage_sub_content_type,omitempty"`
 	Description           *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription `json:"description,omitempty" xml:"description,omitempty" type:"Struct"`
 	ImageDO               *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO     `json:"image_d_o,omitempty" xml:"image_d_o,omitempty" type:"Struct"`
-	// example:
-	//
-	// true
-	IsHighlight *bool   `json:"is_highlight,omitempty" xml:"is_highlight,omitempty"`
-	SubTitle    *string `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
+	IsHighlight           *bool                                                                                                                                           `json:"is_highlight,omitempty" xml:"is_highlight,omitempty"`
+	SubTitle              *string                                                                                                                                         `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) String() string {
@@ -5394,14 +4828,8 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription struct {
-	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i4/O1CN01UynXG31pjsEtA3tMF_!!6000000005397-2-tps-36-36.png
-	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i1/O1CN01qe7wL21gJ0SmEXXL7_!!6000000004120-2-tps-1206-768.png
+	Desc  *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
 	Image *string `json:"image,omitempty" xml:"image,omitempty"`
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
@@ -5455,21 +4883,9 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO struct {
-	// example:
-	//
-	// demo
-	Image *string `json:"image,omitempty" xml:"image,omitempty"`
-	// example:
-	//
-	// 50
-	Largest *string `json:"largest,omitempty" xml:"largest,omitempty"`
-	// example:
-	//
-	// 40
-	Middle *string `json:"middle,omitempty" xml:"middle,omitempty"`
-	// example:
-	//
-	// 20
+	Image    *string `json:"image,omitempty" xml:"image,omitempty"`
+	Largest  *string `json:"largest,omitempty" xml:"largest,omitempty"`
+	Middle   *string `json:"middle,omitempty" xml:"middle,omitempty"`
 	Smallest *string `json:"smallest,omitempty" xml:"smallest,omitempty"`
 }
 
@@ -5522,14 +4938,8 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListBaggageItemTips struct {
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i1/O1CN019zl3WZ22fNLxzx2cR_!!6000000007147-2-tps-125-45.png
-	Logo     *string `json:"logo,omitempty" xml:"logo,omitempty"`
-	TipsDesc *string `json:"tips_desc,omitempty" xml:"tips_desc,omitempty"`
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i3/O1CN01rJxjw61f3bXNHAmlk_!!6000000003951-2-tps-1050-675.png
+	Logo      *string `json:"logo,omitempty" xml:"logo,omitempty"`
+	TipsDesc  *string `json:"tips_desc,omitempty" xml:"tips_desc,omitempty"`
 	TipsImage *string `json:"tips_image,omitempty" xml:"tips_image,omitempty"`
 }
 
@@ -5573,9 +4983,6 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRule struct {
-	// example:
-	//
-	// true
 	Able *bool                                                                                           `json:"able,omitempty" xml:"able,omitempty"`
 	Info []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
 }
@@ -5620,24 +5027,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleInfo struct {
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 100
-	Cost *int32 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// 100
-	CostPercent *int32 `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
-	// example:
-	//
-	// 1675036500000
-	TimeStamp *int32 `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
-	// example:
-	//
-	// demo
-	TimeType *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleInfo) String() string {
@@ -5707,19 +5102,13 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleItem struct {
-	ExtraContents []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleItemExtraContents `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 0
+	ExtraContents  []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleItemExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
 	Index          *int32                                                                                                        `json:"index,omitempty" xml:"index,omitempty"`
 	RefundSubItems []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleItemRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
 	SubTableHead   []*string                                                                                                     `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
 	TableHead      *string                                                                                                       `json:"table_head,omitempty" xml:"table_head,omitempty"`
 	Title          *string                                                                                                       `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// 0
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Type           *int32                                                                                                        `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleItem) String() string {
@@ -5816,14 +5205,8 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleItemExtraContents struct {
-	// example:
-	//
-	// demo
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// demo
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleItemExtraContents) String() string {
@@ -5857,15 +5240,7 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleItemRefundSubItems struct {
-	// example:
-	//
-	// true
-	IsStruct *bool `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
-	// PTC
-	//
-	// example:
-	//
-	// ADT
+	IsStruct          *bool                                                                                                                          `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
 	Ptc               *string                                                                                                                        `json:"ptc,omitempty" xml:"ptc,omitempty"`
 	RefundSubContents []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
 	Title             *string                                                                                                                        `json:"title,omitempty" xml:"title,omitempty"`
@@ -5931,10 +5306,7 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents struct {
 	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
 	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
-	// example:
-	//
-	// 1
-	Style *int32 `json:"style,omitempty" xml:"style,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) String() string {
@@ -5977,9 +5349,6 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRule struct {
-	// example:
-	//
-	// true
 	Able *bool                                                                                           `json:"able,omitempty" xml:"able,omitempty"`
 	Info []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
 }
@@ -6024,24 +5393,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleInfo struct {
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 100
-	Cost *int32 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// 100
-	CostPercent *int32 `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
-	// example:
-	//
-	// 1675036500000
-	TimeStamp *int32 `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
-	// example:
-	//
-	// demo
-	TimeType *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleInfo) String() string {
@@ -6111,22 +5468,13 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleItem struct {
-	ExtraContents []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleItemExtraContents `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
+	ExtraContents  []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleItemExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
 	Index          *int32                                                                                                        `json:"index,omitempty" xml:"index,omitempty"`
 	RefundSubItems []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleItemRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
 	SubTableHead   []*string                                                                                                     `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
 	TableHead      *string                                                                                                       `json:"table_head,omitempty" xml:"table_head,omitempty"`
-	// example:
-	//
-	// demo
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Title          *string                                                                                                       `json:"title,omitempty" xml:"title,omitempty"`
+	Type           *int32                                                                                                        `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleItem) String() string {
@@ -6223,14 +5571,8 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleItemExtraContents struct {
-	// example:
-	//
-	// demo
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// demo
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleItemExtraContents) String() string {
@@ -6264,15 +5606,7 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleItemRefundSubItems struct {
-	// example:
-	//
-	// true
-	IsStruct *bool `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
-	// PTC
-	//
-	// example:
-	//
-	// ADT
+	IsStruct          *bool                                                                                                                          `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
 	Ptc               *string                                                                                                                        `json:"ptc,omitempty" xml:"ptc,omitempty"`
 	RefundSubContents []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
 	Title             *string                                                                                                                        `json:"title,omitempty" xml:"title,omitempty"`
@@ -6338,10 +5672,7 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents struct {
 	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
 	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
-	// example:
-	//
-	// 1
-	Style *int32 `json:"style,omitempty" xml:"style,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) String() string {
@@ -6384,9 +5715,6 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListSignRule struct {
-	// example:
-	//
-	// true
 	Able *bool                                                                                         `json:"able,omitempty" xml:"able,omitempty"`
 	Info []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListSignRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
 }
@@ -6431,24 +5759,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListSignRuleInfo struct {
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 100
-	Cost *int32 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// 10
-	CostPercent *int32 `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
-	// example:
-	//
-	// 1675036500000
-	TimeStamp *int32 `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
-	// example:
-	//
-	// demo
-	TimeType *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListSignRuleInfo) String() string {
@@ -6518,9 +5834,6 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListUpgradeRule struct {
-	// example:
-	//
-	// true
 	Able *bool                                                                                            `json:"able,omitempty" xml:"able,omitempty"`
 	Info []*FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListUpgradeRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
 }
@@ -6565,24 +5878,12 @@ func (s *FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightR
 }
 
 type FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListUpgradeRuleInfo struct {
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 100
-	Cost *int32 `json:"cost,omitempty" xml:"cost,omitempty"`
-	// example:
-	//
-	// 10
-	CostPercent *int32 `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
-	// example:
-	//
-	// 1675036500000
-	TimeStamp *int32 `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
-	// example:
-	//
-	// demo
-	TimeType *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRuleListUpgradeRuleInfo) String() string {

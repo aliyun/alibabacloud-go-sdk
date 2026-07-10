@@ -21,16 +21,8 @@ type TrainFeeCalculateChangeShrinkRequest struct {
 	// This parameter is required.
 	ChangeTrainDetailsShrink *string `json:"change_train_details,omitempty" xml:"change_train_details,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12345
 	DistributeOrderId *string `json:"distribute_order_id,omitempty" xml:"distribute_order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2627694109810885616
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 }
 

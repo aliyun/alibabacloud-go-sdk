@@ -26,25 +26,13 @@ type iInsureOrderRefundRequest interface {
 }
 
 type InsureOrderRefundRequest struct {
-	// example:
-	//
-	// 1000001
-	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
-	// example:
-	//
-	// PostalSavingsBank
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	// example:
-	//
-	// 1021000196440356908
+	BtripUserId    *string   `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName      *string   `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	IsvName        *string   `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	OutApplyId     *string   `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
 	PolicyNoList   []*string `json:"policy_no_list,omitempty" xml:"policy_no_list,omitempty" type:"Repeated"`
 	SubInsOrderIds []*string `json:"sub_ins_order_ids,omitempty" xml:"sub_ins_order_ids,omitempty" type:"Repeated"`
-	// example:
-	//
-	// fliggy
-	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+	SupplierCode   *string   `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
 }
 
 func (s InsureOrderRefundRequest) String() string {

@@ -40,64 +40,27 @@ type iFlightRefundApplyRequest interface {
 }
 
 type FlightRefundApplyRequest struct {
-	// example:
-	//
-	// 100
 	CorpRefundPrice *int64 `json:"corp_refund_price,omitempty" xml:"corp_refund_price,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dis123
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// refu123
 	DisSubOrderId *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 100
 	DisplayRefundMoney *string            `json:"display_refund_money,omitempty" xml:"display_refund_money,omitempty"`
 	Extra              map[string]*string `json:"extra,omitempty" xml:"extra,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	IsVoluntary *int32 `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// FlightItem_9966772382
 	ItemUnitIds              *string                                             `json:"item_unit_ids,omitempty" xml:"item_unit_ids,omitempty"`
 	PassengerSegmentInfoList []*FlightRefundApplyRequestPassengerSegmentInfoList `json:"passenger_segment_info_list,omitempty" xml:"passenger_segment_info_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 100
-	PersonalRefundPrice *int64  `json:"personal_refund_price,omitempty" xml:"personal_refund_price,omitempty"`
-	ReasonDetail        *string `json:"reason_detail,omitempty" xml:"reason_detail,omitempty"`
+	PersonalRefundPrice      *int64                                              `json:"personal_refund_price,omitempty" xml:"personal_refund_price,omitempty"`
+	ReasonDetail             *string                                             `json:"reason_detail,omitempty" xml:"reason_detail,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	ReasonType        *int32    `json:"reason_type,omitempty" xml:"reason_type,omitempty"`
 	RefundVoucherInfo []*string `json:"refund_voucher_info,omitempty" xml:"refund_voucher_info,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0f9418cd2ce34af49ab0de16fea166d1
-	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
-	// example:
-	//
-	// 100
-	TotalRefundPrice *int64 `json:"total_refund_price,omitempty" xml:"total_refund_price,omitempty"`
+	SessionId        *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
+	TotalRefundPrice *int64  `json:"total_refund_price,omitempty" xml:"total_refund_price,omitempty"`
 }
 
 func (s FlightRefundApplyRequest) String() string {
@@ -250,10 +213,7 @@ func (s *FlightRefundApplyRequest) Validate() error {
 type FlightRefundApplyRequestPassengerSegmentInfoList struct {
 	FlightNo      *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
 	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	// example:
-	//
-	// 1245
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserId        *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s FlightRefundApplyRequestPassengerSegmentInfoList) String() string {

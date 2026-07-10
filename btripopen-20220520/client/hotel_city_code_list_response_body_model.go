@@ -24,27 +24,12 @@ type iHotelCityCodeListResponseBody interface {
 }
 
 type HotelCityCodeListResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// response is empty.
-	Message *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module  []*HotelCityCodeListResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	// example:
-	//
-	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    []*HotelCityCodeListResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelCityCodeListResponseBody) String() string {
@@ -123,12 +108,9 @@ func (s *HotelCityCodeListResponseBody) Validate() error {
 }
 
 type HotelCityCodeListResponseBodyModule struct {
-	Citys []*HotelCityCodeListResponseBodyModuleCitys `json:"citys,omitempty" xml:"citys,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 108800
-	ProviceCode  *string `json:"provice_code,omitempty" xml:"provice_code,omitempty"`
-	ProvinceName *string `json:"province_name,omitempty" xml:"province_name,omitempty"`
+	Citys        []*HotelCityCodeListResponseBodyModuleCitys `json:"citys,omitempty" xml:"citys,omitempty" type:"Repeated"`
+	ProviceCode  *string                                     `json:"provice_code,omitempty" xml:"provice_code,omitempty"`
+	ProvinceName *string                                     `json:"province_name,omitempty" xml:"province_name,omitempty"`
 }
 
 func (s HotelCityCodeListResponseBodyModule) String() string {
@@ -180,9 +162,6 @@ func (s *HotelCityCodeListResponseBodyModule) Validate() error {
 }
 
 type HotelCityCodeListResponseBodyModuleCitys struct {
-	// example:
-	//
-	// 445222
 	CityCode  *string                                              `json:"city_code,omitempty" xml:"city_code,omitempty"`
 	CityName  *string                                              `json:"city_name,omitempty" xml:"city_name,omitempty"`
 	Districts []*HotelCityCodeListResponseBodyModuleCitysDistricts `json:"districts,omitempty" xml:"districts,omitempty" type:"Repeated"`
@@ -237,9 +216,6 @@ func (s *HotelCityCodeListResponseBodyModuleCitys) Validate() error {
 }
 
 type HotelCityCodeListResponseBodyModuleCitysDistricts struct {
-	// example:
-	//
-	// 330000
 	DistrictCode *string `json:"district_code,omitempty" xml:"district_code,omitempty"`
 	DistrictName *string `json:"district_name,omitempty" xml:"district_name,omitempty"`
 }

@@ -24,26 +24,12 @@ type iAddInvoiceEntityResponseBody interface {
 }
 
 type AddInvoiceEntityResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string                             `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                             `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *AddInvoiceEntityResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// A5009956-1077-52FB-B520-EA8C7E91D722
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 210f079e16603757182131635d866a
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *AddInvoiceEntityResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AddInvoiceEntityResponseBody) String() string {
@@ -118,13 +104,7 @@ func (s *AddInvoiceEntityResponseBody) Validate() error {
 }
 
 type AddInvoiceEntityResponseBodyModule struct {
-	// example:
-	//
-	// 1
-	AddNum *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
-	// example:
-	//
-	// 2
+	AddNum          *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
 	SelectedUserNum *int32 `json:"selected_user_num,omitempty" xml:"selected_user_num,omitempty"`
 }
 

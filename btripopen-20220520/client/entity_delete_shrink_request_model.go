@@ -19,17 +19,9 @@ type iEntityDeleteShrinkRequest interface {
 
 type EntityDeleteShrinkRequest struct {
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // true
   DelAll *bool `json:"del_all,omitempty" xml:"del_all,omitempty"`
   EntityDOListShrink *string `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty"`
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // 12345
   ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
 }
 

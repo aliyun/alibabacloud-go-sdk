@@ -16,11 +16,8 @@ type iCorpTokenHeaders interface {
 }
 
 type CorpTokenHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// example:
-	//
-	// vf9_bvla0qs
-	XAcsBtripAccessToken *string `json:"x-acs-btrip-access-token,omitempty" xml:"x-acs-btrip-access-token,omitempty"`
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripAccessToken *string            `json:"x-acs-btrip-access-token,omitempty" xml:"x-acs-btrip-access-token,omitempty"`
 }
 
 func (s CorpTokenHeaders) String() string {

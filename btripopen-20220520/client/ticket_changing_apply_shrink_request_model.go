@@ -29,37 +29,18 @@ type iTicketChangingApplyShrinkRequest interface {
 
 type TicketChangingApplyShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dis1234
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mid1243
 	DisSubOrderId *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
 	IsVoluntary   *int32  `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
 	// This parameter is required.
 	ModifyFlightInfoListShrink *string `json:"modify_flight_info_list,omitempty" xml:"modify_flight_info_list,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1s8837sh991hsj92h
 	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
 	Reason    *string `json:"reason,omitempty" xml:"reason,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// us88s2bsbin22hjusd8i
-	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
-	// example:
-	//
-	// true
-	WhetherRetry *bool `json:"whether_retry,omitempty" xml:"whether_retry,omitempty"`
+	SessionId    *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
+	WhetherRetry *bool   `json:"whether_retry,omitempty" xml:"whether_retry,omitempty"`
 }
 
 func (s TicketChangingApplyShrinkRequest) String() string {

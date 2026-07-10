@@ -24,25 +24,12 @@ type iAirportSearchResponseBody interface {
 }
 
 type AirportSearchResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module。
-	Module *AirportSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 210f07f316603757445272547d959f
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                          `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                          `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *AirportSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                            `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                          `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AirportSearchResponseBody) String() string {
@@ -118,10 +105,7 @@ func (s *AirportSearchResponseBody) Validate() error {
 
 type AirportSearchResponseBodyModule struct {
 	Cities []*AirportSearchResponseBodyModuleCities `json:"cities,omitempty" xml:"cities,omitempty" type:"Repeated"`
-	// example:
-	//
-	// false
-	Nearby *bool `json:"nearby,omitempty" xml:"nearby,omitempty"`
+	Nearby *bool                                    `json:"nearby,omitempty" xml:"nearby,omitempty"`
 }
 
 func (s AirportSearchResponseBodyModule) String() string {
@@ -164,9 +148,6 @@ func (s *AirportSearchResponseBodyModule) Validate() error {
 }
 
 type AirportSearchResponseBodyModuleCities struct {
-	// example:
-	//
-	// HGH
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// example:
 	//

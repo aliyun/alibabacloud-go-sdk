@@ -22,23 +22,11 @@ type iOrderRefundDetailQueryResponseBody interface {
 }
 
 type OrderRefundDetailQueryResponseBody struct {
-	// example:
-	//
-	// 8CA36096-1FEE-5756-86DD-D195FEDE080E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// SUCCESS
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// true
-	Message *string                                   `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *OrderRefundDetailQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string                                   `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                   `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *OrderRefundDetailQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	Success   *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s OrderRefundDetailQueryResponseBody) String() string {
@@ -104,15 +92,9 @@ func (s *OrderRefundDetailQueryResponseBody) Validate() error {
 }
 
 type OrderRefundDetailQueryResponseBodyModule struct {
-	// example:
-	//
-	// 1017002195370467138
 	OrderId       *string                                                  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	RefundDetails []*OrderRefundDetailQueryResponseBodyModuleRefundDetails `json:"refund_details,omitempty" xml:"refund_details,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 10000
-	TotalAmount *int64 `json:"total_amount,omitempty" xml:"total_amount,omitempty"`
+	TotalAmount   *int64                                                   `json:"total_amount,omitempty" xml:"total_amount,omitempty"`
 }
 
 func (s OrderRefundDetailQueryResponseBodyModule) String() string {
@@ -164,30 +146,12 @@ func (s *OrderRefundDetailQueryResponseBodyModule) Validate() error {
 }
 
 type OrderRefundDetailQueryResponseBodyModuleRefundDetails struct {
-	// example:
-	//
-	// ALIPAY
-	PersonPayChannel *string `json:"person_pay_channel,omitempty" xml:"person_pay_channel,omitempty"`
-	// example:
-	//
-	// 2025010223001423691442474885
-	PersonRefundId *string `json:"person_refund_id,omitempty" xml:"person_refund_id,omitempty"`
-	// example:
-	//
-	// 5000
-	RefundAmount *int64 `json:"refund_amount,omitempty" xml:"refund_amount,omitempty"`
-	// example:
-	//
-	// 4800
-	RefundAmountCorp *int64 `json:"refund_amount_corp,omitempty" xml:"refund_amount_corp,omitempty"`
-	// example:
-	//
-	// 200
-	RefundAmountPerson *int64 `json:"refund_amount_person,omitempty" xml:"refund_amount_person,omitempty"`
-	// example:
-	//
-	// ZLJD12241231000002
-	SupplierRefundId *string `json:"supplier_refund_id,omitempty" xml:"supplier_refund_id,omitempty"`
+	PersonPayChannel   *string `json:"person_pay_channel,omitempty" xml:"person_pay_channel,omitempty"`
+	PersonRefundId     *string `json:"person_refund_id,omitempty" xml:"person_refund_id,omitempty"`
+	RefundAmount       *int64  `json:"refund_amount,omitempty" xml:"refund_amount,omitempty"`
+	RefundAmountCorp   *int64  `json:"refund_amount_corp,omitempty" xml:"refund_amount_corp,omitempty"`
+	RefundAmountPerson *int64  `json:"refund_amount_person,omitempty" xml:"refund_amount_person,omitempty"`
+	SupplierRefundId   *string `json:"supplier_refund_id,omitempty" xml:"supplier_refund_id,omitempty"`
 }
 
 func (s OrderRefundDetailQueryResponseBodyModuleRefundDetails) String() string {

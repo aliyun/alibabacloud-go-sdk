@@ -24,23 +24,38 @@ type iCarApplyAddResponseBody interface {
 }
 
 type CarApplyAddResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 0
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 成功
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The internal approval form ID in the business travel system.
+	//
 	// example:
 	//
 	// 1002923002
 	Module *int64 `json:"module,omitempty" xml:"module,omitempty"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// C61ECFF6-606B-5F66-B81D-D77369043A5F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The log trace ID.
+	//
 	// example:
 	//
 	// 21041ce316577904808056433edbb2

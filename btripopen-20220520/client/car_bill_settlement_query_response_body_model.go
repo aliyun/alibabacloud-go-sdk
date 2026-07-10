@@ -24,24 +24,12 @@ type iCarBillSettlementQueryResponseBody interface {
 }
 
 type CarBillSettlementQueryResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                                   `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                   `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *CarBillSettlementQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                   `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                   `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *CarBillSettlementQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                   `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CarBillSettlementQueryResponseBody) String() string {
@@ -116,25 +104,13 @@ func (s *CarBillSettlementQueryResponseBody) Validate() error {
 }
 
 type CarBillSettlementQueryResponseBodyModule struct {
-	// example:
-	//
-	// 4
-	Category *int32                                              `json:"category,omitempty" xml:"category,omitempty"`
-	CorpId   *string                                             `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	DataList []*CarBillSettlementQueryResponseBodyModuleDataList `json:"data_list,omitempty" xml:"data_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2021-10-14
-	PeriodEnd *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
-	// example:
-	//
-	// 2021-10-13
-	PeriodStart *string `json:"period_start,omitempty" xml:"period_start,omitempty"`
-	ScrollId    *string `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
-	// example:
-	//
-	// 2695
-	TotalNum *int64 `json:"total_num,omitempty" xml:"total_num,omitempty"`
+	Category    *int32                                              `json:"category,omitempty" xml:"category,omitempty"`
+	CorpId      *string                                             `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	DataList    []*CarBillSettlementQueryResponseBodyModuleDataList `json:"data_list,omitempty" xml:"data_list,omitempty" type:"Repeated"`
+	PeriodEnd   *string                                             `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	PeriodStart *string                                             `json:"period_start,omitempty" xml:"period_start,omitempty"`
+	ScrollId    *string                                             `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
+	TotalNum    *int64                                              `json:"total_num,omitempty" xml:"total_num,omitempty"`
 }
 
 func (s CarBillSettlementQueryResponseBodyModule) String() string {
@@ -222,212 +198,110 @@ func (s *CarBillSettlementQueryResponseBodyModule) Validate() error {
 }
 
 type CarBillSettlementQueryResponseBodyModuleDataList struct {
-	AdjustTime *string `json:"adjust_time,omitempty" xml:"adjust_time,omitempty"`
-	// example:
-	//
-	// 34534543545345
-	AlipayTradeNo    *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
-	ApplyArrCityCode *string `json:"apply_arr_city_code,omitempty" xml:"apply_arr_city_code,omitempty"`
-	ApplyArrCityName *string `json:"apply_arr_city_name,omitempty" xml:"apply_arr_city_name,omitempty"`
-	ApplyDepCityCode *string `json:"apply_dep_city_code,omitempty" xml:"apply_dep_city_code,omitempty"`
-	ApplyDepCityName *string `json:"apply_dep_city_name,omitempty" xml:"apply_dep_city_name,omitempty"`
-	// 审批扩展自定义字段
-	ApplyExtendField *string `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
-	ApplyId          *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ApproverEmail    *string `json:"approver_email,omitempty" xml:"approver_email,omitempty"`
-	ApproverId       *string `json:"approver_id,omitempty" xml:"approver_id,omitempty"`
-	ApproverName     *string `json:"approver_name,omitempty" xml:"approver_name,omitempty"`
-	ArrCity          *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityCode      *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	// example:
-	//
-	// 2022-07-02
-	ArrDate     *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	ArrLocation *string `json:"arr_location,omitempty" xml:"arr_location,omitempty"`
-	// example:
-	//
-	// 13:51:43
-	ArrTime      *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	BaseLocation *string `json:"base_location,omitempty" xml:"base_location,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	BillRecordTime *string `json:"bill_record_time,omitempty" xml:"bill_record_time,omitempty"`
-	BillingEntity  *string `json:"billing_entity,omitempty" xml:"billing_entity,omitempty"`
-	BookModel      *string `json:"book_model,omitempty" xml:"book_model,omitempty"`
-	// example:
-	//
-	// 2022-05-15 22:27:00
-	BookTime *string `json:"book_time,omitempty" xml:"book_time,omitempty"`
-	BookerId *string `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
-	// example:
-	//
-	// 70022164
-	BookerJobNo      *string `json:"booker_job_no,omitempty" xml:"booker_job_no,omitempty"`
-	BookerName       *string `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
-	BusinessCategory *string `json:"business_category,omitempty" xml:"business_category,omitempty"`
-	// example:
-	//
-	// 1
-	CapitalDirection  *string `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
-	CarLevel          *string `json:"car_level,omitempty" xml:"car_level,omitempty"`
-	CascadeDepartment *string `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
-	CategoryDesc      *string `json:"category_desc,omitempty" xml:"category_desc,omitempty"`
-	CostCenter        *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
-	// example:
-	//
-	// 2391-CN90.150
-	CostCenterNumber *string `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
-	CostDepartment   *string `json:"cost_department,omitempty" xml:"cost_department,omitempty"`
-	// example:
-	//
-	// 1
-	Coupon *float64 `json:"coupon,omitempty" xml:"coupon,omitempty"`
-	// example:
-	//
-	// 12.7
-	CouponPrice   *float64 `json:"coupon_price,omitempty" xml:"coupon_price,omitempty"`
-	CustomContent *string  `json:"custom_content,omitempty" xml:"custom_content,omitempty"`
-	DeductibleTax *float64 `json:"deductible_tax,omitempty" xml:"deductible_tax,omitempty"`
-	DepCityCode   *string  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	Department    *string  `json:"department,omitempty" xml:"department,omitempty"`
-	DepartmentId  *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
-	DeptCity      *string  `json:"dept_city,omitempty" xml:"dept_city,omitempty"`
-	// example:
-	//
-	// 2021-10-13
-	DeptDate     *string `json:"dept_date,omitempty" xml:"dept_date,omitempty"`
-	DeptLocation *string `json:"dept_location,omitempty" xml:"dept_location,omitempty"`
-	// example:
-	//
-	// 13:46:05
-	DeptTime        *string  `json:"dept_time,omitempty" xml:"dept_time,omitempty"`
-	DriverAddDetail *string  `json:"driver_add_detail,omitempty" xml:"driver_add_detail,omitempty"`
-	DriverAddFee    *float64 `json:"driver_add_fee,omitempty" xml:"driver_add_fee,omitempty"`
-	// example:
-	//
-	// 29.07
-	EstimateDriveDistance *string `json:"estimate_drive_distance,omitempty" xml:"estimate_drive_distance,omitempty"`
-	// example:
-	//
-	// 69
-	EstimatePrice *float64 `json:"estimate_price,omitempty" xml:"estimate_price,omitempty"`
-	// example:
-	//
-	// 40107
-	FeeType       *string `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
-	FeeTypeDesc   *string `json:"fee_type_desc,omitempty" xml:"fee_type_desc,omitempty"`
-	ForeignersTag *string `json:"foreigners_tag,omitempty" xml:"foreigners_tag,omitempty"`
-	// example:
-	//
-	// 4988580
-	Index              *string `json:"index,omitempty" xml:"index,omitempty"`
-	InvoiceTitle       *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	LevelName          *string `json:"level_name,omitempty" xml:"level_name,omitempty"`
-	Location           *string `json:"location,omitempty" xml:"location,omitempty"`
-	MappingCompanyCode *string `json:"mapping_company_code,omitempty" xml:"mapping_company_code,omitempty"`
-	Memo               *string `json:"memo,omitempty" xml:"memo,omitempty"`
-	// example:
-	//
-	// 110285961234324
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 12.7
-	OrderPrice *float64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
-	// example:
-	//
-	// 34535465346
-	OverApplyId           *string `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
-	PaymentDepartmentId   *string `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
-	PaymentDepartmentName *string `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
-	// example:
-	//
-	// 0
-	PersonSettleFee *float64 `json:"person_settle_fee,omitempty" xml:"person_settle_fee,omitempty"`
-	Position        *string  `json:"position,omitempty" xml:"position,omitempty"`
-	PositionLevel   *string  `json:"position_level,omitempty" xml:"position_level,omitempty"`
-	// example:
-	//
-	// 4988580
-	PrimaryId       *int64  `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
-	ProcessorOaCode *string `json:"processor_oa_code,omitempty" xml:"processor_oa_code,omitempty"`
-	// example:
-	//
-	// 23423432423
-	ProjectCode         *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectName         *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
-	ProtocolDiscountFee *float64 `json:"protocol_discount_fee,omitempty" xml:"protocol_discount_fee,omitempty"`
-	ProviderName        *string  `json:"provider_name,omitempty" xml:"provider_name,omitempty"`
-	// example:
-	//
-	// 0.00
-	RealDriveDistance *string `json:"real_drive_distance,omitempty" xml:"real_drive_distance,omitempty"`
-	RealFromAddr      *string `json:"real_from_addr,omitempty" xml:"real_from_addr,omitempty"`
-	RealToAddr        *string `json:"real_to_addr,omitempty" xml:"real_to_addr,omitempty"`
-	Remark            *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	SceneId           *string `json:"scene_id,omitempty" xml:"scene_id,omitempty"`
-	SceneName         *string `json:"scene_name,omitempty" xml:"scene_name,omitempty"`
-	// example:
-	//
-	// 12.7
-	ServiceFee     *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
-	SettleTypeDesc *string  `json:"settle_type_desc,omitempty" xml:"settle_type_desc,omitempty"`
-	// example:
-	//
-	// 5
-	SettlementFee *float64 `json:"settlement_fee,omitempty" xml:"settlement_fee,omitempty"`
-	// example:
-	//
-	// 6.11
-	SettlementGrantFee *float64 `json:"settlement_grant_fee,omitempty" xml:"settlement_grant_fee,omitempty"`
-	// example:
-	//
-	// 2022-05-15 22:27:00
-	SettlementTime *string `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
-	// example:
-	//
-	// 4
-	SettlementType *string `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
-	Sio            *string `json:"sio,omitempty" xml:"sio,omitempty"`
-	SpecialOrder   *string `json:"special_order,omitempty" xml:"special_order,omitempty"`
-	SpecialReason  *string `json:"special_reason,omitempty" xml:"special_reason,omitempty"`
-	// example:
-	//
-	// 1
-	Status     *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	StatusDesc *string `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
-	// example:
-	//
-	// 123123232
-	SubOrderId        *string `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
-	SupplementApplyId *string `json:"supplement_apply_id,omitempty" xml:"supplement_apply_id,omitempty"`
-	// 税率
-	//
-	// example:
-	//
-	// 6%
-	TaxRate          *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	ThirdItineraryId *string `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
-	TimeType         *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
-	TradeActionDesc  *string `json:"trade_action_desc,omitempty" xml:"trade_action_desc,omitempty"`
-	TravelerEmail    *string `json:"traveler_email,omitempty" xml:"traveler_email,omitempty"`
-	TravelerId       *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	// example:
-	//
-	// 70022164
-	TravelerJobNo          *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerMemberType     *string `json:"traveler_member_type,omitempty" xml:"traveler_member_type,omitempty"`
-	TravelerMemberTypeName *string `json:"traveler_member_type_name,omitempty" xml:"traveler_member_type_name,omitempty"`
-	TravelerName           *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	UserConfirmDesc        *string `json:"user_confirm_desc,omitempty" xml:"user_confirm_desc,omitempty"`
-	VehicleSceneId         *string `json:"vehicle_scene_id,omitempty" xml:"vehicle_scene_id,omitempty"`
-	VehicleSceneName       *string `json:"vehicle_scene_name,omitempty" xml:"vehicle_scene_name,omitempty"`
-	// example:
-	//
-	// 11
-	VoucherType     *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
-	VoucherTypeDesc *string `json:"voucher_type_desc,omitempty" xml:"voucher_type_desc,omitempty"`
+	AdjustTime             *string  `json:"adjust_time,omitempty" xml:"adjust_time,omitempty"`
+	AlipayTradeNo          *string  `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	ApplyArrCityCode       *string  `json:"apply_arr_city_code,omitempty" xml:"apply_arr_city_code,omitempty"`
+	ApplyArrCityName       *string  `json:"apply_arr_city_name,omitempty" xml:"apply_arr_city_name,omitempty"`
+	ApplyDepCityCode       *string  `json:"apply_dep_city_code,omitempty" xml:"apply_dep_city_code,omitempty"`
+	ApplyDepCityName       *string  `json:"apply_dep_city_name,omitempty" xml:"apply_dep_city_name,omitempty"`
+	ApplyExtendField       *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
+	ApplyId                *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApproverEmail          *string  `json:"approver_email,omitempty" xml:"approver_email,omitempty"`
+	ApproverId             *string  `json:"approver_id,omitempty" xml:"approver_id,omitempty"`
+	ApproverName           *string  `json:"approver_name,omitempty" xml:"approver_name,omitempty"`
+	ArrCity                *string  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode            *string  `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrDate                *string  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	ArrLocation            *string  `json:"arr_location,omitempty" xml:"arr_location,omitempty"`
+	ArrTime                *string  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	BaseLocation           *string  `json:"base_location,omitempty" xml:"base_location,omitempty"`
+	BillRecordTime         *string  `json:"bill_record_time,omitempty" xml:"bill_record_time,omitempty"`
+	BillingEntity          *string  `json:"billing_entity,omitempty" xml:"billing_entity,omitempty"`
+	BookModel              *string  `json:"book_model,omitempty" xml:"book_model,omitempty"`
+	BookTime               *string  `json:"book_time,omitempty" xml:"book_time,omitempty"`
+	BookerId               *string  `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
+	BookerJobNo            *string  `json:"booker_job_no,omitempty" xml:"booker_job_no,omitempty"`
+	BookerName             *string  `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
+	BusinessCategory       *string  `json:"business_category,omitempty" xml:"business_category,omitempty"`
+	CapitalDirection       *string  `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
+	CarLevel               *string  `json:"car_level,omitempty" xml:"car_level,omitempty"`
+	CascadeDepartment      *string  `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
+	CategoryDesc           *string  `json:"category_desc,omitempty" xml:"category_desc,omitempty"`
+	CostCenter             *string  `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	CostCenterNumber       *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	CostDepartment         *string  `json:"cost_department,omitempty" xml:"cost_department,omitempty"`
+	Coupon                 *float64 `json:"coupon,omitempty" xml:"coupon,omitempty"`
+	CouponPrice            *float64 `json:"coupon_price,omitempty" xml:"coupon_price,omitempty"`
+	CustomContent          *string  `json:"custom_content,omitempty" xml:"custom_content,omitempty"`
+	DeductibleTax          *float64 `json:"deductible_tax,omitempty" xml:"deductible_tax,omitempty"`
+	DepCityCode            *string  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	Department             *string  `json:"department,omitempty" xml:"department,omitempty"`
+	DepartmentId           *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
+	DeptCity               *string  `json:"dept_city,omitempty" xml:"dept_city,omitempty"`
+	DeptDate               *string  `json:"dept_date,omitempty" xml:"dept_date,omitempty"`
+	DeptLocation           *string  `json:"dept_location,omitempty" xml:"dept_location,omitempty"`
+	DeptTime               *string  `json:"dept_time,omitempty" xml:"dept_time,omitempty"`
+	DriverAddDetail        *string  `json:"driver_add_detail,omitempty" xml:"driver_add_detail,omitempty"`
+	DriverAddFee           *float64 `json:"driver_add_fee,omitempty" xml:"driver_add_fee,omitempty"`
+	EstimateDriveDistance  *string  `json:"estimate_drive_distance,omitempty" xml:"estimate_drive_distance,omitempty"`
+	EstimatePrice          *float64 `json:"estimate_price,omitempty" xml:"estimate_price,omitempty"`
+	FeeType                *string  `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
+	FeeTypeDesc            *string  `json:"fee_type_desc,omitempty" xml:"fee_type_desc,omitempty"`
+	ForeignersTag          *string  `json:"foreigners_tag,omitempty" xml:"foreigners_tag,omitempty"`
+	Index                  *string  `json:"index,omitempty" xml:"index,omitempty"`
+	InvoiceTitle           *string  `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	LevelName              *string  `json:"level_name,omitempty" xml:"level_name,omitempty"`
+	Location               *string  `json:"location,omitempty" xml:"location,omitempty"`
+	MappingCompanyCode     *string  `json:"mapping_company_code,omitempty" xml:"mapping_company_code,omitempty"`
+	Memo                   *string  `json:"memo,omitempty" xml:"memo,omitempty"`
+	OrderId                *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderPrice             *float64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
+	OverApplyId            *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
+	PaymentDepartmentId    *string  `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	PaymentDepartmentName  *string  `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
+	PersonSettleFee        *float64 `json:"person_settle_fee,omitempty" xml:"person_settle_fee,omitempty"`
+	Position               *string  `json:"position,omitempty" xml:"position,omitempty"`
+	PositionLevel          *string  `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	PrimaryId              *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
+	ProcessorOaCode        *string  `json:"processor_oa_code,omitempty" xml:"processor_oa_code,omitempty"`
+	ProjectCode            *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectName            *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	ProtocolDiscountFee    *float64 `json:"protocol_discount_fee,omitempty" xml:"protocol_discount_fee,omitempty"`
+	ProviderName           *string  `json:"provider_name,omitempty" xml:"provider_name,omitempty"`
+	RealDriveDistance      *string  `json:"real_drive_distance,omitempty" xml:"real_drive_distance,omitempty"`
+	RealFromAddr           *string  `json:"real_from_addr,omitempty" xml:"real_from_addr,omitempty"`
+	RealToAddr             *string  `json:"real_to_addr,omitempty" xml:"real_to_addr,omitempty"`
+	Remark                 *string  `json:"remark,omitempty" xml:"remark,omitempty"`
+	SceneId                *string  `json:"scene_id,omitempty" xml:"scene_id,omitempty"`
+	SceneName              *string  `json:"scene_name,omitempty" xml:"scene_name,omitempty"`
+	ServiceFee             *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	SettleTypeDesc         *string  `json:"settle_type_desc,omitempty" xml:"settle_type_desc,omitempty"`
+	SettlementFee          *float64 `json:"settlement_fee,omitempty" xml:"settlement_fee,omitempty"`
+	SettlementGrantFee     *float64 `json:"settlement_grant_fee,omitempty" xml:"settlement_grant_fee,omitempty"`
+	SettlementTime         *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
+	SettlementType         *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	Sio                    *string  `json:"sio,omitempty" xml:"sio,omitempty"`
+	SpecialOrder           *string  `json:"special_order,omitempty" xml:"special_order,omitempty"`
+	SpecialReason          *string  `json:"special_reason,omitempty" xml:"special_reason,omitempty"`
+	Status                 *int32   `json:"status,omitempty" xml:"status,omitempty"`
+	StatusDesc             *string  `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
+	SubOrderId             *string  `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
+	SupplementApplyId      *string  `json:"supplement_apply_id,omitempty" xml:"supplement_apply_id,omitempty"`
+	TaxRate                *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	ThirdItineraryId       *string  `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
+	TimeType               *string  `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	TradeActionDesc        *string  `json:"trade_action_desc,omitempty" xml:"trade_action_desc,omitempty"`
+	TravelerEmail          *string  `json:"traveler_email,omitempty" xml:"traveler_email,omitempty"`
+	TravelerId             *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo          *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerMemberType     *string  `json:"traveler_member_type,omitempty" xml:"traveler_member_type,omitempty"`
+	TravelerMemberTypeName *string  `json:"traveler_member_type_name,omitempty" xml:"traveler_member_type_name,omitempty"`
+	TravelerName           *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	UserConfirmDesc        *string  `json:"user_confirm_desc,omitempty" xml:"user_confirm_desc,omitempty"`
+	VehicleSceneId         *string  `json:"vehicle_scene_id,omitempty" xml:"vehicle_scene_id,omitempty"`
+	VehicleSceneName       *string  `json:"vehicle_scene_name,omitempty" xml:"vehicle_scene_name,omitempty"`
+	VoucherType            *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	VoucherTypeDesc        *string  `json:"voucher_type_desc,omitempty" xml:"voucher_type_desc,omitempty"`
 }
 
 func (s CarBillSettlementQueryResponseBodyModuleDataList) String() string {

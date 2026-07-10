@@ -58,68 +58,28 @@ type iUpdateEmployeeShrinkRequest interface {
 }
 
 type UpdateEmployeeShrinkRequest struct {
-	AccountEmail *string `json:"account_email,omitempty" xml:"account_email,omitempty"`
-	AccountPhone *string `json:"account_phone,omitempty" xml:"account_phone,omitempty"`
-	Attribute    *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	// example:
-	//
-	// https://static-legacy.dingtalk.com/media/lADPF8XMoxJeUkbNA2LNA5s_923_866.jpg
-	Avatar                 *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	BaseCityCodeListShrink *string `json:"base_city_code_list,omitempty" xml:"base_city_code_list,omitempty"`
-	BaseLocationListShrink *string `json:"base_location_list,omitempty" xml:"base_location_list,omitempty"`
-	// example:
-	//
-	// 2000-01-02
+	AccountEmail             *string `json:"account_email,omitempty" xml:"account_email,omitempty"`
+	AccountPhone             *string `json:"account_phone,omitempty" xml:"account_phone,omitempty"`
+	Attribute                *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	Avatar                   *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	BaseCityCodeListShrink   *string `json:"base_city_code_list,omitempty" xml:"base_city_code_list,omitempty"`
+	BaseLocationListShrink   *string `json:"base_location_list,omitempty" xml:"base_location_list,omitempty"`
 	Birthday                 *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
 	CertListShrink           *string `json:"cert_list,omitempty" xml:"cert_list,omitempty"`
 	CustomRoleCodeListShrink *string `json:"custom_role_code_list,omitempty" xml:"custom_role_code_list,omitempty"`
-	// example:
-	//
-	// 123@163.com
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// example:
-	//
-	// F
-	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
-	// example:
-	//
-	// false
-	IsAdmin *bool `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
-	// example:
-	//
-	// false
-	IsBoss *bool `json:"is_boss,omitempty" xml:"is_boss,omitempty"`
-	// example:
-	//
-	// false
-	IsDeptLeader *bool `json:"is_dept_leader,omitempty" xml:"is_dept_leader,omitempty"`
-	// example:
-	//
-	// 1001
-	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
-	// example:
-	//
-	// user456
-	ManagerUserId       *string `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
-	OutDeptIdListShrink *string `json:"out_dept_id_list,omitempty" xml:"out_dept_id_list,omitempty"`
-	// example:
-	//
-	// 13111111111
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// example:
-	//
-	// M4
-	PositionLevel *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
-	RealName      *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
-	// example:
-	//
-	// John/Wilson
-	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	Email                    *string `json:"email,omitempty" xml:"email,omitempty"`
+	Gender                   *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	IsAdmin                  *bool   `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
+	IsBoss                   *bool   `json:"is_boss,omitempty" xml:"is_boss,omitempty"`
+	IsDeptLeader             *bool   `json:"is_dept_leader,omitempty" xml:"is_dept_leader,omitempty"`
+	JobNo                    *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	ManagerUserId            *string `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	OutDeptIdListShrink      *string `json:"out_dept_id_list,omitempty" xml:"out_dept_id_list,omitempty"`
+	Phone                    *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	PositionLevel            *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	RealName                 *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	RealNameEn               *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// user123
 	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	UserNick *string `json:"user_nick,omitempty" xml:"user_nick,omitempty"`
 }

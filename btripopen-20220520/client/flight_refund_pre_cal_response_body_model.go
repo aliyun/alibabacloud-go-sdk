@@ -24,24 +24,12 @@ type iFlightRefundPreCalResponseBody interface {
 }
 
 type FlightRefundPreCalResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                               `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                               `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *FlightRefundPreCalResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// A5009956-1077-52FB-B520-EA8C7E91D722
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *FlightRefundPreCalResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                               `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightRefundPreCalResponseBody) String() string {
@@ -116,29 +104,14 @@ func (s *FlightRefundPreCalResponseBody) Validate() error {
 }
 
 type FlightRefundPreCalResponseBodyModule struct {
-	// example:
-	//
-	// false
-	FlightChange *bool `json:"flight_change,omitempty" xml:"flight_change,omitempty"`
-	// example:
-	//
-	// FlightItem_996677504
+	FlightChange       *bool                                                     `json:"flight_change,omitempty" xml:"flight_change,omitempty"`
 	ItemUnitId         *string                                                   `json:"item_unit_id,omitempty" xml:"item_unit_id,omitempty"`
 	MultiRefundCalList []*FlightRefundPreCalResponseBodyModuleMultiRefundCalList `json:"multi_refund_cal_list,omitempty" xml:"multi_refund_cal_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1000
-	PreRefundMoney *int64 `json:"pre_refund_money,omitempty" xml:"pre_refund_money,omitempty"`
-	// example:
-	//
-	// 1000
-	RefundFee    *int64                                              `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
-	ReturnReason []*FlightRefundPreCalResponseBodyModuleReturnReason `json:"return_reason,omitempty" xml:"return_reason,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 882sudu23s923j9d2
-	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
-	Tips      *string `json:"tips,omitempty" xml:"tips,omitempty"`
+	PreRefundMoney     *int64                                                    `json:"pre_refund_money,omitempty" xml:"pre_refund_money,omitempty"`
+	RefundFee          *int64                                                    `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
+	ReturnReason       []*FlightRefundPreCalResponseBodyModuleReturnReason       `json:"return_reason,omitempty" xml:"return_reason,omitempty" type:"Repeated"`
+	SessionId          *string                                                   `json:"session_id,omitempty" xml:"session_id,omitempty"`
+	Tips               *string                                                   `json:"tips,omitempty" xml:"tips,omitempty"`
 }
 
 func (s FlightRefundPreCalResponseBodyModule) String() string {
@@ -244,23 +217,11 @@ func (s *FlightRefundPreCalResponseBodyModule) Validate() error {
 }
 
 type FlightRefundPreCalResponseBodyModuleMultiRefundCalList struct {
-	// example:
-	//
-	// true
 	CanApplyRefund *bool   `json:"can_apply_refund,omitempty" xml:"can_apply_refund,omitempty"`
 	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// 1000
-	PreRefundMoney *int64 `json:"pre_refund_money,omitempty" xml:"pre_refund_money,omitempty"`
-	// example:
-	//
-	// 1000
-	RefundFee *int64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
-	// example:
-	//
-	// 124
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	PreRefundMoney *int64  `json:"pre_refund_money,omitempty" xml:"pre_refund_money,omitempty"`
+	RefundFee      *int64  `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
+	UserId         *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s FlightRefundPreCalResponseBodyModuleMultiRefundCalList) String() string {
@@ -322,23 +283,11 @@ func (s *FlightRefundPreCalResponseBodyModuleMultiRefundCalList) Validate() erro
 
 type FlightRefundPreCalResponseBodyModuleReturnReason struct {
 	ExtendDesc *string `json:"extend_desc,omitempty" xml:"extend_desc,omitempty"`
-	// example:
-	//
-	// 0
-	Person *int32 `json:"person,omitempty" xml:"person,omitempty"`
-	// example:
-	//
-	// 0
+	Person     *int32  `json:"person,omitempty" xml:"person,omitempty"`
 	ReasonCode *int32  `json:"reason_code,omitempty" xml:"reason_code,omitempty"`
 	ReasonShow *string `json:"reason_show,omitempty" xml:"reason_show,omitempty"`
-	// example:
-	//
-	// 1
-	ReasonType *int32 `json:"reason_type,omitempty" xml:"reason_type,omitempty"`
-	// example:
-	//
-	// 0
-	Volunteer *int32 `json:"volunteer,omitempty" xml:"volunteer,omitempty"`
+	ReasonType *int32  `json:"reason_type,omitempty" xml:"reason_type,omitempty"`
+	Volunteer  *int32  `json:"volunteer,omitempty" xml:"volunteer,omitempty"`
 }
 
 func (s FlightRefundPreCalResponseBodyModuleReturnReason) String() string {

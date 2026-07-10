@@ -24,25 +24,12 @@ type iCitySearchResponseBody interface {
 }
 
 type CitySearchResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module
-	Module *CitySearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// A5009956-1077-52FB-B520-EA8C7E91D722
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 210f079e16603757182131635d866a
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                       `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *CitySearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                         `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                       `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CitySearchResponseBody) String() string {
@@ -151,15 +138,9 @@ func (s *CitySearchResponseBodyModule) Validate() error {
 }
 
 type CitySearchResponseBodyModuleCities struct {
-	// example:
-	//
-	// 330100
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// 0
-	Region *int32 `json:"region,omitempty" xml:"region,omitempty"`
+	Code   *string `json:"code,omitempty" xml:"code,omitempty"`
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Region *int32  `json:"region,omitempty" xml:"region,omitempty"`
 }
 
 func (s CitySearchResponseBodyModuleCities) String() string {

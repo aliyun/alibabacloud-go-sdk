@@ -24,28 +24,12 @@ type iQueryReimbursementOrderResponseBody interface {
 }
 
 type QueryReimbursementOrderResponseBody struct {
-	// example:
-	//
-	// PARAM_ERROR
-	Code    *string                                    `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                    `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *QueryReimbursementOrderResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// requestId
-	//
-	// example:
-	//
-	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                    `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                    `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *QueryReimbursementOrderResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                    `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s QueryReimbursementOrderResponseBody) String() string {
@@ -120,56 +104,32 @@ func (s *QueryReimbursementOrderResponseBody) Validate() error {
 }
 
 type QueryReimbursementOrderResponseBodyModule struct {
-	// example:
-	//
-	// 10.00
-	CompanyAmount *string `json:"company_amount,omitempty" xml:"company_amount,omitempty"`
-	// example:
-	//
-	// 20.00
-	CompanyPayAmount *string `json:"company_pay_amount,omitempty" xml:"company_pay_amount,omitempty"`
-	// example:
-	//
-	// dinga809ed71b9201f35
-	CorpId                    *string                                              `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CostCenterCode            *string                                              `json:"cost_center_code,omitempty" xml:"cost_center_code,omitempty"`
-	CostCenterName            *string                                              `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
-	Expenses                  []*QueryReimbursementOrderResponseBodyModuleExpenses `json:"expenses,omitempty" xml:"expenses,omitempty" type:"Repeated"`
-	ExpensesCoverDeptId       *string                                              `json:"expenses_cover_dept_id,omitempty" xml:"expenses_cover_dept_id,omitempty"`
-	ExpensesCoverDeptName     *string                                              `json:"expenses_cover_dept_name,omitempty" xml:"expenses_cover_dept_name,omitempty"`
-	ExpensesCoverInvoiceTitle *string                                              `json:"expenses_cover_invoice_title,omitempty" xml:"expenses_cover_invoice_title,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	// example:
-	//
-	// 2022-07-20T10:40Z
-	GmtModified       *string                                                  `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
-	IsDeleted         *string                                                  `json:"is_deleted,omitempty" xml:"is_deleted,omitempty"`
-	Itineraries       []*QueryReimbursementOrderResponseBodyModuleItineraries  `json:"itineraries,omitempty" xml:"itineraries,omitempty" type:"Repeated"`
-	PaymentFinishTime *string                                                  `json:"payment_finish_time,omitempty" xml:"payment_finish_time,omitempty"`
-	PaymentInfos      []*QueryReimbursementOrderResponseBodyModulePaymentInfos `json:"payment_infos,omitempty" xml:"payment_infos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 10.00
-	PersonalAmount *string `json:"personal_amount,omitempty" xml:"personal_amount,omitempty"`
-	ProcessEndTime *string `json:"process_end_time,omitempty" xml:"process_end_time,omitempty"`
-	ProjectCode    *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectName    *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
-	Reason         *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// example:
-	//
-	// RT203956
-	ReimbursementNo    *string `json:"reimbursement_no,omitempty" xml:"reimbursement_no,omitempty"`
-	Remark             *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	Status             *string `json:"status,omitempty" xml:"status,omitempty"`
-	TravelThirdApplyId *string `json:"travel_third_apply_id,omitempty" xml:"travel_third_apply_id,omitempty"`
-	// example:
-	//
-	// userId
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	CompanyAmount             *string                                                  `json:"company_amount,omitempty" xml:"company_amount,omitempty"`
+	CompanyPayAmount          *string                                                  `json:"company_pay_amount,omitempty" xml:"company_pay_amount,omitempty"`
+	CorpId                    *string                                                  `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CostCenterCode            *string                                                  `json:"cost_center_code,omitempty" xml:"cost_center_code,omitempty"`
+	CostCenterName            *string                                                  `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	Expenses                  []*QueryReimbursementOrderResponseBodyModuleExpenses     `json:"expenses,omitempty" xml:"expenses,omitempty" type:"Repeated"`
+	ExpensesCoverDeptId       *string                                                  `json:"expenses_cover_dept_id,omitempty" xml:"expenses_cover_dept_id,omitempty"`
+	ExpensesCoverDeptName     *string                                                  `json:"expenses_cover_dept_name,omitempty" xml:"expenses_cover_dept_name,omitempty"`
+	ExpensesCoverInvoiceTitle *string                                                  `json:"expenses_cover_invoice_title,omitempty" xml:"expenses_cover_invoice_title,omitempty"`
+	GmtCreate                 *string                                                  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModified               *string                                                  `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	IsDeleted                 *string                                                  `json:"is_deleted,omitempty" xml:"is_deleted,omitempty"`
+	Itineraries               []*QueryReimbursementOrderResponseBodyModuleItineraries  `json:"itineraries,omitempty" xml:"itineraries,omitempty" type:"Repeated"`
+	PaymentFinishTime         *string                                                  `json:"payment_finish_time,omitempty" xml:"payment_finish_time,omitempty"`
+	PaymentInfos              []*QueryReimbursementOrderResponseBodyModulePaymentInfos `json:"payment_infos,omitempty" xml:"payment_infos,omitempty" type:"Repeated"`
+	PersonalAmount            *string                                                  `json:"personal_amount,omitempty" xml:"personal_amount,omitempty"`
+	ProcessEndTime            *string                                                  `json:"process_end_time,omitempty" xml:"process_end_time,omitempty"`
+	ProjectCode               *string                                                  `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectName               *string                                                  `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	Reason                    *string                                                  `json:"reason,omitempty" xml:"reason,omitempty"`
+	ReimbursementNo           *string                                                  `json:"reimbursement_no,omitempty" xml:"reimbursement_no,omitempty"`
+	Remark                    *string                                                  `json:"remark,omitempty" xml:"remark,omitempty"`
+	Status                    *string                                                  `json:"status,omitempty" xml:"status,omitempty"`
+	TravelThirdApplyId        *string                                                  `json:"travel_third_apply_id,omitempty" xml:"travel_third_apply_id,omitempty"`
+	UserId                    *string                                                  `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName                  *string                                                  `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s QueryReimbursementOrderResponseBodyModule) String() string {
@@ -446,26 +406,17 @@ func (s *QueryReimbursementOrderResponseBodyModule) Validate() error {
 }
 
 type QueryReimbursementOrderResponseBodyModuleExpenses struct {
-	// example:
-	//
-	// 20
 	Amount              *string                                                                 `json:"amount,omitempty" xml:"amount,omitempty"`
 	Currency            *string                                                                 `json:"currency,omitempty" xml:"currency,omitempty"`
 	ExpenseCity         *string                                                                 `json:"expense_city,omitempty" xml:"expense_city,omitempty"`
 	ExpenseCompositions []*QueryReimbursementOrderResponseBodyModuleExpensesExpenseCompositions `json:"expense_compositions,omitempty" xml:"expense_compositions,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	ExpenseTime *string `json:"expense_time,omitempty" xml:"expense_time,omitempty"`
-	ExpenseType *string `json:"expense_type,omitempty" xml:"expense_type,omitempty"`
-	// example:
-	//
-	// code
-	ExpenseTypeCode *string                                                          `json:"expense_type_code,omitempty" xml:"expense_type_code,omitempty"`
-	InvoiceInfos    []*QueryReimbursementOrderResponseBodyModuleExpensesInvoiceInfos `json:"invoice_infos,omitempty" xml:"invoice_infos,omitempty" type:"Repeated"`
-	ReimbExpenseId  *int64                                                           `json:"reimb_expense_id,omitempty" xml:"reimb_expense_id,omitempty"`
-	Remark          *string                                                          `json:"remark,omitempty" xml:"remark,omitempty"`
-	SettlementType  *string                                                          `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	ExpenseTime         *string                                                                 `json:"expense_time,omitempty" xml:"expense_time,omitempty"`
+	ExpenseType         *string                                                                 `json:"expense_type,omitempty" xml:"expense_type,omitempty"`
+	ExpenseTypeCode     *string                                                                 `json:"expense_type_code,omitempty" xml:"expense_type_code,omitempty"`
+	InvoiceInfos        []*QueryReimbursementOrderResponseBodyModuleExpensesInvoiceInfos        `json:"invoice_infos,omitempty" xml:"invoice_infos,omitempty" type:"Repeated"`
+	ReimbExpenseId      *int64                                                                  `json:"reimb_expense_id,omitempty" xml:"reimb_expense_id,omitempty"`
+	Remark              *string                                                                 `json:"remark,omitempty" xml:"remark,omitempty"`
+	SettlementType      *string                                                                 `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
 }
 
 func (s QueryReimbursementOrderResponseBodyModuleExpenses) String() string {
@@ -778,18 +729,9 @@ func (s *QueryReimbursementOrderResponseBodyModuleExpensesInvoiceInfos) Validate
 }
 
 type QueryReimbursementOrderResponseBodyModuleItineraries struct {
-	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	ArrDate *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	// example:
-	//
-	// CTU
-	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
+	ArrCity    *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrDate    *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	DepCity    *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
 	DepDate    *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	TrafficWay *string `json:"traffic_way,omitempty" xml:"traffic_way,omitempty"`
 	TripWay    *string `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
@@ -862,15 +804,10 @@ func (s *QueryReimbursementOrderResponseBodyModuleItineraries) Validate() error 
 }
 
 type QueryReimbursementOrderResponseBodyModulePaymentInfos struct {
-	// example:
-	//
-	// 20.00
 	Amount             *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	CnapsCode          *string `json:"cnaps_code,omitempty" xml:"cnaps_code,omitempty"`
 	PayeeAccountNumber *string `json:"payee_account_number,omitempty" xml:"payee_account_number,omitempty"`
-	// example:
-	//
-	// userId
-	PayeeUserId *string `json:"payee_user_id,omitempty" xml:"payee_user_id,omitempty"`
+	PayeeUserId        *string `json:"payee_user_id,omitempty" xml:"payee_user_id,omitempty"`
 }
 
 func (s QueryReimbursementOrderResponseBodyModulePaymentInfos) String() string {
@@ -885,6 +822,10 @@ func (s *QueryReimbursementOrderResponseBodyModulePaymentInfos) GetAmount() *str
 	return s.Amount
 }
 
+func (s *QueryReimbursementOrderResponseBodyModulePaymentInfos) GetCnapsCode() *string {
+	return s.CnapsCode
+}
+
 func (s *QueryReimbursementOrderResponseBodyModulePaymentInfos) GetPayeeAccountNumber() *string {
 	return s.PayeeAccountNumber
 }
@@ -895,6 +836,11 @@ func (s *QueryReimbursementOrderResponseBodyModulePaymentInfos) GetPayeeUserId()
 
 func (s *QueryReimbursementOrderResponseBodyModulePaymentInfos) SetAmount(v string) *QueryReimbursementOrderResponseBodyModulePaymentInfos {
 	s.Amount = &v
+	return s
+}
+
+func (s *QueryReimbursementOrderResponseBodyModulePaymentInfos) SetCnapsCode(v string) *QueryReimbursementOrderResponseBodyModulePaymentInfos {
+	s.CnapsCode = &v
 	return s
 }
 

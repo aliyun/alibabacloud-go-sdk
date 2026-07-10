@@ -22,25 +22,11 @@ type iTravelStandardScopeSaveResponseBody interface {
 }
 
 type TravelStandardScopeSaveResponseBody struct {
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 05F9C201-1B53-5905-94AB-0D7444D8466A
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// 0
-	ResultCode *int32 `json:"resultCode,omitempty" xml:"resultCode,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 21041aa317070996148671005d0a0b
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Message    *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResultCode *int32  `json:"resultCode,omitempty" xml:"resultCode,omitempty"`
+	Success    *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TravelStandardScopeSaveResponseBody) String() string {

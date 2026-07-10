@@ -30,30 +30,15 @@ type iFlightModifyOtaSearchV2Request interface {
 }
 
 type FlightModifyOtaSearchV2Request struct {
-	CabinClass []*int32  `json:"cabin_class,omitempty" xml:"cabin_class,omitempty" type:"Repeated"`
-	DepDate    []*string `json:"dep_date,omitempty" xml:"dep_date,omitempty" type:"Repeated"`
-	// example:
-	//
-	// name
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	// example:
-	//
-	// 1017002195370467200
-	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 1017002195370467200
+	CabinClass                []*int32                                                   `json:"cabin_class,omitempty" xml:"cabin_class,omitempty" type:"Repeated"`
+	DepDate                   []*string                                                  `json:"dep_date,omitempty" xml:"dep_date,omitempty" type:"Repeated"`
+	IsvName                   *string                                                    `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OrderId                   *int64                                                     `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	OutOrderId                *string                                                    `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	PassengerSegmentRelations []*FlightModifyOtaSearchV2RequestPassengerSegmentRelations `json:"passenger_segment_relations,omitempty" xml:"passenger_segment_relations,omitempty" type:"Repeated"`
 	SelectedSegments          []*FlightModifyOtaSearchV2RequestSelectedSegments          `json:"selected_segments,omitempty" xml:"selected_segments,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 590f17eca9374f20ac7e8ed8a7db2f35
-	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
-	// example:
-	//
-	// true
-	Voluntary *bool `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
+	SessionId                 *string                                                    `json:"session_id,omitempty" xml:"session_id,omitempty"`
+	Voluntary                 *bool                                                      `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
 }
 
 func (s FlightModifyOtaSearchV2Request) String() string {
@@ -168,9 +153,6 @@ func (s *FlightModifyOtaSearchV2Request) Validate() error {
 }
 
 type FlightModifyOtaSearchV2RequestPassengerSegmentRelations struct {
-	// example:
-	//
-	// 3243028
 	PassengerId   *string   `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 	SegmentIdList []*string `json:"segment_id_list,omitempty" xml:"segment_id_list,omitempty" type:"Repeated"`
 }
@@ -206,34 +188,13 @@ func (s *FlightModifyOtaSearchV2RequestPassengerSegmentRelations) Validate() err
 }
 
 type FlightModifyOtaSearchV2RequestSelectedSegments struct {
-	// example:
-	//
-	// BJS
-	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	// example:
-	//
-	// XIL
-	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	// example:
-	//
-	// 2023-09-18 09:10:00
-	DepDateTime *string `json:"dep_date_time,omitempty" xml:"dep_date_time,omitempty"`
-	// example:
-	//
-	// 0
-	JourneySeq *int32 `json:"journey_seq,omitempty" xml:"journey_seq,omitempty"`
-	// example:
-	//
-	// CA1110
+	ArrCityCode       *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	DepCityCode       *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepDateTime       *string `json:"dep_date_time,omitempty" xml:"dep_date_time,omitempty"`
+	JourneySeq        *int32  `json:"journey_seq,omitempty" xml:"journey_seq,omitempty"`
 	MarketingFlightNo *string `json:"marketing_flight_no,omitempty" xml:"marketing_flight_no,omitempty"`
-	// example:
-	//
-	// MU8625
 	OperatingFlightNo *string `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
-	// example:
-	//
-	// 0
-	SegmentSeq *int32 `json:"segment_seq,omitempty" xml:"segment_seq,omitempty"`
+	SegmentSeq        *int32  `json:"segment_seq,omitempty" xml:"segment_seq,omitempty"`
 }
 
 func (s FlightModifyOtaSearchV2RequestSelectedSegments) String() string {

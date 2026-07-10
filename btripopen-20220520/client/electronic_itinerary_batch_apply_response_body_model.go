@@ -24,27 +24,11 @@ type iElectronicItineraryBatchApplyResponseBody interface {
 }
 
 type ElectronicItineraryBatchApplyResponseBody struct {
-  // example:
-  // 
-  // 200
   Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
   Module *ElectronicItineraryBatchApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-  // requestId
-  // 
-  // example:
-  // 
-  // A5009956-1077-52FB-B520-EA8C7E91D722
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // example:
-  // 
-  // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-  // traceId
-  // 
-  // example:
-  // 
-  // 21041ce316577904808056433edbb2
   TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 

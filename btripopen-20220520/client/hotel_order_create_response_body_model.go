@@ -24,27 +24,12 @@ type iHotelOrderCreateResponseBody interface {
 }
 
 type HotelOrderCreateResponseBody struct {
-	// example:
-	//
-	// 0
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// operation success.
-	Message *string                             `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *HotelOrderCreateResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *HotelOrderCreateResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelOrderCreateResponseBody) String() string {
@@ -119,15 +104,9 @@ func (s *HotelOrderCreateResponseBody) Validate() error {
 }
 
 type HotelOrderCreateResponseBodyModule struct {
-	// example:
-	//
-	// 123
 	BtripOrderId *int64  `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
 	PaymentNo    *string `json:"payment_no,omitempty" xml:"payment_no,omitempty"`
-	// example:
-	//
-	// 100
-	TotalPrice *int64 `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	TotalPrice   *int64  `json:"total_price,omitempty" xml:"total_price,omitempty"`
 }
 
 func (s HotelOrderCreateResponseBodyModule) String() string {

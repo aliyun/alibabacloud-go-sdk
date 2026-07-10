@@ -36,53 +36,21 @@ type iHotelAskingPriceRequest interface {
 }
 
 type HotelAskingPriceRequest struct {
-	// example:
-	//
-	// 1
-	AdultNum *string `json:"adult_num,omitempty" xml:"adult_num,omitempty"`
-	// example:
-	//
-	// 1000
+	AdultNum    *string `json:"adult_num,omitempty" xml:"adult_num,omitempty"`
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-02-22 00:00:00
 	CheckInDate *string `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-02-22 00:00:00
 	CheckOutDate *string `json:"check_out_date,omitempty" xml:"check_out_date,omitempty"`
-	// example:
-	//
-	// 330100
-	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	// example:
-	//
-	// 1
-	Dir *int32 `json:"dir,omitempty" xml:"dir,omitempty"`
-	// example:
-	//
-	// 1
-	HotelStar *string `json:"hotel_star,omitempty" xml:"hotel_star,omitempty"`
-	// example:
-	//
-	// true
-	IsProtocol *bool `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
-	// example:
-	//
-	// 0
-	PaymentType *int32 `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+	CityCode     *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName     *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Dir          *int32  `json:"dir,omitempty" xml:"dir,omitempty"`
+	HotelStar    *string `json:"hotel_star,omitempty" xml:"hotel_star,omitempty"`
+	IsProtocol   *bool   `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	PaymentType  *int32  `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
 	// This parameter is required.
-	Shids []*int64 `json:"shids,omitempty" xml:"shids,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 0
-	SortCode *int32 `json:"sort_code,omitempty" xml:"sort_code,omitempty"`
+	Shids    []*int64 `json:"shids,omitempty" xml:"shids,omitempty" type:"Repeated"`
+	SortCode *int32   `json:"sort_code,omitempty" xml:"sort_code,omitempty"`
 }
 
 func (s HotelAskingPriceRequest) String() string {

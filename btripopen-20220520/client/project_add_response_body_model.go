@@ -26,31 +26,13 @@ type iProjectAddResponseBody interface {
 }
 
 type ProjectAddResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 530404
-	Module *int64 `json:"module,omitempty" xml:"module,omitempty"`
-	// example:
-	//
-	// true
-	MorePage *bool `json:"more_page,omitempty" xml:"more_page,omitempty"`
-	// example:
-	//
-	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *int64  `json:"module,omitempty" xml:"module,omitempty"`
+	MorePage  *bool   `json:"more_page,omitempty" xml:"more_page,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s ProjectAddResponseBody) String() string {

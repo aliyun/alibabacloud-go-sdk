@@ -24,24 +24,12 @@ type iInsureOrderApplyResponseBody interface {
 }
 
 type InsureOrderApplyResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                             `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                             `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *InsureOrderApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 210e800316781571635951548d1e9d
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *InsureOrderApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s InsureOrderApplyResponseBody) String() string {
@@ -116,9 +104,6 @@ func (s *InsureOrderApplyResponseBody) Validate() error {
 }
 
 type InsureOrderApplyResponseBodyModule struct {
-	// example:
-	//
-	// 1021000196500370003
 	InsOrderId         *string                                                 `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
 	InsOrderPolicyList []*InsureOrderApplyResponseBodyModuleInsOrderPolicyList `json:"ins_order_policy_list,omitempty" xml:"ins_order_policy_list,omitempty" type:"Repeated"`
 }
@@ -163,22 +148,10 @@ func (s *InsureOrderApplyResponseBodyModule) Validate() error {
 }
 
 type InsureOrderApplyResponseBodyModuleInsOrderPolicyList struct {
-	// example:
-	//
-	// 1022196500378006
 	OutSubInsOrderId *string `json:"out_sub_ins_order_id,omitempty" xml:"out_sub_ins_order_id,omitempty"`
-	// example:
-	//
-	// po10002300201
-	PolicyNo *string `json:"policy_no,omitempty" xml:"policy_no,omitempty"`
-	// example:
-	//
-	// INIT
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 1022196500378003
-	SubInsOrderId *string `json:"sub_ins_order_id,omitempty" xml:"sub_ins_order_id,omitempty"`
+	PolicyNo         *string `json:"policy_no,omitempty" xml:"policy_no,omitempty"`
+	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
+	SubInsOrderId    *string `json:"sub_ins_order_id,omitempty" xml:"sub_ins_order_id,omitempty"`
 }
 
 func (s InsureOrderApplyResponseBodyModuleInsOrderPolicyList) String() string {

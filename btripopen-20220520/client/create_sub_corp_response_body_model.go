@@ -24,24 +24,12 @@ type iCreateSubCorpResponseBody interface {
 }
 
 type CreateSubCorpResponseBody struct {
-	// example:
-	//
-	// 0
-	Code    *string                          `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                          `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *CreateSubCorpResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                          `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                          `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *CreateSubCorpResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                            `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                          `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CreateSubCorpResponseBody) String() string {
@@ -116,9 +104,6 @@ func (s *CreateSubCorpResponseBody) Validate() error {
 }
 
 type CreateSubCorpResponseBodyModule struct {
-	// example:
-	//
-	// btrip123
 	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 }
 

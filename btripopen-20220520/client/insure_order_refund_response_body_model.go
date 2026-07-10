@@ -24,24 +24,12 @@ type iInsureOrderRefundResponseBody interface {
 }
 
 type InsureOrderRefundResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                              `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *InsureOrderRefundResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 2103ad3116824902540648188de7ac
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 210e846c16726306481681232d441f
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *InsureOrderRefundResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s InsureOrderRefundResponseBody) String() string {
@@ -116,19 +104,10 @@ func (s *InsureOrderRefundResponseBody) Validate() error {
 }
 
 type InsureOrderRefundResponseBodyModule struct {
-	// example:
-	//
-	// 118526587
-	ApplyId *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	// example:
-	//
-	// 1423041410342678003
+	ApplyId       *string                                             `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	InsOrderId    *string                                             `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
 	InsRefundList []*InsureOrderRefundResponseBodyModuleInsRefundList `json:"ins_refund_list,omitempty" xml:"ins_refund_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1423041410342678022
-	OutApplyId *string `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
+	OutApplyId    *string                                             `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
 }
 
 func (s InsureOrderRefundResponseBodyModule) String() string {
@@ -189,18 +168,9 @@ func (s *InsureOrderRefundResponseBodyModule) Validate() error {
 }
 
 type InsureOrderRefundResponseBodyModuleInsRefundList struct {
-	// example:
-	//
-	// po102000399221
 	PolicyRefundNo *string `json:"policy_refund_no,omitempty" xml:"policy_refund_no,omitempty"`
-	// example:
-	//
-	// REFUND_SUCCESS
-	RefundStatus *string `json:"refund_status,omitempty" xml:"refund_status,omitempty"`
-	// example:
-	//
-	// 1230012499921
-	SubInsOrderId *string `json:"sub_ins_order_id,omitempty" xml:"sub_ins_order_id,omitempty"`
+	RefundStatus   *string `json:"refund_status,omitempty" xml:"refund_status,omitempty"`
+	SubInsOrderId  *string `json:"sub_ins_order_id,omitempty" xml:"sub_ins_order_id,omitempty"`
 }
 
 func (s InsureOrderRefundResponseBodyModuleInsRefundList) String() string {

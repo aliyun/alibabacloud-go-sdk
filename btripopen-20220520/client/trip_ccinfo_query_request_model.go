@@ -18,18 +18,9 @@ type iTripCCInfoQueryRequest interface {
 }
 
 type TripCCInfoQueryRequest struct {
-	// example:
-	//
-	// 2024060710160003300008684
 	BusinessInstanceId *string `json:"business_instance_id,omitempty" xml:"business_instance_id,omitempty"`
-	// example:
-	//
-	// 458003
-	NodeId *string `json:"node_id,omitempty" xml:"node_id,omitempty"`
-	// example:
-	//
-	// 2024060710160003300008684
-	ThirdBusinessId *string `json:"third_business_id,omitempty" xml:"third_business_id,omitempty"`
+	NodeId             *string `json:"node_id,omitempty" xml:"node_id,omitempty"`
+	ThirdBusinessId    *string `json:"third_business_id,omitempty" xml:"third_business_id,omitempty"`
 }
 
 func (s TripCCInfoQueryRequest) String() string {

@@ -16,13 +16,7 @@ type iTicketChangingDetailRequest interface {
 }
 
 type TicketChangingDetailRequest struct {
-	// example:
-	//
-	// dis123
-	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
-	// example:
-	//
-	// chang123
+	DisOrderId    *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	DisSubOrderId *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
 }
 

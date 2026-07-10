@@ -24,24 +24,12 @@ type iQueryGroupCorpListResponseBody interface {
 }
 
 type QueryGroupCorpListResponseBody struct {
-	// example:
-	//
-	// A3F8DCAB-8301-5770-BD9F-71B0BF9E1A6E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 0
-	Code    *int32                                  `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                 `json:"message,omitempty" xml:"message,omitempty"`
-	Module  []*QueryGroupCorpListResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"trace_id,omitempty" xml:"trace_id,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *int32                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module    []*QueryGroupCorpListResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	Success   *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                 `json:"trace_id,omitempty" xml:"trace_id,omitempty"`
 }
 
 func (s QueryGroupCorpListResponseBody) String() string {
@@ -120,9 +108,6 @@ func (s *QueryGroupCorpListResponseBody) Validate() error {
 }
 
 type QueryGroupCorpListResponseBodyModule struct {
-	// example:
-	//
-	// corp1
 	CorpId   *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
 	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 }

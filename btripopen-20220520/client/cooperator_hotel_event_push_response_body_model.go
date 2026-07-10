@@ -22,20 +22,11 @@ type iCooperatorHotelEventPushResponseBody interface {
 }
 
 type CooperatorHotelEventPushResponseBody struct {
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// true
-	Module *bool `json:"module,omitempty" xml:"module,omitempty"`
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CooperatorHotelEventPushResponseBody) String() string {

@@ -19,16 +19,8 @@ type iTravelStandardQueryRequest interface {
 
 type TravelStandardQueryRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// false
 	FromGroup *bool `json:"from_group,omitempty" xml:"from_group,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2006523763
 	RuleCode *int64 `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
 	// This parameter is required.
 	ServiceTypeList []*string `json:"service_type_list,omitempty" xml:"service_type_list,omitempty" type:"Repeated"`

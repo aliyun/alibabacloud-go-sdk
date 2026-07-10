@@ -22,22 +22,10 @@ type iExternalUserUpdateResponseBody interface {
 }
 
 type ExternalUserUpdateResponseBody struct {
-  // example:
-  // 
-  // success
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
-  // example:
-  // 
-  // B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // example:
-  // 
-  // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-  // example:
-  // 
-  // 210f079416784321627628333de4ab
   TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 

@@ -23,34 +23,14 @@ type iTrainOrderChangeConfirmRequest interface {
 
 type TrainOrderChangeConfirmRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234567890
 	ChangeApplyId *string `json:"change_apply_id,omitempty" xml:"change_apply_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	ChangeSettleAmount *int64 `json:"change_settle_amount,omitempty" xml:"change_settle_amount,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1002145190081005400
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12345
 	OutChangeApplyId *string `json:"out_change_apply_id,omitempty" xml:"out_change_apply_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 }
 

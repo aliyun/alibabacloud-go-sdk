@@ -24,14 +24,7 @@ type AddDepartmentShrinkRequest struct {
 	DeptName                    *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
 	ManagerEmployeeIdListShrink *string `json:"manager_employee_id_list,omitempty" xml:"manager_employee_id_list,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dept123
-	OutDeptId *string `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
-	// example:
-	//
-	// dept456
+	OutDeptId  *string `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
 	OutDeptPid *string `json:"out_dept_pid,omitempty" xml:"out_dept_pid,omitempty"`
 }
 

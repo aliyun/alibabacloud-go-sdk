@@ -28,35 +28,15 @@ type iExternalUserAddShrinkRequest interface {
 }
 
 type ExternalUserAddShrinkRequest struct {
-  // example:
-  // 
-  // 2000-01-02
   Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
   CertRequestListShrink *string `json:"cert_request_list,omitempty" xml:"cert_request_list,omitempty"`
-  // example:
-  // 
-  // zhangsan@alibaba-inc.com
   Email *string `json:"email,omitempty" xml:"email,omitempty"`
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // 0012
   ExternalUserId *string `json:"external_user_id,omitempty" xml:"external_user_id,omitempty"`
-  // example:
-  // 
-  // 13438009765
   Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
   RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
-  // example:
-  // 
-  // zhang/san
   RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // 2
   UserType *int32 `json:"user_type,omitempty" xml:"user_type,omitempty"`
 }
 

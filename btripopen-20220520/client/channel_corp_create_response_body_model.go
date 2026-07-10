@@ -24,24 +24,12 @@ type iChannelCorpCreateResponseBody interface {
 }
 
 type ChannelCorpCreateResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                              `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *ChannelCorpCreateResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *ChannelCorpCreateResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s ChannelCorpCreateResponseBody) String() string {
@@ -116,21 +104,12 @@ func (s *ChannelCorpCreateResponseBody) Validate() error {
 }
 
 type ChannelCorpCreateResponseBodyModule struct {
-	AdministratorName *string `json:"administrator_name,omitempty" xml:"administrator_name,omitempty"`
-	// example:
-	//
-	// 18378889782
+	AdministratorName  *string `json:"administrator_name,omitempty" xml:"administrator_name,omitempty"`
 	AdministratorPhone *string `json:"administrator_phone,omitempty" xml:"administrator_phone,omitempty"`
-	// example:
-	//
-	// dingaa15ca45cba9ee744a5
-	CorpId   *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	// example:
-	//
-	// open12mplkebufu8701012jq
-	OpenAgentId *string `json:"open_agent_id,omitempty" xml:"open_agent_id,omitempty"`
-	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	CorpId             *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName           *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	OpenAgentId        *string `json:"open_agent_id,omitempty" xml:"open_agent_id,omitempty"`
+	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ChannelCorpCreateResponseBodyModule) String() string {

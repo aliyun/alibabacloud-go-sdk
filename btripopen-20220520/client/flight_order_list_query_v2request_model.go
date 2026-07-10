@@ -34,35 +34,17 @@ type iFlightOrderListQueryV2Request interface {
 }
 
 type FlightOrderListQueryV2Request struct {
-	ApproveId []*string `json:"approve_id,omitempty" xml:"approve_id,omitempty" type:"Repeated"`
-	BookerId  []*string `json:"booker_id,omitempty" xml:"booker_id,omitempty" type:"Repeated"`
-	DepartId  []*string `json:"depart_id,omitempty" xml:"depart_id,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2022-07-01 00:00:00
-	EndDate *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"page_Size,omitempty" xml:"page_Size,omitempty"`
-	// example:
-	//
-	// CAESBgoEIgIIABgAIhkKFwMSAAAAMUw4ZGViODFlYmM3MYzM4
-	ScrollId *string `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
-	// example:
-	//
-	// 2022-07-01 00:00:00
+	ApproveId          []*string `json:"approve_id,omitempty" xml:"approve_id,omitempty" type:"Repeated"`
+	BookerId           []*string `json:"booker_id,omitempty" xml:"booker_id,omitempty" type:"Repeated"`
+	DepartId           []*string `json:"depart_id,omitempty" xml:"depart_id,omitempty" type:"Repeated"`
+	EndDate            *string   `json:"end_date,omitempty" xml:"end_date,omitempty"`
+	PageSize           *int32    `json:"page_Size,omitempty" xml:"page_Size,omitempty"`
+	ScrollId           *string   `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
 	StartDate          *string   `json:"start_date,omitempty" xml:"start_date,omitempty"`
 	Supplier           []*string `json:"supplier,omitempty" xml:"supplier,omitempty" type:"Repeated"`
 	ThirdpartApproveId []*string `json:"thirdpart_approve_id,omitempty" xml:"thirdpart_approve_id,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2022-07-01 00:00:00
-	UpdateEndDate *string `json:"update_end_date,omitempty" xml:"update_end_date,omitempty"`
-	// example:
-	//
-	// 2022-07-01 00:00:00
-	UpdateStartDate *string `json:"update_start_date,omitempty" xml:"update_start_date,omitempty"`
+	UpdateEndDate      *string   `json:"update_end_date,omitempty" xml:"update_end_date,omitempty"`
+	UpdateStartDate    *string   `json:"update_start_date,omitempty" xml:"update_start_date,omitempty"`
 }
 
 func (s FlightOrderListQueryV2Request) String() string {

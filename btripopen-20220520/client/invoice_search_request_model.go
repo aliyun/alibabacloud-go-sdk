@@ -20,10 +20,7 @@ type iInvoiceSearchRequest interface {
 type InvoiceSearchRequest struct {
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// 12345
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s InvoiceSearchRequest) String() string {

@@ -20,25 +20,11 @@ type iTrainOrderCancelRequest interface {
 }
 
 type TrainOrderCancelRequest struct {
-	// example:
-	//
-	// 1234223
 	ChangeOrderId *string `json:"change_order_id,omitempty" xml:"change_order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1002145190081005400
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 123321245534
+	OrderId          *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	OutChangeOrderId *string `json:"out_change_order_id,omitempty" xml:"out_change_order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 }
 

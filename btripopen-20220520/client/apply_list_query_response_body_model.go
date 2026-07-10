@@ -24,24 +24,12 @@ type iApplyListQueryResponseBody interface {
 }
 
 type ApplyListQueryResponseBody struct {
-	// example:
-	//
-	// SUCCESS
 	Code       *string                                 `json:"code,omitempty" xml:"code,omitempty"`
 	Message    *string                                 `json:"message,omitempty" xml:"message,omitempty"`
 	ModuleList []*ApplyListQueryResponseBodyModuleList `json:"module_list,omitempty" xml:"module_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	RequestId  *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success    *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId    *string                                 `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s ApplyListQueryResponseBody) String() string {
@@ -120,84 +108,36 @@ func (s *ApplyListQueryResponseBody) Validate() error {
 }
 
 type ApplyListQueryResponseBodyModuleList struct {
-	// example:
-	//
-	// 201710111505000464651
-	ApplyShowId  *string                                             `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
-	ApproverList []*ApplyListQueryResponseBodyModuleListApproverList `json:"approver_list,omitempty" xml:"approver_list,omitempty" type:"Repeated"`
-	CarRule      *ApplyListQueryResponseBodyModuleListCarRule        `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
-	// example:
-	//
-	// corp1
-	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	// example:
-	//
-	// abc
-	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	// example:
-	//
-	// depart1
-	DepartId             *string                                                     `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName           *string                                                     `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	ExternalTravelerList []*ApplyListQueryResponseBodyModuleListExternalTravelerList `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// abc1234
-	FlowCode *string `json:"flow_code,omitempty" xml:"flow_code,omitempty"`
-	// example:
-	//
-	// 2018-09-19T14:03Z
-	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	// example:
-	//
-	// 2018-09-19T14:03Z
-	GmtModified *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
-	// example:
-	//
-	// 1476
-	Id            *int64                                               `json:"id,omitempty" xml:"id,omitempty"`
-	ItineraryList []*ApplyListQueryResponseBodyModuleListItineraryList `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 0
-	ItineraryRule         *int32                                                  `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
-	ItinerarySetList      []*ApplyListQueryResponseBodyModuleListItinerarySetList `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
-	JobNo                 *string                                                 `json:"job_no,omitempty" xml:"job_no,omitempty"`
-	PaymentDepartmentId   *string                                                 `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
-	PaymentDepartmentName *string                                                 `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
-	// example:
-	//
-	// 1
-	Status     *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	StatusDesc *string `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
-	// example:
-	//
-	// abc
-	ThirdpartBusinessId *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
-	// example:
-	//
-	// abc
-	ThirdpartId  *string                                             `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	TravelerList []*ApplyListQueryResponseBodyModuleListTravelerList `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
-	TripCause    *string                                             `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
-	// example:
-	//
-	// 1
-	TripDay   *int32  `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
-	TripTitle *string `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
-	// example:
-	//
-	// 2
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
-	// example:
-	//
-	// abc
-	UnionNo *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
-	// example:
-	//
-	// user1
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	ApplyShowId           *string                                                     `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
+	ApproverList          []*ApplyListQueryResponseBodyModuleListApproverList         `json:"approver_list,omitempty" xml:"approver_list,omitempty" type:"Repeated"`
+	CarRule               *ApplyListQueryResponseBodyModuleListCarRule                `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
+	CorpId                *string                                                     `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName              *string                                                     `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId              *string                                                     `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName            *string                                                     `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExternalTravelerList  []*ApplyListQueryResponseBodyModuleListExternalTravelerList `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
+	FlowCode              *string                                                     `json:"flow_code,omitempty" xml:"flow_code,omitempty"`
+	GmtCreate             *string                                                     `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModified           *string                                                     `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	Id                    *int64                                                      `json:"id,omitempty" xml:"id,omitempty"`
+	ItineraryList         []*ApplyListQueryResponseBodyModuleListItineraryList        `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	ItineraryRule         *int32                                                      `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
+	ItinerarySetList      []*ApplyListQueryResponseBodyModuleListItinerarySetList     `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
+	JobNo                 *string                                                     `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	PaymentDepartmentId   *string                                                     `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	PaymentDepartmentName *string                                                     `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
+	Status                *int32                                                      `json:"status,omitempty" xml:"status,omitempty"`
+	StatusDesc            *string                                                     `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
+	ThirdpartBusinessId   *string                                                     `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	ThirdpartId           *string                                                     `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
+	TravelerList          []*ApplyListQueryResponseBodyModuleListTravelerList         `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
+	TripCause             *string                                                     `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
+	TripDay               *int32                                                      `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	TripTitle             *string                                                     `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
+	Type                  *int32                                                      `json:"type,omitempty" xml:"type,omitempty"`
+	UnionNo               *string                                                     `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	UserId                *string                                                     `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName              *string                                                     `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s ApplyListQueryResponseBodyModuleList) String() string {
@@ -533,25 +473,13 @@ func (s *ApplyListQueryResponseBodyModuleList) Validate() error {
 }
 
 type ApplyListQueryResponseBodyModuleListApproverList struct {
-	Note *string `json:"note,omitempty" xml:"note,omitempty"`
-	// example:
-	//
-	// 2018-09-19T14:03Z
+	Note        *string `json:"note,omitempty" xml:"note,omitempty"`
 	OperateTime *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
-	// example:
-	//
-	// 1
-	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
-	// example:
-	//
-	// 1
-	Status     *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	StatusDesc *string `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
-	// example:
-	//
-	// user1
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	Order       *int32  `json:"order,omitempty" xml:"order,omitempty"`
+	Status      *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	StatusDesc  *string `json:"status_desc,omitempty" xml:"status_desc,omitempty"`
+	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName    *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s ApplyListQueryResponseBodyModuleListApproverList) String() string {
@@ -780,38 +708,20 @@ func (s *ApplyListQueryResponseBodyModuleListExternalTravelerList) Validate() er
 }
 
 type ApplyListQueryResponseBodyModuleListItineraryList struct {
-	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	// example:
-	//
-	// 2018-09-19T14:03Z
-	ArrDate        *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
-	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	// example:
-	//
-	// 2018-09-19T14:03Z
-	DepDate     *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceName *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
-	// example:
-	//
-	// abcd
-	ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	// example:
-	//
-	// xm1
+	ArrCity               *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrDate               *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CostCenterName        *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	DepCity               *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepDate               *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceName           *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
+	ItineraryId           *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
 	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
 	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
 	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
 	ThirdpartInvoiceId    *string `json:"thirdpart_invoice_id,omitempty" xml:"thirdpart_invoice_id,omitempty"`
 	ThirdpartItineraryId  *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
-	// example:
-	//
-	// 0
-	TrafficType *int32 `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
-	// example:
-	//
-	// 1
-	TripWay *int32 `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
+	TrafficType           *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	TripWay               *int32  `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
 }
 
 func (s ApplyListQueryResponseBodyModuleListItineraryList) String() string {
@@ -953,37 +863,19 @@ func (s *ApplyListQueryResponseBodyModuleListItineraryList) Validate() error {
 }
 
 type ApplyListQueryResponseBodyModuleListItinerarySetList struct {
-	// example:
-	//
-	// 2018-09-19T14:03Z
-	ArrDate *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	// example:
-	//
-	// BJS，HGH
-	CityCodeSet    *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
-	CitySet        *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
-	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
-	// example:
-	//
-	// 2018-09-19T14:03Z
-	DepDate     *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	InvoiceName *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
-	// example:
-	//
-	// abcd
-	ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	// example:
-	//
-	// 12345
+	ArrDate               *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	CityCodeSet           *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
+	CitySet               *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
+	CostCenterName        *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	DepDate               *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceName           *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
+	ItineraryId           *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
 	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
 	ProjectTitle          *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
 	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
 	ThirdpartInvoiceId    *string `json:"thirdpart_invoice_id,omitempty" xml:"thirdpart_invoice_id,omitempty"`
 	ThirdpartItineraryId  *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
-	// example:
-	//
-	// 0
-	TrafficType *int32 `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
+	TrafficType           *int32  `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
 }
 
 func (s ApplyListQueryResponseBodyModuleListItinerarySetList) String() string {
@@ -1126,11 +1018,8 @@ type ApplyListQueryResponseBodyModuleListTravelerList struct {
 	ProjectCode           *string                                                       `json:"project_code,omitempty" xml:"project_code,omitempty"`
 	ProjectTitle          *string                                                       `json:"project_title,omitempty" xml:"project_title,omitempty"`
 	ThirdpartDepartId     *string                                                       `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
-	// example:
-	//
-	// user1
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	UserId                *string                                                       `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName              *string                                                       `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s ApplyListQueryResponseBodyModuleListTravelerList) String() string {

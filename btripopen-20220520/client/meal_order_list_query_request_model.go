@@ -14,9 +14,6 @@ type iMealOrderListQueryRequest interface {
 }
 
 type MealOrderListQueryRequest struct {
-	// example:
-	//
-	// 1000
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

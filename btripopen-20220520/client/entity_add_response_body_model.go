@@ -24,25 +24,11 @@ type iEntityAddResponseBody interface {
 }
 
 type EntityAddResponseBody struct {
-  // example:
-  // 
-  // SUCCESS
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
   Module *EntityAddResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-  // example:
-  // 
-  // B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // example:
-  // 
-  // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-  // traceId
-  // 
-  // example:
-  // 
-  // 21041ce316577904808056433edbb2
   TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -118,13 +104,7 @@ func (s *EntityAddResponseBody) Validate() error {
 }
 
 type EntityAddResponseBodyModule struct {
-  // example:
-  // 
-  // 1
   AddNum *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
-  // example:
-  // 
-  // 2
   SelectedUserNum *int32 `json:"selected_user_num,omitempty" xml:"selected_user_num,omitempty"`
 }
 

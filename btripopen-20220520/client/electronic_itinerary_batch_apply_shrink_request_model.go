@@ -18,9 +18,6 @@ type iElectronicItineraryBatchApplyShrinkRequest interface {
 type ElectronicItineraryBatchApplyShrinkRequest struct {
   // This parameter is required.
   ApplyItineraryListShrink *string `json:"apply_itinerary_list,omitempty" xml:"apply_itinerary_list,omitempty"`
-  // example:
-  // 
-  // true
   CanReprint *bool `json:"can_reprint,omitempty" xml:"can_reprint,omitempty"`
 }
 

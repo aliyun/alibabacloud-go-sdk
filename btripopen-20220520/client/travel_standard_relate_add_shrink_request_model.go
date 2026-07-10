@@ -19,15 +19,8 @@ type iTravelStandardRelateAddShrinkRequest interface {
 
 type TravelStandardRelateAddShrinkRequest struct {
 	AddListShrink *string `json:"add_list,omitempty" xml:"add_list,omitempty"`
-	// example:
-	//
-	// false
-	FromGroup *bool `json:"from_group,omitempty" xml:"from_group,omitempty"`
+	FromGroup     *bool   `json:"from_group,omitempty" xml:"from_group,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 6516571
 	RuleId *int64 `json:"rule_id,omitempty" xml:"rule_id,omitempty"`
 }
 

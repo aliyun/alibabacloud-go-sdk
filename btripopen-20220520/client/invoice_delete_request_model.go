@@ -15,10 +15,6 @@ type iInvoiceDeleteRequest interface {
 
 type InvoiceDeleteRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 340049
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 

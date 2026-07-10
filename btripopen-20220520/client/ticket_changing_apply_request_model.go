@@ -29,37 +29,18 @@ type iTicketChangingApplyRequest interface {
 
 type TicketChangingApplyRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dis1234
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mid1243
 	DisSubOrderId *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
 	IsVoluntary   *int32  `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
 	// This parameter is required.
 	ModifyFlightInfoList []*TicketChangingApplyRequestModifyFlightInfoList `json:"modify_flight_info_list,omitempty" xml:"modify_flight_info_list,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1s8837sh991hsj92h
 	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
 	Reason    *string `json:"reason,omitempty" xml:"reason,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// us88s2bsbin22hjusd8i
-	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
-	// example:
-	//
-	// true
-	WhetherRetry *bool `json:"whether_retry,omitempty" xml:"whether_retry,omitempty"`
+	SessionId    *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
+	WhetherRetry *bool   `json:"whether_retry,omitempty" xml:"whether_retry,omitempty"`
 }
 
 func (s TicketChangingApplyRequest) String() string {
@@ -157,32 +138,13 @@ func (s *TicketChangingApplyRequest) Validate() error {
 
 type TicketChangingApplyRequestModifyFlightInfoList struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BJS
 	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	// example:
-	//
-	// Y
-	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	Cabin   *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// HGH
 	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0000-00-00 00:00:00
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// CA1704
 	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
 	// This parameter is required.
 	PassengerInfoList []*TicketChangingApplyRequestModifyFlightInfoListPassengerInfoList `json:"passenger_info_list,omitempty" xml:"passenger_info_list,omitempty" type:"Repeated"`
@@ -265,16 +227,8 @@ func (s *TicketChangingApplyRequestModifyFlightInfoList) Validate() error {
 
 type TicketChangingApplyRequestModifyFlightInfoListPassengerInfoList struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// CA1703
 	OriginFlightNo *string `json:"origin_flight_no,omitempty" xml:"origin_flight_no,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234
 	OutUserId *string `json:"out_user_id,omitempty" xml:"out_user_id,omitempty"`
 	// This parameter is required.
 	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`

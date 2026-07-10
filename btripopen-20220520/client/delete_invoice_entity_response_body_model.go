@@ -24,26 +24,12 @@ type iDeleteInvoiceEntityResponseBody interface {
 }
 
 type DeleteInvoiceEntityResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *DeleteInvoiceEntityResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// A5009956-1077-52FB-B520-EA8C7E91D722
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *DeleteInvoiceEntityResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s DeleteInvoiceEntityResponseBody) String() string {
@@ -118,13 +104,7 @@ func (s *DeleteInvoiceEntityResponseBody) Validate() error {
 }
 
 type DeleteInvoiceEntityResponseBodyModule struct {
-	// example:
-	//
-	// 1
-	RemoveNum *int32 `json:"remove_num,omitempty" xml:"remove_num,omitempty"`
-	// example:
-	//
-	// 2
+	RemoveNum       *int32 `json:"remove_num,omitempty" xml:"remove_num,omitempty"`
 	SelectedUserNum *int32 `json:"selected_user_num,omitempty" xml:"selected_user_num,omitempty"`
 }
 

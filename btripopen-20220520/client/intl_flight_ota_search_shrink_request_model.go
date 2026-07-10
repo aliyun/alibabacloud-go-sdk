@@ -26,27 +26,14 @@ type iIntlFlightOtaSearchShrinkRequest interface {
 }
 
 type IntlFlightOtaSearchShrinkRequest struct {
-	// example:
-	//
-	// 10023
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
-	// example:
-	//
-	// 0
-	CabinType *int32 `json:"cabin_type,omitempty" xml:"cabin_type,omitempty"`
-	// example:
-	//
-	// open12igetbis4o07v10B1TlOWcM00
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	CabinType   *int32  `json:"cabin_type,omitempty" xml:"cabin_type,omitempty"`
+	IsvName     *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	// This parameter is required.
 	SearchJourneysShrink      *string `json:"search_journeys,omitempty" xml:"search_journeys,omitempty"`
 	SearchPassengerListShrink *string `json:"search_passenger_list,omitempty" xml:"search_passenger_list,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
 }
 

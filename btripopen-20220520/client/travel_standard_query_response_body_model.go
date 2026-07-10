@@ -24,26 +24,12 @@ type iTravelStandardQueryResponseBody interface {
 }
 
 type TravelStandardQueryResponseBody struct {
-	// example:
-	//
-	// 0
-	Code    *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *TravelStandardQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 210bcc3a16583004579056128d33d7
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TravelStandardQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TravelStandardQueryResponseBody) String() string {
@@ -208,16 +194,10 @@ func (s *TravelStandardQueryResponseBodyModuleReserveRule) Validate() error {
 
 type TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule struct {
 	OpenServiceTypeList []*string `json:"open_service_type_list,omitempty" xml:"open_service_type_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2006517149
-	RuleCode *int64  `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
-	RuleDesc *string `json:"rule_desc,omitempty" xml:"rule_desc,omitempty"`
-	// example:
-	//
-	// 6517149
-	RuleId   *int64  `json:"rule_id,omitempty" xml:"rule_id,omitempty"`
-	RuleName *string `json:"rule_name,omitempty" xml:"rule_name,omitempty"`
+	RuleCode            *int64    `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	RuleDesc            *string   `json:"rule_desc,omitempty" xml:"rule_desc,omitempty"`
+	RuleId              *int64    `json:"rule_id,omitempty" xml:"rule_id,omitempty"`
+	RuleName            *string   `json:"rule_name,omitempty" xml:"rule_name,omitempty"`
 }
 
 func (s TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule) String() string {
@@ -278,13 +258,7 @@ func (s *TravelStandardQueryResponseBodyModuleReserveRuleMainReserveRule) Valida
 }
 
 type TravelStandardQueryResponseBodyModuleReserveRuleModuleConfigList struct {
-	// example:
-	//
-	// FLIGHT_ADVANCE_BUY_DAY
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// 3
+	Code  *string `json:"code,omitempty" xml:"code,omitempty"`
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

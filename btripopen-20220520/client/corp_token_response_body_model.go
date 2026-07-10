@@ -26,29 +26,13 @@ type iCorpTokenResponseBody interface {
 }
 
 type CorpTokenResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                      `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *CorpTokenResponseBodyData   `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message *string                      `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *CorpTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 是否成功
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                      `json:"code,omitempty" xml:"code,omitempty"`
+	Data      *CorpTokenResponseBodyData   `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Message   *string                      `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *CorpTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                        `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                      `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CorpTokenResponseBody) String() string {
@@ -137,14 +121,8 @@ func (s *CorpTokenResponseBody) Validate() error {
 }
 
 type CorpTokenResponseBodyData struct {
-	// example:
-	//
-	// 70000
-	Expire *int64 `json:"expire,omitempty" xml:"expire,omitempty"`
-	// example:
-	//
-	// 37j76df
-	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	Expire *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
+	Token  *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s CorpTokenResponseBodyData) String() string {
@@ -178,18 +156,9 @@ func (s *CorpTokenResponseBodyData) Validate() error {
 }
 
 type CorpTokenResponseBodyModule struct {
-	// example:
-	//
-	// 70000
-	Expire *int64 `json:"expire,omitempty" xml:"expire,omitempty"`
-	// example:
-	//
-	// 1635744378301
-	Start *int64 `json:"start,omitempty" xml:"start,omitempty"`
-	// example:
-	//
-	// 37j76df
-	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	Expire *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
+	Start  *int64  `json:"start,omitempty" xml:"start,omitempty"`
+	Token  *string `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s CorpTokenResponseBodyModule) String() string {

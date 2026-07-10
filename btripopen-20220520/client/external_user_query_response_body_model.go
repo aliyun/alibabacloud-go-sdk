@@ -26,29 +26,12 @@ type iExternalUserQueryResponseBody interface {
 }
 
 type ExternalUserQueryResponseBody struct {
-  // example:
-  // 
-  // SUCCESS
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
-  // example:
-  // 
-  // 200
   HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
   Module *ExternalUserQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-  // example:
-  // 
-  // 407543AF-2BD9-5890-BD92-9D1AB7218B27
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // example:
-  // 
-  // true
   Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-  // traceId
-  // 
-  // example:
-  // 
-  // 210e847f16611516748613869de4f6
   TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
@@ -133,39 +116,15 @@ func (s *ExternalUserQueryResponseBody) Validate() error {
 }
 
 type ExternalUserQueryResponseBodyModule struct {
-  // example:
-  // 
-  // 2000-01-02
   Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
-  // example:
-  // 
-  // btrip123456
   CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-  // example:
-  // 
-  // zhangsan@alibaba-inc.com
   Email *string `json:"email,omitempty" xml:"email,omitempty"`
-  // example:
-  // 
-  // 000001
   ExternalUserId *string `json:"external_user_id,omitempty" xml:"external_user_id,omitempty"`
-  // example:
-  // 
-  // 13438009765
   Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
   RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
-  // example:
-  // 
-  // zhang/san
   RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
-  // example:
-  // 
-  // e1$12345678
   UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
   UserNick *string `json:"user_nick,omitempty" xml:"user_nick,omitempty"`
-  // example:
-  // 
-  // 1
   UserType *int32 `json:"user_type,omitempty" xml:"user_type,omitempty"`
 }
 

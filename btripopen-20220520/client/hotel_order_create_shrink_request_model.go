@@ -9,6 +9,8 @@ type iHotelOrderCreateShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetArrivalTime(v string) *HotelOrderCreateShrinkRequest
+	GetArrivalTime() *string
 	SetBtripUserId(v string) *HotelOrderCreateShrinkRequest
 	GetBtripUserId() *string
 	SetCheckIn(v string) *HotelOrderCreateShrinkRequest
@@ -33,6 +35,8 @@ type iHotelOrderCreateShrinkRequest interface {
 	GetItemId() *int64
 	SetItineraryNo(v string) *HotelOrderCreateShrinkRequest
 	GetItineraryNo() *string
+	SetLeaveTime(v string) *HotelOrderCreateShrinkRequest
+	GetLeaveTime() *string
 	SetMemberInfoShrink(v string) *HotelOrderCreateShrinkRequest
 	GetMemberInfoShrink() *string
 	SetOccupantInfoListShrink(v string) *HotelOrderCreateShrinkRequest
@@ -47,6 +51,8 @@ type iHotelOrderCreateShrinkRequest interface {
 	GetRoomId() *int64
 	SetRoomNum(v int32) *HotelOrderCreateShrinkRequest
 	GetRoomNum() *int32
+	SetRpType(v int32) *HotelOrderCreateShrinkRequest
+	GetRpType() *int32
 	SetSellerId(v int64) *HotelOrderCreateShrinkRequest
 	GetSellerId() *int64
 	SetShid(v int64) *HotelOrderCreateShrinkRequest
@@ -58,112 +64,48 @@ type iHotelOrderCreateShrinkRequest interface {
 }
 
 type HotelOrderCreateShrinkRequest struct {
+	ArrivalTime *string `json:"arrival_time,omitempty" xml:"arrival_time,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123122
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2020-10-20
 	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2020-10-20
-	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
-	// example:
-	//
-	// demo
+	CheckOut      *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
 	ContractEmail *string `json:"contract_email,omitempty" xml:"contract_email,omitempty"`
 	ContractName  *string `json:"contract_name,omitempty" xml:"contract_name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 19281772123
 	ContractPhone *string `json:"contract_phone,omitempty" xml:"contract_phone,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 100
 	CorpPayPrice *int64 `json:"corp_pay_price,omitempty" xml:"corp_pay_price,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dis123
 	DisOrderId        *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	Extra             *string `json:"extra,omitempty" xml:"extra,omitempty"`
 	InvoiceInfoShrink *string `json:"invoice_info,omitempty" xml:"invoice_info,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 671570615157
 	ItemId *int64 `json:"item_id,omitempty" xml:"item_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// fb5e1abf33924b6c912bd6d80deec0eb-1
 	ItineraryNo      *string `json:"itinerary_no,omitempty" xml:"itinerary_no,omitempty"`
+	LeaveTime        *string `json:"leave_time,omitempty" xml:"leave_time,omitempty"`
 	MemberInfoShrink *string `json:"member_info,omitempty" xml:"member_info,omitempty"`
 	// This parameter is required.
 	OccupantInfoListShrink *string `json:"occupant_info_list,omitempty" xml:"occupant_info_list,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1000
 	PersonPayPrice      *int64  `json:"person_pay_price,omitempty" xml:"person_pay_price,omitempty"`
 	PromotionInfoShrink *string `json:"promotion_info,omitempty" xml:"promotion_info,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1399417428510
 	RatePlanId *int64 `json:"rate_plan_id,omitempty" xml:"rate_plan_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 187211
 	RoomId *int64 `json:"room_id,omitempty" xml:"room_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	RoomNum *int32 `json:"room_num,omitempty" xml:"room_num,omitempty"`
+	RpType  *int32 `json:"rp_type,omitempty" xml:"rp_type,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2088441675613762
 	SellerId *int64 `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2198781
 	Shid *int64 `json:"shid,omitempty" xml:"shid,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 100
 	TotalOrderPrice *int64 `json:"total_order_price,omitempty" xml:"total_order_price,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// nonUltron_1673575241156_d91ea8ad16735752359161037bf6cf_c54d3768312a4b249b719f126377bf82
 	ValidateResKey *string `json:"validate_res_key,omitempty" xml:"validate_res_key,omitempty"`
 }
 
@@ -173,6 +115,10 @@ func (s HotelOrderCreateShrinkRequest) String() string {
 
 func (s HotelOrderCreateShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *HotelOrderCreateShrinkRequest) GetArrivalTime() *string {
+	return s.ArrivalTime
 }
 
 func (s *HotelOrderCreateShrinkRequest) GetBtripUserId() *string {
@@ -223,6 +169,10 @@ func (s *HotelOrderCreateShrinkRequest) GetItineraryNo() *string {
 	return s.ItineraryNo
 }
 
+func (s *HotelOrderCreateShrinkRequest) GetLeaveTime() *string {
+	return s.LeaveTime
+}
+
 func (s *HotelOrderCreateShrinkRequest) GetMemberInfoShrink() *string {
 	return s.MemberInfoShrink
 }
@@ -251,6 +201,10 @@ func (s *HotelOrderCreateShrinkRequest) GetRoomNum() *int32 {
 	return s.RoomNum
 }
 
+func (s *HotelOrderCreateShrinkRequest) GetRpType() *int32 {
+	return s.RpType
+}
+
 func (s *HotelOrderCreateShrinkRequest) GetSellerId() *int64 {
 	return s.SellerId
 }
@@ -265,6 +219,11 @@ func (s *HotelOrderCreateShrinkRequest) GetTotalOrderPrice() *int64 {
 
 func (s *HotelOrderCreateShrinkRequest) GetValidateResKey() *string {
 	return s.ValidateResKey
+}
+
+func (s *HotelOrderCreateShrinkRequest) SetArrivalTime(v string) *HotelOrderCreateShrinkRequest {
+	s.ArrivalTime = &v
+	return s
 }
 
 func (s *HotelOrderCreateShrinkRequest) SetBtripUserId(v string) *HotelOrderCreateShrinkRequest {
@@ -327,6 +286,11 @@ func (s *HotelOrderCreateShrinkRequest) SetItineraryNo(v string) *HotelOrderCrea
 	return s
 }
 
+func (s *HotelOrderCreateShrinkRequest) SetLeaveTime(v string) *HotelOrderCreateShrinkRequest {
+	s.LeaveTime = &v
+	return s
+}
+
 func (s *HotelOrderCreateShrinkRequest) SetMemberInfoShrink(v string) *HotelOrderCreateShrinkRequest {
 	s.MemberInfoShrink = &v
 	return s
@@ -359,6 +323,11 @@ func (s *HotelOrderCreateShrinkRequest) SetRoomId(v int64) *HotelOrderCreateShri
 
 func (s *HotelOrderCreateShrinkRequest) SetRoomNum(v int32) *HotelOrderCreateShrinkRequest {
 	s.RoomNum = &v
+	return s
+}
+
+func (s *HotelOrderCreateShrinkRequest) SetRpType(v int32) *HotelOrderCreateShrinkRequest {
+	s.RpType = &v
 	return s
 }
 

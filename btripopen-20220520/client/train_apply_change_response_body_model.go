@@ -24,27 +24,12 @@ type iTrainApplyChangeResponseBody interface {
 }
 
 type TrainApplyChangeResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module
-	Module *TrainApplyChangeResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 2103ad0216854277618591626db2b6
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TrainApplyChangeResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TrainApplyChangeResponseBody) String() string {
@@ -119,22 +104,10 @@ func (s *TrainApplyChangeResponseBody) Validate() error {
 }
 
 type TrainApplyChangeResponseBodyModule struct {
-	// example:
-	//
-	// 1234
 	ChangeOrderId *string `json:"change_order_id,omitempty" xml:"change_order_id,omitempty"`
-	// example:
-	//
-	// 116019444
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 1017124195788186048
-	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	// example:
-	//
-	// 1
-	PayStatus *string `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	OrderId       *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId    *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	PayStatus     *string `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
 }
 
 func (s TrainApplyChangeResponseBodyModule) String() string {

@@ -23,34 +23,14 @@ type iCooperatorSyncPayStatusRequest interface {
 
 type CooperatorSyncPayStatusRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234
 	CooperatorOrderId *string `json:"cooperator_order_id,omitempty" xml:"cooperator_order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12345
 	CooperatorPayNo *string `json:"cooperator_pay_no,omitempty" xml:"cooperator_pay_no,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1017018197205925373
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// SUCCESS
 	PayStatus *string `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1726022215000
 	PayTime *int64 `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
 }
 

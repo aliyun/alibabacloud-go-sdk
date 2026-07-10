@@ -18,10 +18,6 @@ type iEntitySetRequest interface {
 type EntitySetRequest struct {
   EntityDOList []*EntitySetRequestEntityDOList `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty" type:"Repeated"`
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // 340049
   ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
 }
 
@@ -66,16 +62,8 @@ func (s *EntitySetRequest) Validate() error {
 
 type EntitySetRequestEntityDOList struct {
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // 123
   EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // 1
   EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
 }
 

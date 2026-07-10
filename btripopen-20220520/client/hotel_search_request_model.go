@@ -47,6 +47,8 @@ type iHotelSearchRequest interface {
 	GetPayOverType() *int32
 	SetPaymentType(v int32) *HotelSearchRequest
 	GetPaymentType() *int32
+	SetPoi(v string) *HotelSearchRequest
+	GetPoi() *string
 	SetShids(v []*int64) *HotelSearchRequest
 	GetShids() []*int64
 	SetSortCode(v int32) *HotelSearchRequest
@@ -56,94 +58,33 @@ type iHotelSearchRequest interface {
 }
 
 type HotelSearchRequest struct {
-	// example:
-	//
-	// 1
-	AdultNum  *string   `json:"adult_num,omitempty" xml:"adult_num,omitempty"`
-	BrandCode []*string `json:"brand_code,omitempty" xml:"brand_code,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1000
-	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	AdultNum    *string   `json:"adult_num,omitempty" xml:"adult_num,omitempty"`
+	BrandCode   []*string `json:"brand_code,omitempty" xml:"brand_code,omitempty" type:"Repeated"`
+	BtripUserId *string   `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-02-22
 	CheckInDate *string `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-02-22
-	CheckOutDate *string `json:"check_out_date,omitempty" xml:"check_out_date,omitempty"`
-	// example:
-	//
-	// 330100
-	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	// example:
-	//
-	// 1
-	Dir *int32 `json:"dir,omitempty" xml:"dir,omitempty"`
-	// example:
-	//
-	// 100
-	Distance *int32 `json:"distance,omitempty" xml:"distance,omitempty"`
-	// example:
-	//
-	// 330000
-	DistrictCode *string `json:"district_code,omitempty" xml:"district_code,omitempty"`
-	// example:
-	//
-	// 0
-	HotelStar *string `json:"hotel_star,omitempty" xml:"hotel_star,omitempty"`
-	// example:
-	//
-	// true
-	IsProtocol *bool   `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
-	KeyWords   *string `json:"key_words,omitempty" xml:"key_words,omitempty"`
-	// example:
-	//
-	// 120.010059, 30.284666
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// example:
-	//
-	// 1000
-	MaxPrice *float64 `json:"max_price,omitempty" xml:"max_price,omitempty"`
-	// example:
-	//
-	// 100
-	MinPrice *float64 `json:"min_price,omitempty" xml:"min_price,omitempty"`
+	CheckOutDate *string  `json:"check_out_date,omitempty" xml:"check_out_date,omitempty"`
+	CityCode     *string  `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	Dir          *int32   `json:"dir,omitempty" xml:"dir,omitempty"`
+	Distance     *int32   `json:"distance,omitempty" xml:"distance,omitempty"`
+	DistrictCode *string  `json:"district_code,omitempty" xml:"district_code,omitempty"`
+	HotelStar    *string  `json:"hotel_star,omitempty" xml:"hotel_star,omitempty"`
+	IsProtocol   *bool    `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	KeyWords     *string  `json:"key_words,omitempty" xml:"key_words,omitempty"`
+	Location     *string  `json:"location,omitempty" xml:"location,omitempty"`
+	MaxPrice     *float64 `json:"max_price,omitempty" xml:"max_price,omitempty"`
+	MinPrice     *float64 `json:"min_price,omitempty" xml:"min_price,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// example:
-	//
-	// 1
-	PayOverType *int32 `json:"pay_over_type,omitempty" xml:"pay_over_type,omitempty"`
-	// example:
-	//
-	// 0
+	PageSize    *int32   `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	PayOverType *int32   `json:"pay_over_type,omitempty" xml:"pay_over_type,omitempty"`
 	PaymentType *int32   `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+	Poi         *string  `json:"poi,omitempty" xml:"poi,omitempty"`
 	Shids       []*int64 `json:"shids,omitempty" xml:"shids,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	SortCode *int32 `json:"sort_code,omitempty" xml:"sort_code,omitempty"`
-	// example:
-	//
-	// 0
 	SuperMan *int32 `json:"super_man,omitempty" xml:"super_man,omitempty"`
 }
 
@@ -229,6 +170,10 @@ func (s *HotelSearchRequest) GetPayOverType() *int32 {
 
 func (s *HotelSearchRequest) GetPaymentType() *int32 {
 	return s.PaymentType
+}
+
+func (s *HotelSearchRequest) GetPoi() *string {
+	return s.Poi
 }
 
 func (s *HotelSearchRequest) GetShids() []*int64 {
@@ -335,6 +280,11 @@ func (s *HotelSearchRequest) SetPayOverType(v int32) *HotelSearchRequest {
 
 func (s *HotelSearchRequest) SetPaymentType(v int32) *HotelSearchRequest {
 	s.PaymentType = &v
+	return s
+}
+
+func (s *HotelSearchRequest) SetPoi(v string) *HotelSearchRequest {
+	s.Poi = &v
 	return s
 }
 

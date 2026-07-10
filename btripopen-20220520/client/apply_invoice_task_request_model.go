@@ -17,10 +17,6 @@ type iApplyInvoiceTaskRequest interface {
 
 type ApplyInvoiceTaskRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2022-12-01
 	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
 	// This parameter is required.
 	InvoiceTaskList []*ApplyInvoiceTaskRequestInvoiceTaskList `json:"invoice_task_list,omitempty" xml:"invoice_task_list,omitempty" type:"Repeated"`
@@ -66,68 +62,34 @@ func (s *ApplyInvoiceTaskRequest) Validate() error {
 }
 
 type ApplyInvoiceTaskRequestInvoiceTaskList struct {
-	Contact *string `json:"contact,omitempty" xml:"contact,omitempty"`
-	Email   *string `json:"email,omitempty" xml:"email,omitempty"`
-	// example:
-	//
-	// 0
-	FlightInvoiceFee *string `json:"flight_invoice_fee,omitempty" xml:"flight_invoice_fee,omitempty"`
-	// example:
-	//
-	// 3.12
-	FuPointInvoiceFee *string `json:"fu_point_invoice_fee,omitempty" xml:"fu_point_invoice_fee,omitempty"`
-	// example:
-	//
-	// 0
-	HotelNormalInvoiceFee *string `json:"hotel_normal_invoice_fee,omitempty" xml:"hotel_normal_invoice_fee,omitempty"`
-	// example:
-	//
-	// 100
-	HotelSpecialInvoiceFee    *string `json:"hotel_special_invoice_fee,omitempty" xml:"hotel_special_invoice_fee,omitempty"`
-	IeVehicleNormalInvoiceFee *string `json:"ie_vehicle_normal_invoice_fee,omitempty" xml:"ie_vehicle_normal_invoice_fee,omitempty"`
-	// example:
-	//
-	// 0
+	Contact                       *string `json:"contact,omitempty" xml:"contact,omitempty"`
+	Email                         *string `json:"email,omitempty" xml:"email,omitempty"`
+	FlightInvoiceFee              *string `json:"flight_invoice_fee,omitempty" xml:"flight_invoice_fee,omitempty"`
+	FuPointInvoiceFee             *string `json:"fu_point_invoice_fee,omitempty" xml:"fu_point_invoice_fee,omitempty"`
+	HotelNormalInvoiceFee         *string `json:"hotel_normal_invoice_fee,omitempty" xml:"hotel_normal_invoice_fee,omitempty"`
+	HotelSpecialInvoiceFee        *string `json:"hotel_special_invoice_fee,omitempty" xml:"hotel_special_invoice_fee,omitempty"`
+	IeVehicleNormalInvoiceFee     *string `json:"ie_vehicle_normal_invoice_fee,omitempty" xml:"ie_vehicle_normal_invoice_fee,omitempty"`
 	InternationalFlightInvoiceFee *string `json:"international_flight_invoice_fee,omitempty" xml:"international_flight_invoice_fee,omitempty"`
 	InternationalHotelInvoiceFee  *string `json:"international_hotel_invoice_fee,omitempty" xml:"international_hotel_invoice_fee,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123
-	InvoiceThirdPartId      *string `json:"invoice_third_part_id,omitempty" xml:"invoice_third_part_id,omitempty"`
-	InvoiceType             *int32  `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
-	MailAddress             *string `json:"mail_address,omitempty" xml:"mail_address,omitempty"`
-	MailCity                *string `json:"mail_city,omitempty" xml:"mail_city,omitempty"`
-	MailFullAddress         *string `json:"mail_full_address,omitempty" xml:"mail_full_address,omitempty"`
-	MailProvince            *string `json:"mail_province,omitempty" xml:"mail_province,omitempty"`
-	MealNormalInvoiceFee    *string `json:"meal_normal_invoice_fee,omitempty" xml:"meal_normal_invoice_fee,omitempty"`
-	MealTc7NormalInvoiceFee *string `json:"meal_tc7_normal_invoice_fee,omitempty" xml:"meal_tc7_normal_invoice_fee,omitempty"`
-	// example:
-	//
-	// 0
-	PenaltyFee *string `json:"penalty_fee,omitempty" xml:"penalty_fee,omitempty"`
-	Remark     *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// example:
-	//
-	// 1.02
-	ServiceFee *string `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
-	// example:
-	//
-	// 1234567890
+	InvoiceThirdPartId                 *string `json:"invoice_third_part_id,omitempty" xml:"invoice_third_part_id,omitempty"`
+	InvoiceType                        *int32  `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	MailAddress                        *string `json:"mail_address,omitempty" xml:"mail_address,omitempty"`
+	MailCity                           *string `json:"mail_city,omitempty" xml:"mail_city,omitempty"`
+	MailFullAddress                    *string `json:"mail_full_address,omitempty" xml:"mail_full_address,omitempty"`
+	MailProvince                       *string `json:"mail_province,omitempty" xml:"mail_province,omitempty"`
+	MealNormalInvoiceFee               *string `json:"meal_normal_invoice_fee,omitempty" xml:"meal_normal_invoice_fee,omitempty"`
+	MealTc7NormalInvoiceFee            *string `json:"meal_tc7_normal_invoice_fee,omitempty" xml:"meal_tc7_normal_invoice_fee,omitempty"`
+	PenaltyFee                         *string `json:"penalty_fee,omitempty" xml:"penalty_fee,omitempty"`
+	Remark                             *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	ServiceFee                         *string `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
 	Telephone                          *string `json:"telephone,omitempty" xml:"telephone,omitempty"`
 	TrainAccelerationPackageInvoiceFee *string `json:"train_acceleration_package_invoice_fee,omitempty" xml:"train_acceleration_package_invoice_fee,omitempty"`
-	// example:
-	//
-	// 0
-	TrainInvoiceFee          *string `json:"train_invoice_fee,omitempty" xml:"train_invoice_fee,omitempty"`
-	VacationNormalInvoiceFee *string `json:"vacation_normal_invoice_fee,omitempty" xml:"vacation_normal_invoice_fee,omitempty"`
-	VasMallSpecialInvoiceFee *string `json:"vas_mall_special_invoice_fee,omitempty" xml:"vas_mall_special_invoice_fee,omitempty"`
-	// example:
-	//
-	// 100
-	VehicleInvoiceFee       *string `json:"vehicle_invoice_fee,omitempty" xml:"vehicle_invoice_fee,omitempty"`
-	VehicleNormalInvoiceFee *string `json:"vehicle_normal_invoice_fee,omitempty" xml:"vehicle_normal_invoice_fee,omitempty"`
+	TrainInvoiceFee                    *string `json:"train_invoice_fee,omitempty" xml:"train_invoice_fee,omitempty"`
+	VacationNormalInvoiceFee           *string `json:"vacation_normal_invoice_fee,omitempty" xml:"vacation_normal_invoice_fee,omitempty"`
+	VasMallSpecialInvoiceFee           *string `json:"vas_mall_special_invoice_fee,omitempty" xml:"vas_mall_special_invoice_fee,omitempty"`
+	VehicleInvoiceFee                  *string `json:"vehicle_invoice_fee,omitempty" xml:"vehicle_invoice_fee,omitempty"`
+	VehicleNormalInvoiceFee            *string `json:"vehicle_normal_invoice_fee,omitempty" xml:"vehicle_normal_invoice_fee,omitempty"`
 }
 
 func (s ApplyInvoiceTaskRequestInvoiceTaskList) String() string {

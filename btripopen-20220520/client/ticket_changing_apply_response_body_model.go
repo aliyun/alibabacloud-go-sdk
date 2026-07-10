@@ -24,24 +24,12 @@ type iTicketChangingApplyResponseBody interface {
 }
 
 type TicketChangingApplyResponseBody struct {
-	// example:
-	//
-	// 0
-	Code    *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *TicketChangingApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TicketChangingApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TicketChangingApplyResponseBody) String() string {
@@ -116,67 +104,22 @@ func (s *TicketChangingApplyResponseBody) Validate() error {
 }
 
 type TicketChangingApplyResponseBodyModule struct {
-	// example:
-	//
-	// 1000
-	BookingChangedTotalFee *int32 `json:"booking_changed_total_fee,omitempty" xml:"booking_changed_total_fee,omitempty"`
-	// example:
-	//
-	// 1000
-	BookingOriginTotalFee *int32 `json:"booking_origin_total_fee,omitempty" xml:"booking_origin_total_fee,omitempty"`
-	// example:
-	//
-	// true
-	BookingPriceChanged *bool `json:"booking_price_changed,omitempty" xml:"booking_price_changed,omitempty"`
-	// example:
-	//
-	// 1234
-	BtripOrderId *int64 `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
-	// example:
-	//
-	// 1234
-	BtripSubOrderId *int64 `json:"btrip_sub_order_id,omitempty" xml:"btrip_sub_order_id,omitempty"`
-	// example:
-	//
-	// true
-	CanPay *bool `json:"can_pay,omitempty" xml:"can_pay,omitempty"`
-	// example:
-	//
-	// 1000
-	ChangeFee *int64 `json:"change_fee,omitempty" xml:"change_fee,omitempty"`
-	// example:
-	//
-	// 0000-00-00 00:00:00
-	DeadlineTime *string `json:"deadline_time,omitempty" xml:"deadline_time,omitempty"`
-	// example:
-	//
-	// dis123
-	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
-	// example:
-	//
-	// mid112
-	DisSubOrderId *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
-	// example:
-	//
-	// 1
-	MaxRetryTimes *int32 `json:"max_retry_times,omitempty" xml:"max_retry_times,omitempty"`
-	// example:
-	//
-	// 1000
-	NextRetryInterval *int64 `json:"next_retry_interval,omitempty" xml:"next_retry_interval,omitempty"`
-	// example:
-	//
-	// true
-	Retry           *bool   `json:"retry,omitempty" xml:"retry,omitempty"`
-	RetryClientTips *string `json:"retry_client_tips,omitempty" xml:"retry_client_tips,omitempty"`
-	// example:
-	//
-	// 0
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 1000
-	UpgradeFee *int64 `json:"upgrade_fee,omitempty" xml:"upgrade_fee,omitempty"`
+	BookingChangedTotalFee *int32  `json:"booking_changed_total_fee,omitempty" xml:"booking_changed_total_fee,omitempty"`
+	BookingOriginTotalFee  *int32  `json:"booking_origin_total_fee,omitempty" xml:"booking_origin_total_fee,omitempty"`
+	BookingPriceChanged    *bool   `json:"booking_price_changed,omitempty" xml:"booking_price_changed,omitempty"`
+	BtripOrderId           *int64  `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
+	BtripSubOrderId        *int64  `json:"btrip_sub_order_id,omitempty" xml:"btrip_sub_order_id,omitempty"`
+	CanPay                 *bool   `json:"can_pay,omitempty" xml:"can_pay,omitempty"`
+	ChangeFee              *int64  `json:"change_fee,omitempty" xml:"change_fee,omitempty"`
+	DeadlineTime           *string `json:"deadline_time,omitempty" xml:"deadline_time,omitempty"`
+	DisOrderId             *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	DisSubOrderId          *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
+	MaxRetryTimes          *int32  `json:"max_retry_times,omitempty" xml:"max_retry_times,omitempty"`
+	NextRetryInterval      *int64  `json:"next_retry_interval,omitempty" xml:"next_retry_interval,omitempty"`
+	Retry                  *bool   `json:"retry,omitempty" xml:"retry,omitempty"`
+	RetryClientTips        *string `json:"retry_client_tips,omitempty" xml:"retry_client_tips,omitempty"`
+	Status                 *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	UpgradeFee             *int64  `json:"upgrade_fee,omitempty" xml:"upgrade_fee,omitempty"`
 }
 
 func (s TicketChangingApplyResponseBodyModule) String() string {

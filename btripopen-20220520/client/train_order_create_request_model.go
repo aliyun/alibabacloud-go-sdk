@@ -32,36 +32,19 @@ type iTrainOrderCreateRequest interface {
 }
 
 type TrainOrderCreateRequest struct {
-	// example:
-	//
-	// 0
 	AcceptNoSeat *string `json:"accept_no_seat,omitempty" xml:"accept_no_seat,omitempty"`
 	// This parameter is required.
 	BookTrainInfos []*TrainOrderCreateRequestBookTrainInfos `json:"book_train_infos,omitempty" xml:"book_train_infos,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12344321
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	// This parameter is required.
 	BtripUserName *string                              `json:"btrip_user_name,omitempty" xml:"btrip_user_name,omitempty"`
 	BusinessInfo  *TrainOrderCreateRequestBusinessInfo `json:"business_info,omitempty" xml:"business_info,omitempty" type:"Struct"`
 	// This parameter is required.
 	ContactInfo *TrainOrderCreateRequestContactInfo `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// 0
-	ForceMatch *string `json:"force_match,omitempty" xml:"force_match,omitempty"`
-	// example:
-	//
-	// false
-	IsPayNow *bool `json:"is_pay_now,omitempty" xml:"is_pay_now,omitempty"`
+	ForceMatch  *string                             `json:"force_match,omitempty" xml:"force_match,omitempty"`
+	IsPayNow    *bool                               `json:"is_pay_now,omitempty" xml:"is_pay_now,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	// This parameter is required.
 	PassengerOpenInfoS []*TrainOrderCreateRequestPassengerOpenInfoS `json:"passenger_open_info_s,omitempty" xml:"passenger_open_info_s,omitempty" type:"Repeated"`
@@ -199,38 +182,16 @@ func (s *TrainOrderCreateRequest) Validate() error {
 
 type TrainOrderCreateRequestBookTrainInfos struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BDC
 	ArrStationCode *string `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
 	// This parameter is required.
 	BookTicketInfos []*TrainOrderCreateRequestBookTrainInfosBookTicketInfos `json:"book_ticket_infos,omitempty" xml:"book_ticket_infos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1T
-	ChooseBeds *string `json:"choose_beds,omitempty" xml:"choose_beds,omitempty"`
-	// example:
-	//
-	// 1T
-	ChooseSeats *string `json:"choose_seats,omitempty" xml:"choose_seats,omitempty"`
+	ChooseBeds      *string                                                 `json:"choose_beds,omitempty" xml:"choose_beds,omitempty"`
+	ChooseSeats     *string                                                 `json:"choose_seats,omitempty" xml:"choose_seats,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BTC
 	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2024-05-06 15:19:01
 	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// K123456
 	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 
@@ -320,28 +281,12 @@ func (s *TrainOrderCreateRequestBookTrainInfos) Validate() error {
 
 type TrainOrderCreateRequestBookTrainInfosBookTicketInfos struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 14
 	SeatType *string `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 100
 	TicketPrice *int64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	TicketType *string `json:"ticket_type,omitempty" xml:"ticket_type,omitempty"`
 }
 
@@ -394,13 +339,7 @@ func (s *TrainOrderCreateRequestBookTrainInfosBookTicketInfos) Validate() error 
 }
 
 type TrainOrderCreateRequestBusinessInfo struct {
-	// example:
-	//
-	// 4321
-	CustomerApplyId *string `json:"customer_apply_id,omitempty" xml:"customer_apply_id,omitempty"`
-	// example:
-	//
-	// 1234
+	CustomerApplyId     *string `json:"customer_apply_id,omitempty" xml:"customer_apply_id,omitempty"`
 	CustomerItineraryId *string `json:"customer_itinerary_id,omitempty" xml:"customer_itinerary_id,omitempty"`
 }
 
@@ -436,22 +375,10 @@ func (s *TrainOrderCreateRequestBusinessInfo) Validate() error {
 
 type TrainOrderCreateRequestContactInfo struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// b6a6fc1bdf1ba60e25c2e132b612c8819
 	PassengerMobile *string `json:"passenger_mobile,omitempty" xml:"passenger_mobile,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 949c9f34f677a0e5d249dfc94f5e62cc7
 	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
 }
 
@@ -496,42 +423,17 @@ func (s *TrainOrderCreateRequestContactInfo) Validate() error {
 
 type TrainOrderCreateRequestPassengerOpenInfoS struct {
 	CostCenterInfo *TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo `json:"cost_center_info,omitempty" xml:"cost_center_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
-	CountryCode *string `json:"country_code,omitempty" xml:"country_code,omitempty"`
+	CountryCode    *string                                                  `json:"country_code,omitempty" xml:"country_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
 	PassengerCertNo *string `json:"passenger_cert_no,omitempty" xml:"passenger_cert_no,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 949c9f34f677a0e5d249dfc94f5e62cc7
 	PassengerCertType *string `json:"passenger_cert_type,omitempty" xml:"passenger_cert_type,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
-	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
-	// example:
-	//
-	// b6a6fc1bdf1ba60e25c2e132b612c8819
+	PassengerId     *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 	PassengerMobile *string `json:"passenger_mobile,omitempty" xml:"passenger_mobile,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 949c9f34f677a0e5d249dfc94f5e62cc7
 	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	// example:
-	//
-	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
-	ValidDateEnd *string `json:"valid_date_end,omitempty" xml:"valid_date_end,omitempty"`
+	ValidDateEnd  *string `json:"valid_date_end,omitempty" xml:"valid_date_end,omitempty"`
 }
 
 func (s TrainOrderCreateRequestPassengerOpenInfoS) String() string {
@@ -625,30 +527,15 @@ func (s *TrainOrderCreateRequestPassengerOpenInfoS) Validate() error {
 
 type TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo struct {
 	CascadeDeptName *string `json:"cascade_dept_name,omitempty" xml:"cascade_dept_name,omitempty"`
-	// example:
-	//
-	// 123321
-	CostCenterId   *string `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
-	// example:
-	//
-	// 12332112344
-	CostCenterNo *string `json:"cost_center_no,omitempty" xml:"cost_center_no,omitempty"`
-	// example:
-	//
-	// 010000009
-	DepartId   *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	// example:
-	//
-	// 111111
-	InvoiceId    *string `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
-	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	// example:
-	//
-	// acs
-	ProjectCode  *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	CostCenterId    *string `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	CostCenterName  *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	CostCenterNo    *string `json:"cost_center_no,omitempty" xml:"cost_center_no,omitempty"`
+	DepartId        *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName      *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	InvoiceId       *string `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	InvoiceTitle    *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	ProjectCode     *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle    *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
 }
 
 func (s TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo) String() string {

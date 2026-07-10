@@ -20,15 +20,8 @@ type iCommonApplyQueryRequest interface {
 }
 
 type CommonApplyQueryRequest struct {
-	// example:
-	//
-	// 1003366164
 	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 3
 	BizCategory        *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
 	BusinessInstanceId *string `json:"business_instance_id,omitempty" xml:"business_instance_id,omitempty"`
 	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`

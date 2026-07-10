@@ -24,29 +24,12 @@ type iUpdateCustomRoleResponseBody interface {
 }
 
 type UpdateCustomRoleResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// 200
+	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
 	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 210bcc3a16583004579056128d33d7
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId        *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s UpdateCustomRoleResponseBody) String() string {

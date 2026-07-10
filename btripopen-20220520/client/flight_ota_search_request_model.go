@@ -26,41 +26,16 @@ type iFlightOtaSearchRequest interface {
 }
 
 type FlightOtaSearchRequest struct {
-	// example:
-	//
-	// CA
 	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BJS
-	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	// example:
-	//
-	// Y
-	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	// example:
-	//
-	// CA2324
+	ArrCityCode     *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	CabinClass      *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
 	CarrierFlightNo *string `json:"carrier_flight_no,omitempty" xml:"carrier_flight_no,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// HGH
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-08-15 19:30:00
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// CA2323
 	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
 }
 

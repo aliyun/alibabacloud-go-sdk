@@ -50,83 +50,35 @@ type iFlightCreateOrderRequest interface {
 }
 
 type FlightCreateOrderRequest struct {
-	// example:
-	//
-	// HGH
 	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// HGH
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	// example:
-	//
-	// 0
-	AutoPay   *int32  `json:"auto_pay,omitempty" xml:"auto_pay,omitempty"`
-	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	AutoPay     *int32  `json:"auto_pay,omitempty" xml:"auto_pay,omitempty"`
+	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123
 	BuyerUniqueKey *string `json:"buyer_unique_key,omitempty" xml:"buyer_unique_key,omitempty"`
 	// This parameter is required.
-	ContactInfo *FlightCreateOrderRequestContactInfo `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// PEK
-	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	ContactInfo    *FlightCreateOrderRequestContactInfo `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
+	DepAirportCode *string                              `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2000-00-00 00:00:00
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dis123
 	DisOrderId *string                `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	OrderAttr  map[string]interface{} `json:"order_attr,omitempty" xml:"order_attr,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1000_1_0
 	OrderParams *string `json:"order_params,omitempty" xml:"order_params,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 7fb731deeb4510b86c17e8c8c25740_11
 	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1000
 	Price          *int64  `json:"price,omitempty" xml:"price,omitempty"`
 	ReceiptAddress *string `json:"receipt_address,omitempty" xml:"receipt_address,omitempty"`
-	// example:
-	//
-	// 1
-	ReceiptTarget *int32  `json:"receipt_target,omitempty" xml:"receipt_target,omitempty"`
-	ReceiptTitle  *string `json:"receipt_title,omitempty" xml:"receipt_title,omitempty"`
+	ReceiptTarget  *int32  `json:"receipt_target,omitempty" xml:"receipt_target,omitempty"`
+	ReceiptTitle   *string `json:"receipt_title,omitempty" xml:"receipt_title,omitempty"`
 	// This parameter is required.
 	TravelerInfoList []*FlightCreateOrderRequestTravelerInfoList `json:"traveler_info_list,omitempty" xml:"traveler_info_list,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
 }
 
@@ -328,17 +280,10 @@ func (s *FlightCreateOrderRequest) Validate() error {
 }
 
 type FlightCreateOrderRequestContactInfo struct {
-	// example:
-	//
-	// ******@alibaba-inc.com
 	ContactEmail *string `json:"contact_email,omitempty" xml:"contact_email,omitempty"`
 	// This parameter is required.
 	ContactName *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12312345211
 	ContactPhone *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
 }
 
@@ -382,62 +327,23 @@ func (s *FlightCreateOrderRequestContactInfo) Validate() error {
 }
 
 type FlightCreateOrderRequestTravelerInfoList struct {
-	// example:
-	//
-	// 2000-00-00
 	Birthday   *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
 	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1262651555151
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	CertType *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
-	// example:
-	//
-	// 2000-00-00
+	CertType      *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
 	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
 	// This parameter is required.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 国籍
-	//
-	// example:
-	//
-	// 中国大陆
-	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
-	// 国籍二字码
-	//
-	// example:
-	//
-	// CN
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	Nationality     *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
 	NationalityCode *string `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1234
 	OutUserId *string `json:"out_user_id,omitempty" xml:"out_user_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12341231232
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// example:
-	//
-	// 0
-	Sex *int32 `json:"sex,omitempty" xml:"sex,omitempty"`
+	Sex   *int32  `json:"sex,omitempty" xml:"sex,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

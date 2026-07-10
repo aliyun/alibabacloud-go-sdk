@@ -24,24 +24,12 @@ type iFlightOrderDetailInfoResponseBody interface {
 }
 
 type FlightOrderDetailInfoResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                                  `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                  `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *FlightOrderDetailInfoResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// A5009956-1077-52FB-B520-EA8C7E91D722
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *FlightOrderDetailInfoResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightOrderDetailInfoResponseBody) String() string {
@@ -116,72 +104,24 @@ func (s *FlightOrderDetailInfoResponseBody) Validate() error {
 }
 
 type FlightOrderDetailInfoResponseBodyModule struct {
-	// example:
-	//
-	// 2389927372772
-	AlipayTradeNo *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
-	// example:
-	//
-	// 1223
-	BookUserId *string `json:"book_user_id,omitempty" xml:"book_user_id,omitempty"`
-	// example:
-	//
-	// 123
-	BtripOrderId *int64  `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
-	ContactName  *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
-	// example:
-	//
-	// 12345678909
-	ContactPhone *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
-	// example:
-	//
-	// dis123
-	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
-	// example:
-	//
-	// {}
-	Extra          *string                                                  `json:"extra,omitempty" xml:"extra,omitempty"`
-	FlightInfoList []*FlightOrderDetailInfoResponseBodyModuleFlightInfoList `json:"flight_info_list,omitempty" xml:"flight_info_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2000-00-00 00:00:00
-	LastPayTime *string `json:"last_pay_time,omitempty" xml:"last_pay_time,omitempty"`
-	// example:
-	//
-	// 0
-	PayStatus *int32 `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
-	// example:
-	//
-	// 2000-00-00 00:00:00
-	PayTime *string `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
-	// example:
-	//
-	// 1000
-	PromotionPrice *int64 `json:"promotion_price,omitempty" xml:"promotion_price,omitempty"`
-	// example:
-	//
-	// 100
-	SettleAmount *int64 `json:"settle_amount,omitempty" xml:"settle_amount,omitempty"`
-	// example:
-	//
-	// 0
-	SettleType *int32 `json:"settle_type,omitempty" xml:"settle_type,omitempty"`
-	// example:
-	//
-	// 1
-	Status         *int32                                                   `json:"status,omitempty" xml:"status,omitempty"`
-	TicketInfoList []*FlightOrderDetailInfoResponseBodyModuleTicketInfoList `json:"ticket_info_list,omitempty" xml:"ticket_info_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1000
-	TotalBuildPrice *int64 `json:"total_build_price,omitempty" xml:"total_build_price,omitempty"`
-	// example:
-	//
-	// 1000
-	TotalOilPrice *int64 `json:"total_oil_price,omitempty" xml:"total_oil_price,omitempty"`
-	// example:
-	//
-	// 1000
+	AlipayTradeNo    *string                                                    `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	BookUserId       *string                                                    `json:"book_user_id,omitempty" xml:"book_user_id,omitempty"`
+	BtripOrderId     *int64                                                     `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
+	ContactName      *string                                                    `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	ContactPhone     *string                                                    `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
+	DisOrderId       *string                                                    `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	Extra            *string                                                    `json:"extra,omitempty" xml:"extra,omitempty"`
+	FlightInfoList   []*FlightOrderDetailInfoResponseBodyModuleFlightInfoList   `json:"flight_info_list,omitempty" xml:"flight_info_list,omitempty" type:"Repeated"`
+	LastPayTime      *string                                                    `json:"last_pay_time,omitempty" xml:"last_pay_time,omitempty"`
+	PayStatus        *int32                                                     `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	PayTime          *string                                                    `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
+	PromotionPrice   *int64                                                     `json:"promotion_price,omitempty" xml:"promotion_price,omitempty"`
+	SettleAmount     *int64                                                     `json:"settle_amount,omitempty" xml:"settle_amount,omitempty"`
+	SettleType       *int32                                                     `json:"settle_type,omitempty" xml:"settle_type,omitempty"`
+	Status           *int32                                                     `json:"status,omitempty" xml:"status,omitempty"`
+	TicketInfoList   []*FlightOrderDetailInfoResponseBodyModuleTicketInfoList   `json:"ticket_info_list,omitempty" xml:"ticket_info_list,omitempty" type:"Repeated"`
+	TotalBuildPrice  *int64                                                     `json:"total_build_price,omitempty" xml:"total_build_price,omitempty"`
+	TotalOilPrice    *int64                                                     `json:"total_oil_price,omitempty" xml:"total_oil_price,omitempty"`
 	TotalOrderPrice  *int64                                                     `json:"total_order_price,omitempty" xml:"total_order_price,omitempty"`
 	TravelerInfoList []*FlightOrderDetailInfoResponseBodyModuleTravelerInfoList `json:"traveler_info_list,omitempty" xml:"traveler_info_list,omitempty" type:"Repeated"`
 }
@@ -406,105 +346,39 @@ func (s *FlightOrderDetailInfoResponseBodyModule) Validate() error {
 }
 
 type FlightOrderDetailInfoResponseBodyModuleFlightInfoList struct {
-	// example:
-	//
-	// CA
-	AirlineCode       *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
-	AirlineName       *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
-	AirlineSimpleName *string `json:"airline_simple_name,omitempty" xml:"airline_simple_name,omitempty"`
-	ArrAirport        *string `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
-	// example:
-	//
-	// LHW
+	AirlineCode        *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	AirlineName        *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
+	AirlineSimpleName  *string `json:"airline_simple_name,omitempty" xml:"airline_simple_name,omitempty"`
+	ArrAirport         *string `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
 	ArrAirportCode     *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
 	ArrAirportCodeName *string `json:"arr_airport_code_name,omitempty" xml:"arr_airport_code_name,omitempty"`
-	// example:
-	//
-	// HGH
-	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	// example:
-	//
-	// LHW
-	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrTerminal *string `json:"arr_terminal,omitempty" xml:"arr_terminal,omitempty"`
-	// example:
-	//
-	// 2000-00-00 00:00:00
-	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	// example:
-	//
-	// “”
-	Baggage *string `json:"baggage,omitempty" xml:"baggage,omitempty"`
-	// example:
-	//
-	// 100
-	BuildPrice *int64  `json:"build_price,omitempty" xml:"build_price,omitempty"`
-	Cabin      *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	// example:
-	//
-	// "CA1351_PEK_CAN_2000-00-00 08:00
-	Carrier    *string `json:"carrier,omitempty" xml:"carrier,omitempty"`
-	DepAirport *string `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
-	// example:
-	//
-	// NGB
+	ArrCity            *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode        *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrTerminal        *string `json:"arr_terminal,omitempty" xml:"arr_terminal,omitempty"`
+	ArrTime            *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	Baggage            *string `json:"baggage,omitempty" xml:"baggage,omitempty"`
+	BuildPrice         *int64  `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	Cabin              *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass         *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	Carrier            *string `json:"carrier,omitempty" xml:"carrier,omitempty"`
+	DepAirport         *string `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
 	DepAirportCode     *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
 	DepAirportCodeName *string `json:"dep_airport_code_name,omitempty" xml:"dep_airport_code_name,omitempty"`
-	// example:
-	//
-	// BJS
-	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	// example:
-	//
-	// NGB
-	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepTerminal *string `json:"dep_terminal,omitempty" xml:"dep_terminal,omitempty"`
-	// example:
-	//
-	// 2000-01-01 00:00:00
-	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	// example:
-	//
-	// CA1351
-	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	// example:
-	//
-	// Y
-	LastCabin *string `json:"last_cabin,omitempty" xml:"last_cabin,omitempty"`
-	// example:
-	//
-	// CA1351
-	LastFlightNo *string `json:"last_flight_no,omitempty" xml:"last_flight_no,omitempty"`
-	Meal         *string `json:"meal,omitempty" xml:"meal,omitempty"`
-	// example:
-	//
-	// 100
-	OilPrice *int64 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
-	// example:
-	//
-	// 0
-	SegmentType *int32 `json:"segment_type,omitempty" xml:"segment_type,omitempty"`
-	// example:
-	//
-	// 2000-00-00 00:00:00
-	StopArrTime *string `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
-	// example:
-	//
-	// CAN
-	StopCity *string `json:"stop_city,omitempty" xml:"stop_city,omitempty"`
-	// example:
-	//
-	// 2000-00-00 00:00:00
-	StopDepTime *string `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
-	// example:
-	//
-	// 100
-	TicketPrice *int64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	// example:
-	//
-	// “”
-	TuigaiqianInfo *string `json:"tuigaiqian_info,omitempty" xml:"tuigaiqian_info,omitempty"`
+	DepCity            *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityCode        *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepTerminal        *string `json:"dep_terminal,omitempty" xml:"dep_terminal,omitempty"`
+	DepTime            *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	FlightNo           *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	LastCabin          *string `json:"last_cabin,omitempty" xml:"last_cabin,omitempty"`
+	LastFlightNo       *string `json:"last_flight_no,omitempty" xml:"last_flight_no,omitempty"`
+	Meal               *string `json:"meal,omitempty" xml:"meal,omitempty"`
+	OilPrice           *int64  `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	SegmentType        *int32  `json:"segment_type,omitempty" xml:"segment_type,omitempty"`
+	StopArrTime        *string `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
+	StopCity           *string `json:"stop_city,omitempty" xml:"stop_city,omitempty"`
+	StopDepTime        *string `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
+	TicketPrice        *int64  `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TuigaiqianInfo     *string `json:"tuigaiqian_info,omitempty" xml:"tuigaiqian_info,omitempty"`
 }
 
 func (s FlightOrderDetailInfoResponseBodyModuleFlightInfoList) String() string {
@@ -817,22 +691,10 @@ func (s *FlightOrderDetailInfoResponseBodyModuleFlightInfoList) Validate() error
 }
 
 type FlightOrderDetailInfoResponseBodyModuleTicketInfoList struct {
-	// example:
-	//
-	// 0
 	OpenTicketStatus *string `json:"open_ticket_status,omitempty" xml:"open_ticket_status,omitempty"`
-	// example:
-	//
-	// KF0528
-	PnrCode *string `json:"pnr_code,omitempty" xml:"pnr_code,omitempty"`
-	// example:
-	//
-	// 444-000000000
-	TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
-	// example:
-	//
-	// 1
-	TicketStatus *string `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
+	PnrCode          *string `json:"pnr_code,omitempty" xml:"pnr_code,omitempty"`
+	TicketNo         *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	TicketStatus     *string `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
 }
 
 func (s FlightOrderDetailInfoResponseBodyModuleTicketInfoList) String() string {
@@ -884,39 +746,15 @@ func (s *FlightOrderDetailInfoResponseBodyModuleTicketInfoList) Validate() error
 }
 
 type FlightOrderDetailInfoResponseBodyModuleTravelerInfoList struct {
-	// example:
-	//
-	// 2000-01-01
-	BirthDate *string `json:"birth_date,omitempty" xml:"birth_date,omitempty"`
-	// example:
-	//
-	// 1234
-	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
-	// example:
-	//
-	// 0
-	CertType *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
-	// example:
-	//
-	// 0
+	BirthDate        *string `json:"birth_date,omitempty" xml:"birth_date,omitempty"`
+	CertNo           *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType         *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
 	OpenTicketStatus *int32  `json:"open_ticket_status,omitempty" xml:"open_ticket_status,omitempty"`
 	PassengerName    *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	// example:
-	//
-	// 0
-	PassengerType *string `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
-	// example:
-	//
-	// 12345678909
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// example:
-	//
-	// 444-000000000
-	TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
-	// example:
-	//
-	// 123
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	PassengerType    *string `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
+	Phone            *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	TicketNo         *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	UserId           *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s FlightOrderDetailInfoResponseBodyModuleTravelerInfoList) String() string {

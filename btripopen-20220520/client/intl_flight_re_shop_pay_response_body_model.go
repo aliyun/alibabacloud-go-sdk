@@ -119,14 +119,8 @@ func (s *IntlFlightReShopPayResponseBody) Validate() error {
 }
 
 type IntlFlightReShopPayResponseBodyModule struct {
-	// example:
-	//
-	// 100000
 	ActualPayPrice *int64 `json:"actual_pay_price,omitempty" xml:"actual_pay_price,omitempty"`
-	// example:
-	//
-	// 0
-	PayStatus *int32 `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	PayStatus      *int32 `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
 }
 
 func (s IntlFlightReShopPayResponseBodyModule) String() string {

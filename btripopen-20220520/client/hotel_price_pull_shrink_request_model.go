@@ -24,27 +24,12 @@ type iHotelPricePullShrinkRequest interface {
 }
 
 type HotelPricePullShrinkRequest struct {
-	// example:
-	//
-	// 1000
-	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	// example:
-	//
-	// 2022-05-15
-	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
-	// example:
-	//
-	// 2022-05-15
-	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
-	// example:
-	//
-	// 330100
+	BtripUserId    *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	CheckIn        *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	CheckOut       *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
 	CityCode       *int32  `json:"city_code,omitempty" xml:"city_code,omitempty"`
 	HotelIdsShrink *string `json:"hotel_ids,omitempty" xml:"hotel_ids,omitempty"`
-	// example:
-	//
-	// 0
-	PaymentType *int32 `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+	PaymentType    *int32  `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
 }
 
 func (s HotelPricePullShrinkRequest) String() string {

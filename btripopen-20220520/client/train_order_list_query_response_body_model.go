@@ -26,25 +26,13 @@ type iTrainOrderListQueryResponseBody interface {
 }
 
 type TrainOrderListQueryResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code     *string                                  `json:"code,omitempty" xml:"code,omitempty"`
-	Message  *string                                  `json:"message,omitempty" xml:"message,omitempty"`
-	Module   []*TrainOrderListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	PageInfo *TrainOrderListQueryResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// F93C3EBD-17BE-5FE6-BF06-96A6F1AC8DC5
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
+	Module    []*TrainOrderListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	PageInfo  *TrainOrderListQueryResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TrainOrderListQueryResponseBody) String() string {
@@ -137,93 +125,45 @@ func (s *TrainOrderListQueryResponseBody) Validate() error {
 }
 
 type TrainOrderListQueryResponseBodyModule struct {
-	// example:
-	//
-	// 11367
-	ApplyId       *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ArrCity       *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityAdCode *string `json:"arr_city_ad_code,omitempty" xml:"arr_city_ad_code,omitempty"`
-	ArrStation    *string `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	ArrTime       *string                                          `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	BtripTitle    *string                                          `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
-	ContactName   *string                                          `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
-	CorpId        *string                                          `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CorpName      *string                                          `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	CostCenter    *TrainOrderListQueryResponseBodyModuleCostCenter `json:"cost_center,omitempty" xml:"cost_center,omitempty" type:"Struct"`
-	DepCity       *string                                          `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	DepCityAdCode *string                                          `json:"dep_city_ad_code,omitempty" xml:"dep_city_ad_code,omitempty"`
-	DepStation    *string                                          `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	DepTime    *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	DepartId   *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	GmtModified *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
-	// example:
-	//
-	// 1478652
-	Id            *int64                                                `json:"id,omitempty" xml:"id,omitempty"`
-	Invoice       *TrainOrderListQueryResponseBodyModuleInvoice         `json:"invoice,omitempty" xml:"invoice,omitempty" type:"Struct"`
-	PriceInfoList []*TrainOrderListQueryResponseBodyModulePriceInfoList `json:"price_info_list,omitempty" xml:"price_info_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// PCXIDF
-	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	// example:
-	//
-	// 12425
-	ProjectId    *int64  `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	RiderName    *string `json:"rider_name,omitempty" xml:"rider_name,omitempty"`
-	// example:
-	//
-	// 100
-	RunTime  *string `json:"run_time,omitempty" xml:"run_time,omitempty"`
-	SeatType *string `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
-	// example:
-	//
-	// 0
-	Status              *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	ThirdPartBusinessId *string `json:"thirdPart_business_id,omitempty" xml:"thirdPart_business_id,omitempty"`
-	// example:
-	//
-	// CS-SKPFDS
-	ThirdPartProjectId *string `json:"third_part_project_id,omitempty" xml:"third_part_project_id,omitempty"`
-	// example:
-	//
-	// CSIODJUSN
-	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	// example:
-	//
-	// CS-IT89D
-	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
-	// example:
-	//
-	// 1
-	TicketCount *int32 `json:"ticket_count,omitempty" xml:"ticket_count,omitempty"`
-	// example:
-	//
-	// CS-663
-	TicketNo12306 *string `json:"ticket_no12306,omitempty" xml:"ticket_no12306,omitempty"`
-	// example:
-	//
-	// CS-663
-	TrainNumber       *string                                                   `json:"train_number,omitempty" xml:"train_number,omitempty"`
-	TrainType         *string                                                   `json:"train_type,omitempty" xml:"train_type,omitempty"`
-	UserAffiliateList []*TrainOrderListQueryResponseBodyModuleUserAffiliateList `json:"user_affiliate_list,omitempty" xml:"user_affiliate_list,omitempty" type:"Repeated"`
-	UserId            *string                                                   `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName          *string                                                   `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	ApplyId              *int64                                                    `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ArrCity              *string                                                   `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityAdCode        *string                                                   `json:"arr_city_ad_code,omitempty" xml:"arr_city_ad_code,omitempty"`
+	ArrStation           *string                                                   `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
+	ArrTime              *string                                                   `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	BtripTitle           *string                                                   `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	ContactName          *string                                                   `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	CorpId               *string                                                   `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName             *string                                                   `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	CostCenter           *TrainOrderListQueryResponseBodyModuleCostCenter          `json:"cost_center,omitempty" xml:"cost_center,omitempty" type:"Struct"`
+	DepCity              *string                                                   `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityAdCode        *string                                                   `json:"dep_city_ad_code,omitempty" xml:"dep_city_ad_code,omitempty"`
+	DepStation           *string                                                   `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
+	DepTime              *string                                                   `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	DepartId             *string                                                   `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName           *string                                                   `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	GmtCreate            *string                                                   `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModified          *string                                                   `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	Id                   *int64                                                    `json:"id,omitempty" xml:"id,omitempty"`
+	Invoice              *TrainOrderListQueryResponseBodyModuleInvoice             `json:"invoice,omitempty" xml:"invoice,omitempty" type:"Struct"`
+	PriceInfoList        []*TrainOrderListQueryResponseBodyModulePriceInfoList     `json:"price_info_list,omitempty" xml:"price_info_list,omitempty" type:"Repeated"`
+	ProjectCode          *string                                                   `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectId            *int64                                                    `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	ProjectTitle         *string                                                   `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	RiderName            *string                                                   `json:"rider_name,omitempty" xml:"rider_name,omitempty"`
+	RunTime              *string                                                   `json:"run_time,omitempty" xml:"run_time,omitempty"`
+	SeatType             *string                                                   `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
+	Status               *int32                                                    `json:"status,omitempty" xml:"status,omitempty"`
+	ThirdPartBusinessId  *string                                                   `json:"thirdPart_business_id,omitempty" xml:"thirdPart_business_id,omitempty"`
+	ThirdPartProjectId   *string                                                   `json:"third_part_project_id,omitempty" xml:"third_part_project_id,omitempty"`
+	ThirdpartApplyId     *string                                                   `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartItineraryId *string                                                   `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	TicketCount          *int32                                                    `json:"ticket_count,omitempty" xml:"ticket_count,omitempty"`
+	TicketNo12306        *string                                                   `json:"ticket_no12306,omitempty" xml:"ticket_no12306,omitempty"`
+	TrainNumber          *string                                                   `json:"train_number,omitempty" xml:"train_number,omitempty"`
+	TrainType            *string                                                   `json:"train_type,omitempty" xml:"train_type,omitempty"`
+	UserAffiliateList    []*TrainOrderListQueryResponseBodyModuleUserAffiliateList `json:"user_affiliate_list,omitempty" xml:"user_affiliate_list,omitempty" type:"Repeated"`
+	UserId               *string                                                   `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName             *string                                                   `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s TrainOrderListQueryResponseBodyModule) String() string {
@@ -619,14 +559,8 @@ func (s *TrainOrderListQueryResponseBodyModule) Validate() error {
 
 type TrainOrderListQueryResponseBodyModuleCostCenter struct {
 	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	// example:
-	//
-	// 11643
-	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// CS112234
+	Id     *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
 	Number *string `json:"number,omitempty" xml:"number,omitempty"`
 }
 
@@ -679,9 +613,6 @@ func (s *TrainOrderListQueryResponseBodyModuleCostCenter) Validate() error {
 }
 
 type TrainOrderListQueryResponseBodyModuleInvoice struct {
-	// example:
-	//
-	// 11324
 	Id    *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
@@ -717,54 +648,21 @@ func (s *TrainOrderListQueryResponseBodyModuleInvoice) Validate() error {
 }
 
 type TrainOrderListQueryResponseBodyModulePriceInfoList struct {
-	// example:
-	//
-	// 1
-	CategoryCode *int32 `json:"category_code,omitempty" xml:"category_code,omitempty"`
-	// example:
-	//
-	// 1
-	CategoryType *int32  `json:"category_type,omitempty" xml:"category_type,omitempty"`
-	EndCity      *string `json:"end_city,omitempty" xml:"end_city,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	EndTime *string `json:"end_time,omitempty" xml:"end_time,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	// example:
-	//
-	// CS-663
-	OriginalTrainNo *string `json:"original_train_no,omitempty" xml:"original_train_no,omitempty"`
-	PassengerName   *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	// example:
-	//
-	// 1
-	PayType *int32 `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
-	// example:
-	//
-	// 100
-	Price     *float64 `json:"price,omitempty" xml:"price,omitempty"`
-	SeatType  *string  `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
-	StartCity *string  `json:"start_city,omitempty" xml:"start_city,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	StartTime *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
-	// example:
-	//
-	// cs1165734212
-	TradeId *string `json:"trade_id,omitempty" xml:"trade_id,omitempty"`
-	// example:
-	//
-	// Z1521
-	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	CategoryCode    *int32   `json:"category_code,omitempty" xml:"category_code,omitempty"`
+	CategoryType    *int32   `json:"category_type,omitempty" xml:"category_type,omitempty"`
+	EndCity         *string  `json:"end_city,omitempty" xml:"end_city,omitempty"`
+	EndTime         *string  `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	GmtCreate       *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	OriginalTrainNo *string  `json:"original_train_no,omitempty" xml:"original_train_no,omitempty"`
+	PassengerName   *string  `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	PayType         *int32   `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	Price           *float64 `json:"price,omitempty" xml:"price,omitempty"`
+	SeatType        *string  `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
+	StartCity       *string  `json:"start_city,omitempty" xml:"start_city,omitempty"`
+	StartTime       *string  `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	TradeId         *string  `json:"trade_id,omitempty" xml:"trade_id,omitempty"`
+	TrainNo         *string  `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	Type            *int32   `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s TrainOrderListQueryResponseBodyModulePriceInfoList) String() string {
@@ -950,17 +848,8 @@ func (s *TrainOrderListQueryResponseBodyModuleUserAffiliateList) Validate() erro
 }
 
 type TrainOrderListQueryResponseBodyPageInfo struct {
-	// example:
-	//
-	// 1
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// example:
-	//
-	// 50
-	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// example:
-	//
-	// 100
+	Page        *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize    *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
 	TotalNumber *int32 `json:"total_number,omitempty" xml:"total_number,omitempty"`
 }
 

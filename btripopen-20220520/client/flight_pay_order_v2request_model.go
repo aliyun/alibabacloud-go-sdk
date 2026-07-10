@@ -22,26 +22,11 @@ type iFlightPayOrderV2Request interface {
 }
 
 type FlightPayOrderV2Request struct {
-	// example:
-	//
-	// cheshiapi
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	// example:
-	//
-	// cheshiapi002kwl
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 1017002195798359400
-	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	// example:
-	//
-	// 5100
-	TotalPrice *int64 `json:"total_price,omitempty" xml:"total_price,omitempty"`
-	// example:
-	//
-	// 10
-	TotalServiceFeePrice *int64 `json:"total_service_fee_price,omitempty" xml:"total_service_fee_price,omitempty"`
+	IsvName              *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OrderId              *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId           *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	TotalPrice           *int64  `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	TotalServiceFeePrice *int64  `json:"total_service_fee_price,omitempty" xml:"total_service_fee_price,omitempty"`
 }
 
 func (s FlightPayOrderV2Request) String() string {

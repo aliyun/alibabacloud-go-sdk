@@ -32,36 +32,19 @@ type iTrainOrderCreateShrinkRequest interface {
 }
 
 type TrainOrderCreateShrinkRequest struct {
-	// example:
-	//
-	// 0
 	AcceptNoSeat *string `json:"accept_no_seat,omitempty" xml:"accept_no_seat,omitempty"`
 	// This parameter is required.
 	BookTrainInfosShrink *string `json:"book_train_infos,omitempty" xml:"book_train_infos,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12344321
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	// This parameter is required.
 	BtripUserName      *string `json:"btrip_user_name,omitempty" xml:"btrip_user_name,omitempty"`
 	BusinessInfoShrink *string `json:"business_info,omitempty" xml:"business_info,omitempty"`
 	// This parameter is required.
 	ContactInfoShrink *string `json:"contact_info,omitempty" xml:"contact_info,omitempty"`
-	// example:
-	//
-	// 0
-	ForceMatch *string `json:"force_match,omitempty" xml:"force_match,omitempty"`
-	// example:
-	//
-	// false
-	IsPayNow *bool `json:"is_pay_now,omitempty" xml:"is_pay_now,omitempty"`
+	ForceMatch        *string `json:"force_match,omitempty" xml:"force_match,omitempty"`
+	IsPayNow          *bool   `json:"is_pay_now,omitempty" xml:"is_pay_now,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	// This parameter is required.
 	PassengerOpenInfoSShrink *string `json:"passenger_open_info_s,omitempty" xml:"passenger_open_info_s,omitempty"`

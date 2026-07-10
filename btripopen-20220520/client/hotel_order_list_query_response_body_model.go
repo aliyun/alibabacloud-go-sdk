@@ -26,25 +26,13 @@ type iHotelOrderListQueryResponseBody interface {
 }
 
 type HotelOrderListQueryResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code     *string                                  `json:"code,omitempty" xml:"code,omitempty"`
-	Message  *string                                  `json:"message,omitempty" xml:"message,omitempty"`
-	Module   []*HotelOrderListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	PageInfo *HotelOrderListQueryResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
+	Module    []*HotelOrderListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	PageInfo  *HotelOrderListQueryResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelOrderListQueryResponseBody) String() string {
@@ -137,96 +125,48 @@ func (s *HotelOrderListQueryResponseBody) Validate() error {
 }
 
 type HotelOrderListQueryResponseBodyModule struct {
-	// example:
-	//
-	// 22678
-	ApplyId    *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	BtripTitle *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
-	Category   *int32  `json:"category,omitempty" xml:"category,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	CheckOut    *string                                          `json:"check_out,omitempty" xml:"check_out,omitempty"`
-	City        *string                                          `json:"city,omitempty" xml:"city,omitempty"`
-	CityAdCode  *string                                          `json:"city_ad_code,omitempty" xml:"city_ad_code,omitempty"`
-	ContactName *string                                          `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
-	CorpId      *string                                          `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CorpName    *string                                          `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	CostCenter  *HotelOrderListQueryResponseBodyModuleCostCenter `json:"cost_center,omitempty" xml:"cost_center,omitempty" type:"Struct"`
-	CountryCode *string                                          `json:"country_code,omitempty" xml:"country_code,omitempty"`
-	CountryName *string                                          `json:"country_name,omitempty" xml:"country_name,omitempty"`
-	DepartId    *string                                          `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName  *string                                          `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	ExtendField *string                                          `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	GmtModified *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
-	Guest       *string `json:"guest,omitempty" xml:"guest,omitempty"`
-	HotelName   *string `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
-	// example:
-	//
-	// 11
-	HotelSupportVatInvoiceType *int32 `json:"hotel_support_vat_invoice_type,omitempty" xml:"hotel_support_vat_invoice_type,omitempty"`
-	// example:
-	//
-	// 13764
-	Id      *int64                                        `json:"id,omitempty" xml:"id,omitempty"`
-	Invoice *HotelOrderListQueryResponseBodyModuleInvoice `json:"invoice,omitempty" xml:"invoice,omitempty" type:"Struct"`
-	// example:
-	//
-	// 4
-	Night *int32 `json:"night,omitempty" xml:"night,omitempty"`
-	// example:
-	//
-	// 1
-	OrderStatus     *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
-	OrderStatusDesc *string `json:"order_status_desc,omitempty" xml:"order_status_desc,omitempty"`
-	// example:
-	//
-	// 1
-	OrderType     *int32                                                `json:"order_type,omitempty" xml:"order_type,omitempty"`
-	OrderTypeDesc *string                                               `json:"order_type_desc,omitempty" xml:"order_type_desc,omitempty"`
-	PriceInfoList []*HotelOrderListQueryResponseBodyModulePriceInfoList `json:"price_info_list,omitempty" xml:"price_info_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// CS-PROJECTCODE
-	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	// example:
-	//
-	// 13631
-	ProjectId    *int64  `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	// example:
-	//
-	// 4
-	RoomNum  *int32  `json:"room_num,omitempty" xml:"room_num,omitempty"`
-	RoomType *string `json:"room_type,omitempty" xml:"room_type,omitempty"`
-	Supplier *string `json:"supplier,omitempty" xml:"supplier,omitempty"`
-	// example:
-	//
-	// CS-THIRDAPPLY
-	ThirdpartApplyId    *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	ThirdpartBusinessId *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
-	// example:
-	//
-	// CS-ITINEARY
-	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
-	// example:
-	//
-	// CS-THIRDPROJECT
-	ThirdpartProjectId *string                                                   `json:"thirdpart_project_id,omitempty" xml:"thirdpart_project_id,omitempty"`
-	UserAffiliateList  []*HotelOrderListQueryResponseBodyModuleUserAffiliateList `json:"user_affiliate_list,omitempty" xml:"user_affiliate_list,omitempty" type:"Repeated"`
-	UserId             *string                                                   `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName           *string                                                   `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	ApplyId                    *int64                                                    `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BtripTitle                 *string                                                   `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	Category                   *int32                                                    `json:"category,omitempty" xml:"category,omitempty"`
+	CheckIn                    *string                                                   `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	CheckOut                   *string                                                   `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	City                       *string                                                   `json:"city,omitempty" xml:"city,omitempty"`
+	CityAdCode                 *string                                                   `json:"city_ad_code,omitempty" xml:"city_ad_code,omitempty"`
+	ContactName                *string                                                   `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	CorpId                     *string                                                   `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName                   *string                                                   `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	CostCenter                 *HotelOrderListQueryResponseBodyModuleCostCenter          `json:"cost_center,omitempty" xml:"cost_center,omitempty" type:"Struct"`
+	CountryCode                *string                                                   `json:"country_code,omitempty" xml:"country_code,omitempty"`
+	CountryName                *string                                                   `json:"country_name,omitempty" xml:"country_name,omitempty"`
+	DepartId                   *string                                                   `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName                 *string                                                   `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExtendField                *string                                                   `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
+	GmtCreate                  *string                                                   `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModified                *string                                                   `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	Guest                      *string                                                   `json:"guest,omitempty" xml:"guest,omitempty"`
+	HotelName                  *string                                                   `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
+	HotelSupportVatInvoiceType *int32                                                    `json:"hotel_support_vat_invoice_type,omitempty" xml:"hotel_support_vat_invoice_type,omitempty"`
+	Id                         *int64                                                    `json:"id,omitempty" xml:"id,omitempty"`
+	Invoice                    *HotelOrderListQueryResponseBodyModuleInvoice             `json:"invoice,omitempty" xml:"invoice,omitempty" type:"Struct"`
+	Night                      *int32                                                    `json:"night,omitempty" xml:"night,omitempty"`
+	OrderStatus                *int32                                                    `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	OrderStatusDesc            *string                                                   `json:"order_status_desc,omitempty" xml:"order_status_desc,omitempty"`
+	OrderType                  *int32                                                    `json:"order_type,omitempty" xml:"order_type,omitempty"`
+	OrderTypeDesc              *string                                                   `json:"order_type_desc,omitempty" xml:"order_type_desc,omitempty"`
+	PriceInfoList              []*HotelOrderListQueryResponseBodyModulePriceInfoList     `json:"price_info_list,omitempty" xml:"price_info_list,omitempty" type:"Repeated"`
+	ProjectCode                *string                                                   `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectId                  *int64                                                    `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	ProjectTitle               *string                                                   `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	RoomNum                    *int32                                                    `json:"room_num,omitempty" xml:"room_num,omitempty"`
+	RoomType                   *string                                                   `json:"room_type,omitempty" xml:"room_type,omitempty"`
+	Supplier                   *string                                                   `json:"supplier,omitempty" xml:"supplier,omitempty"`
+	ThirdpartApplyId           *string                                                   `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartBusinessId        *string                                                   `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	ThirdpartItineraryId       *string                                                   `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	ThirdpartProjectId         *string                                                   `json:"thirdpart_project_id,omitempty" xml:"thirdpart_project_id,omitempty"`
+	UserAffiliateList          []*HotelOrderListQueryResponseBodyModuleUserAffiliateList `json:"user_affiliate_list,omitempty" xml:"user_affiliate_list,omitempty" type:"Repeated"`
+	UserId                     *string                                                   `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName                   *string                                                   `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s HotelOrderListQueryResponseBodyModule) String() string {
@@ -649,14 +589,8 @@ func (s *HotelOrderListQueryResponseBodyModule) Validate() error {
 
 type HotelOrderListQueryResponseBodyModuleCostCenter struct {
 	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	// example:
-	//
-	// 14668
-	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// CS-PNUY
+	Id     *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
 	Number *string `json:"number,omitempty" xml:"number,omitempty"`
 }
 
@@ -709,13 +643,7 @@ func (s *HotelOrderListQueryResponseBodyModuleCostCenter) Validate() error {
 }
 
 type HotelOrderListQueryResponseBodyModuleInvoice struct {
-	// example:
-	//
-	// 133568
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// 1
+	Id          *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	InvoiceType *int32  `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
 	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
 }
@@ -760,36 +688,15 @@ func (s *HotelOrderListQueryResponseBodyModuleInvoice) Validate() error {
 }
 
 type HotelOrderListQueryResponseBodyModulePriceInfoList struct {
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// example:
-	//
-	// 1
-	CategoryCode *int32 `json:"category_code,omitempty" xml:"category_code,omitempty"`
-	// example:
-	//
-	// 1
-	CategoryType *int32 `json:"category_type,omitempty" xml:"category_type,omitempty"`
-	// example:
-	//
-	// 2022-05-15T22:27Z
-	GmtCreate     *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	// example:
-	//
-	// 1
-	PayType *int32 `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
-	// example:
-	//
-	// 100
-	Price *float64 `json:"price,omitempty" xml:"price,omitempty"`
-	// example:
-	//
-	// cs1546728
-	TradeId *string `json:"trade_id,omitempty" xml:"trade_id,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Category      *string  `json:"category,omitempty" xml:"category,omitempty"`
+	CategoryCode  *int32   `json:"category_code,omitempty" xml:"category_code,omitempty"`
+	CategoryType  *int32   `json:"category_type,omitempty" xml:"category_type,omitempty"`
+	GmtCreate     *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	PassengerName *string  `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	PayType       *int32   `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	Price         *float64 `json:"price,omitempty" xml:"price,omitempty"`
+	TradeId       *string  `json:"trade_id,omitempty" xml:"trade_id,omitempty"`
+	Type          *int32   `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s HotelOrderListQueryResponseBodyModulePriceInfoList) String() string {
@@ -921,17 +828,8 @@ func (s *HotelOrderListQueryResponseBodyModuleUserAffiliateList) Validate() erro
 }
 
 type HotelOrderListQueryResponseBodyPageInfo struct {
-	// example:
-	//
-	// 1
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// example:
-	//
-	// 50
+	Page        *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize    *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
 	TotalNumber *int32 `json:"total_number,omitempty" xml:"total_number,omitempty"`
 }
 

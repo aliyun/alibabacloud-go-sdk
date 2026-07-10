@@ -92,111 +92,50 @@ type iApplyAddRequest interface {
 }
 
 type ApplyAddRequest struct {
-	// example:
-	//
-	// 4000
-	Budget *int64 `json:"budget,omitempty" xml:"budget,omitempty"`
-	// example:
-	//
-	// 1
-	BudgetMerge     *int32                          `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CarRule         *ApplyAddRequestCarRule         `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
-	CorpName        *string                         `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DefaultStandard *ApplyAddRequestDefaultStandard `json:"default_standard,omitempty" xml:"default_standard,omitempty" type:"Struct"`
-	// example:
-	//
-	// departId01
-	DepartId   *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	// 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
-	//
-	// example:
-	//
-	// {"cost_center":"成本中心"}
-	ExtendField              *string                                  `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
-	ExternalTravelerList     []*ApplyAddRequestExternalTravelerList   `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
-	ExternalTravelerStandard *ApplyAddRequestExternalTravelerStandard `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty" type:"Struct"`
-	// example:
-	//
-	// 1000
-	FlightBudget *int64 `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
-	// example:
-	//
-	// 1000
-	HotelBudget *int64                     `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
-	HotelShare  *ApplyAddRequestHotelShare `json:"hotel_share,omitempty" xml:"hotel_share,omitempty" type:"Struct"`
-	// example:
-	//
-	// Y
-	InternationalFlightCabins *string                         `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
-	IntlFlightBudget          *int64                          `json:"intl_flight_budget,omitempty" xml:"intl_flight_budget,omitempty"`
-	IntlHotelBudget           *int64                          `json:"intl_hotel_budget,omitempty" xml:"intl_hotel_budget,omitempty"`
-	ItineraryList             []*ApplyAddRequestItineraryList `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 0
-	ItineraryRule    *int32                             `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
-	ItinerarySetList []*ApplyAddRequestItinerarySetList `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	LimitTraveler         *int32  `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
-	MealBudget            *int64  `json:"meal_budget,omitempty" xml:"meal_budget,omitempty"`
-	PaymentDepartmentId   *string `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
-	PaymentDepartmentName *string `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
-	// example:
-	//
-	// 0
-	Status    *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	Budget                    *int64                                   `json:"budget,omitempty" xml:"budget,omitempty"`
+	BudgetMerge               *int32                                   `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CarRule                   *ApplyAddRequestCarRule                  `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
+	CorpName                  *string                                  `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DefaultStandard           *ApplyAddRequestDefaultStandard          `json:"default_standard,omitempty" xml:"default_standard,omitempty" type:"Struct"`
+	DepartId                  *string                                  `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName                *string                                  `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExtendField               *string                                  `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
+	ExternalTravelerList      []*ApplyAddRequestExternalTravelerList   `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
+	ExternalTravelerStandard  *ApplyAddRequestExternalTravelerStandard `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty" type:"Struct"`
+	FlightBudget              *int64                                   `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
+	HotelBudget               *int64                                   `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
+	HotelShare                *ApplyAddRequestHotelShare               `json:"hotel_share,omitempty" xml:"hotel_share,omitempty" type:"Struct"`
+	InternationalFlightCabins *string                                  `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
+	IntlFlightBudget          *int64                                   `json:"intl_flight_budget,omitempty" xml:"intl_flight_budget,omitempty"`
+	IntlHotelBudget           *int64                                   `json:"intl_hotel_budget,omitempty" xml:"intl_hotel_budget,omitempty"`
+	ItineraryList             []*ApplyAddRequestItineraryList          `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	ItineraryRule             *int32                                   `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
+	ItinerarySetList          []*ApplyAddRequestItinerarySetList       `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
+	LimitTraveler             *int32                                   `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
+	MealBudget                *int64                                   `json:"meal_budget,omitempty" xml:"meal_budget,omitempty"`
+	PaymentDepartmentId       *string                                  `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	PaymentDepartmentName     *string                                  `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
+	Status                    *int32                                   `json:"status,omitempty" xml:"status,omitempty"`
+	SubCorpId                 *string                                  `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12345
-	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	// example:
-	//
-	// 00714131
-	ThirdpartBusinessId *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
-	ThirdpartDepartId   *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
-	// example:
-	//
-	// 1
-	TogetherBookRule *int32 `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
-	// example:
-	//
-	// 1000
-	TrainBudget      *int64                             `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
-	TravelerList     []*ApplyAddRequestTravelerList     `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
-	TravelerStandard []*ApplyAddRequestTravelerStandard `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
+	ThirdpartApplyId    *string                            `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartBusinessId *string                            `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	ThirdpartDepartId   *string                            `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
+	TogetherBookRule    *int32                             `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
+	TrainBudget         *int64                             `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
+	TravelerList        []*ApplyAddRequestTravelerList     `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
+	TravelerStandard    []*ApplyAddRequestTravelerStandard `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
 	// This parameter is required.
 	TripCause *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
-	// example:
-	//
-	// 1
-	TripDay *int32 `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	TripDay   *int32  `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
 	// This parameter is required.
 	TripTitle *string `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
-	// example:
-	//
-	// 1
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
-	// example:
-	//
-	// union001
-	UnionNo *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	Type      *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	UnionNo   *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// thridpart12138
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
-	// example:
-	//
-	// 1000
-	VehicleBudget *int64 `json:"vehicle_budget,omitempty" xml:"vehicle_budget,omitempty"`
+	UserId        *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName      *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	VehicleBudget *int64  `json:"vehicle_budget,omitempty" xml:"vehicle_budget,omitempty"`
 }
 
 func (s ApplyAddRequest) String() string {
@@ -1093,21 +1032,9 @@ func (s *ApplyAddRequestExternalTravelerList) Validate() error {
 }
 
 type ApplyAddRequestExternalTravelerStandard struct {
-	// example:
-	//
-	// 1
-	BusinessDiscount *int32 `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	// example:
-	//
-	// 1
-	EconomyDiscount *int32 `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	// example:
-	//
-	// 1
-	FirstDiscount *int32 `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	// example:
-	//
-	// F
+	BusinessDiscount   *int32                                                   `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount    *int32                                                   `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount      *int32                                                   `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
 	FlightCabins       *string                                                  `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
 	FlightIntlRuleCode *int64                                                   `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
 	FlightRuleCode     *int64                                                   `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
@@ -1119,19 +1046,10 @@ type ApplyAddRequestExternalTravelerStandard struct {
 	//
 	// F
 	InternationalFlightCabins *string `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
-	// example:
-	//
-	// 1
-	PremiumEconomyDiscount *int32 `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
-	// example:
-	//
-	// 0
-	ReserveType   *int32 `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainRuleCode *int64 `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
-	// example:
-	//
-	// 0
-	TrainSeats *string `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	PremiumEconomyDiscount    *int32  `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType               *int32  `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainRuleCode             *int64  `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
+	TrainSeats                *string `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 }
 
 func (s ApplyAddRequestExternalTravelerStandard) String() string {
@@ -1300,15 +1218,9 @@ func (s *ApplyAddRequestExternalTravelerStandard) Validate() error {
 }
 
 type ApplyAddRequestExternalTravelerStandardHotelCitys struct {
-	// example:
-	//
-	// 0
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	// example:
-	//
-	// 1009
-	Fee *int64 `json:"fee,omitempty" xml:"fee,omitempty"`
+	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
 }
 
 func (s ApplyAddRequestExternalTravelerStandardHotelCitys) String() string {
@@ -1396,14 +1308,8 @@ func (s *ApplyAddRequestExternalTravelerStandardHotelIntlCitys) Validate() error
 }
 
 type ApplyAddRequestHotelShare struct {
-	// example:
-	//
-	// 70
 	Param *string `json:"param,omitempty" xml:"param,omitempty"`
-	// example:
-	//
-	// 1
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ApplyAddRequestHotelShare) String() string {
@@ -1438,74 +1344,31 @@ func (s *ApplyAddRequestHotelShare) Validate() error {
 
 type ApplyAddRequestItineraryList struct {
 	// This parameter is required.
-	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	// example:
-	//
-	// HGH
+	ArrCity     *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
 	// This parameter is required.
-	ArrDate   *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	// example:
-	//
-	// 12138
-	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	ArrDate      *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	Attribute    *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
+	CostCenterId *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
 	// This parameter is required.
-	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	// example:
-	//
-	// BJS
+	DepCity     *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2017-01-01 00:00:00
-	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	// example:
-	//
-	// 34711
-	InvoiceId *int64 `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	DepDate   *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceId *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
-	ItineraryId             *string                                              `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	ItineraryTravelStandard *ApplyAddRequestItineraryListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
-	// example:
-	//
-	// true
-	NeedHotel *bool `json:"need_hotel,omitempty" xml:"need_hotel,omitempty"`
-	// example:
-	//
-	// true
-	NeedTraffic *bool `json:"need_traffic,omitempty" xml:"need_traffic,omitempty"`
-	// example:
-	//
-	// projecttow
-	ProjectCode               *string   `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle              *string   `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ProvinceTravelCityAdcodes []*string `json:"province_travel_city_adcodes,omitempty" xml:"province_travel_city_adcodes,omitempty" type:"Repeated"`
-	// example:
-	//
-	// thirdpart34711
-	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
-	// example:
-	//
-	// thridpart12138
-	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	ItineraryId               *string                                              `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ItineraryTravelStandard   *ApplyAddRequestItineraryListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
+	NeedHotel                 *bool                                                `json:"need_hotel,omitempty" xml:"need_hotel,omitempty"`
+	NeedTraffic               *bool                                                `json:"need_traffic,omitempty" xml:"need_traffic,omitempty"`
+	ProjectCode               *string                                              `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle              *string                                              `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ProvinceTravelCityAdcodes []*string                                            `json:"province_travel_city_adcodes,omitempty" xml:"province_travel_city_adcodes,omitempty" type:"Repeated"`
+	ThirdPartInvoiceId        *string                                              `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	ThirdpartCostCenterId     *string                                              `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	TrafficType *int32 `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	TripWay *int32 `json:"trip_way,omitempty" xml:"trip_way,omitempty"`
 }
 
@@ -1740,53 +1603,26 @@ type ApplyAddRequestItinerarySetList struct {
 	ArrDate   *string `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
 	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BJS,HGH
 	CityCodeSet *string `json:"city_code_set,omitempty" xml:"city_code_set,omitempty"`
 	// This parameter is required.
-	CitySet *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
-	// example:
-	//
-	// 12345
-	CostCenterId *int64 `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	CitySet      *string `json:"city_set,omitempty" xml:"city_set,omitempty"`
+	CostCenterId *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2017-01-01 00:00:00
-	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
-	// example:
-	//
-	// 12345
-	InvoiceId *int64 `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	DepDate   *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	InvoiceId *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123
-	ItineraryId             *string                                                 `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	ItineraryTravelStandard *ApplyAddRequestItinerarySetListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
-	// example:
-	//
-	// projecttow
-	ProjectCode               *string   `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle              *string   `json:"project_title,omitempty" xml:"project_title,omitempty"`
-	ProvinceTravelCityAdcodes []*string `json:"province_travel_city_adcodes,omitempty" xml:"province_travel_city_adcodes,omitempty" type:"Repeated"`
-	// example:
-	//
-	// thridpart12138
-	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
-	// example:
-	//
-	// thridpart12138
-	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
+	ItineraryId               *string                                                 `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	ItineraryTravelStandard   *ApplyAddRequestItinerarySetListItineraryTravelStandard `json:"itinerary_travel_standard,omitempty" xml:"itinerary_travel_standard,omitempty" type:"Struct"`
+	ProjectCode               *string                                                 `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle              *string                                                 `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ProvinceTravelCityAdcodes []*string                                               `json:"province_travel_city_adcodes,omitempty" xml:"province_travel_city_adcodes,omitempty" type:"Repeated"`
+	ThirdPartInvoiceId        *string                                                 `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	ThirdpartCostCenterId     *string                                                 `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	TrafficType *int32 `json:"traffic_type,omitempty" xml:"traffic_type,omitempty"`
 }
 
@@ -1978,11 +1814,8 @@ type ApplyAddRequestTravelerList struct {
 	ThirdPartInvoiceId    *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
 	ThirdpartCostCenterId *string `json:"thirdpart_cost_center_id,omitempty" xml:"thirdpart_cost_center_id,omitempty"`
 	ThirdpartDepartId     *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
-	// example:
-	//
-	// wu51531
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	UserId                *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName              *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s ApplyAddRequestTravelerList) String() string {
@@ -2106,22 +1939,11 @@ func (s *ApplyAddRequestTravelerList) Validate() error {
 }
 
 type ApplyAddRequestTravelerStandard struct {
-	// example:
-	//
-	// 1
-	BusinessDiscount *int32                                       `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	CarCitySet       []*ApplyAddRequestTravelerStandardCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	EconomyDiscount *int32 `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	// example:
-	//
-	// 1
-	FirstDiscount *int32 `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	// example:
-	//
-	// Y
+	BusinessDiscount   *int32                                           `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	CarCitySet         []*ApplyAddRequestTravelerStandardCarCitySet     `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
+	CarStandard        *ApplyAddRequestTravelerStandardCarStandard      `json:"car_standard,omitempty" xml:"car_standard,omitempty" type:"Struct"`
+	EconomyDiscount    *int32                                           `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount      *int32                                           `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
 	FlightCabins       *string                                          `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
 	FlightIntlRuleCode *int64                                           `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
 	FlightRuleCode     *int64                                           `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
@@ -2133,23 +1955,11 @@ type ApplyAddRequestTravelerStandard struct {
 	//
 	// F
 	InternationalFlightCabins *string `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
-	// example:
-	//
-	// 1
-	PremiumEconomyDiscount *int32 `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
-	// example:
-	//
-	// 0
-	ReserveType   *int32 `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainRuleCode *int64 `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
-	// example:
-	//
-	// 1
-	TrainSeats *string `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
-	// example:
-	//
-	// wfffeng
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	PremiumEconomyDiscount    *int32  `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType               *int32  `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainRuleCode             *int64  `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
+	TrainSeats                *string `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	UserId                    *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ApplyAddRequestTravelerStandard) String() string {
@@ -2166,6 +1976,10 @@ func (s *ApplyAddRequestTravelerStandard) GetBusinessDiscount() *int32 {
 
 func (s *ApplyAddRequestTravelerStandard) GetCarCitySet() []*ApplyAddRequestTravelerStandardCarCitySet {
 	return s.CarCitySet
+}
+
+func (s *ApplyAddRequestTravelerStandard) GetCarStandard() *ApplyAddRequestTravelerStandardCarStandard {
+	return s.CarStandard
 }
 
 func (s *ApplyAddRequestTravelerStandard) GetEconomyDiscount() *int32 {
@@ -2235,6 +2049,11 @@ func (s *ApplyAddRequestTravelerStandard) SetBusinessDiscount(v int32) *ApplyAdd
 
 func (s *ApplyAddRequestTravelerStandard) SetCarCitySet(v []*ApplyAddRequestTravelerStandardCarCitySet) *ApplyAddRequestTravelerStandard {
 	s.CarCitySet = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandard) SetCarStandard(v *ApplyAddRequestTravelerStandardCarStandard) *ApplyAddRequestTravelerStandard {
+	s.CarStandard = v
 	return s
 }
 
@@ -2323,6 +2142,11 @@ func (s *ApplyAddRequestTravelerStandard) Validate() error {
 			}
 		}
 	}
+	if s.CarStandard != nil {
+		if err := s.CarStandard.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.HotelCitys != nil {
 		for _, item := range s.HotelCitys {
 			if item != nil {
@@ -2381,16 +2205,725 @@ func (s *ApplyAddRequestTravelerStandardCarCitySet) Validate() error {
 	return dara.Validate(s)
 }
 
+type ApplyAddRequestTravelerStandardCarStandard struct {
+	BookAllowInfo         *ApplyAddRequestTravelerStandardCarStandardBookAllowInfo         `json:"book_allow_info,omitempty" xml:"book_allow_info,omitempty" type:"Struct"`
+	CarHelper             *ApplyAddRequestTravelerStandardCarStandardCarHelper             `json:"car_helper,omitempty" xml:"car_helper,omitempty" type:"Struct"`
+	CarTimeControl        *ApplyAddRequestTravelerStandardCarStandardCarTimeControl        `json:"car_time_control,omitempty" xml:"car_time_control,omitempty" type:"Struct"`
+	CityControlInfo       *ApplyAddRequestTravelerStandardCarStandardCityControlInfo       `json:"city_control_info,omitempty" xml:"city_control_info,omitempty" type:"Struct"`
+	CrossCityInfo         *ApplyAddRequestTravelerStandardCarStandardCrossCityInfo         `json:"cross_city_info,omitempty" xml:"cross_city_info,omitempty" type:"Struct"`
+	ElectronicFenceInfo   *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo   `json:"electronic_fence_info,omitempty" xml:"electronic_fence_info,omitempty" type:"Struct"`
+	LevelCodes            *string                                                          `json:"level_codes,omitempty" xml:"level_codes,omitempty"`
+	ModifyDestinationInfo *ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo `json:"modify_destination_info,omitempty" xml:"modify_destination_info,omitempty" type:"Struct"`
+	TimesTotal            *int32                                                           `json:"times_total,omitempty" xml:"times_total,omitempty"`
+	TimesType             *int32                                                           `json:"times_type,omitempty" xml:"times_type,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandard) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandard) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) GetBookAllowInfo() *ApplyAddRequestTravelerStandardCarStandardBookAllowInfo {
+	return s.BookAllowInfo
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) GetCarHelper() *ApplyAddRequestTravelerStandardCarStandardCarHelper {
+	return s.CarHelper
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) GetCarTimeControl() *ApplyAddRequestTravelerStandardCarStandardCarTimeControl {
+	return s.CarTimeControl
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) GetCityControlInfo() *ApplyAddRequestTravelerStandardCarStandardCityControlInfo {
+	return s.CityControlInfo
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) GetCrossCityInfo() *ApplyAddRequestTravelerStandardCarStandardCrossCityInfo {
+	return s.CrossCityInfo
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) GetElectronicFenceInfo() *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo {
+	return s.ElectronicFenceInfo
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) GetLevelCodes() *string {
+	return s.LevelCodes
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) GetModifyDestinationInfo() *ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo {
+	return s.ModifyDestinationInfo
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) GetTimesTotal() *int32 {
+	return s.TimesTotal
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) GetTimesType() *int32 {
+	return s.TimesType
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) SetBookAllowInfo(v *ApplyAddRequestTravelerStandardCarStandardBookAllowInfo) *ApplyAddRequestTravelerStandardCarStandard {
+	s.BookAllowInfo = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) SetCarHelper(v *ApplyAddRequestTravelerStandardCarStandardCarHelper) *ApplyAddRequestTravelerStandardCarStandard {
+	s.CarHelper = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) SetCarTimeControl(v *ApplyAddRequestTravelerStandardCarStandardCarTimeControl) *ApplyAddRequestTravelerStandardCarStandard {
+	s.CarTimeControl = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) SetCityControlInfo(v *ApplyAddRequestTravelerStandardCarStandardCityControlInfo) *ApplyAddRequestTravelerStandardCarStandard {
+	s.CityControlInfo = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) SetCrossCityInfo(v *ApplyAddRequestTravelerStandardCarStandardCrossCityInfo) *ApplyAddRequestTravelerStandardCarStandard {
+	s.CrossCityInfo = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) SetElectronicFenceInfo(v *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo) *ApplyAddRequestTravelerStandardCarStandard {
+	s.ElectronicFenceInfo = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) SetLevelCodes(v string) *ApplyAddRequestTravelerStandardCarStandard {
+	s.LevelCodes = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) SetModifyDestinationInfo(v *ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo) *ApplyAddRequestTravelerStandardCarStandard {
+	s.ModifyDestinationInfo = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) SetTimesTotal(v int32) *ApplyAddRequestTravelerStandardCarStandard {
+	s.TimesTotal = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) SetTimesType(v int32) *ApplyAddRequestTravelerStandardCarStandard {
+	s.TimesType = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandard) Validate() error {
+	if s.BookAllowInfo != nil {
+		if err := s.BookAllowInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CarHelper != nil {
+		if err := s.CarHelper.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CarTimeControl != nil {
+		if err := s.CarTimeControl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CityControlInfo != nil {
+		if err := s.CityControlInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CrossCityInfo != nil {
+		if err := s.CrossCityInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ElectronicFenceInfo != nil {
+		if err := s.ElectronicFenceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModifyDestinationInfo != nil {
+		if err := s.ModifyDestinationInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ApplyAddRequestTravelerStandardCarStandardBookAllowInfo struct {
+	// This parameter is required.
+	BookAllow *bool `json:"book_allow,omitempty" xml:"book_allow,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardBookAllowInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardBookAllowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardBookAllowInfo) GetBookAllow() *bool {
+	return s.BookAllow
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardBookAllowInfo) SetBookAllow(v bool) *ApplyAddRequestTravelerStandardCarStandardBookAllowInfo {
+	s.BookAllow = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardBookAllowInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type ApplyAddRequestTravelerStandardCarStandardCarHelper struct {
+	// This parameter is required.
+	CarHelperType *string `json:"car_helper_type,omitempty" xml:"car_helper_type,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCarHelper) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCarHelper) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCarHelper) GetCarHelperType() *string {
+	return s.CarHelperType
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCarHelper) SetCarHelperType(v string) *ApplyAddRequestTravelerStandardCarStandardCarHelper {
+	s.CarHelperType = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCarHelper) Validate() error {
+	return dara.Validate(s)
+}
+
+type ApplyAddRequestTravelerStandardCarStandardCarTimeControl struct {
+	// This parameter is required.
+	TimeLimit []*ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit `json:"time_limit,omitempty" xml:"time_limit,omitempty" type:"Repeated"`
+	// This parameter is required.
+	TimeSwitch *bool `json:"time_switch,omitempty" xml:"time_switch,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCarTimeControl) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCarTimeControl) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCarTimeControl) GetTimeLimit() []*ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit {
+	return s.TimeLimit
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCarTimeControl) GetTimeSwitch() *bool {
+	return s.TimeSwitch
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCarTimeControl) SetTimeLimit(v []*ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit) *ApplyAddRequestTravelerStandardCarStandardCarTimeControl {
+	s.TimeLimit = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCarTimeControl) SetTimeSwitch(v bool) *ApplyAddRequestTravelerStandardCarStandardCarTimeControl {
+	s.TimeSwitch = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCarTimeControl) Validate() error {
+	if s.TimeLimit != nil {
+		for _, item := range s.TimeLimit {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit struct {
+	// This parameter is required.
+	EndTime *string `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	// This parameter is required.
+	StartTime *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit) GetEndTime() *string {
+	return s.EndTime
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit) GetStartTime() *string {
+	return s.StartTime
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit) SetEndTime(v string) *ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit) SetStartTime(v string) *ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit) Validate() error {
+	return dara.Validate(s)
+}
+
+type ApplyAddRequestTravelerStandardCarStandardCityControlInfo struct {
+	// This parameter is required.
+	CityControlType *int32 `json:"city_control_type,omitempty" xml:"city_control_type,omitempty"`
+	// This parameter is required.
+	CityInfos []*ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos `json:"city_infos,omitempty" xml:"city_infos,omitempty" type:"Repeated"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCityControlInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCityControlInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCityControlInfo) GetCityControlType() *int32 {
+	return s.CityControlType
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCityControlInfo) GetCityInfos() []*ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos {
+	return s.CityInfos
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCityControlInfo) SetCityControlType(v int32) *ApplyAddRequestTravelerStandardCarStandardCityControlInfo {
+	s.CityControlType = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCityControlInfo) SetCityInfos(v []*ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos) *ApplyAddRequestTravelerStandardCarStandardCityControlInfo {
+	s.CityInfos = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCityControlInfo) Validate() error {
+	if s.CityInfos != nil {
+		for _, item := range s.CityInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos struct {
+	// This parameter is required.
+	Adcode *string `json:"adcode,omitempty" xml:"adcode,omitempty"`
+	// This parameter is required.
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// This parameter is required.
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos) GetAdcode() *string {
+	return s.Adcode
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos) GetCityCode() *string {
+	return s.CityCode
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos) GetCityName() *string {
+	return s.CityName
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos) SetAdcode(v string) *ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos {
+	s.Adcode = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos) SetCityCode(v string) *ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos) SetCityName(v string) *ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos {
+	s.CityName = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos) Validate() error {
+	return dara.Validate(s)
+}
+
+type ApplyAddRequestTravelerStandardCarStandardCrossCityInfo struct {
+	CrossCityList []*ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList `json:"cross_city_list,omitempty" xml:"cross_city_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	CrossCityType *int32 `json:"cross_city_type,omitempty" xml:"cross_city_type,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCrossCityInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCrossCityInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfo) GetCrossCityList() []*ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList {
+	return s.CrossCityList
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfo) GetCrossCityType() *int32 {
+	return s.CrossCityType
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfo) SetCrossCityList(v []*ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) *ApplyAddRequestTravelerStandardCarStandardCrossCityInfo {
+	s.CrossCityList = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfo) SetCrossCityType(v int32) *ApplyAddRequestTravelerStandardCarStandardCrossCityInfo {
+	s.CrossCityType = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfo) Validate() error {
+	if s.CrossCityList != nil {
+		for _, item := range s.CrossCityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList struct {
+	// This parameter is required.
+	FromAdcode *string `json:"from_adcode,omitempty" xml:"from_adcode,omitempty"`
+	// This parameter is required.
+	FromCityCode *string `json:"from_city_code,omitempty" xml:"from_city_code,omitempty"`
+	// This parameter is required.
+	FromCityName *string `json:"from_city_name,omitempty" xml:"from_city_name,omitempty"`
+	// This parameter is required.
+	ToAdcode *string `json:"to_adcode,omitempty" xml:"to_adcode,omitempty"`
+	// This parameter is required.
+	ToCityCode *string `json:"to_city_code,omitempty" xml:"to_city_code,omitempty"`
+	// This parameter is required.
+	ToCityName *string `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) GetFromAdcode() *string {
+	return s.FromAdcode
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) GetFromCityCode() *string {
+	return s.FromCityCode
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) GetFromCityName() *string {
+	return s.FromCityName
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) GetToAdcode() *string {
+	return s.ToAdcode
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) GetToCityCode() *string {
+	return s.ToCityCode
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) GetToCityName() *string {
+	return s.ToCityName
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) SetFromAdcode(v string) *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList {
+	s.FromAdcode = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) SetFromCityCode(v string) *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList {
+	s.FromCityCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) SetFromCityName(v string) *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList {
+	s.FromCityName = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) SetToAdcode(v string) *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList {
+	s.ToAdcode = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) SetToCityCode(v string) *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList {
+	s.ToCityCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) SetToCityName(v string) *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList {
+	s.ToCityName = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList) Validate() error {
+	return dara.Validate(s)
+}
+
+type ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo struct {
+	// This parameter is required.
+	ElectronicFenceLocationsFrom []*ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom `json:"electronic_fence_locations_from,omitempty" xml:"electronic_fence_locations_from,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ElectronicFenceLocationsTo []*ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo `json:"electronic_fence_locations_to,omitempty" xml:"electronic_fence_locations_to,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ElectronicFenceType *int32 `json:"electronic_fence_type,omitempty" xml:"electronic_fence_type,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo) GetElectronicFenceLocationsFrom() []*ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom {
+	return s.ElectronicFenceLocationsFrom
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo) GetElectronicFenceLocationsTo() []*ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo {
+	return s.ElectronicFenceLocationsTo
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo) GetElectronicFenceType() *int32 {
+	return s.ElectronicFenceType
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo) SetElectronicFenceLocationsFrom(v []*ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom) *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo {
+	s.ElectronicFenceLocationsFrom = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo) SetElectronicFenceLocationsTo(v []*ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo) *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo {
+	s.ElectronicFenceLocationsTo = v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo) SetElectronicFenceType(v int32) *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo {
+	s.ElectronicFenceType = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo) Validate() error {
+	if s.ElectronicFenceLocationsFrom != nil {
+		for _, item := range s.ElectronicFenceLocationsFrom {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ElectronicFenceLocationsTo != nil {
+		for _, item := range s.ElectronicFenceLocationsTo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom struct {
+	// This parameter is required.
+	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// This parameter is required.
+	Latitude *string `json:"latitude,omitempty" xml:"latitude,omitempty"`
+	// This parameter is required.
+	Longitude *string `json:"longitude,omitempty" xml:"longitude,omitempty"`
+	// This parameter is required.
+	Radius *int32 `json:"radius,omitempty" xml:"radius,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom) GetAddress() *string {
+	return s.Address
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom) GetLatitude() *string {
+	return s.Latitude
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom) GetLongitude() *string {
+	return s.Longitude
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom) GetRadius() *int32 {
+	return s.Radius
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom) SetAddress(v string) *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom {
+	s.Address = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom) SetLatitude(v string) *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom {
+	s.Latitude = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom) SetLongitude(v string) *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom {
+	s.Longitude = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom) SetRadius(v int32) *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom {
+	s.Radius = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom) Validate() error {
+	return dara.Validate(s)
+}
+
+type ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo struct {
+	// This parameter is required.
+	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// This parameter is required.
+	Latitude *string `json:"latitude,omitempty" xml:"latitude,omitempty"`
+	// This parameter is required.
+	Longitude *string `json:"longitude,omitempty" xml:"longitude,omitempty"`
+	// This parameter is required.
+	Radius *int32 `json:"radius,omitempty" xml:"radius,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo) GetAddress() *string {
+	return s.Address
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo) GetLatitude() *string {
+	return s.Latitude
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo) GetLongitude() *string {
+	return s.Longitude
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo) GetRadius() *int32 {
+	return s.Radius
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo) SetAddress(v string) *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo {
+	s.Address = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo) SetLatitude(v string) *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo {
+	s.Latitude = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo) SetLongitude(v string) *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo {
+	s.Longitude = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo) SetRadius(v int32) *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo {
+	s.Radius = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo) Validate() error {
+	return dara.Validate(s)
+}
+
+type ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo struct {
+	// This parameter is required.
+	ModifyDestination *bool `json:"modify_destination,omitempty" xml:"modify_destination,omitempty"`
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo) GetModifyDestination() *bool {
+	return s.ModifyDestination
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo) SetModifyDestination(v bool) *ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo {
+	s.ModifyDestination = &v
+	return s
+}
+
+func (s *ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo) Validate() error {
+	return dara.Validate(s)
+}
+
 type ApplyAddRequestTravelerStandardHotelCitys struct {
-	// example:
-	//
-	// 0
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	// example:
-	//
-	// 1009
-	Fee *int64 `json:"fee,omitempty" xml:"fee,omitempty"`
+	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
 }
 
 func (s ApplyAddRequestTravelerStandardHotelCitys) String() string {

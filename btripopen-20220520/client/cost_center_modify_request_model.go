@@ -24,26 +24,12 @@ type iCostCenterModifyRequest interface {
 }
 
 type CostCenterModifyRequest struct {
-	// example:
-	//
-	// a@alipay.com
 	AlipayNo *string `json:"alipay_no,omitempty" xml:"alipay_no,omitempty"`
 	Disable  *int64  `json:"disable,omitempty" xml:"disable,omitempty"`
-	// example:
-	//
-	// 12345
-	Number *string `json:"number,omitempty" xml:"number,omitempty"`
+	Number   *string `json:"number,omitempty" xml:"number,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	Scope *int64 `json:"scope,omitempty" xml:"scope,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 340049
 	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
 	// This parameter is required.
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`

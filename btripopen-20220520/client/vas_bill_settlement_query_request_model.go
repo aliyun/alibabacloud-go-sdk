@@ -9,6 +9,8 @@ type iVasBillSettlementQueryRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApplyId(v string) *VasBillSettlementQueryRequest
+	GetApplyId() *string
 	SetBillBatch(v string) *VasBillSettlementQueryRequest
 	GetBillBatch() *string
 	SetBillRecordTimeEnd(v string) *VasBillSettlementQueryRequest
@@ -34,48 +36,20 @@ type iVasBillSettlementQueryRequest interface {
 }
 
 type VasBillSettlementQueryRequest struct {
-	// example:
-	//
-	// 20250501
+	ApplyId             *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	BillBatch           *string `json:"bill_batch,omitempty" xml:"bill_batch,omitempty"`
 	BillRecordTimeEnd   *string `json:"bill_record_time_end,omitempty" xml:"bill_record_time_end,omitempty"`
 	BillRecordTimeStart *string `json:"bill_record_time_start,omitempty" xml:"bill_record_time_start,omitempty"`
-	// example:
-	//
-	// cooperator_alibtrip
-	CooperatorId *string `json:"cooperator_id,omitempty" xml:"cooperator_id,omitempty"`
-	// example:
-	//
-	// 12345
-	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	CooperatorId        *string `json:"cooperator_id,omitempty" xml:"cooperator_id,omitempty"`
+	OrderId             *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 30
-	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// example:
-	//
-	// 2022-07-01
-	PeriodEnd *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
-	// example:
-	//
-	// 2021-10-01
+	PageSize    *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	PeriodEnd   *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
 	PeriodStart *string `json:"period_start,omitempty" xml:"period_start,omitempty"`
-	// example:
-	//
-	// CAESBgoEIgIIABgAIhkKFwMSAAAAMUw4MDAwMDAwMDA3MjdkMzgw
-	ScrollId *string `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
-	// example:
-	//
-	// true
-	ScrollMod *bool `json:"scroll_mod,omitempty" xml:"scroll_mod,omitempty"`
+	ScrollId    *string `json:"scroll_id,omitempty" xml:"scroll_id,omitempty"`
+	ScrollMod   *bool   `json:"scroll_mod,omitempty" xml:"scroll_mod,omitempty"`
 }
 
 func (s VasBillSettlementQueryRequest) String() string {
@@ -84,6 +58,10 @@ func (s VasBillSettlementQueryRequest) String() string {
 
 func (s VasBillSettlementQueryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *VasBillSettlementQueryRequest) GetApplyId() *string {
+	return s.ApplyId
 }
 
 func (s *VasBillSettlementQueryRequest) GetBillBatch() *string {
@@ -128,6 +106,11 @@ func (s *VasBillSettlementQueryRequest) GetScrollId() *string {
 
 func (s *VasBillSettlementQueryRequest) GetScrollMod() *bool {
 	return s.ScrollMod
+}
+
+func (s *VasBillSettlementQueryRequest) SetApplyId(v string) *VasBillSettlementQueryRequest {
+	s.ApplyId = &v
+	return s
 }
 
 func (s *VasBillSettlementQueryRequest) SetBillBatch(v string) *VasBillSettlementQueryRequest {

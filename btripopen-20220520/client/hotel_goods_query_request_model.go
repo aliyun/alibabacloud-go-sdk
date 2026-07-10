@@ -36,62 +36,22 @@ type iHotelGoodsQueryRequest interface {
 }
 
 type HotelGoodsQueryRequest struct {
-	// example:
-	//
-	// 1
-	AdultNum *string `json:"adult_num,omitempty" xml:"adult_num,omitempty"`
-	// example:
-	//
-	// false
-	AgreementPrice *bool `json:"agreement_price,omitempty" xml:"agreement_price,omitempty"`
+	AdultNum       *string `json:"adult_num,omitempty" xml:"adult_num,omitempty"`
+	AgreementPrice *bool   `json:"agreement_price,omitempty" xml:"agreement_price,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-02-27
-	BeginDate *string `json:"begin_date,omitempty" xml:"begin_date,omitempty"`
-	// example:
-	//
-	// false
-	BreakfastIncluded *bool `json:"breakfast_included,omitempty" xml:"breakfast_included,omitempty"`
+	BeginDate         *string `json:"begin_date,omitempty" xml:"begin_date,omitempty"`
+	BreakfastIncluded *bool   `json:"breakfast_included,omitempty" xml:"breakfast_included,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 100
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	// example:
-	//
-	// 330100
-	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-02-28
 	EndDate *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 182873
-	HotelId *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
-	// example:
-	//
-	// 0
-	PayOverType *int32 `json:"pay_over_type,omitempty" xml:"pay_over_type,omitempty"`
-	// example:
-	//
-	// 0
-	PaymentType *int32 `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
-	// example:
-	//
-	// false
-	SpecialInvoice *bool `json:"special_invoice,omitempty" xml:"special_invoice,omitempty"`
-	// example:
-	//
-	// 0
-	SuperMan *int32 `json:"super_man,omitempty" xml:"super_man,omitempty"`
+	HotelId        *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	PayOverType    *int32  `json:"pay_over_type,omitempty" xml:"pay_over_type,omitempty"`
+	PaymentType    *int32  `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+	SpecialInvoice *bool   `json:"special_invoice,omitempty" xml:"special_invoice,omitempty"`
+	SuperMan       *int32  `json:"super_man,omitempty" xml:"super_man,omitempty"`
 }
 
 func (s HotelGoodsQueryRequest) String() string {

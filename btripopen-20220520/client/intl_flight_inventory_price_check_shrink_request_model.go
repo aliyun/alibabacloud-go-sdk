@@ -33,20 +33,10 @@ type IntlFlightInventoryPriceCheckShrinkRequest struct {
 	// example:
 	//
 	// ZHANG/SAN
-	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
-	// example:
-	//
-	// ZJTD
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	// example:
-	//
-	// 102000
-	OrderPrice *int64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
+	BuyerName  *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	IsvName    *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OrderPrice *int64  `json:"order_price,omitempty" xml:"order_price,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 22111acaf9ea47c09ed0db6abc45be2d_0
 	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
 	// This parameter is required.
 	PassengerListShrink *string `json:"passenger_list,omitempty" xml:"passenger_list,omitempty"`

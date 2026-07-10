@@ -17,6 +17,8 @@ type iCarApplyAddHeaders interface {
 
 type CarApplyAddHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// A header parameter obtained from the Enterprise Access Credential operation. Add it to the request header. In HTTP mode, you can use so_corp_token=value or dtb_corp_token=value in the URL as an alternative.
+	//
 	// example:
 	//
 	// feth00jqwls

@@ -22,20 +22,11 @@ type iCostCenterQueryRequest interface {
 }
 
 type CostCenterQueryRequest struct {
-	Disable *int64 `json:"disable,omitempty" xml:"disable,omitempty"`
-	// example:
-	//
-	// false
-	NeedOrgEntity *bool `json:"need_org_entity,omitempty" xml:"need_org_entity,omitempty"`
-	// example:
-	//
-	// cost1
-	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// user1
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	Disable       *int64  `json:"disable,omitempty" xml:"disable,omitempty"`
+	NeedOrgEntity *bool   `json:"need_org_entity,omitempty" xml:"need_org_entity,omitempty"`
+	ThirdpartId   *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
+	Title         *string `json:"title,omitempty" xml:"title,omitempty"`
+	UserId        *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CostCenterQueryRequest) String() string {

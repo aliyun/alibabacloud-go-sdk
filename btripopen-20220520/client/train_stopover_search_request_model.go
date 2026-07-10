@@ -25,16 +25,8 @@ type TrainStopoverSearchRequest struct {
 	// This parameter is required.
 	DepStation *string `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2024-05-08
 	TrainDate *string `json:"train_date,omitempty" xml:"train_date,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// k2345
 	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 

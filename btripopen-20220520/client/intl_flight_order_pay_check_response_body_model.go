@@ -31,10 +31,7 @@ type IntlFlightOrderPayCheckResponseBody struct {
 	// 成功
 	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
 	// example:
 	//
 	// 210bc4b116835992457938931db4de

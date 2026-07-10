@@ -24,26 +24,12 @@ type iMealApplyQueryResponseBody interface {
 }
 
 type MealApplyQueryResponseBody struct {
-	// example:
-	//
-	// 0
-	Code    *string                           `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                           `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *MealApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// A5009956-1077-52FB-B520-EA8C7E91D722
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 210f07f316603757445272547d959f
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                           `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *MealApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s MealApplyQueryResponseBody) String() string {
@@ -118,47 +104,20 @@ func (s *MealApplyQueryResponseBody) Validate() error {
 }
 
 type MealApplyQueryResponseBodyModule struct {
-	ApplyUser *MealApplyQueryResponseBodyModuleApplyUser `json:"apply_user,omitempty" xml:"apply_user,omitempty" type:"Struct"`
-	// example:
-	//
-	// 11376
-	CostCenterId *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	ExtendField  *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
-	// example:
-	//
-	// 2022-07-04T16:13Z
-	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	// example:
-	//
-	// 11876
-	InvoiceId     *int64                                           `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
-	ItineraryList []*MealApplyQueryResponseBodyModuleItineraryList `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
-	MealAmount    *int64                                           `json:"meal_amount,omitempty" xml:"meal_amount,omitempty"`
-	MealCause     *string                                          `json:"meal_cause,omitempty" xml:"meal_cause,omitempty"`
-	// example:
-	//
-	// 11546
-	ProjectId *int64 `json:"project_id,omitempty" xml:"project_id,omitempty"`
-	// example:
-	//
-	// 0
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 2024073128454753
-	ThirdPartApplyId *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
-	// example:
-	//
-	// 330000303010292572
-	ThirdPartCostCenterId *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
-	// example:
-	//
-	// 405009
-	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
-	// example:
-	//
-	// CS-PROJECT
-	ThirdPartProjectId *string `json:"third_part_project_id,omitempty" xml:"third_part_project_id,omitempty"`
+	ApplyUser             *MealApplyQueryResponseBodyModuleApplyUser       `json:"apply_user,omitempty" xml:"apply_user,omitempty" type:"Struct"`
+	CostCenterId          *int64                                           `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	ExtendField           *string                                          `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
+	GmtCreate             *string                                          `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	InvoiceId             *int64                                           `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	ItineraryList         []*MealApplyQueryResponseBodyModuleItineraryList `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	MealAmount            *int64                                           `json:"meal_amount,omitempty" xml:"meal_amount,omitempty"`
+	MealCause             *string                                          `json:"meal_cause,omitempty" xml:"meal_cause,omitempty"`
+	ProjectId             *int64                                           `json:"project_id,omitempty" xml:"project_id,omitempty"`
+	Status                *int32                                           `json:"status,omitempty" xml:"status,omitempty"`
+	ThirdPartApplyId      *string                                          `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
+	ThirdPartCostCenterId *string                                          `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
+	ThirdPartInvoiceId    *string                                          `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
+	ThirdPartProjectId    *string                                          `json:"third_part_project_id,omitempty" xml:"third_part_project_id,omitempty"`
 }
 
 func (s MealApplyQueryResponseBodyModule) String() string {
@@ -314,9 +273,6 @@ func (s *MealApplyQueryResponseBodyModule) Validate() error {
 }
 
 type MealApplyQueryResponseBodyModuleApplyUser struct {
-	// example:
-	//
-	// 2123
 	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }

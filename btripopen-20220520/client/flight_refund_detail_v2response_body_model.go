@@ -24,29 +24,12 @@ type iFlightRefundDetailV2ResponseBody interface {
 }
 
 type FlightRefundDetailV2ResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module
-	Module *FlightRefundDetailV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// requestId
-	//
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 210e845f16785007404904300ddc92
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *FlightRefundDetailV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                 `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightRefundDetailV2ResponseBody) String() string {
@@ -121,49 +104,22 @@ func (s *FlightRefundDetailV2ResponseBody) Validate() error {
 }
 
 type FlightRefundDetailV2ResponseBodyModule struct {
-	// example:
-	//
-	// 2023-08-19 17:18:19
-	ApplyTime                       *string                                                 `json:"apply_time,omitempty" xml:"apply_time,omitempty"`
-	ContactInfoDTO                  *FlightRefundDetailV2ResponseBodyModuleContactInfoDTO   `json:"contact_info_d_t_o,omitempty" xml:"contact_info_d_t_o,omitempty" type:"Struct"`
-	FlightInfoDTOS                  []*FlightRefundDetailV2ResponseBodyModuleFlightInfoDTOS `json:"flight_info_d_t_o_s,omitempty" xml:"flight_info_d_t_o_s,omitempty" type:"Repeated"`
-	NonRefundableChangeServicePrice *int64                                                  `json:"non_refundable_change_service_price,omitempty" xml:"non_refundable_change_service_price,omitempty"`
-	NonRefundableChangeUpgradePrice *int64                                                  `json:"non_refundable_change_upgrade_price,omitempty" xml:"non_refundable_change_upgrade_price,omitempty"`
-	// example:
-	//
-	// 1002039195025156700
-	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 1002039195025156700
-	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	// example:
-	//
-	// 1019195836916039
-	OutSubOrderId *string `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
-	Reason        *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// example:
-	//
-	// 1
-	ReasonCode       *string `json:"reason_code,omitempty" xml:"reason_code,omitempty"`
-	RefundFailReason *string `json:"refund_fail_reason,omitempty" xml:"refund_fail_reason,omitempty"`
-	// example:
-	//
-	// 100
-	RefundHandlingFee *int64 `json:"refund_handling_fee,omitempty" xml:"refund_handling_fee,omitempty"`
-	// example:
-	//
-	// 10000
-	RefundMoney *int64 `json:"refund_money,omitempty" xml:"refund_money,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 1000000000297003
-	SubOrderId       *int64                                                    `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
-	TravelerInfoDTOS []*FlightRefundDetailV2ResponseBodyModuleTravelerInfoDTOS `json:"traveler_info_d_t_o_s,omitempty" xml:"traveler_info_d_t_o_s,omitempty" type:"Repeated"`
+	ApplyTime                       *string                                                   `json:"apply_time,omitempty" xml:"apply_time,omitempty"`
+	ContactInfoDTO                  *FlightRefundDetailV2ResponseBodyModuleContactInfoDTO     `json:"contact_info_d_t_o,omitempty" xml:"contact_info_d_t_o,omitempty" type:"Struct"`
+	FlightInfoDTOS                  []*FlightRefundDetailV2ResponseBodyModuleFlightInfoDTOS   `json:"flight_info_d_t_o_s,omitempty" xml:"flight_info_d_t_o_s,omitempty" type:"Repeated"`
+	NonRefundableChangeServicePrice *int64                                                    `json:"non_refundable_change_service_price,omitempty" xml:"non_refundable_change_service_price,omitempty"`
+	NonRefundableChangeUpgradePrice *int64                                                    `json:"non_refundable_change_upgrade_price,omitempty" xml:"non_refundable_change_upgrade_price,omitempty"`
+	OrderId                         *int64                                                    `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId                      *string                                                   `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	OutSubOrderId                   *string                                                   `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
+	Reason                          *string                                                   `json:"reason,omitempty" xml:"reason,omitempty"`
+	ReasonCode                      *string                                                   `json:"reason_code,omitempty" xml:"reason_code,omitempty"`
+	RefundFailReason                *string                                                   `json:"refund_fail_reason,omitempty" xml:"refund_fail_reason,omitempty"`
+	RefundHandlingFee               *int64                                                    `json:"refund_handling_fee,omitempty" xml:"refund_handling_fee,omitempty"`
+	RefundMoney                     *int64                                                    `json:"refund_money,omitempty" xml:"refund_money,omitempty"`
+	Status                          *int32                                                    `json:"status,omitempty" xml:"status,omitempty"`
+	SubOrderId                      *int64                                                    `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
+	TravelerInfoDTOS                []*FlightRefundDetailV2ResponseBodyModuleTravelerInfoDTOS `json:"traveler_info_d_t_o_s,omitempty" xml:"traveler_info_d_t_o_s,omitempty" type:"Repeated"`
 }
 
 func (s FlightRefundDetailV2ResponseBodyModule) String() string {
@@ -346,19 +302,10 @@ func (s *FlightRefundDetailV2ResponseBodyModule) Validate() error {
 }
 
 type FlightRefundDetailV2ResponseBodyModuleContactInfoDTO struct {
-	// example:
-	//
-	// 17685764353@163.com
-	ContactEmail *string `json:"contact_email,omitempty" xml:"contact_email,omitempty"`
-	ContactName  *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
-	// example:
-	//
-	// 17685764353
-	ContactPhone *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
-	// example:
-	//
-	// true
-	SendMsgToPassenger *bool `json:"send_msg_to_passenger,omitempty" xml:"send_msg_to_passenger,omitempty"`
+	ContactEmail       *string `json:"contact_email,omitempty" xml:"contact_email,omitempty"`
+	ContactName        *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	ContactPhone       *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
+	SendMsgToPassenger *bool   `json:"send_msg_to_passenger,omitempty" xml:"send_msg_to_passenger,omitempty"`
 }
 
 func (s FlightRefundDetailV2ResponseBodyModuleContactInfoDTO) String() string {
@@ -410,73 +357,37 @@ func (s *FlightRefundDetailV2ResponseBodyModuleContactInfoDTO) Validate() error 
 }
 
 type FlightRefundDetailV2ResponseBodyModuleFlightInfoDTOS struct {
-	// example:
-	//
-	// MU
-	AirlineCode    *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
-	AirlineIconUrl *string `json:"airline_icon_url,omitempty" xml:"airline_icon_url,omitempty"`
-	AirlineName    *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
-	// example:
-	//
-	// HGH
-	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
-	ArrAirportName *string `json:"arr_airport_name,omitempty" xml:"arr_airport_name,omitempty"`
-	// example:
-	//
-	// HGH
-	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	ArrTerminal *string `json:"arr_terminal,omitempty" xml:"arr_terminal,omitempty"`
-	// example:
-	//
-	// 2023-10-03 09:30:00
-	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	// example:
-	//
-	// Y
-	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	// example:
-	//
-	// Y
-	CabinClass     *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	CabinClassName *string `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
-	// example:
-	//
-	// 10
-	CabinDiscount         *int64  `json:"cabin_discount,omitempty" xml:"cabin_discount,omitempty"`
-	CarrierAirlineCode    *string `json:"carrier_airline_code,omitempty" xml:"carrier_airline_code,omitempty"`
-	CarrierAirlineIconUrl *string `json:"carrier_airline_icon_url,omitempty" xml:"carrier_airline_icon_url,omitempty"`
-	CarrierAirlineName    *string `json:"carrier_airline_name,omitempty" xml:"carrier_airline_name,omitempty"`
-	CarrierFlightNo       *string `json:"carrier_flight_no,omitempty" xml:"carrier_flight_no,omitempty"`
-	// example:
-	//
-	// PKX
-	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
-	DepAirportName *string `json:"dep_airport_name,omitempty" xml:"dep_airport_name,omitempty"`
-	// example:
-	//
-	// BJS
-	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	DepTerminal *string `json:"dep_terminal,omitempty" xml:"dep_terminal,omitempty"`
-	// example:
-	//
-	// 2023-10-03 07:30:00
-	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	// example:
-	//
-	// MU5193
-	FlightNo   *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	FlightType *string `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
-	MealDesc   *string `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
-	// example:
-	//
-	// 1194012
-	SegmentId       *string                                                              `json:"segment_id,omitempty" xml:"segment_id,omitempty"`
-	SegmentPosition *FlightRefundDetailV2ResponseBodyModuleFlightInfoDTOSSegmentPosition `json:"segment_position,omitempty" xml:"segment_position,omitempty" type:"Struct"`
-	StopArrTime     *string                                                              `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
-	StopCity        *string                                                              `json:"stop_city,omitempty" xml:"stop_city,omitempty"`
-	StopDepTime     *string                                                              `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
+	AirlineCode           *string                                                              `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	AirlineIconUrl        *string                                                              `json:"airline_icon_url,omitempty" xml:"airline_icon_url,omitempty"`
+	AirlineName           *string                                                              `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
+	ArrAirportCode        *string                                                              `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	ArrAirportName        *string                                                              `json:"arr_airport_name,omitempty" xml:"arr_airport_name,omitempty"`
+	ArrCityCode           *string                                                              `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCityName           *string                                                              `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ArrTerminal           *string                                                              `json:"arr_terminal,omitempty" xml:"arr_terminal,omitempty"`
+	ArrTime               *string                                                              `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	Cabin                 *string                                                              `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass            *string                                                              `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinClassName        *string                                                              `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
+	CabinDiscount         *int64                                                               `json:"cabin_discount,omitempty" xml:"cabin_discount,omitempty"`
+	CarrierAirlineCode    *string                                                              `json:"carrier_airline_code,omitempty" xml:"carrier_airline_code,omitempty"`
+	CarrierAirlineIconUrl *string                                                              `json:"carrier_airline_icon_url,omitempty" xml:"carrier_airline_icon_url,omitempty"`
+	CarrierAirlineName    *string                                                              `json:"carrier_airline_name,omitempty" xml:"carrier_airline_name,omitempty"`
+	CarrierFlightNo       *string                                                              `json:"carrier_flight_no,omitempty" xml:"carrier_flight_no,omitempty"`
+	DepAirportCode        *string                                                              `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	DepAirportName        *string                                                              `json:"dep_airport_name,omitempty" xml:"dep_airport_name,omitempty"`
+	DepCityCode           *string                                                              `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepCityName           *string                                                              `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepTerminal           *string                                                              `json:"dep_terminal,omitempty" xml:"dep_terminal,omitempty"`
+	DepTime               *string                                                              `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	FlightNo              *string                                                              `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FlightType            *string                                                              `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
+	MealDesc              *string                                                              `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	SegmentId             *string                                                              `json:"segment_id,omitempty" xml:"segment_id,omitempty"`
+	SegmentPosition       *FlightRefundDetailV2ResponseBodyModuleFlightInfoDTOSSegmentPosition `json:"segment_position,omitempty" xml:"segment_position,omitempty" type:"Struct"`
+	StopArrTime           *string                                                              `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
+	StopCity              *string                                                              `json:"stop_city,omitempty" xml:"stop_city,omitempty"`
+	StopDepTime           *string                                                              `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
 }
 
 func (s FlightRefundDetailV2ResponseBodyModuleFlightInfoDTOS) String() string {
@@ -776,13 +687,7 @@ func (s *FlightRefundDetailV2ResponseBodyModuleFlightInfoDTOS) Validate() error 
 }
 
 type FlightRefundDetailV2ResponseBodyModuleFlightInfoDTOSSegmentPosition struct {
-	// example:
-	//
-	// 0
 	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
-	// example:
-	//
-	// 0
 	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
 }
 
@@ -817,41 +722,17 @@ func (s *FlightRefundDetailV2ResponseBodyModuleFlightInfoDTOSSegmentPosition) Va
 }
 
 type FlightRefundDetailV2ResponseBodyModuleTravelerInfoDTOS struct {
-	// example:
-	//
-	// 2000-08-19
-	BirthDate *string `json:"birth_date,omitempty" xml:"birth_date,omitempty"`
-	// example:
-	//
-	// 430131413423435353
-	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
-	// example:
-	//
-	// 0
-	CertType *int32 `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
-	// example:
-	//
-	// 1
+	BirthDate       *string   `json:"birth_date,omitempty" xml:"birth_date,omitempty"`
+	CertNo          *string   `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType        *int32    `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
 	Gender          *int32    `json:"gender,omitempty" xml:"gender,omitempty"`
 	OriginTicketNos []*string `json:"origin_ticket_nos,omitempty" xml:"origin_ticket_nos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 12172819047252004460056
-	PassengerId   *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
-	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	// example:
-	//
-	// 0
-	PassengerType *int32 `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
-	// example:
-	//
-	// 17635462345
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// example:
-	//
-	// 3243028
-	Pid       *int64    `json:"pid,omitempty" xml:"pid,omitempty"`
-	TicketNos []*string `json:"ticket_nos,omitempty" xml:"ticket_nos,omitempty" type:"Repeated"`
+	PassengerId     *string   `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	PassengerName   *string   `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	PassengerType   *int32    `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
+	Phone           *string   `json:"phone,omitempty" xml:"phone,omitempty"`
+	Pid             *int64    `json:"pid,omitempty" xml:"pid,omitempty"`
+	TicketNos       []*string `json:"ticket_nos,omitempty" xml:"ticket_nos,omitempty" type:"Repeated"`
 }
 
 func (s FlightRefundDetailV2ResponseBodyModuleTravelerInfoDTOS) String() string {

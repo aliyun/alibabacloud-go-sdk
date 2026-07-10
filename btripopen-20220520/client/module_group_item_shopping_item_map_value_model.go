@@ -131,13 +131,7 @@ func (s *ModuleGroupItemShoppingItemMapValueCabinQuantityList) Validate() error 
 }
 
 type ModuleGroupItemShoppingItemMapValueCabinQuantityListSegmentPosition struct {
-	// example:
-	//
-	// 0
 	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
-	// example:
-	//
-	// 0
 	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
 }
 
@@ -172,19 +166,10 @@ func (s *ModuleGroupItemShoppingItemMapValueCabinQuantityListSegmentPosition) Va
 }
 
 type ModuleGroupItemShoppingItemMapValueCabinQuantityListCabin struct {
-	// example:
-	//
-	// Y
-	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	// example:
-	//
-	// Y
+	Cabin          *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
 	CabinClass     *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
 	CabinClassName *string `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
-	// example:
-	//
-	// A
-	Quantity *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	Quantity       *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
 }
 
 func (s ModuleGroupItemShoppingItemMapValueCabinQuantityListCabin) String() string {
@@ -236,18 +221,9 @@ func (s *ModuleGroupItemShoppingItemMapValueCabinQuantityListCabin) Validate() e
 }
 
 type ModuleGroupItemShoppingItemMapValueSearchPrice struct {
-	// example:
-	//
-	// 120000
 	TicketPrice *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	// example:
-	//
-	// 120000
-	SellPrice *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
-	// example:
-	//
-	// 6000
-	Tax *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SellPrice   *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	Tax         *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
 }
 
 func (s ModuleGroupItemShoppingItemMapValueSearchPrice) String() string {
@@ -335,13 +311,7 @@ func (s *ModuleGroupItemShoppingItemMapValueSegmentPriceList) Validate() error {
 }
 
 type ModuleGroupItemShoppingItemMapValueSegmentPriceListSegmentPosition struct {
-	// example:
-	//
-	// 0
 	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
-	// example:
-	//
-	// 0
 	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
 }
 
@@ -376,18 +346,9 @@ func (s *ModuleGroupItemShoppingItemMapValueSegmentPriceListSegmentPosition) Val
 }
 
 type ModuleGroupItemShoppingItemMapValueSegmentPriceListSearchPrice struct {
-	// example:
-	//
-	// 120000
 	TicketPrice *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	// example:
-	//
-	// 120000
-	SellPrice *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
-	// example:
-	//
-	// 6000
-	Tax *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
+	SellPrice   *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	Tax         *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
 }
 
 func (s ModuleGroupItemShoppingItemMapValueSegmentPriceListSearchPrice) String() string {

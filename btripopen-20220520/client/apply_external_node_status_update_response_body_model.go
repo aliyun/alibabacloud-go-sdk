@@ -24,29 +24,12 @@ type iApplyExternalNodeStatusUpdateResponseBody interface {
 }
 
 type ApplyExternalNodeStatusUpdateResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// true
-	Module *bool `json:"module,omitempty" xml:"module,omitempty"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 210f079416784321627628333de4ab
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s ApplyExternalNodeStatusUpdateResponseBody) String() string {

@@ -36,45 +36,18 @@ type iHotelOrderListQueryRequest interface {
 }
 
 type HotelOrderListQueryRequest struct {
-	// example:
-	//
-	// false
-	AllApply *bool `json:"all_apply,omitempty" xml:"all_apply,omitempty"`
-	// example:
-	//
-	// 165782
-	ApplyId  *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	Category *int32  `json:"category,omitempty" xml:"category,omitempty"`
-	DepartId *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	// example:
-	//
-	// 2022-07-01 00:00:00
-	EndTime *string `json:"end_time,omitempty" xml:"end_time,omitempty"`
-	// example:
-	//
-	// 1
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// example:
-	//
-	// 50
-	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// example:
-	//
-	// 2022-07-01 00:00:00
-	StartTime *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
-	// example:
-	//
-	// CS154JKOI
+	AllApply         *bool   `json:"all_apply,omitempty" xml:"all_apply,omitempty"`
+	ApplyId          *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	Category         *int32  `json:"category,omitempty" xml:"category,omitempty"`
+	DepartId         *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	EndTime          *string `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	Page             *int32  `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	StartTime        *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
 	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	// example:
-	//
-	// 2022-07-01 00:00:00
-	UpdateEndTime *string `json:"update_end_time,omitempty" xml:"update_end_time,omitempty"`
-	// example:
-	//
-	// 2022-07-01 00:00:00
-	UpdateStartTime *string `json:"update_start_time,omitempty" xml:"update_start_time,omitempty"`
-	UserId          *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UpdateEndTime    *string `json:"update_end_time,omitempty" xml:"update_end_time,omitempty"`
+	UpdateStartTime  *string `json:"update_start_time,omitempty" xml:"update_start_time,omitempty"`
+	UserId           *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s HotelOrderListQueryRequest) String() string {

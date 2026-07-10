@@ -28,29 +28,14 @@ type iFlightItineraryScanQueryRequest interface {
 }
 
 type FlightItineraryScanQueryRequest struct {
-	// example:
-	//
-	// 2022-12-01
-	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
-	// example:
-	//
-	// 123
-	BillId *int64 `json:"bill_id,omitempty" xml:"bill_id,omitempty"`
-	// example:
-	//
-	// 456
+	BillDate         *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	BillId           *int64  `json:"bill_id,omitempty" xml:"bill_id,omitempty"`
 	InvoiceSubTaskId *int64  `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
 	ItineraryNum     *string `json:"itinerary_num,omitempty" xml:"itinerary_num,omitempty"`
 	OrderId          *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 1
-	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
-	// example:
-	//
-	// 20
-	PageSize *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	PageNo           *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	TicketNo         *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 }
 
 func (s FlightItineraryScanQueryRequest) String() string {

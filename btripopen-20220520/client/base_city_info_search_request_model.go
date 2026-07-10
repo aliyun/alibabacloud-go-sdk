@@ -22,10 +22,6 @@ type BaseCityInfoSearchRequest struct {
 	//
 	// if can be null:
 	// false
-	//
-	// example:
-	//
-	// 0
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 

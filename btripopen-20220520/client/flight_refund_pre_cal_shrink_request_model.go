@@ -19,14 +19,7 @@ type iFlightRefundPreCalShrinkRequest interface {
 
 type FlightRefundPreCalShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dis123
-	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
-	// example:
-	//
-	// 1
+	DisOrderId  *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	IsVoluntary *string `json:"is_voluntary,omitempty" xml:"is_voluntary,omitempty"`
 	// This parameter is required.
 	PassengerSegmentInfoListShrink *string `json:"passenger_segment_info_list,omitempty" xml:"passenger_segment_info_list,omitempty"`

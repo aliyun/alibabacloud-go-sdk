@@ -24,28 +24,12 @@ type iFlightRefundApplyV2ResponseBody interface {
 }
 
 type FlightRefundApplyV2ResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *FlightRefundApplyV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// requestId
-	//
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *FlightRefundApplyV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightRefundApplyV2ResponseBody) String() string {
@@ -120,22 +104,10 @@ func (s *FlightRefundApplyV2ResponseBody) Validate() error {
 }
 
 type FlightRefundApplyV2ResponseBodyModule struct {
-	// example:
-	//
-	// 1683901850297448200
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 1017002195370467200
-	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	// example:
-	//
-	// 1019195836916039
+	OrderId       *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId    *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	OutSubOrderId *string `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
-	// example:
-	//
-	// 1000000000297003
-	SubOrderId *string `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
+	SubOrderId    *string `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
 }
 
 func (s FlightRefundApplyV2ResponseBodyModule) String() string {

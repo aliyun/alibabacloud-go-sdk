@@ -16,13 +16,7 @@ type iModuleFlightItemListItemListSubItemPositionMapValue interface {
 }
 
 type ModuleFlightItemListItemListSubItemPositionMapValue struct {
-	// example:
-	//
-	// 0
 	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
-	// example:
-	//
-	// 0
 	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
 }
 

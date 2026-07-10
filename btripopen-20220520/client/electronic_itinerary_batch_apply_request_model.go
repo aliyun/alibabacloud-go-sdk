@@ -18,9 +18,6 @@ type iElectronicItineraryBatchApplyRequest interface {
 type ElectronicItineraryBatchApplyRequest struct {
   // This parameter is required.
   ApplyItineraryList []*ElectronicItineraryBatchApplyRequestApplyItineraryList `json:"apply_itinerary_list,omitempty" xml:"apply_itinerary_list,omitempty" type:"Repeated"`
-  // example:
-  // 
-  // true
   CanReprint *bool `json:"can_reprint,omitempty" xml:"can_reprint,omitempty"`
 }
 
@@ -65,21 +62,10 @@ func (s *ElectronicItineraryBatchApplyRequest) Validate() error {
 
 type ElectronicItineraryBatchApplyRequestApplyItineraryList struct {
   PurchaserName *string `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
-  // example:
-  // 
-  // tax3213132131
   PurchaserTaxNo *string `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // 1
   PurchaserType *int32 `json:"purchaser_type,omitempty" xml:"purchaser_type,omitempty"`
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // 781-2205431917
   TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 }
 

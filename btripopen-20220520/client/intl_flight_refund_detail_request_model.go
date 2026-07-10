@@ -21,14 +21,7 @@ type iIntlFlightRefundDetailRequest interface {
 
 type IntlFlightRefundDetailRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1002145190081005400
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 40820102379649052
+	OrderId          *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	OutOrderId       *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	OutRefundApplyId *string `json:"out_refund_apply_id,omitempty" xml:"out_refund_apply_id,omitempty"`
 	// This parameter is required.

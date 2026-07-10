@@ -25,25 +25,11 @@ type iCommonApplySyncRequest interface {
 
 type CommonApplySyncRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1003366164
-	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	// example:
-	//
-	// 3
+	ApplyId     *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	BizCategory *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
 	Remark      *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// asfa
+	Status           *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartyFlowId *string `json:"thirdparty_flow_id,omitempty" xml:"thirdparty_flow_id,omitempty"`
 	// This parameter is required.
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`

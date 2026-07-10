@@ -11,6 +11,8 @@ type iProjectAddRequest interface {
 	GoString() string
 	SetCode(v string) *ProjectAddRequest
 	GetCode() *string
+	SetHasManager(v bool) *ProjectAddRequest
+	GetHasManager() *bool
 	SetProjectName(v string) *ProjectAddRequest
 	GetProjectName() *string
 	SetThirdPartCostCenterId(v string) *ProjectAddRequest
@@ -23,26 +25,13 @@ type iProjectAddRequest interface {
 
 type ProjectAddRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// pro_code
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	Code       *string `json:"code,omitempty" xml:"code,omitempty"`
+	HasManager *bool   `json:"has_manager,omitempty" xml:"has_manager,omitempty"`
 	// This parameter is required.
-	ProjectName *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
-	// example:
-	//
-	// 234
+	ProjectName           *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
 	ThirdPartCostCenterId *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
-	// example:
-	//
-	// 123
+	ThirdPartId        *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 	ThirdPartInvoiceId *string `json:"third_part_invoice_id,omitempty" xml:"third_part_invoice_id,omitempty"`
 }
 
@@ -56,6 +45,10 @@ func (s ProjectAddRequest) GoString() string {
 
 func (s *ProjectAddRequest) GetCode() *string {
 	return s.Code
+}
+
+func (s *ProjectAddRequest) GetHasManager() *bool {
+	return s.HasManager
 }
 
 func (s *ProjectAddRequest) GetProjectName() *string {
@@ -76,6 +69,11 @@ func (s *ProjectAddRequest) GetThirdPartInvoiceId() *string {
 
 func (s *ProjectAddRequest) SetCode(v string) *ProjectAddRequest {
 	s.Code = &v
+	return s
+}
+
+func (s *ProjectAddRequest) SetHasManager(v bool) *ProjectAddRequest {
+	s.HasManager = &v
 	return s
 }
 

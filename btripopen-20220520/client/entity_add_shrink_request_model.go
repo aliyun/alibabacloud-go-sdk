@@ -18,10 +18,6 @@ type iEntityAddShrinkRequest interface {
 type EntityAddShrinkRequest struct {
   EntityDOListShrink *string `json:"entity_d_o_list,omitempty" xml:"entity_d_o_list,omitempty"`
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // 340049
   ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
 }
 

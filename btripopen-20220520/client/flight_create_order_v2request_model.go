@@ -32,26 +32,15 @@ type iFlightCreateOrderV2Request interface {
 }
 
 type FlightCreateOrderV2Request struct {
-	AsyncCreateOrderKey *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
-	// example:
-	//
-	// false
+	AsyncCreateOrderKey  *string `json:"async_create_order_key,omitempty" xml:"async_create_order_key,omitempty"`
 	AsyncCreateOrderMode *bool   `json:"async_create_order_mode,omitempty" xml:"async_create_order_mode,omitempty"`
 	BtripUserId          *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	BuyerName            *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
 	// This parameter is required.
 	ContactInfo *FlightCreateOrderV2RequestContactInfo `json:"contact_info,omitempty" xml:"contact_info,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cheshiapi
 	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 7fb731deeb4510b86c17e8c8c25740_11
 	OtaItemId *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
 	// This parameter is required.
 	OutOrderId     *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
@@ -233,19 +222,11 @@ func (s *FlightCreateOrderV2RequestContactInfo) Validate() error {
 
 type FlightCreateOrderV2RequestTravelers struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1991-01-22
 	Birthday   *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
 	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
 	// This parameter is required.
 	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	CertType         *int32  `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
 	CertValidDate    *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
 	CostCenterName   *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
@@ -260,10 +241,6 @@ type FlightCreateOrderV2RequestTravelers struct {
 	// This parameter is required.
 	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	PassengerType *int32 `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
 	// This parameter is required.
 	Phone        *string `json:"phone,omitempty" xml:"phone,omitempty"`
@@ -271,10 +248,6 @@ type FlightCreateOrderV2RequestTravelers struct {
 	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
 	TaxNumber    *string `json:"tax_number,omitempty" xml:"tax_number,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 18155711459129970552412
 	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	UserType *int32  `json:"user_type,omitempty" xml:"user_type,omitempty"`
 }

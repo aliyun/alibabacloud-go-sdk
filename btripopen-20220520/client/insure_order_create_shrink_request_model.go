@@ -32,37 +32,17 @@ type iInsureOrderCreateShrinkRequest interface {
 type InsureOrderCreateShrinkRequest struct {
 	// This parameter is required.
 	ApplicantShrink *string `json:"applicant,omitempty" xml:"applicant,omitempty"`
-	// example:
-	//
-	// 20202109390122
-	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	BtripUserId     *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName       *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
 	// This parameter is required.
 	InsPersonAndSegmentListShrink *string `json:"ins_person_and_segment_list,omitempty" xml:"ins_person_and_segment_list,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// PostalSavingsBank
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	// example:
-	//
-	// 100000320302020
+	IsvName       *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	OutInsOrderId *string `json:"out_ins_order_id,omitempty" xml:"out_ins_order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 202310101026030
-	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	// example:
-	//
-	// 1020030003332000
+	OutOrderId    *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	OutSubOrderId *string `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
-	// example:
-	//
-	// fliggy
-	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+	SupplierCode  *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
 }
 
 func (s InsureOrderCreateShrinkRequest) String() string {

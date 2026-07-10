@@ -27,33 +27,15 @@ type iFlightOtaSearchV2Request interface {
 
 type FlightOtaSearchV2Request struct {
 	CabinTypeList []*int32 `json:"cabin_type_list,omitempty" xml:"cabin_type_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// true
-	DirectOnly *bool `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
+	DirectOnly    *bool    `json:"direct_only,omitempty" xml:"direct_only,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cheshi
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	// example:
-	//
-	// true
-	NeedShareFlight *bool `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
+	IsvName         *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	NeedShareFlight *bool   `json:"need_share_flight,omitempty" xml:"need_share_flight,omitempty"`
 	// This parameter is required.
 	SearchJourneys []*FlightOtaSearchV2RequestSearchJourneys `json:"search_journeys,omitempty" xml:"search_journeys,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	SearchMode *int32 `json:"search_mode,omitempty" xml:"search_mode,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	TripType *int32 `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
 }
 
@@ -143,22 +125,10 @@ func (s *FlightOtaSearchV2Request) Validate() error {
 
 type FlightOtaSearchV2RequestSearchJourneys struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// HGH
 	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// BJS
 	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-09-01
 	DepDate *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
 	// This parameter is required.
 	SelectedFlights []*FlightOtaSearchV2RequestSearchJourneysSelectedFlights `json:"selected_flights,omitempty" xml:"selected_flights,omitempty" type:"Repeated"`
@@ -222,35 +192,13 @@ func (s *FlightOtaSearchV2RequestSearchJourneys) Validate() error {
 }
 
 type FlightOtaSearchV2RequestSearchJourneysSelectedFlights struct {
-	// example:
-	//
-	// HGH
 	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
-	// example:
-	//
-	// HGH
-	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	// example:
-	//
-	// PKX
+	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
 	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
-	// example:
-	//
-	// BJS
-	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	// example:
-	//
-	// 2023-09-01 07:10:00
-	FlightTime *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	FlightTime     *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// HO3925
-	MarketFlightNo *string `json:"market_flight_no,omitempty" xml:"market_flight_no,omitempty"`
-	// example:
-	//
-	// CX601
+	MarketFlightNo  *string `json:"market_flight_no,omitempty" xml:"market_flight_no,omitempty"`
 	OperateFlightNo *string `json:"operate_flight_no,omitempty" xml:"operate_flight_no,omitempty"`
 }
 

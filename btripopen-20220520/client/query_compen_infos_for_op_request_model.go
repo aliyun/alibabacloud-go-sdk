@@ -19,20 +19,9 @@ type iQueryCompenInfosForOpRequest interface {
 
 type QueryCompenInfosForOpRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	Category *int32 `json:"category,omitempty" xml:"category,omitempty"`
-	// example:
-	//
-	// 82508250249123456
+	Category *int32  `json:"category,omitempty" xml:"category,omitempty"`
 	CompenId *string `json:"compen_id,omitempty" xml:"compen_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1002086203277812345
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 }
 

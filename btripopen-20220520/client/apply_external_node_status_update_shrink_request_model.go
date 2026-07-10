@@ -19,17 +19,9 @@ type iApplyExternalNodeStatusUpdateShrinkRequest interface {
 
 type ApplyExternalNodeStatusUpdateShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123
 	NodeId                 *string `json:"node_id,omitempty" xml:"node_id,omitempty"`
 	OperationRecordsShrink *string `json:"operation_records,omitempty" xml:"operation_records,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// PROCESS_AGREE
 	ProcessActionResult *string `json:"process_action_result,omitempty" xml:"process_action_result,omitempty"`
 }
 

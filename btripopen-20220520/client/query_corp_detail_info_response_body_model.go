@@ -24,24 +24,12 @@ type iQueryCorpDetailInfoResponseBody interface {
 }
 
 type QueryCorpDetailInfoResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *QueryCorpDetailInfoResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// C61ECFF6-****-****-****-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce********056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *QueryCorpDetailInfoResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s QueryCorpDetailInfoResponseBody) String() string {
@@ -116,24 +104,12 @@ func (s *QueryCorpDetailInfoResponseBody) Validate() error {
 }
 
 type QueryCorpDetailInfoResponseBodyModule struct {
-	// example:
-	//
-	// btrip5txxxxxxx
-	CorpId   *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	// example:
-	//
-	// open12********012jq
-	OpenAgentId    *string `json:"open_agent_id,omitempty" xml:"open_agent_id,omitempty"`
-	SuperAdminName *string `json:"super_admin_name,omitempty" xml:"super_admin_name,omitempty"`
-	// example:
-	//
-	// 138xxxx0001
+	CorpId          *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName        *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	OpenAgentId     *string `json:"open_agent_id,omitempty" xml:"open_agent_id,omitempty"`
+	SuperAdminName  *string `json:"super_admin_name,omitempty" xml:"super_admin_name,omitempty"`
 	SuperAdminPhone *string `json:"super_admin_phone,omitempty" xml:"super_admin_phone,omitempty"`
-	// example:
-	//
-	// user1234
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserId          *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s QueryCorpDetailInfoResponseBodyModule) String() string {

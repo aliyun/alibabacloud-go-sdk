@@ -17,10 +17,6 @@ type iFlightOrderQueryRequest interface {
 
 type FlightOrderQueryRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 246584390
 	OrderId *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	UserId  *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }

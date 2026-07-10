@@ -24,24 +24,12 @@ type iMonthBillGetResponseBody interface {
 }
 
 type MonthBillGetResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                           `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                           `json:"message,omitempty" xml:"message,omitempty"`
-	Module  []*MonthBillGetResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                           `json:"message,omitempty" xml:"message,omitempty"`
+	Module    []*MonthBillGetResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s MonthBillGetResponseBody) String() string {
@@ -120,14 +108,10 @@ func (s *MonthBillGetResponseBody) Validate() error {
 }
 
 type MonthBillGetResponseBodyModule struct {
-	EndDate *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
-	// CorpMonthAccountBillFeeDetail
+	EndDate                *string                                               `json:"end_date,omitempty" xml:"end_date,omitempty"`
 	MonthAccountBillDetail *MonthBillGetResponseBodyModuleMonthAccountBillDetail `json:"monthAccountBillDetail,omitempty" xml:"monthAccountBillDetail,omitempty" type:"Struct"`
 	StartDate              *string                                               `json:"start_date,omitempty" xml:"start_date,omitempty"`
-	// example:
-	//
-	// https://xxx
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	Url                    *string                                               `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s MonthBillGetResponseBodyModule) String() string {
@@ -184,64 +168,20 @@ func (s *MonthBillGetResponseBodyModule) Validate() error {
 }
 
 type MonthBillGetResponseBodyModuleMonthAccountBillDetail struct {
-	BillConfirmed *int32 `json:"billConfirmed,omitempty" xml:"billConfirmed,omitempty"`
-	// 用车金额（单位：元）
-	//
-	// example:
-	//
-	// xx.xx
-	CarAmount *float64 `json:"carAmount,omitempty" xml:"carAmount,omitempty"`
-	// 违约金金额（单位：元）
-	//
-	// example:
-	//
-	// xx.xx
-	DamageAmount *float64 `json:"damageAmount,omitempty" xml:"damageAmount,omitempty"`
-	// 机票金额（单位：元）
-	//
-	// example:
-	//
-	// xx.xx
-	FlightAmount *float64 `json:"flightAmount,omitempty" xml:"flightAmount,omitempty"`
-	// 福豆金额（单位：元）
-	//
-	// example:
-	//
-	// xx.xx
-	FuPoint *float64 `json:"fuPoint,omitempty" xml:"fuPoint,omitempty"`
-	// 酒店金额（单位：元）
-	//
-	// example:
-	//
-	// xx.xx
-	HotelAmount *float64 `json:"hotelAmount,omitempty" xml:"hotelAmount,omitempty"`
-	// 国际机票金额（单位：元）
-	//
-	// example:
-	//
-	// xx.xx
+	BillConfirmed  *int32   `json:"billConfirmed,omitempty" xml:"billConfirmed,omitempty"`
+	CarAmount      *float64 `json:"carAmount,omitempty" xml:"carAmount,omitempty"`
+	DamageAmount   *float64 `json:"damageAmount,omitempty" xml:"damageAmount,omitempty"`
+	FlightAmount   *float64 `json:"flightAmount,omitempty" xml:"flightAmount,omitempty"`
+	FuPoint        *float64 `json:"fuPoint,omitempty" xml:"fuPoint,omitempty"`
+	HotelAmount    *float64 `json:"hotelAmount,omitempty" xml:"hotelAmount,omitempty"`
 	IeFlightAmount *float64 `json:"ieFlightAmount,omitempty" xml:"ieFlightAmount,omitempty"`
 	IeHotelAmount  *float64 `json:"ieHotelAmount,omitempty" xml:"ieHotelAmount,omitempty"`
-	// 账期日：YYYYMMDD
-	//
-	// example:
-	//
-	// 20200501
-	MailBillDate *int64   `json:"mailBillDate,omitempty" xml:"mailBillDate,omitempty"`
-	MealAmount   *float64 `json:"mealAmount,omitempty" xml:"mealAmount,omitempty"`
-	// 服务费金额（单位：元）
-	//
-	// example:
-	//
-	// xx.xx
-	ServiceAmount *float64 `json:"serviceAmount,omitempty" xml:"serviceAmount,omitempty"`
-	// 火车票金额（单位：元）
-	//
-	// example:
-	//
-	// xx.xx
-	TrainAmount *float64 `json:"trainAmount,omitempty" xml:"trainAmount,omitempty"`
-	VasAmount   *float64 `json:"vasAmount,omitempty" xml:"vasAmount,omitempty"`
+	MailBillDate   *int64   `json:"mailBillDate,omitempty" xml:"mailBillDate,omitempty"`
+	MealAmount     *float64 `json:"mealAmount,omitempty" xml:"mealAmount,omitempty"`
+	MetroAmount    *float64 `json:"metroAmount,omitempty" xml:"metroAmount,omitempty"`
+	ServiceAmount  *float64 `json:"serviceAmount,omitempty" xml:"serviceAmount,omitempty"`
+	TrainAmount    *float64 `json:"trainAmount,omitempty" xml:"trainAmount,omitempty"`
+	VasAmount      *float64 `json:"vasAmount,omitempty" xml:"vasAmount,omitempty"`
 }
 
 func (s MonthBillGetResponseBodyModuleMonthAccountBillDetail) String() string {
@@ -290,6 +230,10 @@ func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) GetMailBillDate()
 
 func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) GetMealAmount() *float64 {
 	return s.MealAmount
+}
+
+func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) GetMetroAmount() *float64 {
+	return s.MetroAmount
 }
 
 func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) GetServiceAmount() *float64 {
@@ -351,6 +295,11 @@ func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetMailBillDate(v
 
 func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetMealAmount(v float64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
 	s.MealAmount = &v
+	return s
+}
+
+func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetMetroAmount(v float64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
+	s.MetroAmount = &v
 	return s
 }
 

@@ -36,25 +36,12 @@ type GroupUserSaveRequest struct {
 	Birthday     *string                         `json:"birthday,omitempty" xml:"birthday,omitempty"`
 	CertList     []*GroupUserSaveRequestCertList `json:"cert_list,omitempty" xml:"cert_list,omitempty" type:"Repeated"`
 	Gender       *string                         `json:"gender,omitempty" xml:"gender,omitempty"`
-	// example:
-	//
-	// 1001
-	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
-	// example:
-	//
-	// 18000000000
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// example:
-	//
-	// ce/shi
-	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	JobNo        *string                         `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	Phone        *string                         `json:"phone,omitempty" xml:"phone,omitempty"`
+	RealNameEn   *string                         `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
 	// This parameter is required.
 	SubCorpIdList []*GroupUserSaveRequestSubCorpIdList `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	// This parameter is required.
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
@@ -249,24 +236,10 @@ type GroupUserSaveRequestSubCorpIdList struct {
 	DepartIds []*string `json:"depart_ids,omitempty" xml:"depart_ids,omitempty" type:"Repeated"`
 	Email     *string   `json:"email,omitempty" xml:"email,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
-	LeaveStatus *int32 `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
-	// example:
-	//
-	// 123
+	LeaveStatus   *int32  `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
 	ManagerUserId *string `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
-	// example:
-	//
-	// 10
 	PositionLevel *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// btrip123
 	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 }
 

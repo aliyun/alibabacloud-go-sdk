@@ -24,27 +24,12 @@ type iTrainOrderDetailQueryResponseBody interface {
 }
 
 type TrainOrderDetailQueryResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module
-	Module *TrainOrderDetailQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 210bc81a17090871660176894d008c
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 2103a05c16872420814992343d8a09
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TrainOrderDetailQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBody) String() string {
@@ -122,16 +107,10 @@ type TrainOrderDetailQueryResponseBodyModule struct {
 	BookInfos            *TrainOrderDetailQueryResponseBodyModuleBookInfos              `json:"book_infos,omitempty" xml:"book_infos,omitempty" type:"Struct"`
 	ChangeInfos          []*TrainOrderDetailQueryResponseBodyModuleChangeInfos          `json:"change_infos,omitempty" xml:"change_infos,omitempty" type:"Repeated"`
 	OfflineRefundDetails []*TrainOrderDetailQueryResponseBodyModuleOfflineRefundDetails `json:"offlineRefundDetails,omitempty" xml:"offlineRefundDetails,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1017028198411054446
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 3703184209587306496
-	OutOrderId     *string                                                  `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	PassengerInfoS []*TrainOrderDetailQueryResponseBodyModulePassengerInfoS `json:"passenger_info_s,omitempty" xml:"passenger_info_s,omitempty" type:"Repeated"`
-	RefundInfos    []*TrainOrderDetailQueryResponseBodyModuleRefundInfos    `json:"refund_infos,omitempty" xml:"refund_infos,omitempty" type:"Repeated"`
+	OrderId              *string                                                        `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId           *string                                                        `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	PassengerInfoS       []*TrainOrderDetailQueryResponseBodyModulePassengerInfoS       `json:"passenger_info_s,omitempty" xml:"passenger_info_s,omitempty" type:"Repeated"`
+	RefundInfos          []*TrainOrderDetailQueryResponseBodyModuleRefundInfos          `json:"refund_infos,omitempty" xml:"refund_infos,omitempty" type:"Repeated"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModule) String() string {
@@ -252,23 +231,11 @@ func (s *TrainOrderDetailQueryResponseBodyModule) Validate() error {
 
 type TrainOrderDetailQueryResponseBodyModuleBookInfos struct {
 	BookTrainInfos []*TrainOrderDetailQueryResponseBodyModuleBookInfosBookTrainInfos `json:"book_train_infos,omitempty" xml:"book_train_infos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1111
-	FailCode *string `json:"fail_code,omitempty" xml:"fail_code,omitempty"`
-	FailMsg  *string `json:"fail_msg,omitempty" xml:"fail_msg,omitempty"`
-	// example:
-	//
-	// 2024-05-06 15:19:01
-	LastPayTime *string `json:"last_pay_time,omitempty" xml:"last_pay_time,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// GW123456
-	TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	FailCode       *string                                                           `json:"fail_code,omitempty" xml:"fail_code,omitempty"`
+	FailMsg        *string                                                           `json:"fail_msg,omitempty" xml:"fail_msg,omitempty"`
+	LastPayTime    *string                                                           `json:"last_pay_time,omitempty" xml:"last_pay_time,omitempty"`
+	Status         *int32                                                            `json:"status,omitempty" xml:"status,omitempty"`
+	TicketNo       *string                                                           `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModuleBookInfos) String() string {
@@ -347,29 +314,14 @@ func (s *TrainOrderDetailQueryResponseBodyModuleBookInfos) Validate() error {
 }
 
 type TrainOrderDetailQueryResponseBodyModuleBookInfosBookTrainInfos struct {
-	// example:
-	//
-	// BTC
-	ArrStationCode *string `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
-	ArrStationName *string `json:"arr_station_name,omitempty" xml:"arr_station_name,omitempty"`
-	// example:
-	//
-	// 2024-05-07 15:19:01
+	ArrStationCode  *string                                                                          `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
+	ArrStationName  *string                                                                          `json:"arr_station_name,omitempty" xml:"arr_station_name,omitempty"`
 	ArriveTime      *string                                                                          `json:"arrive_time,omitempty" xml:"arrive_time,omitempty"`
 	BookTicketInfos []*TrainOrderDetailQueryResponseBodyModuleBookInfosBookTrainInfosBookTicketInfos `json:"book_ticket_infos,omitempty" xml:"book_ticket_infos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// BDC
-	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
-	DepStationName *string `json:"dep_station_name,omitempty" xml:"dep_station_name,omitempty"`
-	// example:
-	//
-	// 2024-05-06 15:19:01
-	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	// example:
-	//
-	// D1234
-	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	DepStationCode  *string                                                                          `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
+	DepStationName  *string                                                                          `json:"dep_station_name,omitempty" xml:"dep_station_name,omitempty"`
+	DepTime         *string                                                                          `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	TrainNo         *string                                                                          `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModuleBookInfosBookTrainInfos) String() string {
@@ -466,47 +418,17 @@ func (s *TrainOrderDetailQueryResponseBodyModuleBookInfosBookTrainInfos) Validat
 }
 
 type TrainOrderDetailQueryResponseBodyModuleBookInfosBookTrainInfosBookTicketInfos struct {
-	// example:
-	//
-	// 04
-	CoachNo *string `json:"coach_no,omitempty" xml:"coach_no,omitempty"`
-	// example:
-	//
-	// 1111
-	FailCode   *string `json:"fail_code,omitempty" xml:"fail_code,omitempty"`
-	FailReason *string `json:"fail_reason,omitempty" xml:"fail_reason,omitempty"`
-	// example:
-	//
-	// 123456
-	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
-	// example:
-	//
-	// 10000
-	RealTicketPrice *int64 `json:"real_ticket_price,omitempty" xml:"real_ticket_price,omitempty"`
-	// example:
-	//
-	// 1A
-	SeatNo *string `json:"seat_no,omitempty" xml:"seat_no,omitempty"`
-	// example:
-	//
-	// 14
-	SeatType *string `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
-	// example:
-	//
-	// null
-	TicketEntrance *string `json:"ticket_entrance,omitempty" xml:"ticket_entrance,omitempty"`
-	// example:
-	//
-	// 100
-	TicketPrice *int64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	// example:
-	//
-	// 11
-	TicketStatus *int32 `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
-	// example:
-	//
-	// 0
-	TicketType *string `json:"ticket_type,omitempty" xml:"ticket_type,omitempty"`
+	CoachNo         *string `json:"coach_no,omitempty" xml:"coach_no,omitempty"`
+	FailCode        *string `json:"fail_code,omitempty" xml:"fail_code,omitempty"`
+	FailReason      *string `json:"fail_reason,omitempty" xml:"fail_reason,omitempty"`
+	PassengerId     *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	RealTicketPrice *int64  `json:"real_ticket_price,omitempty" xml:"real_ticket_price,omitempty"`
+	SeatNo          *string `json:"seat_no,omitempty" xml:"seat_no,omitempty"`
+	SeatType        *string `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
+	TicketEntrance  *string `json:"ticket_entrance,omitempty" xml:"ticket_entrance,omitempty"`
+	TicketPrice     *int64  `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TicketStatus    *int32  `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
+	TicketType      *string `json:"ticket_type,omitempty" xml:"ticket_type,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModuleBookInfosBookTrainInfosBookTicketInfos) String() string {
@@ -621,23 +543,11 @@ func (s *TrainOrderDetailQueryResponseBodyModuleBookInfosBookTrainInfosBookTicke
 }
 
 type TrainOrderDetailQueryResponseBodyModuleChangeInfos struct {
-	// example:
-	//
-	// 1234567890
 	ChangeApplyId    *string                                                               `json:"change_apply_id,omitempty" xml:"change_apply_id,omitempty"`
 	ChangeTrainInfos []*TrainOrderDetailQueryResponseBodyModuleChangeInfosChangeTrainInfos `json:"change_train_infos,omitempty" xml:"change_train_infos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2024-05-06 15:19:01
-	LimitPayTime *string `json:"limit_pay_time,omitempty" xml:"limit_pay_time,omitempty"`
-	// example:
-	//
-	// 12345
-	OutChangeApplyId *string `json:"out_change_apply_id,omitempty" xml:"out_change_apply_id,omitempty"`
-	// example:
-	//
-	// 1
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	LimitPayTime     *string                                                               `json:"limit_pay_time,omitempty" xml:"limit_pay_time,omitempty"`
+	OutChangeApplyId *string                                                               `json:"out_change_apply_id,omitempty" xml:"out_change_apply_id,omitempty"`
+	Status           *string                                                               `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModuleChangeInfos) String() string {
@@ -707,29 +617,14 @@ func (s *TrainOrderDetailQueryResponseBodyModuleChangeInfos) Validate() error {
 }
 
 type TrainOrderDetailQueryResponseBodyModuleChangeInfosChangeTrainInfos struct {
-	// example:
-	//
-	// BDC
-	ArrStationCode *string `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
-	ArrStationName *string `json:"arr_station_name,omitempty" xml:"arr_station_name,omitempty"`
-	// example:
-	//
-	// 2024-05-06 15:19:01
+	ArrStationCode    *string                                                                                `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
+	ArrStationName    *string                                                                                `json:"arr_station_name,omitempty" xml:"arr_station_name,omitempty"`
 	ArriveTime        *string                                                                                `json:"arrive_time,omitempty" xml:"arrive_time,omitempty"`
 	ChangeTicketInfos []*TrainOrderDetailQueryResponseBodyModuleChangeInfosChangeTrainInfosChangeTicketInfos `json:"change_ticket_infos,omitempty" xml:"change_ticket_infos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// BTC
-	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
-	DepStationName *string `json:"dep_station_name,omitempty" xml:"dep_station_name,omitempty"`
-	// example:
-	//
-	// 2024-05-06 15:19:01
-	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	// example:
-	//
-	// D1234
-	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	DepStationCode    *string                                                                                `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
+	DepStationName    *string                                                                                `json:"dep_station_name,omitempty" xml:"dep_station_name,omitempty"`
+	DepTime           *string                                                                                `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	TrainNo           *string                                                                                `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModuleChangeInfosChangeTrainInfos) String() string {
@@ -826,59 +721,20 @@ func (s *TrainOrderDetailQueryResponseBodyModuleChangeInfosChangeTrainInfos) Val
 }
 
 type TrainOrderDetailQueryResponseBodyModuleChangeInfosChangeTrainInfosChangeTicketInfos struct {
-	// example:
-	//
-	// 0
-	ChangeCost *int64 `json:"change_cost,omitempty" xml:"change_cost,omitempty"`
-	// example:
-	//
-	// 0
-	ChangeDiff *int64 `json:"change_diff,omitempty" xml:"change_diff,omitempty"`
-	// example:
-	//
-	// 0
-	ChangeGapHandingFee *int64 `json:"change_gap_handing_fee,omitempty" xml:"change_gap_handing_fee,omitempty"`
-	// example:
-	//
-	// 0
-	ChangeMinTicketAmountHandingFee *int64 `json:"change_min_ticket_amount_handing_fee,omitempty" xml:"change_min_ticket_amount_handing_fee,omitempty"`
-	// example:
-	//
-	// 04
-	CoachNo *string `json:"coach_no,omitempty" xml:"coach_no,omitempty"`
-	// example:
-	//
-	// 4000
-	FailCode   *string `json:"fail_code,omitempty" xml:"fail_code,omitempty"`
-	FailReason *string `json:"fail_reason,omitempty" xml:"fail_reason,omitempty"`
-	// example:
-	//
-	// 123456
-	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
-	// example:
-	//
-	// 10000
-	RealTicketPrice *int64 `json:"real_ticket_price,omitempty" xml:"real_ticket_price,omitempty"`
-	// example:
-	//
-	// 1A
-	SeatNo *string `json:"seat_no,omitempty" xml:"seat_no,omitempty"`
-	// example:
-	//
-	// 14
-	SeatType *string `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
-	// example:
-	//
-	// null
-	TicketEntrance *string `json:"ticket_entrance,omitempty" xml:"ticket_entrance,omitempty"`
-	// example:
-	//
-	// 1234
-	TicketPrice *int64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	// example:
-	//
-	// 11
-	TicketStatus *string `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
+	ChangeCost                      *int64  `json:"change_cost,omitempty" xml:"change_cost,omitempty"`
+	ChangeDiff                      *int64  `json:"change_diff,omitempty" xml:"change_diff,omitempty"`
+	ChangeGapHandingFee             *int64  `json:"change_gap_handing_fee,omitempty" xml:"change_gap_handing_fee,omitempty"`
+	ChangeMinTicketAmountHandingFee *int64  `json:"change_min_ticket_amount_handing_fee,omitempty" xml:"change_min_ticket_amount_handing_fee,omitempty"`
+	CoachNo                         *string `json:"coach_no,omitempty" xml:"coach_no,omitempty"`
+	FailCode                        *string `json:"fail_code,omitempty" xml:"fail_code,omitempty"`
+	FailReason                      *string `json:"fail_reason,omitempty" xml:"fail_reason,omitempty"`
+	PassengerId                     *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	RealTicketPrice                 *int64  `json:"real_ticket_price,omitempty" xml:"real_ticket_price,omitempty"`
+	SeatNo                          *string `json:"seat_no,omitempty" xml:"seat_no,omitempty"`
+	SeatType                        *string `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
+	TicketEntrance                  *string `json:"ticket_entrance,omitempty" xml:"ticket_entrance,omitempty"`
+	TicketPrice                     *int64  `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TicketStatus                    *string `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModuleChangeInfosChangeTrainInfosChangeTicketInfos) String() string {
@@ -1020,19 +876,10 @@ func (s *TrainOrderDetailQueryResponseBodyModuleChangeInfosChangeTrainInfosChang
 }
 
 type TrainOrderDetailQueryResponseBodyModuleOfflineRefundDetails struct {
-	// example:
-	//
-	// 123456
 	OfflineRefundId    *string                                                                          `json:"offline_refund_id,omitempty" xml:"offline_refund_id,omitempty"`
 	OfflineRefundInfos []*TrainOrderDetailQueryResponseBodyModuleOfflineRefundDetailsOfflineRefundInfos `json:"offline_refund_infos,omitempty" xml:"offline_refund_infos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	OfflineRefundType *string `json:"offline_refund_type,omitempty" xml:"offline_refund_type,omitempty"`
-	// example:
-	//
-	// 10000
-	RefundTotalPrice *int64 `json:"refund_total_price,omitempty" xml:"refund_total_price,omitempty"`
+	OfflineRefundType  *string                                                                          `json:"offline_refund_type,omitempty" xml:"offline_refund_type,omitempty"`
+	RefundTotalPrice   *int64                                                                           `json:"refund_total_price,omitempty" xml:"refund_total_price,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModuleOfflineRefundDetails) String() string {
@@ -1093,14 +940,8 @@ func (s *TrainOrderDetailQueryResponseBodyModuleOfflineRefundDetails) Validate()
 }
 
 type TrainOrderDetailQueryResponseBodyModuleOfflineRefundDetailsOfflineRefundInfos struct {
-	// example:
-	//
-	// 123456
 	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
-	// example:
-	//
-	// 111
-	RefundPrice *int64 `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
+	RefundPrice *int64  `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModuleOfflineRefundDetailsOfflineRefundInfos) String() string {
@@ -1134,35 +975,14 @@ func (s *TrainOrderDetailQueryResponseBodyModuleOfflineRefundDetailsOfflineRefun
 }
 
 type TrainOrderDetailQueryResponseBodyModulePassengerInfoS struct {
-	CostCenterInfo *TrainOrderDetailQueryResponseBodyModulePassengerInfoSCostCenterInfo `json:"cost_center_info,omitempty" xml:"cost_center_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
-	CountryCode *string `json:"country_code,omitempty" xml:"country_code,omitempty"`
-	// example:
-	//
-	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
-	PassengerCertNo *string `json:"passenger_cert_no,omitempty" xml:"passenger_cert_no,omitempty"`
-	// example:
-	//
-	// 170d9ac6f8807f9ec603c688f45f78a41
-	PassengerCertType *string `json:"passenger_cert_type,omitempty" xml:"passenger_cert_type,omitempty"`
-	// example:
-	//
-	// 123456
-	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
-	// example:
-	//
-	// b6a6fc1bdf1ba60e25c2e132b612c8819
-	PassengerMobile *string `json:"passenger_mobile,omitempty" xml:"passenger_mobile,omitempty"`
-	// example:
-	//
-	// 949c9f34f677a0e5d249dfc94f5e62cc7
-	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	// example:
-	//
-	// b6a6fc1bdf1ba60e25c2e132b612c8819
-	ValidDateEnd *string `json:"valid_date_end,omitempty" xml:"valid_date_end,omitempty"`
+	CostCenterInfo    *TrainOrderDetailQueryResponseBodyModulePassengerInfoSCostCenterInfo `json:"cost_center_info,omitempty" xml:"cost_center_info,omitempty" type:"Struct"`
+	CountryCode       *string                                                              `json:"country_code,omitempty" xml:"country_code,omitempty"`
+	PassengerCertNo   *string                                                              `json:"passenger_cert_no,omitempty" xml:"passenger_cert_no,omitempty"`
+	PassengerCertType *string                                                              `json:"passenger_cert_type,omitempty" xml:"passenger_cert_type,omitempty"`
+	PassengerId       *string                                                              `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	PassengerMobile   *string                                                              `json:"passenger_mobile,omitempty" xml:"passenger_mobile,omitempty"`
+	PassengerName     *string                                                              `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	ValidDateEnd      *string                                                              `json:"valid_date_end,omitempty" xml:"valid_date_end,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModulePassengerInfoS) String() string {
@@ -1256,34 +1076,16 @@ func (s *TrainOrderDetailQueryResponseBodyModulePassengerInfoS) Validate() error
 
 type TrainOrderDetailQueryResponseBodyModulePassengerInfoSCostCenterInfo struct {
 	CascadeDeptName *string `json:"cascade_dept_name,omitempty" xml:"cascade_dept_name,omitempty"`
-	// example:
-	//
-	// 111111
-	CostCenterId   *string `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
-	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
-	// example:
-	//
-	// 123456
-	CostCenterNo *string `json:"cost_center_no,omitempty" xml:"cost_center_no,omitempty"`
-	// example:
-	//
-	// 582000002311
-	DepartId   *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	// example:
-	//
-	// 11111
-	InvoiceId    *string `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
-	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	// example:
-	//
-	// 123456
-	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
-	// example:
-	//
-	// 1234
-	ProjectCode  *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	CostCenterId    *string `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	CostCenterName  *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	CostCenterNo    *string `json:"cost_center_no,omitempty" xml:"cost_center_no,omitempty"`
+	DepartId        *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName      *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	InvoiceId       *string `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	InvoiceTitle    *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	PassengerId     *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	ProjectCode     *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle    *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModulePassengerInfoSCostCenterInfo) String() string {
@@ -1398,26 +1200,12 @@ func (s *TrainOrderDetailQueryResponseBodyModulePassengerInfoSCostCenterInfo) Va
 }
 
 type TrainOrderDetailQueryResponseBodyModuleRefundInfos struct {
-	// example:
-	//
-	// 1111
-	FailCode *string `json:"fail_code,omitempty" xml:"fail_code,omitempty"`
-	FailMsg  *string `json:"fail_msg,omitempty" xml:"fail_msg,omitempty"`
-	// example:
-	//
-	// 123456778
-	OutRefundId *string `json:"out_refund_id,omitempty" xml:"out_refund_id,omitempty"`
-	// String
-	//
-	// example:
-	//
-	// 123456
+	FailCode        *string                                                              `json:"fail_code,omitempty" xml:"fail_code,omitempty"`
+	FailMsg         *string                                                              `json:"fail_msg,omitempty" xml:"fail_msg,omitempty"`
+	OutRefundId     *string                                                              `json:"out_refund_id,omitempty" xml:"out_refund_id,omitempty"`
 	RefundId        *string                                                              `json:"refund_id,omitempty" xml:"refund_id,omitempty"`
 	RefundTrainInfo []*TrainOrderDetailQueryResponseBodyModuleRefundInfosRefundTrainInfo `json:"refund_train_info,omitempty" xml:"refund_train_info,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status          *string                                                              `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModuleRefundInfos) String() string {
@@ -1496,25 +1284,13 @@ func (s *TrainOrderDetailQueryResponseBodyModuleRefundInfos) Validate() error {
 }
 
 type TrainOrderDetailQueryResponseBodyModuleRefundInfosRefundTrainInfo struct {
-	ArrStationName *string `json:"arr_station_name,omitempty" xml:"arr_station_name,omitempty"`
-	// example:
-	//
-	// 2024-05-06 15:19:01
-	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	// example:
-	//
-	// BTC
-	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
-	DepStationName *string `json:"dep_station_name,omitempty" xml:"dep_station_name,omitempty"`
-	// example:
-	//
-	// 2024-05-06 15:19:01
+	ArrStationName    *string                                                                               `json:"arr_station_name,omitempty" xml:"arr_station_name,omitempty"`
+	ArrTime           *string                                                                               `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepStationCode    *string                                                                               `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
+	DepStationName    *string                                                                               `json:"dep_station_name,omitempty" xml:"dep_station_name,omitempty"`
 	DepTime           *string                                                                               `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
 	RefundTicketInfos []*TrainOrderDetailQueryResponseBodyModuleRefundInfosRefundTrainInfoRefundTicketInfos `json:"refund_ticket_infos,omitempty" xml:"refund_ticket_infos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// K1234
-	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	TrainNo           *string                                                                               `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModuleRefundInfosRefundTrainInfo) String() string {
@@ -1602,22 +1378,10 @@ func (s *TrainOrderDetailQueryResponseBodyModuleRefundInfosRefundTrainInfo) Vali
 }
 
 type TrainOrderDetailQueryResponseBodyModuleRefundInfosRefundTrainInfoRefundTicketInfos struct {
-	// example:
-	//
-	// 123456
 	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
-	// example:
-	//
-	// 0
-	RefundCost *int64 `json:"refund_cost,omitempty" xml:"refund_cost,omitempty"`
-	// example:
-	//
-	// 10000
-	RefundPrice *int64 `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
-	// example:
-	//
-	// 10000
-	TicketPrice *int64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	RefundCost  *int64  `json:"refund_cost,omitempty" xml:"refund_cost,omitempty"`
+	RefundPrice *int64  `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
+	TicketPrice *int64  `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
 }
 
 func (s TrainOrderDetailQueryResponseBodyModuleRefundInfosRefundTrainInfoRefundTicketInfos) String() string {

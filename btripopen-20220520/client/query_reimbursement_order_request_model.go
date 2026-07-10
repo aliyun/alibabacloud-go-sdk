@@ -17,15 +17,8 @@ type iQueryReimbursementOrderRequest interface {
 
 type QueryReimbursementOrderRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// RT204396
 	ReimbOrderNo *string `json:"reimb_order_no,omitempty" xml:"reimb_order_no,omitempty"`
-	// example:
-	//
-	// ding123
-	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	SubCorpId    *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 }
 
 func (s QueryReimbursementOrderRequest) String() string {

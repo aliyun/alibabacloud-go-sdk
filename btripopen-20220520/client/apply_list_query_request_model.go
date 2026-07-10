@@ -36,54 +36,18 @@ type iApplyListQueryRequest interface {
 }
 
 type ApplyListQueryRequest struct {
-	// example:
-	//
-	// true
-	AllApply *bool `json:"all_apply,omitempty" xml:"all_apply,omitempty"`
-	// example:
-	//
-	// dept1
-	DepartId *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	// example:
-	//
-	// 2017-05-01 00:00:00
-	EndTime *string `json:"end_time,omitempty" xml:"end_time,omitempty"`
-	// example:
-	//
-	// 2018-05-01 00:00:00
-	GmtModified *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
-	// example:
-	//
-	// false
-	OnlyShangLvApply *bool `json:"only_shang_lv_apply,omitempty" xml:"only_shang_lv_apply,omitempty"`
-	// example:
-	//
-	// 1
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// example:
-	//
-	// 2017-05-01 00:00:00
-	StartTime *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
-	// example:
-	//
-	// btrip123
-	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
-	// example:
-	//
-	// 2
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
-	// example:
-	//
-	// abs123
-	UnionNo *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
-	// example:
-	//
-	// user1
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	AllApply         *bool   `json:"all_apply,omitempty" xml:"all_apply,omitempty"`
+	DepartId         *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	EndTime          *string `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	GmtModified      *string `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	OnlyShangLvApply *bool   `json:"only_shang_lv_apply,omitempty" xml:"only_shang_lv_apply,omitempty"`
+	Page             *int32  `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	StartTime        *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	SubCorpId        *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	Type             *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	UnionNo          *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	UserId           *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ApplyListQueryRequest) String() string {

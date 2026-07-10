@@ -24,29 +24,12 @@ type iHotelPricePullResponseBody interface {
 }
 
 type HotelPricePullResponseBody struct {
-	// example:
-	//
-	// 0
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// None
-	Message *string                           `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *HotelPricePullResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 9BCDD5DE-E6CB-5C25-93B9-9BE178A0AA56
-	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 210f079e16603757182131635d866a
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                           `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *HotelPricePullResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                           `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                           `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelPricePullResponseBody) String() string {
@@ -155,17 +138,11 @@ func (s *HotelPricePullResponseBodyModule) Validate() error {
 }
 
 type HotelPricePullResponseBodyModuleHotelPriceInfos struct {
-	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// example:
-	//
-	// 64389015
+	Address   *string                                                 `json:"address,omitempty" xml:"address,omitempty"`
 	HotelId   *string                                                 `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
 	HotelName *string                                                 `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
 	Rooms     []*HotelPricePullResponseBodyModuleHotelPriceInfosRooms `json:"rooms,omitempty" xml:"rooms,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 9BCDD5DE-E6CB-5C25-93B9-9BE178A0AA56
-	SearchId *string `json:"search_id,omitempty" xml:"search_id,omitempty"`
+	SearchId  *string                                                 `json:"search_id,omitempty" xml:"search_id,omitempty"`
 }
 
 func (s HotelPricePullResponseBodyModuleHotelPriceInfos) String() string {
@@ -235,43 +212,19 @@ func (s *HotelPricePullResponseBodyModuleHotelPriceInfos) Validate() error {
 }
 
 type HotelPricePullResponseBodyModuleHotelPriceInfosRooms struct {
-	// example:
-	//
-	// 32
-	Area          *string `json:"area,omitempty" xml:"area,omitempty"`
-	Bed           *string `json:"bed,omitempty" xml:"bed,omitempty"`
-	BedTypeString *string `json:"bed_type_string,omitempty" xml:"bed_type_string,omitempty"`
-	// example:
-	//
-	// {\\"bathtub\\":true}
-	Facility *string `json:"facility,omitempty" xml:"facility,omitempty"`
-	// example:
-	//
-	// 1,2,3,4,5,6
-	Floor *string `json:"floor,omitempty" xml:"floor,omitempty"`
-	// example:
-	//
-	// 2
-	MaxOccupancy *int32 `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
-	// example:
-	//
-	// 0
+	Area           *string                                                      `json:"area,omitempty" xml:"area,omitempty"`
+	Bed            *string                                                      `json:"bed,omitempty" xml:"bed,omitempty"`
+	BedTypeString  *string                                                      `json:"bed_type_string,omitempty" xml:"bed_type_string,omitempty"`
+	Facility       *string                                                      `json:"facility,omitempty" xml:"facility,omitempty"`
+	Floor          *string                                                      `json:"floor,omitempty" xml:"floor,omitempty"`
+	MaxOccupancy   *int32                                                       `json:"max_occupancy,omitempty" xml:"max_occupancy,omitempty"`
 	NetworkService *string                                                      `json:"network_service,omitempty" xml:"network_service,omitempty"`
 	Pics           []*string                                                    `json:"pics,omitempty" xml:"pics,omitempty" type:"Repeated"`
 	Rates          []*HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates `json:"rates,omitempty" xml:"rates,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 64681618
-	RoomId   *string `json:"room_id,omitempty" xml:"room_id,omitempty"`
-	RoomName *string `json:"room_name,omitempty" xml:"room_name,omitempty"`
-	// example:
-	//
-	// 0
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 1
-	WindowType *string `json:"window_type,omitempty" xml:"window_type,omitempty"`
+	RoomId         *string                                                      `json:"room_id,omitempty" xml:"room_id,omitempty"`
+	RoomName       *string                                                      `json:"room_name,omitempty" xml:"room_name,omitempty"`
+	Status         *int32                                                       `json:"status,omitempty" xml:"status,omitempty"`
+	WindowType     *string                                                      `json:"window_type,omitempty" xml:"window_type,omitempty"`
 }
 
 func (s HotelPricePullResponseBodyModuleHotelPriceInfosRooms) String() string {
@@ -413,90 +366,30 @@ func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRooms) Validate() error 
 }
 
 type HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates struct {
-	// example:
-	//
-	// demo
-	Breakfast *string `json:"breakfast,omitempty" xml:"breakfast,omitempty"`
-	// example:
-	//
-	// 1
+	Breakfast              *string                                                                          `json:"breakfast,omitempty" xml:"breakfast,omitempty"`
 	BreakfastCount         *int32                                                                           `json:"breakfast_count,omitempty" xml:"breakfast_count,omitempty"`
 	BtripHotelCancelPolicy *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy `json:"btrip_hotel_cancel_policy,omitempty" xml:"btrip_hotel_cancel_policy,omitempty" type:"Struct"`
 	CancelPolicyDesc       *string                                                                          `json:"cancel_policy_desc,omitempty" xml:"cancel_policy_desc,omitempty"`
-	// example:
-	//
-	// 1
-	CompanyAassist *string `json:"company_aassist,omitempty" xml:"company_aassist,omitempty"`
-	// example:
-	//
-	// CNY
-	CurrencyCode *string `json:"currency_code,omitempty" xml:"currency_code,omitempty"`
-	// example:
-	//
-	// true
-	InstantConfirm *bool `json:"instant_confirm,omitempty" xml:"instant_confirm,omitempty"`
-	// example:
-	//
-	// 721700504622
-	ItemId *string `json:"item_id,omitempty" xml:"item_id,omitempty"`
-	// example:
-	//
-	// 4
-	MaxAdvHours *int32 `json:"max_adv_hours,omitempty" xml:"max_adv_hours,omitempty"`
-	// example:
-	//
-	// 4344
-	MaxDays *int32 `json:"max_days,omitempty" xml:"max_days,omitempty"`
-	// example:
-	//
-	// 0
-	MinAdvHours *int32 `json:"min_adv_hours,omitempty" xml:"min_adv_hours,omitempty"`
-	// example:
-	//
-	// 0
-	MinDays *int32 `json:"min_days,omitempty" xml:"min_days,omitempty"`
-	// example:
-	//
-	// 0
-	Nod *int32 `json:"nod,omitempty" xml:"nod,omitempty"`
-	// example:
-	//
-	// 1
-	Nop *int32 `json:"nop,omitempty" xml:"nop,omitempty"`
-	// example:
-	//
-	// 1
-	PaymentType *int32 `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
-	// example:
-	//
-	// 30000
-	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
-	// example:
-	//
-	// demo
-	PromotionInfo *string `json:"promotion_info,omitempty" xml:"promotion_info,omitempty"`
-	// example:
-	//
-	// 4
-	Quota      *int32                                                                 `json:"quota,omitempty" xml:"quota,omitempty"`
-	RateDailys []*HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys `json:"rate_dailys,omitempty" xml:"rate_dailys,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 4509447432148
-	RateId       *string `json:"rate_id,omitempty" xml:"rate_id,omitempty"`
-	RatePlanName *string `json:"rate_plan_name,omitempty" xml:"rate_plan_name,omitempty"`
-	// example:
-	//
-	// 4509447432148
-	RpId *string `json:"rp_id,omitempty" xml:"rp_id,omitempty"`
-	// example:
-	//
-	// 2829486701
-	SellerId *string `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
-	// example:
-	//
-	// true
-	SupportSpecialInvoice *bool `json:"support_special_invoice,omitempty" xml:"support_special_invoice,omitempty"`
+	CompanyAassist         *string                                                                          `json:"company_aassist,omitempty" xml:"company_aassist,omitempty"`
+	CurrencyCode           *string                                                                          `json:"currency_code,omitempty" xml:"currency_code,omitempty"`
+	InstantConfirm         *bool                                                                            `json:"instant_confirm,omitempty" xml:"instant_confirm,omitempty"`
+	ItemId                 *string                                                                          `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	MaxAdvHours            *int32                                                                           `json:"max_adv_hours,omitempty" xml:"max_adv_hours,omitempty"`
+	MaxDays                *int32                                                                           `json:"max_days,omitempty" xml:"max_days,omitempty"`
+	MinAdvHours            *int32                                                                           `json:"min_adv_hours,omitempty" xml:"min_adv_hours,omitempty"`
+	MinDays                *int32                                                                           `json:"min_days,omitempty" xml:"min_days,omitempty"`
+	Nod                    *int32                                                                           `json:"nod,omitempty" xml:"nod,omitempty"`
+	Nop                    *int32                                                                           `json:"nop,omitempty" xml:"nop,omitempty"`
+	PaymentType            *int32                                                                           `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+	Price                  *int64                                                                           `json:"price,omitempty" xml:"price,omitempty"`
+	PromotionInfo          *string                                                                          `json:"promotion_info,omitempty" xml:"promotion_info,omitempty"`
+	Quota                  *int32                                                                           `json:"quota,omitempty" xml:"quota,omitempty"`
+	RateDailys             []*HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys           `json:"rate_dailys,omitempty" xml:"rate_dailys,omitempty" type:"Repeated"`
+	RateId                 *string                                                                          `json:"rate_id,omitempty" xml:"rate_id,omitempty"`
+	RatePlanName           *string                                                                          `json:"rate_plan_name,omitempty" xml:"rate_plan_name,omitempty"`
+	RpId                   *string                                                                          `json:"rp_id,omitempty" xml:"rp_id,omitempty"`
+	SellerId               *string                                                                          `json:"seller_id,omitempty" xml:"seller_id,omitempty"`
+	SupportSpecialInvoice  *bool                                                                            `json:"support_special_invoice,omitempty" xml:"support_special_invoice,omitempty"`
 }
 
 func (s HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) String() string {
@@ -743,10 +636,7 @@ func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRates) Validate() e
 
 type HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy struct {
 	BtripHotelCancelPolicyInfoDTOList []*HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicyBtripHotelCancelPolicyInfoDTOList `json:"btrip_hotel_cancel_policy_info_d_t_o_list,omitempty" xml:"btrip_hotel_cancel_policy_info_d_t_o_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	CancelPolicyType *int32 `json:"cancel_policy_type,omitempty" xml:"cancel_policy_type,omitempty"`
+	CancelPolicyType                  *int32                                                                                                              `json:"cancel_policy_type,omitempty" xml:"cancel_policy_type,omitempty"`
 }
 
 func (s HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicy) String() string {
@@ -789,13 +679,7 @@ func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCanc
 }
 
 type HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCancelPolicyBtripHotelCancelPolicyInfoDTOList struct {
-	// example:
-	//
-	// 1
-	Hour *int64 `json:"hour,omitempty" xml:"hour,omitempty"`
-	// example:
-	//
-	// 20
+	Hour  *int64 `json:"hour,omitempty" xml:"hour,omitempty"`
 	Value *int64 `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -830,22 +714,10 @@ func (s *HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesBtripHotelCanc
 }
 
 type HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys struct {
-	// example:
-	//
-	// 30000
-	DiscountPrice *int64 `json:"discount_price,omitempty" xml:"discount_price,omitempty"`
-	// example:
-	//
-	// 62800
-	LastDiscountsPrice *int64 `json:"last_discounts_price,omitempty" xml:"last_discounts_price,omitempty"`
-	// example:
-	//
-	// 62800
-	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
-	// example:
-	//
-	// 2023-10-17
-	StartDate *string `json:"start_date,omitempty" xml:"start_date,omitempty"`
+	DiscountPrice      *int64  `json:"discount_price,omitempty" xml:"discount_price,omitempty"`
+	LastDiscountsPrice *int64  `json:"last_discounts_price,omitempty" xml:"last_discounts_price,omitempty"`
+	Price              *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	StartDate          *string `json:"start_date,omitempty" xml:"start_date,omitempty"`
 }
 
 func (s HotelPricePullResponseBodyModuleHotelPriceInfosRoomsRatesRateDailys) String() string {

@@ -19,18 +19,8 @@ type iFlightOrderDetailV2Request interface {
 
 type FlightOrderDetailV2Request struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cheshiapi
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	// example:
-	//
-	// 1017002195370467138
-	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 1017002195370467137
+	IsvName    *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OrderId    *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 }
 

@@ -24,24 +24,12 @@ type iHotelExceedApplyQueryResponseBody interface {
 }
 
 type HotelExceedApplyQueryResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                                  `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                  `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *HotelExceedApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// E03779E6-71C2-5082-ABE3-6315B8247EE8
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *HotelExceedApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelExceedApplyQueryResponseBody) String() string {
@@ -116,46 +104,19 @@ func (s *HotelExceedApplyQueryResponseBody) Validate() error {
 }
 
 type HotelExceedApplyQueryResponseBodyModule struct {
-	// example:
-	//
-	// 27238197
 	ApplyId              *int64                                                       `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ApplyIntentionInfoDo *HotelExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo `json:"apply_intention_info_do,omitempty" xml:"apply_intention_info_do,omitempty" type:"Struct"`
 	BtripCause           *string                                                      `json:"btrip_cause,omitempty" xml:"btrip_cause,omitempty"`
-	// example:
-	//
-	// corp1
-	CorpId       *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	ExceedReason *string `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
-	// example:
-	//
-	// 16
-	ExceedType *int32 `json:"exceed_type,omitempty" xml:"exceed_type,omitempty"`
-	// example:
-	//
-	// 10000
-	OriginStandard *string `json:"origin_standard,omitempty" xml:"origin_standard,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 2022-02-11T16:25Z
-	SubmitTime *string `json:"submit_time,omitempty" xml:"submit_time,omitempty"`
-	// example:
-	//
-	// 0001A1100000007EX08O
-	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	// example:
-	//
-	// test_corp
-	ThirdpartCorpId *string `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
-	// example:
-	//
-	// user1
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	CorpId               *string                                                      `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	ExceedReason         *string                                                      `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
+	ExceedType           *int32                                                       `json:"exceed_type,omitempty" xml:"exceed_type,omitempty"`
+	OriginStandard       *string                                                      `json:"origin_standard,omitempty" xml:"origin_standard,omitempty"`
+	Status               *int32                                                       `json:"status,omitempty" xml:"status,omitempty"`
+	SubmitTime           *string                                                      `json:"submit_time,omitempty" xml:"submit_time,omitempty"`
+	ThirdpartApplyId     *string                                                      `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartCorpId      *string                                                      `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
+	UserId               *string                                                      `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName             *string                                                      `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s HotelExceedApplyQueryResponseBodyModule) String() string {
@@ -293,31 +254,13 @@ func (s *HotelExceedApplyQueryResponseBodyModule) Validate() error {
 }
 
 type HotelExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo struct {
-	// example:
-	//
-	// 2021-07-08
-	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
-	// example:
-	//
-	// 2021-07-08
+	CheckIn  *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
 	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
-	// example:
-	//
-	// SHA
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
 	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	// example:
-	//
-	// 10000
-	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
-	// example:
-	//
-	// true
-	Together *bool `json:"together,omitempty" xml:"together,omitempty"`
-	// example:
-	//
-	// 16
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Price    *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	Together *bool   `json:"together,omitempty" xml:"together,omitempty"`
+	Type     *int32  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s HotelExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo) String() string {

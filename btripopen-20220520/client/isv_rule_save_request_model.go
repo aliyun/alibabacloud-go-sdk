@@ -30,16 +30,8 @@ type IsvRuleSaveRequest struct {
 	BookuserList []*IsvRuleSaveRequestBookuserList `json:"bookuser_list,omitempty" xml:"bookuser_list,omitempty" type:"Repeated"`
 	RuleNeed     *bool                             `json:"rule_need,omitempty" xml:"rule_need,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

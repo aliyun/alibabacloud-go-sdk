@@ -30,19 +30,9 @@ type IntlFlightOrderCancelRequest struct {
 	//
 	// ZHANG/SAN
 	BuyerName *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
-	// example:
-	//
-	// TRAVEL
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	IsvName   *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1012000000000000
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// F11374007131319304192
+	OrderId    *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 }
 

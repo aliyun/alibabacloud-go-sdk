@@ -25,31 +25,13 @@ type iExceedApplySyncRequest interface {
 
 type ExceedApplySyncRequest struct {
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // 823744
   ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-  // example:
-  // 
-  // 3
   BizCategory *int32 `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
   Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // 1
   Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-  // example:
-  // 
-  // 123421
   ThirdpartyFlowId *string `json:"thirdparty_flow_id,omitempty" xml:"thirdparty_flow_id,omitempty"`
   // This parameter is required.
-  // 
-  // example:
-  // 
-  // open5145141
   UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

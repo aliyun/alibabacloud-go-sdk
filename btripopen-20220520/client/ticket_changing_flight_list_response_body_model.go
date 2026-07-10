@@ -24,24 +24,12 @@ type iTicketChangingFlightListResponseBody interface {
 }
 
 type TicketChangingFlightListResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                                     `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                     `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *TicketChangingFlightListResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                     `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                     `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TicketChangingFlightListResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                       `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                     `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TicketChangingFlightListResponseBody) String() string {
@@ -150,76 +138,31 @@ func (s *TicketChangingFlightListResponseBodyModule) Validate() error {
 }
 
 type TicketChangingFlightListResponseBodyModuleFlightInfoList struct {
-	AirlineInfo    *TicketChangingFlightListResponseBodyModuleFlightInfoListAirlineInfo    `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
-	ArrAirportInfo *TicketChangingFlightListResponseBodyModuleFlightInfoListArrAirportInfo `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
-	CabinList      []*TicketChangingFlightListResponseBodyModuleFlightInfoListCabinList    `json:"cabin_list,omitempty" xml:"cabin_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// CA1704
-	CarrierAirline *string `json:"carrier_airline,omitempty" xml:"carrier_airline,omitempty"`
-	// example:
-	//
-	// CA1704
-	CarrierNo      *string                                                                 `json:"carrier_no,omitempty" xml:"carrier_no,omitempty"`
-	DepAirportInfo *TicketChangingFlightListResponseBodyModuleFlightInfoListDepAirportInfo `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// CA1704
-	FlightNo   *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
-	FlightSize *string `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
-	FlightType *string `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
-	// example:
-	//
-	// true
-	IsProtocol *bool `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
-	// example:
-	//
-	// false
-	IsShare *bool `json:"is_share,omitempty" xml:"is_share,omitempty"`
-	// example:
-	//
-	// false
-	IsStop *bool `json:"is_stop,omitempty" xml:"is_stop,omitempty"`
-	// example:
-	//
-	// Y
-	LowestCabin *string `json:"lowest_cabin,omitempty" xml:"lowest_cabin,omitempty"`
-	// example:
-	//
-	// Y
-	LowestCabinClass *string                                                                     `json:"lowest_cabin_class,omitempty" xml:"lowest_cabin_class,omitempty"`
-	LowestCabinDesc  *string                                                                     `json:"lowest_cabin_desc,omitempty" xml:"lowest_cabin_desc,omitempty"`
-	LowestCabinNum   *string                                                                     `json:"lowest_cabin_num,omitempty" xml:"lowest_cabin_num,omitempty"`
-	LowestCabinPrice []*TicketChangingFlightListResponseBodyModuleFlightInfoListLowestCabinPrice `json:"lowest_cabin_price,omitempty" xml:"lowest_cabin_price,omitempty" type:"Repeated"`
-	MealDesc         *string                                                                     `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
-	// example:
-	//
-	// 2000-00-00 00:00:00
-	ModifyFlightArrTime *string `json:"modify_flight_arr_time,omitempty" xml:"modify_flight_arr_time,omitempty"`
-	// example:
-	//
-	// 2000-00-00 00:00:00
-	ModifyFlightDepDate *string `json:"modify_flight_dep_date,omitempty" xml:"modify_flight_dep_date,omitempty"`
-	// example:
-	//
-	// 2000-00-00 00:00:00
-	ModifyFlightDepTime *string `json:"modify_flight_dep_time,omitempty" xml:"modify_flight_dep_time,omitempty"`
-	// example:
-	//
-	// d1fb9e0a794f45e1b762d36ff1d17zz
-	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
-	// example:
-	//
-	// 2000-00-00 00:00:00
-	StopArrTime *string `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
-	// example:
-	//
-	// HGH
-	StopCity *string `json:"stop_city,omitempty" xml:"stop_city,omitempty"`
-	// example:
-	//
-	// 2000-00-00 00:00:00
-	StopDepTime *string `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
+	AirlineInfo         *TicketChangingFlightListResponseBodyModuleFlightInfoListAirlineInfo        `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
+	ArrAirportInfo      *TicketChangingFlightListResponseBodyModuleFlightInfoListArrAirportInfo     `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
+	CabinList           []*TicketChangingFlightListResponseBodyModuleFlightInfoListCabinList        `json:"cabin_list,omitempty" xml:"cabin_list,omitempty" type:"Repeated"`
+	CarrierAirline      *string                                                                     `json:"carrier_airline,omitempty" xml:"carrier_airline,omitempty"`
+	CarrierNo           *string                                                                     `json:"carrier_no,omitempty" xml:"carrier_no,omitempty"`
+	DepAirportInfo      *TicketChangingFlightListResponseBodyModuleFlightInfoListDepAirportInfo     `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
+	FlightNo            *string                                                                     `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FlightSize          *string                                                                     `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
+	FlightType          *string                                                                     `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
+	IsProtocol          *bool                                                                       `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	IsShare             *bool                                                                       `json:"is_share,omitempty" xml:"is_share,omitempty"`
+	IsStop              *bool                                                                       `json:"is_stop,omitempty" xml:"is_stop,omitempty"`
+	LowestCabin         *string                                                                     `json:"lowest_cabin,omitempty" xml:"lowest_cabin,omitempty"`
+	LowestCabinClass    *string                                                                     `json:"lowest_cabin_class,omitempty" xml:"lowest_cabin_class,omitempty"`
+	LowestCabinDesc     *string                                                                     `json:"lowest_cabin_desc,omitempty" xml:"lowest_cabin_desc,omitempty"`
+	LowestCabinNum      *string                                                                     `json:"lowest_cabin_num,omitempty" xml:"lowest_cabin_num,omitempty"`
+	LowestCabinPrice    []*TicketChangingFlightListResponseBodyModuleFlightInfoListLowestCabinPrice `json:"lowest_cabin_price,omitempty" xml:"lowest_cabin_price,omitempty" type:"Repeated"`
+	MealDesc            *string                                                                     `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	ModifyFlightArrTime *string                                                                     `json:"modify_flight_arr_time,omitempty" xml:"modify_flight_arr_time,omitempty"`
+	ModifyFlightDepDate *string                                                                     `json:"modify_flight_dep_date,omitempty" xml:"modify_flight_dep_date,omitempty"`
+	ModifyFlightDepTime *string                                                                     `json:"modify_flight_dep_time,omitempty" xml:"modify_flight_dep_time,omitempty"`
+	SessionId           *string                                                                     `json:"session_id,omitempty" xml:"session_id,omitempty"`
+	StopArrTime         *string                                                                     `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
+	StopCity            *string                                                                     `json:"stop_city,omitempty" xml:"stop_city,omitempty"`
+	StopDepTime         *string                                                                     `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
 }
 
 func (s TicketChangingFlightListResponseBodyModuleFlightInfoList) String() string {
@@ -493,9 +436,6 @@ func (s *TicketChangingFlightListResponseBodyModuleFlightInfoList) Validate() er
 }
 
 type TicketChangingFlightListResponseBodyModuleFlightInfoListAirlineInfo struct {
-	// example:
-	//
-	// CA
 	AirlineCode       *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	AirlineName       *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
 	AirlineSimpleName *string `json:"airline_simple_name,omitempty" xml:"airline_simple_name,omitempty"`
@@ -541,20 +481,11 @@ func (s *TicketChangingFlightListResponseBodyModuleFlightInfoListAirlineInfo) Va
 }
 
 type TicketChangingFlightListResponseBodyModuleFlightInfoListArrAirportInfo struct {
-	// example:
-	//
-	// HGH
 	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
 	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
-	// example:
-	//
-	// HGH
-	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	// example:
-	//
-	// T4
-	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Terminal    *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s TicketChangingFlightListResponseBodyModuleFlightInfoListArrAirportInfo) String() string {
@@ -615,32 +546,14 @@ func (s *TicketChangingFlightListResponseBodyModuleFlightInfoListArrAirportInfo)
 }
 
 type TicketChangingFlightListResponseBodyModuleFlightInfoListCabinList struct {
-	// example:
-	//
-	// G
-	Cabin *string `json:"cabin,omitempty" xml:"cabin,omitempty"`
-	// example:
-	//
-	// Y
-	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	CabinDesc  *string `json:"cabin_desc,omitempty" xml:"cabin_desc,omitempty"`
-	// example:
-	//
-	// 80
-	CabinDiscount *int32 `json:"cabin_discount,omitempty" xml:"cabin_discount,omitempty"`
-	// example:
-	//
-	// G
-	ChildCabin *string `json:"child_cabin,omitempty" xml:"child_cabin,omitempty"`
-	// example:
-	//
-	// A
+	Cabin           *string                                                                             `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass      *string                                                                             `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinDesc       *string                                                                             `json:"cabin_desc,omitempty" xml:"cabin_desc,omitempty"`
+	CabinDiscount   *int32                                                                              `json:"cabin_discount,omitempty" xml:"cabin_discount,omitempty"`
+	ChildCabin      *string                                                                             `json:"child_cabin,omitempty" xml:"child_cabin,omitempty"`
 	LeftNum         *string                                                                             `json:"left_num,omitempty" xml:"left_num,omitempty"`
 	ModifyPriceList []*TicketChangingFlightListResponseBodyModuleFlightInfoListCabinListModifyPriceList `json:"modify_price_list,omitempty" xml:"modify_price_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// "360379a11ee84e9aa011baa41b758fe6"
-	OtaItemid *string `json:"ota_itemid,omitempty" xml:"ota_itemid,omitempty"`
+	OtaItemid       *string                                                                             `json:"ota_itemid,omitempty" xml:"ota_itemid,omitempty"`
 }
 
 func (s TicketChangingFlightListResponseBodyModuleFlightInfoListCabinList) String() string {
@@ -737,22 +650,10 @@ func (s *TicketChangingFlightListResponseBodyModuleFlightInfoListCabinList) Vali
 }
 
 type TicketChangingFlightListResponseBodyModuleFlightInfoListCabinListModifyPriceList struct {
-	// example:
-	//
-	// 0
 	PassengerType *int32 `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
-	// example:
-	//
-	// 100
-	TicketPrice *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	// example:
-	//
-	// 100
-	UpgradeFee *int32 `json:"upgrade_fee,omitempty" xml:"upgrade_fee,omitempty"`
-	// example:
-	//
-	// 100
-	UpgradePrice *int32 `json:"upgrade_price,omitempty" xml:"upgrade_price,omitempty"`
+	TicketPrice   *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	UpgradeFee    *int32 `json:"upgrade_fee,omitempty" xml:"upgrade_fee,omitempty"`
+	UpgradePrice  *int32 `json:"upgrade_price,omitempty" xml:"upgrade_price,omitempty"`
 }
 
 func (s TicketChangingFlightListResponseBodyModuleFlightInfoListCabinListModifyPriceList) String() string {
@@ -804,20 +705,11 @@ func (s *TicketChangingFlightListResponseBodyModuleFlightInfoListCabinListModify
 }
 
 type TicketChangingFlightListResponseBodyModuleFlightInfoListDepAirportInfo struct {
-	// example:
-	//
-	// PEK
 	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
 	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
-	// example:
-	//
-	// BJS
-	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
-	// example:
-	//
-	// T3
-	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Terminal    *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s TicketChangingFlightListResponseBodyModuleFlightInfoListDepAirportInfo) String() string {
@@ -878,22 +770,10 @@ func (s *TicketChangingFlightListResponseBodyModuleFlightInfoListDepAirportInfo)
 }
 
 type TicketChangingFlightListResponseBodyModuleFlightInfoListLowestCabinPrice struct {
-	// example:
-	//
-	// 0
 	PassengerType *int32 `json:"passenger_type,omitempty" xml:"passenger_type,omitempty"`
-	// example:
-	//
-	// 100
-	TicketPrice *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	// example:
-	//
-	// 100
-	UpgradeFee *int32 `json:"upgrade_fee,omitempty" xml:"upgrade_fee,omitempty"`
-	// example:
-	//
-	// 100
-	UpgradePrice *int32 `json:"upgrade_price,omitempty" xml:"upgrade_price,omitempty"`
+	TicketPrice   *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	UpgradeFee    *int32 `json:"upgrade_fee,omitempty" xml:"upgrade_fee,omitempty"`
+	UpgradePrice  *int32 `json:"upgrade_price,omitempty" xml:"upgrade_price,omitempty"`
 }
 
 func (s TicketChangingFlightListResponseBodyModuleFlightInfoListLowestCabinPrice) String() string {

@@ -23,29 +23,13 @@ type iFlightPayOrderRequest interface {
 
 type FlightPayOrderRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 100
 	CorpPayPrice *int64 `json:"corp_pay_price,omitempty" xml:"corp_pay_price,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dis123
 	DisOrderId *string            `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	Extra      map[string]*string `json:"extra,omitempty" xml:"extra,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 100
 	PersonalPayPrice *int64 `json:"personal_pay_price,omitempty" xml:"personal_pay_price,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 100
 	TotalPayPrice *int64 `json:"total_pay_price,omitempty" xml:"total_pay_price,omitempty"`
 }
 

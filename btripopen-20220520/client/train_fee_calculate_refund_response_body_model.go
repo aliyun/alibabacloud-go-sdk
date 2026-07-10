@@ -24,27 +24,12 @@ type iTrainFeeCalculateRefundResponseBody interface {
 }
 
 type TrainFeeCalculateRefundResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module
-	Module *TrainFeeCalculateRefundResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 210bc4c416859457407135025d509c
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                    `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                    `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TrainFeeCalculateRefundResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                    `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TrainFeeCalculateRefundResponseBody) String() string {
@@ -119,13 +104,7 @@ func (s *TrainFeeCalculateRefundResponseBody) Validate() error {
 }
 
 type TrainFeeCalculateRefundResponseBodyModule struct {
-	// example:
-	//
-	// 123445
-	DistributeOrderId *string `json:"distribute_order_id,omitempty" xml:"distribute_order_id,omitempty"`
-	// example:
-	//
-	// 1017002195370467200
+	DistributeOrderId  *string                                                        `json:"distribute_order_id,omitempty" xml:"distribute_order_id,omitempty"`
 	OrderId            *string                                                        `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	RefundTrainDetails []*TrainFeeCalculateRefundResponseBodyModuleRefundTrainDetails `json:"refund_train_details,omitempty" xml:"refund_train_details,omitempty" type:"Repeated"`
 }
@@ -179,23 +158,11 @@ func (s *TrainFeeCalculateRefundResponseBodyModule) Validate() error {
 }
 
 type TrainFeeCalculateRefundResponseBodyModuleRefundTrainDetails struct {
-	// example:
-	//
-	// BTC
-	ArrStationCode *string `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
-	// example:
-	//
-	// BDC
-	DepStationCode *string `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
-	// example:
-	//
-	// 2024-05-06 15:19:01
+	ArrStationCode      *string                                                                           `json:"arr_station_code,omitempty" xml:"arr_station_code,omitempty"`
+	DepStationCode      *string                                                                           `json:"dep_station_code,omitempty" xml:"dep_station_code,omitempty"`
 	DepTime             *string                                                                           `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
 	RefundTicketDetails []*TrainFeeCalculateRefundResponseBodyModuleRefundTrainDetailsRefundTicketDetails `json:"refund_ticket_details,omitempty" xml:"refund_ticket_details,omitempty" type:"Repeated"`
-	// example:
-	//
-	// K1234
-	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	TrainNo             *string                                                                           `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 
 func (s TrainFeeCalculateRefundResponseBodyModuleRefundTrainDetails) String() string {
@@ -265,27 +232,12 @@ func (s *TrainFeeCalculateRefundResponseBodyModuleRefundTrainDetails) Validate()
 }
 
 type TrainFeeCalculateRefundResponseBodyModuleRefundTrainDetailsRefundTicketDetails struct {
-	// example:
-	//
-	// true
 	CanRefund     *bool                                                                                        `json:"can_refund,omitempty" xml:"can_refund,omitempty"`
 	PassengerInfo *TrainFeeCalculateRefundResponseBodyModuleRefundTrainDetailsRefundTicketDetailsPassengerInfo `json:"passenger_info,omitempty" xml:"passenger_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// 90
-	RefundCostFee *int64 `json:"refund_cost_fee,omitempty" xml:"refund_cost_fee,omitempty"`
-	// example:
-	//
-	// 10
-	RefundPrice *int64 `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
-	// example:
-	//
-	// 90
-	RefundRate *int64 `json:"refund_rate,omitempty" xml:"refund_rate,omitempty"`
-	// example:
-	//
-	// 100
-	TicketPrice *int64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	RefundCostFee *int64                                                                                       `json:"refund_cost_fee,omitempty" xml:"refund_cost_fee,omitempty"`
+	RefundPrice   *int64                                                                                       `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
+	RefundRate    *int64                                                                                       `json:"refund_rate,omitempty" xml:"refund_rate,omitempty"`
+	TicketPrice   *int64                                                                                       `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
 }
 
 func (s TrainFeeCalculateRefundResponseBodyModuleRefundTrainDetailsRefundTicketDetails) String() string {
@@ -360,22 +312,10 @@ func (s *TrainFeeCalculateRefundResponseBodyModuleRefundTrainDetailsRefundTicket
 }
 
 type TrainFeeCalculateRefundResponseBodyModuleRefundTrainDetailsRefundTicketDetailsPassengerInfo struct {
-	// example:
-	//
-	// 291487e553c5abde3b611aae283e2526f0d733ab55094aadc0b5ba587222a233c
-	PassengerCertNo *string `json:"passenger_cert_no,omitempty" xml:"passenger_cert_no,omitempty"`
-	// example:
-	//
-	// 170d9ac6f8807f9ec603c688f45f78a41
+	PassengerCertNo   *string `json:"passenger_cert_no,omitempty" xml:"passenger_cert_no,omitempty"`
 	PassengerCertType *string `json:"passenger_cert_type,omitempty" xml:"passenger_cert_type,omitempty"`
-	// example:
-	//
-	// 123456
-	PassengerId *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
-	// example:
-	//
-	// 949c9f34f677a0e5d249dfc94f5e62cc7
-	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	PassengerId       *string `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
+	PassengerName     *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
 }
 
 func (s TrainFeeCalculateRefundResponseBodyModuleRefundTrainDetailsRefundTicketDetailsPassengerInfo) String() string {

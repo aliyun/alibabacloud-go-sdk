@@ -48,66 +48,24 @@ type iModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue interface {
 }
 
 type ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue struct {
-	// example:
-	//
-	// true
-	Struct *bool `json:"struct,omitempty" xml:"struct,omitempty"`
-	// example:
-	//
-	// true
-	CancelFeeInd *bool `json:"cancel_fee_ind,omitempty" xml:"cancel_fee_ind,omitempty"`
-	// example:
-	//
-	// false
-	ChangeFeeInd *bool `json:"change_fee_ind,omitempty" xml:"change_fee_ind,omitempty"`
-	// example:
-	//
-	// false
-	UpgradeFeeInd *bool `json:"upgrade_fee_ind,omitempty" xml:"upgrade_fee_ind,omitempty"`
-	// example:
-	//
-	// false
-	ReissueInd *bool `json:"reissue_ind,omitempty" xml:"reissue_ind,omitempty"`
-	// example:
-	//
-	// 0
-	PenaltyTypeCode *int32 `json:"penalty_type_code,omitempty" xml:"penalty_type_code,omitempty"`
-	// example:
-	//
-	// 1
-	PenaltyApplyRangeCode *int32 `json:"penalty_apply_range_code,omitempty" xml:"penalty_apply_range_code,omitempty"`
-	// example:
-	//
-	// 0
-	PenaltyChargeTypeCode *int32 `json:"penalty_charge_type_code,omitempty" xml:"penalty_charge_type_code,omitempty"`
-	// example:
-	//
-	// 1
-	Fee *float64 `json:"fee,omitempty" xml:"fee,omitempty"`
-	// example:
-	//
-	// CNY
-	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
-	// example:
-	//
-	// 0
-	PenaltyPercent *float64 `json:"penalty_percent,omitempty" xml:"penalty_percent,omitempty"`
-	// example:
-	//
-	// 1
-	StartTime *int32 `json:"start_time,omitempty" xml:"start_time,omitempty"`
-	// example:
-	//
-	// 10
-	EndTime *int32 `json:"end_time,omitempty" xml:"end_time,omitempty"`
-	// example:
-	//
-	// 0
-	TimeUnitCode  *int32             `json:"time_unit_code,omitempty" xml:"time_unit_code,omitempty"`
-	Title         *string            `json:"title,omitempty" xml:"title,omitempty"`
-	DepTime       *string            `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	SegmentNumber *string            `json:"segment_number,omitempty" xml:"segment_number,omitempty"`
-	DescInfos     map[string]*string `json:"desc_infos,omitempty" xml:"desc_infos,omitempty"`
+	Struct                *bool              `json:"struct,omitempty" xml:"struct,omitempty"`
+	CancelFeeInd          *bool              `json:"cancel_fee_ind,omitempty" xml:"cancel_fee_ind,omitempty"`
+	ChangeFeeInd          *bool              `json:"change_fee_ind,omitempty" xml:"change_fee_ind,omitempty"`
+	UpgradeFeeInd         *bool              `json:"upgrade_fee_ind,omitempty" xml:"upgrade_fee_ind,omitempty"`
+	ReissueInd            *bool              `json:"reissue_ind,omitempty" xml:"reissue_ind,omitempty"`
+	PenaltyTypeCode       *int32             `json:"penalty_type_code,omitempty" xml:"penalty_type_code,omitempty"`
+	PenaltyApplyRangeCode *int32             `json:"penalty_apply_range_code,omitempty" xml:"penalty_apply_range_code,omitempty"`
+	PenaltyChargeTypeCode *int32             `json:"penalty_charge_type_code,omitempty" xml:"penalty_charge_type_code,omitempty"`
+	Fee                   *float64           `json:"fee,omitempty" xml:"fee,omitempty"`
+	Currency              *string            `json:"currency,omitempty" xml:"currency,omitempty"`
+	PenaltyPercent        *float64           `json:"penalty_percent,omitempty" xml:"penalty_percent,omitempty"`
+	StartTime             *int32             `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	EndTime               *int32             `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	TimeUnitCode          *int32             `json:"time_unit_code,omitempty" xml:"time_unit_code,omitempty"`
+	Title                 *string            `json:"title,omitempty" xml:"title,omitempty"`
+	DepTime               *string            `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	SegmentNumber         *string            `json:"segment_number,omitempty" xml:"segment_number,omitempty"`
+	DescInfos             map[string]*string `json:"desc_infos,omitempty" xml:"desc_infos,omitempty"`
 }
 
 func (s ModuleOrderItemListRefundChangeRuleOfferPenaltyInfoMapValue) String() string {

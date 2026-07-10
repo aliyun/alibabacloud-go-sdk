@@ -21,17 +21,9 @@ type iFlightOtaItemDetailRequest interface {
 
 type FlightOtaItemDetailRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cheshi
 	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 68cdc6b37c87484c98b479b49306ffbb_0
 	OtaItemId  *string `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
 	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 }

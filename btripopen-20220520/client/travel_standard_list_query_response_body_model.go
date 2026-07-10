@@ -24,26 +24,12 @@ type iTravelStandardListQueryResponseBody interface {
 }
 
 type TravelStandardListQueryResponseBody struct {
-	// example:
-	//
-	// 0
-	Code    *int32                                     `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                    `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *TravelStandardListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 05F9C201-1B53-5905-94AB-0D7444D8466A
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 21041aa317070996148671005d0a0b
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *int32                                     `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                    `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TravelStandardListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                    `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TravelStandardListQueryResponseBody) String() string {
@@ -118,11 +104,8 @@ func (s *TravelStandardListQueryResponseBody) Validate() error {
 }
 
 type TravelStandardListQueryResponseBodyModule struct {
-	Items []*TravelStandardListQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 30
-	TotalSize *int32 `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	Items     []*TravelStandardListQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	TotalSize *int32                                            `json:"total_size,omitempty" xml:"total_size,omitempty"`
 }
 
 func (s TravelStandardListQueryResponseBodyModule) String() string {
@@ -167,10 +150,7 @@ func (s *TravelStandardListQueryResponseBodyModule) Validate() error {
 type TravelStandardListQueryResponseBodyModuleItems struct {
 	MainReserveRule *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule   `json:"main_reserve_rule,omitempty" xml:"main_reserve_rule,omitempty" type:"Struct"`
 	ReserveRuleDesc []*TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc `json:"reserve_rule_desc,omitempty" xml:"reserve_rule_desc,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	Scope *int32 `json:"scope,omitempty" xml:"scope,omitempty"`
+	Scope           *int32                                                           `json:"scope,omitempty" xml:"scope,omitempty"`
 }
 
 func (s TravelStandardListQueryResponseBodyModuleItems) String() string {
@@ -228,16 +208,10 @@ func (s *TravelStandardListQueryResponseBodyModuleItems) Validate() error {
 
 type TravelStandardListQueryResponseBodyModuleItemsMainReserveRule struct {
 	OpenServiceTypeList []*string `json:"open_service_type_list,omitempty" xml:"open_service_type_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2006516571
-	RuleCode *int64  `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
-	RuleDesc *string `json:"rule_desc,omitempty" xml:"rule_desc,omitempty"`
-	// example:
-	//
-	// 6516571
-	RuleId   *int64  `json:"rule_id,omitempty" xml:"rule_id,omitempty"`
-	RuleName *string `json:"rule_name,omitempty" xml:"rule_name,omitempty"`
+	RuleCode            *int64    `json:"rule_code,omitempty" xml:"rule_code,omitempty"`
+	RuleDesc            *string   `json:"rule_desc,omitempty" xml:"rule_desc,omitempty"`
+	RuleId              *int64    `json:"rule_id,omitempty" xml:"rule_id,omitempty"`
+	RuleName            *string   `json:"rule_name,omitempty" xml:"rule_name,omitempty"`
 }
 
 func (s TravelStandardListQueryResponseBodyModuleItemsMainReserveRule) String() string {
@@ -300,10 +274,7 @@ func (s *TravelStandardListQueryResponseBodyModuleItemsMainReserveRule) Validate
 type TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc struct {
 	DataList []*TravelStandardListQueryResponseBodyModuleItemsReserveRuleDescDataList `json:"data_list,omitempty" xml:"data_list,omitempty" type:"Repeated"`
 	Title    *string                                                                  `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// flight
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type     *string                                                                  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s TravelStandardListQueryResponseBodyModuleItemsReserveRuleDesc) String() string {

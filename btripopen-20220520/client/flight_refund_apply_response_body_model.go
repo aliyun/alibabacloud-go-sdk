@@ -24,24 +24,12 @@ type iFlightRefundApplyResponseBody interface {
 }
 
 type FlightRefundApplyResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                              `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *FlightRefundApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// A5009956-1077-52FB-B520-EA8C7E91D722
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *FlightRefundApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightRefundApplyResponseBody) String() string {
@@ -116,26 +104,11 @@ func (s *FlightRefundApplyResponseBody) Validate() error {
 }
 
 type FlightRefundApplyResponseBodyModule struct {
-	// example:
-	//
-	// dis123
-	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
-	// example:
-	//
-	// refun1234
+	DisOrderId    *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	DisSubOrderId *string `json:"dis_sub_order_id,omitempty" xml:"dis_sub_order_id,omitempty"`
-	// example:
-	//
-	// 1231231
-	RefundApplyId *int64 `json:"refund_apply_id,omitempty" xml:"refund_apply_id,omitempty"`
-	// example:
-	//
-	// 1000
-	RefundFee *int64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
-	// example:
-	//
-	// 100
-	RefundMoney *int64 `json:"refund_money,omitempty" xml:"refund_money,omitempty"`
+	RefundApplyId *int64  `json:"refund_apply_id,omitempty" xml:"refund_apply_id,omitempty"`
+	RefundFee     *int64  `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
+	RefundMoney   *int64  `json:"refund_money,omitempty" xml:"refund_money,omitempty"`
 }
 
 func (s FlightRefundApplyResponseBodyModule) String() string {

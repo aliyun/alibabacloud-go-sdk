@@ -24,29 +24,12 @@ type iMealOrderListQueryResponseBody interface {
 }
 
 type MealOrderListQueryResponseBody struct {
-	// example:
-	//
-	// 0
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// noPermission
-	Message *string                               `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *MealOrderListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *MealOrderListQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                               `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s MealOrderListQueryResponseBody) String() string {
@@ -155,32 +138,14 @@ func (s *MealOrderListQueryResponseBodyModule) Validate() error {
 }
 
 type MealOrderListQueryResponseBodyModuleOrderList struct {
-	// example:
-	//
-	// 100
-	CorpPayAmount *int64  `json:"corp_pay_amount,omitempty" xml:"corp_pay_amount,omitempty"`
-	MerchantName  *string `json:"merchant_name,omitempty" xml:"merchant_name,omitempty"`
-	// example:
-	//
-	// 1034124198083211043
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 1
-	OrderStatus *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
-	OrderType   *string `json:"order_type,omitempty" xml:"order_type,omitempty"`
-	// example:
-	//
-	// 100
-	PayAmount *int64 `json:"pay_amount,omitempty" xml:"pay_amount,omitempty"`
-	// example:
-	//
-	// 100
-	PersonPayAmount *int64 `json:"person_pay_amount,omitempty" xml:"person_pay_amount,omitempty"`
-	// example:
-	//
-	// 1711705057
-	SettleTime *string `json:"settle_time,omitempty" xml:"settle_time,omitempty"`
+	CorpPayAmount   *int64  `json:"corp_pay_amount,omitempty" xml:"corp_pay_amount,omitempty"`
+	MerchantName    *string `json:"merchant_name,omitempty" xml:"merchant_name,omitempty"`
+	OrderId         *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderStatus     *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	OrderType       *string `json:"order_type,omitempty" xml:"order_type,omitempty"`
+	PayAmount       *int64  `json:"pay_amount,omitempty" xml:"pay_amount,omitempty"`
+	PersonPayAmount *int64  `json:"person_pay_amount,omitempty" xml:"person_pay_amount,omitempty"`
+	SettleTime      *string `json:"settle_time,omitempty" xml:"settle_time,omitempty"`
 }
 
 func (s MealOrderListQueryResponseBodyModuleOrderList) String() string {

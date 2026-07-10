@@ -24,24 +24,12 @@ type iIntlFlightListingSearchResponseBody interface {
 }
 
 type IntlFlightListingSearchResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                                    `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                    `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *IntlFlightListingSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 210bc4b116835992457938931db4de
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                    `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                    `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *IntlFlightListingSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                    `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s IntlFlightListingSearchResponseBody) String() string {
@@ -117,18 +105,9 @@ func (s *IntlFlightListingSearchResponseBody) Validate() error {
 
 type IntlFlightListingSearchResponseBodyModule struct {
 	FlightItemList []*IntlFlightListingSearchResponseBodyModuleFlightItemList `json:"flight_item_list,omitempty" xml:"flight_item_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// false
-	NeedContinue *bool `json:"need_continue,omitempty" xml:"need_continue,omitempty"`
-	// example:
-	//
-	// ASDFASDFASDFASDFASDF
-	QueryRecordId *string `json:"query_record_id,omitempty" xml:"query_record_id,omitempty"`
-	// example:
-	//
-	// ee229f2d-1835-4199-bfe6-fd14afe8645e
-	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	NeedContinue   *bool                                                      `json:"need_continue,omitempty" xml:"need_continue,omitempty"`
+	QueryRecordId  *string                                                    `json:"query_record_id,omitempty" xml:"query_record_id,omitempty"`
+	Token          *string                                                    `json:"token,omitempty" xml:"token,omitempty"`
 }
 
 func (s IntlFlightListingSearchResponseBodyModule) String() string {
@@ -381,37 +360,16 @@ func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListBestPriceItemLab
 }
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfos struct {
-	// example:
-	//
-	// HGH
-	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	// example:
-	//
-	// 2023-08-13 09:45
-	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	// example:
-	//
-	// BJS
-	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	// example:
-	//
-	// 2023-08-13 07:25
-	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	// example:
-	//
-	// 60
+	ArrCityCode        *string                                                                                        `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCityName        *string                                                                                        `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ArrTime            *string                                                                                        `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepCityCode        *string                                                                                        `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepCityName        *string                                                                                        `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepTime            *string                                                                                        `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
 	Duration           *int32                                                                                         `json:"duration,omitempty" xml:"duration,omitempty"`
 	FlightSegmentInfos []*IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos `json:"flight_segment_infos,omitempty" xml:"flight_segment_infos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 0
-	JourneyIndex *int32 `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
-	// example:
-	//
-	// 0
-	TransferTime *int32 `json:"transfer_time,omitempty" xml:"transfer_time,omitempty"`
+	JourneyIndex       *int32                                                                                         `json:"journey_index,omitempty" xml:"journey_index,omitempty"`
+	TransferTime       *int32                                                                                         `json:"transfer_time,omitempty" xml:"transfer_time,omitempty"`
 }
 
 func (s IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfos) String() string {
@@ -526,69 +484,31 @@ func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInf
 }
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos struct {
-	AirlineInfo    *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo    `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
-	ArrAirportInfo *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// BJS
-	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	// example:
-	//
-	// 2023-08-13 09:45
-	ArrTime        *string                                                                                                    `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	DepAirportInfo *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// HGH
-	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	// example:
-	//
-	// 2023-08-13 07:25
-	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	// duration
-	//
-	// example:
-	//
-	// 140
-	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// example:
-	//
-	// HO1116
+	AirlineInfo        *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo          `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
+	ArrAirportInfo     *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo       `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
+	ArrCityCode        *string                                                                                                          `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCityName        *string                                                                                                          `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ArrTime            *string                                                                                                          `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepAirportInfo     *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo       `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
+	DepCityCode        *string                                                                                                          `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepCityName        *string                                                                                                          `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepTime            *string                                                                                                          `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	Duration           *int32                                                                                                           `json:"duration,omitempty" xml:"duration,omitempty"`
 	FlightNo           *string                                                                                                          `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
 	FlightShareInfo    *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo      `json:"flight_share_info,omitempty" xml:"flight_share_info,omitempty" type:"Struct"`
 	FlightSize         *string                                                                                                          `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
 	FlightStopInfoList []*IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightStopInfoList `json:"flight_stop_info_list,omitempty" xml:"flight_stop_info_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 320
-	FlightType   *string `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
-	Manufacturer *string `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
-	MealDesc     *string `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
-	// example:
-	//
-	// 0
-	OneMore     *int32  `json:"one_more,omitempty" xml:"one_more,omitempty"`
-	OneMoreShow *string `json:"one_more_show,omitempty" xml:"one_more_show,omitempty"`
-	// example:
-	//
-	// 0
-	SegmentIndex *int32 `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
-	// example:
-	//
-	// KN6728HGHPKX0725
-	SegmentKey *string `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
-	// example:
-	//
-	// false
-	Share           *bool   `json:"share,omitempty" xml:"share,omitempty"`
-	ShortFlightSize *string `json:"short_flight_size,omitempty" xml:"short_flight_size,omitempty"`
-	// example:
-	//
-	// false
-	Stop      *bool   `json:"stop,omitempty" xml:"stop,omitempty"`
-	TotalTime *string `json:"total_time,omitempty" xml:"total_time,omitempty"`
+	FlightType         *string                                                                                                          `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
+	Manufacturer       *string                                                                                                          `json:"manufacturer,omitempty" xml:"manufacturer,omitempty"`
+	MealDesc           *string                                                                                                          `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	OneMore            *int32                                                                                                           `json:"one_more,omitempty" xml:"one_more,omitempty"`
+	OneMoreShow        *string                                                                                                          `json:"one_more_show,omitempty" xml:"one_more_show,omitempty"`
+	SegmentIndex       *int32                                                                                                           `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
+	SegmentKey         *string                                                                                                          `json:"segment_key,omitempty" xml:"segment_key,omitempty"`
+	Share              *bool                                                                                                            `json:"share,omitempty" xml:"share,omitempty"`
+	ShortFlightSize    *string                                                                                                          `json:"short_flight_size,omitempty" xml:"short_flight_size,omitempty"`
+	Stop               *bool                                                                                                            `json:"stop,omitempty" xml:"stop,omitempty"`
+	TotalTime          *string                                                                                                          `json:"total_time,omitempty" xml:"total_time,omitempty"`
 }
 
 func (s IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfos) String() string {
@@ -858,9 +778,6 @@ func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInf
 }
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosAirlineInfo struct {
-	// example:
-	//
-	// 9H
 	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	AirlineName *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
 	ShortName   *string `json:"short_name,omitempty" xml:"short_name,omitempty"`
@@ -906,16 +823,10 @@ func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInf
 }
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo struct {
-	// example:
-	//
-	// PKX
 	AirportCode      *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
 	AirportName      *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
 	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
-	// example:
-	//
-	// --
-	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	Terminal         *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosArrAirportInfo) String() string {
@@ -967,16 +878,10 @@ func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInf
 }
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo struct {
-	// example:
-	//
-	// HGH
 	AirportCode      *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
 	AirportName      *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
 	AirportShortName *string `json:"airport_short_name,omitempty" xml:"airport_short_name,omitempty"`
-	// example:
-	//
-	// T3
-	Terminal *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+	Terminal         *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
 }
 
 func (s IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosDepAirportInfo) String() string {
@@ -1029,10 +934,7 @@ func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInf
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo struct {
 	OperatingAirlineInfo *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo `json:"operating_airline_info,omitempty" xml:"operating_airline_info,omitempty" type:"Struct"`
-	// example:
-	//
-	// CX601
-	OperatingFlightNo *string `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
+	OperatingFlightNo    *string                                                                                                                         `json:"operating_flight_no,omitempty" xml:"operating_flight_no,omitempty"`
 }
 
 func (s IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfo) String() string {
@@ -1071,9 +973,6 @@ func (s *IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInf
 }
 
 type IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosFlightSegmentInfosFlightShareInfoOperatingAirlineInfo struct {
-	// example:
-	//
-	// DR
 	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
 	AirlineName *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
 	ShortName   *string `json:"short_name,omitempty" xml:"short_name,omitempty"`

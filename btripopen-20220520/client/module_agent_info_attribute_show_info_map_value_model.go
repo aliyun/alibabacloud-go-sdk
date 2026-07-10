@@ -18,9 +18,6 @@ type iModuleAgentInfoAttributeShowInfoMapValue interface {
 }
 
 type ModuleAgentInfoAttributeShowInfoMapValue struct {
-	// example:
-	//
-	// FIRST_BAGGAGE
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	Text *string `json:"text,omitempty" xml:"text,omitempty"`

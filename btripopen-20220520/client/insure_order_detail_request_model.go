@@ -23,25 +23,11 @@ type iInsureOrderDetailRequest interface {
 
 type InsureOrderDetailRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 10000001
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1021000196440356901
-	InsOrderId *string `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
-	// example:
-	//
-	// PostalSavingsBank
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	// example:
-	//
-	// fliggy
+	InsOrderId   *string `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	IsvName      *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
 }
 

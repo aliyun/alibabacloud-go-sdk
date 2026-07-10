@@ -17,10 +17,6 @@ type iAddEmployeesToCustomRoleShrinkRequest interface {
 
 type AddEmployeesToCustomRoleShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12345
 	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
 	// This parameter is required.
 	//

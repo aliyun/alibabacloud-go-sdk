@@ -15,10 +15,6 @@ type iAccessTokenRequest interface {
 
 type AccessTokenRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ggZADkghsadgogeDxdaD
 	AppSecret *string `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
 }
 

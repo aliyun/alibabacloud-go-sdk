@@ -31,38 +31,18 @@ type iInsureOrderCreateRequest interface {
 
 type InsureOrderCreateRequest struct {
 	// This parameter is required.
-	Applicant *InsureOrderCreateRequestApplicant `json:"applicant,omitempty" xml:"applicant,omitempty" type:"Struct"`
-	// example:
-	//
-	// 20202109390122
-	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
+	Applicant   *InsureOrderCreateRequestApplicant `json:"applicant,omitempty" xml:"applicant,omitempty" type:"Struct"`
+	BtripUserId *string                            `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	BuyerName   *string                            `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
 	// This parameter is required.
 	InsPersonAndSegmentList []*InsureOrderCreateRequestInsPersonAndSegmentList `json:"ins_person_and_segment_list,omitempty" xml:"ins_person_and_segment_list,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// PostalSavingsBank
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	// example:
-	//
-	// 100000320302020
+	IsvName       *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
 	OutInsOrderId *string `json:"out_ins_order_id,omitempty" xml:"out_ins_order_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 202310101026030
-	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	// example:
-	//
-	// 1020030003332000
+	OutOrderId    *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	OutSubOrderId *string `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
-	// example:
-	//
-	// fliggy
-	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+	SupplierCode  *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
 }
 
 func (s InsureOrderCreateRequest) String() string {
@@ -173,31 +153,13 @@ func (s *InsureOrderCreateRequest) Validate() error {
 }
 
 type InsureOrderCreateRequestApplicant struct {
-	// example:
-	//
-	// 2000-11-01
-	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	// example:
-	//
-	// 20202109390122
+	Birthday    *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	CertName    *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
-	// example:
-	//
-	// 110102200011018872
-	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
-	// example:
-	//
-	// 100
-	CertType *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
-	// example:
-	//
-	// F
-	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
-	// example:
-	//
-	// 1000000
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	CertNo      *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType    *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	Gender      *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
 }
 
 func (s InsureOrderCreateRequestApplicant) String() string {
@@ -276,12 +238,9 @@ func (s *InsureOrderCreateRequestApplicant) Validate() error {
 }
 
 type InsureOrderCreateRequestInsPersonAndSegmentList struct {
-	InsureSegment *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment `json:"insure_segment,omitempty" xml:"insure_segment,omitempty" type:"Struct"`
-	Insured       *InsureOrderCreateRequestInsPersonAndSegmentListInsured       `json:"insured,omitempty" xml:"insured,omitempty" type:"Struct"`
-	// example:
-	//
-	// 12399992002002010
-	OutSubInsOrderId *string `json:"out_sub_ins_order_id,omitempty" xml:"out_sub_ins_order_id,omitempty"`
+	InsureSegment    *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment `json:"insure_segment,omitempty" xml:"insure_segment,omitempty" type:"Struct"`
+	Insured          *InsureOrderCreateRequestInsPersonAndSegmentListInsured       `json:"insured,omitempty" xml:"insured,omitempty" type:"Struct"`
+	OutSubInsOrderId *string                                                       `json:"out_sub_ins_order_id,omitempty" xml:"out_sub_ins_order_id,omitempty"`
 }
 
 func (s InsureOrderCreateRequestInsPersonAndSegmentList) String() string {
@@ -334,42 +293,15 @@ func (s *InsureOrderCreateRequestInsPersonAndSegmentList) Validate() error {
 }
 
 type InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment struct {
-	// example:
-	//
-	// YNT
 	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
-	// example:
-	//
-	// CKG
-	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	// example:
-	//
-	// HGH
-	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	// example:
-	//
-	// 2023-10-31 13:10:00
-	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	// example:
-	//
-	// HGH
+	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrTime        *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
 	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
-	// example:
-	//
-	// HGH
-	DepCity *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	// example:
-	//
-	// CAN
-	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	// example:
-	//
-	// 2023-10-31 10:55:00
-	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	// example:
-	//
-	// ZH9891
-	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepTime        *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	FlightNo       *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
 }
 
 func (s InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) String() string {
@@ -466,31 +398,13 @@ func (s *InsureOrderCreateRequestInsPersonAndSegmentListInsureSegment) Validate(
 }
 
 type InsureOrderCreateRequestInsPersonAndSegmentListInsured struct {
-	// example:
-	//
-	// 2000-11-01
-	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	// example:
-	//
-	// 20202109390122
+	Birthday    *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	CertName    *string `json:"cert_name,omitempty" xml:"cert_name,omitempty"`
-	// example:
-	//
-	// 110102200011018872
-	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
-	// example:
-	//
-	// 100
-	CertType *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
-	// example:
-	//
-	// F
-	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
-	// example:
-	//
-	// 1000000
-	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	CertNo      *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType    *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	Gender      *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
 }
 
 func (s InsureOrderCreateRequestInsPersonAndSegmentListInsured) String() string {

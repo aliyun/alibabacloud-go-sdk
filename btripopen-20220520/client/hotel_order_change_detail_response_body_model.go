@@ -24,27 +24,12 @@ type iHotelOrderChangeDetailResponseBody interface {
 }
 
 type HotelOrderChangeDetailResponseBody struct {
-	// example:
-	//
-	// 0
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// operation success
-	Message *string                                   `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *HotelOrderChangeDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                   `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                   `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *HotelOrderChangeDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                     `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                   `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s HotelOrderChangeDetailResponseBody) String() string {
@@ -119,49 +104,19 @@ func (s *HotelOrderChangeDetailResponseBody) Validate() error {
 }
 
 type HotelOrderChangeDetailResponseBodyModule struct {
-	// example:
-	//
-	// 1234
-	ChangeOrderId *string `json:"change_order_id,omitempty" xml:"change_order_id,omitempty"`
-	// example:
-	//
-	// 0
-	ChangeType *int32 `json:"change_type,omitempty" xml:"change_type,omitempty"`
-	// example:
-	//
-	// open12ih3c8jb8o47v10B4r4josN00
-	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	// example:
-	//
-	// dis1234
-	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
-	// example:
-	//
-	// 2024-07-07 13:42:49
-	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	// example:
-	//
-	// 2024-07-07 13:42:49
-	GmtModified  *string                                                 `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
-	Reason       *string                                                 `json:"reason,omitempty" xml:"reason,omitempty"`
-	Remarks      *string                                                 `json:"remarks,omitempty" xml:"remarks,omitempty"`
-	RoomInfoList []*HotelOrderChangeDetailResponseBodyModuleRoomInfoList `json:"room_info_list,omitempty" xml:"room_info_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1402002197440511306
-	SaleOrderId *string `json:"sale_order_id,omitempty" xml:"sale_order_id,omitempty"`
-	// example:
-	//
-	// 0
-	Source *int32 `json:"source,omitempty" xml:"source,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 2505048378320666
-	WorkOrderId *string `json:"work_order_id,omitempty" xml:"work_order_id,omitempty"`
+	ChangeOrderId *string                                                 `json:"change_order_id,omitempty" xml:"change_order_id,omitempty"`
+	ChangeType    *int32                                                  `json:"change_type,omitempty" xml:"change_type,omitempty"`
+	CorpId        *string                                                 `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	DisOrderId    *string                                                 `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	GmtCreate     *string                                                 `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModified   *string                                                 `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	Reason        *string                                                 `json:"reason,omitempty" xml:"reason,omitempty"`
+	Remarks       *string                                                 `json:"remarks,omitempty" xml:"remarks,omitempty"`
+	RoomInfoList  []*HotelOrderChangeDetailResponseBodyModuleRoomInfoList `json:"room_info_list,omitempty" xml:"room_info_list,omitempty" type:"Repeated"`
+	SaleOrderId   *string                                                 `json:"sale_order_id,omitempty" xml:"sale_order_id,omitempty"`
+	Source        *int32                                                  `json:"source,omitempty" xml:"source,omitempty"`
+	Status        *int32                                                  `json:"status,omitempty" xml:"status,omitempty"`
+	WorkOrderId   *string                                                 `json:"work_order_id,omitempty" xml:"work_order_id,omitempty"`
 }
 
 func (s HotelOrderChangeDetailResponseBodyModule) String() string {
@@ -305,10 +260,7 @@ func (s *HotelOrderChangeDetailResponseBodyModule) Validate() error {
 type HotelOrderChangeDetailResponseBodyModuleRoomInfoList struct {
 	CancelDate           []*string                                                                   `json:"cancel_date,omitempty" xml:"cancel_date,omitempty" type:"Repeated"`
 	RoomDailyRefundInfos []*HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos `json:"room_daily_refund_infos,omitempty" xml:"room_daily_refund_infos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	RoomNo *int32 `json:"room_no,omitempty" xml:"room_no,omitempty"`
+	RoomNo               *int32                                                                      `json:"room_no,omitempty" xml:"room_no,omitempty"`
 }
 
 func (s HotelOrderChangeDetailResponseBodyModuleRoomInfoList) String() string {
@@ -360,22 +312,10 @@ func (s *HotelOrderChangeDetailResponseBodyModuleRoomInfoList) Validate() error 
 }
 
 type HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos struct {
-	// example:
-	//
-	// 2024-02-10
-	CheckInDate *string `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
-	// example:
-	//
-	// 71000
-	PenaltyPrice *int64 `json:"penalty_price,omitempty" xml:"penalty_price,omitempty"`
-	// example:
-	//
-	// 71000
-	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
-	// example:
-	//
-	// 71000
-	RefundPrice *int64 `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
+	CheckInDate  *string `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
+	PenaltyPrice *int64  `json:"penalty_price,omitempty" xml:"penalty_price,omitempty"`
+	Price        *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	RefundPrice  *int64  `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
 }
 
 func (s HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos) String() string {

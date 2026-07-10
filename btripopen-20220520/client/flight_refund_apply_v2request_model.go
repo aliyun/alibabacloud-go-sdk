@@ -36,42 +36,18 @@ type iFlightRefundApplyV2Request interface {
 }
 
 type FlightRefundApplyV2Request struct {
-	// example:
-	//
-	// cheshiapi
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	// example:
-	//
-	// 1683901850297448082
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 1017002195370467137
-	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	// example:
-	//
-	// 1019195836916039
+	IsvName                   *string                                                `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OrderId                   *string                                                `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId                *string                                                `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	OutSubOrderId             *string                                                `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
 	PassengerSegmentRelations []*FlightRefundApplyV2RequestPassengerSegmentRelations `json:"passenger_segment_relations,omitempty" xml:"passenger_segment_relations,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 2
-	PreCalType   *int32  `json:"pre_cal_type,omitempty" xml:"pre_cal_type,omitempty"`
-	RefundReason *string `json:"refund_reason,omitempty" xml:"refund_reason,omitempty"`
-	// example:
-	//
-	// 2
-	RefundReasonType *int32    `json:"refund_reason_type,omitempty" xml:"refund_reason_type,omitempty"`
-	TicketNos        []*string `json:"ticket_nos,omitempty" xml:"ticket_nos,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 10000
-	TotalRefundPrice *int64  `json:"total_refund_price,omitempty" xml:"total_refund_price,omitempty"`
-	UploadPictUrls   *string `json:"upload_pict_urls,omitempty" xml:"upload_pict_urls,omitempty"`
-	// example:
-	//
-	// true
-	Voluntary *bool `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
+	PreCalType                *int32                                                 `json:"pre_cal_type,omitempty" xml:"pre_cal_type,omitempty"`
+	RefundReason              *string                                                `json:"refund_reason,omitempty" xml:"refund_reason,omitempty"`
+	RefundReasonType          *int32                                                 `json:"refund_reason_type,omitempty" xml:"refund_reason_type,omitempty"`
+	TicketNos                 []*string                                              `json:"ticket_nos,omitempty" xml:"ticket_nos,omitempty" type:"Repeated"`
+	TotalRefundPrice          *int64                                                 `json:"total_refund_price,omitempty" xml:"total_refund_price,omitempty"`
+	UploadPictUrls            *string                                                `json:"upload_pict_urls,omitempty" xml:"upload_pict_urls,omitempty"`
+	Voluntary                 *bool                                                  `json:"voluntary,omitempty" xml:"voluntary,omitempty"`
 }
 
 func (s FlightRefundApplyV2Request) String() string {
@@ -204,9 +180,6 @@ func (s *FlightRefundApplyV2Request) Validate() error {
 }
 
 type FlightRefundApplyV2RequestPassengerSegmentRelations struct {
-	// example:
-	//
-	// 1075004
 	PassengerId   *string   `json:"passenger_id,omitempty" xml:"passenger_id,omitempty"`
 	SegmentIdList []*string `json:"segment_id_list,omitempty" xml:"segment_id_list,omitempty" type:"Repeated"`
 }

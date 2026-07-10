@@ -24,29 +24,12 @@ type iAddEmployeesToCustomRoleResponseBody interface {
 }
 
 type AddEmployeesToCustomRoleResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// 200
+	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
 	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId        *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s AddEmployeesToCustomRoleResponseBody) String() string {

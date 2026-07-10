@@ -16,11 +16,8 @@ type iApplyListQueryHeaders interface {
 }
 
 type ApplyListQueryHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// example:
-	//
-	// feth00jqwls
-	XAcsBtripSoCorpToken *string `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
 }
 
 func (s ApplyListQueryHeaders) String() string {

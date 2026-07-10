@@ -21,11 +21,8 @@ type MonthBillConfirmRequest struct {
 	// example:
 	//
 	// 20221001
-	MailBillDate *int32 `json:"mail_bill_date,omitempty" xml:"mail_bill_date,omitempty"`
-	// example:
-	//
-	// 12345
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	MailBillDate *int32  `json:"mail_bill_date,omitempty" xml:"mail_bill_date,omitempty"`
+	UserId       *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s MonthBillConfirmRequest) String() string {

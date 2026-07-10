@@ -24,29 +24,12 @@ type iFlightModifyPayV2ResponseBody interface {
 }
 
 type FlightModifyPayV2ResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module
-	Module map[string]interface{} `json:"module,omitempty" xml:"module,omitempty"`
-	// requestId
-	//
-	// example:
-	//
-	// A5009956-1077-52FB-B520-EA8C7E91D722
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 210bc59716837025964391120d3a5e
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    map[string]interface{} `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightModifyPayV2ResponseBody) String() string {

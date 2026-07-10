@@ -24,26 +24,12 @@ type iMealApplyAddResponseBody interface {
 }
 
 type MealApplyAddResponseBody struct {
-	// example:
-	//
-	// 0
-	Code    *int32                          `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                         `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *MealApplyAddResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 210e842b16611337974412836dae27
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *int32                          `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                         `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *MealApplyAddResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                           `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                         `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s MealApplyAddResponseBody) String() string {
@@ -118,9 +104,6 @@ func (s *MealApplyAddResponseBody) Validate() error {
 }
 
 type MealApplyAddResponseBodyModule struct {
-	// example:
-	//
-	// 2024073128454753
 	ThirdPartApplyId *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
 }
 

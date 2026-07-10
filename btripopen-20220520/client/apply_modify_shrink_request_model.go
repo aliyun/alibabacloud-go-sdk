@@ -88,111 +88,48 @@ type iApplyModifyShrinkRequest interface {
 }
 
 type ApplyModifyShrinkRequest struct {
-	// example:
-	//
-	// 4000
-	Budget *int64 `json:"budget,omitempty" xml:"budget,omitempty"`
-	// example:
-	//
-	// 1
-	BudgetMerge           *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CarRuleShrink         *string `json:"car_rule,omitempty" xml:"car_rule,omitempty"`
-	CorpName              *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DefaultStandardShrink *string `json:"default_standard,omitempty" xml:"default_standard,omitempty"`
-	// example:
-	//
-	// 001
-	DepartId   *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	// 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
-	//
-	// example:
-	//
-	// {"cost_center":"成本中心"}
+	Budget                         *int64  `json:"budget,omitempty" xml:"budget,omitempty"`
+	BudgetMerge                    *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CarRuleShrink                  *string `json:"car_rule,omitempty" xml:"car_rule,omitempty"`
+	CorpName                       *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DefaultStandardShrink          *string `json:"default_standard,omitempty" xml:"default_standard,omitempty"`
+	DepartId                       *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName                     *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
 	ExtendField                    *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerListShrink     *string `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty"`
 	ExternalTravelerStandardShrink *string `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty"`
-	// example:
-	//
-	// 1000
-	FlightBudget *int64 `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
-	// example:
-	//
-	// 1000
-	HotelBudget      *int64  `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
-	HotelShareShrink *string `json:"hotel_share,omitempty" xml:"hotel_share,omitempty"`
-	IntlFlightBudget *int64  `json:"intl_flight_budget,omitempty" xml:"intl_flight_budget,omitempty"`
-	IntlHotelBudget  *int64  `json:"intl_hotel_budget,omitempty" xml:"intl_hotel_budget,omitempty"`
-	// example:
-	//
-	// 0
-	ItineraryListShrink *string `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty"`
-	// example:
-	//
-	// 0
-	ItineraryRule          *int32  `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
-	ItinerarySetListShrink *string `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty"`
-	// example:
-	//
-	// 0
-	LimitTraveler         *int32  `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
-	MealBudget            *int64  `json:"meal_budget,omitempty" xml:"meal_budget,omitempty"`
-	PaymentDepartmentId   *string `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
-	PaymentDepartmentName *string `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// 子企业Id
-	//
-	// example:
-	//
-	// btrip123
-	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	FlightBudget                   *int64  `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
+	HotelBudget                    *int64  `json:"hotel_budget,omitempty" xml:"hotel_budget,omitempty"`
+	HotelShareShrink               *string `json:"hotel_share,omitempty" xml:"hotel_share,omitempty"`
+	IntlFlightBudget               *int64  `json:"intl_flight_budget,omitempty" xml:"intl_flight_budget,omitempty"`
+	IntlHotelBudget                *int64  `json:"intl_hotel_budget,omitempty" xml:"intl_hotel_budget,omitempty"`
+	ItineraryListShrink            *string `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty"`
+	ItineraryRule                  *int32  `json:"itinerary_rule,omitempty" xml:"itinerary_rule,omitempty"`
+	ItinerarySetListShrink         *string `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty"`
+	LimitTraveler                  *int32  `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
+	MealBudget                     *int64  `json:"meal_budget,omitempty" xml:"meal_budget,omitempty"`
+	PaymentDepartmentId            *string `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	PaymentDepartmentName          *string `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
+	Status                         *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	SubCorpId                      *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0001A1100000007EX08O
-	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	// example:
-	//
-	// 202201413141
-	ThirdpartBusinessId *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
-	ThirdpartDepartId   *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
-	// example:
-	//
-	// 1
-	TogetherBookRule *int32 `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
-	// example:
-	//
-	// 1000
+	ThirdpartApplyId       *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartBusinessId    *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	ThirdpartDepartId      *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
+	TogetherBookRule       *int32  `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
 	TrainBudget            *int64  `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
 	TravelerListShrink     *string `json:"traveler_list,omitempty" xml:"traveler_list,omitempty"`
 	TravelerStandardShrink *string `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty"`
 	// This parameter is required.
 	TripCause *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
-	// example:
-	//
-	// 1
-	TripDay *int32 `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	TripDay   *int32  `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
 	// This parameter is required.
 	TripTitle *string `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
-	// example:
-	//
-	// union51415
-	UnionNo *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	UnionNo   *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// thirdpart12138
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
-	// example:
-	//
-	// 1000
-	VehicleBudget *int64 `json:"vehicle_budget,omitempty" xml:"vehicle_budget,omitempty"`
+	UserId        *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName      *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	VehicleBudget *int64  `json:"vehicle_budget,omitempty" xml:"vehicle_budget,omitempty"`
 }
 
 func (s ApplyModifyShrinkRequest) String() string {

@@ -20,11 +20,6 @@ type iModuleFlightItemListItemListShoppingItemMapValue interface {
 }
 
 type ModuleFlightItemListItemListShoppingItemMapValue struct {
-	// id
-	//
-	// example:
-	//
-	// ADT07df0bd9-f803-4a50-8449-f4bd675d9939
 	Id            *string                                                                        `json:"id,omitempty" xml:"id,omitempty"`
 	CabinQuantity map[string]*ModuleFlightItemListItemListShoppingItemMapValueCabinQuantityValue `json:"cabin_quantity,omitempty" xml:"cabin_quantity,omitempty"`
 	SearchPrice   *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice                   `json:"search_price,omitempty" xml:"search_price,omitempty" type:"Struct"`
@@ -85,66 +80,28 @@ func (s *ModuleFlightItemListItemListShoppingItemMapValue) Validate() error {
 }
 
 type ModuleFlightItemListItemListShoppingItemMapValueSearchPrice struct {
-	// example:
-	//
-	// 17400
-	FloorPrice *int32 `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
-	// example:
-	//
-	// 121000
-	TicketPrice *int32 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	// example:
-	//
-	// 17400
-	SellPrice *int32 `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
-	// example:
-	//
-	// 17400
-	OriginalSellPrice *int32 `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
-	BaseTotalPrice    *int32 `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
-	// example:
-	//
-	// 17400
-	BeforeControlPrice *int32 `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
-	// example:
-	//
-	// 11000
-	Tax         *int32 `json:"tax,omitempty" xml:"tax,omitempty"`
-	SupplyPrice *int32 `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
-	// example:
-	//
-	// 242000
-	BasicCabinPrice *int32 `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
-	// example:
-	//
-	// 5000
-	BuildPrice *int32 `json:"build_price,omitempty" xml:"build_price,omitempty"`
-	// example:
-	//
-	// 6000
-	OilPrice              *int32 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
-	FirstStandardPrice    *int32 `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
-	BusinessStandardPrice *int32 `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
-	// example:
-	//
-	// 242000
-	CommonStandardPrice *int32 `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
-	// fdPrice
-	//
-	// example:
-	//
-	// fdPrice
-	InterTicketPrice          *int32   `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
-	SubtractedPrice           *int32   `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
-	OriginCommonPrice         *int32   `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
-	DynamicPromotionPrice     *int32   `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
-	InstallmentNum            *int32   `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
-	InstallmentPrice          *float64 `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
-	CompetitionDynamicPrice   *int32   `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
-	CompetitionPromotionPrice *int32   `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
-	// example:
-	//
-	// 17400
+	FloorPrice                    *int32                                                                    `json:"floor_price,omitempty" xml:"floor_price,omitempty"`
+	TicketPrice                   *int32                                                                    `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	SellPrice                     *int32                                                                    `json:"sell_price,omitempty" xml:"sell_price,omitempty"`
+	OriginalSellPrice             *int32                                                                    `json:"original_sell_price,omitempty" xml:"original_sell_price,omitempty"`
+	BaseTotalPrice                *int32                                                                    `json:"base_total_price,omitempty" xml:"base_total_price,omitempty"`
+	BeforeControlPrice            *int32                                                                    `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	Tax                           *int32                                                                    `json:"tax,omitempty" xml:"tax,omitempty"`
+	SupplyPrice                   *int32                                                                    `json:"supply_price,omitempty" xml:"supply_price,omitempty"`
+	BasicCabinPrice               *int32                                                                    `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice                    *int32                                                                    `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	OilPrice                      *int32                                                                    `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	FirstStandardPrice            *int32                                                                    `json:"first_standard_price,omitempty" xml:"first_standard_price,omitempty"`
+	BusinessStandardPrice         *int32                                                                    `json:"business_standard_price,omitempty" xml:"business_standard_price,omitempty"`
+	CommonStandardPrice           *int32                                                                    `json:"common_standard_price,omitempty" xml:"common_standard_price,omitempty"`
+	InterTicketPrice              *int32                                                                    `json:"inter_ticket_price,omitempty" xml:"inter_ticket_price,omitempty"`
+	SubtractedPrice               *int32                                                                    `json:"subtracted_price,omitempty" xml:"subtracted_price,omitempty"`
+	OriginCommonPrice             *int32                                                                    `json:"origin_common_price,omitempty" xml:"origin_common_price,omitempty"`
+	DynamicPromotionPrice         *int32                                                                    `json:"dynamic_promotion_price,omitempty" xml:"dynamic_promotion_price,omitempty"`
+	InstallmentNum                *int32                                                                    `json:"installment_num,omitempty" xml:"installment_num,omitempty"`
+	InstallmentPrice              *float64                                                                  `json:"installment_price,omitempty" xml:"installment_price,omitempty"`
+	CompetitionDynamicPrice       *int32                                                                    `json:"competition_dynamic_price,omitempty" xml:"competition_dynamic_price,omitempty"`
+	CompetitionPromotionPrice     *int32                                                                    `json:"competition_promotion_price,omitempty" xml:"competition_promotion_price,omitempty"`
 	MinBeforeControlPriceOfNormal *int32                                                                    `json:"min_before_control_price_of_normal,omitempty" xml:"min_before_control_price_of_normal,omitempty"`
 	PriceShowInfo                 *ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo `json:"price_show_info,omitempty" xml:"price_show_info,omitempty" type:"Struct"`
 }
@@ -383,15 +340,9 @@ func (s *ModuleFlightItemListItemListShoppingItemMapValueSearchPrice) Validate()
 }
 
 type ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo struct {
-	DiscountInfo *string `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
-	// example:
-	//
-	// 0.8
-	DiscountNum *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
-	// example:
-	//
-	// false
-	ShowTicketPrice *bool `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
+	DiscountInfo    *string  `json:"discount_info,omitempty" xml:"discount_info,omitempty"`
+	DiscountNum     *float64 `json:"discount_num,omitempty" xml:"discount_num,omitempty"`
+	ShowTicketPrice *bool    `json:"show_ticket_price,omitempty" xml:"show_ticket_price,omitempty"`
 }
 
 func (s ModuleFlightItemListItemListShoppingItemMapValueSearchPricePriceShowInfo) String() string {

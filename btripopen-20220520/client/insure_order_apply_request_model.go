@@ -27,34 +27,14 @@ type iInsureOrderApplyRequest interface {
 
 type InsureOrderApplyRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 100000102
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	BuyerName   *string `json:"buyer_name,omitempty" xml:"buyer_name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1000003000000490
-	InsOrderId *string `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
-	// example:
-	//
-	// PostalSavingsBank
-	IsvName *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
-	// example:
-	//
-	// 202310101026030
-	OutOrderId *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
-	// example:
-	//
-	// 1020030003332000
+	InsOrderId    *string `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	IsvName       *string `json:"isv_name,omitempty" xml:"isv_name,omitempty"`
+	OutOrderId    *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 	OutSubOrderId *string `json:"out_sub_order_id,omitempty" xml:"out_sub_order_id,omitempty"`
-	// example:
-	//
-	// fliggy
-	SupplierCode *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
+	SupplierCode  *string `json:"supplier_code,omitempty" xml:"supplier_code,omitempty"`
 }
 
 func (s InsureOrderApplyRequest) String() string {

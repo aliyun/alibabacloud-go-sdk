@@ -14,9 +14,6 @@ type iQueryGroupCorpListRequest interface {
 }
 
 type QueryGroupCorpListRequest struct {
-	// example:
-	//
-	// 123
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 

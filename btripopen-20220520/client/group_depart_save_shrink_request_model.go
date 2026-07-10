@@ -30,20 +30,9 @@ type GroupDepartSaveShrinkRequest struct {
 	DeptName   *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
 	ManagerIds *string `json:"manager_ids,omitempty" xml:"manager_ids,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 001
-	OuterDeptId *string `json:"outer_dept_id,omitempty" xml:"outer_dept_id,omitempty"`
-	// example:
-	//
-	// 002
+	OuterDeptId  *string `json:"outer_dept_id,omitempty" xml:"outer_dept_id,omitempty"`
 	OuterDeptPid *string `json:"outer_dept_pid,omitempty" xml:"outer_dept_pid,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	Status              *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	SubCorpIdListShrink *string `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty"`
 	SyncGroup           *bool   `json:"sync_group,omitempty" xml:"sync_group,omitempty"`

@@ -26,33 +26,13 @@ type iQueryEmployeeDetailResponseBody interface {
 }
 
 type QueryEmployeeDetailResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// example:
-	//
-	// None
-	Message *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *QueryEmployeeDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code           *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	HttpStatusCode *int32                                 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module         *QueryEmployeeDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId      *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId        *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s QueryEmployeeDetailResponseBody) String() string {
@@ -136,31 +116,16 @@ func (s *QueryEmployeeDetailResponseBody) Validate() error {
 }
 
 type QueryEmployeeDetailResponseBodyModule struct {
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// example:
-	//
-	// false
-	IsLeave *bool `json:"is_leave,omitempty" xml:"is_leave,omitempty"`
-	// example:
-	//
-	// "12138"
-	JobNumber *string `json:"job_number,omitempty" xml:"job_number,omitempty"`
-	NickName  *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
-	// example:
-	//
-	// "123456"
+	Email         *string   `json:"email,omitempty" xml:"email,omitempty"`
+	IsLeave       *bool     `json:"is_leave,omitempty" xml:"is_leave,omitempty"`
+	JobNumber     *string   `json:"job_number,omitempty" xml:"job_number,omitempty"`
+	NickName      *string   `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
 	OutDeptId     *string   `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
 	OutDeptIdList []*string `json:"out_dept_id_list,omitempty" xml:"out_dept_id_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// "abc12138"
-	OutEmployeeId *string `json:"out_employee_id,omitempty" xml:"out_employee_id,omitempty"`
-	PhoneNo       *string `json:"phone_no,omitempty" xml:"phone_no,omitempty"`
-	RealName      *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
-	// example:
-	//
-	// "zhang/san"
-	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	OutEmployeeId *string   `json:"out_employee_id,omitempty" xml:"out_employee_id,omitempty"`
+	PhoneNo       *string   `json:"phone_no,omitempty" xml:"phone_no,omitempty"`
+	RealName      *string   `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	RealNameEn    *string   `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
 }
 
 func (s QueryEmployeeDetailResponseBodyModule) String() string {

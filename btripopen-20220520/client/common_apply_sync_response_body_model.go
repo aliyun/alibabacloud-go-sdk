@@ -24,29 +24,12 @@ type iCommonApplySyncResponseBody interface {
 }
 
 type CommonApplySyncResponseBody struct {
-	// example:
-	//
-	// 0
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module。
-	//
-	// example:
-	//
-	// {\\"list\\": [], \\"pageSize\\": 20, \\"pageNo\\": 1}
-	Module *bool `json:"module,omitempty" xml:"module,omitempty"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CommonApplySyncResponseBody) String() string {

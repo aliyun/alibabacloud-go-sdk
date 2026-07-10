@@ -24,24 +24,12 @@ type iCommonApplyQueryResponseBody interface {
 }
 
 type CommonApplyQueryResponseBody struct {
-	// example:
-	//
-	// 0
-	Code    *string                             `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                             `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *CommonApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *CommonApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s CommonApplyQueryResponseBody) String() string {
@@ -116,43 +104,19 @@ func (s *CommonApplyQueryResponseBody) Validate() error {
 }
 
 type CommonApplyQueryResponseBodyModule struct {
-	// example:
-	//
-	// 123
-	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	// example:
-	//
-	// 5
-	BizCategory *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
-	Cause       *string `json:"cause,omitempty" xml:"cause,omitempty"`
-	// example:
-	//
-	// 0001A1100000007EX08O
-	CorpId      *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	ExtendValue *string `json:"extend_value,omitempty" xml:"extend_value,omitempty"`
-	// example:
-	//
-	// 2021-03-18T20:26Z
-	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	OrderId   *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 0
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 1233
+	ApplyId         *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BizCategory     *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
+	Cause           *string `json:"cause,omitempty" xml:"cause,omitempty"`
+	CorpId          *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	ExtendValue     *string `json:"extend_value,omitempty" xml:"extend_value,omitempty"`
+	GmtCreate       *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	OrderId         *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	Status          *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	ThirdpartCorpId *string `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
-	// example:
-	//
-	// 12344
-	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
-	TripCause   *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
-	// example:
-	//
-	// user1
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	ThirdpartId     *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
+	TripCause       *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
+	UserId          *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName        *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s CommonApplyQueryResponseBodyModule) String() string {

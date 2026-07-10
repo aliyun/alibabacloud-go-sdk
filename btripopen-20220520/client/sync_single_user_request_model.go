@@ -34,38 +34,16 @@ type iSyncSingleUserRequest interface {
 }
 
 type SyncSingleUserRequest struct {
-	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// example:
-	//
-	// 1001
-	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
-	// example:
-	//
-	// 0
-	LeaveStatus *int32 `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
-	// example:
-	//
-	// 72369
-	ManagerUserId *string `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
-	// example:
-	//
-	// 16392740204
-	Phone    *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	Position *string `json:"position,omitempty" xml:"position,omitempty"`
-	// example:
-	//
-	// 1
-	PositionLevel *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
-	// example:
-	//
-	// ce/shi
+	Email             *string   `json:"email,omitempty" xml:"email,omitempty"`
+	JobNo             *string   `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	LeaveStatus       *int32    `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
+	ManagerUserId     *string   `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	Phone             *string   `json:"phone,omitempty" xml:"phone,omitempty"`
+	Position          *string   `json:"position,omitempty" xml:"position,omitempty"`
+	PositionLevel     *string   `json:"position_level,omitempty" xml:"position_level,omitempty"`
 	RealNameEn        *string   `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
 	ThirdDepartIdList []*string `json:"third_depart_id_list,omitempty" xml:"third_depart_id_list,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 573263
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	// This parameter is required.
 	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`

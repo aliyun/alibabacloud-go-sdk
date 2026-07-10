@@ -22,25 +22,14 @@ type iHotelOrderChangeApplyRequest interface {
 }
 
 type HotelOrderChangeApplyRequest struct {
-	// example:
-	//
-	// 123122
 	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 3685792244476194816
 	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	// This parameter is required.
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
 	// This parameter is required.
 	RoomInfoList []*HotelOrderChangeApplyRequestRoomInfoList `json:"room_info_list,omitempty" xml:"room_info_list,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1402002197440511306
 	SaleOrderId *string `json:"sale_order_id,omitempty" xml:"sale_order_id,omitempty"`
 }
 
@@ -114,10 +103,6 @@ type HotelOrderChangeApplyRequestRoomInfoList struct {
 	// This parameter is required.
 	CancelDate []*string `json:"cancel_date,omitempty" xml:"cancel_date,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 112
 	RoomNo *int32 `json:"room_no,omitempty" xml:"room_no,omitempty"`
 }
 

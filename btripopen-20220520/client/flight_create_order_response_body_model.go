@@ -24,24 +24,12 @@ type iFlightCreateOrderResponseBody interface {
 }
 
 type FlightCreateOrderResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                              `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *FlightCreateOrderResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// A5009956-1077-52FB-B520-EA8C7E91D722
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *FlightCreateOrderResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                              `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s FlightCreateOrderResponseBody) String() string {
@@ -116,38 +104,14 @@ func (s *FlightCreateOrderResponseBody) Validate() error {
 }
 
 type FlightCreateOrderResponseBodyModule struct {
-	// example:
-	//
-	// 3287177727711
 	AlipayTradeNo *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
-	// example:
-	//
-	// 123
-	BtripOrderId *int64 `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
-	// example:
-	//
-	// dis123
-	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
-	// example:
-	//
-	// 2000-00-00 00:00:00
-	LastPayTime *string `json:"last_pay_time,omitempty" xml:"last_pay_time,omitempty"`
-	// example:
-	//
-	// 1
-	OrderStatus *int32 `json:"order_status,omitempty" xml:"order_status,omitempty"`
-	// example:
-	//
-	// 1
-	PayStatus *int32 `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
-	// example:
-	//
-	// 100
-	PaymentPrice *int64 `json:"payment_price,omitempty" xml:"payment_price,omitempty"`
-	// example:
-	//
-	// 100
-	TotalPrice *int64 `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	BtripOrderId  *int64  `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
+	DisOrderId    *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	LastPayTime   *string `json:"last_pay_time,omitempty" xml:"last_pay_time,omitempty"`
+	OrderStatus   *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	PayStatus     *int32  `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	PaymentPrice  *int64  `json:"payment_price,omitempty" xml:"payment_price,omitempty"`
+	TotalPrice    *int64  `json:"total_price,omitempty" xml:"total_price,omitempty"`
 }
 
 func (s FlightCreateOrderResponseBodyModule) String() string {

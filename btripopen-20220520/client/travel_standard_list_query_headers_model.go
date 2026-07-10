@@ -18,10 +18,6 @@ type iTravelStandardListQueryHeaders interface {
 type TravelStandardListQueryHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// feth00jqwls
 	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
 }
 

@@ -34,10 +34,7 @@ type IntlFlightOrderCancelResponseBody struct {
 	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *IntlFlightOrderCancelResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
 	// example:
 	//
 	// 210bc4b116835992457938931db4de
@@ -116,9 +113,6 @@ func (s *IntlFlightOrderCancelResponseBody) Validate() error {
 }
 
 type IntlFlightOrderCancelResponseBodyModule struct {
-	// example:
-	//
-	// 2023-08-10 17:45:32
 	CancelTime *string `json:"cancel_time,omitempty" xml:"cancel_time,omitempty"`
 }
 

@@ -19,10 +19,6 @@ type InvoiceRuleAddRequest struct {
 	// This parameter is required.
 	Entities []*InvoiceRuleAddRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 4854821
 	ThirdPartId *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 
@@ -67,18 +63,10 @@ func (s *InvoiceRuleAddRequest) Validate() error {
 
 type InvoiceRuleAddRequestEntities struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12345
 	EntityId *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
 	// This parameter is required.
 	EntityName *string `json:"entity_name,omitempty" xml:"entity_name,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
 }
 

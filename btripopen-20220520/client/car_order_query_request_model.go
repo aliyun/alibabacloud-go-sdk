@@ -16,13 +16,7 @@ type iCarOrderQueryRequest interface {
 }
 
 type CarOrderQueryRequest struct {
-	// example:
-	//
-	// 1012000000000000
-	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	// example:
-	//
-	// 1000000
+	OrderId    *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	SubOrderId *int64 `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
 }
 

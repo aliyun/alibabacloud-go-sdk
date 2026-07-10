@@ -31,16 +31,10 @@ type IntlFlightReShopConsultResponseBody struct {
 	// example:
 	//
 	// 成功
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// true
+	Message   *string                                    `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *IntlFlightReShopConsultResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	Success   *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
 	// example:
 	//
 	// 210bc4b116835992457938931db4de

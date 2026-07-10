@@ -24,24 +24,12 @@ type iTrainExceedApplyQueryResponseBody interface {
 }
 
 type TrainExceedApplyQueryResponseBody struct {
-	// example:
-	//
-	// SUCCESS
-	Code    *string                                  `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string                                  `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *TrainExceedApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// BE3FBA15-C5E1-5B99-8120-9FB84A04FB81
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TrainExceedApplyQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TrainExceedApplyQueryResponseBody) String() string {
@@ -116,46 +104,19 @@ func (s *TrainExceedApplyQueryResponseBody) Validate() error {
 }
 
 type TrainExceedApplyQueryResponseBodyModule struct {
-	// example:
-	//
-	// apply1
 	ApplyId              *int64                                                       `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ApplyIntentionInfoDO *TrainExceedApplyQueryResponseBodyModuleApplyIntentionInfoDO `json:"apply_intention_info_d_o,omitempty" xml:"apply_intention_info_d_o,omitempty" type:"Struct"`
 	BtripCause           *string                                                      `json:"btrip_cause,omitempty" xml:"btrip_cause,omitempty"`
-	// example:
-	//
-	// corp1
-	CorpId       *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	ExceedReason *string `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
-	// example:
-	//
-	// 32
-	ExceedType *int32 `json:"exceed_type,omitempty" xml:"exceed_type,omitempty"`
-	// example:
-	//
-	// 10000
-	OriginStandard *string `json:"origin_standard,omitempty" xml:"origin_standard,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 2022-02-24T09:55Z
-	SubmitTime *string `json:"submit_time,omitempty" xml:"submit_time,omitempty"`
-	// example:
-	//
-	// 0001A1100000007EX08O
-	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	// example:
-	//
-	// testcorp1
-	ThirdpartCorpId *string `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
-	// example:
-	//
-	// user1
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	CorpId               *string                                                      `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	ExceedReason         *string                                                      `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
+	ExceedType           *int32                                                       `json:"exceed_type,omitempty" xml:"exceed_type,omitempty"`
+	OriginStandard       *string                                                      `json:"origin_standard,omitempty" xml:"origin_standard,omitempty"`
+	Status               *int32                                                       `json:"status,omitempty" xml:"status,omitempty"`
+	SubmitTime           *string                                                      `json:"submit_time,omitempty" xml:"submit_time,omitempty"`
+	ThirdpartApplyId     *string                                                      `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartCorpId      *string                                                      `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
+	UserId               *string                                                      `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName             *string                                                      `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s TrainExceedApplyQueryResponseBodyModule) String() string {
@@ -293,40 +254,19 @@ func (s *TrainExceedApplyQueryResponseBodyModule) Validate() error {
 }
 
 type TrainExceedApplyQueryResponseBodyModuleApplyIntentionInfoDO struct {
-	// example:
-	//
-	// BJS
-	ArrCity     *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	ArrStation  *string `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
-	// example:
-	//
-	// 2022-02-24T09:55Z
-	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	// example:
-	//
-	// SHA
-	DepCity     *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	DepCityName *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	DepStation  *string `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
-	// example:
-	//
-	// 2022-02-24T09:55Z
-	DepTime *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	// example:
-	//
-	// 1000
-	Price    *int64  `json:"price,omitempty" xml:"price,omitempty"`
-	SeatName *string `json:"seat_name,omitempty" xml:"seat_name,omitempty"`
-	// example:
-	//
-	// G39
+	ArrCity       *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityName   *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ArrStation    *string `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
+	ArrTime       *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepCity       *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityName   *string `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	DepStation    *string `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
+	DepTime       *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	Price         *int64  `json:"price,omitempty" xml:"price,omitempty"`
+	SeatName      *string `json:"seat_name,omitempty" xml:"seat_name,omitempty"`
 	TrainNo       *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
 	TrainTypeDesc *string `json:"train_type_desc,omitempty" xml:"train_type_desc,omitempty"`
-	// example:
-	//
-	// 32
-	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	Type          *int32  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s TrainExceedApplyQueryResponseBodyModuleApplyIntentionInfoDO) String() string {

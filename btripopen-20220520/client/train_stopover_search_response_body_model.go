@@ -24,27 +24,12 @@ type iTrainStopoverSearchResponseBody interface {
 }
 
 type TrainStopoverSearchResponseBody struct {
-	// example:
-	//
-	// 200
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// module
-	Module []*TrainStopoverSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
-	// example:
-	//
-	// C61ECFF6-606B-5F66-B81D-D77369043A5F
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// traceId
-	//
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	Code      *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                  `json:"message,omitempty" xml:"message,omitempty"`
+	Module    []*TrainStopoverSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s TrainStopoverSearchResponseBody) String() string {
@@ -123,26 +108,11 @@ func (s *TrainStopoverSearchResponseBody) Validate() error {
 }
 
 type TrainStopoverSearchResponseBodyModule struct {
-	// example:
-	//
-	// 2024-05-06 15:19:01
-	ArrTime *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	// example:
-	//
-	// 2024-05-06 15:19:01
-	DepTime     *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
-	StationName *string `json:"station_name,omitempty" xml:"station_name,omitempty"`
-	// example:
-	//
-	// 0
-	StationNo *string `json:"station_no,omitempty" xml:"station_no,omitempty"`
-	// example:
-	//
-	// 0
-	StationType *string `json:"station_type,omitempty" xml:"station_type,omitempty"`
-	// example:
-	//
-	// 22
+	ArrTime      *string `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	DepTime      *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
+	StationName  *string `json:"station_name,omitempty" xml:"station_name,omitempty"`
+	StationNo    *string `json:"station_no,omitempty" xml:"station_no,omitempty"`
+	StationType  *string `json:"station_type,omitempty" xml:"station_type,omitempty"`
 	StopOverTime *string `json:"stop_over_time,omitempty" xml:"stop_over_time,omitempty"`
 }
 
