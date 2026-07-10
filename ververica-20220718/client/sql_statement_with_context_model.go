@@ -51,24 +51,6 @@ type SqlStatementWithContext struct {
 	//    \\"connector\\" = \\"datagen\\"
 	//
 	// );
-	//
-	// CREATE TEMPORARY TABLE print_table (
-	//
-	//    name VARCHAR,
-	//
-	//    score BIGINT
-	//
-	// ) WITH (
-	//
-	//   \\"connector\\"=\\"print\\",
-	//
-	//   \\"logger\\"=\\"true\\"
-	//
-	// );
-	//
-	// INSERT INTO print_table
-	//
-	// select 	- from datagen_source;
 	Statement *string `json:"statement,omitempty" xml:"statement,omitempty"`
 	// The engine version.
 	//

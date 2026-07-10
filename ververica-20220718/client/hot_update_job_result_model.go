@@ -22,23 +22,16 @@ type iHotUpdateJobResult interface {
 }
 
 type HotUpdateJobResult struct {
-	// 动态更新参数。
 	HotUpdateParams *HotUpdateJobParams `json:"hotUpdateParams,omitempty" xml:"hotUpdateParams,omitempty"`
-	// 动态更新id。
-	//
 	// example:
 	//
 	// 123hashd****
 	JobHotUpdateId *string `json:"jobHotUpdateId,omitempty" xml:"jobHotUpdateId,omitempty"`
-	// 作业实例id。
-	//
 	// example:
 	//
 	// 5af678c0-7db0-4650-94c2-d2604f0a****
-	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
-	// 动态更新状态。
-	Status *HotUpdateJobStatus `json:"status,omitempty" xml:"status,omitempty"`
-	// 目标作业资源配置。
+	JobId                 *string               `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	Status                *HotUpdateJobStatus   `json:"status,omitempty" xml:"status,omitempty"`
 	TargetResourceSetting *BriefResourceSetting `json:"targetResourceSetting,omitempty" xml:"targetResourceSetting,omitempty"`
 }
 

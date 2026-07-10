@@ -16,10 +16,14 @@ type iResourceSpec interface {
 }
 
 type ResourceSpec struct {
+	// The CPU size.
+	//
 	// example:
 	//
 	// 1.0
 	Cpu *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The memory size.
+	//
 	// example:
 	//
 	// 4Gi

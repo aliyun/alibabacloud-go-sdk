@@ -3934,6 +3934,57 @@ func (client *Client) StartSessionClusterWithContext(ctx context.Context, namesp
 
 // Summary:
 //
+// Executes an SQL query script task.
+//
+// @param request - StartSqlExecutionRequest
+//
+// @param headers - StartSqlExecutionHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartSqlExecutionResponse
+func (client *Client) StartSqlExecutionWithContext(ctx context.Context, namespace *string, request *StartSqlExecutionRequest, headers *StartSqlExecutionHeaders, runtime *dara.RuntimeOptions) (_result *StartSqlExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartSqlExecution"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/sql-execution"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartSqlExecutionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Stops the application of a scheduled plan.
 //
 // @param headers - StopApplyScheduledPlanHeaders
