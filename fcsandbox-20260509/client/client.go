@@ -850,6 +850,67 @@ func (client *Client) ResetApiKey(apiKeyID *string, request *ResetApiKeyRequest)
 
 // Summary:
 //
+// 更新 ApiKey
+//
+// @param request - UpdateApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApiKeyResponse
+func (client *Client) UpdateApiKeyWithOptions(apiKeyID *string, request *UpdateApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateApiKey"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/api-keys/" + dara.PercentEncode(dara.StringValue(apiKeyID))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 ApiKey
+//
+// @param request - UpdateApiKeyRequest
+//
+// @return UpdateApiKeyResponse
+func (client *Client) UpdateApiKey(apiKeyID *string, request *UpdateApiKeyRequest) (_result *UpdateApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateApiKeyResponse{}
+	_body, _err := client.UpdateApiKeyWithOptions(apiKeyID, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新 quota 配置
 //
 // @param request - UpdateQuotaRequest
