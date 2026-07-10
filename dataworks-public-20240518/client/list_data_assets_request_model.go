@@ -9,12 +9,18 @@ type iListDataAssetsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAssetDomainId(v int64) *ListDataAssetsRequest
+	GetAssetDomainId() *int64
+	SetCategoryUuid(v string) *ListDataAssetsRequest
+	GetCategoryUuid() *string
 	SetDataAssetIds(v []*string) *ListDataAssetsRequest
 	GetDataAssetIds() []*string
 	SetDataAssetType(v string) *ListDataAssetsRequest
 	GetDataAssetType() *string
 	SetEnvType(v string) *ListDataAssetsRequest
 	GetEnvType() *string
+	SetName(v string) *ListDataAssetsRequest
+	GetName() *string
 	SetPageNumber(v int32) *ListDataAssetsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListDataAssetsRequest
@@ -26,28 +32,40 @@ type iListDataAssetsRequest interface {
 }
 
 type ListDataAssetsRequest struct {
-	// The data asset IDs.
+	// example:
+	//
+	// 1001
+	AssetDomainId *int64 `json:"AssetDomainId,omitempty" xml:"AssetDomainId,omitempty"`
+	// example:
+	//
+	// cate-xxxxxxxx
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// The list of unique data asset IDs.
 	DataAssetIds []*string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty" type:"Repeated"`
-	// The type of the data asset. Valid values:
+	// The Asset Type of the data asset. Valid values:
 	//
-	// - ACS::DataWorks::Table
+	// - ACS::DataWorks::Table: table.
 	//
-	// - ACS::DataWorks::Task
+	// - ACS::DataWorks::Task: scheduling node.
 	//
 	// example:
 	//
 	// ACS::DataWorks::Task
 	DataAssetType *string `json:"DataAssetType,omitempty" xml:"DataAssetType,omitempty"`
-	// The environment of the workspace to which the data asset belongs. Valid values:
+	// The workspace environment to which the data asset belongs. Valid values:
 	//
-	// - Dev: development environment
+	// - Dev: development environment.
 	//
-	// - Prod: production environment
+	// - Prod: production environment.
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 资产域名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// example:
@@ -60,19 +78,17 @@ type ListDataAssetsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DataWorks workspace ID.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The tags that are added to data assets. This parameter specifies a filter condition.
+	// The list of tags associated with data assets. Tags are used as query filters:
 	//
-	// - You can specify multiple tags, which are in the logical OR relation. For example, you can query the data assets that contain one of the following tags: `["key1:v1", "key2:v1", "key3:v1"]`.
+	// - Multiple values have an OR relationship. For example, `["key1:v1", "key2:v1", "key3:v1"]` queries data assets that contain any of the specified tags.
 	//
-	// - If you do not configure this parameter, tag-based filtering is not performed.
-	//
-	// This parameter is required.
+	// - If this parameter is not specified or is left empty, no tag-based filtering is applied.
 	Tags []*ListDataAssetsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -82,6 +98,14 @@ func (s ListDataAssetsRequest) String() string {
 
 func (s ListDataAssetsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListDataAssetsRequest) GetAssetDomainId() *int64 {
+	return s.AssetDomainId
+}
+
+func (s *ListDataAssetsRequest) GetCategoryUuid() *string {
+	return s.CategoryUuid
 }
 
 func (s *ListDataAssetsRequest) GetDataAssetIds() []*string {
@@ -94,6 +118,10 @@ func (s *ListDataAssetsRequest) GetDataAssetType() *string {
 
 func (s *ListDataAssetsRequest) GetEnvType() *string {
 	return s.EnvType
+}
+
+func (s *ListDataAssetsRequest) GetName() *string {
+	return s.Name
 }
 
 func (s *ListDataAssetsRequest) GetPageNumber() *int32 {
@@ -112,6 +140,16 @@ func (s *ListDataAssetsRequest) GetTags() []*ListDataAssetsRequestTags {
 	return s.Tags
 }
 
+func (s *ListDataAssetsRequest) SetAssetDomainId(v int64) *ListDataAssetsRequest {
+	s.AssetDomainId = &v
+	return s
+}
+
+func (s *ListDataAssetsRequest) SetCategoryUuid(v string) *ListDataAssetsRequest {
+	s.CategoryUuid = &v
+	return s
+}
+
 func (s *ListDataAssetsRequest) SetDataAssetIds(v []*string) *ListDataAssetsRequest {
 	s.DataAssetIds = v
 	return s
@@ -124,6 +162,11 @@ func (s *ListDataAssetsRequest) SetDataAssetType(v string) *ListDataAssetsReques
 
 func (s *ListDataAssetsRequest) SetEnvType(v string) *ListDataAssetsRequest {
 	s.EnvType = &v
+	return s
+}
+
+func (s *ListDataAssetsRequest) SetName(v string) *ListDataAssetsRequest {
+	s.Name = &v
 	return s
 }
 
@@ -161,11 +204,9 @@ func (s *ListDataAssetsRequest) Validate() error {
 }
 
 type ListDataAssetsRequestTags struct {
-	// The tag key.
+	// The custom tag key.
 	//
-	// The tag key can be up to 64 characters in length and can contain letters, digits, and the following characters: `-@#*<>|[]()+=&%$!~`. It cannot start with `dw:`.
-	//
-	// This parameter is required.
+	// The tag key can be up to 64 characters in length, cannot start with `dw:`, and supports only letters, digits, and the following special characters: `-@#*<>|[]()+=&%$!~`.
 	//
 	// example:
 	//

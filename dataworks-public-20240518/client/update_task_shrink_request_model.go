@@ -50,33 +50,33 @@ type iUpdateTaskShrinkRequest interface {
 }
 
 type UpdateTaskShrinkRequest struct {
-	// The unique code of the client. This code uniquely identifies a task. This parameter is used to create a task asynchronously and implement the idempotence of the task. If you do not specify this parameter when you create the task, the system automatically generates a unique code. The unique code is uniquely associated with the task ID. If you specify this parameter when you update or delete the task, the value of this parameter must be the unique code that is used to create the task.
+	// The client unique code of the node, used to uniquely identify a node. This code is used to implement asynchronous operations and idempotence. If not specified during creation, the system automatically generates one, and the code is uniquely bound to the resource ID. When updating or deleting a resource, if this parameter is specified, it must be consistent with the client unique code used during creation.
 	//
 	// example:
 	//
 	// Task_0bc5213917368545132902xxxxxxxx
 	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
-	// The information about the associated data source.
+	// The associated data source information.
 	DataSourceShrink *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
 	// The dependency information.
 	DependenciesShrink *string `json:"Dependencies,omitempty" xml:"Dependencies,omitempty"`
-	// The description of the task.
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project environment.
+	// The project environment. Valid values:
 	//
-	// - Prod
+	// - Prod: production.
 	//
-	// - Dev
+	// - Dev: development.
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The task ID.
+	// The node ID.
 	//
 	// This parameter is required.
 	//
@@ -86,17 +86,17 @@ type UpdateTaskShrinkRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The input information.
 	InputsShrink *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
-	// The instance generation mode.
+	// The instance generation mode. Valid values:
 	//
-	// - T+1: the next day
+	// - T+1: The instance is generated the next day.
 	//
-	// - Immediately Note: Scheduled instances are generated only if the scheduled time is at least 10 minutes after the publish time. Real-time instance generation is unavailable during the global instance generation period (23:30 to 24:00). You can publish nodes during this period, but instances for the new nodes will not be generated automatically.
+	// - Immediately: The instance is generated immediately. Note: Only periodic instances whose scheduled time is at least ten minutes after the node publish time are generated normally. During the full instance generation period (22:00 to 24:00), real-time instance generation is not available. You can submit and publish nodes, but new nodes do not automatically generate instances.
 	//
 	// example:
 	//
 	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
-	// Name.
+	// The name.
 	//
 	// example:
 	//
@@ -104,49 +104,49 @@ type UpdateTaskShrinkRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The output information.
 	OutputsShrink *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
-	// The account ID of the task owner.
+	// The account ID of the node owner.
 	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The rerun interval. Unit: milliseconds. Must not exceed 1800000.
+	// The retry time interval, in milliseconds. The value cannot exceed 1800000.
 	//
 	// example:
 	//
 	// 60000
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// The rerun mode. Valid values:
+	// Specifies whether the node can be rerun. Valid values:
 	//
-	// - AllDenied: The task cannot be rerun.
+	// - AllDenied: The node cannot be rerun regardless of whether it succeeds or fails.
 	//
-	// - FailureAllowed: The task can be rerun only after it fails.
+	// - FailureAllowed: The node can be rerun only when it fails.
 	//
-	// - AllAllowed: The task can always be rerun.
+	// - AllAllowed: The node can be rerun regardless of whether it succeeds or fails.
 	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+	// The number of retries. This parameter takes effect when the node is configured to allow reruns.
 	//
 	// example:
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// Runtime environment configurations, such as resource group information.
+	// The environment configuration, such as resource group information.
 	RuntimeResourceShrink *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
-	// The run script information.
+	// The script information.
 	ScriptShrink *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	// The tags.
+	// The list of node tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// Task execution timeout in seconds. Must be greater than 3600.
+	// The node execution timeout period, in seconds. The value must be greater than 3600.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The triggering method.
+	// The node trigger method.
 	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
 }
 

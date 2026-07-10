@@ -38,7 +38,7 @@ type iUpdateWorkflowRequest interface {
 }
 
 type UpdateWorkflowRequest struct {
-	// The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
+	// The client unique code of the workflow, used for asynchronous operations and idempotence. If not specified during creation, the system automatically generates one, and the code is uniquely bound to the resource ID. If this parameter is specified during update or deletion, it must be consistent with the client unique code used during creation.
 	//
 	// example:
 	//
@@ -52,11 +52,11 @@ type UpdateWorkflowRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project environment.
+	// The project environment. Valid values:
 	//
-	// - Prod
+	// - Prod: production
 	//
-	// - Dev
+	// - Dev: development
 	//
 	// example:
 	//
@@ -70,17 +70,17 @@ type UpdateWorkflowRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance generation mode.
+	// The instance generation mode. Valid values:
 	//
-	// - T+1: the next day
+	// - T+1: Instances are generated the next day.
 	//
-	// - Immediately Note: Periodic instances will only be generated normally if the workflow\\"s scheduled time is more than 10 minutes after the workflow publication time. Real-time instance generation is not available during the batch instance generation period (23:30 to 24:00). While workflows can be published during this time, instances will not be regenerated immediately after submission.
+	// - Immediately: Instances are generated immediately. Periodic instances are generated only if the scheduled time of the workflow is at least 10 minutes after the workflow is published. During the full instance generation period (22:00 to 24:00), real-time instance generation is not available. You can submit and publish workflows during this period, but instances are not regenerated after submission.
 	//
 	// example:
 	//
 	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
-	// The name of the workflow.
+	// The name.
 	//
 	// This parameter is required.
 	//
@@ -98,17 +98,17 @@ type UpdateWorkflowRequest struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The parameters.
+	// The parameter list.
 	//
 	// example:
 	//
 	// para1=$bizdate para2=$[yyyymmdd]
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The tags.
+	// The list of workflow tags.
 	Tags []*UpdateWorkflowRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// Details about tasks.
+	// The node list.
 	Tasks []*UpdateWorkflowRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The trigger method.
+	// The trigger configuration.
 	//
 	// This parameter is required.
 	Trigger *UpdateWorkflowRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
@@ -283,13 +283,13 @@ func (s *UpdateWorkflowRequest) Validate() error {
 type UpdateWorkflowRequestDependencies struct {
 	// The dependency type. Valid values:
 	//
-	// - CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
+	// - CrossCycleDependsOnChildren: cross-cycle dependency on first-level child nodes
 	//
-	// - CrossCycleDependsOnSelf: Depends on itself across cycles.
+	// - CrossCycleDependsOnSelf: cross-cycle dependency on the current node
 	//
-	// - CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
+	// - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
 	//
-	// - Normal: Depends on nodes in the same cycle.
+	// - Normal: same-cycle dependency
 	//
 	// This parameter is required.
 	//
@@ -297,13 +297,13 @@ type UpdateWorkflowRequestDependencies struct {
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The output identifier of the upstream task. (This parameter is returned only if `Normal` is set and the node input is configured.)
+	// The output identifier of the upstream node. This field is returned when the dependency type is `same-cycle dependency` and input content is specified.
 	//
 	// example:
 	//
 	// pre.odps_sql_demo_0
 	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
-	// The ID of the upstream task. (This parameter is returned only if `Normal` or `CrossCycleDependsOnOtherNode` is set and the node input is not configured.)
+	// The ID of the upstream node. This field is returned when the dependency type is `cross-cycle dependency on other nodes` or `same-cycle dependency` without input content specified. It is not returned in other cases.
 	//
 	// example:
 	//
@@ -351,7 +351,7 @@ func (s *UpdateWorkflowRequestDependencies) Validate() error {
 }
 
 type UpdateWorkflowRequestOutputs struct {
-	// The task outputs.
+	// The list of workflow node output definitions.
 	TaskOutputs []*UpdateWorkflowRequestOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
 }
 
@@ -386,7 +386,7 @@ func (s *UpdateWorkflowRequestOutputs) Validate() error {
 }
 
 type UpdateWorkflowRequestOutputsTaskOutputs struct {
-	// The identifier of the output.
+	// The output identifier.
 	//
 	// example:
 	//
@@ -469,41 +469,41 @@ type UpdateWorkflowRequestTasks struct {
 	//
 	// 1234
 	BaseLineId *int64 `json:"BaseLineId,omitempty" xml:"BaseLineId,omitempty"`
-	// The client-side unique token for the task, used to ensure asynchronous processing and idempotency. If not specified during creation, the system will automatically generate one. This token is uniquely associated with the resource ID. If provided when updating or deleting resources, this parameter must match the client token used during creation.
+	// The client unique code of the node, used for asynchronous operations and idempotence. If not specified during creation, the system automatically generates one, and the code is uniquely bound to the resource ID. If this parameter is specified during update or deletion, it must be consistent with the client unique code used during creation.
 	//
 	// example:
 	//
 	// Task_0bc5213917368545132902xxxxxxxx
 	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
-	// The information about the associated data source.
+	// The associated data source information.
 	DataSource *UpdateWorkflowRequestTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// The dependency information. Note: If this parameter is left empty or set to an empty array, all dependency configurations will be deleted.
+	// The dependency information. If this field is not specified or is an empty array, all Dependencies configurations are deleted by default.
 	Dependencies []*UpdateWorkflowRequestTasksDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
-	// The description of the task.
+	// The description.
 	//
 	// example:
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project environment.
+	// The project environment. Valid values:
 	//
-	// - Prod
+	// - Prod: production
 	//
-	// - Dev
+	// - Dev: development
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The ID of the task. Specifying this field triggers a full update for the corresponding task. If left unspecified, a new task will be created.
+	// The node ID. If this field is specified, the corresponding node is fully updated. If this field is not specified, a new node is created.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The input information. By default, all input information is deleted if this parameter is set to null.
+	// The input information. If this field is empty, all Inputs configurations are deleted by default.
 	Inputs *UpdateWorkflowRequestTasksInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
-	// The name of the task.
+	// The name of the node.
 	//
 	// This parameter is required.
 	//
@@ -511,7 +511,7 @@ type UpdateWorkflowRequestTasks struct {
 	//
 	// SQL node
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output information. By default, all output information is deleted if this parameter is set to null.
+	// The output information. If this field is empty, all Outputs configurations are deleted by default.
 	Outputs *UpdateWorkflowRequestTasksOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
 	// The account ID of the owner.
 	//
@@ -521,19 +521,19 @@ type UpdateWorkflowRequestTasks struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The retry interval in seconds.
+	// The retry time interval, in seconds.
 	//
 	// example:
 	//
 	// 60
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// Configuration for whether the task can be rerun.
+	// Specifies whether the node can be rerun. Valid values:
 	//
-	// - AllDenied: The task cannot be rerun.
+	// - AllDenied: cannot be rerun regardless of success or failure
 	//
-	// - FailureAllowed: The task can be rerun only after it fails.
+	// - FailureAllowed: can be rerun only upon failure
 	//
-	// - AllAllowed: The task can always be rerun.
+	// - AllAllowed: can be rerun regardless of success or failure
 	//
 	// This parameter is required.
 	//
@@ -541,31 +541,31 @@ type UpdateWorkflowRequestTasks struct {
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of retry attempts. Takes effect when the task is configured to allow reruns.
+	// The number of retries. This parameter takes effect only when the node is configured to allow reruns.
 	//
 	// example:
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// Runtime environment configurations, such as resource group information.
+	// The runtime environment configuration, such as resource group information.
 	//
 	// This parameter is required.
 	RuntimeResource *UpdateWorkflowRequestTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The run script information.
+	// The script information.
 	Script *UpdateWorkflowRequestTasksScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// The list of task tags. Note: If this field is unspecified or set to an empty array, all existing Tag configurations will be deleted by default.
+	// The list of node tags. If this field is not specified or is an empty array, all Tags configurations are deleted by default.
 	Tags []*UpdateWorkflowRequestTasksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The task execution timeout in seconds.
+	// The timeout period for node execution, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The trigger method.
+	// The trigger configuration of the node.
 	//
 	// This parameter is required.
 	Trigger *UpdateWorkflowRequestTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
-	// The type of the task.
+	// The node type.
 	//
 	// This parameter is required.
 	//
@@ -848,13 +848,13 @@ func (s *UpdateWorkflowRequestTasksDataSource) Validate() error {
 type UpdateWorkflowRequestTasksDependencies struct {
 	// The dependency type. Valid values:
 	//
-	// - CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
+	// - CrossCycleDependsOnChildren: cross-cycle dependency on first-level child nodes
 	//
-	// - CrossCycleDependsOnSelf: Depends on itself across cycles.
+	// - CrossCycleDependsOnSelf: cross-cycle dependency on the current node
 	//
-	// - CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
+	// - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
 	//
-	// - Normal: Depends on nodes in the same cycle.
+	// - Normal: same-cycle dependency
 	//
 	// This parameter is required.
 	//
@@ -862,13 +862,13 @@ type UpdateWorkflowRequestTasksDependencies struct {
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The output identifier of the upstream task. (This parameter is returned only if `Normal` is set and the node input is configured.)
+	// The output identifier of the upstream node. This field is returned when the dependency type is `same-cycle dependency` and input content is specified.
 	//
 	// example:
 	//
 	// pre.odps_sql_demo_0
 	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
-	// The ID of the upstream task. (This parameter is returned only if `Normal` or `CrossCycleDependsOnOtherNode` is set and the node input is not configured.)
+	// The ID of the upstream node. This field is returned when the dependency type is `cross-cycle dependency on other nodes` or `same-cycle dependency` without input content specified. It is not returned in other cases.
 	//
 	// example:
 	//
@@ -916,7 +916,7 @@ func (s *UpdateWorkflowRequestTasksDependencies) Validate() error {
 }
 
 type UpdateWorkflowRequestTasksInputs struct {
-	// The variables. By default, the settings of all input variables are deleted if this parameter is set to null or not specified.
+	// The list of variable definitions. If this field is not specified or is an empty array, all Inputs.Variables configurations are deleted by default.
 	Variables []*UpdateWorkflowRequestTasksInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -951,7 +951,7 @@ func (s *UpdateWorkflowRequestTasksInputs) Validate() error {
 }
 
 type UpdateWorkflowRequestTasksInputsVariables struct {
-	// The name of the variable.
+	// The variable name.
 	//
 	// example:
 	//
@@ -959,13 +959,13 @@ type UpdateWorkflowRequestTasksInputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type. Valid values:
 	//
-	// - Constant: constant value.
+	// - Constant: constant
 	//
-	// - PassThrough: node output.
+	// - PassThrough: output of a parameter node
 	//
-	// - System: variable.
+	// - System: variable
 	//
-	// - NodeOutput: script output.
+	// - NodeOutput: script output
 	//
 	// This parameter is required.
 	//
@@ -973,7 +973,7 @@ type UpdateWorkflowRequestTasksInputsVariables struct {
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of the variable.
+	// The variable value.
 	//
 	// example:
 	//
@@ -1021,9 +1021,9 @@ func (s *UpdateWorkflowRequestTasksInputsVariables) Validate() error {
 }
 
 type UpdateWorkflowRequestTasksOutputs struct {
-	// The task outputs. By default, all task output information is deleted if this parameter is set to null or not specified.
+	// The list of node output definitions. If this field is not specified or is an empty array, all TaskOutputs configurations are deleted by default.
 	TaskOutputs []*UpdateWorkflowRequestTasksOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
-	// The variables. Note: The settings of all output variables are deleted if this parameter is set to null or not specified.
+	// The list of variable definitions. If this field is not specified or is an empty array, all Outputs.Variables configurations are deleted by default.
 	Variables []*UpdateWorkflowRequestTasksOutputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -1076,7 +1076,7 @@ func (s *UpdateWorkflowRequestTasksOutputs) Validate() error {
 }
 
 type UpdateWorkflowRequestTasksOutputsTaskOutputs struct {
-	// The identifier of the output.
+	// The output identifier.
 	//
 	// example:
 	//
@@ -1106,7 +1106,7 @@ func (s *UpdateWorkflowRequestTasksOutputsTaskOutputs) Validate() error {
 }
 
 type UpdateWorkflowRequestTasksOutputsVariables struct {
-	// The name of the variable.
+	// The variable name.
 	//
 	// example:
 	//
@@ -1114,13 +1114,13 @@ type UpdateWorkflowRequestTasksOutputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type. Valid values:
 	//
-	// - Constant: constant value.
+	// - Constant: constant
 	//
-	// - PassThrough: node output.
+	// - PassThrough: output of a parameter node
 	//
-	// - System: variable.
+	// - System: variable
 	//
-	// - NodeOutput: script output.
+	// - NodeOutput: script output
 	//
 	// This parameter is required.
 	//
@@ -1128,7 +1128,7 @@ type UpdateWorkflowRequestTasksOutputsVariables struct {
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of the variable.
+	// The variable value.
 	//
 	// example:
 	//
@@ -1176,19 +1176,19 @@ func (s *UpdateWorkflowRequestTasksOutputsVariables) Validate() error {
 }
 
 type UpdateWorkflowRequestTasksRuntimeResource struct {
-	// The default number of compute units (CUs) configured for task running.
+	// The CU consumption configured for the node.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The image ID used in the task runtime configuration.
+	// The image ID configured for the node.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The identifier of the scheduling resource group used in the task runtime configuration.
+	// The identifier of the schedule resource group configured for the node.
 	//
 	// This parameter is required.
 	//
@@ -1244,7 +1244,7 @@ type UpdateWorkflowRequestTasksScript struct {
 	//
 	// echo "helloWorld"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The script parameter list.
+	// The list of script parameters.
 	//
 	// example:
 	//
@@ -1283,7 +1283,7 @@ func (s *UpdateWorkflowRequestTasksScript) Validate() error {
 }
 
 type UpdateWorkflowRequestTasksTags struct {
-	// The key of a tag.
+	// The tag key.
 	//
 	// This parameter is required.
 	//
@@ -1291,7 +1291,7 @@ type UpdateWorkflowRequestTasksTags struct {
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of a tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -1330,13 +1330,13 @@ func (s *UpdateWorkflowRequestTasksTags) Validate() error {
 }
 
 type UpdateWorkflowRequestTasksTrigger struct {
-	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
+	// The run mode when triggered. This parameter takes effect only when type is set to Scheduler. Valid values:
 	//
-	// - Pause
+	// - Pause: paused
 	//
-	// - Skip
+	// - Skip: dry run
 	//
-	// - Normal
+	// - Normal: normal execution
 	//
 	// This parameter is required.
 	//
@@ -1346,9 +1346,9 @@ type UpdateWorkflowRequestTasksTrigger struct {
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// - Scheduler: periodically triggered
+	// - Scheduler: triggered by a scheduling cycle
 	//
-	// - Manual
+	// - Manual: manually triggered
 	//
 	// example:
 	//
@@ -1387,19 +1387,19 @@ func (s *UpdateWorkflowRequestTasksTrigger) Validate() error {
 }
 
 type UpdateWorkflowRequestTrigger struct {
-	// The Cron expression. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The cron expression. This parameter takes effect only when type is set to Scheduler.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The expiration time of periodic triggering. Takes effect only when type is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
+	// The time when the periodic trigger expires. This parameter takes effect only when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time when periodic triggering takes effect. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
+	// The effective period of the epoch trigger. This parameter takes effect only when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
 	//
 	// example:
 	//
@@ -1407,9 +1407,9 @@ type UpdateWorkflowRequestTrigger struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// - Scheduler: periodically triggered
+	// - Scheduler: triggered by a scheduling cycle
 	//
-	// - Manual
+	// - Manual: manually triggered
 	//
 	// This parameter is required.
 	//

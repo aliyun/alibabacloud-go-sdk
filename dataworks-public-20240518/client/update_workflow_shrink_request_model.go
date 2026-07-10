@@ -38,7 +38,7 @@ type iUpdateWorkflowShrinkRequest interface {
 }
 
 type UpdateWorkflowShrinkRequest struct {
-	// The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
+	// The client unique code of the workflow, used for asynchronous operations and idempotence. If not specified during creation, the system automatically generates one, and the code is uniquely bound to the resource ID. If this parameter is specified during update or deletion, it must be consistent with the client unique code used during creation.
 	//
 	// example:
 	//
@@ -52,11 +52,11 @@ type UpdateWorkflowShrinkRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project environment.
+	// The project environment. Valid values:
 	//
-	// - Prod
+	// - Prod: production
 	//
-	// - Dev
+	// - Dev: development
 	//
 	// example:
 	//
@@ -70,17 +70,17 @@ type UpdateWorkflowShrinkRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance generation mode.
+	// The instance generation mode. Valid values:
 	//
-	// - T+1: the next day
+	// - T+1: Instances are generated the next day.
 	//
-	// - Immediately Note: Periodic instances will only be generated normally if the workflow\\"s scheduled time is more than 10 minutes after the workflow publication time. Real-time instance generation is not available during the batch instance generation period (23:30 to 24:00). While workflows can be published during this time, instances will not be regenerated immediately after submission.
+	// - Immediately: Instances are generated immediately. Periodic instances are generated only if the scheduled time of the workflow is at least 10 minutes after the workflow is published. During the full instance generation period (22:00 to 24:00), real-time instance generation is not available. You can submit and publish workflows during this period, but instances are not regenerated after submission.
 	//
 	// example:
 	//
 	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
-	// The name of the workflow.
+	// The name.
 	//
 	// This parameter is required.
 	//
@@ -98,17 +98,17 @@ type UpdateWorkflowShrinkRequest struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The parameters.
+	// The parameter list.
 	//
 	// example:
 	//
 	// para1=$bizdate para2=$[yyyymmdd]
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The tags.
+	// The list of workflow tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// Details about tasks.
+	// The node list.
 	TasksShrink *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
-	// The trigger method.
+	// The trigger configuration.
 	//
 	// This parameter is required.
 	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`

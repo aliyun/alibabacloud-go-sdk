@@ -18,7 +18,7 @@ type iListDataAssetsResponseBody interface {
 type ListDataAssetsResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListDataAssetsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListDataAssetsResponseBody) Validate() error {
 }
 
 type ListDataAssetsResponseBodyPagingInfo struct {
-	// The data assets.
+	// The list of data assets.
 	DataAssets []*ListDataAssetsResponseBodyPagingInfoDataAssets `json:"DataAssets,omitempty" xml:"DataAssets,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -76,7 +76,7 @@ type ListDataAssetsResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -142,13 +142,14 @@ func (s *ListDataAssetsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListDataAssetsResponseBodyPagingInfoDataAssets struct {
-	// The mappings between data assets and tags.
+	AssetCategories []*ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories `json:"AssetCategories,omitempty" xml:"AssetCategories,omitempty" type:"Repeated"`
+	// The list of tags associated with the data asset.
 	DataAssetTagMappings []*ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings `json:"DataAssetTagMappings,omitempty" xml:"DataAssetTagMappings,omitempty" type:"Repeated"`
-	// The environment of the workspace to which the data asset belongs. Valid values:
+	// The workspace environment to which the data asset belongs. Valid values:
 	//
-	// - Dev: development environment
+	// - Dev: development environment.
 	//
-	// - Prod: production environment
+	// - Prod: production environment.
 	//
 	// example:
 	//
@@ -172,11 +173,11 @@ type ListDataAssetsResponseBodyPagingInfoDataAssets struct {
 	//
 	// 54275
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the data asset. Valid values:
+	// The Asset Type of the data asset. Valid values:
 	//
-	// - ACS::DataWorks::Table
+	// - ACS::DataWorks::Table: table.
 	//
-	// - ACS::DataWorks::Task
+	// - ACS::DataWorks::Task: scheduling node.
 	//
 	// example:
 	//
@@ -190,6 +191,10 @@ func (s ListDataAssetsResponseBodyPagingInfoDataAssets) String() string {
 
 func (s ListDataAssetsResponseBodyPagingInfoDataAssets) GoString() string {
 	return s.String()
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) GetAssetCategories() []*ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories {
+	return s.AssetCategories
 }
 
 func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) GetDataAssetTagMappings() []*ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings {
@@ -214,6 +219,11 @@ func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) GetProjectId() *int64 {
 
 func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) GetType() *string {
 	return s.Type
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) SetAssetCategories(v []*ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories) *ListDataAssetsResponseBodyPagingInfoDataAssets {
+	s.AssetCategories = v
+	return s
 }
 
 func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) SetDataAssetTagMappings(v []*ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings) *ListDataAssetsResponseBodyPagingInfoDataAssets {
@@ -247,6 +257,15 @@ func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) SetType(v string) *List
 }
 
 func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) Validate() error {
+	if s.AssetCategories != nil {
+		for _, item := range s.AssetCategories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.DataAssetTagMappings != nil {
 		for _, item := range s.DataAssetTagMappings {
 			if item != nil {
@@ -259,8 +278,62 @@ func (s *ListDataAssetsResponseBodyPagingInfoDataAssets) Validate() error {
 	return nil
 }
 
+type ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories struct {
+	// example:
+	//
+	// 1001
+	AssetDomainId *string `json:"AssetDomainId,omitempty" xml:"AssetDomainId,omitempty"`
+	// example:
+	//
+	// cate-xxxxxx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 资产域名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories) GetAssetDomainId() *string {
+	return s.AssetDomainId
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories) GetId() *string {
+	return s.Id
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories) GetName() *string {
+	return s.Name
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories) SetAssetDomainId(v string) *ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories {
+	s.AssetDomainId = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories) SetId(v string) *ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories) SetName(v string) *ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings struct {
-	// Indicates whether the lineage-based automatic backtrack feature is enabled for the mapping.
+	// Indicates whether automatic lineage tracing is enabled.
 	//
 	// example:
 	//
@@ -284,11 +357,11 @@ type ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings struct {
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The way in which the mapping between the data asset and the tag is created. Valid values:
+	// The source of the mapping between the data asset and the tag. Valid values:
 	//
-	// - System
+	// - System: The mapping is created by the data asset governance system.
 	//
-	// - UserDefined
+	// - UserDefined: The mapping is manually created by a user.
 	//
 	// example:
 	//

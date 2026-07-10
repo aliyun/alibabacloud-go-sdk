@@ -290,6 +290,14 @@ type CreateAgentSessionRequestParamsMetaInitialConfigOptions struct {
 	//
 	// yolo
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// Serverless_res_group_123123123_564657857
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// skill-name-1,skill-name2,skill-name-3
+	Skills *string `json:"Skills,omitempty" xml:"Skills,omitempty"`
 }
 
 func (s CreateAgentSessionRequestParamsMetaInitialConfigOptions) String() string {
@@ -308,6 +316,14 @@ func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetMode() *str
 	return s.Mode
 }
 
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetSkills() *string {
+	return s.Skills
+}
+
 func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) SetExecutionLane(v string) *CreateAgentSessionRequestParamsMetaInitialConfigOptions {
 	s.ExecutionLane = &v
 	return s
@@ -315,6 +331,16 @@ func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) SetExecutionLa
 
 func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) SetMode(v string) *CreateAgentSessionRequestParamsMetaInitialConfigOptions {
 	s.Mode = &v
+	return s
+}
+
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) SetResourceGroupId(v string) *CreateAgentSessionRequestParamsMetaInitialConfigOptions {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) SetSkills(v string) *CreateAgentSessionRequestParamsMetaInitialConfigOptions {
+	s.Skills = &v
 	return s
 }
 
