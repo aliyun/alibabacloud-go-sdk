@@ -156,6 +156,68 @@ func (client *Client) AllocateSupabaseForAdmin(request *AllocateSupabaseForAdmin
 
 // Summary:
 //
+// Grants proxy-based O&M permissions for an application instance.
+//
+// @param request - AuthorizeAppProxyOpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeAppProxyOpsResponse
+func (client *Client) AuthorizeAppProxyOpsWithOptions(request *AuthorizeAppProxyOpsRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeAppProxyOpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConversationId) {
+		body["ConversationId"] = request.ConversationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AuthorizeAppProxyOps"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AuthorizeAppProxyOpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Grants proxy-based O&M permissions for an application instance.
+//
+// @param request - AuthorizeAppProxyOpsRequest
+//
+// @return AuthorizeAppProxyOpsResponse
+func (client *Client) AuthorizeAppProxyOps(request *AuthorizeAppProxyOpsRequest) (_result *AuthorizeAppProxyOpsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AuthorizeAppProxyOpsResponse{}
+	_body, _err := client.AuthorizeAppProxyOpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks resource usage in batches.
 //
 // Description:
@@ -6772,11 +6834,11 @@ func (client *Client) ListAppTemplateDicts(request *ListAppTemplateDictsRequest)
 
 // Summary:
 //
-// # Query template list
+// Queries the list of website templates.
 //
 // Description:
 //
-// # Obtain barcode generation plugin configuration information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - ListAppTemplatesRequest
 //
@@ -6856,11 +6918,11 @@ func (client *Client) ListAppTemplatesWithOptions(request *ListAppTemplatesReque
 
 // Summary:
 //
-// # Query template list
+// Queries the list of website templates.
 //
 // Description:
 //
-// # Obtain barcode generation plugin configuration information
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - ListAppTemplatesRequest
 //
