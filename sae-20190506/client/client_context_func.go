@@ -453,7 +453,7 @@ func (client *Client) ConfirmPipelineBatchWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Create an application.
+// Creates an application.
 //
 // @param tmpReq - CreateApplicationRequest
 //
@@ -477,6 +477,10 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(tmpReq.Labels) {
 		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, dara.String("Labels"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RaspConfig) {
+		request.RaspConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RaspConfig, dara.String("RaspConfig"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.SidecarContainersConfig) {
@@ -706,6 +710,10 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.PythonModules) {
 		query["PythonModules"] = request.PythonModules
+	}
+
+	if !dara.IsNil(request.RaspConfigShrink) {
+		query["RaspConfig"] = request.RaspConfigShrink
 	}
 
 	if !dara.IsNil(request.Readiness) {
@@ -2583,7 +2591,7 @@ func (client *Client) DeleteWebCustomDomainWithContext(ctx context.Context, Doma
 
 // Summary:
 //
-// Deploy an application.
+// Deploys an application.
 //
 // @param tmpReq - DeployApplicationRequest
 //
@@ -2607,6 +2615,10 @@ func (client *Client) DeployApplicationWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(tmpReq.Labels) {
 		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, dara.String("Labels"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RaspConfig) {
+		request.RaspConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RaspConfig, dara.String("RaspConfig"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.SidecarContainersConfig) {
@@ -2838,6 +2850,10 @@ func (client *Client) DeployApplicationWithContext(ctx context.Context, tmpReq *
 		query["PythonModules"] = request.PythonModules
 	}
 
+	if !dara.IsNil(request.RaspConfigShrink) {
+		query["RaspConfig"] = request.RaspConfigShrink
+	}
+
 	if !dara.IsNil(request.Readiness) {
 		query["Readiness"] = request.Readiness
 	}
@@ -3053,7 +3069,7 @@ func (client *Client) DescribeAppServiceDetailWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the configuration of an application.
+// Retrieves the configuration information of an application.
 //
 // @param request - DescribeApplicationConfigRequest
 //
@@ -6106,7 +6122,7 @@ func (client *Client) ListApplicationCenterServiceInstancesWithContext(ctx conte
 
 // Summary:
 //
-// Get a list of applications.
+// Retrieves a list of applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -6161,6 +6177,10 @@ func (client *Client) ListApplicationsWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProgrammingLanguage) {
+		query["ProgrammingLanguage"] = request.ProgrammingLanguage
 	}
 
 	if !dara.IsNil(request.Reverse) {

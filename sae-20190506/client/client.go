@@ -671,7 +671,7 @@ func (client *Client) ConfirmPipelineBatch(request *ConfirmPipelineBatchRequest)
 
 // Summary:
 //
-// Create an application.
+// Creates an application.
 //
 // @param tmpReq - CreateApplicationRequest
 //
@@ -695,6 +695,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !dara.IsNil(tmpReq.Labels) {
 		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, dara.String("Labels"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RaspConfig) {
+		request.RaspConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RaspConfig, dara.String("RaspConfig"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.SidecarContainersConfig) {
@@ -926,6 +930,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["PythonModules"] = request.PythonModules
 	}
 
+	if !dara.IsNil(request.RaspConfigShrink) {
+		query["RaspConfig"] = request.RaspConfigShrink
+	}
+
 	if !dara.IsNil(request.Readiness) {
 		query["Readiness"] = request.Readiness
 	}
@@ -1078,7 +1086,7 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 // Summary:
 //
-// Create an application.
+// Creates an application.
 //
 // @param request - CreateApplicationRequest
 //
@@ -3333,7 +3341,7 @@ func (client *Client) DeleteWebCustomDomain(DomainName *string, request *DeleteW
 
 // Summary:
 //
-// Deploy an application.
+// Deploys an application.
 //
 // @param tmpReq - DeployApplicationRequest
 //
@@ -3357,6 +3365,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 
 	if !dara.IsNil(tmpReq.Labels) {
 		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, dara.String("Labels"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RaspConfig) {
+		request.RaspConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RaspConfig, dara.String("RaspConfig"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.SidecarContainersConfig) {
@@ -3588,6 +3600,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 		query["PythonModules"] = request.PythonModules
 	}
 
+	if !dara.IsNil(request.RaspConfigShrink) {
+		query["RaspConfig"] = request.RaspConfigShrink
+	}
+
 	if !dara.IsNil(request.Readiness) {
 		query["Readiness"] = request.Readiness
 	}
@@ -3732,7 +3748,7 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 
 // Summary:
 //
-// Deploy an application.
+// Deploys an application.
 //
 // @param request - DeployApplicationRequest
 //
@@ -3841,7 +3857,7 @@ func (client *Client) DescribeAppServiceDetail(request *DescribeAppServiceDetail
 
 // Summary:
 //
-// Retrieves the configuration of an application.
+// Retrieves the configuration information of an application.
 //
 // @param request - DescribeApplicationConfigRequest
 //
@@ -3892,7 +3908,7 @@ func (client *Client) DescribeApplicationConfigWithOptions(request *DescribeAppl
 
 // Summary:
 //
-// Retrieves the configuration of an application.
+// Retrieves the configuration information of an application.
 //
 // @param request - DescribeApplicationConfigRequest
 //
@@ -7995,7 +8011,7 @@ func (client *Client) ListApplicationCenterServiceInstances(request *ListApplica
 
 // Summary:
 //
-// Get a list of applications.
+// Retrieves a list of applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -8052,6 +8068,10 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.ProgrammingLanguage) {
+		query["ProgrammingLanguage"] = request.ProgrammingLanguage
+	}
+
 	if !dara.IsNil(request.Reverse) {
 		query["Reverse"] = request.Reverse
 	}
@@ -8086,7 +8106,7 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 
 // Summary:
 //
-// Get a list of applications.
+// Retrieves a list of applications.
 //
 // @param request - ListApplicationsRequest
 //

@@ -145,6 +145,8 @@ type iDeployApplicationRequest interface {
 	GetPython() *string
 	SetPythonModules(v string) *DeployApplicationRequest
 	GetPythonModules() *string
+	SetRaspConfig(v *DeployApplicationRequestRaspConfig) *DeployApplicationRequest
+	GetRaspConfig() *DeployApplicationRequestRaspConfig
 	SetReadiness(v string) *DeployApplicationRequest
 	GetReadiness() *string
 	SetReplicas(v int32) *DeployApplicationRequest
@@ -182,13 +184,13 @@ type iDeployApplicationRequest interface {
 }
 
 type DeployApplicationRequest struct {
-	// The ARN of the RAM role required to pull images across accounts. For more information, see [Authorize cross-account image pulls using RAM roles](https://help.aliyun.com/document_detail/223585.html).
+	// The ARN of the RAM role required for cross-account image pulling. For more information, see [Grant permissions across Alibaba Cloud accounts by using a RAM role](https://help.aliyun.com/document_detail/223585.html).
 	//
 	// example:
 	//
 	// acs:ram::123456789012****:role/adminrole
 	AcrAssumeRoleArn *string `json:"AcrAssumeRoleArn,omitempty" xml:"AcrAssumeRoleArn,omitempty"`
-	// The Container Registry Enterprise Edition instance ID. Required when **ImageUrl*	- is from Container Registry Enterprise Edition.
+	// The Container Registry Enterprise instance ID. This parameter is required when **ImageUrl*	- is set to a Container Registry Enterprise instance image.
 	//
 	// example:
 	//
@@ -200,7 +202,7 @@ type DeployApplicationRequest struct {
 	//
 	// 4.4.2
 	AgentVersion *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
-	// The ALB gateway readiness gate configuration.
+	// The ALB gateway ReadinessGate configuration.
 	//
 	// example:
 	//
@@ -214,39 +216,39 @@ type DeployApplicationRequest struct {
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Whether to associate an EIP. Values:
+	// Specifies whether to associate an elastic IP address (EIP). Valid values:
 	//
-	// - **true**: Associate.
+	// - **true**: associates an EIP.
 	//
-	// - **false**: Do not associate.
+	// - **false**: does not associate an EIP.
 	//
 	// example:
 	//
 	// true
 	AssociateEip *bool `json:"AssociateEip,omitempty" xml:"AssociateEip,omitempty"`
-	// Whether to automatically enable application Auto Scaling rules. Values:
+	// Specifies whether to automatically enable the application elastic scaling policy. Valid values:
 	//
-	// - **true**: Enable.
+	// - **true**: enabled.
 	//
-	// - **false**: Disable.
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// true
 	AutoEnableApplicationScalingRule *bool `json:"AutoEnableApplicationScalingRule,omitempty" xml:"AutoEnableApplicationScalingRule,omitempty"`
-	// The wait time between batches, in seconds.
+	// The interval between deployment batches. Unit: seconds.
 	//
 	// example:
 	//
 	// 10
 	BatchWaitTime *int32 `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
-	// The description of the release task.
+	// The description of the change order.
 	//
 	// example:
 	//
 	// Start application
 	ChangeOrderDesc *string `json:"ChangeOrderDesc,omitempty" xml:"ChangeOrderDesc,omitempty"`
-	// The startup command for your image. This command must be an executable object inside the container. Example:
+	// The image startup command. The command must be an executable object in the container. Example:
 	//
 	// ```
 	//
@@ -262,37 +264,37 @@ type DeployApplicationRequest struct {
 	//
 	// ```
 	//
-	// In this example, Command="echo" and `CommandArgs=["abc", ">", "file0"]`.
+	// Based on the preceding example, `Command="echo", CommandArgs=["abc", ">", "file0"]`.
 	//
 	// example:
 	//
 	// echo
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The arguments for the startup command **Command**. Format:
+	// The arguments of the image startup command. These are the arguments required by the startup command specified in **Command**. Format:
 	//
 	// `["a","b"]`
 	//
-	// In the earlier example, `CommandArgs=["abc", ">", "file0"]`. The value `["abc", ">", "file0"]` must be converted to a string in JSON array format. Leave this field empty if no arguments are needed.
+	// In the preceding example, `CommandArgs=["abc", ">", "file0"]`, where `["abc", ">", "file0"]` must be converted to a String type, and the internal format is a JSON array. If this parameter is not required, leave it empty.
 	//
 	// example:
 	//
 	// ["a","b"]
 	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	// The mount description for a **ConfigMap**. Use configuration items created on the namespace configuration page to inject configuration into your container. Parameters:
+	// The **ConfigMap*	- mount description. Use a ConfigMap created on the namespace configuration items page to inject configuration information into the container. Settings:
 	//
-	// - **configMapId**: The ID of the ConfigMap instance. Get it by calling the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) API.
+	// - **configMapId**: the ConfigMap instance ID. You can obtain it by calling the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation.
 	//
-	// - **key**: The key.
+	// - **key**: the key.
 	//
-	// > You can mount all keys by passing `sae-sys-configmap-all`.
+	// > You can mount all keys by passing the `sae-sys-configmap-all` parameter.
 	//
-	// - **mountPath**: The mount path.
+	// - **mountPath**: the mount path.
 	//
 	// example:
 	//
 	// [{"configMapId":16,"key":"test","mountPath":"/tmp"}]
 	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
-	// The CPU required per instance, in milliCPU. Cannot be zero. Supported fixed specifications:
+	// The CPU resources required for each instance. Unit: millicores. This parameter cannot be set to 0. Only the following defined specifications are supported:
 	//
 	// - **500**
 	//
@@ -314,37 +316,37 @@ type DeployApplicationRequest struct {
 	//
 	// 1000
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// Custom host mappings inside your container. Values:
+	// The custom host mapping in the container. Valid values:
 	//
-	// - **hostName**: A domain name or hostname.
+	// - **hostName**: the domain name or hostname.
 	//
-	// - **ip**: An IP address.
+	// - **ip**: the IP address.
 	//
 	// example:
 	//
 	// [{"hostName":"samplehost","ip":"127.0.0.1"}]
 	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	// The custom image type. Set to an empty string for non-custom images:
+	// The custom image type. If the image is not a custom image, set this parameter to an empty string:
 	//
-	// - internet: Public network image
+	// - internet: public image.
 	//
-	// - intranet: Private network image
+	// - intranet: private image.
 	//
 	// example:
 	//
 	// internet
 	CustomImageNetworkType *string `json:"CustomImageNetworkType,omitempty" xml:"CustomImageNetworkType,omitempty"`
-	// This parameter applies only to stopped applications. If you call **DeployApplication*	- on a running application, it deploys immediately.
+	// This parameter takes effect only for applications in the stopped state. If you call the **DeployApplication*	- operation for a running application, the application is immediately redeployed.
 	//
-	// - **true**: Default. Deploys immediately, applies the new configuration, and starts instances.
+	// - **true**: default value. Deploys immediately, applies the new deployment configuration, and starts instances.
 	//
-	// - **false**: Applies the new configuration only. Does not start application instances.
+	// - **false**: applies the new deployment configuration only, without starting application instances.
 	//
 	// example:
 	//
 	// true
 	Deploy *string `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
-	// The .NET framework version:
+	// The version of the .NET framework:
 	//
 	// - .NET 3.1
 	//
@@ -360,114 +362,114 @@ type DeployApplicationRequest struct {
 	//
 	// .NET 3.1
 	Dotnet *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
-	// The version of the application runtime environment for HSF applications, such as Ali-Tomcat containers.
+	// The version of the application runtime environment in the HSF framework, such as the Ali-Tomcat container.
 	//
 	// example:
 	//
 	// 3.5.3
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	// The configuration for shared temporary storage.
+	// The shared ephemeral storage configuration.
 	//
 	// example:
 	//
 	// [{\\"name\\":\\"workdir\\",\\"mountPath\\":\\"/usr/local/tomcat/webapps\\"}]
 	EmptyDirDesc *string `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty"`
-	// Whether to integrate with AHAS. Values:
+	// Specifies whether to enable Application High Availability Service (AHAS). Valid values:
 	//
-	// - **true**: Integrate with AHAS.
+	// - **true**: enables AHAS.
 	//
-	// - **false**: Do not integrate with AHAS.
+	// - **false**: does not enable AHAS.
 	//
 	// example:
 	//
 	// false
 	EnableAhas *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	// Whether to enable CPU Burst:
+	// Specifies whether to enable the CPU Burst feature:
 	//
-	// - true: Enable.
+	// - true: enabled.
 	//
-	// - false: Do not enable.
+	// - false: disabled.
 	//
 	// example:
 	//
 	// true
 	EnableCpuBurst *bool `json:"EnableCpuBurst,omitempty" xml:"EnableCpuBurst,omitempty"`
-	// Whether to enable traffic canary rules. These rules apply only to Spring Cloud and Dubbo applications. Values:
+	// Specifies whether to enable traffic canary release rules. This rule applies only to applications that use the Spring Cloud or Dubbo framework. Valid values:
 	//
-	// - **true**: Enable canary rules.
+	// - **true**: enables canary release rules.
 	//
-	// - **false**: Disable canary rules.
+	// - **false**: disables canary release rules.
 	//
 	// example:
 	//
 	// false
 	EnableGreyTagRoute *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
-	// Whether to reuse the namespace Agent version configuration.
+	// Specifies whether to reuse the namespace Agent version configuration.
 	//
 	// example:
 	//
 	// true
 	EnableNamespaceAgentVersion *bool `json:"EnableNamespaceAgentVersion,omitempty" xml:"EnableNamespaceAgentVersion,omitempty"`
-	// Whether to enable the new ARMS feature:
+	// Specifies whether to enable the new ARMS feature:
 	//
-	// - true: Enable.
+	// - true: enabled.
 	//
-	// - false: Do not enable.
+	// - false: disabled.
 	//
 	// example:
 	//
 	// true
 	EnableNewArms *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
-	// Whether to enable Prometheus custom metric collection.
+	// Specifies whether to enable custom Prometheus metric collection.
 	//
 	// example:
 	//
 	// false
 	EnablePrometheus *bool `json:"EnablePrometheus,omitempty" xml:"EnablePrometheus,omitempty"`
-	// Whether to isolate sidecar resources:
+	// Specifies whether to enable sidecar resource isolation:
 	//
-	// - true: Isolate.
+	// - true: enables isolation.
 	//
-	// - false: Do not isolate.
+	// - false: does not enable isolation.
 	//
 	// example:
 	//
 	// true
 	EnableSidecarResourceIsolated *bool `json:"EnableSidecarResourceIsolated,omitempty" xml:"EnableSidecarResourceIsolated,omitempty"`
-	// The environment variables for your container. You can define custom variables or reference configuration items. To reference a configuration item, first create a ConfigMap instance. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Values:
+	// The container environment variable parameters. You can customize environment variables or reference ConfigMap items. To reference a ConfigMap item, create a ConfigMap instance first. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
 	//
 	// - Custom configuration
 	//
-	//   - **name**: The name of the environment variable.
+	//     - **name**: the name of the environment variable.
 	//
-	//   - **value**: The value of the environment variable. Takes precedence over valueFrom.
+	//     - **value**: the value of the environment variable. This takes priority over valueFrom.
 	//
-	// - Reference a configuration item (valueFrom)
+	// - Reference a ConfigMap item (valueFrom)
 	//
-	//   - **name**: The name of the environment variable. You can reference a single key or all keys. To reference all keys, use `sae-sys-configmap-all-<configmap-name>`, for example `sae-sys-configmap-all-test1`.
+	//     - **name**: the name of the environment variable. To reference all keys, enter `sae-sys-configmap-all-<ConfigMap name>`, such as `sae-sys-configmap-all-test1`.
 	//
-	//   - **valueFrom**: The reference type. Set to `configMapRef`.
+	//     - **valueFrom**: the environment variable reference. Set the value to `configMapRef`.
 	//
-	//   - **configMapId**: The ID of the ConfigMap instance.
+	//     - **configMapId**: the ConfigMap ID.
 	//
-	//   - **key**: The key. Omit this field if you reference all keys.
+	//     - **key**: the key. Do not set this field if you want to reference all keys.
 	//
 	// - Reference a secret (valueFrom)
 	//
-	//   - **name**: The name of the environment variable. You can reference a single key or all keys. To reference all keys, use `sae-sys-secret-all-<secret-name>`, for example `sae-sys-secret-all-test1`.
+	//     - **name**: the name of the environment variable. To reference all keys, enter `sae-sys-secret-all-<secret name>`, such as `sae-sys-secret-all-test1`.
 	//
-	//   - **valueFrom**: The reference type. Set to `secretRef`.
+	//     - **valueFrom**: the environment variable reference. Set the value to `secretRef`.
 	//
-	//   - **secretId**: The ID of the secret.
+	//     - **secretId**: the secret ID.
 	//
-	//   - **key**: The key. Omit this field if you reference all keys.
+	//     - **key**: the key. Do not set this field if you want to reference all keys.
 	//
 	// example:
 	//
 	// [ { "name": "sae-sys-configmap-all-hello", "valueFrom": { "configMapRef": { "configMapId": 100, "key": "" } } }, { "name": "hello", "valueFrom": { "configMapRef": { "configMapId": 101, "key": "php-fpm" } } }, { "name": "sae-sys-secret-all-hello", "valueFrom": { “secretRef": { “secretId": 100, "key": "" } } }, { "name": “password”, "valueFrom": { “secretRef": { “secretId": 101, "key": “password” } } }, { "name": "envtmp", "value": "newenv" } ]
 	Envs      *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	GpuConfig *string `json:"GpuConfig,omitempty" xml:"GpuConfig,omitempty"`
-	// The Nginx version:
+	// The Nginx version.
 	//
 	// - nginx 1.20
 	//
@@ -483,33 +485,33 @@ type DeployApplicationRequest struct {
 	//
 	// nginx 1.28
 	Html *string `json:"Html,omitempty" xml:"Html,omitempty"`
-	// The ID of the corresponding secret.
+	// The corresponding secret ID.
 	//
 	// example:
 	//
 	// 10
 	ImagePullSecrets *string `json:"ImagePullSecrets,omitempty" xml:"ImagePullSecrets,omitempty"`
-	// The registry address of your image. Required when **Package Type*	- is **Image**.
+	// The image URL. This parameter is required when **Package Type*	- is set to **Image**.
 	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The initialization container configuration.
+	// The init container configuration.
 	InitContainersConfig []*InitContainerConfig `json:"InitContainersConfig,omitempty" xml:"InitContainersConfig,omitempty" type:"Repeated"`
-	// Startup arguments for your JAR package. Default startup command: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
+	// The startup arguments for a JAR package-based application. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
 	//
 	// example:
 	//
 	// -Xms4G -Xmx4G
 	JarStartArgs *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	// Startup options for your JAR package. Default startup command: `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
+	// The startup options for a JAR package-based application. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
 	//
 	// example:
 	//
 	// custom-option
 	JarStartOptions *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	// The JDK version that your deployment package depends on. Supported versions include the following:
+	// The JDK version on which the deployment package depends. Valid values:
 	//
 	// - **Open JDK 8**
 	//
@@ -523,197 +525,199 @@ type DeployApplicationRequest struct {
 	//
 	// - **openjdk-7u201-jdk-alpine3.9**
 	//
-	// This parameter is not supported when **Package Type*	- is **Image**.
+	// This parameter is not supported when **Package Type*	- is set to **Image**.
 	//
 	// example:
 	//
 	// Open JDK 8
 	Jdk *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	// The configuration for collecting logs to Kafka. Values:
+	// The summary of log collection configurations for Kafka. Valid values:
 	//
-	// - **kafkaEndpoint**: The endpoint for the Kafka API.
+	// - **kafkaEndpoint**: the endpoint of the Kafka API.
 	//
-	// - **kafkaInstanceId**: The Kafka instance ID.
+	// - **kafkaInstanceId**: the Kafka instance ID.
 	//
-	// - **kafkaConfigs**: The configuration for one or more log entries. For examples and details, see the \\*\\*kafkaConfigs\\*\\	- request parameter in this topic.
+	// - **kafkaConfigs**: the configuration summary for one or more log entries. For example values and parameter descriptions, see the **kafkaConfigs*	- request parameter in this topic.
 	//
 	// example:
 	//
 	// {"kafkaEndpoint":"10.0.X.XXX:XXXX,10.0.X.XXX:XXXX,10.0.X.XXX:XXXX","kafkaInstanceId":"alikafka_pre-cn-7pp2l8kr****","kafkaConfigs":[{"logType":"file_log","logDir":"/tmp/a.log","kafkaTopic":"test2"},{"logType":"stdout","logDir":"","kafkaTopic":"test"}]}
 	KafkaConfigs *string            `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
 	Labels       map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// Health checks for your container. Containers that fail health checks are terminated and restarted. Supported methods:
+	// The container health check. Containers that fail the health check are shutdown and recovered. The following methods are supported:
 	//
-	// - **exec**: For example, `{"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
+	// - **exec**: for example, `{"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
 	//
-	// - **httpGet**: For example, `{"httpGet":{"path":"/","port":18091,"scheme":"HTTP","isContainKeyWord":true,"keyWord":"SAE"},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
+	// - **httpGet**: for example, `{"httpGet":{"path":"/","port":18091,"scheme":"HTTP","isContainKeyWord":true,"keyWord":"SAE"},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
 	//
-	// - **tcpSocket**: For example, `{"tcpSocket":{"port":18091},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
+	// - **tcpSocket**: for example, `{"tcpSocket":{"port":18091},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
 	//
-	// > You can select only one health check method.
+	// > Only one method can be selected for health checks.
 	//
-	// Parameters:
+	// Settings:
 	//
-	// - **exec.command**: The health check command.
+	// - **exec.command**: sets the health check command.
 	//
-	// - **httpGet.path**: The path to access.
+	// - **httpGet.path**: the access path.
 	//
 	// - **httpGet.scheme**: **HTTP*	- or **HTTPS**.
 	//
-	// - **httpGet.isContainKeyWord**: **true*	- means the response contains a keyword. **false*	- means it does not. If omitted, advanced features are disabled.
+	// - **httpGet.isContainKeyWord**: **true*	- indicates that the keyword is included, **false*	- indicates that the keyword is not included, and the absence of this field indicates that the advanced feature is not used.
 	//
-	// - **httpGet.keyWord**: Your custom keyword. Include **isContainKeyWord*	- when using this field.
+	// - **httpGet.keyWord**: the custom keyword. The **isContainKeyWord*	- field must be present when this parameter is used.
 	//
-	// - **tcpSocket.port**: The port for TCP connection checks.
+	// - **tcpSocket.port**: the port for TCP connection detection.
 	//
-	// - **initialDelaySeconds**: The delay before the first health check, in seconds. Default is 10.
+	// - **initialDelaySeconds**: sets the initial delay for the health check. Default value: 10. Unit: seconds.
 	//
-	// - **periodSeconds**: The interval between health checks, in seconds. Default is 30.
+	// - **periodSeconds**: sets the health check epoch. Default value: 30. Unit: seconds.
 	//
-	// - **timeoutSeconds**: The timeout for each health check, in seconds. Default is 1. If set to 0 or omitted, the default is 1 second.
+	// - **timeoutSeconds**: sets the health check timeout period. Default value: 1. Unit: seconds. If this parameter is set to 0 or is not set, the default timeout period is 1 second.
 	//
 	// example:
 	//
 	// {"exec":{"command":["sleep","5s"]},"initialDelaySeconds":10,"timeoutSeconds":11}
 	Liveness    *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
 	LokiConfigs *string `json:"LokiConfigs,omitempty" xml:"LokiConfigs,omitempty"`
-	// The maximum number of surge instances as a percentage of total instances. Values:
+	// The maximum surge instance percentage. Valid values:
 	//
-	// If the minimum available instances is 100%, the maximum surge cannot be set to 0. If set to -1, the system uses its recommended value: 30% of your current instance count. For example, with 10 instances, 10 × 30% = 3.
+	// If the minimum number of available instances is 100%, the maximum surge cannot be set to 0. If this parameter is set to **-1**, the system-recommended value of 30% is used, which is 30% of the current number of instances. For example, if the current number of instances is 10, the value is 10 × 30% = 3.
 	//
 	// example:
 	//
 	// -1
 	MaxSurgeInstanceRatio *int32 `json:"MaxSurgeInstanceRatio,omitempty" xml:"MaxSurgeInstanceRatio,omitempty"`
-	// The maximum number of surge instances during a rolling update. Values:
+	// The maximum number of surge instances. Valid values:
 	//
-	// If the minimum available instances is 100%, the maximum surge cannot be set to 0. If set to -1, the system uses its recommended value: 30% of your current instance count. For example, with 10 instances, 10 × 30% = 3.
+	// If the minimum number of available instances is 100%, the maximum surge cannot be set to 0.
+	//
+	// If this parameter is set to **-1**, the system-recommended value of 30% is used, which is 30% of the current number of instances. For example, if the current number of instances is 10, the value is 10 × 30% = 3.
 	//
 	// example:
 	//
 	// -1
 	MaxSurgeInstances *int32 `json:"MaxSurgeInstances,omitempty" xml:"MaxSurgeInstances,omitempty"`
-	// The memory required per instance, in MB. Cannot be zero. Memory and CPU are paired. Supported fixed specifications:
+	// The memory required for each instance. Unit: MB. This parameter cannot be set to 0. The memory has a one-to-one mapping with CPU. Only the following defined specifications are supported:
 	//
-	// - **1024**: Pairs with 500 and 1000 milliCPU.
+	// - **1024**: corresponds to 500 and 1000 millicores of CPU.
 	//
-	// - **2048**: Pairs with 500, 1000, and 2000 milliCPU.
+	// - **2048**: corresponds to 500, 1000, and 2000 millicores of CPU.
 	//
-	// - **4096**: Pairs with 1000, 2000, and 4000 milliCPU.
+	// - **4096**: corresponds to 1000, 2000, and 4000 millicores of CPU.
 	//
-	// - **8192**: Pairs with 2000, 4000, and 8000 milliCPU.
+	// - **8192**: corresponds to 2000, 4000, and 8000 millicores of CPU.
 	//
-	// - **12288**: Pairs with 12000 milliCPU.
+	// - **12288**: corresponds to 12000 millicores of CPU.
 	//
-	// - **16384**: Pairs with 4000, 8000, and 16000 milliCPU.
+	// - **16384**: corresponds to 4000, 8000, and 16000 millicores of CPU.
 	//
-	// - **24576**: Pairs with 12000 milliCPU.
+	// - **24576**: corresponds to 12000 millicores of CPU.
 	//
-	// - **32768**: Pairs with 16000 milliCPU.
+	// - **32768**: corresponds to 16000 millicores of CPU.
 	//
-	// - **65536**: Pairs with 8000, 16000, and 32000 milliCPU.
+	// - **65536**: corresponds to 8000, 16000, and 32000 millicores of CPU.
 	//
-	// - **131072**: Pairs with 32000 milliCPU.
+	// - **131072**: corresponds to 32000 millicores of CPU.
 	//
 	// example:
 	//
 	// 1024
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// Select a Nacos registry center. Values:
+	// Specifies the Nacos registry. Valid values:
 	//
-	// - **0**: Built-in Nacos in SAE.
+	// - **0**: Serverless App Engine built-in Nacos.
 	//
-	// - **1**: Self-managed Nacos.
+	// - **1**: self-managed Nacos.
 	//
-	// - **2**: MSE Nacos Commercial Edition.
+	// - **2**: Microservices Engine (MSE) commercial edition Nacos.
 	//
-	// > If you select built-in Nacos in SAE, you cannot retrieve its configuration.
+	// > If you select Serverless App Engine built-in Nacos, you cannot obtain the configuration of the built-in Nacos.
 	//
 	// example:
 	//
 	// "0"
 	MicroRegistration *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
-	// The registry configuration. Applies only when the registry type is MSE Nacos Enterprise Edition.
+	// The registry configuration, which takes effect only when the registry type is MSE Nacos Enterprise Edition.
 	//
 	// example:
 	//
 	// {\\"instanceId\\":\\"mse-cn-zvp2bh6h70r\\",\\"namespace\\":\\"4c0aa74f-57cb-423c-b6af-5d9f2d0e3dbd\\"}
 	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
-	// Configure microservice governance features.
+	// Configures microservice governance.
 	//
-	// - Enable microservice governance (enable):
+	// - Specifies whether to enable microservice governance (enable):
 	//
-	//   - true: Enable
+	//    - true: enabled.
 	//
-	//   - false: Disable
+	//   - false: disabled.
 	//
-	// - Configure graceful start and shutdown (mseLosslessRule):
+	// - Configures lossless online/offline (mseLosslessRule):
 	//
-	//   - delayTime: Delay time
+	//   - delayTime: the delay time.
 	//
-	//   - enable: Whether to enable graceful start. true enables it. false disables it.
+	//   - enable: specifies whether to enable the lossless online feature. true indicates enabled, and false indicates disabled.
 	//
-	//   - notice: Whether to enable notifications. true enables them. false disables them.
+	//   - notice: specifies whether to enable the notification feature. true indicates enabled, and false indicates disabled.
 	//
-	//   - warmupTime: Warm-up duration for small traffic, in seconds.
+	//   - warmupTime: the warm-up duration for low-traffic scenarios. Unit: seconds.
 	//
 	// example:
 	//
 	// {"enable": true,"mseLosslessRule": {"delayTime": 0,"enable": false,"notice": false,"warmupTime": 120}}
 	MicroserviceEngineConfig *string `json:"MicroserviceEngineConfig,omitempty" xml:"MicroserviceEngineConfig,omitempty"`
-	// The minimum number of available instances as a percentage of total instances. Values:
+	// The minimum percentage of available instances. Valid values:
 	//
-	// - **-1**: Use the default value. No percentage is applied.
+	//  - **-1**: the initialization value, which indicates that the percentage is not used.
 	//
-	// - **0–100**: Percentage value. Rounded up. For example, if set to **50**% and you have 5 instances, the minimum is 3.
+	//  - **0~100**: the unit is percentage, rounded up. For example, if this parameter is set to **50**% and the current number of instances is 5, the minimum number of available instances is 3.
 	//
-	// > If both **MinReadyInstances*	- and **MinReadyInstanceRatio*	- are provided, and **MinReadyInstanceRatio*	- is not **-1**, then **MinReadyInstanceRatio*	- takes precedence. For example, if **MinReadyInstances*	- is **5*	- and **MinReadyInstanceRatio*	- is **50**, the system calculates the minimum based on 50%.
+	// > When both **MinReadyInstance*	- and **MinReadyInstanceRatio*	- are specified and the value of **MinReadyInstanceRatio*	- is not **-1**, the **MinReadyInstanceRatio*	- parameter takes precedence. For example, if **MinReadyInstances*	- is set to **5*	- and **MinReadyInstanceRatio*	- is set to **50**, the value **50*	- is used to calculate the minimum number of available instances.
 	//
 	// example:
 	//
 	// -1
 	MinReadyInstanceRatio *int32 `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	// The minimum number of instances that remain available during a rolling update. Values:
+	// The minimum number of available instances. Valid values:
 	//
-	// - If set to **0**, your application experiences downtime during updates.
+	// - If this parameter is set to **0**, service is interrupted during the upgrade.
 	//
-	// - If set to -1, the system uses its recommended value: 25% of your current instance count. For example, with 5 instances, 5 × 25% = 1.25, rounded up to 2.
+	// - If this parameter is set to **-1**, the system-recommended value is used, which is 25% of the current number of instances. If the current number of instances is 5, 5 × 25% = 1.25, which is rounded up to 2.
 	//
-	// > We recommend setting this value to at least 1 to avoid service interruptions.
+	// > The minimum number of available instances for each rolling deployment should be ≥ 1 to prevent service interruption.
 	//
 	// example:
 	//
 	// 1
 	MinReadyInstances *int32 `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
-	// We recommend using **NasConfigs*	- instead of this field. The NAS mount description. If your NAS configuration remains unchanged, omit this parameter. To clear your NAS configuration, set this field to an empty string.
+	// We do not recommend that you configure this field. Configure **NasConfigs*	- instead. The NAS mount description. If the configuration has not changed during deployment, you do not need to set this parameter (that is, the **MountDesc*	- field does not need to be included in the request). To clear the NAS configuration, set the value of this field to an empty string (that is, set the value of the **MountDesc*	- field to "" in the request).
 	//
 	// example:
 	//
 	// [{mountPath: "/tmp", nasPath: "/"}]
 	MountDesc *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
-	// We recommend using **NasConfigs*	- instead of this field. The mount target of the NAS in your application\\"s VPC. If your NAS configuration remains unchanged, omit this parameter. To clear your NAS configuration, set this field to an empty string.
+	// We do not recommend that you configure this field. Configure **NasConfigs*	- instead. The mount point of the NAS file system in the VPC of the application. If the configuration has not changed during deployment, you do not need to set this parameter (that is, the **MountHost*	- field does not need to be included in the request). To clear the NAS configuration, set the value of this field to an empty string (that is, set the value of the **MountHost*	- field to "" in the request).
 	//
 	// example:
 	//
 	// 10d3b4bc9****.com
 	MountHost *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
-	// The configuration for mounting NAS. Values:
+	// The NAS mount configuration. Valid values:
 	//
-	// - **mountPath**: The mount path in the container.
+	// - **mountPath**: the container mount path.
 	//
-	// - **readOnly**: Set to **false*	- for read and write permissions.
+	// - **readOnly**: set to **false*	- for read and write permission.
 	//
-	// - **nasId**: The NAS ID.
+	// - **nasId**: the NAS ID.
 	//
-	// - **mountDomain**: The mount target address. For more information, see [DescribeMountTargets](https://help.aliyun.com/document_detail/62626.html).
+	// - **mountDomain**: the container mount point address. For more information, see [DescribeMountTargets](https://help.aliyun.com/document_detail/62626.html).
 	//
-	// - **nasPath**: The relative directory in NAS.
+	// - **nasPath**: the NAS relative file directory.
 	//
 	// example:
 	//
 	// [{"mountPath":"/test1","readOnly":false,"nasId":"nasId1","mountDomain":"nasId1.cn-shenzhen.nas.aliyuncs.com","nasPath":"/test1"},{"nasId":"nasId2","mountDomain":"nasId2.cn-shenzhen.nas.aliyuncs.com","readOnly":false,"nasPath":"/test2","mountPath":"/test2"}]
 	NasConfigs *string `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
-	// We recommend using **NasConfigs*	- instead of this field. The ID of the NAS file system. If your NAS configuration remains unchanged, omit this parameter. To clear your NAS configuration, set this field to an empty string.
+	// We do not recommend that you configure this field. Configure **NasConfigs*	- instead. The ID of the NAS file system. If the configuration has not changed during deployment, you do not need to set this parameter (that is, the **NasId*	- field does not need to be included in the request). To clear the NAS configuration, set the value of this field to an empty string (that is, set the value of the **NasId*	- field to "" in the request).
 	//
 	// example:
 	//
@@ -721,11 +725,11 @@ type DeployApplicationRequest struct {
 	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
 	// The application version:
 	//
-	// - lite: Lite Edition
+	// - lite: lite edition.
 	//
-	// - std: Standard Edition
+	// - std: standard edition.
 	//
-	// - pro: Professional Edition
+	// - pro: professional edition.
 	//
 	// example:
 	//
@@ -733,7 +737,8 @@ type DeployApplicationRequest struct {
 	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
 	// The RAM role for identity authentication.
 	//
-	// > Create an OIDC identity provider and an associated role in the same region before using this parameter. For more information, see [Create an OIDC identity provider](https://help.aliyun.com/document_detail/2331022.html) and [Create a role for SSO identity providers](https://help.aliyun.com/document_detail/2331016.html).
+	//
+	// > Create an OIDC identity provider and an identity provider role in the same region in advance. For more information, see [Create an OIDC identity provider](https://help.aliyun.com/document_detail/2331022.html) and [Create a role for SSO identity provider](https://help.aliyun.com/document_detail/2331016.html).
 	//
 	// example:
 	//
@@ -745,91 +750,91 @@ type DeployApplicationRequest struct {
 	//
 	// xxxxxx
 	OssAkId *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
-	// The AccessKey secret for OSS read and write operations.
+	// The AccessKey Secret for OSS read and write operations.
 	//
 	// example:
 	//
 	// xxxxxx
 	OssAkSecret *string `json:"OssAkSecret,omitempty" xml:"OssAkSecret,omitempty"`
-	// The OSS mount description. Parameters:
+	// The OSS mount description. Parameter settings:
 	//
-	// - **bucketName**: The name of the bucket.
+	// - **bucketName**: the bucket name.
 	//
-	// - **bucketPath**: The directory or object in OSS. If the directory does not exist, an error occurs.
+	// - **bucketPath**: the folder or object that you created in OSS. If the OSS mount folder does not exist, an exception is triggered.
 	//
-	// - **mountPath**: The path in your SAE container. If the path exists, it is overwritten. If it does not exist, it is created.
+	// - **mountPath**: the container path in Serverless App Engine. If the path already exists, it is an overwrite relationship. If the path does not exist, it is created.
 	//
-	// - **readOnly**: Whether the container path has read-only access to the mounted resource. Values:
+	// - **readOnly**: specifies whether the container path has read-only permission on the mounted folder resources. Valid values:
 	//
-	//   - **true**: Read-only.
+	//     - **true**: read-only permission.
 	//
-	//   - **false**: Read and write.
+	//     - **false**: read and write permission.
 	//
 	// example:
 	//
 	// [{"bucketName": "oss-bucket", "bucketPath": "data/user.data", "mountPath": "/usr/data/user.data", "readOnly": true}]
 	OssMountDescs *string `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty"`
-	// The type of your application package. Values:
+	// The application package type. Valid values:
 	//
-	// - For Java applications: **FatJar**, **War**, and **Image**.
+	// - When you deploy with Java, the following types are supported: **FatJar**, **War**, and **Image**.
 	//
-	// - For PHP applications:
+	// - When you deploy with PHP, the following types are supported:
 	//
-	//   - **PhpZip**
+	//     - **PhpZip**
 	//
-	//   - **IMAGE_PHP_5_4**
+	//     - **IMAGE_PHP_5_4**
 	//
-	//   - **IMAGE_PHP_5_4_ALPINE**
+	//     - **IMAGE_PHP_5_4_ALPINE**
 	//
-	//   - **IMAGE_PHP_5_5**
+	//     - **IMAGE_PHP_5_5**
 	//
-	//   - **IMAGE_PHP_5_5_ALPINE**
+	//     - **IMAGE_PHP_5_5_ALPINE**
 	//
-	//   - **IMAGE_PHP_5_6**
+	//     - **IMAGE_PHP_5_6**
 	//
-	//   - **IMAGE_PHP_5_6_ALPINE**
+	//     - **IMAGE_PHP_5_6_ALPINE**
 	//
-	//   - **IMAGE_PHP_7_0**
+	//     - **IMAGE_PHP_7_0**
 	//
-	//   - **IMAGE_PHP_7_0_ALPINE**
+	//     - **IMAGE_PHP_7_0_ALPINE**
 	//
-	//   - **IMAGE_PHP_7_1**
+	//     - **IMAGE_PHP_7_1**
 	//
-	//   - **IMAGE_PHP_7_1_ALPINE**
+	//     - **IMAGE_PHP_7_1_ALPINE**
 	//
-	//   - **IMAGE_PHP_7_2**
+	//     - **IMAGE_PHP_7_2**
 	//
-	//   - **IMAGE_PHP_7_2_ALPINE**
+	//     - **IMAGE_PHP_7_2_ALPINE**
 	//
-	//   - **IMAGE_PHP_7_3**
+	//     - **IMAGE_PHP_7_3**
 	//
-	//   - **IMAGE_PHP_7_3_ALPINE**
+	//     - **IMAGE_PHP_7_3_ALPINE**
 	//
-	// - For Python applications: **PythonZip*	- and **Image**.
+	// - When you deploy with Python, the following types are supported: **PythonZip*	- and **Image**.
 	//
 	// example:
 	//
 	// FatJar
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The URL of your deployment package. Required when **Package Type*	- is **FatJar**, **War**, or **PythonZip**.
+	// The URL of the deployment package. This parameter is required when **Package Type*	- is set to **FatJar**, **War**, or **PythonZip**.
 	//
 	// example:
 	//
 	// http://myoss.oss-cn-hangzhou.aliyuncs.com/my-buc/2019-06-30/****.jar
 	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	// The version number of your deployment package. Required when **Package Type*	- is **FatJar**, **War**, or **PythonZip**.
+	// The version number of the deployment package. This parameter is required when **Package Type*	- is set to **FatJar**, **War**, or **PythonZip**.
 	//
 	// example:
 	//
 	// 1.0.1
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	// The PHP version that your PHP deployment package depends on. Not supported for images.
+	// The PHP version on which the deployment package depends. Not supported for images.
 	//
 	// example:
 	//
 	// PHP-FPM 7.0
 	Php *string `json:"Php,omitempty" xml:"Php,omitempty"`
-	// The mount path for PHP application monitoring. Ensure your PHP server loads the configuration file at this path. You do not need to manage the configuration content. SAE renders the correct configuration automatically.
+	// The mount path for PHP application monitoring. Ensure that the PHP server loads the configuration file from this path. You do not need to manage the configuration content because Serverless App Engine automatically renders the correct configuration file.
 	//
 	// example:
 	//
@@ -841,51 +846,52 @@ type DeployApplicationRequest struct {
 	//
 	// k1=v1
 	PhpConfig *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
-	// The mount path for the PHP startup configuration. Ensure your PHP server uses this configuration file to start.
+	// The mount path for the PHP application startup configuration. Ensure that the PHP server uses this configuration file for startup.
 	//
 	// example:
 	//
 	// /usr/local/etc/php/php.ini
 	PhpConfigLocation *string `json:"PhpConfigLocation,omitempty" xml:"PhpConfigLocation,omitempty"`
-	// A script that runs after your container starts. It executes immediately after the container is created. Format: `{"exec":{"command":["sh","-c","echo hello"]}}`
+	// The script that is run after the container starts. A script is triggered immediately after the container is created. Format: `{"exec":{"command":["sh","-c","echo hello"\\]}}`.
 	//
 	// example:
 	//
 	// {"exec":{"command":["sh","-c","echo hello"]}}
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// A script that runs before your container stops. It executes just before the container is deleted. Format: `{"exec":{"command":["sh","-c","echo hello"]}}`
+	// The script that is run before the container stops. A script is triggered before the container is deleted. Format: `{"exec":{"command":["sh","-c","echo hello"\\]}}`.
 	//
 	// example:
 	//
 	// {"exec":{"command":["sh","-c","echo hello"]}}
 	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	// Enable K8s Service registration and discovery. Values:
+	// Enables K8s Service-based service registration and discovery. Valid values:
 	//
-	// - **portProtocols**: Port and protocol. Port range is [1,65535]. Protocols supported: **TCP*	- and **UDP**.
+	// - **portProtocols**: the port and protocol. Valid port values: [1,65535]. Valid protocol values: **TCP*	- and **UDP**.
 	//
-	// - portAndProtocol: Port and protocol. Port range is [1,65535]. Protocols supported: **TCP*	- and **UDP**. **portProtocols*	- takes precedence. If both are set, only **portProtocols*	- applies.
+	// - **portAndProtocol**: the port and protocol. Valid port values: [1,65535]. Valid protocol values: **TCP*	- and **UDP**. **portProtocols is recommended. If portProtocols is set, only portProtocols takes effect**.
 	//
-	// - **enable**: Enable K8s Service registration and discovery.
+	// - **enable**: enables K8s Service-based service registration and discovery.
 	//
 	// example:
 	//
 	// {"portProtocols":[{"port":18012,"protocol":"TCP"}],"portAndProtocol":{"18012":"TCP"},"enable":true}
 	PvtzDiscoverySvc *string `json:"PvtzDiscoverySvc,omitempty" xml:"PvtzDiscoverySvc,omitempty"`
-	// The Python runtime environment. Supported: **PYTHON 3.9.15**.
+	// The Python environment. **PYTHON 3.9.15*	- is supported.
 	//
 	// example:
 	//
 	// PYTHON 3.9.15
 	Python *string `json:"Python,omitempty" xml:"Python,omitempty"`
-	// Custom module dependencies. By default, dependencies defined in requirements.txt in the root directory are installed. If no configuration or custom packages exist, specify the dependencies to install.
+	// The custom installation module dependencies. By default, the dependencies defined in the requirements.txt file in the root folder are installed. If no dependencies are configured or custom packages are needed, you can specify the dependencies to install.
 	//
 	// example:
 	//
 	// Flask==2.0
-	PythonModules *string `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
-	// Startup status checks for your application. Containers that repeatedly fail readiness checks are terminated and restarted. Containers that fail readiness checks receive no SLB traffic. Supports **exec**, **httpGet**, and **tcpSocket**. For examples, see the **Liveness*	- parameter.
+	PythonModules *string                             `json:"PythonModules,omitempty" xml:"PythonModules,omitempty"`
+	RaspConfig    *DeployApplicationRequestRaspConfig `json:"RaspConfig,omitempty" xml:"RaspConfig,omitempty" type:"Struct"`
+	// The application startup status check. Containers that fail multiple health checks are shut down and restarted. Containers that do not pass the health check do not receive SLB traffic. The **exec**, **httpGet**, and **tcpSocket*	- methods are supported. For specific examples, see the **Liveness*	- parameter.
 	//
-	// > You can select only one health check method.
+	// > Only one method can be selected for health checks.
 	//
 	// example:
 	//
@@ -897,15 +903,15 @@ type DeployApplicationRequest struct {
 	//
 	// 1
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	// The mount description for a **Secret**. Use secrets created on the namespace secrets page to inject sensitive information into your container. Parameters:
+	// The **Secret*	- mount description. Use a secret created on the namespace secrets page to inject sensitive information into the container. Settings:
 	//
-	// - **secretId**: The ID of the secret instance. Get it by calling the ListSecrets API.
+	// - **secretId**: the secret instance ID. You can obtain it by calling the ListSecrets operation.
 	//
-	// - **key**: The key.
+	// - **key**: the key.
 	//
-	// > You can mount all keys by passing `sae-sys-secret-all`.
+	// > You can mount all keys by passing the `sae-sys-secret-all` parameter.
 	//
-	// - **mountPath**: The mount path.
+	// - **mountPath**: the mount path.
 	//
 	// example:
 	//
@@ -917,165 +923,163 @@ type DeployApplicationRequest struct {
 	//
 	// sg-wz969ngg2e49q5i4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The canary tags configured for your application.
+	// The canary release tags configured for the application.
 	//
 	// example:
 	//
 	// {\\"alicloud.service.tag\\":\\"g1\\"}
 	ServiceTags *string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
-	// Container configuration information.
+	// The sidecar container configuration.
 	SidecarContainersConfig []*SidecarContainerConfig `json:"SidecarContainersConfig,omitempty" xml:"SidecarContainersConfig,omitempty" type:"Repeated"`
-	// The configuration for collecting logs to Simple Log Service (SLS).
+	// The configuration for log collection to Simple Log Service.
 	//
-	// - Using SAE-managed SLS resources: `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+	// - Use SLS resources automatically created by Serverless App Engine: `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
 	//
-	// - Using custom SLS resources: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+	// - Use custom SLS resources: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
 	//
-	// Parameters:
+	// Settings:
 	//
-	// - **projectName**: The name of the SLS project.
+	// - **projectName**: the name of the project in Simple Log Service.
 	//
-	// - **logDir**: The log file path.
+	// - **logDir**: the log path.
 	//
-	// - logType: The log type. **stdout*	- means standard output logs from the container. Only one **stdout*	- entry is allowed. If omitted, file logs are collected.
+	// - **logType**: the log type. **stdout*	- indicates container standard output logs, and only one entry can be set. If this parameter is not set, file logs are collected.
 	//
-	// - **logstoreName**: The name of the SLS Logstore.
+	// - **logstoreName**: the name of the Logstore in Simple Log Service.
 	//
-	// - **logtailName**: The name of the SLS Logtail. If omitted, a new Logtail is created.
+	// - **logtailName**: the name of the Logtail in Simple Log Service. If this parameter is not specified, a new Logtail is created by automatic creation.
 	//
-	// If your SLS collection configuration remains unchanged across deployments, omit this parameter. To disable SLS collection, set this field to an empty string.
+	// If the SLS collection configuration has not changed during multiple deployments, you do not need to set this parameter (that is, the **SlsConfigs*	- field does not need to be included in the request). If you no longer need the SLS collection feature, set the value of this field to an empty string (that is, set the value of the **SlsConfigs*	- field to "" in the request).
 	//
-	// > Projects automatically created by SAE are deleted when the application is deleted. Do not select these projects when choosing an existing project.
+	// > A project that is automatically created with the application is deleted when the application is deleted. Therefore, do not select a project that is automatically created by Serverless App Engine when selecting an existing project.
 	//
 	// example:
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
 	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	// The SLS log tags.
+	// sls log tags
 	SlsLogEnvTags *string `json:"SlsLogEnvTags,omitempty" xml:"SlsLogEnvTags,omitempty"`
-	// Enable application startup probing.
+	// Enables the application startup probe.
 	//
-	// - Success: The application starts successfully. If you configure Liveness and Readiness checks, they run after startup.
+	// - Check succeeded: indicates that the application started successfully. If you configured Liveness and Readiness checks, they are performed after the application starts successfully.
 	//
-	// - Failure: The application fails to start. SAE reports an error and restarts the container automatically.
+	// - Check failed: indicates that the application failed to start. An exception is reported and the application is automatically restarted.
 	//
-	// > Description
+	// > This is the description content.
 	//
-	// >
+	// > - The exec, httpGet, and tcpSocket methods are supported. For specific examples, see the Liveness parameter.
 	//
-	// > - Supports exec, httpGet, and tcpSocket. For examples, see the Liveness parameter.
-	//
-	// >
-	//
-	// > - You can select only one health check method.
+	// > - Only one method can be selected for health checks.
 	//
 	// example:
 	//
 	// {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
 	StartupProbe *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
-	// Configures service discovery and end-to-end canary release based on a Kubernetes Service:
+	// Configures K8s Service-based service registration and discovery with end-to-end canary release:
 	//
-	// - enable: Specifies whether to enable the end-to-end canary release feature.
+	// - enable: specifies whether to enable end-to-end canary release based on K8s Service.
 	//
-	//   - true: Enables the feature.
+	//   - true: enabled.
 	//
-	//   - false: Disables the feature.
+	//   - false: disabled.
 	//
-	// - namespaceId: The namespace ID.
+	// - namespaceId: the namespace ID.
 	//
-	// - portAndProtocol: The listening port and protocol. The format is {"\\<port>:\\<protocol>":"\\<target_port>"}.
+	// - portAndProtocol: the listening port and protocol. Format: {"port:protocol type":"container port"}.
 	//
-	// - portProtocols: A list of ports and protocols for the service.
+	// - portProtocols: defines the service port and protocol.
 	//
-	//   - port: The port number.
+	//   - port: the port.
 	//
-	//   - protocol: The protocol.
+	//   - protocol: the protocol.
 	//
-	//   - targetPort: The container port.
+	//   - targetPort: the container port.
 	//
-	// - pvtzDiscoveryName: The service discovery name.
+	// - pvtzDiscoveryName: the service discovery name.
 	//
-	// - serviceId: The service ID.
+	// - serviceId: the service ID.
 	//
-	// - serviceName: The service name.
+	// - serviceName: the service name.
 	//
 	// example:
 	//
 	// {\\"enable\\":\\"false\\",\\"namespaceId\\":\\"cn-beijing:test\\",\\"portAndProtocol\\":{\\"2000:TCP\\":\\"18081\\"},\\"portProtocols\\":[{\\"port\\":2000,\\"protocol\\":\\"TCP\\",\\"targetPort\\":18081}],\\"pvtzDiscoveryName\\":\\"cn-beijing-1421801774382676\\",\\"serviceId\\":\\"3513\\",\\"serviceName\\":\\"demo-gray.test\\"}
 	SwimlanePvtzDiscoverySvc *string `json:"SwimlanePvtzDiscoverySvc,omitempty" xml:"SwimlanePvtzDiscoverySvc,omitempty"`
-	// The graceful shutdown timeout, in seconds. Default is 30. Valid values: 1–300.
+	// The graceful shutdown timeout period. Default value: 30. Unit: seconds. Valid values: 1 to 300.
 	//
 	// example:
 	//
 	// 10
 	TerminationGracePeriodSeconds *int32 `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	// The time zone. Default is **Asia/Shanghai**.
+	// The time zone. Default value: **Asia/Shanghai**.
 	//
 	// example:
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The Tomcat configuration. Set to an empty string or {} to delete the configuration. Values:
+	// The Tomcat configuration. Set this parameter to "" or "{}" to delete the configuration. Valid values:
 	//
-	// - **port**: Port range is 1024–65535. Ports below 1024 require root privileges. Because containers run with admin privileges, use ports above 1024. Default is 8080.
+	// - **port**: the port number. Valid values: 1024 to 65535. Ports smaller than 1024 require root permissions. Because the container is configured with admin permissions, specify a port greater than 1024. Default value: 8080.
 	//
-	// - **contextPath**: The access path. Default is the root directory /.
+	// - **contextPath**: the access path. Default value: root directory "/".
 	//
-	// - **maxThreads**: The size of the connection pool. Default is 400.
+	// - **maxThreads**: the connection pool size. Default value: 400.
 	//
-	// - uriEncoding: The encoding format for Tomcat. Options include **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. Default is **ISO-8859-1**.
+	// - **uriEncoding**: the encoding format of Tomcat. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. Default value: **ISO-8859-1**.
 	//
-	// - **useBodyEncodingForUri**: Whether to use body encoding for URLs. Default is **true**.
+	// - **useBodyEncodingForUri**: specifies whether to use **BodyEncoding for URL**. Default value: **true**.
 	//
 	// example:
 	//
 	// {"port":8080,"contextPath":"/","maxThreads":400,"uriEncoding":"ISO-8859-1","useBodyEncodingForUri":true}
 	TomcatConfig *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	// The release strategy. When MinReadyInstances equals 1, set UpdateStrategy to an empty string. When **MinReadyInstances*	- is greater than 1, examples include the following:
+	// The deployment policy. When the minimum number of available instances is 1, the value of the **UpdateStrategy*	- field is "". When the minimum number of available instances is greater than 1, examples are as follows:
 	//
-	// - Canary release with 1 instance, followed by 2 automatic batches with a 1-minute interval: `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}`
 	//
-	// - Canary release with 1 instance, followed by 2 manual batches: `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"manual"},"grayUpdate":{"gray":1}}`
 	//
-	// - Two automatic batches with a 0-minute interval: `{"type":"BatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":0}}`
+	//  - Grayscale 1 instance + 2 subsequent batches + automatic batching + 1-minute batch interval: `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}`
 	//
-	// Parameters:
+	//   - Grayscale 1 instance + 2 subsequent batches + manual batching: `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"manual"},"grayUpdate":{"gray":1}}`
 	//
-	// - **type**: The release strategy type. Options are **GrayBatchUpdate*	- (canary release) or **BatchUpdate*	- (phased release).
+	//   - 2 batches + automatic batching + 0-minute batch interval: `{"type":"BatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":0}}`
 	//
-	// - **batchUpdate**: The phased release strategy.
+	// Settings:
 	//
-	//   - **batch**: The number of batches.
+	//   - **type**: the publish policy type. Valid values: **GrayBatchUpdate*	- (grayscale publish) and **BatchUpdate*	- (batch publish).
 	//
-	//   - **releaseType**: How batches are processed. Options are **auto*	- (automatic) or **manual*	- (manual).
+	//   - **batchUpdate**: the batch publish policy.
 	//
-	//   - **batchWaitTime**: The wait time between batches, in minutes.
+	//     - **batch**: the number of publish batches.
 	//
-	// - **grayUpdate**: The number of canary instances. Required when **type*	- is **GrayBatchUpdate**.
+	//     - **releaseType**: the processing method between batches. Valid values: **auto*	- (automatic) and **manual*	- (manual).
+	//
+	//     - **batchWaitTime**: the interval between batches. Unit: minutes.
+	//
+	//   - **grayUpdate**: the number of grayscale instances. This parameter is required when **type*	- is set to **GrayBatchUpdate**.
 	//
 	// example:
 	//
 	// {"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}
 	UpdateStrategy *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
-	// The virtual switch where your application instance elastic network interfaces reside. This switch must be in the specified VPC.
+	// The vSwitch where the network interface controllers (NICs) of the application instance reside. The vSwitch must be in the specified VPC.
 	//
 	// example:
 	//
 	// vsw-bp12mw1f8k3jgygk9****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The startup command for your WAR package. Configure it the same way as the startup command for images. For more information, see [Set the startup command](https://help.aliyun.com/document_detail/96677.html).
+	// The startup command for deploying a WAR package-based application. The configuration procedure is the same as that for the startup command of an image-based deployment. For more information, see [Configure a startup command](https://help.aliyun.com/document_detail/96677.html).
 	//
 	// example:
 	//
 	// CATALINA_OPTS=\\"$CATALINA_OPTS $Options\\" catalina.sh run
 	WarStartOptions *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
-	// The Tomcat version that your deployment package depends on. Supported versions include the following:
+	// The Tomcat version on which the deployment package depends. Valid values:
 	//
 	// - **apache-tomcat-7.0.91**
 	//
 	// - **apache-tomcat-8.5.42**
 	//
-	// This parameter is not supported when **Package Type*	- is **Image**.
+	// This parameter is not supported when **Package Type*	- is set to **Image**.
 	//
 	// example:
 	//
@@ -1361,6 +1365,10 @@ func (s *DeployApplicationRequest) GetPython() *string {
 
 func (s *DeployApplicationRequest) GetPythonModules() *string {
 	return s.PythonModules
+}
+
+func (s *DeployApplicationRequest) GetRaspConfig() *DeployApplicationRequestRaspConfig {
+	return s.RaspConfig
 }
 
 func (s *DeployApplicationRequest) GetReadiness() *string {
@@ -1771,6 +1779,11 @@ func (s *DeployApplicationRequest) SetPythonModules(v string) *DeployApplication
 	return s
 }
 
+func (s *DeployApplicationRequest) SetRaspConfig(v *DeployApplicationRequestRaspConfig) *DeployApplicationRequest {
+	s.RaspConfig = v
+	return s
+}
+
 func (s *DeployApplicationRequest) SetReadiness(v string) *DeployApplicationRequest {
 	s.Readiness = &v
 	return s
@@ -1866,6 +1879,11 @@ func (s *DeployApplicationRequest) Validate() error {
 			}
 		}
 	}
+	if s.RaspConfig != nil {
+		if err := s.RaspConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SidecarContainersConfig != nil {
 		for _, item := range s.SidecarContainersConfig {
 			if item != nil {
@@ -1876,4 +1894,49 @@ func (s *DeployApplicationRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type DeployApplicationRequestRaspConfig struct {
+	EnableRasp  *bool   `json:"EnableRasp,omitempty" xml:"EnableRasp,omitempty"`
+	RaspAppKey  *string `json:"RaspAppKey,omitempty" xml:"RaspAppKey,omitempty"`
+	RaspAppName *string `json:"RaspAppName,omitempty" xml:"RaspAppName,omitempty"`
+}
+
+func (s DeployApplicationRequestRaspConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DeployApplicationRequestRaspConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeployApplicationRequestRaspConfig) GetEnableRasp() *bool {
+	return s.EnableRasp
+}
+
+func (s *DeployApplicationRequestRaspConfig) GetRaspAppKey() *string {
+	return s.RaspAppKey
+}
+
+func (s *DeployApplicationRequestRaspConfig) GetRaspAppName() *string {
+	return s.RaspAppName
+}
+
+func (s *DeployApplicationRequestRaspConfig) SetEnableRasp(v bool) *DeployApplicationRequestRaspConfig {
+	s.EnableRasp = &v
+	return s
+}
+
+func (s *DeployApplicationRequestRaspConfig) SetRaspAppKey(v string) *DeployApplicationRequestRaspConfig {
+	s.RaspAppKey = &v
+	return s
+}
+
+func (s *DeployApplicationRequestRaspConfig) SetRaspAppName(v string) *DeployApplicationRequestRaspConfig {
+	s.RaspAppName = &v
+	return s
+}
+
+func (s *DeployApplicationRequestRaspConfig) Validate() error {
+	return dara.Validate(s)
 }
