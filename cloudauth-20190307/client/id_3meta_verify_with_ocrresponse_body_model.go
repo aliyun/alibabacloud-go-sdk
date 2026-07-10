@@ -20,29 +20,29 @@ type iId3MetaVerifyWithOCRResponseBody interface {
 }
 
 type Id3MetaVerifyWithOCRResponseBody struct {
-	// Return code: 200 indicates success, any other value indicates failure. **Important**
+	// The response code. 200 indicates success. Other values indicate failure. **Important**
 	//
-	// - This parameter indicates whether the interface was called correctly. For a detailed explanation of return codes, please refer to the error codes.
+	// - This parameter indicates only whether the API call was made correctly. For more information about return codes, see error codes.
 	//
-	// - The business verification result can be viewed through the fields in ResultObject.
+	// - Check the fields in ResultObject for the business verification result.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Interface call return message. **Important*	- This parameter only indicates whether there was an exception with the interface.
+	// The response message of the API call. This parameter indicates only whether an exception occurred during the API call.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF03****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result object.
+	// The result object.
 	ResultObject *Id3MetaVerifyWithOCRResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -100,25 +100,25 @@ func (s *Id3MetaVerifyWithOCRResponseBody) Validate() error {
 }
 
 type Id3MetaVerifyWithOCRResponseBodyResultObject struct {
-	// Identity verification result:
+	// The identity verification result. Valid values:
 	//
-	// - 1: Consistent
+	// - 1: consistent.
 	//
-	// - 2: Inconsistent
+	// - 2: inconsistent.
 	//
-	// - 3: No record found
+	// - 3: no record found.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Card ocr result.
+	// {"address":"浙江省杭州市余*****","birthDate":"19901226","certName":"张三","certNo":"1234561990122*****","nationality":"汉","authority":"xxx公安局","startDate":"20201130","endDate":"20301130"}.
 	//
 	// example:
 	//
-	// {"address":"浙江省杭州市余*****","birthDate":"19901226","certName":"张三","certNo":"1234561990122*****","nationality":"汉","authority":"xxx公安局","startDate":"20201130","endDate":"20301130"}
+	// OCR读取的身份证信息。
 	CardInfo *string `json:"CardInfo,omitempty" xml:"CardInfo,omitempty"`
-	// Face comparison score.
+	// The face comparison score.
 	//
 	// example:
 	//

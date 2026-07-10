@@ -14,7 +14,7 @@ type iDeleteCloudauthstSceneRequest interface {
 }
 
 type DeleteCloudauthstSceneRequest struct {
-	// ID of the scene to be deleted.
+	// The ID of the scene to be deleted.
 	//
 	// This parameter is required.
 	//

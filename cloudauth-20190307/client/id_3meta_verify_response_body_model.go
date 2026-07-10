@@ -20,35 +20,35 @@ type iId3MetaVerifyResponseBody interface {
 }
 
 type Id3MetaVerifyResponseBody struct {
-	// Return code: 200 indicates success, others indicate failure.
+	// The response code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// **Important**
 	//
-	// - This parameter indicates whether the interface was called correctly. For detailed return code explanations, please refer to the error codes.
+	// - This parameter indicates only whether the API call is successful. For more information about return codes, see error codes.
 	//
-	// - Check the business verification result through the fields in `ResultObject`.
+	// - Check the fields in ResultObject for the business verification result.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Interface call return message.
+	// The response message of the API call.
 	//
 	// **Important**
 	//
-	// This parameter only indicates whether there was an exception with the interface.
+	// This parameter indicates only whether the API call is abnormal.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF03****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result object.
+	// The result object.
 	ResultObject *Id3MetaVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -106,19 +106,19 @@ func (s *Id3MetaVerifyResponseBody) Validate() error {
 }
 
 type Id3MetaVerifyResponseBodyResultObject struct {
-	// Identity verification result:
+	// The identity verification result. Valid values:
 	//
-	// - 1: Consistent
+	// - 1: Consistent.
 	//
-	// - 2: Inconsistent
+	// - 2: Inconsistent.
 	//
-	// - 3: No record found
+	// - 3: No record found.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Image comparison score.
+	// The face comparison score.
 	//
 	// example:
 	//
@@ -128,6 +128,10 @@ type Id3MetaVerifyResponseBodyResultObject struct {
 	//
 	// }
 	FaceDetail *string `json:"FaceDetail,omitempty" xml:"FaceDetail,omitempty"`
+	// example:
+	//
+	// 101
+	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 }
 
 func (s Id3MetaVerifyResponseBodyResultObject) String() string {
@@ -146,6 +150,10 @@ func (s *Id3MetaVerifyResponseBodyResultObject) GetFaceDetail() *string {
 	return s.FaceDetail
 }
 
+func (s *Id3MetaVerifyResponseBodyResultObject) GetSubCode() *string {
+	return s.SubCode
+}
+
 func (s *Id3MetaVerifyResponseBodyResultObject) SetBizCode(v string) *Id3MetaVerifyResponseBodyResultObject {
 	s.BizCode = &v
 	return s
@@ -153,6 +161,11 @@ func (s *Id3MetaVerifyResponseBodyResultObject) SetBizCode(v string) *Id3MetaVer
 
 func (s *Id3MetaVerifyResponseBodyResultObject) SetFaceDetail(v string) *Id3MetaVerifyResponseBodyResultObject {
 	s.FaceDetail = &v
+	return s
+}
+
+func (s *Id3MetaVerifyResponseBodyResultObject) SetSubCode(v string) *Id3MetaVerifyResponseBodyResultObject {
+	s.SubCode = &v
 	return s
 }
 

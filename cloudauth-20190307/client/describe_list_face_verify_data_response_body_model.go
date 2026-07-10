@@ -16,9 +16,9 @@ type iDescribeListFaceVerifyDataResponseBody interface {
 }
 
 type DescribeListFaceVerifyDataResponseBody struct {
-	// Returned data.
+	// The returned data.
 	MonitorData *DescribeListFaceVerifyDataResponseBodyMonitorData `json:"MonitorData,omitempty" xml:"MonitorData,omitempty" type:"Struct"`
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *DescribeListFaceVerifyDataResponseBody) Validate() error {
 }
 
 type DescribeListFaceVerifyDataResponseBodyMonitorData struct {
-	// Face verification data.
+	// The facial recognition data.
 	FaceVerifyData []*DescribeListFaceVerifyDataResponseBodyMonitorDataFaceVerifyData `json:"FaceVerifyData,omitempty" xml:"FaceVerifyData,omitempty" type:"Repeated"`
 }
 
@@ -97,37 +97,37 @@ func (s *DescribeListFaceVerifyDataResponseBodyMonitorData) Validate() error {
 }
 
 type DescribeListFaceVerifyDataResponseBodyMonitorDataFaceVerifyData struct {
-	// Verification statistics time.
+	// The authentication statistics time.
 	//
 	// example:
 	//
 	// 2025-10-16T00:00:00.000Z
 	ConDate *string `json:"ConDate,omitempty" xml:"ConDate,omitempty"`
-	// Number of failed verifications.
+	// The number of authentication-failed transactions.
 	//
 	// example:
 	//
 	// 6
 	FailCnt *string `json:"FailCnt,omitempty" xml:"FailCnt,omitempty"`
-	// Verification scheme.
+	// The authentication solution.
 	//
 	// example:
 	//
 	// Liveness
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Scene ID.
+	// The scene ID.
 	//
 	// example:
 	//
 	// 1000011644
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Number of successful verifications.
+	// The number of authentication-passed transactions.
 	//
 	// example:
 	//
 	// 12
 	SuccCnt *string `json:"SuccCnt,omitempty" xml:"SuccCnt,omitempty"`
-	// Total number of verifications.
+	// The total number of authentication requests.
 	//
 	// example:
 	//

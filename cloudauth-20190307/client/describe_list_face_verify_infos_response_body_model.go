@@ -24,33 +24,33 @@ type iDescribeListFaceVerifyInfosResponseBody interface {
 }
 
 type DescribeListFaceVerifyInfosResponseBody struct {
-	// List of face verification records.
+	// The list of facial recognition authentication records.
 	FaceVerifyInfos []*DescribeListFaceVerifyInfosResponseBodyFaceVerifyInfos `json:"FaceVerifyInfos,omitempty" xml:"FaceVerifyInfos,omitempty" type:"Repeated"`
-	// Number of items per page.
+	// The specified page number returned.
 	//
 	// example:
 	//
 	// 20
 	ItemsPerPage *int32 `json:"ItemsPerPage,omitempty" xml:"ItemsPerPage,omitempty"`
-	// Pagination parameter: current page number.
+	// The current page number for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// ID of the current request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1CC27D8E-24BF-5056-B14E-9F26719C9A8D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of verifications.
+	// The total number of authentication records.
 	//
 	// example:
 	//
 	// 0
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,47 +134,47 @@ func (s *DescribeListFaceVerifyInfosResponseBody) Validate() error {
 }
 
 type DescribeListFaceVerifyInfosResponseBodyFaceVerifyInfos struct {
-	// Business code.
+	// The business code.
 	//
 	// example:
 	//
 	// CLOUD_FACE
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Name.
+	// The name.
 	//
 	// example:
 	//
 	// 赵四
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// ID number.
+	// The certificate number.
 	//
 	// example:
 	//
 	// 500382199805086199
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// sha8ff58e964152c4c4d21005fb98ecb
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Creation time of the face recognition record.
+	// The creation time of the facial recognition record.
 	//
 	// example:
 	//
 	// 2022-10-02T11:16:06Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Scene ID.
+	// The scene ID.
 	//
 	// example:
 	//
 	// 1000010145
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Verification status:
+	// The authentication status. Valid values:
 	//
-	// - **1**: Verification passed.
+	// - **1**: Authentication passed.
 	//
-	// - **2**: Verification failed.
+	// - **2**: Authentication failed.
 	//
 	// example:
 	//

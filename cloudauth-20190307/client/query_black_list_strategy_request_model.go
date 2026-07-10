@@ -14,7 +14,7 @@ type iQueryBlackListStrategyRequest interface {
 }
 
 type QueryBlackListStrategyRequest struct {
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//

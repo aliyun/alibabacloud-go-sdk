@@ -16,21 +16,21 @@ type iMobileOnlineStatusRequest interface {
 }
 
 type MobileOnlineStatusRequest struct {
-	// Mobile number:
+	// The phone number. Valid values:
 	//
-	// - When `paramType` is `normal`: provide the plaintext mobile number.
+	// - If paramType is set to normal, pass in the phone number in plaintext.
 	//
-	// - When `paramType` is `md5`: provide the encrypted mobile number.
+	// - If paramType is set to md5, pass in the MD5-encrypted phone number.
 	//
 	// example:
 	//
 	// 13665148158
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// Parameter type:
+	// The parameter type. Valid values:
 	//
-	// - normal: unencrypted.
+	// - normal: not encrypted.
 	//
-	// - md5: md5 encrypted.
+	// - md5: MD5-encrypted.
 	//
 	// example:
 	//

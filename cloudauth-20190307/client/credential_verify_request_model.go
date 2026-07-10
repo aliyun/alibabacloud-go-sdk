@@ -40,149 +40,137 @@ type iCredentialVerifyRequest interface {
 }
 
 type CredentialVerifyRequest struct {
-	// Relevant certificate number.
+	// The certificate number.
 	//
 	// example:
 	//
 	// 4601*****
 	CertNum *string `json:"CertNum,omitempty" xml:"CertNum,omitempty"`
-	// - 01: Personal ID cards
+	// The credential name. Valid values:
 	//
-	//   - **0101**: ID card
+	// - 01: personal card and certificate
 	//
-	//   - **0102**: Bank card
+	//   - 0101: ID card
 	//
-	//   - **0104**: Teacher qualification certificate
+	//   - 0102: bank card
 	//
-	//   - **0107**: Student ID card
+	//   - 0104: teacher qualification certificate
 	//
-	// - 02: Business scenario
+	//   - 0107: student ID card
 	//
-	//   - **0201**: Storefront photo
+	// - 02: business scenario
 	//
-	//   - **0202**: Counter photo
+	//   - 0201: storefront photo
 	//
-	//   - **0203**: Scene photo
+	//   - 0202: counter photo
 	//
-	// - 03: Corporate qualifications
+	//   - 0203: scene photo
 	//
-	//   - **0301**: Business license
+	// - 03: enterprise qualification
+	//
+	//   - 0301: business license.
 	//
 	// example:
 	//
 	// 0104
 	CredName *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
-	// Credential type:
+	// The credential type. Valid values:
 	//
-	// - 01: Personal ID cards
+	// - 01: personal card and certificate
 	//
-	// - 02: Business scenario
+	// - 02: business scenario
 	//
-	// - 03: Corporate qualifications
+	// - 03: enterprise qualification.
 	//
 	// example:
 	//
 	// 01
 	CredType *string `json:"CredType,omitempty" xml:"CredType,omitempty"`
-	// ID number:
-	//
-	// Note
-	//
-	// Only supports the ID numbers of second-generation resident IDs and Hong Kong, Macao, and Taiwan residence permits.
-	//
-	// - When paramType is normal: enter the plaintext ID number.
-	//
-	// - When paramType is md5: first 6 digits of the ID number (plaintext) + date of birth (ciphertext) + last 4 digits of the ID number (plaintext).
+	// The ID card number.
 	//
 	// example:
 	//
 	// 429001********8211
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// Base64 encoded image, choose one from `imageUrl`, `imageFile`, or `imageContext`.
+	// The Base64-encoded image. Specify either imageUrl or imageContext.
 	//
 	// example:
 	//
 	// base64
 	ImageContext *string `json:"ImageContext,omitempty" xml:"ImageContext,omitempty"`
-	// Image URL, choose one from `imageUrl`, `imageFile`, or `imageContext`.
+	// The image URL. Specify either imageUrl or imageContext.
 	//
 	// example:
 	//
 	// http://marry.momocdn.com/avatar/3B/B6/3BB6527E-7467-926E-1048-B43614F20CC420230803_L.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Whether to enable authoritative authentication
+	// Specifies whether to enable authoritative verification. Valid values:
 	//
-	// - ****0****: No
+	// - **0**: Disabled.
 	//
-	// - **1**: Yes
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 0
 	IsCheck *string `json:"IsCheck,omitempty" xml:"IsCheck,omitempty"`
-	// Whether to enable OCR recognition.
+	// Specifies whether to enable optical character recognition (OCR). Valid values:
 	//
-	// - **0**: No
+	// - **0**: Disabled.
 	//
-	// - **1**: Yes
+	// - **1**: Enabled.
 	//
-	// > IsOCR can be set to 1 only when **CredType*	- is 01.
+	// You can set **isOCR*	- to **1*	- only when **CredType*	- is set to **01**.
 	//
 	// example:
 	//
 	// 1
 	IsOCR *string `json:"IsOCR,omitempty" xml:"IsOCR,omitempty"`
-	// Merchant details:
-	//
-	//
-	// > This field is required when PromptModel is set to DEFAULT.
+	// This parameter is required when PromptModel is set to DEFAULT.
 	MerchantDetail []*CredentialVerifyRequestMerchantDetail `json:"MerchantDetail,omitempty" xml:"MerchantDetail,omitempty" type:"Repeated"`
-	// Merchant ID.
-	//
-	// > This field is required when ****CredName***	- is set to **02**.
+	// The merchant ID. This parameter is required when **CredName*	- is set to **02**.
 	//
 	// example:
 	//
-	// 913100********KW8P
+	// 无。
 	MerchantId *string `json:"MerchantId,omitempty" xml:"MerchantId,omitempty"`
-	// Invocation mode:
+	// The call mode. Valid values:
 	//
-	// - **ANTI_FAKE_CHECK**: Image anti-forgery check
+	// 	- ANTI_FAKE_CHECK: image anti-forgery detection.
 	//
-	// - **ANTI_FAKE_VL**: Image anti-forgery check and semantic understanding
+	// 	- ANTI_FAKE_VL: image anti-forgery detection and semantic understanding.
 	//
-	// - **IMAGE_VL_COG**: Image semantic understanding
+	// 	- IMAGE_VL_COG: image semantic understanding.
 	//
-	// Default value: ANTI_FAKE_CHECK
+	// Default value: ANTI_FAKE_CHECK.
 	//
-	// > When **CredType*	- is set to 02, **ProductCode*	- can only be ANTI_FAKE_VL or IMAGE_VL_COG.
+	// ProductCode can be set to ANTI_FAKE_VL or IMAGE_VL_COG only when CredType is set to 02.
 	//
 	// example:
 	//
 	// ANTI_FAKE_CHECK
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Customer-defined prompt content for image semantic understanding.
+	// The custom prompt content for image semantic understanding.
 	//
-	//
-	// > This field is required when PromptModel is set to CUSTOM.
+	// This parameter is required when PromptModel is set to CUSTOM.
 	//
 	// example:
 	//
-	// -
+	// 无
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// Prompt acquisition method for image semantic understanding:
+	// The method to obtain the prompt for image semantic understanding. Valid values:
 	//
-	// - **DEFAULT**: System default
+	// 	- DEFAULT: system default.
 	//
-	// - **CUSTOM**: Customer-defined
+	// 	- CUSTOM: custom.
 	//
-	// > When **ProductCode*	- is set to **ANTI_FAKE_VL*	- or **IMAGE_VL_COG**, this parameter must be provided.
+	// Note: This parameter is required when ProductCode is set to ANTI_FAKE_VL or IMAGE_VL_COG.
 	//
 	// example:
 	//
 	// DEFAULT
 	PromptModel *string `json:"PromptModel,omitempty" xml:"PromptModel,omitempty"`
-	// UserName
+	// The name.
 	//
 	// example:
 	//
@@ -338,19 +326,17 @@ func (s *CredentialVerifyRequest) Validate() error {
 }
 
 type CredentialVerifyRequestMerchantDetail struct {
-	// The private key of the certificate.
-	//
-	// >  If this parameter is specified, you must also specify **CertName*	- and **Cert**. If **CertName**, **Cert**, and **Key*	- are specified, you do not need to specify **CertId**.
+	// The replacement keyword key.
 	//
 	// example:
 	//
 	// keyword
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Keyword value.
+	// The replacement keyword value.
 	//
 	// example:
 	//
-	// -
+	// 关键字
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

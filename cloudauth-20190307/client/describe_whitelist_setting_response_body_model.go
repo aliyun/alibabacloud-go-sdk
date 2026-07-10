@@ -22,27 +22,27 @@ type iDescribeWhitelistSettingResponseBody interface {
 }
 
 type DescribeWhitelistSettingResponseBody struct {
-	// Pagination parameter: current page number, default value is 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// List of certification details.
+	// The list of certification details.
 	Items []*DescribeWhitelistSettingResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Number of items per page for pagination.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0B8ACFD2-C5F0-5F9F-8DD4-E44F93E360E8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,49 +117,49 @@ func (s *DescribeWhitelistSettingResponseBody) Validate() error {
 }
 
 type DescribeWhitelistSettingResponseBodyItems struct {
-	// Certificate number.
+	// The certificate number.
 	//
 	// example:
 	//
 	// 320321XXXXXXXX701X
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// Certificate ID.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// shad861465f2aaeeb805b519e1a93ab2
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-10-16 17:28:03
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Modification time.
+	// The update time.
 	//
 	// example:
 	//
 	// 2025-10-16 17:28:03
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Whitelist ID.
+	// The whitelist ID.
 	//
 	// example:
 	//
 	// 6372003
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Remark.
+	// The remarks.
 	//
 	// example:
 	//
 	// 测试白名单
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Scene ID.
+	// The scene ID.
 	//
 	// example:
 	//
 	// 1000000332
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Whitelist status:
+	// The whitelist status. Valid values:
 	//
 	// - **VALID**: Valid.
 	//
@@ -171,18 +171,22 @@ type DescribeWhitelistSettingResponseBodyItems struct {
 	//
 	// VALID
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Effective end date.
+	// The expiration date.
 	//
 	// example:
 	//
 	// 2025-10-16 17:28:03
 	ValidEndDate *string `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
-	// Effective start time.
+	// The effective period.
 	//
 	// example:
 	//
 	// 2025-10-16 17:28:03
 	ValidStartDate *string `json:"ValidStartDate,omitempty" xml:"ValidStartDate,omitempty"`
+	// example:
+	//
+	// SUPER
+	WhitelistType *string `json:"WhitelistType,omitempty" xml:"WhitelistType,omitempty"`
 }
 
 func (s DescribeWhitelistSettingResponseBodyItems) String() string {
@@ -233,6 +237,10 @@ func (s *DescribeWhitelistSettingResponseBodyItems) GetValidStartDate() *string 
 	return s.ValidStartDate
 }
 
+func (s *DescribeWhitelistSettingResponseBodyItems) GetWhitelistType() *string {
+	return s.WhitelistType
+}
+
 func (s *DescribeWhitelistSettingResponseBodyItems) SetCertNo(v string) *DescribeWhitelistSettingResponseBodyItems {
 	s.CertNo = &v
 	return s
@@ -280,6 +288,11 @@ func (s *DescribeWhitelistSettingResponseBodyItems) SetValidEndDate(v string) *D
 
 func (s *DescribeWhitelistSettingResponseBodyItems) SetValidStartDate(v string) *DescribeWhitelistSettingResponseBodyItems {
 	s.ValidStartDate = &v
+	return s
+}
+
+func (s *DescribeWhitelistSettingResponseBodyItems) SetWhitelistType(v string) *DescribeWhitelistSettingResponseBodyItems {
+	s.WhitelistType = &v
 	return s
 }
 

@@ -20,25 +20,25 @@ type iDeepfakeDetectResponseBody interface {
 }
 
 type DeepfakeDetectResponseBody struct {
-	// Return code: 200 indicates success, others indicate failure.
+	// The return code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 8FC3D6AC-9FED-4311-8DA7-C4BF47D9F260
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result information.
+	// The result information.
 	ResultObject *DeepfakeDetectResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,37 +96,33 @@ func (s *DeepfakeDetectResponseBody) Validate() error {
 }
 
 type DeepfakeDetectResponseBodyResultObject struct {
-	// Risk result:
+	// The risk result. Valid values:
 	//
-	// - **0**: Low risk
+	// - **0**: Low risk.
 	//
-	// - **1**: High risk
+	// - **1**: High risk.
 	//
-	// - **2**: Suspicious
+	// - **2**: Suspicious.
 	//
 	// example:
 	//
 	// 1
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Risk score map.
+	// The risk score map.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
-	// Risk tags. Multiple tags are separated by commas (,). Includes:
+	// The risk labels. Multiple labels are separated by commas (,). Valid values:
 	//
-	// - Suspected deep forgery  SuspectDeepForgery
+	// - SuspectDeepForgery: suspected deepfake
 	//
-	// - Suspected synthetic attack  SuspectPSFace
+	// - SuspectPSFace: suspected synthetic attack
 	//
-	// - Suspected watermark  SuspectWarterMark
+	// - SuspectTemple: suspected fraudulent attack
 	//
-	// - Suspected black industry attack  SuspectTemple
-	//
-	// - Suspected generated face  SuspectAIGC Face
-	//
-	// - Suspected rephotographed face  SuspectRemake
+	// - SuspectRemake: suspected recaptured face.
 	//
 	// example:
 	//
-	// SuspectDeepForgery,SuspectWarterMark
+	// SuspectDeepForgery, SuspectPSFace
 	RiskTag *string `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
 }
 

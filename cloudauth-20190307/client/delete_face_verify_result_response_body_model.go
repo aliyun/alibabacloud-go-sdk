@@ -20,7 +20,7 @@ type iDeleteFaceVerifyResultResponseBody interface {
 }
 
 type DeleteFaceVerifyResultResponseBody struct {
-	// Return code: 200 for success, others for failure.
+	// Return code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type DeleteFaceVerifyResultResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 5A6229C0-E156-48E4-B6EC-0F528BDF60D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result information.
+	// The returned result.
 	ResultObject *DeleteFaceVerifyResultResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,13 +96,13 @@ func (s *DeleteFaceVerifyResultResponseBody) Validate() error {
 }
 
 type DeleteFaceVerifyResultResponseBodyResultObject struct {
-	// Unique identifier for real-person authentication.
+	// The unique identifier for real-person authentication.
 	//
 	// example:
 	//
 	// sha58aeae7ea2f5ed069530f58df4e6d
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Deletion result. Possible values are as follows:
+	// The deletion result. Valid values:
 	//
 	// - Y: Deletion successful.
 	//
@@ -112,11 +112,11 @@ type DeleteFaceVerifyResultResponseBodyResultObject struct {
 	//
 	// N
 	DeleteResult *string `json:"DeleteResult,omitempty" xml:"DeleteResult,omitempty"`
-	// Reason for deletion failure
+	// The reason for deletion failure.
 	//
-	// - NOT_DELETE_REPEATEDLY: Cannot be deleted repeatedly
+	// - NOT_DELETE_REPEATEDLY: The data cannot be deleted repeatedly.
 	//
-	// - NEED_QUERY_VERIFY_RESULT: Need to query the verification result first, then delete
+	// - NEED_QUERY_VERIFY_RESULT: You must query the authentication result before deleting.
 	//
 	// example:
 	//

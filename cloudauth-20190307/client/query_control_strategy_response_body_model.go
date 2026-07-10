@@ -20,25 +20,25 @@ type iQueryControlStrategyResponseBody interface {
 }
 
 type QueryControlStrategyResponseBody struct {
-	// Return code: 200 for success, others for failure.
+	// The response code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// B506328A-D84B-4750-82C7-6A207C585CF1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Processing result.
+	// The processing result.
 	ResultObject []*QueryControlStrategyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Repeated"`
 }
 
@@ -100,55 +100,55 @@ func (s *QueryControlStrategyResponseBody) Validate() error {
 }
 
 type QueryControlStrategyResponseBodyResultObject struct {
-	// API name, same as the **ProductCode*	- of the authentication interface.
+	// The API name, which is the same as the ProductCode of the verification operation.
 	//
 	// example:
 	//
 	// ID_PRO
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// Rule configuration type:
+	// The rule configuration type. Valid values:
 	//
 	// - **QPS**: QPS greater than
 	//
-	// - **SUCCESS_RATE_5_MIN**: Success rate in the last 5 minutes less than
+	// - **SUCCESS_RATE_5_MIN**: success rate in the last 5 minutes less than
 	//
-	// - **RESP_TIME_5_MIN**: Average response time in the last 5 minutes greater than
+	// - **RESP_TIME_5_MIN**: average response time in the last 5 minutes greater than
 	//
-	// - **AMOUNT_RISE**: Call volume growth ratio greater than
+	// - **AMOUNT_RISE**: call volume increase compared to the previous period greater than
 	//
-	// - **AMOUNT_FALL**: Call volume decline ratio less than
+	// - **AMOUNT_FALL**: call volume decrease compared to the previous period less than
 	//
-	// - **PASSED_RATE_1_HOUR**: Verification consistency rate in the last hour less than
+	// - **PASSED_RATE_1_HOUR**: verification consistency rate in the last hour less than
 	//
-	// - **PARAM_ERROR_RATE_1_HOUR**: Parameter error rate in the last hour greater than
+	// - **PARAM_ERROR_RATE_1_HOUR**: parameter error rate in the last hour greater than.
 	//
 	// example:
 	//
 	// SUCCESS_RATE_5_MIN
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// Rule ID.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 234822
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Status:
+	// The status. Valid values:
 	//
-	// - **disabled**: Disabled
+	// - **disabled**: Disabled.
 	//
-	// - **normal**: Enabled
+	// - **normal**: Enabled.
 	//
 	// example:
 	//
 	// normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Alarm threshold for rule configuration.
+	// The alert threshold for configure alerting of the rule.
 	//
 	// example:
 	//
 	// 0.9
 	Threshold *float64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//

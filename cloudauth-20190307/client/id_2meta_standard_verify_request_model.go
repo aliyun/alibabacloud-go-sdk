@@ -18,33 +18,31 @@ type iId2MetaStandardVerifyRequest interface {
 }
 
 type Id2MetaStandardVerifyRequest struct {
-	// ID number:
+	// The ID card number.
 	//
-	// - When `paramType` is normal: enter the plain text of the ID number.
+	// - If ParamType is set to normal, enter the ID card number in plaintext.
 	//
-	// - When `paramType` is md5:
-	//
-	// The first 6 digits (plain text) + date of birth (encrypted) + last 4 digits (plain text).
+	// - If ParamType is set to md5, the format is: first 6 digits of the ID card number (plaintext) + date of birth (ciphertext) + last 4 digits of the ID card number (plaintext).
 	//
 	// example:
 	//
 	// 4****************1
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// Parameter type:
+	// The parameter type. Valid values:
 	//
-	// - normal: unencrypted.
+	// - normal: not encrypted.
 	//
-	// - md5: md5 encrypted.
+	// - md5: MD5-encrypted.
 	//
 	// example:
 	//
 	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// Name:
+	// The name.
 	//
-	// - When `paramType` is normal: enter the plain text of the name.
+	// - If ParamType is set to normal, enter the name in plaintext.
 	//
-	// - When `paramType` is md5: the first character of the name (encrypted) + the rest of the name (plain text).
+	// - If ParamType is set to md5, the format is: first character of the name (ciphertext) + remaining characters of the name (plaintext).
 	//
 	// example:
 	//

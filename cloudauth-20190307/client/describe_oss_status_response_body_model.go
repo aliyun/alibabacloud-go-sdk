@@ -16,9 +16,9 @@ type iDescribeOssStatusResponseBody interface {
 }
 
 type DescribeOssStatusResponseBody struct {
-	// Returned data.
+	// The returned data.
 	Data *DescribeOssStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of this request.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *DescribeOssStatusResponseBody) Validate() error {
 }
 
 type DescribeOssStatusResponseBodyData struct {
-	// The name of the OSS bucket for delivering authentication information.
+	// The name of the OSS bucket to which verification information is delivered.
 	//
 	// example:
 	//
 	// cn-hangzhou-aliyun-cloudauth-20250516xxxxxx
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// User activation status, SUCCESS indicates activated.
+	// The activation status of the user. A value of SUCCESS indicates that the service is activated.
 	//
 	// example:
 	//

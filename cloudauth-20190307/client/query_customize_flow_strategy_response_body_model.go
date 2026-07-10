@@ -24,33 +24,33 @@ type iQueryCustomizeFlowStrategyResponseBody interface {
 }
 
 type QueryCustomizeFlowStrategyResponseBody struct {
-	// Return code: 200 for success, others for failure.
+	// The return code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Processing result.
+	// The processing result.
 	ResultObject []*QueryCustomizeFlowStrategyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Repeated"`
-	// Whether the response was successful.
+	// Indicates whether the response is successful.
 	//
 	// example:
 	//
@@ -140,61 +140,61 @@ type QueryCustomizeFlowStrategyResponseBodyResultObject struct {
 	//
 	// -
 	AccumulateKey *string `json:"AccumulateKey,omitempty" xml:"AccumulateKey,omitempty"`
-	// Flow control statistical window, unit: **minutes**.
+	// The rate limiting statistical window. Unit: **minutes**.
 	//
 	// example:
 	//
 	// 60
 	AccumulateWindow *string `json:"AccumulateWindow,omitempty" xml:"AccumulateWindow,omitempty"`
-	// API name, same as **ProductCode**.
+	// The API name, which is the same as **ProductCode**.
 	//
 	// example:
 	//
 	// ID_PRO
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// Flow type:
+	// The flow type. Valid values:
 	//
-	// - **ACCUMULATE**: ID card reappears
+	// - **ACCUMULATE**: repeated occurrence of an ID card number.
 	//
-	// - **PASSED_RATE**: Pass rate less than
+	// - **PASSED_RATE**: pass rate less than the threshold.
 	//
-	// - **SUB_CODE_205**: Authentication failed and liveness attack 205 ratio greater than
+	// - **SUB_CODE_205**: authentication failed and the proportion of liveness attack 205 is greater than the threshold.
 	//
-	// - **SUB_CODE_206**: Authentication failed and liveness attack 206 ratio greater than
+	// - **SUB_CODE_206**: authentication failed and the proportion of liveness attack 206 is greater than the threshold.
 	//
 	// example:
 	//
 	// ACCUMULATE
 	FlowType *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
-	// Rule ID.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 234822
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Operation.
+	// The operation.
 	//
 	// example:
 	//
 	// match
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// Status:
+	// The status. Valid values:
 	//
-	// - **disabled**: Disabled
+	// - **disabled**: Disabled.
 	//
-	// - **normal**: Enabled
+	// - **normal**: Enabled.
 	//
 	// example:
 	//
 	// disabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Threshold.
+	// The threshold.
 	//
 	// example:
 	//
 	// 10
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//

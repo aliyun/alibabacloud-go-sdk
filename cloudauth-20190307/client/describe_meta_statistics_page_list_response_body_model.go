@@ -24,23 +24,34 @@ type iDescribeMetaStatisticsPageListResponseBody interface {
 }
 
 type DescribeMetaStatisticsPageListResponseBody struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 3
-	CurrentPage *int32                                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeMetaStatisticsPageListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Paginated list data.
+	Items []*DescribeMetaStatisticsPageListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Number of data entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// C379C9E4-4DA0-5D0B-821B-25E2B8693D48
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 7
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -123,57 +134,120 @@ func (s *DescribeMetaStatisticsPageListResponseBody) Validate() error {
 }
 
 type DescribeMetaStatisticsPageListResponseBodyItems struct {
-	// Api。
+	// API.
 	//
 	// example:
 	//
 	// ID_PERIOD
-	Api     *string `json:"Api,omitempty" xml:"Api,omitempty"`
+	Api *string `json:"Api,omitempty" xml:"Api,omitempty"`
+	// Name corresponding to the API:
+	//
+	// - **ID_CARD_2_META**: ID Card Two-Element Verification
+	//
+	// - **ID_PERIOD**: ID Card Validity Verification Period
+	//
+	// - **MOBILE_ONLINE_LENGTH**: Mobile Online Duration
+	//
+	// - **MOBILE_ONLINE_STATUS**: Mobile Online Status
+	//
+	// - **MOBILE_3_META_SIMPLE**: Mobile Number Three-Element Verification (Simple)
+	//
+	// - **MOBILE_3_META**: Mobile Number Three-Element Verification (Detailed)
+	//
+	// - **MOBILE_2_META**: Mobile Number Two-Element Verification
+	//
+	// - **BANK_CARD_N_META**: Bank Card Verification (Detailed)
+	//
+	// - **MOBILE_DETECT**: Number Detection
+	//
+	//  -**VEHICLE_N_META**: Vehicle Element Verification (Enhanced)
+	//
+	// - **VEHICLE_PENTA_INFO**: Vehicle Five-Element Information Recognition
+	//
+	// - **VEHICLE_LICENSE_INFO**: Vehicle Information Recognition
+	//
+	// - **VEHICLE_INSURE_DATE**: Vehicle Insurance Date Query
+	//
+	// - **VEHICLE_CHECK**: Vehicle Element Verification
+	//
+	// example:
+	//
+	// 车辆要素核验增强版
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// Number of hits (billed).
+	//
 	// example:
 	//
 	// 10
 	BillCount *int64 `json:"BillCount,omitempty" xml:"BillCount,omitempty"`
+	// Hit rate (%).
+	//
 	// example:
 	//
 	// 80
 	BillRate *string `json:"BillRate,omitempty" xml:"BillRate,omitempty"`
+	// Number of successful mobile number queries (exclusive to Number Detection).
+	//
 	// example:
 	//
 	// 1
 	ChargeCount *int64 `json:"ChargeCount,omitempty" xml:"ChargeCount,omitempty"`
+	// Date.
+	//
 	// example:
 	//
 	// 11/8
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// Carrier name:
+	//
+	// - **CMCC**: China Mobile
+	//
+	// - **CUCC**: China Unicom
+	//
+	// - **CTCC**: China Telecom
+	//
 	// example:
 	//
 	// CMCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// Number of calls with no record information.
+	//
 	// example:
 	//
 	// 12
 	NoRecordCount *int64 `json:"NoRecordCount,omitempty" xml:"NoRecordCount,omitempty"`
+	// Number of passed authentications.
+	//
 	// example:
 	//
 	// 21
 	PassedCount *int64 `json:"PassedCount,omitempty" xml:"PassedCount,omitempty"`
+	// Authentication pass rate (%).
+	//
 	// example:
 	//
 	// 80
 	PassedRate *string `json:"PassedRate,omitempty" xml:"PassedRate,omitempty"`
+	// Number of successful requests.
+	//
 	// example:
 	//
 	// 1
 	SuccessCount *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// Call success rate (%).
+	//
 	// example:
 	//
 	// 100
 	SuccessRate *string `json:"SuccessRate,omitempty" xml:"SuccessRate,omitempty"`
+	// Total number of entries.
+	//
 	// example:
 	//
 	// 4
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Number of failed calls.
+	//
 	// example:
 	//
 	// 2

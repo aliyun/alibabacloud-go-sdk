@@ -32,50 +32,69 @@ type iCreateAntCloudAuthSceneRequest interface {
 }
 
 type CreateAntCloudAuthSceneRequest struct {
-	// Whether to enable binding of the mini program:
+	// Specifies whether to enable mini program binding. Valid values:
 	//
-	// - **Y**: Enable
+	// - **Y**: enabled
 	//
-	// - **N (default)**: Not enabled
+	// - **N (default)**: disabled.
 	//
 	// example:
 	//
 	// Y
 	BindMiniProgram *string `json:"BindMiniProgram,omitempty" xml:"BindMiniProgram,omitempty"`
-	// Content of the uploaded verification file.
+	// The content of the uploaded verification file.
 	//
 	// example:
 	//
 	// 774c4aab45981ff4a86cde9255a11xxx
 	CheckFileBody *string `json:"CheckFileBody,omitempty" xml:"CheckFileBody,omitempty"`
-	// Name of the uploaded verification file.
+	// The name of the uploaded verification file.
 	//
 	// example:
 	//
 	// 测试.txt
-	CheckFileName  *string `json:"CheckFileName,omitempty" xml:"CheckFileName,omitempty"`
+	CheckFileName *string `json:"CheckFileName,omitempty" xml:"CheckFileName,omitempty"`
+	// Specifies whether to enable enhanced device risk detection. Valid values:
+	//
+	// - **Y**: enabled
+	//
+	// - **N**: disabled.
+	//
+	// example:
+	//
+	// N
 	DeviceRiskPlus *string `json:"DeviceRiskPlus,omitempty" xml:"DeviceRiskPlus,omitempty"`
-	// Mini program name.
+	// The mini program name.
 	//
 	// example:
 	//
 	// 测试APP
 	MiniProgramName *string `json:"MiniProgramName,omitempty" xml:"MiniProgramName,omitempty"`
-	// Binding platform for the mini program:
+	// The mini program platform to bind. Valid values:
 	//
 	// - **WECHAT**: WeChat
 	//
 	// - **ALIPAY**: Alipay
 	//
-	// - **TIKTOK**: TikTok
+	// - **TIKTOK**: TikTok.
 	//
 	// example:
 	//
 	// WECHAT
-	Platform          *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	ReturnPicCount    *int64  `json:"ReturnPicCount,omitempty" xml:"ReturnPicCount,omitempty"`
-	ReturnVideoLength *int64  `json:"ReturnVideoLength,omitempty" xml:"ReturnVideoLength,omitempty"`
-	// Scene name.
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The number of face photos for evidence storage (1-5).
+	//
+	// example:
+	//
+	// 1
+	ReturnPicCount *int64 `json:"ReturnPicCount,omitempty" xml:"ReturnPicCount,omitempty"`
+	// The duration of the evidence storage video, in seconds.
+	//
+	// example:
+	//
+	// 1
+	ReturnVideoLength *int64 `json:"ReturnVideoLength,omitempty" xml:"ReturnVideoLength,omitempty"`
+	// The scenario name.
 	//
 	// This parameter is required.
 	//
@@ -83,11 +102,11 @@ type CreateAntCloudAuthSceneRequest struct {
 	//
 	// 测试场景
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// Whether to deliver the files generated from the authentication to the customer\\"s OSS:
+	// Specifies whether to deliver the files generated during authentication to the customer\\"s OSS. Valid values:
 	//
-	// - **Y**: Yes
+	// - **Y**: Yes.
 	//
-	// - **N**: No
+	// - **N**: No.
 	//
 	// example:
 	//

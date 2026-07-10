@@ -20,25 +20,25 @@ type iCredentialVerifyV2ResponseBody interface {
 }
 
 type CredentialVerifyV2ResponseBody struct {
-	// Return code: 200 for success, others for failure.
+	// The return code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The return message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result information.
+	// The result information.
 	ResultObject *CredentialVerifyV2ResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *CredentialVerifyV2ResponseBody) Validate() error {
 }
 
 type CredentialVerifyV2ResponseBodyResultObject struct {
-	// Additional information in JSON format.
+	// The additional information in JSON format.
 	//
 	// example:
 	//
@@ -116,7 +116,9 @@ type CredentialVerifyV2ResponseBodyResultObject struct {
 	//
 	// }
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	// OCR recognition result.
+	// The OCR recognition result.
+	//
+	// 	Danger: Deprecated.
 	//
 	// example:
 	//
@@ -142,51 +144,55 @@ type CredentialVerifyV2ResponseBodyResultObject struct {
 	//
 	// }
 	OcrInfo *string `json:"OcrInfo,omitempty" xml:"OcrInfo,omitempty"`
-	// Risk result
+	// The risk result. Valid values:
 	//
-	// - 0: Low risk
+	// - 0: Low risk.
 	//
-	// - 1: High risk
+	// - 1: High risk.
 	//
-	// - 2: Suspicious
+	// - 2: Suspicious.
 	//
 	// example:
 	//
 	// 1
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Risk score map.
+	// The risk score map.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
-	// Risk tags, separated by commas (,), including:
+	// The risk tags, separated by commas (,). Valid values:
 	//
-	// - PS: Image manipulation.
+	// - PS: image manipulation.
 	//
-	// - SCREEN_PHOTO: Screen recapture.
+	// - SCREEN_PHOTO: screen recapture.
 	//
-	// - SCREENSHOT: Screenshot.
+	// - SCREENSHOT: screenshot.
 	//
-	// - WATERMARK: Watermark.
+	// - WATERMARK: watermark.
 	//
-	// - SAME_BACKGROUND: Similar background.
+	// - SAME_BACKGROUND: similar background.
 	//
-	// - ORIGINAL_PHOTO: Not the original image
+	// - ORIGINAL_PHOTO: non-original image.
 	//
 	// example:
 	//
 	// PS,SCREEN_PHOTO
 	RiskTag *string `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
-	// Authority verification details.
+	// The authoritative verification details.
+	//
+	// 	Danger: Deprecated.
 	//
 	// example:
 	//
 	// **
 	VerifyDetail *string `json:"VerifyDetail,omitempty" xml:"VerifyDetail,omitempty"`
-	// Authority verification result
+	// The authoritative verification result.
+	//
+	// 	Danger: Deprecated.
 	//
 	// example:
 	//
 	// *
 	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
-	// Qwen interpretation.
+	// This feature is offline. This parameter no longer takes effect.
 	VlResult *CredentialVerifyV2ResponseBodyResultObjectVlResult `json:"VlResult,omitempty" xml:"VlResult,omitempty" type:"Struct"`
 }
 
@@ -280,33 +286,17 @@ func (s *CredentialVerifyV2ResponseBodyResultObject) Validate() error {
 }
 
 type CredentialVerifyV2ResponseBodyResultObjectVlResult struct {
-	// Qwen interpretation success indicator
-	//
-	// true: Success
-	//
-	// false: Failure
+	// This feature is offline. This parameter no longer takes effect.
 	//
 	// example:
 	//
-	// true
+	// -
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Image understanding result:
-	//
-	// - When PromptModel is DEFAULT, the output format refers to the example on the right.
-	//
-	// - When PromptModel is CUSTOM, the output format follows the agreed format of the Prompt.
+	// This feature is offline. This parameter no longer takes effect.
 	//
 	// example:
 	//
-	// {
-	//
-	//  "CHK_DOOR_PHOTO":1, -- 是否门头照 1：是 0：否
-	//
-	//  "CHK_INTERIOR_PHOTO":0, -- 是否内景照 1：是 0：否
-	//
-	//  "CHK_COUNTER_PHOTO":0 -- 是否柜台照 1：是 0：否
-	//
-	// }
+	// -
 	VlContent *string `json:"VlContent,omitempty" xml:"VlContent,omitempty"`
 }
 

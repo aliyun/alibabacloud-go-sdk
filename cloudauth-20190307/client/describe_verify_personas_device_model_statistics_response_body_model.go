@@ -16,13 +16,13 @@ type iDescribeVerifyPersonasDeviceModelStatisticsResponseBody interface {
 }
 
 type DescribeVerifyPersonasDeviceModelStatisticsResponseBody struct {
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 026828A3-CC7E-5D85-85B6-08DF245C5A53
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Query result.
+	// The query result.
 	ResultObject *DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *DescribeVerifyPersonasDeviceModelStatisticsResponseBody) Validate() err
 }
 
 type DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObject struct {
-	// Total number of devices.
+	// The total number of devices.
 	//
 	// example:
 	//
 	// 31
 	AllDeviceCnt *int64 `json:"AllDeviceCnt,omitempty" xml:"AllDeviceCnt,omitempty"`
-	// List of data for different phone models.
+	// The list of data for different phone models.
 	Items []*DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObjectItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
@@ -112,19 +112,19 @@ func (s *DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObject) Va
 }
 
 type DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObjectItems struct {
-	// Number of devices.
+	// The number of devices.
 	//
 	// example:
 	//
 	// 5
 	DeviceCnt *int64 `json:"DeviceCnt,omitempty" xml:"DeviceCnt,omitempty"`
-	// Device model
+	// The device model.
 	//
 	// example:
 	//
 	// iPhone15,2
 	DeviceModel *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
-	// The ratio of this device model to the total number of devices.
+	// The ratio of devices of this model to the total number of devices.
 	//
 	// example:
 	//

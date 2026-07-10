@@ -20,25 +20,25 @@ type iMobileOnlineStatusResponseBody interface {
 }
 
 type MobileOnlineStatusResponseBody struct {
-	// Return code: 200 for success, others for failure.
+	// The return code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// B506328A-D84B-4750-82C7-6A207C585CF1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result information
+	// The result information.
 	ResultObject *MobileOnlineStatusResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,43 +96,43 @@ func (s *MobileOnlineStatusResponseBody) Validate() error {
 }
 
 type MobileOnlineStatusResponseBodyResultObject struct {
-	// Verification result
+	// The verification result. Valid values:
 	//
-	// - 1: Available online
+	// - 1: active and available.
 	//
-	// - 2: Not available online (see subCode for details)
+	// - 2: not in an active and available state. For more information, see subCode.
 	//
-	// - 3: No query result
+	// - 3: no query result.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// ISP name
+	// The name of the telecommunications service provider. Valid values:
 	//
-	// - CMCC: China Mobile
+	// - CMCC: China Mobile.
 	//
-	// - CUCC: China Unicom
+	// - CUCC: China Unicom.
 	//
-	// - CTCC: China Telecom
+	// - CTCC: China Telecom.
 	//
 	// example:
 	//
 	// CMCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// Verification details
+	// The verification details. Valid values:
 	//
-	// - 101: Available online
+	// - 101: active and available.
 	//
-	// - 201: Suspended
+	// - 201: suspended.
 	//
-	// - 202: Disconnected
+	// - 202: canceled.
 	//
-	// - 203: Online but not available
+	// - 203: active but unavailable.
 	//
-	// - 204: Not online
+	// - 204: not active.
 	//
-	// - 301: No record found
+	// - 301: no record found.
 	//
 	// example:
 	//

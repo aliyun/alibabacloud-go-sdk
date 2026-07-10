@@ -20,25 +20,25 @@ type iMobile2MetaVerifyResponseBody interface {
 }
 
 type Mobile2MetaVerifyResponseBody struct {
-	// Return code: 200 for success, others for failure.
+	// The return code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF039795
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result object.
+	// The result object.
 	ResultObject *Mobile2MetaVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,25 +96,25 @@ func (s *Mobile2MetaVerifyResponseBody) Validate() error {
 }
 
 type Mobile2MetaVerifyResponseBodyResultObject struct {
-	// Verification result:
+	// The verification result. Valid values:
 	//
-	// - 1: Consistent verification
+	// - 1: Consistent.
 	//
-	// - 2: Inconsistent verification
+	// - 2: Inconsistent.
 	//
-	// - 3: No record found
+	// - 3: No record found.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Operator name:
+	// The carrier name. Valid values:
 	//
 	// - CMCC: China Mobile
 	//
 	// - CUCC: China Unicom
 	//
-	// - CTCC: China Telecom
+	// - CTCC: China Telecom.
 	//
 	// example:
 	//

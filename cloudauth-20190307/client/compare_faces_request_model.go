@@ -20,33 +20,33 @@ type iCompareFacesRequest interface {
 }
 
 type CompareFacesRequest struct {
-	// Type of Image 1, with values:
+	// The type of image 1. Valid values:
 	//
-	// - **FacePic**: User\\"s face photo
+	// - **FacePic**: A face photo of the user.
 	//
-	// - **IDPic**: Headshot from the user\\"s second-generation ID card chip (typically obtained and decoded by a second-generation ID card reader)
+	// - **IDPic**: A headshot photo from the chip of the user\\"s second-generation ID card (typically read and decoded by a second-generation ID card reader device).
 	//
 	// example:
 	//
 	// FacePic
 	SourceImageType *string `json:"SourceImageType,omitempty" xml:"SourceImageType,omitempty"`
-	// Address of Image 1. Please refer to the instructions on uploading image addresses.
+	// The URL of image 1. For more information, see the description of image URL upload.
 	//
 	// example:
 	//
 	// http%3A%2F%2Fjiangsu.china.com.cn%2Fuploadfile%2F2015%2F0114%2F1421221304095989.jpg
 	SourceImageValue *string `json:"SourceImageValue,omitempty" xml:"SourceImageValue,omitempty"`
-	// Type of Image 2, with values:
+	// The type of image 2. Valid values:
 	//
-	// - **FacePic**: User\\"s face photo
+	// - **FacePic**: A face photo of the user.
 	//
-	// - **IDPic**: Headshot from the user\\"s second-generation ID card chip (typically obtained and decoded by a second-generation ID card reader)
+	// - **IDPic**: A headshot photo from the chip of the user\\"s second-generation ID card (typically read and decoded by a second-generation ID card reader device).
 	//
 	// example:
 	//
 	// FacePic
 	TargetImageType *string `json:"TargetImageType,omitempty" xml:"TargetImageType,omitempty"`
-	// Address of Image 2. Please refer to the instructions on uploading image addresses.
+	// The URL of image 2. For more information, see the description of image URL upload.
 	//
 	// example:
 	//

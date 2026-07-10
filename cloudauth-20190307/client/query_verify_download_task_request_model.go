@@ -14,7 +14,7 @@ type iQueryVerifyDownloadTaskRequest interface {
 }
 
 type QueryVerifyDownloadTaskRequest struct {
-	// Download task ID.
+	// The download task ID.
 	//
 	// example:
 	//

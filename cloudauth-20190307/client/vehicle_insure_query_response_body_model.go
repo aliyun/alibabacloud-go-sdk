@@ -20,25 +20,25 @@ type iVehicleInsureQueryResponseBody interface {
 }
 
 type VehicleInsureQueryResponseBody struct {
-	// Return code: 200 indicates success, others indicate failure.
+	// The return code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Response message for the request information.
+	// The response message of the request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 5A6229C0-E156-48E4-B6EC-0F52********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result information.
+	// The result information.
 	ResultObject *VehicleInsureQueryResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,19 +96,19 @@ func (s *VehicleInsureQueryResponseBody) Validate() error {
 }
 
 type VehicleInsureQueryResponseBodyResultObject struct {
-	// Verification result code:
+	// The verification result code. Valid values:
 	//
 	// >
 	//
-	// > - 1: Found (charged)
+	// > - 1: record found (billable).
 	//
-	// > - 3: No record found (not charged)
+	// > - 3: no record found (not billable).
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Insurance date information
+	// The insurance date information.
 	//
 	// example:
 	//

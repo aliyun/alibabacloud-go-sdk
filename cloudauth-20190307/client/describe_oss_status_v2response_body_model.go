@@ -24,33 +24,33 @@ type iDescribeOssStatusV2ResponseBody interface {
 }
 
 type DescribeOssStatusV2ResponseBody struct {
-	// Return code
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// B506328A-D84B-4750-82C7-6A207C585CF1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result information.
+	// The result information.
 	ResultObject *DescribeOssStatusV2ResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
-	// Whether the response was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -130,19 +130,19 @@ func (s *DescribeOssStatusV2ResponseBody) Validate() error {
 }
 
 type DescribeOssStatusV2ResponseBodyResultObject struct {
-	// Bucket name.
+	// The bucket name.
 	//
 	// example:
 	//
 	// cn-hangzhou-aliyun-cloudauth-20250516xxxxxx
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// Region.
+	// The region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// User activation status, **SUCCESS*	- indicates activated.
+	// The activation status of the user. A value of **SUCCESS*	- indicates that the service is activated.
 	//
 	// example:
 	//

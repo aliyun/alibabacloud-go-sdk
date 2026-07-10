@@ -22,47 +22,47 @@ type iDescribeAntAndCloudAuthUserStatusResponseBody interface {
 }
 
 type DescribeAntAndCloudAuthUserStatusResponseBody struct {
-	// Indicates whether financial-grade real-person authentication is activated. Values:
+	// Indicates whether financial-grade ID Verification is activated. Valid values:
 	//
-	// - **true**: Activated
+	// - **true**: Activated.
 	//
-	// - **false**: Not activated
+	// - **false**: Not activated.
 	//
 	// example:
 	//
 	// true
 	AntcloudauthEnabled *bool `json:"AntcloudauthEnabled,omitempty" xml:"AntcloudauthEnabled,omitempty"`
-	// Indicates whether real-person authentication is activated. Values:
+	// Indicates whether ID Verification is activated. Valid values:
 	//
-	// - **true**: Activated
+	// - **true**: Activated.
 	//
-	// - **false**: Not activated
+	// - **false**: Not activated.
 	//
 	// example:
 	//
 	// false
 	CloudauthEnabled *bool `json:"CloudauthEnabled,omitempty" xml:"CloudauthEnabled,omitempty"`
-	// Indicates whether the enhanced version of real-person authentication is activated. Values:
+	// Indicates whether enhanced ID Verification is activated. Valid values:
 	//
-	// - **true**: Activated
+	// - **true**: Activated.
 	//
-	// - **false**: Not activated
+	// - **false**: Not activated.
 	//
 	// example:
 	//
 	// true
 	CloudauthstEnabled *bool `json:"CloudauthstEnabled,omitempty" xml:"CloudauthstEnabled,omitempty"`
-	// Indicates whether information verification is activated. Values:
+	// Indicates whether information verification is activated. Valid values:
 	//
-	// - **true**: Activated
+	// - **true**: Activated.
 	//
-	// - **false**: Not activated
+	// - **false**: Not activated.
 	//
 	// example:
 	//
 	// false
 	InforverifyEnabled *bool `json:"InforverifyEnabled,omitempty" xml:"InforverifyEnabled,omitempty"`
-	// The ID of this request.
+	// The ID of the request.
 	//
 	// example:
 	//

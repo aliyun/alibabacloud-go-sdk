@@ -22,45 +22,43 @@ type iId2MetaPeriodVerifyRequest interface {
 }
 
 type Id2MetaPeriodVerifyRequest struct {
-	// ID number:
+	// The ID card number.
 	//
-	// - When `paramType` is `normal`: Enter the plain text of the ID number.
+	// - If paramType is set to normal, enter the ID card number in plaintext.
 	//
-	// - When `paramType` is `md5`:
-	//
-	// The first 6 digits (plain text) + date of birth (encrypted) + last 4 digits (plain text).
+	// - If paramType is set to md5, the value is in the following format: first 6 digits of the ID card number (plaintext) + date of birth (ciphertext) + last 4 digits of the ID card number (plaintext).
 	//
 	// example:
 	//
 	// 4****************1
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// Parameter type:
+	// The parameter type. Valid values:
 	//
-	// - normal: Unencrypted.
+	// - normal: not encrypted.
 	//
-	// - md5: MD5 encrypted.
+	// - md5: MD5-encrypted.
 	//
 	// example:
 	//
 	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// Name.
+	// The name.
 	//
-	// - When `paramType` = `normal`: Enter the plain text of the name.
+	// - paramType = normal: enter the name in plaintext.
 	//
-	// - When `paramType` = `md5`: The first character of the name MD5 encrypted (32 lowercase MD5) + the rest of the name in plain text.
+	// - paramType = md5: the first character of the name is MD5-encrypted (32-bit lowercase MD5) + the remaining characters of the name in plaintext.
 	//
 	// example:
 	//
 	// 张*
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// End date of ID validity, format: YYYYMMDD
+	// The expiration date of the ID card validity period. Format: YYYYMMDD.
 	//
 	// example:
 	//
 	// 20301001
 	ValidityEndDate *string `json:"ValidityEndDate,omitempty" xml:"ValidityEndDate,omitempty"`
-	// Start date of ID validity, format: YYYYMMDD
+	// The start date of the ID card validity period. Format: YYYYMMDD.
 	//
 	// example:
 	//

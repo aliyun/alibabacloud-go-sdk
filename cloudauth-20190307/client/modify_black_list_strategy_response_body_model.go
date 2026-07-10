@@ -22,31 +22,31 @@ type iModifyBlackListStrategyResponseBody interface {
 }
 
 type ModifyBlackListStrategyResponseBody struct {
-	// Return code: 200 for success, others for failure.
+	// The return code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	//
 	// example:
 	//
 	// {\\"StatusCode\\": -1}
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the response was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

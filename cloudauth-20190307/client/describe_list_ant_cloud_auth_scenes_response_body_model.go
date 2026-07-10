@@ -16,13 +16,13 @@ type iDescribeListAntCloudAuthScenesResponseBody interface {
 }
 
 type DescribeListAntCloudAuthScenesResponseBody struct {
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CC1AB3F5-22A2-589F-ABDD-B766694AA671
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of scenarios.
+	// The list of scenes.
 	Scenes []*DescribeListAntCloudAuthScenesResponseBodyScenes `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
 }
 
@@ -66,111 +66,115 @@ func (s *DescribeListAntCloudAuthScenesResponseBody) Validate() error {
 }
 
 type DescribeListAntCloudAuthScenesResponseBodyScenes struct {
-	// Application ID.
+	// The application ID.
 	//
 	// example:
 	//
 	// 2a3a13b6-ee85-457e-bd15-b48115cb396e
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Whether to enable binding to a mini program:
+	// Specifies whether to enable mini program binding. Valid values:
 	//
-	// - **Y**: Enabled
+	// - **Y**: Enabled.
 	//
-	// - **N (default)**: Not enabled
+	// - **N (default)**: Disabled.
 	//
 	// example:
 	//
 	// Y
 	BindMiniProgram *string `json:"BindMiniProgram,omitempty" xml:"BindMiniProgram,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1260051251634779
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Creator.
+	// The creator.
 	//
 	// example:
 	//
 	// 189884094677xxxx
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// Enhanced device detection capability: - **Y**: Enable - **N**: Disable
+	// Specifies whether to enable enhanced device risk detection. Valid values:
+	//
+	// - **Y**: Enabled.
+	//
+	// - **N**: Disabled.
 	//
 	// example:
 	//
 	// N
 	DeviceRiskPlus *string `json:"DeviceRiskPlus,omitempty" xml:"DeviceRiskPlus,omitempty"`
-	// Bound domain.
+	// The bound domain name.
 	//
 	// example:
 	//
 	// www.ddos.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Mini program name.
+	// The mini program name.
 	//
 	// example:
 	//
 	// 测试APP
 	MiniProgramName *string `json:"MiniProgramName,omitempty" xml:"MiniProgramName,omitempty"`
-	// Modifier.
+	// The modifier.
 	//
 	// example:
 	//
 	// 189884094677xxxx
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// Bound mini program platform:
+	// The mini program platform. Valid values:
 	//
 	// - **WECHAT**: WeChat
 	//
 	// - **ALIPAY**: Alipay
 	//
-	// - **TIKTOK**: TikTok
+	// - **TIKTOK**: TikTok.
 	//
 	// example:
 	//
 	// WECHAT
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// Number of face photos stored (1-5).
+	// The number of evidence face photos (1 to 5).
 	//
 	// example:
 	//
 	// 1
 	ReturnPicCount *int64 `json:"ReturnPicCount,omitempty" xml:"ReturnPicCount,omitempty"`
-	// Duration of the stored video (in seconds).
+	// The duration of the evidence video, in seconds.
 	//
 	// example:
 	//
 	// 1
 	ReturnVideoLength *int64 `json:"ReturnVideoLength,omitempty" xml:"ReturnVideoLength,omitempty"`
-	// Scenario ID.
+	// The scene ID.
 	//
 	// example:
 	//
 	// 100001xxxx
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Scenario name.
+	// The scene name.
 	//
 	// example:
 	//
 	// 测试场景
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// Whether it is enabled, with a value of 1 indicating enabled.
+	// Indicates whether the scene is enabled. The value 1 indicates enabled.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Whether to deliver the files generated from the authentication to the customer\\"s OSS:
+	// Specifies whether to deliver files generated during authentication to the customer\\"s OSS. Valid values:
 	//
-	// - **Y**: Enabled
+	// - **Y**: Enabled.
 	//
-	// - **N**: Disabled
+	// - **N**: Disabled.
 	//
 	// example:
 	//
 	// Y
 	StoreImage *string `json:"StoreImage,omitempty" xml:"StoreImage,omitempty"`
-	// The last update time of the instance.
+	// The time when the instance was last updated.
 	//
 	// example:
 	//

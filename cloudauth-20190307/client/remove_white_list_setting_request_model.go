@@ -16,9 +16,9 @@ type iRemoveWhiteListSettingRequest interface {
 }
 
 type RemoveWhiteListSettingRequest struct {
-	// IDs of the whitelist to be deleted in bulk.
+	// The IDs of the whitelists to delete in batch.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	// ServiceCode for the real person cloud product, only value: **antcloudauth**.
+	// The ServiceCode of the ID Verification service. Set this parameter to **antcloudauth**.
 	//
 	// example:
 	//

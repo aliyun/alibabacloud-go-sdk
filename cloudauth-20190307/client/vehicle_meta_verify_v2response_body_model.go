@@ -20,25 +20,25 @@ type iVehicleMetaVerifyV2ResponseBody interface {
 }
 
 type VehicleMetaVerifyV2ResponseBody struct {
-	// Return code, **200*	- indicates successful API response.
+	// The return code. **200*	- indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 5A6229C0-E156-48E4-B6EC-0F528B******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result
+	// The returned result.
 	ResultObject *VehicleMetaVerifyV2ResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,11 +96,11 @@ func (s *VehicleMetaVerifyV2ResponseBody) Validate() error {
 }
 
 type VehicleMetaVerifyV2ResponseBodyResultObject struct {
-	// Verification result code:
+	// The verification result code. Valid values:
 	//
-	// - **1**: Verification consistent.
+	// - **1**: Consistent.
 	//
-	// - **2**: Verification inconsistent.
+	// - **2**: Inconsistent.
 	//
 	// - **3**: No record found.
 	//
@@ -108,7 +108,7 @@ type VehicleMetaVerifyV2ResponseBodyResultObject struct {
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Detailed vehicle information.
+	// The vehicle details.
 	//
 	// example:
 	//

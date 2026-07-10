@@ -16,13 +16,13 @@ type iDownloadVerifyRecordsResponseBody interface {
 }
 
 type DownloadVerifyRecordsResponseBody struct {
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// OSS link for file download.
+	// The OSS download link for the file.
 	//
 	// example:
 	//

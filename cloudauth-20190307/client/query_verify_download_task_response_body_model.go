@@ -22,41 +22,41 @@ type iQueryVerifyDownloadTaskResponseBody interface {
 }
 
 type QueryVerifyDownloadTaskResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// -
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Whether the download task is completed:
+	// Indicates whether the download task is complete. Valid values:
 	//
-	// - **true**: Completed
+	// - **true**: Complete.
 	//
-	// - **false**: Not completed
+	// - **false**: Not complete.
 	//
 	// example:
 	//
 	// true
 	Finish *bool `json:"Finish,omitempty" xml:"Finish,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 5A6229C0-E156-48E4-B6EC-0F528BDF60D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Task status:
+	// The task status. Valid values:
 	//
-	// - **1**: File generation in progress
+	// - **1**: The file is being generated.
 	//
-	// - **2**: File generation completed
+	// - **2**: The file is generated.
 	//
-	// - **3**: File generation failed
+	// - **3**: The file failed to be generated.
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Download URL.
+	// The download URL.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iCompareFaceVerifyResponseBody interface {
 }
 
 type CompareFaceVerifyResponseBody struct {
-	// Return code: 200 for success, other values indicate failure.
+	// The return code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF039795
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Face comparison result information.
+	// The face comparison result.
 	ResultObject *CompareFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,19 +96,19 @@ func (s *CompareFaceVerifyResponseBody) Validate() error {
 }
 
 type CompareFaceVerifyResponseBodyResultObject struct {
-	// Unique identifier for the real-person authentication request.
+	// The unique identifier of the ID Verification request.
 	//
 	// example:
 	//
 	// 08573be80f944d95ac812e019e3655a8
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Whether the verification passed, T for pass, F for fail.
+	// Indicates whether the verification passed. A value of T indicates passed. A value of F indicates not passed.
 	//
 	// example:
 	//
 	// T
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// Face comparison score.
+	// The face comparison score.
 	//
 	// example:
 	//

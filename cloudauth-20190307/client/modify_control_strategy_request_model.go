@@ -18,15 +18,15 @@ type iModifyControlStrategyRequest interface {
 }
 
 type ModifyControlStrategyRequest struct {
-	// List of security alarm rules.
+	// The list of security alert rules.
 	ControlStrategyList []*ModifyControlStrategyRequestControlStrategyList `json:"ControlStrategyList,omitempty" xml:"ControlStrategyList,omitempty" type:"Repeated"`
-	// Product type, currently only supports **ANT_CLOUD_AUTH*	- (Financial-grade Real Person), all others are phased out.
+	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (financial-grade ID Verification) is supported. All other types have been discontinued.
 	//
 	// example:
 	//
 	// ANT_CLOUD_AUTH
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// Region ID of the intelligent access gateway instance.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// example:
 	//
@@ -83,49 +83,49 @@ func (s *ModifyControlStrategyRequest) Validate() error {
 }
 
 type ModifyControlStrategyRequestControlStrategyList struct {
-	// API name, same as **ProductCode**.
+	// The API name, which is the same as **ProductCode**.
 	//
 	// example:
 	//
 	// ID_PRO
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// Rule configuration type:
+	// The rule configuration type. Valid values:
 	//
 	// - **QPS**: QPS greater than
 	//
-	// - **SUCCESS_RATE_5_MIN**: Success rate in the last 5 minutes less than
+	// - **SUCCESS_RATE_5_MIN**: success rate in the last 5 minutes less than
 	//
-	// - **RESP_TIME_5_MIN**: Average response time in the last 5 minutes greater than
+	// - **RESP_TIME_5_MIN**: average response time in the last 5 minutes greater than
 	//
-	// - **AMOUNT_RISE**: Call volume growth ratio greater than
+	// - **AMOUNT_RISE**: call volume increase compared to the previous period greater than
 	//
-	// - **AMOUNT_FALL**: Call volume decline ratio less than
+	// - **AMOUNT_FALL**: call volume decrease compared to the previous period less than
 	//
-	// - **PASSED_RATE_1_HOUR**: Verification consistency rate in the last hour less than
+	// - **PASSED_RATE_1_HOUR**: verification consistency rate in the last hour less than
 	//
-	// - **PARAM_ERROR_RATE_1_HOUR**: Parameter error rate in the last hour greater than
+	// - **PARAM_ERROR_RATE_1_HOUR**: parameter error rate in the last hour greater than.
 	//
 	// example:
 	//
 	// SUCCESS_RATE_5_MIN
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// Rule ID.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 38
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Status:
+	// The status. Valid values:
 	//
-	// - **disabled**: Disabled
+	// - **disabled**: Disabled.
 	//
-	// - **normal**: Enabled
+	// - **normal**: Enabled.
 	//
 	// example:
 	//
 	// 2
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Alarm threshold for the rule.
+	// The alert threshold of the rule.
 	//
 	// example:
 	//

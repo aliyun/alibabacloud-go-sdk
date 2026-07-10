@@ -20,35 +20,35 @@ type iDescribeCardVerifyResponseBody interface {
 }
 
 type DescribeCardVerifyResponseBody struct {
-	// Return code: 200 indicates success, all others indicate failure.
+	// The response code. 200 indicates success. Other values indicate failure.
 	//
-	// Important
+	// > **Important**
 	//
-	// - This parameter indicates whether the interface was called correctly. For detailed return code explanations, please refer to the error codes.
+	// > - This parameter indicates whether the operation is called correctly. For more information about return codes, refer to error codes.
 	//
-	// - Please check the business verification results through the fields in ResultObject.
+	// > - Check the business verification result by viewing the fields in ResultObject.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Interface call return message.
+	// The response message of the operation.
 	//
-	// Important
+	// > **Important**
 	//
-	// - This parameter only indicates whether there was an exception with the interface.
+	// > - This parameter only indicates whether the operation is abnormal.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF03****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result object.
+	// The result object.
 	ResultObject *DescribeCardVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -106,25 +106,25 @@ func (s *DescribeCardVerifyResponseBody) Validate() error {
 }
 
 type DescribeCardVerifyResponseBodyResultObject struct {
-	// Identity verification result:
+	// The identity verification result. Valid values:
 	//
-	// - 1: Consistent
+	// - 1: consistent
 	//
-	// - 2: Inconsistent
+	// - 2: inconsistent
 	//
-	// - 3: No Record Found
+	// - 3: no record found.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Submitted ID card information for verification.
+	// The ID card information submitted for verification.
 	//
 	// example:
 	//
 	// {"address":"浙江省杭州市余杭区文一西路969号","birthDate":"19901226","certName":"张三","certNo":"1234561990122*****","nationality":"汉","authority":"xxx公安局","startDate":"20201130","endDate":"20301130"}
 	CardInfo *string `json:"CardInfo,omitempty" xml:"CardInfo,omitempty"`
-	// Image comparison score.
+	// The image comparison score.
 	//
 	// example:
 	//
@@ -134,17 +134,17 @@ type DescribeCardVerifyResponseBodyResultObject struct {
 	//
 	// }
 	FaceDetail *string `json:"FaceDetail,omitempty" xml:"FaceDetail,omitempty"`
-	// ID card information read by OCR.
+	// The ID card information read by OCR.
 	//
 	// example:
 	//
 	// {"address":"浙江省杭州市余杭区文一西路969号","birthDate":"19901226","certName":"张三","certNo":"1234561990122*****","nationality":"汉","authority":"xxx公安局","startDate":"20201130","endDate":"20301130"}
 	OcrCardInfo *string `json:"OcrCardInfo,omitempty" xml:"OcrCardInfo,omitempty"`
-	// Returned photo URLs.
+	// The returned photo URLs.
 	//
-	// - certUrl  Front side
+	// - certUrl: front side
 	//
-	// - certNationalUrl  National emblem side
+	// - certNationalUrl: national emblem side.
 	//
 	// example:
 	//

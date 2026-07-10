@@ -20,25 +20,25 @@ type iMobile3MetaSimpleStandardVerifyResponseBody interface {
 }
 
 type Mobile3MetaSimpleStandardVerifyResponseBody struct {
-	// Return code: 200 for success, others for failure
+	// The return code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result information
+	// The result information.
 	ResultObject *Mobile3MetaSimpleStandardVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,19 +96,19 @@ func (s *Mobile3MetaSimpleStandardVerifyResponseBody) Validate() error {
 }
 
 type Mobile3MetaSimpleStandardVerifyResponseBodyResultObject struct {
-	// Verification result:
+	// The verification result. Valid values:
 	//
-	// - 1: Consistent (billable)
+	// - 1: Consistent (billable).
 	//
-	// - 2: Inconsistent (billable)
+	// - 2: Inconsistent (billable).
 	//
-	// - 3: No record found (non-billable)
+	// - 3: No record found (not billable).
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Operator name:
+	// The carrier name. Valid values:
 	//
 	// - **CMCC**: China Mobile.
 	//
@@ -116,7 +116,7 @@ type Mobile3MetaSimpleStandardVerifyResponseBodyResultObject struct {
 	//
 	// - **CTCC**: China Telecom.
 	//
-	// - **CBCC**: China Broadcasting Network.
+	// - **CBCC**: China Broadnet.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDeleteWhitelistSettingResponseBody interface {
 }
 
 type DeleteWhitelistSettingResponseBody struct {
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result.
+	// The returned result.
 	//
 	// example:
 	//

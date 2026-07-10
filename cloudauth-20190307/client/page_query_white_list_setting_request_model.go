@@ -30,61 +30,61 @@ type iPageQueryWhiteListSettingRequest interface {
 }
 
 type PageQueryWhiteListSettingRequest struct {
-	// ID number.
+	// The certificate number.
 	//
 	// example:
 	//
 	// 330103xxxxxxxxxxxx
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// Unique identifier for real person authentication.
+	// The unique identifier of the ID Verification request.
 	//
 	// example:
 	//
 	// sha75b4e19a1ddda059b920757b0e12b
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Current page number, default is 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Number of items per page, default is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Authentication scene ID. This ID is automatically generated after creating an authentication scene in the console. For how to create an authentication scene, see Adding an Authentication Scene.
+	// The verification scenario ID. This ID is automatically generated after you create a verification scenario in the console. For more information about how to create a verification scenario, refer to Add a verification scenario.
 	//
 	// example:
 	//
 	// 1000000xxx
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// ServiceCode of the real person cloud product, value: **antcloudauth**.
+	// The ServiceCode of the ID Verification cloud service. Value: **antcloudauth**.
 	//
 	// example:
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Status:
+	// The status. Valid values:
 	//
-	// - DELETE: Deleted
+	// - DELETE: Deleted.
 	//
-	// - VALID: Not deleted and within the validity period, valid
+	// - VALID: Not deleted and within the validity period (valid).
 	//
-	// - INVALID: Not deleted but outside the validity period, invalid
+	// - INVALID: Not deleted but outside the validity period (invalid).
 	//
 	// example:
 	//
 	// VALID
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// End date of validity (timestamp in milliseconds)
+	// The end date of the validity period (timestamp in milliseconds).
 	//
 	// example:
 	//
 	// 1725379200000
 	ValidEndDate *string `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
-	// Start date of validity (timestamp in milliseconds)
+	// The start date of the validity period (timestamp in milliseconds).
 	//
 	// example:
 	//

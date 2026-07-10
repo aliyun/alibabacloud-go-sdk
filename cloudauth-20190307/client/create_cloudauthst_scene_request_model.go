@@ -18,7 +18,7 @@ type iCreateCloudauthstSceneRequest interface {
 }
 
 type CreateCloudauthstSceneRequest struct {
-	// Product code.
+	// The product code.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type CreateCloudauthstSceneRequest struct {
 	//
 	// SMART_COMPARE
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Scene name.
+	// The scenario name.
 	//
 	// This parameter is required.
 	//
@@ -34,11 +34,11 @@ type CreateCloudauthstSceneRequest struct {
 	//
 	// 测试场景
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// Whether to deliver the files generated from the authentication to the customer\\"s OSS:
+	// Specifies whether to deliver files generated during authentication to the customer\\"s OSS. Valid values:
 	//
-	// - **Y**: Enable
+	// - **Y**: Enabled.
 	//
-	// - **N**: Disable
+	// - **N**: Disabled.
 	//
 	// example:
 	//

@@ -22,27 +22,27 @@ type iDetectFaceAttributesResponseBody interface {
 }
 
 type DetectFaceAttributesResponseBody struct {
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	Data *DetectFaceAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// Error.InternalError
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the response was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -114,13 +114,13 @@ func (s *DetectFaceAttributesResponseBody) Validate() error {
 
 type DetectFaceAttributesResponseBodyData struct {
 	FaceInfos *DetectFaceAttributesResponseBodyDataFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Struct"`
-	// Original image height, in pixels.
+	// The height of the original image, in pixels.
 	//
 	// example:
 	//
 	// 1920
 	ImgHeight *int32 `json:"ImgHeight,omitempty" xml:"ImgHeight,omitempty"`
-	// Original image width, in pixels.
+	// The width of the original image, in pixels.
 	//
 	// example:
 	//

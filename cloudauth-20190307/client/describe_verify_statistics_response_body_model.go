@@ -16,13 +16,13 @@ type iDescribeVerifyStatisticsResponseBody interface {
 }
 
 type DescribeVerifyStatisticsResponseBody struct {
-	// ID of this request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 4E27D502-1287-526A-910C-881A3F023914
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Statistical results
+	// The statistics result.
 	ResultObject *DescribeVerifyStatisticsResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -62,87 +62,87 @@ func (s *DescribeVerifyStatisticsResponseBody) Validate() error {
 }
 
 type DescribeVerifyStatisticsResponseBodyResultObject struct {
-	// Number of client initializations.
+	// The number of client-side initializations.
 	//
 	// example:
 	//
 	// 73
 	InitDevice *int64 `json:"InitDevice,omitempty" xml:"InitDevice,omitempty"`
-	// Number of identity deduplication client initializations.
+	// The number of client-side initializations for identity deduplication.
 	//
 	// example:
 	//
 	// 9
 	InitDeviceId *int64 `json:"InitDeviceId,omitempty" xml:"InitDeviceId,omitempty"`
-	// Number of successful identity deduplication client initializations.
+	// The number of successful client-side initializations for identity deduplication.
 	//
 	// example:
 	//
 	// 9
 	InitDeviceIdSuccess *int64 `json:"InitDeviceIdSuccess,omitempty" xml:"InitDeviceIdSuccess,omitempty"`
-	// Number of client initialization calls.
+	// The number of successful client-side initialization calls.
 	//
 	// example:
 	//
 	// 73
 	InitDeviceSuccess *int64 `json:"InitDeviceSuccess,omitempty" xml:"InitDeviceSuccess,omitempty"`
-	// Number of service-side initializations.
+	// The number of server-side initializations.
 	//
 	// example:
 	//
 	// 73
 	InitService *int64 `json:"InitService,omitempty" xml:"InitService,omitempty"`
-	// Total number of identity deduplication server initialization requests.
+	// The total number of server-side initialization requests for identity deduplication.
 	//
 	// example:
 	//
 	// 9
 	InitServiceId *int64 `json:"InitServiceId,omitempty" xml:"InitServiceId,omitempty"`
-	// Number of successful identity deduplication server initializations.
+	// The number of successful server-side initializations for identity deduplication.
 	//
 	// example:
 	//
 	// 9
 	InitServiceIdSuccess *int64 `json:"InitServiceIdSuccess,omitempty" xml:"InitServiceIdSuccess,omitempty"`
-	// Number of successful service-side initialization authentications.
+	// The number of successful server-side initialization authentications.
 	//
 	// example:
 	//
 	// 134
 	InitServiceSuccess *int64 `json:"InitServiceSuccess,omitempty" xml:"InitServiceSuccess,omitempty"`
-	// Daily pass/conversion rate (PV).
+	// The daily pass/conversion rates (PV).
 	Items []*DescribeVerifyStatisticsResponseBodyResultObjectItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Number of client verifications.
+	// The number of client-side verifications.
 	//
 	// example:
 	//
 	// 15
 	VerifyDevice *int64 `json:"VerifyDevice,omitempty" xml:"VerifyDevice,omitempty"`
-	// Number of identity deduplication client authentications.
+	// The number of client-side authentication attempts for identity deduplication.
 	//
 	// example:
 	//
 	// 9
 	VerifyDeviceId *int64 `json:"VerifyDeviceId,omitempty" xml:"VerifyDeviceId,omitempty"`
-	// Number of successful identity deduplication client verifications.
+	// The number of successful client-side verifications for identity deduplication.
 	//
 	// example:
 	//
 	// 6
 	VerifyDeviceIdSuccess *int64 `json:"VerifyDeviceIdSuccess,omitempty" xml:"VerifyDeviceIdSuccess,omitempty"`
-	// Number of successful identity deduplication client authentications.
+	// The number of successful client-side authentications for identity deduplication.
 	//
 	// example:
 	//
 	// 3
 	VerifyDeviceIdSuccessPassed *int64 `json:"VerifyDeviceIdSuccessPassed,omitempty" xml:"VerifyDeviceIdSuccessPassed,omitempty"`
-	// Number of successful client authentications.
+	// The number of successful client-side authentications.
 	//
 	// example:
 	//
 	// 15
 	VerifyDeviceSuccess *int64 `json:"VerifyDeviceSuccess,omitempty" xml:"VerifyDeviceSuccess,omitempty"`
-	// Number of successful client authentications.
+	// The number of successful client-side authentications.
 	//
 	// example:
 	//
@@ -307,37 +307,37 @@ func (s *DescribeVerifyStatisticsResponseBodyResultObject) Validate() error {
 }
 
 type DescribeVerifyStatisticsResponseBodyResultObjectItems struct {
-	// Date.
+	// The date.
 	//
 	// example:
 	//
 	// 2025-10-11
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// Client initialization pass rate.
+	// The client-side initialization pass rate.
 	//
 	// example:
 	//
 	// 60
 	InitDevicePassRate *string `json:"InitDevicePassRate,omitempty" xml:"InitDevicePassRate,omitempty"`
-	// Number of server initializations.
+	// The number of server-side initializations.
 	//
 	// example:
 	//
 	// 15
 	InitService *int64 `json:"InitService,omitempty" xml:"InitService,omitempty"`
-	// Server initialization conversion rate.
+	// The server-side initialization conversion rate.
 	//
 	// example:
 	//
 	// 26.67
 	InitServiceConversionRate *string `json:"InitServiceConversionRate,omitempty" xml:"InitServiceConversionRate,omitempty"`
-	// Server initialization pass rate.
+	// The server-side initialization pass rate.
 	//
 	// example:
 	//
 	// 20
 	InitServicePassRate *string `json:"InitServicePassRate,omitempty" xml:"InitServicePassRate,omitempty"`
-	// Pass rate.
+	// The pass rate.
 	//
 	// example:
 	//

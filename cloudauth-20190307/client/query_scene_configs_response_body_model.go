@@ -16,13 +16,13 @@ type iQuerySceneConfigsResponseBody interface {
 }
 
 type QuerySceneConfigsResponseBody struct {
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Willingness configuration list.
+	// The list of intent verification configurations.
 	SceneConfigs []*QuerySceneConfigsResponseBodySceneConfigs `json:"sceneConfigs,omitempty" xml:"sceneConfigs,omitempty" type:"Repeated"`
 }
 
@@ -66,43 +66,43 @@ func (s *QuerySceneConfigsResponseBody) Validate() error {
 }
 
 type QuerySceneConfigsResponseBodySceneConfigs struct {
-	// Specific configuration content, in JSON string format.
+	// The specific configuration content, in JSON string format.
 	//
 	// example:
 	//
 	// {\\"faceCompareMode\\":\\"CUSTOM\\",\\"certConfigs\\":[{\\"index\\":0,\\"openVoiceCompare\\":false,\\"openCustomizedContent\\":true,\\"model\\":\\"QA\\"}],\\"screenEvidence\\":true}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1760782820000
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 1760782820000
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Configuration ID.
+	// The configuration ID.
 	//
 	// example:
 	//
 	// 607
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Scene ID.
+	// The scenario ID.
 	//
 	// example:
 	//
 	// 1000009045
 	SceneId *int64 `json:"sceneId,omitempty" xml:"sceneId,omitempty"`
-	// Configuration type.
+	// The configuration type.
 	//
 	// example:
 	//
 	// VOLUNTARY
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Scene configuration version number.
+	// The version number of the scenario configuration.
 	//
 	// example:
 	//

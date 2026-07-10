@@ -16,13 +16,13 @@ type iDescribeVerifyFailStatisticsResponseBody interface {
 }
 
 type DescribeVerifyFailStatisticsResponseBody struct {
-	// ID of this request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C2C596D1-B14B-5D79-9672-61D7686912B2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Authentication result.
+	// The authentication result.
 	ResultObject *DescribeVerifyFailStatisticsResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -62,9 +62,9 @@ func (s *DescribeVerifyFailStatisticsResponseBody) Validate() error {
 }
 
 type DescribeVerifyFailStatisticsResponseBodyResultObject struct {
-	// Line chart of failure reasons.
+	// The line chart of failure reasons.
 	Column *DescribeVerifyFailStatisticsResponseBodyResultObjectColumn `json:"Column,omitempty" xml:"Column,omitempty" type:"Struct"`
-	// Bar chart of failure reasons.
+	// The bar chart of failure reasons.
 	Line *DescribeVerifyFailStatisticsResponseBodyResultObjectLine `json:"Line,omitempty" xml:"Line,omitempty" type:"Struct"`
 }
 
@@ -109,9 +109,9 @@ func (s *DescribeVerifyFailStatisticsResponseBodyResultObject) Validate() error 
 }
 
 type DescribeVerifyFailStatisticsResponseBodyResultObjectColumn struct {
-	// Column information.
+	// The column information.
 	Items []*DescribeVerifyFailStatisticsResponseBodyResultObjectColumnItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Total count.
+	// The total count.
 	//
 	// example:
 	//
@@ -159,19 +159,19 @@ func (s *DescribeVerifyFailStatisticsResponseBodyResultObjectColumn) Validate() 
 }
 
 type DescribeVerifyFailStatisticsResponseBodyResultObjectColumnItems struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// 404
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Failure count.
+	// The number of failures.
 	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Date: Date
+	// Date: the date.
 	//
 	// example:
 	//
@@ -219,9 +219,9 @@ func (s *DescribeVerifyFailStatisticsResponseBodyResultObjectColumnItems) Valida
 }
 
 type DescribeVerifyFailStatisticsResponseBodyResultObjectLine struct {
-	// Column information.
+	// The column information.
 	Items []*DescribeVerifyFailStatisticsResponseBodyResultObjectLineItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Total count.
+	// The total count.
 	//
 	// example:
 	//
@@ -269,13 +269,13 @@ func (s *DescribeVerifyFailStatisticsResponseBodyResultObjectLine) Validate() er
 }
 
 type DescribeVerifyFailStatisticsResponseBodyResultObjectLineItems struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// 404
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned quantity data.
+	// The returned count data.
 	Data []*DescribeVerifyFailStatisticsResponseBodyResultObjectLineItemsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 }
 
@@ -319,19 +319,19 @@ func (s *DescribeVerifyFailStatisticsResponseBodyResultObjectLineItems) Validate
 }
 
 type DescribeVerifyFailStatisticsResponseBodyResultObjectLineItemsData struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// 404
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Count.
+	// The count.
 	//
 	// example:
 	//
 	// 9
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Date.
+	// The date.
 	//
 	// example:
 	//

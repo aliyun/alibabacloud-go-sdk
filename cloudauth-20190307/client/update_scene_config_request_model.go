@@ -18,7 +18,7 @@ type iUpdateSceneConfigRequest interface {
 }
 
 type UpdateSceneConfigRequest struct {
-	// Scene configuration information, in JSON format. For the specific structure definition, please refer to more information about the configuration.
+	// The scenario configuration in JSON format. For the specific structure definition, refer to the additional information about configurations.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type UpdateSceneConfigRequest struct {
 	//
 	// {\\"faceCompareMode\\":\\"AUTHORITY\\",\\"certConfigs\\":[{\\"index\\":0,\\"model\\":\\"ENROLL\\"}],\\"screenEvidence\\":false}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// Willingness configuration ID.
+	// The ID of the intent configuration.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateSceneConfigRequest struct {
 	//
 	// 607
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Selected authentication scene.
+	// The selected verification scenario.
 	//
 	// This parameter is required.
 	//

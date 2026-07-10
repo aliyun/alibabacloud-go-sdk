@@ -28,59 +28,59 @@ type iQueryVerifyInvokeSatisticRequest interface {
 }
 
 type QueryVerifyInvokeSatisticRequest struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// End date of the query.
+	// The end time of the query.
 	//
 	// example:
 	//
 	// 1761926399999
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Number of items per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// List of product codes to query. Please refer to the productCode under the corresponding ProductType.
+	// The list of product codes to query. For more information, refer to the productCode under the corresponding ProductType.
 	//
 	// example:
 	//
 	// ID_PRO
 	ProductProgramList *string `json:"ProductProgramList,omitempty" xml:"ProductProgramList,omitempty"`
-	// Product type:
+	// The product type. Valid values:
 	//
-	// - **FINANCE_VERIFY**: Financial-grade real-person verification
+	// - **FINANCE_VERIFY**: financial-grade ID Verification
 	//
-	// - **SMART_VERIFY**: Enhanced real-person verification (discontinued)
+	// - **SMART_VERIFY**: enhanced ID Verification (discontinued)
 	//
-	// - **FACE_VERIFY**: Real-person verification (discontinued)
+	// - **FACE_VERIFY**: ID Verification (discontinued).
 	//
 	// example:
 	//
 	// FINANCE_VERIFY
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// List of application scenarios.
+	// The list of common scenarios.
 	//
 	// example:
 	//
 	// []
 	SceneIdList *string `json:"SceneIdList,omitempty" xml:"SceneIdList,omitempty"`
-	// Start date of the query.
+	// The start time of the query.
 	//
 	// example:
 	//
 	// 1743436800000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// Statistics dimension:
+	// The statistical dimension. Valid values:
 	//
 	// - **day**: daily
 	//
-	// - **month**: monthly
+	// - **month**: monthly.
 	//
 	// example:
 	//

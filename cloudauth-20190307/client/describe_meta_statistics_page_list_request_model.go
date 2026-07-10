@@ -22,30 +22,68 @@ type iDescribeMetaStatisticsPageListRequest interface {
 }
 
 type DescribeMetaStatisticsPageListRequest struct {
+	// Product API:
+	//
+	// - **ID_CARD_2_META**: ID Card Two-Element Verification
+	//
+	// - **ID_PERIOD**: ID Card Validity Verification Period
+	//
+	// - **MOBILE_ONLINE_LENGTH**: Mobile Online Duration
+	//
+	// - **MOBILE_ONLINE_STATUS**: Mobile Online Status
+	//
+	// - **MOBILE_3_META_SIMPLE**: Mobile Number Three-Element Verification (Simple)
+	//
+	// - **MOBILE_3_META**: Mobile Number Three-Element Verification (Detailed)
+	//
+	// - **MOBILE_2_META**: Mobile Number Two-Element Verification
+	//
+	// - **BANK_CARD_N_META**: Bank Card Verification (Detailed)
+	//
+	// - **MOBILE_DETECT**: Number Detection
+	//
+	// - **VEHICLE_N_META**: Vehicle Element Verification (Enhanced)
+	//
+	// - **VEHICLE_PENTA_INFO**: Vehicle Five-Element Information Recognition
+	//
+	// - **VEHICLE_LICENSE_INFO**: Vehicle Information Recognition
+	//
+	// - **VEHICLE_INSURE_DATE**: Vehicle Insurance Date Query
+	//
+	// - **VEHICLE_CHECK**: Vehicle Element Verification
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ID_PERIOD
 	Api *string `json:"Api,omitempty" xml:"Api,omitempty"`
+	// Current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Query end time. Unix timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1737561599999
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Number of data entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Query start time. The timestamp is in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:

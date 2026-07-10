@@ -18,7 +18,7 @@ type iCreateSceneConfigRequest interface {
 }
 
 type CreateSceneConfigRequest struct {
-	// Intention authentication configuration, as a JSON string.
+	// The willingness authentication configuration, in JSON string format.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type CreateSceneConfigRequest struct {
 	//
 	// {\\"faceCompareMode\\":\\"AUTHORITY\\",\\"certConfigs\\":[{\\"index\\":0,\\"openVoiceCompare\\":true,\\"openCustomizedContent\\":true,\\"model\\":\\"FOLLOW\\"}],\\"screenEvidence\\":false}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// Scene ID.
+	// The scenario ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CreateSceneConfigRequest struct {
 	//
 	// 1000014084
 	SceneId *int64 `json:"sceneId,omitempty" xml:"sceneId,omitempty"`
-	// Configuration type.
+	// The configuration type.
 	//
 	// This parameter is required.
 	//

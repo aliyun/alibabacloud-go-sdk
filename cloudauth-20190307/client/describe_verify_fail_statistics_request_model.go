@@ -26,23 +26,23 @@ type iDescribeVerifyFailStatisticsRequest interface {
 }
 
 type DescribeVerifyFailStatisticsRequest struct {
-	// Age greater than 14 years old:
+	// Specifies whether the age is greater than 14. Valid values:
 	//
-	// - **T**: Greater than
+	// - **T**: greater than 14.
 	//
-	// - **F**: Less than
+	// - **F**: less than 14.
 	//
 	// example:
 	//
 	// T
 	AgeGt *string `json:"AgeGt,omitempty" xml:"AgeGt,omitempty"`
-	// API code:
+	// The API code. Valid values:
 	//
-	// - **INIT_SERVICE**: Server-side initialization failure
+	// - **INIT_SERVICE**: server-side initialization failure.
 	//
-	// - **INIT_DEVICE**: Client-side failure
+	// - **INIT_DEVICE**: client-side failure.
 	//
-	// - **VERIFY_DEVICE**: Authentication failed
+	// - **VERIFY_DEVICE**: authentication not passed.
 	//
 	// This parameter is required.
 	//
@@ -50,19 +50,19 @@ type DescribeVerifyFailStatisticsRequest struct {
 	//
 	// INIT_SERVICE
 	Api *string `json:"Api,omitempty" xml:"Api,omitempty"`
-	// Device type.
+	// The device type. Valid values:
 	//
 	// - ios
 	//
 	// - android
 	//
-	// - websdk
+	// - websdk.
 	//
 	// example:
 	//
 	// ios
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// End time of the query.
+	// The end time of the query.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type DescribeVerifyFailStatisticsRequest struct {
 	//
 	// 1760630399999
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Product code.
+	// The product code.
 	//
 	// This parameter is required.
 	//
@@ -78,13 +78,13 @@ type DescribeVerifyFailStatisticsRequest struct {
 	//
 	// ID_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Service type:
+	// The service type. Valid values:
 	//
-	// - **antcloudauth**: Financial-grade real-person authentication.
+	// - **antcloudauth**: financial-grade ID Verification.
 	//
-	// - **cloudauthst*	- (discontinued): Enhanced real-person authentication.
+	// - **cloudauthst*	- (discontinued): ID Verification Enhanced Edition.
 	//
-	// - **cloudauth*	- (discontinued): Real-person authentication.
+	// - **cloudauth*	- (discontinued): ID Verification.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type DescribeVerifyFailStatisticsRequest struct {
 	//
 	// cloudauthst
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Start time of the query.
+	// The start time of the query.
 	//
 	// This parameter is required.
 	//

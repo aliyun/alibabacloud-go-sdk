@@ -16,17 +16,17 @@ type iMobileDetectRequest interface {
 }
 
 type MobileDetectRequest struct {
-	// List of phone numbers.
+	// The list of phone numbers.
 	//
 	// example:
 	//
 	// 19833232569
 	Mobiles *string `json:"Mobiles,omitempty" xml:"Mobiles,omitempty"`
-	// Encryption method:
+	// The encryption method. Valid values:
 	//
-	// - normal: plaintext, no encryption
+	// - normal: plaintext without encryption
 	//
-	// - md5: MD5 encryption
+	// - md5: MD5 encryption.
 	//
 	// example:
 	//

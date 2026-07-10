@@ -22,26 +22,26 @@ type iDescribeDeviceInfoResponseBody interface {
 }
 
 type DescribeDeviceInfoResponseBody struct {
-	// The current page number being queried.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage    *int32                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DeviceInfoList *DescribeDeviceInfoResponseBodyDeviceInfoList `json:"DeviceInfoList,omitempty" xml:"DeviceInfoList,omitempty" type:"Struct"`
-	// Number of items per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total count.
+	// The total number of entries.
 	//
 	// example:
 	//

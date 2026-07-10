@@ -22,7 +22,7 @@ type iDescribeVerifyDeviceRiskStatisticsRequest interface {
 }
 
 type DescribeVerifyDeviceRiskStatisticsRequest struct {
-	// End time.
+	// The end time.
 	//
 	// This parameter is required.
 	//
@@ -30,25 +30,25 @@ type DescribeVerifyDeviceRiskStatisticsRequest struct {
 	//
 	// 1748624399999
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Cloud product code.
+	// The code of the cloud service.
 	//
 	// example:
 	//
 	// ID_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Scene ID.
+	// The scene ID.
 	//
 	// example:
 	//
 	// 100000xxxx
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Service type:
+	// The service type. Valid values:
 	//
-	// - **antcloudauth**: Financial-grade real-person authentication.
+	// - **antcloudauth**: financial-grade ID Verification.
 	//
-	// - **cloudauthst*	- (discontinued): Enhanced real-person authentication.
+	// - **cloudauthst*	- (discontinued): ID Verification - Enhanced Edition.
 	//
-	// - **cloudauth*	- (discontinued): Real-person authentication.
+	// - **cloudauth*	- (discontinued): ID Verification.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type DescribeVerifyDeviceRiskStatisticsRequest struct {
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Start time of the query, in Unix timestamp format, in milliseconds.
+	// The start time of the query. The value is a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//

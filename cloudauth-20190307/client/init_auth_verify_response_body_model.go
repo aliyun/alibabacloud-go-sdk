@@ -20,19 +20,26 @@ type iInitAuthVerifyResponseBody interface {
 }
 
 type InitAuthVerifyResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B506328A-D84B-4750-82C7-6A207C585CF1
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *InitAuthVerifyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result.
+	Result *InitAuthVerifyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s InitAuthVerifyResponseBody) String() string {
@@ -89,6 +96,10 @@ func (s *InitAuthVerifyResponseBody) Validate() error {
 }
 
 type InitAuthVerifyResponseBodyResult struct {
+	// The verification request ID, which is the unique identifier of the verification service authentication request.
+	//
+	// You must pass in the verification request ID when querying the authentication result.
+	//
 	// example:
 	//
 	// shif9d1a185b8dde7cd07bf0943a448b

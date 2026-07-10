@@ -16,13 +16,13 @@ type iCreateCloudauthstSceneResponseBody interface {
 }
 
 type CreateCloudauthstSceneResponseBody struct {
-	// ID of this request
+	// The request ID.
 	//
 	// example:
 	//
 	// 5A6229C0-E156-48E4-B6EC-0F528BDF60D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result, indicating whether the operation was successful.
+	// The returned result that indicates whether the operation is successful.
 	//
 	// example:
 	//

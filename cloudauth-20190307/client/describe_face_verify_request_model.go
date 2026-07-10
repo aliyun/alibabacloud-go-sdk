@@ -18,19 +18,19 @@ type iDescribeFaceVerifyRequest interface {
 }
 
 type DescribeFaceVerifyRequest struct {
-	// Unique identifier for real-person authentication.
+	// The unique identifier of the ID Verification request.
 	//
 	// example:
 	//
 	// 91707dc296d469ad38e4c5efa6a0f24b
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Image return type.
+	// The image return type.
 	//
 	// example:
 	//
 	// JPG
 	PictureReturnType *string `json:"PictureReturnType,omitempty" xml:"PictureReturnType,omitempty"`
-	// Authentication scene ID.
+	// The ID of the verification scenario.
 	//
 	// example:
 	//

@@ -20,15 +20,13 @@ type iMobile3MetaDetailVerifyRequest interface {
 }
 
 type Mobile3MetaDetailVerifyRequest struct {
-	// ID number:
+	// The ID card number.
 	//
-	// Note
+	// > Note: Only second-generation resident ID card numbers and Hong Kong, Macao, or Taiwan residence permit numbers are supported.
 	//
-	// Only supports the ID numbers of second-generation resident IDs and Hong Kong, Macao, and Taiwan residence permits.
+	// - If ParamType is set to normal, pass in the ID card number in plaintext.
 	//
-	// - When paramType is normal: enter the plaintext ID number.
-	//
-	// - When paramType is md5: enter the encrypted ID number.
+	// - If ParamType is set to md5, pass in the ID card number in ciphertext.
 	//
 	// example:
 	//
@@ -38,11 +36,11 @@ type Mobile3MetaDetailVerifyRequest struct {
 	//
 	// 32fa7bcd874161bea8ec8fd98f390ec9
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// Mobile phone number:
+	// The phone number.
 	//
-	// - When paramType is normal: enter the plaintext mobile phone number.
+	// - If ParamType is set to normal, pass in the phone number in plaintext.
 	//
-	// - When paramType is md5: enter the encrypted mobile phone number.
+	// - If ParamType is set to md5, pass in the phone number in ciphertext.
 	//
 	// example:
 	//
@@ -52,21 +50,21 @@ type Mobile3MetaDetailVerifyRequest struct {
 	//
 	// 849169cd3b20621c1c78bd61a11a4fc2
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// Encryption method:
+	// The encryption method. Valid values:
 	//
-	// - normal: plaintext, unencrypted
+	// - normal: plaintext without encryption
 	//
-	// - md5: MD5 encryption
+	// - md5: MD5 encryption.
 	//
 	// example:
 	//
 	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// Name:
+	// The name.
 	//
-	// - When paramType is normal: enter the plaintext name.
+	// - If ParamType is set to normal, pass in the name in plaintext.
 	//
-	// - When paramType is md5: enter the encrypted name.
+	// - If ParamType is set to md5, pass in the name in ciphertext.
 	//
 	// example:
 	//

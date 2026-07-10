@@ -20,25 +20,25 @@ type iId3MetaVerifyWithOCRRequest interface {
 }
 
 type Id3MetaVerifyWithOCRRequest struct {
-	// Input stream for the portrait side of the ID card image. Choose either CertUrl or CertFile.
+	// The input stream of the portrait side image of the ID card. Specify either CertUrl or CertFile.
 	//
 	// example:
 	//
 	// 无
 	CertFile *string `json:"CertFile,omitempty" xml:"CertFile,omitempty"`
-	// URL for the national emblem side of the ID card image. Choose either CertNationalUrl or CertNationalFile, or omit both.
+	// The image of the national emblem side of the ID card. Specify either CertNationalUrl or CertNationalFile, or leave both empty.
 	//
 	// example:
 	//
 	// 无
 	CertNationalFile *string `json:"CertNationalFile,omitempty" xml:"CertNationalFile,omitempty"`
-	// National emblem side of the ID card image URL. A publicly accessible HTTP or HTTPS link. You can choose either CertNationalUrl or CertNationalFile, or omit both.
+	// The URL of the national emblem side image of the ID card. Specify a publicly accessible HTTP or HTTPS URL. Specify either CertNationalUrl or CertNationalFile, or leave both empty.
 	//
 	// example:
 	//
 	// https://www.aliyun.com/cert.jpeg
 	CertNationalUrl *string `json:"CertNationalUrl,omitempty" xml:"CertNationalUrl,omitempty"`
-	// Portrait side of the ID card image. A publicly accessible HTTP or HTTPS link. Choose either CertUrl or CertFile.
+	// The image of the portrait side of the ID card. Specify a publicly accessible HTTP or HTTPS URL. Specify either CertUrl or CertFile.
 	//
 	// example:
 	//

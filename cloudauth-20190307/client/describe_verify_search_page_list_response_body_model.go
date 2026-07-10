@@ -24,33 +24,33 @@ type iDescribeVerifySearchPageListResponseBody interface {
 }
 
 type DescribeVerifySearchPageListResponseBody struct {
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Paged list data.
+	// The paginated list data.
 	Items []*DescribeVerifySearchPageListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Number of items per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// ID of the current request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 47D87BC1-D956-573A-8A15-A9007A76F56C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of pages.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 53
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,135 +134,135 @@ func (s *DescribeVerifySearchPageListResponseBody) Validate() error {
 }
 
 type DescribeVerifySearchPageListResponseBodyItems struct {
-	// Desensitized ID card number.
+	// The desensitized ID card number.
 	//
 	// example:
 	//
 	// 3****************2
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// Authentication ID.
+	// The certification ID.
 	//
 	// example:
 	//
 	// shad861465f2aaeeb805b519e1a93ab2
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Extended information.
+	// The extended information.
 	ExtInfo *DescribeVerifySearchPageListResponseBodyItemsExtInfo `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty" type:"Struct"`
-	// Verification time for this authentication.
+	// The verification time of this authentication record.
 	//
 	// example:
 	//
 	// 2025-10-14 15:40:13
 	GmtVerify *string `json:"GmtVerify,omitempty" xml:"GmtVerify,omitempty"`
-	// Liveness detection scheme.
+	// The liveness detection scheme.
 	//
 	// example:
 	//
 	// MULTI_ACTION
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// Unique identifier for the customer request.
+	// The unique identifier for the customer request.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	// Whether the authentication passed. Values:
+	// Specifies whether the authentication passed. Valid values:
 	//
 	// - **T**: Passed.
 	//
-	// - **F**: Not passed.
+	// - **F**: Failed.
 	//
 	// example:
 	//
 	// T
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// Product code.
+	// The product code.
 	//
 	// example:
 	//
 	// ID_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Business scenario risk:
+	// The business scenario risk:
 	//
-	// - **0**: No risk
+	// - **0**: No risk.
 	//
-	// - **1**: Risk present
+	// - **1**: Risk detected.
 	//
 	// example:
 	//
 	// 1
 	RiskBizScenario *int32 `json:"RiskBizScenario,omitempty" xml:"RiskBizScenario,omitempty"`
-	// Device risk:
+	// The device risk:
 	//
-	// - **0**: No risk
+	// - **0**: No risk.
 	//
-	// - **1**: Risk present
+	// - **1**: Risk detected.
 	//
 	// example:
 	//
 	// 1
 	RiskDevice *int32 `json:"RiskDevice,omitempty" xml:"RiskDevice,omitempty"`
-	// DeviceToken risk:
+	// The DeviceToken risk:
 	//
-	// - **0**: No risk
+	// - **0**: No risk.
 	//
-	// - **1**: Risk present
+	// - **1**: Risk detected.
 	//
 	// example:
 	//
 	// 0
 	RiskDeviceToken *int32 `json:"RiskDeviceToken,omitempty" xml:"RiskDeviceToken,omitempty"`
-	// General risk:
+	// The generic risk:
 	//
-	// - **0**: No risk
+	// - **0**: No risk.
 	//
-	// - **1**: Risk present
+	// - **1**: Risk detected.
 	//
 	// example:
 	//
 	// 1
 	RiskGeneric *int32 `json:"RiskGeneric,omitempty" xml:"RiskGeneric,omitempty"`
-	// Large model mining risk:
+	// The large model mining risk:
 	//
-	// - **0**: No risk
+	// - **0**: No risk.
 	//
-	// - **1**: Risk present
+	// - **1**: Risk detected.
 	//
 	// example:
 	//
 	// 1
 	RiskModelMining *int32 `json:"RiskModelMining,omitempty" xml:"RiskModelMining,omitempty"`
-	// Whether it is root (pass 1 if selected, otherwise do not pass; corresponds to identity label risk type).
+	// Specifies whether the device is rooted. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the identity tag risk type.
 	//
 	// example:
 	//
 	// 1
 	Root *int32 `json:"Root,omitempty" xml:"Root,omitempty"`
-	// Scene ID.
+	// The scene ID.
 	//
 	// example:
 	//
 	// 1000015352
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Whether it is a simulator (pass 1 if selected, otherwise do not pass; corresponds to device label risk type).
+	// Specifies whether the device is a simulator. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the device tag risk type.
 	//
 	// example:
 	//
 	// 1
 	Simulator *int32 `json:"Simulator,omitempty" xml:"Simulator,omitempty"`
-	// System returned error code.
+	// The error code returned by the system.
 	//
 	// example:
 	//
 	// 207
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//
 	// 198123xxxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Whether it is virtual adaptation (pass 1 if selected, otherwise do not pass; corresponds to behavior label risk type).
+	// Specifies whether virtual video is used. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the behavior tag risk type.
 	//
 	// example:
 	//
@@ -459,91 +459,91 @@ func (s *DescribeVerifySearchPageListResponseBodyItems) Validate() error {
 }
 
 type DescribeVerifySearchPageListResponseBodyItemsExtInfo struct {
-	// Desensitized name.
+	// The desensitized name.
 	//
 	// example:
 	//
 	// 何*
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// Facial bodyguard label.
+	// The Face Guard tags.
 	//
 	// example:
 	//
 	// HOOK,ROOT
 	DeviceRisk *string `json:"DeviceRisk,omitempty" xml:"DeviceRisk,omitempty"`
-	// 是否是人脸攻击：
+	// Specifies whether a face attack is detected:
 	//
-	// - **T**：是
+	// - **T**: Yes.
 	//
-	// - **F**：否
+	// - **F**: No.
 	//
 	// example:
 	//
 	// T
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
-	// Face attack score, ranging from 0 to 1, with values closer to 1 indicating a higher likelihood of an attack.
+	// The face attack score. The value ranges from 0 to 1. A value closer to 1 indicates a higher likelihood of an attack.
 	//
 	// example:
 	//
 	// 0.0000445161
 	FaceAttackScore *float32 `json:"FaceAttackScore,omitempty" xml:"FaceAttackScore,omitempty"`
-	// Whether the face is occluded. T if occluded, otherwise F.
+	// Specifies whether the face is occluded. T indicates occlusion detected. F indicates no occlusion.
 	//
 	// example:
 	//
 	// T
 	FaceOcclusion *string `json:"FaceOcclusion,omitempty" xml:"FaceOcclusion,omitempty"`
-	// Face-to-ID card comparison score.
+	// The face-to-ID card comparison score.
 	//
 	// example:
 	//
 	// 0.9
 	IdCardVerifyScore *float32 `json:"IdCardVerifyScore,omitempty" xml:"IdCardVerifyScore,omitempty"`
-	// Photo OSS bucket.
+	// The OSS bucket for photos.
 	//
 	// example:
 	//
 	// cn-shanghai-aliyun-cloudauth-XXX
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// OCR ID card face file name.
+	// The file name of the OCR ID card face image.
 	//
 	// example:
 	//
 	// -
 	OssIdFaceObjectName *string `json:"OssIdFaceObjectName,omitempty" xml:"OssIdFaceObjectName,omitempty"`
-	// OCR ID card national emblem file name.
+	// The file name of the OCR ID card national emblem image.
 	//
 	// example:
 	//
 	// -
 	OssIdNationalEmblemObjectName *string `json:"OssIdNationalEmblemObjectName,omitempty" xml:"OssIdNationalEmblemObjectName,omitempty"`
-	// Storage object name.
+	// The storage object name.
 	//
 	// example:
 	//
 	// verify/XXXXX1251634779/sha6a0a0cab01288c7aa8ac3f45220eb_0_normal.jpeg
 	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
-	// Liveness face quality score.
+	// The liveness face quality score.
 	//
 	// example:
 	//
 	// 1.0
 	QualityScore *float32 `json:"QualityScore,omitempty" xml:"QualityScore,omitempty"`
-	// Face comparison score.
+	// The face comparison score.
 	//
 	// example:
 	//
 	// 0.0
 	VerifyScore *float32 `json:"VerifyScore,omitempty" xml:"VerifyScore,omitempty"`
-	// ASR text list.
+	// The list of ASR texts.
 	AsrTexts []*string `json:"asrTexts,omitempty" xml:"asrTexts,omitempty" type:"Repeated"`
-	// Screen recording file OSS name list.
+	// The list of screen recording file OSS object names.
 	//
 	// example:
 	//
 	// -
 	ScreenVideoObjectNames []*string `json:"screenVideoObjectNames,omitempty" xml:"screenVideoObjectNames,omitempty" type:"Repeated"`
-	// Audio file OSS name list.
+	// The list of audio file OSS object names.
 	//
 	// example:
 	//

@@ -20,10 +20,20 @@ type iMobileRecycledMetaVerifyResponseBody interface {
 }
 
 type MobileRecycledMetaVerifyResponseBody struct {
+	// The response code. A value of 200 indicates success. Any other value indicates failure.
+	//
+	// > **Important**
+	//
+	// - This parameter indicates whether the API operation is called correctly. For more information about return codes, see error codes.
+	//
+	// - Check the business verification result in the fields of ResultObject.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -33,7 +43,8 @@ type MobileRecycledMetaVerifyResponseBody struct {
 	// example:
 	//
 	// 8FC3D6AC-9FED-4311-8DA7-C4BF47D9F260
-	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
 	ResultObject *MobileRecycledMetaVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -91,14 +102,32 @@ func (s *MobileRecycledMetaVerifyResponseBody) Validate() error {
 }
 
 type MobileRecycledMetaVerifyResponseBodyResultObject struct {
+	// The query result. Valid values:
+	//
+	// - 1: A query result is found.
+	//
+	// - 3: No query result is found.
+	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The carrier name. China Mobile: CMCC. China Unicom: CUCC. China Telecom: CTCC.
+	//
 	// example:
 	//
 	// CMCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// The detailed verification result. Valid values:
+	//
+	// - 101: The registration date is equal to or later than the phone number activation date.
+	//
+	// - 102: The registration date is earlier than the phone number activation date.
+	//
+	// - 103: The new subscriber has not been synchronized yet.
+	//
+	// - 301: Data exception or the subscriber has been deactivated.
+	//
 	// example:
 	//
 	// 101

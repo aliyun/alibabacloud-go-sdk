@@ -14,7 +14,7 @@ type iDeleteAntCloudAuthSceneResponseBody interface {
 }
 
 type DeleteAntCloudAuthSceneResponseBody struct {
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//

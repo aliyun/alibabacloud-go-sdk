@@ -16,17 +16,17 @@ type iDescribeOssStatusV2Request interface {
 }
 
 type DescribeOssStatusV2Request struct {
-	// ServiceCode for Real Person Cloud products:
+	// The ServiceCode of the ID Verification product. Valid values:
 	//
-	// - **antcloudauth**: Financial-grade real person authentication
+	// - **antcloudauth**: financial-grade ID Verification.
 	//
-	// - **cloudauthst (discontinued)**: Enhanced real person authentication
+	// - **cloudauthst (discontinued)**: enhanced ID Verification.
 	//
 	// example:
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Visitor\\"s source IP address.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//

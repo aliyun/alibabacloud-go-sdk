@@ -14,7 +14,7 @@ type iDeleteSceneConfigRequest interface {
 }
 
 type DeleteSceneConfigRequest struct {
-	// ID of the intent authentication configuration.
+	// The ID of the ID Verification scenario configuration.
 	//
 	// This parameter is required.
 	//

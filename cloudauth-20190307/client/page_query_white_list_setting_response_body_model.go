@@ -30,51 +30,51 @@ type iPageQueryWhiteListSettingResponseBody interface {
 }
 
 type PageQueryWhiteListSettingResponseBody struct {
-	// Return code, **200*	- indicates a successful API response.
+	// The response code. **200*	- indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Number of items per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 5A6229C0-E156-48E4-B6EC-0F528BDF60D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Request result
+	// The request result.
 	ResultObject []*PageQueryWhiteListSettingResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Repeated"`
-	// Whether the response was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 28
 	TotalItem *int32 `json:"TotalItem,omitempty" xml:"TotalItem,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -185,73 +185,73 @@ func (s *PageQueryWhiteListSettingResponseBody) Validate() error {
 }
 
 type PageQueryWhiteListSettingResponseBodyResultObject struct {
-	// ID number.
+	// The certificate number.
 	//
 	// example:
 	//
 	// 330103xxxxxxxxxxxx
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// Unique identifier for real person authentication.
+	// The unique identifier of the ID Verification request.
 	//
 	// example:
 	//
 	// sha43d9cabd52d370d9f4cca9468f71e
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-08-30 14:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2024-08-30 14:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Whitelist ID.
+	// The whitelist ID.
 	//
 	// example:
 	//
 	// 234822
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Remark information.
+	// The remarks.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Authentication scene ID.
+	// The verification scenario ID.
 	//
 	// example:
 	//
 	// 1000000332
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// ServiceCode of the real person cloud product
+	// The ServiceCode of the ID Verification cloud service.
 	//
 	// example:
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Status:
+	// The status. Valid values:
 	//
-	// - DELETE: Deleted
+	// - DELETE: Deleted.
 	//
-	// - VALID: Not deleted and within the validity period, valid
+	// - VALID: Not deleted and within the validity period (valid).
 	//
-	// - INVALID: Not deleted but outside the validity period, invalid
+	// - INVALID: Not deleted but outside the validity period (invalid).
 	//
 	// example:
 	//
 	// VALID
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// End date of validity
+	// The end date of the validity period.
 	//
 	// example:
 	//
 	// 2024-09-02 13:57:51
 	ValidEndDate *string `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
-	// Start date of validity
+	// The start date of the validity period.
 	//
 	// example:
 	//

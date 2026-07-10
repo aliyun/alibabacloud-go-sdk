@@ -16,13 +16,13 @@ type iQueryControlStrategyRequest interface {
 }
 
 type QueryControlStrategyRequest struct {
-	// Product type, currently only supports ANT_CLOUD_AUTH (financial-grade real person), all others have been phased out.
+	// The product type. Currently, only ANT_CLOUD_AUTH (financial-grade ID Verification) is supported. All other product types have been discontinued.
 	//
 	// example:
 	//
 	// ANT_CLOUD_AUTH
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//

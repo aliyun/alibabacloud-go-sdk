@@ -22,13 +22,13 @@ type iDeleteCustomizeFlowStrategyRequest interface {
 }
 
 type DeleteCustomizeFlowStrategyRequest struct {
-	// API name, same as **ProductCode**.
+	// The API name, same as **ProductCode**.
 	//
 	// example:
 	//
 	// ID_PRO
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// Policy ID.
+	// The policy ID.
 	//
 	// This parameter is required.
 	//
@@ -36,19 +36,19 @@ type DeleteCustomizeFlowStrategyRequest struct {
 	//
 	// 38
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Product type, currently only supports **ANT_CLOUD_AUTH*	- (Financial-grade Real Person), all others have been phased out.
+	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (financial-grade ID Verification) is supported. All other types have been discontinued.
 	//
 	// example:
 	//
 	// ANT_CLOUD_AUTH
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// regionId
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//

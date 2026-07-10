@@ -24,33 +24,33 @@ type iDescribeProductCodeResponseBody interface {
 }
 
 type DescribeProductCodeResponseBody struct {
-	// Current query page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// List of product code information.
+	// The list of product code information.
 	Items []*DescribeProductCodeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Number of products per page.
+	// The number of products displayed per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// ID of this request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 7FBBADA3-9A66-5759-8AF8-2F99F5BE13F7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of returned results.
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *DescribeProductCodeResponseBody) Validate() error {
 }
 
 type DescribeProductCodeResponseBodyItems struct {
-	// Product code.
+	// The product code.
 	//
 	// example:
 	//
 	// ID_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Name corresponding to the product code.
+	// The name corresponding to the product code.
 	//
 	// example:
 	//

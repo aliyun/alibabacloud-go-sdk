@@ -16,13 +16,13 @@ type iCreateAntCloudAuthSceneResponseBody interface {
 }
 
 type CreateAntCloudAuthSceneResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 01D3BDC6-64C0-58E2-8760-3F1B56AAE299
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//

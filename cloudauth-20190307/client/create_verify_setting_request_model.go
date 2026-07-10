@@ -24,7 +24,7 @@ type iCreateVerifySettingRequest interface {
 }
 
 type CreateVerifySettingRequest struct {
-	// Verification scenario name, supporting Chinese, English, numbers, and hyphens (-), with a maximum of 20 characters.
+	// The name of the verification scenario.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateVerifySettingRequest struct {
 	//
 	// 用户注册
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// Verification scenario identifier, supporting English letters, numbers, and hyphens (-), with a maximum of 20 characters.
+	// The identifier of the verification scenario.
 	//
 	// This parameter is required.
 	//
@@ -40,25 +40,25 @@ type CreateVerifySettingRequest struct {
 	//
 	// UserRegister
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// Whether to use the system\\"s default guide page.
+	// Specifies whether to use the default system guide page.
 	//
 	// example:
 	//
 	// false
 	GuideStep *bool `json:"GuideStep,omitempty" xml:"GuideStep,omitempty"`
-	// Whether to use the system\\"s default authorization page.
+	// Specifies whether to use the default system authorization page.
 	//
 	// example:
 	//
 	// true
 	PrivacyStep *bool `json:"PrivacyStep,omitempty" xml:"PrivacyStep,omitempty"`
-	// Whether to use the system\\"s default result page.
+	// Specifies whether to use the default system result page.
 	//
 	// example:
 	//
 	// false
 	ResultStep *bool `json:"ResultStep,omitempty" xml:"ResultStep,omitempty"`
-	// The name of the authentication solution to use, such as **RPBasic**, **RPBioOnly**, etc. For all supported authentication solutions, see [Authentication Solutions](https://help.aliyun.com/document_detail/127521.html).
+	// The name of the verification solution.
 	//
 	// This parameter is required.
 	//

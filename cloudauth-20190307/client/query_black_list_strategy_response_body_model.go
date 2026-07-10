@@ -20,25 +20,25 @@ type iQueryBlackListStrategyResponseBody interface {
 }
 
 type QueryBlackListStrategyResponseBody struct {
-	// Return code, **200*	- indicates successful API response.
+	// The return code. **200*	- indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 8FC3D6AC-9FED-4311-8DA7-C4BF47D9F260
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result information.
+	// The returned result.
 	ResultObject []*QueryBlackListStrategyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Repeated"`
 }
 
@@ -100,61 +100,61 @@ func (s *QueryBlackListStrategyResponseBody) Validate() error {
 }
 
 type QueryBlackListStrategyResponseBodyResultObject struct {
-	// Blacklist string, separated by **commas**.
+	// The blacklist string. Multiple blacklist entries are separated by **commas**.
 	//
 	// example:
 	//
 	// 127.0.0.1,127.0.0.2
 	BizContent *string `json:"BizContent,omitempty" xml:"BizContent,omitempty"`
-	// List type:
+	// The blacklist type. Valid values:
 	//
-	// - mobile: Phone number blacklist
+	// - mobile: phone number blacklist
 	//
 	// - ip: IP blacklist
 	//
-	// - identifyNum: ID number blacklist
+	// - identifyNum: ID card blacklist
 	//
-	// - bankCard: Bank card blacklist
+	// - bankCard: bank card blacklist.
 	//
 	// example:
 	//
 	// identifyNum
 	BizKey *string `json:"BizKey,omitempty" xml:"BizKey,omitempty"`
-	// Modification time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 1711533786000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Rule ID.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 234822
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Product name:
+	// The product name. Valid values:
 	//
-	// - id2meta: ID number two-factor verification
+	// - id2meta: ID card two-factor verification.
 	//
-	// - mobile3Meta: Phone number factor verification
+	// - mobile3Meta: Phone number factor verification.
 	//
-	// - bankcardMeta: Bank card factor verification
+	// - bankcardMeta: Bank card factor verification.
 	//
 	// example:
 	//
 	// id2meta
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// Status:
+	// The status. Valid values:
 	//
-	// - **disabled**: Disabled
+	// - **disabled**: Disabled.
 	//
-	// - **normal**: Enabled
+	// - **normal**: Enabled.
 	//
 	// example:
 	//
 	// disabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//

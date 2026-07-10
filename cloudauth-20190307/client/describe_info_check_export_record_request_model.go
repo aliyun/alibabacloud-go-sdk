@@ -22,22 +22,60 @@ type iDescribeInfoCheckExportRecordRequest interface {
 }
 
 type DescribeInfoCheckExportRecordRequest struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end time of the query.
+	//
 	// example:
 	//
 	// 2025-10-11 21:24:48
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The product type. Valid values:
+	//
+	// - **ID_CARD_2_META**: ID card two-element verification.
+	//
+	// - **ID_PERIOD**: ID card validity period verification.
+	//
+	// - **MOBILE_ONLINE_LENGTH**: mobile number online duration.
+	//
+	// - **MOBILE_ONLINE_STATUS**: mobile number online status.
+	//
+	// - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition).
+	//
+	// - **MOBILE_3_META**: mobile number three-element verification (detailed edition).
+	//
+	// - **MOBILE_2_META**: mobile number two-element verification.
+	//
+	// - **BANK_CARD_N_META**: bank card verification (detailed edition).
+	//
+	// - **MOBILE_DETECT**: phone number detection.
+	//
+	// - **VEHICLE_N_META**: vehicle element verification (enhanced edition).
+	//
+	// - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition.
+	//
+	// - **VEHICLE_LICENSE_INFO**: vehicle information recognition.
+	//
+	// - **VEHICLE_INSURE_DATE**: vehicle insurance date query.
+	//
+	// - **VEHICLE_CHECK**: vehicle element verification.
+	//
 	// example:
 	//
 	// ID_CARD_2_META
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The start time of the query.
+	//
 	// example:
 	//
 	// 2025-10-11 21:24:48

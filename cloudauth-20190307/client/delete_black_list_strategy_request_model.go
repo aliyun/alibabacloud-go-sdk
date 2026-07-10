@@ -18,25 +18,25 @@ type iDeleteBlackListStrategyRequest interface {
 }
 
 type DeleteBlackListStrategyRequest struct {
-	// Rule ID.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 38
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Product Name:
+	// The product name. Valid values:
 	//
-	// - **id2meta**: ID card two-factor verification
+	// - **id2meta**: ID card two-element verification.
 	//
-	// - **mobile3Meta**: Mobile phone number factor verification
+	// - **mobile3Meta**: Mobile number element verification.
 	//
-	// - **bankcardMeta**: Bank card factor verification
+	// - **bankcardMeta**: Bank card element verification.
 	//
 	// example:
 	//
 	// id2meta
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//

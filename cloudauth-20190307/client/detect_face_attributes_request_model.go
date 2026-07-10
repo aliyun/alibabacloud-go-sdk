@@ -16,13 +16,13 @@ type iDetectFaceAttributesRequest interface {
 }
 
 type DetectFaceAttributesRequest struct {
-	// Identifier for the business scenario using real-person authentication services.
+	// The business scenario identifier for the ID Verification service.
 	//
 	// example:
 	//
 	// RPBasicTest
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The photo to be detected, see the instructions for uploading image addresses for format description. A maximum of 5 faces can be detected in a single image.
+	// The photo to be detected. For format details, see the notes on uploading image addresses. A maximum of 5 faces can be detected in a single image.
 	//
 	// This parameter is required.
 	//

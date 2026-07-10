@@ -16,9 +16,9 @@ type iModifyBlackListStrategyShrinkRequest interface {
 }
 
 type ModifyBlackListStrategyShrinkRequest struct {
-	// Blacklist rule.
+	// The blacklist rule.
 	BlackListStrategyShrink *string `json:"BlackListStrategy,omitempty" xml:"BlackListStrategy,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//

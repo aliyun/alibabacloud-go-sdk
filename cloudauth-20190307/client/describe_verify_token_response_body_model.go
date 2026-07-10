@@ -20,7 +20,7 @@ type iDescribeVerifyTokenResponseBody interface {
 }
 
 type DescribeVerifyTokenResponseBody struct {
-	// OSS upload token information.
+	// The OSS upload token information.
 	OssUploadToken *DescribeVerifyTokenResponseBodyOssUploadToken `json:"OssUploadToken,omitempty" xml:"OssUploadToken,omitempty" type:"Struct"`
 	// The ID of this request.
 	//
@@ -28,13 +28,13 @@ type DescribeVerifyTokenResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The entry link for the original H5 verification scheme, which has been discontinued and no longer supports new integrations. If you need to integrate an H5 verification scheme, it is recommended to use the [PC or mobile H5 web integration solution](https://help.aliyun.com/document_detail/173779.html) of financial-grade real-person authentication.
+	// The entry URL for the legacy H5 authentication scheme. This scheme has been discontinued and no longer accepts new integrations. If you need H5 authentication, use the [PC or mobile H5 web integration scheme](https://help.aliyun.com/document_detail/173779.html) of financial-grade ID Verification.
 	//
 	// example:
 	//
 	// http%3A%2F%2Fjiangsu.china.com.cn%2Fuploadfile%2F2015%2F0114%2F1421221304095989.jpg
 	VerifyPageUrl *string `json:"VerifyPageUrl,omitempty" xml:"VerifyPageUrl,omitempty"`
-	// The token for this verification, used to link various interfaces in the verification request, valid for 30 minutes.
+	// The token for this authentication, which is used to connect the various operations in the authentication request. The token is valid for 30 minutes.
 	//
 	// example:
 	//
@@ -96,19 +96,19 @@ func (s *DescribeVerifyTokenResponseBody) Validate() error {
 }
 
 type DescribeVerifyTokenResponseBodyOssUploadToken struct {
-	// OSS file storage bucket.
+	// The OSS bucket for file storage.
 	//
 	// example:
 	//
 	// cloudauth-zhangjiakou-external
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Access endpoint.
+	// The endpoint.
 	//
 	// example:
 	//
 	// https://oss-cn-zhangjiakou.aliyuncs.com
 	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	// Expiration time. Expressed in timestamp format, unit: milliseconds.
+	// The expiration time. The value is in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type DescribeVerifyTokenResponseBodyOssUploadToken struct {
 	//
 	// STS.NU8rUBj****
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// File storage path.
+	// The file storage path.
 	//
 	// example:
 	//

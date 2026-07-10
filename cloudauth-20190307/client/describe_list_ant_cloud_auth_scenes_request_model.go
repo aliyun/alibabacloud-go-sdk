@@ -14,7 +14,7 @@ type iDescribeListAntCloudAuthScenesRequest interface {
 }
 
 type DescribeListAntCloudAuthScenesRequest struct {
-	// Scenario ID.
+	// The scene ID.
 	//
 	// example:
 	//

@@ -20,35 +20,35 @@ type iId2MetaVerifyWithOCRResponseBody interface {
 }
 
 type Id2MetaVerifyWithOCRResponseBody struct {
-	// Return code: 200 indicates success, any other value indicates failure.
+	// The response code. A value of 200 indicates success. Any other value indicates failure.
 	//
 	// **Important**
 	//
-	// - This parameter indicates whether the API was called correctly. For detailed return code explanations, please refer to the error codes.
+	// - This parameter indicates only whether the API call was made correctly. For detailed response codes, see error codes.
 	//
-	// - Check the business verification results through the fields in ResultObject.
+	// - Check the fields in ResultObject for the business verification result.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// API call return message.
+	// The response message of the API call.
 	//
 	// **Important**
 	//
-	// This parameter only indicates if there was an exception with the API call.
+	// This parameter indicates only whether the API call is abnormal.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF03****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result object
+	// The result object.
 	ResultObject *Id2MetaVerifyWithOCRResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -106,19 +106,19 @@ func (s *Id2MetaVerifyWithOCRResponseBody) Validate() error {
 }
 
 type Id2MetaVerifyWithOCRResponseBodyResultObject struct {
-	// Identity verification result:
+	// The identity verification result. Valid values:
 	//
-	// - 1: Consistent
+	// - 1: consistent.
 	//
-	// - 2: Inconsistent
+	// - 2: inconsistent.
 	//
-	// - 3: No record found
+	// - 3: no record found.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// {"address":"Zhejiang Province, Hangzhou City, Yu*****","birthDate":"19901226","certName":"Zhang San","certNo":"1234561990122*****","nationality":"Han","authority":"xxx Public Security Bureau","startDate":"20201130","endDate":"20301130"}
+	// {"address":"浙江省杭州市余*****","birthDate":"19901226","certName":"张三","certNo":"1234561990122*****","nationality":"汉","authority":"xxx公安局","startDate":"20201130","endDate":"20301130"}.
 	//
 	// example:
 	//

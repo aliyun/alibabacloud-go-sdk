@@ -16,17 +16,17 @@ type iCreateWhitelistSettingResponseBody interface {
 }
 
 type CreateWhitelistSettingResponseBody struct {
-	// The ID of this request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CF4979D3-060F-5336-BD9F-0D46ECB66B22
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result, whether the creation was successful:
+	// The returned result that indicates whether the whitelist is created. Valid values:
 	//
-	// - true: Success
+	// - true: Succeeded.
 	//
-	// - false: Failure
+	// - false: Failed.
 	//
 	// example:
 	//

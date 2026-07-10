@@ -22,31 +22,31 @@ type iCreateVerifySettingResponseBody interface {
 }
 
 type CreateVerifySettingResponseBody struct {
-	// Verification scenario name.
+	// The name of the verification scenario.
 	//
 	// example:
 	//
 	// 用户注册
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// Verification scenario identifier.
+	// The identifier of the verification scenario.
 	//
 	// example:
 	//
 	// UserRegister
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// ID of this request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Authentication solution name.
+	// The name of the verification solution.
 	//
 	// example:
 	//
 	// RPBasic
 	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
-	// Authentication steps
+	// The verification steps. guide indicates the guide step, and privacy indicates the authorization step.
 	StepList []*string `json:"StepList,omitempty" xml:"StepList,omitempty" type:"Repeated"`
 }
 

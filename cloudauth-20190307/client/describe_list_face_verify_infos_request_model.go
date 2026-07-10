@@ -26,47 +26,47 @@ type iDescribeListFaceVerifyInfosRequest interface {
 }
 
 type DescribeListFaceVerifyInfosRequest struct {
-	// Verification ID.
+	// The authentication ID.
 	//
 	// example:
 	//
 	// shs414a8b392a3a338abe0504c75c056
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Query the end time of the verification.
+	// The end time of the authentication query.
 	//
 	// example:
 	//
 	// 1760716800000
 	GmtEnd *int64 `json:"GmtEnd,omitempty" xml:"GmtEnd,omitempty"`
-	// Query the start time of the verification.
+	// The start time of the authentication query.
 	//
 	// example:
 	//
 	// 1760112000000
 	GmtStart *int64 `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
-	// Pagination parameter: current page number.
+	// The current page number for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of items per page for paginated queries. Maximum value: 100, default value: 10.
+	// The number of entries per page in a paged query. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Scene ID.
+	// The scene ID.
 	//
 	// example:
 	//
 	// 1000009699
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Verification status:
+	// The authentication status. Valid values:
 	//
-	// - **1**: Verification passed.
+	// - **1**: Authentication passed.
 	//
-	// - **2**: Verification failed.
+	// - **2**: Authentication failed.
 	//
 	// example:
 	//

@@ -24,37 +24,37 @@ type iDescribePageFaceVerifyDataRequest interface {
 }
 
 type DescribePageFaceVerifyDataRequest struct {
-	// Current page number, default is 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Required, end time, format is yyyy-MM-dd, default is yyyy-MM-dd 00:00:00, the query interval cannot exceed 90 days.
+	// Required. The end time in the yyyy-MM-dd format. The default value is yyyy-MM-dd 00:00:00. The maximum query interval is 90 days.
 	//
 	// example:
 	//
 	// 2023-04-30
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Number of items per page, default is 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Product code.
+	// The product code.
 	//
 	// example:
 	//
 	// ID_PLUS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Scene ID.
+	// The scene ID.
 	//
 	// example:
 	//
 	// 36**01
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Required, start time, format is yyyy-MM-dd, default is yyyy-MM-dd 00:00:00, the query interval cannot exceed 90 days.
+	// Required. The start time in the yyyy-MM-dd format. The default value is yyyy-MM-dd 00:00:00. The maximum query interval is 90 days.
 	//
 	// example:
 	//

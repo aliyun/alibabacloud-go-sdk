@@ -16,13 +16,13 @@ type iDescribeVerifyPersonasOsStatisticsResponseBody interface {
 }
 
 type DescribeVerifyPersonasOsStatisticsResponseBody struct {
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 123906BE-752B-51E3-A8FF-52F53B659CE6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Processing result.
+	// The processing result.
 	ResultObject *DescribeVerifyPersonasOsStatisticsResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -62,31 +62,31 @@ func (s *DescribeVerifyPersonasOsStatisticsResponseBody) Validate() error {
 }
 
 type DescribeVerifyPersonasOsStatisticsResponseBodyResultObject struct {
-	// Total number of authenticated devices.
+	// The total number of devices used for ID Verification.
 	//
 	// example:
 	//
 	// 24
 	AllDeviceCnt *int64 `json:"AllDeviceCnt,omitempty" xml:"AllDeviceCnt,omitempty"`
-	// Number of authenticated Android devices.
+	// The number of Android devices used for ID Verification.
 	//
 	// example:
 	//
 	// 14
 	DeviceAndroidCnt *int64 `json:"DeviceAndroidCnt,omitempty" xml:"DeviceAndroidCnt,omitempty"`
-	// Proportion of Android devices.
+	// The proportion of Android devices.
 	//
 	// example:
 	//
 	// 58.33
 	DeviceAndroidRate *string `json:"DeviceAndroidRate,omitempty" xml:"DeviceAndroidRate,omitempty"`
-	// Number of authenticated iOS devices.
+	// The number of iOS devices used for ID Verification.
 	//
 	// example:
 	//
 	// 10
 	DeviceIosCnt *int64 `json:"DeviceIosCnt,omitempty" xml:"DeviceIosCnt,omitempty"`
-	// Proportion of iOS devices.
+	// The proportion of iOS devices.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iCredentialVerifyResponseBody interface {
 }
 
 type CredentialVerifyResponseBody struct {
-	// Return code: 200 for success, others for failure.
+	// The response code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result
+	// The result information.
 	ResultObject *CredentialVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *CredentialVerifyResponseBody) Validate() error {
 }
 
 type CredentialVerifyResponseBodyResultObject struct {
-	// Additional information in JSON format.
+	// The additional information in JSON format.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type CredentialVerifyResponseBodyResultObject struct {
 	//
 	// }
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	// OCR recognition result.
+	// The OCR recognition result.
 	//
 	// example:
 	//
@@ -142,51 +142,55 @@ type CredentialVerifyResponseBodyResultObject struct {
 	//
 	// }
 	OcrInfo *string `json:"OcrInfo,omitempty" xml:"OcrInfo,omitempty"`
-	// Risk result
+	// The risk result. Valid values:
 	//
-	// - **0**: Low risk
+	// - **0**: Low risk.
 	//
-	// - **1**: High risk
+	// - **1**: High risk.
 	//
-	// - **2**: Suspicious
+	// - **2**: Suspicious.
 	//
 	// example:
 	//
 	// 1
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Risk score map.
+	// The risk score map.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
-	// Risk tags, separated by commas (,), including:
+	// The risk tags, separated by commas (,). Valid values:
 	//
-	// - **PS**: Image manipulation.
+	// - PS: image manipulation.
 	//
-	// - **SCREEN_PHOTO**: Screen recapture.
+	// - SCREEN_PHOTO: screen recapture.
 	//
-	// - **SCREENSHOT**: Screenshot.
+	// - SCREENSHOT: screenshot.
 	//
-	// - **WATERMARK**: Watermark.
+	// - WATERMARK: watermark.
 	//
-	// - **SAME_BACKGROUND**: Similar background.
+	// - COLOR_PRINT: color print copy.
 	//
-	// - **ORIGINAL_PHOTO**: Not the original image
+	// - WEB_IMAGE: web image.
+	//
+	// - SAME_FACE: similar face.
+	//
+	// - SAME_BACKGROUND: similar background.
 	//
 	// example:
 	//
 	// PS,SCREEN_PHOTO
 	RiskTag *string `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
-	// Authority verification details.
+	// The authoritative verification details.
 	//
 	// example:
 	//
 	// **
 	VerifyDetail *string `json:"VerifyDetail,omitempty" xml:"VerifyDetail,omitempty"`
-	// The verification result.
+	// The authoritative verification result.
 	//
 	// example:
 	//
 	// *
 	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
-	// Qwen interpretation.
+	// The Qwen interpretation.
 	VlResult *CredentialVerifyResponseBodyResultObjectVlResult `json:"VlResult,omitempty" xml:"VlResult,omitempty" type:"Struct"`
 }
 
@@ -280,21 +284,17 @@ func (s *CredentialVerifyResponseBodyResultObject) Validate() error {
 }
 
 type CredentialVerifyResponseBodyResultObjectVlResult struct {
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the Qwen interpretation is successful. Valid values:
 	//
-	// - **true**: The call was successful.
+	// - true: Successful.
 	//
-	// - **false**: The call failed.
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Image understanding result:
-	//
-	// - When PromptModel is DEFAULT, the output format refers to the example on the right.
-	//
-	// - When PromptModel is CUSTOM, the output format follows the agreed format of the Prompt.
+	// The Qwen interpretation content.
 	//
 	// example:
 	//

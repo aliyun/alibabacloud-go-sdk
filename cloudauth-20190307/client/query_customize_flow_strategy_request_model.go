@@ -18,19 +18,19 @@ type iQueryCustomizeFlowStrategyRequest interface {
 }
 
 type QueryCustomizeFlowStrategyRequest struct {
-	// Product type, currently only supports **ANT_CLOUD_AUTH*	- (Financial-grade Real Person), all others have been phased out.
+	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (financial-grade ID Verification) is supported. All other types have been discontinued.
 	//
 	// example:
 	//
 	// ANT_CLOUD_AUTH
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// regionId
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// This parameter is required.
 	//

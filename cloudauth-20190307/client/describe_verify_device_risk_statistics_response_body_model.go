@@ -16,13 +16,13 @@ type iDescribeVerifyDeviceRiskStatisticsResponseBody interface {
 }
 
 type DescribeVerifyDeviceRiskStatisticsResponseBody struct {
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B3193814-AE54-50C5-9070-68B69C07287D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Authentication result.
+	// The verification result.
 	ResultObject *DescribeVerifyDeviceRiskStatisticsResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -62,39 +62,39 @@ func (s *DescribeVerifyDeviceRiskStatisticsResponseBody) Validate() error {
 }
 
 type DescribeVerifyDeviceRiskStatisticsResponseBodyResultObject struct {
-	// Suspected fake face percentage: total number of suspected fake faces / total number of risks.
+	// The suspected fake face percentage: total number of suspected fake faces / total number of risks.
 	//
 	// example:
 	//
 	// 0
 	FaceAttackRate *string `json:"FaceAttackRate,omitempty" xml:"FaceAttackRate,omitempty"`
-	// Total number of suspected fake identities.
+	// The total number of suspected fake identities.
 	//
 	// example:
 	//
 	// 0
 	IdFakeRate *string `json:"IdFakeRate,omitempty" xml:"IdFakeRate,omitempty"`
-	// Data items in the response.
+	// The data items in the response.
 	Items []*DescribeVerifyDeviceRiskStatisticsResponseBodyResultObjectItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Number of risks.
+	// The number of risks.
 	//
 	// example:
 	//
 	// 2
 	RiskCount *int64 `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
-	// Root percentage: total number of root / total number of risks.
+	// The root percentage: total number of rooted devices / total number of risks.
 	//
 	// example:
 	//
 	// 0
 	RootRate *string `json:"RootRate,omitempty" xml:"RootRate,omitempty"`
-	// Simulator percentage: total number of simulators / total number of risks.
+	// The emulator percentage: total number of emulators / total number of risks.
 	//
 	// example:
 	//
 	// 0
 	SimulatorRate *string `json:"SimulatorRate,omitempty" xml:"SimulatorRate,omitempty"`
-	// Virtual video percentage: total number of virtual videos / total number of risks.
+	// The virtual video percentage: total number of virtual videos / total number of risks.
 	//
 	// example:
 	//
@@ -187,25 +187,25 @@ func (s *DescribeVerifyDeviceRiskStatisticsResponseBodyResultObject) Validate() 
 }
 
 type DescribeVerifyDeviceRiskStatisticsResponseBodyResultObjectItems struct {
-	// Daily call count.
+	// The number of daily transactions.
 	//
 	// example:
 	//
 	// 11
 	DailyCallCount *int64 `json:"DailyCallCount,omitempty" xml:"DailyCallCount,omitempty"`
-	// Date.
+	// The date.
 	//
 	// example:
 	//
 	// 2025-10-10
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// Abnormal device risk ratio.
+	// The abnormal device risk ratio.
 	//
 	// example:
 	//
 	// 0
 	DeviceRiskRate *string `json:"DeviceRiskRate,omitempty" xml:"DeviceRiskRate,omitempty"`
-	// Abnormal identity risk ratio.
+	// The abnormal identity risk ratio.
 	//
 	// example:
 	//

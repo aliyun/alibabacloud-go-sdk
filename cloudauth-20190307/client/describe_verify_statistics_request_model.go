@@ -22,17 +22,17 @@ type iDescribeVerifyStatisticsRequest interface {
 }
 
 type DescribeVerifyStatisticsRequest struct {
-	// Whether the age is over 14 years old:
+	// Specifies whether the age is older than 14. Valid values:
 	//
-	// - **T**: Over
+	// - **T**: older than 14
 	//
-	// - **F**: Under
+	// - **F**: younger than 14.
 	//
 	// example:
 	//
 	// T
 	AgeGt *string `json:"AgeGt,omitempty" xml:"AgeGt,omitempty"`
-	// End date of the query.
+	// The end time of the query.
 	//
 	// This parameter is required.
 	//
@@ -40,19 +40,19 @@ type DescribeVerifyStatisticsRequest struct {
 	//
 	// 1760630399999
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Product Code.
+	// The product code.
 	//
 	// example:
 	//
 	// ID_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Service type:
+	// The service type. Valid values:
 	//
-	// - **antcloudauth**: Financial-grade real-person authentication.
+	// - **antcloudauth**: financial-grade ID Verification.
 	//
-	// - **cloudauthst*	- (discontinued): Enhanced real-person authentication.
+	// - **cloudauthst*	- (discontinued): enhanced ID Verification.
 	//
-	// - **cloudauth*	- (discontinued): Real-person authentication.
+	// - **cloudauth*	- (discontinued): ID Verification.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type DescribeVerifyStatisticsRequest struct {
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Start date of the query.
+	// The start time of the query.
 	//
 	// This parameter is required.
 	//

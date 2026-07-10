@@ -36,71 +36,71 @@ type iUpdateAntCloudAuthSceneRequest interface {
 }
 
 type UpdateAntCloudAuthSceneRequest struct {
-	// Update Ant Blockchain Transaction Scenario
+	// Specifies whether to bind a mini program. Valid values:
+	//
+	// - **Y**: enabled.
+	//
+	// - **N (default)**: disabled.
+	//
+	// 	Notice: If you enable mini program binding, make sure that you specify all parameters related to the mini program binding..
 	//
 	// example:
 	//
 	// Y
 	BindMiniProgram *string `json:"BindMiniProgram,omitempty" xml:"BindMiniProgram,omitempty"`
-	// Whether to enable binding with a mini program:
-	//
-	// - **Y**: Enable
-	//
-	// - **N (default)**: Disable
-	//
-	// 	Notice: If you enable binding with a mini program, please ensure that all parameters for the mini program are passed.
+	// The content of the uploaded verification file.
 	//
 	// example:
 	//
 	// 774c4aab45981ff4a86cde9255a11xxx
 	CheckFileBody *string `json:"CheckFileBody,omitempty" xml:"CheckFileBody,omitempty"`
-	// Scenario name.
+	// The name of the uploaded verification file.
 	//
 	// example:
 	//
-	// Whether to enable storing the authentication files generated during the authentication process to the user\\"s OSS:
-	//
-	// - **Y**: Enable
-	//
-	// - **N (default)**: Disable
+	// 测试.txt
 	CheckFileName *string `json:"CheckFileName,omitempty" xml:"CheckFileName,omitempty"`
-	// Name of the uploaded verification file.
+	// Specifies whether to enable enhanced device risk detection. Valid values:
+	//
+	// - **Y**: enabled.
+	//
+	// - **N**: disabled.
 	//
 	// example:
 	//
 	// Y
 	DeviceRiskPlus *string `json:"DeviceRiskPlus,omitempty" xml:"DeviceRiskPlus,omitempty"`
-	// System-defined parameter. Value: **UpdateAntCloudAuthScene**.
+	// The name of the mini program.
 	//
 	// example:
 	//
-	// Scenario ID.
+	// 测试APP
 	MiniProgramName *string `json:"MiniProgramName,omitempty" xml:"MiniProgramName,omitempty"`
-	// Currently meaningless, can be omitted.
-	//
-	// example:
-	//
-	// IOS
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// Mini program name.
-	//
-	// example:
-	//
-	// 1
-	ReturnPicCount *int64 `json:"ReturnPicCount,omitempty" xml:"ReturnPicCount,omitempty"`
-	// Platform for binding the mini program:
+	// The mini program platform. Valid values:
 	//
 	// - **WECHAT**: WeChat
 	//
 	// - **ALIPAY**: Alipay
 	//
-	// - **TIKTOK**: TikTok
+	// - **TIKTOK**: TikTok.
+	//
+	// example:
+	//
+	// IOS
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The number of returned photos (1 to 5). This parameter takes effect only after StoreImage is enabled for certification file retention.
+	//
+	// example:
+	//
+	// 1
+	ReturnPicCount *int64 `json:"ReturnPicCount,omitempty" xml:"ReturnPicCount,omitempty"`
+	// The duration of the returned video (1 to 2 seconds). This parameter takes effect only after StoreImage is enabled.
 	//
 	// example:
 	//
 	// 2
 	ReturnVideoLength *int64 `json:"ReturnVideoLength,omitempty" xml:"ReturnVideoLength,omitempty"`
-	// Update Financial-Level Authentication Scenario
+	// The scenario ID.
 	//
 	// This parameter is required.
 	//
@@ -108,27 +108,23 @@ type UpdateAntCloudAuthSceneRequest struct {
 	//
 	// 1000013372
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Update the information of a financial-level authentication scenario based on the scenario ID.
-	//
-	// - Service address: cloudauth.aliyuncs.com.
-	//
-	// - Request method: HTTPS POST.
+	// The scenario name.
 	//
 	// example:
 	//
 	// test
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// Update Ant Blockchain Transaction Scenario
+	// This parameter is not used. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// -
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Update the information of a financial-level authentication scenario based on the scenario ID.
+	// Specifies whether to deliver certification files generated during the certification process to the user\\"s OSS bucket. Valid values:
 	//
-	// - Service address: cloudauth.aliyuncs.com.
+	// - **Y**: enabled.
 	//
-	// - Request method: HTTPS POST.
+	// - **N (default)**: disabled.
 	//
 	// example:
 	//

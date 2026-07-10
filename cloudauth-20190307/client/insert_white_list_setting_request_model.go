@@ -24,37 +24,37 @@ type iInsertWhiteListSettingRequest interface {
 }
 
 type InsertWhiteListSettingRequest struct {
-	// ID number.
+	// The certificate number.
 	//
 	// example:
 	//
 	// 330103xxxxxxxxxxxx
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// Unique identifier for real person authentication.
+	// The unique identifier of the ID Verification request.
 	//
 	// example:
 	//
 	// shsf57a4e0d9981c3bd66dc754f3d3cd
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Remark, with a length less than 32 characters.
+	// The remarks. The maximum length is 32 characters.
 	//
 	// example:
 	//
 	// xxxxxx
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Authentication scene ID. This ID is automatically generated after creating an authentication scene in the console. For instructions on how to create an authentication scene, see Adding an Authentication Scene.
+	// The verification scenario ID. This ID is automatically generated after you create a verification scenario in the console. For information about how to create a verification scenario, see Add a verification scenario.
 	//
 	// example:
 	//
 	// 100000xxxx
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// ServiceCode for the real person cloud product, value: **antcloudauth**.
+	// The ServiceCode of the ID Verification cloud service. Set this parameter to **antcloudauth**.
 	//
 	// example:
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Whitelist validity period in days (only supports 3, 7, 30).
+	// The number of days the whitelist entry is valid. Valid values: 3, 7, and 30.
 	//
 	// example:
 	//

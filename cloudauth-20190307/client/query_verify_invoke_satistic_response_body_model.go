@@ -28,45 +28,45 @@ type iQueryVerifyInvokeSatisticResponseBody interface {
 }
 
 type QueryVerifyInvokeSatisticResponseBody struct {
-	// Response code, **200*	- indicates a successful response.
+	// The response code. **200*	- indicates a successful response.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// List of returned data.
+	// The list of returned data.
 	Items []*QueryVerifyInvokeSatisticResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Number of items per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 2FA2C773-47DB-4156-B1EE-5B047321A939
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the response was successful.
+	// Indicates whether the response is successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -168,9 +168,9 @@ func (s *QueryVerifyInvokeSatisticResponseBody) Validate() error {
 }
 
 type QueryVerifyInvokeSatisticResponseBodyItems struct {
-	// List of statistical data.
+	// The list of statistics data.
 	Data []*QueryVerifyInvokeSatisticResponseBodyItemsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Statistics date.
+	// The statistics date.
 	//
 	// example:
 	//
@@ -218,13 +218,13 @@ func (s *QueryVerifyInvokeSatisticResponseBodyItems) Validate() error {
 }
 
 type QueryVerifyInvokeSatisticResponseBodyItemsData struct {
-	// Number of occurrences of the statistic.
+	// The count of the statistical value.
 	//
 	// example:
 	//
 	// 3
 	StatisticsCount *string `json:"StatisticsCount,omitempty" xml:"StatisticsCount,omitempty"`
-	// ProductCode。
+	// The product code.
 	//
 	// example:
 	//

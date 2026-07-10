@@ -14,11 +14,11 @@ type iDescribeOssStatusRequest interface {
 }
 
 type DescribeOssStatusRequest struct {
-	// Service code:
+	// The service code. Valid values:
 	//
-	// - antcloudauth: Financial-grade real-person authentication
+	// - antcloudauth: Chinese financial-grade ID Verification.
 	//
-	// - cloudauthst (discontinued): Enhanced real-person authentication
+	// - cloudauthst (discontinued): ID Verification Enhanced Edition.
 	//
 	// example:
 	//

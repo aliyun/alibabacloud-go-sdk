@@ -16,9 +16,9 @@ type iModifyBlackListStrategyRequest interface {
 }
 
 type ModifyBlackListStrategyRequest struct {
-	// Blacklist rule.
+	// The blacklist rule.
 	BlackListStrategy *ModifyBlackListStrategyRequestBlackListStrategy `json:"BlackListStrategy,omitempty" xml:"BlackListStrategy,omitempty" type:"Struct"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
@@ -62,53 +62,53 @@ func (s *ModifyBlackListStrategyRequest) Validate() error {
 }
 
 type ModifyBlackListStrategyRequestBlackListStrategy struct {
-	// Blacklist string, with each blacklist entry separated by commas.
+	// The blacklist string. Separate multiple entries with commas (,).
 	//
 	// example:
 	//
 	// 127.0.0.1,127.0.0.2
 	BizContent *string `json:"BizContent,omitempty" xml:"BizContent,omitempty"`
-	// List Type:
+	// The blacklist type. Valid values:
 	//
-	// - **mobile**: Mobile number blacklist
+	// - **mobile**: mobile number blacklist.
 	//
-	// - **ip**: IP blacklist
+	// - **ip**: IP blacklist.
 	//
-	// - **identifyNum**: ID number blacklist
+	// - **identifyNum**: ID card blacklist.
 	//
-	// - **bankCard**: Bank card blacklist
+	// - **bankCard**: bank card blacklist.
 	//
 	// example:
 	//
 	// ip
 	BizKey *string `json:"BizKey,omitempty" xml:"BizKey,omitempty"`
-	// Rule ID:
+	// The rule ID. Valid values:
 	//
-	// - **Empty**: Add a new rule
+	// - **Empty**: creates a rule.
 	//
-	// - **Non-empty**: Modify an existing rule
+	// - **Not empty**: modifies a rule.
 	//
 	// example:
 	//
 	// 38
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Product Name:
+	// The product name. Valid values:
 	//
-	// - **id2meta**: ID card two-factor verification
+	// - **id2meta**: ID card two-element verification.
 	//
-	// - **mobile3Meta**: Mobile number factor verification
+	// - **mobile3Meta**: mobile number element verification.
 	//
-	// - **bankcardMeta**: Bank card factor verification
+	// - **bankcardMeta**: bank card element verification.
 	//
 	// example:
 	//
 	// id2meta
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// Verification Status:
+	// The authentication status. Valid values:
 	//
-	// - **1**: Verification passed
+	// - **1**: Authentication passed.
 	//
-	// - **2**: Verification failed
+	// - **2**: Authentication failed.
 	//
 	// example:
 	//

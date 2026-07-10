@@ -18,15 +18,15 @@ type iModifyControlStrategyShrinkRequest interface {
 }
 
 type ModifyControlStrategyShrinkRequest struct {
-	// List of security alarm rules.
+	// The list of security alert rules.
 	ControlStrategyListShrink *string `json:"ControlStrategyList,omitempty" xml:"ControlStrategyList,omitempty"`
-	// Product type, currently only supports **ANT_CLOUD_AUTH*	- (Financial-grade Real Person), all others are phased out.
+	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (financial-grade ID Verification) is supported. All other types have been discontinued.
 	//
 	// example:
 	//
 	// ANT_CLOUD_AUTH
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// Region ID of the intelligent access gateway instance.
+	// The region ID of the Smart Access Gateway instance.
 	//
 	// example:
 	//

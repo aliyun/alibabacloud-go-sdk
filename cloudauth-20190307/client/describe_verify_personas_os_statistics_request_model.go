@@ -20,23 +20,23 @@ type iDescribeVerifyPersonasOsStatisticsRequest interface {
 }
 
 type DescribeVerifyPersonasOsStatisticsRequest struct {
-	// Product code.
+	// The product code.
 	//
 	// example:
 	//
 	// ID_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Scene ID.
+	// The scene ID.
 	//
 	// example:
 	//
 	// 1000002995
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Service type:
+	// The service type. Valid values:
 	//
-	// - **antcloudauth**: Financial-grade real-person authentication.
+	// - **antcloudauth**: financial-grade ID Verification.
 	//
-	// - **cloudauthst*	- (discontinued): Enhanced real-person authentication.
+	// - **cloudauthst*	- (discontinued): enhanced ID Verification.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeVerifyPersonasOsStatisticsRequest struct {
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Time range for the query, indicating how many days ago.
+	// The time range for the query, which specifies the number of preceding days.
 	//
 	// This parameter is required.
 	//

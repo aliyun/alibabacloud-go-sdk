@@ -20,13 +20,13 @@ type iMobile3MetaSimpleVerifyResponseBody interface {
 }
 
 type Mobile3MetaSimpleVerifyResponseBody struct {
-	// Return code: 200 for success, others for failure.
+	// Response code: 200 indicates success, other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// Response message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type Mobile3MetaSimpleVerifyResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result.
+	// The returned result.
 	ResultObject *Mobile3MetaSimpleVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -108,7 +108,7 @@ type Mobile3MetaSimpleVerifyResponseBodyResultObject struct {
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// ISP name:
+	// Carrier name:
 	//
 	// - **CMCC**: China Mobile.
 	//

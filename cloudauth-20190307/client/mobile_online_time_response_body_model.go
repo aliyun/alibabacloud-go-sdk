@@ -20,25 +20,25 @@ type iMobileOnlineTimeResponseBody interface {
 }
 
 type MobileOnlineTimeResponseBody struct {
-	// Return code: 200 for success, others for failure.
+	// The return code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// B506328A-D84B-4750-82C7-6A207C585CF1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result information
+	// The result information.
 	ResultObject *MobileOnlineTimeResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,39 +96,41 @@ func (s *MobileOnlineTimeResponseBody) Validate() error {
 }
 
 type MobileOnlineTimeResponseBodyResultObject struct {
-	// Verification result code.
+	// The verification result code. Valid values:
 	//
-	// - 1: Verification consistent
+	// - 1: Consistent.
 	//
-	// - 2: Verification inconsistent
+	// - 2: Inconsistent.
 	//
-	// - 3: No record found
+	// - 3: No record found.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Operator name
+	// The name of the telecommunications service provider. Valid values:
 	//
-	// - CMCC: China Mobile
+	// - CMCC: China Mobile.
 	//
-	// - CUCC: China Unicom
+	// - CUCC: China Unicom.
 	//
-	// - CTCC: China Telecom
+	// - CTCC: China Telecom.
 	//
 	// example:
 	//
 	// CMCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// - 1: [0,3) indicates the online duration is 0~3 months
+	// The network duration code. Valid values:
 	//
-	// - 2: [3,6) indicates the online duration is 3~6 months
+	// - 1: [0,3) indicates a network duration of 0 to 3 months.
 	//
-	// - 3: [6,12) indicates the online duration is 6~12 months
+	// - 2: [3,6) indicates a network duration of 3 to 6 months.
 	//
-	// - 4: [12,24) indicates the online duration is 12~24 months
+	// - 3: [6,12) indicates a network duration of 6 to 12 months.
 	//
-	// - 5: [24,+) indicates the online duration is more than 24 months
+	// - 4: [12,24) indicates a network duration of 12 to 24 months.
+	//
+	// - 5: [24,+) indicates a network duration of more than 24 months.
 	//
 	// example:
 	//

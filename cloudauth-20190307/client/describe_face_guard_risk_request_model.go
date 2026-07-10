@@ -20,27 +20,27 @@ type iDescribeFaceGuardRiskRequest interface {
 }
 
 type DescribeFaceGuardRiskRequest struct {
-	// Authentication ID
+	// The authentication ID.
 	//
 	// example:
 	//
 	// aba9830f471a4335af4612c8adaa91b0
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// Risk identification - device token.
+	// The device token for risk identification.
 	//
 	// example:
 	//
 	// McozS1ZWRcRZStlERcZZo_QOytx5jcgZoZJEoRLOxxxxxxx
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	// This identifier is used for subsequent troubleshooting, and you need to ensure that this value is unique in your business.
+	// The identifier used for subsequent troubleshooting. Ensure that this value is unique within your business.
 	//
-	// Supports the use of English letters (including uppercase and lowercase) and numbers, with a maximum length of 32 characters.
+	// The value can contain letters (both uppercase and lowercase) and digits, with a maximum length of 32 characters.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c35xxxx
 	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	// Product code, fixed value: FACE_GUARD
+	// The product code. Set this to FACE_GUARD.
 	//
 	// example:
 	//

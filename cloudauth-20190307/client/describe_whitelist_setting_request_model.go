@@ -31,22 +31,24 @@ type iDescribeWhitelistSettingRequest interface {
 	GetValidEndDate() *int64
 	SetValidStartDate(v int64) *DescribeWhitelistSettingRequest
 	GetValidStartDate() *int64
+	SetWhitelistType(v string) *DescribeWhitelistSettingRequest
+	GetWhitelistType() *string
 }
 
 type DescribeWhitelistSettingRequest struct {
-	// ID Number
+	// The ID card number.
 	//
 	// example:
 	//
 	// 320321XXXXXXXX701X
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// Certification ID
+	// The certification ID.
 	//
 	// example:
 	//
 	// shsf57a4e0d9981c3bd66dc754f3d3cd
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Pagination parameter: current page number, default value is 1.
+	// The current page number. Default value: 1.
 	//
 	// This parameter is required.
 	//
@@ -54,17 +56,17 @@ type DescribeWhitelistSettingRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Specify the language to query. Values:
+	// The language of the query result. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Number of items per page for pagination.
+	// The number of entries per page in a paged query.
 	//
 	// This parameter is required.
 	//
@@ -72,17 +74,17 @@ type DescribeWhitelistSettingRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Scene ID.
+	// The scene ID.
 	//
 	// example:
 	//
 	// 1000004530
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Service Code:
+	// The service code. Valid values:
 	//
-	// - **Enhanced Financial Grade**: cloudauthst
+	// - **cloudauthst**: enhanced financial-grade edition.
 	//
-	// - **Financial Grade**: antcloudauth
+	// - **antcloudauth**: financial-grade edition.
 	//
 	// This parameter is required.
 	//
@@ -90,36 +92,40 @@ type DescribeWhitelistSettingRequest struct {
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Visitor\\"s source IP address.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//
 	// 113.140.85.74
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// Whitelist status:
+	// The whitelist status. Valid values:
 	//
-	// - **VALID**: Valid
+	// - **VALID**: valid.
 	//
-	// - **INVALID**: Invalid
+	// - **INVALID**: invalid.
 	//
-	// - **DELETED**: Deleted
+	// - **DELETED**: deleted.
 	//
 	// example:
 	//
 	// VALID
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Expiration date.
+	// The end time of the validity period.
 	//
 	// example:
 	//
 	// 1730304000000
 	ValidEndDate *int64 `json:"ValidEndDate,omitempty" xml:"ValidEndDate,omitempty"`
-	// Effective start time (in seconds timestamp).
+	// The start time of the validity period. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1759939200000
 	ValidStartDate *int64 `json:"ValidStartDate,omitempty" xml:"ValidStartDate,omitempty"`
+	// example:
+	//
+	// SUPER
+	WhitelistType *string `json:"WhitelistType,omitempty" xml:"WhitelistType,omitempty"`
 }
 
 func (s DescribeWhitelistSettingRequest) String() string {
@@ -174,6 +180,10 @@ func (s *DescribeWhitelistSettingRequest) GetValidStartDate() *int64 {
 	return s.ValidStartDate
 }
 
+func (s *DescribeWhitelistSettingRequest) GetWhitelistType() *string {
+	return s.WhitelistType
+}
+
 func (s *DescribeWhitelistSettingRequest) SetCertNo(v string) *DescribeWhitelistSettingRequest {
 	s.CertNo = &v
 	return s
@@ -226,6 +236,11 @@ func (s *DescribeWhitelistSettingRequest) SetValidEndDate(v int64) *DescribeWhit
 
 func (s *DescribeWhitelistSettingRequest) SetValidStartDate(v int64) *DescribeWhitelistSettingRequest {
 	s.ValidStartDate = &v
+	return s
+}
+
+func (s *DescribeWhitelistSettingRequest) SetWhitelistType(v string) *DescribeWhitelistSettingRequest {
+	s.WhitelistType = &v
 	return s
 }
 

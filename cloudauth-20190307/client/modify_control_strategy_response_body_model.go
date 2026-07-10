@@ -20,25 +20,25 @@ type iModifyControlStrategyResponseBody interface {
 }
 
 type ModifyControlStrategyResponseBody struct {
-	// Return code
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Information returned by the API call.
+	// The response message returned by the operation.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the response was successful.
+	// Indicates whether the response is successful.
 	//
 	// example:
 	//

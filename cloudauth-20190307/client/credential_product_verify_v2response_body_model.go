@@ -20,25 +20,25 @@ type iCredentialProductVerifyV2ResponseBody interface {
 }
 
 type CredentialProductVerifyV2ResponseBody struct {
-	// Return code: 200 for success, others for failure.
+	// The return code. A value of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF039795
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Result object.
+	// The result object.
 	ResultObject *CredentialProductVerifyV2ResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *CredentialProductVerifyV2ResponseBody) Validate() error {
 }
 
 type CredentialProductVerifyV2ResponseBodyResultObject struct {
-	// Additional information in JSON format.
+	// The additional information in JSON format.
 	//
 	// example:
 	//
@@ -116,25 +116,27 @@ type CredentialProductVerifyV2ResponseBodyResultObject struct {
 	//
 	// }
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	// - 0: Low risk
+	// Valid values:
 	//
-	// - 1: High risk
+	// - 0: low risk
 	//
-	// - 2: Suspicious
+	// - 1: high risk
+	//
+	// - 2: suspicious.
 	//
 	// example:
 	//
 	// 1
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Map of risk scores.
+	// The risk score map.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
-	// Risk tags, separated by commas, including:
+	// The risk labels. Multiple labels are separated by commas. Valid values:
 	//
-	// - PS: Image has been photoshopped
+	// - PS: image manipulation
 	//
-	// - LOW_QUALITY_PRODUCT: Low quality (low clarity)
+	// - LOW_QUALITY_PRODUCT: low quality (low clarity)
 	//
-	// - SAME_BACKGROUND: Similar background
+	// - SAME_BACKGROUND: similar image.
 	//
 	// example:
 	//

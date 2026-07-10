@@ -16,13 +16,13 @@ type iDeleteCloudauthstSceneResponseBody interface {
 }
 
 type DeleteCloudauthstSceneResponseBody struct {
-	// ID of this request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 969434DF-926B-4997-9881-4DE94E39F805
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result.
+	// The returned result.
 	//
 	// example:
 	//

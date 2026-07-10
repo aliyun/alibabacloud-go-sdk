@@ -24,33 +24,33 @@ type iQueryVerifyFlowPackageResponseBody interface {
 }
 
 type QueryVerifyFlowPackageResponseBody struct {
-	// Return code
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// List of returned data.
+	// The list of returned data.
 	Items []*QueryVerifyFlowPackageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// 969434DF-926B-4997-9881-4DE94E39F805
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the response was successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total count.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -134,33 +134,33 @@ func (s *QueryVerifyFlowPackageResponseBody) Validate() error {
 }
 
 type QueryVerifyFlowPackageResponseBodyItems struct {
-	// Name of the resource package.
+	// The name of the resource plan.
 	//
 	// example:
 	//
 	// 实人认证流量包
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
-	// Current available capacity.
+	// The current remaining available capacity.
 	//
 	// example:
 	//
 	// 0.0
 	CurrCapacity *float64 `json:"CurrCapacity,omitempty" xml:"CurrCapacity,omitempty"`
-	// Proportion of current remaining capacity to total capacity.
+	// The ratio of the current remaining capacity to the total capacity.
 	//
 	// example:
 	//
 	// 0%
 	CurrProportion *string `json:"CurrProportion,omitempty" xml:"CurrProportion,omitempty"`
-	// Details of the flow package.
+	// The data transfer plan details.
 	FlowDetails []*QueryVerifyFlowPackageResponseBodyItemsFlowDetails `json:"FlowDetails,omitempty" xml:"FlowDetails,omitempty" type:"Repeated"`
-	// Total quota.
+	// The total quota.
 	//
 	// example:
 	//
 	// 0.0
 	TotalCapacity *float64 `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
-	// Used capacity.
+	// The used capacity.
 	//
 	// example:
 	//
@@ -244,49 +244,49 @@ func (s *QueryVerifyFlowPackageResponseBodyItems) Validate() error {
 }
 
 type QueryVerifyFlowPackageResponseBodyItemsFlowDetails struct {
-	// Total amount.
+	// The total capacity.
 	//
 	// example:
 	//
 	// 0
 	Capacity *float64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// Name of the flow package.
+	// The name of the data transfer plan.
 	//
 	// example:
 	//
 	// 实人认证流量包
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
-	// Remaining amount.
+	// The remaining capacity.
 	//
 	// example:
 	//
 	// 0.0
 	CurrCapacity *float64 `json:"CurrCapacity,omitempty" xml:"CurrCapacity,omitempty"`
-	// Proportion of remaining amount.
+	// The ratio of the remaining capacity to the total capacity.
 	//
 	// example:
 	//
 	// 100%
 	CurrProportion *string `json:"CurrProportion,omitempty" xml:"CurrProportion,omitempty"`
-	// Expiration date.
+	// The expiration time.
 	//
 	// example:
 	//
 	// -
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// Instance name
+	// The instance name.
 	//
 	// example:
 	//
 	// tf-testacccn-hangzhouapigate84369
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//
 	// -
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Effective date.
+	// The effective period.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iMobile3MetaDetailVerifyResponseBody interface {
 }
 
 type Mobile3MetaDetailVerifyResponseBody struct {
-	// Return code, **200*	- indicates a successful API response.
+	// The response code. **200*	- indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5A6229C0-E156-48E4-B6EC-0F528BDF60D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result information.
+	// The result information.
 	ResultObject *Mobile3MetaDetailVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,11 +96,11 @@ func (s *Mobile3MetaDetailVerifyResponseBody) Validate() error {
 }
 
 type Mobile3MetaDetailVerifyResponseBodyResultObject struct {
-	// Verification result code:
+	// The verification result code. Valid values:
 	//
-	// - **1**: Verification consistent.
+	// - **1**: Consistent.
 	//
-	// - **2**: Verification inconsistent.
+	// - **2**: Inconsistent.
 	//
 	// - **3**: No record found.
 	//
@@ -108,7 +108,7 @@ type Mobile3MetaDetailVerifyResponseBodyResultObject struct {
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Operator name:
+	// The carrier name. Valid values:
 	//
 	// - **CMCC**: China Mobile.
 	//
@@ -120,17 +120,17 @@ type Mobile3MetaDetailVerifyResponseBodyResultObject struct {
 	//
 	// CMCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// Detailed verification results:
+	// The detailed verification result. Valid values:
 	//
 	// - **101**: Verification passed.
 	//
-	// - **201**: Mobile number and name do not match, mobile number and ID number do not match.
+	// - **201**: The phone number is inconsistent with the name, and the phone number is inconsistent with the ID card number.
 	//
-	// - **202**: Mobile number and name match, but mobile number and ID number do not match.
+	// - **202**: The phone number is consistent with the name, but the phone number is inconsistent with the ID card number.
 	//
-	// - **203**: Mobile number and ID number match, but mobile number and name do not match.
+	// - **203**: The phone number is consistent with the ID card number, but the phone number is inconsistent with the name.
 	//
-	// - **204**: Other inconsistencies.
+	// - **204**: Other inconsistency.
 	//
 	// - **301**: No record found.
 	//

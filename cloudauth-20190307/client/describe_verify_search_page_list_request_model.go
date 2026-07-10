@@ -56,19 +56,19 @@ type iDescribeVerifySearchPageListRequest interface {
 }
 
 type DescribeVerifySearchPageListRequest struct {
-	// ID number.
+	// The ID card number.
 	//
 	// example:
 	//
 	// 3203212000XXXX701X
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// Authentication ID.
+	// The certification ID.
 	//
 	// example:
 	//
 	// shadbdd3dbacd001cfa892a5e2b98dxx
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// This parameter is required.
 	//
@@ -76,31 +76,31 @@ type DescribeVerifySearchPageListRequest struct {
 	//
 	// 3
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// End time of the query. Format is Unix timestamp, in milliseconds.
+	// The query end time. The format is a Unix timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 2025-10-16 23:59:59 +0800
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Whether there is a device risk (pass true if root = 1 or simulator = 1 or virtual_video = 1).
+	// Specifies whether there is a device risk. Setting this parameter to true indicates that root = 1, simulator = 1, or virtual_video = 1.
 	//
 	// example:
 	//
 	// true
 	HasDeviceRisk *bool `json:"HasDeviceRisk,omitempty" xml:"HasDeviceRisk,omitempty"`
-	// Model for liveness detection.
+	// The liveness detection model.
 	//
 	// example:
 	//
 	// LIVENESS
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// Unique identifier for the customer request.
+	// The unique identifier for the customer request.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	// Number of items per page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -108,109 +108,109 @@ type DescribeVerifySearchPageListRequest struct {
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Whether the authentication passed:
+	// Specifies whether the authentication passed:
 	//
-	// - **T**: Passed
+	// - **T**: Passed.
 	//
-	// - **F**: Not passed
+	// - **F**: Failed.
 	//
 	// example:
 	//
 	// F
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// Product code.
+	// The product code.
 	//
 	// example:
 	//
 	// ID_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Business scenario risk
+	// The business scenario risk:
 	//
-	// - **0**: No risk
+	// - **0**: No risk.
 	//
-	// - **1**: Risk present
+	// - **1**: Risk detected.
 	//
 	// example:
 	//
 	// 1
 	RiskBizScenario *int32 `json:"RiskBizScenario,omitempty" xml:"RiskBizScenario,omitempty"`
-	// Device risk:
+	// The device risk:
 	//
-	// - **0**: No risk
+	// - **0**: No risk.
 	//
-	// - **1**: Risk present
+	// - **1**: Risk detected.
 	//
 	// example:
 	//
 	// 1
 	RiskDevice *int32 `json:"RiskDevice,omitempty" xml:"RiskDevice,omitempty"`
-	// DeviceToken risk:
+	// The DeviceToken risk:
 	//
-	// - **0**: No risk
+	// - **0**: No risk.
 	//
-	// - **1**: Risk present
+	// - **1**: Risk detected.
 	//
 	// example:
 	//
 	// 0
 	RiskDeviceToken *int32 `json:"RiskDeviceToken,omitempty" xml:"RiskDeviceToken,omitempty"`
-	// General risk
+	// The generic risk:
 	//
-	// - **0**: No risk
+	// - **0**: No risk.
 	//
-	// - **1**: Risk present
+	// - **1**: Risk detected.
 	//
 	// example:
 	//
 	// 1
 	RiskGeneric *int32 `json:"RiskGeneric,omitempty" xml:"RiskGeneric,omitempty"`
-	// Large model mining risk
+	// The large model mining risk:
 	//
-	// - **0**: No risk
+	// - **0**: No risk.
 	//
-	// - **1**: Risk present
+	// - **1**: Risk detected.
 	//
 	// example:
 	//
 	// 1
 	RiskModelMining *int32 `json:"RiskModelMining,omitempty" xml:"RiskModelMining,omitempty"`
-	// Whether it is rooted (pass 1 if selected, otherwise do not pass; corresponds to identity label risk type).
+	// Specifies whether the device is rooted. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the identity tag risk type.
 	//
 	// example:
 	//
 	// 1
 	Root *int32 `json:"Root,omitempty" xml:"Root,omitempty"`
-	// Scene ID.
+	// The scene ID.
 	//
 	// example:
 	//
 	// 10000072xx
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Whether it is a simulator (pass 1 if selected, otherwise do not pass; corresponds to device label risk type).
+	// Specifies whether the device is a simulator. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the device tag risk type.
 	//
 	// example:
 	//
 	// 1
 	Simulator *int32 `json:"Simulator,omitempty" xml:"Simulator,omitempty"`
-	// Start time of the query.
+	// The query start time.
 	//
 	// example:
 	//
 	// 2025-10-10 00:00:00 +0800
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	// Result Code. For detailed values, please refer to: [SubCode Explanation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/error-code-person-verify?spm=a2c4g.11186623.0.0.6015566ebArcFw#d88910e172fgg).
+	// The result code. For details, see [SubCode Description](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/error-code-person-verify?spm=a2c4g.11186623.0.0.6015566ebArcFw#d88910e172fgg).
 	//
 	// example:
 	//
 	// 201
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	// Comma-separated Result Codes. For detailed values, please refer to: [SubCode Explanation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/error-code-person-verify?spm=a2c4g.11186623.0.0.6015566ebArcFw#d88910e172fgg).
+	// Comma-separated result codes. For details, see [SubCode Description](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/error-code-person-verify?spm=a2c4g.11186623.0.0.6015566ebArcFw#d88910e172fgg).
 	//
 	// example:
 	//
 	// 201,202
 	SubCodes *string `json:"SubCodes,omitempty" xml:"SubCodes,omitempty"`
-	// Whether it is a virtual adaptation (pass 1 if selected, otherwise do not pass; corresponds to behavior label risk type).
+	// Specifies whether virtual video is used. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the behavior tag risk type.
 	//
 	// example:
 	//

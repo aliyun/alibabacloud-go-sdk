@@ -24,23 +24,34 @@ type iDescribeMetaSearchPageListResponseBody interface {
 }
 
 type DescribeMetaSearchPageListResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                         `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeMetaSearchPageListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The paginated list data.
+	Items []*DescribeMetaSearchPageListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 5176EB42-6EE7-510B-9388-35018DF3175B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 0
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 0
@@ -123,48 +134,161 @@ func (s *DescribeMetaSearchPageListResponseBody) Validate() error {
 }
 
 type DescribeMetaSearchPageListResponseBodyItems struct {
+	// The product API. Valid values:
+	//
+	// - **ID_CARD_2_META**: ID card two-element verification
+	//
+	// - **ID_PERIOD**: ID card validity period verification
+	//
+	// - **MOBILE_ONLINE_LENGTH**: mobile number online duration
+	//
+	// - **MOBILE_ONLINE_STATUS**: mobile number online status
+	//
+	// - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition)
+	//
+	// - **MOBILE_3_META**: mobile number three-element verification (detailed edition)
+	//
+	// - **MOBILE_2_META**: mobile number two-element verification
+	//
+	// - **BANK_CARD_N_META**: bank card verification (detailed edition)
+	//
+	// - **MOBILE_DETECT**: phone number detection
+	//
+	// - **VEHICLE_N_META**: vehicle element verification (enhanced edition)
+	//
+	// - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition
+	//
+	// - **VEHICLE_LICENSE_INFO**: vehicle information recognition
+	//
+	// - **VEHICLE_INSURE_DATE**: vehicle insurance date query
+	//
+	// - **VEHICLE_CHECK**: vehicle element verification.
+	//
 	// example:
 	//
 	// ID_CARD_2_META
-	Api     *string `json:"Api,omitempty" xml:"Api,omitempty"`
+	Api *string `json:"Api,omitempty" xml:"Api,omitempty"`
+	// The name corresponding to the API. Valid values:
+	//
+	// - **ID_CARD_2_META**: ID card two-element verification
+	//
+	// - **ID_PERIOD**: ID card validity period verification
+	//
+	// - **MOBILE_ONLINE_LENGTH**: mobile number online duration
+	//
+	// - **MOBILE_ONLINE_STATUS**: mobile number online status
+	//
+	// - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition)
+	//
+	// - **MOBILE_3_META**: mobile number three-element verification (detailed edition)
+	//
+	// - **MOBILE_2_META**: mobile number two-element verification
+	//
+	// - **BANK_CARD_N_META**: bank card verification (detailed edition)
+	//
+	// - **MOBILE_DETECT**: phone number detection
+	//
+	// - **VEHICLE_N_META**: vehicle element verification (enhanced edition)
+	//
+	// - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition
+	//
+	// - **VEHICLE_LICENSE_INFO**: vehicle information recognition
+	//
+	// - **VEHICLE_INSURE_DATE**: vehicle insurance date query
+	//
+	// - **VEHICLE_CHECK**: vehicle element verification.
+	//
+	// example:
+	//
+	// 身份证二要素
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The bank card ID.
+	//
 	// example:
 	//
 	// 6214837145546986
 	BankCard *string `json:"BankCard,omitempty" xml:"BankCard,omitempty"`
+	// The verification status. Valid values:
+	//
+	// - **1**: Verification passed.
+	//
+	// - **2**: Verification failed.
+	//
+	// - **3**: No record found.
+	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The verification date.
+	//
 	// example:
 	//
 	// 2025-10-17 10:00:11
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The ID card number.
+	//
 	// example:
 	//
 	// 4****************X
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	// The name of the telecommunications service provider. Valid values:
+	//
+	// - **CMCC**: China Mobile
+	//
+	// - **CUCC**: China Unicom
+	//
+	// - **CTCC**: China Telecom.
+	//
 	// example:
 	//
 	// CUCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// The mobile phone number.
+	//
 	// example:
 	//
 	// 1500000xxxx
-	Mobile  *string                                             `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The request parameters.
 	Request *DescribeMetaSearchPageListResponseBodyItemsRequest `json:"Request,omitempty" xml:"Request,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B0102BEF-4411-57C3-860D-CFE7DE0A64C0
-	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RequestJson  *string                                              `json:"RequestJson,omitempty" xml:"RequestJson,omitempty"`
-	Response     *DescribeMetaSearchPageListResponseBodyItemsResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
-	ResponseJson *string                                              `json:"ResponseJson,omitempty" xml:"ResponseJson,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP request parameters.
+	//
+	// example:
+	//
+	// {\\"productCode\\":\\"cloudauth_infoverify_public_cn\\",\\"identifyNum\\":\\"4****************X\\",\\"userName\\":\\"**豪\\",\\"userId\\":\\"12600512516xxxxx\\"}
+	RequestJson *string `json:"RequestJson,omitempty" xml:"RequestJson,omitempty"`
+	// The response content.
+	Response *DescribeMetaSearchPageListResponseBodyItemsResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
+	// The response content.
+	//
+	// example:
+	//
+	// {\\"code\\":\\"200\\",\\"data\\":{\\"bizCode\\":\\"1\\",\\"ispName\\":\\"CMCC\\",\\"subCode\\":\\"101\\"},\\"message\\":\\"调用成功\\"}
+	ResponseJson *string `json:"ResponseJson,omitempty" xml:"ResponseJson,omitempty"`
+	// The result code. For more information, see [official documentation](https://www.alibabacloud.com/help/en/id-verification/information-verification/).
+	//
 	// example:
 	//
 	// 207
-	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// **豪
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The vehicle number.
+	//
+	// example:
+	//
+	// 浙J3H91H
 	VehicleNum *string `json:"VehicleNum,omitempty" xml:"VehicleNum,omitempty"`
 }
 
@@ -335,11 +459,71 @@ func (s *DescribeMetaSearchPageListResponseBodyItems) Validate() error {
 }
 
 type DescribeMetaSearchPageListResponseBodyItemsRequest struct {
+	// The vehicle number.
+	//
+	// example:
+	//
+	// 浙J3H91H
 	VehicleNum *string `json:"VehicleNum,omitempty" xml:"VehicleNum,omitempty"`
+	// The vehicle type. Valid values:
+	//
+	// - **01**: large vehicle
+	//
+	// - **02**: small vehicle
+	//
+	// - **03**: embassy vehicle
+	//
+	// - **04**: consulate vehicle
+	//
+	// - **05**: overseas vehicle
+	//
+	// - **06**: foreign vehicle
+	//
+	// - **07**: standard motorcycle
+	//
+	// - **08**: light motorcycle
+	//
+	// - **09**: embassy motorcycle
+	//
+	// - **10**: consulate motorcycle
+	//
+	// - **11**: overseas motorcycle
+	//
+	// - **12**: foreign motorcycle
+	//
+	// - **13**: low-speed vehicle
+	//
+	// - **14**: tractor
+	//
+	// - **15**: trailer
+	//
+	// - **16**: training vehicle
+	//
+	// - **17**: training motorcycle
+	//
+	// - **20**: temporary entry vehicle
+	//
+	// - **21**: temporary entry motorcycle
+	//
+	// - **22**: temporary driving vehicle
+	//
+	// - **23**: police vehicle
+	//
+	// - **24**: police motorcycle
+	//
+	// - **51**: new energy large vehicle
+	//
+	// - **52**: new energy small vehicle.
+	//
 	// example:
 	//
 	// 52
-	VehicleType     *string `json:"VehicleType,omitempty" xml:"VehicleType,omitempty"`
+	VehicleType *string `json:"VehicleType,omitempty" xml:"VehicleType,omitempty"`
+	// The vehicle type name.
+	//
+	// example:
+	//
+	// 新能源小型车
 	VehicleTypeName *string `json:"VehicleTypeName,omitempty" xml:"VehicleTypeName,omitempty"`
 }
 
@@ -383,11 +567,16 @@ func (s *DescribeMetaSearchPageListResponseBodyItemsRequest) Validate() error {
 }
 
 type DescribeMetaSearchPageListResponseBodyItemsResponse struct {
+	// The HTTP return code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *DescribeMetaSearchPageListResponseBodyItemsResponseData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message.
+	//
 	// example:
 	//
 	// success
@@ -439,91 +628,164 @@ func (s *DescribeMetaSearchPageListResponseBodyItemsResponse) Validate() error {
 }
 
 type DescribeMetaSearchPageListResponseBodyItemsResponseData struct {
+	// The approved number of passengers.
+	//
 	// example:
 	//
 	// 5
 	ApprovedCount *string `json:"ApprovedCount,omitempty" xml:"ApprovedCount,omitempty"`
+	// The approved passenger capacity.
+	//
 	// example:
 	//
 	// 0
 	ApprovedLoad *string `json:"ApprovedLoad,omitempty" xml:"ApprovedLoad,omitempty"`
+	// The number of axles.
+	//
 	// example:
 	//
 	// 2
 	AxleCount *string `json:"AxleCount,omitempty" xml:"AxleCount,omitempty"`
+	// The rear wheel track.
+	//
 	// example:
 	//
 	// 1630
 	BackWheelDistance *string `json:"BackWheelDistance,omitempty" xml:"BackWheelDistance,omitempty"`
+	// The bank card number.
+	//
 	// example:
 	//
 	// 622848001714440xxxx
 	BankCard *string `json:"BankCard,omitempty" xml:"BankCard,omitempty"`
+	// The verification status. Valid values:
+	//
+	// - **1**: Verification passed.
+	//
+	// - **2**: Verification failed.
+	//
+	// - **3**: No record found.
+	//
 	// example:
 	//
 	// 2
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	Brand   *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
-	Color   *string `json:"Color,omitempty" xml:"Color,omitempty"`
+	// The brand name.
+	//
+	// example:
+	//
+	// 奔驰
+	Brand *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
+	// The body color.
+	//
+	// example:
+	//
+	// 白
+	Color *string `json:"Color,omitempty" xml:"Color,omitempty"`
+	// The displacement.
+	//
 	// example:
 	//
 	// 0
 	Displacement *string `json:"Displacement,omitempty" xml:"Displacement,omitempty"`
+	// The engine number.
+	//
 	// example:
 	//
 	// N7YJ113PA
 	EngineNum *string `json:"EngineNum,omitempty" xml:"EngineNum,omitempty"`
+	// The engine model.
+	//
 	// example:
 	//
 	// CA6GV30TD
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The front wheel track.
+	//
 	// example:
 	//
 	// 1630
 	FrontWheelDistance *string `json:"FrontWheelDistance,omitempty" xml:"FrontWheelDistance,omitempty"`
-	FuelType           *string `json:"FuelType,omitempty" xml:"FuelType,omitempty"`
+	// The fuel type.
+	//
+	// example:
+	//
+	// 电
+	FuelType *string `json:"FuelType,omitempty" xml:"FuelType,omitempty"`
+	// The inspection validity expiration date.
+	//
 	// example:
 	//
 	// 2026-07-31 00:00:00
 	InspectionDate *string `json:"InspectionDate,omitempty" xml:"InspectionDate,omitempty"`
+	// The vehicle model number.
+	//
 	// example:
 	//
 	// HQ7002BEV67
 	ModelNum *string `json:"ModelNum,omitempty" xml:"ModelNum,omitempty"`
+	// The power.
+	//
 	// example:
 	//
 	// 120
 	Power *string `json:"Power,omitempty" xml:"Power,omitempty"`
+	// The initial registration date.
+	//
 	// example:
 	//
 	// 2015-08-24 00:00:00
 	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
+	// The manufacturing date.
+	//
 	// example:
 	//
 	// 2022-08-13 00:00:00
 	ReleaseDate *string `json:"ReleaseDate,omitempty" xml:"ReleaseDate,omitempty"`
+	// The mandatory retirement date.
+	//
 	// example:
 	//
 	// 2099-12-31 00:00:00
 	RetirementDate *string `json:"RetirementDate,omitempty" xml:"RetirementDate,omitempty"`
+	// The gross mass.
+	//
 	// example:
 	//
 	// 2350
 	TotalMass *string `json:"TotalMass,omitempty" xml:"TotalMass,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The vehicle type.
+	//
+	// example:
+	//
+	// 小型轿车
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The curb weight.
+	//
 	// example:
 	//
 	// 1900
 	UnladenMass *string `json:"UnladenMass,omitempty" xml:"UnladenMass,omitempty"`
+	// The usage property.
+	//
 	// example:
 	//
 	// 0
-	UseProperty  *string `json:"UseProperty,omitempty" xml:"UseProperty,omitempty"`
+	UseProperty *string `json:"UseProperty,omitempty" xml:"UseProperty,omitempty"`
+	// The motor vehicle status.
+	//
+	// example:
+	//
+	// 正常
 	VehicleState *string `json:"VehicleState,omitempty" xml:"VehicleState,omitempty"`
+	// The vehicle identification number (VIN).
+	//
 	// example:
 	//
 	// LDC643T44G3667219
 	Vin *string `json:"Vin,omitempty" xml:"Vin,omitempty"`
+	// The wheelbase.
+	//
 	// example:
 	//
 	// 2750

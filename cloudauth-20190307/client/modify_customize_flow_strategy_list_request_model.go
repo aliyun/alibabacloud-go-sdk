@@ -16,13 +16,13 @@ type iModifyCustomizeFlowStrategyListRequest interface {
 }
 
 type ModifyCustomizeFlowStrategyListRequest struct {
-	// Product type, currently only supports **ANT_CLOUD_AUTH*	- (Financial-grade real person), all others have been phased out.
+	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (financial-grade ID Verification) is supported. All other types have been discontinued.
 	//
 	// example:
 	//
 	// ANT_CLOUD_AUTH
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// Strategy list.
+	// The policy list.
 	StrategyObject []*ModifyCustomizeFlowStrategyListRequestStrategyObject `json:"StrategyObject,omitempty" xml:"StrategyObject,omitempty" type:"Repeated"`
 }
 
@@ -72,13 +72,13 @@ type ModifyCustomizeFlowStrategyListRequestStrategyObject struct {
 	//
 	// -
 	AccumulateKey *string `json:"AccumulateKey,omitempty" xml:"AccumulateKey,omitempty"`
-	// Flow control statistical window size, in minutes.
+	// The size of the rate limiting statistical window, in minutes.
 	//
 	// example:
 	//
 	// 60
 	AccumulateWindow *int64 `json:"AccumulateWindow,omitempty" xml:"AccumulateWindow,omitempty"`
-	// API name, same as **ProductCode**.
+	// The API name, which is the same as **ProductCode**.
 	//
 	// This parameter is required.
 	//
@@ -86,37 +86,37 @@ type ModifyCustomizeFlowStrategyListRequestStrategyObject struct {
 	//
 	// ID_PRO
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// Flow type:
+	// The flow type. Valid values:
 	//
-	// - **ACCUMULATE**: Repeated appearance of ID card
+	// - **ACCUMULATE**: repeated occurrence of an ID card.
 	//
-	// - **PASSED_RATE**: Pass rate less than
+	// - **PASSED_RATE**: pass rate is less than.
 	//
-	// - **SUB_CODE_205**: Authentication failed and liveness attack 205 ratio greater than
+	// - **SUB_CODE_205**: authentication failed and the proportion of liveness attack 205 is greater than.
 	//
-	// - **SUB_CODE_206**: Authentication failed and liveness attack 206 ratio greater than
+	// - **SUB_CODE_206**: authentication failed and the proportion of liveness attack 206 is greater than.
 	//
 	// example:
 	//
 	// ACCUMULATE
 	FlowType *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
-	// Rule ID.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 38
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Operation.
+	// The operation.
 	//
 	// example:
 	//
 	// -
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// Status:
+	// The status. Valid values:
 	//
-	// - **disabled**: Disabled
+	// - **disabled**: disabled.
 	//
-	// - **normal**: Enabled
+	// - **normal**: enabled.
 	//
 	// This parameter is required.
 	//
@@ -124,7 +124,7 @@ type ModifyCustomizeFlowStrategyListRequestStrategyObject struct {
 	//
 	// disabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Flow control threshold.
+	// The rate limiting threshold.
 	//
 	// This parameter is required.
 	//
@@ -132,7 +132,7 @@ type ModifyCustomizeFlowStrategyListRequestStrategyObject struct {
 	//
 	// 10
 	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//

@@ -51,117 +51,113 @@ type iContrastFaceVerifyAdvanceRequest interface {
 }
 
 type ContrastFaceVerifyAdvanceRequest struct {
-	// Real name.
+	// The real name.
 	//
 	// example:
 	//
 	// 张三
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// ID number
+	// The certificate number.
 	//
 	// example:
 	//
 	// 330103xxxxxxxxxxxx
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// Type of identification. Currently, only IDENTITY_CARD is supported and must be provided.
+	// The certificate type.
+	//
+	// Currently only ID cards are supported. You must set this parameter to IDENTITY_CARD.
 	//
 	// example:
 	//
 	// IDENTITY_CARD
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The CertifyId of a previously passed real-person authentication, with the photo taken during that authentication used as the comparison photo.
+	// The CertifyId from a previous successful ID Verification. The photo from that verification is used as the comparison photo.
 	//
-	// > Among the four ways to input images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to provide.
+	// > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
 	//
 	// example:
 	//
 	// 0bfa7c493f850e5178b9f8613634c9xx
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Allow face image cropping:
+	// Specifies whether to allow cropping of the face image. Valid values:
 	//
-	// -  **T*	- – Cropping is allowed.
+	// - T: Allowed.
 	//
-	// -  **F*	- (default) – Cropping is not allowed.
+	// - F (default): Not allowed.
 	//
 	// example:
 	//
 	// T
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	// Risk Identification - Device Token
+	// The device token for risk identification.
 	//
 	// example:
 	//
 	// McozS1ZWRcRZStlERcZZo_QOytx5jcgZoZJEoRLOxxxxxxx
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	// Encryption type. Leave it empty if no encryption is required.
-	//
-	// If you enable encrypted transmission, you must specify the encryption algorithm; currently, only the SM2 (Chinese national standard) algorithm is supported.
-	//
-	// When an encryption algorithm is specified, encrypt both **CertName*	- and **CertNo*	- and submit the resulting ciphertext. For more details on parameter encryption, see the [Parameter Encryption documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/description-of-parameter-encryption?spm=a2c4g.11186623.0.0.49541a8554cELI#task-2229332).
+	// The encryption type. An empty value indicates no encryption.
 	//
 	// example:
 	//
 	// SM2
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	// Local video file.
+	// The local video file.
 	//
 	// example:
 	//
-	// -
+	// 无
 	FaceContrastFileObject io.Reader `json:"FaceContrastFile,omitempty" xml:"FaceContrastFile,omitempty"`
-	// Base64 encoded photo
+	// The Base64-encoded photo.
 	//
 	// example:
 	//
 	// /9j/4AAQSkZJRgABAQAASxxxxxxx
 	FaceContrastPicture *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
-	// OSS photo URL, currently only supports authorized OSS photo URLs.
+	// The OSS photo URL. Currently only authorized OSS photo URLs are supported.
 	//
-	// > Among the four ways to input images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to input.
+	// > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
 	//
 	// example:
 	//
 	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
 	FaceContrastPictureUrl *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
-	// User IP.
+	// The IP address of the user.
 	//
 	// example:
 	//
 	// 114.xxx.xxx.xxx
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// User\\"s phone number.
+	// The mobile phone number of the user.
 	//
 	// example:
 	//
 	// 130xxxxxxxx
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// Liveness detection type. Possible values:
-	//
-	// • **NO_LIVENESS*	- – Liveness detection is disabled.
-	//
-	// • **FRONT_CAMERA_LIVENESS*	- (default) – Liveness detection on face images captured with the mobile device’s front camera.
-	//
-	// • **REAR_CAMERA_LIVENESS*	- – Liveness detection on face images captured in other scenarios (e.g., via the rear camera).
+	// The liveness detection type.
 	//
 	// example:
 	//
 	// FRONT_CAMERA_LIVENESS
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// Authorized OSS space Bucket name. In the methods of passing images, including FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS, choose one to pass in.
+	// The bucket name of the authorized OSS space.
+	//
+	// > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
 	//
 	// example:
 	//
 	// cn-shanghai-aliyun-cloudauth-xxxxx
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// Filename of the authorized OSS space.
+	// The file name in the authorized OSS space.
 	//
-	// > Among the four ways to input images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to input.
+	// > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
 	//
 	// example:
 	//
 	// verify/xxxxx/xxxxxx.jpeg
 	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
-	// A unique identifier for the merchant\\"s request. It is a 32-character alphanumeric combination. The first few characters are a custom abbreviation defined by the merchant, followed by a period, and the latter part can be a random or incrementing sequence.
+	// The unique identifier of the merchant request.
+	//
+	// The value is a 32-character alphanumeric string. The first few characters are a custom abbreviation defined by the merchant, the middle part can be a time segment, and the last part can be a random or incremental sequence.
 	//
 	// example:
 	//
@@ -173,13 +169,13 @@ type ContrastFaceVerifyAdvanceRequest struct {
 	//
 	// ID_MIN
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Authentication scenario ID.
+	// The verification scenario ID.
 	//
 	// example:
 	//
 	// 1000000006
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Custom user ID defined by the customer\\"s business.
+	// The custom user ID defined by the business.
 	//
 	// example:
 	//

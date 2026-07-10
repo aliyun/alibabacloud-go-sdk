@@ -24,25 +24,25 @@ type iModifyDeviceInfoResponseBody interface {
 }
 
 type ModifyDeviceInfoResponseBody struct {
-	// If the Duration in the request parameters is not empty, this field represents the start time of the authorization after the device validity period has been extended. One year of Duration is calculated as 365 days. Example: 20180101.
+	// If the Duration request parameter is not empty, this field indicates the authorization start time after the device validity period is extended. One year in Duration is calculated as 365 days. Example: 20180101.
 	//
 	// example:
 	//
 	// 20190401
 	BeginDay *string `json:"BeginDay,omitempty" xml:"BeginDay,omitempty"`
-	// Corresponds to the BizType in the request parameters.
+	// The value corresponds to the BizType in the request parameters.
 	//
 	// example:
 	//
 	// FACE_TEST
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// Corresponds to the DeviceId in the request parameters.
+	// The value corresponds to the DeviceId in the request parameters.
 	//
 	// example:
 	//
 	// wd.6ziUffspAeW5FVYbaqmexR-1qwNjM
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// If the Duration in the request parameters is not empty, this field represents the expiration time of the authorization after the device validity period has been extended. One year of Duration is calculated as 365 days. Example: 20180101.
+	// If the Duration request parameter is not empty, this field indicates the authorization expiration time after the device validity period is extended. One year in Duration is calculated as 365 days. Example: 20180101.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ModifyDeviceInfoResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Corresponds to the UserDeviceId in the request parameters.
+	// The value corresponds to the UserDeviceId in the request parameters.
 	//
 	// example:
 	//

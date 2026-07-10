@@ -16,13 +16,13 @@ type iDeleteAllCustomizeFlowStrategyRequest interface {
 }
 
 type DeleteAllCustomizeFlowStrategyRequest struct {
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// User ID
+	// The user ID.
 	//
 	// This parameter is required.
 	//

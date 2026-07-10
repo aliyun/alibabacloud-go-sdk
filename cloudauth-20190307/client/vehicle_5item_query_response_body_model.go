@@ -20,25 +20,25 @@ type iVehicle5ItemQueryResponseBody interface {
 }
 
 type Vehicle5ItemQueryResponseBody struct {
-	// Return code
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0D******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned result information.
+	// The result information.
 	ResultObject *Vehicle5ItemQueryResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,17 +96,17 @@ func (s *Vehicle5ItemQueryResponseBody) Validate() error {
 }
 
 type Vehicle5ItemQueryResponseBodyResultObject struct {
-	// Verification result code:
+	// The verification result code. Valid values:
 	//
-	// - **1**: Found (charged)
+	// - **1**: Match found (billable).
 	//
-	// - **3**: No record found (not charged)
+	// - **3**: No record found (not billable).
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Vehicle information
+	// The vehicle information.
 	//
 	// example:
 	//

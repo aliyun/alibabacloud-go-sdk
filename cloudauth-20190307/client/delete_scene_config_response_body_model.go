@@ -14,7 +14,7 @@ type iDeleteSceneConfigResponseBody interface {
 }
 
 type DeleteSceneConfigResponseBody struct {
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//

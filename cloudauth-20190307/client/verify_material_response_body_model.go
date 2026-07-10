@@ -24,59 +24,59 @@ type iVerifyMaterialResponseBody interface {
 }
 
 type VerifyMaterialResponseBody struct {
-	// Comparison score between the facial photo submitted during the authentication process and authoritative data, with a range of **0**~**100**.
+	// The comparison score between the facial photo submitted during verification and the authoritative data. Value range: **0*	- to **100**.
 	//
-	// Confidence threshold references:
+	// Confidence thresholds for reference:
 	//
-	// - False recognition rate 0.001% corresponds to a threshold of 95.
+	// - At a false acceptance rate of 0.001%, the corresponding threshold is 95.
 	//
-	// - False recognition rate 0.01% corresponds to a threshold of 90.
+	// - At a false acceptance rate of 0.01%, the corresponding threshold is 90.
 	//
-	// - False recognition rate 0.1% corresponds to a threshold of 80.
+	// - At a false acceptance rate of 0.1%, the corresponding threshold is 80.
 	//
-	// - False recognition rate 1% corresponds to a threshold of 60.
+	// - At a false acceptance rate of 1%, the corresponding threshold is 60.
 	//
-	// > This field only indicates the comparison result between the face and authoritative data, serving as a reference score. It is generally not recommended to use this score alone as the pass/fail criterion. For the comprehensive authentication result, please refer to the **VerifyStatus*	- field. The **VerifyStatus*	- result integrates the face-to-authoritative data comparison and other various strategies, enhancing security levels.
+	// > This field only represents the comparison result between the face and the authoritative data and serves as a reference score. We do not recommend using this score alone as the pass/fail criterion. For the comprehensive verification result, refer to the **VerifyStatus*	- field. The **VerifyStatus*	- result combines the face-to-authoritative-data comparison with multiple other strategies to improve the security level.
 	//
 	// example:
 	//
 	// 97
 	AuthorityComparisionScore *float32 `json:"AuthorityComparisionScore,omitempty" xml:"AuthorityComparisionScore,omitempty"`
-	// Comparison score between the facial photo submitted during the authentication process and the face on the portrait side of the ID card image, with a range of **0**~**100**.
+	// The comparison score between the facial photo submitted during verification and the face on the portrait side of the ID card. Value range: **0*	- to **100**.
 	//
-	// Confidence threshold references:
+	// Confidence thresholds for reference:
 	//
-	// - False recognition rate 0.001% corresponds to a threshold of 95.
+	// - At a false acceptance rate of 0.001%, the corresponding threshold is 95.
 	//
-	// - False recognition rate 0.01% corresponds to a threshold of 90.
+	// - At a false acceptance rate of 0.01%, the corresponding threshold is 90.
 	//
-	// - False recognition rate 0.1% corresponds to a threshold of 80.
+	// - At a false acceptance rate of 0.1%, the corresponding threshold is 80.
 	//
-	// - False recognition rate 1% corresponds to a threshold of 60.
+	// - At a false acceptance rate of 1%, the corresponding threshold is 60.
 	//
 	// example:
 	//
 	// 97
 	IdCardFaceComparisonScore *float32 `json:"IdCardFaceComparisonScore,omitempty" xml:"IdCardFaceComparisonScore,omitempty"`
-	// Authentication materials.
+	// The verification materials.
 	Material *VerifyMaterialResponseBodyMaterial `json:"Material,omitempty" xml:"Material,omitempty" type:"Struct"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Authentication status. Values:
+	// The verification status. Valid values:
 	//
-	// - **1**: Authentication passed.
+	// - **1**: Verification passed.
 	//
-	// - **2**~**n**: Authentication failed due to various reasons. For detailed descriptions, see the **Authentication Status Explanation*	- below.
+	// - **2*	- to **n**: Verification failed due to various reasons. For detailed descriptions, see **Verification status description*	- below.
 	//
 	// example:
 	//
 	// 1
 	VerifyStatus *int32 `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty"`
-	// Token for this authentication, used to link various interfaces in the authentication request, valid for 30 minutes.
+	// The token for this verification, used to correlate the various operations within a verification request. The token is valid for 30 minutes.
 	//
 	// example:
 	//
@@ -156,55 +156,55 @@ func (s *VerifyMaterialResponseBody) Validate() error {
 }
 
 type VerifyMaterialResponseBodyMaterial struct {
-	// Global camera image captured by the real-person authentication SDK.
+	// The global camera image captured by the ID Verification SDK.
 	//
-	// > This parameter will take effect after configuration. If you need to use this parameter, please submit a [ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us.
+	// > This parameter takes effect only after configuration. If you need to use this parameter, [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us.
 	//
 	// example:
 	//
 	// http://image-demo.img-cn-hangzhou.aliyuncs.com/face-global-example.jpg
 	FaceGlobalUrl *string `json:"FaceGlobalUrl,omitempty" xml:"FaceGlobalUrl,omitempty"`
-	// HTTP or HTTPS link to the frontal face image, corresponding to the request parameter **FaceImageUrl**. The link is valid for 5 minutes, and it is recommended to store it in your business to avoid affecting usage.
+	// The HTTP or HTTPS URL of the front-facing facial photo, corresponding to the request parameter **FaceImageUrl**. The URL is valid for 5 minutes. Save the image to your own storage to avoid access issues.
 	//
 	// example:
 	//
 	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg
 	FaceImageUrl *string `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
-	// Whether the face is wearing a mask. Values:
+	// Indicates whether the face is wearing a mask. Valid values:
 	//
-	// - **true**: Wearing a mask
+	// - **true**: A mask is detected.
 	//
-	// - **false**: Not wearing a mask
+	// - **false**: No mask is detected.
 	//
 	// example:
 	//
 	// false
 	FaceMask *string `json:"FaceMask,omitempty" xml:"FaceMask,omitempty"`
-	// The quality of the frontal face image. Possible values:
+	// The quality of the front-facing facial photo. Valid values:
 	//
-	// - **UNQUALIFIED**: Poor quality
+	// - **UNQUALIFIED**: poor quality
 	//
-	// - **LOW**: Low
+	// - **LOW**: low quality
 	//
-	// - **NORMAL**: Average
+	// - **NORMAL**: moderate quality
 	//
-	// - **HIGH**: High
+	// - **HIGH**: high quality.
 	//
 	// example:
 	//
 	// NORMAL
 	FaceQuality *string `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
-	// OCR result of the ID card information.
+	// The OCR result of the ID card information.
 	//
-	// > If there is no front or back of the ID card during the verification process, the OCR result of the ID card information will not be returned. Even if the front and back of the ID card are present during the verification process, it does not guarantee that all the information on the ID card will be returned. Due to issues such as poor ID card photography, the OCR may fail to recognize some information, leading to incomplete OCR results. It is recommended that the business side does not heavily rely on the ID card OCR information.
+	// > If the front and back photos of the ID card are not provided during verification, the OCR result of the ID card information is not returned. Even if both photos are provided, not all information on the ID card is guaranteed to be returned. OCR may fail to recognize certain information due to issues such as poor photo quality. We recommend that your business logic does not strictly depend on the ID card OCR information.
 	IdCardInfo *VerifyMaterialResponseBodyMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" type:"Struct"`
-	// Name, corresponding to the request parameter **Name**.
+	// The name, corresponding to the request parameter **Name**.
 	//
 	// example:
 	//
 	// 张三
 	IdCardName *string `json:"IdCardName,omitempty" xml:"IdCardName,omitempty"`
-	// ID number, corresponding to the request parameter **IdCardNumber**.
+	// The ID card number, corresponding to the request parameter **IdCardNumber**.
 	//
 	// example:
 	//
@@ -293,61 +293,61 @@ func (s *VerifyMaterialResponseBodyMaterial) Validate() error {
 }
 
 type VerifyMaterialResponseBodyMaterialIdCardInfo struct {
-	// Address.
+	// The address.
 	//
 	// example:
 	//
 	// 浙江省杭州市余杭区文一西路969号
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// Issuing authority.
+	// The issuing authority.
 	//
 	// example:
 	//
 	// 杭州市公安局
 	Authority *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
-	// HTTP or HTTPS link to the national emblem side of the ID card. The link is valid for 5 minutes. It is recommended to store it in your business system to avoid any impact on usage.
+	// The HTTP or HTTPS URL of the national emblem side of the ID card. The URL is valid for 5 minutes. Save the image to your own storage to avoid access issues.
 	//
 	// example:
 	//
 	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example3.jpg
 	BackImageUrl *string `json:"BackImageUrl,omitempty" xml:"BackImageUrl,omitempty"`
-	// Date of birth.
+	// The date of birth.
 	//
 	// example:
 	//
 	// 19900101
 	Birth *string `json:"Birth,omitempty" xml:"Birth,omitempty"`
-	// End date of the document\\"s validity period. Format: yyyymmdd.
+	// The expiration date of the ID card. Format: yyyymmdd.
 	//
 	// example:
 	//
 	// 20201101
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// HTTP or HTTPS link to the portrait side of the ID card. The link is valid for 5 minutes. It is recommended to store it in your business system to avoid any impact on usage.
+	// The HTTP or HTTPS URL of the portrait side of the ID card. The URL is valid for 5 minutes. Save the image to your own storage to avoid access issues.
 	//
 	// example:
 	//
 	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example2.jpg
 	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty"`
-	// Name.
+	// The name.
 	//
 	// example:
 	//
 	// 张三
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Nationality.
+	// The ethnicity.
 	//
 	// example:
 	//
 	// 汉
 	Nationality *string `json:"Nationality,omitempty" xml:"Nationality,omitempty"`
-	// ID number.
+	// The ID card number.
 	//
 	// example:
 	//
 	// 02343218901123****
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	// Start date of the document\\"s validity period. Format: yyyymmdd.
+	// The start date of the ID card validity period. Format: yyyymmdd.
 	//
 	// example:
 	//

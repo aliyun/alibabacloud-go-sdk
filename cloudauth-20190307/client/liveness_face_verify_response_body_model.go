@@ -20,25 +20,25 @@ type iLivenessFaceVerifyResponseBody interface {
 }
 
 type LivenessFaceVerifyResponseBody struct {
-	// Return code, **200*	- indicates successful API response.
+	// The return code. **200*	- indicates that the API operation is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of this request.
+	// The ID of this request.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return result.
+	// The returned result.
 	ResultObject *LivenessFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,29 +96,29 @@ func (s *LivenessFaceVerifyResponseBody) Validate() error {
 }
 
 type LivenessFaceVerifyResponseBodyResultObject struct {
-	// Unique identifier for the real-person authentication request.
+	// The unique identity of the ID Verification request.
 	//
 	// example:
 	//
 	// 91707dc296d469ad38e4c5efa6a0f24b
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Attachment information of the face authentication subject, including data such as face quality, face attack, face or OCR image, and intent verification.
+	// The attachment information of the facial verification subject, including face quality, face attack detection, face or OCR images, and intent verification data.
 	//
 	// example:
 	//
 	// {"faceAttack": "F","facialPictureFront": {"qualityScore": 88.3615493774414,"verifyScore": 50.28594166529785}}
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	// Authentication result, values:
+	// The verification result. Valid values:
 	//
-	// - T: Passed
+	// - T: Passed.
 	//
-	// - F: Not passed
+	// - F: Failed.
 	//
 	// example:
 	//
 	// T
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// Authentication result code.
+	// The verification result code.
 	//
 	// example:
 	//

@@ -25,44 +25,46 @@ type iCreateWhitelistSettingRequest interface {
 	GetSourceIp() *string
 	SetValidDay(v int32) *CreateWhitelistSettingRequest
 	GetValidDay() *int32
+	SetWhitelistType(v string) *CreateWhitelistSettingRequest
+	GetWhitelistType() *string
 }
 
 type CreateWhitelistSettingRequest struct {
-	// ID number to be whitelisted.
+	// The ID card number to add to the whitelist.
 	//
 	// example:
 	//
 	// 44018219950810XXXX
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// Certificate ID, used for whitelisting this specific authenticated user.
+	// The certificate ID. The user associated with this authentication is added to the whitelist.
 	//
 	// example:
 	//
 	// sha6d0405f42926084e396e76a037d00
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// User language.
+	// The user language.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Whitelist remarks.
+	// The remarks for the whitelist.
 	//
 	// example:
 	//
 	// 测试白名单。
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Scene ID.
+	// The scene ID.
 	//
 	// example:
 	//
 	// 1000014526
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Service type:
+	// The service type. Valid values:
 	//
-	// - **antcloudauth**: Financial-grade real-person authentication.
+	// - **antcloudauth**: Financial-grade ID Verification.
 	//
-	// - **cloudauthst*	- (discontinued): Enhanced real-person authentication.
+	// - **cloudauthst*	- (discontinued): ID Verification Enhanced Edition.
 	//
 	// This parameter is required.
 	//
@@ -70,13 +72,13 @@ type CreateWhitelistSettingRequest struct {
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// Visitor\\"s source IP address. No need to fill in, the system will automatically obtain it.
+	// The source IP address of the visitor. You do not need to specify this parameter. The system automatically obtains the value.
 	//
 	// example:
 	//
 	// 27.115.63.58
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// Number of valid days after creating the whitelist.
+	// The number of valid days after the whitelist is created.
 	//
 	// This parameter is required.
 	//
@@ -84,6 +86,10 @@ type CreateWhitelistSettingRequest struct {
 	//
 	// 7
 	ValidDay *int32 `json:"ValidDay,omitempty" xml:"ValidDay,omitempty"`
+	// example:
+	//
+	// SUPER
+	WhitelistType *string `json:"WhitelistType,omitempty" xml:"WhitelistType,omitempty"`
 }
 
 func (s CreateWhitelistSettingRequest) String() string {
@@ -126,6 +132,10 @@ func (s *CreateWhitelistSettingRequest) GetValidDay() *int32 {
 	return s.ValidDay
 }
 
+func (s *CreateWhitelistSettingRequest) GetWhitelistType() *string {
+	return s.WhitelistType
+}
+
 func (s *CreateWhitelistSettingRequest) SetCertNo(v string) *CreateWhitelistSettingRequest {
 	s.CertNo = &v
 	return s
@@ -163,6 +173,11 @@ func (s *CreateWhitelistSettingRequest) SetSourceIp(v string) *CreateWhitelistSe
 
 func (s *CreateWhitelistSettingRequest) SetValidDay(v int32) *CreateWhitelistSettingRequest {
 	s.ValidDay = &v
+	return s
+}
+
+func (s *CreateWhitelistSettingRequest) SetWhitelistType(v string) *CreateWhitelistSettingRequest {
+	s.WhitelistType = &v
 	return s
 }
 

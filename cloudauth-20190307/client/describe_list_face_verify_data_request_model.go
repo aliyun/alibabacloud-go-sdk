@@ -20,25 +20,25 @@ type iDescribeListFaceVerifyDataRequest interface {
 }
 
 type DescribeListFaceVerifyDataRequest struct {
-	// End time of the query.
+	// The query end time.
 	//
 	// example:
 	//
 	// 1760630399999
 	GmtEnd *int64 `json:"GmtEnd,omitempty" xml:"GmtEnd,omitempty"`
-	// Start time of the query.
+	// The query start time.
 	//
 	// example:
 	//
 	// 1760025600000
 	GmtStart *int64 `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
-	// Product Code, currently deprecated.
+	// The product code. This parameter is deprecated.
 	//
 	// example:
 	//
 	// Liveness
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Scene ID.
+	// The scene ID.
 	//
 	// example:
 	//

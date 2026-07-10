@@ -24,37 +24,37 @@ type iDeleteCustomizeFlowStrategyResponseBody interface {
 }
 
 type DeleteCustomizeFlowStrategyResponseBody struct {
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	//
 	// example:
 	//
 	// -
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Return message.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5A6229C0-E156-48E4-B6EC-0F528BDF60D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the response was successful.
+	// Indicates whether the response is successful.
 	//
 	// example:
 	//

@@ -40,71 +40,71 @@ type iLivenessFaceVerifyRequest interface {
 }
 
 type LivenessFaceVerifyRequest struct {
-	// Unique identifier for real-person authentication.
+	// The unique identity of the ID Verification request.
 	//
 	// example:
 	//
 	// 91707dc296d469ad38e4c5efa6a0f24b
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Whether to allow cropping of the face image:
+	// Specifies whether to allow trim of the face image. Valid values:
 	//
-	// - T: Allow cropping
+	// - T: Trim is allowed.
 	//
-	// - F (default): Do not allow cropping.
+	// - F (default): Trim is not allowed.
 	//
 	// example:
 	//
 	// T
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	// Device token, used for risk identification.
+	// The device token, which is used for risk identification.
 	//
 	// example:
 	//
 	// McozS1ZWRcRZStlERcZZo_QOytx5jcgZoZJEoRLOxxxxxxx
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	// Base64 encoded photo.
+	// The Base64 encoding of the photo.
 	//
 	// example:
 	//
 	// /9j/4AAQSkZJRgABAQAASxxxxxxx
 	FaceContrastPicture *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
-	// Image URL.
+	// The URL of the image.
 	//
 	// example:
 	//
 	// https://ware.cdeledu.com/upfile/uploadPic/2025/03/21/dd62fbb9c966433ab0ba9a7252816b30.jpg
 	FaceContrastPictureUrl *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
-	// User\\"s network IP address.
+	// The IP address of the user network.
 	//
 	// example:
 	//
 	// 114.xxx.xxx.xxx
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// User\\"s mobile phone number.
+	// The mobile phone number of the user.
 	//
 	// example:
 	//
 	// 130xxxxxxxx
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// Liveness detection parameters.
+	// The liveness detection parameter.
 	//
 	// example:
 	//
 	// FRONT_CAMERA_LIVENESS
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// Authorized OSS bucket name.
+	// The bucket name of the authorization-granted OSS bucket.
 	//
 	// example:
 	//
 	// cn-shanghai-aliyun-cloudauth-1494517779820665
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// Authorized OSS file name.
+	// The file name in the authorization-granted OSS bucket.
 	//
 	// example:
 	//
 	// facedetect/17483113370916034.jpg
 	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
-	// A unique business identifier defined by the client side, used for subsequent troubleshooting. The value should be a combination of letters and numbers up to 32 characters long, ensuring uniqueness.
+	// The custom business unique identity on the client side, which is used for subsequent troubleshooting. The value can contain up to 32 alphanumeric characters. Make sure the value is unique.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type LivenessFaceVerifyRequest struct {
 	//
 	// LR_FR_MIN
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// Authentication scenario ID. This ID is automatically generated after creating an authentication scenario in the console.
+	// The ID of the authentication scenario. This ID is automatically generated after you create an authentication scenario in the console.
 	//
 	// example:
 	//
 	// 100000****
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Your custom user ID (up to 100 characters), please ensure it is unique.
+	// The custom user ID (up to 100 characters). Make sure the value is unique.
 	//
 	// example:
 	//

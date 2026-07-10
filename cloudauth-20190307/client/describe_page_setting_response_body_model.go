@@ -16,7 +16,7 @@ type iDescribePageSettingResponseBody interface {
 }
 
 type DescribePageSettingResponseBody struct {
-	// Failure reasons.
+	// The failure reasons.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribePageSettingResponseBody struct {
 	//
 	//         }
 	FailReasons map[string]interface{} `json:"FailReasons,omitempty" xml:"FailReasons,omitempty"`
-	// The ID of this request.
+	// The ID of the request.
 	//
 	// example:
 	//

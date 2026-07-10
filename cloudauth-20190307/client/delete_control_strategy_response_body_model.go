@@ -22,31 +22,31 @@ type iDeleteControlStrategyResponseBody interface {
 }
 
 type DeleteControlStrategyResponseBody struct {
-	// Return code, **200*	- indicates successful API response.
+	// The response code. **200*	- indicates a successful API response.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Returned data.
+	// The returned data.
 	//
 	// example:
 	//
 	// 1
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Return message.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// D6C1237B-D34B-5126-93AC-36A4B9E819C6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the response was successful.
+	// Indicates whether the response is successful.
 	//
 	// example:
 	//

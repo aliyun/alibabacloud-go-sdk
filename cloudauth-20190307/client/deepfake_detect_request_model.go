@@ -20,29 +20,35 @@ type iDeepfakeDetectRequest interface {
 }
 
 type DeepfakeDetectRequest struct {
-	// Enter the Base64 encoded string of the face image.
+	// The Base64-encoded face image.
 	//
-	// > Either FaceUrl or FaceBase64 must be provided.
+	// > Specify either FaceUrl or FaceBase64.
 	//
 	// example:
 	//
 	// /9j/4AAQSkZJRgABAQAASxxxxxxx
 	FaceBase64 *string `json:"FaceBase64,omitempty" xml:"FaceBase64,omitempty"`
-	// Input **IMAGE*	- to indicate an image type.
+	// The input type of the face material. Valid values:
+	//
+	// - IMAGE (default): face image
+	//
+	// - VIDEO: face video
+	//
+	// > Video processing takes longer. Set the timeout to more than 3 seconds.
 	//
 	// example:
 	//
 	// IMAGE
 	FaceInputType *string `json:"FaceInputType,omitempty" xml:"FaceInputType,omitempty"`
-	// Enter the URL of the face image.
+	// The URL of the face image.
 	//
-	// > Either FaceUrl or FaceBase64 must be provided.
+	// > Specify either FaceUrl or FaceBase64.
 	//
 	// example:
 	//
 	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
 	FaceUrl *string `json:"FaceUrl,omitempty" xml:"FaceUrl,omitempty"`
-	// A unique identifier for the merchant\\"s request, consisting of a 32-character alphanumeric combination. The first few characters can be a custom abbreviation defined by the merchant, the middle part may include a timestamp, and the latter part can use a random or incrementing sequence.
+	// The unique identifier of the merchant request. The value is a 32-character alphanumeric string. The first few characters consist of a custom merchant abbreviation, the middle part can contain a time segment, and the last part can use a random or incremental sequence.
 	//
 	// example:
 	//

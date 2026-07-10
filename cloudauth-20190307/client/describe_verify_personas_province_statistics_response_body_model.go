@@ -16,13 +16,13 @@ type iDescribeVerifyPersonasProvinceStatisticsResponseBody interface {
 }
 
 type DescribeVerifyPersonasProvinceStatisticsResponseBody struct {
-	// ID of this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D9821F95-CC18-5439-BB1C-21A0FF0C2003
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Query result.
+	// The query result.
 	ResultObject *DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *DescribeVerifyPersonasProvinceStatisticsResponseBody) Validate() error 
 }
 
 type DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObject struct {
-	// Total number of devices.
+	// The total number of devices.
 	//
 	// example:
 	//
 	// 30
 	AllUserCnt *int64 `json:"AllUserCnt,omitempty" xml:"AllUserCnt,omitempty"`
-	// Data items.
+	// The data items.
 	Items []*DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObjectItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
@@ -112,19 +112,19 @@ func (s *DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObject) Valid
 }
 
 type DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObjectItems struct {
-	// Total number of devices in the province.
+	// The total number of devices in the province.
 	//
 	// example:
 	//
 	// 5
 	ProvinceCnt *int64 `json:"ProvinceCnt,omitempty" xml:"ProvinceCnt,omitempty"`
-	// Province name.
+	// The province name.
 	//
 	// example:
 	//
 	// 浙江
 	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
-	// Percentage of the total for this province.
+	// The percentage of the province relative to the total.
 	//
 	// example:
 	//
