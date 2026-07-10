@@ -24,29 +24,29 @@ type iExtendClusterRequest interface {
 }
 
 type ExtendClusterRequest struct {
-  // Cluster ID.
+  // The cluster ID.
   // 
   // example:
   // 
   // i15b480fbd2fcdbc2869cd80
   ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-  // Whether to allow skipping failed nodes. Default value: False.
+  // Specifies whether to skip failed nodes. Default value: False.
   // 
   // example:
   // 
   // False
   IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-  // Combined policy for IP allocation. Each policy can only select one policy type, and multiple policies can be combined.
+  // The combined IP allocation policy. Each policy can use only one policy type, and multiple policies can be combined.
   IpAllocationPolicy []*ExtendClusterRequestIpAllocationPolicy `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty" type:"Repeated"`
-  // Node groups.
+  // The node groups.
   NodeGroups []*ExtendClusterRequestNodeGroups `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
-  // vSwitch zone ID.
+  // The zone ID of the vSwitch.
   // 
   // example:
   // 
   // cn-shanghai-b
   VSwitchZoneId *string `json:"VSwitchZoneId,omitempty" xml:"VSwitchZoneId,omitempty"`
-  // Cluster subnet list.
+  // The list of cluster subnets.
   VpdSubnets []*string `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty" type:"Repeated"`
 }
 
@@ -137,9 +137,9 @@ func (s *ExtendClusterRequest) Validate() error {
 type ExtendClusterRequestIpAllocationPolicy struct {
   // Specifies the cluster subnet ID based on the bond name.
   BondPolicy *ExtendClusterRequestIpAllocationPolicyBondPolicy `json:"BondPolicy,omitempty" xml:"BondPolicy,omitempty" type:"Struct"`
-  // Machine type allocation policy.
+  // The machine type allocation policy.
   MachineTypePolicy []*ExtendClusterRequestIpAllocationPolicyMachineTypePolicy `json:"MachineTypePolicy,omitempty" xml:"MachineTypePolicy,omitempty" type:"Repeated"`
-  // Node allocation policy.
+  // The node allocation policy.
   NodePolicy []*ExtendClusterRequestIpAllocationPolicyNodePolicy `json:"NodePolicy,omitempty" xml:"NodePolicy,omitempty" type:"Repeated"`
 }
 
@@ -206,13 +206,13 @@ func (s *ExtendClusterRequestIpAllocationPolicy) Validate() error {
 }
 
 type ExtendClusterRequestIpAllocationPolicyBondPolicy struct {
-  // Default bond cluster subnet.
+  // The default bond cluster subnet.
   // 
   // example:
   // 
   // subnet-3od2fe
   BondDefaultSubnet *string `json:"BondDefaultSubnet,omitempty" xml:"BondDefaultSubnet,omitempty"`
-  // Bond information.
+  // The bond information.
   Bonds []*ExtendClusterRequestIpAllocationPolicyBondPolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
 }
 
@@ -256,13 +256,13 @@ func (s *ExtendClusterRequestIpAllocationPolicyBondPolicy) Validate() error {
 }
 
 type ExtendClusterRequestIpAllocationPolicyBondPolicyBonds struct {
-  // Bond name.
+  // The bond name.
   // 
   // example:
   // 
   // Bond0
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-  // IP source cluster subnet.
+  // The cluster subnet from which the IP address is allocated.
   // 
   // example:
   // 
@@ -301,9 +301,9 @@ func (s *ExtendClusterRequestIpAllocationPolicyBondPolicyBonds) Validate() error
 }
 
 type ExtendClusterRequestIpAllocationPolicyMachineTypePolicy struct {
-  // Bond information.
+  // The bond information.
   Bonds []*ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
-  // Machine type.
+  // The machine type.
   // 
   // example:
   // 
@@ -351,13 +351,13 @@ func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicy) Validate() err
 }
 
 type ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds struct {
-  // Bond name.
+  // The bond name.
   // 
   // example:
   // 
   // Bond0
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-  // IP source cluster subnet.
+  // The cluster subnet from which the IP address is allocated.
   // 
   // example:
   // 
@@ -396,15 +396,15 @@ func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds) Validate(
 }
 
 type ExtendClusterRequestIpAllocationPolicyNodePolicy struct {
-  // Bond information.
+  // The bond information.
   Bonds []*ExtendClusterRequestIpAllocationPolicyNodePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
-  // Hostname.
+  // The hostname.
   // 
   // example:
   // 
   // a100-xa5dza28-0085
   Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-  // Node ID.
+  // The node ID.
   // 
   // example:
   // 
@@ -461,13 +461,13 @@ func (s *ExtendClusterRequestIpAllocationPolicyNodePolicy) Validate() error {
 }
 
 type ExtendClusterRequestIpAllocationPolicyNodePolicyBonds struct {
-  // Bond name.
+  // The bond name.
   // 
   // example:
   // 
   // Bond0
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-  // IP source cluster subnet.
+  // The cluster subnet from which the IP address is allocated.
   // 
   // example:
   // 
@@ -506,72 +506,75 @@ func (s *ExtendClusterRequestIpAllocationPolicyNodePolicyBonds) Validate() error
 }
 
 type ExtendClusterRequestNodeGroups struct {
-  // The number of nodes to purchase. Valid values: 0 to 500. If the Amount parameter is set to 0, no nodes are purchased and existing nodes are used for scale-out. If the Amount parameter is set to a value from 1 to 500, the specified number of nodes are purchased and used for scale-out. Default value: 0.
+  // The number of nodes to purchase. Valid values: 0 to 500. If Amount is set to 0, no nodes are purchased and existing nodes are used for scale-out. If Amount is set to a value from 1 to 500, the specified number of nodes are purchased and used for scale-out. Default value: 0
   // 
   // example:
   // 
   // 4
   Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-  // Whether to enable auto-renewal for the purchased nodes. This parameter takes effect when the Amount parameter is not 0 and ChargeType is set to PREPAY or POSTPAY. Valid values: True: enable auto-renewal. False: disable auto-renewal. Default value: False.
+  // Specifies whether to enable auto-renewal for the purchased nodes. This parameter takes effect when Amount is not 0 and ChargeType is set to PREPAY or POSTPAY. Valid values: True: Enable auto-renewal. False: Disable auto-renewal. Default value: False.
   // 
   // example:
   // 
   // True
   AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-  // The billing method of nodes. This parameter does not take effect when the Amount parameter is set to 0. Valid values: PREPAY: subscription. POSTPAY: pay-as-you-go. Default value: PREPAY.
+  // The billing method of the nodes. This parameter does not take effect when Amount is set to 0. Valid values: PREPAY: subscription. POSTPAY: pay-as-you-go. Default value: PREPAY.
   // 
   // example:
   // 
   // PostPaid
   ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-  // The hostnames set for the purchased nodes. This parameter does not take effect when the Amount parameter is set to 0.
+  // The hostnames of the purchased nodes. This parameter does not take effect when Amount is set to 0.
   Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-  // HyperNode list.
+  // The list of hyper nodes.
   HyperNodes []*ExtendClusterRequestNodeGroupsHyperNodes `json:"HyperNodes,omitempty" xml:"HyperNodes,omitempty" type:"Repeated"`
-  // The login password set for the purchased nodes. This parameter does not take effect when the Amount parameter is set to 0.
+  // The logon password of the purchased nodes. This parameter does not take effect when Amount is set to 0.
   // 
   // example:
   // 
   // skkO(*89Y
   LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-  // Node group ID.
+  // The node group ID.
   // 
   // example:
   // 
   // i16d4883a46cbadeb4bc9
   NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-  // Node tags.
+  // The node tags.
   NodeTag []*ExtendClusterRequestNodeGroupsNodeTag `json:"NodeTag,omitempty" xml:"NodeTag,omitempty" type:"Repeated"`
-  // Node list.
+  // The node list.
   Nodes []*ExtendClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-  // The subscription duration of nodes (unit: month). Valid values: 1, 6, 12, 24, 36, and 48. This parameter takes effect when the Amount parameter is not 0 and ChargeType is set to PREPAY.
+  // The subscription duration of the purchased nodes. Unit: months. Valid values: 1, 6, 12, 24, 36, and 48. This parameter takes effect when Amount is not 0 and ChargeType is set to PREPAY.
   // 
   // example:
   // 
   // 6
   Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
-  SavingsPlanId *string `json:"SavingsPlanId,omitempty" xml:"SavingsPlanId,omitempty"`
-  // Custom data.
+  // The savings plan ID.
   // 
   // example:
   // 
-  // #!/bin/sh
+  // spn-25e985acAWbrwEBJ
+  SavingsPlanId *string `json:"SavingsPlanId,omitempty" xml:"SavingsPlanId,omitempty"`
+  // The custom executable shell script. The script must be Base64-encoded. The maximum size of the raw data is 16 KB.
   // 
-  // echo "Hello World. The time is now $(date -R)!" | tee /root/userdata_test.txt
+  // example:
+  // 
+  // ZWNobyBoZWxsbyBlY3Mh
   UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-  // vSwitch ID.
+  // The vSwitch ID.
   // 
   // example:
   // 
   // vsw-uf65m8xqjgy55xj9jw92n
   VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-  // VPC ID.
+  // The VPC ID.
   // 
   // example:
   // 
   // vpc-0jl3b0c0ukydlfezr13n6
   VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-  // Zone ID.
+  // The zone ID.
   // 
   // example:
   // 
@@ -754,39 +757,39 @@ func (s *ExtendClusterRequestNodeGroups) Validate() error {
 }
 
 type ExtendClusterRequestNodeGroupsHyperNodes struct {
-  // Disk information list.
+  // The list of cloud disk information.
   DataDisk []*ExtendClusterRequestNodeGroupsHyperNodesDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-  // Hostname.
+  // The hostname.
   // 
   // example:
   // 
   // liliang-rmn7stf7-0000
   Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-  // HyperNode ID.
+  // The hyper node ID.
   // 
   // example:
   // 
   // e01-cn-2r42tmj4z02
   HyperNodeId *string `json:"HyperNodeId,omitempty" xml:"HyperNodeId,omitempty"`
-  // Login password.
+  // The logon password.
   // 
   // example:
   // 
   // ***
   LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-  // Security group ID.
+  // The security group ID.
   // 
   // example:
   // 
   // sg-uf68xu2102avz7pl3t5d
   SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-  // vSwitch ID.
+  // The vSwitch ID.
   // 
   // example:
   // 
   // vsw-8vbobo4cvzsygw98f4j6b
   VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-  // VPC ID.
+  // The VPC ID.
   // 
   // example:
   // 
@@ -879,43 +882,43 @@ func (s *ExtendClusterRequestNodeGroupsHyperNodes) Validate() error {
 }
 
 type ExtendClusterRequestNodeGroupsHyperNodesDataDisk struct {
-  // Whether to enable burst (performance bursting).
+  // Specifies whether to enable burst (I/O burst).
   // 
   // example:
   // 
   // false
   BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-  // Disk type. Valid values:
+  // The cloud disk type. Valid values:
   // 
-  //  - cloud_essd: ESSD cloud disk.
+  //  - cloud_essd: ESSD.
   // 
   // example:
   // 
   // cloud_essd
   Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-  // Whether the data disk is deleted when the node is unsubscribed.
+  // Specifies whether the data cloud disk is deleted when the node is unsubscribed.
   // 
   // example:
   // 
   // True
   DeleteWithNode *bool `json:"DeleteWithNode,omitempty" xml:"DeleteWithNode,omitempty"`
-  // The performance level of the ESSD cloud disk used as the system disk. Valid values:
+  // The performance level (PL) when an ESSD is used as a system cloud disk. Valid values:
   // 
-  // - PL0: maximum random read/write IOPS of 10,000 per disk.
+  // - PL0: a maximum of 10,000 random read/write IOPS per disk.
   // 
-  // - PL1: maximum random read/write IOPS of 50,000 per disk.
+  // - PL1: a maximum of 50,000 random read/write IOPS per disk.
   // 
   // example:
   // 
   // PL1
   PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-  // Provisioned read/write IOPS of the ESSD AutoPL cloud disk (per disk).
+  // The provisioned performance (read/write IOPS) of a single ESSD AutoPL cloud disk.
   // 
   // example:
   // 
   // 9600
   ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-  // Disk size, in GiB.
+  // The cloud disk size. Unit: GiB.
   // 
   // example:
   // 
@@ -990,13 +993,13 @@ func (s *ExtendClusterRequestNodeGroupsHyperNodesDataDisk) Validate() error {
 }
 
 type ExtendClusterRequestNodeGroupsNodeTag struct {
-  // Node tag key.
+  // The tag key of the node.
   // 
   // example:
   // 
   // key_my
   Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-  // Node tag value.
+  // The tag value of the node.
   // 
   // example:
   // 
@@ -1035,39 +1038,39 @@ func (s *ExtendClusterRequestNodeGroupsNodeTag) Validate() error {
 }
 
 type ExtendClusterRequestNodeGroupsNodes struct {
-  // Data disk specifications.
+  // The data cloud disk specifications.
   DataDisk []*ExtendClusterRequestNodeGroupsNodesDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-  // Hostname.
+  // The hostname.
   // 
   // example:
   // 
   // d044d220-33fd-11ed-86a6
   Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-  // Login password.
+  // The logon password.
   // 
   // example:
   // 
   // ***
   LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-  // Node ID.
+  // The node ID.
   // 
   // example:
   // 
   // e01-cn-zvp2zdpy601
   NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-  // Security group ID.
+  // The security group ID.
   // 
   // example:
   // 
   // sg-uf68xu2102avz7pl3t5d
   SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-  // vSwitch ID.
+  // The vSwitch ID.
   // 
   // example:
   // 
   // vsw-bp169pi5fj151rrms4sia
   VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-  // VPC ID.
+  // The VPC ID.
   // 
   // example:
   // 
@@ -1160,37 +1163,37 @@ func (s *ExtendClusterRequestNodeGroupsNodes) Validate() error {
 }
 
 type ExtendClusterRequestNodeGroupsNodesDataDisk struct {
-  // Whether to enable burst (performance bursting).
+  // Specifies whether to enable burst (I/O burst).
   // 
   // example:
   // 
   // true
   BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-  // Disk type.
+  // The type.
   // 
   // example:
   // 
   // cloud_essd
   Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-  // Whether the data disk is deleted when the node is unsubscribed.
+  // Specifies whether the data cloud disk is deleted when the node is unsubscribed.
   // 
   // example:
   // 
   // true
   DeleteWithNode *bool `json:"DeleteWithNode,omitempty" xml:"DeleteWithNode,omitempty"`
-  // Data disk performance level.
+  // The performance metric of the data cloud disk.
   // 
   // example:
   // 
   // PL0
   PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-  // Provisioned performance (IOPS). Valid values: 0 to 50000.
+  // The provisioned performance (IOPS). Valid values: 0 to 50000.
   // 
   // example:
   // 
   // 1000
   ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-  // Disk size.
+  // The cloud disk size.
   // 
   // example:
   // 

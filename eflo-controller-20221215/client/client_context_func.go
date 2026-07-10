@@ -283,11 +283,11 @@ func (client *Client) CloseSessionWithContext(ctx context.Context, request *Clos
 
 // Summary:
 //
-// Creates a new LINGJUN Cluster.
+// Creates a Lingjun AI Computing Service cluster.
 //
 // Description:
 //
-// 关闭远程会话的接口。
+// Closes a remote session.
 //
 // @param tmpReq - CreateClusterRequest
 //
@@ -547,11 +547,11 @@ func (client *Client) CreateNetTestTaskWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Create a node group in a cluster.
+// Creates a node group in a cluster.
 //
 // Description:
 //
-// Creates a session, returns a front-end endpoint, and starts a periodic task to track the session status.
+// Creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
 //
 // @param tmpReq - CreateNodeGroupRequest
 //
@@ -1573,7 +1573,7 @@ func (client *Client) DescribeZonesWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Extends a cluster.
+// Scales out a cluster.
 //
 // Description:
 //
@@ -2667,7 +2667,7 @@ func (client *Client) RebootNodesWithContext(ctx context.Context, tmpReq *Reboot
 
 // Summary:
 //
-// Reimages the specified nodes.
+// Reinstalls machines.
 //
 // @param tmpReq - ReimageNodesRequest
 //
@@ -3293,20 +3293,26 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 //
 // Description:
 //
-// Updates a node group asynchronously. A task ID is returned to track the progress of the operation.
+// Creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
 //
-// @param request - UpdateNodeGroupRequest
+// @param tmpReq - UpdateNodeGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateNodeGroupResponse
-func (client *Client) UpdateNodeGroupWithContext(ctx context.Context, request *UpdateNodeGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateNodeGroupResponse, _err error) {
+func (client *Client) UpdateNodeGroupWithContext(ctx context.Context, tmpReq *UpdateNodeGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateNodeGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &UpdateNodeGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SystemDisk) {
+		request.SystemDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SystemDisk, dara.String("SystemDisk"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FileSystemMountEnabled) {
 		body["FileSystemMountEnabled"] = request.FileSystemMountEnabled
@@ -3334,6 +3340,10 @@ func (client *Client) UpdateNodeGroupWithContext(ctx context.Context, request *U
 
 	if !dara.IsNil(request.RamRoleName) {
 		body["RamRoleName"] = request.RamRoleName
+	}
+
+	if !dara.IsNil(request.SystemDiskShrink) {
+		body["SystemDisk"] = request.SystemDiskShrink
 	}
 
 	if !dara.IsNil(request.UserData) {

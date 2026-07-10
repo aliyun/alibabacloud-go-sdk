@@ -36,19 +36,19 @@ type iCreateClusterShrinkRequest interface {
 }
 
 type CreateClusterShrinkRequest struct {
-	// The description of the cluster.
+	// The cluster description.
 	//
 	// example:
 	//
-	// Standard cluster test
+	// 标准集群测试
 	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// Standard_Cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The type of the cluster.
+	// The cluster type.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type CreateClusterShrinkRequest struct {
 	//
 	// A1
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	// Specifies whether to skip failed nodes. The default value is False.
+	// Specifies whether to skip failed nodes. Default value: False.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CreateClusterShrinkRequest struct {
 	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	// The network information.
 	NetworksShrink *string `json:"Networks,omitempty" xml:"Networks,omitempty"`
-	// The vSwitches for the node.
+	// The node vSwitches.
 	NimizVSwitchesShrink *string `json:"NimizVSwitches,omitempty" xml:"NimizVSwitches,omitempty"`
 	// The list of node groups.
 	NodeGroupsShrink *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
@@ -220,13 +220,13 @@ func (s *CreateClusterShrinkRequest) Validate() error {
 }
 
 type CreateClusterShrinkRequestTag struct {
-	// The key.
+	// The tag key.
 	//
 	// example:
 	//
 	// env-name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value.
+	// The tag value.
 	//
 	// example:
 	//

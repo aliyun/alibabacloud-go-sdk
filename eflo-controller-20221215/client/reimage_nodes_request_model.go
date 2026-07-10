@@ -26,7 +26,7 @@ type ReimageNodesRequest struct {
 	//
 	// i15dfa12e8f27c44f4a006c2c8bb
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to skip failed nodes. The default value is False.
+	// Specifies whether to skip failed nodes. Default value: False.
 	//
 	// example:
 	//
@@ -34,13 +34,11 @@ type ReimageNodesRequest struct {
 	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
 	// The list of nodes.
 	Nodes []*ReimageNodesRequestNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// The custom data.
+	// The custom executable shell script. The script must be Base64-encoded. The maximum size of the raw data is 16 KB.
 	//
 	// example:
 	//
-	// #!/bin/sh
-	//
-	// echo "Hello World. The time is now $(date -R)!" | tee /root/userdata_test.txt
+	// ZWNobyBoZWxsbyBlY3Mh
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -108,7 +106,7 @@ type ReimageNodesRequestNodes struct {
 	//
 	// 457db5ca-241d-11ed-9fd7-acde48001122
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The OS image ID.
+	// The system image ID.
 	//
 	// example:
 	//

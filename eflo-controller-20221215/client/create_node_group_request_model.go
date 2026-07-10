@@ -18,7 +18,7 @@ type iCreateNodeGroupRequest interface {
 }
 
 type CreateNodeGroupRequest struct {
-	// The ID of the cluster to which the node group belongs.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type CreateNodeGroupRequest struct {
 	//
 	// i118191731740041623425
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The configurations of the node group.
+	// The node ID.
 	//
 	// This parameter is required.
 	NodeGroup *CreateNodeGroupRequestNodeGroup `json:"NodeGroup,omitempty" xml:"NodeGroup,omitempty" type:"Struct"`
-	// The configuration of the node unit.
+	// The node information.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *CreateNodeGroupRequest) Validate() error {
 }
 
 type CreateNodeGroupRequestNodeGroup struct {
-	// The availability zone of the node group.
+	// The zone.
 	//
 	// This parameter is required.
 	//
@@ -91,13 +91,13 @@ type CreateNodeGroupRequestNodeGroup struct {
 	//
 	// cn-wulanchabu-b
 	Az *string `json:"Az,omitempty" xml:"Az,omitempty"`
-	// Specifies whether to enable file system mounting.
+	// Specifies whether file storage mounting is supported.
 	//
 	// example:
 	//
 	// false
 	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
-	// The image ID for the nodes.
+	// The image ID.
 	//
 	// This parameter is required.
 	//
@@ -105,19 +105,19 @@ type CreateNodeGroupRequestNodeGroup struct {
 	//
 	// i191887641687336652616
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the key pair for SSH login.
+	// The key pair name.
 	//
 	// example:
 	//
 	// test-keypair
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The password to log in to the nodes.
+	// The logon password.
 	//
 	// example:
 	//
 	// test-LoginPassword
 	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
-	// The machine type for the nodes.
+	// The machine type.
 	//
 	// This parameter is required.
 	//
@@ -125,13 +125,13 @@ type CreateNodeGroupRequestNodeGroup struct {
 	//
 	// mock-machine-type3
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	// The description of the node group.
+	// The node group description.
 	//
 	// example:
 	//
-	// Node group description
+	// 节点分组描述
 	NodeGroupDescription *string `json:"NodeGroupDescription,omitempty" xml:"NodeGroupDescription,omitempty"`
-	// The name of the node group.
+	// The node group name.
 	//
 	// This parameter is required.
 	//
@@ -139,25 +139,23 @@ type CreateNodeGroupRequestNodeGroup struct {
 	//
 	// PAI-LINGJUN
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	// The name of the RAM role to attach to the nodes. You can call the RAM API `ListRoles` operation to query the RAM roles that you have created. The trust entity of the specified role must be Intelligent Computing Lingjun.<br>**Note:*	- You cannot detach an existing role by clearing this parameter.<br>
+	// The RAM role name of the node. You can call the RAM API ListRoles to query the RAM roles you have created. The trusted entity of the role must be set to Lingjun AI Computing Service.
+	//
+	// > Note: Clearing an existing role is not currently supported.
 	//
 	// example:
 	//
 	// xianwen-test-ram-role
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The system disk configuration for the nodes.
+	// The system disk configuration of the node.
 	SystemDisk *CreateNodeGroupRequestNodeGroupSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// The user data passed to the nodes at launch.
+	// A custom executable shell script that must be Base64-encoded. The maximum size of the raw data is 16 KB.
 	//
 	// example:
 	//
-	// #!/bin/bash
-	//
-	// uptime
-	//
-	// echo "aaaaaaa" >> /tmp/ttttt20250110141010.sh
+	// ZWNobyBoZWxsbyBlY3Mh
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// Specifies whether to enable GPU virtualization.
+	// Specifies whether GPU virtualization splitting is enabled.
 	//
 	// example:
 	//
@@ -291,25 +289,25 @@ func (s *CreateNodeGroupRequestNodeGroup) Validate() error {
 }
 
 type CreateNodeGroupRequestNodeGroupSystemDisk struct {
-	// The type of the system disk. Valid values:
+	// The cloud disk type. Valid values:
 	//
-	// - `cloud_essd`: ESSD.
+	//  - cloud_essd: Enterprise SSD (ESSD) cloud disk.
 	//
 	// example:
 	//
 	// clou_essd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The performance level of the ESSD system disk. Valid values:
+	// The performance level (PL) of the ESSD cloud disk used as the system disk. Valid values:
 	//
-	// - `PL0`: A single disk delivers up to 10,000 random read/write IOPS.
+	// - PL0: a maximum of 10,000 random read/write IOPS per cloud disk.
 	//
-	// - `PL1`: A single disk delivers up to 50,000 random read/write IOPS.
+	// - PL1: a maximum of 50,000 random read/write IOPS per cloud disk.
 	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of the system disk, in GB.
+	// The disk size. Unit: GB.
 	//
 	// example:
 	//

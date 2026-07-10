@@ -18,7 +18,7 @@ type iCreateNodeGroupShrinkRequest interface {
 }
 
 type CreateNodeGroupShrinkRequest struct {
-	// The ID of the cluster to which the node group belongs.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type CreateNodeGroupShrinkRequest struct {
 	//
 	// i118191731740041623425
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The configurations of the node group.
+	// The node ID.
 	//
 	// This parameter is required.
 	NodeGroupShrink *string `json:"NodeGroup,omitempty" xml:"NodeGroup,omitempty"`
-	// The configuration of the node unit.
+	// The node information.
 	//
 	// example:
 	//

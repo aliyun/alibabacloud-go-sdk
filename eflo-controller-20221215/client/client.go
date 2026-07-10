@@ -450,11 +450,11 @@ func (client *Client) CloseSession(request *CloseSessionRequest) (_result *Close
 
 // Summary:
 //
-// Creates a new LINGJUN Cluster.
+// Creates a Lingjun AI Computing Service cluster.
 //
 // Description:
 //
-// 关闭远程会话的接口。
+// Closes a remote session.
 //
 // @param tmpReq - CreateClusterRequest
 //
@@ -562,11 +562,11 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 
 // Summary:
 //
-// Creates a new LINGJUN Cluster.
+// Creates a Lingjun AI Computing Service cluster.
 //
 // Description:
 //
-// 关闭远程会话的接口。
+// Closes a remote session.
 //
 // @param request - CreateClusterRequest
 //
@@ -772,11 +772,11 @@ func (client *Client) CreateNetTestTask(request *CreateNetTestTaskRequest) (_res
 
 // Summary:
 //
-// Create a node group in a cluster.
+// Creates a node group in a cluster.
 //
 // Description:
 //
-// Creates a session, returns a front-end endpoint, and starts a periodic task to track the session status.
+// Creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
 //
 // @param tmpReq - CreateNodeGroupRequest
 //
@@ -838,11 +838,11 @@ func (client *Client) CreateNodeGroupWithOptions(tmpReq *CreateNodeGroupRequest,
 
 // Summary:
 //
-// Create a node group in a cluster.
+// Creates a node group in a cluster.
 //
 // Description:
 //
-// Creates a session, returns a front-end endpoint, and starts a periodic task to track the session status.
+// Creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
 //
 // @param request - CreateNodeGroupRequest
 //
@@ -2204,7 +2204,7 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 
 // Summary:
 //
-// Extends a cluster.
+// Scales out a cluster.
 //
 // Description:
 //
@@ -2286,7 +2286,7 @@ func (client *Client) ExtendClusterWithOptions(tmpReq *ExtendClusterRequest, run
 
 // Summary:
 //
-// Extends a cluster.
+// Scales out a cluster.
 //
 // Description:
 //
@@ -3669,7 +3669,7 @@ func (client *Client) RebootNodes(request *RebootNodesRequest) (_result *RebootN
 
 // Summary:
 //
-// Reimages the specified nodes.
+// Reinstalls machines.
 //
 // @param tmpReq - ReimageNodesRequest
 //
@@ -3731,7 +3731,7 @@ func (client *Client) ReimageNodesWithOptions(tmpReq *ReimageNodesRequest, runti
 
 // Summary:
 //
-// Reimages the specified nodes.
+// Reinstalls machines.
 //
 // @param request - ReimageNodesRequest
 //
@@ -4461,20 +4461,26 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // Description:
 //
-// Updates a node group asynchronously. A task ID is returned to track the progress of the operation.
+// Creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
 //
-// @param request - UpdateNodeGroupRequest
+// @param tmpReq - UpdateNodeGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateNodeGroupResponse
-func (client *Client) UpdateNodeGroupWithOptions(request *UpdateNodeGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateNodeGroupResponse, _err error) {
+func (client *Client) UpdateNodeGroupWithOptions(tmpReq *UpdateNodeGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateNodeGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &UpdateNodeGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SystemDisk) {
+		request.SystemDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SystemDisk, dara.String("SystemDisk"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FileSystemMountEnabled) {
 		body["FileSystemMountEnabled"] = request.FileSystemMountEnabled
@@ -4502,6 +4508,10 @@ func (client *Client) UpdateNodeGroupWithOptions(request *UpdateNodeGroupRequest
 
 	if !dara.IsNil(request.RamRoleName) {
 		body["RamRoleName"] = request.RamRoleName
+	}
+
+	if !dara.IsNil(request.SystemDiskShrink) {
+		body["SystemDisk"] = request.SystemDiskShrink
 	}
 
 	if !dara.IsNil(request.UserData) {
@@ -4537,7 +4547,7 @@ func (client *Client) UpdateNodeGroupWithOptions(request *UpdateNodeGroupRequest
 //
 // Description:
 //
-// Updates a node group asynchronously. A task ID is returned to track the progress of the operation.
+// Creates a session, returns the frontend endpoint, and starts a periodic task to track the session status.
 //
 // @param request - UpdateNodeGroupRequest
 //
