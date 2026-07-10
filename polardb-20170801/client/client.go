@@ -2748,7 +2748,7 @@ func (client *Client) CreateAIDBClusterDataset(request *CreateAIDBClusterDataset
 
 // Summary:
 //
-// Creates a model operator instance.
+// Creates a model creation operator instance.
 //
 // @param request - CreateAIDBClusterTaskRequest
 //
@@ -2827,6 +2827,10 @@ func (client *Client) CreateAIDBClusterTaskWithOptions(request *CreateAIDBCluste
 		query["TaskName"] = request.TaskName
 	}
 
+	if !dara.IsNil(request.TuneArch) {
+		query["TuneArch"] = request.TuneArch
+	}
+
 	if !dara.IsNil(request.VPCId) {
 		query["VPCId"] = request.VPCId
 	}
@@ -2864,7 +2868,7 @@ func (client *Client) CreateAIDBClusterTaskWithOptions(request *CreateAIDBCluste
 
 // Summary:
 //
-// Creates a model operator instance.
+// Creates a model creation operator instance.
 //
 // @param request - CreateAIDBClusterTaskRequest
 //
@@ -3900,15 +3904,11 @@ func (client *Client) CreateApplicationPrompt(request *CreateApplicationPromptRe
 //
 // Description:
 //
-// > - Each cluster can have up to three manually created backups at a time.
+// > 	- Each cluster can have up to three manually created backups at the same time.
 //
-// >
+// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, three manually created backups already exist in your cluster. [Delete backups](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
 //
-// > - If you receive the error message `Exceeding the daily backup times of this DB cluster`, this indicates that three manual backups already exist for your cluster. [Delete a backup](https://help.aliyun.com/document_detail/98101.html) before you call this operation again.
-//
-// >
-//
-// > - After you call this operation, a backup job is created in the background. The job may take a long time to complete if the data volume is large.
+// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the backup may take a long time. Wait until the backup is complete.
 //
 // @param request - CreateBackupRequest
 //
@@ -3925,6 +3925,10 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Comment) {
+		query["Comment"] = request.Comment
 	}
 
 	if !dara.IsNil(request.DBClusterId) {
@@ -3976,15 +3980,11 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 //
 // Description:
 //
-// > - Each cluster can have up to three manually created backups at a time.
+// > 	- Each cluster can have up to three manually created backups at the same time.
 //
-// >
+// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, three manually created backups already exist in your cluster. [Delete backups](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
 //
-// > - If you receive the error message `Exceeding the daily backup times of this DB cluster`, this indicates that three manual backups already exist for your cluster. [Delete a backup](https://help.aliyun.com/document_detail/98101.html) before you call this operation again.
-//
-// >
-//
-// > - After you call this operation, a backup job is created in the background. The job may take a long time to complete if the data volume is large.
+// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the backup may take a long time. Wait until the backup is complete.
 //
 // @param request - CreateBackupRequest
 //
@@ -11642,7 +11642,7 @@ func (client *Client) DescribeAIDBClusterPerformance(request *DescribeAIDBCluste
 
 // Summary:
 //
-// # Get task instance details
+// Retrieves the details of a task instance.
 //
 // @param request - DescribeAIDBClusterTaskAttributeRequest
 //
@@ -11710,7 +11710,7 @@ func (client *Client) DescribeAIDBClusterTaskAttributeWithOptions(request *Descr
 
 // Summary:
 //
-// # Get task instance details
+// Retrieves the details of a task instance.
 //
 // @param request - DescribeAIDBClusterTaskAttributeRequest
 //
@@ -11916,15 +11916,15 @@ func (client *Client) DescribeAIDBClusterTaskMetrics(request *DescribeAIDBCluste
 
 // Summary:
 //
-// Retrieves a list of model operators for a specified PolarDB instance.
+// Retrieves the list of model operators for a specified PolarDB database instance.
 //
 // Description:
 //
-// ## Request
+// ## Description
 //
-// - This API returns a list of model operators filtered by the `RelativeDBClusterId` and `KubeType` parameters.
+// - This operation supports filtering and returning the list of model operators based on the `RelativeDBClusterId` and `KubeType` parameters.
 //
-// - Note: Ensure the provided `RelativeDBClusterId` matches the ID of an existing PolarDB database instance. Otherwise, no data will be returned.
+// - Note: Ensure that the `RelativeDBClusterId` provided in the request matches an existing PolarDB database instance ID. Otherwise, data cannot be retrieved correctly.
 //
 // @param request - DescribeAIDBClusterTasksRequest
 //
@@ -11992,15 +11992,15 @@ func (client *Client) DescribeAIDBClusterTasksWithOptions(request *DescribeAIDBC
 
 // Summary:
 //
-// Retrieves a list of model operators for a specified PolarDB instance.
+// Retrieves the list of model operators for a specified PolarDB database instance.
 //
 // Description:
 //
-// ## Request
+// ## Description
 //
-// - This API returns a list of model operators filtered by the `RelativeDBClusterId` and `KubeType` parameters.
+// - This operation supports filtering and returning the list of model operators based on the `RelativeDBClusterId` and `KubeType` parameters.
 //
-// - Note: Ensure the provided `RelativeDBClusterId` matches the ID of an existing PolarDB database instance. Otherwise, no data will be returned.
+// - Note: Ensure that the `RelativeDBClusterId` provided in the request matches an existing PolarDB database instance ID. Otherwise, data cannot be retrieved correctly.
 //
 // @param request - DescribeAIDBClusterTasksRequest
 //
@@ -13676,7 +13676,7 @@ func (client *Client) DescribeApplicationAttribute(request *DescribeApplicationA
 
 // Summary:
 //
-// # AI Application Log Details
+// Queries the log details of an AI application.
 //
 // @param request - DescribeApplicationLogsRequest
 //
@@ -13772,7 +13772,7 @@ func (client *Client) DescribeApplicationLogsWithOptions(request *DescribeApplic
 
 // Summary:
 //
-// # AI Application Log Details
+// Queries the log details of an AI application.
 //
 // @param request - DescribeApplicationLogsRequest
 //
@@ -14346,7 +14346,7 @@ func (client *Client) DescribeAvailableCrossRegions(request *DescribeAvailableCr
 
 // Summary:
 //
-// Lists the available models in an AI cluster.
+// Retrieves the list of AI cluster models.
 //
 // @param request - DescribeAvailableModelsRequest
 //
@@ -14394,7 +14394,7 @@ func (client *Client) DescribeAvailableModelsWithOptions(request *DescribeAvaila
 
 // Summary:
 //
-// Lists the available models in an AI cluster.
+// Retrieves the list of AI cluster models.
 //
 // @param request - DescribeAvailableModelsRequest
 //
@@ -14752,7 +14752,7 @@ func (client *Client) DescribeBackupTasks(request *DescribeBackupTasksRequest) (
 
 // Summary:
 //
-// Queries backup information for a PolarDB cluster.
+// Queries the backup information of a PolarDB cluster.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -14844,7 +14844,7 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 
 // Summary:
 //
-// Queries backup information for a PolarDB cluster.
+// Queries the backup information of a PolarDB cluster.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -15012,7 +15012,7 @@ func (client *Client) DescribeBatchTasks(request *DescribeBatchTasksRequest) (_r
 
 // Summary:
 //
-// # Querying budget policies
+// Queries cost budget policies.
 //
 // @param request - DescribeBudgetPoliciesRequest
 //
@@ -15055,6 +15055,10 @@ func (client *Client) DescribeBudgetPoliciesWithOptions(request *DescribeBudgetP
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ScopeRefName) {
+		query["ScopeRefName"] = request.ScopeRefName
+	}
+
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
 	}
@@ -15084,7 +15088,7 @@ func (client *Client) DescribeBudgetPoliciesWithOptions(request *DescribeBudgetP
 
 // Summary:
 //
-// # Querying budget policies
+// Queries cost budget policies.
 //
 // @param request - DescribeBudgetPoliciesRequest
 //
@@ -15474,7 +15478,7 @@ func (client *Client) DescribeConsumerGroups(request *DescribeConsumerGroupsRequ
 
 // Summary:
 //
-// Returns a list of consumers.
+// Queries the list of consumers.
 //
 // @param request - DescribeConsumersRequest
 //
@@ -15495,6 +15499,14 @@ func (client *Client) DescribeConsumersWithOptions(request *DescribeConsumersReq
 
 	if !dara.IsNil(request.ConsumerId) {
 		query["ConsumerId"] = request.ConsumerId
+	}
+
+	if !dara.IsNil(request.ConsumerName) {
+		query["ConsumerName"] = request.ConsumerName
+	}
+
+	if !dara.IsNil(request.ConsumerNameList) {
+		query["ConsumerNameList"] = request.ConsumerNameList
 	}
 
 	if !dara.IsNil(request.GwClusterId) {
@@ -15538,7 +15550,7 @@ func (client *Client) DescribeConsumersWithOptions(request *DescribeConsumersReq
 
 // Summary:
 //
-// Returns a list of consumers.
+// Queries the list of consumers.
 //
 // @param request - DescribeConsumersRequest
 //
@@ -15946,7 +15958,7 @@ func (client *Client) DescribeCrossCloudRegionMappingToAliyun(request *DescribeC
 
 // Summary:
 //
-// Queries the IP whitelists and security groups that are allowed to access a database cluster.
+// Queries the IP whitelist and security groups that are allowed to access a database cluster.
 //
 // @param request - DescribeDBClusterAccessWhitelistRequest
 //
@@ -15971,6 +15983,10 @@ func (client *Client) DescribeDBClusterAccessWhitelistWithOptions(request *Descr
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PfsInstanceId) {
+		query["PfsInstanceId"] = request.PfsInstanceId
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -16006,7 +16022,7 @@ func (client *Client) DescribeDBClusterAccessWhitelistWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the IP whitelists and security groups that are allowed to access a database cluster.
+// Queries the IP whitelist and security groups that are allowed to access a database cluster.
 //
 // @param request - DescribeDBClusterAccessWhitelistRequest
 //
@@ -17104,6 +17120,154 @@ func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPer
 
 // Summary:
 //
+// Queries the price of a cluster.
+//
+// @param tmpReq - DescribeDBClusterPriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterPriceResponse
+func (client *Client) DescribeDBClusterPriceWithOptions(tmpReq *DescribeDBClusterPriceRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBClusterPriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeDBClusterPriceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DBNodes) {
+		request.DBNodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DBNodes, dara.String("DBNodes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CreationCategory) {
+		query["CreationCategory"] = request.CreationCategory
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DBNodeClass) {
+		query["DBNodeClass"] = request.DBNodeClass
+	}
+
+	if !dara.IsNil(request.DBNodeIds) {
+		query["DBNodeIds"] = request.DBNodeIds
+	}
+
+	if !dara.IsNil(request.DBNodeNum) {
+		query["DBNodeNum"] = request.DBNodeNum
+	}
+
+	if !dara.IsNil(request.DBNodesShrink) {
+		query["DBNodes"] = request.DBNodesShrink
+	}
+
+	if !dara.IsNil(request.DBType) {
+		query["DBType"] = request.DBType
+	}
+
+	if !dara.IsNil(request.DBVersion) {
+		query["DBVersion"] = request.DBVersion
+	}
+
+	if !dara.IsNil(request.HotStandbyCluster) {
+		query["HotStandbyCluster"] = request.HotStandbyCluster
+	}
+
+	if !dara.IsNil(request.ModifyType) {
+		query["ModifyType"] = request.ModifyType
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.PayType) {
+		query["PayType"] = request.PayType
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.ProvisionedIops) {
+		query["ProvisionedIops"] = request.ProvisionedIops
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServerlessType) {
+		query["ServerlessType"] = request.ServerlessType
+	}
+
+	if !dara.IsNil(request.StorageChargeType) {
+		query["StorageChargeType"] = request.StorageChargeType
+	}
+
+	if !dara.IsNil(request.StorageSpace) {
+		query["StorageSpace"] = request.StorageSpace
+	}
+
+	if !dara.IsNil(request.StorageType) {
+		query["StorageType"] = request.StorageType
+	}
+
+	if !dara.IsNil(request.UsedTime) {
+		query["UsedTime"] = request.UsedTime
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDBClusterPrice"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDBClusterPriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the price of a cluster.
+//
+// @param request - DescribeDBClusterPriceRequest
+//
+// @return DescribeDBClusterPriceResponse
+func (client *Client) DescribeDBClusterPrice(request *DescribeDBClusterPriceRequest) (_result *DescribeDBClusterPriceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDBClusterPriceResponse{}
+	_body, _err := client.DescribeDBClusterPriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a database cluster proxy.
 //
 // @param request - DescribeDBClusterProxyRequest
@@ -17215,6 +17379,10 @@ func (client *Client) DescribeDBClusterSSLWithOptions(request *DescribeDBCluster
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PfsInstanceId) {
+		query["PfsInstanceId"] = request.PfsInstanceId
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -22900,7 +23068,7 @@ func (client *Client) DescribePolarClawTask(request *DescribePolarClawTaskReques
 
 // Summary:
 //
-// 查看polarfs信息
+// Queries PolarFS information.
 //
 // @param request - DescribePolarFsRequest
 //
@@ -22976,7 +23144,7 @@ func (client *Client) DescribePolarFsWithOptions(request *DescribePolarFsRequest
 
 // Summary:
 //
-// 查看polarfs信息
+// Queries PolarFS information.
 //
 // @param request - DescribePolarFsRequest
 //
@@ -29692,7 +29860,7 @@ func (client *Client) ModifyDBCluster(request *ModifyDBClusterRequest) (_result 
 
 // Summary:
 //
-// Creates or modifies the access whitelist for a cluster. The whitelist can be an IP address whitelist or a security group.
+// Creates or modifies the whitelist of a cluster, including the IP whitelist and security groups.
 //
 // @param request - ModifyDBClusterAccessWhitelistRequest
 //
@@ -29729,6 +29897,10 @@ func (client *Client) ModifyDBClusterAccessWhitelistWithOptions(request *ModifyD
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PfsInstanceId) {
+		query["PfsInstanceId"] = request.PfsInstanceId
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -29776,7 +29948,7 @@ func (client *Client) ModifyDBClusterAccessWhitelistWithOptions(request *ModifyD
 
 // Summary:
 //
-// Creates or modifies the access whitelist for a cluster. The whitelist can be an IP address whitelist or a security group.
+// Creates or modifies the whitelist of a cluster, including the IP whitelist and security groups.
 //
 // @param request - ModifyDBClusterAccessWhitelistRequest
 //
@@ -31288,7 +31460,7 @@ func (client *Client) ModifyDBClusterResourceGroup(request *ModifyDBClusterResou
 
 // Summary:
 //
-// Enables or disables SSL encryption for a PolarDB cluster, or updates its CA certificate.
+// Enables or shuts down the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //
@@ -31303,6 +31475,10 @@ func (client *Client) ModifyDBClusterSSLWithOptions(request *ModifyDBClusterSSLR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionString) {
+		query["ConnectionString"] = request.ConnectionString
+	}
+
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
 	}
@@ -31321,6 +31497,10 @@ func (client *Client) ModifyDBClusterSSLWithOptions(request *ModifyDBClusterSSLR
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PfsInstanceId) {
+		query["PfsInstanceId"] = request.PfsInstanceId
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -31364,7 +31544,7 @@ func (client *Client) ModifyDBClusterSSLWithOptions(request *ModifyDBClusterSSLR
 
 // Summary:
 //
-// Enables or disables SSL encryption for a PolarDB cluster, or updates its CA certificate.
+// Enables or shuts down the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //

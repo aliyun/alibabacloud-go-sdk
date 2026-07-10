@@ -31,8 +31,12 @@ type iDescribePolarFsAttributeResponseBody interface {
 	GetCustomBucketPath() *string
 	SetCustomBucketPathList(v []*DescribePolarFsAttributeResponseBodyCustomBucketPathList) *DescribePolarFsAttributeResponseBody
 	GetCustomBucketPathList() []*DescribePolarFsAttributeResponseBodyCustomBucketPathList
+	SetDBEndpointId(v string) *DescribePolarFsAttributeResponseBody
+	GetDBEndpointId() *string
 	SetDBType(v string) *DescribePolarFsAttributeResponseBody
 	GetDBType() *string
+	SetEndpointItems(v []*DescribePolarFsAttributeResponseBodyEndpointItems) *DescribePolarFsAttributeResponseBody
+	GetEndpointItems() []*DescribePolarFsAttributeResponseBodyEndpointItems
 	SetExpireTime(v string) *DescribePolarFsAttributeResponseBody
 	GetExpireTime() *string
 	SetExpired(v string) *DescribePolarFsAttributeResponseBody
@@ -41,8 +45,14 @@ type iDescribePolarFsAttributeResponseBody interface {
 	GetFileSystemId() *string
 	SetLockMode(v string) *DescribePolarFsAttributeResponseBody
 	GetLockMode() *string
+	SetMaxscaleEndpointId(v string) *DescribePolarFsAttributeResponseBody
+	GetMaxscaleEndpointId() *string
+	SetMetaConnString(v string) *DescribePolarFsAttributeResponseBody
+	GetMetaConnString() *string
 	SetMetaInstanceName(v string) *DescribePolarFsAttributeResponseBody
 	GetMetaInstanceName() *string
+	SetMetaMxsConnString(v string) *DescribePolarFsAttributeResponseBody
+	GetMetaMxsConnString() *string
 	SetMetaUrl(v string) *DescribePolarFsAttributeResponseBody
 	GetMetaUrl() *string
 	SetMinorVersion(v string) *DescribePolarFsAttributeResponseBody
@@ -77,6 +87,10 @@ type iDescribePolarFsAttributeResponseBody interface {
 	GetStorageType() *string
 	SetStorageUsed(v float64) *DescribePolarFsAttributeResponseBody
 	GetStorageUsed() *float64
+	SetUserDefaultAccName(v string) *DescribePolarFsAttributeResponseBody
+	GetUserDefaultAccName() *string
+	SetUserDefaultAccSk(v string) *DescribePolarFsAttributeResponseBody
+	GetUserDefaultAccSk() *string
 	SetVPCId(v string) *DescribePolarFsAttributeResponseBody
 	GetVPCId() *string
 	SetVSwitchId(v string) *DescribePolarFsAttributeResponseBody
@@ -92,35 +106,35 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// alluxio
 	AccelerateType *string `json:"AccelerateType,omitempty" xml:"AccelerateType,omitempty"`
-	// The acceleration storage space, in GB.
+	// The acceleration storage space. Unit: GB.
 	//
 	// example:
 	//
 	// 1000
 	AcceleratedStorageSpace *float64 `json:"AcceleratedStorageSpace,omitempty" xml:"AcceleratedStorageSpace,omitempty"`
-	// Indicates whether the acceleration cache is enabled. Valid values:
+	// Specifies whether the acceleration cache is enabled. Valid values:
 	//
-	// - **ON**: enabled.
+	// - **ON**: Enabled.
 	//
-	// - **OFF**: disabled.
+	// - **OFF**: Disabled.
 	//
 	// example:
 	//
 	// ON
 	AcceleratingEnable *string `json:"AcceleratingEnable,omitempty" xml:"AcceleratingEnable,omitempty"`
-	// The bandwidth, in MB/s.
+	// The bandwidth. Unit: MB/s.
 	//
 	// example:
 	//
 	// 100
 	Bandwidth *float64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The bandwidth baseline, in MB/s/TiB.
+	// The bandwidth baseline. Unit: MB/s/TiB.
 	//
 	// example:
 	//
 	// 100
 	BandwidthBaseLine *float64 `json:"BandwidthBaseLine,omitempty" xml:"BandwidthBaseLine,omitempty"`
-	// The storage bucket ID.
+	// The bucket ID.
 	//
 	// example:
 	//
@@ -158,19 +172,21 @@ type DescribePolarFsAttributeResponseBody struct {
 	CustomBucketPath *string `json:"CustomBucketPath,omitempty" xml:"CustomBucketPath,omitempty"`
 	// The list of custom storage paths.
 	CustomBucketPathList []*DescribePolarFsAttributeResponseBodyCustomBucketPathList `json:"CustomBucketPathList,omitempty" xml:"CustomBucketPathList,omitempty" type:"Repeated"`
+	DBEndpointId         *string                                                     `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	// The database ecosystem type. Valid values:
 	//
 	// 	- **MySQL**
 	//
-	// 	- **PostgreSQL**.
+	// 	- **PostgreSQL**
 	//
 	// example:
 	//
 	// MySQL
-	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBType        *string                                              `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	EndpointItems []*DescribePolarFsAttributeResponseBodyEndpointItems `json:"EndpointItems,omitempty" xml:"EndpointItems,omitempty" type:"Repeated"`
 	// The expiration time of the cluster.
 	//
-	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription). An empty value is returned for **Postpaid*	- (pay-as-you-go) clusters.
+	// > This parameter is returned only for clusters that use the **Prepaid*	- (subscription) billing method. An empty value is returned for **Postpaid*	- (pay-as-you-go) clusters.
 	//
 	// example:
 	//
@@ -178,7 +194,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the cluster has expired.
 	//
-	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription).
+	// > This parameter is returned only for clusters that use the **Prepaid*	- (subscription) billing method.
 	//
 	// example:
 	//
@@ -192,21 +208,24 @@ type DescribePolarFsAttributeResponseBody struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - **Unlock**: not locked.
+	// - **Unlock**: Not locked.
 	//
-	// - **ManualLock**: manually locked.
+	// - **ManualLock**: Manually locked.
 	//
-	// - **LockByExpiration**: automatically locked due to cluster expiration.
+	// - **LockByExpiration**: Automatically locked due to cluster expiration.
 	//
 	// example:
 	//
 	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockMode           *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	MaxscaleEndpointId *string `json:"MaxscaleEndpointId,omitempty" xml:"MaxscaleEndpointId,omitempty"`
+	MetaConnString     *string `json:"MetaConnString,omitempty" xml:"MetaConnString,omitempty"`
 	// example:
 	//
 	// pc-xxxxxxxxxxxxxxxxx
-	MetaInstanceName *string `json:"MetaInstanceName,omitempty" xml:"MetaInstanceName,omitempty"`
-	// The metadata URL for Fuse mounting (encrypted).
+	MetaInstanceName  *string `json:"MetaInstanceName,omitempty" xml:"MetaInstanceName,omitempty"`
+	MetaMxsConnString *string `json:"MetaMxsConnString,omitempty" xml:"MetaMxsConnString,omitempty"`
+	// The encrypted metadata URL for Fuse mounting.
 	//
 	// example:
 	//
@@ -250,7 +269,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	PolarFsStatus *string `json:"PolarFsStatus,omitempty" xml:"PolarFsStatus,omitempty"`
 	// The instance version. Valid values:
 	//
-	// - **PolarFS 2.0**: 2.0
+	// - **PolarFS 2.0**: 2.0.
 	//
 	// - **PolarFS 1.0**: 1.0.
 	//
@@ -294,19 +313,19 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// sg-bp**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The storage space, in GB.
+	// The storage space. Unit: GB.
 	//
 	// example:
 	//
 	// 1000
 	StorageSpace *float64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// Valid values for the High-performance Edition storage type:
+	// The storage type for the High-performance Edition. Valid values:
 	//
 	// 	- **ESSDPL1**
 	//
 	// 	- **ESSDPL0**
 	//
-	// Valid values for the Basic Edition storage type:
+	// The storage type for the Basic Edition. Valid values:
 	//
 	// 	- **city_redundancy**: zone-redundant storage.
 	//
@@ -314,12 +333,20 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// essdpl1
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The used storage space, in bytes.
+	// The used storage space. Unit: bytes.
 	//
 	// example:
 	//
 	// 3012558848
 	StorageUsed *float64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	// example:
+	//
+	// lakebase_acc
+	UserDefaultAccName *string `json:"UserDefaultAccName,omitempty" xml:"UserDefaultAccName,omitempty"`
+	// example:
+	//
+	// EncryptedSecretKey==
+	UserDefaultAccSk *string `json:"UserDefaultAccSk,omitempty" xml:"UserDefaultAccSk,omitempty"`
 	// The VPC ID.
 	//
 	// example:
@@ -392,8 +419,16 @@ func (s *DescribePolarFsAttributeResponseBody) GetCustomBucketPathList() []*Desc
 	return s.CustomBucketPathList
 }
 
+func (s *DescribePolarFsAttributeResponseBody) GetDBEndpointId() *string {
+	return s.DBEndpointId
+}
+
 func (s *DescribePolarFsAttributeResponseBody) GetDBType() *string {
 	return s.DBType
+}
+
+func (s *DescribePolarFsAttributeResponseBody) GetEndpointItems() []*DescribePolarFsAttributeResponseBodyEndpointItems {
+	return s.EndpointItems
 }
 
 func (s *DescribePolarFsAttributeResponseBody) GetExpireTime() *string {
@@ -412,8 +447,20 @@ func (s *DescribePolarFsAttributeResponseBody) GetLockMode() *string {
 	return s.LockMode
 }
 
+func (s *DescribePolarFsAttributeResponseBody) GetMaxscaleEndpointId() *string {
+	return s.MaxscaleEndpointId
+}
+
+func (s *DescribePolarFsAttributeResponseBody) GetMetaConnString() *string {
+	return s.MetaConnString
+}
+
 func (s *DescribePolarFsAttributeResponseBody) GetMetaInstanceName() *string {
 	return s.MetaInstanceName
+}
+
+func (s *DescribePolarFsAttributeResponseBody) GetMetaMxsConnString() *string {
+	return s.MetaMxsConnString
 }
 
 func (s *DescribePolarFsAttributeResponseBody) GetMetaUrl() *string {
@@ -484,6 +531,14 @@ func (s *DescribePolarFsAttributeResponseBody) GetStorageUsed() *float64 {
 	return s.StorageUsed
 }
 
+func (s *DescribePolarFsAttributeResponseBody) GetUserDefaultAccName() *string {
+	return s.UserDefaultAccName
+}
+
+func (s *DescribePolarFsAttributeResponseBody) GetUserDefaultAccSk() *string {
+	return s.UserDefaultAccSk
+}
+
 func (s *DescribePolarFsAttributeResponseBody) GetVPCId() *string {
 	return s.VPCId
 }
@@ -551,8 +606,18 @@ func (s *DescribePolarFsAttributeResponseBody) SetCustomBucketPathList(v []*Desc
 	return s
 }
 
+func (s *DescribePolarFsAttributeResponseBody) SetDBEndpointId(v string) *DescribePolarFsAttributeResponseBody {
+	s.DBEndpointId = &v
+	return s
+}
+
 func (s *DescribePolarFsAttributeResponseBody) SetDBType(v string) *DescribePolarFsAttributeResponseBody {
 	s.DBType = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBody) SetEndpointItems(v []*DescribePolarFsAttributeResponseBodyEndpointItems) *DescribePolarFsAttributeResponseBody {
+	s.EndpointItems = v
 	return s
 }
 
@@ -576,8 +641,23 @@ func (s *DescribePolarFsAttributeResponseBody) SetLockMode(v string) *DescribePo
 	return s
 }
 
+func (s *DescribePolarFsAttributeResponseBody) SetMaxscaleEndpointId(v string) *DescribePolarFsAttributeResponseBody {
+	s.MaxscaleEndpointId = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBody) SetMetaConnString(v string) *DescribePolarFsAttributeResponseBody {
+	s.MetaConnString = &v
+	return s
+}
+
 func (s *DescribePolarFsAttributeResponseBody) SetMetaInstanceName(v string) *DescribePolarFsAttributeResponseBody {
 	s.MetaInstanceName = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBody) SetMetaMxsConnString(v string) *DescribePolarFsAttributeResponseBody {
+	s.MetaMxsConnString = &v
 	return s
 }
 
@@ -666,6 +746,16 @@ func (s *DescribePolarFsAttributeResponseBody) SetStorageUsed(v float64) *Descri
 	return s
 }
 
+func (s *DescribePolarFsAttributeResponseBody) SetUserDefaultAccName(v string) *DescribePolarFsAttributeResponseBody {
+	s.UserDefaultAccName = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBody) SetUserDefaultAccSk(v string) *DescribePolarFsAttributeResponseBody {
+	s.UserDefaultAccSk = &v
+	return s
+}
+
 func (s *DescribePolarFsAttributeResponseBody) SetVPCId(v string) *DescribePolarFsAttributeResponseBody {
 	s.VPCId = &v
 	return s
@@ -684,6 +774,15 @@ func (s *DescribePolarFsAttributeResponseBody) SetZoneId(v string) *DescribePola
 func (s *DescribePolarFsAttributeResponseBody) Validate() error {
 	if s.CustomBucketPathList != nil {
 		for _, item := range s.CustomBucketPathList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EndpointItems != nil {
+		for _, item := range s.EndpointItems {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -741,6 +840,141 @@ func (s *DescribePolarFsAttributeResponseBodyCustomBucketPathList) SetPath(v str
 }
 
 func (s *DescribePolarFsAttributeResponseBodyCustomBucketPathList) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribePolarFsAttributeResponseBodyEndpointItems struct {
+	AddressItems []*DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ep-xxxxxxxxx
+	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
+	// example:
+	//
+	// S3Gateway
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+}
+
+func (s DescribePolarFsAttributeResponseBodyEndpointItems) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolarFsAttributeResponseBodyEndpointItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItems) GetAddressItems() []*DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems {
+	return s.AddressItems
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItems) GetDBEndpointId() *string {
+	return s.DBEndpointId
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItems) GetEndpointType() *string {
+	return s.EndpointType
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItems) SetAddressItems(v []*DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) *DescribePolarFsAttributeResponseBodyEndpointItems {
+	s.AddressItems = v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItems) SetDBEndpointId(v string) *DescribePolarFsAttributeResponseBodyEndpointItems {
+	s.DBEndpointId = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItems) SetEndpointType(v string) *DescribePolarFsAttributeResponseBodyEndpointItems {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItems) Validate() error {
+	if s.AddressItems != nil {
+		for _, item := range s.AddressItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems struct {
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	IPAddress        *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	NetType          *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	VPCId            *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) GetConnectionString() *string {
+	return s.ConnectionString
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) GetIPAddress() *string {
+	return s.IPAddress
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) GetNetType() *string {
+	return s.NetType
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) GetPort() *string {
+	return s.Port
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) GetVPCId() *string {
+	return s.VPCId
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) GetVSwitchId() *string {
+	return s.VSwitchId
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) SetConnectionString(v string) *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems {
+	s.ConnectionString = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) SetIPAddress(v string) *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems {
+	s.IPAddress = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) SetNetType(v string) *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems {
+	s.NetType = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) SetPort(v string) *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) SetVPCId(v string) *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems {
+	s.VPCId = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) SetVSwitchId(v string) *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems) Validate() error {
 	return dara.Validate(s)
 }
 

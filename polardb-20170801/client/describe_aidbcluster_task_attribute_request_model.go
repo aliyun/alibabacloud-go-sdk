@@ -26,15 +26,15 @@ type iDescribeAIDBClusterTaskAttributeRequest interface {
 }
 
 type DescribeAIDBClusterTaskAttributeRequest struct {
-	// The ID of the cluster.
+	// The task ID.
 	//
 	// example:
 	//
 	// pm-2ze99***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The query mode. Valid value:
+	// The query mode. Valid values:
 	//
-	// - **RelatedAITask**: Returns the task details.
+	// 	- **RelatedAITask**: queries task details.
 	//
 	// example:
 	//

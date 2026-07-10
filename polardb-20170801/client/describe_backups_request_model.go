@@ -46,17 +46,17 @@ type DescribeBackupsRequest struct {
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// - **Automated**: System automatic backup.
+	// 	- **Automated**: automatic backup.
 	//
-	// - **Manual**: Manual backup.
+	// 	- **Manual**: manual backup.
 	//
 	// example:
 	//
 	// Automated
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The destination region for cross-region backup.
+	// The destination region for cross-region backups.
 	//
-	// > This parameter is supported only for PolarDB for MySQL.
+	// > Currently, only PolarDB for MySQL supports this parameter.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type DescribeBackupsRequest struct {
 	BackupRegion *string `json:"BackupRegion,omitempty" xml:"BackupRegion,omitempty"`
 	// The backup status. Valid values:
 	//
-	// - **Success**: The backup is complete.
+	// 	- **Success**: The backup is complete.
 	//
-	// - **Failed**: The backup failed.
+	// 	- **Failed**: The backup failed.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeBackupsRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of the query. The end time must be later than the start time. Specify the time in `YYYY-MM-DDThh:mmZ` format (UTC time).
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format (UTC).
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type DescribeBackupsRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be an integer greater than 0 and no greater than the maximum value of the Integer type. Default value: **1**.
+	// The page number. Set the value to an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -98,11 +98,11 @@ type DescribeBackupsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
 	// Default value: **30**.
 	//
@@ -112,7 +112,7 @@ type DescribeBackupsRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start time of the query. Specify the time in `YYYY-MM-DDThh:mmZ` format (UTC time).
+	// The beginning of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format (UTC).
 	//
 	// This parameter is required.
 	//

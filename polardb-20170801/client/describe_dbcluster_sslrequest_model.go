@@ -15,6 +15,8 @@ type iDescribeDBClusterSSLRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeDBClusterSSLRequest
 	GetOwnerId() *int64
+	SetPfsInstanceId(v string) *DescribeDBClusterSSLRequest
+	GetPfsInstanceId() *string
 	SetResourceOwnerAccount(v string) *DescribeDBClusterSSLRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *DescribeDBClusterSSLRequest
@@ -24,16 +26,20 @@ type iDescribeDBClusterSSLRequest interface {
 type DescribeDBClusterSSLRequest struct {
 	// The cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view detailed information about all clusters under your account, including cluster IDs.
+	// >You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including the cluster ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-************
-	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// pfs-xxx
+	PfsInstanceId        *string `json:"PfsInstanceId,omitempty" xml:"PfsInstanceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -58,6 +64,10 @@ func (s *DescribeDBClusterSSLRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *DescribeDBClusterSSLRequest) GetPfsInstanceId() *string {
+	return s.PfsInstanceId
+}
+
 func (s *DescribeDBClusterSSLRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -78,6 +88,11 @@ func (s *DescribeDBClusterSSLRequest) SetOwnerAccount(v string) *DescribeDBClust
 
 func (s *DescribeDBClusterSSLRequest) SetOwnerId(v int64) *DescribeDBClusterSSLRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBClusterSSLRequest) SetPfsInstanceId(v string) *DescribeDBClusterSSLRequest {
+	s.PfsInstanceId = &v
 	return s
 }
 

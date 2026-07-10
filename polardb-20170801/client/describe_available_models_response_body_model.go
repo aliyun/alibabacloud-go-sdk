@@ -26,7 +26,7 @@ type DescribeAvailableModelsResponseBody struct {
 	//
 	// polardb_ai
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The engine version.
+	// The database engine version.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeAvailableModelsResponseBody struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The list of models.
 	Items []*DescribeAvailableModelsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -100,15 +100,15 @@ func (s *DescribeAvailableModelsResponseBody) Validate() error {
 }
 
 type DescribeAvailableModelsResponseBodyItems struct {
-	// The required GPU configurations.
+	// The supported GPU types.
 	GpuRequired []*DescribeAvailableModelsResponseBodyItemsGpuRequired `json:"GpuRequired,omitempty" xml:"GpuRequired,omitempty" type:"Repeated"`
-	// The minimum number of CPU cores required.
+	// The minimum number of CPUs.
 	//
 	// example:
 	//
 	// 8
 	MinimumCpu *int64 `json:"MinimumCpu,omitempty" xml:"MinimumCpu,omitempty"`
-	// The minimum memory required, in MiB.
+	// The minimum memory size.
 	//
 	// example:
 	//
@@ -128,6 +128,7 @@ type DescribeAvailableModelsResponseBodyItems struct {
 	ModelSeries *string `json:"ModelSeries,omitempty" xml:"ModelSeries,omitempty"`
 	// The supported GPU models.
 	SupportedGpuModels []*string `json:"SupportedGpuModels,omitempty" xml:"SupportedGpuModels,omitempty" type:"Repeated"`
+	TuneArch           *string   `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
 }
 
 func (s DescribeAvailableModelsResponseBodyItems) String() string {
@@ -162,6 +163,10 @@ func (s *DescribeAvailableModelsResponseBodyItems) GetSupportedGpuModels() []*st
 	return s.SupportedGpuModels
 }
 
+func (s *DescribeAvailableModelsResponseBodyItems) GetTuneArch() *string {
+	return s.TuneArch
+}
+
 func (s *DescribeAvailableModelsResponseBodyItems) SetGpuRequired(v []*DescribeAvailableModelsResponseBodyItemsGpuRequired) *DescribeAvailableModelsResponseBodyItems {
 	s.GpuRequired = v
 	return s
@@ -192,6 +197,11 @@ func (s *DescribeAvailableModelsResponseBodyItems) SetSupportedGpuModels(v []*st
 	return s
 }
 
+func (s *DescribeAvailableModelsResponseBodyItems) SetTuneArch(v string) *DescribeAvailableModelsResponseBodyItems {
+	s.TuneArch = &v
+	return s
+}
+
 func (s *DescribeAvailableModelsResponseBodyItems) Validate() error {
 	if s.GpuRequired != nil {
 		for _, item := range s.GpuRequired {
@@ -206,7 +216,7 @@ func (s *DescribeAvailableModelsResponseBodyItems) Validate() error {
 }
 
 type DescribeAvailableModelsResponseBodyItemsGpuRequired struct {
-	// The minimum number of GPUs required.
+	// The minimum number of GPUs.
 	//
 	// example:
 	//

@@ -41,6 +41,8 @@ type iCreateAIDBClusterTaskRequest interface {
 	GetSecurityGroupId() *string
 	SetTaskName(v string) *CreateAIDBClusterTaskRequest
 	GetTaskName() *string
+	SetTuneArch(v string) *CreateAIDBClusterTaskRequest
+	GetTuneArch() *string
 	SetVPCId(v string) *CreateAIDBClusterTaskRequest
 	GetVPCId() *string
 	SetVSwitchId(v string) *CreateAIDBClusterTaskRequest
@@ -64,21 +66,21 @@ type CreateAIDBClusterTaskRequest struct {
 	//
 	// polar.pg.g6.4xlarge.guh
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The ID of the training dataset. This parameter is required for fine-tuning.
+	// The training dataset ID. This parameter is required for fine-tuning.
 	//
 	// example:
 	//
 	// pds-2zetrain***
 	DatasetPath *string `json:"DatasetPath,omitempty" xml:"DatasetPath,omitempty"`
-	// The ID of the validation dataset. This parameter is required for evaluation.
+	// The validation dataset ID. This parameter is required for evaluation.
 	//
 	// example:
 	//
 	// pds-2zetrain***
 	EvalDatasetPath *string `json:"EvalDatasetPath,omitempty" xml:"EvalDatasetPath,omitempty"`
-	// The type of model service. Valid values:
+	// The model service type. Valid values:
 	//
-	// - **aitrain**: For model operator tuning.
+	//  	- **aitrain**: model operator tuning
 	//
 	// This parameter is required.
 	//
@@ -88,9 +90,9 @@ type CreateAIDBClusterTaskRequest struct {
 	KubeType *string `json:"KubeType,omitempty" xml:"KubeType,omitempty"`
 	// The model name.
 	//
-	// - For a **preset model**, specify the model name.
+	// 	- **For a preset model, specify the name of the selected model.**
 	//
-	// - For a **custom model**, specify the path to the model. This option is for models trained in a cold storage edition instance.
+	// 	- **For a custom model, specify the path where the model is stored (the model trained in a cold storage instance).**
 	//
 	// This parameter is required.
 	//
@@ -100,9 +102,9 @@ type CreateAIDBClusterTaskRequest struct {
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The model source. Valid values:
 	//
-	// - **public**: A preset model.
+	// 	- **public**: preset model
 	//
-	// - **custom**: A custom model.
+	// 	- **custom**: custom model
 	//
 	// This parameter is required.
 	//
@@ -110,7 +112,7 @@ type CreateAIDBClusterTaskRequest struct {
 	//
 	// public
 	ModelSource *string `json:"ModelSource,omitempty" xml:"ModelSource,omitempty"`
-	// The type of the custom model.
+	// The custom model type.
 	//
 	// example:
 	//
@@ -126,7 +128,7 @@ type CreateAIDBClusterTaskRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The runtime parameters, specified as a JSON string.
+	// The running parameters in JSON string format.
 	//
 	// This parameter is required.
 	//
@@ -140,13 +142,14 @@ type CreateAIDBClusterTaskRequest struct {
 	//
 	// sg-bp**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The name of the task.
+	// The description of the model service.
 	//
 	// example:
 	//
 	// xxxx
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The VPC ID.
+	TuneArch *string `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
+	// The virtual private cloud (VPC) ID.
 	//
 	// example:
 	//
@@ -238,6 +241,10 @@ func (s *CreateAIDBClusterTaskRequest) GetTaskName() *string {
 	return s.TaskName
 }
 
+func (s *CreateAIDBClusterTaskRequest) GetTuneArch() *string {
+	return s.TuneArch
+}
+
 func (s *CreateAIDBClusterTaskRequest) GetVPCId() *string {
 	return s.VPCId
 }
@@ -327,6 +334,11 @@ func (s *CreateAIDBClusterTaskRequest) SetSecurityGroupId(v string) *CreateAIDBC
 
 func (s *CreateAIDBClusterTaskRequest) SetTaskName(v string) *CreateAIDBClusterTaskRequest {
 	s.TaskName = &v
+	return s
+}
+
+func (s *CreateAIDBClusterTaskRequest) SetTuneArch(v string) *CreateAIDBClusterTaskRequest {
+	s.TuneArch = &v
 	return s
 }
 

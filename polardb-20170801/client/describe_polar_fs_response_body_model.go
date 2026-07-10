@@ -23,18 +23,26 @@ type iDescribePolarFsResponseBody interface {
 
 type DescribePolarFsResponseBody struct {
 	Items *DescribePolarFsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on the current page.
+	//
 	// example:
 	//
 	// 13
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 8CD1852F-8176-55E4-891C-4478DC00CC7A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 16

@@ -24,27 +24,27 @@ type iDescribeAIDBClusterTasksResponseBody interface {
 }
 
 type DescribeAIDBClusterTasksResponseBody struct {
-	// The engine.
+	// The cluster engine.
 	//
 	// example:
 	//
 	// polardb_ai
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The engine version.
+	// The database engine version.
 	//
 	// example:
 	//
 	// 3.1
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// A list of model operators.
+	// The cluster endpoint details.
 	Items []*DescribeAIDBClusterTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The PolarDB cluster ID.
+	// The ID of the PolarDB cluster.
 	//
 	// example:
 	//
 	// pc-2ze***
 	RelativeDBClusterId *string `json:"RelativeDBClusterId,omitempty" xml:"RelativeDBClusterId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *DescribeAIDBClusterTasksResponseBody) Validate() error {
 }
 
 type DescribeAIDBClusterTasksResponseBodyItems struct {
-	// The completion time.
+	// The task completion time.
 	//
 	// example:
 	//
@@ -152,37 +152,37 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// test
 	DBNodeDescription *string `json:"DBNodeDescription,omitempty" xml:"DBNodeDescription,omitempty"`
-	// The model operator instance ID.
+	// The instance ID of the model operator.
 	//
 	// example:
 	//
 	// pm-2ze***
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The instance status. This parameter is not always returned.
+	// The instance status. This parameter may not be returned.
 	//
 	// example:
 	//
 	// RUNNING
 	DBNodeStatus *string `json:"DBNodeStatus,omitempty" xml:"DBNodeStatus,omitempty"`
-	// The description of the instance status.
+	// The instance status.
 	//
 	// example:
 	//
 	// RUNNING
 	DBNodeStatusDesc *string `json:"DBNodeStatusDesc,omitempty" xml:"DBNodeStatusDesc,omitempty"`
-	// The availability zone.
+	// The zone.
 	//
 	// example:
 	//
 	// cn-beijing-i
 	DataZoneId *string `json:"DataZoneId,omitempty" xml:"DataZoneId,omitempty"`
-	// The engine.
+	// The cluster engine.
 	//
 	// example:
 	//
 	// polardb_ai
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The engine version.
+	// The database engine version.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// ***
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The model path.
+	// The path.
 	//
 	// example:
 	//
@@ -206,30 +206,31 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// public
 	ModelSource *string `json:"ModelSource,omitempty" xml:"ModelSource,omitempty"`
-	// The runtime parameters.
+	// The running parameters.
 	//
 	// example:
 	//
 	// xxx
 	RunningTimes *string `json:"RunningTimes,omitempty" xml:"RunningTimes,omitempty"`
-	// The start time.
+	// The task start time.
 	//
 	// example:
 	//
 	// 2020-06-09T18:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The training mode.
+	// The mode.
 	//
 	// example:
 	//
 	// sft
 	TrainMode *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
-	// The training type.
+	// The type.
 	//
 	// example:
 	//
 	// lora
 	TrainType *string `json:"TrainType,omitempty" xml:"TrainType,omitempty"`
+	TuneArch  *string `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
 }
 
 func (s DescribeAIDBClusterTasksResponseBodyItems) String() string {
@@ -302,6 +303,10 @@ func (s *DescribeAIDBClusterTasksResponseBodyItems) GetTrainMode() *string {
 
 func (s *DescribeAIDBClusterTasksResponseBodyItems) GetTrainType() *string {
 	return s.TrainType
+}
+
+func (s *DescribeAIDBClusterTasksResponseBodyItems) GetTuneArch() *string {
+	return s.TuneArch
 }
 
 func (s *DescribeAIDBClusterTasksResponseBodyItems) SetCompletedTime(v string) *DescribeAIDBClusterTasksResponseBodyItems {
@@ -381,6 +386,11 @@ func (s *DescribeAIDBClusterTasksResponseBodyItems) SetTrainMode(v string) *Desc
 
 func (s *DescribeAIDBClusterTasksResponseBodyItems) SetTrainType(v string) *DescribeAIDBClusterTasksResponseBodyItems {
 	s.TrainType = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterTasksResponseBodyItems) SetTuneArch(v string) *DescribeAIDBClusterTasksResponseBodyItems {
+	s.TuneArch = &v
 	return s
 }
 

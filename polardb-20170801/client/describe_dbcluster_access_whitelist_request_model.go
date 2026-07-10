@@ -15,6 +15,8 @@ type iDescribeDBClusterAccessWhitelistRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeDBClusterAccessWhitelistRequest
 	GetOwnerId() *int64
+	SetPfsInstanceId(v string) *DescribeDBClusterAccessWhitelistRequest
+	GetPfsInstanceId() *string
 	SetResourceOwnerAccount(v string) *DescribeDBClusterAccessWhitelistRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *DescribeDBClusterAccessWhitelistRequest
@@ -29,9 +31,13 @@ type DescribeDBClusterAccessWhitelistRequest struct {
 	// example:
 	//
 	// pc-***************
-	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// pfs-xxx
+	PfsInstanceId        *string `json:"PfsInstanceId,omitempty" xml:"PfsInstanceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -56,6 +62,10 @@ func (s *DescribeDBClusterAccessWhitelistRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *DescribeDBClusterAccessWhitelistRequest) GetPfsInstanceId() *string {
+	return s.PfsInstanceId
+}
+
 func (s *DescribeDBClusterAccessWhitelistRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -76,6 +86,11 @@ func (s *DescribeDBClusterAccessWhitelistRequest) SetOwnerAccount(v string) *Des
 
 func (s *DescribeDBClusterAccessWhitelistRequest) SetOwnerId(v int64) *DescribeDBClusterAccessWhitelistRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBClusterAccessWhitelistRequest) SetPfsInstanceId(v string) *DescribeDBClusterAccessWhitelistRequest {
+	s.PfsInstanceId = &v
 	return s
 }
 

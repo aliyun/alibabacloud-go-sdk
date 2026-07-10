@@ -18,7 +18,7 @@ type iCreateAIDBClusterTaskResponseBody interface {
 }
 
 type CreateAIDBClusterTaskResponseBody struct {
-	// The ID of the model operator instance.
+	// The instance ID of the generated model service.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateAIDBClusterTaskResponseBody struct {
 	//
 	// 2035638*******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

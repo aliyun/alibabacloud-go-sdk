@@ -21,6 +21,8 @@ type iModifyDBClusterAccessWhitelistRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *ModifyDBClusterAccessWhitelistRequest
 	GetOwnerId() *int64
+	SetPfsInstanceId(v string) *ModifyDBClusterAccessWhitelistRequest
+	GetPfsInstanceId() *string
 	SetResourceOwnerAccount(v string) *ModifyDBClusterAccessWhitelistRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ModifyDBClusterAccessWhitelistRequest
@@ -34,31 +36,27 @@ type iModifyDBClusterAccessWhitelistRequest interface {
 }
 
 type ModifyDBClusterAccessWhitelistRequest struct {
-	// The attribute of the IP address whitelist group. If you set this parameter to \\`hidden\\`, the whitelist group is not visible in the console.
+	// The attribute of the IP whitelist group. If this parameter is set to **hidden**, the group is not displayed in the console.
 	//
-	// > - You cannot hide an IP address whitelist group that is already visible in the console.
+	// > - IP whitelist groups that are already displayed in the console cannot be hidden.
 	//
-	// >
-	//
-	// > - This parameter is available only when **WhiteListType*	- is set to **IP**.
+	// > - This parameter takes effect only when **WhiteListType*	- is set to **IP**.
 	//
 	// example:
 	//
 	// hidden
 	DBClusterIPArrayAttribute *string `json:"DBClusterIPArrayAttribute,omitempty" xml:"DBClusterIPArrayAttribute,omitempty"`
-	// The name of the IP address whitelist group. The name must be 2 to 120 characters in length. It must consist of lowercase letters and digits. The name must start with a letter and end with a letter or a digit.
+	// The name of the IP whitelist group. The name must be 2 to 120 characters in length and can contain lowercase letters and digits. The name must start with a letter and end with a letter or digit.
 	//
 	// - If the specified whitelist group name does not exist, a new whitelist group is created.
 	//
 	// - If the specified whitelist group name already exists, the whitelist group is modified.
 	//
-	// - If you do not specify this parameter, the \\`default\\` group is modified.
+	// - If this parameter is not specified, the default group is modified.
 	//
-	// > 	- A cluster can have up to 50 IP address whitelist groups.
+	// > - A maximum of 50 IP whitelist groups are supported for a cluster.
 	//
-	// >
-	//
-	// > 	- This parameter is available only when **WhiteListType*	- is set to **IP**.
+	// > - This parameter takes effect only when **WhiteListType*	- is set to **IP**.
 	//
 	// example:
 	//
@@ -72,43 +70,45 @@ type ModifyDBClusterAccessWhitelistRequest struct {
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The method used to modify the IP address whitelist. Valid values:
+	// The method used to modify the IP whitelist. Valid values:
 	//
-	// - **Cover**: Overwrites the original IP address whitelist. This is the default value.
+	// - **Cover**: overwrites the original IP whitelist (default value).
 	//
-	// - **Append**: Appends IP addresses to the whitelist.
+	// - **Append**: appends IP addresses to the whitelist.
 	//
-	// - **Delete**: Deletes IP addresses from the whitelist.
+	// - **Delete**: removes IP addresses from the whitelist.
 	//
-	// > This parameter is available only when **WhiteListType*	- is set to **IP**.
+	// > This parameter takes effect only when **WhiteListType*	- is set to **IP**.
 	//
 	// example:
 	//
 	// Cover
-	ModifyMode           *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ModifyMode   *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// pfs-xxx
+	PfsInstanceId        *string `json:"PfsInstanceId,omitempty" xml:"PfsInstanceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The security group ID. Separate multiple security group IDs with commas (,).
+	// The security group IDs. Separate multiple security group IDs with commas (,).
 	//
-	// > - A cluster can be associated with up to three security groups.
+	// > - A maximum of 3 security groups are supported for a cluster.
 	//
-	// >
-	//
-	// > - This parameter is available only when **WhiteListType*	- is set to **SecurityGroup**.
+	// > - This parameter takes effect only when **WhiteListType*	- is set to **SecurityGroup**.
 	//
 	// example:
 	//
 	// sg-*********
 	SecurityGroupIds *string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty"`
-	// The IP addresses or CIDR blocks in the IP address whitelist group. All IP address whitelist groups can contain a total of 1,000 IP addresses or CIDR blocks. Separate multiple IP addresses with commas (,). The following formats are supported:
+	// The IP addresses or CIDR blocks in the IP whitelist group. A maximum of 1,000 IP addresses or CIDR blocks can be added to all IP whitelist groups. Separate multiple IP addresses with commas (,). The following two formats are supported:
 	//
-	// - IP address format. For example: 10.23.12.24.
+	// - IP address format, such as 10.23.12.24.
 	//
-	// - CIDR format. For example: 10.23.12.24/24. The number 24 indicates the prefix length of the IP address. The prefix length can range from 1 to 32.
+	// - CIDR format, such as 10.23.12.24/24, where 24 indicates the prefix length of the CIDR block. The prefix length ranges from 1 to 32.
 	//
-	// > This parameter is available only when **WhiteListType*	- is set to **IP**.
+	// > This parameter takes effect only when **WhiteListType*	- is set to **IP**.
 	//
 	// example:
 	//
@@ -116,11 +116,11 @@ type ModifyDBClusterAccessWhitelistRequest struct {
 	SecurityIps *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
 	// The type of the whitelist. Valid values:
 	//
-	// - **IP**: IP address whitelist group.
+	// - **IP**: IP whitelist group.
 	//
-	// - **SecurityGroup**: Security group.
+	// - **SecurityGroup**: security group.
 	//
-	// The default value is **IP**.
+	// Default value: **IP**.
 	//
 	// example:
 	//
@@ -158,6 +158,10 @@ func (s *ModifyDBClusterAccessWhitelistRequest) GetOwnerAccount() *string {
 
 func (s *ModifyDBClusterAccessWhitelistRequest) GetOwnerId() *int64 {
 	return s.OwnerId
+}
+
+func (s *ModifyDBClusterAccessWhitelistRequest) GetPfsInstanceId() *string {
+	return s.PfsInstanceId
 }
 
 func (s *ModifyDBClusterAccessWhitelistRequest) GetResourceOwnerAccount() *string {
@@ -207,6 +211,11 @@ func (s *ModifyDBClusterAccessWhitelistRequest) SetOwnerAccount(v string) *Modif
 
 func (s *ModifyDBClusterAccessWhitelistRequest) SetOwnerId(v int64) *ModifyDBClusterAccessWhitelistRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBClusterAccessWhitelistRequest) SetPfsInstanceId(v string) *ModifyDBClusterAccessWhitelistRequest {
+	s.PfsInstanceId = &v
 	return s
 }
 

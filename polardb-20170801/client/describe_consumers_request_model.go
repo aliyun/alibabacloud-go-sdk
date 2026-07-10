@@ -13,6 +13,10 @@ type iDescribeConsumersRequest interface {
 	GetConsumerGroupId() *string
 	SetConsumerId(v string) *DescribeConsumersRequest
 	GetConsumerId() *string
+	SetConsumerName(v string) *DescribeConsumersRequest
+	GetConsumerName() *string
+	SetConsumerNameList(v string) *DescribeConsumersRequest
+	GetConsumerNameList() *string
 	SetGwClusterId(v string) *DescribeConsumersRequest
 	GetGwClusterId() *string
 	SetPageNumber(v int32) *DescribeConsumersRequest
@@ -24,18 +28,20 @@ type iDescribeConsumersRequest interface {
 }
 
 type DescribeConsumersRequest struct {
-	// The consumer group ID.
+	// The user group ID.
 	//
 	// example:
 	//
 	// cg-xxxxxxxx
 	ConsumerGroupId *string `json:"ConsumerGroupId,omitempty" xml:"ConsumerGroupId,omitempty"`
-	// The consumer ID.
+	// The user ID.
 	//
 	// example:
 	//
 	// c-mqveroemc***
-	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	ConsumerId       *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	ConsumerName     *string `json:"ConsumerName,omitempty" xml:"ConsumerName,omitempty"`
+	ConsumerNameList *string `json:"ConsumerNameList,omitempty" xml:"ConsumerNameList,omitempty"`
 	// The gateway instance ID.
 	//
 	// This parameter is required.
@@ -44,19 +50,21 @@ type DescribeConsumersRequest struct {
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The page number. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values are:
+	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**. The default is **30**.
+	// 	- **100**
+	//
+	// Default value: **30**.
 	//
 	// example:
 	//
@@ -86,6 +94,14 @@ func (s *DescribeConsumersRequest) GetConsumerId() *string {
 	return s.ConsumerId
 }
 
+func (s *DescribeConsumersRequest) GetConsumerName() *string {
+	return s.ConsumerName
+}
+
+func (s *DescribeConsumersRequest) GetConsumerNameList() *string {
+	return s.ConsumerNameList
+}
+
 func (s *DescribeConsumersRequest) GetGwClusterId() *string {
 	return s.GwClusterId
 }
@@ -109,6 +125,16 @@ func (s *DescribeConsumersRequest) SetConsumerGroupId(v string) *DescribeConsume
 
 func (s *DescribeConsumersRequest) SetConsumerId(v string) *DescribeConsumersRequest {
 	s.ConsumerId = &v
+	return s
+}
+
+func (s *DescribeConsumersRequest) SetConsumerName(v string) *DescribeConsumersRequest {
+	s.ConsumerName = &v
+	return s
+}
+
+func (s *DescribeConsumersRequest) SetConsumerNameList(v string) *DescribeConsumersRequest {
+	s.ConsumerNameList = &v
 	return s
 }
 

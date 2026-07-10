@@ -16,7 +16,7 @@ type iDescribeAvailableModelsRequest interface {
 }
 
 type DescribeAvailableModelsRequest struct {
-	// The service type. The value must be set to `aideploy`.
+	// aideploy
 	//
 	// example:
 	//

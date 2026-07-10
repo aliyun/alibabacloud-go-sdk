@@ -11,6 +11,8 @@ type iCreateBackupRequest interface {
 	GoString() string
 	SetClientToken(v string) *CreateBackupRequest
 	GetClientToken() *string
+	SetComment(v string) *CreateBackupRequest
+	GetComment() *string
 	SetDBClusterId(v string) *CreateBackupRequest
 	GetDBClusterId() *string
 	SetOwnerAccount(v string) *CreateBackupRequest
@@ -24,12 +26,13 @@ type iCreateBackupRequest interface {
 }
 
 type CreateBackupRequest struct {
-	// A client token to ensure the idempotence of the request. The client generates this value, which must be unique among different requests. The token is case-sensitive and cannot exceed 64 ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The token is case-sensitive and can contain only ASCII characters. The token can be up to 64 characters in length.
 	//
 	// example:
 	//
 	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Comment     *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -56,6 +59,10 @@ func (s *CreateBackupRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateBackupRequest) GetComment() *string {
+	return s.Comment
+}
+
 func (s *CreateBackupRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
@@ -78,6 +85,11 @@ func (s *CreateBackupRequest) GetResourceOwnerId() *int64 {
 
 func (s *CreateBackupRequest) SetClientToken(v string) *CreateBackupRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateBackupRequest) SetComment(v string) *CreateBackupRequest {
+	s.Comment = &v
 	return s
 }
 

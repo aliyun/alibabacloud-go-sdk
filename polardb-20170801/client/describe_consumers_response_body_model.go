@@ -24,7 +24,7 @@ type iDescribeConsumersResponseBody interface {
 }
 
 type DescribeConsumersResponseBody struct {
-	// A list of consumers.
+	// The list of users.
 	Items []*DescribeConsumersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -32,19 +32,19 @@ type DescribeConsumersResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of records on the current page.
 	//
 	// example:
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The page size. Valid values: 30, 50, and 100. The default value is 30.
+	// The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -134,79 +134,79 @@ func (s *DescribeConsumersResponseBody) Validate() error {
 }
 
 type DescribeConsumersResponseBodyItems struct {
-	// The models that the consumer is allowed to access, specified as a JSON array in string format.
+	// The list of supported models.
 	//
 	// example:
 	//
 	// "[]"
 	AllowedModels *string `json:"AllowedModels,omitempty" xml:"AllowedModels,omitempty"`
-	// The full API key. This value is returned only by this operation.
+	// The full API key, returned only in this response.
 	//
 	// example:
 	//
 	// xxxxxxxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The consumer group ID.
+	// The user group ID.
 	//
 	// example:
 	//
 	// cg-xxxxxx
 	ConsumerGroupId *string `json:"ConsumerGroupId,omitempty" xml:"ConsumerGroupId,omitempty"`
-	// The consumer group name.
+	// The user group name.
 	//
 	// example:
 	//
 	// test
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
-	// The consumer ID.
+	// The user ID.
 	//
 	// example:
 	//
 	// c-mqveroemc***
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	// The time when the consumer was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-01-28T09:56:03+08:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the consumer was last modified.
+	// The update time.
 	//
 	// example:
 	//
 	// 2026-01-04T16:09:29+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The total usage.
+	// The total cumulative usage.
 	//
 	// example:
 	//
 	// 1000
 	LifetimeCostCount *int64 `json:"LifetimeCostCount,omitempty" xml:"LifetimeCostCount,omitempty"`
-	// The total number of tokens consumed.
+	// The total cost for the current month.
 	//
 	// example:
 	//
 	// 100
 	LifetimeTokenCount *int64 `json:"LifetimeTokenCount,omitempty" xml:"LifetimeTokenCount,omitempty"`
-	// The month-to-date usage.
+	// The usage for the current month.
 	//
 	// example:
 	//
 	// 10
 	MtdCostCount *int64 `json:"MtdCostCount,omitempty" xml:"MtdCostCount,omitempty"`
-	// The number of tokens consumed month-to-date.
+	// The total cumulative cost.
 	//
 	// example:
 	//
 	// 10000
 	MtdTokenCount *int64 `json:"MtdTokenCount,omitempty" xml:"MtdTokenCount,omitempty"`
-	// The consumer name.
+	// The username.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The consumer nickname.
+	// The nickname.
 	//
 	// example:
 	//

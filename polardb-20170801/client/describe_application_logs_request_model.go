@@ -48,7 +48,7 @@ type DescribeApplicationLogsRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The component instance ID.
+	// The subcomponent instance ID.
 	//
 	// example:
 	//
@@ -60,21 +60,21 @@ type DescribeApplicationLogsRequest struct {
 	//
 	// analytics
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	// The end time for the query. Specify the time in `YYYY-MM-DDTHH:mmZ` format (UTC).
+	// The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format (UTC).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2026-03-25T02:11:00Z
+	// 2026-03-25T02:11Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The keyword to search for. This parameter applies only to polarclaw instances.
+	// The search keyword. This parameter is used for PolarClaw instances.
 	//
 	// example:
 	//
 	// Config
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The log level. This parameter applies only to polarclaw instances.
+	// The log level. This parameter is used for PolarClaw instances.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type DescribeApplicationLogsRequest struct {
 	Level        *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number to return. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 3
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **30**. Valid values: 30 to 100.
+	// The number of entries per page. Default value: **30**. Valid values: 30 to 100.
 	//
 	// example:
 	//
@@ -103,15 +103,15 @@ type DescribeApplicationLogsRequest struct {
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The start time for the query. Specify the time in `YYYY-MM-DDTHH:mmZ` format (UTC).
+	// The beginning of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format (UTC).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2026-03-25T01:57:00Z
+	// 2026-03-25T01:57Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The log type. This parameter applies only to polarclaw instances. Currently, only `gateway` is supported.
+	// The log type. This parameter is used for PolarClaw instances. Currently, only gateway is supported.
 	//
 	// example:
 	//

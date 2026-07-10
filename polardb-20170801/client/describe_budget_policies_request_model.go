@@ -23,12 +23,14 @@ type iDescribeBudgetPoliciesRequest interface {
 	GetPageSize() *int32
 	SetRegionId(v string) *DescribeBudgetPoliciesRequest
 	GetRegionId() *string
+	SetScopeRefName(v string) *DescribeBudgetPoliciesRequest
+	GetScopeRefName() *string
 	SetStatus(v string) *DescribeBudgetPoliciesRequest
 	GetStatus() *string
 }
 
 type DescribeBudgetPoliciesRequest struct {
-	// The ID of the consumer group or user. This parameter is required if BudgetDimensionType is set to ConsumerGroup or Consumer.
+	// The dimension object ID. This parameter is required when BudgetDimensionType is set to ConsumerGroup or Consumer.
 	//
 	// example:
 	//
@@ -36,9 +38,9 @@ type DescribeBudgetPoliciesRequest struct {
 	BudgetDimensionRefId *string `json:"BudgetDimensionRefId,omitempty" xml:"BudgetDimensionRefId,omitempty"`
 	// The policy type. Valid values:
 	//
-	// - **ConsumerGroup**: The policy applies to a consumer group.
+	// - **ConsumerGroup**: total budget for a user group
 	//
-	// - **Consumer**: The policy applies to a user.
+	// - **Consumer**: total budget for a user
 	//
 	// example:
 	//
@@ -66,13 +68,13 @@ type DescribeBudgetPoliciesRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
-	// The default value is **30**.
+	// Default value: **30**.
 	//
 	// example:
 	//
@@ -83,12 +85,13 @@ type DescribeBudgetPoliciesRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScopeRefName *string `json:"ScopeRefName,omitempty" xml:"ScopeRefName,omitempty"`
 	// The policy status. Valid values:
 	//
-	// - **Enabled**
+	// - **Enabled**: enabled
 	//
-	// - **Disabled**
+	// - **Disenabled**: disabled
 	//
 	// example:
 	//
@@ -132,6 +135,10 @@ func (s *DescribeBudgetPoliciesRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeBudgetPoliciesRequest) GetScopeRefName() *string {
+	return s.ScopeRefName
+}
+
 func (s *DescribeBudgetPoliciesRequest) GetStatus() *string {
 	return s.Status
 }
@@ -168,6 +175,11 @@ func (s *DescribeBudgetPoliciesRequest) SetPageSize(v int32) *DescribeBudgetPoli
 
 func (s *DescribeBudgetPoliciesRequest) SetRegionId(v string) *DescribeBudgetPoliciesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeBudgetPoliciesRequest) SetScopeRefName(v string) *DescribeBudgetPoliciesRequest {
+	s.ScopeRefName = &v
 	return s
 }
 

@@ -29,16 +29,15 @@ type DescribeApplicationLogsResponseBody struct {
 	// example:
 	//
 	// pa-**************
-	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// A container for the log data.
-	Items *DescribeApplicationLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	ApplicationId *string                                   `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	Items         *DescribeApplicationLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
@@ -50,7 +49,7 @@ type DescribeApplicationLogsResponseBody struct {
 	//
 	// CED079B7-A408-41A1-BFF1-EC608E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

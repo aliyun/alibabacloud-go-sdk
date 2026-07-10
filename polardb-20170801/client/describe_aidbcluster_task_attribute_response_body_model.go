@@ -45,6 +45,8 @@ type iDescribeAIDBClusterTaskAttributeResponseBody interface {
 	GetRequestId() *string
 	SetTaskInfo(v []*DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo) *DescribeAIDBClusterTaskAttributeResponseBody
 	GetTaskInfo() []*DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo
+	SetTuneArch(v string) *DescribeAIDBClusterTaskAttributeResponseBody
+	GetTuneArch() *string
 	SetVPCId(v string) *DescribeAIDBClusterTaskAttributeResponseBody
 	GetVPCId() *string
 	SetVSwitchId(v string) *DescribeAIDBClusterTaskAttributeResponseBody
@@ -52,31 +54,31 @@ type iDescribeAIDBClusterTaskAttributeResponseBody interface {
 }
 
 type DescribeAIDBClusterTaskAttributeResponseBody struct {
-	// The access information for the model in a test deployment.
+	// The access information of the model in the test deployment scenario.
 	//
 	// example:
 	//
 	// {\\"networkInterfaceId\\":\\"eni-2zea***\\",\\"port\\":\\"8000\\",\\"host\\":\\"192.**.**.**\\"}
 	AccessInfo *string `json:"AccessInfo,omitempty" xml:"AccessInfo,omitempty"`
-	// The cluster network type.
+	// The network type of the cluster.
 	//
 	// example:
 	//
 	// VPC
 	ClusterNetworkType *string `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
-	// The task creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-11-12T03:45:13Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cluster description.
+	// The task name.
 	//
 	// example:
 	//
 	// task01
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The cluster ID.
+	// The task ID.
 	//
 	// example:
 	//
@@ -84,23 +86,23 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The training status. Valid values:
 	//
-	// - **ACTIVATION**: Training in progress.
+	// 	- **ACTIVATION**: Training in progress.
 	//
-	// - **COMPLETED**: Training successful.
+	// 	- **COMPLETED**: Training succeeded.
 	//
-	// - **FAILED**: Training failed.
+	// 	- **FAILED**: Training failed.
 	//
 	// example:
 	//
 	// COMPLETED
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The training status description. Valid values:
+	// The training status. Valid values:
 	//
-	// - **ACTIVATION**: Training in progress.
+	// 	- **ACTIVATION**: Training in progress.
 	//
-	// - **COMPLETED**: Training successful.
+	// 	- **COMPLETED**: Training succeeded.
 	//
-	// - **FAILED**: Training failed.
+	// 	- **FAILED**: Training failed.
 	//
 	// example:
 	//
@@ -112,19 +114,19 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	//
 	// polardb_ai
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version. Valid value:
+	// The version. Valid values:
 	//
-	// - **3.1**: Model operator tuning.
+	// 	- **3.1**: model operator tuning.
 	//
 	// example:
 	//
 	// 3.1
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The datasets used for the task.
+	// The datasets.
 	DataSets []*DescribeAIDBClusterTaskAttributeResponseBodyDataSets `json:"DataSets,omitempty" xml:"DataSets,omitempty" type:"Repeated"`
-	// A list of objects containing additional information about the task.
+	// The additional information, including runtime parameters.
 	ExtraInfo []map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Repeated"`
-	// The instance type. Valid value:
+	// The type of the instance. Valid values:
 	//
 	// - **18**.
 	//
@@ -134,9 +136,9 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	KindCode *int64 `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - **0**: Locked.
+	// 	- **0**: Locked.
 	//
-	// - **1**: Unlocked.
+	// 	- **1**: Unlocked.
 	//
 	// example:
 	//
@@ -154,17 +156,18 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	//
 	// 8:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// A comma-separated list of output model paths from the model fine-tuning task.
+	// The list of output model paths in the model fine-tuning scenario.
 	ModelPath *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 45D24263-7E3A-4140-9472-************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of objects containing information about each training task.
+	// The task information.
 	TaskInfo []*DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Repeated"`
-	// The VPC ID.
+	TuneArch *string                                                 `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
+	// The virtual private cloud (VPC) ID.
 	//
 	// example:
 	//
@@ -256,6 +259,10 @@ func (s *DescribeAIDBClusterTaskAttributeResponseBody) GetRequestId() *string {
 
 func (s *DescribeAIDBClusterTaskAttributeResponseBody) GetTaskInfo() []*DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo {
 	return s.TaskInfo
+}
+
+func (s *DescribeAIDBClusterTaskAttributeResponseBody) GetTuneArch() *string {
+	return s.TuneArch
 }
 
 func (s *DescribeAIDBClusterTaskAttributeResponseBody) GetVPCId() *string {
@@ -356,6 +363,11 @@ func (s *DescribeAIDBClusterTaskAttributeResponseBody) SetTaskInfo(v []*Describe
 	return s
 }
 
+func (s *DescribeAIDBClusterTaskAttributeResponseBody) SetTuneArch(v string) *DescribeAIDBClusterTaskAttributeResponseBody {
+	s.TuneArch = &v
+	return s
+}
+
 func (s *DescribeAIDBClusterTaskAttributeResponseBody) SetVPCId(v string) *DescribeAIDBClusterTaskAttributeResponseBody {
 	s.VPCId = &v
 	return s
@@ -401,17 +413,17 @@ type DescribeAIDBClusterTaskAttributeResponseBodyDataSets struct {
 	//
 	// polardb_ai/datasets/train/grpo/dataset02/test-**.jsonl#1000
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The proportion of the training set reserved for validation.
+	// The ratio of data split from the training set.
 	//
 	// example:
 	//
 	// 0.1
 	SplitDatasetRatio *string `json:"SplitDatasetRatio,omitempty" xml:"SplitDatasetRatio,omitempty"`
-	// The type of the dataset. Valid values:
+	// The type. Valid values:
 	//
-	// - **train**: The training set.
+	// 	- **train**: training set.
 	//
-	// - **eval**: The validation set.
+	// 	- **eval**: validation set.
 	//
 	// example:
 	//
@@ -474,23 +486,23 @@ type DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo struct {
 	//
 	// 2025-09-10T01:56:00Z
 	CompletedTime *string `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
-	// The base model.
+	// The foundation model.
 	//
 	// example:
 	//
 	// Qwen-1.7B
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The path to the custom model.
+	// The path of the custom model.
 	//
 	// example:
 	//
 	// Qwen-1.7B
 	ModelPath *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
-	// The source of the model. Valid values:
+	// The model source. Valid values:
 	//
-	// - **public**: A pre-built model.
+	// 	- **public**: pre-trained model.
 	//
-	// - **custom**: A custom model.
+	// 	- **custom**: custom model.
 	//
 	// example:
 	//
@@ -510,9 +522,9 @@ type DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **sft**: Supervised Fine-tuning.
+	// 	- **sft**: SFT-efficient training.
 	//
-	// - **grpo**: Reinforcement learning.
+	// 	- **grpo**: GRPO-reinforcement learning.
 	//
 	// example:
 	//
@@ -520,9 +532,9 @@ type DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo struct {
 	TrainMode *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
 	// The training method. Valid values:
 	//
-	// - **lora**: Low-Rank Adaptation (LoRA) training.
+	// 	- **lora**
 	//
-	// - **full**: Full training.
+	// 	- **full**: full-parameter training.
 	//
 	// example:
 	//

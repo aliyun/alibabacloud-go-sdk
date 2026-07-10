@@ -30,41 +30,64 @@ type iDescribePolarFsRequest interface {
 }
 
 type DescribePolarFsRequest struct {
+	// The instance ID of the PolarDB instance on which the application depends.
+	//
 	// example:
 	//
 	// pc-2ze8u21s03******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The page number. The value must be an integer greater than 0 and not exceeding the maximum value of Integer.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// - **30**
+	//
+	// - **50**
+	//
+	// - **100**
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The description of the PolarFS instance.
+	//
 	// example:
 	//
 	// pfs-ins1********
 	PolarFsInstanceDescription *string `json:"PolarFsInstanceDescription,omitempty" xml:"PolarFsInstanceDescription,omitempty"`
+	// The list of PolarFS instance IDs, separated by commas (,).
+	//
 	// example:
 	//
 	// pfs-ins1*******
 	PolarFsInstanceIds *string `json:"PolarFsInstanceIds,omitempty" xml:"PolarFsInstanceIds,omitempty"`
+	// The PolarFS type.
+	//
 	// example:
 	//
 	// all
 	PolarFsType *string `json:"PolarFsType,omitempty" xml:"PolarFsType,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the associated PolarDB cluster.
+	//
 	// example:
 	//
 	// pc-2zejpr41d9xk*****
-	RelativeDbClusterId *string                      `json:"RelativeDbClusterId,omitempty" xml:"RelativeDbClusterId,omitempty"`
-	Tag                 []*DescribePolarFsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RelativeDbClusterId *string `json:"RelativeDbClusterId,omitempty" xml:"RelativeDbClusterId,omitempty"`
+	// The tags.
+	Tag []*DescribePolarFsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribePolarFsRequest) String() string {
@@ -170,10 +193,14 @@ func (s *DescribePolarFsRequest) Validate() error {
 }
 
 type DescribePolarFsRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// testValue

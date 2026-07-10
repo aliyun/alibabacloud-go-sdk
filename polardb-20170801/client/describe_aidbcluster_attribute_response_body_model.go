@@ -61,10 +61,16 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 	GetRunType() *string
 	SetStorageType(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetStorageType() *string
+	SetTimeSlicesInfo(v *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo) *DescribeAIDBClusterAttributeResponseBody
+	GetTimeSlicesInfo() *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo
+	SetTimeSlicesType(v string) *DescribeAIDBClusterAttributeResponseBody
+	GetTimeSlicesType() *string
 	SetVPCId(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetVPCId() *string
 	SetVSwitchId(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetVSwitchId() *string
+	SetVnodeKubernetesConfig(v *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig) *DescribeAIDBClusterAttributeResponseBody
+	GetVnodeKubernetesConfig() *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig
 	SetVolumes(v []*DescribeAIDBClusterAttributeResponseBodyVolumes) *DescribeAIDBClusterAttributeResponseBody
 	GetVolumes() []*DescribeAIDBClusterAttributeResponseBodyVolumes
 	SetZoneId(v string) *DescribeAIDBClusterAttributeResponseBody
@@ -76,11 +82,11 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 type DescribeAIDBClusterAttributeResponseBody struct {
 	// The node type. Valid values:
 	//
-	// - vnode: managed by ACK
+	// - vnode: ACK-managed
 	//
-	// - container: logon-enabled container
+	// - container: loginable container
 	//
-	// - maas: model service.
+	// - maas: model service
 	//
 	// example:
 	//
@@ -124,7 +130,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// - **ClassChanging**: changing node specifications
 	//
-	// - **Deleted**: released.
+	// - **Deleted**: released
 	//
 	// example:
 	//
@@ -138,7 +144,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// **2.0**
 	//
-	// **3.0**.
+	// **3.0**
 	//
 	// example:
 	//
@@ -154,7 +160,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	EndpointList []*DescribeAIDBClusterAttributeResponseBodyEndpointList `json:"EndpointList,omitempty" xml:"EndpointList,omitempty" type:"Repeated"`
 	// The cluster expiration time.
 	//
-	// > This parameter is returned only for **Prepaid*	- (subscription) clusters. An empty value is returned for **Postpaid*	- (pay-as-you-go) clusters.
+	// > This parameter returns a value only for clusters whose billing method is **Prepaid*	- (subscription). An empty value is returned for **Postpaid*	- (pay-as-you-go) clusters.
 	//
 	// example:
 	//
@@ -164,7 +170,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// - **true**
 	//
-	// - **false**.
+	// - **false**
 	//
 	// example:
 	//
@@ -189,7 +195,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// xxxxxxxxxxxxxxxxxxxxxxx
 	KubeClusterId *string `json:"KubeClusterId,omitempty" xml:"KubeClusterId,omitempty"`
-	// The instance lock mode. The value **lock*	- indicates that the instance is automatically locked due to expiration or overdue payment.
+	// The instance lock mode. The value **lock*	- indicates that the instance is automatically expired or has an overdue payment.
 	//
 	// example:
 	//
@@ -245,19 +251,19 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// - container: AI container
 	//
-	// - ainode: AI node.
+	// - ainode: AI node
 	//
 	// example:
 	//
 	// container
 	RunType *string `json:"RunType,omitempty" xml:"RunType,omitempty"`
-	// Valid values for PolarDB Enterprise Edition:
+	// Valid values for Enterprise Edition storage type:
 	//
 	// - **PSL5**
 	//
 	// - **PSL4**
 	//
-	// Valid values for PolarDB for MySQL Standard Edition:
+	// Valid values for Standard Edition storage type:
 	//
 	// - **ESSDPL0**
 	//
@@ -267,12 +273,14 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// - **ESSDPL3**
 	//
-	// - **ESSDAUTOPL**.
+	// - **ESSDAUTOPL**
 	//
 	// example:
 	//
 	// essdpl1
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageType    *string                                                 `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	TimeSlicesInfo *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo `json:"TimeSlicesInfo,omitempty" xml:"TimeSlicesInfo,omitempty" type:"Struct"`
+	TimeSlicesType *string                                                 `json:"TimeSlicesType,omitempty" xml:"TimeSlicesType,omitempty"`
 	// The VPC ID specified for the zone switchover.
 	//
 	// example:
@@ -286,7 +294,8 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// vsw-*********************
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId             *string                                                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VnodeKubernetesConfig *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig `json:"VnodeKubernetesConfig,omitempty" xml:"VnodeKubernetesConfig,omitempty" type:"Struct"`
 	// The list of data cloud disks.
 	Volumes []*DescribeAIDBClusterAttributeResponseBodyVolumes `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
 	// The zone ID of the PolarDB cluster node.
@@ -295,7 +304,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// cn-hangzhou-d
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The zone ID.
+	// The zone IDs.
 	//
 	// example:
 	//
@@ -415,12 +424,24 @@ func (s *DescribeAIDBClusterAttributeResponseBody) GetStorageType() *string {
 	return s.StorageType
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBody) GetTimeSlicesInfo() *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo {
+	return s.TimeSlicesInfo
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) GetTimeSlicesType() *string {
+	return s.TimeSlicesType
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBody) GetVPCId() *string {
 	return s.VPCId
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetVSwitchId() *string {
 	return s.VSwitchId
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) GetVnodeKubernetesConfig() *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig {
+	return s.VnodeKubernetesConfig
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetVolumes() []*DescribeAIDBClusterAttributeResponseBodyVolumes {
@@ -565,6 +586,16 @@ func (s *DescribeAIDBClusterAttributeResponseBody) SetStorageType(v string) *Des
 	return s
 }
 
+func (s *DescribeAIDBClusterAttributeResponseBody) SetTimeSlicesInfo(v *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo) *DescribeAIDBClusterAttributeResponseBody {
+	s.TimeSlicesInfo = v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) SetTimeSlicesType(v string) *DescribeAIDBClusterAttributeResponseBody {
+	s.TimeSlicesType = &v
+	return s
+}
+
 func (s *DescribeAIDBClusterAttributeResponseBody) SetVPCId(v string) *DescribeAIDBClusterAttributeResponseBody {
 	s.VPCId = &v
 	return s
@@ -572,6 +603,11 @@ func (s *DescribeAIDBClusterAttributeResponseBody) SetVPCId(v string) *DescribeA
 
 func (s *DescribeAIDBClusterAttributeResponseBody) SetVSwitchId(v string) *DescribeAIDBClusterAttributeResponseBody {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) SetVnodeKubernetesConfig(v *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig) *DescribeAIDBClusterAttributeResponseBody {
+	s.VnodeKubernetesConfig = v
 	return s
 }
 
@@ -607,6 +643,16 @@ func (s *DescribeAIDBClusterAttributeResponseBody) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.TimeSlicesInfo != nil {
+		if err := s.TimeSlicesInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VnodeKubernetesConfig != nil {
+		if err := s.VnodeKubernetesConfig.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.Volumes != nil {
@@ -662,7 +708,7 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// 	- **Deleting**: being deleted
 	//
-	// 	- **Rebooting**: restarting
+	// 	- **Rebooting**: being restarted
 	//
 	// 	- **DBNodeCreating**: adding a node
 	//
@@ -670,11 +716,11 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// 	- **ClassChanging**: changing node specifications
 	//
-	// 	- **MinorVersionUpgrading**: upgrading the minor engine version
+	// 	- **MinorVersionUpgrading**: upgrading the minor version
 	//
 	// 	- **Maintaining**: under maintenance
 	//
-	// 	- **Switching**: switching.
+	// 	- **Switching**: being switched
 	//
 	// example:
 	//
@@ -1024,7 +1070,7 @@ type DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems struct {
 	//
 	// 	- **Private**: private endpoint
 	//
-	// 	- **Inner**: private endpoint (classic network).
+	// 	- **Inner**: private endpoint (classic network)
 	//
 	// example:
 	//
@@ -1077,8 +1123,210 @@ func (s *DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems) Valid
 	return dara.Validate(s)
 }
 
+type DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo struct {
+	TimeSlices []*DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices `json:"TimeSlices,omitempty" xml:"TimeSlices,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo) GetTimeSlices() []*DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices {
+	return s.TimeSlices
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo) SetTimeSlices(v []*DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices) *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo {
+	s.TimeSlices = v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo) Validate() error {
+	if s.TimeSlices != nil {
+		for _, item := range s.TimeSlices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices struct {
+	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+}
+
+func (s DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices) GetBeginTime() *string {
+	return s.BeginTime
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices) GetEndTime() *string {
+	return s.EndTime
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices) SetBeginTime(v string) *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices) SetEndTime(v string) *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig struct {
+	Labels []*DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Taints []*DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints `json:"Taints,omitempty" xml:"Taints,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig) GetLabels() []*DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels {
+	return s.Labels
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig) GetTaints() []*DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints {
+	return s.Taints
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig) SetLabels(v []*DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels) *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig {
+	s.Labels = v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig) SetTaints(v []*DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints) *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig {
+	s.Taints = v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig) Validate() error {
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Taints != nil {
+		for _, item := range s.Taints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels) SetKey(v string) *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels) SetValue(v string) *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints struct {
+	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	Key    *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints) GetEffect() *string {
+	return s.Effect
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints) SetEffect(v string) *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints {
+	s.Effect = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints) SetKey(v string) *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints) SetValue(v string) *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeAIDBClusterAttributeResponseBodyVolumes struct {
-	// The mount path in the container.
+	// The mount path inside the container.
 	//
 	// example:
 	//

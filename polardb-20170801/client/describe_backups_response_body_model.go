@@ -43,17 +43,13 @@ type DescribeBackupsResponseBody struct {
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total size of level-2 backups in the specified region, in bytes.
+	// The total size of level-2 backups in the specified region. Unit: bytes.
 	//
-	// > - Supported only for storage classes PSL4 and PSL5.
+	// > - Only PSL4 and PSL5 storage types are supported.
 	//
-	// >
+	// > - Only clusters with the level-2 backup feature enabled are supported.
 	//
-	// > - Supported only for clusters with the level-2 backup feature enabled.
-	//
-	// >
-	//
-	// > - If this field is not returned, the level-2 backup size is 0.
+	// > - If this parameter is not returned, the level-2 backup size is 0.
 	//
 	// example:
 	//
@@ -182,6 +178,7 @@ type DescribeBackupsResponseBodyItemsBackup struct {
 	BackupStatus           *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
 	BackupType             *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	BackupsLevel           *string `json:"BackupsLevel,omitempty" xml:"BackupsLevel,omitempty"`
+	Comment                *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	ConsistentTime         *string `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
 	DBClusterId            *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	ExpectExpireTime       *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
@@ -232,6 +229,10 @@ func (s *DescribeBackupsResponseBodyItemsBackup) GetBackupType() *string {
 
 func (s *DescribeBackupsResponseBodyItemsBackup) GetBackupsLevel() *string {
 	return s.BackupsLevel
+}
+
+func (s *DescribeBackupsResponseBodyItemsBackup) GetComment() *string {
+	return s.Comment
 }
 
 func (s *DescribeBackupsResponseBodyItemsBackup) GetConsistentTime() *string {
@@ -300,6 +301,11 @@ func (s *DescribeBackupsResponseBodyItemsBackup) SetBackupType(v string) *Descri
 
 func (s *DescribeBackupsResponseBodyItemsBackup) SetBackupsLevel(v string) *DescribeBackupsResponseBodyItemsBackup {
 	s.BackupsLevel = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItemsBackup) SetComment(v string) *DescribeBackupsResponseBodyItemsBackup {
+	s.Comment = &v
 	return s
 }
 

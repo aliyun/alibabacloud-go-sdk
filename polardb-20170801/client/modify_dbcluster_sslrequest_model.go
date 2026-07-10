@@ -9,6 +9,8 @@ type iModifyDBClusterSSLRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConnectionString(v string) *ModifyDBClusterSSLRequest
+	GetConnectionString() *string
 	SetDBClusterId(v string) *ModifyDBClusterSSLRequest
 	GetDBClusterId() *string
 	SetDBEndpointId(v string) *ModifyDBClusterSSLRequest
@@ -19,6 +21,8 @@ type iModifyDBClusterSSLRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *ModifyDBClusterSSLRequest
 	GetOwnerId() *int64
+	SetPfsInstanceId(v string) *ModifyDBClusterSSLRequest
+	GetPfsInstanceId() *string
 	SetResourceOwnerAccount(v string) *ModifyDBClusterSSLRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ModifyDBClusterSSLRequest
@@ -30,6 +34,10 @@ type iModifyDBClusterSSLRequest interface {
 }
 
 type ModifyDBClusterSSLRequest struct {
+	// example:
+	//
+	// xxx
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -38,63 +46,61 @@ type ModifyDBClusterSSLRequest struct {
 	//
 	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the endpoint.
+	// The endpoint ID.
 	//
-	// > - This parameter is required for PolarDB for MySQL clusters.
+	// >	- If the cluster is a PolarDB for MySQL cluster, this parameter is required.
 	//
-	// >
+	// >	- If the cluster is a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you do not need to specify this parameter. SSL encryption is enabled for all endpoints by default.
 	//
-	// > - This parameter is not required for PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) clusters. By default, SSL encryption is enabled for all endpoints of the clusters.
-	//
-	// >
-	//
-	// > - You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/2319159.html) operation to view the details of the endpoint.
+	// >	- You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/2319159.html) operation to query endpoint details.
 	//
 	// example:
 	//
 	// pe-******************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
-	// The network type of the endpoint. The value must be the same as the network type of the endpoint specified by the **DBEndpointId*	- parameter. Valid values:
+	// The network type of the endpoint. The value must be the same as the network type of the endpoint specified by **DBEndpointId**. Valid values:
 	//
-	// - **Public**
+	// 	- **Public**: public network
 	//
-	// - **Private**
+	// 	- **Private**: private network
 	//
-	// - **Inner**
+	// 	- **Inner**: private network (classic network)
 	//
-	// > 	- This parameter is required for PolarDB for MySQL clusters.
+	// >	- If the cluster is a PolarDB for MySQL cluster, this parameter is required.
 	//
-	// >
-	//
-	// > 	- This parameter is not required for PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) clusters. By default, SSL encryption is enabled for all endpoints of the clusters.
+	// >	- If the cluster is a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you do not need to specify this parameter. SSL encryption is enabled for all endpoints by default.
 	//
 	// example:
 	//
 	// Public
-	NetType              *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// pfs-xxx
+	PfsInstanceId        *string `json:"PfsInstanceId,omitempty" xml:"PfsInstanceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether automatic rotation of SSL certificates is enabled.
+	// Specifies whether to enable automatic SSL certificate rotation. Valid values:
 	//
-	// - **Enable**
+	// - **Enable**: enables automatic SSL certificate rotation.
 	//
-	// - **Disable**
+	// - **Disable**: disables automatic SSL certificate rotation.
 	//
 	// example:
 	//
 	// Enable
 	SSLAutoRotate *string `json:"SSLAutoRotate,omitempty" xml:"SSLAutoRotate,omitempty"`
-	// The SSL encryption status. Valid values:
+	// The SSL status. Valid values:
 	//
-	// - **Disabled**
+	// 	- **Disable**: shutdown SSL encryption.
 	//
-	// - **Enabled**
+	// 	- **Enable**: enables SSL encryption.
 	//
-	// - **Update**: The SSL certificate is updated.
+	// 	- **Update**: updates the CA certificate.
 	//
-	// > After you enable SSL encryption or update the SSL certificate, you must download and configure the certificate. See [Configure SSL encryption](https://help.aliyun.com/document_detail/153182.html).
+	// > After you enable SSL encryption or update the CA certificate, you must download and configure the certificate. For details, see [Settings for SSL encryption](https://help.aliyun.com/document_detail/153182.html).
 	//
 	// example:
 	//
@@ -108,6 +114,10 @@ func (s ModifyDBClusterSSLRequest) String() string {
 
 func (s ModifyDBClusterSSLRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBClusterSSLRequest) GetConnectionString() *string {
+	return s.ConnectionString
 }
 
 func (s *ModifyDBClusterSSLRequest) GetDBClusterId() *string {
@@ -130,6 +140,10 @@ func (s *ModifyDBClusterSSLRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *ModifyDBClusterSSLRequest) GetPfsInstanceId() *string {
+	return s.PfsInstanceId
+}
+
 func (s *ModifyDBClusterSSLRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -144,6 +158,11 @@ func (s *ModifyDBClusterSSLRequest) GetSSLAutoRotate() *string {
 
 func (s *ModifyDBClusterSSLRequest) GetSSLEnabled() *string {
 	return s.SSLEnabled
+}
+
+func (s *ModifyDBClusterSSLRequest) SetConnectionString(v string) *ModifyDBClusterSSLRequest {
+	s.ConnectionString = &v
+	return s
 }
 
 func (s *ModifyDBClusterSSLRequest) SetDBClusterId(v string) *ModifyDBClusterSSLRequest {
@@ -168,6 +187,11 @@ func (s *ModifyDBClusterSSLRequest) SetOwnerAccount(v string) *ModifyDBClusterSS
 
 func (s *ModifyDBClusterSSLRequest) SetOwnerId(v int64) *ModifyDBClusterSSLRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBClusterSSLRequest) SetPfsInstanceId(v string) *ModifyDBClusterSSLRequest {
+	s.PfsInstanceId = &v
 	return s
 }
 
