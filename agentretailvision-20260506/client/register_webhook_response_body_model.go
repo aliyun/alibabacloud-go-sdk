@@ -20,10 +20,14 @@ type iRegisterWebhookResponseBody interface {
 }
 
 type RegisterWebhookResponseBody struct {
+	// The error code. This parameter is not returned if the call is successful.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message. This parameter is not returned if the call is successful.
+	//
 	// example:
 	//
 	// OK
@@ -34,6 +38,12 @@ type RegisterWebhookResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// True

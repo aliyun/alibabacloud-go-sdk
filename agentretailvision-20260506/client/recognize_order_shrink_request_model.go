@@ -22,19 +22,28 @@ type iRecognizeOrderShrinkRequest interface {
 }
 
 type RecognizeOrderShrinkRequest struct {
+	// Callback URL for this task. If not provided, the registered default address is used.
+	//
 	// example:
 	//
 	// https://example.com/callback
-	CallbackUrl          *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// List of candidate items. It is recommended to pass platform_item_id.
 	CandidateItemsShrink *string `json:"CandidateItems,omitempty" xml:"CandidateItems,omitempty"`
+	// Device ID
+	//
 	// example:
 	//
 	// DEVICE_001
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Unique idempotent ID of the business party, unique within the same business party
+	//
 	// example:
 	//
 	// ORDER_001
 	OrderUniqueId *string `json:"OrderUniqueId,omitempty" xml:"OrderUniqueId,omitempty"`
+	// List of shopping video OSS addresses (currently only one is supported)
+	//
 	// example:
 	//
 	// ["https://oss.example.com/video1.mp4"]

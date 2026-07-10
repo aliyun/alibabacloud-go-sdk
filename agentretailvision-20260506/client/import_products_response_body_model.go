@@ -22,11 +22,16 @@ type iImportProductsResponseBody interface {
 }
 
 type ImportProductsResponseBody struct {
+	// The error code. This parameter is not returned if the call is successful.
+	//
 	// example:
 	//
 	// 200
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The product information.
 	Data *ImportProductsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message. This parameter is not returned if the call is successful.
+	//
 	// example:
 	//
 	// OK
@@ -37,6 +42,12 @@ type ImportProductsResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// True
@@ -106,10 +117,14 @@ func (s *ImportProductsResponseBody) Validate() error {
 }
 
 type ImportProductsResponseBodyData struct {
+	// The product ID assigned by the business party. This ID must be unique within the same business party.
+	//
 	// example:
 	//
 	// ITEM_001
 	ItemUniqueId *string `json:"ItemUniqueId,omitempty" xml:"ItemUniqueId,omitempty"`
+	// The platform product ID, which is globally unique.
+	//
 	// example:
 	//
 	// PLAT_001

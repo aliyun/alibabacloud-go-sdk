@@ -24,23 +24,33 @@ type iImportProductsShrinkRequest interface {
 }
 
 type ImportProductsShrinkRequest struct {
+	// The device ID. This ID is used to establish an association between the device and product vectors.
+	//
 	// example:
 	//
 	// DEVICE_001
-	DeviceId          *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The list of additional image URLs that can be provided.
 	ExtraImagesShrink *string `json:"ExtraImages,omitempty" xml:"ExtraImages,omitempty"`
+	// The product title.
+	//
 	// example:
 	//
 	// 可口可乐330ml
 	ImageTitle *string `json:"ImageTitle,omitempty" xml:"ImageTitle,omitempty"`
+	// The product ID assigned by the business party. This ID must be unique within the same business party.
+	//
 	// example:
 	//
 	// ITEM_001
 	ItemUniqueId *string `json:"ItemUniqueId,omitempty" xml:"ItemUniqueId,omitempty"`
+	// The list of main product image URLs. At least one URL is required.
+	//
 	// example:
 	//
 	// ["https://img.example.com/item1.jpg"]
-	MainImageShrink       *string `json:"MainImage,omitempty" xml:"MainImage,omitempty"`
+	MainImageShrink *string `json:"MainImage,omitempty" xml:"MainImage,omitempty"`
+	// The list of multi-angle product images.
 	MultiViewImagesShrink *string `json:"MultiViewImages,omitempty" xml:"MultiViewImages,omitempty"`
 }
 

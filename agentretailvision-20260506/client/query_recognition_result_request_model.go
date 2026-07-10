@@ -16,10 +16,14 @@ type iQueryRecognitionResultRequest interface {
 }
 
 type QueryRecognitionResultRequest struct {
+	// Business idempotent request ID
+	//
 	// example:
 	//
 	// ORDER_001
 	OrderUniqueId *string `json:"OrderUniqueId,omitempty" xml:"OrderUniqueId,omitempty"`
+	// Platform Task ID
+	//
 	// example:
 	//
 	// TASK_001

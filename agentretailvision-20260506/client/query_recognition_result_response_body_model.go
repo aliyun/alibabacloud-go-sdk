@@ -22,11 +22,16 @@ type iQueryRecognitionResultResponseBody interface {
 }
 
 type QueryRecognitionResultResponseBody struct {
+	// Error code. This parameter is not returned for a successful call.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Task details
 	Data *QueryRecognitionResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error message. This parameter is not returned for a successful call.
+	//
 	// example:
 	//
 	// OK
@@ -37,6 +42,8 @@ type QueryRecognitionResultResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. true: The call was successful. false: The call failed.
+	//
 	// example:
 	//
 	// True
@@ -106,15 +113,22 @@ func (s *QueryRecognitionResultResponseBody) Validate() error {
 }
 
 type QueryRecognitionResultResponseBodyData struct {
+	// Business unique idempotent ID
+	//
 	// example:
 	//
 	// ORDER_001
-	OrderUniqueId *string                                       `json:"OrderUniqueId,omitempty" xml:"OrderUniqueId,omitempty"`
-	Result        *QueryRecognitionResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	OrderUniqueId *string `json:"OrderUniqueId,omitempty" xml:"OrderUniqueId,omitempty"`
+	// Recognition result
+	Result *QueryRecognitionResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Platform Task ID
+	//
 	// example:
 	//
 	// TASK_001
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task status
+	//
 	// example:
 	//
 	// COMPLETED
@@ -175,8 +189,10 @@ func (s *QueryRecognitionResultResponseBodyData) Validate() error {
 }
 
 type QueryRecognitionResultResponseBodyDataResult struct {
+	// Checkout information
 	CheckoutInfo *QueryRecognitionResultResponseBodyDataResultCheckoutInfo `json:"CheckoutInfo,omitempty" xml:"CheckoutInfo,omitempty" type:"Struct"`
-	Items        []*QueryRecognitionResultResponseBodyDataResultItems      `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// List of recognized items
+	Items []*QueryRecognitionResultResponseBodyDataResultItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s QueryRecognitionResultResponseBodyDataResult) String() string {
@@ -224,6 +240,8 @@ func (s *QueryRecognitionResultResponseBodyDataResult) Validate() error {
 }
 
 type QueryRecognitionResultResponseBodyDataResultCheckoutInfo struct {
+	// Checkout status
+	//
 	// example:
 	//
 	// TRUSTED
@@ -252,14 +270,20 @@ func (s *QueryRecognitionResultResponseBodyDataResultCheckoutInfo) Validate() er
 }
 
 type QueryRecognitionResultResponseBodyDataResultItems struct {
+	// Business Item ID
+	//
 	// example:
 	//
 	// 690234524880781
 	ItemUniqueId *string `json:"ItemUniqueId,omitempty" xml:"ItemUniqueId,omitempty"`
+	// Platform Item ID
+	//
 	// example:
 	//
 	// 535c3daaee3b4b5382db4913413419bc2d
 	PlatformItemId *string `json:"PlatformItemId,omitempty" xml:"PlatformItemId,omitempty"`
+	// Item quantity
+	//
 	// example:
 	//
 	// 1

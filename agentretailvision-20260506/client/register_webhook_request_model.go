@@ -16,10 +16,14 @@ type iRegisterWebhookRequest interface {
 }
 
 type RegisterWebhookRequest struct {
+	// The key used for callback signature verification.
+	//
 	// example:
 	//
 	// your_secret_key
 	CallbackSecret *string `json:"CallbackSecret,omitempty" xml:"CallbackSecret,omitempty"`
+	// The default callback URL. A public HTTPS URL is required.
+	//
 	// example:
 	//
 	// https://example.com/callback

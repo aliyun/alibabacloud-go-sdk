@@ -22,11 +22,16 @@ type iRecognizeOrderResponseBody interface {
 }
 
 type RecognizeOrderResponseBody struct {
+	// Error code. This parameter is not returned during a normal call.
+	//
 	// example:
 	//
 	// 200
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Recognition task information
 	Data *RecognizeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error message. This parameter is not returned during a normal call.
+	//
 	// example:
 	//
 	// OK
@@ -37,6 +42,8 @@ type RecognizeOrderResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. true: The call is successful. false: The call has failed.
+	//
 	// example:
 	//
 	// True
@@ -106,14 +113,20 @@ func (s *RecognizeOrderResponseBody) Validate() error {
 }
 
 type RecognizeOrderResponseBodyData struct {
+	// Unique idempotent ID of the business party
+	//
 	// example:
 	//
 	// ORDER_001
 	OrderUniqueId *string `json:"OrderUniqueId,omitempty" xml:"OrderUniqueId,omitempty"`
+	// Platform task ID
+	//
 	// example:
 	//
 	// TASK_001
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task status
+	//
 	// example:
 	//
 	// PROCESSING

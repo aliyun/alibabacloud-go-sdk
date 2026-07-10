@@ -26,24 +26,36 @@ type iUpdateProductRequest interface {
 }
 
 type UpdateProductRequest struct {
+	// The device ID, which is used to establish the vector association between the device and the item.
+	//
 	// example:
 	//
 	// DEVICE_001
-	DeviceId    *string   `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The list of additional image URLs that can be provided.
 	ExtraImages []*string `json:"ExtraImages,omitempty" xml:"ExtraImages,omitempty" type:"Repeated"`
+	// The title of the item.
+	//
 	// example:
 	//
 	// 可口可乐330ml
 	ImageTitle *string `json:"ImageTitle,omitempty" xml:"ImageTitle,omitempty"`
+	// The business-side item ID, which is unique within the same business party.
+	//
 	// example:
 	//
 	// ITEM_001
 	ItemUniqueId *string `json:"ItemUniqueId,omitempty" xml:"ItemUniqueId,omitempty"`
+	// The list of main image URLs for the item. At least one image is required.
+	//
 	// example:
 	//
 	// ["https://img.example.com/item1.jpg"]
-	MainImage       []*string                              `json:"MainImage,omitempty" xml:"MainImage,omitempty" type:"Repeated"`
+	MainImage []*string `json:"MainImage,omitempty" xml:"MainImage,omitempty" type:"Repeated"`
+	// The list of multi-angle images for the item.
 	MultiViewImages []*UpdateProductRequestMultiViewImages `json:"MultiViewImages,omitempty" xml:"MultiViewImages,omitempty" type:"Repeated"`
+	// The platform item ID, which is globally unique.
+	//
 	// example:
 	//
 	// PLAT_001
@@ -135,10 +147,22 @@ func (s *UpdateProductRequest) Validate() error {
 }
 
 type UpdateProductRequestMultiViewImages struct {
+	// The angle of the digital human.
+	//
+	// - 0: front view, the default angle
+	//
+	// - 1: 30 degrees from the left
+	//
+	// - 2: 30 degrees from the right
+	//
+	// For a preview of each angle, refer to [3D Digital Human Video Synthesis User Guide](https://help.aliyun.com/document_detail/447834.html#a989eb5075t9y).
+	//
 	// example:
 	//
 	// 0
 	Angle *string `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	// The URL of the image.
+	//
 	// example:
 	//
 	// https://nova-tems.oss-cn-shanghai.aliyuncs.com/crop/33dfc602-c9a4-11f0-ac99-ee21a901d6ec.png?OSSAccessKeyId=****&Expires=1764058353&Signature=****

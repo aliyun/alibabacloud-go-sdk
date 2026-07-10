@@ -24,7 +24,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-beijing": dara.String("agentretailvision.cn-beijing.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +61,121 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 商品导入
+// Generates a composite image for single-item multi-image or multi-item scenarios.
+//
+// Description:
+//
+// ## Request description
+//
+// - When `groupType=1`, `platformItemIdList` must contain only one element.
+//
+// - When `groupType=2`, `platformItemIdList` can contain 1 to 10 elements.
+//
+// @param tmpReq - GenerateGroupImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateGroupImageResponse
+func (client *Client) GenerateGroupImageWithOptions(tmpReq *GenerateGroupImageRequest, runtime *dara.RuntimeOptions) (_result *GenerateGroupImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GenerateGroupImageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PlatformItemIdList) {
+		request.PlatformItemIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PlatformItemIdList, dara.String("PlatformItemIdList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallbackSecret) {
+		query["CallbackSecret"] = request.CallbackSecret
+	}
+
+	if !dara.IsNil(request.CallbackUrl) {
+		query["CallbackUrl"] = request.CallbackUrl
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.GroupType) {
+		query["GroupType"] = request.GroupType
+	}
+
+	if !dara.IsNil(request.PlatformItemIdListShrink) {
+		query["PlatformItemIdList"] = request.PlatformItemIdListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateGroupImage"),
+		Version:     dara.String("2026-05-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateGroupImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Generates a composite image for single-item multi-image or multi-item scenarios.
+//
+// Description:
+//
+// ## Request description
+//
+// - When `groupType=1`, `platformItemIdList` must contain only one element.
+//
+// - When `groupType=2`, `platformItemIdList` can contain 1 to 10 elements.
+//
+// @param request - GenerateGroupImageRequest
+//
+// @return GenerateGroupImageResponse
+func (client *Client) GenerateGroupImage(request *GenerateGroupImageRequest) (_result *GenerateGroupImageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GenerateGroupImageResponse{}
+	_body, _err := client.GenerateGroupImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds product information. After a successful import, the platform returns a globally unique platform_item_id for subsequent updates and recognition result association.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation is used to add product information.
+//
+// - After you import products to the product library, they are stored in Alibaba Cloud OSS for direct recall and retrieval by the product recognition API.
+//
+// - You must provide at least one main image URL, and the `item_unique_id` must be unique within the same business party.
+//
+// - You can optionally provide multi-angle views and extra images to improve recognition accuracy.
+//
+// - The `device_id` field can be used to establish an association between a device and product vectors, but it is not required.
 //
 // @param tmpReq - ImportProductsRequest
 //
@@ -136,7 +253,21 @@ func (client *Client) ImportProductsWithOptions(tmpReq *ImportProductsRequest, r
 
 // Summary:
 //
-// 商品导入
+// Adds product information. After a successful import, the platform returns a globally unique platform_item_id for subsequent updates and recognition result association.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation is used to add product information.
+//
+// - After you import products to the product library, they are stored in Alibaba Cloud OSS for direct recall and retrieval by the product recognition API.
+//
+// - You must provide at least one main image URL, and the `item_unique_id` must be unique within the same business party.
+//
+// - You can optionally provide multi-angle views and extra images to improve recognition accuracy.
+//
+// - The `device_id` field can be used to establish an association between a device and product vectors, but it is not required.
 //
 // @param request - ImportProductsRequest
 //
@@ -154,7 +285,11 @@ func (client *Client) ImportProducts(request *ImportProductsRequest) (_result *I
 
 // Summary:
 //
-// 查询任务状态
+// At least one result retrieval method must be integrated: webhook callback or task status query. Both methods can be used simultaneously.
+//
+//   - If the user chooses the webhook callback method, the receiving endpoint must be prepared in advance and implemented according to the following request and response parameters.
+//
+//   - After the recognition task is completed, the platform will push the results to the business party based on the callback URL bound to the task.
 //
 // @param request - QueryRecognitionResultRequest
 //
@@ -202,7 +337,11 @@ func (client *Client) QueryRecognitionResultWithOptions(request *QueryRecognitio
 
 // Summary:
 //
-// 查询任务状态
+// At least one result retrieval method must be integrated: webhook callback or task status query. Both methods can be used simultaneously.
+//
+//   - If the user chooses the webhook callback method, the receiving endpoint must be prepared in advance and implemented according to the following request and response parameters.
+//
+//   - After the recognition task is completed, the platform will push the results to the business party based on the callback URL bound to the task.
 //
 // @param request - QueryRecognitionResultRequest
 //
@@ -220,7 +359,21 @@ func (client *Client) QueryRecognitionResult(request *QueryRecognitionResultRequ
 
 // Summary:
 //
-// 购物识别
+// Used for intelligent recognition scenarios. Requires uploading the OSS address of shopping videos. The platform creates an asynchronous recognition task and immediately returns a task_id. Notifications are sent via webhook, and the results need to be actively retrieved through the query API.
+//
+// Description:
+//
+// ## Request Description
+//
+// - The user must provide `caller_uid` and `order_unique_id` as required parameters.
+//
+// - The `video_urls` parameter supports video files in mp4, avi, mov, and mkv formats, with a size limit of 100 MB, a duration of no more than 3 minutes, a resolution between 480p and 1080p, and specific aspect ratio requirements.
+//
+// - At least one of `device_id` or `candidate_items` must be provided to specify the recognition scope. If both are provided, the system first filters by the device product library and then further filters based on the candidate items list.
+//
+// - Optionally, the user can specify a `callback_url` to receive notifications of the recognition results. If not provided, the pre-registered default webhook address is used.
+//
+// - If a request is submitted repeatedly with the same `order_unique_id`, the system directly returns the previously existing task status.
 //
 // @param tmpReq - RecognizeOrderRequest
 //
@@ -290,7 +443,21 @@ func (client *Client) RecognizeOrderWithOptions(tmpReq *RecognizeOrderRequest, r
 
 // Summary:
 //
-// 购物识别
+// Used for intelligent recognition scenarios. Requires uploading the OSS address of shopping videos. The platform creates an asynchronous recognition task and immediately returns a task_id. Notifications are sent via webhook, and the results need to be actively retrieved through the query API.
+//
+// Description:
+//
+// ## Request Description
+//
+// - The user must provide `caller_uid` and `order_unique_id` as required parameters.
+//
+// - The `video_urls` parameter supports video files in mp4, avi, mov, and mkv formats, with a size limit of 100 MB, a duration of no more than 3 minutes, a resolution between 480p and 1080p, and specific aspect ratio requirements.
+//
+// - At least one of `device_id` or `candidate_items` must be provided to specify the recognition scope. If both are provided, the system first filters by the device product library and then further filters based on the candidate items list.
+//
+// - Optionally, the user can specify a `callback_url` to receive notifications of the recognition results. If not provided, the pre-registered default webhook address is used.
+//
+// - If a request is submitted repeatedly with the same `order_unique_id`, the system directly returns the previously existing task status.
 //
 // @param request - RecognizeOrderRequest
 //
@@ -308,7 +475,7 @@ func (client *Client) RecognizeOrder(request *RecognizeOrderRequest) (_result *R
 
 // Summary:
 //
-// # Webhook注册
+// Registers or updates the default webhook callback URL.
 //
 // @param request - RegisterWebhookRequest
 //
@@ -356,7 +523,7 @@ func (client *Client) RegisterWebhookWithOptions(request *RegisterWebhookRequest
 
 // Summary:
 //
-// # Webhook注册
+// Registers or updates the default webhook callback URL.
 //
 // @param request - RegisterWebhookRequest
 //
@@ -374,7 +541,21 @@ func (client *Client) RegisterWebhook(request *RegisterWebhookRequest) (_result 
 
 // Summary:
 //
-// 商品更新
+// Updates the information of an existing item on the platform.
+//
+// Description:
+//
+// ## Operation description
+//
+// - The platform_item_id parameter is used as the primary identifier for the update.
+//
+// - If both platform_item_id and item_unique_id are specified, they must point to the same item.
+//
+// - The item title (image_title) and the list of main image URLs (main_image) are required. The main_image parameter must contain at least one image.
+//
+// - Optional parameters include the multi-angle image list (multi_view_images), the list of additional image URLs (extra_images), and the device ID (device_id).
+//
+// - In multi_view_images, each object must contain the image OSS address (url) and the shooting angle (angle). Valid values of angle: top view (up), bottom view (down), left view (left), right view (right), front view (front), and back view (back).
 //
 // @param tmpReq - UpdateProductRequest
 //
@@ -456,7 +637,21 @@ func (client *Client) UpdateProductWithOptions(tmpReq *UpdateProductRequest, run
 
 // Summary:
 //
-// 商品更新
+// Updates the information of an existing item on the platform.
+//
+// Description:
+//
+// ## Operation description
+//
+// - The platform_item_id parameter is used as the primary identifier for the update.
+//
+// - If both platform_item_id and item_unique_id are specified, they must point to the same item.
+//
+// - The item title (image_title) and the list of main image URLs (main_image) are required. The main_image parameter must contain at least one image.
+//
+// - Optional parameters include the multi-angle image list (multi_view_images), the list of additional image URLs (extra_images), and the device ID (device_id).
+//
+// - In multi_view_images, each object must contain the image OSS address (url) and the shooting angle (angle). Valid values of angle: top view (up), bottom view (down), left view (left), right view (right), front view (front), and back view (back).
 //
 // @param request - UpdateProductRequest
 //

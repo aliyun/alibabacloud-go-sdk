@@ -24,23 +24,33 @@ type iImportProductsRequest interface {
 }
 
 type ImportProductsRequest struct {
+	// The device ID. This ID is used to establish an association between the device and product vectors.
+	//
 	// example:
 	//
 	// DEVICE_001
-	DeviceId    *string   `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The list of additional image URLs that can be provided.
 	ExtraImages []*string `json:"ExtraImages,omitempty" xml:"ExtraImages,omitempty" type:"Repeated"`
+	// The product title.
+	//
 	// example:
 	//
 	// 可口可乐330ml
 	ImageTitle *string `json:"ImageTitle,omitempty" xml:"ImageTitle,omitempty"`
+	// The product ID assigned by the business party. This ID must be unique within the same business party.
+	//
 	// example:
 	//
 	// ITEM_001
 	ItemUniqueId *string `json:"ItemUniqueId,omitempty" xml:"ItemUniqueId,omitempty"`
+	// The list of main product image URLs. At least one URL is required.
+	//
 	// example:
 	//
 	// ["https://img.example.com/item1.jpg"]
-	MainImage       []*string                               `json:"MainImage,omitempty" xml:"MainImage,omitempty" type:"Repeated"`
+	MainImage []*string `json:"MainImage,omitempty" xml:"MainImage,omitempty" type:"Repeated"`
+	// The list of multi-angle product images.
 	MultiViewImages []*ImportProductsRequestMultiViewImages `json:"MultiViewImages,omitempty" xml:"MultiViewImages,omitempty" type:"Repeated"`
 }
 
@@ -120,10 +130,22 @@ func (s *ImportProductsRequest) Validate() error {
 }
 
 type ImportProductsRequestMultiViewImages struct {
+	// The digital human angle. Valid values:
+	//
+	// - 0: front view, which is the default angle
+	//
+	// - 1: left side at 30 degrees
+	//
+	// - 2: right side at 30 degrees
+	//
+	// For a preview of each angle, refer to [3D Digital Human Video Synthesis User Guide](https://help.aliyun.com/document_detail/447834.html#a989eb5075t9y).
+	//
 	// example:
 	//
 	// 0
 	Angle *string `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	// The task URL.
+	//
 	// example:
 	//
 	// https://img5-parcel.oss-cn-hangzhou.aliyuncs.com/2026/01/12/78568805914464s.jpeg?07

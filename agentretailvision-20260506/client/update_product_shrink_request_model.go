@@ -26,24 +26,36 @@ type iUpdateProductShrinkRequest interface {
 }
 
 type UpdateProductShrinkRequest struct {
+	// The device ID, which is used to establish the vector association between the device and the item.
+	//
 	// example:
 	//
 	// DEVICE_001
-	DeviceId          *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The list of additional image URLs that can be provided.
 	ExtraImagesShrink *string `json:"ExtraImages,omitempty" xml:"ExtraImages,omitempty"`
+	// The title of the item.
+	//
 	// example:
 	//
 	// 可口可乐330ml
 	ImageTitle *string `json:"ImageTitle,omitempty" xml:"ImageTitle,omitempty"`
+	// The business-side item ID, which is unique within the same business party.
+	//
 	// example:
 	//
 	// ITEM_001
 	ItemUniqueId *string `json:"ItemUniqueId,omitempty" xml:"ItemUniqueId,omitempty"`
+	// The list of main image URLs for the item. At least one image is required.
+	//
 	// example:
 	//
 	// ["https://img.example.com/item1.jpg"]
-	MainImageShrink       *string `json:"MainImage,omitempty" xml:"MainImage,omitempty"`
+	MainImageShrink *string `json:"MainImage,omitempty" xml:"MainImage,omitempty"`
+	// The list of multi-angle images for the item.
 	MultiViewImagesShrink *string `json:"MultiViewImages,omitempty" xml:"MultiViewImages,omitempty"`
+	// The platform item ID, which is globally unique.
+	//
 	// example:
 	//
 	// PLAT_001
