@@ -26,7 +26,7 @@ type ListApplicationTokensRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The type of the application token.
+	// The application token type.
 	//
 	// This parameter is required.
 	//

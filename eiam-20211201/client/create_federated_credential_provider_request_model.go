@@ -31,13 +31,13 @@ type iCreateFederatedCredentialProviderRequest interface {
 
 type CreateFederatedCredentialProviderRequest struct {
 	CloudIdPProviderConfig *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig `json:"CloudIdPProviderConfig,omitempty" xml:"CloudIdPProviderConfig,omitempty" type:"Struct"`
-	// The description of the federated credential provider.
+	// The description of the federated trust source.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the federated credential provider.
+	// The name of the federated trust source.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +45,7 @@ type CreateFederatedCredentialProviderRequest struct {
 	//
 	// test
 	FederatedCredentialProviderName *string `json:"FederatedCredentialProviderName,omitempty" xml:"FederatedCredentialProviderName,omitempty"`
-	// The type of the federated credential provider.
+	// The type of the federated trust source.
 	//
 	// This parameter is required.
 	//
@@ -61,17 +61,17 @@ type CreateFederatedCredentialProviderRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The network access endpoint ID.
+	// The ID of the network access endpoint.
 	//
 	// example:
 	//
 	// nae_example_id
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The configuration for an OIDC-based provider.
+	// The OIDC configuration.
 	OidcProviderConfig *CreateFederatedCredentialProviderRequestOidcProviderConfig `json:"OidcProviderConfig,omitempty" xml:"OidcProviderConfig,omitempty" type:"Struct"`
-	// The configuration for a PKCS7-based provider.
+	// The PKCS7 configuration.
 	Pkcs7ProviderConfig *CreateFederatedCredentialProviderRequestPkcs7ProviderConfig `json:"Pkcs7ProviderConfig,omitempty" xml:"Pkcs7ProviderConfig,omitempty" type:"Struct"`
-	// The configuration for a private CA-based provider.
+	// The private CA configuration.
 	PrivateCaProviderConfig *CreateFederatedCredentialProviderRequestPrivateCaProviderConfig `json:"PrivateCaProviderConfig,omitempty" xml:"PrivateCaProviderConfig,omitempty" type:"Struct"`
 }
 
@@ -217,27 +217,27 @@ func (s *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig) Validat
 }
 
 type CreateFederatedCredentialProviderRequestOidcProviderConfig struct {
-	// A list of audiences. The `aud` claim in the OIDC token must match a value from this list.
+	// The list of audiences.
 	Audiences []*string `json:"Audiences,omitempty" xml:"Audiences,omitempty" type:"Repeated"`
-	// The issuer identifier for the OIDC provider. This value must match the `iss` claim in the token.
+	// Issuer
 	//
 	// example:
 	//
 	// https://example.com
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The source of the JSON Web Key Set (JWKS).
+	// The source of the JWKS.
 	//
 	// example:
 	//
 	// static
 	JwksSource *string `json:"JwksSource,omitempty" xml:"JwksSource,omitempty"`
-	// The URI of the JWKS endpoint.
+	// The JWKS endpoint.
 	//
 	// example:
 	//
 	// https://example.com/jwks
 	JwksUri *string `json:"JwksUri,omitempty" xml:"JwksUri,omitempty"`
-	// The static JWKS content in JSON format.
+	// The statically retrieved JWKS.
 	//
 	// example:
 	//
@@ -263,7 +263,7 @@ type CreateFederatedCredentialProviderRequestOidcProviderConfig struct {
 	//
 	// }
 	StaticJwks *string `json:"StaticJwks,omitempty" xml:"StaticJwks,omitempty"`
-	// The condition the OIDC token must meet to be trusted.
+	// The trust condition.
 	//
 	// example:
 	//
@@ -338,33 +338,33 @@ func (s *CreateFederatedCredentialProviderRequestOidcProviderConfig) Validate() 
 }
 
 type CreateFederatedCredentialProviderRequestPkcs7ProviderConfig struct {
-	// The certificates for verifying the PKCS7 signature.
+	// The list of PKCS7 certificates.
 	Certificates []*CreateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The Cryptographic Message Syntax (CMS) verification mode.
+	// The CMS verification mode.
 	//
 	// example:
 	//
 	// cert_chain
 	CmsVerificationMode *string `json:"CmsVerificationMode,omitempty" xml:"CmsVerificationMode,omitempty"`
-	// The validity period of the signature, in seconds.
+	// The validity period of the signature.
 	//
 	// example:
 	//
 	// 1200
 	SignatureEffectiveTime *int64 `json:"SignatureEffectiveTime,omitempty" xml:"SignatureEffectiveTime,omitempty"`
-	// The expression to extract the signing time from the signature.
+	// The expression used to retrieve the signing time.
 	//
 	// example:
 	//
 	// pkcs7.signingTime
 	SigningTimeValueExpression *string `json:"SigningTimeValueExpression,omitempty" xml:"SigningTimeValueExpression,omitempty"`
-	// The source of the trust anchor.
+	// The source of the certificate trust anchor.
 	//
 	// example:
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// The condition that the signature data must meet to be trusted.
+	// The trust condition.
 	//
 	// example:
 	//
@@ -448,7 +448,7 @@ func (s *CreateFederatedCredentialProviderRequestPkcs7ProviderConfig) Validate()
 }
 
 type CreateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates struct {
-	// The content of the PEM-encoded certificate.
+	// The content of the root certificate.
 	//
 	// example:
 	//
@@ -482,15 +482,15 @@ func (s *CreateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates
 }
 
 type CreateFederatedCredentialProviderRequestPrivateCaProviderConfig struct {
-	// The root certificates that form the trust anchor.
+	// The list of root certificates.
 	Certificates []*CreateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The source of the trust anchor.
+	// The method used to retrieve the root certificate.
 	//
 	// example:
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// The condition for trusting the root certificate.
+	// The trust condition for the root certificate.
 	//
 	// example:
 	//
@@ -547,7 +547,7 @@ func (s *CreateFederatedCredentialProviderRequestPrivateCaProviderConfig) Valida
 }
 
 type CreateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates struct {
-	// The content of the PEM-encoded certificate.
+	// The content of the root certificate.
 	//
 	// example:
 	//

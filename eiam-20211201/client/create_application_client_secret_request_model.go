@@ -26,7 +26,7 @@ type CreateApplicationClientSecretRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The expiration time. This parameter is a UNIX timestamp. Unit: milliseconds. If you leave this parameter empty, the client secret does not expire. The minimum validity period is 1 day and the maximum validity period is 3 years.
+	// The expiration time in UNIX timestamp format, in milliseconds. If this parameter is left empty, the client secret is permanently valid. The minimum validity period that you can set is 1 day, and the maximum validity period is 3 years.
 	//
 	// example:
 	//

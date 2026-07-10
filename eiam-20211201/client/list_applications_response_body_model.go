@@ -18,7 +18,7 @@ type iListApplicationsResponseBody interface {
 }
 
 type ListApplicationsResponseBody struct {
-	// The list of applications.
+	// The list of application information.
 	Applications []*ListApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,7 +83,7 @@ func (s *ListApplicationsResponseBody) Validate() error {
 }
 
 type ListApplicationsResponseBodyApplications struct {
-	// Indicates how the application was created.
+	// The application creation type.
 	//
 	// example:
 	//
@@ -95,29 +95,29 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The identity type of the application.
+	// The application identity type.
 	//
 	// example:
 	//
 	// application
 	ApplicationIdentityType *string `json:"ApplicationIdentityType,omitempty" xml:"ApplicationIdentityType,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// SAML Application
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The source used to create the application. Valid values:
+	// The application creation source. Valid values:
 	//
-	// - `urn:alibaba:idaas:app:source:template`: Application template.
+	// - urn:alibaba:idaas:app:source:template: Application template.
 	//
-	// - `urn:alibaba:idaas:app:source:standard`: Standard protocol.
+	// - urn:alibaba:idaas:app:source:standard: Standard protocol.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:app:source:standard
 	ApplicationSourceType *string `json:"ApplicationSourceType,omitempty" xml:"ApplicationSourceType,omitempty"`
-	// The ID of the application template.
+	// The application template ID.
 	//
 	// example:
 	//
@@ -129,33 +129,33 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The time the application was created, as a Unix timestamp in milliseconds.
+	// The time when the application was created, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the application.
+	// The application description.
 	//
 	// example:
 	//
 	// A test application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// A string containing a JSON array of features supported by the application. Valid values:
+	// The features supported by the application, returned as a JSON array string. Valid values:
 	//
-	// - `sso`: SSO.
+	// - sso: Single sign-on.
 	//
-	// - `slo`: SLO.
+	// - slo: Single logout.
 	//
-	// - `provision`: Provisioning.
+	// - provision: Account synchronization.
 	//
-	// - `api_invoke`: API invocation.
+	// - api_invoke: API access.
 	//
-	// - `m2m_client`: M2M client.
+	// - m2m_client: M2M Client capability.
 	//
-	// - `resource_server`: Resource server.
+	// - resource_server: API service capability.
 	//
-	// - `other`: Other.
+	// - other: Fallback.
 	//
 	// example:
 	//
@@ -173,63 +173,63 @@ type ListApplicationsResponseBodyApplications struct {
 	//
 	// https://img.alicdn.com/imgextra/i4/O1CN01lvYwpv1aGowQXDML9_!!6000000003303-0-tps-580-580.jpg
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// The service code of the cloud service that manages the application template.
+	// The ServiceCode of the Alibaba Cloud service that manages the application template.
 	//
 	// example:
 	//
 	// rpa
 	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
-	// The unique identifier of the resource server.
+	// The unique identifier of the ResourceServer.
 	//
 	// example:
 	//
 	// https://example.com
 	ResourceServerIdentifier *string `json:"ResourceServerIdentifier,omitempty" xml:"ResourceServerIdentifier,omitempty"`
-	// The source type of the resource server.
+	// The resource server source type.
 	//
 	// example:
 	//
 	// urn:cloud:idaas:resourceserver:source:custom
 	ResourceServerSourceType *string `json:"ResourceServerSourceType,omitempty" xml:"ResourceServerSourceType,omitempty"`
-	// The status of the resource server.
+	// The resource server status.
 	//
 	// example:
 	//
 	// enabled
 	ResourceServerStatus *string `json:"ResourceServerStatus,omitempty" xml:"ResourceServerStatus,omitempty"`
-	// Indicates whether the application template is managed by a cloud service.
+	// Indicates whether the application template is managed by an Alibaba Cloud service.
 	//
 	// example:
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The SSO protocol. Valid values:
+	// The single sign-on (SSO) logon protocol. Valid values:
 	//
-	// - `saml2`: SAML 2.0
+	// - saml2: SAML 2.0 protocol.
 	//
-	// - `oidc`: OpenID Connect (OIDC)
+	// - oidc: OpenID Connect protocol.
 	//
-	// - `oauth2/m2m`: OAuth 2.0
+	// - oauth2/m2m: OAuth 2.0 protocol.
 	//
-	// - `oidc+oauth2/m2m`: OIDC and OAuth 2.0
+	// - oidc+oauth2/m2m: OpenID Connect and OAuth 2.0 protocols.
 	//
 	// example:
 	//
 	// saml2
 	SsoType *string `json:"SsoType,omitempty" xml:"SsoType,omitempty"`
-	// The status of the application. Valid values:
+	// The application status. Valid values:
 	//
-	// - `enabled`: The application is enabled.
+	// - enabled: Enabled.
 	//
-	// - `disabled`: The application is disabled.
+	// - disabled: Disabled.
 	//
-	// - `deleted`: The application is soft-deleted.
+	// - deleted: Soft deleted.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time the application was last updated, as a Unix timestamp in milliseconds.
+	// The time when the application was last updated, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//

@@ -44,7 +44,7 @@ type GenerateOauthTokenRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The scope of permissions.
+	// The permission scopes.
 	//
 	// This parameter is required.
 	ScopeValues []*string `json:"ScopeValues,omitempty" xml:"ScopeValues,omitempty" type:"Repeated"`

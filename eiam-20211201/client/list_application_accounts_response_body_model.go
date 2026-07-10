@@ -18,7 +18,7 @@ type iListApplicationAccountsResponseBody interface {
 }
 
 type ListApplicationAccountsResponseBody struct {
-	// The list of account information.
+	// The list of application accounts.
 	ApplicationAccounts []*ListApplicationAccountsResponseBodyApplicationAccounts `json:"ApplicationAccounts,omitempty" xml:"ApplicationAccounts,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListApplicationAccountsResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -95,19 +95,19 @@ type ListApplicationAccountsResponseBodyApplicationAccounts struct {
 	//
 	// app_m43o4h5adeo5klvbbxgxxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The name of the application account.
+	// The application account name.
 	//
 	// example:
 	//
 	// test
 	ApplicationUsername *string `json:"ApplicationUsername,omitempty" xml:"ApplicationUsername,omitempty"`
-	// The time when the account was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1737510353000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the IDaaS EIAM instance.
+	// The IDaaS EIAM instance ID.
 	//
 	// example:
 	//

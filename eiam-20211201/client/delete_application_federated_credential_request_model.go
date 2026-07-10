@@ -18,7 +18,7 @@ type iDeleteApplicationFederatedCredentialRequest interface {
 }
 
 type DeleteApplicationFederatedCredentialRequest struct {
-	// The ID of the application\\"s federated credential.
+	// The application federated identity credential ID.
 	//
 	// This parameter is required.
 	//

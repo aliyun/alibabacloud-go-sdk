@@ -22,9 +22,9 @@ type iUpdateCredentialProviderRequest interface {
 }
 
 type UpdateCredentialProviderRequest struct {
-	// An idempotency token that ensures request idempotence.
+	// The idempotency token that ensures the idempotence of the request.
 	//
-	// Generate a unique value on your client for each request. ClientToken supports only ASCII characters and must be no longer than 64 characters. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// Generate a unique parameter value from your client to ensure that the value is unique among different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -32,9 +32,9 @@ type UpdateCredentialProviderRequest struct {
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The configuration of the credential provider.
+	// The credential provider configuration.
 	CredentialProviderConfig *UpdateCredentialProviderRequestCredentialProviderConfig `json:"CredentialProviderConfig,omitempty" xml:"CredentialProviderConfig,omitempty" type:"Struct"`
-	// The ID of the credential provider.
+	// The credential provider ID.
 	//
 	// This parameter is required.
 	//
@@ -42,15 +42,15 @@ type UpdateCredentialProviderRequest struct {
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"CredentialProviderId,omitempty" xml:"CredentialProviderId,omitempty"`
-	// The name of the credential provider.
+	// The credential provider name.
 	//
-	// > The name must be no longer than 64 characters.
+	// > The name cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// test_example_name
 	CredentialProviderName *string `json:"CredentialProviderName,omitempty" xml:"CredentialProviderName,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -123,9 +123,9 @@ func (s *UpdateCredentialProviderRequest) Validate() error {
 }
 
 type UpdateCredentialProviderRequestCredentialProviderConfig struct {
-	// The configuration for a JWT credential provider.
+	// The configuration of the JWT credential provider.
 	JwtProviderConfig *UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig `json:"JwtProviderConfig,omitempty" xml:"JwtProviderConfig,omitempty" type:"Struct"`
-	// The configuration for an OAuth credential provider.
+	// The configuration of the OAuth credential provider.
 	OAuthProviderConfig *UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig `json:"OAuthProviderConfig,omitempty" xml:"OAuthProviderConfig,omitempty" type:"Struct"`
 }
 
@@ -170,15 +170,13 @@ func (s *UpdateCredentialProviderRequestCredentialProviderConfig) Validate() err
 }
 
 type UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig struct {
-	// A list of allowed JWT issuers.
+	// The list of allowed JWT issuers.
 	//
-	// > The list must contain no more than 200 items.
+	// > The list cannot contain more than 200 entries.
 	//
-	// 	Notice:
-	//
-	// To clear the issuer list, pass an empty array or an empty string.
+	// 	Notice: To clear the issuer list, pass an empty list or an empty string.
 	AllowedTokenIssuers []*string `json:"AllowedTokenIssuers,omitempty" xml:"AllowedTokenIssuers,omitempty" type:"Repeated"`
-	// Whether to enable derived short tokens for JWTs.
+	// Specifies whether to enable the JWT derived short token feature.
 	//
 	// example:
 	//
@@ -190,7 +188,7 @@ type UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig st
 	//
 	// 900
 	Expiration *int32 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// Whether to enable JWT expiration cleanup.
+	// Specifies whether to enable JWT expiration cleanup.
 	//
 	// example:
 	//
@@ -247,25 +245,21 @@ func (s *UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfi
 }
 
 type UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig struct {
-	// The client secret defined in the OAuth protocol.
+	// The client_secret in the OAuth protocol, which is the client secret.
 	//
-	// > The value must be no longer than 1024 characters.
+	// > The value cannot exceed 1024 characters in length.
 	//
 	// example:
 	//
 	// client_secret_example_xxx
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
-	// The scope defined in the OAuth protocol.
+	// The scope in the OAuth protocol, which specifies the permission scope.
 	//
-	// > If you do not specify the scope parameter when calling the DeveloperAPI to get an OAuth access token, the scope configured for the credential provider is used as the default.
+	// > The Scope configuration at the credential provider serves as the default value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration at the credential provider is used for issuance.
 	//
-	// 	Notice:
+	// 	Notice: Separate multiple Scope values with spaces. To clear the Scope configuration, pass an empty string.
 	//
-	// Separate multiple scope values with spaces. To clear the scope configuration, pass an empty string.
-	//
-	//
-	//
-	// Rules for a single scope value:
+	// Restrictions on a single Scope value:
 	//
 	// 1. Allowed characters: lowercase letters, digits, and special characters `|/:_-.`
 	//
@@ -273,15 +267,15 @@ type UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig 
 	//
 	// 3. Must start with a special character `.`, a lowercase letter, or a digit.
 	//
-	// 4. Must be no longer than 1024 characters.
+	// 4. Cannot exceed 1024 characters in length.
 	//
 	// example:
 	//
 	// example:test_01 example:test_02
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The token endpoint defined in the OAuth protocol.
+	// The token endpoint of the OAuth protocol.
 	//
-	// > The value must start with `http://` or `https://`. It must be no longer than 1024 characters.
+	// > The value must start with `http://` or `https://` and cannot exceed 1024 characters in length.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type UpdateApplicationAdvancedConfigRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The advanced configuration of the SCIM server.
+	// The SCIM server advanced configuration.
 	ScimServerAdvancedConfig *UpdateApplicationAdvancedConfigRequestScimServerAdvancedConfig `json:"ScimServerAdvancedConfig,omitempty" xml:"ScimServerAdvancedConfig,omitempty" type:"Struct"`
 }
 
@@ -83,9 +83,9 @@ func (s *UpdateApplicationAdvancedConfigRequest) Validate() error {
 }
 
 type UpdateApplicationAdvancedConfigRequestScimServerAdvancedConfig struct {
-	// A list of IDs of supported custom user fields.
+	// The list of supported user custom field IDs.
 	SupportedUserCustomFieldIds []*string `json:"SupportedUserCustomFieldIds,omitempty" xml:"SupportedUserCustomFieldIds,omitempty" type:"Repeated"`
-	// The namespace of the user extension fields.
+	// The namespace of user extended fields.
 	//
 	// example:
 	//

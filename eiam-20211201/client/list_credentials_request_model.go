@@ -31,7 +31,7 @@ type iListCredentialsRequest interface {
 
 type ListCredentialsRequest struct {
 	CredentialExternalIds []*string `json:"CredentialExternalIds,omitempty" xml:"CredentialExternalIds,omitempty" type:"Repeated"`
-	// The credential IDs.
+	// The list of credential IDs.
 	CredentialIds           []*string `json:"CredentialIds,omitempty" xml:"CredentialIds,omitempty" type:"Repeated"`
 	CredentialSharingScopes []*string `json:"CredentialSharingScopes,omitempty" xml:"CredentialSharingScopes,omitempty" type:"Repeated"`
 	CredentialTypes         []*string `json:"CredentialTypes,omitempty" xml:"CredentialTypes,omitempty" type:"Repeated"`
@@ -45,7 +45,7 @@ type ListCredentialsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page.
 	//
 	// - Default value: 20.
 	//
@@ -55,13 +55,13 @@ type ListCredentialsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The pagination token.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The credential statuses.
+	// The list of credential statuses.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 
@@ -168,15 +168,15 @@ func (s *ListCredentialsRequest) Validate() error {
 }
 
 type ListCredentialsRequestFilter struct {
-	// The field to filter on. Valid value:
+	// The name of the filter field. Valid values:
 	//
-	// - `CredentialIdentifier`: the credential identifier.
+	// - CredentialIdentifier: the credential identifier.
 	//
 	// example:
 	//
 	// CredentialIdentifier
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The values for the specified filter field.
+	// The list of filter field values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

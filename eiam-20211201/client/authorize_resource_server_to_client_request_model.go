@@ -18,7 +18,7 @@ type iAuthorizeResourceServerToClientRequest interface {
 }
 
 type AuthorizeResourceServerToClientRequest struct {
-	// The unique ID of the client application.
+	// The unique identifier of the Client application.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type AuthorizeResourceServerToClientRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the resource server application.
+	// The ID of the ResourceServer application.
 	//
 	// This parameter is required.
 	//

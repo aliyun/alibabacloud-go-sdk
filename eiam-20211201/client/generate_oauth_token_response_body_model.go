@@ -62,13 +62,13 @@ func (s *GenerateOauthTokenResponseBody) Validate() error {
 }
 
 type GenerateOauthTokenResponseBodyTokenResponse struct {
-	// The access token.
+	// Access Token。
 	//
 	// example:
 	//
 	// ***
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// The expiration time, in Unix timestamp format (seconds since epoch).
+	// The expiration time, in UNIX timestamp format. Unit: seconds.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GenerateOauthTokenResponseBodyTokenResponse struct {
 	//
 	// 1200
 	ExpiresIn *int64 `json:"ExpiresIn,omitempty" xml:"ExpiresIn,omitempty"`
-	// The token type. Only Bearer is supported.
+	// The token type. Currently, only Bearer is supported.
 	//
 	// example:
 	//

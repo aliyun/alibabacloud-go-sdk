@@ -28,7 +28,7 @@ type AddApplicationAccountToUserRequest struct {
 	//
 	// app_11111
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The name of the application account.
+	// The application account name.
 	//
 	// This parameter is required.
 	//

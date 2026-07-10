@@ -18,7 +18,7 @@ type iDeleteApplicationClientSecretRequest interface {
 }
 
 type DeleteApplicationClientSecretRequest struct {
-	// The ID of the application for which you want to delete a client key.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteApplicationClientSecretRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteApplicationClientSecretRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the client key that you want to delete for the application.
+	// The client secret ID of the application.
 	//
 	// This parameter is required.
 	//

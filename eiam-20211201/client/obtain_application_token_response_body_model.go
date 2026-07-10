@@ -80,7 +80,7 @@ type ObtainApplicationTokenResponseBodyApplicationToken struct {
 	//
 	// token_m7aso6v4efvu2otfq3jdzxxxx
 	ApplicationTokenId *string `json:"ApplicationTokenId,omitempty" xml:"ApplicationTokenId,omitempty"`
-	// The type of the application token.
+	// The application token type.
 	//
 	// example:
 	//
@@ -98,19 +98,19 @@ type ObtainApplicationTokenResponseBodyApplicationToken struct {
 	//
 	// 1735610950000
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// The ID of the IDaaS EIAM instance.
+	// The IDaaS EIAM instance ID.
 	//
 	// example:
 	//
 	// idaas_ki6hd7ihir4ybawogqk6kqxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the token was last used.
+	// The last used time.
 	//
 	// example:
 	//
 	// 1735610930000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// The status.
+	// The enabling status.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iGetCredentialRequest interface {
 }
 
 type GetCredentialRequest struct {
-	// The ID of the credential.
+	// The credential ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetCredentialRequest struct {
 	//
 	// cred_mkv7rgt4d7i4u7zqtzev2mxxxx
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

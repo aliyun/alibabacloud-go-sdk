@@ -24,13 +24,13 @@ type iListCloudAccountRolesResponseBody interface {
 type ListCloudAccountRolesResponseBody struct {
 	// The list of cloud roles.
 	CloudAccountRoles []*ListCloudAccountRolesResponseBodyCloudAccountRoles `json:"CloudAccountRoles,omitempty" xml:"CloudAccountRoles,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of rows per page in the paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token returned in this call.
+	// The pagination token returned in this call.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListCloudAccountRolesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListCloudAccountRolesResponseBody) Validate() error {
 }
 
 type ListCloudAccountRolesResponseBodyCloudAccountRoles struct {
-	// The ID of the Alibaba Cloud account.
+	// The cloud account ID.
 	//
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The external ID for the cloud role.
+	// The cloud role identifier.
 	//
 	// example:
 	//
@@ -131,33 +131,33 @@ type ListCloudAccountRolesResponseBodyCloudAccountRoles struct {
 	CloudAccountRoleExternalId *string `json:"CloudAccountRoleExternalId,omitempty" xml:"CloudAccountRoleExternalId,omitempty"`
 	// The health status of the cloud role. Valid values:
 	//
-	// - healthy: The role is healthy.
+	// - healthy: healthy.
 	//
-	// - unhealthy: The role is unhealthy.
+	// - unhealthy: unhealthy.
 	//
-	// - unknown: The health status is unknown.
+	// - unknown: unknown.
 	//
 	// example:
 	//
 	// healthy
 	CloudAccountRoleHealth *string `json:"CloudAccountRoleHealth,omitempty" xml:"CloudAccountRoleHealth,omitempty"`
-	// The result of the health check for the cloud role.
+	// The health check result of the cloud role.
 	CloudAccountRoleHealthCheckResult *ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthCheckResult `json:"CloudAccountRoleHealthCheckResult,omitempty" xml:"CloudAccountRoleHealthCheckResult,omitempty" type:"Struct"`
-	// The ID of the cloud role.
+	// The cloud role ID.
 	//
 	// example:
 	//
 	// carole_01kmek49aqxxxx
 	CloudAccountRoleId *string `json:"CloudAccountRoleId,omitempty" xml:"CloudAccountRoleId,omitempty"`
-	// The name of the cloud role.
+	// The cloud role name.
 	//
 	// example:
 	//
 	// role-test
 	CloudAccountRoleName *string `json:"CloudAccountRoleName,omitempty" xml:"CloudAccountRoleName,omitempty"`
-	// The type of the cloud role. The format of the role type varies based on the type of the cloud account. The following value is supported:
+	// The cloud role type. The specific format depends on the cloud account type. Valid values:
 	//
-	// - role: This value applies to Alibaba Cloud accounts.
+	// - role: applicable to Alibaba Cloud accounts.
 	//
 	// example:
 	//
@@ -165,21 +165,21 @@ type ListCloudAccountRolesResponseBodyCloudAccountRoles struct {
 	CloudAccountRoleType *string `json:"CloudAccountRoleType,omitempty" xml:"CloudAccountRoleType,omitempty"`
 	// The usage type of the cloud role. Valid values:
 	//
-	// - system: The role is used by the system.
+	// - system: system.
 	//
-	// - user: The role is used by a user.
+	// - user: user.
 	//
 	// example:
 	//
 	// system
 	CloudAccountRoleUsageType *string `json:"CloudAccountRoleUsageType,omitempty" xml:"CloudAccountRoleUsageType,omitempty"`
-	// The time when the role was created. This is a UNIX timestamp. Unit: milliseconds.
+	// The creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1719320115000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the cloud role.
+	// The cloud role description.
 	//
 	// example:
 	//
@@ -191,17 +191,17 @@ type ListCloudAccountRolesResponseBodyCloudAccountRoles struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the cloud role. Valid values:
+	// The cloud role status. Valid values:
 	//
-	// - enabled: The role is enabled.
+	// - enabled: enabled.
 	//
-	// - disabled: The role is disabled.
+	// - disable: disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the role was last updated. This is a UNIX timestamp. Unit: milliseconds.
+	// The last update time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -344,19 +344,19 @@ func (s *ListCloudAccountRolesResponseBodyCloudAccountRoles) Validate() error {
 }
 
 type ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthCheckResult struct {
-	// The reason for the error. This parameter is returned when the health check status is unhealthy.
+	// The error reason. This field is returned when the health check status is unhealthy.
 	ErrorReason *ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthCheckResultErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
-	// The time of the last health check. This is a UNIX timestamp. Unit: milliseconds.
+	// The last check time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
-	// The result of the health check. Valid values:
+	// The health check result of the cloud role. Valid values:
 	//
-	// - success: The health check was successful.
+	// - success: succeeded.
 	//
-	// - failed: The health check failed.
+	// - failed: failed.
 	//
 	// example:
 	//
@@ -415,7 +415,7 @@ type ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthChe
 	//
 	// AuthenticationFail.NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// The error description.
 	//
 	// example:
 	//

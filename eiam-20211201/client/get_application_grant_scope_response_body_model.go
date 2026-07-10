@@ -16,9 +16,9 @@ type iGetApplicationGrantScopeResponseBody interface {
 }
 
 type GetApplicationGrantScopeResponseBody struct {
-	// The permissions of the Developer API feature.
+	// The authorization scope.
 	ApplicationGrantScope *GetApplicationGrantScopeResponseBodyApplicationGrantScope `json:"ApplicationGrantScope,omitempty" xml:"ApplicationGrantScope,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetApplicationGrantScopeResponseBody) Validate() error {
 }
 
 type GetApplicationGrantScopeResponseBodyApplicationGrantScope struct {
-	// The permissions of the Developer API feature.
+	// The collection of API authorization scopes.
 	GrantScopes []*string `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
 }
 

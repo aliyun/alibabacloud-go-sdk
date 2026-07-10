@@ -129,7 +129,7 @@ type GetCloudAccountResponseBodyCloudAccount struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The most recent update time. The value is a UNIX timestamp in milliseconds.
+	// The last update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

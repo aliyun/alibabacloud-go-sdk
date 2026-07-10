@@ -16,7 +16,7 @@ type iObtainCredentialResponseBody interface {
 }
 
 type ObtainCredentialResponseBody struct {
-	// The credential details.
+	// The credential information.
 	Credential *ObtainCredentialResponseBodyCredential `json:"Credential,omitempty" xml:"Credential,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ObtainCredentialResponseBody) Validate() error {
 }
 
 type ObtainCredentialResponseBodyCredential struct {
-	// The time when the credential was created. This value is a Unix timestamp in milliseconds.
+	// The creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -70,11 +70,11 @@ type ObtainCredentialResponseBodyCredential struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The credential content.
 	CredentialContent *ObtainCredentialResponseBodyCredentialCredentialContent `json:"CredentialContent,omitempty" xml:"CredentialContent,omitempty" type:"Struct"`
-	// The credential creation type. Valid values:
+	// The creation type of the credential. Valid values:
 	//
-	// - `system_init`: The system created the credential.
+	// - system_init: Created by the system.
 	//
-	// - `user_custom`: A user created the credential.
+	// - user_custom: Created by the user.
 	//
 	// example:
 	//
@@ -99,26 +99,26 @@ type ObtainCredentialResponseBodyCredential struct {
 	//
 	// credential_name
 	CredentialName *string `json:"CredentialName,omitempty" xml:"CredentialName,omitempty"`
-	// The credential scenario label. Valid values:
+	// The scenarios label of the credential. Valid values:
 	//
-	// - `llm`: The credential is used for an LLM.
+	// - llm: large language model.
 	//
-	// - `saas`: The credential is used for a SaaS application.
+	// - saas: third-party SaaS service.
 	//
 	// example:
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"CredentialScenarioLabel,omitempty" xml:"CredentialScenarioLabel,omitempty"`
 	CredentialSharingScope  *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
-	// The credential subject ID.
+	// The ID of the subject to which the credential belongs.
 	//
 	// example:
 	//
 	// apt_werthgfdsasffxxxxx
 	CredentialSubjectId *string `json:"CredentialSubjectId,omitempty" xml:"CredentialSubjectId,omitempty"`
-	// The credential subject type. Valid value:
+	// The type of the subject to which the credential belongs. Valid values:
 	//
-	// - `authentication_token_provider`: The credential subject is an authentication token provider.
+	// - authentication_token_provider: authentication token provider.
 	//
 	// example:
 	//
@@ -126,15 +126,15 @@ type ObtainCredentialResponseBodyCredential struct {
 	CredentialSubjectType *string `json:"CredentialSubjectType,omitempty" xml:"CredentialSubjectType,omitempty"`
 	// The credential type. Valid values:
 	//
-	// - `api_key`: An API key.
+	// - api_key: API key authentication credential.
 	//
-	// - `oauth_client`: An OAuth 2.0 client credential.
+	// - oauth_client: OAuth client authentication credential.
 	//
 	// example:
 	//
 	// api_key
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// The description.
+	// The credential description.
 	//
 	// example:
 	//
@@ -147,17 +147,17 @@ type ObtainCredentialResponseBodyCredential struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status. Valid values:
+	// The credential status. Valid values:
 	//
-	// - `enabled`: The credential can be used.
+	// - enabled: Enabled.
 	//
-	// - `disabled`: The credential cannot be used.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the credential was last updated. This value is a Unix timestamp in milliseconds.
+	// The update time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -336,9 +336,9 @@ func (s *ObtainCredentialResponseBodyCredential) Validate() error {
 }
 
 type ObtainCredentialResponseBodyCredentialCredentialContent struct {
-	// The details of the API key credential.
+	// The credential content of the API key credential type.
 	ApiKeyContent *ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent `json:"ApiKeyContent,omitempty" xml:"ApiKeyContent,omitempty" type:"Struct"`
-	// The details of the OAuth 2.0 client credential.
+	// The credential content of the OAuth client authentication credential type.
 	OAuthClientContent *ObtainCredentialResponseBodyCredentialCredentialContentOAuthClientContent `json:"OAuthClientContent,omitempty" xml:"OAuthClientContent,omitempty" type:"Struct"`
 }
 
@@ -383,7 +383,7 @@ func (s *ObtainCredentialResponseBodyCredentialCredentialContent) Validate() err
 }
 
 type ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent struct {
-	// The API key.
+	// The API key content.
 	//
 	// example:
 	//
@@ -413,13 +413,13 @@ func (s *ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent) V
 }
 
 type ObtainCredentialResponseBodyCredentialCredentialContentOAuthClientContent struct {
-	// The client ID.
+	// The client_id of the OAuth protocol.
 	//
 	// example:
 	//
 	// dmvncmxersdxxxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The client secret.
+	// The client_secret of the OAuth protocol.
 	//
 	// example:
 	//

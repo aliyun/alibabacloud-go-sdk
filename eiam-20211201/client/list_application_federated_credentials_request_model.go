@@ -24,7 +24,7 @@ type iListApplicationFederatedCredentialsRequest interface {
 }
 
 type ListApplicationFederatedCredentialsRequest struct {
-	// The type of the application federated credential.
+	// The type of the application federated credential provider.
 	//
 	// example:
 	//
@@ -46,19 +46,19 @@ type ListApplicationFederatedCredentialsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page in a paged query. This parameter is used for paging.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token.
+	// The pagination token used to retrieve the next page of results.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The token to retrieve the previous page of results.
+	// The pagination token used to retrieve the previous page of results.
 	//
 	// example:
 	//

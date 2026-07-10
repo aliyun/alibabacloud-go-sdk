@@ -18,7 +18,7 @@ type iDeleteResourceServerScopeRequest interface {
 }
 
 type DeleteResourceServerScopeRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteResourceServerScopeRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteResourceServerScopeRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the scope permission.
+	// The scope permission ID under the ResourceServer.
 	//
 	// This parameter is required.
 	//

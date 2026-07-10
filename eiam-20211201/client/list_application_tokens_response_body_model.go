@@ -66,7 +66,7 @@ func (s *ListApplicationTokensResponseBody) Validate() error {
 }
 
 type ListApplicationTokensResponseBodyApplicationTokens struct {
-	// The Alibaba Cloud account ID.
+	// aliUid。
 	//
 	// example:
 	//
@@ -78,19 +78,19 @@ type ListApplicationTokensResponseBodyApplicationTokens struct {
 	//
 	// app_m7ar5tms4dwtggavalk3j3mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The application token.
+	// The application tokens.
 	//
 	// example:
 	//
 	// SATFwqX8zxGf83pJcJw78KFGjmrft4erWeZYBGS8oE7NN6qoE217yaJpUdMb1UuuGqhDiF43sCA4CF91CTL5iGntqwyLuaAcS9FJ9HfGadE5a7TjiwVafwrBYktxxxx
 	ApplicationToken *string `json:"ApplicationToken,omitempty" xml:"ApplicationToken,omitempty"`
-	// The ID of the application token.
+	// The application token ID.
 	//
 	// example:
 	//
 	// token_ndfxxigahelfne2y2hodehrxxxx
 	ApplicationTokenId *string `json:"ApplicationTokenId,omitempty" xml:"ApplicationTokenId,omitempty"`
-	// The type of the application token.
+	// The application token type.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type ListApplicationTokensResponseBodyApplicationTokens struct {
 	//
 	// 1747796654000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the application token.
+	// The application token description.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type ListApplicationTokensResponseBodyApplicationTokens struct {
 	//
 	// 1747796654000
 	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	// The ID of the IDaaS EIAM instance.
+	// The IDaaS EIAM instance ID.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type ListApplicationTokensResponseBodyApplicationTokens struct {
 	//
 	// 1747796654000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// The status.
+	// The enabling status.
 	//
 	// example:
 	//

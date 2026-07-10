@@ -25,12 +25,16 @@ type iListApplicationsRequest interface {
 	GetInstanceId() *string
 	SetM2MClientStatus(v string) *ListApplicationsRequest
 	GetM2MClientStatus() *string
+	SetManagedServiceCode(v string) *ListApplicationsRequest
+	GetManagedServiceCode() *string
 	SetPageNumber(v int64) *ListApplicationsRequest
 	GetPageNumber() *int64
 	SetPageSize(v int64) *ListApplicationsRequest
 	GetPageSize() *int64
 	SetResourceServerStatus(v string) *ListApplicationsRequest
 	GetResourceServerStatus() *string
+	SetServiceManaged(v bool) *ListApplicationsRequest
+	GetServiceManaged() *bool
 	SetSsoType(v string) *ListApplicationsRequest
 	GetSsoType() *string
 	SetStatus(v string) *ListApplicationsRequest
@@ -38,41 +42,41 @@ type iListApplicationsRequest interface {
 }
 
 type ListApplicationsRequest struct {
-	// The application creation type. If unspecified, only user-created (`user_custom`) applications are returned. To query applications of all types, set this parameter to `all`.
+	// The application creation type. If this parameter is left empty, applications of the user_custom type are queried by default. To query applications of all types, set this parameter to all.
 	//
 	// example:
 	//
 	// system_init
 	ApplicationCreationType *string `json:"ApplicationCreationType,omitempty" xml:"ApplicationCreationType,omitempty"`
-	// The application identity type. If unspecified, only applications of the `application` type are returned. To query all identity types, set this parameter to `all`.
+	// The application identity type. If this parameter is left empty, applications of the application type are queried by default. To query applications of all identity types, set this parameter to all.
 	//
 	// example:
 	//
 	// application
 	ApplicationIdentityType *string `json:"ApplicationIdentityType,omitempty" xml:"ApplicationIdentityType,omitempty"`
-	// A list of application IDs.
+	// The list of application IDs.
 	//
 	// example:
 	//
 	// Ram Account SSO
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	// The application name. Only prefix matching is supported.
+	// The application name. Only left fuzzy match is supported.
 	//
 	// example:
 	//
 	// Ram Account SSO
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The authorization type for application access. Valid values:
+	// The application access authorization type. Valid values:
 	//
-	// - `authorize_required`: Access requires explicit authorization.
+	// - authorize_required: Explicit authorization is required for access.
 	//
-	// - `default_all`: All members have access by default.
+	// - default_all: All members have access permissions by default.
 	//
 	// example:
 	//
 	// authorize_required
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	// A list of custom fields.
+	// The list of custom fields.
 	CustomFields []*ListApplicationsRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -82,12 +86,13 @@ type ListApplicationsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the M2M client identity.
+	// Specifies whether the M2M Client identity is enabled.
 	//
 	// example:
 	//
 	// enabled
-	M2MClientStatus *string `json:"M2MClientStatus,omitempty" xml:"M2MClientStatus,omitempty"`
+	M2MClientStatus    *string `json:"M2MClientStatus,omitempty" xml:"M2MClientStatus,omitempty"`
+	ManagedServiceCode *string `json:"ManagedServiceCode,omitempty" xml:"ManagedServiceCode,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -100,13 +105,14 @@ type ListApplicationsRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the resource server capability.
+	// Specifies whether the ResourceServer capability is enabled.
 	//
 	// example:
 	//
 	// enabled
 	ResourceServerStatus *string `json:"ResourceServerStatus,omitempty" xml:"ResourceServerStatus,omitempty"`
-	// A filter for the Single Sign-On (SSO) type. You can specify multiple types, separated by a comma. Example: `oauth2/m2m,oidc+oauth2/m2m`.
+	ServiceManaged       *bool   `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// The SSO type filter condition. Multiple types can be separated by commas, such as oauth2/m2m,oidc+oauth2/m2m.
 	//
 	// example:
 	//
@@ -114,9 +120,9 @@ type ListApplicationsRequest struct {
 	SsoType *string `json:"SsoType,omitempty" xml:"SsoType,omitempty"`
 	// The application status. Valid values:
 	//
-	// - `enabled`: Enabled.
+	// - enabled: Enabled.
 	//
-	// - `disabled`: Disabled.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
@@ -164,6 +170,10 @@ func (s *ListApplicationsRequest) GetM2MClientStatus() *string {
 	return s.M2MClientStatus
 }
 
+func (s *ListApplicationsRequest) GetManagedServiceCode() *string {
+	return s.ManagedServiceCode
+}
+
 func (s *ListApplicationsRequest) GetPageNumber() *int64 {
 	return s.PageNumber
 }
@@ -174,6 +184,10 @@ func (s *ListApplicationsRequest) GetPageSize() *int64 {
 
 func (s *ListApplicationsRequest) GetResourceServerStatus() *string {
 	return s.ResourceServerStatus
+}
+
+func (s *ListApplicationsRequest) GetServiceManaged() *bool {
+	return s.ServiceManaged
 }
 
 func (s *ListApplicationsRequest) GetSsoType() *string {
@@ -224,6 +238,11 @@ func (s *ListApplicationsRequest) SetM2MClientStatus(v string) *ListApplications
 	return s
 }
 
+func (s *ListApplicationsRequest) SetManagedServiceCode(v string) *ListApplicationsRequest {
+	s.ManagedServiceCode = &v
+	return s
+}
+
 func (s *ListApplicationsRequest) SetPageNumber(v int64) *ListApplicationsRequest {
 	s.PageNumber = &v
 	return s
@@ -236,6 +255,11 @@ func (s *ListApplicationsRequest) SetPageSize(v int64) *ListApplicationsRequest 
 
 func (s *ListApplicationsRequest) SetResourceServerStatus(v string) *ListApplicationsRequest {
 	s.ResourceServerStatus = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetServiceManaged(v bool) *ListApplicationsRequest {
+	s.ServiceManaged = &v
 	return s
 }
 
@@ -265,7 +289,7 @@ func (s *ListApplicationsRequest) Validate() error {
 type ListApplicationsRequestCustomFields struct {
 	// The custom field identifier. Valid values:
 	//
-	// - `agent_type`: The agent type.
+	// - agent_type: the agent type.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iListCloudAccountRolesRequest interface {
 }
 
 type ListCloudAccountRolesRequest struct {
-	// The ID of the Alibaba Cloud account.
+	// The cloud account ID.
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type ListCloudAccountRolesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of records to return on each page.
+	// The maximum number of records per page.
 	//
-	// - The default value is 20.
+	// - If this parameter is not specified, the default value is 20.
 	//
 	// - The maximum value is 100.
 	//
@@ -50,7 +50,7 @@ type ListCloudAccountRolesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that specifies the start of the next page of results.
+	// The token that identifies the start position of the next page.
 	//
 	// - If this parameter is not specified, the query starts from the first page.
 	//
@@ -129,19 +129,19 @@ func (s *ListCloudAccountRolesRequest) Validate() error {
 type ListCloudAccountRolesRequestFilter struct {
 	// The name of the filter field. Valid values:
 	//
-	// - CloudAccountRoleId: The ID of the cloud role.
+	// - CloudAccountRoleId: the cloud role ID.
 	//
-	// - CloudAccountRoleName: The name of the cloud role.
+	// - CloudAccountRoleName: the cloud role name.
 	//
-	// - CloudAccountRoleExternalId: The external ID of the cloud role.
+	// - CloudAccountRoleExternalId: the external identifier of the cloud role.
 	//
-	// - CloudAccountRoleUsageType: The usage type of the cloud role.
+	// - CloudAccountRoleUsageType: the usage type of the cloud role.
 	//
 	// example:
 	//
 	// CloudAccountRoleId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of values for the filter field.
+	// The values of the filter field.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

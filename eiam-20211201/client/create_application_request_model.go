@@ -32,11 +32,11 @@ type iCreateApplicationRequest interface {
 }
 
 type CreateApplicationRequest struct {
-	// The identity type of the application. The default value is application. Valid values:
+	// The application identity type. Default value: application. Valid values:
 	//
-	// - application: A standard application.
+	// - application: application.
 	//
-	// - agent: An automated agent.
+	// - agent: agent.
 	//
 	// example:
 	//
@@ -51,11 +51,11 @@ type CreateApplicationRequest struct {
 	// Ram Account SSO
 	ApplicationName  *string                                   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	ApplicationOwner *CreateApplicationRequestApplicationOwner `json:"ApplicationOwner,omitempty" xml:"ApplicationOwner,omitempty" type:"Struct"`
-	// Specifies how the application is created. Valid values:
+	// The source from which the application is created. Valid values:
 	//
-	// - urn:alibaba:idaas:app:source:template: Creates the application from an application template.
+	// - urn:alibaba:idaas:app:source:template: application template.
 	//
-	// - urn:alibaba:idaas:app:source:standard: Creates the application from a standard protocol.
+	// - urn:alibaba:idaas:app:source:standard: standard protocol.
 	//
 	// This parameter is required.
 	//
@@ -63,7 +63,7 @@ type CreateApplicationRequest struct {
 	//
 	// urn:alibaba:idaas:app:source:standard
 	ApplicationSourceType *string `json:"ApplicationSourceType,omitempty" xml:"ApplicationSourceType,omitempty"`
-	// The ID of the application template. This parameter is required if ApplicationSourceType is urn:alibaba:idaas:app:source:template.
+	// The application template ID. This parameter is required when ApplicationSourceType is set to urn:alibaba:idaas:app:source:template.
 	//
 	// example:
 	//
@@ -90,11 +90,11 @@ type CreateApplicationRequest struct {
 	//
 	// https://oss.cn-hangzhou.aliyuncs.com/logo.png
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// The single sign-on (SSO) protocol. Valid values:
+	// The single sign-on protocol. Valid values:
 	//
-	// - saml2: SAML 2.0
+	// - saml2: SAML 2.0 protocol.
 	//
-	// - oidc: OpenID Connect
+	// - oidc: OpenID Connect protocol.
 	//
 	// This parameter is required.
 	//

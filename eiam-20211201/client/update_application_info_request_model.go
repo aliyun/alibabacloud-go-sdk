@@ -43,9 +43,9 @@ type UpdateApplicationInfoRequest struct {
 	// Ram Account SSO
 	ApplicationName  *string                                       `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	ApplicationOwner *UpdateApplicationInfoRequestApplicationOwner `json:"ApplicationOwner,omitempty" xml:"ApplicationOwner,omitempty" type:"Struct"`
-	// The collection of application visibility settings.
+	// The application visibility settings.
 	ApplicationVisibility []*string `json:"ApplicationVisibility,omitempty" xml:"ApplicationVisibility,omitempty" type:"Repeated"`
-	// The idempotent token.
+	// The idempotence token.
 	//
 	// example:
 	//

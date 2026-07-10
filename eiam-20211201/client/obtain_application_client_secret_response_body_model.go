@@ -16,7 +16,7 @@ type iObtainApplicationClientSecretResponseBody interface {
 }
 
 type ObtainApplicationClientSecretResponseBody struct {
-	// The secret information.
+	// The client secret information.
 	ApplicationClientSecret *ObtainApplicationClientSecretResponseBodyApplicationClientSecret `json:"ApplicationClientSecret,omitempty" xml:"ApplicationClientSecret,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -80,7 +80,7 @@ type ObtainApplicationClientSecretResponseBodyApplicationClientSecret struct {
 	//
 	// CSEHDcHcrUKHw1CuxkJEHPveWRXBGqVqRsxxxx
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
-	// The expiration time of the client secret. This is a UNIX timestamp. Unit: milliseconds.
+	// The expiration time of the client secret. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type ObtainApplicationClientSecretResponseBodyApplicationClientSecret struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The last time the client secret was used. This is a UNIX timestamp. Unit: milliseconds.
+	// The time when the client secret was last used. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -106,9 +106,9 @@ type ObtainApplicationClientSecretResponseBodyApplicationClientSecret struct {
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
 	// The status of the client secret. Valid values:
 	//
-	// - enabled: The secret is enabled.
+	// - enabled: Enabled.
 	//
-	// - disabled: The secret is disabled.
+	// - disabled: Disabled.
 	//
 	// example:
 	//

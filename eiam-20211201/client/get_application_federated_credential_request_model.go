@@ -18,7 +18,7 @@ type iGetApplicationFederatedCredentialRequest interface {
 }
 
 type GetApplicationFederatedCredentialRequest struct {
-	// The ID of the application\\"s federated credential.
+	// The application federated credential ID.
 	//
 	// This parameter is required.
 	//

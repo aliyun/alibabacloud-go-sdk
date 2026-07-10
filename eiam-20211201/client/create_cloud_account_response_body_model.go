@@ -16,13 +16,13 @@ type iCreateCloudAccountResponseBody interface {
 }
 
 type CreateCloudAccountResponseBody struct {
-	// The ID of the cloud account.
+	// The cloud account ID.
 	//
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

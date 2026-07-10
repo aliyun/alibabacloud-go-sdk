@@ -16,7 +16,7 @@ type iCreateClientPublicKeyResponseBody interface {
 }
 
 type CreateClientPublicKeyResponseBody struct {
-	// The ID of the client public key for the application.
+	// The ID of the application ClientPublicKey.
 	//
 	// example:
 	//

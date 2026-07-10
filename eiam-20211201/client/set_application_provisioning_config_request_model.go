@@ -50,21 +50,21 @@ type SetApplicationProvisioningConfigRequest struct {
 	//
 	// nae_examplexxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// Indicates whether to synchronize passwords for IDaaS user event callbacks. Valid values:
+	// Specifies whether IDaaS user event callbacks synchronize passwords. Valid values:
 	//
-	// - true: Synchronize passwords.
+	// - true: Passwords are synchronized.
 	//
-	// - false: Do not synchronize passwords.
+	// - false: Passwords are not synchronized.
 	//
 	// example:
 	//
 	// true
 	ProvisionPassword *bool `json:"ProvisionPassword,omitempty" xml:"ProvisionPassword,omitempty"`
-	// The account synchronization protocol. Valid values:
+	// The account synchronization protocol type. Valid values:
 	//
-	// - idaas_callback: IDaaS custom event callback for account synchronization.
+	// - idaas_callback: IDaaS custom event callback-based account synchronization.
 	//
-	// - scim2: System for Cross-domain Identity Management (SCIM) protocol for synchronization.
+	// - scim2: System for Cross-domain Identity Management protocol-based synchronization.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type SetApplicationProvisioningConfigRequest struct {
 	//
 	// idaas_callback
 	ProvisionProtocolType *string `json:"ProvisionProtocolType,omitempty" xml:"ProvisionProtocolType,omitempty"`
-	// The IDaaS SCIM protocol synchronization configuration parameters. This parameter is required when ProvisionProtocolType is set to scim2.
+	// The IDaaS System for Cross-domain Identity Management protocol synchronization configuration parameters. This parameter is required when ProvisionProtocolType is set to scim2.
 	ScimProvisioningConfig *SetApplicationProvisioningConfigRequestScimProvisioningConfig `json:"ScimProvisioningConfig,omitempty" xml:"ScimProvisioningConfig,omitempty" type:"Struct"`
 }
 
@@ -162,29 +162,29 @@ func (s *SetApplicationProvisioningConfigRequest) Validate() error {
 }
 
 type SetApplicationProvisioningConfigRequestCallbackProvisioningConfig struct {
-	// The destination address where the application accepts IDaaS event callbacks.
+	// The destination URL where the application receives IDaaS event callbacks.
 	//
 	// example:
 	//
 	// https://example.com/event/callback
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	// The symmetric key for encrypting and decrypting IDaaS event callbacks. The key uses the AES-256 algorithm and is in hexadecimal format.
+	// The symmetric encryption and decryption key for IDaaS event callbacks. The key uses the AES256 algorithm and is in hexadecimal encoding format.
 	//
 	// example:
 	//
 	// ad3b248**************************b3561a73d7
 	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	// Indicates whether to encrypt IDaaS event callback messages. Valid values:
+	// Specifies whether IDaaS event callback messages are encrypted. Valid values:
 	//
-	// - true: Encrypt the messages.
+	// - true: Encrypted.
 	//
-	// - false: Do not encrypt the messages. The messages are transmitted in plaintext.
+	// - false: Not encrypted. Messages are transmitted in plaintext.
 	//
 	// example:
 	//
 	// true
 	EncryptRequired *bool `json:"EncryptRequired,omitempty" xml:"EncryptRequired,omitempty"`
-	// The list of message types for the IDaaS event callback listener.
+	// The list of IDaaS event callback message types to listen for.
 	ListenEventScopes []*string `json:"ListenEventScopes,omitempty" xml:"ListenEventScopes,omitempty" type:"Repeated"`
 }
 
@@ -237,21 +237,21 @@ func (s *SetApplicationProvisioningConfigRequestCallbackProvisioningConfig) Vali
 }
 
 type SetApplicationProvisioningConfigRequestScimProvisioningConfig struct {
-	// The configuration parameters for SCIM protocol synchronization.
+	// The System for Cross-domain Identity Management protocol synchronization configuration parameters.
 	AuthnConfiguration *SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfiguration `json:"AuthnConfiguration,omitempty" xml:"AuthnConfiguration,omitempty" type:"Struct"`
-	// The scope of a full push for the SCIM protocol. Valid values:
+	// The System for Cross-domain Identity Management protocol full push scope. Valid values:
 	//
-	// - urn:alibaba:idaas:app:scim:User:PUSH: Full synchronization of users.
+	// - urn:alibaba:idaas:app:scim:User:PUSH: Full user synchronization.
 	FullPushScopes []*string `json:"FullPushScopes,omitempty" xml:"FullPushScopes,omitempty" type:"Repeated"`
-	// The operations on the target resource for the SCIM protocol. Valid values:
+	// The System for Cross-domain Identity Management protocol target resource operation actions. Valid values:
 	//
-	// - urn:alibaba:idaas:app:scim:User:CREATE: Create an account.
+	// - urn:alibaba:idaas:app:scim:User:CREATE: Account creation.
 	//
-	// - urn:alibaba:idaas:app:scim:User:UPDATE: Update an account.
+	// - urn:alibaba:idaas:app:scim:User:UPDATE: Account update.
 	//
-	// - urn:alibaba:idaas:app:scim:User:DELETE: Delete an account.
+	// - urn:alibaba:idaas:app:scim:User:DELETE: Account deletion.
 	ProvisioningActions []*string `json:"ProvisioningActions,omitempty" xml:"ProvisioningActions,omitempty" type:"Repeated"`
-	// The base URL where the application accepts IDaaS SCIM protocol synchronization.
+	// The base URL where the application accepts IDaaS synchronization requests based on the System for Cross-domain Identity Management protocol.
 	//
 	// example:
 	//
@@ -313,25 +313,25 @@ func (s *SetApplicationProvisioningConfigRequestScimProvisioningConfig) Validate
 }
 
 type SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfiguration struct {
-	// The authorization mode for the SCIM protocol interface. Valid values:
+	// The authorization pattern for the System for Cross-domain Identity Management protocol API. Valid values:
 	//
-	// - oauth2: OAuth2 mode.
+	// - oauth2: OAuth2 pattern.
 	//
 	// example:
 	//
 	// oauth2
 	AuthnMode *string `json:"AuthnMode,omitempty" xml:"AuthnMode,omitempty"`
-	// The authorization configuration parameters. The usage is as follows:
+	// The authorization configuration parameters. Usage:
 	//
 	// - If GrantType is set to client_credentials, you can update ClientId, ClientSecret, and AuthnMethod.
 	//
 	// - If GrantType is set to bearer_token, you can update AccessToken.
 	AuthnParam *SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfigurationAuthnParam `json:"AuthnParam,omitempty" xml:"AuthnParam,omitempty" type:"Struct"`
-	// The authorization grant type for the SCIM protocol. Valid values:
+	// The System for Cross-domain Identity Management protocol authorization pattern. Valid values:
 	//
-	// - client_credentials: Client credentials mode.
+	// - client_credentials: Client credentials pattern.
 	//
-	// - bearer_token: Bearer token mode.
+	// - bearer_token: Bearer token pattern.
 	//
 	// example:
 	//
@@ -384,17 +384,17 @@ func (s *SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfi
 }
 
 type SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfigurationAuthnParam struct {
-	// The access token. You can update this field when the grant type is bearer_token.
+	// The access token. This field can be updated when GrantType is set to bearer_token.
 	//
 	// example:
 	//
 	// k52x2ru63rlkflina5utgkxxxx
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// The authentication method for the SCIM protocol. Valid values:
+	// The System for Cross-domain Identity Management protocol authentication pattern. Valid values:
 	//
-	// - client_secret_basic: The key is passed in the request header.
+	// - client_secret_basic: Passes the secret through the request header.
 	//
-	// - client_secret_post: The key is passed in the request body.
+	// - client_secret_post: Passes the secret through the request body.
 	//
 	// example:
 	//

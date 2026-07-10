@@ -62,7 +62,7 @@ func (s *CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponseBody) 
 }
 
 type CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponseBodyCheckApplicationProvisioningUserPrimaryOuResult struct {
-	// Indicates if the authorization is granted.
+	// Indicates whether authorization is allowed.
 	AllowAuthorization *bool `json:"AllowAuthorization,omitempty" xml:"AllowAuthorization,omitempty"`
 	// The application ID.
 	//

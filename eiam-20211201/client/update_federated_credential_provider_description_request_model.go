@@ -18,13 +18,13 @@ type iUpdateFederatedCredentialProviderDescriptionRequest interface {
 }
 
 type UpdateFederatedCredentialProviderDescriptionRequest struct {
-	// The description of the federated credential provider.
+	// The description of the federated trust source.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The federated credential provider ID.
+	// The federated trust source ID.
 	//
 	// This parameter is required.
 	//

@@ -26,7 +26,7 @@ type iUpdateFederatedCredentialProviderRequest interface {
 }
 
 type UpdateFederatedCredentialProviderRequest struct {
-	// The ID of the federated credential provider.
+	// The federated trust source ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateFederatedCredentialProviderRequest struct {
 	//
 	// fcp_mkv7rgt4d7i4u7zqtzev2mxxxx
 	FederatedCredentialProviderId *string `json:"FederatedCredentialProviderId,omitempty" xml:"FederatedCredentialProviderId,omitempty"`
-	// The name of the federated credential provider.
+	// The federated trust source name.
 	//
 	// This parameter is required.
 	//
@@ -50,17 +50,17 @@ type UpdateFederatedCredentialProviderRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the network access endpoint.
+	// The network access endpoint ID.
 	//
 	// example:
 	//
 	// nae_public
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The OpenID Connect (OIDC) configuration.
+	// The OIDC configuration.
 	OidcProviderConfig *UpdateFederatedCredentialProviderRequestOidcProviderConfig `json:"OidcProviderConfig,omitempty" xml:"OidcProviderConfig,omitempty" type:"Struct"`
 	// The PKCS7 configuration.
 	Pkcs7ProviderConfig *UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig `json:"Pkcs7ProviderConfig,omitempty" xml:"Pkcs7ProviderConfig,omitempty" type:"Struct"`
-	// The configuration of the private certificate authority (CA).
+	// The private CA configuration.
 	PrivateCaProviderConfig *UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig `json:"PrivateCaProviderConfig,omitempty" xml:"PrivateCaProviderConfig,omitempty" type:"Struct"`
 }
 
@@ -157,7 +157,7 @@ func (s *UpdateFederatedCredentialProviderRequest) Validate() error {
 type UpdateFederatedCredentialProviderRequestOidcProviderConfig struct {
 	// The list of audiences.
 	Audiences []*string `json:"Audiences,omitempty" xml:"Audiences,omitempty" type:"Repeated"`
-	// The source of the JSON Web Key Set (JWKS).
+	// The JWKS source.
 	//
 	// This parameter is required.
 	//
@@ -165,13 +165,13 @@ type UpdateFederatedCredentialProviderRequestOidcProviderConfig struct {
 	//
 	// static
 	JwksSource *string `json:"JwksSource,omitempty" xml:"JwksSource,omitempty"`
-	// JWKS endpoint
+	// The JWKS endpoint.
 	//
 	// example:
 	//
 	// https://example.com/jwks
 	JwksUri *string `json:"JwksUri,omitempty" xml:"JwksUri,omitempty"`
-	// The statically obtained JWKS.
+	// The statically retrieved JWKS.
 	//
 	// example:
 	//
@@ -265,7 +265,7 @@ func (s *UpdateFederatedCredentialProviderRequestOidcProviderConfig) Validate() 
 type UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig struct {
 	// The list of PKCS7 certificates.
 	Certificates []*UpdateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The Cryptographic Message Syntax (CMS) verification mode.
+	// The CMS verification mode.
 	//
 	// example:
 	//
@@ -277,7 +277,7 @@ type UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig struct {
 	//
 	// 1200
 	SignatureEffectiveTime *int64 `json:"SignatureEffectiveTime,omitempty" xml:"SignatureEffectiveTime,omitempty"`
-	// The expression to obtain the signing time.
+	// The expression used to retrieve the signing time.
 	//
 	// example:
 	//
@@ -411,7 +411,7 @@ func (s *UpdateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates
 type UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig struct {
 	// The list of root certificates.
 	Certificates []*UpdateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The method to obtain the root certificate.
+	// The method used to retrieve the root certificate.
 	//
 	// This parameter is required.
 	//
@@ -419,7 +419,7 @@ type UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig struct {
 	//
 	// custom
 	TrustAnchorSource *string `json:"TrustAnchorSource,omitempty" xml:"TrustAnchorSource,omitempty"`
-	// The trust condition for the root certificate.
+	// The trust condition of the root certificate.
 	//
 	// example:
 	//

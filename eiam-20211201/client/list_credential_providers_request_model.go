@@ -26,13 +26,13 @@ type iListCredentialProvidersRequest interface {
 }
 
 type ListCredentialProvidersRequest struct {
-	// List of credential provider IDs.
+	// The list of credential provider IDs.
 	CredentialProviderIds []*string `json:"CredentialProviderIds,omitempty" xml:"CredentialProviderIds,omitempty" type:"Repeated"`
-	// List of credential provider types.
+	// The list of credential provider types.
 	CredentialProviderTypes []*string `json:"CredentialProviderTypes,omitempty" xml:"CredentialProviderTypes,omitempty" type:"Repeated"`
-	// List of filter conditions.
+	// The list of filter conditions.
 	Filter []*ListCredentialProvidersRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,19 +40,19 @@ type ListCredentialProvidersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Page size for paged queries.
+	// The maximum number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Query token.
+	// The pagination token.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// List of credential provider statuses.
+	// The list of credential provider statuses.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 
@@ -141,17 +141,17 @@ func (s *ListCredentialProvidersRequest) Validate() error {
 }
 
 type ListCredentialProvidersRequestFilter struct {
-	// Filter condition name. Valid values:
+	// The filter condition name. Valid values:
 	//
-	// - CredentialProviderName: Credential provider name.
+	// - CredentialProviderName: the credential provider name.
 	//
-	// - CredentialProviderIdentifier: Credential provider identifier.
+	// - CredentialProviderIdentifier: the credential provider identifier.
 	//
 	// example:
 	//
 	// CredentialProviderName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// List of filter condition values.
+	// The list of filter condition values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

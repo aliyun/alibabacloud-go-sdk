@@ -28,13 +28,13 @@ type RevokeApplicationFromGroupsRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用角色ID。
+	// The application role ID.
 	//
 	// example:
 	//
 	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// A list of group IDs. A single operation supports up to 100 group IDs.
+	// The list of group IDs. You can specify up to 100 group IDs in a single request.
 	//
 	// This parameter is required.
 	//

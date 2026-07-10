@@ -16,7 +16,7 @@ type iGetClientPublicKeyResponseBody interface {
 }
 
 type GetClientPublicKeyResponseBody struct {
-	// Information about the application\\"s ClientPublicKey.
+	// The application ClientPublicKey information.
 	ClientPublicKey *GetClientPublicKeyResponseBodyClientPublicKey `json:"ClientPublicKey,omitempty" xml:"ClientPublicKey,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,13 +74,13 @@ type GetClientPublicKeyResponseBodyClientPublicKey struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the application\\"s ClientPublicKey.
+	// The ID of the application ClientPublicKey.
 	//
 	// example:
 	//
 	// KEYEqDnDJhztiEAwSin7MZoxGcihzCAuxxxx
 	ClientPublicKeyId *string `json:"ClientPublicKeyId,omitempty" xml:"ClientPublicKeyId,omitempty"`
-	// The time when the public key was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type GetClientPublicKeyResponseBodyClientPublicKey struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the key was last used.
+	// The last time the key pair was used.
 	//
 	// example:
 	//
 	// 1771305755000
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// Indicates whether this is the primary key.
+	// Indicates whether the key pair is used with priority.
 	//
 	// example:
 	//

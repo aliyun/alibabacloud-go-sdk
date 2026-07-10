@@ -16,7 +16,7 @@ type iCreateCredentialProviderResponseBody interface {
 }
 
 type CreateCredentialProviderResponseBody struct {
-	// The ID of the credential provider.
+	// The credential provider ID.
 	//
 	// example:
 	//

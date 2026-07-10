@@ -16,7 +16,7 @@ type iCreateApplicationClientSecretResponseBody interface {
 }
 
 type CreateApplicationClientSecretResponseBody struct {
-	// The information about the client secret.
+	// The client secret information.
 	ApplicationClientSecret *CreateApplicationClientSecretResponseBodyApplicationClientSecret `json:"ApplicationClientSecret,omitempty" xml:"ApplicationClientSecret,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,13 +68,13 @@ type CreateApplicationClientSecretResponseBodyApplicationClientSecret struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The value of the client secret.
+	// The client secret of the application.
 	//
 	// example:
 	//
 	// CSEHDcHcrUKHw1CuxkJEHPveWRXBGqVqRsxxxx
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
-	// The ID of the client secret.
+	// The client secret ID of the application.
 	//
 	// example:
 	//

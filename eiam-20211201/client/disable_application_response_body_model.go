@@ -14,7 +14,7 @@ type iDisableApplicationResponseBody interface {
 }
 
 type DisableApplicationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

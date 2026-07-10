@@ -28,7 +28,7 @@ type EnableClientPublicKeyRequest struct {
   // 
   // app_mkv7rgt4d7i4u7zqtzev2mxxxx
   ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-  // The ID of the ClientPublicKey for the application.
+  // The ID of the application ClientPublicKey.
   // 
   // This parameter is required.
   // 
@@ -36,7 +36,7 @@ type EnableClientPublicKeyRequest struct {
   // 
   // KEYEqDnDJhztiEAwSin7MZoxGcihzCAuxxxx
   ClientPublicKeyId *string `json:"ClientPublicKeyId,omitempty" xml:"ClientPublicKeyId,omitempty"`
-  // The client token that is used to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The value can contain only ASCII characters and must be no more than 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+  // The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
   // 
   // This parameter is required.
   // 

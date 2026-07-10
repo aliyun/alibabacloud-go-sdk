@@ -20,7 +20,7 @@ type iAuthorizeResourceServerScopesToClientRequest interface {
 }
 
 type AuthorizeResourceServerScopesToClientRequest struct {
-	// The ID of the client application.
+	// The unique identifier of the Client application.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type AuthorizeResourceServerScopesToClientRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the resource server application.
+	// The unique identifier of the ResourceServer application.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type AuthorizeResourceServerScopesToClientRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ResourceServerApplicationId *string `json:"ResourceServerApplicationId,omitempty" xml:"ResourceServerApplicationId,omitempty"`
-	// The list of scope permission IDs for the resource server.
+	// The list of Scope permission IDs under the ResourceServer.
 	//
 	// This parameter is required.
 	//

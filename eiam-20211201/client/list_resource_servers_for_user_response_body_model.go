@@ -22,13 +22,13 @@ type iListResourceServersForUserResponseBody interface {
 }
 
 type ListResourceServersForUserResponseBody struct {
-	// The number of entries returned per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListResourceServersForUserResponseBody) Validate() error {
 }
 
 type ListResourceServersForUserResponseBodyResourceServers struct {
-	// The ID of the ResourceServer application.
+	// The ResourceServer application ID.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type ListResourceServersForUserResponseBodyResourceServers struct {
 	//
 	// urn:idaas:test
 	ResourceServerIdentifier *string `json:"ResourceServerIdentifier,omitempty" xml:"ResourceServerIdentifier,omitempty"`
-	// The list of granted Scope permissions.
+	// The list of authorized Scope permissions.
 	ResourceServerScopes []*ListResourceServersForUserResponseBodyResourceServersResourceServerScopes `json:"ResourceServerScopes,omitempty" xml:"ResourceServerScopes,omitempty" type:"Repeated"`
 }
 
@@ -197,25 +197,29 @@ func (s *ListResourceServersForUserResponseBodyResourceServers) Validate() error
 }
 
 type ListResourceServersForUserResponseBodyResourceServersResourceServerScopes struct {
-	// Indicates whether a direct authorization exists.
+	// Indicates whether direct authorization exists. Valid values:
+	//
+	// - true: Direct authorization exists.
+	//
+	// - false: Direct authorization does not exist.
 	//
 	// example:
 	//
 	// true
 	HasDirectAuthorization *bool `json:"HasDirectAuthorization,omitempty" xml:"HasDirectAuthorization,omitempty"`
-	// Indicates whether an inherited permission exists.
+	// Indicates whether inherited authorization exists.
 	//
 	// example:
 	//
 	// false
 	HasInheritAuthorization *bool `json:"HasInheritAuthorization,omitempty" xml:"HasInheritAuthorization,omitempty"`
-	// The ID of the Scope permission.
+	// The Scope permission ID.
 	//
 	// example:
 	//
 	// ress_nbte4bb3qqqnaq73rlmkqixxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// The name of the Scope permission.
+	// The Scope permission name.
 	//
 	// example:
 	//

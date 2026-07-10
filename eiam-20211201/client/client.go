@@ -66,7 +66,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds an application account to a specified user in the current application.
+// Adds an application account for a specified employee under the current application.
 //
 // @param request - AddApplicationAccountToUserRequest
 //
@@ -122,7 +122,7 @@ func (client *Client) AddApplicationAccountToUserWithOptions(request *AddApplica
 
 // Summary:
 //
-// Adds an application account to a specified user in the current application.
+// Adds an application account for a specified employee under the current application.
 //
 // @param request - AddApplicationAccountToUserRequest
 //
@@ -602,7 +602,7 @@ func (client *Client) AddUsersToGroup(request *AddUsersToGroupRequest) (_result 
 
 // Summary:
 //
-// Grants multiple EIAM groups access to an application.
+// Grants multiple EIAM groups access to an application in a batch.
 //
 // @param request - AuthorizeApplicationToGroupsRequest
 //
@@ -658,7 +658,7 @@ func (client *Client) AuthorizeApplicationToGroupsWithOptions(request *Authorize
 
 // Summary:
 //
-// Grants multiple EIAM groups access to an application.
+// Grants multiple EIAM groups access to an application in a batch.
 //
 // @param request - AuthorizeApplicationToGroupsRequest
 //
@@ -750,7 +750,7 @@ func (client *Client) AuthorizeApplicationToOrganizationalUnits(request *Authori
 
 // Summary:
 //
-// Grants permissions to multiple EIAM accounts to access an application.
+// Grants multiple EIAM accounts access to an application in a batch.
 //
 // @param request - AuthorizeApplicationToUsersRequest
 //
@@ -806,7 +806,7 @@ func (client *Client) AuthorizeApplicationToUsersWithOptions(request *AuthorizeA
 
 // Summary:
 //
-// Grants permissions to multiple EIAM accounts to access an application.
+// Grants multiple EIAM accounts access to an application in a batch.
 //
 // @param request - AuthorizeApplicationToUsersRequest
 //
@@ -824,7 +824,7 @@ func (client *Client) AuthorizeApplicationToUsers(request *AuthorizeApplicationT
 
 // Summary:
 //
-// Grants a client application permissions for specific scopes on a specified resource server.
+// Grants Scope permissions under a specified ResourceServer to a Client application.
 //
 // @param request - AuthorizeResourceServerScopesToClientRequest
 //
@@ -880,7 +880,7 @@ func (client *Client) AuthorizeResourceServerScopesToClientWithOptions(request *
 
 // Summary:
 //
-// Grants a client application permissions for specific scopes on a specified resource server.
+// Grants Scope permissions under a specified ResourceServer to a Client application.
 //
 // @param request - AuthorizeResourceServerScopesToClientRequest
 //
@@ -898,7 +898,7 @@ func (client *Client) AuthorizeResourceServerScopesToClient(request *AuthorizeRe
 
 // Summary:
 //
-// Grants a group permissions for specified scopes on a resource server.
+// Grants Scope permissions under a specified ResourceServer to a group.
 //
 // @param request - AuthorizeResourceServerScopesToGroupRequest
 //
@@ -958,7 +958,7 @@ func (client *Client) AuthorizeResourceServerScopesToGroupWithOptions(request *A
 
 // Summary:
 //
-// Grants a group permissions for specified scopes on a resource server.
+// Grants Scope permissions under a specified ResourceServer to a group.
 //
 // @param request - AuthorizeResourceServerScopesToGroupRequest
 //
@@ -976,7 +976,7 @@ func (client *Client) AuthorizeResourceServerScopesToGroup(request *AuthorizeRes
 
 // Summary:
 //
-// Grants scope permissions for a specified resource server to an organization.
+// Grants scope permissions under a specified ResourceServer to an organizational unit.
 //
 // @param request - AuthorizeResourceServerScopesToOrganizationalUnitRequest
 //
@@ -1036,7 +1036,7 @@ func (client *Client) AuthorizeResourceServerScopesToOrganizationalUnitWithOptio
 
 // Summary:
 //
-// Grants scope permissions for a specified resource server to an organization.
+// Grants scope permissions under a specified ResourceServer to an organizational unit.
 //
 // @param request - AuthorizeResourceServerScopesToOrganizationalUnitRequest
 //
@@ -1054,7 +1054,7 @@ func (client *Client) AuthorizeResourceServerScopesToOrganizationalUnit(request 
 
 // Summary:
 //
-// Grants scope permissions for a specified resource server to a user account.
+// Grants Scope permissions under a specified ResourceServer to an account.
 //
 // @param request - AuthorizeResourceServerScopesToUserRequest
 //
@@ -1114,7 +1114,7 @@ func (client *Client) AuthorizeResourceServerScopesToUserWithOptions(request *Au
 
 // Summary:
 //
-// Grants scope permissions for a specified resource server to a user account.
+// Grants Scope permissions under a specified ResourceServer to an account.
 //
 // @param request - AuthorizeResourceServerScopesToUserRequest
 //
@@ -1132,7 +1132,7 @@ func (client *Client) AuthorizeResourceServerScopesToUser(request *AuthorizeReso
 
 // Summary:
 //
-// Authorizes a resource server for a client application.
+// Authorizes a specified ResourceServer for a Client application.
 //
 // @param request - AuthorizeResourceServerToClientRequest
 //
@@ -1184,7 +1184,7 @@ func (client *Client) AuthorizeResourceServerToClientWithOptions(request *Author
 
 // Summary:
 //
-// Authorizes a resource server for a client application.
+// Authorizes a specified ResourceServer for a Client application.
 //
 // @param request - AuthorizeResourceServerToClientRequest
 //
@@ -1276,7 +1276,7 @@ func (client *Client) BindUserAuthnSourceMapping(request *BindUserAuthnSourceMap
 
 // Summary:
 //
-// Checks whether the primary organizational unit for an application is within the synchronization scope.
+// Checks whether the primary organization for application synchronization is within the application synchronization scope.
 //
 // @param request - CheckApplicationProvisioningUserPrimaryOrganizationalUnitRequest
 //
@@ -1328,7 +1328,7 @@ func (client *Client) CheckApplicationProvisioningUserPrimaryOrganizationalUnitW
 
 // Summary:
 //
-// Checks whether the primary organizational unit for an application is within the synchronization scope.
+// Checks whether the primary organization for application synchronization is within the application synchronization scope.
 //
 // @param request - CheckApplicationProvisioningUserPrimaryOrganizationalUnitRequest
 //
@@ -1482,11 +1482,11 @@ func (client *Client) CheckInstanceModuleStatus(request *CheckInstanceModuleStat
 
 // Summary:
 //
-// Creates an application in the specified EIAM instance.
+// Creates an application resource in a specified EIAM instance.
 //
 // Description:
 //
-// You must select the required SSO protocol when you create the application. This selection cannot be changed after creation.
+// EIAM supports two standard SSO protocols for application access: SAML 2.0 and OIDC. This parameter cannot be changed after it is specified. Create the application based on the SSO protocol type used in your business scenario.
 //
 // @param request - CreateApplicationRequest
 //
@@ -1566,11 +1566,11 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 // Summary:
 //
-// Creates an application in the specified EIAM instance.
+// Creates an application resource in a specified EIAM instance.
 //
 // Description:
 //
-// You must select the required SSO protocol when you create the application. This selection cannot be changed after creation.
+// EIAM supports two standard SSO protocols for application access: SAML 2.0 and OIDC. This parameter cannot be changed after it is specified. Create the application based on the SSO protocol type used in your business scenario.
 //
 // @param request - CreateApplicationRequest
 //
@@ -1588,7 +1588,7 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 
 // Summary:
 //
-// Creates a client secret for an EIAM application. You can create up to two client secrets for each application.
+// Creates a client secret for an EIAM application. You can create a maximum of two client secrets for each EIAM application.
 //
 // @param request - CreateApplicationClientSecretRequest
 //
@@ -1640,7 +1640,7 @@ func (client *Client) CreateApplicationClientSecretWithOptions(request *CreateAp
 
 // Summary:
 //
-// Creates a client secret for an EIAM application. You can create up to two client secrets for each application.
+// Creates a client secret for an EIAM application. You can create a maximum of two client secrets for each EIAM application.
 //
 // @param request - CreateApplicationClientSecretRequest
 //
@@ -1658,7 +1658,7 @@ func (client *Client) CreateApplicationClientSecret(request *CreateApplicationCl
 
 // Summary:
 //
-// Creates an application federated credential.
+// Creates an application federated identity credential.
 //
 // @param request - CreateApplicationFederatedCredentialRequest
 //
@@ -1701,8 +1701,20 @@ func (client *Client) CreateApplicationFederatedCredentialWithOptions(request *C
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.OidcVerificationConfig) {
+		query["OidcVerificationConfig"] = request.OidcVerificationConfig
+	}
+
+	if !dara.IsNil(request.Pkcs7VerificationConfig) {
+		query["Pkcs7VerificationConfig"] = request.Pkcs7VerificationConfig
+	}
+
 	if !dara.IsNil(request.VerificationCondition) {
 		query["VerificationCondition"] = request.VerificationCondition
+	}
+
+	if !dara.IsNil(request.VerificationMode) {
+		query["VerificationMode"] = request.VerificationMode
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1730,7 +1742,7 @@ func (client *Client) CreateApplicationFederatedCredentialWithOptions(request *C
 
 // Summary:
 //
-// Creates an application federated credential.
+// Creates an application federated identity credential.
 //
 // @param request - CreateApplicationFederatedCredentialRequest
 //
@@ -2130,7 +2142,7 @@ func (client *Client) CreateBrand(request *CreateBrandRequest) (_result *CreateB
 
 // Summary:
 //
-// Creates a client public key for an application. The machine-to-machine (M2M) authorization server uses this public key to verify the assertion included in a token request from an M2M client using the PRIVATE_KEY_JWT method.
+// Creates a ClientPublicKey for an application. When an M2M client uses the PRIVATE_KEY_JWT method to request the token endpoint, this public key is used by the M2M authorization server to verify the assertion carried in the client\\"s token endpoint request.
 //
 // @param request - CreateClientPublicKeyRequest
 //
@@ -2190,7 +2202,7 @@ func (client *Client) CreateClientPublicKeyWithOptions(request *CreateClientPubl
 
 // Summary:
 //
-// Creates a client public key for an application. The machine-to-machine (M2M) authorization server uses this public key to verify the assertion included in a token request from an M2M client using the PRIVATE_KEY_JWT method.
+// Creates a ClientPublicKey for an application. When an M2M client uses the PRIVATE_KEY_JWT method to request the token endpoint, this public key is used by the M2M authorization server to verify the assertion carried in the client\\"s token endpoint request.
 //
 // @param request - CreateClientPublicKeyRequest
 //
@@ -2208,11 +2220,11 @@ func (client *Client) CreateClientPublicKey(request *CreateClientPublicKeyReques
 
 // Summary:
 //
-// Creates a cloud account in the specified IDaaS EIAM instance.
+// Creates a cloud account resource in a specified EIAM instance.
 //
 // Description:
 //
-// *Before you call this operation, ensure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
+// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
 //
 // @param request - CreateCloudAccountRequest
 //
@@ -2284,11 +2296,11 @@ func (client *Client) CreateCloudAccountWithOptions(request *CreateCloudAccountR
 
 // Summary:
 //
-// Creates a cloud account in the specified IDaaS EIAM instance.
+// Creates a cloud account resource in a specified EIAM instance.
 //
 // Description:
 //
-// *Before you call this operation, ensure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
+// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
 //
 // @param request - CreateCloudAccountRequest
 //
@@ -2494,7 +2506,7 @@ func (client *Client) CreateConditionalAccessPolicy(request *CreateConditionalAc
 
 // Summary:
 //
-// Creates a credential in a specified EIAM instance.
+// Creates a credential resource in a specified EIAM instance.
 //
 // @param request - CreateCredentialRequest
 //
@@ -2586,7 +2598,7 @@ func (client *Client) CreateCredentialWithOptions(request *CreateCredentialReque
 
 // Summary:
 //
-// Creates a credential in a specified EIAM instance.
+// Creates a credential resource in a specified EIAM instance.
 //
 // @param request - CreateCredentialRequest
 //
@@ -3022,7 +3034,7 @@ func (client *Client) CreateDomainProxyToken(request *CreateDomainProxyTokenRequ
 
 // Summary:
 //
-// Create an identity provider.
+// Creates a federated trust source.
 //
 // @param request - CreateFederatedCredentialProviderRequest
 //
@@ -3098,7 +3110,7 @@ func (client *Client) CreateFederatedCredentialProviderWithOptions(request *Crea
 
 // Summary:
 //
-// Create an identity provider.
+// Creates a federated trust source.
 //
 // @param request - CreateFederatedCredentialProviderRequest
 //
@@ -3964,11 +3976,11 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 
 // Summary:
 //
-// Deletes an Employee Identity and Access Management (EIAM) application.
+// Deletes an EIAM application resource.
 //
 // Description:
 //
-// Make sure that the EIAM application that you want to delete is not used before you delete the EIAM application. After you delete the EIAM application, all configurations are deleted and cannot be restored.
+// Before deleting a specified EIAM application, make sure the application is no longer in use. After the application is deleted, all configuration data is permanently deleted and cannot be recovered.
 //
 // @param request - DeleteApplicationRequest
 //
@@ -4016,11 +4028,11 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 
 // Summary:
 //
-// Deletes an Employee Identity and Access Management (EIAM) application.
+// Deletes an EIAM application resource.
 //
 // Description:
 //
-// Make sure that the EIAM application that you want to delete is not used before you delete the EIAM application. After you delete the EIAM application, all configurations are deleted and cannot be restored.
+// Before deleting a specified EIAM application, make sure the application is no longer in use. After the application is deleted, all configuration data is permanently deleted and cannot be recovered.
 //
 // @param request - DeleteApplicationRequest
 //
@@ -4038,7 +4050,7 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 
 // Summary:
 //
-// Deletes a client key for an Employee Identity and Access Management (EIAM) application.
+// Deletes a client secret of an EIAM application.
 //
 // @param request - DeleteApplicationClientSecretRequest
 //
@@ -4090,7 +4102,7 @@ func (client *Client) DeleteApplicationClientSecretWithOptions(request *DeleteAp
 
 // Summary:
 //
-// Deletes a client key for an Employee Identity and Access Management (EIAM) application.
+// Deletes a client secret of an EIAM application.
 //
 // @param request - DeleteApplicationClientSecretRequest
 //
@@ -4108,7 +4120,7 @@ func (client *Client) DeleteApplicationClientSecret(request *DeleteApplicationCl
 
 // Summary:
 //
-// Deletes a federated credential for an application.
+// Deletes a federated identity credential of an application.
 //
 // @param request - DeleteApplicationFederatedCredentialRequest
 //
@@ -4160,7 +4172,7 @@ func (client *Client) DeleteApplicationFederatedCredentialWithOptions(request *D
 
 // Summary:
 //
-// Deletes a federated credential for an application.
+// Deletes a federated identity credential of an application.
 //
 // @param request - DeleteApplicationFederatedCredentialRequest
 //
@@ -4248,7 +4260,7 @@ func (client *Client) DeleteApplicationRole(request *DeleteApplicationRoleReques
 
 // Summary:
 //
-// Deletes an application token.
+// Deletes an ApplicationToken.
 //
 // @param request - DeleteApplicationTokenRequest
 //
@@ -4300,7 +4312,7 @@ func (client *Client) DeleteApplicationTokenWithOptions(request *DeleteApplicati
 
 // Summary:
 //
-// Deletes an application token.
+// Deletes an ApplicationToken.
 //
 // @param request - DeleteApplicationTokenRequest
 //
@@ -4520,7 +4532,7 @@ func (client *Client) DeleteBrand(request *DeleteBrandRequest) (_result *DeleteB
 
 // Summary:
 //
-// Deletes the ClientPublicKey for a specified application.
+// Deletes a specified application ClientPublicKey.
 //
 // @param request - DeleteClientPublicKeyRequest
 //
@@ -4572,7 +4584,7 @@ func (client *Client) DeleteClientPublicKeyWithOptions(request *DeleteClientPubl
 
 // Summary:
 //
-// Deletes the ClientPublicKey for a specified application.
+// Deletes a specified application ClientPublicKey.
 //
 // @param request - DeleteClientPublicKeyRequest
 //
@@ -5740,7 +5752,7 @@ func (client *Client) DeleteOrganizationalUnitChildren(request *DeleteOrganizati
 
 // Summary:
 //
-// Deletes a scope permission from a specified resource server.
+// Deletes a scope permission under a specified ResourceServer.
 //
 // @param request - DeleteResourceServerScopeRequest
 //
@@ -5792,7 +5804,7 @@ func (client *Client) DeleteResourceServerScopeWithOptions(request *DeleteResour
 
 // Summary:
 //
-// Deletes a scope permission from a specified resource server.
+// Deletes a scope permission under a specified ResourceServer.
 //
 // @param request - DeleteResourceServerScopeRequest
 //
@@ -6012,11 +6024,11 @@ func (client *Client) DeleteWebAuthnAuthenticator(request *DeleteWebAuthnAuthent
 
 // Summary:
 //
-// Disables an enabled Employee Identity and Access Management (EIAM) application. All features of the EIAM application cannot be used if you disable the EIAM application.
+// Disables an application by changing its status from enabled to disabled, making all capabilities of the application unavailable.
 //
 // Description:
 //
-// All features of the EIAM application cannot be used if you disable the EIAM application, such as single sign-on (SSO) and account synchronization. Make sure that you acknowledge the risks of the delete operation.
+// When you change an application from the enabled state to the disabled state, all features of the application become unavailable (such as SSO and account synchronization). Confirm that you are aware of the risks that this operation may cause.
 //
 // @param request - DisableApplicationRequest
 //
@@ -6064,11 +6076,11 @@ func (client *Client) DisableApplicationWithOptions(request *DisableApplicationR
 
 // Summary:
 //
-// Disables an enabled Employee Identity and Access Management (EIAM) application. All features of the EIAM application cannot be used if you disable the EIAM application.
+// Disables an application by changing its status from enabled to disabled, making all capabilities of the application unavailable.
 //
 // Description:
 //
-// All features of the EIAM application cannot be used if you disable the EIAM application, such as single sign-on (SSO) and account synchronization. Make sure that you acknowledge the risks of the delete operation.
+// When you change an application from the enabled state to the disabled state, all features of the application become unavailable (such as SSO and account synchronization). Confirm that you are aware of the risks that this operation may cause.
 //
 // @param request - DisableApplicationRequest
 //
@@ -6222,7 +6234,7 @@ func (client *Client) DisableApplicationClientSecret(request *DisableApplication
 
 // Summary:
 //
-// Disables a federated credential for an application.
+// Disables a federated identity credential for an application.
 //
 // @param request - DisableApplicationFederatedCredentialRequest
 //
@@ -6274,7 +6286,7 @@ func (client *Client) DisableApplicationFederatedCredentialWithOptions(request *
 
 // Summary:
 //
-// Disables a federated credential for an application.
+// Disables a federated identity credential for an application.
 //
 // @param request - DisableApplicationFederatedCredentialRequest
 //
@@ -6424,7 +6436,7 @@ func (client *Client) DisableApplicationProvisioning(request *DisableApplication
 
 // Summary:
 //
-// Disables the resource server functionality for a specified application.
+// Disables the ResourceServer capability of a specified application.
 //
 // @param request - DisableApplicationResourceServerRequest
 //
@@ -6472,7 +6484,7 @@ func (client *Client) DisableApplicationResourceServerWithOptions(request *Disab
 
 // Summary:
 //
-// Disables the resource server functionality for a specified application.
+// Disables the ResourceServer capability of a specified application.
 //
 // @param request - DisableApplicationResourceServerRequest
 //
@@ -6560,7 +6572,7 @@ func (client *Client) DisableApplicationSso(request *DisableApplicationSsoReques
 //
 // Description:
 //
-// When you change the status of an application from enabled to disabled, all application features, such as single sign-on (SSO) and account synchronization, become unavailable. Be aware of the potential threats associated with this operation.
+// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that this operation may cause.
 //
 // @param request - DisableApplicationTokenRequest
 //
@@ -6616,7 +6628,7 @@ func (client *Client) DisableApplicationTokenWithOptions(request *DisableApplica
 //
 // Description:
 //
-// When you change the status of an application from enabled to disabled, all application features, such as single sign-on (SSO) and account synchronization, become unavailable. Be aware of the potential threats associated with this operation.
+// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that this operation may cause.
 //
 // @param request - DisableApplicationTokenRequest
 //
@@ -6772,7 +6784,7 @@ func (client *Client) DisableBrand(request *DisableBrandRequest) (_result *Disab
 
 // Summary:
 //
-// Disables the ClientPublicKey for a specified application.
+// Disables a specified application ClientPublicKey.
 //
 // @param request - DisableClientPublicKeyRequest
 //
@@ -6828,7 +6840,7 @@ func (client *Client) DisableClientPublicKeyWithOptions(request *DisableClientPu
 
 // Summary:
 //
-// Disables the ClientPublicKey for a specified application.
+// Disables a specified application ClientPublicKey.
 //
 // @param request - DisableClientPublicKeyRequest
 //
@@ -8334,7 +8346,7 @@ func (client *Client) EnableApplicationResourceServer(request *EnableApplication
 
 // Summary:
 //
-// Enables single sign-on (SSO) for an EIAM application.
+// Enables the SSO feature for an EIAM application.
 //
 // @param request - EnableApplicationSsoRequest
 //
@@ -8382,7 +8394,7 @@ func (client *Client) EnableApplicationSsoWithOptions(request *EnableApplication
 
 // Summary:
 //
-// Enables single sign-on (SSO) for an EIAM application.
+// Enables the SSO feature for an EIAM application.
 //
 // @param request - EnableApplicationSsoRequest
 //
@@ -8608,7 +8620,7 @@ func (client *Client) EnableBrand(request *EnableBrandRequest) (_result *EnableB
 
 // Summary:
 //
-// Enables the specified ClientPublicKey for an application.
+// Enables a specified application ClientPublicKey.
 //
 // @param request - EnableClientPublicKeyRequest
 //
@@ -8664,7 +8676,7 @@ func (client *Client) EnableClientPublicKeyWithOptions(request *EnableClientPubl
 
 // Summary:
 //
-// Enables the specified ClientPublicKey for an application.
+// Enables a specified application ClientPublicKey.
 //
 // @param request - EnableClientPublicKeyRequest
 //
@@ -9918,7 +9930,7 @@ func (client *Client) GenerateFileImportTemplate(request *GenerateFileImportTemp
 
 // Summary:
 //
-// Obtain an access token to call a resource server using a specified application as the client.
+// Obtains an access token for accessing a resource server by using a specified application as the client identity.
 //
 // @param request - GenerateOauthTokenRequest
 //
@@ -9974,7 +9986,7 @@ func (client *Client) GenerateOauthTokenWithOptions(request *GenerateOauthTokenR
 
 // Summary:
 //
-// Obtain an access token to call a resource server using a specified application as the client.
+// Obtains an access token for accessing a resource server by using a specified application as the client identity.
 //
 // @param request - GenerateOauthTokenRequest
 //
@@ -10264,7 +10276,7 @@ func (client *Client) GetApplicationAdvancedConfig(request *GetApplicationAdvanc
 
 // Summary:
 //
-// Retrieves the federated credential for an application.
+// Retrieves the federated identity credential of an application.
 //
 // @param request - GetApplicationFederatedCredentialRequest
 //
@@ -10316,7 +10328,7 @@ func (client *Client) GetApplicationFederatedCredentialWithOptions(request *GetA
 
 // Summary:
 //
-// Retrieves the federated credential for an application.
+// Retrieves the federated identity credential of an application.
 //
 // @param request - GetApplicationFederatedCredentialRequest
 //
@@ -10334,7 +10346,7 @@ func (client *Client) GetApplicationFederatedCredential(request *GetApplicationF
 
 // Summary:
 //
-// Queries the permissions of the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+// Queries the Developer API authorization scope of an EIAM application.
 //
 // @param request - GetApplicationGrantScopeRequest
 //
@@ -10382,7 +10394,7 @@ func (client *Client) GetApplicationGrantScopeWithOptions(request *GetApplicatio
 
 // Summary:
 //
-// Queries the permissions of the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+// Queries the Developer API authorization scope of an EIAM application.
 //
 // @param request - GetApplicationGrantScopeRequest
 //
@@ -10598,7 +10610,7 @@ func (client *Client) GetApplicationProvisioningUserPrimaryOrganizationalUnit(re
 
 // Summary:
 //
-// Retrieves the details of an application role.
+// Retrieves application role information.
 //
 // @param request - GetApplicationRoleRequest
 //
@@ -10650,7 +10662,7 @@ func (client *Client) GetApplicationRoleWithOptions(request *GetApplicationRoleR
 
 // Summary:
 //
-// Retrieves the details of an application role.
+// Retrieves application role information.
 //
 // @param request - GetApplicationRoleRequest
 //
@@ -10734,7 +10746,7 @@ func (client *Client) GetApplicationSsoConfig(request *GetApplicationSsoConfigRe
 
 // Summary:
 //
-// Retrieves the details of an application template.
+// Retrieves application template information.
 //
 // @param request - GetApplicationTemplateRequest
 //
@@ -10778,7 +10790,7 @@ func (client *Client) GetApplicationTemplateWithOptions(request *GetApplicationT
 
 // Summary:
 //
-// Retrieves the details of an application template.
+// Retrieves application template information.
 //
 // @param request - GetApplicationTemplateRequest
 //
@@ -11064,7 +11076,7 @@ func (client *Client) GetBrand(request *GetBrandRequest) (_result *GetBrandRespo
 
 // Summary:
 //
-// Retrieves the ClientPublicKey for a specified application.
+// Queries the ClientPublicKey of a specified application.
 //
 // @param request - GetClientPublicKeyRequest
 //
@@ -11116,7 +11128,7 @@ func (client *Client) GetClientPublicKeyWithOptions(request *GetClientPublicKeyR
 
 // Summary:
 //
-// Retrieves the ClientPublicKey for a specified application.
+// Queries the ClientPublicKey of a specified application.
 //
 // @param request - GetClientPublicKeyRequest
 //
@@ -11200,7 +11212,7 @@ func (client *Client) GetCloudAccount(request *GetCloudAccountRequest) (_result 
 
 // Summary:
 //
-// Retrieves information about a cloud role.
+// Queries the resource information of a cloud role.
 //
 // @param request - GetCloudAccountRoleRequest
 //
@@ -11252,7 +11264,7 @@ func (client *Client) GetCloudAccountRoleWithOptions(request *GetCloudAccountRol
 
 // Summary:
 //
-// Retrieves information about a cloud role.
+// Queries the resource information of a cloud role.
 //
 // @param request - GetCloudAccountRoleRequest
 //
@@ -11344,7 +11356,7 @@ func (client *Client) GetConditionalAccessPolicy(request *GetConditionalAccessPo
 
 // Summary:
 //
-// Retrieves the details of a specific credential.
+// Queries the information about a credential resource.
 //
 // @param request - GetCredentialRequest
 //
@@ -11392,7 +11404,7 @@ func (client *Client) GetCredentialWithOptions(request *GetCredentialRequest, ru
 
 // Summary:
 //
-// Retrieves the details of a specific credential.
+// Queries the information about a credential resource.
 //
 // @param request - GetCredentialRequest
 //
@@ -11410,7 +11422,7 @@ func (client *Client) GetCredential(request *GetCredentialRequest) (_result *Get
 
 // Summary:
 //
-// Retrieves the details of a credential provider.
+// Queries the details of a credential provider.
 //
 // @param request - GetCredentialProviderRequest
 //
@@ -11458,7 +11470,7 @@ func (client *Client) GetCredentialProviderWithOptions(request *GetCredentialPro
 
 // Summary:
 //
-// Retrieves the details of a credential provider.
+// Queries the details of a credential provider.
 //
 // @param request - GetCredentialProviderRequest
 //
@@ -13634,7 +13646,7 @@ func (client *Client) ListActionTrackEventTypes(request *ListActionTrackEventTyp
 
 // Summary:
 //
-// Returns a paginated list of application accounts.
+// Queries the application accounts of an application by paging.
 //
 // @param request - ListApplicationAccountsRequest
 //
@@ -13690,7 +13702,7 @@ func (client *Client) ListApplicationAccountsWithOptions(request *ListApplicatio
 
 // Summary:
 //
-// Returns a paginated list of application accounts.
+// Queries the application accounts of an application by paging.
 //
 // @param request - ListApplicationAccountsRequest
 //
@@ -13852,7 +13864,7 @@ func (client *Client) ListApplicationClientSecrets(request *ListApplicationClien
 
 // Summary:
 //
-// Lists the federated credentials for an application.
+// Queries a list of application federated credentials.
 //
 // @param request - ListApplicationFederatedCredentialsRequest
 //
@@ -13916,7 +13928,7 @@ func (client *Client) ListApplicationFederatedCredentialsWithOptions(request *Li
 
 // Summary:
 //
-// Lists the federated credentials for an application.
+// Queries a list of application federated credentials.
 //
 // @param request - ListApplicationFederatedCredentialsRequest
 //
@@ -13934,7 +13946,7 @@ func (client *Client) ListApplicationFederatedCredentials(request *ListApplicati
 
 // Summary:
 //
-// Lists the application federated credentials for a specified federated credential provider.
+// Queries the list of application federated credentials by federated trust source ID.
 //
 // @param request - ListApplicationFederatedCredentialsForProviderRequest
 //
@@ -13994,7 +14006,7 @@ func (client *Client) ListApplicationFederatedCredentialsForProviderWithOptions(
 
 // Summary:
 //
-// Lists the application federated credentials for a specified federated credential provider.
+// Queries the list of application federated credentials by federated trust source ID.
 //
 // @param request - ListApplicationFederatedCredentialsForProviderRequest
 //
@@ -14090,7 +14102,7 @@ func (client *Client) ListApplicationRoles(request *ListApplicationRolesRequest)
 
 // Summary:
 //
-// Call the ListApplicationSupportedProvisionProtocolTypes operation to query the account synchronization protocols supported by an application.
+// Queries the list of account synchronization types supported by an application.
 //
 // @param request - ListApplicationSupportedProvisionProtocolTypesRequest
 //
@@ -14138,7 +14150,7 @@ func (client *Client) ListApplicationSupportedProvisionProtocolTypesWithOptions(
 
 // Summary:
 //
-// Call the ListApplicationSupportedProvisionProtocolTypes operation to query the account synchronization protocols supported by an application.
+// Queries the list of account synchronization types supported by an application.
 //
 // @param request - ListApplicationSupportedProvisionProtocolTypesRequest
 //
@@ -14156,7 +14168,7 @@ func (client *Client) ListApplicationSupportedProvisionProtocolTypes(request *Li
 
 // Summary:
 //
-// Retrieves a list of application tokens.
+// Retrieves the list of application tokens.
 //
 // @param request - ListApplicationTokensRequest
 //
@@ -14208,7 +14220,7 @@ func (client *Client) ListApplicationTokensWithOptions(request *ListApplicationT
 
 // Summary:
 //
-// Retrieves a list of application tokens.
+// Retrieves the list of application tokens.
 //
 // @param request - ListApplicationTokensRequest
 //
@@ -14226,7 +14238,7 @@ func (client *Client) ListApplicationTokens(request *ListApplicationTokensReques
 
 // Summary:
 //
-// Retrieves a paginated list of EIAM applications.
+// Performs a paged query to retrieve information about one or more EIAM applications with paging.
 //
 // @param request - ListApplicationsRequest
 //
@@ -14273,6 +14285,10 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 		query["M2MClientStatus"] = request.M2MClientStatus
 	}
 
+	if !dara.IsNil(request.ManagedServiceCode) {
+		query["ManagedServiceCode"] = request.ManagedServiceCode
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -14283,6 +14299,10 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 
 	if !dara.IsNil(request.ResourceServerStatus) {
 		query["ResourceServerStatus"] = request.ResourceServerStatus
+	}
+
+	if !dara.IsNil(request.ServiceManaged) {
+		query["ServiceManaged"] = request.ServiceManaged
 	}
 
 	if !dara.IsNil(request.SsoType) {
@@ -14318,7 +14338,7 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 
 // Summary:
 //
-// Retrieves a paginated list of EIAM applications.
+// Performs a paged query to retrieve information about one or more EIAM applications with paging.
 //
 // @param request - ListApplicationsRequest
 //
@@ -15404,7 +15424,7 @@ func (client *Client) ListClientPublicKeys(request *ListClientPublicKeysRequest)
 
 // Summary:
 //
-// Queries a paginated list of cloud roles.
+// Queries the information about one or more cloud roles by using paging.
 //
 // @param request - ListCloudAccountRolesRequest
 //
@@ -15464,7 +15484,7 @@ func (client *Client) ListCloudAccountRolesWithOptions(request *ListCloudAccount
 
 // Summary:
 //
-// Queries a paginated list of cloud roles.
+// Queries the information about one or more cloud roles by using paging.
 //
 // @param request - ListCloudAccountRolesRequest
 //
@@ -15844,7 +15864,7 @@ func (client *Client) ListConditionalAccessPoliciesForUser(request *ListConditio
 
 // Summary:
 //
-// Lists the credential providers.
+// Lists credential providers.
 //
 // @param request - ListCredentialProvidersRequest
 //
@@ -15912,7 +15932,7 @@ func (client *Client) ListCredentialProvidersWithOptions(request *ListCredential
 
 // Summary:
 //
-// Lists the credential providers.
+// Lists credential providers.
 //
 // @param request - ListCredentialProvidersRequest
 //
@@ -15930,7 +15950,7 @@ func (client *Client) ListCredentialProviders(request *ListCredentialProvidersRe
 
 // Summary:
 //
-// Retrieves a paginated list of credentials.
+// Queries the information of one or more credentials by using paging.
 //
 // @param request - ListCredentialsRequest
 //
@@ -16006,7 +16026,7 @@ func (client *Client) ListCredentialsWithOptions(request *ListCredentialsRequest
 
 // Summary:
 //
-// Retrieves a paginated list of credentials.
+// Queries the information of one or more credentials by using paging.
 //
 // @param request - ListCredentialsRequest
 //
@@ -16489,7 +16509,7 @@ func (client *Client) ListEventTypes(request *ListEventTypesRequest) (_result *L
 
 // Summary:
 //
-// Lists federated identity providers.
+// Queries a list of federated trust sources.
 //
 // @param request - ListFederatedCredentialProvidersRequest
 //
@@ -16553,7 +16573,7 @@ func (client *Client) ListFederatedCredentialProvidersWithOptions(request *ListF
 
 // Summary:
 //
-// Lists federated identity providers.
+// Queries a list of federated trust sources.
 //
 // @param request - ListFederatedCredentialProvidersRequest
 //
@@ -17901,7 +17921,7 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 
 // Summary:
 //
-// Query the list of Scope permissions under a specified ResourceServer using cursor-based pagination.
+// Queries the list of scope permissions under a specified ResourceServer by using a cursor.
 //
 // @param request - ListResourceServerScopesRequest
 //
@@ -17981,7 +18001,7 @@ func (client *Client) ListResourceServerScopesWithOptions(request *ListResourceS
 
 // Summary:
 //
-// Query the list of Scope permissions under a specified ResourceServer using cursor-based pagination.
+// Queries the list of scope permissions under a specified ResourceServer by using a cursor.
 //
 // @param request - ListResourceServerScopesRequest
 //
@@ -17999,7 +18019,7 @@ func (client *Client) ListResourceServerScopes(request *ListResourceServerScopes
 
 // Summary:
 //
-// Performs a paged query to retrieve the ResourceServer and Scope permissions that are granted to the current user.
+// Queries the list of ResourceServer and Scope permissions granted to the current account by using a cursor-based approach.
 //
 // @param request - ListResourceServersForUserRequest
 //
@@ -18059,7 +18079,7 @@ func (client *Client) ListResourceServersForUserWithOptions(request *ListResourc
 
 // Summary:
 //
-// Performs a paged query to retrieve the ResourceServer and Scope permissions that are granted to the current user.
+// Queries the list of ResourceServer and Scope permissions granted to the current account by using a cursor-based approach.
 //
 // @param request - ListResourceServersForUserRequest
 //
@@ -18747,7 +18767,7 @@ func (client *Client) ListUsersForResourceServer(request *ListUsersForResourceSe
 
 // Summary:
 //
-// Obtains the client secret for an EIAM application. The secret is returned without desensitization. To obtain a desensitized secret, call the ListApplicationClientSecrets operation.
+// Retrieves the client secret of an EIAM application. The returned secret is not masked. To retrieve masked secrets, call the ListApplicationClientSecrets operation.
 //
 // @param request - ObtainApplicationClientSecretRequest
 //
@@ -18799,7 +18819,7 @@ func (client *Client) ObtainApplicationClientSecretWithOptions(request *ObtainAp
 
 // Summary:
 //
-// Obtains the client secret for an EIAM application. The secret is returned without desensitization. To obtain a desensitized secret, call the ListApplicationClientSecrets operation.
+// Retrieves the client secret of an EIAM application. The returned secret is not masked. To retrieve masked secrets, call the ListApplicationClientSecrets operation.
 //
 // @param request - ObtainApplicationClientSecretRequest
 //
@@ -18817,11 +18837,11 @@ func (client *Client) ObtainApplicationClientSecret(request *ObtainApplicationCl
 
 // Summary:
 //
-// Queries the token of a specified application.
+// Queries a specified application token.
 //
 // Description:
 //
-// When you disable an application, all its features, such as single sign-on (SSO) and account synchronization, become unavailable. Ensure that you understand the potential threats of this operation.
+// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that may result from this operation.
 //
 // @param request - ObtainApplicationTokenRequest
 //
@@ -18873,11 +18893,11 @@ func (client *Client) ObtainApplicationTokenWithOptions(request *ObtainApplicati
 
 // Summary:
 //
-// Queries the token of a specified application.
+// Queries a specified application token.
 //
 // Description:
 //
-// When you disable an application, all its features, such as single sign-on (SSO) and account synchronization, become unavailable. Ensure that you understand the potential threats of this operation.
+// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that may result from this operation.
 //
 // @param request - ObtainApplicationTokenRequest
 //
@@ -18895,7 +18915,7 @@ func (client *Client) ObtainApplicationToken(request *ObtainApplicationTokenRequ
 
 // Summary:
 //
-// Retrieves a credential containing sensitive information.
+// Queries a credential resource that contains sensitive information.
 //
 // @param request - ObtainCredentialRequest
 //
@@ -18943,7 +18963,7 @@ func (client *Client) ObtainCredentialWithOptions(request *ObtainCredentialReque
 
 // Summary:
 //
-// Retrieves a credential containing sensitive information.
+// Queries a credential resource that contains sensitive information.
 //
 // @param request - ObtainCredentialRequest
 //
@@ -19031,11 +19051,11 @@ func (client *Client) ObtainDomainProxyToken(request *ObtainDomainProxyTokenRequ
 
 // Summary:
 //
-// Deletes the application account of a specified user from an application.
+// Deletes an application account of a specified employee under the current application.
 //
 // Description:
 //
-// This operation queries only applications that are directly assigned to an organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter the applications.
+// This operation only queries the direct permissions of the organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - RemoveApplicationAccountFromUserRequest
 //
@@ -19091,11 +19111,11 @@ func (client *Client) RemoveApplicationAccountFromUserWithOptions(request *Remov
 
 // Summary:
 //
-// Deletes the application account of a specified user from an application.
+// Deletes an application account of a specified employee under the current application.
 //
 // Description:
 //
-// This operation queries only applications that are directly assigned to an organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter the applications.
+// This operation only queries the direct permissions of the organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - RemoveApplicationAccountFromUserRequest
 //
@@ -19595,7 +19615,7 @@ func (client *Client) RenewFreeLicenseEndTime(request *RenewFreeLicenseEndTimeRe
 
 // Summary:
 //
-// Revokes application access from multiple EIAM groups in a batch.
+// Revokes the permissions of multiple Employee Identity and Access Management (EIAM) groups to access an application in a batch.
 //
 // @param request - RevokeApplicationFromGroupsRequest
 //
@@ -19651,7 +19671,7 @@ func (client *Client) RevokeApplicationFromGroupsWithOptions(request *RevokeAppl
 
 // Summary:
 //
-// Revokes application access from multiple EIAM groups in a batch.
+// Revokes the permissions of multiple Employee Identity and Access Management (EIAM) groups to access an application in a batch.
 //
 // @param request - RevokeApplicationFromGroupsRequest
 //
@@ -19743,7 +19763,7 @@ func (client *Client) RevokeApplicationFromOrganizationalUnits(request *RevokeAp
 
 // Summary:
 //
-// Revokes access to an application from multiple EIAM accounts.
+// Revokes the permissions of multiple Enterprise Identity Access Management (EIAM) accounts to access an application in a batch.
 //
 // @param request - RevokeApplicationFromUsersRequest
 //
@@ -19799,7 +19819,7 @@ func (client *Client) RevokeApplicationFromUsersWithOptions(request *RevokeAppli
 
 // Summary:
 //
-// Revokes access to an application from multiple EIAM accounts.
+// Revokes the permissions of multiple Enterprise Identity Access Management (EIAM) accounts to access an application in a batch.
 //
 // @param request - RevokeApplicationFromUsersRequest
 //
@@ -19817,7 +19837,7 @@ func (client *Client) RevokeApplicationFromUsers(request *RevokeApplicationFromU
 
 // Summary:
 //
-// Revokes the authorization for a resource server from a client application.
+// Cancels the authorization granted by a specified ResourceServer to a Client application.
 //
 // @param request - RevokeResourceServerFromClientRequest
 //
@@ -19869,7 +19889,7 @@ func (client *Client) RevokeResourceServerFromClientWithOptions(request *RevokeR
 
 // Summary:
 //
-// Revokes the authorization for a resource server from a client application.
+// Cancels the authorization granted by a specified ResourceServer to a Client application.
 //
 // @param request - RevokeResourceServerFromClientRequest
 //
@@ -19887,7 +19907,7 @@ func (client *Client) RevokeResourceServerFromClient(request *RevokeResourceServ
 
 // Summary:
 //
-// Revokes specified scope permissions of a resource server from a client application.
+// Revokes the scope permissions of a specified ResourceServer from a client application.
 //
 // @param request - RevokeResourceServerScopesFromClientRequest
 //
@@ -19943,7 +19963,7 @@ func (client *Client) RevokeResourceServerScopesFromClientWithOptions(request *R
 
 // Summary:
 //
-// Revokes specified scope permissions of a resource server from a client application.
+// Revokes the scope permissions of a specified ResourceServer from a client application.
 //
 // @param request - RevokeResourceServerScopesFromClientRequest
 //
@@ -19961,7 +19981,7 @@ func (client *Client) RevokeResourceServerScopesFromClient(request *RevokeResour
 
 // Summary:
 //
-// Revokes a resource server\\"s scope permissions from a group.
+// Revokes the authorization of Scope permissions under a specified ResourceServer from a group.
 //
 // @param request - RevokeResourceServerScopesFromGroupRequest
 //
@@ -20017,7 +20037,7 @@ func (client *Client) RevokeResourceServerScopesFromGroupWithOptions(request *Re
 
 // Summary:
 //
-// Revokes a resource server\\"s scope permissions from a group.
+// Revokes the authorization of Scope permissions under a specified ResourceServer from a group.
 //
 // @param request - RevokeResourceServerScopesFromGroupRequest
 //
@@ -20035,7 +20055,7 @@ func (client *Client) RevokeResourceServerScopesFromGroup(request *RevokeResourc
 
 // Summary:
 //
-// Revokes scope permissions for a resource server from an organization.
+// Revokes the authorization of Scope permissions under a specified ResourceServer from an organizational unit.
 //
 // @param request - RevokeResourceServerScopesFromOrganizationalUnitRequest
 //
@@ -20091,7 +20111,7 @@ func (client *Client) RevokeResourceServerScopesFromOrganizationalUnitWithOption
 
 // Summary:
 //
-// Revokes scope permissions for a resource server from an organization.
+// Revokes the authorization of Scope permissions under a specified ResourceServer from an organizational unit.
 //
 // @param request - RevokeResourceServerScopesFromOrganizationalUnitRequest
 //
@@ -20109,7 +20129,7 @@ func (client *Client) RevokeResourceServerScopesFromOrganizationalUnit(request *
 
 // Summary:
 //
-// Revokes scope permissions for a specified resource server from an account.
+// Revokes the Scope permissions under a specified ResourceServer from an account.
 //
 // @param request - RevokeResourceServerScopesFromUserRequest
 //
@@ -20165,7 +20185,7 @@ func (client *Client) RevokeResourceServerScopesFromUserWithOptions(request *Rev
 
 // Summary:
 //
-// Revokes scope permissions for a specified resource server from an account.
+// Revokes the Scope permissions under a specified ResourceServer from an account.
 //
 // @param request - RevokeResourceServerScopesFromUserRequest
 //
@@ -20643,11 +20663,11 @@ func (client *Client) SetApplicationResourceServerIdentifier(request *SetApplica
 
 // Summary:
 //
-// Sets the single sign-on (SSO) properties for an IDaaS application.
+// Sets the single sign-on (SSO) configuration properties for an EIAM application.
 //
 // Description:
 //
-// In IDaaS, the Application Management feature lets you add applications that use various SSO protocols, such as SAML 2.0 and OpenID Connect (OIDC). However, each application can support only one SSO protocol. The protocol is specified during application creation and cannot be changed afterward. You must configure the SSO parameters according to the protocol that your application uses.
+// In EIAM, application management supports adding applications that use multiple single sign-on (SSO) protocols (SAML 2.0 and OIDC). However, each application supports only one SSO protocol, which is specified during creation and cannot be changed. Specify the corresponding SSO configuration property parameters based on the SSO protocol type supported by the application.
 //
 // @param request - SetApplicationSsoConfigRequest
 //
@@ -20715,11 +20735,11 @@ func (client *Client) SetApplicationSsoConfigWithOptions(request *SetApplication
 
 // Summary:
 //
-// Sets the single sign-on (SSO) properties for an IDaaS application.
+// Sets the single sign-on (SSO) configuration properties for an EIAM application.
 //
 // Description:
 //
-// In IDaaS, the Application Management feature lets you add applications that use various SSO protocols, such as SAML 2.0 and OpenID Connect (OIDC). However, each application can support only one SSO protocol. The protocol is specified during application creation and cannot be changed afterward. You must configure the SSO parameters according to the protocol that your application uses.
+// In EIAM, application management supports adding applications that use multiple single sign-on (SSO) protocols (SAML 2.0 and OIDC). However, each application supports only one SSO protocol, which is specified during creation and cannot be changed. Specify the corresponding SSO configuration property parameters based on the SSO protocol type supported by the application.
 //
 // @param request - SetApplicationSsoConfigRequest
 //
@@ -22085,7 +22105,7 @@ func (client *Client) UnlockUser(request *UnlockUserRequest) (_result *UnlockUse
 
 // Summary:
 //
-// Updates the advanced configuration of an application.
+// Modifies the advanced configuration of an application.
 //
 // @param request - UpdateApplicationAdvancedConfigRequest
 //
@@ -22137,7 +22157,7 @@ func (client *Client) UpdateApplicationAdvancedConfigWithOptions(request *Update
 
 // Summary:
 //
-// Updates the advanced configuration of an application.
+// Modifies the advanced configuration of an application.
 //
 // @param request - UpdateApplicationAdvancedConfigRequest
 //
@@ -22225,7 +22245,7 @@ func (client *Client) UpdateApplicationAuthorizationType(request *UpdateApplicat
 
 // Summary:
 //
-// Updates the expiration time of a specified client secret for an application.
+// Updates the expiration time of a specified ClientSecret for an application.
 //
 // @param request - UpdateApplicationClientSecretExpirationTimeRequest
 //
@@ -22281,7 +22301,7 @@ func (client *Client) UpdateApplicationClientSecretExpirationTimeWithOptions(req
 
 // Summary:
 //
-// Updates the expiration time of a specified client secret for an application.
+// Updates the expiration time of a specified ClientSecret for an application.
 //
 // @param request - UpdateApplicationClientSecretExpirationTimeRequest
 //
@@ -22369,7 +22389,7 @@ func (client *Client) UpdateApplicationDescription(request *UpdateApplicationDes
 
 // Summary:
 //
-// Updates an application\\"s federated credential.
+// Updates a federated credential for an application.
 //
 // @param request - UpdateApplicationFederatedCredentialRequest
 //
@@ -22398,6 +22418,14 @@ func (client *Client) UpdateApplicationFederatedCredentialWithOptions(request *U
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OidcVerificationConfig) {
+		query["OidcVerificationConfig"] = request.OidcVerificationConfig
+	}
+
+	if !dara.IsNil(request.Pkcs7VerificationConfig) {
+		query["Pkcs7VerificationConfig"] = request.Pkcs7VerificationConfig
 	}
 
 	if !dara.IsNil(request.VerificationCondition) {
@@ -22429,7 +22457,7 @@ func (client *Client) UpdateApplicationFederatedCredentialWithOptions(request *U
 
 // Summary:
 //
-// Updates an application\\"s federated credential.
+// Updates a federated credential for an application.
 //
 // @param request - UpdateApplicationFederatedCredentialRequest
 //
@@ -22521,7 +22549,7 @@ func (client *Client) UpdateApplicationFederatedCredentialDescription(request *U
 
 // Summary:
 //
-// Updates the basic information for an application.
+// Updates the basic information of an application.
 //
 // @param request - UpdateApplicationInfoRequest
 //
@@ -22593,7 +22621,7 @@ func (client *Client) UpdateApplicationInfoWithOptions(request *UpdateApplicatio
 
 // Summary:
 //
-// Updates the basic information for an application.
+// Updates the basic information of an application.
 //
 // @param request - UpdateApplicationInfoRequest
 //
@@ -22689,7 +22717,7 @@ func (client *Client) UpdateApplicationRole(request *UpdateApplicationRoleReques
 
 // Summary:
 //
-// Updates the description of an application role.
+// Modifies the description of an application role.
 //
 // @param request - UpdateApplicationRoleDescriptionRequest
 //
@@ -22745,7 +22773,7 @@ func (client *Client) UpdateApplicationRoleDescriptionWithOptions(request *Updat
 
 // Summary:
 //
-// Updates the description of an application role.
+// Modifies the description of an application role.
 //
 // @param request - UpdateApplicationRoleDescriptionRequest
 //
@@ -24037,7 +24065,7 @@ func (client *Client) UpdateCredential(request *UpdateCredentialRequest) (_resul
 
 // Summary:
 //
-// Update the description of a credential.
+// Updates the description of a credential.
 //
 // @param request - UpdateCredentialDescriptionRequest
 //
@@ -24093,7 +24121,7 @@ func (client *Client) UpdateCredentialDescriptionWithOptions(request *UpdateCred
 
 // Summary:
 //
-// Update the description of a credential.
+// Updates the description of a credential.
 //
 // @param request - UpdateCredentialDescriptionRequest
 //
@@ -24481,7 +24509,7 @@ func (client *Client) UpdateDomainIcpNumber(request *UpdateDomainIcpNumberReques
 
 // Summary:
 //
-// Updates a federated credential provider.
+// Updates a federated trust source.
 //
 // @param request - UpdateFederatedCredentialProviderRequest
 //
@@ -24549,7 +24577,7 @@ func (client *Client) UpdateFederatedCredentialProviderWithOptions(request *Upda
 
 // Summary:
 //
-// Updates a federated credential provider.
+// Updates a federated trust source.
 //
 // @param request - UpdateFederatedCredentialProviderRequest
 //
@@ -24567,7 +24595,7 @@ func (client *Client) UpdateFederatedCredentialProvider(request *UpdateFederated
 
 // Summary:
 //
-// Updates the description of a federated credential provider.
+// Updates the description of a federated trust source.
 //
 // @param request - UpdateFederatedCredentialProviderDescriptionRequest
 //
@@ -24619,7 +24647,7 @@ func (client *Client) UpdateFederatedCredentialProviderDescriptionWithOptions(re
 
 // Summary:
 //
-// Updates the description of a federated credential provider.
+// Updates the description of a federated trust source.
 //
 // @param request - UpdateFederatedCredentialProviderDescriptionRequest
 //

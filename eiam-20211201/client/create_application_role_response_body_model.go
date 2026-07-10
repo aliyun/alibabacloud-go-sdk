@@ -16,7 +16,7 @@ type iCreateApplicationRoleResponseBody interface {
 }
 
 type CreateApplicationRoleResponseBody struct {
-	// The ID of the application role.
+	// The application role ID.
 	//
 	// example:
 	//

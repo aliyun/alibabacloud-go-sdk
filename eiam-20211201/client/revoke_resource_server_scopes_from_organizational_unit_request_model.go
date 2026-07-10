@@ -20,7 +20,7 @@ type iRevokeResourceServerScopesFromOrganizationalUnitRequest interface {
 }
 
 type RevokeResourceServerScopesFromOrganizationalUnitRequest struct {
-	// The ID of the ResourceServer application.
+	// The ResourceServer application ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type RevokeResourceServerScopesFromOrganizationalUnitRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The organization ID.
+	// The organizational unit ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type RevokeResourceServerScopesFromOrganizationalUnitRequest struct {
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// A list of scope permission IDs for the resource server.
+	// The list of Scope permission IDs under the ResourceServer.
 	//
 	// This parameter is required.
 	//

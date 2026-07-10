@@ -16,7 +16,7 @@ type iGetCredentialProviderRequest interface {
 }
 
 type GetCredentialProviderRequest struct {
-	// Credential provider ID.
+	// The credential provider ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetCredentialProviderRequest struct {
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"CredentialProviderId,omitempty" xml:"CredentialProviderId,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

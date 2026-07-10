@@ -16,7 +16,7 @@ type iGetCredentialResponseBody interface {
 }
 
 type GetCredentialResponseBody struct {
-	// The credential details.
+	// The credential information.
 	Credential *GetCredentialResponseBodyCredential `json:"Credential,omitempty" xml:"Credential,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *GetCredentialResponseBody) Validate() error {
 }
 
 type GetCredentialResponseBodyCredential struct {
-	// The creation time of the credential, in Unix timestamp format (milliseconds).
+	// The creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -70,94 +70,94 @@ type GetCredentialResponseBodyCredential struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The content of the credential.
 	CredentialContent *GetCredentialResponseBodyCredentialCredentialContent `json:"CredentialContent,omitempty" xml:"CredentialContent,omitempty" type:"Struct"`
-	// How the credential was created. Valid values:
+	// The creation type of the credential. Valid values:
 	//
-	// - `system_init`: The credential was created by the system.
+	// - system_init: Created by the system.
 	//
-	// - `user_custom`: The credential was created by a user.
+	// - user_custom: Created by the user.
 	//
 	// example:
 	//
 	// user_custom
 	CredentialCreationType *string `json:"CredentialCreationType,omitempty" xml:"CredentialCreationType,omitempty"`
 	CredentialExternalId   *string `json:"CredentialExternalId,omitempty" xml:"CredentialExternalId,omitempty"`
-	// The ID of the credential.
+	// The credential ID.
 	//
 	// example:
 	//
 	// cred_mkv7rgt4d7i4u7zqtzev2mxxxx
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// The identifier of the credential.
+	// The credential identifier.
 	//
 	// example:
 	//
 	// credential_identifier_test
 	CredentialIdentifier *string `json:"CredentialIdentifier,omitempty" xml:"CredentialIdentifier,omitempty"`
-	// The name of the credential.
+	// The credential name.
 	//
 	// example:
 	//
 	// credential_name
 	CredentialName *string `json:"CredentialName,omitempty" xml:"CredentialName,omitempty"`
-	// The use case of the credential. Valid values:
+	// The scenarios label of the credential. Valid values:
 	//
-	// - `llm`: a large language model (LLM).
+	// - llm: Large language model.
 	//
-	// - `saas`: a third-party Software as a Service (SaaS) application.
+	// - saas: Third-party SaaS service.
 	//
 	// example:
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"CredentialScenarioLabel,omitempty" xml:"CredentialScenarioLabel,omitempty"`
 	CredentialSharingScope  *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
-	// The ID of the subject that owns the credential.
+	// The ID of the subject to which the credential belongs.
 	//
 	// example:
 	//
 	// apt_werthgfdsasffxxxxx
 	CredentialSubjectId *string `json:"CredentialSubjectId,omitempty" xml:"CredentialSubjectId,omitempty"`
-	// The type of the subject that owns the credential. Valid value:
+	// The type of the subject to which the credential belongs. Valid values:
 	//
-	// - `authentication_token_provider`: The subject is an authentication token provider.
+	// - authentication_token_provider: Authentication token provider.
 	//
 	// example:
 	//
 	// authentication_token_provider
 	CredentialSubjectType *string `json:"CredentialSubjectType,omitempty" xml:"CredentialSubjectType,omitempty"`
-	// The type of the credential. Valid values:
+	// The credential type. Valid values:
 	//
-	// - `api_key`: An API key.
+	// - api_key: API key credential.
 	//
-	// - `oauth_client`: An OAuth client.
+	// - oauth_client: OAuth client credential.
 	//
 	// example:
 	//
 	// api_key
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// The user-defined description of the credential.
+	// The credential description.
 	//
 	// example:
 	//
 	// credential_description
 	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExclusiveUserId *string `json:"ExclusiveUserId,omitempty" xml:"ExclusiveUserId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the credential. Valid values:
+	// The credential status. Valid values:
 	//
-	// - `enabled`: The credential is active.
+	// - enabled: Enabled.
 	//
-	// - `disabled`: The credential is inactive.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time the credential was last updated, in Unix timestamp format (milliseconds).
+	// The update time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -336,7 +336,7 @@ func (s *GetCredentialResponseBodyCredential) Validate() error {
 }
 
 type GetCredentialResponseBodyCredentialCredentialContent struct {
-	// The credential content for an OAuth client. This parameter is returned only when `CredentialType` is `oauth_client`.
+	// The content of the OAuth client credential.
 	OAuthClientContent *GetCredentialResponseBodyCredentialCredentialContentOAuthClientContent `json:"OAuthClientContent,omitempty" xml:"OAuthClientContent,omitempty" type:"Struct"`
 }
 
@@ -367,7 +367,7 @@ func (s *GetCredentialResponseBodyCredentialCredentialContent) Validate() error 
 }
 
 type GetCredentialResponseBodyCredentialCredentialContentOAuthClientContent struct {
-	// The OAuth client ID.
+	// The client_id of the OAuth protocol.
 	//
 	// example:
 	//

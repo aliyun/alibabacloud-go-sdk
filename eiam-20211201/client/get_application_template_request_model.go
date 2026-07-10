@@ -14,7 +14,7 @@ type iGetApplicationTemplateRequest interface {
 }
 
 type GetApplicationTemplateRequest struct {
-	// The ID of the application template.
+	// The application template ID.
 	//
 	// This parameter is required.
 	//

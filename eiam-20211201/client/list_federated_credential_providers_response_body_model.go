@@ -24,21 +24,21 @@ type iListFederatedCredentialProvidersResponseBody interface {
 }
 
 type ListFederatedCredentialProvidersResponseBody struct {
-	// The list of federated credential providers.
+	// The list of federated trust sources.
 	FederatedCredentialProviders []*ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders `json:"FederatedCredentialProviders,omitempty" xml:"FederatedCredentialProviders,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The maximum number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. This parameter is empty if all results have been returned.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The token for the previous page of results.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListFederatedCredentialProvidersResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -135,31 +135,31 @@ func (s *ListFederatedCredentialProvidersResponseBody) Validate() error {
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders struct {
 	CloudIdPProviderConfig *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig `json:"CloudIdPProviderConfig,omitempty" xml:"CloudIdPProviderConfig,omitempty" type:"Struct"`
-	// The provider\\"s creation time.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1729061324000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The provider\\"s description.
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the federated credential provider.
+	// The federated trust source ID.
 	//
 	// example:
 	//
 	// fcp_asda123XXX
 	FederatedCredentialProviderId *string `json:"FederatedCredentialProviderId,omitempty" xml:"FederatedCredentialProviderId,omitempty"`
-	// The name of the federated credential provider.
+	// The name of the federated trust source.
 	//
 	// example:
 	//
 	// pkcs7test
 	FederatedCredentialProviderName *string `json:"FederatedCredentialProviderName,omitempty" xml:"FederatedCredentialProviderName,omitempty"`
-	// The type of the federated credential provider.
+	// The type of the federated trust source.
 	//
 	// example:
 	//
@@ -171,25 +171,25 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders st
 	//
 	// idaas_dd4n3rnknybjjxuu5gq6ovqxXXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the network access endpoint.
+	// The network access endpoint ID.
 	//
 	// example:
 	//
 	// inae_public
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The OpenID Connect (OIDC) configuration.
+	// The OIDC configuration.
 	OidcProviderConfig *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOidcProviderConfig `json:"OidcProviderConfig,omitempty" xml:"OidcProviderConfig,omitempty" type:"Struct"`
 	// The PKCS7 configuration.
 	Pkcs7ProviderConfig *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfig `json:"Pkcs7ProviderConfig,omitempty" xml:"Pkcs7ProviderConfig,omitempty" type:"Struct"`
 	// The private CA configuration.
 	PrivateCaProviderConfig *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfig `json:"PrivateCaProviderConfig,omitempty" xml:"PrivateCaProviderConfig,omitempty" type:"Struct"`
-	// The provider\\"s status.
+	// The status.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The provider\\"s last update time.
+	// The update time.
 	//
 	// example:
 	//
@@ -400,13 +400,13 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOid
 	//
 	// }
 	DynamicJwks *string `json:"DynamicJwks,omitempty" xml:"DynamicJwks,omitempty"`
-	// The issuer.
+	// Issuer
 	//
 	// example:
 	//
 	// https://example.com
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The timestamp of the last JWKS retrieval.
+	// The time when the JWKS was last obtained.
 	//
 	// example:
 	//
@@ -418,7 +418,7 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOid
 	//
 	// static
 	JwksSource *string `json:"JwksSource,omitempty" xml:"JwksSource,omitempty"`
-	// The JSON Web Key Set (JWKS) endpoint.
+	// The JWKS endpoint.
 	//
 	// example:
 	//
@@ -543,27 +543,27 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfig struct {
-	// A list of PKCS7 certificates.
+	// The list of PKCS7 certificates.
 	Certificates []*ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The Cryptographic Message Syntax (CMS) verification mode.
+	// The CMS verification mode.
 	//
 	// example:
 	//
 	// cert
 	CmsVerificationMode *string `json:"CmsVerificationMode,omitempty" xml:"CmsVerificationMode,omitempty"`
-	// The validity period of the signature.
+	// The signature effective time.
 	//
 	// example:
 	//
 	// 3600
 	SignatureEffectiveTime *int64 `json:"SignatureEffectiveTime,omitempty" xml:"SignatureEffectiveTime,omitempty"`
-	// The expression used to obtain the signing time.
+	// The expression used to retrieve the signing time.
 	//
 	// example:
 	//
 	// pkcs7.payload.jsonData.audience.signingTime
 	SigningTimeValueExpression *string `json:"SigningTimeValueExpression,omitempty" xml:"SigningTimeValueExpression,omitempty"`
-	// The source of the certificate trust anchor.
+	// The certificate trust anchor source.
 	//
 	// example:
 	//
@@ -653,9 +653,9 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificates struct {
-	// The metadata of the certificate.
+	// The certificate metadata.
 	CertificateMetadata *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificatesCertificateMetadata `json:"CertificateMetadata,omitempty" xml:"CertificateMetadata,omitempty" type:"Struct"`
-	// The content of the certificate.
+	// The certificate content.
 	//
 	// example:
 	//
@@ -718,13 +718,13 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPkcs7ProviderConfigCertificatesCertificateMetadata struct {
-	// The expiration time.
+	// The time when the certificate expires.
 	//
 	// example:
 	//
 	// 1729061324000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The validity start time.
+	// The effective period of the certificate.
 	//
 	// example:
 	//
@@ -763,9 +763,9 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfig struct {
-	// A list of root certificates.
+	// The root certificates.
 	Certificates []*ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The method for obtaining the root certificate.
+	// The method used to retrieve the root certificate.
 	//
 	// example:
 	//
@@ -828,9 +828,9 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificates struct {
-	// The metadata of the certificate.
+	// The certificate metadata.
 	CertificateMetadata *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificatesCertificateMetadata `json:"CertificateMetadata,omitempty" xml:"CertificateMetadata,omitempty" type:"Struct"`
-	// The content of the root certificate.
+	// The root certificate content.
 	//
 	// example:
 	//
@@ -840,7 +840,7 @@ type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPri
 	//
 	// -----END CERTIFICATE-----
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The fingerprint of the root certificate.
+	// The root certificate fingerprint.
 	//
 	// example:
 	//
@@ -893,13 +893,13 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPrivateCaProviderConfigCertificatesCertificateMetadata struct {
-	// The expiration time.
+	// The time when the certificate expires.
 	//
 	// example:
 	//
 	// 1729061324000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The validity start time.
+	// The effective period of the certificate.
 	//
 	// example:
 	//

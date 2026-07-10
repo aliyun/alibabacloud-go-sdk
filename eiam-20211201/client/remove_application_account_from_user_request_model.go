@@ -20,7 +20,7 @@ type iRemoveApplicationAccountFromUserRequest interface {
 }
 
 type RemoveApplicationAccountFromUserRequest struct {
-	// The ID of the application account.
+	// The application account ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type RemoveApplicationAccountFromUserRequest struct {
 	//
 	// act_example
 	ApplicationAccountId *string `json:"ApplicationAccountId,omitempty" xml:"ApplicationAccountId,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type RemoveApplicationAccountFromUserRequest struct {
 	//
 	// app_11111
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type RemoveApplicationAccountFromUserRequest struct {
 	//
 	// eiam-111ccc1111
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// This parameter is required.
 	//

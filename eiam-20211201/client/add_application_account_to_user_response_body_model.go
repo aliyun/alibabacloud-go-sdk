@@ -16,7 +16,7 @@ type iAddApplicationAccountToUserResponseBody interface {
 }
 
 type AddApplicationAccountToUserResponseBody struct {
-	// The ID of the application account.
+	// The application account ID.
 	//
 	// example:
 	//

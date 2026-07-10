@@ -14,7 +14,7 @@ type iDeleteResourceServerScopeResponseBody interface {
 }
 
 type DeleteResourceServerScopeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

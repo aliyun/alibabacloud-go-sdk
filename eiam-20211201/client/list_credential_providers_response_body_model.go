@@ -22,27 +22,27 @@ type iListCredentialProvidersResponseBody interface {
 }
 
 type ListCredentialProvidersResponseBody struct {
-	// List of credential providers.
+	// The list of credential providers.
 	CredentialProviders []*ListCredentialProvidersResponseBodyCredentialProviders `json:"CredentialProviders,omitempty" xml:"CredentialProviders,omitempty" type:"Repeated"`
-	// Page size for paged queries.
+	// The maximum number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token returned by this call.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total count.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -117,65 +117,65 @@ func (s *ListCredentialProvidersResponseBody) Validate() error {
 }
 
 type ListCredentialProvidersResponseBodyCredentialProviders struct {
-	// Creation time of the credential provider, in Unix timestamp format (milliseconds).
+	// The creation time of the credential provider. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Credential provider configuration.
+	// The credential provider configuration.
 	CredentialProviderConfig *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfig `json:"CredentialProviderConfig,omitempty" xml:"CredentialProviderConfig,omitempty" type:"Struct"`
-	// Credential provider creation type. Valid values:
+	// The creation type of the credential provider. Valid values:
 	//
-	// - system_init: System created.
+	// - system_init: Created by the system.
 	//
-	// - user_custom: User created.
+	// - user_custom: Created by the user.
 	//
 	// example:
 	//
 	// user_custom
 	CredentialProviderCreationType *string `json:"CredentialProviderCreationType,omitempty" xml:"CredentialProviderCreationType,omitempty"`
-	// Credential provider ID.
+	// The credential provider ID.
 	//
 	// example:
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"CredentialProviderId,omitempty" xml:"CredentialProviderId,omitempty"`
-	// Credential provider identifier.
+	// The credential provider identifier.
 	//
 	// example:
 	//
 	// test_example_identifier
 	CredentialProviderIdentifier *string `json:"CredentialProviderIdentifier,omitempty" xml:"CredentialProviderIdentifier,omitempty"`
-	// Credential provider name.
+	// The credential provider name.
 	//
 	// example:
 	//
 	// test_example_name
 	CredentialProviderName *string `json:"CredentialProviderName,omitempty" xml:"CredentialProviderName,omitempty"`
-	// Credential provider type. Valid values:
+	// The credential provider type. Valid values:
 	//
-	// - oauth: OAuth credential provider
+	// - oauth: OAuth credential provider.
 	//
-	// - jwt: JWT credential provider
+	// - jwt: JWT credential provider.
 	//
 	// example:
 	//
 	// oauth
 	CredentialProviderType *string `json:"CredentialProviderType,omitempty" xml:"CredentialProviderType,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// This is an example description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Credential provider status. Valid values:
+	// The credential provider status. Valid values:
 	//
 	// - enabled: Enabled.
 	//
@@ -185,7 +185,7 @@ type ListCredentialProvidersResponseBodyCredentialProviders struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Update time of the credential provider, in Unix timestamp format (milliseconds).
+	// The update time of the credential provider. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -310,13 +310,13 @@ func (s *ListCredentialProvidersResponseBodyCredentialProviders) Validate() erro
 }
 
 type ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfig struct {
-	// Configuration for JWT credential providers.
+	// The configuration of the JWT credential provider.
 	JwtProviderConfig *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigJwtProviderConfig `json:"JwtProviderConfig,omitempty" xml:"JwtProviderConfig,omitempty" type:"Struct"`
-	// Configuration for OAuth credential providers.
+	// The configuration of the OAuth credential provider.
 	OAuthProviderConfig *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig `json:"OAuthProviderConfig,omitempty" xml:"OAuthProviderConfig,omitempty" type:"Struct"`
-	// List of credential IDs for the sensitive configuration of the credential provider.
+	// The list of credential IDs that correspond to the sensitive configuration of the credential provider.
 	//
-	// > The system securely stores sensitive credential provider configuration as credentials.
+	// > The system securely stores the sensitive configuration of the credential provider as credentials.
 	ProviderCredentialIds []*string `json:"ProviderCredentialIds,omitempty" xml:"ProviderCredentialIds,omitempty" type:"Repeated"`
 }
 
@@ -370,33 +370,33 @@ func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProvide
 }
 
 type ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigJwtProviderConfig struct {
-	// List of allowed JWT issuers.
+	// The list of allowed JWT issuers.
 	AllowedTokenIssuers []*string `json:"AllowedTokenIssuers,omitempty" xml:"AllowedTokenIssuers,omitempty" type:"Repeated"`
-	// Enable JWT derived short token capability.
+	// Indicates whether the JWT derived short token feature is enabled.
 	//
 	// example:
 	//
 	// false
 	DerivedShortTokenEnabled *bool `json:"DerivedShortTokenEnabled,omitempty" xml:"DerivedShortTokenEnabled,omitempty"`
-	// Validity period of the JWT, in seconds.
+	// The validity period of the JWT, in seconds.
 	//
 	// example:
 	//
 	// 900
 	Expiration *int32 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// Enable JWT expiration cleanup.
+	// Indicates whether JWT expiration cleanup is enabled.
 	//
 	// example:
 	//
 	// true
 	ExpirationCleanupEnabled *bool `json:"ExpirationCleanupEnabled,omitempty" xml:"ExpirationCleanupEnabled,omitempty"`
-	// JWT issuer.
+	// JWT issuer。
 	//
 	// example:
 	//
 	// https://test.issuer.com
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// JWKs endpoint address.
+	// The JWKs endpoint URL.
 	//
 	// example:
 	//
@@ -471,25 +471,23 @@ func (s *ListCredentialProvidersResponseBodyCredentialProvidersCredentialProvide
 }
 
 type ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderConfigOAuthProviderConfig struct {
-	// The client_id in the OAuth protocol, also known as the client ID.
+	// The client_id in the OAuth protocol, which is the client ID.
 	//
 	// example:
 	//
 	// client_id_example_xxx
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The scope in the OAuth protocol, which defines permission scope.
+	// The scope in the OAuth protocol, which specifies the permission scope.
 	//
-	// > The Scope configuration for the OAuth credential provider acts as a fallback. If you do not specify the scope parameter when calling the DeveloperAPI to get an OAuth Access Token, the credential provider\\"s Scope configuration is used for issuance.
+	// > The Scope configuration of the OAuth credential provider serves as the default value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth access token, the Scope configuration of the credential provider is used for token issuance.
 	//
-	// 	Notice:
-	//
-	// Multiple Scope values are separated by spaces.
+	// 	Notice: Multiple Scope values are separated by spaces.
 	//
 	// example:
 	//
 	// example:test_01 example:test_02
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The Token endpoint of the OAuth protocol.
+	// The token endpoint of the OAuth protocol.
 	//
 	// example:
 	//

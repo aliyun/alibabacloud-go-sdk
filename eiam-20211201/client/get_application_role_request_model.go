@@ -18,7 +18,7 @@ type iGetApplicationRoleRequest interface {
 }
 
 type GetApplicationRoleRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetApplicationRoleRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the application role.
+	// The application role ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetApplicationRoleRequest struct {
 	//
 	// approle_01kh2vuo8v9splv8maak1d22rxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

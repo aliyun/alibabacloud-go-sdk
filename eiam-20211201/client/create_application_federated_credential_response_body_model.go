@@ -16,7 +16,7 @@ type iCreateApplicationFederatedCredentialResponseBody interface {
 }
 
 type CreateApplicationFederatedCredentialResponseBody struct {
-	// The ID of the application federated credential.
+	// The application federated identity credential ID.
 	//
 	// example:
 	//

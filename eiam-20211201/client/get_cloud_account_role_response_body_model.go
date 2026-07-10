@@ -16,7 +16,7 @@ type iGetCloudAccountRoleResponseBody interface {
 }
 
 type GetCloudAccountRoleResponseBody struct {
-	// The details of the cloud role.
+	// The cloud role details.
 	CloudAccountRole *GetCloudAccountRoleResponseBodyCloudAccountRole `json:"CloudAccountRole,omitempty" xml:"CloudAccountRole,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,69 +62,69 @@ func (s *GetCloudAccountRoleResponseBody) Validate() error {
 }
 
 type GetCloudAccountRoleResponseBodyCloudAccountRole struct {
-	// The ID of the Alibaba Cloud account.
+	// The cloud account ID.
 	//
 	// example:
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The external ID of the cloud account role.
+	// The cloud role identifier.
 	//
 	// example:
 	//
 	// acs:ram::xxx:role/role-test
 	CloudAccountRoleExternalId *string `json:"CloudAccountRoleExternalId,omitempty" xml:"CloudAccountRoleExternalId,omitempty"`
-	// The health check status of the cloud role. Valid values:
+	// The cloud role health status. Valid values:
 	//
-	// - healthy: The role is healthy.
+	// - healthy: healthy.
 	//
-	// - unhealthy: The role is unhealthy.
+	// - unhealthy: unhealthy.
 	//
-	// - unknown: The health status is unknown.
+	// - unknown: unknown.
 	//
 	// example:
 	//
 	// healthy
 	CloudAccountRoleHealth *string `json:"CloudAccountRoleHealth,omitempty" xml:"CloudAccountRoleHealth,omitempty"`
-	// The result of the health check for the cloud role.
+	// The cloud role health check result.
 	CloudAccountRoleHealthCheckResult *GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheckResult `json:"CloudAccountRoleHealthCheckResult,omitempty" xml:"CloudAccountRoleHealthCheckResult,omitempty" type:"Struct"`
-	// The ID of the cloud role.
+	// The cloud role ID.
 	//
 	// example:
 	//
 	// carole_01kmek49aqxxxx
 	CloudAccountRoleId *string `json:"CloudAccountRoleId,omitempty" xml:"CloudAccountRoleId,omitempty"`
-	// The name of the cloud role.
+	// The cloud role name.
 	//
 	// example:
 	//
 	// role-test
 	CloudAccountRoleName *string `json:"CloudAccountRoleName,omitempty" xml:"CloudAccountRoleName,omitempty"`
-	// The type of the cloud role. The format of this parameter varies based on the cloud account type. The following value is supported:
+	// The cloud role type. The specific format depends on the cloud account type. Valid values:
 	//
-	// - role: for an Alibaba Cloud account.
+	// - role: applicable to Alibaba Cloud accounts.
 	//
 	// example:
 	//
 	// role
 	CloudAccountRoleType *string `json:"CloudAccountRoleType,omitempty" xml:"CloudAccountRoleType,omitempty"`
-	// The usage type of the cloud role. Valid values:
+	// The cloud role usage type. Valid values:
 	//
-	// - system: The role is used by the system.
+	// - system: system.
 	//
-	// - user: The role is used by a user.
+	// - user: user.
 	//
 	// example:
 	//
 	// system
 	CloudAccountRoleUsageType *string `json:"CloudAccountRoleUsageType,omitempty" xml:"CloudAccountRoleUsageType,omitempty"`
-	// The time when the cloud role was created. This value is a UNIX timestamp in milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1719320115000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the cloud role.
+	// The cloud role description.
 	//
 	// example:
 	//
@@ -136,17 +136,17 @@ type GetCloudAccountRoleResponseBodyCloudAccountRole struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the cloud role. Valid values:
+	// The cloud role status. Valid values:
 	//
-	// - enabled: The role is enabled.
+	// - enabled: enabled.
 	//
-	// - disable: The role is disabled.
+	// - disable: disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the cloud role was last updated. This value is a UNIX timestamp in milliseconds.
+	// The last update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -289,19 +289,19 @@ func (s *GetCloudAccountRoleResponseBodyCloudAccountRole) Validate() error {
 }
 
 type GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheckResult struct {
-	// The reason for the error. This parameter is returned only if the value of CloudAccountRoleHealth is unhealthy.
+	// The error reason. This field is returned when the health check status is unhealthy.
 	ErrorReason *GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheckResultErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
-	// The time of the last check. This value is a UNIX timestamp in milliseconds.
+	// The time of the last health check. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
-	// The result of the health check. Valid values:
+	// The cloud role health check result. Valid values:
 	//
-	// - success: The health check is successful.
+	// - success: succeeded.
 	//
-	// - failed: The health check failed.
+	// - failed: failed.
 	//
 	// example:
 	//
@@ -360,7 +360,7 @@ type GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheckR
 	//
 	// AuthenticationFail.NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// The error description.
 	//
 	// example:
 	//

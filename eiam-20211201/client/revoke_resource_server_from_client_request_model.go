@@ -18,7 +18,7 @@ type iRevokeResourceServerFromClientRequest interface {
 }
 
 type RevokeResourceServerFromClientRequest struct {
-	// The ID of the client application.
+	// The ID of the Client application.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type RevokeResourceServerFromClientRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the resource server application.
+	// The ID of the ResourceServer application.
 	//
 	// This parameter is required.
 	//

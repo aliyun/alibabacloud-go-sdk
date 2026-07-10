@@ -32,7 +32,7 @@ type iListResourceServerScopesRequest interface {
 }
 
 type ListResourceServerScopesRequest struct {
-	// Application ID.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type ListResourceServerScopesRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Authorization type.
+	// The authorization type.
 	//
 	// example:
 	//
 	// authorize_required
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -54,39 +54,39 @@ type ListResourceServerScopesRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Number of rows per page in paginated queries.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Token for the next page query. Set this to the NextToken value returned by the previous API call. Leave empty for the first query.
+	// The pagination token (NextToken) used to retrieve the next page of results. Set this parameter to the NextToken value returned in the previous API call. Leave this parameter empty for the first query.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Token for the previous page query. Set this to the PreviousToken value returned by the previous API call.
+	// The pagination token for the previous page. Set this parameter to the PreviousToken value returned in the previous API call.
 	//
 	// example:
 	//
 	// PTxxxxxexample
 	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
-	// List of Scope permission IDs.
+	// The list of scope permission IDs.
 	ResourceServerScopeIds []*string `json:"ResourceServerScopeIds,omitempty" xml:"ResourceServerScopeIds,omitempty" type:"Repeated"`
-	// Scope permission name.
+	// The scope permission name.
 	//
 	// example:
 	//
 	// 读取全部用户
 	ResourceServerScopeName *string `json:"ResourceServerScopeName,omitempty" xml:"ResourceServerScopeName,omitempty"`
-	// Scope permission type.
+	// The scope permission type.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:resourceserver:scope:delegated
 	ResourceServerScopeType *string `json:"ResourceServerScopeType,omitempty" xml:"ResourceServerScopeType,omitempty"`
-	// Scope permission value.
+	// The scope permission value.
 	//
 	// example:
 	//

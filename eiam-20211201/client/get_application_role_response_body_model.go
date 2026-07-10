@@ -16,9 +16,9 @@ type iGetApplicationRoleResponseBody interface {
 }
 
 type GetApplicationRoleResponseBody struct {
-	// The details of the application role.
+	// The application role information.
 	ApplicationRole *GetApplicationRoleResponseBodyApplicationRole `json:"ApplicationRole,omitempty" xml:"ApplicationRole,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,37 +62,37 @@ func (s *GetApplicationRoleResponseBody) Validate() error {
 }
 
 type GetApplicationRoleResponseBodyApplicationRole struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the application role.
+	// The application role ID.
 	//
 	// example:
 	//
 	// approle_01kh2vuo8v9splv8maak1d22rxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// The name of the application role.
+	// The application role name.
 	//
 	// example:
 	//
 	// Admin Role
 	ApplicationRoleName *string `json:"ApplicationRoleName,omitempty" xml:"ApplicationRoleName,omitempty"`
-	// The value of the application role.
+	// The application role value.
 	//
 	// example:
 	//
 	// admin_role
 	ApplicationRoleValue *string `json:"ApplicationRoleValue,omitempty" xml:"ApplicationRoleValue,omitempty"`
-	// The description of the application role.
+	// The application role description.
 	//
 	// example:
 	//
 	// Admin Role Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

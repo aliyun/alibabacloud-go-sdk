@@ -16,7 +16,7 @@ type iCreateFederatedCredentialProviderResponseBody interface {
 }
 
 type CreateFederatedCredentialProviderResponseBody struct {
-	// The ID of the federated credential provider.
+	// The ID of the federated trust source.
 	//
 	// example:
 	//

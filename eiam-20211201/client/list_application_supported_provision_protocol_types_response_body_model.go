@@ -16,7 +16,7 @@ type iListApplicationSupportedProvisionProtocolTypesResponseBody interface {
 }
 
 type ListApplicationSupportedProvisionProtocolTypesResponseBody struct {
-	// The supported synchronization protocols for the application.
+	// The list of synchronization types supported by the application.
 	ApplicationSupportedProvisionProtocolType *ListApplicationSupportedProvisionProtocolTypesResponseBodyApplicationSupportedProvisionProtocolType `json:"ApplicationSupportedProvisionProtocolType,omitempty" xml:"ApplicationSupportedProvisionProtocolType,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,11 +62,11 @@ func (s *ListApplicationSupportedProvisionProtocolTypesResponseBody) Validate() 
 }
 
 type ListApplicationSupportedProvisionProtocolTypesResponseBodyApplicationSupportedProvisionProtocolType struct {
-	// The account synchronization protocols that the application supports. Valid values:
+	// The account synchronization type supported by the application. Valid values:
 	//
-	// - idaas_callback: event callback.
+	// - idaas_callback: Event callback type.
 	//
-	// - scim2: System for Cross-domain Identity Management (SCIM) protocol.
+	// - scim2: System for Cross-domain Identity Management protocol type.
 	ProvisionProtocolType []*string `json:"ProvisionProtocolType,omitempty" xml:"ProvisionProtocolType,omitempty" type:"Repeated"`
 }
 

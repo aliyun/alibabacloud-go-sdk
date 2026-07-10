@@ -16,7 +16,7 @@ type iDeleteCredentialProviderRequest interface {
 }
 
 type DeleteCredentialProviderRequest struct {
-	// The ID of the credential provider.
+	// The credential provider ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteCredentialProviderRequest struct {
 	//
 	// atp_01kr2cmj5gxxx4fvmls2e93dxxxxx
 	CredentialProviderId *string `json:"CredentialProviderId,omitempty" xml:"CredentialProviderId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

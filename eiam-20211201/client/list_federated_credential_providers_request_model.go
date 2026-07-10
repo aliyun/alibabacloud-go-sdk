@@ -24,13 +24,13 @@ type iListFederatedCredentialProvidersRequest interface {
 }
 
 type ListFederatedCredentialProvidersRequest struct {
-	// The name of the federated credential provider.
+	// The name of the federated trust source.
 	//
 	// example:
 	//
 	// test
 	FederatedCredentialProviderName *string `json:"FederatedCredentialProviderName,omitempty" xml:"FederatedCredentialProviderName,omitempty"`
-	// The type of the federated credential provider.
+	// The type of the federated trust source.
 	//
 	// example:
 	//
@@ -44,19 +44,19 @@ type ListFederatedCredentialProvidersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The maximum number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// The pagination token.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The token to retrieve the previous page of results.
+	// The token used to query the previous page.
 	//
 	// example:
 	//

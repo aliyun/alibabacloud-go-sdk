@@ -14,7 +14,7 @@ type iDeleteApplicationClientSecretResponseBody interface {
 }
 
 type DeleteApplicationClientSecretResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

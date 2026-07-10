@@ -16,7 +16,7 @@ type iDeleteApplicationRequest interface {
 }
 
 type DeleteApplicationRequest struct {
-	// The ID of the application that you want to delete.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteApplicationRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

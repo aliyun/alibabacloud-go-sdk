@@ -24,33 +24,33 @@ type iListResourceServerScopesResponseBody interface {
 }
 
 type ListResourceServerScopesResponseBody struct {
-	// Number of rows per page in paginated queries.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Token for the next page query.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Token for the previous page query.
+	// The pagination token for the previous page.
 	//
 	// example:
 	//
 	// PTxxxexample
 	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of Scope permissions under the ResourceServer.
+	// The list of scope permissions under the ResourceServer.
 	ResourceServerScopes []*ListResourceServerScopesResponseBodyResourceServerScopes `json:"ResourceServerScopes,omitempty" xml:"ResourceServerScopes,omitempty" type:"Repeated"`
-	// Total number of items in the list.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
@@ -134,43 +134,43 @@ func (s *ListResourceServerScopesResponseBody) Validate() error {
 }
 
 type ListResourceServerScopesResponseBodyResourceServerScopes struct {
-	// Application ID.
+	// The application ID.
 	//
 	// example:
 	//
 	// app_xxxxxxxxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Authorization type.
+	// The authorization type.
 	//
 	// example:
 	//
 	// authorize_required
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_xxxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Scope permission ID.
+	// The scope permission ID.
 	//
 	// example:
 	//
 	// rss_xxxxxxxxxxx
 	ResourceServerScopeId *string `json:"ResourceServerScopeId,omitempty" xml:"ResourceServerScopeId,omitempty"`
-	// Scope permission name.
+	// The scope permission name.
 	//
 	// example:
 	//
 	// 读取全部用户
 	ResourceServerScopeName *string `json:"ResourceServerScopeName,omitempty" xml:"ResourceServerScopeName,omitempty"`
-	// Scope permission type.
+	// The scope permission type.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:resourceserver:scope:delegated
 	ResourceServerScopeType *string `json:"ResourceServerScopeType,omitempty" xml:"ResourceServerScopeType,omitempty"`
-	// Scope permission value.
+	// The scope permission value.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iAuthorizeResourceServerScopesToGroupRequest interface {
 }
 
 type AuthorizeResourceServerScopesToGroupRequest struct {
-	// The ID of the ResourceServer application.
+	// The application ID of the ResourceServer.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type AuthorizeResourceServerScopesToGroupRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// A client-generated token that you must make unique among different requests to ensure idempotence. ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type AuthorizeResourceServerScopesToGroupRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// A list of Scope permission IDs under the ResourceServer.
+	// The list of Scope permission IDs under the ResourceServer.
 	//
 	// This parameter is required.
 	//

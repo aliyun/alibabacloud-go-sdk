@@ -24,13 +24,13 @@ type iListCloudAccountsResponseBody interface {
 type ListCloudAccountsResponseBody struct {
 	// The list of cloud accounts.
 	CloudAccounts []*ListCloudAccountsResponseBodyCloudAccounts `json:"CloudAccounts,omitempty" xml:"CloudAccounts,omitempty" type:"Repeated"`
-	// The number of rows per page for paging.
+	// The number of rows per page when paging is used.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token returned for the current call.
+	// The token returned for the current call to indicate the starting position of the next page.
 	//
 	// example:
 	//
@@ -326,9 +326,9 @@ type ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult str
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
 	// The health check result of the cloud account. Valid values:
 	//
-	// - success: Succeeded.
+	// - success: The health check succeeded.
 	//
-	// - failed: Failed.
+	// - failed: The health check failed.
 	//
 	// example:
 	//
