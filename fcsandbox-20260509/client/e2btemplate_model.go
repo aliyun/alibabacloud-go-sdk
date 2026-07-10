@@ -9,28 +9,26 @@ type iE2BTemplate interface {
   dara.Model
   String() string
   GoString() string
-  SetAliases(v []*string) *E2BTemplate
-  GetAliases() []*string 
   SetBuildStatus(v string) *E2BTemplate
   GetBuildStatus() *string 
+  SetCategory(v string) *E2BTemplate
+  GetCategory() *string 
   SetCpuCount(v int32) *E2BTemplate
   GetCpuCount() *int32 
   SetCreatedAt(v string) *E2BTemplate
   GetCreatedAt() *string 
-  SetLastSpawnedAt(v string) *E2BTemplate
-  GetLastSpawnedAt() *string 
   SetLogConfiguration(v *LogConfiguration) *E2BTemplate
   GetLogConfiguration() *LogConfiguration 
   SetMemoryMB(v int32) *E2BTemplate
   GetMemoryMB() *int32 
   SetNames(v []*string) *E2BTemplate
   GetNames() []*string 
+  SetNetworkConfiguration(v *NetworkConfiguration) *E2BTemplate
+  GetNetworkConfiguration() *NetworkConfiguration 
   SetPublic(v bool) *E2BTemplate
   GetPublic() *bool 
   SetResourceGroupID(v string) *E2BTemplate
   GetResourceGroupID() *string 
-  SetSpawnCount(v int32) *E2BTemplate
-  GetSpawnCount() *int32 
   SetStatusReason(v string) *E2BTemplate
   GetStatusReason() *string 
   SetTags(v []*E2BTemplateTag) *E2BTemplate
@@ -48,17 +46,16 @@ type iE2BTemplate interface {
 }
 
 type E2BTemplate struct {
-  Aliases []*string `json:"aliases,omitempty" xml:"aliases,omitempty" type:"Repeated"`
   BuildStatus *string `json:"buildStatus,omitempty" xml:"buildStatus,omitempty"`
+  Category *string `json:"category,omitempty" xml:"category,omitempty"`
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-  LastSpawnedAt *string `json:"lastSpawnedAt,omitempty" xml:"lastSpawnedAt,omitempty"`
   LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
   Names []*string `json:"names,omitempty" xml:"names,omitempty" type:"Repeated"`
+  NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
   Public *bool `json:"public,omitempty" xml:"public,omitempty"`
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-  SpawnCount *int32 `json:"spawnCount,omitempty" xml:"spawnCount,omitempty"`
   StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
   Tags []*E2BTemplateTag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
@@ -76,12 +73,12 @@ func (s E2BTemplate) GoString() string {
   return s.String()
 }
 
-func (s *E2BTemplate) GetAliases() []*string  {
-  return s.Aliases
-}
-
 func (s *E2BTemplate) GetBuildStatus() *string  {
   return s.BuildStatus
+}
+
+func (s *E2BTemplate) GetCategory() *string  {
+  return s.Category
 }
 
 func (s *E2BTemplate) GetCpuCount() *int32  {
@@ -90,10 +87,6 @@ func (s *E2BTemplate) GetCpuCount() *int32  {
 
 func (s *E2BTemplate) GetCreatedAt() *string  {
   return s.CreatedAt
-}
-
-func (s *E2BTemplate) GetLastSpawnedAt() *string  {
-  return s.LastSpawnedAt
 }
 
 func (s *E2BTemplate) GetLogConfiguration() *LogConfiguration  {
@@ -108,16 +101,16 @@ func (s *E2BTemplate) GetNames() []*string  {
   return s.Names
 }
 
+func (s *E2BTemplate) GetNetworkConfiguration() *NetworkConfiguration  {
+  return s.NetworkConfiguration
+}
+
 func (s *E2BTemplate) GetPublic() *bool  {
   return s.Public
 }
 
 func (s *E2BTemplate) GetResourceGroupID() *string  {
   return s.ResourceGroupID
-}
-
-func (s *E2BTemplate) GetSpawnCount() *int32  {
-  return s.SpawnCount
 }
 
 func (s *E2BTemplate) GetStatusReason() *string  {
@@ -148,13 +141,13 @@ func (s *E2BTemplate) GetUserID() *string  {
   return s.UserID
 }
 
-func (s *E2BTemplate) SetAliases(v []*string) *E2BTemplate {
-  s.Aliases = v
+func (s *E2BTemplate) SetBuildStatus(v string) *E2BTemplate {
+  s.BuildStatus = &v
   return s
 }
 
-func (s *E2BTemplate) SetBuildStatus(v string) *E2BTemplate {
-  s.BuildStatus = &v
+func (s *E2BTemplate) SetCategory(v string) *E2BTemplate {
+  s.Category = &v
   return s
 }
 
@@ -165,11 +158,6 @@ func (s *E2BTemplate) SetCpuCount(v int32) *E2BTemplate {
 
 func (s *E2BTemplate) SetCreatedAt(v string) *E2BTemplate {
   s.CreatedAt = &v
-  return s
-}
-
-func (s *E2BTemplate) SetLastSpawnedAt(v string) *E2BTemplate {
-  s.LastSpawnedAt = &v
   return s
 }
 
@@ -188,6 +176,11 @@ func (s *E2BTemplate) SetNames(v []*string) *E2BTemplate {
   return s
 }
 
+func (s *E2BTemplate) SetNetworkConfiguration(v *NetworkConfiguration) *E2BTemplate {
+  s.NetworkConfiguration = v
+  return s
+}
+
 func (s *E2BTemplate) SetPublic(v bool) *E2BTemplate {
   s.Public = &v
   return s
@@ -195,11 +188,6 @@ func (s *E2BTemplate) SetPublic(v bool) *E2BTemplate {
 
 func (s *E2BTemplate) SetResourceGroupID(v string) *E2BTemplate {
   s.ResourceGroupID = &v
-  return s
-}
-
-func (s *E2BTemplate) SetSpawnCount(v int32) *E2BTemplate {
-  s.SpawnCount = &v
   return s
 }
 
@@ -241,6 +229,11 @@ func (s *E2BTemplate) SetUserID(v string) *E2BTemplate {
 func (s *E2BTemplate) Validate() error {
   if s.LogConfiguration != nil {
     if err := s.LogConfiguration.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.NetworkConfiguration != nil {
+    if err := s.NetworkConfiguration.Validate(); err != nil {
       return err
     }
   }

@@ -9,8 +9,6 @@ type iE2BListedTemplate interface {
   dara.Model
   String() string
   GoString() string
-  SetAliases(v []*string) *E2BListedTemplate
-  GetAliases() []*string 
   SetBuildStatus(v string) *E2BListedTemplate
   GetBuildStatus() *string 
   SetCategory(v string) *E2BListedTemplate
@@ -21,8 +19,6 @@ type iE2BListedTemplate interface {
   GetCreatedAt() *string 
   SetFunctionName(v string) *E2BListedTemplate
   GetFunctionName() *string 
-  SetLastSpawnedAt(v string) *E2BListedTemplate
-  GetLastSpawnedAt() *string 
   SetLogConfiguration(v *LogConfiguration) *E2BListedTemplate
   GetLogConfiguration() *LogConfiguration 
   SetMemoryMB(v int32) *E2BListedTemplate
@@ -33,8 +29,6 @@ type iE2BListedTemplate interface {
   GetPublic() *bool 
   SetResourceGroupID(v string) *E2BListedTemplate
   GetResourceGroupID() *string 
-  SetSpawnCount(v int32) *E2BListedTemplate
-  GetSpawnCount() *int32 
   SetStatusReason(v string) *E2BListedTemplate
   GetStatusReason() *string 
   SetTags(v []*E2BTemplateTag) *E2BListedTemplate
@@ -52,19 +46,16 @@ type iE2BListedTemplate interface {
 }
 
 type E2BListedTemplate struct {
-  Aliases []*string `json:"aliases,omitempty" xml:"aliases,omitempty" type:"Repeated"`
   BuildStatus *string `json:"buildStatus,omitempty" xml:"buildStatus,omitempty"`
   Category *string `json:"category,omitempty" xml:"category,omitempty"`
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
   CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
   FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-  LastSpawnedAt *string `json:"lastSpawnedAt,omitempty" xml:"lastSpawnedAt,omitempty"`
   LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
   Names []*string `json:"names,omitempty" xml:"names,omitempty" type:"Repeated"`
   Public *bool `json:"public,omitempty" xml:"public,omitempty"`
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-  SpawnCount *int32 `json:"spawnCount,omitempty" xml:"spawnCount,omitempty"`
   StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
   Tags []*E2BTemplateTag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
   TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
@@ -80,10 +71,6 @@ func (s E2BListedTemplate) String() string {
 
 func (s E2BListedTemplate) GoString() string {
   return s.String()
-}
-
-func (s *E2BListedTemplate) GetAliases() []*string  {
-  return s.Aliases
 }
 
 func (s *E2BListedTemplate) GetBuildStatus() *string  {
@@ -106,10 +93,6 @@ func (s *E2BListedTemplate) GetFunctionName() *string  {
   return s.FunctionName
 }
 
-func (s *E2BListedTemplate) GetLastSpawnedAt() *string  {
-  return s.LastSpawnedAt
-}
-
 func (s *E2BListedTemplate) GetLogConfiguration() *LogConfiguration  {
   return s.LogConfiguration
 }
@@ -128,10 +111,6 @@ func (s *E2BListedTemplate) GetPublic() *bool  {
 
 func (s *E2BListedTemplate) GetResourceGroupID() *string  {
   return s.ResourceGroupID
-}
-
-func (s *E2BListedTemplate) GetSpawnCount() *int32  {
-  return s.SpawnCount
 }
 
 func (s *E2BListedTemplate) GetStatusReason() *string  {
@@ -162,11 +141,6 @@ func (s *E2BListedTemplate) GetUserID() *string  {
   return s.UserID
 }
 
-func (s *E2BListedTemplate) SetAliases(v []*string) *E2BListedTemplate {
-  s.Aliases = v
-  return s
-}
-
 func (s *E2BListedTemplate) SetBuildStatus(v string) *E2BListedTemplate {
   s.BuildStatus = &v
   return s
@@ -192,11 +166,6 @@ func (s *E2BListedTemplate) SetFunctionName(v string) *E2BListedTemplate {
   return s
 }
 
-func (s *E2BListedTemplate) SetLastSpawnedAt(v string) *E2BListedTemplate {
-  s.LastSpawnedAt = &v
-  return s
-}
-
 func (s *E2BListedTemplate) SetLogConfiguration(v *LogConfiguration) *E2BListedTemplate {
   s.LogConfiguration = v
   return s
@@ -219,11 +188,6 @@ func (s *E2BListedTemplate) SetPublic(v bool) *E2BListedTemplate {
 
 func (s *E2BListedTemplate) SetResourceGroupID(v string) *E2BListedTemplate {
   s.ResourceGroupID = &v
-  return s
-}
-
-func (s *E2BListedTemplate) SetSpawnCount(v int32) *E2BListedTemplate {
-  s.SpawnCount = &v
   return s
 }
 

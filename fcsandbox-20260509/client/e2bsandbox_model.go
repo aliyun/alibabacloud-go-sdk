@@ -11,12 +11,6 @@ type iE2BSandbox interface {
   GoString() string
   SetAccessEndpoint(v string) *E2BSandbox
   GetAccessEndpoint() *string 
-  SetAlias(v string) *E2BSandbox
-  GetAlias() *string 
-  SetAllowInternetAccess(v bool) *E2BSandbox
-  GetAllowInternetAccess() *bool 
-  SetClientID(v string) *E2BSandbox
-  GetClientID() *string 
   SetCpuCount(v int32) *E2BSandbox
   GetCpuCount() *int32 
   SetDiskSizeMB(v int32) *E2BSandbox
@@ -25,24 +19,16 @@ type iE2BSandbox interface {
   GetDomain() *string 
   SetEndAt(v string) *E2BSandbox
   GetEndAt() *string 
-  SetEnvdAccessToken(v string) *E2BSandbox
-  GetEnvdAccessToken() *string 
-  SetEnvdVersion(v string) *E2BSandbox
-  GetEnvdVersion() *string 
   SetFcFunctionName(v string) *E2BSandbox
   GetFcFunctionName() *string 
   SetFcInstanceID(v string) *E2BSandbox
   GetFcInstanceID() *string 
   SetFcSessionID(v string) *E2BSandbox
   GetFcSessionID() *string 
-  SetLifecycle(v *E2BLifecycle) *E2BSandbox
-  GetLifecycle() *E2BLifecycle 
   SetMemoryMB(v int32) *E2BSandbox
   GetMemoryMB() *int32 
   SetMetadata(v map[string]*string) *E2BSandbox
   GetMetadata() map[string]*string 
-  SetNetwork(v *E2BNetwork) *E2BSandbox
-  GetNetwork() *E2BNetwork 
   SetResourceGroupID(v string) *E2BSandbox
   GetResourceGroupID() *string 
   SetSandboxID(v string) *E2BSandbox
@@ -61,28 +47,19 @@ type iE2BSandbox interface {
   GetTemplateName() *string 
   SetUserID(v string) *E2BSandbox
   GetUserID() *string 
-  SetVolumeMounts(v []*E2BVolumeMount) *E2BSandbox
-  GetVolumeMounts() []*E2BVolumeMount 
 }
 
 type E2BSandbox struct {
   AccessEndpoint *string `json:"accessEndpoint,omitempty" xml:"accessEndpoint,omitempty"`
-  Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-  AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
-  ClientID *string `json:"clientID,omitempty" xml:"clientID,omitempty"`
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
   DiskSizeMB *int32 `json:"diskSizeMB,omitempty" xml:"diskSizeMB,omitempty"`
   Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
   EndAt *string `json:"endAt,omitempty" xml:"endAt,omitempty"`
-  EnvdAccessToken *string `json:"envdAccessToken,omitempty" xml:"envdAccessToken,omitempty"`
-  EnvdVersion *string `json:"envdVersion,omitempty" xml:"envdVersion,omitempty"`
   FcFunctionName *string `json:"fcFunctionName,omitempty" xml:"fcFunctionName,omitempty"`
   FcInstanceID *string `json:"fcInstanceID,omitempty" xml:"fcInstanceID,omitempty"`
   FcSessionID *string `json:"fcSessionID,omitempty" xml:"fcSessionID,omitempty"`
-  Lifecycle *E2BLifecycle `json:"lifecycle,omitempty" xml:"lifecycle,omitempty"`
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
   Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
-  Network *E2BNetwork `json:"network,omitempty" xml:"network,omitempty"`
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
   SandboxID *string `json:"sandboxID,omitempty" xml:"sandboxID,omitempty"`
   StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
@@ -92,7 +69,6 @@ type E2BSandbox struct {
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
   TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
-  VolumeMounts []*E2BVolumeMount `json:"volumeMounts,omitempty" xml:"volumeMounts,omitempty" type:"Repeated"`
 }
 
 func (s E2BSandbox) String() string {
@@ -105,18 +81,6 @@ func (s E2BSandbox) GoString() string {
 
 func (s *E2BSandbox) GetAccessEndpoint() *string  {
   return s.AccessEndpoint
-}
-
-func (s *E2BSandbox) GetAlias() *string  {
-  return s.Alias
-}
-
-func (s *E2BSandbox) GetAllowInternetAccess() *bool  {
-  return s.AllowInternetAccess
-}
-
-func (s *E2BSandbox) GetClientID() *string  {
-  return s.ClientID
 }
 
 func (s *E2BSandbox) GetCpuCount() *int32  {
@@ -135,14 +99,6 @@ func (s *E2BSandbox) GetEndAt() *string  {
   return s.EndAt
 }
 
-func (s *E2BSandbox) GetEnvdAccessToken() *string  {
-  return s.EnvdAccessToken
-}
-
-func (s *E2BSandbox) GetEnvdVersion() *string  {
-  return s.EnvdVersion
-}
-
 func (s *E2BSandbox) GetFcFunctionName() *string  {
   return s.FcFunctionName
 }
@@ -155,20 +111,12 @@ func (s *E2BSandbox) GetFcSessionID() *string  {
   return s.FcSessionID
 }
 
-func (s *E2BSandbox) GetLifecycle() *E2BLifecycle  {
-  return s.Lifecycle
-}
-
 func (s *E2BSandbox) GetMemoryMB() *int32  {
   return s.MemoryMB
 }
 
 func (s *E2BSandbox) GetMetadata() map[string]*string  {
   return s.Metadata
-}
-
-func (s *E2BSandbox) GetNetwork() *E2BNetwork  {
-  return s.Network
 }
 
 func (s *E2BSandbox) GetResourceGroupID() *string  {
@@ -207,27 +155,8 @@ func (s *E2BSandbox) GetUserID() *string  {
   return s.UserID
 }
 
-func (s *E2BSandbox) GetVolumeMounts() []*E2BVolumeMount  {
-  return s.VolumeMounts
-}
-
 func (s *E2BSandbox) SetAccessEndpoint(v string) *E2BSandbox {
   s.AccessEndpoint = &v
-  return s
-}
-
-func (s *E2BSandbox) SetAlias(v string) *E2BSandbox {
-  s.Alias = &v
-  return s
-}
-
-func (s *E2BSandbox) SetAllowInternetAccess(v bool) *E2BSandbox {
-  s.AllowInternetAccess = &v
-  return s
-}
-
-func (s *E2BSandbox) SetClientID(v string) *E2BSandbox {
-  s.ClientID = &v
   return s
 }
 
@@ -251,16 +180,6 @@ func (s *E2BSandbox) SetEndAt(v string) *E2BSandbox {
   return s
 }
 
-func (s *E2BSandbox) SetEnvdAccessToken(v string) *E2BSandbox {
-  s.EnvdAccessToken = &v
-  return s
-}
-
-func (s *E2BSandbox) SetEnvdVersion(v string) *E2BSandbox {
-  s.EnvdVersion = &v
-  return s
-}
-
 func (s *E2BSandbox) SetFcFunctionName(v string) *E2BSandbox {
   s.FcFunctionName = &v
   return s
@@ -276,11 +195,6 @@ func (s *E2BSandbox) SetFcSessionID(v string) *E2BSandbox {
   return s
 }
 
-func (s *E2BSandbox) SetLifecycle(v *E2BLifecycle) *E2BSandbox {
-  s.Lifecycle = v
-  return s
-}
-
 func (s *E2BSandbox) SetMemoryMB(v int32) *E2BSandbox {
   s.MemoryMB = &v
   return s
@@ -288,11 +202,6 @@ func (s *E2BSandbox) SetMemoryMB(v int32) *E2BSandbox {
 
 func (s *E2BSandbox) SetMetadata(v map[string]*string) *E2BSandbox {
   s.Metadata = v
-  return s
-}
-
-func (s *E2BSandbox) SetNetwork(v *E2BNetwork) *E2BSandbox {
-  s.Network = v
   return s
 }
 
@@ -341,31 +250,7 @@ func (s *E2BSandbox) SetUserID(v string) *E2BSandbox {
   return s
 }
 
-func (s *E2BSandbox) SetVolumeMounts(v []*E2BVolumeMount) *E2BSandbox {
-  s.VolumeMounts = v
-  return s
-}
-
 func (s *E2BSandbox) Validate() error {
-  if s.Lifecycle != nil {
-    if err := s.Lifecycle.Validate(); err != nil {
-      return err
-    }
-  }
-  if s.Network != nil {
-    if err := s.Network.Validate(); err != nil {
-      return err
-    }
-  }
-  if s.VolumeMounts != nil {
-    for _, item := range s.VolumeMounts {
-      if item != nil {
-        if err := item.Validate(); err != nil {
-          return err
-        }
-      }
-    }
-  }
-  return nil
+  return dara.Validate(s)
 }
 

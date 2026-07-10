@@ -9,18 +9,12 @@ type iE2BListedSandbox interface {
   dara.Model
   String() string
   GoString() string
-  SetAlias(v string) *E2BListedSandbox
-  GetAlias() *string 
-  SetClientID(v string) *E2BListedSandbox
-  GetClientID() *string 
   SetCpuCount(v int32) *E2BListedSandbox
   GetCpuCount() *int32 
   SetDiskSizeMB(v int32) *E2BListedSandbox
   GetDiskSizeMB() *int32 
   SetEndAt(v string) *E2BListedSandbox
   GetEndAt() *string 
-  SetEnvdVersion(v string) *E2BListedSandbox
-  GetEnvdVersion() *string 
   SetMemoryMB(v int32) *E2BListedSandbox
   GetMemoryMB() *int32 
   SetMetadata(v map[string]*string) *E2BListedSandbox
@@ -43,17 +37,12 @@ type iE2BListedSandbox interface {
   GetTemplateName() *string 
   SetUserID(v string) *E2BListedSandbox
   GetUserID() *string 
-  SetVolumeMounts(v []*E2BVolumeMount) *E2BListedSandbox
-  GetVolumeMounts() []*E2BVolumeMount 
 }
 
 type E2BListedSandbox struct {
-  Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-  ClientID *string `json:"clientID,omitempty" xml:"clientID,omitempty"`
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
   DiskSizeMB *int32 `json:"diskSizeMB,omitempty" xml:"diskSizeMB,omitempty"`
   EndAt *string `json:"endAt,omitempty" xml:"endAt,omitempty"`
-  EnvdVersion *string `json:"envdVersion,omitempty" xml:"envdVersion,omitempty"`
   MemoryMB *int32 `json:"memoryMB,omitempty" xml:"memoryMB,omitempty"`
   Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
@@ -65,7 +54,6 @@ type E2BListedSandbox struct {
   TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
   TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
   UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
-  VolumeMounts []*E2BVolumeMount `json:"volumeMounts,omitempty" xml:"volumeMounts,omitempty" type:"Repeated"`
 }
 
 func (s E2BListedSandbox) String() string {
@@ -74,14 +62,6 @@ func (s E2BListedSandbox) String() string {
 
 func (s E2BListedSandbox) GoString() string {
   return s.String()
-}
-
-func (s *E2BListedSandbox) GetAlias() *string  {
-  return s.Alias
-}
-
-func (s *E2BListedSandbox) GetClientID() *string  {
-  return s.ClientID
 }
 
 func (s *E2BListedSandbox) GetCpuCount() *int32  {
@@ -94,10 +74,6 @@ func (s *E2BListedSandbox) GetDiskSizeMB() *int32  {
 
 func (s *E2BListedSandbox) GetEndAt() *string  {
   return s.EndAt
-}
-
-func (s *E2BListedSandbox) GetEnvdVersion() *string  {
-  return s.EnvdVersion
 }
 
 func (s *E2BListedSandbox) GetMemoryMB() *int32  {
@@ -144,20 +120,6 @@ func (s *E2BListedSandbox) GetUserID() *string  {
   return s.UserID
 }
 
-func (s *E2BListedSandbox) GetVolumeMounts() []*E2BVolumeMount  {
-  return s.VolumeMounts
-}
-
-func (s *E2BListedSandbox) SetAlias(v string) *E2BListedSandbox {
-  s.Alias = &v
-  return s
-}
-
-func (s *E2BListedSandbox) SetClientID(v string) *E2BListedSandbox {
-  s.ClientID = &v
-  return s
-}
-
 func (s *E2BListedSandbox) SetCpuCount(v int32) *E2BListedSandbox {
   s.CpuCount = &v
   return s
@@ -170,11 +132,6 @@ func (s *E2BListedSandbox) SetDiskSizeMB(v int32) *E2BListedSandbox {
 
 func (s *E2BListedSandbox) SetEndAt(v string) *E2BListedSandbox {
   s.EndAt = &v
-  return s
-}
-
-func (s *E2BListedSandbox) SetEnvdVersion(v string) *E2BListedSandbox {
-  s.EnvdVersion = &v
   return s
 }
 
@@ -233,21 +190,7 @@ func (s *E2BListedSandbox) SetUserID(v string) *E2BListedSandbox {
   return s
 }
 
-func (s *E2BListedSandbox) SetVolumeMounts(v []*E2BVolumeMount) *E2BListedSandbox {
-  s.VolumeMounts = v
-  return s
-}
-
 func (s *E2BListedSandbox) Validate() error {
-  if s.VolumeMounts != nil {
-    for _, item := range s.VolumeMounts {
-      if item != nil {
-        if err := item.Validate(); err != nil {
-          return err
-        }
-      }
-    }
-  }
-  return nil
+  return dara.Validate(s)
 }
 
