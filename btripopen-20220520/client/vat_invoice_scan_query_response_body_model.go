@@ -24,12 +24,38 @@ type iVatInvoiceScanQueryResponseBody interface {
 }
 
 type VatInvoiceScanQueryResponseBody struct {
-	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
-	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
-	Module    *VatInvoiceScanQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
-	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// The status code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The response data. This parameter is returned by the server. An empty value is returned if no result is found or an exception occurs.
+	Module *VatInvoiceScanQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	//
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210e842b16611337974412836dae27
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s VatInvoiceScanQueryResponseBody) String() string {
@@ -104,11 +130,32 @@ func (s *VatInvoiceScanQueryResponseBody) Validate() error {
 }
 
 type VatInvoiceScanQueryResponseBodyModule struct {
-	Items     []*VatInvoiceScanQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	PageNo    *int32                                        `json:"page_no,omitempty" xml:"page_no,omitempty"`
-	PageSize  *int32                                        `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	TotalPage *int32                                        `json:"total_page,omitempty" xml:"total_page,omitempty"`
-	TotalSize *int32                                        `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	// The paginated results.
+	Items []*VatInvoiceScanQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The page number of this request.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	// The page size of this request.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"total_page,omitempty" xml:"total_page,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 30
+	TotalSize *int32 `json:"total_size,omitempty" xml:"total_size,omitempty"`
 }
 
 func (s VatInvoiceScanQueryResponseBodyModule) String() string {
@@ -178,42 +225,228 @@ func (s *VatInvoiceScanQueryResponseBodyModule) Validate() error {
 }
 
 type VatInvoiceScanQueryResponseBodyModuleItems struct {
-	AmountWithTax            *string                                                     `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
-	AmountWithoutTax         *string                                                     `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
-	BillDate                 *string                                                     `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
-	CheckCode                *string                                                     `json:"check_code,omitempty" xml:"check_code,omitempty"`
-	Drawer                   *string                                                     `json:"drawer,omitempty" xml:"drawer,omitempty"`
-	Id                       *string                                                     `json:"id,omitempty" xml:"id,omitempty"`
-	InvoiceCode              *string                                                     `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
-	InvoiceDay               *string                                                     `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
-	InvoiceDetail            *string                                                     `json:"invoice_detail,omitempty" xml:"invoice_detail,omitempty"`
-	InvoiceDetails           []*VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails `json:"invoice_details,omitempty" xml:"invoice_details,omitempty" type:"Repeated"`
-	InvoiceLocation          *string                                                     `json:"invoice_location,omitempty" xml:"invoice_location,omitempty"`
-	InvoiceNo                *string                                                     `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
-	InvoiceSubTaskId         *int64                                                      `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
-	InvoiceType              *int32                                                      `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
-	InvoiceTypeDesc          *string                                                     `json:"invoice_type_desc,omitempty" xml:"invoice_type_desc,omitempty"`
-	MachineCode              *string                                                     `json:"machine_code,omitempty" xml:"machine_code,omitempty"`
-	OfdOssUrl                *string                                                     `json:"ofd_oss_url,omitempty" xml:"ofd_oss_url,omitempty"`
-	OssUrl                   *string                                                     `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
-	PasswordArea             *string                                                     `json:"password_area,omitempty" xml:"password_area,omitempty"`
-	PdfOssUrl                *string                                                     `json:"pdf_oss_url,omitempty" xml:"pdf_oss_url,omitempty"`
-	PurchaserBankAccountInfo *string                                                     `json:"purchaser_bank_account_info,omitempty" xml:"purchaser_bank_account_info,omitempty"`
-	PurchaserContactInfo     *string                                                     `json:"purchaser_contact_info,omitempty" xml:"purchaser_contact_info,omitempty"`
-	PurchaserName            *string                                                     `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
-	PurchaserTaxNo           *string                                                     `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
-	Recipient                *string                                                     `json:"recipient,omitempty" xml:"recipient,omitempty"`
-	Remarks                  *string                                                     `json:"remarks,omitempty" xml:"remarks,omitempty"`
-	Reviewer                 *string                                                     `json:"reviewer,omitempty" xml:"reviewer,omitempty"`
-	SellerBankAccountInfo    *string                                                     `json:"seller_bank_account_info,omitempty" xml:"seller_bank_account_info,omitempty"`
-	SellerContactInfo        *string                                                     `json:"seller_contact_info,omitempty" xml:"seller_contact_info,omitempty"`
-	SellerName               *string                                                     `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
-	SellerTaxNo              *string                                                     `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
-	SmartCheckCode           *string                                                     `json:"smart_check_code,omitempty" xml:"smart_check_code,omitempty"`
-	TaxAmount                *string                                                     `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
-	TaxRate                  *string                                                     `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	TotalAmountInWords       *string                                                     `json:"total_amount_in_words,omitempty" xml:"total_amount_in_words,omitempty"`
-	XmlOssUrl                *string                                                     `json:"xml_oss_url,omitempty" xml:"xml_oss_url,omitempty"`
+	// The tax-inclusive amount.
+	//
+	// example:
+	//
+	// 20
+	AmountWithTax *string `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
+	// The tax-exclusive amount.
+	//
+	// example:
+	//
+	// 18.87
+	AmountWithoutTax *string `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
+	// The billing date.
+	//
+	// example:
+	//
+	// 2022-12-01
+	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	// Indicates whether the invoice has been reissued. Valid values:
+	//
+	// - true: Reissued.
+	//
+	// - false: Not reissued.
+	//
+	// example:
+	//
+	// true
+	Changed *bool `json:"changed,omitempty" xml:"changed,omitempty"`
+	// The verification code.
+	//
+	// example:
+	//
+	// 07122942791187744475
+	CheckCode *string `json:"check_code,omitempty" xml:"check_code,omitempty"`
+	// The invoice issuer.
+	//
+	// example:
+	//
+	// 敏
+	Drawer *string `json:"drawer,omitempty" xml:"drawer,omitempty"`
+	// The primary key ID.
+	//
+	// example:
+	//
+	// 60
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The invoice code.
+	//
+	// example:
+	//
+	// 3300111303
+	InvoiceCode *string `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
+	// The invoice date.
+	//
+	// example:
+	//
+	// 24-4-7 上午12:00
+	InvoiceDay *string `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
+	// The invoice details.
+	//
+	// example:
+	//
+	// 代理服务费¥20
+	InvoiceDetail *string `json:"invoice_detail,omitempty" xml:"invoice_detail,omitempty"`
+	// The invoice line items.
+	InvoiceDetails []*VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails `json:"invoice_details,omitempty" xml:"invoice_details,omitempty" type:"Repeated"`
+	// The invoice region.
+	//
+	// example:
+	//
+	// 上海
+	InvoiceLocation *string `json:"invoice_location,omitempty" xml:"invoice_location,omitempty"`
+	// The invoice number.
+	//
+	// example:
+	//
+	// 24021111
+	InvoiceNo *string `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
+	// The invoice subtask ID.
+	//
+	// example:
+	//
+	// 123
+	InvoiceSubTaskId *int64 `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
+	// The invoice type.
+	//
+	// example:
+	//
+	// 2
+	InvoiceType *int32 `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	// The invoice type description.
+	//
+	// example:
+	//
+	// 增值税专用发票（纸质）
+	InvoiceTypeDesc *string `json:"invoice_type_desc,omitempty" xml:"invoice_type_desc,omitempty"`
+	// The machine code.
+	//
+	// example:
+	//
+	// 661619906841
+	MachineCode *string `json:"machine_code,omitempty" xml:"machine_code,omitempty"`
+	// The URL for the VAT invoice file in OFD format. This URL is available only for digitalized electronic invoicing and electronic general VAT invoices.
+	//
+	// example:
+	//
+	// https://www.testurl.com
+	OfdOssUrl *string `json:"ofd_oss_url,omitempty" xml:"ofd_oss_url,omitempty"`
+	// The URL for the VAT invoice file in image format.
+	//
+	// example:
+	//
+	// https://www.testurl.com
+	OssUrl *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	// The password area.
+	//
+	// example:
+	//
+	// <87*>>53>5023>-446>/4+83/5	- *>5/81<75/1931>4>>
+	PasswordArea *string `json:"password_area,omitempty" xml:"password_area,omitempty"`
+	// The URL for the VAT invoice file in PDF format. This URL is available only for digitalized electronic invoicing and electronic general VAT invoices.
+	//
+	// example:
+	//
+	// https://www.testurl.com
+	PdfOssUrl *string `json:"pdf_oss_url,omitempty" xml:"pdf_oss_url,omitempty"`
+	// The purchaser bank account information.
+	//
+	// example:
+	//
+	// 中国农业银行深圳
+	PurchaserBankAccountInfo *string `json:"purchaser_bank_account_info,omitempty" xml:"purchaser_bank_account_info,omitempty"`
+	// The purchaser contact information.
+	//
+	// example:
+	//
+	// 杭州余杭区五常街道五常大道168
+	PurchaserContactInfo *string `json:"purchaser_contact_info,omitempty" xml:"purchaser_contact_info,omitempty"`
+	// The purchaser name.
+	//
+	// example:
+	//
+	// 测试购方抬头
+	PurchaserName *string `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
+	// The purchaser tax number.
+	//
+	// example:
+	//
+	// 91441111111111111S
+	PurchaserTaxNo *string `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
+	// The payee.
+	//
+	// example:
+	//
+	// 琳
+	Recipient *string `json:"recipient,omitempty" xml:"recipient,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// 舰店OMS
+	Remarks *string `json:"remarks,omitempty" xml:"remarks,omitempty"`
+	// The reviewer.
+	//
+	// example:
+	//
+	// 敏
+	Reviewer *string `json:"reviewer,omitempty" xml:"reviewer,omitempty"`
+	// The seller bank account information.
+	//
+	// example:
+	//
+	// 中国农业银行深圳东
+	SellerBankAccountInfo *string `json:"seller_bank_account_info,omitempty" xml:"seller_bank_account_info,omitempty"`
+	// The seller contact information.
+	//
+	// example:
+	//
+	// 深圳市盐田区深盐路黄
+	SellerContactInfo *string `json:"seller_contact_info,omitempty" xml:"seller_contact_info,omitempty"`
+	// The seller name.
+	//
+	// example:
+	//
+	// 测试销方名称
+	SellerName *string `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
+	// The seller tax number.
+	//
+	// example:
+	//
+	// 91441111111111111N
+	SellerTaxNo *string `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
+	// The abbreviated verification code.
+	//
+	// example:
+	//
+	// 4475
+	SmartCheckCode *string `json:"smart_check_code,omitempty" xml:"smart_check_code,omitempty"`
+	// The tax amount.
+	//
+	// example:
+	//
+	// 1.13
+	TaxAmount *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	// The tax rate.
+	//
+	// example:
+	//
+	// 6%
+	TaxRate *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	// The total amount in words.
+	//
+	// example:
+	//
+	// 叁佰叁拾贰圆整
+	TotalAmountInWords *string `json:"total_amount_in_words,omitempty" xml:"total_amount_in_words,omitempty"`
+	// The URL for the VAT invoice file in XML format. This URL is available only for digitalized electronic invoicing.
+	//
+	// example:
+	//
+	// https://www.testurl.com
+	XmlOssUrl *string `json:"xml_oss_url,omitempty" xml:"xml_oss_url,omitempty"`
 }
 
 func (s VatInvoiceScanQueryResponseBodyModuleItems) String() string {
@@ -234,6 +467,10 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) GetAmountWithoutTax() *stri
 
 func (s *VatInvoiceScanQueryResponseBodyModuleItems) GetBillDate() *string {
 	return s.BillDate
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) GetChanged() *bool {
+	return s.Changed
 }
 
 func (s *VatInvoiceScanQueryResponseBodyModuleItems) GetCheckCode() *string {
@@ -380,6 +617,11 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetAmountWithoutTax(v strin
 
 func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetBillDate(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
 	s.BillDate = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetChanged(v bool) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.Changed = &v
 	return s
 }
 
@@ -562,15 +804,60 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) Validate() error {
 }
 
 type VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails struct {
-	Amount        *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	Index         *string `json:"index,omitempty" xml:"index,omitempty"`
-	ItemName      *string `json:"item_name,omitempty" xml:"item_name,omitempty"`
-	Quantity      *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// The amount.
+	//
+	// example:
+	//
+	// 75.21
+	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The line number.
+	//
+	// example:
+	//
+	// 0
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// The name of the goods, taxable services, or service name.
+	//
+	// example:
+	//
+	// 铂金首饰
+	ItemName *string `json:"item_name,omitempty" xml:"item_name,omitempty"`
+	// The quantity.
+	//
+	// example:
+	//
+	// 1
+	Quantity *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// The specification and model.
+	//
+	// example:
+	//
+	// 66PT11230069
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	Tax           *string `json:"tax,omitempty" xml:"tax,omitempty"`
-	TaxRate       *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	Unit          *string `json:"unit,omitempty" xml:"unit,omitempty"`
-	UnitPrice     *string `json:"unit_price,omitempty" xml:"unit_price,omitempty"`
+	// The tax amount.
+	//
+	// example:
+	//
+	// 12.79
+	Tax *string `json:"tax,omitempty" xml:"tax,omitempty"`
+	// The tax rate.
+	//
+	// example:
+	//
+	// 17%
+	TaxRate *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	// The unit of measurement.
+	//
+	// example:
+	//
+	// 件
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The unit price.
+	//
+	// example:
+	//
+	// 75.21
+	UnitPrice *string `json:"unit_price,omitempty" xml:"unit_price,omitempty"`
 }
 
 func (s VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) String() string {

@@ -58,7 +58,7 @@ type CarApplyAddRequest struct {
 	Cause *string `json:"cause,omitempty" xml:"cause,omitempty"`
 	// The cities for car service. Separate multiple cities with Chinese commas (，).
 	//
-	// Note: A maximum of 10 cities can be specified. The values in city and city_code_set must correspond one-to-one.
+	// Note: A maximum of 10 cities are supported. The values in city and city_code_set must correspond one to one.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CarApplyAddRequest struct {
 	//
 	// Note: 1) Either city_code_set or city is required. If both are specified, city_code_set takes precedence.
 	//
-	// A maximum of 10 cities can be specified.
+	// A maximum of 10 cities are supported.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ type CarApplyAddRequest struct {
 	ThirdPartApplyId *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
 	// The ID of the third-party cost center associated with the approval form.
 	//
-	// 	Warning: This field is required. To make it optional, contact the operations team.
+	// 	Warning: This field is required. To make it optional, contact operations.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type CarApplyAddRequest struct {
 	ThirdPartCostCenterId *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
 	// The ID of the third-party invoice header associated with the approval form.
 	//
-	// 	Warning: This field is required. To make it optional, contact the operations team.
+	// 	Warning: This field is required. To make it optional, contact operations.
 	//
 	// example:
 	//
@@ -137,11 +137,13 @@ type CarApplyAddRequest struct {
 	//
 	// 1
 	TimesTotal *int32 `json:"times_total,omitempty" xml:"times_total,omitempty"`
-	// The type of available usage count for the approval form. If the enterprise does not need to limit the number of times the approval form can be used, set this parameter to 1 (unlimited) and set both times_total and times_used to 0. Valid values:
+	// The usage count type of the approval form. If the enterprise does not need to limit the number of times the approval form can be used, set this parameter to 1 (unlimited) and set both times_total and times_used to 0.
 	//
-	// - 1: unlimited.
+	// Valid values:
 	//
-	// - 2: user-specified count.
+	// - 1: Unlimited.
+	//
+	// - 2: User-specified count.
 	//
 	// example:
 	//
@@ -421,7 +423,7 @@ func (s *CarApplyAddRequestItineraryList) Validate() error {
 }
 
 type CarApplyAddRequestTravelerStandard struct {
-	// The cross-city car service rules. This parameter is optional. If specified, cross-city rules are read from the approval form data.
+	// The cross-city car service rules. Optional. If specified, cross-city rules are read from the approval form data.
 	CarCitySet []*CarApplyAddRequestTravelerStandardCarCitySet `json:"car_city_set,omitempty" xml:"car_city_set,omitempty" type:"Repeated"`
 	// The user ID of the traveler.
 	//
@@ -475,7 +477,7 @@ func (s *CarApplyAddRequestTravelerStandard) Validate() error {
 type CarApplyAddRequestTravelerStandardCarCitySet struct {
 	// The cross-city city code. Only 6-digit codes are supported. Separate multiple values with Chinese commas.
 	//
-	// Note: A maximum of 10 cities can be specified. The values in city_code and city_name must correspond one-to-one.
+	// Note: A maximum of 10 cities are supported. The values in city_code and city_name must correspond one to one.
 	//
 	// This parameter is required.
 	//
@@ -485,7 +487,7 @@ type CarApplyAddRequestTravelerStandardCarCitySet struct {
 	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
 	// The cross-city city name. Separate multiple values with Chinese commas.
 	//
-	// Note: A maximum of 10 cities can be specified. The values in city_code and city_name must correspond one-to-one.
+	// Note: A maximum of 10 cities are supported. The values in city_code and city_name must correspond one to one.
 	//
 	// This parameter is required.
 	//

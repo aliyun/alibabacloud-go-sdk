@@ -58,7 +58,7 @@ type CarApplyAddShrinkRequest struct {
 	Cause *string `json:"cause,omitempty" xml:"cause,omitempty"`
 	// The cities for car service. Separate multiple cities with Chinese commas (，).
 	//
-	// Note: A maximum of 10 cities can be specified. The values in city and city_code_set must correspond one-to-one.
+	// Note: A maximum of 10 cities are supported. The values in city and city_code_set must correspond one to one.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CarApplyAddShrinkRequest struct {
 	//
 	// Note: 1) Either city_code_set or city is required. If both are specified, city_code_set takes precedence.
 	//
-	// A maximum of 10 cities can be specified.
+	// A maximum of 10 cities are supported.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ type CarApplyAddShrinkRequest struct {
 	ThirdPartApplyId *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
 	// The ID of the third-party cost center associated with the approval form.
 	//
-	// 	Warning: This field is required. To make it optional, contact the operations team.
+	// 	Warning: This field is required. To make it optional, contact operations.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type CarApplyAddShrinkRequest struct {
 	ThirdPartCostCenterId *string `json:"third_part_cost_center_id,omitempty" xml:"third_part_cost_center_id,omitempty"`
 	// The ID of the third-party invoice header associated with the approval form.
 	//
-	// 	Warning: This field is required. To make it optional, contact the operations team.
+	// 	Warning: This field is required. To make it optional, contact operations.
 	//
 	// example:
 	//
@@ -137,11 +137,13 @@ type CarApplyAddShrinkRequest struct {
 	//
 	// 1
 	TimesTotal *int32 `json:"times_total,omitempty" xml:"times_total,omitempty"`
-	// The type of available usage count for the approval form. If the enterprise does not need to limit the number of times the approval form can be used, set this parameter to 1 (unlimited) and set both times_total and times_used to 0. Valid values:
+	// The usage count type of the approval form. If the enterprise does not need to limit the number of times the approval form can be used, set this parameter to 1 (unlimited) and set both times_total and times_used to 0.
 	//
-	// - 1: unlimited.
+	// Valid values:
 	//
-	// - 2: user-specified count.
+	// - 1: Unlimited.
+	//
+	// - 2: User-specified count.
 	//
 	// example:
 	//

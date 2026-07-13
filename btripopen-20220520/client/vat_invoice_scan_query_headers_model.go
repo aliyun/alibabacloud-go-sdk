@@ -16,8 +16,13 @@ type iVatInvoiceScanQueryHeaders interface {
 }
 
 type VatInvoiceScanQueryHeaders struct {
-	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// A header parameter obtained from the "Enterprise access credential" API operation (added in the header). In HTTP mode, you can use corp_token=value in the URL as a substitute.
+	//
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripSoCorpToken *string `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
 }
 
 func (s VatInvoiceScanQueryHeaders) String() string {
