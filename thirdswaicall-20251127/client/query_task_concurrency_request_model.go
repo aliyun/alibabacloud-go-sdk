@@ -9,13 +9,17 @@ type iQueryTaskConcurrencyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApplicationCode(v string) *QueryTaskConcurrencyRequest
+	GetApplicationCode() *string
 	SetTaskId(v int64) *QueryTaskConcurrencyRequest
 	GetTaskId() *int64
 }
 
 type QueryTaskConcurrencyRequest struct {
-	// This parameter is required.
+	// example:
 	//
+	// B9191F0E57
+	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
 	// example:
 	//
 	// 12345
@@ -30,8 +34,17 @@ func (s QueryTaskConcurrencyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QueryTaskConcurrencyRequest) GetApplicationCode() *string {
+	return s.ApplicationCode
+}
+
 func (s *QueryTaskConcurrencyRequest) GetTaskId() *int64 {
 	return s.TaskId
+}
+
+func (s *QueryTaskConcurrencyRequest) SetApplicationCode(v string) *QueryTaskConcurrencyRequest {
+	s.ApplicationCode = &v
+	return s
 }
 
 func (s *QueryTaskConcurrencyRequest) SetTaskId(v int64) *QueryTaskConcurrencyRequest {

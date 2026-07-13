@@ -9,6 +9,14 @@ type iReadOutboundTaskCallListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCallEndTimeBegin(v int64) *ReadOutboundTaskCallListRequest
+	GetCallEndTimeBegin() *int64
+	SetCallEndTimeEnd(v int64) *ReadOutboundTaskCallListRequest
+	GetCallEndTimeEnd() *int64
+	SetCallStartTimeBegin(v int64) *ReadOutboundTaskCallListRequest
+	GetCallStartTimeBegin() *int64
+	SetCallStartTimeEnd(v int64) *ReadOutboundTaskCallListRequest
+	GetCallStartTimeEnd() *int64
 	SetCurrent(v int32) *ReadOutboundTaskCallListRequest
 	GetCurrent() *int32
 	SetCustomerNameOrPhone(v string) *ReadOutboundTaskCallListRequest
@@ -32,6 +40,22 @@ type iReadOutboundTaskCallListRequest interface {
 type ReadOutboundTaskCallListRequest struct {
 	// example:
 	//
+	// 1735689600000
+	CallEndTimeBegin *int64 `json:"CallEndTimeBegin,omitempty" xml:"CallEndTimeBegin,omitempty"`
+	// example:
+	//
+	// 1767225600000
+	CallEndTimeEnd *int64 `json:"CallEndTimeEnd,omitempty" xml:"CallEndTimeEnd,omitempty"`
+	// example:
+	//
+	// 1735689600000
+	CallStartTimeBegin *int64 `json:"CallStartTimeBegin,omitempty" xml:"CallStartTimeBegin,omitempty"`
+	// example:
+	//
+	// 1767225600000
+	CallStartTimeEnd *int64 `json:"CallStartTimeEnd,omitempty" xml:"CallStartTimeEnd,omitempty"`
+	// example:
+	//
 	// 1
 	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
 	// example:
@@ -50,8 +74,6 @@ type ReadOutboundTaskCallListRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// nextToken
-	//
 	// example:
 	//
 	// 51CC272E-D879-1B23-B98E-FCFB072D362B
@@ -76,6 +98,22 @@ func (s ReadOutboundTaskCallListRequest) String() string {
 
 func (s ReadOutboundTaskCallListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ReadOutboundTaskCallListRequest) GetCallEndTimeBegin() *int64 {
+	return s.CallEndTimeBegin
+}
+
+func (s *ReadOutboundTaskCallListRequest) GetCallEndTimeEnd() *int64 {
+	return s.CallEndTimeEnd
+}
+
+func (s *ReadOutboundTaskCallListRequest) GetCallStartTimeBegin() *int64 {
+	return s.CallStartTimeBegin
+}
+
+func (s *ReadOutboundTaskCallListRequest) GetCallStartTimeEnd() *int64 {
+	return s.CallStartTimeEnd
 }
 
 func (s *ReadOutboundTaskCallListRequest) GetCurrent() *int32 {
@@ -112,6 +150,26 @@ func (s *ReadOutboundTaskCallListRequest) GetTaskId() *string {
 
 func (s *ReadOutboundTaskCallListRequest) GetUserId() *string {
 	return s.UserId
+}
+
+func (s *ReadOutboundTaskCallListRequest) SetCallEndTimeBegin(v int64) *ReadOutboundTaskCallListRequest {
+	s.CallEndTimeBegin = &v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListRequest) SetCallEndTimeEnd(v int64) *ReadOutboundTaskCallListRequest {
+	s.CallEndTimeEnd = &v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListRequest) SetCallStartTimeBegin(v int64) *ReadOutboundTaskCallListRequest {
+	s.CallStartTimeBegin = &v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListRequest) SetCallStartTimeEnd(v int64) *ReadOutboundTaskCallListRequest {
+	s.CallStartTimeEnd = &v
+	return s
 }
 
 func (s *ReadOutboundTaskCallListRequest) SetCurrent(v int32) *ReadOutboundTaskCallListRequest {

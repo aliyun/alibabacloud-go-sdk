@@ -32,43 +32,16 @@ type iReadOutboundTaskCallListResponseBody interface {
 }
 
 type ReadOutboundTaskCallListResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// 1
-	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
-	// example:
-	//
-	// successful
-	Message *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	Records []*ReadOutboundTaskCallListResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 202BFA44-28D8-571E-B992-BA70F2E92FB0
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// 10
-	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// example:
-	//
-	// 1743387963
-	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// example:
-	//
-	// 3
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// example:
-	//
-	// F47D4976-FC5A-5687-A890-B7923D3B429B
-	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Current   *int32                                         `json:"Current,omitempty" xml:"Current,omitempty"`
+	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Records   []*ReadOutboundTaskCallListResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Size      *int32                                         `json:"Size,omitempty" xml:"Size,omitempty"`
+	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	Timestamp *string                                        `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Total     *int64                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+	TraceId   *string                                        `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s ReadOutboundTaskCallListResponseBody) String() string {
@@ -183,6 +156,7 @@ func (s *ReadOutboundTaskCallListResponseBody) Validate() error {
 }
 
 type ReadOutboundTaskCallListResponseBodyRecords struct {
+	BillingDuration *int64 `json:"BillingDuration,omitempty" xml:"BillingDuration,omitempty"`
 	// example:
 	//
 	// 2025-09-23 19:38:44
@@ -261,6 +235,10 @@ type ReadOutboundTaskCallListResponseBodyRecords struct {
 	RecordUrl *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
 	// example:
 	//
+	// 客户待跟进
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
 	// 0
 	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
 	// example:
@@ -299,6 +277,10 @@ func (s ReadOutboundTaskCallListResponseBodyRecords) String() string {
 
 func (s ReadOutboundTaskCallListResponseBodyRecords) GoString() string {
 	return s.String()
+}
+
+func (s *ReadOutboundTaskCallListResponseBodyRecords) GetBillingDuration() *int64 {
+	return s.BillingDuration
 }
 
 func (s *ReadOutboundTaskCallListResponseBodyRecords) GetCallEndTime() *string {
@@ -377,6 +359,10 @@ func (s *ReadOutboundTaskCallListResponseBodyRecords) GetRecordUrl() *string {
 	return s.RecordUrl
 }
 
+func (s *ReadOutboundTaskCallListResponseBodyRecords) GetRemark() *string {
+	return s.Remark
+}
+
 func (s *ReadOutboundTaskCallListResponseBodyRecords) GetRetryCount() *int32 {
 	return s.RetryCount
 }
@@ -407,6 +393,11 @@ func (s *ReadOutboundTaskCallListResponseBodyRecords) GetTtsVoiceDesc() *string 
 
 func (s *ReadOutboundTaskCallListResponseBodyRecords) GetUserId() *string {
 	return s.UserId
+}
+
+func (s *ReadOutboundTaskCallListResponseBodyRecords) SetBillingDuration(v int64) *ReadOutboundTaskCallListResponseBodyRecords {
+	s.BillingDuration = &v
+	return s
 }
 
 func (s *ReadOutboundTaskCallListResponseBodyRecords) SetCallEndTime(v string) *ReadOutboundTaskCallListResponseBodyRecords {
@@ -501,6 +492,11 @@ func (s *ReadOutboundTaskCallListResponseBodyRecords) SetRecordDetailReady(v boo
 
 func (s *ReadOutboundTaskCallListResponseBodyRecords) SetRecordUrl(v string) *ReadOutboundTaskCallListResponseBodyRecords {
 	s.RecordUrl = &v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListResponseBodyRecords) SetRemark(v string) *ReadOutboundTaskCallListResponseBodyRecords {
+	s.Remark = &v
 	return s
 }
 

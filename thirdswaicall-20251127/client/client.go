@@ -73,6 +73,10 @@ func (client *Client) QueryTaskConcurrencyWithOptions(request *QueryTaskConcurre
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationCode) {
+		body["ApplicationCode"] = request.ApplicationCode
+	}
+
 	if !dara.IsNil(request.TaskId) {
 		body["TaskId"] = request.TaskId
 	}
@@ -145,6 +149,22 @@ func (client *Client) ReadOutboundTaskCallListWithOptions(tmpReq *ReadOutboundTa
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CallEndTimeBegin) {
+		body["CallEndTimeBegin"] = request.CallEndTimeBegin
+	}
+
+	if !dara.IsNil(request.CallEndTimeEnd) {
+		body["CallEndTimeEnd"] = request.CallEndTimeEnd
+	}
+
+	if !dara.IsNil(request.CallStartTimeBegin) {
+		body["CallStartTimeBegin"] = request.CallStartTimeBegin
+	}
+
+	if !dara.IsNil(request.CallStartTimeEnd) {
+		body["CallStartTimeEnd"] = request.CallStartTimeEnd
+	}
+
 	if !dara.IsNil(request.Current) {
 		body["Current"] = request.Current
 	}
