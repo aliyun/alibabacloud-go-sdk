@@ -22,13 +22,13 @@ type iDescribeDisposeAndPlaybookResponseBody interface {
 }
 
 type DescribeDisposeAndPlaybookResponseBody struct {
-	// The HTTP status code.
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeDisposeAndPlaybookResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - `true`: The request was successful.
+	// - true: Successful.
 	//
-	// - `false`: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type DescribeDisposeAndPlaybookResponseBodyDataPageInfo struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataPageInfo) Validate() error {
 }
 
 type DescribeDisposeAndPlaybookResponseBodyDataResponseData struct {
-	// The number of alerts that are associated with the entity.
+	// The number of alerts associated with the entity.
 	//
 	// example:
 	//
@@ -244,55 +244,55 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseData struct {
 	//
 	// 192.168.*.*
 	Dispose *string `json:"Dispose,omitempty" xml:"Dispose,omitempty"`
-	// The ID of the entity.
+	// The entity ID.
 	//
 	// example:
 	//
 	// 12345****
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The information about the entity.
+	// The entity information.
 	//
 	// example:
 	//
 	// {"file_path": "c:/www/leixi.jsp","file_hash": "aa0ca926ad948cd820e0a3d9a18c****","host_uuid": "efed2cf7-0b77-45d9-a97b-d2cf246b****","malware_type": "${aliyun.siem.sas.alert_tag.webshell}","host_name": "launch-advisor-2023****"}
 	EntityInfo map[string]interface{} `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
-	// The type of the entity. Valid values:
+	// The entity type. Valid values:
 	//
-	// - `ip`: IP address
+	// - ip: IP address
 	//
-	// - `domain`: Domain name
+	// - domain: domain name
 	//
-	// - `url`: URL
+	// - url: URL
 	//
-	// - `process`: Process
+	// - process: process
 	//
-	// - `file`: File
+	// - file: file
 	//
-	// - `host`: Host
+	// - host: host
 	//
 	// example:
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The opcode and the corresponding operation level.
+	// The key-value pairs of opcode and oplevel.
 	//
 	// example:
 	//
 	// 12345
 	OpcodeMap map[string]*string `json:"OpcodeMap,omitempty" xml:"OpcodeMap,omitempty"`
-	// The recommended playbook opcode for the entity.
+	// The recommended playbook opcodes for entity disposition.
 	//
 	// example:
 	//
 	// [1,3]
 	OpcodeSet []*string `json:"OpcodeSet,omitempty" xml:"OpcodeSet,omitempty" type:"Repeated"`
-	// The list of playbooks that can be used to handle the entity.
+	// The list of playbooks that can dispose of the entity.
 	//
 	// example:
 	//
 	// [{"name":"云安全中心-云服务器安全","code":"1"}]
 	PlaybookList []*DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList `json:"PlaybookList,omitempty" xml:"PlaybookList,omitempty" type:"Repeated"`
-	// The list of user IDs that are authorized to perform the disposition.
+	// The disposition scope. The list of user IDs that can perform the disposition.
 	//
 	// example:
 	//
@@ -403,17 +403,17 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) Validate() erro
 }
 
 type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
-	// Indicates whether the playbook is available.
+	// Indicates whether the playbook is available. Valid values:
 	//
-	// - 1: available
+	// - 1: Available.
 	//
-	// - 0: unavailable
+	// - 0: Unavailable.
 	//
 	// example:
 	//
 	// 1
 	Available *string `json:"Available,omitempty" xml:"Available,omitempty"`
-	// The description of the playbook.
+	// The playbook description.
 	//
 	// example:
 	//
@@ -424,14 +424,16 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
 	// example:
 	//
 	// WafBlockIP
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The name of the playbook, which is the unique identifier of the playbook.
+	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisposeStatus *string `json:"DisposeStatus,omitempty" xml:"DisposeStatus,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The playbook name, which is the unique identifier of the playbook.
 	//
 	// example:
 	//
 	// kill_process_isolate_file
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The opcode of the playbook. The value corresponds to the recommended playbook opcode of the entity.
+	// The playbook opcode, which corresponds to the recommended playbook opcode for entity disposition.
 	//
 	// example:
 	//
@@ -439,43 +441,43 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
 	OpCode *string `json:"OpCode,omitempty" xml:"OpCode,omitempty"`
 	// Indicates whether the playbook is selected by default for one-click event disposition. Valid values:
 	//
-	// - 2: selected
+	// - 2: Selected.
 	//
-	// - 1: displayed but not selected
+	// - 1: Displayed but not selected.
 	//
 	// example:
 	//
 	// 2
 	OpLevel *string `json:"OpLevel,omitempty" xml:"OpLevel,omitempty"`
-	// The list of parameters for the playbook and the attributes of the parameters.
+	// The parameter list and corresponding parameter properties of the playbook.
 	ParamConfig []interface{} `json:"ParamConfig,omitempty" xml:"ParamConfig,omitempty" type:"Repeated"`
-	// The configuration of the opcode.
+	// The opcode configuration.
 	//
 	// example:
 	//
 	// {"opCode":"3"}
 	TaskConfig *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
-	// The reason why the playbook is unavailable.
+	// The code that indicates why the playbook is unavailable. Valid values:
 	//
 	// - PARAM_INVALID: The input parameters are invalid.
 	//
-	// - NO_INGESTION: The required service is not integrated.
+	// - NO_INGESTION: The corresponding product is not connected.
 	//
 	// example:
 	//
 	// PARAM_INVALID
 	UnAvailableCode *string `json:"UnAvailableCode,omitempty" xml:"UnAvailableCode,omitempty"`
-	// The UUID of the playbook, which is the unique identifier of the playbook.
+	// The playbook UUID, which is the unique identifier of the playbook.
 	//
 	// example:
 	//
 	// kill_process_isolate_file
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// Indicates whether the playbook is a WAF playbook. Valid values:
+	// Indicates whether this is a WAF playbook. Valid values:
 	//
-	// - `true`: Yes
+	// - true: Yes.
 	//
-	// - `false`: No
+	// - false: No.
 	//
 	// example:
 	//
@@ -501,6 +503,14 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) Get
 
 func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) GetDisplayName() *string {
 	return s.DisplayName
+}
+
+func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) GetDisposeStatus() *string {
+	return s.DisposeStatus
+}
+
+func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) GetErrorMessage() *string {
+	return s.ErrorMessage
 }
 
 func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) GetName() *string {
@@ -547,6 +557,16 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) Set
 
 func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) SetDisplayName(v string) *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) SetDisposeStatus(v string) *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList {
+	s.DisposeStatus = &v
+	return s
+}
+
+func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) SetErrorMessage(v string) *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList {
+	s.ErrorMessage = &v
 	return s
 }
 

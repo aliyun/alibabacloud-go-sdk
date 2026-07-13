@@ -28,7 +28,7 @@ type iDescribeDisposeAndPlaybookRequest interface {
 }
 
 type DescribeDisposeAndPlaybookRequest struct {
-	// 列表当前页号， 大于等于 1。
+	// The page number. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
@@ -36,55 +36,55 @@ type DescribeDisposeAndPlaybookRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The entity type. Valid values:
 	//
-	// - `ip`: IP address
+	// - ip: IP address
 	//
-	// - `process`: process
+	// - process: process
 	//
-	// - `file`: file
+	// - file: file
 	//
 	// example:
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// 实体 uuid。
+	// The entity UUID.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	EntityUuid *string `json:"EntityUuid,omitempty" xml:"EntityUuid,omitempty"`
-	// The incident UUID.
+	// The event UUID.
 	//
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// 列表每页条数， 最大不超过 100。
+	// The number of entries per page. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 威胁分析的数据管理中心所在地。您需要根据资产所在地域，选择管理中心所在地。取值：
+	// The region in which the data management center of the threat analysis feature resides. Select the data management center based on the region of your assets. Valid values:
 	//
-	// - cn-hangzhou：资产属于中国内地与中国香港
+	// - cn-hangzhou: Your assets reside in the Chinese mainland or Hong Kong (China).
 	//
-	// - ap-southeast-1：资产属于海外地域
+	// - ap-southeast-1: Your assets reside in regions outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 管理员切换成其他成员视角的用户 ID。
+	// The user ID of the member to which the administrator switches the view.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// 视图类型。
+	// The view type. Valid values:
 	//
-	// - 0：当前阿里云账号视图。
+	// - 0: the view of the current Alibaba Cloud account.
 	//
-	// - 1：企业下所有账号的视图。
+	// - 1: the view of all accounts in the enterprise.
 	//
 	// example:
 	//
