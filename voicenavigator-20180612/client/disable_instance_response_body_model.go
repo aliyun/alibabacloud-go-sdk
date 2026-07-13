@@ -22,7 +22,7 @@ type DisableInstanceResponseBody struct {
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the operation. A value of \\"true\\" indicates that the operation was successful.
+	// The deletion status.
 	//
 	// example:
 	//

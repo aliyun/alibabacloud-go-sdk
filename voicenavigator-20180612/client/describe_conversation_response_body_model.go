@@ -30,7 +30,7 @@ type iDescribeConversationResponseBody interface {
 }
 
 type DescribeConversationResponseBody struct {
-	// The time when the conversation started. This value is a UNIX timestamp in milliseconds.
+	// The start time.
 	//
 	// example:
 	//
@@ -42,37 +42,37 @@ type DescribeConversationResponseBody struct {
 	//
 	// 138106*****
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	// The ID of the conversation.
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 2d5aa451-661f-4f08-b0c4-28eec78decc4
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The number of effective answers.
+	// The number of effective Q&A pairs.
 	//
 	// example:
 	//
 	// 8
 	EffectiveAnswerCount *int32 `json:"EffectiveAnswerCount,omitempty" xml:"EffectiveAnswerCount,omitempty"`
-	// The time when the conversation ended. This value is a UNIX timestamp in milliseconds.
+	// The end time.
 	//
 	// example:
 	//
 	// 1582103299434
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the skill group.
+	// The skill group ID.
 	//
 	// example:
 	//
 	// ABABCBAC
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	// Indicates whether an agent transfer occurred.
+	// Indicates whether the conversation was transferred to a human agent.
 	//
 	// example:
 	//

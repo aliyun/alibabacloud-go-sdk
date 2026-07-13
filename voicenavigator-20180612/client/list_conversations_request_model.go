@@ -9,6 +9,8 @@ type iListConversationsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAbTestId(v string) *ListConversationsRequest
+	GetAbTestId() *string
 	SetBeginTimeLeftRange(v int64) *ListConversationsRequest
 	GetBeginTimeLeftRange() *int64
 	SetBeginTimeRightRange(v int64) *ListConversationsRequest
@@ -36,13 +38,14 @@ type iListConversationsRequest interface {
 }
 
 type ListConversationsRequest struct {
-	// The start of the time range to query. This value is a UNIX timestamp in milliseconds.
+	AbTestId *string `json:"AbTestId,omitempty" xml:"AbTestId,omitempty"`
+	// The left boundary of the start time range.
 	//
 	// example:
 	//
 	// 1638288000000
 	BeginTimeLeftRange *int64 `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
-	// The end of the time range to query. This value is a UNIX timestamp in milliseconds.
+	// The right boundary of the start time range.
 	//
 	// example:
 	//
@@ -55,7 +58,7 @@ type ListConversationsRequest struct {
 	// 138106*****
 	CallingNumber     *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
 	DebugConversation *int32  `json:"DebugConversation,omitempty" xml:"DebugConversation,omitempty"`
-	// The ID of the instance.
+	// The instance list.
 	//
 	// This parameter is required.
 	//
@@ -63,7 +66,7 @@ type ListConversationsRequest struct {
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether the conversation is in a sandbox environment. Valid values: `true` and `false`.
+	// Specifies whether the session is in a sandbox environment.
 	//
 	// example:
 	//
@@ -77,7 +80,7 @@ type ListConversationsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -85,25 +88,25 @@ type ListConversationsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The search query for filtering conversations.
+	// The query condition.
 	//
 	// example:
 	//
 	// 13788914724
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The result of the conversation.
+	// The result.
 	//
 	// example:
 	//
 	// 0
 	Result *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The minimum number of rounds in the conversation.
+	// The left boundary of the rounds query range.
 	//
 	// example:
 	//
 	// 1
 	RoundsLeftRange *int32 `json:"RoundsLeftRange,omitempty" xml:"RoundsLeftRange,omitempty"`
-	// The maximum number of rounds in the conversation.
+	// The right boundary of the rounds query range.
 	//
 	// example:
 	//
@@ -117,6 +120,10 @@ func (s ListConversationsRequest) String() string {
 
 func (s ListConversationsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListConversationsRequest) GetAbTestId() *string {
+	return s.AbTestId
 }
 
 func (s *ListConversationsRequest) GetBeginTimeLeftRange() *int64 {
@@ -165,6 +172,11 @@ func (s *ListConversationsRequest) GetRoundsLeftRange() *int32 {
 
 func (s *ListConversationsRequest) GetRoundsRightRange() *int32 {
 	return s.RoundsRightRange
+}
+
+func (s *ListConversationsRequest) SetAbTestId(v string) *ListConversationsRequest {
+	s.AbTestId = &v
+	return s
 }
 
 func (s *ListConversationsRequest) SetBeginTimeLeftRange(v int64) *ListConversationsRequest {

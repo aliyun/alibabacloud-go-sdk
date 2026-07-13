@@ -130,32 +130,32 @@ func (s *GetAsrConfigResponseBody) Validate() error {
 }
 
 type GetAsrConfigResponseBodyData struct {
-	// The application key.
+	// The engine.
 	//
 	// example:
 	//
 	// your-app-key
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The acoustic model ID.
+	// The ASR acoustic model ID.
 	//
 	// example:
 	//
 	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
 	AsrAcousticModelId *string `json:"AsrAcousticModelId,omitempty" xml:"AsrAcousticModelId,omitempty"`
-	// The ASR class vocabulary ID.
+	// The ASR hotword ID.
 	//
 	// example:
 	//
 	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
 	AsrClassVocabularyId *string `json:"AsrClassVocabularyId,omitempty" xml:"AsrClassVocabularyId,omitempty"`
-	// The customization ID.
+	// The ASR dataset ID.
 	//
 	// example:
 	//
 	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
 	AsrCustomizationId *string `json:"AsrCustomizationId,omitempty" xml:"AsrCustomizationId,omitempty"`
 	AsrOverrides       *string `json:"AsrOverrides,omitempty" xml:"AsrOverrides,omitempty"`
-	// The vocabulary ID. You can view the ID on the [ASR Vocabulary Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
+	// The hotword ID. You can view the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
 	//
 	// example:
 	//
@@ -167,13 +167,13 @@ type GetAsrConfigResponseBodyData struct {
 	//
 	// ali
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// Parameters for the iFLYTEK engine.
+	// The iFLYTEK engine parameters.
 	//
 	// example:
 	//
 	// EngineXufei
 	EngineXufei *string `json:"EngineXufei,omitempty" xml:"EngineXufei,omitempty"`
-	// The NLS service type.
+	// NluServiceType
 	//
 	// example:
 	//

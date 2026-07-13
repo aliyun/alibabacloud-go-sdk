@@ -30,7 +30,7 @@ type ModifyAsrConfigResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of the modification.
+	// The modification result.
 	Data *ModifyAsrConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//

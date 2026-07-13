@@ -24,7 +24,7 @@ type CreateDownloadUrlRequest struct {
 	//
 	// 073f092da0a847b9bf76eb88b5931c7a
 	DownloadTaskId *string `json:"DownloadTaskId,omitempty" xml:"DownloadTaskId,omitempty"`
-	// The file ID. Call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to obtain it.
+	// The ID of the file. You can call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to query the file ID.
 	//
 	// This parameter is required.
 	//

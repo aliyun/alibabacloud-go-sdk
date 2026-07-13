@@ -62,7 +62,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Associates a chatbot with a navigation instance.
+// Associates a Chatbot instance.
 //
 // @param request - AssociateChatbotInstanceRequest
 //
@@ -126,7 +126,7 @@ func (client *Client) AssociateChatbotInstanceWithOptions(request *AssociateChat
 
 // Summary:
 //
-// Associates a chatbot with a navigation instance.
+// Associates a Chatbot instance.
 //
 // @param request - AssociateChatbotInstanceRequest
 //
@@ -144,7 +144,7 @@ func (client *Client) AssociateChatbotInstance(request *AssociateChatbotInstance
 
 // Summary:
 //
-// Previews a text-to-speech (TTS) voice.
+// Previews a TTS voice.
 //
 // @param request - AuditTTSVoiceRequest
 //
@@ -228,7 +228,7 @@ func (client *Client) AuditTTSVoiceWithOptions(request *AuditTTSVoiceRequest, ru
 
 // Summary:
 //
-// Previews a text-to-speech (TTS) voice.
+// Previews a TTS voice.
 //
 // @param request - AuditTTSVoiceRequest
 //
@@ -406,7 +406,7 @@ func (client *Client) CollectedNumber(request *CollectedNumberRequest) (_result 
 
 // Summary:
 //
-// Generates a temporary URL to download a file.
+// Creates a download URL for a file.
 //
 // @param request - CreateDownloadUrlRequest
 //
@@ -446,7 +446,7 @@ func (client *Client) CreateDownloadUrlWithOptions(request *CreateDownloadUrlReq
 
 // Summary:
 //
-// Generates a temporary URL to download a file.
+// Creates a download URL for a file.
 //
 // @param request - CreateDownloadUrlRequest
 //
@@ -698,7 +698,7 @@ func (client *Client) DebugCollectedNumber(request *DebugCollectedNumberRequest)
 
 // Summary:
 //
-// Sends a user utterance to the dialogue engine to debug a conversation flow.
+// Debugs a conversation in the debug environment.
 //
 // @param request - DebugDialogueRequest
 //
@@ -754,7 +754,7 @@ func (client *Client) DebugDialogueWithOptions(request *DebugDialogueRequest, ru
 
 // Summary:
 //
-// Sends a user utterance to the dialogue engine to debug a conversation flow.
+// Debugs a conversation in the debug environment.
 //
 // @param request - DebugDialogueRequest
 //
@@ -834,7 +834,7 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 
 // Summary:
 //
-// Retrieves information about a conversation.
+// Queries conversation information.
 //
 // @param request - DescribeConversationRequest
 //
@@ -874,7 +874,7 @@ func (client *Client) DescribeConversationWithOptions(request *DescribeConversat
 
 // Summary:
 //
-// Retrieves information about a conversation.
+// Queries conversation information.
 //
 // @param request - DescribeConversationRequest
 //
@@ -1008,7 +1008,7 @@ func (client *Client) DescribeExportProgress(request *DescribeExportProgressRequ
 
 // Summary:
 //
-// Retrieves details for a specified instance.
+// Queries instance information.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -1048,7 +1048,7 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 
 // Summary:
 //
-// Retrieves details for a specified instance.
+// Queries instance information.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -1124,7 +1124,7 @@ func (client *Client) DescribeNavigationConfig(request *DescribeNavigationConfig
 
 // Summary:
 //
-// Retrieves a conversation recording.
+// Retrieves the recording of a conversation.
 //
 // @param request - DescribeRecordingRequest
 //
@@ -1164,7 +1164,7 @@ func (client *Client) DescribeRecordingWithOptions(request *DescribeRecordingReq
 
 // Summary:
 //
-// Retrieves a conversation recording.
+// Retrieves the recording of a conversation.
 //
 // @param request - DescribeRecordingRequest
 //
@@ -1182,7 +1182,7 @@ func (client *Client) DescribeRecording(request *DescribeRecordingRequest) (_res
 
 // Summary:
 //
-// View the current instance\\"s statistics.
+// Queries the statistics of the current instance.
 //
 // @param request - DescribeStatisticalDataRequest
 //
@@ -1222,7 +1222,7 @@ func (client *Client) DescribeStatisticalDataWithOptions(request *DescribeStatis
 
 // Summary:
 //
-// View the current instance\\"s statistics.
+// Queries the statistics of the current instance.
 //
 // @param request - DescribeStatisticalDataRequest
 //
@@ -1388,7 +1388,7 @@ func (client *Client) Dialogue(request *DialogueRequest) (_result *DialogueRespo
 
 // Summary:
 //
-// Disables a Voice Navigator instance.
+// Deletes an intelligent navigation instance.
 //
 // @param request - DisableInstanceRequest
 //
@@ -1432,7 +1432,7 @@ func (client *Client) DisableInstanceWithOptions(request *DisableInstanceRequest
 
 // Summary:
 //
-// Disables a Voice Navigator instance.
+// Deletes an intelligent navigation instance.
 //
 // @param request - DisableInstanceRequest
 //
@@ -1450,7 +1450,7 @@ func (client *Client) DisableInstance(request *DisableInstanceRequest) (_result 
 
 // Summary:
 //
-// Enables a Voice Navigator instance.
+// Starts an instance.
 //
 // @param request - EnableInstanceRequest
 //
@@ -1494,7 +1494,7 @@ func (client *Client) EnableInstanceWithOptions(request *EnableInstanceRequest, 
 
 // Summary:
 //
-// Enables a Voice Navigator instance.
+// Starts an instance.
 //
 // @param request - EnableInstanceRequest
 //
@@ -1586,7 +1586,7 @@ func (client *Client) EndDialogue(request *EndDialogueRequest) (_result *EndDial
 
 // Summary:
 //
-// Exports conversation details.
+// Exports session details.
 //
 // @param request - ExportConversationDetailsRequest
 //
@@ -1601,6 +1601,10 @@ func (client *Client) ExportConversationDetailsWithOptions(request *ExportConver
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AbTestId) {
+		query["AbTestId"] = request.AbTestId
+	}
+
 	if !dara.IsNil(request.BeginTimeLeftRange) {
 		query["BeginTimeLeftRange"] = request.BeginTimeLeftRange
 	}
@@ -1662,7 +1666,7 @@ func (client *Client) ExportConversationDetailsWithOptions(request *ExportConver
 
 // Summary:
 //
-// Exports conversation details.
+// Exports session details.
 //
 // @param request - ExportConversationDetailsRequest
 //
@@ -1680,7 +1684,7 @@ func (client *Client) ExportConversationDetails(request *ExportConversationDetai
 
 // Summary:
 //
-// Exports statistical data.
+// Exports statistics.
 //
 // @param request - ExportStatisticalDataRequest
 //
@@ -1740,7 +1744,7 @@ func (client *Client) ExportStatisticalDataWithOptions(request *ExportStatistica
 
 // Summary:
 //
-// Exports statistical data.
+// Exports statistics.
 //
 // @param request - ExportStatisticalDataRequest
 //
@@ -1882,7 +1886,7 @@ func (client *Client) GetRealTimeConcurrency(request *GetRealTimeConcurrencyRequ
 
 // Summary:
 //
-// Retrieves a paginated list of chatbot instances.
+// Queries a list of instances.
 //
 // @param request - ListChatbotInstancesRequest
 //
@@ -1922,7 +1926,7 @@ func (client *Client) ListChatbotInstancesWithOptions(request *ListChatbotInstan
 
 // Summary:
 //
-// Retrieves a paginated list of chatbot instances.
+// Queries a list of instances.
 //
 // @param request - ListChatbotInstancesRequest
 //
@@ -1998,7 +2002,7 @@ func (client *Client) ListConversationDetails(request *ListConversationDetailsRe
 
 // Summary:
 //
-// Returns the session list.
+// Queries a list of sessions.
 //
 // @param request - ListConversationsRequest
 //
@@ -2038,7 +2042,7 @@ func (client *Client) ListConversationsWithOptions(request *ListConversationsReq
 
 // Summary:
 //
-// Returns the session list.
+// Queries a list of sessions.
 //
 // @param request - ListConversationsRequest
 //
@@ -2056,7 +2060,7 @@ func (client *Client) ListConversations(request *ListConversationsRequest) (_res
 
 // Summary:
 //
-// # Download list
+// Queries the list of download tasks.
 //
 // @param request - ListDownloadTasksRequest
 //
@@ -2104,7 +2108,7 @@ func (client *Client) ListDownloadTasksWithOptions(request *ListDownloadTasksReq
 
 // Summary:
 //
-// # Download list
+// Queries the list of download tasks.
 //
 // @param request - ListDownloadTasksRequest
 //
@@ -2180,7 +2184,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// Modifies an ASR configuration.
+// Modifies the ASR configuration.
 //
 // @param request - ModifyAsrConfigRequest
 //
@@ -2260,7 +2264,7 @@ func (client *Client) ModifyAsrConfigWithOptions(request *ModifyAsrConfigRequest
 
 // Summary:
 //
-// Modifies an ASR configuration.
+// Modifies the ASR configuration.
 //
 // @param request - ModifyAsrConfigRequest
 //

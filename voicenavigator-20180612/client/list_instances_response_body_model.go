@@ -22,27 +22,27 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// The list of instances.
+	// The array of instances.
 	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A8AED3C8-F57B-5D71-9A34-4A170287533F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,21 +117,21 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyInstances struct {
-	// A list of applicable operations.
+	// The list of applicable operations for the instance.
 	ApplicableOperations []*string `json:"ApplicableOperations,omitempty" xml:"ApplicableOperations,omitempty" type:"Repeated"`
-	// The maximum number of concurrent calls.
+	// The concurrency.
 	//
 	// example:
 	//
 	// 10
 	Concurrency *int64 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	// The time when the instance was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1658202465000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the instance.
+	// The description.
 	//
 	// example:
 	//
@@ -143,25 +143,25 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// dc437bba-5a25-4bbc-b4c2-f268864bebb5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the instance was last modified. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	// The modification time.
 	//
 	// example:
 	//
 	// 1582266750353
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The user who last modified the instance.
+	// The operator who performed the operation.
 	//
 	// example:
 	//
 	// xxx
 	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	// The name of the instance.
+	// The name.
 	//
 	// example:
 	//
 	// 测试实例
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameters of the NLU service in the JSON format.
+	// The large language model service parameters in JSON format.
 	//
 	// example:
 	//
@@ -169,23 +169,24 @@ type ListInstancesResponseBodyInstances struct {
 	NluServiceParamsJson *string `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
 	// The list of inbound numbers.
 	Numbers []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
-	// The status of the instance.
+	// The instance status.
 	//
 	// example:
 	//
 	// Published
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The instance ID from the source system.
+	// The instance ID.
 	//
-	// > If UnionSource is CCC, this parameter indicates the instance ID of the Cloud Communication Center instance.
+	//
+	// > When UnionSource is set to CCC, UnionInstanceId is set to the instance ID of Cloud Call Center.
 	//
 	// example:
 	//
 	// zhyl
 	UnionInstanceId *string `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
-	// The source of the instance.
+	// The source.
 	//
-	// - `CCC`: Cloud Communication Center
+	// - CCC: Cloud Call Center.
 	//
 	// example:
 	//

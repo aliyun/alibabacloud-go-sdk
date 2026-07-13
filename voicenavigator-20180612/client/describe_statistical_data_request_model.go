@@ -20,13 +20,13 @@ type iDescribeStatisticalDataRequest interface {
 }
 
 type DescribeStatisticalDataRequest struct {
-	// The start of the query time range, specified as a Unix timestamp in milliseconds.
+	// The left boundary of the start time range.
 	//
 	// example:
 	//
 	// 1582283640000
 	BeginTimeLeftRange *int64 `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
-	// The end of the query time range, specified as a Unix timestamp in milliseconds.
+	// The right boundary of the start time range.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeStatisticalDataRequest struct {
 	//
 	// c28fc549-d88f-4f6e-85ad-a0806e5e39c0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time unit. Valid values: `Day` and `Hour`.
+	// The date unit.
 	//
 	// This parameter is required.
 	//

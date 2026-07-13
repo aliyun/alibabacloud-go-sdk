@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Associates a chatbot with a navigation instance.
+// Associates a Chatbot instance.
 //
 // @param request - AssociateChatbotInstanceRequest
 //
@@ -73,7 +73,7 @@ func (client *Client) AssociateChatbotInstanceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Previews a text-to-speech (TTS) voice.
+// Previews a TTS voice.
 //
 // @param request - AuditTTSVoiceRequest
 //
@@ -281,7 +281,7 @@ func (client *Client) CollectedNumberWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Generates a temporary URL to download a file.
+// Creates a download URL for a file.
 //
 // @param request - CreateDownloadUrlRequest
 //
@@ -501,7 +501,7 @@ func (client *Client) DebugCollectedNumberWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Sends a user utterance to the dialogue engine to debug a conversation flow.
+// Debugs a conversation in the debug environment.
 //
 // @param request - DebugDialogueRequest
 //
@@ -601,7 +601,7 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Retrieves information about a conversation.
+// Queries conversation information.
 //
 // @param request - DescribeConversationRequest
 //
@@ -721,7 +721,7 @@ func (client *Client) DescribeExportProgressWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieves details for a specified instance.
+// Queries instance information.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -801,7 +801,7 @@ func (client *Client) DescribeNavigationConfigWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves a conversation recording.
+// Retrieves the recording of a conversation.
 //
 // @param request - DescribeRecordingRequest
 //
@@ -841,7 +841,7 @@ func (client *Client) DescribeRecordingWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// View the current instance\\"s statistics.
+// Queries the statistics of the current instance.
 //
 // @param request - DescribeStatisticalDataRequest
 //
@@ -993,7 +993,7 @@ func (client *Client) DialogueWithContext(ctx context.Context, request *Dialogue
 
 // Summary:
 //
-// Disables a Voice Navigator instance.
+// Deletes an intelligent navigation instance.
 //
 // @param request - DisableInstanceRequest
 //
@@ -1037,7 +1037,7 @@ func (client *Client) DisableInstanceWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Enables a Voice Navigator instance.
+// Starts an instance.
 //
 // @param request - EnableInstanceRequest
 //
@@ -1137,7 +1137,7 @@ func (client *Client) EndDialogueWithContext(ctx context.Context, request *EndDi
 
 // Summary:
 //
-// Exports conversation details.
+// Exports session details.
 //
 // @param request - ExportConversationDetailsRequest
 //
@@ -1152,6 +1152,10 @@ func (client *Client) ExportConversationDetailsWithContext(ctx context.Context, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AbTestId) {
+		query["AbTestId"] = request.AbTestId
+	}
+
 	if !dara.IsNil(request.BeginTimeLeftRange) {
 		query["BeginTimeLeftRange"] = request.BeginTimeLeftRange
 	}
@@ -1213,7 +1217,7 @@ func (client *Client) ExportConversationDetailsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Exports statistical data.
+// Exports statistics.
 //
 // @param request - ExportStatisticalDataRequest
 //
@@ -1361,7 +1365,7 @@ func (client *Client) GetRealTimeConcurrencyWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieves a paginated list of chatbot instances.
+// Queries a list of instances.
 //
 // @param request - ListChatbotInstancesRequest
 //
@@ -1441,7 +1445,7 @@ func (client *Client) ListConversationDetailsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Returns the session list.
+// Queries a list of sessions.
 //
 // @param request - ListConversationsRequest
 //
@@ -1481,7 +1485,7 @@ func (client *Client) ListConversationsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Download list
+// Queries the list of download tasks.
 //
 // @param request - ListDownloadTasksRequest
 //
@@ -1569,7 +1573,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Modifies an ASR configuration.
+// Modifies the ASR configuration.
 //
 // @param request - ModifyAsrConfigRequest
 //

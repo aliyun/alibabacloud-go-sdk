@@ -16,7 +16,7 @@ type iExportStatisticalDataResponseBody interface {
 }
 
 type ExportStatisticalDataResponseBody struct {
-  // The ID of the asynchronous export task.
+  // The asynchronous export task ID.
   // 
   // example:
   // 

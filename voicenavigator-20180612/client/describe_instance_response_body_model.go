@@ -38,25 +38,25 @@ type iDescribeInstanceResponseBody interface {
 }
 
 type DescribeInstanceResponseBody struct {
-	// The capability type of the instance.<br>
+	// The instance ability type.<br>
 	//
-	// DEFAULT: Full capabilities.<br>
+	// DEFAULT: full abilities.<br>
 	//
-	// VOICE_ONLY: Voice-only capabilities, which do not include conversation intervention.<br><br>
+	// VOICE_ONLY: only voice abilities, without dialog intervention.
 	//
 	// example:
 	//
 	// VOICE_ONLY
 	AbilityType *string `json:"AbilityType,omitempty" xml:"AbilityType,omitempty"`
-	// Applicable operations.
+	// The list of applicable operations.
 	ApplicableOperations []*string `json:"ApplicableOperations,omitempty" xml:"ApplicableOperations,omitempty" type:"Repeated"`
-	// The concurrency of the instance.
+	// The instance concurrency.
 	//
 	// example:
 	//
 	// 10
 	Concurrency *int64 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	// The description of the instance.
+	// The description.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type DescribeInstanceResponseBody struct {
 	//
 	// cd6fc91bc13445c2af7f2e3e31418520
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The last modification time of the instance.
+	// The update time.
 	//
 	// example:
 	//
 	// 1683216000000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The user who last modified the instance.
+	// The user who last updated the instance.
 	//
 	// example:
 	//
@@ -93,7 +93,7 @@ type DescribeInstanceResponseBody struct {
 	//
 	// 790B5EA3-D251-1666-B1E0-4D1F4B33A592
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the instance.
+	// The status.
 	//
 	// example:
 	//

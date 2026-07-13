@@ -28,13 +28,13 @@ type iDescribeStatisticalDataResponseBody interface {
 }
 
 type DescribeStatisticalDataResponseBody struct {
-	// The total number of conversations.
+	// The total number of sessions.
 	//
 	// example:
 	//
 	// 100
 	ConversationTotalNum *int64 `json:"ConversationTotalNum,omitempty" xml:"ConversationTotalNum,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type DescribeStatisticalDataResponseBody struct {
 	//
 	// 80
 	ResolvedQuestionTotalNum *int64 `json:"ResolvedQuestionTotalNum,omitempty" xml:"ResolvedQuestionTotalNum,omitempty"`
-	// The array of statistical data over time.
+	// The array of statistics grouped by time dimension.
 	StatisticalDataReports []*DescribeStatisticalDataResponseBodyStatisticalDataReports `json:"StatisticalDataReports,omitempty" xml:"StatisticalDataReports,omitempty" type:"Repeated"`
-	// The total pass rate of multi-turn dialogues.
+	// The total multi-turn session pass rate.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ func (s *DescribeStatisticalDataResponseBody) Validate() error {
 }
 
 type DescribeStatisticalDataResponseBodyStatisticalDataReports struct {
-	// The pass rate of multi-turn dialogues.
+	// The multi-turn session pass rate.
 	//
 	// example:
 	//
@@ -192,13 +192,13 @@ type DescribeStatisticalDataResponseBodyStatisticalDataReports struct {
 	//
 	// 80
 	ResolvedQuestionNum *int32 `json:"ResolvedQuestionNum,omitempty" xml:"ResolvedQuestionNum,omitempty"`
-	// The date of the statistics.
+	// The statistical date.
 	//
 	// example:
 	//
 	// 19:00:00
 	StatisticalDate *string `json:"StatisticalDate,omitempty" xml:"StatisticalDate,omitempty"`
-	// The total number of conversations.
+	// The total number of sessions.
 	//
 	// example:
 	//

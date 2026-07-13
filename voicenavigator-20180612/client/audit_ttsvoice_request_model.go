@@ -34,11 +34,31 @@ type iAuditTTSVoiceRequest interface {
 }
 
 type AuditTTSVoiceRequest struct {
+	// The AccessKey ID of the namespace.
+	//
+	// example:
+	//
+	// b4331******a4640ce1f88e27ac8df0
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	AppKey    *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Engine    *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The AppKey of the third-party voice configuration.
+	//
+	// example:
+	//
+	// be******
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The TTS engine.
+	//
+	// example:
+	//
+	// ali
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The extended parameters.
+	//
+	// example:
+	//
+	// {}
 	ExtParams *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
-	// The instance ID of the navigation instance.
+	// The navigation instance ID.
 	//
 	// This parameter is required.
 	//
@@ -46,8 +66,16 @@ type AuditTTSVoiceRequest struct {
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PitchRate  *string `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
-	SecretKey  *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	// example:
+	//
+	// 0
+	PitchRate *string `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	// The AccessKey secret.
+	//
+	// example:
+	//
+	// ZDc3********DAzM2E0YjM5NTFkMDQ1
+	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	// The speech rate.
 	//
 	// This parameter is required.
@@ -56,7 +84,7 @@ type AuditTTSVoiceRequest struct {
 	//
 	// 100
 	SpeechRate *string `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	// The text to preview.
+	// The preview text.
 	//
 	// This parameter is required.
 	//

@@ -42,7 +42,7 @@ type CreateDownloadUrlResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The message.
 	//
 	// example:
 	//

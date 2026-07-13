@@ -130,7 +130,7 @@ func (s *ListDownloadTasksResponseBody) Validate() error {
 }
 
 type ListDownloadTasksResponseBodyDownloadTasks struct {
-	// A list of download tasks.
+	// The list of download tasks.
 	List []*ListDownloadTasksResponseBodyDownloadTasksList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -138,13 +138,13 @@ type ListDownloadTasksResponseBodyDownloadTasks struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ func (s *ListDownloadTasksResponseBodyDownloadTasks) Validate() error {
 }
 
 type ListDownloadTasksResponseBodyDownloadTasksList struct {
-	// A list of download task files.
+	// The list of download task files.
 	DownloadTaskFiles []*ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles `json:"DownloadTaskFiles,omitempty" xml:"DownloadTaskFiles,omitempty" type:"Repeated"`
 	// The expiration time.
 	//
@@ -218,7 +218,7 @@ type ListDownloadTasksResponseBodyDownloadTasksList struct {
 	//
 	// 1637119221702
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The status of the task.
+	// The status.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type ListDownloadTasksResponseBodyDownloadTasksList struct {
 	//
 	// cb9aba69-f578-42b2-aa2f-3e5a41947db8
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The title of the task.
+	// The title.
 	//
 	// example:
 	//
@@ -311,19 +311,19 @@ type ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles struct {
 	//
 	// c32bf5675b704dc5b19200a89d2e85f1
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The progress of the file download.
+	// The completion progress of the download task.
 	//
 	// example:
 	//
 	// 70
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The status of the file.
+	// The status.
 	//
 	// example:
 	//
 	// Published
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The title of the file.
+	// The title.
 	//
 	// example:
 	//

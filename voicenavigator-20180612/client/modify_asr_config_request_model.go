@@ -32,51 +32,57 @@ type iModifyAsrConfigRequest interface {
 }
 
 type ModifyAsrConfigRequest struct {
-	// The AppKey for the engine.
+	// The AppKey of the engine.
 	//
 	// example:
 	//
 	// your_app_key
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The ID of the ASR acoustic model.
+	// The ASR acoustic model ID.
 	//
 	// example:
 	//
 	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
 	AsrAcousticModelId *string `json:"AsrAcousticModelId,omitempty" xml:"AsrAcousticModelId,omitempty"`
-	// The ID of the ASR class-based vocabulary.
+	// The ASR hotword ID.
 	//
 	// example:
 	//
 	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
 	AsrClassVocabularyId *string `json:"AsrClassVocabularyId,omitempty" xml:"AsrClassVocabularyId,omitempty"`
-	// The ID of the dataset.
+	// The dataset ID.
 	//
 	// example:
 	//
 	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
 	AsrCustomizationId *string `json:"AsrCustomizationId,omitempty" xml:"AsrCustomizationId,omitempty"`
 	AsrOverrides       *string `json:"AsrOverrides,omitempty" xml:"AsrOverrides,omitempty"`
-	// The ID of the hotword. You can find this ID on the [ASR Hotword Management](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi) page.
+	// The hotword ID. You can view the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
 	//
 	// example:
 	//
 	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
 	AsrVocabularyId *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
-	// The policy level. Valid values: `0` (system), `1` (tenant), and `2` (instance).
+	// The policy level. Valid values:
+	//
+	// - 0: system.
+	//
+	// - 1: tenant.
+	//
+	// - 2: instance.
 	//
 	// example:
 	//
 	// 0
 	ConfigLevel *int32  `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
 	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The entity ID for the specified `ConfigLevel`.
+	// The entity ID corresponding to config_level.
 	//
 	// example:
 	//
 	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
 	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
-	// The service type of Intelligent Speech Interaction.
+	// NluServiceType
 	//
 	// example:
 	//

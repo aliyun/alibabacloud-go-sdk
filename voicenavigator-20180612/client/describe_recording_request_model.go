@@ -18,7 +18,7 @@ type iDescribeRecordingRequest interface {
 }
 
 type DescribeRecordingRequest struct {
-	// The conversation ID.
+	// The session ID.
 	//
 	// This parameter is required.
 	//

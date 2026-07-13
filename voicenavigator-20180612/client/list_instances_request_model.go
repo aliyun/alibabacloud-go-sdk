@@ -30,47 +30,48 @@ type iListInstancesRequest interface {
 }
 
 type ListInstancesRequest struct {
-	// A JSON-formatted string that contains a list of digital worker instance IDs.
+	// The list of digital employee scenario IDs.
 	//
 	// example:
 	//
 	// ["e4bebxxxxxxxxxxx"]
 	InstanceIdListJsonString *string `json:"InstanceIdListJsonString,omitempty" xml:"InstanceIdListJsonString,omitempty"`
-	// The instance name. This parameter is used for filtering.
+	// The scenario name used as a filter condition.
 	//
 	// example:
 	//
 	// 测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The NLU service type. This parameter is used to filter instances by the source of their conversational AI capabilities. If you do not set this parameter, instances of all types are returned.
+	// The NLU type used to filter by dialog capability source. If this parameter is not specified, all types are selected.
 	//
-	// - `MANAGED`: managed. This value is deprecated.
+	//  	- MANAGED: managed (deprecated).
 	//
-	// - `AUTHORIZED`: authorized. In the public cloud, this indicates the Chatbot service.
+	//  	- AUTHORIZED: authorized. In the public cloud, this refers to Chatbot service.
 	//
-	// - `PROVIDED`: private. This service is configured in the console with parameters such as `as`, `sk`, and `chatEndpoint`.
+	//  	- PROVIDED: private. Configured by specifying the AccessKey ID, AccessKey Secret, and chatEndpoint in the O&M console.
 	//
-	// - `CCC_AUTHORIZED`: a chatbot authorized by Cloud Connect Center (CCC).
+	// 	- CCC_AUTHORIZED: uses a Chatbot authorized by Cloud Call Center.
 	//
-	// - `CCC_FUNCTION`: Alibaba Cloud Function Compute.
+	// 	- CCC_FUNCTION: uses Alibaba Cloud Function Compute.
 	//
-	// - `SSE_FUNCTION`: a streaming function service. This refers to a Function Compute instance that supports Server-Sent Events (SSE) for integration with third-party large language model (LLM) chatbots.
+	// 	- SSE_FUNCTION: uses a streaming function service. Function Compute that supports SSE, used to connect to third-party large language model chatbots.
 	//
-	// - `PROMPTS`: integration with foundational models such as Qwen.
 	//
-	// - `LOCAL`: a private cloud instance of Chatbot.
+	// 	- PROMPTS: connects to Qwen foundation models.
+	//
+	// 	- LOCAL: private cloud, local Chatbot.
 	//
 	// example:
 	//
 	// ["CCC_AUTHORIZED"]
 	NluServiceTypeListJsonString *string `json:"NluServiceTypeListJsonString,omitempty" xml:"NluServiceTypeListJsonString,omitempty"`
-	// The inbound number. This parameter is used for filtering.
+	// The inbound number used as a filter condition.
 	//
 	// example:
 	//
 	// 021xxxxxxx
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +79,7 @@ type ListInstancesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -86,11 +87,11 @@ type ListInstancesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The instance status. This parameter is used for filtering. If you do not set this parameter, instances in all statuses are returned.
+	// The scenario status used as a filter condition. If this parameter is not specified, all statuses are selected.
 	//
-	// - `DISABLED`: disabled
+	// 	- DISABLED: offline.
 	//
-	// - `PUBLISHED`: published
+	// 	- PUBLISHED: published.
 	//
 	// example:
 	//
@@ -98,7 +99,7 @@ type ListInstancesRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The instance ID.
 	//
-	// > If you set `UnionSource` to `CCC`, set this parameter to the ID of your CCC instance.
+	// > When UnionSource is set to CCC, set UnionInstanceId to the instance ID of Cloud Call Center.
 	//
 	// example:
 	//
@@ -106,7 +107,7 @@ type ListInstancesRequest struct {
 	UnionInstanceId *string `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
 	// The source.
 	//
-	// - `CCC`: Cloud Connect Center
+	// 	- CCC: Cloud Call Center.
 	//
 	// example:
 	//

@@ -16,13 +16,19 @@ type iGetAsrConfigRequest interface {
 }
 
 type GetAsrConfigRequest struct {
-	// The configuration level. Valid values: `0` (system), `1` (tenant), and `2` (instance).
+	// The policy level. Valid values:
+	//
+	// - 0: system
+	//
+	// - 1: tenant
+	//
+	// - 2: instance
 	//
 	// example:
 	//
 	// 1
 	ConfigLevel *int32 `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
-	// The ID of the entry at the level specified by `ConfigLevel`.
+	// The entity ID corresponding to config_level.
 	//
 	// example:
 	//

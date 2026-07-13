@@ -22,7 +22,7 @@ type ExportConversationDetailsResponseBody struct {
   // 
   // 6203fc87271a420c98eab6c2bbc2d856
   ExportTaskId *string `json:"ExportTaskId,omitempty" xml:"ExportTaskId,omitempty"`
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 

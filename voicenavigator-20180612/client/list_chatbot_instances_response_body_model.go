@@ -22,7 +22,7 @@ type iListChatbotInstancesResponseBody interface {
 }
 
 type ListChatbotInstancesResponseBody struct {
-	// The list of chatbot instances.
+	// The list of instances.
 	Bots []*ListChatbotInstancesResponseBodyBots `json:"Bots,omitempty" xml:"Bots,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,7 +30,7 @@ type ListChatbotInstancesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListChatbotInstancesResponseBody struct {
 	//
 	// da37319b-6c83-4268-9f19-814aed62e401
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of chatbot instances.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListChatbotInstancesResponseBody) Validate() error {
 }
 
 type ListChatbotInstancesResponseBodyBots struct {
-	// The avatar of the chatbot instance.
+	// The icon of the instance.
 	//
 	// example:
 	//
 	// https://dss0.ali.com/70cFuHS.jpg
 	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	// The creation time.
+	// The time when the instance was created.
 	//
 	// example:
 	//
@@ -135,8 +135,6 @@ type ListChatbotInstancesResponseBodyBots struct {
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The description of the chatbot instance.
-	//
 	// example:
 	//
 	// ‘’
@@ -147,7 +145,7 @@ type ListChatbotInstancesResponseBodyBots struct {
 	//
 	// zh-cn
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
-	// The name of the chatbot instance.
+	// The name of the instance.
 	//
 	// example:
 	//
