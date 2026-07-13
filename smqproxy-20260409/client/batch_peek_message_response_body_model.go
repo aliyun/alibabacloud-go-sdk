@@ -48,15 +48,42 @@ func (s *BatchPeekMessageResponseBody) Validate() error {
 }
 
 type BatchPeekMessageResponseBodyMessages struct {
-	DequeueCount     *int64  `json:"DequeueCount,omitempty" xml:"DequeueCount,omitempty"`
-	EnqueueTime      *int64  `json:"EnqueueTime,omitempty" xml:"EnqueueTime,omitempty"`
-	FirstDequeueTime *int64  `json:"FirstDequeueTime,omitempty" xml:"FirstDequeueTime,omitempty"`
-	MessageBody      *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
-	MessageBodyMD5   *string `json:"MessageBodyMD5,omitempty" xml:"MessageBodyMD5,omitempty"`
-	MessageGroupId   *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
-	MessageId        *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	Priority         *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	UserProperties   *string `json:"UserProperties,omitempty" xml:"UserProperties,omitempty"`
+	// example:
+	//
+	// 5
+	DequeueCount *int64 `json:"DequeueCount,omitempty" xml:"DequeueCount,omitempty"`
+	// example:
+	//
+	// 1250700979248
+	EnqueueTime *int64 `json:"EnqueueTime,omitempty" xml:"EnqueueTime,omitempty"`
+	// example:
+	//
+	// 1250700979348
+	FirstDequeueTime *int64 `json:"FirstDequeueTime,omitempty" xml:"FirstDequeueTime,omitempty"`
+	// example:
+	//
+	// This is a test message
+	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// example:
+	//
+	// F9360F391579E71CA77BC5D50242****
+	MessageBodyMD5 *string `json:"MessageBodyMD5,omitempty" xml:"MessageBodyMD5,omitempty"`
+	// example:
+	//
+	// test-group
+	MessageGroupId *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
+	// example:
+	//
+	// C0A80255D7D1163042EA3F2814D055F1
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// {"properties1":"value"}
+	UserProperties map[string]*MessagesUserPropertiesValue `json:"UserProperties,omitempty" xml:"UserProperties,omitempty"`
 }
 
 func (s BatchPeekMessageResponseBodyMessages) String() string {
@@ -99,7 +126,7 @@ func (s *BatchPeekMessageResponseBodyMessages) GetPriority() *int64 {
 	return s.Priority
 }
 
-func (s *BatchPeekMessageResponseBodyMessages) GetUserProperties() *string {
+func (s *BatchPeekMessageResponseBodyMessages) GetUserProperties() map[string]*MessagesUserPropertiesValue {
 	return s.UserProperties
 }
 
@@ -143,8 +170,8 @@ func (s *BatchPeekMessageResponseBodyMessages) SetPriority(v int64) *BatchPeekMe
 	return s
 }
 
-func (s *BatchPeekMessageResponseBodyMessages) SetUserProperties(v string) *BatchPeekMessageResponseBodyMessages {
-	s.UserProperties = &v
+func (s *BatchPeekMessageResponseBodyMessages) SetUserProperties(v map[string]*MessagesUserPropertiesValue) *BatchPeekMessageResponseBodyMessages {
+	s.UserProperties = v
 	return s
 }
 

@@ -63,7 +63,8 @@ type BatchSendMessageRequestMessages struct {
 	// example:
 	//
 	// 1
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority       *int32                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	UserProperties map[string]*MessagesUserPropertiesValue `json:"UserProperties,omitempty" xml:"UserProperties,omitempty"`
 }
 
 func (s BatchSendMessageRequestMessages) String() string {
@@ -90,6 +91,10 @@ func (s *BatchSendMessageRequestMessages) GetPriority() *int32 {
 	return s.Priority
 }
 
+func (s *BatchSendMessageRequestMessages) GetUserProperties() map[string]*MessagesUserPropertiesValue {
+	return s.UserProperties
+}
+
 func (s *BatchSendMessageRequestMessages) SetDelaySeconds(v int32) *BatchSendMessageRequestMessages {
 	s.DelaySeconds = &v
 	return s
@@ -107,6 +112,11 @@ func (s *BatchSendMessageRequestMessages) SetMessageGroupId(v string) *BatchSend
 
 func (s *BatchSendMessageRequestMessages) SetPriority(v int32) *BatchSendMessageRequestMessages {
 	s.Priority = &v
+	return s
+}
+
+func (s *BatchSendMessageRequestMessages) SetUserProperties(v map[string]*MessagesUserPropertiesValue) *BatchSendMessageRequestMessages {
+	s.UserProperties = v
 	return s
 }
 

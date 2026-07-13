@@ -16,6 +16,9 @@ type iBatchPeekMessageRequest interface {
 }
 
 type BatchPeekMessageRequest struct {
+	// example:
+	//
+	// 16
 	NumOfMessages *int32 `json:"numOfMessages,omitempty" xml:"numOfMessages,omitempty"`
 	Peekonly      *bool  `json:"peekonly,omitempty" xml:"peekonly,omitempty"`
 }

@@ -25,20 +25,47 @@ type iPeekMessageResponseBody interface {
 	GetMessageId() *string
 	SetPriority(v int64) *PeekMessageResponseBody
 	GetPriority() *int64
-	SetUserProperties(v string) *PeekMessageResponseBody
-	GetUserProperties() *string
+	SetUserProperties(v map[string]*UserPropertiesValue) *PeekMessageResponseBody
+	GetUserProperties() map[string]*UserPropertiesValue
 }
 
 type PeekMessageResponseBody struct {
-	DequeueCount     *int64  `json:"DequeueCount,omitempty" xml:"DequeueCount,omitempty"`
-	EnqueueTime      *int64  `json:"EnqueueTime,omitempty" xml:"EnqueueTime,omitempty"`
-	FirstDequeueTime *int64  `json:"FirstDequeueTime,omitempty" xml:"FirstDequeueTime,omitempty"`
-	MessageBody      *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
-	MessageBodyMD5   *string `json:"MessageBodyMD5,omitempty" xml:"MessageBodyMD5,omitempty"`
-	MessageGroupId   *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
-	MessageId        *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	Priority         *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	UserProperties   *string `json:"UserProperties,omitempty" xml:"UserProperties,omitempty"`
+	// example:
+	//
+	// 1
+	DequeueCount *int64 `json:"DequeueCount,omitempty" xml:"DequeueCount,omitempty"`
+	// example:
+	//
+	// 1250700979348
+	EnqueueTime *int64 `json:"EnqueueTime,omitempty" xml:"EnqueueTime,omitempty"`
+	// example:
+	//
+	// 1250700979348
+	FirstDequeueTime *int64 `json:"FirstDequeueTime,omitempty" xml:"FirstDequeueTime,omitempty"`
+	// example:
+	//
+	// Hello MNS
+	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// example:
+	//
+	// C5DD56A39F5F7BB8B3337C6D11B6D8BE
+	MessageBodyMD5 *string `json:"MessageBodyMD5,omitempty" xml:"MessageBodyMD5,omitempty"`
+	// example:
+	//
+	// test-group
+	MessageGroupId *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
+	// example:
+	//
+	// 5F290C926D472878-2-14D9529A8FA-200000001
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// {"xxx":"value"}
+	UserProperties map[string]*UserPropertiesValue `json:"UserProperties,omitempty" xml:"UserProperties,omitempty"`
 }
 
 func (s PeekMessageResponseBody) String() string {
@@ -81,7 +108,7 @@ func (s *PeekMessageResponseBody) GetPriority() *int64 {
 	return s.Priority
 }
 
-func (s *PeekMessageResponseBody) GetUserProperties() *string {
+func (s *PeekMessageResponseBody) GetUserProperties() map[string]*UserPropertiesValue {
 	return s.UserProperties
 }
 
@@ -125,8 +152,8 @@ func (s *PeekMessageResponseBody) SetPriority(v int64) *PeekMessageResponseBody 
 	return s
 }
 
-func (s *PeekMessageResponseBody) SetUserProperties(v string) *PeekMessageResponseBody {
-	s.UserProperties = &v
+func (s *PeekMessageResponseBody) SetUserProperties(v map[string]*UserPropertiesValue) *PeekMessageResponseBody {
+	s.UserProperties = v
 	return s
 }
 

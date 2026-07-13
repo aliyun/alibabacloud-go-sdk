@@ -13,6 +13,8 @@ type iPublishMessageRequest interface {
 	GetMessageAttributes() *PublishMessageRequestMessageAttributes
 	SetMessageBody(v string) *PublishMessageRequest
 	GetMessageBody() *string
+	SetMessageGroupId(v string) *PublishMessageRequest
+	GetMessageGroupId() *string
 	SetMessageTag(v string) *PublishMessageRequest
 	GetMessageTag() *string
 }
@@ -22,7 +24,8 @@ type PublishMessageRequest struct {
 	// example:
 	//
 	// hello topic
-	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	MessageBody    *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	MessageGroupId *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
 	// example:
 	//
 	// order-event
@@ -45,6 +48,10 @@ func (s *PublishMessageRequest) GetMessageBody() *string {
 	return s.MessageBody
 }
 
+func (s *PublishMessageRequest) GetMessageGroupId() *string {
+	return s.MessageGroupId
+}
+
 func (s *PublishMessageRequest) GetMessageTag() *string {
 	return s.MessageTag
 }
@@ -56,6 +63,11 @@ func (s *PublishMessageRequest) SetMessageAttributes(v *PublishMessageRequestMes
 
 func (s *PublishMessageRequest) SetMessageBody(v string) *PublishMessageRequest {
 	s.MessageBody = &v
+	return s
+}
+
+func (s *PublishMessageRequest) SetMessageGroupId(v string) *PublishMessageRequest {
+	s.MessageGroupId = &v
 	return s
 }
 

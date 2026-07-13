@@ -48,17 +48,50 @@ func (s *BatchReceiveMessageResponseBody) Validate() error {
 }
 
 type BatchReceiveMessageResponseBodyMessages struct {
-	DequeueCount     *int64  `json:"DequeueCount,omitempty" xml:"DequeueCount,omitempty"`
-	EnqueueTime      *int64  `json:"EnqueueTime,omitempty" xml:"EnqueueTime,omitempty"`
-	FirstDequeueTime *int64  `json:"FirstDequeueTime,omitempty" xml:"FirstDequeueTime,omitempty"`
-	MessageBody      *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
-	MessageBodyMD5   *string `json:"MessageBodyMD5,omitempty" xml:"MessageBodyMD5,omitempty"`
-	MessageGroupId   *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
-	MessageId        *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	NextVisibleTime  *int64  `json:"NextVisibleTime,omitempty" xml:"NextVisibleTime,omitempty"`
-	Priority         *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReceiptHandle    *string `json:"ReceiptHandle,omitempty" xml:"ReceiptHandle,omitempty"`
-	UserProperties   *string `json:"UserProperties,omitempty" xml:"UserProperties,omitempty"`
+	// example:
+	//
+	// 1
+	DequeueCount *int64 `json:"DequeueCount,omitempty" xml:"DequeueCount,omitempty"`
+	// example:
+	//
+	// 1250700979348
+	EnqueueTime *int64 `json:"EnqueueTime,omitempty" xml:"EnqueueTime,omitempty"`
+	// example:
+	//
+	// 1250700979348
+	FirstDequeueTime *int64 `json:"FirstDequeueTime,omitempty" xml:"FirstDequeueTime,omitempty"`
+	// example:
+	//
+	// This is test message 1.
+	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// example:
+	//
+	// C5DD56A39F5F7BB8B3337C6D11B6D8BE
+	MessageBodyMD5 *string `json:"MessageBodyMD5,omitempty" xml:"MessageBodyMD5,omitempty"`
+	// example:
+	//
+	// test-group
+	MessageGroupId *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
+	// example:
+	//
+	// 5F290C926D472878214D9529A8FA200000001
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 1250700979348
+	NextVisibleTime *int64 `json:"NextVisibleTime,omitempty" xml:"NextVisibleTime,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 1-ODU4OTkzNDU5My0xNDMyNzI3ODI3LTItOA==
+	ReceiptHandle *string `json:"ReceiptHandle,omitempty" xml:"ReceiptHandle,omitempty"`
+	// example:
+	//
+	// {"properties1":"value"}
+	UserProperties map[string]*MessagesUserPropertiesValue `json:"UserProperties,omitempty" xml:"UserProperties,omitempty"`
 }
 
 func (s BatchReceiveMessageResponseBodyMessages) String() string {
@@ -109,7 +142,7 @@ func (s *BatchReceiveMessageResponseBodyMessages) GetReceiptHandle() *string {
 	return s.ReceiptHandle
 }
 
-func (s *BatchReceiveMessageResponseBodyMessages) GetUserProperties() *string {
+func (s *BatchReceiveMessageResponseBodyMessages) GetUserProperties() map[string]*MessagesUserPropertiesValue {
 	return s.UserProperties
 }
 
@@ -163,8 +196,8 @@ func (s *BatchReceiveMessageResponseBodyMessages) SetReceiptHandle(v string) *Ba
 	return s
 }
 
-func (s *BatchReceiveMessageResponseBodyMessages) SetUserProperties(v string) *BatchReceiveMessageResponseBodyMessages {
-	s.UserProperties = &v
+func (s *BatchReceiveMessageResponseBodyMessages) SetUserProperties(v map[string]*MessagesUserPropertiesValue) *BatchReceiveMessageResponseBodyMessages {
+	s.UserProperties = v
 	return s
 }
 

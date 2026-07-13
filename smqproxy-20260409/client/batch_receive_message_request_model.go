@@ -16,8 +16,14 @@ type iBatchReceiveMessageRequest interface {
 }
 
 type BatchReceiveMessageRequest struct {
+	// example:
+	//
+	// 10
 	NumOfMessages *int32 `json:"numOfMessages,omitempty" xml:"numOfMessages,omitempty"`
-	Waitseconds   *int32 `json:"waitseconds,omitempty" xml:"waitseconds,omitempty"`
+	// example:
+	//
+	// 0
+	Waitseconds *int32 `json:"waitseconds,omitempty" xml:"waitseconds,omitempty"`
 }
 
 func (s BatchReceiveMessageRequest) String() string {

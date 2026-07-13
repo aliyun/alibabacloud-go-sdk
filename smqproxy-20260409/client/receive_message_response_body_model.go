@@ -29,22 +29,55 @@ type iReceiveMessageResponseBody interface {
 	GetPriority() *int64
 	SetReceiptHandle(v string) *ReceiveMessageResponseBody
 	GetReceiptHandle() *string
-	SetUserProperties(v string) *ReceiveMessageResponseBody
-	GetUserProperties() *string
+	SetUserProperties(v map[string]*UserPropertiesValue) *ReceiveMessageResponseBody
+	GetUserProperties() map[string]*UserPropertiesValue
 }
 
 type ReceiveMessageResponseBody struct {
-	DequeueCount     *int64  `json:"DequeueCount,omitempty" xml:"DequeueCount,omitempty"`
-	EnqueueTime      *int64  `json:"EnqueueTime,omitempty" xml:"EnqueueTime,omitempty"`
-	FirstDequeueTime *int64  `json:"FirstDequeueTime,omitempty" xml:"FirstDequeueTime,omitempty"`
-	MessageBody      *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
-	MessageBodyMD5   *string `json:"MessageBodyMD5,omitempty" xml:"MessageBodyMD5,omitempty"`
-	MessageGroupId   *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
-	MessageId        *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	NextVisibleTime  *int64  `json:"NextVisibleTime,omitempty" xml:"NextVisibleTime,omitempty"`
-	Priority         *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReceiptHandle    *string `json:"ReceiptHandle,omitempty" xml:"ReceiptHandle,omitempty"`
-	UserProperties   *string `json:"UserProperties,omitempty" xml:"UserProperties,omitempty"`
+	// example:
+	//
+	// 1
+	DequeueCount *int64 `json:"DequeueCount,omitempty" xml:"DequeueCount,omitempty"`
+	// example:
+	//
+	// 1250700979348
+	EnqueueTime *int64 `json:"EnqueueTime,omitempty" xml:"EnqueueTime,omitempty"`
+	// example:
+	//
+	// 1250700979348
+	FirstDequeueTime *int64 `json:"FirstDequeueTime,omitempty" xml:"FirstDequeueTime,omitempty"`
+	// example:
+	//
+	// Hello MNS
+	MessageBody *string `json:"MessageBody,omitempty" xml:"MessageBody,omitempty"`
+	// example:
+	//
+	// C5DD56A39F5F7BB8B3337C6D11B6D8BE
+	MessageBodyMD5 *string `json:"MessageBodyMD5,omitempty" xml:"MessageBodyMD5,omitempty"`
+	// example:
+	//
+	// test-group
+	MessageGroupId *string `json:"MessageGroupId,omitempty" xml:"MessageGroupId,omitempty"`
+	// example:
+	//
+	// 5F290C926D472878-2-14D9529A8FA-200000001
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 1250700979348
+	NextVisibleTime *int64 `json:"NextVisibleTime,omitempty" xml:"NextVisibleTime,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 1-ODU4OTkzNDU5My0xNDM1MTk3NjAwLTItNg==
+	ReceiptHandle *string `json:"ReceiptHandle,omitempty" xml:"ReceiptHandle,omitempty"`
+	// example:
+	//
+	// {"xxx":"value"}
+	UserProperties map[string]*UserPropertiesValue `json:"UserProperties,omitempty" xml:"UserProperties,omitempty"`
 }
 
 func (s ReceiveMessageResponseBody) String() string {
@@ -95,7 +128,7 @@ func (s *ReceiveMessageResponseBody) GetReceiptHandle() *string {
 	return s.ReceiptHandle
 }
 
-func (s *ReceiveMessageResponseBody) GetUserProperties() *string {
+func (s *ReceiveMessageResponseBody) GetUserProperties() map[string]*UserPropertiesValue {
 	return s.UserProperties
 }
 
@@ -149,8 +182,8 @@ func (s *ReceiveMessageResponseBody) SetReceiptHandle(v string) *ReceiveMessageR
 	return s
 }
 
-func (s *ReceiveMessageResponseBody) SetUserProperties(v string) *ReceiveMessageResponseBody {
-	s.UserProperties = &v
+func (s *ReceiveMessageResponseBody) SetUserProperties(v map[string]*UserPropertiesValue) *ReceiveMessageResponseBody {
+	s.UserProperties = v
 	return s
 }
 

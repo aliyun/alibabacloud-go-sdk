@@ -14,6 +14,9 @@ type iReceiveMessageRequest interface {
 }
 
 type ReceiveMessageRequest struct {
+	// example:
+	//
+	// 0
 	Waitseconds *int32 `json:"waitseconds,omitempty" xml:"waitseconds,omitempty"`
 }
 

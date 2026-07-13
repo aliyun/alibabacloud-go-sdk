@@ -17,8 +17,8 @@ type iSendMessageRequest interface {
 	GetMessageGroupId() *string
 	SetPriority(v int32) *SendMessageRequest
 	GetPriority() *int32
-	SetUserProperties(v string) *SendMessageRequest
-	GetUserProperties() *string
+	SetUserProperties(v map[string]*UserPropertiesValue) *SendMessageRequest
+	GetUserProperties() map[string]*UserPropertiesValue
 }
 
 type SendMessageRequest struct {
@@ -41,7 +41,7 @@ type SendMessageRequest struct {
 	// example:
 	//
 	// {"key1":"value1", "key2":"value2"}
-	UserProperties *string `json:"UserProperties,omitempty" xml:"UserProperties,omitempty"`
+	UserProperties map[string]*UserPropertiesValue `json:"UserProperties,omitempty" xml:"UserProperties,omitempty"`
 }
 
 func (s SendMessageRequest) String() string {
@@ -68,7 +68,7 @@ func (s *SendMessageRequest) GetPriority() *int32 {
 	return s.Priority
 }
 
-func (s *SendMessageRequest) GetUserProperties() *string {
+func (s *SendMessageRequest) GetUserProperties() map[string]*UserPropertiesValue {
 	return s.UserProperties
 }
 
@@ -92,8 +92,8 @@ func (s *SendMessageRequest) SetPriority(v int32) *SendMessageRequest {
 	return s
 }
 
-func (s *SendMessageRequest) SetUserProperties(v string) *SendMessageRequest {
-	s.UserProperties = &v
+func (s *SendMessageRequest) SetUserProperties(v map[string]*UserPropertiesValue) *SendMessageRequest {
+	s.UserProperties = v
 	return s
 }
 

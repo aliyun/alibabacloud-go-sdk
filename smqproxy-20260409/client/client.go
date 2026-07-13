@@ -33,9 +33,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 
 	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hangzhou": dara.String("mns.cn-hangzhou.aliyuncs.com"),
-	}
 	return nil
 }
 
@@ -109,6 +106,22 @@ func (client *Client) BatchDeleteMessage(queueName *string, request *BatchDelete
 //
 // 批量查看消息
 //
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于批量查看指定队列中的消息，一次最多可以查看16条消息。
+//
+// - 使用此接口不会改变消息的状态，消息仍保持为Active状态。
+//
+// - 不支持长轮询功能。
+//
+// - 需要提供`queueName`作为路径参数，并通过查询参数设置`peekonly=true`及指定要查看的消息数量`numOfMessages`（范围在1到16之间）。
+//
+// - 成功响应将返回一个包含所请求消息详细信息的数组，包括但不限于消息ID、正文、入队时间等。
+//
+// - 如果指定的队列不存在或队列中没有可见消息，则会返回相应的错误码。
+//
 // @param request - BatchPeekMessageRequest
 //
 // @param headers - map
@@ -160,6 +173,22 @@ func (client *Client) BatchPeekMessageWithOptions(queueName *string, request *Ba
 //
 // 批量查看消息
 //
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于批量查看指定队列中的消息，一次最多可以查看16条消息。
+//
+// - 使用此接口不会改变消息的状态，消息仍保持为Active状态。
+//
+// - 不支持长轮询功能。
+//
+// - 需要提供`queueName`作为路径参数，并通过查询参数设置`peekonly=true`及指定要查看的消息数量`numOfMessages`（范围在1到16之间）。
+//
+// - 成功响应将返回一个包含所请求消息详细信息的数组，包括但不限于消息ID、正文、入队时间等。
+//
+// - 如果指定的队列不存在或队列中没有可见消息，则会返回相应的错误码。
+//
 // @param request - BatchPeekMessageRequest
 //
 // @return BatchPeekMessageResponse
@@ -178,6 +207,18 @@ func (client *Client) BatchPeekMessage(queueName *string, request *BatchPeekMess
 // Summary:
 //
 // 批量消费消息
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该操作会将取得的消息状态变为 Inactive，Inactive 持续时间由队列属性 `VisibilityTimeout` 决定。
+//
+// - 消费者需在 VisibilityTimeout 时间内调用 DeleteMessage 删除消息，否则消息会重新变为 Active。
+//
+// - 支持长轮询（Long Polling）：设置 `waitseconds > 0` 后，若队列为空则等待至有消息到达或超时返回。
+//
+//	Notice: 进入长轮询后，建议您降低外部调用长轮询的并发数，选择合适的长轮询时间。目前服务端会根据长轮询数量、长轮询等待时间、访问 IP 数量等因素动态调整长轮询防攻击的并发上限值。当队列无消息时，超过长轮询上限值的请求将无法被监听到，并直接返回 404 MessageNotExist（按请求量正常计费）。如果您有临时提升长轮询上限值的需求，请及时提交工单。
 //
 // @param request - BatchReceiveMessageRequest
 //
@@ -229,6 +270,18 @@ func (client *Client) BatchReceiveMessageWithOptions(queueName *string, request 
 // Summary:
 //
 // 批量消费消息
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该操作会将取得的消息状态变为 Inactive，Inactive 持续时间由队列属性 `VisibilityTimeout` 决定。
+//
+// - 消费者需在 VisibilityTimeout 时间内调用 DeleteMessage 删除消息，否则消息会重新变为 Active。
+//
+// - 支持长轮询（Long Polling）：设置 `waitseconds > 0` 后，若队列为空则等待至有消息到达或超时返回。
+//
+//	Notice: 进入长轮询后，建议您降低外部调用长轮询的并发数，选择合适的长轮询时间。目前服务端会根据长轮询数量、长轮询等待时间、访问 IP 数量等因素动态调整长轮询防攻击的并发上限值。当队列无消息时，超过长轮询上限值的请求将无法被监听到，并直接返回 404 MessageNotExist（按请求量正常计费）。如果您有临时提升长轮询上限值的需求，请及时提交工单。
 //
 // @param request - BatchReceiveMessageRequest
 //
@@ -479,6 +532,16 @@ func (client *Client) DeleteMessage(queueName *string, request *DeleteMessageReq
 //
 // 查看消息
 //
+// Description:
+//
+// ## 请求说明
+//
+// - **PeekMessage*	- 接口用于查看队列顶部的消息，但不会改变消息的状态，消息仍处于 Active 状态可被正常消费。
+//
+// - 该接口不支持长轮询，如果队列为空则立即返回 `MessageNotExist` 错误。
+//
+// - 请求时必须设置 `peekonly=true` 参数以表明仅查看消息。
+//
 // @param request - PeekMessageRequest
 //
 // @param headers - map
@@ -525,6 +588,16 @@ func (client *Client) PeekMessageWithOptions(queueName *string, request *PeekMes
 // Summary:
 //
 // 查看消息
+//
+// Description:
+//
+// ## 请求说明
+//
+// - **PeekMessage*	- 接口用于查看队列顶部的消息，但不会改变消息的状态，消息仍处于 Active 状态可被正常消费。
+//
+// - 该接口不支持长轮询，如果队列为空则立即返回 `MessageNotExist` 错误。
+//
+// - 请求时必须设置 `peekonly=true` 参数以表明仅查看消息。
 //
 // @param request - PeekMessageRequest
 //
@@ -578,6 +651,10 @@ func (client *Client) PublishMessageWithOptions(topicName *string, request *Publ
 
 	if !dara.IsNil(request.MessageBody) {
 		body["MessageBody"] = request.MessageBody
+	}
+
+	if !dara.IsNil(request.MessageGroupId) {
+		body["MessageGroupId"] = request.MessageGroupId
 	}
 
 	if !dara.IsNil(request.MessageTag) {
@@ -643,6 +720,18 @@ func (client *Client) PublishMessage(topicName *string, request *PublishMessageR
 //
 // 消费消息
 //
+// Description:
+//
+// ## 请求说明
+//
+// - `ReceiveMessage` 操作会将取得的消息状态变为 Inactive，Inactive 持续时间由队列属性 `VisibilityTimeout` 决定。
+//
+// - 消费者需在 VisibilityTimeout 时间内消费成功后调用 `DeleteMessage` 删除该消息，否则消息将重新变为 Active 状态，被再次消费。
+//
+// - 支持长轮询（Long Polling）：设置 `waitseconds > 0` 后，若队列为空则等待至有消息到达或超时返回。
+//
+//	Notice: 进入长轮询后，建议您降低外部调用长轮询的并发数，选择合适的长轮询时间。目前服务端会根据长轮询数量、长轮询等待时间、访问 IP 数量等因素动态调整长轮询防攻击的并发上限值。当队列无消息时，超过长轮询上限值的请求将无法被监听到，并直接返回 404 MessageNotExist（按请求量正常计费）。如果您有临时提升长轮询上限值的需求，请及时提交工单。
+//
 // @param request - ReceiveMessageRequest
 //
 // @param headers - map
@@ -689,6 +778,18 @@ func (client *Client) ReceiveMessageWithOptions(queueName *string, request *Rece
 // Summary:
 //
 // 消费消息
+//
+// Description:
+//
+// ## 请求说明
+//
+// - `ReceiveMessage` 操作会将取得的消息状态变为 Inactive，Inactive 持续时间由队列属性 `VisibilityTimeout` 决定。
+//
+// - 消费者需在 VisibilityTimeout 时间内消费成功后调用 `DeleteMessage` 删除该消息，否则消息将重新变为 Active 状态，被再次消费。
+//
+// - 支持长轮询（Long Polling）：设置 `waitseconds > 0` 后，若队列为空则等待至有消息到达或超时返回。
+//
+//	Notice: 进入长轮询后，建议您降低外部调用长轮询的并发数，选择合适的长轮询时间。目前服务端会根据长轮询数量、长轮询等待时间、访问 IP 数量等因素动态调整长轮询防攻击的并发上限值。当队列无消息时，超过长轮询上限值的请求将无法被监听到，并直接返回 404 MessageNotExist（按请求量正常计费）。如果您有临时提升长轮询上限值的需求，请及时提交工单。
 //
 // @param request - ReceiveMessageRequest
 //
