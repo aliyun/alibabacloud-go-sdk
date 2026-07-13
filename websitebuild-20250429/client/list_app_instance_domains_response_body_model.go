@@ -62,17 +62,17 @@ type ListAppInstanceDomainsResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which replaces the `%s` placeholder in the **ErrMessage*	- return parameter.
+	// The dynamic error message, which is used to replace the `%s` in the **ErrMessage*	- return parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The number of entries per query.
+	// The maximum number of entries per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -106,7 +106,7 @@ type ListAppInstanceDomainsResponseBody struct {
 	//
 	// 系统异常
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// The reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
@@ -255,7 +255,7 @@ type ListAppInstanceDomainsResponseBodyModule struct {
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The request result.
+	// The request results.
 	Data []*ListAppInstanceDomainsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The decision weight.
 	Next *ListAppInstanceDomainsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
@@ -269,7 +269,7 @@ type ListAppInstanceDomainsResponseBodyModule struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Indicates whether a previous page exists.
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to pagination limits, the server processes up to 1,000 recent records per query. If the result exceeds 1,000 records, **ResultLimit*	- is **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to pagination limits, the server processes a maximum of 1000 recent records per query. If the results exceed 1000 entries, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
 	// The total number of entries.
 	//
@@ -395,7 +395,7 @@ func (s *ListAppInstanceDomainsResponseBodyModule) Validate() error {
 type ListAppInstanceDomainsResponseBodyModuleData struct {
 	// The domain name SSL certificate information.
 	Certificate *ListAppInstanceDomainsResponseBodyModuleDataCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
-	// The instance creation time. This parameter is required. Format: yyyy-MM-dd HH:mm:ss.
+	// The instance creation time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -563,25 +563,25 @@ func (s *ListAppInstanceDomainsResponseBodyModuleData) Validate() error {
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataCertificate struct {
-	// The certificate name.
+	// The name of the certificate.
 	//
 	// example:
 	//
 	// 2024
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The certificate status.
+	// The status of the certificate.
 	//
 	// example:
 	//
 	// ACTIVE
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
-	// The certificate type.
+	// The type of the certificate.
 	//
 	// example:
 	//
 	// self-signed
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// The certificate expiration date.
+	// The expiration date of the certificate.
 	//
 	// example:
 	//
@@ -1021,7 +1021,7 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataResolutionDnsRecord) Valida
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataVerification struct {
-	// The DNS record configuration guide for the user.
+	// The DNS record that the user needs to configure.
 	DnsRecord *ListAppInstanceDomainsResponseBodyModuleDataVerificationDnsRecord `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -1035,7 +1035,7 @@ type ListAppInstanceDomainsResponseBodyModuleDataVerification struct {
 	//
 	// SUCCESSFUL
 	VerificationStatus *string `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
-	// The ownership verification status.
+	// The ownership verification status code.
 	//
 	// example:
 	//
@@ -1159,7 +1159,7 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataVerificationDnsRecord) Vali
 type ListAppInstanceDomainsResponseBodyModuleNext struct {
 	// The domain name SSL certificate information.
 	Certificate *ListAppInstanceDomainsResponseBodyModuleNextCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
-	// The instance creation time. This parameter is required. Format: yyyy-MM-dd HH:mm:ss.
+	// The instance creation time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -1327,25 +1327,25 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNext) Validate() error {
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextCertificate struct {
-	// The certificate name.
+	// The name of the certificate.
 	//
 	// example:
 	//
 	// jfztkg202502
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The certificate status.
+	// The status of the certificate.
 	//
 	// example:
 	//
 	// ACTIVE
 	CertificateStatus *string `json:"CertificateStatus,omitempty" xml:"CertificateStatus,omitempty"`
-	// The certificate type.
+	// The type of the certificate.
 	//
 	// example:
 	//
 	// Server
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// The certificate expiration date.
+	// The expiration date of the certificate.
 	//
 	// example:
 	//
@@ -1770,7 +1770,7 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextResolutionDnsRecord) Valida
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextVerification struct {
-	// The DNS record configuration guide for the user.
+	// The DNS record that the user needs to configure.
 	DnsRecord *ListAppInstanceDomainsResponseBodyModuleNextVerificationDnsRecord `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty" type:"Struct"`
 	// The error message.
 	//

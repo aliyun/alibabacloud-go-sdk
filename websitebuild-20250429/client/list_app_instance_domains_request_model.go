@@ -35,7 +35,7 @@ type ListAppInstanceDomainsRequest struct {
 	// WD20250718165839000001
 	BizId         *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	DomainKeyword *string `json:"DomainKeyword,omitempty" xml:"DomainKeyword,omitempty"`
-	// The number of entries per query.
+	// The maximum number of entries per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//

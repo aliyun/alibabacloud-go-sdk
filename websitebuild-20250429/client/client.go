@@ -1378,7 +1378,7 @@ func (client *Client) CreateAppInstance(request *CreateAppInstanceRequest) (_res
 
 // Summary:
 //
-// Creates a login-free ticket for a website builder instance.
+// Creates a passwordless login ticket.
 //
 // @param request - CreateAppInstanceTicketRequest
 //
@@ -1399,6 +1399,10 @@ func (client *Client) CreateAppInstanceTicketWithOptions(request *CreateAppInsta
 
 	if !dara.IsNil(request.ClientId) {
 		query["ClientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1426,7 +1430,7 @@ func (client *Client) CreateAppInstanceTicketWithOptions(request *CreateAppInsta
 
 // Summary:
 //
-// Creates a login-free ticket for a website builder instance.
+// Creates a passwordless login ticket.
 //
 // @param request - CreateAppInstanceTicketRequest
 //
@@ -11103,6 +11107,10 @@ func (client *Client) UpdateAppSeoStatusWithOptions(request *UpdateAppSeoStatusR
 
 	if !dara.IsNil(request.SeAuthInfo) {
 		query["SeAuthInfo"] = request.SeAuthInfo
+	}
+
+	if !dara.IsNil(request.SeIndexStatus) {
+		query["SeIndexStatus"] = request.SeIndexStatus
 	}
 
 	if !dara.IsNil(request.SeType) {
